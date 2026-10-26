@@ -1,0 +1,20 @@
+{
+  "work": "W-MATH-040",
+  "approvedProposalHash": "8106181787d61bf7ef474c09acd89a41cdb61537bff529c5f7ece9c78cfe883e",
+  "planHash": "b0cc469e3022b61da688aa5784743bba6d331420c386e33da54f4b51c273a0cc",
+  "constructionDesignHash": "c29bc81b85878842b6031715201f07e3d73a260c6f2905ce2206fd78932fd298",
+  "layoutDesignHash": "d5741ef205507deb4558de4e8987877bad0a7b65a0c8d4584d75200c4f6e6ad8",
+  "learnerCopyHash": "e367b2d86b95d42616bdc0196d889d5d9e686ac08c72709e7c7a495d0fdca277",
+  "protectedManifest": {
+    "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+    "src/components/textbook/N08SolutionReadingFlow.tsx": "2d4938f8e72015b4c1d4bf8e6cb77f36be9ab221549f6695a29ae4c97b3fe353",
+    "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+    "src/components/textbook/n08-solution-reading.css": "de8a7aa9052d3bb6777a9a7190284cdb2d947856762d292eb94e6bf622b2ffd1",
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n08PresentationPolicy.json": "9ac0392f72b24e3b2a11787475dacc99d097abb4d9473de7e9e01664c86063e5",
+    "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+    "src/data/textbook/math/numbers/n08Transformation.json": "1d919ff71018cdb8d65f1ad72097844cf4d795babfac966618137548dbf9d231",
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197"
+  }
+}

@@ -1,9 +1,10 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import authored from './n08Authored.json'
 import revision5 from './n08Revision5.json'
+import revision6 from './n08Revision6.json'
 import activeVersion from './n08ActiveVersion.json'
 
-const active = activeVersion.revision === 4 ? authored : revision5
+const active = activeVersion.revision === 4 ? authored : activeVersion.revision === 6 ? revision6 : revision5
 
 export const mathNumbersN08Unit = validateTextbookUnits([active.unit])[0]
 export const n08SourceToItemIds: Record<string, string[]> = Object.fromEntries(

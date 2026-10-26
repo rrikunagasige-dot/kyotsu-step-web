@@ -1,0 +1,675 @@
+{
+  "schemaVersion": "layout-plan/1",
+  "unitId": "math-numbers-expressions-n08",
+  "tokens": {
+    "mathFontPx": 18,
+    "katexScale": 1,
+    "bodyLineHeight": 1.8,
+    "mathLineHeight": 1.4,
+    "rowGapPx": 4,
+    "noteGapPx": 6,
+    "paragraphGapPx": 8,
+    "conceptGapPx": 16,
+    "minHitPx": 44,
+    "relationTolerancePx": 1,
+    "centerTolerancePx": 2,
+    "fontTolerancePx": 0.25
+  },
+  "groups": [
+    {
+      "id": "n08-root-sign-group",
+      "rowIds": [
+        "n08-root-sign-S0",
+        "n08-root-sign-S1",
+        "n08-root-sign-S2"
+      ],
+      "numberRowRef": "n08-root-sign-S2",
+      "numberCollision": "below-final-row",
+      "prose": [
+        {
+          "id": "n08-root-sign-group-lead",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "与えられた大小関係から、中身と0を比較する形を作ります。"
+            }
+          ],
+          "placement": "group-start",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-sign-S1-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-root-sign-S1",
+          "interactionRef": "n08-r5-q06-operation-answer",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-sign-S2-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "右辺に残った同じ数どうしの差を計算します。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-root-sign-S2",
+          "interactionRef": "n08-q06-subtract-answer",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-sign-group-interpretation",
+          "role": "interpretation",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "の比較ができました。次は、この結果から符号を読み取ります。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-q06-subtract-answer"
+          ],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-sign-group-detail",
+          "role": "detail",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の段階で得た大小関係から、元の中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "を比べる形を作ります。"
+            },
+            {
+              "type": "text",
+              "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+            },
+            {
+              "type": "text",
+              "text": "両辺に同じ操作をしたので、不等号の向きは変わりません。"
+            },
+            {
+              "type": "text",
+              "text": "右辺に残った同じ数どうしの差を計算します。"
+            },
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "の比較ができました。次は、この結果から符号を読み取ります。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-q06-subtract-answer"
+          ],
+          "requiredByRowIds": []
+        }
+      ],
+      "states": {
+        "initial": [
+          "n08-root-sign-S0",
+          "n08-root-sign-S1"
+        ],
+        "partial": [
+          "n08-root-sign-S0",
+          "n08-root-sign-S1"
+        ],
+        "complete": [
+          "n08-root-sign-S0",
+          "n08-root-sign-S1",
+          "n08-root-sign-S2"
+        ]
+      }
+    },
+    {
+      "id": "n08-root-absolute-group",
+      "rowIds": [
+        "n08-root-absolute-S1",
+        "n08-root-absolute-S2",
+        "n08-root-absolute-S3",
+        "n08-root-absolute-S4"
+      ],
+      "numberRowRef": "n08-root-absolute-S4",
+      "numberCollision": "below-final-row",
+      "prose": [
+        {
+          "id": "n08-root-absolute-group-lead",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身の符号は負と分かっています。選んだ規則を式全体へ使います。"
+            }
+          ],
+          "placement": "group-start",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-absolute-group-note",
+          "role": "essential-note",
+          "content": [
+            {
+              "type": "text",
+              "text": "負号を"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "の掛け算に直します。"
+            }
+          ],
+          "placement": "before-row",
+          "rowRef": "n08-root-absolute-S2",
+          "visibleAfter": [
+            "n08-q07-bracket-build-r6"
+          ],
+          "requiredByRowIds": [
+            "n08-root-absolute-S2",
+            "n08-root-absolute-S3"
+          ]
+        },
+        {
+          "id": "n08-root-absolute-S1-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "選んだ規則を、括弧で囲んだ中身全体へ適用します。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-root-absolute-S1",
+          "interactionRef": "n08-q07-bracket-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-absolute-S3-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "各項へ掛けた結果を、それぞれ同じ行の穴へ入れます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-root-absolute-S3",
+          "interactionRef": "n08-q07-distribute-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-absolute-S4-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-root-absolute-S4",
+          "interactionRef": "n08-07-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-absolute-group-interpretation",
+          "role": "interpretation",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身の符号を判定し、定義に当てはめてから計算できました。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-07-build-r6"
+          ],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-root-absolute-group-detail",
+          "role": "detail",
+          "content": [
+            {
+              "type": "text",
+              "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+            },
+            {
+              "type": "text",
+              "text": "負号は"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "を掛けることです。括弧の二つの項へ、それぞれ分配します。"
+            },
+            {
+              "type": "text",
+              "text": "二つの積を計算して、括弧を外した式を入れます。"
+            },
+            {
+              "type": "text",
+              "text": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。"
+            },
+            {
+              "type": "text",
+              "text": "中身の符号を判定し、定義に当てはめてから計算できました。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-07-build-r6"
+          ],
+          "requiredByRowIds": []
+        }
+      ],
+      "states": {
+        "initial": [
+          "n08-root-absolute-S1"
+        ],
+        "partial": [
+          "n08-root-absolute-S1",
+          "n08-root-absolute-S2",
+          "n08-root-absolute-S3"
+        ],
+        "complete": [
+          "n08-root-absolute-S1",
+          "n08-root-absolute-S2",
+          "n08-root-absolute-S3",
+          "n08-root-absolute-S4"
+        ]
+      }
+    },
+    {
+      "id": "n08-pi-sign-group",
+      "rowIds": [
+        "n08-pi-sign-S0",
+        "n08-pi-sign-S1",
+        "n08-pi-sign-S2"
+      ],
+      "numberRowRef": "n08-pi-sign-S2",
+      "numberCollision": "below-final-row",
+      "prose": [
+        {
+          "id": "n08-pi-sign-group-lead",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "与えられた大小関係から、中身と0を比較する形を作ります。"
+            }
+          ],
+          "placement": "group-start",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-sign-S0-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "与えられた小数表示から、円周率と"
+            },
+            {
+              "type": "math",
+              "latex": "3"
+            },
+            {
+              "type": "text",
+              "text": "の大小を比べます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-sign-S0",
+          "interactionRef": "n08-q08-order-answer",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-sign-S1-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-sign-S1",
+          "interactionRef": "n08-r5-q08-operation-answer",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-sign-S2-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "右辺を"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "に整理しました。保たれる大小関係を入れます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-sign-S2",
+          "interactionRef": "n08-q08-difference-answer",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-sign-group-interpretation",
+          "role": "interpretation",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "を比べられました。元の小数表示も根拠として残します。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-q08-difference-answer"
+          ],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-sign-group-detail",
+          "role": "detail",
+          "content": [
+            {
+              "type": "text",
+              "text": "与えられた小数表示から、円周率と"
+            },
+            {
+              "type": "math",
+              "latex": "3"
+            },
+            {
+              "type": "text",
+              "text": "の大小を比べます。"
+            },
+            {
+              "type": "text",
+              "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+            },
+            {
+              "type": "text",
+              "text": "同じ数を引く操作では、不等号の向きは変わりません。"
+            },
+            {
+              "type": "text",
+              "text": "右辺を"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "に整理しました。保たれる大小関係を入れます。"
+            },
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "を比べられました。元の小数表示も根拠として残します。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-q08-difference-answer"
+          ],
+          "requiredByRowIds": []
+        }
+      ],
+      "states": {
+        "initial": [
+          "n08-pi-sign-S0",
+          "n08-pi-sign-S1"
+        ],
+        "partial": [
+          "n08-pi-sign-S0",
+          "n08-pi-sign-S1"
+        ],
+        "complete": [
+          "n08-pi-sign-S0",
+          "n08-pi-sign-S1",
+          "n08-pi-sign-S2"
+        ]
+      }
+    },
+    {
+      "id": "n08-pi-absolute-group",
+      "rowIds": [
+        "n08-pi-absolute-S1",
+        "n08-pi-absolute-S2",
+        "n08-pi-absolute-S3",
+        "n08-pi-absolute-S4"
+      ],
+      "numberRowRef": "n08-pi-absolute-S4",
+      "numberCollision": "below-final-row",
+      "prose": [
+        {
+          "id": "n08-pi-absolute-group-lead",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身の符号は負と分かっています。選んだ規則を式全体へ使います。"
+            }
+          ],
+          "placement": "group-start",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-absolute-group-note",
+          "role": "essential-note",
+          "content": [
+            {
+              "type": "text",
+              "text": "負号を"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "の掛け算に直します。"
+            }
+          ],
+          "placement": "before-row",
+          "rowRef": "n08-pi-absolute-S2",
+          "visibleAfter": [
+            "n08-q09-bracket-build-r6"
+          ],
+          "requiredByRowIds": [
+            "n08-pi-absolute-S2",
+            "n08-pi-absolute-S3"
+          ]
+        },
+        {
+          "id": "n08-pi-absolute-S1-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "前に得た中身の符号を使い、括弧全体の外側を完成させます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-absolute-S1",
+          "interactionRef": "n08-q09-bracket-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-absolute-S3-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "二つの積を計算し、各項と項を結ぶ符号を入れます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-absolute-S3",
+          "interactionRef": "n08-q09-distribute-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-absolute-S4-prompt",
+          "role": "active-prompt",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。"
+            }
+          ],
+          "placement": "group-end",
+          "rowRef": "n08-pi-absolute-S4",
+          "interactionRef": "n08-09-build-r6",
+          "visibleAfter": [],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-absolute-group-interpretation",
+          "role": "interpretation",
+          "content": [
+            {
+              "type": "text",
+              "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-09-build-r6"
+          ],
+          "requiredByRowIds": []
+        },
+        {
+          "id": "n08-pi-absolute-group-detail",
+          "role": "detail",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+            },
+            {
+              "type": "text",
+              "text": "括弧全体に掛かる"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "を、二つの項へ分配します。"
+            },
+            {
+              "type": "text",
+              "text": "それぞれの積を計算し、二項の符号を確かめます。"
+            },
+            {
+              "type": "text",
+              "text": "加法の交換法則で、各項の符号を保って正の項を先に書きます。"
+            },
+            {
+              "type": "text",
+              "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+            }
+          ],
+          "placement": "group-end",
+          "visibleAfter": [
+            "n08-09-build-r6"
+          ],
+          "requiredByRowIds": []
+        }
+      ],
+      "states": {
+        "initial": [
+          "n08-pi-absolute-S1"
+        ],
+        "partial": [
+          "n08-pi-absolute-S1",
+          "n08-pi-absolute-S2",
+          "n08-pi-absolute-S3"
+        ],
+        "complete": [
+          "n08-pi-absolute-S1",
+          "n08-pi-absolute-S2",
+          "n08-pi-absolute-S3",
+          "n08-pi-absolute-S4"
+        ]
+      }
+    }
+  ]
+}

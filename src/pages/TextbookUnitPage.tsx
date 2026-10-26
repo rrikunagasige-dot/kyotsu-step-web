@@ -7,6 +7,8 @@ import { GuidedMathReadingFlow } from '../components/textbook/GuidedMathReadingF
 import { n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
 import { N08SolutionReadingFlow } from '../components/textbook/N08SolutionReadingFlow'
 import { N08ArchivePage } from './N08ArchivePage'
+import { N08Revision5Page } from './N08Revision5Page'
+import { N08ConstructionReadingFlow } from '../components/textbook/N08ConstructionReadingFlow'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
 import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
@@ -153,6 +155,8 @@ type ReadingFlowProps = {
 export function TextbookReadingFlow(props: ReadingFlowProps) {
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
+    : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 6
+      ? <N08ConstructionReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 5
       ? <N08SolutionReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 4
@@ -677,8 +681,14 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
 export function TextbookUnitPage() {
   const { unitId } = useParams()
   const location = useLocation()
-  return unitId === 'math-numbers-expressions-n08' && new URLSearchParams(location.search).get('version') === '4'
-    ? <N08ArchivePage /> : <ActiveTextbookUnitPage />
+  const params = new URLSearchParams(location.search)
+  if (unitId === 'math-numbers-expressions-n08') {
+    if (params.get('version') === '4') return <N08ArchivePage />
+    if (params.get('version') === '5' || params.get('layout') === 'original') {
+      return <N08Revision5Page originalMathLayout={params.get('layout') === 'original'} />
+    }
+  }
+  return <ActiveTextbookUnitPage />
 }
 
 function ActiveTextbookUnitPage() {
@@ -707,7 +717,10 @@ function ActiveTextbookUnitPage() {
 
   const firstIncompleteIndex = useMemo(() => {
     if (!unit) return 0
-    const index = unit.sections.findIndex((section) => textbookSectionProgress(unit, progress, section.id).completed < section.items.length)
+    const index = unit.sections.findIndex((section) => {
+      const sectionProgress = textbookSectionProgress(unit, progress, section.id)
+      return sectionProgress.completed < sectionProgress.total
+    })
     return index === -1 ? unit.sections.length - 1 : index
   }, [progress, unit])
 

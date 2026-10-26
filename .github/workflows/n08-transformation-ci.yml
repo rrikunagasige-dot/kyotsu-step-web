@@ -1,6 +1,7 @@
 name: N08 connected transformations and protected N11
 on:
   push:
+    branches-ignore: ['work/n08-construction-application-20261026']
     paths:
       - 'tools/textbook/**'
       - 'workflow/**'

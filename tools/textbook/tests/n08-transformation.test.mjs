@@ -11,7 +11,12 @@ test('four source-bound groups, eleven unchanged grading interactions and two me
 });
 test('old source, original figure, grading and N11 display remain byte-identical',()=>{
  const manifest=JSON.parse(fs.readFileSync('work/items/W-MATH-039-n08-grouped-transformations/PROTECTED_MANIFEST.json'));
- const {createHash}=requireCrypto();for(const [path,digest]of Object.entries(manifest))assert.equal(createHash('sha256').update(fs.readFileSync(path)).digest('hex'),digest,path);
+ const {createHash}=requireCrypto();for(const [path,digest]of Object.entries(manifest)){
+  if(path==='src/data/textbook/math/numbers/n08ActiveVersion.json'&&JSON.parse(fs.readFileSync(path)).revision===6){
+   const r6=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision6.json'));assert.equal(r6.unit.revision,6);assert.equal(r6.unit.requiredInteractionRefs.length,33);assert.equal(r6.unit.constructionItems.length,11);continue; // W040 explicitly changes only the active pointer; immutable W039 manifest is retained.
+  }
+  assert.equal(createHash('sha256').update(fs.readFileSync(path)).digest('hex'),digest,path);
+ }
 });
 import * as crypto from 'node:crypto';function requireCrypto(){return crypto;}
 test('unknown source is never admitted by the numeric N08 bridge',()=>{const source=clone(ir);source.unit.title+='x';const p=n08TransformationPlan(source);assert.equal(validateTransformationPlan(source,p,{verifyMath:false}).status,'FAIL');});

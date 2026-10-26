@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { ConstructionInteractionSchema } from './constructionReading'
 
 const IdSchema = z.string().min(2).regex(/^[a-z0-9][a-z0-9-]*$/, 'ID は小文字英数字とハイフンで指定してください')
 const PercentSchema = z.number().min(0).max(100)
@@ -119,6 +120,8 @@ const TextbookUnitBaseSchema = z.object({
   }),
   objectives: z.array(z.string().min(1)).min(1),
   sections: z.array(TextbookSectionSchema).min(1),
+  constructionItems: z.array(ConstructionInteractionSchema).optional(),
+  requiredInteractionRefs: z.array(IdSchema).min(1).optional(),
 })
 
 function normalizeChoiceValue(value: string) {
@@ -139,6 +142,17 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   const sectionIds = new Set<string>()
   const itemIds = new Set<string>()
   const overlayIds = new Set<string>()
+  const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = unit.constructionItems ?? [], allIds = [...ordinaryIds, ...constructions.map(i => i.id)]
+  if (constructions.length && !unit.requiredInteractionRefs) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '式組立を含む単元には全親の進度契約が必要です' })
+  if (new Set(allIds).size !== allIds.length) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '通常回答と式組立のIDが重複しています' })
+  const partIds = constructions.flatMap(i => i.parts.map(p => p.id))
+  if (new Set(partIds).size !== partIds.length) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の部品IDが重複しています' })
+  for (const i of constructions) {
+    if (i.sectionId ? !unit.sections.some(s => s.id === i.sectionId) : unit.sections.length !== 1) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立のsection対応が不明です' })
+    if (i.prerequisiteInteractionIds.some(id => !allIds.includes(id) || id === i.id)) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の前提が不明です' })
+    for (const p of i.parts) if (new Set(p.choices.map(c => c.value)).size !== p.choices.length || !p.choices.some(c => c.value === p.expected)) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の候補・正答契約が不正です' })
+  }
+  if (unit.requiredInteractionRefs && (new Set(unit.requiredInteractionRefs).size !== unit.requiredInteractionRefs.length || unit.requiredInteractionRefs.length !== allIds.length || allIds.some(id => !unit.requiredInteractionRefs!.includes(id)))) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '全親の進度契約に重複・不足・未知IDがあります' })
 
   if (unit.schemaVersion === '1.1') {
     if (!unit.chapter) {

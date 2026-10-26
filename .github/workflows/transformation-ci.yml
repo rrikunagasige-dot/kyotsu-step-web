@@ -1,7 +1,7 @@
 name: Ordinary transformation code and N11 pilot
 on:
   push:
-    branches-ignore: ['work/n08-grouped-transformations-20261026']
+    branches-ignore: ['work/n08-grouped-transformations-20261026', 'work/n08-construction-application-20261026']
     paths:
       - 'tools/textbook/**'
       - 'workflow/**'

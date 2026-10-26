@@ -1,6 +1,6 @@
 /** Typed, finite construction contracts. Display strings are never parsed or evaluated. */
 import {z} from 'zod';
-import {expressionSchema,statementSchema,expressionLatex,statementLatex,rat,add,mul} from '../solution/expression.mjs';
+import {expressionSchema,statementSchema,expressionLatex,rat,add,mul} from '../solution/expression.mjs';
 import {hash} from '../util.mjs';
 import {verifyMathPayload} from '../solution/verify.mjs';
 
@@ -38,6 +38,22 @@ function walk(value,fn,path=''){
  for(const [k,v]of Object.entries(value))if(v&&typeof v==='object')Array.isArray(v)?v.forEach((x,i)=>walk(x,fn,path?`${path}.${k}.${i}`:`${k}.${i}`)):walk(v,fn,path?`${path}.${k}`:k);
 }
 const partMap=i=>new Map(i.parts.map(p=>[p.id,p]));
+/** Scoped formatter: preserve parentheses for negative factors without altering v1 math output. */
+export function constructionExpressionLatex(e){
+ const negative=a=>a.kind==='rational'&&a.n.startsWith('-')||a.kind==='multiply'&&a.args[0]?.kind==='rational'&&a.args[0].n.startsWith('-');
+ if(e.kind==='multiply'){
+  const factor=a=>a.kind==='add'||negative(a)?`(${constructionExpressionLatex(a)})`:constructionExpressionLatex(a);
+  if(e.args.length===2&&e.args[0].kind==='rational'&&e.args[0].n==='-1'&&e.args[0].d==='1')return '-'+factor(e.args[1]);
+  return e.args.map((a,index)=>(index&&a.kind!=='symbol'&&!negative(a)?'\\cdot ':'')+factor(a)).join('');
+ }
+ if(e.kind==='add')return e.args.map(constructionExpressionLatex).join('+').replace(/\+-/g,'-');
+ if(e.kind==='absolute')return `\\left|${constructionExpressionLatex(e.argument)}\\right|`;
+ if(e.kind==='sqrt')return `\\sqrt{${constructionExpressionLatex(e.argument)}}`;
+ if(e.kind==='power')return `${e.base.kind==='symbol'?constructionExpressionLatex(e.base):`\\left(${constructionExpressionLatex(e.base)}\\right)`}^{${e.exponent}}`;
+ if(e.kind==='divide')return `\\frac{${constructionExpressionLatex(e.numerator)}}{${constructionExpressionLatex(e.denominator)}}`;
+ return expressionLatex(e);
+}
+const constructionStatementLatex=s=>s.kind==='expression'?constructionExpressionLatex(s.expression):`${constructionExpressionLatex(s.left)} ${({'<=':'\\le','>=':'\\ge'})[s.operator]??s.operator} ${constructionExpressionLatex(s.right)}`;
 function resolvePart(i,draft,partId){const p=i.parts.find(p=>p.id===partId);return p?.choices.find(c=>c.value===draft[partId]);}
 function expression(i,node,draft){
  if(node.kind==='part'){const c=resolvePart(i,draft,node.partId);if(!c?.expression)throw Error('PART_INCOMPLETE_OR_ROLE');return c.expression;}
@@ -58,7 +74,7 @@ export function assembleConstruction(interaction,draft={}){
  if(missing.length)return {status:'INCOMPLETE',missingParts:missing};
  try{const s=interaction.assembly,statement=s.kind==='expression'?{kind:'expression',expression:expression(interaction,s.expression,draft)}:{kind:'relation',operator:s.operator,left:expression(interaction,s.left,draft),right:expression(interaction,s.right,draft)};
   const parsed=statementSchema.safeParse(statement);if(!parsed.success)return {status:'FAIL',reason:'ASSEMBLED_AST_INVALID'};
-  return {status:'COMPLETE',statement,latex:statementLatex(statement)};
+  return {status:'COMPLETE',statement,latex:constructionStatementLatex(statement)};
  }catch(error){return {status:'FAIL',reason:error.message};}
 }
 export function gradeConstruction(interaction,draft={}){
@@ -152,28 +168,29 @@ export function verifyConstructionMath(input,{maxCasesPerParent=512,maxTotalCase
 }
 
 const math=latex=>({type:'math',latex});
-function renderExpression(i,n,draft){
+function renderExpression(i,n,draft,editableParts=false){
  // Keep already known mathematical subtrees intact (e.g. sqrt(5)-3), rather than
  // re-expanding their negative factors merely because another subtree has a hole.
- try{const known=expression(i,n,draft);if(expressionSchema.safeParse(known).success)return [math(expressionLatex(known))];}catch{/* unresolved typed parts are rendered below */}
+ const dynamic=v=>v&&typeof v==='object'&&(v.kind==='part'||v.kind==='unary'||v.kind==='binary'&&typeof v.operation!=='string'||Object.values(v).some(x=>x&&typeof x==='object'&&(Array.isArray(x)?x.some(dynamic):dynamic(x))));
+ try{const known=expression(i,n,draft);if((!editableParts||!dynamic(n))&&expressionSchema.safeParse(known).success)return [math(constructionExpressionLatex(known))];}catch{/* unresolved typed parts are rendered below */}
  const slot=p=>({type:'slot',id:p.id,partId:p.id,interactionRef:i.id,role:p.role});
- if(n.kind==='part'){const p=i.parts.find(p=>p.id===n.partId),c=resolvePart(i,draft,n.partId);return c?[math(expressionLatex(c.expression))]:[slot(p)];}
- if(n.kind==='unary'){const p=i.parts.find(p=>p.id===n.sign.partId),c=resolvePart(i,draft,p.id),a=n.argument,wrap=['add','binary','unary'].includes(a.kind);return [...(c?[math(c.value)]:[slot(p)]),...(wrap?[math('(')]:[]),...renderExpression(i,a,draft),...(wrap?[math(')')]:[])];}
+ if(n.kind==='part'){const p=i.parts.find(p=>p.id===n.partId),c=resolvePart(i,draft,n.partId);return c&&!editableParts?[math(constructionExpressionLatex(c.expression))]:[slot(p)];}
+ if(n.kind==='unary'){const p=i.parts.find(p=>p.id===n.sign.partId),c=resolvePart(i,draft,p.id),a=n.argument,wrap=['add','binary','unary'].includes(a.kind);return [...(c&&!editableParts?[math(c.value)]:[slot(p)]),...(wrap?[math('(')]:[]),...renderExpression(i,a,draft,editableParts),...(wrap?[math(')')]:[])];}
  if(n.kind==='binary'){
-  const a=renderExpression(i,n.left,draft),b=renderExpression(i,n.right,draft),p=typeof n.operation==='string'?null:i.parts.find(p=>p.id===n.operation.partId),op=p?resolvePart(i,draft,p.id)?.value:n.operation;
+  const a=renderExpression(i,n.left,draft,editableParts),b=renderExpression(i,n.right,draft,editableParts),p=typeof n.operation==='string'?null:i.parts.find(p=>p.id===n.operation.partId),op=p&&editableParts?null:p?resolvePart(i,draft,p.id)?.value:n.operation;
   let right;try{right=expression(i,n.right,draft);}catch{/* pending part */}
   const negative=right?.kind==='rational'&&right.n.startsWith('-')||right?.kind==='multiply'&&right.args[0]?.kind==='rational'&&right.args[0].n.startsWith('-');
   return [...a,...(op?[...(op==='+'&&negative?[]:[math(op)])]:[slot(p)]),...(op==='-'&&negative?[math('('),...b,math(')')]:b)];
  }
- if(n.kind==='remaining-term'){const chosen=draft[n.fromPartId],c=n.terms.some(c=>c.value===chosen)?n.terms.find(c=>c.value!==chosen):null;return c?[math(expressionLatex(c.expression))]:[{type:'derived-slot',id:n.id,partId:n.id,interactionRef:i.id,fromPartId:n.fromPartId,gradedIndependently:false}];}
- if(n.kind==='absolute')return [math('\\left|'),...renderExpression(i,n.argument,draft),math('\\right|')];
- if(n.kind==='add'||n.kind==='multiply')return n.args.flatMap((v,index)=>[...(index?[math(n.kind==='add'?'+':'\\cdot ')]:[]),...renderExpression(i,v,draft)]);
- if(n.kind==='power')return [...renderExpression(i,n.base,draft),math(`^{${n.exponent}}`)];
- if(n.kind==='divide')return [{type:'fraction',numerator:renderExpression(i,n.numerator,draft),denominator:renderExpression(i,n.denominator,draft)}];
+ if(n.kind==='remaining-term'){const chosen=draft[n.fromPartId],c=n.terms.some(c=>c.value===chosen)?n.terms.find(c=>c.value!==chosen):null;return c?[math(constructionExpressionLatex(c.expression))]:[{type:'derived-slot',id:n.id,partId:n.id,interactionRef:i.id,fromPartId:n.fromPartId,gradedIndependently:false}];}
+ if(n.kind==='absolute')return [math('|'),...renderExpression(i,n.argument,draft,editableParts),math('|')];
+ if(n.kind==='add'||n.kind==='multiply')return n.args.flatMap((v,index)=>[...(index?[math(n.kind==='add'?'+':'\\cdot ')]:[]),...renderExpression(i,v,draft,editableParts)]);
+ if(n.kind==='power')return [...renderExpression(i,n.base,draft,editableParts),math(`^{${n.exponent}}`)];
+ if(n.kind==='divide')return [{type:'fraction',numerator:renderExpression(i,n.numerator,draft,editableParts),denominator:renderExpression(i,n.denominator,draft,editableParts)}];
  return [math(expressionLatex(n))];
 }
-function rendered(i,draft){
- const s=i.assembly,parts=s.kind==='expression'?{left:[],relation:'',right:renderExpression(i,s.expression,draft)}:{left:renderExpression(i,s.left,draft),relation:({'<=':'\\le','>=':'\\ge'})[s.operator]??s.operator,right:renderExpression(i,s.right,draft)};
+function rendered(i,draft,editableParts=false){
+ const s=i.assembly,parts=s.kind==='expression'?{left:[],relation:'',right:renderExpression(i,s.expression,draft,editableParts)}:{left:renderExpression(i,s.left,draft,editableParts),relation:({'<=':'\\le','>=':'\\ge'})[s.operator]??s.operator,right:renderExpression(i,s.right,draft,editableParts)};
  return {...parts,tokens:s.kind==='expression'?parts.right:[...parts.left,math(parts.relation),...parts.right]};
 }
 export function compileConstruction(interaction){
@@ -184,7 +201,7 @@ export function compileConstruction(interaction){
 }
 export function projectConstruction(interaction,draft={},view={}){
  const checked=assembleConstruction(interaction,draft);if(checked.status==='FAIL')throw Error(checked.reason);
- const formula=rendered(interaction,draft);
+ const formula=rendered(interaction,draft,view.editableParts===true&&!view.solved);
  return {schemaVersion:'construction-visible/1',id:interaction.id,sourceNodeId:interaction.sourceNodeId,learnerDecision:interaction.learnerDecision,activePrompt:view.solved?'':interaction.activePrompt,formula,
   parts:interaction.parts.map(p=>({id:p.id,role:p.role,...(Object.hasOwn(draft,p.id)?{value:draft[p.id]}:{}),...(view.choicesOpen===p.id?{choices:p.choices.map(({value,expression})=>({value,...(expression?{latex:expressionLatex(expression)}:{})}))}:{})})),complete:checked.status==='COMPLETE'};
 }

@@ -1,0 +1,60 @@
+name: N08 construction r6 and retained lessons
+on:
+  push:
+    branches: ['work/n08-construction-application-20261026']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
+      - name: Construction, layout, original math and workflow contracts
+        run: |
+          pnpm run test:production-workflow
+          node --test tools/textbook/tests/n08-transformation.test.mjs tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs
+          node work/items/W-MATH-040-n08-construction-layout/release_manifest.mjs --check
+      - name: Learner regressions and isolated comparison routes
+        run: |
+          pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+          pnpm exec vitest run --config work/items/W-MATH-040-n08-construction-layout/vitest.config.mjs
+          pnpm run test:textbook-authoring
+          pnpm exec eslint src/components/textbook/N08ConstructionReadingFlow.tsx src/components/textbook/ConstructionSlot.tsx src/components/textbook/ConstructionPanel.tsx src/domain/constructionProgress.ts src/domain/constructionReading.ts src/domain/textbookSchema.ts src/pages/N08Revision5Page.tsx src/pages/TextbookUnitPage.tsx --max-warnings=0
+          pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: All N08 parents, parts, wrong choices, partial saves and three-state geometry at four widths
+        run: EVIDENCE_DIR=/tmp/w040-ci node work/items/W-MATH-040-n08-construction-layout/verify_app.mjs
+      - name: Retained r5 all34 correct and all80 wrong without active-save writes
+        run: EVIDENCE_DIR=/tmp/w040-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
+      - name: Protected N11 all choices and legacy saves at four widths
+        run: EVIDENCE_DIR=/tmp/w040-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w040-exact-source-evidence
+          path: |
+            /tmp/w040-ci
+            /tmp/w040-legacy
+            /tmp/w040-n11

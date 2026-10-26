@@ -1,0 +1,5404 @@
+{
+  "schemaVersion": "transformation-reading/2",
+  "unitId": "math-numbers-expressions-n08",
+  "presentationVersion": 2,
+  "baseIRHash": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+  "irHash": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+  "planHash": "b0cc469e3022b61da688aa5784743bba6d331420c386e33da54f4b51c273a0cc",
+  "learnerCopyHash": "e367b2d86b95d42616bdc0196d889d5d9e686ac08c72709e7c7a495d0fdca277",
+  "gradingHash": "824c93bafb793baa12615efabee90c8e4eb65095cf8ae82ee335ba61e6e3a8d7",
+  "scope": {
+    "problemId": "n08-numeric-absolute-examples",
+    "nodeIds": [
+      "n08-r5-q06-operation",
+      "n08-q06-subtract",
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-07",
+      "n08-q08-order",
+      "n08-r5-q08-operation",
+      "n08-q08-difference",
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-09"
+    ],
+    "stageIds": [
+      "n08-stage-06",
+      "n08-stage-07",
+      "n08-stage-08",
+      "n08-stage-09"
+    ],
+    "assumptionRefs": [
+      "real-arithmetic"
+    ]
+  },
+  "numberAliases": {
+    "n08-r5-q06-operation-interaction-0": "n08-root-sign-S1",
+    "n08-r5-q06-operation-result-formula-0": "n08-root-sign-S1",
+    "n08-q06-subtract-interaction-0": "n08-root-sign-S2",
+    "n08-q06-subtract-result-0": "n08-root-sign-S2",
+    "n08-q07-bracket-interaction-0": "n08-root-absolute-S1",
+    "n08-q07-bracket-result": "n08-root-absolute-S1",
+    "n08-q07-distribute-interaction": "n08-root-absolute-S3",
+    "n08-q07-distribute-result": "n08-root-absolute-S3",
+    "n08-07-interaction-0": "n08-root-absolute-S4",
+    "n08-07-result": "n08-root-absolute-S4",
+    "n08-q08-order-result-0": "n08-pi-sign-S0",
+    "n08-r5-q08-operation-interaction-0": "n08-pi-sign-S1",
+    "n08-r5-q08-operation-result-formula-0": "n08-pi-sign-S1",
+    "n08-q08-difference-result-0": "n08-pi-sign-S2",
+    "n08-q09-bracket-interaction-0": "n08-pi-absolute-S1",
+    "n08-q09-bracket-result": "n08-pi-absolute-S1",
+    "n08-q09-distribute-interaction": "n08-pi-absolute-S3",
+    "n08-q09-distribute-result": "n08-pi-absolute-S3",
+    "n08-09-interaction-0": "n08-pi-absolute-S4",
+    "n08-09-result": "n08-pi-absolute-S4"
+  },
+  "proseOverrides": [
+    {
+      "nodeId": "n08-06",
+      "sourceRefs": [
+        "n08-06-answer",
+        "n08-06-after"
+      ],
+      "visibleAfterNodeId": "n08-06",
+      "after": [
+        {
+          "type": "text",
+          "text": "中身は負です。この判断で、負の場合の規則が使えます。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n08-08",
+      "sourceRefs": [
+        "n08-08-answer",
+        "n08-08-after"
+      ],
+      "visibleAfterNodeId": "n08-08",
+      "after": [
+        {
+          "type": "text",
+          "text": "中身が負だと分かりました。この判断を使って絶対値を外します。"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "n08-root-sign-group",
+      "kind": "relation-sequence",
+      "patternId": "T04",
+      "graphRef": "n08-root-sign",
+      "stageIds": [
+        "n08-stage-06"
+      ],
+      "sourceNodeIds": [
+        "n08-r5-q06-operation",
+        "n08-q06-subtract"
+      ],
+      "stepRefs": [
+        "n08-root-sign-a0",
+        "n08-root-sign-a1"
+      ],
+      "number": 13,
+      "numberId": "n08-root-sign-number",
+      "boundaryNodeIds": [
+        "n08-05"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S2"
+      },
+      "rows": [
+        {
+          "id": "n08-root-sign-S0",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-r5-q06-operation",
+          "sourceRefs": [
+            "n08-r5-q06-operation-before",
+            "n08-r5-q06-operation-interaction-0",
+            "n08-r5-q06-operation-result-formula-0",
+            "n08-r5-q06-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": null,
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "3"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-root-sign-S1",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-r5-q06-operation",
+          "sourceRefs": [
+            "n08-r5-q06-operation-before",
+            "n08-r5-q06-operation-interaction-0",
+            "n08-r5-q06-operation-result-formula-0",
+            "n08-r5-q06-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-r5-q06-operation-answer",
+          "slots": [
+            {
+              "id": "n08-root-sign-S1-slot0",
+              "interactionRef": "n08-r5-q06-operation-answer",
+              "path": "left.args.1.args.1"
+            },
+            {
+              "id": "n08-root-sign-S1-slot1",
+              "interactionRef": "n08-r5-q06-operation-answer",
+              "path": "right.args.1.args.1"
+            }
+          ],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}-3"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "3-3"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}"
+              },
+              {
+                "type": "math",
+                "latex": "-"
+              },
+              {
+                "type": "slot",
+                "id": "n08-root-sign-S1-slot0",
+                "interactionRef": "n08-r5-q06-operation-answer"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "math",
+                "latex": "-"
+              },
+              {
+                "type": "slot",
+                "id": "n08-root-sign-S1-slot1",
+                "interactionRef": "n08-r5-q06-operation-answer"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-root-sign-S2",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q06-subtract",
+          "sourceRefs": [
+            "n08-q06-subtract-r5-before-0",
+            "n08-q06-subtract-interaction-0",
+            "n08-q06-subtract-result-0",
+            "n08-q06-subtract-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-r5-q06-operation-answer"
+          ],
+          "interactionRef": "n08-q06-subtract-answer",
+          "slots": [
+            {
+              "id": "n08-root-sign-S2-slot0",
+              "interactionRef": "n08-q06-subtract-answer",
+              "path": "right"
+            }
+          ],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}-3"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "0"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}-3"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-root-sign-S2-slot0",
+                "interactionRef": "n08-q06-subtract-answer"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "n08-root-absolute-group",
+      "kind": "expression-chain",
+      "patternId": "T02",
+      "graphRef": "n08-root-absolute",
+      "stageIds": [
+        "n08-stage-07"
+      ],
+      "sourceNodeIds": [
+        "n08-q07-bracket",
+        "n08-q07-distribute",
+        "n08-07"
+      ],
+      "stepRefs": [
+        "n08-root-absolute-a0",
+        "n08-root-absolute-a1",
+        "n08-root-absolute-a2",
+        "n08-root-absolute-a3"
+      ],
+      "number": 17,
+      "numberId": "n08-root-absolute-number",
+      "boundaryNodeIds": [
+        "n08-q07-rule"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S4"
+      },
+      "rows": [
+        {
+          "id": "n08-root-absolute-S1",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-q07-bracket",
+          "sourceRefs": [
+            "n08-q07-bracket-before",
+            "n08-q07-bracket-interaction-0",
+            "n08-q07-bracket-result",
+            "n08-q07-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q07-bracket-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\left|\\sqrt{5}-3\\right|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-(\\sqrt{5}-3)"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\left|\\sqrt{5}-3\\right|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q07-bracket-build-r6-sign",
+                "partId": "n08-q07-bracket-build-r6-sign",
+                "interactionRef": "n08-q07-bracket-build-r6",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "("
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}-3"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          },
+          "constructionRef": "n08-q07-bracket-build-r6",
+          "mergedRootLeft": [
+            {
+              "type": "math",
+              "latex": "\\left|\\sqrt{5}-3\\right|"
+            }
+          ]
+        },
+        {
+          "id": "n08-root-absolute-S2",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q07-distribute",
+          "sourceRefs": [
+            "n08-q07-distribute-r5-before-0",
+            "n08-q07-distribute-interaction",
+            "n08-q07-distribute-result",
+            "n08-q07-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-build-r6"
+          ],
+          "interactionRef": null,
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "displayForm": "explicit-products",
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-1)\\sqrt{5}+(-1)(-3)"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-1)\\sqrt{5}+(-1)(-3)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-root-absolute-S3",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S3",
+          "sourceNodeId": "n08-q07-distribute",
+          "sourceRefs": [
+            "n08-q07-distribute-r5-before-0",
+            "n08-q07-distribute-interaction",
+            "n08-q07-distribute-result",
+            "n08-q07-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-build-r6"
+          ],
+          "interactionRef": "n08-q07-distribute-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-\\sqrt{5}+3"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r6-root-sign",
+                "partId": "n08-q07-distribute-build-r6-root-sign",
+                "interactionRef": "n08-q07-distribute-build-r6",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt{5}"
+              },
+              {
+                "type": "math",
+                "latex": "+"
+              },
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r6-constant",
+                "partId": "n08-q07-distribute-build-r6-constant",
+                "interactionRef": "n08-q07-distribute-build-r6",
+                "role": "rational"
+              }
+            ]
+          },
+          "constructionRef": "n08-q07-distribute-build-r6"
+        },
+        {
+          "id": "n08-root-absolute-S4",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S4",
+          "sourceNodeId": "n08-07",
+          "sourceRefs": [
+            "n08-07-before",
+            "n08-07-interaction-0",
+            "n08-07-result",
+            "n08-07-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-build-r6",
+            "n08-q07-distribute-build-r6"
+          ],
+          "interactionRef": "n08-07-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "3-\\sqrt{5}"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-07-build-r6-first-term",
+                "partId": "n08-07-build-r6-first-term",
+                "interactionRef": "n08-07-build-r6",
+                "role": "signed-term"
+              },
+              {
+                "type": "math",
+                "latex": "+"
+              },
+              {
+                "type": "derived-slot",
+                "id": "n08-07-build-r6-remaining-term",
+                "partId": "n08-07-build-r6-remaining-term",
+                "interactionRef": "n08-07-build-r6",
+                "fromPartId": "n08-07-build-r6-first-term",
+                "gradedIndependently": false
+              }
+            ]
+          },
+          "constructionRef": "n08-07-build-r6"
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-sign-group",
+      "kind": "relation-sequence",
+      "patternId": "T04",
+      "graphRef": "n08-pi-sign",
+      "stageIds": [
+        "n08-stage-08"
+      ],
+      "sourceNodeIds": [
+        "n08-q08-order",
+        "n08-r5-q08-operation",
+        "n08-q08-difference"
+      ],
+      "stepRefs": [
+        "n08-pi-sign-a0",
+        "n08-pi-sign-a1"
+      ],
+      "number": 20,
+      "numberId": "n08-pi-sign-number",
+      "boundaryNodeIds": [],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S2"
+      },
+      "rows": [
+        {
+          "id": "n08-pi-sign-S0",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-q08-order",
+          "sourceRefs": [
+            "n08-q08-order-r5-before-0",
+            "n08-q08-order-interaction",
+            "n08-q08-order-result-0",
+            "n08-q08-order-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q08-order-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S0-slot0",
+              "interactionRef": "n08-q08-order-answer",
+              "path": "operator"
+            }
+          ],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "\\pi"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3"
+              }
+            ],
+            "relation": "<",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-pi-sign-S0-slot0",
+              "interactionRef": "n08-q08-order-answer"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": "\\pi"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-pi-sign-S1",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-r5-q08-operation",
+          "sourceRefs": [
+            "n08-r5-q08-operation-before",
+            "n08-r5-q08-operation-interaction-0",
+            "n08-r5-q08-operation-result-formula-0",
+            "n08-r5-q08-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q08-order-answer"
+          ],
+          "interactionRef": "n08-r5-q08-operation-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S1-slot0",
+              "interactionRef": "n08-r5-q08-operation-answer",
+              "path": "left.args.1.args.1"
+            },
+            {
+              "id": "n08-pi-sign-S1-slot1",
+              "interactionRef": "n08-r5-q08-operation-answer",
+              "path": "right.args.1.args.1"
+            }
+          ],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "\\pi-\\pi"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "math",
+                "latex": "-"
+              },
+              {
+                "type": "slot",
+                "id": "n08-pi-sign-S1-slot0",
+                "interactionRef": "n08-r5-q08-operation-answer"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "\\pi"
+              },
+              {
+                "type": "math",
+                "latex": "-"
+              },
+              {
+                "type": "slot",
+                "id": "n08-pi-sign-S1-slot1",
+                "interactionRef": "n08-r5-q08-operation-answer"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-pi-sign-S2",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q08-difference",
+          "sourceRefs": [
+            "n08-q08-difference-r5-before-0",
+            "n08-q08-difference-interaction",
+            "n08-q08-difference-result-0",
+            "n08-q08-difference-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q08-order-answer",
+            "n08-r5-q08-operation-answer"
+          ],
+          "interactionRef": "n08-q08-difference-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S2-slot0",
+              "interactionRef": "n08-q08-difference-answer",
+              "path": "operator"
+            }
+          ],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "0"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              }
+            ],
+            "relation": "<",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-pi-sign-S2-slot0",
+              "interactionRef": "n08-q08-difference-answer"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": "0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-absolute-group",
+      "kind": "expression-chain",
+      "patternId": "T02",
+      "graphRef": "n08-pi-absolute",
+      "stageIds": [
+        "n08-stage-09"
+      ],
+      "sourceNodeIds": [
+        "n08-q09-bracket",
+        "n08-q09-distribute",
+        "n08-09"
+      ],
+      "stepRefs": [
+        "n08-pi-absolute-a0",
+        "n08-pi-absolute-a1",
+        "n08-pi-absolute-a2",
+        "n08-pi-absolute-a3"
+      ],
+      "number": 23,
+      "numberId": "n08-pi-absolute-number",
+      "boundaryNodeIds": [
+        "n08-08"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S4"
+      },
+      "rows": [
+        {
+          "id": "n08-pi-absolute-S1",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-q09-bracket",
+          "sourceRefs": [
+            "n08-q09-bracket-r5-before-0",
+            "n08-q09-bracket-interaction-0",
+            "n08-q09-bracket-result",
+            "n08-q09-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q09-bracket-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\left|3-\\pi\\right|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-(3-\\pi)"
+              }
+            ]
+          },
+          "masked": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\left|3-\\pi\\right|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q09-bracket-build-r6-sign",
+                "partId": "n08-q09-bracket-build-r6-sign",
+                "interactionRef": "n08-q09-bracket-build-r6",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "("
+              },
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          },
+          "constructionRef": "n08-q09-bracket-build-r6",
+          "mergedRootLeft": [
+            {
+              "type": "math",
+              "latex": "\\left|3-\\pi\\right|"
+            }
+          ]
+        },
+        {
+          "id": "n08-pi-absolute-S2",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q09-distribute",
+          "sourceRefs": [
+            "n08-q09-distribute-r5-before-0",
+            "n08-q09-distribute-interaction",
+            "n08-q09-distribute-result",
+            "n08-q09-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-build-r6"
+          ],
+          "interactionRef": null,
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "displayForm": "explicit-products",
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-1)3+(-1)(-\\pi)"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-1)3+(-1)(-\\pi)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n08-pi-absolute-S3",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S3",
+          "sourceNodeId": "n08-q09-distribute",
+          "sourceRefs": [
+            "n08-q09-distribute-r5-before-0",
+            "n08-q09-distribute-interaction",
+            "n08-q09-distribute-result",
+            "n08-q09-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-build-r6"
+          ],
+          "interactionRef": "n08-q09-distribute-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-3+\\pi"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r6-first-sign",
+                "partId": "n08-q09-distribute-build-r6-first-sign",
+                "interactionRef": "n08-q09-distribute-build-r6",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r6-joining-operation",
+                "partId": "n08-q09-distribute-build-r6-joining-operation",
+                "interactionRef": "n08-q09-distribute-build-r6",
+                "role": "binary-operation"
+              },
+              {
+                "type": "math",
+                "latex": "\\pi"
+              }
+            ]
+          },
+          "constructionRef": "n08-q09-distribute-build-r6"
+        },
+        {
+          "id": "n08-pi-absolute-S4",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S4",
+          "sourceNodeId": "n08-09",
+          "sourceRefs": [
+            "n08-09-before",
+            "n08-09-interaction-0",
+            "n08-09-result",
+            "n08-09-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-build-r6",
+            "n08-q09-distribute-build-r6"
+          ],
+          "interactionRef": "n08-09-build-r6",
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "completed": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "\\pi-3"
+              }
+            ]
+          },
+          "masked": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-09-build-r6-first-term",
+                "partId": "n08-09-build-r6-first-term",
+                "interactionRef": "n08-09-build-r6",
+                "role": "signed-term"
+              },
+              {
+                "type": "math",
+                "latex": "+"
+              },
+              {
+                "type": "derived-slot",
+                "id": "n08-09-build-r6-remaining-term",
+                "partId": "n08-09-build-r6-remaining-term",
+                "interactionRef": "n08-09-build-r6",
+                "fromPartId": "n08-09-build-r6-first-term",
+                "gradedIndependently": false
+              }
+            ]
+          },
+          "constructionRef": "n08-09-build-r6"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "n08-r5-q06-operation-answer",
+      "nodeId": "n08-r5-q06-operation",
+      "blankRole": "operand",
+      "learnerDecision": "左辺に元の中身を作るため、両辺から同じ数を引きます。",
+      "prerequisiteInteractionIds": [],
+      "choices": [
+        "3",
+        "-3",
+        "0"
+      ],
+      "correctValue": "3"
+    },
+    {
+      "id": "n08-q06-subtract-answer",
+      "nodeId": "n08-q06-subtract",
+      "blankRole": "calculation",
+      "learnerDecision": "右辺に残った同じ数どうしの差を計算します。",
+      "prerequisiteInteractionIds": [
+        "n08-r5-q06-operation-answer"
+      ],
+      "choices": [
+        "0",
+        "3",
+        "-3"
+      ],
+      "correctValue": "0"
+    },
+    {
+      "id": "n08-q08-order-answer",
+      "nodeId": "n08-q08-order",
+      "blankRole": "relation",
+      "learnerDecision": "与えられた小数表示から、円周率と3の大小を比べます。",
+      "prerequisiteInteractionIds": [],
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "correctValue": "<"
+    },
+    {
+      "id": "n08-r5-q08-operation-answer",
+      "nodeId": "n08-r5-q08-operation",
+      "blankRole": "operand",
+      "learnerDecision": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。",
+      "prerequisiteInteractionIds": [
+        "n08-q08-order-answer"
+      ],
+      "choices": [
+        "\\pi",
+        "3",
+        "-\\pi"
+      ],
+      "correctValue": "\\pi"
+    },
+    {
+      "id": "n08-q08-difference-answer",
+      "nodeId": "n08-q08-difference",
+      "blankRole": "relation",
+      "learnerDecision": "右辺を0に整理しました。保たれる大小関係を入れます。",
+      "prerequisiteInteractionIds": [
+        "n08-q08-order-answer",
+        "n08-r5-q08-operation-answer"
+      ],
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "correctValue": "<"
+    },
+    {
+      "id": "n08-r5-q02-distance-build-r6",
+      "nodeId": "n08-r5-q02-distance",
+      "blankRole": "construction",
+      "learnerDecision": "a≥0。右の座標−左の座標。",
+      "prerequisiteInteractionIds": []
+    },
+    {
+      "id": "n08-q03-order-build-r6",
+      "nodeId": "n08-q03-order",
+      "blankRole": "construction",
+      "learnerDecision": "a<0。右の座標−左の座標。",
+      "prerequisiteInteractionIds": []
+    },
+    {
+      "id": "n08-03-build-r6",
+      "nodeId": "n08-03",
+      "blankRole": "construction",
+      "learnerDecision": "前の行の0−aをそのまま使う。",
+      "prerequisiteInteractionIds": [
+        "n08-q03-order-build-r6"
+      ]
+    },
+    {
+      "id": "n08-04-build-r6",
+      "nodeId": "n08-04",
+      "blankRole": "construction",
+      "learnerDecision": "代入の式は直前の手本で確認済み。",
+      "prerequisiteInteractionIds": []
+    },
+    {
+      "id": "n08-q07-bracket-build-r6",
+      "nodeId": "n08-q07-bracket",
+      "blankRole": "construction",
+      "learnerDecision": "中身の符号と負の場合の規則を使い、適用範囲を照合する。",
+      "prerequisiteInteractionIds": []
+    },
+    {
+      "id": "n08-q07-distribute-build-r6",
+      "nodeId": "n08-q07-distribute",
+      "blankRole": "construction",
+      "learnerDecision": "分配した二つの積を分けて計算する。",
+      "prerequisiteInteractionIds": [
+        "n08-q07-bracket-build-r6"
+      ]
+    },
+    {
+      "id": "n08-07-build-r6",
+      "nodeId": "n08-07",
+      "blankRole": "construction",
+      "learnerDecision": "前行の二項を符号ごと動かして指定順にする。",
+      "prerequisiteInteractionIds": [
+        "n08-q07-distribute-build-r6"
+      ]
+    },
+    {
+      "id": "n08-q09-bracket-build-r6",
+      "nodeId": "n08-q09-bracket",
+      "blankRole": "construction",
+      "learnerDecision": "今回の3−π<0と負の場合の定義を使う。",
+      "prerequisiteInteractionIds": []
+    },
+    {
+      "id": "n08-q09-distribute-build-r6",
+      "nodeId": "n08-q09-distribute",
+      "blankRole": "construction",
+      "learnerDecision": "各積の符号と項を結ぶ演算を区別する。",
+      "prerequisiteInteractionIds": [
+        "n08-q09-bracket-build-r6"
+      ]
+    },
+    {
+      "id": "n08-09-build-r6",
+      "nodeId": "n08-09",
+      "blankRole": "construction",
+      "learnerDecision": "前行の二項を各一回使い指定順にする。",
+      "prerequisiteInteractionIds": [
+        "n08-q09-distribute-build-r6"
+      ]
+    },
+    {
+      "id": "n08-q12-negative-build-r6",
+      "nodeId": "n08-q12-negative",
+      "blankRole": "construction",
+      "learnerDecision": "a<0。a²の指数は既習として保持し、二つの負号の積を判断する。",
+      "prerequisiteInteractionIds": []
+    }
+  ],
+  "automaticAcceptance": false,
+  "sourcePlanHash": "315df0d3590d76817908e0a8c149a79a382b7baede04fc4b5c3c83b2c747ce66",
+  "constructionDesignHash": "c29bc81b85878842b6031715201f07e3d73a260c6f2905ce2206fd78932fd298",
+  "layoutDesignHash": "d5741ef205507deb4558de4e8987877bad0a7b65a0c8d4584d75200c4f6e6ad8",
+  "constructionPlan": {
+    "schemaVersion": "construction-plan/1",
+    "unitId": "math-numbers-expressions-n08",
+    "revision": 6,
+    "interactions": [
+      {
+        "id": "n08-r5-q02-distance-build-r6",
+        "sourceNodeId": "n08-r5-q02-distance",
+        "sourceRefs": [
+          "n08-r5-q02-distance-before",
+          "n08-r5-q02-distance-interaction-0",
+          "n08-r5-q02-distance-result-formula-0",
+          "n08-r5-q02-distance-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "a≥0。右の座標−左の座標。",
+        "nextUseRef": "n08-r5-q02-distance-result",
+        "activePrompt": "右側の点と原点の座標を、それぞれ引き算の位置へ入れます。",
+        "parts": [
+          {
+            "id": "n08-r5-q02-distance-build-r6-right",
+            "role": "coordinate",
+            "expected": "a",
+            "choices": [
+              {
+                "value": "a",
+                "expression": {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              },
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            ]
+          },
+          {
+            "id": "n08-r5-q02-distance-build-r6-left",
+            "role": "coordinate",
+            "expected": "0",
+            "choices": [
+              {
+                "value": "a",
+                "expression": {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              },
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "right": {
+            "kind": "binary",
+            "left": {
+              "kind": "part",
+              "partId": "n08-r5-q02-distance-build-r6-right"
+            },
+            "operation": "-",
+            "right": {
+              "kind": "part",
+              "partId": "n08-r5-q02-distance-build-r6-left"
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "symbol",
+                "name": "a"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "0",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-q03-order-build-r6",
+        "sourceNodeId": "n08-q03-order",
+        "sourceRefs": [
+          "n08-q03-order-before",
+          "n08-q03-order-interaction-0",
+          "n08-q03-order-result",
+          "n08-q03-order-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "a<0。右の座標−左の座標。",
+        "nextUseRef": "n08-q03-order-result",
+        "activePrompt": "今回は原点が右側です。二つの座標を、引き算の位置へ入れます。",
+        "parts": [
+          {
+            "id": "n08-q03-order-build-r6-right",
+            "role": "coordinate",
+            "expected": "0",
+            "choices": [
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "a",
+                "expression": {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              }
+            ]
+          },
+          {
+            "id": "n08-q03-order-build-r6-left",
+            "role": "coordinate",
+            "expected": "a",
+            "choices": [
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "a",
+                "expression": {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "right": {
+            "kind": "binary",
+            "left": {
+              "kind": "part",
+              "partId": "n08-q03-order-build-r6-right"
+            },
+            "operation": "-",
+            "right": {
+              "kind": "part",
+              "partId": "n08-q03-order-build-r6-left"
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-03-build-r6",
+        "sourceNodeId": "n08-03",
+        "sourceRefs": [
+          "n08-03-before",
+          "n08-03-interaction-0",
+          "n08-03-result",
+          "n08-03-after"
+        ],
+        "prerequisiteInteractionIds": [
+          "n08-q03-order-build-r6"
+        ],
+        "learnerDecision": "前の行の0−aをそのまま使う。",
+        "nextUseRef": "n08-03-result",
+        "activePrompt": "0からaを引いた数を、aを使って表します。",
+        "parts": [
+          {
+            "id": "n08-03-build-r6-sign",
+            "role": "unary-sign",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-"
+              },
+              {
+                "value": "+"
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          "right": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-03-build-r6-sign"
+            },
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "symbol",
+                "name": "a"
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-04-build-r6",
+        "sourceNodeId": "n08-04",
+        "sourceRefs": [
+          "n08-04-before",
+          "n08-04-interaction-0",
+          "n08-04-result",
+          "n08-04-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "代入の式は直前の手本で確認済み。",
+        "nextUseRef": "n08-04-result",
+        "activePrompt": "括弧の中の数と符号が反対の数を求めます。",
+        "parts": [
+          {
+            "id": "n08-04-build-r6-value",
+            "role": "rational",
+            "expected": "5",
+            "choices": [
+              {
+                "value": "5",
+                "expression": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "-5",
+                "expression": {
+                  "kind": "rational",
+                  "n": "-5",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              }
+            ]
+          },
+          "right": {
+            "kind": "part",
+            "partId": "n08-04-build-r6-value"
+          }
+        },
+        "expectedStatement": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              }
+            ]
+          },
+          "right": {
+            "kind": "rational",
+            "n": "5",
+            "d": "1"
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-q07-bracket-build-r6",
+        "sourceNodeId": "n08-q07-bracket",
+        "sourceRefs": [
+          "n08-q07-bracket-before",
+          "n08-q07-bracket-interaction-0",
+          "n08-q07-bracket-result",
+          "n08-q07-bracket-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "中身の符号と負の場合の規則を使い、適用範囲を照合する。",
+        "nextUseRef": "n08-q07-bracket-result",
+        "activePrompt": "選んだ規則を、括弧で囲んだ中身全体へ適用します。",
+        "parts": [
+          {
+            "id": "n08-q07-bracket-build-r6-sign",
+            "role": "unary-sign",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-"
+              },
+              {
+                "value": "+"
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-q07-bracket-build-r6-sign"
+            },
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-q07-distribute-build-r6",
+        "sourceNodeId": "n08-q07-distribute",
+        "sourceRefs": [
+          "n08-q07-distribute-r5-before-0",
+          "n08-q07-distribute-interaction",
+          "n08-q07-distribute-result",
+          "n08-q07-distribute-after"
+        ],
+        "prerequisiteInteractionIds": [
+          "n08-q07-bracket-build-r6"
+        ],
+        "learnerDecision": "分配した二つの積を分けて計算する。",
+        "nextUseRef": "n08-q07-distribute-result",
+        "activePrompt": "各項へ掛けた結果を、それぞれ同じ行の穴へ入れます。",
+        "parts": [
+          {
+            "id": "n08-q07-distribute-build-r6-root-sign",
+            "role": "unary-sign",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-"
+              },
+              {
+                "value": "+"
+              }
+            ]
+          },
+          {
+            "id": "n08-q07-distribute-build-r6-constant",
+            "role": "rational",
+            "expected": "3",
+            "choices": [
+              {
+                "value": "3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "-3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "0",
+                "expression": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "binary",
+            "left": {
+              "kind": "unary",
+              "sign": {
+                "partId": "n08-q07-distribute-build-r6-root-sign"
+              },
+              "argument": {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              }
+            },
+            "operation": "+",
+            "right": {
+              "kind": "part",
+              "partId": "n08-q07-distribute-build-r6-constant"
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-07-build-r6",
+        "sourceNodeId": "n08-07",
+        "sourceRefs": [
+          "n08-07-before",
+          "n08-07-interaction-0",
+          "n08-07-result",
+          "n08-07-after"
+        ],
+        "prerequisiteInteractionIds": [
+          "n08-q07-distribute-build-r6"
+        ],
+        "learnerDecision": "前行の二項を符号ごと動かして指定順にする。",
+        "nextUseRef": "n08-07-result",
+        "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+        "parts": [
+          {
+            "id": "n08-07-build-r6-first-term",
+            "role": "signed-term",
+            "expected": "3",
+            "choices": [
+              {
+                "value": "3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "-\\sqrt5",
+                "expression": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "binary",
+            "left": {
+              "kind": "part",
+              "partId": "n08-07-build-r6-first-term"
+            },
+            "operation": "+",
+            "right": {
+              "kind": "remaining-term",
+              "id": "n08-07-build-r6-remaining-term",
+              "fromPartId": "n08-07-build-r6-first-term",
+              "terms": [
+                {
+                  "value": "3",
+                  "expression": {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                },
+                {
+                  "value": "-\\sqrt5",
+                  "expression": {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "specified-order"
+      },
+      {
+        "id": "n08-q09-bracket-build-r6",
+        "sourceNodeId": "n08-q09-bracket",
+        "sourceRefs": [
+          "n08-q09-bracket-r5-before-0",
+          "n08-q09-bracket-interaction-0",
+          "n08-q09-bracket-result",
+          "n08-q09-bracket-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "今回の3−π<0と負の場合の定義を使う。",
+        "nextUseRef": "n08-q09-bracket-result",
+        "activePrompt": "前に得た中身の符号を使い、括弧全体の外側を完成させます。",
+        "parts": [
+          {
+            "id": "n08-q09-bracket-build-r6-sign",
+            "role": "unary-sign",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-"
+              },
+              {
+                "value": "+"
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-q09-bracket-build-r6-sign"
+            },
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-q09-distribute-build-r6",
+        "sourceNodeId": "n08-q09-distribute",
+        "sourceRefs": [
+          "n08-q09-distribute-r5-before-0",
+          "n08-q09-distribute-interaction",
+          "n08-q09-distribute-result",
+          "n08-q09-distribute-after"
+        ],
+        "prerequisiteInteractionIds": [
+          "n08-q09-bracket-build-r6"
+        ],
+        "learnerDecision": "各積の符号と項を結ぶ演算を区別する。",
+        "nextUseRef": "n08-q09-distribute-result",
+        "activePrompt": "二つの積を計算し、各項と項を結ぶ符号を入れます。",
+        "parts": [
+          {
+            "id": "n08-q09-distribute-build-r6-first-sign",
+            "role": "unary-sign",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-"
+              },
+              {
+                "value": "+"
+              }
+            ]
+          },
+          {
+            "id": "n08-q09-distribute-build-r6-joining-operation",
+            "role": "binary-operation",
+            "expected": "+",
+            "choices": [
+              {
+                "value": "+"
+              },
+              {
+                "value": "-"
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "binary",
+            "left": {
+              "kind": "unary",
+              "sign": {
+                "partId": "n08-q09-distribute-build-r6-first-sign"
+              },
+              "argument": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            "operation": {
+              "partId": "n08-q09-distribute-build-r6-joining-operation"
+            },
+            "right": {
+              "kind": "constant",
+              "name": "pi"
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      },
+      {
+        "id": "n08-09-build-r6",
+        "sourceNodeId": "n08-09",
+        "sourceRefs": [
+          "n08-09-before",
+          "n08-09-interaction-0",
+          "n08-09-result",
+          "n08-09-after"
+        ],
+        "prerequisiteInteractionIds": [
+          "n08-q09-distribute-build-r6"
+        ],
+        "learnerDecision": "前行の二項を各一回使い指定順にする。",
+        "nextUseRef": "n08-09-result",
+        "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+        "parts": [
+          {
+            "id": "n08-09-build-r6-first-term",
+            "role": "signed-term",
+            "expected": "\\pi",
+            "choices": [
+              {
+                "value": "\\pi",
+                "expression": {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              },
+              {
+                "value": "-3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "expression",
+          "expression": {
+            "kind": "binary",
+            "left": {
+              "kind": "part",
+              "partId": "n08-09-build-r6-first-term"
+            },
+            "operation": "+",
+            "right": {
+              "kind": "remaining-term",
+              "id": "n08-09-build-r6-remaining-term",
+              "fromPartId": "n08-09-build-r6-first-term",
+              "terms": [
+                {
+                  "value": "\\pi",
+                  "expression": {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                },
+                {
+                  "value": "-3",
+                  "expression": {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "constant",
+                "name": "pi"
+              },
+              {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "gradingPurpose": "specified-order"
+      },
+      {
+        "id": "n08-q12-negative-build-r6",
+        "sourceNodeId": "n08-q12-negative",
+        "sourceRefs": [
+          "n08-q12-negative-before",
+          "n08-q12-negative-interaction",
+          "n08-q12-negative-result",
+          "n08-q12-negative-after"
+        ],
+        "prerequisiteInteractionIds": [],
+        "learnerDecision": "a<0。a²の指数は既習として保持し、二つの負号の積を判断する。",
+        "nextUseRef": "n08-q12-negative-result",
+        "activePrompt": "負号が二つ掛かる部分の符号を入れます。",
+        "parts": [
+          {
+            "id": "n08-q12-negative-build-r6-sign",
+            "role": "unary-sign",
+            "expected": "+",
+            "choices": [
+              {
+                "value": "+"
+              },
+              {
+                "value": "-"
+              }
+            ]
+          }
+        ],
+        "assembly": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          "right": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-q12-negative-build-r6-sign"
+            },
+            "argument": {
+              "kind": "power",
+              "base": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "exponent": 2
+            }
+          }
+        },
+        "expectedStatement": {
+          "kind": "relation",
+          "operator": "=",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          "right": {
+            "kind": "power",
+            "base": {
+              "kind": "symbol",
+              "name": "a"
+            },
+            "exponent": 2
+          }
+        },
+        "gradingPurpose": "mathematical-value"
+      }
+    ]
+  },
+  "layoutPlan": {
+    "schemaVersion": "layout-plan/1",
+    "unitId": "math-numbers-expressions-n08",
+    "tokens": {
+      "mathFontPx": 18,
+      "katexScale": 1,
+      "bodyLineHeight": 1.8,
+      "mathLineHeight": 1.4,
+      "rowGapPx": 4,
+      "noteGapPx": 6,
+      "paragraphGapPx": 8,
+      "conceptGapPx": 16,
+      "minHitPx": 44,
+      "relationTolerancePx": 1,
+      "centerTolerancePx": 2,
+      "fontTolerancePx": 0.25
+    },
+    "groups": [
+      {
+        "id": "n08-root-sign-group",
+        "rowIds": [
+          "n08-root-sign-S0",
+          "n08-root-sign-S1",
+          "n08-root-sign-S2"
+        ],
+        "numberRowRef": "n08-root-sign-S2",
+        "numberCollision": "below-final-row",
+        "prose": [
+          {
+            "id": "n08-root-sign-group-lead",
+            "role": "group-lead",
+            "content": [
+              {
+                "type": "text",
+                "text": "与えられた大小関係から、中身と0を比較する形を作ります。"
+              }
+            ],
+            "placement": "group-start",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-sign-S1-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-root-sign-S1",
+            "interactionRef": "n08-r5-q06-operation-answer",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-sign-S2-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "右辺に残った同じ数どうしの差を計算します。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-root-sign-S2",
+            "interactionRef": "n08-q06-subtract-answer",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-sign-group-interpretation",
+            "role": "interpretation",
+            "content": [
+              {
+                "type": "text",
+                "text": "中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "の比較ができました。次は、この結果から符号を読み取ります。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-q06-subtract-answer"
+            ],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-sign-group-detail",
+            "role": "detail",
+            "content": [
+              {
+                "type": "text",
+                "text": "前の段階で得た大小関係から、元の中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "を比べる形を作ります。"
+              },
+              {
+                "type": "text",
+                "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+              },
+              {
+                "type": "text",
+                "text": "両辺に同じ操作をしたので、不等号の向きは変わりません。"
+              },
+              {
+                "type": "text",
+                "text": "右辺に残った同じ数どうしの差を計算します。"
+              },
+              {
+                "type": "text",
+                "text": "中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "の比較ができました。次は、この結果から符号を読み取ります。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-q06-subtract-answer"
+            ],
+            "requiredByRowIds": []
+          }
+        ],
+        "states": {
+          "initial": [
+            "n08-root-sign-S0",
+            "n08-root-sign-S1"
+          ],
+          "partial": [
+            "n08-root-sign-S0",
+            "n08-root-sign-S1"
+          ],
+          "complete": [
+            "n08-root-sign-S0",
+            "n08-root-sign-S1",
+            "n08-root-sign-S2"
+          ]
+        }
+      },
+      {
+        "id": "n08-root-absolute-group",
+        "rowIds": [
+          "n08-root-absolute-S1",
+          "n08-root-absolute-S2",
+          "n08-root-absolute-S3",
+          "n08-root-absolute-S4"
+        ],
+        "numberRowRef": "n08-root-absolute-S4",
+        "numberCollision": "below-final-row",
+        "prose": [
+          {
+            "id": "n08-root-absolute-group-lead",
+            "role": "group-lead",
+            "content": [
+              {
+                "type": "text",
+                "text": "中身の符号は負と分かっています。選んだ規則を式全体へ使います。"
+              }
+            ],
+            "placement": "group-start",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-absolute-group-note",
+            "role": "essential-note",
+            "content": [
+              {
+                "type": "text",
+                "text": "負号を"
+              },
+              {
+                "type": "math",
+                "latex": "-1"
+              },
+              {
+                "type": "text",
+                "text": "の掛け算に直します。"
+              }
+            ],
+            "placement": "before-row",
+            "rowRef": "n08-root-absolute-S2",
+            "visibleAfter": [
+              "n08-q07-bracket-build-r6"
+            ],
+            "requiredByRowIds": [
+              "n08-root-absolute-S2",
+              "n08-root-absolute-S3"
+            ]
+          },
+          {
+            "id": "n08-root-absolute-S1-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "選んだ規則を、括弧で囲んだ中身全体へ適用します。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-root-absolute-S1",
+            "interactionRef": "n08-q07-bracket-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-absolute-S3-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "各項へ掛けた結果を、それぞれ同じ行の穴へ入れます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-root-absolute-S3",
+            "interactionRef": "n08-q07-distribute-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-absolute-S4-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-root-absolute-S4",
+            "interactionRef": "n08-07-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-absolute-group-interpretation",
+            "role": "interpretation",
+            "content": [
+              {
+                "type": "text",
+                "text": "中身の符号を判定し、定義に当てはめてから計算できました。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-07-build-r6"
+            ],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-root-absolute-group-detail",
+            "role": "detail",
+            "content": [
+              {
+                "type": "text",
+                "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+              },
+              {
+                "type": "text",
+                "text": "負号は"
+              },
+              {
+                "type": "math",
+                "latex": "-1"
+              },
+              {
+                "type": "text",
+                "text": "を掛けることです。括弧の二つの項へ、それぞれ分配します。"
+              },
+              {
+                "type": "text",
+                "text": "二つの積を計算して、括弧を外した式を入れます。"
+              },
+              {
+                "type": "text",
+                "text": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。"
+              },
+              {
+                "type": "text",
+                "text": "中身の符号を判定し、定義に当てはめてから計算できました。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-07-build-r6"
+            ],
+            "requiredByRowIds": []
+          }
+        ],
+        "states": {
+          "initial": [
+            "n08-root-absolute-S1"
+          ],
+          "partial": [
+            "n08-root-absolute-S1",
+            "n08-root-absolute-S2",
+            "n08-root-absolute-S3"
+          ],
+          "complete": [
+            "n08-root-absolute-S1",
+            "n08-root-absolute-S2",
+            "n08-root-absolute-S3",
+            "n08-root-absolute-S4"
+          ]
+        }
+      },
+      {
+        "id": "n08-pi-sign-group",
+        "rowIds": [
+          "n08-pi-sign-S0",
+          "n08-pi-sign-S1",
+          "n08-pi-sign-S2"
+        ],
+        "numberRowRef": "n08-pi-sign-S2",
+        "numberCollision": "below-final-row",
+        "prose": [
+          {
+            "id": "n08-pi-sign-group-lead",
+            "role": "group-lead",
+            "content": [
+              {
+                "type": "text",
+                "text": "与えられた大小関係から、中身と0を比較する形を作ります。"
+              }
+            ],
+            "placement": "group-start",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-sign-S0-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-sign-S0",
+            "interactionRef": "n08-q08-order-answer",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-sign-S1-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-sign-S1",
+            "interactionRef": "n08-r5-q08-operation-answer",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-sign-S2-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "右辺を"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "に整理しました。保たれる大小関係を入れます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-sign-S2",
+            "interactionRef": "n08-q08-difference-answer",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-sign-group-interpretation",
+            "role": "interpretation",
+            "content": [
+              {
+                "type": "text",
+                "text": "中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "を比べられました。元の小数表示も根拠として残します。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-q08-difference-answer"
+            ],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-sign-group-detail",
+            "role": "detail",
+            "content": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              },
+              {
+                "type": "text",
+                "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+              },
+              {
+                "type": "text",
+                "text": "同じ数を引く操作では、不等号の向きは変わりません。"
+              },
+              {
+                "type": "text",
+                "text": "右辺を"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "に整理しました。保たれる大小関係を入れます。"
+              },
+              {
+                "type": "text",
+                "text": "中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "を比べられました。元の小数表示も根拠として残します。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-q08-difference-answer"
+            ],
+            "requiredByRowIds": []
+          }
+        ],
+        "states": {
+          "initial": [
+            "n08-pi-sign-S0",
+            "n08-pi-sign-S1"
+          ],
+          "partial": [
+            "n08-pi-sign-S0",
+            "n08-pi-sign-S1"
+          ],
+          "complete": [
+            "n08-pi-sign-S0",
+            "n08-pi-sign-S1",
+            "n08-pi-sign-S2"
+          ]
+        }
+      },
+      {
+        "id": "n08-pi-absolute-group",
+        "rowIds": [
+          "n08-pi-absolute-S1",
+          "n08-pi-absolute-S2",
+          "n08-pi-absolute-S3",
+          "n08-pi-absolute-S4"
+        ],
+        "numberRowRef": "n08-pi-absolute-S4",
+        "numberCollision": "below-final-row",
+        "prose": [
+          {
+            "id": "n08-pi-absolute-group-lead",
+            "role": "group-lead",
+            "content": [
+              {
+                "type": "text",
+                "text": "中身の符号は負と分かっています。選んだ規則を式全体へ使います。"
+              }
+            ],
+            "placement": "group-start",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-absolute-group-note",
+            "role": "essential-note",
+            "content": [
+              {
+                "type": "text",
+                "text": "負号を"
+              },
+              {
+                "type": "math",
+                "latex": "-1"
+              },
+              {
+                "type": "text",
+                "text": "の掛け算に直します。"
+              }
+            ],
+            "placement": "before-row",
+            "rowRef": "n08-pi-absolute-S2",
+            "visibleAfter": [
+              "n08-q09-bracket-build-r6"
+            ],
+            "requiredByRowIds": [
+              "n08-pi-absolute-S2",
+              "n08-pi-absolute-S3"
+            ]
+          },
+          {
+            "id": "n08-pi-absolute-S1-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "前に得た中身の符号を使い、括弧全体の外側を完成させます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-absolute-S1",
+            "interactionRef": "n08-q09-bracket-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-absolute-S3-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "二つの積を計算し、各項と項を結ぶ符号を入れます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-absolute-S3",
+            "interactionRef": "n08-q09-distribute-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-absolute-S4-prompt",
+            "role": "active-prompt",
+            "content": [
+              {
+                "type": "text",
+                "text": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。"
+              }
+            ],
+            "placement": "group-end",
+            "rowRef": "n08-pi-absolute-S4",
+            "interactionRef": "n08-09-build-r6",
+            "visibleAfter": [],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-absolute-group-interpretation",
+            "role": "interpretation",
+            "content": [
+              {
+                "type": "text",
+                "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-09-build-r6"
+            ],
+            "requiredByRowIds": []
+          },
+          {
+            "id": "n08-pi-absolute-group-detail",
+            "role": "detail",
+            "content": [
+              {
+                "type": "text",
+                "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+              },
+              {
+                "type": "text",
+                "text": "括弧全体に掛かる"
+              },
+              {
+                "type": "math",
+                "latex": "-1"
+              },
+              {
+                "type": "text",
+                "text": "を、二つの項へ分配します。"
+              },
+              {
+                "type": "text",
+                "text": "それぞれの積を計算し、二項の符号を確かめます。"
+              },
+              {
+                "type": "text",
+                "text": "加法の交換法則で、各項の符号を保って正の項を先に書きます。"
+              },
+              {
+                "type": "text",
+                "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+              }
+            ],
+            "placement": "group-end",
+            "visibleAfter": [
+              "n08-09-build-r6"
+            ],
+            "requiredByRowIds": []
+          }
+        ],
+        "states": {
+          "initial": [
+            "n08-pi-absolute-S1"
+          ],
+          "partial": [
+            "n08-pi-absolute-S1",
+            "n08-pi-absolute-S2",
+            "n08-pi-absolute-S3"
+          ],
+          "complete": [
+            "n08-pi-absolute-S1",
+            "n08-pi-absolute-S2",
+            "n08-pi-absolute-S3",
+            "n08-pi-absolute-S4"
+          ]
+        }
+      }
+    ]
+  },
+  "constructionInteractions": [
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-r5-q02-distance-build-r6",
+      "sourceNodeId": "n08-r5-q02-distance",
+      "sourceRefs": [
+        "n08-r5-q02-distance-before",
+        "n08-r5-q02-distance-interaction-0",
+        "n08-r5-q02-distance-result-formula-0",
+        "n08-r5-q02-distance-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "a≥0。右の座標−左の座標。",
+      "activePrompt": "右側の点と原点の座標を、それぞれ引き算の位置へ入れます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-r5-q02-distance-build-r6-right",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-r5-q02-distance-build-r6-left",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-r5-q02-distance-build-r6-right"
+          },
+          "operation": "-",
+          "right": {
+            "kind": "part",
+            "partId": "n08-r5-q02-distance-build-r6-left"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "symbol",
+              "name": "a"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-r5-q02-distance-build-r6-right",
+            "partId": "n08-r5-q02-distance-build-r6-right",
+            "interactionRef": "n08-r5-q02-distance-build-r6",
+            "role": "coordinate"
+          },
+          {
+            "type": "math",
+            "latex": "-"
+          },
+          {
+            "type": "slot",
+            "id": "n08-r5-q02-distance-build-r6-left",
+            "partId": "n08-r5-q02-distance-build-r6-left",
+            "interactionRef": "n08-r5-q02-distance-build-r6",
+            "role": "coordinate"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "slot",
+            "id": "n08-r5-q02-distance-build-r6-right",
+            "partId": "n08-r5-q02-distance-build-r6-right",
+            "interactionRef": "n08-r5-q02-distance-build-r6",
+            "role": "coordinate"
+          },
+          {
+            "type": "math",
+            "latex": "-"
+          },
+          {
+            "type": "slot",
+            "id": "n08-r5-q02-distance-build-r6-left",
+            "partId": "n08-r5-q02-distance-build-r6-left",
+            "interactionRef": "n08-r5-q02-distance-build-r6",
+            "role": "coordinate"
+          }
+        ]
+      },
+      "completed": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "a-0"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "math",
+            "latex": "a-0"
+          }
+        ],
+        "latex": "\\left|a\\right| = a-0"
+      },
+      "tokens": [
+        {
+          "type": "math",
+          "latex": "\\left|a\\right|"
+        },
+        {
+          "type": "math",
+          "latex": "="
+        },
+        {
+          "type": "slot",
+          "id": "n08-r5-q02-distance-build-r6-right",
+          "partId": "n08-r5-q02-distance-build-r6-right",
+          "interactionRef": "n08-r5-q02-distance-build-r6",
+          "role": "coordinate"
+        },
+        {
+          "type": "math",
+          "latex": "-"
+        },
+        {
+          "type": "slot",
+          "id": "n08-r5-q02-distance-build-r6-left",
+          "partId": "n08-r5-q02-distance-build-r6-left",
+          "interactionRef": "n08-r5-q02-distance-build-r6",
+          "role": "coordinate"
+        }
+      ],
+      "constructionHash": "585e662f6d634cb5ca1c4355793085f3355544c5c382ea1345355f89911a7b9b"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q03-order-build-r6",
+      "sourceNodeId": "n08-q03-order",
+      "sourceRefs": [
+        "n08-q03-order-before",
+        "n08-q03-order-interaction-0",
+        "n08-q03-order-result",
+        "n08-q03-order-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "a<0。右の座標−左の座標。",
+      "activePrompt": "今回は原点が右側です。二つの座標を、引き算の位置へ入れます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q03-order-build-r6-right",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q03-order-build-r6-left",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-q03-order-build-r6-right"
+          },
+          "operation": "-",
+          "right": {
+            "kind": "part",
+            "partId": "n08-q03-order-build-r6-left"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q03-order-build-r6-right",
+            "partId": "n08-q03-order-build-r6-right",
+            "interactionRef": "n08-q03-order-build-r6",
+            "role": "coordinate"
+          },
+          {
+            "type": "math",
+            "latex": "-"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q03-order-build-r6-left",
+            "partId": "n08-q03-order-build-r6-left",
+            "interactionRef": "n08-q03-order-build-r6",
+            "role": "coordinate"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "slot",
+            "id": "n08-q03-order-build-r6-right",
+            "partId": "n08-q03-order-build-r6-right",
+            "interactionRef": "n08-q03-order-build-r6",
+            "role": "coordinate"
+          },
+          {
+            "type": "math",
+            "latex": "-"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q03-order-build-r6-left",
+            "partId": "n08-q03-order-build-r6-left",
+            "interactionRef": "n08-q03-order-build-r6",
+            "role": "coordinate"
+          }
+        ]
+      },
+      "completed": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "0-a"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "\\left|a\\right|"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "math",
+            "latex": "0-a"
+          }
+        ],
+        "latex": "\\left|a\\right| = 0-a"
+      },
+      "tokens": [
+        {
+          "type": "math",
+          "latex": "\\left|a\\right|"
+        },
+        {
+          "type": "math",
+          "latex": "="
+        },
+        {
+          "type": "slot",
+          "id": "n08-q03-order-build-r6-right",
+          "partId": "n08-q03-order-build-r6-right",
+          "interactionRef": "n08-q03-order-build-r6",
+          "role": "coordinate"
+        },
+        {
+          "type": "math",
+          "latex": "-"
+        },
+        {
+          "type": "slot",
+          "id": "n08-q03-order-build-r6-left",
+          "partId": "n08-q03-order-build-r6-left",
+          "interactionRef": "n08-q03-order-build-r6",
+          "role": "coordinate"
+        }
+      ],
+      "constructionHash": "24198508697f0f8a11f430643c544e4b832bee5e8191877cd8830598d8999850"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-03-build-r6",
+      "sourceNodeId": "n08-03",
+      "sourceRefs": [
+        "n08-03-before",
+        "n08-03-interaction-0",
+        "n08-03-result",
+        "n08-03-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q03-order-build-r6"
+      ],
+      "learnerDecision": "前の行の0−aをそのまま使う。",
+      "activePrompt": "0からaを引いた数を、aを使って表します。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-03-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "unary",
+          "sign": {
+            "partId": "n08-03-build-r6-sign"
+          },
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "symbol",
+              "name": "a"
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "0-a"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-03-build-r6-sign",
+            "partId": "n08-03-build-r6-sign",
+            "interactionRef": "n08-03-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "0-a"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "slot",
+            "id": "n08-03-build-r6-sign",
+            "partId": "n08-03-build-r6-sign",
+            "interactionRef": "n08-03-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          }
+        ]
+      },
+      "completed": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "0-a"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "-a"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "0-a"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "math",
+            "latex": "-a"
+          }
+        ],
+        "latex": "0-a = -a"
+      },
+      "tokens": [
+        {
+          "type": "math",
+          "latex": "0-a"
+        },
+        {
+          "type": "math",
+          "latex": "="
+        },
+        {
+          "type": "slot",
+          "id": "n08-03-build-r6-sign",
+          "partId": "n08-03-build-r6-sign",
+          "interactionRef": "n08-03-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "a"
+        }
+      ],
+      "constructionHash": "0d0f7b7455d87e07f33792867c151185cd3bda10d2a9d4afa336f80881b4b699"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-04-build-r6",
+      "sourceNodeId": "n08-04",
+      "sourceRefs": [
+        "n08-04-before",
+        "n08-04-interaction-0",
+        "n08-04-result",
+        "n08-04-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "代入の式は直前の手本で確認済み。",
+      "activePrompt": "括弧の中の数と符号が反対の数を求めます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-04-build-r6-value",
+          "role": "rational",
+          "expected": "5",
+          "choices": [
+            {
+              "value": "5",
+              "expression": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            {
+              "value": "-5",
+              "expression": {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "rational",
+              "n": "-5",
+              "d": "1"
+            }
+          ]
+        },
+        "right": {
+          "kind": "part",
+          "partId": "n08-04-build-r6-value"
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "rational",
+              "n": "-5",
+              "d": "1"
+            }
+          ]
+        },
+        "right": {
+          "kind": "rational",
+          "n": "5",
+          "d": "1"
+        }
+      },
+      "masked": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "-(-5)"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-04-build-r6-value",
+            "partId": "n08-04-build-r6-value",
+            "interactionRef": "n08-04-build-r6",
+            "role": "rational"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-(-5)"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "slot",
+            "id": "n08-04-build-r6-value",
+            "partId": "n08-04-build-r6-value",
+            "interactionRef": "n08-04-build-r6",
+            "role": "rational"
+          }
+        ]
+      },
+      "completed": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "-(-5)"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "5"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-(-5)"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "math",
+            "latex": "5"
+          }
+        ],
+        "latex": "-(-5) = 5"
+      },
+      "tokens": [
+        {
+          "type": "math",
+          "latex": "-(-5)"
+        },
+        {
+          "type": "math",
+          "latex": "="
+        },
+        {
+          "type": "slot",
+          "id": "n08-04-build-r6-value",
+          "partId": "n08-04-build-r6-value",
+          "interactionRef": "n08-04-build-r6",
+          "role": "rational"
+        }
+      ],
+      "constructionHash": "3879d3947a85006404b451b34fe95b8cf2994b0df9ab27276a37a8c745235651"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q07-bracket-build-r6",
+      "sourceNodeId": "n08-q07-bracket",
+      "sourceRefs": [
+        "n08-q07-bracket-before",
+        "n08-q07-bracket-interaction-0",
+        "n08-q07-bracket-result",
+        "n08-q07-bracket-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "中身の符号と負の場合の規則を使い、適用範囲を照合する。",
+      "activePrompt": "選んだ規則を、括弧で囲んだ中身全体へ適用します。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q07-bracket-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "unary",
+          "sign": {
+            "partId": "n08-q07-bracket-build-r6-sign"
+          },
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q07-bracket-build-r6-sign",
+            "partId": "n08-q07-bracket-build-r6-sign",
+            "interactionRef": "n08-q07-bracket-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "("
+          },
+          {
+            "type": "math",
+            "latex": "\\sqrt{5}-3"
+          },
+          {
+            "type": "math",
+            "latex": ")"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-q07-bracket-build-r6-sign",
+            "partId": "n08-q07-bracket-build-r6-sign",
+            "interactionRef": "n08-q07-bracket-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "("
+          },
+          {
+            "type": "math",
+            "latex": "\\sqrt{5}-3"
+          },
+          {
+            "type": "math",
+            "latex": ")"
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "-(\\sqrt{5}-3)"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-(\\sqrt{5}-3)"
+          }
+        ],
+        "latex": "-(\\sqrt{5}-3)"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-q07-bracket-build-r6-sign",
+          "partId": "n08-q07-bracket-build-r6-sign",
+          "interactionRef": "n08-q07-bracket-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "("
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt{5}-3"
+        },
+        {
+          "type": "math",
+          "latex": ")"
+        }
+      ],
+      "constructionHash": "5dc78367055670f8f52477319d183a69300fba7a933a88e3aa4081eeabd69ef8"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q07-distribute-build-r6",
+      "sourceNodeId": "n08-q07-distribute",
+      "sourceRefs": [
+        "n08-q07-distribute-r5-before-0",
+        "n08-q07-distribute-interaction",
+        "n08-q07-distribute-result",
+        "n08-q07-distribute-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-bracket-build-r6"
+      ],
+      "learnerDecision": "分配した二つの積を分けて計算する。",
+      "activePrompt": "各項へ掛けた結果を、それぞれ同じ行の穴へ入れます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q07-distribute-build-r6-root-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-build-r6-constant",
+          "role": "rational",
+          "expected": "3",
+          "choices": [
+            {
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            {
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-q07-distribute-build-r6-root-sign"
+            },
+            "argument": {
+              "kind": "sqrt",
+              "argument": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            }
+          },
+          "operation": "+",
+          "right": {
+            "kind": "part",
+            "partId": "n08-q07-distribute-build-r6-constant"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q07-distribute-build-r6-root-sign",
+            "partId": "n08-q07-distribute-build-r6-root-sign",
+            "interactionRef": "n08-q07-distribute-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "\\sqrt{5}"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q07-distribute-build-r6-constant",
+            "partId": "n08-q07-distribute-build-r6-constant",
+            "interactionRef": "n08-q07-distribute-build-r6",
+            "role": "rational"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-q07-distribute-build-r6-root-sign",
+            "partId": "n08-q07-distribute-build-r6-root-sign",
+            "interactionRef": "n08-q07-distribute-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "\\sqrt{5}"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q07-distribute-build-r6-constant",
+            "partId": "n08-q07-distribute-build-r6-constant",
+            "interactionRef": "n08-q07-distribute-build-r6",
+            "role": "rational"
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "-\\sqrt{5}+3"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-\\sqrt{5}+3"
+          }
+        ],
+        "latex": "-\\sqrt{5}+3"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-q07-distribute-build-r6-root-sign",
+          "partId": "n08-q07-distribute-build-r6-root-sign",
+          "interactionRef": "n08-q07-distribute-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt{5}"
+        },
+        {
+          "type": "math",
+          "latex": "+"
+        },
+        {
+          "type": "slot",
+          "id": "n08-q07-distribute-build-r6-constant",
+          "partId": "n08-q07-distribute-build-r6-constant",
+          "interactionRef": "n08-q07-distribute-build-r6",
+          "role": "rational"
+        }
+      ],
+      "constructionHash": "5667743570f769d9f07fed8f3e1efc2774d54f78cac6d4cf08380a34e9306a57"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-07-build-r6",
+      "sourceNodeId": "n08-07",
+      "sourceRefs": [
+        "n08-07-before",
+        "n08-07-interaction-0",
+        "n08-07-result",
+        "n08-07-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-distribute-build-r6"
+      ],
+      "learnerDecision": "前行の二項を符号ごと動かして指定順にする。",
+      "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+      "gradingPurpose": "specified-order",
+      "parts": [
+        {
+          "id": "n08-07-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "3",
+          "choices": [
+            {
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            {
+              "value": "-\\sqrt5",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-07-build-r6-first-term"
+          },
+          "operation": "+",
+          "right": {
+            "kind": "remaining-term",
+            "id": "n08-07-build-r6-remaining-term",
+            "fromPartId": "n08-07-build-r6-first-term",
+            "terms": [
+              {
+                "value": "3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "-\\sqrt5",
+                "expression": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-07-build-r6-first-term",
+            "partId": "n08-07-build-r6-first-term",
+            "interactionRef": "n08-07-build-r6",
+            "role": "signed-term"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "derived-slot",
+            "id": "n08-07-build-r6-remaining-term",
+            "partId": "n08-07-build-r6-remaining-term",
+            "interactionRef": "n08-07-build-r6",
+            "fromPartId": "n08-07-build-r6-first-term",
+            "gradedIndependently": false
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-07-build-r6-first-term",
+            "partId": "n08-07-build-r6-first-term",
+            "interactionRef": "n08-07-build-r6",
+            "role": "signed-term"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "derived-slot",
+            "id": "n08-07-build-r6-remaining-term",
+            "partId": "n08-07-build-r6-remaining-term",
+            "interactionRef": "n08-07-build-r6",
+            "fromPartId": "n08-07-build-r6-first-term",
+            "gradedIndependently": false
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "3-\\sqrt{5}"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "3-\\sqrt{5}"
+          }
+        ],
+        "latex": "3-\\sqrt{5}"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-07-build-r6-first-term",
+          "partId": "n08-07-build-r6-first-term",
+          "interactionRef": "n08-07-build-r6",
+          "role": "signed-term"
+        },
+        {
+          "type": "math",
+          "latex": "+"
+        },
+        {
+          "type": "derived-slot",
+          "id": "n08-07-build-r6-remaining-term",
+          "partId": "n08-07-build-r6-remaining-term",
+          "interactionRef": "n08-07-build-r6",
+          "fromPartId": "n08-07-build-r6-first-term",
+          "gradedIndependently": false
+        }
+      ],
+      "constructionHash": "dc13b37f49812624d2b64f7a12210a68dc2d866b69fd8fa102f703e34892e980"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q09-bracket-build-r6",
+      "sourceNodeId": "n08-q09-bracket",
+      "sourceRefs": [
+        "n08-q09-bracket-r5-before-0",
+        "n08-q09-bracket-interaction-0",
+        "n08-q09-bracket-result",
+        "n08-q09-bracket-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "今回の3−π<0と負の場合の定義を使う。",
+      "activePrompt": "前に得た中身の符号を使い、括弧全体の外側を完成させます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q09-bracket-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "unary",
+          "sign": {
+            "partId": "n08-q09-bracket-build-r6-sign"
+          },
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q09-bracket-build-r6-sign",
+            "partId": "n08-q09-bracket-build-r6-sign",
+            "interactionRef": "n08-q09-bracket-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "("
+          },
+          {
+            "type": "math",
+            "latex": "3-\\pi"
+          },
+          {
+            "type": "math",
+            "latex": ")"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-q09-bracket-build-r6-sign",
+            "partId": "n08-q09-bracket-build-r6-sign",
+            "interactionRef": "n08-q09-bracket-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "("
+          },
+          {
+            "type": "math",
+            "latex": "3-\\pi"
+          },
+          {
+            "type": "math",
+            "latex": ")"
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "-(3-\\pi)"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-(3-\\pi)"
+          }
+        ],
+        "latex": "-(3-\\pi)"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-q09-bracket-build-r6-sign",
+          "partId": "n08-q09-bracket-build-r6-sign",
+          "interactionRef": "n08-q09-bracket-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "("
+        },
+        {
+          "type": "math",
+          "latex": "3-\\pi"
+        },
+        {
+          "type": "math",
+          "latex": ")"
+        }
+      ],
+      "constructionHash": "e37214afd0586a479160ef1c95ab7cad1b80016ae20854f631032a91f0e3409d"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q09-distribute-build-r6",
+      "sourceNodeId": "n08-q09-distribute",
+      "sourceRefs": [
+        "n08-q09-distribute-r5-before-0",
+        "n08-q09-distribute-interaction",
+        "n08-q09-distribute-result",
+        "n08-q09-distribute-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-bracket-build-r6"
+      ],
+      "learnerDecision": "各積の符号と項を結ぶ演算を区別する。",
+      "activePrompt": "二つの積を計算し、各項と項を結ぶ符号を入れます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q09-distribute-build-r6-first-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-build-r6-joining-operation",
+          "role": "binary-operation",
+          "expected": "+",
+          "choices": [
+            {
+              "value": "+"
+            },
+            {
+              "value": "-"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "unary",
+            "sign": {
+              "partId": "n08-q09-distribute-build-r6-first-sign"
+            },
+            "argument": {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          },
+          "operation": {
+            "partId": "n08-q09-distribute-build-r6-joining-operation"
+          },
+          "right": {
+            "kind": "constant",
+            "name": "pi"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              ]
+            },
+            {
+              "kind": "constant",
+              "name": "pi"
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q09-distribute-build-r6-first-sign",
+            "partId": "n08-q09-distribute-build-r6-first-sign",
+            "interactionRef": "n08-q09-distribute-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "3"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q09-distribute-build-r6-joining-operation",
+            "partId": "n08-q09-distribute-build-r6-joining-operation",
+            "interactionRef": "n08-q09-distribute-build-r6",
+            "role": "binary-operation"
+          },
+          {
+            "type": "math",
+            "latex": "\\pi"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-q09-distribute-build-r6-first-sign",
+            "partId": "n08-q09-distribute-build-r6-first-sign",
+            "interactionRef": "n08-q09-distribute-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "3"
+          },
+          {
+            "type": "slot",
+            "id": "n08-q09-distribute-build-r6-joining-operation",
+            "partId": "n08-q09-distribute-build-r6-joining-operation",
+            "interactionRef": "n08-q09-distribute-build-r6",
+            "role": "binary-operation"
+          },
+          {
+            "type": "math",
+            "latex": "\\pi"
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "-3+\\pi"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "-3+\\pi"
+          }
+        ],
+        "latex": "-3+\\pi"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-q09-distribute-build-r6-first-sign",
+          "partId": "n08-q09-distribute-build-r6-first-sign",
+          "interactionRef": "n08-q09-distribute-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "3"
+        },
+        {
+          "type": "slot",
+          "id": "n08-q09-distribute-build-r6-joining-operation",
+          "partId": "n08-q09-distribute-build-r6-joining-operation",
+          "interactionRef": "n08-q09-distribute-build-r6",
+          "role": "binary-operation"
+        },
+        {
+          "type": "math",
+          "latex": "\\pi"
+        }
+      ],
+      "constructionHash": "10c1f5fd4abaa7a341825af04d8ed2f58590a51f7f69cc49a5bf972490c10080"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-09-build-r6",
+      "sourceNodeId": "n08-09",
+      "sourceRefs": [
+        "n08-09-before",
+        "n08-09-interaction-0",
+        "n08-09-result",
+        "n08-09-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-distribute-build-r6"
+      ],
+      "learnerDecision": "前行の二項を各一回使い指定順にする。",
+      "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+      "gradingPurpose": "specified-order",
+      "parts": [
+        {
+          "id": "n08-09-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "\\pi",
+          "choices": [
+            {
+              "value": "\\pi",
+              "expression": {
+                "kind": "constant",
+                "name": "pi"
+              }
+            },
+            {
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-09-build-r6-first-term"
+          },
+          "operation": "+",
+          "right": {
+            "kind": "remaining-term",
+            "id": "n08-09-build-r6-remaining-term",
+            "fromPartId": "n08-09-build-r6-first-term",
+            "terms": [
+              {
+                "value": "\\pi",
+                "expression": {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              },
+              {
+                "value": "-3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "constant",
+              "name": "pi"
+            },
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            }
+          ]
+        }
+      },
+      "masked": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-09-build-r6-first-term",
+            "partId": "n08-09-build-r6-first-term",
+            "interactionRef": "n08-09-build-r6",
+            "role": "signed-term"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "derived-slot",
+            "id": "n08-09-build-r6-remaining-term",
+            "partId": "n08-09-build-r6-remaining-term",
+            "interactionRef": "n08-09-build-r6",
+            "fromPartId": "n08-09-build-r6-first-term",
+            "gradedIndependently": false
+          }
+        ],
+        "tokens": [
+          {
+            "type": "slot",
+            "id": "n08-09-build-r6-first-term",
+            "partId": "n08-09-build-r6-first-term",
+            "interactionRef": "n08-09-build-r6",
+            "role": "signed-term"
+          },
+          {
+            "type": "math",
+            "latex": "+"
+          },
+          {
+            "type": "derived-slot",
+            "id": "n08-09-build-r6-remaining-term",
+            "partId": "n08-09-build-r6-remaining-term",
+            "interactionRef": "n08-09-build-r6",
+            "fromPartId": "n08-09-build-r6-first-term",
+            "gradedIndependently": false
+          }
+        ]
+      },
+      "completed": {
+        "left": [],
+        "relation": "",
+        "right": [
+          {
+            "type": "math",
+            "latex": "\\pi-3"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "\\pi-3"
+          }
+        ],
+        "latex": "\\pi-3"
+      },
+      "tokens": [
+        {
+          "type": "slot",
+          "id": "n08-09-build-r6-first-term",
+          "partId": "n08-09-build-r6-first-term",
+          "interactionRef": "n08-09-build-r6",
+          "role": "signed-term"
+        },
+        {
+          "type": "math",
+          "latex": "+"
+        },
+        {
+          "type": "derived-slot",
+          "id": "n08-09-build-r6-remaining-term",
+          "partId": "n08-09-build-r6-remaining-term",
+          "interactionRef": "n08-09-build-r6",
+          "fromPartId": "n08-09-build-r6-first-term",
+          "gradedIndependently": false
+        }
+      ],
+      "constructionHash": "b59bb86b51a9dcf9b2396e011cbb76f260335ebd6771fdb4303ca16784f93d74"
+    },
+    {
+      "status": "PASS",
+      "schemaVersion": "construction-reading/1",
+      "id": "n08-q12-negative-build-r6",
+      "sourceNodeId": "n08-q12-negative",
+      "sourceRefs": [
+        "n08-q12-negative-before",
+        "n08-q12-negative-interaction",
+        "n08-q12-negative-result",
+        "n08-q12-negative-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "a<0。a²の指数は既習として保持し、二つの負号の積を判断する。",
+      "activePrompt": "負号が二つ掛かる部分の符号を入れます。",
+      "gradingPurpose": "mathematical-value",
+      "parts": [
+        {
+          "id": "n08-q12-negative-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "+",
+          "choices": [
+            {
+              "value": "+"
+            },
+            {
+              "value": "-"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "unary",
+          "sign": {
+            "partId": "n08-q12-negative-build-r6-sign"
+          },
+          "argument": {
+            "kind": "power",
+            "base": {
+              "kind": "symbol",
+              "name": "a"
+            },
+            "exponent": 2
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "power",
+          "base": {
+            "kind": "symbol",
+            "name": "a"
+          },
+          "exponent": 2
+        }
+      },
+      "masked": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "(-a)(-a)"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n08-q12-negative-build-r6-sign",
+            "partId": "n08-q12-negative-build-r6-sign",
+            "interactionRef": "n08-q12-negative-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "a^{2}"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "(-a)(-a)"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "slot",
+            "id": "n08-q12-negative-build-r6-sign",
+            "partId": "n08-q12-negative-build-r6-sign",
+            "interactionRef": "n08-q12-negative-build-r6",
+            "role": "unary-sign"
+          },
+          {
+            "type": "math",
+            "latex": "a^{2}"
+          }
+        ]
+      },
+      "completed": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "(-a)(-a)"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "a^{2}"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "math",
+            "latex": "(-a)(-a)"
+          },
+          {
+            "type": "math",
+            "latex": "="
+          },
+          {
+            "type": "math",
+            "latex": "a^{2}"
+          }
+        ],
+        "latex": "(-a)(-a) = a^{2}"
+      },
+      "tokens": [
+        {
+          "type": "math",
+          "latex": "(-a)(-a)"
+        },
+        {
+          "type": "math",
+          "latex": "="
+        },
+        {
+          "type": "slot",
+          "id": "n08-q12-negative-build-r6-sign",
+          "partId": "n08-q12-negative-build-r6-sign",
+          "interactionRef": "n08-q12-negative-build-r6",
+          "role": "unary-sign"
+        },
+        {
+          "type": "math",
+          "latex": "a^{2}"
+        }
+      ],
+      "constructionHash": "b7e9d574a1ce338e65f6872a4f5fa41dde0f3dce716740da51ba80014900184e"
+    }
+  ],
+  "compiledPresentationHash": "6198fe7bfc2b4d040efff35569c573dd255b48c2f2aee0db4a65634ed93b3a2f"
+}

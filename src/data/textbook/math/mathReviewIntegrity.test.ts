@@ -54,7 +54,7 @@ describe('math textbook review integrity', () => {
           expect(
             counts.get(item.id) ?? 0,
             `${unit.unitId}/${item.id}: inline item should appear once`,
-          ).toBe(unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 5
+          ).toBe(unit.unitId === 'math-numbers-expressions-n08' && [5, 6].includes(unit.revision)
             && ['n08-r5-q06-operation-answer', 'n08-r5-q08-operation-answer'].includes(item.id) ? 2 : 1)
           if ((counts.get(item.id) ?? 0) > 1) {
             const owners = section.readingFlow.filter(block => (block.type === 'formula' || block.type === 'paragraph') && block.parts.some(part => part.type === 'choice' && part.itemId === item.id))

@@ -1,0 +1,22 @@
+{
+  "n09": {
+    "unitId": "math-numbers-expressions-n09",
+    "fromRevision": 3,
+    "toRevision": 4,
+    "compiledHash": "07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e",
+    "planHash": "cb9db029f9a98e31df9703b720df6a3ca53bca11f0c21c2daace55af9b760f61",
+    "sourceIRHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "designSha256": "d144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd"
+  },
+  "n10": {
+    "unitId": "math-numbers-expressions-n10",
+    "fromRevision": 2,
+    "toRevision": 3,
+    "compiledHash": "a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd",
+    "planHash": "c48cae89db40000c0408c3d1d49c37a4eae58aa9aca92820448168afaf01c6e7",
+    "sourceIRHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "designSha256": "d144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd"
+  }
+}

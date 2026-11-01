@@ -9,6 +9,8 @@ import { N08SolutionReadingFlow } from '../components/textbook/N08SolutionReadin
 import { N08ArchivePage } from './N08ArchivePage'
 import { N08Revision5Page } from './N08Revision5Page'
 import { N08Revision6Page } from './N08Revision6Page'
+import { N0910RevisionPage } from './N0910RevisionPage'
+import { N0910ArchivePage } from './N0910ArchivePage'
 import { N08ConstructionReadingFlow } from '../components/textbook/N08ConstructionReadingFlow'
 import { N08ConstructionReadingFlowV7 } from '../components/textbook/N08ConstructionReadingFlowV7'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
@@ -686,6 +688,11 @@ export function TextbookUnitPage() {
   const { unitId } = useParams()
   const location = useLocation()
   const params = new URLSearchParams(location.search)
+  if (unitId === 'math-numbers-expressions-n09' || unitId === 'math-numbers-expressions-n10') {
+    const code = unitId.endsWith('n09') ? 'n09' : 'n10', oldRevision = code === 'n09' ? '3' : '2'
+    if (params.get('version') === oldRevision) return <N0910ArchivePage code={code} />
+    return <N0910RevisionPage key={unitId} code={code} />
+  }
   if (unitId === 'math-numbers-expressions-n08') {
     if (params.get('version') === '4') return <N08ArchivePage />
     if (params.get('version') === '6') return <N08Revision6Page />

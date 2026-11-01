@@ -1,3 +1,4 @@
+import {checkNestedRuns} from './layout/nested-run-measurements.mjs';
 /** Deterministic operations consumed by workflow.runner. No stage is auto-approved. */
 import {readFileSync} from 'node:fs';import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';import {resolve} from 'node:path';
@@ -24,12 +25,27 @@ import {compileTransformationPresentation} from './transformation/compile.mjs';
 import {projectTransformationView} from './transformation/visible.mjs';
 import {buildSnapshotsV3} from './transformation/v3.mjs';
 import {checkAxisMeasurements} from './layout/axis-measurements.mjs';
+import {validateNestedTransformationPlan} from './transformation/nested-lesson.mjs';
 export function operate(operation,input){
- if(operation==='construction-validate'){const plan=input.constructionPlan??input;return plan.schemaVersion==='construction-plan/2'?verifyConstructionMathV2(plan):verifyConstructionMath(plan);}
+ if(operation==='construction-validate'){
+  if(input.transformationPlan?.nestedPipeline==='n0910/1'){
+   const plan=input.transformationPlan,checked=validateNestedTransformationPlan(input.ir,plan);if(checked.status!=='PASS')return checked;
+   const raw=JSON.parse(plan.designRaw),design={...raw,units:raw.units.filter(u=>u.unitId===plan.unitId)};
+   const run=spawnSync(process.env.KYOTSU_MATH_PYTHON??'python',[fileURLToPath(new URL('./n0910/finite-math.py',import.meta.url)),'-'],{input:JSON.stringify(design),encoding:'utf8',timeout:30000,maxBuffer:8*1024*1024});
+   if(run.error)return {status:'UNSUPPORTED',reason:run.error.code};let math;try{math=JSON.parse(run.stdout)}catch{return {status:'FAIL',reason:'NESTED_MATH_ADAPTER_OUTPUT'}};
+   return {...checked,status:math.status==='FAIL'?'FAIL':'NEEDS_AI_REVIEW',constructionDesignHash:hash(plan.constructionPlan),math,formalProof:false,proofStatus:'SOURCE_BOUND_ARGUMENT_REVIEW_REQUIRED',automaticAcceptance:false};
+  }
+  const plan=input.constructionPlan??input;return plan.schemaVersion==='construction-plan/2'?verifyConstructionMathV2(plan):verifyConstructionMath(plan);
+ }
  if(operation==='layout-validate'){
   const result=validateLayoutPlan(input.layoutPlan??input,input.bindingContext??{});
   if(result.status!=='PASS'||!input.measurements)return result;
   const plan=input.layoutPlan??input;
+  if(plan.nestedGeometryContract==='nested-geometry/1'){
+   if(!input.nestedCompiled)return {...result,status:'FAIL',reason:'NESTED_COMPILED_REQUIRED_FOR_MEASUREMENTS'};
+   if(hash(input.nestedCompiled.layoutPlan)!==hash(plan))return {...result,status:'FAIL',reason:'NESTED_LAYOUT_ARTIFACT_MISMATCH'};
+   return {...checkNestedRuns(input.nestedCompiled,input.measurements,input.measurementContext??{}),layoutHash:result.layoutHash};
+  }
   if(plan.schemaVersion==='layout-plan/2'){
    if(!Array.isArray(input.measurements)||!input.measurements.length)return {...result,status:'FAIL',reason:'ACTUAL_AXIS_MEASUREMENTS_REQUIRED',measurementCount:0};
    const packets=input.measurements.flatMap(m=>m.packets??[m]);if(!packets.length)return {...result,status:'FAIL',reason:'ACTUAL_AXIS_MEASUREMENTS_REQUIRED',measurementCount:0};const verified=packets.map(checkAxisMeasurements);const failures=verified.flatMap((r,index)=>r.status==='PASS'?[]:[{index,...r}]);

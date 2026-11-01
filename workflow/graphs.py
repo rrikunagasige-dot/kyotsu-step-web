@@ -14,10 +14,16 @@ def normalized(plan):
     need(p.get('solution_pipeline') in (None,'solution/1'), '未対応のsolution pipeline')
     need(p.get('construction_pipeline') in (None, 'construction-layout/1'), '未対応の組立・配置pipeline')
     need(not p.get('construction_pipeline') or p.get('solution_pipeline') == 'solution/1', '組立pipelineは既存solution/1へ接続する')
+    need(p.get('nested_math_pipeline') in (None, 'nested-math/1'), '未対応の根号・分数pipeline')
+    if p.get('nested_math_pipeline'):
+        need(p.get('construction_pipeline') == 'construction-layout/1' and p.get('solution_pipeline') == 'solution/1', 'nestedは既存の組立・配置・solution工程へ接続する')
+        need(p.get('subject') == 'math' and p.get('mode') == 'textbook', 'nestedの適用は数学教科書へ限定する')
     need(not p.get('research_extract') or p.get('solution_pipeline')=='solution/1', '資料抽出はsolution/1を明示する')
     if 'agent_team' in p:
         from team import validate_policy
         p['agent_team'] = validate_policy(p['agent_team'])
+        from agent_guard import validate_policy_work
+        validate_policy_work(p['agent_team'], p['work_id'])
     blocks = {b['id']: b for b in p['blocks']}
     p.setdefault('protected_manifest',{path:h for path,h in p['source_manifest'].items() if any(path==x or x.endswith('/') and path.startswith(x) for x in p['scope'].get('preserve',[]))})
     for path in p['scope'].get('preserve',[]):
@@ -70,6 +76,10 @@ def instantiate(plan):
         n = {'id': nid, 'stage_kind': stage, 'contract_kind': stage, 'actor': actor, 'depends_on': list(dict.fromkeys(deps)),
              'required': list(required), 'block': block, 'release_unit': unit, 'watch': 'integration', 'phase': phase,
              'priority': unit_order.get(unit, -1), 'source_refs': [], 'protected_refs': p['scope'].get('preserve', [])}
+        if 'G3_HOST' in p['scope'].get('prohibit', []) and phase in ('pre-release', 'release', 'acceptance', 'post-fix', 'repair-finalization', 'learning', 'closure'):
+            n['priority'] += len(unit_order)
+            if phase != 'pre-release':
+                n['priority'] += len(unit_order)
         if block:
             b = next(x for x in p['blocks'] if x['id'] == block)
             n.update(source_refs=b['sources'], approval_scope_ref=bundle_for[block]['id'])

@@ -15,10 +15,12 @@ def adopt_team_policy(rt, work, policy, approval_ref, expected_head):
     policy = validate_policy(policy, allow_empty=bool(s['plan'].get('simulation')))
     need(policy and policy != s['plan'].get('agent_team'), '新しいteam policyが必要')
     u = s['users'].get(approval_ref, {})
-    need(u.get('intent') == 'approve_proposal' and u.get('quote') and u.get('source_ref') and u.get('scope') == s['plan']['scope'], '範囲付きの実ユーザー承認が必要')
+    need(u.get('intent') in ('approve_proposal','authorize_team_policy') and u.get('quote') and u.get('source_ref') and u.get('scope') == s['plan']['scope'], '範囲付きの実ユーザー承認が必要')
     need(u.get('proposal_hash') == s['plan']['proposal']['hash'] and u.get('reply_to') == s['plan']['proposal']['hash'], '承認が現在の具体案に対応しない')
     need(u.get('verification_level') != 'simulation' or s['plan'].get('simulation'), '実Workへ模擬承認は禁止')
     need(u.get('team_policy_hash') == digest(policy) or s['plan']['proposal'].get('teamPolicyHash') == digest(policy), '承認と導入policy hashを明示的に結ぶ')
+    if u.get('intent') == 'authorize_team_policy':
+        need(u.get('team_policy_hash') == digest(policy) and not u.get('approved_bundles'), '担当方針専用承認は実policy hashだけを許可し、教材承認を生成しない')
     from graphs import normalized, instantiate
     from integration import bundle_fingerprint
     new_plan = deepcopy(s['plan']); new_plan['agent_team'] = policy; new_plan = normalized(new_plan)

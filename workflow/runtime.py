@@ -5,7 +5,7 @@ from store import Store,digest,Conflict
 from contracts import need,Rejected,plan_check,result_check,manifest,file,sha
 from definitions import instantiate,DEFINITION_HASH,VERSION
 
-USER_INTENTS={'approve_proposal','accept_block','accept_app','reject_block','reject_app','pause','resume','priority_override','authorize_merge','authorize_deploy','authorize_cost','quality_positive','quality_negative','continue'}
+USER_INTENTS={'approve_proposal','authorize_team_policy','accept_block','accept_app','reject_block','reject_app','pause','resume','priority_override','authorize_merge','authorize_deploy','authorize_cost','quality_positive','quality_negative','continue'}
 
 class Runtime:
     def __init__(self,store,root):self.store=Store(store);self.root=Path(root).resolve();self._head=self.store.head
@@ -46,6 +46,7 @@ class Runtime:
                     s['migration']=p
                 elif k=='materialization_bound':s['plan']=p['plan'];s['materialization']=p
                 elif k=='team_policy_adopted':
+                    for node_id in p.get('reviewer_handoff',{}).get('interruptedClaims',[]):s['claims'].pop(node_id,None)
                     s['plan']=p['plan']
                     for node_id in p.get('invalidated_results', []): s['results'].pop(node_id, None)
                     s['team_migration']=p;s['closed']=None
@@ -152,14 +153,17 @@ class Runtime:
         need(quote and reply_to and source_ref,'発言原文・対応先・出所が必要')
         need(verification_level in ('conversation_transcribed','authenticated_connector','simulation'),'出所の検証段階が不明')
         need(verification_level!='simulation' or s['plan'].get('simulation'),'実Workに模擬承認を入れない')
-        if intent=='approve_proposal':need(reply_to==s['plan']['proposal']['hash'],'承認が現在の具体的な提案版に対応しない')
+        if intent in ('approve_proposal','authorize_team_policy'):need(reply_to==s['plan']['proposal']['hash'],'承認が現在の具体的な提案版に対応しない')
+        if intent=='authorize_team_policy':
+            need(team_policy_hash is not None and bundle_ids is None and block is None and release_unit is None,'担当方針専用承認にはpolicy hashが必要。教材bundle・受入を付与しない')
+            need(scope is None or scope==s['plan']['scope'],'担当方針承認のWork範囲が違う')
         if intent in ('accept_block','reject_block'):
             need(block in [b['id'] for b in s['plan']['blocks']],'確認対象ブロックが不明')
         p={'id':event_id or str(uuid.uuid4()),'intent':intent,'quote':quote,'reply_to':reply_to,'source_ref':source_ref,'block':block,
            'proposal_hash':s['plan']['proposal']['hash'],'scope':scope or s['plan']['scope'],'candidate_sha':s['candidate_sha'],
            'block_manifest':self.block_manifest(s,block) if block else None,'verification_level':verification_level}
         if team_policy_hash is not None:
-            need(intent == 'approve_proposal' and isinstance(team_policy_hash, str) and len(team_policy_hash) == 64 and all(c in '0123456789abcdef' for c in team_policy_hash), 'team policy承認のhashが不正')
+            need(intent in ('approve_proposal','authorize_team_policy') and isinstance(team_policy_hash, str) and len(team_policy_hash) == 64 and all(c in '0123456789abcdef' for c in team_policy_hash), 'team policy承認のhashが不正')
             p['team_policy_hash'] = team_policy_hash
         if s['plan'].get('workflow_version') == 'production/2':
             from integration import bundle_fingerprint
@@ -199,7 +203,16 @@ class Runtime:
             if kind=='screenshot':
                 need(file(self.root,data['path']).read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),'実画像としてPNGが必要')
                 capture=s['evidence'].get(data.get('capture_ref'),{})
-                need(capture.get('kind')=='capture' and capture['data']['files'].get(data['path'])==actual,'CI画像成果物との対応がない')
+                if capture.get('kind')=='local_capture':
+                    from local_render_evidence import validate_local_capture
+                    verified=validate_local_capture(self,work,data['capture_ref'])
+                    need(verified['files'].get(data['path'])==actual and data.get('source_sha')==s['candidate_sha'],'ローカル画像成果物との対応がない')
+                else:
+                    need(capture.get('kind')=='capture' and capture['data']['files'].get(data['path'])==actual,'CI画像成果物との対応がない')
+        elif kind=='local_capture':
+            need(verification_level=='local_execution','ローカル捕捉の実行出所が必要')
+            from local_render_evidence import verify_local_capture
+            data=verify_local_capture(self,work,data)
         elif kind=='ci':
             need(data.get('status')=='completed' and data.get('conclusion')=='success','CIが成功していない')
             need(data.get('head_sha')==s['candidate_sha'],'別SHAのCIは採用できない')
@@ -262,7 +275,10 @@ class Runtime:
             if n['actor']=='USER':return {'status':'WAITING','reason':'USER_DECISION','task':self.task(work,nid)}
             return {'status':'READY','task':self.task(work,nid)}
         return {'status':'DONE' if all(self.node_status(s,n)=='PASSED' for n in nodes.values()) else 'BLOCKED','reason':'全工程の有効な証拠を照合'}
-    def claim(self,work,node_id,actor,seconds=900):
+    def claim(self,work,node_id,actor,seconds=900,agent_guard_ref=None):
+        from agent_guard import consume_inventory
+        if self.state(work)['plan'].get('workflow_version') == 'production/2':
+            consume_inventory(self,work,'claim',agent_guard_ref)
         need(actor,'実行者IDがない');nxt=self.next(work)
         need(nxt.get('status')=='READY' and nxt['task']['node']['id']==node_id,'現在実行可能なノードではない')
         task=nxt['task'];need(task['node']['actor'] in ('AI','AUDITOR','TOOL'),'このノードはclaim対象外')
@@ -273,7 +289,10 @@ class Runtime:
         h=self.store.put(result)
         self.append('result',work,{'node':node['id'],'artifact':h,'input_hash':input_hash,'actor':actor,'verdict':result['verdict']})
         return h
-    def submit(self,work,node_id,token,result):
+    def submit(self,work,node_id,token,result,agent_guard_ref=None):
+        from agent_guard import consume_inventory
+        if self.state(work)['plan'].get('workflow_version') == 'production/2':
+            consume_inventory(self,work,'submit',agent_guard_ref)
         s=self.state(work);n=instantiate(s['plan'])[node_id];need(n['actor'] in ('AI','AUDITOR'),'AI分析の提出先ではない')
         c=s['claims'].get(node_id);need(c and c['token']==token and c['expires_at']>time.time(),'有効な課題受領がない')
         need(not self.integrity(s),'正本または候補に未記録の変更がある')
@@ -348,7 +367,10 @@ class Runtime:
             need(any(e['kind'] in ('ci','check') and e['data'].get('head_sha',e['data'].get('source_sha'))==s['candidate_sha'] for e in es),'現在のSHAの検査証拠がない')
         elif node_id=='G3_HOST':need(any(e['kind']=='app' and e['data']['source_sha']==s['candidate_sha'] for e in es),'到達確認済みの実働アプリ証拠がない')
         return self._finish(work,n,{'verdict':'PASS','evidence_refs':list(evidence_refs)},c['input_hash'],c['actor'])
-    def execute(self,work,node_id):
+    def execute(self,work,node_id,agent_guard_ref=None):
+        from agent_guard import consume_inventory
+        if self.state(work)['plan'].get('workflow_version') == 'production/2':
+            consume_inventory(self,work,'execute',agent_guard_ref)
         s=self.state(work);n=instantiate(s['plan'])[node_id];nxt=self.next(work)
         need(n['actor']=='CODE' and nxt.get('task',{}).get('node',{}).get('id')==node_id,'実行可能なコードノードではない')
         if node_id=='S00_RECOVER':need(not self.integrity(s),'正本が変わった')
@@ -441,7 +463,10 @@ class Runtime:
         self.fingerprint_refs(s,evidence_refs)
         self.append('result_reopened',work,{'node':node_id,'previous_result':s['results'][node_id]['artifact'],'reason':reason,'evidence_refs':evidence_refs})
 
-    def production_result(self,work,node_id,token,result):
+    def production_result(self,work,node_id,token,result,agent_guard_ref=None):
+        from agent_guard import consume_inventory
+        if self.state(work)['plan'].get('workflow_version') == 'production/2':
+            consume_inventory(self,work,'production-result',agent_guard_ref)
         from production import check_result
         s=self.state(work);n=instantiate(s['plan'])[node_id]
         need(s['plan'].get('workflow_version') and n['actor']=='TOOL','制作ツール工程ではない')
@@ -458,11 +483,103 @@ class Runtime:
             need(key in context,'制作入力の版が足りない:'+key)
         return self.append('production_context',work,{'context':context})
 
+    @staticmethod
+    def create_recovery_copy(root, archive_path, prefix, work):
+        """Extract a verified Store into a dedicated copy namespace, never in place.
+
+        The source archive remains immutable. This is local recovery provenance,
+        not authentication of a user decision or a new accepted result.
+        """
+        import zipfile,json,hashlib
+        root=Path(root).resolve();archive=Path(archive_path).resolve()
+        import re
+        need(isinstance(work,str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*',work),'コピーWork名が不正')
+        destination=root/'work'/'recovery-copies'/work/'store'
+        need(destination.resolve()==destination,'コピー先のsymlink aliasを拒否する')
+        need(not destination.exists() and not destination.is_symlink(),'コピー先は新しい空の専用pathが必要')
+        destination.mkdir(parents=True)
+        archive_hash=sha(archive);files={}
+        with zipfile.ZipFile(archive) as z:
+            names=[n for n in z.namelist() if n.startswith(prefix+'/events/') or n.startswith(prefix+'/artifacts/')]
+            need(names and len(names)==len(set(names)),'原Storeの出所が空・重複')
+            for name in names:
+                rel=name[len(prefix)+1:];parts=Path(rel).parts
+                need(len(parts)==2 and parts[0] in ('events','artifacts') and parts[1].endswith('.json'),'原Storeのpathが不正')
+                target=destination/rel;target.parent.mkdir(exist_ok=True);raw=z.read(name);target.write_bytes(raw);files[rel]=hashlib.sha256(raw).hexdigest()
+        store=Store(destination);events=store.events()
+        need(events and any(e['work']==work and e['kind']=='opened' for e in events),'原Storeに対象Workがない')
+        for p in (destination/'artifacts').glob('*.json'):store.get(p.stem)
+        need(sha(archive)==archive_hash,'原archiveがコピー中に変化した')
+        origin={'schemaVersion':'recovery-copy-origin/1','storeRoot':str(destination),'sourceArchive':str(archive),'sourceArchiveSHA256':archive_hash,'sourcePrefix':prefix,'work':work,'originalHead':store.head,'originalEventCount':len(events),'files':files}
+        (destination/'.recovery-copy-origin.json').write_text(json.dumps(origin,ensure_ascii=False,indent=2)+'\n')
+        return destination
+
+    def verify_recovery_copy_origin(self,work):
+        import zipfile,json,hashlib
+        expected=self.root/'work'/'recovery-copies'/work/'store'
+        need(expected.resolve()==expected and self.store.root==expected,'回収移行はaliasではない専用コピーStoreだけで行う')
+        current=self.root
+        for part in expected.relative_to(self.root).parts:
+            current=current/part
+            need(not current.is_symlink(),'コピーStoreのsymlink componentを拒否する')
+        marker=self.store.root/'.recovery-copy-origin.json'
+        need(marker.is_file() and not marker.is_symlink(),'原archiveから作成したコピー出所が必要')
+        origin=json.loads(marker.read_text())
+        need(origin.get('schemaVersion')=='recovery-copy-origin/1' and origin.get('storeRoot')==str(self.store.root) and origin.get('work')==work,'コピーStore実体と出所が違う')
+        archive=Path(origin['sourceArchive']).resolve()
+        need(self.store.root not in archive.parents and sha(archive)==origin['sourceArchiveSHA256'],'原archiveの出所・版が違う')
+        with zipfile.ZipFile(archive) as z:
+            prefix=origin['sourcePrefix'];names=[n for n in z.namelist() if n.startswith(prefix+'/events/') or n.startswith(prefix+'/artifacts/')]
+            files={n[len(prefix)+1:]:hashlib.sha256(z.read(n)).hexdigest() for n in names}
+        need(files and files==origin['files'],'コピー出所の収録範囲が違う')
+        for rel,h in files.items():need(sha(self.store.root/rel)==h,'コピー元の履歴・成果物が変わった:'+rel)
+        events=self.store.events();count=origin['originalEventCount']
+        need(type(count)is int and 0<count<=len(events) and events[count-1]['hash']==origin['originalHead'],'コピー元の台帳prefixが違う')
+        return origin
+
     def migrate_definition(self,work,from_hash,evidence_refs):
         s=self.state(work);need(s['definition_hash']==from_hash and from_hash!=DEFINITION_HASH,'移行前の版が違う')
         need(not s['claims'] and evidence_refs,'実行中又は移行照合証拠がない')
         self.fingerprint_refs(s,evidence_refs)
-        return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs})
+        # A real production Work requires an explicit immutable preflight, not a
+        # bare evidence ID used as a route around a definition mismatch.
+        recovery_proof = None
+        if s['plan'].get('workflow_version')=='production/2' and not s['plan'].get('simulation'):
+            import json
+            from store import digest
+            origin=self.verify_recovery_copy_origin(work)
+            expected={'work':work,'fromDefinition':from_hash,'toDefinition':DEFINITION_HASH,'storeRoot':str(self.store.root),'copyOriginHash':digest(origin),
+                      'planHash':digest(s['plan']),'sourceManifestHash':digest(s['plan']['source_manifest']),
+                      'candidateManifestHash':digest(s['candidate_manifest']),'rulesHash':digest(s['plan']['rules']),
+                      'userRecordsHash':digest(s['users']), 'ledgerHead':self.store.head}
+            for ref in evidence_refs:
+                e=s['evidence'].get(ref,{})
+                if e.get('kind')!='file':continue
+                raw=file(self.root,e['data']['path'])
+                need(sha(raw)==e['data']['sha256'],'移行証拠が差し替えられた')
+                try:proof=json.loads(raw.read_text())
+                except (ValueError,UnicodeError):continue
+                if proof.get('schemaVersion')!='recovery-definition-preflight/1':continue
+                # The registered evidence event follows the preflight's observed
+                # head; all subsequent events must only register this proof.
+                head=proof.get('ledgerHead');events=self.store.events()
+                position=next((i for i,x in enumerate(events) if x['hash']==head),None)
+                need(position is not None and all(x['kind']=='evidence' and x['work']==work and x['payload']['id'] in evidence_refs for x in events[position+1:]),'移行preflight後のWork状態が変わった')
+                target={**expected,'ledgerHead':head}
+                need(all(proof.get(k)==v for k,v in target.items()),'移行preflightの版・範囲・承認が違う')
+                need(proof.get('copyOnly') is True and proof.get('sourceRoot')==str(self.root),'作業コピーだけの移行証拠が必要')
+                need(manifest(self.root,s['plan'].get('protected_manifest',{}))==s['plan'].get('protected_manifest',{}),'移行前の保護対象が違う')
+                need(manifest(self.root,s['plan']['rules'])==s['plan']['rules'],'移行前の規則が違う')
+                need(manifest(self.root,s['candidate_manifest'])==s['candidate_manifest'],'移行前の候補が違う')
+                from agent_guard import validate_policy_work
+                from team import validate_policy
+                validate_policy_work(validate_policy(s['plan'].get('agent_team')) or {},work)
+                rows=proof.get('resultDispositions',[])
+                need({r.get('node') for r in rows}==set(s['results']) and len(rows)==len(s['results']),'全旧結果の扱いを照合する')
+                need(all(r.get('artifact')==s['results'][r['node']]['artifact'] and r.get('disposition')=='INVALIDATED_BY_DEFINITION' and r.get('reason') for r in rows),'旧PASSを新PASSに移植しない')
+                recovery_proof={'evidence':ref,'sha256':e['data']['sha256'],'resultDispositions':rows,'preservedUserRecordsHash':digest(s['users'])}
+            need(recovery_proof is not None,'回収Workの照合済み移行preflightが必要')
+        return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs,**({'recoveryProof':recovery_proof} if recovery_proof else {})})
 
     def next_integration(self,work,s,nodes):
         from requests import pending

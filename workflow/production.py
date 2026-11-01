@@ -105,6 +105,89 @@ def diagram(rt,work):
     return '\n'.join(lines+['```',''])
 
 def implementation_manifest(root):
-    import hashlib
-    root=Path(root);paths=list((root/'tools/textbook').rglob('*'))+list((root/'work/items/W-GOV-010-coded-authoring/engine').glob('*'))
-    return {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths) if p.is_file() and p.suffix in ('.mjs','.py','.ts','.json','.txt','.lock') and '__pycache__' not in p.parts}
+    import hashlib, re
+    root = Path(root).resolve()
+    suffixes = ('.mjs', '.py', '.ts', '.tsx', '.css', '.json', '.txt', '.lock', '.yaml')
+    paths = {p for p in list((root/'tools/textbook').rglob('*')) + list((root/'work/items/W-GOV-010-coded-authoring/engine').glob('*'))
+             if p.is_file() and p.suffix in suffixes and '__pycache__' not in p.parts}
+    # The receipt includes actual browser code, catalog/route/Store bridges,
+    # locked dependencies and their local import closure. A source change in a
+    # transitive helper or a referenced image must invalidate the same cache.
+    entries = (
+        'src/main.tsx',
+        'src/components/textbook/nestedMathTemplate.ts',
+        'src/components/textbook/NestedConstructionMath.tsx',
+        'src/components/textbook/nested-construction-math.css',
+        'src/components/textbook/nestedMathGeometry.ts',
+        'src/components/textbook/ConstructionLessonReadingFlow.tsx',
+        'src/components/textbook/construction-lesson-reading.css',
+        'src/components/textbook/GuidedMathReadingFlow.tsx',
+        'src/domain/nestedLesson.ts', 'src/domain/compiledNestedLesson.ts',
+        'src/domain/nestedMigration.ts', 'src/domain/nestedLessonStorage.ts',
+        'src/domain/textbook.ts', 'src/domain/textbookSchema.ts',
+        'src/stores/useAppStore.ts', 'src/pages/N0910RevisionPage.tsx',
+        'src/pages/N0910ArchivePage.tsx', 'src/pages/TextbookUnitPage.tsx',
+        'src/data/textbook/math/index.ts',
+        'src/data/textbook/math/numbers/n09Lesson.ts',
+        'src/data/textbook/math/numbers/n10Lesson.ts',
+        'src/data/textbook/math/numbers/n09Revision4.json',
+        'src/data/textbook/math/numbers/n10Revision3.json',
+        'src/data/textbook/math/numbers/n09ConstructionCompiled.json',
+        'src/data/textbook/math/numbers/n10ConstructionCompiled.json',
+        'src/data/textbook/math/numbers/n0910CandidatePins.json',
+        'package.json', 'pnpm-lock.yaml',
+    )
+    pending = [root/name for name in entries]
+    scanned = set()
+    root_absolute = root.resolve()
+    imports = re.compile(r"(?:\bfrom\s*|\bimport\s*(?:\(\s*)?)[\"']([^\"']+)[\"']")
+
+    def internal(candidate):
+        try:
+            candidate.resolve().relative_to(root_absolute)
+            return True
+        except ValueError:
+            return False
+
+    # Preserve logical in-checkout symlink aliases in the initial tool tree.
+    # Canonical imported paths may name the same bytes twice; both loader paths
+    # remain visible, so deleting an alias changes the manifest. No external
+    # target is opened, including aliases found by the initial glob.
+    paths = {p for p in paths if internal(p)}
+
+    def json_assets(value):
+        if isinstance(value, dict):
+            src = value.get('src')
+            if isinstance(src, str) and src.lstrip('/').startswith('assets/'):
+                asset = root/'public'/src.lstrip('/')
+                if asset.is_file() and internal(asset):
+                    paths.add(asset)
+            for child in value.values():
+                json_assets(child)
+        elif isinstance(value, list):
+            for child in value:
+                json_assets(child)
+
+    while pending:
+        current = pending.pop()
+        if current in scanned or not current.is_file() or not internal(current):
+            continue
+        scanned.add(current)
+        paths.add(current)
+        if current.suffix == '.json':
+            try:
+                json_assets(json.loads(current.read_text(encoding='utf-8')))
+            except (ValueError, UnicodeError):
+                pass  # Invalid JSON still has a different byte fingerprint.
+        if current.suffix not in ('.ts', '.tsx', '.mjs', '.js', '.css'):
+            continue
+        text = current.read_text(encoding='utf-8')
+        for ref in imports.findall(text):
+            if not ref.startswith('.'):
+                continue  # External versions are bound by package + lock.
+            candidate = current.parent/ref.split('?', 1)[0]
+            candidates = [candidate] + [Path(str(candidate) + suffix) for suffix in ('.ts', '.tsx', '.mjs', '.js', '.json', '.css')] + [candidate/('index' + suffix) for suffix in ('.ts', '.tsx', '.mjs', '.js')]
+            dependency = next((p for p in candidates if p.is_file() and internal(p)), None)
+            if dependency is not None:
+                pending.append(dependency.resolve())
+    return {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths) if internal(p) and p.is_file()}

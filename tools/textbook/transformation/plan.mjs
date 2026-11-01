@@ -2,6 +2,14 @@ import {validateTransformationPlan} from './validate.mjs';
 import {transformationCandidates} from './patterns.mjs';
 export function planTransformations({ir,transformationPlan}){
  const checked=validateTransformationPlan(ir,transformationPlan);
+ if(transformationPlan.nestedPipeline==='n0910/1'){
+  if(checked.status!=='PASS')return checked;
+  const parents=transformationPlan.nodeDesign.filter(n=>n.parts.length);
+  const candidates=parents.flatMap(n=>n.parts.map(p=>({id:p.id,parentRef:n.nodeId,nodeId:n.nodeId,role:p.role,learnerDecision:p.prompt,nextUseRef:n.resultId,prerequisiteNodeIds:n.prerequisiteNodeIds})));
+  return {...checked,status:'NEEDS_AI_REVIEW',candidates,constructionCandidates:candidates,
+   decisions:parents.map(n=>({id:n.nodeId,decision:'REVIEW_REQUIRED',partIds:n.parts.map(p=>p.id),reason:'Source-bound candidate; semantic review is required before adoption.'})),
+   automaticAcceptance:false,aiReviewStatus:'NOT_REVIEWED',meaningAuditRequired:true};
+ }
  if(transformationPlan.schemaVersion==='transformation-plan/3'){
   if(checked.status!=='PASS')return checked;
   const constructions=[...transformationPlan.constructionPlan.sameMeaningInteractions??[],...transformationPlan.constructionPlan.interactions],legacy=transformationPlan.constructionPlan.legacyLocalItems??[];

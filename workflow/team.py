@@ -29,10 +29,12 @@ def validate_policy(policy, *, allow_empty=False):
     need(isinstance(policy, dict), 'team policyはobject')
     p = deepcopy(policy)
     need(p.get('schema_version') == 'team/1', '未対応のteam policy')
-    need(type(p.get('max_active_subagents')) is int and p['max_active_subagents'] == 2, '子agent上限は2')
+    need(type(p.get('max_active_subagents')) is int and p['max_active_subagents'] in (2, 3, 4), '子agent上限は2、固定3、承認付き固定4')
     need(p.get('allow_grandchildren') is False and p.get('store_writer') == 'M', '孫agent禁止・M単一writerが必要')
     p.setdefault('root_agent_ref', '/root')
     need(isinstance(p['root_agent_ref'], str) and p['root_agent_ref'], '実root agent参照が必要')
+    from agent_guard import validate_fixed_team_policy
+    validate_fixed_team_policy(p)
     rows = p.get('required_scopes')
     need(isinstance(rows, list) and (rows or allow_empty), '必要review scopeを明示する')
     keys = set()
@@ -82,6 +84,10 @@ def project(events, work):
                     p['resolved_findings'].setdefault((f['findingId'], f['resolvesOutputRef']), []).append(dict(f, outputRef=v['outputRef']))
         elif e['kind'] == 'team_task_reconciled':
             p['reconciliations'][v['registrationRef']] = v
+        elif e['kind'] == 'team_policy_adopted' and v.get('reviewer_handoff'):
+            h = v['reviewer_handoff']
+            for ref in h['interruptedRegistrations']:
+                p['reconciliations'][ref] = dict(registrationRef=ref, status='INTERRUPTED', evidenceRefs=h['evidenceRefs'], submissionActor='M', handoffApproval=h['approval_ref'])
     return p
 
 

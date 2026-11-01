@@ -23,7 +23,12 @@ def capture_harness(rt, work, record, submission_actor='M', event_id=None):
     need(raw.get('rawResult') is not None, 'harness原出力が必要')
     need(raw['attestationMethod'] in ('harness-tool-result','transcribed-tool-result','simulation'), 'harness転記方法が不明')
     need(raw['attestationMethod'] != 'simulation' or s['plan'].get('simulation'), '実Workへの模擬harness captureは禁止')
-    if 'observedStatus' in raw:
+    if raw.get('toolName')=='collaboration.list_agents' and raw.get('operation') and raw.get('nonce'):
+        from agent_guard import verify_agent_inventory
+        import time
+        verify_agent_inventory(policy,raw,session=policy.get('guard_session'),operation=raw['operation'],nonce=raw['nonce'],now_ms=time.time()*1000)
+        record_type='agent-inventory'
+    elif 'observedStatus' in raw:
         need(raw['observedStatus'] in ('COMPLETED','CANCELLED','STALE','INTERRUPTED','UNVERIFIED'), '照合したharness状態が不明')
         need(raw.get('toolName') in ('collaboration.list_agents','collaboration.wait_agent','collaboration.interrupt_agent','collaboration.agent_result'), 'harness状態の出所が不明')
         record_type = 'reconciliation'
@@ -90,7 +95,12 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
             source = data.get('source_sha',data.get('head_sha')); need(source==current_source(s,node), 'target証拠のsourceが違う')
         if e['kind']=='screenshot':
             capture=s['evidence'].get(data.get('capture_ref'),{})
-            need(capture.get('kind')=='capture' and capture.get('data',{}).get('source_sha')==current_source(s,node), 'target画像は現在sourceのcaptureへ束縛する')
+            if capture.get('kind')=='local_capture':
+                from local_render_evidence import validate_local_capture
+                checked=validate_local_capture(rt,work,data['capture_ref'])
+                need(checked['source_sha']==current_source(s,node) and checked['files'].get(data['path'])==data.get('sha256'),'targetローカル画像は現版の原画像へ束縛する')
+            else:
+                need(capture.get('kind')=='capture' and capture.get('data',{}).get('source_sha')==current_source(s,node), 'target画像は現在sourceのcaptureへ束縛する')
             visual=True
         if e['kind']=='file' and node.get('phase') in ('analysis','pre-design'): visual=True
         if data.get('sha256'): allowed.add(data['sha256'])
@@ -118,7 +128,7 @@ def register_task(rt, work, assignment, packet, harness, submission_actor='M', e
     need(a['inputHash'] == rt.input_hash(s, nodes[a['node']]), '登録時の基礎入力が古い')
     validate_target(rt, work, s, nodes[a['node']], a, packet)
     need(all(h.get(k) for k in ('agentRef','taskRef','toolResultRef','attestationMethod','logicalRole')), '実harness登録情報が不足')
-    need(h['agentRef'] == a['performerRef'] and h['logicalRole'] in ('M','A','B'), '実担当とassignmentが違う')
+    need(h['agentRef'] == a['performerRef'] and h['logicalRole'] in ({'M',*policy['fixed_subagents']} if policy.get('fixed_subagents') else {'M','A','B'}), '実担当とassignmentが違う')
     need(h['attestationMethod'] in ('harness-tool-result','transcribed-tool-result','simulation'), '未確認のharness記録')
     need(h['attestationMethod'] != 'simulation' or s['plan'].get('simulation'), '実Workへ模擬登録は禁止')
     raw = rt.store.get(h['toolResultRef'])
@@ -140,6 +150,8 @@ def register_task(rt, work, assignment, packet, harness, submission_actor='M', e
             return dict(registrationRef=oldref, assignmentHash=old['assignmentHash'], duplicate=True)
         need(p['reconciliations'].get(oldref, {}).get('status') in ('COMPLETED','CANCELLED','STALE','INTERRUPTED'), '実行中taskの担当変更は禁止')
         need(a['roleEpoch'] > old['assignment']['roleEpoch'], '交代後は新roleEpochが必要')
+    from agent_guard import enforce_registered_pool
+    enforce_registered_pool(policy,p['registrations'],h)
     active = [r for ref,r in p['registrations'].items() if p['reconciliations'].get(ref, {}).get('status') not in ('COMPLETED','CANCELLED','STALE','INTERRUPTED')]
     children = {r['harness']['agentRef'] for r in active if r['harness']['logicalRole'] != 'M'}
     if h['logicalRole'] != 'M':

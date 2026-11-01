@@ -1,0 +1,503 @@
+{
+  "unit": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n10",
+    "revision": 3,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 10,
+      "sourcePages": [
+        24,
+        25,
+        26
+      ]
+    },
+    "title": "平方根の証明と有理化",
+    "subtitle": "二乗と符号を確かめ、分数の値を保ったまま根号を扱う。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N10",
+      "rightsNote": "教師編集WordのN10原問21件を照合したレビュー用新規学習本文。元の解答別冊未提供・独立数学監査。出版社ガイドの再配布許諾は確認されていない。"
+    },
+    "objectives": [
+      "平方根の積・商の性質を、二乗と符号の両方から確かめる",
+      "根号の積と和を区別して式を計算する",
+      "等価な分数操作と共役を使って分母を有理化する"
+    ],
+    "sections": [
+      {
+        "id": "lesson",
+        "number": "10",
+        "title": "本文",
+        "description": "根号を変形する根拠を証明し、有理化へ応用する。",
+        "role": "concept",
+        "figures": [],
+        "readingFlow": [],
+        "items": []
+      }
+    ],
+    "constructionLessonVersion": "n0910/1",
+    "nestedContract": {
+      "compiledHash": "a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd",
+      "parents": [
+        {
+          "nodeId": "n10-q01-square",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q01-square::rootSquare",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-01",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-01::value",
+              "expected": "25"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q02-sign",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q02-sign::value",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q03-expand",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q03-expand::powerA",
+              "expected": "2"
+            },
+            {
+              "id": "n10-q03-expand::powerB",
+              "expected": "2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-03",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-03::aValue",
+              "expected": "a"
+            },
+            {
+              "id": "n10-03::bValue",
+              "expected": "b"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q04-sign",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q04-sign::relation",
+              "expected": ">"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q05-denominator",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q05-denominator::relation",
+              "expected": "\\ne"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q05-square",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q05-square::numPower",
+              "expected": "2"
+            },
+            {
+              "id": "n10-q05-square::denPower",
+              "expected": "2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-05",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-05::numerator",
+              "expected": "a"
+            },
+            {
+              "id": "n10-05::denominator",
+              "expected": "b"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q06-sign",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q06-sign::relation",
+              "expected": ">"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q07-product",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q07-product::inside",
+              "expected": "48"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-07",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-07::factor",
+              "expected": "3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q08-factor",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q08-factor::coefficient",
+              "expected": "4"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q09-left",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q09-left::coefficient",
+              "expected": "2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q09-right",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q09-right::coefficient",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q10-coefficients",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q10-coefficients::coefficient",
+              "expected": "7"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q11-formula",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q11-formula::middleSign",
+              "expected": "-"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-11",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-11::leftSquare",
+              "expected": "2"
+            },
+            {
+              "id": "n10-11::rightSquare",
+              "expected": "3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q12-product",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q12-product::inside",
+              "expected": "6"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-12",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-12::constant",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q13-identity",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q13-identity::operation",
+              "expected": "-"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-13",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-13::left",
+              "expected": "7"
+            },
+            {
+              "id": "n10-13::right",
+              "expected": "2"
+            },
+            {
+              "id": "n10-13::difference",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-14",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-14::operation",
+              "expected": "分子と分母に同じ0でない数を掛ける"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q15-factor",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q15-factor::factor",
+              "expected": "\\sqrt3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-15",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-15::numerator",
+              "expected": "\\sqrt3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q16-denominator",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q16-denominator::square",
+              "expected": "3"
+            },
+            {
+              "id": "n10-q16-denominator::denominator",
+              "expected": "6"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q17-factor",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q17-factor::factor",
+              "expected": "\\sqrt3-\\sqrt2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q17-nonzero",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q17-nonzero::relation",
+              "expected": ">"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-18",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-18::A",
+              "expected": "3"
+            },
+            {
+              "id": "n10-18::B",
+              "expected": "2"
+            },
+            {
+              "id": "n10-18::C",
+              "expected": "1"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-19",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-19::left",
+              "expected": "3"
+            },
+            {
+              "id": "n10-19::inside",
+              "expected": "6"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q20-factor",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q20-factor::factor",
+              "expected": "2-\\sqrt3"
+            },
+            {
+              "id": "n10-q20-factor::reason",
+              "expected": "nonzero-and-rational-product"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-20",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-20::power",
+              "expected": "2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q21-denominator",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q21-denominator::D",
+              "expected": "1"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q21-expand",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q21-expand::P",
+              "expected": "4"
+            },
+            {
+              "id": "n10-q21-expand::K",
+              "expected": "4"
+            },
+            {
+              "id": "n10-q21-expand::Q",
+              "expected": "3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q21-constants",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q21-constants::C",
+              "expected": "7"
+            }
+          ]
+        }
+      ]
+    },
+    "requiredInteractionRefs": [
+      "n10-q01-square",
+      "n10-01",
+      "n10-q02-sign",
+      "n10-q03-expand",
+      "n10-03",
+      "n10-q04-sign",
+      "n10-q05-denominator",
+      "n10-q05-square",
+      "n10-05",
+      "n10-q06-sign",
+      "n10-q07-product",
+      "n10-07",
+      "n10-q08-factor",
+      "n10-q09-left",
+      "n10-q09-right",
+      "n10-q10-coefficients",
+      "n10-q11-formula",
+      "n10-11",
+      "n10-q12-product",
+      "n10-12",
+      "n10-q13-identity",
+      "n10-13",
+      "n10-14",
+      "n10-q15-factor",
+      "n10-15",
+      "n10-q16-denominator",
+      "n10-q17-factor",
+      "n10-q17-nonzero",
+      "n10-18",
+      "n10-19",
+      "n10-q20-factor",
+      "n10-20",
+      "n10-q21-denominator",
+      "n10-q21-expand",
+      "n10-q21-constants"
+    ]
+  },
+  "sourceBinding": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
+    "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "designSha256": "d144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd"
+  },
+  "compiledHash": "a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd",
+  "implementationStatus": "STAGED_NOT_PUBLISHED",
+  "automaticAcceptance": false
+}

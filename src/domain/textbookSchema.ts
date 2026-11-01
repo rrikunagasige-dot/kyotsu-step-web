@@ -105,6 +105,15 @@ export const TextbookChapterMetaSchema = z.object({
   sourcePages: z.array(z.number().int().positive()).min(1),
 })
 
+const NestedPartIdSchema = z.string().regex(/^[a-z0-9][a-z0-9-]*::[A-Za-z][A-Za-z0-9-]*$/)
+const NestedContractSchema = z.object({
+  compiledHash: z.string().regex(/^[a-f0-9]{64}$/),
+  parents: z.array(z.object({ nodeId: IdSchema, sectionId: IdSchema, parts: z.array(z.object({ id: NestedPartIdSchema, expected: z.string().min(1) })).min(1) })).min(1),
+})
+// Unit-level refinement permits empty items only for the explicit N09/N10 contract.
+// Standalone TextbookSectionSchema keeps its historical minimum of one.
+const UnitSectionSchema = TextbookSectionSchema.extend({ items: z.array(TextbookItemSchema) })
+
 const TextbookUnitBaseSchema = z.object({
   schemaVersion: z.enum(['1.0', '1.1']),
   unitId: IdSchema,
@@ -120,7 +129,9 @@ const TextbookUnitBaseSchema = z.object({
     rightsNote: z.string().optional(),
   }),
   objectives: z.array(z.string().min(1)).min(1),
-  sections: z.array(TextbookSectionSchema).min(1),
+  sections: z.array(UnitSectionSchema).min(1),
+  constructionLessonVersion: z.literal('n0910/1').optional(),
+  nestedContract: NestedContractSchema.optional(),
   constructionItems: z.array(ConstructionInteractionSchema).optional(),
   constructionItemsV2: z.array(ConstructionInteractionV2Schema).optional(),
   revisionMigration: z.object({fromRevision:z.number().int(), preservedInteractionIds:z.array(IdSchema), meaningFingerprints:z.record(z.string(),z.object({from:IdSchema,to:IdSchema}))}).optional(),
@@ -145,10 +156,16 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   const sectionIds = new Set<string>()
   const itemIds = new Set<string>()
   const overlayIds = new Set<string>()
-  const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = [...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []], allIds = [...ordinaryIds, ...constructions.map(i => i.id)]
-  if (constructions.length && !unit.requiredInteractionRefs) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '式組立を含む単元には全親の進度契約が必要です' })
+  const nested = unit.constructionLessonVersion === 'n0910/1' ? unit.nestedContract?.parents ?? [] : []
+  const validNestedUnit = unit.subject === 'math-1a' && (unit.unitId === 'math-numbers-expressions-n09' && unit.revision === 4 || unit.unitId === 'math-numbers-expressions-n10' && unit.revision === 3)
+  if (Boolean(unit.constructionLessonVersion) !== Boolean(unit.nestedContract) || unit.constructionLessonVersion && !validNestedUnit) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '新版N09/N10の明示版と実部品契約を一緒に指定してください' })
+  for (const parent of nested) if (!unit.sections.some(section => section.id === parent.sectionId)) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '入れ子式の親が参照するsectionが存在しません' })
+  const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = [...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []], allIds = [...ordinaryIds, ...constructions.map(i => i.id), ...nested.map(parent => parent.nodeId)]
+  if ((constructions.length || nested.length) && !unit.requiredInteractionRefs) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '式組立を含む単元には全親の進度契約が必要です' })
   if (new Set(allIds).size !== allIds.length) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '通常回答と式組立のIDが重複しています' })
-  const partIds = constructions.flatMap(i => i.parts.map(p => p.id))
+  const partIds = [...constructions.flatMap(i => i.parts.map(p => p.id)), ...nested.flatMap(parent => parent.parts.map(part => part.id))]
+  if (nested.some(parent => parent.parts.some(part => !part.id.startsWith(parent.nodeId + '::')))) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '入れ子式の部品IDは所属する親IDへ束縛してください' })
+  if (partIds.some(id => allIds.includes(id))) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '部品IDと親回答IDが衝突しています' })
   if (new Set(partIds).size !== partIds.length) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の部品IDが重複しています' })
   for (const i of constructions) {
     if (i.sectionId ? !unit.sections.some(s => s.id === i.sectionId) : unit.sections.length !== 1) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立のsection対応が不明です' })
@@ -173,6 +190,7 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   }
 
   for (const [sectionIndex, section] of unit.sections.entries()) {
+    if (!section.items.length && !(validNestedUnit && unit.constructionLessonVersion === 'n0910/1' && nested.some(parent => parent.sectionId === section.id && parent.parts.length))) context.addIssue({ code: 'custom', path: ['sections', sectionIndex, 'items'], message: '通常教材のsectionには1件以上の回答が必要です' })
     if (sectionIds.has(section.id)) context.addIssue({ code: 'custom', path: ['sections', sectionIndex, 'id'], message: 'section id が重複しています' })
     sectionIds.add(section.id)
 

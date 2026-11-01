@@ -68,7 +68,12 @@ def code_operation(rt,work,nid,inputs):
         if state['plan'].get('construction_pipeline') == 'construction-layout/1':
             measurements = receipt.get('layoutMeasurements', [])
             context = dict(receipt.get('layoutMeasurementContext', {}), sourceSHA=state['candidate_sha'])
-            proc = subprocess.run(['node', str(rt.root/'tools/textbook/operations.mjs'), 'layout-validate'], input=json.dumps({'layoutPlan': inputs.get('layoutPlan'), 'measurements': measurements, 'measurementContext': context}), cwd=rt.root, capture_output=True, text=True)
+            layout_inputs = {'layoutPlan': inputs.get('layoutPlan'), 'measurements': measurements, 'measurementContext': context}
+            if state['plan'].get('nested_math_pipeline') == 'nested-math/1':
+                layout_inputs['nestedCompiled'] = inputs.get('compiled')
+                context['sourceManifest'] = state['candidate_manifest']
+                good = good and bool(inputs.get('compiled'))
+            proc = subprocess.run(['node', str(rt.root/'tools/textbook/operations.mjs'), 'layout-validate'], input=json.dumps(layout_inputs), cwd=rt.root, capture_output=True, text=True)
             try: layout_result=json.loads(proc.stdout)
             except ValueError: layout_result={'status':'FAIL','reason':'LAYOUT_ADAPTER_OUTPUT'}
             good = good and bool(measurements) and layout_result.get('status') == 'PASS'

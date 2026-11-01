@@ -5,7 +5,8 @@ import { describe,expect,it } from 'vitest'
 import { answerTextbookItem } from '../../domain/textbook'
 import { TextbookFormula } from './TextbookFormula'
 import { mathNumbersN12LegacyUnit as n12 } from '../../data/textbook/math/numbers/n12Lesson'
-import { mathNumbersN10Unit as n10 } from '../../data/textbook/math/numbers/n10Lesson'
+import n10Authored from '../../data/textbook/math/numbers/n10Authored.json'
+import { validateTextbookUnits } from '../../domain/textbookSchema'
 import { extractReviewSection,reviewTargets,activeReviewMarkIds } from '../../review/reviewTargets'
 import type { TextbookSection } from '../../domain/textbookSchema'
 const formula=(section:TextbookSection,id:string)=>{
@@ -13,6 +14,9 @@ const formula=(section:TextbookSection,id:string)=>{
  if(!block||block.type!=='formula')throw Error(id)
  return block
 }
+// This regression exercises the preserved flat reader, rather than the new
+// N10 nested reader whose section intentionally has no flat formula blocks.
+const n10 = validateTextbookUnits([n10Authored.unit])[0]
 describe('P015 stable identity and P016 mathematical groups',()=>{
  for(const [targetId,blockId] of [['n12-q06-layout','formula-q06-left-coef'],['n12-q12-layout','formula-q12-signed-coef']]){
   it(targetId+' retains N12 rendering with no sentinel item',()=>{

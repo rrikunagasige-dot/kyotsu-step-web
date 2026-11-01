@@ -19,6 +19,8 @@ type Props = {
   presentation: unknown; unit: TextbookUnit; section: TextbookSection; progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
+  /** An isolated cursor namespace; omitted preserves the existing learner key. */
+  storageScope?: string
 }
 type Node = { id: string; stageId: string; goal: string; role: string; knownRefs: string[]; resultId: string; interaction: string | null; extra: { table?: { caption: string; headers: string[]; rows: string[][] }; figure?: { id: string }; calculationSupport?: string } }
 type Display = { hintParts: TextbookReadingPart[][]; choices: Record<string, TextbookReadingPart[]>; feedback: Record<string, TextbookReadingPart[]> }
@@ -78,7 +80,7 @@ function SolutionTextbookAdapter({ presentation, transformationPresentation, uni
   }} />
 }
 
-function LegacyGuidedMathReadingFlow({ presentation, transformationPresentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+function LegacyGuidedMathReadingFlow({ presentation, transformationPresentation, unit, section, progress, onSummaryReached, onReviewAnswer, storageScope }: Props) {
   const data = presentation as Presentation
   const displays = data.semanticDisplay
   const formulaNumbers = data.equationNumbers
@@ -90,7 +92,8 @@ function LegacyGuidedMathReadingFlow({ presentation, transformationPresentation,
   const first = data.nodes.findIndex(n => !resolved(n))
   const frontier = first < 0 ? data.nodes.length : first
   const maxStage = first < 0 ? data.stages.length - 1 : data.stages.findIndex(s => s.id === data.nodes[first].stageId)
-  const storageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision
+  const learnerStorageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision
+  const storageKey = storageScope === undefined ? learnerStorageKey : learnerStorageKey + ':scope:' + storageScope
   const [cursor, setCursor] = useState(() => {
     const saved = window.localStorage.getItem(storageKey)
     const value = saved === null ? maxStage : Number(saved)

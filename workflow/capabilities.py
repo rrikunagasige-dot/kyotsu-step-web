@@ -97,6 +97,21 @@ def run_capability(rt, work, node, capability, inputs):
         request['corpusHash']=expected
         request['mandatoryInputs']=s['plan'].get('correction_queue_refs',[])
         inputs={**inputs,'request':request}
+    # Local render provenance is revalidated before consulting any service cache.
+    local_capture = None
+    if s['plan'].get('nested_math_pipeline') == 'nested-math/1' and node['phase'] == 'post-implementation' and capability in ('browser.verify','layout.validate'):
+        import json
+        from contracts import file
+        from local_render_evidence import validate_local_capture
+        need(inputs.get('localCaptureEvidence'),'NESTED_LOCAL_CAPTURE_REQUIRED')
+        local_capture = validate_local_capture(rt,work,inputs['localCaptureEvidence'])
+        compiled = inputs.get('compiled') if capability=='browser.verify' else inputs.get('nestedCompiled')
+        need(compiled and compiled.get('compiledHash')==local_capture['compiledHash'],'NESTED_CAPTURE_COMPILED_MISMATCH')
+        need(digest(compiled)==digest(json.loads(file(rt.root,local_capture['compiledPath']).read_text())),'NESTED_CURRENT_COMPILED_MISMATCH')
+        measurements = inputs.get('browserReceipt',{}).get('layoutMeasurements') if capability=='browser.verify' else inputs.get('measurements')
+        need(digest(measurements)==local_capture['browserRunsHash'],'NESTED_CAPTURE_RUNS_MISMATCH')
+        if capability=='browser.verify':
+            need(inputs.get('browserReceipt',{}).get('sourceSHA')==s['candidate_sha'],'NESTED_BROWSER_SOURCE_MISMATCH')
     impl = implementation_hash(rt)
     context_keys = ('corpusHash', 'modelHash', 'rulesHash', 'featureSchema') if capability in ('case.retrieve', 'ml.train') else ()
     context = {k: s.get('production_context', {}).get(k) for k in context_keys}
@@ -107,6 +122,7 @@ def run_capability(rt, work, node, capability, inputs):
     bindings={'sources':{p:s['plan']['source_manifest'][p] for p in (node['source_refs'] or s['plan']['source_manifest'])}, 'facets':{k:v for k,v in s.get('block_contexts',{}).get(node['block'],{}).items() if k in relevant}}
     if capability in ('case.finalize','feedback.capture'):
         bindings['feedback']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind'] in ('feedback_captured','issue') and (capability!='feedback.capture' or e['kind']=='issue' or e['payload'].get('quality')=='NEGATIVE')]
+    if local_capture is not None:bindings['local_capture']=digest(local_capture)
     if capability in ('release.verify','browser.verify'):bindings['candidate_sha']=s['candidate_sha']
     if capability=='protected.verify':bindings['protected_manifest']=s['plan'].get('protected_manifest',{})
     paths=([inputs['sourcePath']] if inputs.get('sourcePath') else [])+[f['sourcePath'] for f in inputs.get('figures',[]) if f.get('sourcePath')]
@@ -189,10 +205,11 @@ def run_capability(rt, work, node, capability, inputs):
 
 
 def run_stage(rt, work, inputs):
+    inputs=dict(inputs); agent_guard_ref=inputs.pop('_agent_guard_ref',None)
     nxt = rt.next(work); need(nxt['status'] == 'READY', '実行可能な工程がない')
     node = nxt['task']['node']; need(node['actor'] in ('AI', 'TOOL'), '判断／CODE工程はこのrunnerで実行しない')
     need(set(inputs) == set(node['capability_requests']), '必要な機能すべてに入力を渡す')
-    claim = rt.claim(work, node['id'], 'capability-runner')
+    claim = rt.claim(work, node['id'], 'capability-runner',agent_guard_ref=agent_guard_ref)
     refs=[];catalog=None
     for capability in node['capability_requests']:
         value=dict(inputs[capability])

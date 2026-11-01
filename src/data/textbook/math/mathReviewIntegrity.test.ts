@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { mathTextbookUnits } from './index'
+import n09Compiled from './numbers/n09ConstructionCompiled.json'
+import n10Compiled from './numbers/n10ConstructionCompiled.json'
+const nestedFor = (id: string) => id === n09Compiled.unitId ? n09Compiled : id === n10Compiled.unitId ? n10Compiled : undefined
 
 function normalize(value: string) {
   return value
@@ -18,6 +21,11 @@ function normalize(value: string) {
 describe('math textbook review integrity', () => {
   it('keeps every explicit choice set unique and contains the answer exactly once', () => {
     for (const unit of mathTextbookUnits) {
+      if (unit.constructionLessonVersion) for (const node of nestedFor(unit.unitId)!.nodeDesign) for (const part of node.parts) {
+        const choices = part.choices.map(c => normalize(c.value))
+        expect(new Set(choices).size, part.id).toBe(choices.length)
+        expect(choices.filter(c => c === normalize(part.expected)), part.id).toHaveLength(1)
+      }
       for (const section of unit.sections) {
         for (const item of section.items) {
           if (!item.choices?.length) continue
@@ -39,6 +47,7 @@ describe('math textbook review integrity', () => {
 
   it('uses one answer per decision, including explicitly shared operation slots', () => {
     for (const unit of mathTextbookUnits) {
+      if (unit.constructionLessonVersion) for (const node of nestedFor(unit.unitId)!.nodeDesign) for (const part of node.parts) expect(node.rows.reduce((n, row) => n + row.template.split('{' + part.key + '}').length - 1, 0), part.id).toBe(1)
       for (const section of unit.sections) {
         const counts = new Map<string, number>()
 
@@ -68,6 +77,7 @@ describe('math textbook review integrity', () => {
 
   it('does not print a text answer verbatim inside staged hints', () => {
     for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
+      if (unit.constructionLessonVersion) for (const node of nestedFor(unit.unitId)!.nodeDesign) for (const part of node.parts.filter(p => p.kind === 'text')) for (const choice of part.choices.filter(c => c.value !== part.expected)) if (normalize(part.expected).length >= 2) expect(normalize(choice.feedback).includes(normalize(part.expected)), part.id).toBe(false)
       for (const section of unit.sections) {
         for (const item of section.items) {
           if (item.answerType !== 'text') continue
@@ -91,6 +101,7 @@ describe('math textbook review integrity', () => {
         unit.title,
         unit.subtitle ?? '',
         ...unit.objectives,
+        ...(unit.constructionLessonVersion ? nestedFor(unit.unitId)!.nodeDesign.flatMap(n => [...n.leadParts.filter(p => p.type === 'text').map(p => p.text ?? ''), ...n.assumptions, ...n.parts.map(p => p.prompt)]) : []),
         ...unit.sections.flatMap((section) => [
           section.title,
           section.description ?? '',
@@ -117,7 +128,7 @@ describe('math textbook review integrity', () => {
 
   it('keeps support fading from strong toward medium/light in every review unit', () => {
     for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
-      const items = unit.sections.flatMap((section) => section.items)
+      const items = unit.constructionLessonVersion ? nestedFor(unit.unitId)!.nodeDesign.filter(n => n.parts.length) : unit.sections.flatMap((section) => section.items)
       expect(items[0]?.scaffoldLevel, `${unit.unitId}: first item should be strongly scaffolded`).toBe('strong')
       expect(
         items.some((item) => item.scaffoldLevel === 'medium' || item.scaffoldLevel === 'light'),

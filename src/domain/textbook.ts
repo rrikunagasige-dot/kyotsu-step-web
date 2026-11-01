@@ -1,3 +1,4 @@
+import type { NestedLedger } from './nestedLesson'
 import { isConstructionResolvedV2, selectConstructionPartV2, type ConstructionProgressV2 } from './constructionProgressV2'
 import n08Revision6 from '../data/textbook/math/numbers/n08Revision6.json'
 import type { TextbookItem, TextbookUnit } from './textbookSchema'
@@ -27,6 +28,8 @@ export type TextbookRevisionArchive = {
   startedAt: number
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
+  nestedProgress?: NestedLedger
+  nestedResetAt?: number
   constructionProgressV2?: ConstructionProgressV2
   constructionProgress?: ConstructionProgress
   completedAt?: number
@@ -40,6 +43,8 @@ export type TextbookUnitProgress = {
   startedAt: number
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
+  nestedProgress?: NestedLedger
+  nestedResetAt?: number
   constructionProgressV2?: ConstructionProgressV2
   constructionProgress?: ConstructionProgress
   completedAt?: number
@@ -191,6 +196,8 @@ function migrateN09ToRevision2(progress: TextbookUnitProgress): TextbookUnitProg
 
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
+  // N09/N10 constructor revisions are migrated only by the source-bound Store bridge.
+  if (unit.constructionLessonVersion === 'n0910/1') return progress.unitId === unit.unitId && progress.unitRevision === unit.revision ? progress : undefined
   if (progress.unitRevision === unit.revision) return progress
   // W041 is opt-in: an archived r7, including reset-empty records, is authoritative.
   if (unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId && unit.revision === 7) {
@@ -1141,6 +1148,18 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
 
 /** N12 v3 reset keeps old archived revisions, but clears all v3 active answers. */
 export function resetTextbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, now: number): TextbookUnitProgress | undefined {
+  if (unit.constructionLessonVersion === 'n0910/1' && unit.nestedContract) {
+    if (!Number.isFinite(now) || now < 0 || progress && progress.unitId !== unit.unitId) return undefined
+    const archivedRevisions = { ...progress?.archivedRevisions }
+    if (progress) {
+      const { archivedRevisions: previousArchives, ...archive } = progress
+      void previousArchives
+      archivedRevisions[progress.unitRevision === unit.revision ? unit.revision + '-reset-' + now : String(progress.unitRevision)] = archive
+    }
+    return { unitId: unit.unitId, unitRevision: unit.revision, startedAt: now, updatedAt: now, answers: {}, nestedResetAt: now,
+      nestedProgress: { schemaVersion: 'nested-lesson-progress/1', unitId: unit.unitId, revision: unit.revision, compiledHash: unit.nestedContract.compiledHash, draft: {}, records: {}, parents: {}, processedEventIds: [], startedAt: now, updatedAt: now },
+      archivedRevisions, ...(progress?.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : progress?.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}) }
+  }
   if (unit.unitId === 'math-numbers-expressions-n08' && [6,7].includes(unit.revision) && progress) {
     const current = effectiveTextbookProgress(unit, progress)
     if (!current) return undefined
@@ -1213,7 +1232,7 @@ export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUn
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
   if (!section) return { completed: 0, total: 0 }
   if (unit.requiredInteractionRefs) {
-    const ids = [...section.items.map(i => i.id), ...[...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []].filter(i => i.sectionId === sectionId || !i.sectionId && unit.sections.length === 1).map(i => i.id)]
+    const ids = [...section.items.map(i => i.id), ...[...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []].filter(i => i.sectionId === sectionId || !i.sectionId && unit.sections.length === 1).map(i => i.id), ...(unit.constructionLessonVersion === 'n0910/1' ? unit.nestedContract?.parents.filter(parent => parent.sectionId === sectionId).map(parent => parent.nodeId) ?? [] : [])]
     return { completed: ids.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total: ids.length }
   }
   return {
@@ -1233,7 +1252,19 @@ export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitP
   return { completed, total: items.length, percent: items.length ? Math.round((completed / items.length) * 100) : 0 }
 }
 
+function resolvedNestedParents(unit: TextbookUnit, progress: TextbookUnitProgress | undefined) {
+  const resolved = new Set<string>(), contract = unit.nestedContract, ledger = progress?.nestedProgress
+  if (unit.constructionLessonVersion !== 'n0910/1' || !contract || !progress || progress.unitId !== unit.unitId || progress.unitRevision !== unit.revision || !ledger || ledger.schemaVersion !== 'nested-lesson-progress/1' || ledger.unitId !== unit.unitId || ledger.revision !== unit.revision || ledger.compiledHash !== contract.compiledHash) return resolved
+  for (const parent of contract.parents) {
+    const record = ledger.parents?.[parent.nodeId]
+    if (!record || !Number.isSafeInteger(record.attemptCount) || record.attemptCount < 1 || !parent.parts.length || !parent.parts.every(part => ledger.draft?.[part.id] === part.expected && ledger.records?.[part.id]?.value === part.expected && (progress.nestedResetAt === undefined || ledger.records[part.id].firstSelectedAt >= progress.nestedResetAt))) break
+    resolved.add(parent.nodeId)
+  }
+  return resolved
+}
+
 export function isTextbookInteractionResolved(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, id: string): boolean {
+  if (unit.constructionLessonVersion === 'n0910/1' && unit.nestedContract?.parents.some(parent => parent.nodeId === id)) return resolvedNestedParents(unit, progress).has(id)
   const v2 = unit.constructionItemsV2?.find(i=>i.id===id)
   if(v2) return isConstructionResolvedV2(v2,progress?.constructionProgressV2?.[id]) && v2.prerequisiteInteractionIds.every(dep=>dep!==id && isTextbookInteractionResolved(unit,progress,dep))
   const construction = unit.constructionItems?.find(i => i.id === id)

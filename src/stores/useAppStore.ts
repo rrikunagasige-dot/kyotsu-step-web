@@ -5,7 +5,8 @@ import { builtInQuestionsZh } from '../data/questions.zh'
 import type { LearningAttempt, LearningSession, SimulationAttempt, SimulationSession } from '../domain/attempts'
 import { activateLearningBlank, answerLearningBlank, createLearningSession, recordExplanationOpen, recordExplanationRead, revisitLearningBlank, toLearningAttempt } from '../domain/learning'
 import type { LearningVariant, Question } from '../domain/questionSchema'
-import { answerTextbookItem, answerTextbookConstruction, answerTextbookConstructionV2, resetTextbookUnitProgress, type TextbookUnitProgress } from '../domain/textbook'
+import { answerTextbookItem, answerTextbookConstruction, answerTextbookConstructionV2, resetTextbookUnitProgress, textbookUnitProgress, type TextbookUnitProgress } from '../domain/textbook'
+import { nestedStoragePrefix, isLegacyNestedStorageKey, type NestedLedger } from '../domain/nestedLesson'
 import type { TextbookUnit } from '../domain/textbookSchema'
 import { scoreSimulation } from '../domain/scoring'
 import { answerSimulationItem, createSimulationSession, setSimulationQuestion, toggleSimulationReview } from '../domain/simulation'
@@ -37,6 +38,7 @@ type AppState = {
   answerConstructionV2: (unit: TextbookUnit, parentId: string, partId: string, choiceId: string, eventId: string) => void
   answerConstruction: (unit: TextbookUnit, parentId: string, partId: string, value: string, eventId: string) => void
   resetTextbookUnit: (unitId: string, unit?: TextbookUnit) => void
+  syncNestedTextbook: (unit: TextbookUnit, ledger: NestedLedger, resetAt?: number, oldArchive?: TextbookUnitProgress) => void
   startSimulation: (questionIds: string[], timeMode: SimulationSession['timeMode']) => string
   answerSimulation: (sessionId: string, itemId: string, selectedOptionIds: string[], numericValue?: number) => void
   toggleSimulationReview: (sessionId: string, itemId: string) => void
@@ -125,6 +127,26 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
     else delete next[unitId]
     return { textbookProgress: next }
   }),
+  syncNestedTextbook: (unit, ledger, resetAt, oldArchive) => set(state => {
+    if (unit.constructionLessonVersion !== 'n0910/1' || ledger.unitId !== unit.unitId || ledger.revision !== unit.revision || ledger.compiledHash !== unit.nestedContract?.compiledHash) return state
+    const previous = state.textbookProgress[unit.unitId]
+    if (previous?.nestedResetAt !== undefined && (resetAt === undefined || resetAt < previous.nestedResetAt)) return state
+    const archives = { ...previous?.archivedRevisions }
+    if (previous && previous.unitRevision !== unit.revision) {
+      const snapshot = { ...previous }; delete snapshot.archivedRevisions
+      archives[String(previous.unitRevision)] = structuredClone(snapshot)
+    }
+    if (oldArchive && oldArchive.unitId === unit.unitId && oldArchive.unitRevision < unit.revision) {
+      Object.assign(archives, oldArchive.archivedRevisions ?? {})
+      const snapshot = { ...oldArchive }; delete snapshot.archivedRevisions
+      archives[String(oldArchive.unitRevision)] = structuredClone(snapshot)
+    }
+    const next: TextbookUnitProgress = { unitId: unit.unitId, unitRevision: unit.revision, startedAt: ledger.startedAt, updatedAt: ledger.updatedAt, answers: {}, nestedProgress: structuredClone(ledger), archivedRevisions: archives,
+      ...(resetAt !== undefined ? { nestedResetAt: resetAt } : {}), ...(oldArchive?.completedAt !== undefined ? { previousRevisionCompletedAt: oldArchive.completedAt } : previous?.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}) }
+    const complete = textbookUnitProgress(unit, next)
+    if (complete.total && complete.completed === complete.total) next.completedAt = previous?.unitRevision === unit.revision ? previous.completedAt ?? ledger.updatedAt : ledger.updatedAt
+    return { textbookProgress: { ...state.textbookProgress, [unit.unitId]: next } }
+  }),
   startSimulation: (questionIds, timeMode) => {
     const state = get()
     const questions = questionIds.map((id) => findQuestion(state, id)).filter((question): question is Question => Boolean(question))
@@ -164,7 +186,10 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
   }),
   setCustomQuestions: (questions) => set({ customQuestions: questions }),
   setSettings: (partial) => set((state) => ({ settings: { ...state.settings, ...partial } })),
-  resetProgress: () => set({ learningSessions: {}, learningAttempts: [], simulationSessions: {}, simulationAttempts: [], textbookProgress: {} }),
+  resetProgress: () => {
+    if (typeof localStorage !== 'undefined') for (const key of Object.keys(localStorage)) if (key.startsWith(nestedStoragePrefix()) || isLegacyNestedStorageKey(key)) localStorage.removeItem(key)
+    set({ learningSessions: {}, learningAttempts: [], simulationSessions: {}, simulationAttempts: [], textbookProgress: {} })
+  },
 }), {
   // Review deployments use an isolated key; ordinary builds retain the existing history.
   name: import.meta.env.VITE_STORAGE_NAMESPACE || 'kyotsu-step-store',

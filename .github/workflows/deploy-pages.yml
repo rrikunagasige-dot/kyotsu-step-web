@@ -34,7 +34,7 @@ jobs:
         with:
           ref: ${{ github.sha }}
           path: publisher
-          sparse-checkout: work/items/W-MATH-046-n0910-approved-nine-continuation/publish-check.mjs
+          sparse-checkout: tools/release/w046-publish-check.mjs
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -60,7 +60,7 @@ jobs:
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs
       - name: Generate exact N09/N10 release supplement
-        run: node publisher/work/items/W-MATH-046-n0910-approved-nine-continuation/publish-check.mjs manifest
+        run: node publisher/tools/release/w046-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
       - name: Verify exact release before upload
@@ -77,7 +77,7 @@ jobs:
           pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort > /tmp/w046-preview.log 2>&1 &
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/work/items/W-MATH-046-n0910-approved-nine-continuation/publish-check.mjs verify
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w046-publish-check.mjs verify
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -88,7 +88,7 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w046-hosted
-        run: node publisher/work/items/W-MATH-046-n0910-approved-nine-continuation/publish-check.mjs verify
+        run: node publisher/tools/release/w046-publish-check.mjs verify
       - name: Verify public source and N08 operations
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}

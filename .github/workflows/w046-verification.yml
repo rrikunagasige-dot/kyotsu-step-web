@@ -1,0 +1,71 @@
+name: W046 isolated verification environment
+
+on:
+  push:
+    branches: ['work/w046-layout-verification-20261101']
+    paths: ['.github/workflows/w046-verification.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w046-isolated-verification
+  cancel-in-progress: false
+
+jobs:
+  restore-exact-environment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 18839ba97ec73c99f41c8715c3a888524b743358
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Check approved package and lock bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e  package.json' | sha256sum -c -
+          echo 'ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006  pnpm-lock.yaml' | sha256sum -c -
+          test "$(pnpm --version)" = '11.9.0'
+      - name: Restore unchanged locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
+      - name: Verify runtime and test tools load
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module -e "import {z} from 'zod'; z.string().parse('W046'); console.log('ZOD_IMPORT_OK')"
+          pnpm exec vitest --version
+          pnpm exec tsc --version
+          pnpm exec vite --version
+          git diff --exit-code -- package.json pnpm-lock.yaml
+      - name: Restore Chromium for later exact-candidate captures
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Save reproducible environment and baseline comparison data
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/w046-environment
+          git archive --format=tar HEAD src tools workflow .github package.json pnpm-lock.yaml pnpm-workspace.yaml vite.config.ts tsconfig.app.json tsconfig.json tsconfig.node.json playwright.config.ts index.html eslint.config.js | gzip > /tmp/w046-environment/baseline-18839.tar.gz
+          tar -czf /tmp/w046-environment/node-modules-linux-x64.tar.gz node_modules
+          tar -czf /tmp/w046-environment/chromium-linux-x64.tar.gz -C "$HOME/.cache" ms-playwright
+          node --version > /tmp/w046-environment/node-version.txt
+          pnpm --version > /tmp/w046-environment/pnpm-version.txt
+          sha256sum package.json pnpm-lock.yaml > /tmp/w046-environment/LOCK_SHA256.txt
+          printf '%s\n' 'Environment restoration only. Candidate tests, native workflow gates, reviewer acceptance and deployment are NOT performed by this job.' > /tmp/w046-environment/SCOPE.txt
+          (cd /tmp/w046-environment && sha256sum *.tar.gz > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: w046-exact-environment-${{ github.run_id }}
+          path: /tmp/w046-environment/
+          if-no-files-found: error
+          retention-days: 7

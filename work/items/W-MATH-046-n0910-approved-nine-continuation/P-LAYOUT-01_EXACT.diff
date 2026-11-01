@@ -1,0 +1,178 @@
+diff --git a/src/components/textbook/NestedConstructionMath.tsx b/src/components/textbook/NestedConstructionMath.tsx
+index b49aa6f..8b92830 100644
+--- a/src/components/textbook/NestedConstructionMath.tsx
++++ b/src/components/textbook/NestedConstructionMath.tsx
+@@ -77,9 +77,9 @@ export function NestedConstructionMath({ template, parts, values, certifiedKeys,
+         }
+         let best: string[] = [], bestWidth = widthFor([])
+         // Greedily split only root relations/operations; never roots or fractions.
+-        for (let i = 0; bestWidth > available && i < unwrapped.rootBreakPaths.length; i++) {
++        for (let i = 0; bestWidth > available && i < unwrapped.semanticRootBreakPaths.length; i++) {
+           let next = best, nextWidth = Infinity
+-          for (const path of unwrapped.rootBreakPaths.filter(p => !best.includes(p))) {
++          for (const path of unwrapped.semanticRootBreakPaths.filter(p => !best.includes(p))) {
+             const paths = [...best, path], width = widthFor(paths)
+             if (width < nextWidth) { next = paths; nextWidth = width }
+           }
+diff --git a/src/components/textbook/nestedMathGeometry.ts b/src/components/textbook/nestedMathGeometry.ts
+index 2f69ab6..cbe743f 100644
+--- a/src/components/textbook/nestedMathGeometry.ts
++++ b/src/components/textbook/nestedMathGeometry.ts
+@@ -151,7 +151,7 @@ export function measureNeutralNestedGroup(groupId: string, rows: NeutralNestedGr
+       probe.remove(); return result
+     })
+     const options = rows.map((row, index) => ({ template: row.template, parts: row.parts, envelopes: envelopes[index] }))
+-    const paths = options.map(option => compileNeutralNestedMathTemplate(option).rootBreakPaths)
++    const paths = options.map(option => compileNeutralNestedMathTemplate(option).semanticRootBreakPaths)
+     const cache = new Map<string, { left: number; right: number; width: number; hasRelation: boolean }>()
+     function measure(index: number, breaks: string[]) {
+       const key = index + ':' + [...breaks].sort().join(',')
+diff --git a/src/components/textbook/nestedMathTemplate.test.ts b/src/components/textbook/nestedMathTemplate.test.ts
+index a87a910..5ab2b21 100644
+--- a/src/components/textbook/nestedMathTemplate.test.ts
++++ b/src/components/textbook/nestedMathTemplate.test.ts
+@@ -127,3 +127,66 @@ describe('閉じたnested templateと意味位置bind', () => {
+     expect(() => parseNestedMathTemplate('x=\\sqrt{1')).toThrow('UNCLOSED_GROUP')
+   })
+ })
++
++
++describe('automatic semantic wrapping', () => {
++  it('keeps r with its first equals and only splits a multi-equality derivation at later relations', () => {
++    const c=compileNestedMathTemplate({template:'r=-\\sqrt{10}-(-4)=-\\sqrt{10}+4',parts:[]})
++    expect(c.rootBreakPaths).toContain(c.rootRelation!.path)
++    expect(c.semanticRootBreakPaths).not.toContain(c.rootRelation!.path)
++    const nodes=c.semanticRootBreakPaths.map(p=>c.ast.children[Number(p.split('/')[1])])
++    expect(nodes.length).toBeGreaterThan(0)
++    expect(nodes.every(n=>n.type==='symbol'&&n.value==='=')).toBe(true)
++  })
++  it('preserves each inequality chain and allows the implication boundary', () => {
++    const c=compileNestedMathTemplate({template:'-4<-\\sqrt{10}<-3\\Rightarrow0<4-\\sqrt{10}<1',parts:[]})
++    expect(c.semanticRootBreakPaths.map(p=>c.ast.children[Number(p.split('/')[1])])).toEqual([{type:'symbol',value:'\\Rightarrow',relation:true,operation:false}])
++    expect(compileNestedMathTemplate({template:'-4<-\\sqrt{10}<-3',parts:[]}).semanticRootBreakPaths).toEqual([])
++  })
++  it('permits a row between comma-separated complete assertions', () => {
++    const template='0<\\sqrt{10}-3<1,\\quad0<4-\\sqrt{10}<1',c=compileNestedMathTemplate({template,parts:[]})
++    expect(c.semanticRootBreakPaths).toHaveLength(1)
++    expect(()=>compileNestedMathTemplate({template,parts:[],breakAtPaths:c.semanticRootBreakPaths})).not.toThrow()
++  })
++  it('does not split unary minus after an equals sign', () => {
++    const c=compileNestedMathTemplate({template:'r=-\\sqrt{10}+4',parts:[]})
++    expect(c.semanticRootBreakPaths).not.toContain('root/2')
++    expect(c.semanticRootBreakPaths).not.toContain(c.rootRelation!.path)
++  })
++})
++
++
++describe('semantic wrapping boundaries', () => {
++  it('retains legacy relation candidates for structured subjects that need narrow-screen wrapping', () => {
++    for (const template of ['r^2=1+2', '\\sqrt{x}=1+2', '\\frac{a}{b}=1+2', '-\\sqrt{x}=1+2']) {
++      const c = compileNestedMathTemplate({ template, parts: [] })
++      expect(c.semanticRootBreakPaths).toContain(c.rootRelation!.path)
++    }
++  })
++  it('does not create assertion boundaries inside comma lists', () => {
++    for (const template of ['a,b', 'x=1,2', 'a,b>0']) {
++      const c = compileNestedMathTemplate({ template, parts: [] })
++      const commas = c.ast.children.flatMap((n, i) => n.type === 'symbol' && n.value === ',' ? ['root/' + (i + 1)] : [])
++      expect(c.semanticRootBreakPaths.filter(p => commas.includes(p))).toEqual([])
++    }
++  })
++})
++
++ it('keeps each comma assertion subject with its own first relation', () => {
++  const c = compileNestedMathTemplate({ template: 'x=1,y=2', parts: [] })
++  expect(c.semanticRootBreakPaths).toEqual(['root/4'])
++ })
++
++ it('keeps inequality comparisons intact but allows a later equals in a long mixed chain', () => {
++  const c = compileNestedMathTemplate({ template: '1.41^2=1.9881<2<2.0164=1.42^2', parts: [] })
++  expect(c.semanticRootBreakPaths).toHaveLength(1)
++  expect(c.ast.children[Number(c.semanticRootBreakPaths[0].split('/')[1])]).toMatchObject({ type: 'symbol', value: '=' })
++  expect(c.semanticRootBreakPaths).not.toContain(c.rootRelation!.path)
++ })
++
++ it('keeps the simple subject after inequality assertion boundaries', () => {
++  for (const template of ['x<1,\\quad r=2', 'x<1\\Rightarrow r=2']) {
++   const c = compileNestedMathTemplate({ template, parts: [] })
++   for (const path of c.semanticRootBreakPaths) expect(c.ast.children[Number(path.split('/')[1])]).not.toMatchObject({type:'symbol',value:'='})
++  }
++ })
+diff --git a/src/components/textbook/nestedMathTemplate.ts b/src/components/textbook/nestedMathTemplate.ts
+index 4be602c..27a17c2 100644
+--- a/src/components/textbook/nestedMathTemplate.ts
++++ b/src/components/textbook/nestedMathTemplate.ts
+@@ -16,7 +16,7 @@ export type NestedMathChoice = { value: string; latex?: string; kind?: string }
+ export type NestedMathPart = { key: string; kind: string; role?: string; choices: NestedMathChoice[] }
+ export type NeutralEnvelope = { widthEm: number; heightEm: number; axisEm?: number; choiceWidthsEm?: Record<string, number> }
+ export type NestedMathSlot = { key: string; sourceKey?: string; path: string; marker: string; candidateMarker?: string; value?: string; certified: boolean; envelope: NeutralEnvelope }
+-export type CompiledNestedMath = { ast: MathTemplateAST; latex: string; html: string; slots: NestedMathSlot[]; rootBreakPaths: string[]; rootRelation?: { path: string; marker: string; kind: 'symbol' | 'slot' | 'mirror'; partKey?: string }; measurementOnly: boolean; mode: 'interactive' | 'readonly' }
++export type CompiledNestedMath = { ast: MathTemplateAST; latex: string; html: string; slots: NestedMathSlot[]; rootBreakPaths: string[]; semanticRootBreakPaths: string[]; rootRelation?: { path: string; marker: string; kind: 'symbol' | 'slot' | 'mirror'; partKey?: string }; measurementOnly: boolean; mode: 'interactive' | 'readonly' }
+ export type CompileNestedMathOptions = {
+   template: string; parts: NestedMathPart[]; values?: Record<string, string>; certifiedKeys?: string[]
+   mode?: 'interactive' | 'readonly'; envelopes?: Record<string, NeutralEnvelope>; breakAtPath?: string; breakAtPaths?: string[]
+@@ -140,9 +140,54 @@ export function compileNestedMathTemplate(options: CompileNestedMathOptions): Co
+   const isRelation = (node: MathTemplateNode) => node.type === 'symbol' ? Boolean(node.relation) : (node.type === 'slot' || node.type === 'mirror') && parts.get(node.key)?.role === 'relation'
+   const rootBreakPaths = ast.children.flatMap((node, i) => i > 0 && (isRelation(node) || node.type === 'symbol' && node.operation) ? ['root/' + i] : [])
+   const rootRelationIndex = ast.children.findIndex(isRelation), relationNode = ast.children[rootRelationIndex]
++  // Automatic wrapping keeps a simple token subject with its first relation and
++  // keeps inequality assertions intact. Manual structural breaks stay compatible.
++  const implication = new Set(['\\Rightarrow', '\\Leftrightarrow', '\\iff'])
++  const inequalities = new Set(['<', '>', '\\le', '\\leq', '\\ge', '\\geq'])
++  const spacing = new Set(['\\ ', '\\,', '\\;', '\\!', '\\quad', '\\qquad'])
++  const isSpacing = (node: MathTemplateNode) => node.type === 'symbol' && spacing.has(node.value)
++  const hasInequality = ast.children.some(node => node.type === 'symbol' ? inequalities.has(node.value) :
++    (node.type === 'slot' || node.type === 'mirror') && parts.get(node.key)?.role === 'relation' &&
++      Boolean(parts.get(node.key)?.choices.some(choice => inequalities.has(choice.latex ?? choice.value))))
++  const atomic = (node: MathTemplateNode) => node.type === 'symbol' && !node.operation && !node.relation && node.value !== ',' || node.type === 'slot' || node.type === 'mirror'
++  const keepsSubject = (index: number) => {
++    let start = index - 1
++    while (start >= 0) {
++      const node = ast.children[start]
++      if (node.type === 'symbol' && (node.value === ',' || implication.has(node.value))) break
++      start--
++    }
++    const lhs = ast.children.slice(start + 1, index).filter(node => !isSpacing(node))
++    return lhs.length === 1 && atomic(lhs[0]) || lhs.length === 2 && lhs[0].type === 'symbol' && ['+', '-'].includes(lhs[0].value) && atomic(lhs[1])
++  }
++  const relationCount = ast.children.filter(isRelation).length
++  const isComma = (node: MathTemplateNode) => node.type === 'symbol' && node.value === ','
++  const completeAssertion = (nodes: MathTemplateNode[]) => {
++    const terms = nodes.filter(node => !isSpacing(node)), relation = terms.findIndex(isRelation)
++    return relation > 0 && relation < terms.length - 1
++  }
++  const commaBreaks = ast.children.flatMap((node, i) => {
++    if (!isComma(node)) return []
++    let start = i - 1, end = i + 1
++    while (start >= 0 && !isComma(ast.children[start])) start--
++    while (end < ast.children.length && !isComma(ast.children[end])) end++
++    return completeAssertion(ast.children.slice(start + 1, i)) && completeAssertion(ast.children.slice(i + 1, end)) ? ['root/' + (i + 1)] : []
++  })
++  const semanticRootBreakPaths = [...new Set([...rootBreakPaths, ...commaBreaks])].filter(path => {
++    const i = Number(path.split('/')[1]), node = ast.children[i]
++    if (commaBreaks.includes(path)) return true
++    if (node.type === 'symbol' && implication.has(node.value)) return true
++    if (hasInequality) return node.type === 'symbol' && node.value === '=' && i !== rootRelationIndex && !keepsSubject(i)
++    if (isRelation(node)) return !keepsSubject(i)
++    if (relationCount > 1 || rootRelationIndex >= 0 && i < rootRelationIndex) return false
++    let before = i - 1
++    while (before >= 0 && isSpacing(ast.children[before])) before--
++    const previous = ast.children[before]
++    return before >= 0 && !isRelation(previous) && !(previous.type === 'symbol' && previous.operation)
++  })
+   const rootRelation: CompiledNestedMath['rootRelation'] = rootRelationIndex < 0 ? undefined : { path: 'root/' + rootRelationIndex, marker: 'NROOTREL0000', kind: relationNode.type as 'symbol' | 'slot' | 'mirror', ...('key' in relationNode ? { partKey: relationNode.key } : {}) }
+   const breaks = options.breakAtPaths ?? (options.breakAtPath ? [options.breakAtPath] : [])
+-  if (new Set(breaks).size !== breaks.length || breaks.some(path => !rootBreakPaths.includes(path))) fail('UNSAFE_BREAK_PATH')
++  if (new Set(breaks).size !== breaks.length || breaks.some(path => !rootBreakPaths.includes(path) && !semanticRootBreakPaths.includes(path))) fail('UNSAFE_BREAK_PATH')
+   function emit(node: MathTemplateNode, path: string): string {
+     const markRoot = (latex: string) => rootRelation?.path === path ? '\\mathrel{' + latex + '\\phantom{\\smash{\\rlap{\\text{' + rootRelation.marker + '}}}}}' : latex
+     if (rootRelation?.path === path && node.type === 'symbol') return markRoot(node.value)
+@@ -192,7 +237,7 @@ export function compileNestedMathTemplate(options: CompileNestedMathOptions): Co
+   const mathml = mathEnd >= 0 ? rendered.slice(0, mathEnd + 7).replace(/(?:NS(?:LOT|CAND)|NROOTREL)\d{4}/g, '') : ''
+   const visibleHtml = rendered.slice(mathEnd >= 0 ? mathEnd + 7 : 0).replace(/(<span[^>]*>)((?:NS(?:LOT|CAND)|NROOTREL)\d{4})(<\/span>)/g, '$1<span class="nested-slot-marker" aria-hidden="true">$2</span>$3')
+   const html = mathml + visibleHtml.replace(/(<span class="[^"]*\brule\b[^"]*"[^>]*>)/g, '<span class="nested-zero-baseline" style="display:inline-block;width:0;height:0;vertical-align:baseline"></span>$1')
+-  return { ast, latex, html, slots, rootBreakPaths, rootRelation, measurementOnly: Boolean(options.neutralReferences), mode }
++  return { ast, latex, html, slots, rootBreakPaths, semanticRootBreakPaths, rootRelation, measurementOnly: Boolean(options.neutralReferences), mode }
+ }
+ /** This output is used only in temporary neutral probes, never for learner display. */
+ export function compileNeutralNestedMathTemplate(options: Omit<CompileNestedMathOptions, 'values' | 'certifiedKeys' | 'mode' | 'neutralReferences'>) {

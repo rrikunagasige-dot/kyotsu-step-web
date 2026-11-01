@@ -3,6 +3,7 @@
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
   "status": "TECHNICAL_PROGRESS_NOT_RELEASE_ACCEPTANCE",
+  "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repositoryId": 1391122224,
@@ -11,7 +12,7 @@
     "environmentWorkflowCommit": "0d553aca3be72b0f17628a2d1d996e94c4b40679",
     "environmentRunId": 41294706620,
     "environmentRunConclusion": "success",
-    "environmentRunScope": "Pinned dependency and Chromium restoration, not candidate tests or deployment",
+    "environmentRunScope": "Pinned dependencies and Chromium restoration only; not candidate tests or deployment",
     "environmentArtifactId": 13078837969,
     "environmentArtifactSHA256": "67ef7ec05167203f727ab02fc3146fe6c22bf7e07e3262a445bf930138f8898d",
     "approvedPatchCommit": "c817000ffb0366e813df969a2ecfe598d2aad855",
@@ -31,30 +32,14 @@
     "lockSHA256": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006"
   },
   "technicalValidation": {
-    "executionLocation": "isolated local copy using the downloaded and hash-verified GitHub environment artifact",
+    "executionLocation": "isolated local working copy using hash-verified dependencies obtained from GitHub Actions",
     "node": "22.16.0",
-    "pnpmLockProducer": "11.9.0",
-    "vitest": {
-      "total": 117,
-      "passed": 117,
-      "failed": 0,
-      "pending": 0,
-      "resultSHA256": "c0fec6504a8331b6238727b8ba93b680889c7926fd5585bc357dd8ca36a68b89",
-      "files": {
-        "src/domain/nestedLesson.test.ts": 9,
-        "src/domain/nestedLessonStorage.test.ts": 8,
-        "src/domain/nestedMigration.test.ts": 56,
-        "src/pages/N0910ArchivePage.test.tsx": 11,
-        "src/components/textbook/ConstructionLessonReadingFlow.test.tsx": 7,
-        "src/components/textbook/NestedConstructionMath.test.tsx": 3,
-        "src/components/textbook/nestedMathTemplate.test.ts": 23
-      }
-    },
+    "vitest": {"total":117,"passed":117,"failed":0,"pending":0,"files":7,"resultSHA256":"c0fec6504a8331b6238727b8ba93b680889c7926fd5585bc357dd8ca36a68b89"},
     "projectTypecheckExitCode": 0,
     "productBuildExitCode": 0,
     "productBuildLogSHA256": "b866933af019402992643b2ce0317750a1fd7e13372bf0252048bcf91a2140b8",
     "buildWarnings": ["Existing large-chunk warning retained"],
-    "interruptedAggregateHelper": "The initial aggregate helper was interrupted after Vitest. Typecheck and build were then executed separately; the interrupted RESULT.json is not used to override their actual exit codes."
+    "interruptedAggregateHelper": "Initial aggregate run interrupted after Vitest; typecheck and build subsequently completed separately. Original interrupted status retained."
   },
   "nativeWorkflowCopy": {
     "R02": "PASS_CAUSE_IDENTIFICATION_ONLY",
@@ -65,41 +50,35 @@
     "claims": [],
     "eventCount": 2919,
     "eventHead": "291a57b6f2e26b9d32d1b4218b6f5e978e8b434c8a350688aaf8e9f4b4f5eeee",
-    "adapterLaunch": "Python -S avoids a preloaded requests package collision; NODE_OPTIONS=--experimental-strip-types supports the existing TS adapters on Node22. No workflow source or rejection guard was changed.",
-    "failuresPreserved": "Original TS-loader failures and earlier R04 FAIL remain in history. Only failed capability calls were retried; successful results were retained.",
-    "scope": "The actual copy accepted the cause analysis. This file is an evidence summary, not a replacement runtime Store."
+    "adapterLaunch": "Python -S and NODE_OPTIONS=--experimental-strip-types; no product/workflow source or rejection guard changes",
+    "failuresPreserved": "TS-loader failures and earlier R04 FAIL preserved. Retried only failed capabilities; successful results retained.",
+    "scope": "Evidence summary of actual copy acceptance, not a replacement Store or an app acceptance"
   },
   "browserValidation": {
-    "status": "INCOMPLETE",
+    "status": "INCOMPLETE_SIX_CASES_REQUIRE_RECHECK",
+    "allEightAttemptsFinished": true,
     "browserVersion": "151.0.7922.34",
-    "fontEnvironment": "System Noto Sans CJK JP plus actual KaTeX font loads; not the lost historical NotoSansJP-Regular.ttf",
-    "N09_320": {
-      "status": "PASS_AUTOMATED_CAPTURE",
-      "packets": 149,
-      "fontLoads": "PASS",
-      "pageErrors": 0,
-      "failures": 0,
-      "completed": true,
-      "reload": true,
-      "readonlyHistory": true,
-      "resetAndReload": true,
-      "keyboardEnterSpaceEscape": true,
-      "resultSHA256": "4f8308e27656f21b3f7444b0fbd3c2940ed7487f371581764c16b5619ab18457",
-      "targetImageSHA256": "97eb05945be034c4f7463d7869eceda75d3663e4a84a0b39a1bc47481a90f813",
-      "observedFix": "r remains attached to its first equality; the inequality chain is split at implication, not inside comparisons."
-    },
-    "otherCases": "N09 390/430/1440 and N10 320/390 encountered action or capture timeouts. N10 430 stopped on a KaTeX Size3 font connection refusal. N10 1440 is not certified by this record. These cases are not PASS and their evidence is retained."
+    "fontEnvironment": "System Noto Sans CJK JP and actual KaTeX loads; not the lost historical NotoSansJP-Regular.ttf",
+    "passed": [
+      {"unit":"N09","width":320,"packets":149,"fontLoads":"PASS","pageErrors":0,"failures":0,"completionReloadReadonlyHistoryResetReload":true,"keyboardEnterSpaceEscape":true,"resultSHA256":"4f8308e27656f21b3f7444b0fbd3c2940ed7487f371581764c16b5619ab18457","targetImageSHA256":"97eb05945be034c4f7463d7869eceda75d3663e4a84a0b39a1bc47481a90f813"},
+      {"unit":"N10","width":1440,"packets":194,"fontLoads":"PASS","pageErrors":0,"failures":0,"completionReloadReadonlyHistoryResetReload":true,"resultSHA256":"62cb4c0eefaef38cf177b2fab92e7b37096f641f2d6d5cd9f19441cf607b4161"}
+    ],
+    "notPassed": [
+      {"unit":"N09","width":390,"reason":"action timeout","packets":39},
+      {"unit":"N09","width":430,"reason":"action timeout","packets":39},
+      {"unit":"N09","width":1440,"reason":"element capture timeout","packets":36},
+      {"unit":"N10","width":320,"reason":"initial active-part wait timeout","packets":0},
+      {"unit":"N10","width":390,"reason":"initial active-part wait timeout","packets":0},
+      {"unit":"N10","width":430,"reason":"KaTeX Size3 font request connection refused after local source server became unreachable","packets":133}
+    ],
+    "observedTargetFix": "At N09/320, r remains with its first equality; the inequality chain breaks at implication, not inside comparisons. The actual target image was inspected by current main, not a registered independent reviewer.",
+    "independentSemanticReviewCompleted": false,
+    "originalFindingClosed": false
   },
   "remaining": [
-    "Mirror and reconcile the complete exact candidate source, not merely the four-file patch, on the verification branch",
-    "Complete the remaining browser checks and genuine nonauthor review",
-    "Continue native R03/R04 and later required stages; do not turn CI success into semantic acceptance"
+    "Mirror and reconcile the complete exact candidate source on GitHub; the four-file patch alone is not the whole executable candidate",
+    "Recheck the six incomplete browser cases without discarding their failures",
+    "Continue native R03/R04 and genuine nonauthor review; technical PASS is not semantic or user acceptance"
   ],
-  "protected": {
-    "mainWritten": false,
-    "applicationDeployed": false,
-    "productionStoreWritten": false,
-    "userAppAcceptanceClaimed": false,
-    "goldOrFitPerformed": false
-  }
+  "protected": {"mainWritten":false,"applicationDeployed":false,"productionStoreWritten":false,"userAppAcceptanceClaimed":false,"goldOrFitPerformed":false}
 }

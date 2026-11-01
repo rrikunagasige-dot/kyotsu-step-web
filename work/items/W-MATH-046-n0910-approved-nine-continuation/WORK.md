@@ -1,10 +1,10 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING / G3_HOST 実配信検証中
-- 公開承認：本人「可以，继续」（2026-11-02 JST）。PR #133はmerge済み、publisher e49486d13119058ff063e75ef84d60660210bd41、app source 94dfd300098484473211c22f5de73139b9002717。
-- [run41332741779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41332741779)：公開前8ケース検査とPages deploy SUCCESS。公開後のN09/N10操作・保持N08/N11検証は実行中。
-- 次は同runの実配信検査結果を照合。成功後のみ本人の実物評価G3_FINALへ渡す。本人受入／Gold／fitは未認定。
-- 台帳欠落の今回限りの本人特例を維持。旧receiptを創作せず、有効な既承認・既存PASSを理由なく取り直さない。
+Status: VERIFYING / G3_HOST完了、G3_FINALは本人実物評価待ち
+- 本人承認済みPR #133をmergeし公開。app source `94dfd300098484473211c22f5de73139b9002717`、publisher `e49486d13119058ff063e75ef84d60660210bd41`。
+- [公開run41332741779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41332741779) SUCCESS。公開前・公開後N09/N10×4幅のbyte／正誤／保存／旧版試し解答隔離、保持N08 r7/r6/r5/r4・N11の検査SUCCESS。
+- 本人確認：[N09 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=94dfd300#/learning/textbook/math-numbers-expressions-n09) ／ [N10 第3版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=94dfd300#/learning/textbook/math-numbers-expressions-n10)。次は本人が両教材を実際に操作して評価する。実装・公開承認を教材受入へ転用しない。
+- 台帳欠落の今回限りの本人特例を維持。native旧receiptは創作していない。本人受入／Gold／fitは未認定。同じ承認・有効な既存検査を理由なく取り直さない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -108,3 +108,10 @@ P-G3-03の既承認9ファイルを保持し、明示承認されたP-LAYOUT-01�
 
 ## 公開操作の確定チェックポイント（2026-11-02 JST）
 run41332741779のstep18（公開前byte・N09/N10操作）SUCCESS、step19（artifact upload）SUCCESS、step20（Pages deploy）SUCCESSを直接確認。step21（実配信N09/N10 byte・操作）はRUNNING。この時点ではrun全体・G3_HOST・本人受入をPASSとしていない。上の短い現在地を更新し、既存詳細履歴は削除していない。
+
+## 公開・実配信検証完了（2026-11-02 JST）
+- run41332741779（publisher e49486d13119058ff063e75ef84d60660210bd41）のjob124926078853／全体SUCCESSを直接確認。初回gov失敗と配置補正の履歴は維持し、公開再実行はしていない。
+- ログで公開前17:50:25 UTC／公開後17:58:04 UTCの `W046_HOSTED_BYTES_AND_OPERATIONS_PASS` を確認。固定source94dfd300、package/lock・承認4パス・compiled2パスhash、w046-release.json・配信全file hashが照合され、N09/N10×320/390/430/1440の正答・各部品の代表誤答・完了reload・readonly・実保存namespace/schema/版/compiledHash・旧版試し解答の保存byte不変まで通過。全誤答候補の新規網羅や全267式全状態の意味受入へは拡張しない。
+- 保持検査：N08 r7は四幅で30親42判断／各70誤答、途中保存・履歴・比較route・次単元・進捗分離・geometry PASS。r6は33親37判断／69誤答、旧r5は34回答／80誤答PASS。N11は四幅で39回答／109誤答、14stage／原図2点、履歴・reload・resize・旧版1〜10移行・geometry PASS。これは今回の実配信確認であり、他Workの本人評価を代行しない。
+- GitHub成果物：github-pages artifact13094510662（3,173,461 bytes、digest sha256:71907fae51a71a570e07668b5487536942075a58ee36e348a12c555b737044b6）、publication evidence artifact13094392919（184,512,579 bytes、digest sha256:f07a97d256031e804b5b0f0af59f09f3be5c3a6fe9b6b8c036dac196f2cad685）。各artifactの公開metadataを確認。証拠ZIPを今回再ダウンロード・再検査したという意味ではない。
+- 現在はG3_FINALの本人実物評価待ち。公開前固定app sourceとpublisherを区別し、学習記録namespaceを維持。本人の肯定／否定評価後に該当する事例更新・教訓重複確認とWork closeへ進む。公開の成功や「続けて」だけを肯定品質labelとしない。Gold／fitなし。

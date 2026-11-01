@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "PREPUBLICATION_SCOPED_REVIEW_COMPLETE_WITH_USER_LEDGER_EXCEPTION",
+  "status": "PUBLISHED_HOST_VERIFIED_AWAITING_USER_APP_EVALUATION",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -20,7 +20,11 @@
     "approvedPatchSHA256": "de8d4a454d036eaeaea9425fb5a0b97818963b63ebeea6fdb95b499f9bbbd556",
     "fullCandidateSourceMirrored": true,
     "candidateTestsExecutedOnGitHub": false,
-    "candidateSourceCommit": "94dfd300098484473211c22f5de73139b9002717"
+    "candidateSourceCommit": "94dfd300098484473211c22f5de73139b9002717",
+    "publisherCommit": "e49486d13119058ff063e75ef84d60660210bd41",
+    "publicationPR": 133,
+    "publicationRunId": 41332741779,
+    "publicationRunConclusion": "success"
   },
   "localCandidate": {
     "beforeCommit": "79fcfe98bd6036e33abe9c8dbb381ebb73eb46c2",
@@ -136,12 +140,12 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "main integration/publication/G3_HOST and G3_FINAL remain unperformed and outside current copy-only approval",
-    "Preserve native ledger gap and user one-time exception; do not reconstruct missing historical receipts"
+    "User hands-on evaluation of exact published N09 r4/N10 r3; do not infer acceptance from publication approval",
+    "After actual evaluation, perform corresponding case/lesson update and Work closure without duplicate tests or fabricated historical receipts"
   ],
   "protected": {
-    "mainWritten": false,
-    "applicationDeployed": false,
+    "mainWritten": true,
+    "applicationDeployed": true,
     "productionStoreWritten": false,
     "userAppAcceptanceClaimed": false,
     "goldOrFitPerformed": false
@@ -184,5 +188,42 @@
     "evidenceSha256": "b7c501d0412ca2705e9c06e1e7aea099b2612a17dab1d7028be4fcba067fc79a",
     "earlier117AndEightCases": "RETAINED_NOT_RERUN",
     "nativeReceiptCreated": false
+  },
+  "currentRelease": {
+    "appSourceCommit": "94dfd300098484473211c22f5de73139b9002717",
+    "publisherCommit": "e49486d13119058ff063e75ef84d60660210bd41",
+    "runId": 41332741779,
+    "runConclusion": "success",
+    "appURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+    "N09Revision": 4,
+    "N10Revision": 3,
+    "storageNamespace": "kyotsu-step-gate3-math-20261023",
+    "prepublicationBytesAndOperations": "PASS",
+    "hostedBytesAndOperations": "PASS",
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "correctAndRepresentativeWrong": true,
+    "reloadReadonly": true,
+    "realStorageBinding": true,
+    "legacyTrialStorageBytesUnchanged": true,
+    "retainedN08r7r6r5r4": "PASS",
+    "retainedN11": "PASS",
+    "publicationEvidenceArtifactId": 13094392919,
+    "publicationEvidenceArtifactDigest": "sha256:f07a97d256031e804b5b0f0af59f09f3be5c3a6fe9b6b8c036dac196f2cad685",
+    "userAppAcceptance": false,
+    "Gold": false,
+    "fit": false
+  },
+  "workflowContinuation": {
+    "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
+    "currentSubstantiveStage": "G3_FINAL",
+    "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
+    "G3_FINAL": "AWAITING_USER_APP_EVALUATION",
+    "nativeReceiptCreated": false,
+    "missingHistoricalEventsReconstructed": false
   }
 }

@@ -1,3 +1,14 @@
+<!-- W046_CURRENT_START -->
+# W046 — 現在地
+Status: VERIFYING / G3_HOST 実配信検証中
+- 公開承認：本人「可以，继续」（2026-11-02 JST）。PR #133はmerge済み、publisher e49486d13119058ff063e75ef84d60660210bd41、app source 94dfd300098484473211c22f5de73139b9002717。
+- [run41332741779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41332741779)：公開前8ケース検査とPages deploy SUCCESS。公開後のN09/N10操作・保持N08/N11検証は実行中。
+- 次は同runの実配信検査結果を照合。成功後のみ本人の実物評価G3_FINALへ渡す。本人受入／Gold／fitは未認定。
+- 台帳欠落の今回限りの本人特例を維持。旧receiptを創作せず、有効な既承認・既存PASSを理由なく取り直さない。
+<!-- W046_CURRENT_END -->
+
+## 詳細履歴（保存済み記録を保持）
+
 ## 公開承認受領・実行中（2026-11-02 JST）
 - 本人「可以，继续」によりPR #133のmain反映・既存Pages公開を承認。PR初回governance FAIL（run41331893422）はutilityをwork/itemsに置いたため5記録不足を検知したもの。validatorは維持し、同じscript byteをtools/releaseへ移し参照だけ変更。固定候補・公開先・検査内容不変、PR差分は公開設定とutilityの2パスのまま。改訂head92b9fceのgovernance/checkはSUCCESS。
 - PR #133をexpected head92b9fceでmergeし、main publisherはe49486d13119058ff063e75ef84d60660210bd41。公開app sourceは94dfd300固定。アプリ候補branch全体のmergeはしていない。
@@ -94,3 +105,6 @@ P-G3-03の既承認9ファイルを保持し、明示承認されたP-LAYOUT-01�
 このブランチには固定依存環境のworkflow、原案とbyte一致する `P-LAYOUT-01_EXACT.diff`、前回の `VERIFICATION_STATUS.json` を保存済み。基準18839以降の全候補ソースツリーの同期は未完了であり、このブランチを完成した実行候補や公開候補と呼ばない。ローカルの79fc＋承認済み4差分と、GitHubの18839基準を混同しない。
 
 詳細の版・hash・実行場所・失敗は [VERIFICATION_STATUS.json](VERIFICATION_STATUS.json) を参照する。古いFAIL、承認、作者履歴は保持し、既存main・公開アプリ・本番Storeには書き込んでいない。
+
+## 公開操作の確定チェックポイント（2026-11-02 JST）
+run41332741779のstep18（公開前byte・N09/N10操作）SUCCESS、step19（artifact upload）SUCCESS、step20（Pages deploy）SUCCESSを直接確認。step21（実配信N09/N10 byte・操作）はRUNNING。この時点ではrun全体・G3_HOST・本人受入をPASSとしていない。上の短い現在地を更新し、既存詳細履歴は削除していない。

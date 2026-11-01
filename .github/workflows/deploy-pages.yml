@@ -19,15 +19,23 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 18839ba97ec73c99f41c8715c3a888524b743358
-      VITE_PREVIEW_COMMIT: 18839ba97ec73c99f41c8715c3a888524b743358
+      CANDIDATE_SHA: 94dfd300098484473211c22f5de73139b9002717
+      VITE_PREVIEW_COMMIT: 94dfd300098484473211c22f5de73139b9002717
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 18839ba97ec73c99f41c8715c3a888524b743358
+          ref: 94dfd300098484473211c22f5de73139b9002717
           fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout publisher checks from reviewed publisher revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: publisher
+          sparse-checkout: tools/release/w046-publish-check.mjs
+          sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
@@ -51,6 +59,8 @@ jobs:
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs
+      - name: Generate exact N09/N10 release supplement
+        run: node publisher/tools/release/w046-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
       - name: Verify exact release before upload
@@ -60,12 +70,25 @@ jobs:
           const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ConstructionPresentationR7.json'));
           if(m.sourceSHA!==process.env.CANDIDATE_SHA||m.work!=='W-MATH-041'||m.activeN08Revision!==7||m.construction.requiredParents!==30||m.construction.independentParts!==42||m.construction.planHash!==p.planHash||m.construction.layoutDesignHash!==p.layoutDesignHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08.revision!==4||m.originalN08.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
           NODE
+      - name: Verify candidate bytes and N09/N10 operations before publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort > /tmp/w046-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w046-publish-check.mjs verify
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      - name: Publish approved N08 r7 with retained r6, r5 and r4
+      - name: Publish approved N09/N10 candidate with retained N08 and N11
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify published N09/N10 bytes and operations
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/w046-hosted
+        run: node publisher/tools/release/w046-publish-check.mjs verify
       - name: Verify public source and N08 operations
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
@@ -94,7 +117,7 @@ jobs:
           EVIDENCE_DIR=/tmp/w041-hosted node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
           EVIDENCE_DIR=/tmp/w041-hosted-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           EVIDENCE_DIR=/tmp/w041-hosted-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
-          EVIDENCE_DIR=/tmp/w041-hosted-protected node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+          # W035 targets the retired N09/N10 renderer. Current and archived routes are checked by the W046 verifier above.
       - name: Await original N11 figure decoding in verification only
         run: |
           python - <<'PY'
@@ -116,8 +139,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: w041-publication-evidence
+          name: w046-publication-evidence
           path: |
+            /tmp/w046-prepublish
+            /tmp/w046-hosted
+            /tmp/w046-preview.log
             /tmp/w041-hosted
             /tmp/w041-hosted-r6
             /tmp/w041-hosted-release

@@ -1,3 +1,10 @@
+## 公開承認待ち — P-W046-PUBLISH-01（2026-11-02 JST）
+- 本人の「本人承認が必要な地点以外は報告せず仕事フローに沿って続行」に従い、公開用の具体案を準備した。[Draft PR #133](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/133)、head `9b40a7ffd027ec87b354a6223124cc118812aa61`、base main `cce7ba7d28812dede85e2d61c082873fc1b9b864`。未merge・未公開。
+- 候補sourceは94dfd300固定。既存候補branchはmainと431 ahead／78 behindのため一括mergeせず、main起点のpublisher branchに公開設定と検証scriptの2パスだけを提示した。mainの教材・governance・他Workを置換しない。
+- 既存Pages／namespace／N08 r7/r6/r5/r4・N11を維持。公開前にN09/N10×4幅のbyte／正誤操作／reload／readonly／実保存namespace／旧版試し解答の保存不変を確認し、成功した場合だけupload/deploy。公開後は実配信を再確認する。
+- 新publisherのコードをA/Bが審査。初回の保存隔離／実namespace確認不足を修正し、旧版実回答＋保存値byte比較、実key/schema/revision/compiledHash、requestfailed／KaTeX load／page overflow、URL正規化／通信timeoutを追加。改訂版の両担当コード審査PASS。Node構文／YAML／公開前順序／固定source拒否を確認、候補のVite製品buildは成功。新G3配信工程の実行成功は未認定。
+- 次の本人承認対象は、このPR2ファイルのmain反映と固定候補の既存Pagesへの公開。P-LAYOUT-01のcopy-only承認に公開は含まれないため、この地点で停止する。承認後は同じ試験のやり直しや再承認へ戻らず、公開前検査→公開→実配信検査→本人実物評価へ進む。本人受入・Gold・fitは自動認定しない。台帳欠落の今回限りの特例は維持する。
+
 ## 対象実画像審査・横断監査完了（2026-11-02 JST）
 - 今回限りの本人特例を維持し、非作者A/Bによる対象実画像の表示・意味審査、同じ候補のG2担当別横断監査まで実施。新しい未解決の確定欠陥なし。native最新Store受理receiptの再現や創作は行っていない。
 - 取得環境：既存artifact13078837969を再利用、ZIP SHA256 `67ef7ec05167203f727ab02fc3146fe6c22bf7e07e3262a445bf930138f8898d` と内包tarを照合し固定依存物を復元。package/lockは不変。Node24.22.1／同梱Chromium151.0.7922.34 headless shell／Droid Sans Fallback Regularを使用。Droidは実CJK font（SHA256 `ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2`）で、旧Noto環境と同一とはしない。

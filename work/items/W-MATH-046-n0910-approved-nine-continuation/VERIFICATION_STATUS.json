@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "TECHNICAL_PROGRESS_NOT_RELEASE_ACCEPTANCE",
+  "status": "PREPUBLICATION_SCOPED_REVIEW_COMPLETE_WITH_USER_LEDGER_EXCEPTION",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -18,8 +18,9 @@
     "approvedPatchCommit": "c817000ffb0366e813df969a2ecfe598d2aad855",
     "approvedPatchGitBlob": "84ee856aa4c18afca9b7923ce681c4a453878309",
     "approvedPatchSHA256": "de8d4a454d036eaeaea9425fb5a0b97818963b63ebeea6fdb95b499f9bbbd556",
-    "fullCandidateSourceMirrored": false,
-    "candidateTestsExecutedOnGitHub": false
+    "fullCandidateSourceMirrored": true,
+    "candidateTestsExecutedOnGitHub": false,
+    "candidateSourceCommit": "94dfd300098484473211c22f5de73139b9002717"
   },
   "localCandidate": {
     "beforeCommit": "79fcfe98bd6036e33abe9c8dbb381ebb73eb46c2",
@@ -34,11 +35,20 @@
   "technicalValidation": {
     "executionLocation": "isolated local working copy using hash-verified dependencies obtained from GitHub Actions",
     "node": "22.16.0",
-    "vitest": {"total":117,"passed":117,"failed":0,"pending":0,"files":7,"resultSHA256":"c0fec6504a8331b6238727b8ba93b680889c7926fd5585bc357dd8ca36a68b89"},
+    "vitest": {
+      "total": 117,
+      "passed": 117,
+      "failed": 0,
+      "pending": 0,
+      "files": 7,
+      "resultSHA256": "c0fec6504a8331b6238727b8ba93b680889c7926fd5585bc357dd8ca36a68b89"
+    },
     "projectTypecheckExitCode": 0,
     "productBuildExitCode": 0,
     "productBuildLogSHA256": "b866933af019402992643b2ce0317750a1fd7e13372bf0252048bcf91a2140b8",
-    "buildWarnings": ["Existing large-chunk warning retained"],
+    "buildWarnings": [
+      "Existing large-chunk warning retained"
+    ],
     "interruptedAggregateHelper": "Initial aggregate run interrupted after Vitest; typecheck and build subsequently completed separately. Original interrupted status retained."
   },
   "nativeWorkflowCopy": {
@@ -60,25 +70,119 @@
     "browserVersion": "151.0.7922.34",
     "fontEnvironment": "System Noto Sans CJK JP and actual KaTeX loads; not the lost historical NotoSansJP-Regular.ttf",
     "passed": [
-      {"unit":"N09","width":320,"packets":149,"fontLoads":"PASS","pageErrors":0,"failures":0,"completionReloadReadonlyHistoryResetReload":true,"keyboardEnterSpaceEscape":true,"resultSHA256":"4f8308e27656f21b3f7444b0fbd3c2940ed7487f371581764c16b5619ab18457","targetImageSHA256":"97eb05945be034c4f7463d7869eceda75d3663e4a84a0b39a1bc47481a90f813"},
-      {"unit":"N10","width":1440,"packets":194,"fontLoads":"PASS","pageErrors":0,"failures":0,"completionReloadReadonlyHistoryResetReload":true,"resultSHA256":"62cb4c0eefaef38cf177b2fab92e7b37096f641f2d6d5cd9f19441cf607b4161"}
+      {
+        "unit": "N09",
+        "width": 320,
+        "packets": 149,
+        "fontLoads": "PASS",
+        "pageErrors": 0,
+        "failures": 0,
+        "completionReloadReadonlyHistoryResetReload": true,
+        "keyboardEnterSpaceEscape": true,
+        "resultSHA256": "4f8308e27656f21b3f7444b0fbd3c2940ed7487f371581764c16b5619ab18457",
+        "targetImageSHA256": "97eb05945be034c4f7463d7869eceda75d3663e4a84a0b39a1bc47481a90f813"
+      },
+      {
+        "unit": "N10",
+        "width": 1440,
+        "packets": 194,
+        "fontLoads": "PASS",
+        "pageErrors": 0,
+        "failures": 0,
+        "completionReloadReadonlyHistoryResetReload": true,
+        "resultSHA256": "62cb4c0eefaef38cf177b2fab92e7b37096f641f2d6d5cd9f19441cf607b4161"
+      }
     ],
     "notPassed": [
-      {"unit":"N09","width":390,"reason":"action timeout","packets":39},
-      {"unit":"N09","width":430,"reason":"action timeout","packets":39},
-      {"unit":"N09","width":1440,"reason":"element capture timeout","packets":36},
-      {"unit":"N10","width":320,"reason":"initial active-part wait timeout","packets":0},
-      {"unit":"N10","width":390,"reason":"initial active-part wait timeout","packets":0},
-      {"unit":"N10","width":430,"reason":"KaTeX Size3 font request connection refused after local source server became unreachable","packets":133}
+      {
+        "unit": "N09",
+        "width": 390,
+        "reason": "action timeout",
+        "packets": 39
+      },
+      {
+        "unit": "N09",
+        "width": 430,
+        "reason": "action timeout",
+        "packets": 39
+      },
+      {
+        "unit": "N09",
+        "width": 1440,
+        "reason": "element capture timeout",
+        "packets": 36
+      },
+      {
+        "unit": "N10",
+        "width": 320,
+        "reason": "initial active-part wait timeout",
+        "packets": 0
+      },
+      {
+        "unit": "N10",
+        "width": 390,
+        "reason": "initial active-part wait timeout",
+        "packets": 0
+      },
+      {
+        "unit": "N10",
+        "width": 430,
+        "reason": "KaTeX Size3 font request connection refused after local source server became unreachable",
+        "packets": 133
+      }
     ],
     "observedTargetFix": "At N09/320, r remains with its first equality; the inequality chain breaks at implication, not inside comparisons. The actual target image was inspected by current main, not a registered independent reviewer.",
     "independentSemanticReviewCompleted": false,
     "originalFindingClosed": false
   },
   "remaining": [
-    "Mirror and reconcile the complete exact candidate source on GitHub; the four-file patch alone is not the whole executable candidate",
-    "Recheck the six incomplete browser cases without discarding their failures",
-    "Continue native R03/R04 and genuine nonauthor review; technical PASS is not semantic or user acceptance"
+    "main integration/publication/G3_HOST and G3_FINAL remain unperformed and outside current copy-only approval",
+    "Preserve native ledger gap and user one-time exception; do not reconstruct missing historical receipts"
   ],
-  "protected": {"mainWritten":false,"applicationDeployed":false,"productionStoreWritten":false,"userAppAcceptanceClaimed":false,"goldOrFitPerformed":false}
+  "protected": {
+    "mainWritten": false,
+    "applicationDeployed": false,
+    "productionStoreWritten": false,
+    "userAppAcceptanceClaimed": false,
+    "goldOrFitPerformed": false
+  },
+  "latestUpdateDateJST": "2026-11-02",
+  "userException": {
+    "scope": "W046 continuation despite unavailable latest Store only; no fabricated receipts, tests or publication permission",
+    "source": "User message 2026-11-02 JST",
+    "applied": true
+  },
+  "currentTargetedReview": {
+    "sourceCommit": "94dfd300098484473211c22f5de73139b9002717",
+    "images": 24,
+    "cases": 4,
+    "caseWidths": [
+      320,
+      1440
+    ],
+    "units": [
+      "N09",
+      "N10"
+    ],
+    "allCorrectOperationCompleted": true,
+    "pageErrors": 0,
+    "networkFailures": 0,
+    "fontsStatus": "loaded",
+    "node": "24.22.1",
+    "browser": "151.0.7922.34",
+    "font": "Droid Sans Fallback Regular",
+    "oldNotoEnvironmentSame": false,
+    "reviewers": [
+      "/root/w046_source_review",
+      "/root/w046_render_review"
+    ],
+    "sourceReview": "SCOPED_PASS",
+    "visibleSemanticReview": "SCOPED_PASS",
+    "G2": "BOTH_ASSIGNED_SCOPES_PASS_UNDER_USER_LEDGER_EXCEPTION",
+    "findingF01": "OBSERVED_TARGET_SYMPTOM_RESOLVED_IN_CURRENT_IMAGES; native receipt not created",
+    "evidenceLibraryFileId": "libfile_5b282f7b1e80819195f549b13a4e6c40",
+    "evidenceSha256": "b7c501d0412ca2705e9c06e1e7aea099b2612a17dab1d7028be4fcba067fc79a",
+    "earlier117AndEightCases": "RETAINED_NOT_RERUN",
+    "nativeReceiptCreated": false
+  }
 }

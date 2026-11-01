@@ -1,3 +1,13 @@
+## 対象実画像審査・横断監査完了（2026-11-02 JST）
+- 今回限りの本人特例を維持し、非作者A/Bによる対象実画像の表示・意味審査、同じ候補のG2担当別横断監査まで実施。新しい未解決の確定欠陥なし。native最新Store受理receiptの再現や創作は行っていない。
+- 取得環境：既存artifact13078837969を再利用、ZIP SHA256 `67ef7ec05167203f727ab02fc3146fe6c22bf7e07e3262a445bf930138f8898d` と内包tarを照合し固定依存物を復元。package/lockは不変。Node24.22.1／同梱Chromium151.0.7922.34 headless shell／Droid Sans Fallback Regularを使用。Droidは実CJK font（SHA256 `ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2`）で、旧Noto環境と同一とはしない。
+- 実取得：N09/N10×320/1440pxの4ケースを正答操作で完了し、F01符号穴、N10中項符号・P/K/Q、関連readonly履歴の24画像を取得。全4件でpage error0／network failure0／document.fonts.status loaded。過去117・型・buildや8ケース全状態の再試験ではなく、未済だった非作者実見へ渡す対象画像の取得である。
+- A/Bが元PNGまたは元hashを保持した一時cropを実見。N09はrと最初の等号が同一行、不等号鎖を途中分断せず含意境界で改行、符号穴と回答後＋の位置、式番号35を確認。N10は差の平方の−、係数4、末項3、式番号42、履歴最終値7−4√3の対応を確認。構造左辺(2−√3)²の単独行は承認案の例外で、単純r孤立と区別。観察範囲でF01原症状は解消、新しい欠陥なし。
+- G2：Aは教材／数学／保存／他unit影響、Bはrender／UI影響について担当範囲PASS。541path中4承認差分以外の537byte一致・欠落0、教材正答／選択肢／安定ID／保存移行／図の不変、旧版routeと他単元への非直接使用を照合。267式AST/manual候補不変、既存117／型／build／8ケース報告を対象版に対応する既存証拠として継承。全旧版・他単元の新規全操作、全267式全状態の新規意味受入とは呼ばない。
+- 証拠：[W046_Targeted_Review_Evidence_20261102.zip](https://chatgpt.com/library?file_id=libfile_5b282f7b1e80819195f549b13a4e6c40&account_id=personal)、4,214,591 bytes、SHA256 `b7c501d0412ca2705e9c06e1e7aea099b2612a17dab1d7028be4fcba067fc79a`。内包capture.json、24原PNGの個別hash、manifest、使用script、失敗履歴を保存。候補541pathの正本GitHub sourceは94dfd300098484473211c22f5de73139b9002717。
+- 失敗保持：full ChromiumはUnix singleton socket EPERMで起動失敗。同梱の通常headless shellは実行mode復元後に起動。初回の別processサーバーは接続不能で4取得失敗。同一実行内でViteを起動して再取得し成功。依存物・製品・validatorの書換え、代替版インストール、旧FAILの削除はしていない。これらは今回環境の障害であり、前チャットClientErrorの原因特定ではない。
+- 到達点：本人特例下で承認候補の対象審査・G2担当範囲監査を完了し、公開前で保持。main統合／公開／実配信検証G3_HOST／本人受入G3_FINAL／Gold／fitは未実施、今回の承認範囲外。native台帳上のlast recorded nextは以前のR03のままで、実作業の完了と区別する。以後、同じ承認／117／8ケースの無条件再要求・再実行をしない。
+
 ## 非作者審査と候補ソース同期（2026-11-02 JST）
 - 今回の実審査担当：A `/root/w046_source_review`、B `/root/w046_render_review`。2名を実harnessで起動し、製品・Store・GitHubを変更しない読取審査を依頼。過去担当者の実行IDと同一とは称さず、同一モデル／履歴共有のため盲検・モデル独立性も主張しない。以下は実担当の原回答を主担当が転記した要約であり、native team receiptへの登録ではない。
 - Aの初回所見：承認4パスhash一致、単式／group両方のsemantic候補への接続、manual候補の維持、回答／採点／保存に変更なしを確認。267式（通常160・履歴105・追加2）について抽出したparser／候補選択部分を変更前後で比較し、AST差0・manual候補差0・parse error0。自動候補変化はN09通常53／履歴34／追加2、N10通常29／履歴17。限定ソース範囲PASS、新規確定欠陥なし。
@@ -28,7 +38,7 @@
 
 # W046 — N09/N10 承認済み修正の継続
 
-Status: VERIFYING / 本人特例で続行、R04主担当照合済み・非作者審査待ち。last recorded native next `R03_IMPACT@N09` (READY) は履歴として保持。
+Status: VERIFYING / 本人特例下の対象実画像審査・G2担当別監査完了、公開前で保持。native last recorded next `R03_IMPACT@N09` は履歴であり、実作業現在地とは区別。
 
 ## 差分確認（2026-11-02 JST、継続チャット）
 - 憲法等の再読込み・既存PASSの反復実行を避け、前回確認済み正本と個別Workの差分のみ参照する。現在地は取得済み台帳のnextで判定し、GitHub記録を一本化する。

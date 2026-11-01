@@ -1,3 +1,9 @@
+## 公開承認受領・実行中（2026-11-02 JST）
+- 本人「可以，继续」によりPR #133のmain反映・既存Pages公開を承認。PR初回governance FAIL（run41331893422）はutilityをwork/itemsに置いたため5記録不足を検知したもの。validatorは維持し、同じscript byteをtools/releaseへ移し参照だけ変更。固定候補・公開先・検査内容不変、PR差分は公開設定とutilityの2パスのまま。改訂head92b9fceのgovernance/checkはSUCCESS。
+- PR #133をexpected head92b9fceでmergeし、main publisherはe49486d13119058ff063e75ef84d60660210bd41。公開app sourceは94dfd300固定。アプリ候補branch全体のmergeはしていない。
+- 実公開run [41332741779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41332741779) がRUNNING。初回確認ではcheckout／固定依存installまでSUCCESS、Word adapter依存取得中、公開前検査／deploy／配信検査は未完了。RUNNINGをPASS／公開済みと呼ばない。
+- 次：同runの公開前検査を確認→成功時のみ既存Pagesへ公開→実HTTP byte／N09/N10操作／保持N08・N11を確認。失敗時は原FAILと実配信状態を照合し、承認済み範囲の原因補修・影響再検査へ戻る。未知結果を盲目的に再実行しない。本人実物評価・Gold/fitは未実施。
+
 ## 公開承認待ち — P-W046-PUBLISH-01（2026-11-02 JST）
 - 本人の「本人承認が必要な地点以外は報告せず仕事フローに沿って続行」に従い、公開用の具体案を準備した。[Draft PR #133](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/133)、head `9b40a7ffd027ec87b354a6223124cc118812aa61`、base main `cce7ba7d28812dede85e2d61c082873fc1b9b864`。未merge・未公開。
 - 候補sourceは94dfd300固定。既存候補branchはmainと431 ahead／78 behindのため一括mergeせず、main起点のpublisher branchに公開設定と検証scriptの2パスだけを提示した。mainの教材・governance・他Workを置換しない。

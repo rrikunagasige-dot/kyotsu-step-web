@@ -1,3 +1,12 @@
+## 続行指示とR03影響調査（2026-11-02 JST）
+- 本人「でも合格したよ。まえのチャット見ればわかると思うよ。進めていいと思うよ。」を受領。前チャットの6ケース合格報告を継承し、同じ試験・承認・添付依頼で作業を止めず、台帳追記を伴わないR03のソース影響調査を先行した。以下は実ソース読取りと、出所を区別した前チャット報告の記録である。
+- 前チャット検索で、2026-11-01T14:44:13Zの助手報告「N09 390/430/1440px各149状態、N10 320/390/430px各194状態、合計1,029状態・6ケース合格」を再確認。報告の存在を保持し、旧VERIFICATION_STATUS.jsonの未完了6ケースは「その記録時点」と扱う。今回の新規実行・最新Storeへの正式登録・非作者意味審査の完了とは区別する。証拠ファイル名は提示されているが、取得できた記録には原文リンクがない。
+- R03実ソース調査：TextbookUnitPage.tsxはN09/N10の現行版をN0910RevisionPage→ConstructionLessonReadingFlowへ渡す。同readerがNestedConstructionMath／measureNeutralNestedGroupを使用。N09旧r3／N10旧r2はN0910ArchivePage→GuidedMathReadingFlowへ分岐し、追加4パスのrendererの直接使用先ではない。
+- 対象inventory：N09は41node・79 math rows・terminalRecord.formulas 57件・displayExtrasのmath 2件。N10は45node・81 math rows・terminalRecord.formulas 48件・math extras 0件。合計160 math rowsのほか、readonly履歴105式・追加2式も同rendererの影響範囲である。件数はcoverage合格数ではない。
+- ソース根拠：ConstructionLessonReadingFlow.tsxのgroup描画（103/122行）、readonly履歴（146行）、追加数式（162行）。nestedMathTemplate.tsの同じcompile関数を使うため、interactiveだけでなくreadonlyにも自動改行候補の影響がある。対象データSHA256：N09 `b36753fa12a5aca2523f510075918694db8b0afc1aa35bad646477f45f9015bb`、N10 `b271f90586aa4c5e83dc9bcdc9e3752a5cb244c62a064d4aa2a713760293f94d`。
+- 保護対象：教材データ、正答・ID・保存移行等は承認4差分に含まず、取得候補では原manifestと一致。非使用routeに対する読取上の非影響と、ブラウザ回帰PASSは混同しない。
+- 次：この影響調査を同じWorkのR03提出材料として保持。2,919イベント版が取得できるまでは2,893版へ受理済みR02を再構成せず、正式claim／receipt／PASSを捏造しない。取得不足を理由に本項の読取調査や既存合格報告の継承を取り消さない。新しいWork・復旧ZIP・独自Gateは作らない。
+
 # W046 — N09/N10 承認済み修正の継続
 
 Status: VERIFYING / last recorded native next `R03_IMPACT@N09` (READY)

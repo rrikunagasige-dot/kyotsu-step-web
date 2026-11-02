@@ -37,3 +37,6 @@ GitHub固定source db99a485は実試験1151305と同一tree。main起点の公�
 
 ## A-UX04-03 — 正常font再検査・固定候補確認票
 Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格利用を撤回。preview別bundleは出所WeakMapの拒否を維持して不採用。固定依存の同一byte hardlinkコピー後、元shared module＋Main/Math-Italic loaded/HTTPで四幅128/1192に合格。原FAILと最終結果を分離保存。変更20fileをGit blobで全照合し候補66c8007bへ固定、A/Bの実非作者報告と全108PNG/原計測/16確認画像を保存。代表の細部確認票を提示する段階で保持し、未確認の残り24nodeを量産しない。
+
+## A-UX05-01 — 本人細部指摘の分析・正本/公式問題照合
+本人の要修正を受領し残り24nodeの展開を保留。添付を実見、rootがmain正本MASTER/数学SPECと公式EJU2021/共通2025のPDF実物を確認。Bが44px phantom/auto括弧/plannerの原因とN09/N10の同型経路を読取診断、Aが学年相応の主判断/過剰細分化を監査。root統合の技術部分はB非作者確認。製品・main・公開・正式Store変更/新試験なし。既存WorkをREVISE-PROPOSALへ戻し、原PASS/承認は履歴で保持。

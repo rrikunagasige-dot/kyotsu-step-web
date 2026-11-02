@@ -45,3 +45,9 @@ N09の片辺だけ操作したように見える足場、因数分解のtext選�
 新worktreeが旧worktreeのnode_modulesへsymlinkするため、dev ViteのFS guardがKaTeX fontをHTTP403で拒否していた。fonts.readyだけでは検出できず、Bの実見/abort指摘とphase付きprobeでMain/Math/AMS face errorを確定。前の四幅128状態/1192幾何のスクリプトPASSを最終描画PASSへ採用しない。回答操作/保存の検査結果とは分離。guard/製品configを緩めず、本番dist previewで各faceとHTTPを確認して同checkerで再検査・再撮影する。原FAIL/403/画像は保持する。
 
 F-UX04-03の検査環境は同一byte依存treeのhardlinkコピーで解消。本体と同じshared module＋実loaded face/HTTPの四幅最終128/1192を別取得し合格、B原画像審査も限定PASS。製品guardを緩めず、旧fallback/別bundleの結果は不採用のまま。F-UX03-11は代表2nodeでの是正観察までで、残り24nodeは承認案の後続範囲として未実装。
+
+## F-UX05-01 — ERROR-SPEC / ERROR-QA：学年相応の主判断の取り違え
+本人は高校生の既習逆演算を細分化する一方で、積から二つの因子の零条件を生成する主判断を自動提示している点を指摘。MASTER§§8/11/52/53と数学SPECの高校初学/非自明という既存基準の適用不足。UX04の承認や技術PASSを本人受入へ転用しない。過去問の公式実見と全86node/未実装設計の同型監査をANALYSIS等へ記録し、残り24の適用を止めて具体案改訂へ戻る。
+
+## F-UX05-02 — ERROR-RENDER / ERROR-QA：正答後も空欄予約を保持
+添付の第二因子(x＋4)だけ大きい括弧/空白になる欠陥を確認。interactive certifiedでも44px phantomを保持しauto括弧が伸長する実装が原因。正常font下の症状で、前のfont403とは別。N09/N10の94math行/106slotは静的経路候補、全件の画像欠陥実見数ではない。旧非作者表示審査はこの自然組版を見逃した。確定値を自然数式へ戻し、未回答44px操作/planner/混在状態を区別する案を準備する。今回は未補修。

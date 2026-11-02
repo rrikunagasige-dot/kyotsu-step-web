@@ -1,19 +1,15 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING
-Review: UX04-APPROVED / N09-PILOT-VERIFIED / WAITING-USER-DETAIL-REVIEW
-- 本人「いいよ」でPR #134の2filesのmain反映・既存Pages再公開を明示承認。expected head fc961f58でmerge成功。main publisher `6bc54447ef015a2a579a56a5966ceb58a0600d3a`、固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。
-- 公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前N09/N10・保持N08r7/r6/legacy/N11、deploy、実配信N09/N10・保持N08各版/N11、証拠uploadまで全て成功。コードbranch全体のmain mergeではなく、承認済みpublisher2filesのみ。
-- 実公開：[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)。N09 r5=46parts、N10 r4=63parts。旧87parts保持、新規22partsのみ未回答。対象17node以外69nodeの学習契約を維持。
-- 配信manifestを通常TLSのurllibでHTTP200取得、source/publisherと25source hashが承認版一致。w046-release SHA256 `217e7789946de81303d1a51372b9a1730281adce03f9a6ae61c360f31ff7ce5f`。121配信asset byte・実操作/保存/履歴/旧版/resetはActions実配信検査でPASS。
-- 非作者Bが実public originのN09/390・N10/320でH01/H03/H07/H14、括弧付近の式番号、共通header/左下resetを15原PNGで確認。revision/compiledHash一致、新規確定欠陥なし。検査contextのproxy CA例外はTLS合格にせず、通常TLSのmanifest取得とActions通常browserを別根拠とする。
-- 公開前133回帰・生成器8・型/変更lint/build、二単元四幅1732状態/9692幾何、464PNG、移行7ケース/現行main復旧4ケースの有効結果を継承。本人総チェックや全50件の数学的自動証明に読み替えない。
-- 候補全体governanceは他Workの既存38件を保持。本Work追加0、main側CIはSUCCESS。欠落正式Storeに対する一回限り特例を保持し、receipt/受理イベントを作らない。
-- 証拠：[公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)のartifact `w046-publication-evidence` ID13117672439、[既存の公開前証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)、[最新検証](VERIFICATION.md)。実配信15PNG/manifest/結果はevidence/ux03-full/hosted-*。
-- 本人「可以来来来做给我做」を、直前提示したUX04（commit778a6c3a/設計SHA3b79d7d8）への実装・候補検証承認として受領。写真のN09代表2nodeから限定実装。代表の実画面検査と非作者審査は完了、次は[確認票](REVIEW_SHEET.md)で本人の細部確認。残り24nodeの意味変更・main反映・再公開はまだ行わない。
-- 最新本人評価：排版改善を評価、導出の穴と生徒の参加度は要修正。n09-01の零積一穴で移項/因数分解/一次式処理まで自動化される不足を確認。詳細は末尾「本人指摘 — 導出の参加度不足」。
-- UX04詳細案は完成解法・全候補/誤答説明・各穴の根拠/位置/解放・旧part KEEP/ARCHIVE対応まで記載。N09r6/N10r5予定。proposal SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201`、220750bytes。AはN09作者/N10非作者、BはN10作者/N09非作者。主担当共通・統合も審査済み。モデル独立性/盲検は主張しない。
-- 提案構造検査・両非作者審査を経てN09代表2nodeを実装。N09r6 pilot＝旧46part保持＋新6part、計52part。UX04全体設計の101保持/56新規/8旧版保管は残りの適用を含む予定値で、pilotの実装件数と区別する。main・公開内容は今回未変更。本人の細部確認は未受領。
+Status: REVISE-PROPOSAL
+Review: USER-DETAIL-REQUIRES-REVISION / TEEN-LEVEL-COGNITIVE-UNIT-AND-RESOLVED-TYPESETTING
+- 本人はUX04代表を要修正。(x＋4)の巨大括弧/空き、x＋4=0からの単純逆演算の小問化を指摘。主判断は(x−4)(x＋4)=0から各因子が0という二条件を生成すること。細部OK/全体受入は未成立。
+- UX04への実装承認は履歴として保持するが、この指摘を無視して残り24nodeへ量産しない。次は原因・同型・既存GitHub基準・公式問題の粒度を反映したUX05具体案の作成。今回の製品変更・実装承認依頼はしない。
+- [学習粒度監査](evidence/ux05-feedback/PEDAGOGY_AUDIT.md)はN09全41/N10全45と未実装UX04を18群で対応。86IDの一致/重複なしを照合。新規の全選択肢や設問はまだ設計しておらず、一括修正の承認ではない。
+- 原因：主担当は別演算を別穴とする分類を、対象高校生にとっての非自明/学習価値の評価の代わりにした。重要な零条件を先に表示して「または」だけ問い、周辺の基本逆演算を細分化した。MASTER§§8/11/52/53と数学SPEC§§2/5は既存。基準不足ではなく適用不足。
+- 走形：正答済みmath slotにも44.1pxのphantomと横予約が残り、auto括弧が第二因子だけに追従。正常font下の組版欠陥。CSS枠消去・thinspace・固定括弧だけでは根治せず、確定値の自然組版と未回答操作域/plannerを区別する必要がある。
+- [分析](evidence/ux05-feedback/ANALYSIS.md)にEJU2021第1回C1 I問1/2025共通数IA第1問〔1〕の公式PDF実見と正本照合を記録。[描画診断](evidence/ux05-feedback/RENDER_DIAGNOSIS.md)はN09/N10の94math行/106slot経路候補を列挙。これは全画像破綻の実見件数ではない。
+- 候補source66c8007b/記録7123c957、N09r6 compiled470f・N10r4を保持。旧136回帰・最終関連76・正常font四幅128/1192・移行10件は実行範囲に対する有効履歴だが、学年相応の主判断/正答後自然組版/本人合格へ転用しない。旧審査の見逃しを記録する。
+- 公開中はdb99a485/publisher6bc54447（N09r5/N10r4）のまま。main・公開・正式Store書込なし。最新Store欠落の本人特例は維持、receipt/欠落26イベントを創作しない。全体governance既存38件と今回の作業を分離する。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -302,3 +298,17 @@ N09はNEW25/KEEP43/旧版保管3で予定68parts、N10はNEW31/KEEP58/旧版保�
 到達点は代表2nodeの検証と非作者審査まで。承認済みUX04のVerification Plan3に従い本人の細部OK/要修正を待つ。これは同じUX04の実装再承認ではない。細部OK後に残り24nodeへ限定適用し、横断/別公開/実働本人総チェックへ進む。公開中のdb99/出版社6bcは今回不変、正式Store受理receipt・本人総合受入・Gold/fitを作らない。
 
 最終の記録governance再検査はFAIL/既存38件。前回governance-records.logのERROR集合38件と完全一致（追加0/解消0）、W046を指すERRORなし。全体PASSへ転用しない。原logはevidence/ux04-pilot/governance.log。
+
+## 本人細部レビュー — 学年相応の推論と正答後組版（2026-11-02）
+
+「x plus4が走形」「中高生にx＋4=0の逆演算を問う粒度ではない」「積からx−4=0またはx＋4=0を導く方が重要」との指摘。これは細部OKではない。原添付はhashだけSOURCESへ記録し公開GitHubへ複写しない。
+
+MASTER§11の必要な途中式/学習価値あるinteractiveの区別を適用できず、「異なる操作の存在」を穴の十分条件とした点をERROR-SPEC/ERROR-QAとして認める。基礎計算を一律削除する反動も避け、MASTER§53のN09Q08の計算/比較、新しい公式を使う計算、絶対値/負数の整数部分/不等号反転等は保護する。
+
+rootが公式EJU2021第1回C1 I問1と2025共通数IA第1問〔1〕のPDFを実取得・レンダリングして確認。条件→式形成→解・条件の判断という単位を参考にする。過去問の転載・原教材の入試問題への置換はしない。Aは全86nodeと未実装UX04の粒度、Bはrendererの全同型経路を読取監査。root統合の技術部分もBが限定確認。各原報告と根拠はevidence/ux05-feedbackへ一本化。
+
+具体例は、積から各因子の零条件全体を生徒に作らせ、x=4/−4への一次処理は続く式で示す。単語「または」だけの穴では主判断を評価できない。異なる意味の新しい条件生成へ旧zeroLogicの回答をaliasせず、削減partを含め旧回答の保存を改訂案で定める。新版番号/最終穴数はまだ確定しない。
+
+今の代表確認票は要修正として履歴保存し、旧UX04を新しい学習設計の承認へ拡張しない。今回の段階は分析と修正設計への入力までで、製品/採点/保存/rendererに新規変更なし。新製品試験の実行もない。
+
+同型監査は全86nodeを18群で対応し、優先候補9群を抽出。N09の符号/逆演算/区間の数値移動、N10の除数選択/差平方の基礎手順の再演/分母scopeの写しを見直し候補へ。N09-Q08の必要計算比較、根号積商の構成・定義域/非零・正性・同定理由、必要な有理化計算はKEEP境界を明記。原sourceと未実装案の変更候補を区別し、候補をそのまま一括実装しない。

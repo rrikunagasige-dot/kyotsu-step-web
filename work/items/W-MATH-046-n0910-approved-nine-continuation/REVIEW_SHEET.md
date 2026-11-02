@@ -1,6 +1,8 @@
 # 確認 — UX04 N09代表ブロック
 
-Status: WAITING_USER_DETAIL_REVIEW
+Status: USER_REQUIRES_CORRECTION
+
+本人は学習粒度と正答後組版を要修正としました。この確認票は履歴であり、細部OKは成立していません。[現在の分析](evidence/ux05-feedback/ANALYSIS.md)から改訂へ戻っています。
 対象コード：[66c8007b37cc12391c9df574b8ebbb1b95cf26f5](https://github.com/rrikunagasige-dot/kyotsu-step-web/commit/66c8007b37cc12391c9df574b8ebbb1b95cf26f5)
 N09第6版pilot / compiledHash `470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d`
 

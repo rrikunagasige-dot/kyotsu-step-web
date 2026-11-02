@@ -1,0 +1,43 @@
+{
+  "phase": "READ_ONLY_ANALYSIS_BEFORE_UX05_DETAILED_PROPOSAL",
+  "candidateSource": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+  "files": [
+    {
+      "path": "ANALYSIS.md",
+      "bytes": 8788,
+      "sha256": "8ed51d2a33b0cefaef261d647384ac1b3fb0a2501b455ede799199ce6d13bc0f"
+    },
+    {
+      "path": "ANALYSIS_TECHNICAL_REVIEW.md",
+      "bytes": 1944,
+      "sha256": "ec9c32593fbe1930f2c960589dcdde8ede45a7352d399887fb78fc03221ba9a4"
+    },
+    {
+      "path": "COVERAGE_CHECK.json",
+      "bytes": 235,
+      "sha256": "aa7a94c344beb29bb9862b809b8f8c4b7945f69ffe2c8ffea763ca06f312a593"
+    },
+    {
+      "path": "PEDAGOGY_AUDIT.json",
+      "bytes": 80109,
+      "sha256": "a57f07f91e19fa152b8cd7549ee8dbf0b129d542535c6e9d30e0575534ee8df6"
+    },
+    {
+      "path": "PEDAGOGY_AUDIT.md",
+      "bytes": 38283,
+      "sha256": "4d28537258539f338604857c3fc3d08026da00d2a7b83707b556fbb71019cd05"
+    },
+    {
+      "path": "RENDER_DIAGNOSIS.md",
+      "bytes": 12514,
+      "sha256": "22ae5058a2dfe9a45ecc84799f31d12b327474d4390f81f78cdc4ae02be68a71"
+    },
+    {
+      "path": "SOURCES.json",
+      "bytes": 1211,
+      "sha256": "f7ccbb20516d14de90cfa30cd07d83ca8e03007b55b43c48959bb3765fdf8499"
+    }
+  ],
+  "originalAttachmentAndOfficialPdfsNotRepublished": true,
+  "productChanged": false
+}

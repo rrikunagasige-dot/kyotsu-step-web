@@ -97,3 +97,10 @@ Proposal P-W046-UX-04、SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c
 本人の細部確認待ち：[REVIEW_SHEET](REVIEW_SHEET.md)。残り24node未実装・本公開未変更。代表合格を全UX04の完成や本人受入へ拡張しない。
 
 最終の記録governance再検査はFAIL/既存38件。前回governance-records.logのERROR集合38件と完全一致（追加0/解消0）、W046を指すERRORなし。全体PASSへ転用しない。原logはevidence/ux04-pilot/governance.log。
+
+## V-UX05-01 — 本人指摘による受入観点の訂正
+本人の細部OKは未受領で、学年相応の推論と正答後の自然組版が要修正。旧136/76/128状態1192幾何/移行10件の実行事実は保持するが、当該二観点の合格へ読み替えない。Bは正常font/衝突/中立枠を満たす状態でも巨大括弧・不要余白を見逃したと診断。rendererの静的経路候補94行/106slotと、添付で確定した実欠陥を区別する。
+
+今回の検査はread-onlyのsource/添付/公式PDF/既存基準の照合。新しい製品CODE/browser試験や修正完了を認定しない。詳細とrawreviewはevidence/ux05-feedback。次の具体案では、学年・既習事項・主判断の対応と、正答後に通常の数学組版へ戻る観点を独立して確認する。
+
+学習粒度の読取監査：41＋45＝86nodeを18群へ対応。COVERAGE_CHECK.jsonで実compiledの86IDと一致/重複なしを照合。これは存在対応の検査で、改訂した教育設計や新製品の合格ではない。原公式PDF実見はroot、学習粒度監査はA、技術診断/統合技術審査はBとして出所を区別する。

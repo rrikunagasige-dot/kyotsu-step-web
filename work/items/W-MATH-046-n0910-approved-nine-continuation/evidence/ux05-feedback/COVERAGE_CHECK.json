@@ -1,0 +1,11 @@
+{
+  "status": "READ_ONLY_COVERAGE_MATCH",
+  "groups": 18,
+  "n09": 41,
+  "n10": 45,
+  "total": 86,
+  "uniqueNodes": 86,
+  "missing": [],
+  "extra": [],
+  "scope": "Coverage consistency only, not product tests or new design approval"
+}

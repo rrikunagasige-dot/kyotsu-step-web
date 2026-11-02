@@ -1,0 +1,24 @@
+{
+  "canonicalMain": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "masterBlob": "b5b2079fda73240219955886f12593c9a7c45044",
+  "mathematicsSpecBlob": "ad4b20f8e5702db15e2237831f5b004845ebf198",
+  "officialSamples": [
+    {
+      "url": "https://www.jasso.go.jp/ryugaku/eju/examinee/pastpaper_sample/__icsFiles/afieldfile/2022/01/28/2021_1question_math.pdf",
+      "scope": "2021 first EJU C1 I Q1 booklet math-2 / PDF page4",
+      "pdfSha256": "12c6a5f9338115ee34cf1687d5895bae741a7be572e3fd18b36a2bead1d4c3d6"
+    },
+    {
+      "url": "https://www.dnc.ac.jp/albums/abm.php?d=771&f=abm00005956.pdf&n=2025_op_26_sugaku1A.pdf",
+      "scope": "2025 Common Test mathematics I,A Q1[1] booklet4-5 / PDF1-2",
+      "pdfSha256": "e5583c1bed4755f9fa139b22238ca9cf2e6ebc2c81c0d26064ba66aad252a3ff"
+    }
+  ],
+  "method": "Official PDFs retrieved and rendered for visual inspection; analysis describes question granularity, not an assertion that all papers use one pattern. Original problem text/PDFs are not republished.",
+  "feedbackAttachment": {
+    "sha256": "a22e5d2561003da6a97a0cab8a2cc26e46e9152a5c728367f7cf3b6860a5d68a",
+    "originalNotPublished": true
+  },
+  "productChanged": false,
+  "testsRun": false
+}

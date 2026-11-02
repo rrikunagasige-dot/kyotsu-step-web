@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-W046-UX-04",
   "recordedDate": "2026-11-02",
-  "status": "UX04_N09_PILOT_VERIFIED_WAITING_USER_DETAIL_REVIEW",
+  "status": "USER_FEEDBACK_REVISE_PROPOSAL_UX05_ANALYSIS",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,10 +140,9 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "User detailed visual confirmation of exact N09 pilot sheet",
-    "Apply remaining24 semantic nodes under approved UX04",
-    "Complete cross-block, migration and real-state verification",
-    "Separate publication approval/hosted validation/user hands-on acceptance"
+    "Prepare exact UX05 detailed revision and nonauthor review before implementation approval",
+    "After exact approval, implement/verify representative and obtain detailed visual review",
+    "Apply agreed remainder and complete cross-audit; keep separate publication and final hands-on acceptance"
   ],
   "protected": {
     "mainWritten": true,
@@ -222,7 +221,7 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "N09_PILOT_VERIFIED_DETAIL_REVIEW_PENDING",
+    "currentSubstantiveStage": "REVISE_PROPOSAL_AFTER_USER_DETAIL_FEEDBACK",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
     "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
@@ -245,7 +244,27 @@
       "Mathematics Textbook SPEC §5 (candidate summary)",
       "CMD-WORK-001 cross-creation audit"
     ],
-    "next": "Review exact pilot images for detailed OK or corrections; approved remaining scope follows this gate"
+    "next": "Prepare detailed UX05 using appropriate cognitive units and natural resolved typography; do not batch remaining24",
+    "ux05": {
+      "canonicalStandards": "MASTER §§8,11,52,53; mathematics textbook SPEC learner model and nontrivial rule (candidate summary)",
+      "officialExamples": [
+        "EJU2021 first C1 I Q1",
+        "2025 Common Test mathematics I,A Q1[1]"
+      ],
+      "meaningError": "Automatic factor-zero conditions; grades elementary inverse operations instead of target inference",
+      "renderError": "Certified interactive slot retains44px phantom and stretches auto parentheses",
+      "newRequirementClaimed": false,
+      "audit": {
+        "nodes": 86,
+        "n09": 41,
+        "n10": 45,
+        "groups": 18,
+        "priorityCandidateGroups": 9,
+        "coverageMatch": true,
+        "notBlanketEditApproval": true,
+        "path": "evidence/ux05-feedback/PEDAGOGY_AUDIT.json"
+      }
+    }
   },
   "revisedProposal": {
     "id": "P-W046-UX-04",
@@ -350,7 +369,7 @@
     "retainedParts": 46,
     "newParts": 6,
     "remainingSemanticNodes": 24,
-    "reviewStatus": "PILOT_BLOCK_CHECK_PENDING",
+    "reviewStatus": "USER_DETAIL_REQUIRES_REVISION",
     "userVisualAcceptance": false,
     "publicationChanged": false,
     "tests": {
@@ -418,6 +437,12 @@
       "addedErrors": 0,
       "thisWorkErrors": 0,
       "log": "evidence/ux04-pilot/governance.log"
+    },
+    "userFeedback": {
+      "pedagogicalGrain": "Requires teen-level important inference, not elementary inverse-operation microquestions",
+      "render": "Confirmed oversized second-factor parentheses and excess spacing from retained44px certified slot",
+      "previousTechnicalPassNotUserAcceptance": true,
+      "newImplementationOrTestsThisResponse": false
     }
   },
   "ux03Full": {
@@ -573,5 +598,14 @@
       },
       "publicationChanged": false
     }
-  ]
+  ],
+  "activeProposalRequiresRevision": true,
+  "plannedRevisionProposal": {
+    "id": "P-W046-UX-05",
+    "status": "ANALYSIS_BEFORE_DETAILED_DRAFT",
+    "formalDocumentReady": false,
+    "approvedByUser": false,
+    "implementationStarted": false,
+    "analysisPath": "evidence/ux05-feedback/ANALYSIS.md"
+  }
 }

@@ -1,0 +1,2004 @@
+{
+  "status": "PEDAGOGY_AUDIT_ONLY_NOT_A_NEW_IMPLEMENTATION_PROPOSAL",
+  "author": "/root/w046_source_review",
+  "scope": "N09全41/N10全45nodeとUX04詳細案を読取監査。全選択肢の再設計・製品変更・新テストは行わない。",
+  "sources": {
+    "n09CompiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+    "n10CompiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+    "sourceStoredCommitAsReportedByRoot": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+    "rules": [
+      {
+        "path": "docs/MASTER_APP_LESSONS.md",
+        "sections": [
+          "8",
+          "11",
+          "52",
+          "53"
+        ],
+        "application": "学習行為を評価し、必要途中式とinteractive判断を分ける。初回適用計算は残す。N09-Q08計算比較を保護。"
+      },
+      {
+        "path": "subjects/mathematics/textbook/SPEC.md",
+        "sections": [
+          "2",
+          "5"
+        ],
+        "application": "高校初学/習得直後の水準を見て、非自明な操作を判定。全ての基礎演算を分割する規則ではない。"
+      }
+    ],
+    "officialExamNote": "親が実見した2025共通数IA第1問〔1〕/EJU2021第1回C1 I問1の認知単位の比較は親の照合結果として共有を受けた。本分担では公式問題自体を独立実見しておらず、個々の教材を入試難度へ置換する根拠にはしない。"
+  },
+  "conclusion": "主たる概念判断を既に完成してから易しい操作を細分化する逆転がある。零積の因子条件を中心に再検討する。一方、必要な計算・比較・定義域・正性・非零・値保持・既習関係の初回適用を一律に削除しない。",
+  "priorityGroups": [
+    "N09-A",
+    "N09-B",
+    "N09-C",
+    "N09-E",
+    "N10-A",
+    "N10-F",
+    "N10-G",
+    "N10-I",
+    "N10-J"
+  ],
+  "groups": [
+    {
+      "id": "N09-A",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-01"
+      ],
+      "recommendation": "REPLACE_WITH_MAIN_JUDGMENT",
+      "mainCognitiveTask": "零積から二つの一次式の条件を生徒が導く。さらにその場合分けが全解を尽くすことを理解する。",
+      "overFragmentationOrMissingTask": "現行zeroLogicはx−4=0とx＋4=0を先に完成表示し、「または」だけを選ばせる。本来の主判断の大半をシステムが既に行っている。一方、両辺に16/4を加減する操作が独立穴となり、主判断より重い。",
+      "keepBoundary": "因数分解自体の適用と零積の論理を残す。x²−16=(x−4)(x＋4)を使う根拠と、各一次式から得る±4は途中式として見せる。",
+      "doNotDo": "易しい逆演算を消す代わりに零積の式までAUTOにしない。±4は既出だから書かせない、という理由で「全解を尽くす推論」まで省略しない。",
+      "ux04UnimplementedDraftReview": "balanceOperation・leftInverseOperation・rightInverseOperationは非採点の途中式へ。factorSignは補助の因数分解適用として残せるが主眼ではない。zeroLogicは新しい因子条件の構成へ置換候補。",
+      "keyRecommendations": [
+        {
+          "node": "n09-01",
+          "keys": [
+            "balanceOperation",
+            "leftInverseOperation",
+            "rightInverseOperation"
+          ],
+          "action": "REDUCE_TO_WORKED_STEPS",
+          "reason": "中高生が既習の等式の加減。3つの記号を別の主判断にしない。"
+        },
+        {
+          "node": "n09-01",
+          "keys": [
+            "factorSign"
+          ],
+          "action": "KEEP_SUPPORTING_APPLICATION_OR_COMBINE",
+          "reason": "平方差の因数分解は必要。符号1文字の容易さを教材の核心と取り違えない。"
+        },
+        {
+          "node": "n09-01",
+          "keys": [
+            "zeroLogic"
+          ],
+          "action": "REPLACE_MAIN_CONDITION_WITH_NEW_KEY",
+          "reason": "二因子が0になる条件全体、例「x−4=0 または x＋4=0」を積から生成/選択させる。現行のorだけの記録を新しい判断へ流用しない。"
+        }
+      ]
+    },
+    {
+      "id": "N09-B",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-q01-negative",
+        "n09-q02-negative-square",
+        "n09-q03-inside",
+        "n09-03"
+      ],
+      "recommendation": "COMPRESS_EASY_SUPPORT",
+      "mainCognitiveTask": "負号を含む基底と累乗の範囲、平方根の非負性を区別して計算する。",
+      "overFragmentationOrMissingTask": "powerAction→積の符号＋→値16という三つを同等の導出として数えると、基本的な符号演算へ偏る。同じ(-4)²=16の再入力もある。",
+      "keepBoundary": "(-4)²と−4²の混同、(-√5)²の平方根定義の適用、√((-4)²)=4で−4を採らない判断は残す。必要な計算まで一律に消さない。",
+      "doNotDo": "高校生だから負号・根号の誤解が無いと決めつけない。初回の作用範囲確認と、その後の同一計算の写し直しを区別。",
+      "ux04UnimplementedDraftReview": "signMultiplier=-1、productSign=+、squaringRule、同じ因子を2回掛ける説明は、基礎補助として統合/参照候補。rootFactorSquareやfirstOperationは実際に新しい定義適用/入れ子解釈を問う場合に残し、既存結果の再入力にしない。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q01-negative",
+          "keys": [
+            "productSign"
+          ],
+          "action": "REDUCE_SEPARATE_BASIC_SIGN",
+          "reason": "同じ問題での負×負の＋だけを独立した主判断にしない。"
+        },
+        {
+          "node": "n09-q01-negative",
+          "keys": [
+            "powerAction",
+            "value"
+          ],
+          "action": "KEEP_SCOPE_AND_REQUIRED_RESULT_WITH_OPTION_TO_COMBINE",
+          "reason": "作用範囲と必要な平方値。両者を残すなら異なる誤解を診断する理由を明記し、定義の言い換えだけを重ねない。"
+        },
+        {
+          "node": "n09-q02-negative-square",
+          "keys": [
+            "signFactor",
+            "value"
+          ],
+          "action": "REVIEW_AS_WHOLE_SIGNED_ROOT_APPLICATION",
+          "reason": "(-1)²=1と1×5を別々の主判断にするより、負号込みの平方と(√5)²=5を使う計算へ焦点。問いを変えるなら旧keyを転用しない。"
+        },
+        {
+          "node": "n09-q03-inside",
+          "keys": [
+            "value"
+          ],
+          "action": "REDUCE_REPEATED_16_TO_REFERENCE",
+          "reason": "同じ(-4)²は同じ解法内の確定結果として再利用。"
+        },
+        {
+          "node": "n09-03",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NONNEGATIVE_ROOT_JUDGMENT",
+          "reason": "平方が16でも根号の値は4であり−4ではない。これは基本的だが本単元の概念である。"
+        }
+      ]
+    },
+    {
+      "id": "N09-C",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-q04-nonnegative",
+        "n09-q04-negative",
+        "n09-04",
+        "n09-05",
+        "n09-q06-squares",
+        "n09-q06-order",
+        "n09-06",
+        "n09-q07-negation",
+        "n09-07"
+      ],
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "mainCognitiveTask": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。",
+      "overFragmentationOrMissingTask": "-a>0、両辺に加える−√5、右辺0、負号の乗数−1、第二項−√5、第一項−2、第二項の＋を全て別々に問うと、核心の条件判断より既習の記号操作が大きい。scopeはleadが「差全体」と答えているため写しにもなる。",
+      "keepBoundary": "非負/負の場合分け、負のとき√(a²)=−a、非負範囲で平方比較して2<√5とする根拠、2−√5<0から差全体の符号を反転する判断を保持。",
+      "doNotDo": "平方比較を省き根号式の符号を断定しない。必要な分配式・計算行は残す。",
+      "ux04UnimplementedDraftReview": "新signedSquareMethod・outsideFactor・secondOperand等の基礎分配の細分化は抑え、nonnegativeActionのような絶対値の主判断と必要な式整理へ集約候補。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q04-nonnegative",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_CASE_CONDITION",
+          "reason": "a≥0の範囲全体で根号を評価する主判断。"
+        },
+        {
+          "node": "n09-q04-negative",
+          "keys": [
+            "oppositeSign"
+          ],
+          "action": "REDUCE_IF_USED_AS_ROUTINE_EVIDENCE",
+          "reason": "a<0から−a>0は必要な根拠として提示できる。主判断は非負の平方根の選択。"
+        },
+        {
+          "node": "n09-q04-negative",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NEGATIVE_CASE",
+          "reason": "aではなく−aとなる理由が本単元の重要点。"
+        },
+        {
+          "node": "n09-05",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_ABSOLUTE_VALUE_GENERALISATION",
+          "reason": "二つの場合を|a|に統一する表現。"
+        },
+        {
+          "node": "n09-q06-squares",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NECESSARY_COMPARISON_WORKING_NOT_MULTIPLY_MICRODRILLS",
+          "reason": "4と5の比較の入力となる平方値は必要。ただし2×2のような補助を別の連続クイズに増やさない。"
+        },
+        {
+          "node": "n09-q06-order",
+          "keys": [
+            "relation"
+          ],
+          "action": "KEEP_NONNEGATIVE_SQUARE_COMPARISON",
+          "reason": "平方の大小を元の正の数へ戻す根拠を使う。"
+        },
+        {
+          "node": "n09-06",
+          "keys": [
+            "addend",
+            "zero"
+          ],
+          "action": "REPLACE_WITH_DIFFERENCE_SIGN_OR_WORKED_SUPPORT",
+          "reason": "主結果2−√5<0を導かせる。足す数と同数差0は途中式へ残し、単独加点を重ねない。"
+        },
+        {
+          "node": "n09-q07-negation",
+          "keys": [
+            "scope"
+          ],
+          "action": "REPLACE_ABSOLUTE_VALUE_CASE_WITH_NEW_KEY",
+          "reason": "差を写すより、符号に基づき差全体を反転する判断。"
+        },
+        {
+          "node": "n09-07",
+          "keys": [
+            "outsideFactor",
+            "secondOperand",
+            "left",
+            "sign"
+          ],
+          "action": "CONSOLIDATE_EXISTING_DISTRIBUTION_INTO_REQUIRED_SIMPLIFICATION",
+          "reason": "N08の既習分配を必要な途中式で示し、外の負号が全体に作用した正しい整理結果を問う。全ての易しい符号を独立穴にしない。"
+        }
+      ]
+    },
+    {
+      "id": "N09-D",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-decimal-method",
+        "n09-p001-q08-left-square",
+        "n09-p001-q08-right-square",
+        "n09-p001-q08-lower-sign",
+        "n09-p001-q08-upper-sign",
+        "n09-08",
+        "n09-09"
+      ],
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "mainCognitiveTask": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。",
+      "overFragmentationOrMissingTask": "未実装UX04の分数平方の作用、分配の＋、交差積一つ、交差項の個数2を逐一追加すると、N08既習の式展開が改めて初等クイズ化する。",
+      "keepBoundary": "MASTER§53がN09-Q08の平方計算と1.9881<2、2<2.0164の比較を明示する。L1/L2/L3、R1/R2/R3、C/Dと元の根号への大小判断を機械的に削除しない。補助値は参照。",
+      "doNotDo": "易しいという一語で既承認の数値計算と比較をAUTOに戻さない。入試問題へ置換しない。",
+      "ux04UnimplementedDraftReview": "fractionSquareAction・outerJoinの＋・crossCoefficientの2を全部追加する案は圧縮。平方公式の実際の適用として中項の因子構成を問う場合は残し、右側では支援を減らす。",
+      "keyRecommendations": [
+        {
+          "node": "n09-p001-q08-left-square",
+          "keys": [
+            "L1",
+            "L2",
+            "L3"
+          ],
+          "action": "KEEP_REQUIRED_CALCULATION_AND_DECIMAL_CONVERSION",
+          "reason": "既存§53の具体的対象。導出の骨格を与える/適用させることと、必要な数値計算を残すことを区別。"
+        },
+        {
+          "node": "n09-p001-q08-right-square",
+          "keys": [
+            "R1",
+            "R2",
+            "R3"
+          ],
+          "action": "KEEP_CALCULATION_TRANSFER",
+          "reason": "同じ方法の数値の異なる転移。左と同じ補助説明を全再演しない。"
+        },
+        {
+          "node": "n09-p001-q08-lower-sign",
+          "keys": [
+            "C"
+          ],
+          "action": "KEEP_EXPLICIT_COMPARISON",
+          "reason": "§53で左の平方と2の比較を明示。"
+        },
+        {
+          "node": "n09-p001-q08-upper-sign",
+          "keys": [
+            "D"
+          ],
+          "action": "KEEP_EXPLICIT_COMPARISON",
+          "reason": "§53で2と右の平方の比較を明示。"
+        },
+        {
+          "node": "n09-09",
+          "keys": [
+            "lowerRelation",
+            "upperRelation"
+          ],
+          "action": "KEEP_ROOT_INTERVAL_INFERENCE",
+          "reason": "数値比較とは別に、非負性を用いて元の根号の範囲へ戻す。二つを一連の判断として提示できる。"
+        }
+      ]
+    },
+    {
+      "id": "N09-E",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-parts-target",
+        "n09-q10-reject-truncation",
+        "n09-10",
+        "n09-q11-remainder",
+        "n09-11"
+      ],
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "mainCognitiveTask": "整数部分は桁の切取りではなくn≤x<n＋1。負の数ではn=−2が不適合で、n=−3、r=0.9となる理由。",
+      "overFragmentationOrMissingTask": "x=n+rから両辺へ−n、範囲へ+n、−(−2)の＋だけをそれぞれ独立採点しても主概念には近づかない。",
+      "keepBoundary": "定義と等価な条件、誤候補の残り−0.1、0≤r<1の照合、正しいnと残りの必要計算を保持。",
+      "doNotDo": "定義そのものを未知語クイズにしない。rの範囲の根拠まで無くさない。",
+      "ux04UnimplementedDraftReview": "isolateOperation・intervalShift・removeBracketsOperationは非採点の途中式へ。admissibilityのような定義への適合は主判断候補として残す。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q10-reject-truncation",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_COUNTEREXAMPLE_CALCULATION",
+          "reason": "−0.1は誤った切取りを棄却する根拠。易しい計算でもここで意味を持つ。"
+        },
+        {
+          "node": "n09-10",
+          "keys": [
+            "n"
+          ],
+          "action": "KEEP_INTEGER_PART_DEFINITION_APPLICATION",
+          "reason": "負の数で−3を選ぶ主概念。"
+        },
+        {
+          "node": "n09-q11-remainder",
+          "keys": [
+            "sign"
+          ],
+          "action": "REDUCE_BASIC_MINUS_NEGATIVE_SUPPORT",
+          "reason": "必要な符号処理は見せるが、単独＋穴を主判断として数えない。"
+        },
+        {
+          "node": "n09-q11-remainder",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_REMAINDER_APPLICATION",
+          "reason": "r=0.9を求め、0≤r<1に合うか確かめる。"
+        }
+      ]
+    },
+    {
+      "id": "N09-F",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-q12-lower",
+        "n09-q12-upper",
+        "n09-12",
+        "n09-q13-reverse",
+        "n09-13"
+      ],
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "mainCognitiveTask": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。",
+      "overFragmentationOrMissingTask": "未実装commonMultiplier=−1を追加し、さらに両不等号と両端を全て独立した新判断に数えるのは過剰。",
+      "keepBoundary": "平方値9/16という必要計算、非負の平方比較、負の乗法での不等号方向、増加順の区間を保持。",
+      "doNotDo": "負号を付けるだけで端点の大小を変えない誤解を放置しない。",
+      "ux04UnimplementedDraftReview": "commonMultiplierは与えた目標に必要な基本操作として参照。既存S1/S2とleft/rightは一連の区間変換として扱い、二つの境界を別の対象として問う意味がある場合だけ分割。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q12-lower",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NECESSARY_BOUND_CALCULATION",
+          "reason": "3²=9は根号10を挟む根拠。"
+        },
+        {
+          "node": "n09-q12-upper",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NECESSARY_BOUND_CALCULATION",
+          "reason": "4²=16はもう一方の根拠。余計な3×3/4×4の操作選択を増やさない。"
+        },
+        {
+          "node": "n09-12",
+          "keys": [
+            "lower",
+            "upper"
+          ],
+          "action": "KEEP_NONNEGATIVE_INTERVAL_INFERENCE",
+          "reason": "平方比較から√10の範囲を導く。"
+        },
+        {
+          "node": "n09-q13-reverse",
+          "keys": [
+            "S1",
+            "S2"
+          ],
+          "action": "KEEP_NEGATIVE_INEQUALITY_RULE_AS_LINKED_TASK",
+          "reason": "二つの境界を反転させる主規則。leadに答えを先書きしない。"
+        },
+        {
+          "node": "n09-13",
+          "keys": [
+            "left",
+            "right"
+          ],
+          "action": "KEEP_OR_COMBINE_INCREASING_INTERVAL_REPRESENTATION",
+          "reason": "負の大小の並びを正しく表す。端点の単なる写しにならない問いにする。"
+        }
+      ]
+    },
+    {
+      "id": "N09-G",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-q14-positive-integer",
+        "n09-q14-positive-remainder",
+        "n09-q14-negative-integer",
+        "n09-q14-negative-remainder",
+        "n09-14"
+      ],
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "mainCognitiveTask": "±√10の整数部分と小数部分を定義から構成し、残りが0以上1未満である理由を示す。",
+      "overFragmentationOrMissingTask": "残りの式の−/＋だけ、各辺への−3/＋4、二項の順交換の説明を全て独立採点すると、条件に基づく整数・小数部分の理解より基本操作へ偏る。",
+      "keepBoundary": "正の整数部分3と負の整数部分−4の違い、r=√10−3とr=4−√10、残りの範囲の根拠は保持。",
+      "doNotDo": "負の整数部分を正の整数部分の単なる符号反転にしない。区間での保証を省かない。",
+      "ux04UnimplementedDraftReview": "intervalTranslationとreorderActionの個別穴は圧縮。remainderOperation/signは完成した残りの式を自力で作る主判断へ置換候補。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q14-positive-integer",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_FLOOR_APPLICATION",
+          "reason": "定義から整数部分を選ぶ。"
+        },
+        {
+          "node": "n09-q14-negative-integer",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NEGATIVE_FLOOR_APPLICATION",
+          "reason": "−3でなく−4となる本質的判断。"
+        },
+        {
+          "node": "n09-q14-positive-remainder",
+          "keys": [
+            "remainderOperation"
+          ],
+          "action": "REPLACE_WITH_REMAINDER_EXPRESSION_NEW_KEY",
+          "reason": "−記号だけではなく、定義と認定整数部分からrの式を構成させる。"
+        },
+        {
+          "node": "n09-q14-negative-remainder",
+          "keys": [
+            "sign"
+          ],
+          "action": "REPLACE_WITH_SIGNED_REMAINDER_EXPRESSION_NEW_KEY",
+          "reason": "＋記号だけでなく、負の整数部分を引く意味を含むr=4−√10という式へ。新しい学習行為へ旧＋回答をaliasしない。"
+        }
+      ]
+    },
+    {
+      "id": "N09-H",
+      "unit": "n09",
+      "nodeIds": [
+        "n09-q01-positive",
+        "n09-definition",
+        "n09-q02-root",
+        "n09-02",
+        "n09-boundary"
+      ],
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "mainCognitiveTask": "平方根の定義、根号が非負の一数を表すこと、境界0/負数の扱いを導入する。",
+      "overFragmentationOrMissingTask": "AUTO nodeがあること自体を不足と判定しない。最初の手本・定義・前段のまとめを全部穴にする理由はない。",
+      "keepBoundary": "最初の正の平方の手本、定義・境界、√16=4で正の根号を選ぶ判断、前段の確定結果のまとめ。",
+      "doNotDo": "未習の語を当てさせたり、定義を発見問題のふりで隠さない。",
+      "ux04UnimplementedDraftReview": "対象外の問いと数学を維持。過剰な穴を追加しない。",
+      "keyRecommendations": [
+        {
+          "node": "n09-q02-root",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_ROOT_DEFINITION_APPLICATION",
+          "reason": "±4のうち根号の非負の値4を選ぶ。"
+        }
+      ]
+    },
+    {
+      "id": "N10-A",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q01-square",
+        "n10-01",
+        "n10-q02-sign",
+        "n10-02"
+      ],
+      "recommendation": "KEEP_ROOT_IDENTIFICATION_COMPRESS_ROUTINE_ISOLATION",
+      "mainCognitiveTask": "候補t√5の平方を用い、t>0から値を選び、正性と平方値の両方で√125と同定する。",
+      "overFragmentationOrMissingTask": "未実装tSquareFactor=t²やisolationDivisor=5を追加しても、既習の累乗や係数除去の細分化になりやすい。",
+      "keepBoundary": "√5の平方5、125÷5=25、t²=25とt>0からt=5、候補の正性・平方125・同定理由は維持。",
+      "doNotDo": "本人が肯定した√125の正性→平方→同定理由を全て消して完成公式の選択へ戻さない。",
+      "ux04UnimplementedDraftReview": "isolationDivisorはx+4=0の逆演算と同型の削減候補。t²の指数化は途中式で参照し、必要な平方計算や根の符号選択を残す。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q01-square",
+          "keys": [
+            "rootSquare"
+          ],
+          "action": "KEEP_ROOT_DEFINITION_CALCULATION",
+          "reason": "候補の平方値へ根号の定義を適用する。"
+        },
+        {
+          "node": "n10-01",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_NECESSARY_EQUATION_RESULT",
+          "reason": "t²=25を得る必要計算。5で割る記号をさらに別の主判断にしない。"
+        },
+        {
+          "node": "n10-q02-sign",
+          "keys": [
+            "value"
+          ],
+          "action": "KEEP_POSITIVE_CANDIDATE_CHOICE",
+          "reason": "t²=25だけでは±5。t>0を使う条件判断。"
+        },
+        {
+          "node": "n10-02",
+          "keys": [
+            "candidateSign",
+            "squareValue",
+            "identificationReason"
+          ],
+          "action": "KEEP_ACCEPTED_EVIDENCE_AND_IDENTIFICATION",
+          "reason": "正性だけ/平方値だけでは足りないことを含む本単元の核心。これ以上因子の基本計算へ細分化しない。"
+        }
+      ]
+    },
+    {
+      "id": "N10-B",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q03-expand",
+        "n10-03",
+        "n10-q04-sign",
+        "n10-04"
+      ],
+      "recommendation": "KEEP_PRODUCT_PROPERTY_CONSTRUCTION",
+      "mainCognitiveTask": "候補√a√bの平方と正性から、積の性質を定義で構成する。",
+      "overFragmentationOrMissingTask": "指数2を二か所別々に埋める基本的支援は主判断より補助。さらに単一の因子の読取りや2回掛ける操作まで分けると過剰。",
+      "keepBoundary": "平方ab、候補の正性、正の平方根の一意性という本人が肯定した構成を保護。公式そのものの選択だけにしない。",
+      "doNotDo": "難度調整を理由に平方・符号の根拠をAUTO化して完成式だけ問わない。",
+      "ux04UnimplementedDraftReview": "protected KEEP群。powerA/powerBを一組の構成として圧縮する余地はあるが、根号因子a/bの定義適用とrootReasonは保持。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q03-expand",
+          "keys": [
+            "powerA",
+            "powerB"
+          ],
+          "action": "KEEP_AS_CONSTRUCTION_PAIR_OR_COMPRESS_ROUTINE_EXPONENTS",
+          "reason": "二因子に平方が作用する組立て。指数2の反復を二つの別概念とは数えない。"
+        },
+        {
+          "node": "n10-03",
+          "keys": [
+            "aValue",
+            "bValue"
+          ],
+          "action": "KEEP_DEFINITION_APPLIED_TO_TWO_PARAMETERS",
+          "reason": "候補の平方がabになる根拠を作る。"
+        },
+        {
+          "node": "n10-q04-sign",
+          "keys": [
+            "relation"
+          ],
+          "action": "KEEP_NEEDED_POSITIVITY_CONDITION",
+          "reason": "平方の一致だけでなく正の候補である証拠。"
+        },
+        {
+          "node": "n10-04",
+          "keys": [
+            "rootReason"
+          ],
+          "action": "KEEP_MAIN_IDENTIFICATION_REASON",
+          "reason": "正性と平方の一致が両方必要。"
+        }
+      ]
+    },
+    {
+      "id": "N10-C",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q05-denominator",
+        "n10-q05-square",
+        "n10-05",
+        "n10-q06-sign",
+        "n10-06"
+      ],
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "mainCognitiveTask": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。",
+      "overFragmentationOrMissingTask": "numPower/denPowerの二つの指数2を増やし続けるのは不要だが、分母に平方が作用することと分母0の禁止は同じではない。",
+      "keepBoundary": "分母非零、平方a/b、正性、同定理由。必要な上下の計算を保護。",
+      "doNotDo": "分母非零を単なる簡単な≠0だからという理由で捨てない。これは定義域の核心。",
+      "ux04UnimplementedDraftReview": "protected KEEP群。既存の商の構成を維持し、基本累乗操作の新たな重複穴だけを避ける。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q05-denominator",
+          "keys": [
+            "relation"
+          ],
+          "action": "KEEP_DOMAIN_CONDITION",
+          "reason": "商を作れる前提が必要。"
+        },
+        {
+          "node": "n10-q05-square",
+          "keys": [
+            "numPower",
+            "denPower"
+          ],
+          "action": "KEEP_OR_COMBINE_FRACTION_SQUARE_CONSTRUCTION",
+          "reason": "上下への平方の作用。二つの2という数の記憶を別採点目的にしない。"
+        },
+        {
+          "node": "n10-05",
+          "keys": [
+            "numerator",
+            "denominator"
+          ],
+          "action": "KEEP_NEEDED_DEFINITION_CALCULATION",
+          "reason": "平方a/bを自分で確定する。"
+        },
+        {
+          "node": "n10-q06-sign",
+          "keys": [
+            "relation"
+          ],
+          "action": "KEEP_POSITIVITY_EVIDENCE",
+          "reason": "正の平方根の同定に必要。"
+        },
+        {
+          "node": "n10-06",
+          "keys": [
+            "quotientReason"
+          ],
+          "action": "KEEP_MAIN_DOMAIN_AND_ROOT_REASON",
+          "reason": "商の存在と正の平方根であることを区別する。"
+        }
+      ]
+    },
+    {
+      "id": "N10-D",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q07-product",
+        "n10-07",
+        "n10-q08-factor",
+        "n10-08"
+      ],
+      "recommendation": "KEEP_FIRST_USE_STRATEGY_AND_CALCULATION",
+      "mainCognitiveTask": "証明した積の性質を初めて具体的計算へ使い、最大の平方因子で根号を簡単にする。",
+      "overFragmentationOrMissingTask": "×の穴という形だけで初等的と判定すると、直前に学んだ関係式の初回適用を消してしまう。",
+      "keepBoundary": "insideOperation/inside、最大平方因子16、残り3、外の係数4と確定後のまとめを保持。",
+      "doNotDo": "平方因子4も有効な途中分解であることを認め、最大という指定と数学的正しさを区別。",
+      "ux04UnimplementedDraftReview": "新たな手数を増やさず現行の主判断と必要計算を維持。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q07-product",
+          "keys": [
+            "insideOperation",
+            "inside"
+          ],
+          "action": "KEEP_FIRST_USE_OF_PROVED_RELATION",
+          "reason": "MASTER§8の「初めて関係式を使う計算」。単なる掛け算記号当てと同一視しない。"
+        },
+        {
+          "node": "n10-07",
+          "keys": [
+            "squareFactor",
+            "factor"
+          ],
+          "action": "KEEP_FACTORISATION_STRATEGY_AND_COMPLETION",
+          "reason": "最大平方因子の選択と残りの因子の算出。"
+        },
+        {
+          "node": "n10-q08-factor",
+          "keys": [
+            "coefficient"
+          ],
+          "action": "KEEP_RADICAL_SIMPLIFICATION",
+          "reason": "平方因子を根号の外へ出す実際の適用。"
+        }
+      ]
+    },
+    {
+      "id": "N10-E",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q09-left",
+        "n10-q09-right",
+        "n10-09",
+        "n10-q10-coefficients",
+        "n10-10"
+      ],
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "mainCognitiveTask": "各項を同じ根号へ直し、共通因子を持つ項として加算する。",
+      "overFragmentationOrMissingTask": "4→残り2→係数2、25→残り2→係数5の全てを等しく独立した主要判断とすると基本小問が連続する。",
+      "keepBoundary": "平方因子での分解と係数算出は必要。残り因子と係数が偶然同じ2でも別の数学的役割。共通する√2を見抜く主判断と係数7の計算は保持。",
+      "doNotDo": "根号内を足して√58とする誤解を見落とさない。必要計算を一律削除せず、局所的な分解の一課題へまとめる。",
+      "ux04UnimplementedDraftReview": "remainingFactorUX04は数学的に必要な計算だが、独立大問化の必要性を再判定。commonFactorUX04は根号の和の主判断として残す候補。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q09-left",
+          "keys": [
+            "squareFactor",
+            "coefficient"
+          ],
+          "action": "KEEP_LOCAL_SIMPLIFICATION_OR_COMBINE_PARTS",
+          "reason": "根号の簡単化の方針と係数。"
+        },
+        {
+          "node": "n10-q09-right",
+          "keys": [
+            "squareFactor",
+            "coefficient"
+          ],
+          "action": "KEEP_TRANSFER_WITH_LESS_SUPPORT",
+          "reason": "左と同じ手順を右へ適用。全ての基本手順の説明を繰り返さない。"
+        },
+        {
+          "node": "n10-q10-coefficients",
+          "keys": [
+            "coefficient"
+          ],
+          "action": "KEEP_REQUIRED_LIKE_TERM_SUM",
+          "reason": "共通の√2を保った加法の値を求める。"
+        }
+      ]
+    },
+    {
+      "id": "N10-F",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q11-formula",
+        "n10-11",
+        "n10-q12-product",
+        "n10-12"
+      ],
+      "recommendation": "REPLACE_OVERBUILT_REPROOF_WITH_IDENTITY_APPLICATION",
+      "mainCognitiveTask": "既習の差の平方を根号の式へ適用し、中項の符号・係数と根号の積を正しく処理する。",
+      "overFragmentationOrMissingTask": "UX04のsignedSecond、二つのcrossProduct、crossSign、lastSign、crossMultiplicityの六段階は、N08既習の分配をこの例題で初学同様に再教授する形。四積を見せることと六つ全てを採点することは別。",
+      "keepBoundary": "差の平方の中項を正しく構成する判断、(√2)²/(√3)²の値、√2√3の計算、定数部分の整理を残す。",
+      "doNotDo": "完成公式の文字列当てだけへ戻さない。A/Bの対応と中項の符号込みの係数など、実際の適用を本人に行わせる。",
+      "ux04UnimplementedDraftReview": "六つの新partは一つ/少数の中項構成へ集約候補。rootFreePairのような見えている2と3の読取りを追加するより、必要な式全体の整理へ焦点。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q11-formula",
+          "keys": [
+            "middleSign"
+          ],
+          "action": "REPLACE_WITH_MAIN_SIGNED_CROSS_TERM_APPLICATION",
+          "reason": "−だけで2ABの対応を全て与えるのも弱い。例えば符号込みの中項係数−2と根号因子対応を問う。意味が変われば別key。"
+        },
+        {
+          "node": "n10-11",
+          "keys": [
+            "leftSquare",
+            "rightSquare"
+          ],
+          "action": "KEEP_REQUIRED_ROOT_SQUARE_CALCULATION",
+          "reason": "具体的な根号式に平方根の定義を適用。必要な数値を消さない。"
+        },
+        {
+          "node": "n10-q12-product",
+          "keys": [
+            "inside"
+          ],
+          "action": "KEEP_NEEDED_RADICAL_PRODUCT",
+          "reason": "中項の√6を実際に求める。"
+        },
+        {
+          "node": "n10-12",
+          "keys": [
+            "constant"
+          ],
+          "action": "KEEP_REQUIRED_SIMPLIFICATION_WITHOUT_EXTRA_PAIR_QUIZ",
+          "reason": "2＋3は必要な最終整理。新しいrootFreePairを独立した主要判断に数えない。"
+        }
+      ]
+    },
+    {
+      "id": "N10-G",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q13-identity",
+        "n10-13"
+      ],
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_CANCELLING_TERMS_JUDGMENT",
+      "mainCognitiveTask": "和と差の積でどの交差項が打ち消され、平方差だけが残るかを把握して具体的に計算する。",
+      "overFragmentationOrMissingTask": "−一文字だけでは平方差を既に与えている。一方、−Bの写し→交差積二つ→各符号→0という全手順の再試問も中高生向けには過剰になりやすい。",
+      "keepBoundary": "互いに逆符号の交差項を同定する概念と、7−2=5という具体計算を保持。",
+      "doNotDo": "−AB＋ABを全て先書きして0だけを埋めることを、相殺する項を生徒が導いた証拠にしない。",
+      "ux04UnimplementedDraftReview": "R03の「全自動四積」は避けるが、UX04六穴が唯一の解決ではない。消える項の組と残る二項を主判断へ。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q13-identity",
+          "keys": [
+            "operation"
+          ],
+          "action": "REPLACE_MAIN_CANCELLATION_JUDGMENT_NEW_KEY",
+          "reason": "平方差の−だけでなく、どの二項が相殺するか。旧−記録を新しい判断へaliasしない。"
+        },
+        {
+          "node": "n10-13",
+          "keys": [
+            "left",
+            "right",
+            "difference"
+          ],
+          "action": "KEEP_NEEDED_NUMERICAL_EVALUATION_OR_ONE_LOCAL_CALCULATION",
+          "reason": "平方7/2と差5は新しい根号計算の具体適用。過度な別画面分割はしない。"
+        }
+      ]
+    },
+    {
+      "id": "N10-H",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-14",
+        "n10-q15-factor",
+        "n10-15",
+        "n10-q16-denominator",
+        "n10-16"
+      ],
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "mainCognitiveTask": "非零のc/c=1を上下へ掛けて値を保ち、分母を有理数へする因子を選んで計算する。",
+      "overFragmentationOrMissingTask": "UX04のdenominatorScope=2√3は見えている分母の写しで、denominatorPower=2は基本累乗の反復。これらを自動で主要穴へ加える理由は弱い。",
+      "keepBoundary": "同じ非零因子を上下に掛ける理由、因子√3の選択、分子/分母の必要計算は保持。",
+      "doNotDo": "分母全体の束縛はrenderer/式の構成として必須。生徒に式のASTを読ませる穴を作らないことと、係数2を落としてよいことは別。",
+      "ux04UnimplementedDraftReview": "分母scope/指数の新小問を圧縮し、値の保持と有理化の方針を中心にする。",
+      "keyRecommendations": [
+        {
+          "node": "n10-14",
+          "keys": [
+            "operation"
+          ],
+          "action": "KEEP_EQUIVALENT_TRANSFORMATION_REASON",
+          "reason": "上下へ同一非零因子を掛けることで値を保つことは数学的根拠。"
+        },
+        {
+          "node": "n10-q15-factor",
+          "keys": [
+            "factor"
+          ],
+          "action": "KEEP_RATIONALISING_FACTOR_STRATEGY",
+          "reason": "根号を消す因子の選択は主判断。"
+        },
+        {
+          "node": "n10-15",
+          "keys": [
+            "numerator"
+          ],
+          "action": "KEEP_REQUIRED_NUMERATOR_CALCULATION_OR_COMBINE",
+          "reason": "分子も同じ因子で変えることを確認する。1×√3の算術自体を難問扱いしない。"
+        },
+        {
+          "node": "n10-q16-denominator",
+          "keys": [
+            "square",
+            "denominator"
+          ],
+          "action": "KEEP_REQUIRED_DENOMINATOR_EVALUATION",
+          "reason": "平方と分母6を計算する。これ以上同じ因子数を問う穴を足さない。"
+        }
+      ]
+    },
+    {
+      "id": "N10-I",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q17-factor",
+        "n10-q17-nonzero",
+        "n10-17",
+        "n10-18",
+        "n10-q19-distribute",
+        "n10-19"
+      ],
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "mainCognitiveTask": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。",
+      "overFragmentationOrMissingTask": "productOperation=×だけ、UX04の元分子√3・元分母√3＋√2の読取りを別々に採点すると、分数の見方の初等練習へ偏る。",
+      "keepBoundary": "共役因子、非零性、分母の平方差、分子の符号を含む分配と必要な根号積を保持。",
+      "doNotDo": "必要な括弧・分母全体の束縛はコード上で維持。表示を短くするために式を偽の等号でつながない。",
+      "ux04UnimplementedDraftReview": "numeratorBase/denominatorBaseの新コピー穴は削減候補。既存の符号付き分配も、単純符号の復習だけへ増殖させず必要な分子計算としてまとめる。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q17-factor",
+          "keys": [
+            "factor"
+          ],
+          "action": "KEEP_CONJUGATE_STRATEGY",
+          "reason": "分母が平方差になる方針。"
+        },
+        {
+          "node": "n10-q17-nonzero",
+          "keys": [
+            "relation"
+          ],
+          "action": "KEEP_NONZERO_JUSTIFICATION",
+          "reason": "c/cが使える前提。"
+        },
+        {
+          "node": "n10-17",
+          "keys": [
+            "productOperation"
+          ],
+          "action": "REDUCE_BASIC_FRACTION_MULTIPLICATION_WITH_EQUIVALENCE_KEPT",
+          "reason": "×か＋かだけの主判断より、同じc/cで値を保持することと分母の有理化。"
+        },
+        {
+          "node": "n10-18",
+          "keys": [
+            "A",
+            "B",
+            "C"
+          ],
+          "action": "KEEP_DENOMINATOR_CALCULATION_AS_ONE_LOCAL_TASK",
+          "reason": "根号の平方と差1は有理化の計算内容。"
+        },
+        {
+          "node": "n10-q19-distribute",
+          "keys": [
+            "secondOperand",
+            "productSign"
+          ],
+          "action": "KEEP_SIGNED_DISTRIBUTION_OR_CONSOLIDATE_ALREADY_LEARNED_RULE",
+          "reason": "負の第二項を落とさず分子を展開する。二つの符号を別の新概念と数えない。"
+        },
+        {
+          "node": "n10-19",
+          "keys": [
+            "left",
+            "inside"
+          ],
+          "action": "KEEP_REQUIRED_NUMERATOR_RADICAL_CALCULATION",
+          "reason": "分子3−√6を実際に求める。"
+        }
+      ]
+    },
+    {
+      "id": "N10-J",
+      "unit": "n10",
+      "nodeIds": [
+        "n10-q20-factor",
+        "n10-20",
+        "n10-q21-denominator",
+        "n10-q21-expand",
+        "n10-q21-constants",
+        "n10-21"
+      ],
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "mainCognitiveTask": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。",
+      "overFragmentationOrMissingTask": "UX04で交差積二つや単独符号を再び六段階にすること、見えている4と3のpair選択を追加することは、前例からの転移より復習の分解が大きい。",
+      "keepBoundary": "factorの方針、非零/同一因子での値保持、分子中項の符号込みの係数、必要な平方・根号・定数の計算を保持。",
+      "doNotDo": "逆符号√3−2も有理化できることは正しく認め、手順の正のc指定と区別。P/Q/Kの旧記録を異なる判断へ自動aliasしない。",
+      "ux04UnimplementedDraftReview": "前段で初めて必要になる4/3の計算をどこで行うかは整理可。ただし同じ原問題内で二度採点しない。signedCrossSumの−4という意味は保持し、六つの基礎分配小問を必須にしない。",
+      "keyRecommendations": [
+        {
+          "node": "n10-q20-factor",
+          "keys": [
+            "factor",
+            "factorSign",
+            "reason"
+          ],
+          "action": "KEEP_STRATEGY_NONZERO_AND_EQUIVALENCE",
+          "reason": "主たる数学的な条件と根拠。"
+        },
+        {
+          "node": "n10-20",
+          "keys": [
+            "power"
+          ],
+          "action": "REDUCE_ROUTINE_REPEATED_FACTOR_COUNT",
+          "reason": "同じ因子二回の指数2は既習。分子全体に平方が作用する表示は必須。"
+        },
+        {
+          "node": "n10-20",
+          "keys": [
+            "denominatorOperation"
+          ],
+          "action": "KEEP_OR_INTEGRATE_CONJUGATE_IDENTITY_APPLICATION",
+          "reason": "分母の和と差の積を正しく平方差へ。−一文字を新しい法則の発見とは数えない。"
+        },
+        {
+          "node": "n10-q21-denominator",
+          "keys": [
+            "D"
+          ],
+          "action": "KEEP_REQUIRED_VALUE_WITHOUT_MICROQUIZ_WEIGHT",
+          "reason": "分母1を求める必要計算だが4−3を教材の核心としない。"
+        },
+        {
+          "node": "n10-q21-expand",
+          "keys": [
+            "P",
+            "K",
+            "Q"
+          ],
+          "action": "REVIEW_PLACEMENT_AND_MAIN_SIGNED_CROSS_TERM",
+          "reason": "必要な平方4/3と中項係数は残す。同じ平方を前段で既に求めたなら参照し、符号込みの−4を求める判断を主にする。意味の異なる旧K=4を新−4へ転用しない。"
+        },
+        {
+          "node": "n10-q21-constants",
+          "keys": [
+            "C"
+          ],
+          "action": "KEEP_REQUIRED_FINAL_SIMPLIFICATION_NO_EXTRA_PAIR_COPY",
+          "reason": "定数和7は必要な整理。新rootFreePair=4,3を別の主要判断として加えない。"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "unit": "n09",
+      "nodeId": "n09-q01-positive",
+      "stageId": "n09-stage-01",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-H",
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q01-negative",
+      "stageId": "n09-stage-01",
+      "sourcePartKeys": [
+        "powerAction",
+        "productSign",
+        "value"
+      ],
+      "auditGroup": "N09-B",
+      "recommendation": "COMPRESS_EASY_SUPPORT",
+      "reason": "負号を含む基底と累乗の範囲、平方根の非負性を区別して計算する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-01",
+      "stageId": "n09-stage-01",
+      "sourcePartKeys": [
+        "balanceOperation",
+        "factorSign",
+        "zeroLogic",
+        "leftInverseOperation",
+        "rightInverseOperation"
+      ],
+      "auditGroup": "N09-A",
+      "recommendation": "REPLACE_WITH_MAIN_JUDGMENT",
+      "reason": "零積から二つの一次式の条件を生徒が導く。さらにその場合分けが全解を尽くすことを理解する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-definition",
+      "stageId": "n09-stage-02",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-H",
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q02-root",
+      "stageId": "n09-stage-02",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-H",
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "reason": "平方根の定義、根号が非負の一数を表すこと、境界0/負数の扱いを導入する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q02-negative-square",
+      "stageId": "n09-stage-02",
+      "sourcePartKeys": [
+        "signFactor",
+        "value"
+      ],
+      "auditGroup": "N09-B",
+      "recommendation": "COMPRESS_EASY_SUPPORT",
+      "reason": "負号を含む基底と累乗の範囲、平方根の非負性を区別して計算する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-02",
+      "stageId": "n09-stage-02",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-H",
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-boundary",
+      "stageId": "n09-stage-02",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-H",
+      "recommendation": "KEEP_DEFINITION_REFERENCE_AND_SUMMARY",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q03-inside",
+      "stageId": "n09-stage-03",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-B",
+      "recommendation": "COMPRESS_EASY_SUPPORT",
+      "reason": "負号を含む基底と累乗の範囲、平方根の非負性を区別して計算する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-03",
+      "stageId": "n09-stage-03",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-B",
+      "recommendation": "COMPRESS_EASY_SUPPORT",
+      "reason": "負号を含む基底と累乗の範囲、平方根の非負性を区別して計算する。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q04-nonnegative",
+      "stageId": "n09-stage-04",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q04-negative",
+      "stageId": "n09-stage-04",
+      "sourcePartKeys": [
+        "oppositeSign",
+        "value"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-04",
+      "stageId": "n09-stage-04",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-05",
+      "stageId": "n09-stage-04",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q06-squares",
+      "stageId": "n09-stage-05",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q06-order",
+      "stageId": "n09-stage-05",
+      "sourcePartKeys": [
+        "relation"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-06",
+      "stageId": "n09-stage-05",
+      "sourcePartKeys": [
+        "addend",
+        "zero"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q07-negation",
+      "stageId": "n09-stage-05",
+      "sourcePartKeys": [
+        "scope"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-07",
+      "stageId": "n09-stage-05",
+      "sourcePartKeys": [
+        "outsideFactor",
+        "secondOperand",
+        "left",
+        "sign"
+      ],
+      "auditGroup": "N09-C",
+      "recommendation": "REPLACE_FRAGMENTED_SUPPORT_WITH_ABSOLUTE_VALUE_CASE",
+      "reason": "√(a²)=|a|の条件付きの使い分け。2−√5の符号を判断し、絶対値を外すとき差全体をどう扱うか。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-decimal-method",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-left-square",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-right-square",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-lower-sign",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [
+        "C"
+      ],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-upper-sign",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [
+        "D"
+      ],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-08",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-09",
+      "stageId": "n09-stage-06",
+      "sourcePartKeys": [
+        "lowerRelation",
+        "upperRelation"
+      ],
+      "auditGroup": "N09-D",
+      "recommendation": "KEEP_ACCEPTED_CALCULATION_COMPARISON_COMPRESS_NEW_MICROSTEPS",
+      "reason": "1.41²と1.42²を計算し、平方2を挟んだ結果を√2の範囲へ戻す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-parts-target",
+      "stageId": "n09-stage-07",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-E",
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q10-reject-truncation",
+      "stageId": "n09-stage-07",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-E",
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "reason": "整数部分は桁の切取りではなくn≤x<n＋1。負の数ではn=−2が不適合で、n=−3、r=0.9となる理由。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-10",
+      "stageId": "n09-stage-07",
+      "sourcePartKeys": [
+        "n"
+      ],
+      "auditGroup": "N09-E",
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "reason": "整数部分は桁の切取りではなくn≤x<n＋1。負の数ではn=−2が不適合で、n=−3、r=0.9となる理由。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q11-remainder",
+      "stageId": "n09-stage-08",
+      "sourcePartKeys": [
+        "sign",
+        "value"
+      ],
+      "auditGroup": "N09-E",
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "reason": "整数部分は桁の切取りではなくn≤x<n＋1。負の数ではn=−2が不適合で、n=−3、r=0.9となる理由。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-11",
+      "stageId": "n09-stage-08",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-E",
+      "recommendation": "FOCUS_ON_FLOOR_DEFINITION_AND_NEGATIVE_COUNTEREXAMPLE",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q12-lower",
+      "stageId": "n09-stage-09",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-F",
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "reason": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q12-upper",
+      "stageId": "n09-stage-09",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-F",
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "reason": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-12",
+      "stageId": "n09-stage-09",
+      "sourcePartKeys": [
+        "lower",
+        "upper"
+      ],
+      "auditGroup": "N09-F",
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "reason": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q13-reverse",
+      "stageId": "n09-stage-10",
+      "sourcePartKeys": [
+        "S1",
+        "S2"
+      ],
+      "auditGroup": "N09-F",
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "reason": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-13",
+      "stageId": "n09-stage-10",
+      "sourcePartKeys": [
+        "left",
+        "right"
+      ],
+      "auditGroup": "N09-F",
+      "recommendation": "KEEP_INTERVAL_REASONING_NO_EXTRA_BASIC_MULTIPLIER",
+      "reason": "√10を隣接整数で挟み、負号で区間の順序が逆になることを使う。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-positive-integer",
+      "stageId": "n09-stage-11",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "reason": "±√10の整数部分と小数部分を定義から構成し、残りが0以上1未満である理由を示す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-positive-remainder",
+      "stageId": "n09-stage-11",
+      "sourcePartKeys": [
+        "remainderOperation"
+      ],
+      "auditGroup": "N09-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "reason": "±√10の整数部分と小数部分を定義から構成し、残りが0以上1未満である理由を示す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-negative-integer",
+      "stageId": "n09-stage-11",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N09-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "reason": "±√10の整数部分と小数部分を定義から構成し、残りが0以上1未満である理由を示す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-negative-remainder",
+      "stageId": "n09-stage-11",
+      "sourcePartKeys": [
+        "sign"
+      ],
+      "auditGroup": "N09-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "reason": "±√10の整数部分と小数部分を定義から構成し、残りが0以上1未満である理由を示す。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-14",
+      "stageId": "n09-stage-11",
+      "sourcePartKeys": [],
+      "auditGroup": "N09-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_SYMBOLIC_REMAINDER_APPLICATION",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q01-square",
+      "stageId": "n10-stage-01",
+      "sourcePartKeys": [
+        "rootSquare"
+      ],
+      "auditGroup": "N10-A",
+      "recommendation": "KEEP_ROOT_IDENTIFICATION_COMPRESS_ROUTINE_ISOLATION",
+      "reason": "候補t√5の平方を用い、t>0から値を選び、正性と平方値の両方で√125と同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-01",
+      "stageId": "n10-stage-01",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N10-A",
+      "recommendation": "KEEP_ROOT_IDENTIFICATION_COMPRESS_ROUTINE_ISOLATION",
+      "reason": "候補t√5の平方を用い、t>0から値を選び、正性と平方値の両方で√125と同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q02-sign",
+      "stageId": "n10-stage-01",
+      "sourcePartKeys": [
+        "value"
+      ],
+      "auditGroup": "N10-A",
+      "recommendation": "KEEP_ROOT_IDENTIFICATION_COMPRESS_ROUTINE_ISOLATION",
+      "reason": "候補t√5の平方を用い、t>0から値を選び、正性と平方値の両方で√125と同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-02",
+      "stageId": "n10-stage-01",
+      "sourcePartKeys": [
+        "candidateSign",
+        "squareValue",
+        "identificationReason"
+      ],
+      "auditGroup": "N10-A",
+      "recommendation": "KEEP_ROOT_IDENTIFICATION_COMPRESS_ROUTINE_ISOLATION",
+      "reason": "候補t√5の平方を用い、t>0から値を選び、正性と平方値の両方で√125と同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q03-expand",
+      "stageId": "n10-stage-02",
+      "sourcePartKeys": [
+        "powerA",
+        "powerB"
+      ],
+      "auditGroup": "N10-B",
+      "recommendation": "KEEP_PRODUCT_PROPERTY_CONSTRUCTION",
+      "reason": "候補√a√bの平方と正性から、積の性質を定義で構成する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-03",
+      "stageId": "n10-stage-02",
+      "sourcePartKeys": [
+        "aValue",
+        "bValue"
+      ],
+      "auditGroup": "N10-B",
+      "recommendation": "KEEP_PRODUCT_PROPERTY_CONSTRUCTION",
+      "reason": "候補√a√bの平方と正性から、積の性質を定義で構成する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q04-sign",
+      "stageId": "n10-stage-02",
+      "sourcePartKeys": [
+        "relation"
+      ],
+      "auditGroup": "N10-B",
+      "recommendation": "KEEP_PRODUCT_PROPERTY_CONSTRUCTION",
+      "reason": "候補√a√bの平方と正性から、積の性質を定義で構成する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-04",
+      "stageId": "n10-stage-02",
+      "sourcePartKeys": [
+        "rootReason"
+      ],
+      "auditGroup": "N10-B",
+      "recommendation": "KEEP_PRODUCT_PROPERTY_CONSTRUCTION",
+      "reason": "候補√a√bの平方と正性から、積の性質を定義で構成する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q05-denominator",
+      "stageId": "n10-stage-03",
+      "sourcePartKeys": [
+        "relation"
+      ],
+      "auditGroup": "N10-C",
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "reason": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q05-square",
+      "stageId": "n10-stage-03",
+      "sourcePartKeys": [
+        "numPower",
+        "denPower"
+      ],
+      "auditGroup": "N10-C",
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "reason": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-05",
+      "stageId": "n10-stage-03",
+      "sourcePartKeys": [
+        "numerator",
+        "denominator"
+      ],
+      "auditGroup": "N10-C",
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "reason": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q06-sign",
+      "stageId": "n10-stage-03",
+      "sourcePartKeys": [
+        "relation"
+      ],
+      "auditGroup": "N10-C",
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "reason": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-06",
+      "stageId": "n10-stage-03",
+      "sourcePartKeys": [
+        "quotientReason"
+      ],
+      "auditGroup": "N10-C",
+      "recommendation": "KEEP_QUOTIENT_DOMAIN_AND_CONSTRUCTION",
+      "reason": "分母非零で商が定義できること、商の平方a/bと正性から正の平方根を同定する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q07-product",
+      "stageId": "n10-stage-04",
+      "sourcePartKeys": [
+        "insideOperation",
+        "inside"
+      ],
+      "auditGroup": "N10-D",
+      "recommendation": "KEEP_FIRST_USE_STRATEGY_AND_CALCULATION",
+      "reason": "証明した積の性質を初めて具体的計算へ使い、最大の平方因子で根号を簡単にする。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-07",
+      "stageId": "n10-stage-04",
+      "sourcePartKeys": [
+        "squareFactor",
+        "factor"
+      ],
+      "auditGroup": "N10-D",
+      "recommendation": "KEEP_FIRST_USE_STRATEGY_AND_CALCULATION",
+      "reason": "証明した積の性質を初めて具体的計算へ使い、最大の平方因子で根号を簡単にする。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q08-factor",
+      "stageId": "n10-stage-04",
+      "sourcePartKeys": [
+        "coefficient"
+      ],
+      "auditGroup": "N10-D",
+      "recommendation": "KEEP_FIRST_USE_STRATEGY_AND_CALCULATION",
+      "reason": "証明した積の性質を初めて具体的計算へ使い、最大の平方因子で根号を簡単にする。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-08",
+      "stageId": "n10-stage-04",
+      "sourcePartKeys": [],
+      "auditGroup": "N10-D",
+      "recommendation": "KEEP_FIRST_USE_STRATEGY_AND_CALCULATION",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q09-left",
+      "stageId": "n10-stage-05",
+      "sourcePartKeys": [
+        "squareFactor",
+        "coefficient"
+      ],
+      "auditGroup": "N10-E",
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "reason": "各項を同じ根号へ直し、共通因子を持つ項として加算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q09-right",
+      "stageId": "n10-stage-05",
+      "sourcePartKeys": [
+        "squareFactor",
+        "coefficient"
+      ],
+      "auditGroup": "N10-E",
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "reason": "各項を同じ根号へ直し、共通因子を持つ項として加算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-09",
+      "stageId": "n10-stage-05",
+      "sourcePartKeys": [],
+      "auditGroup": "N10-E",
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q10-coefficients",
+      "stageId": "n10-stage-05",
+      "sourcePartKeys": [
+        "coefficient"
+      ],
+      "auditGroup": "N10-E",
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "reason": "各項を同じ根号へ直し、共通因子を持つ項として加算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-10",
+      "stageId": "n10-stage-05",
+      "sourcePartKeys": [],
+      "auditGroup": "N10-E",
+      "recommendation": "KEEP_LIKE_RADICALS_CONSOLIDATE_LOCAL_FACTOR_WORK",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q11-formula",
+      "stageId": "n10-stage-06",
+      "sourcePartKeys": [
+        "middleSign"
+      ],
+      "auditGroup": "N10-F",
+      "recommendation": "REPLACE_OVERBUILT_REPROOF_WITH_IDENTITY_APPLICATION",
+      "reason": "既習の差の平方を根号の式へ適用し、中項の符号・係数と根号の積を正しく処理する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-11",
+      "stageId": "n10-stage-06",
+      "sourcePartKeys": [
+        "leftSquare",
+        "rightSquare"
+      ],
+      "auditGroup": "N10-F",
+      "recommendation": "REPLACE_OVERBUILT_REPROOF_WITH_IDENTITY_APPLICATION",
+      "reason": "既習の差の平方を根号の式へ適用し、中項の符号・係数と根号の積を正しく処理する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q12-product",
+      "stageId": "n10-stage-06",
+      "sourcePartKeys": [
+        "inside"
+      ],
+      "auditGroup": "N10-F",
+      "recommendation": "REPLACE_OVERBUILT_REPROOF_WITH_IDENTITY_APPLICATION",
+      "reason": "既習の差の平方を根号の式へ適用し、中項の符号・係数と根号の積を正しく処理する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-12",
+      "stageId": "n10-stage-06",
+      "sourcePartKeys": [
+        "constant"
+      ],
+      "auditGroup": "N10-F",
+      "recommendation": "REPLACE_OVERBUILT_REPROOF_WITH_IDENTITY_APPLICATION",
+      "reason": "既習の差の平方を根号の式へ適用し、中項の符号・係数と根号の積を正しく処理する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q13-identity",
+      "stageId": "n10-stage-07",
+      "sourcePartKeys": [
+        "operation"
+      ],
+      "auditGroup": "N10-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_CANCELLING_TERMS_JUDGMENT",
+      "reason": "和と差の積でどの交差項が打ち消され、平方差だけが残るかを把握して具体的に計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-13",
+      "stageId": "n10-stage-07",
+      "sourcePartKeys": [
+        "left",
+        "right",
+        "difference"
+      ],
+      "auditGroup": "N10-G",
+      "recommendation": "REPLACE_OPERATOR_ONLY_WITH_CANCELLING_TERMS_JUDGMENT",
+      "reason": "和と差の積でどの交差項が打ち消され、平方差だけが残るかを把握して具体的に計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-14",
+      "stageId": "n10-stage-08",
+      "sourcePartKeys": [
+        "operation"
+      ],
+      "auditGroup": "N10-H",
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "reason": "非零のc/c=1を上下へ掛けて値を保ち、分母を有理数へする因子を選んで計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q15-factor",
+      "stageId": "n10-stage-08",
+      "sourcePartKeys": [
+        "factor"
+      ],
+      "auditGroup": "N10-H",
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "reason": "非零のc/c=1を上下へ掛けて値を保ち、分母を有理数へする因子を選んで計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-15",
+      "stageId": "n10-stage-08",
+      "sourcePartKeys": [
+        "numerator"
+      ],
+      "auditGroup": "N10-H",
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "reason": "非零のc/c=1を上下へ掛けて値を保ち、分母を有理数へする因子を選んで計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q16-denominator",
+      "stageId": "n10-stage-08",
+      "sourcePartKeys": [
+        "square",
+        "denominator"
+      ],
+      "auditGroup": "N10-H",
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "reason": "非零のc/c=1を上下へ掛けて値を保ち、分母を有理数へする因子を選んで計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-16",
+      "stageId": "n10-stage-08",
+      "sourcePartKeys": [],
+      "auditGroup": "N10-H",
+      "recommendation": "KEEP_EQUIVALENCE_AND_RATIONALISATION_STRATEGY",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q17-factor",
+      "stageId": "n10-stage-09",
+      "sourcePartKeys": [
+        "factor"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q17-nonzero",
+      "stageId": "n10-stage-09",
+      "sourcePartKeys": [
+        "relation"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-17",
+      "stageId": "n10-stage-09",
+      "sourcePartKeys": [
+        "productOperation"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-18",
+      "stageId": "n10-stage-10",
+      "sourcePartKeys": [
+        "A",
+        "B",
+        "C"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q19-distribute",
+      "stageId": "n10-stage-10",
+      "sourcePartKeys": [
+        "secondOperand",
+        "productSign"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-19",
+      "stageId": "n10-stage-10",
+      "sourcePartKeys": [
+        "left",
+        "inside"
+      ],
+      "auditGroup": "N10-I",
+      "recommendation": "KEEP_CONJUGATE_AND_NONZERO_COMPRESS_SCOPE_COPIES",
+      "reason": "共役因子を選び、その非零性と値の保持を確認し、分母と分子を正しく計算する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q20-factor",
+      "stageId": "n10-stage-11",
+      "sourcePartKeys": [
+        "factor",
+        "factorSign",
+        "reason"
+      ],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-20",
+      "stageId": "n10-stage-11",
+      "sourcePartKeys": [
+        "power",
+        "denominatorOperation"
+      ],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-denominator",
+      "stageId": "n10-stage-11",
+      "sourcePartKeys": [
+        "D"
+      ],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-expand",
+      "stageId": "n10-stage-12",
+      "sourcePartKeys": [
+        "P",
+        "K",
+        "Q"
+      ],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-constants",
+      "stageId": "n10-stage-12",
+      "sourcePartKeys": [
+        "C"
+      ],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "因子2−√3の非零性を根拠に同値な有理化を行い、既習の差の平方を分子へ適用する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-21",
+      "stageId": "n10-stage-12",
+      "sourcePartKeys": [],
+      "auditGroup": "N10-J",
+      "recommendation": "KEEP_NONZERO_AND_SQUARE_APPLICATION_REDUCE_REPEATED_ELEMENTARY_STEPS",
+      "reason": "定義/手本/確定後まとめを一律穴化しない。未回答の主判断を代行していないかは所属群の境界に従う。"
+    }
+  ],
+  "preservationPolicy": [
+    "数学/問いの意味を変える置換は新keyで設計し、旧recordを数値一致でaliasしない。削減を採用する場合も旧版/履歴へ保存し、今ここで削除しない。",
+    "今回の監査は修正案の反省・分析候補。各群の判断をそのまま一括実装する承認ではない。",
+    "既に改善評価された排版・共通UIは保護し、穴数や単なる難化を目標にしない。"
+  ]
+}

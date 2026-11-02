@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import n10Previous from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
+import n10Pilot from '../data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json'
+import n09Previous from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import n09Compiled from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
 import n10Compiled from '../data/textbook/math/numbers/n10ConstructionCompiled.json'
 import candidatePins from '../data/textbook/math/numbers/n0910CandidatePins.json'
@@ -10,7 +12,7 @@ import migrationRaw from '../../work/items/W-MATH-043-n0910-restart/evidence/mig
 import { ConstructionLessonReadingFlow } from '../components/textbook/ConstructionLessonReadingFlow'
 import { nestedLessonFromCompiled, validateCompiledNestedLesson, type CompiledNestedLesson } from '../domain/compiledNestedLesson'
 import { answerNestedPart, nestedStorageKey, legacyNestedStorageKey, resetNestedLedger, projectNestedLesson } from '../domain/nestedLesson'
-import { parseSavedNestedLesson, type SavedNestedLesson as Saved } from '../domain/nestedLessonStorage'
+import { parseSavedNestedLesson, savedNestedLessonFromMain, type SavedNestedLesson as Saved } from '../domain/nestedLessonStorage'
 import { migrateReviewedNestedProgress, REVIEWED_N10_MIGRATION, migrateNativeRevisionLedger, activateRetainedNativeRecords } from '../domain/nestedMigration'
 import { useAppStore } from '../stores/useAppStore'
 import { mathNumbersN09Unit, n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
@@ -20,6 +22,7 @@ import { validateTextbookUnits } from '../domain/textbookSchema'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 const registry = { n09: n09Compiled, n10: n10Compiled } as unknown as Record<'n09' | 'n10', CompiledNestedLesson>
+const migrationSources = { n09: [n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
 const activeUnits = { n09: mathNumbersN09Unit, n10: mathNumbersN10Unit }
 const legacyUnits = { n09: validateTextbookUnits([n09Presentation.unit])[0], n10: validateTextbookUnits([n10Presentation.unit])[0] }
 function readSaved(key: string, compiled: CompiledNestedLesson): Saved | undefined {
@@ -70,32 +73,43 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
       const sectionId = legacyUnits[code].sections[0].id
       const expectedParents = compiled.nodeDesign.filter(n => n.parts.length).map(n => ({ nodeId: n.nodeId, sectionId, parts: n.parts.map(p => ({ id: p.id, expected: p.expected })) }))
       if (activeUnits[code].revision !== compiled.toRevision || activeUnits[code].title !== compiled.title || JSON.stringify(activeUnits[code].nestedContract?.parents) !== JSON.stringify(expectedParents)) throw Error('NESTED_CATALOG_GRADING_MISMATCH')
-      const restored = readSaved(key, compiled)
       const main = useAppStore.getState().textbookProgress[compiled.unitId]
+      const restored = readSaved(key, compiled) ?? savedNestedLessonFromMain(main, lesson)
       const archived = main?.unitRevision === compiled.fromRevision || main && main.unitRevision < compiled.fromRevision ? main : main?.archivedRevisions?.[String(compiled.fromRevision)] ? { ...main.archivedRevisions[String(compiled.fromRevision)], unitId: compiled.unitId } : undefined
       let initial: Saved = restored ?? { schemaVersion: 'nested-reader-storage/1', ledger: resetNestedLedger(lesson, Date.now()), archive: structuredClone(archived) }
-      if (main?.unitRevision === compiled.toRevision && main.nestedResetAt !== undefined && (initial.resetAt === undefined || main.nestedResetAt > initial.resetAt)) initial = { ...initial, nativeRevisionImport: undefined, resetAt: main.nestedResetAt, ledger: resetNestedLedger(lesson, Date.now()), pendingImportedRecords: {}, migrationStatus: 'RESET_SUPPRESSED', migrationBlockedReasons: [] }
-      if (!restored && code === 'n10' && compiled.toRevision === 4 && initial.resetAt === undefined) {
-        const previous = n10Previous as unknown as CompiledNestedLesson, previousLesson = nestedLessonFromCompiled(previous)
-        const native = readSaved(nestedStorageKey(previousLesson), previous) ?? (main?.unitRevision === 3 && main.nestedProgress ? parseSavedNestedLesson(JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger: main.nestedProgress, resetAt: main.nestedResetAt }), previousLesson) : undefined)
-        let sourceLedger = native?.ledger
-        if (!sourceLedger && initial.archive !== undefined) {
-          const legacy = await migrateReviewedNestedProgress({ lesson: previousLesson, oldProgress: oldProgress(initial.archive), oldSourceJson: oldN10Raw, designJson: JSON.parse(designRaw).priorReviewedDesignRaw,
-            analysisJson: migrationRaw, compiledBinding: { compiledHash: previous.compiledHash, ...REVIEWED_N10_MIGRATION }, now: Date.now() })
-          if (legacy.status !== 'BLOCKED') {
-            sourceLedger = legacy.ledger
-            for (const pending of Object.values(legacy.pendingImportedRecords)) {
-              const record = pending.record
-              sourceLedger.records[pending.partId] = record
-              sourceLedger.parents[pending.nodeId] = { attemptCount: record.selectionCount, isFirstCorrect: pending.isFirstCorrect,
-                firstSubmittedValues: { [pending.partId]: record.firstValue }, firstSubmittedAt: record.firstSelectedAt, lastSubmittedAt: record.lastSelectedAt }
+      if (main?.unitRevision === compiled.toRevision && main.nestedProgress?.compiledHash === compiled.compiledHash && main.nestedResetAt !== undefined && (initial.resetAt === undefined || main.nestedResetAt > initial.resetAt)) initial = { ...initial, nativeRevisionImport: undefined, resetAt: main.nestedResetAt, ledger: resetNestedLedger(lesson, Date.now()), pendingImportedRecords: {}, migrationStatus: 'RESET_SUPPRESSED', migrationBlockedReasons: [] }
+      if (!restored && initial.resetAt === undefined) {
+        for (const previous of migrationSources[code]) {
+          const previousLesson = nestedLessonFromCompiled(previous)
+          const matchingMain = main?.unitRevision === previous.toRevision && main.nestedProgress?.compiledHash === previous.compiledHash ? main : undefined
+          const mainArchive = main?.archivedRevisions?.[String(previous.toRevision)]
+          const matchingArchive = mainArchive?.nestedProgress?.compiledHash === previous.compiledHash ? mainArchive : undefined
+          const oldMain = matchingMain ?? matchingArchive
+          const native = readSaved(nestedStorageKey(previousLesson), previous) ?? (oldMain?.nestedProgress ? parseSavedNestedLesson(JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger: oldMain.nestedProgress, resetAt: oldMain.nestedResetAt }), previousLesson) : undefined)
+          let sourceLedger = native?.ledger
+          // The seven reviewed authored-r2 answers are first projected into the
+          // exact reviewed r3 snapshot, then retained like any native answers.
+          if (!sourceLedger && code === 'n10' && previous.toRevision === 3 && initial.archive !== undefined) {
+            const reviewedDesign = JSON.parse(designRaw).priorReviewedDesignRaw
+            const legacy = await migrateReviewedNestedProgress({ lesson: previousLesson, oldProgress: oldProgress(initial.archive), oldSourceJson: oldN10Raw, designJson: reviewedDesign,
+              analysisJson: migrationRaw, compiledBinding: { compiledHash: previous.compiledHash, ...REVIEWED_N10_MIGRATION }, now: Date.now() })
+            if (legacy.status !== 'BLOCKED') {
+              sourceLedger = legacy.ledger
+              for (const pending of Object.values(legacy.pendingImportedRecords)) {
+                const record = pending.record
+                sourceLedger.records[pending.partId] = record
+                sourceLedger.parents[pending.nodeId] = { attemptCount: record.selectionCount, isFirstCorrect: pending.isFirstCorrect,
+                  firstSubmittedValues: { [pending.partId]: record.firstValue }, firstSubmittedAt: record.firstSelectedAt, lastSubmittedAt: record.lastSelectedAt }
+              }
             }
           }
-        }
-        if (sourceLedger) {
+          if (!sourceLedger) continue
           const imported = migrateNativeRevisionLedger({ source: previousLesson, target: lesson, sourceLedger, now: Date.now() })
           initial = { ...initial, ledger: imported.ledger, archive: native?.archive ?? initial.archive,
             nativeRevisionImport: { sourceCompiledHash: imported.sourceCompiledHash, eligiblePartIds: imported.eligiblePartIds }, ...(native?.resetAt !== undefined ? { resetAt: native.resetAt } : {}) }
+          // An existing latest source, including a deliberate empty reset,
+          // owns the migration. Never refill it from an older revision.
+          break
         }
       }
       const migrated = await migrate(initial)
@@ -119,7 +133,7 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
   const nextUnit = mathTextbookNextUnitId(compiled.unitId)
   return <article className="textbook-unit-page" data-testid="n0910-revision-page" data-unit-id={compiled.unitId} data-revision={compiled.toRevision} data-compiled-hash={compiled.compiledHash}>
     {!embedded && <p><Link to={'/learning/textbook/' + compiled.unitId}>現在の教材へ戻る</Link></p>}
-    <details className="construction-lesson-version-links"><summary>以前の版と比較する</summary><Link to={'/learning/textbook/' + compiled.unitId + '?version=' + compiled.fromRevision}>以前の版を開く</Link>{code === 'n10' && compiled.fromRevision !== 2 && <Link to={'/learning/textbook/' + compiled.unitId + '?version=2'}>元の第2版を開く</Link>}</details>
+    <details className="construction-lesson-version-links"><summary>以前の版と比較する</summary><Link to={'/learning/textbook/' + compiled.unitId + '?version=' + compiled.fromRevision}>以前の版を開く</Link>{compiled.fromRevision !== legacyUnits[code].revision && <Link to={'/learning/textbook/' + compiled.unitId + '?version=' + legacyUnits[code].revision}>元の第{legacyUnits[code].revision}版を開く</Link>}</details>
     {error ? <p role="alert">{error}</p> : ready ? <ConstructionLessonReadingFlow compiled={compiled} ledger={saved?.ledger} onAnswer={answer} onReset={() => undefined} /> : <p role="status">教材を読み込んでいます。</p>}
     {!embedded && ready && nextUnit && projectNestedLesson(lesson, saved?.ledger).completed && <Link className="raised-link" to={'/learning/textbook/' + nextUnit}>次の教材へ進む</Link>}
   </article>

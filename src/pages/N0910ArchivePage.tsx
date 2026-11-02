@@ -1,4 +1,5 @@
 import previousN10 from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
+import previousN09 from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import { ConstructionLessonReadingFlow } from '../components/textbook/ConstructionLessonReadingFlow'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from '../domain/compiledNestedLesson'
 import { answerNestedPart, nestedStorageKey, legacyNestedStorageKey } from '../domain/nestedLesson'
@@ -29,7 +30,7 @@ function exactOldProgress(saved: TextbookUnitProgress | undefined, unitId: strin
 
 /** React identity resets only this isolated preview when the requested unit changes. */
 export function N0910ArchivePage({ code, nativeRevision = false }: { code: 'n09' | 'n10'; nativeRevision?: boolean }) {
-  return nativeRevision ? <NativeArchive key={code} /> : <IsolatedArchive key={code} code={code} />
+  return nativeRevision ? <NativeArchive key={code} code={code} /> : <IsolatedArchive key={code} code={code} />
 }
 
 function IsolatedArchive({ code }: { code: 'n09' | 'n10' }) {
@@ -49,17 +50,17 @@ function IsolatedArchive({ code }: { code: 'n09' | 'n10' }) {
 
 export default N0910ArchivePage
 
-function NativeArchive() {
-  const compiled = previousN10 as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
+function NativeArchive({ code }: { code: 'n09' | 'n10' }) {
+  const compiled = (code === 'n09' ? previousN09 : previousN10) as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
   const main = useAppStore(state => state.textbookProgress[compiled.unitId])
   const [ledger, setLedger] = useState(() => {
     const key = nestedStorageKey(lesson), oldKey = legacyNestedStorageKey(lesson)
-    const archive = main?.unitRevision === 3 ? main : main?.archivedRevisions?.['3']
+    const archive = main?.unitRevision === compiled.toRevision ? main : main?.archivedRevisions?.[String(compiled.toRevision)]
     const raw = localStorage.getItem(key) ?? (oldKey ? localStorage.getItem(oldKey) : null) ?? (archive?.nestedProgress ? JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger: archive.nestedProgress }) : null)
     try { return raw ? parseSavedNestedLesson(raw, lesson).ledger : undefined } catch { return undefined }
   })
-  return <article className="textbook-unit-page" data-testid="n0910-archive-page" data-unit-id={compiled.unitId} data-revision={3}>
-    <header className="state-panel"><h1>以前の第3版</h1><p>試し解答はこの画面だけに保持し、現在と以前の記録を変更しません。</p><Link to={'/learning/textbook/' + compiled.unitId}>現在の教材へ戻る</Link></header>
+  return <article className="textbook-unit-page" data-testid="n0910-archive-page" data-unit-id={compiled.unitId} data-revision={compiled.toRevision}>
+    <header className="state-panel"><h1>以前の第{compiled.toRevision}版</h1><p>試し解答はこの画面だけに保持し、現在と以前の記録を変更しません。</p><Link to={'/learning/textbook/' + compiled.unitId}>現在の教材へ戻る</Link></header>
     <ConstructionLessonReadingFlow compiled={compiled} ledger={ledger} onAnswer={(id, value) => setLedger(old => answerNestedPart(lesson, old, id, value, crypto.randomUUID(), Date.now()))} onReset={() => undefined} />
   </article>
 }

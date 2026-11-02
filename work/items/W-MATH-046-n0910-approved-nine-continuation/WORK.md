@@ -1,13 +1,20 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: IMPLEMENTING
-Review: PILOT-BLOCK-CHECK-PENDING / 本人G3_FINAL要修正は未解消
+Review: REMAINING-16-IMPLEMENTED / FULL-REVIEW-IN-PROGRESS / 本人G3_FINAL要修正は未解消
 - P-W046-UX-03は本人「まあこれでいいでしょう。承認」で明示承認済み。承認対象の設計本文hash4409a8d8…は旧commit85a5367に保持。PROPOSAL.mdの承認・実装状態欄だけ現状へ更新し、設計本文は変更しない。
 - H07（√125）と共通表示・操作の代表実装を固定source `830b620b343112e4f8c4e3d00b51461dc8ecc098` へ保存。新N10 r4、compiledHash `5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b`。N09 compiledと旧N10 r3 snapshotは基準byte一致。残り16nodeの穴設計は未変更。
 - [確認①の実画像票](REVIEW_SHEET.md)：四幅で正性→平方→同定理由→結論、N08基準の段階帯・番号付き縦選択肢・左下resetを確認できる。AのH07意味審査とBの固定SHA実画像審査は限定PASS。本人の細部OKは未受領。
 - 検証：120回帰・生成器8件・型/変更TS lint/buildがPASS。四幅で全52parts/各102誤答、828状態・3528幾何、保存/旧版/履歴/resetと移行をPASS。finite-mathは90parts/候補179、失敗0・意味審査対象31でPARTIAL。全体を自動合格へ変更しない。
 - 全体governanceは既存の他Work記録不足等で未合格。源candidate42件=修正前42件、今回の新規違反なし。このWorkの正規記録整備で自身の4件を解消、残る38件は他Workの既存不整合。本番main/Pages未変更、Gold/fitなし。正式台帳の受理を捏造しない。
 - 次：承認案の代表ブロック本人確認→細部OKなら残り16nodeへ限定適用→影響検査・非作者審査・別公開ゲート・本人総チェック。現時点でWork完了とはしない。
+
+## UX-03 残り16箇所への続行（本人指示）
+- 代表ブロック実画像と確認票を提示した後、本人「那继续做」を受領。残り16箇所の実装・検証へ進める指示として扱う。「細部OK」という未発言や最終品質受入は作らない。今回の明示続行指示を理由に代表の同じ確認依頼へ戻さない。
+- H01-H06/H08-H17を生成元へ反映。N09 r5=46parts/31回答node、N10 r4=63parts/40回答node。既存H07の3判断は維持。旧partの値/候補/意味と他69nodeの学習契約を保持。N09r4、N10r3、pilotN10r4のcompiled snapshotを保護し、移行は明示hashとpart意味一致で限定。
+- 初回生成は非対応\cdots/escaped braceで拒否。規則を緩めず、既存対応構文へ補修した。初回検査でN09r5のschema登録不足とH16の旧依存fixture不一致を検出し、明示版登録とfactorSign前提検証を追加。
+- 非作者Aの設計審査でH12の「和」の初出定義欠落を発見し復元。H14は分子の演算を取り出すラベルを補い、未認定mirrorを先出しせず、正答後に上下の演算を連動表示。
+- 123回帰/生成器8件/型検査/変更TS lint/buildを確認。追加archive検査2件は別記。数学109partの有限検算は失敗0、意味審査対象50でPARTIAL。最終固定sourceによる四幅実画面/移行と非作者画像審査へ進む。main/Pagesは未変更。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

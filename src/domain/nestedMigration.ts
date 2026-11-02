@@ -132,9 +132,30 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
  * Future retained answers stay in records until their new prerequisites unlock. */
 export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
   const { source, target, sourceLedger, now } = input
-  if (source.unitId !== 'math-numbers-expressions-n10' || target.unitId !== source.unitId || source.toRevision !== 3 || target.fromRevision !== 3 || target.toRevision !== 4 || !validLedger(source, sourceLedger)) throw Error('UX03_NATIVE_REVISION_BINDING')
+  const sources: Record<string, { hash: string; revision: number; targetRevision: number }[]> = {
+    'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }],
+    'math-numbers-expressions-n10': [
+      { hash: 'a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd', revision: 3, targetRevision: 4 },
+      { hash: '5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b', revision: 4, targetRevision: 4 },
+    ],
+  }
+  if (target.unitId !== source.unitId || target.fromRevision !== (source.unitId === 'math-numbers-expressions-n09' ? 4 : 3) || !sources[source.unitId]?.some(s => s.hash === source.compiledHash && s.revision === source.toRevision && s.targetRevision === target.toRevision) || !validLedger(source, sourceLedger) || !Number.isFinite(now) || now < sourceLedger.updatedAt) throw Error('UX03_NATIVE_REVISION_BINDING')
   const ledger = emptyNestedLedger(target, now), eligiblePartIds: string[] = []
-  const descriptor = (n: NestedNode, p: NestedNode['parts'][number]) => ({ nodeId: n.nodeId, prerequisites: n.prerequisiteNodeIds, results: n.requiredResultRefs, assumptions: n.assumptions, id: p.id, key: p.key, role: p.role, kind: p.kind, expected: p.expected, prompt: p.prompt, choices: p.choices.map(c => ({ value: c.value, kind: c.kind, display: c.display, latex: c.latex })) })
+  // These existing questions keep their mathematical task while UX-03 adds
+  // earlier decisions and removes answer-leaking copy. No other prompt or
+  // assumptions rewrite is an implicit migration approval.
+  const reviewedCopyOnlyParts = new Set([
+    'n09-q04-negative::value', 'n09-06::zero', 'n09-07::left', 'n09-07::sign',
+    'n10-q07-product::inside', 'n10-07::factor', 'n10-q09-left::coefficient',
+    'n10-q09-right::coefficient', 'n10-q20-factor::factor', 'n10-q20-factor::reason', 'n10-20::power',
+  ])
+  const descriptor = (n: NestedNode, p: NestedNode['parts'][number]) => ({
+    nodeId: n.nodeId, resultId: n.resultId, stageId: n.stageId, q: n.q,
+    prerequisites: n.prerequisiteNodeIds, results: n.requiredResultRefs,
+    ...(!reviewedCopyOnlyParts.has(p.id) ? { assumptions: n.assumptions, prompt: p.prompt } : {}),
+    id: p.id, key: p.key, role: p.role, kind: p.kind, expected: p.expected,
+    choices: p.choices.map(c => ({ value: c.value, kind: c.kind, display: c.display, latex: c.latex })),
+  })
   for (const node of target.nodes) {
     const previous = source.nodes.find(n => n.nodeId === node.nodeId)
     if (!previous) continue
@@ -160,7 +181,19 @@ export function activateRetainedNativeRecords(lesson: NestedLesson, supplied: Ne
     const record = ledger.records[id]
     if (!record) break
     ledger.draft[id] = record.value
-    const part = lesson.nodes.flatMap(n => n.parts).find(p => p.id === id)!
+    const node = lesson.nodes.find(n => n.parts.some(p => p.id === id))!, part = node.parts.find(p => p.id === id)!
+    if (!ledger.parents[node.nodeId] && node.parts.every(p => ledger.draft[p.id] !== undefined && ledger.records[p.id])) {
+      // Derive the new parent projection from real per-part histories after
+      // its added decisions are answered. This is not a new learner event.
+      const records = node.parts.map(p => ledger.records[p.id])
+      ledger.parents[node.nodeId] = {
+        attemptCount: Math.max(...records.map(r => r.selectionCount)),
+        isFirstCorrect: node.parts.every(p => ledger.records[p.id].firstValue === p.expected),
+        firstSubmittedValues: Object.fromEntries(node.parts.map(p => [p.id, ledger.records[p.id].firstValue])),
+        firstSubmittedAt: Math.max(...records.map(r => r.firstSelectedAt)),
+        lastSubmittedAt: Math.max(...records.map(r => r.lastSelectedAt)),
+      }
+    }
     if (record.value !== part.expected) break
   }
   return ledger

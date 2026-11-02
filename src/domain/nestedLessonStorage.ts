@@ -23,3 +23,14 @@ export function parseSavedNestedLesson(raw: string, lesson: NestedLesson): Saved
   if (s.nativeRevisionImport !== undefined && (!object(s.nativeRevisionImport) || typeof s.nativeRevisionImport.sourceCompiledHash !== 'string' || !Array.isArray(s.nativeRevisionImport.eligiblePartIds) || s.nativeRevisionImport.eligiblePartIds.some(id => typeof id !== 'string' || !parts.has(id)) || new Set(s.nativeRevisionImport.eligiblePartIds).size !== s.nativeRevisionImport.eligiblePartIds.length)) throw Error('NESTED_STORAGE_NATIVE_IMPORT')
   return s as SavedNestedLesson
 }
+
+
+/** Recover an exact current ledger if only its dedicated key was lost.
+ * The main-store copy has the same validated record contract. Retained future
+ * records are activated only as their prerequisites become reachable. */
+export function savedNestedLessonFromMain(main: unknown, lesson: NestedLesson): SavedNestedLesson | undefined {
+  if (!object(main) || main.unitId !== lesson.unitId || main.unitRevision !== lesson.toRevision || !object(main.nestedProgress) || main.nestedProgress.compiledHash !== lesson.compiledHash) return undefined
+  const saved = parseSavedNestedLesson(JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger: main.nestedProgress,
+    ...(main.nestedResetAt !== undefined ? { resetAt: main.nestedResetAt } : {}) }), lesson)
+  return { ...saved, nativeRevisionImport: { sourceCompiledHash: lesson.compiledHash, eligiblePartIds: Object.keys(saved.ledger.records) } }
+}

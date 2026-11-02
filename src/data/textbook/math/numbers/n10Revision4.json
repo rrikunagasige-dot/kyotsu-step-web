@@ -43,7 +43,7 @@
     ],
     "constructionLessonVersion": "n0910/1",
     "nestedContract": {
-      "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
+      "compiledHash": "fd214281177bbc5006dfcfd04e1ff8daa879b2a91d3f94211cf57257d32e685d",
       "parents": [
         {
           "nodeId": "n10-q01-square",
@@ -132,6 +132,16 @@
           ]
         },
         {
+          "nodeId": "n10-04",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-04::rootReason",
+              "expected": "positive-and-square"
+            }
+          ]
+        },
+        {
           "nodeId": "n10-q05-denominator",
           "sectionId": "lesson",
           "parts": [
@@ -180,9 +190,23 @@
           ]
         },
         {
+          "nodeId": "n10-06",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-06::quotientReason",
+              "expected": "nonzero-positive-square"
+            }
+          ]
+        },
+        {
           "nodeId": "n10-q07-product",
           "sectionId": "lesson",
           "parts": [
+            {
+              "id": "n10-q07-product::insideOperation",
+              "expected": "\\times"
+            },
             {
               "id": "n10-q07-product::inside",
               "expected": "48"
@@ -193,6 +217,10 @@
           "nodeId": "n10-07",
           "sectionId": "lesson",
           "parts": [
+            {
+              "id": "n10-07::squareFactor",
+              "expected": "16"
+            },
             {
               "id": "n10-07::factor",
               "expected": "3"
@@ -214,6 +242,10 @@
           "sectionId": "lesson",
           "parts": [
             {
+              "id": "n10-q09-left::squareFactor",
+              "expected": "4"
+            },
+            {
               "id": "n10-q09-left::coefficient",
               "expected": "2"
             }
@@ -223,6 +255,10 @@
           "nodeId": "n10-q09-right",
           "sectionId": "lesson",
           "parts": [
+            {
+              "id": "n10-q09-right::squareFactor",
+              "expected": "25"
+            },
             {
               "id": "n10-q09-right::coefficient",
               "expected": "5"
@@ -376,6 +412,16 @@
           ]
         },
         {
+          "nodeId": "n10-17",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-17::productOperation",
+              "expected": "\\times"
+            }
+          ]
+        },
+        {
           "nodeId": "n10-18",
           "sectionId": "lesson",
           "parts": [
@@ -390,6 +436,20 @@
             {
               "id": "n10-18::C",
               "expected": "1"
+            }
+          ]
+        },
+        {
+          "nodeId": "n10-q19-distribute",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n10-q19-distribute::secondOperand",
+              "expected": "-\\sqrt2"
+            },
+            {
+              "id": "n10-q19-distribute::productSign",
+              "expected": "-"
             }
           ]
         },
@@ -416,6 +476,10 @@
               "expected": "2-\\sqrt3"
             },
             {
+              "id": "n10-q20-factor::factorSign",
+              "expected": ">"
+            },
+            {
               "id": "n10-q20-factor::reason",
               "expected": "nonzero-and-rational-product"
             }
@@ -428,6 +492,10 @@
             {
               "id": "n10-20::power",
               "expected": "2"
+            },
+            {
+              "id": "n10-20::denominatorOperation",
+              "expected": "-"
             }
           ]
         },
@@ -479,10 +547,12 @@
       "n10-q03-expand",
       "n10-03",
       "n10-q04-sign",
+      "n10-04",
       "n10-q05-denominator",
       "n10-q05-square",
       "n10-05",
       "n10-q06-sign",
+      "n10-06",
       "n10-q07-product",
       "n10-07",
       "n10-q08-factor",
@@ -501,7 +571,9 @@
       "n10-q16-denominator",
       "n10-q17-factor",
       "n10-q17-nonzero",
+      "n10-17",
       "n10-18",
+      "n10-q19-distribute",
       "n10-19",
       "n10-q20-factor",
       "n10-20",
@@ -514,9 +586,9 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-    "designSha256": "83a6b4e7fd992f4e44cf049bc55e042ed620456e5b7bb76b66f77d9117daff48"
+    "designSha256": "31efdd9d3dac6e0a23d178096ffa852f1e8a342824e56cd53902c07c1a4a8452"
   },
-  "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
+  "compiledHash": "fd214281177bbc5006dfcfd04e1ff8daa879b2a91d3f94211cf57257d32e685d",
   "implementationStatus": "STAGED_NOT_PUBLISHED",
   "automaticAcceptance": false
 }

@@ -11,6 +11,10 @@ import n10Authored from '../data/textbook/math/numbers/n10Authored.json'
 import n08Authored from '../data/textbook/math/numbers/n08Authored.json'
 import n11Authored from '../data/textbook/math/numbers/n11Authored.json'
 import { validateTextbookUnits } from '../domain/textbookSchema'
+import previousN09 from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
+import previousN10 from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
+import { emptyNestedLedger, nestedStorageKey, type NestedLedger } from '../domain/nestedLesson'
+import { nestedLessonFromCompiled, type CompiledNestedLesson } from '../domain/compiledNestedLesson'
 
 vi.mock('../components/textbook/GuidedMathReadingFlow', () => ({
   GuidedMathReadingFlow: ({ unit, section, progress, onReviewAnswer, storageScope }: { unit: TextbookUnit; section: TextbookSection; progress?: TextbookUnitProgress; onReviewAnswer: (item: TextbookItem, value: string) => void; storageScope?: string }) => <div data-testid="archive-reading-flow" data-revision={unit.revision} data-storage-scope={storageScope}>
@@ -93,5 +97,23 @@ describe('N09/N10旧版の隔離比較', () => {
     expect(localStorage.getItem(learnerKey)).toBe('0')
     expect(localStorage.getItem(learnerKey + ':scope:archive-review')).toBe('0')
     regular.unmount()
+  })
+})
+
+
+describe('native previous-revision archives', () => {
+  it.each([['n09', previousN09], ['n10', previousN10]] as const)('%s displays its exact native revision without changing saved records', (code, source) => {
+    const compiled = source as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
+    const ledger: NestedLedger = emptyNestedLedger(lesson, 10), key = nestedStorageKey(lesson)
+    const raw = JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger })
+    localStorage.setItem(key, raw)
+    const main = { ...progress(compiled.unitId, compiled.toRevision + 1), archivedRevisions: { [String(compiled.toRevision)]: { ...progress(compiled.unitId, compiled.toRevision), nestedProgress: ledger } } }
+    useAppStore.setState({ textbookProgress: { [compiled.unitId]: main } })
+    const before = JSON.stringify(useAppStore.getState().textbookProgress)
+    render(<MemoryRouter><N0910ArchivePage code={code} nativeRevision /></MemoryRouter>)
+    expect(screen.getByTestId('n0910-archive-page').getAttribute('data-revision')).toBe(String(compiled.toRevision))
+    expect(screen.getByRole('heading', { name: '以前の第' + compiled.toRevision + '版' })).toBeTruthy()
+    expect(localStorage.getItem(key)).toBe(raw)
+    expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
   })
 })

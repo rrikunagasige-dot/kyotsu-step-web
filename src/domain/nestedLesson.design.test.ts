@@ -43,6 +43,7 @@ describe('materialized N09/N10 candidate, not hosted reader acceptance', () => {
     const target = lesson.nodes.find(n => n.nodeId === 'n10-q20-factor')!
     const factor = target.parts.find(p => p.key === 'factor')!
     const reason = target.parts.find(p => p.key === 'reason')!
+    const factorSign = target.parts.find(p => p.key === 'factorSign')!
     let ledger: NestedLedger | undefined
     let event = 0
     while (projectNestedLesson(lesson, ledger).editable?.partId !== factor.id) {
@@ -53,6 +54,9 @@ describe('materialized N09/N10 candidate, not hosted reader acceptance', () => {
     expect(answerNestedPart(lesson, ledger, reason.id, reason.expected, 'premature', event)).toBe(ledger)
     expect(ledger!.records[reason.id]).toBeUndefined()
     ledger = answerNestedPart(lesson, ledger, factor.id, factor.expected, String(++event), event)
+    expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe(factorSign.id)
+    expect(answerNestedPart(lesson, ledger, reason.id, reason.expected, 'before-sign', event)).toBe(ledger)
+    ledger = answerNestedPart(lesson, ledger, factorSign.id, factorSign.expected, String(++event), event)
     expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe(reason.id)
     expect(ledger!.parents[target.nodeId]).toBeUndefined()
     const wrong = reason.choices.find(c => c.value !== reason.expected)!

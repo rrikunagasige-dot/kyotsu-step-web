@@ -4,7 +4,7 @@ import { compileNestedMathTemplate, renderClosedMath } from '../interaction/math
 import { validateDesign } from '../n0910/validate-design.mjs';
 import { AXIS_CONTRACT, validateLayoutPlanV2 } from '../layout/plan-v2.mjs';
 
-export const REVIEWED_NESTED_DESIGN = '83a6b4e7fd992f4e44cf049bc55e042ed620456e5b7bb76b66f77d9117daff48';
+export const REVIEWED_NESTED_DESIGN = '31efdd9d3dac6e0a23d178096ffa852f1e8a342824e56cd53902c07c1a4a8452';
 const PRIOR_REVIEWED_NESTED_DESIGN = 'd144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd';
 export const NESTED_SOURCE_PINS = {
   'math-numbers-expressions-n09': '86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95',

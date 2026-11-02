@@ -1,7 +1,7 @@
 # W046 修正提案 — P-W046-UX-03
 
 Status: APPROVED
-Implementation: H07 PILOT IMPLEMENTED / REMAINING 16 PENDING PILOT REVIEW
+Implementation: H01-H17 IMPLEMENTED / FULL VERIFICATION IN PROGRESS / 本人続行指示をWORKへ記録
 Created: 2026-11-02  
 Supersedes: P-W046-UX-02（問題一覧と方針までの未完成案。旧本文・レビュー履歴はWORK.mdへ保存）
 

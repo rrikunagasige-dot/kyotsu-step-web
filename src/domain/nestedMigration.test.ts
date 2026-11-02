@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
+import { textbookUnitProgress, type TextbookUnitProgress } from './textbook'
+import { validateTextbookUnits } from './textbookSchema'
 import { answerNestedPart, emptyNestedLedger, projectNestedLesson, type NestedLesson } from './nestedLesson'
 import { migrateReviewedNestedProgress, REVIEWED_N10_MIGRATION, migrateNativeRevisionLedger, activateRetainedNativeRecords, type ReviewedNestedMigrationInput } from './nestedMigration'
 
@@ -133,7 +135,7 @@ describe('source-bound reviewed N10 migration', () => {
   })
 })
 
-describe('UX-03 native r3 → r4, added decisions never inferred from AUTO', () => {
+describe('UX-03 native revisions retain answers but never infer added decisions from AUTO', () => {
   const sourceCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiledR3.json'))
   const targetCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiled.json'))
   const previous: NestedLesson = { ...sourceCompiled, nodes: sourceCompiled.nodeDesign }
@@ -151,14 +153,20 @@ describe('UX-03 native r3 → r4, added decisions never inferred from AUTO', () 
     expect(migrated.ledger.records).toEqual(sourceLedger.records)
     expect(projectNestedLesson(target, migrated.ledger).editable?.partId).toBe('n10-02::candidateSign')
     expect(projectNestedLesson(target, migrated.ledger).completed).toBe(false)
-    const added = target.nodes.find(n => n.nodeId === 'n10-02')!.parts
-    for (const [i, part] of added.entries()) {
+    const existingIds = new Set(previous.nodes.flatMap(n => n.parts.map(p => p.id)))
+    const added = target.nodes.flatMap(n => n.parts).filter(p => !existingIds.has(p.id))
+    let count = 0
+    while (!projectNestedLesson(target, migrated.ledger).completed) {
+      const edit = projectNestedLesson(target, migrated.ledger).editable!
+      expect(existingIds.has(edit.partId)).toBe(false)
+      const part = added.find(p => p.id === edit.partId)!
       expect(migrated.ledger.records[part.id]).toBeUndefined()
-      const answered = answerNestedPart(target, migrated.ledger, part.id, part.expected, 'new-' + i, 101 + i)!
+      const answered = answerNestedPart(target, migrated.ledger, part.id, part.expected, 'new-' + count, 101 + count++)!
       migrated = { ...migrated, ledger: activateRetainedNativeRecords(target, answered, migrated.eligiblePartIds) }
+      expect(count).toBeLessThanOrEqual(added.length)
     }
-    expect(projectNestedLesson(target, migrated.ledger).completed).toBe(true)
-    expect(migrated.ledger.processedEventIds).toHaveLength(sourceLedger.processedEventIds.length + 3)
+    expect(count).toBe(added.length)
+    expect(migrated.ledger.processedEventIds).toHaveLength(sourceLedger.processedEventIds.length + added.length)
     expect(JSON.stringify(sourceLedger)).toBe(frozen)
   })
   it('keeps a partial wrong answer editable, and refuses a changed question contract', () => {
@@ -187,5 +195,60 @@ describe('UX-03 native r3 → r4, added decisions never inferred from AUTO', () 
       ledger = answerNestedPart(target, ledger, part.id, part.expected, 'right-' + i, 110 + i)!
     }
     expect(visible().rows.at(-1)?.template).toBe('\\sqrt{125}=5\\sqrt5')
+  })
+})
+
+
+describe('UX-03 full application across both units and the completed pilot', () => {
+  const readLesson = (name: string): NestedLesson => {
+    const c = JSON.parse(raw('src/data/textbook/math/numbers/' + name + '.json'))
+    return { ...c, nodes: c.nodeDesign }
+  }
+  function completed(source: NestedLesson) {
+    let ledger = emptyNestedLedger(source, 1), event = 0
+    while (!projectNestedLesson(source, ledger).completed) {
+      const partId = projectNestedLesson(source, ledger).editable!.partId
+      const part = source.nodes.flatMap(n => n.parts).find(p => p.id === partId)!
+      ledger = answerNestedPart(source, ledger, part.id, part.expected, 'retained-' + ++event, event + 1)!
+    }
+    return ledger
+  }
+  it.each([
+    ['n09ConstructionCompiledR4', 'n09ConstructionCompiled', 'n09-01::zeroLogic'],
+    ['n10ConstructionCompiledPilotR4', 'n10ConstructionCompiled', 'n10-04::rootReason'],
+  ])('retains every existing part from %s and stops at the first new prerequisite', (sourceName, targetName, firstNewId) => {
+    const source = readLesson(sourceName), target = readLesson(targetName)
+    const original = completed(source), before = JSON.stringify(original)
+    const moved = migrateNativeRevisionLedger({ source, target, sourceLedger: original, now: 1000 })
+    expect(moved.eligiblePartIds.sort()).toEqual(Object.keys(original.records).sort())
+    expect(moved.ledger.records).toEqual(original.records)
+    expect(moved.ledger.processedEventIds).toEqual(original.processedEventIds)
+    expect(projectNestedLesson(target, moved.ledger).editable?.partId).toBe(firstNewId)
+    expect(projectNestedLesson(target, moved.ledger).completed).toBe(false)
+    expect(JSON.stringify(original)).toBe(before)
+    let ledger = moved.ledger, newCount = 0
+    const targetParts = target.nodes.flatMap(n => n.parts)
+    while (!projectNestedLesson(target, ledger).completed) {
+      const partId = projectNestedLesson(target, ledger).editable!.partId
+      expect(original.records[partId]).toBeUndefined()
+      const part = targetParts.find(p => p.id === partId)!
+      const wrong = part.choices.find(c => c.value !== part.expected)!
+      ledger = answerNestedPart(target, ledger, part.id, wrong.value, 'new-wrong-' + newCount, 1100 + newCount * 2)!
+      expect(projectNestedLesson(target, ledger).editable?.partId).toBe(part.id)
+      ledger = activateRetainedNativeRecords(target, answerNestedPart(target, ledger, part.id, part.expected, 'new-right-' + newCount, 1101 + newCount++ * 2)!, moved.eligiblePartIds)
+      expect(newCount).toBeLessThanOrEqual(targetParts.length)
+    }
+    expect(newCount).toBe(targetParts.length - Object.keys(original.records).length)
+    const code = sourceName.slice(0, 3), revision = code === 'n09' ? 5 : 4
+    const unit = validateTextbookUnits([JSON.parse(raw('src/data/textbook/math/numbers/' + code + 'Revision' + revision + '.json')).unit])[0]
+    const progress: TextbookUnitProgress = { unitId: target.unitId, unitRevision: target.toRevision, startedAt: ledger.startedAt, updatedAt: ledger.updatedAt, answers: {}, nestedProgress: ledger }
+    expect(textbookUnitProgress(unit, progress)).toMatchObject({ completed: unit.nestedContract!.parents.length, percent: 100 })
+    expect(ledger.processedEventIds.length).toBe(original.processedEventIds.length + newCount * 2)
+  })
+  it('refuses an unreviewed native source hash or a different unit', () => {
+    const source = readLesson('n09ConstructionCompiledR4'), target = readLesson('n09ConstructionCompiled')
+    const sourceLedger = completed(source)
+    expect(() => migrateNativeRevisionLedger({ source: { ...source, compiledHash: 'unreviewed' }, target, sourceLedger, now: 1000 })).toThrow('UX03_NATIVE_REVISION_BINDING')
+    expect(() => migrateNativeRevisionLedger({ source, target: { ...target, unitId: 'other' }, sourceLedger, now: 1000 })).toThrow('UX03_NATIVE_REVISION_BINDING')
   })
 })

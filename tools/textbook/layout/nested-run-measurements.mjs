@@ -4,6 +4,12 @@ import {compileNestedMathTemplate} from '../interaction/math-template.mjs';
 import { hash } from '../util.mjs';
 import { checkNestedMeasurements } from './nested-measurements.mjs';
 
+/** Public layout phase excludes wrong/initial candidate values, which must keep
+ * the same reservation. A newly certified value or visible row permits replanning. */
+export function nestedPublicLayoutState(visible) {
+  return hash(visible.visible.map(item => ({ nodeId: item.node.nodeId, rows: item.rows.map(row => row.id), certified: item.parts.filter(p => p.correct).map(p => ({ key: p.key, value: p.value })) })));
+}
+
 /** Validate complete source-bound browser runs; a partial geometry packet is insufficient. */
 export function checkNestedRuns(compiled, runs, context = {}) {
   const findings = [], reject = (ruleId, detail) => findings.push({ ruleId, detail });
@@ -41,6 +47,8 @@ export function checkNestedRuns(compiled, runs, context = {}) {
         const tagCheck=checkEquationTag(f,e.equationTag);if(tagCheck.status!=='PASS')reject('NESTED_EQUATION_TAG',{label,id:f.id,findings:tagCheck.findings});
         const c = compileNestedMathTemplate(e), slots = c.slots.map(s=>({id:s.key,path:s.path,value:s.value}));
         if (hash((f.geometry?.slots??[]).map(s=>({id:s.id,path:s.path,value:s.value}))) !== hash(slots) || hash((f.slots??[]).map(s=>({key:s.key,state:s.state}))) !== hash(c.slots.map(s=>({key:s.key,state:s.certified?'filled':s.value===undefined?'initial':'wrong'})))) reject('NESTED_VISIBLE_SLOT_BINDING',label+':'+f.id);
+        if (!Array.isArray(f.geometry?.resolvedParts) || hash(f.geometry.resolvedParts) !== hash(c.resolvedParts)) reject('NESTED_RESOLVED_AST_BINDING',label+':'+f.id);
+        if (c.resolvedParts.some(p => c.slots.some(slot => slot.path === p.path))) reject('NESTED_RESOLVED_RESERVATION',label+':'+f.id);
         if (c.rootRelation && (f.geometry?.rootRelationProof?.semanticPath !== c.rootRelation.path || f.geometry.rootRelationProof.source !== 'shared-compiler-marker-dom-revalidated')) reject('NESTED_VISIBLE_ROOT_BINDING',label+':'+f.id);
       }
     };
@@ -60,6 +68,7 @@ export function checkNestedRuns(compiled, runs, context = {}) {
       if (packet.viewport !== run.width || !Number.isFinite(packet.readerWidth) || packet.readerWidth <= 0 || !finite(packet.pageWidth) || packet.pageWidth > run.width + 1 || !Array.isArray(packet.formulas) || !packet.formulas.length) { reject('NESTED_READER_PACKET', at + ':' + packet.part); continue; }
       const snapshot=snapshots.find(s=>s.partId===packet.part&&s.state===packet.state&&s.selectedValue===packet.selectedValue);
       if (!snapshot) { reject('NESTED_RUNTIME_STATE_BINDING',at+':'+packet.part); continue; }
+      const layoutState=nestedPublicLayoutState(snapshot.visible);
       const node=compiled.nodeDesign.find(n=>n.parts.some(p=>p.id===packet.part)), visible=snapshot.visible.visible.find(n=>n.node.nodeId===node.nodeId), currentStage=snapshot.visible.visible.at(-1).node.stageId;
       bindFormulas(packet.formulas,expectedFor(node,visible,visible.resolved&&node.stageId!==currentStage?'readonly':'interactive'),at+':'+packet.part+':'+packet.state);
       const expectedText=visible.rows.filter(r=>r.kind==='text').flatMap(row=>Array.from(row.template.matchAll(/\{(mirror:)?([^}]+)\}/g),m=>{const p=visible.parts.find(p=>p.key===m[2]);return {rowId:row.id,id:p.id,key:p.key,...(p.value===undefined?{}:{value:p.value}),state:p.correct?'filled':p.value===undefined?'initial':'wrong',editable:!p.correct&&p.editable,button:!p.correct};}));
@@ -67,7 +76,7 @@ export function checkNestedRuns(compiled, runs, context = {}) {
       for(const text of packet.textSlots??[])if(text.button&&(!finite(text.rect?.width)||!finite(text.rect?.height)||text.rect.width<44||text.rect.height<44))reject('NESTED_TEXT_HIT_SIZE',at+':'+text.id);
       for (const formula of packet.formulas) {
         formulaCount++;
-        const key = packet.part + ':' + formula.id + ':' + formula.mode, previous = frames.get(key);
+        const key = packet.part + ':' + formula.id + ':' + formula.mode + ':' + layoutState, previous = frames.get(key);
         if (!previous) frames.set(key, formula);
         else if (formula.mode === 'interactive') {
           if (['width','height'].some(k => !finite(formula.formula?.[k]) || Math.abs(formula.formula[k] - previous.formula[k]) > 1)) reject('NESTED_STATE_FRAME_CHANGED', at + ':' + key);
@@ -79,7 +88,7 @@ export function checkNestedRuns(compiled, runs, context = {}) {
         if (formula.font !== '18px' || formula.status !== 'MEASURED' || formula.overflow === 'true') reject('NESTED_FORMULA_NOT_MEASURED', at + ':' + formula.id);
         const g = formula.geometry?.groupAlignment;
         if (g) {
-          const groupKey = g.groupId + ':' + formula.mode, old = groups.get(groupKey);
+          const groupKey = g.groupId + ':' + formula.mode + ':' + layoutState, old = groups.get(groupKey);
           const localColumn = g.relationX - g.bodyLeft;
           if (!old) groups.set(groupKey, { bodyWidth: g.bodyWidth, neutralLayoutKey: g.neutralLayoutKey, column: g.status === 'ALIGNED' ? localColumn : undefined });
           else {

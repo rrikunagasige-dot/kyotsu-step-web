@@ -1,3 +1,5 @@
+// @ts-expect-error Node24 imports this same source for snapshots; explicit .ts is required without changing app compiler options.
+import { renderClosedMath } from '../components/textbook/nestedMathTemplate.ts'
 import type { NestedCopy, NestedLesson, NestedNode } from './nestedLesson'
 export type { NestedCopy, NestedDisplayExtra } from './nestedLesson'
 
@@ -36,6 +38,10 @@ export function nestedLessonFromCompiled(compiled: CompiledNestedLesson): Nested
   if (layout?.schemaVersion !== 'layout-plan/2' || layout.nestedGeometryContract !== 'nested-geometry/1' || layout.unitId !== compiled.unitId || layout.groups.length !== compiled.nodeDesign.length || JSON.stringify(layout.tokens) !== JSON.stringify({ mathFontPx: 18, katexScale: 1, minHitPx: 44, rowGapPx: 4, noteGapPx: 6, paragraphGapPx: 8 })) throw Error('NESTED_LAYOUT_CONTRACT')
   const nodes = layout.groups.map((group, index) => {
     const node = compiled.nodeDesign[index]
+    for (const part of node.parts) for (const choice of part.choices) if (choice.mathLines !== undefined) {
+      if (!Array.isArray(choice.mathLines) || !choice.mathLines.length || typeof choice.display !== 'string' || !choice.display.trim() || choice.mathLines.some(line => typeof line !== 'string' || !line.trim())) throw Error('NESTED_CHOICE_MATH_LINES')
+      for (const line of choice.mathLines) renderClosedMath(line)
+    }
     for (const row of node.rows) if (row.hideAfterCorrectKeys !== undefined && (!Array.isArray(row.hideAfterCorrectKeys) || !row.hideAfterCorrectKeys.length || new Set(row.hideAfterCorrectKeys).size !== row.hideAfterCorrectKeys.length || row.hideAfterCorrectKeys.length !== row.partKeys.length || row.hideAfterCorrectKeys.some(key => !row.partKeys.includes(key)))) throw Error('NESTED_ROW_HIDE_CONTRACT')
     if (group.sourceNodeIds.length !== 1 || group.sourceNodeIds[0] !== node.nodeId || JSON.stringify(group.rowIds) !== JSON.stringify(node.rows.map(r => r.id)) || group.number !== (node.equationNumber ?? null)) throw Error('NESTED_LAYOUT_NODE_BINDING')
     const row = plan[index]

@@ -190,3 +190,51 @@ describe('semantic wrapping boundaries', () => {
    for (const path of c.semanticRootBreakPaths) expect(c.ast.children[Number(path.split('/')[1])]).not.toMatchObject({type:'symbol',value:'='})
   }
  })
+
+
+describe('UX05 resolved display is ordinary closed math, not a filled neutral slot', () => {
+  it('restores the exact ordinary factorisation DOM, including both bracket sizes and binary + class', () => {
+    const sign = { key: 'sign', kind: 'math', choices: [{ value: '+' }, { value: '-' }] }
+    const c = compileNestedMathTemplate({ template: '(x-4)(x{sign}4)=0', parts: [sign], values: { sign: '+' }, certifiedKeys: ['sign'] })
+    const ordinary = compileNestedMathTemplate({ template: '(x-4)(x+4)=0', parts: [] })
+    expect(c.html).toBe(ordinary.html)
+    expect(c.slots).toEqual([])
+    expect(c.latex).not.toContain('\\rule')
+    expect(c.resolvedParts).toEqual([{ key: 'sign', path: 'root/1/group/1', value: '+', source: 'slot' }])
+  })
+  it('preserves unary signs and natural relation/operator classes in their actual TeX context', () => {
+    for (const [template, value, literal, role] of [
+      ['x{p}4', '+', 'x+4', 'binary-operation'],
+      ['x{p}4', '-', 'x-4', 'binary-operation'],
+      ['x={p}', '-4', 'x=-4', 'operand'],
+      ['x{p}0', '>', 'x>0', 'relation'],
+    ]) {
+      const c = compileNestedMathTemplate({ template, parts: [{ key: 'p', kind: 'math', role, choices: [{ value }] }], values: { p: value }, certifiedKeys: ['p'] })
+      expect(c.html).toBe(compileNestedMathTemplate({ template: literal, parts: [] }).html)
+    }
+  })
+  it('removes only certified reservations in mixed radicals, fractions and exponents', () => {
+    const parts = ['a', 'b'].map(key => ({ key, kind: 'math', choices: [{ value: '2' }, { value: '3' }] }))
+    for (const template of ['\\sqrt{{a}}+{b}', '\\frac{{a}}{{b}}', 'x^{a}+{b}']) {
+      const c = compileNestedMathTemplate({ template, parts, values: { a: '2', b: '3' }, certifiedKeys: ['a'] })
+      expect(c.slots.map(p => p.key)).toEqual(['b'])
+      expect(c.slots[0].certified).toBe(false)
+      expect(c.slots[0].envelope.heightEm).toBeGreaterThanOrEqual(44 / 18)
+      expect(c.resolvedParts.map(p => p.key)).toEqual(['a'])
+      const root = document.createElement('div'); root.innerHTML = c.html
+      expect(bindNestedMathSlots(root, c)).toHaveLength(1)
+      root.querySelector('.katex-html')!.textContent = 'different resolved math'
+      expect(() => bindNestedMathSlots(root, c)).toThrow('COMPILED_DOM_MISMATCH')
+    }
+  })
+  it('uses only proven values in public-state planning; wrong choices do not move neutral layout', () => {
+    const parts = [{ key: 'a', kind: 'math', choices: [{ value: '2' }, { value: '12345' }] }]
+    const initial = compileNeutralNestedMathTemplate({ template: '(x+{a})', parts })
+    const wrong = compileNeutralNestedMathTemplate({ template: '(x+{a})', parts, values: { a: '12345' }, certifiedKeys: [] })
+    expect(wrong.html).toBe(initial.html)
+    const proven = compileNeutralNestedMathTemplate({ template: '(x+{a})', parts, values: { a: '2' }, certifiedKeys: ['a'] })
+    expect(proven.slots).toHaveLength(0)
+    expect(proven.html).toBe(compileNestedMathTemplate({ template: '(x+2)', parts: [] }).html)
+    expect(proven.measurementOnly).toBe(true)
+  })
+})

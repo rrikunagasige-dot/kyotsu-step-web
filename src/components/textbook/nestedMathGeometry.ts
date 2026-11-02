@@ -109,10 +109,10 @@ export function measureNestedMathDOM(shell: HTMLElement) {
   const bodyRect = body ? rect(body) : undefined
   const groupAlignment = group && bodyRect ? { groupId: group.groupId, bodyLeft: bodyRect.x, bodyWidth: bodyRect.width, availableWidth: available.width, relationX, rowRelationOffset: relationX - frame.x, rowLeftExtent: relationX - frame.x, rowRightExtent: frame.x + frame.width - relationX, neutralLayoutKey: group.neutralLayoutKey, status: relation ? 'ALIGNED' as const : 'NO_ROOT_RELATION' as const } : undefined
   const rootRelationProof = relation ? { semanticPath: compiled.rootRelation!.path, marker: compiled.rootRelation!.marker, source: 'shared-compiler-marker-dom-revalidated', rect: rect(relation) } : { source: 'shared-compiler-ast', status: 'NO_ROOT_RELATION' }
-  return { schemaVersion: 'nested-geometry/1', status: collisions.length || axisFailures.length ? 'FAIL' : 'PASS', source: 'shared-compiler-dom-revalidated', axisPx, axisSource: 'same-font-fraction-rule', baselineSource: 'zero-inline-dom-marker', slots: slots.map(s => ({ id: s.id, path: s.path, value: s.value, rect: s.rect, rule: s.rule, baseline: s.baseline, localFontPx: s.localFontPx, axisDeltaPx: s.axisDeltaPx })), lines: [...lines, ...glyphs], collisions, axisFailures, frame, available, ...(groupAlignment ? { groupAlignment } : {}), rootRelationProof }
+  return { schemaVersion: 'nested-geometry/1', resolvedParts: compiled.resolvedParts, status: collisions.length || axisFailures.length ? 'FAIL' : 'PASS', source: 'shared-compiler-dom-revalidated', axisPx, axisSource: 'same-font-fraction-rule', baselineSource: 'zero-inline-dom-marker', slots: slots.map(s => ({ id: s.id, path: s.path, value: s.value, rect: s.rect, rule: s.rule, baseline: s.baseline, localFontPx: s.localFontPx, axisDeltaPx: s.axisDeltaPx })), lines: [...lines, ...glyphs], collisions, axisFailures, frame, available, ...(groupAlignment ? { groupAlignment } : {}), rootRelationProof }
 }
 
-export type NeutralNestedGroupRow = { id: string; template: string; parts: NestedMathPart[] }
+export type NeutralNestedGroupRow = { id: string; template: string; parts: NestedMathPart[]; values?: Record<string, string>; certifiedKeys?: string[] }
 export type NeutralNestedGroupPlan = { groupId: string; bodyWidth: number; relationColumn: number; availableWidth: number; neutralLayoutKey: string; overflow: boolean; rows: { id: string; breakAtPaths: string[]; left: number; right: number; width: number; hasRelation: boolean }[] }
 
 /** Temporary offscreen probes contain only approved syntax and all-candidate
@@ -141,7 +141,7 @@ export function measureNeutralNestedGroup(groupId: string, rows: NeutralNestedGr
         }
         result[part.key] = { widthEm: width / 18, heightEm: height / 18, axisEm: axisPx / 18 }
       }
-      const compiled = compileNeutralNestedMathTemplate({ template: row.template, parts: row.parts, envelopes: result })
+      const compiled = compileNeutralNestedMathTemplate({ template: row.template, parts: row.parts, values: row.values, certifiedKeys: row.certifiedKeys, envelopes: result })
       const probe = document.createElement('span'); probe.className = 'nested-root-probe'; probe.innerHTML = compiled.html; probes.append(probe)
       for (const slot of bindNestedMathSlots(probe, compiled)) {
         const size = slot.element.parentElement ? parseFloat(getComputedStyle(slot.element.parentElement).fontSize) : 18
@@ -150,7 +150,7 @@ export function measureNeutralNestedGroup(groupId: string, rows: NeutralNestedGr
       }
       probe.remove(); return result
     })
-    const options = rows.map((row, index) => ({ template: row.template, parts: row.parts, envelopes: envelopes[index] }))
+    const options = rows.map((row, index) => ({ template: row.template, parts: row.parts, values: row.values, certifiedKeys: row.certifiedKeys, envelopes: envelopes[index] }))
     const paths = options.map(option => compileNeutralNestedMathTemplate(option).semanticRootBreakPaths)
     const cache = new Map<string, { left: number; right: number; width: number; hasRelation: boolean }>()
     function measure(index: number, breaks: string[]) {
@@ -181,7 +181,9 @@ export function measureNeutralNestedGroup(groupId: string, rows: NeutralNestedGr
       if (!best) break
       breaks = best.breaks; size = best.size
     }
-    const signature = JSON.stringify({ groupId, availableWidth, rows, envelopes, breaks, width: size.width, column: size.column })
+    const font = getComputedStyle(host).font
+    const loadedFaces = document.fonts ? [...document.fonts].filter(face => face.status === 'loaded').map(face => [face.family, face.style, face.weight]).sort() : []
+    const signature = JSON.stringify({ groupId, availableWidth, rows, envelopes, breaks, width: size.width, column: size.column, font, loadedFaces })
     let key = 2166136261; for (const c of signature) key = Math.imul(key ^ c.charCodeAt(0), 16777619) >>> 0
     return { groupId, availableWidth, bodyWidth: size.width, relationColumn: size.column, neutralLayoutKey: 'neutral-group-' + key.toString(16).padStart(8, '0'), overflow: size.width > availableWidth + 1, rows: rows.map((row, index) => ({ id: row.id, breakAtPaths: breaks[index], ...size.measured[index] })) }
   } finally { probes.remove() }

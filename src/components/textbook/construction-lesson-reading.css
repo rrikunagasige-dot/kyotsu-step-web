@@ -57,3 +57,7 @@
 .construction-lesson-reading .construction-lesson-stage { row-gap: var(--construction-paragraph-gap); }
 .construction-lesson-source-question { display: flex; align-items: baseline; gap: .65rem; flex-wrap: wrap; margin-bottom: .7rem; }
 .construction-lesson-source-question .construction-lesson-original-question { flex: 1 1 14rem; min-width: 0; margin: 0; }
+
+/* One value/button, with semantic line boundaries supplied by the closed source. */
+.construction-lesson-choice-math-lines { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.construction-lesson-choice-math-lines > span { display: block; }

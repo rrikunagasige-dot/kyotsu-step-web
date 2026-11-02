@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import n10Previous from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
 import n10Pilot from '../data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json'
+import n09PreviousR6 from '../data/textbook/math/numbers/n09ConstructionCompiledR6.json'
 import n09PreviousR5 from '../data/textbook/math/numbers/n09ConstructionCompiledR5.json'
 import n09Previous from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import n09Compiled from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
@@ -23,7 +24,7 @@ import { validateTextbookUnits } from '../domain/textbookSchema'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 const registry = { n09: n09Compiled, n10: n10Compiled } as unknown as Record<'n09' | 'n10', CompiledNestedLesson>
-const migrationSources = { n09: [n09PreviousR5, n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
+const migrationSources = { n09: [n09PreviousR6, n09PreviousR5, n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
 const activeUnits = { n09: mathNumbersN09Unit, n10: mathNumbersN10Unit }
 const legacyUnits = { n09: validateTextbookUnits([n09Presentation.unit])[0], n10: validateTextbookUnits([n10Presentation.unit])[0] }
 function readSaved(key: string, compiled: CompiledNestedLesson): Saved | undefined {
@@ -83,7 +84,7 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
         const known = [compiled, ...migrationSources[code]]
         const candidates = [main, ...(!restored ? Object.values(main?.archivedRevisions ?? {}) : [])]
         for (const candidate of candidates) {
-          if (!candidate?.nestedProgress || !known.some(c => c.toRevision === candidate.unitRevision)) continue
+          if (!candidate?.nestedProgress) continue
           if (!known.some(c => c.toRevision === candidate.unitRevision && c.compiledHash === candidate.nestedProgress?.compiledHash)) throw Error('NESTED_UNKNOWN_NATIVE_ARTIFACT')
         }
       }
@@ -119,10 +120,17 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
             }
           }
           if (!sourceLedger) continue
-          // Retain r4 through the exact reviewed r5 snapshot before UX04.
-          const intermediate = code === 'n09' && previous.toRevision === 4 ? nestedLessonFromCompiled(n09PreviousR5 as unknown as CompiledNestedLesson) : undefined
-          if (intermediate) sourceLedger = migrateNativeRevisionLedger({ source: previousLesson, target: intermediate, sourceLedger, now: Date.now() }).ledger
-          const imported = migrateNativeRevisionLedger({ source: intermediate ?? previousLesson, target: lesson, sourceLedger, now: Date.now() })
+          // Each reviewed edge owns its exact source/target artifact. Older
+          // answers travel r4→r5→r6→r7 without treating an intermediate AUTO
+          // result as a newly answered question.
+          let sourceLesson = previousLesson
+          const intermediates = code === 'n09' ? [n09PreviousR5, n09PreviousR6] as unknown as CompiledNestedLesson[] : []
+          for (const snapshot of intermediates.filter(c => c.toRevision > previous.toRevision && c.toRevision < lesson.toRevision)) {
+            const target = nestedLessonFromCompiled(snapshot)
+            sourceLedger = migrateNativeRevisionLedger({ source: sourceLesson, target, sourceLedger, now: Date.now() }).ledger
+            sourceLesson = target
+          }
+          const imported = migrateNativeRevisionLedger({ source: sourceLesson, target: lesson, sourceLedger, now: Date.now() })
           initial = { ...initial, ledger: imported.ledger, archive: native?.archive ?? initial.archive,
             nativeRevisionImport: { sourceCompiledHash: imported.sourceCompiledHash, eligiblePartIds: imported.eligiblePartIds }, ...(native?.resetAt !== undefined ? { resetAt: native.resetAt } : {}) }
           // An existing latest source, including a deliberate empty reset,

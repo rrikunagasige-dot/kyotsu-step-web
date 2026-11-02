@@ -157,7 +157,7 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   const itemIds = new Set<string>()
   const overlayIds = new Set<string>()
   const nested = unit.constructionLessonVersion === 'n0910/1' ? unit.nestedContract?.parents ?? [] : []
-  const validNestedUnit = unit.subject === 'math-1a' && (unit.unitId === 'math-numbers-expressions-n09' && (unit.revision === 4 || unit.revision === 5 || unit.revision === 6) || unit.unitId === 'math-numbers-expressions-n10' && (unit.revision === 3 || unit.revision === 4))
+  const validNestedUnit = unit.subject === 'math-1a' && (unit.unitId === 'math-numbers-expressions-n09' && (unit.revision === 4 || unit.revision === 5 || unit.revision === 6 || unit.revision === 7) || unit.unitId === 'math-numbers-expressions-n10' && (unit.revision === 3 || unit.revision === 4))
   if (Boolean(unit.constructionLessonVersion) !== Boolean(unit.nestedContract) || unit.constructionLessonVersion && !validNestedUnit) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '新版N09/N10の明示版と実部品契約を一緒に指定してください' })
   for (const parent of nested) if (!unit.sections.some(section => section.id === parent.sectionId)) context.addIssue({ code: 'custom', path: ['nestedContract'], message: '入れ子式の親が参照するsectionが存在しません' })
   const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = [...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []], allIds = [...ordinaryIds, ...constructions.map(i => i.id), ...nested.map(parent => parent.nodeId)]

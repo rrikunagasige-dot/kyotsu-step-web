@@ -133,7 +133,7 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
 export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
   const { source, target, sourceLedger, now } = input
   const sources: Record<string, { hash: string; revision: number; targetRevision: number; targetFromRevision?: number; targetHash?: string }[]> = {
-    'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }, { hash: '8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6', revision: 5, targetRevision: 6, targetFromRevision: 5, targetHash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d' }],
+    'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }, { hash: '8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6', revision: 5, targetRevision: 6, targetFromRevision: 5, targetHash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d' }, { hash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d', revision: 6, targetRevision: 7, targetFromRevision: 6, targetHash: 'dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813' }],
     'math-numbers-expressions-n10': [
       { hash: 'a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd', revision: 3, targetRevision: 4 },
       { hash: '5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b', revision: 4, targetRevision: 4 },
@@ -154,7 +154,7 @@ export function migrateNativeRevisionLedger(input: { source: NestedLesson; targe
     prerequisites: n.prerequisiteNodeIds, results: n.requiredResultRefs,
     ...(!reviewedCopyOnlyParts.has(p.id) ? { assumptions: n.assumptions, prompt: p.prompt } : {}),
     id: p.id, key: p.key, role: p.role, kind: p.kind, expected: p.expected,
-    choices: p.choices.map(c => ({ value: c.value, kind: c.kind, display: c.display, latex: c.latex })),
+    choices: p.choices.map(c => ({ value: c.value, kind: c.kind, display: c.display, latex: c.latex, ...(c.mathLines ? { mathLines: c.mathLines } : {}) })),
   })
   for (const node of target.nodes) {
     const previous = source.nodes.find(n => n.nodeId === node.nodeId)

@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 /** Opt-in candidate runtime. Old textbook ledgers are never rewritten here. */
-export type NestedChoice = { value: string; kind: 'math' | 'text'; latex?: string; display?: string; feedback: string; misconception: string }
+export type NestedChoice = { value: string; kind: 'math' | 'text'; latex?: string; display?: string; mathLines?: string[]; feedback: string; misconception: string }
 export type NestedCopy = { type: 'text' | 'math' | 'term'; text?: string; latex?: string; semanticRole?: string; usage?: string; emphasis?: string }
 export type NestedDisplayExtra = { kind: 'math'; latex: string } | { kind: 'table'; caption: string; headers: string[]; rows: string[][] } | { kind: 'figure'; id: string; src: string; alt: string; caption: string; sha256: string }
 export type NestedPart = { id: string; key: string; role: string; kind: 'math' | 'text'; expected: string; prompt: string; choices: NestedChoice[] }
@@ -65,7 +65,7 @@ export function projectNestedLesson(lesson: NestedLesson, supplied?: NestedLedge
       // An imported JSON object can carry fields absent from the TypeScript
       // type (mathAssertion/answer labels). Only whitelist learner fields.
       return { id: p.id, key: p.key, role: p.role, kind: p.kind, prompt: p.prompt,
-        choices: p.choices.map(c => ({ value: c.value, kind: c.kind, ...(c.latex !== undefined ? { latex: c.latex } : {}), ...(c.display !== undefined ? { display: c.display } : {}) })),
+        choices: p.choices.map(c => ({ value: c.value, kind: c.kind, ...(c.latex !== undefined ? { latex: c.latex } : {}), ...(c.display !== undefined ? { display: c.display } : {}), ...(c.mathLines !== undefined ? { mathLines: [...c.mathLines] } : {}) })),
         ...(value !== undefined ? { value } : {}), editable: currentKey === p.key, correct: orderedCorrect(node, p.key, ledger), ...(chosen && value !== p.expected && currentKey === p.key ? { visibleFeedback: chosen.feedback } : {}) }
     })
     const resolved = node.partOrder.every(key => orderedCorrect(node, key, ledger))

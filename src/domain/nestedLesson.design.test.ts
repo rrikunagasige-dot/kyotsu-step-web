@@ -1,3 +1,4 @@
+import n09R6Compiled from '../data/textbook/math/numbers/n09ConstructionCompiledR6.json'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { createHash } from 'node:crypto'
@@ -159,7 +160,7 @@ describe('UX-03 completed scaffold replacement, independent projection regressio
 })
 
 describe('UX04 photo derivation does not skip independent learner operations', () => {
-  const lesson = nestedLessonFromCompiled(n09Compiled as unknown as CompiledNestedLesson)
+  const lesson = nestedLessonFromCompiled(n09R6Compiled as unknown as CompiledNestedLesson)
   it('requires scope and product sign before the negative square value', () => {
     let ledger = resetNestedLedger(lesson, 0)
     expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe('n09-q01-negative::powerAction')

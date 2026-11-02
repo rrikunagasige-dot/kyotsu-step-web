@@ -215,7 +215,7 @@ describe('UX-03 full application across both units and the completed pilot', () 
   }
   it.each([
     ['n09ConstructionCompiledR4', 'n09ConstructionCompiledR5', 'n09-01::zeroLogic'],
-    ['n09ConstructionCompiledR5', 'n09ConstructionCompiled', 'n09-q01-negative::powerAction'],
+    ['n09ConstructionCompiledR5', 'n09ConstructionCompiledR6', 'n09-q01-negative::powerAction'],
     ['n10ConstructionCompiledPilotR4', 'n10ConstructionCompiled', 'n10-04::rootReason'],
   ])('retains every existing part from %s and stops at the first new prerequisite', (sourceName, targetName, firstNewId) => {
     const source = readLesson(sourceName), target = readLesson(targetName)

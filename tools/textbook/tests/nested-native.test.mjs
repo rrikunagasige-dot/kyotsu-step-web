@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {buildNestedTransformationPlan} from '../transformation/nested-lesson.mjs';
 import { operate } from '../operations.mjs';
 import { buildNestedSnapshots } from '../transformation/nested-snapshots.mjs';
-import { checkNestedRuns } from '../layout/nested-run-measurements.mjs';
+import { checkNestedRuns, nestedPublicLayoutState } from '../layout/nested-run-measurements.mjs';
 const compiled = code => JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/' + code + 'ConstructionCompiled.json'));
 for(const code of ['n09','n10'])test(code+' native blank and interaction planning must use nested parents without flat interactions',()=>{
  const c=compiled(code),sourceRaw=fs.readFileSync('src/data/textbook/math/numbers/'+code+'Authored.json','utf8'),ir=JSON.parse(sourceRaw);
@@ -55,4 +55,16 @@ test('synthetic all-state labels cannot substitute an unrelated formula for real
   const result=checkNestedRuns(c,runs,{sourceSHA,sourceManifest:manifest});
   assert.equal(result.status,'FAIL');
   assert.equal(result.findings.filter(f=>f.ruleId==='NESTED_VISIBLE_FORMULA_COVERAGE').length,4*snapshots.length);
+});
+
+
+test('public layout phases retain neutral frames for wrong choices and replan only after certification or exposure', () => {
+ const snapshots=buildNestedSnapshots(compiled('n09')).snapshots;
+ const initial=snapshots.find(s=>s.state==='initial');
+ const wrong=snapshots.find(s=>s.partId===initial.partId&&s.state==='wrong');
+ const filled=snapshots.find(s=>s.partId===initial.partId&&s.state==='filled');
+ assert.equal(nestedPublicLayoutState(initial.visible),nestedPublicLayoutState(wrong.visible));
+ assert.notEqual(nestedPublicLayoutState(initial.visible),nestedPublicLayoutState(filled.visible));
+ const modified=structuredClone(wrong.visible);modified.visible[0].rows.push({id:'newly-exposed'});
+ assert.notEqual(nestedPublicLayoutState(wrong.visible),nestedPublicLayoutState(modified));
 });

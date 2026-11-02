@@ -2,7 +2,7 @@
   "schemaVersion": "n0910-node-design/1",
   "status": "PROPOSED_CORRECTION_PREVIEW",
   "author": "/root",
-  "proposalId": "P-W046-UX-04",
+  "proposalId": "P-W046-UX-05",
   "revision": 7,
   "language": "ja",
   "provenance": "現存18839 sourceと引継ぎ要求から今回再設計した。失われた79part原本の復元ではない。原proposal/NODE_DESIGN hashを流用しない。",
@@ -18,8 +18,8 @@
     {
       "unitId": "math-numbers-expressions-n09",
       "code": "N09",
-      "fromRevision": 5,
-      "toRevision": 6,
+      "fromRevision": 6,
+      "toRevision": 7,
       "sourcePath": "src/data/textbook/math/numbers/n09Authored.json",
       "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
       "sourceBaseCommit": "18839ba97ec73c99f41c8715c3a888524b743358",
@@ -414,10 +414,10 @@
           "leadParts": [
             {
               "type": "text",
-              "text": "正の候補に続き、負の候補も調べます。括弧と指数の作用を先に決めましょう。"
+              "text": "負の候補も確かめます。括弧と指数に注意しましょう。"
             }
           ],
-          "leadPlainText": "正の候補に続き、負の候補も調べます。括弧と指数の作用を先に決めましょう。",
+          "leadPlainText": "負の候補も確かめます。括弧と指数に注意しましょう。",
           "assumptions": [
             "x∈ℝ、x²=16を満たすすべての実数を求める。"
           ],
@@ -435,54 +435,25 @@
                 "powerAction"
               ],
               "requiresCorrectKeys": [],
-              "id": "n09-q01-negative::ux04-row-01",
+              "id": "n09-q01-negative::ux05-row-01",
               "certifiedFrom": [
                 "n09-q01-positive-result"
               ]
             },
             {
               "kind": "math",
-              "template": "(-4)^2=(-4)\\times(-4)",
-              "partKeys": [],
-              "requiresCorrectKeys": [
-                "powerAction"
-              ],
-              "id": "n09-q01-negative::ux04-row-02",
-              "certifiedFrom": [
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-q01-negative-ux04-main"
-            },
-            {
-              "kind": "math",
-              "template": "={productSign}(4\\times4)",
-              "partKeys": [
-                "productSign"
-              ],
-              "requiresCorrectKeys": [
-                "powerAction"
-              ],
-              "id": "n09-q01-negative::ux04-row-03",
-              "certifiedFrom": [
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-q01-negative-ux04-main"
-            },
-            {
-              "kind": "math",
-              "template": "={value}",
+              "template": "(-4)^2=(-4)\\times(-4)={value}",
               "partKeys": [
                 "value"
               ],
               "requiresCorrectKeys": [
-                "powerAction",
-                "productSign"
+                "powerAction"
               ],
-              "id": "n09-q01-negative::ux04-row-04",
+              "id": "n09-q01-negative::ux05-row-02",
+              "mathGroupId": "n09-q01-negative-ux05-math-02",
               "certifiedFrom": [
                 "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-q01-negative-ux04-main"
+              ]
             }
           ],
           "parts": [
@@ -535,52 +506,6 @@
                 "codeSupported": false,
                 "reviewStatus": "NEEDS_AI_REVIEW",
                 "rationale": "直前の4²という手本と既習の累乗の定義。負号を含む括弧が対象。"
-              }
-            },
-            {
-              "id": "n09-q01-negative::productSign",
-              "key": "productSign",
-              "role": "unary-sign",
-              "kind": "math",
-              "expected": "+",
-              "prompt": "二つの負の因子の積を、正の大きさ4×4と符号に分けます。",
-              "learningAction": "二つの負の因子から積の符号を決定する",
-              "sourceRefs": [
-                "n09-q01-negative-before",
-                "n09-q01-negative-interaction-0",
-                "n09-q01-negative-equation",
-                "n09-q01-negative-after"
-              ],
-              "choices": [
-                {
-                  "value": "+",
-                  "kind": "math",
-                  "latex": "+",
-                  "display": "+",
-                  "feedback": "負の因子が二つなので、積は正です。",
-                  "misconception": "正答"
-                },
-                {
-                  "value": "-",
-                  "kind": "math",
-                  "latex": "-",
-                  "display": "-",
-                  "feedback": "負号の数を因子として確かめてください。負×負は負のままではありません。",
-                  "misconception": "負号の数を因子として確かめてください。負×負は負のままではありません。"
-                }
-              ],
-              "mathAssertion": {
-                "kind": "requires-semantic-review",
-                "expected": "+",
-                "sourceRefs": [
-                  "n09-q01-negative-before",
-                  "n09-q01-negative-interaction-0",
-                  "n09-q01-negative-equation",
-                  "n09-q01-negative-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "符号の乗法。既出16の記憶ではなく、その前の符号操作。"
               }
             },
             {
@@ -639,7 +564,6 @@
           ],
           "partOrder": [
             "powerAction",
-            "productSign",
             "value"
           ],
           "terminalRecord": {
@@ -653,7 +577,6 @@
             "prose": "「負の候補も確かめる」として (-4)^2=16 を確定しました。次の「すべての解を答える」では、この認定結果と条件を使います。",
             "requiresCorrectKeys": [
               "powerAction",
-              "productSign",
               "value"
             ],
             "certifiedFrom": [
@@ -711,13 +634,11 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-q01-negative::lead",
-                "n09-q01-negative::ux04-row-01",
-                "n09-q01-negative::ux04-row-02",
-                "n09-q01-negative::ux04-row-03",
-                "n09-q01-negative::ux04-row-04",
+                "n09-q01-negative::ux05-row-01",
+                "n09-q01-negative::ux05-row-02",
                 "n09-q01-negative::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-q01-negative-interaction-0",
@@ -726,13 +647,11 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-q01-negative::lead",
-                "n09-q01-negative::ux04-row-01",
-                "n09-q01-negative::ux04-row-02",
-                "n09-q01-negative::ux04-row-03",
-                "n09-q01-negative::ux04-row-04",
+                "n09-q01-negative::ux05-row-01",
+                "n09-q01-negative::ux05-row-02",
                 "n09-q01-negative::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-q01-negative-equation",
@@ -741,13 +660,11 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-q01-negative::lead",
-                "n09-q01-negative::ux04-row-01",
-                "n09-q01-negative::ux04-row-02",
-                "n09-q01-negative::ux04-row-03",
-                "n09-q01-negative::ux04-row-04",
+                "n09-q01-negative::ux05-row-01",
+                "n09-q01-negative::ux05-row-02",
                 "n09-q01-negative::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-q01-negative-after",
@@ -756,13 +673,11 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-q01-negative::lead",
-                "n09-q01-negative::ux04-row-01",
-                "n09-q01-negative::ux04-row-02",
-                "n09-q01-negative::ux04-row-03",
-                "n09-q01-negative::ux04-row-04",
+                "n09-q01-negative::ux05-row-01",
+                "n09-q01-negative::ux05-row-02",
                 "n09-q01-negative::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             }
           ],
           "sourceExtra": {},
@@ -838,7 +753,32 @@
                 "text": "を満たすすべての実数を求める。"
               }
             ]
-          ]
+          ],
+          "ux05Disposition": {
+            "proposal": "P-W046-UX-05",
+            "completeSolution": "(−4)²=(−4)×(−4)=16。括弧内全体が二つの因子になる。",
+            "oldPartMapping": [
+              {
+                "oldPartId": "n09-q01-negative::powerAction",
+                "decision": "KEEP",
+                "newPartId": "n09-q01-negative::powerAction",
+                "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+              },
+              {
+                "oldPartId": "n09-q01-negative::productSign",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              },
+              {
+                "oldPartId": "n09-q01-negative::value",
+                "decision": "KEEP",
+                "newPartId": "n09-q01-negative::value",
+                "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+              }
+            ],
+            "newPartIds": []
+          }
         },
         {
           "nodeId": "n09-01",
@@ -852,10 +792,10 @@
           "leadParts": [
             {
               "type": "text",
-              "text": "候補を確かめるだけでは、他に解がないとはまだ言えません。方程式を同値に変形し、全ての場合を調べます。"
+              "text": "候補を確かめるだけでなく、他に解がないことも調べます。"
             }
           ],
-          "leadPlainText": "候補を確かめるだけでは、他に解がないとはまだ言えません。方程式を同値に変形し、全ての場合を調べます。",
+          "leadPlainText": "候補を確かめるだけでなく、他に解がないことも調べます。",
           "assumptions": [
             "x∈ℝ。"
           ],
@@ -869,28 +809,58 @@
           ],
           "rows": [
             {
-              "kind": "math",
-              "template": "x^2=16",
+              "id": "n09-01::ux05-rule-01",
+              "kind": "text",
+              "template": "既習の平方差の公式を使います。",
               "partKeys": [],
               "requiresCorrectKeys": [],
-              "id": "n09-01::ux04-row-01",
+              "certifiedFrom": [
+                "n09-q01-negative-result",
+                "n09-q01-positive-result"
+              ]
+            },
+            {
+              "id": "n09-01::ux05-rule-02",
+              "kind": "math",
+              "template": "(A-B)(A+B)=A^2-B^2",
+              "partKeys": [],
+              "requiresCorrectKeys": [],
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
               ],
-              "mathGroupId": "n09-01-ux04-main"
+              "mathGroupId": "n09-01-ux05-generic-square-rule"
             },
             {
+              "id": "n09-01::ux05-rule-03",
               "kind": "text",
-              "template": "両辺に行う演算：{balanceOperation}16",
-              "partKeys": [
-                "balanceOperation"
-              ],
+              "template": "実数の零積の法則。一方が0なら積は0です。どちらも0でなければ積は0になりません。",
+              "partKeys": [],
               "requiresCorrectKeys": [],
-              "hideAfterCorrectKeys": [
-                "balanceOperation"
+              "certifiedFrom": [
+                "n09-q01-negative-result",
+                "n09-q01-positive-result"
+              ]
+            },
+            {
+              "id": "n09-01::ux05-rule-04",
+              "kind": "math",
+              "template": "AB=0\\iff A=0\\quad\\text{または}\\quad B=0",
+              "partKeys": [],
+              "requiresCorrectKeys": [],
+              "certifiedFrom": [
+                "n09-q01-negative-result",
+                "n09-q01-positive-result"
               ],
-              "id": "n09-01::ux04-row-02",
+              "mathGroupId": "n09-01-ux05-generic-zero-rule"
+            },
+            {
+              "kind": "math",
+              "template": "x^2=16",
+              "partKeys": [],
+              "requiresCorrectKeys": [],
+              "id": "n09-01::ux05-row-01",
+              "mathGroupId": "n09-01-ux05-math-01",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -898,26 +868,11 @@
             },
             {
               "kind": "math",
-              "template": "x^2{mirror:balanceOperation}16=16{mirror:balanceOperation}16=0",
+              "template": "x^2-16=16-16=0",
               "partKeys": [],
-              "requiresCorrectKeys": [
-                "balanceOperation"
-              ],
-              "id": "n09-01::ux04-row-03",
-              "certifiedFrom": [
-                "n09-q01-negative-result",
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-01-ux04-main"
-            },
-            {
-              "kind": "text",
-              "template": "確定済みの平方を使って書き換えます。",
-              "partKeys": [],
-              "requiresCorrectKeys": [
-                "balanceOperation"
-              ],
-              "id": "n09-01::ux04-row-04",
+              "requiresCorrectKeys": [],
+              "id": "n09-01::ux05-row-02",
+              "mathGroupId": "n09-01-ux05-math-02",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -927,59 +882,23 @@
               "kind": "math",
               "template": "x^2-4^2=0",
               "partKeys": [],
-              "requiresCorrectKeys": [
-                "balanceOperation"
-              ],
-              "id": "n09-01::ux04-row-05",
+              "requiresCorrectKeys": [],
+              "id": "n09-01::ux05-row-03",
+              "mathGroupId": "n09-01-ux05-math-03",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-01-ux04-main"
+              ]
             },
             {
               "kind": "math",
-              "template": "\\iff(x-4)(x\\,{factorSign}\\,4)=0",
+              "template": "{factorisedFormUX05}=0",
               "partKeys": [
-                "factorSign"
+                "factorisedFormUX05"
               ],
-              "requiresCorrectKeys": [
-                "balanceOperation"
-              ],
-              "id": "n09-01::ux04-row-06",
-              "certifiedFrom": [
-                "n09-q01-negative-result",
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-01-ux04-factorization"
-            },
-            {
-              "kind": "math",
-              "template": "x-4=0\\quad{zeroLogic}\\quad x+4=0",
-              "partKeys": [
-                "zeroLogic"
-              ],
-              "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign"
-              ],
-              "id": "n09-01::ux04-row-07",
-              "certifiedFrom": [
-                "n09-q01-negative-result",
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-01-ux04-zero-product"
-            },
-            {
-              "kind": "text",
-              "template": "まず、第一因子が0になる場合を解きます。",
-              "partKeys": [],
-              "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic"
-              ],
-              "id": "n09-01::ux04-row-08",
+              "requiresCorrectKeys": [],
+              "id": "n09-01::ux05-row-04",
+              "mathGroupId": "n09-01-ux05-math-04",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -987,19 +906,17 @@
             },
             {
               "kind": "text",
-              "template": "両辺に行う演算：{leftInverseOperation}4",
+              "template": "因子についての零条件の組：{factorZeroConditionUX05}",
               "partKeys": [
-                "leftInverseOperation"
+                "factorZeroConditionUX05"
               ],
               "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic"
+                "factorisedFormUX05"
               ],
               "hideAfterCorrectKeys": [
-                "leftInverseOperation"
+                "factorZeroConditionUX05"
               ],
-              "id": "n09-01::ux04-row-09",
+              "id": "n09-01::ux05-row-05",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -1007,53 +924,14 @@
             },
             {
               "kind": "math",
-              "template": "x-4+4=0+4\\quad\\Rightarrow\\quad x=4",
+              "template": "x-4=0",
               "partKeys": [],
               "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic",
-                "leftInverseOperation"
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
               ],
-              "id": "n09-01::ux04-row-10",
-              "certifiedFrom": [
-                "n09-q01-negative-result",
-                "n09-q01-positive-result"
-              ],
-              "mathGroupId": "n09-01-ux04-left-branch"
-            },
-            {
-              "kind": "text",
-              "template": "次に、第二因子が0になる場合を解きます。",
-              "partKeys": [],
-              "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic",
-                "leftInverseOperation"
-              ],
-              "id": "n09-01::ux04-row-11",
-              "certifiedFrom": [
-                "n09-q01-negative-result",
-                "n09-q01-positive-result"
-              ]
-            },
-            {
-              "kind": "text",
-              "template": "両辺に行う演算：{rightInverseOperation}4",
-              "partKeys": [
-                "rightInverseOperation"
-              ],
-              "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic",
-                "leftInverseOperation"
-              ],
-              "hideAfterCorrectKeys": [
-                "rightInverseOperation"
-              ],
-              "id": "n09-01::ux04-row-12",
+              "id": "n09-01::ux05-row-06",
+              "mathGroupId": "n09-01-ux05-math-06",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -1061,34 +939,58 @@
             },
             {
               "kind": "math",
-              "template": "x+4-4=0-4\\quad\\Rightarrow\\quad x=-4",
+              "template": "\\text{または}\\quad x+4=0",
               "partKeys": [],
               "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic",
-                "leftInverseOperation",
-                "rightInverseOperation"
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
               ],
-              "id": "n09-01::ux04-row-13",
+              "id": "n09-01::ux05-row-07",
+              "mathGroupId": "n09-01-ux05-math-07",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
+              ]
+            },
+            {
+              "kind": "math",
+              "template": "x-4=0\\ \\Rightarrow\\ x=4",
+              "partKeys": [],
+              "requiresCorrectKeys": [
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
               ],
-              "mathGroupId": "n09-01-ux04-right-branch"
+              "id": "n09-01::ux05-row-08",
+              "mathGroupId": "n09-01-ux05-math-08",
+              "certifiedFrom": [
+                "n09-q01-negative-result",
+                "n09-q01-positive-result"
+              ]
+            },
+            {
+              "kind": "math",
+              "template": "x+4=0\\ \\Rightarrow\\ x=-4",
+              "partKeys": [],
+              "requiresCorrectKeys": [
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
+              ],
+              "id": "n09-01::ux05-row-09",
+              "mathGroupId": "n09-01-ux05-math-09",
+              "certifiedFrom": [
+                "n09-q01-negative-result",
+                "n09-q01-positive-result"
+              ]
             },
             {
               "kind": "text",
-              "template": "同値変形と零積の二つの場合で、他の解がないことまで確かめました。",
+              "template": "同値変形で場合を尽くしたため、4と−4が全ての解です。",
               "partKeys": [],
               "requiresCorrectKeys": [
-                "balanceOperation",
-                "factorSign",
-                "zeroLogic",
-                "leftInverseOperation",
-                "rightInverseOperation"
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
               ],
-              "id": "n09-01::ux04-row-14",
+              "id": "n09-01::ux05-row-10",
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
@@ -1097,290 +999,144 @@
           ],
           "parts": [
             {
-              "id": "n09-01::balanceOperation",
-              "key": "balanceOperation",
-              "role": "equation-operation",
+              "key": "factorisedFormUX05",
               "kind": "math",
-              "expected": "-",
-              "prompt": "x²=16の両辺へ同じ数16をどう作用させれば、右辺を0にできますか。",
-              "learningAction": "両辺に行う共通の逆演算を決める",
-              "sourceRefs": [
-                "n09-01-before",
-                "n09-01-interaction-0",
-                "n09-01-equation",
-                "n09-01-after"
-              ],
+              "role": "meaningful-expression-construction",
+              "prompt": "左辺x²−4²に恒等的に等しい因数分解を選びます。",
+              "expected": "(x-4)(x+4)",
               "choices": [
                 {
-                  "value": "-",
+                  "value": "(x-4)(x+4)",
                   "kind": "math",
-                  "latex": "-",
-                  "display": "-",
-                  "feedback": "両辺から同じ16を引くと、同値な方程式になります。",
+                  "latex": "(x-4)(x+4)",
+                  "display": "(x-4)(x+4)",
+                  "feedback": "中間項が相殺し、x²−16になります。",
                   "misconception": "正答"
                 },
                 {
-                  "value": "+",
+                  "value": "(x-4)^2",
                   "kind": "math",
-                  "latex": "+",
-                  "display": "+",
-                  "feedback": "右辺が32になり、0にする目的を満たしません。",
-                  "misconception": "右辺が32になり、0にする目的を満たしません。"
+                  "latex": "(x-4)^2",
+                  "display": "(x-4)^2",
+                  "feedback": "展開すると−8xという中間項が残ります。",
+                  "misconception": "展開すると−8xという中間項が残ります。"
                 },
                 {
-                  "value": "\\div",
+                  "value": "(x+4)^2",
                   "kind": "math",
-                  "latex": "\\div",
-                  "display": "÷",
-                  "feedback": "右辺は1になります。ここでは0と等しい形を作ります。",
-                  "misconception": "右辺は1になります。ここでは0と等しい形を作ります。"
+                  "latex": "(x+4)^2",
+                  "display": "(x+4)^2",
+                  "feedback": "展開すると＋8xという中間項が残ります。",
+                  "misconception": "展開すると＋8xという中間項が残ります。"
+                },
+                {
+                  "value": "x(x-16)",
+                  "kind": "math",
+                  "latex": "x(x-16)",
+                  "display": "x(x-16)",
+                  "feedback": "展開するとx²−16xとなり、定数項−16になりません。",
+                  "misconception": "展開するとx²−16xとなり、定数項−16になりません。"
                 }
               ],
+              "id": "n09-01::factorisedFormUX05",
+              "learningAction": "平方差の構造を因数分解へ適用する。第一因子の写し穴ではない。",
               "mathAssertion": {
                 "kind": "requires-semantic-review",
-                "expected": "-",
+                "expected": "(x-4)(x+4)",
+                "codeSupported": false,
+                "reviewStatus": "NEEDS_AI_REVIEW",
+                "rationale": "承認済みUX05の具体適用。限定数理CODEの対応外は意味審査へ接続し機械証明と呼ばない。",
                 "sourceRefs": [
                   "n09-01-before",
                   "n09-01-interaction-0",
                   "n09-01-equation",
                   "n09-01-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "等式の両辺に同じ数を加減しても同値であること。"
+                ]
               }
             },
             {
-              "id": "n09-01::factorSign",
-              "key": "factorSign",
-              "role": "difference-of-squares-factor-sign",
-              "kind": "math",
-              "expected": "+",
-              "prompt": "第一因子を(x−4)に固定します。x²−4²に戻るよう、第二因子(x□4)の演算を選びます。",
-              "learningAction": "一方の因子を固定し、他方の因子の符号を式内で構成する",
-              "sourceRefs": [
-                "n09-01-before",
-                "n09-01-interaction-0",
-                "n09-01-equation",
-                "n09-01-after"
-              ],
-              "choices": [
-                {
-                  "value": "+",
-                  "kind": "math",
-                  "latex": "+",
-                  "display": "+",
-                  "feedback": "(x−4)(x＋4)では二つの中間項が打ち消し合い、定数項の積が−16になります。",
-                  "misconception": "正答"
-                },
-                {
-                  "value": "-",
-                  "kind": "math",
-                  "latex": "-",
-                  "display": "-",
-                  "feedback": "(x−4)²では中間に−8xが残り、x²−16になりません。",
-                  "misconception": "(x−4)²では中間に−8xが残り、x²−16になりません。"
-                },
-                {
-                  "value": "\\times",
-                  "kind": "math",
-                  "latex": "\\times",
-                  "display": "×",
-                  "feedback": "第二因子が4xでは、定数項−16を作れません。第一因子との積を確かめてください。",
-                  "misconception": "第二因子が4xでは、定数項−16を作れません。第一因子との積を確かめてください。"
-                }
-              ],
-              "mathAssertion": {
-                "kind": "requires-semantic-review",
-                "expected": "+",
-                "sourceRefs": [
-                  "n09-01-before",
-                  "n09-01-interaction-0",
-                  "n09-01-equation",
-                  "n09-01-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "4²=16は確定済み。分配して中間項が相殺し、定数項の積が−16となる条件。第一因子固定は設問上の指定であり、逆順の因数分解を数学的に誤りとする意味ではない。"
-              }
-            },
-            {
-              "id": "n09-01::zeroLogic",
-              "key": "zeroLogic",
+              "key": "factorZeroConditionUX05",
               "kind": "text",
-              "role": "zero-product-logic",
-              "prompt": "積が0になるには、二つの因子の条件をどう結びますか。",
-              "learningAction": "積が0になるには、二つの因子の条件をどう結びますか。",
-              "expected": "or",
-              "sourceRefs": [
-                "n09-01-before",
-                "n09-01-interaction-0",
-                "n09-01-equation",
-                "n09-01-after"
-              ],
+              "role": "meaningful-condition-application",
+              "prompt": "確定した積が0になる条件を、因子についての式で表した組を選びます。",
+              "expected": "either-factor-zero",
               "choices": [
                 {
-                  "value": "or",
+                  "value": "either-factor-zero",
                   "kind": "text",
-                  "display": "または",
-                  "feedback": "一方の因子が0なら積は0です。",
-                  "misconception": "正答",
-                  "latex": "\\text{または}"
-                },
-                {
-                  "value": "and",
-                  "kind": "text",
-                  "display": "かつ",
-                  "feedback": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
-                  "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
-                  "latex": "\\text{かつ}"
-                }
-              ],
-              "mathAssertion": {
-                "kind": "requires-semantic-review",
-                "expected": "or",
-                "sourceRefs": [
-                  "n09-01-before",
-                  "n09-01-interaction-0",
-                  "n09-01-equation",
-                  "n09-01-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "積が0になるには、二つの因子の条件をどう結びますか。"
-              }
-            },
-            {
-              "id": "n09-01::leftInverseOperation",
-              "key": "leftInverseOperation",
-              "role": "linear-equation-inverse-operation",
-              "kind": "math",
-              "expected": "+",
-              "prompt": "x−4=0の両辺へ4をどう作用させれば、左辺をxだけにできますか。",
-              "learningAction": "一次式からxを取り出す逆演算を選ぶ",
-              "sourceRefs": [
-                "n09-01-before",
-                "n09-01-interaction-0",
-                "n09-01-equation",
-                "n09-01-after"
-              ],
-              "choices": [
-                {
-                  "value": "+",
-                  "kind": "math",
-                  "latex": "+",
-                  "display": "+",
-                  "feedback": "−4と＋4を相殺します。",
+                  "display": "第一因子が0、または第二因子が0",
+                  "feedback": "どちらか一方が0なら積は0であり、実数ではこれで全ての場合を尽くします。",
+                  "mathLines": [
+                    "x-4=0",
+                    "\\text{または}\\quad x+4=0"
+                  ],
                   "misconception": "正答"
                 },
                 {
-                  "value": "-",
-                  "kind": "math",
-                  "latex": "-",
-                  "display": "-",
-                  "feedback": "−4がさらに減り、x−8になります。",
-                  "misconception": "−4がさらに減り、x−8になります。"
+                  "value": "both-factors-zero",
+                  "kind": "text",
+                  "display": "両因子が同時に0",
+                  "feedback": "零積は同時に0である必要がありません。一方が0なら積は0です。",
+                  "mathLines": [
+                    "x-4=0",
+                    "\\text{かつ}\\quad x+4=0"
+                  ],
+                  "misconception": "零積は同時に0である必要がありません。一方が0なら積は0です。"
                 },
                 {
-                  "value": "\\times",
-                  "kind": "math",
-                  "latex": "\\times",
-                  "display": "×",
-                  "feedback": "式全体を4倍しても、定数項は消えません。",
-                  "misconception": "式全体を4倍しても、定数項は消えません。"
+                  "value": "equal-factors",
+                  "kind": "text",
+                  "display": "二つの因子が等しい",
+                  "feedback": "因子が等しいだけでは、その積が0とは限りません。",
+                  "mathLines": [
+                    "x-4=x+4"
+                  ],
+                  "misconception": "因子が等しいだけでは、その積が0とは限りません。"
+                },
+                {
+                  "value": "variable-zero",
+                  "kind": "text",
+                  "display": "変数が0",
+                  "feedback": "積を作っている因子はxそのものではありません。",
+                  "mathLines": [
+                    "x=0"
+                  ],
+                  "misconception": "積を作っている因子はxそのものではありません。"
                 }
               ],
+              "id": "n09-01::factorZeroConditionUX05",
+              "learningAction": "AB=0の法則を具体的な二因子へ適用し、必要十分な零条件全体を構成する。",
               "mathAssertion": {
                 "kind": "requires-semantic-review",
-                "expected": "+",
+                "expected": "either-factor-zero",
+                "codeSupported": false,
+                "reviewStatus": "NEEDS_AI_REVIEW",
+                "rationale": "承認済みUX05の具体適用。限定数理CODEの対応外は意味審査へ接続し機械証明と呼ばない。",
                 "sourceRefs": [
                   "n09-01-before",
                   "n09-01-interaction-0",
                   "n09-01-equation",
                   "n09-01-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "等式の両辺への同じ加算。解4そのものは既出で写させない。"
-              }
-            },
-            {
-              "id": "n09-01::rightInverseOperation",
-              "key": "rightInverseOperation",
-              "role": "linear-equation-inverse-operation",
-              "kind": "math",
-              "expected": "-",
-              "prompt": "x＋4=0の両辺へ4をどう作用させれば、左辺をxだけにできますか。",
-              "learningAction": "もう一方の一次式で逆向きの操作を選ぶ",
-              "sourceRefs": [
-                "n09-01-before",
-                "n09-01-interaction-0",
-                "n09-01-equation",
-                "n09-01-after"
-              ],
-              "choices": [
-                {
-                  "value": "-",
-                  "kind": "math",
-                  "latex": "-",
-                  "display": "-",
-                  "feedback": "＋4と−4を相殺します。",
-                  "misconception": "正答"
-                },
-                {
-                  "value": "+",
-                  "kind": "math",
-                  "latex": "+",
-                  "display": "+",
-                  "feedback": "定数項が＋8となり、xだけになりません。",
-                  "misconception": "定数項が＋8となり、xだけになりません。"
-                },
-                {
-                  "value": "\\div",
-                  "kind": "math",
-                  "latex": "\\div",
-                  "display": "÷",
-                  "feedback": "式全体を4で割っても、加えられている4を消す操作にはなりません。",
-                  "misconception": "式全体を4で割っても、加えられている4を消す操作にはなりません。"
-                }
-              ],
-              "mathAssertion": {
-                "kind": "requires-semantic-review",
-                "expected": "-",
-                "sourceRefs": [
-                  "n09-01-before",
-                  "n09-01-interaction-0",
-                  "n09-01-equation",
-                  "n09-01-after"
-                ],
-                "codeSupported": false,
-                "reviewStatus": "NEEDS_AI_REVIEW",
-                "rationale": "左の枝と同じ等式の性質を、定数項＋4へ適用。"
+                ]
               }
             }
           ],
           "partOrder": [
-            "balanceOperation",
-            "factorSign",
-            "zeroLogic",
-            "leftInverseOperation",
-            "rightInverseOperation"
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
           ],
           "terminalRecord": {
             "id": "n09-01::terminal",
             "formulas": [
-              "x=4,\\ -4"
+              "x=4\\quad\\text{または}\\quad x=-4"
             ],
             "conditions": [
               "x∈ℝ。実数の積が0なら少なくとも一方が0。"
             ],
             "prose": "正負両方の候補を保持し、因数分解からこれ以外の実数解がないことも確認しました。",
             "requiresCorrectKeys": [
-              "balanceOperation",
-              "factorSign",
-              "zeroLogic",
-              "leftInverseOperation",
-              "rightInverseOperation"
+              "factorisedFormUX05",
+              "factorZeroConditionUX05"
             ],
             "certifiedFrom": [
               "n09-q01-negative-result",
@@ -1438,23 +1194,23 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-01::lead",
-                "n09-01::ux04-row-01",
-                "n09-01::ux04-row-02",
-                "n09-01::ux04-row-03",
-                "n09-01::ux04-row-04",
-                "n09-01::ux04-row-05",
-                "n09-01::ux04-row-06",
-                "n09-01::ux04-row-07",
-                "n09-01::ux04-row-08",
-                "n09-01::ux04-row-09",
-                "n09-01::ux04-row-10",
-                "n09-01::ux04-row-11",
-                "n09-01::ux04-row-12",
-                "n09-01::ux04-row-13",
-                "n09-01::ux04-row-14",
+                "n09-01::ux05-rule-01",
+                "n09-01::ux05-rule-02",
+                "n09-01::ux05-rule-03",
+                "n09-01::ux05-rule-04",
+                "n09-01::ux05-row-01",
+                "n09-01::ux05-row-02",
+                "n09-01::ux05-row-03",
+                "n09-01::ux05-row-04",
+                "n09-01::ux05-row-05",
+                "n09-01::ux05-row-06",
+                "n09-01::ux05-row-07",
+                "n09-01::ux05-row-08",
+                "n09-01::ux05-row-09",
+                "n09-01::ux05-row-10",
                 "n09-01::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-01-interaction-0",
@@ -1463,23 +1219,23 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-01::lead",
-                "n09-01::ux04-row-01",
-                "n09-01::ux04-row-02",
-                "n09-01::ux04-row-03",
-                "n09-01::ux04-row-04",
-                "n09-01::ux04-row-05",
-                "n09-01::ux04-row-06",
-                "n09-01::ux04-row-07",
-                "n09-01::ux04-row-08",
-                "n09-01::ux04-row-09",
-                "n09-01::ux04-row-10",
-                "n09-01::ux04-row-11",
-                "n09-01::ux04-row-12",
-                "n09-01::ux04-row-13",
-                "n09-01::ux04-row-14",
+                "n09-01::ux05-rule-01",
+                "n09-01::ux05-rule-02",
+                "n09-01::ux05-rule-03",
+                "n09-01::ux05-rule-04",
+                "n09-01::ux05-row-01",
+                "n09-01::ux05-row-02",
+                "n09-01::ux05-row-03",
+                "n09-01::ux05-row-04",
+                "n09-01::ux05-row-05",
+                "n09-01::ux05-row-06",
+                "n09-01::ux05-row-07",
+                "n09-01::ux05-row-08",
+                "n09-01::ux05-row-09",
+                "n09-01::ux05-row-10",
                 "n09-01::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-01-equation",
@@ -1488,23 +1244,23 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-01::lead",
-                "n09-01::ux04-row-01",
-                "n09-01::ux04-row-02",
-                "n09-01::ux04-row-03",
-                "n09-01::ux04-row-04",
-                "n09-01::ux04-row-05",
-                "n09-01::ux04-row-06",
-                "n09-01::ux04-row-07",
-                "n09-01::ux04-row-08",
-                "n09-01::ux04-row-09",
-                "n09-01::ux04-row-10",
-                "n09-01::ux04-row-11",
-                "n09-01::ux04-row-12",
-                "n09-01::ux04-row-13",
-                "n09-01::ux04-row-14",
+                "n09-01::ux05-rule-01",
+                "n09-01::ux05-rule-02",
+                "n09-01::ux05-rule-03",
+                "n09-01::ux05-rule-04",
+                "n09-01::ux05-row-01",
+                "n09-01::ux05-row-02",
+                "n09-01::ux05-row-03",
+                "n09-01::ux05-row-04",
+                "n09-01::ux05-row-05",
+                "n09-01::ux05-row-06",
+                "n09-01::ux05-row-07",
+                "n09-01::ux05-row-08",
+                "n09-01::ux05-row-09",
+                "n09-01::ux05-row-10",
                 "n09-01::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             },
             {
               "sourceBlockId": "n09-01-after",
@@ -1513,23 +1269,23 @@
               "disposition": "REPLACE",
               "targetRefs": [
                 "n09-01::lead",
-                "n09-01::ux04-row-01",
-                "n09-01::ux04-row-02",
-                "n09-01::ux04-row-03",
-                "n09-01::ux04-row-04",
-                "n09-01::ux04-row-05",
-                "n09-01::ux04-row-06",
-                "n09-01::ux04-row-07",
-                "n09-01::ux04-row-08",
-                "n09-01::ux04-row-09",
-                "n09-01::ux04-row-10",
-                "n09-01::ux04-row-11",
-                "n09-01::ux04-row-12",
-                "n09-01::ux04-row-13",
-                "n09-01::ux04-row-14",
+                "n09-01::ux05-rule-01",
+                "n09-01::ux05-rule-02",
+                "n09-01::ux05-rule-03",
+                "n09-01::ux05-rule-04",
+                "n09-01::ux05-row-01",
+                "n09-01::ux05-row-02",
+                "n09-01::ux05-row-03",
+                "n09-01::ux05-row-04",
+                "n09-01::ux05-row-05",
+                "n09-01::ux05-row-06",
+                "n09-01::ux05-row-07",
+                "n09-01::ux05-row-08",
+                "n09-01::ux05-row-09",
+                "n09-01::ux05-row-10",
                 "n09-01::terminal"
               ],
-              "reason": "UX04承認済み完成解法の各操作へ対応。元の条件・全解・平方確認の結論を保ち、先出しを除く。"
+              "reason": "UX05承認済み代表。平方の作用と必要計算、因数分解、具体的な零条件の組を本人へ残し、基本逆演算は途中式へ戻す。"
             }
           ],
           "sourceExtra": {},
@@ -1622,7 +1378,47 @@
                 "latex": "x\\in\\mathbb R"
               }
             ]
-          ]
+          ],
+          "ux05Disposition": {
+            "proposal": "P-W046-UX-05",
+            "completeSolution": "x²=16 ⇔ x²−16=0 ⇔ x²−4²=0 ⇔ (x−4)(x＋4)=0 ⇔ x−4=0 または x＋4=0 ⇔ x=4 または x=−4。全変形が同値なので全解を尽くす。",
+            "oldPartMapping": [
+              {
+                "oldPartId": "n09-01::balanceOperation",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              },
+              {
+                "oldPartId": "n09-01::factorSign",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              },
+              {
+                "oldPartId": "n09-01::zeroLogic",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              },
+              {
+                "oldPartId": "n09-01::leftInverseOperation",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              },
+              {
+                "oldPartId": "n09-01::rightInverseOperation",
+                "decision": "RETIRE",
+                "newPartId": null,
+                "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+              }
+            ],
+            "newPartIds": [
+              "n09-01::factorisedFormUX05",
+              "n09-01::factorZeroConditionUX05"
+            ]
+          }
         },
         {
           "nodeId": "n09-definition",
@@ -13933,7 +13729,7 @@
       "counts": {
         "sourceNodes": 41,
         "constructionParents": 31,
-        "parts": 46,
+        "parts": 48,
         "automaticNodes": 10
       }
     },
@@ -28045,7 +27841,7 @@
   "actualCounts": {
     "math-numbers-expressions-n09": {
       "nodes": 41,
-      "parts": 52
+      "parts": 48
     },
     "math-numbers-expressions-n10": {
       "nodes": 45,
@@ -28200,5 +27996,14 @@
       "n09-01"
     ],
     "approvalEvidence": "本人「可以来来来做给我做」への直接承認。代表の実画像確認前に残りの意味変更を量産しない。"
+  },
+  "ux05Pilot": {
+    "proposalId": "P-W046-UX-05",
+    "nodes": [
+      "n09-q01-negative",
+      "n09-01"
+    ],
+    "baselineCompiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+    "scope": "代表2nodeのみ。他39nodeとN10は不変。承認済み残りCHANGEは本人代表細部確認後。"
   }
 }

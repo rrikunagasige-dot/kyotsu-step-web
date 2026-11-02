@@ -14,7 +14,7 @@ export type NestedConstructionMathProps = {
   editableKey: string | null
   onActivate: (key: string) => void
   id: string
-  /** Current stage keeps its neutral reservation, even when complete. */
+  /** Only unresolved slots retain an all-candidate interaction reservation. */
   mode?: 'interactive' | 'readonly'
   groupAlignment?: NestedGroupAlignment
 }
@@ -123,9 +123,7 @@ export function NestedConstructionMath({ template, parts, values, certifiedKeys,
       const part = parts.find(p => p.key === slot.key)!, editable = editableKey === slot.key && !slot.certified
       const style = { left: slot.left, top: slot.top, width: slot.width, height: slot.height }
       const state = slot.certified ? 'filled' : slot.value !== undefined ? 'wrong' : 'initial'
-      return slot.certified
-        ? <span key={slot.key} className="nested-slot-readonly" style={style} data-part-key={slot.key} data-semantic-path={slot.path} data-slot-state={state} />
-        : <button key={slot.key} type="button" className={'nested-slot-control' + (slot.value !== undefined ? ' nested-slot-control--candidate' : '')}
+      return <button key={slot.key} type="button" className={'nested-slot-control' + (slot.value !== undefined ? ' nested-slot-control--candidate' : '')}
           style={style} disabled={!editable} aria-label={part.kind + 'の空欄' + (slot.value !== undefined ? '、選択値 ' + slot.value : '')}
           onClick={() => onActivate(slot.key)} data-part-key={slot.key}
           data-semantic-path={slot.path} data-slot-state={state} data-editable={editable ? 'true' : 'false'} />

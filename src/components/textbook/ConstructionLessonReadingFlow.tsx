@@ -83,16 +83,19 @@ function TextRow({ row, parts, onActivate }: { row: NestedRow; parts: PublicNest
   })}</p>
 }
 
-function NodeRows({ planningNode, planningNodes = [planningNode], rows, parts, readonly, number, onActivate, idPrefix = '' }: { planningNode: NestedNode; planningNodes?: NestedNode[]; rows: NestedRow[]; parts: PublicNestedPart[]; readonly: boolean; number?: string; onActivate: () => void; idPrefix?: string }) {
+type PublicPlanningNode = Pick<NestedNode, 'nodeId' | 'rows'> & { parts: PublicNestedPart[] }
+
+function NodeRows({ planningNode, planningNodes, rows, parts, readonly, number, onActivate, idPrefix = '' }: { planningNode: NestedNode; planningNodes: PublicPlanningNode[]; rows: NestedRow[]; parts: PublicNestedPart[]; readonly: boolean; number?: string; onActivate: () => void; idPrefix?: string }) {
   const group = useRef<HTMLDivElement>(null), [plans, setPlans] = useState<Record<string, NeutralNestedGroupPlan>>({})
   const groupId = idPrefix + planningNode.nodeId + '-math-group'
   const neutralGroups = useMemo(() => {
-    const ids = new Set(planningNode.rows.filter(r => r.kind === 'math').map(r => r.mathGroupId ?? planningNode.nodeId))
+    const ids = new Set(rows.filter(r => r.kind === 'math').map(r => r.mathGroupId ?? planningNode.nodeId))
     return [...ids].map(id => ({ id: idPrefix + id, rows: planningNodes.flatMap(owner => owner.rows.filter(row => row.kind === 'math' && (row.mathGroupId ?? owner.nodeId) === id).map(row => {
       const referenced = new Set([...row.partKeys, ...Array.from(row.template.matchAll(/\{mirror:([A-Za-z][A-Za-z0-9_.-]*)\}/g), match => match[1])])
-      return { id: row.id, template: row.template, parts: owner.parts.filter(part => referenced.has(part.key)).map(part => ({ key: part.key, kind: part.prompt, role: part.role, choices: part.choices.map(choice => ({ value: choice.value, latex: choice.latex, kind: choice.kind })) })) }
+      const parts = owner.parts.filter(part => referenced.has(part.key))
+      return { id: row.id, template: row.template, parts: parts.map(part => ({ key: part.key, kind: part.prompt, role: part.role, choices: part.choices.map(choice => ({ value: choice.value, latex: choice.latex, kind: choice.kind })) })), values: Object.fromEntries(parts.filter(p => p.correct && p.value !== undefined).map(p => [p.key, p.value!])), certifiedKeys: parts.filter(p => p.correct).map(p => p.key) }
     })) }))
-  }, [planningNode, planningNodes, idPrefix])
+  }, [planningNode, planningNodes, rows, idPrefix])
   useLayoutEffect(() => {
     if (!group.current || !neutralGroups.length) return
     let active = true, lastStamp = ''
@@ -100,18 +103,19 @@ function NodeRows({ planningNode, planningNodes = [planningNode], rows, parts, r
       if (!active || !group.current) return
       const width = group.current.getBoundingClientRect().width
       if (!(width > 0)) return
-      const stamp = width + ':' + document.fonts?.status
+      const stamp = JSON.stringify([width, document.fonts?.status, getComputedStyle(group.current).font, document.fonts ? [...document.fonts].map(face => [face.family, face.style, face.weight, face.status]).sort() : []])
       if (stamp === lastStamp) return
       const next = Object.fromEntries(neutralGroups.map(g => [g.id, measureNeutralNestedGroup(g.id, g.rows, group.current!, width)]))
       lastStamp = stamp
-      setPlans(next)
+      setPlans(old => JSON.stringify(old) === JSON.stringify(next) ? old : next)
     }
     measure()
     const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(measure)
     observer?.observe(group.current)
     void document.fonts?.ready.then(measure)
+    document.fonts?.addEventListener('loadingdone', measure)
     window.addEventListener('resize', measure)
-    return () => { active = false; observer?.disconnect(); window.removeEventListener('resize', measure) }
+    return () => { active = false; observer?.disconnect(); document.fonts?.removeEventListener('loadingdone', measure); window.removeEventListener('resize', measure) }
   }, [neutralGroups])
   const plan = plans[neutralGroups[0]?.id]
   const lastMathId = rows.filter(r => r.kind === 'math').at(-1)?.id
@@ -153,12 +157,12 @@ function BoundConstructionLesson({ compiled, ledger, onAnswer, lesson }: Constru
     return <div key={item.node.nodeId} className="construction-lesson-node" data-node-id={item.node.nodeId} data-node-resolved={item.resolved ? 'true' : 'false'}>
       <p className="construction-lesson-lead reading-paragraph"><Copy parts={item.node.leadParts} /></p>
       {(meta.assumptionsDisplay === 'in-context' ? [] : meta.assumptionParts ?? item.node.assumptions.map(text => [{ type: 'text' as const, text }])).map((parts, index) => <p className="construction-lesson-condition reading-paragraph" key={index}><Copy parts={parts} /></p>)}
-      <NodeRows planningNode={meta} planningNodes={compiled.nodeDesign} rows={item.rows} parts={item.parts} readonly={readonly} number={meta.equationNumber === undefined ? undefined : [meta.equationNumber, ...(meta.numberAliases ?? [])].join(' / ')} onActivate={readonly ? () => undefined : activate} idPrefix={readonly ? 'history-' : ''} />
+      <NodeRows planningNode={meta} planningNodes={view.visible.map(item => ({ nodeId: item.node.nodeId, rows: item.rows, parts: item.parts }))} rows={item.rows} parts={item.parts} readonly={readonly} number={meta.equationNumber === undefined ? undefined : [meta.equationNumber, ...(meta.numberAliases ?? [])].join(' / ')} onActivate={readonly ? () => undefined : activate} idPrefix={readonly ? 'history-' : ''} />
       {item.node.displayExtras?.map((extra, index) => extra.kind === 'math' ? <div key={index} className="construction-lesson-extra"><NestedConstructionMath id={item.node.nodeId + '-extra-' + index} template={extra.latex} parts={[]} values={{}} certifiedKeys={[]} editableKey={null} onActivate={() => undefined} mode="readonly" /></div> : extra.kind === 'table' ? <div key={index} className="construction-lesson-extra"><table><caption>{extra.caption}</caption><thead><tr>{extra.headers.map((header, column) => <th scope="col" key={column}>{header}</th>)}</tr></thead><tbody>{extra.rows.map((cells, row) => <tr key={row}>{cells.map((cell, column) => <td key={column}><MathCopy latex={cell} /></td>)}</tr>)}</tbody></table></div> : <figure key={index} className="construction-lesson-extra" data-figure-id={extra.id}><img src={import.meta.env.BASE_URL + extra.src.replace(/^\//, '')} alt={extra.alt} data-figure-sha256={extra.sha256} /><figcaption>{extra.caption}</figcaption></figure>)}
       {!readonly && item.node.nodeId === frontier?.node.nodeId && activePart && <div ref={choicePanel} className="construction-lesson-choice-panel axis-choice-panel" data-active-part-id={activePart.id}>
         <p>{activePart.prompt}</p>
         {activePart.visibleFeedback && <aside role="status" className="construction-lesson-feedback reading-choice-hint"><strong>もう一度考えよう</strong><span>{activePart.visibleFeedback}</span></aside>}
-        <div className="construction-lesson-choices axis-choice-list" role="group" aria-label={activePart.prompt}>{choices.map((choice, index) => <button key={choice.value} type="button" className="reading-choice-option" data-choice-value={choice.value} aria-label={choice.display ?? choice.value} onClick={() => { setStageCursor(currentStage); onAnswer(activePart.id, choice.value) }}><span className="construction-lesson-choice-index">{index + 1}</span><strong>{choice.kind === 'math' ? <MathCopy latex={choice.latex ?? choice.value} /> : choice.display ?? choice.value}</strong></button>)}</div>
+        <div className="construction-lesson-choices axis-choice-list" role="group" aria-label={activePart.prompt}>{choices.map((choice, index) => <button key={choice.value} type="button" className="reading-choice-option" data-choice-value={choice.value} aria-label={choice.display ?? choice.value} onClick={() => { setStageCursor(currentStage); onAnswer(activePart.id, choice.value) }}><span className="construction-lesson-choice-index">{index + 1}</span><strong>{choice.mathLines ? <span className="construction-lesson-choice-math-lines" aria-hidden="true">{choice.mathLines.map((line, lineIndex) => <span key={lineIndex}><MathCopy latex={line} /></span>)}</span> : choice.kind === 'math' ? <MathCopy latex={choice.latex ?? choice.value} /> : choice.display ?? choice.value}</strong></button>)}</div>
       </div>}
     </div>
   }

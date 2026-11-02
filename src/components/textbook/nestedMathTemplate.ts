@@ -16,7 +16,8 @@ export type NestedMathChoice = { value: string; latex?: string; kind?: string }
 export type NestedMathPart = { key: string; kind: string; role?: string; choices: NestedMathChoice[] }
 export type NeutralEnvelope = { widthEm: number; heightEm: number; axisEm?: number; choiceWidthsEm?: Record<string, number> }
 export type NestedMathSlot = { key: string; sourceKey?: string; path: string; marker: string; candidateMarker?: string; value?: string; certified: boolean; envelope: NeutralEnvelope }
-export type CompiledNestedMath = { ast: MathTemplateAST; latex: string; html: string; slots: NestedMathSlot[]; rootBreakPaths: string[]; semanticRootBreakPaths: string[]; rootRelation?: { path: string; marker: string; kind: 'symbol' | 'slot' | 'mirror'; partKey?: string }; measurementOnly: boolean; mode: 'interactive' | 'readonly' }
+export type ResolvedNestedPart = { key: string; path: string; value: string; source: 'slot' | 'mirror' }
+export type CompiledNestedMath = { resolvedParts: ResolvedNestedPart[]; ast: MathTemplateAST; latex: string; html: string; slots: NestedMathSlot[]; rootBreakPaths: string[]; semanticRootBreakPaths: string[]; rootRelation?: { path: string; marker: string; kind: 'symbol' | 'slot' | 'mirror'; partKey?: string }; measurementOnly: boolean; mode: 'interactive' | 'readonly' }
 export type CompileNestedMathOptions = {
   template: string; parts: NestedMathPart[]; values?: Record<string, string>; certifiedKeys?: string[]
   mode?: 'interactive' | 'readonly'; envelopes?: Record<string, NeutralEnvelope>; breakAtPath?: string; breakAtPaths?: string[]
@@ -131,7 +132,7 @@ function emitStatic(n: MathTemplateNode, emit: (n: MathTemplateNode) => string):
 }
 export function compileNestedMathTemplate(options: CompileNestedMathOptions): CompiledNestedMath {
   const ast = parseNestedMathTemplate(options.template, options.parts.map(p => p.key)), values = options.values ?? {}, certified = new Set(options.certifiedKeys ?? [])
-  const mode = options.mode ?? 'interactive', parts = new Map<string, NestedMathPart>(), slots: NestedMathSlot[] = [], used = new Set<string>()
+  const mode = options.mode ?? 'interactive', parts = new Map<string, NestedMathPart>(), slots: NestedMathSlot[] = [], resolvedParts: ResolvedNestedPart[] = [], used = new Set<string>()
   for (const part of options.parts) {
     if (parts.has(part.key) || !part.choices.length || new Set(part.choices.map(c => c.value)).size !== part.choices.length) fail('INVALID_PART:' + part.key)
     for (const c of part.choices) renderClosedMath(c.latex ?? c.value)
@@ -198,11 +199,20 @@ export function compileNestedMathTemplate(options: CompileNestedMathOptions): Co
       if (certified.has(node.key) && !chosen) return fail('CERTIFIED_WITHOUT_VALUE:' + node.key)
       if (node.type === 'mirror' && !certified.has(node.key) && !options.neutralReferences) return fail('UNPROVEN_MIRROR:' + node.key)
       const latex = chosen ? emitStatic(parseNestedMathTemplate(chosen.latex ?? chosen.value), n => emitStaticRecursive(n)) : ''
-      if (node.type === 'mirror' && !options.neutralReferences) return markRoot('{' + latex + '}')
+      if (node.type === 'mirror' && certified.has(node.key)) {
+        resolvedParts.push({ key: node.key, path, value: value!, source: 'mirror' })
+        return markRoot(latex)
+      }
       const slotKey = node.type === 'mirror' ? node.key + '-neutral-reference-' + slots.length : node.key
       if (used.has(slotKey)) return fail('DUPLICATE_SLOT:' + slotKey)
       used.add(slotKey)
-      if (mode === 'readonly') { if (!certified.has(node.key)) return fail('UNPROVEN_READONLY:' + node.key); return markRoot('{' + latex + '}') }
+      if (mode === 'readonly' && !certified.has(node.key)) return fail('UNPROVEN_READONLY:' + node.key)
+      // Emit the closed candidate subtree into its actual TeX context. Wrapping
+      // a standalone +/− in an ordinary group would change its operator class.
+      if (certified.has(node.key)) {
+        resolvedParts.push({ key: node.key, path, value: value!, source: 'slot' })
+        return markRoot(latex)
+      }
       const envelope = options.envelopes?.[slotKey] ?? options.envelopes?.[node.key] ?? { widthEm: 44 / 18, heightEm: 44 / 18 }
       if (![envelope.widthEm, envelope.heightEm].every(n => Number.isFinite(n) && n >= 44 / 18 && n < 100)) return fail('INVALID_ENVELOPE')
       const marker = 'NSLOT' + slots.length.toString().padStart(4, '0')
@@ -237,11 +247,13 @@ export function compileNestedMathTemplate(options: CompileNestedMathOptions): Co
   const mathml = mathEnd >= 0 ? rendered.slice(0, mathEnd + 7).replace(/(?:NS(?:LOT|CAND)|NROOTREL)\d{4}/g, '') : ''
   const visibleHtml = rendered.slice(mathEnd >= 0 ? mathEnd + 7 : 0).replace(/(<span[^>]*>)((?:NS(?:LOT|CAND)|NROOTREL)\d{4})(<\/span>)/g, '$1<span class="nested-slot-marker" aria-hidden="true">$2</span>$3')
   const html = mathml + visibleHtml.replace(/(<span class="[^"]*\brule\b[^"]*"[^>]*>)/g, '<span class="nested-zero-baseline" style="display:inline-block;width:0;height:0;vertical-align:baseline"></span>$1')
-  return { ast, latex, html, slots, rootBreakPaths, semanticRootBreakPaths, rootRelation, measurementOnly: Boolean(options.neutralReferences), mode }
+  return { ast, latex, html, slots, resolvedParts, rootBreakPaths, semanticRootBreakPaths, rootRelation, measurementOnly: Boolean(options.neutralReferences), mode }
 }
 /** This output is used only in temporary neutral probes, never for learner display. */
-export function compileNeutralNestedMathTemplate(options: Omit<CompileNestedMathOptions, 'values' | 'certifiedKeys' | 'mode' | 'neutralReferences'>) {
-  return compileNestedMathTemplate({ ...options, neutralReferences: true, values: {}, certifiedKeys: [], mode: 'interactive' })
+export function compileNeutralNestedMathTemplate(options: Omit<CompileNestedMathOptions, 'mode' | 'neutralReferences'>) {
+  const certifiedKeys = options.certifiedKeys ?? []
+  const values = Object.fromEntries(Object.entries(options.values ?? {}).filter(([key]) => certifiedKeys.includes(key)))
+  return compileNestedMathTemplate({ ...options, neutralReferences: true, values, certifiedKeys, mode: 'interactive' })
 }
 function emitStaticRecursive(node: MathTemplateNode): string { return emitStatic(node, emitStaticRecursive) }
 

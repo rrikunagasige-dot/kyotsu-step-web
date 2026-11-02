@@ -69,3 +69,9 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 ## PR135公開承認受領・main反映／G3実行中
 - 本人『いいよ』を直前のPR135 2file main反映/既存Pages公開質問への承認として保存。live identity・main6bc・PR head900644・2files・CI2SUCCESSが一致。Draft解除後expected head900644でmerge、publisher main f4c50963。製品source691d固定。
 - run41454830219開始、固定checkout成功/依存準備中。RUNNINGを公開済み/配信検証合格と呼ばない。次は同run公開前→公開→実配信byte/操作/保護確認→本人総チェック。承認済み局所検査を全再実施する工程へ戻らない。
+
+## G3公開・実配信検証完了／本人総チェック待ち
+- run41454830219は2026-11-02T13:59:22ZにSUCCESS、32step成功。公開前・後の両unit×4幅、保持N08全4幅/旧版r6/legacy、N11全4幅検証が合格。publisher f4c、製品691d、namespace既存のまま。
+- 独立HTTPでsource固定32map/全121asset生byte/2manifest、独立fresh browserで320/1440×N09/N10を照合。初回Chrome直接通信/管理proxy CAエラーは原FAILとして保存し、通常TLSを検証するurllib/GH Chromeとは区別、管理proxyのローカルChrome補助版4/4PASSを非作者Bが再照合。
+- 公開manifest/raw HTTP/GH公式run・全joblog・artifact digest・ブラウザー原結果/画像・非作者報告をevidence/ux05-publicationへ保存。大きい288MB CI artifactは公式digestと期限を記録し、要点の原log/独立証拠をGitで保持。
+- 現在地はFINAL-REVIEW-READY。FINAL_APP_WALKTHROUGH_UX05.mdでN09r8全41/N10r5全45と保持対象を明記し、本人全体実評価を待つ。次は本人評価→事後同型sweep→事例/規則照合/適用条件付き学習→必要条件充足時のみ完結。今回公開承認やCIをGold/fit/正式台帳PASSEDにしない。

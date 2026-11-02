@@ -1,0 +1,44 @@
+# 実配信出所・identity 限定非作者監査 B
+
+結論：SCOPED_HOSTED_IDENTITY_REVIEW_PASS。独立HTTPの保存原証拠と固定候補rawbyteの再照合により、公開URL https://rrikunagasige-dot.github.io/kyotsu-step-web/ が製品source 691d3d160493bf684ca8a31a22476d31d98caeec、publisher f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75 に対応すると確認した。旧db99/6bcを新配信と認定していない。
+
+## 保存証拠の独立照合
+
+- HTTP_VERIFICATION.json SHA256 5ca31d8aab0841683c8e9cf584418ea3067f5b7545c25f3c529923a44c9e0381：PASS、32source/121assets、errors[]。
+- 実配信w046-release.json SHA256 e61db3988d0011a1a0df85f960d141b25e5d1a28a21ac9bad97f9eccc3efc579：HTTP200、元URL/解決URLは同じ公開host/path。保存JSONのshaとHTTP記録が一致。
+- 実配信release.json SHA256 2158b44e6d606939a820385b5da18eaf3b53e49cc550aa33934c43b235b9a2b9：w046 manifest filesのdigestと保存原byteが一致。sourceSHA/workflowSHA/namespaceがW046補助manifestのsourceSHA/publisherSHA/storageKeyと一致。
+- storageKeyは既存 kyotsu-step-gate3-math-20261023。新namespaceを採用していない。
+- 32requiredSourceHashesの全path/hash集合を固定publisher helperの期待集合と独立完全一致照合し、さらに全32をfrozen source rawbyteと照合。
+- filesは121件でrelease.jsonを含む。HTTP結果の全121件path/hash集合がmanifest filesと完全一致し、各HTTP200・解決URLは所定host/path。URLを置き換えたローカル擬似配信を実サイト認定していない。
+- N09 revision8 compiledHash39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33、N10 revision5 compiledHash6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1cをそれぞれfrozen compiledと照合。
+
+初回verify-live.pyの自己申告subset懸念はrootが32map完全一致・121files/index.html/release.json必須へ補修し、読取り確認した。hosted-smoke.mjsも既存namespace定数assertを追加。補助harnessの補修であり製品sourceを変えていない。
+
+## 実操作の証拠との境界
+
+root通知：run41454830219 step21 deploy SUCCESS、step22実公開N0910全asset/4幅操作SUCCESS。ここでGH APIへ再pollは行わず、私の独立認定は上記保存HTTP証拠と出所identityに限定する。独立managed Chrome smokeは別原結果を待つ。監査時点N09両幅PASSの2/4途中であり、暫定全体FAILを完成試験のFAILと解釈しない。
+
+rootはdirect Chrome EMPTY_RESPONSE、proxy経由CA FAILを原保存し、managed ChromeだけのCA trust workaroundで到達経路を補修したと報告。HTTP urllibとGitHub Actions browserは通常TLS検証である。managed Chromeの結果を通常TLS検証の追加成功へ読み替えない。認証情報/proxy値は記録・出力しない。
+
+本監査は公開操作、Git/Store変更、Gold/fit/本人受入の付与を行わない。最終利用URLは上記baseに #/learning/textbook/math-numbers-expressions-n09 または #/learning/textbook/math-numbers-expressions-n10 を付す。W041保持manifestのwork名をW046承認記録と取り違えず、W046の詳細identityは補助manifestで確定する。
+
+## 独立managed browser完成結果の追記
+
+最終BROWSER_SMOKE.json SHA256 7c672fe27287b2640e8bbe686185e632adf43bcbb7831372660160647d9d0cd9 を読取照合：status PASS、N09/320、N09/1440、N10/320、N10/1440の4/4全件PASS。各caseはfresh contextで公開初期→誤答不進行→正答進行を確認し、既存namespace key、KaTeX_Main/Math-Italic loaded、overflowなし/KaTeX error0、JS例外0/HTTP error0/network failure0を記録する。4画像の保存原byteとcase内image sha256も全一致。これは全問の追加再試験や通常TLS経路の追加証明ではない。managed proxy/Chrome CA workaroundの範囲は前記のまま。途中2/4の暫定FAILと初回2transport原FAILは最終4/4PASSで上書き解釈せず、別の出所として保持する。
+
+- n09 320：PASS、image SHA256 d3927b8786698e56e938d1f628fb819c13a8b938a13c686200ceec42517f55b9
+- n09 1440：PASS、image SHA256 6dee3104c2af7cdc5c3a3b2764fb06ae1e92b46ec8ee5e0997a757f4fc8d15bf
+- n10 320：PASS、image SHA256 a8d59d7a0c6ad393dbc62f70b6572fac08cdcdfae1869ff571b00edfc89474d2
+- n10 1440：PASS、image SHA256 10d1b80e31a1f1659b870b984bfdf16aaf741377dcf3d501d0a5effd4acaf3f2
+
+追記時点のGH run41454830219はstep23の保持N08/旧版実配信検査中とのroot通知。公開N0910と独立HTTP/browserの確認完了は記録するが、GH run全体完了PASSを先取りしない。
+
+## GH公開run全体完了の追記
+
+rootが同runの最終状態を確認し、run41454830219はcompleted/success、updated 2026-11-02T13:59:22Z、全32step SUCCESSと報告した。従前の「全体未完了」はこの後着の確定通知で更新する。公開前・後のN0910および保持N08/r6/legacy/N11の実操作検査も全PASSというroot確認を受領した。これはrootのGitHub読取結果に基づく追記で、私が同APIへ再pollして独立取得した結果とは区別する。
+
+run/publisher identityはmerge f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75、実際にcheckout/build/配信された製品sourceは691d3d160493bf684ca8a31a22476d31d98caeecである。runheadと製品sourceSHAを混同しない。独立直接HTTP121asset PASSとmanaged smoke4/4 PASSの保存原証拠は前節のhash付き記録のまま。
+
+root報告の証拠artifact：w046-publication-evidence、id13148480360、約288MB、digest先頭ce760ab9、expiry2027-01-31。pages artifactは約3.7MB。digest全値やartifact ZIP内部を本追記で独立確認したとは呼ばない。rootはfull joblogsの取得成功・保存予定と報告。長期保存はroot担当であり、本レビューではGit/Store/公開操作を行っていない。
+
+最終判定は出所identityと限定監査のPASSであり、利用者の新たなGold/fit採用や追加の本人見た目承認を自動設定しない。

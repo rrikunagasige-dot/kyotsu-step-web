@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：R04既存CODE/意味import→R06→R07全幅/非作者審査→今回範囲G2まで完了。本人『いいよ』でPR135の2files main反映・既存Pages公開を承認済み。expected head900644照合付きmerge後のpublisher main f4c50963、製品source691d固定。現在G3公開run41454830219。次は同run公開前検査→配信→実配信byte/操作・保持unit検証→本人総チェック。RUNNINGをPASS/最終受入にしない。 [承認記録](evidence/ux05-full/PUBLICATION_APPROVAL.json) / [現在地](evidence/ux05-full/PUBLICATION_STATUS.json)。
+- 実質の現在地：R04既存CODE/意味import→R06→R07全幅/非作者審査→今回範囲G2→承認済みG3公開・実配信検証まで完了。publisher main f4c50963、製品source691d固定。run41454830219はSUCCESS、独立HTTP121assets/32source、公開実URLの320/1440×2unitもPASS。現在は **FINAL-REVIEW-READY／本人総チェック待ち**。[本人確認票・実URL](FINAL_APP_WALKTHROUGH_UX05.md) / [配信証拠](evidence/ux05-publication/STATUS.json)。次は本人の実評価→R03事後sweep→R08/L01の条件照合/事例接続→条件充足時Z01。要修正は該当修正へ戻す。公開許可・テストPASSを本人総合受入にしない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 

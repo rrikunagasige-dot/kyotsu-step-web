@@ -1,0 +1,86 @@
+{
+  "HTTP_VERIFICATION.json": {
+    "bytes": 61964,
+    "sha256": "5ca31d8aab0841683c8e9cf584418ea3067f5b7545c25f3c529923a44c9e0381"
+  },
+  "release.json": {
+    "bytes": 37608,
+    "sha256": "2158b44e6d606939a820385b5da18eaf3b53e49cc550aa33934c43b235b9a2b9"
+  },
+  "n09-1440-public-initial.png": {
+    "bytes": 172010,
+    "sha256": "6dee3104c2af7cdc5c3a3b2764fb06ae1e92b46ec8ee5e0997a757f4fc8d15bf"
+  },
+  "hosted-review-b.md": {
+    "bytes": 6041,
+    "sha256": "a6198d2afb510e9faf6dea8cdbb8b99c8df3c569c28913fa9d56ddf2fc5747de"
+  },
+  "n09-320-public-initial.png": {
+    "bytes": 151564,
+    "sha256": "d3927b8786698e56e938d1f628fb819c13a8b938a13c686200ceec42517f55b9"
+  },
+  "verify-live.py": {
+    "bytes": 3931,
+    "sha256": "c907ba6694f350b625e7bcf12778b4dd9be9ce04f2e116c2ff9811986b69ebab"
+  },
+  "GITHUB_RUN.json": {
+    "bytes": 27911,
+    "sha256": "6f6068fbd17a725bb2ce0f32c155140ebcdff7d32caaab513ef02f6b9d83c2bd"
+  },
+  "w046-release.json": {
+    "bytes": 19311,
+    "sha256": "e61db3988d0011a1a0df85f960d141b25e5d1a28a21ac9bad97f9eccc3efc579"
+  },
+  "live-browser-managed.log": {
+    "bytes": 176,
+    "sha256": "03570d0dc38212a00cf3f45f29aff3f8f846bbcf833a594dae3401583bb61105"
+  },
+  "live-browser-proxy.log": {
+    "bytes": 809,
+    "sha256": "1e1878a2f5eba2f7ebc7dc3eab2574e991cced1c3c1199d50371587ae55802dc"
+  },
+  "hosted-smoke.mjs": {
+    "bytes": 5266,
+    "sha256": "2af0196d3d8b35436f6989e38957bbe15e5370c878d2f8e7612c15de9b7e2ba8"
+  },
+  "n10-320-public-initial.png": {
+    "bytes": 120591,
+    "sha256": "a8d59d7a0c6ad393dbc62f70b6572fac08cdcdfae1869ff571b00edfc89474d2"
+  },
+  "live-http.log": {
+    "bytes": 204,
+    "sha256": "995ad0ae442685a131d575d0461fe726832d2c7a1dd833bdfaa8d29e8d27869a"
+  },
+  "BROWSER_SMOKE.json": {
+    "bytes": 4828,
+    "sha256": "7c672fe27287b2640e8bbe686185e632adf43bcbb7831372660160647d9d0cd9"
+  },
+  "n10-1440-public-initial.png": {
+    "bytes": 141163,
+    "sha256": "10d1b80e31a1f1659b870b984bfdf16aaf741377dcf3d501d0a5effd4acaf3f2"
+  },
+  "live-browser.log": {
+    "bytes": 793,
+    "sha256": "d281069e4dd58b98a6dd998c41be58da1906da6ab9eb72ad941335452ae6ee1a"
+  },
+  "DEPLOY_JOB.log": {
+    "bytes": 172248,
+    "sha256": "ac64482ecac05deb013753c831deba6cc3f02d70d1d7d5c4cbf14778a5134012"
+  },
+  "BROWSER_SMOKE_proxy_CA_failure.json": {
+    "bytes": 1117,
+    "sha256": "fd7d0b4a7fbbd4d968a49df8deb0065995e2e8d95c33e75791be361ca1a18a48"
+  },
+  "BROWSER_SMOKE_direct_transport_failure.json": {
+    "bytes": 1101,
+    "sha256": "cd7c693fdac98c522f2fe68dba3a2030b6ed7751260f3726e835cf0ef7871d57"
+  },
+  "UNIT_MANIFEST.json": {
+    "bytes": 14419,
+    "sha256": "223ab846ff7763622311ce27d6b7ce960cabaa07aaa7b804cbb90a42c4f116a2"
+  },
+  "STATUS.json": {
+    "bytes": 1551,
+    "sha256": "8df7c4ee6f63ffbf005cfead1eab5d1eed93016beca04e9e315cedac6c61a835"
+  }
+}

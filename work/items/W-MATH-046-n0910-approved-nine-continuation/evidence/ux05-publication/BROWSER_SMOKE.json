@@ -1,0 +1,153 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "publisherSHA": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "status": "PASS",
+  "scope": "Independent fresh-context public initial/wrong/correct smoke; full hosted playthrough in Actions; not user acceptance",
+  "transport": "Managed HTTPS proxy; Chromium-only CA trust workaround. Native certificate verification remains in Python urllib and GitHub Actions browsers.",
+  "cases": [
+    {
+      "code": "n09",
+      "width": 320,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09",
+      "errors": [],
+      "httpErrors": [],
+      "networkErrors": [],
+      "image": {
+        "path": "/tmp/w046-ux05-hosted/n09-320-public-initial.png",
+        "sha256": "d3927b8786698e56e938d1f628fb819c13a8b938a13c686200ceec42517f55b9"
+      },
+      "state": {
+        "overflow": false,
+        "katexErrors": 0,
+        "fonts": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          }
+        ],
+        "keys": [
+          "math-textbook-nested-v1:@scope:kyotsu-step-gate3-math-20261023:math-numbers-expressions-n09:r8:39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+          "kyotsu-step-gate3-math-20261023"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "code": "n09",
+      "width": 1440,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09",
+      "errors": [],
+      "httpErrors": [],
+      "networkErrors": [],
+      "image": {
+        "path": "/tmp/w046-ux05-hosted/n09-1440-public-initial.png",
+        "sha256": "6dee3104c2af7cdc5c3a3b2764fb06ae1e92b46ec8ee5e0997a757f4fc8d15bf"
+      },
+      "state": {
+        "overflow": false,
+        "katexErrors": 0,
+        "fonts": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          }
+        ],
+        "keys": [
+          "math-textbook-nested-v1:@scope:kyotsu-step-gate3-math-20261023:math-numbers-expressions-n09:r8:39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+          "kyotsu-step-gate3-math-20261023"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "code": "n10",
+      "width": 320,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n10",
+      "errors": [],
+      "httpErrors": [],
+      "networkErrors": [],
+      "image": {
+        "path": "/tmp/w046-ux05-hosted/n10-320-public-initial.png",
+        "sha256": "a8d59d7a0c6ad393dbc62f70b6572fac08cdcdfae1869ff571b00edfc89474d2"
+      },
+      "state": {
+        "overflow": false,
+        "katexErrors": 0,
+        "fonts": [
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size2",
+            "style": "normal"
+          }
+        ],
+        "keys": [
+          "math-textbook-nested-v1:@scope:kyotsu-step-gate3-math-20261023:math-numbers-expressions-n10:r5:6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c",
+          "kyotsu-step-gate3-math-20261023"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "code": "n10",
+      "width": 1440,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n10",
+      "errors": [],
+      "httpErrors": [],
+      "networkErrors": [],
+      "image": {
+        "path": "/tmp/w046-ux05-hosted/n10-1440-public-initial.png",
+        "sha256": "10d1b80e31a1f1659b870b984bfdf16aaf741377dcf3d501d0a5effd4acaf3f2"
+      },
+      "state": {
+        "overflow": false,
+        "katexErrors": 0,
+        "fonts": [
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          }
+        ],
+        "keys": [
+          "math-textbook-nested-v1:@scope:kyotsu-step-gate3-math-20261023:math-numbers-expressions-n10:r5:6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c",
+          "kyotsu-step-gate3-math-20261023"
+        ]
+      },
+      "status": "PASS"
+    }
+  ]
+}

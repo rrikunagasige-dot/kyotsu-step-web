@@ -1,0 +1,6 @@
+page.goto: net::ERR_EMPTY_RESPONSE at https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09
+Call log:
+[2m  - navigating to "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09", waiting until "networkidle"[22m
+
+    at /tmp/w046-ux05-full/hosted-smoke.mjs:4:751
+[{"code":"n09","width":320,"status":"FAIL","failure":"page.goto: net::ERR_EMPTY_RESPONSE at https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09\nCall log:\n\u001b[2m  - navigating to \"https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09\", waiting until \"networkidle\"\u001b[22m\n\n    at /tmp/w046-ux05-full/hosted-smoke.mjs:4:751"}]

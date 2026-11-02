@@ -1,0 +1,23 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "publisherSHA": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "status": "FAIL",
+  "scope": "Independent fresh-context public initial/wrong/correct smoke; full hosted playthrough in Actions; not user acceptance",
+  "cases": [
+    {
+      "code": "n09",
+      "width": 320,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09",
+      "errors": [],
+      "httpErrors": [],
+      "networkErrors": [
+        {
+          "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "failure": "net::ERR_EMPTY_RESPONSE"
+        }
+      ],
+      "status": "FAIL",
+      "failure": "page.goto: net::ERR_EMPTY_RESPONSE at https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09\nCall log:\n\u001b[2m  - navigating to \"https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n09\", waiting until \"networkidle\"\u001b[22m\n\n    at /tmp/w046-ux05-full/hosted-smoke.mjs:4:751"
+    }
+  ]
+}

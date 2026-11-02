@@ -1,12 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: VERIFYING
-Review: UX05-SCOPED-G2-CROSS-VERIFIED / PUBLICATION-APPROVED / G3-IN-PROGRESS
-- 本人『いいよ』（page6b2c4854-bf87-40b8-b3f4-87b3ca4d30dc）をPR135 head900644e0/base main6bcの2file反映・既存Pages公開への明示承認として記録。[承認原文と範囲](evidence/ux05-full/PUBLICATION_APPROVAL.json)。同じ公開承認を聞き直さない。
-- live repo/account/main/PR head/base/2files/check・governance SUCCESSを照合しPR135をexpected head付きmerge。main publisherは `f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75`、製品sourceは `691d3d160493bf684ca8a31a22476d31d98caeec` に固定。
-- [工程図](WORKFLOW_CURRENT.md)：R04→R06→R07→今回範囲G2は完了。現在G3の公開run [41454830219](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41454830219)を実行中。固定checkoutは成功、依存準備中。RUNNINGを公開/配信検証成功と呼ばない。[現在記録](evidence/ux05-full/PUBLICATION_STATUS.json)。
-- 次は既存runの公開前検査→成功時のみPages配信→実配信source/全asset/操作/保持N08・N11確認→本人総チェック。旧R07全1712stateを理由なく再実行したり、既承認UX05/代表細部からやり直したりしない。
-- 旧回答/旧版/namespaceと、正式Store26イベント欠落の本人特例・他Work38件を維持。本人総合受入・正式PASSED/Gold/fitはまだ認定しない。
+Review: UX05-PUBLISHED-AND-HOST-VERIFIED / FINAL-REVIEW-READY / USER-PLAYTHROUGH-PENDING
+- 本人『いいよ』によるPR135公開承認を記録し、head900644e0をmainへ反映。publisher main `f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75`、製品source `691d3d160493bf684ca8a31a22476d31d98caeec`。既存Pagesへの公開は完了した。
+- [公開run41454830219](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41454830219)はSUCCESS/32step成功。N09/N10×4幅の公開前・後のbyte/操作、N08×4幅/旧版r6/legacy、N11×4幅の公開検査もPASS。
+- 独立した実HTTPで32source固定map・全121assets・2manifestのsource/publisher/namespace一致を確認。新しいcontextの320/1440×N09/N10実URL4件も正誤/font/保存namespace/エラー0を確認。管理proxyでのChrome CA補助と原transport FAILを成功へ上書きせず保存。[配信証拠](evidence/ux05-publication/STATUS.json) / [非作者監査](evidence/ux05-publication/hosted-review-b.md)。
+- [工程図](WORKFLOW_CURRENT.md)：R04→R06→R07→今回範囲G2→G3公開・実配信検証は完了。現在は本人総チェック待ち。[本人確認票・実URL](FINAL_APP_WALKTHROUGH_UX05.md)のN09r8全41node/N10r5全45nodeを対象に実評価を受け取る。本人細部OKや公開許可・機械PASSを総合受入にしない。
+- 次：本人「総チェックOK/要修正」の実評価→同sourceの事後同型sweep→事例/既存規則への接続と条件付きR08/L01→全条件を満たした時だけZ01。要修正は修正工程へ戻す。正式Store26イベント欠落の本人特例・他Work38件・Gold/fit未認定を保持する。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

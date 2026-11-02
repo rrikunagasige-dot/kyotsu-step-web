@@ -1,6 +1,6 @@
 # P-W046-PUBLISH-UX05 — 公開承認対象
 
-状態：本人『いいよ』により公開承認済み。PR135をexpected head照合でmerge済み。publisher main f4c50963、製品691d、run41454830219で公開前検査中。本人総合受入は未実施。
+状態：本人『いいよ』により公開承認済み。PR135をmergeしpublisher main f4c50963/source691dを既存Pagesへ公開。run41454830219 SUCCESS、実配信byte・操作/保持確認も完了。本人総合受入待ち。
 
 - [Draft PR #135](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/135)
 - head `900644e0663e8e5f027d2a7827e030182ea2da8c` / base main `6bc54447ef015a2a579a56a5966ceb58a0600d3a`

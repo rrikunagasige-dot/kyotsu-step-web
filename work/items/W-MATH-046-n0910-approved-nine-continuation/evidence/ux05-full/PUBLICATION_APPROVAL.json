@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "user-publication-approval/1",
+  "proposal": "P-W046-PUBLISH-UX05",
+  "work": "W-MATH-046-n0910-approved-nine-continuation",
+  "originalQuote": "いいよ",
+  "sourcePage": "conversation:page-6b2c4854-bf87-40b8-b3f4-87b3ca4d30dc",
+  "directReplyTo": "PR #135の2ファイルをmainへ反映し、既存Pagesへ公開してよいですか。公開後は実配信検証→本人総チェックへ進みます。",
+  "approvedPR": 135,
+  "approvedHead": "900644e0663e8e5f027d2a7827e030182ea2da8c",
+  "expectedBase": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "approvedProductSource": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "approvedPaths": [
+    ".github/workflows/deploy-pages.yml",
+    "tools/release/w046-publish-check.mjs"
+  ],
+  "target": "existing GitHub Pages for rrikunagasige-dot/kyotsu-step-web",
+  "scope": "Merge exact PR and execute existing publication pipeline; verify hosted bytes and operations, then present actual URL for separate user overall review.",
+  "userFinalAppAcceptance": false,
+  "formalStoreReceipt": false,
+  "Gold": false,
+  "fit": false
+}

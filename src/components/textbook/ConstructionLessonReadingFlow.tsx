@@ -63,7 +63,7 @@ function TaggedMathRow({ number, children }: { number?: string; children: ReactN
     window.addEventListener('resize', measure)
     return () => { active = false; observer?.disconnect(); mutationObserver?.disconnect(); window.removeEventListener('resize', measure) }
   }, [number, children])
-  return <div ref={row} className={'construction-lesson-math-row' + (placement.below ? ' construction-lesson-math-row--tag-below' : '')} data-number-placement={number === undefined ? undefined : placement.below ? 'below-final-math-row' : 'final-math-baseline'}>
+  return <div ref={row} className={'construction-lesson-math-row' + (number !== undefined && placement.below ? ' construction-lesson-math-row--tag-below' : '')} data-number-placement={number === undefined ? undefined : placement.below ? 'below-final-math-row' : 'final-math-baseline'}>
     {children}
     {number !== undefined && <span ref={tag} className="construction-lesson-equation-number" style={{ top: placement.top }} aria-label={'式' + number}>({number})<i data-number-baseline="true" /></span>}
   </div>

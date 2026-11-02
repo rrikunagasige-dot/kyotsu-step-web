@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-W046-UX-05",
   "recordedDate": "2026-11-02",
-  "status": "UX05_PROPOSAL_REVIEWED_APPROVAL_PENDING",
+  "status": "UX05_APPROVED_WORKFLOW_CODE_MAPPING_PENDING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -221,11 +221,12 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "REVISE_PROPOSAL_AFTER_USER_DETAIL_FEEDBACK",
+    "currentSubstantiveStage": "UX05_APPROVAL_RECEIVED_R04_CODE_MAPPING_PENDING",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
     "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
-    "missingHistoricalEventsReconstructed": false
+    "missingHistoricalEventsReconstructed": false,
+    "workflowEntry": "WORKFLOW_CURRENT.md"
   },
   "userFeedback": {
     "layout": "Improvement positively evaluated; no blanket acceptance inferred",
@@ -602,8 +603,8 @@
   "activeProposalRequiresRevision": true,
   "plannedRevisionProposal": {
     "id": "P-W046-UX-05",
-    "status": "PROPOSED_READY",
-    "approvedByUser": false,
+    "status": "APPROVED",
+    "approvedByUser": true,
     "implementationStarted": false,
     "proposalPath": "PROPOSAL.md",
     "designCoverage": {
@@ -619,8 +620,9 @@
     "structureCheck": "evidence/ux05-proposal/STRUCTURE_CHECK.json",
     "nonAuthorReview": "evidence/ux05-proposal/REVIEW.md",
     "newProductTestsPerformed": false,
-    "next": "Exact proposal approval, then representative implementation and real-image detailed user review before rollout",
+    "next": "Existing R04 capability/input compatibility check, R05 approval match, then R06 representative implementation",
     "publicSourceUnchanged": "db99a485f857b1aefa7fb738456f36a830514158",
-    "candidateSourceUnchanged": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5"
+    "candidateSourceUnchanged": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+    "approvalEvidence": "evidence/ux05-proposal/APPROVAL.json"
   }
 }

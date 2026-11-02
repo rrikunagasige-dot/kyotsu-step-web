@@ -1,14 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: REVISE-PROPOSAL
-Review: UX05-PROPOSAL-READY / EXPLICIT-APPROVAL-PENDING
-- 本人の依頼により[P-W046-UX-05具体案](PROPOSAL.md)を完成。全86node=25変更/61維持（N09:16/25、N10:9/36）。各変更の完成解法・初期条件・設問・全候補/誤答理由・解放・旧part対応を確定。未知法則は教え、具体的な主判断を生徒に残す。
-- 写真の零積では因数分解と零条件の組を問う。基本逆演算の細分化/or単独採点は廃止。平方中項/相殺交差項/分配式/整数小数部分へ同じ基準を適用し、N09Q08必要計算と比較を保持する。
-- 正答後の44px phantomを除いて通常ASTへ戻し、未回答/部分正答の操作域と状態別plannerを保つ共通修正案。長い条件/相殺組は一候補内のmathLinesで分け、正答後は通常式へ戻す。
-- 旧115part=84同意味保持/31旧版保存、新19→新版103。N09r6→r7/N10r4→r5の厳密移行、全既知旧版/reset/履歴/他unit保護を明記。新判断へ旧回答をaliasしない。
-- [提案構造照合](evidence/ux05-proposal/STRUCTURE_CHECK.json)と[非作者設計審査](evidence/ux05-proposal/REVIEW.md)を保存。これは製品CODE/実画像/移行試験の合格ではない。UX04の旧合格・原FAIL・本人要修正を履歴で保持する。
-- 次は本具体案の明示承認。承認後、写真の代表＋共有表示を実装/検証し、本人の実画像細部確認後に残りへ適用する。main WORK_SYSTEM§11/§12Aの既存ゲートを保持。
-- 製品source66c8007b、公開source db99a485/publisher6bc54447不変。本案の実装/製品試験/main反映/公開/正式Store書込なし。最新Store欠落26イベントの本人特例、別Work既存governance38件を保持し、受理/Gold/fitは創作しない。
+Status: APPROVED
+Review: UX05-APPROVED / WORKFLOW-CODE-MAPPING-BEFORE-PRODUCT-PATCH
+- 再開入口：[工程図・現在地・CODE/AI/審査分担](WORKFLOW_CURRENT.md)。既存の配置図と実装を使用し、未取得の最新Store図や受理receiptを創作しない。
+- 本人が固定UX05を明示承認。[承認原文/対象hash/範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案の再承認は不要。公開/本人細部OK/全体受入を含めない。
+- 次：不足したR04の既存CODE入力・実装・出力/適用条件の照合を補い、R05承認照合→R06写真代表＋共有数式表示→R07検査/非作者審査→本人実画像細部確認。代表確認後に残りへ適用する。
+- 全86node=25変更/61維持、旧115part=84保持/31保管、新19という具体案は不変。案の構造照合/設計審査を製品試験・正式工程PASSと呼ばない。
+- source66c8007b、公開db99a485/publisher6bc54447不変。この記録時点ではUX05製品変更なし。最新Store欠落26イベントの本人特例を保持し、過去の復元・検査をやり直さない。正式Store/main/公開書込・Gold/fitの認定なし。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

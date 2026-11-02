@@ -1,0 +1,14 @@
+{
+  "proposal": "P-W046-UX-05",
+  "approvedByUser": true,
+  "proposalCommit": "3323ed599f621f45ffde4563f92f132cdd387d50",
+  "proposalSHA256": "925cc86fc7381c0db35147b393ce2a8e7c59b7b883f6208c5847d82982e7e9b8",
+  "quote": "好那现在开始我现在同意UX05，然后你后面该怎么做你跟我看",
+  "sourceRef": "conversation:page-7bbd1234-bd88-40cf-baea-05ae63839315",
+  "evidenceType": "conversation_transcribed",
+  "scope": "UX05教材修正・共有数式表示・保存移行保護・候補検証。まず代表、本人細部確認後に残り。",
+  "publicationApproved": false,
+  "learnerQualityAccepted": false,
+  "nativeStoreReceiptCreated": false,
+  "requestForThisTurn": "既存工程図と実CODEに対応させ、承認後の進め方を提示する。"
+}

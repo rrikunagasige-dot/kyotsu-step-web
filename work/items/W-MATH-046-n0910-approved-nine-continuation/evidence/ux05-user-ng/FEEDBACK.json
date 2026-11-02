@@ -35,5 +35,20 @@
   "productEdited": false,
   "publicationChanged": false,
   "formalStoreReceipt": false,
-  "next": "R03 dependency-aware impact audit -> R04 concrete correction proposal; preserve praised derivations and source/progress."
+  "next": "R03 dependency-aware impact audit -> R04 concrete correction proposal; preserve praised derivations and source/progress.",
+  "additionalFeedback": {
+    "sourcePage": "conversation:page-0bd9538c-04c4-416a-9d53-8fbb5cdeb91d",
+    "originalQuote": "你自己看看明明(A+B)的平方我得一个个推，从(A+B)(A+B)=(A+B)A+(A+B)B=A2+AB+AB+B2=A2+2AB+B2。然后从中挖空让他知道怎么去推导。然后你看看文章有没有逻辑，就这几个公式摆着谁看的懂阿，为什么不按照工作流和理念去做东西阿。为什么阿。要用公式推导等等是不是应该是要有逻辑才能做好阿，我不是让你用code什么的去设计了为什么还会这样阿。你有没有认真去做阿。",
+    "confirmedNode": "n09-decimal-method",
+    "affectedDependentNode": "n09-p001-q08-left-square",
+    "cause": "Formula introduction was fixed as an AUTO reference node (7 rows, 0 parts). The semantic steps from square to repeated product, distribution, four terms and collecting cross terms were omitted. Existing CODE received this already collapsed native graph as 1 node=1 step; knowledge=[] did not prove prior mastery. Author and nonauthor adoption assumed the formula was known and accepted the downstream middle-term application as sufficient.",
+    "proseDefect": "Missing causal links: exact decimal square -> rational form -> numerator square -> why 140+1 -> derive square-of-sum -> apply -> return to decimal/comparison.",
+    "requestedLearningSequence": [
+      "(A+B)^2=(A+B)(A+B)",
+      "=(A+B)A+(A+B)B",
+      "=A^2+AB+AB+B^2",
+      "=A^2+2AB+B^2"
+    ],
+    "codeOrPublicationChanged": false
+  }
 }

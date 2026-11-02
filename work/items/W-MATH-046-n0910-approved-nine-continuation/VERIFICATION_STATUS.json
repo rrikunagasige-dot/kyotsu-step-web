@@ -140,8 +140,10 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "Explicit approval of revised P-W046-UX-02 before implementation",
-    "Implement approved UI/17-node pedagogy/layout and semantic migration scope, reverify affected dependencies, nonauthor review, republish exact checked candidate, then actual user evaluation"
+    "Explicit approval of exact P-W046-UX-03 before product implementation",
+    "Implement and verify sqrt125 pilot; authentic GitHub visual review before remaining batch",
+    "Apply approved remaining scope, affected regression and nonauthor review; freeze candidate",
+    "Separate publication gate and exact hosted candidate verification before final actual user evaluation"
   ],
   "protected": {
     "mainWritten": true,
@@ -262,8 +264,11 @@
     "learningActionDesignRetainedNodes": 69
   },
   "revisedProposal": {
-    "id": "P-W046-UX-02",
+    "id": "P-W046-UX-03",
     "status": "PROPOSED_NOT_APPROVED",
+    "path": "PROPOSAL.md",
+    "sha256": "4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5",
+    "supersedes": "P-W046-UX-02",
     "plannedRevisions": {
       "N09": 5,
       "N10": 4
@@ -273,6 +278,27 @@
       "N10": 3
     },
     "implementationStarted": false,
-    "publicationChanged": false
-  }
+    "publicationChanged": false,
+    "approvalScope": "limited implementation and candidate verification; separate publication gate",
+    "pilot": "n10-q02-sign -> n10-02, sqrt125; actual screenshot review before remaining batch",
+    "proposalDocumentCheck": "required sections, 17 detailed node designs, 86-node coverage (17 revised / 69 retained), math delimiters; not product QA"
+  },
+  "revisedProposalHistory": [
+    {
+      "id": "P-W046-UX-02",
+      "status": "SUPERSEDED_INCOMPLETE",
+      "plannedRevisions": {
+        "N09": 5,
+        "N10": 4
+      },
+      "currentRevisionsPreserved": {
+        "N09": 4,
+        "N10": 3
+      },
+      "implementationStarted": false,
+      "publicationChanged": false,
+      "reason": "User identified missing detailed hole/presentation design and canonical proposal format",
+      "supersededBy": "P-W046-UX-03"
+    }
+  ]
 }

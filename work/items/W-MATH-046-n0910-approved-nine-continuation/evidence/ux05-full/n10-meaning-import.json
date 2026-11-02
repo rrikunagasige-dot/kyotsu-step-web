@@ -1,0 +1,276 @@
+{
+  "status": "PASS",
+  "reviews": [
+    {
+      "id": "n10-q10-coefficients",
+      "learnerDecision": "2√2＋5√2を、共通する根号と係数の和を持つ式へ本人がまとめる。係数7だけを問う前に、分配法則の逆の具体適用がある。",
+      "availableInformation": "publicは√8=2√2、√50=5√2を確定済みという条件、2√2＋5√2の行、係数和/根号内加算/係数乗算を区別する四候補。係数を集め終えた式は現在の確定本文へは書かれていない。",
+      "reasonToProceed": "同じ数√2を2個と5個合わせるので、分配法則の逆により(2＋5)√2と表せる。根号内の2は共通単位であり、2＋2へ変える理由はない。",
+      "nextWholeState": "係数和の式を認定した後に、その係数2＋5を計算して7√2とまとめる状態へ進む。二つの操作を一つの穴で自動完了させない。",
+      "misconception": "√(2＋5)は係数を根号内へ混入、(2＋5)√(2＋2)は共通単位の変更、(2×5)√2は和を積へ変更。どれも因子/項順を交換しただけの別解ではない。",
+      "reducedSupportVariant": "共通因子の式生成と初出の必要係数計算を保持する。個々の2/5の写しや、さらに＋一字の小問を追加しない。",
+      "phase": "pre-design",
+      "requestHash": "1b2828f4825cf3f7643bda59c0c4fe12c736701ae67b4d1130d7ffebb938853d",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q11-formula",
+      "learnerDecision": "既習の差平方公式の中項−2ABを、A=√2、B=√3に具体的に対応させ、符号/係数/二因子を含む中項全体を作る。",
+      "availableInformation": "publicの一般公式(A−B)²=A²−2AB＋B²と、(√2−√3)²=(√2)²□＋(√3)²、四つの具体中項候補が利用できる。具体中項は確定行として先に表示されない。",
+      "reasonToProceed": "差の平方の中項は負の2倍の積である。二項を公式のA/Bへ対応させると−2√2√3を導ける。法則名を未知語として当てさせていない。",
+      "nextWholeState": "中項を含む展開式を認定し、各平方と根号積を計算して一問の平方値へまとめる状態へ進む。",
+      "misconception": "−√2√3は交差項二つ分の係数不足、＋2√2√3は差を和と混同、−2√(2＋3)は積ABを根号内加算へ変更。可換順の正しい同値式は誤答として置かれない。",
+      "reducedSupportVariant": "具体的な中項生成を一判断に保ち、−一字だけを選ぶ方式や六段階の符号ドリルへ戻さない。",
+      "phase": "pre-design",
+      "requestHash": "c12a2c72ee8901ab14e48689f1bbca329f223f44b066d21371b058fd09217419",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q13-identity",
+      "learnerDecision": "和と差の積を分配したときに相殺する、具体的な交差項二つの組を作る。組の順序を問わない一つの推論である。",
+      "availableInformation": "publicには(√7＋√2)(√7−√2)、分配法則と和差積を既習として使う条件、短い組の選択欄、一候補内二行の四つの組がある。全展開や平方差の完成行は現在にはない。",
+      "reasonToProceed": "前の√7と後の−√2の積は−√7√2、前の＋√2と後の√7の積は＋√2√7。実数の乗法の交換法則で大きさが等しく、逆符号なので和は0となる。この具体的対応は論理/意味のAI審査であり、全法則の機械証明とは呼ばない。",
+      "nextWholeState": "組を認定後、二つの交差項を含む実展開を示して相殺し、残る(√7)²−(√2)²へ戻る。平方の数値と差はその後の計算に残る。",
+      "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+      "reducedSupportVariant": "組の具体適用を一問とし、−Bを書き写す穴・個々の乗数符号・0入力という基本操作列を増やさない。",
+      "phase": "pre-design",
+      "requestHash": "f1fa29de8f698ebf18e43b2f0fb6a48d1366625cef2a9c21f1b89ac70c8083ef",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-17",
+      "learnerDecision": "ここは新しい採点対象ではなく、前段で非零とした同じ因子を上下へ掛ける必要な途中式を読む。AUTOの結論から新しい本人回答イベントを作らない。",
+      "availableInformation": "publicにはc=√3−√2≠0、元分母√3＋√2>0、同じ因子の分数を掛けた元式と分子/分母をまとめた等式がある。現在partは空配列である。",
+      "reasonToProceed": "非零のcについてc/c=1なので値を保ち、分数の積を分子どうし/分母どうしへまとめられる。非零を未確認のまま仮定していない。",
+      "nextWholeState": "分子√3(√3−√2)と分母の和差積を持つ一つの分数を出発点に、分母計算と分子全体の分配へ進む。次の分子分配の答えまではここで与えていない。",
+      "misconception": "上下へ同じ数を掛ける値保持と、0/0を作ってよいという誤解を区別する。分子だけへ因子を掛ける形ではない。",
+      "reducedSupportVariant": "既認定因子の名前・分母の写し・×一字を独立採点しない。必要な途中式は残し、分子の分配という次の主判断は別に残す。",
+      "phase": "pre-design",
+      "requestHash": "58116c7a8fc8ee7b979ac9f8849bb2e09804e575d51d622adbf763de6891d408",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q19-distribute",
+      "learnerDecision": "分子√3(√3−√2)の括弧全体へ分配法則を適用した式を本人が作る。第二項の符号だけでなく、外の√3が両項へ作用することを問う。",
+      "availableInformation": "publicでは分母は確定済み、対象は分子√3(√3−√2)と明示し、その同じ左辺と未回答の右辺、四つの分配候補が見える。正しい分配の完成行はまだ確定していない。",
+      "reasonToProceed": "既習のa(b−c)=ab−acでa=√3、b=√3、c=√2と対応させ、√3×√3−√3×√2を作れる。原式の差と外側因子を保持する。",
+      "nextWholeState": "分配式を認定後、同じ根号の平方と異なる根号の積を区別して計算し、分子の値を元の分数へ戻す。",
+      "misconception": "第二項へ外の√3を掛けない、差を和へ変える、√2そのものを落とすという各誤概念が候補から区別できる。正しい可換順を誤りにしない。",
+      "reducedSupportVariant": "因子の抽出写しと−1の小問を増やさず、分子全体の分配を一操作に保つ。",
+      "phase": "pre-design",
+      "requestHash": "89a79516421ec8d93f209d4d0d50ec358e565502a51b6020d12e333211d51dad",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-19",
+      "learnerDecision": "第二項の異なる根号の積について、根号内で2×3を計算する既存の必要計算を行う。既認定の平方3は再入力させない。",
+      "availableInformation": "publicには前の分母計算で(√3)²=3、分母=1と確定済みである条件と、√3√3−√3√2=3−√□の行、6/5/3の候補がある。",
+      "reasonToProceed": "非負実数について既に学んだ根号の積の関係を使い、√3√2=√(3×2)とできる。3＋2と混同せず積6を求める。",
+      "nextWholeState": "分子が3−√6とまとまったら、分母1の元の分数へ完全な左辺とともに戻り、同じ一問の有理化結果を得る。",
+      "misconception": "5は根号内加算、3は異なるもう一方の因子2を無視したもの。旧平方3の再回答や、符号だけの別問へはしない。",
+      "reducedSupportVariant": "原認定平方と新しい積計算を分け、必要な一計算を維持する。採点対象を単なる記憶の写しへ変更しない。",
+      "phase": "pre-design",
+      "requestHash": "7ecd3b6e9868a961dee10ba6381a4f27e844f0510eecb7ec04d50607b212a87a",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q20-factor",
+      "learnerDecision": "正の因子を使うと指定された本手順で、2＋√3との積を平方差にできる因子を選び、続いてその正性/非零と値保持の理由を確かめる。",
+      "availableInformation": "publicの初期条件は元分母2＋√3>0、本手順の指定c>0。積(2＋√3)□と、2−√3/2＋√3/√3−2の候補がある。平方4/3や因子の確定表示は現在にはない。",
+      "reasonToProceed": "既習の和と差の積に対応するのは2−√3。√3−2も別の有理化で使えるが、逆符号なので本手順の正因子指定とは分ける。因子を選んだだけでは値保持の非零根拠を完了したことにならない。",
+      "nextWholeState": "選択因子について正の数どうしの平方比較を行い、正性→非零→同じ因子を上下へ掛ける理由を認定する。これらを最初のfactor選択だけでAUTO完了しない。",
+      "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+      "reducedSupportVariant": "正性/非零/理由と初めて必要な平方比較を保護する。因子の文字の写しや基本逆演算の操作列を追加しない。",
+      "phase": "pre-design",
+      "requestHash": "3e5686a5935f23c3db2c00e15fe76856688fccb48544feb53a85266db1201e19",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-20",
+      "learnerDecision": "同じ因子を上下へ掛けた分数全体で、分子の差の平方と分母の和差積を区別し、二つの公式に対応する式を作る。",
+      "availableInformation": "publicにはc=2−√3≠0、2²=4と(√3)²=3の前段認定、元の二分数の積と未回答の変形、一分数としての四候補がある。",
+      "reasonToProceed": "分子は同じ差どうしの積なので(2−√3)²。分母は和と差の積なので2²−(√3)²。因子が非零である前提により上下へ同じ因子を掛ける値保持も成立する。",
+      "nextWholeState": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+      "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+      "reducedSupportVariant": "指数2と演算子−だけを別々に採点せず、一つの分数変形へまとめる。後段の分子の具体的中項生成は残す。",
+      "phase": "pre-design",
+      "requestHash": "c3918b5bc152a6c4a07fd676824686a77334daad07ce4771ad4bf4d131b572a3",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q21-expand",
+      "learnerDecision": "前段の平方4/3を使い、差の平方(2−√3)²の符号込み中項全体を新しい具体対象で作る。",
+      "availableInformation": "publicには一般差平方公式、因子の非零比較で認定した2²=4/(√3)²=3、(2−√3)²=4□＋3と−4√3/−2√3/＋4√3/−12の候補がある。中項の確定値は未印字。",
+      "reasonToProceed": "公式の−2ABでA=2、B=√3だから中項は−2×2×√3=−4√3。既認定の平方を使うことと、新対象への公式適用を本人が行うことを区別する。",
+      "nextWholeState": "4−4√3＋3という三項式を認定し、根号を含まない二項をまとめる計算へ進む。平方4/3を再入力した旧記録から、この新しい中項の回答を推定しない。",
+      "misconception": "−2√3はA=2の因子不足、＋4√3は差平方の符号混同、−12は√3を3へ置換。旧K=4という係数回答と新しい−4√3という中項は同じ意味ではない。",
+      "reducedSupportVariant": "一般公式の再証明・P/Qの平方再入力・−一字を増やさず、新しい具体的な中項適用だけを残す。",
+      "phase": "pre-design",
+      "requestHash": "79894328da854bac0a7eee67efe4ddc378f8333e5e51f3edf37bd80aab5add31",
+      "reviewer": "/root/w046_source_review — N10設計/教材の非作者（N09作者、同じmodel/履歴共有）",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentの本文・条件・現在式・候補から具体的な主判断を再構成し、単純な符号/写し穴への分解や主判断のAUTO化がないことを確認。原作者の理由欄や私有expectedを可視情報として用いない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの可視JSON審査であり、実DOM/三状態の寸法・括弧・操作・実fontの合格はR07同一sourceの実画像/幾何へ渡す。"
+        }
+      ],
+      "scope": "N10可視情報からの非作者意味審査。数理CODE候補値照合の範囲を超える法則の機械証明や、実画像・本人受入は主張しない。",
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false,
+      "automaticAcceptance": false,
+      "status": "PASS"
+    }
+  ],
+  "automaticAcceptance": false
+}

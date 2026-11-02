@@ -1,0 +1,832 @@
+{
+  "status": "PASS",
+  "reviews": [
+    {
+      "id": "n10-q10-coefficients",
+      "reasonToProceed": "同じ数√2を2個と5個合わせるので、分配法則の逆により(2＋5)√2と表せる。根号内の2は共通単位であり、2＋2へ変える理由はない。",
+      "misconception": "√(2＋5)は係数を根号内へ混入、(2＋5)√(2＋2)は共通単位の変更、(2×5)√2は和を積へ変更。どれも因子/項順を交換しただけの別解ではない。",
+      "reducedSupportVariant": "共通因子の式生成と初出の必要係数計算を保持する。個々の2/5の写しや、さらに＋一字の小問を追加しない。",
+      "phase": "post-fix",
+      "requestHash": "85ce436a8116bda7e2055eef631066311f20c57a3bc0bc1ea58f52fb02ad3f3c",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "初期は共通因子を集める式全体の空欄と四候補。完了は(2＋5)√2の式のあと係数7の計算へ続き、同じ根号を保つ主判断が単なる7入力の前にある。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "係数和の式を認定した後に、その係数2＋5を計算して7√2とまとめる状態へ進む。二つの操作を一つの穴で自動完了させない。",
+      "findings": [
+        {
+          "problemId": "n10-q10-coefficients",
+          "stepId": "n10-q10-coefficients::ux05-collect",
+          "state": "complete",
+          "quoteOrMathRef": "n10-q10-coefficients::ux05-collect",
+          "reason": "旧ba2eの初期tag-below状態が、式番号の移動後も40px paddingとして完了行へ残った。新691dの同一行の実画像で過剰な余白の解消を確認した。",
+          "affectedRefs": [
+            "n10-q10-coefficients::ux05-collect",
+            "n10-q10-coefficients",
+            "TaggedMathRow"
+          ],
+          "resolution": "VERIFIED_FIXED",
+          "evidenceRefs": [
+            "n10-q10-coefficients-complete-image",
+            "n10-q10-coefficients-complete-geometry"
+          ],
+          "originalDisposition": "REVISE",
+          "originalSource": "ba2e1d8b00c7d7eb113cb9d828ec8b495adcf444",
+          "fixedSource": "691d3d160493bf684ca8a31a22476d31d98caeec"
+        }
+      ],
+      "reviewRows": [
+        {
+          "rowId": "n10-q10-coefficients::ux05-collect",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "初期は共通因子を集める式全体の空欄と四候補。完了は(2＋5)√2の式のあと係数7の計算へ続き、同じ根号を保つ主判断が単なる7入力の前にある。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は 2\\sqrt2+5\\sqrt2={collectedExpressionUX05}",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "共通根号を保った係数和の式を、次の係数2＋5の必要計算に使う。",
+          "misconception": "√(2＋5)は係数を根号内へ混入、(2＋5)√(2＋2)は共通単位の変更、(2×5)√2は和を積へ変更。どれも因子/項順を交換しただけの別解ではない。",
+          "prosePlacement": "初期の式番号下置きは空欄/候補を妨げない。691d完了画像では行間の40px残留が消え、collect→sumの同じ導出が通常間隔でつながる。",
+          "quoteOrMathRef": "n10-q10-coefficients::ux05-collect",
+          "evidenceRefs": [
+            "n10-q10-coefficients-initial-image",
+            "n10-q10-coefficients-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q10-coefficients::ux05-collect",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期は共通因子を集める式全体の空欄と四候補。完了は(2＋5)√2の式のあと係数7の計算へ続き、同じ根号を保つ主判断が単なる7入力の前にある。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は 2\\sqrt2+5\\sqrt2={collectedExpressionUX05}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "共通根号を保った係数和の式を、次の係数2＋5の必要計算に使う。",
+          "misconception": "√(2＋5)は係数を根号内へ混入、(2＋5)√(2＋2)は共通単位の変更、(2×5)√2は和を積へ変更。どれも因子/項順を交換しただけの別解ではない。",
+          "prosePlacement": "初期の式番号下置きは空欄/候補を妨げない。691d完了画像では行間の40px残留が消え、collect→sumの同じ導出が通常間隔でつながる。",
+          "quoteOrMathRef": "n10-q10-coefficients::ux05-collect",
+          "evidenceRefs": [
+            "n10-q10-coefficients-complete-image",
+            "n10-q10-coefficients-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q10-coefficients::ux05-sum",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期は共通因子を集める式全体の空欄と四候補。完了は(2＋5)√2の式のあと係数7の計算へ続き、同じ根号を保つ主判断が単なる7入力の前にある。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は =(2+5)\\sqrt2={coefficient}\\sqrt2",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "7√2を元の二根号の和の結論として使う。別問題へ根拠なしに同じ係数を運ばない。",
+          "misconception": "√(2＋5)は係数を根号内へ混入、(2＋5)√(2＋2)は共通単位の変更、(2×5)√2は和を積へ変更。どれも因子/項順を交換しただけの別解ではない。",
+          "prosePlacement": "初期の式番号下置きは空欄/候補を妨げない。691d完了画像では行間の40px残留が消え、collect→sumの同じ導出が通常間隔でつながる。",
+          "quoteOrMathRef": "n10-q10-coefficients::ux05-sum",
+          "evidenceRefs": [
+            "n10-q10-coefficients-complete-image",
+            "n10-q10-coefficients-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "初期は共通因子を集める式全体の空欄と四候補。完了は(2＋5)√2の式のあと係数7の計算へ続き、同じ根号を保つ主判断が単なる7入力の前にある。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "初期の式番号下置きは空欄/候補を妨げない。691d完了画像では行間の40px残留が消え、collect→sumの同じ導出が通常間隔でつながる。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q11-formula",
+      "reasonToProceed": "差の平方の中項は負の2倍の積である。二項を公式のA/Bへ対応させると−2√2√3を導ける。法則名を未知語として当てさせていない。",
+      "misconception": "−√2√3は交差項二つ分の係数不足、＋2√2√3は差を和と混同、−2√(2＋3)は積ABを根号内加算へ変更。可換順の正しい同値式は誤答として置かれない。",
+      "reducedSupportVariant": "具体的な中項生成を一判断に保ち、−一字だけを選ぶ方式や六段階の符号ドリルへ戻さない。",
+      "phase": "post-fix",
+      "requestHash": "3dd7ab31bf065adff6d4fe569540c2f067caeb640122df8cad9c0cdfd7fdd8e5",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "一般差平方公式を見ながら、符号と係数と二根号の因子を含む中項全体を作る。未回答は44pxの操作域、完了は−2√2√3という通常の項へ戻り、−一字の小問ではない。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "中項を含む展開式を認定し、各平方と根号積を計算して一問の平方値へまとめる状態へ進む。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-q11-formula::ux05-middle",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "一般差平方公式を見ながら、符号と係数と二根号の因子を含む中項全体を作る。未回答は44pxの操作域、完了は−2√2√3という通常の項へ戻り、−一字の小問ではない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は (\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "中項を含む展開式を認定し、各平方と根号積を計算して一問の平方値へまとめる状態へ進む。",
+          "misconception": "−√2√3は交差項二つ分の係数不足、＋2√2√3は差を和と混同、−2√(2＋3)は積ABを根号内加算へ変更。可換順の正しい同値式は誤答として置かれない。",
+          "prosePlacement": "320では元の平方と次行の展開を等号でつなぐ。根号/括弧の意味を保ち、完了に回答枠の伸び残りはない。一般公式もtyped mathで表示され、本文折返しによる符号の消失はない。",
+          "quoteOrMathRef": "n10-q11-formula::ux05-middle",
+          "evidenceRefs": [
+            "n10-q11-formula-initial-image",
+            "n10-q11-formula-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q11-formula::ux05-middle",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "一般差平方公式を見ながら、符号と係数と二根号の因子を含む中項全体を作る。未回答は44pxの操作域、完了は−2√2√3という通常の項へ戻り、−一字の小問ではない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "中項を含む展開式を認定し、各平方と根号積を計算して一問の平方値へまとめる状態へ進む。",
+          "misconception": "−√2√3は交差項二つ分の係数不足、＋2√2√3は差を和と混同、−2√(2＋3)は積ABを根号内加算へ変更。可換順の正しい同値式は誤答として置かれない。",
+          "prosePlacement": "320では元の平方と次行の展開を等号でつなぐ。根号/括弧の意味を保ち、完了に回答枠の伸び残りはない。一般公式もtyped mathで表示され、本文折返しによる符号の消失はない。",
+          "quoteOrMathRef": "n10-q11-formula::ux05-middle",
+          "evidenceRefs": [
+            "n10-q11-formula-complete-image",
+            "n10-q11-formula-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "一般差平方公式を見ながら、符号と係数と二根号の因子を含む中項全体を作る。未回答は44pxの操作域、完了は−2√2√3という通常の項へ戻り、−一字の小問ではない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "320では元の平方と次行の展開を等号でつなぐ。根号/括弧の意味を保ち、完了に回答枠の伸び残りはない。一般公式もtyped mathで表示され、本文折返しによる符号の消失はない。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q13-identity",
+      "reasonToProceed": "前の√7と後の−√2の積は−√7√2、前の＋√2と後の√7の積は＋√2√7。実数の乗法の交換法則で大きさが等しく、逆符号なので和は0となる。この具体的対応は論理/意味のAI審査であり、全法則の機械証明とは呼ばない。",
+      "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+      "reducedSupportVariant": "組の具体適用を一問とし、−Bを書き写す穴・個々の乗数符号・0入力という基本操作列を増やさない。",
+      "phase": "post-fix",
+      "requestHash": "95f1362144db8a27261bae9d719f7793aa3d5fa9f972d3b0f472a8ed6270230b",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "組を認定後、二つの交差項を含む実展開を示して相殺し、残る(√7)²−(√2)²へ戻る。平方の数値と差はその後の計算に残る。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-q13-identity::ux05-problem",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は (\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "組を認定後、二つの交差項を含む実展開を示して相殺し、残る(√7)²−(√2)²へ戻る。平方の数値と差はその後の計算に残る。",
+          "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+          "prosePlacement": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。",
+          "quoteOrMathRef": "n10-q13-identity::ux05-problem",
+          "evidenceRefs": [
+            "n10-q13-identity-initial-image",
+            "n10-q13-identity-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q13-identity::ux05-pair",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は 相殺する交差項の組：{cancellingPairUX05}",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "組を認定後、二つの交差項を含む実展開を示して相殺し、残る(√7)²−(√2)²へ戻る。平方の数値と差はその後の計算に残る。",
+          "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+          "prosePlacement": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。",
+          "quoteOrMathRef": "n10-q13-identity::ux05-pair",
+          "evidenceRefs": [
+            "n10-q13-identity-initial-image",
+            "n10-q13-identity-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q13-identity::ux05-problem",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "組を認定後、二つの交差項を含む実展開を示して相殺し、残る(√7)²−(√2)²へ戻る。平方の数値と差はその後の計算に残る。",
+          "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+          "prosePlacement": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。",
+          "quoteOrMathRef": "n10-q13-identity::ux05-problem",
+          "evidenceRefs": [
+            "n10-q13-identity-complete-image",
+            "n10-q13-identity-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q13-identity::ux05-expand",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "負と正の交差項が同じ大きさであることを確認し、相殺して平方差へ戻す。",
+          "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+          "prosePlacement": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。",
+          "quoteOrMathRef": "n10-q13-identity::ux05-expand",
+          "evidenceRefs": [
+            "n10-q13-identity-complete-image",
+            "n10-q13-identity-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q13-identity::ux05-cancel",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は =(\\sqrt7)^2-(\\sqrt2)^2",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "残った(√7)²と(√2)²の平方値と差を計算する次の段階へ使う。",
+          "misconception": "両方正/両方負の組は相殺しない。平方項二つの組はそもそも異なる項どうしを掛けた交差項ではない。正しい組の順を交換した別解は誤答にしていない。",
+          "prosePlacement": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。",
+          "quoteOrMathRef": "n10-q13-identity::ux05-cancel",
+          "evidenceRefs": [
+            "n10-q13-identity-complete-image",
+            "n10-q13-identity-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "元の和差積と、相殺する具体交差項の組の四候補が初期に見える。組の順序は問わず一つの候補の中で二行表示。完了後に展開と相殺を出すので、主たる相殺判断を先にAUTO提示しない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "足場の選択buttonは完了後消え、通常の展開式へ戻る。320の展開は等号と和の意味境界で折り返し、根号の内部や同じ候補を別buttonへ分断しない。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-17",
+      "reasonToProceed": "非零のcについてc/c=1なので値を保ち、分数の積を分子どうし/分母どうしへまとめられる。非零を未確認のまま仮定していない。",
+      "misconception": "上下へ同じ数を掛ける値保持と、0/0を作ってよいという誤解を区別する。分子だけへ因子を掛ける形ではない。",
+      "reducedSupportVariant": "既認定因子の名前・分母の写し・×一字を独立採点しない。必要な途中式は残し、分子の分配という次の主判断は別に残す。",
+      "phase": "post-fix",
+      "requestHash": "e39b115aa24366280863f1e2f7364fe05c10aa5c75c25962c9d4769b046c5a8c",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "ここは前段の非零認定を使う値保持の途中式で、現在partはない。分子/分母をまとめることを新しい生徒回答として捏造せず、次の分子分配判断は残す。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "分子√3(√3−√2)と分母の和差積を持つ一つの分数を出発点に、分母計算と分子全体の分配へ進む。次の分子分配の答えまではここで与えていない。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-17::ux05-fraction",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "ここは前段の非零認定を使う値保持の途中式で、現在partはない。分子/分母をまとめることを新しい生徒回答として捏造せず、次の分子分配判断は残す。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は \\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "分子√3(√3−√2)と分母の和差積を持つ一つの分数を出発点に、分母計算と分子全体の分配へ進む。次の分子分配の答えまではここで与えていない。",
+          "misconception": "上下へ同じ数を掛ける値保持と、0/0を作ってよいという誤解を区別する。分子だけへ因子を掛ける形ではない。",
+          "prosePlacement": "実画像は上下へ同じ非零因子を掛けた一つの分数変形を示す。通常の分数/根号/括弧で、空の操作欄や認定メモを重ねない。",
+          "quoteOrMathRef": "n10-17::ux05-fraction",
+          "evidenceRefs": [
+            "n10-17-complete-image",
+            "n10-17-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "ここは前段の非零認定を使う値保持の途中式で、現在partはない。分子/分母をまとめることを新しい生徒回答として捏造せず、次の分子分配判断は残す。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "実画像は上下へ同じ非零因子を掛けた一つの分数変形を示す。通常の分数/根号/括弧で、空の操作欄や認定メモを重ねない。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q19-distribute",
+      "reasonToProceed": "既習のa(b−c)=ab−acでa=√3、b=√3、c=√2と対応させ、√3×√3−√3×√2を作れる。原式の差と外側因子を保持する。",
+      "misconception": "第二項へ外の√3を掛けない、差を和へ変える、√2そのものを落とすという各誤概念が候補から区別できる。正しい可換順を誤りにしない。",
+      "reducedSupportVariant": "因子の抽出写しと−1の小問を増やさず、分子全体の分配を一操作に保つ。",
+      "phase": "post-fix",
+      "requestHash": "337e09e1cc625885b97201c10d4c6df7457c3cb04caeef275f020801903af61a",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "初期は対象を分子√3(√3−√2)と固定して、分配後の式全体を選ぶ。完了は外の√3が両項へ掛かった式であり、片方の符号や−1だけの小問にしない。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "分配式を認定後、同じ根号の平方と異なる根号の積を区別して計算し、分子の値を元の分数へ戻す。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-q19-distribute::ux05-distribute",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "初期は対象を分子√3(√3−√2)と固定して、分配後の式全体を選ぶ。完了は外の√3が両項へ掛かった式であり、片方の符号や−1だけの小問にしない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は \\sqrt3(\\sqrt3-\\sqrt2)={distributedNumeratorUX05}",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "分配式を認定後、同じ根号の平方と異なる根号の積を区別して計算し、分子の値を元の分数へ戻す。",
+          "misconception": "第二項へ外の√3を掛けない、差を和へ変える、√2そのものを落とすという各誤概念が候補から区別できる。正しい可換順を誤りにしない。",
+          "prosePlacement": "分母から分子へ対象を本文で切り替え、分子の完全左辺と次行=で接続する。括弧/根号は完了後通常寸法で、式番号は可視末尾の導出行に対応する。",
+          "quoteOrMathRef": "n10-q19-distribute::ux05-distribute",
+          "evidenceRefs": [
+            "n10-q19-distribute-initial-image",
+            "n10-q19-distribute-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q19-distribute::ux05-distribute",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期は対象を分子√3(√3−√2)と固定して、分配後の式全体を選ぶ。完了は外の√3が両項へ掛かった式であり、片方の符号や−1だけの小問にしない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は \\sqrt3(\\sqrt3-\\sqrt2)={distributedNumeratorUX05}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "分配式を認定後、同じ根号の平方と異なる根号の積を区別して計算し、分子の値を元の分数へ戻す。",
+          "misconception": "第二項へ外の√3を掛けない、差を和へ変える、√2そのものを落とすという各誤概念が候補から区別できる。正しい可換順を誤りにしない。",
+          "prosePlacement": "分母から分子へ対象を本文で切り替え、分子の完全左辺と次行=で接続する。括弧/根号は完了後通常寸法で、式番号は可視末尾の導出行に対応する。",
+          "quoteOrMathRef": "n10-q19-distribute::ux05-distribute",
+          "evidenceRefs": [
+            "n10-q19-distribute-complete-image",
+            "n10-q19-distribute-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "初期は対象を分子√3(√3−√2)と固定して、分配後の式全体を選ぶ。完了は外の√3が両項へ掛かった式であり、片方の符号や−1だけの小問にしない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "分母から分子へ対象を本文で切り替え、分子の完全左辺と次行=で接続する。括弧/根号は完了後通常寸法で、式番号は可視末尾の導出行に対応する。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-19",
+      "reasonToProceed": "非負実数について既に学んだ根号の積の関係を使い、√3√2=√(3×2)とできる。3＋2と混同せず積6を求める。",
+      "misconception": "5は根号内加算、3は異なるもう一方の因子2を無視したもの。旧平方3の再回答や、符号だけの別問へはしない。",
+      "reducedSupportVariant": "原認定平方と新しい積計算を分け、必要な一計算を維持する。採点対象を単なる記憶の写しへ変更しない。",
+      "phase": "post-fix",
+      "requestHash": "ca11d5a71267eaa9f05d35a90cd008e60fd496270c3a38e4d848dc322318b7e1",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "既認定平方3を本文で再利用し、異なる根号の積に必要な2×3だけを本人が計算する。完了では分子の結果を元の分数へ戻し、値を同一の対象として接続する。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "分子が3−√6とまとまったら、分母1の元の分数へ完全な左辺とともに戻り、同じ一問の有理化結果を得る。",
+      "findings": [
+        {
+          "problemId": "n10-19",
+          "stepId": "n10-19::ux05-product",
+          "state": "complete",
+          "quoteOrMathRef": "n10-19::ux05-product",
+          "reason": "旧ba2eの初期tag-below状態が、式番号の移動後も40px paddingとして完了行へ残った。新691dの同一行の実画像で過剰な余白の解消を確認した。",
+          "affectedRefs": [
+            "n10-19::ux05-product",
+            "n10-19",
+            "TaggedMathRow"
+          ],
+          "resolution": "VERIFIED_FIXED",
+          "evidenceRefs": [
+            "n10-19-complete-image",
+            "n10-19-complete-geometry"
+          ],
+          "originalDisposition": "REVISE",
+          "originalSource": "ba2e1d8b00c7d7eb113cb9d828ec8b495adcf444",
+          "fixedSource": "691d3d160493bf684ca8a31a22476d31d98caeec"
+        }
+      ],
+      "reviewRows": [
+        {
+          "rowId": "n10-19::ux05-product",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "既認定平方3を本文で再利用し、異なる根号の積に必要な2×3だけを本人が計算する。完了では分子の結果を元の分数へ戻し、値を同一の対象として接続する。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は \\sqrt3\\sqrt3-\\sqrt3\\sqrt2=3-\\sqrt{ {inside} }",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "分子の根号積の結果を、分母1の元分数へ完全左辺付きで戻す。",
+          "misconception": "5は根号内加算、3は異なるもう一方の因子2を無視したもの。旧平方3の再回答や、符号だけの別問へはしない。",
+          "prosePlacement": "691d完了ではproduct→元分数returnの間の余分な40pxがなくなった。元分数の完全左辺があるため、分子の補助式と元分数を偽の等号で結ばない。",
+          "quoteOrMathRef": "n10-19::ux05-product",
+          "evidenceRefs": [
+            "n10-19-initial-image",
+            "n10-19-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-19::ux05-product",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "既認定平方3を本文で再利用し、異なる根号の積に必要な2×3だけを本人が計算する。完了では分子の結果を元の分数へ戻し、値を同一の対象として接続する。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は \\sqrt3\\sqrt3-\\sqrt3\\sqrt2=3-\\sqrt{ {inside} }",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "分子の根号積の結果を、分母1の元分数へ完全左辺付きで戻す。",
+          "misconception": "5は根号内加算、3は異なるもう一方の因子2を無視したもの。旧平方3の再回答や、符号だけの別問へはしない。",
+          "prosePlacement": "691d完了ではproduct→元分数returnの間の余分な40pxがなくなった。元分数の完全左辺があるため、分子の補助式と元分数を偽の等号で結ばない。",
+          "quoteOrMathRef": "n10-19::ux05-product",
+          "evidenceRefs": [
+            "n10-19-complete-image",
+            "n10-19-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-19::ux05-return",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "既認定平方3を本文で再利用し、異なる根号の積に必要な2×3だけを本人が計算する。完了では分子の結果を元の分数へ戻し、値を同一の対象として接続する。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は \\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{3-\\sqrt6}{1}=3-\\sqrt6",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "有理化した元の分数が3−√6と結論したことを保持する。次の別問題の分数へ偽の等式で連結しない。",
+          "misconception": "5は根号内加算、3は異なるもう一方の因子2を無視したもの。旧平方3の再回答や、符号だけの別問へはしない。",
+          "prosePlacement": "691d完了ではproduct→元分数returnの間の余分な40pxがなくなった。元分数の完全左辺があるため、分子の補助式と元分数を偽の等号で結ばない。",
+          "quoteOrMathRef": "n10-19::ux05-return",
+          "evidenceRefs": [
+            "n10-19-complete-image",
+            "n10-19-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "既認定平方3を本文で再利用し、異なる根号の積に必要な2×3だけを本人が計算する。完了では分子の結果を元の分数へ戻し、値を同一の対象として接続する。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "691d完了ではproduct→元分数returnの間の余分な40pxがなくなった。元分数の完全左辺があるため、分子の補助式と元分数を偽の等号で結ばない。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q20-factor",
+      "reasonToProceed": "既習の和と差の積に対応するのは2−√3。√3−2も別の有理化で使えるが、逆符号なので本手順の正因子指定とは分ける。因子を選んだだけでは値保持の非零根拠を完了したことにならない。",
+      "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+      "reducedSupportVariant": "正性/非零/理由と初めて必要な平方比較を保護する。因子の文字の写しや基本逆演算の操作列を追加しない。",
+      "phase": "post-fix",
+      "requestHash": "798d2f31e6ffa81a86abb9b48503fcaeec0a245f355b7097833fc91afb8a20af",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "選択因子について正の数どうしの平方比較を行い、正性→非零→同じ因子を上下へ掛ける理由を認定する。これらを最初のfactor選択だけでAUTO完了しない。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-q20-factor::ux05-factor",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は (2+\\sqrt3)\\bigl({factor}\\bigr)",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "選択因子について正の数どうしの平方比較を行い、正性→非零→同じ因子を上下へ掛ける理由を認定する。これらを最初のfactor選択だけでAUTO完了しない。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-factor",
+          "evidenceRefs": [
+            "n10-q20-factor-initial-image",
+            "n10-q20-factor-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-factor",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (2+\\sqrt3)\\bigl({factor}\\bigr)",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "選択因子について正の数どうしの平方比較を行い、正性→非零→同じ因子を上下へ掛ける理由を認定する。これらを最初のfactor選択だけでAUTO完了しない。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-factor",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-square-left",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は 2^2={positiveComparisonLeftSquareUX05}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "この2²=4を、正の2と√3の平方比較の左値へ使う。初期の因子選択だけでこの値を完成扱いにしない。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-square-left",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-square-root",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (\\sqrt3)^2={positiveComparisonRootSquareUX05}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "平方根の定義による(√3)²=3を右値へ使い、後のq21でもこの認定resultを参照する。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-square-root",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-compare",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は 2^2={mirror:positiveComparisonLeftSquareUX05}>{mirror:positiveComparisonRootSquareUX05}=(\\sqrt3)^2,\\quad2>0,\\ \\sqrt3>0",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "2>0、√3>0と平方4>3から2>√3を得て、差2−√3の正性へ接続する。平方値比較だけで非零の理由を飛ばさない。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-compare",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-sign",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は 2-\\sqrt3{factorSign}0",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "確定した2−√3>0から、掛ける因子cが0でないことへ進む。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-sign",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-nonzero",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は c\\ne0",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "c≠0をc/c=1の値保持へ使い、上下へ同じ因子を掛ける操作の理由をつなぐ。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-nonzero",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q20-factor::ux05-reason",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は この変形で式の値を保って有理化できるのは、{reason}。",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "非零と分母積の有理性の理由がまとまったので、次は元分数の上下へその因子を掛ける。",
+          "misconception": "2＋√3では和の平方となり中項が残る。√3−2を「数学的に使えない」と断言せず、指定された正の手順と異なると扱う。",
+          "prosePlacement": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。",
+          "quoteOrMathRef": "n10-q20-factor::ux05-reason",
+          "evidenceRefs": [
+            "n10-q20-factor-complete-image",
+            "n10-q20-factor-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "初期に正の因子を使う本手順と別解を区別し、因子を選ぶ主判断を残す。完了では平方4/3・正性・非零・値保持の理由が順に認定され、factorだけで他の検証を飛ばさない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "初期の未回答因子は中立の大きい括弧/操作域を保ち、完了の二因子は通常の括弧へ縮まる。証明の比較行は意味境界で改行、c≠0の直後に理由が連続する。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-20",
+      "reasonToProceed": "分子は同じ差どうしの積なので(2−√3)²。分母は和と差の積なので2²−(√3)²。因子が非零である前提により上下へ同じ因子を掛ける値保持も成立する。",
+      "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+      "reducedSupportVariant": "指数2と演算子−だけを別々に採点せず、一つの分数変形へまとめる。後段の分子の具体的中項生成は残す。",
+      "phase": "post-fix",
+      "requestHash": "05ebbcd770c5dd8ec5a31c064c5091367048a84b3409946bd4319d25bb4ee745",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-20::ux05-start",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は \\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+          "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+          "prosePlacement": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。",
+          "quoteOrMathRef": "n10-20::ux05-start",
+          "evidenceRefs": [
+            "n10-20-initial-image",
+            "n10-20-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-20::ux05-form",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は ={rationalisedFractionUX05}",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+          "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+          "prosePlacement": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。",
+          "quoteOrMathRef": "n10-20::ux05-form",
+          "evidenceRefs": [
+            "n10-20-initial-image",
+            "n10-20-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-20::ux05-start",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は \\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+          "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+          "prosePlacement": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。",
+          "quoteOrMathRef": "n10-20::ux05-start",
+          "evidenceRefs": [
+            "n10-20-complete-image",
+            "n10-20-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-20::ux05-form",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は ={rationalisedFractionUX05}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "分母へ確定平方4/3を代入し、分子全体の平方を保持した分数へ進む。続く分子中項はさらに本人が作り、完成解法一括当てにはしない。",
+          "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+          "prosePlacement": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。",
+          "quoteOrMathRef": "n10-20::ux05-form",
+          "evidenceRefs": [
+            "n10-20-complete-image",
+            "n10-20-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-20::ux05-known-squares",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は =\\frac{(2-\\sqrt3)^2}{4-3}",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "確定平方を代入した分母4−3へ戻り、分子の差平方の中項は次に本人が作る。",
+          "misconception": "分子を平方差にする、分母を平方和にする、分子へもう一因子を掛け忘れる誤概念を四候補が区別する。",
+          "prosePlacement": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。",
+          "quoteOrMathRef": "n10-20::ux05-known-squares",
+          "evidenceRefs": [
+            "n10-20-complete-image",
+            "n10-20-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "分子の差どうしの積と分母の和差積を区別し、分数全体へ対応する公式を本人が選ぶ。分母平方を既認定4/3へ代入した後も、分子中項を次に本人へ残す。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "未回答の全分数を一つの操作として扱い、完了後は通常の分子平方/分母平方差と4−3へ戻る。同一分数の等式鎖であり、括弧や根号の44px残りはない。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    },
+    {
+      "id": "n10-q21-expand",
+      "reasonToProceed": "公式の−2ABでA=2、B=√3だから中項は−2×2×√3=−4√3。既認定の平方を使うことと、新対象への公式適用を本人が行うことを区別する。",
+      "misconception": "−2√3はA=2の因子不足、＋4√3は差平方の符号混同、−12は√3を3へ置換。旧K=4という係数回答と新しい−4√3という中項は同じ意味ではない。",
+      "reducedSupportVariant": "一般公式の再証明・P/Qの平方再入力・−一字を増やさず、新しい具体的な中項適用だけを残す。",
+      "phase": "post-fix",
+      "requestHash": "92cb69f989c3a61317b844a4b133b46ec234c133cb4e5f60c61fd16947f55d22",
+      "reviewer": "/root/w046_source_review — N10教材/設計・共有rendererの非作者（N09作者、同じmodel/履歴共有）。実public/原画像を読取。",
+      "learnerDecision": "初期に一般公式と既認定4/3を示し、具体的な中項全体を未回答にする。完了は−4√3の符号込み中項で、旧P/Q/Kの単純な再入力や−だけの回答ではない。",
+      "availableInformation": "source691dの320初期/完了の実画像（AUTOは完了一枚）を実見し、可視本文/条件/現在式/候補と34assetのhashを照合。作者理由欄や私有expectedを可視根拠にしない。",
+      "nextWholeState": "4−4√3＋3という三項式を認定し、根号を含まない二項をまとめる計算へ進む。平方4/3を再入力した旧記録から、この新しい中項の回答を推定しない。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n10-q21-expand::ux05-middle",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に一般公式と既認定4/3を示し、具体的な中項全体を未回答にする。完了は−4√3の符号込み中項で、旧P/Q/Kの単純な再入力や−だけの回答ではない。",
+          "availableInformation": "初期の実画像/可視本文・条件・現在式・候補を用いる。 対象行は (2-\\sqrt3)^2=4{signedMiddleTermUX05}+3",
+          "copyRisk": "この行の候補は未認定の選択肢として並び、確定本文へ正答を先書きしない。",
+          "nextUse": "4−4√3＋3という三項式を認定し、根号を含まない二項をまとめる計算へ進む。平方4/3を再入力した旧記録から、この新しい中項の回答を推定しない。",
+          "misconception": "−2√3はA=2の因子不足、＋4√3は差平方の符号混同、−12は√3を3へ置換。旧K=4という係数回答と新しい−4√3という中項は同じ意味ではない。",
+          "prosePlacement": "元の分子の平方を主語とした行がそのまま通常の三項式へ変わる。初期の操作枠が完了に残らず、通常括弧/根号/指数で読める。",
+          "quoteOrMathRef": "n10-q21-expand::ux05-middle",
+          "evidenceRefs": [
+            "n10-q21-expand-initial-image",
+            "n10-q21-expand-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n10-q21-expand::ux05-middle",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "初期に一般公式と既認定4/3を示し、具体的な中項全体を未回答にする。完了は−4√3の符号込み中項で、旧P/Q/Kの単純な再入力や−だけの回答ではない。",
+          "availableInformation": "完了の実画像と認定後の可視行を用いる。 対象行は (2-\\sqrt3)^2=4{signedMiddleTermUX05}+3",
+          "copyRisk": "認定後の式であることをpublic currentのcorrect/valueと実画像で確認。未回答時へ同じ完成行を逆流させない。",
+          "nextUse": "4−4√3＋3という三項式を認定し、根号を含まない二項をまとめる計算へ進む。平方4/3を再入力した旧記録から、この新しい中項の回答を推定しない。",
+          "misconception": "−2√3はA=2の因子不足、＋4√3は差平方の符号混同、−12は√3を3へ置換。旧K=4という係数回答と新しい−4√3という中項は同じ意味ではない。",
+          "prosePlacement": "元の分子の平方を主語とした行がそのまま通常の三項式へ変わる。初期の操作枠が完了に残らず、通常括弧/根号/指数で読める。",
+          "quoteOrMathRef": "n10-q21-expand::ux05-middle",
+          "evidenceRefs": [
+            "n10-q21-expand-complete-image",
+            "n10-q21-expand-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "初期に一般公式と既認定4/3を示し、具体的な中項全体を未回答にする。完了は−4√3の符号込み中項で、旧P/Q/Kの単純な再入力や−だけの回答ではない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "元の分子の平方を主語とした行がそのまま通常の三項式へ変わる。初期の操作枠が完了に残らず、通常括弧/根号/指数で読める。 対象のMEASURED/18px/overflow falseと実source-bound geometryを確認。"
+        }
+      ],
+      "scope": "指定320の9request/31row-stateの非作者意味/表示/操作審査。1440と全四幅の実結果は別補足で確認し、この応答だけで本人受入/公開/Goldにしない。",
+      "automaticAcceptance": false,
+      "formalProof": false,
+      "proofStatus": "AI_ARGUMENT_REVIEWED",
+      "status": "PASS"
+    }
+  ],
+  "automaticAcceptance": false
+}

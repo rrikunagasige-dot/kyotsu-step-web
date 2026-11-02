@@ -1,0 +1,23 @@
+{
+  "id": "W046-UX05-stale-tag-space",
+  "status": "VERIFIED_FIXED",
+  "sourceBefore": "ba2e1d8b00c7d7eb113cb9d828ec8b495adcf444",
+  "sourceAfter": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "rootCause": "When a new math row became the final row, the former last row lost its equation tag but retained placement.below state and its 40px padding class.",
+  "affectedConfirmed": [
+    "n10-q10-coefficients",
+    "n09-p001-q08-left-square",
+    "n09-p001-q08-right-square"
+  ],
+  "generalFix": "Only apply tag-below padding while an equation number is present.",
+  "regression": "Every native reading math row across every actual initial/wrong/filled/auto/history state: no equation tag => no below class and padding-bottom zero.",
+  "pedagogyChange": false,
+  "oldEvidenceRetained": true,
+  "evidence": [
+    "render-review-a.md",
+    "render-review-b.md",
+    "n09-full-layout-import.json",
+    "n10-full-layout-import.json"
+  ],
+  "untaggedRowsChecked": 6520
+}

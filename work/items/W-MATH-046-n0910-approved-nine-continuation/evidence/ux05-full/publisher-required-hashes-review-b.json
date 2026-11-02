@@ -1,0 +1,167 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "method": "read-only SHA256 comparison against fixed workspace; not workflow execution",
+  "status": "PASS",
+  "files": [
+    {
+      "path": "package.json",
+      "expected": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",
+      "actual": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "expected": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006",
+      "actual": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006"
+    },
+    {
+      "path": "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+      "expected": "b19b87e143db7db3f838cc9740745e2d4b2afa236775dbe8a11829c0ef5dd959",
+      "actual": "b19b87e143db7db3f838cc9740745e2d4b2afa236775dbe8a11829c0ef5dd959"
+    },
+    {
+      "path": "src/components/textbook/NestedConstructionMath.tsx",
+      "expected": "1bd91a39e382fe73fffd67170fb3fc7be8beec4e36f53002f3f6f14baf6dce9e",
+      "actual": "1bd91a39e382fe73fffd67170fb3fc7be8beec4e36f53002f3f6f14baf6dce9e"
+    },
+    {
+      "path": "src/components/textbook/nestedMathGeometry.ts",
+      "expected": "bd1eab249c57ac8308327b1cacc27e928a94b2dcf29d56087d53de12c5c12256",
+      "actual": "bd1eab249c57ac8308327b1cacc27e928a94b2dcf29d56087d53de12c5c12256"
+    },
+    {
+      "path": "src/components/textbook/nestedMathTemplate.ts",
+      "expected": "446db868ff28c0036cb9c0ec1b3954c82fbe495510e418876f28693ab9042633",
+      "actual": "446db868ff28c0036cb9c0ec1b3954c82fbe495510e418876f28693ab9042633"
+    },
+    {
+      "path": "src/domain/nestedLesson.ts",
+      "expected": "090c6c7dd9a24173f5accb9aee48b8786e344933fc8555fe791494af5b919f09",
+      "actual": "090c6c7dd9a24173f5accb9aee48b8786e344933fc8555fe791494af5b919f09"
+    },
+    {
+      "path": "src/domain/nestedMigration.ts",
+      "expected": "3c56c6fc4362b68e64629c2729666cc23d2a12f6eb3e7952472e10f583ad5a09",
+      "actual": "3c56c6fc4362b68e64629c2729666cc23d2a12f6eb3e7952472e10f583ad5a09"
+    },
+    {
+      "path": "src/domain/nestedLessonStorage.ts",
+      "expected": "892b205b7f3f47fbca1a3c13cff98fbd42aadb32fe844329708fbb46a21099cc",
+      "actual": "892b205b7f3f47fbca1a3c13cff98fbd42aadb32fe844329708fbb46a21099cc"
+    },
+    {
+      "path": "src/domain/textbookSchema.ts",
+      "expected": "2bf2a9ee9383f6c8069295b11b0069a76d37438fca2e7af81a0105cd14acf114",
+      "actual": "2bf2a9ee9383f6c8069295b11b0069a76d37438fca2e7af81a0105cd14acf114"
+    },
+    {
+      "path": "src/pages/N0910RevisionPage.tsx",
+      "expected": "547e81a490a736cba6af8a3b5cf4b766f9be61b667ba8c3af0ca64ea69f8ad49",
+      "actual": "547e81a490a736cba6af8a3b5cf4b766f9be61b667ba8c3af0ca64ea69f8ad49"
+    },
+    {
+      "path": "src/pages/N0910ArchivePage.tsx",
+      "expected": "b3c38ef0f66c5322b7aa85deab8f0b578e6a004483214fc0321ec4ddfabd0cd6",
+      "actual": "b3c38ef0f66c5322b7aa85deab8f0b578e6a004483214fc0321ec4ddfabd0cd6"
+    },
+    {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "expected": "211ccd4fa65e77c0d30ce5ded8b5e51d4e2c0da8ff8d4d6baeeea822900abed5",
+      "actual": "211ccd4fa65e77c0d30ce5ded8b5e51d4e2c0da8ff8d4d6baeeea822900abed5"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+      "expected": "d0820e4d7d795d9c16bde659fe1b58105f0cb364760d5352dd1e87f654a4dcb3",
+      "actual": "d0820e4d7d795d9c16bde659fe1b58105f0cb364760d5352dd1e87f654a4dcb3"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+      "expected": "ec66a8247aeeab32684e92868db78a2fff346fb286669a974646c76c0ad75f71",
+      "actual": "ec66a8247aeeab32684e92868db78a2fff346fb286669a974646c76c0ad75f71"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n0910CandidatePins.json",
+      "expected": "e8b29eaae2c442eaa1cf05cef00d88da21287587fd3027fa12ad8b46a0f7dc1f",
+      "actual": "e8b29eaae2c442eaa1cf05cef00d88da21287587fd3027fa12ad8b46a0f7dc1f"
+    },
+    {
+      "path": "src/components/textbook/construction-lesson-reading.css",
+      "expected": "c0580689710aebdd458fdef015b70fbc563372f6da6622da4d1bc78cd76f53a0",
+      "actual": "c0580689710aebdd458fdef015b70fbc563372f6da6622da4d1bc78cd76f53a0"
+    },
+    {
+      "path": "src/domain/compiledNestedLesson.ts",
+      "expected": "a2c64fef736e78e0f12df3c50fe2d8c710b83e0b9cfa96f6f1f8d819a453054d",
+      "actual": "a2c64fef736e78e0f12df3c50fe2d8c710b83e0b9cfa96f6f1f8d819a453054d"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09Revision5.json",
+      "expected": "d517c524d835149c504188228b3da6f898abc60e597828b42d2807a29b436fe8",
+      "actual": "d517c524d835149c504188228b3da6f898abc60e597828b42d2807a29b436fe8"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10Revision4.json",
+      "expected": "7b36a44d76ba627a192cdcbae3751715a6c628d6a1d2ba94d2bc87a6e7f1d9a2",
+      "actual": "7b36a44d76ba627a192cdcbae3751715a6c628d6a1d2ba94d2bc87a6e7f1d9a2"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09Lesson.ts",
+      "expected": "e773703cd34374fc6e72937f432b7f5f23eead43b3d3d3d2abf94b4bb9497d05",
+      "actual": "e773703cd34374fc6e72937f432b7f5f23eead43b3d3d3d2abf94b4bb9497d05"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10Lesson.ts",
+      "expected": "b42fe52ed0e50faa1d39f7dbecbf91bf616babe81e56a57419483e4d642dbacb",
+      "actual": "b42fe52ed0e50faa1d39f7dbecbf91bf616babe81e56a57419483e4d642dbacb"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09ConstructionCompiledR4.json",
+      "expected": "b36753fa12a5aca2523f510075918694db8b0afc1aa35bad646477f45f9015bb",
+      "actual": "b36753fa12a5aca2523f510075918694db8b0afc1aa35bad646477f45f9015bb"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10ConstructionCompiledR3.json",
+      "expected": "b271f90586aa4c5e83dc9bcdc9e3752a5cb244c62a064d4aa2a713760293f94d",
+      "actual": "b271f90586aa4c5e83dc9bcdc9e3752a5cb244c62a064d4aa2a713760293f94d"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json",
+      "expected": "0152153cf8f11d38ab099003b655527e151a0a403cb5e967138a51d73b1c9ecb",
+      "actual": "0152153cf8f11d38ab099003b655527e151a0a403cb5e967138a51d73b1c9ecb"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n0910Ux05Migration.json",
+      "expected": "87b845986a50202926dfe5ce94b08d17539df57809090dd6bce455282824034a",
+      "actual": "87b845986a50202926dfe5ce94b08d17539df57809090dd6bce455282824034a"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09Revision8.json",
+      "expected": "e5c39dd71989ab5a3bf787ac60f508750084e8d9619ced3d54a0ba8bc9be2962",
+      "actual": "e5c39dd71989ab5a3bf787ac60f508750084e8d9619ced3d54a0ba8bc9be2962"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10Revision5.json",
+      "expected": "29be27d2115894da8265b08c07b5ef46524b8856c17608c0b75055e8e0556487",
+      "actual": "29be27d2115894da8265b08c07b5ef46524b8856c17608c0b75055e8e0556487"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09ConstructionCompiledR5.json",
+      "expected": "c9a881c4d4a27dfc9ebcd218fa25aeb094d02486d5cc4da3bcedae099f6fc05b",
+      "actual": "c9a881c4d4a27dfc9ebcd218fa25aeb094d02486d5cc4da3bcedae099f6fc05b"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09ConstructionCompiledR6.json",
+      "expected": "5b9db2503a303bab5a1c230bafc23d5d133ce3e641cb85c1a93940d5a174e7b2",
+      "actual": "5b9db2503a303bab5a1c230bafc23d5d133ce3e641cb85c1a93940d5a174e7b2"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n09ConstructionCompiledR7.json",
+      "expected": "3e5d6899e66522a039ee27247cd7771fda8e73d6101c613f17afa7b5bfb12b49",
+      "actual": "3e5d6899e66522a039ee27247cd7771fda8e73d6101c613f17afa7b5bfb12b49"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n10ConstructionCompiledR4.json",
+      "expected": "969b3fe063f8ea21f35904812d06b1fd4842961912077811377bb384f92cd41e",
+      "actual": "969b3fe063f8ea21f35904812d06b1fd4842961912077811377bb384f92cd41e"
+    }
+  ]
+}

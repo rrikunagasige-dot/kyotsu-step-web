@@ -1,0 +1,25 @@
+# UX05 full migration browser collector 非作者レビュー A
+
+対象 `/tmp/w046-ux05-full/migration-browser.mjs` SHA256 `f0f5b94badd0c5cf3e45156e60bf7d5dced7ae524dc1115e1a90bddf8d10ab63`。root collectorをAが読取。新runは私から行っていない。
+
+初回15casesで新しいN10pilot同revision別hash→fullR4→R5分岐とstale-key/resetの実操作が不足していたため報告した。補修版はN10pilot一件と、N09sourceR7/targetR8・N10sourceR4/targetR5それぞれのmain reset空/1回答後とstale dedicatedの8件を追加し、24caseへ拡張した。
+
+sourceSHA/expected SHA・前後manifest/最終HEAD・scriptHash、自spawn server、実Main/Math italic font、HTTP/network/abort原記録、served compiledHashを拘束する。未知current hashと未来revisionはalertだけでなく全storage不変を要求する。case合格は実UIの再開/解答と保存JSONを読んで判断し、fixture ledgerを実学習記録や正式Storeイベントとは呼ばない。
+
+新edgeのN09r7/r6/r5/r4 main/dedicated、N10 fullR4 main/dedicated、pilotR4同revision鎖、旧legacy7、未知4、reset8を対象とする。sourceの旧native ledger全体をmain archiveへdeepEqualしてRETIRE原記録も確認し、現行KEEPは全record metadataを照合する。必要な新しい回答数、既存KEEPの再回答禁止、旧版7/6/5/4の試し解答保存byte不変（legacy3は既存cursor差を区別）も持つ。
+
+## 追加補足待ち
+
+resetのonlyInitial早期returnでは、後段のdedicated不変照合を通らない。現在key(c)はnew main resetへ置換が正当なので除外したうえで、旧source/他dedicated keyのbyte不変をreturn前に確認する補足をrootへ依頼した。post-reset ledger.processedEventIdsがnew main ledgerのものと一致することも、旧event復活を避ける確認として併記依頼した。新caseの追加は不要。
+
+上記の小さい保存照合補足の再読取待ち。既存24caseの実結果合格を先取りせず、case/範囲の読取とroot実行結果を分ける。製品・正式Work/Git/Storeは変更していない。
+
+## 追加補足の解決・実結果の限定確認
+
+latest script SHA256 `bbd069face708988235545bf376815a45c580c6f071ef150089490b6fdc7ba79` を読取。onlyInitial早期return前でも、現在key(c)自身を除く旧dedicated byte不変を確認し、reset後processedEventIdsがnew main ledgerのものと一致することをassertする。前記保存照合所見は解決した。
+
+CASE_FILTERはRESULTにfilter/実件数/全件期待24を記録し、正式filterなしrunでは24件をassertする。filterありはDEBUG_ONLYへ分離し、0件や部分成功を全体PASSにしない。こちらの追加coverage所見も解決した。
+
+実行済みsource691dの24case結果は、実行時snapshot `migration-executed.mjs` SHA `0bf24870e0fa0f9c5183f9f7c514a021cb64e3db0a9001730d4295e3be6a216f` とraw RESULT SHA `60e5c1d4ee7539df04958b868ef1bfb7519a7f5ccd353018a92c1455ae717cf4` を別に保存する。最新bbdが実行されたと偽らない。migration-coverage.jsonの既存raw照合は24件/filterなし/同source/同script hashと一致し、rawは全24PASS、errors/HTTP/network/failures空、manifest前後一致を直接確認した。新しい24assertを過去の実行中にretrofitしたとは扱わない。
+
+**SCOPED_MIGRATION_COLLECTOR_REVIEW_PASS。現時点の読取/限定実結果確認に未解決blockerなし。** 正式Store receiptは作らず、G2/公開/本人総合受入の最終判定へ勝手に昇格させない。

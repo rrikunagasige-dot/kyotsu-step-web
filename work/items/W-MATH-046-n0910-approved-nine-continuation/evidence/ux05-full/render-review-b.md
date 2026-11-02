@@ -1,0 +1,30 @@
+# N09 最終実画像・G2範囲審査 B
+
+結論：SCOPED_N09_POST_FIX_REVIEW_PASS。未解決の数学/主判断/先出しのblockerなし。対象source 691d3d160493bf684ca8a31a22476d31d98caeec。N09教材/設計の非作者として判定し、私が作者の共有renderer自体の独立合格はAの審査に委ねる。
+
+## 実見と正式照合
+
+- 320全26原PNGを初期/完成（AUTO2nodeは完成）で実見。正式14request/71rowを全件審査し、既存importはPASS、automaticAcceptance:false。
+- 今回1440全26原PNGも同じnode/stateで全件実見。追加幅manifestを別保存し、正式320 requestHashを変更しない。
+- 390/430は今回手動全画像審査とは呼ばない。既存full native importerの4幅2044測定PASSと区別する。全状態の操作・幾何はroot実施の結果を参照し、私の実見範囲を52画像とする。
+- 正式request SHA256 38375217f5046547214e635857f5651318a80d43929a3254cf3f1d7d0b8619a6
+- 正式response SHA256 d71779b11d5deae6e2d940c879b59d43093f630e099309105a9798d80e524487
+- 320画像manifest SHA256 9d6427d7e5114c7951232e7f060d47e08f94c90f0c2d08b8ecead484da3701aa
+- 1440追加manifest SHA256 c0145797e988eff651cacaf7af6377c87ed5a5073a0dc81772e503bf3f0ead4d
+- full-layout import SHA256 35c92d0a9b127c15c34724516c1499eefe318b0a9a915ba983fad19e1fb27cbd
+
+## 判断
+
+負の平方/負のaの非負平方根、差の符号、絶対値を外す判断と式の整理、Q08の中項の組立てと既存6計算、負数の整数部分候補の棄却と余り、不等号反転、小数部分の式を、対象となる一まとまりの適用・計算として確認した。一般則を先に示しても具体的な計算結果を確定値として先出ししない。Q08の左右完成は整数平方から小数の元式へ完全左辺で復帰し、別量を等号だけでつながない。二つの不等号は一つ目正答の前に二つ目を解放しない。相当する別解を数学的偽とする候補は認めなかった。初期/完成だけで見えない中間候補状態はR04の実public可視状態とfull-state計測を根拠にし、全中間状態を手動画像審査したとはしない。
+
+新1440でも根号/括弧の不自然な伸び残り、消えた選択穴の中立44px枠残り、切れた式番号、候補の欠落を認めない。Q08左右の完成で、旧source ba2eのタグ移動後に残った40pxの空きは新691d画像では解消。数学内容/compiled不変の最小表示補修として原FAILと新結果を区別する。旧記録 r07/first-n09-render-review-b.md を保持する。
+
+320のq07-negation条件末尾の句点だけが折り返す所見はnonblockingとして保持。1440では同所見なし。承認本文を無断短縮しない。
+
+## G2 全nodeとの対応
+
+今回N09全41nodeは、残14CHANGEの実画像審査＋KEEP25/受理済pilot2の完全object保持＋全43part/4幅full native runにより範囲を結合する。41node全部を新たな設計変更や全件手動画像合格と呼ばない。原基準R6では32KEEP+pilotNEW2+remainingNEW9=43、直前R7では34KEEP+NEW9=43であり、退役14は履歴隔離対象で再aliasしない。
+
+protected-impact.json（SHA256 e9b20af3cdac6cefa1c793cd15886b74a397300f5e8a2f54a7cc593509d2899b）はrootが既存workflow.runner.code_operation S20を適用した保護結果。baseline a1b6、candidate691d、protected340fileのPASSと、全86nodeの23変更/63不変（N09残14、N10残9）を記録する。原指摘W046-UX05-main-inference、phase post-fix、sourceとevidence参照を全nodeに結ぶ。impact inventory自体のstatusはNEEDS_AI_REVIEWであり、全86件の自動合格とは扱わない。N09について上記の変更/不変範囲と学習判断を人間相当審査で補い、N10はAの非作者審査へ分担する。形式Store receiptではない。本審査はその報告と各自担当の独立ソース審査を合わせるもので、N10設計作者である私がN10の非作者学習判断合格を代行しない。
+
+公開/本人Gold/fitの承認は本報告から自動付与しない。製品/Store/Git/main/Pagesの変更は本審査で行っていない。

@@ -1,0 +1,13 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux05-release-frozen
+
+ ✓ src/stores/nestedProgressBridge.test.ts (5 tests) 72ms
+ ✓ src/pages/N0910ArchiveReset.test.tsx (1 test) 155ms
+ ✓ src/pages/N0910ArchivePage.test.tsx (13 tests) 1659ms
+   ✓ N09/N10旧版の隔離比較 > N08専用readerの既存cursor namespaceを変更しない  307ms
+
+ Test Files  3 passed (3)
+      Tests  19 passed (19)
+   Start at  21:38:20
+   Duration  8.56s (transform 4.21s, setup 0ms, collect 13.49s, tests 1.89s, environment 3.54s, prepare 589ms)
+

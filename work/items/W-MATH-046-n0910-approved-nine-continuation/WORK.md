@@ -1,12 +1,13 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: VERIFYING
-Review: UX05-REPRESENTATIVE-BLOCK-VISUAL-OK / FULL-R07-IN-PROGRESS
-- 本人『承認继续。』の代表細部OKに続き、残23CHANGE（N09:14/N10:9）を承認案のまま実装。N09r8/43part、N10r5/60part。旧KEEPは意味/全part object一致に限定し、新判断は未回答から再開。
-- 再開入口：[工程図](WORKFLOW_CURRENT.md)。R04既存CODE/14+9意味応答import・R06限定適用は完了。現在R07固定source `691d3d160493bf684ca8a31a22476d31d98caeec`の全幅再測定と非作者画像審査中。次はG2統合監査→公開の具体的承認。
-- 最初の本適用source ba2e1d8bは1712回答状態/4228式実測の既存full-run importerがPASSしたが、実画像でstale式番号余白40pxをN10係数整理とN09小数平方に検出。共通rowの番号有無条件だけ補修。原検査PASSを画像合格へ転用せず、新691dの全幅を再測定している。新320は両unit PASS、旧版/未知版/リセット24ケースも新691dでPASS。
-- 主担当は統合/CODE/保存/実browser/Git。A/Bは相互の教材とroot統合を非作者審査。主図の各工程完了条件で次へ進む。新しい教材判断/穴を自動追加していない。
-- 公開中db99a485/publisher main6bc54447は不変。公開は別具体的承認。正式Store26イベント欠落の本人特例と他Work38件のgovernance未処理を保持。正式PASSED/全体受入/Gold/fitを作らない。
+Review: UX05-R07-AND-SCOPED-G2-CROSS-VERIFIED / PUBLICATION-APPROVAL-PENDING
+- 承認済みUX05の残23CHANGEを実装・検証・非作者監査済み。固定source `691d3d160493bf684ca8a31a22476d31d98caeec`、N09r8/43part・N10r5/60part。代表細部OKの2node、他63node object、旧版/原回答を保持。
+- [工程図と次手](WORKFLOW_CURRENT.md)：R04既存CODE/意味import→R06→R07実画面/意味→今回範囲G2完了。次はG3公開承認。[具体的承認対象](PUBLICATION_UX05.md)はDraft PR #135の2file、head900644e0/base main6bc。CI check/governance SUCCESS。未merge・未公開。
+- [実画面一覧](evidence/ux05-full/REVIEW_GALLERY.html)、[検証と限界](evidence/ux05-full/SUMMARY.json)、[横断監査](evidence/ux05-full/CROSS_BLOCK_AUDIT.md)、[原証拠ZIP](evidence/ux05-full/RAW_EVIDENCE.zip)。4幅1712state/4228式、148回帰+CODE26、移行24、保護340file PASS。A/Bが320/1440計86画像を相互非作者審査。
+- 初回画像で同型40px余白をN09/N10に発見しR06へ戻った。共通一条件補修後、番号無し6520行すべて不要余白0。原REVISE/timeout/importFAILも保存し、テストPASSを画像合格へ読み替えていない。
+- main6bc/公開app db99は不変。本人がこの公開PRを承認後、既存Pagesの公開前検査→公開→実配信byte/操作検証→本人総チェックへ進む。UX05案や代表細部を聞き直さない。
+- 正式Store26イベント欠落の本人特例・他Work38件は不変。正式PASSED、全体最終受入、Gold/fitは認定しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

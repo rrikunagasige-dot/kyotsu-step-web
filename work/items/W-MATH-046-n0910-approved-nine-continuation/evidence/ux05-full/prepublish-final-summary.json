@@ -1,0 +1,25 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "scope": "N0910 built bytes + all four widths; protected N08/N11 existing full unit checks at 320; other widths inherited only by exact protected bytes",
+  "verificationShim": "N11 same existing publisher decode wait in copied verifier; repository source unchanged",
+  "results": [
+    {
+      "name": "n0910",
+      "status": "PASS",
+      "exitCode": 0,
+      "directory": "/tmp/w046-ux05-full/prepublish-final-n0910"
+    },
+    {
+      "name": "n08",
+      "status": "PASS",
+      "exitCode": 0,
+      "directory": "/tmp/w046-ux05-full/prepublish-final-n08"
+    },
+    {
+      "name": "n11",
+      "status": "PASS",
+      "exitCode": 0,
+      "directory": "/tmp/w046-ux05-full/prepublish-final-n11"
+    }
+  ]
+}

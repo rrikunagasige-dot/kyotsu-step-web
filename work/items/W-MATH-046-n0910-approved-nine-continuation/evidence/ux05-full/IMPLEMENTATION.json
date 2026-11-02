@@ -1,0 +1,22 @@
+{
+  "stage": "R06_COMPLETE_R07_PENDING_FROZEN_BROWSER",
+  "proposal": "P-W046-UX-05",
+  "approvalCommit": "c2397e4824973f99293edbacd455eb5f59caaab9",
+  "remainingChangeNodes": 23,
+  "revisions": {
+    "n09": 8,
+    "n10": 5
+  },
+  "compiled": {
+    "n09": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+    "n10": "6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c"
+  },
+  "finiteMath": {
+    "status": "PARTIAL",
+    "failures": 0,
+    "unsupported": 46,
+    "disposition": "Authored mathematical arguments independently reviewed; no formal proof claim"
+  },
+  "formalStoreReceipt": false,
+  "publishAuthorized": false
+}

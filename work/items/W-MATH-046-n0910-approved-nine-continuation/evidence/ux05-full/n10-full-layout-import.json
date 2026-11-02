@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "schemaVersion": "nested-run-validation/1",
+  "findings": [],
+  "measurementCount": 2184,
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "partCount": 60,
+  "layoutHash": "0b8a388a977f319a814d5882179e670024e9a50d833c010950ca4392abdda1ba",
+  "automaticAcceptance": false
+}

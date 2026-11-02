@@ -1,0 +1,27 @@
+# UX05 full N10 R07・G2非作者レビュー A（最終）
+
+対象 source `691d3d160493bf684ca8a31a22476d31d98caeec` / N10r5 compiled `6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c`。
+
+N10教材/設計・共有rendererの非作者Aが、320/1440の変更9nodeの初期・完成画像34枚を実見した（AUTO n10-17は完成のみ）。320の9request/31row-stateにはpublic可視本文/条件/候補とactual DOM geometryを対応し、34assetのhash一致を確認した。1440の17画像も最終実run RESULTの画像hashへ照合した。参照manifestは `n10-images-reviewed-a.json`。
+
+## 主判断・表示の結論
+
+係数和を作る式、具体的な符号込み中項、相殺交差項の組、分子全体の分配、分数全体へ二公式を対応する変形が本人判断として残る。候補選択前の確定本文にその完成値は印字されず、一般則/前結果と未認定の候補を区別できる。−や×一字の基本小問列・分母の写しへ戻していない。q20の必要な初回平方/正性/非零/理由は保護され、q21は認定平方4/3を再利用して新対象の中項を本人が作る。
+
+未回答では中立操作域、完了では通常の根号/括弧/指数/分数へ戻る。相殺組は一候補内で意味境界により二行になり、組の順を交換した正しい別解を誤答にしない。式番号と候補は衝突せず、分子の補助計算から元分数へ完全左辺付きで戻る。原画像と可視情報からの根拠付きAI審査であり、一般法則の全数理機械証明とは呼ばない。
+
+## 初回所見と補修後確認
+
+旧ba2eの320 q10 collect→sumとn10-19 product→returnに、式番号移動後のstale tag-belowによる40px空白を実見しREVISEとした。旧request/原画像はr07のoriginalファイルへ保管した。rootの691d一行補修後、新320と1440の同じ行を実見して通常行間への復帰を確認し、2所見をVERIFIED_FIXEDとして残した。旧REVISEを削除して初めから合格だったとは記さない。
+
+初回既存importは生LaTeXのquoteOrMathRefがJSON byte照合と一致せずROW_REVIEW_QUOTE_NOT_VISIBLEとなった。判断文を変えず実public row.idへ修正し、原FAILを保持した。現在の既存importは9件PASS、31scope全ADOPT。応答はn10-responses-a.jsonでrequestHash/phase/evidenceRefs/2case dispositionsを満たす。
+
+## G2 N10・保存側の統合
+
+N10全45nodeは、変更9の実画像/可視state意味審査と、KEEP36 compiled node objectのR4 snapshotとの完全一致で覆う。KEEP36の全画像を私が新たに実見したとは主張しない。rootの同一source四幅native実runを既存checkNestedRunsが取り込み、60part・全wrong/filled・auto/history・保存reset等、2184math measurements PASS/automaticAcceptance:falseを記録している。私が全操作を再実行したとはしない。
+
+rootのprotected.verify既存S20出力はbaseline a1b6→candidate691dの340file PASSで、記録manifestの全340hashが現ファイルと一致することを直接照合した。impact inventoryは86node中23AFFECTED/63NOT-AFFECTEDで、候補の変更23とpilotを含む保持63へ整合する。私の教材作者範囲N09の独立意味合格はBのレビューに依拠する。
+
+保存/移行はroot adapter/manifestの非作者ソース審査に加え、migration-coverage.jsonとraw RESULT、executed script snapshotのhashを照合した。source691d・実24case全PASS・失敗/JS/HTTP/network全空・manifest前後一致、source/target stale reset空/回答後、N10pilot同revision鎖、未知hash/未来revision、legacy7を含む。RETIRE原ledger archive/KEEP metadataと旧版試し解答隔離を保持する。raw実行scriptは0bf24870のsnapshotで、新しいfilter/24assert補足とは区別し、24件の実施coverageは別既存raw import結果として保持する。
+
+**SCOPED_N10_R07_AND_STORAGE_REVIEW_PASS。読取・実画像範囲で未解決blockerなし。** N08/N11の新built検証や全体G2の最終統合はrootの実結果を待つ。CODE/非作者審査を本人の総合受入、公開許可、Gold/fitへ読み替えない。正式Storeの26イベント欠落特例を保持し、受理receiptや欠落イベントを創作しない。

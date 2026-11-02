@@ -1,0 +1,20 @@
+# UX05 native-run checker 現UI対応 非作者レビュー A
+
+対象hash：
+
+- `tools/textbook/layout/nested-run-measurements.mjs` — `d8811cf73b79ff50222e15942e6c1c49cd114dcb27a94063500e2b66b833cfac`
+- `tools/textbook/tests/nested-native.test.mjs` — `4954deacad656142e69ba9000abfbe4de7329afa7ebcfa5f550bf5d85c0014ec`
+
+担当Aはこのchecker/test変更の非作者。読取範囲で **SCOPED_CHECKER_SOURCE_REVIEW_PASS、blockerなし**。B報告の9unit PASSを私の新実行とは扱わない。
+
+現行readerはterminal memoを描かず、正答済みのownerも現在stageではinteractive modeのまま、認定slotだけが通常ASTになる。修正はこの実契約へ期待値を合わせており、memo/filled readonlyという存在しないUIを要求しない。各packetは実partのowner.stageIdへ束縛し、初期・全wrong・filledは独立したsource-bound snapshotと値で照合する。private expectedをpublic可視状態へ流さない既存snapshot契約も保持する。
+
+nestedPublicLayoutStateは可視行と認定値を使い、未認定のwrong/initial値を除外する。checkNestedRuns側で期待snapshotへpacket state/valueと可視数式/slot/text slot/resolvedParts/rootRelationProofを束縛してから比較するため、wrongでframeを変えたり正答値を計画へ入れる許可にはしない。認定や可視行が変わった後の正当な再計画は別phaseとして許す。
+
+auto auxiliaryは全stage各一packetを要求し、auto-only nodeの本体数式と、全nodeの完了後math extrasを対象にする。historyは最終stageより前の各stageの数式をreadonlyで対象にし、式番号/aliasesを保持する。extrasは実readerと同じ元IDであり、history prefixを勝手に付けない。未知aux kind、stage重複/欠落、historyの件数/現在stage違いを拒否する。
+
+数学の意味/実測を帳尻で合格させる変更はない。四幅/part-state全coverage、compiled/sourceSHA/manifest/script/font hashの形式と一致、HTTP/network失敗、操作keyboard、text 44px、数式18px/MEASURED/overflow、全幾何・slot/AST証明・式番号の検査を保持する。auxiliaryにも実幾何/18px/overflowの検査を通す。
+
+新回帰にはliteral fixtureによるmemoなし/history tag/extra IDの具体期待、wrongとinitialの同layout phase/認定後の別phase、誤stage・旧readonly mode・memo混入・auto stage欠落・未知aux・HTTP失敗の拒否がある。全体的に不完全なsynthetic fixtureをpositive実測証拠と呼ばず、正しい実DOM packetが別途必要であることも明示されている。
+
+exportした期待値helperはcollectorの期待対象列挙用。実measurement packetへ期待template/mode/geometryをコピーして証拠を作ってはいけない。実DOMから読んだ値とchecker側の期待値を別に照合することが、rootのcollector実装審査/本実行で引き続き必要。sourceレビューの了承をR07実browser・G2・本人総合受入や公開許可へ転用しない。

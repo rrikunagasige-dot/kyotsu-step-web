@@ -1,0 +1,191 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "manualView": "view_imageで1440全26原PNGを全件実見。320のformal request/response hashは変更しない追加幅記録。",
+  "reviewer": "/root/w046_render_review",
+  "scope": "N09教材・学習判断の非作者審査。自作共有rendererの独立実装PASSではない。",
+  "images": [
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q02-negative-square-initial.png",
+      "sha256": "7dbeae5a643f98fcd89b841f3473dbad3b3dbdb4a491d5d4fde3080395c244e6",
+      "nodeId": "n09-q02-negative-square",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q02-negative-square-complete.png",
+      "sha256": "2791aaca52aa0a407e5158df7779e28561f9586f95c346338abec33d55539b08",
+      "nodeId": "n09-q02-negative-square",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q03-inside-auto-complete.png",
+      "sha256": "67d71aa693844e2a50bc8d857bbe0dc7105fd8732123c47403498acd4126bf7c",
+      "nodeId": "n09-q03-inside",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q04-negative-initial.png",
+      "sha256": "ed0bd098b2a7e9751d6ffe95518675e945d5e60dd9cddfea8bf247f64f96a46d",
+      "nodeId": "n09-q04-negative",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q04-negative-complete.png",
+      "sha256": "0c811bbda37133b620b0fab894e665b3c950c458e63c308a4b25cfff813b2a43",
+      "nodeId": "n09-q04-negative",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-06-initial.png",
+      "sha256": "3244dbe304ce560e77216d9b142615e8c988c47eca75cc366dff20c6a5442dd0",
+      "nodeId": "n09-06",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-06-complete.png",
+      "sha256": "1ccf4841b0d86886400b774014e4ab6312d86a4a85b774d9a7a1ed763d590c25",
+      "nodeId": "n09-06",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q07-negation-initial.png",
+      "sha256": "f92948289e28d05f83f60eb430000d6a8c5cae532b8a9516f6cdc1b027df15c2",
+      "nodeId": "n09-q07-negation",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q07-negation-complete.png",
+      "sha256": "3a121805866a6af5a0747bddd51c0be6c30cf4a73ab71973b2f8398d822718bd",
+      "nodeId": "n09-q07-negation",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-07-initial.png",
+      "sha256": "e9adb5bde5039626bd2b51b07befb31a5f7f679f5c381d9c32605d0ef727222b",
+      "nodeId": "n09-07",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-07-complete.png",
+      "sha256": "cf7ebe049ba523d183289f6a93b52c02b36360bb88baa5eb0c460890e9ac0bac",
+      "nodeId": "n09-07",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-decimal-method-auto-complete.png",
+      "sha256": "9267fee8785cdb0d7cc0be4b5229e843f1ae154ebf15caf634618141ca567b6a",
+      "nodeId": "n09-decimal-method",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-p001-q08-left-square-initial.png",
+      "sha256": "56f271ced41655d3f93563b32acfdfc911f2d2487cb8e0b78bd871b7fadb6af7",
+      "nodeId": "n09-p001-q08-left-square",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-p001-q08-left-square-complete.png",
+      "sha256": "7c9e82b5f996808884478990370acdc342cd59489b38ea8afe14d00796ef879f",
+      "nodeId": "n09-p001-q08-left-square",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-p001-q08-right-square-initial.png",
+      "sha256": "79aada1bdfcf7d0c349b50f34dc47ebf269a896caa68358b4beb91cde17d0449",
+      "nodeId": "n09-p001-q08-right-square",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-p001-q08-right-square-complete.png",
+      "sha256": "e70941f3e1269f4c92721a747764fe9b498f61f3ece94d86311d600b1dafec69",
+      "nodeId": "n09-p001-q08-right-square",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q10-reject-truncation-initial.png",
+      "sha256": "b4d461f2a2ac564ff8ff3202d6d650c3c4757f71a70c3c8ba03e0820e8e3c2a4",
+      "nodeId": "n09-q10-reject-truncation",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q10-reject-truncation-complete.png",
+      "sha256": "c6a56534a23682d4c633266bad2e6bd95f69209042ca1b0bdc54de03fe64667a",
+      "nodeId": "n09-q10-reject-truncation",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q11-remainder-initial.png",
+      "sha256": "7d14fe12b5a6c9013c464ec1d4a613812d7b0700c1a99017ebca35e9d02c7f79",
+      "nodeId": "n09-q11-remainder",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q11-remainder-complete.png",
+      "sha256": "f327eee3f6163aa4e4539f1518517fd85df606af2a0eb2a775737fde324fdcdf",
+      "nodeId": "n09-q11-remainder",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q13-reverse-initial.png",
+      "sha256": "56fd4e48c2244330db59e8056457e74503008d09dc398c122e5d9f3e18876699",
+      "nodeId": "n09-q13-reverse",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q13-reverse-complete.png",
+      "sha256": "c8eb1a8d2b27c3d8820cb6f82228f878818feaedcf3b6d0dbebd021a88927bcb",
+      "nodeId": "n09-q13-reverse",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q14-positive-remainder-initial.png",
+      "sha256": "7064eebcde286d5d62ae73bf849b9bcfed3801de5d39d676c3a84cf6032bbdd0",
+      "nodeId": "n09-q14-positive-remainder",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q14-positive-remainder-complete.png",
+      "sha256": "60c352e68cad2b45c8900dfb7a038c5abf5c3ff9dfe0d4222a99459b33bc7b19",
+      "nodeId": "n09-q14-positive-remainder",
+      "state": "complete",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q14-negative-remainder-initial.png",
+      "sha256": "4cccb5177ef823213e6f410d50f48da7ca9d04cc47a907d834200847bb02918f",
+      "nodeId": "n09-q14-negative-remainder",
+      "state": "initial",
+      "width": 1440
+    },
+    {
+      "path": "/tmp/w046-ux05-release-browser-n09/1440-n09-q14-negative-remainder-complete.png",
+      "sha256": "b6e8b18f1aa032b19f5697ed9334d5b40acd5a5f410f6f42e1f510abddf77fb9",
+      "nodeId": "n09-q14-negative-remainder",
+      "state": "complete",
+      "width": 1440
+    }
+  ],
+  "findings": []
+}

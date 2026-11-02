@@ -1,0 +1,20 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux05-release-frozen
+
+ ✓ src/domain/nestedLesson.test.ts (9 tests) 14ms
+ ✓ src/domain/nestedLesson.ux05.n10.test.ts (3 tests) 287ms
+ ✓ src/domain/nestedLessonStorage.test.ts (10 tests) 31ms
+ ✓ src/domain/nestedLesson.ux05Full.test.ts (6 tests) 669ms
+ ✓ src/domain/textbookNestedContract.test.ts (18 tests) 661ms
+ ✓ src/domain/nestedLesson.ux05.test.ts (3 tests) 460ms
+ ✓ src/domain/nestedLesson.design.test.ts (13 tests) 1113ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: every authored math row compiles in empty and completed states  436ms
+ ✓ src/domain/nestedMigration.ux05Full.test.ts (4 tests) 271ms
+ ✓ src/domain/nestedMigration.test.ts (63 tests) 3541ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  459ms
+
+ Test Files  9 passed (9)
+      Tests  129 passed (129)
+   Start at  21:36:55
+   Duration  5.23s (transform 2.27s, setup 0ms, collect 5.66s, tests 7.05s, environment 3ms, prepare 1.75s)
+

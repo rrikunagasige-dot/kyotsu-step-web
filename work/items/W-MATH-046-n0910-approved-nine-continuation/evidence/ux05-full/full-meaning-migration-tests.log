@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux05-full
+
+ ✓ src/domain/nestedLesson.ux05.n10.test.ts (3 tests) 149ms
+ ✓ src/domain/nestedLesson.ux05Full.test.ts (6 tests) 307ms
+ ✓ src/domain/nestedMigration.ux05Full.test.ts (4 tests) 215ms
+
+ Test Files  3 passed (3)
+      Tests  13 passed (13)
+   Start at  21:03:54
+   Duration  1.38s (transform 738ms, setup 0ms, collect 1.48s, tests 671ms, environment 3ms, prepare 370ms)
+

@@ -1,0 +1,325 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "compiledHash": "6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c",
+  "rawResultSHA256": "eca11716c0aa227ec99b126f070ddb74659e10f2b997ccca18d3fb9c5f9dc567",
+  "scope": "N10変更9nodeの320/1440初期・完成の実画像34枚。AUTOは完成のみ。",
+  "images": [
+    {
+      "width": 320,
+      "nodeId": "n10-q10-coefficients",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q10-coefficients-initial.png",
+      "sha256": "b810257c5da8c9f1665b48de62dc5295dce3249d1e8e84e3837796beca11e10a",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q10-coefficients",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q10-coefficients-complete.png",
+      "sha256": "666e59ba89897807544d3dc178360f68a3bc7b93beb108a6b1e7dd49192aaf68",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q11-formula",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q11-formula-initial.png",
+      "sha256": "b733cbd8af2a1332103e730796b857354d25545a748bce171e4d49e40ce8d83c",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q11-formula-complete.png",
+      "sha256": "d4ea69627a791679d4191303981ba454c38eb1945ed84d3615bbaae1b0c73504",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q13-identity",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q13-identity-initial.png",
+      "sha256": "a2b318454d2a7d4d31a1f69e3d20808b20ceb877bda8ff5ef70831268513c771",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q13-identity-complete.png",
+      "sha256": "42f21dc2088fd56c106af44a93a69bbd1e35179a1c2dd57407369b2f2ebee213",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-17",
+      "state": "auto-complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-17-auto-complete.png",
+      "sha256": "93861c28a00d9fd18614801a87640ece8cc878d9ba7b95c7822cf611f781afcc",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q19-distribute",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q19-distribute-initial.png",
+      "sha256": "2b01d9934eac546dce43a1aa734424e693746fa5a40d41d3b924600b142ab69a",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q19-distribute",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q19-distribute-complete.png",
+      "sha256": "f626fe6deb9b389a82c9610e7bdcecb777010308b24e27d2a7da7017b528b6f7",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-19",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-19-initial.png",
+      "sha256": "a8a2e808e1c32e075e0209f45b75736e0470d5da822938628da08735963e72b1",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-19",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-19-complete.png",
+      "sha256": "02520a9c26c96fcec2d953fdeea6cd539ef86004176674a3d52be7c80461383b",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q20-factor",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q20-factor-initial.png",
+      "sha256": "3070dc06cce82fdaf54248b9e56d59b8034e6c0b325a9c361b1832edb5725333",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q20-factor",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q20-factor-complete.png",
+      "sha256": "6d85258534711708a1c972137179f9b5b36502cc512c6f5597fe2564cf1ac30f",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-20",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-20-initial.png",
+      "sha256": "d341a4007a51510620b5a7d8bacd009dbc32a34c1feb84967b5a904fcebbbe2e",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-20",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-20-complete.png",
+      "sha256": "7161a985f9d87e33bc4cafb5a98683030849022cbd94828b1bb686dd707e54c2",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q21-expand",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q21-expand-initial.png",
+      "sha256": "67e715b820c7a7d9eeca79fe6fc97fa573b70ef4605af227a99ce4063e7b0ae6",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 320,
+      "nodeId": "n10-q21-expand",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/320-n10-q21-expand-complete.png",
+      "sha256": "6431514f8903405f77493e33049041a354ce6a9f56d6eb3c5d6519eb31ab076c",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q10-coefficients",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q10-coefficients-initial.png",
+      "sha256": "0529a8dcc8422fdf0fbc697815c7e30cdfce0b1e95a06d8be5d1aa86490e5158",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q10-coefficients",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q10-coefficients-complete.png",
+      "sha256": "fb18b1927844b0433641cc2e23a8076407b80e75e965f3a3fcbba4314de6ffc1",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q11-formula",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q11-formula-initial.png",
+      "sha256": "1c32f49821230298681c4786f10772b0726269e320e90beb028521e368e1ca11",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q11-formula-complete.png",
+      "sha256": "f6f300216e2ddaaaa444f5d029aa5c534245063f432b98a7871701eac911d430",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q13-identity",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q13-identity-initial.png",
+      "sha256": "650395fc559e91b216b42d5aef8ca884410f56fede784d223f0dc74bb3f0abb0",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q13-identity-complete.png",
+      "sha256": "72d0b447ffd660789a5535a608ac92079b5fdac3dd85c5f68e89225a7dcb4494",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-17",
+      "state": "auto-complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-17-auto-complete.png",
+      "sha256": "3e7786b6807f0459c0aa2c0b818d4dceb7fc8b6bd8adf548110d8d7dbd887467",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q19-distribute",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q19-distribute-initial.png",
+      "sha256": "ff9c3b8d9416292b0d5705bcf33beb4f994b67a7c4ead437568dddc2fdd7da03",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q19-distribute",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q19-distribute-complete.png",
+      "sha256": "afd2f4f3c5b73ec6c540dd1ddb7bffdb0f994a593b9137951b83cf57399400ca",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-19",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-19-initial.png",
+      "sha256": "2010558fdc023ddf341c5eb670a9f2c5e1333b1170b373f6ad1570a659235875",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-19",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-19-complete.png",
+      "sha256": "2d54cd1021de1260ebe706479de3a9e23ee0548b4267b75a79ee2c895511f9aa",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q20-factor",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q20-factor-initial.png",
+      "sha256": "c2038dc14b9fcc0d68e6fe0b875a8f66b4853aa89172a51ad77d140e1817e0b6",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q20-factor",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q20-factor-complete.png",
+      "sha256": "f4d2f67e09b32e36510ae59c848fb360768c5405c7347321b040a80dfe70adf0",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-20",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-20-initial.png",
+      "sha256": "974245babfe70bf81d166426304aabea696ae3bfeec87dd3f2637c431dc4eb5d",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-20",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-20-complete.png",
+      "sha256": "90ad4a77604a50361b5b51002abf19a4c1029b831689c6bf2eeb0b8c4095f185",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q21-expand",
+      "state": "initial",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q21-expand-initial.png",
+      "sha256": "6808a664773a67094805407276ec2e27b9805ef503ca240c7977ce7eacaa7566",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    },
+    {
+      "width": 1440,
+      "nodeId": "n10-q21-expand",
+      "state": "complete",
+      "path": "/tmp/w046-ux05-release-browser-n10/1440-n10-q21-expand-complete.png",
+      "sha256": "b1cca26d468a8da31a71649ae8a34f23ee433bfa013edbdaee3f90386bbaf8b9",
+      "actuallyInspected": true,
+      "reviewer": "/root/w046_source_review"
+    }
+  ],
+  "initialFinding": {
+    "disposition": "ORIGINAL_REVISE_PRESERVED",
+    "problem": "stale tag-below padding40px",
+    "source": "ba2e1d8b00c7d7eb113cb9d828ec8b495adcf444"
+  },
+  "finalFinding": {
+    "disposition": "VERIFIED_FIXED",
+    "source": "691d3d160493bf684ca8a31a22476d31d98caeec",
+    "evidence": "新320と1440のq10/n10-19完了で通常行間へ戻り、tag無し行の余白残りがないことを実見。"
+  },
+  "independence": "N10教材/rendererの非作者、N09作者。同じmodel/履歴共有。"
+}

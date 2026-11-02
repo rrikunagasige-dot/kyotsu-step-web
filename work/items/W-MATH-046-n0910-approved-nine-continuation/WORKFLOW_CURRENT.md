@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：①既存CODE接続と意味応答import、②承認照合と代表実装、③固定候補R07検証/非作者実画像審査まで完了。④本人細部確認は本人『承認继续。』で **BLOCK-VISUAL-OK**。残り23CHANGEのR04 CODE対応・14+9意味応答importとR06は完了。現在はsource691d3d160493bf684ca8a31a22476d31d98caeecのR07再測定/非作者画像審査→G2。初回sourceba2eの実画像で番号移動後の40px余白を発見し、R06へ戻って番号有無だけ限定補修した。[受領記録](evidence/ux05-full/DETAIL_ACCEPTANCE.json)。新しい要修正があれば原因/具体案へ戻る。source a39bdb8c、実績/限界はevidence/ux05-pilot/SUMMARY.json。CODEのNEEDS_AI_REVIEW原結果とAI importを別に保持する。
+- 実質の現在地：代表細部は本人『承認继续。』でBLOCK-VISUAL-OK。残23CHANGEのR04 CODE対応/23意味応答import→R06→R07全幅実測/非作者画像意味→今回範囲G2まで完了。固定source691d3d160493bf684ca8a31a22476d31d98caeec。原ba2e実画像の同型40px余白をR06共通一条件へ差戻し、新source全幅で解消確認済み。次はG3公開入口の別具体的承認：[PUBLICATION_UX05.md](PUBLICATION_UX05.md)。承認後はPR135 head900644e0/base main6bcを照合→main反映→既存Pages→実配信検証→本人総チェック。UX05案・既確認pilotから再開し直さない。 [完了証拠/限界](evidence/ux05-full/SUMMARY.json)。正式Store状態とは区別する。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 

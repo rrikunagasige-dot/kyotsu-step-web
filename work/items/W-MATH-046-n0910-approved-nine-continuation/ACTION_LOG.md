@@ -58,3 +58,10 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 - 原R04出力NEEDS_AI_REVIEWと非作者14/9応答・採否を分離し、既存solution-review importはPASS/automaticAcceptance:false。finite mathは46unsupported/失敗0をAI根拠で審査し、形式証明とはしない。
 - ba2e sourceで4幅1712状態/4228式を既存full-run layout-validatorへ取り込みPASS。非作者実画像で共通rowの40px余白をN10/N09に確認。PASSを画像合格へ転用せずR06へ差戻し。
 - source691dで番号無しrowにtag-below classを付けない一条件補修。実DOMのtag無しrow余白0検査を追加して全幅再実行中。新320両unitと新source移行24ケースはPASS。G2/公開/本人最終受入はまだ認定しない。
+
+## UX05 R07再検証・修正範囲G2完了／公開承認待ち
+- 固定691dの4幅1712回答state/4228式実測と全11,008row（番号無し6520）の余白検査PASS。148回帰/CODE26、型/lint/build、実移行24case、既存S20保護340fileがPASS。
+- AがN10/保存、BがN09/公開準備を非作者審査。変更23の320/1440全86画像を実見、post-fix102row全ADOPTを既存importへ取り込みPASS/automaticAcceptance:false。KEEP63全object不変と結合して今回範囲G2をCROSS-VERIFIED。
+- 製品build121assets/N0910四幅と保護N08/N11既存320検証PASS。公開PR135はmain6bc起点の2files、head6969af9d。check/governance両CI成功。main/Pages変更なし。公開の具体的承認後はG3実配信→本人総チェックへ進む。Store特例/未受入/Gold非認定は保持。
+
+- 公開workflowの古いW041包括CI断定コメントだけを実績に合わせ訂正。実行YAML/helper/app691dは不変、Bが限定差分/新hashを再確認。PR135最終head900644e0663e8e5f027d2a7827e030182ea2da8cでもcheck/governance SUCCESS、旧head6969の成功記録も保持。main6bcと公開app db99は不変。

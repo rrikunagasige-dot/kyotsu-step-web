@@ -1,0 +1,34 @@
+✔ four widths and three states require fixed image/source/geometry evidence (68.85026ms)
+✔ reject 1.21em regression (1.180876ms)
+✔ reject scale despite apparent basefont (0.544872ms)
+✔ reject moving math center (0.461448ms)
+✔ reject collapsed hit target (0.605901ms)
+✔ reject missing complete state (0.308226ms)
+✔ reject different source (0.521191ms)
+✔ reject no image evidence (8.366265ms)
+✔ reject active prompt retained (0.493207ms)
+✔ reject overflow (1.249399ms)
+✔ reject duplicate state (0.993606ms)
+✔ reject foreign initial row (0.445264ms)
+✔ reject undefined relation (0.750519ms)
+✔ reject wrong gap (1.433853ms)
+✔ reject number points to choice (0.673374ms)
+✔ relation columns compared within group (0.445484ms)
+✔ partial state uses the approved row prefix (0.603248ms)
+✔ n09 native blank and interaction planning must use nested parents without flat interactions (631.864058ms)
+✔ n10 native blank and interaction planning must use nested parents without flat interactions (474.709928ms)
+✔ n09 native novice snapshots use every real part and preserve the runtime frontier (185.878146ms)
+✔ n10 native novice snapshots use every real part and preserve the runtime frontier (225.7149ms)
+✔ nested layout operations reject partial, stale and legacy-axis evidence instead of accepting geometry alone (132.006417ms)
+✔ synthetic all-state labels cannot substitute an unrelated formula for real rows and slots (218.058364ms)
+✔ public layout phases retain neutral frames for wrong choices and replan only after certification or exposure (62.599915ms)
+✔ reader formula contract has no memo, preserves history tags, and does not prefix math extras (1.872767ms)
+✔ full-run importer rejects wrong stage, old filled readonly mode, memo injection and incomplete auto stages (627.070832ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3244.101064

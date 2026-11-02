@@ -1,0 +1,612 @@
+{
+  "status": "PASS",
+  "findings": [],
+  "inventory": [
+    {
+      "nodeId": "n09-q01-positive",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 2,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q01-negative",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-01",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-definition",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 2,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q02-root",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-02",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-boundary",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 2,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q03-inside",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-03",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q04-nonnegative",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-04",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-05",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q06-squares",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q06-order",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-06",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q07-negation",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-07",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 2,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-p001-q08-left-square",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 4,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-p001-q08-right-square",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 4,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-p001-q08-lower-sign",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-p001-q08-upper-sign",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-08",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-09",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "classification": "KEEP_EXPOSITION",
+      "partCount": 0,
+      "sourceBlocks": 2,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q10-reject-truncation",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-10",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q11-remainder",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-11",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q12-lower",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q12-upper",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-12",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q13-reverse",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-13",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q14-positive-integer",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q14-positive-remainder",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q14-negative-integer",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-q14-negative-remainder",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n09-14",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-01",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q02-sign",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-02",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 3,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q03-expand",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-03",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q04-sign",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-04",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q05-denominator",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q05-square",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-05",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q06-sign",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-06",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q07-product",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-07",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q08-factor",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-08",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q09-left",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q09-right",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-09",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q10-coefficients",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-10",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-11",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q12-product",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-12",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-13",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 3,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-14",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q15-factor",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-15",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q16-denominator",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 2,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-16",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q17-factor",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q17-nonzero",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-17",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-18",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 3,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q19-distribute",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-19",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q20-factor",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 5,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-20",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q21-denominator",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q21-expand",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-q21-constants",
+      "classification": "NEW_CONSTRUCTION",
+      "partCount": 1,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    },
+    {
+      "nodeId": "n10-21",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "partCount": 0,
+      "sourceBlocks": 4,
+      "reviewRequired": true
+    }
+  ],
+  "nodeCount": 86,
+  "partCount": 103,
+  "semanticReviewStatus": "NOT_AUTOMATICALLY_PROVEN",
+  "appVerificationStatus": "NOT_RUN"
+}

@@ -1,0 +1,575 @@
+{
+  "status": "PASS",
+  "reviews": [
+    {
+      "id": "n09-q02-negative-square",
+      "phase": "pre-design",
+      "requestHash": "874c3ab4cf10dfad5b3bcaa70686fc6bb489cd55262c4f1b6cfae64ee3ed8bc3",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "負号を含む括弧全体(−√5)²を一つの平方計算として求める。",
+      "availableInformation": "公開行には積の平方、(√a)²=a(a≥0)、現在の(−√5)²と四つの候補がある。5という具体的計算結果は本文の認定値としてまだ出ない。",
+      "reasonToProceed": "(−√5)²=(−1)²(√5)²=1×5=5。負号も平方される。これは定義と実数乗法による値計算であり、限定CODEの対応外の表記を自動証明したとは呼ばない。",
+      "nextWholeState": "回答後に作用範囲を含む完全な導出を表示して元の問いへ戻る。未回答のまま途中結果1×5=5を確定提示しない。",
+      "misconception": "−5は負号を外へ残す、25は√5でなく5を平方する、√5は指数を反映しない誤解。",
+      "reducedSupportVariant": "負数の平方を作用範囲/積符号/値の三問へ再分割せず、元の平方の一計算へまとめる。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q02-root::value:filled:21",
+          "n09-q02-negative-square::signedRootSquareUX05:initial:22"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q03-inside",
+      "phase": "pre-design",
+      "requestHash": "fadeb79098654c9c8fdcd59c511684cd4aef6553f700abec51eff2df35ee2cf3",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "ここに新しい採点判断は置かず、既認定の(−4)²=16を参照して内側を整理する。非負の平方根を選ぶ判断は次nodeへ残す。",
+      "availableInformation": "公開本文は確定済み平方の参照と宣言し、(−4)²=16、√((−4)²)=√16が表示される。public terminalのcertifiedFromはn09-q01-negative-result等を含む。",
+      "reasonToProceed": "同じ(−4)²は既に学習者が確かめた値なので再入力を要求しない。内側の置換は等値だが、平方根記号が示す非負の値を決める操作は別である。",
+      "nextWholeState": "内側16を使い次の平方根の選択へ進む。ここで√16=±4と自動確定したり、平方の再回答を要求しない。",
+      "misconception": "内側が16と分かったことと根号の値が二つあるという混同を分離する。根号自体は非負の一値。",
+      "reducedSupportVariant": "AUTO参照で十分な既出平方はAUTOと明示し、次の概念判断を奪わない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q02-negative-square::signedRootSquareUX05:filled:26",
+          "n09-03::value:initial:27"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q04-negative",
+      "phase": "pre-design",
+      "requestHash": "3bcf60dd02bfadb4bd192e465cca35de9e451afb3b1138582cee430d96f4dc09",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "a<0のとき√(a²)を表す非負の式を選ぶ。",
+      "availableInformation": "公開条件a∈ℝ/a<0と、根号は非負の平方根という教示、√(a²)の穴、−a/a/a²の候補が見える。−a>0という具体判定は本文へ先に出ない。",
+      "reasonToProceed": "a<0なら−a>0で(−a)²=a²。よって非負の平方根の定義から√(a²)=−a。任意のa<0に対する式の判断であり、特殊な値a=−1でa²と−aが一致しても恒等的な選択肢にはならない。",
+      "nextWholeState": "非負の式を選んだ後、符号と平方の根拠を表示して一般のまとめへ戻す。",
+      "misconception": "aは負なので非負の根号値ではない。a²は元の平方であり一般にはその非負平方根ではない。記号aに負の値が入ることと外の負号を混同しない。",
+      "reducedSupportVariant": "−aの符号を単独穴にしてから−aを写す二段階にせず、非負平方根の具体適用を主判断にする。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q04-nonnegative::value:filled:34",
+          "n09-q04-negative::value:initial:35"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-06",
+      "phase": "pre-design",
+      "requestHash": "4d7be689362bebbc957eccec9d59b3216f94cbb8dc1bfd73a701dd0906508bcc",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "既認定の2と√5の大小を使い、差2−√5と0の関係を判断する。",
+      "availableInformation": "node抜粋は差の穴を提示する。補助full public同stageでは2²=4、(√5)²=5、4<5から2<√5が正答認定された前の計算と比較が見える。",
+      "reasonToProceed": "2<√5の両辺から√5を引くと2−√5<0。負の答えを前文へ書いて写させず、認定済み大小を差の符号へ移す判断である。",
+      "nextWholeState": "関係を選んだ後に2−√5<√5−√5=0という根拠を示し、絶対値を外す問題の条件へ使う。",
+      "misconception": ">は元の大小を反転、=は異なる2と√5を等しいとする誤り。",
+      "reducedSupportVariant": "両辺へ何を足すかと0の入力を別小問にせず、差の符号という概念適用を残す。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q06-order::relation:filled:50",
+          "n09-06::differenceRelationUX05:initial:51"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q07-negation",
+      "phase": "pre-design",
+      "requestHash": "7efe618a08c5a84fa6766cf559de5bca90ab9666fb6e916eacdf03af4c9bd23e",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "負と確定した2−√5へ絶対値の定義を適用し、まだ分配せず括弧を残した式を作る。",
+      "availableInformation": "公開条件2−√5<0、|u|の一般cases、√((2−√5)²)=|2−√5|、現在の絶対値の穴がある。具体的な外し方の完成形は未認定の候補内だけ。",
+      "reasonToProceed": "u<0なら|u|=−uなので|2−√5|=−(2−√5)。非負で同じ平方を持つ値となる。absの型を限定CODEが未対応としても、この定義への適用を根拠付きで別審査する。",
+      "nextWholeState": "外した式を確定し、次nodeで括弧を含む負号の作用を一つの式として整理する。",
+      "misconception": "2−√5をそのまま残すと負、−2−√5は第二項の符号を誤る、2+√5は差全体の符号反転にならない。指定は括弧を残す形であり、同値な展開形を数学的偽とはしない。",
+      "reducedSupportVariant": "一般定義は教え、具体的な中身全体を扱う判断を残す。scopeの文字列をそのまま写す穴に戻さない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-06::differenceRelationUX05:filled:54",
+          "n09-q07-negation::absoluteExpressionUX05:initial:55"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-07",
+      "phase": "pre-design",
+      "requestHash": "fce579d312f78122cb60b97245250f3c787acc3ba4d1e7f0ea204965f94cca89",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "確定した−(2−√5)の括弧を外し、根号項が先の形へ整理する。",
+      "availableInformation": "公開初期式は−(2−√5)={expandedExpressionUX05}。前nodeの正答で外側負号を含む式が既認定で、候補は整理後の異なる式。",
+      "reasonToProceed": "−1を両項へ掛けると−2+√5、和の順を変えて√5−2。これは既習分配の具体適用で、外側−1/第二項−√5/各符号を別々に再証明しない。",
+      "nextWholeState": "式の回答後に−(2−√5)=−2+√5=√5−2を表示し元の平方根の値へ接続する。",
+      "misconception": "2−√5は外側の負号を未適用、−2−√5は第二項反転を落とし、2+√5は第一項反転を落とす。−2+√5は同値であり誤答候補に置いていない。",
+      "reducedSupportVariant": "二項の整理を一単位にし、結果を順に写す符号穴の群を増やさない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q07-negation::absoluteExpressionUX05:filled:59",
+          "n09-07::expandedExpressionUX05:initial:60"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-decimal-method",
+      "phase": "pre-design",
+      "requestHash": "2ac6c2f1758935d43a239f2b8ac4ef183a216ed5e3b5ecd599680f1c58957348",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "ここは採点穴を持たない計算準備。小数を分数へ直す一般手順と平方公式の適用を参照し、具体中項と6つの必要計算を後続へ残す。",
+      "availableInformation": "公開行には(A+B)²=A²+AB+BA+B²=A²+2AB+B²、分数平方、1.41=141/100、1.42=142/100、共通の基礎平方19600/1/4/10000がある。1.41²や1.42²の最終値はこのnodeに無い。",
+      "reasonToProceed": "候補を正確な有理数へ直して平方比較する方法を先に教えることは、未知の計算法そのものを当てさせない支援。二つの異なる項の積が二個という一般則を教えて、具体的な140と1/2への適用を次に残す。",
+      "nextWholeState": "次の左右候補では中項の式の構成→その値→三項の和→小数復帰を実施する。準備AUTOを本人が新たに回答したと数えない。",
+      "misconception": "分母100を二乗せず小数桁を誤る、(A+B)²をA²+B²とする、中項を一個にする誤解に対応する。",
+      "reducedSupportVariant": "すべての基礎平方に新しい穴を作らず、承認済みQ08の必要6計算/大小比較は維持する。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-07::expandedExpressionUX05:filled:64",
+          "n09-p001-q08-left-square::middleTermUX05:initial:65"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-p001-q08-left-square",
+      "phase": "pre-design",
+      "requestHash": "24b98a2ea39e88d4c85e0b288b4676f4014cd8815afe25e608e858beb4251014",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "(140+1)²へ和の平方の公式を適用し、中項を作る因子の組を選ぶ。その後の必要計算を自分で進める。",
+      "availableInformation": "公開初期には1.41²=(141/100)²と、(140+1)²=140²+{middleTermUX05}+1²。前の公開準備に一般2ABと共通の基礎平方があり、具体中項の因子の組や280は本文にまだ出ない。",
+      "reasonToProceed": "A=140/B=1なので二つ分の積は2×140×1。その値280、三項合計19600+280+1=19881、10000で割って1.9881と求める。これらは同じ値の写しでなく異なる必要演算である。",
+      "nextWholeState": "中項の構成が正答後にL1の計算を解放し、L2、L3の順に進める。補助整数平方から小数へ戻すときは1.41²を完全左辺にする。",
+      "misconception": "140×1は中項一個分、2×140²は異なる二項の対応を失い、140+1は元の和をそのまま置く誤り。因子の順交換は同値で誤答にしない。",
+      "reducedSupportVariant": "公式の具体適用を一つの中項構成として残し、交差積二個/符号/個数の六段階へ分けない。既存L1/L2/L3は保持。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-07::expandedExpressionUX05:filled:64",
+          "n09-p001-q08-left-square::middleTermUX05:initial:65"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false,
+        "laterPublicSnapshotIds": [
+          "n09-p001-q08-left-square::L2:filled:77"
+        ]
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-p001-q08-right-square",
+      "phase": "pre-design",
+      "requestHash": "33b5f5fafe94b95fd151d0fcdbeeb7f9806850b2494e01c624547f4542196b8a",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "(140+2)²へ同じ公式を転移し、右の候補の中項の因子の組を選ぶ。",
+      "availableInformation": "公開初期には1.42²=(142/100)²と(140+2)²=140²+{middleTermUX05}+2²。補助full viewには左候補の先行計算が認定済みだが右の560/20164/2.0164は初期本文へ出ない。",
+      "reasonToProceed": "A=140/B=2から2×140×2=560。19600+560+4=20164、10000で割って2.0164。左と数字が違う具体的な公式適用・必要計算である。",
+      "nextWholeState": "R1/R2/R3を順に解放し、確定した小数平方を大小比較へ使う。小数へ復帰するときは1.42²を明示する。",
+      "misconception": "140×2は二個分にしていない、2×140²は因子の対応を誤る、140+2は中項の積でない。",
+      "reducedSupportVariant": "左で示した方法を右へ使う転移。既存R1/R2/R3を省かず、一般の公式説明や基礎因子読取りをさらに増やさない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-p001-q08-left-square::L3:filled:81",
+          "n09-p001-q08-right-square::middleTermUX05:initial:82"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false,
+        "laterPublicSnapshotIds": [
+          "n09-p001-q08-right-square::R2:filled:94"
+        ]
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q10-reject-truncation",
+      "phase": "pre-design",
+      "requestHash": "cababf434bed69b7e3a07bd60c94ef3b0885acd7fa696eded24021aea6384474",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "候補n=−2から残りを計算し、その残りが小数部分の定義範囲を満たすか判定する。",
+      "availableInformation": "公開初期にx=n+r、n∈ℤ、0≤r<1と−2.1−(−2)の計算の穴。補助full publicの後続状態ではvalue=−0.1が認定後、candidateValidityUX05の四候補だけが解放される。",
+      "reasonToProceed": "−2.1−(−2)=−0.1で、0≤rという必要条件に反するからn=−2は不採用。整数であるだけでは十分でなく、負の整数そのものを禁止する定義ではない。",
+      "nextWholeState": "値を計算してから採用/棄却理由を選び、次に元の数を含む半開区間の整数を求める。初期から正しい整数−3を答えとして出さない。",
+      "misconception": "0.1は差の符号、−4.1は負数を引く作用の誤り。定義判断では整数なら採用/切り取りなら採用/負整数だから不可という誤解を分ける。",
+      "reducedSupportVariant": "必要な初出残り計算を残し、括弧/演算記号を一字ずつ採点する細分化を避ける。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-09::upperRelation:filled:114",
+          "n09-q10-reject-truncation::value:initial:115"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false,
+        "laterPublicSnapshotIds": [
+          "n09-q10-reject-truncation::value:filled:118"
+        ]
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q11-remainder",
+      "phase": "pre-design",
+      "requestHash": "badebf2275c1b40831efa408089d680058d049172b69f9134bbee8f8512e0489",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "認定済みの整数部分−3を使い、小数部分r=x−nを具体的に計算する。",
+      "availableInformation": "公開条件x=−2.1/n=−3/r=x−n/0≤r<1と、r=−2.1−(−3)=−2.1+3={value}がある。rの値はまだ確定表示されない。",
+      "reasonToProceed": "−2.1+3=0.9で0≤0.9<1を満たす。整数部分と小数部分を足して元の数へ戻ることも確認できる。",
+      "nextWholeState": "計算後に−2.1=−3+0.9と範囲を一緒に示し、負数の小数部分も非負と理解する。",
+      "misconception": "−0.9は差の向き、−5.1は負数を引く操作を加算へ直していない誤り。",
+      "reducedSupportVariant": "負数を引く＋だけを別穴にせず、定義による必要計算の結果を問う。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-10::n:filled:127",
+          "n09-q11-remainder::value:initial:128"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q13-reverse",
+      "phase": "pre-design",
+      "requestHash": "6d72e2df85c77565eae3eed71c569a626de01cf5fd7e224734dead3f2e99b2b4",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "認定済み3<√10<4の各辺を−1倍し、左右二つの関係の向きを具体的に決める。",
+      "availableInformation": "公開初期に負数を掛けると大小が変わる一般則、3<√10<4、−3 {S1} −√10 {S2} −4がある。S2も見えるがS1未回答時はまだ操作できない。",
+      "reasonToProceed": "負の同じ数を掛けると順序が反転し、−3>−√10>−4。元の二つの関係がいずれも真の不等号なので等号にはならない。",
+      "nextWholeState": "両境界を確定後、次のnodeで小さい順に並べ直し−4<−√10<−3として整数部分へ使う。",
+      "misconception": "<を残すのは負数倍による反転を落とす、=は等しくない境界を等号へ変える誤り。",
+      "reducedSupportVariant": "未知の一般則は先に教え、その具体的な二境界への適用は学習者に残す。マイナスの基本計算をさらに分割しない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-12::upper:filled:147",
+          "n09-q13-reverse::S1:initial:148"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q14-positive-remainder",
+      "phase": "pre-design",
+      "requestHash": "e610f5b64881d1eb3a817d974723ef1d2bb8b0304131966390442345c9eb2c56",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "定義r=x−nへ対象の正の根号と認定済み整数部分を代入し、小数部分の式全体を作る。",
+      "availableInformation": "node抜粋にはr=x−n、対象√10/−√10と範囲条件。補助full public同stageに3<√10<4と整数part value=3が認定済みで見え、現在の具体的なrの式は未回答。",
+      "reasonToProceed": "r=√10−3。3<√10<4から各辺に−3を加えて0<√10−3<1となり定義を満たす。正しい別表現の可換順は否定しない。",
+      "nextWholeState": "式を選んだ後に範囲確認の途中式を示す。−の演算記号だけを問う方式に戻さない。",
+      "misconception": "√10+3は整数部分を加える、3−√10は引く順が逆で負、√10/3は分離の定義を除算に変える誤り。",
+      "reducedSupportVariant": "既に求めた整数3は再入力させず、定義を適用したrの式を一判断として作らせる。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q14-positive-integer::value:filled:167",
+          "n09-q14-positive-remainder::remainderExpressionUX05:initial:168"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-q14-negative-remainder",
+      "phase": "pre-design",
+      "requestHash": "ec554228e59222b0923aa36c8f27623127ab79cd5837e856b32f12e2d26e7e19",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（同model/履歴共有、共有renderer作者）",
+      "learnerDecision": "負の対象でもr=x−nを使い、負の整数部分を引く作用を含む式全体を作る。",
+      "availableInformation": "node抜粋にはr=x−nと対象/範囲条件。補助full public同stageに−4<−√10<−3と負側整数part value=−4が認定済みで見える。正側rの結果は別対象で、負側の具体式は未回答。",
+      "reasonToProceed": "r=−√10−(−4)=4−√10。−4<−√10<−3の各辺へ4を加えると0<4−√10<1。正負の根号で整数部分が単純に符号反転しない点と合わせて定義を保つ。",
+      "nextWholeState": "式を回答後、二重負号を含む途中式と範囲を表示し、最後の正負をまとめる表は認定後だけにする。",
+      "misconception": "−√10−4は負の整数を引く効果を誤る、√10−4は対象の符号、4+√10は根号の負号を落とす誤り。",
+      "reducedSupportVariant": "確定整数−4の再入力や＋一字の写しを加えず、負の数の定義適用を一つの意味ある式で答える。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public node抜粋と同じ全体public snapshotを読み、一般則/認定済み情報/本人が行う具体適用とAUTO参照を区別した。作者の理由や非公開expected/feedbackを可視事実にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-design public projectionはactualDOMMeasurements:falseであり実画像/実寸ではない。通常AST/混在操作域/式番号の表示はR07の真正なsource-bound実DOM/画像で別に確認する。"
+        }
+      ],
+      "supplementaryPublicEvidence": {
+        "file": "/tmp/w046-ux05-full/r04/n09-visible-snapshots.json.gz",
+        "fileSHA256": "b2c40429de6cd6466b1a409711d8b5e31cf02154984c1af6250b7fbed9f1454b",
+        "matchingPublicSnapshotIds": [
+          "n09-q14-negative-integer::value:filled:176",
+          "n09-q14-negative-remainder::remainderExpressionUX05:initial:177"
+        ],
+        "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+        "compiledPresentationHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+        "sourceSHA": null,
+        "actualDOMMeasurements": false
+      },
+      "automaticAcceptance": false,
+      "scope": "設計の可視情報・数学意味審査。有限CODEのUNSUPPORTEDを機械証明PASSへ変えず、実表示/移行/本人受入の代用にしない。",
+      "status": "PASS"
+    }
+  ],
+  "automaticAcceptance": false
+}

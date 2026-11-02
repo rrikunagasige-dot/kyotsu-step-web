@@ -1,0 +1,58 @@
+{
+  "head": "900644e0663e8e5f027d2a7827e030182ea2da8c",
+  "checks": [
+    {
+      "name": "Vercel Preview Comments",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/runs/125290236078"
+    },
+    {
+      "name": "n04-q01-authentic-screenshots",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41449212791/job/125289948517"
+    },
+    {
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41449212791/job/125289946830"
+    },
+    {
+      "name": "governance",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41449212762/job/125289946584"
+    }
+  ],
+  "previousHead": "6969af9dacf1f3c885c7c663bd6a97ca10d8d0f9",
+  "previousChecks": [
+    {
+      "name": "Vercel Preview Comments",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/runs/125286112513"
+    },
+    {
+      "name": "n04-q01-authentic-screenshots",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41448001781/job/125285827092"
+    },
+    {
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41448001781/job/125285825799"
+    },
+    {
+      "name": "governance",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41448001785/job/125285825168"
+    }
+  ],
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "publicationAuthorized": false
+}

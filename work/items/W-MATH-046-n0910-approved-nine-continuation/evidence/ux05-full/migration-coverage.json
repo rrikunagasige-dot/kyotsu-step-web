@@ -1,0 +1,10 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "status": "PASS",
+  "expectedCaseCount": 24,
+  "actualCaseCount": 24,
+  "filterUsed": false,
+  "executedScriptHash": "0bf24870e0fa0f9c5183f9f7c514a021cb64e3db0a9001730d4295e3be6a216f",
+  "rawResultHash": "60e5c1d4ee7539df04958b868ef1bfb7519a7f5ccd353018a92c1455ae717cf4",
+  "formalStoreReceipt": false
+}

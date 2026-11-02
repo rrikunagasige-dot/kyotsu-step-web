@@ -1,0 +1,33 @@
+# UX05 full browser collector 非作者レビュー A
+
+対象 `/tmp/w046-ux05-full/browser.mjs` 補修後SHA256 `4bd7a24bb1bd13a1f03309ce40a110f42dd776928765862fe93db59af43c634e`。担当Aはroot collectorの非作者。Git/Store/製品は未編集、新しいbrowser runは私から実行していない。
+
+## 所見と補修確認
+
+初回は、run内finallyのmanifest assertがthrowした時にrun.failuresへ記録されず、最終幅/一幅debugではprocess exit1でもRESULT.statusがPASSとなり得る欠落を指摘した。補修版はmanifest/最終HEAD照合をtry/catchでrun.failuresへ記録しraw run保存へ進み、outerFailuresも最終statusへ含める。解決確認済み。コンソールの幅ごとのPASS文字列だけを最終合格に使わず、RESULTとrun内failures/exitを評価する。
+
+## 実測と期待値の分離
+
+fullFormulaは実DOMからid/template dataset/mode/矩形/18px/MEASURED/overflow/slot状態/式番号を読む。geometryは同じserved moduleのmeasureNestedMathDOMで本体compiler/DOM WeakMapの出所証明を通す。正答slotを消した幾何やresolvedPartsをcollector側で作り足していない。part/state/selectedValueは試験操作の記述であり、実測geometryやformulaを期待helperからコピーしていない。採点用expectedはクリックする候補を選ぶためにだけ用いる。
+
+全partについてinitial、全wrong候補、filledを実操作し、wrongでactive partが進まない/feedbackがあることを確認する。未回答/誤答/認定の式・slot・text slotとowner stageは、後段checkNestedRunsが独立したsource-bound snapshotに照合する。Wrong/filledの状態・frame/slot・認定後再計画の合否はその既存CODEへ渡し、このcollectorが自分で合格値を作らない。
+
+auto補助packetはstageを実UIで進めた後、0part nodeと全nodeのmath extrasを実DOMから採る。全stageの実node coverageも照合する。最後のstageも明示採取。historyは実UIの前段階ボタン/detailsを開き、enabled buttonなしを確認して実DOMを採る。旧memoやfilled readonlyの架空UIを要求せず、現readerのinteractive/readonlyとsource extra IDを記録する。
+
+## 保存・環境・出所
+
+完了/reload、直前旧版の試し解答による全storage不変、reset取消全storage不変、reset確定/reloadを操作する。別unit/旧版には実domain APIで有効な一回答ledgerをseedする。resetでは別unit/旧dedicated/既存archive entryを不変照合し、現在版の新reset履歴一件が直前current ledger全体に一致することを別に確認する。
+
+tracked clean sourceを既定にし、expected SHA、前後manifest/HEAD、scriptHash/font file hashを記録する。空portと自spawn serverの起動/生存を確認し、served compiledHashをDOMで照合する。document.fonts.readyだけでなくMain/Math italicのloaded faceとfont errorなしを要求する。HTTP400以上/通常network failureを記録し、ERR_ABORTEDも原記録を残す。明示goto/reload中以外のabortをfailureへ含める。
+
+changedIdsはfrozen root内のWork evidence author reportから読み、外部の未固定/tmp報告へ依存しない。画像hashとrun manifestを保存する。debugのW046_ALLOW_DIRTYや一幅の実行は確認用であり、固定source四幅の代用としない。
+
+**SCOPED_COLLECTOR_REVIEW_PASS。指摘した実測/期待値混同・coverage・保存・出所のblockerは補修後に見つからない。** 既存CODE importと実四幅結果、未確認の数学/本人総合受入・公開/G2の最終判定はrootへ残す。N09教材の内容は私の作者範囲なので、このcollector読取で教材意味の独立合格を主張しない。
+
+## 実画像所見後のcollector最終追従
+
+最新collector SHA256 `c9c2dc27df6bc2d3823a921ba43804851c8dbc3d3daf7b720a95c8436ecd9f0b` を読取。通常の操作timeout20秒は保ち、初回のactive part待機だけ60秒とした。起動20秒の原FAILは履歴に保持し、全操作の待機を無制限にして合格へ変えていない。
+
+40px残留余白の実画像所見を受け、current/historyの実DOMから各行のtag有無・tag-below class・computed paddingBottomを採取し、tag無し行にbelow/paddingがないことをassertしてrowSpacingChecksへ保存する。数式frameの正常だけで行の残留余白を見逃す経路を追加検査する。実geometryを期待helperから作らない原則は不変。
+
+原40px REVISE→root691d製品一行補修→新source四幅R07、の差戻しを別に残す。初回結果やold hashを最新結果で上書きして、初めから成功したとはしない。最終collectorの読取範囲でblockerなし。

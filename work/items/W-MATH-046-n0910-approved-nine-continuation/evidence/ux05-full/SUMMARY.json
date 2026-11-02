@@ -1,0 +1,79 @@
+{
+  "work": "W-MATH-046",
+  "proposal": "P-W046-UX-05",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "status": "CROSS-VERIFIED_SCOPED_CORRECTION",
+  "next": "G3_HOST_PUBLICATION_APPROVAL",
+  "publicationPR": 135,
+  "publicationHead": "900644e0663e8e5f027d2a7827e030182ea2da8c",
+  "mainUnchanged": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "publishedAppUnchanged": "db99a485f857b1aefa7fb738456f36a830514158",
+  "changedNodes": 23,
+  "unchangedNodes": 63,
+  "allNodes": 86,
+  "parts": 103,
+  "browser": {
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "answerStates": 1712,
+    "mathMeasurements": 4228,
+    "spacingPasses": 1812,
+    "allRowsInspected": 11008,
+    "untaggedRows": 6520,
+    "staleUntaggedPadding": 0
+  },
+  "tests": {
+    "vitest": 148,
+    "nativeLayout": 26,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "lint": "PASS"
+  },
+  "migrationCases": 24,
+  "protectedFiles": 340,
+  "meaningImports": {
+    "preDesign": 23,
+    "postFix": 23,
+    "postFixRows": 102,
+    "status": "PASS",
+    "automaticAcceptance": false
+  },
+  "nonAuthorImages": {
+    "n09": 52,
+    "n10": 34
+  },
+  "finiteMath": {
+    "status": "PARTIAL",
+    "unsupported": 46,
+    "failures": 0,
+    "remainingDisposition": "Independent source/public-state mathematical reasoning; no general machine proof claim"
+  },
+  "builtArtifact": {
+    "rawAssets": 121,
+    "n0910Widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "protectedN08N11Widths": [
+      320
+    ],
+    "status": "PASS"
+  },
+  "knownObservation": "N09 q07 condition terminal punctuation wraps alone at 320; nonblocking observation retained, no mathematical/interaction blocker",
+  "formalStoreReceipt": false,
+  "missingStoreEvents": 26,
+  "otherWorkGovernance38Resolved": false,
+  "finalAppReview": "FINAL-REVIEW-NOT-READY",
+  "publicationAuthorized": false,
+  "userAcceptance": false,
+  "Gold": false,
+  "fit": false,
+  "previousPublisherHead": "6969af9dacf1f3c885c7c663bd6a97ca10d8d0f9",
+  "publisherFinalChange": "Workflow comment scope correction only; executable YAML/helper unchanged"
+}

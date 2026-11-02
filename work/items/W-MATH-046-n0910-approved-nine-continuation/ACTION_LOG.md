@@ -65,3 +65,7 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 - 製品build121assets/N0910四幅と保護N08/N11既存320検証PASS。公開PR135はmain6bc起点の2files、head6969af9d。check/governance両CI成功。main/Pages変更なし。公開の具体的承認後はG3実配信→本人総チェックへ進む。Store特例/未受入/Gold非認定は保持。
 
 - 公開workflowの古いW041包括CI断定コメントだけを実績に合わせ訂正。実行YAML/helper/app691dは不変、Bが限定差分/新hashを再確認。PR135最終head900644e0663e8e5f027d2a7827e030182ea2da8cでもcheck/governance SUCCESS、旧head6969の成功記録も保持。main6bcと公開app db99は不変。
+
+## PR135公開承認受領・main反映／G3実行中
+- 本人『いいよ』を直前のPR135 2file main反映/既存Pages公開質問への承認として保存。live identity・main6bc・PR head900644・2files・CI2SUCCESSが一致。Draft解除後expected head900644でmerge、publisher main f4c50963。製品source691d固定。
+- run41454830219開始、固定checkout成功/依存準備中。RUNNINGを公開済み/配信検証合格と呼ばない。次は同run公開前→公開→実配信byte/操作/保護確認→本人総チェック。承認済み局所検査を全再実施する工程へ戻らない。

@@ -1,13 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: VERIFYING
-Review: UX05-R07-AND-SCOPED-G2-CROSS-VERIFIED / PUBLICATION-APPROVAL-PENDING
-- 承認済みUX05の残23CHANGEを実装・検証・非作者監査済み。固定source `691d3d160493bf684ca8a31a22476d31d98caeec`、N09r8/43part・N10r5/60part。代表細部OKの2node、他63node object、旧版/原回答を保持。
-- [工程図と次手](WORKFLOW_CURRENT.md)：R04既存CODE/意味import→R06→R07実画面/意味→今回範囲G2完了。次はG3公開承認。[具体的承認対象](PUBLICATION_UX05.md)はDraft PR #135の2file、head900644e0/base main6bc。CI check/governance SUCCESS。未merge・未公開。
-- [実画面一覧](evidence/ux05-full/REVIEW_GALLERY.html)、[検証と限界](evidence/ux05-full/SUMMARY.json)、[横断監査](evidence/ux05-full/CROSS_BLOCK_AUDIT.md)、[原証拠ZIP](evidence/ux05-full/RAW_EVIDENCE.zip)。4幅1712state/4228式、148回帰+CODE26、移行24、保護340file PASS。A/Bが320/1440計86画像を相互非作者審査。
-- 初回画像で同型40px余白をN09/N10に発見しR06へ戻った。共通一条件補修後、番号無し6520行すべて不要余白0。原REVISE/timeout/importFAILも保存し、テストPASSを画像合格へ読み替えていない。
-- main6bc/公開app db99は不変。本人がこの公開PRを承認後、既存Pagesの公開前検査→公開→実配信byte/操作検証→本人総チェックへ進む。UX05案や代表細部を聞き直さない。
-- 正式Store26イベント欠落の本人特例・他Work38件は不変。正式PASSED、全体最終受入、Gold/fitは認定しない。
+Review: UX05-SCOPED-G2-CROSS-VERIFIED / PUBLICATION-APPROVED / G3-IN-PROGRESS
+- 本人『いいよ』（page6b2c4854-bf87-40b8-b3f4-87b3ca4d30dc）をPR135 head900644e0/base main6bcの2file反映・既存Pages公開への明示承認として記録。[承認原文と範囲](evidence/ux05-full/PUBLICATION_APPROVAL.json)。同じ公開承認を聞き直さない。
+- live repo/account/main/PR head/base/2files/check・governance SUCCESSを照合しPR135をexpected head付きmerge。main publisherは `f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75`、製品sourceは `691d3d160493bf684ca8a31a22476d31d98caeec` に固定。
+- [工程図](WORKFLOW_CURRENT.md)：R04→R06→R07→今回範囲G2は完了。現在G3の公開run [41454830219](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41454830219)を実行中。固定checkoutは成功、依存準備中。RUNNINGを公開/配信検証成功と呼ばない。[現在記録](evidence/ux05-full/PUBLICATION_STATUS.json)。
+- 次は既存runの公開前検査→成功時のみPages配信→実配信source/全asset/操作/保持N08・N11確認→本人総チェック。旧R07全1712stateを理由なく再実行したり、既承認UX05/代表細部からやり直したりしない。
+- 旧回答/旧版/namespaceと、正式Store26イベント欠落の本人特例・他Work38件を維持。本人総合受入・正式PASSED/Gold/fitはまだ認定しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

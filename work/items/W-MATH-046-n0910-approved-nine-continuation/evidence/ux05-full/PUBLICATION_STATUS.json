@@ -1,0 +1,15 @@
+{
+  "stage": "G3_PUBLICATION_IN_PROGRESS",
+  "publicationApproved": true,
+  "approvalQuote": "いいよ",
+  "pr": 135,
+  "approvedHead": "900644e0663e8e5f027d2a7827e030182ea2da8c",
+  "mergedPublisher": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "productSource": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "workflowRun": 41454830219,
+  "workflowURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41454830219",
+  "workflowStatus": "in_progress",
+  "hostedSourceVerified": false,
+  "userFinalAcceptance": false,
+  "formalStoreReceipt": false
+}

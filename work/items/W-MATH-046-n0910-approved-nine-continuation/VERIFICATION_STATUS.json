@@ -1,8 +1,8 @@
 {
   "work": "W-MATH-046-n0910-approved-nine-continuation",
-  "proposal": "P-W046-UX-04",
+  "proposal": "P-W046-UX-05",
   "recordedDate": "2026-11-02",
-  "status": "USER_FEEDBACK_REVISE_PROPOSAL_UX05_ANALYSIS",
+  "status": "UX05_PROPOSAL_REVIEWED_APPROVAL_PENDING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -355,7 +355,7 @@
       "currentDocumentSha256": "e5964b58fd3ebb7099856a9760bf04e503b6069f939493f1bf3d880b653a6fe2"
     }
   ],
-  "activeProposal": "P-W046-UX-04",
+  "activeProposal": "P-W046-UX-05",
   "currentPilot": {
     "proposal": "P-W046-UX-04",
     "unit": "N09",
@@ -602,10 +602,25 @@
   "activeProposalRequiresRevision": true,
   "plannedRevisionProposal": {
     "id": "P-W046-UX-05",
-    "status": "ANALYSIS_BEFORE_DETAILED_DRAFT",
-    "formalDocumentReady": false,
+    "status": "PROPOSED_READY",
     "approvedByUser": false,
     "implementationStarted": false,
-    "analysisPath": "evidence/ux05-feedback/ANALYSIS.md"
+    "proposalPath": "PROPOSAL.md",
+    "designCoverage": {
+      "nodes": 86,
+      "change": 25,
+      "keep": 61,
+      "oldParts": 115,
+      "keptParts": 84,
+      "archivedParts": 31,
+      "newParts": 19,
+      "targetParts": 103
+    },
+    "structureCheck": "evidence/ux05-proposal/STRUCTURE_CHECK.json",
+    "nonAuthorReview": "evidence/ux05-proposal/REVIEW.md",
+    "newProductTestsPerformed": false,
+    "next": "Exact proposal approval, then representative implementation and real-image detailed user review before rollout",
+    "publicSourceUnchanged": "db99a485f857b1aefa7fb738456f36a830514158",
+    "candidateSourceUnchanged": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5"
   }
 }

@@ -1,0 +1,3328 @@
+{
+  "proposal": "P-W046-UX-05",
+  "unit": "N09",
+  "fromRevision": 6,
+  "toRevision": 7,
+  "baselineCommit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+  "baselineCompiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+  "status": "PROPOSAL_ONLY_NOT_IMPLEMENTED",
+  "counts": {
+    "nodes": 41,
+    "changeNodes": 16,
+    "keepNodes": 25,
+    "oldParts": 52,
+    "keptParts": 32,
+    "retiredParts": 20,
+    "newParts": 11,
+    "targetParts": 43
+  },
+  "principles": [
+    "主判断は具体的適用として本人が行う。必要な基本操作は途中式へ戻す。",
+    "零条件の組は一つの推論であり、移項から解までの全解法丸当てではない。",
+    "同値な因子順・可換順の式を誤答候補にしない。指定された表現の選択と数学的正誤を区別。",
+    "MASTER§53に従いQ08の既存計算・比較を保護。"
+  ],
+  "displayContract": {
+    "wholeCondition": "factorZeroConditionUX05はenum値で採点。本文のtext足場は「条件の組：{slot}」という短い選択ラベルだけを表示し、長い条件latexをslot内部へ詰めない。",
+    "mathLines": "閉じたLaTeX配列を一候補の一ボタン内で行ごとに描画。採点値は一つ。候補の式はまたは/かつという意味境界で改行。正答後は通常math二行へ置換。共通UI内、card追加なし。",
+    "narrow": "320/390/430/1440（768は追加任意）で単一長式slot・ボタンoverflow・不自然な等号折返しを実装時に検査。現時点で描画PASSは未主張。"
+  },
+  "migration": {
+    "sourceRevision": 6,
+    "targetRevision": 7,
+    "snapshot": "r6のcompiled470fを不変snapshotとして保存。r5/r4/pilot/legacyの認識・鎖・旧版route・履歴/resetを保持。",
+    "keep": "同ID契約一致32件。旧正答を再入力要求せず、NEW前提より後の記録は正答保存のままpending。",
+    "retire": "20件は出所付き保存。NEW11件を旧記録やterminal完成で代用しない。",
+    "nativeHash": "未知native hashで破壊・上書きしない。新hash厳密edgeを追加する。",
+    "n10": "r4を無断改訂しない。別N10案の改訂は別明示契約で統合。"
+  },
+  "nodes": [
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-q01-positive",
+      "nodeId": "n09-q01-positive",
+      "decision": "KEEP",
+      "stageId": "n09-stage-01",
+      "q": 1,
+      "baselinePrerequisiteNodeIds": [],
+      "baselineRequiredResultRefs": [],
+      "resultId": "n09-q01-positive-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "括弧を含む平方の作用と計算は残し、独立した積の符号小問を減らす。",
+      "completeSolution": "(−4)²=(−4)×(−4)=16。括弧内全体が二つの因子になる。",
+      "initialLead": "負の候補も確かめます。括弧と指数に注意しましょう。",
+      "initialConditions": [
+        "x∈ℝ、x²=16を満たすすべての実数を求める。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "powerAction",
+          "id": "n09-q01-negative::powerAction",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q01-negative::powerAction",
+          "kind": "text",
+          "expected": "repeat-whole-base",
+          "prompt": "(-4)²で、指数2が指定している操作を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "value",
+          "id": "n09-q01-negative::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q01-negative::value",
+          "kind": "math",
+          "expected": "16",
+          "prompt": "負の候補を2回掛けた値を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "powerAction"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "text",
+          "template": "2乗の操作は、{powerAction}。",
+          "partKeys": [
+            "powerAction"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-q01-negative::ux05-row-01"
+        },
+        {
+          "kind": "math",
+          "template": "(-4)^2=(-4)\\times(-4)={value}",
+          "partKeys": [
+            "value"
+          ],
+          "requiresCorrectKeys": [
+            "powerAction"
+          ],
+          "id": "n09-q01-negative::ux05-row-02",
+          "mathGroupId": "n09-q01-negative-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "(-4)^2=16"
+      ],
+      "nodeId": "n09-q01-negative",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-01",
+      "q": 1,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q01-positive"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q01-positive-result"
+      ],
+      "resultId": "n09-q01-negative-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-q01-positive"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-q01-positive-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q01-negative-result",
+        "formulas": [
+          "(-4)^2=16"
+        ],
+        "conditions": [
+          "x∈ℝ、x²=16を満たすすべての実数を求める。"
+        ],
+        "requiresCorrectKeys": [
+          "powerAction",
+          "value"
+        ],
+        "certifiedFrom": [
+          "n09-q01-positive-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q01-negative::powerAction",
+          "decision": "KEEP",
+          "newPartId": "n09-q01-negative::powerAction",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-q01-negative::productSign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-q01-negative::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q01-negative::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "零条件の式を先に与えてorだけを選ばせる構造を廃止。因数分解と具体的な零条件の組を主判断とする。基本逆演算は途中式に戻す。",
+      "completeSolution": "x²=16 ⇔ x²−16=0 ⇔ x²−4²=0 ⇔ (x−4)(x＋4)=0 ⇔ x−4=0 または x＋4=0 ⇔ x=4 または x=−4。全変形が同値なので全解を尽くす。",
+      "initialLead": "候補を確かめるだけでなく、他に解がないことも調べます。",
+      "initialConditions": [
+        "x∈ℝ。"
+      ],
+      "givenRules": [
+        "既習公式：(A-B)(A+B)=A^2-B^2。",
+        "実数の零積の法則：AB=0 ⇔ A=0 または B=0。一方が0なら積は0、どちらも0でなければ積は0にならない。"
+      ],
+      "parts": [
+        {
+          "key": "factorisedFormUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "左辺x²−4²に恒等的に等しい因数分解を選びます。",
+          "expected": "(x-4)(x+4)",
+          "thinkingOperation": "平方差の構造を因数分解へ適用する。第一因子の写し穴ではない。",
+          "choices": [
+            {
+              "value": "(x-4)(x+4)",
+              "kind": "math",
+              "latex": "(x-4)(x+4)",
+              "display": "(x-4)(x+4)",
+              "correct": true,
+              "feedback": "中間項が相殺し、x²−16になります。"
+            },
+            {
+              "value": "(x-4)^2",
+              "kind": "math",
+              "latex": "(x-4)^2",
+              "display": "(x-4)^2",
+              "correct": false,
+              "feedback": "展開すると−8xという中間項が残ります。"
+            },
+            {
+              "value": "(x+4)^2",
+              "kind": "math",
+              "latex": "(x+4)^2",
+              "display": "(x+4)^2",
+              "correct": false,
+              "feedback": "展開すると＋8xという中間項が残ります。"
+            },
+            {
+              "value": "x(x-16)",
+              "kind": "math",
+              "latex": "x(x-16)",
+              "display": "x(x-16)",
+              "correct": false,
+              "feedback": "展開するとx²−16xとなり、定数項−16になりません。"
+            }
+          ],
+          "id": "n09-01::factorisedFormUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "factorZeroConditionUX05",
+          "decision": "NEW",
+          "kind": "text",
+          "role": "meaningful-condition-application",
+          "prompt": "確定した積が0になる条件を、因子についての式で表した組を選びます。",
+          "expected": "either-factor-zero",
+          "thinkingOperation": "AB=0の法則を具体的な二因子へ適用し、必要十分な零条件全体を構成する。",
+          "choices": [
+            {
+              "value": "either-factor-zero",
+              "kind": "text",
+              "display": "第一因子が0、または第二因子が0",
+              "correct": true,
+              "feedback": "どちらか一方が0なら積は0であり、実数ではこれで全ての場合を尽くします。",
+              "mathLines": [
+                "x-4=0",
+                "\\text{または}\\quad x+4=0"
+              ]
+            },
+            {
+              "value": "both-factors-zero",
+              "kind": "text",
+              "display": "両因子が同時に0",
+              "correct": false,
+              "feedback": "零積は同時に0である必要がありません。一方が0なら積は0です。",
+              "mathLines": [
+                "x-4=0",
+                "\\text{かつ}\\quad x+4=0"
+              ]
+            },
+            {
+              "value": "equal-factors",
+              "kind": "text",
+              "display": "二つの因子が等しい",
+              "correct": false,
+              "feedback": "因子が等しいだけでは、その積が0とは限りません。",
+              "mathLines": [
+                "x-4=x+4"
+              ]
+            },
+            {
+              "value": "variable-zero",
+              "kind": "text",
+              "display": "変数が0",
+              "correct": false,
+              "feedback": "積を作っている因子はxそのものではありません。",
+              "mathLines": [
+                "x=0"
+              ]
+            }
+          ],
+          "id": "n09-01::factorZeroConditionUX05",
+          "dependsOnKeys": [
+            "factorisedFormUX05"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "x^2=16",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-01::ux05-row-01",
+          "mathGroupId": "n09-01-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "x^2-16=16-16=0",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-01::ux05-row-02",
+          "mathGroupId": "n09-01-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "x^2-4^2=0",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-01::ux05-row-03",
+          "mathGroupId": "n09-01-ux05-math-03"
+        },
+        {
+          "kind": "math",
+          "template": "{factorisedFormUX05}=0",
+          "partKeys": [
+            "factorisedFormUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-01::ux05-row-04",
+          "mathGroupId": "n09-01-ux05-math-04"
+        },
+        {
+          "kind": "text",
+          "template": "因子についての零条件の組：{factorZeroConditionUX05}",
+          "partKeys": [
+            "factorZeroConditionUX05"
+          ],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05"
+          ],
+          "hideAfterCorrectKeys": [
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-05"
+        },
+        {
+          "kind": "math",
+          "template": "x-4=0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-06",
+          "mathGroupId": "n09-01-ux05-math-06"
+        },
+        {
+          "kind": "math",
+          "template": "\\text{または}\\quad x+4=0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-07",
+          "mathGroupId": "n09-01-ux05-math-07"
+        },
+        {
+          "kind": "math",
+          "template": "x-4=0\\ \\Rightarrow\\ x=4",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-08",
+          "mathGroupId": "n09-01-ux05-math-08"
+        },
+        {
+          "kind": "math",
+          "template": "x+4=0\\ \\Rightarrow\\ x=-4",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-09",
+          "mathGroupId": "n09-01-ux05-math-09"
+        },
+        {
+          "kind": "text",
+          "template": "同値変形で場合を尽くしたため、4と−4が全ての解です。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factorisedFormUX05",
+            "factorZeroConditionUX05"
+          ],
+          "id": "n09-01::ux05-row-10"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "x=4\\quad\\text{または}\\quad x=-4"
+      ],
+      "nodeId": "n09-01",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-01",
+      "q": 1,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q01-negative",
+        "n09-q01-positive"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q01-negative-result",
+        "n09-q01-positive-result"
+      ],
+      "resultId": "n09-01-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-q01-negative",
+        "n09-q01-positive"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-q01-negative-result",
+        "n09-q01-positive-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-01-result",
+        "formulas": [
+          "x=4\\quad\\text{または}\\quad x=-4"
+        ],
+        "conditions": [
+          "x∈ℝ。"
+        ],
+        "requiresCorrectKeys": [
+          "factorisedFormUX05",
+          "factorZeroConditionUX05"
+        ],
+        "certifiedFrom": [
+          "n09-q01-negative-result",
+          "n09-q01-positive-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-01::balanceOperation",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-01::factorSign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-01::zeroLogic",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-01::leftInverseOperation",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-01::rightInverseOperation",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-01::factorisedFormUX05",
+        "n09-01::factorZeroConditionUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-definition",
+      "nodeId": "n09-definition",
+      "decision": "KEEP",
+      "stageId": "n09-stage-02",
+      "q": 2,
+      "baselinePrerequisiteNodeIds": [
+        "n09-01"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-01-result"
+      ],
+      "resultId": "n09-definition-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q02-root::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q02-root::value",
+          "kind": "math",
+          "expected": "4",
+          "prompt": "平方が16で非負の数を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q02-root",
+      "nodeId": "n09-q02-root",
+      "decision": "KEEP",
+      "stageId": "n09-stage-02",
+      "q": 2,
+      "baselinePrerequisiteNodeIds": [
+        "n09-definition"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-definition-result"
+      ],
+      "resultId": "n09-q02-root-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q02-root::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q02-root::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "1×5と(−1)²の分割をやめ、元の平方の一計算へ統合。旧valueは1×5なので別ID。",
+      "completeSolution": "(−√5)²=(−1)²(√5)²=1×5=5。",
+      "initialLead": "平方根の前に負号があるときも、括弧全体の平方を計算します。",
+      "initialConditions": [
+        "根号は非負の一つの値。√16と(−√5)²を元の順で求める。"
+      ],
+      "givenRules": [
+        "(uv)^2=u^2v^2、(√a)^2=a (a≥0)。"
+      ],
+      "parts": [
+        {
+          "key": "signedRootSquareUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "負号を含む括弧全体の平方(−√5)²を求めます。",
+          "expected": "5",
+          "thinkingOperation": "負の平方根の平方を、指数の作用範囲と平方根の定義で計算する。",
+          "choices": [
+            {
+              "value": "5",
+              "kind": "math",
+              "latex": "5",
+              "display": "5",
+              "correct": true,
+              "feedback": "括弧内全体を二乗するので負号も二乗され、(√5)²=5です。"
+            },
+            {
+              "value": "-5",
+              "kind": "math",
+              "latex": "-5",
+              "display": "-5",
+              "correct": false,
+              "feedback": "負号を括弧の外へ残していませんか。"
+            },
+            {
+              "value": "25",
+              "kind": "math",
+              "latex": "25",
+              "display": "25",
+              "correct": false,
+              "feedback": "二乗されるのは5ではなく√5です。"
+            },
+            {
+              "value": "\\sqrt5",
+              "kind": "math",
+              "latex": "\\sqrt5",
+              "display": "\\sqrt5",
+              "correct": false,
+              "feedback": "二乗によって元の根号の大きさをそのまま残すのではありません。"
+            }
+          ],
+          "id": "n09-q02-negative-square::signedRootSquareUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "(-\\sqrt5)^2={signedRootSquareUX05}",
+          "partKeys": [
+            "signedRootSquareUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "signedRootSquareUX05"
+          ],
+          "id": "n09-q02-negative-square::ux05-row-01",
+          "mathGroupId": "n09-q02-negative-square-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=1\\times5=5",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "signedRootSquareUX05"
+          ],
+          "id": "n09-q02-negative-square::ux05-row-02",
+          "mathGroupId": "n09-q02-negative-square-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "(-\\sqrt5)^2=5"
+      ],
+      "nodeId": "n09-q02-negative-square",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-02",
+      "q": 2,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q02-root"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q02-root-result"
+      ],
+      "resultId": "n09-q02-negative-square-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-q02-root"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-q02-root-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q02-negative-square-result",
+        "formulas": [
+          "(-\\sqrt5)^2=5"
+        ],
+        "conditions": [
+          "根号は非負の一つの値。√16と(−√5)²を元の順で求める。"
+        ],
+        "requiresCorrectKeys": [
+          "signedRootSquareUX05"
+        ],
+        "certifiedFrom": [
+          "n09-q02-root-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q02-negative-square::signFactor",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-q02-negative-square::value",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-q02-negative-square::signedRootSquareUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-02",
+      "nodeId": "n09-02",
+      "decision": "KEEP",
+      "stageId": "n09-stage-02",
+      "q": 2,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q02-negative-square",
+        "n09-q02-root"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q02-negative-square-result",
+        "n09-q02-root-result"
+      ],
+      "resultId": "n09-02-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-boundary",
+      "nodeId": "n09-boundary",
+      "decision": "KEEP",
+      "stageId": "n09-stage-02",
+      "q": 3,
+      "baselinePrerequisiteNodeIds": [],
+      "baselineRequiredResultRefs": [],
+      "resultId": "n09-boundary-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "初出平方の再入力を参照へ変更し、次nodeの非負の平方根選択は保護する。",
+      "completeSolution": "既に確定した(−4)²=16を使う。√((−4)²)=√16、非負の平方根は次nodeで選ぶ。",
+      "initialLead": "確定済みの平方を使い、平方根を調べます。",
+      "initialConditions": [
+        "実数の範囲で√((−4)²)を求める。根号の中と値は非負。"
+      ],
+      "givenRules": [],
+      "parts": [],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "(-4)^2=16",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-q03-inside::ux05-row-01",
+          "mathGroupId": "n09-q03-inside-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "\\sqrt{(-4)^2}=\\sqrt{16}",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-q03-inside::ux05-row-02",
+          "mathGroupId": "n09-q03-inside-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [
+        "n09-q01-negative-result"
+      ],
+      "terminalFormulas": [
+        "(-4)^2=16"
+      ],
+      "nodeId": "n09-q03-inside",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-03",
+      "q": 3,
+      "baselinePrerequisiteNodeIds": [
+        "n09-boundary"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-boundary-result"
+      ],
+      "resultId": "n09-q03-inside-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-boundary",
+        "n09-q01-negative"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-boundary-result",
+        "n09-q01-negative-result"
+      ],
+      "classification": "REFERENCE_ONLY",
+      "terminalRecord": {
+        "resultId": "n09-q03-inside-result",
+        "formulas": [
+          "(-4)^2=16"
+        ],
+        "conditions": [
+          "実数の範囲で√((−4)²)を求める。根号の中と値は非負。"
+        ],
+        "requiresCorrectKeys": [],
+        "certifiedFrom": [
+          "n09-boundary-result",
+          "n09-q01-negative-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q03-inside::value",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-03::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-03::value",
+          "kind": "math",
+          "expected": "4",
+          "prompt": "平方が16になる非負の数を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-03",
+      "nodeId": "n09-03",
+      "decision": "KEEP",
+      "stageId": "n09-stage-03",
+      "q": 3,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q03-inside"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q03-inside-result"
+      ],
+      "resultId": "n09-03-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-03::value",
+          "decision": "KEEP",
+          "newPartId": "n09-03::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q04-nonnegative::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q04-nonnegative::value",
+          "kind": "math",
+          "expected": "a",
+          "prompt": "a≥0全体で根号の値を表す式を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q04-nonnegative",
+      "nodeId": "n09-q04-nonnegative",
+      "decision": "KEEP",
+      "stageId": "n09-stage-04",
+      "q": 4,
+      "baselinePrerequisiteNodeIds": [
+        "n09-03"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-03-result"
+      ],
+      "resultId": "n09-q04-nonnegative-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q04-nonnegative::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q04-nonnegative::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "−aの符号を独立小問にせず、非負の平方根を選ぶ本来の判断と根拠を保持。",
+      "completeSolution": "a<0なので−a>0、(−a)²=a²。よって√a²=−a。",
+      "initialLead": "aが負の場合、a²の非負の平方根を選びます。",
+      "initialConditions": [
+        "a∈ℝ、a<0。"
+      ],
+      "givenRules": [
+        "平方根記号√は非負の平方根を表す。"
+      ],
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q04-negative::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q04-negative::value",
+          "kind": "math",
+          "expected": "-a",
+          "prompt": "負のaの平方について、非負の方を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "\\sqrt{a^2}={value}",
+          "partKeys": [
+            "value"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "value"
+          ],
+          "id": "n09-q04-negative::ux05-row-01",
+          "mathGroupId": "n09-q04-negative-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "a<0\\ \\Rightarrow\\ -a>0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "value"
+          ],
+          "id": "n09-q04-negative::ux05-row-02",
+          "mathGroupId": "n09-q04-negative-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "(-a)^2=a^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "value"
+          ],
+          "id": "n09-q04-negative::ux05-row-03",
+          "mathGroupId": "n09-q04-negative-ux05-math-03"
+        },
+        {
+          "kind": "math",
+          "template": "\\sqrt{a^2}=-a",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "value"
+          ],
+          "id": "n09-q04-negative::ux05-row-04",
+          "mathGroupId": "n09-q04-negative-ux05-math-04"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "\\sqrt{a^2}=-a\\quad(a<0)"
+      ],
+      "nodeId": "n09-q04-negative",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-04",
+      "q": 4,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q04-nonnegative"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q04-nonnegative-result"
+      ],
+      "resultId": "n09-q04-negative-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-q04-nonnegative"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-q04-nonnegative-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q04-negative-result",
+        "formulas": [
+          "\\sqrt{a^2}=-a\\quad(a<0)"
+        ],
+        "conditions": [
+          "a∈ℝ、a<0。"
+        ],
+        "requiresCorrectKeys": [
+          "value"
+        ],
+        "certifiedFrom": [
+          "n09-q04-nonnegative-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q04-negative::oppositeSign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-q04-negative::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q04-negative::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-04",
+      "nodeId": "n09-04",
+      "decision": "KEEP",
+      "stageId": "n09-stage-04",
+      "q": 4,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q04-negative",
+        "n09-q04-nonnegative"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q04-negative-result",
+        "n09-q04-nonnegative-result"
+      ],
+      "resultId": "n09-04-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-05::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-05::value",
+          "kind": "math",
+          "expected": "|a|",
+          "prompt": "二つの符号の場合を一つに表す式を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-05",
+      "nodeId": "n09-05",
+      "decision": "KEEP",
+      "stageId": "n09-stage-04",
+      "q": 5,
+      "baselinePrerequisiteNodeIds": [
+        "n09-04"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-04-result"
+      ],
+      "resultId": "n09-05-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-05::value",
+          "decision": "KEEP",
+          "newPartId": "n09-05::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q06-squares::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q06-squares::value",
+          "kind": "math",
+          "expected": "4",
+          "prompt": "2の平方を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q06-squares",
+      "nodeId": "n09-q06-squares",
+      "decision": "KEEP",
+      "stageId": "n09-stage-05",
+      "q": 6,
+      "baselinePrerequisiteNodeIds": [
+        "n09-05"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-05-result"
+      ],
+      "resultId": "n09-q06-squares-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q06-squares::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q06-squares::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "relation",
+          "id": "n09-q06-order::relation",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q06-order::relation",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "元の二数を左2、右√5の順に比較します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q06-order",
+      "nodeId": "n09-q06-order",
+      "decision": "KEEP",
+      "stageId": "n09-stage-05",
+      "q": 6,
+      "baselinePrerequisiteNodeIds": [
+        "n09-05",
+        "n09-q06-squares"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-05-result",
+        "n09-q06-squares-result"
+      ],
+      "resultId": "n09-q06-order-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q06-order::relation",
+          "decision": "KEEP",
+          "newPartId": "n09-q06-order::relation",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "加える数の写しと0の入力を、必要な差の符号判断へ置換。",
+      "completeSolution": "2<√5の両辺から√5を引くと2−√5<√5−√5=0。",
+      "initialLead": "確定済みの比較を使い、差の符号を決めます。",
+      "initialConditions": [
+        "同じ実数を両辺へ加えても不等号の向きは変わらない。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "differenceRelationUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "確定済みの2と√5の大小から、差2−√5と0の大小を決めます。",
+          "expected": "<",
+          "thinkingOperation": "大小関係から差の符号を判断し絶対値の場合分けに使う。",
+          "choices": [
+            {
+              "value": "<",
+              "kind": "math",
+              "latex": "<",
+              "display": "<",
+              "correct": true,
+              "feedback": "小さい数から大きい数を引くので差は負です。"
+            },
+            {
+              "value": ">",
+              "kind": "math",
+              "latex": ">",
+              "display": ">",
+              "correct": false,
+              "feedback": "2と√5のどちらが大きいか、確定済みの比較へ戻ってください。"
+            },
+            {
+              "value": "=",
+              "kind": "math",
+              "latex": "=",
+              "display": "=",
+              "correct": false,
+              "feedback": "二つの数は等しくありません。"
+            }
+          ],
+          "id": "n09-06::differenceRelationUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "2-\\sqrt5\\ {differenceRelationUX05}\\ 0",
+          "partKeys": [
+            "differenceRelationUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "differenceRelationUX05"
+          ],
+          "id": "n09-06::ux05-row-01",
+          "mathGroupId": "n09-06-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "2-\\sqrt5<\\sqrt5-\\sqrt5=0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "differenceRelationUX05"
+          ],
+          "id": "n09-06::ux05-row-02",
+          "mathGroupId": "n09-06-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "2-\\sqrt5<0"
+      ],
+      "nodeId": "n09-06",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-05",
+      "q": 6,
+      "baselinePrerequisiteNodeIds": [
+        "n09-05",
+        "n09-q06-order"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-05-result",
+        "n09-q06-order-result"
+      ],
+      "resultId": "n09-06-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-05",
+        "n09-q06-order"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-05-result",
+        "n09-q06-order-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-06-result",
+        "formulas": [
+          "2-\\sqrt5<0"
+        ],
+        "conditions": [
+          "同じ実数を両辺へ加えても不等号の向きは変わらない。"
+        ],
+        "requiresCorrectKeys": [
+          "differenceRelationUX05"
+        ],
+        "certifiedFrom": [
+          "n09-05-result",
+          "n09-q06-order-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-06::addend",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-06::zero",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-06::differenceRelationUX05"
+      ]
+    },
+    {
+      "reason": "印刷された式のscope写しを、絶対値の定義の具体適用へ置換。",
+      "completeSolution": "√((2−√5)²)=|2−√5|。中身が負なので|2−√5|=−(2−√5)。",
+      "initialLead": "平方の平方根を絶対値へ直し、中身の符号に応じて外します。",
+      "initialConditions": [
+        "2−√5<0。u<0なら|u|=−u。"
+      ],
+      "givenRules": [
+        "|u|はu≥0ならu、u<0なら−u。"
+      ],
+      "parts": [
+        {
+          "key": "absoluteExpressionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "2−√5<0を使い、絶対値を外します。まだ外側の負号は分配せず、括弧を残した形を選びます。",
+          "expected": "-(2-\\sqrt5)",
+          "thinkingOperation": "負と確定した二項式全体へ絶対値の定義を適用する。",
+          "choices": [
+            {
+              "value": "-(2-\\sqrt5)",
+              "kind": "math",
+              "latex": "-(2-\\sqrt5)",
+              "display": "-(2-\\sqrt5)",
+              "correct": true,
+              "feedback": "負の中身は、全体の符号を反転すると非負になります。"
+            },
+            {
+              "value": "2-\\sqrt5",
+              "kind": "math",
+              "latex": "2-\\sqrt5",
+              "display": "2-\\sqrt5",
+              "correct": false,
+              "feedback": "確定済みの中身は負なので、そのままでは絶対値になりません。"
+            },
+            {
+              "value": "-2-\\sqrt5",
+              "kind": "math",
+              "latex": "-2-\\sqrt5",
+              "display": "-2-\\sqrt5",
+              "correct": false,
+              "feedback": "中身全体の符号を反転する必要があります。"
+            },
+            {
+              "value": "2+\\sqrt5",
+              "kind": "math",
+              "latex": "2+\\sqrt5",
+              "display": "2+\\sqrt5",
+              "correct": false,
+              "feedback": "二項の和を作る操作ではありません。"
+            }
+          ],
+          "id": "n09-q07-negation::absoluteExpressionUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-q07-negation::ux05-row-01",
+          "mathGroupId": "n09-q07-negation-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "|2-\\sqrt5|={absoluteExpressionUX05}",
+          "partKeys": [
+            "absoluteExpressionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-q07-negation::ux05-row-02",
+          "mathGroupId": "n09-q07-negation-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "|2-\\sqrt5|=-(2-\\sqrt5)"
+      ],
+      "nodeId": "n09-q07-negation",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-05",
+      "q": 7,
+      "baselinePrerequisiteNodeIds": [
+        "n09-05",
+        "n09-06"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-05-result",
+        "n09-06-result"
+      ],
+      "resultId": "n09-q07-negation-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-05",
+        "n09-06"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-05-result",
+        "n09-06-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q07-negation-result",
+        "formulas": [
+          "|2-\\sqrt5|=-(2-\\sqrt5)"
+        ],
+        "conditions": [
+          "2−√5<0。u<0なら|u|=−u。"
+        ],
+        "requiresCorrectKeys": [
+          "absoluteExpressionUX05"
+        ],
+        "certifiedFrom": [
+          "n09-05-result",
+          "n09-06-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q07-negation::scope",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-q07-negation::absoluteExpressionUX05"
+      ]
+    },
+    {
+      "reason": "−1・加数・個々の符号の小問を、負号を分配した式全体の計算へ統合。",
+      "completeSolution": "−(2−√5)=−2＋√5=√5−2。従って√((2−√5)²)=√5−2。",
+      "initialLead": "確定した式を整理して、平方の平方根の値を仕上げます。",
+      "initialConditions": [
+        "2−√5<0。√(u²)=|u|、u<0なら|u|=−u。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "expandedExpressionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "確定した−(2−√5)の括弧を外して整理します。根号を含む項が先の形を選びます。",
+          "expected": "\\sqrt5-2",
+          "thinkingOperation": "二項式全体への負号の分配を一つの式として実行する。",
+          "choices": [
+            {
+              "value": "\\sqrt5-2",
+              "kind": "math",
+              "latex": "\\sqrt5-2",
+              "display": "\\sqrt5-2",
+              "correct": true,
+              "feedback": "二項とも符号が反転し、−2＋√5=√5−2です。"
+            },
+            {
+              "value": "2-\\sqrt5",
+              "kind": "math",
+              "latex": "2-\\sqrt5",
+              "display": "2-\\sqrt5",
+              "correct": false,
+              "feedback": "外側の負号を作用させていません。"
+            },
+            {
+              "value": "-2-\\sqrt5",
+              "kind": "math",
+              "latex": "-2-\\sqrt5",
+              "display": "-2-\\sqrt5",
+              "correct": false,
+              "feedback": "第二項の負号も反転させてください。"
+            },
+            {
+              "value": "2+\\sqrt5",
+              "kind": "math",
+              "latex": "2+\\sqrt5",
+              "display": "2+\\sqrt5",
+              "correct": false,
+              "feedback": "第一項2の符号も反転します。"
+            }
+          ],
+          "id": "n09-07::expandedExpressionUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "-(2-\\sqrt5)={expandedExpressionUX05}",
+          "partKeys": [
+            "expandedExpressionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "expandedExpressionUX05"
+          ],
+          "id": "n09-07::ux05-row-01",
+          "mathGroupId": "n09-07-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "-(2-\\sqrt5)=-2+\\sqrt5=\\sqrt5-2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "expandedExpressionUX05"
+          ],
+          "id": "n09-07::ux05-row-02",
+          "mathGroupId": "n09-07-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2"
+      ],
+      "nodeId": "n09-07",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-05",
+      "q": 7,
+      "baselinePrerequisiteNodeIds": [
+        "n09-05",
+        "n09-q07-negation",
+        "n09-06"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-05-result",
+        "n09-q07-negation-result",
+        "n09-06-result"
+      ],
+      "resultId": "n09-07-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-05",
+        "n09-q07-negation",
+        "n09-06"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-05-result",
+        "n09-q07-negation-result",
+        "n09-06-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-07-result",
+        "formulas": [
+          "\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2"
+        ],
+        "conditions": [
+          "2−√5<0。√(u²)=|u|、u<0なら|u|=−u。"
+        ],
+        "requiresCorrectKeys": [
+          "expandedExpressionUX05"
+        ],
+        "certifiedFrom": [
+          "n09-05-result",
+          "n09-q07-negation-result",
+          "n09-06-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-07::outsideFactor",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-07::secondOperand",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-07::left",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-07::sign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-07::expandedExpressionUX05"
+      ]
+    },
+    {
+      "reason": "後続の中項構成を未知の公式名当てにしない参照説明を補足。数値の計算は後続で保持。",
+      "completeSolution": "1.41=141/100、1.42=142/100。平方の分子を140＋1または140＋2として、和の平方の公式を適用する。",
+      "initialLead": "分数に直し、分子の平方を計算する方法を使います。",
+      "initialConditions": [
+        "1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"
+      ],
+      "givenRules": [
+        "(A+B)^2=A^2+AB+BA+B^2=A^2+2AB+B^2。中項は異なる項どうしの積が二つ分。",
+        "(p/q)^2=p^2/q^2 (q≠0)。"
+      ],
+      "parts": [],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-decimal-method::ux05-row-01",
+          "mathGroupId": "n09-decimal-method-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "140^2=14^2\\times100=196\\times100=19600",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-decimal-method::ux05-row-02",
+          "mathGroupId": "n09-decimal-method-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "1^2=1,\\quad2^2=4,\\quad100^2=10000",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-decimal-method::ux05-row-03",
+          "mathGroupId": "n09-decimal-method-ux05-math-03"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
+        "140^2=19600,\\quad100^2=10000"
+      ],
+      "nodeId": "n09-decimal-method",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-07"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-07-result"
+      ],
+      "resultId": "n09-decimal-method-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-07"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-07-result"
+      ],
+      "classification": "REFERENCE_ONLY",
+      "terminalRecord": {
+        "resultId": "n09-decimal-method-result",
+        "formulas": [
+          "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
+          "140^2=19600,\\quad100^2=10000"
+        ],
+        "conditions": [
+          "1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"
+        ],
+        "requiresCorrectKeys": [],
+        "certifiedFrom": [
+          "n09-07-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "MASTER§53の既存計算3件を厳密保持。公式の具体適用である中項の構成を計算の直前へ置く。",
+      "completeSolution": "1.41²=(141/100)²。(140＋1)²=19600＋280＋1=19881。分母10000で割ると1.9881。",
+      "initialLead": "直前の参照公式を、この分子の二項へ適用します。",
+      "initialConditions": [
+        "候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "middleTermUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "(140＋1)²を和の平方の公式で展開します。中項を作る因子の組を選びます。",
+          "expected": "2\\times140\\times1",
+          "thinkingOperation": "和の平方の中項を二つの項から具体的に構成する。既存の積・和・小数化は別に保持する。",
+          "choices": [
+            {
+              "value": "2\\times140\\times1",
+              "kind": "math",
+              "latex": "2\\times140\\times1",
+              "display": "2\\times140\\times1",
+              "correct": true,
+              "feedback": "異なる二項の積が二つ分なので2×140×1です。"
+            },
+            {
+              "value": "140\\times1",
+              "kind": "math",
+              "latex": "140\\times1",
+              "display": "140\\times1",
+              "correct": false,
+              "feedback": "交差する積は二つあります。一つ分だけではありません。"
+            },
+            {
+              "value": "2\\times140^2",
+              "kind": "math",
+              "latex": "2\\times140^2",
+              "display": "2\\times140^2",
+              "correct": false,
+              "feedback": "二項のうち一方を二乗するのではなく、異なる二項を掛けます。"
+            },
+            {
+              "value": "140+1",
+              "kind": "math",
+              "latex": "140+1",
+              "display": "140+1",
+              "correct": false,
+              "feedback": "中項は元の二項の和ではありません。"
+            }
+          ],
+          "id": "n09-p001-q08-left-square::middleTermUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "L1",
+          "id": "n09-p001-q08-left-square::L1",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-left-square::L1",
+          "kind": "math",
+          "expected": "280",
+          "prompt": "中項2×140×1を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "L2",
+          "id": "n09-p001-q08-left-square::L2",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-left-square::L2",
+          "kind": "math",
+          "expected": "19881",
+          "prompt": "三つの項を合計します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05",
+            "L1"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "L3",
+          "id": "n09-p001-q08-left-square::L3",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-left-square::L3",
+          "kind": "math",
+          "expected": "1.9881",
+          "prompt": "整数の平方を10000で割って小数に戻します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05",
+            "L1",
+            "L2"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "1.41^2=\\left(\\frac{141}{100}\\right)^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-p001-q08-left-square::ux05-row-01",
+          "mathGroupId": "n09-p001-q08-left-square-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "(140+1)^2=140^2+{middleTermUX05}+1^2",
+          "partKeys": [
+            "middleTermUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-p001-q08-left-square::ux05-row-02",
+          "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "=19600+{L1}+1",
+          "partKeys": [
+            "L1"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05"
+          ],
+          "id": "n09-p001-q08-left-square::ux05-row-03",
+          "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "=19600+{mirror:L1}+1={L2}",
+          "partKeys": [
+            "L2"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05",
+            "L1"
+          ],
+          "id": "n09-p001-q08-left-square::ux05-row-04",
+          "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "1.41^2=\\frac{{mirror:L2}}{10000}={L3}",
+          "partKeys": [
+            "L3"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05",
+            "L1",
+            "L2"
+          ],
+          "id": "n09-p001-q08-left-square::ux05-row-05",
+          "mathGroupId": "n09-p001-q08-left-square-ux05-math-05"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "141^2=19881",
+        "1.41^2=1.9881"
+      ],
+      "nodeId": "n09-p001-q08-left-square",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-decimal-method"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-decimal-method-result"
+      ],
+      "resultId": "n09-p001-q08-left-square-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-decimal-method"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-decimal-method-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-p001-q08-left-square-result",
+        "formulas": [
+          "141^2=19881",
+          "1.41^2=1.9881"
+        ],
+        "conditions": [
+          "候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"
+        ],
+        "requiresCorrectKeys": [
+          "middleTermUX05",
+          "L1",
+          "L2",
+          "L3"
+        ],
+        "certifiedFrom": [
+          "n09-decimal-method-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-p001-q08-left-square::L1",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-left-square::L1",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-p001-q08-left-square::L2",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-left-square::L2",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-p001-q08-left-square::L3",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-left-square::L3",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": [
+        "n09-p001-q08-left-square::middleTermUX05"
+      ]
+    },
+    {
+      "reason": "MASTER§53の既存計算3件を厳密保持。公式の具体適用である中項の構成を計算の直前へ置く。",
+      "completeSolution": "1.42²=(142/100)²。(140＋2)²=19600＋560＋4=20164。分母10000で割ると2.0164。",
+      "initialLead": "直前の参照公式を、この分子の二項へ適用します。",
+      "initialConditions": [
+        "候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "middleTermUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "(140＋2)²を和の平方の公式で展開します。中項を作る因子の組を選びます。",
+          "expected": "2\\times140\\times2",
+          "thinkingOperation": "和の平方の中項を二つの項から具体的に構成する。既存の積・和・小数化は別に保持する。",
+          "choices": [
+            {
+              "value": "2\\times140\\times2",
+              "kind": "math",
+              "latex": "2\\times140\\times2",
+              "display": "2\\times140\\times2",
+              "correct": true,
+              "feedback": "異なる二項の積が二つ分なので2×140×2です。"
+            },
+            {
+              "value": "140\\times2",
+              "kind": "math",
+              "latex": "140\\times2",
+              "display": "140\\times2",
+              "correct": false,
+              "feedback": "交差する積は二つあります。一つ分だけではありません。"
+            },
+            {
+              "value": "2\\times140^2",
+              "kind": "math",
+              "latex": "2\\times140^2",
+              "display": "2\\times140^2",
+              "correct": false,
+              "feedback": "二項のうち一方を二乗するのではなく、異なる二項を掛けます。"
+            },
+            {
+              "value": "140+2",
+              "kind": "math",
+              "latex": "140+2",
+              "display": "140+2",
+              "correct": false,
+              "feedback": "中項は元の二項の和ではありません。"
+            }
+          ],
+          "id": "n09-p001-q08-right-square::middleTermUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "R1",
+          "id": "n09-p001-q08-right-square::R1",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-right-square::R1",
+          "kind": "math",
+          "expected": "560",
+          "prompt": "中項2×140×2を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "R2",
+          "id": "n09-p001-q08-right-square::R2",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-right-square::R2",
+          "kind": "math",
+          "expected": "20164",
+          "prompt": "三つの項を合計します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05",
+            "R1"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "R3",
+          "id": "n09-p001-q08-right-square::R3",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-right-square::R3",
+          "kind": "math",
+          "expected": "2.0164",
+          "prompt": "整数の平方を小数に戻します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "middleTermUX05",
+            "R1",
+            "R2"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "1.42^2=\\left(\\frac{142}{100}\\right)^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-p001-q08-right-square::ux05-row-01",
+          "mathGroupId": "n09-p001-q08-right-square-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "(140+2)^2=140^2+{middleTermUX05}+2^2",
+          "partKeys": [
+            "middleTermUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-p001-q08-right-square::ux05-row-02",
+          "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "=19600+{R1}+4",
+          "partKeys": [
+            "R1"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05"
+          ],
+          "id": "n09-p001-q08-right-square::ux05-row-03",
+          "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "=19600+{mirror:R1}+4={R2}",
+          "partKeys": [
+            "R2"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05",
+            "R1"
+          ],
+          "id": "n09-p001-q08-right-square::ux05-row-04",
+          "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "1.42^2=\\frac{{mirror:R2}}{10000}={R3}",
+          "partKeys": [
+            "R3"
+          ],
+          "requiresCorrectKeys": [
+            "middleTermUX05",
+            "R1",
+            "R2"
+          ],
+          "id": "n09-p001-q08-right-square::ux05-row-05",
+          "mathGroupId": "n09-p001-q08-right-square-ux05-math-05"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "142^2=20164",
+        "1.42^2=2.0164"
+      ],
+      "nodeId": "n09-p001-q08-right-square",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-p001-q08-left-square"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-p001-q08-left-square-result"
+      ],
+      "resultId": "n09-p001-q08-right-square-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-p001-q08-left-square"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-p001-q08-left-square-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-p001-q08-right-square-result",
+        "formulas": [
+          "142^2=20164",
+          "1.42^2=2.0164"
+        ],
+        "conditions": [
+          "候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"
+        ],
+        "requiresCorrectKeys": [
+          "middleTermUX05",
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "certifiedFrom": [
+          "n09-p001-q08-left-square-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-p001-q08-right-square::R1",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-right-square::R1",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-p001-q08-right-square::R2",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-right-square::R2",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-p001-q08-right-square::R3",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-right-square::R3",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": [
+        "n09-p001-q08-right-square::middleTermUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "C",
+          "id": "n09-p001-q08-lower-sign::C",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-lower-sign::C",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "左の平方と2を比較します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-p001-q08-lower-sign",
+      "nodeId": "n09-p001-q08-lower-sign",
+      "decision": "KEEP",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-p001-q08-right-square"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-p001-q08-right-square-result"
+      ],
+      "resultId": "n09-p001-q08-lower-sign-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-p001-q08-lower-sign::C",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-lower-sign::C",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "D",
+          "id": "n09-p001-q08-upper-sign::D",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-p001-q08-upper-sign::D",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "2と右の平方を比較します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-p001-q08-upper-sign",
+      "nodeId": "n09-p001-q08-upper-sign",
+      "decision": "KEEP",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-p001-q08-lower-sign"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-p001-q08-lower-sign-result"
+      ],
+      "resultId": "n09-p001-q08-upper-sign-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-p001-q08-upper-sign::D",
+          "decision": "KEEP",
+          "newPartId": "n09-p001-q08-upper-sign::D",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-08",
+      "nodeId": "n09-08",
+      "decision": "KEEP",
+      "stageId": "n09-stage-06",
+      "q": 8,
+      "baselinePrerequisiteNodeIds": [
+        "n09-p001-q08-upper-sign",
+        "n09-p001-q08-left-square",
+        "n09-p001-q08-right-square",
+        "n09-p001-q08-lower-sign"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-p001-q08-upper-sign-result",
+        "n09-p001-q08-left-square-result",
+        "n09-p001-q08-right-square-result",
+        "n09-p001-q08-lower-sign-result"
+      ],
+      "resultId": "n09-08-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "lowerRelation",
+          "id": "n09-09::lowerRelation",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-09::lowerRelation",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "左の平方比較から、1.41と√2を比べます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "upperRelation",
+          "id": "n09-09::upperRelation",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-09::upperRelation",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "右の平方比較から上限を決めます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "lowerRelation"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-09",
+      "nodeId": "n09-09",
+      "decision": "KEEP",
+      "stageId": "n09-stage-06",
+      "q": 9,
+      "baselinePrerequisiteNodeIds": [
+        "n09-08"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-08-result"
+      ],
+      "resultId": "n09-09-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-09::lowerRelation",
+          "decision": "KEEP",
+          "newPartId": "n09-09::lowerRelation",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-09::upperRelation",
+          "decision": "KEEP",
+          "newPartId": "n09-09::upperRelation",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-parts-target",
+      "nodeId": "n09-parts-target",
+      "decision": "KEEP",
+      "stageId": "n09-stage-07",
+      "q": 10,
+      "baselinePrerequisiteNodeIds": [
+        "n09-09"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-09-result"
+      ],
+      "resultId": "n09-parts-target-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "元の剰余計算を残し、定義により候補を棄却する判断を本人が行う。",
+      "completeSolution": "n=−2ならr=−2.1−(−2)=−2.1＋2=−0.1。0≤r<1に反するのでn=−2は採用できない。",
+      "initialLead": "−2.1の整数部分を−2と仮定した候補を検査します。",
+      "initialConditions": [
+        "残りは0≤r<1でなければならない。"
+      ],
+      "givenRules": [
+        "x=n+r、nは整数、0≤r<1。"
+      ],
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q10-reject-truncation::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q10-reject-truncation::value",
+          "kind": "math",
+          "expected": "-0.1",
+          "prompt": "候補n=−2の残りを計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "candidateValidityUX05",
+          "decision": "NEW",
+          "kind": "text",
+          "role": "meaningful-condition-application",
+          "prompt": "n=−2とした候補を、rの条件に照らしてどう判断しますか。",
+          "expected": "reject-range",
+          "thinkingOperation": "候補を整数部分・小数部分の定義に照らして棄却する。",
+          "choices": [
+            {
+              "value": "reject-range",
+              "kind": "text",
+              "display": "rが許される範囲にないため不採用",
+              "correct": true,
+              "feedback": "r=−0.1は0≤r<1を満たしません。"
+            },
+            {
+              "value": "accept-integer",
+              "kind": "text",
+              "display": "nが整数なので採用",
+              "correct": false,
+              "feedback": "nが整数であることに加えて、rの範囲も必要です。"
+            },
+            {
+              "value": "accept-truncation",
+              "kind": "text",
+              "display": "小数を切り捨てた形なので採用",
+              "correct": false,
+              "feedback": "見た目ではなく、定義の条件を満たすかを確認します。"
+            },
+            {
+              "value": "reject-negative-integer",
+              "kind": "text",
+              "display": "nが負なので不採用",
+              "correct": false,
+              "feedback": "整数部分は負でも構いません。条件はrの範囲です。"
+            }
+          ],
+          "id": "n09-q10-reject-truncation::candidateValidityUX05",
+          "dependsOnKeys": [
+            "value"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "-2.1-(-2)=-2.1+2={value}",
+          "partKeys": [
+            "value"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-q10-reject-truncation::ux05-row-01",
+          "mathGroupId": "n09-q10-reject-truncation-ux05-math-01"
+        },
+        {
+          "kind": "text",
+          "template": "候補の判断：{candidateValidityUX05}",
+          "partKeys": [
+            "candidateValidityUX05"
+          ],
+          "requiresCorrectKeys": [
+            "value"
+          ],
+          "id": "n09-q10-reject-truncation::ux05-row-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "-2.1-(-2)=-0.1<0"
+      ],
+      "nodeId": "n09-q10-reject-truncation",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-07",
+      "q": 10,
+      "baselinePrerequisiteNodeIds": [
+        "n09-parts-target"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-parts-target-result"
+      ],
+      "resultId": "n09-q10-reject-truncation-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-parts-target"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-parts-target-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q10-reject-truncation-result",
+        "formulas": [
+          "-2.1-(-2)=-0.1<0"
+        ],
+        "conditions": [
+          "残りは0≤r<1でなければならない。"
+        ],
+        "requiresCorrectKeys": [
+          "value",
+          "candidateValidityUX05"
+        ],
+        "certifiedFrom": [
+          "n09-parts-target-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q10-reject-truncation::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q10-reject-truncation::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": [
+        "n09-q10-reject-truncation::candidateValidityUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "n",
+          "id": "n09-10::n",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-10::n",
+          "kind": "math",
+          "expected": "-3",
+          "prompt": "−2.1を含む単位区間の左端の整数を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-10",
+      "nodeId": "n09-10",
+      "decision": "KEEP",
+      "stageId": "n09-stage-07",
+      "q": 10,
+      "baselinePrerequisiteNodeIds": [
+        "n09-q10-reject-truncation"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-q10-reject-truncation-result"
+      ],
+      "resultId": "n09-10-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-10::n",
+          "decision": "KEEP",
+          "newPartId": "n09-10::n",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "負数を引く演算子だけの小問を外し、既存の初出剰余計算は維持。",
+      "completeSolution": "r=−2.1−(−3)=−2.1＋3=0.9。",
+      "initialLead": "確定した整数部分n=−3を使い、rを計算します。",
+      "initialConditions": [
+        "x=−2.1、n=−3、r=x−n、0≤r<1。"
+      ],
+      "givenRules": [],
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q11-remainder::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q11-remainder::value",
+          "kind": "math",
+          "expected": "0.9",
+          "prompt": "残りの値を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "r=-2.1-(-3)=-2.1+3={value}",
+          "partKeys": [
+            "value"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-q11-remainder::ux05-row-01",
+          "mathGroupId": "n09-q11-remainder-ux05-math-01"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "r=0.9",
+        "0\\le0.9<1"
+      ],
+      "nodeId": "n09-q11-remainder",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-08",
+      "q": 11,
+      "baselinePrerequisiteNodeIds": [
+        "n09-parts-target",
+        "n09-10"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "resultId": "n09-q11-remainder-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-parts-target",
+        "n09-10"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q11-remainder-result",
+        "formulas": [
+          "r=0.9",
+          "0\\le0.9<1"
+        ],
+        "conditions": [
+          "x=−2.1、n=−3、r=x−n、0≤r<1。"
+        ],
+        "requiresCorrectKeys": [
+          "value"
+        ],
+        "certifiedFrom": [
+          "n09-parts-target-result",
+          "n09-10-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q11-remainder::sign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        },
+        {
+          "oldPartId": "n09-q11-remainder::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q11-remainder::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-11",
+      "nodeId": "n09-11",
+      "decision": "KEEP",
+      "stageId": "n09-stage-08",
+      "q": 11,
+      "baselinePrerequisiteNodeIds": [
+        "n09-parts-target",
+        "n09-10",
+        "n09-q11-remainder"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-parts-target-result",
+        "n09-10-result",
+        "n09-q11-remainder-result"
+      ],
+      "resultId": "n09-11-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q12-lower::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q12-lower::value",
+          "kind": "math",
+          "expected": "9",
+          "prompt": "左の整数3の平方を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q12-lower",
+      "nodeId": "n09-q12-lower",
+      "decision": "KEEP",
+      "stageId": "n09-stage-09",
+      "q": 12,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result"
+      ],
+      "resultId": "n09-q12-lower-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q12-lower::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q12-lower::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q12-upper::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q12-upper::value",
+          "kind": "math",
+          "expected": "16",
+          "prompt": "右の整数4の平方を計算します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q12-upper",
+      "nodeId": "n09-q12-upper",
+      "decision": "KEEP",
+      "stageId": "n09-stage-09",
+      "q": 12,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-q12-lower"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-q12-lower-result"
+      ],
+      "resultId": "n09-q12-upper-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q12-upper::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q12-upper::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "lower",
+          "id": "n09-12::lower",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-12::lower",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "左端3と√10を比較します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "upper",
+          "id": "n09-12::upper",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-12::upper",
+          "kind": "math",
+          "expected": "<",
+          "prompt": "√10と右端4を比較します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "lower"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-12",
+      "nodeId": "n09-12",
+      "decision": "KEEP",
+      "stageId": "n09-stage-09",
+      "q": 12,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-q12-upper",
+        "n09-q12-lower"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-q12-upper-result",
+        "n09-q12-lower-result"
+      ],
+      "resultId": "n09-12-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-12::lower",
+          "decision": "KEEP",
+          "newPartId": "n09-12::lower",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-12::upper",
+          "decision": "KEEP",
+          "newPartId": "n09-12::upper",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "負数倍した不等号の向きをleadで先答えしない。両境界の向きを決める既存の適用は残す。",
+      "completeSolution": "3<√10<4の各辺を−1倍すると−3>−√10>−4。",
+      "initialLead": "確定した比較の各辺を−1倍し、−√10の範囲を表します。",
+      "initialConditions": [
+        "各辺へ同じ負数−1を掛ける。"
+      ],
+      "givenRules": [
+        "負の数を掛けると大小の向きが変わる。一般則を教え、具体的な二境界へ適用する。"
+      ],
+      "parts": [
+        {
+          "key": "S1",
+          "id": "n09-q13-reverse::S1",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q13-reverse::S1",
+          "kind": "math",
+          "expected": ">",
+          "prompt": "左側の関係を負の乗算後へ移します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "S2",
+          "id": "n09-q13-reverse::S2",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q13-reverse::S2",
+          "kind": "math",
+          "expected": ">",
+          "prompt": "右側の関係も負の乗算後へ移します。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "S1"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "3<\\sqrt{10}<4",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "id": "n09-q13-reverse::ux05-row-01",
+          "mathGroupId": "n09-q13-reverse-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "-3\\ {S1}\\ -\\sqrt{10}\\ {S2}\\ -4",
+          "partKeys": [
+            "S1",
+            "S2"
+          ],
+          "requiresCorrectKeys": [],
+          "id": "n09-q13-reverse::ux05-row-02",
+          "mathGroupId": "n09-q13-reverse-ux05-math-02"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "-3>-\\sqrt{10}>-4"
+      ],
+      "nodeId": "n09-q13-reverse",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-10",
+      "q": 13,
+      "baselinePrerequisiteNodeIds": [
+        "n09-12"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-12-result"
+      ],
+      "resultId": "n09-q13-reverse-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-12"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-12-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q13-reverse-result",
+        "formulas": [
+          "-3>-\\sqrt{10}>-4"
+        ],
+        "conditions": [
+          "各辺へ同じ負数−1を掛ける。"
+        ],
+        "requiresCorrectKeys": [
+          "S1",
+          "S2"
+        ],
+        "certifiedFrom": [
+          "n09-12-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q13-reverse::S1",
+          "decision": "KEEP",
+          "newPartId": "n09-q13-reverse::S1",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-q13-reverse::S2",
+          "decision": "KEEP",
+          "newPartId": "n09-q13-reverse::S2",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "left",
+          "id": "n09-13::left",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-13::left",
+          "kind": "math",
+          "expected": "-4",
+          "prompt": "小さい順の左端を置きます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        },
+        {
+          "key": "right",
+          "id": "n09-13::right",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-13::right",
+          "kind": "math",
+          "expected": "-3",
+          "prompt": "小さい順の右端を置きます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [
+            "left"
+          ],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-13",
+      "nodeId": "n09-13",
+      "decision": "KEEP",
+      "stageId": "n09-stage-10",
+      "q": 13,
+      "baselinePrerequisiteNodeIds": [
+        "n09-12",
+        "n09-q13-reverse"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-12-result",
+        "n09-q13-reverse-result"
+      ],
+      "resultId": "n09-13-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-13::left",
+          "decision": "KEEP",
+          "newPartId": "n09-13::left",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        },
+        {
+          "oldPartId": "n09-13::right",
+          "decision": "KEEP",
+          "newPartId": "n09-13::right",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q14-positive-integer::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q14-positive-integer::value",
+          "kind": "math",
+          "expected": "3",
+          "prompt": "√10の整数部分を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q14-positive-integer",
+      "nodeId": "n09-q14-positive-integer",
+      "decision": "KEEP",
+      "stageId": "n09-stage-11",
+      "q": 14,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resultId": "n09-q14-positive-integer-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q14-positive-integer::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q14-positive-integer::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "演算子一字から、定義に基づく小数部分の式全体へ置換。範囲の確かめは必要な途中式として見せる。",
+      "completeSolution": "r=√10−3、3<√10<4の各辺から3を引くと0<r<1。",
+      "initialLead": "既に確定した整数部分を用いて、小数部分を求めます。",
+      "initialConditions": [
+        "整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"
+      ],
+      "givenRules": [
+        "x=n+r、nは整数、0≤r<1。従ってr=x−n。"
+      ],
+      "parts": [
+        {
+          "key": "remainderExpressionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "定義r=x−nを使い、確定した整数部分を除いた小数部分の式を選びます。",
+          "expected": "\\sqrt{10}-3",
+          "thinkingOperation": "実数と整数部分の符号を合わせて、剰余の式全体を構成する。",
+          "choices": [
+            {
+              "value": "\\sqrt{10}-3",
+              "kind": "math",
+              "latex": "\\sqrt{10}-3",
+              "display": "\\sqrt{10}-3",
+              "correct": true,
+              "feedback": "r=x−nに確定した値を代入した式です。"
+            },
+            {
+              "value": "\\sqrt{10}+3",
+              "kind": "math",
+              "latex": "\\sqrt{10}+3",
+              "display": "\\sqrt{10}+3",
+              "correct": false,
+              "feedback": "正の整数部分3は足すのではなく引きます。"
+            },
+            {
+              "value": "3-\\sqrt{10}",
+              "kind": "math",
+              "latex": "3-\\sqrt{10}",
+              "display": "3-\\sqrt{10}",
+              "correct": false,
+              "feedback": "引く順序が逆です。小数部分の非負条件も確認してください。"
+            },
+            {
+              "value": "\\sqrt{10}/3",
+              "kind": "math",
+              "latex": "\\sqrt{10}/3",
+              "display": "\\sqrt{10}/3",
+              "correct": false,
+              "feedback": "整数部分を除く操作は割り算ではありません。"
+            }
+          ],
+          "id": "n09-q14-positive-remainder::remainderExpressionUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "r={remainderExpressionUX05}",
+          "partKeys": [
+            "remainderExpressionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-positive-remainder::ux05-row-01",
+          "mathGroupId": "n09-q14-positive-remainder-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "r=\\sqrt{10}-3",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-positive-remainder::ux05-row-02",
+          "mathGroupId": "n09-q14-positive-remainder-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "3<\\sqrt{10}<4\\ \\Rightarrow\\ 0<\\sqrt{10}-3<1",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-positive-remainder::ux05-row-03",
+          "mathGroupId": "n09-q14-positive-remainder-ux05-math-03"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "r=\\sqrt{10}-3",
+        "0<\\sqrt{10}-3<1"
+      ],
+      "nodeId": "n09-q14-positive-remainder",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-11",
+      "q": 14,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-positive-integer"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-positive-integer-result"
+      ],
+      "resultId": "n09-q14-positive-remainder-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-positive-integer"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-positive-integer-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q14-positive-remainder-result",
+        "formulas": [
+          "r=\\sqrt{10}-3",
+          "0<\\sqrt{10}-3<1"
+        ],
+        "conditions": [
+          "整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"
+        ],
+        "requiresCorrectKeys": [
+          "remainderExpressionUX05"
+        ],
+        "certifiedFrom": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-positive-integer-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q14-positive-remainder::remainderOperation",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-q14-positive-remainder::remainderExpressionUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [
+        {
+          "key": "value",
+          "id": "n09-q14-negative-integer::value",
+          "decision": "KEEP",
+          "baselineContractRef": "66c8007b:n09-q14-negative-integer::value",
+          "kind": "math",
+          "expected": "-4",
+          "prompt": "−√10の整数部分を選びます。",
+          "contract": "型・問い・正答・全候補・誤答説明・数学対象を同IDで厳密保持。行の前提は本案に従う。",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "baselineNodeContractRef": "66c8007b:n09-q14-negative-integer",
+      "nodeId": "n09-q14-negative-integer",
+      "decision": "KEEP",
+      "stageId": "n09-stage-11",
+      "q": 14,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-positive-remainder"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-positive-remainder-result"
+      ],
+      "resultId": "n09-q14-negative-integer-result",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q14-negative-integer::value",
+          "decision": "KEEP",
+          "newPartId": "n09-q14-negative-integer::value",
+          "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+        }
+      ],
+      "newPartIds": []
+    },
+    {
+      "reason": "演算子一字から、定義に基づく小数部分の式全体へ置換。範囲の確かめは必要な途中式として見せる。",
+      "completeSolution": "r=−√10−(−4)=−√10＋4=4−√10。−4<−√10<−3の各辺に4を加えると0<r<1。",
+      "initialLead": "既に確定した整数部分を用いて、小数部分を求めます。",
+      "initialConditions": [
+        "整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"
+      ],
+      "givenRules": [
+        "x=n+r、nは整数、0≤r<1。従ってr=x−n。"
+      ],
+      "parts": [
+        {
+          "key": "remainderExpressionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "定義r=x−nを使い、確定した整数部分を除いた小数部分の式を選びます。",
+          "expected": "4-\\sqrt{10}",
+          "thinkingOperation": "実数と整数部分の符号を合わせて、剰余の式全体を構成する。",
+          "choices": [
+            {
+              "value": "4-\\sqrt{10}",
+              "kind": "math",
+              "latex": "4-\\sqrt{10}",
+              "display": "4-\\sqrt{10}",
+              "correct": true,
+              "feedback": "r=x−nに確定した値を代入した式です。"
+            },
+            {
+              "value": "-\\sqrt{10}-4",
+              "kind": "math",
+              "latex": "-\\sqrt{10}-4",
+              "display": "-\\sqrt{10}-4",
+              "correct": false,
+              "feedback": "引く整数部分は−4です。−4を引く操作を確かめてください。"
+            },
+            {
+              "value": "\\sqrt{10}-4",
+              "kind": "math",
+              "latex": "\\sqrt{10}-4",
+              "display": "\\sqrt{10}-4",
+              "correct": false,
+              "feedback": "対象の実数は−√10です。"
+            },
+            {
+              "value": "4+\\sqrt{10}",
+              "kind": "math",
+              "latex": "4+\\sqrt{10}",
+              "display": "4+\\sqrt{10}",
+              "correct": false,
+              "feedback": "対象の−√10の符号を保持してください。"
+            }
+          ],
+          "id": "n09-q14-negative-remainder::remainderExpressionUX05",
+          "dependsOnKeys": [],
+          "wrongBehaviour": "足場と誤答説明を保持し、後続part・条件・完成式・nodeを解放しない。"
+        }
+      ],
+      "rows": [
+        {
+          "kind": "math",
+          "template": "r={remainderExpressionUX05}",
+          "partKeys": [
+            "remainderExpressionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "hideAfterCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-negative-remainder::ux05-row-01",
+          "mathGroupId": "n09-q14-negative-remainder-ux05-math-01"
+        },
+        {
+          "kind": "math",
+          "template": "r=-\\sqrt{10}-(-4)=-\\sqrt{10}+4=4-\\sqrt{10}",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-negative-remainder::ux05-row-02",
+          "mathGroupId": "n09-q14-negative-remainder-ux05-math-02"
+        },
+        {
+          "kind": "math",
+          "template": "-4<-\\sqrt{10}<-3",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-negative-remainder::ux05-row-03",
+          "mathGroupId": "n09-q14-negative-remainder-ux05-math-03"
+        },
+        {
+          "kind": "math",
+          "template": "0<4-\\sqrt{10}<1",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "remainderExpressionUX05"
+          ],
+          "id": "n09-q14-negative-remainder::ux05-row-04",
+          "mathGroupId": "n09-q14-negative-remainder-ux05-math-04"
+        }
+      ],
+      "additionalRequiredResultRefs": [],
+      "terminalFormulas": [
+        "r=4-\\sqrt{10}",
+        "0<4-\\sqrt{10}<1"
+      ],
+      "nodeId": "n09-q14-negative-remainder",
+      "decision": "CHANGE",
+      "stageId": "n09-stage-11",
+      "q": 14,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-negative-integer"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-negative-integer-result"
+      ],
+      "resultId": "n09-q14-negative-remainder-result",
+      "proposedPrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-negative-integer"
+      ],
+      "proposedRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-negative-integer-result"
+      ],
+      "classification": "NEW_CONSTRUCTION",
+      "terminalRecord": {
+        "resultId": "n09-q14-negative-remainder-result",
+        "formulas": [
+          "r=4-\\sqrt{10}",
+          "0<4-\\sqrt{10}<1"
+        ],
+        "conditions": [
+          "整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"
+        ],
+        "requiresCorrectKeys": [
+          "remainderExpressionUX05"
+        ],
+        "certifiedFrom": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-negative-integer-result"
+        ]
+      },
+      "gateContract": "各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。",
+      "leakControl": "初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。",
+      "oldPartMapping": [
+        {
+          "oldPartId": "n09-q14-negative-remainder::sign",
+          "decision": "RETIRE",
+          "newPartId": null,
+          "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+        }
+      ],
+      "newPartIds": [
+        "n09-q14-negative-remainder::remainderExpressionUX05"
+      ]
+    },
+    {
+      "reason": "学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。",
+      "parts": [],
+      "baselineNodeContractRef": "66c8007b:n09-14",
+      "nodeId": "n09-14",
+      "decision": "KEEP",
+      "stageId": "n09-stage-11",
+      "q": 14,
+      "baselinePrerequisiteNodeIds": [
+        "n09-11",
+        "n09-12",
+        "n09-13",
+        "n09-q14-negative-remainder",
+        "n09-q14-positive-integer",
+        "n09-q14-positive-remainder",
+        "n09-q14-negative-integer"
+      ],
+      "baselineRequiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-negative-remainder-result",
+        "n09-q14-positive-integer-result",
+        "n09-q14-positive-remainder-result",
+        "n09-q14-negative-integer-result"
+      ],
+      "resultId": "n09-14-result",
+      "oldPartMapping": [],
+      "newPartIds": []
+    }
+  ],
+  "validation": "本ファイルは設計案の構造集計のみ。製品実装・新テスト・browser QAは未実施。"
+}

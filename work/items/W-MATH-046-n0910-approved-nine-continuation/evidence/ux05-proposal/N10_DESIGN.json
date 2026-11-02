@@ -1,0 +1,3153 @@
+{
+  "schemaVersion": "w046-ux05-n10-design/1",
+  "status": "COMPLETE_DRAFT_PENDING_NONAUTHOR_REVIEW_NOT_IMPLEMENTATION_APPROVAL",
+  "author": "/root/w046_render_review",
+  "unitId": "math-numbers-expressions-n10",
+  "baselineCodeCommit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+  "baselineCompiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+  "baselineCompiledFileSHA256": "969b3fe063f8ea21f35904812d06b1fd4842961912077811377bb384f92cd41e",
+  "fromRevision": 4,
+  "toRevision": 5,
+  "auditReference": "work/items/W-MATH-046-n0910-approved-nine-continuation/evidence/ux05-feedback/PEDAGOGY_AUDIT.json",
+  "globalContract": [
+    "新設問を増やす数ノルマなし。既習公式の具体適用/必要計算/定義域/正性/非零/同定を主単位とし、t²・5で割る操作・分母の写し・毎回の符号再証明を追加しない。",
+    "KEEPは固定commitのnode/part本文・問い・全候補・正答・誤答説明を維持。変更node内KEEPもpart契約は同一だが新しい未解決前提を飛ばして解放しない。",
+    "全rows.requiresCorrectKeysはANDかつpartOrderのordered-correct。前提nodeがcompleteとなり当該nodeへ到達した時だけ初期rowsを表示。誤答はその値と理由を表示して後続を止める。",
+    "完成解法は設計資料であり初期全文表示ではない。初期画面はlearnerLead/assumptionsとrequiresCorrectKeysが空の行だけ。候補に正答印を出さず既存安定シャッフル。",
+    "初期assumptionsは当該問いへの既知条件のみ。未来nodeの答えを逆流させない。定理の一般公式を既習参照として出すことと具体対象の完成形を与えることは区別する。",
+    "数学的に正しい因子順・項順の交換は誤りとしない。選択式では等価な正答を複数候補に置かず、別の書き方はfeedbackで承認。候補外の正しい数学を不可能と断言しない。",
+    "正答表示はroot共有renderer改訂で自然な数式へ戻す。各nodeで44px phantomを避ける専用回避策/固定括弧/薄い空白は増やさない。",
+    "RETIREはr4 archiveへ原recordを保持し新意味にaliasしない。NEWは未回答。現nodeの全解放状態は新版の未解決前提を含め再評価し、全回答リセットは行わない。",
+    "cross-nodeの確定値は該当result参照で投影し、別nodeのキーをmirrorと偽装しない。変更のない別問題での転移計算まで一律に削除しない。"
+  ],
+  "nodes": [
+    {
+      "nodeId": "n10-q01-square",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q01-square"
+      },
+      "reason": "候補平方へ平方根の定義を使う必要計算rootSquareを保持。t×tの新しい別穴なし。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q01-square::rootSquare",
+          "action": "KEEP",
+          "newId": "n10-q01-square::rootSquare",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-01",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-01"
+      },
+      "reason": "必要なt²=25の算出を保持。5で割る演算記号を追加しない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-01::value",
+          "action": "KEEP",
+          "newId": "n10-01::value",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q02-sign",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q02-sign"
+      },
+      "reason": "t>0から±5の正の候補を選ぶ条件判断。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q02-sign::value",
+          "action": "KEEP",
+          "newId": "n10-q02-sign::value",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-02",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-02"
+      },
+      "reason": "本人承認の正性→平方125→同定理由を厳密保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-02::candidateSign",
+          "action": "KEEP",
+          "newId": "n10-02::candidateSign",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-02::squareValue",
+          "action": "KEEP",
+          "newId": "n10-02::squareValue",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-02::identificationReason",
+          "action": "KEEP",
+          "newId": "n10-02::identificationReason",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q03-expand",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q03-expand"
+      },
+      "reason": "既存の平方作用の二因子構成を保持。新たな基本累乗の小問を増やさない。指数の組を新しい二概念と称さない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q03-expand::powerA",
+          "action": "KEEP",
+          "newId": "n10-q03-expand::powerA",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q03-expand::powerB",
+          "action": "KEEP",
+          "newId": "n10-q03-expand::powerB",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-03",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-03"
+      },
+      "reason": "積の証明で平方根定義を各パラメータへ適用しabを作る必要計算。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-03::aValue",
+          "action": "KEEP",
+          "newId": "n10-03::aValue",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-03::bValue",
+          "action": "KEEP",
+          "newId": "n10-03::bValue",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q04-sign",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q04-sign"
+      },
+      "reason": "積が正である証拠を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q04-sign::relation",
+          "action": "KEEP",
+          "newId": "n10-q04-sign::relation",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-04",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-04"
+      },
+      "reason": "正性と平方の両方から平方根を同定する理由を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-04::rootReason",
+          "action": "KEEP",
+          "newId": "n10-04::rootReason",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q05-denominator",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q05-denominator"
+      },
+      "reason": "分母非零は商の存在の核心なので保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q05-denominator::relation",
+          "action": "KEEP",
+          "newId": "n10-q05-denominator::relation",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q05-square",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q05-square"
+      },
+      "reason": "既存の上下への平方の作用を保持。scope写し/指数の新しい反復小問は加えない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q05-square::numPower",
+          "action": "KEEP",
+          "newId": "n10-q05-square::numPower",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q05-square::denPower",
+          "action": "KEEP",
+          "newId": "n10-q05-square::denPower",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-05",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-05"
+      },
+      "reason": "商の平方a/bを自ら作る必要な定義適用を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-05::numerator",
+          "action": "KEEP",
+          "newId": "n10-05::numerator",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-05::denominator",
+          "action": "KEEP",
+          "newId": "n10-05::denominator",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q06-sign",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q06-sign"
+      },
+      "reason": "商の正性は平方根の同定に必要。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q06-sign::relation",
+          "action": "KEEP",
+          "newId": "n10-q06-sign::relation",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-06",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-06"
+      },
+      "reason": "商の存在と正の平方根の同定理由を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-06::quotientReason",
+          "action": "KEEP",
+          "newId": "n10-06::quotientReason",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q07-product",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q07-product"
+      },
+      "reason": "証明した積の性質の初回適用と内積48を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q07-product::insideOperation",
+          "action": "KEEP",
+          "newId": "n10-q07-product::insideOperation",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q07-product::inside",
+          "action": "KEEP",
+          "newId": "n10-q07-product::inside",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-07",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-07"
+      },
+      "reason": "最大平方因子16と残因子3の方針/必要計算。4という別の正しい途中分解を偽としない最大指定。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-07::squareFactor",
+          "action": "KEEP",
+          "newId": "n10-07::squareFactor",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-07::factor",
+          "action": "KEEP",
+          "newId": "n10-07::factor",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q08-factor",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q08-factor"
+      },
+      "reason": "平方因子を根号外へ出す係数4の初回具体適用。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q08-factor::coefficient",
+          "action": "KEEP",
+          "newId": "n10-q08-factor::coefficient",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-08",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-08"
+      },
+      "reason": "確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。",
+      "oldPartDecisions": []
+    },
+    {
+      "nodeId": "n10-q09-left",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q09-left"
+      },
+      "reason": "局所の根号簡単化の方針と係数を保持。残因子や基本指数の新しい別問は足さない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q09-left::squareFactor",
+          "action": "KEEP",
+          "newId": "n10-q09-left::squareFactor",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q09-left::coefficient",
+          "action": "KEEP",
+          "newId": "n10-q09-left::coefficient",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q09-right",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q09-right"
+      },
+      "reason": "右項への転移。既存方針と係数5を保持し基本手順を追加分割しない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q09-right::squareFactor",
+          "action": "KEEP",
+          "newId": "n10-q09-right::squareFactor",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q09-right::coefficient",
+          "action": "KEEP",
+          "newId": "n10-q09-right::coefficient",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-09",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-09"
+      },
+      "reason": "確定した二項を元の和へ戻すAUTO。次nodeの係数和の式は先に出さない。",
+      "oldPartDecisions": []
+    },
+    {
+      "nodeId": "n10-q10-coefficients",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-05",
+      "resultId": "n10-q10-coefficients-result",
+      "purpose": "√2を先にくくってから7だけ問うAUTO主判断を、係数和の式の構成へ置換。追加の平方因子/係数の基本小問は作らない。",
+      "learnerLead": "二つの項を、共通する根号の何個分かという形でまとめます。",
+      "learnerAssumptions": [
+        "直前で√8=2√2、√50=5√2を確定済み。"
+      ],
+      "initialRows": [
+        "n10-q10-coefficients::ux05-collect"
+      ],
+      "completeHoleFreeSolution": [
+        "2\\sqrt2+5\\sqrt2=(2+5)\\sqrt2=7\\sqrt2"
+      ],
+      "partOrder": [
+        "collectedExpressionUX05",
+        "coefficient"
+      ],
+      "parts": [
+        {
+          "id": "n10-q10-coefficients::collectedExpressionUX05",
+          "key": "collectedExpressionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "expression",
+          "prompt": "共通する根号を保ち、二つの項の和を係数の和で表した式を選びます。",
+          "learningOperation": "同類の根号項を分配法則の逆で集める。",
+          "expected": "(2+5)\\sqrt2",
+          "choices": [
+            {
+              "value": "(2+5)\\sqrt2",
+              "kind": "math",
+              "latex": "(2+5)\\sqrt2",
+              "display": "(2+5)\\sqrt2",
+              "correct": true,
+              "feedback": "共通因子√2を保ち、係数を足す分配法則の逆です。",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\sqrt{2+5}",
+              "kind": "math",
+              "latex": "\\sqrt{2+5}",
+              "display": "\\sqrt{2+5}",
+              "correct": false,
+              "feedback": "係数を根号内へ入れる変形はできません。元の二項はいずれも√2の倍数です。",
+              "misconception": "係数を根号内へ入れる変形はできません。元の二項はいずれも√2の倍数です。"
+            },
+            {
+              "value": "(2+5)\\sqrt{2+2}",
+              "kind": "math",
+              "latex": "(2+5)\\sqrt{2+2}",
+              "display": "(2+5)\\sqrt{2+2}",
+              "correct": false,
+              "feedback": "同じ√2をくくる操作です。根号内の2を足して変えてはいけません。",
+              "misconception": "同じ√2をくくる操作です。根号内の2を足して変えてはいけません。"
+            },
+            {
+              "value": "(2\\times5)\\sqrt2",
+              "kind": "math",
+              "latex": "(2\\times5)\\sqrt2",
+              "display": "(2\\times5)\\sqrt2",
+              "correct": false,
+              "feedback": "元は和です。係数を掛けるのでなく足してまとめます。",
+              "misconception": "元は和です。係数を掛けるのでなく足してまとめます。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q10-coefficients::ux05-collect",
+              "kind": "math",
+              "template": "2\\sqrt2+5\\sqrt2={collectedExpressionUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        },
+        {
+          "key": "coefficient",
+          "role": "coefficient",
+          "kind": "math",
+          "expected": "7",
+          "prompt": "係数2+5を計算します。",
+          "choices": [
+            {
+              "value": "7",
+              "kind": "math",
+              "latex": "7",
+              "display": "7",
+              "misconception": "正答",
+              "feedback": "確定した結果を次の計算へ使います。"
+            },
+            {
+              "value": "10",
+              "kind": "math",
+              "latex": "10",
+              "display": "10",
+              "misconception": "係数を掛けずに足します。",
+              "feedback": "係数を掛けずに足します。"
+            },
+            {
+              "value": "3",
+              "kind": "math",
+              "latex": "3",
+              "display": "3",
+              "misconception": "二つの項は加算されています。",
+              "feedback": "二つの項は加算されています。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "exact-evaluation",
+            "expression": "2+5",
+            "expected": "7",
+            "reviewStatus": "PENDING_CODE",
+            "sourceRefs": [
+              "n10-q10-coefficients-before",
+              "n10-q10-coefficients-interaction-0",
+              "n10-q10-coefficients-equation",
+              "n10-q10-coefficients-after"
+            ]
+          },
+          "id": "n10-q10-coefficients::coefficient",
+          "learningAction": "指定した演算の結果を計算する",
+          "sourceRefs": [
+            "n10-q10-coefficients-before",
+            "n10-q10-coefficients-interaction-0",
+            "n10-q10-coefficients-equation",
+            "n10-q10-coefficients-after"
+          ],
+          "decision": "KEEP",
+          "recordPolicy": "SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES",
+          "answerSites": [
+            {
+              "rowId": "n10-q10-coefficients::ux05-sum",
+              "kind": "math",
+              "template": "=(2+5)\\sqrt2={coefficient}\\sqrt2"
+            }
+          ],
+          "requiresCorrectKeys": [
+            "collectedExpressionUX05"
+          ],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q10-coefficients::ux05-collect",
+          "kind": "math",
+          "template": "2\\sqrt2+5\\sqrt2={collectedExpressionUX05}",
+          "partKeys": [
+            "collectedExpressionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q10-coefficients-ux05-main"
+        },
+        {
+          "id": "n10-q10-coefficients::ux05-sum",
+          "kind": "math",
+          "template": "=(2+5)\\sqrt2={coefficient}\\sqrt2",
+          "partKeys": [
+            "coefficient"
+          ],
+          "requiresCorrectKeys": [
+            "collectedExpressionUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q10-coefficients-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q10-coefficients::coefficient",
+          "action": "KEEP",
+          "newId": "n10-q10-coefficients::coefficient",
+          "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-04",
+        "n10-09"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-09-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q10-coefficients::terminal",
+        "formulas": [
+          "2\\sqrt2+5\\sqrt2=7\\sqrt2"
+        ],
+        "conditions": [
+          "共通因子√2をくくる分配法則。"
+        ],
+        "prose": "係数の合計は7です。元の二つの根号の和の結論になります。",
+        "requiresCorrectKeys": [
+          "collectedExpressionUX05",
+          "coefficient"
+        ],
+        "certifiedFrom": [
+          "n10-04-result",
+          "n10-09-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "係数の合計は"
+          },
+          {
+            "type": "math",
+            "latex": "7"
+          },
+          {
+            "type": "text",
+            "text": "です。元の二つの根号の和の結論になります。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "共通因子"
+            },
+            {
+              "type": "math",
+              "latex": "\\sqrt{2}"
+            },
+            {
+              "type": "text",
+              "text": "をくくる分配法則。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-10",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-10"
+      },
+      "reason": "確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。",
+      "oldPartDecisions": []
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-06",
+      "resultId": "n10-q11-formula-result",
+      "purpose": "−一字だけの公式当てとUX04六段階の分配再証明をともに避ける。",
+      "learnerLead": "既習の差の平方を、二つの根号を含む式に適用します。中項を自分で作りましょう。",
+      "learnerAssumptions": [
+        "既習公式：(A-B)^2=A^2-2AB+B^2。"
+      ],
+      "initialRows": [
+        "n10-q11-formula::ux05-middle"
+      ],
+      "completeHoleFreeSolution": [
+        "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2-2\\sqrt2\\sqrt3+(\\sqrt3)^2"
+      ],
+      "partOrder": [
+        "signedMiddleTermUX05"
+      ],
+      "parts": [
+        {
+          "id": "n10-q11-formula::signedMiddleTermUX05",
+          "key": "signedMiddleTermUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "expression",
+          "prompt": "差の平方の公式をこの根号式へ適用し、中項全体を符号込みで作ります。",
+          "learningOperation": "差平方公式の2ABを具体的な二根号へ対応し、符号と係数を含む中項を構成。",
+          "expected": "-2\\sqrt2\\sqrt3",
+          "choices": [
+            {
+              "value": "-2\\sqrt2\\sqrt3",
+              "kind": "math",
+              "latex": "-2\\sqrt2\\sqrt3",
+              "display": "-2\\sqrt2\\sqrt3",
+              "correct": true,
+              "feedback": "二つの異なる項の積が2個あり、差の平方では符号は負です。",
+              "misconception": "正答"
+            },
+            {
+              "value": "-\\sqrt2\\sqrt3",
+              "kind": "math",
+              "latex": "-\\sqrt2\\sqrt3",
+              "display": "-\\sqrt2\\sqrt3",
+              "correct": false,
+              "feedback": "中項の係数2が不足しています。既習公式の2ABをこの二項へ対応させます。",
+              "misconception": "中項の係数2が不足しています。既習公式の2ABをこの二項へ対応させます。"
+            },
+            {
+              "value": "+2\\sqrt2\\sqrt3",
+              "kind": "math",
+              "latex": "+2\\sqrt2\\sqrt3",
+              "display": "+2\\sqrt2\\sqrt3",
+              "correct": false,
+              "feedback": "和でなく差の平方なので中項は負です。",
+              "misconception": "和でなく差の平方なので中項は負です。"
+            },
+            {
+              "value": "-2\\sqrt{2+3}",
+              "kind": "math",
+              "latex": "-2\\sqrt{2+3}",
+              "display": "-2\\sqrt{2+3}",
+              "correct": false,
+              "feedback": "積ABに対応する根号の積です。根号の中を足すことはできません。",
+              "misconception": "積ABに対応する根号の積です。根号の中を足すことはできません。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q11-formula::ux05-middle",
+              "kind": "math",
+              "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q11-formula::ux05-middle",
+          "kind": "math",
+          "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+          "partKeys": [
+            "signedMiddleTermUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q11-formula-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q11-formula::middleSign",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "一般公式の符号−から具体式の符号込み中項へ対象/操作/候補が変わるためaliasしない。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-04",
+        "n10-10"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-10-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q11-formula::terminal",
+        "formulas": [
+          "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2-2\\sqrt2\\sqrt3+(\\sqrt3)^2"
+        ],
+        "conditions": [
+          "既習の乗法公式。A=√2、B=√3。"
+        ],
+        "prose": "差の平方の中項は引く項です。根号を含む本題へ公式を適用します。",
+        "requiresCorrectKeys": [
+          "signedMiddleTermUX05"
+        ],
+        "certifiedFrom": [
+          "n10-04-result",
+          "n10-10-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "差の平方の中項は引く項です。根号を含む本題へ公式を適用します。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "既習の乗法公式。"
+            },
+            {
+              "type": "math",
+              "latex": "A=\\sqrt{2}"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "math",
+              "latex": "B=\\sqrt{3}"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-11",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-11"
+      },
+      "reason": "具体的な二根号の平方2/3を計算。新しい中項構成の次なので先出しではない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-11::leftSquare",
+          "action": "KEEP",
+          "newId": "n10-11::leftSquare",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-11::rightSquare",
+          "action": "KEEP",
+          "newId": "n10-11::rightSquare",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q12-product",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q12-product"
+      },
+      "reason": "新しい中項の根号の積6は必要計算。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q12-product::inside",
+          "action": "KEEP",
+          "newId": "n10-q12-product::inside",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-12",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-12"
+      },
+      "reason": "定数和5の必要整理。見えている2/3の組を写す新小問は足さない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-12::constant",
+          "action": "KEEP",
+          "newId": "n10-12::constant",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-07",
+      "resultId": "n10-q13-identity-result",
+      "purpose": "−一字で平方差を与えず、かつ−B→二積→二符号→0の小問連鎖へしない。",
+      "learnerLead": "和と差の積で、消える交差項を確かめます。残る平方の項を次に計算します。",
+      "learnerAssumptions": [
+        "既習の分配法則と和と差の積を使う。"
+      ],
+      "initialRows": [
+        "n10-q13-identity::ux05-problem",
+        "n10-q13-identity::ux05-pair"
+      ],
+      "completeHoleFreeSolution": [
+        "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2=(\\sqrt7)^2-(\\sqrt2)^2"
+      ],
+      "partOrder": [
+        "cancellingPairUX05"
+      ],
+      "parts": [
+        {
+          "id": "n10-q13-identity::cancellingPairUX05",
+          "key": "cancellingPairUX05",
+          "decision": "NEW",
+          "kind": "text",
+          "role": "meaning",
+          "prompt": "この積を分配したとき、互いに打ち消し合う交差項の組を選びます。組の順序は問いません。",
+          "learningOperation": "和差積の具体的な交差項を同定し、相殺する構造を把握。",
+          "expected": "opposite-cross-products",
+          "choices": [
+            {
+              "value": "opposite-cross-products",
+              "kind": "text",
+              "display": "−√7√2 と ＋√2√7",
+              "correct": true,
+              "feedback": "交差項は同じ大きさで逆符号なので和が0です。順を交換しても同じ組です。",
+              "misconception": "正答",
+              "mathLines": [
+                "-\\sqrt7\\sqrt2",
+                "\\text{と}\\quad+\\sqrt2\\sqrt7"
+              ]
+            },
+            {
+              "value": "both-positive",
+              "kind": "text",
+              "display": "＋√7√2 と ＋√2√7",
+              "correct": false,
+              "feedback": "二つとも正なら打ち消し合いません。第二因子の−√2を掛ける項を確認します。",
+              "misconception": "二つとも正なら打ち消し合いません。第二因子の−√2を掛ける項を確認します。",
+              "mathLines": [
+                "+\\sqrt7\\sqrt2",
+                "\\text{と}\\quad+\\sqrt2\\sqrt7"
+              ]
+            },
+            {
+              "value": "both-negative",
+              "kind": "text",
+              "display": "−√7√2 と −√2√7",
+              "correct": false,
+              "feedback": "二つとも負ではありません。第一因子の＋√2と第二因子の√7の積は正です。",
+              "misconception": "二つとも負ではありません。第一因子の＋√2と第二因子の√7の積は正です。",
+              "mathLines": [
+                "-\\sqrt7\\sqrt2",
+                "\\text{と}\\quad-\\sqrt2\\sqrt7"
+              ]
+            },
+            {
+              "value": "square-terms",
+              "kind": "text",
+              "display": "−√7√7 と ＋√2√2",
+              "correct": false,
+              "feedback": "これらは交差項の組ではありません。異なる根号どうしを掛ける項を対応させます。",
+              "misconception": "これらは交差項の組ではありません。異なる根号どうしを掛ける項を対応させます。",
+              "mathLines": [
+                "-\\sqrt7\\sqrt7",
+                "\\text{と}\\quad+\\sqrt2\\sqrt2"
+              ]
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q13-identity::ux05-pair",
+              "kind": "text",
+              "template": "相殺する交差項の組：{cancellingPairUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q13-identity::ux05-problem",
+          "kind": "math",
+          "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q13-identity-ux05-main"
+        },
+        {
+          "id": "n10-q13-identity::ux05-pair",
+          "kind": "text",
+          "template": "相殺する交差項の組：{cancellingPairUX05}",
+          "partKeys": [
+            "cancellingPairUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": null,
+          "hideAfterCorrectKeys": [
+            "cancellingPairUX05"
+          ]
+        },
+        {
+          "id": "n10-q13-identity::ux05-expand",
+          "kind": "math",
+          "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "cancellingPairUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q13-identity-ux05-main"
+        },
+        {
+          "id": "n10-q13-identity::ux05-cancel",
+          "kind": "math",
+          "template": "=(\\sqrt7)^2-(\\sqrt2)^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "cancellingPairUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q13-identity-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q13-identity::operation",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "一般公式の−と、具体的な相殺項の組を同定する新操作は非同値。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "pairDisplayContract": "採点値はtext enum一つ。候補mathLinesは二項の境界で同じbutton内を2行にし、displayは読み上げ可能な組全体。本文は短いtext選択足場で単一の長いmath slotにしない。正答後は足場を消し、gate付きの具体展開/相殺結果を通常mathASTへする。順序交換は同値。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-04",
+        "n10-12"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-12-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q13-identity::terminal",
+        "formulas": [
+          "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2"
+        ],
+        "conditions": [
+          "既習の和と差の積。A=√7、B=√2。"
+        ],
+        "prose": "積を二つの平方の差へ直せます。次に各平方と差を計算します。",
+        "requiresCorrectKeys": [
+          "cancellingPairUX05"
+        ],
+        "certifiedFrom": [
+          "n10-04-result",
+          "n10-12-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "積を二つの平方の差へ直せます。次に各平方と差を計算します。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "既習の和と差の積。"
+            },
+            {
+              "type": "math",
+              "latex": "A=\\sqrt{7}"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "math",
+              "latex": "B=\\sqrt{2}"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-13",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-13"
+      },
+      "reason": "相殺を確定した後の平方7/2と差5を具体計算。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-13::left",
+          "action": "KEEP",
+          "newId": "n10-13::left",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-13::right",
+          "action": "KEEP",
+          "newId": "n10-13::right",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-13::difference",
+          "action": "KEEP",
+          "newId": "n10-13::difference",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-14",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-14"
+      },
+      "reason": "同一の非零因子を上下へ掛ける値保持の根拠。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-14::operation",
+          "action": "KEEP",
+          "newId": "n10-14::operation",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q15-factor",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q15-factor"
+      },
+      "reason": "最初の有理化で正の因子√3を選ぶ方針。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q15-factor::factor",
+          "action": "KEEP",
+          "newId": "n10-q15-factor::factor",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-15",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-15"
+      },
+      "reason": "分子も同じ因子で変わることを最初の有理化で確認。1×√3を主たる難問とせず必要な局所計算として保持しscopeコピー小問は足さない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-15::numerator",
+          "action": "KEEP",
+          "newId": "n10-15::numerator",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q16-denominator",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q16-denominator"
+      },
+      "reason": "係数2を含む分母全体の平方/6を求める必要計算。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q16-denominator::square",
+          "action": "KEEP",
+          "newId": "n10-q16-denominator::square",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-q16-denominator::denominator",
+          "action": "KEEP",
+          "newId": "n10-q16-denominator::denominator",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-16",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-16"
+      },
+      "reason": "確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。",
+      "oldPartDecisions": []
+    },
+    {
+      "nodeId": "n10-q17-factor",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q17-factor"
+      },
+      "reason": "共役因子の方針を保持。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q17-factor::factor",
+          "action": "KEEP",
+          "newId": "n10-q17-factor::factor",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q17-nonzero",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q17-nonzero"
+      },
+      "reason": "c/cを掛ける前提の非零性を正性で証明。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q17-nonzero::relation",
+          "action": "KEEP",
+          "newId": "n10-q17-nonzero::relation",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-17",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-09",
+      "resultId": "n10-17-result",
+      "purpose": "元分子/分母の写しや×記号単独の採点をしない。非零を確認したc/cによる値保持と分数全体の束縛は式で明示。",
+      "learnerLead": "非零と確認した同じ因子を、分子と分母の両方へ掛けます。",
+      "learnerAssumptions": [
+        "c=√3−√2≠0、元分母√3+√2>0。"
+      ],
+      "initialRows": [
+        "n10-17::ux05-fraction"
+      ],
+      "completeHoleFreeSolution": [
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}"
+      ],
+      "partOrder": [],
+      "parts": [],
+      "rows": [
+        {
+          "id": "n10-17::ux05-fraction",
+          "kind": "math",
+          "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-17-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-17::productOperation",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "分数の積の×一字は標準経路の独立主判断にせず、途中式へ統合。記録はarchive保持。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "AUTO_RECORDED_CONCLUSION",
+      "prerequisiteNodeIds": [
+        "n10-13",
+        "n10-14",
+        "n10-q17-nonzero"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-q17-nonzero-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-17::terminal",
+        "formulas": [
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}"
+        ],
+        "conditions": [
+          "元分母√3+√2>0、掛ける因子√3−√2≠0。"
+        ],
+        "prose": "値を保ったまま分母を和と差の積へ変えました。先に分母、次に分子を計算します。",
+        "requiresCorrectKeys": [],
+        "certifiedFrom": [
+          "n10-13-result",
+          "n10-14-result",
+          "n10-q17-nonzero-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "値を保ったまま分母を和と差の積へ変えました。先に分母、次に分子を計算します。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "元分母"
+            },
+            {
+              "type": "math",
+              "latex": "\\sqrt{3}+\\sqrt{2}>0"
+            },
+            {
+              "type": "text",
+              "text": "、掛ける因子"
+            },
+            {
+              "type": "math",
+              "latex": "\\sqrt{3}-\\sqrt{2}\\ne 0"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-18",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-18"
+      },
+      "reason": "この有理化で最初に必要になる平方3/2と分母1の計算。結果を次の分子計算でも参照。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-18::A",
+          "action": "KEEP",
+          "newId": "n10-18::A",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-18::B",
+          "action": "KEEP",
+          "newId": "n10-18::B",
+          "reason": "固定sourceの同一契約。"
+        },
+        {
+          "oldId": "n10-18::C",
+          "action": "KEEP",
+          "newId": "n10-18::C",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q19-distribute",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-10",
+      "resultId": "n10-q19-distribute-result",
+      "purpose": "−√2の写しと次の−符号を再度採点する二段階を、一つの必要な分子展開へまとめる。",
+      "learnerLead": "分母は確定しました。次は分子の差全体へ分配法則を適用します。",
+      "learnerAssumptions": [
+        "対象は分子√3(√3−√2)。"
+      ],
+      "initialRows": [
+        "n10-q19-distribute::ux05-distribute"
+      ],
+      "completeHoleFreeSolution": [
+        "\\sqrt3(\\sqrt3-\\sqrt2)=\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2"
+      ],
+      "partOrder": [
+        "distributedNumeratorUX05"
+      ],
+      "parts": [
+        {
+          "id": "n10-q19-distribute::distributedNumeratorUX05",
+          "key": "distributedNumeratorUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "expression",
+          "prompt": "分子の括弧全体へ分配法則を適用した式を選びます。",
+          "learningOperation": "根号を含む分子全体へ分配法則を適用し、両項への作用を構成。",
+          "expected": "\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2",
+          "choices": [
+            {
+              "value": "\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2",
+              "kind": "math",
+              "latex": "\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2",
+              "display": "\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2",
+              "correct": true,
+              "feedback": "外の√3を括弧内の両項へ掛け、差の演算を保っています。",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\sqrt3\\times\\sqrt3-\\sqrt2",
+              "kind": "math",
+              "latex": "\\sqrt3\\times\\sqrt3-\\sqrt2",
+              "display": "\\sqrt3\\times\\sqrt3-\\sqrt2",
+              "correct": false,
+              "feedback": "括弧の第二項にも外の√3を掛けます。",
+              "misconception": "括弧の第二項にも外の√3を掛けます。"
+            },
+            {
+              "value": "\\sqrt3\\times\\sqrt3+\\sqrt3\\times\\sqrt2",
+              "kind": "math",
+              "latex": "\\sqrt3\\times\\sqrt3+\\sqrt3\\times\\sqrt2",
+              "display": "\\sqrt3\\times\\sqrt3+\\sqrt3\\times\\sqrt2",
+              "correct": false,
+              "feedback": "元の差を和へ変えてはいけません。",
+              "misconception": "元の差を和へ変えてはいけません。"
+            },
+            {
+              "value": "\\sqrt3\\times\\sqrt3-\\sqrt3",
+              "kind": "math",
+              "latex": "\\sqrt3\\times\\sqrt3-\\sqrt3",
+              "display": "\\sqrt3\\times\\sqrt3-\\sqrt3",
+              "correct": false,
+              "feedback": "第二項は√3と√2の積です。√2を落とさずに対応させます。",
+              "misconception": "第二項は√3と√2の積です。√2を落とさずに対応させます。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q19-distribute::ux05-distribute",
+              "kind": "math",
+              "template": "\\sqrt3(\\sqrt3-\\sqrt2)={distributedNumeratorUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q19-distribute::ux05-distribute",
+          "kind": "math",
+          "template": "\\sqrt3(\\sqrt3-\\sqrt2)={distributedNumeratorUX05}",
+          "partKeys": [
+            "distributedNumeratorUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q19-distribute-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q19-distribute::secondOperand",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "符号付き項の写しから両項への分配式の構成へ変更。"
+        },
+        {
+          "oldId": "n10-q19-distribute::productSign",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "単独符号の再入力は新しい分配適用に統合。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-17",
+        "n10-18"
+      ],
+      "requiredResultRefs": [
+        "n10-17-result",
+        "n10-18-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q19-distribute::terminal",
+        "formulas": [
+          "\\sqrt3(\\sqrt3-\\sqrt2)=\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2"
+        ],
+        "conditions": [
+          "分配する対象は差の全体。"
+        ],
+        "prose": "両項へ掛ける形になりました。各積を計算して分母1と合わせます。",
+        "requiresCorrectKeys": [
+          "distributedNumeratorUX05"
+        ],
+        "certifiedFrom": [
+          "n10-17-result",
+          "n10-18-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "両項へ掛ける形になりました。各積を計算して分母"
+          },
+          {
+            "type": "math",
+            "latex": "1"
+          },
+          {
+            "type": "text",
+            "text": "と合わせます。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "分配する対象は差の全体。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-19",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-10",
+      "resultId": "n10-19-result",
+      "purpose": "この有理化の分母で確定した(√3)²=3を分子で再入力しない。異なる根号の積√6は必要計算として保つ。",
+      "learnerLead": "分子の最初の積には、分母計算で確定した平方の値を使います。異なる根号どうしの積を計算しましょう。",
+      "learnerAssumptions": [
+        "n10-18で(√3)²=3、分母=1を確定済み。"
+      ],
+      "initialRows": [
+        "n10-19::ux05-product"
+      ],
+      "completeHoleFreeSolution": [
+        "\\sqrt3\\sqrt3-\\sqrt3\\sqrt2=3-\\sqrt{3\\times2}=3-\\sqrt6",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{3-\\sqrt6}{1}=3-\\sqrt6"
+      ],
+      "partOrder": [
+        "inside"
+      ],
+      "parts": [
+        {
+          "key": "inside",
+          "role": "rational",
+          "kind": "math",
+          "expected": "6",
+          "prompt": "第二項の根号内の積を計算します。",
+          "choices": [
+            {
+              "value": "6",
+              "kind": "math",
+              "latex": "6",
+              "display": "6",
+              "misconception": "正答",
+              "feedback": "確定した結果を次の計算へ使います。"
+            },
+            {
+              "value": "5",
+              "kind": "math",
+              "latex": "5",
+              "display": "5",
+              "misconception": "根号の中の積を計算します。",
+              "feedback": "根号の中の積を計算します。"
+            },
+            {
+              "value": "3",
+              "kind": "math",
+              "latex": "3",
+              "display": "3",
+              "misconception": "第二因子2も積へ含めます。",
+              "feedback": "第二因子2も積へ含めます。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "exact-evaluation",
+            "expression": "3*2",
+            "expected": "6",
+            "reviewStatus": "PENDING_CODE",
+            "sourceRefs": [
+              "n10-19-before",
+              "n10-19-interaction-0",
+              "n10-19-equation",
+              "n10-19-after"
+            ]
+          },
+          "id": "n10-19::inside",
+          "learningAction": "指定した演算の結果を計算する",
+          "sourceRefs": [
+            "n10-19-before",
+            "n10-19-interaction-0",
+            "n10-19-equation",
+            "n10-19-after"
+          ],
+          "decision": "KEEP",
+          "recordPolicy": "SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES",
+          "answerSites": [
+            {
+              "rowId": "n10-19::ux05-product",
+              "kind": "math",
+              "template": "\\sqrt3\\sqrt3-\\sqrt3\\sqrt2=3-\\sqrt{ {inside} }"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-19::ux05-product",
+          "kind": "math",
+          "template": "\\sqrt3\\sqrt3-\\sqrt3\\sqrt2=3-\\sqrt{ {inside} }",
+          "partKeys": [
+            "inside"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [
+            "n10-18-result"
+          ],
+          "mathGroupId": "n10-19-ux05-main"
+        },
+        {
+          "id": "n10-19::ux05-return",
+          "kind": "math",
+          "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{3-\\sqrt6}{1}=3-\\sqrt6",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "inside"
+          ],
+          "certifiedFrom": [
+            "n10-18-result"
+          ],
+          "mathGroupId": "n10-19-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [
+        {
+          "resultId": "n10-18-result",
+          "use": "A=3とC=1を参照。新問いへ旧記録をaliasしない。"
+        }
+      ],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-19::left",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "同じ有理化内で確定済みの平方3はresult参照。r4記録はarchiveのみ。"
+        },
+        {
+          "oldId": "n10-19::inside",
+          "action": "KEEP",
+          "newId": "n10-19::inside",
+          "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-17",
+        "n10-q19-distribute",
+        "n10-18"
+      ],
+      "requiredResultRefs": [
+        "n10-17-result",
+        "n10-q19-distribute-result",
+        "n10-18-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-19::terminal",
+        "formulas": [
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=3-\\sqrt6"
+        ],
+        "conditions": [
+          "分母=1を認定済み。元分母と因子は非零。"
+        ],
+        "prose": "分子まで計算して元の分数を整理できました。次は支援を減らして因子を選びます。",
+        "requiresCorrectKeys": [
+          "inside"
+        ],
+        "certifiedFrom": [
+          "n10-17-result",
+          "n10-q19-distribute-result",
+          "n10-18-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "分子まで計算して元の分数を整理できました。次は支援を減らして因子を選びます。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "分母"
+            },
+            {
+              "type": "math",
+              "latex": "=1"
+            },
+            {
+              "type": "text",
+              "text": "を認定済み。元分母と因子は非零。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-q20-factor",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-11",
+      "resultId": "n10-q20-factor-result",
+      "purpose": "4/3を先出しして後段P/Qで再採点せず、平方比較に初めて必要なここで計算。方針/正性/同一非零因子の根拠は保持。",
+      "learnerLead": "この手順では正の因子を使い、分母の積を有理数にします。選んだ因子が0でないことも確かめましょう。",
+      "learnerAssumptions": [
+        "元分母2+√3>0。この手順の指定はc>0。逆符号の有効な別解を数学的に不可能とはしない。"
+      ],
+      "initialRows": [
+        "n10-q20-factor::ux05-factor"
+      ],
+      "completeHoleFreeSolution": [
+        "c=2-\\sqrt3",
+        "2^2=4>3=(\\sqrt3)^2,\\quad2>0,\\ \\sqrt3>0\\Rightarrow2-\\sqrt3>0",
+        "(2+\\sqrt3)(2-\\sqrt3)=4-3=1\\in\\mathbb Q",
+        "c\\ne0\\Rightarrow c/c=1"
+      ],
+      "partOrder": [
+        "factor",
+        "positiveComparisonLeftSquareUX05",
+        "positiveComparisonRootSquareUX05",
+        "factorSign",
+        "reason"
+      ],
+      "parts": [
+        {
+          "key": "factor",
+          "role": "operand",
+          "kind": "math",
+          "expected": "2-\\sqrt3",
+          "prompt": "平方差に対応する因子を選びます。",
+          "choices": [
+            {
+              "value": "2-\\sqrt3",
+              "kind": "math",
+              "latex": "2-\\sqrt3",
+              "display": "2-\\sqrt3",
+              "misconception": "正答",
+              "feedback": "確定した結果を次の計算へ使います。"
+            },
+            {
+              "value": "2+\\sqrt3",
+              "kind": "math",
+              "latex": "2+\\sqrt3",
+              "display": "2+\\sqrt3",
+              "misconception": "同じ和では平方差を作れません。",
+              "feedback": "同じ和では平方差を作れません。"
+            },
+            {
+              "value": "\\sqrt3-2",
+              "kind": "math",
+              "latex": "\\sqrt3-2",
+              "display": "\\sqrt3-2",
+              "misconception": "有理化には使える逆符号の別解だが、今回指定した正の因子cとは異なる。",
+              "feedback": "その因子でも分母を−1にできます。ただし、この手順では正の因子cを選ぶ指定があります。指定と因子の符号を照合してください。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expression": "",
+            "expected": "2-\\sqrt3",
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "codeSupported": false,
+            "rationale": "(2−√3)/(2+√3)を有理化します。分母をA+Bとして対応するA−Bの因子を選びます。選んだ後で非零を確認し、上下へ掛けられることを確かめます。 条件：元分母2+√3>0、掛ける因子2−√3>0。",
+            "sourceRefs": [
+              "n10-q20-factor-before",
+              "n10-q20-factor-interaction-0",
+              "n10-q20-factor-equation-0",
+              "n10-q20-factor-after"
+            ]
+          },
+          "id": "n10-q20-factor::factor",
+          "learningAction": "平方差に対応する因子を選びます。",
+          "sourceRefs": [
+            "n10-q20-factor-before",
+            "n10-q20-factor-interaction-0",
+            "n10-q20-factor-equation-0",
+            "n10-q20-factor-after"
+          ],
+          "decision": "KEEP",
+          "recordPolicy": "SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES",
+          "answerSites": [
+            {
+              "rowId": "n10-q20-factor::ux05-factor",
+              "kind": "math",
+              "template": "(2+\\sqrt3)\\bigl({factor}\\bigr)"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        },
+        {
+          "id": "n10-q20-factor::positiveComparisonLeftSquareUX05",
+          "key": "positiveComparisonLeftSquareUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "rational",
+          "prompt": "選んだ因子が0でないことを比較で確かめます。まず2の平方を求めます。",
+          "learningOperation": "正数2と√3の大小比較に初めて必要な平方を計算。",
+          "expected": "4",
+          "choices": [
+            {
+              "value": "4",
+              "kind": "math",
+              "latex": "4",
+              "display": "4",
+              "correct": true,
+              "feedback": "2の平方は4です。正の数どうしの平方比較へ使います。",
+              "misconception": "正答"
+            },
+            {
+              "value": "2",
+              "kind": "math",
+              "latex": "2",
+              "display": "2",
+              "correct": false,
+              "feedback": "平方は同じ数を二回掛けます。2をそのまま残しません。",
+              "misconception": "平方は同じ数を二回掛けます。2をそのまま残しません。"
+            },
+            {
+              "value": "8",
+              "kind": "math",
+              "latex": "8",
+              "display": "8",
+              "correct": false,
+              "feedback": "2を三回掛ける計算ではありません。",
+              "misconception": "2を三回掛ける計算ではありません。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q20-factor::ux05-square-left",
+              "kind": "math",
+              "template": "2^2={positiveComparisonLeftSquareUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [
+            "factor"
+          ],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        },
+        {
+          "id": "n10-q20-factor::positiveComparisonRootSquareUX05",
+          "key": "positiveComparisonRootSquareUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "rational",
+          "prompt": "比較するもう一方、√3の平方を求めます。",
+          "learningOperation": "非零の根拠を作るため根号の平方を定義で計算。",
+          "expected": "3",
+          "choices": [
+            {
+              "value": "3",
+              "kind": "math",
+              "latex": "3",
+              "display": "3",
+              "correct": true,
+              "feedback": "平方根の定義で(√3)²=3です。",
+              "misconception": "正答"
+            },
+            {
+              "value": "9",
+              "kind": "math",
+              "latex": "9",
+              "display": "9",
+              "correct": false,
+              "feedback": "根号の中の3をさらに平方しません。",
+              "misconception": "根号の中の3をさらに平方しません。"
+            },
+            {
+              "value": "\\sqrt3",
+              "kind": "math",
+              "latex": "\\sqrt3",
+              "display": "\\sqrt3",
+              "correct": false,
+              "feedback": "平方の作用を反映して根号を外します。",
+              "misconception": "平方の作用を反映して根号を外します。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q20-factor::ux05-square-root",
+              "kind": "math",
+              "template": "(\\sqrt3)^2={positiveComparisonRootSquareUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05"
+          ],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        },
+        {
+          "id": "n10-q20-factor::factorSign",
+          "key": "factorSign",
+          "kind": "math",
+          "role": "relation",
+          "prompt": "正の数の平方比較を使い、差と0を比べます。",
+          "learningAction": "正の数の平方比較を使い、差と0を比べます。",
+          "expected": ">",
+          "sourceRefs": [
+            "n10-q20-factor-before",
+            "n10-q20-factor-interaction-0",
+            "n10-q20-factor-equation-0",
+            "n10-q20-factor-after"
+          ],
+          "choices": [
+            {
+              "value": ">",
+              "kind": "math",
+              "display": ">",
+              "latex": ">",
+              "feedback": "この判断を確定し、次へ進みます。",
+              "misconception": "正答"
+            },
+            {
+              "value": "<",
+              "kind": "math",
+              "display": "<",
+              "latex": "<",
+              "feedback": "2と√3の平方の大小を、元の正の数の大小へ戻してください。",
+              "misconception": "2と√3の平方の大小を、元の正の数の大小へ戻してください。"
+            },
+            {
+              "value": "=",
+              "kind": "math",
+              "display": "=",
+              "latex": "=",
+              "feedback": "4と3は一致していません。",
+              "misconception": "4と3は一致していません。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": ">",
+            "sourceRefs": [
+              "n10-q20-factor-before",
+              "n10-q20-factor-interaction-0",
+              "n10-q20-factor-equation-0",
+              "n10-q20-factor-after"
+            ],
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "正の数の平方比較を使い、差と0を比べます。"
+          },
+          "decision": "KEEP",
+          "recordPolicy": "SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES",
+          "answerSites": [
+            {
+              "rowId": "n10-q20-factor::ux05-sign",
+              "kind": "math",
+              "template": "2-\\sqrt3{factorSign}0"
+            }
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05"
+          ],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        },
+        {
+          "key": "reason",
+          "id": "n10-q20-factor::reason",
+          "role": "equivalent-operation-reason",
+          "kind": "text",
+          "expected": "nonzero-and-rational-product",
+          "prompt": "選んだ因子で、式の値を保ったまま有理化できる理由を選びます。",
+          "learningAction": "非零・同一因子を上下へ掛ける操作・分母の有理化を一組として判断する",
+          "sourceRefs": [
+            "n10-q20-factor-before",
+            "n10-q20-factor-interaction-0",
+            "n10-q20-factor-equation-0",
+            "n10-q20-factor-after"
+          ],
+          "choices": [
+            {
+              "value": "nonzero-and-rational-product",
+              "kind": "text",
+              "display": "非零の因子で上下を同じように変え、分母の積を有理数にできるから",
+              "misconception": "正答",
+              "feedback": "因子が零でないことと、分母の積が有理数になることを合わせて確認できました。"
+            },
+            {
+              "value": "same-factor-even-zero",
+              "kind": "text",
+              "display": "上下へ同じ因子を掛けさえすれば、その因子が零でも値を保てるから",
+              "misconception": "零による除算の条件を落としている",
+              "feedback": "因子を上下へ掛けた式を比として見たとき、因子が零だと分母がどうなるか確かめてください。"
+            },
+            {
+              "value": "different-factors",
+              "kind": "text",
+              "display": "分母の積が有理数なら、分子に掛ける因子は別の数でもよいから",
+              "misconception": "上下を同じ割合で変える条件を落としている",
+              "feedback": "分母だけが有理数になっても、元の分数と同じ値になるとは限りません。上下へ掛けた比が何になるかを確かめてください。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expression": "",
+            "expected": "nonzero-and-rational-product",
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "codeSupported": false,
+            "sourceRefs": [
+              "n10-q20-factor-before",
+              "n10-q20-factor-interaction-0",
+              "n10-q20-factor-equation-0",
+              "n10-q20-factor-after"
+            ],
+            "rationale": "同一非零因子の比が1であることと、分母の積が有理数になることを関連付ける。形式証明の自動合格にはしない。"
+          },
+          "decision": "KEEP",
+          "recordPolicy": "SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES",
+          "answerSites": [
+            {
+              "rowId": "n10-q20-factor::ux05-reason",
+              "kind": "text",
+              "template": "この変形で式の値を保って有理化できるのは、{reason}。"
+            }
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05",
+            "factorSign"
+          ],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q20-factor::ux05-factor",
+          "kind": "math",
+          "template": "(2+\\sqrt3)\\bigl({factor}\\bigr)",
+          "partKeys": [
+            "factor"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-square-left",
+          "kind": "math",
+          "template": "2^2={positiveComparisonLeftSquareUX05}",
+          "partKeys": [
+            "positiveComparisonLeftSquareUX05"
+          ],
+          "requiresCorrectKeys": [
+            "factor"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-square-root",
+          "kind": "math",
+          "template": "(\\sqrt3)^2={positiveComparisonRootSquareUX05}",
+          "partKeys": [
+            "positiveComparisonRootSquareUX05"
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-compare",
+          "kind": "math",
+          "template": "2^2={mirror:positiveComparisonLeftSquareUX05}>{mirror:positiveComparisonRootSquareUX05}=(\\sqrt3)^2,\\quad2>0,\\ \\sqrt3>0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-sign",
+          "kind": "math",
+          "template": "2-\\sqrt3{factorSign}0",
+          "partKeys": [
+            "factorSign"
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-nonzero",
+          "kind": "math",
+          "template": "c\\ne0",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05",
+            "factorSign"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-q20-factor-ux05-main"
+        },
+        {
+          "id": "n10-q20-factor::ux05-reason",
+          "kind": "text",
+          "template": "この変形で式の値を保って有理化できるのは、{reason}。",
+          "partKeys": [
+            "reason"
+          ],
+          "requiresCorrectKeys": [
+            "factor",
+            "positiveComparisonLeftSquareUX05",
+            "positiveComparisonRootSquareUX05",
+            "factorSign"
+          ],
+          "certifiedFrom": [],
+          "mathGroupId": null
+        }
+      ],
+      "crossNodeCertifiedResults": [],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q20-factor::factor",
+          "action": "KEEP",
+          "newId": "n10-q20-factor::factor",
+          "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+        },
+        {
+          "oldId": "n10-q20-factor::factorSign",
+          "action": "KEEP",
+          "newId": "n10-q20-factor::factorSign",
+          "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+        },
+        {
+          "oldId": "n10-q20-factor::reason",
+          "action": "KEEP",
+          "newId": "n10-q20-factor::reason",
+          "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-13",
+        "n10-14",
+        "n10-19"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-19-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q20-factor::terminal",
+        "formulas": [
+          "c=2-\\sqrt3",
+          "2-\\sqrt3>0",
+          "2^2=4",
+          "(\\sqrt3)^2=3"
+        ],
+        "conditions": [
+          "元分母2+√3>0。認定した因子2−√3>0、したがって非零。"
+        ],
+        "prose": "選んだ因子は非零です。同じ因子を上下へ掛け、分子と分母の構造を確かめます。",
+        "requiresCorrectKeys": [
+          "factor",
+          "positiveComparisonLeftSquareUX05",
+          "positiveComparisonRootSquareUX05",
+          "factorSign",
+          "reason"
+        ],
+        "certifiedFrom": [
+          "n10-13-result",
+          "n10-14-result",
+          "n10-19-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "選んだ因子は非零です。同じ因子を上下へ掛け、分子と分母の構造を確かめます。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "元分母"
+            },
+            {
+              "type": "math",
+              "latex": "2+\\sqrt{3}>0"
+            },
+            {
+              "type": "text",
+              "text": "。認定した因子"
+            },
+            {
+              "type": "math",
+              "latex": "2-\\sqrt{3}>0"
+            },
+            {
+              "type": "text",
+              "text": "、したがって非零。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-20",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-11",
+      "resultId": "n10-20-result",
+      "purpose": "指数2と−一字を別採点せず、平方/平方差を分数全体へ適用する一つの変形へ統合。",
+      "learnerLead": "非零と確認した同じ因子を上下へ掛けます。分子と分母に適用する公式の違いに注意しましょう。",
+      "learnerAssumptions": [
+        "c=2−√3≠0を確定済み。比較で2²=4、(√3)²=3も確定済み。"
+      ],
+      "initialRows": [
+        "n10-20::ux05-start",
+        "n10-20::ux05-form"
+      ],
+      "completeHoleFreeSolution": [
+        "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}=\\frac{(2-\\sqrt3)^2}{4-3}"
+      ],
+      "partOrder": [
+        "rationalisedFractionUX05"
+      ],
+      "parts": [
+        {
+          "id": "n10-20::rationalisedFractionUX05",
+          "key": "rationalisedFractionUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "expression",
+          "prompt": "同じ非零因子を上下へ掛けた式で、分子全体の積を平方、分母の和と差の積を平方差で表します。",
+          "learningOperation": "有理化の分数全体で二つの既習公式を対応させ、値保持した式を構成。",
+          "expected": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+          "choices": [
+            {
+              "value": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "kind": "math",
+              "latex": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "display": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "correct": true,
+              "feedback": "分子は差全体の平方、分母は和と差の積の公式です。",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "kind": "math",
+              "latex": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "display": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "correct": false,
+              "feedback": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。",
+              "misconception": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。"
+            },
+            {
+              "value": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
+              "kind": "math",
+              "latex": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
+              "display": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
+              "correct": false,
+              "feedback": "分母は和と差の積なので、残るのは平方の差です。",
+              "misconception": "分母は和と差の積なので、残るのは平方の差です。"
+            },
+            {
+              "value": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
+              "kind": "math",
+              "latex": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
+              "display": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
+              "correct": false,
+              "feedback": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。",
+              "misconception": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-20::ux05-form",
+              "kind": "math",
+              "template": "={rationalisedFractionUX05}"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-20::ux05-start",
+          "kind": "math",
+          "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-20-ux05-main"
+        },
+        {
+          "id": "n10-20::ux05-form",
+          "kind": "math",
+          "template": "={rationalisedFractionUX05}",
+          "partKeys": [
+            "rationalisedFractionUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [],
+          "mathGroupId": "n10-20-ux05-main"
+        },
+        {
+          "id": "n10-20::ux05-known-squares",
+          "kind": "math",
+          "template": "=\\frac{(2-\\sqrt3)^2}{4-3}",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "rationalisedFractionUX05"
+          ],
+          "certifiedFrom": [
+            "n10-q20-factor-result"
+          ],
+          "mathGroupId": "n10-20-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [
+        {
+          "resultId": "n10-q20-factor-result",
+          "use": "2²=4、(√3)²=3を参照。"
+        }
+      ],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-20::power",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "同じ因子数の指数を単独採点せず、分数全体の公式適用へ統合。"
+        },
+        {
+          "oldId": "n10-20::denominatorOperation",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "−単独から分数全体の式構成へ対象/候補/操作変更。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-13",
+        "n10-14",
+        "n10-q20-factor"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-q20-factor-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-20::terminal",
+        "formulas": [
+          "\\frac{2-\\sqrt3}{2+\\sqrt3}=\\frac{(2-\\sqrt3)^2}{4-3}"
+        ],
+        "conditions": [
+          "元分母と掛ける因子は非零。"
+        ],
+        "prose": "分母と分子を計算できる形へ直せました。まず分母4−3を計算します。",
+        "requiresCorrectKeys": [
+          "rationalisedFractionUX05"
+        ],
+        "certifiedFrom": [
+          "n10-13-result",
+          "n10-14-result",
+          "n10-q20-factor-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "分母と分子を計算できる形へ直せました。まず分母"
+          },
+          {
+            "type": "math",
+            "latex": "4-3"
+          },
+          {
+            "type": "text",
+            "text": "を計算します。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "text",
+              "text": "元分母と掛ける因子は非零。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-q21-denominator",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q21-denominator"
+      },
+      "reason": "分母1の必要計算。主要な新概念と誇張せず追加の4−3の操作小問なし。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q21-denominator::D",
+          "action": "KEEP",
+          "newId": "n10-q21-denominator::D",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-q21-expand",
+      "decision": "CHANGE",
+      "stageId": "n10-stage-12",
+      "resultId": "n10-q21-expand-result",
+      "purpose": "旧P/Qの4/3は前段resultを参照して再入力しない。旧K=4を符号込み中項の正答へaliasせず、新しい一つの公式適用を問う。",
+      "learnerLead": "分子の差の平方を展開します。二つの平方は前段の確定値を使い、中項を符号込みで作りましょう。",
+      "learnerAssumptions": [
+        "既習公式(A−B)²=A²−2AB+B²。2²=4、(√3)²=3はn10-q20-factorで確定済み。"
+      ],
+      "initialRows": [
+        "n10-q21-expand::ux05-middle"
+      ],
+      "completeHoleFreeSolution": [
+        "(2-\\sqrt3)^2=2^2-2\\times2\\times\\sqrt3+(\\sqrt3)^2=4-4\\sqrt3+3"
+      ],
+      "partOrder": [
+        "signedMiddleTermUX05"
+      ],
+      "parts": [
+        {
+          "id": "n10-q21-expand::signedMiddleTermUX05",
+          "key": "signedMiddleTermUX05",
+          "decision": "NEW",
+          "kind": "math",
+          "role": "expression",
+          "prompt": "既習の差の平方の公式を分子へ適用し、中項全体を符号込みで求めます。",
+          "learningOperation": "差平方を新しい二項へ適用し、根号を含む符号込み中項を構成。",
+          "expected": "-4\\sqrt3",
+          "choices": [
+            {
+              "value": "-4\\sqrt3",
+              "kind": "math",
+              "latex": "-4\\sqrt3",
+              "display": "-4\\sqrt3",
+              "correct": true,
+              "feedback": "中項は−2×2×√3=−4√3です。平方4/3は前段の確定値を使います。",
+              "misconception": "正答"
+            },
+            {
+              "value": "-2\\sqrt3",
+              "kind": "math",
+              "latex": "-2\\sqrt3",
+              "display": "-2\\sqrt3",
+              "correct": false,
+              "feedback": "公式の2ABではA=2です。その2をもう一つ掛けます。",
+              "misconception": "公式の2ABではA=2です。その2をもう一つ掛けます。"
+            },
+            {
+              "value": "+4\\sqrt3",
+              "kind": "math",
+              "latex": "+4\\sqrt3",
+              "display": "+4\\sqrt3",
+              "correct": false,
+              "feedback": "差の平方では中項が負です。",
+              "misconception": "差の平方では中項が負です。"
+            },
+            {
+              "value": "-12",
+              "kind": "math",
+              "latex": "-12",
+              "display": "-12",
+              "correct": false,
+              "feedback": "中項は2と√3の積の倍数です。√3を3へ取り替えません。",
+              "misconception": "中項は2と√3の積の倍数です。√3を3へ取り替えません。"
+            }
+          ],
+          "onWrong": "選択値と説明を保ち後続を解放しない。",
+          "recordPolicy": "NEW_UNANSWERED_NO_ALIAS",
+          "answerSites": [
+            {
+              "rowId": "n10-q21-expand::ux05-middle",
+              "kind": "math",
+              "template": "(2-\\sqrt3)^2=4{signedMiddleTermUX05}+3"
+            }
+          ],
+          "requiresCorrectKeys": [],
+          "onCorrectUnlockRule": "各rowに指定した全requiresCorrectKeysがordered-correctのときだけ表示。正答一つで全後続を一斉解放しない。",
+          "basis": "KEEPは固定sourceの局所契約。NEWはpurpose/learningOperationと既習公式または平方根の定義による。"
+        }
+      ],
+      "rows": [
+        {
+          "id": "n10-q21-expand::ux05-middle",
+          "kind": "math",
+          "template": "(2-\\sqrt3)^2=4{signedMiddleTermUX05}+3",
+          "partKeys": [
+            "signedMiddleTermUX05"
+          ],
+          "requiresCorrectKeys": [],
+          "certifiedFrom": [
+            "n10-q20-factor-result"
+          ],
+          "mathGroupId": "n10-q21-expand-ux05-main"
+        }
+      ],
+      "crossNodeCertifiedResults": [
+        {
+          "resultId": "n10-q20-factor-result",
+          "use": "比較で確定した平方4/3を表示。P/Q recordを新平方へaliasしない。"
+        }
+      ],
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q21-expand::P",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "平方4は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Pを新keyへaliasしない。ARCHIVE_ONLY。"
+        },
+        {
+          "oldId": "n10-q21-expand::K",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "旧正の係数4と符号込み中項−4√3は非同値。ARCHIVE_ONLY。"
+        },
+        {
+          "oldId": "n10-q21-expand::Q",
+          "action": "RETIRE_ARCHIVE_ONLY",
+          "newId": null,
+          "reason": "平方3は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Qを新keyへaliasしない。ARCHIVE_ONLY。"
+        }
+      ],
+      "leakageAndDisplay": "初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。",
+      "unchangedMetadata": "原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。",
+      "alternateCorrect": "因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。",
+      "classification": "NEW_CONSTRUCTION",
+      "prerequisiteNodeIds": [
+        "n10-20",
+        "n10-q21-denominator",
+        "n10-q11-formula",
+        "n10-q20-factor"
+      ],
+      "requiredResultRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result",
+        "n10-q20-factor-result"
+      ],
+      "terminalRecord": {
+        "id": "n10-q21-expand::terminal",
+        "formulas": [
+          "(2-\\sqrt3)^2=4-4\\sqrt3+3"
+        ],
+        "conditions": [
+          "A=2、B=√3。(A−B)²の公式を用いて分子(2−√3)²を展開する。"
+        ],
+        "prose": "平方の三項が4−4√3+3と求まりました。普通の数の項をまとめます。",
+        "requiresCorrectKeys": [
+          "signedMiddleTermUX05"
+        ],
+        "certifiedFrom": [
+          "n10-20-result",
+          "n10-q21-denominator-result",
+          "n10-q11-formula-result",
+          "n10-q20-factor-result"
+        ],
+        "proseParts": [
+          {
+            "type": "text",
+            "text": "平方の三項が"
+          },
+          {
+            "type": "math",
+            "latex": "4-4\\sqrt{3}+3"
+          },
+          {
+            "type": "text",
+            "text": "と求まりました。普通の数の項をまとめます。"
+          }
+        ],
+        "conditionParts": [
+          [
+            {
+              "type": "math",
+              "latex": "A=2"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "math",
+              "latex": "B=\\sqrt3"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            },
+            {
+              "type": "math",
+              "latex": "(A-B)^2"
+            },
+            {
+              "type": "text",
+              "text": "の公式を用いて分子"
+            },
+            {
+              "type": "math",
+              "latex": "(2-\\sqrt3)^2"
+            },
+            {
+              "type": "text",
+              "text": "を展開する。"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "nodeId": "n10-q21-constants",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-q21-constants"
+      },
+      "reason": "中項を保った定数和7。4/3の写しを新しい別問にしない。",
+      "oldPartDecisions": [
+        {
+          "oldId": "n10-q21-constants::C",
+          "action": "KEEP",
+          "newId": "n10-q21-constants::C",
+          "reason": "固定sourceの同一契約。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n10-21",
+      "decision": "KEEP",
+      "baselineReference": {
+        "commit": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+        "file": "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "nodeId": "n10-21"
+      },
+      "reason": "確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。",
+      "oldPartDecisions": []
+    }
+  ],
+  "oldPartDecisions": [
+    {
+      "oldId": "n10-q01-square::rootSquare",
+      "action": "KEEP",
+      "newId": "n10-q01-square::rootSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-01::value",
+      "action": "KEEP",
+      "newId": "n10-01::value",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q02-sign::value",
+      "action": "KEEP",
+      "newId": "n10-q02-sign::value",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::candidateSign",
+      "action": "KEEP",
+      "newId": "n10-02::candidateSign",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::squareValue",
+      "action": "KEEP",
+      "newId": "n10-02::squareValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::identificationReason",
+      "action": "KEEP",
+      "newId": "n10-02::identificationReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q03-expand::powerA",
+      "action": "KEEP",
+      "newId": "n10-q03-expand::powerA",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q03-expand::powerB",
+      "action": "KEEP",
+      "newId": "n10-q03-expand::powerB",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-03::aValue",
+      "action": "KEEP",
+      "newId": "n10-03::aValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-03::bValue",
+      "action": "KEEP",
+      "newId": "n10-03::bValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q04-sign::relation",
+      "action": "KEEP",
+      "newId": "n10-q04-sign::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-04::rootReason",
+      "action": "KEEP",
+      "newId": "n10-04::rootReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-denominator::relation",
+      "action": "KEEP",
+      "newId": "n10-q05-denominator::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-square::numPower",
+      "action": "KEEP",
+      "newId": "n10-q05-square::numPower",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-square::denPower",
+      "action": "KEEP",
+      "newId": "n10-q05-square::denPower",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-05::numerator",
+      "action": "KEEP",
+      "newId": "n10-05::numerator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-05::denominator",
+      "action": "KEEP",
+      "newId": "n10-05::denominator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q06-sign::relation",
+      "action": "KEEP",
+      "newId": "n10-q06-sign::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-06::quotientReason",
+      "action": "KEEP",
+      "newId": "n10-06::quotientReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q07-product::insideOperation",
+      "action": "KEEP",
+      "newId": "n10-q07-product::insideOperation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q07-product::inside",
+      "action": "KEEP",
+      "newId": "n10-q07-product::inside",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-07::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-07::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-07::factor",
+      "action": "KEEP",
+      "newId": "n10-07::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q08-factor::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q08-factor::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-left::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-q09-left::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-left::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q09-left::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-right::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-q09-right::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-right::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q09-right::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q10-coefficients::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q10-coefficients::coefficient",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q11-formula::middleSign",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "一般公式の符号−から具体式の符号込み中項へ対象/操作/候補が変わるためaliasしない。"
+    },
+    {
+      "oldId": "n10-11::leftSquare",
+      "action": "KEEP",
+      "newId": "n10-11::leftSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-11::rightSquare",
+      "action": "KEEP",
+      "newId": "n10-11::rightSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q12-product::inside",
+      "action": "KEEP",
+      "newId": "n10-q12-product::inside",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-12::constant",
+      "action": "KEEP",
+      "newId": "n10-12::constant",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q13-identity::operation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "一般公式の−と、具体的な相殺項の組を同定する新操作は非同値。"
+    },
+    {
+      "oldId": "n10-13::left",
+      "action": "KEEP",
+      "newId": "n10-13::left",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-13::right",
+      "action": "KEEP",
+      "newId": "n10-13::right",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-13::difference",
+      "action": "KEEP",
+      "newId": "n10-13::difference",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-14::operation",
+      "action": "KEEP",
+      "newId": "n10-14::operation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q15-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q15-factor::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-15::numerator",
+      "action": "KEEP",
+      "newId": "n10-15::numerator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q16-denominator::square",
+      "action": "KEEP",
+      "newId": "n10-q16-denominator::square",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q16-denominator::denominator",
+      "action": "KEEP",
+      "newId": "n10-q16-denominator::denominator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q17-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q17-factor::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q17-nonzero::relation",
+      "action": "KEEP",
+      "newId": "n10-q17-nonzero::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-17::productOperation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "分数の積の×一字は標準経路の独立主判断にせず、途中式へ統合。記録はarchive保持。"
+    },
+    {
+      "oldId": "n10-18::A",
+      "action": "KEEP",
+      "newId": "n10-18::A",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-18::B",
+      "action": "KEEP",
+      "newId": "n10-18::B",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-18::C",
+      "action": "KEEP",
+      "newId": "n10-18::C",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q19-distribute::secondOperand",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "符号付き項の写しから両項への分配式の構成へ変更。"
+    },
+    {
+      "oldId": "n10-q19-distribute::productSign",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "単独符号の再入力は新しい分配適用に統合。"
+    },
+    {
+      "oldId": "n10-19::left",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "同じ有理化内で確定済みの平方3はresult参照。r4記録はarchiveのみ。"
+    },
+    {
+      "oldId": "n10-19::inside",
+      "action": "KEEP",
+      "newId": "n10-19::inside",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::factor",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::factorSign",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::factorSign",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::reason",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::reason",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-20::power",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "同じ因子数の指数を単独採点せず、分数全体の公式適用へ統合。"
+    },
+    {
+      "oldId": "n10-20::denominatorOperation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "−単独から分数全体の式構成へ対象/候補/操作変更。"
+    },
+    {
+      "oldId": "n10-q21-denominator::D",
+      "action": "KEEP",
+      "newId": "n10-q21-denominator::D",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q21-expand::P",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "平方4は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Pを新keyへaliasしない。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-expand::K",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "旧正の係数4と符号込み中項−4√3は非同値。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-expand::Q",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "平方3は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Qを新keyへaliasしない。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-constants::C",
+      "action": "KEEP",
+      "newId": "n10-q21-constants::C",
+      "reason": "固定sourceの同一契約。"
+    }
+  ],
+  "newPartIds": [
+    "n10-q10-coefficients::collectedExpressionUX05",
+    "n10-q11-formula::signedMiddleTermUX05",
+    "n10-q13-identity::cancellingPairUX05",
+    "n10-q19-distribute::distributedNumeratorUX05",
+    "n10-q20-factor::positiveComparisonLeftSquareUX05",
+    "n10-q20-factor::positiveComparisonRootSquareUX05",
+    "n10-20::rationalisedFractionUX05",
+    "n10-q21-expand::signedMiddleTermUX05"
+  ],
+  "retiredPartIds": [
+    "n10-q11-formula::middleSign",
+    "n10-q13-identity::operation",
+    "n10-17::productOperation",
+    "n10-q19-distribute::secondOperand",
+    "n10-q19-distribute::productSign",
+    "n10-19::left",
+    "n10-20::power",
+    "n10-20::denominatorOperation",
+    "n10-q21-expand::P",
+    "n10-q21-expand::K",
+    "n10-q21-expand::Q"
+  ],
+  "recordPolicy": {
+    "KEEP": "全候補/正答/操作が同じpartのみ同一IDを保持。新しく前に置いた未回答partがあれば、旧answeredを消さず解放判定だけ新gateに従う。",
+    "RETIRE": "原r4のrecord/時刻/履歴をarchiveに保持し、現行達成へ移さない。",
+    "NEW": "初期未回答。旧P/Q/Kその他の正答数値一致からaliasしない。",
+    "currentProgress": "n10-q20-factorの旧factor/sign/reasonは保持するが、新平方2partが終わるまでそのnodeの達成は再評価。未到達の後続も新前提を待つ。",
+    "answerEquivalence": "id維持はpart局所の問いの同値。node全体/旧達成の無条件再利用ではない。"
+  },
+  "counts": {
+    "allNodes": 45,
+    "changedNodes": 9,
+    "keptNodes": 36,
+    "baselineParts": 63,
+    "keepParts": 52,
+    "retiredParts": 11,
+    "newParts": 8,
+    "proposedParts": 60
+  }
+}

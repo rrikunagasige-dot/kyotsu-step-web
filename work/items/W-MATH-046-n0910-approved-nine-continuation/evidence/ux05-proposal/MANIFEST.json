@@ -1,0 +1,117 @@
+{
+  "proposal": "P-W046-UX-05",
+  "status": "PROPOSED_NOT_APPROVED_NOT_IMPLEMENTED",
+  "parentRecordCommit": "32139fa41e6632c1e95bf5147af9c030e7d4fed8",
+  "sourceCodeUnchanged": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+  "mainUnchanged": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "files": [
+    {
+      "path": "PROPOSAL.md",
+      "size": 139221,
+      "sha256": "925cc86fc7381c0db35147b393ce2a8e7c59b7b883f6208c5847d82982e7e9b8",
+      "gitBlob": "aacb4ff20042b9947fa8d3f009ab8be82bd220be"
+    },
+    {
+      "path": "WORK.md",
+      "size": 59514,
+      "sha256": "7157321f266b0f1c3604301f3f7a87b76926ded8571cbd6187f927abeb71b710",
+      "gitBlob": "b6ea4c869b86352d241c592b2caa87f335968f09"
+    },
+    {
+      "path": "ACTION_LOG.md",
+      "size": 6984,
+      "sha256": "110e672e47d1737135183cd8fe8aa206114636e173e5e82adc96dc41a9c5f7ff",
+      "gitBlob": "7736dea5fd0c9815fce343c676c1ba1f5f9c9e08"
+    },
+    {
+      "path": "FINDINGS.md",
+      "size": 7960,
+      "sha256": "691ae7e3a8fb701732024e1284b97364797e71d74d6e514a4c554b7d387da096",
+      "gitBlob": "667e7ec7fb5873c438ee92dbc9c5fe1bbbd496da"
+    },
+    {
+      "path": "VERIFICATION.md",
+      "size": 15134,
+      "sha256": "7ad36ddc7456a895ddbd6818f80fc66f62f6d77bf81b011317fc2d8947a67770",
+      "gitBlob": "65d2c485410a98cf8b365adbfee4f6c1492f4c77"
+    },
+    {
+      "path": "VERIFICATION_STATUS.json",
+      "size": 22936,
+      "sha256": "29a02d2b45def08bb270d8cc0fd8d5361ac38e9345cc5cfaee2d8b6dc8abb698",
+      "gitBlob": "e4ebcb194571b21b12f29932d141959baa468527"
+    },
+    {
+      "path": "evidence/ux05-proposal/COMMON.md",
+      "size": 15870,
+      "sha256": "4c86db986e5240e2c9b4226ed9399f1c6ef50c6f56f810592a62f6dcc9120056",
+      "gitBlob": "a9dbff793e0f83867e1e6393d8e6055e8733ebf3"
+    },
+    {
+      "path": "evidence/ux05-proposal/HEADER.md",
+      "size": 5980,
+      "sha256": "035e5d746770fff0739cff22aef82d074d46cc02e976fbb7bc21f71da2404cbf",
+      "gitBlob": "85ba4fd05eaa8ccef60fe32ec5fedb42f0ccd90a"
+    },
+    {
+      "path": "evidence/ux05-proposal/N09_DESIGN.json",
+      "size": 128219,
+      "sha256": "8be141bd7783666b782f2dbdb7ba076b5ef996e99ffabc3418bd2b420b80a912",
+      "gitBlob": "f306599aba9570da6acd1fe711c359cda0dd2cfb"
+    },
+    {
+      "path": "evidence/ux05-proposal/N09_DESIGN.md",
+      "size": 67137,
+      "sha256": "bffa30072453f55a11dabc95bf0f2f734a2bd0813821bab9081e16bd7e5f4ed5",
+      "gitBlob": "64c5a52b0e903873b38397b5883c31a9323db530"
+    },
+    {
+      "path": "evidence/ux05-proposal/N10_DESIGN.json",
+      "size": 119311,
+      "sha256": "1deef27e4f180b659d0f4c1082dd02a1e38cbee21f72168c3ddef88c56a9c9c8",
+      "gitBlob": "7f2d478a5b6f1c9d3f3d984660b35ddf8a2c1d26"
+    },
+    {
+      "path": "evidence/ux05-proposal/N10_DESIGN.md",
+      "size": 46985,
+      "sha256": "ee3a1a638d25b7b200c46f25e030ce55892d99dcb25eea7e31ed5f79f18df3f2",
+      "gitBlob": "121ffc8e98e7444ba92213155e74c4ce65967d9d"
+    },
+    {
+      "path": "evidence/ux05-proposal/OVERVIEW.md",
+      "size": 3133,
+      "sha256": "e51f3fd8330708b0aaaf093a66c757f865a908c30f44407f9beb9d816a7a0d19",
+      "gitBlob": "fa3886fef995721e1bb43fb37fdd08bc01648948"
+    },
+    {
+      "path": "evidence/ux05-proposal/REVIEW-A.md",
+      "size": 6520,
+      "sha256": "8245574940fd3bb89bf100df061b460f6a5f129ccd2c4ed304365640d32b91db",
+      "gitBlob": "c79dddf0835939459958c28cd3d4eba7e29ada7d"
+    },
+    {
+      "path": "evidence/ux05-proposal/REVIEW-B.md",
+      "size": 7118,
+      "sha256": "2d12b5b10d5f9eb485dc94ef48a36e31bbdcefb95dd3b19634ab83712b8098ab",
+      "gitBlob": "c77771bac5c1e286a0366606aa4f696091ae5ce6"
+    },
+    {
+      "path": "evidence/ux05-proposal/REVIEW.md",
+      "size": 1341,
+      "sha256": "29a4a1acbe036d54f014ceb02fefbc6576f9232ac4df47cc913e81cf15230b7e",
+      "gitBlob": "f69da498e0e25a8507f19a06119b3073007879c4"
+    },
+    {
+      "path": "evidence/ux05-proposal/STRUCTURE_CHECK.json",
+      "size": 1739,
+      "sha256": "e25f8b1872e6e8c089ef140ffbacdbc13f4787078e4aaa7af64b4a3d93f76b72",
+      "gitBlob": "19d1659ab1ff17d4855b47ee3d812baf48bdf6dc"
+    },
+    {
+      "path": "evidence/ux05-proposal/check_proposal.py",
+      "size": 3890,
+      "sha256": "42b80b6b886b7494588b91309644c65a7c523813af95320d7267a0dd52f83fb1",
+      "gitBlob": "01a93ed468ba6d269c73837da10bd673f035a154"
+    }
+  ]
+}

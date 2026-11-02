@@ -1,15 +1,14 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: REVISE-PROPOSAL
-Review: USER-DETAIL-REQUIRES-REVISION / TEEN-LEVEL-COGNITIVE-UNIT-AND-RESOLVED-TYPESETTING
-- 本人はUX04代表を要修正。(x＋4)の巨大括弧/空き、x＋4=0からの単純逆演算の小問化を指摘。主判断は(x−4)(x＋4)=0から各因子が0という二条件を生成すること。細部OK/全体受入は未成立。
-- UX04への実装承認は履歴として保持するが、この指摘を無視して残り24nodeへ量産しない。次は原因・同型・既存GitHub基準・公式問題の粒度を反映したUX05具体案の作成。今回の製品変更・実装承認依頼はしない。
-- [学習粒度監査](evidence/ux05-feedback/PEDAGOGY_AUDIT.md)はN09全41/N10全45と未実装UX04を18群で対応。86IDの一致/重複なしを照合。新規の全選択肢や設問はまだ設計しておらず、一括修正の承認ではない。
-- 原因：主担当は別演算を別穴とする分類を、対象高校生にとっての非自明/学習価値の評価の代わりにした。重要な零条件を先に表示して「または」だけ問い、周辺の基本逆演算を細分化した。MASTER§§8/11/52/53と数学SPEC§§2/5は既存。基準不足ではなく適用不足。
-- 走形：正答済みmath slotにも44.1pxのphantomと横予約が残り、auto括弧が第二因子だけに追従。正常font下の組版欠陥。CSS枠消去・thinspace・固定括弧だけでは根治せず、確定値の自然組版と未回答操作域/plannerを区別する必要がある。
-- [分析](evidence/ux05-feedback/ANALYSIS.md)にEJU2021第1回C1 I問1/2025共通数IA第1問〔1〕の公式PDF実見と正本照合を記録。[描画診断](evidence/ux05-feedback/RENDER_DIAGNOSIS.md)はN09/N10の94math行/106slot経路候補を列挙。これは全画像破綻の実見件数ではない。
-- 候補source66c8007b/記録7123c957、N09r6 compiled470f・N10r4を保持。旧136回帰・最終関連76・正常font四幅128/1192・移行10件は実行範囲に対する有効履歴だが、学年相応の主判断/正答後自然組版/本人合格へ転用しない。旧審査の見逃しを記録する。
-- 公開中はdb99a485/publisher6bc54447（N09r5/N10r4）のまま。main・公開・正式Store書込なし。最新Store欠落の本人特例は維持、receipt/欠落26イベントを創作しない。全体governance既存38件と今回の作業を分離する。
+Review: UX05-PROPOSAL-READY / EXPLICIT-APPROVAL-PENDING
+- 本人の依頼により[P-W046-UX-05具体案](PROPOSAL.md)を完成。全86node=25変更/61維持（N09:16/25、N10:9/36）。各変更の完成解法・初期条件・設問・全候補/誤答理由・解放・旧part対応を確定。未知法則は教え、具体的な主判断を生徒に残す。
+- 写真の零積では因数分解と零条件の組を問う。基本逆演算の細分化/or単独採点は廃止。平方中項/相殺交差項/分配式/整数小数部分へ同じ基準を適用し、N09Q08必要計算と比較を保持する。
+- 正答後の44px phantomを除いて通常ASTへ戻し、未回答/部分正答の操作域と状態別plannerを保つ共通修正案。長い条件/相殺組は一候補内のmathLinesで分け、正答後は通常式へ戻す。
+- 旧115part=84同意味保持/31旧版保存、新19→新版103。N09r6→r7/N10r4→r5の厳密移行、全既知旧版/reset/履歴/他unit保護を明記。新判断へ旧回答をaliasしない。
+- [提案構造照合](evidence/ux05-proposal/STRUCTURE_CHECK.json)と[非作者設計審査](evidence/ux05-proposal/REVIEW.md)を保存。これは製品CODE/実画像/移行試験の合格ではない。UX04の旧合格・原FAIL・本人要修正を履歴で保持する。
+- 次は本具体案の明示承認。承認後、写真の代表＋共有表示を実装/検証し、本人の実画像細部確認後に残りへ適用する。main WORK_SYSTEM§11/§12Aの既存ゲートを保持。
+- 製品source66c8007b、公開source db99a485/publisher6bc54447不変。本案の実装/製品試験/main反映/公開/正式Store書込なし。最新Store欠落26イベントの本人特例、別Work既存governance38件を保持し、受理/Gold/fitは創作しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

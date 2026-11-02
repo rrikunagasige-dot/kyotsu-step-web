@@ -1,3335 +1,2258 @@
 # Proposals — W-MATH-046-n0910-approved-nine-continuation
 
-## P-W046-UX-04 — 導出の各判断を生徒が組み立てる
+## P-W046-UX-05 — 主判断を生徒に残し、確定後は自然な数式へ戻す
 
-Status: APPROVED
+Status: PROPOSED
 Created: 2026-11-02
-Baseline: app source `db99a485f857b1aefa7fb738456f36a830514158`（公開中N09第5版・N10第4版）
-Target: N09第6版・N10第5版
-Approved by user: YES
-Implementation started: YES — N09代表2nodeのみ。残りは細部確認後。
+Approved by user: NO
+Implementation started: NO
+Baseline: candidate source `66c8007b37cc12391c9df574b8ebbb1b95cf26f5` / feedback record `32139fa41e6632c1e95bf5147af9c030e7d4fed8`
+N09 r6 compiled `470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d` / N10 r4 compiled `3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895`
+Target: N09第7版（第6版から）／N10第5版（第4版から）
 
-読み順：変更の見取り図 → N09/N10の各詳細（写真はn09-01）→ 全86node表 → 保存移行・実装順・検証・Approval。
+本書はUX04への本人要修正を受けた新しい具体案。UX04の承認は[その設計と承認記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/66c8007b37cc12391c9df574b8ebbb1b95cf26f5/work/items/W-MATH-046-n0910-approved-nine-continuation/PROPOSAL.md)として保持し、本案へ流用しない。現在の公開中教材はdb99a485（N09r5/N10r4）のまま。本案作成中の製品・main・公開変更はない。
 
 ## Problem / Need
 
-本人は排版を高く評価した一方、写真の場面では一つの穴の回答後に、別の判断を必要とする式変形まで自動表示されると指摘した。現行n09-01は零積の「または」だけが穴で、移項・因数分解・二つの一次式の処理は生徒が行わない。直前の負数の平方も、累乗を積に直す操作と符号の処理を自動化していた。
+本人は、正答後の第二因子(x＋4)だけが大きく空く表示と、中高生に基本的な＋4/−4の逆演算を別問として繰り返す設計を要修正とした。中心となる推論は、積が0である式から、各因子が0となる二条件を生徒が作ることだった。UX04はその条件を自動表示してorだけ問い、周辺の易しい操作を増やしていた。
 
-原因は「式が段階表示されること」を「生徒が導出すること」の代わりに評価し、完成解法に含まれる非自明な操作と各問いの対応を検査しなかったこと。穴の総数の不足という数値問題ではない。既存の描画・操作・保存の技術PASSを維持するが、導出参加度の合格根拠にはしない。
+原因は二つに分ける。教育面では、異なる演算を列挙することを、学年・既習事項・当該概念の主判断を評価する代わりにした。表示面では、正答済み数式にも44pxの操作用phantomを残し、括弧や分数等の構造寸法へ入れていた。旧技術PASSはこの二つの受入を証明していなかった。
 
-[UX03承認設計](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/85a53672826fb204a7e182f56b975d80b4727747/work/items/W-MATH-046-n0910-approved-nine-continuation/PROPOSAL.md)と[実装・公開後の記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6fd8083b01759ecbeeed8c2f37b38e447638a659/work/items/W-MATH-046-n0910-approved-nine-continuation/WORK.md)は履歴として保存する。UX03の承認は今回の新しい意味変更への承認に転用しない。
+## 既存基準と本案の判断基準
 
-## 既存基準との照合
+正本main `6bc54447ef015a2a579a56a5966ceb58a0600d3a` の [MASTER§8](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L251)、[§11](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L339)、[§§52–53](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L1240)を適用する。[数学SPEC§2/5](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/subjects/mathematics/textbook/SPEC.md#L49)の高校初学・習得直後/非自明という要約は、元の承認・MASTERを上書きしない。
 
-正本はmain `6bc54447ef015a2a579a56a5966ceb58a0600d3a`。候補branchにある別版のgovernanceを正本として置換しない。
+1. 当該概念で初めて判断すること、既習事項を使って主要な式/条件を作ること、その理解を確かめる必要な計算/比較を採点対象とする。
+2. 必要な途中式と根拠は示す。既習の逆演算・符号を全て独立穴にする必要はない。
+3. 主判断の答えを前文・後続式・候補説明で先出ししない。未知の法則は教え、具体例への適用を生徒に残す。
+4. N09Q08の平方計算/比較はMASTER§53の明示例として保持する。新しい関係を使う計算を、arithmeticだからと全てAUTOへ戻さない。
+5. 正しい同値表現・因子順の交換を誤答にしない。一つの推論の結果である条件の組を問うことと、複数の独立推論を含む完成解法全体を当てさせることを区別する。
+6. 穴の増減を品質目標にしない。主判断を奪わず、支援は既習内容・初回適用・転移によって変える。
 
-| 既存の規則 | 今回の適用 |
-|---|---|
-| [MASTER §8](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L251) | 穴を学習行為で評価する。既知の値の写し直しや任意の穴増量を避ける。 |
-| [MASTER §11](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L339) | 途中式の提示と、変形を学習者に行わせることを区別する。 |
-| [MASTER §§52–53](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/docs/MASTER_APP_LESSONS.md#L1240) | 完成解法の計算・比較・変形を飛ばさず、問い・型・答えの整合、答えの先出し、旧進捗、前後の密度を小ブロックで検査する。 |
-| [数学SPEC §5](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/subjects/mathematics/textbook/SPEC.md#L109) | 複数の非自明な変形を一つの回答で飛ばさない。これは候補要約であり、上記の正本を上書きしない。 |
-| [CMD-WORK-001](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/governance/INSTRUCTION_DICTIONARY.md#L234) | 写真の箇所の原因からN09全41・N10全45nodeへ同型監査を広げ、確定対象を以下で限定する。他教材を無承認で一括変更しない。 |
+[既存の18群/全86node監査](evidence/ux05-feedback/PEDAGOGY_AUDIT.md)から、以下の単元別契約で変更/維持を確定する。監査候補を全て機械的に実装する案ではない。
 
-新しい教訓を重複追加するのでなく、既存規則の適用漏れとしてF-UX03-11を修正する。
+## 公式問題との照合
 
-## Proposed Solution
-
-完成した正しい導出を先に定め、その各操作を「提示してよい定義・既知の結果」「生徒が今行う組立て・計算・比較」「確定後のまとめ」に対応づける。新しい操作はその直前までの情報だけで解ける問いにし、正答後にその結果を用いて次の操作へ進む。未回答の後続変形は見せない。既知の定義や正答済み結果を写す穴は増やさない。
-
-写真の場面では、右辺を0にする演算、中項が相殺する因数の符号、零積の論理、二つの一次式の逆演算を別々に行わせる。因数や数値が既に与えられていることと、どの操作で式を変えるかを区別する。以下の単元別詳細は完成本文・全候補・誤答理由・解放条件まで含む本案の一部である。JSONは同じ設計の照合用とし、実装データそのものではない。
+rootが実取得・レンダリングして確認した [EJU2021第1回C1 I問1](https://www.jasso.go.jp/ryugaku/eju/examinee/pastpaper_sample/__icsFiles/afieldfile/2022/01/28/2021_1question_math.pdf)（冊子数学−2）と [2025共通数学I,A第1問〔1〕](https://www.dnc.ac.jp/albums/abm.php?d=771&f=abm00005956.pdf&n=2025_op_26_sugaku1A.pdf)（冊子4–5頁）を、条件→式形成/因数分解→解/条件の判断という認知単位の参考にする。本教材の原問題を過去問へ置換しない。[出所/実見範囲](evidence/ux05-feedback/SOURCES.json)を保持し、子担当による原典の独立実見を捏造しない。
 
 ## Scope / Out of Scope
 
-対象は以下の全86node表で明示する。N09の優先8＋追加確認6、N10の9群13nodeを検討し、各項目で変更または理由付き維持を確定する。変更対象以外の問い・型・正答・候補・学習行為を維持する。既に良い積・商の証明、√125の三判断、符号付き分配、既確定のまとめは保護する。
+N09全41/N10全45nodeを、単元別詳細でKEEP/CHANGEへ対応する。各CHANGEの最初に表示する情報・完成解法・全候補/誤答理由・row/partの解放・旧part対応を確定する。KEEPは固定source66c8007bの同じIDの問い/型/正答/全候補/学習行為を保持する参照契約とし、無意味な再転記を避ける。
 
-N08に揃えた共通画面、選択肢の番号・配置、左下リセット、原問題・原数値・図・source Word、他単元・他モード、依存package/lockの更新、governance改変は対象外。共有rendererの修正は既存行契約で表せない確定理由がある場合だけとし、別の表示方式を新設しない。今回は提案書の作成と審査で、製品・main・公開内容は変更しない。
+共有の正答後数式表示と状態別group計画は、N09/N10の現行/保管native版を影響対象に含める。教材の採点・意味を変えるのは各新revisionの承認対象だけ。保管教材の原データと記録は不変とし、共通rendererによる自然組版の修正を受けることは明示して検査する。
 
-## 表示・解放の共通契約
+原問題/数値/図/source Word、N08の教材内容、他単元/他モードの設問、共通header・現在stage・番号付き選択肢・左下reset・連続した本文を保護する。新しいカードUI・初等計算ドリル群・別学力モード・依存/lock更新・governance改変を追加しない。main反映/公開/本人総合受入/Gold/fitは本案の承認範囲へ含めない。
 
-- 各node内のpart順、rowの前提、node間の結果依存を明記する。前の問いの正答だけで別の未回答操作を解決済みにしない。
-- lead・assumptions・extras・選択肢フィードバック・履歴にも未回答の答えを先出ししない。誤答時はその操作の理由だけを説明する。
-- 定義や利用可能な既知結果を明示してよい。今回問う変形の答えを前置きで説明しない。
-- 正答後は同じ導出の途中式として結果を残し、末尾の重複表示を避ける。足場行は全対象partが正答した場合だけ消す。既存`hideAfterCorrectKeys`の非空・重複なし・行part全体一致条件を維持する。mirrorの参照を失わない。
-- 未回答の「…」行が完了後に残らず、異なる量を偽の等号でつながない。式の分子と分数全体、積の因子と指数の作用範囲を区別する。
-- 18px数式・44px操作域・中立幅の計測とsemantic groupを維持する。分数・根号・累乗・単項符号・最初の等号・不等号鎖の途中を恣意的に切らず、式番号と括弧の衝突も検査する。
-- 選択肢は現在の計算の直後。連続した紙面の導出として読める配置を維持し、説明のカード増設や小問画面の分断で解決しない。
+## Proposed Solution — 単元別具体契約
 
-## 変更の見取り図
+次の二単元設計は本案の一部。完成解法は設計審査用であり、未回答の生徒へ初期表示する全文ではない。全候補表の正答印も制作資料のみで、生徒画面へ出さない。
 
-| 場面 | 現行の不足 | 本案で生徒が行うこと |
+
+## 修正の要点と適用順
+
+全86ブロックを監査し、N09は16変更/25維持、N10は9変更/36維持とする。変更は25ブロック。全ての穴を増やす・減らすという方針にはしない。
+
+|対象|旧設計の問題|今回の具体的な修正|
 |---|---|---|
-| N09：負数の平方・全解（写真） | 積・符号・移項・因数分解・一次式処理が自動 | 累乗の対象→積の符号→右辺を0にする共通演算→因子の符号→零積→左右それぞれの逆演算。 |
-| N09：負の根号の平方・√(−4)²・a<0 | 公式の適用や作用範囲を説明だけで済ませる | 負号を因子にする→積の各因子を平方する。既出16の再計算は作用範囲の判断へ変更。文字式へ同じ操作を移す。 |
-| N09：差の全体の符号 | 本文が「差の全体」と答えている | 中身の符号から非負にする操作を選び、確定後に括弧付きの負号を示す。 |
-| N09：1.41²・1.42² | 分数の平方と中項の構成が自動 | 分子/分母への平方→分配した交差項→二つの同類項をまとめる。右側では足場を減らし中項を構成する。補助値は参照する。 |
-| N09：整数部分・小数部分 | 定義からrや区間を取り出す操作が自動 | rを孤立させる共通演算→区間への加算、負数の括弧処理→定義適合、負の乗算→不等号反転。 |
-| N09：±√10の小数部分 | 残りの式一穴で、残りの範囲まで自動 | 残りの式の操作→符号付き項の整理→区間全体への共通移動。整数3/−4の写し直しはしない。 |
-| N10：t√5の平方・t²の取り出し | tの二因子のまとめと「5で割る」を先書き | 同じtの積を指数へ→両辺の除数を判断→商を計算。 |
-| N10：√8・√50 | 平方因子の選択後、残りの因子2が自動 | 平方因子→残りの因子→根号外の係数。因子2と係数2を別の意味として扱う。 |
-| N10：2√2＋5√2 | 共通因子の括り出しが自動 | 共通する√2を括り出す→係数を加算。 |
-| N10：差の平方・定数の整理 | 中項の公式やまとめる項を与える | 符号付き第二項→交差積→負×負→二つの交差項をまとめる。根号を含まない二項の選択後に加算する。 |
-| N10：和と差の積 | 中項の相殺を見せず「−」だけ問う | 二つの交差項の符号→その和0→平方差へ。既出となる旧「−」は問わない。 |
-| N10：二つの有理化 | 分母全体への掛け算の組立てが自動 | 元の分子と分母全体を別々に束縛して積を作る。既に選んだ因子を再び当てさせない。 |
-| N10：2−√3の非零確認と展開 | 4/3を先に示して後でまた問う | 平方は初めて必要な非零確認で計算。後の展開で参照し、符号込みの交差項の和−4を生徒が求める。 |
+|N09 負数の平方・全解|零条件を先に表示し「または」だけ採点。基本逆演算を別問化|因数分解の式を作り、次に積から「x−4=0 または x＋4=0」という条件の組を選ぶ。逆演算は必要な途中式として表示|
+|N09 平方根・絶対値|確定済み平方の再入力、−aの符号やscopeの写し|確定値を参照し、非負の平方根の選択、差の符号、絶対値の具体適用、負号を含む式の整理に判断を置く|
+|N09 小数平方|公式の適用が自動、周辺の基本操作が細分化|和の平方の中項を作る判断を追加。既存の1.41²/1.42²の必要計算6問と大小比較を保持|
+|N09 整数部分・小数部分|符号/括弧/0の入力に分割|負数の候補が0≤r<1を満たすか、確定整数部分を使ってrの式を作れるかを問う|
+|N10 根号の和|共通因子をくくる主判断を自動表示|2√2＋5√2から(2＋5)√2を作る判断を先に置く。係数7の計算はその後|
+|N10 平方・和と差の積|−一字だけの選択、または分配の過剰細分化|平方の中項を符号込みで作る。和と差の積では相殺する具体的な交差項の組を作る|
+|N10 有理化|分子/分母の写し、演算記号や同じ平方値の再入力|分子全体の分配式・分数全体への公式適用・中項生成を問う。既に確定した値は参照し、初めて必要な平方計算/正性/非零判断は保持|
+|共有数式表示|正答済みでも44px操作領域が括弧等を引き伸ばす|正答済み部分は通常の数式構造へ戻す。未回答部分の操作領域を保ち、部分正答ごとに幅と改行を再計画|
 
-# P-W046-UX-04 — N09 14nodeの詳細設計（作者案）
+変更する各ブロックの下記詳細には、完成解法、初期に見せる条件、設問、全候補・誤答理由、正答後の解放順、旧回答の処遇を記載する。設計資料の正答・完成解法を生徒画面へ初期表示する意味ではない。
 
-**提案のみ・実装未承認。** source db99a485、N09 r5 → r6予定。
+承認後は、まず写真のN09代表と共有表示修正を実装・実画像検証する。本人の代表細部確認後に残りへ適用する。旧回答は同じ意味の記録を保持し、廃止設問は旧版へ保存、新しい判断は未回答として扱う。
 
-## 方針
+|設計集計（品質目標ではない）|N09|N10|計|
+|---|---:|---:|---:|
+|対象ブロック|41|45|86|
+|変更|16|9|25|
+|維持|25|36|61|
+|旧回答契約|52|63|115|
+|同一意味で保持|32|52|84|
+|旧版に保存し新問へ流用しない|20|11|31|
+|新しい判断|11|8|19|
+|新版の回答契約|43|60|103|
 
-- 穴数を合格基準にしない。各新しい変形を操作・作用範囲・因子・符号・条件確認のどれとして本人が行うかを先に決める。
-- 既出値・確定済み同一計算は参照とする。定義・与える方針と、本人に求める判断を区別する。
-- 同じ学習行為の既存partはKEEP。思考操作が変われば別keyでNEW、旧partはRETIREとして記録保存。
-- rowsは候補表示の正確template。正答前にdependsOnKeysが不足したrow・完成条件・terminalRecordを出さない。
-- text rowsへ数学の新しい記法を無理に埋め込まない。本文inline数式は既存MathCopyを使い、正確な式はmath rowで保持。
-- 同じUI/排版、現在stage、直後選択肢、左下reset、neutral envelope、軸groupを維持する。新UIは作らない。
-- hideAfterCorrectKeysは足場行の全partKeysと集合一致する場合のみ。初期・誤答は保持し、正答後に完成行へ置換する。
-- 提案書上のcorrectInProposalOnlyは学習画面へ出さない。数学的別解を不当に誤りとしない。
+詳細の機械可読版：[N09](evidence/ux05-proposal/N09_DESIGN.json) / [N10](evidence/ux05-proposal/N10_DESIGN.json)。集計は提案の構造照合であり、未実装の製品検査や学習効果の実証ではない。
 
-## n09-q01-negative — CHANGE
 
-末尾16だけの穴を、操作・符号・値に分ける。
+## P-W046-UX-05 N09 完成修正案
+基準66c8007b・N09r6 compiled470f。N09r7案。製品変更なし。全41nodeを対応し、KEEP契約は基準の同IDを正本参照する。
+```json
+{
+  "nodes": 41,
+  "changeNodes": 16,
+  "keepNodes": 25,
+  "oldParts": 52,
+  "keptParts": 32,
+  "retiredParts": 20,
+  "newParts": 11,
+  "targetParts": 43
+}
+```
+### 判断の単位
+零条件の組は法則を具体的な二因子へ適用する一つの推論。移項・因数分解・零条件・解を一括選択させる全解法丸当てではない。因数分解は独立判断、基本逆演算は必要な途中式。因子順を交換した正しい式を誤答にしない。
+### 表示と保存
+{
+  "wholeCondition": "factorZeroConditionUX05はenum値で採点。本文のtext足場は「条件の組：{slot}」という短い選択ラベルだけを表示し、長い条件latexをslot内部へ詰めない。",
+  "mathLines": "閉じたLaTeX配列を一候補の一ボタン内で行ごとに描画。採点値は一つ。候補の式はまたは/かつという意味境界で改行。正答後は通常math二行へ置換。共通UI内、card追加なし。",
+  "narrow": "320/390/430/1440（768は追加任意）で単一長式slot・ボタンoverflow・不自然な等号折返しを実装時に検査。現時点で描画PASSは未主張。"
+}
+{
+  "sourceRevision": 6,
+  "targetRevision": 7,
+  "snapshot": "r6のcompiled470fを不変snapshotとして保存。r5/r4/pilot/legacyの認識・鎖・旧版route・履歴/resetを保持。",
+  "keep": "同ID契約一致32件。旧正答を再入力要求せず、NEW前提より後の記録は正答保存のままpending。",
+  "retire": "20件は出所付き保存。NEW11件を旧記録やterminal完成で代用しない。",
+  "nativeHash": "未知native hashで破壊・上書きしない。新hash厳密edgeを追加する。",
+  "n10": "r4を無断改訂しない。別N10案の改訂は別明示契約で統合。"
+}
+### 全node対応
+|node|判断|保持/廃止/新規|
+|---|---|---|
+|n09-q01-positive|KEEP|0/0/0|
+|n09-q01-negative|CHANGE|2/1/0|
+|n09-01|CHANGE|0/5/2|
+|n09-definition|KEEP|0/0/0|
+|n09-q02-root|KEEP|1/0/0|
+|n09-q02-negative-square|CHANGE|0/2/1|
+|n09-02|KEEP|0/0/0|
+|n09-boundary|KEEP|0/0/0|
+|n09-q03-inside|CHANGE|0/1/0|
+|n09-03|KEEP|1/0/0|
+|n09-q04-nonnegative|KEEP|1/0/0|
+|n09-q04-negative|CHANGE|1/1/0|
+|n09-04|KEEP|0/0/0|
+|n09-05|KEEP|1/0/0|
+|n09-q06-squares|KEEP|1/0/0|
+|n09-q06-order|KEEP|1/0/0|
+|n09-06|CHANGE|0/2/1|
+|n09-q07-negation|CHANGE|0/1/1|
+|n09-07|CHANGE|0/4/1|
+|n09-decimal-method|CHANGE|0/0/0|
+|n09-p001-q08-left-square|CHANGE|3/0/1|
+|n09-p001-q08-right-square|CHANGE|3/0/1|
+|n09-p001-q08-lower-sign|KEEP|1/0/0|
+|n09-p001-q08-upper-sign|KEEP|1/0/0|
+|n09-08|KEEP|0/0/0|
+|n09-09|KEEP|2/0/0|
+|n09-parts-target|KEEP|0/0/0|
+|n09-q10-reject-truncation|CHANGE|1/0/1|
+|n09-10|KEEP|1/0/0|
+|n09-q11-remainder|CHANGE|1/1/0|
+|n09-11|KEEP|0/0/0|
+|n09-q12-lower|KEEP|1/0/0|
+|n09-q12-upper|KEEP|1/0/0|
+|n09-12|KEEP|2/0/0|
+|n09-q13-reverse|CHANGE|2/0/0|
+|n09-13|KEEP|2/0/0|
+|n09-q14-positive-integer|KEEP|1/0/0|
+|n09-q14-positive-remainder|CHANGE|0/1/1|
+|n09-q14-negative-integer|KEEP|1/0/0|
+|n09-q14-negative-remainder|CHANGE|0/1/1|
+|n09-14|KEEP|0/0/0|
 
-### 穴なしの完成解法
+### n09-q01-positive — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q01-positive
 
-(−4)²は−4全体を二回掛ける操作である。(−4)²=(−4)×(−4)=+(4×4)=16。
+### n09-q01-negative — CHANGE
+括弧を含む平方の作用と計算は残し、独立した積の符号小問を減らす。
+完成解法：(−4)²=(−4)×(−4)=16。括弧内全体が二つの因子になる。
+最初の本文：負の候補も確かめます。括弧と指数に注意しましょう。
+条件：["x∈ℝ、x²=16を満たすすべての実数を求める。"]
+教える一般則／参照：[]
+前提node：["n09-q01-positive"]
+前提result：["n09-q01-positive-result"]
+#### 穴と全選択肢
 
-### 最初に提示する本文・条件
+- n09-q01-negative::powerAction / KEEP / text / 正答 `repeat-whole-base`
+  問い：(-4)²で、指数2が指定している操作を選びます。
+  回答前提：[]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q01-negative::powerAction
 
-正の候補に続き、負の候補も調べます。括弧と指数の作用を先に決めましょう。
+- n09-q01-negative::value / KEEP / math / 正答 `16`
+  問い：負の候補を2回掛けた値を計算します。
+  回答前提：["powerAction"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q01-negative::value
 
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "text",
+    "template": "2乗の操作は、{powerAction}。",
+    "partKeys": [
+      "powerAction"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-q01-negative::ux05-row-01"
+  },
+  {
+    "kind": "math",
+    "template": "(-4)^2=(-4)\\times(-4)={value}",
+    "partKeys": [
+      "value"
+    ],
+    "requiresCorrectKeys": [
+      "powerAction"
+    ],
+    "id": "n09-q01-negative::ux05-row-02",
+    "mathGroupId": "n09-q01-negative-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q01-negative-result", "formulas": ["(-4)^2=16"], "conditions": ["x∈ℝ、x²=16を満たすすべての実数を求める。"], "requiresCorrectKeys": ["powerAction", "value"], "certifiedFrom": ["n09-q01-positive-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q01-negative::powerAction",
+    "decision": "KEEP",
+    "newPartId": "n09-q01-negative::powerAction",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-q01-negative::productSign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-q01-negative::value",
+    "decision": "KEEP",
+    "newPartId": "n09-q01-negative::value",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：[]
 
-### 正確な表示行と解放
+### n09-01 — CHANGE
+零条件の式を先に与えてorだけを選ばせる構造を廃止。因数分解と具体的な零条件の組を主判断とする。基本逆演算は途中式に戻す。
+完成解法：x²=16 ⇔ x²−16=0 ⇔ x²−4²=0 ⇔ (x−4)(x＋4)=0 ⇔ x−4=0 または x＋4=0 ⇔ x=4 または x=−4。全変形が同値なので全解を尽くす。
+最初の本文：候補を確かめるだけでなく、他に解がないことも調べます。
+条件：["x∈ℝ。"]
+教える一般則／参照：["既習公式：(A-B)(A+B)=A^2-B^2。", "実数の零積の法則：AB=0 ⇔ A=0 または B=0。一方が0なら積は0、どちらも0でなければ積は0にならない。"]
+前提node：["n09-q01-negative", "n09-q01-positive"]
+前提result：["n09-q01-negative-result", "n09-q01-positive-result"]
+#### 穴と全選択肢
 
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+- n09-01::factorisedFormUX05 / NEW / math / 正答 `(x-4)(x+4)`
+  問い：左辺x²−4²に恒等的に等しい因数分解を選びます。
+  回答前提：[]
+  思考操作：平方差の構造を因数分解へ適用する。第一因子の写し穴ではない。
+  - 正答：`(x-4)(x+4)` / (x-4)(x+4) / 中間項が相殺し、x²−16になります。
+  - 誤答：`(x-4)^2` / (x-4)^2 / 展開すると−8xという中間項が残ります。
+  - 誤答：`(x+4)^2` / (x+4)^2 / 展開すると＋8xという中間項が残ります。
+  - 誤答：`x(x-16)` / x(x-16) / 展開するとx²−16xとなり、定数項−16になりません。
+
+- n09-01::factorZeroConditionUX05 / NEW / text / 正答 `either-factor-zero`
+  問い：確定した積が0になる条件を、因子についての式で表した組を選びます。
+  回答前提：["factorisedFormUX05"]
+  思考操作：AB=0の法則を具体的な二因子へ適用し、必要十分な零条件全体を構成する。
+  - 正答：`either-factor-zero` / 第一因子が0、または第二因子が0 / どちらか一方が0なら積は0であり、実数ではこれで全ての場合を尽くします。 / mathLines=["x-4=0", "\\text{または}\\quad x+4=0"]
+  - 誤答：`both-factors-zero` / 両因子が同時に0 / 零積は同時に0である必要がありません。一方が0なら積は0です。 / mathLines=["x-4=0", "\\text{かつ}\\quad x+4=0"]
+  - 誤答：`equal-factors` / 二つの因子が等しい / 因子が等しいだけでは、その積が0とは限りません。 / mathLines=["x-4=x+4"]
+  - 誤答：`variable-zero` / 変数が0 / 積を作っている因子はxそのものではありません。 / mathLines=["x=0"]
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "x^2=16",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-01::ux05-row-01",
+    "mathGroupId": "n09-01-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "x^2-16=16-16=0",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-01::ux05-row-02",
+    "mathGroupId": "n09-01-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "x^2-4^2=0",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-01::ux05-row-03",
+    "mathGroupId": "n09-01-ux05-math-03"
+  },
+  {
+    "kind": "math",
+    "template": "{factorisedFormUX05}=0",
+    "partKeys": [
+      "factorisedFormUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-01::ux05-row-04",
+    "mathGroupId": "n09-01-ux05-math-04"
+  },
+  {
+    "kind": "text",
+    "template": "因子についての零条件の組：{factorZeroConditionUX05}",
+    "partKeys": [
+      "factorZeroConditionUX05"
+    ],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05"
+    ],
+    "hideAfterCorrectKeys": [
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-05"
+  },
+  {
+    "kind": "math",
+    "template": "x-4=0",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05",
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-06",
+    "mathGroupId": "n09-01-ux05-math-06"
+  },
+  {
+    "kind": "math",
+    "template": "\\text{または}\\quad x+4=0",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05",
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-07",
+    "mathGroupId": "n09-01-ux05-math-07"
+  },
+  {
+    "kind": "math",
+    "template": "x-4=0\\ \\Rightarrow\\ x=4",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05",
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-08",
+    "mathGroupId": "n09-01-ux05-math-08"
+  },
+  {
+    "kind": "math",
+    "template": "x+4=0\\ \\Rightarrow\\ x=-4",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05",
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-09",
+    "mathGroupId": "n09-01-ux05-math-09"
+  },
+  {
+    "kind": "text",
+    "template": "同値変形で場合を尽くしたため、4と−4が全ての解です。",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "factorisedFormUX05",
+      "factorZeroConditionUX05"
+    ],
+    "id": "n09-01::ux05-row-10"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-01-result", "formulas": ["x=4\\quad\\text{または}\\quad x=-4"], "conditions": ["x∈ℝ。"], "requiresCorrectKeys": ["factorisedFormUX05", "factorZeroConditionUX05"], "certifiedFrom": ["n09-q01-negative-result", "n09-q01-positive-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-01::balanceOperation",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-01::factorSign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-01::zeroLogic",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-01::leftInverseOperation",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-01::rightInverseOperation",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-01::factorisedFormUX05", "n09-01::factorZeroConditionUX05"]
+
+### n09-definition — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-definition
+
+### n09-q02-root — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q02-root
+
+### n09-q02-negative-square — CHANGE
+1×5と(−1)²の分割をやめ、元の平方の一計算へ統合。旧valueは1×5なので別ID。
+完成解法：(−√5)²=(−1)²(√5)²=1×5=5。
+最初の本文：平方根の前に負号があるときも、括弧全体の平方を計算します。
+条件：["根号は非負の一つの値。√16と(−√5)²を元の順で求める。"]
+教える一般則／参照：["(uv)^2=u^2v^2、(√a)^2=a (a≥0)。"]
+前提node：["n09-q02-root"]
+前提result：["n09-q02-root-result"]
+#### 穴と全選択肢
+
+- n09-q02-negative-square::signedRootSquareUX05 / NEW / math / 正答 `5`
+  問い：負号を含む括弧全体の平方(−√5)²を求めます。
+  回答前提：[]
+  思考操作：負の平方根の平方を、指数の作用範囲と平方根の定義で計算する。
+  - 正答：`5` / 5 / 括弧内全体を二乗するので負号も二乗され、(√5)²=5です。
+  - 誤答：`-5` / -5 / 負号を括弧の外へ残していませんか。
+  - 誤答：`25` / 25 / 二乗されるのは5ではなく√5です。
+  - 誤答：`\sqrt5` / \sqrt5 / 二乗によって元の根号の大きさをそのまま残すのではありません。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "(-\\sqrt5)^2={signedRootSquareUX05}",
+    "partKeys": [
+      "signedRootSquareUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "signedRootSquareUX05"
+    ],
+    "id": "n09-q02-negative-square::ux05-row-01",
+    "mathGroupId": "n09-q02-negative-square-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=1\\times5=5",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "signedRootSquareUX05"
+    ],
+    "id": "n09-q02-negative-square::ux05-row-02",
+    "mathGroupId": "n09-q02-negative-square-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q02-negative-square-result", "formulas": ["(-\\sqrt5)^2=5"], "conditions": ["根号は非負の一つの値。√16と(−√5)²を元の順で求める。"], "requiresCorrectKeys": ["signedRootSquareUX05"], "certifiedFrom": ["n09-q02-root-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q02-negative-square::signFactor",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-q02-negative-square::value",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-q02-negative-square::signedRootSquareUX05"]
+
+### n09-02 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-02
+
+### n09-boundary — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-boundary
+
+### n09-q03-inside — CHANGE
+初出平方の再入力を参照へ変更し、次nodeの非負の平方根選択は保護する。
+完成解法：既に確定した(−4)²=16を使う。√((−4)²)=√16、非負の平方根は次nodeで選ぶ。
+最初の本文：確定済みの平方を使い、平方根を調べます。
+条件：["実数の範囲で√((−4)²)を求める。根号の中と値は非負。"]
+教える一般則／参照：[]
+前提node：["n09-boundary", "n09-q01-negative"]
+前提result：["n09-boundary-result", "n09-q01-negative-result"]
+#### 穴と全選択肢
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "(-4)^2=16",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-q03-inside::ux05-row-01",
+    "mathGroupId": "n09-q03-inside-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "\\sqrt{(-4)^2}=\\sqrt{16}",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-q03-inside::ux05-row-02",
+    "mathGroupId": "n09-q03-inside-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q03-inside-result", "formulas": ["(-4)^2=16"], "conditions": ["実数の範囲で√((−4)²)を求める。根号の中と値は非負。"], "requiresCorrectKeys": [], "certifiedFrom": ["n09-boundary-result", "n09-q01-negative-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q03-inside::value",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：[]
+
+### n09-03 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-03
+
+### n09-q04-nonnegative — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q04-nonnegative
+
+### n09-q04-negative — CHANGE
+−aの符号を独立小問にせず、非負の平方根を選ぶ本来の判断と根拠を保持。
+完成解法：a<0なので−a>0、(−a)²=a²。よって√a²=−a。
+最初の本文：aが負の場合、a²の非負の平方根を選びます。
+条件：["a∈ℝ、a<0。"]
+教える一般則／参照：["平方根記号√は非負の平方根を表す。"]
+前提node：["n09-q04-nonnegative"]
+前提result：["n09-q04-nonnegative-result"]
+#### 穴と全選択肢
+
+- n09-q04-negative::value / KEEP / math / 正答 `-a`
+  問い：負のaの平方について、非負の方を選びます。
+  回答前提：[]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q04-negative::value
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "\\sqrt{a^2}={value}",
+    "partKeys": [
+      "value"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "value"
+    ],
+    "id": "n09-q04-negative::ux05-row-01",
+    "mathGroupId": "n09-q04-negative-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "a<0\\ \\Rightarrow\\ -a>0",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "value"
+    ],
+    "id": "n09-q04-negative::ux05-row-02",
+    "mathGroupId": "n09-q04-negative-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "(-a)^2=a^2",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "value"
+    ],
+    "id": "n09-q04-negative::ux05-row-03",
+    "mathGroupId": "n09-q04-negative-ux05-math-03"
+  },
+  {
+    "kind": "math",
+    "template": "\\sqrt{a^2}=-a",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "value"
+    ],
+    "id": "n09-q04-negative::ux05-row-04",
+    "mathGroupId": "n09-q04-negative-ux05-math-04"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q04-negative-result", "formulas": ["\\sqrt{a^2}=-a\\quad(a<0)"], "conditions": ["a∈ℝ、a<0。"], "requiresCorrectKeys": ["value"], "certifiedFrom": ["n09-q04-nonnegative-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q04-negative::oppositeSign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-q04-negative::value",
+    "decision": "KEEP",
+    "newPartId": "n09-q04-negative::value",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：[]
+
+### n09-04 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-04
+
+### n09-05 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-05
+
+### n09-q06-squares — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q06-squares
+
+### n09-q06-order — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q06-order
+
+### n09-06 — CHANGE
+加える数の写しと0の入力を、必要な差の符号判断へ置換。
+完成解法：2<√5の両辺から√5を引くと2−√5<√5−√5=0。
+最初の本文：確定済みの比較を使い、差の符号を決めます。
+条件：["同じ実数を両辺へ加えても不等号の向きは変わらない。"]
+教える一般則／参照：[]
+前提node：["n09-05", "n09-q06-order"]
+前提result：["n09-05-result", "n09-q06-order-result"]
+#### 穴と全選択肢
+
+- n09-06::differenceRelationUX05 / NEW / math / 正答 `<`
+  問い：確定済みの2と√5の大小から、差2−√5と0の大小を決めます。
+  回答前提：[]
+  思考操作：大小関係から差の符号を判断し絶対値の場合分けに使う。
+  - 正答：`<` / < / 小さい数から大きい数を引くので差は負です。
+  - 誤答：`>` / > / 2と√5のどちらが大きいか、確定済みの比較へ戻ってください。
+  - 誤答：`=` / = / 二つの数は等しくありません。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "2-\\sqrt5\\ {differenceRelationUX05}\\ 0",
+    "partKeys": [
+      "differenceRelationUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "differenceRelationUX05"
+    ],
+    "id": "n09-06::ux05-row-01",
+    "mathGroupId": "n09-06-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "2-\\sqrt5<\\sqrt5-\\sqrt5=0",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "differenceRelationUX05"
+    ],
+    "id": "n09-06::ux05-row-02",
+    "mathGroupId": "n09-06-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-06-result", "formulas": ["2-\\sqrt5<0"], "conditions": ["同じ実数を両辺へ加えても不等号の向きは変わらない。"], "requiresCorrectKeys": ["differenceRelationUX05"], "certifiedFrom": ["n09-05-result", "n09-q06-order-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-06::addend",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-06::zero",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-06::differenceRelationUX05"]
+
+### n09-q07-negation — CHANGE
+印刷された式のscope写しを、絶対値の定義の具体適用へ置換。
+完成解法：√((2−√5)²)=|2−√5|。中身が負なので|2−√5|=−(2−√5)。
+最初の本文：平方の平方根を絶対値へ直し、中身の符号に応じて外します。
+条件：["2−√5<0。u<0なら|u|=−u。"]
+教える一般則／参照：["|u|はu≥0ならu、u<0なら−u。"]
+前提node：["n09-05", "n09-06"]
+前提result：["n09-05-result", "n09-06-result"]
+#### 穴と全選択肢
+
+- n09-q07-negation::absoluteExpressionUX05 / NEW / math / 正答 `-(2-\sqrt5)`
+  問い：2−√5<0を使い、絶対値を外します。まだ外側の負号は分配せず、括弧を残した形を選びます。
+  回答前提：[]
+  思考操作：負と確定した二項式全体へ絶対値の定義を適用する。
+  - 正答：`-(2-\sqrt5)` / -(2-\sqrt5) / 負の中身は、全体の符号を反転すると非負になります。
+  - 誤答：`2-\sqrt5` / 2-\sqrt5 / 確定済みの中身は負なので、そのままでは絶対値になりません。
+  - 誤答：`-2-\sqrt5` / -2-\sqrt5 / 中身全体の符号を反転する必要があります。
+  - 誤答：`2+\sqrt5` / 2+\sqrt5 / 二項の和を作る操作ではありません。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-q07-negation::ux05-row-01",
+    "mathGroupId": "n09-q07-negation-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "|2-\\sqrt5|={absoluteExpressionUX05}",
+    "partKeys": [
+      "absoluteExpressionUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-q07-negation::ux05-row-02",
+    "mathGroupId": "n09-q07-negation-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q07-negation-result", "formulas": ["|2-\\sqrt5|=-(2-\\sqrt5)"], "conditions": ["2−√5<0。u<0なら|u|=−u。"], "requiresCorrectKeys": ["absoluteExpressionUX05"], "certifiedFrom": ["n09-05-result", "n09-06-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q07-negation::scope",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-q07-negation::absoluteExpressionUX05"]
+
+### n09-07 — CHANGE
+−1・加数・個々の符号の小問を、負号を分配した式全体の計算へ統合。
+完成解法：−(2−√5)=−2＋√5=√5−2。従って√((2−√5)²)=√5−2。
+最初の本文：確定した式を整理して、平方の平方根の値を仕上げます。
+条件：["2−√5<0。√(u²)=|u|、u<0なら|u|=−u。"]
+教える一般則／参照：[]
+前提node：["n09-05", "n09-q07-negation", "n09-06"]
+前提result：["n09-05-result", "n09-q07-negation-result", "n09-06-result"]
+#### 穴と全選択肢
+
+- n09-07::expandedExpressionUX05 / NEW / math / 正答 `\sqrt5-2`
+  問い：確定した−(2−√5)の括弧を外して整理します。根号を含む項が先の形を選びます。
+  回答前提：[]
+  思考操作：二項式全体への負号の分配を一つの式として実行する。
+  - 正答：`\sqrt5-2` / \sqrt5-2 / 二項とも符号が反転し、−2＋√5=√5−2です。
+  - 誤答：`2-\sqrt5` / 2-\sqrt5 / 外側の負号を作用させていません。
+  - 誤答：`-2-\sqrt5` / -2-\sqrt5 / 第二項の負号も反転させてください。
+  - 誤答：`2+\sqrt5` / 2+\sqrt5 / 第一項2の符号も反転します。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "-(2-\\sqrt5)={expandedExpressionUX05}",
+    "partKeys": [
+      "expandedExpressionUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "expandedExpressionUX05"
+    ],
+    "id": "n09-07::ux05-row-01",
+    "mathGroupId": "n09-07-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "-(2-\\sqrt5)=-2+\\sqrt5=\\sqrt5-2",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "expandedExpressionUX05"
+    ],
+    "id": "n09-07::ux05-row-02",
+    "mathGroupId": "n09-07-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-07-result", "formulas": ["\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2"], "conditions": ["2−√5<0。√(u²)=|u|、u<0なら|u|=−u。"], "requiresCorrectKeys": ["expandedExpressionUX05"], "certifiedFrom": ["n09-05-result", "n09-q07-negation-result", "n09-06-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-07::outsideFactor",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-07::secondOperand",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-07::left",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-07::sign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-07::expandedExpressionUX05"]
+
+### n09-decimal-method — CHANGE
+後続の中項構成を未知の公式名当てにしない参照説明を補足。数値の計算は後続で保持。
+完成解法：1.41=141/100、1.42=142/100。平方の分子を140＋1または140＋2として、和の平方の公式を適用する。
+最初の本文：分数に直し、分子の平方を計算する方法を使います。
+条件：["1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"]
+教える一般則／参照：["(A+B)^2=A^2+AB+BA+B^2=A^2+2AB+B^2。中項は異なる項どうしの積が二つ分。", "(p/q)^2=p^2/q^2 (q≠0)。"]
+前提node：["n09-07"]
+前提result：["n09-07-result"]
+#### 穴と全選択肢
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-decimal-method::ux05-row-01",
+    "mathGroupId": "n09-decimal-method-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "140^2=14^2\\times100=196\\times100=19600",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-decimal-method::ux05-row-02",
+    "mathGroupId": "n09-decimal-method-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "1^2=1,\\quad2^2=4,\\quad100^2=10000",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-decimal-method::ux05-row-03",
+    "mathGroupId": "n09-decimal-method-ux05-math-03"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-decimal-method-result", "formulas": ["1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}", "140^2=19600,\\quad100^2=10000"], "conditions": ["1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"], "requiresCorrectKeys": [], "certifiedFrom": ["n09-07-result"]}
+#### 旧新mapping
+```json
+[]
+```
+新ID：[]
+
+### n09-p001-q08-left-square — CHANGE
+MASTER§53の既存計算3件を厳密保持。公式の具体適用である中項の構成を計算の直前へ置く。
+完成解法：1.41²=(141/100)²。(140＋1)²=19600＋280＋1=19881。分母10000で割ると1.9881。
+最初の本文：直前の参照公式を、この分子の二項へ適用します。
+条件：["候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"]
+教える一般則／参照：[]
+前提node：["n09-decimal-method"]
+前提result：["n09-decimal-method-result"]
+#### 穴と全選択肢
+
+- n09-p001-q08-left-square::middleTermUX05 / NEW / math / 正答 `2\times140\times1`
+  問い：(140＋1)²を和の平方の公式で展開します。中項を作る因子の組を選びます。
+  回答前提：[]
+  思考操作：和の平方の中項を二つの項から具体的に構成する。既存の積・和・小数化は別に保持する。
+  - 正答：`2\times140\times1` / 2\times140\times1 / 異なる二項の積が二つ分なので2×140×1です。
+  - 誤答：`140\times1` / 140\times1 / 交差する積は二つあります。一つ分だけではありません。
+  - 誤答：`2\times140^2` / 2\times140^2 / 二項のうち一方を二乗するのではなく、異なる二項を掛けます。
+  - 誤答：`140+1` / 140+1 / 中項は元の二項の和ではありません。
+
+- n09-p001-q08-left-square::L1 / KEEP / math / 正答 `280`
+  問い：中項2×140×1を計算します。
+  回答前提：["middleTermUX05"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-left-square::L1
+
+- n09-p001-q08-left-square::L2 / KEEP / math / 正答 `19881`
+  問い：三つの項を合計します。
+  回答前提：["middleTermUX05", "L1"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-left-square::L2
+
+- n09-p001-q08-left-square::L3 / KEEP / math / 正答 `1.9881`
+  問い：整数の平方を10000で割って小数に戻します。
+  回答前提：["middleTermUX05", "L1", "L2"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-left-square::L3
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "1.41^2=\\left(\\frac{141}{100}\\right)^2",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-p001-q08-left-square::ux05-row-01",
+    "mathGroupId": "n09-p001-q08-left-square-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "(140+1)^2=140^2+{middleTermUX05}+1^2",
+    "partKeys": [
+      "middleTermUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-p001-q08-left-square::ux05-row-02",
+    "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "=19600+{L1}+1",
+    "partKeys": [
+      "L1"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05"
+    ],
+    "id": "n09-p001-q08-left-square::ux05-row-03",
+    "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "=19600+{mirror:L1}+1={L2}",
+    "partKeys": [
+      "L2"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05",
+      "L1"
+    ],
+    "id": "n09-p001-q08-left-square::ux05-row-04",
+    "mathGroupId": "n09-p001-q08-left-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "1.41^2=\\frac{{mirror:L2}}{10000}={L3}",
+    "partKeys": [
+      "L3"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05",
+      "L1",
+      "L2"
+    ],
+    "id": "n09-p001-q08-left-square::ux05-row-05",
+    "mathGroupId": "n09-p001-q08-left-square-ux05-math-05"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-p001-q08-left-square-result", "formulas": ["141^2=19881", "1.41^2=1.9881"], "conditions": ["候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"], "requiresCorrectKeys": ["middleTermUX05", "L1", "L2", "L3"], "certifiedFrom": ["n09-decimal-method-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-p001-q08-left-square::L1",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-left-square::L1",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-p001-q08-left-square::L2",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-left-square::L2",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-p001-q08-left-square::L3",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-left-square::L3",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：["n09-p001-q08-left-square::middleTermUX05"]
+
+### n09-p001-q08-right-square — CHANGE
+MASTER§53の既存計算3件を厳密保持。公式の具体適用である中項の構成を計算の直前へ置く。
+完成解法：1.42²=(142/100)²。(140＋2)²=19600＋560＋4=20164。分母10000で割ると2.0164。
+最初の本文：直前の参照公式を、この分子の二項へ適用します。
+条件：["候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"]
+教える一般則／参照：[]
+前提node：["n09-p001-q08-left-square"]
+前提result：["n09-p001-q08-left-square-result"]
+#### 穴と全選択肢
+
+- n09-p001-q08-right-square::middleTermUX05 / NEW / math / 正答 `2\times140\times2`
+  問い：(140＋2)²を和の平方の公式で展開します。中項を作る因子の組を選びます。
+  回答前提：[]
+  思考操作：和の平方の中項を二つの項から具体的に構成する。既存の積・和・小数化は別に保持する。
+  - 正答：`2\times140\times2` / 2\times140\times2 / 異なる二項の積が二つ分なので2×140×2です。
+  - 誤答：`140\times2` / 140\times2 / 交差する積は二つあります。一つ分だけではありません。
+  - 誤答：`2\times140^2` / 2\times140^2 / 二項のうち一方を二乗するのではなく、異なる二項を掛けます。
+  - 誤答：`140+2` / 140+2 / 中項は元の二項の和ではありません。
+
+- n09-p001-q08-right-square::R1 / KEEP / math / 正答 `560`
+  問い：中項2×140×2を計算します。
+  回答前提：["middleTermUX05"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-right-square::R1
+
+- n09-p001-q08-right-square::R2 / KEEP / math / 正答 `20164`
+  問い：三つの項を合計します。
+  回答前提：["middleTermUX05", "R1"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-right-square::R2
+
+- n09-p001-q08-right-square::R3 / KEEP / math / 正答 `2.0164`
+  問い：整数の平方を小数に戻します。
+  回答前提：["middleTermUX05", "R1", "R2"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-p001-q08-right-square::R3
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "1.42^2=\\left(\\frac{142}{100}\\right)^2",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-p001-q08-right-square::ux05-row-01",
+    "mathGroupId": "n09-p001-q08-right-square-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "(140+2)^2=140^2+{middleTermUX05}+2^2",
+    "partKeys": [
+      "middleTermUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-p001-q08-right-square::ux05-row-02",
+    "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "=19600+{R1}+4",
+    "partKeys": [
+      "R1"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05"
+    ],
+    "id": "n09-p001-q08-right-square::ux05-row-03",
+    "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "=19600+{mirror:R1}+4={R2}",
+    "partKeys": [
+      "R2"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05",
+      "R1"
+    ],
+    "id": "n09-p001-q08-right-square::ux05-row-04",
+    "mathGroupId": "n09-p001-q08-right-square-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "1.42^2=\\frac{{mirror:R2}}{10000}={R3}",
+    "partKeys": [
+      "R3"
+    ],
+    "requiresCorrectKeys": [
+      "middleTermUX05",
+      "R1",
+      "R2"
+    ],
+    "id": "n09-p001-q08-right-square::ux05-row-05",
+    "mathGroupId": "n09-p001-q08-right-square-ux05-math-05"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-p001-q08-right-square-result", "formulas": ["142^2=20164", "1.42^2=2.0164"], "conditions": ["候補1.41と1.42は正。√2を挟むため両候補の平方を2と比べる。"], "requiresCorrectKeys": ["middleTermUX05", "R1", "R2", "R3"], "certifiedFrom": ["n09-p001-q08-left-square-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-p001-q08-right-square::R1",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-right-square::R1",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-p001-q08-right-square::R2",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-right-square::R2",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-p001-q08-right-square::R3",
+    "decision": "KEEP",
+    "newPartId": "n09-p001-q08-right-square::R3",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：["n09-p001-q08-right-square::middleTermUX05"]
+
+### n09-p001-q08-lower-sign — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-p001-q08-lower-sign
+
+### n09-p001-q08-upper-sign — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-p001-q08-upper-sign
+
+### n09-08 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-08
+
+### n09-09 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-09
+
+### n09-parts-target — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-parts-target
+
+### n09-q10-reject-truncation — CHANGE
+元の剰余計算を残し、定義により候補を棄却する判断を本人が行う。
+完成解法：n=−2ならr=−2.1−(−2)=−2.1＋2=−0.1。0≤r<1に反するのでn=−2は採用できない。
+最初の本文：−2.1の整数部分を−2と仮定した候補を検査します。
+条件：["残りは0≤r<1でなければならない。"]
+教える一般則／参照：["x=n+r、nは整数、0≤r<1。"]
+前提node：["n09-parts-target"]
+前提result：["n09-parts-target-result"]
+#### 穴と全選択肢
+
+- n09-q10-reject-truncation::value / KEEP / math / 正答 `-0.1`
+  問い：候補n=−2の残りを計算します。
+  回答前提：[]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q10-reject-truncation::value
+
+- n09-q10-reject-truncation::candidateValidityUX05 / NEW / text / 正答 `reject-range`
+  問い：n=−2とした候補を、rの条件に照らしてどう判断しますか。
+  回答前提：["value"]
+  思考操作：候補を整数部分・小数部分の定義に照らして棄却する。
+  - 正答：`reject-range` / rが許される範囲にないため不採用 / r=−0.1は0≤r<1を満たしません。
+  - 誤答：`accept-integer` / nが整数なので採用 / nが整数であることに加えて、rの範囲も必要です。
+  - 誤答：`accept-truncation` / 小数を切り捨てた形なので採用 / 見た目ではなく、定義の条件を満たすかを確認します。
+  - 誤答：`reject-negative-integer` / nが負なので不採用 / 整数部分は負でも構いません。条件はrの範囲です。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "-2.1-(-2)=-2.1+2={value}",
+    "partKeys": [
+      "value"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-q10-reject-truncation::ux05-row-01",
+    "mathGroupId": "n09-q10-reject-truncation-ux05-math-01"
+  },
+  {
+    "kind": "text",
+    "template": "候補の判断：{candidateValidityUX05}",
+    "partKeys": [
+      "candidateValidityUX05"
+    ],
+    "requiresCorrectKeys": [
+      "value"
+    ],
+    "id": "n09-q10-reject-truncation::ux05-row-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q10-reject-truncation-result", "formulas": ["-2.1-(-2)=-0.1<0"], "conditions": ["残りは0≤r<1でなければならない。"], "requiresCorrectKeys": ["value", "candidateValidityUX05"], "certifiedFrom": ["n09-parts-target-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q10-reject-truncation::value",
+    "decision": "KEEP",
+    "newPartId": "n09-q10-reject-truncation::value",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：["n09-q10-reject-truncation::candidateValidityUX05"]
+
+### n09-10 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-10
+
+### n09-q11-remainder — CHANGE
+負数を引く演算子だけの小問を外し、既存の初出剰余計算は維持。
+完成解法：r=−2.1−(−3)=−2.1＋3=0.9。
+最初の本文：確定した整数部分n=−3を使い、rを計算します。
+条件：["x=−2.1、n=−3、r=x−n、0≤r<1。"]
+教える一般則／参照：[]
+前提node：["n09-parts-target", "n09-10"]
+前提result：["n09-parts-target-result", "n09-10-result"]
+#### 穴と全選択肢
+
+- n09-q11-remainder::value / KEEP / math / 正答 `0.9`
+  問い：残りの値を計算します。
+  回答前提：[]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q11-remainder::value
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "r=-2.1-(-3)=-2.1+3={value}",
+    "partKeys": [
+      "value"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-q11-remainder::ux05-row-01",
+    "mathGroupId": "n09-q11-remainder-ux05-math-01"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q11-remainder-result", "formulas": ["r=0.9", "0\\le0.9<1"], "conditions": ["x=−2.1、n=−3、r=x−n、0≤r<1。"], "requiresCorrectKeys": ["value"], "certifiedFrom": ["n09-parts-target-result", "n09-10-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q11-remainder::sign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  },
+  {
+    "oldPartId": "n09-q11-remainder::value",
+    "decision": "KEEP",
+    "newPartId": "n09-q11-remainder::value",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：[]
+
+### n09-11 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-11
+
+### n09-q12-lower — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q12-lower
+
+### n09-q12-upper — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q12-upper
+
+### n09-12 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-12
+
+### n09-q13-reverse — CHANGE
+負数倍した不等号の向きをleadで先答えしない。両境界の向きを決める既存の適用は残す。
+完成解法：3<√10<4の各辺を−1倍すると−3>−√10>−4。
+最初の本文：確定した比較の各辺を−1倍し、−√10の範囲を表します。
+条件：["各辺へ同じ負数−1を掛ける。"]
+教える一般則／参照：["負の数を掛けると大小の向きが変わる。一般則を教え、具体的な二境界へ適用する。"]
+前提node：["n09-12"]
+前提result：["n09-12-result"]
+#### 穴と全選択肢
+
+- n09-q13-reverse::S1 / KEEP / math / 正答 `>`
+  問い：左側の関係を負の乗算後へ移します。
+  回答前提：[]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q13-reverse::S1
+
+- n09-q13-reverse::S2 / KEEP / math / 正答 `>`
+  問い：右側の関係も負の乗算後へ移します。
+  回答前提：["S1"]
+  全選択肢・誤答理由：基準同IDの厳密契約参照 66c8007b:n09-q13-reverse::S2
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "3<\\sqrt{10}<4",
+    "partKeys": [],
+    "requiresCorrectKeys": [],
+    "id": "n09-q13-reverse::ux05-row-01",
+    "mathGroupId": "n09-q13-reverse-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "-3\\ {S1}\\ -\\sqrt{10}\\ {S2}\\ -4",
+    "partKeys": [
+      "S1",
+      "S2"
+    ],
+    "requiresCorrectKeys": [],
+    "id": "n09-q13-reverse::ux05-row-02",
+    "mathGroupId": "n09-q13-reverse-ux05-math-02"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q13-reverse-result", "formulas": ["-3>-\\sqrt{10}>-4"], "conditions": ["各辺へ同じ負数−1を掛ける。"], "requiresCorrectKeys": ["S1", "S2"], "certifiedFrom": ["n09-12-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q13-reverse::S1",
+    "decision": "KEEP",
+    "newPartId": "n09-q13-reverse::S1",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  },
+  {
+    "oldPartId": "n09-q13-reverse::S2",
+    "decision": "KEEP",
+    "newPartId": "n09-q13-reverse::S2",
+    "recordPolicy": "同ID数学契約が一致する記録のみ保持。新gate成立までは保留。"
+  }
+]
+```
+新ID：[]
+
+### n09-13 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-13
+
+### n09-q14-positive-integer — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q14-positive-integer
+
+### n09-q14-positive-remainder — CHANGE
+演算子一字から、定義に基づく小数部分の式全体へ置換。範囲の確かめは必要な途中式として見せる。
+完成解法：r=√10−3、3<√10<4の各辺から3を引くと0<r<1。
+最初の本文：既に確定した整数部分を用いて、小数部分を求めます。
+条件：["整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"]
+教える一般則／参照：["x=n+r、nは整数、0≤r<1。従ってr=x−n。"]
+前提node：["n09-11", "n09-12", "n09-13", "n09-q14-positive-integer"]
+前提result：["n09-11-result", "n09-12-result", "n09-13-result", "n09-q14-positive-integer-result"]
+#### 穴と全選択肢
+
+- n09-q14-positive-remainder::remainderExpressionUX05 / NEW / math / 正答 `\sqrt{10}-3`
+  問い：定義r=x−nを使い、確定した整数部分を除いた小数部分の式を選びます。
+  回答前提：[]
+  思考操作：実数と整数部分の符号を合わせて、剰余の式全体を構成する。
+  - 正答：`\sqrt{10}-3` / \sqrt{10}-3 / r=x−nに確定した値を代入した式です。
+  - 誤答：`\sqrt{10}+3` / \sqrt{10}+3 / 正の整数部分3は足すのではなく引きます。
+  - 誤答：`3-\sqrt{10}` / 3-\sqrt{10} / 引く順序が逆です。小数部分の非負条件も確認してください。
+  - 誤答：`\sqrt{10}/3` / \sqrt{10}/3 / 整数部分を除く操作は割り算ではありません。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "r={remainderExpressionUX05}",
+    "partKeys": [
+      "remainderExpressionUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-positive-remainder::ux05-row-01",
+    "mathGroupId": "n09-q14-positive-remainder-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "r=\\sqrt{10}-3",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-positive-remainder::ux05-row-02",
+    "mathGroupId": "n09-q14-positive-remainder-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "3<\\sqrt{10}<4\\ \\Rightarrow\\ 0<\\sqrt{10}-3<1",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-positive-remainder::ux05-row-03",
+    "mathGroupId": "n09-q14-positive-remainder-ux05-math-03"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q14-positive-remainder-result", "formulas": ["r=\\sqrt{10}-3", "0<\\sqrt{10}-3<1"], "conditions": ["整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"], "requiresCorrectKeys": ["remainderExpressionUX05"], "certifiedFrom": ["n09-11-result", "n09-12-result", "n09-13-result", "n09-q14-positive-integer-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q14-positive-remainder::remainderOperation",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-q14-positive-remainder::remainderExpressionUX05"]
+
+### n09-q14-negative-integer — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-q14-negative-integer
+
+### n09-q14-negative-remainder — CHANGE
+演算子一字から、定義に基づく小数部分の式全体へ置換。範囲の確かめは必要な途中式として見せる。
+完成解法：r=−√10−(−4)=−√10＋4=4−√10。−4<−√10<−3の各辺に4を加えると0<r<1。
+最初の本文：既に確定した整数部分を用いて、小数部分を求めます。
+条件：["整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"]
+教える一般則／参照：["x=n+r、nは整数、0≤r<1。従ってr=x−n。"]
+前提node：["n09-11", "n09-12", "n09-13", "n09-q14-negative-integer"]
+前提result：["n09-11-result", "n09-12-result", "n09-13-result", "n09-q14-negative-integer-result"]
+#### 穴と全選択肢
+
+- n09-q14-negative-remainder::remainderExpressionUX05 / NEW / math / 正答 `4-\sqrt{10}`
+  問い：定義r=x−nを使い、確定した整数部分を除いた小数部分の式を選びます。
+  回答前提：[]
+  思考操作：実数と整数部分の符号を合わせて、剰余の式全体を構成する。
+  - 正答：`4-\sqrt{10}` / 4-\sqrt{10} / r=x−nに確定した値を代入した式です。
+  - 誤答：`-\sqrt{10}-4` / -\sqrt{10}-4 / 引く整数部分は−4です。−4を引く操作を確かめてください。
+  - 誤答：`\sqrt{10}-4` / \sqrt{10}-4 / 対象の実数は−√10です。
+  - 誤答：`4+\sqrt{10}` / 4+\sqrt{10} / 対象の−√10の符号を保持してください。
+
+#### 正確な行・解放条件
+```json
+[
+  {
+    "kind": "math",
+    "template": "r={remainderExpressionUX05}",
+    "partKeys": [
+      "remainderExpressionUX05"
+    ],
+    "requiresCorrectKeys": [],
+    "hideAfterCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-negative-remainder::ux05-row-01",
+    "mathGroupId": "n09-q14-negative-remainder-ux05-math-01"
+  },
+  {
+    "kind": "math",
+    "template": "r=-\\sqrt{10}-(-4)=-\\sqrt{10}+4=4-\\sqrt{10}",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-negative-remainder::ux05-row-02",
+    "mathGroupId": "n09-q14-negative-remainder-ux05-math-02"
+  },
+  {
+    "kind": "math",
+    "template": "-4<-\\sqrt{10}<-3",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-negative-remainder::ux05-row-03",
+    "mathGroupId": "n09-q14-negative-remainder-ux05-math-03"
+  },
+  {
+    "kind": "math",
+    "template": "0<4-\\sqrt{10}<1",
+    "partKeys": [],
+    "requiresCorrectKeys": [
+      "remainderExpressionUX05"
+    ],
+    "id": "n09-q14-negative-remainder::ux05-row-04",
+    "mathGroupId": "n09-q14-negative-remainder-ux05-math-04"
+  }
+]
+```
+各行はrequiresCorrectKeysが全て順序整合した正答の時のみ表示。part自体もdependsOnKeys全成立時のみ回答可。誤答・未回答・旧RETIRE記録で解放しない。terminalと次nodeは全必須part＋全result前提成立時のみ。
+初期lead/条件には具体的な新part正答を先書きしない。givenRulesは一般則または既認定事実。後続完成式と候補別正答解説は当該part正答後のみ。候補として並ぶ式は未認定。
+terminal：{"resultId": "n09-q14-negative-remainder-result", "formulas": ["r=4-\\sqrt{10}", "0<4-\\sqrt{10}<1"], "conditions": ["整数部分n∈ℤ、n≤x<n+1、小数部分r=x−n、0≤r<1。対象は√10と−√10。"], "requiresCorrectKeys": ["remainderExpressionUX05"], "certifiedFrom": ["n09-11-result", "n09-12-result", "n09-13-result", "n09-q14-negative-integer-result"]}
+#### 旧新mapping
+```json
+[
+  {
+    "oldPartId": "n09-q14-negative-remainder::sign",
+    "decision": "RETIRE",
+    "newPartId": null,
+    "recordPolicy": "原記録は出所付きARCHIVE_ONLY。新keyへのalias・正答扱い・新課題の解放は禁止。"
+  }
+]
+```
+新ID：["n09-q14-negative-remainder::remainderExpressionUX05"]
+
+### n09-14 — KEEP
+学習目的と数学対象を保持。定義・参照・必要な初出計算・大小比較・整数部分判断を機械的に減らさない。
+基準同nodeのlead・条件・rows・候補・terminal・前提を全保持。参照：66c8007b:n09-14
+
+設計構造の集計のみ。製品コード・新テスト・描画QAは未実施。
+
+
+## P-W046-UX-05 N10完成具体案（設計資料・未実装）
+
+基準code `66c8007b37cc12391c9df574b8ebbb1b95cf26f5` / compiled `3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895`。N10r4→r5。N09/共有renderer/移行実装はroot担当。
+
+### 共通契約
+
+- 新設問を増やす数ノルマなし。既習公式の具体適用/必要計算/定義域/正性/非零/同定を主単位とし、t²・5で割る操作・分母の写し・毎回の符号再証明を追加しない。
+- KEEPは固定commitのnode/part本文・問い・全候補・正答・誤答説明を維持。変更node内KEEPもpart契約は同一だが新しい未解決前提を飛ばして解放しない。
+- 全rows.requiresCorrectKeysはANDかつpartOrderのordered-correct。前提nodeがcompleteとなり当該nodeへ到達した時だけ初期rowsを表示。誤答はその値と理由を表示して後続を止める。
+- 完成解法は設計資料であり初期全文表示ではない。初期画面はlearnerLead/assumptionsとrequiresCorrectKeysが空の行だけ。候補に正答印を出さず既存安定シャッフル。
+- 初期assumptionsは当該問いへの既知条件のみ。未来nodeの答えを逆流させない。定理の一般公式を既習参照として出すことと具体対象の完成形を与えることは区別する。
+- 数学的に正しい因子順・項順の交換は誤りとしない。選択式では等価な正答を複数候補に置かず、別の書き方はfeedbackで承認。候補外の正しい数学を不可能と断言しない。
+- 正答表示はroot共有renderer改訂で自然な数式へ戻す。各nodeで44px phantomを避ける専用回避策/固定括弧/薄い空白は増やさない。
+- RETIREはr4 archiveへ原recordを保持し新意味にaliasしない。NEWは未回答。現nodeの全解放状態は新版の未解決前提を含め再評価し、全回答リセットは行わない。
+- cross-nodeの確定値は該当result参照で投影し、別nodeのキーをmirrorと偽装しない。変更のない別問題での転移計算まで一律に削除しない。
+
+### 全45node判定
+
+|node|判定|理由|
+|---|---|---|
+|n10-q01-square|KEEP|候補平方へ平方根の定義を使う必要計算rootSquareを保持。t×tの新しい別穴なし。|
+|n10-01|KEEP|必要なt²=25の算出を保持。5で割る演算記号を追加しない。|
+|n10-q02-sign|KEEP|t>0から±5の正の候補を選ぶ条件判断。|
+|n10-02|KEEP|本人承認の正性→平方125→同定理由を厳密保持。|
+|n10-q03-expand|KEEP|既存の平方作用の二因子構成を保持。新たな基本累乗の小問を増やさない。指数の組を新しい二概念と称さない。|
+|n10-03|KEEP|積の証明で平方根定義を各パラメータへ適用しabを作る必要計算。|
+|n10-q04-sign|KEEP|積が正である証拠を保持。|
+|n10-04|KEEP|正性と平方の両方から平方根を同定する理由を保持。|
+|n10-q05-denominator|KEEP|分母非零は商の存在の核心なので保持。|
+|n10-q05-square|KEEP|既存の上下への平方の作用を保持。scope写し/指数の新しい反復小問は加えない。|
+|n10-05|KEEP|商の平方a/bを自ら作る必要な定義適用を保持。|
+|n10-q06-sign|KEEP|商の正性は平方根の同定に必要。|
+|n10-06|KEEP|商の存在と正の平方根の同定理由を保持。|
+|n10-q07-product|KEEP|証明した積の性質の初回適用と内積48を保持。|
+|n10-07|KEEP|最大平方因子16と残因子3の方針/必要計算。4という別の正しい途中分解を偽としない最大指定。|
+|n10-q08-factor|KEEP|平方因子を根号外へ出す係数4の初回具体適用。|
+|n10-08|KEEP|確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。|
+|n10-q09-left|KEEP|局所の根号簡単化の方針と係数を保持。残因子や基本指数の新しい別問は足さない。|
+|n10-q09-right|KEEP|右項への転移。既存方針と係数5を保持し基本手順を追加分割しない。|
+|n10-09|KEEP|確定した二項を元の和へ戻すAUTO。次nodeの係数和の式は先に出さない。|
+|n10-q10-coefficients|CHANGE|√2を先にくくってから7だけ問うAUTO主判断を、係数和の式の構成へ置換。追加の平方因子/係数の基本小問は作らない。|
+|n10-10|KEEP|確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。|
+|n10-q11-formula|CHANGE|−一字だけの公式当てとUX04六段階の分配再証明をともに避ける。|
+|n10-11|KEEP|具体的な二根号の平方2/3を計算。新しい中項構成の次なので先出しではない。|
+|n10-q12-product|KEEP|新しい中項の根号の積6は必要計算。|
+|n10-12|KEEP|定数和5の必要整理。見えている2/3の組を写す新小問は足さない。|
+|n10-q13-identity|CHANGE|−一字で平方差を与えず、かつ−B→二積→二符号→0の小問連鎖へしない。|
+|n10-13|KEEP|相殺を確定した後の平方7/2と差5を具体計算。|
+|n10-14|KEEP|同一の非零因子を上下へ掛ける値保持の根拠。|
+|n10-q15-factor|KEEP|最初の有理化で正の因子√3を選ぶ方針。|
+|n10-15|KEEP|分子も同じ因子で変わることを最初の有理化で確認。1×√3を主たる難問とせず必要な局所計算として保持しscopeコピー小問は足さない。|
+|n10-q16-denominator|KEEP|係数2を含む分母全体の平方/6を求める必要計算。|
+|n10-16|KEEP|確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。|
+|n10-q17-factor|KEEP|共役因子の方針を保持。|
+|n10-q17-nonzero|KEEP|c/cを掛ける前提の非零性を正性で証明。|
+|n10-17|CHANGE|元分子/分母の写しや×記号単独の採点をしない。非零を確認したc/cによる値保持と分数全体の束縛は式で明示。|
+|n10-18|KEEP|この有理化で最初に必要になる平方3/2と分母1の計算。結果を次の分子計算でも参照。|
+|n10-q19-distribute|CHANGE|−√2の写しと次の−符号を再度採点する二段階を、一つの必要な分子展開へまとめる。|
+|n10-19|CHANGE|この有理化の分母で確定した(√3)²=3を分子で再入力しない。異なる根号の積√6は必要計算として保つ。|
+|n10-q20-factor|CHANGE|4/3を先出しして後段P/Qで再採点せず、平方比較に初めて必要なここで計算。方針/正性/同一非零因子の根拠は保持。|
+|n10-20|CHANGE|指数2と−一字を別採点せず、平方/平方差を分数全体へ適用する一つの変形へ統合。|
+|n10-q21-denominator|KEEP|分母1の必要計算。主要な新概念と誇張せず追加の4−3の操作小問なし。|
+|n10-q21-expand|CHANGE|旧P/Qの4/3は前段resultを参照して再入力しない。旧K=4を符号込み中項の正答へaliasせず、新しい一つの公式適用を問う。|
+|n10-q21-constants|KEEP|中項を保った定数和7。4/3の写しを新しい別問にしない。|
+|n10-21|KEEP|確定結果を元問題へ接続するAUTO。既回答を再採点せず現行結果を保持。|
+
+### n10-q10-coefficients
+
+√2を先にくくってから7だけ問うAUTO主判断を、係数和の式の構成へ置換。追加の平方因子/係数の基本小問は作らない。
+
+**完成した穴なし解法（初期表示ではない）**
+
+`2\sqrt2+5\sqrt2=(2+5)\sqrt2=7\sqrt2`
+
+**初期本文** 二つの項を、共通する根号の何個分かという形でまとめます。
+
+**条件** 直前で√8=2√2、√50=5√2を確定済み。
+
+partOrder: collectedExpressionUX05 → coefficient
+
+**正確な行とgate**
+
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-q01-negative::ux04-row-01 | text | `2乗の操作は、{powerAction}。` | 初期 | なし |
-| n09-q01-negative::ux04-row-02 | math | `(-4)^2=(-4)\times(-4)` | powerAction | なし |
-| n09-q01-negative::ux04-row-03 | math | `={productSign}(4\times4)` | powerAction | なし |
-| n09-q01-negative::ux04-row-04 | math | `={value}` | powerAction, productSign | なし |
+|n10-q10-coefficients::ux05-collect|math: `2\sqrt2+5\sqrt2={collectedExpressionUX05}`|collectedExpressionUX05|||
+|n10-q10-coefficients::ux05-sum|math: `=(2+5)\sqrt2={coefficient}\sqrt2`|coefficient|collectedExpressionUX05||
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-q10-coefficients::collectedExpressionUX05` NEW / math / expression。問い：共通する根号を保ち、二つの項の和を係数の和で表した式を選びます。。正答：`(2+5)\sqrt2`。
+  操作：同類の根号項を分配法則の逆で集める。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `(2+5)\sqrt2` 正答：共通因子√2を保ち、係数を足す分配法則の逆です。 / 表示=(2+5)\sqrt2
+  - 候補 `\sqrt{2+5}` 誤答：係数を根号内へ入れる変形はできません。元の二項はいずれも√2の倍数です。 / 表示=\sqrt{2+5}
+  - 候補 `(2+5)\sqrt{2+2}` 誤答：同じ√2をくくる操作です。根号内の2を足して変えてはいけません。 / 表示=(2+5)\sqrt{2+2}
+  - 候補 `(2\times5)\sqrt2` 誤答：元は和です。係数を掛けるのでなく足してまとめます。 / 表示=(2\times5)\sqrt2
+- `n10-q10-coefficients::coefficient` KEEP / math / coefficient。問い：係数2+5を計算します。。正答：`7`。
+  操作：固定sourceと同じ局所操作。旧回答：SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES。
+  - 候補 `7` 正答：確定した結果を次の計算へ使います。 / 表示=7
+  - 候補 `10` 誤答：係数を掛けずに足します。 / 表示=10
+  - 候補 `3` 誤答：二つの項は加算されています。 / 表示=3
 
 
-#### n09-q01-negative::powerAction — NEW
 
-- 問い：(-4)²で、指数2が指定している操作を選びます。
-- 種別・役割：text / power-scope-action
-- 思考操作：累乗の作用範囲と反復乗算を選ぶ
-- 根拠：直前の4²という手本と既習の累乗の定義。負号を含む括弧が対象。
-- 位置：n09-q01-negative::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q01-negative::ux04-row-02, n09-q01-negative::ux04-row-03, n09-q01-negative::ux04-row-04
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `repeat-whole-base` | 負号を含む−4全体を、同じ二因子の積にする | 正答 | 2乗の基底は括弧内全体です。 |
-| `leave-minus-outside` | 負号を外に残し、4だけを2乗する | 誤答 | 括弧の中に負号があります。−(4²)と(−4)²を区別してください。 |
-| `multiply-by-two` | −4全体へ2を掛ける | 誤答 | 指数2は2倍ではありません。同じ基底を何因子掛けるかを表します。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-04", "n10-09"], "requiredResultRefs": ["n10-04-result", "n10-09-result"], "terminalRecord": {"id": "n10-q10-coefficients::terminal", "formulas": ["2\\sqrt2+5\\sqrt2=7\\sqrt2"], "conditions": ["共通因子√2をくくる分配法則。"], "prose": "係数の合計は7です。元の二つの根号の和の結論になります。", "requiresCorrectKeys": ["collectedExpressionUX05", "coefficient"], "certifiedFrom": ["n10-04-result", "n10-09-result"], "proseParts": [{"type": "text", "text": "係数の合計は"}, {"type": "math", "latex": "7"}, {"type": "text", "text": "です。元の二つの根号の和の結論になります。"}], "conditionParts": [[{"type": "text", "text": "共通因子"}, {"type": "math", "latex": "\\sqrt{2}"}, {"type": "text", "text": "をくくる分配法則。"}]]}}`
 
-#### n09-q01-negative::productSign — NEW
+**既存part対応**
 
-- 問い：二つの負の因子の積を、正の大きさ4×4と符号に分けます。
-- 種別・役割：math / unary-sign
-- 思考操作：二つの負の因子から積の符号を決定する
-- 根拠：符号の乗法。既出16の記憶ではなく、その前の符号操作。
-- 位置：n09-q01-negative::ux04-row-03
-- 前提：powerAction
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q01-negative::ux04-row-04
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-q10-coefficients::coefficient` → KEEP。同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | 負の因子が二つなので、積は正です。 |
-| `-` | - | 誤答 | 負号の数を因子として確かめてください。負×負は負のままではありません。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-q01-negative::value — KEEP
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：負の候補を2回掛けた値を計算します。
-- 種別・役割：math / rational
-- 思考操作：符号を含む平方値を計算する
-- 根拠：元と同じ(−4)²の値。新しい操作を確定してから回答する。
-- 位置：n09-q01-negative::ux04-row-04
-- 前提：powerAction, productSign
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `16` | 16 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `-16` | -16 | 誤答 | 負と負の積は正です。符号を積として扱います。 |
-| `-8` | -8 | 誤答 | 2乗と2倍は別の操作です。 |
+### n10-q11-formula
 
-### 既存回答の意味対応
+−一字だけの公式当てとUX04六段階の分配再証明をともに避ける。
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q01-negative::value | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q01-negative::powerAction | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-q01-negative::productSign | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+**完成した穴なし解法（初期表示ではない）**
 
-### 答え漏れ・接続の管理
+`(\sqrt2-\sqrt3)^2=(\sqrt2)^2-2\sqrt2\sqrt3+(\sqrt3)^2`
 
-- leadで「負号を含む全体を二回」と先に答えない。
-- 積の符号はpowerActionだけでは埋めない。
-- 既出の正の候補4・値16を未知の候補探しとして再提示しない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+**初期本文** 既習の差の平方を、二つの根号を含む式に適用します。中項を自分で作りましょう。
 
-## n09-01 — CHANGE
+**条件** 既習公式：(A-B)^2=A^2-2AB+B^2。
 
-zeroLogic一穴の前後で移項・因数分解・二つの一次式の処理まで自動実行していた。
+partOrder: signedMiddleTermUX05
 
-### 穴なしの完成解法
+**正確な行とgate**
 
-x²=16 ⇔ x²−16=16−16=0 ⇔ x²−4²=0 ⇔ (x−4)(x＋4)=0。実数の零積よりx−4=0またはx＋4=0。前者の両辺に4を加えるとx=4、後者の両辺から4を引くとx=−4。各変形が同値で、零積で場合を尽くしたので、この二つが全解である。
-
-### 最初に提示する本文・条件
-
-候補を確かめるだけでは、他に解がないとはまだ言えません。方程式を同値に変形し、全ての場合を調べます。
-
-条件：x\in\mathbb R
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-01::ux04-row-01 | math | `x^2=16` | 初期 | なし |
-| n09-01::ux04-row-02 | text | `両辺に行う演算：{balanceOperation}16` | 初期 | balanceOperation |
-| n09-01::ux04-row-03 | math | `x^2{mirror:balanceOperation}16=16{mirror:balanceOperation}16=0` | balanceOperation | なし |
-| n09-01::ux04-row-04 | text | `確定済みの平方を使って書き換えます。` | balanceOperation | なし |
-| n09-01::ux04-row-05 | math | `x^2-4^2=0` | balanceOperation | なし |
-| n09-01::ux04-row-06 | math | `\iff(x-4)(x{factorSign}4)=0` | balanceOperation | なし |
-| n09-01::ux04-row-07 | math | `x-4=0\quad{zeroLogic}\quad x+4=0` | balanceOperation, factorSign | なし |
-| n09-01::ux04-row-08 | text | `まず、第一因子が0になる場合を解きます。` | balanceOperation, factorSign, zeroLogic | なし |
-| n09-01::ux04-row-09 | text | `両辺に行う演算：{leftInverseOperation}4` | balanceOperation, factorSign, zeroLogic | leftInverseOperation |
-| n09-01::ux04-row-10 | math | `x-4+4=0+4\quad\Rightarrow\quad x=4` | balanceOperation, factorSign, zeroLogic, leftInverseOperation | なし |
-| n09-01::ux04-row-11 | text | `次に、第二因子が0になる場合を解きます。` | balanceOperation, factorSign, zeroLogic, leftInverseOperation | なし |
-| n09-01::ux04-row-12 | text | `両辺に行う演算：{rightInverseOperation}4` | balanceOperation, factorSign, zeroLogic, leftInverseOperation | rightInverseOperation |
-| n09-01::ux04-row-13 | math | `x+4-4=0-4\quad\Rightarrow\quad x=-4` | balanceOperation, factorSign, zeroLogic, leftInverseOperation, rightInverseOperation | なし |
-| n09-01::ux04-row-14 | text | `同値変形と零積の二つの場合で、他の解がないことまで確かめました。` | balanceOperation, factorSign, zeroLogic, leftInverseOperation, rightInverseOperation | なし |
+|n10-q11-formula::ux05-middle|math: `(\sqrt2-\sqrt3)^2=(\sqrt2)^2{signedMiddleTermUX05}+(\sqrt3)^2`|signedMiddleTermUX05|||
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-q11-formula::signedMiddleTermUX05` NEW / math / expression。問い：差の平方の公式をこの根号式へ適用し、中項全体を符号込みで作ります。。正答：`-2\sqrt2\sqrt3`。
+  操作：差平方公式の2ABを具体的な二根号へ対応し、符号と係数を含む中項を構成。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `-2\sqrt2\sqrt3` 正答：二つの異なる項の積が2個あり、差の平方では符号は負です。 / 表示=-2\sqrt2\sqrt3
+  - 候補 `-\sqrt2\sqrt3` 誤答：中項の係数2が不足しています。既習公式の2ABをこの二項へ対応させます。 / 表示=-\sqrt2\sqrt3
+  - 候補 `+2\sqrt2\sqrt3` 誤答：和でなく差の平方なので中項は負です。 / 表示=+2\sqrt2\sqrt3
+  - 候補 `-2\sqrt{2+3}` 誤答：積ABに対応する根号の積です。根号の中を足すことはできません。 / 表示=-2\sqrt{2+3}
 
 
-#### n09-01::balanceOperation — NEW
 
-- 問い：x²=16の両辺へ同じ数16をどう作用させれば、右辺を0にできますか。
-- 種別・役割：math / equation-operation
-- 思考操作：両辺に行う共通の逆演算を決める
-- 根拠：等式の両辺に同じ数を加減しても同値であること。
-- 位置：n09-01::ux04-row-02
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-01::ux04-row-03, n09-01::ux04-row-04, n09-01::ux04-row-05, n09-01::ux04-row-06, n09-01::ux04-row-07, n09-01::ux04-row-08, n09-01::ux04-row-09, n09-01::ux04-row-10, n09-01::ux04-row-11, n09-01::ux04-row-12, n09-01::ux04-row-13, n09-01::ux04-row-14
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-` | - | 正答 | 両辺から同じ16を引くと、同値な方程式になります。 |
-| `+` | + | 誤答 | 右辺が32になり、0にする目的を満たしません。 |
-| `\div` | ÷ | 誤答 | 右辺は1になります。ここでは0と等しい形を作ります。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-04", "n10-10"], "requiredResultRefs": ["n10-04-result", "n10-10-result"], "terminalRecord": {"id": "n10-q11-formula::terminal", "formulas": ["(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2-2\\sqrt2\\sqrt3+(\\sqrt3)^2"], "conditions": ["既習の乗法公式。A=√2、B=√3。"], "prose": "差の平方の中項は引く項です。根号を含む本題へ公式を適用します。", "requiresCorrectKeys": ["signedMiddleTermUX05"], "certifiedFrom": ["n10-04-result", "n10-10-result"], "proseParts": [{"type": "text", "text": "差の平方の中項は引く項です。根号を含む本題へ公式を適用します。"}], "conditionParts": [[{"type": "text", "text": "既習の乗法公式。"}, {"type": "math", "latex": "A=\\sqrt{2}"}, {"type": "text", "text": "、"}, {"type": "math", "latex": "B=\\sqrt{3}"}, {"type": "text", "text": "。"}]]}}`
 
-#### n09-01::factorSign — NEW
+**既存part対応**
 
-- 問い：第一因子を(x−4)に固定します。x²−4²に戻るよう、第二因子(x□4)の演算を選びます。
-- 種別・役割：math / difference-of-squares-factor-sign
-- 思考操作：一方の因子を固定し、他方の因子の符号を式内で構成する
-- 根拠：4²=16は確定済み。分配して中間項が相殺し、定数項の積が−16となる条件。第一因子固定は設問上の指定であり、逆順の因数分解を数学的に誤りとする意味ではない。
-- 位置：n09-01::ux04-row-06
-- 前提：balanceOperation
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-01::ux04-row-07, n09-01::ux04-row-08, n09-01::ux04-row-09, n09-01::ux04-row-10, n09-01::ux04-row-11, n09-01::ux04-row-12, n09-01::ux04-row-13, n09-01::ux04-row-14
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-q11-formula::middleSign` → RETIRE_ARCHIVE_ONLY。一般公式の符号−から具体式の符号込み中項へ対象/操作/候補が変わるためaliasしない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | (x−4)(x＋4)では二つの中間項が打ち消し合い、定数項の積が−16になります。 |
-| `-` | - | 誤答 | (x−4)²では中間に−8xが残り、x²−16になりません。 |
-| `\times` | × | 誤答 | 第二因子が4xでは、定数項−16を作れません。第一因子との積を確かめてください。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-01::zeroLogic — KEEP
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：積が0になるには、二つの因子の条件をどう結びますか。
-- 種別・役割：text / zero-product-logic
-- 思考操作：零積の条件を「または」で結ぶ
-- 根拠：元と同じ実数の零積。新しい因数分解完了後に利用。
-- 位置：n09-01::ux04-row-07
-- 前提：balanceOperation, factorSign
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-01::ux04-row-08, n09-01::ux04-row-09, n09-01::ux04-row-10, n09-01::ux04-row-11, n09-01::ux04-row-12, n09-01::ux04-row-13, n09-01::ux04-row-14
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `or` | または | 正答 | 一方の因子が0なら積は0です。 |
-| `and` | かつ | 誤答 | 両方が同時に0である必要はありません。一方だけ0の積も調べてください。 |
+### n10-q13-identity
 
-#### n09-01::leftInverseOperation — NEW
+−一字で平方差を与えず、かつ−B→二積→二符号→0の小問連鎖へしない。
 
-- 問い：x−4=0の両辺へ4をどう作用させれば、左辺をxだけにできますか。
-- 種別・役割：math / linear-equation-inverse-operation
-- 思考操作：一次式からxを取り出す逆演算を選ぶ
-- 根拠：等式の両辺への同じ加算。解4そのものは既出で写させない。
-- 位置：n09-01::ux04-row-09
-- 前提：balanceOperation, factorSign, zeroLogic
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-01::ux04-row-10, n09-01::ux04-row-11, n09-01::ux04-row-12, n09-01::ux04-row-13, n09-01::ux04-row-14
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**完成した穴なし解法（初期表示ではない）**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | −4と＋4を相殺します。 |
-| `-` | - | 誤答 | −4がさらに減り、x−8になります。 |
-| `\times` | × | 誤答 | 式全体を4倍しても、定数項は消えません。 |
+`(\sqrt7+\sqrt2)(\sqrt7-\sqrt2)=(\sqrt7)^2-\sqrt7\sqrt2+\sqrt2\sqrt7-(\sqrt2)^2=(\sqrt7)^2-(\sqrt2)^2`
 
-#### n09-01::rightInverseOperation — NEW
+**初期本文** 和と差の積で、消える交差項を確かめます。残る平方の項を次に計算します。
 
-- 問い：x＋4=0の両辺へ4をどう作用させれば、左辺をxだけにできますか。
-- 種別・役割：math / linear-equation-inverse-operation
-- 思考操作：もう一方の一次式で逆向きの操作を選ぶ
-- 根拠：左の枝と同じ等式の性質を、定数項＋4へ適用。
-- 位置：n09-01::ux04-row-12
-- 前提：balanceOperation, factorSign, zeroLogic, leftInverseOperation
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-01::ux04-row-13, n09-01::ux04-row-14
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**条件** 既習の分配法則と和と差の積を使う。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-` | - | 正答 | ＋4と−4を相殺します。 |
-| `+` | + | 誤答 | 定数項が＋8となり、xだけになりません。 |
-| `\div` | ÷ | 誤答 | 式全体を4で割っても、加えられている4を消す操作にはなりません。 |
+partOrder: cancellingPairUX05
 
-### 既存回答の意味対応
+**正確な行とgate**
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-01::zeroLogic | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-01::balanceOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-01::factorSign | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-01::leftInverseOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-01::rightInverseOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- 因数分解の完成式はfactorSign正答前に出さない。
-- zeroLogic正答だけで二つの一次式の計算を完成させない。
-- 「または」「両辺から16を引く」「一方は差で一方は和」をlead/条件で先書きしない。
-- 設問で第一因子を(x−4)へ固定してから第二因子を構成する。逆順の正しい因数分解全体を候補から除いて誤り扱いする課題にはしない。
-- 4と−4の再入力穴は作らない。新partは変形の選択を要求する。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## n09-q02-negative-square — CHANGE
-
-符号因子への分解と積の平方が無条件表示されていた。
-
-### 穴なしの完成解法
-
-−√5=(−1)√5。(−√5)²=(−1)²(√5)²。最初の因子の平方は1、根号因子の平方は5なので、全体は1×5=5。
-
-### 最初に提示する本文・条件
-
-根号の値を取る計算と、負号を含む数全体を2乗する計算を区別します。先に負号を因子として表し、平方の作用を決めます。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-q02-negative-square::ux04-row-01 | math | `-\sqrt5={signMultiplier}\times\sqrt5` | 初期 | なし |
-| n09-q02-negative-square::ux04-row-02 | text | `積を2乗する操作は、{squaringRule}。` | signMultiplier | なし |
-| n09-q02-negative-square::ux04-row-03 | math | `(-\sqrt5)^2=(-1)^2(\sqrt5)^2` | signMultiplier, squaringRule | なし |
-| n09-q02-negative-square::ux04-row-04 | math | `(-1)^2={signFactor}` | signMultiplier, squaringRule | なし |
-| n09-q02-negative-square::ux04-row-05 | math | `(\sqrt5)^2={rootFactorSquare}` | signMultiplier, squaringRule, signFactor | なし |
-| n09-q02-negative-square::ux04-row-06 | math | `(-\sqrt5)^2=1\times5=5` | signMultiplier, squaringRule, signFactor, rootFactorSquare | なし |
+|n10-q13-identity::ux05-problem|math: `(\sqrt7+\sqrt2)(\sqrt7-\sqrt2)`||||
+|n10-q13-identity::ux05-pair|text: `相殺する交差項の組：{cancellingPairUX05}`|cancellingPairUX05|||
+|n10-q13-identity::ux05-expand|math: `(\sqrt7+\sqrt2)(\sqrt7-\sqrt2)=(\sqrt7)^2-\sqrt7\sqrt2+\sqrt2\sqrt7-(\sqrt2)^2`||cancellingPairUX05||
+|n10-q13-identity::ux05-cancel|math: `=(\sqrt7)^2-(\sqrt2)^2`||cancellingPairUX05||
 
-### 穴ごとの詳細
+**設問の全契約**
 
+- `n10-q13-identity::cancellingPairUX05` NEW / text / meaning。問い：この積を分配したとき、互いに打ち消し合う交差項の組を選びます。組の順序は問いません。。正答：`opposite-cross-products`。
+  操作：和差積の具体的な交差項を同定し、相殺する構造を把握。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `opposite-cross-products` 正答：交差項は同じ大きさで逆符号なので和が0です。順を交換しても同じ組です。 / 表示=['-\\sqrt7\\sqrt2', '\\text{と}\\quad+\\sqrt2\\sqrt7']
+  - 候補 `both-positive` 誤答：二つとも正なら打ち消し合いません。第二因子の−√2を掛ける項を確認します。 / 表示=['+\\sqrt7\\sqrt2', '\\text{と}\\quad+\\sqrt2\\sqrt7']
+  - 候補 `both-negative` 誤答：二つとも負ではありません。第一因子の＋√2と第二因子の√7の積は正です。 / 表示=['-\\sqrt7\\sqrt2', '\\text{と}\\quad-\\sqrt2\\sqrt7']
+  - 候補 `square-terms` 誤答：これらは交差項の組ではありません。異なる根号どうしを掛ける項を対応させます。 / 表示=['-\\sqrt7\\sqrt7', '\\text{と}\\quad+\\sqrt2\\sqrt2']
 
-#### n09-q02-negative-square::signMultiplier — NEW
+採点値はtext enum一つ。候補mathLinesは二項の境界で同じbutton内を2行にし、displayは読み上げ可能な組全体。本文は短いtext選択足場で単一の長いmath slotにしない。正答後は足場を消し、gate付きの具体展開/相殺結果を通常mathASTへする。順序交換は同値。
 
-- 問い：−√5を「ある数×√5」と書きます。符号を担う乗数を選びます。
-- 種別・役割：math / unary-negation-factor
-- 思考操作：負号を乗法の因子として構成する
-- 根拠：−u=(−1)uという既習の負号の意味。
-- 位置：n09-q02-negative-square::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q02-negative-square::ux04-row-02, n09-q02-negative-square::ux04-row-03, n09-q02-negative-square::ux04-row-04, n09-q02-negative-square::ux04-row-05, n09-q02-negative-square::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-1` | -1 | 正答 | −1倍で√5の符号を反転します。 |
-| `1` | 1 | 誤答 | 1倍では正の√5のままです。 |
-| `-5` | -5 | 誤答 | √5の大きさまで5倍に変えてしまいます。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-04", "n10-12"], "requiredResultRefs": ["n10-04-result", "n10-12-result"], "terminalRecord": {"id": "n10-q13-identity::terminal", "formulas": ["(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2"], "conditions": ["既習の和と差の積。A=√7、B=√2。"], "prose": "積を二つの平方の差へ直せます。次に各平方と差を計算します。", "requiresCorrectKeys": ["cancellingPairUX05"], "certifiedFrom": ["n10-04-result", "n10-12-result"], "proseParts": [{"type": "text", "text": "積を二つの平方の差へ直せます。次に各平方と差を計算します。"}], "conditionParts": [[{"type": "text", "text": "既習の和と差の積。"}, {"type": "math", "latex": "A=\\sqrt{7}"}, {"type": "text", "text": "、"}, {"type": "math", "latex": "B=\\sqrt{2}"}, {"type": "text", "text": "。"}]]}}`
 
-#### n09-q02-negative-square::squaringRule — NEW
+**既存part対応**
 
-- 問い：二つの因子の積全体を2乗するとき、どの操作をしますか。
-- 種別・役割：text / product-square-action
-- 思考操作：積の平方を二因子へ作用させる
-- 根拠：実数の乗法の結合・交換と平方の定義。
-- 位置：n09-q02-negative-square::ux04-row-02
-- 前提：signMultiplier
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q02-negative-square::ux04-row-03, n09-q02-negative-square::ux04-row-04, n09-q02-negative-square::ux04-row-05, n09-q02-negative-square::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-q13-identity::operation` → RETIRE_ARCHIVE_ONLY。一般公式の−と、具体的な相殺項の組を同定する新操作は非同値。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `square-both-factors` | 各因子をそれぞれ2乗し、その二つを掛ける | 正答 | 積を二回掛け、因子をまとめると各因子の平方になります。 |
-| `square-first-only` | 最初の因子だけを2乗する | 誤答 | 元の積は全体を二回掛けています。√5の因子も二回現れます。 |
-| `double-both` | 各因子を2倍して掛ける | 誤答 | 2乗と2倍を区別してください。指数は同じ因子の反復です。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-q02-negative-square::signFactor — KEEP
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：(-1)²を計算します。
-- 種別・役割：math / rational
-- 思考操作：符号を担う−1の平方を計算する
-- 根拠：元と同じ(−1)²。
-- 位置：n09-q02-negative-square::ux04-row-04
-- 前提：signMultiplier, squaringRule
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q02-negative-square::ux04-row-05, n09-q02-negative-square::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `1` | 1 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `-1` | -1 | 誤答 | 負号も2乗するので、−1を二回掛けます。 |
-| `2` | 2 | 誤答 | 2乗と2倍を区別します。 |
+### n10-17
 
-#### n09-q02-negative-square::rootFactorSquare — NEW
+元分子/分母の写しや×記号単独の採点をしない。非零を確認したc/cによる値保持と分数全体の束縛は式で明示。
 
-- 問い：残る(√5)²を、平方根の定義から求めます。
-- 種別・役割：math / root-definition-square
-- 思考操作：根号因子の平方を定義から評価する
-- 根拠：平方根の定義。旧valueは1×5の計算だったため意味を転用しない。
-- 位置：n09-q02-negative-square::ux04-row-05
-- 前提：signMultiplier, squaringRule, signFactor
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q02-negative-square::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**完成した穴なし解法（初期表示ではない）**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `5` | 5 | 正答 | √5は平方すると5になる非負の数です。 |
-| `25` | 25 | 誤答 | √5の平方と、5の平方を混同しないでください。 |
-| `\sqrt5` | √5 | 誤答 | 同じ数をそのまま残すのではなく、その平方を求めています。 |
+`\frac{\sqrt3}{\sqrt3+\sqrt2}\frac{\sqrt3-\sqrt2}{\sqrt3-\sqrt2}=\frac{\sqrt3(\sqrt3-\sqrt2)}{(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)}`
 
-### 既存回答の意味対応
+**初期本文** 非零と確認した同じ因子を、分子と分母の両方へ掛けます。
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q02-negative-square::signFactor | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q02-negative-square::value | RETIRE | 要求する判断を変更するため旧回答を新判断へ移さない。旧記録は出所付きで保存。 |
-| n09-q02-negative-square::signMultiplier | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-q02-negative-square::squaringRule | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-q02-negative-square::rootFactorSquare | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+**条件** c=√3−√2≠0、元分母√3+√2>0。
 
-### 答え漏れ・接続の管理
+partOrder: なし（AUTO）
 
-- 旧valueの正答5をrootFactorSquareへ流用しない。
-- (√5)²=5を新しい根号因子の問いより前にlead/条件/行へ出さない。
-- 最終1×5は確定値の単純接続であり、新たな未知の計算として穴を増やさない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+**正確な行とgate**
 
-## n09-q03-inside — CHANGE
-
-同じ16の再入力より、根号内外の処理順を転移課題にする。
-
-### 穴なしの完成解法
-
-√((−4)²)では、まず内側の(−4)²を評価する。既出の符号込みの平方計算により16なので、残る計算は√16である。非負の値の判断は次nodeで行う。
-
-### 最初に提示する本文・条件
-
-今度は平方の外側に根号があります。括弧・指数・根号の作用範囲を見て、先に行う操作を決めます。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-q03-inside::ux04-row-01 | text | `最初に処理するのは、{firstOperation}。` | 初期 | なし |
-| n09-q03-inside::ux04-row-02 | math | `(-4)^2=16` | firstOperation | なし |
-| n09-q03-inside::ux04-row-03 | math | `\sqrt{(-4)^2}=\sqrt{16}` | firstOperation | なし |
+|n10-17::ux05-fraction|math: `\frac{\sqrt3}{\sqrt3+\sqrt2}\frac{\sqrt3-\sqrt2}{\sqrt3-\sqrt2}=\frac{\sqrt3(\sqrt3-\sqrt2)}{(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)}`||||
 
-### 穴ごとの詳細
+**設問の全契約**
 
 
-#### n09-q03-inside::firstOperation — NEW
 
-- 問い：√((−4)²)の処理で、最初に評価する対象はどれですか。
-- 種別・役割：text / nested-operation-order
-- 思考操作：入れ子の作用範囲と先に処理する演算を選ぶ
-- 根拠：既に自分で確定した(−4)²=16を、根号の内側へ使う。
-- 位置：n09-q03-inside::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q03-inside::ux04-row-02, n09-q03-inside::ux04-row-03
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `inner-whole-square` | 根号の内側の、負号を含む(−4)全体の平方 | 正答 | 入れ子の内側の値を先に定めます。 |
-| `take-root-of-negative` | 先に−4の平方根を取る | 誤答 | 根号の中身は−4ではなく(−4)²です。実数で√(−4)を作る計算ではありません。 |
-| `double-negative` | −4を2倍する | 誤答 | 指数2は2倍ではありません。 |
+**達成/依存契約**
 
-### 既存回答の意味対応
+`{"classification": "AUTO_RECORDED_CONCLUSION", "prerequisiteNodeIds": ["n10-13", "n10-14", "n10-q17-nonzero"], "requiredResultRefs": ["n10-13-result", "n10-14-result", "n10-q17-nonzero-result"], "terminalRecord": {"id": "n10-17::terminal", "formulas": ["\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}"], "conditions": ["元分母√3+√2>0、掛ける因子√3−√2≠0。"], "prose": "値を保ったまま分母を和と差の積へ変えました。先に分母、次に分子を計算します。", "requiresCorrectKeys": [], "certifiedFrom": ["n10-13-result", "n10-14-result", "n10-q17-nonzero-result"], "proseParts": [{"type": "text", "text": "値を保ったまま分母を和と差の積へ変えました。先に分母、次に分子を計算します。"}], "conditionParts": [[{"type": "text", "text": "元分母"}, {"type": "math", "latex": "\\sqrt{3}+\\sqrt{2}>0"}, {"type": "text", "text": "、掛ける因子"}, {"type": "math", "latex": "\\sqrt{3}-\\sqrt{2}\\ne 0"}, {"type": "text", "text": "。"}]]}}`
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q03-inside::value | RETIRE | 要求する判断を変更するため旧回答を新判断へ移さない。旧記録は出所付きで保存。 |
-| n09-q03-inside::firstOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+**既存part対応**
 
-### 答え漏れ・接続の管理
+- `n10-17::productOperation` → RETIRE_ARCHIVE_ONLY。分数の積の×一字は標準経路の独立主判断にせず、途中式へ統合。記録はarchive保持。
 
-- 16はn09-q01-negativeで確定した結果として参照する。別の新しい平方計算を実施したと数えない。
-- 次nodeの√16=4はまだ表示しない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-## n09-q04-negative — CHANGE
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-符号一穴の正答で平方同一性まで自動実行していたため、一般化する操作を判断させる。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-### 穴なしの完成解法
+### n10-q19-distribute
 
-a<0より−a>0。−a=(−1)aに対し、(−a)²=(−1)²a²=1a²=a²。非負で平方がa²になる候補は−aなので、√(a²)=−a。
+−√2の写しと次の−符号を再度採点する二段階を、一つの必要な分子展開へまとめる。
 
-### 最初に提示する本文・条件
+**完成した穴なし解法（初期表示ではない）**
 
-a<0のときの非負の候補を、符号と平方の両方から確かめます。
+`\sqrt3(\sqrt3-\sqrt2)=\sqrt3\times\sqrt3-\sqrt3\times\sqrt2`
 
-条件：a∈ℝ、a<0。
+**初期本文** 分母は確定しました。次は分子の差全体へ分配法則を適用します。
 
-### 正確な表示行と解放
+**条件** 対象は分子√3(√3−√2)。
 
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+partOrder: distributedNumeratorUX05
+
+**正確な行とgate**
+
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-q04-negative::ux04-row-01 | math | `-a{oppositeSign}0` | 初期 | なし |
-| n09-q04-negative::ux04-row-02 | text | `平方を確かめる操作は、{signedSquareMethod}。` | oppositeSign | なし |
-| n09-q04-negative::ux04-row-03 | math | `(-a)^2=(-1)^2a^2=a^2` | oppositeSign, signedSquareMethod | なし |
-| n09-q04-negative::ux04-row-04 | math | `\sqrt{a^2}={value}` | oppositeSign, signedSquareMethod | なし |
+|n10-q19-distribute::ux05-distribute|math: `\sqrt3(\sqrt3-\sqrt2)={distributedNumeratorUX05}`|distributedNumeratorUX05|||
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-q19-distribute::distributedNumeratorUX05` NEW / math / expression。問い：分子の括弧全体へ分配法則を適用した式を選びます。。正答：`\sqrt3\times\sqrt3-\sqrt3\times\sqrt2`。
+  操作：根号を含む分子全体へ分配法則を適用し、両項への作用を構成。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `\sqrt3\times\sqrt3-\sqrt3\times\sqrt2` 正答：外の√3を括弧内の両項へ掛け、差の演算を保っています。 / 表示=\sqrt3\times\sqrt3-\sqrt3\times\sqrt2
+  - 候補 `\sqrt3\times\sqrt3-\sqrt2` 誤答：括弧の第二項にも外の√3を掛けます。 / 表示=\sqrt3\times\sqrt3-\sqrt2
+  - 候補 `\sqrt3\times\sqrt3+\sqrt3\times\sqrt2` 誤答：元の差を和へ変えてはいけません。 / 表示=\sqrt3\times\sqrt3+\sqrt3\times\sqrt2
+  - 候補 `\sqrt3\times\sqrt3-\sqrt3` 誤答：第二項は√3と√2の積です。√2を落とさずに対応させます。 / 表示=\sqrt3\times\sqrt3-\sqrt3
 
 
-#### n09-q04-negative::oppositeSign — KEEP
 
-- 問い：a<0の両辺に−1を掛けると、−aと0の大小はどうなりますか。
-- 種別・役割：math / relation
-- 思考操作：負の乗法後の符号を判断する
-- 根拠：元と同じa<0から−aと0の比較。
-- 位置：n09-q04-negative::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q04-negative::ux04-row-02, n09-q04-negative::ux04-row-03, n09-q04-negative::ux04-row-04
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `>` | > | 正答 | この判断を確定し、次へ進みます。 |
-| `<` | < | 誤答 | 負の数を掛けると不等号の向きが変わります。 |
-| `=` | = | 誤答 | a<0なのでaは0ではありません。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-17", "n10-18"], "requiredResultRefs": ["n10-17-result", "n10-18-result"], "terminalRecord": {"id": "n10-q19-distribute::terminal", "formulas": ["\\sqrt3(\\sqrt3-\\sqrt2)=\\sqrt3\\times\\sqrt3-\\sqrt3\\times\\sqrt2"], "conditions": ["分配する対象は差の全体。"], "prose": "両項へ掛ける形になりました。各積を計算して分母1と合わせます。", "requiresCorrectKeys": ["distributedNumeratorUX05"], "certifiedFrom": ["n10-17-result", "n10-18-result"], "proseParts": [{"type": "text", "text": "両項へ掛ける形になりました。各積を計算して分母"}, {"type": "math", "latex": "1"}, {"type": "text", "text": "と合わせます。"}], "conditionParts": [[{"type": "text", "text": "分配する対象は差の全体。"}]]}}`
 
-#### n09-q04-negative::signedSquareMethod — NEW
+**既存part対応**
 
-- 問い：候補−aの平方を、先ほどの負号の因子の方法で確かめます。どの操作を使いますか。
-- 種別・役割：text / signed-product-square-action
-- 思考操作：数値例で確かめた負号因子の方法を文字へ転移する
-- 根拠：−u=(−1)u、積の平方と(−1)²=1は前段で本人が確定。a<0では−a自体は正なので「−aと−aは負×負」と説明しない。
-- 位置：n09-q04-negative::ux04-row-02
-- 前提：oppositeSign
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q04-negative::ux04-row-03, n09-q04-negative::ux04-row-04
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-q19-distribute::secondOperand` → RETIRE_ARCHIVE_ONLY。符号付き項の写しから両項への分配式の構成へ変更。
+- `n10-q19-distribute::productSign` → RETIRE_ARCHIVE_ONLY。単独符号の再入力は新しい分配適用に統合。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `factor-minus-one-and-square` | −aを(−1)aとみて、二つの因子それぞれに平方を作用させる | 正答 | 平方の外に負号を一つ残すのではなく、−1の因子も平方します。 |
-| `keep-one-minus` | 平方の外へ負号を一つ残す | 誤答 | −a全体を二回掛けるので、−1の因子も二回あります。 |
-| `negative-square-is-negative` | a<0なのでa²も負になるとする | 誤答 | 実数の平方は非負です。aの符号とa²の符号を混同しないでください。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-q04-negative::value — KEEP
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：負のaの平方について、非負の方を選びます。
-- 種別・役割：math / operand
-- 思考操作：非負性と平方を満たす候補を同定する
-- 根拠：元と同じ√(a²)の非負の値。
-- 位置：n09-q04-negative::ux04-row-04
-- 前提：oppositeSign, signedSquareMethod
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-a` | -a | 正答 | この結果を確定し、次の計算へ使います。 |
-| `a` | a | 誤答 | a<0なのでa自身は根号の非負の値ではありません。 |
-| `a^2` | a^2 | 誤答 | 元の平方と平方根を区別します。 |
+### n10-19
 
-### 既存回答の意味対応
+この有理化の分母で確定した(√3)²=3を分子で再入力しない。異なる根号の積√6は必要計算として保つ。
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q04-negative::oppositeSign | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q04-negative::value | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q04-negative::signedSquareMethod | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+**完成した穴なし解法（初期表示ではない）**
 
-### 答え漏れ・接続の管理
+`\sqrt3\sqrt3-\sqrt3\sqrt2=3-\sqrt{3\times2}=3-\sqrt6`
+`\frac{\sqrt3}{\sqrt3+\sqrt2}=\frac{3-\sqrt6}{1}=3-\sqrt6`
 
-- 平方同一性はsignedSquareMethodの正答前に表示しない。
-- 新partを既存valueやoppositeSignへ置換しない。既存二partはKEEP。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+**初期本文** 分子の最初の積には、分母計算で確定した平方の値を使います。異なる根号どうしの積を計算しましょう。
 
-## n09-q07-negation — CHANGE
+**条件** n10-18で(√3)²=3、分母=1を確定済み。
 
-旧scopeはleadに書かれた差全体の写しになっていた。式を写す穴から、符号に応じた操作を選ぶ穴へ変更する。
+partOrder: inside
 
-### 穴なしの完成解法
+**正確な行とgate**
 
-√((2−√5)²)=|2−√5|。中身2−√5は負なので、差全体の符号を反転し、|2−√5|=−(2−√5)とする。分配と項の計算は次nodeで行う。
-
-### 最初に提示する本文・条件
-
-平方根と平方の関係を使って絶対値へ直します。確定した中身の符号から、必要な操作を決めます。
-
-条件：2−√5<0。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-q07-negation::ux04-row-01 | math | `\sqrt{(2-\sqrt5)^2}=\|2-\sqrt5\|` | 初期 | なし |
-| n09-q07-negation::ux04-row-02 | text | `非負の値にする操作は、{nonnegativeAction}。` | 初期 | なし |
-| n09-q07-negation::ux04-row-03 | math | `\|2-\sqrt5\|=-(2-\sqrt5)` | nonnegativeAction | なし |
+|n10-19::ux05-product|math: `\sqrt3\sqrt3-\sqrt3\sqrt2=3-\sqrt{ {inside} }`|inside||n10-18-result|
+|n10-19::ux05-return|math: `\frac{\sqrt3}{\sqrt3+\sqrt2}=\frac{3-\sqrt6}{1}=3-\sqrt6`||inside|n10-18-result|
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-19::inside` KEEP / math / rational。問い：第二項の根号内の積を計算します。。正答：`6`。
+  操作：固定sourceと同じ局所操作。旧回答：SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES。
+  - 候補 `6` 正答：確定した結果を次の計算へ使います。 / 表示=6
+  - 候補 `5` 誤答：根号の中の積を計算します。 / 表示=5
+  - 候補 `3` 誤答：第二因子2も積へ含めます。 / 表示=3
 
 
-#### n09-q07-negation::nonnegativeAction — NEW
 
-- 問い：中身2−√5<0と確定しています。|2−√5|を非負の数にするため、どの操作をしますか。
-- 種別・役割：text / absolute-value-case-action
-- 思考操作：中身の確定した符号から絶対値に行う操作を選ぶ
-- 根拠：√(u²)=|u|と絶対値の非負性。
-- 位置：n09-q07-negation::ux04-row-02
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q07-negation::ux04-row-03
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `negate-whole-difference` | 差全体の符号を反転する | 正答 | 負の数の符号を全体として反転すると、非負の絶対値になります。 |
-| `keep-negative-difference` | 負の差をそのまま使う | 誤答 | 絶対値は非負です。確定した中身の符号と照合してください。 |
-| `make-each-term-positive` | 二つの項を別々に正にして足す | 誤答 | 絶対値は差全体への作用です。\|2−√5\|と\|2\|＋\|−√5\|を同じにしてはいけません。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-17", "n10-q19-distribute", "n10-18"], "requiredResultRefs": ["n10-17-result", "n10-q19-distribute-result", "n10-18-result"], "terminalRecord": {"id": "n10-19::terminal", "formulas": ["\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=3-\\sqrt6"], "conditions": ["分母=1を認定済み。元分母と因子は非零。"], "prose": "分子まで計算して元の分数を整理できました。次は支援を減らして因子を選びます。", "requiresCorrectKeys": ["inside"], "certifiedFrom": ["n10-17-result", "n10-q19-distribute-result", "n10-18-result"], "proseParts": [{"type": "text", "text": "分子まで計算して元の分数を整理できました。次は支援を減らして因子を選びます。"}], "conditionParts": [[{"type": "text", "text": "分母"}, {"type": "math", "latex": "=1"}, {"type": "text", "text": "を認定済み。元分母と因子は非零。"}]]}}`
 
-### 既存回答の意味対応
+**既存part対応**
 
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q07-negation::scope | RETIRE | 要求する判断を変更するため旧回答を新判断へ移さない。旧記録は出所付きで保存。 |
-| n09-q07-negation::nonnegativeAction | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+- `n10-19::left` → RETIRE_ARCHIVE_ONLY。同じ有理化内で確定済みの平方3はresult参照。r4記録はarchiveのみ。
+- `n10-19::inside` → KEEP。同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。
 
-### 答え漏れ・接続の管理
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-- leadの「外の負号を掛ける対象は差全体」「u<0なら|u|=−u」をこの問いの直前の答えとして再掲しない。
-- 次nodeの−1という乗数、分配後の−2＋√5、最終√5−2は表示しない。
-- 旧scopeの式選択回答を、新しい操作選択の証拠へ流用しない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-## n09-decimal-method — KEEP_REFERENCE_ONLY
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-このnodeの140²・1²・2²・100²は桁の大きい整数計算の補助値であり、和の平方の項構成という主目的ではない。値を写す穴は増やさない。次の左右nodeで分数平方・分配・中項構成を本人に行わせる。
+### n10-q20-factor
 
-### 穴なしの完成解法
+4/3を先出しして後段P/Qで再採点せず、平方比較に初めて必要なここで計算。方針/正性/同一非零因子の根拠は保持。
 
-1.41=141/100、1.42=142/100。補助値として140²=14²×100=19600、1²=1、2²=4、100²=10000を参照する。これらを使って次の左・右の平方を組み立てる。
+**完成した穴なし解法（初期表示ではない）**
 
-### 最初に提示する本文・条件
+`c=2-\sqrt3`
+`2^2=4>3=(\sqrt3)^2,\quad2>0,\ \sqrt3>0\Rightarrow2-\sqrt3>0`
+`(2+\sqrt3)(2-\sqrt3)=4-3=1\in\mathbb Q`
+`c\ne0\Rightarrow c/c=1`
 
-小数を分数に直して平方を計算します。ここでは計算に使う補助値を参照用に示します。平方の項をどう作るかは、次で組み立てます。
+**初期本文** この手順では正の因子を使い、分母の積を有理数にします。選んだ因子が0でないことも確かめましょう。
 
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
+**条件** 元分母2+√3>0。この手順の指定はc>0。逆符号の有効な別解を数学的に不可能とはしない。
 
-### 正確な表示行と解放
+partOrder: factor → positiveComparisonLeftSquareUX05 → positiveComparisonRootSquareUX05 → factorSign → reason
 
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+**正確な行とgate**
+
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-decimal-method::ux04-row-01 | math | `1.41=\frac{141}{100},\quad1.42=\frac{142}{100}` | 初期 | なし |
-| n09-decimal-method::ux04-row-02 | math | `140^2=14^2\times100=19600` | 初期 | なし |
-| n09-decimal-method::ux04-row-03 | math | `1^2=1,\quad2^2=4,\quad100^2=10000` | 初期 | なし |
+|n10-q20-factor::ux05-factor|math: `(2+\sqrt3)\bigl({factor}\bigr)`|factor|||
+|n10-q20-factor::ux05-square-left|math: `2^2={positiveComparisonLeftSquareUX05}`|positiveComparisonLeftSquareUX05|factor||
+|n10-q20-factor::ux05-square-root|math: `(\sqrt3)^2={positiveComparisonRootSquareUX05}`|positiveComparisonRootSquareUX05|factor,positiveComparisonLeftSquareUX05||
+|n10-q20-factor::ux05-compare|math: `2^2={mirror:positiveComparisonLeftSquareUX05}>{mirror:positiveComparisonRootSquareUX05}=(\sqrt3)^2,\quad2>0,\ \sqrt3>0`||factor,positiveComparisonLeftSquareUX05,positiveComparisonRootSquareUX05||
+|n10-q20-factor::ux05-sign|math: `2-\sqrt3{factorSign}0`|factorSign|factor,positiveComparisonLeftSquareUX05,positiveComparisonRootSquareUX05||
+|n10-q20-factor::ux05-nonzero|math: `c\ne0`||factor,positiveComparisonLeftSquareUX05,positiveComparisonRootSquareUX05,factorSign||
+|n10-q20-factor::ux05-reason|text: `この変形で式の値を保って有理化できるのは、{reason}。`|reason|factor,positiveComparisonLeftSquareUX05,positiveComparisonRootSquareUX05,factorSign||
 
-### 穴ごとの詳細
+**設問の全契約**
 
-新規・既存の採点穴を追加しない。上記理由で参照専用として維持する。
+- `n10-q20-factor::factor` KEEP / math / operand。問い：平方差に対応する因子を選びます。。正答：`2-\sqrt3`。
+  操作：固定sourceと同じ局所操作。旧回答：SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES。
+  - 候補 `2-\sqrt3` 正答：確定した結果を次の計算へ使います。 / 表示=2-\sqrt3
+  - 候補 `2+\sqrt3` 誤答：同じ和では平方差を作れません。 / 表示=2+\sqrt3
+  - 候補 `\sqrt3-2` 誤答：その因子でも分母を−1にできます。ただし、この手順では正の因子cを選ぶ指定があります。指定と因子の符号を照合してください。 / 表示=\sqrt3-2
+- `n10-q20-factor::positiveComparisonLeftSquareUX05` NEW / math / rational。問い：選んだ因子が0でないことを比較で確かめます。まず2の平方を求めます。。正答：`4`。
+  操作：正数2と√3の大小比較に初めて必要な平方を計算。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `4` 正答：2の平方は4です。正の数どうしの平方比較へ使います。 / 表示=4
+  - 候補 `2` 誤答：平方は同じ数を二回掛けます。2をそのまま残しません。 / 表示=2
+  - 候補 `8` 誤答：2を三回掛ける計算ではありません。 / 表示=8
+- `n10-q20-factor::positiveComparisonRootSquareUX05` NEW / math / rational。問い：比較するもう一方、√3の平方を求めます。。正答：`3`。
+  操作：非零の根拠を作るため根号の平方を定義で計算。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `3` 正答：平方根の定義で(√3)²=3です。 / 表示=3
+  - 候補 `9` 誤答：根号の中の3をさらに平方しません。 / 表示=9
+  - 候補 `\sqrt3` 誤答：平方の作用を反映して根号を外します。 / 表示=\sqrt3
+- `n10-q20-factor::factorSign` KEEP / math / relation。問い：正の数の平方比較を使い、差と0を比べます。。正答：`>`。
+  操作：固定sourceと同じ局所操作。旧回答：SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES。
+  - 候補 `>` 正答：この判断を確定し、次へ進みます。 / 表示=>
+  - 候補 `<` 誤答：2と√3の平方の大小を、元の正の数の大小へ戻してください。 / 表示=<
+  - 候補 `=` 誤答：4と3は一致していません。 / 表示==
+- `n10-q20-factor::reason` KEEP / text / equivalent-operation-reason。問い：選んだ因子で、式の値を保ったまま有理化できる理由を選びます。。正答：`nonzero-and-rational-product`。
+  操作：固定sourceと同じ局所操作。旧回答：SAME_ID_CONTRACT_KEEP_WITH_NEW_GATES。
+  - 候補 `nonzero-and-rational-product` 正答：因子が零でないことと、分母の積が有理数になることを合わせて確認できました。 / 表示=非零の因子で上下を同じように変え、分母の積を有理数にできるから
+  - 候補 `same-factor-even-zero` 誤答：因子を上下へ掛けた式を比として見たとき、因子が零だと分母がどうなるか確かめてください。 / 表示=上下へ同じ因子を掛けさえすれば、その因子が零でも値を保てるから
+  - 候補 `different-factors` 誤答：分母だけが有理数になっても、元の分数と同じ値になるとは限りません。上下へ掛けた比が何になるかを確かめてください。 / 表示=分母の積が有理数なら、分子に掛ける因子は別の数でもよいから
 
-### 既存回答の意味対応
 
-| ID | 判断 | 理由 |
-|---|---|---|
 
-### 答え漏れ・接続の管理
+**達成/依存契約**
 
-- 参照用の補助値を「本人が導出した」と記録しない。
-- (140＋1)²や(140＋2)²の展開式はここで先出ししない。
-- 参照専用node。新しい計算の本人実施済みとは数えない。
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-13", "n10-14", "n10-19"], "requiredResultRefs": ["n10-13-result", "n10-14-result", "n10-19-result"], "terminalRecord": {"id": "n10-q20-factor::terminal", "formulas": ["c=2-\\sqrt3", "2-\\sqrt3>0", "2^2=4", "(\\sqrt3)^2=3"], "conditions": ["元分母2+√3>0。認定した因子2−√3>0、したがって非零。"], "prose": "選んだ因子は非零です。同じ因子を上下へ掛け、分子と分母の構造を確かめます。", "requiresCorrectKeys": ["factor", "positiveComparisonLeftSquareUX05", "positiveComparisonRootSquareUX05", "factorSign", "reason"], "certifiedFrom": ["n10-13-result", "n10-14-result", "n10-19-result"], "proseParts": [{"type": "text", "text": "選んだ因子は非零です。同じ因子を上下へ掛け、分子と分母の構造を確かめます。"}], "conditionParts": [[{"type": "text", "text": "元分母"}, {"type": "math", "latex": "2+\\sqrt{3}>0"}, {"type": "text", "text": "。認定した因子"}, {"type": "math", "latex": "2-\\sqrt{3}>0"}, {"type": "text", "text": "、したがって非零。"}]]}}`
 
-## n09-p001-q08-left-square — CHANGE
+**既存part対応**
 
-数値三穴はあるが、分数平方・分配・中項という計算の骨格が先に完成していた。
+- `n10-q20-factor::factor` → KEEP。同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。
+- `n10-q20-factor::factorSign` → KEEP。同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。
+- `n10-q20-factor::reason` → KEEP。同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。
 
-### 穴なしの完成解法
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-1.41²=(141/100)²=141²/100²。141=140＋1より、(140＋1)(140＋1)=140(140＋1)＋1(140＋1)=140²＋140×1＋1×140＋1²=140²＋2×140×1＋1²=19600＋280＋1=19881。したがって1.41²=19881/10000=1.9881。
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-### 最初に提示する本文・条件
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-左の1.41²を先に求めます。分子141を140＋1と分ける方針と補助値を使い、平方の各項を組み立てます。
+### n10-20
 
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
+指数2と−一字を別採点せず、平方/平方差を分数全体へ適用する一つの変形へ統合。
 
-### 正確な表示行と解放
+**完成した穴なし解法（初期表示ではない）**
 
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+`\frac{2-\sqrt3}{2+\sqrt3}\frac{2-\sqrt3}{2-\sqrt3}=\frac{(2-\sqrt3)^2}{2^2-(\sqrt3)^2}=\frac{(2-\sqrt3)^2}{4-3}`
+
+**初期本文** 非零と確認した同じ因子を上下へ掛けます。分子と分母に適用する公式の違いに注意しましょう。
+
+**条件** c=2−√3≠0を確定済み。比較で2²=4、(√3)²=3も確定済み。
+
+partOrder: rationalisedFractionUX05
+
+**正確な行とgate**
+
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-p001-q08-left-square::ux04-row-01 | math | `1.41^2=\left(\frac{141}{100}\right)^2` | 初期 | なし |
-| n09-p001-q08-left-square::ux04-row-02 | text | `分数の平方では、{fractionSquareAction}。` | 初期 | なし |
-| n09-p001-q08-left-square::ux04-row-03 | math | `1.41^2=\frac{141^2}{100^2}` | fractionSquareAction | なし |
-| n09-p001-q08-left-square::ux04-row-04 | text | `ここからは分子の平方を計算します。141=140＋1です。` | fractionSquareAction | なし |
-| n09-p001-q08-left-square::ux04-row-05 | math | `(140+1)^2=(140+1)(140+1)` | fractionSquareAction | なし |
-| n09-p001-q08-left-square::ux04-row-06 | math | `=140(140+1){outerJoin}1(140+1)` | fractionSquareAction | なし |
-| n09-p001-q08-left-square::ux04-row-07 | math | `=140^2+{crossProduct}+1\times140+1^2` | fractionSquareAction, outerJoin | なし |
-| n09-p001-q08-left-square::ux04-row-08 | math | `=140^2+{crossCoefficient}\times140\times1+1^2` | fractionSquareAction, outerJoin, crossProduct | なし |
-| n09-p001-q08-left-square::ux04-row-09 | math | `=19600+{L1}+1` | fractionSquareAction, outerJoin, crossProduct, crossCoefficient | なし |
-| n09-p001-q08-left-square::ux04-row-10 | math | `=19600+{mirror:L1}+1={L2}` | fractionSquareAction, outerJoin, crossProduct, crossCoefficient, L1 | なし |
-| n09-p001-q08-left-square::ux04-row-11 | text | `分子の計算が終わったので、元の分数全体へ戻します。` | fractionSquareAction, outerJoin, crossProduct, crossCoefficient, L1, L2 | なし |
-| n09-p001-q08-left-square::ux04-row-12 | math | `1.41^2=\frac{ {mirror:L2} }{10000}={L3}` | fractionSquareAction, outerJoin, crossProduct, crossCoefficient, L1, L2 | なし |
+|n10-20::ux05-start|math: `\frac{2-\sqrt3}{2+\sqrt3}\frac{2-\sqrt3}{2-\sqrt3}`||||
+|n10-20::ux05-form|math: `={rationalisedFractionUX05}`|rationalisedFractionUX05|||
+|n10-20::ux05-known-squares|math: `=\frac{(2-\sqrt3)^2}{4-3}`||rationalisedFractionUX05|n10-q20-factor-result|
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-20::rationalisedFractionUX05` NEW / math / expression。問い：同じ非零因子を上下へ掛けた式で、分子全体の積を平方、分母の和と差の積を平方差で表します。。正答：`\frac{(2-\sqrt3)^2}{2^2-(\sqrt3)^2}`。
+  操作：有理化の分数全体で二つの既習公式を対応させ、値保持した式を構成。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `\frac{(2-\sqrt3)^2}{2^2-(\sqrt3)^2}` 正答：分子は差全体の平方、分母は和と差の積の公式です。 / 表示=\frac{(2-\sqrt3)^2}{2^2-(\sqrt3)^2}
+  - 候補 `\frac{2^2-(\sqrt3)^2}{2^2-(\sqrt3)^2}` 誤答：分子は差どうしの積です。和と差の積ではないので平方差にはなりません。 / 表示=\frac{2^2-(\sqrt3)^2}{2^2-(\sqrt3)^2}
+  - 候補 `\frac{(2-\sqrt3)^2}{2^2+(\sqrt3)^2}` 誤答：分母は和と差の積なので、残るのは平方の差です。 / 表示=\frac{(2-\sqrt3)^2}{2^2+(\sqrt3)^2}
+  - 候補 `\frac{2-\sqrt3}{2^2-(\sqrt3)^2}` 誤答：分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。 / 表示=\frac{2-\sqrt3}{2^2-(\sqrt3)^2}
 
 
-#### n09-p001-q08-left-square::fractionSquareAction — NEW
 
-- 問い：(141/100)²で、平方をどこへ作用させますか。
-- 種別・役割：text / fraction-square-action
-- 思考操作：分数全体の平方を上下の因子へ作用させる
-- 根拠：分数の積と平方の定義。100²の値を写す質問ではない。
-- 位置：n09-p001-q08-left-square::ux04-row-02
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-03, n09-p001-q08-left-square::ux04-row-04, n09-p001-q08-left-square::ux04-row-05, n09-p001-q08-left-square::ux04-row-06, n09-p001-q08-left-square::ux04-row-07, n09-p001-q08-left-square::ux04-row-08, n09-p001-q08-left-square::ux04-row-09, n09-p001-q08-left-square::ux04-row-10, n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `square-numerator-and-denominator` | 分子と分母の両方を2乗する | 正答 | 同じ分数を二回掛けると、上下とも同じ因子の二回の積になります。 |
-| `square-numerator-only` | 分子だけを2乗し、分母は100のままにする | 誤答 | 分母の100も二因子掛けられています。 |
-| `double-denominator` | 分子を2乗し、分母は2倍する | 誤答 | 分母に対しても2乗と2倍を区別してください。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-13", "n10-14", "n10-q20-factor"], "requiredResultRefs": ["n10-13-result", "n10-14-result", "n10-q20-factor-result"], "terminalRecord": {"id": "n10-20::terminal", "formulas": ["\\frac{2-\\sqrt3}{2+\\sqrt3}=\\frac{(2-\\sqrt3)^2}{4-3}"], "conditions": ["元分母と掛ける因子は非零。"], "prose": "分母と分子を計算できる形へ直せました。まず分母4−3を計算します。", "requiresCorrectKeys": ["rationalisedFractionUX05"], "certifiedFrom": ["n10-13-result", "n10-14-result", "n10-q20-factor-result"], "proseParts": [{"type": "text", "text": "分母と分子を計算できる形へ直せました。まず分母"}, {"type": "math", "latex": "4-3"}, {"type": "text", "text": "を計算します。"}], "conditionParts": [[{"type": "text", "text": "元分母と掛ける因子は非零。"}]]}}`
 
-#### n09-p001-q08-left-square::outerJoin — NEW
+**既存part対応**
 
-- 問い：(140＋1)(140＋1)を、最初の括弧の二項ごとに分けます。二つの積をどの演算で結びますか。
-- 種別・役割：math / distribution-join
-- 思考操作：括弧の和へ分配するときの演算を構成する
-- 根拠：分配法則。完成公式全体を候補選択にしない。
-- 位置：n09-p001-q08-left-square::ux04-row-06
-- 前提：fractionSquareAction
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-07, n09-p001-q08-left-square::ux04-row-08, n09-p001-q08-left-square::ux04-row-09, n09-p001-q08-left-square::ux04-row-10, n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-20::power` → RETIRE_ARCHIVE_ONLY。同じ因子数の指数を単独採点せず、分数全体の公式適用へ統合。
+- `n10-20::denominatorOperation` → RETIRE_ARCHIVE_ONLY。−単独から分数全体の式構成へ対象/候補/操作変更。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | 最初の括弧の二項の和を、同じ後ろの因子へ分配します。 |
-| `-` | - | 誤答 | 元の最初の括弧は和です。符号を変えないでください。 |
-| `\times` | × | 誤答 | 二つの項へ分けた後まで掛けると、元の和を保持できません。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-p001-q08-left-square::crossProduct — NEW
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：展開で140²のほかに、最初の括弧の140から生じる項を、まだ計算しない積の形で選びます。
-- 種別・役割：math / distribution-cross-factor
-- 思考操作：分配の相手となる項を対応させて交差積を構成する
-- 根拠：二つの和の積を各項へ分配する既習の操作。
-- 位置：n09-p001-q08-left-square::ux04-row-07
-- 前提：fractionSquareAction, outerJoin
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-08, n09-p001-q08-left-square::ux04-row-09, n09-p001-q08-left-square::ux04-row-10, n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `140\times1` | 140×1 | 正答 | 最初の140を、後ろの括弧のもう一方の項1へ掛けた積です。 |
-| `140+1` | 140+1 | 誤答 | 括弧内の和をそのまま書くのでなく、外の140を掛ける対象を追ってください。 |
-| `140^2` | 140^2 | 誤答 | 140×140は既に第一項にあります。もう一方の項から生じる積を調べてください。 |
+### n10-q21-expand
 
-#### n09-p001-q08-left-square::crossCoefficient — NEW
+旧P/Qの4/3は前段resultを参照して再入力しない。旧K=4を符号込み中項の正答へaliasせず、新しい一つの公式適用を問う。
 
-- 問い：140×1と1×140は同じ値です。二つをまとめた積の先頭の係数を選びます。
-- 種別・役割：math / equal-cross-products-count
-- 思考操作：同じ二つの交差積をまとめて中項を構成する
-- 根拠：乗法の交換法則と同類項の加法。
-- 位置：n09-p001-q08-left-square::ux04-row-08
-- 前提：fractionSquareAction, outerJoin, crossProduct
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-09, n09-p001-q08-left-square::ux04-row-10, n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**完成した穴なし解法（初期表示ではない）**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `2` | 2 | 正答 | 同じ積が二つあります。 |
-| `1` | 1 | 誤答 | 二つの交差積のうち一つを落としていませんか。 |
-| `4` | 4 | 誤答 | 展開全体の項数と、同じ交差積の個数を区別してください。 |
+`(2-\sqrt3)^2=2^2-2\times2\times\sqrt3+(\sqrt3)^2=4-4\sqrt3+3`
 
-#### n09-p001-q08-left-square::L1 — KEEP
+**初期本文** 分子の差の平方を展開します。二つの平方は前段の確定値を使い、中項を符号込みで作りましょう。
 
-- 問い：中項2×140×1を計算します。
-- 種別・役割：math / rational
-- 思考操作：自分で組み立てた中項を数値計算する
-- 根拠：元と同じ2×140×1。
-- 位置：n09-p001-q08-left-square::ux04-row-09
-- 前提：fractionSquareAction, outerJoin, crossProduct, crossCoefficient
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-10, n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**条件** 既習公式(A−B)²=A²−2AB+B²。2²=4、(√3)²=3はn10-q20-factorで確定済み。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `280` | 280 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `140` | 140 | 誤答 | 中項には2を掛けます。 |
-| `2800` | 2800 | 誤答 | 位取りを確かめ、140に掛ける因子を数えます。 |
+partOrder: signedMiddleTermUX05
 
-#### n09-p001-q08-left-square::L2 — KEEP
+**正確な行とgate**
 
-- 問い：三つの項を合計します。
-- 種別・役割：math / rational
-- 思考操作：三項の合計を計算する
-- 根拠：元と同じ19600＋280＋1。
-- 位置：n09-p001-q08-left-square::ux04-row-10
-- 前提：fractionSquareAction, outerJoin, crossProduct, crossCoefficient, L1
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-left-square::ux04-row-11, n09-p001-q08-left-square::ux04-row-12
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `19881` | 19881 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `19880` | 19880 | 誤答 | 最後の1²の値も合計します。 |
-| `19601` | 19601 | 誤答 | 中項も合計に含めます。 |
-
-#### n09-p001-q08-left-square::L3 — KEEP
-
-- 問い：整数の平方を10000で割って小数に戻します。
-- 種別・役割：math / rational
-- 思考操作：分数の値を小数へ戻す
-- 根拠：元と同じ19881/10000。
-- 位置：n09-p001-q08-left-square::ux04-row-12
-- 前提：fractionSquareAction, outerJoin, crossProduct, crossCoefficient, L1, L2
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `1.9881` | 1.9881 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `19.881` | 19.881 | 誤答 | 分母10000に対応する小数の桁数を確認します。 |
-| `0.19881` | 0.19881 | 誤答 | 整数部分がいくつになるかも確認します。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-p001-q08-left-square::L1 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-left-square::L2 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-left-square::L3 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-left-square::fractionSquareAction | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-p001-q08-left-square::outerJoin | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-p001-q08-left-square::crossProduct | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-p001-q08-left-square::crossCoefficient | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- L1 promptの2×140×1はL1解放後のみ表示。中項構成の問いより前へ出さない。
-- lead/条件へ完成公式140²＋2×140×1＋1²を出さない。
-- 分子だけの計算と元の分数全体を、本文と式groupで分けて偽の等式鎖を作らない。
-- 同じ交差積をまとめる前の四項はcrossProduct正答の前には完成表示しない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## n09-p001-q08-right-square — CHANGE
-
-左と同じ展開を全文自動表示せず、支援を減らして変わる中項を構成させる。
-
-### 穴なしの完成解法
-
-1.42²=142²/10000、142=140＋2。(140＋2)²=140²＋2×140×2＋2²=19600＋560＋4=20164。したがって1.42²=20164/10000=2.0164。
-
-### 最初に提示する本文・条件
-
-右の1.42²にも、左で組み立てた方法を使います。142を140＋2と置き、変わる中項を自分で構成します。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
+|id|kind/template|partKeys|requiresCorrectKeys|certifiedFrom|
 |---|---|---|---|---|
-| n09-p001-q08-right-square::ux04-row-01 | math | `1.42^2=\frac{142^2}{10000}` | 初期 | なし |
-| n09-p001-q08-right-square::ux04-row-02 | text | `ここからは分子の平方を計算します。` | 初期 | なし |
-| n09-p001-q08-right-square::ux04-row-03 | math | `(140+2)^2=140^2+{middleStructure}+2^2` | 初期 | なし |
-| n09-p001-q08-right-square::ux04-row-04 | math | `=19600+{R1}+4` | middleStructure | なし |
-| n09-p001-q08-right-square::ux04-row-05 | math | `=19600+{mirror:R1}+4={R2}` | middleStructure, R1 | なし |
-| n09-p001-q08-right-square::ux04-row-06 | text | `元の分数全体へ戻します。` | middleStructure, R1, R2 | なし |
-| n09-p001-q08-right-square::ux04-row-07 | math | `1.42^2=\frac{ {mirror:R2} }{10000}={R3}` | middleStructure, R1, R2 | なし |
+|n10-q21-expand::ux05-middle|math: `(2-\sqrt3)^2=4{signedMiddleTermUX05}+3`|signedMiddleTermUX05||n10-q20-factor-result|
 
-### 穴ごとの詳細
+**設問の全契約**
+
+- `n10-q21-expand::signedMiddleTermUX05` NEW / math / expression。問い：既習の差の平方の公式を分子へ適用し、中項全体を符号込みで求めます。。正答：`-4\sqrt3`。
+  操作：差平方を新しい二項へ適用し、根号を含む符号込み中項を構成。。旧回答：NEW_UNANSWERED_NO_ALIAS。
+  - 候補 `-4\sqrt3` 正答：中項は−2×2×√3=−4√3です。平方4/3は前段の確定値を使います。 / 表示=-4\sqrt3
+  - 候補 `-2\sqrt3` 誤答：公式の2ABではA=2です。その2をもう一つ掛けます。 / 表示=-2\sqrt3
+  - 候補 `+4\sqrt3` 誤答：差の平方では中項が負です。 / 表示=+4\sqrt3
+  - 候補 `-12` 誤答：中項は2と√3の積の倍数です。√3を3へ取り替えません。 / 表示=-12
 
 
-#### n09-p001-q08-right-square::middleStructure — NEW
 
-- 問い：142=140＋2に左の方法を使います。和の平方の中項を、数値計算前の因子の形で組み立てます。
-- 種別・役割：math / square-cross-term-factors
-- 思考操作：同じ方法を数値の異なる右側へ適用し中項の因子を構成する
-- 根拠：本人が左で構成した分配と二つの交差積。全文公式を選ぶ問いではない。
-- 位置：n09-p001-q08-right-square::ux04-row-03
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-right-square::ux04-row-04, n09-p001-q08-right-square::ux04-row-05, n09-p001-q08-right-square::ux04-row-06, n09-p001-q08-right-square::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+**達成/依存契約**
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `2\times140\times2` | 2×140×2 | 正答 | 二つの交差積をまとめた係数2と、二つの異なる項140・2を掛けます。 |
-| `140\times2` | 140×2 | 誤答 | 交差積は一つだけでしょうか。左の展開で同じ積が二つ現れたことを使ってください。 |
-| `2\times140^2` | 2×140^2 | 誤答 | 中項には二つの異なる項が一つずつ入ります。140だけの平方と区別してください。 |
+`{"classification": "NEW_CONSTRUCTION", "prerequisiteNodeIds": ["n10-20", "n10-q21-denominator", "n10-q11-formula", "n10-q20-factor"], "requiredResultRefs": ["n10-20-result", "n10-q21-denominator-result", "n10-q11-formula-result", "n10-q20-factor-result"], "terminalRecord": {"id": "n10-q21-expand::terminal", "formulas": ["(2-\\sqrt3)^2=4-4\\sqrt3+3"], "conditions": ["A=2、B=√3。(A−B)²の公式を用いて分子(2−√3)²を展開する。"], "prose": "平方の三項が4−4√3+3と求まりました。普通の数の項をまとめます。", "requiresCorrectKeys": ["signedMiddleTermUX05"], "certifiedFrom": ["n10-20-result", "n10-q21-denominator-result", "n10-q11-formula-result", "n10-q20-factor-result"], "proseParts": [{"type": "text", "text": "平方の三項が"}, {"type": "math", "latex": "4-4\\sqrt{3}+3"}, {"type": "text", "text": "と求まりました。普通の数の項をまとめます。"}], "conditionParts": [[{"type": "math", "latex": "A=2"}, {"type": "text", "text": "、"}, {"type": "math", "latex": "B=\\sqrt3"}, {"type": "text", "text": "。"}, {"type": "math", "latex": "(A-B)^2"}, {"type": "text", "text": "の公式を用いて分子"}, {"type": "math", "latex": "(2-\\sqrt3)^2"}, {"type": "text", "text": "を展開する。"}]]}}`
 
-#### n09-p001-q08-right-square::R1 — KEEP
+**既存part対応**
 
-- 問い：中項2×140×2を計算します。
-- 種別・役割：math / rational
-- 思考操作：構成済み中項の数値計算
-- 根拠：元と同じ2×140×2。
-- 位置：n09-p001-q08-right-square::ux04-row-04
-- 前提：middleStructure
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-right-square::ux04-row-05, n09-p001-q08-right-square::ux04-row-06, n09-p001-q08-right-square::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+- `n10-q21-expand::P` → RETIRE_ARCHIVE_ONLY。平方4は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Pを新keyへaliasしない。ARCHIVE_ONLY。
+- `n10-q21-expand::K` → RETIRE_ARCHIVE_ONLY。旧正の係数4と符号込み中項−4√3は非同値。ARCHIVE_ONLY。
+- `n10-q21-expand::Q` → RETIRE_ARCHIVE_ONLY。平方3は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Qを新keyへaliasしない。ARCHIVE_ONLY。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `560` | 560 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `280` | 280 | 誤答 | 今回は最後の因子も2です。 |
-| `5600` | 5600 | 誤答 | 位取りを確かめます。 |
+初期はinitialRowsのみ。後続結果は全gate成立後。一般公式以外の新part期待値をlead/条件へ書かない。正答は共有rendererで自然式、回答欄/候補は現在式の直後。
 
-#### n09-p001-q08-right-square::R2 — KEEP
+原問題/stage/resultId/式番号は固定sourceを継承。prerequisiteNodeIds/requiredResultRefs/terminalRecordは本案の明記値を用いる。
 
-- 問い：三つの項を合計します。
-- 種別・役割：math / rational
-- 思考操作：三項の合計
-- 根拠：元と同じ19600＋560＋4。
-- 位置：n09-p001-q08-right-square::ux04-row-05
-- 前提：middleStructure, R1
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-p001-q08-right-square::ux04-row-06, n09-p001-q08-right-square::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+因子・項の交換等の数学的同値を否定しない。指定された式の形を選ぶ問いであり、同値な正答候補は重複掲載しない。
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `20164` | 20164 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `20160` | 20160 | 誤答 | 2²の値も合計します。 |
-| `19884` | 19884 | 誤答 | 中項の因子2をもう一度確認します。 |
+### 全旧part対応
 
-#### n09-p001-q08-right-square::R3 — KEEP
+KEEPは同一ID。RETIREは旧版保存のみでaliasなし。
 
-- 問い：整数の平方を小数に戻します。
-- 種別・役割：math / rational
-- 思考操作：小数への変換
-- 根拠：元と同じ20164/10000。
-- 位置：n09-p001-q08-right-square::ux04-row-07
-- 前提：middleStructure, R1, R2
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `2.0164` | 2.0164 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `20.164` | 20.164 | 誤答 | 10000で割る小数の桁数を確認します。 |
-| `0.20164` | 0.20164 | 誤答 | 整数部分を含めて大きさを確認します。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
+|oldId|action|newId|
 |---|---|---|
-| n09-p001-q08-right-square::R1 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-right-square::R2 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-right-square::R3 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-p001-q08-right-square::middleStructure | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+|n10-q01-square::rootSquare|KEEP|n10-q01-square::rootSquare|
+|n10-01::value|KEEP|n10-01::value|
+|n10-q02-sign::value|KEEP|n10-q02-sign::value|
+|n10-02::candidateSign|KEEP|n10-02::candidateSign|
+|n10-02::squareValue|KEEP|n10-02::squareValue|
+|n10-02::identificationReason|KEEP|n10-02::identificationReason|
+|n10-q03-expand::powerA|KEEP|n10-q03-expand::powerA|
+|n10-q03-expand::powerB|KEEP|n10-q03-expand::powerB|
+|n10-03::aValue|KEEP|n10-03::aValue|
+|n10-03::bValue|KEEP|n10-03::bValue|
+|n10-q04-sign::relation|KEEP|n10-q04-sign::relation|
+|n10-04::rootReason|KEEP|n10-04::rootReason|
+|n10-q05-denominator::relation|KEEP|n10-q05-denominator::relation|
+|n10-q05-square::numPower|KEEP|n10-q05-square::numPower|
+|n10-q05-square::denPower|KEEP|n10-q05-square::denPower|
+|n10-05::numerator|KEEP|n10-05::numerator|
+|n10-05::denominator|KEEP|n10-05::denominator|
+|n10-q06-sign::relation|KEEP|n10-q06-sign::relation|
+|n10-06::quotientReason|KEEP|n10-06::quotientReason|
+|n10-q07-product::insideOperation|KEEP|n10-q07-product::insideOperation|
+|n10-q07-product::inside|KEEP|n10-q07-product::inside|
+|n10-07::squareFactor|KEEP|n10-07::squareFactor|
+|n10-07::factor|KEEP|n10-07::factor|
+|n10-q08-factor::coefficient|KEEP|n10-q08-factor::coefficient|
+|n10-q09-left::squareFactor|KEEP|n10-q09-left::squareFactor|
+|n10-q09-left::coefficient|KEEP|n10-q09-left::coefficient|
+|n10-q09-right::squareFactor|KEEP|n10-q09-right::squareFactor|
+|n10-q09-right::coefficient|KEEP|n10-q09-right::coefficient|
+|n10-q10-coefficients::coefficient|KEEP|n10-q10-coefficients::coefficient|
+|n10-q11-formula::middleSign|RETIRE_ARCHIVE_ONLY|なし|
+|n10-11::leftSquare|KEEP|n10-11::leftSquare|
+|n10-11::rightSquare|KEEP|n10-11::rightSquare|
+|n10-q12-product::inside|KEEP|n10-q12-product::inside|
+|n10-12::constant|KEEP|n10-12::constant|
+|n10-q13-identity::operation|RETIRE_ARCHIVE_ONLY|なし|
+|n10-13::left|KEEP|n10-13::left|
+|n10-13::right|KEEP|n10-13::right|
+|n10-13::difference|KEEP|n10-13::difference|
+|n10-14::operation|KEEP|n10-14::operation|
+|n10-q15-factor::factor|KEEP|n10-q15-factor::factor|
+|n10-15::numerator|KEEP|n10-15::numerator|
+|n10-q16-denominator::square|KEEP|n10-q16-denominator::square|
+|n10-q16-denominator::denominator|KEEP|n10-q16-denominator::denominator|
+|n10-q17-factor::factor|KEEP|n10-q17-factor::factor|
+|n10-q17-nonzero::relation|KEEP|n10-q17-nonzero::relation|
+|n10-17::productOperation|RETIRE_ARCHIVE_ONLY|なし|
+|n10-18::A|KEEP|n10-18::A|
+|n10-18::B|KEEP|n10-18::B|
+|n10-18::C|KEEP|n10-18::C|
+|n10-q19-distribute::secondOperand|RETIRE_ARCHIVE_ONLY|なし|
+|n10-q19-distribute::productSign|RETIRE_ARCHIVE_ONLY|なし|
+|n10-19::left|RETIRE_ARCHIVE_ONLY|なし|
+|n10-19::inside|KEEP|n10-19::inside|
+|n10-q20-factor::factor|KEEP|n10-q20-factor::factor|
+|n10-q20-factor::factorSign|KEEP|n10-q20-factor::factorSign|
+|n10-q20-factor::reason|KEEP|n10-q20-factor::reason|
+|n10-20::power|RETIRE_ARCHIVE_ONLY|なし|
+|n10-20::denominatorOperation|RETIRE_ARCHIVE_ONLY|なし|
+|n10-q21-denominator::D|KEEP|n10-q21-denominator::D|
+|n10-q21-expand::P|RETIRE_ARCHIVE_ONLY|なし|
+|n10-q21-expand::K|RETIRE_ARCHIVE_ONLY|なし|
+|n10-q21-expand::Q|RETIRE_ARCHIVE_ONLY|なし|
+|n10-q21-constants::C|KEEP|n10-q21-constants::C|
 
-### 答え漏れ・接続の管理
+### 集計（穴数は結果）
 
-- 左で本人が確定した分数平方・分母10000を参照し、その同じ数を再入力させない。
-- R1 promptの完成中項はmiddleStructure正答後のみ表示する。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+{"allNodes": 45, "changedNodes": 9, "keptNodes": 36, "baselineParts": 63, "keepParts": 52, "retiredParts": 11, "newParts": 8, "proposedParts": 60}
 
-## n09-parts-target — CHANGE
-
-x=n＋r等は定義として提示するが、rの取り出しと整数区間への変形は結果を先書きしない。
-
-### 穴なしの完成解法
-
-実数xをx=n＋r、n∈ℤ、0≤r<1と表したとき、nを整数部分、rを小数部分と定義する。両辺からnを引けばr=x−n。0≤r<1の各辺へnを加えるとn≤n＋r<n＋1、中央をxへ戻してn≤x<n＋1。
-
-### 最初に提示する本文・条件
-
-−2.1を整数部分と小数部分に分けます。まず次の定義を使います。実数x=n＋r、n∈ℤ、0≤r<1のとき、nを整数部分、rを小数部分と呼びます。
-
-条件：x=n＋r、n∈ℤ、0≤r<1はここで与える定義。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
-|---|---|---|---|---|
-| n09-parts-target::ux04-row-01 | math | `x=n+r,\quad n\in\mathbb Z,\quad0\le r<1` | 初期 | なし |
-| n09-parts-target::ux04-row-02 | text | `両辺に行う演算：{isolateOperation}n` | 初期 | isolateOperation |
-| n09-parts-target::ux04-row-03 | math | `x-n=n+r-n\quad\Rightarrow\quad r=x-n` | isolateOperation | なし |
-| n09-parts-target::ux04-row-04 | text | `各辺に加える式：{intervalShift}` | isolateOperation | intervalShift |
-| n09-parts-target::ux04-row-05 | math | `0+{mirror:intervalShift}\le r+{mirror:intervalShift}<1+{mirror:intervalShift}` | isolateOperation, intervalShift | なし |
-| n09-parts-target::ux04-row-06 | math | `n\le x<n+1` | isolateOperation, intervalShift | なし |
-
-### 穴ごとの詳細
+実装承認/正常フォント実画像/移行QAは未実施。本案の構造と数学の非作者審査を依頼する。
 
 
-#### n09-parts-target::isolateOperation — NEW
+## 共通表示の具体的修正
 
-- 問い：定義x=n＋rの両辺へnをどう作用させれば、rを取り出せますか。
-- 種別・役割：math / equation-isolate-remainder
-- 思考操作：定義式からrを取り出す共通逆演算
-- 根拠：等式の両辺に同じ数を加減する性質。定義自体を当てさせない。
-- 位置：n09-parts-target::ux04-row-02
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-parts-target::ux04-row-03, n09-parts-target::ux04-row-04, n09-parts-target::ux04-row-05, n09-parts-target::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
+### 正答した穴を通常の数式へ戻す
 
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-` | - | 正答 | 両辺のnを同じように引いて整理します。 |
-| `+` | + | 誤答 | 右辺のnが増え、rだけになりません。 |
-| `\div` | ÷ | 誤答 | 右辺は和です。全体をnで割ってもnの加算を消せません。またn=0もあり得ます。 |
+対象はN09/N10の数学行内の直接slot。同型経路は現基準で94行/106slot出現だが、これは静的inventoryであり全件の画像破綻実見数ではない。text slot・mirror・回答後に消える足場と分けて扱う。
 
-#### n09-parts-target::intervalShift — NEW
-
-- 問い：0≤r<1の各辺へ同じ式を足し、中央をx=n＋rにします。足す式を選びます。
-- 種別・役割：math / inequality-common-addend
-- 思考操作：残りの範囲を元の数の区間へ変換する共通加数を選ぶ
-- 根拠：不等式全辺への同じ加算と定義x=n＋r。
-- 位置：n09-parts-target::ux04-row-04
-- 前提：isolateOperation
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-parts-target::ux04-row-05, n09-parts-target::ux04-row-06
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `n` | n | 正答 | 三辺にnを加えると、中央はn＋r=xになります。 |
-| `-n` | -n | 誤答 | 中央がr−nとなり、定義のx=n＋rと一致しません。 |
-| `r` | r | 誤答 | 中央が2rとなり、xを含む整数の区間になりません。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
+| 状態 | 数式の出力 | 操作・寸法の契約 |
 |---|---|---|
-| n09-parts-target::isolateOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-parts-target::intervalShift | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
+| 未回答 | 未確定slot。後続の答えは出さない | 有効な操作域44px以上、全候補からの中立予約。keyboard/誤答gate維持。 |
+| 誤答 | 選択値と対応する説明。未確定のまま | 正答を使って幅を計画しない。同じ未確定状態で予約を保持。 |
+| 正答済みのpart | 確定した候補を閉じたASTの通常数式として出す | 操作button/透明span/44pxphantomを残さない。＋/−/関係記号のTeX種別、単項符号、根号/分数/累乗の束縛を保つ。 |
+| 一行で正答と未回答が混在 | 正答部分は自然な文字、未回答部分だけslot | node全体を早期readonlyにしない。未回答の操作を消さない。 |
+| 完了/履歴/旧版比較 | 通常の数学組版 | 原教材/原回答は保管し、採点・時刻・回数を変えない。 |
 
-### 答え漏れ・接続の管理
+`compileNestedMathTemplate`は、certifiedの候補存在/値/参照の証明を通した後、interactiveでも通常の確定subtreeを出力する。確定値を操作slot一覧から除き、`resolvedParts`等の表示根拠metadata（key/path/value）で未回答slotと区別する。正答の無い値や任意の未証明mirrorを確定扱いにしない。閉じた数式文法、trust:false、候補allowlist、root relation markerを維持する。
 
-- 派生式r=x−nとn≤x<n＋1をlead/条件へ先に出さない。
-- 定義する語の名前を選択させる未知語当ては行わない。
-- 整数nは負・0も含む。割り算の候補を一律可能な同値変形として扱わない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
+確定した式には自然な演算子間隔を使う。単に＋をmordの箱へ押し込み、見た目だけ枠を消す方法は採用しない。受入基準の例は、正答後の`(x-4)(x+4)=0`が同じfontの通常描画と同じ括弧高さ/内部間隔になること。44pxは未回答の操作域へ適用し、確定した＋や指数2の文字寸法へ適用しない。
 
-## n09-q10-reject-truncation — CHANGE
+### group計画を公開状態へ追従させる
 
-負数減法の変形が自動で、値を入れた後の棄却理由も自動だった。
+`NeutralNestedGroupRow`へ、すでに公開・正答認定された`values`/`certifiedKeys`を渡せるようにする。未解放row/未認定partの答えは入力しない。`NodeRows`は可視row・正答状態・group幅・実fontから計画する。通常表示と履歴で同じ出所のrender/planner契約を使う。
 
-### 穴なしの完成解法
+- 未回答partは従来どおり全候補中立幅、確定partは選択された通常式の幅で計測する。mirrorは参照元の正答が証明された場合だけ自然式へする。
+- 正答公開時にはgroupを再計画してよい。旧「正答後も全候補の中立frame固定」を、未回答/誤答中の安定性と混同しない。根号や分数の内部を勝手に分断しない。
+- cache/signatureには可視rowと認定済み値・certified集合・width/fontを含める。同じwidth/fontでも正答状態が変われば再計画する。
+- 多項式変形/因数分解/論理/別の補助量は意味groupを分ける。補助量から本体へ戻るときは完全な左辺または明確な数学対象を示し、偽の等式鎖を作らない。
+- slot/control必須の検査は未確定slotに適用する。確定部の正しい通常表示の検査を追加し、単に検査対象から消して合格にしない。
+- DOM計測のWeakMap登録・本体compilerへの出所検証を維持する。別bundleの近似DOMを本体の証拠と呼ばない。
 
-n=−2という候補ではr=−2.1−(−2)=−2.1＋2=−0.1。これは0≤r<1に反するので、n=−2は整数部分ではない。適切な整数の選択は次nodeで行う。
+### 複数条件を一つの判断として答える表示
 
-### 最初に提示する本文・条件
+零積や相殺項の組など、意味上ひとまとまりの回答は一つの選択肢/buttonで扱う。320pxで長い式全体を一つの巨大slotへ押し込まない。単元別案の指定に従い、条件の接続語・二項の境界で行を分ける。
 
-見た目から整数部分を−2とする候補を、定義で検査します。
+零条件や相殺交差項の組など、必要な候補に限って表示専用`mathLines?: string[]`を追加できる。各lineは閉じたLaTeX、`value`は一つ、`display`は全条件の読み上げ用ラベル、各lineを同じ候補button内で縦に描画する。複数buttonへ分割して別問にはしない。純粋なmeaning型のenumを採点値とし、数式表示を別に持つ場合も型を明記する。`mathLines`は入力値の意味や誤答フィードバックを変えるフィールドではない。
 
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
+画面の足場がtext行の場合も、正答後は足場を消して具体的な条件を通常のmath行へ置換する。未回答の条件を先に完成印字し「または」だけ問う形へ戻さない。複数条件の順序交換が同値であることは設問・候補・説明に明示し、同じ正答の順序違いを誤答候補にしない。
 
-### 正確な表示行と解放
+## 旧回答・新版・保存の具体契約
 
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
-|---|---|---|---|---|
-| n09-q10-reject-truncation::ux04-row-01 | math | `r=-2.1-(-2)=-2.1{removeBracketsOperation}2` | 初期 | なし |
-| n09-q10-reject-truncation::ux04-row-02 | math | `={value}` | removeBracketsOperation | なし |
-| n09-q10-reject-truncation::ux04-row-03 | text | `候補n=−2は、{admissibility}。` | removeBracketsOperation, value | なし |
-
-### 穴ごとの詳細
-
-
-#### n09-q10-reject-truncation::removeBracketsOperation — NEW
-
-- 問い：候補n=−2を使ったr=−2.1−(−2)で、括弧を外した後の演算を選びます。
-- 種別・役割：math / subtract-negative-operation
-- 思考操作：負の整数を引く操作を加法へ変える
-- 根拠：r=x−nと負数の減法。
-- 位置：n09-q10-reject-truncation::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q10-reject-truncation::ux04-row-02, n09-q10-reject-truncation::ux04-row-03
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | 負の数を引くので、その反対数を足します。 |
-| `-` | - | 誤答 | 括弧の前の引き算と、中の負号を別々に見てください。 |
-
-#### n09-q10-reject-truncation::value — KEEP
-
-- 問い：候補n=−2の残りを計算します。
-- 種別・役割：math / rational
-- 思考操作：候補の残りを計算する
-- 根拠：元と同じ−2.1−(−2)。
-- 位置：n09-q10-reject-truncation::ux04-row-02
-- 前提：removeBracketsOperation
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q10-reject-truncation::ux04-row-03
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-0.1` | -0.1 | 正答 | この結果を確定し、次の計算へ使います。 |
-| `0.1` | 0.1 | 誤答 | 元の数の方が小さいので、差の符号を確認します。 |
-| `-4.1` | -4.1 | 誤答 | 負の数を引く操作は反対符号を足します。 |
-
-#### n09-q10-reject-truncation::admissibility — NEW
-
-- 問い：計算した残りから、候補n=−2を整数部分として採用できますか。
-- 種別・役割：text / remainder-definition-check
-- 思考操作：残りの定義条件に照らして候補を棄却する
-- 根拠：直前に構成したr=x−nと定義0≤r<1。
-- 位置：n09-q10-reject-truncation::ux04-row-03
-- 前提：removeBracketsOperation, value
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `reject-negative-remainder` | 採用できない。残りが負で、0≤r<1を満たさない | 正答 | 整数であるだけでは足りません。残りの範囲も必要です。 |
-| `accept-integer-only` | 採用できる。nが整数なら残りの符号は問わない | 誤答 | 整数部分の定義には残り0≤r<1も含まれています。 |
-| `accept-truncation` | 採用できる。小数点より左が−2だから | 誤答 | 見た目の桁の切取りではなく、与えられた定義で判定します。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q10-reject-truncation::value | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q10-reject-truncation::removeBracketsOperation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-q10-reject-truncation::admissibility | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- leadで「負の数を引くので加算」「残りが負だから不適合」を先に述べない。
-- 次の正しいn=−3をこのnodeの誤答feedbackから直接教えない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## n09-q13-reverse — CHANGE
-
-既存二つの関係穴は維持するが、どの共通操作をするかと規則の答えをleadで先に与えない。
-
-### 穴なしの完成解法
-
-3<√10<4の各辺へ−1を掛ける。負数の乗法により各関係は向きを変えるので、−3>−√10>−4。小さい順への並べ替えは次nodeで行う。
-
-### 最初に提示する本文・条件
-
-確定した正の根号の区間を使い、中央が−√10になる区間を作ります。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
-|---|---|---|---|---|
-| n09-q13-reverse::ux04-row-01 | math | `3<\sqrt{10}<4` | 初期 | なし |
-| n09-q13-reverse::ux04-row-02 | math | `\sqrt{10}\times{commonMultiplier}=-\sqrt{10}` | 初期 | なし |
-| n09-q13-reverse::ux04-row-03 | math | `-3\ {S1}\ -\sqrt{10}\ {S2}\ -4` | commonMultiplier | なし |
-
-### 穴ごとの詳細
-
-
-#### n09-q13-reverse::commonMultiplier — NEW
-
-- 問い：3<√10<4の中央を−√10へ変えるため、各辺へ同じ何を掛けますか。
-- 種別・役割：math / inequality-common-multiplier
-- 思考操作：区間を負の根号へ移す共通乗数を選ぶ
-- 根拠：実数の乗法。係数−1を掛けることと、根号値そのものを掛けることを区別。
-- 位置：n09-q13-reverse::ux04-row-02
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q13-reverse::ux04-row-03
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-1` | -1 | 正答 | 中央の√10の符号だけを反転する共通乗数です。 |
-| `1` | 1 | 誤答 | 中央の符号が変わりません。 |
-| `-\sqrt{10}` | -√10 | 誤答 | 中央は−10となり、目標の−√10と違います。 |
-
-#### n09-q13-reverse::S1 — KEEP
-
-- 問い：左側の関係を負の乗算後へ移します。
-- 種別・役割：math / relation
-- 思考操作：左側の不等号を負数乗法後に判断する
-- 根拠：元と同じ−3と−√10の比較。
-- 位置：n09-q13-reverse::ux04-row-03
-- 前提：commonMultiplier
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `>` | > | 正答 | この結果を確定し、次の計算へ使います。 |
-| `=` | = | 誤答 | 等号にできる条件を満たすか確認します。 |
-| `<` | < | 誤答 | 負数を掛けたときは不等号の向きが逆になります。 |
-
-#### n09-q13-reverse::S2 — KEEP
-
-- 問い：右側の関係も負の乗算後へ移します。
-- 種別・役割：math / relation
-- 思考操作：右側の不等号を負数乗法後に判断する
-- 根拠：元と同じ−√10と−4の比較。
-- 位置：n09-q13-reverse::ux04-row-03
-- 前提：commonMultiplier, S1
-- 後続候補（各行の前提が全て満たされた時のみ表示）：後続nodeの全解放条件成立後に進む
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `>` | > | 正答 | この結果を確定し、次の計算へ使います。 |
-| `=` | = | 誤答 | 等号にできる条件を満たすか確認します。 |
-| `<` | < | 誤答 | 負数を掛けたときは不等号の向きが逆になります。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q13-reverse::S1 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q13-reverse::S2 | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q13-reverse::commonMultiplier | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- lead/条件の「−1を掛けます」「不等号を反転します」を削る。
-- 旧S1/S2のpromptはcommonMultiplier正答後にだけ公開する。
-- 正答前に完成した−3>−√10>−4や、次nodeの並べ替え済み区間を参照欄へ出さない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## n09-q14-positive-remainder — CHANGE
-
-減算一穴の後に範囲確認全体が自動展開されていた。
-
-### 穴なしの完成解法
-
-整数部分は3。r=√10−3。3<√10<4の三辺へ−3を加えると3−3<√10−3<4−3、従って0<r<1。小数部分の定義にも合う。
-
-### 最初に提示する本文・条件
-
-√10の整数部分は3と確定しました。定義から残りを構成し、区間全体への操作で範囲も確かめます。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
-|---|---|---|---|---|
-| n09-q14-positive-remainder::ux04-row-01 | math | `r=\sqrt{10}{remainderOperation}3` | 初期 | なし |
-| n09-q14-positive-remainder::ux04-row-02 | math | `3<\sqrt{10}<4` | remainderOperation | なし |
-| n09-q14-positive-remainder::ux04-row-03 | text | `各辺に加える数：{intervalTranslation}` | remainderOperation | intervalTranslation |
-| n09-q14-positive-remainder::ux04-row-04 | math | `3+({mirror:intervalTranslation})<\sqrt{10}+({mirror:intervalTranslation})<4+({mirror:intervalTranslation})` | remainderOperation, intervalTranslation | なし |
-| n09-q14-positive-remainder::ux04-row-05 | math | `0<r<1` | remainderOperation, intervalTranslation | なし |
-
-### 穴ごとの詳細
-
-
-#### n09-q14-positive-remainder::remainderOperation — KEEP
-
-- 問い：元の数xから整数部分nを取り除くには、どの演算をしますか。
-- 種別・役割：math / binary-operation
-- 思考操作：元の数から整数部分を除く演算を選ぶ
-- 根拠：元と同じ√10と認定済み整数部分3。
-- 位置：n09-q14-positive-remainder::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q14-positive-remainder::ux04-row-02, n09-q14-positive-remainder::ux04-row-03, n09-q14-positive-remainder::ux04-row-04, n09-q14-positive-remainder::ux04-row-05
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-` | - | 正答 | この判断を確定し、次へ進みます。 |
-| `+` | + | 誤答 | x=n+rをrについて整理してください。 |
-| `\div` | \div | 誤答 | 整数部分と残りの関係は積ではなく和です。 |
-
-#### n09-q14-positive-remainder::intervalTranslation — NEW
-
-- 問い：3<√10<4の各辺へ同じ数を足し、中央を求めたr=√10−3にします。足す数を選びます。
-- 種別・役割：math / inequality-common-addend
-- 思考操作：一つの式の構成から区間全体へ同じ操作を適用する
-- 根拠：不等式全辺への同じ加算。整数部分3の再記入ではなく、操作の向きと対象を判断。
-- 位置：n09-q14-positive-remainder::ux04-row-03
-- 前提：remainderOperation
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q14-positive-remainder::ux04-row-04, n09-q14-positive-remainder::ux04-row-05
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `-3` | -3 | 正答 | 全ての辺から同じ整数部分3を引く操作になります。 |
-| `3` | 3 | 誤答 | 中央が√10＋3となり、求めた残りと一致しません。 |
-| `-\sqrt{10}` | -√10 | 誤答 | 中央が0になり、残りrの区間を調べる式ではなくなります。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q14-positive-remainder::remainderOperation | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q14-positive-remainder::intervalTranslation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- 区間変形の全文と0<r<1はintervalTranslation正答前に表示しない。
-- 追加判断を既存remainderOperationへ統合して既存回答だけで完了させない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## n09-q14-negative-remainder — CHANGE
-
-符号一穴の正答で項の整理と範囲確認まで自動化されていた。
-
-### 穴なしの完成解法
-
-整数部分は−4。r=−√10−(−4)=−√10＋4。これは符号付きの項−√10と＋4の和なので、順序を替えて4−√10。−4<−√10<−3の各辺へ4を足すと0<−√10＋4<1、従って0<r<1。
-
-### 最初に提示する本文・条件
-
-−√10の整数部分は−4と確定しました。残りの式を作り、符号込みの項を保って整理し、範囲も別に確かめます。
-
-条件：追加の完成条件を先書きしない。既存の必要な前提だけを参照。
-
-### 正確な表示行と解放
-
-| 行ID | 種別 | template | 正答前提 | 正答後に置換する足場 |
-|---|---|---|---|---|
-| n09-q14-negative-remainder::ux04-row-01 | math | `r=-\sqrt{10}-(-4)=-\sqrt{10}\ {sign}\ 4` | 初期 | なし |
-| n09-q14-negative-remainder::ux04-row-02 | text | `項の並べ替えは、{reorderAction}。` | sign | なし |
-| n09-q14-negative-remainder::ux04-row-03 | math | `r=4-\sqrt{10}` | sign, reorderAction | なし |
-| n09-q14-negative-remainder::ux04-row-04 | math | `-4<-\sqrt{10}<-3` | sign, reorderAction | なし |
-| n09-q14-negative-remainder::ux04-row-05 | text | `各辺に加える数：{intervalTranslation}` | sign, reorderAction | intervalTranslation |
-| n09-q14-negative-remainder::ux04-row-06 | math | `-4+{mirror:intervalTranslation}<-\sqrt{10}+{mirror:intervalTranslation}<-3+{mirror:intervalTranslation}` | sign, reorderAction, intervalTranslation | なし |
-| n09-q14-negative-remainder::ux04-row-07 | math | `0<r<1` | sign, reorderAction, intervalTranslation | なし |
-
-### 穴ごとの詳細
-
-
-#### n09-q14-negative-remainder::sign — KEEP
-
-- 問い：括弧付きの整数を引いた式を見て、括弧を外した後の演算を選びます。
-- 種別・役割：math / binary-operation
-- 思考操作：負の整数部分を引く演算の符号を判断する
-- 根拠：元と同じ−√10−(−4)。
-- 位置：n09-q14-negative-remainder::ux04-row-01
-- 前提：このnodeまでの既存前提
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q14-negative-remainder::ux04-row-02, n09-q14-negative-remainder::ux04-row-03, n09-q14-negative-remainder::ux04-row-04, n09-q14-negative-remainder::ux04-row-05, n09-q14-negative-remainder::ux04-row-06, n09-q14-negative-remainder::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `+` | + | 正答 | 対応する項の符号を保持して進みます。 |
-| `-` | - | 誤答 | r=x−nへ負の整数部分を括弧付きで代入し、括弧の前後の負号がそれぞれ何を表すか確かめてください。 |
-
-#### n09-q14-negative-remainder::reorderAction — NEW
-
-- 問い：整数の項を先に書くには、どのように二項を並べ替えますか。
-- 種別・役割：text / signed-terms-order-action
-- 思考操作：差の見た目でなく符号付き加法の項として順序を整理する
-- 根拠：加法の交換。法則名を知らないと選べない未知語当てにしない。
-- 位置：n09-q14-negative-remainder::ux04-row-02
-- 前提：sign
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q14-negative-remainder::ux04-row-03, n09-q14-negative-remainder::ux04-row-04, n09-q14-negative-remainder::ux04-row-05, n09-q14-negative-remainder::ux04-row-06, n09-q14-negative-remainder::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `keep-signed-terms` | 符号込みの各項を保ち、和の二項の順序だけを替える | 正答 | −√10と＋4を、それぞれ一つの項として保ちます。 |
-| `reverse-subtraction` | 引かれる数と引く数を、そのまま逆順にする | 誤答 | 減法の順序を交換すると、一般に値が変わります。まず符号込みの和として見てください。 |
-| `change-both-signs` | 二つの項の符号も同時に反転する | 誤答 | 順序を替えるだけの変形で、各項の符号まで変えてはいけません。 |
-
-#### n09-q14-negative-remainder::intervalTranslation — NEW
-
-- 問い：−4<−√10<−3の各辺へ何を足せば、中央が求めた残りrになりますか。
-- 種別・役割：math / inequality-common-addend
-- 思考操作：負の根号の残りを検証するため区間全体の共通加数を選ぶ
-- 根拠：不等式全辺への同じ加算と先に構成したr=4−√10。
-- 位置：n09-q14-negative-remainder::ux04-row-05
-- 前提：sign, reorderAction
-- 後続候補（各行の前提が全て満たされた時のみ表示）：n09-q14-negative-remainder::ux04-row-06, n09-q14-negative-remainder::ux04-row-07
-- 誤答時：現在の穴・足場・誤答説明を保持。次のpart/行/nodeを解放しない。
-
-| 候補value | 表示 | 案上の正答 | 回答後説明 |
-|---|---|---|---|
-| `4` | 4 | 正答 | 中央は−√10＋4、端は0と1になります。 |
-| `-4` | -4 | 誤答 | 中央は−√10−4となり、求めた残りと違います。 |
-| `\sqrt{10}` | √10 | 誤答 | 中央が0となり、残りrの区間ではなくなります。 |
-
-### 既存回答の意味対応
-
-| ID | 判断 | 理由 |
-|---|---|---|
-| n09-q14-negative-remainder::sign | KEEP | 問いの対象・型・正答・全候補・思考操作を保持。新しい前提の正答までは保留する。 |
-| n09-q14-negative-remainder::reorderAction | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-| n09-q14-negative-remainder::intervalTranslation | NEW | 新しい思考操作。既存IDの意味差替えをしない。 |
-
-### 答え漏れ・接続の管理
-
-- r=4−√10はreorderAction正答後のみ。
-- 0<4−√10<1という完成した範囲はintervalTranslation正答前に表示しない。
-- 旧signの正答を二つの追加判断へ転用しない。
-- このnodeの全必須part正答後のみ。terminalRecord・履歴の完成解も同じgateを使う。
-
-## 分担の限界
-
-この資料はN09 14nodeの設計作者案であり、相互非作者審査・正式提案書の統合・本人承認は未実施。製品コード・正本WORK・Git・正式Storeは変更していない。sourceのr5回答をr6で解放する条件や全体QAは、主担当が正式提案へ統合する。
-
-# P-W046-UX-04 — N10詳細設計草案
-
-**Status: DRAFT / 未承認・未実装・cross review前**
-
-作者：/root/w046_render_review。source `db99a485f857b1aefa7fb738456f36a830514158`、N10 r4 compiledHash `3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895`。次版はN10 r5を提案。原Wordを新たに読んだとは扱わず、現sourceの問題/条件/範囲を維持。
-
-## 目的と保護境界
-
-N10監査9群・13unique nodeの導出の学習操作。穴数は設計結果であり目標にしない。
-
-- N10 H07の正性→平方→同定理由
-- 第2・3段階の積/商の定義・非零・符号からの構成
-- n10-q19-distributeの符号込みの項と積の符号
-- 確定済み結果を元の問いへ接続するAUTO n10-08/n10-09/n10-10/n10-16/n10-21
-- 本案対象外32nodeの本文・問い・候補・正答・学習行為
-- 元問題・値・条件・収録範囲・図・既存履歴、N08/N09/N11・他モード
-
-## 全体契約
-
-- 全ての完成解法は設計資料であり初期画面へ全文を出さない。
-- 新しい意味に旧keyを流用しない。NEWは未回答、RETIREはr4 archiveに保存し、同じ数値だけでaliasしない。KEEP記録は残し、新たな未解決の前提がある間は解放へ使わない。
-- 全候補の順は提案書用。製品では既存の安定シャッフルを使う。正答印を製品へ出さない。
-- 式中のmirrorは参照part正答後だけ表示。初期の…足場は指定hideAfterCorrectKeysで消し、回答後に未完行を残さない。
-- 正答していない対象/符号/数値をlead・assumptions・既出結果・ヒント・履歴・番号行の別表示へ先出ししない。
-- 同じ原問題の解法内で一度計算した値を後で再入力させない。別例題の転移練習を一律に削除するルールではない。
-- 文章・式・穴・選択肢を一つの導出順に置く。現在の穴の直後へ選択肢を置き、未解決の後続式は解放しない。
-- 各rowは全requiresCorrectKeysが順番どおり正答したときだけ解放。hideAfterCorrectKeysは非空・unique・その行自身のpartKeys集合と一致し、その行の穴が全て順番どおり正答したときだけ足場を消す。node全keyの別契約を追加しない。
-- 式groupは同じ変形系列に限定。補助の符号計算・項選択・本体の等式鎖を無理に一軸へ接続しない。
-- 数式はKaTeX、選択肢はN08基準。完成式・条件・説明の無意味な直後再掲はしない。
-
-## 旧回答の扱い
-
-- **KEEP**：旧partの対象・操作・型・正答・候補・前提が同値である場合だけsource-boundで継承。本文改訂/新しい前提の追加を理由に全記録を消さない。
-- **RETIRE**：旧r4の記録/初回値/時刻/回数/eventと教材をarchiveへ保持。新partの回答には使わない。
-- **NEW**：新key/id。旧AUTO完了・旧parent完了・同じ数値の別partの回答から埋めない。
-- **MOVE**：本案は旧recordの意味aliasによるMOVEを一件も提案しない。q21 P/QはARCHIVE_ONLY＋q20新key未回答。
-
-設計結果（穴数のノルマではない）：{"unitNodes": 45, "targetNodes": 13, "protectedNodes": 32, "oldTotalParts": 63, "oldTargetParts": 19, "keptOldParts": 58, "retiredOldParts": 5, "newParts": 31, "proposedTotalParts": 89}
-
-旧P/Qは新q20平方へaliasしない。旧Kも新しい符号付き交差項の和へ流用しない。意味不変の他58partは保持し、新前提の未解決中だけ解放を止める。
-
-## 1. n10-q01-square — n10-stage-01
-
-**現状**：平方の組立てが自動で、√5の平方5だけを回答。
-
-### 穴のない完成解法
-
-t>0として候補t√5を調べる。平方を二回の積へ戻し、同じ因子をまとめる。
-
-\[(t\sqrt5)^2=(t\sqrt5)(t\sqrt5)=(t\times t)(\sqrt5\times\sqrt5)=t^2(\sqrt5)^2=5t^2\]
-
-### 学習者への導入・前提
-
-候補の平方を二回の掛け算へ戻します。同じ因子を対応づけ、指数の形と平方の値を順に決めましょう。
-
-- t>0。待証の根号の積の公式は使わない。
-
-### 穴と全選択肢
-
-#### n10-q01-square::tSquareFactorUX04 — NEW
-
-**問い**：同じ因子tを二回掛けた部分を、すべてのt>0で成り立つ指数の形に直します。
-
-**思考操作**：四因子からtとtを対応づけ、その積をt²へまとめる。
-
-**根拠**：平方の定義と実数乗法の交換・結合。
-
-**正確な穴位置**：`={tSquareFactorUX04}(\sqrt5)^2`（`n10-q01-square::ux04-t-square`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `t^2` | `t^2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2t` | `2t` | 誤答 | 2tはtを二つ足した形です。tを二回掛けた積を、すべてのt>0で表す形を考えてください。 |
-| `t` | `t` | 誤答 | 同じtが二つの因子としてあります。一つを落とさないでください。 |
-
-**正答後の解放候補row**：`n10-q01-square::ux04-root-square`, `n10-q01-square::ux04-normal`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q01-square::rootSquare — KEEP
-
-**問い**：√5の平方を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`={mirror:tSquareFactorUX04}\times{rootSquare}`（`n10-q01-square::ux04-root-square`）
-
-**先行必須**：`tSquareFactorUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `5` | `5` | 正答 | 確定した結果を次の計算へ使います。 |
-| `25` | `25` | 誤答 | 根号全体の平方は中の数へ戻ります。中の数を再び平方しません。 |
-| `\sqrt5` | `\sqrt5` | 誤答 | 平方の操作を定義に従って行います。 |
-
-**正答後の解放候補row**：`n10-q01-square::ux04-normal`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：√5を平方する対象・操作・候補・正答は不変。新しいtの積の判断を未解決のまま飛ばさない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q01-square::ux04-repeat` / n10-q01-square-ux04-main | `(t\sqrt5)^2=(t\sqrt5)(t\sqrt5)` | 初期 | 保持 |
-| `n10-q01-square::ux04-t-square` / n10-q01-square-ux04-main | `={tSquareFactorUX04}(\sqrt5)^2` | 初期 | 保持 |
-| `n10-q01-square::ux04-root-square` / n10-q01-square-ux04-main | `={mirror:tSquareFactorUX04}\times{rootSquare}` | tSquareFactorUX04 | 保持 |
-| `n10-q01-square::ux04-normal` / n10-q01-square-ux04-main | `=5t^2` | tSquareFactorUX04, rootSquare | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 初期lead/assumptionsへt²や5t²を先書きしない。
-- tSquareFactorUX04はt×tという意味の式片。√a√bの構成証明は変更しない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q01-square::rootSquare` | KEEP | `n10-q01-square::rootSquare` | √5を平方する対象・操作・候補・正答は不変。新しいtの積の判断を未解決のまま飛ばさない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 2. n10-01 — n10-stage-01
-
-**現状**：「両辺を同じ5で割る」が本文で実行済み。穴は125÷5のみ。
-
-### 穴のない完成解法
-
-\[5t^2=125\Rightarrow\frac{5t^2}{5}=\frac{125}{5}\Rightarrow t^2=25\]
-
-### 学習者への導入・前提
-
-候補の平方が125になる条件を使います。まずt²の係数を1にする操作を決め、その後に右辺を計算しましょう。
-
-- 5t²=125。両辺を同じ非零の数で割ってよい。
-
-### 穴と全選択肢
-
-#### n10-01::isolationDivisorUX04 — NEW
-
-**問い**：t²の係数を一度の除算で1にするには、両辺を何で割りますか。
-
-**思考操作**：係数5に着目して、等式の両辺への同一非零除算を選ぶ。
-
-**根拠**：等式の性質。5/d=1を満たすdを選ぶ。
-
-**正確な穴位置**：`\text{両辺を割る数：}\quad{isolationDivisorUX04}`（`n10-01::ux04-divisor`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `5` | `5` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `125` | `125` | 誤答 | 125で割っても等式は保てますが、左辺のt²の係数は1になりません。今回の一度の除算の目標を確かめてください。 |
-| `25` | `25` | 誤答 | 25で割っても等式は保てますが、5/25は1ではありません。係数を1にする数を選んでください。 |
-
-**正答後の解放候補row**：`n10-01::ux04-divide-both`, `n10-01::ux04-value`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-01::value — KEEP
-
-**問い**：125÷5を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`t^2={value}`（`n10-01::ux04-value`）
-
-**先行必須**：`isolationDivisorUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `25` | `25` | 正答 | 確定した結果を次の計算へ使います。 |
-| `120` | `120` | 誤答 | 両辺を5で割るのであり、5を引く操作ではありません。 |
-| `625` | `625` | 誤答 | 係数を除くために5で割ります。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：125÷5の計算は同じ対象・演算・全候補・正答25のまま。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-01::ux04-source` / n10-01-ux04-main | `5t^2=125` | 初期 | 保持 |
-| `n10-01::ux04-divisor` / n10-01-ux04-operation | `\text{両辺を割る数：}\quad{isolationDivisorUX04}` | 初期 | isolationDivisorUX04 |
-| `n10-01::ux04-divide-both` / n10-01-ux04-main | `\frac{5t^2}{ {mirror:isolationDivisorUX04} }=\frac{125}{ {mirror:isolationDivisorUX04} }` | isolationDivisorUX04 | 保持 |
-| `n10-01::ux04-value` / n10-01-ux04-main | `t^2={value}` | isolationDivisorUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- leadに「5で割る」を先書きしない。
-- divisorの同一操作を右辺へ使うmirrorは正答後だけ表示。選択用の操作行はその穴の確定後に消し、正答済み両辺除算の式へ接続する。
-- 他の非零除数による等価変形を数学的誤りとは説明せず、係数を一度で1にする指定に合わないと説明する。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-01::value` | KEEP | `n10-01::value` | 125÷5の計算は同じ対象・演算・全候補・正答25のまま。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 3. n10-q09-left — n10-stage-05
-
-**現状**：平方因子を選ぶと残りの因子2が自動表示される。
-
-### 穴のない完成解法
-
-\[8=4\times2\]
-
-\[\sqrt{8}=\sqrt{4}\sqrt2=2\sqrt2\]
-
-### 学習者への導入・前提
-
-√8+√50は、二つの数を足した式です。このような式を和といいます。各項を別々に変形し、まず左の項の平方因子・残りの因子・根号外の係数を順に求めましょう。
-
-- 8は正の整数。最大の平方因子を使う。積の性質は証明済み。
-
-既存の「和」の初出定義・黒太字・semanticIdは保持。上の文字列は可読表現で、製品ではbaselineのmath/text/term分割と定義metadataを維持する。
-
-### 穴と全選択肢
-
-#### n10-q09-left::squareFactor — KEEP
-
-**問い**：8を割り切る最大の平方数を選びます。
-
-**思考操作**：8を割り切る最大の平方数を選びます。
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\text{8の最大の平方因子：}\quad{squareFactor}`（`n10-q09-left::ux04-square-factor`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `4` | `4` | 正答 | この判断を確定し、次へ進みます。 |
-| `8` | `8` | 誤答 | 元の8が整数の平方か確認してください。 |
-| `2` | `2` | 誤答 | 取り出す因子自身が平方数である必要があります。 |
-
-**正答後の解放候補row**：`n10-q09-left::ux04-remaining`, `n10-q09-left::ux04-coefficient`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：最大の平方因子を選ぶ学習行為・候補・正答は不変。
-
-#### n10-q09-left::remainingFactorUX04 — NEW
-
-**問い**：8を、選んだ平方因子4と残りの因子の積にします。残りの因子を計算します。
-
-**思考操作**：8÷4を計算し、積へ戻して確かめる。
-
-**根拠**：既存squareFactorの正答結果と整数の乗除。
-
-**正確な穴位置**：`8=4\times{remainingFactorUX04}`（`n10-q09-left::ux04-remaining`）
-
-**先行必須**：`squareFactor`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2` | `2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `4` | `4` | 誤答 | 4との積が元の8へ戻るか確かめてください。平方因子をそのまま残りの因子へ写しません。 |
-| `8` | `8` | 誤答 | 選んだ平方因子4と掛け合わせ、元の8に一致するかを確認してください。 |
-
-**正答後の解放候補row**：`n10-q09-left::ux04-coefficient`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q09-left::coefficient — KEEP
-
-**問い**：左の項の係数√4を求めます。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\sqrt{8}=\sqrt{4}\sqrt{ {mirror:remainingFactorUX04} }={coefficient}\sqrt{ {mirror:remainingFactorUX04} }`（`n10-q09-left::ux04-coefficient`）
-
-**先行必須**：`squareFactor`, `remainingFactorUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2` | `2` | 正答 | 確定した結果を次の計算へ使います。 |
-| `4` | `4` | 誤答 | 平方数をその平方根へ直します。 |
-| `8` | `8` | 誤答 | 元の根号内の数をそのまま外へ出しません。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：√4の非負の値2を求める操作は不変。残りの因子2の新回答と意味が違うのでaliasしない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q09-left::ux04-square-factor` / n10-q09-left-ux04-factor-selection | `\text{8の最大の平方因子：}\quad{squareFactor}` | 初期 | squareFactor |
-| `n10-q09-left::ux04-remaining` / n10-q09-left-ux04-main | `8=4\times{remainingFactorUX04}` | squareFactor | 保持 |
-| `n10-q09-left::ux04-coefficient` / n10-q09-left-ux04-main | `\sqrt{8}=\sqrt{4}\sqrt{ {mirror:remainingFactorUX04} }={coefficient}\sqrt{ {mirror:remainingFactorUX04} }` | squareFactor, remainingFactorUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- remainingFactorUX04の回答前に完成分解や根号内の2を見せない。
-- coefficientの期待値と同じ数になっても、割算と平方根の別操作であり、同一回答のmirrorにはしない。
-- 左で説明した手順は右で長く繰り返さず、転移として同じ三操作を実行する。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q09-left::squareFactor` | KEEP | `n10-q09-left::squareFactor` | 最大の平方因子を選ぶ学習行為・候補・正答は不変。 |
-| `n10-q09-left::coefficient` | KEEP | `n10-q09-left::coefficient` | √4の非負の値2を求める操作は不変。残りの因子2の新回答と意味が違うのでaliasしない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 4. n10-q09-right — n10-stage-05
-
-**現状**：平方因子を選ぶと残りの因子2が自動表示される。
-
-### 穴のない完成解法
-
-\[50=25\times2\]
-
-\[\sqrt{50}=\sqrt{25}\sqrt2=5\sqrt2\]
-
-### 学習者への導入・前提
-
-右の項にも同じ方法を使います。平方因子、残りの因子、根号の外の係数を順に求めましょう。
-
-- 50は正の整数。最大の平方因子を使う。積の性質は証明済み。
-
-### 穴と全選択肢
-
-#### n10-q09-right::squareFactor — KEEP
-
-**問い**：今度は右項を簡単にする平方因子を選びます。
-
-**思考操作**：今度は右項を簡単にする平方因子を選びます。
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\text{50の最大の平方因子：}\quad{squareFactor}`（`n10-q09-right::ux04-square-factor`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `25` | `25` | 正答 | この判断を確定し、次へ進みます。 |
-| `5` | `5` | 誤答 | 5は整数の平方数ではありません。 |
-| `10` | `10` | 誤答 | 50の因子でも、平方数とは限りません。 |
-
-**正答後の解放候補row**：`n10-q09-right::ux04-remaining`, `n10-q09-right::ux04-coefficient`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：最大の平方因子を選ぶ学習行為・候補・正答は不変。
-
-#### n10-q09-right::remainingFactorUX04 — NEW
-
-**問い**：50を、選んだ平方因子25と残りの因子の積にします。残りの因子を計算します。
-
-**思考操作**：50÷25を計算し、積へ戻して確かめる。
-
-**根拠**：既存squareFactorの正答結果と整数の乗除。
-
-**正確な穴位置**：`50=25\times{remainingFactorUX04}`（`n10-q09-right::ux04-remaining`）
-
-**先行必須**：`squareFactor`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2` | `2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `25` | `25` | 誤答 | 25との積が元の50へ戻るか確かめてください。平方因子をそのまま残りの因子へ写しません。 |
-| `5` | `5` | 誤答 | 選んだ平方因子25と掛け合わせ、元の50に一致するかを確認してください。 |
-
-**正答後の解放候補row**：`n10-q09-right::ux04-coefficient`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q09-right::coefficient — KEEP
-
-**問い**：右の項の係数√25を求めます。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\sqrt{50}=\sqrt{25}\sqrt{ {mirror:remainingFactorUX04} }={coefficient}\sqrt{ {mirror:remainingFactorUX04} }`（`n10-q09-right::ux04-coefficient`）
-
-**先行必須**：`squareFactor`, `remainingFactorUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `5` | `5` | 正答 | 確定した結果を次の計算へ使います。 |
-| `25` | `25` | 誤答 | 平方数とその平方根を区別します。 |
-| `10` | `10` | 誤答 | 平方して25になる非負の数を求めます。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：√25の非負の値5を求める操作は不変。残りの因子2の新回答と意味が違うのでaliasしない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q09-right::ux04-square-factor` / n10-q09-right-ux04-factor-selection | `\text{50の最大の平方因子：}\quad{squareFactor}` | 初期 | squareFactor |
-| `n10-q09-right::ux04-remaining` / n10-q09-right-ux04-main | `50=25\times{remainingFactorUX04}` | squareFactor | 保持 |
-| `n10-q09-right::ux04-coefficient` / n10-q09-right-ux04-main | `\sqrt{50}=\sqrt{25}\sqrt{ {mirror:remainingFactorUX04} }={coefficient}\sqrt{ {mirror:remainingFactorUX04} }` | squareFactor, remainingFactorUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- remainingFactorUX04の回答前に完成分解や根号内の2を見せない。
-- coefficientの期待値と同じ数になっても、割算と平方根の別操作であり、同一回答のmirrorにはしない。
-- 左で説明した手順は右で長く繰り返さず、転移として同じ三操作を実行する。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q09-right::squareFactor` | KEEP | `n10-q09-right::squareFactor` | 最大の平方因子を選ぶ学習行為・候補・正答は不変。 |
-| `n10-q09-right::coefficient` | KEEP | `n10-q09-right::coefficient` | √25の非負の値5を求める操作は不変。残りの因子2の新回答と意味が違うのでaliasしない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 5. n10-q10-coefficients — n10-stage-05
-
-**現状**：くくる変形は自動で、係数の和7だけを回答。
-
-### 穴のない完成解法
-
-\[2\sqrt2+5\sqrt2=(2+5)\sqrt2=7\sqrt2\]
-
-### 学習者への導入・前提
-
-二つの項に共通する因子を見つけ、係数を残してくくります。その後、何個分になるかを計算しましょう。
-
-- 前段で左項2√2、右項5√2を確定。分配法則を逆に使ってよい。
-
-### 穴と全選択肢
-
-#### n10-q10-coefficients::commonFactorUX04 — NEW
-
-**問い**：係数2と5をそのまま残してくくるとき、共通の因子は何ですか。
-
-**思考操作**：二項の共通因子を対応づけ、分配法則の逆でくくる。
-
-**根拠**：2√2と5√2の確定結果、分配法則。
-
-**正確な穴位置**：`2\sqrt2+5\sqrt2=(2+5){commonFactorUX04}`（`n10-q10-coefficients::ux04-factor`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `\sqrt2` | `\sqrt2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2` | `2` | 誤答 | 括弧の中を2+5のままにしたとき、その因子を配り戻して元の各項になるかを確認してください。 |
-| `\sqrt7` | `\sqrt7` | 誤答 | 根号内を足す変形はしていません。二つの項に共通して掛かっている因子を見てください。 |
-
-**正答後の解放候補row**：`n10-q10-coefficients::ux04-coefficient`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q10-coefficients::coefficient — KEEP
-
-**問い**：係数2+5を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`={coefficient}{mirror:commonFactorUX04}`（`n10-q10-coefficients::ux04-coefficient`）
-
-**先行必須**：`commonFactorUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `7` | `7` | 正答 | 確定した結果を次の計算へ使います。 |
-| `10` | `10` | 誤答 | 係数を掛けずに足します。 |
-| `3` | `3` | 誤答 | 二つの項は加算されています。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：2+5という係数の和の計算・候補・正答7は不変。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q10-coefficients::ux04-factor` / n10-q10-coefficients-ux04-main | `2\sqrt2+5\sqrt2=(2+5){commonFactorUX04}` | 初期 | 保持 |
-| `n10-q10-coefficients::ux04-coefficient` / n10-q10-coefficients-ux04-main | `={coefficient}{mirror:commonFactorUX04}` | commonFactorUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- leadで「共通の√2」「係数だけを足す」と答えを先書きしない。
-- 係数2と5をそのまま残す指定により、別の因子をくくる一般的な別解を否定しない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q10-coefficients::coefficient` | KEEP | `n10-q10-coefficients::coefficient` | 2+5という係数の和の計算・候補・正答7は不変。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 6. n10-q11-formula — n10-stage-06
-
-**現状**：公式A²−2AB+B²は既に用意され、中項の−だけを選ぶ。
-
-### 穴のない完成解法
-
-A=√2、B=√3と置く。差を符号込みの和として、二つの括弧を分配する。
-
-\[(A-B)^2=(A-B)(A-B)=A^2+A(-B)+(-B)A+(-B)(-B)=A^2-AB-AB+B^2=A^2-2AB+B^2\]
-
-### 学習者への導入・前提
-
-二つの括弧を二項の和として読みます。前の括弧の各項を後の括弧の各項へ掛け、同じ交差項をまとめましょう。
-
-- A=√2>0、B=√3>0。平方は同じ式の二回の積。分配法則と乗法の交換・結合を使う。
-
-### 穴と全選択肢
-
-#### n10-q11-formula::signedSecondUX04 — NEW
-
-**問い**：A−Bを二項の和として読むと、第二項は何ですか。
-
-**思考操作**：差の第二項を負号込みで取り出し、二つの括弧の分配対象を構成する。
-
-**根拠**：差は負の数の加法として扱える。A=√2、B=√3。
-
-**正確な穴位置**：`A-B=A+({signedSecondUX04})`（`n10-q11-formula::ux04-signed-second`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-B` | `-B` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `B` | `B` | 誤答 | 元の括弧はAとBの差です。第二項の符号を含めてください。 |
-| `-A` | `-A` | 誤答 | 負号が付く元の第二項はBです。AとBの対応を入れ替えないでください。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-cross-construction`, `n10-q11-formula::ux04-four-products`, `n10-q11-formula::ux04-cross-sign`, `n10-q11-formula::ux04-last-sign`, `n10-q11-formula::ux04-cross-count`, `n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q11-formula::firstCrossProductUX04 — NEW
-
-**問い**：前の括弧の第一項と、後ろの括弧の第二項からできる交差積を選びます。
-
-**思考操作**：二つの括弧の異なる位置の項を対応づけ、符号込みの因子二つから一方の交差積を構成する。
-
-**根拠**：既習の分配法則。完成公式ではなく、二つの括弧の項の組合せを用いる。
-
-**正確な穴位置**：`(A-B)^2=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-B)(-B)`（`n10-q11-formula::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `A(-B)` | `A(-B)` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `A^2` | `A^2` | 誤答 | それは第一項どうしの積です。前括弧の第一項と後括弧の第二項という交差する組を選びます。 |
-| `(-B)(-B)` | `(-B)(-B)` | 誤答 | それは第二項どうしの積です。式の中の別の積としては現れますが、指定した交差積ではありません。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-four-products`, `n10-q11-formula::ux04-cross-sign`, `n10-q11-formula::ux04-last-sign`, `n10-q11-formula::ux04-cross-count`, `n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q11-formula::secondCrossProductUX04 — NEW
-
-**問い**：前の括弧の第二項と、後ろの括弧の第一項からできる、もう一方の交差積を選びます。
-
-**思考操作**：もう一方の交差する因子の組を構成し、片方の交差積を落とさない。
-
-**根拠**：既習の分配法則。前後の括弧の項を符号込みで対応づける。
-
-**正確な穴位置**：`(A-B)^2=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-B)(-B)`（`n10-q11-formula::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `(-B)A` | `(-B)A` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `BA` | `BA` | 誤答 | 元の二つの括弧で、指定された位置の二項を符号込みで確かめてください。 |
-| `(-B)(-B)` | `(-B)(-B)` | 誤答 | それは第二項どうしの積です。前の第二項と後ろの第一項という組に合わせます。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-four-products`, `n10-q11-formula::ux04-cross-sign`, `n10-q11-formula::ux04-last-sign`, `n10-q11-formula::ux04-cross-count`, `n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q11-formula::crossProductSignUX04 — NEW
-
-**問い**：Aと−Bの積をABの符号付きの形にします。符号を決めます。
-
-**思考操作**：正のAと負の−Bの積の符号を決め、交差積を構成する。
-
-**根拠**：A=√2>0、B=√3>0。
-
-**正確な穴位置**：`A(-B)={crossProductSignUX04}AB`（`n10-q11-formula::ux04-cross-sign`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-` | `-` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `+` | `+` | 誤答 | 正の数Aと負の数−Bを掛けています。積の符号を確かめてください。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-last-sign`, `n10-q11-formula::ux04-cross-count`, `n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q11-formula::lastProductSignUX04 — NEW
-
-**問い**：二つの−Bの積を、B²の符号付きの形にします。
-
-**思考操作**：負数二つの積から最後の平方項の符号を決める。
-
-**根拠**：負×負は正、B×B=B²。
-
-**正確な穴位置**：`(-B)(-B)={lastProductSignUX04}B^2`（`n10-q11-formula::ux04-last-sign`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `crossProductSignUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `+` | `+` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `-` | `-` | 誤答 | 二つの因子の両方に負号があります。一つだけの負号として扱わないでください。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-cross-count`, `n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q11-formula::crossMultiplicityUX04 — NEW
-
-**問い**：同じABの負の項を二つ合わせます。−ABの何個分ですか。
-
-**思考操作**：二つの同類の交差項を合成し、係数2を自分で作る。
-
-**根拠**：−AB−AB=−(1+1)AB。
-
-**正確な穴位置**：`-AB-AB=-{crossMultiplicityUX04}AB`（`n10-q11-formula::ux04-cross-count`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `crossProductSignUX04`, `lastProductSignUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2` | `2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `1` | `1` | 誤答 | 交差する積は二つあります。一方を落とさないでください。 |
-| `4` | `4` | 誤答 | 四つの積全部が交差項ではありません。今まとめる二つの−ABだけを見てください。 |
-
-**正答後の解放候補row**：`n10-q11-formula::ux04-signed-products`, `n10-q11-formula::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q11-formula::ux04-repeat` / n10-q11-formula-ux04-main | `(A-B)^2=(A-B)(A-B)` | 初期 | 保持 |
-| `n10-q11-formula::ux04-signed-second` / n10-q11-formula-ux04-operand | `A-B=A+({signedSecondUX04})` | 初期 | signedSecondUX04 |
-| `n10-q11-formula::ux04-cross-construction` / n10-q11-formula-ux04-main | `(A-B)^2=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-B)(-B)` | signedSecondUX04 | firstCrossProductUX04, secondCrossProductUX04 |
-| `n10-q11-formula::ux04-four-products` / n10-q11-formula-ux04-main | `(A-B)^2=A^2+{mirror:firstCrossProductUX04}+{mirror:secondCrossProductUX04}+(-B)(-B)` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | 保持 |
-| `n10-q11-formula::ux04-cross-sign` / n10-q11-formula-ux04-cross-sign | `A(-B)={crossProductSignUX04}AB` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | crossProductSignUX04 |
-| `n10-q11-formula::ux04-last-sign` / n10-q11-formula-ux04-last-sign | `(-B)(-B)={lastProductSignUX04}B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04 | lastProductSignUX04 |
-| `n10-q11-formula::ux04-cross-count` / n10-q11-formula-ux04-cross-sum | `-AB-AB=-{crossMultiplicityUX04}AB` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastProductSignUX04 | crossMultiplicityUX04 |
-| `n10-q11-formula::ux04-signed-products` / n10-q11-formula-ux04-main | `(A-B)^2=A^2-AB-AB+B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastProductSignUX04, crossMultiplicityUX04 | 保持 |
-| `n10-q11-formula::ux04-combined` / n10-q11-formula-ux04-main | `=A^2-2AB+B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastProductSignUX04, crossMultiplicityUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 完成公式A²−2AB+B²を初期lead/assumptions/ヒントで見せない。
-- 四つの積はsignedSecond正答後だけ作る。交差積の符号、最後の平方の符号、交差項の合成は別判断として解放する。
-- 旧middleSignは完成公式の符号当て。新crossProductSignの同じ−へ意味aliasしない。
-- 数値の平方2/3は次node n10-11の既存穴に残す。このnodeでは先に計算しない。
-- signedSecondの一穴後に四つの積を全自動で完成させない。交差する二組の因子をNEWで構成してから、符号計算と同類項の合成へ進む。
-- 正しい可換順の積を誤答候補には入れない。候補中の別の正しい展開項は、数学的誤りではなく指定した位置の組に合わないと説明する。
-- 補助計算後に本体へ戻る行には元式を完全な左辺として明示。直前の補助量へ=で分数/別の式をつなげない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q11-formula::middleSign` | RETIRE | r4 archiveのみ、新partへaliasなし | 問いの対象/要求する操作/判断位置を変更するため、新partへ旧recordを流用しない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 7. n10-12 — n10-stage-06
-
-**現状**：項を選別して移す過程は自動、穴は2+3の5だけ。
-
-### 穴のない完成解法
-
-\[2-2\sqrt6+3=(2+3)-2\sqrt6=5-2\sqrt6\]
-
-### 学習者への導入・前提
-
-中項の計算結果を保ち、先にまとめる二項を選びます。符号も含めて項を見ましょう。
-
-- 前段で中項の根号を√6と確定。加法の交換・結合を使ってよい。
-
-### 穴と全選択肢
-
-#### n10-12::rootFreePairUX04 — NEW
-
-**問い**：この式で先にまとめる、根号を含まない二項を選びます。
-
-**思考操作**：符号付きの項を識別し、根号を含む項を保って根号のない二項を取り出す。
-
-**根拠**：2−2√6+3の項の構造、加法の交換・結合。
-
-**正確な穴位置**：`\text{先にまとめる二項：}\quad{rootFreePairUX04}`（`n10-12::ux04-pair`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2,3` | `2,3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2,-2\sqrt6` | `2,-2\sqrt6` | 誤答 | その組には根号を含む項があります。今回は根号を含まない二項をまとめる指定です。 |
-| `-2\sqrt6,3` | `-2\sqrt6,3` | 誤答 | −2√6は残す項です。根号を含まない二項の組を選んでください。 |
-
-**正答後の解放候補row**：`n10-12::ux04-regroup`, `n10-12::ux04-sum`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-12::constant — KEEP
-
-**問い**：普通の数2+3を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`={constant}-2\sqrt6`（`n10-12::ux04-sum`）
-
-**先行必須**：`rootFreePairUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `5` | `5` | 正答 | 確定した結果を次の計算へ使います。 |
-| `-1` | `-1` | 誤答 | 普通の数は2と+3です。 |
-| `6` | `6` | 誤答 | 足し算を掛け算へ変えません。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：2と+3の和を計算する操作・全候補・正答5は不変。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-12::ux04-source` / n10-12-ux04-main | `2-2\sqrt6+3` | 初期 | 保持 |
-| `n10-12::ux04-pair` / n10-12-ux04-term-selection | `\text{先にまとめる二項：}\quad{rootFreePairUX04}` | 初期 | rootFreePairUX04 |
-| `n10-12::ux04-regroup` / n10-12-ux04-main | `=(2+3)-2\sqrt6` | rootFreePairUX04 | 保持 |
-| `n10-12::ux04-sum` / n10-12-ux04-main | `={constant}-2\sqrt6` | rootFreePairUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- leadで「普通の数2と3を集める」を先書きしない。
-- √6を含む数も数学的には定数であるため、「定数項だけ」という不正確な分類名を使わず「根号を含まない二項」と指定する。
-- 部分式の組という回答であり、完成した変形公式一式を選ばせる問いにしない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-12::constant` | KEEP | `n10-12::constant` | 2と+3の和を計算する操作・全候補・正答5は不変。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 8. n10-q13-identity — n10-stage-07
-
-**現状**：中項が相殺される過程が省かれ、公式の−だけを選ぶ。
-
-### 穴のない完成解法
-
-A=√7、B=√2として、右の差をA+(−B)と読む。
-
-\[(A+B)(A-B)=A^2+A(-B)+BA+B(-B)=A^2-AB+AB-B^2=A^2+0-B^2=A^2-B^2\]
-
-### 学習者への導入・前提
-
-右の括弧を二項の和として読み、二つの括弧を分配します。四つの積のうち、交差する二つの項がどうまとまるかを調べましょう。
-
-- A=√7>0、B=√2>0。分配法則と乗法の交換・結合を使う。
-
-### 穴と全選択肢
-
-#### n10-q13-identity::signedSecondUX04 — NEW
-
-**問い**：右の括弧A−Bを二項の和として読むと、第二項は何ですか。
-
-**思考操作**：右括弧の差の第二項を負号込みで取り出し、分配する対象を構成する。
-
-**根拠**：A=√7、B=√2、差を負数の和として読む。
-
-**正確な穴位置**：`A-B=A+({signedSecondUX04})`（`n10-q13-identity::ux04-signed-second`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-B` | `-B` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `B` | `B` | 誤答 | 右の括弧はA+BではなくA−Bです。第二項の負号を含めてください。 |
-| `-A` | `-A` | 誤答 | 負号の付く第二項はBです。左の項Aと入れ替えないでください。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-cross-construction`, `n10-q13-identity::ux04-four-products`, `n10-q13-identity::ux04-cross-sign`, `n10-q13-identity::ux04-last-sign`, `n10-q13-identity::ux04-cancel`, `n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q13-identity::firstCrossProductUX04 — NEW
-
-**問い**：前の括弧の第一項と、後ろの括弧の第二項からできる交差積を選びます。
-
-**思考操作**：二つの括弧の異なる位置の項を対応づけ、符号込みの因子二つから一方の交差積を構成する。
-
-**根拠**：既習の分配法則。完成公式ではなく、二つの括弧の項の組合せを用いる。
-
-**正確な穴位置**：`(A+B)(A-B)=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+B(-B)`（`n10-q13-identity::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `A(-B)` | `A(-B)` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `A^2` | `A^2` | 誤答 | それは第一項どうしの積です。前括弧の第一項と後括弧の第二項という交差する組を選びます。 |
-| `B(-B)` | `B(-B)` | 誤答 | それは第二項どうしの積です。式の中の別の積としては現れますが、指定した交差積ではありません。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-four-products`, `n10-q13-identity::ux04-cross-sign`, `n10-q13-identity::ux04-last-sign`, `n10-q13-identity::ux04-cancel`, `n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q13-identity::secondCrossProductUX04 — NEW
-
-**問い**：前の括弧の第二項と、後ろの括弧の第一項からできる、もう一方の交差積を選びます。
-
-**思考操作**：もう一方の交差する因子の組を構成し、片方の交差積を落とさない。
-
-**根拠**：既習の分配法則。前後の括弧の項を符号込みで対応づける。
-
-**正確な穴位置**：`(A+B)(A-B)=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+B(-B)`（`n10-q13-identity::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `BA` | `BA` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `A^2` | `A^2` | 誤答 | 元の二つの括弧で、指定された位置の二項を符号込みで確かめてください。 |
-| `B(-B)` | `B(-B)` | 誤答 | それは第二項どうしの積です。前の第二項と後ろの第一項という組に合わせます。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-four-products`, `n10-q13-identity::ux04-cross-sign`, `n10-q13-identity::ux04-last-sign`, `n10-q13-identity::ux04-cancel`, `n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q13-identity::crossProductSignUX04 — NEW
-
-**問い**：A×(−B)をABの符号付きの形にします。
-
-**思考操作**：正のAと負の−Bから交差積の符号を決める。
-
-**根拠**：A>0、B>0と乗法の符号。
-
-**正確な穴位置**：`A(-B)={crossProductSignUX04}AB`（`n10-q13-identity::ux04-cross-sign`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-` | `-` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `+` | `+` | 誤答 | Aは正、−Bは負です。積の符号を確かめてください。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-last-sign`, `n10-q13-identity::ux04-cancel`, `n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q13-identity::lastSquareSignUX04 — NEW
-
-**問い**：B×(−B)をB²の符号付きの形にします。
-
-**思考操作**：最後の積が負の平方項になることを構成する。
-
-**根拠**：B>0、−B<0、B×B=B²。
-
-**正確な穴位置**：`B(-B)={lastSquareSignUX04}B^2`（`n10-q13-identity::ux04-last-sign`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `crossProductSignUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-` | `-` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `+` | `+` | 誤答 | 最後の二つの因子はBと−Bです。両方が負の場合と区別してください。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-cancel`, `n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q13-identity::crossCancellationUX04 — NEW
-
-**問い**：二つの交差項−ABと+ABを足した結果を求めます。
-
-**思考操作**：反対の符号を持つ同じ大きさの項を相殺する。
-
-**根拠**：−u+u=0。ここではu=AB、A=√7>0、B=√2>0。
-
-**正確な穴位置**：`-AB+AB={crossCancellationUX04}`（`n10-q13-identity::ux04-cancel`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `crossProductSignUX04`, `lastSquareSignUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `0` | `0` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2AB` | `2AB` | 誤答 | 同じ符号のABを二つ足した式ではありません。一方は−ABです。 |
-| `-2AB` | `-2AB` | 誤答 | 二つとも−ABではありません。第二の交差項の+を保ってください。 |
-
-**正答後の解放候補row**：`n10-q13-identity::ux04-signed-sum`, `n10-q13-identity::ux04-zero`, `n10-q13-identity::ux04-difference`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q13-identity::ux04-source` / n10-q13-identity-ux04-main | `(A+B)(A-B)` | 初期 | 保持 |
-| `n10-q13-identity::ux04-signed-second` / n10-q13-identity-ux04-operand | `A-B=A+({signedSecondUX04})` | 初期 | signedSecondUX04 |
-| `n10-q13-identity::ux04-cross-construction` / n10-q13-identity-ux04-main | `(A+B)(A-B)=A^2+{firstCrossProductUX04}+{secondCrossProductUX04}+B(-B)` | signedSecondUX04 | firstCrossProductUX04, secondCrossProductUX04 |
-| `n10-q13-identity::ux04-four-products` / n10-q13-identity-ux04-main | `(A+B)(A-B)=A^2+{mirror:firstCrossProductUX04}+{mirror:secondCrossProductUX04}+B(-B)` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | 保持 |
-| `n10-q13-identity::ux04-cross-sign` / n10-q13-identity-ux04-cross-sign | `A(-B)={crossProductSignUX04}AB` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | crossProductSignUX04 |
-| `n10-q13-identity::ux04-last-sign` / n10-q13-identity-ux04-last-sign | `B(-B)={lastSquareSignUX04}B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04 | lastSquareSignUX04 |
-| `n10-q13-identity::ux04-cancel` / n10-q13-identity-ux04-cross-cancel | `-AB+AB={crossCancellationUX04}` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastSquareSignUX04 | crossCancellationUX04 |
-| `n10-q13-identity::ux04-signed-sum` / n10-q13-identity-ux04-main | `(A+B)(A-B)=A^2-AB+AB-B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastSquareSignUX04, crossCancellationUX04 | 保持 |
-| `n10-q13-identity::ux04-zero` / n10-q13-identity-ux04-main | `=A^2+0-B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastSquareSignUX04, crossCancellationUX04 | 保持 |
-| `n10-q13-identity::ux04-difference` / n10-q13-identity-ux04-main | `=A^2-B^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, crossProductSignUX04, lastSquareSignUX04, crossCancellationUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 最初に「中項が打ち消される」「平方差になる」と完成結論を言わない。目標は二つの交差項を自ら相殺すること。
-- 旧operationは完成した恒等式へ演算子を対応させる問い。新しいlastSquareSignUX04の同じ−へ流用しない。
-- A²とB²の具体値7/2と差5は次node n10-13の既存三穴に保持し、このnodeで先出ししない。
-- signedSecondの一穴後に四つの積を全自動で完成させない。交差する二組の因子をNEWで構成してから、符号計算と同類項の合成へ進む。
-- 正しい可換順の積を誤答候補には入れない。候補中の別の正しい展開項は、数学的誤りではなく指定した位置の組に合わないと説明する。
-- 補助計算後に本体へ戻る行には元式を完全な左辺として明示。直前の補助量へ=で分数/別の式をつなげない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q13-identity::operation` | RETIRE | r4 archiveのみ、新partへaliasなし | 問いの対象/要求する操作/判断位置を変更するため、新partへ旧recordを流用しない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 9. n10-15 — n10-stage-08
-
-**現状**：分数の積の分子/分母の対応と、分母を平方にする変形は自動。分子√3だけを回答。
-
-### 穴のない完成解法
-
-\[\frac1{2\sqrt3}\frac{\sqrt3}{\sqrt3}=\frac{1\times\sqrt3}{(2\sqrt3)\times\sqrt3}=\frac{1\times\sqrt3}{2(\sqrt3)^2}=\frac{\sqrt3}{2(\sqrt3)^2}\]
-
-### 学習者への導入・前提
-
-前段で選んだ因子√3を上下へ掛けます。元の分母全体を保ち、分母の同じ因子をまとめてから、分子を計算しましょう。
-
-- 元の分母2√3は非零。前段で選んだc=√3は非零で、c/c=1。
-
-### 穴と全選択肢
-
-#### n10-15::denominatorScopeUX04 — NEW
-
-**問い**：元の分数の分母全体を、一つの因子として選びます。
-
-**思考操作**：根号の部分だけに限定せず、元分母2√3全体へ同じ因子を掛ける対応を構成する。
-
-**根拠**：分数の積は分子どうし・分母どうしの積。既にc=√3を選択済み。
-
-**正確な穴位置**：`\text{元の分母全体：}\quad{denominatorScopeUX04}`（`n10-15::ux04-scope`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2\sqrt3` | `2\sqrt3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `\sqrt3` | `\sqrt3` | 誤答 | 根号だけを元の分母とみると、係数2が落ちます。分数線の下全体を見てください。 |
-| `2` | `2` | 誤答 | 元の分母は2だけではありません。根号を含む因子も一緒に残します。 |
-
-**正答後の解放候補row**：`n10-15::ux04-fraction-product`, `n10-15::ux04-power`, `n10-15::ux04-numerator`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-15::denominatorPowerUX04 — NEW
-
-**問い**：分母側の√3×√3を、同じ因子の累乗で表します。指数はいくつですか。
-
-**思考操作**：分母の繰返し因子を平方へまとめ、係数2を外側に保つ。
-
-**根拠**：平方は同じ数を二回掛けた積。
-
-**正確な穴位置**：`(2\sqrt3)\sqrt3=2(\sqrt3)^{denominatorPowerUX04}`（`n10-15::ux04-power`）
-
-**先行必須**：`denominatorScopeUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2` | `2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `1` | `1` | 誤答 | √3の因子が二つあります。一つを落としていませんか。 |
-| `3` | `3` | 誤答 | √3は二つの因子です。根号の中の3と指数を区別してください。 |
-
-**正答後の解放候補row**：`n10-15::ux04-numerator`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-15::numerator — KEEP
-
-**問い**：分子1×√3を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\frac1{2\sqrt3}\frac{\sqrt3}{\sqrt3}=\frac{ {numerator} }{2(\sqrt3)^{mirror:denominatorPowerUX04}}`（`n10-15::ux04-numerator`）
-
-**先行必須**：`denominatorScopeUX04`, `denominatorPowerUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `\sqrt3` | `\sqrt3` | 正答 | 確定した結果を次の計算へ使います。 |
-| `1` | `1` | 誤答 | 分子にも選んだ因子を掛けます。 |
-| `3` | `3` | 誤答 | 分子は根号同士の平方ではなく1×√3です。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：分子1×√3の計算は同じ対象・演算・全候補・正答√3のまま。分母全体選択と混同しない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-15::ux04-source` / n10-15-ux04-main | `\frac1{2\sqrt3}\frac{\sqrt3}{\sqrt3}` | 初期 | 保持 |
-| `n10-15::ux04-scope` / n10-15-ux04-scope | `\text{元の分母全体：}\quad{denominatorScopeUX04}` | 初期 | denominatorScopeUX04 |
-| `n10-15::ux04-fraction-product` / n10-15-ux04-main | `=\frac{1\times\sqrt3}{({mirror:denominatorScopeUX04})\times\sqrt3}` | denominatorScopeUX04 | 保持 |
-| `n10-15::ux04-power` / n10-15-ux04-denominator | `(2\sqrt3)\sqrt3=2(\sqrt3)^{denominatorPowerUX04}` | denominatorScopeUX04 | denominatorPowerUX04 |
-| `n10-15::ux04-numerator` / n10-15-ux04-main | `\frac1{2\sqrt3}\frac{\sqrt3}{\sqrt3}=\frac{ {numerator} }{2(\sqrt3)^{mirror:denominatorPowerUX04}}` | denominatorScopeUX04, denominatorPowerUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 前段で選んだc=√3を再回答させない。今回の新scopeは掛ける因子ではなく「元の分母全体」。
-- (√3)²=3と分母6は次node n10-q16-denominatorで初めて回答するため先出ししない。
-- 分母を2と根号に分けても、2を落とす誤答を数学的に正しい別表現として許可しない。一方、等しい並べ替えを候補にして誤答扱いしない。
-- 分母の平方を調べる補助式の後、分数の本体へ戻る行は元の分数積を完全左辺に明記する。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-15::numerator` | KEEP | `n10-15::numerator` | 分子1×√3の計算は同じ対象・演算・全候補・正答√3のまま。分母全体選択と混同しない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 10. n10-17 — n10-stage-09
-
-**現状**：×を一度選ぶだけで、元の分子/分母の対応とcの代入まで完成。
-
-### 穴のない完成解法
-
-\[\frac{\sqrt3}{\sqrt3+\sqrt2}\frac c c=\frac{\sqrt3\times c}{(\sqrt3+\sqrt2)\times c}=\frac{\sqrt3(\sqrt3-\sqrt2)}{(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)},\quad c=\sqrt3-\sqrt2\ne0\]
-
-### 学習者への導入・前提
-
-認定済みの非零の因子cを上下へ掛けます。元の分子と分母全体を別々に対応づけ、積の分数を組み立てましょう。
-
-- 前段でc=√3−√2≠0を確認。c/c=1。元の分母√3+√2は非零。
-
-### 穴と全選択肢
-
-#### n10-17::numeratorBaseUX04 — NEW
-
-**問い**：掛け算をする前の元の分子を選びます。
-
-**思考操作**：元の分子を、掛ける因子や分母と区別して積の上側へ対応づける。
-
-**根拠**：元の分数√3/(√3+√2)、既に選んだ非零c=√3−√2。
-
-**正確な穴位置**：`\text{元の分子：}\quad{numeratorBaseUX04}`（`n10-17::ux04-numerator-scope`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `\sqrt3` | `\sqrt3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `\sqrt3+\sqrt2` | `\sqrt3+\sqrt2` | 誤答 | その和は元の分母です。分数線の上の対象を選びます。 |
-| `1` | `1` | 誤答 | 今回の元の分子は1ではありません。前の例題の分子と取り違えないでください。 |
-
-**正答後の解放候補row**：`n10-17::ux04-denominator-scope`, `n10-17::ux04-operation`, `n10-17::ux04-assembled`, `n10-17::ux04-substitution`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-17::denominatorBaseUX04 — NEW
-
-**問い**：元の分母全体を、一つの因子として選びます。
-
-**思考操作**：和の二項を含む分母全体へcを掛けるscopeを構成する。
-
-**根拠**：分数線の下の全体は√3+√2。
-
-**正確な穴位置**：`\text{元の分母全体：}\quad{denominatorBaseUX04}`（`n10-17::ux04-denominator-scope`）
-
-**先行必須**：`numeratorBaseUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `\sqrt3+\sqrt2` | `\sqrt3+\sqrt2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `\sqrt3` | `\sqrt3` | 誤答 | 分母の和の一項だけが選ばれています。分母全体を残します。 |
-| `\sqrt2` | `\sqrt2` | 誤答 | 元の分母にはもう一方の根号の項もあります。和の全体を選びます。 |
-
-**正答後の解放候補row**：`n10-17::ux04-operation`, `n10-17::ux04-assembled`, `n10-17::ux04-substitution`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-17::productOperation — KEEP
-
-**問い**：二つの分数の積では、分子どうしと分母どうしをどの演算でまとめますか。
-
-**思考操作**：二つの分数の積では、分子どうしと分母どうしをどの演算でまとめますか。
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`\text{上下の積を作る演算：}\quad{productOperation}`（`n10-17::ux04-operation`）
-
-**先行必須**：`numeratorBaseUX04`, `denominatorBaseUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `\times` | `\times` | 正答 | この判断を確定し、次へ進みます。 |
-| `+` | `+` | 誤答 | 分数の積であり、分子・分母に加える変形ではありません。 |
-| `\div` | `\div` | 誤答 | 掛ける因子c/cとの積を作っています。 |
-
-**正答後の解放候補row**：`n10-17::ux04-assembled`, `n10-17::ux04-substitution`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：分数の積で上下をそれぞれ乗算にする判断・全候補・正答×は不変。元の対象を選ぶ二つの前提を新規追加する。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-17::ux04-source` / n10-17-ux04-main | `\frac{\sqrt3}{\sqrt3+\sqrt2}\frac c c` | 初期 | 保持 |
-| `n10-17::ux04-numerator-scope` / n10-17-ux04-numerator-scope | `\text{元の分子：}\quad{numeratorBaseUX04}` | 初期 | numeratorBaseUX04 |
-| `n10-17::ux04-denominator-scope` / n10-17-ux04-denominator-scope | `\text{元の分母全体：}\quad{denominatorBaseUX04}` | numeratorBaseUX04 | denominatorBaseUX04 |
-| `n10-17::ux04-operation` / n10-17-ux04-assembly | `\text{上下の積を作る演算：}\quad{productOperation}` | numeratorBaseUX04, denominatorBaseUX04 | productOperation |
-| `n10-17::ux04-assembled` / n10-17-ux04-main | `\frac{\sqrt3}{\sqrt3+\sqrt2}\frac c c=\frac{({mirror:numeratorBaseUX04})\times c}{({mirror:denominatorBaseUX04})\times c}` | numeratorBaseUX04, denominatorBaseUX04, productOperation | 保持 |
-| `n10-17::ux04-substitution` / n10-17-ux04-main | `=\frac{\sqrt3(\sqrt3-\sqrt2)}{(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)}` | numeratorBaseUX04, denominatorBaseUX04, productOperation | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- cの同一性を確認済みとして参照し、既確定の共役因子を再選択させない。
-- 分母の掛け算記号を未回答のproductOperationと同時に完成値で出さない。正答後は上下へ同じ×を用いる。
-- 単独の分子積を表示し、その直後に=分数としてつなげない。本体の等号の左辺は必ず元の分数積。
-- 分母の差1、分子3−√6は後続n10-18/n10-q19-distribute/n10-19の学習行為に残す。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-17::productOperation` | KEEP | `n10-17::productOperation` | 分数の積で上下をそれぞれ乗算にする判断・全候補・正答×は不変。元の対象を選ぶ二つの前提を新規追加する。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 11. n10-q20-factor — n10-stage-11
-
-**現状**：平方4/3は自動表示され、後の分子展開でP/Qとして再入力している。
-
-### 穴のない完成解法
-
-この手順では正の因子c=2−√3を使う。逆符号の因子も有理化には使えるが、今回の正性の指定とは分ける。
-
-\[2^2=4,\quad(\sqrt3)^2=3,\quad4>3\Rightarrow2>\sqrt3\Rightarrow2-\sqrt3>0\Rightarrow c\ne0\]
-
-非零の同じ因子を上下に掛けて値を保ち、分母を和と差の積にできる。
-
-### 学習者への導入・前提
-
-この手順では正の因子cを使って有理化します。因子を選んだら、平方を計算して符号を確かめ、値を保つ理由まで確認しましょう。
-
-- 元の分母2+√3>0。2>0、√3>0。同じ原問題(2−√3)/(2+√3)内で初めて必要になる平方の値を、ここで確定する。
-
-### 穴と全選択肢
-
-#### n10-q20-factor::factor — KEEP
-
-**問い**：平方差に対応する因子を選びます。
-
-**思考操作**：平方差に対応する因子を選びます。
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`(2+\sqrt3)\bigl({factor}\bigr)`（`n10-q20-factor::ux04-factor`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2-\sqrt3` | `2-\sqrt3` | 正答 | 確定した結果を次の計算へ使います。 |
-| `2+\sqrt3` | `2+\sqrt3` | 誤答 | 同じ和では平方差を作れません。 |
-| `\sqrt3-2` | `\sqrt3-2` | 誤答 | その因子でも分母を−1にできます。ただし、この手順では正の因子cを選ぶ指定があります。指定と因子の符号を照合してください。 |
-
-**正答後の解放候補row**：`n10-q20-factor::ux04-square-left`, `n10-q20-factor::ux04-square-right`, `n10-q20-factor::ux04-compare`, `n10-q20-factor::ux04-difference-sign`, `n10-q20-factor::ux04-nonzero`, `n10-q20-factor::ux04-reason`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：この手順で正の因子cを選ぶ元の対象/候補/正答は維持。逆符号による有効別解の説明も保持。
-
-#### n10-q20-factor::comparisonIntegerSquareUX04 — NEW
-
-**問い**：2と√3を比べる準備として、2²を計算します。
-
-**思考操作**：候補の非零性を判定するため、比較の一方の平方を初回計算する。
-
-**根拠**：正の数の大小は平方の大小と対応する。
-
-**正確な穴位置**：`2^2={comparisonIntegerSquareUX04}`（`n10-q20-factor::ux04-square-left`）
-
-**先行必須**：`factor`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `4` | `4` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2` | `2` | 誤答 | 2を同じ数と二回掛けた値を求めます。元の2をそのまま写しません。 |
-| `8` | `8` | 誤答 | 2乗と3乗を区別してください。 |
-
-**正答後の解放候補row**：`n10-q20-factor::ux04-square-right`, `n10-q20-factor::ux04-compare`, `n10-q20-factor::ux04-difference-sign`, `n10-q20-factor::ux04-nonzero`, `n10-q20-factor::ux04-reason`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q20-factor::comparisonRootSquareUX04 — NEW
-
-**問い**：比較のもう一方として、(√3)²を計算します。
-
-**思考操作**：正の平方根の定義を使い、比較のもう一方の平方を初回計算する。
-
-**根拠**：正の平方根の定義。
-
-**正確な穴位置**：`(\sqrt3)^2={comparisonRootSquareUX04}`（`n10-q20-factor::ux04-square-right`）
-
-**先行必須**：`factor`, `comparisonIntegerSquareUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `3` | `3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `9` | `9` | 誤答 | 根号全体を平方します。中の3をさらに平方する操作ではありません。 |
-| `\sqrt3` | `\sqrt3` | 誤答 | 平方の操作を行っていない値になっています。 |
-
-**正答後の解放候補row**：`n10-q20-factor::ux04-compare`, `n10-q20-factor::ux04-difference-sign`, `n10-q20-factor::ux04-nonzero`, `n10-q20-factor::ux04-reason`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q20-factor::factorSign — KEEP
-
-**問い**：正の数の平方比較を使い、差と0を比べます。
-
-**思考操作**：正の数の平方比較を使い、差と0を比べます。
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`2-\sqrt3{factorSign}0`（`n10-q20-factor::ux04-difference-sign`）
-
-**先行必須**：`factor`, `comparisonIntegerSquareUX04`, `comparisonRootSquareUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `>` | `>` | 正答 | この判断を確定し、次へ進みます。 |
-| `<` | `<` | 誤答 | 2と√3の平方の大小を、元の正の数の大小へ戻してください。 |
-| `=` | `=` | 誤答 | 4と3は一致していません。 |
-
-**正答後の解放候補row**：`n10-q20-factor::ux04-nonzero`, `n10-q20-factor::ux04-reason`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：正の数の平方比較から2−√3と0の関係を判定する対象/候補/正答は維持。計算前提の4/3を新たに本人が確定する。
-
-#### n10-q20-factor::reason — KEEP
-
-**問い**：選んだ因子で、式の値を保ったまま有理化できる理由を選びます。
-
-**思考操作**：非零・同一因子を上下へ掛ける操作・分母の有理化を一組として判断する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`この因子で値を保って有理化できるのは、{reason}。`（`n10-q20-factor::ux04-reason`）
-
-**先行必須**：`factor`, `comparisonIntegerSquareUX04`, `comparisonRootSquareUX04`, `factorSign`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `nonzero-and-rational-product` | `非零の因子で上下を同じように変え、分母の積を有理数にできるから` | 正答 | 因子が零でないことと、分母の積が有理数になることを合わせて確認できました。 |
-| `same-factor-even-zero` | `上下へ同じ因子を掛けさえすれば、その因子が零でも値を保てるから` | 誤答 | 因子を上下へ掛けた式を比として見たとき、因子が零だと分母がどうなるか確かめてください。 |
-| `different-factors` | `分母の積が有理数なら、分子に掛ける因子は別の数でもよいから` | 誤答 | 分母だけが有理数になっても、元の分数と同じ値になるとは限りません。上下へ掛けた比が何になるかを確かめてください。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：非零・上下同一因子・分母の有理化を関連づける既存の理由判断は維持。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q20-factor::ux04-factor` / n10-q20-factor-ux04-main | `(2+\sqrt3)\bigl({factor}\bigr)` | 初期 | 保持 |
-| `n10-q20-factor::ux04-square-left` / n10-q20-factor-ux04-comparison | `2^2={comparisonIntegerSquareUX04}` | factor | 保持 |
-| `n10-q20-factor::ux04-square-right` / n10-q20-factor-ux04-comparison | `(\sqrt3)^2={comparisonRootSquareUX04}` | factor, comparisonIntegerSquareUX04 | 保持 |
-| `n10-q20-factor::ux04-compare` / n10-q20-factor-ux04-comparison | `2^2={mirror:comparisonIntegerSquareUX04}>{mirror:comparisonRootSquareUX04}=(\sqrt3)^2` | factor, comparisonIntegerSquareUX04, comparisonRootSquareUX04 | 保持 |
-| `n10-q20-factor::ux04-difference-sign` / n10-q20-factor-ux04-factor-sign | `2-\sqrt3{factorSign}0` | factor, comparisonIntegerSquareUX04, comparisonRootSquareUX04 | 保持 |
-| `n10-q20-factor::ux04-nonzero` / n10-q20-factor-ux04-factor-sign | `c\ne0` | factor, comparisonIntegerSquareUX04, comparisonRootSquareUX04, factorSign | 保持 |
-| `n10-q20-factor::ux04-reason` / n10-q20-factor-ux04-main | `この因子で値を保って有理化できるのは、{reason}。` | factor, comparisonIntegerSquareUX04, comparisonRootSquareUX04, factorSign | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 平方4/3を当該part回答前にlead/assumptions/完成比較式へ出さない。
-- 旧q21 P/Qは後段の別の前提/判断位置で回答したrecordであり、新しい初回比較の平方へ無条件aliasしない。両新partは未回答。
-- この二つの確定平方は後の同じ原問題の分子展開で参照し、再び数値を穴にしない。
-- 逆符号√3−2も分母を−1へ有理化できる。正のcというこの手順の指定と数学的可能性を区別した既存feedbackを保持。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q20-factor::factor` | KEEP | `n10-q20-factor::factor` | この手順で正の因子cを選ぶ元の対象/候補/正答は維持。逆符号による有効別解の説明も保持。 |
-| `n10-q20-factor::factorSign` | KEEP | `n10-q20-factor::factorSign` | 正の数の平方比較から2−√3と0の関係を判定する対象/候補/正答は維持。計算前提の4/3を新たに本人が確定する。 |
-| `n10-q20-factor::reason` | KEEP | `n10-q20-factor::reason` | 非零・上下同一因子・分母の有理化を関連づける既存の理由判断は維持。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 12. n10-q21-expand — n10-stage-12
-
-**現状**：公式への対応と符号を全て与え、既出の平方4/3と公式由来の係数4を埋める。
-
-### 穴のない完成解法
-
-同じ原問題の前段で確定した2²=4、(√3)²=3を参照する。再入力しない。
-
-\[(2-\sqrt3)^2=(2-\sqrt3)(2-\sqrt3)=2\times2+2(-\sqrt3)+(-\sqrt3)2+(-\sqrt3)(-\sqrt3)=4-2\sqrt3-2\sqrt3+3=4-4\sqrt3+3\]
-
-### 学習者への導入・前提
-
-分子の同じ差を二回掛け、符号込みの二項から四つの積を作ります。前段で求めた平方は使い、交差する二つの項を自分でまとめましょう。
-
-- 前段の同じ原問題で2²=4、(√3)²=3を本人が確定済み。
-- 第6段階で符号込みの分配を実行済み。完成公式を当てる問いには戻さない。
-
-### 穴と全選択肢
-
-#### n10-q21-expand::signedSecondUX04 — NEW
-
-**問い**：2−√3を二項の和として読むと、第二項は何ですか。
-
-**思考操作**：差の第二項を負号と根号のscope込みで取り出す。
-
-**根拠**：差を負の数の和として読む。
-
-**正確な穴位置**：`2-\sqrt3=2+({signedSecondUX04})`（`n10-q21-expand::ux04-signed-second`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-\sqrt3` | `-\sqrt3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `\sqrt3` | `\sqrt3` | 誤答 | 差の第二項の負号を含めてください。 |
-| `-3` | `-3` | 誤答 | 第二項は3ではなく√3です。根号を保ちます。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-cross-construction`, `n10-q21-expand::ux04-four-products`, `n10-q21-expand::ux04-single-cross`, `n10-q21-expand::ux04-last-sign`, `n10-q21-expand::ux04-cross-sum`, `n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-expand::firstCrossProductUX04 — NEW
-
-**問い**：前の括弧の第一項と、後ろの括弧の第二項からできる交差積を選びます。
-
-**思考操作**：二つの括弧の異なる位置の項を対応づけ、符号込みの因子二つから一方の交差積を構成する。
-
-**根拠**：既習の分配法則。完成公式ではなく、二つの括弧の項の組合せを用いる。
-
-**正確な穴位置**：`(2-\sqrt3)^2=2\times2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-\sqrt3)(-\sqrt3)`（`n10-q21-expand::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `2(-\sqrt3)` | `2(-\sqrt3)` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2\times2` | `2\times2` | 誤答 | それは第一項どうしの積です。指定した第一項と第二項の交差する組を見てください。 |
-| `(-\sqrt3)(-\sqrt3)` | `(-\sqrt3)(-\sqrt3)` | 誤答 | それは第二項どうしの積です。交差する位置の二項を組にします。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-four-products`, `n10-q21-expand::ux04-single-cross`, `n10-q21-expand::ux04-last-sign`, `n10-q21-expand::ux04-cross-sum`, `n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-expand::secondCrossProductUX04 — NEW
-
-**問い**：前の括弧の第二項と、後ろの括弧の第一項からできる、もう一方の交差積を選びます。
-
-**思考操作**：もう一方の交差する因子の組を構成し、片方の交差積を落とさない。
-
-**根拠**：既習の分配法則。前後の括弧の項を符号込みで対応づける。
-
-**正確な穴位置**：`(2-\sqrt3)^2=2\times2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-\sqrt3)(-\sqrt3)`（`n10-q21-expand::ux04-cross-construction`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `(-\sqrt3)2` | `(-\sqrt3)2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `\sqrt3\times2` | `\sqrt3\times2` | 誤答 | 元の第二項の負号が落ちています。符号込みの項を因子にしてください。 |
-| `(-\sqrt3)(-\sqrt3)` | `(-\sqrt3)(-\sqrt3)` | 誤答 | それは最後の平方になる積です。指定した交差する組と区別してください。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-four-products`, `n10-q21-expand::ux04-single-cross`, `n10-q21-expand::ux04-last-sign`, `n10-q21-expand::ux04-cross-sum`, `n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-expand::singleCrossCoefficientUX04 — NEW
-
-**問い**：交差する積2×(−√3)を、√3の符号付き係数で表します。
-
-**思考操作**：正負の乗法と係数2を一つの交差項へ反映する。
-
-**根拠**：2は正、−√3は負。
-
-**正確な穴位置**：`2(-\sqrt3)={singleCrossCoefficientUX04}\sqrt3`（`n10-q21-expand::ux04-single-cross`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-2` | `-2` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `2` | `2` | 誤答 | 負の第二項を掛けた符号が落ちています。 |
-| `-1` | `-1` | 誤答 | 符号だけでなく、元の係数2も保ってください。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-last-sign`, `n10-q21-expand::ux04-cross-sum`, `n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-expand::lastProductSignUX04 — NEW
-
-**問い**：最後の積(−√3)×(−√3)を、(√3)²の符号付きの形にします。
-
-**思考操作**：二つの負号から、最後の平方項の符号を構成する。
-
-**根拠**：負×負は正。
-
-**正確な穴位置**：`(-\sqrt3)(-\sqrt3)={lastProductSignUX04}(\sqrt3)^2`（`n10-q21-expand::ux04-last-sign`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `singleCrossCoefficientUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `+` | `+` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `-` | `-` | 誤答 | 二つとも負の因子です。一方だけが負の場合と区別してください。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-cross-sum`, `n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-expand::signedCrossSumUX04 — NEW
-
-**問い**：二つの交差項を合わせた、√3の符号付き係数を計算します。
-
-**思考操作**：同類の二項−2√3と−2√3の係数を加え、中項−4√3を作る。
-
-**根拠**：−2+(−2)=−4。
-
-**正確な穴位置**：`({mirror:singleCrossCoefficientUX04})\sqrt3+({mirror:singleCrossCoefficientUX04})\sqrt3={signedCrossSumUX04}\sqrt3`（`n10-q21-expand::ux04-cross-sum`）
-
-**先行必須**：`signedSecondUX04`, `firstCrossProductUX04`, `secondCrossProductUX04`, `singleCrossCoefficientUX04`, `lastProductSignUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `-4` | `-4` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `4` | `4` | 誤答 | 二つの交差項はどちらも負です。大きさだけでなく符号を保ちます。 |
-| `-2` | `-2` | 誤答 | 同じ交差項が二つあります。一方を落とさず係数を合わせてください。 |
-
-**正答後の解放候補row**：`n10-q21-expand::ux04-signed-products`, `n10-q21-expand::ux04-combined`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q21-expand::ux04-repeat` / n10-q21-expand-ux04-main | `(2-\sqrt3)^2=(2-\sqrt3)(2-\sqrt3)` | 初期 | 保持 |
-| `n10-q21-expand::ux04-signed-second` / n10-q21-expand-ux04-operand | `2-\sqrt3=2+({signedSecondUX04})` | 初期 | signedSecondUX04 |
-| `n10-q21-expand::ux04-cross-construction` / n10-q21-expand-ux04-main | `(2-\sqrt3)^2=2\times2+{firstCrossProductUX04}+{secondCrossProductUX04}+(-\sqrt3)(-\sqrt3)` | signedSecondUX04 | firstCrossProductUX04, secondCrossProductUX04 |
-| `n10-q21-expand::ux04-four-products` / n10-q21-expand-ux04-main | `(2-\sqrt3)^2=2\times2+{mirror:firstCrossProductUX04}+{mirror:secondCrossProductUX04}+(-\sqrt3)(-\sqrt3)` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | 保持 |
-| `n10-q21-expand::ux04-single-cross` / n10-q21-expand-ux04-single-cross | `2(-\sqrt3)={singleCrossCoefficientUX04}\sqrt3` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04 | singleCrossCoefficientUX04 |
-| `n10-q21-expand::ux04-last-sign` / n10-q21-expand-ux04-last-sign | `(-\sqrt3)(-\sqrt3)={lastProductSignUX04}(\sqrt3)^2` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, singleCrossCoefficientUX04 | lastProductSignUX04 |
-| `n10-q21-expand::ux04-cross-sum` / n10-q21-expand-ux04-cross-sum | `({mirror:singleCrossCoefficientUX04})\sqrt3+({mirror:singleCrossCoefficientUX04})\sqrt3={signedCrossSumUX04}\sqrt3` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, singleCrossCoefficientUX04, lastProductSignUX04 | signedCrossSumUX04 |
-| `n10-q21-expand::ux04-signed-products` / n10-q21-expand-ux04-main | `(2-\sqrt3)^2=4-2\sqrt3-2\sqrt3+3` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, singleCrossCoefficientUX04, lastProductSignUX04, signedCrossSumUX04 | 保持 |
-| `n10-q21-expand::ux04-combined` / n10-q21-expand-ux04-main | `=4-4\sqrt3+3` | signedSecondUX04, firstCrossProductUX04, secondCrossProductUX04, singleCrossCoefficientUX04, lastProductSignUX04, signedCrossSumUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- 旧P/QはARCHIVE_ONLY。新q20初回平方の回答へ移動/aliasしない。
-- 旧Kは公式の2×Aの係数計算。新signedCrossSumは−2+(−2)という符号付き同類項の合成なので、新key/idを使い旧4を流用しない。
-- 前段の4/3はq20の新平方partが確定した記録だけを根拠に参照する。旧r4 AUTOや旧P/Qの回答を、その確定証拠にしない。
-- 第二の交差項(−√3)×2は乗法の交換で第一の交差項と同じと示す。同じ−2を二回回答させない。
-- −4√3と+3を、signedCrossSum/lastProductSignの回答前に完成式や候補外の文章で先書きしない。
-- 有理数4と3の和7は次node n10-q21-constantsの既存Cへ残す。
-- signedSecondの一穴後に四つの積を全自動で完成させない。交差する二組の因子をNEWで構成してから、符号計算と同類項の合成へ進む。
-- 正しい可換順の積を誤答候補には入れない。候補中の別の正しい展開項は、数学的誤りではなく指定した位置の組に合わないと説明する。
-- 補助計算後に本体へ戻る行には元式を完全な左辺として明示。直前の補助量へ=で分数/別の式をつなげない。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-**既出値の参照（再回答しない）**：
-
-- n10-q20-factor::comparisonIntegerSquareUX04 → `4`。元part/元resultが確定している場合のみ表示。
-- n10-q20-factor::comparisonRootSquareUX04 → `3`。元part/元resultが確定している場合のみ表示。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q21-expand::P` | RETIRE | r4 archiveのみ、新partへaliasなし | 問いの対象/要求する操作/判断位置を変更するため、新partへ旧recordを流用しない。 |
-| `n10-q21-expand::K` | RETIRE | r4 archiveのみ、新partへaliasなし | 問いの対象/要求する操作/判断位置を変更するため、新partへ旧recordを流用しない。 |
-| `n10-q21-expand::Q` | RETIRE | r4 archiveのみ、新partへaliasなし | 問いの対象/要求する操作/判断位置を変更するため、新partへ旧recordを流用しない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": ["n10-q20-factor"], "addRequiredResultRefs": ["n10-q20-factor-result"], "rationale": "新しい初回平方の確定証拠を明示的に参照する。既存経路でも先行するnodeであり順序を逆転させない。未確定の旧AUTOは参照証拠にしない。"}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 13. n10-q21-constants — n10-stage-12
-
-**現状**：項の選別と組直しは自動で、最後の和7だけを回答。
-
-### 穴のない完成解法
-
-\[4-4\sqrt3+3=(4+3)-4\sqrt3=7-4\sqrt3\]
-
-### 学習者への導入・前提
-
-三つの項を符号込みで見ます。先にまとめる二項を選び、その和を計算しましょう。
-
-- 前nodeで4−4√3+3を本人の交差項の合成から確定。加法の交換・結合を使ってよい。
-
-### 穴と全選択肢
-
-#### n10-q21-constants::rootFreePairUX04 — NEW
-
-**問い**：先にまとめる、根号を含まない二項を選びます。
-
-**思考操作**：符号付きの三項から4と+3を選び、−4√3を保ったまま組み直す。
-
-**根拠**：前nodeの4−4√3+3、加法の交換・結合。
-
-**正確な穴位置**：`\text{先にまとめる二項：}\quad{rootFreePairUX04}`（`n10-q21-constants::ux04-pair`）
-
-**先行必須**：なし
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `4,3` | `4,3` | 正答 | この操作を確定し、次の計算へ進みます。 |
-| `4,-4\sqrt3` | `4,-4\sqrt3` | 誤答 | その組には根号を含む項があります。根号を含まない二項を選ぶ指定です。 |
-| `-4\sqrt3,3` | `-4\sqrt3,3` | 誤答 | −4√3は残す項です。根号を含まない二項の組を選びます。 |
-
-**正答後の解放候補row**：`n10-q21-constants::ux04-regroup`, `n10-q21-constants::ux04-sum`
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：現在の穴・選択値・誤答説明を保持し、後続を解放しない。
-
-#### n10-q21-constants::C — KEEP
-
-**問い**：普通の数4+3を計算します。
-
-**思考操作**：指定した演算の結果を計算する
-
-**根拠**：source db99の同一原問題・同一の局所操作。
-
-**正確な穴位置**：`={C}-4\sqrt3`（`n10-q21-constants::ux04-sum`）
-
-**先行必須**：`rootFreePairUX04`
-
-| 候補value | 表示/LaTeX | 正誤 | 回答時の説明 |
-|---|---|---|---|
-| `7` | `7` | 正答 | 確定した結果を次の計算へ使います。 |
-| `1` | `1` | 誤答 | 普通の数は4と+3です。 |
-| `12` | `12` | 誤答 | 足し算を掛け算にしません。 |
-
-**正答後の解放候補row**：
-**解放条件**：下のrow一覧はこのkeyを前提に含む候補。各rowの全requiresCorrectKeysがordered-correctのときだけ解放し、このkeyの正答だけで全descendantを即時表示しない。
-**誤答時**：既存の誤答説明を表示し、後続を解放しない。
-
-**KEEP理由**：4と+3の和を計算する対象・演算・候補・正答7は不変。前段で平方4/3を求めても、和7まではまだ確定していない。
-
-### 表示・解放の正確な順序
-
-| row ID / 用途 | template | 全gate正答で解放 | 当該行の全穴正答で消す足場 |
-|---|---|---|---|
-| `n10-q21-constants::ux04-source` / n10-q21-constants-ux04-main | `4-4\sqrt3+3` | 初期 | 保持 |
-| `n10-q21-constants::ux04-pair` / n10-q21-constants-ux04-term-selection | `\text{先にまとめる二項：}\quad{rootFreePairUX04}` | 初期 | rootFreePairUX04 |
-| `n10-q21-constants::ux04-regroup` / n10-q21-constants-ux04-main | `=(4+3)-4\sqrt3` | rootFreePairUX04 | 保持 |
-| `n10-q21-constants::ux04-sum` / n10-q21-constants-ux04-main | `={C}-4\sqrt3` | rootFreePairUX04 | 保持 |
-
-### 答え漏洩・既出値・配置
-
-- leadに「4と3を加える」を先書きしない。
-- −4√3の負号を保つ。「定数項」ではなく「根号を含まない二項」と指定。
-- 元の分数へ戻す最後のn10-21は、確定した分子と分母を接続するAUTOとして維持。
-
-補助計算のgroupと本体等式鎖のgroupを区別。正答後に補助足場を閉じ、本体に確定した導出を一度残す。N08基準の段階帯/本文/番号付き縦選択肢/左下resetは維持。
-
-### 既存partの処遇
-
-| oldId | 判断 | targetId / 保存 | 理由 |
-|---|---|---|---|
-| `n10-q21-constants::C` | KEEP | `n10-q21-constants::C` | 4と+3の和を計算する対象・演算・候補・正答7は不変。前段で平方4/3を求めても、和7まではまだ確定していない。 |
-
-**node依存の変更案**：`{"addPrerequisiteNodeIds": [], "addRequiredResultRefs": []}`
-
-**terminal**：元resultIdを維持し、当node全必須part正答後だけ成立させる。後続nodeで未回答の計算結果を先出ししない。
-
-## 対象外32nodeの保持表
-
-| node | 保持する既存part |
+| 項目 | 本案の処理 |
 |---|---|
-| `n10-q02-sign` | `n10-q02-sign::value` |
-| `n10-02` | `n10-02::candidateSign`, `n10-02::squareValue`, `n10-02::identificationReason` |
-| `n10-q03-expand` | `n10-q03-expand::powerA`, `n10-q03-expand::powerB` |
-| `n10-03` | `n10-03::aValue`, `n10-03::bValue` |
-| `n10-q04-sign` | `n10-q04-sign::relation` |
-| `n10-04` | `n10-04::rootReason` |
-| `n10-q05-denominator` | `n10-q05-denominator::relation` |
-| `n10-q05-square` | `n10-q05-square::numPower`, `n10-q05-square::denPower` |
-| `n10-05` | `n10-05::numerator`, `n10-05::denominator` |
-| `n10-q06-sign` | `n10-q06-sign::relation` |
-| `n10-06` | `n10-06::quotientReason` |
-| `n10-q07-product` | `n10-q07-product::insideOperation`, `n10-q07-product::inside` |
-| `n10-07` | `n10-07::squareFactor`, `n10-07::factor` |
-| `n10-q08-factor` | `n10-q08-factor::coefficient` |
-| `n10-08` | AUTOの確定結果接続を保持 |
-| `n10-09` | AUTOの確定結果接続を保持 |
-| `n10-10` | AUTOの確定結果接続を保持 |
-| `n10-11` | `n10-11::leftSquare`, `n10-11::rightSquare` |
-| `n10-q12-product` | `n10-q12-product::inside` |
-| `n10-13` | `n10-13::left`, `n10-13::right`, `n10-13::difference` |
-| `n10-14` | `n10-14::operation` |
-| `n10-q15-factor` | `n10-q15-factor::factor` |
-| `n10-q16-denominator` | `n10-q16-denominator::square`, `n10-q16-denominator::denominator` |
-| `n10-16` | AUTOの確定結果接続を保持 |
-| `n10-q17-factor` | `n10-q17-factor::factor` |
-| `n10-q17-nonzero` | `n10-q17-nonzero::relation` |
-| `n10-18` | `n10-18::A`, `n10-18::B`, `n10-18::C` |
-| `n10-q19-distribute` | `n10-q19-distribute::secondOperand`, `n10-q19-distribute::productSign` |
-| `n10-19` | `n10-19::left`, `n10-19::inside` |
-| `n10-20` | `n10-20::power`, `n10-20::denominatorOperation` |
-| `n10-q21-denominator` | `n10-q21-denominator::D` |
-| `n10-21` | AUTOの確定結果接続を保持 |
+| 新revision | N09r6→r7、N10r4→r5。unit/node/resultの同一性は保ち、対象partだけを個別対応する。 |
+| 不変snapshot | 現N09 compiled470fを`n09ConstructionCompiledR6.json`、現N10 compiled3cfeを`n10ConstructionCompiledR4.json`へ保存する。既存R5/R4/R3・N10 pilotR4別hashもそのまま保管。 |
+| KEEP | 単元別表で同じ対象・学習行為・問い・型・正答・全候補・数学上の対象条件を維持すると指定したpartだけ。前提node・解放gateは単元別新版の指定で再評価する。文言だけの整備も個別に意味一致を審査し、数値一致を十分条件にしない。 |
+| RETIRE | 現行達成数の分母から外すが、元のsource/hashに結び付けた旧記録/履歴を保存。現行へ原recordをコピーしない。 |
+| NEW | 新key/id、未回答から開始。旧or→零条件全体、旧符号→中項全体、後段平方→前段初回平方等は同値の数値/語でも継承しない。 |
+| 旧回答が未来の段階にある場合 | recordを保持しても、新しい前提を飛ばしてdraftや親完了へ復活させない。最初の未解決の新判断から再開。 |
+| 保管単位 | 旧revision番号だけでなくunit/compiledHash/source bindingで識別する。archive内の余分な旧partを現行ledgerへ残してparseを壊さない。 |
 
-## 全63旧partの移行判断
+N09の公開r5→既存r6→r7、旧r4→r5→r6→r7は、各段の実snapshotと検証済みadapterを使う。N10旧r3→既存fullr4→r5、pilot r4別hash→fullr4→r5も同じ。legacy r2由来の7件は、そのときの原design/analysisとr3 snapshotを使う既存の鎖を保護する。新designで旧`priorReviewedDesignRaw`を上書きしない。
 
-| oldId | 判断 | targetId / 処遇 |
-|---|---|---|
-| `n10-q01-square::rootSquare` | KEEP | `n10-q01-square::rootSquare` |
-| `n10-01::value` | KEEP | `n10-01::value` |
-| `n10-q09-left::squareFactor` | KEEP | `n10-q09-left::squareFactor` |
-| `n10-q09-left::coefficient` | KEEP | `n10-q09-left::coefficient` |
-| `n10-q09-right::squareFactor` | KEEP | `n10-q09-right::squareFactor` |
-| `n10-q09-right::coefficient` | KEEP | `n10-q09-right::coefficient` |
-| `n10-q10-coefficients::coefficient` | KEEP | `n10-q10-coefficients::coefficient` |
-| `n10-q11-formula::middleSign` | RETIRE | ARCHIVE_ONLY・新key未回答 |
-| `n10-12::constant` | KEEP | `n10-12::constant` |
-| `n10-q13-identity::operation` | RETIRE | ARCHIVE_ONLY・新key未回答 |
-| `n10-15::numerator` | KEEP | `n10-15::numerator` |
-| `n10-17::productOperation` | KEEP | `n10-17::productOperation` |
-| `n10-q20-factor::factor` | KEEP | `n10-q20-factor::factor` |
-| `n10-q20-factor::factorSign` | KEEP | `n10-q20-factor::factorSign` |
-| `n10-q20-factor::reason` | KEEP | `n10-q20-factor::reason` |
-| `n10-q21-expand::P` | RETIRE | ARCHIVE_ONLY・新key未回答 |
-| `n10-q21-expand::K` | RETIRE | ARCHIVE_ONLY・新key未回答 |
-| `n10-q21-expand::Q` | RETIRE | ARCHIVE_ONLY・新key未回答 |
-| `n10-q21-constants::C` | KEEP | `n10-q21-constants::C` |
-| `n10-q02-sign::value` | KEEP | `n10-q02-sign::value` |
-| `n10-02::candidateSign` | KEEP | `n10-02::candidateSign` |
-| `n10-02::squareValue` | KEEP | `n10-02::squareValue` |
-| `n10-02::identificationReason` | KEEP | `n10-02::identificationReason` |
-| `n10-q03-expand::powerA` | KEEP | `n10-q03-expand::powerA` |
-| `n10-q03-expand::powerB` | KEEP | `n10-q03-expand::powerB` |
-| `n10-03::aValue` | KEEP | `n10-03::aValue` |
-| `n10-03::bValue` | KEEP | `n10-03::bValue` |
-| `n10-q04-sign::relation` | KEEP | `n10-q04-sign::relation` |
-| `n10-04::rootReason` | KEEP | `n10-04::rootReason` |
-| `n10-q05-denominator::relation` | KEEP | `n10-q05-denominator::relation` |
-| `n10-q05-square::numPower` | KEEP | `n10-q05-square::numPower` |
-| `n10-q05-square::denPower` | KEEP | `n10-q05-square::denPower` |
-| `n10-05::numerator` | KEEP | `n10-05::numerator` |
-| `n10-05::denominator` | KEEP | `n10-05::denominator` |
-| `n10-q06-sign::relation` | KEEP | `n10-q06-sign::relation` |
-| `n10-06::quotientReason` | KEEP | `n10-06::quotientReason` |
-| `n10-q07-product::insideOperation` | KEEP | `n10-q07-product::insideOperation` |
-| `n10-q07-product::inside` | KEEP | `n10-q07-product::inside` |
-| `n10-07::squareFactor` | KEEP | `n10-07::squareFactor` |
-| `n10-07::factor` | KEEP | `n10-07::factor` |
-| `n10-q08-factor::coefficient` | KEEP | `n10-q08-factor::coefficient` |
-| `n10-11::leftSquare` | KEEP | `n10-11::leftSquare` |
-| `n10-11::rightSquare` | KEEP | `n10-11::rightSquare` |
-| `n10-q12-product::inside` | KEEP | `n10-q12-product::inside` |
-| `n10-13::left` | KEEP | `n10-13::left` |
-| `n10-13::right` | KEEP | `n10-13::right` |
-| `n10-13::difference` | KEEP | `n10-13::difference` |
-| `n10-14::operation` | KEEP | `n10-14::operation` |
-| `n10-q15-factor::factor` | KEEP | `n10-q15-factor::factor` |
-| `n10-q16-denominator::square` | KEEP | `n10-q16-denominator::square` |
-| `n10-q16-denominator::denominator` | KEEP | `n10-q16-denominator::denominator` |
-| `n10-q17-factor::factor` | KEEP | `n10-q17-factor::factor` |
-| `n10-q17-nonzero::relation` | KEEP | `n10-q17-nonzero::relation` |
-| `n10-18::A` | KEEP | `n10-18::A` |
-| `n10-18::B` | KEEP | `n10-18::B` |
-| `n10-18::C` | KEEP | `n10-18::C` |
-| `n10-q19-distribute::secondOperand` | KEEP | `n10-q19-distribute::secondOperand` |
-| `n10-q19-distribute::productSign` | KEEP | `n10-q19-distribute::productSign` |
-| `n10-19::left` | KEEP | `n10-19::left` |
-| `n10-19::inside` | KEEP | `n10-19::inside` |
-| `n10-20::power` | KEEP | `n10-20::power` |
-| `n10-20::denominatorOperation` | KEEP | `n10-20::denominatorOperation` |
-| `n10-q21-denominator::D` | KEEP | `n10-q21-denominator::D` |
+new edgeはsource/targetの正確なhashとfrom/to revisionのallowlistで登録する。未知のnative main/hashを、古い版や空の新版へ黙って丸めない。復元済みの正当な現行記録と無関係な古いarchiveは、保存したままにする。
 
-## 未実施・統合待ち
+専用keyとmain-onlyの両方がある場合、同一hashの新しいreset markerを優先し、そのreset後の回答も含めたledger全体を保持する。新resetを見つけたからと空ledgerに置き換えない。古い完了回答をreset後へ復活させない。改訂後のresetは現在単元の現在版だけ。取消は無変更、他unit/保管版を巻き込まない。
 
-- 正式なPROPOSAL書式、scope/hash固定、影響調査、保存移行の根拠とQA計画は主担当が統合する。
-- 本草案は自己整合の参照/一意性確認だけ。製品コード変更、正式Work/Git/Store編集、数学の新自動検証、実画像検証、公開はしていない。
-- 本文・式・穴・選択肢の排版は新しい意味group/可視行/足場消去に影響するため、承認後に実測と非作者の実画像審査が必要。既存PASSを新版の合格へ読み替えない。
-- 誤答の数学的同値性・正しい別解の扱い、および既存part KEEPの意味同値はcross reviewで確認する。
+firstValue・選択回数・初回/最終時刻・過去event IDを保つ。新しい正答イベントを作らず、旧親が完了済みでも新partが必要なら完了と数えない。既に受けた旧回答を、新しい問いの初回正答率の加点へ偽装しない。表示専用のcompact化だけでは採点値/保存を一切変えない。
 
-## 全86nodeの変更・維持対応
+## Expected Affected Areas / 実装順
 
-基準source db99のcompiledから列挙。CHANGEは上の詳細設計、KEEPは同じ問い・型・正答・全候補・学習行為を保持する。共通の版移行以外で対象外教材の意味を変えない。KEEPに含まれるまとめは、前段で実際に確定した結果に依存して表示する。
-
-| 単元 / stage | node | 旧part | 判断・理由 |
-|---|---|---|---|
-| n09-stage-01 | `n09-q01-positive` | なし | KEEP：定義・境界の説明・最初の手本。後続の転移を生徒が行う。 |
-| n09-stage-01 | `n09-q01-negative` | value | CHANGE：個別設計参照 |
-| n09-stage-01 | `n09-01` | zeroLogic | CHANGE：個別設計参照 |
-| n09-stage-02 | `n09-definition` | なし | KEEP：定義・境界の説明・最初の手本。後続の転移を生徒が行う。 |
-| n09-stage-02 | `n09-q02-root` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-02 | `n09-q02-negative-square` | signFactor, value | CHANGE：個別設計参照 |
-| n09-stage-02 | `n09-02` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n09-stage-02 | `n09-boundary` | なし | KEEP：定義・境界の説明・最初の手本。後続の転移を生徒が行う。 |
-| n09-stage-03 | `n09-q03-inside` | value | CHANGE：個別設計参照 |
-| n09-stage-03 | `n09-03` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-04 | `n09-q04-nonnegative` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-04 | `n09-q04-negative` | oppositeSign, value | CHANGE：個別設計参照 |
-| n09-stage-04 | `n09-04` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n09-stage-04 | `n09-05` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-05 | `n09-q06-squares` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-05 | `n09-q06-order` | relation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-05 | `n09-06` | addend, zero | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-05 | `n09-q07-negation` | scope | CHANGE：個別設計参照 |
-| n09-stage-05 | `n09-07` | outsideFactor, secondOperand, left, sign | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-06 | `n09-decimal-method` | なし | KEEP：小数の分数化方針・補助値の参照。続く平方の組立てを問うため、同じ補助計算を写す穴にしない。 |
-| n09-stage-06 | `n09-p001-q08-left-square` | L1, L2, L3 | CHANGE：個別設計参照 |
-| n09-stage-06 | `n09-p001-q08-right-square` | R1, R2, R3 | CHANGE：個別設計参照 |
-| n09-stage-06 | `n09-p001-q08-lower-sign` | C | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-06 | `n09-p001-q08-upper-sign` | D | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-06 | `n09-08` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n09-stage-06 | `n09-09` | lowerRelation, upperRelation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-07 | `n09-parts-target` | なし | CHANGE：個別設計参照 |
-| n09-stage-07 | `n09-q10-reject-truncation` | value | CHANGE：個別設計参照 |
-| n09-stage-07 | `n09-10` | n | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-08 | `n09-q11-remainder` | sign, value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-08 | `n09-11` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n09-stage-09 | `n09-q12-lower` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-09 | `n09-q12-upper` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-09 | `n09-12` | lower, upper | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-10 | `n09-q13-reverse` | S1, S2 | CHANGE：個別設計参照 |
-| n09-stage-10 | `n09-13` | left, right | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-11 | `n09-q14-positive-integer` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-11 | `n09-q14-positive-remainder` | remainderOperation | CHANGE：個別設計参照 |
-| n09-stage-11 | `n09-q14-negative-integer` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n09-stage-11 | `n09-q14-negative-remainder` | sign | CHANGE：個別設計参照 |
-| n09-stage-11 | `n09-14` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n10-stage-01 | `n10-q01-square` | rootSquare | CHANGE：個別設計参照 |
-| n10-stage-01 | `n10-01` | value | CHANGE：個別設計参照 |
-| n10-stage-01 | `n10-q02-sign` | value | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-01 | `n10-02` | candidateSign, squareValue, identificationReason | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-02 | `n10-q03-expand` | powerA, powerB | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-02 | `n10-03` | aValue, bValue | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-02 | `n10-q04-sign` | relation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-02 | `n10-04` | rootReason | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-03 | `n10-q05-denominator` | relation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-03 | `n10-q05-square` | numPower, denPower | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-03 | `n10-05` | numerator, denominator | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-03 | `n10-q06-sign` | relation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-03 | `n10-06` | quotientReason | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-04 | `n10-q07-product` | insideOperation, inside | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-04 | `n10-07` | squareFactor, factor | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-04 | `n10-q08-factor` | coefficient | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-04 | `n10-08` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n10-stage-05 | `n10-q09-left` | squareFactor, coefficient | CHANGE：個別設計参照 |
-| n10-stage-05 | `n10-q09-right` | squareFactor, coefficient | CHANGE：個別設計参照 |
-| n10-stage-05 | `n10-09` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n10-stage-05 | `n10-q10-coefficients` | coefficient | CHANGE：個別設計参照 |
-| n10-stage-05 | `n10-10` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n10-stage-06 | `n10-q11-formula` | middleSign | CHANGE：個別設計参照 |
-| n10-stage-06 | `n10-11` | leftSquare, rightSquare | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-06 | `n10-q12-product` | inside | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-06 | `n10-12` | constant | CHANGE：個別設計参照 |
-| n10-stage-07 | `n10-q13-identity` | operation | CHANGE：個別設計参照 |
-| n10-stage-07 | `n10-13` | left, right, difference | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-08 | `n10-14` | operation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-08 | `n10-q15-factor` | factor | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-08 | `n10-15` | numerator | CHANGE：個別設計参照 |
-| n10-stage-08 | `n10-q16-denominator` | square, denominator | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-08 | `n10-16` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-| n10-stage-09 | `n10-q17-factor` | factor | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-09 | `n10-q17-nonzero` | relation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-09 | `n10-17` | productOperation | CHANGE：個別設計参照 |
-| n10-stage-10 | `n10-18` | A, B, C | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-10 | `n10-q19-distribute` | secondOperand, productSign | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-10 | `n10-19` | left, inside | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-11 | `n10-q20-factor` | factor, factorSign, reason | CHANGE：個別設計参照 |
-| n10-stage-11 | `n10-20` | power, denominatorOperation | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-11 | `n10-q21-denominator` | D | KEEP：独立した計算・比較・組立ての既存判断を維持。 |
-| n10-stage-12 | `n10-q21-expand` | P, K, Q | CHANGE：個別設計参照 |
-| n10-stage-12 | `n10-q21-constants` | C | CHANGE：個別設計参照 |
-| n10-stage-12 | `n10-21` | なし | KEEP：前段の確定結果を結ぶ説明・結論。新しい未回答操作を代行しない。 |
-
-対応数：N09 41node＝変更13＋維持28、N10 45node＝変更13＋維持32。全86＝変更26＋維持60。数は監査範囲の照合に使い、穴の多さを合格基準にしない。
-
-## 保存・旧回答の移行
-
-N09第5版→第6版、N10第4版→第5版を新revisionとして追加する。現行のcompiledは不変snapshot `n09ConstructionCompiledR5.json` / `n10ConstructionCompiledR4.json`として保管する。既存R4/R3 snapshotとN10 pilot R4 snapshotも保護し、同じrevision番号でもcompiledHashの異なる版を混同しない。
-
-| 回答の種類 | 移行方針 |
+| 領域 | 変更の役割 |
 |---|---|
-| 同じ対象・問いの意味・型・正答・全候補・前提を維持するKEEP | 同じ学習行為として既存回答を継承。文言のみの整備も意味不変を個別照合する。 |
-| 新しい変形・計算・比較、旧valueと同値でも別の判断 | 新key/part IDで未回答。数値一致だけで旧回答をaliasしない。 |
-| 廃止する旧part | 原記録と履歴を旧版に保管し、現行の分母や達成数から外す。削除した回答を消去しない。 |
-| q21の旧P=4/Q=3 → q20の非零証明で初めて問う平方 | 問う時点・前提が変わるためARCHIVE_ONLY。新しい平方keyは未回答。後の展開では確定値4/3を参照する。 |
-| q21旧K=4 → 符号込みの交差項の和−4 | 型/意味が変わるためARCHIVE_ONLY。新signedCrossSumの未回答を維持し、4→−4の自動変換をしない。 |
-| 新しい前提より後のKEEP回答が旧版で済んでいる場合 | 記録は保持するが、新しい前提の解放を飛ばさない。最初の未解決の新しい判断から再開する。 |
+| `work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json` | 本案の新学習契約をsource-boundで記述。元Word/原問題/図のbindingを維持。 |
+| `tools/textbook/transformation/nested-lesson.mjs` / `apply-n0910-construction.mjs` | reviewed design pinと新版生成。全生成物が同じ設計から再現できることを確認。 |
+| `src/data/textbook/math/numbers/` のcompiled/pins/revision/lesson | N09r7/N10r5を登録し、現在版/過去版snapshotを不変保管。 |
+| `src/domain/textbookSchema.ts`、`nestedMigration.ts`、`nestedLessonStorage.ts`、revision/archive pageとroute | 新版・明示対応・厳密hash鎖・main/reset/旧版隔離の保護。必要なパスだけ変更。 |
+| `nestedMathTemplate.ts` / `NestedConstructionMath.tsx` / `nestedMathGeometry.ts` / `ConstructionLessonReadingFlow.tsx` | 正答後の自然AST出力、未確定44px操作との分離、認定状態でのgroup再計画、必要な複数条件候補の表示。 |
+| `nestedLesson.ts` 等のchoice型/公開projection | 使用する場合だけmathLines表示フィールドをwhitelist。expected/正答印/誤答説明の先出しをしない。 |
+| 既存compiler/renderer/geometry/unit/migration/bridge/archive/generator検査 | 今回の実欠陥と学習単位/保存に対応する意味のある回帰。旧数値だけの期待更新で不具合を消さない。 |
 
-移行元はrevision番号だけで判定せず、unit/schema/source/compiledHashの正確なallowlistで照合する。旧native版は既存の検証済みadapterとsnapshotの段階的な鎖を介して対象版へ移す。既にlegacy N10第2版から移行された7件の保留記録も、旧第3版snapshotを介する意味対応を保持する。古い版を最新へ直接丸めない。
-
-既存のfirstValue・回数・時刻・履歴・原回答を保存し、新しい正答イベントを作らない。main-only保存の救済、既存namespaceを維持する。旧版試し解答・read-only比較は現行の保存byteを書き換えない。リセット取消は無変更、確定は現在単元の現在版だけを対象とし、他単元・旧snapshotを巻き込まない。全リセットを移行の代わりに使わない。
-
-## Expected Affected Areas / Patch Plan
-
-| パス・領域 | 役割 |
-|---|---|
-| `work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json` | source-boundな導出設計・新しい各操作を追加。原問題とsource bindingは維持。 |
-| `tools/textbook/transformation/nested-lesson.mjs` / `apply-n0910-construction.mjs` | 詳細設計からの行・穴・解放契約の生成、必要なrevision登録。既存契約で足りる場合は生成基盤を変更しない。 |
-| `src/data/textbook/math/numbers/`内active compiled・pins・lesson | N09第6版/N10第5版、現在版の不変snapshot、関連hashを生成。手作業でcompiledだけ変更しない。 |
-| `src/domain/textbookSchema.ts`および既存migration/storage/progress | 新版識別、意味に基づくKEEP/ARCHIVE/新規、厳密なhash照合。 |
-| 既存N09/N10 revision/archive route・`TextbookUnitPage` | 最新版と保管版の表示、旧版比較・保存隔離。 |
-| 既存design/schema/generator/unit/migration検査、finite-math・app/layout検証器 | 今回の操作漏れ・解放漏れ・保存不整合を検出する期待値と検査を追加する。 |
-
-実装前に上の役割から実際の変更ファイルを確定する。承認範囲外の内容変更が必要なら本案を改訂する。既存の技術PASSを無効化したり、全期待値を機械的に更新してFAILを消したりしない。
+共有rendererの直接利用先はN09/N10のconstruction readerと関連tools/tests。N08は同じrendererを直接使わないが、表示基準・共通header/resetと既存版routeを影響確認する。共有static compilerを使う変換toolも生成/grammarを検査する。他教材の設問を無断で変更しない。
 
 ## Risks
 
 | リスク | 防止・確認 |
 |---|---|
-| 穴を増やしても単なる写しになる | 完成解法の操作との一対一対応、既知結果の参照、右側の転移問題の足場を減らす理由を審査する。 |
-| 一つの大きな式の選択が複数操作を隠す | 分配する各交差項と符号付き和、分子/分母の束縛を別判断として確認する。 |
-| 短い符号穴が本文から漏れる | 回答前の実表示にlead/前提/候補説明も含めて確認する。 |
-| 後続KEEP回答が新しい問いを飛ばす | 新前提を未解決のまま保存したケースで再開位置と段階解放を検査する。 |
-| 同じ数値の旧回答を別の意味へ誤継承 | 全旧partのKEEP/ARCHIVE対応、各版hash、P/Q/Kの明示的な非継承を審査する。 |
-| 連続導出が長くなり携帯で崩れる | 320/390/430/1440pxで未回答・誤答・途中・完了と履歴の配置を確認する。 |
-| 技術PASSを教材の参加度PASSと誤る | CODE/描画/非作者の数学意味審査/本人確認を別々に記録する。 |
+| 穴を減らす反動で主判断までAUTOになる | 完成解法の主要推論と生徒回答を対応させる。各rowの「提示/新判断/確定結果」を審査する。 |
+| 高校生だから計算は不要と決めつける | §53の必要計算比較、新しい公式の初回適用と転移、非零/正性/定義域を保護する。 |
+| 条件の組が単なるor当て/因子の写しになる | 二因子の零条件全体を作る契約と誤答候補を審査し、未知法則の説明と具体適用を区別する。 |
+| 受理済みの正答が新版の別意味へ移る | 全旧partのKEEP/RETIRE/NEW対応を検査。旧or/P/Q/K等は新意味へaliasしない。 |
+| compact化で未回答のhit域/根号/分数が壊れる | 混在状態、正答後の通常数式との比較、未回答44px/衝突/axisを別々に測定する。 |
+| plannerが未回答正答値を知って先出しする | 正答済み値だけを状態入力にし、未回答は全候補中立予約。cacheと可視rowに状態を結び付ける。 |
+| 画面が正答後も昔の幅/改行を保持する | 正答状態で再計画し、自然な括弧・根号・指数・分数の高さと余白を通常描画と比較する。 |
+| 有効な旧試験/承認を全部やり直す | 対象SHAと変更依存を記録し、未変更の有効結果を継承。未解決/新変更のある部分だけ必要に再検査。 |
 
-## Verification Plan / 修正ワークフロー
+## Verification Plan
 
-1. **案の審査**：本書の完成解法と全候補を数学・意味で照合し、全86nodeの変更/維持理由、各穴の独立した学習行為、先出し、旧回答対応、解放順を非作者が審査する。構造検査は提案書の整合確認であり製品テストのPASSと呼ばない。
-2. **本案の明示承認**：[正本WORK_SYSTEM §11](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/governance/WORK_SYSTEM.md#L246)の「The revised proposal must be shown before implementation.」に従う。この具体案を承認対象にする。本人の「那来吧」は具体案作成の指示として記録し、未提示の新しい設計の実装承認へ転用しない。
-3. **代表ブロック**：承認後、写真のN09最初の場面（負数の平方→全解の導出）を隔離候補で実装・検証する。[正本WORK_SYSTEM §12A](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/governance/WORK_SYSTEM.md#L270)に従い、実SHA・実画像をGitHub確認票へ固定し本人の細部OK/要修正を受ける。確認前に未確認の設計を残りへ一括量産しない。
-4. **限定適用とCODE検査**：確認済みの方式で残りの承認対象へ進む。生成一致、ID/part参照、依存循環、唯一正答、型/回答形式、mirror、hide、KaTeX、数学、関連単元・移行回帰、型/lint/buildを検査する。複数操作を一回答で飛ばす欠陥を検出する検査を追加する。有限数学のunsupportedは意味審査へ渡し、無条件PASSにしない。
-5. **移行・保存**：現行全回答/一部回答/main-only、保管native各版、legacy第2版由来、同revision別hash、旧版比較、reset取消/確定、後続KEEP済み＋新前提未回答を検査する。問う意味が変わったpartに旧回答が入らないこと、旧回答数/時刻/履歴が保持されることを確認する。
-6. **実画面と非作者審査**：四幅で新partの全正答/全誤答候補、行の解放・足場消去・完了・reload・履歴・旧版・resetを操作する。特に回答前後の連続導出と学習操作の網羅を目視する。N08の共通画面基準、番号枠、選択肢位置、式番号、根号/分数/括弧を比較する。小ブロックの画像確認と横断監査を正本の手順で記録する。
-7. **G2横断監査**：N09全41/N10全45node、保持N08各版/N11、共有部分への影響を実差分に応じて検査し、PASS/FAIL/UNVERIFIEDを対象SHAとともに分ける。既存有効試験を継承し、変更や未解決理由なく同じ検査を繰り返さない。
-8. **公開・本人総チェック**：候補hashとmanifestを固定してから、公開用の具体的差分を別の公開ゲートへ渡す。本案にmain反映・公開の承認は含めない。認可された実働URLで配信byte/操作を照合後、本人が合意範囲を実際に確認する。小ブロックOK・CI・公開成功を本人総合受入、Gold、fitへ読み替えない。
+1. **具体案の非作者審査**：N09作者A/N10作者B、相互に相手の数学・主判断・選択肢・誤答説明・先出し・移行を審査。rootの共通renderer/migration/統合も審査対象にする。全86nodeの一致、旧全partの処遇、新keyと解放を構造照合する。これは製品試験ではない。
+2. **本案の明示承認**：[main WORK_SYSTEM§11](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/governance/WORK_SYSTEM.md#L246)の「The revised proposal must be shown before implementation.」に従う。今回の「修正方案を作れ」はこの具体案の作成指示であり、まだ提示していなかった設問やrenderer契約の承認に転用しない。
+3. **代表の実装**：承認後、写真のN09負数の平方→全解と、その自然組版に必要な共有rendererを隔離候補へ実装。正答が普通の式へ戻り、主たる零条件生成を生徒が行い、未回答は操作できることを確認する。
+4. **代表の実SHA/実画像確認**：[main WORK_SYSTEM§12A](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/6bc54447ef015a2a579a56a5966ceb58a0600d3a/governance/WORK_SYSTEM.md#L291)に従い、固定候補/正確な出所の原画像をGitHub確認票へ結び付け、本人の細部OK/要修正を受ける。未確認の方式を残りへ量産しない。この確認を本案の再承認や全体受入へ読み替えない。
+5. **残りの限定適用**：代表の確認後、単元別表のCHANGEだけを適用。KEEPの学習契約と原問題/図を差分比較。意味を変える追加指摘は本案を改訂し、承認を無断拡張しない。
+6. **CODE/数学/学習単位**：source-bound生成一致、part/row/候補一意性、先行gate・循環なし・mirror証明・足場消去、型/変更lint/build、関連回帰。完成解法の主判断が生徒回答に残っているかを非作者意味審査する。有限数学のunsupportedは必要な意味審査へ渡し、無条件PASSにしない。
+7. **保存/移行**：各既知native revision/hash、legacy r2の7記録、現行・旧版main-only、部分/誤答/全完了、新旧keyとreset marker不整合/後続KEEP済み＋新前提未回答、未知hash拒否を確認。全旧recordの原値/時刻/回数/event、保管記録/他unit保存を照合する。旧版試し解答の保存隔離、reset取消/確定/reloadを実操作する。
+8. **表示**：320/390/430/1440pxで初期・全誤答候補・部分正答・全正答・次stage・履歴・旧版の指定範囲を操作。Main/Math-Italic等の実loaded faceとHTTP成功、同じ本体compiler/DOM出所を必須にし、fonts.readyだけのPASSを禁止する。正答済みの括弧/根号/分数/指数/関係記号を通常描画と比較し、未回答の44px・keyboard・衝突/overflow/式番号を別に確認。正答後に自然寸法へ変わることを、旧frame固定検査で誤ってFAILにしない。
+9. **G2横断・公開・本人総チェック**：対象86nodeと保管N09/N10native版、保持N08各版/N11、共有toolへの実影響をPASS/FAIL/UNVERIFIEDで記録する。必要なblockerが残れば公開へ進まない。候補manifestを固定し、公開用の具体的差分を別に承認対象にする。認可された実働URLで配信byte/操作を照合後、本人が合意範囲を総チェックする。CODE・画像・公開成功を本人合格/Gold/fitへ転用しない。
 
-正式Storeの欠落26イベントについては、W046継続に対する本人の一回限りの特例を維持する。古い台帳へ戻って停止したり、receiptやイベントを創作したりしない。全体governanceの他Work既存38件は保持し、本Work追加0と区別する。他Workの承認を補完して全体PASSとはしない。
+最新Storeの欠落26イベントに対するW046継続の本人特例を保持し、旧台帳へ戻って同じ検査/受理を再要求したり、receiptを創作したりしない。全体governanceの既存38件は別Workの同一ERROR集合として記録し、本Work追加0/全体FAILと分ける。今回の具体案作成で全体governanceや製品QAが成功したとは記さない。
 
 ## Approval
 
-Status: APPROVED
-Approved by user: YES
-Approval evidence: 2026-11-02 本人「可以来来来做给我做」。直前のUX04具体案への実装承認として受領。承認設計はcommit778a6c3acb18765d99f3ebaf922457326af536f1、SHA256 3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201。本書は状態/承認欄だけ更新し、設計本文を拡張しない。
-Approval scope: 本書の限定設計の実装・候補検証。代表ブロックの実画像確認、横断監査、別の公開承認、実働アプリでの本人総チェックは既存手順のまま。
+Status: WAITING
+Approved by user: NO
+Approval date: —
+Approval evidence: 未受領。本人の依頼は本具体案の作成。
+Scope: 本書の限定教材改訂・自然組版・保存保護の実装と候補検証。既存の代表細部確認・横断監査・別公開承認・本人総チェックを保持。
 
 ## Review History
 
-- UX03：承認・実装・公開の履歴を上記固定commitで保持。本人は排版改善を評価し、導出参加度は要修正とした。
-- UX04：原因→同型監査→正本基準照合→完成解法・各操作・移行の詳細案。単元別著者と相互非作者審査を分け、審査記録は `evidence/ux04-proposal/REVIEW.md` に保存する。
-- Supersedes: UX03の今後の修正方針。既承認版の履歴・技術PASS・旧回答を取り消さない。
-- User acceptance / Gold / fit: 未成立。
+- Supersedes: UX04の今後の修正内容。UX04の実承認・実装・実行結果は固定commitで履歴として保管する。
+- 原因/全86node監査/公式例：record32139fa4、evidence/ux05-feedback。
+- 本案の担当・対象hash・初回所見・補修・最終非作者審査は `evidence/ux05-proposal/REVIEW.md` へ保存。
+- 同じmodel/履歴共有の2担当であり、盲検・model独立性を主張しない。正式Storeの新受理receiptは作らない。
+- User detailed acceptance / final acceptance / Gold / fit: 未成立。
+

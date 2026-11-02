@@ -1,3 +1,11 @@
+# UX05 — 具体案の検証状態
+
+Status: PROPOSAL-REVIEWED / IMPLEMENTATION-NOT-STARTED
+
+[完成具体案](PROPOSAL.md)・[提案構造照合](evidence/ux05-proposal/STRUCTURE_CHECK.json)・[非作者審査](evidence/ux05-proposal/REVIEW.md)を保存。全86node/旧115partを一意に対応、変更25/維持61、新19。これは設計資料の照合であり製品テストではない。実装/実画像/新版保存移行の検証は承認後。旧UX04の技術PASSと本人要修正は以下に保持し、UX05合格へ流用しない。
+
+---
+
 # UX-03 実配信検証 — 最新状態
 
 Status: PARTIAL / 技術検査PASSを保持、本人評価は導出参加度の要修正

@@ -1,0 +1,63 @@
+{
+  "kind": "PROPOSAL_STRUCTURE_ONLY",
+  "productTestPerformed": false,
+  "units": [
+    {
+      "unit": "n09",
+      "nodeCount": 41,
+      "changeNodes": [
+        "n09-q01-negative",
+        "n09-01",
+        "n09-q02-negative-square",
+        "n09-q03-inside",
+        "n09-q04-negative",
+        "n09-06",
+        "n09-q07-negation",
+        "n09-07",
+        "n09-decimal-method",
+        "n09-p001-q08-left-square",
+        "n09-p001-q08-right-square",
+        "n09-q10-reject-truncation",
+        "n09-q11-remainder",
+        "n09-q13-reverse",
+        "n09-q14-positive-remainder",
+        "n09-q14-negative-remainder"
+      ],
+      "keepNodeCount": 25,
+      "oldPartCount": 52,
+      "keptPartCount": 32,
+      "retiredPartCount": 20,
+      "newPartCount": 11,
+      "targetPartCount": 43,
+      "designSha256": "8be141bd7783666b782f2dbdb7ba076b5ef996e99ffabc3418bd2b420b80a912",
+      "baselineCompiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+      "errors": []
+    },
+    {
+      "unit": "n10",
+      "nodeCount": 45,
+      "changeNodes": [
+        "n10-q10-coefficients",
+        "n10-q11-formula",
+        "n10-q13-identity",
+        "n10-17",
+        "n10-q19-distribute",
+        "n10-19",
+        "n10-q20-factor",
+        "n10-20",
+        "n10-q21-expand"
+      ],
+      "keepNodeCount": 36,
+      "oldPartCount": 63,
+      "keptPartCount": 52,
+      "retiredPartCount": 11,
+      "newPartCount": 8,
+      "targetPartCount": 60,
+      "designSha256": "1deef27e4f180b659d0f4c1082dd02a1e38cbee21f72168c3ddef88c56a9c9c8",
+      "baselineCompiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

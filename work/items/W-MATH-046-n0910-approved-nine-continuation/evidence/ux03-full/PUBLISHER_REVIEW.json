@@ -1,0 +1,29 @@
+{
+  "author": "/root",
+  "nonauthorCodeReviewer": "/root/w046_source_review",
+  "status": "LIMITED_PASS",
+  "headSHA": "fc961f58c22f0cc3505f27aff2dec344a52ac660",
+  "baseSHA": "e49486d13119058ff063e75ef84d60660210bd41",
+  "productSourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "paths": [
+    ".github/workflows/deploy-pages.yml",
+    "tools/release/w046-publish-check.mjs"
+  ],
+  "reviewCorrections": [
+    "Retained N08 r7/r6/legacy/N11 checks execute before upload",
+    "Required hashes include CSS, compiled validator, revision registration and snapshots (25 paths)",
+    "Reset preserves seeded other-unit and previous-revision native ledgers",
+    "Native archive trial requires all storage bytes unchanged"
+  ],
+  "codeReviewLimit": "Execution is recorded separately in PUBLICATION_PREFLIGHT.json; no production deployment or final user acceptance",
+  "ci": {
+    "governance": {
+      "runId": 41388747203,
+      "conclusion": "success"
+    },
+    "codeCheck": {
+      "runId": 41388747220,
+      "conclusion": "success"
+    }
+  }
+}

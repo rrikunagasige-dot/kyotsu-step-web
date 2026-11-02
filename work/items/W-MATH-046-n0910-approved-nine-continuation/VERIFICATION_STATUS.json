@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "IMPLEMENTING_PILOT_BLOCK_CHECK_PENDING",
+  "status": "WAITING_PUBLICATION_APPROVAL",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -374,5 +374,54 @@
       "remainingOutsideWork": true
     },
     "publicationChanged": false
+  },
+  "ux03Full": {
+    "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+    "testedLocalSHA": "1151305432ce2ebdd3a878718458d1c4f0701dc9",
+    "identicalGitTree": "06f5da34c349b23dec9327da4c616980c4e7f670",
+    "revisions": {
+      "n09": 5,
+      "n10": 4
+    },
+    "parts": {
+      "n09": 46,
+      "n10": 63
+    },
+    "newParts": 22,
+    "preservedParts": 87,
+    "protectedNodes": 69,
+    "regressions": 133,
+    "generatorTests": 8,
+    "browserStates": 1732,
+    "geometries": 9692,
+    "screenshots": 464,
+    "migrationCases": 7,
+    "currentRecoveryCases": 4,
+    "finiteMath": {
+      "status": "PARTIAL",
+      "parts": 109,
+      "candidateCount": 179,
+      "unsupported": 50,
+      "failed": 0
+    },
+    "evidenceLibraryFileId": "libfile_5f3990a90e00819188f0cb550e908fff",
+    "evidenceSha256": "d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b",
+    "publicationPR": 134,
+    "publisherSHA": "fc961f58c22f0cc3505f27aff2dec344a52ac660",
+    "localPublicationEightCases": "PASS",
+    "retainedPreflight": "PASS",
+    "userFinalAcceptance": false,
+    "published": false,
+    "formalReceipt": false,
+    "mainPublisherCI": {
+      "governance": {
+        "runId": 41388747203,
+        "conclusion": "success"
+      },
+      "codeCheck": {
+        "runId": 41388747220,
+        "conclusion": "success"
+      }
+    }
   }
 }

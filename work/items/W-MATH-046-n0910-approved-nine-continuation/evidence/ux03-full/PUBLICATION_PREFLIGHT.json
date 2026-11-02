@@ -1,0 +1,36 @@
+{
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "results": [
+    {
+      "name": "n0910",
+      "status": "PASS",
+      "directory": "/tmp/w046-ux03-prepublish-n0910",
+      "log": "/tmp/w046-ux03-prepublish-n0910-fixed.log"
+    },
+    {
+      "name": "n08",
+      "status": "PASS",
+      "directory": "/tmp/w046-ux03-prepublish-n08",
+      "log": "/tmp/w046-ux03-prepublish-n08-fixed.log"
+    },
+    {
+      "name": "r6",
+      "status": "PASS",
+      "directory": "/tmp/w046-ux03-prepublish-r6",
+      "log": "/tmp/w046-ux03-prepublish-r6-fixed.log"
+    },
+    {
+      "name": "legacy",
+      "status": "PASS",
+      "directory": "/tmp/w046-ux03-prepublish-legacy",
+      "log": "/tmp/w046-ux03-prepublish-legacy-fixed.log"
+    },
+    {
+      "name": "n11",
+      "status": "PASS",
+      "directory": "/tmp/w046-ux03-prepublish-n11",
+      "log": "/tmp/w046-ux03-prepublish-n11-fixed.log"
+    }
+  ],
+  "verificationShim": "Same existing N11 decode wait as the reviewed publisher workflow; source restored byte-for-byte"
+}

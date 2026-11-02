@@ -1,0 +1,8 @@
+{
+  "message": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4179/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n08\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4179/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n08\", waiting until \"load\"\u001b[22m\n",
+  "sourceSHA": "LOCAL_UNCOMMITTED",
+  "width": 320,
+  "url": "about:blank",
+  "errors": [],
+  "captures": 0
+}

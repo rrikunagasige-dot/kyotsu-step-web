@@ -1,20 +1,16 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: IMPLEMENTING
-Review: REMAINING-16-IMPLEMENTED / FULL-REVIEW-IN-PROGRESS / 本人G3_FINAL要修正は未解消
-- P-W046-UX-03は本人「まあこれでいいでしょう。承認」で明示承認済み。承認対象の設計本文hash4409a8d8…は旧commit85a5367に保持。PROPOSAL.mdの承認・実装状態欄だけ現状へ更新し、設計本文は変更しない。
-- H07（√125）と共通表示・操作の代表実装を固定source `830b620b343112e4f8c4e3d00b51461dc8ecc098` へ保存。新N10 r4、compiledHash `5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b`。N09 compiledと旧N10 r3 snapshotは基準byte一致。残り16nodeの穴設計は未変更。
-- [確認①の実画像票](REVIEW_SHEET.md)：四幅で正性→平方→同定理由→結論、N08基準の段階帯・番号付き縦選択肢・左下resetを確認できる。AのH07意味審査とBの固定SHA実画像審査は限定PASS。本人の細部OKは未受領。
-- 検証：120回帰・生成器8件・型/変更TS lint/buildがPASS。四幅で全52parts/各102誤答、828状態・3528幾何、保存/旧版/履歴/resetと移行をPASS。finite-mathは90parts/候補179、失敗0・意味審査対象31でPARTIAL。全体を自動合格へ変更しない。
-- 全体governanceは既存の他Work記録不足等で未合格。源candidate42件=修正前42件、今回の新規違反なし。このWorkの正規記録整備で自身の4件を解消、残る38件は他Workの既存不整合。本番main/Pages未変更、Gold/fitなし。正式台帳の受理を捏造しない。
-- 次：承認案の代表ブロック本人確認→細部OKなら残り16nodeへ限定適用→影響検査・非作者審査・別公開ゲート・本人総チェック。現時点でWork完了とはしない。
-
-## UX-03 残り16箇所への続行（本人指示）
-- 代表ブロック実画像と確認票を提示した後、本人「那继续做」を受領。残り16箇所の実装・検証へ進める指示として扱う。「細部OK」という未発言や最終品質受入は作らない。今回の明示続行指示を理由に代表の同じ確認依頼へ戻さない。
-- H01-H06/H08-H17を生成元へ反映。N09 r5=46parts/31回答node、N10 r4=63parts/40回答node。既存H07の3判断は維持。旧partの値/候補/意味と他69nodeの学習契約を保持。N09r4、N10r3、pilotN10r4のcompiled snapshotを保護し、移行は明示hashとpart意味一致で限定。
-- 初回生成は非対応\cdots/escaped braceで拒否。規則を緩めず、既存対応構文へ補修した。初回検査でN09r5のschema登録不足とH16の旧依存fixture不一致を検出し、明示版登録とfactorSign前提検証を追加。
-- 非作者Aの設計審査でH12の「和」の初出定義欠落を発見し復元。H14は分子の演算を取り出すラベルを補い、未認定mirrorを先出しせず、正答後に上下の演算を連動表示。
-- 123回帰/生成器8件/型検査/変更TS lint/buildを確認。追加archive検査2件は別記。数学109partの有限検算は失敗0、意味審査対象50でPARTIAL。最終固定sourceによる四幅実画面/移行と非作者画像審査へ進む。main/Pagesは未変更。
+Status: VERIFYING
+Review: UX03-FULL-REVIEW-PASS / PUBLICATION-PREFLIGHT-PASS / 本人最終受入は未実施
+- 本人は代表画像提示後に「那继续做」と続行指示。これに基づき承認済みUX03の残り16箇所を実装した。「細部OK」という未発言や最終受入を創作しない。同じ代表確認依頼へ戻らない。
+- 固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。実試験source `1151305432ce2ebdd3a878718458d1c4f0701dc9` と完全tree `06f5da34c349b23dec9327da4c616980c4e7f670` 一致。N09 r5=46parts、N10 r4=63parts。旧87partsを保持し、新規22partsのみ未回答。17対象node以外69nodeの学習契約を維持。
+- 133回帰・生成器8・型/変更lint/build PASS。二単元×四幅、1732状態/9692幾何、全211誤答候補×四幅、履歴/旧版/reset PASS。非作者Bが17nodeの完成画面を四幅、初期/誤答を320pxで実見。旧版移行7ケース、現行main復旧4ケースPASS。有限数学109parts・179候補は失敗0/意味審査対象50でPARTIAL。
+- sourceAは移行作者・設計と行hideの非作者審査、sourceBは検査runner作者・製品/保存/画像の非作者審査、主担当は設計/生成/描画統合と試験を担当。作者の変更を自身の審査だけでPASSにしない。
+- 公開用[Draft PR #134](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/134)、head `fc961f58c22f0cc3505f27aff2dec344a52ac660`。main `e49486d13119058ff063e75ef84d60660210bd41` 起点の公開設定/検証器2filesのみ。source branch全体をmergeしない。公開承認前、main/Pagesは旧公開のまま。
+- 配信用buildのN09/N10八ケースはPASS。保持N08r7/r6/legacy/N11の公開前検査も全件PASS。25source hash・全HTTP asset・namespace・旧版全storage不変・他unit/旧版ledgerを守るresetを公開前で検査。main側governance run41388747203 SUCCESS、code check run41388747220もSUCCESS。
+- 候補全体governanceは既存他Workの38件が残りFAIL、本Workの新規違反なし。欠落正式Storeに対する今回限りの本人特例を維持し、receipt/受理イベントを作らない。
+- [実画像・原FAILを含む検証証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)：36,237,029 bytes / SHA256 `d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b`。再開はこの現在地と[VERIFICATION.md](VERIFICATION.md)の最新版を参照し、旧R03/古い台帳/代表確認へ戻らない。
+- 次：PR #134の本人公開承認→公開前検査/配信/実配信検証→本人総チェック。本人受入・Gold/fitは自動認定しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -220,3 +216,32 @@ N09 r5／N10 r4を作り、現r4/r3を比較用に残す。原r3/r2も保持。�
 - Source固定後に撮影した全20PNGのhashと出所はevidence/ux03-pilot/PROVENANCE.json。確認①は撮影DOMへの注記であり製品内容ではない。Bは全20枚を実見し、固定SHAに対して限定PASS。AはH07の正性・同定理由の意味審査を明示PASS。誰の試験実行かを混同しない。
 - [VERIFICATION.md](VERIFICATION.md)と[実browser結果](evidence/ux03-pilot/BROWSER_RESULTS.json)に実行結果・保護対象・未検証範囲を記録。公開・本人受入・全17node完成は未認定。
 - 記録形式：このWork内のACTION_LOG/FINDINGS/VERIFICATIONを正規ファイルへ整備。歴史のWORK本文・旧失敗・旧承認は保持。PROPOSAL.mdは承認/実装状態欄のみ更新し、現文書hash `e5964b58fd3ebb7099856a9760bf04e503b6069f939493f1bf3d880b653a6fe2`、承認対象設計本文hash4409a8d8…とは役割を区別する。
+
+## 公開具体案 — P-W046-PUBLISH-UX03
+
+Status: PROPOSED / 本人公開承認待ち
+
+### Problem / Need
+公開中の旧N09/N10は本人要修正。承認済みUX03の修正版は候補で実装・検証済みだが、UX03の承認scopeは候補保存までなので、本番反映はここで分ける。
+
+### Proposed Solution
+[Draft PR #134](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/134)、head fc961f58c22f0cc3505f27aff2dec344a52ac660、base main e49486d13119058ff063e75ef84d60660210bd41の2filesをmainへ反映する。既存Pagesの公開workflowが固定製品source db99a485f857b1aefa7fb738456f36a830514158をcheckoutして検査し、合格時だけ配信する。
+
+### Scope / Out of Scope
+変更は `.github/workflows/deploy-pages.yml` と `tools/release/w046-publish-check.mjs` の2files。既存Pages/公開namespaceを保持。N09r5/N10r4とN08各保持版/N11を同じ固定候補から配信する。source branch全体のmain merge、追加教材編集、本人受入、Gold/fitは含まない。
+
+### Expected Affected Areas
+公開sourceの固定SHA、manifest、HTTP全asset byte照合、UI stage/履歴/native旧版/resetへ検査器を対応。新規修正はpublisher内だけで、検査済み製品sourceを変更しない。現在の公開namespaceの旧r4/r3回答はsource内の限定hash移行adapterで保持し、22新規partのみ未回答となる。
+
+### Risks / Rollback
+font/環境差、配信cache差、保存移行を公開前と実配信の双方で確認する。公開前FAILならupload/deployへ進まない。公開後FAILは実配信SHA/原FAIL/旧新版記録を保持し原因補修へ戻る。main/旧固定source94dfd300と旧版native snapshotを保持し、ロールバック時にも新版回答を旧版へ逆流させない。実配信検証を本人受入へ転用しない。
+
+### Verification Plan
+候補133回帰/8生成器/型lintbuild、二単元四幅1732状態/9692幾何と非作者画像審査を継承。publisherは25path hash、同一実namespace、HTTP全asset、N09/N10四幅の正誤/完了reload/履歴/旧版trial全storage不変/reset取消/確定/他unitと旧版ledger保護を検査する。N08r7/r6/legacy/N11の既存実操作もupload前に検査し、deploy後は再度実配信source/全byte/操作を照合。main起点PRのgovernance/code checkは両方SUCCESS（41388747203/41388747220）。local同等公開前検査の結果は最新VERIFICATIONへ追記する。
+
+### Review / Approval / Revision History
+主担当がpublisher作者。非作者sourceAが初回審査で保持教材のupload前検査/追加bytehash/reset他unit保存の不足を指摘し、補修後の2filesを限定PASS。実行PASSはコード審査と別記。作成時点の本人公開承認は未受領。本人「那继续做」はUX03の続行であり、この未提示だった公開案の承認へ転用しない。
+
+### 公開前検査の確定（本人承認前）
+固定db99a485の配信用buildで、N09/N10八ケース、保持N08r7/r6/legacy/N11の5検証群が全てPASS。HTTP全asset、25source bytehash、実namespace、native旧版trial全storage、resetでの他unit/旧版ledger不変を含む。N11のdecode待機は既存publisherと同じ検証専用shimで、実行後は元byteへ復元した。原環境エラー（別実行contextのpreviewへ到達不能）は /tmp/w046-ux03-prepublish-n08.log に保持し、同一実行context内serverで検査を実行した。製品欠陥やCODE PASSへ転用しない。
+結果は[evidence/ux03-full/PUBLICATION_PREFLIGHT.json](evidence/ux03-full/PUBLICATION_PREFLIGHT.json)と各prepublish log。main側governance/code checkの両SUCCESSを確認。PR #134はdraftのまま、公開承認待ち。

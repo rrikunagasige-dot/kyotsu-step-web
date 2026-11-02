@@ -16,3 +16,18 @@ H07の正性は正の因子二つの積から導ける。同定には正性と�
 
 ## F-UX03-05 — OPEN-QUESTION / 全体governance
 源candidateで42件の他Work記録不足等が残り、修正前adbbc230にも同じ42件があった。新規source違反なし。このWorkの正規記録整備による減少を別途記録する。未合格を隠して公開ゲートへ進めない。他Workの記録や承認を推測で補完しない。
+
+## F-UX03-06 — ERROR-QA / 補修済み
+初回16node実装でH12の「和」初出定義を落とした。非作者Aが指摘し、用語metadataと定義を保持。H14の分子だけの問い→全分数の式の接続は、元分数積を左辺へ明示して偽の等式鎖を防止。
+
+## F-UX03-07 — ERROR-IMPLEMENTATION / 補修済み
+初回実画像でH03/H11/H12/H13の未完…行が回答後も残存。表示gateへ全part正答後の足場消去を追加。部分hideによる未回答消失はvalidator/runtimeで防御。H03mirrorを失わずPublicPartを引き渡す回帰を追加。
+
+## F-UX03-08 — ERROR-RENDER / 補修済み
+N10/320のq17-factorでタグink gap4.06px、N09/390で括弧とタグの衝突を検出。mordだけの衝突対象へKaTeXのmclose/mopen/演算/関係/構造glyphを追加し、衝突時は最後の数式の下へ退避。9692実測で再発なし。H01論理行はKaTeX/日本語接続へ統一。
+
+## F-UX03-09 — ERROR-TEST / 検査側期待を訂正
+legacyr2比較は現行/既存keyを変更せず、既知のarchive-review専用cursor keyを新設する。初回全storage一致、続く空{}固定という検査期待が誤りだった。正確な専用keyと旧stage範囲内の整数cursorだけを許可し、既存全key byte不変は維持。原差分/FAILを保存。公開検証器のnative旧版比較は新規cursorを書かないので全storage厳密一致を要求。
+
+## F-UX03-10 — ERROR-RECORD / 補修済み
+公開待ちをWORK Statusの未登録underscore値で書いたため記録検査が既存38件から39件となった。規則を変えずStatus: VERIFYINGに戻し、公開待ちはReviewとJSONへ明記。修正前logを保存し、既存38件と今回増分を区別する。

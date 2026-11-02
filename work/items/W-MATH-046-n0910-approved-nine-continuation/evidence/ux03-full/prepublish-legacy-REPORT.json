@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "width": 390,
+  "answered": 34,
+  "wrong": 80,
+  "isolated": true,
+  "originalSwitch": true
+}

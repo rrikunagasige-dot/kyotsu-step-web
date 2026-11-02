@@ -1,0 +1,18 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux03
+
+ ✓ src/domain/nestedLesson.test.ts (9 tests) 21ms
+ ✓ src/domain/nestedLessonStorage.test.ts (10 tests) 18ms
+ ✓ src/components/textbook/nestedMathTemplate.test.ts (23 tests) 389ms
+ ✓ src/domain/nestedLesson.design.test.ts (11 tests) 758ms
+ ✓ src/stores/nestedProgressBridge.test.ts (5 tests) 22ms
+ ✓ src/domain/nestedMigration.test.ts (62 tests) 3827ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  406ms
+ ✓ src/pages/N0910ArchivePage.test.tsx (13 tests) 1295ms
+   ✓ N09/N10旧版の隔離比較 > N08専用readerの既存cursor namespaceを変更しない  313ms
+
+ Test Files  7 passed (7)
+      Tests  133 passed (133)
+   Start at  13:11:13
+   Duration  5.80s (transform 3.67s, setup 0ms, collect 9.15s, tests 6.33s, environment 1.67s, prepare 767ms)
+

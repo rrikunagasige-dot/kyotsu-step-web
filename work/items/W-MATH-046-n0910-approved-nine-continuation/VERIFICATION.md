@@ -1,3 +1,26 @@
+# W046 UX-03 — 最新検証
+
+Status: PARTIAL / 製品候補の限定検査合格、公開承認前
+
+- 固定製品GitHub source：db99a485f857b1aefa7fb738456f36a830514158。試験source1151305432ce2ebdd3a878718458d1c4f0701dc9とtree06f5da34c349b23dec9327da4c616980c4e7f670が完全一致。commit metadata差をsource差と取り違えない。
+- N09r5は41node/46parts、N10r4は45node/63parts。対象17node、保護69nodeのpart契約一致。原Word再読や全教材の新規受入は主張しない。
+- 133回帰/生成器8、型/変更lint/build PASS。69nodeはpilotからwhole nodeも不変。新規22part、既存87partの値/候補/型/学習意味を保持。
+- 全二単元四幅1732状態、9692幾何、464PNG。N09各46正答/88誤答候補、N10各63正答/123誤答候補。式group軸/番号ink/44px/neutral配置/漏洩防止/keyboard/完了reload/履歴/旧版/resetとN08/N11smoke PASS。pageerror/network failure0。
+- 非作者Bが17node完成状態を四幅、各最初の穴の初期/誤答を320pxで実見。H01/H03/H11-H14/タグの原欠陥を補修後に再検査。sourceAは行hideと意味の審査、主担当/BはAの移行コードを審査。
+- 旧版移行7ケース：N09r4二方式（38保持+8新回答）、N10r3二方式（49保持+14新回答）、pilotN10r4二方式（52保持+11新回答）、legacyr2（既存7保持+56新回答）。現行main-only復旧は2unit×部分回答/リセットの4ケース。記録のfirstValue/時刻/回数/eventと既存key byteを保持。
+- 有限数学は109parts/179候補、失敗0・unsupported50のPARTIAL。新しい意味判断とコードで計算した数値検算を混同しない。
+- 配信用buildの新checkerは二単元四幅8ケースPASS。25source hash、HTTP全asset、固定namespace、native旧版trial全storage不変、reset時の他unit/旧版valid ledger保持を確認。保持N08r7/r6/legacy/N11の追加公開前検査も全件PASS（PUBLICATION_PREFLIGHT.jsonと各prepublish log）。
+- 候補全体governanceは他Workの既存38件でFAIL。本Work追加0。main起点の公開PR #134のgovernanceは別run41388747203でSUCCESS。
+- main merge/Pages公開/本人総チェック/Gold/fitなし。正式Storeの新receiptなし。一回限り特例を保持し、正式工程受理を創作しない。
+
+証拠：[W046_UX03_Review_Evidence_20261102.zip](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)。36,237,029 bytes、SHA256 d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b。600原file（464補修後PNGに原FAIL画像/実測/移行/runner等を含む）、内包manifestで個別hashを照合できる。stage-completedという画像接尾辞は対象node回答後を意味し、stage全体完了の証明に使わない。
+
+詳細JSON/log：[evidence/ux03-full/](evidence/ux03-full/)。
+
+---
+
+## 以前の代表ブロック限定検査（履歴）
+
 # W046 Verification
 
 Status: PARTIAL

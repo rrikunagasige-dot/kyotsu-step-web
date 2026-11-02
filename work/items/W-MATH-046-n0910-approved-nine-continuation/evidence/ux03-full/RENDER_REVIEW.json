@@ -1,0 +1,103 @@
+{
+  "reviewer": "/root/w046_render_review",
+  "role": "non-author product render/source review; author of scratch verification runners only",
+  "sourceSHA": "1151305432ce2ebdd3a878718458d1c4f0701dc9",
+  "compiledHashes": {
+    "n09": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6",
+    "n10": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895"
+  },
+  "status": "LIMITED_PASS",
+  "scope": "P-W046-UX-03 17 target nodes / 69 protected part contracts / two-unit rendered states and current/old storage protection",
+  "browser": {
+    "states": 1732,
+    "geometries": 9692,
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "screenshots": 464,
+    "errors": 0,
+    "networkFailures": 0
+  },
+  "visualReview": {
+    "all17NodesCompletedAtWidths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "all17NodesFirstPartInitialAndFirstWrongAtWidths": [
+      320
+    ],
+    "method": "original PNGs directly and image contact sheets with unchanged screenshot content; 1440 PNGs scaled for contact overview",
+    "wholePages": [
+      "N08 320 reference",
+      "N10 320 after left sum simplification",
+      "N10 1440 after positive-factor proof"
+    ],
+    "findingsResolved": [
+      "H03/H11/H12/H13 incomplete ellipsis rows removed after correct decision",
+      "H01 all equations rendered as KaTeX and logical connector Japanese",
+      "H14 original fraction product retained as explicit LHS to avoid false numerator-to-fraction equality",
+      "equation tag gap/overlap around mclose glyphs addressed and eight unit-width all-state measurements passed"
+    ],
+    "newConfirmedDefects": []
+  },
+  "contracts": {
+    "protectedNodes": {
+      "n09": 35,
+      "n10": 34
+    },
+    "changes": {
+      "n09": [
+        "n09-01",
+        "n09-q04-negative",
+        "n09-06",
+        "n09-07",
+        "n09-09",
+        "n09-q14-positive-remainder"
+      ],
+      "n10": [
+        "n10-02",
+        "n10-04",
+        "n10-06",
+        "n10-q07-product",
+        "n10-07",
+        "n10-q09-left",
+        "n10-q09-right",
+        "n10-17",
+        "n10-q19-distribute",
+        "n10-q20-factor",
+        "n10-20"
+      ]
+    },
+    "approvedAnswers": "H01-H17 independent fixed correct-display oracle; text values normalized by correct choice display; other69 parts exact old snapshot contract comparison"
+  },
+  "evidence": {
+    "full": [
+      "/tmp/w046-ux03-full-n09-final",
+      "/tmp/w046-ux03-full-n10-final"
+    ],
+    "migrationEarlierFourPasses": "/tmp/w046-ux03-migration-scope-initial-1151305/RESULT.json",
+    "migrationRemainingThreePasses": "/tmp/w046-ux03-migration-final/RESULT.json",
+    "currentFallbackFourPasses": "/tmp/w046-ux03-current-recovery-final/RESULT.json",
+    "initialProductFailures": [
+      "/tmp/w046-ux03-full-n09-initial-f578912",
+      "/tmp/w046-ux03-full-n10-initial-f578912",
+      "/tmp/w046-ux03-tag-diagnostic"
+    ],
+    "scopeExpectationDiagnostics": [
+      "/tmp/w046-ux03-migration-scope-initial-1151305/n10-legacy-r2-archive-storage-diff.json",
+      "/tmp/w046-ux03-migration-cursor-expectation-fail-1151305/n10-legacy-r2-archive-storage-diff.json"
+    ]
+  },
+  "expectationCorrection": "Legacy r2 review creates only its exact isolated archive-review cursor key. All pre-existing key bytes remain equal. The new exact key is permitted only with an integer cursor in the old authored stage range. Whole-localStorage equality and then {} value expectation were test errors, retained separately. No current storage mutation was waived.",
+  "limitations": [
+    "No publication or final learner acceptance",
+    "Finite-math unsupported cases not evaluated as PASS here",
+    "Whole-page PNG filename suffix stage-completed means after the target node completes, not necessarily the full stage completes",
+    "Product all-state programmatic evidence is broader than manual screenshot sampling"
+  ]
+}

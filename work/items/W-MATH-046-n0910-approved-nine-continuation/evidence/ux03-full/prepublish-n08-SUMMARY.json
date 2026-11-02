@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "results": [
+    {
+      "width": 320,
+      "parents": 30,
+      "decisions": 42,
+      "wrongSelections": 70,
+      "complete": true,
+      "partialSaveReload": true,
+      "history": true,
+      "comparisonRoutes": 5,
+      "nextUnit": "math-numbers-expressions-n09",
+      "progressIsolated": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "parents": 30,
+      "decisions": 42,
+      "wrongSelections": 70,
+      "complete": true,
+      "partialSaveReload": true,
+      "history": true,
+      "comparisonRoutes": 5,
+      "nextUnit": "math-numbers-expressions-n09",
+      "progressIsolated": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 430,
+      "parents": 30,
+      "decisions": 42,
+      "wrongSelections": 70,
+      "complete": true,
+      "partialSaveReload": true,
+      "history": true,
+      "comparisonRoutes": 5,
+      "nextUnit": "math-numbers-expressions-n09",
+      "progressIsolated": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "parents": 30,
+      "decisions": 42,
+      "wrongSelections": 70,
+      "complete": true,
+      "partialSaveReload": true,
+      "history": true,
+      "comparisonRoutes": 5,
+      "nextUnit": "math-numbers-expressions-n09",
+      "progressIsolated": true,
+      "geometry": "PASS"
+    }
+  ],
+  "captures": 1200,
+  "measurements": 3936,
+  "errors": [],
+  "rawReport": "prepublish-n08-REPORT.json.gz",
+  "note": "The compressed raw report preserves all measurements and screenshot hashes. Its referenced prepublication N08 PNGs remain scratch-only; the separately saved UX03 review archive contains the 464 product-review PNGs and N08 references."
+}

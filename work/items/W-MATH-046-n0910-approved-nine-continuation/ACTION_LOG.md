@@ -10,3 +10,15 @@ Status: ACTIVE
 
 ## A-UX03-03 — 本人確認へ
 REVIEW_SHEET.mdと実画像・raw結果を保存。細部OK/要修正を待つ。実装承認を本人品質合格へ転用しない。以前の詳細履歴はWORK.mdを参照。
+
+## A-UX03-04 — 残り16箇所と横断検査
+代表実画像提示後の本人「那继续做」を受領し、承認済みの残り16箇所へ続行。既存11partの数学的意味を保持し、表示改善と前提判断追加を区別して移行。sourceAへ移行adapterの限定制作、sourceBへ独立検査runnerと製品/保存/画像審査を分担。孫agentなし、Git/Storeは主担当のみ。133回帰、生成器8、型/変更lint/build、全二単元四幅1732状態/9692幾何と17node画像審査を完了。正式台帳の欠落receiptや本人受入を補完しない。
+
+## A-UX03-05 — 原FAILを保持して補修
+初回source f578912の実見で未完の…足場行残留と閉じ括弧を式番号衝突検査から漏らす欠陥を確認。H01の数式書体/接続語も修正。hideAfterCorrectKeysは行の全partと集合一致で検査し、orderedCorrectになるまで隠さない。後続mirror参照は可視行からPublicPartへ投影。非作者Aの6追加回帰とBの再実画面検査を通過。原FAILと補修後を別artifactに保持。
+
+## A-UX03-06 — 公開ゲートの準備
+GitHub固定source db99a485は実試験1151305と同一tree。main起点の公開用2filesをDraft PR #134へ保存。source byte25paths/HTTP全asset/実namespace/現在と旧版保存/reset保護を公開前へ配置、N08r7/r6/legacy/N11もupload前に検査。公開/merge未実施。公開前のlocal同等検査とmain側CIを確認中。
+
+## A-UX03-07 — 公開承認待ちまで確定
+固定db99の配信用buildで新publisher8ケースとN08r7/r6/legacy/N11の既存実操作を全てPASS。N11検査shimは元byteへ復元。main側PR134のgovernance41388747203/code check41388747220もSUCCESS。コード・実画像・原FAILを保存し、公開の本人承認地点で保持。merge/deployを実施したとは記録しない。

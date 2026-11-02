@@ -4,7 +4,7 @@ export type NestedChoice = { value: string; kind: 'math' | 'text'; latex?: strin
 export type NestedCopy = { type: 'text' | 'math' | 'term'; text?: string; latex?: string; semanticRole?: string; usage?: string; emphasis?: string }
 export type NestedDisplayExtra = { kind: 'math'; latex: string } | { kind: 'table'; caption: string; headers: string[]; rows: string[][] } | { kind: 'figure'; id: string; src: string; alt: string; caption: string; sha256: string }
 export type NestedPart = { id: string; key: string; role: string; kind: 'math' | 'text'; expected: string; prompt: string; choices: NestedChoice[] }
-export type NestedRow = { id: string; template: string; kind: 'math' | 'text'; mathGroupId?: string; partKeys: string[]; requiresCorrectKeys: string[] }
+export type NestedRow = { id: string; template: string; kind: 'math' | 'text'; mathGroupId?: string; partKeys: string[]; requiresCorrectKeys: string[]; hideAfterCorrectKeys?: string[] }
 export type NestedNode = { nodeId: string; resultId: string; stageId: string; q: number; classification: string; assumptionsDisplay?: 'in-context'; scaffoldLevel?: 'strong' | 'medium' | 'light'; leadParts: NestedCopy[]; assumptions: string[]; assumptionParts?: NestedCopy[][]; equationNumber?: string; numberAliases?: string[]; displayExtras?: NestedDisplayExtra[]; prerequisiteNodeIds: string[]; requiredResultRefs: string[]; rows: NestedRow[]; parts: NestedPart[]; partOrder: string[]; terminalRecord: { formulas: string[]; conditions: string[]; prose: string; proseParts?: NestedCopy[]; conditionParts?: NestedCopy[][]; requiresCorrectKeys: string[] } }
 export type NestedLesson = { unitId: string; fromRevision: number; toRevision: number; compiledHash: string; nodes: NestedNode[] }
 export type NestedPartRecord = { value: string; firstValue: string; selectionCount: number; firstSelectedAt: number; lastSelectedAt: number }
@@ -50,8 +50,10 @@ export function projectNestedLesson(lesson: NestedLesson, supplied?: NestedLedge
   let editable: { nodeId: string; partKey: string; partId: string } | null = null
   for (const node of lesson.nodes) {
     if (!node.prerequisiteNodeIds.every(id => certifiedNodes.has(id)) || !node.requiredResultRefs.every(id => certifiedResults.has(id))) break
-    const rows = node.rows.filter(r => r.requiresCorrectKeys.every(key => orderedCorrect(node, key, ledger)))
-    const visibleKeys = new Set(rows.flatMap(r => r.partKeys))
+    const rows = node.rows.filter(r => r.requiresCorrectKeys.every(key => orderedCorrect(node, key, ledger)) && !(r.hideAfterCorrectKeys?.length && r.hideAfterCorrectKeys.every(key => orderedCorrect(node, key, ledger)) && r.partKeys.every(key => orderedCorrect(node, key, ledger))))
+    // A completed scaffold can disappear while its certified value is still
+    // needed by a mirror in the replacement row. Only visible rows contribute.
+    const visibleKeys = new Set(rows.flatMap(r => [...r.partKeys, ...Array.from(r.template.matchAll(/\{mirror:([A-Za-z][A-Za-z0-9_.-]*)\}/g), m => m[1])]))
     const currentKey = node.partOrder.find(key => !orderedCorrect(node, key, ledger))
     if (currentKey && visibleKeys.has(currentKey)) {
       const p = node.parts.find(p => p.key === currentKey)!

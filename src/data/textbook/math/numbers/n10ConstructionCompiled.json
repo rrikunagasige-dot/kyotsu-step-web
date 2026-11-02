@@ -7,7 +7,7 @@
   "title": "平方根の証明と有理化",
   "irHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
   "sourceIRHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-  "planHash": "7cffaac33f0b411fea00ab948dba28287293a8f938e53eb5c358c409b7c3e951",
+  "planHash": "9efe5f88a671f2c259590500b71c0363bbc599c7612320e4c8217ae907c09e9f",
   "stages": [
     {
       "id": "n10-stage-01",
@@ -3377,7 +3377,10 @@
             "n10-04-result",
             "n10-q07-product-result"
           ],
-          "mathGroupId": "n10-48-factor"
+          "mathGroupId": "n10-48-factor",
+          "hideAfterCorrectKeys": [
+            "squareFactor"
+          ]
         },
         {
           "id": "n10-07::row-02",
@@ -3945,7 +3948,10 @@
             "n10-04-result",
             "n10-08-result"
           ],
-          "mathGroupId": "n10-q09-left-factor"
+          "mathGroupId": "n10-q09-left-factor",
+          "hideAfterCorrectKeys": [
+            "squareFactor"
+          ]
         },
         {
           "id": "n10-q09-left::row-02",
@@ -4207,7 +4213,10 @@
             "n10-04-result",
             "n10-q09-left-result"
           ],
-          "mathGroupId": "n10-q09-right-factor"
+          "mathGroupId": "n10-q09-right-factor",
+          "hideAfterCorrectKeys": [
+            "squareFactor"
+          ]
         },
         {
           "id": "n10-q09-right::row-02",
@@ -11644,7 +11653,10 @@
               "n10-04-result",
               "n10-q07-product-result"
             ],
-            "mathGroupId": "n10-48-factor"
+            "mathGroupId": "n10-48-factor",
+            "hideAfterCorrectKeys": [
+              "squareFactor"
+            ]
           },
           {
             "id": "n10-07::row-02",
@@ -11916,7 +11928,10 @@
               "n10-04-result",
               "n10-08-result"
             ],
-            "mathGroupId": "n10-q09-left-factor"
+            "mathGroupId": "n10-q09-left-factor",
+            "hideAfterCorrectKeys": [
+              "squareFactor"
+            ]
           },
           {
             "id": "n10-q09-left::row-02",
@@ -12078,7 +12093,10 @@
               "n10-04-result",
               "n10-q09-left-result"
             ],
-            "mathGroupId": "n10-q09-right-factor"
+            "mathGroupId": "n10-q09-right-factor",
+            "hideAfterCorrectKeys": [
+              "squareFactor"
+            ]
           },
           {
             "id": "n10-q09-right::row-02",
@@ -16556,6 +16574,9 @@
             "kind": "math",
             "interactionRef": "n10-07",
             "requiresCorrectParts": [],
+            "hideAfterCorrectParts": [
+              "n10-07::squareFactor"
+            ],
             "partIds": [
               "n10-07::squareFactor"
             ],
@@ -16795,6 +16816,9 @@
             "kind": "math",
             "interactionRef": "n10-q09-left",
             "requiresCorrectParts": [],
+            "hideAfterCorrectParts": [
+              "n10-q09-left::squareFactor"
+            ],
             "partIds": [
               "n10-q09-left::squareFactor"
             ],
@@ -16901,6 +16925,9 @@
             "kind": "math",
             "interactionRef": "n10-q09-right",
             "requiresCorrectParts": [],
+            "hideAfterCorrectParts": [
+              "n10-q09-right::squareFactor"
+            ],
             "partIds": [
               "n10-q09-right::squareFactor"
             ],
@@ -20037,11 +20064,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-    "designSha256": "31efdd9d3dac6e0a23d178096ffa852f1e8a342824e56cd53902c07c1a4a8452"
+    "designSha256": "16c546fc164f85795b1a99ded4989667e1f4ead93124294da66ae7dac89f55d9"
   },
-  "learnerCopyHash": "e0c9bf6437650ad4346e5bf9a9674cb1965aff410967fdd68f47e9ea2887bfaf",
-  "constructionDesignHash": "e15c8440b4bfa59aa8b5567ea63677b24c2a439dbb4873899c83db3287e7d9e9",
-  "layoutDesignHash": "fbbd5aa8bb21ce58e4523fbc2af10bfe2b2fd6dd134aab394515b87f23a5f4e4",
+  "learnerCopyHash": "7aff6f152cb9d11478efa2685dff077269a2accb718611ccecfa5cee5d98cbff",
+  "constructionDesignHash": "c599880f6db47c59628b4f79a7437be872d355387441f22645c0f0da95a3b0c4",
+  "layoutDesignHash": "e181a0d84c20b3c5de20eb83a8bbf9f369fee6e66c7785614dd0e9939663c799",
   "automaticAcceptance": false,
-  "compiledHash": "fd214281177bbc5006dfcfd04e1ff8daa879b2a91d3f94211cf57257d32e685d"
+  "compiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895"
 }

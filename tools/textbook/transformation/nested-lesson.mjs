@@ -4,7 +4,7 @@ import { compileNestedMathTemplate, renderClosedMath } from '../interaction/math
 import { validateDesign } from '../n0910/validate-design.mjs';
 import { AXIS_CONTRACT, validateLayoutPlanV2 } from '../layout/plan-v2.mjs';
 
-export const REVIEWED_NESTED_DESIGN = '31efdd9d3dac6e0a23d178096ffa852f1e8a342824e56cd53902c07c1a4a8452';
+export const REVIEWED_NESTED_DESIGN = '16c546fc164f85795b1a99ded4989667e1f4ead93124294da66ae7dac89f55d9';
 const PRIOR_REVIEWED_NESTED_DESIGN = 'd144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd';
 export const NESTED_SOURCE_PINS = {
   'math-numbers-expressions-n09': '86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95',
@@ -14,7 +14,7 @@ const sha = text => createHash('sha256').update(text).digest('hex');
 const fields = ['nodeId', 'resultId', 'stageId', 'q', 'classification', 'leadParts', 'assumptions', 'assumptionParts', 'assumptionsDisplay', 'prerequisiteNodeIds', 'requiredResultRefs', 'rows', 'parts', 'partOrder', 'terminalRecord'];
 function nestedLayout(unitId, nodes) {
   const groups = nodes.map(n => {
-    const rows = n.rows.map(r => ({ id: r.id, nodeId: n.nodeId, kind: r.kind === 'math' ? 'math' : 'prose', interactionRef: n.parts.length ? n.nodeId : null, requiresCorrectParts: r.requiresCorrectKeys.map(k => n.parts.find(p => p.key === k).id), partIds: r.partKeys.map(k => n.parts.find(p => p.key === k).id), visibleAfter: n.prerequisiteNodeIds }));
+    const rows = n.rows.map(r => ({ id: r.id, nodeId: n.nodeId, kind: r.kind === 'math' ? 'math' : 'prose', interactionRef: n.parts.length ? n.nodeId : null, requiresCorrectParts: r.requiresCorrectKeys.map(k => n.parts.find(p => p.key === k).id), ...(r.hideAfterCorrectKeys ? { hideAfterCorrectParts: r.hideAfterCorrectKeys.map(k => n.parts.find(p => p.key === k).id) } : {}), partIds: r.partKeys.map(k => n.parts.find(p => p.key === k).id), visibleAfter: n.prerequisiteNodeIds }));
     return { id: n.nodeId + '-layout', sourceNodeIds: [n.nodeId], rows, rowIds: rows.map(r => r.id), mathRowIds: rows.filter(r => r.kind === 'math').map(r => r.id), partIds: n.parts.map(p => p.id), number: n.equationNumber ?? null, numberRowRef: rows.filter(r => r.kind === 'math').at(-1)?.id ?? null, numberBaselineRef: 'current-visible-last-math-row', axisContract: 'axis-contract/1', framePolicy: 'fixed-group-envelope', envelopeSource: 'all-candidates-neutral-syntax', responsiveBreak: 'fixed-envelope-only', prose: [{ id: n.nodeId + '-lead', nodeId: n.nodeId, content: n.leadParts, requiresCorrectParts: [], visibleAfter: n.prerequisiteNodeIds }] };
   });
   return { schemaVersion: 'layout-plan/2', unitId, nestedGeometryContract: 'nested-geometry/1', axisContract: structuredClone(AXIS_CONTRACT), tokens: { mathFontPx: 18, katexScale: 1, minHitPx: 44, rowGapPx: 4, noteGapPx: 6, paragraphGapPx: 8 }, nodeCoverage: groups.map(g => ({ nodeId: g.sourceNodeIds[0], groupId: g.id })), groups, partIds: nodes.flatMap(n => n.parts.map(p => p.id)), legacyInteractionIds: [], sourceNodeCount: nodes.length };

@@ -32,6 +32,7 @@ export function validateDesign(design, sourceByUnit) {
         if (!row.id || rows.has(row.id) || typeof row.template !== 'string') { fail('ROW_SHAPE', id); continue; }
         rows.add(row.id);
         if (!Array.isArray(row.requiresCorrectKeys) || !Array.isArray(row.partKeys)) { fail('ROW_GATE_REQUIRED', id, row.id); continue; }
+        if (row.hideAfterCorrectKeys !== undefined && (!Array.isArray(row.hideAfterCorrectKeys) || !row.hideAfterCorrectKeys.length || new Set(row.hideAfterCorrectKeys).size !== row.hideAfterCorrectKeys.length || row.hideAfterCorrectKeys.length !== row.partKeys.length || row.hideAfterCorrectKeys.some(key => !row.partKeys.includes(key)))) fail('ROW_HIDE_CONTRACT', id, row.id);
         for (const key of row.requiresCorrectKeys) if (!knownParts.has(key)) fail('ROW_FUTURE_DEPENDENCY', id, key);
         // Braced TeX arguments such as \\mathrm{or} and \\begin{cases} are
         // not anonymous slots. Missing/misspelt real keys remain UNBOUND_PART.

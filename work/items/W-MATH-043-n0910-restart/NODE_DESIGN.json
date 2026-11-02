@@ -721,8 +721,8 @@
             },
             {
               "id": "n09-01::row-03",
-              "template": "x−4=0 {zeroLogic} x+4=0",
-              "kind": "text",
+              "template": "x-4=0\\quad{zeroLogic}\\quad x+4=0",
+              "kind": "math",
               "partKeys": [
                 "zeroLogic"
               ],
@@ -730,11 +730,12 @@
               "certifiedFrom": [
                 "n09-q01-negative-result",
                 "n09-q01-positive-result"
-              ]
+              ],
+              "mathGroupId": "n09-01-zero-conditions"
             },
             {
               "id": "n09-01::row-04",
-              "template": "x=4\\quad\\mathrm{or}\\quad x=-4",
+              "template": "x=4\\quad\\text{または}\\quad x=-4",
               "kind": "math",
               "partKeys": [],
               "requiresCorrectKeys": [
@@ -768,14 +769,16 @@
                   "kind": "text",
                   "display": "または",
                   "feedback": "一方の因子が0なら積は0です。",
-                  "misconception": "正答"
+                  "misconception": "正答",
+                  "latex": "\\text{または}"
                 },
                 {
                   "value": "and",
                   "kind": "text",
                   "display": "かつ",
                   "feedback": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
-                  "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。"
+                  "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
+                  "latex": "\\text{かつ}"
                 }
               ],
               "mathAssertion": {
@@ -4626,7 +4629,7 @@
           "rows": [
             {
               "id": "n09-06::row-01",
-              "template": "2+{addend}<\\sqrt5+\\text{…}",
+              "template": "2+({addend})<\\sqrt5+\\text{…}",
               "kind": "math",
               "partKeys": [
                 "addend"
@@ -4636,7 +4639,10 @@
                 "n09-05-result",
                 "n09-q06-order-result"
               ],
-              "mathGroupId": "n09-06-derivation"
+              "mathGroupId": "n09-06-derivation",
+              "hideAfterCorrectKeys": [
+                "addend"
+              ]
             },
             {
               "id": "n09-06::row-02",
@@ -17909,7 +17915,10 @@
                 "n10-04-result",
                 "n10-q07-product-result"
               ],
-              "mathGroupId": "n10-48-factor"
+              "mathGroupId": "n10-48-factor",
+              "hideAfterCorrectKeys": [
+                "squareFactor"
+              ]
             },
             {
               "id": "n10-07::row-02",
@@ -18738,7 +18747,10 @@
                 "n10-04-result",
                 "n10-08-result"
               ],
-              "mathGroupId": "n10-q09-left-factor"
+              "mathGroupId": "n10-q09-left-factor",
+              "hideAfterCorrectKeys": [
+                "squareFactor"
+              ]
             },
             {
               "id": "n10-q09-left::row-02",
@@ -19098,7 +19110,10 @@
                 "n10-04-result",
                 "n10-q09-left-result"
               ],
-              "mathGroupId": "n10-q09-right-factor"
+              "mathGroupId": "n10-q09-right-factor",
+              "hideAfterCorrectKeys": [
+                "squareFactor"
+              ]
             },
             {
               "id": "n10-q09-right::row-02",

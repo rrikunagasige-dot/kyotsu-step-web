@@ -48,7 +48,7 @@ function TaggedMathRow({ number, children }: { number?: string; children: ReactN
       const descent = numberBaseline - label.top
       const proposedTop = anchor - bounds.top - descent
       const left = bounds.right - label.width
-      const collision = [...formula.querySelectorAll<HTMLElement>('.katex-html .mord, .nested-slot-control')].some(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right + 8 > left && r.bottom > bounds.top + proposedTop && r.top < bounds.top + proposedTop + label.height })
+      const collision = [...formula.querySelectorAll<HTMLElement>('.katex-html .mord, .katex-html .mopen, .katex-html .mclose, .katex-html .mbin, .katex-html .mrel, .katex-html .mpunct, .katex-html .mop, .katex-html .sqrt-line, .katex-html .frac-line, .nested-slot-control')].some(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right + 8 > left && r.bottom > bounds.top + proposedTop && r.top < bounds.top + proposedTop + label.height })
       const next = { top: collision ? math.bottom - bounds.top + 8 : proposedTop, below: collision }
       setPlacement(old => Math.abs(old.top - next.top) < .25 && old.below === next.below ? old : next)
     }

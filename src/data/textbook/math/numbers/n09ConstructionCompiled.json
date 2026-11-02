@@ -7,7 +7,7 @@
   "title": "平方根の符号と数直線",
   "irHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
   "sourceIRHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-  "planHash": "842818bcf721951f643d69894f738ecf158b491f6768624c70ff494eb68f931c",
+  "planHash": "7403e2c093ba2d728682800c24c9f472b2d18d7321ccbcdf5d1f33a37b1216f1",
   "stages": [
     {
       "id": "n09-stage-01",
@@ -563,8 +563,8 @@
         },
         {
           "id": "n09-01::row-03",
-          "template": "x−4=0 {zeroLogic} x+4=0",
-          "kind": "text",
+          "template": "x-4=0\\quad{zeroLogic}\\quad x+4=0",
+          "kind": "math",
           "partKeys": [
             "zeroLogic"
           ],
@@ -572,11 +572,12 @@
           "certifiedFrom": [
             "n09-q01-negative-result",
             "n09-q01-positive-result"
-          ]
+          ],
+          "mathGroupId": "n09-01-zero-conditions"
         },
         {
           "id": "n09-01::row-04",
-          "template": "x=4\\quad\\mathrm{or}\\quad x=-4",
+          "template": "x=4\\quad\\text{または}\\quad x=-4",
           "kind": "math",
           "partKeys": [],
           "requiresCorrectKeys": [
@@ -610,14 +611,16 @@
               "kind": "text",
               "display": "または",
               "feedback": "一方の因子が0なら積は0です。",
-              "misconception": "正答"
+              "misconception": "正答",
+              "latex": "\\text{または}"
             },
             {
               "value": "and",
               "kind": "text",
               "display": "かつ",
               "feedback": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
-              "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。"
+              "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
+              "latex": "\\text{かつ}"
             }
           ],
           "mathAssertion": {
@@ -3272,7 +3275,7 @@
       "rows": [
         {
           "id": "n09-06::row-01",
-          "template": "2+{addend}<\\sqrt5+\\text{…}",
+          "template": "2+({addend})<\\sqrt5+\\text{…}",
           "kind": "math",
           "partKeys": [
             "addend"
@@ -3282,7 +3285,10 @@
             "n09-05-result",
             "n09-q06-order-result"
           ],
-          "mathGroupId": "n09-06-derivation"
+          "mathGroupId": "n09-06-derivation",
+          "hideAfterCorrectKeys": [
+            "addend"
+          ]
         },
         {
           "id": "n09-06::row-02",
@@ -9654,8 +9660,8 @@
           },
           {
             "id": "n09-01::row-03",
-            "template": "x−4=0 {zeroLogic} x+4=0",
-            "kind": "text",
+            "template": "x-4=0\\quad{zeroLogic}\\quad x+4=0",
+            "kind": "math",
             "partKeys": [
               "zeroLogic"
             ],
@@ -9663,11 +9669,12 @@
             "certifiedFrom": [
               "n09-q01-negative-result",
               "n09-q01-positive-result"
-            ]
+            ],
+            "mathGroupId": "n09-01-zero-conditions"
           },
           {
             "id": "n09-01::row-04",
-            "template": "x=4\\quad\\mathrm{or}\\quad x=-4",
+            "template": "x=4\\quad\\text{または}\\quad x=-4",
             "kind": "math",
             "partKeys": [],
             "requiresCorrectKeys": [
@@ -9701,14 +9708,16 @@
                 "kind": "text",
                 "display": "または",
                 "feedback": "一方の因子が0なら積は0です。",
-                "misconception": "正答"
+                "misconception": "正答",
+                "latex": "\\text{または}"
               },
               {
                 "value": "and",
                 "kind": "text",
                 "display": "かつ",
                 "feedback": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
-                "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。"
+                "misconception": "両方が同時に0である必要はありません。一方だけ0の積も調べてください。",
+                "latex": "\\text{かつ}"
               }
             ],
             "mathAssertion": {
@@ -10680,7 +10689,7 @@
         "rows": [
           {
             "id": "n09-06::row-01",
-            "template": "2+{addend}<\\sqrt5+\\text{…}",
+            "template": "2+({addend})<\\sqrt5+\\text{…}",
             "kind": "math",
             "partKeys": [
               "addend"
@@ -10690,7 +10699,10 @@
               "n09-05-result",
               "n09-q06-order-result"
             ],
-            "mathGroupId": "n09-06-derivation"
+            "mathGroupId": "n09-06-derivation",
+            "hideAfterCorrectKeys": [
+              "addend"
+            ]
           },
           {
             "id": "n09-06::row-02",
@@ -13873,7 +13885,7 @@
           {
             "id": "n09-01::row-03",
             "nodeId": "n09-01",
-            "kind": "prose",
+            "kind": "math",
             "interactionRef": "n09-01",
             "requiresCorrectParts": [],
             "partIds": [
@@ -13908,6 +13920,7 @@
         "mathRowIds": [
           "n09-01::row-01",
           "n09-01::row-02",
+          "n09-01::row-03",
           "n09-01::row-04"
         ],
         "partIds": [
@@ -14948,6 +14961,9 @@
             "kind": "math",
             "interactionRef": "n09-06",
             "requiresCorrectParts": [],
+            "hideAfterCorrectParts": [
+              "n09-06::addend"
+            ],
             "partIds": [
               "n09-06::addend"
             ],
@@ -17353,12 +17369,12 @@
           },
           {
             "id": "n09-01::row-03",
-            "template": "x−4=0 {zeroLogic} x+4=0",
-            "kind": "text"
+            "template": "x-4=0\\quad{zeroLogic}\\quad x+4=0",
+            "kind": "math"
           },
           {
             "id": "n09-01::row-04",
-            "template": "x=4\\quad\\mathrm{or}\\quad x=-4",
+            "template": "x=4\\quad\\text{または}\\quad x=-4",
             "kind": "math"
           }
         ]
@@ -17533,7 +17549,7 @@
         "rows": [
           {
             "id": "n09-06::row-01",
-            "template": "2+{addend}<\\sqrt5+\\text{…}",
+            "template": "2+({addend})<\\sqrt5+\\text{…}",
             "kind": "math"
           },
           {
@@ -17959,11 +17975,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-    "designSha256": "31efdd9d3dac6e0a23d178096ffa852f1e8a342824e56cd53902c07c1a4a8452"
+    "designSha256": "16c546fc164f85795b1a99ded4989667e1f4ead93124294da66ae7dac89f55d9"
   },
-  "learnerCopyHash": "e4d6c1e745c2e535307b3491a60763beff57ee09257739e39832f7b1e7e6420b",
-  "constructionDesignHash": "030f389de96207c2007362de9f18cfddbf1405f023ad970336f2d1adb692b720",
-  "layoutDesignHash": "f49947bc87298d4152763ce280a69dc8ecc0cd5ae918c665fc79d418c4f55a3f",
+  "learnerCopyHash": "6bcbd48f886d19921ce1bf34746d3835cd05232ce7cd6baf921ee317d883b8aa",
+  "constructionDesignHash": "351d485b00914ba98ebb0f75a349ff33d4beb9edafb89eb97c0843629d77e741",
+  "layoutDesignHash": "a2bf56e79d2bf78fac545aaf3066dcefc18a70363643bc6074334fd52f046915",
   "automaticAcceptance": false,
-  "compiledHash": "6fbee63c6b72fa7aa01a88072431aeaf0c3e2f7172514535aa5858bedf800049"
+  "compiledHash": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6"
 }

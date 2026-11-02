@@ -36,6 +36,7 @@ export function nestedLessonFromCompiled(compiled: CompiledNestedLesson): Nested
   if (layout?.schemaVersion !== 'layout-plan/2' || layout.nestedGeometryContract !== 'nested-geometry/1' || layout.unitId !== compiled.unitId || layout.groups.length !== compiled.nodeDesign.length || JSON.stringify(layout.tokens) !== JSON.stringify({ mathFontPx: 18, katexScale: 1, minHitPx: 44, rowGapPx: 4, noteGapPx: 6, paragraphGapPx: 8 })) throw Error('NESTED_LAYOUT_CONTRACT')
   const nodes = layout.groups.map((group, index) => {
     const node = compiled.nodeDesign[index]
+    for (const row of node.rows) if (row.hideAfterCorrectKeys !== undefined && (!Array.isArray(row.hideAfterCorrectKeys) || !row.hideAfterCorrectKeys.length || new Set(row.hideAfterCorrectKeys).size !== row.hideAfterCorrectKeys.length || row.hideAfterCorrectKeys.length !== row.partKeys.length || row.hideAfterCorrectKeys.some(key => !row.partKeys.includes(key)))) throw Error('NESTED_ROW_HIDE_CONTRACT')
     if (group.sourceNodeIds.length !== 1 || group.sourceNodeIds[0] !== node.nodeId || JSON.stringify(group.rowIds) !== JSON.stringify(node.rows.map(r => r.id)) || group.number !== (node.equationNumber ?? null)) throw Error('NESTED_LAYOUT_NODE_BINDING')
     const row = plan[index]
     if (!row || row.nodeId !== node.nodeId || JSON.stringify([row.rows, row.parts, row.partOrder]) !== JSON.stringify([node.rows, node.parts, node.partOrder])) throw Error('NESTED_COMPILED_PLAN_MISMATCH')

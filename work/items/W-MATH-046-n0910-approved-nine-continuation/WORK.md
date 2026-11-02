@@ -6,11 +6,11 @@ Review: PUBLICATION-APPROVED-EXECUTING / 本人最終受入は未実施
 - 固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。実試験source `1151305432ce2ebdd3a878718458d1c4f0701dc9` と完全tree `06f5da34c349b23dec9327da4c616980c4e7f670` 一致。N09 r5=46parts、N10 r4=63parts。旧87partsを保持し、新規22partsのみ未回答。17対象node以外69nodeの学習契約を維持。
 - 133回帰・生成器8・型/変更lint/build PASS。二単元×四幅、1732状態/9692幾何、全211誤答候補×四幅、履歴/旧版/reset PASS。非作者Bが17nodeの完成画面を四幅、初期/誤答を320pxで実見。旧版移行7ケース、現行main復旧4ケースPASS。有限数学109parts・179候補は失敗0/意味審査対象50でPARTIAL。
 - sourceAは移行作者・設計と行hideの非作者審査、sourceBは検査runner作者・製品/保存/画像の非作者審査、主担当は設計/生成/描画統合と試験を担当。作者の変更を自身の審査だけでPASSにしない。
-- 公開用[Draft PR #134](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/134)、head `fc961f58c22f0cc3505f27aff2dec344a52ac660`。main `e49486d13119058ff063e75ef84d60660210bd41` 起点の公開設定/検証器2filesのみ。source branch全体をmergeしない。本人「いいよ」によりPR #134のmain反映・既存Pages公開を承認。固定head/sourceは不変。公開・実配信検証は実行中で、未確認を完了にしない。
+- 公開用[PR #134](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/134)、head `fc961f58c22f0cc3505f27aff2dec344a52ac660`。main `e49486d13119058ff063e75ef84d60660210bd41` 起点の公開設定/検証器2filesのみ。source branch全体をmergeしない。本人「いいよ」によりPR #134のmain反映・既存Pages公開を承認。固定head/sourceは不変。公開・実配信検証は実行中で、未確認を完了にしない。
 - 配信用buildのN09/N10八ケースはPASS。保持N08r7/r6/legacy/N11の公開前検査も全件PASS。25source hash・全HTTP asset・namespace・旧版全storage不変・他unit/旧版ledgerを守るresetを公開前で検査。main側governance run41388747203 SUCCESS、code check run41388747220もSUCCESS。
 - 候補全体governanceは既存他Workの38件が残りFAIL、本Workの新規違反なし。欠落正式Storeに対する今回限りの本人特例を維持し、receipt/受理イベントを作らない。
 - [実画像・原FAILを含む検証証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)：36,237,029 bytes / SHA256 `d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b`。再開はこの現在地と[VERIFICATION.md](VERIFICATION.md)の最新版を参照し、旧R03/古い台帳/代表確認へ戻らない。
-- 次：承認済みPR #134のmain反映→公開前検査/配信/実配信検証→本人総チェック。本人受入・Gold/fitは自動認定しない。
+- 次：公開run41389935781の公開前検査→配信→実配信byte/操作検証→本人総チェック。本人受入・Gold/fitは自動認定しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -248,3 +248,6 @@ font/環境差、配信cache差、保存移行を公開前と実配信の双方�
 
 ## P-W046-PUBLISH-UX03 公開承認受領（2026-11-02 JST）
 本人「いいよ」を、直前に提示したPR #134の2filesのmain反映・既存Pages再公開への明示承認として記録。承認head fc961f58c22f0cc3505f27aff2dec344a52ac660、base e49486d13119058ff063e75ef84d60660210bd41、製品source db99a485f857b1aefa7fb738456f36a830514158。main側両CI SUCCESSとlive identity/HEAD一致を再確認した。同じ承認/133回帰/ローカル全状態を理由なく反復せず、公開前CI→deploy→実配信byte/操作の未済工程へ進む。本人最終受入・Gold/fitの承認には転用しない。
+
+## P-W046-PUBLISH-UX03 main反映・公開工程実行中
+PR #134はexpected head fc961f58でmerge成功。main publisher SHAは6bc54447ef015a2a579a56a5966ceb58a0600d3a。製品source db99a485は不変。公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)、job125098872112を開始。初回観察ではcheckout/固定依存installがSUCCESS、Word依存取得中。非作者sourceAがmerged publisher2filesと審査済み版のbyte一致、source/namespace固定と公開前FAIL停止の維持を一回照合した。RUNNINGを公開成功へ変更しない。同じローカル検査は再実行しない。

@@ -1,12 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: IMPLEMENTING
-Review: UX05-REPRESENTATIVE-BLOCK-VISUAL-OK / REMAINING23-IN-PROGRESS
-- 本人『承認继续。』を確認票①〜③の代表細部OKとして記録。[受領記録](evidence/ux05-full/DETAIL_ACCEPTANCE.json)。source a39bdb8cのpilot2nodeを保持し、承認済み残23CHANGE（N09:14/N10:9）へ進む。
-- 再開入口：[工程図・現在地・次手](WORKFLOW_CURRENT.md)。現在R04既存CODEへ残りnative契約を対応→R06限定適用→R07/G2。①〜③の済んだpilot検査・欠落台帳の復元からやり直さない。
-- N09の本人確認済みr7を不変snapshotとして保存し、本適用はr7→r8。N10はr4→r5。学習内容はUX05契約のまま、同じrevisionで別compiledを上書き/aliasしない保存保護の実装判断。N09目標43/N10目標60part。
-- 主担当は統合/既存CODE/保存/実browser/Git、AはN09 native設計、BはN10 native設計、相互非作者審査と主担当統合の審査を行う。主図の各工程完了条件で次へ進む。
-- 公開中db99a485/publisher6bc54447とmainは不変。公開は別具体的承認。正式Store26イベント欠落の本人特例、既存他Workgovernance38件は保持。全体受入/Gold/fit/架空receiptを作らない。
+Status: VERIFYING
+Review: UX05-REPRESENTATIVE-BLOCK-VISUAL-OK / FULL-R07-IN-PROGRESS
+- 本人『承認继续。』の代表細部OKに続き、残23CHANGE（N09:14/N10:9）を承認案のまま実装。N09r8/43part、N10r5/60part。旧KEEPは意味/全part object一致に限定し、新判断は未回答から再開。
+- 再開入口：[工程図](WORKFLOW_CURRENT.md)。R04既存CODE/14+9意味応答import・R06限定適用は完了。現在R07固定source `691d3d160493bf684ca8a31a22476d31d98caeec`の全幅再測定と非作者画像審査中。次はG2統合監査→公開の具体的承認。
+- 最初の本適用source ba2e1d8bは1712回答状態/4228式実測の既存full-run importerがPASSしたが、実画像でstale式番号余白40pxをN10係数整理とN09小数平方に検出。共通rowの番号有無条件だけ補修。原検査PASSを画像合格へ転用せず、新691dの全幅を再測定している。新320は両unit PASS、旧版/未知版/リセット24ケースも新691dでPASS。
+- 主担当は統合/CODE/保存/実browser/Git。A/Bは相互の教材とroot統合を非作者審査。主図の各工程完了条件で次へ進む。新しい教材判断/穴を自動追加していない。
+- 公開中db99a485/publisher main6bc54447は不変。公開は別具体的承認。正式Store26イベント欠落の本人特例と他Work38件のgovernance未処理を保持。正式PASSED/全体受入/Gold/fitを作らない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

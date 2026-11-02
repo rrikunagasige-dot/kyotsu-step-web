@@ -52,3 +52,9 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 
 ## A-UX05-05 — 代表細部OKと残り23の着手
 本人『承認继续。』を直前確認票のsource a39bdb8c/pilot2nodeへの細部OKとして転記保存。工程図を再読し、残23CHANGE→R07/G2へ進む。r7pilot不変保持のためN09本適用はr8、N10はr5。本文契約の変更や公開承認へ拡張しない。新しい独立作業tree a1b6起点でA=N09/B=N10のnative入力を分担し、rootが共有生成/移行/統合を所有。
+
+## UX05本適用 / R04→R06→R07差戻し
+- 残23CHANGEをnative設計・既存generatorで本適用。N09r7/N10r4 immutable snapshotを保持し、N09r8/N10r5へ厳密KEEP/RETIRE/NEW移行。
+- 原R04出力NEEDS_AI_REVIEWと非作者14/9応答・採否を分離し、既存solution-review importはPASS/automaticAcceptance:false。finite mathは46unsupported/失敗0をAI根拠で審査し、形式証明とはしない。
+- ba2e sourceで4幅1712状態/4228式を既存full-run layout-validatorへ取り込みPASS。非作者実画像で共通rowの40px余白をN10/N09に確認。PASSを画像合格へ転用せずR06へ差戻し。
+- source691dで番号無しrowにtag-below classを付けない一条件補修。実DOMのtag無しrow余白0検査を追加して全幅再実行中。新320両unitと新source移行24ケースはPASS。G2/公開/本人最終受入はまだ認定しない。

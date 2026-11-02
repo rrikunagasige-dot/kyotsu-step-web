@@ -1,12 +1,15 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: APPROVED
-Review: UX05-APPROVED / WORKFLOW-CODE-MAPPING-BEFORE-PRODUCT-PATCH
-- 再開入口：[工程図・現在地・CODE/AI/審査分担](WORKFLOW_CURRENT.md)。既存の配置図と実装を使用し、未取得の最新Store図や受理receiptを創作しない。
-- 本人が固定UX05を明示承認。[承認原文/対象hash/範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案の再承認は不要。公開/本人細部OK/全体受入を含めない。
-- 次：不足したR04の既存CODE入力・実装・出力/適用条件の照合を補い、R05承認照合→R06写真代表＋共有数式表示→R07検査/非作者審査→本人実画像細部確認。代表確認後に残りへ適用する。
-- 全86node=25変更/61維持、旧115part=84保持/31保管、新19という具体案は不変。案の構造照合/設計審査を製品試験・正式工程PASSと呼ばない。
-- source66c8007b、公開db99a485/publisher6bc54447不変。この記録時点ではUX05製品変更なし。最新Store欠落26イベントの本人特例を保持し、過去の復元・検査をやり直さない。正式Store/main/公開書込・Gold/fitの認定なし。
+Status: VERIFYING
+Review: UX05-REPRESENTATIVE-VERIFIED / BLOCK-CHECK-PENDING
+- 再開入口：[工程図・現在地・次手](WORKFLOW_CURRENT.md)。①R04既存CODE接続/意味応答import、②R05承認照合/R06代表実装、③R07限定検証/非作者実画像審査まで完了。現在は④本人の代表細部確認。依頼どおり④より前の進捗報告は行わず、実確認票を準備した。
+- [確認票](REVIEW_SHEET.md)。固定source `a39bdb8c9d064e6d90c8352020824bb5be4f931f`、N09r7 compiled `dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813`。N10r4/data不変。代表2node以外の39node教材契約を保持、残り23CHANGEは未展開。
+- 既存CODEで解法/教授順・段階/穴候補・採否・source-bound IR/組立/配置/compile・可視state・review prepare/importを実行。CODEの未対応OR等を機械証明へ変換せず、非作者数学審査を明示接続した。
+- 固定sourceの別clean worktreeでN09/N10×320/390/430/1440、各48/63回答・各95/123誤答候補、1776状態/10020幾何を確認。正常KaTeX Main/Math-Italic loaded、HTTP/page error0、再読込/履歴/旧版trial/keyboard/reset取消・確定/他unit・旧版archive/dedicated保存がPASS。普通式とのfactor実寸145.9375×21は全四幅一致、認定slot0。
+- 移行の実browser13ケースPASSは先行source33d06bd8、最終差分が共有compilerとそのtestだけで保存コード/compiled不変のため継承。最終sourceでは四幅の旧版trial/reset保存を別に実操作。全体G2・本人細部OK・公開・総合受入・Gold/fitは未成立。
+- R07実寸比較でroot marker内部glue5pxを検出し、通常markerなしKaTeXとの直接回帰と最小補修で解消。harnessのprobe字号差/検査不足/旧試験stale期待等の原FAILも区別して保持。[実績/限界](evidence/ux05-pilot/SUMMARY.json)・原証拠ZIP・担当別審査を保存。
+- 次：本人『細部OK』なら承認済み残り23CHANGEの限定適用→R07/G2。『要修正』なら指摘を記録し図の原因/具体案へ戻る。未公開pilot r7と将来の同revision別artifactを黙って上書き/aliasせず厳密な版・hash保存を検討する。
+- UX05承認はevidence/ux05-proposal/APPROVAL.jsonで保持し同じ案を再承認要求しない。公開中source db99a485/publisher6bc54447不変。最新Store欠落26イベントの本人特例・別Work既存governance38件を保持。正式Store receiptを創作しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

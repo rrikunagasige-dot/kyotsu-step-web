@@ -1,3 +1,13 @@
+# UX05 代表 — 限定検証完了・本人細部確認待ち
+
+Status: BLOCK-CHECK-PENDING（Work: VERIFYING）
+
+固定source `a39bdb8c9d064e6d90c8352020824bb5be4f931f` / N09r7 `dedfd7c5…`。代表2nodeと共有表示だけを実装。既存CODE接続/生成/関連単体/型/build/四幅実browser/非作者実画像審査を完了。[実績・検査の限界](evidence/ux05-pilot/SUMMARY.json)、[確認票](REVIEW_SHEET.md)、[全原証拠ZIP](evidence/ux05-pilot/RAW_EVIDENCE.zip)。
+
+1776状態/10020幾何、実font/HTTP、全111回答と全218誤答候補を各四幅で実操作。括弧の普通式実寸一致、keyboard/履歴/旧版隔離/resetと他記録保存を確認。13移行は先行source33d06の保持結果で、最終2file差分はcompiler/testのみ。数学のPARTIAL/UNSUPPORTEDは非作者審査と区別し正式証明にしない。Native complete-run importer/正式Store receipt・全体G2・本人細部OK・公開・総合受入/Gold/fitの合格は主張しない。
+
+---
+
 # UX05 — 具体案の検証状態
 
 Status: PROPOSAL-REVIEWED / IMPLEMENTATION-NOT-STARTED

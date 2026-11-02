@@ -1,49 +1,38 @@
-# 確認 — UX04 N09代表ブロック
+# 確認①〜③ — UX05代表ブロック
 
-Status: USER_REQUIRES_CORRECTION
+状態：**本人細部確認待ち**。これは公開前の候補の実画面です。
 
-本人は学習粒度と正答後組版を要修正としました。この確認票は履歴であり、細部OKは成立していません。[現在の分析](evidence/ux05-feedback/ANALYSIS.md)から改訂へ戻っています。
-対象コード：[66c8007b37cc12391c9df574b8ebbb1b95cf26f5](https://github.com/rrikunagasige-dot/kyotsu-step-web/commit/66c8007b37cc12391c9df574b8ebbb1b95cf26f5)
-N09第6版pilot / compiledHash `470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d`
+対象：N09「x²=16を満たす全ての実数」／`n09-q01-negative`・`n09-01`。固定source [`a39bdb8c9d064e6d90c8352020824bb5be4f931f`](https://github.com/rrikunagasige-dot/kyotsu-step-web/commit/a39bdb8c9d064e6d90c8352020824bb5be4f931f)、N09第7版 compiled `dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813`。以下はそのclean別worktreeの実アプリから撮影した元PNGで、合成・描き直しではありません。
 
-UX04の実装承認は受領済みです。今回は、その案で定めた最初の代表ブロックの**細部OK／要修正**の確認です。新しい設計全体への再承認ではありません。まだ公開していない候補で、公開中のN09第5版/N10第4版はそのままです。
+## 確認① 因数分解を自分で作る
 
-写真の場面を、次の判断を自分で行う導出へ変えました。
+移項などの基本操作は途中式として示し、`x²−4²`から因数分解の式を選びます。具体的な因数分解を先に表示しません。
 
-- 負数の平方：累乗が作用する対象 → 積の符号 → 平方値。
-- 全解の導出：両辺への演算 → 因数の符号 → 零積の「または」 → 第一・第二の一次式それぞれの逆演算。
+![確認① 因数分解の判断・390px](evidence/ux05-pilot/images/390-n09-01-factorisedFormUX05-initial.png)
 
-旧46回答は保持し、新しい6判断だけから再開できます。「または」を答えても、左右の一次式は自動で解答済みになりません。
+## 確認② 積から二つの零条件を作る
 
-## 390pxでの途中状態
+`(x−4)(x＋4)=0`から **`x−4=0 または x＋4=0`という条件の組**を選びます。「または」一字や、単純な移項だけを採点する設計を改めました。一般則は教え、その具体適用を生徒に残します。
 
-因数分解では、第二因子の演算がまだ穴です。
+![確認② 零条件の組の判断・390px](evidence/ux05-pilot/images/390-n09-01-factorZeroConditionUX05-initial.png)
 
-![因数分解の演算を選ぶ](evidence/ux04-pilot/390-n09-01-factorSign-initial.png)
+## 確認③ 正答後の普通の数式と導出のつながり
 
-第一の一次式を解いた後も、第二の一次式の逆演算は自分で選びます。
+正答した式は通常の組版へ戻り、二つの零条件→それぞれの解→全解という順につながります。`x＋4`だけ括弧が巨大になったり操作用の空きを残したりしないことをご確認ください。
 
-![第一の解を確定し第二の逆演算を選ぶ](evidence/ux04-pilot/390-n09-01-leftInverseOperation-correct.png)
+![確認③ 正答後の式と全解・390px](evidence/ux05-pilot/images/390-n09-01-factorZeroConditionUX05-correct.png)
 
-[負数の平方を始める状態](evidence/ux04-pilot/390-n09-q01-negative-powerAction-initial.png) / [両方を解いた状態](evidence/ux04-pilot/390-n09-01-rightInverseOperation-correct.png)
+[共通ページを含む390pxの全体実画像](evidence/ux05-pilot/images/390-n09-01-stage-completed.png)。
 
-## 四つの画面幅
+|画面幅|因数分解前|零条件を選ぶ時|正答後|
+|---|---|---|---|
+|320px|[実画像](evidence/ux05-pilot/images/320-n09-01-factorisedFormUX05-initial.png)|[実画像](evidence/ux05-pilot/images/320-n09-01-factorZeroConditionUX05-initial.png)|[実画像](evidence/ux05-pilot/images/320-n09-01-factorZeroConditionUX05-correct.png)|
+|390px|[実画像](evidence/ux05-pilot/images/390-n09-01-factorisedFormUX05-initial.png)|[実画像](evidence/ux05-pilot/images/390-n09-01-factorZeroConditionUX05-initial.png)|[実画像](evidence/ux05-pilot/images/390-n09-01-factorZeroConditionUX05-correct.png)|
+|430px|[実画像](evidence/ux05-pilot/images/430-n09-01-factorisedFormUX05-initial.png)|[実画像](evidence/ux05-pilot/images/430-n09-01-factorZeroConditionUX05-initial.png)|[実画像](evidence/ux05-pilot/images/430-n09-01-factorZeroConditionUX05-correct.png)|
+|1440px|[実画像](evidence/ux05-pilot/images/1440-n09-01-factorisedFormUX05-initial.png)|[実画像](evidence/ux05-pilot/images/1440-n09-01-factorZeroConditionUX05-initial.png)|[実画像](evidence/ux05-pilot/images/1440-n09-01-factorZeroConditionUX05-correct.png)|
 
-| 幅 | 累乗の対象 | 因数分解の穴 | 第二の逆演算 | 完成 |
-|---|---|---|---|---|
-| 320 | [画像](evidence/ux04-pilot/320-n09-q01-negative-powerAction-initial.png) | [画像](evidence/ux04-pilot/320-n09-01-factorSign-initial.png) | [画像](evidence/ux04-pilot/320-n09-01-leftInverseOperation-correct.png) | [画像](evidence/ux04-pilot/320-n09-01-rightInverseOperation-correct.png) |
-| 390 | [画像](evidence/ux04-pilot/390-n09-q01-negative-powerAction-initial.png) | [画像](evidence/ux04-pilot/390-n09-01-factorSign-initial.png) | [画像](evidence/ux04-pilot/390-n09-01-leftInverseOperation-correct.png) | [画像](evidence/ux04-pilot/390-n09-01-rightInverseOperation-correct.png) |
-| 430 | [画像](evidence/ux04-pilot/430-n09-q01-negative-powerAction-initial.png) | [画像](evidence/ux04-pilot/430-n09-01-factorSign-initial.png) | [画像](evidence/ux04-pilot/430-n09-01-leftInverseOperation-correct.png) | [画像](evidence/ux04-pilot/430-n09-01-rightInverseOperation-correct.png) |
-| 1440 | [画像](evidence/ux04-pilot/1440-n09-q01-negative-powerAction-initial.png) | [画像](evidence/ux04-pilot/1440-n09-01-factorSign-initial.png) | [画像](evidence/ux04-pilot/1440-n09-01-leftInverseOperation-correct.png) | [画像](evidence/ux04-pilot/1440-n09-01-rightInverseOperation-correct.png) |
+## 検証と次の工程
 
-## 検証と出所
+既存CODEと担当別審査、四幅の正誤/保存操作を完了しました。普通式の実寸との比較で見つかった5pxの内部余白も補修し、全四幅で一致しています。[検証結果と限界](evidence/ux05-pilot/SUMMARY.json)／[表示の非作者審査A](evidence/ux05-pilot/IMAGE_REVIEW_A.md)／[学習判断の非作者審査B](evidence/ux05-pilot/IMAGE_REVIEW_B.md)／[全原証拠ZIP](evidence/ux05-pilot/RAW_EVIDENCE.zip)。
 
-136件の主回帰、最終の式group調整後の関連76件、型・変更lint・buildが合格。移行10ケースでは旧回答・時刻・回数・reset後の回答を保護し、未知版は保存を変えず拒否します。N10の教材と生成結果は不変です。
-
-最終版は四幅128状態・1192幾何、各幅全52正答と代表8partの全14誤答候補、reload・履歴・旧版・reset・N08比較を確認。撮影前276回のfont確認でMain/Math-Italicの実loadedを要求し、AMSもloaded、HTTPエラー0・通信失敗0です。raw sourceSHAは撮影working treeの基準778a6c3aで、未commitだった承認変更20fileを候補66c8007bのGit blobと全件照合して同一byteと確認しています。撮影中のsource manifest前後も一致します。
-
-[出所・manifest](evidence/ux04-pilot/PROVENANCE.json) / [browser原結果](evidence/ux04-pilot/BROWSER_RESULT.json) / [移行原結果](evidence/ux04-pilot/MIGRATION_RESULTS.json) / [全108画像と原計測ZIP](evidence/ux04-pilot/FULL_SCREENSHOTS.zip)
-
-初回の文字接触、font403によるfallback画像、別bundleの出所検証拒否、旧test期待の失敗は履歴として保存し、正常フォントの最終合格へ混ぜません。非作者の[移行・コード審査](evidence/ux04-pilot/SOURCE_REVIEW.md)と[数学・表示審査](evidence/ux04-pilot/RENDER_REVIEW.md)は代表範囲で合格しました。本人の細部OK・全体受入・公開・Gold/fitはまだ認定していません。
-
-確認後の次工程：細部OKなら、承認済みUX04の残り24箇所へ限定適用します。要修正なら、この代表の指摘から同型箇所を確認して戻します。これは[承認済み案のVerification Plan](PROPOSAL.md#verification-plan--修正ワークフロー)で定めた代表確認です。
+現在地は[工程入口](WORKFLOW_CURRENT.md)の **④本人細部確認**。`細部OK`なら承認済み残り23箇所の限定適用→検証・横断監査へ進みます。`要修正`ならその指摘を記録し、対応する原因/具体案の工程へ戻ります。これはUX05案の再承認・公開許可・全体受入の依頼ではありません。

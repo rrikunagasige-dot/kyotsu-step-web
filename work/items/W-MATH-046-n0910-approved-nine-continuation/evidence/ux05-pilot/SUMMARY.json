@@ -1,0 +1,141 @@
+{
+  "sourceSHA": "a39bdb8c9d064e6d90c8352020824bb5be4f931f",
+  "previousSourceSHA": "33d06bd8df991d7a1549a5ddcfebea919ad90e3f",
+  "compiledN09": "dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813",
+  "compiledN10": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+  "scope": "UX05 representative two nodes and shared renderer; remaining content changes not applied",
+  "browser": {
+    "status": "PASS",
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "states": 1776,
+    "geometryMeasurements": 10020,
+    "N09": [
+      {
+        "width": 320,
+        "parts": 48,
+        "wrongCandidates": 95
+      },
+      {
+        "width": 390,
+        "parts": 48,
+        "wrongCandidates": 95
+      },
+      {
+        "width": 430,
+        "parts": 48,
+        "wrongCandidates": 95
+      },
+      {
+        "width": 1440,
+        "parts": 48,
+        "wrongCandidates": 95
+      }
+    ],
+    "N10": [
+      {
+        "width": 320,
+        "parts": 63,
+        "wrongCandidates": 123
+      },
+      {
+        "width": 390,
+        "parts": 63,
+        "wrongCandidates": 123
+      },
+      {
+        "width": 430,
+        "parts": 63,
+        "wrongCandidates": 123
+      },
+      {
+        "width": 1440,
+        "parts": 63,
+        "wrongCandidates": 123
+      }
+    ],
+    "normalFactorDimensions": [
+      {
+        "width": 320,
+        "actual": {
+          "width": 145.9375,
+          "height": 21
+        },
+        "normal": {
+          "width": 145.9375,
+          "height": 21
+        }
+      },
+      {
+        "width": 390,
+        "actual": {
+          "width": 145.9375,
+          "height": 21
+        },
+        "normal": {
+          "width": 145.9375,
+          "height": 21
+        }
+      },
+      {
+        "width": 430,
+        "actual": {
+          "width": 145.9375,
+          "height": 21
+        },
+        "normal": {
+          "width": 145.9375,
+          "height": 21
+        }
+      },
+      {
+        "width": 1440,
+        "actual": {
+          "width": 145.9375,
+          "height": 21
+        },
+        "normal": {
+          "width": 145.9375,
+          "height": 21
+        }
+      }
+    ],
+    "httpErrors": 0,
+    "pageErrors": 0,
+    "sourceManifestStable": true
+  },
+  "migration": {
+    "status": "PASS",
+    "cases": 13,
+    "testedSourceSHA": "33d06bd8df991d7a1549a5ddcfebea919ad90e3f",
+    "inheritanceBasis": "Final source differs only in shared math compiler and its test; saved/migration/route code and compiled artifacts byte-identical. Final-source four-width browser separately checks old native trial, reset/archive/other-unit preservation."
+  },
+  "reviews": {
+    "sourceByB": "SCOPED_PASS",
+    "rendererCodeByA": "SCOPED_PASS",
+    "realImagesRendererByA": "SCOPED_PASS",
+    "realImagesLearnerDecisionByB": "SCOPED_PASS",
+    "preAndPostExistingReviewImporter": "PASS"
+  },
+  "sourceEquivalence": {
+    "verifiedPaths": 509,
+    "frozenWorktreeTrackedClean": true,
+    "authoringBytesEqualFrozenSource": true
+  },
+  "codeScope": {
+    "R04": "Existing solve/solution validation, teaching/blank candidates and adoption, source-bound native IR/construction/layout compile, scoped case retrieval, actual public snapshots, review prepare/import were executed. Unsupported logic OR uses explicit nonauthor mathematical argument, not formal proof.",
+    "R07": "Actual shared-compiler DOM revalidation + existing nested/equation-tag geometry validators, actual fonts/HTTP, all current parts/wrong candidates across four widths, storage/lifecycle checks.",
+    "notClaimed": "No formal Store receipt or full production-run state transition. Native complete-run importer is not claimed from this harness packet format; final rollout G2 uses its required contract."
+  },
+  "workflowPosition": "4_USER_DETAIL_REVIEW_READY",
+  "userDetailAccepted": false,
+  "G2Complete": false,
+  "published": false,
+  "nativeStoreReceiptCreated": false,
+  "Gold": false,
+  "fit": false
+}

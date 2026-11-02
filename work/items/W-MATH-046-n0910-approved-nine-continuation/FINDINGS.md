@@ -54,3 +54,6 @@ F-UX04-03の検査環境は同一byte依存treeのhardlinkコピーで解消。�
 
 ## F-UX05-02 — 同型原因を完成設計へ反映
 既存MASTER§§8/11/52/53と高校初学の非自明判断を全86nodeへ適用し、25変更/61維持を確定。穴数を目標にせず主判断の先出し/単純操作の細分化/確定値再入力を修正する。案の相殺交差項が長い単一math slotだった所見は、短いtext enum足場＋一候補内mathLines＋正答後通常式で補修。KEEPは数学上の対象条件と採点契約の保持であり、旧解放gateの固定ではないと明記。いずれも未実装の設計補修であり表示合格ではない。
+
+## F-UX05-03 — R07実寸比較で検出したroot relation markerの余白
+初期source33d06bd8の実browserで、認定slot0・括弧同寸でも普通の式より5px長い実欠陥を検出。root relation markerがmrel→phantom(mord)の内部glueを作っていた。markerなし通常KaTeXとの比較を新回帰にし、mrel兄弟＋共通親検証へ限定補修。harness側のprobe 1.21倍率という別の原FAILを先に分離補修した。旧unitPASSはこの実寸同一を証明していなかった。原画像/原計測を保持し、新sourceで四幅再確認へ戻る。

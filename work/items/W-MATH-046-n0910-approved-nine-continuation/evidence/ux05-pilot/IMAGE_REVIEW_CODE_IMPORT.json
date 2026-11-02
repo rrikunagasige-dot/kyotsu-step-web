@@ -1,0 +1,462 @@
+{
+  "status": "PASS",
+  "reviews": [
+    {
+      "id": "n09-01-320",
+      "phase": "post-implementation",
+      "requestHash": "924b0e7d3772a770f0cfc5cd6344d1e89a6e5e76d3dd1f146346df509d6393de",
+      "reviewer": "/root/w046_source_review — 共有rendererの非作者。N09教材/保存実装の作者であり、教材内容の独立合格を主張しない。同じmodel/履歴共有。",
+      "learnerDecision": "実画像上の二つの操作単位と、未回答→認定→次の未回答のUI遷移を確認。数学判断の独立審査はBへ分担する。",
+      "availableInformation": "320pxのinitial/partial/complete原画像3枚を実見。要求の画像/幾何6assetのhashを再計算し、source a39bdb8c・compiled dedfd7c5のgeometry packetと一致した。",
+      "reasonToProceed": "initialの未回答だけに操作域、partialの認定済み因数分解には通常数式、未回答の条件組には一button/一採点値の候補表示が残る。根拠は作者の理由欄ではなく三画像と実幾何。",
+      "nextWholeState": "completeでtext足場と候補panelが消え、通常の二条件と必要な導出へ戻る。次のstageや無関係cardを正答一つで先出しする表示はこの要求範囲に見られない。",
+      "misconception": "数学の誤概念正誤をこの作者が独立合格させない。UIでは因数分解の括弧/指数と条件候補のまたは/かつを区別できる。",
+      "reducedSupportVariant": "支援の数学的削減を新たに決めない。表示面では正答済み操作枠を除き、未回答の操作域と必要な途中式を残す承認済み方式を確認。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "因数分解の式全体を一つの操作欄で選ぶ表示である。教材判断の独立評価は数学担当Bへ渡す。",
+          "availableInformation": "初期画像に既習公式・一般零積法則・元式と変形、未回答の式slot、現在の番号付き四候補が見える。具体零条件の行はまだ表示されない。",
+          "copyRisk": "中立空欄で正答だけを固定印字していない。候補は未認定の選択肢として表示される。",
+          "nextUse": "正答後は同じ導出位置のslotを通常数式へ戻し、次の条件選択へ進む。",
+          "misconception": "括弧・指数・因子の各候補の表示が潰れず識別できる。誤答の数学根拠はBの独立審査。",
+          "prosePlacement": "本文→既習一般式→現在の計算→番号付き候補の順で連続。式番号(2)は可視の最終数式行にあり、slot/候補へ衝突しない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "320-initial-image",
+            "320-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "320-partial-image",
+            "320-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-05",
+          "partId": "n09-01::factorZeroConditionUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "零条件の組を一候補一操作として選ぶUI。orだけの独立操作へ分けていない。",
+          "availableInformation": "partial画像は短い「選択」buttonと問い、その直後の四候補を表示。二条件候補は一つの番号/一つのbutton内で接続語の境界を二行表示する。",
+          "copyRisk": "具体条件は候補の一員として並ぶだけで、本文の確定済み条件として先出しされない。教材の条件生成自体の独立合格はBの担当。",
+          "nextUse": "正答後はtext足場を消し、条件を通常の二行の数学として同じ本文へ戻す。",
+          "misconception": "「または」と「かつ」はどちらも二条件の組として読め、接続語が候補外へ切り離されない。",
+          "prosePlacement": "問いと候補は現在の計算の直後。320でも二条件を巨大な単一math slotへ詰めず、選択の操作域を保持する。",
+          "quoteOrMathRef": "因子についての零条件の組：{factorZeroConditionUX05}",
+          "evidenceRefs": [
+            "320-partial-image",
+            "320-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "320-complete-image",
+            "320-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-06",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "条件選択の完了後は操作を終え、確定した数学行を読む。",
+          "availableInformation": "complete画像でtext「選択」足場と候補panelが消え、x−4=0と「または x＋4=0」を通常の二行で表示する。幾何は当該行slots0・overflow false。",
+          "copyRisk": "公開タイミングはcompleteに限る。初期/partial画像では同じ確定条件行がまだ見えない。",
+          "nextUse": "条件の次に基本逆演算を含む必要な途中式、最後に全解の説明を連続表示する。",
+          "misconception": "接続語は第一条件と第二条件の意味境界に置かれ、第二条件が独立の無関係な式には見えない。数学的必要十分性の独立審査はBへ。",
+          "prosePlacement": "完了後に空の回答足場/認定メモを残さず、式番号は可視最終の導出行へ移る。条件と結論は重ならない。",
+          "quoteOrMathRef": "x-4=0",
+          "evidenceRefs": [
+            "320-complete-image",
+            "320-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "NOT_APPLICABLE",
+          "evidence": "私はN09教材設計/実装の作者。主判断の学習価値/数学内容の独立合格は担当Bの応答へ委ね、本応答では指定された可視stateでの本文・候補・操作の表示だけを審査した。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "320pxの3原画像を実見し、partial/completeのfactor rowが通常の括弧/間隔となりslots0/resolvedParts付きであることを確認。root実測RESULTもmarker無し通常KaTeXと145.9375×21pxが一致する。"
+        }
+      ],
+      "scope": "共有renderer/操作/layoutの非作者実画像審査のみ。教材意味の独立合格・本人細部受入・公開・Goldではない。",
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n09-01-390",
+      "phase": "post-implementation",
+      "requestHash": "2961c6b5da7ac9e5afa019f68a41cc2bb333da77f53edf578565dccc68bdfce7",
+      "reviewer": "/root/w046_source_review — 共有rendererの非作者。N09教材/保存実装の作者であり、教材内容の独立合格を主張しない。同じmodel/履歴共有。",
+      "learnerDecision": "実画像上の二つの操作単位と、未回答→認定→次の未回答のUI遷移を確認。数学判断の独立審査はBへ分担する。",
+      "availableInformation": "390pxのinitial/partial/complete原画像3枚を実見。要求の画像/幾何6assetのhashを再計算し、source a39bdb8c・compiled dedfd7c5のgeometry packetと一致した。",
+      "reasonToProceed": "initialの未回答だけに操作域、partialの認定済み因数分解には通常数式、未回答の条件組には一button/一採点値の候補表示が残る。根拠は作者の理由欄ではなく三画像と実幾何。",
+      "nextWholeState": "completeでtext足場と候補panelが消え、通常の二条件と必要な導出へ戻る。次のstageや無関係cardを正答一つで先出しする表示はこの要求範囲に見られない。",
+      "misconception": "数学の誤概念正誤をこの作者が独立合格させない。UIでは因数分解の括弧/指数と条件候補のまたは/かつを区別できる。",
+      "reducedSupportVariant": "支援の数学的削減を新たに決めない。表示面では正答済み操作枠を除き、未回答の操作域と必要な途中式を残す承認済み方式を確認。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "因数分解の式全体を一つの操作欄で選ぶ表示である。教材判断の独立評価は数学担当Bへ渡す。",
+          "availableInformation": "初期画像に既習公式・一般零積法則・元式と変形、未回答の式slot、現在の番号付き四候補が見える。具体零条件の行はまだ表示されない。",
+          "copyRisk": "中立空欄で正答だけを固定印字していない。候補は未認定の選択肢として表示される。",
+          "nextUse": "正答後は同じ導出位置のslotを通常数式へ戻し、次の条件選択へ進む。",
+          "misconception": "括弧・指数・因子の各候補の表示が潰れず識別できる。誤答の数学根拠はBの独立審査。",
+          "prosePlacement": "本文→既習一般式→現在の計算→番号付き候補の順で連続。式番号(2)は可視の最終数式行にあり、slot/候補へ衝突しない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "390-initial-image",
+            "390-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "390-partial-image",
+            "390-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-05",
+          "partId": "n09-01::factorZeroConditionUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "零条件の組を一候補一操作として選ぶUI。orだけの独立操作へ分けていない。",
+          "availableInformation": "partial画像は短い「選択」buttonと問い、その直後の四候補を表示。二条件候補は一つの番号/一つのbutton内で接続語の境界を二行表示する。",
+          "copyRisk": "具体条件は候補の一員として並ぶだけで、本文の確定済み条件として先出しされない。教材の条件生成自体の独立合格はBの担当。",
+          "nextUse": "正答後はtext足場を消し、条件を通常の二行の数学として同じ本文へ戻す。",
+          "misconception": "「または」と「かつ」はどちらも二条件の組として読め、接続語が候補外へ切り離されない。",
+          "prosePlacement": "問いと候補は現在の計算の直後。320でも二条件を巨大な単一math slotへ詰めず、選択の操作域を保持する。",
+          "quoteOrMathRef": "因子についての零条件の組：{factorZeroConditionUX05}",
+          "evidenceRefs": [
+            "390-partial-image",
+            "390-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "390-complete-image",
+            "390-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-06",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "条件選択の完了後は操作を終え、確定した数学行を読む。",
+          "availableInformation": "complete画像でtext「選択」足場と候補panelが消え、x−4=0と「または x＋4=0」を通常の二行で表示する。幾何は当該行slots0・overflow false。",
+          "copyRisk": "公開タイミングはcompleteに限る。初期/partial画像では同じ確定条件行がまだ見えない。",
+          "nextUse": "条件の次に基本逆演算を含む必要な途中式、最後に全解の説明を連続表示する。",
+          "misconception": "接続語は第一条件と第二条件の意味境界に置かれ、第二条件が独立の無関係な式には見えない。数学的必要十分性の独立審査はBへ。",
+          "prosePlacement": "完了後に空の回答足場/認定メモを残さず、式番号は可視最終の導出行へ移る。条件と結論は重ならない。",
+          "quoteOrMathRef": "x-4=0",
+          "evidenceRefs": [
+            "390-complete-image",
+            "390-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "NOT_APPLICABLE",
+          "evidence": "私はN09教材設計/実装の作者。主判断の学習価値/数学内容の独立合格は担当Bの応答へ委ね、本応答では指定された可視stateでの本文・候補・操作の表示だけを審査した。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "390pxの3原画像を実見し、partial/completeのfactor rowが通常の括弧/間隔となりslots0/resolvedParts付きであることを確認。root実測RESULTもmarker無し通常KaTeXと145.9375×21pxが一致する。"
+        }
+      ],
+      "scope": "共有renderer/操作/layoutの非作者実画像審査のみ。教材意味の独立合格・本人細部受入・公開・Goldではない。",
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n09-01-430",
+      "phase": "post-implementation",
+      "requestHash": "b0686b87b834a19816f79284c35a26eca35137c74bad9f871eb0c937a7c70000",
+      "reviewer": "/root/w046_source_review — 共有rendererの非作者。N09教材/保存実装の作者であり、教材内容の独立合格を主張しない。同じmodel/履歴共有。",
+      "learnerDecision": "実画像上の二つの操作単位と、未回答→認定→次の未回答のUI遷移を確認。数学判断の独立審査はBへ分担する。",
+      "availableInformation": "430pxのinitial/partial/complete原画像3枚を実見。要求の画像/幾何6assetのhashを再計算し、source a39bdb8c・compiled dedfd7c5のgeometry packetと一致した。",
+      "reasonToProceed": "initialの未回答だけに操作域、partialの認定済み因数分解には通常数式、未回答の条件組には一button/一採点値の候補表示が残る。根拠は作者の理由欄ではなく三画像と実幾何。",
+      "nextWholeState": "completeでtext足場と候補panelが消え、通常の二条件と必要な導出へ戻る。次のstageや無関係cardを正答一つで先出しする表示はこの要求範囲に見られない。",
+      "misconception": "数学の誤概念正誤をこの作者が独立合格させない。UIでは因数分解の括弧/指数と条件候補のまたは/かつを区別できる。",
+      "reducedSupportVariant": "支援の数学的削減を新たに決めない。表示面では正答済み操作枠を除き、未回答の操作域と必要な途中式を残す承認済み方式を確認。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "因数分解の式全体を一つの操作欄で選ぶ表示である。教材判断の独立評価は数学担当Bへ渡す。",
+          "availableInformation": "初期画像に既習公式・一般零積法則・元式と変形、未回答の式slot、現在の番号付き四候補が見える。具体零条件の行はまだ表示されない。",
+          "copyRisk": "中立空欄で正答だけを固定印字していない。候補は未認定の選択肢として表示される。",
+          "nextUse": "正答後は同じ導出位置のslotを通常数式へ戻し、次の条件選択へ進む。",
+          "misconception": "括弧・指数・因子の各候補の表示が潰れず識別できる。誤答の数学根拠はBの独立審査。",
+          "prosePlacement": "本文→既習一般式→現在の計算→番号付き候補の順で連続。式番号(2)は可視の最終数式行にあり、slot/候補へ衝突しない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "430-initial-image",
+            "430-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "430-partial-image",
+            "430-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-05",
+          "partId": "n09-01::factorZeroConditionUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "零条件の組を一候補一操作として選ぶUI。orだけの独立操作へ分けていない。",
+          "availableInformation": "partial画像は短い「選択」buttonと問い、その直後の四候補を表示。二条件候補は一つの番号/一つのbutton内で接続語の境界を二行表示する。",
+          "copyRisk": "具体条件は候補の一員として並ぶだけで、本文の確定済み条件として先出しされない。教材の条件生成自体の独立合格はBの担当。",
+          "nextUse": "正答後はtext足場を消し、条件を通常の二行の数学として同じ本文へ戻す。",
+          "misconception": "「または」と「かつ」はどちらも二条件の組として読め、接続語が候補外へ切り離されない。",
+          "prosePlacement": "問いと候補は現在の計算の直後。320でも二条件を巨大な単一math slotへ詰めず、選択の操作域を保持する。",
+          "quoteOrMathRef": "因子についての零条件の組：{factorZeroConditionUX05}",
+          "evidenceRefs": [
+            "430-partial-image",
+            "430-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "430-complete-image",
+            "430-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-06",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "条件選択の完了後は操作を終え、確定した数学行を読む。",
+          "availableInformation": "complete画像でtext「選択」足場と候補panelが消え、x−4=0と「または x＋4=0」を通常の二行で表示する。幾何は当該行slots0・overflow false。",
+          "copyRisk": "公開タイミングはcompleteに限る。初期/partial画像では同じ確定条件行がまだ見えない。",
+          "nextUse": "条件の次に基本逆演算を含む必要な途中式、最後に全解の説明を連続表示する。",
+          "misconception": "接続語は第一条件と第二条件の意味境界に置かれ、第二条件が独立の無関係な式には見えない。数学的必要十分性の独立審査はBへ。",
+          "prosePlacement": "完了後に空の回答足場/認定メモを残さず、式番号は可視最終の導出行へ移る。条件と結論は重ならない。",
+          "quoteOrMathRef": "x-4=0",
+          "evidenceRefs": [
+            "430-complete-image",
+            "430-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "NOT_APPLICABLE",
+          "evidence": "私はN09教材設計/実装の作者。主判断の学習価値/数学内容の独立合格は担当Bの応答へ委ね、本応答では指定された可視stateでの本文・候補・操作の表示だけを審査した。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "430pxの3原画像を実見し、partial/completeのfactor rowが通常の括弧/間隔となりslots0/resolvedParts付きであることを確認。root実測RESULTもmarker無し通常KaTeXと145.9375×21pxが一致する。"
+        }
+      ],
+      "scope": "共有renderer/操作/layoutの非作者実画像審査のみ。教材意味の独立合格・本人細部受入・公開・Goldではない。",
+      "automaticAcceptance": false,
+      "status": "PASS"
+    },
+    {
+      "id": "n09-01-1440",
+      "phase": "post-implementation",
+      "requestHash": "d369d79ca0eac163f155d621abf29ef0c6c2f5f5594971522add410f4c2179f0",
+      "reviewer": "/root/w046_source_review — 共有rendererの非作者。N09教材/保存実装の作者であり、教材内容の独立合格を主張しない。同じmodel/履歴共有。",
+      "learnerDecision": "実画像上の二つの操作単位と、未回答→認定→次の未回答のUI遷移を確認。数学判断の独立審査はBへ分担する。",
+      "availableInformation": "1440pxのinitial/partial/complete原画像3枚を実見。要求の画像/幾何6assetのhashを再計算し、source a39bdb8c・compiled dedfd7c5のgeometry packetと一致した。",
+      "reasonToProceed": "initialの未回答だけに操作域、partialの認定済み因数分解には通常数式、未回答の条件組には一button/一採点値の候補表示が残る。根拠は作者の理由欄ではなく三画像と実幾何。",
+      "nextWholeState": "completeでtext足場と候補panelが消え、通常の二条件と必要な導出へ戻る。次のstageや無関係cardを正答一つで先出しする表示はこの要求範囲に見られない。",
+      "misconception": "数学の誤概念正誤をこの作者が独立合格させない。UIでは因数分解の括弧/指数と条件候補のまたは/かつを区別できる。",
+      "reducedSupportVariant": "支援の数学的削減を新たに決めない。表示面では正答済み操作枠を除き、未回答の操作域と必要な途中式を残す承認済み方式を確認。",
+      "findings": [],
+      "reviewRows": [
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "initial",
+          "decision": "ADOPT",
+          "learnerDecision": "因数分解の式全体を一つの操作欄で選ぶ表示である。教材判断の独立評価は数学担当Bへ渡す。",
+          "availableInformation": "初期画像に既習公式・一般零積法則・元式と変形、未回答の式slot、現在の番号付き四候補が見える。具体零条件の行はまだ表示されない。",
+          "copyRisk": "中立空欄で正答だけを固定印字していない。候補は未認定の選択肢として表示される。",
+          "nextUse": "正答後は同じ導出位置のslotを通常数式へ戻し、次の条件選択へ進む。",
+          "misconception": "括弧・指数・因子の各候補の表示が潰れず識別できる。誤答の数学根拠はBの独立審査。",
+          "prosePlacement": "本文→既習一般式→現在の計算→番号付き候補の順で連続。式番号(2)は可視の最終数式行にあり、slot/候補へ衝突しない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "1440-initial-image",
+            "1440-initial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "1440-partial-image",
+            "1440-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-05",
+          "partId": "n09-01::factorZeroConditionUX05",
+          "state": "partial",
+          "decision": "ADOPT",
+          "learnerDecision": "零条件の組を一候補一操作として選ぶUI。orだけの独立操作へ分けていない。",
+          "availableInformation": "partial画像は短い「選択」buttonと問い、その直後の四候補を表示。二条件候補は一つの番号/一つのbutton内で接続語の境界を二行表示する。",
+          "copyRisk": "具体条件は候補の一員として並ぶだけで、本文の確定済み条件として先出しされない。教材の条件生成自体の独立合格はBの担当。",
+          "nextUse": "正答後はtext足場を消し、条件を通常の二行の数学として同じ本文へ戻す。",
+          "misconception": "「または」と「かつ」はどちらも二条件の組として読め、接続語が候補外へ切り離されない。",
+          "prosePlacement": "問いと候補は現在の計算の直後。320でも二条件を巨大な単一math slotへ詰めず、選択の操作域を保持する。",
+          "quoteOrMathRef": "因子についての零条件の組：{factorZeroConditionUX05}",
+          "evidenceRefs": [
+            "1440-partial-image",
+            "1440-partial-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-04",
+          "partId": "n09-01::factorisedFormUX05",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "正答認定した式は操作を終え、次の未回答だけを操作対象にする。",
+          "availableInformation": "partial画像の因数分解は普通の括弧と文字へ縮まり、44pxの空欄やボタンが残らない。幾何はresolvedPartsで同partを証明しslots0。",
+          "copyRisk": "次の未回答条件を正答印字せず、已認定の前式のみを再利用する。",
+          "nextUse": "partialでは直後の短いtext操作欄へ接続。completeでは条件と必要な途中式へ接続する。",
+          "misconception": "確定した第二因子だけが大きな回答枠になる旧表示ではなく、二因子の括弧高さ/間隔が同一の通常組版。",
+          "prosePlacement": "因数分解の直後に次の問い、または確定した条件を置き、別cardの認定メモは重ねない。",
+          "quoteOrMathRef": "{factorisedFormUX05}=0",
+          "evidenceRefs": [
+            "1440-complete-image",
+            "1440-complete-geometry"
+          ]
+        },
+        {
+          "rowId": "n09-01::ux05-row-06",
+          "state": "complete",
+          "decision": "ADOPT",
+          "learnerDecision": "条件選択の完了後は操作を終え、確定した数学行を読む。",
+          "availableInformation": "complete画像でtext「選択」足場と候補panelが消え、x−4=0と「または x＋4=0」を通常の二行で表示する。幾何は当該行slots0・overflow false。",
+          "copyRisk": "公開タイミングはcompleteに限る。初期/partial画像では同じ確定条件行がまだ見えない。",
+          "nextUse": "条件の次に基本逆演算を含む必要な途中式、最後に全解の説明を連続表示する。",
+          "misconception": "接続語は第一条件と第二条件の意味境界に置かれ、第二条件が独立の無関係な式には見えない。数学的必要十分性の独立審査はBへ。",
+          "prosePlacement": "完了後に空の回答足場/認定メモを残さず、式番号は可視最終の導出行へ移る。条件と結論は重ならない。",
+          "quoteOrMathRef": "x-4=0",
+          "evidenceRefs": [
+            "1440-complete-image",
+            "1440-complete-geometry"
+          ]
+        }
+      ],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "NOT_APPLICABLE",
+          "evidence": "私はN09教材設計/実装の作者。主判断の学習価値/数学内容の独立合格は担当Bの応答へ委ね、本応答では指定された可視stateでの本文・候補・操作の表示だけを審査した。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "APPLIED",
+          "evidence": "1440pxの3原画像を実見し、partial/completeのfactor rowが通常の括弧/間隔となりslots0/resolvedParts付きであることを確認。root実測RESULTもmarker無し通常KaTeXと145.9375×21pxが一致する。"
+        }
+      ],
+      "scope": "共有renderer/操作/layoutの非作者実画像審査のみ。教材意味の独立合格・本人細部受入・公開・Goldではない。",
+      "automaticAcceptance": false,
+      "status": "PASS"
+    }
+  ],
+  "automaticAcceptance": false
+}

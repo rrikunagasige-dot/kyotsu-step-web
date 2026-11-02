@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "reviews": [
+    {
+      "id": "n09-q01-negative::powerAction",
+      "phase": "pre-design",
+      "requestHash": "6b6ab40d6658785f4a3fcb0d3039ed03e76f6ccf8aa4d5786d471f2268c4b89a",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（共有renderer作者、同じmodel/履歴共有）",
+      "learnerDecision": "(−4)²の指数2は負号を含む底−4全体を二因子の積へする操作、と判断する。新たな積符号小問を足さず、後続では(−4)×(−4)の必要計算を行う。",
+      "availableInformation": "public initial/currentでは正候補4²=16を確認したうえで、負候補も調べる本文、xは実数でx²=16の全実数を求める条件、括弧と指数に注意する本文、現在の三つの操作候補だけが見える。powerAction未回答時に(−4)×(−4)の完成導出は解放されていない。",
+      "reasonToProceed": "累乗の定義は同じ底を二回掛けること。底は括弧で−4全体と指定されるので、負号を外へ残す操作や−4を2倍する操作とは異なる。正候補だけでは負候補を排除できないので調べる理由がある。",
+      "nextWholeState": "正しく作用範囲を決めた後に(−4)²=(−4)×(−4)={value}を表示し、負候補の値を本人が計算する。誤った操作のままvalueや全解の条件生成へ進めない。",
+      "misconception": "leave-minus-outsideは−(4²)との混同、multiply-by-twoは指数と係数の混同。三候補は異なる操作で、表現順を変えただけの正解を誤答にしていない。",
+      "reducedSupportVariant": "この導入では承認済みの作用範囲判断を維持し、積符号を第三の別問にはしない。後続の転移で同じ括弧/指数操作を毎回別々に再教授する変更は本代表に追加しない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentと現在候補から、learnerDecision/availableInformation/nextWholeStateを具体式へ対応した。作者の理由欄や私有expected/feedbackを可視状態の根拠にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの意味課題には実DOM/画像/幾何の証拠がない。正答後の通常AST/括弧寸法/混在44pxはR07の同じsource実画像で別に受入し、この意味応答で共有renderer作者が自作表示を非作者PASSにしない。"
+        }
+      ],
+      "automaticAcceptance": false,
+      "scope": "可視情報による設計/数学意味審査のみ。製品実画像・移行実browser・本人細部受入の代用ではない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-01::factorisedFormUX05",
+      "phase": "pre-design",
+      "requestHash": "4d1ac8a14ff606736fb91610468b59fb800d958085bdbb7da567727ed2861eae",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（共有renderer作者、同じmodel/履歴共有）",
+      "learnerDecision": "x²−4²に恒等的に等しい積を具体的に作り、(x−4)(x＋4)を選ぶ。−一字だけを選んで積全体をAUTOで与える方式とは違う。",
+      "availableInformation": "現在のpublic行にはx∈ℝ、x²=16からx²−16=16−16=0、x²−4²=0、既習一般公式(A−B)(A＋B)=A²−B²があり、具体的な因数分解は未回答のslot。零積一般則は教示されるが、x−4=0/x＋4=0という具体条件はまだ本文に見えない。一般公式は補修後にmath行で表示される。",
+      "reasonToProceed": "A=x、B=4と対応させれば平方差x²−16が得られる。展開するとx²＋4x−4x−16で中間項が相殺するので恒等的に一致する。実数条件下でこの因数分解は元の方程式と同値。候補を二つ確認しただけでは全解とは断定せず、次に零積の条件を尽くす必要がある。",
+      "nextWholeState": "正しい因数分解の確定後に積(x−4)(x＋4)=0を通常の数式として残し、零条件の組という次の一判断を解放する。その時点でも具体零条件/±4の解を本文に先書きしない。",
+      "misconception": "(x−4)²には−8x、(x＋4)²には＋8xが残る。x(x−16)はx²−16xであり定数項が違う。逆順(x＋4)(x−4)は同値な正解なので誤答候補に入っていない。",
+      "reducedSupportVariant": "既習公式を一般形で参照し、x/4/符号/交差積を毎回六つの基本小問へ分解せず、具体的な因数分解の式を一判断として作らせる。次の零条件生成を省略して完成解法丸ごと選択にはしない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentと現在候補から、learnerDecision/availableInformation/nextWholeStateを具体式へ対応した。作者の理由欄や私有expected/feedbackを可視状態の根拠にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの意味課題には実DOM/画像/幾何の証拠がない。正答後の通常AST/括弧寸法/混在44pxはR07の同じsource実画像で別に受入し、この意味応答で共有renderer作者が自作表示を非作者PASSにしない。"
+        }
+      ],
+      "automaticAcceptance": false,
+      "scope": "可視情報による設計/数学意味審査のみ。製品実画像・移行実browser・本人細部受入の代用ではない。",
+      "status": "PASS"
+    },
+    {
+      "id": "n09-01::factorZeroConditionUX05",
+      "phase": "pre-design",
+      "requestHash": "3b66131bc3874e19b5b5969c182a8dec986043e8576f29a025afd2b0150b2d52",
+      "reviewer": "/root/w046_render_review — N09教材/設計の非作者（共有renderer作者、同じmodel/履歴共有）",
+      "learnerDecision": "確定した二因子x−4、x＋4に零積の一般則を適用し、「x−4=0 または x＋4=0」という二条件全体を作る。単語「または」だけの採点ではない。",
+      "availableInformation": "public currentでは因数分解が正答認定され、x²=16からの同値な変形、実数の零積一般則AB=0⇔A=0またはB=0、因子についての零条件の組を問う足場と四つの候補が見える。具体的な零条件は未認定の候補mathLinesにあるが、本文の確定した式としてはまだ表示されない。",
+      "reasonToProceed": "実数でAB=0なら、A=0か、A≠0のとき両辺をAで割ってB=0となる。逆に一因子0なら積0。従ってA=x−4、B=x＋4を代入したOR条件は必要十分で、二つの因子の順を交換しても同値。この根拠は非作者による意味審査であり、logical OR未対応のclosed solution graphによる機械証明ではない。finiteのUNSUPPORTEDを保持したまま補う。",
+      "nextWholeState": "零条件全体が正答認定されてから短い足場を消し、通常のmath二行でx−4=0/またはx＋4=0を表示する。そこから各一次式を一続きで解きx=4、x=−4を示し、変形が同値なので他の解がないと結論する。途中で＋4/−4を二つの新しい基本小問に分けない。",
+      "misconception": "ANDは同時に0を要求して零積の必要条件ではない。今回はx=4とx=−4の同時成立も不可能。因子等値は積0を保証しない。x=0は実際の因子を零にする条件でなく、代入すると積は−16。候補はこれらを分離し、正しい因子順交換を誤答にしない。",
+      "reducedSupportVariant": "未知/未確認の法則は一般形と理由を本文で教え、具体的な二因子の条件生成を残す。単語orだけへ圧縮せず、移項から最終解までの全解法を一選択に詰めることもしない。",
+      "findings": [],
+      "caseDispositions": [
+        {
+          "caseId": "W046-UX05-main-inference",
+          "status": "APPLIED",
+          "evidence": "実public initial/currentと現在候補から、learnerDecision/availableInformation/nextWholeStateを具体式へ対応した。作者の理由欄や私有expected/feedbackを可視状態の根拠にしていない。"
+        },
+        {
+          "caseId": "W046-UX05-resolved-math",
+          "status": "NOT_APPLICABLE",
+          "evidence": "pre-designの意味課題には実DOM/画像/幾何の証拠がない。正答後の通常AST/括弧寸法/混在44pxはR07の同じsource実画像で別に受入し、この意味応答で共有renderer作者が自作表示を非作者PASSにしない。"
+        }
+      ],
+      "automaticAcceptance": false,
+      "scope": "可視情報による設計/数学意味審査のみ。製品実画像・移行実browser・本人細部受入の代用ではない。",
+      "status": "PASS"
+    }
+  ],
+  "automaticAcceptance": false
+}

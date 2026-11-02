@@ -12,11 +12,13 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：R05の本人承認受領。R04の案・非作者審査は存在するが、既存capabilityの実行と接続確認に不足があるため、R06の製品変更前にその不足を補う。
+- 実質の現在地：①既存CODE接続と意味応答import、②承認照合と代表実装、③固定候補R07検証/非作者実画像審査まで完了。現在は **④本人細部確認（BLOCK-CHECK-PENDING）**。[実確認票](REVIEW_SHEET.md)を提示。細部OK後だけ残り23CHANGE→R07/G2へ進み、要修正なら原因/具体案へ戻る。source a39bdb8c、実績/限界はevidence/ux05-pilot/SUMMARY.json。CODEのNEEDS_AI_REVIEW原結果とAI importを別に保持する。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
 ## 今回の実行順
+
+着手/完了時にこの図の現在地と次手を照合。今回R07で実寸FAIL→R06のmarker限定補修→新source R07再確認の復帰を記録した。正式Storeの受理状態とは区別する。
 
 |工程|使う既存CODE/入力・出力|主担当と非作者審査|次へ進む条件|
 |---|---|---|---|

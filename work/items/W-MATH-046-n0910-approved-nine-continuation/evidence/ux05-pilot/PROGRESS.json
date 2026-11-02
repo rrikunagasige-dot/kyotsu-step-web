@@ -1,0 +1,55 @@
+{
+  "recordType": "manual-continuation-under-user-ledger-exception",
+  "workflowEntry": "WORKFLOW_CURRENT.md",
+  "proposal": "P-W046-UX-05",
+  "sourceSHA": "a39bdb8c9d064e6d90c8352020824bb5be4f931f",
+  "checkpoints": [
+    {
+      "stage": "R04",
+      "status": "EXISTING_CODE_AND_SCOPED_AI_IMPORT_COMPLETE",
+      "codeResultsPreserved": true
+    },
+    {
+      "stage": "R05",
+      "status": "APPROVAL_MATCHED"
+    },
+    {
+      "stage": "R06",
+      "status": "REPRESENTATIVE_IMPLEMENTED"
+    },
+    {
+      "stage": "R07",
+      "status": "SCOPED_VERIFIED",
+      "states": 1776,
+      "geometry": 10020,
+      "nonAuthorImageReview": "SCOPED_PASS"
+    },
+    {
+      "stage": "STEP4_USER_DETAIL",
+      "status": "READY_AWAITING_USER",
+      "sheet": "REVIEW_SHEET.md"
+    }
+  ],
+  "repairLoop": [
+    {
+      "sourceSHA": "33d06bd8df991d7a1549a5ddcfebea919ad90e3f",
+      "stage": "R07",
+      "finding": "root relation marker internal glue adds5px"
+    },
+    {
+      "stage": "R06",
+      "action": "minimal compiler correction and regression"
+    },
+    {
+      "sourceSHA": "a39bdb8c9d064e6d90c8352020824bb5be4f931f",
+      "stage": "R07",
+      "result": "ordinary factor dimensions match at all four widths"
+    }
+  ],
+  "nativeStoreReceiptCreated": false,
+  "userDetailAccepted": false,
+  "G2Complete": false,
+  "nextOnDetailOK": "Remaining 23 approved CHANGE blocks, then R07/G2",
+  "nextOnRevision": "Capture feedback, return to cause/impact/proposal as appropriate",
+  "publicationApproved": false
+}

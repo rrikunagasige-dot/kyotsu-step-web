@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-W046-UX-05",
   "recordedDate": "2026-11-02",
-  "status": "UX05_APPROVED_WORKFLOW_CODE_MAPPING_PENDING",
+  "status": "UX05_REPRESENTATIVE_VERIFIED_USER_DETAIL_PENDING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -221,7 +221,7 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "UX05_APPROVAL_RECEIVED_R04_CODE_MAPPING_PENDING",
+    "currentSubstantiveStage": "STEP4_USER_DETAIL_REVIEW_READY",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
     "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
@@ -358,42 +358,27 @@
   ],
   "activeProposal": "P-W046-UX-05",
   "currentPilot": {
-    "proposal": "P-W046-UX-04",
-    "unit": "N09",
-    "revision": 6,
-    "compiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
-    "nodes": [
+    "proposal": "P-W046-UX-05",
+    "sourceSha": "a39bdb8c9d064e6d90c8352020824bb5be4f931f",
+    "compiledHash": "dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813",
+    "scope": [
       "n09-q01-negative",
-      "n09-01"
+      "n09-01",
+      "shared renderer and protected migration"
     ],
-    "unitParts": 52,
-    "retainedParts": 46,
-    "newParts": 6,
-    "remainingSemanticNodes": 24,
-    "reviewStatus": "USER_DETAIL_REQUIRES_REVISION",
-    "userVisualAcceptance": false,
-    "publicationChanged": false,
-    "tests": {
-      "regressions": 136,
-      "typecheck": "PASS",
-      "changedLint": "PASS",
-      "build": "PASS",
-      "migrationBrowserCases": 10,
-      "afterFinalLayoutChange": {
-        "affectedTests": 76,
-        "typecheck": "PASS",
-        "build": "PASS"
-      }
-    },
-    "expandedBaselineProbe": {
-      "preexistingFailures": 5,
-      "sameFiveOnBaseline": true,
-      "notIncludedIn136Scope": true
-    },
-    "migrationExecutionCompiledHash": "f2bc35bbdb464a360d429b504459ff8c0f0b8c082db4e020a3b791f0d92619b3",
-    "migrationToFinalDifference": "factorization mathGroupId and generated hashes/exact targetHash only; route byte unchanged",
-    "sourceSha": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+    "remainingChangeNodes": 23,
+    "reviewStatus": "BLOCK-CHECK-PENDING",
     "sheet": "REVIEW_SHEET.md",
+    "userVisualAcceptance": false,
+    "tests": {
+      "relatedAuthoredUnit": 121,
+      "rendererRelatedUnitBeforeMarker": 47,
+      "markerRelatedUnit": 40,
+      "nativeFinal": 7,
+      "typecheck": "PASS",
+      "build": "PASS",
+      "note": "Related suites overlap; do not sum these as independent test cases."
+    },
     "browser": {
       "status": "PASS",
       "widths": [
@@ -402,49 +387,117 @@
         430,
         1440
       ],
-      "states": 128,
-      "geometryMeasurements": 1192,
-      "correctPartsPerWidth": 52,
-      "targetWrongCandidatesPerWidth": 14,
-      "fontChecks": 276,
-      "KaTeXMainAndMathItalicLoadedEveryCheck": true,
-      "AMSLoaded": true,
+      "states": 1776,
+      "geometryMeasurements": 10020,
+      "N09": [
+        {
+          "width": 320,
+          "parts": 48,
+          "wrongCandidates": 95
+        },
+        {
+          "width": 390,
+          "parts": 48,
+          "wrongCandidates": 95
+        },
+        {
+          "width": 430,
+          "parts": 48,
+          "wrongCandidates": 95
+        },
+        {
+          "width": 1440,
+          "parts": 48,
+          "wrongCandidates": 95
+        }
+      ],
+      "N10": [
+        {
+          "width": 320,
+          "parts": 63,
+          "wrongCandidates": 123
+        },
+        {
+          "width": 390,
+          "parts": 63,
+          "wrongCandidates": 123
+        },
+        {
+          "width": 430,
+          "parts": 63,
+          "wrongCandidates": 123
+        },
+        {
+          "width": 1440,
+          "parts": 63,
+          "wrongCandidates": 123
+        }
+      ],
+      "normalFactorDimensions": [
+        {
+          "width": 320,
+          "actual": {
+            "width": 145.9375,
+            "height": 21
+          },
+          "normal": {
+            "width": 145.9375,
+            "height": 21
+          }
+        },
+        {
+          "width": 390,
+          "actual": {
+            "width": 145.9375,
+            "height": 21
+          },
+          "normal": {
+            "width": 145.9375,
+            "height": 21
+          }
+        },
+        {
+          "width": 430,
+          "actual": {
+            "width": 145.9375,
+            "height": 21
+          },
+          "normal": {
+            "width": 145.9375,
+            "height": 21
+          }
+        },
+        {
+          "width": 1440,
+          "actual": {
+            "width": 145.9375,
+            "height": 21
+          },
+          "normal": {
+            "width": 145.9375,
+            "height": 21
+          }
+        }
+      ],
       "httpErrors": 0,
-      "networkFailures": 0,
-      "originalPNGs": 108,
-      "resultSha256": "69a31193ce10a3b8b71d6877442e8d55fae7437b7262ae596d10d801cda5a63c"
+      "pageErrors": 0,
+      "sourceManifestStable": true
+    },
+    "migration": {
+      "status": "PASS",
+      "cases": 13,
+      "testedSourceSHA": "33d06bd8df991d7a1549a5ddcfebea919ad90e3f",
+      "inheritanceBasis": "Final source differs only in shared math compiler and its test; saved/migration/route code and compiled artifacts byte-identical. Final-source four-width browser separately checks old native trial, reset/archive/other-unit preservation."
     },
     "nonAuthor": {
-      "A": "SCOPED_CODE_AND_RESULT_READ_PASS",
-      "B": "SCOPED_PILOT_MATH_RENDER_PASS",
-      "formalStoreReceipt": false
+      "sourceByB": "SCOPED_PASS",
+      "rendererCodeByA": "SCOPED_PASS",
+      "realImagesRendererByA": "SCOPED_PASS",
+      "realImagesLearnerDecisionByB": "SCOPED_PASS",
+      "preAndPostExistingReviewImporter": "PASS"
     },
-    "captureBinding": {
-      "rawWorkingTreeBaseCommit": "778a6c3acb18765d99f3ebaf922457326af536f1",
-      "uncommittedApprovedChangesAtCapture": true,
-      "all20ChangedGitBlobsMatchCandidate": true,
-      "all505SourceFilesMatchBeforeAfterAndCheckout": true
-    },
-    "evidenceArchive": {
-      "path": "evidence/ux04-pilot/FULL_SCREENSHOTS.zip",
-      "bytes": 7145892,
-      "sha256": "763ecc172cc2f5531237f4f095c0ead9add231f4aac61aec7907e2f4fe6cb549"
-    },
-    "invalidEarlierRenderResults": "font403 fallback and detached bundle SOURCE_UNVERIFIED are retained but not final PASS",
-    "globalGovernance": {
-      "status": "FAIL_PREEXISTING",
-      "errors": 38,
-      "sameErrorSetAsPreviousBaseline": true,
-      "addedErrors": 0,
-      "thisWorkErrors": 0,
-      "log": "evidence/ux04-pilot/governance.log"
-    },
-    "userFeedback": {
-      "pedagogicalGrain": "Requires teen-level important inference, not elementary inverse-operation microquestions",
-      "render": "Confirmed oversized second-factor parentheses and excess spacing from retained44px certified slot",
-      "previousTechnicalPassNotUserAcceptance": true,
-      "newImplementationOrTestsThisResponse": false
-    }
+    "publicationChanged": false,
+    "nativeReceiptCreated": false
   },
   "ux03Full": {
     "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
@@ -598,14 +651,103 @@
         "remainingOutsideWork": true
       },
       "publicationChanged": false
+    },
+    {
+      "proposal": "P-W046-UX-04",
+      "unit": "N09",
+      "revision": 6,
+      "compiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+      "nodes": [
+        "n09-q01-negative",
+        "n09-01"
+      ],
+      "unitParts": 52,
+      "retainedParts": 46,
+      "newParts": 6,
+      "remainingSemanticNodes": 24,
+      "reviewStatus": "USER_DETAIL_REQUIRES_REVISION",
+      "userVisualAcceptance": false,
+      "publicationChanged": false,
+      "tests": {
+        "regressions": 136,
+        "typecheck": "PASS",
+        "changedLint": "PASS",
+        "build": "PASS",
+        "migrationBrowserCases": 10,
+        "afterFinalLayoutChange": {
+          "affectedTests": 76,
+          "typecheck": "PASS",
+          "build": "PASS"
+        }
+      },
+      "expandedBaselineProbe": {
+        "preexistingFailures": 5,
+        "sameFiveOnBaseline": true,
+        "notIncludedIn136Scope": true
+      },
+      "migrationExecutionCompiledHash": "f2bc35bbdb464a360d429b504459ff8c0f0b8c082db4e020a3b791f0d92619b3",
+      "migrationToFinalDifference": "factorization mathGroupId and generated hashes/exact targetHash only; route byte unchanged",
+      "sourceSha": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+      "sheet": "REVIEW_SHEET.md",
+      "browser": {
+        "status": "PASS",
+        "widths": [
+          320,
+          390,
+          430,
+          1440
+        ],
+        "states": 128,
+        "geometryMeasurements": 1192,
+        "correctPartsPerWidth": 52,
+        "targetWrongCandidatesPerWidth": 14,
+        "fontChecks": 276,
+        "KaTeXMainAndMathItalicLoadedEveryCheck": true,
+        "AMSLoaded": true,
+        "httpErrors": 0,
+        "networkFailures": 0,
+        "originalPNGs": 108,
+        "resultSha256": "69a31193ce10a3b8b71d6877442e8d55fae7437b7262ae596d10d801cda5a63c"
+      },
+      "nonAuthor": {
+        "A": "SCOPED_CODE_AND_RESULT_READ_PASS",
+        "B": "SCOPED_PILOT_MATH_RENDER_PASS",
+        "formalStoreReceipt": false
+      },
+      "captureBinding": {
+        "rawWorkingTreeBaseCommit": "778a6c3acb18765d99f3ebaf922457326af536f1",
+        "uncommittedApprovedChangesAtCapture": true,
+        "all20ChangedGitBlobsMatchCandidate": true,
+        "all505SourceFilesMatchBeforeAfterAndCheckout": true
+      },
+      "evidenceArchive": {
+        "path": "evidence/ux04-pilot/FULL_SCREENSHOTS.zip",
+        "bytes": 7145892,
+        "sha256": "763ecc172cc2f5531237f4f095c0ead9add231f4aac61aec7907e2f4fe6cb549"
+      },
+      "invalidEarlierRenderResults": "font403 fallback and detached bundle SOURCE_UNVERIFIED are retained but not final PASS",
+      "globalGovernance": {
+        "status": "FAIL_PREEXISTING",
+        "errors": 38,
+        "sameErrorSetAsPreviousBaseline": true,
+        "addedErrors": 0,
+        "thisWorkErrors": 0,
+        "log": "evidence/ux04-pilot/governance.log"
+      },
+      "userFeedback": {
+        "pedagogicalGrain": "Requires teen-level important inference, not elementary inverse-operation microquestions",
+        "render": "Confirmed oversized second-factor parentheses and excess spacing from retained44px certified slot",
+        "previousTechnicalPassNotUserAcceptance": true,
+        "newImplementationOrTestsThisResponse": false
+      }
     }
   ],
-  "activeProposalRequiresRevision": true,
+  "activeProposalRequiresRevision": false,
   "plannedRevisionProposal": {
     "id": "P-W046-UX-05",
     "status": "APPROVED",
     "approvedByUser": true,
-    "implementationStarted": false,
+    "implementationStarted": true,
     "proposalPath": "PROPOSAL.md",
     "designCoverage": {
       "nodes": 86,
@@ -620,7 +762,7 @@
     "structureCheck": "evidence/ux05-proposal/STRUCTURE_CHECK.json",
     "nonAuthorReview": "evidence/ux05-proposal/REVIEW.md",
     "newProductTestsPerformed": false,
-    "next": "Existing R04 capability/input compatibility check, R05 approval match, then R06 representative implementation",
+    "next": "Step 4 representative user detail review; after detail OK only, remaining 23 CHANGE blocks then R07/G2",
     "publicSourceUnchanged": "db99a485f857b1aefa7fb738456f36a830514158",
     "candidateSourceUnchanged": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
     "approvalEvidence": "evidence/ux05-proposal/APPROVAL.json"

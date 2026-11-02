@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-W046-UX-04",
   "recordedDate": "2026-11-02",
-  "status": "UX04_PROPOSED_AWAITING_EXPLICIT_APPROVAL",
+  "status": "UX04_APPROVED_N09_PILOT_VERIFYING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,10 +140,10 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "Explicit approval of exact P-W046-UX-04",
-    "Implement and verify N09 photo pilot after approval; exact SHA image confirmation",
-    "Apply remaining approved scope and verify semantics, migration, real states and cross-block impact",
-    "Separate publication approval and hosted validation; user hands-on acceptance"
+    "Complete final pilot display checks and save exact SHA image confirmation sheet",
+    "User detailed visual confirmation of N09 pilot",
+    "Apply remaining24 semantic nodes under approved UX04 and complete required verification",
+    "Separate publication approval, hosted checks and user hands-on acceptance"
   ],
   "protected": {
     "mainWritten": true,
@@ -222,7 +222,7 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "R04_REVISED_PROPOSAL_READY_FOR_USER_REVIEW",
+    "currentSubstantiveStage": "R06_APPROVED_N09_PILOT_IMPLEMENTATION_AND_VERIFICATION",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
     "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
@@ -249,8 +249,8 @@
   },
   "revisedProposal": {
     "id": "P-W046-UX-04",
-    "status": "PROPOSED",
-    "approvedByUser": false,
+    "status": "APPROVED",
+    "approvedByUser": true,
     "path": "PROPOSAL.md",
     "sha256": "3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201",
     "bytes": 220750,
@@ -263,7 +263,7 @@
       "N09": 5,
       "N10": 4
     },
-    "implementationStarted": false,
+    "implementationStarted": true,
     "publicationChanged": false,
     "changedNodes": 26,
     "retainedNodes": 60,
@@ -279,7 +279,14 @@
     "evidence": "evidence/ux04-proposal/REVIEW.md",
     "structure": "PASS_PROPOSAL_STRUCTURE_ONLY",
     "nonAuthorReview": "BOTH_ASSIGNED_PROPOSAL_SCOPES_PASS",
-    "notProductQA": true
+    "notProductQA": true,
+    "approval": {
+      "quote": "可以来来来做给我做",
+      "dateJST": "2026-11-02",
+      "proposalCommit": "778a6c3acb18765d99f3ebaf922457326af536f1",
+      "proposalSha256": "3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201",
+      "scope": "UX04 limited implementation and candidate verification; existing image and publication gates retained"
+    }
   },
   "revisedProposalHistory": [
     {
@@ -330,68 +337,40 @@
   ],
   "activeProposal": "P-W046-UX-04",
   "currentPilot": {
-    "sourceSha": "830b620b343112e4f8c4e3d00b51461dc8ecc098",
-    "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
-    "scope": [
-      "n10-02",
-      "shared presentation/controls"
+    "proposal": "P-W046-UX-04",
+    "unit": "N09",
+    "revision": 6,
+    "compiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+    "nodes": [
+      "n09-q01-negative",
+      "n09-01"
     ],
-    "remainingLearningActionNodes": 16,
-    "reviewStatus": "PILOT-BLOCK-CHECK-PENDING",
-    "sheet": "REVIEW_SHEET.md",
+    "unitParts": 52,
+    "retainedParts": 46,
+    "newParts": 6,
+    "remainingSemanticNodes": 24,
+    "reviewStatus": "PILOT_DISPLAY_QA_IN_PROGRESS",
     "userVisualAcceptance": false,
+    "publicationChanged": false,
     "tests": {
-      "regression": {
-        "passed": 120,
-        "failed": 0
-      },
-      "sourceBoundGeneration": {
-        "passed": 8,
-        "failed": 0
-      },
+      "regressions": 136,
       "typecheck": "PASS",
-      "changedTypeScriptLint": "PASS",
-      "build": "PASS"
+      "changedLint": "PASS",
+      "build": "PASS",
+      "migrationBrowserCases": 10,
+      "afterFinalLayoutChange": {
+        "affectedTests": 76,
+        "typecheck": "PASS",
+        "build": "PASS"
+      }
     },
-    "browser": {
-      "status": "PASS",
-      "widths": [
-        320,
-        390,
-        430,
-        1440
-      ],
-      "partsPerWidth": 52,
-      "wrongCandidatesPerWidth": 102,
-      "states": 828,
-      "geometryMeasurements": 3528,
-      "resultsPath": "evidence/ux03-pilot/BROWSER_RESULTS.json"
+    "expandedBaselineProbe": {
+      "preexistingFailures": 5,
+      "sameFiveOnBaseline": true,
+      "notIncludedIn136Scope": true
     },
-    "math": {
-      "finite": "PARTIAL",
-      "parts": 90,
-      "candidates": 179,
-      "unsupported": 31,
-      "failed": 0,
-      "newExactSquare": "PASS",
-      "newSignAndRootIdentificationNonAuthor": "PASS"
-    },
-    "nonAuthor": {
-      "A": "H07 meaning and source/migration read review PASS",
-      "B": "fixed SHA, all20 images/hash, presentation PASS",
-      "notIndependentRerun": true
-    },
-    "globalGovernance": {
-      "sourceErrors": 42,
-      "prePilotBaselineErrors": 42,
-      "newSourceErrors": 0,
-      "status": "FAIL_PREEXISTING",
-      "notFullGovernancePass": true,
-      "afterOwnWorkRecordCompletionErrors": 38,
-      "ownWorkErrorsRemoved": 4,
-      "remainingOutsideWork": true
-    },
-    "publicationChanged": false
+    "migrationExecutionCompiledHash": "f2bc35bbdb464a360d429b504459ff8c0f0b8c082db4e020a3b791f0d92619b3",
+    "migrationToFinalDifference": "factorization mathGroupId and generated hashes/exact targetHash only; route byte unchanged"
   },
   "ux03Full": {
     "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
@@ -461,13 +440,14 @@
   ],
   "ux04ProposalOnly": {
     "documentationParent": "6fd8083b01759ecbeeed8c2f37b38e447638a659",
-    "productChanged": false,
+    "productChanged": true,
     "mainChanged": false,
     "publicationChanged": false,
-    "newProductTestsRun": false,
+    "newProductTestsRun": true,
     "nativeReceiptCreated": false,
     "priorTechnicalPassPreserved": true,
-    "globalGovernanceNotRerun": true
+    "globalGovernanceNotRerun": true,
+    "historicalScope": "Proposal-only phase completed; subsequent approved pilot implementation recorded in currentPilot"
   },
   "currentPublicRelease": {
     "source": "db99a485f857b1aefa7fb738456f36a830514158",
@@ -479,5 +459,71 @@
     },
     "unchangedByUX04Proposal": true,
     "userAcceptance": false
-  }
+  },
+  "pilotHistory": [
+    {
+      "sourceSha": "830b620b343112e4f8c4e3d00b51461dc8ecc098",
+      "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
+      "scope": [
+        "n10-02",
+        "shared presentation/controls"
+      ],
+      "remainingLearningActionNodes": 16,
+      "reviewStatus": "PILOT-BLOCK-CHECK-PENDING",
+      "sheet": "REVIEW_SHEET.md",
+      "userVisualAcceptance": false,
+      "tests": {
+        "regression": {
+          "passed": 120,
+          "failed": 0
+        },
+        "sourceBoundGeneration": {
+          "passed": 8,
+          "failed": 0
+        },
+        "typecheck": "PASS",
+        "changedTypeScriptLint": "PASS",
+        "build": "PASS"
+      },
+      "browser": {
+        "status": "PASS",
+        "widths": [
+          320,
+          390,
+          430,
+          1440
+        ],
+        "partsPerWidth": 52,
+        "wrongCandidatesPerWidth": 102,
+        "states": 828,
+        "geometryMeasurements": 3528,
+        "resultsPath": "evidence/ux03-pilot/BROWSER_RESULTS.json"
+      },
+      "math": {
+        "finite": "PARTIAL",
+        "parts": 90,
+        "candidates": 179,
+        "unsupported": 31,
+        "failed": 0,
+        "newExactSquare": "PASS",
+        "newSignAndRootIdentificationNonAuthor": "PASS"
+      },
+      "nonAuthor": {
+        "A": "H07 meaning and source/migration read review PASS",
+        "B": "fixed SHA, all20 images/hash, presentation PASS",
+        "notIndependentRerun": true
+      },
+      "globalGovernance": {
+        "sourceErrors": 42,
+        "prePilotBaselineErrors": 42,
+        "newSourceErrors": 0,
+        "status": "FAIL_PREEXISTING",
+        "notFullGovernancePass": true,
+        "afterOwnWorkRecordCompletionErrors": 38,
+        "ownWorkErrorsRemoved": 4,
+        "remainingOutsideWork": true
+      },
+      "publicationChanged": false
+    }
+  ]
 }

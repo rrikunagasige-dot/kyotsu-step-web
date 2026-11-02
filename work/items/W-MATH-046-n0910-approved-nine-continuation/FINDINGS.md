@@ -37,3 +37,9 @@ legacyr2比較は現行/既存keyを変更せず、既知のarchive-review専用
 
 ## F-UX04-01 — 提案草案の不備を補修（製品未実装）
 N09の片辺だけ操作したように見える足場、因数分解のtext選択、N10のhide集合不一致・補助式後の偽等式接続・一回答で四積自動生成を案の審査で検出。操作指定＋完全式、式内factorSign、行part集合一致、完全左辺復帰、交差積の構成へ補修。初回FAILと最終非作者審査をevidence/ux04-proposal/REVIEW.mdへ保存。F-UX03-11は提案準備が進んだだけで、製品における解消は未認定。
+
+## F-UX04-02 — 実装移行の保存保護（補修済み・対象runtime確認）
+未知native hashから旧版/空へのfallback、source/current専用keyに対する新main reset後回答の消失を非作者審査で検出。未知hashはcommit前拒否、新しいresetAtのexact main ledger全体を採用。10browserケースで保存byte/旧回答field/解放を確認。原所見はpilot source reviewへ保持。
+
+## F-UX04-03 — 描画計測環境のfont欠落（最終描画再検査中）
+新worktreeが旧worktreeのnode_modulesへsymlinkするため、dev ViteのFS guardがKaTeX fontをHTTP403で拒否していた。fonts.readyだけでは検出できず、Bの実見/abort指摘とphase付きprobeでMain/Math/AMS face errorを確定。前の四幅128状態/1192幾何のスクリプトPASSを最終描画PASSへ採用しない。回答操作/保存の検査結果とは分離。guard/製品configを緩めず、本番dist previewで各faceとHTTPを確認して同checkerで再検査・再撮影する。原FAIL/403/画像は保持する。

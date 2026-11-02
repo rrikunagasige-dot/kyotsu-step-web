@@ -157,3 +157,37 @@ describe('UX-03 completed scaffold replacement, independent projection regressio
     expect(projectNestedLesson(rawLesson, ledger).visible.find(v => v.node.nodeId === node.nodeId)!.rows.map(r => r.id)).toContain(row.id)
   })
 })
+
+describe('UX04 photo derivation does not skip independent learner operations', () => {
+  const lesson = nestedLessonFromCompiled(n09Compiled as unknown as CompiledNestedLesson)
+  it('requires scope and product sign before the negative square value', () => {
+    let ledger = resetNestedLedger(lesson, 0)
+    expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe('n09-q01-negative::powerAction')
+    expect(answerNestedPart(lesson, ledger, 'n09-q01-negative::value', '16', 'skip', 1)).toBe(ledger)
+    expect(projectNestedLesson(lesson, ledger).visible.at(-1)!.rows.some(r => r.template.includes('\\times'))).toBe(false)
+    ledger = answerNestedPart(lesson, ledger, 'n09-q01-negative::powerAction', 'repeat-whole-base', 'scope', 2)!
+    expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe('n09-q01-negative::productSign')
+    expect(projectNestedLesson(lesson, ledger).visible.at(-1)!.rows.some(r => r.partKeys.includes('value'))).toBe(false)
+    ledger = answerNestedPart(lesson, ledger, 'n09-q01-negative::productSign', '+', 'sign', 3)!
+    expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe('n09-q01-negative::value')
+  })
+  it('zero-product OR certifies neither linear branch before its own inverse operation', () => {
+    let ledger = resetNestedLedger(lesson, 0), event = 0
+    for (const [partId, answer] of [
+      ['n09-q01-negative::powerAction', 'repeat-whole-base'], ['n09-q01-negative::productSign', '+'], ['n09-q01-negative::value', '16'],
+      ['n09-01::balanceOperation', '-'], ['n09-01::factorSign', '+'], ['n09-01::zeroLogic', 'or'],
+    ]) ledger = answerNestedPart(lesson, ledger, partId, answer, 'ux04-' + ++event, event)!
+    const current = () => projectNestedLesson(lesson, ledger).visible.find(n => n.node.nodeId === 'n09-01')!
+    expect(current().resolved).toBe(false)
+    expect(current().node.terminalRecord).toBeUndefined()
+    expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe('n09-01::leftInverseOperation')
+    expect(current().rows.some(r => /x=4|x=-4/.test(r.template))).toBe(false)
+    expect(answerNestedPart(lesson, ledger, 'n09-01::rightInverseOperation', '-', 'skip-right', 10)).toBe(ledger)
+    ledger = answerNestedPart(lesson, ledger, 'n09-01::leftInverseOperation', '+', 'left', 11)!
+    expect(current().resolved).toBe(false)
+    expect(current().rows.some(r => r.template.includes('x=4'))).toBe(true)
+    expect(current().rows.some(r => r.template.includes('x=-4'))).toBe(false)
+    ledger = answerNestedPart(lesson, ledger, 'n09-01::rightInverseOperation', '-', 'right', 12)!
+    expect(current().resolved).toBe(true)
+  })
+})

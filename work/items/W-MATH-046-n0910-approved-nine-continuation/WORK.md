@@ -1,7 +1,7 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: REVISE-PROPOSAL
-Review: UX04-PROPOSED / NONAUTHOR-PROPOSAL-REVIEW-COMPLETE / AWAITING-EXPLICIT-APPROVAL
+Status: IMPLEMENTING
+Review: UX04-APPROVED / N09-PILOT-VERIFYING / REAL-IMAGE-CONFIRMATION-PENDING
 - 本人「いいよ」でPR #134の2filesのmain反映・既存Pages再公開を明示承認。expected head fc961f58でmerge成功。main publisher `6bc54447ef015a2a579a56a5966ceb58a0600d3a`、固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。
 - 公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前N09/N10・保持N08r7/r6/legacy/N11、deploy、実配信N09/N10・保持N08各版/N11、証拠uploadまで全て成功。コードbranch全体のmain mergeではなく、承認済みpublisher2filesのみ。
 - 実公開：[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)。N09 r5=46parts、N10 r4=63parts。旧87parts保持、新規22partsのみ未回答。対象17node以外69nodeの学習契約を維持。
@@ -10,10 +10,10 @@ Review: UX04-PROPOSED / NONAUTHOR-PROPOSAL-REVIEW-COMPLETE / AWAITING-EXPLICIT-A
 - 公開前133回帰・生成器8・型/変更lint/build、二単元四幅1732状態/9692幾何、464PNG、移行7ケース/現行main復旧4ケースの有効結果を継承。本人総チェックや全50件の数学的自動証明に読み替えない。
 - 候補全体governanceは他Workの既存38件を保持。本Work追加0、main側CIはSUCCESS。欠落正式Storeに対する一回限り特例を保持し、receipt/受理イベントを作らない。
 - 証拠：[公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)のartifact `w046-publication-evidence` ID13117672439、[既存の公開前証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)、[最新検証](VERIFICATION.md)。実配信15PNG/manifest/結果はevidence/ux03-full/hosted-*。
-- 次：[P-W046-UX-04](PROPOSAL.md)の明示承認。全86nodeを対応づけ、N09変更13/維持28、N10変更13/維持32、計26変更/60維持。承認後は写真のN09代表ブロック→実SHA/実画像の細部確認→残りの限定実装/検証へ進む。旧UX03の承認を新しい意味変更へ拡張しない。
+- 本人「可以来来来做给我做」を、直前提示したUX04（commit778a6c3a/設計SHA3b79d7d8）への実装・候補検証承認として受領。写真のN09代表2nodeから限定実装。現在は実画面検査中、次は固定SHA/実画像による本人の細部確認。残り24nodeの意味変更・main反映・再公開はまだ行わない。
 - 最新本人評価：排版改善を評価、導出の穴と生徒の参加度は要修正。n09-01の零積一穴で移項/因数分解/一次式処理まで自動化される不足を確認。詳細は末尾「本人指摘 — 導出の参加度不足」。
 - UX04詳細案は完成解法・全候補/誤答説明・各穴の根拠/位置/解放・旧part KEEP/ARCHIVE対応まで記載。N09r6/N10r5予定。proposal SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201`、220750bytes。AはN09作者/N10非作者、BはN10作者/N09非作者。主担当共通・統合も審査済み。モデル独立性/盲検は主張しない。
-- 提案構造検査はPASS（row/part/候補/依存/hide/mirror/旧part対応）。製品コード・main・公開内容の今回変更なし、製品QAは未実施。新旧回答を全消去せず、同じ意味の101partを保持、新しい判断56partは未回答、廃止8partは旧版保存する設計。穴数を合格指標にはしない。
+- 提案構造検査・両非作者審査を経てN09代表2nodeを実装。N09r6 pilot＝旧46part保持＋新6part、計52part。UX04全体設計の101保持/56新規/8旧版保管は残りの適用を含む予定値で、pilotの実装件数と区別する。main・公開内容は今回未変更。本人の細部確認は未受領。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -276,3 +276,17 @@ PR #134はexpected head fc961f58でmerge成功。main publisher SHAは6bc54447ef
 N09はNEW25/KEEP43/旧版保管3で予定68parts、N10はNEW31/KEEP58/旧版保管5で予定89parts。これは設計の照合値でノルマではない。P/Qの旧後段回答を新しい前段平方へ移さず、K=4を符号付き和−4へ流用しない。旧版hash・pilot・legacy移行の保護は詳細案に明記。
 
 現段階は修正案の非作者審査まで。main正本WORK_SYSTEM §11の改訂案提示/明示承認後実装、§12Aの小ブロック実画像・横断監査・本人総チェックを維持する。製品実装/新規製品QA/新公開/本人受入の完了とはしない。最新Store欠落の本人特例を維持し、失われたイベントや受理receiptを創作しない。
+
+## UX04実装承認・N09代表の限定実装
+
+本人「可以来来来做给我做」をUX04の具体案への明示承認として記録。新しい6判断だけを追加し、N09第6版pilotは41node/52parts、旧46partは同じ意味のまま保持。N10第4版の教材・生成結果はbyte不変。現N09r5 compiledをR5 snapshotへ保管し、r5→r6の厳密hash、r4→r5→r6の鎖、旧版5/4/3の比較routeを追加。
+
+非作者コード審査で、未知hashから旧版/空へのfallback、source/current専用keyより新しいmain reset後回答の保全を指摘。mainの未知hashはcommit前に拒否、新resetのmain ledger全体を採用するよう補修した。136回帰・型/変更lint/buildは合格。browser移行10ケースで旧46保持＋新6のみ/旧r4全38保持＋14追加/新reset優先と回答保持/未知hash保存不変/旧誤答/N10legacy7を確認。旧r4追加9という初回test期待は旧parts数38の照合誤りで、14へ訂正し原FAILを保持。
+
+表示初回320ではfactorSign左italic xのinkがhit域へ入るFAILを検出。左右thinspaceのみ追加して解消。四幅128状態/1192幾何はその版でPASS。その後、通常等号と先頭iffを一groupにした320の不要な細分化を非作者Bが指摘し、因数分解行だけ別semantic groupへ分離した。数学・問い・候補・解放に変更なし。この最終版の必要表示検査・再撮影を実施中。
+
+検査範囲拡張で旧2testfileの5失敗も観測。db99と同じ製品bytesの既存checkoutでも同じ5失敗を確認（古いparent数28/35・r4固定resetkey・旧reader controls/履歴期待）。これを新規FAILとして隠したり、無関係の期待を黙って更新したりしない。既存133scope＋新migration1＋新導出gate2＝136のPASSと分離する。
+
+最終pilot compiledHash `470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d`。group分離後の関連76test・型/buildもPASS。routeコードは移行10ケース成功版から不変で、最終migratorは生成後の厳密targetHashだけ追従。四幅の最終画像/幾何と非作者表示審査を次の確認票へ固定する。
+
+表示の証拠を訂正：Bのfont/abort所見から、dev環境のKaTeX font403とfallbackをphase付きprobeで確定。上記のdev四幅128/1192は最終描画の合格根拠として採用しない。製品config/FS guardを変更せず、470fの本番dist previewでfont各faceの読み込みとHTTPを厳密確認して再取得中。操作/保存PASSは別の根拠として維持する。

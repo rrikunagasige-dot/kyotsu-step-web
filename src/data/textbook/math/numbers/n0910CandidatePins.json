@@ -1,13 +1,13 @@
 {
   "n09": {
     "unitId": "math-numbers-expressions-n09",
-    "fromRevision": 4,
-    "toRevision": 5,
-    "compiledHash": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6",
-    "planHash": "7403e2c093ba2d728682800c24c9f472b2d18d7321ccbcdf5d1f33a37b1216f1",
+    "fromRevision": 5,
+    "toRevision": 6,
+    "compiledHash": "470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d",
+    "planHash": "20120cc2acfa526c921ebade07c9839878b1e640cdcc262710c7024ebf4cdc20",
     "sourceIRHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
     "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-    "designSha256": "16c546fc164f85795b1a99ded4989667e1f4ead93124294da66ae7dac89f55d9"
+    "designSha256": "2d3854a6dcd4751acb859c9ed3c0484b9e7df8464d7ab959d0de09317c4c856a"
   },
   "n10": {
     "unitId": "math-numbers-expressions-n10",

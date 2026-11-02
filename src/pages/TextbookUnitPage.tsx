@@ -691,6 +691,7 @@ export function TextbookUnitPage() {
   if (unitId === 'math-numbers-expressions-n09' || unitId === 'math-numbers-expressions-n10') {
     const code = unitId.endsWith('n09') ? 'n09' : 'n10', oldRevision = code === 'n09' ? '3' : '2'
     if (params.get('version') === oldRevision) return <N0910ArchivePage code={code} />
+    if (code === 'n09' && params.get('version') === '5') return <N0910ArchivePage code={code} nativeRevision={5} />
     if (params.get('version') === (code === 'n09' ? '4' : '3')) return <N0910ArchivePage code={code} nativeRevision />
   }
   if (unitId === 'math-numbers-expressions-n08') {

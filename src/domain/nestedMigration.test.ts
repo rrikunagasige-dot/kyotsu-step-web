@@ -214,7 +214,8 @@ describe('UX-03 full application across both units and the completed pilot', () 
     return ledger
   }
   it.each([
-    ['n09ConstructionCompiledR4', 'n09ConstructionCompiled', 'n09-01::zeroLogic'],
+    ['n09ConstructionCompiledR4', 'n09ConstructionCompiledR5', 'n09-01::zeroLogic'],
+    ['n09ConstructionCompiledR5', 'n09ConstructionCompiled', 'n09-q01-negative::powerAction'],
     ['n10ConstructionCompiledPilotR4', 'n10ConstructionCompiled', 'n10-04::rootReason'],
   ])('retains every existing part from %s and stops at the first new prerequisite', (sourceName, targetName, firstNewId) => {
     const source = readLesson(sourceName), target = readLesson(targetName)
@@ -239,14 +240,14 @@ describe('UX-03 full application across both units and the completed pilot', () 
       expect(newCount).toBeLessThanOrEqual(targetParts.length)
     }
     expect(newCount).toBe(targetParts.length - Object.keys(original.records).length)
-    const code = sourceName.slice(0, 3), revision = code === 'n09' ? 5 : 4
+    const code = sourceName.slice(0, 3), revision = target.toRevision
     const unit = validateTextbookUnits([JSON.parse(raw('src/data/textbook/math/numbers/' + code + 'Revision' + revision + '.json')).unit])[0]
     const progress: TextbookUnitProgress = { unitId: target.unitId, unitRevision: target.toRevision, startedAt: ledger.startedAt, updatedAt: ledger.updatedAt, answers: {}, nestedProgress: ledger }
     expect(textbookUnitProgress(unit, progress)).toMatchObject({ completed: unit.nestedContract!.parents.length, percent: 100 })
     expect(ledger.processedEventIds.length).toBe(original.processedEventIds.length + newCount * 2)
   })
   it('refuses an unreviewed native source hash or a different unit', () => {
-    const source = readLesson('n09ConstructionCompiledR4'), target = readLesson('n09ConstructionCompiled')
+    const source = readLesson('n09ConstructionCompiledR5'), target = readLesson('n09ConstructionCompiled')
     const sourceLedger = completed(source)
     expect(() => migrateNativeRevisionLedger({ source: { ...source, compiledHash: 'unreviewed' }, target, sourceLedger, now: 1000 })).toThrow('UX03_NATIVE_REVISION_BINDING')
     expect(() => migrateNativeRevisionLedger({ source, target: { ...target, unitId: 'other' }, sourceLedger, now: 1000 })).toThrow('UX03_NATIVE_REVISION_BINDING')

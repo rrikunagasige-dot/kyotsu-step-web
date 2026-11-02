@@ -132,14 +132,14 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
  * Future retained answers stay in records until their new prerequisites unlock. */
 export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
   const { source, target, sourceLedger, now } = input
-  const sources: Record<string, { hash: string; revision: number; targetRevision: number }[]> = {
-    'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }],
+  const sources: Record<string, { hash: string; revision: number; targetRevision: number; targetFromRevision?: number; targetHash?: string }[]> = {
+    'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }, { hash: '8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6', revision: 5, targetRevision: 6, targetFromRevision: 5, targetHash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d' }],
     'math-numbers-expressions-n10': [
       { hash: 'a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd', revision: 3, targetRevision: 4 },
       { hash: '5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b', revision: 4, targetRevision: 4 },
     ],
   }
-  if (target.unitId !== source.unitId || target.fromRevision !== (source.unitId === 'math-numbers-expressions-n09' ? 4 : 3) || !sources[source.unitId]?.some(s => s.hash === source.compiledHash && s.revision === source.toRevision && s.targetRevision === target.toRevision) || !validLedger(source, sourceLedger) || !Number.isFinite(now) || now < sourceLedger.updatedAt) throw Error('UX03_NATIVE_REVISION_BINDING')
+  if (target.unitId !== source.unitId || !sources[source.unitId]?.some(s => s.hash === source.compiledHash && s.revision === source.toRevision && s.targetRevision === target.toRevision && target.fromRevision === (s.targetFromRevision ?? (source.unitId === 'math-numbers-expressions-n09' ? 4 : 3)) && (!s.targetHash || target.compiledHash === s.targetHash)) || !validLedger(source, sourceLedger) || !Number.isFinite(now) || now < sourceLedger.updatedAt) throw Error('UX03_NATIVE_REVISION_BINDING')
   const ledger = emptyNestedLedger(target, now), eligiblePartIds: string[] = []
   // These existing questions keep their mathematical task while UX-03 adds
   // earlier decisions and removes answer-leaking copy. No other prompt or

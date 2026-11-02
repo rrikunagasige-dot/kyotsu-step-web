@@ -2,12 +2,12 @@
 
 ## P-W046-UX-04 — 導出の各判断を生徒が組み立てる
 
-Status: PROPOSED
+Status: APPROVED
 Created: 2026-11-02
 Baseline: app source `db99a485f857b1aefa7fb738456f36a830514158`（公開中N09第5版・N10第4版）
 Target: N09第6版・N10第5版
-Approved by user: NO
-Implementation started: NO
+Approved by user: YES
+Implementation started: YES — N09代表2nodeのみ。残りは細部確認後。
 
 読み順：変更の見取り図 → N09/N10の各詳細（写真はn09-01）→ 全86node表 → 保存移行・実装順・検証・Approval。
 
@@ -3322,9 +3322,9 @@ N09第5版→第6版、N10第4版→第5版を新revisionとして追加する�
 
 ## Approval
 
-Status: WAITING
-Approved by user: NO
-Approval evidence: 未受領。今回の「那来吧」は詳細修正案の作成指示。
+Status: APPROVED
+Approved by user: YES
+Approval evidence: 2026-11-02 本人「可以来来来做给我做」。直前のUX04具体案への実装承認として受領。承認設計はcommit778a6c3acb18765d99f3ebaf922457326af536f1、SHA256 3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201。本書は状態/承認欄だけ更新し、設計本文を拡張しない。
 Approval scope: 本書の限定設計の実装・候補検証。代表ブロックの実画像確認、横断監査、別の公開承認、実働アプリでの本人総チェックは既存手順のまま。
 
 ## Review History

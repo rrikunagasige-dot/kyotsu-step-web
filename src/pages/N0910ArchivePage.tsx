@@ -1,4 +1,5 @@
 import previousN10 from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
+import previousN09R5 from '../data/textbook/math/numbers/n09ConstructionCompiledR5.json'
 import previousN09 from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import { ConstructionLessonReadingFlow } from '../components/textbook/ConstructionLessonReadingFlow'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from '../domain/compiledNestedLesson'
@@ -29,8 +30,8 @@ function exactOldProgress(saved: TextbookUnitProgress | undefined, unitId: strin
 }
 
 /** React identity resets only this isolated preview when the requested unit changes. */
-export function N0910ArchivePage({ code, nativeRevision = false }: { code: 'n09' | 'n10'; nativeRevision?: boolean }) {
-  return nativeRevision ? <NativeArchive key={code} code={code} /> : <IsolatedArchive key={code} code={code} />
+export function N0910ArchivePage({ code, nativeRevision = false }: { code: 'n09' | 'n10'; nativeRevision?: boolean | number }) {
+  return nativeRevision ? <NativeArchive key={code + String(nativeRevision)} code={code} revision={typeof nativeRevision === 'number' ? nativeRevision : undefined} /> : <IsolatedArchive key={code} code={code} />
 }
 
 function IsolatedArchive({ code }: { code: 'n09' | 'n10' }) {
@@ -50,8 +51,8 @@ function IsolatedArchive({ code }: { code: 'n09' | 'n10' }) {
 
 export default N0910ArchivePage
 
-function NativeArchive({ code }: { code: 'n09' | 'n10' }) {
-  const compiled = (code === 'n09' ? previousN09 : previousN10) as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
+function NativeArchive({ code, revision }: { code: 'n09' | 'n10'; revision?: number }) {
+  const compiled = (code === 'n09' ? revision === 5 ? previousN09R5 : previousN09 : previousN10) as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
   const main = useAppStore(state => state.textbookProgress[compiled.unitId])
   const [ledger, setLedger] = useState(() => {
     const key = nestedStorageKey(lesson), oldKey = legacyNestedStorageKey(lesson)

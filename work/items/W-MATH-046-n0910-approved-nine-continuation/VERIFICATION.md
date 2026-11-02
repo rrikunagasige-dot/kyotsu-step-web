@@ -74,3 +74,14 @@ Proposal P-W046-UX-04、SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c
 主担当の提案構造検査PASS：source compiledHash、key/order/候補一意性、正答とfeedback、先行依存、回答位置/row gate、hide全集合一致、mirror正答前提、全旧partの処遇、KEEPの型/role/正答/全候補一致。原JSONと検査script/resultを同directoryへ保存。数学・意味は非作者読取審査であり、製品生成・移行・browser・本人受入の成功ではない。
 
 製品source/main/公開内容は今回変更せず、新しい製品試験は未実施。既存UX03技術PASSを保持し、導出操作の網羅証明へ読み替えない。承認後、写真のN09代表から実装・実画面検査へ進む。全体governance既存38件の前回結果は履歴として継承し、今回再実行したとは記載しない。
+
+## V-UX04-02 — N09代表の承認実装
+
+承認設計commit778a6c3a/SHA3b79d7d8を固定し、写真の2nodeに限定。現N09r5不変snapshot＋r6登録、全46part保持・新6判断、N10生成byte一致を確認。主回帰136/136、source構造compile、型/変更lint/build PASS。追加の意味group分離後は影響する76/76・型/build PASS。全体テスト成功という主張ではなく、拡張probeの旧5失敗は既存db99 bytesでも再現し別記。
+
+実browser移行10ケース：r5全46record＋新6、r4全38record→r5→r6＋14、source/current stale専用keyより新しいmain reset後回答の保持、未知mainr5/r6保存byte不変、旧誤答保管、N10legacy7の後段解放とfirstValue/時刻/回数保持。実行版f2bc35bbに束縛。最終版470f1371との差は因数分解semantic groupと生成hash/厳密targetHashのみで、routeはbyte不変。新hashのpure移行を含む76testも成功。
+
+最初の320 ink侵入と旧r4追加数の誤ったtest期待9は原FAILを残し、thinspaceと正しい差分14へ補修。最後の式groupは通常=系列と先頭iffを分け、不要な折返しを削減。136回帰の版とその後の76影響検査の版、本人細部OKを混同しない。正式Store受理・公開・本人受入の今回認定なし。
+
+### フォント検査の訂正
+先のdev四幅計測はdocument.fonts.readyだけに依存し、Main/Math/AMSの403/fallbackを見落としていた。最終描画PASSとしては撤回する。原RESULT・font phase probeを保存。本番dist preview＋各face loaded/HTTP検査で最終版を再取得する。コード・移行の意味/保存検査と分離し、再テスト未実施部分の成功を認定しない。

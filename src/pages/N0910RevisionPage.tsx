@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import n10Previous from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
 import n10Pilot from '../data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json'
+import n09PreviousR5 from '../data/textbook/math/numbers/n09ConstructionCompiledR5.json'
 import n09Previous from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import n09Compiled from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
 import n10Compiled from '../data/textbook/math/numbers/n10ConstructionCompiled.json'
@@ -22,7 +23,7 @@ import { validateTextbookUnits } from '../domain/textbookSchema'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 const registry = { n09: n09Compiled, n10: n10Compiled } as unknown as Record<'n09' | 'n10', CompiledNestedLesson>
-const migrationSources = { n09: [n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
+const migrationSources = { n09: [n09PreviousR5, n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
 const activeUnits = { n09: mathNumbersN09Unit, n10: mathNumbersN10Unit }
 const legacyUnits = { n09: validateTextbookUnits([n09Presentation.unit])[0], n10: validateTextbookUnits([n10Presentation.unit])[0] }
 function readSaved(key: string, compiled: CompiledNestedLesson): Saved | undefined {
@@ -74,10 +75,20 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
       const expectedParents = compiled.nodeDesign.filter(n => n.parts.length).map(n => ({ nodeId: n.nodeId, sectionId, parts: n.parts.map(p => ({ id: p.id, expected: p.expected })) }))
       if (activeUnits[code].revision !== compiled.toRevision || activeUnits[code].title !== compiled.title || JSON.stringify(activeUnits[code].nestedContract?.parents) !== JSON.stringify(expectedParents)) throw Error('NESTED_CATALOG_GRADING_MISMATCH')
       const main = useAppStore.getState().textbookProgress[compiled.unitId]
-      const restored = readSaved(key, compiled) ?? savedNestedLessonFromMain(main, lesson)
+      const dedicated = readSaved(key, compiled), exactMain = savedNestedLessonFromMain(main, lesson)
+      const restored = exactMain && (!dedicated || (exactMain.resetAt ?? -1) > (dedicated.resetAt ?? -1)) ? exactMain : dedicated
+      {
+        // An unknown newer native artifact must never fall back to an older
+        // revision or be silently replaced by an empty current ledger.
+        const known = [compiled, ...migrationSources[code]]
+        const candidates = [main, ...(!restored ? Object.values(main?.archivedRevisions ?? {}) : [])]
+        for (const candidate of candidates) {
+          if (!candidate?.nestedProgress || !known.some(c => c.toRevision === candidate.unitRevision)) continue
+          if (!known.some(c => c.toRevision === candidate.unitRevision && c.compiledHash === candidate.nestedProgress?.compiledHash)) throw Error('NESTED_UNKNOWN_NATIVE_ARTIFACT')
+        }
+      }
       const archived = main?.unitRevision === compiled.fromRevision || main && main.unitRevision < compiled.fromRevision ? main : main?.archivedRevisions?.[String(compiled.fromRevision)] ? { ...main.archivedRevisions[String(compiled.fromRevision)], unitId: compiled.unitId } : undefined
       let initial: Saved = restored ?? { schemaVersion: 'nested-reader-storage/1', ledger: resetNestedLedger(lesson, Date.now()), archive: structuredClone(archived) }
-      if (main?.unitRevision === compiled.toRevision && main.nestedProgress?.compiledHash === compiled.compiledHash && main.nestedResetAt !== undefined && (initial.resetAt === undefined || main.nestedResetAt > initial.resetAt)) initial = { ...initial, nativeRevisionImport: undefined, resetAt: main.nestedResetAt, ledger: resetNestedLedger(lesson, Date.now()), pendingImportedRecords: {}, migrationStatus: 'RESET_SUPPRESSED', migrationBlockedReasons: [] }
       if (!restored && initial.resetAt === undefined) {
         for (const previous of migrationSources[code]) {
           const previousLesson = nestedLessonFromCompiled(previous)
@@ -85,7 +96,11 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
           const mainArchive = main?.archivedRevisions?.[String(previous.toRevision)]
           const matchingArchive = mainArchive?.nestedProgress?.compiledHash === previous.compiledHash ? mainArchive : undefined
           const oldMain = matchingMain ?? matchingArchive
-          const native = readSaved(nestedStorageKey(previousLesson), previous) ?? (oldMain?.nestedProgress ? parseSavedNestedLesson(JSON.stringify({ schemaVersion: 'nested-reader-storage/1', ledger: oldMain.nestedProgress, resetAt: oldMain.nestedResetAt }), previousLesson) : undefined)
+          let native = readSaved(nestedStorageKey(previousLesson), previous)
+          const nativeMain = savedNestedLessonFromMain(oldMain ? { ...oldMain, unitId: compiled.unitId } : undefined, previousLesson)
+          // A newer exact main-store reset owns the source even if an older
+          // dedicated key still contains solved answers. Do not revive them.
+          if (nativeMain && (!native || (nativeMain.resetAt ?? -1) > (native.resetAt ?? -1))) native = nativeMain
           let sourceLedger = native?.ledger
           // The seven reviewed authored-r2 answers are first projected into the
           // exact reviewed r3 snapshot, then retained like any native answers.
@@ -104,7 +119,10 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
             }
           }
           if (!sourceLedger) continue
-          const imported = migrateNativeRevisionLedger({ source: previousLesson, target: lesson, sourceLedger, now: Date.now() })
+          // Retain r4 through the exact reviewed r5 snapshot before UX04.
+          const intermediate = code === 'n09' && previous.toRevision === 4 ? nestedLessonFromCompiled(n09PreviousR5 as unknown as CompiledNestedLesson) : undefined
+          if (intermediate) sourceLedger = migrateNativeRevisionLedger({ source: previousLesson, target: intermediate, sourceLedger, now: Date.now() }).ledger
+          const imported = migrateNativeRevisionLedger({ source: intermediate ?? previousLesson, target: lesson, sourceLedger, now: Date.now() })
           initial = { ...initial, ledger: imported.ledger, archive: native?.archive ?? initial.archive,
             nativeRevisionImport: { sourceCompiledHash: imported.sourceCompiledHash, eligiblePartIds: imported.eligiblePartIds }, ...(native?.resetAt !== undefined ? { resetAt: native.resetAt } : {}) }
           // An existing latest source, including a deliberate empty reset,

@@ -12,13 +12,19 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：公開/実配信検証は完了したが、本人総チェックで穴設計・思考機会・文字サイズが **NEEDS-FIX**。R01原指摘/画像保存→R02具体原因（結果だけの穴/AUTO導出、18対14.08px、審査coverage不足）まで確認。現在は **R03同型影響調査→R04具体的修正案** へ戻る。過去CROSS-VERIFIEDは履歴であり現在の適合判定にはしない。[本人NGと証拠](evidence/ux05-user-ng/FEEDBACK.json)。source691d/publisherf4cは未変更、本人受入/Goldなし。
+- 実質の現在地：本人総チェックのNEEDS-FIXからR01記録/R02原因/R03全86調査を経て、R04具体案UX06を作成。現在も製品はNEEDS-FIX。次は新案のR05承認照合。過去CROSS-VERIFIEDは履歴であり、現在の適合判定にはしない。[原NG](evidence/ux05-user-ng/FEEDBACK.json) / [新案](evidence/ux06-proposal/README.md)。source691d/publisherf4cは未変更、本人受入/Goldなし。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
 ## 最新照合（2026-11-03 JST）
 
-R03：全86設計の個別記録・主担当の反証・A/B訂正を保存。[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)。現在もNEEDS-FIX。次はR04で本文と導出内の文字/数字/符号穴まで示す具体案。過去の承認を新しい設計変更の承認に流用せず、実装・公開は未着手。正式Storeのnext認定ではない。
+R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)へ保存。続くR04は下記UX06案を作成。現在も製品NEEDS-FIX、実装・公開は未着手。正式Storeのnext認定ではない。
+
+## R04具体案の現在地（UX06 / 2026-11-03 JST）
+
+[案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。次はR05の新案承認照合。新案の承認/製品反映/公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
+
+今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。案承認後はR06代表限定→R07 CODE/意味/四幅実画像→本人細部確認→残り限定適用。小ブロックごとにこの入口とMASTER§52を照合する。
 
 ## 本適用の版と保存
 

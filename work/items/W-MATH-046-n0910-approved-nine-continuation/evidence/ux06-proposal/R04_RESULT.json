@@ -1,0 +1,732 @@
+{
+  "phase": "R04_PROPOSAL",
+  "proposalId": "P-W046-UX-06",
+  "proposal_hash": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "recordType": "AI-authored proposal evidence, not formal Store receipt",
+  "formalStoreReceipt": false,
+  "before_after": [
+    {
+      "nodeId": "n09-q01-negative",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q01-negative"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n09-q01-negative",
+        "visibleSequence": [
+          "n09-q01-negative::ux06-proposal-row-01",
+          "n09-q01-negative::ux06-proposal-row-02"
+        ],
+        "learnerDecisions": [
+          "ux06RepeatedBase",
+          "value"
+        ]
+      },
+      "reason": "text選択powerActionを式内の基底構成へ置換する。16の既存計算契約は保持し、すべての実数解を示す次nodeの因数分解/零条件は変えない。"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q02-negative-square"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n09-q02-negative-square",
+        "visibleSequence": [
+          "n09-q02-negative-square::ux06-proposal-row-01",
+          "n09-q02-negative-square::ux06-proposal-row-02",
+          "n09-q02-negative-square::ux06-proposal-row-03",
+          "n09-q02-negative-square::ux06-proposal-row-04"
+        ],
+        "learnerDecisions": [
+          "ux06RootBase",
+          "ux06SignProduct",
+          "signedRootSquareUX05"
+        ]
+      },
+      "reason": "完成結果回答後のAUTO解法を先行する構成行へ移す。(uv)²公式の無根拠な既習前提を外す。既存5の採点契約を保持し、新しい前提なしで旧完了を流用しない。"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q04-negative"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n09-q04-negative",
+        "visibleSequence": [
+          "n09-q04-negative::ux06-proposal-row-01",
+          "n09-q04-negative::ux06-proposal-row-02",
+          "n09-q04-negative::ux06-proposal-row-03"
+        ],
+        "learnerDecisions": [
+          "ux06CandidateSign",
+          "ux06CandidateSquare",
+          "value"
+        ]
+      },
+      "reason": "√a√b証明の正性→平方→同定という良い順序を使う。−aを最初に候補として示すことと、二条件を確かめず答えと認定することを分ける。"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-decimal-method"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n09-decimal-method",
+        "visibleSequence": [
+          "n09-decimal-method::ux06-proposal-row-01",
+          "n09-decimal-method::ux06-proposal-row-02",
+          "n09-decimal-method::ux06-proposal-row-03",
+          "n09-decimal-method::ux06-proposal-row-04",
+          "n09-decimal-method::ux06-proposal-row-05",
+          "n09-decimal-method::ux06-proposal-row-06",
+          "n09-decimal-method::ux06-proposal-row-07",
+          "n09-decimal-method::ux06-proposal-row-08"
+        ],
+        "learnerDecisions": [
+          "ux06BinomialBase",
+          "ux06DistributeA",
+          "ux06DistributeB",
+          "ux06CrossProduct",
+          "ux06LastSquare",
+          "ux06LikeTermCount"
+        ]
+      },
+      "reason": "一般公式を完成形で積み上げるAUTOを除き、本人指定の5段階を同一導出内で構成する。具体平方・中項・和・小数結果は後続の既存4partずつを保持する。"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-parts-target"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n09-parts-target",
+        "visibleSequence": [
+          "n09-parts-target::ux06-proposal-row-01",
+          "n09-parts-target::ux06-proposal-row-02",
+          "n09-parts-target::ux06-proposal-row-03"
+        ],
+        "learnerDecisions": [
+          "ux06IntervalLower",
+          "ux06IntervalUpper"
+        ]
+      },
+      "reason": "定義自体は与え、そこから導く区間だけを本人が構成。単純な移項を別小問に増やさず、上下端を同じ行で扱う。"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q01-square"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-q01-square",
+        "visibleSequence": [
+          "n10-q01-square::ux06-proposal-row-01",
+          "n10-q01-square::ux06-proposal-row-02",
+          "n10-q01-square::ux06-proposal-row-03"
+        ],
+        "learnerDecisions": [
+          "ux06ProductBase",
+          "ux06CoefficientExponent",
+          "rootSquare"
+        ]
+      },
+      "reason": "既存5の計算は保持し、指数/因子をAUTOから構成へ。次nodeの125÷5を再び細分化しない。"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q11-formula"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-q11-formula",
+        "visibleSequence": [
+          "n10-q11-formula::ux06-proposal-row-01",
+          "n10-q11-formula::ux06-proposal-row-02",
+          "n10-q11-formula::ux06-proposal-row-03",
+          "n10-q11-formula::ux06-proposal-row-04",
+          "n10-q11-formula::ux06-proposal-row-05"
+        ],
+        "learnerDecisions": [
+          "ux06LastProductSign",
+          "ux06DifferenceCount",
+          "signedMiddleTermUX05"
+        ]
+      },
+      "reason": "既習台帳にない完了を仮定せず、短い可視の導出をその場で再構成。左右平方2/3や√6は後続の既存計算に残す。"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q13-identity"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-q13-identity",
+        "visibleSequence": [
+          "n10-q13-identity::ux06-proposal-row-01",
+          "n10-q13-identity::ux06-proposal-row-02",
+          "n10-q13-identity::ux06-proposal-row-03",
+          "n10-q13-identity::ux06-proposal-row-04",
+          "n10-q13-identity::ux06-proposal-row-05"
+        ],
+        "learnerDecisions": [
+          "ux06CrossSign",
+          "ux06CrossSum",
+          "cancellingPairUX05"
+        ]
+      },
+      "reason": "完成四項を一つで答えさせる要求にはしない。既存の具体的交差項の組と後続7/2/差5の段階計算を保持。"
+    },
+    {
+      "nodeId": "n10-15",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-15"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-15",
+        "visibleSequence": [
+          "n10-15::ux06-proposal-row-01",
+          "n10-15::ux06-proposal-row-02"
+        ],
+        "learnerDecisions": [
+          "ux06CompensatingFactor",
+          "ux06DenominatorPower"
+        ]
+      },
+      "reason": "1倍の計算を中心にせず、倍率を上下へ反映する操作を担わせる。1×√3の旧numeratorは廃止保存、因子選択自体は再設計しない。"
+    },
+    {
+      "nodeId": "n10-17",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-17"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-17",
+        "visibleSequence": [
+          "n10-17::ux06-proposal-row-01",
+          "n10-17::ux06-proposal-row-02"
+        ],
+        "learnerDecisions": [
+          "ux06NumeratorProduct",
+          "ux06DenominatorScope"
+        ]
+      },
+      "reason": "cの値をもう一度写させる穴ではなく、分子の積と分母の対象範囲を作る。後続の分母3/2/差1と分子√6の計算は保持。"
+    },
+    {
+      "nodeId": "n10-20",
+      "before": {
+        "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+        "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-20"
+      },
+      "after": {
+        "proposal": "PROPOSAL.json",
+        "nodeId": "n10-20",
+        "visibleSequence": [
+          "n10-20::ux06-proposal-row-01",
+          "n10-20::ux06-proposal-row-02",
+          "n10-20::ux06-proposal-row-03"
+        ],
+        "learnerDecisions": [
+          "ux06NumeratorPower",
+          "ux06DenominatorSign"
+        ]
+      },
+      "reason": "完成分数一選択を廃止し、指数と符号を別の推論として同じ導出に置く。既認定4/3は再計算させない。"
+    }
+  ],
+  "prose_only": [
+    {
+      "nodeId": "n09-02",
+      "changes": {
+        "assumptionsDisplay": "in-context"
+      },
+      "reason": "問題目標の同じ文が再び表示される重複を除く。既存の結果対(4,5)とleadとrequiredResultRefsを保持。元の問いはn09-q02-root入口に置く。"
+    },
+    {
+      "nodeId": "n09-p001-q08-left-square",
+      "changes": {
+        "lead": "導いた和の平方へA=140、B=1を対応させ、141²を求めます。まず中項を作り、その値・和・小数への戻しを順に計算しましょう。",
+        "leadParts": [
+          {
+            "type": "text",
+            "text": "導いた和の平方へ"
+          },
+          {
+            "type": "math",
+            "latex": "A=140"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "B=1"
+          },
+          {
+            "type": "text",
+            "text": "を対応させ、"
+          },
+          {
+            "type": "math",
+            "latex": "141^2"
+          },
+          {
+            "type": "text",
+            "text": "を求めます。まず中項を作り、その値・和・小数への戻しを順に計算しましょう。"
+          }
+        ]
+      },
+      "reason": "公式から具体計算への接続を明示。既存4partの全採点契約は保持。"
+    },
+    {
+      "nodeId": "n09-p001-q08-right-square",
+      "changes": {
+        "lead": "次は142=140+2です。同じ導出のA=140、B=2として、中項から順に計算します。",
+        "leadParts": [
+          {
+            "type": "text",
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "142=140+2"
+          },
+          {
+            "type": "text",
+            "text": "です。同じ導出の"
+          },
+          {
+            "type": "math",
+            "latex": "A=140"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "B=2"
+          },
+          {
+            "type": "text",
+            "text": "として、中項から順に計算します。"
+          }
+        ]
+      },
+      "reason": "二つ目の上側候補が必要な理由と、変わる対応を明示。既存4part契約保持。"
+    }
+  ],
+  "protected_scope": {
+    "all86": {
+      "n09-q01-positive": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q01-negative": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-01": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-definition": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q02-root": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q02-negative-square": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-02": {
+        "action": "PROSE_ONLY",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-boundary": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q03-inside": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-03": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q04-nonnegative": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q04-negative": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-04": {
+        "action": "KEEP_REVIEWED",
+        "reason": "q04の正性/平方/同定を本人が構成した後の認定結果の整理・絶対値表現。定義は公開されるため名称暗記だけとは扱わず、既存式/parts/前提を保持。上流未解消だったUNVERIFIEDを新設計のR07で再確認。"
+      },
+      "n09-05": {
+        "action": "KEEP_REVIEWED",
+        "reason": "q04の正性/平方/同定を本人が構成した後の認定結果の整理・絶対値表現。定義は公開されるため名称暗記だけとは扱わず、既存式/parts/前提を保持。上流未解消だったUNVERIFIEDを新設計のR07で再確認。"
+      },
+      "n09-q06-squares": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q06-order": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-06": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q07-negation": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-07": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-decimal-method": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-p001-q08-left-square": {
+        "action": "PROSE_ONLY",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-p001-q08-right-square": {
+        "action": "PROSE_ONLY",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-p001-q08-lower-sign": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-p001-q08-upper-sign": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-08": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-09": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-parts-target": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n09-q10-reject-truncation": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-10": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q11-remainder": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-11": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q12-lower": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q12-upper": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-12": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q13-reverse": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-13": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q14-positive-integer": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q14-positive-remainder": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q14-negative-integer": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-q14-negative-remainder": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n09-14": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q01-square": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-01": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q02-sign": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-02": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q03-expand": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-03": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q04-sign": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-04": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q05-denominator": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q05-square": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-05": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q06-sign": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-06": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q07-product": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-07": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q08-factor": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-08": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q09-left": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q09-right": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-09": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q10-coefficients": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-10": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q11-formula": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-11": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q12-product": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-12": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q13-identity": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-13": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-14": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q15-factor": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-15": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-q16-denominator": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-16": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q17-factor": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q17-nonzero": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-17": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-18": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q19-distribute": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-19": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q20-factor": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-20": {
+        "action": "REDESIGN",
+        "reason": "対象block/本文変更の具体案を参照"
+      },
+      "n10-q21-denominator": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q21-expand": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-q21-constants": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      },
+      "n10-21": {
+        "action": "KEEP_REVIEWED",
+        "reason": "R03の個別評価を継承。上流修正後に依存・共通font・実画像を検証する。"
+      }
+    },
+    "sqrtProofNodes": [
+      "n10-q03-expand",
+      "n10-03",
+      "n10-q04-sign",
+      "n10-04",
+      "n10-q05-denominator",
+      "n10-q05-square",
+      "n10-05",
+      "n10-q06-sign",
+      "n10-06"
+    ],
+    "otherReaders": "No global.css change; N07/N08/Guided/Practice unchanged",
+    "history": {
+      "source": "N09r8 hash39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33 / N10r5 hash6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c",
+      "target": "N09r9/N10r6。新compiledHashは実装時に生成し事前に捏造しない。",
+      "keep": "同一ID+expected+choice value/display/feedback+mathAssertion等の厳密採点契約が一致するpartsのみ旧正答を保持。新前提の後ろの旧正答は保存したままpending。旧terminal完成からNEWを埋めない。",
+      "retire": "廃止partは出所付きsnapshot/historyへ保存。既存r8/r5を不変snapshotに追加し、r7/r4以下の鎖/readonly/reset/namespaceを維持。",
+      "new": "NEWは未回答から開始。行/問い/学習行為変更が契約に含まれるか既存validatorで照合し、不一致ならKEEP主張を撤回してNEW IDへ。",
+      "unknown": "未知native compiledHashは破壊/上書きせず拒否。targetrevisionを再利用しない。"
+    }
+  },
+  "patch_plan": {
+    "representative": "n09-decimal-methodの平方意味→分配→四項→同類項。ここを最初に限定実装し、n09-q08への接続を同画面で確認。",
+    "rationale": "今回本人が具体的に示した導出を代表にする。旧UX05のq01代表順序を今回へ無条件流用しない。",
+    "afterRepresentative": "本人細部OK後に残る承認済み対象のみ。source-bound NODE_DESIGN→既存nested-lesson/compileTransformationV3/validator→compiled/revision/pins/migration。",
+    "layout": "新renderer/card/free-input engineは要件としない。既存math slot/choice→通常数式へ戻す経路を利用。既存対応外があれば実装前に影響と案を明記。"
+  },
+  "verification_plan": {
+    "code": [
+      "source/IR/compiled候補の契約・前提順・循環・正答後式の検査",
+      "有限数値候補のmath.verifyとAIの作用範囲/分配/符号レビューを分離",
+      "exact KEEP/RETIRE/NEWとr8/r5移行。旧完了からNEWを認定しない",
+      "baseline69/target72対話node共通font影響と他unit利用調査、protected9node byte/契約",
+      "関連回帰・型/build・保存/reload/history/reset/旧版比較"
+    ],
+    "human": [
+      "Aが数学・既習・解法・保存の非作者レビュー、Bが理念と主担当の工程監視・組版/可視情報を反証",
+      "代表とその後の変更blockごとに実画像と公開状態で、紙なしで導出を構成できるか確認",
+      "R07本人代表細部確認。公開は後の別の具体的承認。"
+    ],
+    "notYetRun": "本提案のCODE/実画像受入は未実行。R03の過去検査件数を新候補へ流用しない。"
+  },
+  "productChanged": false,
+  "approval": "NOT_GRANTED_FOR_THIS_NEW_PROPOSAL",
+  "current": "R04 proposal content prepared; review records are separate hash-bound artifacts",
+  "next": "R05 approval of this concrete proposal, then R06 representative / R07 actual verification"
+}

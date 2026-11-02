@@ -1,3 +1,9 @@
+<!-- W046_LATEST_PROPOSAL_START -->
+## 現在の修正提案：P-W046-UX-06（2026-11-03 JST）
+
+[本人確認用の案](evidence/ux06-proposal/README.md)。最新指摘へのR04案。旧UX05の承認を新案へ流用しない。以下は既存提案の履歴として保持する。
+<!-- W046_LATEST_PROPOSAL_END -->
+
 # Proposals — W-MATH-046-n0910-approved-nine-continuation
 
 ## P-W046-UX-05 — 主判断を生徒に残し、確定後は自然な数式へ戻す

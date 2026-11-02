@@ -1,0 +1,1214 @@
+{
+  "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+  "decisions": [
+    {
+      "candidateId": "n09-q01-negative::ux06RepeatedBase#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::ux06RepeatedBase",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q01-negative::ux06RepeatedBase#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::ux06RepeatedBase",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q01-negative::ux06RepeatedBase#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::ux06RepeatedBase",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q01-negative::value#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::value",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q01-negative::value#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::value",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q01-negative::value#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q01-negative::value",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q01-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06RootBase#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06RootBase",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06RootBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06RootBase#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06RootBase",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06RootBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06RootBase#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06RootBase",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06RootBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06SignProduct#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06SignProduct",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06SignProduct#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06SignProduct",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::ux06SignProduct#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::ux06SignProduct",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::signedRootSquareUX05#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::signedRootSquareUX05",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::signedRootSquareUX05#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::signedRootSquareUX05",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q02-negative-square::signedRootSquareUX05#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q02-negative-square::signedRootSquareUX05",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSign#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSign",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSign#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSign",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSign#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSign",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSquare#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSquare",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSquare#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSquare",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::ux06CandidateSquare#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::ux06CandidateSquare",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::value#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::value",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::value#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::value",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-q04-negative::value#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-q04-negative::value",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-q04-negative::value"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06BinomialBase#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06BinomialBase",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06BinomialBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06BinomialBase#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06BinomialBase",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06BinomialBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06BinomialBase#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06BinomialBase",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06BinomialBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeA#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeA",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeA"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeA#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeA",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeA"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeA#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeA",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeA"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeB#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeB",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeB"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeB#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeB",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeB"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06DistributeB#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06DistributeB",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06DistributeB"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06CrossProduct#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06CrossProduct",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06CrossProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06CrossProduct#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06CrossProduct",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06CrossProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06CrossProduct#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06CrossProduct",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06CrossProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LastSquare#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LastSquare",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LastSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LastSquare#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LastSquare",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LastSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LastSquare#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LastSquare",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LastSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LikeTermCount#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LikeTermCount",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LikeTermCount#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LikeTermCount",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-decimal-method::ux06LikeTermCount#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-decimal-method::ux06LikeTermCount",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalLower#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalLower",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalLower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalLower#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalLower",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalLower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalLower#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalLower",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalLower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalUpper#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalUpper",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalUpper"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalUpper#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalUpper",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalUpper"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n09-parts-target::ux06IntervalUpper#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n09-parts-target::ux06IntervalUpper",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n09-parts-target::ux06IntervalUpper"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06ProductBase#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06ProductBase",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06ProductBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06ProductBase#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06ProductBase",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06ProductBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06ProductBase#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06ProductBase",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06ProductBase"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06CoefficientExponent#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06CoefficientExponent",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06CoefficientExponent#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06CoefficientExponent",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::ux06CoefficientExponent#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::ux06CoefficientExponent",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::rootSquare#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::rootSquare",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::rootSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::rootSquare#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::rootSquare",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::rootSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q01-square::rootSquare#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q01-square::rootSquare",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q01-square::rootSquare"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06LastProductSign#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06LastProductSign",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06LastProductSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06LastProductSign#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06LastProductSign",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06LastProductSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06LastProductSign#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06LastProductSign",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06LastProductSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06DifferenceCount#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06DifferenceCount",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06DifferenceCount#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06DifferenceCount",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::ux06DifferenceCount#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::ux06DifferenceCount",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::signedMiddleTermUX05#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::signedMiddleTermUX05",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::signedMiddleTermUX05#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::signedMiddleTermUX05",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q11-formula::signedMiddleTermUX05#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q11-formula::signedMiddleTermUX05",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSign#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSign",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSign#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSign",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSign#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSign",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSum#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSum",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSum"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSum#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSum",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSum"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::ux06CrossSum#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::ux06CrossSum",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::ux06CrossSum"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::cancellingPairUX05#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::cancellingPairUX05",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::cancellingPairUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::cancellingPairUX05#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::cancellingPairUX05",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::cancellingPairUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-q13-identity::cancellingPairUX05#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-q13-identity::cancellingPairUX05",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-q13-identity::cancellingPairUX05"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06CompensatingFactor#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06CompensatingFactor",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06CompensatingFactor"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06CompensatingFactor#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06CompensatingFactor",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06CompensatingFactor"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06CompensatingFactor#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06CompensatingFactor",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06CompensatingFactor"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06DenominatorPower#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06DenominatorPower",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06DenominatorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06DenominatorPower#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06DenominatorPower",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06DenominatorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-15::ux06DenominatorPower#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-15::ux06DenominatorPower",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-15::ux06DenominatorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06NumeratorProduct#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06NumeratorProduct",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06NumeratorProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06NumeratorProduct#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06NumeratorProduct",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06NumeratorProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06NumeratorProduct#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06NumeratorProduct",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06NumeratorProduct"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06DenominatorScope#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06DenominatorScope",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06DenominatorScope"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06DenominatorScope#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06DenominatorScope",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06DenominatorScope"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-17::ux06DenominatorScope#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-17::ux06DenominatorScope",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-17::ux06DenominatorScope"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06NumeratorPower#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06NumeratorPower",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06NumeratorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06NumeratorPower#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06NumeratorPower",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06NumeratorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06NumeratorPower#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06NumeratorPower",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06NumeratorPower"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06DenominatorSign#operation.targets.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06DenominatorSign",
+      "targetPath": "operation.targets.0",
+      "decision": "ADOPT",
+      "reason": "実案の文字・数・符号のslotを生徒が構成する対象。行と前提・本文は別途非作者審査する。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06DenominatorSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06DenominatorSign#produces.0",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06DenominatorSign",
+      "targetPath": "produces.0",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06DenominatorSign"
+      },
+      "formalEligibilityReceipt": false
+    },
+    {
+      "candidateId": "n10-20::ux06DenominatorSign#operation.kind",
+      "origin": "EXISTING_CODE_ENUMERATED_CANDIDATE_PLUS_AI_ADOPTION",
+      "nodeId": "n10-20::ux06DenominatorSign",
+      "targetPath": "operation.kind",
+      "decision": "REJECT",
+      "reason": "生成事実IDやoperation.kindという私有metadataを学習者へ答えさせない。",
+      "evidence": {
+        "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+        "partId": "n10-20::ux06DenominatorSign"
+      },
+      "formalEligibilityReceipt": false
+    }
+  ]
+}

@@ -1,0 +1,3298 @@
+{
+  "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "teaching": {
+    "status": "PASS",
+    "candidates": [
+      {
+        "profile": "first_application",
+        "steps": [
+          {
+            "id": "n09-q01-negative-semantic-row-1-ux06RepeatedBase",
+            "inputFacts": [
+              "n09-q01-positive-result",
+              "n09-q01-negative-declared-basis-1",
+              "n09-q01-negative-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n09-q01-negative-semantic-row-1-ux06RepeatedBase-result",
+              "n09-q01-negative-part-ux06RepeatedBase-certified"
+            ],
+            "goal": "(-4)^2=(-4)\\times(-4)",
+            "operation": {
+              "kind": "指数の作用対象を積の因子として構成",
+              "targets": [
+                "n09-q01-negative::ux06RepeatedBase"
+              ]
+            },
+            "basisRefs": [
+              "n09-q01-positive-result",
+              "n09-q01-negative-declared-basis-1",
+              "n09-q01-negative-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q01-negative",
+            "rowRef": "n09-q01-negative::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "同じ基底をもう一度掛ける形にします。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q01-negative-semantic-row-2-value",
+            "inputFacts": [
+              "n09-q01-positive-result",
+              "n09-q01-negative-declared-basis-1",
+              "n09-q01-negative-declared-basis-2",
+              "n09-q01-negative-part-ux06RepeatedBase-certified",
+              "n09-q01-negative-semantic-row-1-ux06RepeatedBase-result"
+            ],
+            "outputFacts": [
+              "n09-q01-negative-semantic-row-2-value-result",
+              "n09-q01-negative-part-value-certified"
+            ],
+            "goal": "=16",
+            "operation": {
+              "kind": "指定した演算の結果を計算する",
+              "targets": [
+                "n09-q01-negative::value"
+              ]
+            },
+            "basisRefs": [
+              "n09-q01-positive-result",
+              "n09-q01-negative-declared-basis-1",
+              "n09-q01-negative-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q01-negative",
+            "rowRef": "n09-q01-negative::ux06-proposal-row-02",
+            "intro": "二つの因子を掛け、平方の値を確かめます。",
+            "learnerPrompt": "負の候補を2回掛けた値を計算します。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q01-negative-semantic-conclusion",
+            "inputFacts": [
+              "n09-q01-negative-semantic-row-2-value-result",
+              "n09-q01-negative-part-ux06RepeatedBase-certified",
+              "n09-q01-negative-part-value-certified"
+            ],
+            "outputFacts": [
+              "n09-q01-negative-result"
+            ],
+            "goal": "4と−4が候補であることは確かめられました。次は、ほかに解がないことまで示します。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n09-q01-negative-result"
+              ]
+            },
+            "basisRefs": [
+              "n09-q01-positive-result",
+              "n09-q01-negative-declared-basis-1",
+              "n09-q01-negative-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q01-negative",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n09-q02-negative-square-semantic-row-1-ux06RootBase",
+            "inputFacts": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n09-q02-negative-square-semantic-row-1-ux06RootBase-result",
+              "n09-q02-negative-square-part-ux06RootBase-certified"
+            ],
+            "goal": "(-\\sqrt5)^2=(-\\sqrt5)(-\\sqrt5)",
+            "operation": {
+              "kind": "負号と根号を含む基底の構成",
+              "targets": [
+                "n09-q02-negative-square::ux06RootBase"
+              ]
+            },
+            "basisRefs": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q02-negative-square",
+            "rowRef": "n09-q02-negative-square::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "二つ目の因子を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q02-negative-square-semantic-row-2-shown",
+            "inputFacts": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2",
+              "n09-q02-negative-square-part-ux06RootBase-certified",
+              "n09-q02-negative-square-semantic-row-1-ux06RootBase-result"
+            ],
+            "outputFacts": [
+              "n09-q02-negative-square-semantic-row-2-shown-result"
+            ],
+            "goal": "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-q02-negative-square::ux06-proposal-row-02"
+              ]
+            },
+            "basisRefs": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q02-negative-square",
+            "rowRef": "n09-q02-negative-square::ux06-proposal-row-02",
+            "intro": "掛ける順を入れ替え、符号の部分と根号の部分をまとめます。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q02-negative-square-semantic-row-3-ux06SignProduct",
+            "inputFacts": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2",
+              "n09-q02-negative-square-part-ux06RootBase-certified",
+              "n09-q02-negative-square-semantic-row-2-shown-result"
+            ],
+            "outputFacts": [
+              "n09-q02-negative-square-semantic-row-3-ux06SignProduct-result",
+              "n09-q02-negative-square-part-ux06SignProduct-certified"
+            ],
+            "goal": "=1(\\sqrt5)^2",
+            "operation": {
+              "kind": "符号の積を平方の外側の因子へ反映",
+              "targets": [
+                "n09-q02-negative-square::ux06SignProduct"
+              ]
+            },
+            "basisRefs": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q02-negative-square",
+            "rowRef": "n09-q02-negative-square::ux06-proposal-row-03",
+            "intro": "",
+            "learnerPrompt": "負号の部分を掛けた結果を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q02-negative-square-semantic-row-4-signedRootSquareUX05",
+            "inputFacts": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2",
+              "n09-q02-negative-square-part-ux06RootBase-certified",
+              "n09-q02-negative-square-part-ux06SignProduct-certified",
+              "n09-q02-negative-square-semantic-row-3-ux06SignProduct-result"
+            ],
+            "outputFacts": [
+              "n09-q02-negative-square-semantic-row-4-signedRootSquareUX05-result",
+              "n09-q02-negative-square-part-signedRootSquareUX05-certified"
+            ],
+            "goal": "=5",
+            "operation": {
+              "kind": "負の平方根の平方を、指数の作用範囲と平方根の定義で計算する。",
+              "targets": [
+                "n09-q02-negative-square::signedRootSquareUX05"
+              ]
+            },
+            "basisRefs": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q02-negative-square",
+            "rowRef": "n09-q02-negative-square::ux06-proposal-row-04",
+            "intro": "根号の定義を、残った平方へ適用します。",
+            "learnerPrompt": "負号を含む括弧全体の平方(−√5)²を求めます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q02-negative-square-semantic-conclusion",
+            "inputFacts": [
+              "n09-q02-negative-square-semantic-row-4-signedRootSquareUX05-result",
+              "n09-q02-negative-square-part-ux06RootBase-certified",
+              "n09-q02-negative-square-part-ux06SignProduct-certified",
+              "n09-q02-negative-square-part-signedRootSquareUX05-certified"
+            ],
+            "outputFacts": [
+              "n09-q02-negative-square-result"
+            ],
+            "goal": "負号も含めて同じ数を2回掛けたので、結果は正になりました。√16の値と、この平方の値を区別して記録します。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n09-q02-negative-square-result"
+              ]
+            },
+            "basisRefs": [
+              "n09-q02-root-result",
+              "n09-q02-negative-square-declared-basis-1",
+              "n09-q02-negative-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-q02-negative-square",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n09-q04-negative-semantic-row-1-ux06CandidateSign",
+            "inputFacts": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3"
+            ],
+            "outputFacts": [
+              "n09-q04-negative-semantic-row-1-ux06CandidateSign-result",
+              "n09-q04-negative-part-ux06CandidateSign-certified"
+            ],
+            "goal": "a<0\\quad\\Rightarrow\\quad -a\\ >\\ 0",
+            "operation": {
+              "kind": "非負性の条件を具体的に確かめる",
+              "targets": [
+                "n09-q04-negative::ux06CandidateSign"
+              ]
+            },
+            "basisRefs": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3"
+            ],
+            "sourceNodeId": "n09-q04-negative",
+            "rowRef": "n09-q04-negative::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "候補−aの符号を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q04-negative-semantic-row-2-ux06CandidateSquare",
+            "inputFacts": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3",
+              "n09-q04-negative-part-ux06CandidateSign-certified",
+              "n09-q04-negative-semantic-row-1-ux06CandidateSign-result"
+            ],
+            "outputFacts": [
+              "n09-q04-negative-semantic-row-2-ux06CandidateSquare-result",
+              "n09-q04-negative-part-ux06CandidateSquare-certified"
+            ],
+            "goal": "(-a)^2=(-a)(-a)=a^2",
+            "operation": {
+              "kind": "平方が元のa²へ戻ることを構成",
+              "targets": [
+                "n09-q04-negative::ux06CandidateSquare"
+              ]
+            },
+            "basisRefs": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3"
+            ],
+            "sourceNodeId": "n09-q04-negative",
+            "rowRef": "n09-q04-negative::ux06-proposal-row-02",
+            "intro": "続いて候補の平方を確かめます。",
+            "learnerPrompt": "候補−aを2回掛けた平方を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q04-negative-semantic-row-3-value",
+            "inputFacts": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3",
+              "n09-q04-negative-part-ux06CandidateSign-certified",
+              "n09-q04-negative-part-ux06CandidateSquare-certified",
+              "n09-q04-negative-semantic-row-2-ux06CandidateSquare-result"
+            ],
+            "outputFacts": [
+              "n09-q04-negative-semantic-row-3-value-result",
+              "n09-q04-negative-part-value-certified"
+            ],
+            "goal": "\\sqrt{a^2}=-a",
+            "operation": {
+              "kind": "負のaの平方について、非負の方を選びます。",
+              "targets": [
+                "n09-q04-negative::value"
+              ]
+            },
+            "basisRefs": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3"
+            ],
+            "sourceNodeId": "n09-q04-negative",
+            "rowRef": "n09-q04-negative::ux06-proposal-row-03",
+            "intro": "候補は正で、その平方はa²です。根号の定義に合う値を結論にします。",
+            "learnerPrompt": "負のaの平方について、非負の方を選びます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-q04-negative-semantic-conclusion",
+            "inputFacts": [
+              "n09-q04-negative-semantic-row-3-value-result",
+              "n09-q04-negative-part-ux06CandidateSign-certified",
+              "n09-q04-negative-part-ux06CandidateSquare-certified",
+              "n09-q04-negative-part-value-certified"
+            ],
+            "outputFacts": [
+              "n09-q04-negative-result"
+            ],
+            "goal": "aの符号によって、aそのものを使う場合と−aを使う場合が分かれました。次は条件と結果を対にしてまとめます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n09-q04-negative-result"
+              ]
+            },
+            "basisRefs": [
+              "n09-q04-nonnegative-result",
+              "n09-q04-negative-declared-basis-1",
+              "n09-q04-negative-declared-basis-2",
+              "n09-q04-negative-declared-basis-3"
+            ],
+            "sourceNodeId": "n09-q04-negative",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-1-ux06BinomialBase",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-1-ux06BinomialBase-result",
+              "n09-decimal-method-part-ux06BinomialBase-certified"
+            ],
+            "goal": "(A+B)^2=(A+B)(A+B)",
+            "operation": {
+              "kind": "二項式全体の平方の意味を構成",
+              "targets": [
+                "n09-decimal-method::ux06BinomialBase"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "平方を同じ二つの因子の積に直します。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-2-ux06DistributeA",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-semantic-row-1-ux06BinomialBase-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-2-ux06DistributeA-result",
+              "n09-decimal-method-part-ux06DistributeA-certified"
+            ],
+            "goal": "=(A+B)A+(A+B)B",
+            "operation": {
+              "kind": "分配法則の一つ目の積を作る",
+              "targets": [
+                "n09-decimal-method::ux06DistributeA"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-02",
+            "intro": "後ろの括弧のAとBへ、それぞれ前の括弧を掛けます。",
+            "learnerPrompt": "後ろの括弧の第1項へ掛ける因子を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-2-ux06DistributeB",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-semantic-row-2-ux06DistributeA-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-2-ux06DistributeB-result",
+              "n09-decimal-method-part-ux06DistributeB-certified"
+            ],
+            "goal": "=(A+B)A+(A+B)B",
+            "operation": {
+              "kind": "分配法則のもう一つの積を作る",
+              "targets": [
+                "n09-decimal-method::ux06DistributeB"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-02",
+            "intro": "後ろの括弧のAとBへ、それぞれ前の括弧を掛けます。",
+            "learnerPrompt": "後ろの括弧の第2項へ掛ける因子を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-3-ux06CrossProduct",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-semantic-row-2-ux06DistributeB-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-3-ux06CrossProduct-result",
+              "n09-decimal-method-part-ux06CrossProduct-certified"
+            ],
+            "goal": "=A^2+BA+AB+B^2",
+            "operation": {
+              "kind": "分配してできる交差項を式内に構成",
+              "targets": [
+                "n09-decimal-method::ux06CrossProduct"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-03",
+            "intro": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
+            "learnerPrompt": "最初の括弧のBへAを掛けてできる積の項を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-3-ux06LastSquare",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-semantic-row-3-ux06CrossProduct-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-3-ux06LastSquare-result",
+              "n09-decimal-method-part-ux06LastSquare-certified"
+            ],
+            "goal": "=A^2+BA+AB+B^2",
+            "operation": {
+              "kind": "同じ文字の積を平方として構成",
+              "targets": [
+                "n09-decimal-method::ux06LastSquare"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-03",
+            "intro": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
+            "learnerPrompt": "BとBからできる項を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-4-shown",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-semantic-row-3-ux06LastSquare-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-4-shown-result"
+            ],
+            "goal": "=A^2+AB+AB+B^2",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-decimal-method::ux06-proposal-row-04"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-04",
+            "intro": "BAは積の順を入れ替えてABと書けます。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-5-ux06LikeTermCount",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-semantic-row-4-shown-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-5-ux06LikeTermCount-result",
+              "n09-decimal-method-part-ux06LikeTermCount-certified"
+            ],
+            "goal": "=A^2+2AB+B^2",
+            "operation": {
+              "kind": "二つの交差項の和を係数として表す",
+              "targets": [
+                "n09-decimal-method::ux06LikeTermCount"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-05",
+            "intro": "同じABの項をまとめると、どの係数になるでしょうか。",
+            "learnerPrompt": "同類項をまとめたABの係数を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-6-shown",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-part-ux06LikeTermCount-certified",
+              "n09-decimal-method-semantic-row-5-ux06LikeTermCount-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-6-shown-result"
+            ],
+            "goal": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-decimal-method::ux06-proposal-row-06"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-06",
+            "intro": "これで和の平方が導けました。次は分数に直し、141=140+1、142=140+2にこの式を使います。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-7-shown",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-part-ux06LikeTermCount-certified",
+              "n09-decimal-method-semantic-row-6-shown-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-7-shown-result"
+            ],
+            "goal": "\\left(\\frac pq\\right)^2=\\frac pq\\frac pq=\\frac{p^2}{q^2}\\quad(q\\ne0)",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-decimal-method::ux06-proposal-row-07"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-07",
+            "intro": "分数の平方は同じ分数どうしの積なので、分子と分母をそれぞれ2乗できます。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-row-8-shown",
+            "inputFacts": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-part-ux06LikeTermCount-certified",
+              "n09-decimal-method-semantic-row-7-shown-result"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-semantic-row-8-shown-result"
+            ],
+            "goal": "140^2=14^2\\times100=19600,\\quad100^2=10000",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-decimal-method::ux06-proposal-row-08"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "rowRef": "n09-decimal-method::ux06-proposal-row-08",
+            "intro": "共通して使う平方を先に計算しておきます。1²と2²は各候補の計算で使います。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-decimal-method-semantic-conclusion",
+            "inputFacts": [
+              "n09-decimal-method-semantic-row-8-shown-result",
+              "n09-decimal-method-part-ux06BinomialBase-certified",
+              "n09-decimal-method-part-ux06DistributeA-certified",
+              "n09-decimal-method-part-ux06DistributeB-certified",
+              "n09-decimal-method-part-ux06CrossProduct-certified",
+              "n09-decimal-method-part-ux06LastSquare-certified",
+              "n09-decimal-method-part-ux06LikeTermCount-certified"
+            ],
+            "outputFacts": [
+              "n09-decimal-method-result"
+            ],
+            "goal": "導いた和の平方へ、まずA=140、B=1を対応させます。その計算が終わったらB=2の場合へ進みます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n09-decimal-method-result"
+              ]
+            },
+            "basisRefs": [
+              "n09-07-result",
+              "n09-decimal-method-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-decimal-method",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n09-parts-target-semantic-row-1-shown",
+            "inputFacts": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n09-parts-target-semantic-row-1-shown-result"
+            ],
+            "goal": "r=x-n",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-parts-target::ux06-proposal-row-01"
+              ]
+            },
+            "basisRefs": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-parts-target",
+            "rowRef": "n09-parts-target::ux06-proposal-row-01",
+            "intro": "x=n+rをrについて書き直します。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-parts-target-semantic-row-2-shown",
+            "inputFacts": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2",
+              "n09-parts-target-semantic-row-1-shown-result"
+            ],
+            "outputFacts": [
+              "n09-parts-target-semantic-row-2-shown-result"
+            ],
+            "goal": "0\\le x-n<1",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n09-parts-target::ux06-proposal-row-02"
+              ]
+            },
+            "basisRefs": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-parts-target",
+            "rowRef": "n09-parts-target::ux06-proposal-row-02",
+            "intro": "小数部分rの条件へ、いまの式を代入します。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-parts-target-semantic-row-3-ux06IntervalLower",
+            "inputFacts": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2",
+              "n09-parts-target-semantic-row-2-shown-result"
+            ],
+            "outputFacts": [
+              "n09-parts-target-semantic-row-3-ux06IntervalLower-result",
+              "n09-parts-target-part-ux06IntervalLower-certified"
+            ],
+            "goal": "n\\le x<n+1",
+            "operation": {
+              "kind": "定義の下限を元のxの区間へ変換",
+              "targets": [
+                "n09-parts-target::ux06IntervalLower"
+              ]
+            },
+            "basisRefs": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-parts-target",
+            "rowRef": "n09-parts-target::ux06-proposal-row-03",
+            "intro": "不等式の各辺に同じnを加え、中央をxにします。",
+            "learnerPrompt": "各辺にnを加えた後の下端を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-parts-target-semantic-row-3-ux06IntervalUpper",
+            "inputFacts": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2",
+              "n09-parts-target-semantic-row-3-ux06IntervalLower-result"
+            ],
+            "outputFacts": [
+              "n09-parts-target-semantic-row-3-ux06IntervalUpper-result",
+              "n09-parts-target-part-ux06IntervalUpper-certified"
+            ],
+            "goal": "n\\le x<n+1",
+            "operation": {
+              "kind": "上限1を整数部分基準の上端へ変換",
+              "targets": [
+                "n09-parts-target::ux06IntervalUpper"
+              ]
+            },
+            "basisRefs": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-parts-target",
+            "rowRef": "n09-parts-target::ux06-proposal-row-03",
+            "intro": "不等式の各辺に同じnを加え、中央をxにします。",
+            "learnerPrompt": "同じ操作をした後の上端を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n09-parts-target-semantic-conclusion",
+            "inputFacts": [
+              "n09-parts-target-semantic-row-3-ux06IntervalUpper-result",
+              "n09-parts-target-part-ux06IntervalLower-certified",
+              "n09-parts-target-part-ux06IntervalUpper-certified"
+            ],
+            "outputFacts": [
+              "n09-parts-target-result"
+            ],
+            "goal": "整数部分は、この幅1の区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に−2.1で確かめます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n09-parts-target-result"
+              ]
+            },
+            "basisRefs": [
+              "n09-09-result",
+              "n09-parts-target-declared-basis-1",
+              "n09-parts-target-declared-basis-2"
+            ],
+            "sourceNodeId": "n09-parts-target",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-q01-square-semantic-row-1-ux06ProductBase",
+            "inputFacts": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n10-q01-square-semantic-row-1-ux06ProductBase-result",
+              "n10-q01-square-part-ux06ProductBase-certified"
+            ],
+            "goal": "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)",
+            "operation": {
+              "kind": "文字と根号を含む基底全体を構成",
+              "targets": [
+                "n10-q01-square::ux06ProductBase"
+              ]
+            },
+            "basisRefs": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q01-square",
+            "rowRef": "n10-q01-square::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "2乗の基底をもう一つの因子にします。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q01-square-semantic-row-2-ux06CoefficientExponent",
+            "inputFacts": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2",
+              "n10-q01-square-part-ux06ProductBase-certified",
+              "n10-q01-square-semantic-row-1-ux06ProductBase-result"
+            ],
+            "outputFacts": [
+              "n10-q01-square-semantic-row-2-ux06CoefficientExponent-result",
+              "n10-q01-square-part-ux06CoefficientExponent-certified"
+            ],
+            "goal": "=t^2(\\sqrt5)^2",
+            "operation": {
+              "kind": "交換結合後の同じ文字の積を累乗へ変換",
+              "targets": [
+                "n10-q01-square::ux06CoefficientExponent"
+              ]
+            },
+            "basisRefs": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q01-square",
+            "rowRef": "n10-q01-square::ux06-proposal-row-02",
+            "intro": "積の順を入れ替え、t同士と√5同士をまとめます。",
+            "learnerPrompt": "t同士をまとめた指数を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q01-square-semantic-row-3-rootSquare",
+            "inputFacts": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2",
+              "n10-q01-square-part-ux06ProductBase-certified",
+              "n10-q01-square-part-ux06CoefficientExponent-certified",
+              "n10-q01-square-semantic-row-2-ux06CoefficientExponent-result"
+            ],
+            "outputFacts": [
+              "n10-q01-square-semantic-row-3-rootSquare-result",
+              "n10-q01-square-part-rootSquare-certified"
+            ],
+            "goal": "=5t^2",
+            "operation": {
+              "kind": "指定した演算の結果を計算する",
+              "targets": [
+                "n10-q01-square::rootSquare"
+              ]
+            },
+            "basisRefs": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q01-square",
+            "rowRef": "n10-q01-square::ux06-proposal-row-03",
+            "intro": "根号の定義を使って、平方を計算します。",
+            "learnerPrompt": "√5の平方を計算します。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q01-square-semantic-conclusion",
+            "inputFacts": [
+              "n10-q01-square-semantic-row-3-rootSquare-result",
+              "n10-q01-square-part-ux06ProductBase-certified",
+              "n10-q01-square-part-ux06CoefficientExponent-certified",
+              "n10-q01-square-part-rootSquare-certified"
+            ],
+            "outputFacts": [
+              "n10-q01-square-result"
+            ],
+            "goal": "候補の平方は5t²と表せました。これを125に等しくするtを次に求めます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-q01-square-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-q01-square-declared-basis-1",
+              "n10-q01-square-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q01-square",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-q11-formula-semantic-row-1-shown",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-semantic-row-1-shown-result"
+            ],
+            "goal": "(A-B)^2=(A-B)(A-B)",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-q11-formula::ux06-proposal-row-01"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "rowRef": "n10-q11-formula::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q11-formula-semantic-row-2-shown",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2",
+              "n10-q11-formula-semantic-row-1-shown-result"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-semantic-row-2-shown-result"
+            ],
+            "goal": "=A(A-B)-B(A-B)",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-q11-formula::ux06-proposal-row-02"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "rowRef": "n10-q11-formula::ux06-proposal-row-02",
+            "intro": "分配法則でAへの積と−Bへの積に分けます。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q11-formula-semantic-row-3-ux06LastProductSign",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2",
+              "n10-q11-formula-semantic-row-2-shown-result"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-semantic-row-3-ux06LastProductSign-result",
+              "n10-q11-formula-part-ux06LastProductSign-certified"
+            ],
+            "goal": "=A^2-AB-AB\\ +\\ B^2",
+            "operation": {
+              "kind": "負の因子同士の積を展開の符号へ反映",
+              "targets": [
+                "n10-q11-formula::ux06LastProductSign"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "rowRef": "n10-q11-formula::ux06-proposal-row-03",
+            "intro": "各括弧をさらに分配します。最後は−Bと−Bの積です。",
+            "learnerPrompt": "最後のB同士の積の符号を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q11-formula-semantic-row-4-ux06DifferenceCount",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2",
+              "n10-q11-formula-part-ux06LastProductSign-certified",
+              "n10-q11-formula-semantic-row-3-ux06LastProductSign-result"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-semantic-row-4-ux06DifferenceCount-result",
+              "n10-q11-formula-part-ux06DifferenceCount-certified"
+            ],
+            "goal": "=A^2-2AB+B^2",
+            "operation": {
+              "kind": "負の交差項二つを中項の係数へまとめる",
+              "targets": [
+                "n10-q11-formula::ux06DifferenceCount"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "rowRef": "n10-q11-formula::ux06-proposal-row-04",
+            "intro": "−ABどうしをまとめます。",
+            "learnerPrompt": "同類項をまとめたABの係数を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q11-formula-semantic-row-5-signedMiddleTermUX05",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2",
+              "n10-q11-formula-part-ux06LastProductSign-certified",
+              "n10-q11-formula-part-ux06DifferenceCount-certified",
+              "n10-q11-formula-semantic-row-4-ux06DifferenceCount-result"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-semantic-row-5-signedMiddleTermUX05-result",
+              "n10-q11-formula-part-signedMiddleTermUX05-certified"
+            ],
+            "goal": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2+(-2\\sqrt2\\sqrt3)+(\\sqrt3)^2",
+            "operation": {
+              "kind": "差平方公式の2ABを具体的な二根号へ対応し、符号と係数を含む中項を構成。",
+              "targets": [
+                "n10-q11-formula::signedMiddleTermUX05"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "rowRef": "n10-q11-formula::ux06-proposal-row-05",
+            "intro": "導いた式へA=√2、B=√3を対応させます。",
+            "learnerPrompt": "差の平方の公式をこの根号式へ適用し、中項全体を符号込みで作ります。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q11-formula-semantic-conclusion",
+            "inputFacts": [
+              "n10-q11-formula-semantic-row-5-signedMiddleTermUX05-result",
+              "n10-q11-formula-part-ux06LastProductSign-certified",
+              "n10-q11-formula-part-ux06DifferenceCount-certified",
+              "n10-q11-formula-part-signedMiddleTermUX05-certified"
+            ],
+            "outputFacts": [
+              "n10-q11-formula-result"
+            ],
+            "goal": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-q11-formula-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-10-result",
+              "n10-q11-formula-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q11-formula",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-q13-identity-semantic-row-1-ux06CrossSign",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-semantic-row-1-ux06CrossSign-result",
+              "n10-q13-identity-part-ux06CrossSign-certified"
+            ],
+            "goal": "(A+B)(A-B)=A^2\\ -\\ AB+BA-B^2",
+            "operation": {
+              "kind": "分配時の因子の符号を項へ対応",
+              "targets": [
+                "n10-q13-identity::ux06CrossSign"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "rowRef": "n10-q13-identity::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "Aと−Bからできる交差項の符号を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q13-identity-semantic-row-2-ux06CrossSum",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2",
+              "n10-q13-identity-part-ux06CrossSign-certified",
+              "n10-q13-identity-semantic-row-1-ux06CrossSign-result"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-semantic-row-2-ux06CrossSum-result",
+              "n10-q13-identity-part-ux06CrossSum-certified"
+            ],
+            "goal": "-AB+BA=0",
+            "operation": {
+              "kind": "交換法則と逆符号の和による相殺",
+              "targets": [
+                "n10-q13-identity::ux06CrossSum"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "rowRef": "n10-q13-identity::ux06-proposal-row-02",
+            "intro": "AB=BAなので、交差項の和をまとめます。",
+            "learnerPrompt": "交差項どうしの和を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q13-identity-semantic-row-3-shown",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2",
+              "n10-q13-identity-part-ux06CrossSign-certified",
+              "n10-q13-identity-part-ux06CrossSum-certified",
+              "n10-q13-identity-semantic-row-2-ux06CrossSum-result"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-semantic-row-3-shown-result"
+            ],
+            "goal": "(A+B)(A-B)=A^2-B^2",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-q13-identity::ux06-proposal-row-03"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "rowRef": "n10-q13-identity::ux06-proposal-row-03",
+            "intro": "交差項が消え、二つの平方の差が残りました。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q13-identity-semantic-row-4-cancellingPairUX05",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2",
+              "n10-q13-identity-part-ux06CrossSign-certified",
+              "n10-q13-identity-part-ux06CrossSum-certified",
+              "n10-q13-identity-semantic-row-3-shown-result"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-semantic-row-4-cancellingPairUX05-result",
+              "n10-q13-identity-part-cancellingPairUX05-certified"
+            ],
+            "goal": "相殺する交差項の組：opposite-cross-products",
+            "operation": {
+              "kind": "和差積の具体的な交差項を同定し、相殺する構造を把握。",
+              "targets": [
+                "n10-q13-identity::cancellingPairUX05"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "rowRef": "n10-q13-identity::ux06-proposal-row-04",
+            "intro": "同じ構造を√7と√2の場合で確かめます。",
+            "learnerPrompt": "この積を分配したとき、互いに打ち消し合う交差項の組を選びます。組の順序は問いません。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q13-identity-semantic-row-5-shown",
+            "inputFacts": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2",
+              "n10-q13-identity-part-ux06CrossSign-certified",
+              "n10-q13-identity-part-ux06CrossSum-certified",
+              "n10-q13-identity-part-cancellingPairUX05-certified",
+              "n10-q13-identity-semantic-row-4-cancellingPairUX05-result"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-semantic-row-5-shown-result"
+            ],
+            "goal": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-q13-identity::ux06-proposal-row-05"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "rowRef": "n10-q13-identity::ux06-proposal-row-05",
+            "intro": "",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-q13-identity-semantic-conclusion",
+            "inputFacts": [
+              "n10-q13-identity-semantic-row-5-shown-result",
+              "n10-q13-identity-part-ux06CrossSign-certified",
+              "n10-q13-identity-part-ux06CrossSum-certified",
+              "n10-q13-identity-part-cancellingPairUX05-certified"
+            ],
+            "outputFacts": [
+              "n10-q13-identity-result"
+            ],
+            "goal": "残った左右の平方を計算し、その差を求めます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-q13-identity-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-04-result",
+              "n10-12-result",
+              "n10-q13-identity-declared-basis-2"
+            ],
+            "sourceNodeId": "n10-q13-identity",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-15-semantic-row-1-ux06CompensatingFactor",
+            "inputFacts": [
+              "n10-q15-factor-result",
+              "n10-15-declared-basis-1",
+              "n10-15-declared-basis-2",
+              "n10-15-declared-basis-3"
+            ],
+            "outputFacts": [
+              "n10-15-semantic-row-1-ux06CompensatingFactor-result",
+              "n10-15-part-ux06CompensatingFactor-certified"
+            ],
+            "goal": "\\frac1{2\\sqrt3}=\\frac{1\\times\\sqrt3}{(2\\sqrt3)\\times\\sqrt3}",
+            "operation": {
+              "kind": "分子分母の等しい倍率を式へ適用",
+              "targets": [
+                "n10-15::ux06CompensatingFactor"
+              ]
+            },
+            "basisRefs": [
+              "n10-q15-factor-result",
+              "n10-15-declared-basis-1",
+              "n10-15-declared-basis-2",
+              "n10-15-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-15",
+            "rowRef": "n10-15::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "分母へ√3を掛けるとき、値を保つため分子に掛ける因子を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-15-semantic-row-2-ux06DenominatorPower",
+            "inputFacts": [
+              "n10-q15-factor-result",
+              "n10-15-declared-basis-1",
+              "n10-15-declared-basis-2",
+              "n10-15-declared-basis-3",
+              "n10-15-part-ux06CompensatingFactor-certified",
+              "n10-15-semantic-row-1-ux06CompensatingFactor-result"
+            ],
+            "outputFacts": [
+              "n10-15-semantic-row-2-ux06DenominatorPower-result",
+              "n10-15-part-ux06DenominatorPower-certified"
+            ],
+            "goal": "=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+            "operation": {
+              "kind": "分母の根号をなくす平方の構造を作る",
+              "targets": [
+                "n10-15::ux06DenominatorPower"
+              ]
+            },
+            "basisRefs": [
+              "n10-q15-factor-result",
+              "n10-15-declared-basis-1",
+              "n10-15-declared-basis-2",
+              "n10-15-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-15",
+            "rowRef": "n10-15::ux06-proposal-row-02",
+            "intro": "分子1×√3は√3です。分母は二つの√3をまとめます。",
+            "learnerPrompt": "分母の√3同士の積を累乗にまとめます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-15-semantic-conclusion",
+            "inputFacts": [
+              "n10-15-semantic-row-2-ux06DenominatorPower-result",
+              "n10-15-part-ux06CompensatingFactor-certified",
+              "n10-15-part-ux06DenominatorPower-certified"
+            ],
+            "outputFacts": [
+              "n10-15-result"
+            ],
+            "goal": "分母が根号の平方を含む形になりました。次に、その平方と係数2の積を計算します。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-15-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-q15-factor-result",
+              "n10-15-declared-basis-1",
+              "n10-15-declared-basis-2",
+              "n10-15-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-15",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-17-semantic-row-1-ux06NumeratorProduct",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3"
+            ],
+            "outputFacts": [
+              "n10-17-semantic-row-1-ux06NumeratorProduct-result",
+              "n10-17-part-ux06NumeratorProduct-certified"
+            ],
+            "goal": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ \\sqrt3c }{(\\sqrt3+\\sqrt2)c}",
+            "operation": {
+              "kind": "分数の値保持を分子の積へ適用",
+              "targets": [
+                "n10-17::ux06NumeratorProduct"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-17",
+            "rowRef": "n10-17::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "元の分子へcを掛けた積を入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-17-semantic-row-1-ux06DenominatorScope",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3",
+              "n10-17-semantic-row-1-ux06NumeratorProduct-result"
+            ],
+            "outputFacts": [
+              "n10-17-semantic-row-1-ux06DenominatorScope-result",
+              "n10-17-part-ux06DenominatorScope-certified"
+            ],
+            "goal": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ \\sqrt3c }{(\\sqrt3+\\sqrt2)c}",
+            "operation": {
+              "kind": "分母全体という作用範囲を構成",
+              "targets": [
+                "n10-17::ux06DenominatorScope"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-17",
+            "rowRef": "n10-17::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "分母でcを掛ける対象を括弧の中へ入れます。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-17-semantic-row-2-shown",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3",
+              "n10-17-part-ux06NumeratorProduct-certified",
+              "n10-17-part-ux06DenominatorScope-certified",
+              "n10-17-semantic-row-1-ux06DenominatorScope-result"
+            ],
+            "outputFacts": [
+              "n10-17-semantic-row-2-shown-result"
+            ],
+            "goal": "=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-17::ux06-proposal-row-02"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-17",
+            "rowRef": "n10-17::ux06-proposal-row-02",
+            "intro": "cに選んだ差を戻します。分母は和と差の積になりました。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-17-semantic-conclusion",
+            "inputFacts": [
+              "n10-17-semantic-row-2-shown-result",
+              "n10-17-part-ux06NumeratorProduct-certified",
+              "n10-17-part-ux06DenominatorScope-certified"
+            ],
+            "outputFacts": [
+              "n10-17-result"
+            ],
+            "goal": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-17-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q17-nonzero-result",
+              "n10-17-declared-basis-1",
+              "n10-17-declared-basis-2",
+              "n10-17-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-17",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          },
+          {
+            "id": "n10-20-semantic-row-1-ux06NumeratorPower",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3"
+            ],
+            "outputFacts": [
+              "n10-20-semantic-row-1-ux06NumeratorPower-result",
+              "n10-20-part-ux06NumeratorPower-certified"
+            ],
+            "goal": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}",
+            "operation": {
+              "kind": "差全体に平方が作用する範囲を構成",
+              "targets": [
+                "n10-20::ux06NumeratorPower"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-20",
+            "rowRef": "n10-20::ux06-proposal-row-01",
+            "intro": "",
+            "learnerPrompt": "分子の同じ二因子の積を累乗にします。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-20-semantic-row-2-ux06DenominatorSign",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3",
+              "n10-20-part-ux06NumeratorPower-certified",
+              "n10-20-semantic-row-1-ux06NumeratorPower-result"
+            ],
+            "outputFacts": [
+              "n10-20-semantic-row-2-ux06DenominatorSign-result",
+              "n10-20-part-ux06DenominatorSign-certified"
+            ],
+            "goal": "=\\frac{(2-\\sqrt3)^2}{2^2\\ -\\ (\\sqrt3)^2}",
+            "operation": {
+              "kind": "相殺後に残る平方の関係を符号で構成",
+              "targets": [
+                "n10-20::ux06DenominatorSign"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-20",
+            "rowRef": "n10-20::ux06-proposal-row-02",
+            "intro": "分子の平方は保ち、今度は分母の和と差の積を直します。",
+            "learnerPrompt": "分母の和と差の積を平方差に直します。",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-20-semantic-row-3-shown",
+            "inputFacts": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3",
+              "n10-20-part-ux06NumeratorPower-certified",
+              "n10-20-part-ux06DenominatorSign-certified",
+              "n10-20-semantic-row-2-ux06DenominatorSign-result"
+            ],
+            "outputFacts": [
+              "n10-20-semantic-row-3-shown-result"
+            ],
+            "goal": "=\\frac{(2-\\sqrt3)^2}{4-3}",
+            "operation": {
+              "kind": "explain-or-reuse-shown-relation",
+              "targets": [
+                "n10-20::ux06-proposal-row-03"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-20",
+            "rowRef": "n10-20::ux06-proposal-row-03",
+            "intro": "比較で確かめた2²=4、(√3)²=3を使います。",
+            "learnerPrompt": null,
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": false
+          },
+          {
+            "id": "n10-20-semantic-conclusion",
+            "inputFacts": [
+              "n10-20-semantic-row-3-shown-result",
+              "n10-20-part-ux06NumeratorPower-certified",
+              "n10-20-part-ux06DenominatorSign-certified"
+            ],
+            "outputFacts": [
+              "n10-20-result"
+            ],
+            "goal": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+            "operation": {
+              "kind": "reassemble",
+              "targets": [
+                "n10-20-result"
+              ]
+            },
+            "basisRefs": [
+              "n10-13-result",
+              "n10-14-result",
+              "n10-q20-factor-result",
+              "n10-20-declared-basis-1",
+              "n10-20-declared-basis-2",
+              "n10-20-declared-basis-3"
+            ],
+            "sourceNodeId": "n10-20",
+            "explainInput": true,
+            "explainReason": true,
+            "reassemble": true
+          }
+        ],
+        "id": "3702e4de4ae3c79b2d3693ad77338d8dca4e0cf4607ce44b0dee1f9bbe7379b9",
+        "status": "NEEDS_AI_REVIEW"
+      }
+    ]
+  },
+  "blanks": {
+    "status": "PASS",
+    "candidates": [
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06RepeatedBase",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q01-negative-part-ux06RepeatedBase-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "指数の作用対象を積の因子として構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::ux06RepeatedBase"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "value",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::value"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q01-negative-part-value-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::value"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "指定した演算の結果を計算する",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q01-negative::value"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06RootBase",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06RootBase"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q02-negative-square-part-ux06RootBase-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06RootBase"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "負号と根号を含む基底の構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06RootBase"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06SignProduct",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q02-negative-square-part-ux06SignProduct-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "符号の積を平方の外側の因子へ反映",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::ux06SignProduct"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "signedRootSquareUX05",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q02-negative-square-part-signedRootSquareUX05-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "負の平方根の平方を、指数の作用範囲と平方根の定義で計算する。",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q02-negative-square::signedRootSquareUX05"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CandidateSign",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSign"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q04-negative-part-ux06CandidateSign-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSign"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "非負性の条件を具体的に確かめる",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSign"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CandidateSquare",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q04-negative-part-ux06CandidateSquare-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "平方が元のa²へ戻ることを構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::ux06CandidateSquare"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "value",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::value"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-q04-negative-part-value-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::value"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "負のaの平方について、非負の方を選びます。",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-q04-negative::value"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06BinomialBase",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06BinomialBase"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06BinomialBase-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06BinomialBase"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "二項式全体の平方の意味を構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06BinomialBase"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DistributeA",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeA"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06DistributeA-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeA"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分配法則の一つ目の積を作る",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeA"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DistributeB",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeB"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06DistributeB-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeB"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分配法則のもう一つの積を作る",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06DistributeB"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CrossProduct",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06CrossProduct"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06CrossProduct-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06CrossProduct"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分配してできる交差項を式内に構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06CrossProduct"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06LastSquare",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LastSquare"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06LastSquare-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LastSquare"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "同じ文字の積を平方として構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LastSquare"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06LikeTermCount",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-decimal-method-part-ux06LikeTermCount-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "二つの交差項の和を係数として表す",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-decimal-method::ux06LikeTermCount"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06IntervalLower",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalLower"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-parts-target-part-ux06IntervalLower-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalLower"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "定義の下限を元のxの区間へ変換",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalLower"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06IntervalUpper",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalUpper"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n09-parts-target-part-ux06IntervalUpper-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalUpper"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "上限1を整数部分基準の上端へ変換",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n09-parts-target::ux06IntervalUpper"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06ProductBase",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06ProductBase"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q01-square-part-ux06ProductBase-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06ProductBase"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "文字と根号を含む基底全体を構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06ProductBase"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CoefficientExponent",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q01-square-part-ux06CoefficientExponent-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "交換結合後の同じ文字の積を累乗へ変換",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::ux06CoefficientExponent"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "rootSquare",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::rootSquare"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q01-square-part-rootSquare-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::rootSquare"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "指定した演算の結果を計算する",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q01-square::rootSquare"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06LastProductSign",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06LastProductSign"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q11-formula-part-ux06LastProductSign-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06LastProductSign"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "負の因子同士の積を展開の符号へ反映",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06LastProductSign"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DifferenceCount",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q11-formula-part-ux06DifferenceCount-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "負の交差項二つを中項の係数へまとめる",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::ux06DifferenceCount"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "signedMiddleTermUX05",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q11-formula-part-signedMiddleTermUX05-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "差平方公式の2ABを具体的な二根号へ対応し、符号と係数を含む中項を構成。",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q11-formula::signedMiddleTermUX05"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CrossSign",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSign"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q13-identity-part-ux06CrossSign-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSign"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分配時の因子の符号を項へ対応",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSign"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CrossSum",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSum"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q13-identity-part-ux06CrossSum-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSum"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "交換法則と逆符号の和による相殺",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::ux06CrossSum"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "cancellingPairUX05",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::cancellingPairUX05"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-q13-identity-part-cancellingPairUX05-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::cancellingPairUX05"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "和差積の具体的な交差項を同定し、相殺する構造を把握。",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-q13-identity::cancellingPairUX05"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06CompensatingFactor",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06CompensatingFactor"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-15-part-ux06CompensatingFactor-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06CompensatingFactor"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分子分母の等しい倍率を式へ適用",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06CompensatingFactor"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DenominatorPower",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06DenominatorPower"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-15-part-ux06DenominatorPower-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06DenominatorPower"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分母の根号をなくす平方の構造を作る",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-15::ux06DenominatorPower"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06NumeratorProduct",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06NumeratorProduct"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-17-part-ux06NumeratorProduct-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06NumeratorProduct"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分数の値保持を分子の積へ適用",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06NumeratorProduct"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DenominatorScope",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06DenominatorScope"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-17-part-ux06DenominatorScope-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06DenominatorScope"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "分母全体という作用範囲を構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-17::ux06DenominatorScope"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06NumeratorPower",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06NumeratorPower"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-20-part-ux06NumeratorPower-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06NumeratorPower"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "差全体に平方が作用する範囲を構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06NumeratorPower"
+      },
+      {
+        "targetPath": "operation.targets.0",
+        "learningAction": "selection",
+        "value": "ux06DenominatorSign",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06DenominatorSign"
+      },
+      {
+        "targetPath": "produces.0",
+        "learningAction": "relation",
+        "value": "n10-20-part-ux06DenominatorSign-certified",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06DenominatorSign"
+      },
+      {
+        "targetPath": "operation.kind",
+        "learningAction": "judgment",
+        "value": "相殺後に残る平方の関係を符号で構成",
+        "decision": "NEEDS_AI_SELECTION",
+        "whyHere": null,
+        "nodeId": "n10-20::ux06DenominatorSign"
+      }
+    ]
+  },
+  "rawDecisionCheck": {
+    "status": "NEEDS_AI_REVIEW",
+    "findings": [],
+    "decisions": [
+      {
+        "candidateId": "n09-q01-negative::ux06RepeatedBase#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q01-negative::ux06RepeatedBase#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q01-negative::ux06RepeatedBase#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q01-negative::value#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q01-negative::value#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q01-negative::value#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06RootBase#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06RootBase#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06RootBase#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06SignProduct#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06SignProduct#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::ux06SignProduct#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::signedRootSquareUX05#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::signedRootSquareUX05#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q02-negative-square::signedRootSquareUX05#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSign#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSign#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSign#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSquare#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSquare#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::ux06CandidateSquare#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::value#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::value#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-q04-negative::value#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06BinomialBase#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06BinomialBase#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06BinomialBase#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeA#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeA#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeA#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeB#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeB#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeB#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06CrossProduct#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06CrossProduct#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06CrossProduct#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LastSquare#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LastSquare#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LastSquare#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LikeTermCount#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LikeTermCount#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LikeTermCount#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalLower#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalLower#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalLower#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalUpper#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalUpper#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n09-parts-target::ux06IntervalUpper#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06ProductBase#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06ProductBase#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06ProductBase#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06CoefficientExponent#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06CoefficientExponent#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::ux06CoefficientExponent#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::rootSquare#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::rootSquare#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q01-square::rootSquare#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06LastProductSign#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06LastProductSign#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06LastProductSign#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06DifferenceCount#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06DifferenceCount#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::ux06DifferenceCount#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::signedMiddleTermUX05#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::signedMiddleTermUX05#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q11-formula::signedMiddleTermUX05#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSign#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSign#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSign#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSum#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSum#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::ux06CrossSum#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::cancellingPairUX05#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::cancellingPairUX05#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-q13-identity::cancellingPairUX05#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06CompensatingFactor#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06CompensatingFactor#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06CompensatingFactor#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06DenominatorPower#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06DenominatorPower#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-15::ux06DenominatorPower#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06NumeratorProduct#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06NumeratorProduct#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06NumeratorProduct#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06DenominatorScope#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06DenominatorScope#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-17::ux06DenominatorScope#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06NumeratorPower#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06NumeratorPower#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06NumeratorPower#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06DenominatorSign#operation.targets.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06DenominatorSign#produces.0",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      },
+      {
+        "candidateId": "n10-20::ux06DenominatorSign#operation.kind",
+        "decision": "UNRESOLVED",
+        "reason": "Raw API provides no graph eligibility; AI disposition is recorded separately, not promoted to CODE eligibility.",
+        "evidence": "raw-blank-ai-decisions.json"
+      }
+    ],
+    "aiApproval": false
+  },
+  "graphBlankPlan": {
+    "status": "PASS",
+    "candidates": [
+      {
+        "id": "n09-decimal-method::ux06BinomialBase",
+        "stateId": "ux06-s0",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms"
+        ],
+        "learnerDecision": "二項式全体の平方の意味を構成",
+        "nextUse": "同じ和の平方の次の意味段階へ",
+        "target": "ux06BinomialBase",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n09-decimal-method::ux06DistributeA",
+        "stateId": "ux06-s1",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms",
+          "ux06-fact1"
+        ],
+        "learnerDecision": "分配法則の一つ目の積を作る",
+        "nextUse": "同じ和の平方の次の意味段階へ",
+        "target": "ux06DistributeA",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n09-decimal-method::ux06DistributeB",
+        "stateId": "ux06-s1",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms",
+          "ux06-fact1"
+        ],
+        "learnerDecision": "分配法則のもう一つの積を作る",
+        "nextUse": "同じ和の平方の次の意味段階へ",
+        "target": "ux06DistributeB",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n09-decimal-method::ux06CrossProduct",
+        "stateId": "ux06-s2",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms",
+          "ux06-fact2"
+        ],
+        "learnerDecision": "分配してできる交差項を式内に構成",
+        "nextUse": "同じ和の平方の次の意味段階へ",
+        "target": "ux06CrossProduct",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n09-decimal-method::ux06LastSquare",
+        "stateId": "ux06-s2",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms",
+          "ux06-fact2"
+        ],
+        "learnerDecision": "同じ文字の積を平方として構成",
+        "nextUse": "同じ和の平方の次の意味段階へ",
+        "target": "ux06LastSquare",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n09-decimal-method::ux06LikeTermCount",
+        "stateId": "ux06-s4",
+        "availableFacts": [
+          "square-definition",
+          "distributive-law",
+          "commutative-law",
+          "collect-like-terms",
+          "ux06-fact4"
+        ],
+        "learnerDecision": "二つの交差項の和を係数として表す",
+        "nextUse": "141²/142²の中項構成へ適用",
+        "target": "ux06LikeTermCount",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      }
+    ],
+    "planHash": "f56d21400414cc3617792ab16d171047df9e1a6f3aba7212bc354c1bb3692168",
+    "meaningAuditRequired": true
+  },
+  "graphDecisionCheck": {
+    "status": "PASS",
+    "findings": [],
+    "decisions": [
+      {
+        "candidateId": "n09-decimal-method::ux06BinomialBase",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06BinomialBase"
+        }
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeA",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06DistributeA"
+        }
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06DistributeB",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06DistributeB"
+        }
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06CrossProduct",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06CrossProduct"
+        }
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LastSquare",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06LastSquare"
+        }
+      },
+      {
+        "candidateId": "n09-decimal-method::ux06LikeTermCount",
+        "decision": "ADOPT",
+        "reason": "平方→分配→四項→同類項という本人指定の導出で、式内の因子/積/係数を構成する。最終選択と実表示の独立審査は別。",
+        "evidence": {
+          "proposalSHA256": "02452736c8d731b001ac386a7991da1d3d800e0c8c47915ee175bb003849b700",
+          "partId": "n09-decimal-method::ux06LikeTermCount"
+        }
+      }
+    ],
+    "aiApproval": false
+  },
+  "math": {
+    "status": "UNSUPPORTED",
+    "reason": "MATH_DEPENDENCY_MISSING",
+    "detail": "Install the pinned solution requirements in KYOTSU_MATH_PYTHON.",
+    "graphHash": "6328d85b0aa952587e5a30fa2113313ab039a508acd14d8fa98d6473beb3f60d"
+  },
+  "graphTeaching": {
+    "status": "UNSUPPORTED",
+    "reason": "MATH_DEPENDENCY_MISSING",
+    "detail": "Install the pinned solution requirements in KYOTSU_MATH_PYTHON.",
+    "graphHash": "6328d85b0aa952587e5a30fa2113313ab039a508acd14d8fa98d6473beb3f60d"
+  },
+  "automaticAcceptance": false
+}

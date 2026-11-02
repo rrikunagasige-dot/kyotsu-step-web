@@ -1,0 +1,510 @@
+{
+  "requestHash": "bb9130a79b86275aba189d677b43fd2a085495a01ae2e601077214ca29bc2580",
+  "phase": "R04-proposal",
+  "reviewer": "/root/w046_render_review（主担当UX06案の非作者・理念/工程監視。旧N10一部設計/共有renderer作者という履歴を保持。同一モデル/共有履歴でありモデル独立性・盲検は主張しない）",
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "learnerDecision": [
+    {
+      "nodeId": "n09-q01-negative",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "見える(-4)²の基底全体を二因子の一方へ戻す。負号を含めるかを決めるので、同じ4を写すだけではない。 / 直前に組んだ二つの負の因子を掛けて16を計算する。因子構成の前に結果は認定されない。",
+      "beforeStates": [
+        "n09-q01-negative-before-ux06RepeatedBase",
+        "n09-q01-negative-before-value"
+      ],
+      "proseConnection": "正の候補に続いて、負の候補も調べます。2乗する対象が括弧のどこまでかに注意しましょう。 → 正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "括弧内の−√5全体を第二因子として構成する。√5だけ/−5との違いは負号と根号の作用対象。 / 見えている(-1)(-1)を1へまとめ、根号の平方と別の因子にする。和の2との誤解を区別する。 / 根号の定義を残った(√5)²へ適用して5を求める。単に旧最終5を選ぶだけでなく、その前の因子・符号構成がある。",
+      "beforeStates": [
+        "n09-q02-negative-square-before-ux06RootBase",
+        "n09-q02-negative-square-before-ux06SignProduct",
+        "n09-q02-negative-square-before-signedRootSquareUX05"
+      ],
+      "proseConnection": "先ほどの負の数と同じように、今度は根号を含む数を2乗します。括弧内全体を二つの因子に戻しましょう。 → 負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "a<0から−aが正であるという関係>を式内へ入れる。候補を示すことを答えの認定と混同しない。 / (-a)(-a)の平方がa²になることを式内に構成し、候補の第二条件を確かめる。 / 正性と同じ平方という二条件を得た後に−aを非負平方根として同定する。正答後に根拠を一括AUTO供給する旧状態と異なる。",
+      "beforeStates": [
+        "n09-q04-negative-before-ux06CandidateSign",
+        "n09-q04-negative-before-ux06CandidateSquare",
+        "n09-q04-negative-before-value"
+      ],
+      "proseConnection": "次はa<0の場合です。根号は非負の値を表すので、符号を反対にした−aが条件に合うか、符号と平方の両方を調べます。 → 元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "(A+B)²を同じ二因子へ戻す。平方を各項の平方の和へ取り違える候補と区別。 / 後ろの和の第一項Aへ前の括弧を掛ける構文位置を作る。単文字でも分配の作用先を決める。 / 同じ分配の第二項Bへの積を補う。前の回答を鏡写しするのではなく和の二つの項を尽くす。 / (A+B)Aから生じるBAを構成する。回答前にBA=ABという完成説明を出さず、交換は後の主式行で示す。 / (A+B)Bの最後のB×BをB²として作る。2Bという倍との誤解を区別。四項全部の一択にしない。 / 交差項を同じABへそろえた後、二項の和を係数2へまとめる。完成公式の初期assumptionは除かれ、ここで初めて本人が係数を確定する。",
+      "beforeStates": [
+        "n09-decimal-method-before-ux06BinomialBase",
+        "n09-decimal-method-before-ux06DistributeA",
+        "n09-decimal-method-before-ux06DistributeB",
+        "n09-decimal-method-before-ux06CrossProduct",
+        "n09-decimal-method-before-ux06LastSquare",
+        "n09-decimal-method-before-ux06LikeTermCount"
+      ],
+      "proseConnection": "√2を小数で挟むために、候補1.41と1.42をそれぞれ2乗して2と比べます。141²と142²を計算しやすくするため、まず和の平方の作り方を確かめましょう。 → 導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "0≤x−n<1の各辺へnを加え、下端nを元のxの区間に構成する。定義の新語そのものを当てさせていない。 / 同じ不等式操作で上端n+1を作る。単純な移項を別々の小問へ増やさず、区間上下端としてまとめる。",
+      "beforeStates": [
+        "n09-parts-target-before-ux06IntervalLower",
+        "n09-parts-target-before-ux06IntervalUpper"
+      ],
+      "proseConnection": "−2.1を整数部分と小数部分に分けます。x=n+r、nは整数、0≤r<1を満たすnを整数部分、rを小数部分と定めます。この定義から、nを探すときに使える不等式を作りましょう。 → 整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "(t√5)²の基底全体t√5を第二因子へ戻す。文字と根号へ指数が作用する範囲を保つ。 / 積を並べ直したt×tを指数2へまとめる。根号の平方と係数の平方を分ける式構成。 / (√5)²=5を現在の係数に使い、候補平方5t²を得る。後続÷5の操作を追加の易しい小問にしていない。",
+      "beforeStates": [
+        "n10-q01-square-before-ux06ProductBase",
+        "n10-q01-square-before-ux06CoefficientExponent",
+        "n10-q01-square-before-rootSquare"
+      ],
+      "proseConnection": "√125を簡単にするため、125=25×5に着目し、t>0として候補t√5を調べます。候補の平方が125になるよう、まず平方を積に戻します。根号の積の公式はまだ使いません。 → 候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "分配した最後の負項同士の積の+を決める。直前の和平方導出を再利用し、全過程を再度すべて穴にしない。 / −AB−ABの同類項を係数2へまとめ、差平方の中項を作る。完成差平方を初期条件で教える旧先出しはない。 / 導いた一般式を具体の二根号へ適用し−2√2√3を符号込みで構成する。左右の平方や√6は後続の計算に残す。",
+      "beforeStates": [
+        "n10-q11-formula-before-ux06LastProductSign",
+        "n10-q11-formula-before-ux06DifferenceCount",
+        "n10-q11-formula-before-signedMiddleTermUX05"
+      ],
+      "proseConnection": "次は(√2−√3)²です。和の平方との違いを確認するため、差の平方も同じ二つの因子へ戻し、分配して中項の符号と係数を確かめます。 → 中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "Aと−Bから生じる交差項の符号−を作る。分配の因子と符号の対応を具体的に考える。 / −AB+BAの和を交換法則と逆符号から0へまとめる。和差積の相殺の根拠を本人が担う。 / 一般の相殺構造を具体の二根号へ対応し、逆符号の交差積の組を選ぶ。順序の違う同じ組を偽としない。",
+      "beforeStates": [
+        "n10-q13-identity-before-ux06CrossSign",
+        "n10-q13-identity-before-ux06CrossSum",
+        "n10-q13-identity-before-cancellingPairUX05"
+      ],
+      "proseConnection": "今度は(√7+√2)(√7−√2)です。和と差の積を分配し、どの項が残るかを確かめましょう。 → 残った左右の平方を計算し、その差を求めます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-15",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "既に決まった√3を分子にも掛ける等倍率の補償へ使う。因子の数値を再発見する問いでなく、分母だけ変える誤操作との区別。 / 二つの√3を平方の指数2へまとめ、分母の根号を消す構造を作る。単独の1倍の計算を追加するものではない。",
+      "beforeStates": [
+        "n10-15-before-ux06CompensatingFactor",
+        "n10-15-before-ux06DenominatorPower"
+      ],
+      "proseConnection": "分母の根号へ掛ける因子は√3と決まりました。元の値を保つため、分子側にもどの因子を掛けるかを式の中に入れます。 → 分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-17",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "元の分子√3にcを掛ける積√3cを作る。既に決まったcの値をもう一度入力する穴ではない。 / 元の分母の和全体√3+√2をcの作用対象にする。見える式の再使用でも、片方の項だけを掛ける誤りとの区別がある。",
+      "beforeStates": [
+        "n10-17-before-ux06NumeratorProduct",
+        "n10-17-before-ux06DenominatorScope"
+      ],
+      "proseConnection": "選んだc=√3−√2は0でないと確かめました。c/c=1を掛ける操作を、元の分子と分母へそれぞれ反映しましょう。 → 先に分母を平方の差で計算し、それから分子を分配して求めます。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    },
+    {
+      "nodeId": "n10-20",
+      "judgment": "ADOPT_FOR_R04_PROPOSAL_MEANING",
+      "learnerDecision": "分子の同じ二つの差を累乗の指数2へまとめる。分母の変形を同じ回答に束ねない。 / 分母の和差積を二平方の差の−へ移す。4/3は先行の認定結果として使い、再計算を要求しない。",
+      "beforeStates": [
+        "n10-20-before-ux06NumeratorPower",
+        "n10-20-before-ux06DenominatorSign"
+      ],
+      "proseConnection": "元の分母と、選んだ因子2−√3が0でないことは確かめました。同じ因子を上下へ掛けると、分子と分母では異なる積ができます。 → 分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+      "limits": "実DOM画像/移行の実行/形式的数理証明をこの採用に含めない。"
+    }
+  ],
+  "availableInformation": "既存projectNestedLesson/answerNestedPartから得た31回答直前＋11block完了の42仮想public状態を全件読取。stage原問題、同stage先行本文/数式、実条件、前stageの認定済み参照aside、現在の穴/問い/全候補を根拠とする。作者のexpectedやprivate rationaleを回答前の学習根拠に使わない。N04教材の存在や目標の√2不等式は個人の習熟/既認定事実とはしない。",
+  "reasonToProceed": "平方は同じ基底の二因子、分配/交換/同類項、非負性と平方根の定義、同じ数を加える不等式、非零因子c/cによる分数の値保持を、それぞれ現在の式へ適用できる。これは読取による数学的根拠の説明であり、依存不足でUNSUPPORTEDのCODE数学を証明PASSにするものではない。",
+  "nextWholeState": "意味ある穴が正答されると、その値が現在の通常式の一部として残り、次の理由文/行が解放される。一般式の導出後はQ08の中項・積・和・小数化へ戻り、N10は候補の同定や有理化の分子/分母計算へ戻る。afterVisibleTextは全part認定後の実text rowとし、terminal metadataにだけ置いて説明済みとは呼ばない。",
+  "misconception": "平方と二倍、負号を基底の外へ残す誤り、B×Bと2B、同類項係数の不足、負項同士の符号、交差項の相殺誤り、整数/小数部分の区間、分母だけを変える操作、分母の一項だけへの乗算を全候補と式の役割で区別した。単文字の正答だから容易/無意味とは判定しない。",
+  "reducedSupportVariant": "今回の代表は一般の和平方を途中の因子/積/係数で構成する初回支援。次のQ08はその認定公式の具体適用、差平方/和差積は必要な符号・相殺へ絞る。すべての行や既認定4/3、易しい÷5へ同じ支援を再コピーしない。現在の学習上の重要段階を最終式choice一つへ戻すfadingも採用しない。",
+  "findings": [],
+  "patternDecision": "first_applicationは導出の意味ある段階を55stepとして作者が先に分解し、その前提順を既存CODEで点検した候補として限定採用する。36knowledgeは宣言数学根拠で個人習熟ではない。SOURCE_ASSET/GOAL_CONTEXTはknowledgeから除外されている。raw93候補の31ADOPT/62REJECTはAI採否であり、rawDecisionCheck NEEDS_AI_REVIEWをCODE eligibility PASSへ置換しない。代表6候補のgraph適合はそのscopeだけ。",
+  "groupBoundaryReview": "各主導出は同じ意味group内で等号を続ける。decimalの交換は主多項式を並べ替える行で示し、BA=ABの独立補助式から主式へ=だけで戻る偽等式鎖を作らない。q13の交差項の和の補助式後は(A+B)(A−B)という完全左辺へ復帰する。分数の分子/分母の変形は同じ分数の連続導出内に置く。実寸の切れ/括弧/余白はR07未実施。",
+  "blankDecisionReview": [
+    {
+      "partId": "n09-q01-negative::ux06RepeatedBase",
+      "stateRef": "n09-q01-negative-before-ux06RepeatedBase",
+      "decision": "ADOPT",
+      "reason": "見える(-4)²の基底全体を二因子の一方へ戻す。負号を含めるかを決めるので、同じ4を写すだけではない。",
+      "visibleMathRefs": [
+        "(-4)^2=(-4)\\times(□)"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q01-negative::value",
+      "stateRef": "n09-q01-negative-before-value",
+      "decision": "ADOPT",
+      "reason": "直前に組んだ二つの負の因子を掛けて16を計算する。因子構成の前に結果は認定されない。",
+      "visibleMathRefs": [
+        "(-4)^2=(-4)\\times(-4)",
+        "=□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q02-negative-square::ux06RootBase",
+      "stateRef": "n09-q02-negative-square-before-ux06RootBase",
+      "decision": "ADOPT",
+      "reason": "括弧内の−√5全体を第二因子として構成する。√5だけ/−5との違いは負号と根号の作用対象。",
+      "visibleMathRefs": [
+        "(-\\sqrt5)^2=(-\\sqrt5)(□)"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q02-negative-square::ux06SignProduct",
+      "stateRef": "n09-q02-negative-square-before-ux06SignProduct",
+      "decision": "ADOPT",
+      "reason": "見えている(-1)(-1)を1へまとめ、根号の平方と別の因子にする。和の2との誤解を区別する。",
+      "visibleMathRefs": [
+        "(-\\sqrt5)^2=(-\\sqrt5)(-\\sqrt5)",
+        "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
+        "=□(\\sqrt5)^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q02-negative-square::signedRootSquareUX05",
+      "stateRef": "n09-q02-negative-square-before-signedRootSquareUX05",
+      "decision": "ADOPT",
+      "reason": "根号の定義を残った(√5)²へ適用して5を求める。単に旧最終5を選ぶだけでなく、その前の因子・符号構成がある。",
+      "visibleMathRefs": [
+        "(-\\sqrt5)^2=(-\\sqrt5)(-\\sqrt5)",
+        "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
+        "=1(\\sqrt5)^2",
+        "=□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q04-negative::ux06CandidateSign",
+      "stateRef": "n09-q04-negative-before-ux06CandidateSign",
+      "decision": "ADOPT",
+      "reason": "a<0から−aが正であるという関係>を式内へ入れる。候補を示すことを答えの認定と混同しない。",
+      "visibleMathRefs": [
+        "a<0\\quad\\Rightarrow\\quad -a\\ □\\ 0"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q04-negative::ux06CandidateSquare",
+      "stateRef": "n09-q04-negative-before-ux06CandidateSquare",
+      "decision": "ADOPT",
+      "reason": "(-a)(-a)の平方がa²になることを式内に構成し、候補の第二条件を確かめる。",
+      "visibleMathRefs": [
+        "a<0\\quad\\Rightarrow\\quad -a\\ >\\ 0",
+        "(-a)^2=(-a)(-a)=□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-q04-negative::value",
+      "stateRef": "n09-q04-negative-before-value",
+      "decision": "ADOPT",
+      "reason": "正性と同じ平方という二条件を得た後に−aを非負平方根として同定する。正答後に根拠を一括AUTO供給する旧状態と異なる。",
+      "visibleMathRefs": [
+        "a<0\\quad\\Rightarrow\\quad -a\\ >\\ 0",
+        "(-a)^2=(-a)(-a)=a^2",
+        "\\sqrt{a^2}=□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06BinomialBase",
+      "stateRef": "n09-decimal-method-before-ux06BinomialBase",
+      "decision": "ADOPT",
+      "reason": "(A+B)²を同じ二因子へ戻す。平方を各項の平方の和へ取り違える候補と区別。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(□)"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06DistributeA",
+      "stateRef": "n09-decimal-method-before-ux06DistributeA",
+      "decision": "ADOPT",
+      "reason": "後ろの和の第一項Aへ前の括弧を掛ける構文位置を作る。単文字でも分配の作用先を決める。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(A+B)",
+        "=(A+B)□+(A+B)□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06DistributeB",
+      "stateRef": "n09-decimal-method-before-ux06DistributeB",
+      "decision": "ADOPT",
+      "reason": "同じ分配の第二項Bへの積を補う。前の回答を鏡写しするのではなく和の二つの項を尽くす。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(A+B)",
+        "=(A+B)A+(A+B)□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06CrossProduct",
+      "stateRef": "n09-decimal-method-before-ux06CrossProduct",
+      "decision": "ADOPT",
+      "reason": "(A+B)Aから生じるBAを構成する。回答前にBA=ABという完成説明を出さず、交換は後の主式行で示す。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(A+B)",
+        "=(A+B)A+(A+B)B",
+        "=A^2+□+AB+□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06LastSquare",
+      "stateRef": "n09-decimal-method-before-ux06LastSquare",
+      "decision": "ADOPT",
+      "reason": "(A+B)Bの最後のB×BをB²として作る。2Bという倍との誤解を区別。四項全部の一択にしない。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(A+B)",
+        "=(A+B)A+(A+B)B",
+        "=A^2+BA+AB+□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-decimal-method::ux06LikeTermCount",
+      "stateRef": "n09-decimal-method-before-ux06LikeTermCount",
+      "decision": "ADOPT",
+      "reason": "交差項を同じABへそろえた後、二項の和を係数2へまとめる。完成公式の初期assumptionは除かれ、ここで初めて本人が係数を確定する。",
+      "visibleMathRefs": [
+        "(A+B)^2=(A+B)(A+B)",
+        "=(A+B)A+(A+B)B",
+        "=A^2+BA+AB+B^2",
+        "=A^2+AB+AB+B^2",
+        "=A^2+□AB+B^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-parts-target::ux06IntervalLower",
+      "stateRef": "n09-parts-target-before-ux06IntervalLower",
+      "decision": "ADOPT",
+      "reason": "0≤x−n<1の各辺へnを加え、下端nを元のxの区間に構成する。定義の新語そのものを当てさせていない。",
+      "visibleMathRefs": [
+        "r=x-n",
+        "0\\le x-n<1",
+        "□\\le x<□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n09-parts-target::ux06IntervalUpper",
+      "stateRef": "n09-parts-target-before-ux06IntervalUpper",
+      "decision": "ADOPT",
+      "reason": "同じ不等式操作で上端n+1を作る。単純な移項を別々の小問へ増やさず、区間上下端としてまとめる。",
+      "visibleMathRefs": [
+        "r=x-n",
+        "0\\le x-n<1",
+        "n\\le x<□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q01-square::ux06ProductBase",
+      "stateRef": "n10-q01-square-before-ux06ProductBase",
+      "decision": "ADOPT",
+      "reason": "(t√5)²の基底全体t√5を第二因子へ戻す。文字と根号へ指数が作用する範囲を保つ。",
+      "visibleMathRefs": [
+        "(t\\sqrt5)^2=(t\\sqrt5)(□)"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q01-square::ux06CoefficientExponent",
+      "stateRef": "n10-q01-square-before-ux06CoefficientExponent",
+      "decision": "ADOPT",
+      "reason": "積を並べ直したt×tを指数2へまとめる。根号の平方と係数の平方を分ける式構成。",
+      "visibleMathRefs": [
+        "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)",
+        "=t^□(\\sqrt5)^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q01-square::rootSquare",
+      "stateRef": "n10-q01-square-before-rootSquare",
+      "decision": "ADOPT",
+      "reason": "(√5)²=5を現在の係数に使い、候補平方5t²を得る。後続÷5の操作を追加の易しい小問にしていない。",
+      "visibleMathRefs": [
+        "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)",
+        "=t^2(\\sqrt5)^2",
+        "=□t^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q11-formula::ux06LastProductSign",
+      "stateRef": "n10-q11-formula-before-ux06LastProductSign",
+      "decision": "ADOPT",
+      "reason": "分配した最後の負項同士の積の+を決める。直前の和平方導出を再利用し、全過程を再度すべて穴にしない。",
+      "visibleMathRefs": [
+        "(A-B)^2=(A-B)(A-B)",
+        "=A(A-B)-B(A-B)",
+        "=A^2-AB-AB\\ □\\ B^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q11-formula::ux06DifferenceCount",
+      "stateRef": "n10-q11-formula-before-ux06DifferenceCount",
+      "decision": "ADOPT",
+      "reason": "−AB−ABの同類項を係数2へまとめ、差平方の中項を作る。完成差平方を初期条件で教える旧先出しはない。",
+      "visibleMathRefs": [
+        "(A-B)^2=(A-B)(A-B)",
+        "=A(A-B)-B(A-B)",
+        "=A^2-AB-AB\\ +\\ B^2",
+        "=A^2-□AB+B^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q11-formula::signedMiddleTermUX05",
+      "stateRef": "n10-q11-formula-before-signedMiddleTermUX05",
+      "decision": "ADOPT",
+      "reason": "導いた一般式を具体の二根号へ適用し−2√2√3を符号込みで構成する。左右の平方や√6は後続の計算に残す。",
+      "visibleMathRefs": [
+        "(A-B)^2=(A-B)(A-B)",
+        "=A(A-B)-B(A-B)",
+        "=A^2-AB-AB\\ +\\ B^2",
+        "=A^2-2AB+B^2",
+        "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2\\ □+(\\sqrt3)^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q13-identity::ux06CrossSign",
+      "stateRef": "n10-q13-identity-before-ux06CrossSign",
+      "decision": "ADOPT",
+      "reason": "Aと−Bから生じる交差項の符号−を作る。分配の因子と符号の対応を具体的に考える。",
+      "visibleMathRefs": [
+        "(A+B)(A-B)=A^2\\ □\\ AB+BA-B^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q13-identity::ux06CrossSum",
+      "stateRef": "n10-q13-identity-before-ux06CrossSum",
+      "decision": "ADOPT",
+      "reason": "−AB+BAの和を交換法則と逆符号から0へまとめる。和差積の相殺の根拠を本人が担う。",
+      "visibleMathRefs": [
+        "(A+B)(A-B)=A^2\\ -\\ AB+BA-B^2",
+        "-AB+BA=□"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-q13-identity::cancellingPairUX05",
+      "stateRef": "n10-q13-identity-before-cancellingPairUX05",
+      "decision": "ADOPT",
+      "reason": "一般の相殺構造を具体の二根号へ対応し、逆符号の交差積の組を選ぶ。順序の違う同じ組を偽としない。",
+      "visibleMathRefs": [
+        "(A+B)(A-B)=A^2\\ -\\ AB+BA-B^2",
+        "-AB+BA=0",
+        "(A+B)(A-B)=A^2-B^2"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-15::ux06CompensatingFactor",
+      "stateRef": "n10-15-before-ux06CompensatingFactor",
+      "decision": "ADOPT",
+      "reason": "既に決まった√3を分子にも掛ける等倍率の補償へ使う。因子の数値を再発見する問いでなく、分母だけ変える誤操作との区別。",
+      "visibleMathRefs": [
+        "\\frac1{2\\sqrt3}=\\frac{1\\times□}{(2\\sqrt3)\\times\\sqrt3}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-15::ux06DenominatorPower",
+      "stateRef": "n10-15-before-ux06DenominatorPower",
+      "decision": "ADOPT",
+      "reason": "二つの√3を平方の指数2へまとめ、分母の根号を消す構造を作る。単独の1倍の計算を追加するものではない。",
+      "visibleMathRefs": [
+        "\\frac1{2\\sqrt3}=\\frac{1\\times\\sqrt3}{(2\\sqrt3)\\times\\sqrt3}",
+        "=\\frac{\\sqrt3}{2(\\sqrt3)^□}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-17::ux06NumeratorProduct",
+      "stateRef": "n10-17-before-ux06NumeratorProduct",
+      "decision": "ADOPT",
+      "reason": "元の分子√3にcを掛ける積√3cを作る。既に決まったcの値をもう一度入力する穴ではない。",
+      "visibleMathRefs": [
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ □ }{(□)c}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-17::ux06DenominatorScope",
+      "stateRef": "n10-17-before-ux06DenominatorScope",
+      "decision": "ADOPT",
+      "reason": "元の分母の和全体√3+√2をcの作用対象にする。見える式の再使用でも、片方の項だけを掛ける誤りとの区別がある。",
+      "visibleMathRefs": [
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ \\sqrt3c }{(□)c}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-20::ux06NumeratorPower",
+      "stateRef": "n10-20-before-ux06NumeratorPower",
+      "decision": "ADOPT",
+      "reason": "分子の同じ二つの差を累乗の指数2へまとめる。分母の変形を同じ回答に束ねない。",
+      "visibleMathRefs": [
+        "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^□}{(2+\\sqrt3)(2-\\sqrt3)}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    },
+    {
+      "partId": "n10-20::ux06DenominatorSign",
+      "stateRef": "n10-20-before-ux06DenominatorSign",
+      "decision": "ADOPT",
+      "reason": "分母の和差積を二平方の差の−へ移す。4/3は先行の認定結果として使い、再計算を要求しない。",
+      "visibleMathRefs": [
+        "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}",
+        "=\\frac{(2-\\sqrt3)^2}{2^2\\ □\\ (\\sqrt3)^2}"
+      ],
+      "futureEvidencePolicy": "次の認定行を回答前根拠にしない。前段の認定結果の再利用は許す。"
+    }
+  ],
+  "prosePlacementReview": "目的を入口で述べ、次の数学操作の直前に理由を置き、正答後は意味/次の用途へつなぐ。完成公式の初期assumption2件は条件/具体課題へ補修済み。BA→ABの説明は交差項の構成後に移動。intro/afterは自然文、数学表現は既存math row/typed leadPartsを使う。q02/02の同文条件反復はin-contextで抑え必要条件を先行文脈へ保持する。",
+  "terminalRoleReview": "終端は解いた結果と条件を次へ使うための認定記録。NEWを旧完了から埋めず、旧正答を保存して新前提の後ろでpendingにする方針を確認した。終端の私的説明を初期可視本文と誤認しない。実移行はNOT_RUNであり方針審査だけ。",
+  "visibleProgressionReview": "全31回答直前と11block完了状態で、初期prefixとその時点までの正答で解放される行/introを読取した。text enumの表示解決を実readerのchosen.displayへ補修し、認定済み参照asideも含む現requestを採用した。wrong gateは実モデルのfrontier/row-ID比較assertというrootの検査で、誤答原state全件保存や実ブラウザ操作とは呼ばない。11完了状態にはafterVisibleTextの実text rowが含まれ、数学結果から次の用途への接続を確認した。新案の完成式/未来値が現在の穴の答えとして確定供給される未解決所見は、この限定public入力内では残っていない。",
+  "caseDispositions": [],
+  "limits": {
+    "reviewScope": "R04案の可視意味/理念/工程限定。実装許可・正式R04 receipt・G1/G2/G3完了ではない。",
+    "mathCODE": "UNSUPPORTED / MATH_DEPENDENCY_MISSINGを保持。graphTeaching UNSUPPORTED、proseIR NOT_RUN、rawDecisionCheck NEEDS_AI_REVIEWも保持。",
+    "render": "NOT_RUN。既存font欠陥の修正案はnative限定override、実body/math/choice相対サイズと72target対話node/旧版影響はR07で確認。",
+    "storage": "移行/旧版/history/resetは設計方針のみ、実結果はNOT_RUN。",
+    "approval": "R04→R05新案承認照合→R06代表decimal→R07本人細部という工程のみを確認。本人受入/Gold/fit/公開承認を自動生成しない。",
+    "caseRegistry": "request.caseIds=[]のため空dispositions。本人否定やR03根拠を読取したことを架空登録事例消費receiptへ変換しない。"
+  }
+}

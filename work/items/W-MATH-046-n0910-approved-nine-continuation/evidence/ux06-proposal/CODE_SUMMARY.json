@@ -1,0 +1,24 @@
+{
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "proposalNodes": 11,
+  "authoredSemanticSteps": 55,
+  "authoredParts": 31,
+  "knowledgeFacts": 36,
+  "teachingStatus": "PASS",
+  "teachingCandidates": 1,
+  "rawCandidates": 93,
+  "rawAIDispositions": {
+    "ADOPT": 31,
+    "REJECT": 62
+  },
+  "rawDecisionCheck": "NEEDS_AI_REVIEW",
+  "graphBlank": "PASS",
+  "representativeCandidates": 6,
+  "representativeAdoption": "PASS",
+  "math": "UNSUPPORTED",
+  "mathReason": "MATH_DEPENDENCY_MISSING",
+  "graphTeaching": "UNSUPPORTED",
+  "proseIR": "NOT_RUN",
+  "meaningImport": "NOT_RUN",
+  "formalStoreReceipt": false
+}

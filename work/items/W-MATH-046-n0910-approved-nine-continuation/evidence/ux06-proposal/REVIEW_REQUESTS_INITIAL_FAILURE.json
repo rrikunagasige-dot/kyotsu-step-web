@@ -1,0 +1,164 @@
+{
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "result": {
+    "status": "FAIL",
+    "reviews": [
+      {
+        "id": "n09-q01-negative-before-ux06RepeatedBase",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q01-negative-before-value",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q02-negative-square-before-ux06RootBase",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q02-negative-square-before-ux06SignProduct",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q02-negative-square-before-signedRootSquareUX05",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q04-negative-before-ux06CandidateSign",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q04-negative-before-ux06CandidateSquare",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-q04-negative-before-value",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06BinomialBase",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06DistributeA",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06DistributeB",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06CrossProduct",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06LastSquare",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-decimal-method-before-ux06LikeTermCount",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-parts-target-before-ux06IntervalLower",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n09-parts-target-before-ux06IntervalUpper",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q01-square-before-ux06ProductBase",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q01-square-before-ux06CoefficientExponent",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q01-square-before-rootSquare",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q11-formula-before-ux06LastProductSign",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q11-formula-before-ux06DifferenceCount",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q11-formula-before-signedMiddleTermUX05",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q13-identity-before-ux06CrossSign",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q13-identity-before-ux06CrossSum",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-q13-identity-before-cancellingPairUX05",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-15-before-ux06CompensatingFactor",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-15-before-ux06DenominatorPower",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-17-before-ux06NumeratorProduct",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-17-before-ux06DenominatorScope",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-20-before-ux06NumeratorPower",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      },
+      {
+        "id": "n10-20-before-ux06DenominatorSign",
+        "status": "FAIL",
+        "reason": "VISIBLE_ONLY_REVIEW_REQUIRED"
+      }
+    ],
+    "automaticAcceptance": false
+  }
+}

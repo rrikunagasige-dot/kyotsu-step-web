@@ -1,0 +1,462 @@
+{
+  "scope": "API contract probes only; not W046 R04 proposal adoption, no Store/runtime initialization",
+  "graph": {
+    "schemaVersion": "solution-graph/1",
+    "id": "contract-probe-square",
+    "variable": "A",
+    "parameters": [
+      "B"
+    ],
+    "initialFacts": [
+      "square-definition",
+      "distributive-law",
+      "commutative-law",
+      "collect-like-terms"
+    ],
+    "givens": [
+      {
+        "id": "given",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "power",
+            "base": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "symbol",
+                  "name": "A"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "B"
+                }
+              ]
+            },
+            "exponent": 2
+          }
+        }
+      }
+    ],
+    "rootStateId": "s0",
+    "goalStateIds": [
+      "s4"
+    ],
+    "states": [
+      {
+        "id": "s0",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "power",
+            "base": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "symbol",
+                  "name": "A"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "B"
+                }
+              ]
+            },
+            "exponent": 2
+          }
+        },
+        "activeVariable": "A",
+        "fixedParameters": [
+          "B"
+        ],
+        "facts": []
+      },
+      {
+        "id": "s1",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  }
+                ]
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "activeVariable": "A",
+        "fixedParameters": [
+          "B"
+        ],
+        "facts": [
+          "fact1"
+        ]
+      },
+      {
+        "id": "s2",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "symbol",
+                        "name": "A"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "B"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "symbol",
+                        "name": "A"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "B"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "activeVariable": "A",
+        "fixedParameters": [
+          "B"
+        ],
+        "facts": [
+          "fact2"
+        ]
+      },
+      {
+        "id": "s3",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "power",
+                "base": {
+                  "kind": "symbol",
+                  "name": "A"
+                },
+                "exponent": 2
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  }
+                ]
+              },
+              {
+                "kind": "power",
+                "base": {
+                  "kind": "symbol",
+                  "name": "B"
+                },
+                "exponent": 2
+              }
+            ]
+          }
+        },
+        "activeVariable": "A",
+        "fixedParameters": [
+          "B"
+        ],
+        "facts": [
+          "fact3"
+        ]
+      },
+      {
+        "id": "s4",
+        "statement": {
+          "kind": "expression",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "power",
+                "base": {
+                  "kind": "symbol",
+                  "name": "A"
+                },
+                "exponent": 2
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "2",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "A"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "B"
+                  }
+                ]
+              },
+              {
+                "kind": "power",
+                "base": {
+                  "kind": "symbol",
+                  "name": "B"
+                },
+                "exponent": 2
+              }
+            ]
+          }
+        },
+        "activeVariable": "A",
+        "fixedParameters": [
+          "B"
+        ],
+        "facts": [
+          "fact4"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e0",
+        "from": "s0",
+        "to": "s1",
+        "ruleId": "rewrite",
+        "requires": [],
+        "produces": [
+          "fact1"
+        ],
+        "basisRefs": [
+          "square-definition"
+        ]
+      },
+      {
+        "id": "e1",
+        "from": "s1",
+        "to": "s2",
+        "ruleId": "rewrite",
+        "requires": [
+          "fact1"
+        ],
+        "produces": [
+          "fact2"
+        ],
+        "basisRefs": [
+          "distributive-law"
+        ]
+      },
+      {
+        "id": "e2",
+        "from": "s2",
+        "to": "s3",
+        "ruleId": "rewrite",
+        "requires": [
+          "fact2"
+        ],
+        "produces": [
+          "fact3"
+        ],
+        "basisRefs": [
+          "commutative-law"
+        ]
+      },
+      {
+        "id": "e3",
+        "from": "s3",
+        "to": "s4",
+        "ruleId": "rewrite",
+        "requires": [
+          "fact3"
+        ],
+        "produces": [
+          "fact4"
+        ],
+        "basisRefs": [
+          "collect-like-terms"
+        ]
+      }
+    ]
+  },
+  "math": {
+    "status": "UNSUPPORTED",
+    "reason": "MATH_DEPENDENCY_MISSING",
+    "detail": "Install the pinned solution requirements in KYOTSU_MATH_PYTHON.",
+    "graphHash": "8601715e81fe5fa2b212a5e54558c8d9fbbd91a41e32a2a0cde47d4cd7651ef2"
+  },
+  "teaching": {
+    "status": "UNSUPPORTED",
+    "reason": "MATH_DEPENDENCY_MISSING",
+    "detail": "Install the pinned solution requirements in KYOTSU_MATH_PYTHON.",
+    "graphHash": "8601715e81fe5fa2b212a5e54558c8d9fbbd91a41e32a2a0cde47d4cd7651ef2"
+  },
+  "blanks": {
+    "status": "PASS",
+    "candidates": [
+      {
+        "id": "probe-candidate",
+        "stateId": "s1",
+        "availableFacts": [
+          "square-definition",
+          "fact1"
+        ],
+        "learnerDecision": "二乗を同じ二項式の積として表す",
+        "nextUse": "分配法則を適用する",
+        "target": "expression.args.0",
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      }
+    ],
+    "planHash": "ab70ed42e5ba427545769024d7170762aa13f9fe25ba5bdd0718407139007546",
+    "meaningAuditRequired": true
+  },
+  "decisions": {
+    "status": "NEEDS_AI_REVIEW",
+    "findings": [],
+    "decisions": [
+      {
+        "candidateId": "probe-candidate",
+        "decision": "UNRESOLVED",
+        "reason": "Contract probe only; proposal choice not reviewed",
+        "evidence": "r04-contract-probes.mjs"
+      }
+    ],
+    "aiApproval": false
+  },
+  "sentence": {
+    "kind": "paragraph",
+    "id": "probe-prose",
+    "parts": [
+      {
+        "kind": "text",
+        "text": "二乗は、"
+      },
+      {
+        "kind": "answerSlot",
+        "id": "probe-slot",
+        "interactionId": "probe-interaction",
+        "semanticRef": "probe-prose-operation"
+      },
+      {
+        "kind": "text",
+        "text": "という積として読み直します。"
+      }
+    ]
+  },
+  "review": {
+    "status": "NEEDS_AI_REVIEW",
+    "request": {
+      "profile": "ordinary-transformation",
+      "schemaVersion": "solution-review/1",
+      "phase": "pre-design",
+      "visible": {
+        "initial": {
+          "formula": "(A+B)^2"
+        },
+        "current": {
+          "formula": "(A+B)(A+B)"
+        }
+      },
+      "sourceRefs": [
+        "contract-probe-only"
+      ],
+      "caseIds": [],
+      "required": [
+        "learnerDecision",
+        "availableInformation",
+        "reasonToProceed",
+        "nextWholeState",
+        "misconception",
+        "reducedSupportVariant",
+        "findings",
+        "patternDecision",
+        "groupBoundaryReview",
+        "blankDecisionReview",
+        "prosePlacementReview",
+        "terminalRoleReview",
+        "visibleProgressionReview"
+      ],
+      "constraints": [
+        "可視状態だけで次へ進めるかを先に検討する",
+        "作成者の理由欄を合格根拠にしない",
+        "同一AIの別passを独立モデルと呼ばない"
+      ],
+      "requestHash": "fec1ce14356b91469918ff2c53200224991e9858b53f3cf80bd7ed74b4a1c187"
+    }
+  }
+}

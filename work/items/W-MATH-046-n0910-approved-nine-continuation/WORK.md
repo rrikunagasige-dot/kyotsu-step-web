@@ -1,13 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: FAILED-VERIFICATION
-Review: USER-QA-NEEDS-FIX / CROSS-AUDIT-REOPENED
-- 本人が公開691dの穴設計・思考機会・文字サイズをNG評価。本人総合受入は未成立。過去のR07/G2/公開成功記録は履歴として保持し、現在の学習設計合格へ流用しない。[原発言・画像・原因](evidence/ux05-user-ng/FEEDBACK.json)。
-- 確定：n09-q02-negative-squareとq04-negativeは、具体変形/根拠を本人に構成させず、結果回答後のAUTOへ回していた。MASTER§8/9/12/52/53への適合を過大認定。全KEEPを不適合と断定せず、前提で認定済みの結果の正当な再利用も区別する。
-- 確定：本文/独立式18pxに対し、選択肢text/mathは14.08px。共通strong .88rem指定の競合。従来4228式計測は選択肢との相対fontを対象にせず見逃し。実画像非作者審査でも拾うべきだった。
-- [工程図](WORKFLOW_CURRENT.md)：本人要修正→R01記録/R02原因確認済み、次はR03同型影響調査→R04具体案。褒められた√a/√b導出・必要な初回計算・旧版/進捗を保護し、単純な記号穴追加やKEEP不変の適合証明への読み替えをしない。
-- 調査・記録のみ。製品source691d/main publisherf4c/公開内容は変更していない。正式Store26欠落特例・他Work38・Gold/fit未認定を維持。
-- 2026-11-03 JST：旧KEEP/AUTOを含む全86設計を個別監査し、主担当による反証・誤判定訂正を記録。[全件表](evidence/ux05-full-re-audit/AUDIT_86.md) / [統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)。R03記録完了、次はR04具体案。局所学習判定71PASS/7FAIL/8UNVERIFIEDは本文・共通font・単元受入の合格数ではない。製品変更なし。
+Review: USER-QA-NEEDS-FIX / UX06-R04-PROPOSAL
+- 本人NGに対してR03全86設計を個別照合し、R04具体案P-W046-UX-06を作成。[案の確認入口](evidence/ux06-proposal/README.md) / [全件監査](evidence/ux05-full-re-audit/AUDIT_86.md)。11導出再設計・3本文限定・native限定font。製品修正済みとは扱わない。
+- Aは数学/学習契約/保存の非作者審査。Bは主担当の理念/工程監視と可視情報を反証。初稿の交差項先出し・旧条件の完成公式2件等を止めて訂正。旧KEEP/検査件数を理念適合の根拠にしない。
+- 次はR05で新案hash/範囲の承認照合。既UX05承認や案作成指示を新案実装の承認にしない。承認後R06はdecimal-methodの和の平方を代表にし、R07 CODE/意味/四幅実画像と本人細部確認へ。毎小ブロックで[工程図](WORKFLOW_CURRENT.md)とMASTER§52を照合する。
+- source691d/main publisherf4c/公開内容は不変。新案の実装・公開・本人受入は未実施。必要な計算・√a√b証明9node・旧版/進捗を保護する。
+- CODEの構造/候補照合とAI意味審査を分離。数学依存不足UNSUPPORTED、raw採否NEEDS_AI_REVIEW、本文IR/実画像/移行NOT_RUNを明示。正式Store26欠落特例を維持し、空Store/架空receipt/Gold/fitや工程PASSEDを作らない。他Workの採用状態も変えない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

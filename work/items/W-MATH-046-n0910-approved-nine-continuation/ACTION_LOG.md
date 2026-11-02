@@ -90,3 +90,7 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 ## 2026-11-03 JST — 本人の理念監査要求へのR03全件照合
 
 全86node（N09 41/N10 45、AUTO17を含む）を非作者A/Bが個別照合し、主担当が両報告を反証。Bへ主担当の工程・理念監視を明示。q15のprivate/terminal混同、N10-20の誤った選択肢消去主張、過剰な逆算穴要求等を撤回。文字/数字/符号穴の学習価値、既存N04資産と√a√b証明の保護を明記。既存impact.inventoryは読取利用、空Store/receiptなし。全件入力網羅と意味適合を分離。現在FAILED-VERIFICATION、次R04具体案。製品source691d/main f4c不変。詳細 evidence/ux05-full-re-audit/ROOT_REVIEW.md。
+
+## 2026-11-03 JST — UX06 R04案と理念監視
+
+本人がR04作成と理念監視を指示。主担当案の11導出再設計/3本文/全86処遇/共通font/保存をA/Bが非作者審査。A/BのcrossProduct先出し、Bの旧assumptions完成公式2件・未認定既習・prefix不一致・public text内部値表示を修正。global font案はnative限定へ縮小。既存CODEの実入力から教授/穴候補を取得、代表採否照合、native構造/数式構文、42公開モデル状態（回答前31/完了11）と誤答gateを確認。数理依存不足UNSUPPORTED・raw採否NEEDS_AI_REVIEW・本文IR/実画像/移行未実行を保持。正式Store/receiptなし。source691d/main publisherf4cは不変。次R05新案承認照合、承認後の代表はdecimal-method。

@@ -1,0 +1,1390 @@
+{
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "design": {
+    "status": "PASS",
+    "findings": [],
+    "inventory": [
+      {
+        "nodeId": "n09-q01-positive",
+        "classification": "KEEP_EXPOSITION",
+        "partCount": 0,
+        "sourceBlocks": 2,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q01-negative",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-01",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-definition",
+        "classification": "KEEP_EXPOSITION",
+        "partCount": 0,
+        "sourceBlocks": 2,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q02-root",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q02-negative-square",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-02",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-boundary",
+        "classification": "KEEP_EXPOSITION",
+        "partCount": 0,
+        "sourceBlocks": 2,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q03-inside",
+        "classification": "KEEP_EXPOSITION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-03",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q04-nonnegative",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q04-negative",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-04",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-05",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q06-squares",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q06-order",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-06",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q07-negation",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-07",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-decimal-method",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 6,
+        "sourceBlocks": 2,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-p001-q08-left-square",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 4,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-p001-q08-right-square",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 4,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-p001-q08-lower-sign",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-p001-q08-upper-sign",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-08",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-09",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-parts-target",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 2,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q10-reject-truncation",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-10",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q11-remainder",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-11",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q12-lower",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q12-upper",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-12",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q13-reverse",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-13",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q14-positive-integer",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q14-positive-remainder",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q14-negative-integer",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-q14-negative-remainder",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n09-14",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q01-square",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-01",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q02-sign",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-02",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q03-expand",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-03",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q04-sign",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-04",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q05-denominator",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q05-square",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-05",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q06-sign",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-06",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q07-product",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-07",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q08-factor",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-08",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q09-left",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q09-right",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-09",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q10-coefficients",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-10",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q11-formula",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-11",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q12-product",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-12",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q13-identity",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-13",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-14",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q15-factor",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-15",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q16-denominator",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-16",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q17-factor",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q17-nonzero",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-17",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-18",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 3,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q19-distribute",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-19",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q20-factor",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 5,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-20",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 2,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q21-denominator",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q21-expand",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-q21-constants",
+        "classification": "NEW_CONSTRUCTION",
+        "partCount": 1,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      },
+      {
+        "nodeId": "n10-21",
+        "classification": "AUTO_RECORDED_CONCLUSION",
+        "partCount": 0,
+        "sourceBlocks": 4,
+        "reviewRequired": true
+      }
+    ],
+    "nodeCount": 86,
+    "partCount": 125,
+    "semanticReviewStatus": "NOT_AUTOMATICALLY_PROVEN",
+    "appVerificationStatus": "NOT_RUN"
+  },
+  "math": [
+    {
+      "nodeId": "n09-q01-negative",
+      "rowId": "n09-q01-negative::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06RepeatedBase",
+          "path": "root/4/group/0"
+        }
+      ],
+      "latex": "{\\left(- 4\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- 4\\right) \\times \\left({\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}\\right)"
+    },
+    {
+      "nodeId": "n09-q01-negative",
+      "rowId": "n09-q01-negative::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(- 4\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- 4\\right) \\times \\left(- 4\\right)"
+    },
+    {
+      "nodeId": "n09-q01-negative",
+      "rowId": "n09-q01-negative::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "value",
+          "path": "root/1"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}"
+    },
+    {
+      "nodeId": "n09-q01-negative",
+      "rowId": "n09-q01-negative::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 16"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06RootBase",
+          "path": "root/3/group/0"
+        }
+      ],
+      "latex": "{\\left(- \\sqrt{5}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- \\sqrt{5}\\right) \\left({\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}\\right)"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(- \\sqrt{5}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- \\sqrt{5}\\right) \\left(- \\sqrt{5}\\right)"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- 1\\right) \\left(- 1\\right) \\left(\\sqrt{5}\\right) \\left(\\sqrt{5}\\right)"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- 1\\right) \\left(- 1\\right) \\left(\\sqrt{5}\\right) \\left(\\sqrt{5}\\right)"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06SignProduct",
+          "path": "root/1"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} {\\left(\\sqrt{5}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 1 {\\left(\\sqrt{5}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-04",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "signedRootSquareUX05",
+          "path": "root/1"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}"
+    },
+    {
+      "nodeId": "n09-q02-negative-square",
+      "rowId": "n09-q02-negative-square::ux06-proposal-row-04",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 5"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CandidateSign",
+          "path": "root/9"
+        }
+      ],
+      "latex": "a \\mathrel{\\mathrel{<}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 0 \\quad \\Rightarrow \\quad - a \\  {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} \\  0"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "a \\mathrel{\\mathrel{<}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 0 \\quad \\Rightarrow \\quad - a \\  > \\  0"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CandidateSquare",
+          "path": "root/5"
+        }
+      ],
+      "latex": "{\\left(- a\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- a\\right) \\left(- a\\right) = {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(- a\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(- a\\right) \\left(- a\\right) = {a}^{2}"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "value",
+          "path": "root/2"
+        }
+      ],
+      "latex": "\\sqrt{{a}^{2}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}"
+    },
+    {
+      "nodeId": "n09-q04-negative",
+      "rowId": "n09-q04-negative::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\sqrt{{a}^{2}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} - a"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06BinomialBase",
+          "path": "root/3/group/0"
+        }
+      ],
+      "latex": "{\\left(A + B\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A + B\\right) \\left({\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}\\right)"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(A + B\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A + B\\right) \\left(A + B\\right)"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06DistributeA",
+          "path": "root/2"
+        },
+        {
+          "key": "ux06DistributeB",
+          "path": "root/5"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A + B\\right) {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} + \\left(A + B\\right) {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0001}}}}}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A + B\\right) A + \\left(A + B\\right) B"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CrossProduct",
+          "path": "root/3"
+        },
+        {
+          "key": "ux06LastSquare",
+          "path": "root/8"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} + A B + {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0001}}}}}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + B A + A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-04",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + A B + A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-04",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + A B + A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-05",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06LikeTermCount",
+          "path": "root/3"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-05",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} + 2 A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-06",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "1.41 \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{141}{100} , \\quad 1.42 = \\frac{142}{100}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-06",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "1.41 \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{141}{100} , \\quad 1.42 = \\frac{142}{100}"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-07",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(\\frac{p}{q}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{p}{q} \\frac{p}{q} = \\frac{{p}^{2}}{{q}^{2}} \\quad \\left(q \\ne 0\\right)"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-07",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(\\frac{p}{q}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{p}{q} \\frac{p}{q} = \\frac{{p}^{2}}{{q}^{2}} \\quad \\left(q \\ne 0\\right)"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-08",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{140}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {14}^{2} \\times 100 = 19600 , \\quad {100}^{2} = 10000"
+    },
+    {
+      "nodeId": "n09-decimal-method",
+      "rowId": "n09-decimal-method::ux06-proposal-row-08",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{140}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {14}^{2} \\times 100 = 19600 , \\quad {100}^{2} = 10000"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "r \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x - n"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "r \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x - n"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "0 \\mathrel{\\mathrel{\\le}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x - n < 1"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "0 \\mathrel{\\mathrel{\\le}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x - n < 1"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06IntervalLower",
+          "path": "root/0"
+        },
+        {
+          "key": "ux06IntervalUpper",
+          "path": "root/4"
+        }
+      ],
+      "latex": "{\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} \\mathrel{\\mathrel{\\le}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x < {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0001}}}}}"
+    },
+    {
+      "nodeId": "n09-parts-target",
+      "rowId": "n09-parts-target::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "n \\mathrel{\\mathrel{\\le}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} x < n + 1"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06ProductBase",
+          "path": "root/3/group/0"
+        }
+      ],
+      "latex": "{\\left(t \\sqrt{5}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(t \\sqrt{5}\\right) \\left({\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}\\right)"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(t \\sqrt{5}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(t \\sqrt{5}\\right) \\left(t \\sqrt{5}\\right)"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CoefficientExponent",
+          "path": "root/1/argument"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {t}^{{\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}} {\\left(\\sqrt{5}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {t}^{2} {\\left(\\sqrt{5}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "rootSquare",
+          "path": "root/1"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} {t}^{2}"
+    },
+    {
+      "nodeId": "n10-q01-square",
+      "rowId": "n10-q01-square::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 5 {t}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(A - B\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A - B\\right) \\left(A - B\\right)"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(A - B\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\left(A - B\\right) \\left(A - B\\right)"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} A \\left(A - B\\right) - B \\left(A - B\\right)"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} A \\left(A - B\\right) - B \\left(A - B\\right)"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06LastProductSign",
+          "path": "root/9"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - A B - A B \\  {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} \\  {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - A B - A B \\  + \\  {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-04",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06DifferenceCount",
+          "path": "root/3"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-04",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - 2 A B + {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-05",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "signedMiddleTermUX05",
+          "path": "root/4"
+        }
+      ],
+      "latex": "{\\left(\\sqrt{2} - \\sqrt{3}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\left(\\sqrt{2}\\right)}^{2} \\  {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} + {\\left(\\sqrt{3}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-q11-formula",
+      "rowId": "n10-q11-formula::ux06-proposal-row-05",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "{\\left(\\sqrt{2} - \\sqrt{3}\\right)}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\left(\\sqrt{2}\\right)}^{2} \\  - 2 \\sqrt{2} \\sqrt{3} + {\\left(\\sqrt{3}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CrossSign",
+          "path": "root/5"
+        }
+      ],
+      "latex": "\\left(A + B\\right) \\left(A - B\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} \\  {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} \\  A B + B A - {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\left(A + B\\right) \\left(A - B\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} \\  - \\  A B + B A - {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CrossSum",
+          "path": "root/7"
+        }
+      ],
+      "latex": "- A B + B A \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "- A B + B A \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} 0"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\left(A + B\\right) \\left(A - B\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\left(A + B\\right) \\left(A - B\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {A}^{2} - {B}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-05",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\left(\\sqrt{7} + \\sqrt{2}\\right) \\left(\\sqrt{7} - \\sqrt{2}\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\left(\\sqrt{7}\\right)}^{2} - {\\left(\\sqrt{2}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-q13-identity",
+      "rowId": "n10-q13-identity::ux06-proposal-row-05",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\left(\\sqrt{7} + \\sqrt{2}\\right) \\left(\\sqrt{7} - \\sqrt{2}\\right) \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} {\\left(\\sqrt{7}\\right)}^{2} - {\\left(\\sqrt{2}\\right)}^{2}"
+    },
+    {
+      "nodeId": "n10-15",
+      "rowId": "n10-15::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06CompensatingFactor",
+          "path": "root/2/numerator/2"
+        }
+      ],
+      "latex": "\\frac{1}{2 \\sqrt{3}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{1 \\times {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}}{\\left(2 \\sqrt{3}\\right) \\times \\sqrt{3}}"
+    },
+    {
+      "nodeId": "n10-15",
+      "rowId": "n10-15::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\frac{1}{2 \\sqrt{3}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{1 \\times \\sqrt{3}}{\\left(2 \\sqrt{3}\\right) \\times \\sqrt{3}}"
+    },
+    {
+      "nodeId": "n10-15",
+      "rowId": "n10-15::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06DenominatorPower",
+          "path": "root/1/denominator/1/argument"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{\\sqrt{3}}{2 {\\left(\\sqrt{3}\\right)}^{{\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}}}"
+    },
+    {
+      "nodeId": "n10-15",
+      "rowId": "n10-15::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{\\sqrt{3}}{2 {\\left(\\sqrt{3}\\right)}^{2}}"
+    },
+    {
+      "nodeId": "n10-17",
+      "rowId": "n10-17::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06NumeratorProduct",
+          "path": "root/3/numerator/0"
+        },
+        {
+          "key": "ux06DenominatorScope",
+          "path": "root/3/denominator/0/group/0"
+        }
+      ],
+      "latex": "\\frac{\\sqrt{3}}{\\sqrt{3} + \\sqrt{2}} \\frac{c}{c} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}}{\\left({\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0001}}}}}\\right) c}"
+    },
+    {
+      "nodeId": "n10-17",
+      "rowId": "n10-17::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\frac{\\sqrt{3}}{\\sqrt{3} + \\sqrt{2}} \\frac{c}{c} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{\\sqrt{3} c}{\\left(\\sqrt{3} + \\sqrt{2}\\right) c}"
+    },
+    {
+      "nodeId": "n10-17",
+      "rowId": "n10-17::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{\\sqrt{3} \\left(\\sqrt{3} - \\sqrt{2}\\right)}{\\left(\\sqrt{3} + \\sqrt{2}\\right) \\left(\\sqrt{3} - \\sqrt{2}\\right)}"
+    },
+    {
+      "nodeId": "n10-17",
+      "rowId": "n10-17::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{\\sqrt{3} \\left(\\sqrt{3} - \\sqrt{2}\\right)}{\\left(\\sqrt{3} + \\sqrt{2}\\right) \\left(\\sqrt{3} - \\sqrt{2}\\right)}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-01",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06NumeratorPower",
+          "path": "root/3/numerator/0/argument"
+        }
+      ],
+      "latex": "\\frac{2 - \\sqrt{3}}{2 + \\sqrt{3}} \\frac{2 - \\sqrt{3}}{2 - \\sqrt{3}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{{\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}}}}{\\left(2 + \\sqrt{3}\\right) \\left(2 - \\sqrt{3}\\right)}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-01",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\frac{2 - \\sqrt{3}}{2 + \\sqrt{3}} \\frac{2 - \\sqrt{3}}{2 - \\sqrt{3}} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{2}}{\\left(2 + \\sqrt{3}\\right) \\left(2 - \\sqrt{3}\\right)}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-02",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [
+        {
+          "key": "ux06DenominatorSign",
+          "path": "root/1/denominator/2"
+        }
+      ],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{2}}{{2}^{2} \\  {\\phantom{\\rule[-0.972222em]{2.444444em}{2.444444em}\\smash{\\rlap{\\text{NSLOT0000}}}}} \\  {\\left(\\sqrt{3}\\right)}^{2}}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-02",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{2}}{{2}^{2} \\  - \\  {\\left(\\sqrt{3}\\right)}^{2}}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-03",
+      "mode": "unanswered",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{2}}{4 - 3}"
+    },
+    {
+      "nodeId": "n10-20",
+      "rowId": "n10-20::ux06-proposal-row-03",
+      "mode": "correct",
+      "status": "PASS",
+      "slotPaths": [],
+      "latex": "\\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{NROOTREL0000}}}}}} \\frac{{\\left(2 - \\sqrt{3}\\right)}^{2}}{4 - 3}"
+    }
+  ],
+  "meaningAuditRequired": true,
+  "visualAcceptance": "NOT_RUN",
+  "productChanged": false
+}

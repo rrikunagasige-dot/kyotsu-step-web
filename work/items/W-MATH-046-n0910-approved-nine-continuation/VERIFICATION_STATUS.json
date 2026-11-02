@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "PUBLISHED_HOST_VERIFIED_AWAITING_USER_APP_EVALUATION",
+  "status": "REVISE_PROPOSAL_USER_QUALITY_REJECTED",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,8 +140,8 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "User hands-on evaluation of exact published N09 r4/N10 r3; do not infer acceptance from publication approval",
-    "After actual evaluation, perform corresponding case/lesson update and Work closure without duplicate tests or fabricated historical receipts"
+    "Explicit approval of revised P-W046-UX-02 before implementation",
+    "Implement approved UI/17-node pedagogy/layout and semantic migration scope, reverify affected dependencies, nonauthor review, republish exact checked candidate, then actual user evaluation"
   ],
   "protected": {
     "mainWritten": true,
@@ -220,10 +220,59 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "G3_FINAL",
+    "currentSubstantiveStage": "R04_REVISED_PROPOSAL",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
-    "G3_FINAL": "AWAITING_USER_APP_EVALUATION",
+    "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
     "missingHistoricalEventsReconstructed": false
+  },
+  "userFeedback": {
+    "dateJST": "2026-11-02",
+    "source": "current_chat_user_feedback_summary",
+    "attachmentLibraryFileId": "libfile_cc4af2b82b7c8191a6282fc7aa34bf74",
+    "assessment": "REQUIRES_CORRECTION",
+    "reference": "N08 existing layout, controls and learning actions",
+    "confirmedFindings": [
+      "W046-UQA-01 UI parity/reset/choice/header",
+      "W046-UQA-02 duplicate immediate memo",
+      "W046-UQA-03 missing learning actions",
+      "W046-UQA-04 derivation alignment across display groups"
+    ],
+    "positiveScopeOnly": "root a/b construction instead of formula-only choice; not whole-app acceptance",
+    "allNodesReviewed": 86,
+    "learningActionRevisionNodeIds": [
+      "n09-01",
+      "n09-q04-negative",
+      "n09-06",
+      "n09-07",
+      "n09-09",
+      "n09-q14-positive-remainder",
+      "n10-02",
+      "n10-04",
+      "n10-06",
+      "n10-q07-product",
+      "n10-07",
+      "n10-q09-left",
+      "n10-q09-right",
+      "n10-17",
+      "n10-q19-distribute",
+      "n10-q20-factor",
+      "n10-20"
+    ],
+    "learningActionDesignRetainedNodes": 69
+  },
+  "revisedProposal": {
+    "id": "P-W046-UX-02",
+    "status": "PROPOSED_NOT_APPROVED",
+    "plannedRevisions": {
+      "N09": 5,
+      "N10": 4
+    },
+    "currentRevisionsPreserved": {
+      "N09": 4,
+      "N10": 3
+    },
+    "implementationStarted": false,
+    "publicationChanged": false
   }
 }

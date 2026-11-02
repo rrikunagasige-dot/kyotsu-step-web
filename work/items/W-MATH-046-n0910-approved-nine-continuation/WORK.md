@@ -1,10 +1,10 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING / G3_HOST完了、G3_FINALは本人実物評価待ち
-- 本人承認済みPR #133をmergeし公開。app source `94dfd300098484473211c22f5de73139b9002717`、publisher `e49486d13119058ff063e75ef84d60660210bd41`。
-- [公開run41332741779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41332741779) SUCCESS。公開前・公開後N09/N10×4幅のbyte／正誤／保存／旧版試し解答隔離、保持N08 r7/r6/r5/r4・N11の検査SUCCESS。
-- 本人確認：[N09 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=94dfd300#/learning/textbook/math-numbers-expressions-n09) ／ [N10 第3版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=94dfd300#/learning/textbook/math-numbers-expressions-n10)。次は本人が両教材を実際に操作して評価する。実装・公開承認を教材受入へ転用しない。
-- 台帳欠落の今回限りの本人特例を維持。native旧receiptは創作していない。本人受入／Gold／fitは未認定。同じ承認・有効な既存検査を理由なく取り直さない。
+Status: REVISE-PROPOSAL / G3_FINAL本人要修正、P-W046-UX-02承認待ち
+- 本人が公開N09/N10のUI・穴設計・重複・整列を要修正と評価。添付はN10のn10-q02-sign→n10-02。N08は既存の排版・操作・学習行為の基準として参照する。
+- 全86nodeを監査：穴設計17nodeを追加／再構成候補、69nodeは維持。共通UI・重複・整列は全体へ適用。肯定された根号a/bの構成方法を保持。
+- 下部のP-W046-UX-02が次の具体案。承認後、N09 r5／N10 r4として限定実装・影響検査・非作者審査・同じPagesへの更新へ進む。現在は製品・公開版未変更。
+- 旧技術PASS・公開SUCCESSは事実として保持し、本人受入へ昇格しない。Gold／fitなし。台帳欠落の一回限りの特例は今回の要修正を消さず、将来の検査省略にも使わない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -115,3 +115,73 @@ run41332741779のstep18（公開前byte・N09/N10操作）SUCCESS、step19（art
 - 保持検査：N08 r7は四幅で30親42判断／各70誤答、途中保存・履歴・比較route・次単元・進捗分離・geometry PASS。r6は33親37判断／69誤答、旧r5は34回答／80誤答PASS。N11は四幅で39回答／109誤答、14stage／原図2点、履歴・reload・resize・旧版1〜10移行・geometry PASS。これは今回の実配信確認であり、他Workの本人評価を代行しない。
 - GitHub成果物：github-pages artifact13094510662（3,173,461 bytes、digest sha256:71907fae51a71a570e07668b5487536942075a58ee36e348a12c555b737044b6）、publication evidence artifact13094392919（184,512,579 bytes、digest sha256:f07a97d256031e804b5b0f0af59f09f3be5c3a6fe9b6b8c036dac196f2cad685）。各artifactの公開metadataを確認。証拠ZIPを今回再ダウンロード・再検査したという意味ではない。
 - 現在はG3_FINALの本人実物評価待ち。公開前固定app sourceとpublisherを区別し、学習記録namespaceを維持。本人の肯定／否定評価後に該当する事例更新・教訓重複確認とWork closeへ進む。公開の成功や「続けて」だけを肯定品質labelとしない。Gold／fitなし。
+
+## 本人G3_FINAL要修正の受領（2026-11-02 JST）
+当該チャットの本人発言を日本語で要約：N08の従来の排版／選択肢／左下resetを基準にすべきで、今回の大見出し・操作形式の変更、穴不足、計算を示しただけで解かせない箇所、式の不揃いを指摘。根号a／根号bを公式選択にせず構成した一部は肯定。全体の受入ではない。
+- [本人添付image(5).png](https://chatgpt.com/library?file_id=libfile_cc4af2b82b7c8191a6282fc7aa34bf74&account_id=personal)を主担当／A／Bが実見。N10 n10-q02-signのt=5とn10-02の√125=5√5が、通常rowsとterminalRecord memoで重複することを確認。
+- N08基準はsource94dfd300内の既存r7実装と、公開run41332741779 artifact13094392919の原画像を使用。artifact ZIP hash f07a97d256031e804b5b0f0af59f09f3be5c3a6fe9b6b8c036dac196f2cad685を照合。N08の320/1440 active-pointer画像を主担当／Bが実見し、現在段階帯・穴直後の選択肢panel・例題/導出の小ラベルを確認。resetの位置はその画像に写っておらず、共通footerコードを根拠とする。
+- W046-UQA-01：N09/N10だけTextbookUnitPageの共通shellを迂回し、既存の左下「この単元を最初から」を独自reader最下端のresetへ置換。独自h1／全stage h2積み上げ／常時末尾choice panelもN08と異なる。
+- W046-UQA-02：resolved時にmemoを無条件追加し、同じ式・条件・説明を直後へ再掲する。
+- W046-UQA-03：途中の計算・理由判断をAUTO nodeで完了させ、独立した学習行為が欠落。N09は41node/38parts、N10は45node/49partsだが総数を品質指標としない。全86nodeのA監査で17nodeを追加/再構成候補、69nodeは穴設計維持。
+- W046-UQA-04：整列planがnode単位で、memo/extraはgroupAlignmentのない別中央配置。局所の幾何PASSは同じ導出全体の軸を保証しなかった。
+- 主担当／非作者審査の不足：従来の検査は型・数学/AST・幅・穴サイズ・衝突・F01などに偏り、N08とのUI整合、重複の教育的意味、学習行為の被覆、別group間の連続性を受入条件へ十分反映していなかった。以前の限定PASSを教材全体の品質保証としない。
+
+## P-W046-UX-02 — N08基準の表示・操作復元と学習行為の穴補修案
+Status: PROPOSED / NOT APPROVED / NOT IMPLEMENTED
+基準：公開app source94dfd300098484473211c22f5de73139b9002717。今回の具体案承認を旧13パス承認から推測しない。正本規則はMASTER_APP_LESSONS §7〜12/16/20/51〜54、MATH_RENDERING_RULES、WORK_SYSTEMの修正優先・改訂承認・検証／本人評価の分離。既存教訓へ対応付け、新しい一般ルールを重複作成しない。
+
+### 1. 表示・操作
+1. N09/N10側をN08の既存構成へ合わせる。現在の問題＋現在stage中心、過去stageは履歴で開く。小さな段階帯（左青線／段階名／進捗）、例題/導出の小ラベル、既存の見出し階層を使用し、内部コード・版を独自大見出しへ混ぜない。
+2. 選択肢は現在の穴／導出groupの直後へ表示し、N08の番号付き白い縦並びボタン・青枠／薄灰色panel・active/誤答feedbackに合わせる。穴activateを単なる末尾focusへ置換しない。
+3. 左下の共通「この単元を最初から」を復元。確認dialog、対象単元だけのreset、stage/cursor初期化、冒頭scroll/focusをN08と同じ操作にする。旧archiveと他単元の記録を保持。
+4. 表示済み結論・条件・説明を通常導出の直後へ再掲しない。terminalRecordは前段参照・履歴の用途へ整理し、意味のある再利用は残す。文字列だけで式を一括削除しない。
+5. 同一の意味を持つ連続導出groupへ共通のleft/relation/right軸とneutral envelopeを渡す。node境界・memo/extraを跨ぐ表示用途を明示し、条件式や別問題を無条件に同じ軸へ揃えない。18px数式・44px操作、根号／分数／累乗内部を壊さない改行を保持。
+
+### 2. 穴の修正対象（17node）
+| node | 修正する学習行為 |
+|---|---|
+| `n09-01` | 零積から全解を尽くす「または」の論理接続。既出±4の再入力だけにはしない。 |
+| `n09-q04-negative` | a<0から−a>0の関係判断→既存√(a²)=−aへ接続。 |
+| `n09-06` | 2<√5の両辺へ加える−√5を構成→既存の差0の計算へ接続。 |
+| `n09-07` | 外側−1と符号込みの第二項−√5を構成→既存−2／＋へ接続。N08分配の粒度を基準。 |
+| `n09-09` | 平方比較から1.41<√2<1.42の不等号を判断。 |
+| `n09-q14-positive-remainder` | r=x−nの適用として√10−3の減算を構成。認定済み3は参照。 |
+| `n10-02` | 5√5>0の関係、25×5=125の計算、平方と正性から正の平方根と同定する理由を確認。 |
+| `n10-04` | 積の証明で平方だけでなく符号条件も必要な理由を確認。公式丸ごと選択へ戻さない。 |
+| `n10-06` | 商の構成・分母非零・平方・符号から結論を同定する理由を確認。 |
+| `n10-q07-product` | √6√8の根号内の×を構成→既存の48の計算へ接続。 |
+| `n10-07` | 48から取り出す最大の平方因子16を選ぶ→既存の残り3へ接続。問いの一意性を明示。 |
+| `n10-q09-left` | 8から平方因子4を選ぶ→既存√4=2へ接続。 |
+| `n10-q09-right` | 50から平方因子25を選ぶ→既存√25=5へ接続。支援を減らしたtransfer。 |
+| `n10-17` | 共役因子を上下へ掛けた式を積へまとめる構成。認定済み因子は参照し、同一の×判断や因子を写す穴は重複させない。 |
+| `n10-q19-distribute` | √3(√3−√2)の第二項の符号とscope、結合符号を構成→既存の積3／根号内6へ接続。 |
+| `n10-q20-factor` | 2>√3から2−√3>0という非零性の根拠を判断→既存の有理積・値1の理由へ接続。 |
+| `n10-20` | 分母を2²−(√3)²へ構成する減算判断→既存の分母1の計算へ接続。 |
+
+- 残る69nodeは穴設計を維持。最初の手本・定義・既出結果の記録を、ゼロ穴だからという理由だけで変更しない。表示の重複／整列修正は69nodeにも適用。
+- 全途中式を機械的に穴にせず、「何を使う／どの符号・演算を選ぶ／何を計算・比較する／何を意味する」の独立操作を前提付きで定義。認定済み結果はmirror／参照で再利用し、同じ値を写す穴を増やさない。未知用語の当て物、完成公式一式だけの選択へ戻さない。
+- 肯定部分：根号a/bの非零・平方・符号を構成する流れ、N09-Q08の途中計算と二つの比較、N10-q21のP/K/Q構成等を維持。新規partの問い・型・正答・誤答根拠・前提・見える情報を17nodeごとに契約化し、後続完成式／lead／memoによる答え漏れを検査する。
+
+### 3. 版・保存
+N09 r5／N10 r4を作り、現r4/r3を比較用に残す。原r3/r2も保持。新compiledHashへ無条件に旧完了を転用しない。
+- 問い・対象・型・正答・候補・前提の意味が一致する旧partだけ出所付きで継承。追加の判断・計算は未回答へ戻す。旧AUTO結論は新しい穴の回答済み証拠にしない。
+- 現r4/r3のcompiled snapshot／表示／履歴を保持し、新しい必須課題がある場合は最初の未解決へ復帰。未変更の全回答を消さない。同じ保存namespaceを維持。
+
+### 4. 実装範囲
+- 設計／生成：W043のNODE_DESIGN.json、nested-lesson生成器とapply-n0910-construction、対応するlayout group・表示用途・数学／設計validator。
+- データ：N09/N10 active compiled／candidate pins／unit entry、新revisionのn09Revision5／n10Revision4、現compiled r4/r3の比較snapshot。関連migration-analysis／意味対応表。
+- UI：ConstructionLessonReadingFlowとscoped CSS、N0910RevisionPage／N0910ArchivePage、TextbookUnitPageの共通shell接続。必要なnested template／geometry／compiled契約の受渡し。N08の教材データと専用readerを修正対象にしない。
+- 保存：nestedMigration／nestedLessonStorageと必要なbridge。上記の版・意味対応に必要な範囲だけ。既存IDを別の学習行為へすり替えない。
+- 検査：対応する既存test／measurement／design／finite-math／captureを改訂し、旧版fixtureを残す。旧期待値を一括置換してPASSにしない。
+- 公開：検査済み新candidateをfreeze後、既存publisherのsource/hash／新旧route検査だけ更新し、同じ既存Pagesへ反映する。公開前にN09/N10とN08/旧版/他の影響対象を確認し、失敗時は公開しない。公開後は実配信byte・操作を検証。別サービス・料金・権限追加・他教科の改修・Gold／fitは含めない。
+範囲のmaterialな追加や数学・学習目的の変更が必要になれば、黙って拡張せずこの案を改訂する。
+
+### 5. 合格条件と順序
+1. 17nodeの新旧学習行為表と69node維持表、part契約、表示group／用途、保存意味対応を固定。
+2. AIが穴の学習目的・導出境界・説明と操作の順序を審査し、CODEが型・唯一正答・前提・依存・回答前後の表示を検査。
+3. 実装後、320/390/430/1440で空欄／選択中／誤答／正答／履歴／reset／旧版比較を採取。node内だけでなく同一導出全体の式軸・番号・穴位置を実測。N08とのUI位置・見出し階層・選択肢・resetの比較も検査対象にする。
+4. 本人添付のN10 sqrt125の前後を必須回帰点とし、t=5／√125=5√5の無意味な直後重複をなくす。新しい正性・平方・理由の穴が回答前に漏れていないことを実見。
+5. 非作者A/Bが全86nodeの設計／表示への適用と、対象実画像・保護対象を確認。既存有効PASSは未変更の範囲で再利用し、変更した入力と依存先は再検査。
+6. 検査・審査後に新sourceを固定して同じPagesへ更新、実配信を確認し、本人G3_FINALへ再提出。公開や実装承認を本人受入へ変換しない。
+
+今回の変更：上の要修正・原因・提案を既存WORKへ記録。製品コード／公開版／学習Storeは未変更。

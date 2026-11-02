@@ -1,0 +1,3802 @@
+{
+  "schema": "w046-principle-reaudit/1",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "compiledHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33",
+  "reviewer": "/root/w046_render_review",
+  "role": "N09設計非作者、過去N09採否審査担当、共有renderer/一部checker作者。モデル独立性/盲検は名乗らない。",
+  "scope": "N09全41node。KEEP/AUTOも全件。新実装/新公開/全幅全状態再試験なし。",
+  "authorityHashes": {
+    "MAIN_MASTER.md": "03fef64877de2cbb536391a72a0c95e46e1952ff2dda7d0ef74553637ada458a",
+    "MAIN_WORK_SYSTEM.md": "dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346",
+    "mathSPEC": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277",
+    "CRITERIA.json": "107aa76d90fe25dcc9962b5d1e3732efccfb772e081ca7f304f859981e3e8c4e"
+  },
+  "inputHashes": {
+    "n09-input.json": "fa320c560353e484a2596edd5f708f7e3109fa11efbcaeafafc3391e049534fc",
+    "compiled": "d0820e4d7d795d9c16bde659fe1b58105f0cb364760d5352dd1e87f654a4dcb3"
+  },
+  "counts": {
+    "all": 41,
+    "auto": 11,
+    "overall": {
+      "UNVERIFIED": 9,
+      "FAIL": 32
+    },
+    "localActionUtilityOnly": {
+      "PASS": 38,
+      "UNVERIFIED": 2,
+      "FAIL": 1
+    },
+    "userGoalCompliance": {
+      "PASS": 32,
+      "UNVERIFIED": 6,
+      "FAIL": 3
+    },
+    "derivationCoverage": {
+      "PASS": 36,
+      "UNVERIFIED": 2,
+      "FAIL": 3
+    }
+  },
+  "claimBoundary": "人間相当のsource/public state理念監査。機械的件数一致は適合判定ではない。実画面を全41node新撮影実見したとは呼ばない。overall PASSなしは未完了/共通fontFAILを隠さないためで、全41nodeを内容改変すべきという意味ではない。 userGoalCompliance/derivationCoverage/resultCalculationを分離し、localActionUtilityOnlyの数字をnodeの理念合格数として使わない。",
+  "rows": [
+    {
+      "ordinal": 1,
+      "nodeId": "n09-q01-positive",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "最初の問いx²=16と平方の意味。同じ数を二回掛ける正の候補4の手本。",
+      "derivationChain": "4²→4×4→16。正候補の検証で、全解の断定ではない。",
+      "currentLearnerActions": "このnodeは手本として読む。次nodeで負候補へ移す。",
+      "missingLearnerActions": "なし。手本まで強制穴にする必要はない。",
+      "proseAssessment": "まず正を確かめ次に負も調べると明示し、例示の目的が分かる。",
+      "answerAfterMeaning": "正の候補4が条件を満たしました。負の候補をまだ除外していません。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q01-positive::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q01-negative::powerAction:initial:0",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-01",
+        "requiredResultRefs": [],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "最初の問いx²=16と平方の意味。同じ数を二回掛ける正の候補4の手本。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "まず正を確かめ次に負も調べると明示し、例示の目的が分かる。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "このnodeは手本として読む。次nodeで負候補へ移す。 なし。手本まで強制穴にする必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "最初の問いx²=16と平方の意味。同じ数を二回掛ける正の候補4の手本。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "4²→4×4→16。正候補の検証で、全解の断定ではない。 まず正を確かめ次に負も調べると明示し、例示の目的が分かる。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。手本まで強制穴にする必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "手本と全解探索の区別を保持。AUTOだから穴を増やさない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "このnodeは手本として読む。次nodeで負候補へ移す。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。手本まで強制穴にする必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 2,
+      "nodeId": "n09-q01-negative",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "正候補の手本と、指数が括弧全体へ作用するという問い。",
+      "derivationChain": "(−4)²→(−4)(−4)→16。",
+      "currentLearnerActions": "powerActionは操作説明のtext enum、valueは積の結果16を式へ入れる。",
+      "missingLearnerActions": "本人が実際の二因子の積を式として構成する操作はない。一方、text enumは指数の作用範囲を判断し、次のvalueは符号を含む積を計算する有意味な操作でもある。A+Bの初回導出要件をこの既知平方へ無条件移植して不適合と断定する根拠は不足。",
+      "proseAssessment": "括弧/指数の作用へ注意を向け、操作説明→具体積→値という接続がある。式内で二因子を作る必要がある場面か、既習操作の説明選択で十分かを小ブロックpreflightで確定する。",
+      "answerAfterMeaning": "「負の候補も確かめる」として (-4)^2=16 を確定しました。次の「すべての解を答える」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q01-negative::ux05-row-01",
+          "n09-q01-negative::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q01-negative::powerAction:initial:0",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 8,
+        "stageId": "n09-stage-01",
+        "requiredResultRefs": [
+          "n09-q01-positive-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "正候補の手本と、指数が括弧全体へ作用するという問い。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "括弧/指数の作用へ注意を向け、操作説明→具体積→値という接続がある。式内で二因子を作る必要がある場面か、既習操作の説明選択で十分かを小ブロックpreflightで確定する。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "UNVERIFIED",
+          "basis": "本人が実際の二因子の積を式として構成する操作はない。一方、text enumは指数の作用範囲を判断し、次のvalueは符号を含む積を計算する有意味な操作でもある。A+Bの初回導出要件をこの既知平方へ無条件移植して不適合と断定する根拠は不足。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "UNVERIFIED",
+          "basis": "本人が実際の二因子の積を式として構成する操作はない。一方、text enumは指数の作用範囲を判断し、次のvalueは符号を含む積を計算する有意味な操作でもある。A+Bの初回導出要件をこの既知平方へ無条件移植して不適合と断定する根拠は不足。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "正候補の手本と、指数が括弧全体へ作用するという問い。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "数学的な誤答露出だけでなく、本人が構成する対象をAUTO供給する問題を別途検出。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "(−4)²→(−4)(−4)→16。 括弧/指数へ注意はあるが、選んだ操作説明を実際の積へ作り直す接続を本人が担わない。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "負号を含む同じ二因子の積を式そのものとして構成する操作。text正答後にアプリが(−4)×(−4)を全供給する。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "既存textの意味判断と式内value穴を一律廃止しない。二因子構成が必要なら既存選択→式内反映で補えるが、新しい自由入力engineや全符号穴化を要件化しない。最新要求に対する粒度が未確認のため、過去承認済みを理由にPASSともtext enumだからFAILとも決めない。共通choice fontは確定FAIL。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "UNVERIFIED",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "powerActionは操作説明のtext enum、valueは積の結果16を式へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "UNVERIFIED",
+        "basis": "本人が実際の二因子の積を式として構成する操作はない。一方、text enumは指数の作用範囲を判断し、次のvalueは符号を含む積を計算する有意味な操作でもある。A+Bの初回導出要件をこの既知平方へ無条件移植して不適合と断定する根拠は不足。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 3,
+      "nodeId": "n09-01",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "±4を候補として検証済み。平方差公式と零積則をpublic行で与える。",
+      "derivationChain": "x²=16→x²−4²=0→(x−4)(x+4)=0→片方の因子0→全解±4。",
+      "currentLearnerActions": "因数分解の式全体、因子の零条件ORを判断。",
+      "missingLearnerActions": "既習平方差の再証明/一次式の±4を細かく解く穴はここでは不要。",
+      "proseAssessment": "他に解がないことを調べる目的と、最後に場合を尽くした説明がつながる。",
+      "answerAfterMeaning": "正負両方の候補を保持し、因数分解からこれ以外の実数解がないことも確認しました。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-01::ux05-rule-01",
+          "n09-01::ux05-rule-02",
+          "n09-01::ux05-rule-03",
+          "n09-01::ux05-rule-04",
+          "n09-01::ux05-row-01",
+          "n09-01::ux05-row-02",
+          "n09-01::ux05-row-03",
+          "n09-01::ux05-row-04",
+          "n09-01::ux05-row-05",
+          "n09-01::ux05-row-06",
+          "n09-01::ux05-row-07",
+          "n09-01::ux05-row-08",
+          "n09-01::ux05-row-09",
+          "n09-01::ux05-row-10"
+        ],
+        "firstPublicSnapshotId": "n09-q01-negative::value:filled:7",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 10,
+        "stageId": "n09-stage-01",
+        "requiredResultRefs": [
+          "n09-q01-negative-result",
+          "n09-q01-positive-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "±4を候補として検証済み。平方差公式と零積則をpublic行で与える。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "他に解がないことを調べる目的と、最後に場合を尽くした説明がつながる。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "因数分解の式全体、因子の零条件ORを判断。 既習平方差の再証明/一次式の±4を細かく解く穴はここでは不要。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "±4を候補として検証済み。平方差公式と零積則をpublic行で与える。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "x²=16→x²−4²=0→(x−4)(x+4)=0→片方の因子0→全解±4。 他に解がないことを調べる目的と、最後に場合を尽くした説明がつながる。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "既習平方差の再証明/一次式の±4を細かく解く穴はここでは不要。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数学上の二判断は保持。文字数でfactor/OR判断を評価せず、表示/MathLinesの型を確認する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "因数分解の式全体、因子の零条件ORを判断。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "既習平方差の再証明/一次式の±4を細かく解く穴はここでは不要。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 4,
+      "nodeId": "n09-definition",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "直前の±4の例から一般aを平方にもつ数の名称・非負の根号を教える。",
+      "derivationChain": "具体の二根→平方根の定義→√aと−√aの区別。",
+      "currentLearnerActions": "定義を読む。直後√16で非負根を選ぶ。",
+      "missingLearnerActions": "未知の名称を当てさせる必要はない。",
+      "proseAssessment": "平方根二つと根号一つを明示。定義/性質の導入として適切。",
+      "answerAfterMeaning": "a>0の平方根は正負二つで、√aと−√aです。一方、根号√aは非負の一つの値です。「平方根をすべて」と「根号の値」を区別します。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-definition::row-01",
+          "n09-definition::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-01::factorZeroConditionUX05:filled:17",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-02",
+        "requiredResultRefs": [
+          "n09-01-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "直前の±4の例から一般aを平方にもつ数の名称・非負の根号を教える。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "平方根二つと根号一つを明示。定義/性質の導入として適切。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "定義を読む。直後√16で非負根を選ぶ。 未知の名称を当てさせる必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "直前の±4の例から一般aを平方にもつ数の名称・非負の根号を教える。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "具体の二根→平方根の定義→√aと−√aの区別。 平方根二つと根号一つを明示。定義/性質の導入として適切。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "未知の名称を当てさせる必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "概念本文を保持。数学の定義を穴数目当てに増やさない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "定義を読む。直後√16で非負根を選ぶ。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "未知の名称を当てさせる必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 5,
+      "nodeId": "n09-q02-root",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "平方根の定義/非負性、先行の±4。",
+      "derivationChain": "16の二根→非負の4を根号の値として採用。",
+      "currentLearnerActions": "√16の値4を式に入れ、−4/±4と区別。",
+      "missingLearnerActions": "なし。数字一つでも根号の解釈がある。",
+      "proseAssessment": "先ほどの候補のうち条件に合う方、と根拠を限定する。",
+      "answerAfterMeaning": "\\sqrt{16}=4を第1の答えとして保持します。次は別の式(-\\sqrt5)^2を計算し、最後に元の順序で二つの値をまとめます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q02-root::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-01::factorZeroConditionUX05:filled:17",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-02",
+        "requiredResultRefs": [
+          "n09-definition-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "平方根の定義/非負性、先行の±4。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "先ほどの候補のうち条件に合う方、と根拠を限定する。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "√16の値4を式に入れ、−4/±4と区別。 なし。数字一つでも根号の解釈がある。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "平方根の定義/非負性、先行の±4。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "16の二根→非負の4を根号の値として採用。 先ほどの候補のうち条件に合う方、と根拠を限定する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。数字一つでも根号の解釈がある。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数字穴を保持。単なる4のコピーと一律判定しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "√16の値4を式に入れ、−4/±4と区別。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。数字一つでも根号の解釈がある。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 6,
+      "nodeId": "n09-q02-negative-square",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "負数の平方の既習操作、積の平方と(√a)²=aをpublic提示。",
+      "derivationChain": "(−√5)²→(−1)²(√5)²→5。",
+      "currentLearnerActions": "括弧全体の平方の値5を求める。",
+      "missingLearnerActions": "本人指定の途中式構成：負号を含む基底を同じ二因子へ、または−1と√5の積の平方へ表し、√5の平方の既知の値を適切な対象へ使う。最終5の選択以外は正答後に全てAUTO。",
+      "proseAssessment": "定義/積の平方を先に示すことは可能だが、具体的に負号を含む基底へ適用する重要な接続を、最終5の回答後に初めて完成表示する。さらに前nodeと同じassumptionを反復し本文の流れを弱める。",
+      "answerAfterMeaning": "「負号を含めて二乗する」として (-\\sqrt5)^2=5 を確定しました。次の「二つの値を元の順序でまとめる」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q02-negative-square::ux05-given-01",
+          "n09-q02-negative-square::ux05-given-02",
+          "n09-q02-negative-square::ux05-given-03",
+          "n09-q02-negative-square::ux05-row-01",
+          "n09-q02-negative-square::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q02-root::value:filled:21",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 5,
+        "stageId": "n09-stage-02",
+        "requiredResultRefs": [
+          "n09-q02-root-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "負数の平方の既習操作、積の平方と(√a)²=aをpublic提示。"
+        },
+        "causalProse": {
+          "verdict": "FAIL",
+          "basis": "同stage前nodeと同じassumption「根号は非負の一つの値。√16と(−√5)²を元の順で求める。」を各nodeで再掲。image7にも同文の反復が実見され、前の結果を受けて次の操作へ進む本文ではなく条件ブロックの繰返しが骨格を圧迫する。新条件ではない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "FAIL",
+          "basis": "本人指定の途中式構成：負号を含む基底を同じ二因子へ、または−1と√5の積の平方へ表し、√5の平方の既知の値を適切な対象へ使う。最終5の選択以外は正答後に全てAUTO。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "FAIL",
+          "basis": "最終5のみが穴。中間の意味ある式内構成は未実施。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "負数の平方の既習操作、積の平方と(√a)²=aをpublic提示。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "(−√5)²→(−1)²(√5)²→5。 使う定義/積の平方を明示し負号の作用範囲を確認する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "新たな平方公式の証明ではなく直前の操作の根号への転用。中間式は正答後に見える。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "現在の5という計算判断の価値は保持しつつ、穴なし解法のどの中間構成を本人が担うかを本人要求と照合する。負号・根号・指数の作用対象を式内へ作る案を具体化する。前q01の未確認を「転用済み」で消さない。assumption反復と共通fontも別の修正対象。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "FAIL",
+        "scope": "本人image7/直後の式内導出要求に対する現状",
+        "basis": "結果5は本人が計算するが、負号を含む二因子/積の平方/√5の平方をどの式へどう適用するかは正答後に全てアプリが供給する。既存の計算価値だけで本人NGを覆さない。"
+      },
+      "derivationCoverage": {
+        "verdict": "FAIL",
+        "basis": "(−√5)²→(−1)²(√5)²→1×5→5で、現在の式内穴は最終5だけ。途中の対象構成が必要という本人要求を満たさない。前q01のtext操作理解が途中式構成まで示すかも未解決。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "負号を含む全体の平方を計算する値5は問う。ただしこれだけでは途中の構成を行った証拠にならない。"
+      }
+    },
+    {
+      "ordinal": 7,
+      "nodeId": "n09-02",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "√16=4と(−√5)²=5が本人回答として確定。",
+      "derivationChain": "二つの異なる操作の結果を元の順序へ並べる。",
+      "currentLearnerActions": "本人の新回答なし。認定結果の再掲。",
+      "missingLearnerActions": "なし。二値をもう一度入力する必要はない。",
+      "proseAssessment": "根号の値と負の数の平方を別々に求めたと振り返る。 同じ根号の条件/元の二つの問いを前nodeから重ねて表示しているため、連続本文としては不適合。",
+      "answerAfterMeaning": "「二つの値を元の順序でまとめる」として (\\sqrt{16},\\ (-\\sqrt5)^2)=(4,\\ 5) を確定しました。次の「0と負の数の境界」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-02::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q02-negative-square::signedRootSquareUX05:filled:26",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-02",
+        "requiredResultRefs": [
+          "n09-q02-negative-square-result",
+          "n09-q02-root-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "√16=4と(−√5)²=5が本人回答として確定。"
+        },
+        "causalProse": {
+          "verdict": "FAIL",
+          "basis": "同stage前nodeと同じassumption「根号は非負の一つの値。√16と(−√5)²を元の順で求める。」を各nodeで再掲。image7にも同文の反復が実見され、前の結果を受けて次の操作へ進む本文ではなく条件ブロックの繰返しが骨格を圧迫する。新条件ではない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "本人の新回答なし。認定結果の再掲。 なし。二値をもう一度入力する必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "√16=4と(−√5)²=5が本人回答として確定。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "二つの異なる操作の結果を元の順序へ並べる。 根号の値と負の数の平方を別々に求めたと振り返る。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。二値をもう一度入力する必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "正当な結果再利用としてAUTO保持。 共通条件は必要な位置へまとめ、正答を受けて今どの操作へ移るかを本文でつなぐ。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "本人の新回答なし。認定結果の再掲。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。二値をもう一度入力する必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 8,
+      "nodeId": "n09-boundary",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "平方根の定義、実数の平方は非負という一般的基礎。",
+      "derivationChain": "0²=0→√0=0、実数平方≥0→負値に実根なし。",
+      "currentLearnerActions": "境界の説明を読む。",
+      "missingLearnerActions": "定義の境界を新語当ての穴にしない。",
+      "proseAssessment": "この章は実数という範囲と不可能の理由を明示する。",
+      "answerAfterMeaning": "0の平方根は0一つです。実数の平方は0以上なので、a<0ならx²=aとなる実数xはなく、この章の実数範囲には負の数の平方根がありません。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-boundary::row-01",
+          "n09-boundary::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q02-negative-square::signedRootSquareUX05:filled:26",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-02",
+        "requiredResultRefs": [],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "平方根の定義、実数の平方は非負という一般的基礎。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "この章は実数という範囲と不可能の理由を明示する。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "境界の説明を読む。 定義の境界を新語当ての穴にしない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "平方根の定義、実数の平方は非負という一般的基礎。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "0²=0→√0=0、実数平方≥0→負値に実根なし。 この章は実数という範囲と不可能の理由を明示する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "定義の境界を新語当ての穴にしない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "境界説明を保持。今後別範囲の複素数を混入しない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "境界の説明を読む。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "定義の境界を新語当ての穴にしない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 9,
+      "nodeId": "n09-q03-inside",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が(-4)²=16を既に確定。新しい内側平方の計算ではない。",
+      "derivationChain": "既出平方を根号内へ代入し√16へ戻す。",
+      "currentLearnerActions": "再計算を要求せず、次nodeで非負根を選ぶ。",
+      "missingLearnerActions": "なし。同値の既認定値を使う正当な再利用。",
+      "proseAssessment": "確定済みの平方を使う、と現在の操作目的がある。",
+      "answerAfterMeaning": "先に認定した負の候補の平方を参照し、根号の中を16へ直しました。次に非負の平方根を選びます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q03-inside::ux05-row-01",
+          "n09-q03-inside::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q02-negative-square::signedRootSquareUX05:filled:26",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-03",
+        "requiredResultRefs": [
+          "n09-boundary-result",
+          "n09-q01-negative-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が(-4)²=16を既に確定。新しい内側平方の計算ではない。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "確定済みの平方を使う、と現在の操作目的がある。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "再計算を要求せず、次nodeで非負根を選ぶ。 なし。同値の既認定値を使う正当な再利用。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が(-4)²=16を既に確定。新しい内側平方の計算ではない。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "既出平方を根号内へ代入し√16へ戻す。 確定済みの平方を使う、と現在の操作目的がある。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。同値の既認定値を使う正当な再利用。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "AUTO維持。以前の答えを別の問いとして再採点しない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "再計算を要求せず、次nodeで非負根を選ぶ。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。同値の既認定値を使う正当な再利用。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 10,
+      "nodeId": "n09-03",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "√((-4)²)=√16と根号の非負性。",
+      "derivationChain": "内側の平方→その値の非負平方根4。",
+      "currentLearnerActions": "値4を入れる。−4/16は根号解釈の誤り。",
+      "missingLearnerActions": "なし。同じ4でも内側平方とは判断が異なる。",
+      "proseAssessment": "次に非負の平方根を取ると、操作の順が接続する。",
+      "answerAfterMeaning": "「根号の非負の値を選ぶ」として \\sqrt{(-4)^2}=4 を確定しました。次の「0以上の場合」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-03::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q02-negative-square::signedRootSquareUX05:filled:26",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-03",
+        "requiredResultRefs": [
+          "n09-q03-inside-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "√((-4)²)=√16と根号の非負性。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "次に非負の平方根を取ると、操作の順が接続する。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "値4を入れる。−4/16は根号解釈の誤り。 なし。同じ4でも内側平方とは判断が異なる。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "√((-4)²)=√16と根号の非負性。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "内側の平方→その値の非負平方根4。 次に非負の平方根を取ると、操作の順が接続する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。同じ4でも内側平方とは判断が異なる。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "意味の異なる結果穴として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "値4を入れる。−4/16は根号解釈の誤り。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。同じ4でも内側平方とは判断が異なる。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 11,
+      "nodeId": "n09-q04-nonnegative",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "a≥0全体、平方がa²で非負の表現という条件。",
+      "derivationChain": "√(a²)の定義→条件を全体で満たすa。",
+      "currentLearnerActions": "一般式aを選ぶ。a=0だけで候補を判定しない。",
+      "missingLearnerActions": "なし。a一文字でも全称条件/非負性の判断がある。",
+      "proseAssessment": "境界0の候補一致を認めた上で範囲全体を問う。",
+      "answerAfterMeaning": "「0以上の場合」として \\sqrt{a^2}=a\\quad(a\\ge0) を確定しました。次の「負の場合」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q04-nonnegative::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-03::value:filled:30",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-04",
+        "requiredResultRefs": [
+          "n09-03-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "a≥0全体、平方がa²で非負の表現という条件。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "境界0の候補一致を認めた上で範囲全体を問う。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "一般式aを選ぶ。a=0だけで候補を判定しない。 なし。a一文字でも全称条件/非負性の判断がある。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "a≥0全体、平方がa²で非負の表現という条件。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "√(a²)の定義→条件を全体で満たすa。 境界0の候補一致を認めた上で範囲全体を問う。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。a一文字でも全称条件/非負性の判断がある。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "文字穴を保持。数字例だけの写しへ落とさない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "一般式aを選ぶ。a=0だけで候補を判定しない。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。a一文字でも全称条件/非負性の判断がある。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 12,
+      "nodeId": "n09-q04-negative",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "a<0と根号が非負であるという定義。",
+      "derivationChain": "aでは負→−aなら正かつ平方a²→√(a²)=−a。",
+      "currentLearnerActions": "条件を満たす表現−aを構成する。",
+      "missingLearnerActions": "一般のa<0で候補−aが非負であること、平方がa²であることを必要な式内構成として確かめ、その二条件から根号の値と同定する。現在は最終候補の正答後にAUTOで与える。",
+      "proseAssessment": "負の場合に非負の方を選ぶ理由と正答後の二条件が対応。",
+      "answerAfterMeaning": "「負の場合」として \\sqrt{a^2}=-a\\quad(a<0) を確定しました。次の「条件と結果の対応を保持する」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q04-negative::ux05-given-01",
+          "n09-q04-negative::ux05-row-01",
+          "n09-q04-negative::ux05-row-02",
+          "n09-q04-negative::ux05-row-03",
+          "n09-q04-negative::ux05-row-04"
+        ],
+        "firstPublicSnapshotId": "n09-q04-nonnegative::value:filled:34",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-04",
+        "requiredResultRefs": [
+          "n09-q04-nonnegative-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "a<0と根号が非負であるという定義。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "負の場合に非負の方を選ぶ理由と正答後の二条件が対応。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "FAIL",
+          "basis": "一般のa<0で候補−aが非負であること、平方がa²であることを必要な式内構成として確かめ、その二条件から根号の値と同定する。現在は最終候補の正答後にAUTOで与える。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "FAIL",
+          "basis": "最終−a以外の根拠がすべてAUTO。最終候補選択と根拠構成を区別。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "a<0と根号が非負であるという定義。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "aでは負→−aなら正かつ平方a²→√(a²)=−a。 負の場合に非負の方を選ぶ理由と正答後の二条件が対応。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "符号判定と平方の性質は直前までの既習。毎回個別の−号再証明へ細分化しない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "最初の一般形を定着させる場面として、正性/平方/同定のうちどの重要な関係を式内穴にするかを具体設計する。良い√a√bの証明段階を参照し、毎例で全符号再証明へ展開しない。必要な文字/符号穴を維持し、最終式一択に押し込まない。共通fontもFAIL。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "FAIL",
+        "scope": "a<0の一般形の根拠構成を本人が辿る要求",
+        "basis": "現状は最終−aを選ぶと、−a>0/(-a)²=a²/したがって√(a²)=−aの根拠を全てAUTO表示する。候補の同定と必要な根拠の本人構成を同じ合格としない。"
+      },
+      "derivationCoverage": {
+        "verdict": "FAIL",
+        "basis": "最初の一般的な負のaの枝で、正性→同じ平方→非負平方根の同定の二条件を本人が組まない。具体例から一般の定理へ移る要所である。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "a<0で非負の候補−aを選ぶ意味判断はある。単純な符号穴だから無価値とはしない。ただし根拠構成の実施と別。"
+      }
+    },
+    {
+      "ordinal": 13,
+      "nodeId": "n09-04",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "a≥0/a<0の二つの本人回答。",
+      "derivationChain": "各条件と各表現をcasesへまとめる。",
+      "currentLearnerActions": "認定結果と条件を対応して読む。",
+      "missingLearnerActions": "なし。既出の二値をもう一度打つ必要はない。",
+      "proseAssessment": "条件を外して値だけ並べないという要約目的がある。",
+      "answerAfterMeaning": "「条件と結果の対応を保持する」として \\sqrt{a^2}=a\\ (a\\ge0)、\\sqrt{a^2}=-a\\ (a<0) を確定しました。次の「二つの場合を絶対値へ統合する」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-04::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q04-negative::value:filled:38",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-04",
+        "requiredResultRefs": [
+          "n09-q04-negative-result",
+          "n09-q04-nonnegative-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "a≥0/a<0の二つの本人回答。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "条件を外して値だけ並べないという要約目的がある。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "認定結果と条件を対応して読む。 なし。既出の二値をもう一度打つ必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "a≥0/a<0の二つの本人回答。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "各条件と各表現をcasesへまとめる。 条件を外して値だけ並べないという要約目的がある。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。既出の二値をもう一度打つ必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "AUTOの条件付き結果整理を保持。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "二場合/絶対値への認定結果再利用の役割は有効",
+        "basis": "負のaの枝の根拠構成FAILを修復した前提ならこのまとめは正当。現状の全連鎖を条件付き案の合格に読み替えない。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。既出の二値をもう一度打つ必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 14,
+      "nodeId": "n09-05",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "前の絶対値定義と今回得たcasesが一致。",
+      "derivationChain": "二場合の関数表現→|a|。",
+      "currentLearnerActions": "√(a²)の右辺へ|a|を入れる。",
+      "missingLearnerActions": "なし。既習概念の回収/統合。",
+      "proseAssessment": "二つの場合を一つの記号へまとめると目的を示す。",
+      "answerAfterMeaning": "「二つの場合を絶対値へ統合する」として \\sqrt{a^2}=|a|\\quad(a\\in\\mathbb R) を確定しました。次の「非負の二数を平方で比較する」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-05::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q04-negative::value:filled:38",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-04",
+        "requiredResultRefs": [
+          "n09-04-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "前の絶対値定義と今回得たcasesが一致。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "二つの場合を一つの記号へまとめると目的を示す。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "√(a²)の右辺へ|a|を入れる。 なし。既習概念の回収/統合。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "前の絶対値定義と今回得たcasesが一致。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "二場合の関数表現→|a|。 二つの場合を一つの記号へまとめると目的を示す。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。既習概念の回収/統合。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "記号穴を保持。名称暗記のみと誤認しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "二場合/絶対値への認定結果再利用の役割は有効",
+        "basis": "負のaの枝の根拠構成FAILを修復した前提ならこのまとめは正当。現状の全連鎖を条件付き案の合格に読み替えない。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。既習概念の回収/統合。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 15,
+      "nodeId": "n09-q06-squares",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "求めたい√((2−√5)²)、非負な2/√5、平方で比較する方針。",
+      "derivationChain": "2²=4、(√5)²=5→次の大小比較の準備。",
+      "currentLearnerActions": "整数側平方4を計算する。",
+      "missingLearnerActions": "既知算術でも比較法を使う材料にする役割がある。数が一桁だから撤去しない。",
+      "proseAssessment": "差の符号を知るために先に二数を比べると目的が明示。",
+      "answerAfterMeaning": "「非負の二数を平方で比較する」として 2^2=4、(\\sqrt5)^2=5 を確定しました。次の「平方の比較を元の数へ戻す」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q06-squares::row-01",
+          "n09-q06-squares::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-05::value:filled:42",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-05",
+        "requiredResultRefs": [
+          "n09-05-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "求めたい√((2−√5)²)、非負な2/√5、平方で比較する方針。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "差の符号を知るために先に二数を比べると目的が明示。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "整数側平方4を計算する。 既知算術でも比較法を使う材料にする役割がある。数が一桁だから撤去しない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "求めたい√((2−√5)²)、非負な2/√5、平方で比較する方針。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "2²=4、(√5)²=5→次の大小比較の準備。 差の符号を知るために先に二数を比べると目的が明示。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "既知算術でも比較法を使う材料にする役割がある。数が一桁だから撤去しない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "算術の価値は比較法への必要性で保持。将来削減はこの役割を保って判断する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "整数側平方4を計算する。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "既知算術でも比較法を使う材料にする役割がある。数が一桁だから撤去しない。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 16,
+      "nodeId": "n09-q06-order",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "直前の平方4/5と、非負範囲で平方大小が元の大小に対応する則。",
+      "derivationChain": "4<5→2<√5。",
+      "currentLearnerActions": "不等号<を元の二数の式へ入れる。",
+      "missingLearnerActions": "なし。計算結果穴とは異なる関係移送。",
+      "proseAssessment": "非負条件を使い元へ戻すと明示する。",
+      "answerAfterMeaning": "「平方の比較を元の数へ戻す」として 2<\\sqrt5 を確定しました。次の「差の符号へつなぐ」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q06-order::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q06-squares::value:filled:46",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-05",
+        "requiredResultRefs": [
+          "n09-05-result",
+          "n09-q06-squares-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "直前の平方4/5と、非負範囲で平方大小が元の大小に対応する則。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "非負条件を使い元へ戻すと明示する。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "不等号<を元の二数の式へ入れる。 なし。計算結果穴とは異なる関係移送。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "直前の平方4/5と、非負範囲で平方大小が元の大小に対応する則。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "4<5→2<√5。 非負条件を使い元へ戻すと明示する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。計算結果穴とは異なる関係移送。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "関係記号一文字を意味ある式構成として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "不等号<を元の二数の式へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。計算結果穴とは異なる関係移送。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 17,
+      "nodeId": "n09-06",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "認定2<√5、両辺に同じ数を足しても向き不変。",
+      "derivationChain": "両辺から√5を引く→差<0。",
+      "currentLearnerActions": "差と0の比較記号を式へ入れる。",
+      "missingLearnerActions": "なし。既知の大小から対象の符号へ変換する。",
+      "proseAssessment": "何を根拠に差を比べるかを示し、後で0になる右辺を表示。",
+      "answerAfterMeaning": "「差の符号へつなぐ」として 2-\\sqrt5<0 を確定しました。次の「負の式全体に負号を付ける」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-06::ux05-row-01",
+          "n09-06::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q06-order::relation:filled:50",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-05",
+        "requiredResultRefs": [
+          "n09-05-result",
+          "n09-q06-order-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "認定2<√5、両辺に同じ数を足しても向き不変。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "何を根拠に差を比べるかを示し、後で0になる右辺を表示。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "差と0の比較記号を式へ入れる。 なし。既知の大小から対象の符号へ変換する。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "認定2<√5、両辺に同じ数を足しても向き不変。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "両辺から√5を引く→差<0。 何を根拠に差を比べるかを示し、後で0になる右辺を表示。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。既知の大小から対象の符号へ変換する。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "符号判断を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "差と0の比較記号を式へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。既知の大小から対象の符号へ変換する。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 18,
+      "nodeId": "n09-q07-negation",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "2−√5<0、√(u²)=|u|と負の場合の絶対値則。",
+      "derivationChain": "平方の平方根→絶対値→負の中身を反対符号へ。",
+      "currentLearnerActions": "−(2−√5)を構成し括弧を残す。",
+      "missingLearnerActions": "外側負号の分配は後続nodeへ残る。",
+      "proseAssessment": "まだ分配しないという問いの型が明確で、同値の別表示を偽と扱わない。",
+      "answerAfterMeaning": "「負の式全体に負号を付ける」として |2-\\sqrt5|=-(2-\\sqrt5) を確定しました。次の「両項の符号を変えて答える」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q07-negation::ux05-given-01",
+          "n09-q07-negation::ux05-row-01",
+          "n09-q07-negation::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-06::differenceRelationUX05:filled:54",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 5,
+        "stageId": "n09-stage-05",
+        "requiredResultRefs": [
+          "n09-05-result",
+          "n09-06-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "2−√5<0、√(u²)=|u|と負の場合の絶対値則。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "まだ分配しないという問いの型が明確で、同値の別表示を偽と扱わない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "−(2−√5)を構成し括弧を残す。 外側負号の分配は後続nodeへ残る。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "2−√5<0、√(u²)=|u|と負の場合の絶対値則。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "平方の平方根→絶対値→負の中身を反対符号へ。 まだ分配しないという問いの型が明確で、同値の別表示を偽と扱わない。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "外側負号の分配は後続nodeへ残る。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "段階の役割を保持。uの代入に相当する文字/符号穴も選択肢にし得るが勝手に置換しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "−(2−√5)を構成し括弧を残す。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "外側負号の分配は後続nodeへ残る。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 19,
+      "nodeId": "n09-07",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "直前に本人が確定した−(2−√5)。",
+      "derivationChain": "負号の分配→−2+√5→指定順の√5−2。",
+      "currentLearnerActions": "根号を含む項が先の整理式を作る。",
+      "missingLearnerActions": "整数の単独符号穴の増殖は不要。既知分配の具体適用が問われている。",
+      "proseAssessment": "元の根号の値を仕上げる、と直前の式を受ける。",
+      "answerAfterMeaning": "\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2で、この例題は終わりです。次は別の例で、小数の平方を使って\\sqrt2の範囲を調べます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-07::ux05-row-01",
+          "n09-07::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q07-negation::absoluteExpressionUX05:filled:59",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 5,
+        "stageId": "n09-stage-05",
+        "requiredResultRefs": [
+          "n09-05-result",
+          "n09-q07-negation-result",
+          "n09-06-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "直前に本人が確定した−(2−√5)。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "元の根号の値を仕上げる、と直前の式を受ける。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "根号を含む項が先の整理式を作る。 整数の単独符号穴の増殖は不要。既知分配の具体適用が問われている。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "直前に本人が確定した−(2−√5)。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "負号の分配→−2+√5→指定順の√5−2。 元の根号の値を仕上げる、と直前の式を受ける。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "整数の単独符号穴の増殖は不要。既知分配の具体適用が問われている。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "具体変形の判断を保持。正答後の中間式を省かない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "根号を含む項が先の整理式を作る。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "整数の単独符号穴の増殖は不要。既知分配の具体適用が問われている。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 20,
+      "nodeId": "n09-decimal-method",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "小数の平方で√2を挟む問題。一般A/Bの意味と既習・未習は根拠なしに既習固定された。",
+      "derivationChain": "本来：(A+B)²→(A+B)(A+B)→A²+AB+BA+B²→A²+2AB+B²。現在は積表示を欠き全AUTO。",
+      "currentLearnerActions": "なし。公式/四項/同類項の完成形を読むだけ。",
+      "missingLearnerActions": "同じ二因子の構成、分配による各積の構成、AB/BAの同類項整理。分数平方を使う理由から具体分子へ移る本文の接続。",
+      "proseAssessment": "完成公式を使うと先に宣言し、中項二つ分という結論だけ説明する。なぜ分配で二項が生じるかの論理を生徒が辿れない。",
+      "answerAfterMeaning": "平方計算の方法と、これから使える局所手本を確認しました。141²と142²の計算済みの値はまだ示しません。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-decimal-method::ux05-given-01",
+          "n09-decimal-method::ux05-given-02",
+          "n09-decimal-method::ux05-given-03",
+          "n09-decimal-method::ux05-given-04",
+          "n09-decimal-method::ux05-row-01",
+          "n09-decimal-method::ux05-row-02",
+          "n09-decimal-method::ux05-row-03"
+        ],
+        "firstPublicSnapshotId": "n09-07::expandedExpressionUX05:filled:64",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-07-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "小数の平方で√2を挟む問題。一般A/Bの意味と既習・未習は根拠なしに既習固定された。"
+        },
+        "causalProse": {
+          "verdict": "FAIL",
+          "basis": "完成公式を使うと先に宣言し、中項二つ分という結論だけ説明する。なぜ分配で二項が生じるかの論理を生徒が辿れない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "FAIL",
+          "basis": "同じ二因子の構成、分配による各積の構成、AB/BAの同類項整理。分数平方を使う理由から具体分子へ移る本文の接続。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "FAIL",
+          "basis": "なし。公式/四項/同類項の完成形を読むだけ。 同じ二因子の構成、分配による各積の構成、AB/BAの同類項整理。分数平方を使う理由から具体分子へ移る本文の接続。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "小数の平方で√2を挟む問題。一般A/Bの意味と既習・未習は根拠なしに既習固定された。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "数学的な誤答露出だけでなく、本人が構成する対象をAUTO供給する問題を別途検出。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "本来：(A+B)²→(A+B)(A+B)→A²+AB+BA+B²→A²+2AB+B²。現在は積表示を欠き全AUTO。 完成公式を使うと先に宣言し、中項二つ分という結論だけ説明する。なぜ分配で二項が生じるかの論理を生徒が辿れない。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "同じ二因子の構成、分配による各積の構成、AB/BAの同類項整理。分数平方を使う理由から具体分子へ移る本文の接続。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "本人指定の平方意味→分配→四項→同類項を式内の意味ある穴で設計する。A/B/符号/係数穴を許容し、全部を一つの完成公式choiceに置換しない。140²等の既知算術を全て穴へする必要はない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "FAIL",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "FAIL",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "なし。公式/四項/同類項の完成形を読むだけ。"
+      },
+      "derivationCoverage": {
+        "verdict": "FAIL",
+        "basis": "同じ二因子の構成、分配による各積の構成、AB/BAの同類項整理。分数平方を使う理由から具体分子へ移る本文の接続。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 21,
+      "nodeId": "n09-p001-q08-left-square",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "小数平方の目的、分数表示、一般公式。ただし前nodeの導出教育不足を引き継ぐ。",
+      "derivationChain": "1.41²→(141/100)²→(140+1)²展開→中項280→和19881→小数1.9881。",
+      "currentLearnerActions": "中項の因子2×140×1、積L1、和L2、小数化L3を各式内で作る。",
+      "missingLearnerActions": "局所4操作は存在する。一般公式の自力導出欠落は前nodeのFAILであり本node単体の穴追加では直らない。",
+      "proseAssessment": "分子へ適用する意図はあるが、なぜ141を140+1に分け分母10000へ戻すかを文章で滑らかに結ぶ余地がある。",
+      "answerAfterMeaning": "「左側の平方を小数へ戻す」として 141^2=19881、1.41^2=1.9881 を確定しました。次の「右側の平方を小数へ戻す」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-p001-q08-left-square::ux05-row-01",
+          "n09-p001-q08-left-square::ux05-row-02",
+          "n09-p001-q08-left-square::ux05-row-03",
+          "n09-p001-q08-left-square::ux05-row-04",
+          "n09-p001-q08-left-square::ux05-row-05"
+        ],
+        "firstPublicSnapshotId": "n09-07::expandedExpressionUX05:filled:64",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 17,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-decimal-method-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "FAIL",
+          "basis": "一般公式導出の必要な学習操作が前AUTOで欠落。局所4partの意義は保護。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "分子へ適用する意図はあるが、なぜ141を140+1に分け分母10000へ戻すかを文章で滑らかに結ぶ余地がある。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "中項の因子2×140×1、積L1、和L2、小数化L3を各式内で作る。 局所4操作は存在する。一般公式の自力導出欠落は前nodeのFAILであり本node単体の穴追加では直らない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "小数平方の目的、分数表示、一般公式。ただし前nodeの導出教育不足を引き継ぐ。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "1.41²→(141/100)²→(140+1)²展開→中項280→和19881→小数1.9881。 分子へ適用する意図はあるが、なぜ141を140+1に分け分母10000へ戻すかを文章で滑らかに結ぶ余地がある。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "局所4操作は存在する。一般公式の自力導出欠落は前nodeのFAILであり本node単体の穴追加では直らない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "局所4part/具体計算を保護。前の公式導出が満たされるまで連鎖全体の適合完了としない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "局所は中項構成＋3計算が有効、全導出の前提は不合格",
+        "basis": "一般公式を本人が導く前段のFAILは残る。現在の具体計算があることを理由に前段の必要構成を不要としない。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "局所4操作は存在する。一般公式の自力導出欠落は前nodeのFAILであり本node単体の穴追加では直らない。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 22,
+      "nodeId": "n09-p001-q08-right-square",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "左の具体適用を本人が通過、右候補1.42を同方法で計算。",
+      "derivationChain": "1.42²→(142/100)²→(140+2)²展開→560→20164→2.0164。",
+      "currentLearnerActions": "因子2×140×2、積R1、和R2、小数化R3を作る。",
+      "missingLearnerActions": "局所的な独立計算は残る。前の一般公式導出不足は未解消。",
+      "proseAssessment": "二項への具体適用だが二つ目で支援をどう弱めるかは今後の設計判断。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「右側の平方を小数へ戻す」として 142^2=20164、1.42^2=2.0164 を確定しました。次の「左の平方と2を比べる」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-p001-q08-right-square::ux05-row-01",
+          "n09-p001-q08-right-square::ux05-row-02",
+          "n09-p001-q08-right-square::ux05-row-03",
+          "n09-p001-q08-right-square::ux05-row-04",
+          "n09-p001-q08-right-square::ux05-row-05"
+        ],
+        "firstPublicSnapshotId": "n09-p001-q08-left-square::L3:filled:81",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 17,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-p001-q08-left-square-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "FAIL",
+          "basis": "一般公式導出の必要な学習操作が前AUTOで欠落。局所4partの意義は保護。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "二項への具体適用だが二つ目で支援をどう弱めるかは今後の設計判断。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "因子2×140×2、積R1、和R2、小数化R3を作る。 局所的な独立計算は残る。前の一般公式導出不足は未解消。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "左の具体適用を本人が通過、右候補1.42を同方法で計算。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "1.42²→(142/100)²→(140+2)²展開→560→20164→2.0164。 二項への具体適用だが二つ目で支援をどう弱めるかは今後の設計判断。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "局所的な独立計算は残る。前の一般公式導出不足は未解消。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "必要計算をKEEP。既知の2²=4等を後で再入力させず、この上端が必要な理由を接続。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "局所は中項構成＋3計算が有効、全導出の前提は不合格",
+        "basis": "一般公式を本人が導く前段のFAILは残る。現在の具体計算があることを理由に前段の必要構成を不要としない。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "局所的な独立計算は残る。前の一般公式導出不足は未解消。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 23,
+      "nodeId": "n09-p001-q08-lower-sign",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が計算した1.9881と2。",
+      "derivationChain": "平方値と2の下側比較。",
+      "currentLearnerActions": "Cの<を式に入れる。",
+      "missingLearnerActions": "なし。§53で具体指定された比較。",
+      "proseAssessment": "まず左だけ比較すると対象を限定する。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「左の平方と2を比べる」として 1.9881<2 を確定しました。次の「2と右の平方を比べる」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-p001-q08-lower-sign::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-p001-q08-right-square::R3:filled:98",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-p001-q08-right-square-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が計算した1.9881と2。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "まず左だけ比較すると対象を限定する。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "Cの<を式に入れる。 なし。§53で具体指定された比較。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が計算した1.9881と2。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "平方値と2の下側比較。 まず左だけ比較すると対象を限定する。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。§53で具体指定された比較。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "不等号穴を保護。stageの完成目標は証明すべき命題として区別し、数値計算を飛ばす口実にしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "Cの<を式に入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。§53で具体指定された比較。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 24,
+      "nodeId": "n09-p001-q08-upper-sign",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "2と本人が計算した2.0164。",
+      "derivationChain": "平方値と2の上側比較。",
+      "currentLearnerActions": "Dの<を式に入れる。",
+      "missingLearnerActions": "なし。整数部分一致のときの小数比較。",
+      "proseAssessment": "左の比較を受けて次に右と対象が切り替わる。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「2と右の平方を比べる」として 2<2.0164 を確定しました。次の「計算と比較を一つに記録する」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-p001-q08-upper-sign::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-p001-q08-lower-sign::C:filled:102",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-p001-q08-lower-sign-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "2と本人が計算した2.0164。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "左の比較を受けて次に右と対象が切り替わる。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "Dの<を式に入れる。 なし。整数部分一致のときの小数比較。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "2と本人が計算した2.0164。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "平方値と2の上側比較。 左の比較を受けて次に右と対象が切り替わる。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。整数部分一致のときの小数比較。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "不等号穴を保護。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "Dの<を式に入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。整数部分一致のときの小数比較。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 25,
+      "nodeId": "n09-08",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が得たL/Rの小数平方と二つの比較。",
+      "derivationChain": "独立した二比較→平方値の一つの連鎖。",
+      "currentLearnerActions": "認定済み結果の統合を読む。",
+      "missingLearnerActions": "なし。四結果を自動でまとめる正当な再利用。",
+      "proseAssessment": "確定した計算と比較を同じ順に結ぶと明示。",
+      "answerAfterMeaning": "整数の計算済み補助もこの後で参照できます。平方比較が完成したので、次は非負性を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-08::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-p001-q08-upper-sign::D:filled:106",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-p001-q08-upper-sign-result",
+          "n09-p001-q08-left-square-result",
+          "n09-p001-q08-right-square-result",
+          "n09-p001-q08-lower-sign-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が得たL/Rの小数平方と二つの比較。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "確定した計算と比較を同じ順に結ぶと明示。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "認定済み結果の統合を読む。 なし。四結果を自動でまとめる正当な再利用。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が得たL/Rの小数平方と二つの比較。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "独立した二比較→平方値の一つの連鎖。 確定した計算と比較を同じ順に結ぶと明示。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。四結果を自動でまとめる正当な再利用。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "AUTO保持。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "認定済み結果の統合を読む。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。四結果を自動でまとめる正当な再利用。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 26,
+      "nodeId": "n09-09",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "1.41²<2<1.42²と三数の正性。",
+      "derivationChain": "平方値の両側比較→元の数1.41<√2<1.42。",
+      "currentLearnerActions": "lowerRelation/upperRelationを元の数の式へ入れる。",
+      "missingLearnerActions": "なし。既存平方値比較と元の数の比較は異なる操作。",
+      "proseAssessment": "非負の元の数へ戻す接続がある。目標として既に見える命題を根拠なしに写すのではなく、計算から確かめる役割。",
+      "answerAfterMeaning": "非負であることと平方の比較から、1.41<\\sqrt2<1.42を確認できました。次は別の数-2.1の整数部分と小数部分を、定義に沿って考えます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-09::row-01",
+          "n09-09::row-02",
+          "n09-09::row-03"
+        ],
+        "firstPublicSnapshotId": "n09-p001-q08-upper-sign::D:filled:106",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 8,
+        "stageId": "n09-stage-06",
+        "requiredResultRefs": [
+          "n09-08-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "1.41²<2<1.42²と三数の正性。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "非負の元の数へ戻す接続がある。目標として既に見える命題を根拠なしに写すのではなく、計算から確かめる役割。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "lowerRelation/upperRelationを元の数の式へ入れる。 なし。既存平方値比較と元の数の比較は異なる操作。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "1.41²<2<1.42²と三数の正性。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "平方値の両側比較→元の数1.41<√2<1.42。 非負の元の数へ戻す接続がある。目標として既に見える命題を根拠なしに写すのではなく、計算から確かめる役割。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。既存平方値比較と元の数の比較は異なる操作。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "一文字の関係穴を維持。正性条件と使用理由を表示し続ける。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "lowerRelation/upperRelationを元の数の式へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。既存平方値比較と元の数の比較は異なる操作。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 27,
+      "nodeId": "n09-parts-target",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "新しい整数/小数部分の定義x=n+r、n整数、0≤r<1。",
+      "derivationChain": "定義→r=x−n→n≤x<n+1。後二式は定義の同義な帰結。",
+      "currentLearnerActions": "AUTO本文のみ。次で誤ったn候補の残りを検査する。",
+      "missingLearnerActions": "定義の紹介は教えてよい。一方、区間条件への変換を初回にどの既習/本文で説明するかが未提示で、十分な導出か断定できない。",
+      "proseAssessment": "なぜ小数の見た目で切れないかは接続するが、rの条件がnの区間へ変わる理由の文章がない。",
+      "answerAfterMeaning": "まず候補−2を調べ、定義を満たすかを判断します。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-parts-target::row-01",
+          "n09-parts-target::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-09::upperRelation:filled:114",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-07",
+        "requiredResultRefs": [
+          "n09-09-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "新しい整数/小数部分の定義x=n+r、n整数、0≤r<1。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "なぜ小数の見た目で切れないかは接続するが、rの条件がnの区間へ変わる理由の文章がない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "UNVERIFIED",
+          "basis": "定義の紹介は教えてよい。一方、区間条件への変換を初回にどの既習/本文で説明するかが未提示で、十分な導出か断定できない。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "AUTO本文のみ。次で誤ったn候補の残りを検査する。 定義の紹介は教えてよい。一方、区間条件への変換を初回にどの既習/本文で説明するかが未提示で、十分な導出か断定できない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "新しい整数/小数部分の定義x=n+r、n整数、0≤r<1。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "定義→r=x−n→n≤x<n+1。後二式は定義の同義な帰結。 なぜ小数の見た目で切れないかは接続するが、rの条件がnの区間へ変わる理由の文章がない。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "定義の紹介は教えてよい。一方、区間条件への変換を初回にどの既習/本文で説明するかが未提示で、十分な導出か断定できない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "定義そのものと導いた検査条件を区別し、本文で0≤x−n<1→n≤x<n+1をつなぐ。意味ある区間構成を本人へ任せる要否を個別に決める。全AUTOも全穴化も先に決めない。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "UNVERIFIED",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "UNVERIFIED",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "AUTO本文のみ。次で誤ったn候補の残りを検査する。"
+      },
+      "derivationCoverage": {
+        "verdict": "UNVERIFIED",
+        "basis": "定義の紹介は教えてよい。一方、区間条件への変換を初回にどの既習/本文で説明するかが未提示で、十分な導出か断定できない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 28,
+      "nodeId": "n09-q10-reject-truncation",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "定義0≤r<1と候補n=−2。",
+      "derivationChain": "残り−0.1を計算→範囲条件を満たさないので候補棄却。",
+      "currentLearnerActions": "値−0.1と棄却理由を別に回答する。",
+      "missingLearnerActions": "局所二判断は存在する。定義から区間条件への上流接続は別の未確認。",
+      "proseAssessment": "候補を仮定して検査すると明示し、正しいnを先に言わない。",
+      "answerAfterMeaning": "残りが負なのでn=−2は今回の定義に合いません。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q10-reject-truncation::ux05-given-01",
+          "n09-q10-reject-truncation::ux05-row-01",
+          "n09-q10-reject-truncation::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-09::upperRelation:filled:114",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 9,
+        "stageId": "n09-stage-07",
+        "requiredResultRefs": [
+          "n09-parts-target-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "UNVERIFIED",
+          "basis": "上流n09-parts-targetで区間条件を初回にどう根拠づけるか未確認。局所操作の有効性は別にPASS。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "候補を仮定して検査すると明示し、正しいnを先に言わない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "値−0.1と棄却理由を別に回答する。 局所二判断は存在する。定義から区間条件への上流接続は別の未確認。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "定義0≤r<1と候補n=−2。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "残り−0.1を計算→範囲条件を満たさないので候補棄却。 候補を仮定して検査すると明示し、正しいnを先に言わない。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "局所二判断は存在する。定義から区間条件への上流接続は別の未確認。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "計算/条件判断を維持。負の整数だから棄却という誤概念を区別する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "値−0.1と棄却理由を別に回答する。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "局所二判断は存在する。定義から区間条件への上流接続は別の未確認。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 29,
+      "nodeId": "n09-10",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "候補−2では残りが負、検査条件n≤x<n+1。",
+      "derivationChain": "−2.1を含む単位区間→左端n=−3。",
+      "currentLearnerActions": "整数−3を選ぶ。",
+      "missingLearnerActions": "なし。数字一つでもfloorの区間同定である。",
+      "proseAssessment": "単に負号付き整数桁を読むのではなく区間で確かめる接続。",
+      "answerAfterMeaning": "整数部分は−3と確定しました。次に、元の数からこの整数を引いて残りを求めます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-10::row-01",
+          "n09-10::row-02",
+          "n09-10::row-03"
+        ],
+        "firstPublicSnapshotId": "n09-q10-reject-truncation::candidateValidityUX05:filled:123",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-07",
+        "requiredResultRefs": [
+          "n09-q10-reject-truncation-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "UNVERIFIED",
+          "basis": "上流n09-parts-targetで区間条件を初回にどう根拠づけるか未確認。局所操作の有効性は別にPASS。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "単に負号付き整数桁を読むのではなく区間で確かめる接続。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "整数−3を選ぶ。 なし。数字一つでもfloorの区間同定である。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "候補−2では残りが負、検査条件n≤x<n+1。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "−2.1を含む単位区間→左端n=−3。 単に負号付き整数桁を読むのではなく区間で確かめる接続。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。数字一つでもfloorの区間同定である。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数字穴を維持。上流の区間条件の説明を補うまで全鎖合格とはしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "整数−3を選ぶ。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。数字一つでもfloorの区間同定である。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 30,
+      "nodeId": "n09-q11-remainder",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "既認定n=−3、x=−2.1、残りの定義r=x−n。",
+      "derivationChain": "r=−2.1−(−3)=−2.1+3=0.9。",
+      "currentLearnerActions": "残り0.9を計算する。",
+      "missingLearnerActions": "r=x−nの最初の具体計算。不要な±3単独穴へ再分割しない。",
+      "proseAssessment": "確定整数部分を使うと再利用が明確。",
+      "answerAfterMeaning": "「選んだ整数からの差を計算する」として r=0.9、0\\le0.9<1 を確定しました。次の「元の数を整数と残りへ分ける」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q11-remainder::ux05-row-01"
+        ],
+        "firstPublicSnapshotId": "n09-10::n:filled:127",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-08",
+        "requiredResultRefs": [
+          "n09-parts-target-result",
+          "n09-10-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "既認定n=−3、x=−2.1、残りの定義r=x−n。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "確定整数部分を使うと再利用が明確。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "残り0.9を計算する。 r=x−nの最初の具体計算。不要な±3単独穴へ再分割しない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "既認定n=−3、x=−2.1、残りの定義r=x−n。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "r=−2.1−(−3)=−2.1+3=0.9。 確定整数部分を使うと再利用が明確。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "r=x−nの最初の具体計算。不要な±3単独穴へ再分割しない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "適用計算を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "残り0.9を計算する。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "r=x−nの最初の具体計算。不要な±3単独穴へ再分割しない。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 31,
+      "nodeId": "n09-11",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "n=−3、r=0.9が本人回答済み。",
+      "derivationChain": "n+r=xと残りの範囲の検算。",
+      "currentLearnerActions": "結果の意味を読む。",
+      "missingLearnerActions": "なし。新計算を本人の手から奪う場所ではない。",
+      "proseAssessment": "元へ戻ることと範囲という二つの検査目的を明示。",
+      "answerAfterMeaning": "−2.1=−3+0.9において、−3を整数部分、0.9を小数部分といいます。小数部分は0以上1未満で、足すと元の数へ戻ります。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-11::row-01",
+          "n09-11::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q11-remainder::value:filled:131",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-08",
+        "requiredResultRefs": [
+          "n09-parts-target-result",
+          "n09-10-result",
+          "n09-q11-remainder-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "n=−3、r=0.9が本人回答済み。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "元へ戻ることと範囲という二つの検査目的を明示。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "結果の意味を読む。 なし。新計算を本人の手から奪う場所ではない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "n=−3、r=0.9が本人回答済み。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "n+r=xと残りの範囲の検算。 元へ戻ることと範囲という二つの検査目的を明示。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。新計算を本人の手から奪う場所ではない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "AUTO検算を保持。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "結果の意味を読む。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。新計算を本人の手から奪う場所ではない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    },
+    {
+      "ordinal": 32,
+      "nodeId": "n09-q12-lower",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "次の問題は±√10の整数/小数部分。非負数の平方比較法を既に使った。",
+      "derivationChain": "左候補3を平方して9を得る→√10の位置の材料。",
+      "currentLearnerActions": "式内へ9を入れる。",
+      "missingLearnerActions": "算術だけで弱いとは判定しない。左端を検査する方針への具体適用。",
+      "proseAssessment": "整数部分を求めるため根号を挟む、と目的がつながる。",
+      "answerAfterMeaning": "「左側の整数の平方」として 3^2=9 を確定しました。次の「右側の整数の平方」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q12-lower::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q11-remainder::value:filled:131",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-09",
+        "requiredResultRefs": [
+          "n09-11-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "次の問題は±√10の整数/小数部分。非負数の平方比較法を既に使った。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "整数部分を求めるため根号を挟む、と目的がつながる。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "式内へ9を入れる。 算術だけで弱いとは判定しない。左端を検査する方針への具体適用。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "次の問題は±√10の整数/小数部分。非負数の平方比較法を既に使った。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "左候補3を平方して9を得る→√10の位置の材料。 整数部分を求めるため根号を挟む、と目的がつながる。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "算術だけで弱いとは判定しない。左端を検査する方針への具体適用。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数字穴を役割込みで保持。各平方を機械的に再証明する設計へは増やさない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "式内へ9を入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "算術だけで弱いとは判定しない。左端を検査する方針への具体適用。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 33,
+      "nodeId": "n09-q12-upper",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "左3²=9、右候補4。以前4²=16も説明済みだが今の比較へ呼び戻す。",
+      "derivationChain": "4²=16→10を上から挟む材料。",
+      "currentLearnerActions": "16を現在の右端平方へ入れる。",
+      "missingLearnerActions": "既知結果の必要時のretrievalは許容される。新発見した計算とは数えない。",
+      "proseAssessment": "次は右側を調べる、と二つの平方の役割が区別される。",
+      "answerAfterMeaning": "「右側の整数の平方」として 4^2=16 を確定しました。次の「正の根号を隣接整数で挟む」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q12-upper::row-01"
+        ],
+        "firstPublicSnapshotId": "n09-q12-lower::value:filled:135",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-09",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-q12-lower-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "左3²=9、右候補4。以前4²=16も説明済みだが今の比較へ呼び戻す。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "次は右側を調べる、と二つの平方の役割が区別される。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "16を現在の右端平方へ入れる。 既知結果の必要時のretrievalは許容される。新発見した計算とは数えない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "左3²=9、右候補4。以前4²=16も説明済みだが今の比較へ呼び戻す。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "4²=16→10を上から挟む材料。 次は右側を調べる、と二つの平方の役割が区別される。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "既知結果の必要時のretrievalは許容される。新発見した計算とは数えない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "単なる同数字の再出現を理由に撤去しない。既認定結果を直接再利用する案も同目的を満たすなら検討可。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "16を現在の右端平方へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "既知結果の必要時のretrievalは許容される。新発見した計算とは数えない。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 34,
+      "nodeId": "n09-12",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "9<10<16と3/√10/4の非負性。",
+      "derivationChain": "平方値の挟み→元の数の挟み。",
+      "currentLearnerActions": "lower/upperの二つの<を式内に入れる。",
+      "missingLearnerActions": "なし。非負条件下の順序転送。",
+      "proseAssessment": "平方比較から元の区間へ戻ると理由を示す。",
+      "answerAfterMeaning": "「正の根号を隣接整数で挟む」として 3<\\sqrt{10}<4 を確定しました。次の「負を掛けたときの不等号」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-12::row-01",
+          "n09-12::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q12-upper::value:filled:139",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 8,
+        "stageId": "n09-stage-09",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-q12-upper-result",
+          "n09-q12-lower-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "9<10<16と3/√10/4の非負性。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "平方比較から元の区間へ戻ると理由を示す。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "lower/upperの二つの<を式内に入れる。 なし。非負条件下の順序転送。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "9<10<16と3/√10/4の非負性。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "平方値の挟み→元の数の挟み。 平方比較から元の区間へ戻ると理由を示す。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。非負条件下の順序転送。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "関係穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "lower/upperの二つの<を式内に入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。非負条件下の順序転送。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 35,
+      "nodeId": "n09-q13-reverse",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が確定した3<√10<4と負数倍の不等号法則。",
+      "derivationChain": "各辺を−1倍→−3>−√10>−4。",
+      "currentLearnerActions": "S1/S2の>を式内で作る。",
+      "missingLearnerActions": "なし。二つの辺を実際に移す。大小の法則自体を毎回再証明する必要はない。",
+      "proseAssessment": "同じ負数を掛けるため向きが変わると明示。",
+      "answerAfterMeaning": "「負を掛けたときの不等号」として -3>-\\sqrt{10}>-4 を確定しました。次の「小さい順に区間を書く」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q13-reverse::ux05-given-01",
+          "n09-q13-reverse::ux05-row-01",
+          "n09-q13-reverse::ux05-row-02"
+        ],
+        "firstPublicSnapshotId": "n09-12::upper:filled:147",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 8,
+        "stageId": "n09-stage-10",
+        "requiredResultRefs": [
+          "n09-12-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が確定した3<√10<4と負数倍の不等号法則。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "同じ負数を掛けるため向きが変わると明示。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "S1/S2の>を式内で作る。 なし。二つの辺を実際に移す。大小の法則自体を毎回再証明する必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が確定した3<√10<4と負数倍の不等号法則。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "各辺を−1倍→−3>−√10>−4。 同じ負数を掛けるため向きが変わると明示。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。二つの辺を実際に移す。大小の法則自体を毎回再証明する必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "符号穴を保持。全式choiceだけにまとめない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "S1/S2の>を式内で作る。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。二つの辺を実際に移す。大小の法則自体を毎回再証明する必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 36,
+      "nodeId": "n09-13",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "認定した−3>−√10>−4。",
+      "derivationChain": "同じ関係を小さい順へ読み替え→−4<−√10<−3。",
+      "currentLearnerActions": "left/rightへ−4/−3を入れる。",
+      "missingLearnerActions": "なし。関係を変える負数倍と、並べ替えは別操作。",
+      "proseAssessment": "順序を入れ替えても大小関係自体は変えないと説明。",
+      "answerAfterMeaning": "「小さい順に区間を書く」として -4<-\\sqrt{10}<-3 を確定しました。次の「正の根号の整数部分」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-13::row-01",
+          "n09-13::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q13-reverse::S2:filled:155",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 8,
+        "stageId": "n09-stage-10",
+        "requiredResultRefs": [
+          "n09-12-result",
+          "n09-q13-reverse-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "認定した−3>−√10>−4。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "順序を入れ替えても大小関係自体は変えないと説明。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "left/rightへ−4/−3を入れる。 なし。関係を変える負数倍と、並べ替えは別操作。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "認定した−3>−√10>−4。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "同じ関係を小さい順へ読み替え→−4<−√10<−3。 順序を入れ替えても大小関係自体は変えないと説明。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。関係を変える負数倍と、並べ替えは別操作。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数字/符号の配置穴を意味ある表現変換として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "left/rightへ−4/−3を入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。関係を変える負数倍と、並べ替えは別操作。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 37,
+      "nodeId": "n09-q14-positive-integer",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "3<√10<4、整数部分の区間定義。",
+      "derivationChain": "区間の左端→√10の整数部分3。",
+      "currentLearnerActions": "nの値3を式へ入れる。",
+      "missingLearnerActions": "なし。見える3の写しに見えても、整数部分の意味へ対応づける学習行為。",
+      "proseAssessment": "正の区間を定義と比べると判断理由がある。",
+      "answerAfterMeaning": "「正の根号の整数部分」として n=3\\quad(x=\\sqrt{10}) を確定しました。次の「正の根号の小数部分」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q14-positive-integer::row-01",
+          "n09-q14-positive-integer::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-13::right:filled:163",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-11",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "3<√10<4、整数部分の区間定義。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "正の区間を定義と比べると判断理由がある。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "nの値3を式へ入れる。 なし。見える3の写しに見えても、整数部分の意味へ対応づける学習行為。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "3<√10<4、整数部分の区間定義。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "区間の左端→√10の整数部分3。 正の区間を定義と比べると判断理由がある。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。見える3の写しに見えても、整数部分の意味へ対応づける学習行為。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数値穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "nの値3を式へ入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。見える3の写しに見えても、整数部分の意味へ対応づける学習行為。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 38,
+      "nodeId": "n09-q14-positive-remainder",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が確定した正の整数部分3とr=x−n。",
+      "derivationChain": "x=√10,n=3を同じ式へ代入→√10−3→0<r<1。",
+      "currentLearnerActions": "小数部分の式√10−3を構成。",
+      "missingLearnerActions": "なし。nの再入力を避け、定義を具体的根号へ使う。",
+      "proseAssessment": "共通leadは二数を扱うが、同stage前nodeと順序から正の対象が特定できる。単独表示した文だけでは対象が曖昧なので今後の修正で明示も検討。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「正の根号の小数部分」として r=\\sqrt{10}-3、0<\\sqrt{10}-3<1 を確定しました。次の「負の根号の整数部分」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q14-positive-remainder::ux05-given-01",
+          "n09-q14-positive-remainder::ux05-row-01",
+          "n09-q14-positive-remainder::ux05-row-02",
+          "n09-q14-positive-remainder::ux05-row-03"
+        ],
+        "firstPublicSnapshotId": "n09-q14-positive-integer::value:filled:167",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 5,
+        "stageId": "n09-stage-11",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-positive-integer-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が確定した正の整数部分3とr=x−n。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "共通leadは二数を扱うが、同stage前nodeと順序から正の対象が特定できる。単独表示した文だけでは対象が曖昧なので今後の修正で明示も検討。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "小数部分の式√10−3を構成。 なし。nの再入力を避け、定義を具体的根号へ使う。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が確定した正の整数部分3とr=x−n。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "x=√10,n=3を同じ式へ代入→√10−3→0<r<1。 共通leadは二数を扱うが、同stage前nodeと順序から正の対象が特定できる。単独表示した文だけでは対象が曖昧なので今後の修正で明示も検討。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。nの再入力を避け、定義を具体的根号へ使う。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "式構成を保持。全体public文脈を省略したレビューにしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "小数部分の式√10−3を構成。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。nの再入力を避け、定義を具体的根号へ使う。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 39,
+      "nodeId": "n09-q14-negative-integer",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "−4<−√10<−3、整数部分の定義。",
+      "derivationChain": "負数の区間の左端→n=−4。",
+      "currentLearnerActions": "値−4を入れる。",
+      "missingLearnerActions": "なし。正の整数部分へ負号を付けるだけではない新しい条件対応。",
+      "proseAssessment": "負の数でも定義が同じであると理由をつなぐ。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「負の根号の整数部分」として n=-4\\quad(x=-\\sqrt{10}) を確定しました。次の「負の根号でも同じ定義を使う」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q14-negative-integer::row-01",
+          "n09-q14-negative-integer::row-02"
+        ],
+        "firstPublicSnapshotId": "n09-q14-positive-remainder::remainderExpressionUX05:filled:172",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 4,
+        "stageId": "n09-stage-11",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-positive-remainder-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "−4<−√10<−3、整数部分の定義。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "負の数でも定義が同じであると理由をつなぐ。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "値−4を入れる。 なし。正の整数部分へ負号を付けるだけではない新しい条件対応。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "−4<−√10<−3、整数部分の定義。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "負数の区間の左端→n=−4。 負の数でも定義が同じであると理由をつなぐ。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。正の整数部分へ負号を付けるだけではない新しい条件対応。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "数字/符号穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "値−4を入れる。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。正の整数部分へ負号を付けるだけではない新しい条件対応。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 40,
+      "nodeId": "n09-q14-negative-remainder",
+      "verdict": "FAIL",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人のn=−4、対象−√10、r=x−n。",
+      "derivationChain": "−√10−(−4)→4−√10→範囲0<r<1。",
+      "currentLearnerActions": "小数部分の式4−√10を構成。",
+      "missingLearnerActions": "既習の負数減算を今回の定義へ適用する。単独+4/−4穴の再増殖は不要。",
+      "proseAssessment": "元の整数区間から残りの範囲へ確認するが、各辺へ4を加えるという接続文を補う余地がある。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。",
+      "answerAfterMeaning": "「負の根号でも同じ定義を使う」として r=4-\\sqrt{10}、0<4-\\sqrt{10}<1 を確定しました。次の「正負の組をまとめて検算する」では、この認定結果と条件を使います。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-q14-negative-remainder::ux05-given-01",
+          "n09-q14-negative-remainder::ux05-row-01",
+          "n09-q14-negative-remainder::ux05-row-02",
+          "n09-q14-negative-remainder::ux05-row-03",
+          "n09-q14-negative-remainder::ux05-row-04"
+        ],
+        "firstPublicSnapshotId": "n09-q14-negative-integer::value:filled:176",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 5,
+        "stageId": "n09-stage-11",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-negative-integer-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人のn=−4、対象−√10、r=x−n。"
+        },
+        "causalProse": {
+          "verdict": "UNVERIFIED",
+          "basis": "元の整数区間から残りの範囲へ確認するが、各辺へ4を加えるという接続文を補う余地がある。 同stage共通assumptionの再掲がある。必要な条件の想起か単なるテンプレート反復かを統合本文案で再評価し、各nodeのleadがあるだけで本文骨格完成とはしない。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "小数部分の式4−√10を構成。 既習の負数減算を今回の定義へ適用する。単独+4/−4穴の再増殖は不要。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人のn=−4、対象−√10、r=x−n。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "−√10−(−4)→4−√10→範囲0<r<1。 元の整数区間から残りの範囲へ確認するが、各辺へ4を加えるという接続文を補う余地がある。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "既習の負数減算を今回の定義へ適用する。単独+4/−4穴の再増殖は不要。"
+        },
+        "typographyAndUsability": {
+          "verdict": "FAIL",
+          "basis": "共通reading-choice-option>strong=.88remが全候補text/mathへ適用。実DOM320/1440で14.08px対本文/式18pxを再現。"
+        }
+      },
+      "correctionDirection": "式の構成を保護。必要な途中式/理由を見せることと穴数追加を分ける。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "小数部分の式4−√10を構成。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "既習の負数減算を今回の定義へ適用する。単独+4/−4穴の再増殖は不要。"
+      },
+      "resultCalculation": {
+        "verdict": "PASS",
+        "basis": "現在問われる値/関係/表現を作る操作の有無/有用性だけ。結果計算PASSと全導出PASSを区別。"
+      }
+    },
+    {
+      "ordinal": 41,
+      "nodeId": "n09-14",
+      "verdict": "UNVERIFIED",
+      "principleRefs": [
+        "MAIN_MASTER §§4-5 / mathSPEC §§3-4：連続した本文を骨格にする",
+        "MAIN_MASTER §§7-12,20,38,43,52,53",
+        "mathSPEC §§1-8,12",
+        "latest user:式内の文字/数字/符号穴を意味で判定、平方公式は平方意味→分配→四項→同類項"
+      ],
+      "availableGrounds": "本人が得た正負それぞれの整数部分と小数部分。",
+      "derivationChain": "二数=n+r、残りの範囲を対応して検算。",
+      "currentLearnerActions": "認定結果の対応/解釈を読む。",
+      "missingLearnerActions": "なし。四つの認定値を再回答させる必要はない。",
+      "proseAssessment": "元へ戻す和と残りの範囲を確認し例題が閉じる。",
+      "answerAfterMeaning": "正負のどちらにも同じ定義を使いました。次の単元でも、平方の値と非負性を組にして候補を確かめます。",
+      "terminalProseVisibility": "terminalRecord proseはreader本文へ自動表示されない。実visible lead/rowsだけを説明として数える。",
+      "evidenceRefs": {
+        "nodeNativeRows": [
+          "n09-14::row-01",
+          "n09-14::row-02",
+          "n09-14::row-03"
+        ],
+        "firstPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "resolvedPublicSnapshotId": "n09-q14-negative-remainder::remainderExpressionUX05:filled:181",
+        "ownStateCount": 0,
+        "stageId": "n09-stage-11",
+        "requiredResultRefs": [
+          "n09-11-result",
+          "n09-12-result",
+          "n09-13-result",
+          "n09-q14-negative-remainder-result",
+          "n09-q14-positive-integer-result",
+          "n09-q14-positive-remainder-result",
+          "n09-q14-negative-integer-result"
+        ],
+        "actualReaderContract": "ConstructionLessonReadingFlow.tsx:renderNode/current stage sourceQuestion/known certified refs + nestedLesson.ts projectNestedLesson gates",
+        "rawFontProbe": "/tmp/w046-ux05-full/user-ng-font-math-probe-b.json",
+        "newFullNodeScreenshotReview": false
+      },
+      "dimensions": {
+        "rootPurposeAndPrerequisites": {
+          "verdict": "PASS",
+          "basis": "本人が得た正負それぞれの整数部分と小数部分。"
+        },
+        "causalProse": {
+          "verdict": "PASS",
+          "basis": "元へ戻す和と残りの範囲を確認し例題が閉じる。"
+        },
+        "semanticDerivationSteps": {
+          "verdict": "PASS",
+          "basis": "下記node固有根拠を参照。"
+        },
+        "learnerConstructedLettersNumbersSymbols": {
+          "verdict": "PASS",
+          "basis": "認定結果の対応/解釈を読む。 なし。四つの認定値を再回答させる必要はない。"
+        },
+        "visibleGroundsBeforeEachAnswer": {
+          "verdict": "PASS",
+          "basis": "本人が得た正負それぞれの整数部分と小数部分。 firstPublicは全pageではない。actualreaderのstage header/既認定aside/同stage先行nodeを合わせて判定。"
+        },
+        "answerLeakageAndAlreadyCertifiedReuse": {
+          "verdict": "PASS",
+          "basis": "未回答値はgated rowへ。認定再掲/証明すべきstage目標を無条件の漏洩としない。"
+        },
+        "afterAnswerMeaningAndNextUse": {
+          "verdict": "PASS",
+          "basis": "二数=n+r、残りの範囲を対応して検算。 元へ戻す和と残りの範囲を確認し例題が閉じる。"
+        },
+        "initialApplicationVsMechanicalRepetition": {
+          "verdict": "PASS",
+          "basis": "なし。四つの認定値を再回答させる必要はない。"
+        },
+        "typographyAndUsability": {
+          "verdict": "UNVERIFIED",
+          "basis": "このAUTO単体の全幅最新画像を今回新たに実見していない。choice font欠陥をこのnode自身へ架空適用しない。"
+        }
+      },
+      "correctionDirection": "AUTOまとめを保持。",
+      "scopeNote": "局所pedagogy PASSは9次元全部/全幅実画像PASSではない。verdictは共通表示FAIL/未確認も含む。",
+      "interactionMethodBoundary": "自由入力engineは要求しない。選択した文字/数字/符号/式が意味ある式内穴へ反映される既存操作も有効。",
+      "localActionUtilityVerdict": "PASS",
+      "localActionUtilityBoundary": "この欄は現在ある計算/判断自体の価値だけ。本人の途中式構成要求、導出網羅、本文、表示、全連鎖の適合を意味しない。",
+      "userGoalCompliance": {
+        "verdict": "PASS",
+        "scope": "このnodeの学習役割に対する局所判定。先行nodeの未解決を自動解消しない。",
+        "basis": "認定結果の対応/解釈を読む。"
+      },
+      "derivationCoverage": {
+        "verdict": "PASS",
+        "basis": "なし。四つの認定値を再回答させる必要はない。"
+      },
+      "resultCalculation": {
+        "verdict": "UNVERIFIED",
+        "basis": "このnodeは結果の計算を本人へ問う場所ではない。AUTOの説明/再利用という役割を別判定し、適用外を架空PASSにしない。"
+      }
+    }
+  ],
+  "openItems": [
+    "n09-decimal-method：公式導出の本人操作欠落（確定FAIL）",
+    "n09-q01-negative：有意味なtext操作判断はあるが、二因子の実式構成がこの場面で必要かUNVERIFIED（textだから不適合と一律判断しない）",
+    "n09-q02-negative-square/n09-02：同一assumption反復（連続本文FAIL）",
+    "n09-parts-target：定義から区間条件への根拠接続UNVERIFIED",
+    "全30interactive node：共通choice font14.08対本文/式18（確定表示FAIL）",
+    "AUTO10箇所等：全幅最新実画像を本再監査で全件実見したと主張しない",
+    "root反証受領：q02-negative-squareの結果計算PASSを途中式構成の十分性に拡張した表現を撤回。本人NGに対するuserGoal/derivationはFAIL。",
+    "q04-negative：候補−aを選ぶ価値と、一般形の正性/平方/同定の根拠を本人が組む要件を分離。後者は現状FAIL。"
+  ]
+}

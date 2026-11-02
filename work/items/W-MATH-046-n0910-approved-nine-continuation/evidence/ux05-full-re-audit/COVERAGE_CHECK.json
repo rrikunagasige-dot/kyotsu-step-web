@@ -1,0 +1,29 @@
+{
+  "status": "COMPLETE_INPUT_COVERAGE_ONLY",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "checks": [
+    {
+      "unit": "n09",
+      "expected": 41,
+      "observed": 41,
+      "exactNodeOrderAndIds": true,
+      "allRequiredFieldsPresent": true,
+      "compiledHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33"
+    },
+    {
+      "unit": "n10",
+      "expected": 45,
+      "observed": 45,
+      "exactNodeOrderAndIds": true,
+      "allRequiredFieldsPresent": true,
+      "compiledHash": "6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c"
+    }
+  ],
+  "nodes": 86,
+  "auto": 17,
+  "interactiveNodes": 69,
+  "parts": 103,
+  "semanticPassInferred": false,
+  "productChanged": false,
+  "formalStoreReceipt": false
+}

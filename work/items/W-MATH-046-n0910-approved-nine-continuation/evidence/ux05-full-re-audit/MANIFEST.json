@@ -1,0 +1,24 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "mainPublisher": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "canonicalMainAuthorities": {
+    "MAIN_MASTER.md": "03fef64877de2cbb536391a72a0c95e46e1952ff2dda7d0ef74553637ada458a",
+    "MAIN_WORK_SYSTEM.md": "dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346"
+  },
+  "artifacts": {
+    "ROOT_REVIEW.md": "648f50633ee9bf42fe3650683f8d027a57e4a8607876dda670dea9e17e212bcf",
+    "AUDIT_86.md": "1abd16b81aa4ee0c0c7919b5595d8a2aabe898bb9bfcccd3c055025837890206",
+    "ALL_86.json": "27e5694fec7589a68d15d4edeb5db31487b3e9214681c5d152649cefeb8b2a5f",
+    "COVERAGE_CHECK.json": "f0b07a70c11c7301bd9b1ab1a16e4c72c02e1cad24eb768d49ccbeeb19e15384",
+    "CODE_INVENTORY.json": "7b450b1d33e1c474227469f66e8aa185c5478e5385cc747d1efcac2c05866261",
+    "CRITERIA.json": "107aa76d90fe25dcc9962b5d1e3732efccfb772e081ca7f304f859981e3e8c4e",
+    "n09-audit-b.json": "98676b1a7fb1b8b746531134d4072e75fe7b098d72de0289ef06358e3286ef17",
+    "n10-audit-a.json": "b7f12fbbcdee0fe970192eaf3030dcd69d586627980a4c0b0fb2cad854534543",
+    "n10-audit-a.md": "cd935d89670a63d9850b6ecb1c38aff27ca4701d887ce050b7d2e6985bea5c04",
+    "n10-public-evidence-a.json": "23177a1d61e79c5657d76acd0bffb977b0f51cb7e9785d4df3e41ef903ada654",
+    "workflow-monitor-b.md": "f49b34fcb5902f6e463ad32bff85ca04cd679220d78fce28c26e059a55f5e9d4",
+    "n09-input.json.gz": "c0ff2e018fdbc070de5b7b5b2b480036cff1d2fbb691dae1a379bc83a7f849d7",
+    "n10-input.json.gz": "f3293d94c51910624e6a389d2dcdf906e0f5f104076992c80a1928ec39025121",
+    "assemble.py": "3a37c49ceaedf1c67f2e2c139e3ee0d13d884b0c30efbb25a63a6a9fef006ff2"
+  }
+}

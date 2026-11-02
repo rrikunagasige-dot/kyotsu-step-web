@@ -1,0 +1,1720 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "scope": "All 86 frozen N09/N10 node designs, including previous KEEP/AUTO. Node-local learning utility is not whole-lesson/visual acceptance.",
+  "overall": "NEEDS-FIX",
+  "rows": [
+    {
+      "unit": "n09",
+      "nodeId": "n09-q01-positive",
+      "stageId": "n09-stage-01",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 1,
+      "correctionDirection": "手本と全解探索の区別を保持。AUTOだから穴を増やさない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q01-negative",
+      "stageId": "n09-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n09-q01-negative::powerAction",
+        "n09-q01-negative::value"
+      ],
+      "requiredResultRefs": [
+        "n09-q01-positive-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 2,
+      "correctionDirection": "既存textの意味判断と式内value穴を一律廃止しない。二因子構成が必要なら既存選択→式内反映で補えるが、新しい自由入力engineや全符号穴化を要件化しない。最新要求に対する粒度が未確認のため、過去承認済みを理由にPASSともtext enumだからFAILとも決めない。共通choice fontは確定FAIL。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-01",
+      "stageId": "n09-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n09-01::factorisedFormUX05",
+        "n09-01::factorZeroConditionUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-q01-negative-result",
+        "n09-q01-positive-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 3,
+      "correctionDirection": "数学上の二判断は保持。文字数でfactor/OR判断を評価せず、表示/MathLinesの型を確認する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-definition",
+      "stageId": "n09-stage-02",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-01-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 4,
+      "correctionDirection": "概念本文を保持。数学の定義を穴数目当てに増やさない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q02-root",
+      "stageId": "n09-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n09-q02-root::value"
+      ],
+      "requiredResultRefs": [
+        "n09-definition-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 5,
+      "correctionDirection": "数字穴を保持。単なる4のコピーと一律判定しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q02-negative-square",
+      "stageId": "n09-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n09-q02-negative-square::signedRootSquareUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-q02-root-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "FAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 6,
+      "correctionDirection": "現在の5という計算判断の価値は保持しつつ、穴なし解法のどの中間構成を本人が担うかを本人要求と照合する。負号・根号・指数の作用対象を式内へ作る案を具体化する。前q01の未確認を「転用済み」で消さない。assumption反復と共通fontも別の修正対象。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-02",
+      "stageId": "n09-stage-02",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-q02-negative-square-result",
+        "n09-q02-root-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "FAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 7,
+      "correctionDirection": "正当な結果再利用としてAUTO保持。 共通条件は必要な位置へまとめ、正答を受けて今どの操作へ移るかを本文でつなぐ。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-boundary",
+      "stageId": "n09-stage-02",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 8,
+      "correctionDirection": "境界説明を保持。今後別範囲の複素数を混入しない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q03-inside",
+      "stageId": "n09-stage-03",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-boundary-result",
+        "n09-q01-negative-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 9,
+      "correctionDirection": "AUTO維持。以前の答えを別の問いとして再採点しない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-03",
+      "stageId": "n09-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n09-03::value"
+      ],
+      "requiredResultRefs": [
+        "n09-q03-inside-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 10,
+      "correctionDirection": "意味の異なる結果穴として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q04-nonnegative",
+      "stageId": "n09-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n09-q04-nonnegative::value"
+      ],
+      "requiredResultRefs": [
+        "n09-03-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 11,
+      "correctionDirection": "文字穴を保持。数字例だけの写しへ落とさない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q04-negative",
+      "stageId": "n09-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n09-q04-negative::value"
+      ],
+      "requiredResultRefs": [
+        "n09-q04-nonnegative-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 12,
+      "correctionDirection": "最初の一般形を定着させる場面として、正性/平方/同定のうちどの重要な関係を式内穴にするかを具体設計する。良い√a√bの証明段階を参照し、毎例で全符号再証明へ展開しない。必要な文字/符号穴を維持し、最終式一択に押し込まない。共通fontもFAIL。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-04",
+      "stageId": "n09-stage-04",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-q04-negative-result",
+        "n09-q04-nonnegative-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 13,
+      "correctionDirection": "AUTOの条件付き結果整理を保持。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-05",
+      "stageId": "n09-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n09-05::value"
+      ],
+      "requiredResultRefs": [
+        "n09-04-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 14,
+      "correctionDirection": "記号穴を保持。名称暗記のみと誤認しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q06-squares",
+      "stageId": "n09-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n09-q06-squares::value"
+      ],
+      "requiredResultRefs": [
+        "n09-05-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 15,
+      "correctionDirection": "算術の価値は比較法への必要性で保持。将来削減はこの役割を保って判断する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q06-order",
+      "stageId": "n09-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n09-q06-order::relation"
+      ],
+      "requiredResultRefs": [
+        "n09-05-result",
+        "n09-q06-squares-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 16,
+      "correctionDirection": "関係記号一文字を意味ある式構成として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-06",
+      "stageId": "n09-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n09-06::differenceRelationUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-05-result",
+        "n09-q06-order-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 17,
+      "correctionDirection": "符号判断を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q07-negation",
+      "stageId": "n09-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n09-q07-negation::absoluteExpressionUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-05-result",
+        "n09-06-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 18,
+      "correctionDirection": "段階の役割を保持。uの代入に相当する文字/符号穴も選択肢にし得るが勝手に置換しない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-07",
+      "stageId": "n09-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n09-07::expandedExpressionUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-05-result",
+        "n09-q07-negation-result",
+        "n09-06-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 19,
+      "correctionDirection": "具体変形の判断を保持。正答後の中間式を省かない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-decimal-method",
+      "stageId": "n09-stage-06",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-07-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "FAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 20,
+      "correctionDirection": "本人指定の平方意味→分配→四項→同類項を式内の意味ある穴で設計する。A/B/符号/係数穴を許容し、全部を一つの完成公式choiceに置換しない。140²等の既知算術を全て穴へする必要はない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-left-square",
+      "stageId": "n09-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n09-p001-q08-left-square::middleTermUX05",
+        "n09-p001-q08-left-square::L1",
+        "n09-p001-q08-left-square::L2",
+        "n09-p001-q08-left-square::L3"
+      ],
+      "requiredResultRefs": [
+        "n09-decimal-method-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 21,
+      "correctionDirection": "局所4part/具体計算を保護。前の公式導出が満たされるまで連鎖全体の適合完了としない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-right-square",
+      "stageId": "n09-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n09-p001-q08-right-square::middleTermUX05",
+        "n09-p001-q08-right-square::R1",
+        "n09-p001-q08-right-square::R2",
+        "n09-p001-q08-right-square::R3"
+      ],
+      "requiredResultRefs": [
+        "n09-p001-q08-left-square-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 22,
+      "correctionDirection": "必要計算をKEEP。既知の2²=4等を後で再入力させず、この上端が必要な理由を接続。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-lower-sign",
+      "stageId": "n09-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n09-p001-q08-lower-sign::C"
+      ],
+      "requiredResultRefs": [
+        "n09-p001-q08-right-square-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 23,
+      "correctionDirection": "不等号穴を保護。stageの完成目標は証明すべき命題として区別し、数値計算を飛ばす口実にしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-p001-q08-upper-sign",
+      "stageId": "n09-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n09-p001-q08-upper-sign::D"
+      ],
+      "requiredResultRefs": [
+        "n09-p001-q08-lower-sign-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 24,
+      "correctionDirection": "不等号穴を保護。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-08",
+      "stageId": "n09-stage-06",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-p001-q08-upper-sign-result",
+        "n09-p001-q08-left-square-result",
+        "n09-p001-q08-right-square-result",
+        "n09-p001-q08-lower-sign-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 25,
+      "correctionDirection": "AUTO保持。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-09",
+      "stageId": "n09-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n09-09::lowerRelation",
+        "n09-09::upperRelation"
+      ],
+      "requiredResultRefs": [
+        "n09-08-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 26,
+      "correctionDirection": "一文字の関係穴を維持。正性条件と使用理由を表示し続ける。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-parts-target",
+      "stageId": "n09-stage-07",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-09-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 27,
+      "correctionDirection": "定義そのものと導いた検査条件を区別し、本文で0≤x−n<1→n≤x<n+1をつなぐ。意味ある区間構成を本人へ任せる要否を個別に決める。全AUTOも全穴化も先に決めない。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q10-reject-truncation",
+      "stageId": "n09-stage-07",
+      "automatic": false,
+      "partIds": [
+        "n09-q10-reject-truncation::value",
+        "n09-q10-reject-truncation::candidateValidityUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-parts-target-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 28,
+      "correctionDirection": "計算/条件判断を維持。負の整数だから棄却という誤概念を区別する。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-10",
+      "stageId": "n09-stage-07",
+      "automatic": false,
+      "partIds": [
+        "n09-10::n"
+      ],
+      "requiredResultRefs": [
+        "n09-q10-reject-truncation-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 29,
+      "correctionDirection": "数字穴を維持。上流の区間条件の説明を補うまで全鎖合格とはしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q11-remainder",
+      "stageId": "n09-stage-08",
+      "automatic": false,
+      "partIds": [
+        "n09-q11-remainder::value"
+      ],
+      "requiredResultRefs": [
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 30,
+      "correctionDirection": "適用計算を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-11",
+      "stageId": "n09-stage-08",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-parts-target-result",
+        "n09-10-result",
+        "n09-q11-remainder-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 31,
+      "correctionDirection": "AUTO検算を保持。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q12-lower",
+      "stageId": "n09-stage-09",
+      "automatic": false,
+      "partIds": [
+        "n09-q12-lower::value"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 32,
+      "correctionDirection": "数字穴を役割込みで保持。各平方を機械的に再証明する設計へは増やさない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q12-upper",
+      "stageId": "n09-stage-09",
+      "automatic": false,
+      "partIds": [
+        "n09-q12-upper::value"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-q12-lower-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 33,
+      "correctionDirection": "単なる同数字の再出現を理由に撤去しない。既認定結果を直接再利用する案も同目的を満たすなら検討可。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-12",
+      "stageId": "n09-stage-09",
+      "automatic": false,
+      "partIds": [
+        "n09-12::lower",
+        "n09-12::upper"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-q12-upper-result",
+        "n09-q12-lower-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 34,
+      "correctionDirection": "関係穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q13-reverse",
+      "stageId": "n09-stage-10",
+      "automatic": false,
+      "partIds": [
+        "n09-q13-reverse::S1",
+        "n09-q13-reverse::S2"
+      ],
+      "requiredResultRefs": [
+        "n09-12-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 35,
+      "correctionDirection": "符号穴を保持。全式choiceだけにまとめない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-13",
+      "stageId": "n09-stage-10",
+      "automatic": false,
+      "partIds": [
+        "n09-13::left",
+        "n09-13::right"
+      ],
+      "requiredResultRefs": [
+        "n09-12-result",
+        "n09-q13-reverse-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 36,
+      "correctionDirection": "数字/符号の配置穴を意味ある表現変換として保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-positive-integer",
+      "stageId": "n09-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n09-q14-positive-integer::value"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 37,
+      "correctionDirection": "数値穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-positive-remainder",
+      "stageId": "n09-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n09-q14-positive-remainder::remainderExpressionUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-positive-integer-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 38,
+      "correctionDirection": "式構成を保持。全体public文脈を省略したレビューにしない。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-negative-integer",
+      "stageId": "n09-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n09-q14-negative-integer::value"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-positive-remainder-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 39,
+      "correctionDirection": "数字/符号穴を保持。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-q14-negative-remainder",
+      "stageId": "n09-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n09-q14-negative-remainder::remainderExpressionUX05"
+      ],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-negative-integer-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "UNVERIFIED",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 40,
+      "correctionDirection": "式の構成を保護。必要な途中式/理由を見せることと穴数追加を分ける。 共通choice文字サイズ欠陥も修正対象だが現段階はread-only。"
+    },
+    {
+      "unit": "n09",
+      "nodeId": "n09-14",
+      "stageId": "n09-stage-11",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result",
+        "n09-q14-negative-remainder-result",
+        "n09-q14-positive-integer-result",
+        "n09-q14-positive-remainder-result",
+        "n09-q14-negative-integer-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "PASS",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "b",
+      "detailFile": "n09-audit-b.json",
+      "detailOrdinal": 41,
+      "correctionDirection": "AUTOまとめを保持。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q01-square",
+      "stageId": "n10-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n10-q01-square::rootSquare"
+      ],
+      "requiredResultRefs": [],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 1,
+      "correctionDirection": "積の証明と同様、同じ底の積から指数・因子を生徒が埋めて具体平方を作る。5の計算穴は意味を確認して残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-01",
+      "stageId": "n10-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n10-01::value"
+      ],
+      "requiredResultRefs": [
+        "n10-q01-square-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 2,
+      "correctionDirection": "125÷5の具体適用と係数を除く理由の本文を保持。÷5という新穴の追加を義務にしない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q02-sign",
+      "stageId": "n10-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n10-q02-sign::value"
+      ],
+      "requiredResultRefs": [
+        "n10-01-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 3,
+      "correctionDirection": "t>0を条件として残し、5という一文字の数値穴を浅いと消さない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-02",
+      "stageId": "n10-stage-01",
+      "automatic": false,
+      "partIds": [
+        "n10-02::candidateSign",
+        "n10-02::squareValue",
+        "n10-02::identificationReason"
+      ],
+      "requiredResultRefs": [
+        "n10-q02-sign-result",
+        "n10-01-result",
+        "n10-q01-square-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 4,
+      "correctionDirection": "正性→平方値→同定理由の順とゲートを保護する。値125だけで平方根を同定しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q03-expand",
+      "stageId": "n10-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n10-q03-expand::powerA",
+        "n10-q03-expand::powerB"
+      ],
+      "requiredResultRefs": [
+        "n10-02-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 5,
+      "correctionDirection": "褒められた積・商証明の保護対象。2だから単純と廃止せず、平方の構成を他の導出の基準にする。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-03",
+      "stageId": "n10-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n10-03::aValue",
+        "n10-03::bValue"
+      ],
+      "requiredResultRefs": [
+        "n10-q03-expand-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 6,
+      "correctionDirection": "保護。a/b等の一文字をwhole-result選択へ統合しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q04-sign",
+      "stageId": "n10-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n10-q04-sign::relation"
+      ],
+      "requiredResultRefs": [
+        "n10-03-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 7,
+      "correctionDirection": "保護。正の条件を残し、負も平方値は同じという後続理由と結ぶ。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-04",
+      "stageId": "n10-stage-02",
+      "automatic": false,
+      "partIds": [
+        "n10-04::rootReason"
+      ],
+      "requiredResultRefs": [
+        "n10-q04-sign-result",
+        "n10-03-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 8,
+      "correctionDirection": "保護。理由だけを残して前段の式穴を削除しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q05-denominator",
+      "stageId": "n10-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n10-q05-denominator::relation"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 9,
+      "correctionDirection": "保護。非零条件を証明後の注釈に追いやらない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q05-square",
+      "stageId": "n10-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n10-q05-square::numPower",
+        "n10-q05-square::denPower"
+      ],
+      "requiredResultRefs": [
+        "n10-q05-denominator-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 10,
+      "correctionDirection": "保護。分子・分母の指数穴を残し、完成式丸当てにしない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-05",
+      "stageId": "n10-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n10-05::numerator",
+        "n10-05::denominator"
+      ],
+      "requiredResultRefs": [
+        "n10-q05-square-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 11,
+      "correctionDirection": "保護。異なる認知操作として指数構成と平方根定義の適用を残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q06-sign",
+      "stageId": "n10-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n10-q06-sign::relation"
+      ],
+      "requiredResultRefs": [
+        "n10-05-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 12,
+      "correctionDirection": "保護。商の存在と正性を混同しない本文の順を残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-06",
+      "stageId": "n10-stage-03",
+      "automatic": false,
+      "partIds": [
+        "n10-06::quotientReason"
+      ],
+      "requiredResultRefs": [
+        "n10-q06-sign-result",
+        "n10-05-result",
+        "n10-q05-denominator-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 13,
+      "correctionDirection": "保護。理由選択だけを一般化し、前の式導出をAUTOへ移さない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q07-product",
+      "stageId": "n10-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n10-q07-product::insideOperation",
+        "n10-q07-product::inside"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-06-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 14,
+      "correctionDirection": "×→48の解放順を保護。根号の和と積を取り違える誤答に意味がある。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-07",
+      "stageId": "n10-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n10-07::squareFactor",
+        "n10-07::factor"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q07-product-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 15,
+      "correctionDirection": "平方因子と残りを式内で作る活動を保持し、4という係数の先出しをしない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q08-factor",
+      "stageId": "n10-stage-04",
+      "automatic": false,
+      "partIds": [
+        "n10-q08-factor::coefficient"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-07-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 16,
+      "correctionDirection": "前07の因子認定からの接続と係数4の式穴を保護。根号の分割を毎回独立穴にするノルマへ戻さない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-08",
+      "stageId": "n10-stage-04",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q08-factor-result",
+        "n10-q07-product-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 17,
+      "correctionDirection": "AUTOの元式復帰と、前提で認定した因子・係数への拘束を維持する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q09-left",
+      "stageId": "n10-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n10-q09-left::squareFactor",
+        "n10-q09-left::coefficient"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-08-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 18,
+      "correctionDirection": "平方因子と係数の式穴を残し、初回手順を直す場合もこの転用を値の丸当てへ縮めない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q09-right",
+      "stageId": "n10-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n10-q09-right::squareFactor",
+        "n10-q09-right::coefficient"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q09-left-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 19,
+      "correctionDirection": "同型の転用として保護。左右どちらを計算中か本文で明示し続ける。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-09",
+      "stageId": "n10-stage-05",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q09-right-result",
+        "n10-q09-left-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 20,
+      "correctionDirection": "元の＋と順序を保持し、未回答の合計7を出さない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q10-coefficients",
+      "stageId": "n10-stage-05",
+      "automatic": false,
+      "partIds": [
+        "n10-q10-coefficients::collectedExpressionUX05",
+        "n10-q10-coefficients::coefficient"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-09-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 21,
+      "correctionDirection": "共通根号を保持する構成を残す。今後の具体案では係数・演算記号を式内で埋める表現も比較できるが、文字数だけで全式選択の採否を決めない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-10",
+      "stageId": "n10-stage-05",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q10-coefficients-result",
+        "n10-09-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 22,
+      "correctionDirection": "認定結果の復帰として保護。合計7を同じ意味で再び穴にしない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q11-formula",
+      "stageId": "n10-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n10-q11-formula::signedMiddleTermUX05"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-10-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 23,
+      "correctionDirection": "既習の実根拠を照合。導出が対象なら二乗→同じ差の積→分配→四項→同類項を文章でつなぎ式内に判断を置く。中項の具体適用は残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-11",
+      "stageId": "n10-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n10-11::leftSquare",
+        "n10-11::rightSquare"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q11-formula-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 24,
+      "correctionDirection": "端の数値穴を機械的に消さず、確定した中項と異なる今回の定義適用として残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q12-product",
+      "stageId": "n10-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n10-q12-product::inside"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-11-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 25,
+      "correctionDirection": "−2を式全体で保持する本文と部分計算の戻し先を残す。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-12",
+      "stageId": "n10-stage-06",
+      "automatic": false,
+      "partIds": [
+        "n10-12::constant"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q12-product-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 26,
+      "correctionDirection": "普通の数と根号項の役割を見せる。5だけをKPIとして増減せず、前の式との対応を維持。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q13-identity",
+      "stageId": "n10-stage-07",
+      "automatic": false,
+      "partIds": [
+        "n10-q13-identity::cancellingPairUX05"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-12-result"
+      ],
+      "localLearningAssessment": "UNVERIFIED",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 27,
+      "correctionDirection": "N04q8の既習/参照と今回の学習目標を照合。既習ならpair＋端平方の分散操作を許容し、公式を再証明する穴を機械的に増やさない。必要な未既習部分のみ具体案へ。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-13",
+      "stageId": "n10-stage-07",
+      "automatic": false,
+      "partIds": [
+        "n10-13::left",
+        "n10-13::right",
+        "n10-13::difference"
+      ],
+      "requiredResultRefs": [
+        "n10-04-result",
+        "n10-q13-identity-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 28,
+      "correctionDirection": "平方値と差の式穴を保護し、相殺後の結果を単なる完成5の選択へ統合しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-14",
+      "stageId": "n10-stage-08",
+      "automatic": false,
+      "partIds": [
+        "n10-14::operation"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 29,
+      "correctionDirection": "値保存の根拠の導入として保護し、後続の分子分母を本人が構成する一手につなぐ。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q15-factor",
+      "stageId": "n10-stage-08",
+      "automatic": false,
+      "partIds": [
+        "n10-q15-factor::factor"
+      ],
+      "requiredResultRefs": [
+        "n10-14-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 30,
+      "correctionDirection": "因子を式内へ置く活動を保持。初期publicの目的説明と正答後terminalの条件記録を混同せず、逆符号の有効な別解と指定c>0を区別する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-15",
+      "stageId": "n10-stage-08",
+      "automatic": false,
+      "partIds": [
+        "n10-15::numerator"
+      ],
+      "requiredResultRefs": [
+        "n10-q15-factor-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 31,
+      "correctionDirection": "分子・分母の掛ける因子や対象範囲を式内で作る。1倍という易しい結果だけに活動を集中させない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q16-denominator",
+      "stageId": "n10-stage-08",
+      "automatic": false,
+      "partIds": [
+        "n10-q16-denominator::square",
+        "n10-q16-denominator::denominator"
+      ],
+      "requiredResultRefs": [
+        "n10-15-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 32,
+      "correctionDirection": "3と6の対象を混同しない二段の式を保護。単純数字という理由で同じ穴にまとめない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-16",
+      "stageId": "n10-stage-08",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-q16-denominator-result",
+        "n10-15-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 33,
+      "correctionDirection": "元式復帰と非零条件を記録し、認定値の写し穴を追加しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q17-factor",
+      "stageId": "n10-stage-09",
+      "automatic": false,
+      "partIds": [
+        "n10-q17-factor::factor"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-16-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 34,
+      "correctionDirection": "式内の因子構成を保護。問いがA−B順を指定することと、逆符号の別解が不可能だという主張を区別する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q17-nonzero",
+      "stageId": "n10-stage-09",
+      "automatic": false,
+      "partIds": [
+        "n10-q17-nonzero::relation"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-q17-factor-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 35,
+      "correctionDirection": ">の式穴と差が非零という帰結を保護。根号の大小の既習根拠は必要に応じて参照できるようにする。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-17",
+      "stageId": "n10-stage-09",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-q17-nonzero-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 36,
+      "correctionDirection": "一般操作の理解とは別に、選んだ因子を分数全体のどこへ置くかを式内で構成。既認定の因子そのものの写し穴を増やすだけにしない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-18",
+      "stageId": "n10-stage-10",
+      "automatic": false,
+      "partIds": [
+        "n10-18::A",
+        "n10-18::B",
+        "n10-18::C"
+      ],
+      "requiredResultRefs": [
+        "n10-17-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 37,
+      "correctionDirection": "分母全体の主語を保ち、平方値→差の順を維持する。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q19-distribute",
+      "stageId": "n10-stage-10",
+      "automatic": false,
+      "partIds": [
+        "n10-q19-distribute::distributedNumeratorUX05"
+      ],
+      "requiredResultRefs": [
+        "n10-17-result",
+        "n10-18-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 38,
+      "correctionDirection": "分配された各因子・符号の意味を保持。最新指示に沿う個別の因子/符号穴の配置も具体案で比較可能だが、選択肢長だけで不適合としない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-19",
+      "stageId": "n10-stage-10",
+      "automatic": false,
+      "partIds": [
+        "n10-19::inside"
+      ],
+      "requiredResultRefs": [
+        "n10-17-result",
+        "n10-q19-distribute-result",
+        "n10-18-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 39,
+      "correctionDirection": "同名の数値一致でなく18のresult参照を保ち、確定した分子を元式へ戻す連続性を維持。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q20-factor",
+      "stageId": "n10-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n10-q20-factor::factor",
+        "n10-q20-factor::positiveComparisonLeftSquareUX05",
+        "n10-q20-factor::positiveComparisonRootSquareUX05",
+        "n10-q20-factor::factorSign",
+        "n10-q20-factor::reason"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-19-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 40,
+      "correctionDirection": "因子→平方比較→符号→理由の順とゲートを保護。正の因子という手順条件と逆符号別解の数学的有効性を区別。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-20",
+      "stageId": "n10-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n10-20::rationalisedFractionUX05"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-q20-factor-result"
+      ],
+      "localLearningAssessment": "FAIL",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 41,
+      "correctionDirection": "同じ分数の連続導出内で、分子の平方構成・分母の平方差構成を各式内の因子/指数/符号として分離。4/3は既認定なので再計算させない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-denominator",
+      "stageId": "n10-stage-11",
+      "automatic": false,
+      "partIds": [
+        "n10-q21-denominator::D"
+      ],
+      "requiredResultRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-20-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 42,
+      "correctionDirection": "差の数値穴を保持し、分子計算と混ぜない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-expand",
+      "stageId": "n10-stage-12",
+      "automatic": false,
+      "partIds": [
+        "n10-q21-expand::signedMiddleTermUX05"
+      ],
+      "requiredResultRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result",
+        "n10-q20-factor-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 43,
+      "correctionDirection": "中項の符号・係数・根号の構成を残し、4/3を写し穴に戻さない。一般公式の導出根拠の確認は別に必須。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-q21-constants",
+      "stageId": "n10-stage-12",
+      "automatic": false,
+      "partIds": [
+        "n10-q21-constants::C"
+      ],
+      "requiredResultRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result",
+        "n10-q21-expand-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "FAIL_SHARED_COMPONENT",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 44,
+      "correctionDirection": "どの項を保存してどれを合計するかを本文で保持。7だけを問うことを全nodeへ一般化しない。"
+    },
+    {
+      "unit": "n10",
+      "nodeId": "n10-21",
+      "stageId": "n10-stage-12",
+      "automatic": true,
+      "partIds": [],
+      "requiredResultRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result",
+        "n10-q21-constants-result",
+        "n10-q21-expand-result"
+      ],
+      "localLearningAssessment": "PASS",
+      "proseAssessmentStatus": "SEE_DETAIL",
+      "choiceTypography": "NO_OWN_CHOICES_NOT_NEWLY_VISUALLY_ACCEPTED",
+      "reviewer": "a",
+      "detailFile": "n10-audit-a.json",
+      "detailOrdinal": 45,
+      "correctionDirection": "元式との同値と非零条件を保持し、最終式の写し穴を増やさない。"
+    }
+  ]
+}

@@ -16,6 +16,10 @@ UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-propo
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
+## 最新照合（2026-11-03 JST）
+
+R03：全86設計の個別記録・主担当の反証・A/B訂正を保存。[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)。現在もNEEDS-FIX。次はR04で本文と導出内の文字/数字/符号穴まで示す具体案。過去の承認を新しい設計変更の承認に流用せず、実装・公開は未着手。正式Storeのnext認定ではない。
+
 ## 本適用の版と保存
 
 本人確認済みN09r7 pilotは固定保存し、本適用はN09r8（from7）/N10r5（from4）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。

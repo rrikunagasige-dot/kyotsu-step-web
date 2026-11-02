@@ -1,0 +1,697 @@
+{
+  "operation": "workflow.impact.inventory",
+  "status": "NEEDS_AI_REVIEW",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "rows": [
+    {
+      "block_id": "n09-q01-positive",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q01-positive",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q01-negative",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q01-negative",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-01",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-01",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-definition",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-definition",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q02-root",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q02-root",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q02-negative-square",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q02-negative-square",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-02",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-02",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-boundary",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-boundary",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q03-inside",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q03-inside",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-03",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-03",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q04-nonnegative",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q04-nonnegative",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q04-negative",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q04-negative",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-04",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-04",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-05",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-05",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q06-squares",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q06-squares",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q06-order",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q06-order",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-06",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-06",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q07-negation",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q07-negation",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-07",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-07",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-decimal-method",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-decimal-method",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-p001-q08-left-square",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-p001-q08-left-square",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-p001-q08-right-square",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-p001-q08-right-square",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-p001-q08-lower-sign",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-p001-q08-lower-sign",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-p001-q08-upper-sign",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-p001-q08-upper-sign",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-08",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-08",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-09",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-09",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-parts-target",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-parts-target",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q10-reject-truncation",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q10-reject-truncation",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-10",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-10",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q11-remainder",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q11-remainder",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-11",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-11",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q12-lower",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q12-lower",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q12-upper",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q12-upper",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-12",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-12",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q13-reverse",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q13-reverse",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-13",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-13",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q14-positive-integer",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q14-positive-integer",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q14-positive-remainder",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q14-positive-remainder",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q14-negative-integer",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q14-negative-integer",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-q14-negative-remainder",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-q14-negative-remainder",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n09-14",
+      "artifact": "src/data/textbook/math/numbers/n09ConstructionCompiled.json#n09-14",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q01-square",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q01-square",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-01",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-01",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q02-sign",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q02-sign",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-02",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-02",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q03-expand",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q03-expand",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-03",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-03",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q04-sign",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q04-sign",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-04",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-04",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q05-denominator",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q05-denominator",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q05-square",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q05-square",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-05",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-05",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q06-sign",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q06-sign",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-06",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-06",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q07-product",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q07-product",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-07",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-07",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q08-factor",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q08-factor",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-08",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-08",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q09-left",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q09-left",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q09-right",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q09-right",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-09",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-09",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q10-coefficients",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q10-coefficients",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-10",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-10",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q11-formula",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q11-formula",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-11",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-11",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q12-product",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q12-product",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-12",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-12",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q13-identity",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q13-identity",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-13",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-13",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-14",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-14",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q15-factor",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q15-factor",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-15",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-15",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q16-denominator",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q16-denominator",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-16",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-16",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q17-factor",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q17-factor",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q17-nonzero",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q17-nonzero",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-17",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-17",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-18",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-18",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q19-distribute",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q19-distribute",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-19",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-19",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q20-factor",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q20-factor",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-20",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-20",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q21-denominator",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q21-denominator",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q21-expand",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q21-expand",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-q21-constants",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-q21-constants",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    },
+    {
+      "block_id": "n10-21",
+      "artifact": "src/data/textbook/math/numbers/n10ConstructionCompiled.json#n10-21",
+      "version": "691d3d160493bf684ca8a31a22476d31d98caeec",
+      "phase": "post-fix",
+      "originFinding": "USER-QA thinking-node / coherent-prose / role-font mismatch",
+      "requiresSemanticReview": true
+    }
+  ],
+  "formalStoreReceipt": false,
+  "coverageIsNotCompliance": true
+}

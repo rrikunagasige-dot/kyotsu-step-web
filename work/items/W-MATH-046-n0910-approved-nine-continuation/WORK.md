@@ -7,6 +7,7 @@ Review: USER-QA-NEEDS-FIX / CROSS-AUDIT-REOPENED
 - 確定：本文/独立式18pxに対し、選択肢text/mathは14.08px。共通strong .88rem指定の競合。従来4228式計測は選択肢との相対fontを対象にせず見逃し。実画像非作者審査でも拾うべきだった。
 - [工程図](WORKFLOW_CURRENT.md)：本人要修正→R01記録/R02原因確認済み、次はR03同型影響調査→R04具体案。褒められた√a/√b導出・必要な初回計算・旧版/進捗を保護し、単純な記号穴追加やKEEP不変の適合証明への読み替えをしない。
 - 調査・記録のみ。製品source691d/main publisherf4c/公開内容は変更していない。正式Store26欠落特例・他Work38・Gold/fit未認定を維持。
+- 2026-11-03 JST：旧KEEP/AUTOを含む全86設計を個別監査し、主担当による反証・誤判定訂正を記録。[全件表](evidence/ux05-full-re-audit/AUDIT_86.md) / [統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)。R03記録完了、次はR04具体案。局所学習判定71PASS/7FAIL/8UNVERIFIEDは本文・共通font・単元受入の合格数ではない。製品変更なし。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

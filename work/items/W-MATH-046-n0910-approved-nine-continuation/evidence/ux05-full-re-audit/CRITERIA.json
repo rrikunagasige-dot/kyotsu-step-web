@@ -1,0 +1,38 @@
+{
+  "authority": "latest user instructions > main MASTER > applicable mode rules",
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "allNodes": 86,
+  "dimensions": [
+    "rootPurposeAndPrerequisites",
+    "causalProse",
+    "semanticDerivationSteps",
+    "learnerConstructedLettersNumbersSymbols",
+    "visibleGroundsBeforeEachAnswer",
+    "answerLeakageAndAlreadyCertifiedReuse",
+    "afterAnswerMeaningAndNextUse",
+    "initialApplicationVsMechanicalRepetition",
+    "typographyAndUsability"
+  ],
+  "userClarification": "A meaningful formula-embedded letter, number, or symbol blank is valid. Do not replace all such blanks with whole-result choices merely because they contain one character. Preserve praised sqrt(a)/sqrt(b) progressive proofs.",
+  "auditRequiredFields": [
+    "nodeId",
+    "verdict",
+    "principleRefs",
+    "availableGrounds",
+    "derivationChain",
+    "currentLearnerActions",
+    "missingLearnerActions",
+    "proseAssessment",
+    "evidenceRefs",
+    "correctionDirection"
+  ],
+  "allowedVerdicts": [
+    "PASS",
+    "FAIL",
+    "UNVERIFIED"
+  ],
+  "coverageDoesNotEqualCompliance": true,
+  "preserveAlreadyCertifiedReuse": true,
+  "productEditsAuthorized": false,
+  "nextAfterAudit": "R04 concrete correction proposal, including connected prose and per-step blank placement, then applicable user approval"
+}

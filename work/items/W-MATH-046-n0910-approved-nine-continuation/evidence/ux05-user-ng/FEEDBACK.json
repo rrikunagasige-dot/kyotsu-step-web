@@ -50,5 +50,14 @@
       "=A^2+2AB+B^2"
     ],
     "codeOrPublicationChanged": false
-  }
+  },
+  "followupInstructions": [
+    {
+      "sourcePage": "1158a946-744c-468b-8fdb-3a8561abe6bd",
+      "quote": "我不求你快你一个个对着这些理论一个个看自己看你符不符合做的。A/B分工合作，俩人有吗？这些里面还要挖空让学生能够填字母数字或者符号让他觉得在推导的感觉这个前面的根号a根号b就是这么设计的。",
+      "recordType": "user instruction excerpt",
+      "audit": "../ux05-full-re-audit/ROOT_REVIEW.md",
+      "status": "R03 audit recorded; R04 proposal next; product unchanged"
+    }
+  ]
 }

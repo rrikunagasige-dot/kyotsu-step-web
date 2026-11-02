@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "REVISE_PROPOSAL_USER_QUALITY_REJECTED",
+  "status": "IMPLEMENTING_APPROVED_UX03_PILOT",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,7 +140,7 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "Explicit approval of exact P-W046-UX-03 before product implementation",
+    "Implement and verify approved sqrt125 pilot; user visual gate before remaining batch",
     "Implement and verify sqrt125 pilot; authentic GitHub visual review before remaining batch",
     "Apply approved remaining scope, affected regression and nonauthor review; freeze candidate",
     "Separate publication gate and exact hosted candidate verification before final actual user evaluation"
@@ -265,7 +265,7 @@
   },
   "revisedProposal": {
     "id": "P-W046-UX-03",
-    "status": "PROPOSED_NOT_APPROVED",
+    "status": "APPROVED",
     "path": "PROPOSAL.md",
     "sha256": "4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5",
     "supersedes": "P-W046-UX-02",
@@ -281,7 +281,14 @@
     "publicationChanged": false,
     "approvalScope": "limited implementation and candidate verification; separate publication gate",
     "pilot": "n10-q02-sign -> n10-02, sqrt125; actual screenshot review before remaining batch",
-    "proposalDocumentCheck": "required sections, 17 detailed node designs, 86-node coverage (17 revised / 69 retained), math delimiters; not product QA"
+    "proposalDocumentCheck": "required sections, 17 detailed node designs, 86-node coverage (17 revised / 69 retained), math delimiters; not product QA",
+    "approval": {
+      "dateJST": "2026-11-02",
+      "quote": "まあこれでいいでしょう。承認",
+      "source": "current_chat_user_reply_to_exact_UX03_approval_question",
+      "proposalCommit": "85a53672826fb204a7e182f56b975d80b4727747",
+      "proposalSha256": "4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5"
+    }
   },
   "revisedProposalHistory": [
     {

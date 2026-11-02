@@ -19,14 +19,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 94dfd300098484473211c22f5de73139b9002717
-      VITE_PREVIEW_COMMIT: 94dfd300098484473211c22f5de73139b9002717
+      CANDIDATE_SHA: db99a485f857b1aefa7fb738456f36a830514158
+      VITE_PREVIEW_COMMIT: db99a485f857b1aefa7fb738456f36a830514158
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 94dfd300098484473211c22f5de73139b9002717
+          ref: db99a485f857b1aefa7fb738456f36a830514158
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -70,6 +70,20 @@ jobs:
           const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ConstructionPresentationR7.json'));
           if(m.sourceSHA!==process.env.CANDIDATE_SHA||m.work!=='W-MATH-041'||m.activeN08Revision!==7||m.construction.requiredParents!==30||m.construction.independentParts!==42||m.construction.planHash!==p.planHash||m.construction.layoutDesignHash!==p.layoutDesignHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08.revision!==4||m.originalN08.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
           NODE
+      - name: Prepare original N11 figure decoding for prepublication verification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          s=p.read_text()
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+          else:
+              assert new in s
+          PY
       - name: Verify candidate bytes and N09/N10 operations before publication
         shell: bash
         run: |
@@ -78,6 +92,10 @@ jobs:
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w046-publish-check.mjs verify
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n08 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -142,6 +160,10 @@ jobs:
           name: w046-publication-evidence
           path: |
             /tmp/w046-prepublish
+            /tmp/w046-prepublish-n08
+            /tmp/w046-prepublish-r6
+            /tmp/w046-prepublish-legacy
+            /tmp/w046-prepublish-n11
             /tmp/w046-hosted
             /tmp/w046-preview.log
             /tmp/w041-hosted

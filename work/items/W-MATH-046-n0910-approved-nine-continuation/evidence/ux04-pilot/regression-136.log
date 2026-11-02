@@ -1,0 +1,19 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux04-pilot
+
+ ✓ src/domain/nestedLesson.test.ts (9 tests) 20ms
+ ✓ src/domain/nestedLessonStorage.test.ts (10 tests) 30ms
+ ✓ src/components/textbook/nestedMathTemplate.test.ts (23 tests) 695ms
+   ✓ 閉じたnested templateと意味位置bind > root relation役の穴と認定済mirrorも、初期・候補・完成で同じ意味位置を束縛する  331ms
+ ✓ src/domain/nestedLesson.design.test.ts (13 tests) 1376ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: every authored math row compiles in empty and completed states  526ms
+ ✓ src/stores/nestedProgressBridge.test.ts (5 tests) 22ms
+ ✓ src/domain/nestedMigration.test.ts (63 tests) 4192ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  498ms
+ ✓ src/pages/N0910ArchivePage.test.tsx (13 tests) 1478ms
+
+ Test Files  7 passed (7)
+      Tests  136 passed (136)
+   Start at  17:14:23
+   Duration  7.70s (transform 4.71s, setup 0ms, collect 11.50s, tests 7.81s, environment 3.25s, prepare 1.45s)
+

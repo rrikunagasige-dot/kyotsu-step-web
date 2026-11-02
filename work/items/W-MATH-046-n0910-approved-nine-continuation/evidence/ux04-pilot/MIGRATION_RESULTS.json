@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "fixturePolicy": "Synthetic test ledgers; no real learner records or formal Store events",
+  "results": [
+    {
+      "name": "r5-full-main",
+      "status": "PASS",
+      "retained": 46,
+      "answered": 6,
+      "oldStorageProtected": true
+    },
+    {
+      "name": "r5-full-dedicated",
+      "status": "PASS",
+      "retained": 46,
+      "answered": 6,
+      "oldStorageProtected": true
+    },
+    {
+      "name": "r4-staged-chain",
+      "status": "PASS",
+      "retained": 38,
+      "answered": 14,
+      "oldStorageProtected": true
+    },
+    {
+      "name": "r5-stale-key-new-main-reset-0",
+      "status": "PASS",
+      "records": 0,
+      "first": "n09-q01-negative::powerAction"
+    },
+    {
+      "name": "r5-stale-key-new-main-reset-1",
+      "status": "PASS",
+      "records": 1,
+      "first": "n09-q01-negative::powerAction"
+    },
+    {
+      "name": "r6-stale-key-new-main-reset-with-answer",
+      "status": "PASS",
+      "records": 1,
+      "first": "n09-q01-negative::productSign"
+    },
+    {
+      "name": "unknown-main-r5",
+      "status": "PASS",
+      "unknownRejectedWithoutMutation": true
+    },
+    {
+      "name": "unknown-main-r6",
+      "status": "PASS",
+      "unknownRejectedWithoutMutation": true
+    },
+    {
+      "name": "r5-preserved-wrong",
+      "status": "PASS",
+      "records": 1,
+      "first": "n09-q01-negative::powerAction"
+    },
+    {
+      "name": "n10-legacy-r2-seven-records",
+      "status": "PASS",
+      "retained": 0,
+      "answered": 56,
+      "oldStorageProtected": true
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

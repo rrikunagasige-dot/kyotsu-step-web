@@ -1,0 +1,308 @@
+{
+  "n09": {
+    "status": "loaded",
+    "faces": [
+      {
+        "family": "KaTeX_AMS",
+        "status": "error",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Caligraphic",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Caligraphic",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Fraktur",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Fraktur",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "italic"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "italic"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "error",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Math",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "italic"
+      },
+      {
+        "family": "KaTeX_Math",
+        "status": "error",
+        "weight": "400",
+        "style": "italic"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded",
+        "weight": "700",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "italic"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Script",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Size1",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Size2",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Size3",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Size4",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Typewriter",
+        "status": "unloaded",
+        "weight": "400",
+        "style": "normal"
+      }
+    ],
+    "main": false,
+    "math": false
+  },
+  "n11": {
+    "status": "loaded",
+    "faces": [
+      {
+        "family": "KaTeX_AMS",
+        "status": "error"
+      },
+      {
+        "family": "KaTeX_Caligraphic",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Caligraphic",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Fraktur",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Fraktur",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Main",
+        "status": "error"
+      },
+      {
+        "family": "KaTeX_Math",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Math",
+        "status": "error"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_SansSerif",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Script",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Size1",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Size2",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Size3",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Size4",
+        "status": "unloaded"
+      },
+      {
+        "family": "KaTeX_Typewriter",
+        "status": "unloaded"
+      }
+    ]
+  },
+  "failed": [
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff2",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff2",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.ttf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.ttf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.ttf",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "responses": [
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff2",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff2",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Math-Italic.ttf",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_Main-Regular.ttf",
+      "status": 403
+    },
+    {
+      "phase": "N09",
+      "url": "http://127.0.0.1:4346/kyotsu-step-web/@fs/workspace/scratch/6ff917b2ec4a/w046-ux03/node_modules/.pnpm/katex@0.16.47/node_modules/katex/dist/fonts/KaTeX_AMS-Regular.ttf",
+      "status": 403
+    }
+  ]
+}

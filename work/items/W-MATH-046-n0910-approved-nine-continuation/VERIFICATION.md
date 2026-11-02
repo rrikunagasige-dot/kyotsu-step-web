@@ -85,3 +85,15 @@ Proposal P-W046-UX-04、SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c
 
 ### フォント検査の訂正
 先のdev四幅計測はdocument.fonts.readyだけに依存し、Main/Math/AMSの403/fallbackを見落としていた。最終描画PASSとしては撤回する。原RESULT・font phase probeを保存。本番dist preview＋各face loaded/HTTP検査で最終版を再取得する。コード・移行の意味/保存検査と分離し、再テスト未実施部分の成功を認定しない。
+
+## V-UX04-03 — 最終正常フォントの代表表示
+
+[候補66c8007b](https://github.com/rrikunagasige-dot/kyotsu-step-web/commit/66c8007b37cc12391c9df574b8ebbb1b95cf26f5) / compiled470f1371。BROWSER_RESULT SHA25669a31193ce10a3b8b71d6877442e8d55fae7437b7262ae596d10d801cda5a63c。320/390/430/1440px、128状態/1192幾何、52正答と代表14誤答候補を各幅で操作、reload/history/旧版/reset取消・確定/N08/N11指定lifecycle PASS。fontChecks276全てMain/Math-Italic実loaded、AMSloaded、HTTP0/network0。HTTP 400以上も失敗として検出する。
+
+既存固定依存をworktree内へ同一byte hardlinkコピーして403環境だけ解消。製品config/FS guard/lockを変更せず、本体と同一shared moduleのWeakMapで測定。別bundleのSOURCE_UNVERIFIED拒否は原FAILとして保持。
+
+非作者BのN09数学/表示は2node限定PASS、Aの移行/code/原結果読取も対象範囲PASS。原報告：[SOURCE_REVIEW](evidence/ux04-pilot/SOURCE_REVIEW.md) / [RENDER_REVIEW](evidence/ux04-pilot/RENDER_REVIEW.md)。原108PNG/全計測ZIP、直接16画像、各hash/原失敗/使用scriptを同directoryへ保存。撮影working treeのbase778と候補66cを区別し、全20変更blob一致・505file manifest一致で実物を結び付けた。
+
+本人の細部確認待ち：[REVIEW_SHEET](REVIEW_SHEET.md)。残り24node未実装・本公開未変更。代表合格を全UX04の完成や本人受入へ拡張しない。
+
+最終の記録governance再検査はFAIL/既存38件。前回governance-records.logのERROR集合38件と完全一致（追加0/解消0）、W046を指すERRORなし。全体PASSへ転用しない。原logはevidence/ux04-pilot/governance.log。

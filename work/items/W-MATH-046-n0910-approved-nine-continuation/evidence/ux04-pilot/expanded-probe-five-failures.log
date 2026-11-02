@@ -1,0 +1,773 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux04-pilot
+
+ ✓ src/domain/nestedLesson.test.ts (9 tests) 31ms
+ ✓ src/components/textbook/nestedMathTemplate.test.ts (23 tests) 952ms
+   ✓ 閉じたnested templateと意味位置bind > root relation役の穴と認定済mirrorも、初期・候補・完成で同じ意味位置を束縛する  333ms
+ ❯ src/domain/textbookNestedContract.test.ts (18 tests | 2 failed) 1426ms
+   × explicit N09/N10 unit schema and real parent progress > permits empty items only for the opted-in current section with actual nested parents 69ms
+     → expected [ { …(3) }, …(30) ] to have a length of 28 but got 31
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: missingVersion 51ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: missingContract 22ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: foreignUnit 18ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: wrongRevision 19ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: zeroParts 23ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: wrongSection 41ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: parentCollision 68ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: partCollision 58ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: missingRequired 43ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: unknownRequired 31ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: ordinaryCollision 29ms
+   ✓ explicit N09/N10 unit schema and real parent progress > rejects invalid opt-in contract: emptyUncoveredSection 95ms
+   ✓ explicit N09/N10 unit schema and real parent progress > counts actual part-certified parents for n09, never automatic nodes or old whole answers 129ms
+   ✓ explicit N09/N10 unit schema and real parent progress > counts actual part-certified parents for n10, never automatic nodes or old whole answers 150ms
+   ✓ explicit N09/N10 unit schema and real parent progress > does not count an unfinished multi-part parent or a future saved parent 12ms
+   ✓ explicit N09/N10 unit schema and real parent progress > requires current unit/revision/hash and complete part records 94ms
+   × explicit N09/N10 unit schema and real parent progress > home reset persists an empty current hash/revision and reset marker while archiving prior data 459ms
+     → Cannot read properties of undefined (reading 'nestedProgress')
+ ✓ src/domain/nestedLesson.design.test.ts (11 tests) 1832ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: every authored math row compiles in empty and completed states  777ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: all parts reject each wrong choice and advance only on correct answers  524ms
+ ❯ src/components/textbook/ConstructionLessonReadingFlow.test.tsx (7 tests | 3 failed) 1423ms
+   ✓ compiled nodeDesignとconstructionPlanを使うreader > root gatheredの最終pstrutの下端へ番号を合わせ、nested tableのstrutを使わない  440ms
+   ✓ compiled nodeDesignとconstructionPlanを使うreader > frontierより先の問題、未確定の結論とmirror行を見せない 76ms
+   × compiled nodeDesignとconstructionPlanを使うreader > 候補表示文でなくraw valueを渡し、安定した順序を保つ 254ms
+     → Unable to find an element with the text: この版をやり直す. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"textbook-reading-flow construction-lesson-reading"[39m
+      [33mdata-compiled-hash[39m=[32m"fixture-compiled"[39m
+      [33mdata-current-stage[39m=[32m"stage-a"[39m
+      [33mdata-testid[39m=[32m"textbook-reading-flow"[39m
+      [33mstyle[39m=[32m"--construction-font: 18px; --construction-katex-scale: 1em; --construction-hit: 44px; --construction-row-gap: 4px; --construction-note-gap: 6px; --construction-paragraph-gap: 8px;"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"math-textbook-reading-controls"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0m今の段階 [0m
+          [0m1[0m
+          [0m / [0m
+          [0m2[0m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"construction-lesson-stage math-textbook-stage math-textbook-stage--current"[39m
+        [33mdata-stage-id[39m=[32m"stage-a"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"math-textbook-stage-active-title"[39m
+        [36m>[39m
+          [36m<strong>[39m
+            [0m第一の問題[0m
+          [36m</strong>[39m
+          [36m<small>[39m
+            [0m1[0m
+            [0m / [0m
+            [0m2[0m
+          [36m</small>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-source-question"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"construction-lesson-kind"[39m
+          [36m>[39m
+            [0m例題[0m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-original-question"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m最初の原問題です。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-node"[39m
+          [33mdata-node-id[39m=[32m"a"[39m
+          [33mdata-node-resolved[39m=[32m"false"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-lead reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0maの計算を進めます。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-condition reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m実数の加算。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"construction-lesson-continuous-calculation"[39m
+            [33mdata-group-layout-overflow[39m=[32m"false"[39m
+            [33mdata-math-group-id[39m=[32m"a-math-group"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"construction-lesson-math-row"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"nested-math-shell"[39m
+                [33mdata-layout-overflow[39m=[32m"false"[39m
+                [33mdata-nested-render-mode[39m=[32m"interactive"[39m
+                [33mdata-neutral-status[39m=[32m"UNVERIFIED"[39m
+                [33mdata-root-break-path[39m=[32m""[39m
+                [33mid[39m=[32m"a-row-1"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"nested-math-formula"[39m
+                  [33mdata-compiled-template[39m=[32m"1+1={x}"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"katex"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"katex-mathml"[39m
+                    [36m>[39m
+                      [36m<math[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/1998/Math/MathML"[39m
+                      [36m>[39m
+                        [36m<semantics>[39m
+                          [36m<mrow>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [0m+[0m
+                            [36m</mo>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [36m<mo>[39m
+                                [0m=[0m
+                              [36m</mo>[39m
+                              [36m<mphantom>[39m
+                                [36m<mpadded[39m
+                                  [33mdepth[39m=[32m"0px"[39m
+                                  [33mheight[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mpadded[39m
+                                    [33mwidth[39m=[32m"0px"[39m
+                                  [36m>[39m
+                                    [36m<mtext />[39m
+                                  [36m</mpadded>[39m
+                                [36m</mpadded>[39m
+                              [36m</mphantom>[39m
+                            [36m</mo>[39m
+                            [36m<mphantom>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0.975em"[39m
+                                [33mheight[39m=[32m"-0.975em"[39m
+                                [33mvoffset[39m=[32m"-0.975em"[39m
+                              [36m>[39m
+                                [36m<mspace[39m
+                                  [33mheight[39m=[32m"2.45em"[39m
+                                  [33mmathbackground[39m=[32m"black"[39m
+                                  [33mwidth[39m=[32m"2.45em"[39m
+                                [36m/>[39m
+                              [36m</mpadded>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0px"[39m
+                                [33mheight[39m=[32m"0px"[39m
+                              [36m>[39m
+                                [36m<mpadded[39m
+                                  [33mwidth[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mtext />[39m
+                                [36m</mpadded>[39m
+                              [36m</mpadded>[39m
+                            [36m</mphantom>[39m
+                          [36m</mrow>[39m
+                          [36m<annotation[39m
+                            [33mencoding[39m=[32m"application/x-tex"[39m
+                          [36m>[39m
+                            [0m1 + 1 \mathrel{=\phanto...
+   × compiled nodeDesignとconstructionPlanを使うreader > 誤答後は対応する誘導だけを表示し、訂正後に結論と次の原問題を解放する 152ms
+     → expected 'もう一度考えよう二つの1を数え直してください。' to be '二つの1を数え直してください。' // Object.is equality
+   ✓ compiled nodeDesignとconstructionPlanを使うreader > 別planの行やpartを差し込んだcompiledは表示しない 4ms
+   × compiled nodeDesignとconstructionPlanを使うreader > 実JSONの用語属性を強調し、補助表・図を認定前に表示しない 144ms
+     → Unable to find an element with the text: 確定後の補助表. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"textbook-reading-flow construction-lesson-reading"[39m
+      [33mdata-compiled-hash[39m=[32m"fixture-compiled"[39m
+      [33mdata-current-stage[39m=[32m"stage-b"[39m
+      [33mdata-testid[39m=[32m"textbook-reading-flow"[39m
+      [33mstyle[39m=[32m"--construction-font: 18px; --construction-katex-scale: 1em; --construction-hit: 44px; --construction-row-gap: 4px; --construction-note-gap: 6px; --construction-paragraph-gap: 8px;"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"math-textbook-reading-controls"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0m今の段階 [0m
+          [0m2[0m
+          [0m / [0m
+          [0m2[0m
+        [36m</span>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0m前の段階を見る[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"construction-lesson-stage math-textbook-stage math-textbook-stage--current"[39m
+        [33mdata-stage-id[39m=[32m"stage-b"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"math-textbook-stage-active-title"[39m
+        [36m>[39m
+          [36m<strong>[39m
+            [0m第二の問題[0m
+          [36m</strong>[39m
+          [36m<small>[39m
+            [0m2[0m
+            [0m / [0m
+            [0m2[0m
+          [36m</small>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-source-question"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"construction-lesson-kind"[39m
+          [36m>[39m
+            [0m例題[0m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-original-question"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m未来の原問題です。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-node"[39m
+          [33mdata-node-id[39m=[32m"b"[39m
+          [33mdata-node-resolved[39m=[32m"false"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-lead reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mbの計算を進めます。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-condition reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m実数の加算。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"construction-lesson-continuous-calculation"[39m
+            [33mdata-group-layout-overflow[39m=[32m"false"[39m
+            [33mdata-math-group-id[39m=[32m"b-math-group"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"construction-lesson-math-row"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"nested-math-shell"[39m
+                [33mdata-layout-overflow[39m=[32m"false"[39m
+                [33mdata-nested-render-mode[39m=[32m"interactive"[39m
+                [33mdata-neutral-status[39m=[32m"UNVERIFIED"[39m
+                [33mdata-root-break-path[39m=[32m""[39m
+                [33mid[39m=[32m"b-row-1"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"nested-math-formula"[39m
+                  [33mdata-compiled-template[39m=[32m"1+1={x}"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"katex"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"katex-mathml"[39m
+                    [36m>[39m
+                      [36m<math[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/1998/Math/MathML"[39m
+                      [36m>[39m
+                        [36m<semantics>[39m
+                          [36m<mrow>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [0m+[0m
+                            [36m</mo>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [36m<mo>[39m
+                                [0m=[0m
+                              [36m</mo>[39m
+                              [36m<mphantom>[39m
+                                [36m<mpadded[39m
+                                  [33mdepth[39m=[32m"0px"[39m
+                                  [33mheight[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mpadded[39m
+                                    [33mwidth[39m=[32m"0px"[39m
+                                  [36m>[39m
+                                    [36m<mtext />[39m
+                                  [36m</mpadded>[39m
+                                [36m</mpadded>[39m
+                              [36m</mphantom>[39m
+                            [36m</mo>[39m
+                            [36m<mphantom>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0.975em"[39m
+                                [33mheight[39m=[32m"-0.975em"[39m
+                                [33mvoffset[39m=[32m"-0.975em"[39m
+                              [36m>[39m
+                                [36m<mspace[39m
+                                  [33mheight[39m=[32m"2.45em"[39m
+                                  [33mmathbackground[39m=[32m"black"[39m
+                                  [33mwidth[39m=[32m"2.45em"[39m
+                                [36m/>[39m
+                              [36m</mpadded>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0px"[39m
+                                [33mheight[39m=[32m"0px"[39m
+                              [36m>[39m
+                                [36m<mpadded[39m
+                                  [33mwidth[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mtext />[39m
+                                [36m</mpadded>[39m
+                              [36m</mpadded>[39m
+                            [36m</mphantom>[39m
+                          [36m</mrow>[39m
+                      ...
+   ✓ compiled nodeDesignとconstructionPlanを使うreader > 同じnodeの静的math行へ、日本語のtext候補を渡さない  350ms
+ ✓ src/domain/nestedMigration.test.ts (63 tests) 5313ms
+   ✓ source-bound reviewed N10 migration > preserves an unresolved wrong answer as editable and keeps future imports pending  567ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  529ms
+ ✓ src/pages/N0910ArchivePage.test.tsx (13 tests) 1584ms
+   ✓ N09/N10旧版の隔離比較 > N08専用readerの既存cursor namespaceを変更しない  418ms
+   ✓ N09/N10旧版の隔離比較 > 実readerの比較cursorは旧本保存へ書かず、省略時のnamespaceは従来どおり  417ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/domain/textbookNestedContract.test.ts > explicit N09/N10 unit schema and real parent progress > permits empty items only for the opted-in current section with actual nested parents
+AssertionError: expected [ { …(3) }, …(30) ] to have a length of 28 but got 31
+
+- Expected
++ Received
+
+- 28
++ 31
+
+ ❯ src/domain/textbookNestedContract.test.ts:27:57
+     25| describe('explicit N09/N10 unit schema and real parent progress', () =…
+     26|   it('permits empty items only for the opted-in current section with a…
+     27|     expect(fixture('n09').unit.nestedContract!.parents).toHaveLength(2…
+       |                                                         ^
+     28|     expect(fixture('n10').unit.nestedContract!.parents).toHaveLength(3…
+     29|     const source = raw('n10Authored').unit
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/domain/textbookNestedContract.test.ts > explicit N09/N10 unit schema and real parent progress > home reset persists an empty current hash/revision and reset marker while archiving prior data
+TypeError: Cannot read properties of undefined (reading 'nestedProgress')
+ ❯ src/domain/textbookNestedContract.test.ts:93:52
+     91|     expect(reset.nestedResetAt).toBe(100); expect(reset.nestedProgress…
+     92|     expect(reset.nestedProgress!.records).toEqual({}); expect(reset.ne…
+     93|     expect(reset.archivedRevisions!['4-reset-100'].nestedProgress).toE…
+       |                                                    ^
+     94|     expect(JSON.stringify(old)).toBe(oldRaw); expect(textbookUnitProgr…
+     95|     const stale = { ...reset, nestedProgress: old.nestedProgress }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/components/textbook/ConstructionLessonReadingFlow.test.tsx > compiled nodeDesignとconstructionPlanを使うreader > 候補表示文でなくraw valueを渡し、安定した順序を保つ
+TestingLibraryElementError: Unable to find an element with the text: この版をやり直す. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"textbook-reading-flow construction-lesson-reading"[39m
+      [33mdata-compiled-hash[39m=[32m"fixture-compiled"[39m
+      [33mdata-current-stage[39m=[32m"stage-a"[39m
+      [33mdata-testid[39m=[32m"textbook-reading-flow"[39m
+      [33mstyle[39m=[32m"--construction-font: 18px; --construction-katex-scale: 1em; --construction-hit: 44px; --construction-row-gap: 4px; --construction-note-gap: 6px; --construction-paragraph-gap: 8px;"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"math-textbook-reading-controls"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0m今の段階 [0m
+          [0m1[0m
+          [0m / [0m
+          [0m2[0m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"construction-lesson-stage math-textbook-stage math-textbook-stage--current"[39m
+        [33mdata-stage-id[39m=[32m"stage-a"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"math-textbook-stage-active-title"[39m
+        [36m>[39m
+          [36m<strong>[39m
+            [0m第一の問題[0m
+          [36m</strong>[39m
+          [36m<small>[39m
+            [0m1[0m
+            [0m / [0m
+            [0m2[0m
+          [36m</small>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-source-question"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"construction-lesson-kind"[39m
+          [36m>[39m
+            [0m例題[0m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-original-question"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m最初の原問題です。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-node"[39m
+          [33mdata-node-id[39m=[32m"a"[39m
+          [33mdata-node-resolved[39m=[32m"false"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-lead reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0maの計算を進めます。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-condition reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m実数の加算。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"construction-lesson-continuous-calculation"[39m
+            [33mdata-group-layout-overflow[39m=[32m"false"[39m
+            [33mdata-math-group-id[39m=[32m"a-math-group"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"construction-lesson-math-row"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"nested-math-shell"[39m
+                [33mdata-layout-overflow[39m=[32m"false"[39m
+                [33mdata-nested-render-mode[39m=[32m"interactive"[39m
+                [33mdata-neutral-status[39m=[32m"UNVERIFIED"[39m
+                [33mdata-root-break-path[39m=[32m""[39m
+                [33mid[39m=[32m"a-row-1"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"nested-math-formula"[39m
+                  [33mdata-compiled-template[39m=[32m"1+1={x}"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"katex"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"katex-mathml"[39m
+                    [36m>[39m
+                      [36m<math[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/1998/Math/MathML"[39m
+                      [36m>[39m
+                        [36m<semantics>[39m
+                          [36m<mrow>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [0m+[0m
+                            [36m</mo>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [36m<mo>[39m
+                                [0m=[0m
+                              [36m</mo>[39m
+                              [36m<mphantom>[39m
+                                [36m<mpadded[39m
+                                  [33mdepth[39m=[32m"0px"[39m
+                                  [33mheight[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mpadded[39m
+                                    [33mwidth[39m=[32m"0px"[39m
+                                  [36m>[39m
+                                    [36m<mtext />[39m
+                                  [36m</mpadded>[39m
+                                [36m</mpadded>[39m
+                              [36m</mphantom>[39m
+                            [36m</mo>[39m
+                            [36m<mphantom>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0.975em"[39m
+                                [33mheight[39m=[32m"-0.975em"[39m
+                                [33mvoffset[39m=[32m"-0.975em"[39m
+                              [36m>[39m
+                                [36m<mspace[39m
+                                  [33mheight[39m=[32m"2.45em"[39m
+                                  [33mmathbackground[39m=[32m"black"[39m
+                                  [33mwidth[39m=[32m"2.45em"[39m
+                                [36m/>[39m
+                              [36m</mpadded>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0px"[39m
+                                [33mheight[39m=[32m"0px"[39m
+                              [36m>[39m
+                                [36m<mpadded[39m
+                                  [33mwidth[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mtext />[39m
+                                [36m</mpadded>[39m
+                              [36m</mpadded>[39m
+                            [36m</mphantom>[39m
+                          [36m</mrow>[39m
+                          [36m<annotation[39m
+                            [33mencoding[39m=[32m"application/x-tex"[39m
+                          [36m>[39m
+                            [0m1 + 1 \mathrel{=\phanto...
+ ❯ Object.getElementError ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/textbook/ConstructionLessonReadingFlow.test.tsx:64:28
+     62|     view.rerender(<ConstructionLessonReadingFlow compiled={compiled} o…
+     63|     expect([...view.container.querySelectorAll('[data-choice-value]')]…
+     64|     fireEvent.click(screen.getByText('この版をやり直す')); expect(onReset).toH…
+       |                            ^
+     65|   })
+     66|   it('誤答後は対応する誘導だけを表示し、訂正後に結論と次の原問題を解放する', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/components/textbook/ConstructionLessonReadingFlow.test.tsx > compiled nodeDesignとconstructionPlanを使うreader > 誤答後は対応する誘導だけを表示し、訂正後に結論と次の原問題を解放する
+AssertionError: expected 'もう一度考えよう二つの1を数え直してください。' to be '二つの1を数え直してください。' // Object.is equality
+
+Expected: "二つの1を数え直してください。"
+Received: "もう一度考えよう二つの1を数え直してください。"
+
+ ❯ src/components/textbook/ConstructionLessonReadingFlow.test.tsx:70:52
+     68|     const wrong = answerNestedPart(lesson, undefined, 'a::x', '3', 'wr…
+     69|     const view = render(<ConstructionLessonReadingFlow compiled={compi…
+     70|     expect(screen.getByRole('status').textContent).toBe('二つの1を数え直してくださ…
+       |                                                    ^
+     71|     expect(screen.queryByText('未来の原問題です。')).toBeNull()
+     72|     const right = answerNestedPart(lesson, wrong, 'a::x', '2', 'right'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/components/textbook/ConstructionLessonReadingFlow.test.tsx > compiled nodeDesignとconstructionPlanを使うreader > 実JSONの用語属性を強調し、補助表・図を認定前に表示しない
+TestingLibraryElementError: Unable to find an element with the text: 確定後の補助表. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"textbook-reading-flow construction-lesson-reading"[39m
+      [33mdata-compiled-hash[39m=[32m"fixture-compiled"[39m
+      [33mdata-current-stage[39m=[32m"stage-b"[39m
+      [33mdata-testid[39m=[32m"textbook-reading-flow"[39m
+      [33mstyle[39m=[32m"--construction-font: 18px; --construction-katex-scale: 1em; --construction-hit: 44px; --construction-row-gap: 4px; --construction-note-gap: 6px; --construction-paragraph-gap: 8px;"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"math-textbook-reading-controls"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0m今の段階 [0m
+          [0m2[0m
+          [0m / [0m
+          [0m2[0m
+        [36m</span>[39m
+        [36m<button[39m
+          [33maria-expanded[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0m前の段階を見る[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"construction-lesson-stage math-textbook-stage math-textbook-stage--current"[39m
+        [33mdata-stage-id[39m=[32m"stage-b"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"math-textbook-stage-active-title"[39m
+        [36m>[39m
+          [36m<strong>[39m
+            [0m第二の問題[0m
+          [36m</strong>[39m
+          [36m<small>[39m
+            [0m2[0m
+            [0m / [0m
+            [0m2[0m
+          [36m</small>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-source-question"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"construction-lesson-kind"[39m
+          [36m>[39m
+            [0m例題[0m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-original-question"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m未来の原問題です。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"construction-lesson-node"[39m
+          [33mdata-node-id[39m=[32m"b"[39m
+          [33mdata-node-resolved[39m=[32m"false"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-lead reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mbの計算を進めます。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"construction-lesson-condition reading-paragraph"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0m実数の加算。[0m
+            [36m</span>[39m
+          [36m</p>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"construction-lesson-continuous-calculation"[39m
+            [33mdata-group-layout-overflow[39m=[32m"false"[39m
+            [33mdata-math-group-id[39m=[32m"b-math-group"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"construction-lesson-math-row"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"nested-math-shell"[39m
+                [33mdata-layout-overflow[39m=[32m"false"[39m
+                [33mdata-nested-render-mode[39m=[32m"interactive"[39m
+                [33mdata-neutral-status[39m=[32m"UNVERIFIED"[39m
+                [33mdata-root-break-path[39m=[32m""[39m
+                [33mid[39m=[32m"b-row-1"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"nested-math-formula"[39m
+                  [33mdata-compiled-template[39m=[32m"1+1={x}"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"katex"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"katex-mathml"[39m
+                    [36m>[39m
+                      [36m<math[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/1998/Math/MathML"[39m
+                      [36m>[39m
+                        [36m<semantics>[39m
+                          [36m<mrow>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [0m+[0m
+                            [36m</mo>[39m
+                            [36m<mn>[39m
+                              [0m1[0m
+                            [36m</mn>[39m
+                            [36m<mo>[39m
+                              [36m<mo>[39m
+                                [0m=[0m
+                              [36m</mo>[39m
+                              [36m<mphantom>[39m
+                                [36m<mpadded[39m
+                                  [33mdepth[39m=[32m"0px"[39m
+                                  [33mheight[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mpadded[39m
+                                    [33mwidth[39m=[32m"0px"[39m
+                                  [36m>[39m
+                                    [36m<mtext />[39m
+                                  [36m</mpadded>[39m
+                                [36m</mpadded>[39m
+                              [36m</mphantom>[39m
+                            [36m</mo>[39m
+                            [36m<mphantom>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0.975em"[39m
+                                [33mheight[39m=[32m"-0.975em"[39m
+                                [33mvoffset[39m=[32m"-0.975em"[39m
+                              [36m>[39m
+                                [36m<mspace[39m
+                                  [33mheight[39m=[32m"2.45em"[39m
+                                  [33mmathbackground[39m=[32m"black"[39m
+                                  [33mwidth[39m=[32m"2.45em"[39m
+                                [36m/>[39m
+                              [36m</mpadded>[39m
+                              [36m<mpadded[39m
+                                [33mdepth[39m=[32m"0px"[39m
+                                [33mheight[39m=[32m"0px"[39m
+                              [36m>[39m
+                                [36m<mpadded[39m
+                                  [33mwidth[39m=[32m"0px"[39m
+                                [36m>[39m
+                                  [36m<mtext />[39m
+                                [36m</mpadded>[39m
+                              [36m</mpadded>[39m
+                            [36m</mphantom>[39m
+                          [36m</mrow>[39m
+                      ...
+ ❯ Object.getElementError ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../w046-ux03/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/textbook/ConstructionLessonReadingFlow.test.tsx:100:19
+     98|     const right = answerNestedPart(lesson, undefined, 'a::x', '2', 'ri…
+     99|     view.rerender(<ConstructionLessonReadingFlow compiled={compiled} l…
+    100|     expect(screen.getByText('確定後の補助表')).toBeTruthy()
+       |                   ^
+    101|     expect(screen.getByAltText('確定後の数直線')).toBeTruthy()
+    102|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed | 5 passed (7)
+      Tests  5 failed | 139 passed (144)
+   Start at  17:02:11
+   Duration  8.40s (transform 5.51s, setup 0ms, collect 10.63s, tests 12.56s, environment 2.49s, prepare 1.36s)
+

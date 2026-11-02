@@ -43,3 +43,5 @@ N09の片辺だけ操作したように見える足場、因数分解のtext選�
 
 ## F-UX04-03 — 描画計測環境のfont欠落（最終描画再検査中）
 新worktreeが旧worktreeのnode_modulesへsymlinkするため、dev ViteのFS guardがKaTeX fontをHTTP403で拒否していた。fonts.readyだけでは検出できず、Bの実見/abort指摘とphase付きprobeでMain/Math/AMS face errorを確定。前の四幅128状態/1192幾何のスクリプトPASSを最終描画PASSへ採用しない。回答操作/保存の検査結果とは分離。guard/製品configを緩めず、本番dist previewで各faceとHTTPを確認して同checkerで再検査・再撮影する。原FAIL/403/画像は保持する。
+
+F-UX04-03の検査環境は同一byte依存treeのhardlinkコピーで解消。本体と同じshared module＋実loaded face/HTTPの四幅最終128/1192を別取得し合格、B原画像審査も限定PASS。製品guardを緩めず、旧fallback/別bundleの結果は不採用のまま。F-UX03-11は代表2nodeでの是正観察までで、残り24nodeは承認案の後続範囲として未実装。

@@ -1,0 +1,10 @@
+page.evaluate: Error: NESTED_GEOMETRY_SOURCE_UNVERIFIED
+    at measureNestedMathDOM (<anonymous>:14854:70)
+    at eval (eval at evaluate (:311:30), <anonymous>:5:139)
+    at Array.map (<anonymous>)
+    at eval (eval at evaluate (:311:30), <anonymous>:5:72)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at measure (/tmp/w046-ux04-browser-production.mjs:58:44)
+    at async file:///tmp/w046-ux04-browser-production.mjs:86:301
+{"status":"FAIL","output":"/tmp/w046-ux04-browser-production-final","stateCount":0,"geometryCount":0,"results":[],"failures":["page.evaluate: Error: NESTED_GEOMETRY_SOURCE_UNVERIFIED\n    at measureNestedMathDOM (<anonymous>:14854:70)\n    at eval (eval at evaluate (:311:30), <anonymous>:5:139)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:5:72)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"],"errors":[]}

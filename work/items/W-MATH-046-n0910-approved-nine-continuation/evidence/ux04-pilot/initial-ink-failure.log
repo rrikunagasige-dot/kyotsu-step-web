@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: 320:n09-01::balanceOperation:correct n09-01::ux04-row-06 [{"rule":"NESTED_HIT_FOREIGN_INK","detail":{"id":"factorSign","kind":"font-glyph-ink"}}]
+
+'FAIL' !== 'PASS'
+
+    at measure (file:///tmp/w046-ux04-browser.mjs:68:213)
+    at async file:///tmp/w046-ux04-browser.mjs:90:25
+{"status":"FAIL","output":"/tmp/w046-ux04-browser-results","stateCount":14,"geometryCount":56,"results":[],"failures":["320:n09-01::balanceOperation:correct n09-01::ux04-row-06 [{\"rule\":\"NESTED_HIT_FOREIGN_INK\",\"detail\":{\"id\":\"factorSign\",\"kind\":\"font-glyph-ink\"}}]\n\n'FAIL' !== 'PASS'\n"],"errors":[]}

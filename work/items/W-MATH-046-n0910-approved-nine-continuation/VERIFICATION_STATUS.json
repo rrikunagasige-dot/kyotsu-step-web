@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-W046-UX-04",
   "recordedDate": "2026-11-02",
-  "status": "UX04_APPROVED_N09_PILOT_VERIFYING",
+  "status": "UX04_N09_PILOT_VERIFIED_WAITING_USER_DETAIL_REVIEW",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,10 +140,10 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "Complete final pilot display checks and save exact SHA image confirmation sheet",
-    "User detailed visual confirmation of N09 pilot",
-    "Apply remaining24 semantic nodes under approved UX04 and complete required verification",
-    "Separate publication approval, hosted checks and user hands-on acceptance"
+    "User detailed visual confirmation of exact N09 pilot sheet",
+    "Apply remaining24 semantic nodes under approved UX04",
+    "Complete cross-block, migration and real-state verification",
+    "Separate publication approval/hosted validation/user hands-on acceptance"
   ],
   "protected": {
     "mainWritten": true,
@@ -222,7 +222,7 @@
   },
   "workflowContinuation": {
     "mode": "USER_APPROVED_ONE_TIME_LEDGER_EXCEPTION",
-    "currentSubstantiveStage": "R06_APPROVED_N09_PILOT_IMPLEMENTATION_AND_VERIFICATION",
+    "currentSubstantiveStage": "N09_PILOT_VERIFIED_DETAIL_REVIEW_PENDING",
     "G3_HOST": "COMPLETED_BY_ACTUAL_PUBLISHED_CHECKS",
     "G3_FINAL": "USER_REQUIRES_CORRECTION",
     "nativeReceiptCreated": false,
@@ -245,7 +245,7 @@
       "Mathematics Textbook SPEC §5 (candidate summary)",
       "CMD-WORK-001 cross-creation audit"
     ],
-    "next": "Exact UX04 proposal ready; explicit approval required before new semantic implementation"
+    "next": "Review exact pilot images for detailed OK or corrections; approved remaining scope follows this gate"
   },
   "revisedProposal": {
     "id": "P-W046-UX-04",
@@ -286,7 +286,8 @@
       "proposalCommit": "778a6c3acb18765d99f3ebaf922457326af536f1",
       "proposalSha256": "3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201",
       "scope": "UX04 limited implementation and candidate verification; existing image and publication gates retained"
-    }
+    },
+    "currentDocumentSha256": "23ef15db9cb2c5cc9ac75ed104b7cf463297e4c4dfb9472db4db2a4bdb739a5c"
   },
   "revisedProposalHistory": [
     {
@@ -349,7 +350,7 @@
     "retainedParts": 46,
     "newParts": 6,
     "remainingSemanticNodes": 24,
-    "reviewStatus": "PILOT_DISPLAY_QA_IN_PROGRESS",
+    "reviewStatus": "PILOT_BLOCK_CHECK_PENDING",
     "userVisualAcceptance": false,
     "publicationChanged": false,
     "tests": {
@@ -370,7 +371,54 @@
       "notIncludedIn136Scope": true
     },
     "migrationExecutionCompiledHash": "f2bc35bbdb464a360d429b504459ff8c0f0b8c082db4e020a3b791f0d92619b3",
-    "migrationToFinalDifference": "factorization mathGroupId and generated hashes/exact targetHash only; route byte unchanged"
+    "migrationToFinalDifference": "factorization mathGroupId and generated hashes/exact targetHash only; route byte unchanged",
+    "sourceSha": "66c8007b37cc12391c9df574b8ebbb1b95cf26f5",
+    "sheet": "REVIEW_SHEET.md",
+    "browser": {
+      "status": "PASS",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "states": 128,
+      "geometryMeasurements": 1192,
+      "correctPartsPerWidth": 52,
+      "targetWrongCandidatesPerWidth": 14,
+      "fontChecks": 276,
+      "KaTeXMainAndMathItalicLoadedEveryCheck": true,
+      "AMSLoaded": true,
+      "httpErrors": 0,
+      "networkFailures": 0,
+      "originalPNGs": 108,
+      "resultSha256": "69a31193ce10a3b8b71d6877442e8d55fae7437b7262ae596d10d801cda5a63c"
+    },
+    "nonAuthor": {
+      "A": "SCOPED_CODE_AND_RESULT_READ_PASS",
+      "B": "SCOPED_PILOT_MATH_RENDER_PASS",
+      "formalStoreReceipt": false
+    },
+    "captureBinding": {
+      "rawWorkingTreeBaseCommit": "778a6c3acb18765d99f3ebaf922457326af536f1",
+      "uncommittedApprovedChangesAtCapture": true,
+      "all20ChangedGitBlobsMatchCandidate": true,
+      "all505SourceFilesMatchBeforeAfterAndCheckout": true
+    },
+    "evidenceArchive": {
+      "path": "evidence/ux04-pilot/FULL_SCREENSHOTS.zip",
+      "bytes": 7145892,
+      "sha256": "763ecc172cc2f5531237f4f095c0ead9add231f4aac61aec7907e2f4fe6cb549"
+    },
+    "invalidEarlierRenderResults": "font403 fallback and detached bundle SOURCE_UNVERIFIED are retained but not final PASS",
+    "globalGovernance": {
+      "status": "FAIL_PREEXISTING",
+      "errors": 38,
+      "sameErrorSetAsPreviousBaseline": true,
+      "addedErrors": 0,
+      "thisWorkErrors": 0,
+      "log": "evidence/ux04-pilot/governance.log"
+    }
   },
   "ux03Full": {
     "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",

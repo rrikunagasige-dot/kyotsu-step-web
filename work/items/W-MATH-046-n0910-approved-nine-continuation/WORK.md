@@ -1,7 +1,7 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: IMPLEMENTING
-Review: UX04-APPROVED / N09-PILOT-VERIFYING / REAL-IMAGE-CONFIRMATION-PENDING
+Status: VERIFYING
+Review: UX04-APPROVED / N09-PILOT-VERIFIED / WAITING-USER-DETAIL-REVIEW
 - 本人「いいよ」でPR #134の2filesのmain反映・既存Pages再公開を明示承認。expected head fc961f58でmerge成功。main publisher `6bc54447ef015a2a579a56a5966ceb58a0600d3a`、固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。
 - 公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前N09/N10・保持N08r7/r6/legacy/N11、deploy、実配信N09/N10・保持N08各版/N11、証拠uploadまで全て成功。コードbranch全体のmain mergeではなく、承認済みpublisher2filesのみ。
 - 実公開：[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)。N09 r5=46parts、N10 r4=63parts。旧87parts保持、新規22partsのみ未回答。対象17node以外69nodeの学習契約を維持。
@@ -10,7 +10,7 @@ Review: UX04-APPROVED / N09-PILOT-VERIFYING / REAL-IMAGE-CONFIRMATION-PENDING
 - 公開前133回帰・生成器8・型/変更lint/build、二単元四幅1732状態/9692幾何、464PNG、移行7ケース/現行main復旧4ケースの有効結果を継承。本人総チェックや全50件の数学的自動証明に読み替えない。
 - 候補全体governanceは他Workの既存38件を保持。本Work追加0、main側CIはSUCCESS。欠落正式Storeに対する一回限り特例を保持し、receipt/受理イベントを作らない。
 - 証拠：[公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)のartifact `w046-publication-evidence` ID13117672439、[既存の公開前証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)、[最新検証](VERIFICATION.md)。実配信15PNG/manifest/結果はevidence/ux03-full/hosted-*。
-- 本人「可以来来来做给我做」を、直前提示したUX04（commit778a6c3a/設計SHA3b79d7d8）への実装・候補検証承認として受領。写真のN09代表2nodeから限定実装。現在は実画面検査中、次は固定SHA/実画像による本人の細部確認。残り24nodeの意味変更・main反映・再公開はまだ行わない。
+- 本人「可以来来来做给我做」を、直前提示したUX04（commit778a6c3a/設計SHA3b79d7d8）への実装・候補検証承認として受領。写真のN09代表2nodeから限定実装。代表の実画面検査と非作者審査は完了、次は[確認票](REVIEW_SHEET.md)で本人の細部確認。残り24nodeの意味変更・main反映・再公開はまだ行わない。
 - 最新本人評価：排版改善を評価、導出の穴と生徒の参加度は要修正。n09-01の零積一穴で移項/因数分解/一次式処理まで自動化される不足を確認。詳細は末尾「本人指摘 — 導出の参加度不足」。
 - UX04詳細案は完成解法・全候補/誤答説明・各穴の根拠/位置/解放・旧part KEEP/ARCHIVE対応まで記載。N09r6/N10r5予定。proposal SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201`、220750bytes。AはN09作者/N10非作者、BはN10作者/N09非作者。主担当共通・統合も審査済み。モデル独立性/盲検は主張しない。
 - 提案構造検査・両非作者審査を経てN09代表2nodeを実装。N09r6 pilot＝旧46part保持＋新6part、計52part。UX04全体設計の101保持/56新規/8旧版保管は残りの適用を含む予定値で、pilotの実装件数と区別する。main・公開内容は今回未変更。本人の細部確認は未受領。
@@ -290,3 +290,15 @@ N09はNEW25/KEEP43/旧版保管3で予定68parts、N10はNEW31/KEEP58/旧版保�
 最終pilot compiledHash `470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d`。group分離後の関連76test・型/buildもPASS。routeコードは移行10ケース成功版から不変で、最終migratorは生成後の厳密targetHashだけ追従。四幅の最終画像/幾何と非作者表示審査を次の確認票へ固定する。
 
 表示の証拠を訂正：Bのfont/abort所見から、dev環境のKaTeX font403とfallbackをphase付きprobeで確定。上記のdev四幅128/1192は最終描画の合格根拠として採用しない。製品config/FS guardを変更せず、470fの本番dist previewでfont各faceの読み込みとHTTPを厳密確認して再取得中。操作/保存PASSは別の根拠として維持する。
+
+## UX04 N09代表 — 検査・非作者審査完了／本人の細部確認待ち
+
+固定候補[66c8007b37cc12391c9df574b8ebbb1b95cf26f5](https://github.com/rrikunagasige-dot/kyotsu-step-web/commit/66c8007b37cc12391c9df574b8ebbb1b95cf26f5)、N09r6 compiled470f1371。[確認票](REVIEW_SHEET.md)へ正常フォントの原画像を固定した。撮影working tree基準HEAD778と未commit変更はrawに保持し、候補の変更20blobの同一byte照合で結び付ける。全source manifest505件も前後・現checkout一致。
+
+最終環境は固定依存treeをworktree内へ同一byteのhardlinkで置き、dev FS guardを維持。Main/Math-Italic loadedを各撮影/計測前に276回確認しAMSもloaded、HTTP0/network0。元のshared moduleによる四幅128状態・1192幾何、各幅52正答・代表8part全14誤答、履歴/旧版/reset/N08/N11の指定lifecycleがPASS。非作者Bは正常フォント四幅の数学・先出し・左右枝・番号・N08系統を原PNGで限定PASS。Aは移行/schema/codeと原結果/505manifestを限定確認。両rawreviewをevidence/ux04-pilotへ保存した。
+
+全108PNG/原計測はFULL_SCREENSHOTS.zip（7,145,892bytes、SHA256763ecc172cc2f5531237f4f095c0ead9add231f4aac61aec7907e2f4fe6cb549）、直接確認16PNGと原log/FAIL/403/provenanceを保存。preview別bundleはWeakMap不一致でSOURCE_UNVERIFIEDを正しく拒否し、最終計測へ使わない。旧fallbackの計測PASSも最終合格へ転用しない。
+
+到達点は代表2nodeの検証と非作者審査まで。承認済みUX04のVerification Plan3に従い本人の細部OK/要修正を待つ。これは同じUX04の実装再承認ではない。細部OK後に残り24nodeへ限定適用し、横断/別公開/実働本人総チェックへ進む。公開中のdb99/出版社6bcは今回不変、正式Store受理receipt・本人総合受入・Gold/fitを作らない。
+
+最終の記録governance再検査はFAIL/既存38件。前回governance-records.logのERROR集合38件と完全一致（追加0/解消0）、W046を指すERRORなし。全体PASSへ転用しない。原logはevidence/ux04-pilot/governance.log。

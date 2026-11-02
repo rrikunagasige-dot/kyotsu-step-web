@@ -1,0 +1,13 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux04-pilot
+
+ ✓ src/domain/nestedLesson.design.test.ts (13 tests) 1246ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: every authored math row compiles in empty and completed states  367ms
+ ✓ src/domain/nestedMigration.test.ts (63 tests) 4532ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  734ms
+
+ Test Files  2 passed (2)
+      Tests  76 passed (76)
+   Start at  17:19:58
+   Duration  6.99s (transform 1.33s, setup 0ms, collect 2.33s, tests 5.78s, environment 1ms, prepare 552ms)
+

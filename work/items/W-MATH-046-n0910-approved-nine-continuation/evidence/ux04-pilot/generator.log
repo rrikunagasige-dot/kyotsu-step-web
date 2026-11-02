@@ -1,0 +1,17 @@
+✔ source-bound candidate inventory is not semantic or UI acceptance (2.005856ms)
+✔ missing source block disposition rejects a superficially complete node list (0.316106ms)
+✔ same node count with substituted source identity is rejected (0.61376ms)
+✔ future mirror cannot disclose an unanswered part (0.324164ms)
+✔ correct candidate and number of parts alone do not replace operation evidence (0.541592ms)
+✔ a future fact is not known merely because its reference exists (0.260992ms)
+✔ ordinary braced TeX command arguments do not become phantom slots (0.180616ms)
+✔ coverage must point to a materialized destination rather than any nonempty string (0.449751ms)
+✔ coverage can resolve lead, terminal and part destinations (0.279427ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165.318824

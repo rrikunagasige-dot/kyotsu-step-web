@@ -34,3 +34,6 @@ GitHub固定source db99a485は実試験1151305と同一tree。main起点の公�
 
 ## A-UX04-02 — 明示承認・代表実装
 本人「可以来来来做给我做」でUX04限定実装を承認。source/db99・main6bc・Work778・repo1391122224を照合、独立worktreeへ復元。写真2nodeの6判断・r6・R5 snapshot・厳密移行/比較を実装。Aはコード移行審査、BはN09数学/表示審査、rootは実装/検査/保存を担当。初回の移行3所見と描画FAILを補修し、既存PASS・原FAILを保持。正式Store/main/公開への今回書込なし。
+
+## A-UX04-03 — 正常font再検査・固定候補確認票
+Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格利用を撤回。preview別bundleは出所WeakMapの拒否を維持して不採用。固定依存の同一byte hardlinkコピー後、元shared module＋Main/Math-Italic loaded/HTTPで四幅128/1192に合格。原FAILと最終結果を分離保存。変更20fileをGit blobで全照合し候補66c8007bへ固定、A/Bの実非作者報告と全108PNG/原計測/16確認画像を保存。代表の細部確認票を提示する段階で保持し、未確認の残り24nodeを量産しない。

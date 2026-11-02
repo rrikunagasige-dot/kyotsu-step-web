@@ -1,0 +1,5 @@
+PASS n09 320 parts 52 wrong 14
+PASS n09 390 parts 52 wrong 14
+PASS n09 430 parts 52 wrong 14
+PASS n09 1440 parts 52 wrong 14
+{"status":"PASS","output":"/tmp/w046-ux04-browser-font-verified","stateCount":128,"geometryCount":1192,"results":[{"width":320,"parts":52,"wrongCandidates":14},{"width":390,"parts":52,"wrongCandidates":14},{"width":430,"parts":52,"wrongCandidates":14},{"width":1440,"parts":52,"wrongCandidates":14}],"failures":[],"errors":[]}

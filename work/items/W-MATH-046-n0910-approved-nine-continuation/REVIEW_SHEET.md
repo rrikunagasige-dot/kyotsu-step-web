@@ -1,3 +1,15 @@
+# 本人総チェック — 公開済みUX03
+
+Status: USER-FINAL-CHECK-PENDING
+
+[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)
+
+公開・実配信検証と非作者の対象表示審査はPASSです。本人が両教材の排版・穴の流れ・選択肢・左下resetを実物で操作し、受入可／要修正を判断する段階です。公開承認「いいよ」を、この品質受入へ転用しません。
+
+[実配信検証](VERIFICATION.md) / [公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)。以前の確認①は履歴で、再承認依頼ではありません。
+
+---
+
 # 最新状態 — 代表確認後の続行を実施済み
 
 Status: FULL-REVIEW-PASS / PUBLICATION-APPROVAL-PENDING

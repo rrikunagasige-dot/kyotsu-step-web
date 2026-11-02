@@ -1,0 +1,85 @@
+{
+  "reviewer": "/root/w046_render_review",
+  "role": "Non-author deployed-image review; scratch capture script author only",
+  "status": "TARGETED_HOSTED_VISUAL_PASS",
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "publisherSHA": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "origin": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "manifestValidation": {
+    "method": "urllib normal TLS verification",
+    "status": 200,
+    "sha256": "217e7789946de81303d1a51372b9a1730281adce03f9a6ae61c360f31ff7ce5f",
+    "sourceAndPublisherMatched": true
+  },
+  "observed": [
+    {
+      "code": "n09",
+      "width": 390,
+      "http": 200,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?w046review=db99a485#/learning/textbook/math-numbers-expressions-n09",
+      "revision": 5,
+      "compiledHash": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6",
+      "answeredForTargetTraversal": 17,
+      "resetPresent": true
+    },
+    {
+      "code": "n10",
+      "width": 320,
+      "http": 200,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?w046review=db99a485#/learning/textbook/math-numbers-expressions-n10",
+      "revision": 4,
+      "compiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+      "answeredForTargetTraversal": 46,
+      "resetPresent": true
+    }
+  ],
+  "rawImages": 15,
+  "imageHashesVerified": true,
+  "visualFindings": [
+    {
+      "target": "N09 H01,390px",
+      "finding": "Math font and Japanese または consistent; blank and correct result shown; existing shell and numbered options retained."
+    },
+    {
+      "target": "N09 H03,390px",
+      "finding": "Initial additive decision and correct mirror line confirmed. Incomplete ellipsis row removed after the decision, final inequality appears once."
+    },
+    {
+      "target": "N09-07 tag,390px",
+      "finding": "After outsideFactor answer, long parenthesis row tag(16) moves below to avoid ink collision; choices remain directly below current node."
+    },
+    {
+      "target": "N10 H07,320px",
+      "finding": "Positivity→square value→identification reason→single final sqrt125 result confirmed from deployed UI."
+    },
+    {
+      "target": "N10 H14,320px",
+      "finding": "Numerator-operation decision followed by explicit original fraction-product LHS and combined fraction. No numerator-only equals whole-fraction false chain."
+    },
+    {
+      "target": "N10-q17-factor tag,320px",
+      "finding": "Tag(33) moved below closing large parenthesis; visible separation preserved."
+    },
+    {
+      "target": "whole-page header/footer",
+      "finding": "N08-style single current-stage band, one page heading, inline numbered choices, left-bottom reset visible."
+    }
+  ],
+  "errors": [],
+  "networkFailuresOnSuccessfulContext": [],
+  "environmentNotes": [
+    "Direct Chromium network attempt failed ERR_EMPTY_RESPONSE; explicit environment HTTPS proxy required.",
+    "Proxy Chromium attempt then failed ERR_CERT_AUTHORITY_INVALID; successful fresh isolated context used ignoreHTTPSErrors=true. This is not a browser TLS validation result. The urllib manifest fetch used normal certificate verification and root separately verified asset bytes.",
+    "Proxy credentials and values were not output."
+  ],
+  "limitations": [
+    "Targeted hosted UI traversal only; not a repeat of full-state tests.",
+    "No final learner acceptance, Gold or fit claim.",
+    "15 original public-site PNGs retained. Whole-page top/footer crops used only for internal visual review.",
+    "No product source, Git or formal workflow Store writes. Browser learner records were confined to fresh disposable contexts."
+  ],
+  "priorAttemptEvidence": [
+    "/tmp/w046-ux03-hosted-target-review-direct-network-fail",
+    "/tmp/w046-ux03-hosted-target-review-proxy-cert-fail"
+  ]
+}

@@ -1,16 +1,16 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: VERIFYING
-Review: PUBLICATION-APPROVED-EXECUTING / 本人最終受入は未実施
-- 本人は代表画像提示後に「那继续做」と続行指示。これに基づき承認済みUX03の残り16箇所を実装した。「細部OK」という未発言や最終受入を創作しない。同じ代表確認依頼へ戻らない。
-- 固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。実試験source `1151305432ce2ebdd3a878718458d1c4f0701dc9` と完全tree `06f5da34c349b23dec9327da4c616980c4e7f670` 一致。N09 r5=46parts、N10 r4=63parts。旧87partsを保持し、新規22partsのみ未回答。17対象node以外69nodeの学習契約を維持。
-- 133回帰・生成器8・型/変更lint/build PASS。二単元×四幅、1732状態/9692幾何、全211誤答候補×四幅、履歴/旧版/reset PASS。非作者Bが17nodeの完成画面を四幅、初期/誤答を320pxで実見。旧版移行7ケース、現行main復旧4ケースPASS。有限数学109parts・179候補は失敗0/意味審査対象50でPARTIAL。
-- sourceAは移行作者・設計と行hideの非作者審査、sourceBは検査runner作者・製品/保存/画像の非作者審査、主担当は設計/生成/描画統合と試験を担当。作者の変更を自身の審査だけでPASSにしない。
-- 公開用[PR #134](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/134)、head `fc961f58c22f0cc3505f27aff2dec344a52ac660`。main `e49486d13119058ff063e75ef84d60660210bd41` 起点の公開設定/検証器2filesのみ。source branch全体をmergeしない。本人「いいよ」によりPR #134のmain反映・既存Pages公開を承認。固定head/sourceは不変。公開・実配信検証は実行中で、未確認を完了にしない。
-- 配信用buildのN09/N10八ケースはPASS。保持N08r7/r6/legacy/N11の公開前検査も全件PASS。25source hash・全HTTP asset・namespace・旧版全storage不変・他unit/旧版ledgerを守るresetを公開前で検査。main側governance run41388747203 SUCCESS、code check run41388747220もSUCCESS。
-- 候補全体governanceは既存他Workの38件が残りFAIL、本Workの新規違反なし。欠落正式Storeに対する今回限りの本人特例を維持し、receipt/受理イベントを作らない。
-- [実画像・原FAILを含む検証証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)：36,237,029 bytes / SHA256 `d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b`。再開はこの現在地と[VERIFICATION.md](VERIFICATION.md)の最新版を参照し、旧R03/古い台帳/代表確認へ戻らない。
-- 次：公開run41389935781の公開前検査→配信→実配信byte/操作検証→本人総チェック。本人受入・Gold/fitは自動認定しない。
+Review: PUBLICATION-AND-HOSTED-VERIFICATION-PASS / USER-FINAL-CHECK-PENDING
+- 本人「いいよ」でPR #134の2filesのmain反映・既存Pages再公開を明示承認。expected head fc961f58でmerge成功。main publisher `6bc54447ef015a2a579a56a5966ceb58a0600d3a`、固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。
+- 公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前N09/N10・保持N08r7/r6/legacy/N11、deploy、実配信N09/N10・保持N08各版/N11、証拠uploadまで全て成功。コードbranch全体のmain mergeではなく、承認済みpublisher2filesのみ。
+- 実公開：[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)。N09 r5=46parts、N10 r4=63parts。旧87parts保持、新規22partsのみ未回答。対象17node以外69nodeの学習契約を維持。
+- 配信manifestを通常TLSのurllibでHTTP200取得、source/publisherと25source hashが承認版一致。w046-release SHA256 `217e7789946de81303d1a51372b9a1730281adce03f9a6ae61c360f31ff7ce5f`。121配信asset byte・実操作/保存/履歴/旧版/resetはActions実配信検査でPASS。
+- 非作者Bが実public originのN09/390・N10/320でH01/H03/H07/H14、括弧付近の式番号、共通header/左下resetを15原PNGで確認。revision/compiledHash一致、新規確定欠陥なし。検査contextのproxy CA例外はTLS合格にせず、通常TLSのmanifest取得とActions通常browserを別根拠とする。
+- 公開前133回帰・生成器8・型/変更lint/build、二単元四幅1732状態/9692幾何、464PNG、移行7ケース/現行main復旧4ケースの有効結果を継承。本人総チェックや全50件の数学的自動証明に読み替えない。
+- 候補全体governanceは他Workの既存38件を保持。本Work追加0、main側CIはSUCCESS。欠落正式Storeに対する一回限り特例を保持し、receipt/受理イベントを作らない。
+- 証拠：[公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)のartifact `w046-publication-evidence` ID13117672439、[既存の公開前証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)、[最新検証](VERIFICATION.md)。実配信15PNG/manifest/結果はevidence/ux03-full/hosted-*。
+- 次：実働URLで本人総チェックを受ける。本人受入・Gold/fitは未認定。R03・古い台帳・代表ブロック再承認・完了済み検査へ戻らない。新しい指摘がなければ同じテストを反復しない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -219,7 +219,7 @@ N09 r5／N10 r4を作り、現r4/r3を比較用に残す。原r3/r2も保持。�
 
 ## 公開具体案 — P-W046-PUBLISH-UX03
 
-Status: PROPOSED / 本人公開承認待ち
+Status: APPROVED / 本人「いいよ」で公開承認、実行完了
 
 ### Problem / Need
 公開中の旧N09/N10は本人要修正。承認済みUX03の修正版は候補で実装・検証済みだが、UX03の承認scopeは候補保存までなので、本番反映はここで分ける。
@@ -251,3 +251,6 @@ font/環境差、配信cache差、保存移行を公開前と実配信の双方�
 
 ## P-W046-PUBLISH-UX03 main反映・公開工程実行中
 PR #134はexpected head fc961f58でmerge成功。main publisher SHAは6bc54447ef015a2a579a56a5966ceb58a0600d3a。製品source db99a485は不変。公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)、job125098872112を開始。初回観察ではcheckout/固定依存installがSUCCESS、Word依存取得中。非作者sourceAがmerged publisher2filesと審査済み版のbyte一致、source/namespace固定と公開前FAIL停止の維持を一回照合した。RUNNINGを公開成功へ変更しない。同じローカル検査は再実行しない。
+
+## UX03 公開・実配信検証完了（2026-11-02 JST）
+公開run41389935781/job125098872112は全step SUCCESSで終了。公開前検査を省略せず、実deploy後の121asset byte/二単元四幅の全part正誤・履歴・旧版全storage・reset/保持N08r7/r6/legacy/N11検査も成功。rootの通常TLS HTTP取得でもsource db99/publisher6bc/N09r5/N10r4と25source hashが一致した。非作者Bの実配信対象画像審査はTARGETED_HOSTED_VISUAL_PASS。15PNGを固定hashで保存し、公開前全状態検証とは別記する。正式Store receipt/本人受入/Gold/fitは創作せず、本人総チェック待ちへ移る。

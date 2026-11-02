@@ -1,3 +1,19 @@
+# UX-03 実配信検証 — 最新状態
+
+Status: PARTIAL / 公開・実配信の限定検査合格、本人総チェック待ち
+
+- 本人公開承認：直前のPR134公開質問への「いいよ」。PR #134 merged、publisher6bc54447ef015a2a579a56a5966ceb58a0600d3a、製品source db99a485f857b1aefa7fb738456f36a830514158。
+- [公開run41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前5群、deploy、実配信N09/N10四幅、保持N08各版/N11と証拠uploadまでSUCCESS。121asset byte/実namespace/完了reload/履歴/native旧版trial全storage/reset取消・確定/他unit・旧版ledger保持を確認。
+- root通常TLSのHTTP200：w046-release.json SHA256217e7789946de81303d1a51372b9a1730281adce03f9a6ae61c360f31ff7ce5f、release.json SHA256ab55ad84424ba880eb9d5d1a06e087328d3b0db8ef0691d37eba4739c4914542。source/publisher・25source hash一致。asset全byte照合はActions checkerによる。
+- 非作者Bの実public origin対象審査：N09/390 r5 compiled8de81d5c…、N10/320 r4 compiled3cfe9538…。15原PNGを実見しH01/H03/H07/H14、タグ(16)/(33)、共通shell/resetを確認。新規確定欠陥なし。本人受入は別。
+- 撮影用fresh Chromiumは環境proxy CAによりTLS例外が必要だった。これはTLS合格ではない。通常TLSのurllibとActions通常browserの配信検証を別根拠として保持。未公開のlocal画像や旧配信を新公開画像へ転用していない。
+- Actions artifact w046-publication-evidence ID13117672439、API宣言size288617953/digest sha256:58492507c93c00887a1439b32e0fa1339e56aee0c928486d15cf7d620de6df8d。全288MBを再downloadして同じ検査を反復していない。実配信target PNG/result/manifestをこのWorkのevidence/ux03-fullへ保存。
+- 次は[N09第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09)/[N10第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)の本人総チェック。WorkをDONE、Gold/fit、正式台帳受理へ変更しない。下記の数学unsupported50/既存他Workgovernance38は保持。
+
+---
+
+## 公開前の検証記録（有効な履歴）
+
 # W046 UX-03 — 最新検証
 
 Status: PARTIAL / 製品候補の限定検査合格、公開承認前

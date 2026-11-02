@@ -22,3 +22,6 @@ GitHub固定source db99a485は実試験1151305と同一tree。main起点の公�
 
 ## A-UX03-07 — 公開承認待ちまで確定
 固定db99の配信用buildで新publisher8ケースとN08r7/r6/legacy/N11の既存実操作を全てPASS。N11検査shimは元byteへ復元。main側PR134のgovernance41388747203/code check41388747220もSUCCESS。コード・実画像・原FAILを保存し、公開の本人承認地点で保持。merge/deployを実施したとは記録しない。
+
+## A-UX03-08 — 本人公開承認と実配信検証
+本人「いいよ」を直前のPR134公開提案へ明示承認として記録。承認head/baseとlive identityを照合しexpected head fc961f58でmerge、publisher6bc54447/source db99a485を固定。run41389935781は全公開前検査→deploy→実配信byte/操作→保持N08/N11→証拠uploadまでSUCCESS。非作者sourceAはmerged2filesのbyte一致を確認、sourceBは実public originで対象15画像を確認。proxy接続/CAによる撮影環境FAILは製品FAILと区別し、TLS例外を証明書合格にはしない。本人総チェック未受領のまま公開成功だけを記録。

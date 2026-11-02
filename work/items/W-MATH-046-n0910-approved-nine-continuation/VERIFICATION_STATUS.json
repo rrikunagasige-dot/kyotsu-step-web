@@ -1,8 +1,8 @@
 {
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
-  "recordedDate": "2026-11-01",
-  "status": "WAITING_PUBLICATION_APPROVAL",
+  "recordedDate": "2026-11-02",
+  "status": "PUBLISHED_HOSTED_PASS_USER_FINAL_CHECK_PENDING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -20,10 +20,10 @@
     "approvedPatchSHA256": "de8d4a454d036eaeaea9425fb5a0b97818963b63ebeea6fdb95b499f9bbbd556",
     "fullCandidateSourceMirrored": true,
     "candidateTestsExecutedOnGitHub": false,
-    "candidateSourceCommit": "94dfd300098484473211c22f5de73139b9002717",
-    "publisherCommit": "e49486d13119058ff063e75ef84d60660210bd41",
-    "publicationPR": 133,
-    "publicationRunId": 41332741779,
+    "candidateSourceCommit": "db99a485f857b1aefa7fb738456f36a830514158",
+    "publisherCommit": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+    "publicationPR": 134,
+    "publicationRunId": 41389935781,
     "publicationRunConclusion": "success"
   },
   "localCandidate": {
@@ -407,11 +407,11 @@
     "evidenceLibraryFileId": "libfile_5f3990a90e00819188f0cb550e908fff",
     "evidenceSha256": "d47dea711822ebb4802e6857c79c34d65021962cad546660d36fff791ab4ff3b",
     "publicationPR": 134,
-    "publisherSHA": "fc961f58c22f0cc3505f27aff2dec344a52ac660",
+    "publisherSHA": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
     "localPublicationEightCases": "PASS",
     "retainedPreflight": "PASS",
     "userFinalAcceptance": false,
-    "published": false,
+    "published": true,
     "formalReceipt": false,
     "mainPublisherCI": {
       "governance": {
@@ -422,6 +422,16 @@
         "runId": 41388747220,
         "conclusion": "success"
       }
+    },
+    "publicationRun": 41389935781,
+    "publicationConclusion": "success",
+    "hostedVisualReview": "TARGETED_HOSTED_VISUAL_PASS",
+    "hostedPngs": 15,
+    "hostedAssetsVerified": 121,
+    "publicationArtifactId": 13117672439,
+    "urls": {
+      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09",
+      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10"
     }
   }
 }

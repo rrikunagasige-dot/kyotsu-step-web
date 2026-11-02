@@ -1,0 +1,216 @@
+{
+  "status": "PUBLISHED_AND_HOSTED_VERIFIED",
+  "approval": {
+    "userText": "いいよ",
+    "proposal": "P-W046-PUBLISH-UX03",
+    "pr": 134,
+    "approvedHeadSHA": "fc961f58c22f0cc3505f27aff2dec344a52ac660"
+  },
+  "publisherSHA": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "actions": {
+    "runId": 41389935781,
+    "jobId": 125098872112,
+    "conclusion": "success",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781",
+    "evidenceArtifactId": 13117672439,
+    "allSteps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Checkout publisher checks from reviewed publisher revision",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run pnpm/action-setup@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/setup-python@v5",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run pnpm install --frozen-lockfile --ignore-scripts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Existing Word source adapter dependency",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python -m pip install -r tools/textbook/research/requirements-solution.txt",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs --check",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run pnpm run build",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate exact N09/N10 release supplement",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run pnpm exec playwright install --with-deps chromium",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/configure-pages@v5",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify exact release before upload",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Prepare original N11 figure decoding for prepublication verification",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify candidate bytes and N09/N10 operations before publication",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-pages-artifact@v3",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Publish approved N09/N10 candidate with retained N08 and N11",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify published N09/N10 bytes and operations",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify public source and N08 operations",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Await original N11 figure decoding in verification only",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify retained public N11",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/setup-python@v5",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run pnpm/action-setup@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Checkout publisher checks from reviewed publisher revision",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "directManifestCheck": {
+    "normalTLS": true,
+    "httpStatus": 200,
+    "sourceAndPublisherMatched": true,
+    "localSourceHashesMatched": 25,
+    "w046ReleaseSha256": "217e7789946de81303d1a51372b9a1730281adce03f9a6ae61c360f31ff7ce5f",
+    "releaseSha256": "ab55ad84424ba880eb9d5d1a06e087328d3b0db8ef0691d37eba4739c4914542"
+  },
+  "assetVerification": {
+    "executor": "GitHub Actions publication checker",
+    "files": 121,
+    "status": "PASS"
+  },
+  "nonauthorHostedImages": {
+    "reviewer": "/root/w046_render_review",
+    "status": "TARGETED_HOSTED_VISUAL_PASS",
+    "pngs": 15,
+    "contexts": [
+      {
+        "unit": "N09",
+        "width": 390,
+        "revision": 5
+      },
+      {
+        "unit": "N10",
+        "width": 320,
+        "revision": 4
+      }
+    ],
+    "browserTLSException": true,
+    "exceptionNotTlsPass": true
+  },
+  "userFinalAcceptance": false,
+  "Gold": false,
+  "fit": false,
+  "formalStoreReceipt": false
+}

@@ -1,0 +1,166 @@
+{
+  "status": "PASS",
+  "sourceSHA": "db99a485f857b1aefa7fb738456f36a830514158",
+  "publisherSHA": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+  "expected": {
+    "n09": {
+      "revision": 5,
+      "hash": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6"
+    },
+    "n10": {
+      "revision": 4,
+      "hash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895"
+    }
+  },
+  "base": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "results": [
+    {
+      "code": "n09",
+      "width": 390,
+      "http": 200,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?w046review=db99a485#/learning/textbook/math-numbers-expressions-n09",
+      "revision": 5,
+      "compiledHash": "8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6",
+      "answeredForTargetTraversal": 17,
+      "resetPresent": true
+    },
+    {
+      "code": "n10",
+      "width": 320,
+      "http": 200,
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?w046review=db99a485#/learning/textbook/math-numbers-expressions-n10",
+      "revision": 4,
+      "compiledHash": "3cfe95380892a1d7a34fdc3fa142448a9f953ddc983427c9626b4fbdd8b0b895",
+      "answeredForTargetTraversal": 46,
+      "resetPresent": true
+    }
+  ],
+  "images": [
+    {
+      "width": 390,
+      "node": "n09-01",
+      "state": "initial",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-01-initial.png",
+      "sha256": "b5f0fa0082c634006e9da283325b2a819926fefa9b87ce1dfebec11db63e8139"
+    },
+    {
+      "width": 390,
+      "node": "n09-01",
+      "state": "initial",
+      "whole": true,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-01-initial-page.png",
+      "sha256": "2f9d303d9d33bfdfe9ff73233d694658a06bc8457ccc48bb6834c5ae7f4a23ff"
+    },
+    {
+      "width": 390,
+      "node": "n09-01",
+      "state": "zeroLogic-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-01-zeroLogic-correct.png",
+      "sha256": "4b60e3ec66f9a7ed75c1901c0578864826e868500d6fd5a17067937e2e3b660f"
+    },
+    {
+      "width": 390,
+      "node": "n09-06",
+      "state": "initial",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-06-initial.png",
+      "sha256": "fbf8f60b764b1b9d737475734f7938d8ec726e557619cca54c76a71970064383"
+    },
+    {
+      "width": 390,
+      "node": "n09-06",
+      "state": "zero-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-06-zero-correct.png",
+      "sha256": "04cc52da95798110d6596e8e735cadb82bfcd64cc0814227f39ac0b5656da015"
+    },
+    {
+      "width": 390,
+      "node": "n09-07",
+      "state": "outsideFactor-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-07-outsideFactor-correct.png",
+      "sha256": "bcae1cd9e86cbf563645c13305e4d3d95931c9e122a17afc6531e38aa6cec4db"
+    },
+    {
+      "width": 390,
+      "node": "n09-07",
+      "state": "tag-regression",
+      "whole": true,
+      "path": "/tmp/w046-ux03-hosted-target-review/390-n09-07-tag-regression-page.png",
+      "sha256": "e31435b0c8a8247dae39a07014cd74ebacdb3e96a10ffe4688051f40855b0918"
+    },
+    {
+      "width": 320,
+      "node": "n10-02",
+      "state": "initial",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-02-initial.png",
+      "sha256": "7abc29c6211485b3426a5adba3ec0d4057457baf068850161fa8f2e70909b097"
+    },
+    {
+      "width": 320,
+      "node": "n10-02",
+      "state": "initial",
+      "whole": true,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-02-initial-page.png",
+      "sha256": "2720c39f9948f6617797cd5426f661f5aeb80db6c7caac60ba08204b534287ad"
+    },
+    {
+      "width": 320,
+      "node": "n10-02",
+      "state": "candidateSign-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-02-candidateSign-correct.png",
+      "sha256": "9fa17e59b306ef372765410267044d744b7350a863ac73fc51a0a01d492d56ac"
+    },
+    {
+      "width": 320,
+      "node": "n10-02",
+      "state": "squareValue-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-02-squareValue-correct.png",
+      "sha256": "1153b6b1b24f813dd2569dd6123db656028256c5ed93dccaa96d8f7168e99454"
+    },
+    {
+      "width": 320,
+      "node": "n10-02",
+      "state": "identificationReason-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-02-identificationReason-correct.png",
+      "sha256": "b0da5d5e07d40aebf6c35a1c6e13fcbe4a8f8ec1dd14e2aecd070ccad373c3f2"
+    },
+    {
+      "width": 320,
+      "node": "n10-q17-factor",
+      "state": "initial",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-q17-factor-initial.png",
+      "sha256": "46674b446e12715546255a520dcf37a8c25725411eb195504fd417c910a14cf3"
+    },
+    {
+      "width": 320,
+      "node": "n10-17",
+      "state": "initial",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-17-initial.png",
+      "sha256": "49034b0fae07c5ba9318ae0e5504149de53edf4d4b23189e7770fd5ce87ea039"
+    },
+    {
+      "width": 320,
+      "node": "n10-17",
+      "state": "productOperation-correct",
+      "whole": false,
+      "path": "/tmp/w046-ux03-hosted-target-review/320-n10-17-productOperation-correct.png",
+      "sha256": "89b245981bb98932d0b541a918dfa7b823c7959b56b37b0677c175d214fdd6a7"
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "network": [],
+  "scope": "Targeted deployed UI confirmation; not full-state regression or learner acceptance",
+  "networkMode": "Explicit environment HTTPS proxy; isolated context ignores browser certificate-authority errors for sandbox proxy certificate only. urllib verified release manifest and root verified hosted asset hashes independently.",
+  "scriptSHA256": "7d897aa95c6d5d64dcd40e1d959281e17753befdffd12b3705c336ca9fe8230d"
+}

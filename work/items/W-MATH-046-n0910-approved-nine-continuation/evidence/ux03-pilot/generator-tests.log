@@ -1,0 +1,16 @@
+✔ n09 uses the existing v3 compiler and browser validator on the same artifact (302.114787ms)
+✔ n10 uses the existing v3 compiler and browser validator on the same artifact (230.759112ms)
+✔ same-sized row or part substitution cannot acquire a new compile receipt (273.145549ms)
+✔ changing source bytes or the reviewed design is rejected before compilation (59.918026ms)
+✔ layout tokens, numbers, gates and nested-display templates are source-bound (276.645967ms)
+✔ a changed compiled payload is rejected even when the writer recomputes a self-reported hash (184.664865ms)
+✔ calculated support and source figure are attached only to their certified target (189.058263ms)
+✔ native compile preserves the exact source and plan identities in the pinned artifact (180.728218ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2036.51919

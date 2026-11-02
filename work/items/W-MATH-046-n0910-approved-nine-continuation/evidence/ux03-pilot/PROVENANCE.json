@@ -1,0 +1,129 @@
+{
+  "sourceSHA": "830b620b343112e4f8c4e3d00b51461dc8ecc098",
+  "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
+  "images": [
+    {
+      "width": 320,
+      "name": "initial",
+      "path": "/tmp/w046-ux03-review/320-initial.png",
+      "sha256": "68963424d9e2850606f79184fffb6f5e328e68f4c8d6023e5d983c782bb16e74"
+    },
+    {
+      "width": 320,
+      "name": "page",
+      "path": "/tmp/w046-ux03-review/320-page.png",
+      "sha256": "b4e437379459cf00f7e2f37da1c7efdcdf4a92a7bcc4d19a01dab848e87c9c75"
+    },
+    {
+      "width": 320,
+      "name": "square",
+      "path": "/tmp/w046-ux03-review/320-square.png",
+      "sha256": "23fcb7055cc4475b1ed9a6b7856b69fa283110f09d6914ead51cbc48a3448418"
+    },
+    {
+      "width": 320,
+      "name": "reason",
+      "path": "/tmp/w046-ux03-review/320-reason.png",
+      "sha256": "21790a803d81a9daf137b4baf4f23eefbc44bb17d361ea53633f1a108bc07928"
+    },
+    {
+      "width": 320,
+      "name": "complete",
+      "path": "/tmp/w046-ux03-review/320-complete.png",
+      "sha256": "a6e3f7e58e28dc95dc2d91f3df5dbb7e0dc52069df1919c42e13e555f07b2c04"
+    },
+    {
+      "width": 320,
+      "name": "n08",
+      "path": "/tmp/w046-ux03-review/320-n08.png",
+      "sha256": "1e16a3ea8ed0076706c2f83e5be4a48e786cc0f9418a391d3cfada8af2e1fa54"
+    },
+    {
+      "width": 390,
+      "name": "initial",
+      "path": "/tmp/w046-ux03-review/390-initial.png",
+      "sha256": "bc7d6543918e1800ab5f467b723825cf4afbf39d946ecc4a3cefe455f900d5ec"
+    },
+    {
+      "width": 390,
+      "name": "square",
+      "path": "/tmp/w046-ux03-review/390-square.png",
+      "sha256": "bb133c53377c6eec9736aeda1fc31b360b70b098d4362f83924827b67a7eab76"
+    },
+    {
+      "width": 390,
+      "name": "reason",
+      "path": "/tmp/w046-ux03-review/390-reason.png",
+      "sha256": "ee104347b7744920d20caa0d2905401441af3a5f0cea82768a0febe262512846"
+    },
+    {
+      "width": 390,
+      "name": "complete",
+      "path": "/tmp/w046-ux03-review/390-complete.png",
+      "sha256": "e18cb4b9d1833feef53d42d6a5fe4f9a804a9ee2c759f01e1621e2e1a1b37e26"
+    },
+    {
+      "width": 430,
+      "name": "initial",
+      "path": "/tmp/w046-ux03-review/430-initial.png",
+      "sha256": "66d1e3a0b221e9c6cc822adba55bb061d61e07358920cea0b450e3de9bcb25c1"
+    },
+    {
+      "width": 430,
+      "name": "square",
+      "path": "/tmp/w046-ux03-review/430-square.png",
+      "sha256": "64b2995992554d8cbd23687f2e2cb7caac5eb0e90f0bc3350337d20d67d72934"
+    },
+    {
+      "width": 430,
+      "name": "reason",
+      "path": "/tmp/w046-ux03-review/430-reason.png",
+      "sha256": "fc5d247cb6f69ec7e604d22abd2cc4e419ec821db04ae032b180359797353586"
+    },
+    {
+      "width": 430,
+      "name": "complete",
+      "path": "/tmp/w046-ux03-review/430-complete.png",
+      "sha256": "dbad27d4898af39d697ef619a54fe90ee5b26682892796f4c947e7b62911ea4d"
+    },
+    {
+      "width": 1440,
+      "name": "initial",
+      "path": "/tmp/w046-ux03-review/1440-initial.png",
+      "sha256": "1c55734f5c30129bfe331258291ca5c154d2fc7d706124b0543a30f7c31f877e"
+    },
+    {
+      "width": 1440,
+      "name": "page",
+      "path": "/tmp/w046-ux03-review/1440-page.png",
+      "sha256": "88f668e75e0714300a206b23f47ef1197b0f4a642e8d74ddd3680c7d1b307a64"
+    },
+    {
+      "width": 1440,
+      "name": "square",
+      "path": "/tmp/w046-ux03-review/1440-square.png",
+      "sha256": "84a51be86f6d9e2127f1e17284a48847a63e5a895e7bc2ff537745d84e2ae2ba"
+    },
+    {
+      "width": 1440,
+      "name": "reason",
+      "path": "/tmp/w046-ux03-review/1440-reason.png",
+      "sha256": "886a13e5c169390fd2d42b063e824db37b7cf0742e7f4e8b8bc2e8afcd2eed9e"
+    },
+    {
+      "width": 1440,
+      "name": "complete",
+      "path": "/tmp/w046-ux03-review/1440-complete.png",
+      "sha256": "8f77e8899a73fe3b8c95335c6077b7df26931e98ef3abdbbd889d89e827e3163"
+    },
+    {
+      "width": 1440,
+      "name": "n08",
+      "path": "/tmp/w046-ux03-review/1440-n08.png",
+      "sha256": "84bad400c031ef70484719dd01b13a23cbfd4dec584b5c378229ae09157f52ec"
+    }
+  ],
+  "errors": [],
+  "annotation": "確認① added to capture DOM only; math, prose and choices unmodified",
+  "captureScriptSha256": "1bf4f19ad3c78c9e9e3dd5f94e81fb424b0f210c8abfcf34241b173778b761e8"
+}

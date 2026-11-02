@@ -1,10 +1,13 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: IMPLEMENTING / P-W046-UX-03本人承認済み、√125代表ブロック
-- 本人「じゃ作り直そう」に基づき、正本の修正手順・提案書式で[修正案全文](PROPOSAL.md)を作成。旧P-W046-UX-02は穴詳細・排版・書式が不足した未完成案として下部履歴に保持する。
-- P-W046-UX-03: 完成本文→穴位置・問い・全候補・誤答説明・解放順を17nodeごとに設計。残る69nodeの維持表・既存穴契約を収録。N08基準の画面構成・余白・式軸・選択肢・左下reset、旧版保存・移行・検査を具体化。
-- 提案書SHA-256: `4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5`。2026-11-02 JST、本人「まあこれでいいでしょう。承認」で本案を明示承認。√125場面の代表ブロックを先に検査・本人確認し、残りへ限定適用。本番main/Pagesの変更は別の公開ゲート。
-- 旧技術PASS・公開SUCCESSを保持するが、本人受入にはしない。Gold/fitなし。一回限りの旧Store欠落特例は保持し、正式台帳の提出・受理を捏造しない。
+Status: IMPLEMENTING
+Review: PILOT-BLOCK-CHECK-PENDING / 本人G3_FINAL要修正は未解消
+- P-W046-UX-03は本人「まあこれでいいでしょう。承認」で明示承認済み。承認対象の設計本文hash4409a8d8…は旧commit85a5367に保持。PROPOSAL.mdの承認・実装状態欄だけ現状へ更新し、設計本文は変更しない。
+- H07（√125）と共通表示・操作の代表実装を固定source `830b620b343112e4f8c4e3d00b51461dc8ecc098` へ保存。新N10 r4、compiledHash `5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b`。N09 compiledと旧N10 r3 snapshotは基準byte一致。残り16nodeの穴設計は未変更。
+- [確認①の実画像票](REVIEW_SHEET.md)：四幅で正性→平方→同定理由→結論、N08基準の段階帯・番号付き縦選択肢・左下resetを確認できる。AのH07意味審査とBの固定SHA実画像審査は限定PASS。本人の細部OKは未受領。
+- 検証：120回帰・生成器8件・型/変更TS lint/buildがPASS。四幅で全52parts/各102誤答、828状態・3528幾何、保存/旧版/履歴/resetと移行をPASS。finite-mathは90parts/候補179、失敗0・意味審査対象31でPARTIAL。全体を自動合格へ変更しない。
+- 全体governanceは既存の他Work記録不足等で未合格。源candidate42件=修正前42件、今回の新規違反なし。このWorkの正規記録整備で自身の4件を解消、残る38件は他Workの既存不整合。本番main/Pages未変更、Gold/fitなし。正式台帳の受理を捏造しない。
+- 次：承認案の代表ブロック本人確認→細部OKなら残り16nodeへ限定適用→影響検査・非作者審査・別公開ゲート・本人総チェック。現時点でWork完了とはしない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -200,3 +203,13 @@ N09 r5／N10 r4を作り、現r4/r3を比較用に残す。原r3/r2も保持。�
 - 承認対象：commit85a53672826fb204a7e182f56b975d80b4727747のPROPOSAL.md、SHA-256 4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5。承認した本文byteは変更せず、このWORKと状態JSONへ承認証拠を記録する。
 - 限定実装・検証用候補の保存を開始。まずn10-q02-sign→n10-02（√125）とN08基準の表示・操作の代表ブロック。本人の小ブロック確認前に他16nodeの教材を一括変更しない。本番main/Pagesは別の公開ゲート。
 - 本発言は品質合格・正式台帳受理・公開許可には転用しない。
+
+
+## P-W046-UX-03 代表実装と確認票（2026-11-02 JST）
+- 実装source `830b620b343112e4f8c4e3d00b51461dc8ecc098`（承認記録adbbc230の後続、独立検証branchのみ）。H07の3part、nodeをまたぐ式group/意味別group、現在stage/履歴、重複memo抑制、既存共通shellと左下resetを実装。
+- 検証途中のFAILを消さない：型2箇所、旧版固定fixtureを現designへ取り違えたmigration55件、N10 r4のschema literal未登録を検知して補修。旧fixtureはpriorReviewedDesignRawの元byte/hashへ固定し、版3を4へ一括置換しなかった。
+- A非作者審査で、r2由来の保留回答の親記録欠落、mainだけに残るr3を旧版比較が読まない問題を発見し補修。初回値・回数・時刻・初回正誤とread-only fallbackを保持。再読確認済み。
+- B予備実画像審査で番号枠・同一導出内余白・小ラベルの横並び・条件再掲を指摘し補修。撮影時のsticky header重なりはviewport高の調整で除去し、製品の式/本文を画像加工しなかった。
+- Source固定後に撮影した全20PNGのhashと出所はevidence/ux03-pilot/PROVENANCE.json。確認①は撮影DOMへの注記であり製品内容ではない。Bは全20枚を実見し、固定SHAに対して限定PASS。AはH07の正性・同定理由の意味審査を明示PASS。誰の試験実行かを混同しない。
+- [VERIFICATION.md](VERIFICATION.md)と[実browser結果](evidence/ux03-pilot/BROWSER_RESULTS.json)に実行結果・保護対象・未検証範囲を記録。公開・本人受入・全17node完成は未認定。
+- 記録形式：このWork内のACTION_LOG/FINDINGS/VERIFICATIONを正規ファイルへ整備。歴史のWORK本文・旧失敗・旧承認は保持。PROPOSAL.mdは承認/実装状態欄のみ更新し、現文書hash `e5964b58fd3ebb7099856a9760bf04e503b6069f939493f1bf3d880b653a6fe2`、承認対象設計本文hash4409a8d8…とは役割を区別する。

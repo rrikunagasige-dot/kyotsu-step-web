@@ -1,6 +1,7 @@
 # W046 修正提案 — P-W046-UX-03
 
-Status: PROPOSED / NOT APPROVED / NOT IMPLEMENTED  
+Status: APPROVED
+Implementation: H07 PILOT IMPLEMENTED / REMAINING 16 PENDING PILOT REVIEW
 Created: 2026-11-02  
 Supersedes: P-W046-UX-02（問題一覧と方針までの未完成案。旧本文・レビュー履歴はWORK.mdへ保存）
 
@@ -338,10 +339,10 @@ N09をr5、N10をr4とする。現r4/r3と従来r3/r2の比較・readonlyを保�
 
 ## Approval
 
-Status: WAITING  
-Approved by user: NO  
-Approval date: —  
-Approval evidence: —
+Status: APPROVED
+Approved by user: YES
+Approval date: 2026-11-02 JST
+Approval evidence: 本人「まあこれでいいでしょう。承認」。承認した設計本文はcommit85a53672826fb204a7e182f56b975d80b4727747、SHA-256 `4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5`。現ファイルは承認・実装状態の欄だけ更新し、設計本文は変更しない。
 
 今回の「じゃ作り直そう」は本案の作成指示であり、まだ提示していなかった本案の実装承認には転用しない。本案そのものの明示承認後に、記載した限定実装へ進む。
 

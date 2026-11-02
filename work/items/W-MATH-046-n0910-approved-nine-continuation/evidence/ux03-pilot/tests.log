@@ -1,0 +1,18 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux03
+
+ ✓ src/domain/nestedLesson.test.ts (9 tests) 17ms
+ ✓ src/domain/nestedLessonStorage.test.ts (8 tests) 18ms
+ ✓ src/domain/nestedLesson.design.test.ts (5 tests) 746ms
+   ✓ materialized N09/N10 candidate, not hosted reader acceptance > N09: every authored math row compiles in empty and completed states  312ms
+ ✓ src/components/textbook/nestedMathTemplate.test.ts (23 tests) 358ms
+ ✓ src/domain/nestedMigration.test.ts (59 tests) 2730ms
+   ✓ source-bound reviewed N10 migration > blocks missing firstValue, contradictory grading, unknown candidates, reverse times and invalid counts  424ms
+ ✓ src/stores/nestedProgressBridge.test.ts (5 tests) 23ms
+ ✓ src/pages/N0910ArchivePage.test.tsx (11 tests) 910ms
+
+ Test Files  7 passed (7)
+      Tests  120 passed (120)
+   Start at  12:27:34
+   Duration  5.68s (transform 3.56s, setup 0ms, collect 8.23s, tests 4.80s, environment 2.59s, prepare 1.37s)
+

@@ -2,7 +2,7 @@
   "work": "W-MATH-046-n0910-approved-nine-continuation",
   "proposal": "P-LAYOUT-01",
   "recordedDate": "2026-11-01",
-  "status": "IMPLEMENTING_APPROVED_UX03_PILOT",
+  "status": "IMPLEMENTING_PILOT_BLOCK_CHECK_PENDING",
   "earlierDetailedRecordCommit": "abcaaac37893a3d724f894d93d5d4f65800997f4",
   "github": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
@@ -140,10 +140,10 @@
     "originalFindingClosed": false
   },
   "remaining": [
-    "Implement and verify approved sqrt125 pilot; user visual gate before remaining batch",
-    "Implement and verify sqrt125 pilot; authentic GitHub visual review before remaining batch",
-    "Apply approved remaining scope, affected regression and nonauthor review; freeze candidate",
-    "Separate publication gate and exact hosted candidate verification before final actual user evaluation"
+    "User visual review of exact sqrt125 pilot confirmation sheet, per approved proposal",
+    "After pilot visual OK: implement the remaining16 learning-action changes under UX-03",
+    "Affected cross-unit verification and nonauthor review; resolve required blockers before release",
+    "Separate publication gate, exact hosted-candidate verification, then final actual user evaluation"
   ],
   "protected": {
     "mainWritten": true,
@@ -277,7 +277,7 @@
       "N09": 4,
       "N10": 3
     },
-    "implementationStarted": false,
+    "implementationStarted": true,
     "publicationChanged": false,
     "approvalScope": "limited implementation and candidate verification; separate publication gate",
     "pilot": "n10-q02-sign -> n10-02, sqrt125; actual screenshot review before remaining batch",
@@ -288,7 +288,9 @@
       "source": "current_chat_user_reply_to_exact_UX03_approval_question",
       "proposalCommit": "85a53672826fb204a7e182f56b975d80b4727747",
       "proposalSha256": "4409a8d83f709ca9b9d9976774f81115929c1cde84b717a7e8d523029706afe5"
-    }
+    },
+    "approvedDesignCommit": "85a53672826fb204a7e182f56b975d80b4727747",
+    "currentDocumentSha256": "e5964b58fd3ebb7099856a9760bf04e503b6069f939493f1bf3d880b653a6fe2"
   },
   "revisedProposalHistory": [
     {
@@ -307,5 +309,70 @@
       "reason": "User identified missing detailed hole/presentation design and canonical proposal format",
       "supersededBy": "P-W046-UX-03"
     }
-  ]
+  ],
+  "activeProposal": "P-W046-UX-03",
+  "currentPilot": {
+    "sourceSha": "830b620b343112e4f8c4e3d00b51461dc8ecc098",
+    "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b",
+    "scope": [
+      "n10-02",
+      "shared presentation/controls"
+    ],
+    "remainingLearningActionNodes": 16,
+    "reviewStatus": "PILOT-BLOCK-CHECK-PENDING",
+    "sheet": "REVIEW_SHEET.md",
+    "userVisualAcceptance": false,
+    "tests": {
+      "regression": {
+        "passed": 120,
+        "failed": 0
+      },
+      "sourceBoundGeneration": {
+        "passed": 8,
+        "failed": 0
+      },
+      "typecheck": "PASS",
+      "changedTypeScriptLint": "PASS",
+      "build": "PASS"
+    },
+    "browser": {
+      "status": "PASS",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "partsPerWidth": 52,
+      "wrongCandidatesPerWidth": 102,
+      "states": 828,
+      "geometryMeasurements": 3528,
+      "resultsPath": "evidence/ux03-pilot/BROWSER_RESULTS.json"
+    },
+    "math": {
+      "finite": "PARTIAL",
+      "parts": 90,
+      "candidates": 179,
+      "unsupported": 31,
+      "failed": 0,
+      "newExactSquare": "PASS",
+      "newSignAndRootIdentificationNonAuthor": "PASS"
+    },
+    "nonAuthor": {
+      "A": "H07 meaning and source/migration read review PASS",
+      "B": "fixed SHA, all20 images/hash, presentation PASS",
+      "notIndependentRerun": true
+    },
+    "globalGovernance": {
+      "sourceErrors": 42,
+      "prePilotBaselineErrors": 42,
+      "newSourceErrors": 0,
+      "status": "FAIL_PREEXISTING",
+      "notFullGovernancePass": true,
+      "afterOwnWorkRecordCompletionErrors": 38,
+      "ownWorkErrorsRemoved": 4,
+      "remainingOutsideWork": true
+    },
+    "publicationChanged": false
+  }
 }

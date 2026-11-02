@@ -1,0 +1,800 @@
+{
+  "status": "PARTIAL",
+  "partCount": 90,
+  "candidateCount": 179,
+  "unsupportedParts": 31,
+  "failures": [],
+  "results": [
+    {
+      "partId": "n09-q01-negative::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q01-negative-before",
+        "n09-q01-negative-interaction-0",
+        "n09-q01-negative-equation",
+        "n09-q01-negative-after"
+      ]
+    },
+    {
+      "partId": "n09-q02-root::value",
+      "status": "UNSUPPORTED",
+      "detail": "unexpected character after line continuation character (<unknown>, line 1)",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-q02-negative-square::signFactor",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q02-negative-square-before",
+        "n09-q02-negative-square-interaction-0",
+        "n09-q02-negative-square-equation",
+        "n09-q02-negative-square-after"
+      ]
+    },
+    {
+      "partId": "n09-q02-negative-square::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q02-negative-square-before",
+        "n09-q02-negative-square-interaction-0",
+        "n09-q02-negative-square-equation",
+        "n09-q02-negative-square-after"
+      ]
+    },
+    {
+      "partId": "n09-q03-inside::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q03-inside-before",
+        "n09-q03-inside-interaction-0",
+        "n09-q03-inside-equation",
+        "n09-q03-inside-after"
+      ]
+    },
+    {
+      "partId": "n09-03::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-03-before",
+        "n09-03-interaction-0",
+        "n09-03-equation",
+        "n09-03-after"
+      ]
+    },
+    {
+      "partId": "n09-q04-nonnegative::value",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-q04-negative::value",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-05::value",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-q06-squares::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q06-squares-before",
+        "n09-q06-squares-interaction-0",
+        "n09-q06-squares-equation",
+        "n09-q06-squares-after"
+      ]
+    },
+    {
+      "partId": "n09-q06-order::relation",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-06::zero",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-06-before",
+        "n09-06-interaction-0",
+        "n09-06-equation",
+        "n09-06-after"
+      ]
+    },
+    {
+      "partId": "n09-q07-negation::scope",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-07::left",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-07-before",
+        "n09-07-interaction-0",
+        "n09-07-equation",
+        "n09-07-after"
+      ]
+    },
+    {
+      "partId": "n09-07::sign",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-p001-q08-left-square::L1",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-left-square-before",
+        "n09-p001-q08-left-square-interaction-0",
+        "n09-p001-q08-left-square-equation",
+        "n09-p001-q08-left-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-left-square::L2",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-left-square-before",
+        "n09-p001-q08-left-square-interaction-0",
+        "n09-p001-q08-left-square-equation",
+        "n09-p001-q08-left-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-left-square::L3",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-left-square-before",
+        "n09-p001-q08-left-square-interaction-0",
+        "n09-p001-q08-left-square-equation",
+        "n09-p001-q08-left-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-right-square::R1",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-right-square-before",
+        "n09-p001-q08-right-square-interaction-0",
+        "n09-p001-q08-right-square-equation",
+        "n09-p001-q08-right-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-right-square::R2",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-right-square-before",
+        "n09-p001-q08-right-square-interaction-0",
+        "n09-p001-q08-right-square-equation",
+        "n09-p001-q08-right-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-right-square::R3",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-p001-q08-right-square-before",
+        "n09-p001-q08-right-square-interaction-0",
+        "n09-p001-q08-right-square-equation",
+        "n09-p001-q08-right-square-after"
+      ]
+    },
+    {
+      "partId": "n09-p001-q08-lower-sign::C",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-p001-q08-upper-sign::D",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-q10-reject-truncation::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q10-reject-truncation-before",
+        "n09-q10-reject-truncation-interaction-0",
+        "n09-q10-reject-truncation-equation",
+        "n09-q10-reject-truncation-after"
+      ]
+    },
+    {
+      "partId": "n09-10::n",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-10-before",
+        "n09-10-interaction-0",
+        "n09-10-equation",
+        "n09-10-after"
+      ]
+    },
+    {
+      "partId": "n09-q11-remainder::sign",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-q11-remainder::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q11-remainder-before",
+        "n09-q11-remainder-interaction-0",
+        "n09-q11-remainder-equation",
+        "n09-q11-remainder-after"
+      ]
+    },
+    {
+      "partId": "n09-q12-lower::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q12-lower-before",
+        "n09-q12-lower-interaction-0",
+        "n09-q12-lower-equation",
+        "n09-q12-lower-after"
+      ]
+    },
+    {
+      "partId": "n09-q12-upper::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q12-upper-before",
+        "n09-q12-upper-interaction-0",
+        "n09-q12-upper-equation",
+        "n09-q12-upper-after"
+      ]
+    },
+    {
+      "partId": "n09-12::lower",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-12::upper",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-q13-reverse::S1",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-q13-reverse::S2",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n09-13::left",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-13::right",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n09-q14-positive-integer::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q14-positive-integer-before",
+        "n09-q14-positive-integer-interaction-0",
+        "n09-q14-positive-integer-equation",
+        "n09-q14-positive-integer-after"
+      ]
+    },
+    {
+      "partId": "n09-q14-negative-integer::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n09-q14-negative-integer-before",
+        "n09-q14-negative-integer-interaction-0",
+        "n09-q14-negative-integer-equation",
+        "n09-q14-negative-integer-after"
+      ]
+    },
+    {
+      "partId": "n09-q14-negative-remainder::sign",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q01-square::rootSquare",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q01-square-before",
+        "n10-q01-square-interaction-0",
+        "n10-q01-square-equation",
+        "n10-q01-square-after"
+      ]
+    },
+    {
+      "partId": "n10-01::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-01-before",
+        "n10-01-interaction-0",
+        "n10-01-equation",
+        "n10-01-after"
+      ]
+    },
+    {
+      "partId": "n10-q02-sign::value",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q02-sign-before",
+        "n10-q02-sign-interaction-0",
+        "n10-q02-sign-equation",
+        "n10-q02-sign-after"
+      ]
+    },
+    {
+      "partId": "n10-02::candidateSign",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-02::squareValue",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-02-before",
+        "n10-02-interaction-0",
+        "n10-02-equation",
+        "n10-02-after"
+      ]
+    },
+    {
+      "partId": "n10-02::identificationReason",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q03-expand::powerA",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q03-expand::powerB",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-03::aValue",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-03::bValue",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q04-sign::relation",
+      "status": "UNSUPPORTED",
+      "detail": "unsupported expression",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q05-denominator::relation",
+      "status": "UNSUPPORTED",
+      "detail": "unsupported expression",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q05-square::numPower",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q05-square::denPower",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-05::numerator",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-05::denominator",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q06-sign::relation",
+      "status": "UNSUPPORTED",
+      "detail": "unsupported expression",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q07-product::inside",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q07-product-before",
+        "n10-q07-product-interaction-0",
+        "n10-q07-product-equation",
+        "n10-q07-product-after"
+      ]
+    },
+    {
+      "partId": "n10-07::factor",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-07-before",
+        "n10-07-interaction-0",
+        "n10-07-equation",
+        "n10-07-after"
+      ]
+    },
+    {
+      "partId": "n10-q08-factor::coefficient",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q08-factor-before",
+        "n10-q08-factor-interaction-0",
+        "n10-q08-factor-equation",
+        "n10-q08-factor-after"
+      ]
+    },
+    {
+      "partId": "n10-q09-left::coefficient",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q09-left-before",
+        "n10-q09-left-interaction-0",
+        "n10-q09-left-equation",
+        "n10-q09-left-after"
+      ]
+    },
+    {
+      "partId": "n10-q09-right::coefficient",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q09-right-before",
+        "n10-q09-right-interaction-0",
+        "n10-q09-right-equation",
+        "n10-q09-right-after"
+      ]
+    },
+    {
+      "partId": "n10-q10-coefficients::coefficient",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q10-coefficients-before",
+        "n10-q10-coefficients-interaction-0",
+        "n10-q10-coefficients-equation",
+        "n10-q10-coefficients-after"
+      ]
+    },
+    {
+      "partId": "n10-q11-formula::middleSign",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-11::leftSquare",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-11-before",
+        "n10-11-interaction-0",
+        "n10-11-equation",
+        "n10-11-after"
+      ]
+    },
+    {
+      "partId": "n10-11::rightSquare",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-11-before",
+        "n10-11-interaction-0",
+        "n10-11-equation",
+        "n10-11-after"
+      ]
+    },
+    {
+      "partId": "n10-q12-product::inside",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q12-product-before",
+        "n10-q12-product-interaction-0",
+        "n10-q12-product-equation",
+        "n10-q12-product-after"
+      ]
+    },
+    {
+      "partId": "n10-12::constant",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-12-before",
+        "n10-12-interaction-0",
+        "n10-12-equation",
+        "n10-12-after"
+      ]
+    },
+    {
+      "partId": "n10-q13-identity::operation",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-13::left",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-13-before",
+        "n10-13-interaction-0",
+        "n10-13-equation",
+        "n10-13-after"
+      ]
+    },
+    {
+      "partId": "n10-13::right",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-13-before",
+        "n10-13-interaction-0",
+        "n10-13-equation",
+        "n10-13-after"
+      ]
+    },
+    {
+      "partId": "n10-13::difference",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-13-before",
+        "n10-13-interaction-0",
+        "n10-13-equation",
+        "n10-13-after"
+      ]
+    },
+    {
+      "partId": "n10-14::operation",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q15-factor::factor",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-15::numerator",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-15-before",
+        "n10-15-interaction-0",
+        "n10-15-equation",
+        "n10-15-after"
+      ]
+    },
+    {
+      "partId": "n10-q16-denominator::square",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q16-denominator-before",
+        "n10-q16-denominator-interaction-0",
+        "n10-q16-denominator-equation",
+        "n10-q16-denominator-after"
+      ]
+    },
+    {
+      "partId": "n10-q16-denominator::denominator",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q16-denominator-before",
+        "n10-q16-denominator-interaction-0",
+        "n10-q16-denominator-equation",
+        "n10-q16-denominator-after"
+      ]
+    },
+    {
+      "partId": "n10-q17-factor::factor",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q17-nonzero::relation",
+      "status": "PASS",
+      "scope": "numeric relation only; teaching provenance requires separate review"
+    },
+    {
+      "partId": "n10-18::A",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-18-before",
+        "n10-18-interaction-0",
+        "n10-18-equation",
+        "n10-18-after"
+      ]
+    },
+    {
+      "partId": "n10-18::B",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-18-before",
+        "n10-18-interaction-0",
+        "n10-18-equation",
+        "n10-18-after"
+      ]
+    },
+    {
+      "partId": "n10-18::C",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-18-before",
+        "n10-18-interaction-0",
+        "n10-18-equation",
+        "n10-18-after"
+      ]
+    },
+    {
+      "partId": "n10-19::left",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-19-before",
+        "n10-19-interaction-0",
+        "n10-19-equation",
+        "n10-19-after"
+      ]
+    },
+    {
+      "partId": "n10-19::inside",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-19-before",
+        "n10-19-interaction-0",
+        "n10-19-equation",
+        "n10-19-after"
+      ]
+    },
+    {
+      "partId": "n10-q20-factor::factor",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q20-factor::reason",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-20::power",
+      "status": "UNSUPPORTED",
+      "detail": "symbolic/source-scope/teaching claim requires explicit review",
+      "required": "source-bound nonauthor review or solver extension"
+    },
+    {
+      "partId": "n10-q21-denominator::D",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q21-denominator-before",
+        "n10-q21-denominator-interaction-0",
+        "n10-q21-denominator-equation",
+        "n10-q21-denominator-after"
+      ]
+    },
+    {
+      "partId": "n10-q21-expand::P",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q21-expand-before",
+        "n10-q21-expand-interaction-0",
+        "n10-q21-expand-equation",
+        "n10-q21-expand-after"
+      ]
+    },
+    {
+      "partId": "n10-q21-expand::K",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q21-expand-before",
+        "n10-q21-expand-interaction-0",
+        "n10-q21-expand-equation",
+        "n10-q21-expand-after"
+      ]
+    },
+    {
+      "partId": "n10-q21-expand::Q",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q21-expand-before",
+        "n10-q21-expand-interaction-0",
+        "n10-q21-expand-equation",
+        "n10-q21-expand-after"
+      ]
+    },
+    {
+      "partId": "n10-q21-constants::C",
+      "status": "PASS",
+      "scope": "exact operation value and candidate grading",
+      "sourceRefs": [
+        "n10-q21-constants-before",
+        "n10-q21-constants-interaction-0",
+        "n10-q21-constants-equation",
+        "n10-q21-constants-after"
+      ]
+    }
+  ],
+  "sympyVersion": "1.14.0",
+  "meaningReviewRequired": true,
+  "appVerificationStatus": "NOT_RUN",
+  "designSha256": "83a6b4e7fd992f4e44cf049bc55e042ed620456e5b7bb76b66f77d9117daff48"
+}

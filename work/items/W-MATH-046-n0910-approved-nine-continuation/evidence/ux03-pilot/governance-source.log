@@ -1,0 +1,47 @@
+Juku repository governance check
+errors: 42
+ERROR: W-GOV-010-coded-authoring: missing Work record WORK.md
+ERROR: W-GOV-010-coded-authoring: missing Work record PROPOSAL.md
+ERROR: W-GOV-010-coded-authoring: missing Work record ACTION_LOG.md
+ERROR: W-GOV-010-coded-authoring: missing Work record FINDINGS.md
+ERROR: W-GOV-010-coded-authoring: missing Work record VERIFICATION.md
+ERROR: W-GOV-010-coded-authoring: WORK.md missing Status
+ERROR: W-GOV-011-solution-production: missing Work record VERIFICATION.md
+ERROR: W-GOV-011-solution-production: WORK.md missing Status
+ERROR: W-GOV-012-three-agent-orchestration: missing Work record WORK.md
+ERROR: W-GOV-012-three-agent-orchestration: missing Work record PROPOSAL.md
+ERROR: W-GOV-012-three-agent-orchestration: missing Work record ACTION_LOG.md
+ERROR: W-GOV-012-three-agent-orchestration: missing Work record FINDINGS.md
+ERROR: W-GOV-012-three-agent-orchestration: WORK.md missing Status
+ERROR: W-MATH-027-first-theme-repair: WORK.md missing Status
+ERROR: W-MATH-028-n01-teaching-sequence: WORK.md missing Status
+ERROR: W-MATH-029-section-one-teaching: WORK.md missing Status
+ERROR: W-MATH-030-section-one-results-and-blanks: WORK.md missing Status
+ERROR: W-MATH-032-n07-semantic-repair: executable Work status requires an APPROVED proposal
+ERROR: W-MATH-033-n08-absolute-value: executable Work status requires an APPROVED proposal
+ERROR: W-MATH-033-n08-absolute-value: DONE requires VERIFICATION Status: PASS
+ERROR: W-MATH-034-n09-n10-guided-design: executable Work status requires an APPROVED proposal
+ERROR: W-MATH-035-choice-order-factor-audit: executable Work status requires an APPROVED proposal
+ERROR: W-MATH-036-ne02-n11-n12-guided-design: WORK.md missing Status
+ERROR: W-MATH-037-n08-workflow-trial: WORK.md missing Status
+ERROR: W-MATH-038-transformation-groups: WORK.md missing Status
+ERROR: W-MATH-039-n08-grouped-transformations: WORK.md missing Status
+ERROR: W-MATH-040-n08-construction-layout: missing Work record WORK.md
+ERROR: W-MATH-040-n08-construction-layout: missing Work record PROPOSAL.md
+ERROR: W-MATH-040-n08-construction-layout: missing Work record ACTION_LOG.md
+ERROR: W-MATH-040-n08-construction-layout: missing Work record FINDINGS.md
+ERROR: W-MATH-040-n08-construction-layout: missing Work record VERIFICATION.md
+ERROR: W-MATH-040-n08-construction-layout: WORK.md missing Status
+ERROR: W-MATH-043-n0910-restart: missing Work record WORK.md
+ERROR: W-MATH-043-n0910-restart: missing Work record PROPOSAL.md
+ERROR: W-MATH-043-n0910-restart: missing Work record ACTION_LOG.md
+ERROR: W-MATH-043-n0910-restart: missing Work record FINDINGS.md
+ERROR: W-MATH-043-n0910-restart: missing Work record VERIFICATION.md
+ERROR: W-MATH-043-n0910-restart: WORK.md missing Status
+ERROR: W-MATH-046-n0910-approved-nine-continuation: missing Work record ACTION_LOG.md
+ERROR: W-MATH-046-n0910-approved-nine-continuation: missing Work record FINDINGS.md
+ERROR: W-MATH-046-n0910-approved-nine-continuation: missing Work record VERIFICATION.md
+ERROR: W-MATH-046-n0910-approved-nine-continuation: WORK.md missing Status
+warnings: 2
+WARN: relative markdown link requires migration-era review: navigation/CURRENT_POSITION.md
+WARN: relative markdown link requires migration-era review: navigation/MASTER_MATCH_GRAPH.md

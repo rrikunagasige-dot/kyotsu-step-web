@@ -190,7 +190,9 @@ export function compileNestedMathTemplate(options: CompileNestedMathOptions): Co
   const breaks = options.breakAtPaths ?? (options.breakAtPath ? [options.breakAtPath] : [])
   if (new Set(breaks).size !== breaks.length || breaks.some(path => !rootBreakPaths.includes(path) && !semanticRootBreakPaths.includes(path))) fail('UNSAFE_BREAK_PATH')
   function emit(node: MathTemplateNode, path: string): string {
-    const markRoot = (latex: string) => rootRelation?.path === path ? '\\mathrel{' + latex + '\\phantom{\\smash{\\rlap{\\text{' + rootRelation.marker + '}}}}}' : latex
+    // Both siblings are relations: a trailing ordinary phantom would add 5mu
+    // of internal TeX glue (5px at 18px), despite the marker itself being zero-width.
+    const markRoot = (latex: string) => rootRelation?.path === path ? '\\mathrel{\\mathrel{' + latex + '}\\mathrel{\\phantom{\\smash{\\rlap{\\text{' + rootRelation.marker + '}}}}}}' : latex
     if (rootRelation?.path === path && node.type === 'symbol') return markRoot(node.value)
     if (node.type === 'slot' || node.type === 'mirror') {
       const part = parts.get(node.key); if (!part) return fail('UNKNOWN_PART:' + node.key)
@@ -280,7 +282,10 @@ export function bindNestedRootRelation(root: HTMLElement, compiled: CompiledNest
   if (!compiled.rootRelation) return undefined
   const markers = [...root.querySelectorAll<HTMLElement>('.katex-html .nested-slot-marker')].filter(el => el.textContent === compiled.rootRelation!.marker)
   if (markers.length !== 1) return fail('ROOT_RELATION_MARKER_MISMATCH')
-  const relation = markers[0].closest<HTMLElement>('.mrel')
-  if (!relation || !root.contains(relation)) return fail('ROOT_RELATION_BINDING')
+  // The nearest relation owns only the zero marker. Its common parent also
+  // owns the actual relation glyph/slot, and therefore its real center.
+  const markerRelation = markers[0].closest<HTMLElement>('.mrel')
+  const relation = markerRelation?.parentElement
+  if (!relation || !relation.classList.contains('mrel') || relation.children.length !== 2 || relation.lastElementChild !== markerRelation || !relation.firstElementChild?.classList.contains('mrel') || !root.contains(relation)) return fail('ROOT_RELATION_BINDING')
   return relation
 }

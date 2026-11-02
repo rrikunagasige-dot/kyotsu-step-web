@@ -238,3 +238,37 @@ describe('UX05 resolved display is ordinary closed math, not a filled neutral sl
     expect(proven.measurementOnly).toBe(true)
   })
 })
+
+
+describe('root identity markers do not change ordinary TeX spacing', () => {
+  const mspaces = (html: string) => {
+    const root = document.createElement('div'); root.innerHTML = html
+    return [...root.querySelectorAll('.katex-html .mspace')].map(e => e.getAttribute('style'))
+  }
+  it('matches marker-free ordinary rendering, rather than comparing two equally marked compilers', () => {
+    const parts = [{ key: 'factor', kind: 'math', choices: [{ value: '(x-4)(x+4)' }, { value: '(x-4)^2' }] }]
+    const c = compileNestedMathTemplate({ template: '{factor}=0', parts, values: { factor: '(x-4)(x+4)' }, certifiedKeys: ['factor'] })
+    const ordinary = renderClosedMath('(x-4)(x+4)=0')
+    expect(mspaces(c.html)).toEqual(mspaces(ordinary))
+    expect(c.slots).toHaveLength(0)
+    expect(c.resolvedParts.map(p => p.key)).toEqual(['factor'])
+    const root = document.createElement('div'); root.innerHTML = c.html
+    const relation = bindNestedRootRelation(root, c)!
+    expect(relation.firstElementChild?.textContent).toBe('=')
+    expect(relation.querySelector('.mspace')).toBeNull()
+    expect(relation.lastElementChild?.querySelector('.nested-slot-marker')?.textContent).toBe('NROOTREL0000')
+  })
+  it('keeps relation binding without marker glue for initial/wrong/resolved relation slots and mirrors', () => {
+    const parts = [{ key: 'p', kind: 'math', role: 'relation', choices: [{ value: '>' }, { value: '<' }] }]
+    const states: { values: Record<string, string>; certifiedKeys: string[] }[] = [{ values: {}, certifiedKeys: [] }, { values: { p: '<' }, certifiedKeys: [] }, { values: { p: '>' }, certifiedKeys: ['p'] }]
+    for (const state of states) {
+      const c = compileNestedMathTemplate({ template: '3{p}2', parts, ...state })
+      const root = document.createElement('div'); root.innerHTML = c.html
+      const relation = bindNestedRootRelation(root, c)!
+      expect(relation.lastElementChild?.textContent).toBe('NROOTREL0000')
+      expect([...relation.children].filter(e => e.classList.contains('mspace'))).toHaveLength(0)
+    }
+    const c = compileNestedMathTemplate({ template: '3{mirror:p}2', parts, values: { p: '>' }, certifiedKeys: ['p'] })
+    expect(mspaces(c.html)).toEqual(mspaces(renderClosedMath('3>2')))
+  })
+})

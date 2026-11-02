@@ -1,0 +1,17 @@
+✔ n09 native blank and interaction planning must use nested parents without flat interactions (850.04167ms)
+✔ n10 native blank and interaction planning must use nested parents without flat interactions (541.320253ms)
+✔ n09 native novice snapshots use every real part and preserve the runtime frontier (311.855529ms)
+✔ n10 native novice snapshots use every real part and preserve the runtime frontier (210.737056ms)
+✔ nested layout operations reject partial, stale and legacy-axis evidence instead of accepting geometry alone (139.422763ms)
+✔ synthetic all-state labels cannot substitute an unrelated formula for real rows and slots (264.58358ms)
+✔ public layout phases retain neutral frames for wrong choices and replan only after certification or exposure (94.821518ms)
+✔ reader formula contract has no memo, preserves history tags, and does not prefix math extras (1.831678ms)
+✔ full-run importer rejects wrong stage, old filled readonly mode, memo injection and incomplete auto stages (730.149116ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3640.936798

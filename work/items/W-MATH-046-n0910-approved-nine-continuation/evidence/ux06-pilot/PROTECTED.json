@@ -1,0 +1,10 @@
+{
+  "status": "PASS_STRUCTURAL_PROTECTION_ONLY",
+  "n10CompiledRegenerationExact": true,
+  "onlyChangedNode": [
+    "n09-decimal-method"
+  ],
+  "oldN09SnapshotExact": true,
+  "candidateHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+  "productUnpublished": true
+}

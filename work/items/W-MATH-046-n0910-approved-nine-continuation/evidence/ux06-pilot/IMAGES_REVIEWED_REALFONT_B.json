@@ -1,0 +1,468 @@
+{
+  "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+  "reviewer": "/root/w046_render_review",
+  "manualViewScope": "正常実font版の19main crop（320全7、390/430/1440各初期/交差項前/係数前/完成4）、320部分2crop、各幅初期/完成8full-page、320部分2full-page、新規接続390crop/full2。計33file。6scopeの原cropは最終request c38bc…生成後にも再実見。",
+  "notClaimed": "全保存原PNG全件/全49part全状態の手動実見ではない。旧40fileはbefore-real-font-checkへ別退避し転用しない。matrix lifecycle合格と別。",
+  "images": [
+    {
+      "path": "/tmp/w046-ux06/review-images/320-01-initial.png",
+      "sha256": "b1310e2926fb1f3385342a4143561a69ea609042ac2bc42c0936a7e562701442",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-correct-ux06BinomialBase.png",
+      "sha256": "4d7a4d6d70a00f727e4b51ca6ee53e9af80a6af72ec3b2682c8f68078692e03e",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06BinomialBase"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-correct-ux06DistributeB.png",
+      "sha256": "16ea6012aade4c035278d553584057b1f24707fb628ae7e9a5b5a2088e74d3d7",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06DistributeB"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-before-ux06CrossProduct.png",
+      "sha256": "16ea6012aade4c035278d553584057b1f24707fb628ae7e9a5b5a2088e74d3d7",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "before-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-correct-ux06LastSquare.png",
+      "sha256": "07becbe9e9eab91340590195e10fefb329f0d0a752bc14cc7211e4c9ad4059b9",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06LastSquare"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-before-ux06LikeTermCount.png",
+      "sha256": "07becbe9e9eab91340590195e10fefb329f0d0a752bc14cc7211e4c9ad4059b9",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "before-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-correct-ux06LikeTermCount.png",
+      "sha256": "b0c104d03dd9ad89894a9f0ed12d4dda842afdc5975c7f056e9c6c2fa51f21b1",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-01-initial-full-page.png",
+      "sha256": "5bbed02036c0dd89a80bb08e4982834f52e907175e6d25323b3a406bcc82fe7a",
+      "kind": "full-page",
+      "width": 320,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/320-correct-ux06LikeTermCount-full-page.png",
+      "sha256": "9d7d1552e0a0ec385671580a128028dd25b2c8651bc6f2610bfda40d3bf0a252",
+      "kind": "full-page",
+      "width": 320,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-01-initial.png",
+      "sha256": "16e7486a92913def0da68fbb38d0649af6f78e347555b3781a557a3117ef264c",
+      "kind": "node-crop",
+      "width": 390,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-before-ux06CrossProduct.png",
+      "sha256": "cd6edec808affb3f2563c95a67bd97128d65e313630a2309f5f4be918fe636e8",
+      "kind": "node-crop",
+      "width": 390,
+      "state": "before-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-before-ux06LikeTermCount.png",
+      "sha256": "346a1a7d072861c36b2ff3e102627eeceb20e35baf6ff56a57bf2f7c001cad6c",
+      "kind": "node-crop",
+      "width": 390,
+      "state": "before-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-correct-ux06LikeTermCount.png",
+      "sha256": "6d44033db341468accfd1cae259b0d95d8d5dd12da968ee0cb7debb33e980b17",
+      "kind": "node-crop",
+      "width": 390,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-01-initial-full-page.png",
+      "sha256": "f9a949208c206ab099cd1882398114ea92a77b1dcd7b8c01492f3443e1a2fbf6",
+      "kind": "full-page",
+      "width": 390,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/390-correct-ux06LikeTermCount-full-page.png",
+      "sha256": "0f54f377b2a7f96831d9932a1dce2e2b966c3f5fb6e9a00a0e1b4ed5c11fad54",
+      "kind": "full-page",
+      "width": 390,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-01-initial.png",
+      "sha256": "20d6deb606bbbe2aa0f50e62297d10ef3863a8d59c67332ed71378bfdde3de50",
+      "kind": "node-crop",
+      "width": 430,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-before-ux06CrossProduct.png",
+      "sha256": "51a614caa2b2f74df95d13b383f9c61bd9456fa4f7a160aa71c4361ead0a9129",
+      "kind": "node-crop",
+      "width": 430,
+      "state": "before-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-before-ux06LikeTermCount.png",
+      "sha256": "f22f4095097720466704b5089a82726b7c47884e673c68b2ff4c8e2c56d031b0",
+      "kind": "node-crop",
+      "width": 430,
+      "state": "before-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-correct-ux06LikeTermCount.png",
+      "sha256": "e0daab6781c27492adc930ab9a0c5172220f1fb2bf6c6aba7d8cd254e039ad2c",
+      "kind": "node-crop",
+      "width": 430,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-01-initial-full-page.png",
+      "sha256": "98eb671daddc8bde23b814c8f54cdbf2e5696ecd506fb281f198a8de7fdd7b16",
+      "kind": "full-page",
+      "width": 430,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/430-correct-ux06LikeTermCount-full-page.png",
+      "sha256": "5c097f5dcc36beb3327127a6d492df26f3495123ca2d78e53f557c5f14a04a41",
+      "kind": "full-page",
+      "width": 430,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-01-initial.png",
+      "sha256": "387a945706c15d87526d2a99f69944b2f89c9093e23251cfc218dc2ffa0609f9",
+      "kind": "node-crop",
+      "width": 1440,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-before-ux06CrossProduct.png",
+      "sha256": "76c9ee11d75fe737237f86f8d36d7bd042bfe2bac05504f97b098e5a10d185a8",
+      "kind": "node-crop",
+      "width": 1440,
+      "state": "before-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-before-ux06LikeTermCount.png",
+      "sha256": "b04fdda9c29b0cdf0ebb6f122cc5ec1bdeeced0c4c2e8e71566a3f31baf47f76",
+      "kind": "node-crop",
+      "width": 1440,
+      "state": "before-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-correct-ux06LikeTermCount.png",
+      "sha256": "d993949331f93993015738d0927b51b228d21cf52a88ba07e1ac72ac1ac35f65",
+      "kind": "node-crop",
+      "width": 1440,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-01-initial-full-page.png",
+      "sha256": "0e5e910df8ff61797919b6b3014bd3edaac51ea1676e5618f6f66b38559b2634",
+      "kind": "full-page",
+      "width": 1440,
+      "state": "01-initial"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images/1440-correct-ux06LikeTermCount-full-page.png",
+      "sha256": "71a282a92b9331320f28ae71912d4b0d780a8204b75ffa998571369e318dbdd7",
+      "kind": "full-page",
+      "width": 1440,
+      "state": "correct-ux06LikeTermCount"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06DistributeA.png",
+      "sha256": "9119bf9a90a0dc0aa68230f28ee0e98bd05b879dcfa57e2b38fa031df05ee714",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06DistributeA"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06DistributeA-full-page.png",
+      "sha256": "cb14e39fcdf33cdab2c55db5448a291ffa21652cb8f9c12cd25a99f563e857f8",
+      "kind": "full-page",
+      "width": 320,
+      "state": "correct-ux06DistributeA"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06CrossProduct.png",
+      "sha256": "f9f80d0e7aacc9accbe115736eb139205e073d05d043b431b0f9e3076f6aa085",
+      "kind": "node-crop",
+      "width": 320,
+      "state": "correct-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06CrossProduct-full-page.png",
+      "sha256": "0fd7c6a0d74db99c456dc1495631ba96e585576d319039f36eed7397d7b95c88",
+      "kind": "full-page",
+      "width": 320,
+      "state": "correct-ux06CrossProduct"
+    },
+    {
+      "path": "/tmp/w046-ux06/fresh-connection/390-correct-ux06LikeTermCount.png",
+      "sha256": "37a5134a17ce17edc87b6275f0714ea2c8474d5105eea2fc3b9f0a65527851ad",
+      "kind": "fresh-connection-stage-crop",
+      "width": 390,
+      "state": "new6-complete-old-q08-unanswered"
+    },
+    {
+      "path": "/tmp/w046-ux06/fresh-connection/390-correct-ux06LikeTermCount-full-page.png",
+      "sha256": "71bf9623e7c01cf065f9c8cde0613b0ef2c1673a728f93cac88831b2bd553fd4",
+      "kind": "fresh-connection-full-page",
+      "width": 390,
+      "state": "new6-complete-old-q08-unanswered"
+    }
+  ],
+  "fontCaptureEvidence": [
+    {
+      "path": "/tmp/w046-ux06/review-images/RESULT.json",
+      "sha256": "8cd841ee9289b7e8a96339210ab3962d016151b9e914ffb7c064c1fbad8ec3fb",
+      "sourceHashes": {
+        "src/components/textbook/construction-lesson-reading.css": "00aa7db228b56f768dfc9050e382b0effbe24f501979d236457b8a11c8458254",
+        "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "02f91d500fe6dd11f4299f48da288027929eb6ee4ba9f2bc5d3bf57bd5d6d3b6",
+        "src/pages/N0910RevisionPage.tsx": "22dba711e249a1983342c4d6e84dfa80c1449cb50831d2885de69c61c2e5a5e1",
+        "src/domain/nestedMigration.ts": "724acc2a1dfce7e3c2372b316071f9e77aba6e107a7d1284344d7ac13d36c5f4"
+      },
+      "runs": [
+        {
+          "width": 320,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size3",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        },
+        {
+          "width": 390,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size3",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        },
+        {
+          "width": 430,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        },
+        {
+          "width": 1440,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "path": "/tmp/w046-ux06/review-images-partial/RESULT.json",
+      "sha256": "700599021ff644b7c1f9a72a42a2e0689852c853821e6d3a70e1342789ba8a67",
+      "sourceHashes": {
+        "src/components/textbook/construction-lesson-reading.css": "00aa7db228b56f768dfc9050e382b0effbe24f501979d236457b8a11c8458254",
+        "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "02f91d500fe6dd11f4299f48da288027929eb6ee4ba9f2bc5d3bf57bd5d6d3b6",
+        "src/pages/N0910RevisionPage.tsx": "22dba711e249a1983342c4d6e84dfa80c1449cb50831d2885de69c61c2e5a5e1",
+        "src/domain/nestedMigration.ts": "724acc2a1dfce7e3c2372b316071f9e77aba6e107a7d1284344d7ac13d36c5f4"
+      },
+      "runs": [
+        {
+          "width": 320,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size3",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "path": "/tmp/w046-ux06/fresh-connection/RESULT.json",
+      "sha256": "e05378db53383e6429768b19944e8f1cd77c3d4be0f68d23ad525f1cd5bab8ad",
+      "sourceHashes": {
+        "src/components/textbook/construction-lesson-reading.css": "00aa7db228b56f768dfc9050e382b0effbe24f501979d236457b8a11c8458254",
+        "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "02f91d500fe6dd11f4299f48da288027929eb6ee4ba9f2bc5d3bf57bd5d6d3b6",
+        "src/pages/N0910RevisionPage.tsx": "22dba711e249a1983342c4d6e84dfa80c1449cb50831d2885de69c61c2e5a5e1",
+        "src/domain/nestedMigration.ts": "724acc2a1dfce7e3c2372b316071f9e77aba6e107a7d1284344d7ac13d36c5f4"
+      },
+      "runs": [
+        {
+          "width": 390,
+          "fontStatus": {
+            "loaded": [
+              {
+                "family": "KaTeX_AMS",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Main",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Math",
+                "style": "italic"
+              },
+              {
+                "family": "KaTeX_Size1",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size2",
+                "style": "normal"
+              },
+              {
+                "family": "KaTeX_Size3",
+                "style": "normal"
+              }
+            ],
+            "errors": []
+          },
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

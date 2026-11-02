@@ -1,0 +1,75 @@
+{
+  "status": "SCOPED_REPRESENTATIVE_VERIFIED_PENDING_USER_DETAIL",
+  "proposal": "P-W046-UX-06",
+  "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+  "scope": "decimal-method6NEW + native typography + required revision/storage connection; remaining10derivations/3prose not implemented",
+  "unitTests": {
+    "uniquePassed": 115,
+    "groups": [
+      18,
+      76,
+      21
+    ],
+    "nativeNodeTests": 9,
+    "oldFailuresPreserved": true
+  },
+  "math": "Five polynomial identity transitions verified by existing SymPy1.14 graph operation; semantic teaching review is separate",
+  "browser": "BROWSER_VERIFICATION.json: four actual widths /88packet from2 identified raw batches; real font loaded/error0/HTTP0; lifecycle passed",
+  "resetUnknown": "Six scoped R8/R9 reset precedence and unknown artifact cases passed",
+  "n10FontImpact": "Six targeted cases: three types at320/1440. Not N10 content acceptance",
+  "layoutMeaning": "Existing construction-layout request/import:6slot scoped review PASS / automaticAcceptance:false",
+  "freshConnection": "After6answers firstQ08middleTerm remains unanswered; genuine stage image saved",
+  "notCompleted": [
+    "representative user detail acceptance",
+    "remaining10derivation/3prose implementation",
+    "full affected-unit/app acceptance",
+    "publication/main merge",
+    "formalStore receipt/Gold/fit"
+  ],
+  "rawEvidenceMap": {
+    "browser-diagnostic/RESULT.json": {
+      "saved": "raw/browser-diagnostic-RESULT.json.gz",
+      "uncompressedSHA256": "4a4e8a132808b2722f31ceacafaa133980f463ffb0f70ca4584cfcf02b0a66ed"
+    },
+    "browser-remaining/RESULT.json": {
+      "saved": "raw/browser-remaining-RESULT.json.gz",
+      "uncompressedSHA256": "015a864e7cecbe940e3cf15046e8d198ad61122ff3b18272a93c66e92211967d"
+    },
+    "review-images/RESULT.json": {
+      "saved": "raw/review-images-RESULT.json.gz",
+      "uncompressedSHA256": "8cd841ee9289b7e8a96339210ab3962d016151b9e914ffb7c064c1fbad8ec3fb"
+    },
+    "review-images-partial/RESULT.json": {
+      "saved": "raw/review-images-partial-RESULT.json.gz",
+      "uncompressedSHA256": "700599021ff644b7c1f9a72a42a2e0689852c853821e6d3a70e1342789ba8a67"
+    },
+    "fresh-connection/RESULT.json": {
+      "saved": "raw/fresh-connection-RESULT.json.gz",
+      "uncompressedSHA256": "e05378db53383e6429768b19944e8f1cd77c3d4be0f68d23ad525f1cd5bab8ad"
+    },
+    "reset-unknown/RESULT.json": {
+      "saved": "raw/reset-unknown-RESULT.json.gz",
+      "uncompressedSHA256": "8473dd3898db4a1cba3a2da73941d49b867a335e6120118c75a63135656e5a03"
+    },
+    "n10-font-impact/RESULT.json": {
+      "saved": "raw/n10-font-impact-RESULT.json.gz",
+      "uncompressedSHA256": "e7fda3f1e4d6883df2a26d2dcedfeca509ac0459c7b9e3eb0b3a8fc77b5e0504"
+    },
+    "math/CODE_INPUTS.json": {
+      "saved": "raw/math-CODE_INPUTS.json.gz",
+      "uncompressedSHA256": "1e601400ea0ca6d961844cba560e54e56884796844e44b85e60f03d874cdd59a"
+    },
+    "math/CODE_OUTPUTS.json": {
+      "saved": "raw/math-CODE_OUTPUTS.json.gz",
+      "uncompressedSHA256": "7bf66984bd7b3eb67d5c61ea2f3d8514591cfd000dd4ae9091fec0ac16ace7a4"
+    },
+    "math/CODE_SUMMARY.json": {
+      "saved": "raw/math-CODE_SUMMARY.json.gz",
+      "uncompressedSHA256": "a86c6ff5ac7e81a43172ce6115b20b317a29a1058db45f349f0aa5f73c585d38"
+    }
+  },
+  "policyAuthority": "mainf4c WORK_SYSTEM§12A / BLOCK_REVIEW_SHEET P003; Work W-GOV010 not adopted",
+  "publication": "mainf4c/publishedsource691d unchanged",
+  "formalStoreReceipt": false
+}

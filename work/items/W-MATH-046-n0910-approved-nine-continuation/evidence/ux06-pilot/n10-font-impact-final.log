@@ -1,0 +1,6 @@
+PASS 320 n10-q03-expand::powerA
+PASS 320 n10-q13-identity::cancellingPairUX05
+PASS 320 n10-20::rationalisedFractionUX05
+PASS 1440 n10-q03-expand::powerA
+PASS 1440 n10-q13-identity::cancellingPairUX05
+PASS 1440 n10-20::rationalisedFractionUX05

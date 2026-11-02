@@ -1,0 +1,1248 @@
+[
+  {
+    "image": "images/390-01-initial.png",
+    "original": "images/390-01-initial-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 598.65625
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-correct-ux06BinomialBase.png",
+    "original": "images/390-correct-ux06BinomialBase-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 735.375
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-correct-ux06DistributeB.png",
+    "original": "images/390-correct-ux06DistributeB-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 807.578125
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-before-ux06CrossProduct.png",
+    "original": "images/390-before-ux06CrossProduct-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 807.578125
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-correct-ux06LastSquare.png",
+    "original": "images/390-correct-ux06LastSquare-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 1016.328125
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-before-ux06LikeTermCount.png",
+    "original": "images/390-before-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 1016.328125
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/390-correct-ux06LikeTermCount.png",
+    "original": "images/390-correct-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 922.328125,
+      "width": 336,
+      "height": 1225.796875
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-01-initial.png",
+    "original": "images/1440-01-initial-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 504.1875
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-correct-ux06BinomialBase.png",
+    "original": "images/1440-correct-ux06BinomialBase-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 576.34375
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-correct-ux06DistributeB.png",
+    "original": "images/1440-correct-ux06DistributeB-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 648.328125
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-before-ux06CrossProduct.png",
+    "original": "images/1440-before-ux06CrossProduct-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 648.328125
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-correct-ux06LastSquare.png",
+    "original": "images/1440-correct-ux06LastSquare-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 792.296875
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-before-ux06LikeTermCount.png",
+    "original": "images/1440-before-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 792.296875
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/1440-correct-ux06LikeTermCount.png",
+    "original": "images/1440-correct-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 416.59375,
+      "y": 842.953125,
+      "width": 606.8125,
+      "height": 875.03125
+    },
+    "viewport": 1440,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-01-initial.png",
+    "original": "images/320-01-initial-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 631.046875
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-correct-ux06BinomialBase.png",
+    "original": "images/320-correct-ux06BinomialBase-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 767.765625
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-correct-ux06DistributeB.png",
+    "original": "images/320-correct-ux06DistributeB-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 866.84375
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-before-ux06CrossProduct.png",
+    "original": "images/320-before-ux06CrossProduct-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 866.84375
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-correct-ux06LastSquare.png",
+    "original": "images/320-correct-ux06LastSquare-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 1075.59375
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-before-ux06LikeTermCount.png",
+    "original": "images/320-before-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 1075.59375
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/320-correct-ux06LikeTermCount.png",
+    "original": "images/320-correct-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 1347.96875
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-01-initial.png",
+    "original": "images/430-01-initial-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 536.578125
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-correct-ux06BinomialBase.png",
+    "original": "images/430-correct-ux06BinomialBase-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 670.8125
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-correct-ux06DistributeB.png",
+    "original": "images/430-correct-ux06DistributeB-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 775.1875
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-before-ux06CrossProduct.png",
+    "original": "images/430-before-ux06CrossProduct-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 775.1875
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-correct-ux06LastSquare.png",
+    "original": "images/430-correct-ux06LastSquare-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 954.25
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-before-ux06LikeTermCount.png",
+    "original": "images/430-before-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 954.25
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/430-correct-ux06LikeTermCount.png",
+    "original": "images/430-correct-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 925.4375,
+      "width": 376,
+      "height": 1101.765625
+    },
+    "viewport": 430,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/partial-320-correct-ux06DistributeA.png",
+    "original": "images/partial-320-correct-ux06DistributeA-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 745.265625
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/partial-320-correct-ux06CrossProduct.png",
+    "original": "images/partial-320-correct-ux06CrossProduct-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 1027.171875,
+      "width": 266,
+      "height": 866.84375
+    },
+    "viewport": 320,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "image": "images/fresh-390-correct-ux06LikeTermCount.png",
+    "original": "images/fresh-390-correct-ux06LikeTermCount-full-page.png",
+    "bounds": {
+      "x": 27,
+      "y": 695.625,
+      "width": 336,
+      "height": 2173.203125
+    },
+    "viewport": 390,
+    "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+    "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+    "fontStatus": {
+      "loaded": [
+        {
+          "family": "KaTeX_AMS",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Main",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Math",
+          "style": "italic"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "style": "normal"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "style": "normal"
+        }
+      ],
+      "errors": []
+    }
+  }
+]

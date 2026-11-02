@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+  "localCheckoutBase": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "method": "Git tree/blob identity for all app source, public assets and build entry files",
+  "checked": {
+    "src": {
+      "local": "ae483ff06ffd0304fa61c952f3ef31c045a66ac0",
+      "remote": "ae483ff06ffd0304fa61c952f3ef31c045a66ac0",
+      "equal": true
+    },
+    "public": {
+      "local": "f6369a54f998012513d969f83989026cfb78c729",
+      "remote": "f6369a54f998012513d969f83989026cfb78c729",
+      "equal": true
+    },
+    "package.json": {
+      "local": "b9bd72db44ce1cb397428006eb5e4bfaccc7a62f",
+      "remote": "b9bd72db44ce1cb397428006eb5e4bfaccc7a62f",
+      "equal": true
+    },
+    "pnpm-lock.yaml": {
+      "local": "149a1a1c936e36a6fdee006b849e72e8ad7756e0",
+      "remote": "149a1a1c936e36a6fdee006b849e72e8ad7756e0",
+      "equal": true
+    },
+    "vite.config.ts": {
+      "local": "bbb6e931e221eaf7488579591f98716f401f40f2",
+      "remote": "bbb6e931e221eaf7488579591f98716f401f40f2",
+      "equal": true
+    },
+    "index.html": {
+      "local": "dff5ffa2fcba8b553b2a733d8fa5f25c47a5aa15",
+      "remote": "dff5ffa2fcba8b553b2a733d8fa5f25c47a5aa15",
+      "equal": true
+    }
+  }
+}

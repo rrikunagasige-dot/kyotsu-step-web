@@ -1,0 +1,13 @@
+from pathlib import Path
+import json
+r=Path('/workspace/scratch/6ff917b2ec4a/w046-ux06-pilot');d=r/'src/data/textbook/math/numbers'
+a=json.loads((d/'n09ConstructionCompiledR8.json').read_text());b=json.loads((d/'n09ConstructionCompiled.json').read_text());ap={p['id']:p for n in a['nodeDesign']for p in n['parts']};bp={p['id']:p for n in b['nodeDesign']for p in n['parts']};assert all(ap[id]==bp[id]for id in ap)
+edge={'unitId':a['unitId'],'sourceRevision':8,'sourceCompiledHash':a['compiledHash'],'targetFromRevision':8,'targetRevision':9,'targetCompiledHash':b['compiledHash'],'keepPartIds':list(ap),'retirePartIds':[],'newPartIds':[id for id in bp if id not in ap],'reviewBasis':'P-W046-UX-06 approved representative: six new derivation parts; all43 prior parts exact. Added node gate re-evaluated, old completion never fills NEW.'}
+(d/'n0910Ux06Migration.json').write_text(json.dumps({'schemaVersion':'n0910-reviewed-native-mapping/1','proposal':'P-W046-UX-06','edges':[edge]},ensure_ascii=False,indent=2)+'\n')
+p=r/'src/domain/nestedMigration.ts';s=p.read_text();s="import ux06Mapping from '../data/textbook/math/numbers/n0910Ux06Migration.json'\n"+s;s=s.replace('const ux05Edge = ux05Mapping.edges.find','const ux05Edge = [...ux05Mapping.edges, ...ux06Mapping.edges].find');p.write_text(s)
+p=d/'n09Lesson.ts';s=p.read_text().replace('revision8','revision9').replace('n09Revision8.json','n09Revision9.json');p.write_text(s)
+p=r/'src/domain/textbookSchema.ts';s=p.read_text().replace('unit.revision === 7 || unit.revision === 8)','unit.revision === 7 || unit.revision === 8 || unit.revision === 9)');p.write_text(s)
+p=r/'src/pages/N0910ArchivePage.tsx';s=p.read_text();s="import previousN09R8 from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'\n"+s;s=s.replace("code === 'n09' ? revision === 7 ?", "code === 'n09' ? revision === 8 ? previousN09R8 : revision === 7 ?");p.write_text(s)
+p=r/'src/pages/N0910RevisionPage.tsx';s=p.read_text();s="import n09PreviousR8 from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'\n"+s;s=s.replace('n09: [n09PreviousR7','n09: [n09PreviousR8, n09PreviousR7').replace('[n09PreviousR5, n09PreviousR6, n09PreviousR7] as','[n09PreviousR5, n09PreviousR6, n09PreviousR7, n09PreviousR8] as');p.write_text(s)
+p=r/'src/pages/TextbookUnitPage.tsx';s=p.read_text().replace("    if (code === 'n09' && params.get('version') === '7')", "    if (code === 'n09' && params.get('version') === '8') return <N0910ArchivePage code={code} nativeRevision={8} />\n    if (code === 'n09' && params.get('version') === '7')");p.write_text(s)
+print('source/keep/new',len(ap),len(edge['keepPartIds']),len(edge['newPartIds']))

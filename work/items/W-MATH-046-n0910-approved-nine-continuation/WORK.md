@@ -1,12 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: FAILED-VERIFICATION
-Review: USER-QA-NEEDS-FIX / UX06-R04-PROPOSAL
-- 本人NGに対してR03全86設計を個別照合し、R04具体案P-W046-UX-06を作成。[案の確認入口](evidence/ux06-proposal/README.md) / [全件監査](evidence/ux05-full-re-audit/AUDIT_86.md)。11導出再設計・3本文限定・native限定font。製品修正済みとは扱わない。
-- Aは数学/学習契約/保存の非作者審査。Bは主担当の理念/工程監視と可視情報を反証。初稿の交差項先出し・旧条件の完成公式2件等を止めて訂正。旧KEEP/検査件数を理念適合の根拠にしない。
-- 次はR05で新案hash/範囲の承認照合。既UX05承認や案作成指示を新案実装の承認にしない。承認後R06はdecimal-methodの和の平方を代表にし、R07 CODE/意味/四幅実画像と本人細部確認へ。毎小ブロックで[工程図](WORKFLOW_CURRENT.md)とMASTER§52を照合する。
-- source691d/main publisherf4c/公開内容は不変。新案の実装・公開・本人受入は未実施。必要な計算・√a√b証明9node・旧版/進捗を保護する。
-- CODEの構造/候補照合とAI意味審査を分離。数学依存不足UNSUPPORTED、raw採否NEEDS_AI_REVIEW、本文IR/実画像/移行NOT_RUNを明示。正式Store26欠落特例を維持し、空Store/架空receipt/Gold/fitや工程PASSEDを作らない。他Workの採用状態も変えない。
+Status: VERIFYING
+Review: UX06-REPRESENTATIVE-BLOCK-CHECK-PENDING / APP-NEEDS-FIX
+- P-W046-UX-06は本人「可以来吧」（page818ccd59…）で承認。[承認記録](evidence/ux06-proposal/APPROVAL.json)。R05照合→R06和の平方代表→R07の限定CODE/意味/実画像審査を実施。次は**代表の本人細部確認**。[確認票](evidence/ux06-pilot/REVIEW.md)。同じ案の承認を聞き直さない。
+- 固定source `a98640fd2757b2b9766cbbd085d16ea37ec437ad`、N09代表r9/compiled de799…。decimal-methodに6NEW、旧43KEEP、他40node/N10教材不変。代表を固定し、本人細部OK後の本適用はN09r10/N10r6として同r9を上書きしない。
+- Aは数学/保存、Bは主担当の理念/工程/実画像を非作者審査。Bがlead16px残存を止め、追加CODEがfont403を検出。旧font-ready判定を撤回し、全role18px＋Main/Math italic実load/HTTP0で再検査。[検査結果と原FAIL](evidence/ux06-pilot/VERIFICATION.json)。
+- 現在の四幅88packetは実fontの2生batch、保存/未知版6ケース、115関連回帰/native9、恒等式検査、代表6slotの画像審査と取込を限定根拠にする。旧固定port timeoutは原因未確定で原記録を保持。全単元の新規受入/正式Store受理へ拡張しない。
+- 次：main§12Aの代表細部OK→承認済み残り10導出/3本文を限定適用→R07/G2横断検証。新確定欠陥は差戻し。mainf4c/公開source691dは未変更、公開/本人総合受入/Gold/fitなし。Store26欠落特例・他Work未採用を維持。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

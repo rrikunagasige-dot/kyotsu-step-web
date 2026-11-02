@@ -1,0 +1,11 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux06-pilot
+
+ ✓ src/domain/nestedLesson.ux06Pilot.test.ts (3 tests) 244ms
+ ✓ src/domain/textbookNestedContract.test.ts (18 tests) 707ms
+
+ Test Files  2 passed (2)
+      Tests  21 passed (21)
+   Start at  01:11:45
+   Duration  3.22s (transform 1.58s, setup 0ms, collect 3.22s, tests 951ms, environment 1ms, prepare 486ms)
+

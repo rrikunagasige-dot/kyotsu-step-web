@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：本人総チェックのNEEDS-FIXからR01記録/R02原因/R03全86調査を経て、R04具体案UX06を作成。現在も製品はNEEDS-FIX。次は新案のR05承認照合。過去CROSS-VERIFIEDは履歴であり、現在の適合判定にはしない。[原NG](evidence/ux05-user-ng/FEEDBACK.json) / [新案](evidence/ux06-proposal/README.md)。source691d/publisherf4cは未変更、本人受入/Goldなし。
+- 実質の現在地：UX06本人承認を記録し、R05照合→R06和の平方代表→R07の限定検査/意味/実画像審査まで実施。現在は**代表本人細部確認待ち**。[確認票](evidence/ux06-pilot/REVIEW.md)。残り10導出/3本文は未適用、mainf4c/公開source691dも未変更。正式Storeの受理ではない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
@@ -22,13 +22,13 @@ R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報�
 
 ## R04具体案の現在地（UX06 / 2026-11-03 JST）
 
-[案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。次はR05の新案承認照合。新案の承認/製品反映/公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
+[案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。新案は[承認済み](evidence/ux06-proposal/APPROVAL.json)。代表を限定実装・検査し、現在は本人細部確認待ち。公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
 
-今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。案承認後はR06代表限定→R07 CODE/意味/四幅実画像→本人細部確認→残り限定適用。小ブロックごとにこの入口とMASTER§52を照合する。
+今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。次は本人細部確認→残り限定適用。小ブロックごとにこの入口とMASTER§52を照合する。
 
 ## 本適用の版と保存
 
-本人確認済みN09r7 pilotは固定保存し、本適用はN09r8（from7）/N10r5（from4）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。
+UX05のN09r7 pilot/r8・N10r5を固定保存。UX06代表はN09r9（from8）、本人細部OK後の本適用はN09r10（from9）/N10r6（from5）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。
 
 ## 今回の実行順
 
@@ -38,7 +38,7 @@ R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報�
 |---|---|---|---|
 |R04不足の照合|承認案を既存N0910 NODE_DESIGN/IR/組立・配置契約へ対応。capabilitiesの版・facet・opt-in条件を確認。math.solve/verify、teaching.plan/step.plan/blank.plan、interaction.plan、construction/layout.validate等の適用入力を特定して実行可能な経路へ渡す|Mが対応と入力を固定。Aが数学/主判断、Bが組版/操作の適用を反証。未知法則の教授と具体適用、必要計算、先出しを確認|全必要処理に入力・既存実装・出力・未対応の扱いがある。独自のID集計だけで代用しない。承認済み内容不変なら再承認不要|
 |R05照合|proposal commit/hash/範囲をAPPROVALと照合。承認原文は転記証拠として保持|Mが照合。AI/審査合意を本人承認にしない|同じ具体案に有効な承認がある|
-|R06代表|まずn09-q01-negative/n09-01と必要な共有renderer。既存source-bound generator：NODE_DESIGN→nested-lesson→compileTransformationV3→validateCompiledNestedLesson→compiled/revision/pins。`apply-n0910-construction.mjs`の対象指定で他unit書換えを限定|Mが限定実装。Aは数学/保存、Bは数式AST/状態別寸法/操作を非作者審査|同一source・設計・compiled・pinが結び付き、変更は承認範囲内|
+|R06代表|UX06はn09-decimal-methodと承認済みnative fontを代表限定実装。既存source-bound generator：NODE_DESIGN→nested-lesson→compileTransformationV3→validateCompiledNestedLesson→compiled/revision/pins。`apply-n0910-construction.mjs`の対象指定で他unit書換えを限定|Mが限定実装。Aは数学/保存、Bは数式AST/状態別寸法/操作を非作者審査|同一source・設計・compiled・pinが結び付き、変更は承認範囲内|
 |R07 CODE|既存validate-design/finite-math/compiled validator、関連回帰、型/build、実browser。320/390/430/1440の未回答/誤答/部分正答/完成、実font、source-bound geometry、保存/履歴/移行を確認|CODEのFAIL/UNSUPPORTEDを保持。Mが結果を関連証拠へ対応|必要検査成功。対応外の数理は根拠付きAI審査へ明示接続|
 |R07意味審査＋代表細部確認|同じ候補SHAの実画像/可視stateを使用。正答後通常AST・主判断・未来答え・小問過剰を確認|A/Bが作者を避けて審査、M統合も対象。本人に代表確認票を提示|main§12Aの本人細部OKを得る。テストPASSから推測しない|
 |残りの限定適用→G2|代表OK後、承認表の残りCHANGEへ同じ方式。protected.verify/impact.inventoryと実差分でKEEP/他unit/旧版を確認|Mが統合、A/Bが各担当の非作者監査|新しい重大指摘は修正へ戻す。86node監査済みを実装後全合格に読み替えない|

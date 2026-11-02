@@ -1,0 +1,162 @@
+{
+  "requestHash": "c38bc044830f40383d8ad785ab3f7b3508dd3c56c9e93b2776225b9b0b01cf74",
+  "phase": "R07-representative",
+  "reviewer": "/root/w046_render_review — UX06代表案の非作者・理念/工程監視。共有renderer/旧N10の一部の作者履歴を保持し、共有実装全体の独立PASS/モデル独立性は主張しない。",
+  "learnerDecision": "六つの因子・文字・積・平方・係数の式内構成を実画像で確認。最終公式一択の後に全導出をAUTO表示する旧状態と異なる。",
+  "availableInformation": "source a986、compiled de799。現6scopeの320原cropと対応geometryの全hashを再照合し実見。四幅の初期/交差項前/係数前/完成、および320の行内部分を正常KaTeX_Main/Math italic loaded・errors[]の記録と一緒に再実見した。前回403の画像/旧manifestを転用していない。",
+  "reasonToProceed": "平方の定義、分配、交換、同類項というその場の可視根拠を使い次の式を作れる。slotの一文字/数字も作用対象や係数を担う。",
+  "nextWholeState": "基底→分配第一/第二因子→四項のBA/B²→交換→係数2と進み、正答後は通常の数式へ戻る。新規prefixの接続画像では次のQ08中項が未回答で、具体計算を新たに行う必要がある。旧43回答保持の完成画像をfresh学習と混同しない。",
+  "misconception": "平方と二倍、和と差、因子の作用先、積と和、交差項と平方項、同類項の係数を、現在式と全候補で区別する。AB/BAを不等な積の誤答候補にしていない。",
+  "reducedSupportVariant": "初回の一般導出を六穴で作り、後続Q08では認定式を使う具体計算へ支援を移す。旧43認定値の再計算や全行穴化を追加しない。",
+  "findings": [
+    {
+      "problemId": "n09-decimal-method",
+      "stepId": "n09-decimal-method::ux06-proposal-row-01",
+      "state": "initial",
+      "quoteOrMathRef": "(A+B)^2=(A+B)(□)",
+      "reason": "以前はglobal1remによりlead16pxが残った。native継承へ修正し、現在のlead本人/inline math/condition/intro/choice/main mathの18pxと新原画像を照合。",
+      "affectedRefs": [
+        "image-ux06BinomialBase",
+        "geometry-ux06BinomialBase"
+      ],
+      "resolution": "VERIFIED_FIXED"
+    },
+    {
+      "problemId": "n09-decimal-method",
+      "stepId": "n09-decimal-method::ux06-proposal-row-01",
+      "state": "initial",
+      "quoteOrMathRef": "(A+B)^2=(A+B)(□)",
+      "reason": "旧symlink環境でfont403があり18pxでも代替fontを排除できなかった。新capture/partialはMain/Math italicを実loadしloaded/error0/HTTP0をassertする記録で、原画像の字形も再実見した。旧fallback可能画像は別退避。",
+      "affectedRefs": [
+        "image-ux06BinomialBase",
+        "geometry-ux06BinomialBase",
+        "image-ux06DistributeB",
+        "image-ux06LastSquare"
+      ],
+      "resolution": "VERIFIED_FIXED"
+    }
+  ],
+  "caseDispositions": [],
+  "reviewRows": [
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-01",
+      "partId": "n09-decimal-method::ux06BinomialBase",
+      "state": "initial",
+      "imageRef": "image-ux06BinomialBase",
+      "geometryRef": "geometry-ux06BinomialBase",
+      "decision": "ADOPT",
+      "learnerDecision": "同じ和全体を平方の二つ目の因子として作る。",
+      "availableInformation": "(A+B)²と第一因子(A+B)、平方の定義を使う問いが見える。完成平方公式は条件にない。",
+      "copyRisk": "基底の和をそのままもう一つ掛けるのでA+Bを構成する。",
+      "nextUse": "初期44px穴の括弧は中立候補領域を囲むが、基底正答後は同じ高さを残さず通常の二項積になる。",
+      "misconception": "各項を先に平方する、和を差へ変える誤り。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "(A+B)^2=(A+B)(□)",
+      "evidenceRefs": [
+        "image-ux06BinomialBase",
+        "geometry-ux06BinomialBase"
+      ]
+    },
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-02",
+      "partId": "n09-decimal-method::ux06DistributeA",
+      "state": "initial",
+      "imageRef": "image-ux06DistributeA",
+      "geometryRef": "geometry-ux06DistributeA",
+      "decision": "ADOPT",
+      "learnerDecision": "後ろの和の第一項Aへの積を式内へ作る。",
+      "availableInformation": "同じ二項積が認定され、後ろの括弧の各項へ掛ける理由文がある。現在は二つの因子穴。",
+      "copyRisk": "分配の第一項をAとして構成し、次は第二項を扱う。",
+      "nextUse": "二穴行が320で二行へ折れても、同じ分配の連続式として見え、第二穴は未回答で残る。",
+      "misconception": "指数2を因子にする、第一項と第二項を取り違える。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "=(A+B)□+(A+B)□",
+      "evidenceRefs": [
+        "image-ux06DistributeA",
+        "geometry-ux06DistributeA"
+      ]
+    },
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-02",
+      "partId": "n09-decimal-method::ux06DistributeB",
+      "state": "partial",
+      "imageRef": "image-ux06DistributeB",
+      "geometryRef": "geometry-ux06DistributeB",
+      "decision": "ADOPT",
+      "learnerDecision": "Aを確定した同じ行で、第二項Bへの積を補う。",
+      "availableInformation": "直前Aが通常数式で埋まり、第二穴だけが残る320部分原画像。",
+      "copyRisk": "和の二項を尽くすためBを入れる。第一穴の値をそのまま二度写す課題ではない。",
+      "nextUse": "正答Aは通常幅、Bの中立44px穴は維持。同じ行の途中状態が混同されない。",
+      "misconception": "もう一度Aにする、ABという積を後ろの一項と取り違える。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "=(A+B)A+(A+B)□",
+      "evidenceRefs": [
+        "image-ux06DistributeB",
+        "geometry-ux06DistributeB"
+      ]
+    },
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-03",
+      "partId": "n09-decimal-method::ux06CrossProduct",
+      "state": "initial",
+      "imageRef": "image-ux06CrossProduct",
+      "geometryRef": "geometry-ux06CrossProduct",
+      "decision": "ADOPT",
+      "learnerDecision": "第一積の交差項BAを分配して構成する。",
+      "availableInformation": "(A+B)A+(A+B)Bが認定され、四項へ分配する理由文とA²/ABの固定項が見える。",
+      "copyRisk": "第一括弧のBと外のAの積BAを作る。BAを入れる前の交換説明はない。",
+      "nextUse": "BA穴とB²穴が区別でき、現在の選択肢はBA/A²/A+B。後段の係数2の認定式は見えない。",
+      "misconception": "積を和にする、同じ文字の平方にする。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "=A^2+□+AB+□",
+      "evidenceRefs": [
+        "image-ux06CrossProduct",
+        "geometry-ux06CrossProduct"
+      ]
+    },
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-03",
+      "partId": "n09-decimal-method::ux06LastSquare",
+      "state": "partial",
+      "imageRef": "image-ux06LastSquare",
+      "geometryRef": "geometry-ux06LastSquare",
+      "decision": "ADOPT",
+      "learnerDecision": "第二積の末項B×BをB²へ作る。",
+      "availableInformation": "BA正答後の原部分画像でBAは埋まり、末項だけが未回答。",
+      "copyRisk": "B同士の積を平方にし、四項がそろってから交換/同類項へ進む。",
+      "nextUse": "確定BAが通常字形で残り、末穴だけの44px領域がある。次の主式行/係数穴はまだ露出しない。",
+      "misconception": "Bの二倍2B、異なる文字の積ABとの混同。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "=A^2+BA+AB+□",
+      "evidenceRefs": [
+        "image-ux06LastSquare",
+        "geometry-ux06LastSquare"
+      ]
+    },
+    {
+      "rowId": "n09-decimal-method::ux06-proposal-row-05",
+      "partId": "n09-decimal-method::ux06LikeTermCount",
+      "state": "initial",
+      "imageRef": "image-ux06LikeTermCount",
+      "geometryRef": "geometry-ux06LikeTermCount",
+      "decision": "ADOPT",
+      "learnerDecision": "二つの同じ交差項をABの係数2へまとめる。",
+      "availableInformation": "四項BA/AB/B²が完成し、次の主式で交換によりAB+ABとそろえてある。",
+      "copyRisk": "同類項の和を係数にまとめる。一般公式を初期に提示して数字2を写させる旧版ではない。",
+      "nextUse": "係数穴はABの前にあり、正答後は通常の2ABへ戻る。独立補助式を挟んだ偽の等号鎖はない。",
+      "misconception": "ABが一つとみなす、四項全部を同類項とみなす。",
+      "prosePlacement": "変形の直前に理由を置き、後段の説明を回答前の根拠へ混入しない。今見える短文と式が同じ操作を指す。",
+      "quoteOrMathRef": "=A^2+□AB+B^2",
+      "evidenceRefs": [
+        "image-ux06LikeTermCount",
+        "geometry-ux06LikeTermCount"
+      ]
+    }
+  ],
+  "scopeLimits": {
+    "scope": "320の6slot初期/行内部分のconstruction-layout審査。四幅の追加crop/full-page実見とfresh接続は別manifest。",
+    "notClaimed": "全49part全状態のlayout合格、現matrix browser lifecycle完了、実移行全経路、正式Store receipt、本人細部OK、公開許可を付与しない。",
+    "matrix": "正常font化後のmatrixには完了待機timeout等の原FAILがあり、rootが再確認中。旧fallback環境の全幅PASSで上書きしない。",
+    "fonts": "18pxは主学習本文/式/choiceのrole。ナビ/見出し/番号やKaTeXの上下添字まで一律18pxを要求していない。"
+  }
+}

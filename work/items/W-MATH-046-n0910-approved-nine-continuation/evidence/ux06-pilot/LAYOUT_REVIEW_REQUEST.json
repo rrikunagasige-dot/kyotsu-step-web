@@ -1,0 +1,412 @@
+{
+  "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+  "scope": "six representative formula slots at320; four-width operation/role-font/geometry checks are separate evidence; not all49 parts or entire app acceptance",
+  "result": {
+    "status": "NEEDS_AI_REVIEW",
+    "request": {
+      "profile": "construction-layout",
+      "schemaVersion": "solution-review/1",
+      "phase": "R07-representative",
+      "visible": {
+        "initial": {
+          "rows": [
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-01",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "(A+B)^2=(A+B)(□)",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06BinomialBase"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(\nNSLOT0000\n)\n\n平方を同じ二つの因子の積に直します。\n\n1\n𝐴\n+\n𝐵\nA+B\n2\n𝐴\n−\n𝐵\nA−B\n3\n𝐴\n2\n+\n𝐵\n2\nA\n2\n+B\n2",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06BinomialBase",
+                "geometry-ux06BinomialBase"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-02",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=(A+B)□+(A+B)□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06DistributeA"
+                },
+                {
+                  "id": "n09-decimal-method::ux06DistributeB"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n\n\n+\n(\n𝐴\n+\n𝐵\n)\n=\nNROOTREL0000\n(A+B)\nNSLOT0000\n+(A+B)\nNSLOT0001\n\t​\n\n\n後ろの括弧の第1項へ掛ける因子を入れます。\n\n1\n2\n2\n2\n𝐴\nA\n3\n𝐵\nB",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06DistributeA",
+                "geometry-ux06DistributeA"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-03",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=A^2+□+AB+□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06CrossProduct"
+                },
+                {
+                  "id": "n09-decimal-method::ux06LastSquare"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n\n\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\t​\n\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n+\n(\n𝐴\n+\n𝐵\n)\n𝐵\n=\nNROOTREL0000\n(A+B)A+(A+B)B\n\nさらに各括弧を分配し、二つの積から四つの項を作ります。\n\n=\n𝐴\n2\n+\n+\n𝐴\n𝐵\n+\n=\nNROOTREL0000\nA\n2\n+\nNSLOT0000\n+AB+\nNSLOT0001\n\n最初の括弧のBへAを掛けてできる積の項を入れます。\n\n1\n𝐵\n𝐴\nBA\n2\n𝐴\n2\nA\n2\n3\n𝐴\n+\n𝐵\nA+B",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06CrossProduct",
+                "geometry-ux06CrossProduct"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-05",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=A^2+□AB+B^2",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06LikeTermCount"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n\n\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\t​\n\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n+\n(\n𝐴\n+\n𝐵\n)\n𝐵\n=\nNROOTREL0000\n(A+B)A+(A+B)B\n\nさらに各括弧を分配し、二つの積から四つの項を作ります。\n\n=\n𝐴\n2\n+\n𝐵\n𝐴\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+BA+AB+B\n2\n\n積の順を入れ替え、二つの交差項を同じ順にそろえます。\n\n=\n𝐴\n2\n+\n𝐴\n𝐵\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+AB+AB+B\n2\n\n同じ交差項をまとめると、どの係数になるでしょうか。\n\n=\n𝐴\n2\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+\nNSLOT0000\nAB+B\n2\n\n同類項をまとめたABの係数を入れます。\n\n1\n1\n1\n2\n4\n4\n3\n2\n2",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06LikeTermCount",
+                "geometry-ux06LikeTermCount"
+              ]
+            }
+          ]
+        },
+        "current": {
+          "rows": [
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-01",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "(A+B)^2=(A+B)(□)",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06BinomialBase"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(\nNSLOT0000\n)\n\n平方を同じ二つの因子の積に直します。\n\n1\n𝐴\n+\n𝐵\nA+B\n2\n𝐴\n−\n𝐵\nA−B\n3\n𝐴\n2\n+\n𝐵\n2\nA\n2\n+B\n2",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06BinomialBase",
+                "geometry-ux06BinomialBase"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-02",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=(A+B)□+(A+B)□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06DistributeA"
+                },
+                {
+                  "id": "n09-decimal-method::ux06DistributeB"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n\n\n+\n(\n𝐴\n+\n𝐵\n)\n=\nNROOTREL0000\n(A+B)\nNSLOT0000\n+(A+B)\nNSLOT0001\n\t​\n\n\n後ろの括弧の第1項へ掛ける因子を入れます。\n\n1\n2\n2\n2\n𝐴\nA\n3\n𝐵\nB",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06DistributeA",
+                "geometry-ux06DistributeA"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-02",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=(A+B)A+(A+B)□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06DistributeA"
+                },
+                {
+                  "id": "n09-decimal-method::ux06DistributeB"
+                }
+              ],
+              "state": "partial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n\n\n+\n(\n𝐴\n+\n𝐵\n)\n=\nNROOTREL0000\n(A+B)A\n+(A+B)\nNSLOT0000\n\t​\n\n\n後ろの括弧の第2項へ掛ける因子を入れます。\n\n1\n𝐵\nB\n2\n𝐴\nA\n3\n𝐴\n𝐵\nAB",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06DistributeB",
+                "geometry-ux06DistributeB"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-03",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=A^2+□+AB+□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06CrossProduct"
+                },
+                {
+                  "id": "n09-decimal-method::ux06LastSquare"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n\n\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\t​\n\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n+\n(\n𝐴\n+\n𝐵\n)\n𝐵\n=\nNROOTREL0000\n(A+B)A+(A+B)B\n\nさらに各括弧を分配し、二つの積から四つの項を作ります。\n\n=\n𝐴\n2\n+\n+\n𝐴\n𝐵\n+\n=\nNROOTREL0000\nA\n2\n+\nNSLOT0000\n+AB+\nNSLOT0001\n\n最初の括弧のBへAを掛けてできる積の項を入れます。\n\n1\n𝐵\n𝐴\nBA\n2\n𝐴\n2\nA\n2\n3\n𝐴\n+\n𝐵\nA+B",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06CrossProduct",
+                "geometry-ux06CrossProduct"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-03",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=A^2+BA+AB+□",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06CrossProduct"
+                },
+                {
+                  "id": "n09-decimal-method::ux06LastSquare"
+                }
+              ],
+              "state": "partial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n\n\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\t​\n\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n+\n(\n𝐴\n+\n𝐵\n)\n𝐵\n=\nNROOTREL0000\n(A+B)A+(A+B)B\n\nさらに各括弧を分配し、二つの積から四つの項を作ります。\n\n=\n𝐴\n2\n+\n𝐵\n𝐴\n+\n𝐴\n𝐵\n+\n=\nNROOTREL0000\nA\n2\n+BA+AB+\nNSLOT0000\n\nBとBからできる項を入れます。\n\n1\n𝐵\n2\nB\n2\n2\n𝐴\n𝐵\nAB\n3\n2\n𝐵\n2B",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06LastSquare",
+                "geometry-ux06LastSquare"
+              ]
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-05",
+              "sourceNodeId": "n09-decimal-method",
+              "formula": "=A^2+□AB+B^2",
+              "parts": [
+                {
+                  "id": "n09-decimal-method::ux06LikeTermCount"
+                }
+              ],
+              "state": "initial",
+              "viewport": 320,
+              "observableText": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n\n\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\t​\n\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n+\n(\n𝐴\n+\n𝐵\n)\n𝐵\n=\nNROOTREL0000\n(A+B)A+(A+B)B\n\nさらに各括弧を分配し、二つの積から四つの項を作ります。\n\n=\n𝐴\n2\n+\n𝐵\n𝐴\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+BA+AB+B\n2\n\n積の順を入れ替え、二つの交差項を同じ順にそろえます。\n\n=\n𝐴\n2\n+\n𝐴\n𝐵\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+AB+AB+B\n2\n\n同じ交差項をまとめると、どの係数になるでしょうか。\n\n=\n𝐴\n2\n+\n𝐴\n𝐵\n+\n𝐵\n2\n=\nNROOTREL0000\nA\n2\n+\nNSLOT0000\nAB+B\n2\n\n同類項をまとめたABの係数を入れます。\n\n1\n1\n1\n2\n4\n4\n3\n2\n2",
+              "roleFontMeasurements": {
+                "lead": "18px",
+                "choice": "18px",
+                "math": "18px"
+              },
+              "evidenceRefs": [
+                "image-ux06LikeTermCount",
+                "geometry-ux06LikeTermCount"
+              ]
+            }
+          ]
+        }
+      },
+      "sourceRefs": [
+        "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+        "compiled:de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+        "n09-decimal-method"
+      ],
+      "caseIds": [],
+      "required": [
+        "learnerDecision",
+        "availableInformation",
+        "reasonToProceed",
+        "nextWholeState",
+        "misconception",
+        "reducedSupportVariant",
+        "findings",
+        "reviewRows"
+      ],
+      "constraints": [
+        "可視状態だけで次へ進めるかを先に検討する",
+        "作成者の理由欄を合格根拠にしない",
+        "同一AIの別passを独立モデルと呼ばない"
+      ],
+      "reviewScope": [
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-01",
+          "partId": "n09-decimal-method::ux06BinomialBase",
+          "state": "initial",
+          "imageRef": "image-ux06BinomialBase",
+          "geometryRef": "geometry-ux06BinomialBase"
+        },
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-02",
+          "partId": "n09-decimal-method::ux06DistributeA",
+          "state": "initial",
+          "imageRef": "image-ux06DistributeA",
+          "geometryRef": "geometry-ux06DistributeA"
+        },
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-02",
+          "partId": "n09-decimal-method::ux06DistributeB",
+          "state": "partial",
+          "imageRef": "image-ux06DistributeB",
+          "geometryRef": "geometry-ux06DistributeB"
+        },
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-03",
+          "partId": "n09-decimal-method::ux06CrossProduct",
+          "state": "initial",
+          "imageRef": "image-ux06CrossProduct",
+          "geometryRef": "geometry-ux06CrossProduct"
+        },
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-03",
+          "partId": "n09-decimal-method::ux06LastSquare",
+          "state": "partial",
+          "imageRef": "image-ux06LastSquare",
+          "geometryRef": "geometry-ux06LastSquare"
+        },
+        {
+          "rowId": "n09-decimal-method::ux06-proposal-row-05",
+          "partId": "n09-decimal-method::ux06LikeTermCount",
+          "state": "initial",
+          "imageRef": "image-ux06LikeTermCount",
+          "geometryRef": "geometry-ux06LikeTermCount"
+        }
+      ],
+      "evidenceManifest": [
+        {
+          "id": "image-ux06BinomialBase",
+          "kind": "image",
+          "sha256": "b1310e2926fb1f3385342a4143561a69ea609042ac2bc42c0936a7e562701442",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/review-images/320-01-initial.png"
+        },
+        {
+          "id": "geometry-ux06BinomialBase",
+          "kind": "geometry",
+          "sha256": "ab4805f76d52f52dbbbc9dabed95db69f3626b1dd8ef74e4e6edcbbffb3511a9",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/layout-review/ux06BinomialBase-geometry.json"
+        },
+        {
+          "id": "image-ux06DistributeA",
+          "kind": "image",
+          "sha256": "4d7a4d6d70a00f727e4b51ca6ee53e9af80a6af72ec3b2682c8f68078692e03e",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/review-images/320-correct-ux06BinomialBase.png"
+        },
+        {
+          "id": "geometry-ux06DistributeA",
+          "kind": "geometry",
+          "sha256": "d39348d160702506bf0fdc718cd36c2a00f7a2a96ccd5d71f236264ff7c45fe4",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/layout-review/ux06DistributeA-geometry.json"
+        },
+        {
+          "id": "image-ux06DistributeB",
+          "kind": "image",
+          "sha256": "9119bf9a90a0dc0aa68230f28ee0e98bd05b879dcfa57e2b38fa031df05ee714",
+          "state": "partial",
+          "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06DistributeA.png"
+        },
+        {
+          "id": "geometry-ux06DistributeB",
+          "kind": "geometry",
+          "sha256": "822082f2e02565310c02cfb068951f58d918722e0ad76039d529c5fcb66826c0",
+          "state": "partial",
+          "path": "/tmp/w046-ux06/layout-review/ux06DistributeB-geometry.json"
+        },
+        {
+          "id": "image-ux06CrossProduct",
+          "kind": "image",
+          "sha256": "16ea6012aade4c035278d553584057b1f24707fb628ae7e9a5b5a2088e74d3d7",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/review-images/320-before-ux06CrossProduct.png"
+        },
+        {
+          "id": "geometry-ux06CrossProduct",
+          "kind": "geometry",
+          "sha256": "f4ab977a8297b1e55974fda43fd1d43b2765f979d691d2b3339c9f85236cb883",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/layout-review/ux06CrossProduct-geometry.json"
+        },
+        {
+          "id": "image-ux06LastSquare",
+          "kind": "image",
+          "sha256": "f9f80d0e7aacc9accbe115736eb139205e073d05d043b431b0f9e3076f6aa085",
+          "state": "partial",
+          "path": "/tmp/w046-ux06/review-images-partial/320-correct-ux06CrossProduct.png"
+        },
+        {
+          "id": "geometry-ux06LastSquare",
+          "kind": "geometry",
+          "sha256": "9c7668680aad8be19986cabd5352f0b5391f82b311ea3ce1ff578d06253ff41d",
+          "state": "partial",
+          "path": "/tmp/w046-ux06/layout-review/ux06LastSquare-geometry.json"
+        },
+        {
+          "id": "image-ux06LikeTermCount",
+          "kind": "image",
+          "sha256": "07becbe9e9eab91340590195e10fefb329f0d0a752bc14cc7211e4c9ad4059b9",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/review-images/320-before-ux06LikeTermCount.png"
+        },
+        {
+          "id": "geometry-ux06LikeTermCount",
+          "kind": "geometry",
+          "sha256": "e7d9e01556024ac6939d5b86758bd68ccf0ff3387fb101e7b54ec785829fb94d",
+          "state": "initial",
+          "path": "/tmp/w046-ux06/layout-review/ux06LikeTermCount-geometry.json"
+        }
+      ],
+      "requestHash": "c38bc044830f40383d8ad785ab3f7b3508dd3c56c9e93b2776225b9b0b01cf74"
+    }
+  }
+}

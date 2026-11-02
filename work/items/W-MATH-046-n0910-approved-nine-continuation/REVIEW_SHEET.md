@@ -1,3 +1,7 @@
+## 最新：UX06 和の平方代表（2026-11-03 JST）
+
+[実画像付き確認票](evidence/ux06-pilot/REVIEW.md)。source a98640fd…、BLOCK-CHECK-PENDING。以下は過去の確認記録。
+
 # 確認①〜③ — UX05代表ブロック
 
 状態：**本人細部確認待ち**。これは公開前の候補の実画面です。

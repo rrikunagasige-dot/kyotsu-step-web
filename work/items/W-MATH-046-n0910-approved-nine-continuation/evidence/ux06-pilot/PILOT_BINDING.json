@@ -1,0 +1,9 @@
+{
+  "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+  "approvedProposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "designSHA256": "a962a38671a482d6c5df413573b0b3022c21c4a296f81a5bcc31efc6effae525",
+  "previousDesignSHA256": "475035b4d8f04a7d9fda8a72d386879adb2cd55132620ac409014ca6b1672dc8",
+  "onlyRedesignedNode": "n09-decimal-method",
+  "revisionDecision": "pilot N09r9 frozen; subsequent full N09r10, N10r6; no same revision artifact replacement",
+  "formalStoreReceipt": false
+}

@@ -1,0 +1,631 @@
+{
+  "label": "correct-ux06DistributeA",
+  "pageWidth": 320,
+  "bodyFont": "18px",
+  "leadFont": "18px",
+  "leadMathFonts": [
+    "18px",
+    "18px",
+    "18px",
+    "18px",
+    "18px"
+  ],
+  "conditionFonts": [
+    "18px"
+  ],
+  "introFonts": [
+    "18px"
+  ],
+  "choiceFont": "18px",
+  "choiceMathFont": "18px",
+  "text": "2\n2\n\t​\n\nを小数で挟むために、候補\n1.41\n1.41と\n1.42\n1.42をそれぞれ平方して2と比べます。\n141\n2\n141\n2\nと\n142\n2\n142\n2\nを計算しやすくするため、まず和の平方の作り方を確かめましょう。\n\n𝐴\n,\n𝐵\n∈\n𝑅\nA,B∈R。小数候補の平方を\n2\n2と比較する。\n\n(\n𝐴\n+\n𝐵\n)\n2\n=\n(\n𝐴\n+\n𝐵\n)\n(\n𝐴\n+\n𝐵\n)\n(A+B)\n2\n=\nNROOTREL0000\n(A+B)(A+B)\n\n後ろの括弧の各項へ、それぞれ前の括弧を掛けます。\n\n=\n(\n𝐴\n+\n𝐵\n)\n𝐴\n\n\n+\n(\n𝐴\n+\n𝐵\n)\n=\nNROOTREL0000\n(A+B)A\n+(A+B)\nNSLOT0000\n\t​\n\n\n後ろの括弧の第2項へ掛ける因子を入れます。\n\n1\n𝐵\nB\n2\n𝐴\nA\n3\n𝐴\n𝐵\nAB",
+  "rows": [
+    "n09-decimal-method::ux06-proposal-row-02-intro"
+  ],
+  "math": [
+    {
+      "id": "n09-decimal-method::ux06-proposal-row-01",
+      "font": "18px",
+      "rect": {
+        "x": 27,
+        "y": 1276.296875,
+        "width": 266,
+        "height": 23.765625
+      },
+      "overflow": "false",
+      "geometry": {
+        "schemaVersion": "nested-geometry/1",
+        "resolvedParts": [
+          {
+            "key": "ux06BinomialBase",
+            "path": "root/3/group/0",
+            "value": "A+B",
+            "source": "slot"
+          }
+        ],
+        "status": "PASS",
+        "source": "shared-compiler-dom-revalidated",
+        "axisPx": 4.625,
+        "axisSource": "same-font-fraction-rule",
+        "baselineSource": "zero-inline-dom-marker",
+        "slots": [],
+        "lines": [
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 46.265625,
+              "y": 1279.46875,
+              "width": 5,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 52.265625,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 71.25,
+              "y": 1282.46875,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 88.234375,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 103.125,
+              "y": 1279.46875,
+              "width": 6,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 110.125,
+              "y": 1275.421875,
+              "width": 6,
+              "height": 9
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1284.421875,
+            "font": "12.6px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 124.015625,
+              "y": 1286.46875,
+              "width": 12,
+              "height": 5
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 143.015625,
+              "y": 1279.46875,
+              "width": 5,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 149.015625,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 168,
+              "y": 1282.46875,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 184.984375,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 199.875,
+              "y": 1279.46875,
+              "width": 6,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 210.875,
+              "y": 1279.46875,
+              "width": 5,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 216.875,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 235.859375,
+              "y": 1282.46875,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 252.84375,
+              "y": 1280.46875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 267.734375,
+              "y": 1279.46875,
+              "width": 6,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1293.46875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          }
+        ],
+        "collisions": [],
+        "axisFailures": [],
+        "frame": {
+          "x": 45.265625,
+          "y": 1276.296875,
+          "width": 229.46875,
+          "height": 23.765625
+        },
+        "available": {
+          "x": 27,
+          "y": 1276.296875,
+          "width": 266,
+          "height": 23.765625
+        },
+        "groupAlignment": {
+          "groupId": "n09-decimal-method-ux06-derivation",
+          "bodyLeft": 45.265625,
+          "bodyWidth": 229.46875,
+          "availableWidth": 266,
+          "relationX": 130.015625,
+          "rowRelationOffset": 84.75,
+          "rowLeftExtent": 84.75,
+          "rowRightExtent": 144.71875,
+          "neutralLayoutKey": "neutral-group-208d5ebd",
+          "status": "ALIGNED"
+        },
+        "rootRelationProof": {
+          "semanticPath": "root/1",
+          "marker": "NROOTREL0000",
+          "source": "shared-compiler-marker-dom-revalidated",
+          "rect": {
+            "x": 123.015625,
+            "y": 1277.46875,
+            "width": 14,
+            "height": 21
+          }
+        }
+      }
+    },
+    {
+      "id": "n09-decimal-method::ux06-proposal-row-02",
+      "font": "18px",
+      "rect": {
+        "x": 27,
+        "y": 1380.84375,
+        "width": 266,
+        "height": 71.09375
+      },
+      "overflow": "false",
+      "geometry": {
+        "schemaVersion": "nested-geometry/1",
+        "resolvedParts": [
+          {
+            "key": "ux06DistributeA",
+            "path": "root/2",
+            "value": "A",
+            "source": "slot"
+          }
+        ],
+        "status": "PASS",
+        "source": "shared-compiler-dom-revalidated",
+        "axisPx": 4.625,
+        "axisSource": "same-font-fraction-rule",
+        "baselineSource": "zero-inline-dom-marker",
+        "slots": [
+          {
+            "id": "ux06DistributeB",
+            "path": "root/5",
+            "rect": {
+              "x": 193.875,
+              "y": 1407.9375,
+              "width": 44,
+              "height": 44
+            },
+            "rule": {
+              "x": 193.875,
+              "y": 1407.9375,
+              "width": 44,
+              "height": 44
+            },
+            "baseline": 1434.515625,
+            "localFontPx": 18,
+            "axisDeltaPx": 0.046875
+          }
+        ],
+        "lines": [
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 124.015625,
+              "y": 1388.96875,
+              "width": 12,
+              "height": 5
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 143.015625,
+              "y": 1381.96875,
+              "width": 5,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 149.015625,
+              "y": 1382.96875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 168,
+              "y": 1384.96875,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 184.984375,
+              "y": 1382.96875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 199.875,
+              "y": 1381.96875,
+              "width": 6,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 209.875,
+              "y": 1382.96875,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1395.96875,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 110.015625,
+              "y": 1423.515625,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 127.015625,
+              "y": 1420.515625,
+              "width": 5,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 133.015625,
+              "y": 1421.515625,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 152,
+              "y": 1423.515625,
+              "width": 12,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 168.984375,
+              "y": 1421.515625,
+              "width": 14,
+              "height": 13
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "italic 18px KaTeX_Math"
+          },
+          {
+            "kind": "font-glyph-ink",
+            "rect": {
+              "x": 183.875,
+              "y": 1420.515625,
+              "width": 6,
+              "height": 19
+            },
+            "inkOverlaps": [],
+            "ownerPartId": null,
+            "ownerSemanticPath": null,
+            "ownerProof": "template-structure",
+            "baseline": 1434.515625,
+            "font": "18px KaTeX_Main, \"Times New Roman\", serif"
+          }
+        ],
+        "collisions": [],
+        "axisFailures": [],
+        "frame": {
+          "x": 109.015625,
+          "y": 1380.84375,
+          "width": 128.859375,
+          "height": 71.09375
+        },
+        "available": {
+          "x": 27,
+          "y": 1380.84375,
+          "width": 266,
+          "height": 71.09375
+        },
+        "groupAlignment": {
+          "groupId": "n09-decimal-method-ux06-derivation",
+          "bodyLeft": 45.265625,
+          "bodyWidth": 229.46875,
+          "availableWidth": 266,
+          "relationX": 130.015625,
+          "rowRelationOffset": 21,
+          "rowLeftExtent": 21,
+          "rowRightExtent": 107.859375,
+          "neutralLayoutKey": "neutral-group-208d5ebd",
+          "status": "ALIGNED"
+        },
+        "rootRelationProof": {
+          "semanticPath": "root/0",
+          "marker": "NROOTREL0000",
+          "source": "shared-compiler-marker-dom-revalidated",
+          "rect": {
+            "x": 123.015625,
+            "y": 1379.96875,
+            "width": 14,
+            "height": 21
+          }
+        }
+      }
+    }
+  ]
+}

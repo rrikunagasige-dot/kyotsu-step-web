@@ -1,0 +1,3 @@
+# 旧FAIL・撤回した判定の履歴
+
+旧font-readyだけのPASSは実font合格として撤回。16px残存とfont403を検出し、native本文継承と依存物の同byteローカル配置、実font/HTTP検査で再確認した。固定port/ロードtimeoutは原結果を保存し原因未確定。診断server guard付き同sourceの2実行batchが四幅を完了したことと分ける。旧strong要素幅とscrollWidthだけのN10 FAILは、実ボタン可用領域の判定へ訂正し、番号/上下/clip検査を維持。これらを現候補の合格証拠へ流用しない。

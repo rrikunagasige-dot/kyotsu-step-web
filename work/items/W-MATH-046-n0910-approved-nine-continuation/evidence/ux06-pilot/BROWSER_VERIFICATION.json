@@ -1,0 +1,205 @@
+{
+  "status": "PASS_SCOPED_REPRESENTATIVE_NOT_FORMAL_STAGE_ACCEPTANCE",
+  "sourceCommit": "a98640fd2757b2b9766cbbd085d16ea37ec437ad",
+  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+  "sourceHashes": {
+    "src/components/textbook/construction-lesson-reading.css": "00aa7db228b56f768dfc9050e382b0effbe24f501979d236457b8a11c8458254",
+    "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "02f91d500fe6dd11f4299f48da288027929eb6ee4ba9f2bc5d3bf57bd5d6d3b6",
+    "src/pages/N0910RevisionPage.tsx": "22dba711e249a1983342c4d6e84dfa80c1449cb50831d2885de69c61c2e5a5e1",
+    "src/domain/nestedMigration.ts": "724acc2a1dfce7e3c2372b316071f9e77aba6e107a7d1284344d7ac13d36c5f4"
+  },
+  "totalPackets": 88,
+  "runs": [
+    {
+      "width": 320,
+      "packetCount": 22,
+      "wrongStates": 12,
+      "correctStates": 6,
+      "lifecycle": {
+        "partialReload": true,
+        "onlySixNewAnswered": true,
+        "old43HistoriesPreserved": true,
+        "completionReload": true,
+        "archiveReadonly": true,
+        "resetReload": true
+      },
+      "fontStatus": {
+        "loaded": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size2",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size3",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size4",
+            "style": "normal"
+          }
+        ],
+        "errors": []
+      },
+      "rawEvidence": "/tmp/w046-ux06/browser-diagnostic/RESULT.json",
+      "rawSHA256": "4a4e8a132808b2722f31ceacafaa133980f463ffb0f70ca4584cfcf02b0a66ed"
+    },
+    {
+      "width": 390,
+      "packetCount": 22,
+      "wrongStates": 12,
+      "correctStates": 6,
+      "lifecycle": {
+        "partialReload": true,
+        "onlySixNewAnswered": true,
+        "old43HistoriesPreserved": true,
+        "completionReload": true,
+        "archiveReadonly": true,
+        "resetReload": true
+      },
+      "fontStatus": {
+        "loaded": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size2",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size3",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size4",
+            "style": "normal"
+          }
+        ],
+        "errors": []
+      },
+      "rawEvidence": "/tmp/w046-ux06/browser-remaining/RESULT.json",
+      "rawSHA256": "015a864e7cecbe940e3cf15046e8d198ad61122ff3b18272a93c66e92211967d"
+    },
+    {
+      "width": 430,
+      "packetCount": 22,
+      "wrongStates": 12,
+      "correctStates": 6,
+      "lifecycle": {
+        "partialReload": true,
+        "onlySixNewAnswered": true,
+        "old43HistoriesPreserved": true,
+        "completionReload": true,
+        "archiveReadonly": true,
+        "resetReload": true
+      },
+      "fontStatus": {
+        "loaded": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size2",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size4",
+            "style": "normal"
+          }
+        ],
+        "errors": []
+      },
+      "rawEvidence": "/tmp/w046-ux06/browser-remaining/RESULT.json",
+      "rawSHA256": "015a864e7cecbe940e3cf15046e8d198ad61122ff3b18272a93c66e92211967d"
+    },
+    {
+      "width": 1440,
+      "packetCount": 22,
+      "wrongStates": 12,
+      "correctStates": 6,
+      "lifecycle": {
+        "partialReload": true,
+        "onlySixNewAnswered": true,
+        "old43HistoriesPreserved": true,
+        "completionReload": true,
+        "archiveReadonly": true,
+        "resetReload": true
+      },
+      "fontStatus": {
+        "loaded": [
+          {
+            "family": "KaTeX_AMS",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Main",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Math",
+            "style": "italic"
+          },
+          {
+            "family": "KaTeX_Size1",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size2",
+            "style": "normal"
+          },
+          {
+            "family": "KaTeX_Size4",
+            "style": "normal"
+          }
+        ],
+        "errors": []
+      },
+      "rawEvidence": "/tmp/w046-ux06/browser-remaining/RESULT.json",
+      "rawSHA256": "015a864e7cecbe940e3cf15046e8d198ad61122ff3b18272a93c66e92211967d"
+    }
+  ],
+  "provenance": "Two actual same-source execution batches; not a rewrite of the earlier FAIL outputs. Fixed-port timeouts preserved; diagnostic guarded-server runs completed all assertions. Initial timeout cause not conclusively established.",
+  "formalStoreReceipt": false,
+  "userDetailAcceptance": "PENDING"
+}

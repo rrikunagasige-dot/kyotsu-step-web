@@ -1,3 +1,7 @@
+## 最新：UX06 代表R07（2026-11-03 JST）
+
+[限定検査結果](evidence/ux06-pilot/VERIFICATION.json) / [本人確認票](evidence/ux06-pilot/REVIEW.md)。実fontの四幅88packetと保存条件を確認。正式Store受理・本人細部OK・全体受入は未認定。以下の旧PASSは履歴で、今回の合格根拠へ自動転用しない。
+
 # UX05 代表 — 限定検証完了・本人細部確認待ち
 
 Status: BLOCK-CHECK-PENDING（Work: VERIFYING）

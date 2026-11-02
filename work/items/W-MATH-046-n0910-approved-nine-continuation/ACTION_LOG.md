@@ -75,3 +75,9 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 - 独立HTTPでsource固定32map/全121asset生byte/2manifest、独立fresh browserで320/1440×N09/N10を照合。初回Chrome直接通信/管理proxy CAエラーは原FAILとして保存し、通常TLSを検証するurllib/GH Chromeとは区別、管理proxyのローカルChrome補助版4/4PASSを非作者Bが再照合。
 - 公開manifest/raw HTTP/GH公式run・全joblog・artifact digest・ブラウザー原結果/画像・非作者報告をevidence/ux05-publicationへ保存。大きい288MB CI artifactは公式digestと期限を記録し、要点の原log/独立証拠をGitで保持。
 - 現在地はFINAL-REVIEW-READY。FINAL_APP_WALKTHROUGH_UX05.mdでN09r8全41/N10r5全45と保持対象を明記し、本人全体実評価を待つ。次は本人評価→事後同型sweep→事例/規則照合/適用条件付き学習→必要条件充足時のみ完結。今回公開承認やCIをGold/fit/正式台帳PASSEDにしない。
+
+## 本人総チェックNG — 穴の学習行為と文字サイズ／修正へ復帰
+- page9913fc99の原文/画像を保存。公開691dを『理念どおり』とした過去の合格報告を現在の適合根拠から外す。
+- AはMASTER§8/9/12/52/53に照らしq02-negative-square/q04-negativeの具体変形・根拠構成を結果回答後AUTOへ回した誤判断を確認。n09-13の先出し疑いは前提q13-reverseの認定済み再利用と判明し撤回、原誤判定と訂正も保持。
+- Bは最小実DOM320/1440で本文/式18px・choice text/math14.08pxを再現。global .88rem競合と従来測定対象漏れを確認。製品/公開には手を入れていない。
+- 現在FAILED-VERIFICATION/USER-QA-NEEDS-FIX。次は同型影響を依存関係込みで調査し、具体的修正案へ戻す。新しいコード変更や再公開の承認を今回のNGから推測しない。

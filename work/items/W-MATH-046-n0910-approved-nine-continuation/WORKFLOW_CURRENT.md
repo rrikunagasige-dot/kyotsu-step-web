@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：R04既存CODE/意味import→R06→R07全幅/非作者審査→今回範囲G2→承認済みG3公開・実配信検証まで完了。publisher main f4c50963、製品source691d固定。run41454830219はSUCCESS、独立HTTP121assets/32source、公開実URLの320/1440×2unitもPASS。現在は **FINAL-REVIEW-READY／本人総チェック待ち**。[本人確認票・実URL](FINAL_APP_WALKTHROUGH_UX05.md) / [配信証拠](evidence/ux05-publication/STATUS.json)。次は本人の実評価→R03事後sweep→R08/L01の条件照合/事例接続→条件充足時Z01。要修正は該当修正へ戻す。公開許可・テストPASSを本人総合受入にしない。
+- 実質の現在地：公開/実配信検証は完了したが、本人総チェックで穴設計・思考機会・文字サイズが **NEEDS-FIX**。R01原指摘/画像保存→R02具体原因（結果だけの穴/AUTO導出、18対14.08px、審査coverage不足）まで確認。現在は **R03同型影響調査→R04具体的修正案** へ戻る。過去CROSS-VERIFIEDは履歴であり現在の適合判定にはしない。[本人NGと証拠](evidence/ux05-user-ng/FEEDBACK.json)。source691d/publisherf4cは未変更、本人受入/Goldなし。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 

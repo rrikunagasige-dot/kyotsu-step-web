@@ -1,12 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING
-Review: UX05-PUBLISHED-AND-HOST-VERIFIED / FINAL-REVIEW-READY / USER-PLAYTHROUGH-PENDING
-- 本人『いいよ』によるPR135公開承認を記録し、head900644e0をmainへ反映。publisher main `f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75`、製品source `691d3d160493bf684ca8a31a22476d31d98caeec`。既存Pagesへの公開は完了した。
-- [公開run41454830219](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41454830219)はSUCCESS/32step成功。N09/N10×4幅の公開前・後のbyte/操作、N08×4幅/旧版r6/legacy、N11×4幅の公開検査もPASS。
-- 独立した実HTTPで32source固定map・全121assets・2manifestのsource/publisher/namespace一致を確認。新しいcontextの320/1440×N09/N10実URL4件も正誤/font/保存namespace/エラー0を確認。管理proxyでのChrome CA補助と原transport FAILを成功へ上書きせず保存。[配信証拠](evidence/ux05-publication/STATUS.json) / [非作者監査](evidence/ux05-publication/hosted-review-b.md)。
-- [工程図](WORKFLOW_CURRENT.md)：R04→R06→R07→今回範囲G2→G3公開・実配信検証は完了。現在は本人総チェック待ち。[本人確認票・実URL](FINAL_APP_WALKTHROUGH_UX05.md)のN09r8全41node/N10r5全45nodeを対象に実評価を受け取る。本人細部OKや公開許可・機械PASSを総合受入にしない。
-- 次：本人「総チェックOK/要修正」の実評価→同sourceの事後同型sweep→事例/既存規則への接続と条件付きR08/L01→全条件を満たした時だけZ01。要修正は修正工程へ戻す。正式Store26イベント欠落の本人特例・他Work38件・Gold/fit未認定を保持する。
+Status: FAILED-VERIFICATION
+Review: USER-QA-NEEDS-FIX / CROSS-AUDIT-REOPENED
+- 本人が公開691dの穴設計・思考機会・文字サイズをNG評価。本人総合受入は未成立。過去のR07/G2/公開成功記録は履歴として保持し、現在の学習設計合格へ流用しない。[原発言・画像・原因](evidence/ux05-user-ng/FEEDBACK.json)。
+- 確定：n09-q02-negative-squareとq04-negativeは、具体変形/根拠を本人に構成させず、結果回答後のAUTOへ回していた。MASTER§8/9/12/52/53への適合を過大認定。全KEEPを不適合と断定せず、前提で認定済みの結果の正当な再利用も区別する。
+- 確定：本文/独立式18pxに対し、選択肢text/mathは14.08px。共通strong .88rem指定の競合。従来4228式計測は選択肢との相対fontを対象にせず見逃し。実画像非作者審査でも拾うべきだった。
+- [工程図](WORKFLOW_CURRENT.md)：本人要修正→R01記録/R02原因確認済み、次はR03同型影響調査→R04具体案。褒められた√a/√b導出・必要な初回計算・旧版/進捗を保護し、単純な記号穴追加やKEEP不変の適合証明への読み替えをしない。
+- 調査・記録のみ。製品source691d/main publisherf4c/公開内容は変更していない。正式Store26欠落特例・他Work38・Gold/fit未認定を維持。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

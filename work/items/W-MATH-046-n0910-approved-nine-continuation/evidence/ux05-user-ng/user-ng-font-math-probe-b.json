@@ -1,0 +1,204 @@
+[
+  {
+    "width": 320,
+    "active": "n09-q01-negative::value",
+    "fonts": [
+      {
+        "family": "KaTeX_AMS",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Main",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Math",
+        "style": "italic"
+      }
+    ],
+    "styles": [
+      {
+        "selector": "html",
+        "text": "\n    \n    \n    \n    \n    共通 STEP｜数学・物理\n    \n      window.__kyotsuBootError = function (message) {\n  ",
+        "fontSize": "16px",
+        "fontFamily": "\"Times New Roman\"",
+        "fontWeight": "400",
+        "lineHeight": "normal"
+      },
+      {
+        "selector": ".construction-lesson-reading",
+        "text": "今の段階 1 / 11二つの平方根を確かめる1 / 11例題2乗すると16になる実数を、すべて求めよう。x2=16{x}^{2} = 16x2=16222乗すると161616になる実数をすべて調べます",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "32.4px"
+      },
+      {
+        "selector": ".construction-lesson-stage p",
+        "text": "2乗すると16になる実数を、すべて求めよう。x2=16{x}^{2} = 16x2=16",
+        "fontSize": "16px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "600",
+        "lineHeight": "28.8px"
+      },
+      {
+        "selector": ".construction-lesson-choice-panel > p",
+        "text": "負の候補を2回掛けた値を計算します。",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "29.7px"
+      },
+      {
+        "selector": ".nested-math-shell",
+        "text": "42=4×4=16{4}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{}}}}}} 4 \\times 4 = 1642=N",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "normal"
+      },
+      {
+        "selector": ".nested-math-shell .katex",
+        "text": "42=4×4=16{4}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{}}}}}} 4 \\times 4 = 1642=N",
+        "fontSize": "18px",
+        "fontFamily": "KaTeX_Main, \"Times New Roman\", serif",
+        "fontWeight": "400",
+        "lineHeight": "21.6px"
+      },
+      {
+        "selector": ".construction-lesson-choices button",
+        "text": "1−16- 16−16",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "32.4px"
+      },
+      {
+        "selector": ".construction-lesson-choices button > strong",
+        "text": "−16- 16−16",
+        "fontSize": "14.08px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "600",
+        "lineHeight": "25.344px"
+      },
+      {
+        "selector": ".construction-lesson-choices button > strong .katex",
+        "text": "−16- 16−16",
+        "fontSize": "14.08px",
+        "fontFamily": "KaTeX_Main, \"Times New Roman\", serif",
+        "fontWeight": "400",
+        "lineHeight": "16.896px"
+      },
+      {
+        "selector": ".construction-lesson-choice-index",
+        "text": "1",
+        "fontSize": "11.2px",
+        "fontFamily": "ui-monospace, monospace",
+        "fontWeight": "700",
+        "lineHeight": "11.2px"
+      }
+    ],
+    "httpErrors": []
+  },
+  {
+    "width": 1440,
+    "active": "n09-q01-negative::value",
+    "fonts": [
+      {
+        "family": "KaTeX_AMS",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Main",
+        "style": "normal"
+      },
+      {
+        "family": "KaTeX_Math",
+        "style": "italic"
+      }
+    ],
+    "styles": [
+      {
+        "selector": "html",
+        "text": "\n    \n    \n    \n    \n    共通 STEP｜数学・物理\n    \n      window.__kyotsuBootError = function (message) {\n  ",
+        "fontSize": "16px",
+        "fontFamily": "\"Times New Roman\"",
+        "fontWeight": "400",
+        "lineHeight": "normal"
+      },
+      {
+        "selector": ".construction-lesson-reading",
+        "text": "今の段階 1 / 11二つの平方根を確かめる1 / 11例題2乗すると16になる実数を、すべて求めよう。x2=16{x}^{2} = 16x2=16222乗すると161616になる実数をすべて調べます",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "32.4px"
+      },
+      {
+        "selector": ".construction-lesson-stage p",
+        "text": "2乗すると16になる実数を、すべて求めよう。x2=16{x}^{2} = 16x2=16",
+        "fontSize": "16px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "600",
+        "lineHeight": "28.8px"
+      },
+      {
+        "selector": ".construction-lesson-choice-panel > p",
+        "text": "負の候補を2回掛けた値を計算します。",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "29.7px"
+      },
+      {
+        "selector": ".nested-math-shell",
+        "text": "42=4×4=16{4}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{}}}}}} 4 \\times 4 = 1642=N",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "normal"
+      },
+      {
+        "selector": ".nested-math-shell .katex",
+        "text": "42=4×4=16{4}^{2} \\mathrel{\\mathrel{=}\\mathrel{\\phantom{\\smash{\\rlap{\\text{}}}}}} 4 \\times 4 = 1642=N",
+        "fontSize": "18px",
+        "fontFamily": "KaTeX_Main, \"Times New Roman\", serif",
+        "fontWeight": "400",
+        "lineHeight": "21.6px"
+      },
+      {
+        "selector": ".construction-lesson-choices button",
+        "text": "1−16- 16−16",
+        "fontSize": "18px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "32.4px"
+      },
+      {
+        "selector": ".construction-lesson-choices button > strong",
+        "text": "−16- 16−16",
+        "fontSize": "14.08px",
+        "fontFamily": "\"Noto Sans JP\", \"Yu Gothic UI\", \"Hiragino Kaku Gothic ProN\", system-ui, sans-serif",
+        "fontWeight": "600",
+        "lineHeight": "25.344px"
+      },
+      {
+        "selector": ".construction-lesson-choices button > strong .katex",
+        "text": "−16- 16−16",
+        "fontSize": "14.08px",
+        "fontFamily": "KaTeX_Main, \"Times New Roman\", serif",
+        "fontWeight": "400",
+        "lineHeight": "16.896px"
+      },
+      {
+        "selector": ".construction-lesson-choice-index",
+        "text": "1",
+        "fontSize": "11.2px",
+        "fontFamily": "ui-monospace, monospace",
+        "fontWeight": "700",
+        "lineHeight": "11.2px"
+      }
+    ],
+    "httpErrors": []
+  }
+]

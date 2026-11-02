@@ -126,3 +126,42 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
     block('MALFORMED_OR_UNVERIFIABLE_MIGRATION_INPUT'); return result
   }
 }
+
+/** UX-03: retain native answers by their full unchanged semantic contract.
+ * This never creates answer events or treats old AUTO conclusions as answers.
+ * Future retained answers stay in records until their new prerequisites unlock. */
+export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
+  const { source, target, sourceLedger, now } = input
+  if (source.unitId !== 'math-numbers-expressions-n10' || target.unitId !== source.unitId || source.toRevision !== 3 || target.fromRevision !== 3 || target.toRevision !== 4 || !validLedger(source, sourceLedger)) throw Error('UX03_NATIVE_REVISION_BINDING')
+  const ledger = emptyNestedLedger(target, now), eligiblePartIds: string[] = []
+  const descriptor = (n: NestedNode, p: NestedNode['parts'][number]) => ({ nodeId: n.nodeId, prerequisites: n.prerequisiteNodeIds, results: n.requiredResultRefs, assumptions: n.assumptions, id: p.id, key: p.key, role: p.role, kind: p.kind, expected: p.expected, prompt: p.prompt, choices: p.choices.map(c => ({ value: c.value, kind: c.kind, display: c.display, latex: c.latex })) })
+  for (const node of target.nodes) {
+    const previous = source.nodes.find(n => n.nodeId === node.nodeId)
+    if (!previous) continue
+    for (const part of node.parts) {
+      const oldPart = previous.parts.find(p => p.id === part.id), record = sourceLedger.records[part.id]
+      if (!oldPart || !record || stable(descriptor(previous, oldPart)) !== stable(descriptor(node, part))) continue
+      if (!part.choices.some(c => c.value === record.value) || !part.choices.some(c => c.value === record.firstValue)) continue
+      ledger.records[part.id] = structuredClone(record); eligiblePartIds.push(part.id)
+    }
+    if (stable(node.parts.map(p => p.id)) === stable(previous.parts.map(p => p.id)) && node.parts.every(p => eligiblePartIds.includes(p.id)) && sourceLedger.parents[node.nodeId]) ledger.parents[node.nodeId] = structuredClone(sourceLedger.parents[node.nodeId])
+  }
+  ledger.startedAt = Math.min(sourceLedger.startedAt, now)
+  // Old event IDs are retained as provenance, not new learner actions.
+  ledger.processedEventIds = [...sourceLedger.processedEventIds]
+  return { ledger: activateRetainedNativeRecords(target, ledger, eligiblePartIds), eligiblePartIds, sourceCompiledHash: source.compiledHash }
+}
+
+export function activateRetainedNativeRecords(lesson: NestedLesson, supplied: NestedLedger, eligiblePartIds: readonly string[]): NestedLedger {
+  const ledger = structuredClone(supplied), eligible = new Set(eligiblePartIds)
+  for (let limit = 0; limit < eligible.size; limit++) {
+    const view = projectNestedLesson(lesson, ledger), id = view.editable?.partId
+    if (!id || !eligible.has(id) || ledger.draft[id] !== undefined) break
+    const record = ledger.records[id]
+    if (!record) break
+    ledger.draft[id] = record.value
+    const part = lesson.nodes.flatMap(n => n.parts).find(p => p.id === id)!
+    if (record.value !== part.expected) break
+  }
+  return ledger
+}

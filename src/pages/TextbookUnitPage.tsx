@@ -691,7 +691,7 @@ export function TextbookUnitPage() {
   if (unitId === 'math-numbers-expressions-n09' || unitId === 'math-numbers-expressions-n10') {
     const code = unitId.endsWith('n09') ? 'n09' : 'n10', oldRevision = code === 'n09' ? '3' : '2'
     if (params.get('version') === oldRevision) return <N0910ArchivePage code={code} />
-    return <N0910RevisionPage key={unitId} code={code} />
+    if (code === 'n10' && params.get('version') === '3') return <N0910ArchivePage code={code} nativeRevision />
   }
   if (unitId === 'math-numbers-expressions-n08') {
     if (params.get('version') === '4') return <N08ArchivePage />
@@ -748,6 +748,7 @@ function ActiveTextbookUnitPage() {
 
   const summary = textbookUnitProgress(unit, progress)
   const continuousLesson = unit.sections.length === 1 && unit.sections[0]?.id === 'lesson'
+  const nestedCode = unit.unitId === 'math-numbers-expressions-n09' ? 'n09' : unit.unitId === 'math-numbers-expressions-n10' ? 'n10' : undefined
   const unitCode = unit.chapter?.unitCode
   const legacyPrefix = unitCode?.slice(-1)
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
@@ -899,7 +900,7 @@ function ActiveTextbookUnitPage() {
                 </header>
               )}
 
-              {section.readingFlow.length > 0
+              {nestedCode ? <N0910RevisionPage key={`${unit.unitId}-restart-${restartEpoch}`} code={nestedCode} embedded /> : section.readingFlow.length > 0
                 ? <TextbookReadingFlow originalMathLayout={originalMathLayout} key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
                 : null}
 

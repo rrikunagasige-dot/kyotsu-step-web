@@ -15,16 +15,16 @@ describe('catalog and canonical-ledger bridge', () => {
     const archive = old(); useAppStore.setState({ textbookProgress: { [unit.unitId]: archive } })
     useAppStore.getState().syncNestedTextbook(unit, emptyNestedLedger(lesson, 20), undefined, archive)
     const saved = useAppStore.getState().textbookProgress[unit.unitId]
-    expect(saved.unitRevision).toBe(3); expect(saved.completedAt).toBeUndefined(); expect(saved.previousRevisionCompletedAt).toBe(10)
+    expect(saved.unitRevision).toBe(unit.revision); expect(saved.completedAt).toBeUndefined(); expect(saved.previousRevisionCompletedAt).toBe(10)
     expect(saved.archivedRevisions?.['2']).toMatchObject(archive); expect(archive).toEqual(old())
-    expect(textbookUnitProgress(unit, saved)).toEqual({ completed: 0, total: 35, percent: 0 })
+    expect(textbookUnitProgress(unit, saved)).toEqual({ completed: 0, total: unit.nestedContract!.parents.length, percent: 0 })
   })
   it('updates the home count only after a whole real parent is certified', () => {
     let ledger = emptyNestedLedger(lesson, 20)
     const first = lesson.nodes.find(n => n.parts.length)!
     for (const [i, p] of first.parts.entries()) ledger = answerNestedPart(lesson, ledger, p.id, p.expected, 'part-' + i, 21 + i)!
     useAppStore.getState().syncNestedTextbook(unit, ledger)
-    expect(textbookUnitProgress(unit, useAppStore.getState().textbookProgress[unit.unitId])).toMatchObject({ completed: 1, total: 35 })
+    expect(textbookUnitProgress(unit, useAppStore.getState().textbookProgress[unit.unitId])).toMatchObject({ completed: 1, total: unit.nestedContract!.parents.length })
   })
   it('home reset wins over an older async ledger and keeps old archives', () => {
     const archive = old(); useAppStore.getState().syncNestedTextbook(unit, emptyNestedLedger(lesson, 20), undefined, archive)

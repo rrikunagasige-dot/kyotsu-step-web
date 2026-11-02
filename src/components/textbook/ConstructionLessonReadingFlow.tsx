@@ -83,26 +83,28 @@ function TextRow({ row, parts, onActivate }: { row: NestedRow; parts: PublicNest
   })}</p>
 }
 
-function NodeRows({ planningNode, rows, parts, readonly, number, onActivate, idPrefix = '' }: { planningNode: NestedNode; rows: NestedRow[]; parts: PublicNestedPart[]; readonly: boolean; number?: string; onActivate: () => void; idPrefix?: string }) {
-  const group = useRef<HTMLDivElement>(null), [plan, setPlan] = useState<NeutralNestedGroupPlan>()
+function NodeRows({ planningNode, planningNodes = [planningNode], rows, parts, readonly, number, onActivate, idPrefix = '' }: { planningNode: NestedNode; planningNodes?: NestedNode[]; rows: NestedRow[]; parts: PublicNestedPart[]; readonly: boolean; number?: string; onActivate: () => void; idPrefix?: string }) {
+  const group = useRef<HTMLDivElement>(null), [plans, setPlans] = useState<Record<string, NeutralNestedGroupPlan>>({})
   const groupId = idPrefix + planningNode.nodeId + '-math-group'
-  const neutralRows = useMemo(() => planningNode.rows.filter(row => row.kind === 'math').map(row => {
-    const referenced = new Set([...row.partKeys, ...Array.from(row.template.matchAll(/\{mirror:([A-Za-z][A-Za-z0-9_.-]*)\}/g), match => match[1])])
-    return { id: row.id, template: row.template, parts: planningNode.parts.filter(part => referenced.has(part.key)).map(part => ({ key: part.key, kind: part.prompt, role: part.role, choices: part.choices.map(choice => ({ value: choice.value, latex: choice.latex, kind: choice.kind })) })) }
-  }), [planningNode])
+  const neutralGroups = useMemo(() => {
+    const ids = new Set(planningNode.rows.filter(r => r.kind === 'math').map(r => r.mathGroupId ?? planningNode.nodeId))
+    return [...ids].map(id => ({ id: idPrefix + id, rows: planningNodes.flatMap(owner => owner.rows.filter(row => row.kind === 'math' && (row.mathGroupId ?? owner.nodeId) === id).map(row => {
+      const referenced = new Set([...row.partKeys, ...Array.from(row.template.matchAll(/\{mirror:([A-Za-z][A-Za-z0-9_.-]*)\}/g), match => match[1])])
+      return { id: row.id, template: row.template, parts: owner.parts.filter(part => referenced.has(part.key)).map(part => ({ key: part.key, kind: part.prompt, role: part.role, choices: part.choices.map(choice => ({ value: choice.value, latex: choice.latex, kind: choice.kind })) })) }
+    })) }))
+  }, [planningNode, planningNodes, idPrefix])
   useLayoutEffect(() => {
-    if (!group.current || !neutralRows.length) return
+    if (!group.current || !neutralGroups.length) return
     let active = true, lastStamp = ''
     const measure = () => {
       if (!active || !group.current) return
       const width = group.current.getBoundingClientRect().width
-      // jsdom/no geometry cannot produce or certify a shared layout.
       if (!(width > 0)) return
       const stamp = width + ':' + document.fonts?.status
       if (stamp === lastStamp) return
-      const next = measureNeutralNestedGroup(groupId, neutralRows, group.current, width)
+      const next = Object.fromEntries(neutralGroups.map(g => [g.id, measureNeutralNestedGroup(g.id, g.rows, group.current!, width)]))
       lastStamp = stamp
-      setPlan(previous => previous?.neutralLayoutKey === next.neutralLayoutKey ? previous : next)
+      setPlans(next)
     }
     measure()
     const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(measure)
@@ -110,7 +112,8 @@ function NodeRows({ planningNode, rows, parts, readonly, number, onActivate, idP
     void document.fonts?.ready.then(measure)
     window.addEventListener('resize', measure)
     return () => { active = false; observer?.disconnect(); window.removeEventListener('resize', measure) }
-  }, [groupId, neutralRows])
+  }, [neutralGroups])
+  const plan = plans[neutralGroups[0]?.id]
   const lastMathId = rows.filter(r => r.kind === 'math').at(-1)?.id
   return <div ref={group} className="construction-lesson-continuous-calculation" data-math-group-id={groupId} data-group-neutral-key={plan?.neutralLayoutKey} data-group-body-width={plan?.bodyWidth} data-group-relation-column={plan?.relationColumn} data-group-layout-overflow={plan?.overflow ? 'true' : 'false'}>{rows.map(row => {
     if (row.kind === 'text') return <TextRow key={row.id} row={row} parts={parts} onActivate={onActivate} />
@@ -118,8 +121,9 @@ function NodeRows({ planningNode, rows, parts, readonly, number, onActivate, idP
     const rowParts = parts.filter(part => referencedKeys.has(part.key))
     const values = Object.fromEntries(rowParts.flatMap(p => p.value !== undefined ? [[p.key, p.value]] : []))
     const certifiedKeys = rowParts.filter(p => p.correct).map(p => p.key)
-    const neutralRow = plan?.rows.find(r => r.id === row.id)
-    return <TaggedMathRow key={row.id} number={row.id === lastMathId ? number : undefined}><NestedConstructionMath id={idPrefix + row.id} template={row.template} parts={rowParts.map(p => ({ key: p.key, kind: p.prompt, role: p.role, choices: p.choices }))} values={values} certifiedKeys={certifiedKeys} editableKey={rowParts.find(p => p.editable)?.key ?? null} onActivate={onActivate} mode={readonly ? 'readonly' : 'interactive'} groupAlignment={plan && neutralRow ? { groupId, bodyWidth: plan.bodyWidth, relationColumn: plan.relationColumn, neutralLayoutKey: plan.neutralLayoutKey, breakAtPaths: neutralRow.breakAtPaths } : undefined} /></TaggedMathRow>
+    const rowPlan = plans[idPrefix + (row.mathGroupId ?? planningNode.nodeId)]
+    const neutralRow = rowPlan?.rows.find(r => r.id === row.id)
+    return <TaggedMathRow key={row.id} number={row.id === lastMathId ? number : undefined}><NestedConstructionMath id={idPrefix + row.id} template={row.template} parts={rowParts.map(p => ({ key: p.key, kind: p.prompt, role: p.role, choices: p.choices }))} values={values} certifiedKeys={certifiedKeys} editableKey={rowParts.find(p => p.editable)?.key ?? null} onActivate={onActivate} mode={readonly ? 'readonly' : 'interactive'} groupAlignment={rowPlan && neutralRow ? { groupId: idPrefix + (row.mathGroupId ?? planningNode.nodeId), bodyWidth: rowPlan.bodyWidth, relationColumn: rowPlan.relationColumn, neutralLayoutKey: rowPlan.neutralLayoutKey, breakAtPaths: neutralRow.breakAtPaths } : undefined} /></TaggedMathRow>
   })}</div>
 }
 
@@ -129,48 +133,48 @@ export function ConstructionLessonReadingFlow(props: ConstructionLessonReadingFl
   return <BoundConstructionLesson {...props} lesson={bound.lesson} />
 }
 
-function BoundConstructionLesson({ compiled, ledger, onAnswer, onReset, lesson }: ConstructionLessonReadingFlowProps & { lesson: NestedLesson }) {
+function BoundConstructionLesson({ compiled, ledger, onAnswer, lesson }: ConstructionLessonReadingFlowProps & { lesson: NestedLesson }) {
   const view = projectNestedLesson(lesson, ledger)
-  const choicePanel = useRef<HTMLDivElement>(null)
-  const [history, setHistory] = useState(false)
+  const flow = useRef<HTMLDivElement>(null), choicePanel = useRef<HTMLDivElement>(null)
+  const [history, setHistory] = useState(false), [stageCursor, setStageCursor] = useState<string>()
   const frontier = view.visible.at(-1)
-  const currentStage = frontier?.node.stageId
-  const visibleStages = compiled.stages.filter(s => view.visible.some(n => n.node.stageId === s.id))
-  const activePart = frontier?.parts.find(p => p.editable)
+  const currentStage = stageCursor ?? frontier?.node.stageId
+  const stageIndex = compiled.stages.findIndex(s => s.id === currentStage), stage = compiled.stages[stageIndex]
+  const stageItems = view.visible.filter(n => n.node.stageId === currentStage)
+  const stageComplete = stageItems.length > 0 && stageItems.length === lesson.nodes.filter(n => n.stageId === currentStage).length && stageItems.every(n => n.resolved)
+  const activePart = frontier?.node.stageId === currentStage ? frontier?.parts.find(p => p.editable) : undefined
   const choices = activePart ? stableNestedChoices(activePart.choices, compiled.unitId + ':' + compiled.toRevision + ':' + activePart.id) : []
   const activate = () => choicePanel.current?.querySelector<HTMLButtonElement>('button')?.focus()
   const nodeMeta = (id: string) => compiled.nodeDesign.find(n => n.nodeId === id)!
   const tokens = compiled.layoutPlan.tokens
   const tokenStyle = { '--construction-font': tokens.mathFontPx + 'px', '--construction-katex-scale': tokens.katexScale + 'em', '--construction-hit': tokens.minHitPx + 'px', '--construction-row-gap': tokens.rowGapPx + 'px', '--construction-note-gap': tokens.noteGapPx + 'px', '--construction-paragraph-gap': tokens.paragraphGapPx + 'px' } as CSSProperties
-  const memo = (node: NestedNode) => <div className="construction-lesson-memo" data-certified-memo={node.nodeId}>
-    {node.terminalRecord.formulas.map((formula, index) => <div key={index} className="construction-lesson-memo-math"><NestedConstructionMath id={node.nodeId + '-memo-' + index} template={formula} parts={[]} values={{}} certifiedKeys={[]} editableKey={null} onActivate={() => undefined} mode="readonly" /></div>)}
-    {(node.terminalRecord.conditionParts ?? node.terminalRecord.conditions.map(text => [{ type: 'text' as const, text }])).map((parts, index) => <p key={index}><Copy parts={parts} /></p>)}
-    <p><Copy parts={node.terminalRecord.proseParts ?? [{ type: 'text', text: node.terminalRecord.prose }]} /></p>
-  </div>
-  return <div className="textbook-reading-flow construction-lesson-reading" style={tokenStyle} data-compiled-hash={compiled.compiledHash} data-current-stage={currentStage}>
+  const renderNode = (item: typeof view.visible[number], readonly = false) => {
+    const meta = nodeMeta(item.node.nodeId)
+    return <div key={item.node.nodeId} className="construction-lesson-node" data-node-id={item.node.nodeId} data-node-resolved={item.resolved ? 'true' : 'false'}>
+      <p className="construction-lesson-lead reading-paragraph"><Copy parts={item.node.leadParts} /></p>
+      {(meta.assumptionsDisplay === 'in-context' ? [] : meta.assumptionParts ?? item.node.assumptions.map(text => [{ type: 'text' as const, text }])).map((parts, index) => <p className="construction-lesson-condition reading-paragraph" key={index}><Copy parts={parts} /></p>)}
+      <NodeRows planningNode={meta} planningNodes={compiled.nodeDesign} rows={item.rows} parts={item.parts} readonly={readonly} number={meta.equationNumber === undefined ? undefined : [meta.equationNumber, ...(meta.numberAliases ?? [])].join(' / ')} onActivate={readonly ? () => undefined : activate} idPrefix={readonly ? 'history-' : ''} />
+      {item.node.displayExtras?.map((extra, index) => extra.kind === 'math' ? <div key={index} className="construction-lesson-extra"><NestedConstructionMath id={item.node.nodeId + '-extra-' + index} template={extra.latex} parts={[]} values={{}} certifiedKeys={[]} editableKey={null} onActivate={() => undefined} mode="readonly" /></div> : extra.kind === 'table' ? <div key={index} className="construction-lesson-extra"><table><caption>{extra.caption}</caption><thead><tr>{extra.headers.map((header, column) => <th scope="col" key={column}>{header}</th>)}</tr></thead><tbody>{extra.rows.map((cells, row) => <tr key={row}>{cells.map((cell, column) => <td key={column}><MathCopy latex={cell} /></td>)}</tr>)}</tbody></table></div> : <figure key={index} className="construction-lesson-extra" data-figure-id={extra.id}><img src={import.meta.env.BASE_URL + extra.src.replace(/^\//, '')} alt={extra.alt} data-figure-sha256={extra.sha256} /><figcaption>{extra.caption}</figcaption></figure>)}
+      {!readonly && item.node.nodeId === frontier?.node.nodeId && activePart && <div ref={choicePanel} className="construction-lesson-choice-panel axis-choice-panel" data-active-part-id={activePart.id}>
+        <p>{activePart.prompt}</p>
+        {activePart.visibleFeedback && <aside role="status" className="construction-lesson-feedback reading-choice-hint"><strong>もう一度考えよう</strong><span>{activePart.visibleFeedback}</span></aside>}
+        <div className="construction-lesson-choices axis-choice-list" role="group" aria-label={activePart.prompt}>{choices.map((choice, index) => <button key={choice.value} type="button" className="reading-choice-option" data-choice-value={choice.value} aria-label={choice.display ?? choice.value} onClick={() => { setStageCursor(currentStage); onAnswer(activePart.id, choice.value) }}><span className="construction-lesson-choice-index">{index + 1}</span><strong>{choice.kind === 'math' ? <MathCopy latex={choice.latex ?? choice.value} /> : choice.display ?? choice.value}</strong></button>)}</div>
+      </div>}
+    </div>
+  }
+  const known = stage ? [...new Set(stageItems.flatMap(n => nodeMeta(n.node.nodeId).requiredResultRefs))].map(id => view.visible.find(n => n.resolved && n.node.stageId !== currentStage && n.node.resultId === id)).filter((n): n is typeof view.visible[number] => !!n) : []
+  return <div ref={flow} tabIndex={-1} className="textbook-reading-flow construction-lesson-reading" data-testid="textbook-reading-flow" style={tokenStyle} data-compiled-hash={compiled.compiledHash} data-current-stage={currentStage}>
     {view.staleLedger && <p role="status">別の版の記録は、この教材の回答として使いません。</p>}
-    {visibleStages.map(stage => <section key={stage.id} data-stage-id={stage.id} className="construction-lesson-stage">
-      <h2>{stage.title}</h2>
-      <p className="construction-lesson-original-question"><Copy parts={stage.sourceQuestionParts} /></p>
-      {view.visible.filter(n => n.node.stageId === stage.id).map(item => {
-        const meta = nodeMeta(item.node.nodeId), historical = item.resolved && stage.id !== currentStage
-        return <div key={item.node.nodeId} className="construction-lesson-node" data-node-id={item.node.nodeId} data-node-resolved={item.resolved ? 'true' : 'false'}>
-          <p className="construction-lesson-lead"><Copy parts={item.node.leadParts} /></p>
-          {(meta.assumptionParts ?? item.node.assumptions.map(text => [{ type: 'text' as const, text }])).map((parts, index) => <p className="construction-lesson-condition" key={index}><Copy parts={parts} /></p>)}
-          <NodeRows planningNode={meta} rows={item.rows} parts={item.parts} readonly={historical} number={meta.equationNumber === undefined ? undefined : [meta.equationNumber, ...(meta.numberAliases ?? [])].join(' / ')} onActivate={activate} />
-          {item.resolved && memo(meta)}
-          {item.node.displayExtras?.map((extra, index) => extra.kind === 'math' ? <div key={index} className="construction-lesson-extra"><NestedConstructionMath id={item.node.nodeId + '-extra-' + index} template={extra.latex} parts={[]} values={{}} certifiedKeys={[]} editableKey={null} onActivate={() => undefined} mode="readonly" /></div> : extra.kind === 'table' ? <div key={index} className="construction-lesson-extra"><table><caption>{extra.caption}</caption><thead><tr>{extra.headers.map((header, column) => <th scope="col" key={column}>{header}</th>)}</tr></thead><tbody>{extra.rows.map((cells, row) => <tr key={row}>{cells.map((cell, column) => <td key={column}><MathCopy latex={cell} /></td>)}</tr>)}</tbody></table></div> : <figure key={index} className="construction-lesson-extra" data-figure-id={extra.id}><img src={import.meta.env.BASE_URL + extra.src.replace(/^\//, '')} alt={extra.alt} data-figure-sha256={extra.sha256} /><figcaption>{extra.caption}</figcaption></figure>)}
-        </div>
-      })}
-    </section>)}
-    {activePart && <div ref={choicePanel} className="construction-lesson-choice-panel" data-active-part-id={activePart.id}>
-      <p>{activePart.prompt}</p>
-      {activePart.visibleFeedback && <p role="status" className="construction-lesson-feedback">{activePart.visibleFeedback}</p>}
-      <div className="construction-lesson-choices" role="group" aria-label={activePart.prompt}>{choices.map((choice, index) => <button key={choice.value} type="button" data-choice-value={choice.value} aria-label={choice.display ?? choice.value} onClick={() => onAnswer(activePart.id, choice.value)}><span className="construction-lesson-choice-index">{index + 1}</span>{choice.kind === 'math' ? <MathCopy latex={choice.latex ?? choice.value} /> : <span>{choice.display ?? choice.value}</span>}</button>)}</div>
-    </div>}
-    {view.completed && <p role="status">この教材の計算と確認が終わりました。</p>}
-    <div className="construction-lesson-record-controls"><button type="button" onClick={() => setHistory(v => !v)} aria-expanded={history}>確定した計算の履歴</button><button type="button" onClick={onReset}>この版をやり直す</button></div>
-    {history && <div className="construction-lesson-history" data-readonly-history="true">{view.visible.filter(n => n.resolved).map(item => <div key={item.node.nodeId}><NodeRows planningNode={nodeMeta(item.node.nodeId)} rows={item.rows} parts={item.parts} readonly idPrefix="history-" onActivate={() => undefined} />{(item.node.terminalRecord?.conditionParts ?? item.node.terminalRecord?.conditions.map(text => [{ type: 'text' as const, text }]) ?? []).map((parts, index) => <p key={index} className="construction-lesson-history-condition"><Copy parts={parts} /></p>)}<p><Copy parts={item.node.terminalRecord?.proseParts ?? [{ type: 'text', text: item.node.terminalRecord?.prose ?? '' }]} /></p></div>)}</div>}
+    <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / {compiled.stages.length}</span>{stageIndex > 0 && <button type="button" onClick={() => setHistory(v => !v)} aria-expanded={history}>{history ? '履歴を閉じる' : '前の段階を見る'}</button>}</div>
+    {history && <div className="construction-lesson-history" data-readonly-history="true">{compiled.stages.slice(0, stageIndex).map(previous => <details key={previous.id}><summary>{previous.title}</summary>{view.visible.filter(n => n.resolved && n.node.stageId === previous.id).map(item => renderNode(item, true))}</details>)}</div>}
+    {stage && <section data-stage-id={stage.id} className="construction-lesson-stage math-textbook-stage math-textbook-stage--current">
+      <header className="math-textbook-stage-active-title"><strong>{stage.title}</strong><small>{stageIndex + 1} / {compiled.stages.length}</small></header>
+      <div className="construction-lesson-source-question"><span className="construction-lesson-kind">{stage.title.includes('証明') ? '導出' : '例題'}</span><p className="construction-lesson-original-question"><Copy parts={stage.sourceQuestionParts} /></p></div>
+      {known.length > 0 && <aside className="math-textbook-stage-references"><strong>使う条件・前の結果</strong>{known.map(item => <div key={item.node.resultId} data-certified-reference={item.node.resultId}>{item.node.terminalRecord?.formulas.map((latex, index) => <p key={index}><MathCopy latex={latex} /></p>)}</div>)}</aside>}
+      {stageItems.map(item => renderNode(item))}
+      {stageComplete && stageIndex < compiled.stages.length - 1 && <button type="button" className="math-textbook-next-stage" data-testid="math-textbook-next-stage" onClick={() => { setStageCursor(compiled.stages[stageIndex + 1].id); setHistory(false); requestAnimationFrame(() => { flow.current?.focus({ preventScroll: true }); flow.current?.scrollIntoView({ block: 'start' }) }) }}>次へ</button>}
+      {view.completed && stageIndex === compiled.stages.length - 1 && <p role="status">ここまでの学習を終えました。</p>}
+    </section>}
   </div>
 }
 

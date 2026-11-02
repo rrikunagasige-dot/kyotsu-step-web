@@ -1,11 +1,13 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { answerNestedPart, emptyNestedLedger, projectNestedLesson, type NestedLesson } from './nestedLesson'
-import { migrateReviewedNestedProgress, REVIEWED_N10_MIGRATION, type ReviewedNestedMigrationInput } from './nestedMigration'
+import { migrateReviewedNestedProgress, REVIEWED_N10_MIGRATION, migrateNativeRevisionLedger, activateRetainedNativeRecords, type ReviewedNestedMigrationInput } from './nestedMigration'
 
 const raw = (path: string) => readFileSync(new URL('../../' + path, import.meta.url), 'utf8')
 const oldSourceJson = raw('src/data/textbook/math/numbers/n10Authored.json')
-const designJson = raw('work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json')
+const designFile = raw('work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json')
+// Keep the exact previously reviewed r2→r3 fixture; new native migration is tested separately.
+const designJson = JSON.parse(designFile).priorReviewedDesignRaw ?? designFile
 const analysisJson = raw('work/items/W-MATH-043-n0910-restart/evidence/migration-analysis.json')
 const source = JSON.parse(oldSourceJson), analysis = JSON.parse(analysisJson)
 const unit = JSON.parse(designJson).units.find((u: { code: string }) => u.code === 'N10')
@@ -128,5 +130,62 @@ describe('source-bound reviewed N10 migration', () => {
     }
     const input = base(); input.ledger = { ...emptyNestedLedger(input.lesson, 90), compiledHash: 'other' }
     expect((await migrateReviewedNestedProgress(input)).blockedReasons[0].code).toBe('CURRENT_LEDGER_OR_TIME_INVALID')
+  })
+})
+
+describe('UX-03 native r3 → r4, added decisions never inferred from AUTO', () => {
+  const sourceCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiledR3.json'))
+  const targetCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiled.json'))
+  const previous: NestedLesson = { ...sourceCompiled, nodes: sourceCompiled.nodeDesign }
+  const target: NestedLesson = { ...targetCompiled, nodes: targetCompiled.nodeDesign }
+  function completedPrevious() {
+    let ledger = emptyNestedLedger(previous, 1), event = 0
+    for (const node of previous.nodes) for (const part of node.parts) ledger = answerNestedPart(previous, ledger, part.id, part.expected, 'old-' + ++event, event + 1)!
+    return ledger
+  }
+  it('keeps all old records and timestamps, stops at the new sign, then revives future retained answers without fake events', () => {
+    const sourceLedger = completedPrevious(), frozen = JSON.stringify(sourceLedger)
+    let migrated = migrateNativeRevisionLedger({ source: previous, target, sourceLedger, now: 100 })
+    expect(migrated.eligiblePartIds).toHaveLength(49)
+    expect(Object.keys(migrated.ledger.records)).toHaveLength(49)
+    expect(migrated.ledger.records).toEqual(sourceLedger.records)
+    expect(projectNestedLesson(target, migrated.ledger).editable?.partId).toBe('n10-02::candidateSign')
+    expect(projectNestedLesson(target, migrated.ledger).completed).toBe(false)
+    const added = target.nodes.find(n => n.nodeId === 'n10-02')!.parts
+    for (const [i, part] of added.entries()) {
+      expect(migrated.ledger.records[part.id]).toBeUndefined()
+      const answered = answerNestedPart(target, migrated.ledger, part.id, part.expected, 'new-' + i, 101 + i)!
+      migrated = { ...migrated, ledger: activateRetainedNativeRecords(target, answered, migrated.eligiblePartIds) }
+    }
+    expect(projectNestedLesson(target, migrated.ledger).completed).toBe(true)
+    expect(migrated.ledger.processedEventIds).toHaveLength(sourceLedger.processedEventIds.length + 3)
+    expect(JSON.stringify(sourceLedger)).toBe(frozen)
+  })
+  it('keeps a partial wrong answer editable, and refuses a changed question contract', () => {
+    const part = previous.nodes[0].parts[0], wrong = part.choices.find(c => c.value !== part.expected)!
+    const sourceLedger = answerNestedPart(previous, undefined, part.id, wrong.value, 'old-wrong', 5)!
+    const migrated = migrateNativeRevisionLedger({ source: previous, target, sourceLedger, now: 100 })
+    const view = projectNestedLesson(target, migrated.ledger)
+    expect(view.editable?.partId).toBe(part.id)
+    expect(migrated.ledger.draft[part.id]).toBe(wrong.value)
+    expect(migrated.ledger.records[part.id]).toEqual(sourceLedger.records[part.id])
+    const changed = structuredClone(target); changed.nodes[0].parts[0].prompt += ' changed'
+    expect(migrateNativeRevisionLedger({ source: previous, target: changed, sourceLedger, now: 100 }).eligiblePartIds).not.toContain(part.id)
+  })
+  it('reveals neither the square calculation nor final root before each prerequisite is answered', () => {
+    let ledger = migrateNativeRevisionLedger({ source: previous, target, sourceLedger: completedPrevious(), now: 100 }).ledger
+    const node = target.nodes.find(n => n.nodeId === 'n10-02')!
+    const visible = () => projectNestedLesson(target, ledger).visible.find(v => v.node.nodeId === node.nodeId)!
+    expect(visible().rows.map(r => r.id)).toEqual(['n10-02::row-01'])
+    expect(visible().node.terminalRecord).toBeUndefined()
+    for (const [i, part] of node.parts.entries()) {
+      for (const choice of part.choices.filter(c => c.value !== part.expected)) {
+        ledger = answerNestedPart(target, ledger, part.id, choice.value, 'wrong-' + i + choice.value, 101 + i)!
+        expect(projectNestedLesson(target, ledger).editable?.partId).toBe(part.id)
+        expect(visible().rows.some(r => r.id === 'n10-02::row-05')).toBe(false)
+      }
+      ledger = answerNestedPart(target, ledger, part.id, part.expected, 'right-' + i, 110 + i)!
+    }
+    expect(visible().rows.at(-1)?.template).toBe('\\sqrt{125}=5\\sqrt5')
   })
 })

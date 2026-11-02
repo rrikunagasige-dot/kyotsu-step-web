@@ -1,7 +1,7 @@
 import type { NestedLesson } from './nestedLesson'
 import type { NestedMigrationResult } from './nestedMigration'
 import type { NestedLedger } from './nestedLesson'
-export type SavedNestedLesson = { schemaVersion: 'nested-reader-storage/1'; ledger: NestedLedger; archive?: unknown; resetAt?: number; pendingImportedRecords?: NestedMigrationResult['pendingImportedRecords']; migrationReceipt?: NestedMigrationResult['receipt']; migrationStatus?: NestedMigrationResult['status']; migrationBlockedReasons?: NestedMigrationResult['blockedReasons'] }
+export type SavedNestedLesson = { schemaVersion: 'nested-reader-storage/1'; ledger: NestedLedger; nativeRevisionImport?: { sourceCompiledHash: string; eligiblePartIds: string[] };  archive?: unknown; resetAt?: number; pendingImportedRecords?: NestedMigrationResult['pendingImportedRecords']; migrationReceipt?: NestedMigrationResult['receipt']; migrationStatus?: NestedMigrationResult['status']; migrationBlockedReasons?: NestedMigrationResult['blockedReasons'] }
 function object(v: unknown): v is Record<string, unknown> { return !!v && typeof v === 'object' && !Array.isArray(v) }
 const time = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v) && v >= 0
 const count = (v: unknown) => typeof v === 'number' && Number.isSafeInteger(v) && v >= 1
@@ -20,5 +20,6 @@ export function parseSavedNestedLesson(raw: string, lesson: NestedLesson): Saved
     if (!node || !node.parts.length || !object(r) || !count(r.attemptCount) || typeof r.isFirstCorrect !== 'boolean' || !object(r.firstSubmittedValues) || !time(r.firstSubmittedAt) || !time(r.lastSubmittedAt) || r.lastSubmittedAt < r.firstSubmittedAt || Object.keys(r.firstSubmittedValues).length !== node.parts.length || node.parts.some(p => !validValue(p.id, (r.firstSubmittedValues as Record<string, unknown>)[p.id]))) throw Error('NESTED_STORAGE_PARENT')
     if (r.isFirstCorrect !== node.parts.every(p => (r.firstSubmittedValues as Record<string, unknown>)[p.id] === p.expected)) throw Error('NESTED_STORAGE_FIRST_PARENT')
   }
+  if (s.nativeRevisionImport !== undefined && (!object(s.nativeRevisionImport) || typeof s.nativeRevisionImport.sourceCompiledHash !== 'string' || !Array.isArray(s.nativeRevisionImport.eligiblePartIds) || s.nativeRevisionImport.eligiblePartIds.some(id => typeof id !== 'string' || !parts.has(id)) || new Set(s.nativeRevisionImport.eligiblePartIds).size !== s.nativeRevisionImport.eligiblePartIds.length)) throw Error('NESTED_STORAGE_NATIVE_IMPORT')
   return s as SavedNestedLesson
 }

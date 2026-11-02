@@ -2,12 +2,12 @@
   "schemaVersion": "transformation-reading/3",
   "nestedPipeline": "n0910/1",
   "unitId": "math-numbers-expressions-n10",
-  "fromRevision": 2,
-  "toRevision": 3,
+  "fromRevision": 3,
+  "toRevision": 4,
   "title": "平方根の証明と有理化",
   "irHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
   "sourceIRHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-  "planHash": "c48cae89db40000c0408c3d1d49c37a4eae58aa9aca92820448168afaf01c6e7",
+  "planHash": "8860ca0aa1e79536c8890df1ef78dd17c5f788341d93f0fb1b5814e5ee23f0aa",
   "stages": [
     {
       "id": "n10-stage-01",
@@ -287,12 +287,8 @@
       "assumptionParts": [
         [
           {
-            "type": "math",
-            "latex": "t>0"
-          },
-          {
             "type": "text",
-            "text": "。根号の定義と実数乗法の交換・結合を使う。"
+            "text": "根号の定義と実数乗法の交換・結合を使います。"
           }
         ]
       ],
@@ -503,6 +499,7 @@
           }
         ]
       ],
+      "assumptionsDisplay": "in-context",
       "prerequisiteNodeIds": [
         "n10-q01-square"
       ],
@@ -518,7 +515,8 @@
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-q01-square-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-t-equation"
         },
         {
           "id": "n10-01::row-02",
@@ -528,7 +526,8 @@
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-q01-square-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-t-equation"
         },
         {
           "id": "n10-01::row-03",
@@ -540,7 +539,8 @@
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-q01-square-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-t-equation"
         }
       ],
       "parts": [
@@ -710,6 +710,7 @@
           }
         ]
       ],
+      "assumptionsDisplay": "in-context",
       "prerequisiteNodeIds": [
         "n10-01"
       ],
@@ -725,7 +726,8 @@
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-01-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-t-equation"
         },
         {
           "id": "n10-q02-sign::row-02",
@@ -737,7 +739,8 @@
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-01-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-t-equation"
         }
       ],
       "parts": [
@@ -857,53 +860,41 @@
       "resultId": "n10-02-result",
       "stageId": "n10-stage-01",
       "q": 2,
-      "classification": "AUTO_RECORDED_CONCLUSION",
+      "classification": "NEW_CONSTRUCTION",
       "leadParts": [
         {
           "type": "text",
-          "text": "候補へ"
+          "text": "求めた"
         },
         {
           "type": "math",
-          "latex": "t=5"
+          "latex": "t"
         },
         {
           "type": "text",
-          "text": "を戻します。正で平方が"
+          "text": "を候補へ戻すと"
         },
         {
           "type": "math",
-          "latex": "125"
+          "latex": "5\\sqrt5"
         },
         {
           "type": "text",
-          "text": "になることを確認したので、正の平方根の定義から元の"
-        },
-        {
-          "type": "math",
-          "latex": "\\sqrt{125}"
-        },
-        {
-          "type": "text",
-          "text": "と同じ数です。"
+          "text": "です。この候補を、正性と平方の値から確かめます。"
         }
       ],
       "assumptions": [
-        "正で平方が125になる実数を一意に取る。"
+        "5>0、√5>0。平方根は非負の値を表す。"
       ],
       "assumptionParts": [
         [
           {
-            "type": "text",
-            "text": "正で平方が"
-          },
-          {
             "type": "math",
-            "latex": "125"
+            "latex": "5>0,\\quad\\sqrt5>0"
           },
           {
             "type": "text",
-            "text": "になる実数を一意に取る。"
+            "text": "。平方根は非負の値を表します。"
           }
         ]
       ],
@@ -920,22 +911,62 @@
       "rows": [
         {
           "id": "n10-02::row-01",
-          "template": "5\\sqrt5>0",
+          "template": "5\\sqrt5{candidateSign}0",
           "kind": "math",
-          "partKeys": [],
+          "partKeys": [
+            "candidateSign"
+          ],
           "requiresCorrectKeys": [],
           "certifiedFrom": [
             "n10-q02-sign-result",
             "n10-01-result",
             "n10-q01-square-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-candidate-sign"
         },
         {
           "id": "n10-02::row-02",
-          "template": "(5\\sqrt5)^2=25\\times5=125",
+          "template": "(5\\sqrt5)^2=5^2(\\sqrt5)^2=25\\times5",
           "kind": "math",
           "partKeys": [],
-          "requiresCorrectKeys": [],
+          "requiresCorrectKeys": [
+            "candidateSign"
+          ],
+          "certifiedFrom": [
+            "n10-q02-sign-result",
+            "n10-01-result",
+            "n10-q01-square-result"
+          ],
+          "mathGroupId": "n10-pilot-candidate-square"
+        },
+        {
+          "id": "n10-02::row-03",
+          "template": "={squareValue}",
+          "kind": "math",
+          "partKeys": [
+            "squareValue"
+          ],
+          "requiresCorrectKeys": [
+            "candidateSign"
+          ],
+          "certifiedFrom": [
+            "n10-q02-sign-result",
+            "n10-01-result",
+            "n10-q01-square-result"
+          ],
+          "mathGroupId": "n10-pilot-candidate-square"
+        },
+        {
+          "id": "n10-02::row-04",
+          "template": "この候補が正の平方根といえるのは、{identificationReason}。",
+          "kind": "text",
+          "partKeys": [
+            "identificationReason"
+          ],
+          "requiresCorrectKeys": [
+            "candidateSign",
+            "squareValue"
+          ],
           "certifiedFrom": [
             "n10-q02-sign-result",
             "n10-01-result",
@@ -943,20 +974,188 @@
           ]
         },
         {
-          "id": "n10-02::row-03",
+          "id": "n10-02::row-05",
           "template": "\\sqrt{125}=5\\sqrt5",
           "kind": "math",
           "partKeys": [],
-          "requiresCorrectKeys": [],
+          "requiresCorrectKeys": [
+            "candidateSign",
+            "squareValue",
+            "identificationReason"
+          ],
           "certifiedFrom": [
             "n10-q02-sign-result",
             "n10-01-result",
             "n10-q01-square-result"
-          ]
+          ],
+          "mathGroupId": "n10-pilot-root-conclusion"
         }
       ],
-      "parts": [],
-      "partOrder": [],
+      "parts": [
+        {
+          "key": "candidateSign",
+          "id": "n10-02::candidateSign",
+          "role": "relation",
+          "kind": "math",
+          "expected": ">",
+          "prompt": "5と√5の符号から、積と0を比べます。",
+          "learningAction": "5と√5の符号から、積と0を比べます。",
+          "sourceRefs": [
+            "n10-02-before",
+            "n10-02-interaction-0",
+            "n10-02-equation",
+            "n10-02-after"
+          ],
+          "choices": [
+            {
+              "value": ">",
+              "kind": "math",
+              "latex": ">",
+              "display": ">",
+              "feedback": "正の数どうしの積は正です。",
+              "misconception": "正答"
+            },
+            {
+              "value": "<",
+              "kind": "math",
+              "latex": "<",
+              "display": "<",
+              "feedback": "正の数どうしの積の符号を確認してください。",
+              "misconception": "正の数どうしの積の符号を確認してください。"
+            },
+            {
+              "value": "=",
+              "kind": "math",
+              "latex": "=",
+              "display": "=",
+              "feedback": "どちらの因子も0ではありません。",
+              "misconception": "どちらの因子も0ではありません。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": ">",
+            "codeSupported": false,
+            "rationale": "5>0かつ√5>0から積の正性を判断する。",
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ]
+          }
+        },
+        {
+          "key": "squareValue",
+          "id": "n10-02::squareValue",
+          "role": "rational",
+          "kind": "math",
+          "expected": "125",
+          "prompt": "候補の平方の最後の積を計算します。",
+          "learningAction": "候補の平方の最後の積を計算します。",
+          "sourceRefs": [
+            "n10-02-before",
+            "n10-02-interaction-0",
+            "n10-02-equation",
+            "n10-02-after"
+          ],
+          "choices": [
+            {
+              "value": "125",
+              "kind": "math",
+              "latex": "125",
+              "display": "125",
+              "feedback": "候補の平方が125になることを確認しました。",
+              "misconception": "正答"
+            },
+            {
+              "value": "25",
+              "kind": "math",
+              "latex": "25",
+              "display": "25",
+              "feedback": "√5の平方による因子5を落としていませんか。",
+              "misconception": "√5の平方による因子5を落としていませんか。"
+            },
+            {
+              "value": "625",
+              "kind": "math",
+              "latex": "625",
+              "display": "625",
+              "feedback": "25×5を計算します。25を平方する場面ではありません。",
+              "misconception": "25×5を計算します。25を平方する場面ではありません。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "exact-evaluation",
+            "expression": "25*5",
+            "expected": "125",
+            "reviewStatus": "PENDING_CODE",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ]
+          }
+        },
+        {
+          "key": "identificationReason",
+          "id": "n10-02::identificationReason",
+          "role": "root-identification-reason",
+          "kind": "text",
+          "expected": "positive-and-square",
+          "prompt": "この候補を√125と断定できる根拠はどれですか。",
+          "learningAction": "この候補を√125と断定できる根拠はどれですか。",
+          "sourceRefs": [
+            "n10-02-before",
+            "n10-02-interaction-0",
+            "n10-02-equation",
+            "n10-02-after"
+          ],
+          "choices": [
+            {
+              "value": "positive-and-square",
+              "kind": "text",
+              "display": "正で、平方が125になるから",
+              "feedback": "正性と平方の値の両方から、正の平方根を特定できました。",
+              "misconception": "正答"
+            },
+            {
+              "value": "square-only",
+              "kind": "text",
+              "display": "平方が125になるだけでよい",
+              "feedback": "平方が同じ負の候補も区別できるか考えてください。",
+              "misconception": "平方が同じ負の候補も区別できるか考えてください。"
+            },
+            {
+              "value": "positive-only",
+              "kind": "text",
+              "display": "正であるだけでよい",
+              "feedback": "正の数の中で125の平方根を特定する条件も必要です。",
+              "misconception": "正の数の中で125の平方根を特定する条件も必要です。"
+            }
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "positive-and-square",
+            "codeSupported": false,
+            "rationale": "正の平方根の一意性を正性と平方の値の両方へ適用する。",
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ]
+          }
+        }
+      ],
+      "partOrder": [
+        "candidateSign",
+        "squareValue",
+        "identificationReason"
+      ],
       "terminalRecord": {
         "id": "n10-02::terminal",
         "formulas": [
@@ -966,7 +1165,11 @@
           "正で平方が125になる実数を一意に取る。"
         ],
         "prose": "√125を5√5と表せました。次に、使い方の一般的な根拠を積の性質として証明します。",
-        "requiresCorrectKeys": [],
+        "requiresCorrectKeys": [
+          "candidateSign",
+          "squareValue",
+          "identificationReason"
+        ],
         "certifiedFrom": [
           "n10-q02-sign-result",
           "n10-01-result",
@@ -9093,7 +9296,8 @@
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-q01-square-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-t-equation"
           },
           {
             "id": "n10-01::row-02",
@@ -9103,7 +9307,8 @@
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-q01-square-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-t-equation"
           },
           {
             "id": "n10-01::row-03",
@@ -9115,7 +9320,8 @@
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-q01-square-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-t-equation"
           }
         ],
         "parts": [
@@ -9188,7 +9394,8 @@
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-01-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-t-equation"
           },
           {
             "id": "n10-q02-sign::row-02",
@@ -9200,7 +9407,8 @@
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-01-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-t-equation"
           }
         ],
         "parts": [
@@ -9267,22 +9475,62 @@
         "rows": [
           {
             "id": "n10-02::row-01",
-            "template": "5\\sqrt5>0",
+            "template": "5\\sqrt5{candidateSign}0",
             "kind": "math",
-            "partKeys": [],
+            "partKeys": [
+              "candidateSign"
+            ],
             "requiresCorrectKeys": [],
             "certifiedFrom": [
               "n10-q02-sign-result",
               "n10-01-result",
               "n10-q01-square-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-candidate-sign"
           },
           {
             "id": "n10-02::row-02",
-            "template": "(5\\sqrt5)^2=25\\times5=125",
+            "template": "(5\\sqrt5)^2=5^2(\\sqrt5)^2=25\\times5",
             "kind": "math",
             "partKeys": [],
-            "requiresCorrectKeys": [],
+            "requiresCorrectKeys": [
+              "candidateSign"
+            ],
+            "certifiedFrom": [
+              "n10-q02-sign-result",
+              "n10-01-result",
+              "n10-q01-square-result"
+            ],
+            "mathGroupId": "n10-pilot-candidate-square"
+          },
+          {
+            "id": "n10-02::row-03",
+            "template": "={squareValue}",
+            "kind": "math",
+            "partKeys": [
+              "squareValue"
+            ],
+            "requiresCorrectKeys": [
+              "candidateSign"
+            ],
+            "certifiedFrom": [
+              "n10-q02-sign-result",
+              "n10-01-result",
+              "n10-q01-square-result"
+            ],
+            "mathGroupId": "n10-pilot-candidate-square"
+          },
+          {
+            "id": "n10-02::row-04",
+            "template": "この候補が正の平方根といえるのは、{identificationReason}。",
+            "kind": "text",
+            "partKeys": [
+              "identificationReason"
+            ],
+            "requiresCorrectKeys": [
+              "candidateSign",
+              "squareValue"
+            ],
             "certifiedFrom": [
               "n10-q02-sign-result",
               "n10-01-result",
@@ -9290,20 +9538,188 @@
             ]
           },
           {
-            "id": "n10-02::row-03",
+            "id": "n10-02::row-05",
             "template": "\\sqrt{125}=5\\sqrt5",
             "kind": "math",
             "partKeys": [],
-            "requiresCorrectKeys": [],
+            "requiresCorrectKeys": [
+              "candidateSign",
+              "squareValue",
+              "identificationReason"
+            ],
             "certifiedFrom": [
               "n10-q02-sign-result",
               "n10-01-result",
               "n10-q01-square-result"
-            ]
+            ],
+            "mathGroupId": "n10-pilot-root-conclusion"
           }
         ],
-        "parts": [],
-        "partOrder": []
+        "parts": [
+          {
+            "key": "candidateSign",
+            "id": "n10-02::candidateSign",
+            "role": "relation",
+            "kind": "math",
+            "expected": ">",
+            "prompt": "5と√5の符号から、積と0を比べます。",
+            "learningAction": "5と√5の符号から、積と0を比べます。",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ],
+            "choices": [
+              {
+                "value": ">",
+                "kind": "math",
+                "latex": ">",
+                "display": ">",
+                "feedback": "正の数どうしの積は正です。",
+                "misconception": "正答"
+              },
+              {
+                "value": "<",
+                "kind": "math",
+                "latex": "<",
+                "display": "<",
+                "feedback": "正の数どうしの積の符号を確認してください。",
+                "misconception": "正の数どうしの積の符号を確認してください。"
+              },
+              {
+                "value": "=",
+                "kind": "math",
+                "latex": "=",
+                "display": "=",
+                "feedback": "どちらの因子も0ではありません。",
+                "misconception": "どちらの因子も0ではありません。"
+              }
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": ">",
+              "codeSupported": false,
+              "rationale": "5>0かつ√5>0から積の正性を判断する。",
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "sourceRefs": [
+                "n10-02-before",
+                "n10-02-interaction-0",
+                "n10-02-equation",
+                "n10-02-after"
+              ]
+            }
+          },
+          {
+            "key": "squareValue",
+            "id": "n10-02::squareValue",
+            "role": "rational",
+            "kind": "math",
+            "expected": "125",
+            "prompt": "候補の平方の最後の積を計算します。",
+            "learningAction": "候補の平方の最後の積を計算します。",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ],
+            "choices": [
+              {
+                "value": "125",
+                "kind": "math",
+                "latex": "125",
+                "display": "125",
+                "feedback": "候補の平方が125になることを確認しました。",
+                "misconception": "正答"
+              },
+              {
+                "value": "25",
+                "kind": "math",
+                "latex": "25",
+                "display": "25",
+                "feedback": "√5の平方による因子5を落としていませんか。",
+                "misconception": "√5の平方による因子5を落としていませんか。"
+              },
+              {
+                "value": "625",
+                "kind": "math",
+                "latex": "625",
+                "display": "625",
+                "feedback": "25×5を計算します。25を平方する場面ではありません。",
+                "misconception": "25×5を計算します。25を平方する場面ではありません。"
+              }
+            ],
+            "mathAssertion": {
+              "kind": "exact-evaluation",
+              "expression": "25*5",
+              "expected": "125",
+              "reviewStatus": "PENDING_CODE",
+              "sourceRefs": [
+                "n10-02-before",
+                "n10-02-interaction-0",
+                "n10-02-equation",
+                "n10-02-after"
+              ]
+            }
+          },
+          {
+            "key": "identificationReason",
+            "id": "n10-02::identificationReason",
+            "role": "root-identification-reason",
+            "kind": "text",
+            "expected": "positive-and-square",
+            "prompt": "この候補を√125と断定できる根拠はどれですか。",
+            "learningAction": "この候補を√125と断定できる根拠はどれですか。",
+            "sourceRefs": [
+              "n10-02-before",
+              "n10-02-interaction-0",
+              "n10-02-equation",
+              "n10-02-after"
+            ],
+            "choices": [
+              {
+                "value": "positive-and-square",
+                "kind": "text",
+                "display": "正で、平方が125になるから",
+                "feedback": "正性と平方の値の両方から、正の平方根を特定できました。",
+                "misconception": "正答"
+              },
+              {
+                "value": "square-only",
+                "kind": "text",
+                "display": "平方が125になるだけでよい",
+                "feedback": "平方が同じ負の候補も区別できるか考えてください。",
+                "misconception": "平方が同じ負の候補も区別できるか考えてください。"
+              },
+              {
+                "value": "positive-only",
+                "kind": "text",
+                "display": "正であるだけでよい",
+                "feedback": "正の数の中で125の平方根を特定する条件も必要です。",
+                "misconception": "正の数の中で125の平方根を特定する条件も必要です。"
+              }
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "positive-and-square",
+              "codeSupported": false,
+              "rationale": "正の平方根の一意性を正性と平方の値の両方へ適用する。",
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "sourceRefs": [
+                "n10-02-before",
+                "n10-02-interaction-0",
+                "n10-02-equation",
+                "n10-02-after"
+              ]
+            }
+          }
+        ],
+        "partOrder": [
+          "candidateSign",
+          "squareValue",
+          "identificationReason"
+        ]
       },
       {
         "nodeId": "n10-q03-expand",
@@ -13619,9 +14035,11 @@
             "id": "n10-02::row-01",
             "nodeId": "n10-02",
             "kind": "math",
-            "interactionRef": null,
+            "interactionRef": "n10-02",
             "requiresCorrectParts": [],
-            "partIds": [],
+            "partIds": [
+              "n10-02::candidateSign"
+            ],
             "visibleAfter": [
               "n10-q02-sign",
               "n10-01",
@@ -13632,8 +14050,10 @@
             "id": "n10-02::row-02",
             "nodeId": "n10-02",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n10-02",
+            "requiresCorrectParts": [
+              "n10-02::candidateSign"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n10-q02-sign",
@@ -13645,8 +14065,47 @@
             "id": "n10-02::row-03",
             "nodeId": "n10-02",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n10-02",
+            "requiresCorrectParts": [
+              "n10-02::candidateSign"
+            ],
+            "partIds": [
+              "n10-02::squareValue"
+            ],
+            "visibleAfter": [
+              "n10-q02-sign",
+              "n10-01",
+              "n10-q01-square"
+            ]
+          },
+          {
+            "id": "n10-02::row-04",
+            "nodeId": "n10-02",
+            "kind": "prose",
+            "interactionRef": "n10-02",
+            "requiresCorrectParts": [
+              "n10-02::candidateSign",
+              "n10-02::squareValue"
+            ],
+            "partIds": [
+              "n10-02::identificationReason"
+            ],
+            "visibleAfter": [
+              "n10-q02-sign",
+              "n10-01",
+              "n10-q01-square"
+            ]
+          },
+          {
+            "id": "n10-02::row-05",
+            "nodeId": "n10-02",
+            "kind": "math",
+            "interactionRef": "n10-02",
+            "requiresCorrectParts": [
+              "n10-02::candidateSign",
+              "n10-02::squareValue",
+              "n10-02::identificationReason"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n10-q02-sign",
@@ -13658,16 +14117,23 @@
         "rowIds": [
           "n10-02::row-01",
           "n10-02::row-02",
-          "n10-02::row-03"
+          "n10-02::row-03",
+          "n10-02::row-04",
+          "n10-02::row-05"
         ],
         "mathRowIds": [
           "n10-02::row-01",
           "n10-02::row-02",
-          "n10-02::row-03"
+          "n10-02::row-03",
+          "n10-02::row-05"
         ],
-        "partIds": [],
+        "partIds": [
+          "n10-02::candidateSign",
+          "n10-02::squareValue",
+          "n10-02::identificationReason"
+        ],
         "number": "4",
-        "numberRowRef": "n10-02::row-03",
+        "numberRowRef": "n10-02::row-05",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -13680,31 +14146,23 @@
             "content": [
               {
                 "type": "text",
-                "text": "候補へ"
+                "text": "求めた"
               },
               {
                 "type": "math",
-                "latex": "t=5"
+                "latex": "t"
               },
               {
                 "type": "text",
-                "text": "を戻します。正で平方が"
+                "text": "を候補へ戻すと"
               },
               {
                 "type": "math",
-                "latex": "125"
+                "latex": "5\\sqrt5"
               },
               {
                 "type": "text",
-                "text": "になることを確認したので、正の平方根の定義から元の"
-              },
-              {
-                "type": "math",
-                "latex": "\\sqrt{125}"
-              },
-              {
-                "type": "text",
-                "text": "と同じ数です。"
+                "text": "です。この候補を、正性と平方の値から確かめます。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17001,6 +17459,9 @@
       "n10-q01-square::rootSquare",
       "n10-01::value",
       "n10-q02-sign::value",
+      "n10-02::candidateSign",
+      "n10-02::squareValue",
+      "n10-02::identificationReason",
       "n10-q03-expand::powerA",
       "n10-q03-expand::powerB",
       "n10-03::aValue",
@@ -17111,16 +17572,26 @@
         "rows": [
           {
             "id": "n10-02::row-01",
-            "template": "5\\sqrt5>0",
+            "template": "5\\sqrt5{candidateSign}0",
             "kind": "math"
           },
           {
             "id": "n10-02::row-02",
-            "template": "(5\\sqrt5)^2=25\\times5=125",
+            "template": "(5\\sqrt5)^2=5^2(\\sqrt5)^2=25\\times5",
             "kind": "math"
           },
           {
             "id": "n10-02::row-03",
+            "template": "={squareValue}",
+            "kind": "math"
+          },
+          {
+            "id": "n10-02::row-04",
+            "template": "この候補が正の平方根といえるのは、{identificationReason}。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-02::row-05",
             "template": "\\sqrt{125}=5\\sqrt5",
             "kind": "math"
           }
@@ -17702,11 +18173,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-    "designSha256": "d144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd"
+    "designSha256": "83a6b4e7fd992f4e44cf049bc55e042ed620456e5b7bb76b66f77d9117daff48"
   },
-  "learnerCopyHash": "46eaa935ed2e3819023fbbb90d65ff73104cf6b387622c9e239c372ef773188c",
-  "constructionDesignHash": "e92f1f886df1c2946022aa5bedcab0611924d45d373059db0d21078dc579ac95",
-  "layoutDesignHash": "e6d75fba0697fbd85566459116e7867bc936d1a21d0a5f6561e2474f56af6d62",
+  "learnerCopyHash": "ae1ece8660d8254975476a3998253979d00a506e9bf52487537fbb997e5ee5ab",
+  "constructionDesignHash": "29102acbff82bc818cce3e9d3e09550253c30237442616c67177001ceb85d0b7",
+  "layoutDesignHash": "d31461938915abdb882123926a96aee8297bafbb3ad25850cb38b5cd7690533c",
   "automaticAcceptance": false,
-  "compiledHash": "a9604f8fdbdc06e117d596e340126ebcfd6298397d4df3e79375eb80075afbbd"
+  "compiledHash": "5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b"
 }

@@ -4,13 +4,14 @@ import { compileNestedMathTemplate, renderClosedMath } from '../interaction/math
 import { validateDesign } from '../n0910/validate-design.mjs';
 import { AXIS_CONTRACT, validateLayoutPlanV2 } from '../layout/plan-v2.mjs';
 
-export const REVIEWED_NESTED_DESIGN = 'd144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd';
+export const REVIEWED_NESTED_DESIGN = '83a6b4e7fd992f4e44cf049bc55e042ed620456e5b7bb76b66f77d9117daff48';
+const PRIOR_REVIEWED_NESTED_DESIGN = 'd144b8821a19718b569b808fdcb575b688be431dae79609423645d54da7b6edd';
 export const NESTED_SOURCE_PINS = {
   'math-numbers-expressions-n09': '86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95',
   'math-numbers-expressions-n10': '819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62',
 };
 const sha = text => createHash('sha256').update(text).digest('hex');
-const fields = ['nodeId', 'resultId', 'stageId', 'q', 'classification', 'leadParts', 'assumptions', 'assumptionParts', 'prerequisiteNodeIds', 'requiredResultRefs', 'rows', 'parts', 'partOrder', 'terminalRecord'];
+const fields = ['nodeId', 'resultId', 'stageId', 'q', 'classification', 'leadParts', 'assumptions', 'assumptionParts', 'assumptionsDisplay', 'prerequisiteNodeIds', 'requiredResultRefs', 'rows', 'parts', 'partOrder', 'terminalRecord'];
 function nestedLayout(unitId, nodes) {
   const groups = nodes.map(n => {
     const rows = n.rows.map(r => ({ id: r.id, nodeId: n.nodeId, kind: r.kind === 'math' ? 'math' : 'prose', interactionRef: n.parts.length ? n.nodeId : null, requiresCorrectParts: r.requiresCorrectKeys.map(k => n.parts.find(p => p.key === k).id), partIds: r.partKeys.map(k => n.parts.find(p => p.key === k).id), visibleAfter: n.prerequisiteNodeIds }));
@@ -44,8 +45,11 @@ export function materializedNestedNodes(unit, source, assets = {}) {
   return nodes;
 }
 export function buildNestedTransformationPlan(sourceRaw, designRaw, unitId, assets = {}) {
-  if (sha(designRaw) !== REVIEWED_NESTED_DESIGN || sha(sourceRaw) !== NESTED_SOURCE_PINS[unitId]) throw Error('NESTED_REVIEWED_INPUT_CHANGED');
-  const design = JSON.parse(designRaw), source = JSON.parse(sourceRaw), unit = design.units.find(u => u.unitId === unitId);
+  if (![REVIEWED_NESTED_DESIGN, PRIOR_REVIEWED_NESTED_DESIGN].includes(sha(designRaw)) || sha(sourceRaw) !== NESTED_SOURCE_PINS[unitId]) throw Error('NESTED_REVIEWED_INPUT_CHANGED');
+  const design = JSON.parse(designRaw);
+  // A pilot in N10 must not change N09's compiled bytes or its progress key.
+  if (unitId === 'math-numbers-expressions-n09' && design.ux03Pilot) return buildNestedTransformationPlan(sourceRaw, design.priorReviewedDesignRaw, unitId, assets);
+  const source = JSON.parse(sourceRaw), unit = design.units.find(u => u.unitId === unitId);
   if (!unit || source.unit.unitId !== unitId) throw Error('NESTED_UNIT');
   const nodes = materializedNestedNodes(unit, source, assets);
   return { schemaVersion: 'transformation-plan/3', nestedPipeline: 'n0910/1', unitId, sourceIRHash: hash(source), sourceRaw, designRaw, assets,

@@ -6,12 +6,12 @@ import { buildNestedTransformationPlan } from './nested-lesson.mjs';
 import { compileTransformationV3 } from './v3.mjs';
 import { validateCompiledNestedLesson } from '../../../src/domain/compiledNestedLesson.ts';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-export async function materializeN0910(rootDir = root) {
+export async function materializeN0910(rootDir = root, codes = ['n09', 'n10']) {
  const work = path.join(rootDir, 'work/items/W-MATH-043-n0910-restart');
  const designRaw = fs.readFileSync(path.join(work, 'NODE_DESIGN.json'), 'utf8');
  const directory = path.join(rootDir, 'src/data/textbook/math/numbers');
  const result = {}, pins = {}, revisions = {};
- for (const code of ['n09', 'n10']) {
+ for (const code of codes) {
   const sourceRaw = fs.readFileSync(path.join(directory, code + 'Authored.json'), 'utf8'), source = JSON.parse(sourceRaw);
   const assets = Object.fromEntries(source.unit.sections.flatMap(s => s.figures).map(f => [f.src, createHash('sha256').update(fs.readFileSync(path.join(rootDir, 'public', f.src))).digest('hex')]));
   const plan = buildNestedTransformationPlan(sourceRaw, designRaw, source.unit.unitId, assets);
@@ -28,10 +28,10 @@ export async function materializeN0910(rootDir = root) {
  return { compiled: result, pins, revisions };
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
- const { compiled, pins, revisions } = await materializeN0910();
+ const { compiled, pins, revisions } = await materializeN0910(root, process.argv.slice(2).length ? process.argv.slice(2) : ['n09', 'n10']);
  const directory = path.join(root, 'src/data/textbook/math/numbers');
  for (const [code, value] of Object.entries(compiled)) fs.writeFileSync(path.join(directory, code + 'ConstructionCompiled.json'), JSON.stringify(value, null, 2) + '\n');
  for (const [code, value] of Object.entries(revisions)) fs.writeFileSync(path.join(directory, code + 'Revision' + value.unit.revision + '.json'), JSON.stringify(value, null, 2) + '\n');
- fs.writeFileSync(path.join(directory, 'n0910CandidatePins.json'), JSON.stringify(pins, null, 2) + '\n');
+ fs.writeFileSync(path.join(directory, 'n0910CandidatePins.json'), JSON.stringify({ ...JSON.parse(fs.readFileSync(path.join(directory, 'n0910CandidatePins.json'), 'utf8')), ...pins }, null, 2) + '\n');
  console.log(JSON.stringify({ status: 'PASS', scope: 'SOURCE_BOUND_STRUCTURAL_COMPILE_NOT_MATH_ACCEPTANCE', pins }));
 }

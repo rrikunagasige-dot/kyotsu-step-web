@@ -1,0 +1,482 @@
+{
+  "unit": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n09",
+    "revision": 9,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 9,
+      "sourcePages": [
+        22,
+        23
+      ]
+    },
+    "title": "平方根の符号と数直線",
+    "subtitle": "根号の非負性と、負の数でも変わらない整数部分の意味を確かめる。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N09",
+      "rightsNote": "教師編集Wordの原問14件と元図1点に対応。原図内容を改変せず漏洩防止で表示時点のみ調整。解答は独立導出、別冊公式解答と出版社の再配布許諾は未確認。"
+    },
+    "objectives": [
+      "二つの平方根と、根号が表す非負の値を区別する",
+      "符号別の場合分けから平方根と絶対値の関係を確かめる",
+      "大小の挟みと0以上1未満の小数部分を正負の数へ使う"
+    ],
+    "sections": [
+      {
+        "id": "lesson",
+        "number": "09",
+        "title": "本文",
+        "description": "符号から根号を読み、数直線で負数の整数部分へつなぐ。",
+        "role": "concept",
+        "figures": [
+          {
+            "id": "n09-f01",
+            "src": "/assets/math/textbook/numbers/n09-f01.png",
+            "alt": "元の数直線で、等間隔の目盛り-4、-3、-2、-1と、その-3と-2の間にある-2.1の点を示す。",
+            "caption": "直前に求めた整数の間に、負の小数の点があることを確かめよう。",
+            "overlays": []
+          }
+        ],
+        "readingFlow": [],
+        "items": []
+      }
+    ],
+    "constructionLessonVersion": "n0910/1",
+    "nestedContract": {
+      "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+      "parents": [
+        {
+          "nodeId": "n09-q01-negative",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q01-negative::powerAction",
+              "expected": "repeat-whole-base"
+            },
+            {
+              "id": "n09-q01-negative::value",
+              "expected": "16"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-01",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-01::factorisedFormUX05",
+              "expected": "(x-4)(x+4)"
+            },
+            {
+              "id": "n09-01::factorZeroConditionUX05",
+              "expected": "either-factor-zero"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q02-root",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q02-root::value",
+              "expected": "4"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q02-negative-square",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q02-negative-square::signedRootSquareUX05",
+              "expected": "5"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-03",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-03::value",
+              "expected": "4"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q04-nonnegative",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q04-nonnegative::value",
+              "expected": "a"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q04-negative",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q04-negative::value",
+              "expected": "-a"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-05",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-05::value",
+              "expected": "|a|"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q06-squares",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q06-squares::value",
+              "expected": "4"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q06-order",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q06-order::relation",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-06",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-06::differenceRelationUX05",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q07-negation",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q07-negation::absoluteExpressionUX05",
+              "expected": "-(2-\\sqrt5)"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-07",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-07::expandedExpressionUX05",
+              "expected": "\\sqrt5-2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-decimal-method",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-decimal-method::ux06BinomialBase",
+              "expected": "A+B"
+            },
+            {
+              "id": "n09-decimal-method::ux06DistributeA",
+              "expected": "A"
+            },
+            {
+              "id": "n09-decimal-method::ux06DistributeB",
+              "expected": "B"
+            },
+            {
+              "id": "n09-decimal-method::ux06CrossProduct",
+              "expected": "BA"
+            },
+            {
+              "id": "n09-decimal-method::ux06LastSquare",
+              "expected": "B^2"
+            },
+            {
+              "id": "n09-decimal-method::ux06LikeTermCount",
+              "expected": "2"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-p001-q08-left-square",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-p001-q08-left-square::middleTermUX05",
+              "expected": "2\\times140\\times1"
+            },
+            {
+              "id": "n09-p001-q08-left-square::L1",
+              "expected": "280"
+            },
+            {
+              "id": "n09-p001-q08-left-square::L2",
+              "expected": "19881"
+            },
+            {
+              "id": "n09-p001-q08-left-square::L3",
+              "expected": "1.9881"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-p001-q08-right-square",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-p001-q08-right-square::middleTermUX05",
+              "expected": "2\\times140\\times2"
+            },
+            {
+              "id": "n09-p001-q08-right-square::R1",
+              "expected": "560"
+            },
+            {
+              "id": "n09-p001-q08-right-square::R2",
+              "expected": "20164"
+            },
+            {
+              "id": "n09-p001-q08-right-square::R3",
+              "expected": "2.0164"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-p001-q08-lower-sign",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-p001-q08-lower-sign::C",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-p001-q08-upper-sign",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-p001-q08-upper-sign::D",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-09",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-09::lowerRelation",
+              "expected": "<"
+            },
+            {
+              "id": "n09-09::upperRelation",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q10-reject-truncation",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q10-reject-truncation::value",
+              "expected": "-0.1"
+            },
+            {
+              "id": "n09-q10-reject-truncation::candidateValidityUX05",
+              "expected": "reject-range"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-10",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-10::n",
+              "expected": "-3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q11-remainder",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q11-remainder::value",
+              "expected": "0.9"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q12-lower",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q12-lower::value",
+              "expected": "9"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q12-upper",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q12-upper::value",
+              "expected": "16"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-12",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-12::lower",
+              "expected": "<"
+            },
+            {
+              "id": "n09-12::upper",
+              "expected": "<"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q13-reverse",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q13-reverse::S1",
+              "expected": ">"
+            },
+            {
+              "id": "n09-q13-reverse::S2",
+              "expected": ">"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-13",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-13::left",
+              "expected": "-4"
+            },
+            {
+              "id": "n09-13::right",
+              "expected": "-3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q14-positive-integer",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q14-positive-integer::value",
+              "expected": "3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q14-positive-remainder",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q14-positive-remainder::remainderExpressionUX05",
+              "expected": "\\sqrt{10}-3"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q14-negative-integer",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q14-negative-integer::value",
+              "expected": "-4"
+            }
+          ]
+        },
+        {
+          "nodeId": "n09-q14-negative-remainder",
+          "sectionId": "lesson",
+          "parts": [
+            {
+              "id": "n09-q14-negative-remainder::remainderExpressionUX05",
+              "expected": "4-\\sqrt{10}"
+            }
+          ]
+        }
+      ]
+    },
+    "requiredInteractionRefs": [
+      "n09-q01-negative",
+      "n09-01",
+      "n09-q02-root",
+      "n09-q02-negative-square",
+      "n09-03",
+      "n09-q04-nonnegative",
+      "n09-q04-negative",
+      "n09-05",
+      "n09-q06-squares",
+      "n09-q06-order",
+      "n09-06",
+      "n09-q07-negation",
+      "n09-07",
+      "n09-decimal-method",
+      "n09-p001-q08-left-square",
+      "n09-p001-q08-right-square",
+      "n09-p001-q08-lower-sign",
+      "n09-p001-q08-upper-sign",
+      "n09-09",
+      "n09-q10-reject-truncation",
+      "n09-10",
+      "n09-q11-remainder",
+      "n09-q12-lower",
+      "n09-q12-upper",
+      "n09-12",
+      "n09-q13-reverse",
+      "n09-13",
+      "n09-q14-positive-integer",
+      "n09-q14-positive-remainder",
+      "n09-q14-negative-integer",
+      "n09-q14-negative-remainder"
+    ]
+  },
+  "sourceBinding": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
+    "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "designSha256": "a962a38671a482d6c5df413573b0b3022c21c4a296f81a5bcc31efc6effae525"
+  },
+  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4",
+  "implementationStatus": "STAGED_NOT_PUBLISHED",
+  "automaticAcceptance": false
+}

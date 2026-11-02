@@ -4,7 +4,8 @@ import { compileNestedMathTemplate, renderClosedMath } from '../interaction/math
 import { validateDesign } from '../n0910/validate-design.mjs';
 import { AXIS_CONTRACT, validateLayoutPlanV2 } from '../layout/plan-v2.mjs';
 
-export const REVIEWED_NESTED_DESIGN = '475035b4d8f04a7d9fda8a72d386879adb2cd55132620ac409014ca6b1672dc8';
+export const REVIEWED_NESTED_DESIGN = 'a962a38671a482d6c5df413573b0b3022c21c4a296f81a5bcc31efc6effae525';
+const UX05_FULL_REVIEWED_NESTED_DESIGN = '475035b4d8f04a7d9fda8a72d386879adb2cd55132620ac409014ca6b1672dc8';
 const UX05_PILOT_REVIEWED_NESTED_DESIGN = 'f73e64fae94c45349b7c0ceb95cdca1e422342124b738cc684c8f76b0d8ca2f8';
 const UX04_REVIEWED_NESTED_DESIGN = '2d3854a6dcd4751acb859c9ed3c0484b9e7df8464d7ab959d0de09317c4c856a';
 const UX03_REVIEWED_NESTED_DESIGN = '16c546fc164f85795b1a99ded4989667e1f4ead93124294da66ae7dac89f55d9';
@@ -48,8 +49,10 @@ export function materializedNestedNodes(unit, source, assets = {}) {
   return nodes;
 }
 export function buildNestedTransformationPlan(sourceRaw, designRaw, unitId, assets = {}) {
-  if (![REVIEWED_NESTED_DESIGN, UX05_PILOT_REVIEWED_NESTED_DESIGN, UX04_REVIEWED_NESTED_DESIGN, UX03_REVIEWED_NESTED_DESIGN, PRIOR_REVIEWED_NESTED_DESIGN].includes(sha(designRaw)) || sha(sourceRaw) !== NESTED_SOURCE_PINS[unitId]) throw Error('NESTED_REVIEWED_INPUT_CHANGED');
+  if (![REVIEWED_NESTED_DESIGN, UX05_FULL_REVIEWED_NESTED_DESIGN, UX05_PILOT_REVIEWED_NESTED_DESIGN, UX04_REVIEWED_NESTED_DESIGN, UX03_REVIEWED_NESTED_DESIGN, PRIOR_REVIEWED_NESTED_DESIGN].includes(sha(designRaw)) || sha(sourceRaw) !== NESTED_SOURCE_PINS[unitId]) throw Error('NESTED_REVIEWED_INPUT_CHANGED');
   const design = JSON.parse(designRaw);
+  // UX06's representative preserves N10's exact previously reviewed source binding.
+  if (unitId === 'math-numbers-expressions-n10' && design.ux06Pilot) return buildNestedTransformationPlan(sourceRaw, design.priorUx05DesignRaw, unitId, assets);
   // UX04's N09 pilot preserves N10's exact reviewed input and compiled bytes.
   if (unitId === 'math-numbers-expressions-n10' && design.ux04Pilot) return buildNestedTransformationPlan(sourceRaw, design.priorUx03DesignRaw, unitId, assets);
   // A pilot in N10 must not change N09's compiled bytes or its progress key.

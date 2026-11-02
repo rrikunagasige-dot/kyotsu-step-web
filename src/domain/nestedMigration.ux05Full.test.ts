@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import r7 from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
 import r4 from '../data/textbook/math/numbers/n10ConstructionCompiledR4.json'
-import n09 from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
+import n09 from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'
 import n10 from '../data/textbook/math/numbers/n10ConstructionCompiled.json'
 import mappings from '../data/textbook/math/numbers/n0910Ux05Migration.json'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from './compiledNestedLesson'

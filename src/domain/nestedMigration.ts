@@ -1,3 +1,4 @@
+import ux06Mapping from '../data/textbook/math/numbers/n0910Ux06Migration.json'
 import ux05Mapping from '../data/textbook/math/numbers/n0910Ux05Migration.json'
 import { emptyNestedLedger, projectNestedLesson, type NestedLedger, type NestedLesson, type NestedNode, type NestedPartRecord } from './nestedLesson'
 import { normalizeTextbookAnswer } from './textbook'
@@ -133,7 +134,7 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
  * Future retained answers stay in records until their new prerequisites unlock. */
 export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
   const { source, target, sourceLedger, now } = input
-  const ux05Edge = ux05Mapping.edges.find(e => e.unitId === source.unitId && e.sourceRevision === source.toRevision && e.sourceCompiledHash === source.compiledHash && e.targetFromRevision === target.fromRevision && e.targetRevision === target.toRevision && e.targetCompiledHash === target.compiledHash)
+  const ux05Edge = [...ux05Mapping.edges, ...ux06Mapping.edges].find(e => e.unitId === source.unitId && e.sourceRevision === source.toRevision && e.sourceCompiledHash === source.compiledHash && e.targetFromRevision === target.fromRevision && e.targetRevision === target.toRevision && e.targetCompiledHash === target.compiledHash)
   const sources: Record<string, { hash: string; revision: number; targetRevision: number; targetFromRevision?: number; targetHash?: string }[]> = {
     'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }, { hash: '8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6', revision: 5, targetRevision: 6, targetFromRevision: 5, targetHash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d' }, { hash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d', revision: 6, targetRevision: 7, targetFromRevision: 6, targetHash: 'dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813' }],
     'math-numbers-expressions-n10': [

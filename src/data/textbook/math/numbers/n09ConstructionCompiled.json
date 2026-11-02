@@ -2,12 +2,12 @@
   "schemaVersion": "transformation-reading/3",
   "nestedPipeline": "n0910/1",
   "unitId": "math-numbers-expressions-n09",
-  "fromRevision": 7,
-  "toRevision": 8,
+  "fromRevision": 8,
+  "toRevision": 9,
   "title": "平方根の符号と数直線",
   "irHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
   "sourceIRHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-  "planHash": "3949dafac97202df7ebd88bf1268d98b7479475567bfe9ef72812664a715e56a",
+  "planHash": "1de716a0c2609b42eb1b4f2561f965fe17e28f17bbd0d45216bb9814b50d3bdb",
   "stages": [
     {
       "id": "n09-stage-01",
@@ -3986,41 +3986,69 @@
       "resultId": "n09-decimal-method-result",
       "stageId": "n09-stage-06",
       "q": 8,
-      "classification": "KEEP_EXPOSITION",
+      "classification": "NEW_CONSTRUCTION",
       "leadParts": [
         {
+          "type": "math",
+          "latex": "\\sqrt2"
+        },
+        {
           "type": "text",
-          "text": "分数に直し、分子の平方を計算する方法を使います。"
+          "text": "を小数で挟むために、候補"
+        },
+        {
+          "type": "math",
+          "latex": "1.41"
+        },
+        {
+          "type": "text",
+          "text": "と"
+        },
+        {
+          "type": "math",
+          "latex": "1.42"
+        },
+        {
+          "type": "text",
+          "text": "をそれぞれ平方して2と比べます。"
+        },
+        {
+          "type": "math",
+          "latex": "141^2"
+        },
+        {
+          "type": "text",
+          "text": "と"
+        },
+        {
+          "type": "math",
+          "latex": "142^2"
+        },
+        {
+          "type": "text",
+          "text": "を計算しやすくするため、まず和の平方の作り方を確かめましょう。"
         }
       ],
       "assumptions": [
-        "1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"
+        "A,Bは実数。小数候補の平方を2と比較する。"
       ],
       "assumptionParts": [
         [
           {
             "type": "math",
-            "latex": "1.41=\\frac{141}{100}"
+            "latex": "A,B\\in\\mathbb R"
           },
           {
             "type": "text",
-            "text": "、"
+            "text": "。小数候補の平方を"
           },
           {
             "type": "math",
-            "latex": "1.42=\\frac{142}{100}"
+            "latex": "2"
           },
           {
             "type": "text",
-            "text": "。平方の公式"
-          },
-          {
-            "type": "math",
-            "latex": "(A+B)^2=A^2+2AB+B^2"
-          },
-          {
-            "type": "text",
-            "text": "を使う。"
+            "text": "と比較する。"
           }
         ]
       ],
@@ -4032,95 +4060,539 @@
       ],
       "rows": [
         {
-          "kind": "text",
-          "template": "中項は異なる項どうしの積が二つ分です。",
-          "partKeys": [],
+          "id": "n09-decimal-method::ux06-proposal-row-01",
+          "kind": "math",
+          "template": "(A+B)^2=(A+B)({ux06BinomialBase})",
+          "partKeys": [
+            "ux06BinomialBase"
+          ],
           "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-given-01",
-          "certifiedFrom": [
-            "n09-07-result"
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "後ろの括弧の各項へ、それぞれ前の括弧を掛けます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase"
           ]
         },
         {
+          "id": "n09-decimal-method::ux06-proposal-row-02",
           "kind": "math",
-          "template": "(A+B)^2=A^2+AB+BA+B^2",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-given-02",
-          "certifiedFrom": [
-            "n09-07-result"
+          "template": "=(A+B){ux06DistributeA}+(A+B){ux06DistributeB}",
+          "partKeys": [
+            "ux06DistributeA",
+            "ux06DistributeB"
           ],
-          "mathGroupId": "n09-decimal-method-ux05-given-02"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
         },
         {
-          "kind": "math",
-          "template": "=A^2+2AB+B^2",
+          "id": "n09-decimal-method::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-given-03",
-          "certifiedFrom": [
-            "n09-07-result"
-          ],
-          "mathGroupId": "n09-decimal-method-ux05-given-02"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB"
+          ]
         },
         {
+          "id": "n09-decimal-method::ux06-proposal-row-03",
           "kind": "math",
-          "template": "\\left(\\frac pq\\right)^2=\\frac{p^2}{q^2}\\quad(q\\ne0)",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-given-04",
-          "certifiedFrom": [
-            "n09-07-result"
+          "template": "=A^2+{ux06CrossProduct}+AB+{ux06LastSquare}",
+          "partKeys": [
+            "ux06CrossProduct",
+            "ux06LastSquare"
           ],
-          "mathGroupId": "n09-decimal-method-ux05-given-04"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
         },
         {
+          "id": "n09-decimal-method::ux06-proposal-row-04-intro",
+          "kind": "text",
+          "template": "積の順を入れ替え、二つの交差項を同じ順にそろえます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare"
+          ]
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-04",
+          "kind": "math",
+          "template": "=A^2+AB+AB+B^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-05-intro",
+          "kind": "text",
+          "template": "同じ交差項をまとめると、どの係数になるでしょうか。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare"
+          ]
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-05",
+          "kind": "math",
+          "template": "=A^2+{ux06LikeTermCount}AB+B^2",
+          "partKeys": [
+            "ux06LikeTermCount"
+          ],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-06-intro",
+          "kind": "text",
+          "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
+          ]
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-06",
           "kind": "math",
           "template": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-row-01",
-          "mathGroupId": "n09-decimal-method-ux05-math-01",
-          "certifiedFrom": [
-            "n09-07-result"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-07-intro",
+          "kind": "text",
+          "template": "分数の平方は同じ分数どうしの積なので、分子と分母をそれぞれ平方できます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
           ]
         },
         {
+          "id": "n09-decimal-method::ux06-proposal-row-07",
           "kind": "math",
-          "template": "140^2=14^2\\times100=196\\times100=19600",
+          "template": "\\left(\\frac pq\\right)^2=\\frac pq\\frac pq=\\frac{p^2}{q^2}\\quad(q\\ne0)",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-row-02",
-          "mathGroupId": "n09-decimal-method-ux05-math-02",
-          "certifiedFrom": [
-            "n09-07-result"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-proposal-row-08-intro",
+          "kind": "text",
+          "template": "共通して使う平方を先に計算しておきます。残る小さい平方は各候補の計算で使います。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
           ]
         },
         {
+          "id": "n09-decimal-method::ux06-proposal-row-08",
           "kind": "math",
-          "template": "1^2=1,\\quad2^2=4,\\quad100^2=10000",
+          "template": "140^2=14^2\\times100=19600,\\quad100^2=10000",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-decimal-method::ux05-row-03",
-          "mathGroupId": "n09-decimal-method-ux05-math-03",
-          "certifiedFrom": [
-            "n09-07-result"
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
+          ],
+          "mathGroupId": "n09-decimal-method-ux06-derivation"
+        },
+        {
+          "id": "n09-decimal-method::ux06-after-text",
+          "kind": "text",
+          "template": "導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06BinomialBase",
+            "ux06DistributeA",
+            "ux06DistributeB",
+            "ux06CrossProduct",
+            "ux06LastSquare",
+            "ux06LikeTermCount"
           ]
         }
       ],
-      "parts": [],
-      "partOrder": [],
+      "parts": [
+        {
+          "id": "n09-decimal-method::ux06BinomialBase",
+          "key": "ux06BinomialBase",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "平方を同じ二つの因子の積に直します。",
+          "learningAction": "二項式全体の平方の意味を構成",
+          "expected": "A+B",
+          "choices": [
+            {
+              "value": "A+B",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "A+B",
+              "latex": "A+B",
+              "misconception": "正答"
+            },
+            {
+              "value": "A-B",
+              "feedback": "同じ和を二つ掛けます。符号を変えません。",
+              "kind": "math",
+              "display": "A-B",
+              "latex": "A-B",
+              "misconception": "同じ和を二つ掛けます。符号を変えません。"
+            },
+            {
+              "value": "A^2+B^2",
+              "feedback": "先に各項を平方する操作ではありません。",
+              "kind": "math",
+              "display": "A^2+B^2",
+              "latex": "A^2+B^2",
+              "misconception": "先に各項を平方する操作ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "A+B",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "二項式全体の平方の意味を構成",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-decimal-method::ux06DistributeA",
+          "key": "ux06DistributeA",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "後ろの括弧の第1項へ掛ける因子を入れます。",
+          "learningAction": "分配法則の一つ目の積を作る",
+          "expected": "A",
+          "choices": [
+            {
+              "value": "A",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "A",
+              "latex": "A",
+              "misconception": "正答"
+            },
+            {
+              "value": "B",
+              "feedback": "後ろの括弧の第1項へ掛ける部分です。",
+              "kind": "math",
+              "display": "B",
+              "latex": "B",
+              "misconception": "後ろの括弧の第1項へ掛ける部分です。"
+            },
+            {
+              "value": "2",
+              "feedback": "指数2を掛ける操作に変えません。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "指数2を掛ける操作に変えません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "A",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分配法則の一つ目の積を作る",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-decimal-method::ux06DistributeB",
+          "key": "ux06DistributeB",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "後ろの括弧の第2項へ掛ける因子を入れます。",
+          "learningAction": "分配法則のもう一つの積を作る",
+          "expected": "B",
+          "choices": [
+            {
+              "value": "B",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "B",
+              "latex": "B",
+              "misconception": "正答"
+            },
+            {
+              "value": "A",
+              "feedback": "今度は後ろの括弧の第2項への積です。",
+              "kind": "math",
+              "display": "A",
+              "latex": "A",
+              "misconception": "今度は後ろの括弧の第2項への積です。"
+            },
+            {
+              "value": "AB",
+              "feedback": "後ろの括弧の一項だけを対応させます。",
+              "kind": "math",
+              "display": "AB",
+              "latex": "AB",
+              "misconception": "後ろの括弧の一項だけを対応させます。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "B",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分配法則のもう一つの積を作る",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-decimal-method::ux06CrossProduct",
+          "key": "ux06CrossProduct",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "最初の括弧のBへAを掛けてできる積の項を入れます。",
+          "learningAction": "分配してできる交差項を式内に構成",
+          "expected": "BA",
+          "choices": [
+            {
+              "value": "BA",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "BA",
+              "latex": "BA",
+              "misconception": "正答"
+            },
+            {
+              "value": "A+B",
+              "feedback": "AとBを掛ける項です。",
+              "kind": "math",
+              "display": "A+B",
+              "latex": "A+B",
+              "misconception": "AとBを掛ける項です。"
+            },
+            {
+              "value": "A^2",
+              "feedback": "異なる文字を掛けています。",
+              "kind": "math",
+              "display": "A^2",
+              "latex": "A^2",
+              "misconception": "異なる文字を掛けています。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "BA",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分配してできる交差項を式内に構成",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-decimal-method::ux06LastSquare",
+          "key": "ux06LastSquare",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "BとBからできる項を入れます。",
+          "learningAction": "同じ文字の積を平方として構成",
+          "expected": "B^2",
+          "choices": [
+            {
+              "value": "B^2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "B^2",
+              "latex": "B^2",
+              "misconception": "正答"
+            },
+            {
+              "value": "2B",
+              "feedback": "Bを二回掛けることと2倍を区別します。",
+              "kind": "math",
+              "display": "2B",
+              "latex": "2B",
+              "misconception": "Bを二回掛けることと2倍を区別します。"
+            },
+            {
+              "value": "AB",
+              "feedback": "最後はB同士の積です。",
+              "kind": "math",
+              "display": "AB",
+              "latex": "AB",
+              "misconception": "最後はB同士の積です。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "B^2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "同じ文字の積を平方として構成",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-decimal-method::ux06LikeTermCount",
+          "key": "ux06LikeTermCount",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "同類項をまとめたABの係数を入れます。",
+          "learningAction": "二つの交差項の和を係数として表す",
+          "expected": "2",
+          "choices": [
+            {
+              "value": "2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "正答"
+            },
+            {
+              "value": "1",
+              "feedback": "ABは二つあります。",
+              "kind": "math",
+              "display": "1",
+              "latex": "1",
+              "misconception": "ABは二つあります。"
+            },
+            {
+              "value": "4",
+              "feedback": "四項すべてがABではありません。",
+              "kind": "math",
+              "display": "4",
+              "latex": "4",
+              "misconception": "四項すべてがABではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-decimal-method-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "二つの交差項の和を係数として表す",
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ]
+          }
+        }
+      ],
+      "partOrder": [
+        "ux06BinomialBase",
+        "ux06DistributeA",
+        "ux06DistributeB",
+        "ux06CrossProduct",
+        "ux06LastSquare",
+        "ux06LikeTermCount"
+      ],
       "terminalRecord": {
         "id": "n09-decimal-method::terminal",
         "formulas": [
-          "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
-          "140^2=19600,\\quad100^2=10000"
+          "(A+B)^2=(A+B)(A+B)",
+          "=(A+B)A+(A+B)B",
+          "=A^2+AB+AB+B^2",
+          "=A^2+2AB+B^2"
         ],
         "conditions": [
           "1.41=141/100、1.42=142/100。平方の公式(A+B)²=A²+2AB+B²を使う。"
         ],
-        "prose": "平方計算の方法と、これから使える局所手本を確認しました。141²と142²の計算済みの値はまだ示しません。",
-        "requiresCorrectKeys": [],
+        "prose": "導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+        "requiresCorrectKeys": [
+          "ux06BinomialBase",
+          "ux06DistributeA",
+          "ux06DistributeB",
+          "ux06CrossProduct",
+          "ux06LastSquare",
+          "ux06LikeTermCount"
+        ],
         "certifiedFrom": [
           "n09-07-result"
         ],
@@ -11174,84 +11646,519 @@
         "nodeId": "n09-decimal-method",
         "rows": [
           {
-            "kind": "text",
-            "template": "中項は異なる項どうしの積が二つ分です。",
-            "partKeys": [],
+            "id": "n09-decimal-method::ux06-proposal-row-01",
+            "kind": "math",
+            "template": "(A+B)^2=(A+B)({ux06BinomialBase})",
+            "partKeys": [
+              "ux06BinomialBase"
+            ],
             "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-given-01",
-            "certifiedFrom": [
-              "n09-07-result"
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "後ろの括弧の各項へ、それぞれ前の括弧を掛けます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase"
             ]
           },
           {
+            "id": "n09-decimal-method::ux06-proposal-row-02",
             "kind": "math",
-            "template": "(A+B)^2=A^2+AB+BA+B^2",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-given-02",
-            "certifiedFrom": [
-              "n09-07-result"
+            "template": "=(A+B){ux06DistributeA}+(A+B){ux06DistributeB}",
+            "partKeys": [
+              "ux06DistributeA",
+              "ux06DistributeB"
             ],
-            "mathGroupId": "n09-decimal-method-ux05-given-02"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
           },
           {
-            "kind": "math",
-            "template": "=A^2+2AB+B^2",
+            "id": "n09-decimal-method::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-given-03",
-            "certifiedFrom": [
-              "n09-07-result"
-            ],
-            "mathGroupId": "n09-decimal-method-ux05-given-02"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB"
+            ]
           },
           {
+            "id": "n09-decimal-method::ux06-proposal-row-03",
             "kind": "math",
-            "template": "\\left(\\frac pq\\right)^2=\\frac{p^2}{q^2}\\quad(q\\ne0)",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-given-04",
-            "certifiedFrom": [
-              "n09-07-result"
+            "template": "=A^2+{ux06CrossProduct}+AB+{ux06LastSquare}",
+            "partKeys": [
+              "ux06CrossProduct",
+              "ux06LastSquare"
             ],
-            "mathGroupId": "n09-decimal-method-ux05-given-04"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
           },
           {
+            "id": "n09-decimal-method::ux06-proposal-row-04-intro",
+            "kind": "text",
+            "template": "積の順を入れ替え、二つの交差項を同じ順にそろえます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-04",
+            "kind": "math",
+            "template": "=A^2+AB+AB+B^2",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-05-intro",
+            "kind": "text",
+            "template": "同じ交差項をまとめると、どの係数になるでしょうか。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-05",
+            "kind": "math",
+            "template": "=A^2+{ux06LikeTermCount}AB+B^2",
+            "partKeys": [
+              "ux06LikeTermCount"
+            ],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-06-intro",
+            "kind": "text",
+            "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-06",
             "kind": "math",
             "template": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-row-01",
-            "mathGroupId": "n09-decimal-method-ux05-math-01",
-            "certifiedFrom": [
-              "n09-07-result"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-07-intro",
+            "kind": "text",
+            "template": "分数の平方は同じ分数どうしの積なので、分子と分母をそれぞれ平方できます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
             ]
           },
           {
+            "id": "n09-decimal-method::ux06-proposal-row-07",
             "kind": "math",
-            "template": "140^2=14^2\\times100=196\\times100=19600",
+            "template": "\\left(\\frac pq\\right)^2=\\frac pq\\frac pq=\\frac{p^2}{q^2}\\quad(q\\ne0)",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-row-02",
-            "mathGroupId": "n09-decimal-method-ux05-math-02",
-            "certifiedFrom": [
-              "n09-07-result"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-08-intro",
+            "kind": "text",
+            "template": "共通して使う平方を先に計算しておきます。残る小さい平方は各候補の計算で使います。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
             ]
           },
           {
+            "id": "n09-decimal-method::ux06-proposal-row-08",
             "kind": "math",
-            "template": "1^2=1,\\quad2^2=4,\\quad100^2=10000",
+            "template": "140^2=14^2\\times100=19600,\\quad100^2=10000",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-decimal-method::ux05-row-03",
-            "mathGroupId": "n09-decimal-method-ux05-math-03",
-            "certifiedFrom": [
-              "n09-07-result"
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
+            ],
+            "mathGroupId": "n09-decimal-method-ux06-derivation"
+          },
+          {
+            "id": "n09-decimal-method::ux06-after-text",
+            "kind": "text",
+            "template": "導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06BinomialBase",
+              "ux06DistributeA",
+              "ux06DistributeB",
+              "ux06CrossProduct",
+              "ux06LastSquare",
+              "ux06LikeTermCount"
             ]
           }
         ],
-        "parts": [],
-        "partOrder": []
+        "parts": [
+          {
+            "id": "n09-decimal-method::ux06BinomialBase",
+            "key": "ux06BinomialBase",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "平方を同じ二つの因子の積に直します。",
+            "learningAction": "二項式全体の平方の意味を構成",
+            "expected": "A+B",
+            "choices": [
+              {
+                "value": "A+B",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "A+B",
+                "latex": "A+B",
+                "misconception": "正答"
+              },
+              {
+                "value": "A-B",
+                "feedback": "同じ和を二つ掛けます。符号を変えません。",
+                "kind": "math",
+                "display": "A-B",
+                "latex": "A-B",
+                "misconception": "同じ和を二つ掛けます。符号を変えません。"
+              },
+              {
+                "value": "A^2+B^2",
+                "feedback": "先に各項を平方する操作ではありません。",
+                "kind": "math",
+                "display": "A^2+B^2",
+                "latex": "A^2+B^2",
+                "misconception": "先に各項を平方する操作ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "A+B",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "二項式全体の平方の意味を構成",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-decimal-method::ux06DistributeA",
+            "key": "ux06DistributeA",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "後ろの括弧の第1項へ掛ける因子を入れます。",
+            "learningAction": "分配法則の一つ目の積を作る",
+            "expected": "A",
+            "choices": [
+              {
+                "value": "A",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "A",
+                "latex": "A",
+                "misconception": "正答"
+              },
+              {
+                "value": "B",
+                "feedback": "後ろの括弧の第1項へ掛ける部分です。",
+                "kind": "math",
+                "display": "B",
+                "latex": "B",
+                "misconception": "後ろの括弧の第1項へ掛ける部分です。"
+              },
+              {
+                "value": "2",
+                "feedback": "指数2を掛ける操作に変えません。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "指数2を掛ける操作に変えません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "A",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分配法則の一つ目の積を作る",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-decimal-method::ux06DistributeB",
+            "key": "ux06DistributeB",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "後ろの括弧の第2項へ掛ける因子を入れます。",
+            "learningAction": "分配法則のもう一つの積を作る",
+            "expected": "B",
+            "choices": [
+              {
+                "value": "B",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "B",
+                "latex": "B",
+                "misconception": "正答"
+              },
+              {
+                "value": "A",
+                "feedback": "今度は後ろの括弧の第2項への積です。",
+                "kind": "math",
+                "display": "A",
+                "latex": "A",
+                "misconception": "今度は後ろの括弧の第2項への積です。"
+              },
+              {
+                "value": "AB",
+                "feedback": "後ろの括弧の一項だけを対応させます。",
+                "kind": "math",
+                "display": "AB",
+                "latex": "AB",
+                "misconception": "後ろの括弧の一項だけを対応させます。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "B",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分配法則のもう一つの積を作る",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-decimal-method::ux06CrossProduct",
+            "key": "ux06CrossProduct",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "最初の括弧のBへAを掛けてできる積の項を入れます。",
+            "learningAction": "分配してできる交差項を式内に構成",
+            "expected": "BA",
+            "choices": [
+              {
+                "value": "BA",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "BA",
+                "latex": "BA",
+                "misconception": "正答"
+              },
+              {
+                "value": "A+B",
+                "feedback": "AとBを掛ける項です。",
+                "kind": "math",
+                "display": "A+B",
+                "latex": "A+B",
+                "misconception": "AとBを掛ける項です。"
+              },
+              {
+                "value": "A^2",
+                "feedback": "異なる文字を掛けています。",
+                "kind": "math",
+                "display": "A^2",
+                "latex": "A^2",
+                "misconception": "異なる文字を掛けています。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "BA",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分配してできる交差項を式内に構成",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-decimal-method::ux06LastSquare",
+            "key": "ux06LastSquare",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "BとBからできる項を入れます。",
+            "learningAction": "同じ文字の積を平方として構成",
+            "expected": "B^2",
+            "choices": [
+              {
+                "value": "B^2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "B^2",
+                "latex": "B^2",
+                "misconception": "正答"
+              },
+              {
+                "value": "2B",
+                "feedback": "Bを二回掛けることと2倍を区別します。",
+                "kind": "math",
+                "display": "2B",
+                "latex": "2B",
+                "misconception": "Bを二回掛けることと2倍を区別します。"
+              },
+              {
+                "value": "AB",
+                "feedback": "最後はB同士の積です。",
+                "kind": "math",
+                "display": "AB",
+                "latex": "AB",
+                "misconception": "最後はB同士の積です。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "B^2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "同じ文字の積を平方として構成",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-decimal-method::ux06LikeTermCount",
+            "key": "ux06LikeTermCount",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "同類項をまとめたABの係数を入れます。",
+            "learningAction": "二つの交差項の和を係数として表す",
+            "expected": "2",
+            "choices": [
+              {
+                "value": "2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "正答"
+              },
+              {
+                "value": "1",
+                "feedback": "ABは二つあります。",
+                "kind": "math",
+                "display": "1",
+                "latex": "1",
+                "misconception": "ABは二つあります。"
+              },
+              {
+                "value": "4",
+                "feedback": "四項すべてがABではありません。",
+                "kind": "math",
+                "display": "4",
+                "latex": "4",
+                "misconception": "四項すべてがABではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-decimal-method-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "二つの交差項の和を係数として表す",
+              "sourceRefs": [
+                "n09-decimal-method-source-contract"
+              ]
+            }
+          }
+        ],
+        "partOrder": [
+          "ux06BinomialBase",
+          "ux06DistributeA",
+          "ux06DistributeB",
+          "ux06CrossProduct",
+          "ux06LastSquare",
+          "ux06LikeTermCount"
+        ]
       },
       {
         "nodeId": "n09-p001-q08-left-square",
@@ -15608,77 +16515,271 @@
         ],
         "rows": [
           {
-            "id": "n09-decimal-method::ux05-given-01",
+            "id": "n09-decimal-method::ux06-proposal-row-01",
+            "nodeId": "n09-decimal-method",
+            "kind": "math",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [],
+            "partIds": [
+              "n09-decimal-method::ux06BinomialBase"
+            ],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-02-intro",
             "nodeId": "n09-decimal-method",
             "kind": "prose",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-given-02",
+            "id": "n09-decimal-method::ux06-proposal-row-02",
             "nodeId": "n09-decimal-method",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase"
+            ],
+            "partIds": [
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB"
+            ],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-03-intro",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-given-03",
+            "id": "n09-decimal-method::ux06-proposal-row-03",
             "nodeId": "n09-decimal-method",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB"
+            ],
+            "partIds": [
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare"
+            ],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-04-intro",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-given-04",
+            "id": "n09-decimal-method::ux06-proposal-row-04",
             "nodeId": "n09-decimal-method",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-row-01",
+            "id": "n09-decimal-method::ux06-proposal-row-05-intro",
             "nodeId": "n09-decimal-method",
-            "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-row-02",
+            "id": "n09-decimal-method::ux06-proposal-row-05",
             "nodeId": "n09-decimal-method",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare"
+            ],
+            "partIds": [
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-06-intro",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
             ]
           },
           {
-            "id": "n09-decimal-method::ux05-row-03",
+            "id": "n09-decimal-method::ux06-proposal-row-06",
             "nodeId": "n09-decimal-method",
             "kind": "math",
-            "interactionRef": null,
-            "requiresCorrectParts": [],
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-07-intro",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-07",
+            "nodeId": "n09-decimal-method",
+            "kind": "math",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-08-intro",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-08",
+            "nodeId": "n09-decimal-method",
+            "kind": "math",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-07"
+            ]
+          },
+          {
+            "id": "n09-decimal-method::ux06-after-text",
+            "nodeId": "n09-decimal-method",
+            "kind": "prose",
+            "interactionRef": "n09-decimal-method",
+            "requiresCorrectParts": [
+              "n09-decimal-method::ux06BinomialBase",
+              "n09-decimal-method::ux06DistributeA",
+              "n09-decimal-method::ux06DistributeB",
+              "n09-decimal-method::ux06CrossProduct",
+              "n09-decimal-method::ux06LastSquare",
+              "n09-decimal-method::ux06LikeTermCount"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-07"
@@ -15686,25 +16787,43 @@
           }
         ],
         "rowIds": [
-          "n09-decimal-method::ux05-given-01",
-          "n09-decimal-method::ux05-given-02",
-          "n09-decimal-method::ux05-given-03",
-          "n09-decimal-method::ux05-given-04",
-          "n09-decimal-method::ux05-row-01",
-          "n09-decimal-method::ux05-row-02",
-          "n09-decimal-method::ux05-row-03"
+          "n09-decimal-method::ux06-proposal-row-01",
+          "n09-decimal-method::ux06-proposal-row-02-intro",
+          "n09-decimal-method::ux06-proposal-row-02",
+          "n09-decimal-method::ux06-proposal-row-03-intro",
+          "n09-decimal-method::ux06-proposal-row-03",
+          "n09-decimal-method::ux06-proposal-row-04-intro",
+          "n09-decimal-method::ux06-proposal-row-04",
+          "n09-decimal-method::ux06-proposal-row-05-intro",
+          "n09-decimal-method::ux06-proposal-row-05",
+          "n09-decimal-method::ux06-proposal-row-06-intro",
+          "n09-decimal-method::ux06-proposal-row-06",
+          "n09-decimal-method::ux06-proposal-row-07-intro",
+          "n09-decimal-method::ux06-proposal-row-07",
+          "n09-decimal-method::ux06-proposal-row-08-intro",
+          "n09-decimal-method::ux06-proposal-row-08",
+          "n09-decimal-method::ux06-after-text"
         ],
         "mathRowIds": [
-          "n09-decimal-method::ux05-given-02",
-          "n09-decimal-method::ux05-given-03",
-          "n09-decimal-method::ux05-given-04",
-          "n09-decimal-method::ux05-row-01",
-          "n09-decimal-method::ux05-row-02",
-          "n09-decimal-method::ux05-row-03"
+          "n09-decimal-method::ux06-proposal-row-01",
+          "n09-decimal-method::ux06-proposal-row-02",
+          "n09-decimal-method::ux06-proposal-row-03",
+          "n09-decimal-method::ux06-proposal-row-04",
+          "n09-decimal-method::ux06-proposal-row-05",
+          "n09-decimal-method::ux06-proposal-row-06",
+          "n09-decimal-method::ux06-proposal-row-07",
+          "n09-decimal-method::ux06-proposal-row-08"
         ],
-        "partIds": [],
+        "partIds": [
+          "n09-decimal-method::ux06BinomialBase",
+          "n09-decimal-method::ux06DistributeA",
+          "n09-decimal-method::ux06DistributeB",
+          "n09-decimal-method::ux06CrossProduct",
+          "n09-decimal-method::ux06LastSquare",
+          "n09-decimal-method::ux06LikeTermCount"
+        ],
         "number": null,
-        "numberRowRef": "n09-decimal-method::ux05-row-03",
+        "numberRowRef": "n09-decimal-method::ux06-proposal-row-08",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -15716,8 +16835,44 @@
             "nodeId": "n09-decimal-method",
             "content": [
               {
+                "type": "math",
+                "latex": "\\sqrt2"
+              },
+              {
                 "type": "text",
-                "text": "分数に直し、分子の平方を計算する方法を使います。"
+                "text": "を小数で挟むために、候補"
+              },
+              {
+                "type": "math",
+                "latex": "1.41"
+              },
+              {
+                "type": "text",
+                "text": "と"
+              },
+              {
+                "type": "math",
+                "latex": "1.42"
+              },
+              {
+                "type": "text",
+                "text": "をそれぞれ平方して2と比べます。"
+              },
+              {
+                "type": "math",
+                "latex": "141^2"
+              },
+              {
+                "type": "text",
+                "text": "と"
+              },
+              {
+                "type": "math",
+                "latex": "142^2"
+              },
+              {
+                "type": "text",
+                "text": "を計算しやすくするため、まず和の平方の作り方を確かめましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17600,6 +18755,12 @@
       "n09-06::differenceRelationUX05",
       "n09-q07-negation::absoluteExpressionUX05",
       "n09-07::expandedExpressionUX05",
+      "n09-decimal-method::ux06BinomialBase",
+      "n09-decimal-method::ux06DistributeA",
+      "n09-decimal-method::ux06DistributeB",
+      "n09-decimal-method::ux06CrossProduct",
+      "n09-decimal-method::ux06LastSquare",
+      "n09-decimal-method::ux06LikeTermCount",
       "n09-p001-q08-left-square::middleTermUX05",
       "n09-p001-q08-left-square::L1",
       "n09-p001-q08-left-square::L2",
@@ -17981,39 +19142,84 @@
         "nodeId": "n09-decimal-method",
         "rows": [
           {
-            "id": "n09-decimal-method::ux05-given-01",
-            "template": "中項は異なる項どうしの積が二つ分です。",
+            "id": "n09-decimal-method::ux06-proposal-row-01",
+            "template": "(A+B)^2=(A+B)({ux06BinomialBase})",
+            "kind": "math"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-02-intro",
+            "template": "後ろの括弧の各項へ、それぞれ前の括弧を掛けます。",
             "kind": "text"
           },
           {
-            "id": "n09-decimal-method::ux05-given-02",
-            "template": "(A+B)^2=A^2+AB+BA+B^2",
+            "id": "n09-decimal-method::ux06-proposal-row-02",
+            "template": "=(A+B){ux06DistributeA}+(A+B){ux06DistributeB}",
             "kind": "math"
           },
           {
-            "id": "n09-decimal-method::ux05-given-03",
-            "template": "=A^2+2AB+B^2",
+            "id": "n09-decimal-method::ux06-proposal-row-03-intro",
+            "template": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-03",
+            "template": "=A^2+{ux06CrossProduct}+AB+{ux06LastSquare}",
             "kind": "math"
           },
           {
-            "id": "n09-decimal-method::ux05-given-04",
-            "template": "\\left(\\frac pq\\right)^2=\\frac{p^2}{q^2}\\quad(q\\ne0)",
+            "id": "n09-decimal-method::ux06-proposal-row-04-intro",
+            "template": "積の順を入れ替え、二つの交差項を同じ順にそろえます。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-04",
+            "template": "=A^2+AB+AB+B^2",
             "kind": "math"
           },
           {
-            "id": "n09-decimal-method::ux05-row-01",
+            "id": "n09-decimal-method::ux06-proposal-row-05-intro",
+            "template": "同じ交差項をまとめると、どの係数になるでしょうか。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-05",
+            "template": "=A^2+{ux06LikeTermCount}AB+B^2",
+            "kind": "math"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-06-intro",
+            "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-06",
             "template": "1.41=\\frac{141}{100},\\quad1.42=\\frac{142}{100}",
             "kind": "math"
           },
           {
-            "id": "n09-decimal-method::ux05-row-02",
-            "template": "140^2=14^2\\times100=196\\times100=19600",
+            "id": "n09-decimal-method::ux06-proposal-row-07-intro",
+            "template": "分数の平方は同じ分数どうしの積なので、分子と分母をそれぞれ平方できます。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-07",
+            "template": "\\left(\\frac pq\\right)^2=\\frac pq\\frac pq=\\frac{p^2}{q^2}\\quad(q\\ne0)",
             "kind": "math"
           },
           {
-            "id": "n09-decimal-method::ux05-row-03",
-            "template": "1^2=1,\\quad2^2=4,\\quad100^2=10000",
+            "id": "n09-decimal-method::ux06-proposal-row-08-intro",
+            "template": "共通して使う平方を先に計算しておきます。残る小さい平方は各候補の計算で使います。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-decimal-method::ux06-proposal-row-08",
+            "template": "140^2=14^2\\times100=19600,\\quad100^2=10000",
             "kind": "math"
+          },
+          {
+            "id": "n09-decimal-method::ux06-after-text",
+            "template": "導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+            "kind": "text"
           }
         ]
       },
@@ -18388,11 +19594,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-    "designSha256": "475035b4d8f04a7d9fda8a72d386879adb2cd55132620ac409014ca6b1672dc8"
+    "designSha256": "a962a38671a482d6c5df413573b0b3022c21c4a296f81a5bcc31efc6effae525"
   },
-  "learnerCopyHash": "fad2845e2a30bbab5293295a89bbea06e91d07dc254b53bac3bdd4cd3c07e9ae",
-  "constructionDesignHash": "b65d4758310d8328f3dee75a2f0c7e2735e5916abb1f03eb5a7d2d0573779185",
-  "layoutDesignHash": "f7d20927793a0b2174304c834a0009495e60c7a061a2c10d37eab4af54dd7efe",
+  "learnerCopyHash": "706ed16df85e9c53687e1a7f3744291430e89b10a0e2ccdb9cbc29a25705078e",
+  "constructionDesignHash": "b674a3b0cb2d4eca4f04bcb51caf31572996121812d8ee524af58ec89f6d8df2",
+  "layoutDesignHash": "5383ee13d567a057c3a0c6ba85e91477745e0fd624509f5e8a4d82596d4a7911",
   "automaticAcceptance": false,
-  "compiledHash": "39634b3ca00c89f85a23137a32dd664f074a947cc4a98da505fc079813d44c33"
+  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4"
 }

@@ -1,0 +1,21 @@
+{
+  "proposalId": "P-W046-UX-06",
+  "proposalCommit": "79ea6f32faa479a6b2787385c184b049aca5baae",
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "sourcePage": "818ccd59-f1f5-4505-8e5d-55826804a47a",
+  "originalQuote": "可以来吧",
+  "receivedDateJST": "2026-11-03",
+  "interpretation": "直前に提示したUX06具体案の承認。R05照合後、まず和の平方代表とnative fontをR06/R07へ。代表本人細部確認後に残り限定適用。",
+  "authorized": "Proposal implementation within the agreed representative-first sequence",
+  "notGranted": [
+    "publication/main merge",
+    "final app acceptance",
+    "Gold/fit"
+  ],
+  "revisionDecision": {
+    "representative": "N09r9 fromr8, N10r5 unchanged",
+    "fullAfterDetailOK": "N09r10 fromr9 / N10r6 fromr5",
+    "reason": "同r9の別artifact上書きを避け、代表履歴とstrict hash chainを保持。学習内容/適用順は承認案どおり。"
+  },
+  "formalStoreReceipt": false
+}

@@ -61,3 +61,7 @@
 /* One value/button, with semantic line boundaries supplied by the closed source. */
 .construction-lesson-choice-math-lines { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .construction-lesson-choice-math-lines > span { display: block; }
+
+/* UX06: match native answer text/math to the reader, including archived native views. */
+.construction-lesson-reading .reading-choice-option > strong { font-size: 1em; }
+.construction-lesson-reading .reading-paragraph { font-size: inherit; }

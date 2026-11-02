@@ -1,7 +1,7 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: REVISE-PROPOSAL
-Review: USER-FEEDBACK-REQUIRES-REVISION / DERIVATION-PARTICIPATION-INSUFFICIENT
+Review: UX04-PROPOSED / NONAUTHOR-PROPOSAL-REVIEW-COMPLETE / AWAITING-EXPLICIT-APPROVAL
 - 本人「いいよ」でPR #134の2filesのmain反映・既存Pages再公開を明示承認。expected head fc961f58でmerge成功。main publisher `6bc54447ef015a2a579a56a5966ceb58a0600d3a`、固定製品source `db99a485f857b1aefa7fb738456f36a830514158`。
 - 公開run [41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前N09/N10・保持N08r7/r6/legacy/N11、deploy、実配信N09/N10・保持N08各版/N11、証拠uploadまで全て成功。コードbranch全体のmain mergeではなく、承認済みpublisher2filesのみ。
 - 実公開：[N09 第5版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n09) / [N10 第4版](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=db99a485#/learning/textbook/math-numbers-expressions-n10)。N09 r5=46parts、N10 r4=63parts。旧87parts保持、新規22partsのみ未回答。対象17node以外69nodeの学習契約を維持。
@@ -10,8 +10,10 @@ Review: USER-FEEDBACK-REQUIRES-REVISION / DERIVATION-PARTICIPATION-INSUFFICIENT
 - 公開前133回帰・生成器8・型/変更lint/build、二単元四幅1732状態/9692幾何、464PNG、移行7ケース/現行main復旧4ケースの有効結果を継承。本人総チェックや全50件の数学的自動証明に読み替えない。
 - 候補全体governanceは他Workの既存38件を保持。本Work追加0、main側CIはSUCCESS。欠落正式Storeに対する一回限り特例を保持し、receipt/受理イベントを作らない。
 - 証拠：[公開run](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)のartifact `w046-publication-evidence` ID13117672439、[既存の公開前証拠](https://chatgpt.com/library?file_id=libfile_5f3990a90e00819188f0cb550e908fff&account_id=personal)、[最新検証](VERIFICATION.md)。実配信15PNG/manifest/結果はevidence/ux03-full/hosted-*。
-- 次：本人指摘を反映した導出設計の修正案を改訂。原因→同型監査→既存GitHub基準照合の順で行う。排版改善への評価と、導出参加度の要修正を分けて保持。新しい内容案の明示承認前に実装しない。既存の技術PASS・旧回答は保持し、古い台帳や完了済み検査へ戻らない。
+- 次：[P-W046-UX-04](PROPOSAL.md)の明示承認。全86nodeを対応づけ、N09変更13/維持28、N10変更13/維持32、計26変更/60維持。承認後は写真のN09代表ブロック→実SHA/実画像の細部確認→残りの限定実装/検証へ進む。旧UX03の承認を新しい意味変更へ拡張しない。
 - 最新本人評価：排版改善を評価、導出の穴と生徒の参加度は要修正。n09-01の零積一穴で移項/因数分解/一次式処理まで自動化される不足を確認。詳細は末尾「本人指摘 — 導出の参加度不足」。
+- UX04詳細案は完成解法・全候補/誤答説明・各穴の根拠/位置/解放・旧part KEEP/ARCHIVE対応まで記載。N09r6/N10r5予定。proposal SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201`、220750bytes。AはN09作者/N10非作者、BはN10作者/N09非作者。主担当共通・統合も審査済み。モデル独立性/盲検は主張しない。
+- 提案構造検査はPASS（row/part/候補/依存/hide/mirror/旧part対応）。製品コード・main・公開内容の今回変更なし、製品QAは未実施。新旧回答を全消去せず、同じ意味の101partを保持、新しい判断56partは未回答、廃止8partは旧版保存する設計。穴数を合格指標にはしない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）
@@ -264,3 +266,13 @@ PR #134はexpected head fc961f58でmerge成功。main publisher SHAは6bc54447ef
 - 非作者A/BがN09全41/N10全45nodeを読取監査。N09は優先8nodeと追加確認6node、N10は9つの同型群を列挙（evidence/ux03-full/DERIVATION_PARTICIPATION_AUDIT.json）。既に段階構成できている積/商証明・H07・分配の良い部分と、既確定結果のまとめAUTOは維持する。
 - 写真のn09-01の具体例：①右辺を0にする演算→②中項が相殺する二因子の符号→③零積の「または」→④x−4=0での逆演算→⑤x+4=0での逆演算。各操作の正答後だけ次の行を開く。±4の既知値を写す穴だけ増やさない。これは再設計の具体例で、未承認の実装済み扱いにはしない。
 - 次は修正案の改訂。完成解法の各一手を、提示する定義/既知事項、学習者が行う新しい計算・比較・変形、確定済みのまとめへ分け、各穴の問い/位置/全候補/誤答理由/解放と旧版移行を定める。既承認UX03を今後の意味変更への承認に転用しない。今回コード/公開は変更せず、合格済み技術試験も反復していない。
+
+## P-W046-UX-04 詳細案の完成（2026-11-02 JST）
+
+本人の「那来吧」を具体案作成の指示として受領。写真だけを局所修正せず、保存済み原因/同型監査とGitHub mainの既存基準に従い、完成解法から各学習操作を割り当てた。正式案は[PROPOSAL.md](PROPOSAL.md)、SHA256 `3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201`。UX03承認案は固定commit85a5367で参照し、今のPROPOSALをUX04 PROPOSED/承認NOへ切り替える。
+
+写真は累乗scope・積の符号・両辺への操作・因子の符号・零積・左右の一次式の逆演算。N10の差の平方/和差の積/最後の展開は、signedSecond一穴から四積全文が自動生成される草案不足も相互審査で発見し、交差積二つの因子対応を追加した。足場の偽等式、hide集合不一致も案の段階で補修。初回所見と再審査を[審査記録](evidence/ux04-proposal/REVIEW.md)に保存。
+
+N09はNEW25/KEEP43/旧版保管3で予定68parts、N10はNEW31/KEEP58/旧版保管5で予定89parts。これは設計の照合値でノルマではない。P/Qの旧後段回答を新しい前段平方へ移さず、K=4を符号付き和−4へ流用しない。旧版hash・pilot・legacy移行の保護は詳細案に明記。
+
+現段階は修正案の非作者審査まで。main正本WORK_SYSTEM §11の改訂案提示/明示承認後実装、§12Aの小ブロック実画像・横断監査・本人総チェックを維持する。製品実装/新規製品QA/新公開/本人受入の完了とはしない。最新Store欠落の本人特例を維持し、失われたイベントや受理receiptを創作しない。

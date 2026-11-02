@@ -1,0 +1,32 @@
+{
+  "n09": {
+    "nodes": 14,
+    "parts": 41,
+    "new": 25,
+    "keep": 16,
+    "retire": 3,
+    "rows": 80,
+    "sha256": "ce632c18d3c2c59eacc87d5ed51212af56d02e52bba7b5acce1767391a387c37"
+  },
+  "n10": {
+    "nodes": 13,
+    "parts": 45,
+    "new": 31,
+    "keep": 14,
+    "retire": 5,
+    "rows": 70,
+    "sha256": "8485120676f37606c4ffc066a16aeceba32884ddaa74562f77491899f8c90e6f"
+  },
+  "scope": "Proposal structure only; no product QA, render or user acceptance.",
+  "checks": [
+    "source compiledHash binding",
+    "unique part keys/order/candidate values",
+    "expected present exactly once; all feedback present",
+    "predecessor-only dependencies and correct answer-site gates",
+    "row key references and one answer site per part",
+    "hide set equals entire row part set; mirror requires correct prerequisite",
+    "old part disposition total; KEEP kind/role/expected/choice values unchanged"
+  ],
+  "errors": [],
+  "status": "PASS_PROPOSAL_STRUCTURE_ONLY"
+}

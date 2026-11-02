@@ -1,0 +1,44 @@
+{
+  "baseline": "db99a485f857b1aefa7fb738456f36a830514158",
+  "units": {
+    "n09": {
+      "nodes": 41,
+      "change": 13,
+      "keep": 28
+    },
+    "n10": {
+      "nodes": 45,
+      "change": 13,
+      "keep": 32
+    }
+  },
+  "changedNodes": [
+    "n09-01",
+    "n09-p001-q08-left-square",
+    "n09-p001-q08-right-square",
+    "n09-parts-target",
+    "n09-q01-negative",
+    "n09-q02-negative-square",
+    "n09-q03-inside",
+    "n09-q04-negative",
+    "n09-q07-negation",
+    "n09-q10-reject-truncation",
+    "n09-q13-reverse",
+    "n09-q14-negative-remainder",
+    "n09-q14-positive-remainder",
+    "n10-01",
+    "n10-12",
+    "n10-15",
+    "n10-17",
+    "n10-q01-square",
+    "n10-q09-left",
+    "n10-q09-right",
+    "n10-q10-coefficients",
+    "n10-q11-formula",
+    "n10-q13-identity",
+    "n10-q20-factor",
+    "n10-q21-constants",
+    "n10-q21-expand"
+  ],
+  "total": 86
+}

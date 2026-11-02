@@ -1,0 +1,34 @@
+{
+  "proposal": "P-W046-UX-04",
+  "status": "PROPOSED_NOT_APPROVED",
+  "baselineSource": "db99a485f857b1aefa7fb738456f36a830514158",
+  "files": [
+    {
+      "path": "/tmp/w046-ux04-stage/PROPOSAL.md",
+      "bytes": 220750,
+      "sha256": "3b79d7d8859c04945b35b2a695bf69304c3c92046960374c4f950f99da7d3201"
+    },
+    {
+      "path": "/tmp/w046-ux04-stage/REVIEW.md",
+      "bytes": 19347,
+      "sha256": "3b706edb36714d6b04cfe1051db267d3c198358080b9afeec20a0eb05b1fdfe7"
+    },
+    {
+      "path": "/tmp/w046-ux04-stage/STRUCTURE_CHECK.json",
+      "bytes": 979,
+      "sha256": "86650736e6ab2105a8a4efb4f97656535fb9044d09454c7cff8561b302185046"
+    },
+    {
+      "path": "/tmp/w046-ux04-n09-design.json",
+      "bytes": 152412,
+      "sha256": "ce632c18d3c2c59eacc87d5ed51212af56d02e52bba7b5acce1767391a387c37"
+    },
+    {
+      "path": "/tmp/w046-ux04-n10-design.json",
+      "bytes": 333315,
+      "sha256": "8485120676f37606c4ffc066a16aeceba32884ddaa74562f77491899f8c90e6f"
+    }
+  ],
+  "productChanged": false,
+  "productTestsRun": false
+}

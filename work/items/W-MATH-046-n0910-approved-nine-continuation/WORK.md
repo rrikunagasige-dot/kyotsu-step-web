@@ -1,15 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING
-Review: UX05-REPRESENTATIVE-VERIFIED / BLOCK-CHECK-PENDING
-- 再開入口：[工程図・現在地・次手](WORKFLOW_CURRENT.md)。①R04既存CODE接続/意味応答import、②R05承認照合/R06代表実装、③R07限定検証/非作者実画像審査まで完了。現在は④本人の代表細部確認。依頼どおり④より前の進捗報告は行わず、実確認票を準備した。
-- [確認票](REVIEW_SHEET.md)。固定source `a39bdb8c9d064e6d90c8352020824bb5be4f931f`、N09r7 compiled `dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813`。N10r4/data不変。代表2node以外の39node教材契約を保持、残り23CHANGEは未展開。
-- 既存CODEで解法/教授順・段階/穴候補・採否・source-bound IR/組立/配置/compile・可視state・review prepare/importを実行。CODEの未対応OR等を機械証明へ変換せず、非作者数学審査を明示接続した。
-- 固定sourceの別clean worktreeでN09/N10×320/390/430/1440、各48/63回答・各95/123誤答候補、1776状態/10020幾何を確認。正常KaTeX Main/Math-Italic loaded、HTTP/page error0、再読込/履歴/旧版trial/keyboard/reset取消・確定/他unit・旧版archive/dedicated保存がPASS。普通式とのfactor実寸145.9375×21は全四幅一致、認定slot0。
-- 移行の実browser13ケースPASSは先行source33d06bd8、最終差分が共有compilerとそのtestだけで保存コード/compiled不変のため継承。最終sourceでは四幅の旧版trial/reset保存を別に実操作。全体G2・本人細部OK・公開・総合受入・Gold/fitは未成立。
-- R07実寸比較でroot marker内部glue5pxを検出し、通常markerなしKaTeXとの直接回帰と最小補修で解消。harnessのprobe字号差/検査不足/旧試験stale期待等の原FAILも区別して保持。[実績/限界](evidence/ux05-pilot/SUMMARY.json)・原証拠ZIP・担当別審査を保存。
-- 次：本人『細部OK』なら承認済み残り23CHANGEの限定適用→R07/G2。『要修正』なら指摘を記録し図の原因/具体案へ戻る。未公開pilot r7と将来の同revision別artifactを黙って上書き/aliasせず厳密な版・hash保存を検討する。
-- UX05承認はevidence/ux05-proposal/APPROVAL.jsonで保持し同じ案を再承認要求しない。公開中source db99a485/publisher6bc54447不変。最新Store欠落26イベントの本人特例・別Work既存governance38件を保持。正式Store receiptを創作しない。
+Status: IMPLEMENTING
+Review: UX05-REPRESENTATIVE-BLOCK-VISUAL-OK / REMAINING23-IN-PROGRESS
+- 本人『承認继续。』を確認票①〜③の代表細部OKとして記録。[受領記録](evidence/ux05-full/DETAIL_ACCEPTANCE.json)。source a39bdb8cのpilot2nodeを保持し、承認済み残23CHANGE（N09:14/N10:9）へ進む。
+- 再開入口：[工程図・現在地・次手](WORKFLOW_CURRENT.md)。現在R04既存CODEへ残りnative契約を対応→R06限定適用→R07/G2。①〜③の済んだpilot検査・欠落台帳の復元からやり直さない。
+- N09の本人確認済みr7を不変snapshotとして保存し、本適用はr7→r8。N10はr4→r5。学習内容はUX05契約のまま、同じrevisionで別compiledを上書き/aliasしない保存保護の実装判断。N09目標43/N10目標60part。
+- 主担当は統合/既存CODE/保存/実browser/Git、AはN09 native設計、BはN10 native設計、相互非作者審査と主担当統合の審査を行う。主図の各工程完了条件で次へ進む。
+- 公開中db99a485/publisher6bc54447とmainは不変。公開は別具体的承認。正式Store26イベント欠落の本人特例、既存他Workgovernance38件は保持。全体受入/Gold/fit/架空receiptを作らない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

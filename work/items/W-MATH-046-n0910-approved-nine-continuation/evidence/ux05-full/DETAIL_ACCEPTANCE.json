@@ -1,0 +1,21 @@
+{
+  "kind": "USER_DETAIL_ACCEPTANCE",
+  "quote": "承認继续。",
+  "sourceRef": "conversation:page-7ff19963-d193-456c-9728-71cd22503355",
+  "evidenceType": "conversation_transcribed",
+  "replyTo": "record a1b6c123eb9076ffcb3153684b328a1c12aa2b2f / REVIEW_SHEET.md 確認①〜③",
+  "acceptedSourceSHA": "a39bdb8c9d064e6d90c8352020824bb5be4f931f",
+  "acceptedCompiledN09": "dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813",
+  "acceptedBlockIds": [
+    "n09-q01-negative",
+    "n09-01"
+  ],
+  "meaning": "代表の細部OK。承認済み残23CHANGEを実装/検証/横断監査へ進める。",
+  "notClaimed": [
+    "publication authority",
+    "whole app acceptance",
+    "Gold",
+    "fit",
+    "formal Store receipt"
+  ]
+}

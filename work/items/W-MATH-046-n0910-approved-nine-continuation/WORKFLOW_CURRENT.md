@@ -12,9 +12,13 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：①既存CODE接続と意味応答import、②承認照合と代表実装、③固定候補R07検証/非作者実画像審査まで完了。現在は **④本人細部確認（BLOCK-CHECK-PENDING）**。[実確認票](REVIEW_SHEET.md)を提示。細部OK後だけ残り23CHANGE→R07/G2へ進み、要修正なら原因/具体案へ戻る。source a39bdb8c、実績/限界はevidence/ux05-pilot/SUMMARY.json。CODEのNEEDS_AI_REVIEW原結果とAI importを別に保持する。
+- 実質の現在地：①既存CODE接続と意味応答import、②承認照合と代表実装、③固定候補R07検証/非作者実画像審査まで完了。④本人細部確認は本人『承認继续。』で **BLOCK-VISUAL-OK**。現在は残り23CHANGEのR04 CODE対応→R06限定適用→R07→G2へ進む。[受領記録](evidence/ux05-full/DETAIL_ACCEPTANCE.json)。新しい要修正があれば原因/具体案へ戻る。source a39bdb8c、実績/限界はevidence/ux05-pilot/SUMMARY.json。CODEのNEEDS_AI_REVIEW原結果とAI importを別に保持する。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
+
+## 本適用の版と保存
+
+本人確認済みN09r7 pilotは固定保存し、本適用はN09r8（from7）/N10r5（from4）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。
 
 ## 今回の実行順
 

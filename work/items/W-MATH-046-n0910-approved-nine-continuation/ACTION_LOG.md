@@ -49,3 +49,6 @@ Bの実見からdev font403を確定し旧fallback画像/幾何の最終合格�
 
 ## A-UX05-04 — 工程図照合→既存CODE接続→代表実装→R07→④
 本人指示の停止地点④まで継続。R04の既存native/solve/planner/blank/retrieve/visible/review入口を実入力へ接続、未対応はAIへ渡し原結果を保持。R05固定承認を照合、Aが2node/r7/厳密移行、Bが通常AST/混在操作域/状態別planner/mathLinesを実装。source33d06へ固定。R07の通常KaTeX実寸比較でroot-marker内部5pxglueを発見し、A非作者審査→B最小補修→source a39bdb8cへ更新。別clean worktree実測の四幅N09/N10計1776状態/10020幾何PASS、A表示/B数学の実画像審査と既存post-review import4件20row/stateがPASS。移行13件は保存コード同一の33d06実績として継承。①→②→③の各遷移と補修復帰を工程入口へ反映し、現在④本人確認待ち。残りの量産/G2/公開/本人受入は進めない。原FAIL・未対応・Store特例を保存。
+
+## A-UX05-05 — 代表細部OKと残り23の着手
+本人『承認继续。』を直前確認票のsource a39bdb8c/pilot2nodeへの細部OKとして転記保存。工程図を再読し、残23CHANGE→R07/G2へ進む。r7pilot不変保持のためN09本適用はr8、N10はr5。本文契約の変更や公開承認へ拡張しない。新しい独立作業tree a1b6起点でA=N09/B=N10のnative入力を分担し、rootが共有生成/移行/統合を所有。

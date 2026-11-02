@@ -10,6 +10,35 @@ export function nestedPublicLayoutState(visible) {
   return hash(visible.visible.map(item => ({ nodeId: item.node.nodeId, rows: item.rows.map(row => row.id), certified: item.parts.filter(p => p.correct).map(p => ({ key: p.key, value: p.value })) })));
 }
 
+/** Exact learner DOM contract: there are no terminal memo rows in this reader.
+ * Extras always use their source ID and readonly mode, including in history. */
+export function expectedNestedReaderFormulas(node, visible, mode, prefix = '') {
+  const result = visible.rows.filter(row => row.kind === 'math').map(row => {
+    const keys = new Set([...row.partKeys, ...Array.from(row.template.matchAll(/\{mirror:([^}]+)\}/g), match => match[1])]);
+    const parts = visible.parts.filter(part => keys.has(part.key));
+    return { id: prefix + row.id, template: row.template, mode,
+      parts: parts.map(part => ({ key: part.key, kind: part.prompt, role: part.role, choices: part.choices })),
+      values: Object.fromEntries(parts.filter(part => part.value !== undefined).map(part => [part.key, part.value])),
+      certifiedKeys: parts.filter(part => part.correct).map(part => part.key) };
+  });
+  if (node.equationNumber !== undefined && result.length) result.at(-1).equationTag = '(' + [node.equationNumber, ...(node.numberAliases ?? [])].join(' / ') + ')';
+  return [...result, ...expectedNestedReaderExtras(node, visible)];
+}
+function expectedNestedReaderExtras(node, visible) {
+  return visible.resolved ? (node.displayExtras ?? []).flatMap((extra, index) => extra.kind === 'math' ? [{ id: node.nodeId + '-extra-' + index, template: extra.latex, mode: 'readonly', parts: [] }] : []) : [];
+}
+export function expectedNestedReaderAuxiliary(compiled, finalView) {
+  const currentStageId = finalView.visible.at(-1).node.stageId;
+  const stageIndex = compiled.stages.findIndex(stage => stage.id === currentStageId);
+  const previousStages = new Set(compiled.stages.slice(0, stageIndex).map(stage => stage.id));
+  const item = node => finalView.visible.find(entry => entry.node.nodeId === node.nodeId);
+  const auto = compiled.stages.map(stage => ({ stageId: stage.id,
+    formulas: compiled.nodeDesign.filter(node => node.stageId === stage.id).flatMap(node => !node.parts.length
+      ? expectedNestedReaderFormulas(node, item(node), 'interactive') : expectedNestedReaderExtras(node, item(node))) }));
+  const history = compiled.nodeDesign.filter(node => previousStages.has(node.stageId)).flatMap(node => expectedNestedReaderFormulas(node, item(node), 'readonly', 'history-'));
+  return { auto, history, currentStageId };
+}
+
 /** Validate complete source-bound browser runs; a partial geometry packet is insufficient. */
 export function checkNestedRuns(compiled, runs, context = {}) {
   const findings = [], reject = (ruleId, detail) => findings.push({ ruleId, detail });
@@ -28,6 +57,7 @@ export function checkNestedRuns(compiled, runs, context = {}) {
     if (context.sourceManifest && Object.entries(context.sourceManifest).some(([p,h]) => run.sourceManifest?.[p] !== h)) reject('NESTED_SOURCE_MANIFEST_MISMATCH', at);
     if (run.sourceSHA !== context.sourceSHA || run.code !== code || run.compiledHash !== compiledHash) reject('NESTED_RUN_BINDING', at);
     if (!/^[a-f0-9]{64}$/.test(run.scriptHash ?? '') || !/^[a-f0-9]{64}$/.test(run.fontSha256 ?? '') || !run.sourceManifest || !Object.keys(run.sourceManifest).length || hash(run.sourceManifest) !== hash(run.sourceManifestAfter) || runs.some(r => r.scriptHash !== run.scriptHash || hash(r.sourceManifest) !== hash(run.sourceManifest))) reject('NESTED_RUN_PROVENANCE', at);
+    if (!Array.isArray(run.httpErrors) || run.httpErrors.length || !Array.isArray(run.networkFailures) || run.networkFailures.length) reject('NESTED_HTTP_NETWORK_FAILURE', at);
     if (!Array.isArray(run.errors) || run.errors.length || !Array.isArray(run.failures) || run.failures.length) reject('NESTED_FAILED_RUN', at);
     if (!run.lifecycle || ['completed','reloaded','historyReadonly','resetReloaded'].some(k => run.lifecycle[k] !== true)) reject('NESTED_LIFECYCLE_COVERAGE', at);
     if(!run.keyboardChecks||['slotFocus','Enter','Space','Escape'].some(k=>run.keyboardChecks[k]!==true))reject('NESTED_KEYBOARD_COVERAGE',at);
@@ -52,25 +82,15 @@ export function checkNestedRuns(compiled, runs, context = {}) {
         if (c.rootRelation && (f.geometry?.rootRelationProof?.semanticPath !== c.rootRelation.path || f.geometry.rootRelationProof.source !== 'shared-compiler-marker-dom-revalidated')) reject('NESTED_VISIBLE_ROOT_BINDING',label+':'+f.id);
       }
     };
-    const expectedFor = (node, visible, mode, prefix='') => {
-      const result = visible.rows.filter(r=>r.kind==='math').map(row=>{
-        const keys=new Set([...row.partKeys,...Array.from(row.template.matchAll(/\{mirror:([^}]+)\}/g),m=>m[1])]), parts=visible.parts.filter(p=>keys.has(p.key));
-        return {id:prefix+row.id,template:row.template,mode,parts:parts.map(p=>({key:p.key,kind:p.prompt,role:p.role,choices:p.choices})),values:Object.fromEntries(parts.filter(p=>p.value!==undefined).map(p=>[p.key,p.value])),certifiedKeys:parts.filter(p=>p.correct).map(p=>p.key)};
-      });
-      if(!prefix&&node.equationNumber!==undefined){const last=result.at(-1);if(last)last.equationTag='('+[node.equationNumber,...(node.numberAliases??[])].join(' / ')+')';}
-      if (!prefix && visible.resolved) {
-        result.push(...node.terminalRecord.formulas.map((template,i)=>({id:node.nodeId+'-memo-'+i,template,mode:'readonly',parts:[]})));
-        result.push(...(node.displayExtras??[]).flatMap((extra,i)=>extra.kind==='math'?[{id:node.nodeId+'-extra-'+i,template:extra.latex,mode:'readonly',parts:[]}]:[]));
-      }
-      return result;
-    };
     for (const packet of packets) {
-      if (packet.viewport !== run.width || !Number.isFinite(packet.readerWidth) || packet.readerWidth <= 0 || !finite(packet.pageWidth) || packet.pageWidth > run.width + 1 || !Array.isArray(packet.formulas) || !packet.formulas.length) { reject('NESTED_READER_PACKET', at + ':' + packet.part); continue; }
+      if (packet.viewport !== run.width || !Number.isFinite(packet.readerWidth) || packet.readerWidth <= 0 || !finite(packet.pageWidth) || packet.pageWidth > run.width + 1 || !Array.isArray(packet.formulas)) { reject('NESTED_READER_PACKET', at + ':' + packet.part); continue; }
       const snapshot=snapshots.find(s=>s.partId===packet.part&&s.state===packet.state&&s.selectedValue===packet.selectedValue);
       if (!snapshot) { reject('NESTED_RUNTIME_STATE_BINDING',at+':'+packet.part); continue; }
       const layoutState=nestedPublicLayoutState(snapshot.visible);
-      const node=compiled.nodeDesign.find(n=>n.parts.some(p=>p.id===packet.part)), visible=snapshot.visible.visible.find(n=>n.node.nodeId===node.nodeId), currentStage=snapshot.visible.visible.at(-1).node.stageId;
-      bindFormulas(packet.formulas,expectedFor(node,visible,visible.resolved&&node.stageId!==currentStage?'readonly':'interactive'),at+':'+packet.part+':'+packet.state);
+      const node=compiled.nodeDesign.find(n=>n.parts.some(p=>p.id===packet.part)), visible=snapshot.visible.visible.find(n=>n.node.nodeId===node.nodeId);
+      if (packet.stageId !== node.stageId) reject('NESTED_PACKET_STAGE_BINDING', at+':'+packet.part);
+      // The answer callback keeps the owner's stage active, including its filled packet.
+      bindFormulas(packet.formulas,expectedNestedReaderFormulas(node,visible,'interactive'),at+':'+packet.part+':'+packet.state);
       const expectedText=visible.rows.filter(r=>r.kind==='text').flatMap(row=>Array.from(row.template.matchAll(/\{(mirror:)?([^}]+)\}/g),m=>{const p=visible.parts.find(p=>p.key===m[2]);return {rowId:row.id,id:p.id,key:p.key,...(p.value===undefined?{}:{value:p.value}),state:p.correct?'filled':p.value===undefined?'initial':'wrong',editable:!p.correct&&p.editable,button:!p.correct};}));
       if(hash((packet.textSlots??[]).map(({rowId,id,key,value,state,editable,button})=>({rowId,id,key,value,state,editable,button})))!==hash(expectedText))reject('NESTED_TEXT_SLOT_BINDING',at+':'+packet.part+':'+packet.state);
       for(const text of packet.textSlots??[])if(text.button&&(!finite(text.rect?.width)||!finite(text.rect?.height)||text.rect.width<44||text.rect.height<44))reject('NESTED_TEXT_HIT_SIZE',at+':'+text.id);
@@ -103,15 +123,28 @@ export function checkNestedRuns(compiled, runs, context = {}) {
         if (verified.status !== 'PASS' || formula.geometry.status !== 'PASS') reject('NESTED_GEOMETRY', { at, part: packet.part, id: formula.id, findings: verified.findings });
       }
     }
-    const finalView=snapshots.at(-1).visible, currentStage=finalView.visible.at(-1).node.stageId;
-    const expectedAuto=compiled.nodeDesign.filter(n=>!n.parts.length).flatMap(node=>expectedFor(node,finalView.visible.find(n=>n.node.nodeId===node.nodeId),node.stageId!==currentStage?'readonly':'interactive'));
-    const expectedHistory=compiled.nodeDesign.flatMap(node=>expectedFor(node,finalView.visible.find(n=>n.node.nodeId===node.nodeId),'readonly','history-'));
-    for (const [kind,expected] of [['auto',expectedAuto],['history',expectedHistory]]) {
-      const aux=run.auxiliaryPackets?.filter(p=>p.kind===kind)??[];
-      if(aux.length!==1){reject('NESTED_AUXILIARY_COVERAGE',at+':'+kind);continue;}
-      bindFormulas(aux[0].formulas,expected,at+':'+kind);
-      if(aux[0].viewport!==run.width||!finite(aux[0].pageWidth)||aux[0].pageWidth>run.width+1)reject('NESTED_AUXILIARY_VIEWPORT',at+':'+kind);
-      for(const f of aux[0].formulas??[]){formulaCount++;const verified=checkNestedMeasurements(f.geometry);if(verified.status!=='PASS'||f.geometry.status!=='PASS'||f.font!=='18px'||f.status!=='MEASURED'||f.overflow==='true')reject('NESTED_AUXILIARY_GEOMETRY',{at,kind,id:f.id,findings:verified.findings});}
+    const auxiliary = expectedNestedReaderAuxiliary(compiled, snapshots.at(-1).visible);
+    if (run.auxiliaryPackets?.some(packet => !['auto','history'].includes(packet.kind))) reject('NESTED_UNKNOWN_AUXILIARY_PACKET', at);
+    const autoPackets = run.auxiliaryPackets?.filter(packet => packet.kind === 'auto') ?? [];
+    if (autoPackets.length !== auxiliary.auto.length || new Set(autoPackets.map(packet => packet.stageId)).size !== auxiliary.auto.length || autoPackets.some(packet => !auxiliary.auto.some(stage => stage.stageId === packet.stageId))) reject('NESTED_AUTO_STAGE_COVERAGE', at);
+    const checkAuxiliary = (packet, expected, kind) => {
+      bindFormulas(packet.formulas, expected, at+':'+kind);
+      if (packet.viewport !== run.width || !finite(packet.pageWidth) || packet.pageWidth > run.width + 1) reject('NESTED_AUXILIARY_VIEWPORT', at+':'+kind);
+      for (const formula of packet.formulas ?? []) {
+        formulaCount++;
+        const verified = checkNestedMeasurements(formula.geometry);
+        if (verified.status !== 'PASS' || formula.geometry.status !== 'PASS' || formula.font !== '18px' || formula.status !== 'MEASURED' || formula.overflow === 'true') reject('NESTED_AUXILIARY_GEOMETRY', { at, kind, id: formula.id, findings: verified.findings });
+      }
+    };
+    for (const stage of auxiliary.auto) {
+      const packets = autoPackets.filter(packet => packet.stageId === stage.stageId);
+      if (packets.length === 1) checkAuxiliary(packets[0], stage.formulas, 'auto:'+stage.stageId);
+    }
+    const historyPackets = run.auxiliaryPackets?.filter(packet => packet.kind === 'history') ?? [];
+    if (historyPackets.length !== 1) reject('NESTED_AUXILIARY_COVERAGE', at+':history');
+    else {
+      if (historyPackets[0].stageId !== auxiliary.currentStageId) reject('NESTED_HISTORY_STAGE_BINDING', at);
+      checkAuxiliary(historyPackets[0], auxiliary.history, 'history');
     }
   }
   return { status: findings.length ? 'FAIL' : 'PASS', schemaVersion: 'nested-run-validation/1', findings, measurementCount: formulaCount, widths: runs.map(r => r.width), partCount: parts.length, layoutHash: compiled.layoutDesignHash, automaticAcceptance: false };

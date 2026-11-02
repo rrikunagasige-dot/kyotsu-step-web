@@ -137,7 +137,7 @@ describe('source-bound reviewed N10 migration', () => {
 
 describe('UX-03 native revisions retain answers but never infer added decisions from AUTO', () => {
   const sourceCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiledR3.json'))
-  const targetCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiled.json'))
+  const targetCompiled = JSON.parse(raw('src/data/textbook/math/numbers/n10ConstructionCompiledR4.json'))
   const previous: NestedLesson = { ...sourceCompiled, nodes: sourceCompiled.nodeDesign }
   const target: NestedLesson = { ...targetCompiled, nodes: targetCompiled.nodeDesign }
   function completedPrevious() {
@@ -216,7 +216,7 @@ describe('UX-03 full application across both units and the completed pilot', () 
   it.each([
     ['n09ConstructionCompiledR4', 'n09ConstructionCompiledR5', 'n09-01::zeroLogic'],
     ['n09ConstructionCompiledR5', 'n09ConstructionCompiledR6', 'n09-q01-negative::powerAction'],
-    ['n10ConstructionCompiledPilotR4', 'n10ConstructionCompiled', 'n10-04::rootReason'],
+    ['n10ConstructionCompiledPilotR4', 'n10ConstructionCompiledR4', 'n10-04::rootReason'],
   ])('retains every existing part from %s and stops at the first new prerequisite', (sourceName, targetName, firstNewId) => {
     const source = readLesson(sourceName), target = readLesson(targetName)
     const original = completed(source), before = JSON.stringify(original)

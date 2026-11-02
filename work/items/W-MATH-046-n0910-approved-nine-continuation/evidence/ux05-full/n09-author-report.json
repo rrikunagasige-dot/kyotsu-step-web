@@ -1,0 +1,337 @@
+{
+  "unitId": "math-numbers-expressions-n09",
+  "fromRevision": 7,
+  "toRevision": 8,
+  "counts": {
+    "nodes": 41,
+    "pilotUnchanged": 2,
+    "keepNodesUnchanged": 25,
+    "changedNodes": 14,
+    "oldParts": 48,
+    "keepParts": 34,
+    "retireParts": 14,
+    "newParts": 9,
+    "targetParts": 43
+  },
+  "changedNodeIds": [
+    "n09-q02-negative-square",
+    "n09-q03-inside",
+    "n09-q04-negative",
+    "n09-06",
+    "n09-q07-negation",
+    "n09-07",
+    "n09-decimal-method",
+    "n09-p001-q08-left-square",
+    "n09-p001-q08-right-square",
+    "n09-q10-reject-truncation",
+    "n09-q11-remainder",
+    "n09-q13-reverse",
+    "n09-q14-positive-remainder",
+    "n09-q14-negative-remainder"
+  ],
+  "oldPartMapping": [
+    {
+      "oldPartId": "n09-q01-negative::powerAction",
+      "decision": "KEEP",
+      "newPartId": "n09-q01-negative::powerAction",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q01-negative::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q01-negative::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-01::factorisedFormUX05",
+      "decision": "KEEP",
+      "newPartId": "n09-01::factorisedFormUX05",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-01::factorZeroConditionUX05",
+      "decision": "KEEP",
+      "newPartId": "n09-01::factorZeroConditionUX05",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q02-root::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q02-root::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q02-negative-square::signFactor",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q02-negative-square::value",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q03-inside::value",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-03::value",
+      "decision": "KEEP",
+      "newPartId": "n09-03::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q04-nonnegative::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q04-nonnegative::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q04-negative::oppositeSign",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q04-negative::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q04-negative::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-05::value",
+      "decision": "KEEP",
+      "newPartId": "n09-05::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q06-squares::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q06-squares::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q06-order::relation",
+      "decision": "KEEP",
+      "newPartId": "n09-q06-order::relation",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-06::addend",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-06::zero",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q07-negation::scope",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-07::outsideFactor",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-07::secondOperand",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-07::left",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-07::sign",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-left-square::L1",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-left-square::L1",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-left-square::L2",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-left-square::L2",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-left-square::L3",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-left-square::L3",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-right-square::R1",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-right-square::R1",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-right-square::R2",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-right-square::R2",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-right-square::R3",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-right-square::R3",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-lower-sign::C",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-lower-sign::C",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-p001-q08-upper-sign::D",
+      "decision": "KEEP",
+      "newPartId": "n09-p001-q08-upper-sign::D",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-09::lowerRelation",
+      "decision": "KEEP",
+      "newPartId": "n09-09::lowerRelation",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-09::upperRelation",
+      "decision": "KEEP",
+      "newPartId": "n09-09::upperRelation",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q10-reject-truncation::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q10-reject-truncation::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-10::n",
+      "decision": "KEEP",
+      "newPartId": "n09-10::n",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q11-remainder::sign",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q11-remainder::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q11-remainder::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q12-lower::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q12-lower::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q12-upper::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q12-upper::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-12::lower",
+      "decision": "KEEP",
+      "newPartId": "n09-12::lower",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-12::upper",
+      "decision": "KEEP",
+      "newPartId": "n09-12::upper",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q13-reverse::S1",
+      "decision": "KEEP",
+      "newPartId": "n09-q13-reverse::S1",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q13-reverse::S2",
+      "decision": "KEEP",
+      "newPartId": "n09-q13-reverse::S2",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-13::left",
+      "decision": "KEEP",
+      "newPartId": "n09-13::left",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-13::right",
+      "decision": "KEEP",
+      "newPartId": "n09-13::right",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q14-positive-integer::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q14-positive-integer::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q14-positive-remainder::remainderOperation",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    },
+    {
+      "oldPartId": "n09-q14-negative-integer::value",
+      "decision": "KEEP",
+      "newPartId": "n09-q14-negative-integer::value",
+      "meaning": "同じ型/問い/全候補/正答/根拠の対象。新版未解決gateより先では保留。"
+    },
+    {
+      "oldPartId": "n09-q14-negative-remainder::sign",
+      "decision": "RETIRE",
+      "newPartId": null,
+      "meaning": "旧R7snapshot/出所付きarchiveへ原recordを保管。新しい意味へaliasしない。"
+    }
+  ],
+  "newPartIds": [
+    "n09-q02-negative-square::signedRootSquareUX05",
+    "n09-06::differenceRelationUX05",
+    "n09-q07-negation::absoluteExpressionUX05",
+    "n09-07::expandedExpressionUX05",
+    "n09-p001-q08-left-square::middleTermUX05",
+    "n09-p001-q08-right-square::middleTermUX05",
+    "n09-q10-reject-truncation::candidateValidityUX05",
+    "n09-q14-positive-remainder::remainderExpressionUX05",
+    "n09-q14-negative-remainder::remainderExpressionUX05"
+  ],
+  "baseline": "a1b6 UX05 pilot fine detail approved",
+  "inputProposalSHA256": "8be141bd7783666b782f2dbdb7ba076b5ef996e99ffabc3418bd2b420b80a912",
+  "nativeUnitSHA256": "d3399d5ab2a376c7fa3593fdd1743fa31fcdc8276298fc60a9fa744378d497ef",
+  "limitations": "単元入力materializationと構造集計のみ。R04既存CODE・非作者意味審査・R07実装後検証はrootへ接続。製品/正式Work/Git/Store未編集。"
+}

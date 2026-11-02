@@ -1,3 +1,5 @@
+import n09PreviousR7 from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
+import n10PreviousR4 from '../data/textbook/math/numbers/n10ConstructionCompiledR4.json'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import n10Previous from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
@@ -24,7 +26,7 @@ import { validateTextbookUnits } from '../domain/textbookSchema'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 const registry = { n09: n09Compiled, n10: n10Compiled } as unknown as Record<'n09' | 'n10', CompiledNestedLesson>
-const migrationSources = { n09: [n09PreviousR6, n09PreviousR5, n09Previous], n10: [n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
+const migrationSources = { n09: [n09PreviousR7, n09PreviousR6, n09PreviousR5, n09Previous], n10: [n10PreviousR4, n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
 const activeUnits = { n09: mathNumbersN09Unit, n10: mathNumbersN10Unit }
 const legacyUnits = { n09: validateTextbookUnits([n09Presentation.unit])[0], n10: validateTextbookUnits([n10Presentation.unit])[0] }
 function readSaved(key: string, compiled: CompiledNestedLesson): Saved | undefined {
@@ -59,7 +61,7 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
   }
   const migrate = async (state: Saved) => {
     if (state.nativeRevisionImport) return { ...state, ledger: activateRetainedNativeRecords(lesson, state.ledger, state.nativeRevisionImport.eligiblePartIds) }
-    if (code === 'n10' && compiled.toRevision === 4) return state
+    if (code === 'n10' && compiled.toRevision >= 4) return state
     if (code !== 'n10' || state.archive === undefined) return state
     const result = await migrateReviewedNestedProgress({ lesson, oldProgress: oldProgress(state.archive), oldSourceJson: oldN10Raw, designJson: designRaw, analysisJson: migrationRaw,
       compiledBinding: { compiledHash: compiled.compiledHash, ...REVIEWED_N10_MIGRATION }, ledger: state.ledger, resetAt: state.resetAt, now: Date.now() })
@@ -121,11 +123,16 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
           }
           if (!sourceLedger) continue
           // Each reviewed edge owns its exact source/target artifact. Older
-          // answers travel r4→r5→r6→r7 without treating an intermediate AUTO
+          // answers travel r4→r5→r6→r7→r8 without treating an intermediate AUTO
           // result as a newly answered question.
           let sourceLesson = previousLesson
-          const intermediates = code === 'n09' ? [n09PreviousR5, n09PreviousR6] as unknown as CompiledNestedLesson[] : []
-          for (const snapshot of intermediates.filter(c => c.toRevision > previous.toRevision && c.toRevision < lesson.toRevision)) {
+          if (code === 'n10' && previous.compiledHash === n10Pilot.compiledHash) {
+            const fullR4 = nestedLessonFromCompiled(n10PreviousR4 as unknown as CompiledNestedLesson)
+            sourceLedger = migrateNativeRevisionLedger({ source: sourceLesson, target: fullR4, sourceLedger, now: Date.now() }).ledger
+            sourceLesson = fullR4
+          }
+          const intermediates = code === 'n09' ? [n09PreviousR5, n09PreviousR6, n09PreviousR7] as unknown as CompiledNestedLesson[] : [n10PreviousR4] as unknown as CompiledNestedLesson[]
+          for (const snapshot of intermediates.filter(c => c.toRevision > sourceLesson.toRevision && c.toRevision < lesson.toRevision)) {
             const target = nestedLessonFromCompiled(snapshot)
             sourceLedger = migrateNativeRevisionLedger({ source: sourceLesson, target, sourceLedger, now: Date.now() }).ledger
             sourceLesson = target

@@ -24,12 +24,12 @@ function solve(lesson: NestedLesson, state: TextbookUnitProgress, count = Infini
 
 describe('explicit N09/N10 unit schema and real parent progress', () => {
   it('permits empty items only for the opted-in current section with actual nested parents', () => {
-    expect(fixture('n09').unit.revision).toBe(7)
-    expect(fixture('n09').unit.nestedContract!.parents).toHaveLength(31)
-    expect(fixture('n09').unit.nestedContract!.parents.flatMap(parent => parent.parts)).toHaveLength(48)
-    expect(fixture('n10').unit.revision).toBe(4)
-    expect(fixture('n10').unit.nestedContract!.parents).toHaveLength(40)
-    expect(fixture('n10').unit.nestedContract!.parents.flatMap(parent => parent.parts)).toHaveLength(63)
+    expect(fixture('n09').unit.revision).toBe(8)
+    expect(fixture('n09').unit.nestedContract!.parents).toHaveLength(30)
+    expect(fixture('n09').unit.nestedContract!.parents.flatMap(parent => parent.parts)).toHaveLength(43)
+    expect(fixture('n10').unit.revision).toBe(5)
+    expect(fixture('n10').unit.nestedContract!.parents).toHaveLength(39)
+    expect(fixture('n10').unit.nestedContract!.parents.flatMap(parent => parent.parts)).toHaveLength(60)
     const source = raw('n10Authored').unit
     expect(TextbookUnitSchema.safeParse(source).success).toBe(true)
     const ordinaryEmpty = { ...source, sections: source.sections.map((s: object) => ({ ...s, items: [], figures: [], readingFlow: [] })) }
@@ -94,7 +94,7 @@ describe('explicit N09/N10 unit schema and real parent progress', () => {
     const reset = resetTextbookUnitProgress(f.unit, old, 100)!
     expect(reset.nestedResetAt).toBe(100); expect(reset.nestedProgress!.compiledHash).toBe(f.lesson.compiledHash)
     expect(reset.nestedProgress!.records).toEqual({}); expect(reset.nestedProgress!.draft).toEqual({})
-    expect(reset.archivedRevisions!['7-reset-100'].nestedProgress).toEqual(old.nestedProgress)
+    expect(reset.archivedRevisions!['8-reset-100'].nestedProgress).toEqual(old.nestedProgress)
     expect(JSON.stringify(old)).toBe(oldRaw); expect(textbookUnitProgress(f.unit, reset).completed).toBe(0)
     const stale = { ...reset, nestedProgress: old.nestedProgress }
     expect(textbookUnitProgress(f.unit, stale).completed).toBe(0)

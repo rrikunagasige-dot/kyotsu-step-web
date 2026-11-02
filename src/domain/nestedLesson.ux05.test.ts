@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import active from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
+import active from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
 import r6 from '../data/textbook/math/numbers/n09ConstructionCompiledR6.json'
 import r5 from '../data/textbook/math/numbers/n09ConstructionCompiledR5.json'
 import r4 from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'

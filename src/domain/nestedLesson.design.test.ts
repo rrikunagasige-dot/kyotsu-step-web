@@ -5,8 +5,9 @@ import { createHash } from 'node:crypto'
 import { describe, it, expect } from 'vitest'
 import { answerNestedPart, projectNestedLesson, resetNestedLedger, type NestedLesson, type NestedLedger } from './nestedLesson'
 import { compileNestedMathTemplate } from '../components/textbook/nestedMathTemplate'
-import n09Compiled from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
-import n10Compiled from '../data/textbook/math/numbers/n10ConstructionCompiled.json'
+// Historical scaffold contracts remain attached to their immutable native revisions.
+import n09Compiled from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
+import n10Compiled from '../data/textbook/math/numbers/n10ConstructionCompiledR4.json'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from './compiledNestedLesson'
 
 // An explicit candidate path permits the same audit before and after Work storage.
@@ -58,6 +59,13 @@ describe('materialized N09/N10 candidate, not hosted reader acceptance', () => {
     expect(answerNestedPart(lesson, ledger, reason.id, reason.expected, 'premature', event)).toBe(ledger)
     expect(ledger!.records[reason.id]).toBeUndefined()
     ledger = answerNestedPart(lesson, ledger, factor.id, factor.expected, String(++event), event)
+    for (const [key, value] of [['positiveComparisonLeftSquareUX05','4'], ['positiveComparisonRootSquareUX05','3']]) {
+      const square = target.parts.find(p => p.key === key)!
+      expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe(square.id)
+      expect(square.expected).toBe(value)
+      expect(ledger!.records[reason.id]).toBeUndefined()
+      ledger = answerNestedPart(lesson, ledger, square.id, value, String(++event), event)
+    }
     expect(projectNestedLesson(lesson, ledger).editable?.partId).toBe(factorSign.id)
     expect(answerNestedPart(lesson, ledger, reason.id, reason.expected, 'before-sign', event)).toBe(ledger)
     ledger = answerNestedPart(lesson, ledger, factorSign.id, factorSign.expected, String(++event), event)

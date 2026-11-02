@@ -1,3 +1,4 @@
+import ux05Mapping from '../data/textbook/math/numbers/n0910Ux05Migration.json'
 import { emptyNestedLedger, projectNestedLesson, type NestedLedger, type NestedLesson, type NestedNode, type NestedPartRecord } from './nestedLesson'
 import { normalizeTextbookAnswer } from './textbook'
 
@@ -132,6 +133,7 @@ export async function migrateReviewedNestedProgress(input: ReviewedNestedMigrati
  * Future retained answers stay in records until their new prerequisites unlock. */
 export function migrateNativeRevisionLedger(input: { source: NestedLesson; target: NestedLesson; sourceLedger: NestedLedger; now: number }) {
   const { source, target, sourceLedger, now } = input
+  const ux05Edge = ux05Mapping.edges.find(e => e.unitId === source.unitId && e.sourceRevision === source.toRevision && e.sourceCompiledHash === source.compiledHash && e.targetFromRevision === target.fromRevision && e.targetRevision === target.toRevision && e.targetCompiledHash === target.compiledHash)
   const sources: Record<string, { hash: string; revision: number; targetRevision: number; targetFromRevision?: number; targetHash?: string }[]> = {
     'math-numbers-expressions-n09': [{ hash: '07bd31dc59069536bf59ad4e9339d5f43131bb4adeda76bbd288f54fae08dd7e', revision: 4, targetRevision: 5 }, { hash: '8de81d5c488393ea77e6c877f2986deec901aea90d7e90afa44bb7ba3e2534b6', revision: 5, targetRevision: 6, targetFromRevision: 5, targetHash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d' }, { hash: '470f137102936e6bb73ca3df835e8c9b27d19c5ce53a40879fe9c2dfa8499a3d', revision: 6, targetRevision: 7, targetFromRevision: 6, targetHash: 'dedfd7c553c2c0186bf7bdbc881bba51649741dbe330e0c854c11dce7822a813' }],
     'math-numbers-expressions-n10': [
@@ -139,7 +141,11 @@ export function migrateNativeRevisionLedger(input: { source: NestedLesson; targe
       { hash: '5f42dba655ce6dad1348dcf6cce705138fc7c266240277ad769d22be82f24f2b', revision: 4, targetRevision: 4 },
     ],
   }
-  if (target.unitId !== source.unitId || !sources[source.unitId]?.some(s => s.hash === source.compiledHash && s.revision === source.toRevision && s.targetRevision === target.toRevision && target.fromRevision === (s.targetFromRevision ?? (source.unitId === 'math-numbers-expressions-n09' ? 4 : 3)) && (!s.targetHash || target.compiledHash === s.targetHash)) || !validLedger(source, sourceLedger) || !Number.isFinite(now) || now < sourceLedger.updatedAt) throw Error('UX03_NATIVE_REVISION_BINDING')
+  if (target.unitId !== source.unitId || !(ux05Edge || sources[source.unitId]?.some(s => s.hash === source.compiledHash && s.revision === source.toRevision && s.targetRevision === target.toRevision && target.fromRevision === (s.targetFromRevision ?? (source.unitId === 'math-numbers-expressions-n09' ? 4 : 3)) && (!s.targetHash || target.compiledHash === s.targetHash))) || !validLedger(source, sourceLedger) || !Number.isFinite(now) || now < sourceLedger.updatedAt) throw Error('UX03_NATIVE_REVISION_BINDING')
+  if (ux05Edge) for (const id of ux05Edge.keepPartIds) {
+    const a = source.nodes.find(n => n.parts.some(p => p.id === id)), b = target.nodes.find(n => n.parts.some(p => p.id === id))
+    if (!a || !b || stable([a.nodeId,a.resultId,a.stageId,a.q]) !== stable([b.nodeId,b.resultId,b.stageId,b.q]) || stable(a.parts.find(p => p.id === id)) !== stable(b.parts.find(p => p.id === id))) throw Error('UX05_KEEP_CONTRACT_CHANGED')
+  }
   const ledger = emptyNestedLedger(target, now), eligiblePartIds: string[] = []
   // These existing questions keep their mathematical task while UX-03 adds
   // earlier decisions and removes answer-leaking copy. No other prompt or
@@ -161,7 +167,7 @@ export function migrateNativeRevisionLedger(input: { source: NestedLesson; targe
     if (!previous) continue
     for (const part of node.parts) {
       const oldPart = previous.parts.find(p => p.id === part.id), record = sourceLedger.records[part.id]
-      if (!oldPart || !record || stable(descriptor(previous, oldPart)) !== stable(descriptor(node, part))) continue
+      if (!oldPart || !record || (ux05Edge ? !ux05Edge.keepPartIds.includes(part.id) : stable(descriptor(previous, oldPart)) !== stable(descriptor(node, part)))) continue
       if (!part.choices.some(c => c.value === record.value) || !part.choices.some(c => c.value === record.firstValue)) continue
       ledger.records[part.id] = structuredClone(record); eligiblePartIds.push(part.id)
     }

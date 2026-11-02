@@ -1,0 +1,534 @@
+{
+  "status": "MATERIALIZED_PENDING_EXISTING_CODE_AND_NONAUTHOR_REVIEW",
+  "author": "/root/w046_render_review",
+  "baselineSourceCommit": "a1b6 (root-reported; root binds full SHA)",
+  "proposalSHA256": "1deef27e4f180b659d0f4c1082dd02a1e38cbee21f72168c3ddef88c56a9c9c8",
+  "baselineUnitSHA256": "d69e9f019d2ebad736f81e556c97a4ce54feee9502f1c4d681dec0adc533366b",
+  "unitFileSHA256": "e515bbc7c13b937987139f2d990eb21b878348a18fc8e3aeee2ae8a0754b58b9",
+  "revisions": {
+    "from": 4,
+    "to": 5
+  },
+  "counts": {
+    "sourceNodes": 45,
+    "constructionParents": 39,
+    "parts": 60,
+    "automaticNodes": 6
+  },
+  "changedNodes": [
+    "n10-q10-coefficients",
+    "n10-q11-formula",
+    "n10-q13-identity",
+    "n10-17",
+    "n10-q19-distribute",
+    "n10-19",
+    "n10-q20-factor",
+    "n10-20",
+    "n10-q21-expand"
+  ],
+  "keptNodes": [
+    "n10-q01-square",
+    "n10-01",
+    "n10-q02-sign",
+    "n10-02",
+    "n10-q03-expand",
+    "n10-03",
+    "n10-q04-sign",
+    "n10-04",
+    "n10-q05-denominator",
+    "n10-q05-square",
+    "n10-05",
+    "n10-q06-sign",
+    "n10-06",
+    "n10-q07-product",
+    "n10-07",
+    "n10-q08-factor",
+    "n10-08",
+    "n10-q09-left",
+    "n10-q09-right",
+    "n10-09",
+    "n10-10",
+    "n10-11",
+    "n10-q12-product",
+    "n10-12",
+    "n10-13",
+    "n10-14",
+    "n10-q15-factor",
+    "n10-15",
+    "n10-q16-denominator",
+    "n10-16",
+    "n10-q17-factor",
+    "n10-q17-nonzero",
+    "n10-18",
+    "n10-q21-denominator",
+    "n10-q21-constants",
+    "n10-21"
+  ],
+  "keepPartIds": [
+    "n10-q01-square::rootSquare",
+    "n10-01::value",
+    "n10-q02-sign::value",
+    "n10-02::candidateSign",
+    "n10-02::squareValue",
+    "n10-02::identificationReason",
+    "n10-q03-expand::powerA",
+    "n10-q03-expand::powerB",
+    "n10-03::aValue",
+    "n10-03::bValue",
+    "n10-q04-sign::relation",
+    "n10-04::rootReason",
+    "n10-q05-denominator::relation",
+    "n10-q05-square::numPower",
+    "n10-q05-square::denPower",
+    "n10-05::numerator",
+    "n10-05::denominator",
+    "n10-q06-sign::relation",
+    "n10-06::quotientReason",
+    "n10-q07-product::insideOperation",
+    "n10-q07-product::inside",
+    "n10-07::squareFactor",
+    "n10-07::factor",
+    "n10-q08-factor::coefficient",
+    "n10-q09-left::squareFactor",
+    "n10-q09-left::coefficient",
+    "n10-q09-right::squareFactor",
+    "n10-q09-right::coefficient",
+    "n10-q10-coefficients::coefficient",
+    "n10-11::leftSquare",
+    "n10-11::rightSquare",
+    "n10-q12-product::inside",
+    "n10-12::constant",
+    "n10-13::left",
+    "n10-13::right",
+    "n10-13::difference",
+    "n10-14::operation",
+    "n10-q15-factor::factor",
+    "n10-15::numerator",
+    "n10-q16-denominator::square",
+    "n10-q16-denominator::denominator",
+    "n10-q17-factor::factor",
+    "n10-q17-nonzero::relation",
+    "n10-18::A",
+    "n10-18::B",
+    "n10-18::C",
+    "n10-19::inside",
+    "n10-q20-factor::factor",
+    "n10-q20-factor::factorSign",
+    "n10-q20-factor::reason",
+    "n10-q21-denominator::D",
+    "n10-q21-constants::C"
+  ],
+  "retiredPartIds": [
+    "n10-q11-formula::middleSign",
+    "n10-q13-identity::operation",
+    "n10-17::productOperation",
+    "n10-q19-distribute::secondOperand",
+    "n10-q19-distribute::productSign",
+    "n10-19::left",
+    "n10-20::power",
+    "n10-20::denominatorOperation",
+    "n10-q21-expand::P",
+    "n10-q21-expand::K",
+    "n10-q21-expand::Q"
+  ],
+  "newPartIds": [
+    "n10-q10-coefficients::collectedExpressionUX05",
+    "n10-q11-formula::signedMiddleTermUX05",
+    "n10-q13-identity::cancellingPairUX05",
+    "n10-q19-distribute::distributedNumeratorUX05",
+    "n10-q20-factor::positiveComparisonLeftSquareUX05",
+    "n10-q20-factor::positiveComparisonRootSquareUX05",
+    "n10-20::rationalisedFractionUX05",
+    "n10-q21-expand::signedMiddleTermUX05"
+  ],
+  "mapping": [
+    {
+      "oldId": "n10-q01-square::rootSquare",
+      "action": "KEEP",
+      "newId": "n10-q01-square::rootSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-01::value",
+      "action": "KEEP",
+      "newId": "n10-01::value",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q02-sign::value",
+      "action": "KEEP",
+      "newId": "n10-q02-sign::value",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::candidateSign",
+      "action": "KEEP",
+      "newId": "n10-02::candidateSign",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::squareValue",
+      "action": "KEEP",
+      "newId": "n10-02::squareValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-02::identificationReason",
+      "action": "KEEP",
+      "newId": "n10-02::identificationReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q03-expand::powerA",
+      "action": "KEEP",
+      "newId": "n10-q03-expand::powerA",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q03-expand::powerB",
+      "action": "KEEP",
+      "newId": "n10-q03-expand::powerB",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-03::aValue",
+      "action": "KEEP",
+      "newId": "n10-03::aValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-03::bValue",
+      "action": "KEEP",
+      "newId": "n10-03::bValue",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q04-sign::relation",
+      "action": "KEEP",
+      "newId": "n10-q04-sign::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-04::rootReason",
+      "action": "KEEP",
+      "newId": "n10-04::rootReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-denominator::relation",
+      "action": "KEEP",
+      "newId": "n10-q05-denominator::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-square::numPower",
+      "action": "KEEP",
+      "newId": "n10-q05-square::numPower",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q05-square::denPower",
+      "action": "KEEP",
+      "newId": "n10-q05-square::denPower",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-05::numerator",
+      "action": "KEEP",
+      "newId": "n10-05::numerator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-05::denominator",
+      "action": "KEEP",
+      "newId": "n10-05::denominator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q06-sign::relation",
+      "action": "KEEP",
+      "newId": "n10-q06-sign::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-06::quotientReason",
+      "action": "KEEP",
+      "newId": "n10-06::quotientReason",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q07-product::insideOperation",
+      "action": "KEEP",
+      "newId": "n10-q07-product::insideOperation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q07-product::inside",
+      "action": "KEEP",
+      "newId": "n10-q07-product::inside",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-07::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-07::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-07::factor",
+      "action": "KEEP",
+      "newId": "n10-07::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q08-factor::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q08-factor::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-left::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-q09-left::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-left::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q09-left::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-right::squareFactor",
+      "action": "KEEP",
+      "newId": "n10-q09-right::squareFactor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q09-right::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q09-right::coefficient",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q10-coefficients::coefficient",
+      "action": "KEEP",
+      "newId": "n10-q10-coefficients::coefficient",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q11-formula::middleSign",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "一般公式の符号−から具体式の符号込み中項へ対象/操作/候補が変わるためaliasしない。"
+    },
+    {
+      "oldId": "n10-11::leftSquare",
+      "action": "KEEP",
+      "newId": "n10-11::leftSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-11::rightSquare",
+      "action": "KEEP",
+      "newId": "n10-11::rightSquare",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q12-product::inside",
+      "action": "KEEP",
+      "newId": "n10-q12-product::inside",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-12::constant",
+      "action": "KEEP",
+      "newId": "n10-12::constant",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q13-identity::operation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "一般公式の−と、具体的な相殺項の組を同定する新操作は非同値。"
+    },
+    {
+      "oldId": "n10-13::left",
+      "action": "KEEP",
+      "newId": "n10-13::left",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-13::right",
+      "action": "KEEP",
+      "newId": "n10-13::right",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-13::difference",
+      "action": "KEEP",
+      "newId": "n10-13::difference",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-14::operation",
+      "action": "KEEP",
+      "newId": "n10-14::operation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q15-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q15-factor::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-15::numerator",
+      "action": "KEEP",
+      "newId": "n10-15::numerator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q16-denominator::square",
+      "action": "KEEP",
+      "newId": "n10-q16-denominator::square",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q16-denominator::denominator",
+      "action": "KEEP",
+      "newId": "n10-q16-denominator::denominator",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q17-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q17-factor::factor",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q17-nonzero::relation",
+      "action": "KEEP",
+      "newId": "n10-q17-nonzero::relation",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-17::productOperation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "分数の積の×一字は標準経路の独立主判断にせず、途中式へ統合。記録はarchive保持。"
+    },
+    {
+      "oldId": "n10-18::A",
+      "action": "KEEP",
+      "newId": "n10-18::A",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-18::B",
+      "action": "KEEP",
+      "newId": "n10-18::B",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-18::C",
+      "action": "KEEP",
+      "newId": "n10-18::C",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q19-distribute::secondOperand",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "符号付き項の写しから両項への分配式の構成へ変更。"
+    },
+    {
+      "oldId": "n10-q19-distribute::productSign",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "単独符号の再入力は新しい分配適用に統合。"
+    },
+    {
+      "oldId": "n10-19::left",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "同じ有理化内で確定済みの平方3はresult参照。r4記録はarchiveのみ。"
+    },
+    {
+      "oldId": "n10-19::inside",
+      "action": "KEEP",
+      "newId": "n10-19::inside",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::factor",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::factor",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::factorSign",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::factorSign",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-q20-factor::reason",
+      "action": "KEEP",
+      "newId": "n10-q20-factor::reason",
+      "reason": "同じ対象/操作/候補/正答の契約を維持。新版のgateは再評価する。"
+    },
+    {
+      "oldId": "n10-20::power",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "同じ因子数の指数を単独採点せず、分数全体の公式適用へ統合。"
+    },
+    {
+      "oldId": "n10-20::denominatorOperation",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "−単独から分数全体の式構成へ対象/候補/操作変更。"
+    },
+    {
+      "oldId": "n10-q21-denominator::D",
+      "action": "KEEP",
+      "newId": "n10-q21-denominator::D",
+      "reason": "固定sourceの同一契約。"
+    },
+    {
+      "oldId": "n10-q21-expand::P",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "平方4は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Pを新keyへaliasしない。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-expand::K",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "旧正の係数4と符号込み中項−4√3は非同値。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-expand::Q",
+      "action": "RETIRE_ARCHIVE_ONLY",
+      "newId": null,
+      "reason": "平方3は比較nodeへ問いを移したが、問い/前提/順序が異なり旧Qを新keyへaliasしない。ARCHIVE_ONLY。"
+    },
+    {
+      "oldId": "n10-q21-constants::C",
+      "action": "KEEP",
+      "newId": "n10-q21-constants::C",
+      "reason": "固定sourceの同一契約。"
+    }
+  ],
+  "scope": "tmp単元候補のみ。製品/共有NODE_DESIGN/Store/Gitは未変更。既存shared rendererは変更しない。",
+  "semantics": {
+    "keepBoundary": "36KEEP nodeと52KEEP partはbaseline native object完全一致。H07正性→平方→同定、積商の証明、原値/図/収録順/既存source refsを保護。",
+    "q20q21": "初回平方2²=4/(√3)²=3をq20で問い、terminal resultへ記録。n10-20/q21にはq20 resultの実requiredResultRefsとprerequisiteNodeIdsを付与。旧P/Q/KはARCHIVE_ONLY、新平方と符号込み中項へaliasしない。",
+    "cancellation": "相殺組はtext enum一値、候補mathLinesで二項の境界を表示、足場ownkey hide後に具体展開と平方差を通常mathASTへする。",
+    "formulaAndGrouping": "一般公式と確定済み数式条件はassumptionPartsのtyped mathへ。完全左辺は別group、先頭=だけ継続。",
+    "finite": "7新math partは既存exact closed評価へ接続、相殺enumはrequires-semantic-review。数値候補PASSと学習意味のPASSを区別。",
+    "migrationCaution": "新gate/数学条件の文言変更があるKEEP partも、局所の問い/型/全候補/対象演算は完全同一。rootの明示mappingにより保持し、NEW前提を飛ばさない。",
+    "normalDisplay": "共有rendererは本人確認済みのまま使用し、各node専用の44px回避策を増やさない。"
+  }
+}

@@ -31,3 +31,6 @@ legacyr2比較は現行/既存keyを変更せず、既知のarchive-review専用
 
 ## F-UX03-10 — ERROR-RECORD / 補修済み
 公開待ちをWORK Statusの未登録underscore値で書いたため記録検査が既存38件から39件となった。規則を変えずStatus: VERIFYINGに戻し、公開待ちはReviewとJSONへ明記。修正前logを保存し、既存38件と今回増分を区別する。
+
+## F-UX03-11 — ERROR-SPEC / ERROR-QA：導出参加度の不足
+本人は排版改善を評価したが、n09-01がzeroLogic一穴で移項/因数分解/一次式の処理まで自動表示される点を要修正とした。直前の負数の平方も積の構成/符号を自動化してvalue16だけ問う。既存MASTER §§8/11/52/53と数学SPEC §5の適用不足であり、新しい穴数ノルマではない。完成解法の非自明操作の網羅を検査していなかった。原因→同型→既存基準照合を含む指摘として扱う。詳しい根拠と写真の5操作案はWORK末尾、監査対象はevidence/ux03-full/DERIVATION_PARTICIPATION_AUDIT.jsonへ一本化。製品コードは変更していない。

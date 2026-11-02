@@ -1,0 +1,119 @@
+{
+  "status": "READ_ONLY_AUDIT_COMPLETE_CORRECTION_DESIGN_PENDING",
+  "baselineSource": "db99a485f857b1aefa7fb738456f36a830514158",
+  "userFeedback": "Derivation should require students to construct the meaningful intermediate steps; one answer must not automatically supply other independent transformations.",
+  "canon": {
+    "main": "6bc54447ef015a2a579a56a5966ceb58a0600d3a",
+    "masterBlob": "b5b2079fda73240219955886f12593c9a7c45044",
+    "mathematicsSpecBlob": "ad4b20f8e5702db15e2237831f5b004845ebf198",
+    "instructionDictionaryBlob": "093bfd2b1669a1a02fdc21f6ff52fa651b169a80"
+  },
+  "photo": {
+    "sha256": "1ae83424956f7ef23344f870c417e81d84c9791ff5b0a5e90c1bcec817e5e92b",
+    "duplicateAttachments": 2,
+    "uniqueScenes": 1,
+    "nodes": [
+      "n09-q01-negative",
+      "n09-01"
+    ]
+  },
+  "n09": {
+    "reviewer": "/root/w046_source_review",
+    "nodesRead": 41,
+    "priority": [
+      "n09-q01-negative",
+      "n09-01",
+      "n09-q02-negative-square",
+      "n09-p001-q08-left-square",
+      "n09-p001-q08-right-square",
+      "n09-q10-reject-truncation",
+      "n09-q14-positive-remainder",
+      "n09-q14-negative-remainder"
+    ],
+    "furtherReview": [
+      "n09-q03-inside",
+      "n09-q04-negative",
+      "n09-q07-negation",
+      "n09-decimal-method",
+      "n09-parts-target",
+      "n09-q13-reverse"
+    ],
+    "remaining27": "Existing learner actions, definitions, first demonstrations or confirmed summaries; no blanket blank-count increase."
+  },
+  "n10": {
+    "reviewer": "/root/w046_render_review",
+    "nodesRead": 45,
+    "candidateGroups": [
+      {
+        "nodes": [
+          "n10-q01-square",
+          "n10-01"
+        ],
+        "operations": "Combine factors into powers; select the common divisor before calculating."
+      },
+      {
+        "nodes": [
+          "n10-q09-left",
+          "n10-q09-right"
+        ],
+        "operations": "Calculate the remaining factor after choosing the square factor."
+      },
+      {
+        "nodes": [
+          "n10-q10-coefficients"
+        ],
+        "operations": "Extract common factor and assemble coefficient sum before evaluating."
+      },
+      {
+        "nodes": [
+          "n10-q11-formula",
+          "n10-q21-expand"
+        ],
+        "operations": "Build the signed cross-products and the middle-term coefficient."
+      },
+      {
+        "nodes": [
+          "n10-12",
+          "n10-q21-constants"
+        ],
+        "operations": "Identify which constant terms may be combined before summing."
+      },
+      {
+        "nodes": [
+          "n10-q13-identity"
+        ],
+        "operations": "Construct the opposite-signed cross-products and cancellation."
+      },
+      {
+        "nodes": [
+          "n10-15"
+        ],
+        "operations": "Bind the complete numerator and denominator when multiplying fractions."
+      },
+      {
+        "nodes": [
+          "n10-17"
+        ],
+        "operations": "Assemble numerator and whole-denominator correspondence, not only a multiplication sign."
+      },
+      {
+        "nodes": [
+          "n10-q20-factor",
+          "n10-q21-expand"
+        ],
+        "operations": "Ask squares where first needed; reuse later rather than transcribe earlier supplied answers."
+      }
+    ],
+    "preserve": [
+      "Product/quotient proof construction stages 2/3",
+      "H07 three-step checks",
+      "n10-q19-distribute signed distribution",
+      "n10-13/n10-18 staged calculations",
+      "AUTO n10-08/09/10/16/21 connecting already certified results"
+    ]
+  },
+  "codeChanged": false,
+  "testsRepeated": false,
+  "approvalRequested": false,
+  "meaningDesignComplete": false
+}

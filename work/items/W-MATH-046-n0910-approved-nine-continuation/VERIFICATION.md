@@ -1,6 +1,6 @@
 # UX-03 実配信検証 — 最新状態
 
-Status: PARTIAL / 公開・実配信の限定検査合格、本人総チェック待ち
+Status: PARTIAL / 技術検査PASSを保持、本人評価は導出参加度の要修正
 
 - 本人公開承認：直前のPR134公開質問への「いいよ」。PR #134 merged、publisher6bc54447ef015a2a579a56a5966ceb58a0600d3a、製品source db99a485f857b1aefa7fb738456f36a830514158。
 - [公開run41389935781](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41389935781)はSUCCESS。公開前5群、deploy、実配信N09/N10四幅、保持N08各版/N11と証拠uploadまでSUCCESS。121asset byte/実namespace/完了reload/履歴/native旧版trial全storage/reset取消・確定/他unit・旧版ledger保持を確認。
@@ -63,3 +63,6 @@ source固定後に全20PNGを再撮影。PROVENANCE.jsonのsource SHA・compiled
 本人の細部OKは未受領、残り16nodeの教材変更は未実施。全体governance未合格。正式台帳の新receiptなし。本番main/Pages未変更。後続の横断監査・公開ゲート・実働URLでの本人総チェックまでWork全体は未完了。
 
 記録整備後の再検査：このWorkの不足3記録とStatus書式を整備して自身の4件を解消。残存38件は基準にもあった他Workの不整合で、新しい違反なし。全体governanceをPASSにはしていない（governance-records.log）。
+
+## 本人評価の更新
+排版の改善は評価されたが、導出の各変形を生徒が行う穴が不足として要修正。既存の1732状態/9692幾何/公開検証は実装された設計の操作・描画を確認したもので、必要な思考操作の網羅を証明していなかった。再設計では完成解法の非自明操作と問いを対応づけ、漏れている変形を検査対象に含める。穴の総数だけを合格基準にしない。本人受入をPASSへ変更しない。

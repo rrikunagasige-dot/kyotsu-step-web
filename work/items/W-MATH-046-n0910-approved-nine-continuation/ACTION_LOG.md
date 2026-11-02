@@ -25,3 +25,6 @@ GitHub固定source db99a485は実試験1151305と同一tree。main起点の公�
 
 ## A-UX03-08 — 本人公開承認と実配信検証
 本人「いいよ」を直前のPR134公開提案へ明示承認として記録。承認head/baseとlive identityを照合しexpected head fc961f58でmerge、publisher6bc54447/source db99a485を固定。run41389935781は全公開前検査→deploy→実配信byte/操作→保持N08/N11→証拠uploadまでSUCCESS。非作者sourceAはmerged2filesのbyte一致を確認、sourceBは実public originで対象15画像を確認。proxy接続/CAによる撮影環境FAILは製品FAILと区別し、TLS例外を証明書合格にはしない。本人総チェック未受領のまま公開成功だけを記録。
+
+## A-UX03-09 — 本人指摘の原因/横断/既存基準照合
+添付と公開固定sourceを照合。N09全41/N10全45nodeをA/Bで読取監査し、写真二nodeの自動変形と同型候補を確認。GitHub mainのMASTER_APP_LESSONS §§8/11/52/53、数学教科書SPEC §5、CMD-WORK-001横断監査を取得し、既存ルールの適用不足と判定。排版改善への評価は保持し、導出参加度はREVISE-PROPOSAL。新規テスト/製品コード/公開変更なし。本人の指摘をその場の一箇所だけのパッチと扱わず、原因→同型→既存基準→詳細設計/検証/記録の依頼として継続扱いする。

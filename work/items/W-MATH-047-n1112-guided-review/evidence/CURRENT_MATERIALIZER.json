@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "output": "{\"code\":\"ne02\",\"nodes\":33,\"items\":30,\"stages\":12,\"irHash\":\"c422775b15d6962d917c44e68718b906c0d307eac3e22cc36dff1159ed585390\"}\n{\"code\":\"n11\",\"nodes\":47,\"items\":39,\"stages\":14,\"irHash\":\"ffd861f5de3ebfc846efd4fedf4571b41b7fbe64c89e6b6f460469fc66df604b\"}\n{\"code\":\"n12\",\"nodes\":49,\"items\":46,\"stages\":15,\"irHash\":\"87016e7e1c24258c210b1eaae7515cc68d12ae08f78356494a5f2cfef69204dd\"}\n",
+  "scope": "Existing approved materializer reproduces both current authored files, including aligned-result postprocessing."
+}

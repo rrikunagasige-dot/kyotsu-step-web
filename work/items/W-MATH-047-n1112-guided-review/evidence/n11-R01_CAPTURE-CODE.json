@@ -1,0 +1,12 @@
+{
+  "source.fixed": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "feedback.capture": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "NEEDS_EXPLICIT_SOURCE_MAPPING",
+  "stalePlanRejection": [
+    "TG12_HASH",
+    "TG03_COVERAGE"
+  ],
+  "regeneratedPlanRejection": [
+    "TG03_COVERAGE"
+  ],
+  "protectedEqualPlanKeys": [
+    "graphs",
+    "groups",
+    "candidates",
+    "coverage",
+    "scope",
+    "numberAliases",
+    "gradingHash"
+  ],
+  "oldBindingMustRemain": true,
+  "unknownSourceMustStillReject": true,
+  "futureGeneratedProductPath": "src/data/textbook/math/numbers/n11Transformation.json",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "productionChanged": false,
+  "scope": "Inactive probe. Current source/AST bridge correctly rejects the changed full source. A new exact mapping, preserving the old bridge and identical graphs, is part of the revised proposal. No candidate compile/render PASS claimed."
+}

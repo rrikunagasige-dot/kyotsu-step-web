@@ -1,0 +1,121 @@
+{
+  "status": "PASS_BOUNDED",
+  "units": {
+    "n11": {
+      "nodes": 47,
+      "answers": 39,
+      "outputs": {
+        "baseline:verify-ir": {
+          "status": "PASS",
+          "hash": "ffd861f5de3ebfc846efd4fedf4571b41b7fbe64c89e6b6f460469fc66df604b"
+        },
+        "baseline:compile-ir": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:coverage": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:blank-candidates": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:visible-snapshots": {
+          "status": "PASS",
+          "hash": null,
+          "snapshots": 47
+        },
+        "baseline:teaching-candidates": {
+          "status": "PASS"
+        },
+        "candidate:verify-ir": {
+          "status": "PASS",
+          "hash": "e370d18b41e3fb404c0bc14b63001b24a598f2b7a680d37ef2db682937de9495"
+        },
+        "candidate:compile-ir": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:coverage": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:blank-candidates": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:visible-snapshots": {
+          "status": "PASS",
+          "hash": null,
+          "snapshots": 47
+        },
+        "candidate:teaching-candidates": {
+          "status": "PASS"
+        }
+      },
+      "gradingContractUnchanged": true,
+      "meaningAudit": "REQUIRED",
+      "browser": "SEPARATE"
+    },
+    "n12": {
+      "nodes": 49,
+      "answers": 46,
+      "outputs": {
+        "baseline:verify-ir": {
+          "status": "PASS",
+          "hash": "87016e7e1c24258c210b1eaae7515cc68d12ae08f78356494a5f2cfef69204dd"
+        },
+        "baseline:compile-ir": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:coverage": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:blank-candidates": {
+          "status": "PASS",
+          "hash": null
+        },
+        "baseline:visible-snapshots": {
+          "status": "PASS",
+          "hash": null,
+          "snapshots": 49
+        },
+        "baseline:teaching-candidates": {
+          "status": "PASS"
+        },
+        "candidate:verify-ir": {
+          "status": "PASS",
+          "hash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840"
+        },
+        "candidate:compile-ir": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:coverage": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:blank-candidates": {
+          "status": "PASS",
+          "hash": null
+        },
+        "candidate:visible-snapshots": {
+          "status": "PASS",
+          "hash": null,
+          "snapshots": 49
+        },
+        "candidate:teaching-candidates": {
+          "status": "PASS"
+        }
+      },
+      "gradingContractUnchanged": true,
+      "meaningAudit": "REQUIRED",
+      "browser": "SEPARATE"
+    }
+  },
+  "n11ActiveOverlay": "PASS",
+  "scope": "Current IR binding, source coverage, candidate structure, compilation, blank/teaching candidates and public-only snapshots. No automatic semantic acceptance or product change."
+}

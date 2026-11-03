@@ -1,0 +1,321 @@
+{
+  "agent_team": {
+    "allow_grandchildren": false,
+    "max_active_subagents": 2,
+    "required_scopes": [
+      {
+        "claimRef": "teaching",
+        "facet": "design",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "source-review",
+        "sourceFirst": true,
+        "stage_kind": "C05_DESIGN"
+      },
+      {
+        "claimRef": "layout",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "C05_DESIGN"
+      },
+      {
+        "claimRef": "teaching",
+        "facet": "design",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "source-review",
+        "sourceFirst": true,
+        "stage_kind": "R04_PROPOSAL"
+      },
+      {
+        "claimRef": "layout",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "R04_PROPOSAL"
+      },
+      {
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "C09_SEMANTIC"
+      },
+      {
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "R07_SEMANTIC"
+      },
+      {
+        "claimRef": "integrated-release",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "G2_AUDIT"
+      }
+    ],
+    "root_agent_ref": "/root",
+    "schema_version": "team/1",
+    "store_writer": "M"
+  },
+  "approval_bundles": [
+    {
+      "block_ids": [
+        "n11",
+        "n12"
+      ],
+      "content_hash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+      "id": "proposal",
+      "proposal_hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e"
+    }
+  ],
+  "blocks": [
+    {
+      "change_facets": [
+        "math",
+        "design",
+        "render"
+      ],
+      "depends_on_blocks": [],
+      "fact_dependencies": [],
+      "id": "n11",
+      "node_refs": [
+        "n11-intro",
+        "n11-01",
+        "n11-difference-basis",
+        "n11-q02-open",
+        "n11-02",
+        "n11-wm011-q02-compare",
+        "n11-wm011-q03-factor",
+        "n11-wm011-q03-positive",
+        "n11-03",
+        "n11-wm011-q03-zero",
+        "n11-division-basis",
+        "n11-wm011-q04-fraction",
+        "n11-q04-negate",
+        "n11-04",
+        "n11-solve-problem",
+        "n11-wm017-q05-operation",
+        "n11-wm017-q05-balance",
+        "n11-05",
+        "n11-q06-operation",
+        "n11-06",
+        "n11-q07-substitution",
+        "n11-07",
+        "n11-negative-problem",
+        "n11-p007-q08-subtract-left",
+        "n11-p007-q08-subtract-right",
+        "n11-08",
+        "n11-p007-q09-direction",
+        "n11-09",
+        "n11-q10-substitution",
+        "n11-10",
+        "n11-linear-definition",
+        "n11-bracket-problem",
+        "n11-wm012-q11-expand",
+        "n11-wm012-q11-xcoef",
+        "n11-q11-constant",
+        "n11-11",
+        "n11-q12-sign",
+        "n11-12",
+        "n11-fraction-problem",
+        "n11-p008-q13-mul-left",
+        "n11-p008-q13-mul-right",
+        "n11-13",
+        "n11-p008-q13-constant",
+        "n11-wm013-q14-xcoef",
+        "n11-wm013-q14-const",
+        "n11-q14-divide",
+        "n11-14"
+      ],
+      "release_unit": "n11",
+      "sources": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ]
+    },
+    {
+      "change_facets": [
+        "math",
+        "design",
+        "render"
+      ],
+      "depends_on_blocks": [],
+      "fact_dependencies": [],
+      "id": "n12",
+      "node_refs": [
+        "n12-intro",
+        "n12-q01-subtract-x",
+        "n12-p002-q01-coef",
+        "n12-p002-q01-const",
+        "n12-01",
+        "n12-p002-q02-coef",
+        "n12-p002-q02-const",
+        "n12-02",
+        "n12-q03-first",
+        "n12-q03-second",
+        "n12-03",
+        "n12-q04-left-end",
+        "n12-04",
+        "n12-triple-problem",
+        "n12-05",
+        "n12-p002-q06-left-coef",
+        "n12-p002-q06-left-const",
+        "n12-p002-q06-right-coef",
+        "n12-p002-q06-right-const",
+        "n12-06",
+        "n12-q07-boundary",
+        "n12-07",
+        "n12-count-problem",
+        "n12-08",
+        "n12-09",
+        "n12-p003-q10-meaning",
+        "n12-p003-q10-cream-coef",
+        "n12-p003-q10-pudding-coef",
+        "n12-p003-q10-box-fee",
+        "n12-10",
+        "n12-p003-q11-lower-sign",
+        "n12-p003-q11-upper-sign",
+        "n12-11",
+        "n12-p003-q12-product-constant",
+        "n12-p002-q12-signed-coef",
+        "n12-p003-q12-total-constant",
+        "n12-p003-q12-x-coef",
+        "n12-12",
+        "n12-q13-operation",
+        "n12-p002-q13-lower",
+        "n12-p002-q13-upper",
+        "n12-q13-lower-divide",
+        "n12-q13-upper-divide",
+        "n12-13",
+        "n12-q14-integer",
+        "n12-14",
+        "n12-q15-eleven",
+        "n12-q15-twelve",
+        "n12-15"
+      ],
+      "release_unit": "n12",
+      "sources": [
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ]
+    }
+  ],
+  "command": "CMD-WORK-001",
+  "design_inputs": {
+    "work/items/W-MATH-047-n1112-guided-review/N11_AUDIT_A.json": "fa85dcdb63457d33444a72396ed231f72b0a33198d5039ce32e8ffaf380c7b9d",
+    "work/items/W-MATH-047-n1112-guided-review/N11_CANDIDATE_IR.json": "3a1fd6ceb816c676edeb2bdcd9bf7e529fc2b6718da2d5810e5fe0087d591423",
+    "work/items/W-MATH-047-n1112-guided-review/N12_AUDIT_B.json": "fc1397fe3feb9f57604cf170e3d3ddecd8fa94233b94bf14f761819faad50df3",
+    "work/items/W-MATH-047-n1112-guided-review/N12_CANDIDATE_IR.json": "7dfc39c14fee60a12ce6bea4bbb4ff56d6fe054288547c6e318e3e012dff95cb",
+    "work/items/W-MATH-047-n1112-guided-review/PROPOSAL.md": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e"
+  },
+  "mode": "textbook",
+  "profile": "material",
+  "proposal": {
+    "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+    "hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
+    "id": "W-MATH-047/P-006"
+  },
+  "protected_manifest": {
+    "public/assets/math/textbook/numbers/n11-f01.png": "f0c384f8773369152c3f60dc1ab7aaa4504d7cfc8d2957df1b22bb9abe739d2e",
+    "public/assets/math/textbook/numbers/n11-f02.png": "13690a1f2f310049cd25125603b26923cc9bce0818ad720d35e77e07f58d1677",
+    "public/assets/math/textbook/numbers/n12-f01.png": "2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f",
+    "public/assets/math/textbook/numbers/n12-f02.png": "5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3",
+    "public/assets/math/textbook/numbers/n12-f03.png": "514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f",
+    "src/components/textbook/ConstructionLessonReadingFlow.tsx": "736befadae05761100e62a24d644cb36b6d949f989c19f162b0c49b844abce0a",
+    "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+    "src/components/textbook/construction-lesson-reading.css": "0e056d35bc72192258605ab5bbf7a69a14f53074dac20a0372c4a571c821b9d8",
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n09Authored.json": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "62babe0c9bfc4e47d920fbd6abe09f55d7b0b9b5bd51afdfd9f8a0dd5e0a106d",
+    "src/data/textbook/math/numbers/n10Authored.json": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "src/data/textbook/math/numbers/n10ConstructionCompiled.json": "facd768ca7aa6df88ef98288838bb9e1e2e9b2eedc0a991a4c1a252ed9bc643b",
+    "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+    "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f"
+  },
+  "release_units": [
+    {
+      "block_ids": [
+        "n11"
+      ],
+      "id": "n11",
+      "review_route": "/learning/textbook/math-numbers-expressions-n11"
+    },
+    {
+      "block_ids": [
+        "n12"
+      ],
+      "id": "n12",
+      "review_route": "/learning/textbook/math-numbers-expressions-n12"
+    }
+  ],
+  "rules": {
+    "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "work/items/W-MATH-047-n1112-guided-review/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+      "src/components/textbook/construction-lesson-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "public/assets/math/textbook/numbers/n11-f01.png",
+      "public/assets/math/textbook/numbers/n11-f02.png",
+      "public/assets/math/textbook/numbers/n12-f01.png",
+      "public/assets/math/textbook/numbers/n12-f02.png",
+      "public/assets/math/textbook/numbers/n12-f03.png"
+    ]
+  },
+  "simulation": false,
+  "source_manifest": {
+    "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+    "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+    "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+    "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
+  },
+  "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "subject": "math",
+  "work_id": "W-MATH-047",
+  "workflow_version": "production/2"
+}

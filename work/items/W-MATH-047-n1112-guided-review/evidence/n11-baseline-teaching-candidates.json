@@ -1,0 +1,1125 @@
+{
+  "status": "PASS",
+  "candidates": [
+    {
+      "profile": "first_application",
+      "steps": [
+        {
+          "id": "n11-intro",
+          "inputFacts": [],
+          "outputFacts": [
+            "n11-intro-result"
+          ],
+          "goal": "元の問題を例題として置く",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000474",
+              "word-p-000475",
+              "word-p-000476",
+              "word-p-000477",
+              "word-p-000478"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000474",
+            "word-p-000475",
+            "word-p-000476",
+            "word-p-000477",
+            "word-p-000478"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-01",
+          "inputFacts": [
+            "n11-intro-result"
+          ],
+          "outputFacts": [
+            "n11-01-result"
+          ],
+          "goal": "数直線の−2と−5を比べ、不等号を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000479"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000479"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-difference-basis",
+          "inputFacts": [
+            "n11-01-result"
+          ],
+          "outputFacts": [
+            "n11-difference-basis-result"
+          ],
+          "goal": "差の符号を使う根拠",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000480",
+              "word-p-000481"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000480",
+            "word-p-000481"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q02-open",
+          "inputFacts": [
+            "n11-difference-basis-result"
+          ],
+          "outputFacts": [
+            "n11-q02-open-result"
+          ],
+          "goal": "引く括弧の符号を配る",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000482"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000482"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-02",
+          "inputFacts": [
+            "n11-q02-open-result"
+          ],
+          "outputFacts": [
+            "n11-02-result"
+          ],
+          "goal": "両辺に同じcを加えたあとの差を計算しよう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000482"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000482"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm011-q02-compare",
+          "inputFacts": [
+            "n11-02-result"
+          ],
+          "outputFacts": [
+            "n11-wm011-q02-compare-result"
+          ],
+          "goal": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000482"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000482"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm011-q03-factor",
+          "inputFacts": [
+            "n11-wm011-q02-compare-result"
+          ],
+          "outputFacts": [
+            "n11-wm011-q03-factor-result"
+          ],
+          "goal": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000484",
+              "word-p-000483"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000484",
+            "word-p-000483"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm011-q03-positive",
+          "inputFacts": [
+            "n11-wm011-q03-factor-result"
+          ],
+          "outputFacts": [
+            "n11-wm011-q03-positive-result"
+          ],
+          "goal": "c>0のとき、差の符号と大小関係を判断しよう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000484"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000484"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-03",
+          "inputFacts": [
+            "n11-wm011-q03-positive-result"
+          ],
+          "outputFacts": [
+            "n11-03-result"
+          ],
+          "goal": "c<0のとき、差の符号と大小関係を判断しよう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000484"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000484"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm011-q03-zero",
+          "inputFacts": [
+            "n11-03-result"
+          ],
+          "outputFacts": [
+            "n11-wm011-q03-zero-result"
+          ],
+          "goal": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+          "operation": {
+            "kind": "meaning",
+            "targets": [
+              "word-p-000484"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000484"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-division-basis",
+          "inputFacts": [
+            "n11-wm011-q03-zero-result"
+          ],
+          "outputFacts": [
+            "n11-division-basis-result"
+          ],
+          "goal": "割り算の規則も接続する",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000485"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000485"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm011-q04-fraction",
+          "inputFacts": [
+            "n11-division-basis-result"
+          ],
+          "outputFacts": [
+            "n11-wm011-q04-fraction-result"
+          ],
+          "goal": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000487"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000487"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q04-negate",
+          "inputFacts": [
+            "n11-wm011-q04-fraction-result"
+          ],
+          "outputFacts": [
+            "n11-q04-negate-result"
+          ],
+          "goal": "元の大小へ戻り負の1倍をする",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000487"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000487"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-04",
+          "inputFacts": [
+            "n11-q04-negate-result"
+          ],
+          "outputFacts": [
+            "n11-04-result"
+          ],
+          "goal": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000487"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000487"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-solve-problem",
+          "inputFacts": [
+            "n11-04-result"
+          ],
+          "outputFacts": [
+            "n11-solve-problem-result"
+          ],
+          "goal": "一つ目の一次不等式を提示",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000488",
+              "word-p-000489",
+              "word-p-000490",
+              "word-p-000491"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000488",
+            "word-p-000489",
+            "word-p-000490",
+            "word-p-000491"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm017-q05-operation",
+          "inputFacts": [
+            "n11-solve-problem-result"
+          ],
+          "outputFacts": [
+            "n11-wm017-q05-operation-result"
+          ],
+          "goal": "左辺の−2を消すため、左辺に加える数を考えよう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000492"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000492"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm017-q05-balance",
+          "inputFacts": [
+            "n11-wm017-q05-operation-result"
+          ],
+          "outputFacts": [
+            "n11-wm017-q05-balance-result"
+          ],
+          "goal": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000492"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000492"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-05",
+          "inputFacts": [
+            "n11-wm017-q05-balance-result"
+          ],
+          "outputFacts": [
+            "n11-05-result"
+          ],
+          "goal": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000492"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000492"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q06-operation",
+          "inputFacts": [
+            "n11-05-result"
+          ],
+          "outputFacts": [
+            "n11-q06-operation-result"
+          ],
+          "goal": "係数を1にする除数を選ぶ",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000493"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000493"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-06",
+          "inputFacts": [
+            "n11-q06-operation-result"
+          ],
+          "outputFacts": [
+            "n11-06-result"
+          ],
+          "goal": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000493"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000493"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q07-substitution",
+          "inputFacts": [
+            "n11-06-result"
+          ],
+          "outputFacts": [
+            "n11-q07-substitution-result"
+          ],
+          "goal": "境界を元の式へ代入する",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000495"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000495"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-07",
+          "inputFacts": [
+            "n11-q07-substitution-result"
+          ],
+          "outputFacts": [
+            "n11-07-result"
+          ],
+          "goal": "境界の値が含まれるかを選ぼう。",
+          "operation": {
+            "kind": "meaning",
+            "targets": [
+              "word-p-000494",
+              "word-p-000495"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000494",
+            "word-p-000495"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-negative-problem",
+          "inputFacts": [
+            "n11-07-result"
+          ],
+          "outputFacts": [
+            "n11-negative-problem-result"
+          ],
+          "goal": "負の係数の例題を提示",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000496",
+              "word-p-000497"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000496",
+            "word-p-000497"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p007-q08-subtract-left",
+          "inputFacts": [
+            "n11-negative-problem-result"
+          ],
+          "outputFacts": [
+            "n11-p007-q08-subtract-left-result"
+          ],
+          "goal": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000498"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000498"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p007-q08-subtract-right",
+          "inputFacts": [
+            "n11-p007-q08-subtract-left-result"
+          ],
+          "outputFacts": [
+            "n11-p007-q08-subtract-right-result"
+          ],
+          "goal": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000498"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000498"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-08",
+          "inputFacts": [
+            "n11-p007-q08-subtract-right-result"
+          ],
+          "outputFacts": [
+            "n11-08-result"
+          ],
+          "goal": "左辺を整理したあとの右辺、5−3を計算しよう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000498"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000498"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p007-q09-direction",
+          "inputFacts": [
+            "n11-08-result"
+          ],
+          "outputFacts": [
+            "n11-p007-q09-direction-result"
+          ],
+          "goal": "負の係数で割った後の不等号を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000499",
+              "word-p-000500"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000499",
+            "word-p-000500"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-09",
+          "inputFacts": [
+            "n11-p007-q09-direction-result"
+          ],
+          "outputFacts": [
+            "n11-09-result"
+          ],
+          "goal": "負の2で割った右辺、2÷(−2)を計算しよう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000500"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000500"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q10-substitution",
+          "inputFacts": [
+            "n11-09-result"
+          ],
+          "outputFacts": [
+            "n11-q10-substitution-result"
+          ],
+          "goal": "境界を代入した左辺を求める",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000501"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000501"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-10",
+          "inputFacts": [
+            "n11-q10-substitution-result"
+          ],
+          "outputFacts": [
+            "n11-10-result"
+          ],
+          "goal": "境界を含むかどうか、根拠とともに選ぼう。",
+          "operation": {
+            "kind": "meaning",
+            "targets": [
+              "word-p-000501",
+              "word-p-000502",
+              "word-p-000503"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000501",
+            "word-p-000502",
+            "word-p-000503"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-linear-definition",
+          "inputFacts": [
+            "n11-10-result"
+          ],
+          "outputFacts": [
+            "n11-linear-definition-result"
+          ],
+          "goal": "一次不等式と移項を定義する",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000504"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000504"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-bracket-problem",
+          "inputFacts": [
+            "n11-linear-definition-result"
+          ],
+          "outputFacts": [
+            "n11-bracket-problem-result"
+          ],
+          "goal": "括弧のある確認問題を提示",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000505",
+              "word-p-000506"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000505",
+            "word-p-000506"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm012-q11-expand",
+          "inputFacts": [
+            "n11-bracket-problem-result"
+          ],
+          "outputFacts": [
+            "n11-wm012-q11-expand-result"
+          ],
+          "goal": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000507"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000507"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm012-q11-xcoef",
+          "inputFacts": [
+            "n11-wm012-q11-expand-result"
+          ],
+          "outputFacts": [
+            "n11-wm012-q11-xcoef-result"
+          ],
+          "goal": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000507"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000507"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q11-constant",
+          "inputFacts": [
+            "n11-wm012-q11-xcoef-result"
+          ],
+          "outputFacts": [
+            "n11-q11-constant-result"
+          ],
+          "goal": "定数を同じ操作でまとめる",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000507"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000507"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-11",
+          "inputFacts": [
+            "n11-q11-constant-result"
+          ],
+          "outputFacts": [
+            "n11-11-result"
+          ],
+          "goal": "整理した不等式を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000507"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000507"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q12-sign",
+          "inputFacts": [
+            "n11-11-result"
+          ],
+          "outputFacts": [
+            "n11-q12-sign-result"
+          ],
+          "goal": "負数で割る向きを判断する",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000508"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000508"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-12",
+          "inputFacts": [
+            "n11-q12-sign-result"
+          ],
+          "outputFacts": [
+            "n11-12-result"
+          ],
+          "goal": "解の範囲を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000508"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000508"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-fraction-problem",
+          "inputFacts": [
+            "n11-12-result"
+          ],
+          "outputFacts": [
+            "n11-fraction-problem-result"
+          ],
+          "goal": "分数の確認問題を提示",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000509",
+              "word-p-000510"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000509",
+            "word-p-000510"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p008-q13-mul-left",
+          "inputFacts": [
+            "n11-fraction-problem-result"
+          ],
+          "outputFacts": [
+            "n11-p008-q13-mul-left-result"
+          ],
+          "goal": "左辺の分母3を消すために掛ける数を選ぼう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000511"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000511"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p008-q13-mul-right",
+          "inputFacts": [
+            "n11-p008-q13-mul-left-result"
+          ],
+          "outputFacts": [
+            "n11-p008-q13-mul-right-result"
+          ],
+          "goal": "右辺にも同じ数を掛けよう。",
+          "operation": {
+            "kind": "judgment",
+            "targets": [
+              "word-p-000511"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000511"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-13",
+          "inputFacts": [
+            "n11-p008-q13-mul-right-result"
+          ],
+          "outputFacts": [
+            "n11-13-result"
+          ],
+          "goal": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000511"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000511"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-p008-q13-constant",
+          "inputFacts": [
+            "n11-13-result"
+          ],
+          "outputFacts": [
+            "n11-p008-q13-constant-result"
+          ],
+          "goal": "3(2x+1) の定数項を計算しよう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000511"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000511"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm013-q14-xcoef",
+          "inputFacts": [
+            "n11-p008-q13-constant-result"
+          ],
+          "outputFacts": [
+            "n11-wm013-q14-xcoef-result"
+          ],
+          "goal": "両辺からxを引いて右辺のxの係数を選ぼう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000512"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000512"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-wm013-q14-const",
+          "inputFacts": [
+            "n11-wm013-q14-xcoef-result"
+          ],
+          "outputFacts": [
+            "n11-wm013-q14-const-result"
+          ],
+          "goal": "両辺から3を引いて左辺の定数を選ぼう。",
+          "operation": {
+            "kind": "calculation",
+            "targets": [
+              "word-p-000512"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000512"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-q14-divide",
+          "inputFacts": [
+            "n11-wm013-q14-const-result"
+          ],
+          "outputFacts": [
+            "n11-q14-divide-result"
+          ],
+          "goal": "正の係数で割り向きを読む",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000512"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000512"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        },
+        {
+          "id": "n11-14",
+          "inputFacts": [
+            "n11-q14-divide-result"
+          ],
+          "outputFacts": [
+            "n11-14-result"
+          ],
+          "goal": "最終的な解の範囲を選ぼう。",
+          "operation": {
+            "kind": "expression",
+            "targets": [
+              "word-p-000512",
+              "word-p-000513"
+            ],
+            "nextUseIds": []
+          },
+          "basisRefs": [
+            "word-p-000512",
+            "word-p-000513"
+          ],
+          "explainInput": true,
+          "explainReason": true,
+          "reassemble": false
+        }
+      ],
+      "id": "6ce77a6a09d0596d7bb30c5b53cd38b08bac0f101eadedf77c5373c02beeaba4",
+      "status": "NEEDS_AI_REVIEW"
+    }
+  ]
+}

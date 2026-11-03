@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('math-textbook-stage-n11-stage-05').locator('[data-node-id="n11-solve-problem"]') to be visible[22m
+
+    at /workspace/scratch/6ff917b2ec4a/w046-ux06-full/work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs:29:81 {
+  log: [
+    `  - waiting for getByTestId('math-textbook-stage-n11-stage-05').locator('[data-node-id="n11-solve-problem"]') to be visible`
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

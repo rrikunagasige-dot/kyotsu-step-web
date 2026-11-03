@@ -1,0 +1,606 @@
+{
+  "status": "PASS_BOUNDED",
+  "imports": [
+    {
+      "reviewer": "/root/w047_review_a",
+      "node": "n11-03",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "id": "n11-03",
+        "requestHash": "e84561f01cc0db0dd711bf4e6f4a2d101079262359990cbfdd3328dec62323bb",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_a",
+        "learnerDecision": "c<0 と b-a>0 から積 c(b-a) の符号を自分で決め、その積が bc-ac（右−左）であることを使って ac と bc の大小を決める。選択すべき組は ac>bc, bc-ac<0。",
+        "availableInformation": "sourceQuestion に a<b、実数の条件がある。既に確定した因数分解 bc-ac=c(b-a) と、正の c の比較例が見える。現在のbeforeは「負の数と正の数の積」までであり、負になるという結論や負の場合の大小を先に述べていない。選択肢自体には正答候補があるが、どれが正しいかを本文から転記する構成ではない。",
+        "reasonToProceed": "同じ数を掛ける場合の次の符号分岐を調べる目的があり、既知の差を因数分解した形のまま使える。負×正の符号を求めてから右−左の意味へ移る二段階の推論が残る。例えば a=1,b=2,c=-1 では bc-ac=-1、ac=-1>bc=-2 となり符号と大小の整合を検算できる。",
+        "nextWholeState": "確定後に本体へ戻すべき状態は「a<b, c<0 のとき、bc-ac=c(b-a)<0、したがって ac>bc」。差の計算が一般の負の乗法で不等号が反転する理由となる。入力は現在回答前までなので、実装がこの全体式を回答後に表示することまでは確認できない。",
+        "misconception": "c が負でも元の a<b をそのまま ac<bc とする誤りと、右−左が負なのに右が大きいと読む誤りを区別する。ac>bc, bc-ac>0 の選択肢は後者の不整合を直接検出する。c<0 と a<b は厳密なので差0の選択肢も排除できる。",
+        "reducedSupportVariant": "「a<b、c<0。bc-ac=c(b-a) を用いて ac と bc を比較し、差の符号も答えよう。」とし、負×正という積の分類を省く。因数分解と条件を残すため、支援を減らしても必要情報は保たれる。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "各rowのsourceQuestion、既確定node、現在beforeを突き合わせた。n11-03はa<bと因数分解、定数計算は-4x+9≥-17、n11-12はx≤(-26)/(-4)を利用できる。knownFactsの名前だけを根拠にしていない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "局所計算の戻り先を各nextWholeStateで再構成した。-17-9の戻り先は-4x≥-26、商の戻り先はx≤13/2。回答後表示は入力外なので、実装で孤立結果が解消したとの認定はしていない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "n11-q11-constantの「左辺の9を打ち消すため」が減法の目的を示す。n11-03は負のcの場合分け、n11-12は未整理の境界の約分が目的である。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "bc-ac=c(b-a)、(-4x+9)-9≥-17-9、x≤(-26)/(-4)=13/2を個別に再計算し、符号と不等号の接続に反例を認めない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "差はbc-acで「右−左」に対応する。定数9を打ち消すという表現は-4x+9の可視式と対応し、境界は商の値である。元事例の十進位取りの固有内容まで転用していない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "JSONには必要な式のトークンがあるが実レンダリングはない。数式欠落・空欄位置・選択肢の画面描画をこの静的入力では確認できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "relationChain定義は読めるが候補実画像は入力外であり、関係式の視覚配置の違和感は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容済みレイアウトを今回の3rowのレイアウト合格に転用しない。対象は異なり比較画像もない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "最初の表題の受容済みレイアウトは今回の符号・局所計算の数学的判断を保証しない。表題画像を審査していない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容は履歴情報であり、今回の3rowに個別欠陥解消ラベルを移植できない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N08全体の受容から今回の3rowの各次元合格を推定しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "操作順を確認した。n11-03は積の符号から大小、定数計算は同じ9を引いてから計算、n11-12は直前に向きを確定してから商を約分する。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "因数の括り方をn11-03で確認した。bc-ac=c(b-a)で共通因子cを外に出し、b-a>0を保持してcの符号へ接続する。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N09全体の受容を今回の設計や操作順の合格根拠にせず、可視式を独自に再計算した。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N10全体の受容を今回の因数分解や最終解の合格根拠にせず、公開requestの式を確認した。"
+          }
+        ],
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    },
+    {
+      "reviewer": "/root/w047_review_a",
+      "node": "n11-q11-constant",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "id": "n11-q11-constant",
+        "requestHash": "f1e7c1954d876c5552bbb44b2a4fdf73ed15e81e9d5fbf27a317906f24c6248e",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_a",
+        "learnerDecision": "-4x+9≥-17 の両辺から9を引くという明示された操作に従い、右辺 -17-9 の値を計算する。正答は -26。操作そのものを発見させる問いではなく、符号付き定数計算の局所判断である。",
+        "availableInformation": "sourceQuestion は 3(2x+3)≥10x-17。直前の展開結果 6x+9 と、両辺から10xを引く説明、6-10=-4 が見える。現在のbeforeは全体式 -4x+9≥-17 と左辺9を打ち消す目的を示し、局所式は -17-9=空欄 に限定される。-26 は本文で先に与えられていない。",
+        "reasonToProceed": "x の項をまとめた後、左辺を -4x だけにするため9を引くという目的が明示されている。等価変形は (-4x+9)-9≥-17-9 であり、同じ数の減法なので向きは維持される。計算結果 -26 を得た後に -4x≥-26 と再結合でき、根拠のない移項ではない。",
+        "nextWholeState": "局所の -17-9=-26 を確定したら、元の左右を保った -4x≥-26 へ戻す必要がある。次は負の -4 で割る際の向きの判断となる。入力には現在ノードの回答後がないため、再結合の数学的可能性は確認できるが、その実表示の完了はこの審査では認定しない。",
+        "misconception": "-17-9 を -8 とする負号・引き算の混同、あるいは26とする符号の脱落を選択肢で区別できる。不等号を等号へ置き換える誤読は、現在beforeに全体不等式があり、局所の等式を別に計算する構造で防いでいる。",
+        "reducedSupportVariant": "「-4x+9≥-17。左辺を -4x だけにするには両辺に何をするか考え、右辺の値を求めよう。」とし、9を引く操作を学習者に戻す。確定後に全体式 -4x≥-26 を必ず残す。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "各rowのsourceQuestion、既確定node、現在beforeを突き合わせた。n11-03はa<bと因数分解、定数計算は-4x+9≥-17、n11-12はx≤(-26)/(-4)を利用できる。knownFactsの名前だけを根拠にしていない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "局所計算の戻り先を各nextWholeStateで再構成した。-17-9の戻り先は-4x≥-26、商の戻り先はx≤13/2。回答後表示は入力外なので、実装で孤立結果が解消したとの認定はしていない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "n11-q11-constantの「左辺の9を打ち消すため」が減法の目的を示す。n11-03は負のcの場合分け、n11-12は未整理の境界の約分が目的である。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "bc-ac=c(b-a)、(-4x+9)-9≥-17-9、x≤(-26)/(-4)=13/2を個別に再計算し、符号と不等号の接続に反例を認めない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "差はbc-acで「右−左」に対応する。定数9を打ち消すという表現は-4x+9の可視式と対応し、境界は商の値である。元事例の十進位取りの固有内容まで転用していない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "JSONには必要な式のトークンがあるが実レンダリングはない。数式欠落・空欄位置・選択肢の画面描画をこの静的入力では確認できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "relationChain定義は読めるが候補実画像は入力外であり、関係式の視覚配置の違和感は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容済みレイアウトを今回の3rowのレイアウト合格に転用しない。対象は異なり比較画像もない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "最初の表題の受容済みレイアウトは今回の符号・局所計算の数学的判断を保証しない。表題画像を審査していない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容は履歴情報であり、今回の3rowに個別欠陥解消ラベルを移植できない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N08全体の受容から今回の3rowの各次元合格を推定しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "操作順を確認した。n11-03は積の符号から大小、定数計算は同じ9を引いてから計算、n11-12は直前に向きを確定してから商を約分する。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "因数の括り方をn11-03で確認した。bc-ac=c(b-a)で共通因子cを外に出し、b-a>0を保持してcの符号へ接続する。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N09全体の受容を今回の設計や操作順の合格根拠にせず、可視式を独自に再計算した。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N10全体の受容を今回の因数分解や最終解の合格根拠にせず、公開requestの式を確認した。"
+          }
+        ],
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    },
+    {
+      "reviewer": "/root/w047_review_a",
+      "node": "n11-12",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "id": "n11-12",
+        "requestHash": "3299b151dce89028edea378cbc656b177408da453d05de51dbaba7b15f36b13f",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_a",
+        "learnerDecision": "既に確定した x≤(-26)/(-4) の右辺の符号を判断し、約分して13/2を求め、≤を維持して解の範囲を選ぶ。新たに負数で割る操作ではないため、ここで再び不等号を反転させない。",
+        "availableInformation": "sourceQuestion は 3(2x+3)≥10x-17。直前ノードのbeforeには -4x≥-26 を -4 で割る操作、afterには x≤(-26)/(-4) が示される。現在beforeは負数どうしの商と約分の目的だけを示し、13/2への計算結果は先出ししていない。",
+        "reasonToProceed": "直前の向きを決めた状態には未整理の右辺が残るため、その値を確定し解の範囲として表す目的がある。負÷負は正で、26/4=13/2。元問題にx=13/2を代入すると両辺48となるので境界を含む≤が妥当であり、x<13/2は端点を落とす。",
+        "nextWholeState": "x≤13/2 が元の 3(2x+3)≥10x-17 の解全体となる。展開・同じ式の減法・非零の定数での除法は同値変形であり、境界の値の簡約はその集合を変えない。現在の回答後表示は公開requestに含まれないので、最終状態を実装が実際に表示するかは別途確認が必要。",
+        "misconception": "負÷負でも負になる誤りは x≤-13/2、向きを再反転する誤りは x≥13/2、境界を含まない誤りは x<13/2 に対応する。正答を選ぶには符号・約分・直前の≤の保持が必要。",
+        "reducedSupportVariant": "直前の x≤(-26)/(-4) の全体式を残し、「右辺を簡単にして解の範囲を表そう。」とする。負数どうしの商という分類を省いても、分子分母と既確定の向きは可視なので判断可能。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "各rowのsourceQuestion、既確定node、現在beforeを突き合わせた。n11-03はa<bと因数分解、定数計算は-4x+9≥-17、n11-12はx≤(-26)/(-4)を利用できる。knownFactsの名前だけを根拠にしていない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "局所計算の戻り先を各nextWholeStateで再構成した。-17-9の戻り先は-4x≥-26、商の戻り先はx≤13/2。回答後表示は入力外なので、実装で孤立結果が解消したとの認定はしていない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "n11-q11-constantの「左辺の9を打ち消すため」が減法の目的を示す。n11-03は負のcの場合分け、n11-12は未整理の境界の約分が目的である。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "bc-ac=c(b-a)、(-4x+9)-9≥-17-9、x≤(-26)/(-4)=13/2を個別に再計算し、符号と不等号の接続に反例を認めない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "差はbc-acで「右−左」に対応する。定数9を打ち消すという表現は-4x+9の可視式と対応し、境界は商の値である。元事例の十進位取りの固有内容まで転用していない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "JSONには必要な式のトークンがあるが実レンダリングはない。数式欠落・空欄位置・選択肢の画面描画をこの静的入力では確認できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "relationChain定義は読めるが候補実画像は入力外であり、関係式の視覚配置の違和感は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容済みレイアウトを今回の3rowのレイアウト合格に転用しない。対象は異なり比較画像もない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "NOT_APPLICABLE",
+            "evidence": "最初の表題の受容済みレイアウトは今回の符号・局所計算の数学的判断を保証しない。表題画像を審査していない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N07全体の受容は履歴情報であり、今回の3rowに個別欠陥解消ラベルを移植できない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N08全体の受容から今回の3rowの各次元合格を推定しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "操作順を確認した。n11-03は積の符号から大小、定数計算は同じ9を引いてから計算、n11-12は直前に向きを確定してから商を約分する。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "因数の括り方をn11-03で確認した。bc-ac=c(b-a)で共通因子cを外に出し、b-a>0を保持してcの符号へ接続する。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N09全体の受容を今回の設計や操作順の合格根拠にせず、可視式を独自に再計算した。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "N10全体の受容を今回の因数分解や最終解の合格根拠にせず、公開requestの式を確認した。"
+          }
+        ],
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    },
+    {
+      "reviewer": "/root/w047_review_b",
+      "node": "n11-03",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "requestHash": "e84561f01cc0db0dd711bf4e6f4a2d101079262359990cbfdd3328dec62323bb",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_b",
+        "stepId": "n11-03",
+        "learnerDecision": "c<0 と b-a>0 から c(b-a) の符号を自分で判断し、bc-ac が右−左であることを使って ac と bc の大小を組にして選ぶ。baseline は「負になります」と符号を先に与えるが、candidate は負×正という材料までに留めている。",
+        "availableInformation": "問題条件 a<b、実数。先行確定式 bc-ac=c(b-a)、b-a>0、正の c の場合の ac<bc と bc-ac>0。current 本文は c<0、負×正、右−左の対応を明示し、穴は関係全体を受ける一個。選択肢に大小と差の符号が一組である。",
+        "reasonToProceed": "同じ差の因数分解結果を保持したまま c の符号だけを正から負へ変えて調べる継続であり、唐突な新計算ではない。負×正を負とし、右−左<0なら右が小さいとつなげられる。",
+        "nextWholeState": "審査者が回答前情報だけから導く次の全体状態は bc-ac=c(b-a)<0、従って ac>bc。これはfuture afterを読んだ転記ではない。",
+        "misconception": [
+          "負を掛けても不等号はそのまま、という誤りは ac<bc / bc-ac>0 の組で検出できる。",
+          "差が負なのに左右の読みを取り違える誤りは ac>bc / bc-ac>0 の選択肢と比較できる。",
+          "c<0とb-a>0が厳密なので等号にはならない。"
+        ],
+        "reducedSupportVariant": "先行する bc-ac=c(b-a) と a<b,c<0 は保持し、負×正という言い換えを削って「差の符号から ac と bc を比較しよう」にする。因数分解と差の向きを同時に隠すと別の課題になる。",
+        "continuityAssessment": "本文→同じ差→一組の結論というまとまりは保たれる。数学的判断を単語穴へ分割していない。新たな段落分割や実ピクセル距離は入力から確認できない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "問題条件 a<b、実数。先行確定式 bc-ac=c(b-a)、b-a>0、正の c の場合の ac<bc と bc-ac>0。current 本文は c<0、負×正、右−左の対応を明示し、穴は関係全体を受ける一個。選択肢に大小と差の符号が一組である。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "審査者が回答前情報だけから導く次の全体状態は bc-ac=c(b-a)<0、従って ac>bc。これはfuture afterを読んだ転記ではない。 本文→同じ差→一組の結論というまとまりは保たれる。数学的判断を単語穴へ分割していない。新たな段落分割や実ピクセル距離は入力から確認できない。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "同じ差の因数分解結果を保持したまま c の符号だけを正から負へ変えて調べる継続であり、唐突な新計算ではない。負×正を負とし、右−左<0なら右が小さいとつなげられる。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "本文→同じ差→一組の結論というまとまりは保たれる。数学的判断を単語穴へ分割していない。新たな段落分割や実ピクセル距離は入力から確認できない。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "係数・差・右辺・両辺という語を具体的な式と照合した。問題条件 a<b、実数。先行確定式 bc-ac=c(b-a)、b-a>0、正の c の場合の ac<bc と bc-ac>0。current 本文は c<0、負×正、右−左の対応を明示し、穴は関係全体を受ける一個。選択肢に大小と差の符号が一組である。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "同じ差の因数分解結果を保持したまま c の符号だけを正から負へ変えて調べる継続であり、唐突な新計算ではない。負×正を負とし、右−左<0なら右が小さいとつなげられる。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "bc-ac全体をc(b-a)として扱い、大小と差の符号を一組で選ぶ。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          }
+        ],
+        "scopeLimit": "回答前の可視情報に基づく静的構造審査。先行nodeの既確定afterは使用したがcurrent/未来afterとexpected、作者報告・理由は使用していない。候補実画像QAの代替ではなく、表示の成功を認定しない。",
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    },
+    {
+      "reviewer": "/root/w047_review_b",
+      "node": "n11-q11-constant",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "requestHash": "f1e7c1954d876c5552bbb44b2a4fdf73ed15e81e9d5fbf27a317906f24c6248e",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_b",
+        "stepId": "n11-q11-constant",
+        "learnerDecision": "-4x+9≥-17 の両辺から9を引くという既提示の操作を踏まえ、右辺 -17-9 を -26 と計算する。操作そのものを選ぶ課題ではなく、操作の算術部分の判断である。",
+        "availableInformation": "元の 3(2x+3)≥10x-17、展開の確定結果 6x+9、10xを両辺から引いた (6-10)x+9≥-17、係数6-10=-4。current本文に -4x+9≥-17 と「左辺の9を打ち消すため両辺から9」があり、candidate穴行は -17-9=[穴]。baseline は -4x≥-17-9=[穴]。",
+        "reasonToProceed": "xの係数をまとめ終えた式から、xの項を単独にするため左の+9を同じ操作で消す。本文が目的と両辺への作用を明示するので、単なる符号反転規則を仮定しなくてよい。",
+        "nextWholeState": "回答前情報から (-4x+9)-9≥-17-9、従って -4x≥-26 を構成できる。選んだ定数だけを最終解と扱わず、-4xと≥を保持する必要がある。",
+        "misconception": [
+          "-17-9を-8とする符号計算の誤り。",
+          "両辺から9ではなく右辺だけを変える誤り。選択肢だけではこの誤りを区別できないため、正答だけで両辺操作の理解を認定できない。",
+          "-4が負であることを理由に、この加減段階で≥を反転してしまう誤り。"
+        ],
+        "reducedSupportVariant": "-4x+9≥-17 を保持し、「左の定数を消して x の項だけにしよう」として、学習者が両辺−9および -4x≥-26 の全体を組み立てる。最初から単独の -17-9 だけを渡す削減は避ける。",
+        "continuityAssessment": "candidate はbaselineより穴行の全体式が減るが、直前本文が全体式・目的・両辺操作を同時に提示するため、静的可視情報だけでは導出断絶と断定できない。ただし穴行単独では全体の不等式にならない。本文と穴行が同じ視野で結び付くか、回答確定後に全体式へ戻るかは、この審査では未検証。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の 3(2x+3)≥10x-17、展開の確定結果 6x+9、10xを両辺から引いた (6-10)x+9≥-17、係数6-10=-4。current本文に -4x+9≥-17 と「左辺の9を打ち消すため両辺から9」があり、candidate穴行は -17-9=[穴]。baseline は -4x≥-17-9=[穴]。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "回答前情報から (-4x+9)-9≥-17-9、従って -4x≥-26 を構成できる。選んだ定数だけを最終解と扱わず、-4xと≥を保持する必要がある。 candidate はbaselineより穴行の全体式が減るが、直前本文が全体式・目的・両辺操作を同時に提示するため、静的可視情報だけでは導出断絶と断定できない。ただし穴行単独では全体の不等式にならない。本文と穴行が同じ視野で結び付くか、回答確定後に全体式へ戻るかは、この審査では未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "xの係数をまとめ終えた式から、xの項を単独にするため左の+9を同じ操作で消す。本文が目的と両辺への作用を明示するので、単なる符号反転規則を仮定しなくてよい。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "candidate はbaselineより穴行の全体式が減るが、直前本文が全体式・目的・両辺操作を同時に提示するため、静的可視情報だけでは導出断絶と断定できない。ただし穴行単独では全体の不等式にならない。本文と穴行が同じ視野で結び付くか、回答確定後に全体式へ戻るかは、この審査では未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "係数・差・右辺・両辺という語を具体的な式と照合した。元の 3(2x+3)≥10x-17、展開の確定結果 6x+9、10xを両辺から引いた (6-10)x+9≥-17、係数6-10=-4。current本文に -4x+9≥-17 と「左辺の9を打ち消すため両辺から9」があり、candidate穴行は -17-9=[穴]。baseline は -4x≥-17-9=[穴]。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "xの係数をまとめ終えた式から、xの項を単独にするため左の+9を同じ操作で消す。本文が目的と両辺への作用を明示するので、単なる符号反転規則を仮定しなくてよい。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "局所計算だけで終わらず元の不等式を保持して次の全体状態へ戻せるか照合した。candidate はbaselineより穴行の全体式が減るが、直前本文が全体式・目的・両辺操作を同時に提示するため、静的可視情報だけでは導出断絶と断定できない。ただし穴行単独では全体の不等式にならない。本文と穴行が同じ視野で結び付くか、回答確定後に全体式へ戻るかは、この審査では未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          }
+        ],
+        "scopeLimit": "回答前の可視情報に基づく静的構造審査。先行nodeの既確定afterは使用したがcurrent/未来afterとexpected、作者報告・理由は使用していない。候補実画像QAの代替ではなく、表示の成功を認定しない。",
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    },
+    {
+      "reviewer": "/root/w047_review_b",
+      "node": "n11-12",
+      "status": "NEEDS_AI_REVIEW",
+      "review": {
+        "requestHash": "3299b151dce89028edea378cbc656b177408da453d05de51dbaba7b15f36b13f",
+        "phase": "pre-design",
+        "reviewer": "/root/w047_review_b",
+        "stepId": "n11-12",
+        "learnerDecision": "負同士の商 (-26)/(-4) を正の 13/2 に約分し、直前に確定した≤を保持して解の範囲を選ぶ。baselineにあった約分済み13/2はcandidateの本文にない。",
+        "availableInformation": "元の問題、先行 -4x≥-26 を負の-4で割る操作、既確定結果 x≤(-26)/(-4)。currentには負同士の商という説明と、約分して境界を求め、直前の向きを使う指示がある。選択肢は解の範囲全体である。",
+        "reasonToProceed": "直前の負数除法で不等号の向きを決め、ここでは同じ右辺の数値を簡単にする。新しい両辺除法を再実行する段階ではないため、向きをもう一度反転しない。",
+        "nextWholeState": "回答前の商を計算すると (-26)/(-4)=26/4=13/2。直前結果に代入した全体状態は x≤13/2。",
+        "misconception": [
+          "負同士の商を負にして x≤-13/2 を選ぶ。",
+          "約分時に再び不等号を反転して x≥13/2 を選ぶ。",
+          "≥から反転して得た≤の等号を落とし x<13/2 にする。"
+        ],
+        "reducedSupportVariant": "直前の x≤(-26)/(-4) は表示したまま、「右辺を整理し、解を表そう」とする。負同士の商というヒントだけを削減し、直前の≤まで隠さない。",
+        "continuityAssessment": "符号の向きと商の計算を二段階にする意味は説明され、今回は全体の解を選ぶため出力が孤立しない。既確定の≤の実画面での保持・近接と折返しは未検証。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の問題、先行 -4x≥-26 を負の-4で割る操作、既確定結果 x≤(-26)/(-4)。currentには負同士の商という説明と、約分して境界を求め、直前の向きを使う指示がある。選択肢は解の範囲全体である。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "回答前の商を計算すると (-26)/(-4)=26/4=13/2。直前結果に代入した全体状態は x≤13/2。 符号の向きと商の計算を二段階にする意味は説明され、今回は全体の解を選ぶため出力が孤立しない。既確定の≤の実画面での保持・近接と折返しは未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "直前の負数除法で不等号の向きを決め、ここでは同じ右辺の数値を簡単にする。新しい両辺除法を再実行する段階ではないため、向きをもう一度反転しない。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "符号の向きと商の計算を二段階にする意味は説明され、今回は全体の解を選ぶため出力が孤立しない。既確定の≤の実画面での保持・近接と折返しは未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "APPLIED",
+            "evidence": "係数・差・右辺・両辺という語を具体的な式と照合した。元の問題、先行 -4x≥-26 を負の-4で割る操作、既確定結果 x≤(-26)/(-4)。currentには負同士の商という説明と、約分して境界を求め、直前の向きを使う指示がある。選択肢は解の範囲全体である。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "UNRESOLVED",
+            "evidence": "候補実画像・画面geometry・実レンダーは提示されていない。構造上の式と穴は読めるが、欠字・距離・改行・全体レイアウトの受容は判定できない。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "直前の負数除法で不等号の向きを決め、ここでは同じ右辺の数値を簡単にする。新しい両辺除法を再実行する段階ではないため、向きをもう一度反転しない。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "局所計算だけで終わらず元の不等式を保持して次の全体状態へ戻せるか照合した。符号の向きと商の計算を二段階にする意味は説明され、今回は全体の解を選ぶため出力が孤立しない。既確定の≤の実画面での保持・近接と折返しは未検証。 APPLIEDは当該観点を適用した意味であり、過去ケースの修正完了や画像QA合格を意味しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "過去教材全体への受容を、この3状態の各欠陥や候補の合格へ転用できない。過去教材全体は今回の入力外。"
+          }
+        ],
+        "scopeLimit": "回答前の可視情報に基づく静的構造審査。先行nodeの既確定afterは使用したがcurrent/未来afterとexpected、作者報告・理由は使用していない。候補実画像QAの代替ではなく、表示の成功を認定しない。",
+        "status": "NEEDS_AI_REVIEW",
+        "automaticAcceptance": false
+      }
+    }
+  ],
+  "pendingImplementationChecks": "Initial geometry case UNRESOLVED remains future R06/R07; supplements explicitly limit PASS to static R04. No candidate image/geometry PASS inferred."
+}

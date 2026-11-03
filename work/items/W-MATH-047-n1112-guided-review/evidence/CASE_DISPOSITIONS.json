@@ -1,0 +1,97 @@
+{
+  "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+  "ranked": false,
+  "modelRan": false,
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+    }
+  ]
+}

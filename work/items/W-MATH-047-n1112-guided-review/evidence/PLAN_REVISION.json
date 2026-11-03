@@ -1,0 +1,20 @@
+{
+  "recordedProposal": {
+    "contentDesignHash": "a4f2fdfc6ea84a739b7680b194379e8f5621fa7c3c5d02fb42117598431b2b76",
+    "hash": "fc3d6897e3bb3697862c9758fa230ebd2c88db5e10f1f7ea45d22e92e9b390e4",
+    "id": "W-MATH-047/P-001"
+  },
+  "currentProposalHash": "94b41c5bc92d172b3ec66b462e14787bb9b40cddbdf21db48f03614b83910c7f",
+  "reason": "Existing R04 adapter finished CODE and stopped before team submission. Frozen plan differs from current candidate/proposal. Do not reuse its claim for a changed proposal.",
+  "method": "Retain old events and unsubmitted CODE outputs; reconcile ended claim FAILED due input drift, then existing Runtime.revise. No original learner or approval modified.",
+  "writerProvenance": "Existing local review adapter discovered; M/A/B did not claim unobserved script authorship. Adapter and produced receipts read before reconciliation.",
+  "activeReviewProcess": false,
+  "actualBrowserBaseline": "390px exact published-source local mirror; N11 39correct/109wrong and N12 46correct/127wrong; NOT direct hosted-browser QA",
+  "newProposal": {
+    "id": "W-MATH-047/P-006",
+    "hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
+    "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14"
+  },
+  "preservedSourceManifest": true,
+  "preservedRules": true
+}

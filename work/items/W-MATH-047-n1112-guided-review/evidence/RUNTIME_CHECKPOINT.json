@@ -1,0 +1,10 @@
+{
+  "simulation": false,
+  "next": {
+    "status": "BLOCKED",
+    "reason": "CLAIM_RECONCILIATION_OR_RESULT",
+    "node": "R04_PROPOSAL@n11"
+  },
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "scope": "R01 is bound; R02/R04 results and formal team imports are still required. No approval or product change."
+}

@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "w047-static-source-review-supplement/1",
+  "phase": "pre-design",
+  "reviewer": "/root/w047_review_b",
+  "verdict": "PASS",
+  "verdictScope": "R04の限定した静的具体案（3回答前状態の可視情報・本文と式と穴の論理的配置）としてPASS。実装済み・実画像合格・教材全体承認を意味しない。",
+  "originalReport": {
+    "path": "work/items/W-MATH-047-n1112-guided-review/REVIEW_N11_LAYOUT_FIRST_B.json",
+    "sha256": "dc85b83a6f5061776737ccc51b42e460bb34112807d499dd79028d4c4c78b359",
+    "preserved": true
+  },
+  "additionalSource": {
+    "path": "work/items/W-MATH-035-choice-order-factor-audit/LEARNING_CORPUS.json",
+    "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+    "sha256": "334761e6f3e4f7b96d1de4ac1547d17ecd6a78880a0b7ad8d16dbadc932e8d4d",
+    "use": "過去本人feedbackの正負例および入力snapshot。現在案の作者理由は未参照。"
+  },
+  "reasonForLimitedPass": "3案とも本文、式、穴、選択肢が特定され、回答前に必要な数学的情報があり、学習者が行う残りの判断と次の全体状態を記述できる。具体的配置案そのものがないため画像を要求している状況ではない。画像の未提示は、未実装の提案段階では実装結果を成功認定できないという境界であり、この範囲の提案の不備を直ちに証明しない。",
+  "findings": [],
+  "steps": [
+    {
+      "stepId": "n11-03",
+      "verdict": "PASS",
+      "proposalEvidence": "既確定 bc-ac=c(b-a) と b-a>0 を受け、current本文は c<0 と負×正を提示。穴は acとbcの大小・bc-acの符号の組全体を受ける。baselineの「負になります」を候補は結論未確定へ戻し、学習者が積の符号と右−左の意味を判断できる。",
+      "counterexampleChecked": "N07-F01のような必要前提抜けを検討したが a<b、差の因数分解、b-a>0 は回答前に存在。N10拒否の括弧脱落のように、c(b-a)をc b-aへ分解する構造ではない。",
+      "laterEvidence": "先行差の式、current本文と穴/選択肢が読める状態を実画像で確認。ac>bcとbc-ac<0の組が別の判断として迷子にならないこと、c(b-a)の括弧と不等号を欠落なく表示すること。"
+    },
+    {
+      "stepId": "n11-q11-constant",
+      "verdict": "PASS",
+      "proposalEvidence": "candidateは -17-9=[穴] だけを穴行に置くが、その直前本文が全体式 -4x+9≥-17、左辺9を消す目的、両辺から9を引く操作を一続きで明示する。全体 -4x≥-26 はこの回答前情報から再構成できる。局所穴への限定は操作選択の理解を測るものではなく算術判断を残す設計として具体的。",
+      "counterexampleChecked": "N07-F02の単独10、F04の片側(10-1)x→9xと同じ孤立を疑った。今回は同じcurrent beforeの本文に元の不等式全体と両辺操作があり、静的案の時点で元式への対応が全く存在しないわけではない。ただし -26という正答だけで両辺操作の理解を認定しない。",
+      "laterEvidence": "本文の -4x+9≥-17 と穴行 -17-9=[穴] が視覚的に一つの操作単位として対応すること。定数回答後に -4x≥-26 へ再統合され、次の負数除法へ継続できること。実装で別カード/遠距離/余計な段落が生じるなら静的PASSをもって許容しない。"
+    },
+    {
+      "stepId": "n11-12",
+      "verdict": "PASS",
+      "proposalEvidence": "直前の既確定 x≤(-26)/(-4) を使い、candidate本文は負同士の商という手掛かりと約分指示までを提示。baselineの13/2までの計算済み連鎖は除かれ、学習者が符号と約分を計算し、直前の≤を保持して全体の解を選べる。",
+      "counterexampleChecked": "N09拒否は平方値を単に結果順に並べる状態、N07-F04は全体導出から片側が離れる状態。今回の候補には既確定不等号を使う明示指示があり、符号判断→境界計算→全体の範囲という役割が分かる。全体選択肢なので13/2だけが孤立した最終出力にはならない。",
+      "laterEvidence": "直前確定した≤が回答前に保持され、商と選択肢の分数13/2が欠けずに読めること。約分段階で不等号をもう一度反転するような表示更新がないこと。"
+    }
+  ],
+  "caseDispositions": [
+    {
+      "caseId": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "欠字と孤立配置を提案時の確認条件として明示した。静的構造の式・穴の対応は検討済みだが実際のレンダー成功は認定しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "UNRESOLVED: 候補画像とgeometryで欠落、式の切断、孤立、段落分割を検証する。"
+    },
+    {
+      "caseId": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "欠字と孤立配置を提案時の確認条件として明示した。静的構造の式・穴の対応は検討済みだが実際のレンダー成功は認定しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "UNRESOLVED: 候補画像とgeometryで欠落、式の切断、孤立、段落分割を検証する。"
+    },
+    {
+      "caseId": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "既存に受容された本文→式中の穴→説明の流れがあることを確認。段落と式を一律に統合/撤去する必要はない。今回も具体的beforeの本文・式・穴の順序として検討した。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "既存受容レイアウトとの実際の余白/折返し/密度の整合は未検証。"
+    },
+    {
+      "caseId": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "既存に受容された本文→式中の穴→説明の流れがあることを確認。段落と式を一律に統合/撤去する必要はない。今回も具体的beforeの本文・式・穴の順序として検討した。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "既存受容レイアウトとの実際の余白/折返し/密度の整合は未検証。"
+    },
+    {
+      "caseId": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "staticDisposition": "NOT_APPLICABLE",
+      "proposalTimeEvidence": "過去教材全体のPOSITIVEラベル。今回の候補や特定欠陥への個別合格票には転用しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "過去受容の再認定を今回の3候補QAに混ぜない。"
+    },
+    {
+      "caseId": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "staticDisposition": "NOT_APPLICABLE",
+      "proposalTimeEvidence": "過去教材全体のPOSITIVEラベル。今回の候補や特定欠陥への個別合格票には転用しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "過去受容の再認定を今回の3候補QAに混ぜない。"
+    },
+    {
+      "caseId": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "staticDisposition": "APPLIED",
+      "proposalTimeEvidence": "原記録の具体例と今回3状態の必要前提、局所結果の戻し先、操作目的、導出継続、操作対象のまとまりを照合した。各stepのcounterexampleChecked参照。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "全体式と局所穴の対応が実画面でも保持されるかを検証。"
+    },
+    {
+      "caseId": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "staticDisposition": "NOT_APPLICABLE",
+      "proposalTimeEvidence": "過去教材全体のPOSITIVEラベル。今回の候補や特定欠陥への個別合格票には転用しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "過去受容の再認定を今回の3候補QAに混ぜない。"
+    },
+    {
+      "caseId": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "staticDisposition": "NOT_APPLICABLE",
+      "proposalTimeEvidence": "過去教材全体のPOSITIVEラベル。今回の候補や特定欠陥への個別合格票には転用しない。",
+      "implementationEvidenceStatus": "NOT_PERFORMED",
+      "laterCondition": "過去受容の再認定を今回の3候補QAに混ぜない。"
+    }
+  ],
+  "stageBoundary": {
+    "R04": {
+      "assessed": "指定3候補の静的before構造をbaselineと比較し、先行確定結果を使って次を組み立てられるかを反証。",
+      "verdict": "PASS",
+      "notClaimed": "実画像/geometry/操作後状態の実行確認は行っていない。"
+    },
+    "R06_R07": {
+      "status": "UNVERIFIED",
+      "conditions": [
+        "対象実装versionと対象3stepを明示した回答前および回答確定後の実画像を用意する。",
+        "本文、主要式、穴、選択肢、先行確定結果の位置・幅・改行をgeometryと画像で突合する。単なるDOM順だけでは近接や欠字の根拠にしない。",
+        "constantでは本文の全体式と局所算術が分断されず、確定後に -4x≥-26 として次の負数除法へつながることを確認する。",
+        "n11-03は差の向きと結論の対応、n11-12は直前≤の保持と分数表示を確認する。",
+        "実装で本文が隠れる、穴行だけが独立する、括弧/不等号/分数が欠ける、段落分割で一つの導出を追えなくなる場合は、その時点のOPEN/REVISE所見として扱う。"
+      ],
+      "performed": false
+    }
+  },
+  "clarificationOfOriginalUnresolved": "初回の画像関連UNRESOLVEDは実画像の達成状態を未確認としたもの。補足では原記録を照合し、提案時に検討可能な構造上の条件と、実装後にしか認定できない実表示条件を分けた。初回原報告は書き換えていない。"
+}

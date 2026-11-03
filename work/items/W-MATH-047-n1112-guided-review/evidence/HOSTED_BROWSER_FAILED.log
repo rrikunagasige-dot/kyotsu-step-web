@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_EMPTY_RESPONSE at https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11
+Call log:
+[2m  - navigating to "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11", waiting until "load"[22m
+
+    at /workspace/scratch/6ff917b2ec4a/w046-ux06-full/work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs:7:245 {
+  log: [
+    '  - navigating to "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v24.22.1

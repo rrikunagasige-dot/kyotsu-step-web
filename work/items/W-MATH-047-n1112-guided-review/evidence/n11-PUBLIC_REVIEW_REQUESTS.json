@@ -1,0 +1,2595 @@
+{
+  "schemaVersion": "w047-public-review/1",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "code": "n11",
+  "rows": [
+    {
+      "id": "n11-03",
+      "request": {
+        "schemaVersion": "solution-review/1",
+        "phase": "pre-design",
+        "visible": {
+          "current": {
+            "id": "n11-03",
+            "problemId": "n11"
+          },
+          "initial": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "条件は ",
+                "semanticId": "n11-d-374"
+              },
+              {
+                "type": "math",
+                "latex": "a<b",
+                "semanticId": "n11-d-375"
+              },
+              {
+                "type": "text",
+                "text": "、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。",
+                "semanticId": "n11-d-376"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-wm011-q03-factor",
+                "before": [
+                  {
+                    "id": "n11-wm011-q03-factor-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-338",
+                        "kind": "text",
+                        "text": "両辺に同じ数を掛けた後の差は "
+                      },
+                      {
+                        "id": "w36-p-339",
+                        "kind": "math",
+                        "latex": "bc-ac",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-339"
+                      },
+                      {
+                        "id": "w36-p-340",
+                        "kind": "text",
+                        "text": " です。二つの項に共通する因子を外へ出し、残る差を括弧にまとめます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm011-q03-factor-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-factor-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-344",
+                            "kind": "math",
+                            "latex": "bc-ac=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-344"
+                          },
+                          {
+                            "id": "n11-wm011-q03-factor-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm011-q03-factor",
+                            "semanticRef": "n11-wm011-q03-factor"
+                          },
+                          {
+                            "id": "w36-p-345",
+                            "kind": "math",
+                            "latex": "(b-a)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-345"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-factor",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-factor-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm011-q03-factor-equation",
+                    "kind": "relationChain",
+                    "relation": "equality",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-factor-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-346",
+                            "kind": "math",
+                            "latex": "bc-ac",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-346"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm011-q03-factor-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-347",
+                            "kind": "math",
+                            "latex": "c(b-a)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-347"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "="
+                    ],
+                    "transformRef": "n11-wm011-q03-factor",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-factor-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm011-q03-factor-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-341",
+                        "kind": "text",
+                        "text": "元の差 "
+                      },
+                      {
+                        "id": "w36-p-342",
+                        "kind": "math",
+                        "latex": "b-a",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-342"
+                      },
+                      {
+                        "id": "w36-p-343",
+                        "kind": "text",
+                        "text": " は正なので、掛けるcの符号を分けて調べます。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm011-q03-positive",
+                "before": [
+                  {
+                    "id": "n11-wm011-q03-positive-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-348",
+                        "kind": "text",
+                        "text": "まず "
+                      },
+                      {
+                        "id": "w36-p-349",
+                        "kind": "math",
+                        "latex": "c>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-349"
+                      },
+                      {
+                        "id": "w36-p-350",
+                        "kind": "text",
+                        "text": " の場合です。"
+                      },
+                      {
+                        "id": "w36-p-351",
+                        "kind": "math",
+                        "latex": "b-a>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-351"
+                      },
+                      {
+                        "id": "w36-p-352",
+                        "kind": "text",
+                        "text": " なので、"
+                      },
+                      {
+                        "id": "w36-p-353",
+                        "kind": "math",
+                        "latex": "c(b-a)",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-353"
+                      },
+                      {
+                        "id": "w36-p-354",
+                        "kind": "text",
+                        "text": " は正と正の積です。右から左を引いた差の符号と、両辺の大小を選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm011-q03-positive-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-positive-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-wm011-q03-positive-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm011-q03-positive",
+                            "semanticRef": "n11-wm011-q03-positive"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-positive",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-positive-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm011-q03-positive-equation",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-positive-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-356",
+                            "kind": "math",
+                            "latex": "ac<bc",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-356"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm011-q03-positive-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-357",
+                            "kind": "math",
+                            "latex": "bc-ac>0",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-357"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-positive",
+                    "layoutProfile": "independent",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-positive-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm011-q03-positive-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-355",
+                        "kind": "text",
+                        "text": "正の数を掛ける場合、不等号の向きは変わりません。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-03",
+                "before": [
+                  {
+                    "id": "n11-03-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w47-n11-03-lead-0",
+                        "kind": "text",
+                        "text": "次は "
+                      },
+                      {
+                        "id": "w47-n11-03-lead-1",
+                        "kind": "math",
+                        "latex": "c<0",
+                        "mathRole": "expression",
+                        "semanticRef": "w47-n11-03-lead-1"
+                      },
+                      {
+                        "id": "w47-n11-03-lead-2",
+                        "kind": "text",
+                        "text": " の場合です。"
+                      },
+                      {
+                        "id": "w47-n11-03-lead-3",
+                        "kind": "math",
+                        "latex": "b-a>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w47-n11-03-lead-3"
+                      },
+                      {
+                        "id": "w47-n11-03-lead-4",
+                        "kind": "text",
+                        "text": " なので、差 "
+                      },
+                      {
+                        "id": "w47-n11-03-lead-5",
+                        "kind": "math",
+                        "latex": "c(b-a)",
+                        "mathRole": "expression",
+                        "semanticRef": "w47-n11-03-lead-5"
+                      },
+                      {
+                        "id": "w47-n11-03-lead-6",
+                        "kind": "text",
+                        "text": " は負の数と正の数の積です。この差の符号を判断し、「右−左」の差から左右の大小を選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-03-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-03-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-03-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-03",
+                            "semanticRef": "n11-03"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-03",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-03-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "c<0のとき、差の符号と大小関係を判断しよう。",
+                "choices": [
+                  {
+                    "id": "n11-03-correct",
+                    "content": "ac>bc,\\quad bc-ac<0"
+                  },
+                  {
+                    "id": "n11-03-wrong-0",
+                    "content": "ac<bc,\\quad bc-ac>0"
+                  },
+                  {
+                    "id": "n11-03-wrong-1",
+                    "content": "ac=bc,\\quad bc-ac=0"
+                  },
+                  {
+                    "id": "n11-03-wrong-2",
+                    "content": "ac>bc,\\quad bc-ac>0"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result"
+            ]
+          },
+          "baseline": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "条件は ",
+                "semanticId": "n11-d-374"
+              },
+              {
+                "type": "math",
+                "latex": "a<b",
+                "semanticId": "n11-d-375"
+              },
+              {
+                "type": "text",
+                "text": "、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。",
+                "semanticId": "n11-d-376"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-wm011-q03-factor",
+                "before": [
+                  {
+                    "id": "n11-wm011-q03-factor-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-338",
+                        "kind": "text",
+                        "text": "両辺に同じ数を掛けた後の差は "
+                      },
+                      {
+                        "id": "w36-p-339",
+                        "kind": "math",
+                        "latex": "bc-ac",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-339"
+                      },
+                      {
+                        "id": "w36-p-340",
+                        "kind": "text",
+                        "text": " です。二つの項に共通する因子を外へ出し、残る差を括弧にまとめます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm011-q03-factor-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-factor-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-344",
+                            "kind": "math",
+                            "latex": "bc-ac=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-344"
+                          },
+                          {
+                            "id": "n11-wm011-q03-factor-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm011-q03-factor",
+                            "semanticRef": "n11-wm011-q03-factor"
+                          },
+                          {
+                            "id": "w36-p-345",
+                            "kind": "math",
+                            "latex": "(b-a)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-345"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-factor",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-factor-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm011-q03-factor-equation",
+                    "kind": "relationChain",
+                    "relation": "equality",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-factor-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-346",
+                            "kind": "math",
+                            "latex": "bc-ac",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-346"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm011-q03-factor-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-347",
+                            "kind": "math",
+                            "latex": "c(b-a)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-347"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "="
+                    ],
+                    "transformRef": "n11-wm011-q03-factor",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-factor-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm011-q03-factor-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-341",
+                        "kind": "text",
+                        "text": "元の差 "
+                      },
+                      {
+                        "id": "w36-p-342",
+                        "kind": "math",
+                        "latex": "b-a",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-342"
+                      },
+                      {
+                        "id": "w36-p-343",
+                        "kind": "text",
+                        "text": " は正なので、掛けるcの符号を分けて調べます。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm011-q03-positive",
+                "before": [
+                  {
+                    "id": "n11-wm011-q03-positive-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-348",
+                        "kind": "text",
+                        "text": "まず "
+                      },
+                      {
+                        "id": "w36-p-349",
+                        "kind": "math",
+                        "latex": "c>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-349"
+                      },
+                      {
+                        "id": "w36-p-350",
+                        "kind": "text",
+                        "text": " の場合です。"
+                      },
+                      {
+                        "id": "w36-p-351",
+                        "kind": "math",
+                        "latex": "b-a>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-351"
+                      },
+                      {
+                        "id": "w36-p-352",
+                        "kind": "text",
+                        "text": " なので、"
+                      },
+                      {
+                        "id": "w36-p-353",
+                        "kind": "math",
+                        "latex": "c(b-a)",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-353"
+                      },
+                      {
+                        "id": "w36-p-354",
+                        "kind": "text",
+                        "text": " は正と正の積です。右から左を引いた差の符号と、両辺の大小を選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm011-q03-positive-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-positive-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-wm011-q03-positive-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm011-q03-positive",
+                            "semanticRef": "n11-wm011-q03-positive"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-positive",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-positive-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm011-q03-positive-equation",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm011-q03-positive-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-356",
+                            "kind": "math",
+                            "latex": "ac<bc",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-356"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm011-q03-positive-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-357",
+                            "kind": "math",
+                            "latex": "bc-ac>0",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-357"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm011-q03-positive",
+                    "layoutProfile": "independent",
+                    "numbering": {
+                      "stableId": "n11-wm011-q03-positive-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm011-q03-positive-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-355",
+                        "kind": "text",
+                        "text": "正の数を掛ける場合、不等号の向きは変わりません。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-03",
+                "before": [
+                  {
+                    "id": "n11-03-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-358",
+                        "kind": "text",
+                        "text": "次は "
+                      },
+                      {
+                        "id": "w36-p-359",
+                        "kind": "math",
+                        "latex": "c<0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-359"
+                      },
+                      {
+                        "id": "w36-p-360",
+                        "kind": "text",
+                        "text": " の場合です。"
+                      },
+                      {
+                        "id": "w36-p-361",
+                        "kind": "math",
+                        "latex": "b-a>0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-361"
+                      },
+                      {
+                        "id": "w36-p-362",
+                        "kind": "text",
+                        "text": " と掛け合わせた差 "
+                      },
+                      {
+                        "id": "w36-p-363",
+                        "kind": "math",
+                        "latex": "c(b-a)",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-363"
+                      },
+                      {
+                        "id": "w36-p-364",
+                        "kind": "text",
+                        "text": " は負になります。「右−左」が負という意味から、右と左の大小を選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-03-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-03-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-03-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-03",
+                            "semanticRef": "n11-03"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-03",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-03-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "c<0のとき、差の符号と大小関係を判断しよう。",
+                "choices": [
+                  {
+                    "id": "n11-03-correct",
+                    "content": "ac>bc,\\quad bc-ac<0"
+                  },
+                  {
+                    "id": "n11-03-wrong-0",
+                    "content": "ac<bc,\\quad bc-ac>0"
+                  },
+                  {
+                    "id": "n11-03-wrong-1",
+                    "content": "ac=bc,\\quad bc-ac=0"
+                  },
+                  {
+                    "id": "n11-03-wrong-2",
+                    "content": "ac>bc,\\quad bc-ac>0"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result"
+            ]
+          }
+        },
+        "sourceRefs": [
+          "word-p-000484"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "e84561f01cc0db0dd711bf4e6f4a2d101079262359990cbfdd3328dec62323bb"
+      }
+    },
+    {
+      "id": "n11-q11-constant",
+      "request": {
+        "schemaVersion": "solution-review/1",
+        "phase": "pre-design",
+        "visible": {
+          "current": {
+            "id": "n11-q11-constant",
+            "problemId": "n11"
+          },
+          "initial": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "確認：",
+                "semanticId": "n11-d-410"
+              },
+              {
+                "type": "math",
+                "latex": "3(2x+3)\\ge10x-17",
+                "semanticId": "n11-d-411"
+              },
+              {
+                "type": "text",
+                "text": " を解く。",
+                "semanticId": "n11-d-412"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-linear-definition",
+                "before": [
+                  {
+                    "id": "n11-linear-definition-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-528",
+                        "kind": "text",
+                        "text": "すべての項を左へ集めた左辺が "
+                      },
+                      {
+                        "id": "w36-p-529",
+                        "kind": "math",
+                        "latex": "ax+b",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-529"
+                      },
+                      {
+                        "id": "w36-p-530",
+                        "kind": "text",
+                        "text": "（"
+                      },
+                      {
+                        "id": "w36-p-531",
+                        "kind": "math",
+                        "latex": "a\\ne0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-531"
+                      },
+                      {
+                        "id": "w36-p-532",
+                        "kind": "text",
+                        "text": "）になる不等式を "
+                      },
+                      {
+                        "id": "w36-p-533",
+                        "kind": "term",
+                        "text": "一次不等式",
+                        "termId": "w36-p-533",
+                        "usage": "first_definition"
+                      },
+                      {
+                        "id": "w36-p-534",
+                        "kind": "text",
+                        "text": " といいます。"
+                      },
+                      {
+                        "id": "w36-p-535",
+                        "kind": "term",
+                        "text": "移項",
+                        "termId": "w36-p-535",
+                        "usage": "first_definition"
+                      },
+                      {
+                        "id": "w36-p-536",
+                        "kind": "text",
+                        "text": " は両辺に同じ数や式を加減する操作をまとめた書き方です。理由なしに符号だけを変える規則ではありません。"
+                      }
+                    ]
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-linear-definition-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-537",
+                        "kind": "text",
+                        "text": "この内容を、次の判断や変形の根拠に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-bracket-problem",
+                "before": [
+                  {
+                    "id": "n11-bracket-problem-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-538",
+                        "kind": "text",
+                        "text": "確認問題は "
+                      },
+                      {
+                        "id": "w36-p-539",
+                        "kind": "math",
+                        "latex": "3(2x+3)\\ge10x-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-539"
+                      },
+                      {
+                        "id": "w36-p-540",
+                        "kind": "text",
+                        "text": " です。まず分配法則で括弧を外し、それから "
+                      },
+                      {
+                        "id": "w36-p-541",
+                        "kind": "math",
+                        "latex": "x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-541"
+                      },
+                      {
+                        "id": "w36-p-542",
+                        "kind": "text",
+                        "text": " の項、定数項の順にまとめます。"
+                      }
+                    ]
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-bracket-problem-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-543",
+                        "kind": "text",
+                        "text": "この内容を、次の判断や変形の根拠に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm012-q11-expand",
+                "before": [
+                  {
+                    "id": "n11-wm012-q11-expand-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-544",
+                        "kind": "text",
+                        "text": "左辺の3を、括弧内の "
+                      },
+                      {
+                        "id": "w36-p-545",
+                        "kind": "math",
+                        "latex": "2x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-545"
+                      },
+                      {
+                        "id": "w36-p-546",
+                        "kind": "text",
+                        "text": " と "
+                      },
+                      {
+                        "id": "w36-p-547",
+                        "kind": "math",
+                        "latex": "3",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-547"
+                      },
+                      {
+                        "id": "w36-p-548",
+                        "kind": "text",
+                        "text": " の両方へ掛けます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm012-q11-expand-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-expand-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-550",
+                            "kind": "math",
+                            "latex": "3(2x+3)=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-550"
+                          },
+                          {
+                            "id": "n11-wm012-q11-expand-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm012-q11-expand",
+                            "semanticRef": "n11-wm012-q11-expand"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-expand",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-expand-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm012-q11-expand-equation",
+                    "kind": "relationChain",
+                    "relation": "equality",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-expand-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-551",
+                            "kind": "math",
+                            "latex": "3(2x+3)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-551"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm012-q11-expand-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-552",
+                            "kind": "math",
+                            "latex": "6x+9",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-552"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "="
+                    ],
+                    "transformRef": "n11-wm012-q11-expand",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-expand-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm012-q11-expand-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-549",
+                        "kind": "text",
+                        "text": "この展開結果を元の不等式の左辺へ戻します。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm012-q11-xcoef",
+                "before": [
+                  {
+                    "id": "n11-wm012-q11-xcoef-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-553",
+                        "kind": "text",
+                        "text": "元の不等式は "
+                      },
+                      {
+                        "id": "w36-p-554",
+                        "kind": "math",
+                        "latex": "6x+9\\ge10x-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-554"
+                      },
+                      {
+                        "id": "w36-p-555",
+                        "kind": "text",
+                        "text": " になりました。両辺から "
+                      },
+                      {
+                        "id": "w36-p-556",
+                        "kind": "math",
+                        "latex": "10x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-556"
+                      },
+                      {
+                        "id": "w36-p-557",
+                        "kind": "text",
+                        "text": " を引き、左辺の "
+                      },
+                      {
+                        "id": "w36-p-558",
+                        "kind": "math",
+                        "latex": "6x-10x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-558"
+                      },
+                      {
+                        "id": "w36-p-559",
+                        "kind": "text",
+                        "text": " をまとめます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm012-q11-xcoef-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-xcoef-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-561",
+                            "kind": "math",
+                            "latex": "(6-10)x+9\\ge-17,\\quad6-10=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-561"
+                          },
+                          {
+                            "id": "n11-wm012-q11-xcoef-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm012-q11-xcoef",
+                            "semanticRef": "n11-wm012-q11-xcoef"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-xcoef",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-xcoef-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm012-q11-xcoef-equation",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-xcoef-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-562",
+                            "kind": "math",
+                            "latex": "(6-10)x+9\\ge-17",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-562"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm012-q11-xcoef-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-563",
+                            "kind": "math",
+                            "latex": "6-10=-4",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-563"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-xcoef",
+                    "layoutProfile": "independent",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-xcoef-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm012-q11-xcoef-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-560",
+                        "kind": "text",
+                        "text": "左辺のxの係数が求まりました。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-q11-constant",
+                "before": [
+                  {
+                    "id": "n11-q11-constant-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-564",
+                        "kind": "text",
+                        "text": "いまの式は "
+                      },
+                      {
+                        "id": "w36-p-565",
+                        "kind": "math",
+                        "latex": "-4x+9\\ge-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-565"
+                      },
+                      {
+                        "id": "w36-p-566",
+                        "kind": "text",
+                        "text": " です。左辺の9を打ち消すため両辺から9を引き、右辺を計算します。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-q11-constant-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-q11-constant-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-568",
+                            "kind": "math",
+                            "latex": "-17-9=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-568"
+                          },
+                          {
+                            "id": "n11-q11-constant-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-q11-constant",
+                            "semanticRef": "n11-q11-constant"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-q11-constant",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-q11-constant-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "定数を同じ操作でまとめる",
+                "choices": [
+                  {
+                    "id": "n11-q11-constant-correct",
+                    "content": "-26"
+                  },
+                  {
+                    "id": "n11-q11-constant-wrong-0",
+                    "content": "-8"
+                  },
+                  {
+                    "id": "n11-q11-constant-wrong-1",
+                    "content": "26"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result",
+              "n11-03-result",
+              "n11-wm011-q03-zero-result",
+              "n11-division-basis-result",
+              "n11-wm011-q04-fraction-result",
+              "n11-q04-negate-result",
+              "n11-04-result",
+              "n11-solve-problem-result",
+              "n11-wm017-q05-operation-result",
+              "n11-wm017-q05-balance-result",
+              "n11-05-result",
+              "n11-q06-operation-result",
+              "n11-06-result",
+              "n11-q07-substitution-result",
+              "n11-07-result",
+              "n11-negative-problem-result",
+              "n11-p007-q08-subtract-left-result",
+              "n11-p007-q08-subtract-right-result",
+              "n11-08-result",
+              "n11-p007-q09-direction-result",
+              "n11-09-result",
+              "n11-q10-substitution-result",
+              "n11-10-result",
+              "n11-linear-definition-result",
+              "n11-bracket-problem-result",
+              "n11-wm012-q11-expand-result",
+              "n11-wm012-q11-xcoef-result"
+            ]
+          },
+          "baseline": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "確認：",
+                "semanticId": "n11-d-410"
+              },
+              {
+                "type": "math",
+                "latex": "3(2x+3)\\ge10x-17",
+                "semanticId": "n11-d-411"
+              },
+              {
+                "type": "text",
+                "text": " を解く。",
+                "semanticId": "n11-d-412"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-linear-definition",
+                "before": [
+                  {
+                    "id": "n11-linear-definition-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-528",
+                        "kind": "text",
+                        "text": "すべての項を左へ集めた左辺が "
+                      },
+                      {
+                        "id": "w36-p-529",
+                        "kind": "math",
+                        "latex": "ax+b",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-529"
+                      },
+                      {
+                        "id": "w36-p-530",
+                        "kind": "text",
+                        "text": "（"
+                      },
+                      {
+                        "id": "w36-p-531",
+                        "kind": "math",
+                        "latex": "a\\ne0",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-531"
+                      },
+                      {
+                        "id": "w36-p-532",
+                        "kind": "text",
+                        "text": "）になる不等式を "
+                      },
+                      {
+                        "id": "w36-p-533",
+                        "kind": "term",
+                        "text": "一次不等式",
+                        "termId": "w36-p-533",
+                        "usage": "first_definition"
+                      },
+                      {
+                        "id": "w36-p-534",
+                        "kind": "text",
+                        "text": " といいます。"
+                      },
+                      {
+                        "id": "w36-p-535",
+                        "kind": "term",
+                        "text": "移項",
+                        "termId": "w36-p-535",
+                        "usage": "first_definition"
+                      },
+                      {
+                        "id": "w36-p-536",
+                        "kind": "text",
+                        "text": " は両辺に同じ数や式を加減する操作をまとめた書き方です。理由なしに符号だけを変える規則ではありません。"
+                      }
+                    ]
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-linear-definition-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-537",
+                        "kind": "text",
+                        "text": "この内容を、次の判断や変形の根拠に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-bracket-problem",
+                "before": [
+                  {
+                    "id": "n11-bracket-problem-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-538",
+                        "kind": "text",
+                        "text": "確認問題は "
+                      },
+                      {
+                        "id": "w36-p-539",
+                        "kind": "math",
+                        "latex": "3(2x+3)\\ge10x-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-539"
+                      },
+                      {
+                        "id": "w36-p-540",
+                        "kind": "text",
+                        "text": " です。まず分配法則で括弧を外し、それから "
+                      },
+                      {
+                        "id": "w36-p-541",
+                        "kind": "math",
+                        "latex": "x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-541"
+                      },
+                      {
+                        "id": "w36-p-542",
+                        "kind": "text",
+                        "text": " の項、定数項の順にまとめます。"
+                      }
+                    ]
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-bracket-problem-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-543",
+                        "kind": "text",
+                        "text": "この内容を、次の判断や変形の根拠に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm012-q11-expand",
+                "before": [
+                  {
+                    "id": "n11-wm012-q11-expand-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-544",
+                        "kind": "text",
+                        "text": "左辺の3を、括弧内の "
+                      },
+                      {
+                        "id": "w36-p-545",
+                        "kind": "math",
+                        "latex": "2x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-545"
+                      },
+                      {
+                        "id": "w36-p-546",
+                        "kind": "text",
+                        "text": " と "
+                      },
+                      {
+                        "id": "w36-p-547",
+                        "kind": "math",
+                        "latex": "3",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-547"
+                      },
+                      {
+                        "id": "w36-p-548",
+                        "kind": "text",
+                        "text": " の両方へ掛けます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm012-q11-expand-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-expand-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-550",
+                            "kind": "math",
+                            "latex": "3(2x+3)=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-550"
+                          },
+                          {
+                            "id": "n11-wm012-q11-expand-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm012-q11-expand",
+                            "semanticRef": "n11-wm012-q11-expand"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-expand",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-expand-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm012-q11-expand-equation",
+                    "kind": "relationChain",
+                    "relation": "equality",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-expand-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-551",
+                            "kind": "math",
+                            "latex": "3(2x+3)",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-551"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm012-q11-expand-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-552",
+                            "kind": "math",
+                            "latex": "6x+9",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-552"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "="
+                    ],
+                    "transformRef": "n11-wm012-q11-expand",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-expand-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm012-q11-expand-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-549",
+                        "kind": "text",
+                        "text": "この展開結果を元の不等式の左辺へ戻します。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-wm012-q11-xcoef",
+                "before": [
+                  {
+                    "id": "n11-wm012-q11-xcoef-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-553",
+                        "kind": "text",
+                        "text": "元の不等式は "
+                      },
+                      {
+                        "id": "w36-p-554",
+                        "kind": "math",
+                        "latex": "6x+9\\ge10x-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-554"
+                      },
+                      {
+                        "id": "w36-p-555",
+                        "kind": "text",
+                        "text": " になりました。両辺から "
+                      },
+                      {
+                        "id": "w36-p-556",
+                        "kind": "math",
+                        "latex": "10x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-556"
+                      },
+                      {
+                        "id": "w36-p-557",
+                        "kind": "text",
+                        "text": " を引き、左辺の "
+                      },
+                      {
+                        "id": "w36-p-558",
+                        "kind": "math",
+                        "latex": "6x-10x",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-558"
+                      },
+                      {
+                        "id": "w36-p-559",
+                        "kind": "text",
+                        "text": " をまとめます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-wm012-q11-xcoef-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-xcoef-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-561",
+                            "kind": "math",
+                            "latex": "(6-10)x+9\\ge-17,\\quad6-10=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-561"
+                          },
+                          {
+                            "id": "n11-wm012-q11-xcoef-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-wm012-q11-xcoef",
+                            "semanticRef": "n11-wm012-q11-xcoef"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-xcoef",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-xcoef-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-wm012-q11-xcoef-equation",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-wm012-q11-xcoef-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-562",
+                            "kind": "math",
+                            "latex": "(6-10)x+9\\ge-17",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-562"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-wm012-q11-xcoef-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-563",
+                            "kind": "math",
+                            "latex": "6-10=-4",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-563"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-wm012-q11-xcoef",
+                    "layoutProfile": "independent",
+                    "numbering": {
+                      "stableId": "n11-wm012-q11-xcoef-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-wm012-q11-xcoef-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-560",
+                        "kind": "text",
+                        "text": "左辺のxの係数が求まりました。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-q11-constant",
+                "before": [
+                  {
+                    "id": "n11-q11-constant-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-564",
+                        "kind": "text",
+                        "text": "いまの式は "
+                      },
+                      {
+                        "id": "w36-p-565",
+                        "kind": "math",
+                        "latex": "-4x+9\\ge-17",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-565"
+                      },
+                      {
+                        "id": "w36-p-566",
+                        "kind": "text",
+                        "text": " です。左辺の9を打ち消すため両辺から9を引き、右辺を計算します。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-q11-constant-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-q11-constant-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-568",
+                            "kind": "math",
+                            "latex": "-4x\\ge-17-9=",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-568"
+                          },
+                          {
+                            "id": "n11-q11-constant-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-q11-constant",
+                            "semanticRef": "n11-q11-constant"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-q11-constant",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-q11-constant-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "定数を同じ操作でまとめる",
+                "choices": [
+                  {
+                    "id": "n11-q11-constant-correct",
+                    "content": "-26"
+                  },
+                  {
+                    "id": "n11-q11-constant-wrong-0",
+                    "content": "-8"
+                  },
+                  {
+                    "id": "n11-q11-constant-wrong-1",
+                    "content": "26"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result",
+              "n11-03-result",
+              "n11-wm011-q03-zero-result",
+              "n11-division-basis-result",
+              "n11-wm011-q04-fraction-result",
+              "n11-q04-negate-result",
+              "n11-04-result",
+              "n11-solve-problem-result",
+              "n11-wm017-q05-operation-result",
+              "n11-wm017-q05-balance-result",
+              "n11-05-result",
+              "n11-q06-operation-result",
+              "n11-06-result",
+              "n11-q07-substitution-result",
+              "n11-07-result",
+              "n11-negative-problem-result",
+              "n11-p007-q08-subtract-left-result",
+              "n11-p007-q08-subtract-right-result",
+              "n11-08-result",
+              "n11-p007-q09-direction-result",
+              "n11-09-result",
+              "n11-q10-substitution-result",
+              "n11-10-result",
+              "n11-linear-definition-result",
+              "n11-bracket-problem-result",
+              "n11-wm012-q11-expand-result",
+              "n11-wm012-q11-xcoef-result"
+            ]
+          }
+        },
+        "sourceRefs": [
+          "word-p-000507"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "f1e7c1954d876c5552bbb44b2a4fdf73ed15e81e9d5fbf27a317906f24c6248e"
+      }
+    },
+    {
+      "id": "n11-12",
+      "request": {
+        "schemaVersion": "solution-review/1",
+        "phase": "pre-design",
+        "visible": {
+          "current": {
+            "id": "n11-12",
+            "problemId": "n11"
+          },
+          "initial": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "確認：",
+                "semanticId": "n11-d-413"
+              },
+              {
+                "type": "math",
+                "latex": "3(2x+3)\\ge10x-17",
+                "semanticId": "n11-d-414"
+              },
+              {
+                "type": "text",
+                "text": " を解く。",
+                "semanticId": "n11-d-415"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-q12-sign",
+                "before": [
+                  {
+                    "id": "n11-q12-sign-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-578",
+                        "kind": "math",
+                        "latex": "-4x\\ge-26",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-578"
+                      },
+                      {
+                        "id": "w36-p-579",
+                        "kind": "text",
+                        "text": " を負の "
+                      },
+                      {
+                        "id": "w36-p-580",
+                        "kind": "math",
+                        "latex": "-4",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-580"
+                      },
+                      {
+                        "id": "w36-p-581",
+                        "kind": "text",
+                        "text": " で割ります。右辺を簡単にする前に、不等号の向きを選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-q12-sign-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-q12-sign-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-583",
+                            "kind": "math",
+                            "latex": "x\\ ",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-583"
+                          },
+                          {
+                            "id": "n11-q12-sign-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-q12-sign",
+                            "semanticRef": "n11-q12-sign"
+                          },
+                          {
+                            "id": "w36-p-584",
+                            "kind": "math",
+                            "latex": "\\ \\frac{-26}{-4}",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-584"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-q12-sign",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-q12-sign-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-q12-sign-equation",
+                    "kind": "relationChain",
+                    "relation": "inequality",
+                    "expressions": [
+                      {
+                        "id": "n11-q12-sign-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-585",
+                            "kind": "math",
+                            "latex": "x\\ ",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-585"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-q12-sign-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-586",
+                            "kind": "math",
+                            "latex": "\\ \\frac{-26}{-4}",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-586"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "\\le"
+                    ],
+                    "transformRef": "n11-q12-sign",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-q12-sign-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-q12-sign-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-582",
+                        "kind": "text",
+                        "text": "確定した結果を記録し、次の操作に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-12",
+                "before": [
+                  {
+                    "id": "n11-12-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w47-n11-12-lead-0",
+                        "kind": "text",
+                        "text": "右辺 "
+                      },
+                      {
+                        "id": "w47-n11-12-lead-1",
+                        "kind": "math",
+                        "latex": "\\frac{-26}{-4}",
+                        "mathRole": "expression",
+                        "semanticRef": "w47-n11-12-lead-1"
+                      },
+                      {
+                        "id": "w47-n11-12-lead-2",
+                        "kind": "text",
+                        "text": " は負の数どうしの商です。約分して境界を求め、直前に選んだ不等号の向きで解の範囲を表します。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-12-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-12-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-12-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-12",
+                            "semanticRef": "n11-12"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-12",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-12-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "解の範囲を選ぼう。",
+                "choices": [
+                  {
+                    "id": "n11-12-correct",
+                    "content": "x\\le\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-0",
+                    "content": "x\\ge\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-1",
+                    "content": "x\\le-\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-2",
+                    "content": "x<\\frac{13}{2}"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result",
+              "n11-03-result",
+              "n11-wm011-q03-zero-result",
+              "n11-division-basis-result",
+              "n11-wm011-q04-fraction-result",
+              "n11-q04-negate-result",
+              "n11-04-result",
+              "n11-solve-problem-result",
+              "n11-wm017-q05-operation-result",
+              "n11-wm017-q05-balance-result",
+              "n11-05-result",
+              "n11-q06-operation-result",
+              "n11-06-result",
+              "n11-q07-substitution-result",
+              "n11-07-result",
+              "n11-negative-problem-result",
+              "n11-p007-q08-subtract-left-result",
+              "n11-p007-q08-subtract-right-result",
+              "n11-08-result",
+              "n11-p007-q09-direction-result",
+              "n11-09-result",
+              "n11-q10-substitution-result",
+              "n11-10-result",
+              "n11-linear-definition-result",
+              "n11-bracket-problem-result",
+              "n11-wm012-q11-expand-result",
+              "n11-wm012-q11-xcoef-result",
+              "n11-q11-constant-result",
+              "n11-11-result",
+              "n11-q12-sign-result"
+            ]
+          },
+          "baseline": {
+            "sourceQuestion": [
+              {
+                "type": "text",
+                "text": "確認：",
+                "semanticId": "n11-d-413"
+              },
+              {
+                "type": "math",
+                "latex": "3(2x+3)\\ge10x-17",
+                "semanticId": "n11-d-414"
+              },
+              {
+                "type": "text",
+                "text": " を解く。",
+                "semanticId": "n11-d-415"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "n11-q12-sign",
+                "before": [
+                  {
+                    "id": "n11-q12-sign-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-578",
+                        "kind": "math",
+                        "latex": "-4x\\ge-26",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-578"
+                      },
+                      {
+                        "id": "w36-p-579",
+                        "kind": "text",
+                        "text": " を負の "
+                      },
+                      {
+                        "id": "w36-p-580",
+                        "kind": "math",
+                        "latex": "-4",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-580"
+                      },
+                      {
+                        "id": "w36-p-581",
+                        "kind": "text",
+                        "text": " で割ります。右辺を簡単にする前に、不等号の向きを選びます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-q12-sign-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-q12-sign-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "w36-p-583",
+                            "kind": "math",
+                            "latex": "x\\ ",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-583"
+                          },
+                          {
+                            "id": "n11-q12-sign-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-q12-sign",
+                            "semanticRef": "n11-q12-sign"
+                          },
+                          {
+                            "id": "w36-p-584",
+                            "kind": "math",
+                            "latex": "\\ \\frac{-26}{-4}",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-584"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-q12-sign",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-q12-sign-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "after": [
+                  {
+                    "id": "n11-q12-sign-equation",
+                    "kind": "relationChain",
+                    "relation": "inequality",
+                    "expressions": [
+                      {
+                        "id": "n11-q12-sign-result-expr-0",
+                        "parts": [
+                          {
+                            "id": "w36-p-585",
+                            "kind": "math",
+                            "latex": "x\\ ",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-585"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "n11-q12-sign-result-expr-1",
+                        "parts": [
+                          {
+                            "id": "w36-p-586",
+                            "kind": "math",
+                            "latex": "\\ \\frac{-26}{-4}",
+                            "mathRole": "expression",
+                            "semanticRef": "w36-p-586"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [
+                      "\\le"
+                    ],
+                    "transformRef": "n11-q12-sign",
+                    "layoutProfile": "aligned-transform",
+                    "numbering": {
+                      "stableId": "n11-q12-sign-interaction",
+                      "mode": "group-end"
+                    }
+                  },
+                  {
+                    "id": "n11-q12-sign-after",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-582",
+                        "kind": "text",
+                        "text": "確定した結果を記録し、次の操作に使います。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "n11-12",
+                "before": [
+                  {
+                    "id": "n11-12-before",
+                    "kind": "paragraph",
+                    "parts": [
+                      {
+                        "id": "w36-p-587",
+                        "kind": "text",
+                        "text": "右辺 "
+                      },
+                      {
+                        "id": "w36-p-588",
+                        "kind": "math",
+                        "latex": "(-26)/(-4)=26/4=13/2",
+                        "mathRole": "expression",
+                        "semanticRef": "w36-p-588"
+                      },
+                      {
+                        "id": "w36-p-589",
+                        "kind": "text",
+                        "text": " と約分し、いま選んだ向きのまま最終的な範囲をまとめます。"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "n11-12-interaction",
+                    "kind": "relationChain",
+                    "relation": "independent",
+                    "expressions": [
+                      {
+                        "id": "n11-12-interaction-expr",
+                        "parts": [
+                          {
+                            "id": "n11-12-slot",
+                            "kind": "answerSlot",
+                            "interactionId": "n11-12",
+                            "semanticRef": "n11-12"
+                          }
+                        ]
+                      }
+                    ],
+                    "operators": [],
+                    "transformRef": "n11-12",
+                    "layoutProfile": "single",
+                    "numbering": {
+                      "stableId": "n11-12-interaction",
+                      "mode": "group-end"
+                    }
+                  }
+                ],
+                "prompt": "解の範囲を選ぼう。",
+                "choices": [
+                  {
+                    "id": "n11-12-correct",
+                    "content": "x\\le\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-0",
+                    "content": "x\\ge\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-1",
+                    "content": "x\\le-\\frac{13}{2}"
+                  },
+                  {
+                    "id": "n11-12-wrong-2",
+                    "content": "x<\\frac{13}{2}"
+                  }
+                ]
+              }
+            ],
+            "knownFacts": [
+              "real-arithmetic",
+              "square-identities",
+              "accepted-n08-absolute-value",
+              "accepted-n09-root-definition",
+              "accepted-n10-root-product-quotient",
+              "n11-intro-result",
+              "n11-01-result",
+              "n11-difference-basis-result",
+              "n11-q02-open-result",
+              "n11-02-result",
+              "n11-wm011-q02-compare-result",
+              "n11-wm011-q03-factor-result",
+              "n11-wm011-q03-positive-result",
+              "n11-03-result",
+              "n11-wm011-q03-zero-result",
+              "n11-division-basis-result",
+              "n11-wm011-q04-fraction-result",
+              "n11-q04-negate-result",
+              "n11-04-result",
+              "n11-solve-problem-result",
+              "n11-wm017-q05-operation-result",
+              "n11-wm017-q05-balance-result",
+              "n11-05-result",
+              "n11-q06-operation-result",
+              "n11-06-result",
+              "n11-q07-substitution-result",
+              "n11-07-result",
+              "n11-negative-problem-result",
+              "n11-p007-q08-subtract-left-result",
+              "n11-p007-q08-subtract-right-result",
+              "n11-08-result",
+              "n11-p007-q09-direction-result",
+              "n11-09-result",
+              "n11-q10-substitution-result",
+              "n11-10-result",
+              "n11-linear-definition-result",
+              "n11-bracket-problem-result",
+              "n11-wm012-q11-expand-result",
+              "n11-wm012-q11-xcoef-result",
+              "n11-q11-constant-result",
+              "n11-11-result",
+              "n11-q12-sign-result"
+            ]
+          }
+        },
+        "sourceRefs": [
+          "word-p-000508"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "3299b151dce89028edea378cbc656b177408da453d05de51dbaba7b15f36b13f"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "scope": "n07-q03-cycle"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "scope": "n07-q06-scale"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "scope": "n07-q07-subtract"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "scope": "n07-q07-coefficient"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "scope": "n07-q11-factor-ten"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "scope": "n07-q11-converse,n07-q07-coefficient"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "scope": "n07-q07-coefficient"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "scope": "N07 overall layout only"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "scope": "first title overall accepted layout"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "scope": "N07 overall presented material; no independent per-defect labels"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "scope": "N08 overall accepted material; no per-dimension labels inferred"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "scope": "n09-08"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "scope": "n10-q17-factor"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "scope": "N09 overall accepted material; no per-dimension labels inferred"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "scope": "N10 overall accepted material; no per-dimension labels inferred"
+    }
+  ],
+  "constraints": "No author audit/proposal/rationale files were included. First pass is source/public-only. This is static proposal evidence, not rendered candidate QA."
+}

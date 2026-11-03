@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "root": "http://127.0.0.1:4186/kyotsu-step-web/",
+  "results": [
+    {
+      "code": "n11",
+      "width": 390,
+      "answered": 39,
+      "wrongCount": 109,
+      "stages": 14,
+      "figures": [
+        "n11-f01",
+        "n11-f02"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 390,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": [],
+  "execution": "Local exact published build mirror; direct browser HTTPS failed ERR_EMPTY_RESPONSE, not treated as hosted verification.",
+  "harness": "W038 verify_app.mjs with N11 active-overlay support; original W036 harness stopped at the changed stage05 DOM and its failed run is retained in notes."
+}

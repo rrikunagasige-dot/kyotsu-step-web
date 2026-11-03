@@ -1,0 +1,1870 @@
+{
+  "n11": {
+    "total": 47,
+    "changed": 6,
+    "nodes": [
+      {
+        "id": "n11-intro",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000474",
+          "word-p-000475",
+          "word-p-000476",
+          "word-p-000477",
+          "word-p-000478"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "原例2<5と原数直線の目的を教え、次の負数比較の答えは明かさない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-01",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000479"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "符号反転した点の左右を元図から読み、(-2)> (-5)の関係記号を本人が作る。−1倍の数値を既知としても主判断は残る。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-difference-basis",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000480",
+          "word-p-000481"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "右−左の差が正なら右が大きいという基準を初めに教えるAUTO。未知の基準自体を当てさせない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q02-open",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000482"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "引く括弧の両項へ負号を配りb+c−a−cを生成。後の相殺とは異なる操作。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-02",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000482"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "直前に生成した四項からcと−cを相殺しb−aを計算する。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm011-q02-compare",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000482"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "生成した差b−a>0からa+c<b+cへ翻訳する主判断。計算の自動結論として隠さない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm011-q03-factor",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000484",
+          "word-p-000483"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "bc−acから共通因子cを式内で構成する。原本483の既知分解を具体的に再適用する有効な因数抽出。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm011-q03-positive",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000484"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "正×正の差の符号とac<bcを結ぶ。正の積という材料は与えるが大小関係を本人が判断する。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-03",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000484"
+        ],
+        "rationale": "原文p484はc<0の差の符号とac/bc関係を判断させる。候補は負×正という因子条件まで示し、負になるという結論を除去。既習符号計算→右−左の意味という判断を学習者へ戻す。選択肢は符号・大小・0混同を区別する。",
+        "initialReason": "原問484が要求する差の符号をbeforeが負と先に断定する。符号の材料だけ与え差の符号→ac>bcを本人が作る本文へ限定修正。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-D01",
+            "reason": "原文p484はc<0の差の符号とac/bc関係を判断させる。候補は負×正という因子条件まで示し、負になるという結論を除去。既習符号計算→右−左の意味という判断を学習者へ戻す。選択肢は符号・大小・0混同を区別する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm011-q03-zero",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000484"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "0倍で両辺0・厳密大小を失うという意味を選ぶ。正負の規則を無条件に拡張しない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-division-basis",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000485"
+        ],
+        "rationale": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。",
+        "initialReason": "非零数の除算を逆数乗算として説明するAUTO。直前の積の規則に根拠を結び0除算禁止も保持。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP01",
+            "reason": "KEEP10件。具体例から差の方法を導入し、括弧の符号配分→整理→大小、因子抽出→正数乗法、0の意味→除法へ進む。新しい差の判定法と逆数による除法接続は教える本文が必要。正×正という条件提示は積の符号と大小判断の結果そのものではない。0の結論と0除算不可は解決後に正式化する。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm011-q04-fraction",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000487"
+        ],
+        "rationale": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。",
+        "initialReason": "一般の負数倍を−1/5へ適用し式と向き・理由を選ぶtransfer。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP02",
+            "reason": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q04-negate",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000487"
+        ],
+        "rationale": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。",
+        "initialReason": "元a<bへ戻る別問を明示し−a>−bを作る。前の分数式へ続ける誤解を防ぐ。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP02",
+            "reason": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。"
+          }
+        ]
+      },
+      {
+        "id": "n11-04",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000487"
+        ],
+        "rationale": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。",
+        "initialReason": "認定済−a>−bへ同じ3を足して3−a>3−bを作る。別の変形の連結。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP02",
+            "reason": "KEEP3件。−1/5倍と−1倍後+3を別問題として元のa<bへ戻す。負数乗法規則の呼戻しは必要だが、具体式の適用は穴へ残す。二操作は別nodeに分かれる。"
+          }
+        ]
+      },
+      {
+        "id": "n11-solve-problem",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000488",
+          "word-p-000489",
+          "word-p-000490",
+          "word-p-000491"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "3x−2<5という原問と実数全体の範囲を残す目的を教えるAUTO。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm017-q05-operation",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000492"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "W038 active planで定数相殺−2+□=0を行う最初の同操作判断。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm017-q05-balance",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000492"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "W038 active planで選んだ加数を両辺へ適用し右辺にも加える。左右の同操作を学ぶ初回で単純写し扱いにしない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-05",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000492"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "W038 active planで相殺後の右辺5+2を計算する初適用。正答後は係数1という目的のみを示す。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q06-operation",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000493"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "W038 active planで3÷□=1から割る数を本人が決定。旧W036の先回り本文は現active planにはない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-06",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000493"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "W038 active planで正数除算の商7/3を作りx<7/3という範囲へ戻す。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q07-substitution",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000495"
+        ],
+        "rationale": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。",
+        "initialReason": "得た境界7/3を元の不等式へ代入し左辺5を計算する検証。境界値の再掲だけではない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP03",
+            "reason": "KEEP7件。原問p490–495の全実数範囲→定数消去→係数1→元式代入の線を維持。W038の実presentationではsum後は「係数を1に」であり未回答除数を先出ししない。6node/7変形行を保持し、同じ操作の両辺適用と計算を分ける。代入値5の計算は独立した穴。"
+          }
+        ]
+      },
+      {
+        "id": "n11-07",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000494",
+          "word-p-000495"
+        ],
+        "rationale": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。",
+        "initialReason": "代入後5<5が成り立たないという説明を解の定義へ結び、境界を含まないと解釈する。既知の真偽から集合の所属へ翻訳する活動を理由にKEEP。本文を機械的に削らない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "D04",
+            "reason": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-negative-problem",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000496",
+          "word-p-000497"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "負係数を含む別の原問−2x+3≤5へ目的を戻すAUTO。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p007-q08-subtract-left",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000498"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "負係数の例へ転移し定数+3を相殺する引数を決める。全例に機械追加する方針ではない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p007-q08-subtract-right",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000498"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "同じ引数を右辺にも適用する。負係数があるから加減だけで向きを反転する誤解を区別。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-08",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000498"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "5−3を計算して−2x≤2へ復帰。係数の符号判断に用いる結果を本人が得る。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p007-q09-direction",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000499",
+          "word-p-000500"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "負の−2で割るときの≤から≥への反転を式内で決める。次の商計算と学習行為が異なる。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-09",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000500"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "2÷(−2)=−1を計算し認定済≥と結合する。関係穴と結果穴を区別するMASTER9に適合。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q10-substitution",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000501"
+        ],
+        "rationale": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。",
+        "initialReason": "境界−1を元式へ括弧付き代入し負×負を扱って左辺5を得る。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP04",
+            "reason": "KEEP7件。正係数の例と比較し、定数消去、負数除算の向き、右辺の符号、元式への境界代入を分離。前node結果の呼戻しは次の別判断を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-10",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000501",
+          "word-p-000502",
+          "word-p-000503"
+        ],
+        "rationale": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。",
+        "initialReason": "5≤5の真偽を解の定義へ適用して境界を含むと解釈し、元図の黒丸へ接続。本文説明があっても所属判断は別なのでKEEP。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "D04",
+            "reason": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-linear-definition",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000504"
+        ],
+        "rationale": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "一次不等式と移項の意味を教えるAUTO。左右同じ加減という既習根拠に結ぶ。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-bracket-problem",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000505",
+          "word-p-000506"
+        ],
+        "rationale": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "原問3(2x+3)≥10x−17と分配→移項の目的を保持するAUTO。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm012-q11-expand",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000507"
+        ],
+        "rationale": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "3を括弧内の両項へ掛け6x+9を構成し本体へ戻る。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm012-q11-xcoef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000507"
+        ],
+        "rationale": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "両辺から10xを引き6−10=−4を計算する。次の定数計算と対象が異なる。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q11-constant",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "after",
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000507"
+        ],
+        "rationale": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。",
+        "initialReason": "現行は定数−26を入れた瞬間に本体−4x≥−26まで表示し、次のn11-11を再写しにする。局所−17−9=□のみに表示を限定し次の合成判断を残す。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-D02",
+            "reason": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。"
+          }
+        ]
+      },
+      {
+        "id": "n11-11",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000507"
+        ],
+        "rationale": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。 / KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "前段q11-constantを局所計算へ限定する案と一体で、別々に得た係数−4と定数−26を本体不等式へ初めて合成する活動としてKEEP。前段を現状のままなら再写し疑義は未解消。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-D02",
+            "reason": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。"
+          },
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q12-sign",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000508"
+        ],
+        "rationale": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。 / KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。",
+        "initialReason": "負の−4で割る不等号を本人が≤にする。数値約分とは別の主判断。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-D02",
+            "reason": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。"
+          },
+          {
+            "id": "N11-CROSS-KEEP05",
+            "reason": "KEEP6件。一次不等式と移項の名称・意味は未知語を当てさせず本文で定義。確認問題は分配法則→係数→定数→全体再構成→負数除算の向きの順。方向と計算を同時に飛ばさない。"
+          }
+        ]
+      },
+      {
+        "id": "n11-12",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000508"
+        ],
+        "rationale": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。",
+        "initialReason": "現beforeに13/2まで完成計算があり直前で≤も認定済み。完成値を先に渡さず本人が負数商と約分を行い既認定関係と合わせ範囲を作る。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-D02",
+            "reason": "p507–508の展開・同類項整理・最後の除算を分解。定数は−17−9=□で局所計算し、次nodeで−4x≥−26へ戻す。向きは別nodeで選択済みとして、候補n11-12は(−26)/(−4)だけを示し、13/2の先出しを除去。約分と既解決の向きを組み合わせる学習行為を残す。"
+          }
+        ]
+      },
+      {
+        "id": "n11-fraction-problem",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000509",
+          "word-p-000510"
+        ],
+        "rationale": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。",
+        "initialReason": "正の分母を払う目的と和全体を対象にすることを教えるAUTO。原問を維持。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "D05",
+            "reason": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p008-q13-mul-left",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000511"
+        ],
+        "rationale": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。 / KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "正分母3を払う最初の適用で倍率を式内に置く。既知分母の写しと断じて操作の初適用を消さない。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "D05",
+            "reason": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。"
+          },
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p008-q13-mul-right",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000511"
+        ],
+        "rationale": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。 / KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "両辺同倍率を右辺の和全体へ掛ける。括弧を残す対象scopeを学ぶ。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "D05",
+            "reason": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。"
+          },
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-13",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000511"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "分配の第一項3×2xの係数6を生成する。次の定数項と同じ分配を初適用。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-p008-q13-constant",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000511"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "3×1を計算しx−2≤6x+3へ戻す。2項へ同じ倍率を掛けることを完結。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm013-q14-xcoef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000512"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "両辺からxを引き6−1=5を作る。原問の未知数を一方に集める操作。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-wm013-q14-const",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000512"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "両辺から3を引き−2−3=−5を作る。前段の係数合成と対象が異なる。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-q14-divide",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000512"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "正の5で割り−1≤xを作る。反転不要という既習の具体適用。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      },
+      {
+        "id": "n11-14",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000512",
+          "word-p-000513"
+        ],
+        "rationale": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。",
+        "initialReason": "−1≤xをx≥−1へ辺を入れ替えて翻訳する。数値写しではなく同じ解集合の表現判断。",
+        "principles": [
+          "MASTER§7",
+          "MASTER§8",
+          "MASTER§9",
+          "MASTER§11",
+          "MASTER§20",
+          "MASTER§53"
+        ],
+        "finalReviewReasons": [
+          {
+            "id": "N11-CROSS-KEEP06",
+            "reason": "KEEP8件。分母消去、右辺全体への乗法、展開の係数/定数、同類項整理、正数除算、xを左にする表現変換を順に残す。最後の既解決範囲を言葉で呼び戻す説明は、未知の解を新たに先代行する箇所ではなく同じ範囲の表記変換を支える。"
+          }
+        ]
+      }
+    ]
+  },
+  "n12": {
+    "total": 49,
+    "changed": 5,
+    "nodes": [
+      {
+        "id": "n12-intro",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000516",
+          "word-p-000517"
+        ],
+        "rationale": "原問題・定義・方針の提示であり、穴なしは導出省略を意味しない。新名称/数値条件を当てさせず教える。",
+        "initialReason": "原問題・定義・方針の提示であり、穴なしは導出省略を意味しない。新名称/数値条件を当てさせず教える。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q01-subtract-x",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000518"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q01-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000518"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q01-const",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000518"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-01",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000518"
+        ],
+        "rationale": "-7<2xから正の2で割る手順を提示しつつ、商の結果を本文で先出しせず、xを左にした第一条件を選ぶ行為を維持。正数除算の規則は既習根拠の呼戻し。",
+        "initialReason": "現semantic.beforeに−7/2<xという正答と同値の完成式があり、除算の結果を本人が作る前に提示する。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D01",
+            "reason": "-7<2xから正の2で割る手順を提示しつつ、商の結果を本文で先出しせず、xを左にした第一条件を選ぶ行為を維持。正数除算の規則は既習根拠の呼戻し。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p002-q02-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000519"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q02-const",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000519"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-02",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000519",
+          "word-p-000520",
+          "word-p-000521",
+          "word-p-000522"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q03-first",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000523",
+          "word-p-000524",
+          "word-p-000525"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q03-second",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000525"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-03",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000525"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q04-left-end",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "after",
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000526"
+        ],
+        "rationale": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D04",
+            "reason": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-04",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "after",
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000526",
+          "word-p-000527"
+        ],
+        "rationale": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D04",
+            "reason": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-triple-problem",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000528",
+          "word-p-000529",
+          "word-p-000530"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "原問題・定義・方針の提示であり、穴なしは導出省略を意味しない。新名称/数値条件を当てさせず教える。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-05",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000531"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p002-q06-left-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000532"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q06-left-const",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000532"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q06-right-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000532"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q06-right-const",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000532"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-06",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000532",
+          "word-p-000533",
+          "word-p-000534",
+          "word-p-000535"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q07-boundary",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000536"
+        ],
+        "rationale": "具体的包含結論の先出しを削除した状態を維持。境界nodeで8≤7の不成立を回答した後、その結果と2、5/3の比較を使い最終範囲を選ぶ。境界node回答後の小さい上限への言及は強い足場だが、分数の大小比較と範囲の式化は残る。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D02",
+            "reason": "具体的包含結論の先出しを削除した状態を維持。境界nodeで8≤7の不成立を回答した後、その結果と2、5/3の比較を使い最終範囲を選ぶ。境界node回答後の小さい上限への言及は強い足場だが、分数の大小比較と範囲の式化は残る。"
+          }
+        ]
+      },
+      {
+        "id": "n12-07",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000536",
+          "word-p-000537"
+        ],
+        "rationale": "具体的包含結論の先出しを削除した状態を維持。境界nodeで8≤7の不成立を回答した後、その結果と2、5/3の比較を使い最終範囲を選ぶ。境界node回答後の小さい上限への言及は強い足場だが、分数の大小比較と範囲の式化は残る。",
+        "initialReason": "現semantic.beforeが5/3<2だけでなくx≤5/3がx≤2に含まれるという共通解を決める包含結論を先に述べている。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D02",
+            "reason": "具体的包含結論の先出しを削除した状態を維持。境界nodeで8≤7の不成立を回答した後、その結果と2、5/3の比較を使い最終範囲を選ぶ。境界node回答後の小さい上限への言及は強い足場だが、分数の大小比較と範囲の式化は残る。"
+          }
+        ]
+      },
+      {
+        "id": "n12-count-problem",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000538",
+          "word-p-000539",
+          "word-p-000540"
+        ],
+        "rationale": "原問題・定義・方針の提示であり、穴なしは導出省略を意味しない。新名称/数値条件を当てさせず教える。",
+        "initialReason": "原問題・定義・方針の提示であり、穴なしは導出省略を意味しない。新名称/数値条件を当てさせず教える。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-08",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000541"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-09",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000542"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p003-q10-meaning",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000543"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p003-q10-cream-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000543"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q10-pudding-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000543"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q10-box-fee",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000543"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-10",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000543"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q11-lower-sign",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000544"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p003-q11-upper-sign",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000544"
+        ],
+        "rationale": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D05",
+            "reason": "前回判断を維持。新記号T(x)の意味、三連不等式の読み方、以上/未満の意味を教える説明は必要。整数条件や金額条件の記号化も認知操作として残るため、今回の具体的端点評価の先出しと同一視しない。"
+          }
+        ]
+      },
+      {
+        "id": "n12-11",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000544"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q12-product-constant",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000547"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q12-signed-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000547"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q12-total-constant",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000547"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p003-q12-x-coef",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000547"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-12",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000547",
+          "word-p-000545",
+          "word-p-000546"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q13-operation",
+        "disposition": "CHANGE",
+        "changedFields": [
+          "after",
+          "before"
+        ],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "補助等式ではなく、元の金額不等式の三辺から同じ数を引く操作を空欄の対象にする。2650を選んでから下端・上端の計算、正数50による除算へ進むため操作の意味と計算を接続する。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": [
+          {
+            "id": "N12-D03",
+            "reason": "補助等式ではなく、元の金額不等式の三辺から同じ数を引く操作を空欄の対象にする。2650を選んでから下端・上端の計算、正数50による除算へ進むため操作の意味と計算を接続する。"
+          }
+        ]
+      },
+      {
+        "id": "n12-p002-q13-lower",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-p002-q13-upper",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q13-lower-divide",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q13-upper-divide",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-13",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000548"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q14-integer",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000550",
+          "word-p-000549"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-14",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000550"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q15-eleven",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000551"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-q15-twelve",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000551"
+        ],
+        "rationale": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "initialReason": "主判断の導入/構成/計算/合成/再利用が順序に沿って存在し、今回のsource上の内容変更は不要。旧承認の局所操作をAUTOへ戻さない。",
+        "principles": [],
+        "finalReviewReasons": []
+      },
+      {
+        "id": "n12-15",
+        "disposition": "KEEP",
+        "changedFields": [],
+        "sourceRefs": [
+          "word-p-000551",
+          "word-p-000552",
+          "word-p-000553",
+          "word-p-000554"
+        ],
+        "rationale": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "initialReason": "前段の局所判断を元問の結果へ合成/記録する旧原問。新しい独立推論数として水増しせず、既存IDと結果対応を保護する。",
+        "principles": [],
+        "finalReviewReasons": []
+      }
+    ]
+  }
+}

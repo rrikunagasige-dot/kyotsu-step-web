@@ -1,0 +1,57 @@
+{
+  "math.solve": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "math.verify": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "teaching.plan": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "step.plan": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "blank.plan": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "prose.compose": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "text.verify": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "figure.verify": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "ir.verify": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "source.audit": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "novice.audit": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  }
+}

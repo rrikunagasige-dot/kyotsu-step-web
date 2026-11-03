@@ -1,0 +1,7 @@
+{
+  "node": "R04_PROPOSAL@n11",
+  "inputHash": "f88227f3c36d2fc15252786cba24270da00d3f121316501053c2a64e65a7406d",
+  "reason": "Review exceeded original 900-second lease. CODE outputs and actual child reports are retained; source and candidate inputs unchanged. Reconcile expired token before claiming anew.",
+  "reviewNotMislabelled": "Repeated same-facet reports with firstPass=false are recorded but not used as initial source-first coverage.",
+  "newLeaseSeconds": 3600
+}

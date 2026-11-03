@@ -1,0 +1,118 @@
+{
+  "claimRef": "teaching",
+  "facet": "design",
+  "targetHash": "fdf22a6cfd8618d30e8a80455feeec568810585a450c4209feafb7168dd61c9c",
+  "verdict": "FAIL",
+  "sourceFirst": {
+    "satisfied": true,
+    "readOrder": [
+      "evidence/REVIEW_n11_design.json",
+      "W036 evidence/N11_SOURCE_INDEX.json 全43block",
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "evidence/n11-baseline-visible-snapshots.json 各current-node可視内容",
+      "初回所見を親へ送信して固定",
+      "N11_CANDIDATE_IR.json",
+      "evidence/n11-candidate-visible-snapshots.json"
+    ],
+    "authorRationaleExposure": false,
+    "excludedMaterials": [
+      "PROPOSAL.md",
+      "*_AUDIT_*.json",
+      "他agent報告"
+    ]
+  },
+  "authorSeparation": {
+    "performerRef": "/root/w047_review_design",
+    "independent": true,
+    "semanticContributor": false,
+    "writesPerformed": false,
+    "grandchildrenSpawned": false
+  },
+  "firstPass": {
+    "fixedBeforeCandidate": true,
+    "observations": [
+      "原文q07/q10は代入した関係を根拠に境界包含を学習者に判断させるが、baseline n11-07/n11-10はその関係の成立・不成立を先に説明している。",
+      "baseline n11-fraction-problemは原文q13の操作選択前に両辺3倍を提示している。",
+      "W038 q05-q06は定数取消、右辺への同操作、整理、係数除算、結果という順序を保持している。"
+    ]
+  },
+  "findings": [
+    {
+      "id": "D01",
+      "targetIds": [
+        "n11-03"
+      ],
+      "status": "PASS",
+      "sourceQuote": "word-p-000484: この差の符号を判断し、acとbcの関係を書こう。",
+      "visibleQuote": "差c(b-a)は負の数と正の数の積です。この差の符号を判断し、「右−左」の差から左右の大小を選びます。",
+      "reason": "旧文の『負になります』を除去し、積の符号と差から大小への推論を残している。c<0、b-a>0、先行する因数分解という根拠も残る。正の場合と同程度の足場になっており、原文の判断行為との整合が改善した。"
+    },
+    {
+      "id": "D02",
+      "targetIds": [
+        "n11-q11-constant",
+        "n11-11"
+      ],
+      "status": "PASS",
+      "sourceQuote": "word-p-000507: 括弧を外して同類項を移し、xの項だけを左辺に残そう。",
+      "visibleQuote": "いまの式は-4x+9≥-17です。左辺の9を打ち消すため両辺から9を引き、右辺を計算します。／-17-9=[空欄]",
+      "reason": "混在していた『-4x≥-17-9=[空欄]』を計算等式だけにし、結果も-17-9=-26とする。元の不等式と両辺同操作の説明を保持し、次のn11-11で-4x≥-26をまとめるため、不等式の意味を失わず計算行を分離できている。"
+    },
+    {
+      "id": "D03",
+      "targetIds": [
+        "n11-12"
+      ],
+      "status": "PASS",
+      "sourceQuote": "word-p-000508: 最後の乗除の符号に注意して解を書こう。",
+      "visibleQuote": "右辺(-26)/(-4)は負の数どうしの商です。約分して境界を求め、直前に選んだ不等号の向きで解の範囲を表します。",
+      "reason": "旧文の26/4=13/2という境界の先出しを除去した。n11-q12-signで確定した向きを使い、負数同士の商の計算と約分を行ってx≤13/2を選ぶ行為が残る。"
+    },
+    {
+      "id": "D04",
+      "targetIds": [
+        "n11-07",
+        "n11-10"
+      ],
+      "status": "OPEN",
+      "sourceQuote": "word-p-000495: 元の不等式に代入したときの関係を根拠に答えよう。／word-p-000501: 境界を含むか、含まないかを判断し、理由を書こう。",
+      "visibleQuote": "n11-07: 境界を代入した5<5は成り立ちません。／n11-10: 5≤5は等号の場合なので成り立ちます。",
+      "reason": "KEEPに残る判断の先出し。直前の代入計算は左右の数値を得る行為だが、その後の意味判断は成立・不成立まで本文で確定している。学習者が根拠を評価して境界を判断する部分が、説明済みの結論と選択肢を対応させる行為へ縮小する。変更3nodeの改善だけではN11全体の学習行為保存を肯定できない。"
+    },
+    {
+      "id": "D05",
+      "targetIds": [
+        "n11-fraction-problem",
+        "n11-p008-q13-mul-left",
+        "n11-p008-q13-mul-right"
+      ],
+      "status": "OPEN",
+      "sourceQuote": "word-p-000511: 分母をなくすための操作を選び、直後の不等式を書こう。",
+      "visibleQuote": "n11-fraction-problem: 分母の3は正なので、両辺を3倍しても不等号の向きは変わりません。／n11-p008-q13-mul-left: 分母の3を打ち消す数を左辺で選びます。",
+      "reason": "操作を選択させる前段で、操作と数3を指定している。後続の左辺・右辺の空欄は同じ3の再現になる。正数倍の根拠を教える説明自体は正しいが、原文q13にある『操作を選ぶ』行為を保存したKEEPと評価するには不足がある。"
+    },
+    {
+      "id": "D06",
+      "targetIds": [
+        "N11全47node",
+        "W038 q05-q06"
+      ],
+      "status": "PASS",
+      "reason": "baseline/candidateの各current-node可視オブジェクトを比較し、変化はn11-03、n11-q11-constant、n11-12の3件のみ、他44件は同一。47件すべてで順序とinteraction全体が同一だった。expected値、選択肢、prerequisiteIds、targetPath、answerInsertionの静的保存を確認した。candidate IRのid/problemId/before/interactionはcandidate snapshotsの各current-nodeと一致した。W038範囲に変更はなく、同じ両辺操作と結果行の順序を壊す変更は見つからなかった。"
+    }
+  ],
+  "rationale": [
+    "3変更は一次資料の学習行為へ近づく妥当な改善であり、変更自体に数学的誤りは認めなかった。",
+    "一方、審査対象にはKEEP範囲も含まれる。原文q07/q10の境界判断とq13の操作選択について、可視本文が判断または操作を先に確定する問題が残るため、N11全体のteaching/designをPASSとはできない。",
+    "保存契約については静的なinteraction同一性を支持できる。実行時保存・復元の成立とは区別した。"
+  ],
+  "limitations": [
+    "提案と静的可視snapshotの意味審査であり、CODE PASSを主張しない。",
+    "candidateの実レンダリングUI、画像配置、画面寸法、操作感は未検証。将来の画像合格を予告しない。",
+    "原Word自体ではなく位置付き一次資料抽出を読んだ。原画像の視覚内容は直接確認していない。",
+    "実行時の回答保存・復元・移行は未検証。",
+    "既存baseline由来の問題もKEEP範囲への反証として記録した。新規の退行と断定していない。",
+    "ファイル、Git、Storeへの書込みは行っていない。"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "claimRef": "layout",
+  "facet": "render",
+  "targetHash": "5eb6eef5cfc233db34696cfeac1cb64813c982553570d6ffceeb99f2d7a48e91",
+  "verdict": "UNVERIFIED",
+  "reviewScope": "提案・静的整合のみ。候補の実画像PASSを意味しない。",
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "firstPass": true,
+  "firstObservations": [
+    "新packet→位置付き原資料→現baseline/実reader→新候補IR→compiled→visible snapshotsの順で読んだ。",
+    "候補前に固定した所見：p484は差の符号とac/bcの関係を要求。p507–508は括弧、同類項、乗除の符号の順。現q11定数式は局所計算と不等式を混在させ、n11-12本文は13/2を先出ししている。",
+    "本文・直前結果・履歴が同じafterを使うため、候補では削除後の接続を各面で確認する。W038の6node/7変形行を保持すべき。",
+    "以前の自分の初回報告は会話に残っている。今回もPROPOSAL、AUDIT、他審査報告、作者説明は読んでいない。"
+  ],
+  "findings": [
+    {
+      "id": "N11-R2-L01",
+      "status": "CLOSED",
+      "quote": "この差の符号を判断し、「右−左」の差から左右の大小を選びます。",
+      "evidence": "n11-03はbefore段落だけ変更。c<0、b−a>0、c(b−a)を残し、穴・選択肢・afterのac>bcとbc−ac<0は不変。",
+      "assessment": "条件と判断対象を残し、結果の先出しを除く。独立した結果2式と段落境界は保持。"
+    },
+    {
+      "id": "N11-R2-L02",
+      "status": "CLOSED",
+      "quote": "境界を代入した関係は5<5です。この関係が成り立つかを確かめ…",
+      "evidence": "n11-07はbeforeだけ変更。直前代入計算、段落内slot、全選択肢、含まれないという解決後本文は不変。",
+      "assessment": "p495の元の不等式への代入を根拠にする判断を、穴の前後で接続できる。"
+    },
+    {
+      "id": "N11-R2-L03",
+      "status": "CLOSED",
+      "quote": "境界では5≤5という関係になりました。元の不等号に注意して…判断します。",
+      "evidence": "n11-10はbeforeだけ変更。直前代入結果、段落内slot、解決後の含むという結果とF02参照は不変。",
+      "assessment": "p501の境界判断を先に確定せず、等号を含む関係を判断対象として残す。履歴の完成結果も不変。"
+    },
+    {
+      "id": "N11-R2-L04",
+      "status": "CLOSED",
+      "quote": "−17−9=［選択］ → −17−9=−26",
+      "evidence": "n11-q11-constantのbefore/afterから−4x≥だけを除去。IRとcompiledの完成式はequality、式番号stableIdは維持。次のn11-11の−4x≥−26はKEEP。",
+      "assessment": "数値計算を独立させ、同じafterを使う本文・result・履歴にも混合関係式を残さない。"
+    },
+    {
+      "id": "N11-R2-L05",
+      "status": "CLOSED",
+      "quote": "右辺\\frac{-26}{-4}は負の数どうしの商です。約分して境界を求め…",
+      "evidence": "n11-12はbefore段落だけ変更。直前のx≤(−26)/(−4)、穴、選択肢、完成式x≤13/2は不変。",
+      "assessment": "縦分数で計算対象を明示し、約分結果の先出しを除く。解決後・次段階の直前結果・履歴の結論は保持。"
+    },
+    {
+      "id": "N11-R2-L06",
+      "status": "CLOSED",
+      "quote": "分母をなくす操作を考えます。…分母を打ち消す数を選びましょう。",
+      "evidence": "n11-fraction-problemのbeforeだけ変更し、(x−2)/3を縦分数化。続く左右の3倍操作、定数計算、stage14の最終範囲はKEEP。",
+      "assessment": "p510–511の分母をなくす操作へ接続し、段落と数式を保持。穴の対象は引き続き次nodeの乗数。"
+    },
+    {
+      "id": "N11-R2-L07",
+      "status": "OPEN",
+      "severity": "advisory",
+      "quote": "例題は",
+      "evidence": "新n11-fraction-problem本文の呼称。原資料word-p-000509は「確認」、現node roleはcheck。",
+      "assessment": "配置の破損ではないが、教材区分の呼称が一致しない。本文を「確認問題は」等へ揃えるか、区分変更の意図を別途確認する。",
+      "reason": "原資料word-p-000509の「確認」および現role=checkに対し、新本文が「例題は」と呼ぶため、教材区分の呼称整合が未解決。配置の静的評価は良好のまま。",
+      "targetIds": [
+        "n11-fraction-problem"
+      ]
+    },
+    {
+      "id": "N11-R2-L08",
+      "status": "CLOSED",
+      "quote": "47node / 47snapshot / 6変更 / 41KEEP",
+      "evidence": "全node順序・全interaction定義・式番号対応はbaselineと一致。全snapshotが現在nodeのafterを隠し、先行nodeのafterを保持。equationGroup差分はq11定数完成式のinequality→equalityだけ。",
+      "assessment": "式・slot・選択肢・判断結果の静的整合に破損なし。"
+    },
+    {
+      "id": "N11-R2-L09",
+      "status": "CLOSED",
+      "quote": "3x−2<5 → 3x−2+2<5+2 → 3x<7 → 3x/3<7/3 → x<7/3",
+      "evidence": "W038 stage05–06の6nodeはすべてKEEP。現n11Transformationの主行・補助行・slot・可視条件・式番号16は保持対象。",
+      "assessment": "提案による変形列の切断、補助等式と主不等式の混同、番号変更はない。"
+    }
+  ],
+  "coverage": {
+    "changed": [
+      "n11-03",
+      "n11-07",
+      "n11-10",
+      "n11-q11-constant",
+      "n11-12",
+      "n11-fraction-problem"
+    ],
+    "keep": [
+      "n11-intro",
+      "n11-01",
+      "n11-difference-basis",
+      "n11-q02-open",
+      "n11-02",
+      "n11-wm011-q02-compare",
+      "n11-wm011-q03-factor",
+      "n11-wm011-q03-positive",
+      "n11-wm011-q03-zero",
+      "n11-division-basis",
+      "n11-wm011-q04-fraction",
+      "n11-q04-negate",
+      "n11-04",
+      "n11-solve-problem",
+      "n11-wm017-q05-operation",
+      "n11-wm017-q05-balance",
+      "n11-05",
+      "n11-q06-operation",
+      "n11-06",
+      "n11-q07-substitution",
+      "n11-negative-problem",
+      "n11-p007-q08-subtract-left",
+      "n11-p007-q08-subtract-right",
+      "n11-08",
+      "n11-p007-q09-direction",
+      "n11-09",
+      "n11-q10-substitution",
+      "n11-linear-definition",
+      "n11-bracket-problem",
+      "n11-wm012-q11-expand",
+      "n11-wm012-q11-xcoef",
+      "n11-11",
+      "n11-q12-sign",
+      "n11-p008-q13-mul-left",
+      "n11-p008-q13-mul-right",
+      "n11-13",
+      "n11-p008-q13-constant",
+      "n11-wm013-q14-xcoef",
+      "n11-wm013-q14-const",
+      "n11-q14-divide",
+      "n11-14"
+    ]
+  },
+  "rationale": "原文の条件・操作・判断順と候補の6変更を対照し、41KEEPを全件比較した。変更は段落内の判断先出しの除去、局所計算の独立、分数の明示であり、実readerの解決後本文・直前結果・履歴が参照する結果との静的接続を保つ。全interactionは不変で、選択肢の複数行表示を変える提案はない。W038の既存整列と番号も変更しない。教材区分の呼称1件は助言事項としてOPENだが、配置・式・slotの静的合格を妨げる所見ではない。",
+  "limitations": [
+    "候補実画像は未作成。候補の字幅、390pxでの改行、式番号との重なり、縦分数と穴の高さ、選択肢・直前結果・履歴の実DOM配置はUNVERIFIED。",
+    "基準実画像は現行baselineであり、候補画像として扱っていない。",
+    "visible snapshotsはIR投影でありReact画面ではない。提案採用後に6変更nodeの未回答・誤答・解決後・履歴とW038 stage05–06を実画面で確認する必要がある。",
+    "製品・Work・Git・Storeは変更せず、許可された報告JSONだけを/tmpへ保存した。"
+  ]
+}

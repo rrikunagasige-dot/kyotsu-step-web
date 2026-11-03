@@ -1,0 +1,318 @@
+{
+  "claimRef": "layout",
+  "facet": "render",
+  "targetHash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+  "verdict": "PASS",
+  "sourceFirst": true,
+  "firstPass": true,
+  "authorSeparation": true,
+  "firstObservations": [
+    "候補を読む前に原問41block、現49node/15stage、共通reader/CSS、390px基準stage1/4/8/15、06/15選択肢とhistoryを確認して初見を固定した。",
+    "連立例題、三連不等式確認、文章例題、実数範囲から整数個数への復帰の問題境界を守る。",
+    "別の条件やT(11)/T(12)は独立した式として表示し、等式の連鎖にしない。",
+    "stage4の個別二条件とstage14の整数条件・金額範囲を保持し、完成図は必要回答の後に開く。",
+    "現本文の判断先取りを取り除きつつ、前に求めた既知結果は使える状態を保つ。見出し等の縦長さは既存の任意改善。"
+  ],
+  "findings": [
+    {
+      "id": "N12-LAYOUT-OPEN-01",
+      "status": "RESOLVED_BY_EXISTING_MATERIALIZATION",
+      "reason": "追加照合でn12-15はW036 N12_IR.jsonと候補IRのnode全体が同一と確認した。現n12Authoredのafterは\\begin{aligned}T(11)&=3200円\\\\T(12)&=3250円\\end{aligned}の独立二行。W036 materialize.mjsのindependentFunctionRowsはcomma後の\\quadだけでなくcomma+\\spaceを分割し、29〜32行相当の後処理でcompiled式を独立alignedへ変換する。CURRENT_MATERIALIZERはこの後処理込みで現Authoredを再現した証拠である。今回の実装経路は現Authoredへ必要5nodeのbefore/after差分のみを合成してn12-15をKEEPするため、既存二行は失われない。初回のOPENは後処理前compileを最終Authoredへ全面置換するという未確認の前提に基づいていたため撤回する。単体compileだけをreaderへ直接渡せば連鎖誤読となる懸念は残るが、それは今回経路とは異なり実装QAとして区別する。",
+      "targetIds": [
+        "n12-15",
+        "n12-15-equation"
+      ]
+    },
+    {
+      "id": "N12-LAYOUT-QA-01",
+      "status": "IMPLEMENTATION_QA",
+      "reason": "差分合成時にn12-06/n12-15の既存aligned結果とsemanticDisplayをKEEPし、compile全面置換を行わないことを実装後確認する。n12-q13-operationの長い三辺式は390pxで≤/<・各辺の2650減算・式番号が読めることを確認する。",
+      "targetIds": [
+        "n12-q13-operation",
+        "n12-06"
+      ]
+    },
+    {
+      "id": "N12-LAYOUT-OPTIONAL-01",
+      "status": "OPTIONAL_EXISTING_IMPROVEMENT",
+      "reason": "n12-09など既存本文には判断を直接教える箇所が残る。原問は個数の数種と範囲を書く確認で、実数から整数への復帰の要所は保持されており、今回のlayout変更による退行とは区別する。",
+      "targetIds": [
+        "n12-09"
+      ]
+    }
+  ],
+  "rationale": {
+    "scope": "静的提案審査としてPASS。既存Authoredへの必要差分合成とW036整列後処理の保持を前提とし、学習を損なう未解決OPENは認めない。候補実画像審査のPASSは主張しない。",
+    "coverage": {
+      "sourceBlocks": 41,
+      "nodes": 49,
+      "authoredIRChangedNodes": 5,
+      "authoredIRKeepNodes": 44,
+      "compiledDisplayChangedNodes": 7,
+      "compiledDisplayKeepNodes": 42,
+      "answerContractsCompared": 46,
+      "visibleSnapshots": 49,
+      "sourceFigures": 3,
+      "countNote": "5/44はW036 baseline IRとの実比較による差分。後処理前compiledと現Authoredでは7/42だが、そのうちn12-06/n12-15は既存後処理の差。今回のAuthored必要差分合成は5nodeのみ。"
+    },
+    "answerAssessment": "46回答の正答値と選択肢集合が現itemsと一致し、49node順序も維持。49snapshotすべてで現在nodeのafterは非表示。interaction.expectedはデータであり画面への露出とは扱わない。",
+    "figureGates": "図metadataは候補IR外で現presentationに保持される前提。既存readerはextra.figureをresolved(node)の後だけ表示する。n12-f01はn12-02、f02はn12-06、f03はn12-15の正解後という元gateは維持すべきで、IR変更から前倒しする理由はない。",
+    "oneSlotAssessment": "n12-q13-operation.beforeはparagraph中のanswerSlot一つ。正解後に3200−2650≤(2650+50x)−2650<3300−2650を開き、afterで簡約形へ進む。後続の下限/上限計算を先取りしない。",
+    "historyAndReferenceAssessment": "既存knownRefsはstage4で二つの個別条件、stage14で整数条件と実数範囲を戻す。今回候補はnodeId/順序/結果IDを維持するため既存の直前結果と履歴構造を保てる。n12-06とn12-15の独立出力の番号は重複せず末行に一つとし、履歴全文でも独立性を維持する必要がある。",
+    "nodeReview": [
+      {
+        "nodeId": "n12-intro",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q01-subtract-x",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q01-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q01-const",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-01",
+        "disposition": "CHANGE",
+        "assessment": "完成形−7/2<xの先取りを除去し、正数除算の根拠を保持。"
+      },
+      {
+        "nodeId": "n12-p002-q02-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q02-const",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-02",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q03-first",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q03-second",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-03",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q04-left-end",
+        "disposition": "CHANGE",
+        "assessment": "左端不含の結論を回答後へ移し、元の二条件から記号を判断させる。"
+      },
+      {
+        "nodeId": "n12-04",
+        "disposition": "CHANGE",
+        "assessment": "右端の含有判断を回答前に断定せず、回答後に根拠を示す。左端は既答として保持。"
+      },
+      {
+        "nodeId": "n12-triple-problem",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-05",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q06-left-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q06-left-const",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q06-right-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q06-right-const",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-06",
+        "disposition": "KEEP_AUTHORED_POSTPROCESSED",
+        "assessment": "候補IRはbaselineから不変。後処理前compiledと現Authoredの差はあるが、既存整列済みAuthoredへ5nodeのみ合成する今回経路では独立二行をKEEP。IR単体compileを全面置換しないことは実装QA。"
+      },
+      {
+        "nodeId": "n12-q07-boundary",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-07",
+        "disposition": "CHANGE",
+        "assessment": "上限5/3を答えとして先取りせず、2と5/3の比較を判断させる。x=2不適は既答。"
+      },
+      {
+        "nodeId": "n12-count-problem",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-08",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-09",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q10-meaning",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q10-cream-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q10-pudding-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q10-box-fee",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-10",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q11-lower-sign",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q11-upper-sign",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-11",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q12-product-constant",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q12-signed-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q12-total-constant",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p003-q12-x-coef",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-12",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q13-operation",
+        "disposition": "CHANGE",
+        "assessment": "三辺へ同じ数を引く操作の1slotへ変更。正解後に各辺から2650を引いた式を示す。三辺操作と混合した≤/<を保持。"
+      },
+      {
+        "nodeId": "n12-p002-q13-lower",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-p002-q13-upper",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q13-lower-divide",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q13-upper-divide",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-13",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q14-integer",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-14",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q15-eleven",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-q15-twelve",
+        "disposition": "KEEP",
+        "assessment": "原問の問題境界、既存の段階内役割と表示内容を維持。今回変更による新たな表示問題は認めない。"
+      },
+      {
+        "nodeId": "n12-15",
+        "disposition": "KEEP_AUTHORED_POSTPROCESSED",
+        "assessment": "候補IRはbaselineから不変。後処理前compiledと現Authoredの差はあるが、既存整列済みAuthoredへ5nodeのみ合成する今回経路では独立二行をKEEP。IR単体compileを全面置換しないことは実装QA。"
+      }
+    ],
+    "materializationAssessment": "W036 materialize.mjs、CURRENT_MATERIALIZER.json、現Authoredのn12-15、基準N12_IRの同nodeを追加照合した。候補で変わるIRは5nodeのみ。n12-06/n12-15のcompile上の差異は既存post-compile整列を外した表示との差であり、今回案の変更ではない。KEEP44nodeに含まれる二つの整列表示は現Authoredから維持する。"
+  },
+  "limitations": [
+    "候補実画面は未生成。390px実測、式番号衝突、正解置換、選択肢open/誤答hint、履歴全文、図gateの実動は実装後QA。",
+    "基準history画像は390×19989の全景を縮小で確認しており、各行を実測した証拠ではない。履歴仕様は既存readerから静的確認。",
+    "PROPOSAL/AUDIT/他審査報告は未読。正式packetに記載された作者参照と親から渡された確認観点は受領したが、作者理由を先読していない。",
+    "materialize後のsemanticDisplayや番号aliasの完成を本審査で保証しない。",
+    "追加資料照合前に記録したn12-15 OPENは、後処理前compileを最終表示と同一視した前提を訂正して解消した。初見・最初の審査過程を消さず、この追記とfindingsに経緯を保持する。"
+  ]
+}

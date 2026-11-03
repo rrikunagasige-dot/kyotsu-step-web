@@ -1,0 +1,100 @@
+{
+  "assignment": {
+    "assignmentId": "w047-n12-render-fresh-770b485c-29695178-w047_layout_sourcefirst",
+    "roleEpoch": 3,
+    "node": "R04_PROPOSAL@n12",
+    "block": "n12",
+    "facet": "render",
+    "claimRefs": [
+      "layout"
+    ],
+    "performerRef": "/root/w047_layout_sourcefirst",
+    "role": "reviewer",
+    "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+    "artifactHashes": {
+      "layout": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840"
+    },
+    "allowedPaths": [],
+    "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+    "dependsOnTasks": [],
+    "budget": {
+      "tokenBudget": null
+    },
+    "independent": true,
+    "targetManifestRef": "39853e9a3d4829a4946499614627dca78c3d4075280c13449c1f6f327a4b685c"
+  },
+  "packet": {
+    "baseNodeInputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "sourceRefs": [
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+    ],
+    "authorHistory": [
+      {
+        "claimRef": "layout",
+        "facet": "render",
+        "block": "n12",
+        "semanticContributorRefs": [
+          "/root",
+          "/root/w046_render_review"
+        ]
+      }
+    ],
+    "contextExposure": {
+      "forkMode": "filtered",
+      "authorRationaleVisibleAtFirstPass": false
+    },
+    "packetHash": "1076d7443d6b8eec5c778796efb8c66f32f74cdee147801a791461284fb92452"
+  },
+  "target": {
+    "artifactHashes": {
+      "layout": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840"
+    },
+    "artifactRefs": [
+      "d8683bb633fea373688514e0e6f8ffb3bdcbab896ba0334fab1ac9e8ed7faf46"
+    ],
+    "block": "n12",
+    "blockContext": {
+      "n12": {}
+    },
+    "evidenceRefs": [
+      "da395103-442d-4ad0-9c0b-88b0ba916f53",
+      "d575b2df-aa4e-4f83-85d9-a19103c0c91b",
+      "31856966-beeb-4d0b-924b-ac4be46e775f",
+      "c8d771e2-aac4-44c8-aad0-f7dedcea983a",
+      "3905ba3c-53ef-48ad-823e-19d394101483",
+      "7e31ce7a-2c6c-4ecf-873e-4a38996ed205",
+      "9752a7ab-7a19-4a32-bc89-ae6c63ed1ffe"
+    ],
+    "facet": "render",
+    "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "node": "R04_PROPOSAL@n12",
+    "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+    "schemaVersion": "team-target/1",
+    "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+    "work": "W-MATH-047"
+  },
+  "logicalRole": "B",
+  "reviewKind": "learner-visible-review",
+  "instruction": "Read the original positioned source and baseline current public snapshots before the inactive candidate. Do not read PROPOSAL.md or *_AUDIT_*.json before returning first observations. Review is proposal/static only; candidate rendered UI is not yet available.",
+  "registration": {
+    "registrationRef": "cb48b453cde8f7ee2b9cf3a7bf8d0244296e15e96b3bf494f3e99787872c7d25",
+    "assignmentHash": "3a7601e2ea1b9d966f65f29101c28d2389e879e4d6bd2055cc32818c0bc033d7",
+    "eventRef": "3c2b97aca456b68d525fbe586920b50e10781ba494110d73ca0b3b3857a816f5"
+  },
+  "harness": {
+    "agentRef": "/root/w047_layout_sourcefirst",
+    "taskRef": "/root/w047_layout_sourcefirst",
+    "parentRef": "/root",
+    "logicalRole": "B",
+    "toolResultRef": "53f5a0f567f2b83f51c0d77497dcd3372ed9b2b0c46b1d0ad9c07147751ccf94",
+    "attestationMethod": "transcribed-tool-result"
+  },
+  "output": {
+    "outputRef": "9be999e64af9586dbea759f57fb8a083a9713aabb2efd98fead56927e1612e60",
+    "eventRef": "3ea141716480c9c2d79e1a948b4b0378b67375d87de8f92f512ec0b2ef3936b9"
+  },
+  "rawReportSHA256": "9952f890fd8c4fd6256aedb902ab49a4aa0a5a0615fc34c025ac1bf111ca4ca1"
+}

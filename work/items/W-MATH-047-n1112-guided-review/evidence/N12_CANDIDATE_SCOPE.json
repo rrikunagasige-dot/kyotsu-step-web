@@ -1,0 +1,12 @@
+{
+  "changedNodes": [
+    "n12-01",
+    "n12-q04-left-end",
+    "n12-04",
+    "n12-07",
+    "n12-q13-operation"
+  ],
+  "nodes": 49,
+  "interactionContractsUnchanged": true,
+  "learnerImplementation": false
+}

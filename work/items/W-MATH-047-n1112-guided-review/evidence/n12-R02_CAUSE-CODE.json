@@ -1,0 +1,37 @@
+{
+  "case.retrieve": {
+    "status": "PASS",
+    "retrievalMode": "SCOPED_CATALOG",
+    "modelRan": false
+  },
+  "knowledge.ledger": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "math.verify": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "ir.verify": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "source.audit": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "novice.audit": {
+    "status": "PASS",
+    "retrievalMode": null,
+    "modelRan": null
+  },
+  "math.solve": {
+    "status": "NEEDS_AI_REVIEW",
+    "retrievalMode": null,
+    "modelRan": null
+  }
+}

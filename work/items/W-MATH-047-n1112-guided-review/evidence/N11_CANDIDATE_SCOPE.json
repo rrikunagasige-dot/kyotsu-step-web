@@ -1,0 +1,13 @@
+{
+  "changedNodes": [
+    "n11-03",
+    "n11-07",
+    "n11-10",
+    "n11-q11-constant",
+    "n11-12",
+    "n11-fraction-problem"
+  ],
+  "nodes": 47,
+  "interactionContractsUnchanged": true,
+  "learnerImplementation": false
+}

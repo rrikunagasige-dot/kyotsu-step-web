@@ -1,0 +1,1349 @@
+{
+  "status": "PASS",
+  "candidates": [
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000516",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-intro"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000517",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-intro"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-intro-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-intro"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-intro"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000518",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q01-subtract-x"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q01-subtract-x-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q01-subtract-x"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q01-subtract-x"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000518",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q01-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000518",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-const"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q01-const-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-const"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q01-const"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000518",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-01"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-01-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-01"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-01"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000519",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q02-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000519",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-const"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q02-const-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-const"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q02-const"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000519",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000520",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000521",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "operation.targets.3",
+      "learningAction": "selection",
+      "value": "word-p-000522",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-02-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-02"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000523",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-first"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000524",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-first"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000525",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-first"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q03-first-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-first"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-first"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000525",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-second"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q03-second-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-second"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q03-second"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000525",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-03"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-03-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-03"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-03"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000526",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q04-left-end"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q04-left-end-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q04-left-end"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q04-left-end"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000526",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-04"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000527",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-04"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-04-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-04"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-04"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000528",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-triple-problem"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000529",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-triple-problem"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000530",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-triple-problem"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-triple-problem-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-triple-problem"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-triple-problem"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000531",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-05"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-05-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-05"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-05"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000532",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q06-left-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000532",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-const"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q06-left-const-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-const"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-left-const"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000532",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q06-right-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000532",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-const"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q06-right-const-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-const"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q06-right-const"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000532",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000533",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000534",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "operation.targets.3",
+      "learningAction": "selection",
+      "value": "word-p-000535",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-06-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-06"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000536",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q07-boundary"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q07-boundary-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q07-boundary"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q07-boundary"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000536",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-07"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000537",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-07"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-07-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-07"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-07"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000538",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-count-problem"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000539",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-count-problem"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000540",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-count-problem"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-count-problem-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-count-problem"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-count-problem"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000541",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-08"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-08-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-08"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-08"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000542",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-09"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-09-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-09"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-09"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000543",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-meaning"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q10-meaning-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-meaning"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-meaning"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000543",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-cream-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q10-cream-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-cream-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-cream-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000543",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-pudding-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q10-pudding-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-pudding-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-pudding-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000543",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-box-fee"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q10-box-fee-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-box-fee"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q10-box-fee"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000543",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-10"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-10-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-10"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-10"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000544",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-lower-sign"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q11-lower-sign-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-lower-sign"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-lower-sign"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000544",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-upper-sign"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q11-upper-sign-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-upper-sign"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q11-upper-sign"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000544",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-11"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-11-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-11"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-11"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000547",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-product-constant"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q12-product-constant-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-product-constant"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-product-constant"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000547",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q12-signed-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q12-signed-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q12-signed-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q12-signed-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000547",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-total-constant"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q12-total-constant-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-total-constant"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-total-constant"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000547",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-x-coef"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p003-q12-x-coef-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-x-coef"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p003-q12-x-coef"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000547",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-12"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000545",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-12"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000546",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-12"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-12-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-12"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-12"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-operation"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q13-operation-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-operation"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-operation"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-lower"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q13-lower-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-lower"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-lower"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-upper"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-p002-q13-upper-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-upper"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-p002-q13-upper"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-lower-divide"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q13-lower-divide-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-lower-divide"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-lower-divide"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-upper-divide"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q13-upper-divide-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-upper-divide"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q13-upper-divide"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000548",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-13"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-13-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-13"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-13"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000550",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q14-integer"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000549",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q14-integer"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q14-integer-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q14-integer"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "judgment",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q14-integer"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000550",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-14"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-14-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-14"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "meaning",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-14"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000551",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-eleven"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q15-eleven-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-eleven"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-eleven"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000551",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-twelve"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-q15-twelve-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-twelve"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "calculation",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-q15-twelve"
+    },
+    {
+      "targetPath": "operation.targets.0",
+      "learningAction": "selection",
+      "value": "word-p-000551",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    },
+    {
+      "targetPath": "operation.targets.1",
+      "learningAction": "selection",
+      "value": "word-p-000552",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    },
+    {
+      "targetPath": "operation.targets.2",
+      "learningAction": "selection",
+      "value": "word-p-000553",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    },
+    {
+      "targetPath": "operation.targets.3",
+      "learningAction": "selection",
+      "value": "word-p-000554",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    },
+    {
+      "targetPath": "produces.0",
+      "learningAction": "relation",
+      "value": "n12-15-result",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    },
+    {
+      "targetPath": "operation.kind",
+      "learningAction": "judgment",
+      "value": "expression",
+      "decision": "NEEDS_AI_SELECTION",
+      "whyHere": null,
+      "nodeId": "n12-15"
+    }
+  ]
+}

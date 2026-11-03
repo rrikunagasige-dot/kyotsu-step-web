@@ -1,28 +1,28 @@
 # ブロック火柴図（GENERATED）
 
-台帳HEAD: `a75bcff8f2c9c980b0907efca38fce549f52d47b276d59b24e185772718b0d81`
+台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
 
 ```mermaid
 flowchart TD
   N0["S00_RECOVER / CODE / PASSED"]
   N1["S01_ROUTE / CODE / PASSED"]
-  N2["R01_CAPTURE@n11 / AI / PASSED"]
-  N3["R02_CAUSE@n11 / AI / PASSED"]
-  N4["R03_IMPACT@n11 / AI / PASSED"]
-  N5["R04_PROPOSAL@n11 / AI / PASSED"]
-  N6["R05_APPROVAL@n11 / USER / PASSED"]
-  N7["R06_PATCH@n11 / TOOL / PASSED"]
-  N8["R07_VERIFY@n11 / TOOL / PASSED"]
-  N9["R07_SEMANTIC@n11 / AI / PASSED"]
-  N10["R01_CAPTURE@n12 / AI / PASSED"]
-  N11["R02_CAUSE@n12 / AI / PASSED"]
-  N12["R03_IMPACT@n12 / AI / PASSED"]
-  N13["R04_PROPOSAL@n12 / AI / PASSED"]
+  N2["R01_CAPTURE@n11 / AI / INVALIDATED"]
+  N3["R02_CAUSE@n11 / AI / INVALIDATED"]
+  N4["R03_IMPACT@n11 / AI / INVALIDATED"]
+  N5["R04_PROPOSAL@n11 / AI / INVALIDATED"]
+  N6["R05_APPROVAL@n11 / USER / INVALIDATED"]
+  N7["R06_PATCH@n11 / TOOL / INVALIDATED"]
+  N8["R07_VERIFY@n11 / TOOL / INVALIDATED"]
+  N9["R07_SEMANTIC@n11 / AI / INVALIDATED"]
+  N10["R01_CAPTURE@n12 / AI / INVALIDATED"]
+  N11["R02_CAUSE@n12 / AI / INVALIDATED"]
+  N12["R03_IMPACT@n12 / AI / INVALIDATED"]
+  N13["R04_PROPOSAL@n12 / AI / INVALIDATED"]
   N14["R05_APPROVAL@n12 / USER / PENDING"]
   N15["R06_PATCH@n12 / TOOL / PENDING"]
   N16["R07_VERIFY@n12 / TOOL / PENDING"]
   N17["R07_SEMANTIC@n12 / AI / PENDING"]
-  N18["G2_AUDIT@n11 / AI / PENDING"]
+  N18["G2_AUDIT@n11 / AI / INVALIDATED"]
   N19["G3_HOST@n11 / TOOL / PENDING"]
   N20["G3_FINAL@n11 / USER / PENDING"]
   N21["R03_IMPACT_SWEEP@n11 / AI / PENDING"]
@@ -74,7 +74,7 @@ flowchart TD
   N1 --> N10
 ```
 
-現在: G2_AUDIT@n11 / READY
+現在: R01_CAPTURE@n11 / READY
 
 ## 主担当と2 subagent（同じsnapshot）
 
@@ -109,11 +109,12 @@ flowchart TD
 | R04_PROPOSAL@n12 | B / /root/w047_layout_sourcefirst | reviewer | render: layout | COMPLETED |
 | R07_SEMANTIC@n11 | A / /root/w047_review_design | reviewer | render: implemented-visible | COMPLETED |
 | R07_SEMANTIC@n11 | A / /root/w047_review_design | reviewer | render: implemented-visible | COMPLETED |
+| G2_AUDIT@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: integrated-release | COMPLETED |
 
 CODE: 担当・packet・対象hash・非作者・未解決を検査。AI: 原資料・数学・教え方・実表示を審査。USER: 具体案承認と実アプリ評価。
 役割交代は作者履歴を消さない。差戻しは元工程への改訂taskとして記録。
 
-finding記録: 30
+finding記録: 31
 - D04 / n11 / teaching / OPEN / KEEPに残る判断の先出し。直前の代入計算は左右の数値を得る行為だが、その後の意味判断は成立・不成立まで本文で確定している。学習者が根拠を評価して境界を判断する部分が、説明済みの結論と選択肢を対応させる行為へ縮小する。変更3nodeの改善だけではN11全体の学習行為保存を肯定できない。
 - D04 / n11 / teaching / VERIFIED_FIXED / 成立・不成立の断定を削除した。先行する代入nodeの回答後説明も5<5または5≤5という関係の提示までで、その評価を断定しない。数値計算から関係の評価、境界包含と理由の選択へ進む行為が復帰した。既に求めた範囲を根拠として参照できることは、原文の順序にも整合する。
 - D04 / n11 / teaching / VERIFIED_FIXED / word-p-000495/000501の関係評価と境界包含判断が維持される。直前の代入nodeの回答後説明も関係の提示までで、成立・不成立は断定しない。前回修正の解決を維持。
@@ -144,3 +145,4 @@ finding記録: 30
 - N12-D04 / n12 / teaching / VERIFIED_FIXED / 回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。
 - CI-V06 / n11 / implemented-visible / OPEN / 段階全体の実PNGには中央位置で固定ヘッダ/本文へ移動ボタンが展開説明の上に重なり、当該本文・式の一部を視認できない。局所focusの合格からこの隠れた全段階文脈まで合格とはできない。通常UIの恒常欠陥かスクリーンショット時のscroll/sticky由来かは未切分け。隠れた箇所を覆わない文脈画像または通常viewportの証拠が必要。
 - CI-V06 / n11 / implemented-visible / VERIFIED_FIXED / 前者で3(2x+3)=6x+9、(6-10)x+9≥-17/6-10=-4、-17-9=-26(26)、記録説明、結果を元不等式へ戻す説明と未回答(27)が一つの通常画面に見える。後者で(26)から(27)への接続と4選択肢を同時に確認できる。対象本文・式を画面中央の固定ヘッダが覆う旧長大写真の不足は新viewport証拠で解消した。旧画像そのものを修正済みとは称さず、旧UNVERIFIED報告は履歴として保持する。
+- G2-B-L01 / None / integrated-release / OPEN / divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。

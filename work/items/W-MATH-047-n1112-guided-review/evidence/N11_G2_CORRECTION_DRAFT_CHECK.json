@@ -1,0 +1,129 @@
+{
+  "status": "PASS_STATIC_PROPOSAL_ONLY",
+  "implemented": false,
+  "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "planHash": "a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282",
+  "gradingHash": "7d1c0714ad5b182d2705de4a589e726264e95372cd01a91f691048b9caeef4f4",
+  "checks": [
+    "Current graph/source binding validation",
+    "All five interaction IDs, answer keys, choices, prerequisites unchanged",
+    "39 answer contracts in authored data untouched",
+    "Number16 and aliases preserved",
+    "At divisor-correct/end-unanswered: divide right is one slot, final hidden"
+  ],
+  "limits": [
+    "Not rendered or deployed",
+    "After approval: real four-width initial/wrong/correct/history/reset/save/migration and source-first meaning review required"
+  ],
+  "partialVisible": [
+    {
+      "id": "n11-tg-initial",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "3x-2"
+          }
+        ],
+        "relation": "<",
+        "right": [
+          {
+            "type": "math",
+            "latex": "5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-tg-cancel",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "-2+2"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-tg-add",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "3x-2+2"
+          }
+        ],
+        "relation": "<",
+        "right": [
+          {
+            "type": "math",
+            "latex": "5+2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-tg-sum",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "3x"
+          }
+        ],
+        "relation": "<",
+        "right": [
+          {
+            "type": "math",
+            "latex": "7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-tg-divisor",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\frac{3}{3}"
+          }
+        ],
+        "relation": "=",
+        "right": [
+          {
+            "type": "math",
+            "latex": "1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-tg-divide",
+      "formula": {
+        "left": [
+          {
+            "type": "math",
+            "latex": "\\frac{3x}{3}"
+          }
+        ],
+        "relation": "<",
+        "right": [
+          {
+            "type": "slot",
+            "id": "n11-tg-final-quotient",
+            "interactionRef": "n11-06"
+          }
+        ]
+      }
+    }
+  ]
+}

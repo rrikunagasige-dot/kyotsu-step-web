@@ -21,3 +21,7 @@
 
 ## 正式CI・R07完了
 T2の成功CI41617178126と、文脈画像改善後の成功CI41620137341を実APIで確認。後者source4a09de7a、artifact13223652318、ZIP sha256 c6e9868609860de690d791a8e7f9ce0de9faff7a80e564999c3901df255b4144。native CI/capture/screenshotを経てR07_VERIFY/R07_SEMANTIC PASS。修正版99 raw files、全四幅39/109、保存移行、原図/番号/契約/W038一致。N12 mode BASELINEは旧版保持のみ。公開/本人アプリ受入は未実施。main Gate①の実画像確認票を提示する。
+
+## 2026-11-03 G2再開
+
+G2-A01/G2-B-L01: 保持W038の未回答商7/3先出しを確認しG2 FAIL、issue W047-G2-L01を正式登録。必須初見を満たさないfirstPass=falseを保存し、PASSに変換していない。原報告と未確認面はCROSS_BLOCK_AUDIT_N11.md/evidence/N11_G2_*参照。G2結果初回提出はaudit_rows version欠落で拒否され、全行に正しいrelease SHAを付与して再提出。CODEの拒否条件は変更していない。未適用修正案の初回compileは数学依存不足、PYTHONPATH=/tmp/w046-sympyで再実行し静的PASS。製品ファイルはこの再開中に未変更。次はG2_CORRECTION_PROPOSAL.mdの具体案承認と修正工程。

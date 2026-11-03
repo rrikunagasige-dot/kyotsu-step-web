@@ -1,7 +1,7 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "a75bcff8f2c9c980b0907efca38fce549f52d47b276d59b24e185772718b0d81",
+  "ledger_head": "c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
@@ -11,26 +11,33 @@
     "task": {
       "work_id": "W-MATH-047",
       "node": {
-        "id": "G2_AUDIT@n11",
-        "stage_kind": "G2_AUDIT",
-        "contract_kind": "G2_AUDIT",
+        "id": "R01_CAPTURE@n11",
+        "stage_kind": "R01_CAPTURE",
+        "contract_kind": "R01_CAPTURE",
         "actor": "AI",
         "depends_on": [
-          "R07_SEMANTIC@n11"
+          "S01_ROUTE"
         ],
         "required": [
-          "audit_rows",
-          "release_readiness",
-          "impact_sweep_completion",
-          "audit_method",
-          "unknowns"
+          "complaint",
+          "before_evidence",
+          "reproduction",
+          "target_versions"
         ],
-        "block": null,
+        "block": "n11",
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "pre-release",
+        "phase": "pre-design",
         "priority": 0,
-        "source_refs": [],
+        "source_refs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+        ],
         "protected_refs": [
           "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
           "src/data/textbook/math/numbers/n09Authored.json",
@@ -49,31 +56,21 @@
           "public/assets/math/textbook/numbers/n12-f02.png",
           "public/assets/math/textbook/numbers/n12-f03.png"
         ],
+        "approval_scope_ref": "proposal",
         "capability_requests": [
-          "protected.verify",
-          "impact.inventory"
+          "source.fixed",
+          "feedback.capture"
         ],
         "required_code_receipts": [
-          "protected.verify",
-          "impact.inventory"
+          "source.fixed",
+          "feedback.capture"
         ],
         "required_ai_receipts": [
           "meaning-review"
-        ],
-        "team_requirements": [
-          {
-            "claimRef": "integrated-release",
-            "facet": "render",
-            "firstPass": true,
-            "independent": true,
-            "reviewKind": "learner-visible-review",
-            "sourceFirst": true,
-            "stage_kind": "G2_AUDIT"
-          }
         ]
       },
-      "task_id": "d3c45093356e318b1a16b2bc397ba16c8e7e48cb57f6005a4d938f2a91512f1b",
-      "input_hash": "a991aaa48ab3fc48ae2259fbe90c3d1ea87a8ab8567b90ad9b82a3e31112d192",
+      "task_id": "ac2fa7520c4479f6c9057de940d219a60c8295017712f31b096a73c42a343aaf",
+      "input_hash": "ae4208d932472de0eac1c5d788612a137673ac92bfec438312a4f4bf847819bc",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "candidate_sha": "4a09de7a0f910669946466daf918ab28c820a5f2",
       "rules": {
@@ -123,11 +120,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
       },
       "previous_results": {
-        "R07_SEMANTIC@n11": {
-          "actor": "capability-runner",
-          "artifact": "38890f01976d7c947471077cb5a1609cf8234fc7eae39c552b99d0142654d6da",
-          "input_hash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
-          "node": "R07_SEMANTIC@n11",
+        "S01_ROUTE": {
+          "actor": "deterministic-code",
+          "artifact": "2b35cd8a33bae602190bcf49824d0acc26e7acf4f82a186e30c9600771ced43a",
+          "input_hash": "1165b5b17834fcd477c3ab40a206c4d621ecb40f37a087f17bd243ab471b89b4",
+          "node": "S01_ROUTE",
           "verdict": "PASS"
         }
       },
@@ -285,7 +282,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R02_CAUSE@n11",
@@ -356,7 +353,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R03_IMPACT@n11",
@@ -413,7 +410,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R04_PROPOSAL@n11",
@@ -512,7 +509,7 @@
           "stage_kind": "R04_PROPOSAL"
         }
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R05_APPROVAL@n11",
@@ -560,7 +557,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R06_PATCH@n11",
@@ -611,7 +608,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_VERIFY@n11",
@@ -668,7 +665,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_SEMANTIC@n11",
@@ -739,7 +736,7 @@
           "stage_kind": "R07_SEMANTIC"
         }
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R01_CAPTURE@n12",
@@ -798,7 +795,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R02_CAUSE@n12",
@@ -868,7 +865,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R03_IMPACT@n12",
@@ -924,7 +921,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R04_PROPOSAL@n12",
@@ -1022,7 +1019,7 @@
           "stage_kind": "R04_PROPOSAL"
         }
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R05_APPROVAL@n12",
@@ -1308,7 +1305,7 @@
           "stage_kind": "G2_AUDIT"
         }
       ],
-      "status": "PENDING"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_HOST@n11",
@@ -1894,7 +1891,34 @@
       "status": "PENDING"
     }
   ],
-  "pending_issues": [],
+  "pending_issues": [
+    {
+      "block": "n11",
+      "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
+      "evidence_refs": [
+        "1d17f2f4-1141-415a-bedd-e55ca1395315",
+        "3ce5defc-b626-4626-a07c-312b7a077375",
+        "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+        "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+        "6672629a-56de-444b-85be-702311a05f8d",
+        "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+        "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+        "efe4da01-c32e-4121-8900-88284c0822ff",
+        "e1f5206f-643f-4759-af2d-4931964547af",
+        "40358da4-f4c7-4376-bf78-e813a74bc54a",
+        "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+        "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+        "00e3ef42-3531-45d4-8620-1b1787cf7c79",
+        "3e64380d-a2c2-4780-a647-0c8698993784",
+        "c77ee2bb-69f7-4d65-a89d-fd470dd06dd0"
+      ],
+      "id": "W047-G2-L01",
+      "origin": "G2 independent cross-audit",
+      "proposalRef": "work/items/W-MATH-047-n1112-guided-review/G2_CORRECTION_PROPOSAL.md",
+      "root_cause": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
+      "version": "4a09de7a0f910669946466daf918ab28c820a5f2"
+    }
+  ],
   "application_accepted": false,
   "correction_queue": [
     {
@@ -1922,11 +1946,31 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
+      "block": "n11",
+      "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
+      "evidence_refs": [
+        "1d17f2f4-1141-415a-bedd-e55ca1395315",
+        "3ce5defc-b626-4626-a07c-312b7a077375",
+        "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+        "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+        "6672629a-56de-444b-85be-702311a05f8d",
+        "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+        "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+        "efe4da01-c32e-4121-8900-88284c0822ff",
+        "e1f5206f-643f-4759-af2d-4931964547af",
+        "40358da4-f4c7-4376-bf78-e813a74bc54a",
+        "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+        "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+        "00e3ef42-3531-45d4-8620-1b1787cf7c79",
+        "3e64380d-a2c2-4780-a647-0c8698993784",
+        "c77ee2bb-69f7-4d65-a89d-fd470dd06dd0"
+      ],
+      "id": "W047-G2-L01",
+      "origin": "G2 independent cross-audit",
+      "proposalRef": "work/items/W-MATH-047-n1112-guided-review/G2_CORRECTION_PROPOSAL.md",
+      "root_cause": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
+      "version": "4a09de7a0f910669946466daf918ab28c820a5f2",
+      "work": "W-MATH-047"
     },
     {
       "id": "W-MATH-037",
@@ -1943,13 +1987,6 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "W-MATH-034",
       "work": "W-MATH-034",
       "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
@@ -1960,6 +1997,20 @@
       "id": "W-MATH-047",
       "work": "W-MATH-047",
       "version": "4a09de7a0f910669946466daf918ab28c820a5f2",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3142,6 +3193,16 @@
       "input_hash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
       "node": "R07_SEMANTIC@n11",
       "receipt": "f33b43573d76c92799789ac8cb87ee233cd8708f15e181d250183bbe3788b63d"
+    },
+    {
+      "input_hash": "a991aaa48ab3fc48ae2259fbe90c3d1ea87a8ab8567b90ad9b82a3e31112d192",
+      "node": "G2_AUDIT@n11",
+      "receipt": "a93dc6c7e5257afdb3dc0fcab3418af2e8becd5bf9045b911d3a1ae725aac06d"
+    },
+    {
+      "input_hash": "a991aaa48ab3fc48ae2259fbe90c3d1ea87a8ab8567b90ad9b82a3e31112d192",
+      "node": "G2_AUDIT@n11",
+      "receipt": "bc2556eada85842ab3de57057d6b2ad3effd8500a4a4d961126cd4e01427153e"
     }
   ],
   "release_acceptance": {
@@ -4056,6 +4117,39 @@
         "resolutionEvidenceRef": "57be9d1b43d3aa65367f6be2b70cf2dfbcb2a50203eebcea184cdc04be3ea41b",
         "resolvesOutputRef": "578102f6b4ca965494430747d1d344763be4e7923649fec4dc5ceb72789e60e5",
         "outputRef": "dac9a55b89f1664232c4b4bf819944b31d51cd98cf11555dd5cce72d98e64777"
+      },
+      {
+        "affectedRefs": [
+          "n11-tg-divide",
+          "n11-tg-final",
+          "n11-06"
+        ],
+        "block": null,
+        "claimRef": "integrated-release",
+        "evidenceRefs": [
+          "1d17f2f4-1141-415a-bedd-e55ca1395315",
+          "3ce5defc-b626-4626-a07c-312b7a077375",
+          "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+          "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+          "6672629a-56de-444b-85be-702311a05f8d",
+          "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+          "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+          "efe4da01-c32e-4121-8900-88284c0822ff",
+          "e1f5206f-643f-4759-af2d-4931964547af",
+          "40358da4-f4c7-4376-bf78-e813a74bc54a",
+          "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+          "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+          "00e3ef42-3531-45d4-8620-1b1787cf7c79",
+          "3e64380d-a2c2-4780-a647-0c8698993784",
+          "c77ee2bb-69f7-4d65-a89d-fd470dd06dd0"
+        ],
+        "facet": "render",
+        "findingId": "G2-B-L01",
+        "inputHash": "a991aaa48ab3fc48ae2259fbe90c3d1ea87a8ab8567b90ad9b82a3e31112d192",
+        "node": "G2_AUDIT@n11",
+        "reason": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
+        "resolution": "OPEN",
+        "outputRef": "93d422b5c16c5319f603ce47470af43b7f64e27fa851df3d047ee635f4c4d062"
       }
     ],
     "tasks": [
@@ -4607,6 +4701,26 @@
         "contextExposure": {
           "authorRationaleVisibleAtFirstPass": false,
           "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "2a7a57de58fad805b4794d2f439a51df977ee03f74b7ef586bbc2a96674a9784",
+        "assignmentId": "w047-n11-g2-a991aaa48ab3",
+        "node": "G2_AUDIT@n11",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "integrated-release"
+        ],
+        "packetHash": "09fa8651e0639447356f0fc19928ceff1f23347fea698466403689fc900fc05f",
+        "assignmentHash": "3541797296873fce57d75dc8e91ba8ff6e52f85a0a39c1fcaa382ecaff035358",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered",
+          "previousReviewExposure": "Reviewer has seen constituent R07 artifacts; this is the first integrated-release cross-audit, not a blind review."
         },
         "status": "COMPLETED"
       }

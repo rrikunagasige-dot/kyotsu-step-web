@@ -1,0 +1,16 @@
+{
+  "quote": "続けて",
+  "sourceRef": "chatgpt-page:cb65b42d-10d4-453e-922b-5f025a1edbc4",
+  "replyTo": "CONFIRM_N11_4a09de7a.md",
+  "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "blockIds": [
+    "n11-q11-constant",
+    "n11-11"
+  ],
+  "interpretation": "The continuation reply to the pending visual-confirmation request is treated as limited assent to the two presented checkpoints. Literal wording retained; not a claim of actual app playthrough, proposal approval, publication permission, or quality label.",
+  "reviewLabel": "BLOCK-VISUAL-OK",
+  "images": [
+    "evidence/ci/41620137341/raw/n11-focus/n11-q11-constant-focus-initial.png",
+    "evidence/ci/41620137341/raw/n11-focus/n11-whole-state-initial-context-viewport.png"
+  ]
+}

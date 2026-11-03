@@ -12,3 +12,7 @@
 
 ## CI-V06 — 解決済み
 初回CIの長大なstage写真で固定ヘッダが文脈を覆いUNVERIFIEDとなった。実UIの恒常欠陥とは断定せず、UI/CSSを変えない390×1200通常viewportを追加した。成功CI41620137341の2枚で(26)の局所結果→(27)の未回答主式を同時に視認でき、非作者がVERIFIED_FIXEDと確認。原OPEN、原画像、修正後画像、対象hash、解決出力を保存。
+
+## 2026-11-03 G2再開
+
+G2-A01/G2-B-L01: 保持W038の未回答商7/3先出しを確認しG2 FAIL、issue W047-G2-L01を正式登録。必須初見を満たさないfirstPass=falseを保存し、PASSに変換していない。原報告と未確認面はCROSS_BLOCK_AUDIT_N11.md/evidence/N11_G2_*参照。G2結果初回提出はaudit_rows version欠落で拒否され、全行に正しいrelease SHAを付与して再提出。CODEの拒否条件は変更していない。未適用修正案の初回compileは数学依存不足、PYTHONPATH=/tmp/w046-sympyで再実行し静的PASS。製品ファイルはこの再開中に未変更。次はG2_CORRECTION_PROPOSAL.mdの具体案承認と修正工程。

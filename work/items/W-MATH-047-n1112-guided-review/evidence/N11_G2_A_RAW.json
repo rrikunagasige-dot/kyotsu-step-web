@@ -1,0 +1,352 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 補足理念監視。正式integrated-releaseの代用ではない。",
+  "verdict": "FAIL",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "referenceCISourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "referenceRun": 41620137341,
+  "rows": [
+    {
+      "nodeId": "n11-intro",
+      "role": "example",
+      "learningAction": "元の問題を例題として置く",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-01",
+      "role": "substep",
+      "learningAction": "数直線の−2と−5を比べ、不等号を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-difference-basis",
+      "role": "proof",
+      "learningAction": "差の符号を使う根拠",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q02-open",
+      "role": "substep",
+      "learningAction": "引く括弧の符号を配る",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-02",
+      "role": "substep",
+      "learningAction": "両辺に同じcを加えたあとの差を計算しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm011-q02-compare",
+      "role": "substep",
+      "learningAction": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm011-q03-factor",
+      "role": "substep",
+      "learningAction": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm011-q03-positive",
+      "role": "substep",
+      "learningAction": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-03",
+      "role": "substep",
+      "learningAction": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm011-q03-zero",
+      "role": "substep",
+      "learningAction": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-division-basis",
+      "role": "property",
+      "learningAction": "割り算の規則も接続する",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm011-q04-fraction",
+      "role": "substep",
+      "learningAction": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q04-negate",
+      "role": "substep",
+      "learningAction": "元の大小へ戻り負の1倍をする",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-04",
+      "role": "substep",
+      "learningAction": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-solve-problem",
+      "role": "example",
+      "learningAction": "一つ目の一次不等式を提示",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm017-q05-operation",
+      "role": "substep",
+      "learningAction": "左辺の−2を消すため、左辺に加える数を考えよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm017-q05-balance",
+      "role": "substep",
+      "learningAction": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-05",
+      "role": "substep",
+      "learningAction": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q06-operation",
+      "role": "substep",
+      "learningAction": "係数を1にする除数を選ぶ",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-06",
+      "role": "substep",
+      "learningAction": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+      "status": "OPEN"
+    },
+    {
+      "nodeId": "n11-q07-substitution",
+      "role": "substep",
+      "learningAction": "境界を元の式へ代入する",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-07",
+      "role": "substep",
+      "learningAction": "境界の値が含まれるかを選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-negative-problem",
+      "role": "example",
+      "learningAction": "負の係数の例題を提示",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p007-q08-subtract-left",
+      "role": "substep",
+      "learningAction": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p007-q08-subtract-right",
+      "role": "substep",
+      "learningAction": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-08",
+      "role": "substep",
+      "learningAction": "左辺を整理したあとの右辺、5−3を計算しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p007-q09-direction",
+      "role": "substep",
+      "learningAction": "負の係数で割った後の不等号を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-09",
+      "role": "substep",
+      "learningAction": "負の2で割った右辺、2÷(−2)を計算しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q10-substitution",
+      "role": "substep",
+      "learningAction": "境界を代入した左辺を求める",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-10",
+      "role": "substep",
+      "learningAction": "境界を含むかどうか、根拠とともに選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-linear-definition",
+      "role": "definition",
+      "learningAction": "一次不等式と移項を定義する",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-bracket-problem",
+      "role": "check",
+      "learningAction": "括弧のある確認問題を提示",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm012-q11-expand",
+      "role": "substep",
+      "learningAction": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm012-q11-xcoef",
+      "role": "substep",
+      "learningAction": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q11-constant",
+      "role": "substep",
+      "learningAction": "定数を同じ操作でまとめる",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-11",
+      "role": "substep",
+      "learningAction": "整理した不等式を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q12-sign",
+      "role": "substep",
+      "learningAction": "負数で割る向きを判断する",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-12",
+      "role": "substep",
+      "learningAction": "解の範囲を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-fraction-problem",
+      "role": "check",
+      "learningAction": "分数の確認問題を提示",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p008-q13-mul-left",
+      "role": "substep",
+      "learningAction": "左辺の分母3を消すために掛ける数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p008-q13-mul-right",
+      "role": "substep",
+      "learningAction": "右辺にも同じ数を掛けよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-13",
+      "role": "substep",
+      "learningAction": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-p008-q13-constant",
+      "role": "substep",
+      "learningAction": "3(2x+1) の定数項を計算しよう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm013-q14-xcoef",
+      "role": "substep",
+      "learningAction": "両辺からxを引いて右辺のxの係数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-wm013-q14-const",
+      "role": "substep",
+      "learningAction": "両辺から3を引いて左辺の定数を選ぼう。",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-q14-divide",
+      "role": "substep",
+      "learningAction": "正の係数で割り向きを読む",
+      "status": "確認済み"
+    },
+    {
+      "nodeId": "n11-14",
+      "role": "substep",
+      "learningAction": "最終的な解の範囲を選ぼう。",
+      "status": "確認済み"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G2-A01",
+      "status": "OPEN",
+      "targetIds": [
+        "n11-06",
+        "n11-tg-divide",
+        "n11-tg-final"
+      ],
+      "category": "承認済みW038保持箇所由来。P006の新規回帰ではない。",
+      "sourceRef": "word-p-000493",
+      "reason": "n11-06未回答・前4interaction正答の状態で、同じvisibleAfterを満たすdivideとfinalが共に表示される。projectTransformationViewはinteractionRef=nullのdivideをdone=trueとして3x/3<7/3を表示し、finalはx<slot(n11-06)を表示する。そのため右辺の商を入れる穴の正答7/3が直前に同じ表記で露出し、そのまま写せる。MASTER§8/17/20の認知操作・反復・全チャネル先出しに抵触する。",
+      "generalizationCondition": "未回答の計算/導出穴と意味も表記も同じ結果が、先行または同一gateのoverlay/helper/主式で可視になる場合。semantic本体だけでなくeffective presentationを監査する。",
+      "similarCases": [
+        "n11-tg-addの+2は選んだ操作を反対辺へ適用する別行為であり、同値の再利用自体を欠陥としない。",
+        "n11-11は係数と定数から元不等式を合成し、n11-14は辺を入れ替えた表現へ変換する別行為が残る。",
+        "旧N11 authoredのn11-05 afterに除数3の言及があるが、active W038は係数1という目的へ置換しており、active overlayではその除数先出しは起きない。"
+      ]
+    },
+    {
+      "id": "G2-A02",
+      "status": "確認済み",
+      "targetIds": [
+        "全47node",
+        "承認6変更",
+        "保持41node"
+      ],
+      "reason": "原資料43blockとMASTER/SPECを先読して全before/afterを再確認。符号・境界・商・局所計算→元式合成・分母除去の修正、条件a<b/b-a>0/cの正負と0/c≠0/x実数、一次不等式a≠0、負数除算、厳密/等号の境界、括弧と和の全体操作、概念説明と図gateを保持。G2-A01以外に新たなOPENを支える具体的根拠は見つからなかった。"
+    },
+    {
+      "id": "G2-A03",
+      "status": "確認済み",
+      "targetIds": [
+        "N09",
+        "N10",
+        "N12",
+        "共有renderer/CSS/Store"
+      ],
+      "reason": "旧基準6b439からHEADの関連変更はN11 authored/overlayとT1の2toolに限定。N09/N10/N12 Authoredは旧基準とbytes一致。共有renderer/CSS/Storeに変更なし。T1はN11 exact source2版と各3graphの対応に限定し、N08分岐・v2/v3・採点/visibility/slot guardを変更しない。N12はBASELINE保持のみ。"
+    }
+  ],
+  "limits": [
+    "前回審査の再確認でfirstPass=false。提案・工程・過去自己報告と指示で読んだ他報告要約は既知。盲検ではない。",
+    "G2-A01はoverlay・投影関数・readerから静的確認。該当未回答stateの新しい実画像は今回撮影していない。",
+    "実CI41620137341の既存画像/REPORTは参照証拠。自分による四幅全操作/移行の再実行ではない。",
+    "補足理念監視のFAILは未解決findingを示し、正式integrated-releaseや公開/受入判定を代行しない。",
+    "書込は指定/tmp原報告のみ。Store/Git/製品編集、孫agent起動なし。"
+  ],
+  "evidencePaths": [
+    "docs/MASTER_APP_LESSONS.md",
+    "subjects/mathematics/textbook/SPEC.md",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+    "src/data/textbook/math/numbers/n11Authored.json",
+    "src/data/textbook/math/numbers/n11Transformation.json",
+    "src/domain/transformationReading.ts",
+    "src/components/textbook/GuidedMathReadingFlow.tsx",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41620137341/raw/n11/REPORT.json"
+  ]
+}

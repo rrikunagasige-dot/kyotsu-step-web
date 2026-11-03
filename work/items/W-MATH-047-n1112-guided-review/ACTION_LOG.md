@@ -32,3 +32,7 @@
 - 修正版初回表示監査PASS・CI-V06 VERIFIED_FIXEDを登録し、R07_SEMANTIC正式受理。再確認のfirstPass=false報告は補助証拠に留め、必要な初回審査へ流用しなかった。
 - 台帳書込後の死んだworker lockは既存recover_lockで回収し、連鎖・所有者・原lockを記録。検査/ガードのコードは変更していない。
 - main04b823のGate①と確認票テンプレートを再読。Work側テンプレートは内部QAへ変更されているため上書き根拠にせず、実CI source4a09の本人確認票を作成。次G2の前に細部確認を記録。
+
+## 2026-11-03 G2再開
+
+G2-A01/G2-B-L01: 保持W038の未回答商7/3先出しを確認しG2 FAIL、issue W047-G2-L01を正式登録。必須初見を満たさないfirstPass=falseを保存し、PASSに変換していない。原報告と未確認面はCROSS_BLOCK_AUDIT_N11.md/evidence/N11_G2_*参照。G2結果初回提出はaudit_rows version欠落で拒否され、全行に正しいrelease SHAを付与して再提出。CODEの拒否条件は変更していない。未適用修正案の初回compileは数学依存不足、PYTHONPATH=/tmp/w046-sympyで再実行し静的PASS。製品ファイルはこの再開中に未変更。次はG2_CORRECTION_PROPOSAL.mdの具体案承認と修正工程。

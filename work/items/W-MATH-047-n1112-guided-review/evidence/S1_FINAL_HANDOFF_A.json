@@ -1,0 +1,70 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A工程監視",
+  "verdict": "DRAFT_HANDOFF_SCOPE_AND_BINDING_CONFIRMED",
+  "firstPass": false,
+  "authorSeparation": true,
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "runId": 41657273611,
+  "draftSHA256": "c2a2d0990cbf992a62b5263241ce73a03aa07863053a0c8756c58975202558e1",
+  "authority": "main04b823259a0873235e39099864d454330eed5d81 WORK_SYSTEM12A/P003。未採用worktree W-GOV010で上書きしない。manualGate①はproduction/2 graphにnodeがなくても省略しない。",
+  "statusDistinction": {
+    "draft": "DRAFT。BのR07完了後Mが提示状態へ変える予定。",
+    "userVisualAcceptance": false,
+    "published": false,
+    "finalAppAccepted": false,
+    "newUserEventGenerated": false
+  },
+  "checks": [
+    {
+      "id": "HANDOFF-A01",
+      "status": "CONFIRMED",
+      "reason": "固定source/tree/localMirrorがSOURCE_FREEZE/REMOTE_SOURCE_CHECK/COMMIT_MANIFESTで一致。実8pathsのlocal commit bytesとworktree/nativehashを独立照合。remoteN12blob ff13e393…はexpectedと一致する保存済証拠を確認。外部再照会はしていない。"
+    },
+    {
+      "id": "HANDOFF-A02",
+      "status": "CONFIRMED",
+      "reason": "草案10画像は五targetの390pending/correct。各実PNG bytesがN12_CAPTURE_REFSのrawFiles hashに一致。両CAPTURE_REFSはsourcef129/run41657273611 success、N11/N12 APPROVED、localImagesUsedAsCI=false。draftのartifact13240616794/ZIPdigest abdffd3f…も既照合proofと対応。"
+    },
+    {
+      "id": "HANDOFF-A03",
+      "status": "CONFIRMED",
+      "reason": "本人対象はN12五変更/46回答/44保持。未公開、確認①を公開許可/最終受入へ転用しない旨、N11不変表示ac2ac082了承保持を明記。新sourceの証拠対応と旧N11の限定了承は別記録であり、N11再試験を生成しない。"
+    },
+    {
+      "id": "HANDOFF-A04",
+      "status": "CONFIRMED",
+      "reason": "source087のCIはN12BASELINEで新版proofから除外し原証拠を保持したと明記。f129の実commitにN12承認版8ba070…があることを独立検査済み。旧sourcefreezeを正しかったことに書き換えない。"
+    },
+    {
+      "id": "HANDOFF-A05",
+      "status": "PRESENTATION_PENDING",
+      "reason": "main04b823の2–4点を厳密に満たすため、五画像節を保持したまま本人用ポイントを4点に明示可能：第一条件、左右端点/共通範囲、共通上限、三辺操作。画像のGitHub到達性/埋込可視性は正式提示前にMが確認する。ローカル存在/hash一致だけでGitHub可視性合格とはしない。",
+      "blockingFor": "DRAFTを提示可能と宣言する前の仕上げ。新教材承認や追加本人確認の要求ではない。"
+    }
+  ],
+  "nextSequence": [
+    "BのN12新CI R07意味審査が現source/targetへ正式受理され未解決がないことをMが確認（本taskはB所見未読）。",
+    "4確認ポイントと10実画像のGitHub可視性/完全sourceSHAを整え、本人へN12確認①を提示。まだ了承を生成しない。",
+    "実際の本人の限定視覚了承又は修正指摘を原文/出所/対象版へ記録。指摘なら修正工程へ戻る。",
+    "N11→N12の順で現sourceのG2を正式実行/受理。旧不変N11の了承は保持するが両unit変更後の新QAを省かない。",
+    "両G2後、両unitをそろえたG3前資料/固定候補/公開権限対応を準備。実配信SHAと両route到達性を照合後、合意範囲N11/N12最終app確認を一回。S1の実発言一回/単元別記録の条件を守る。"
+  ],
+  "findings": [],
+  "limits": [
+    "B原所見・他review reportは読んでいない。B評価内容を推測/転記していない。",
+    "今回N12CI画像をview_imageで審査していない。hash対応は提示草案の真正性/版管理の検査。",
+    "CI metadataとremote blobは保存済証拠。自分でGitHub/ZIPを再downloadしていない。",
+    "本人確認①/公開許可/最終受入/品質labelを生成しない。",
+    "repo/Store/Git書込なし。指定/tmp原報告のみ保存。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/CONFIRM_N12_S1_f129ba78.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_SOURCE_FREEZE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_REMOTE_SOURCE_CHECK.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_COMMIT_MANIFEST_CORRECTED_PASS.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N11_CI_CAPTURE_REFS.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N12_CI_CAPTURE_REFS.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/R1_GATE1_RESPONSE.json"
+  ]
+}

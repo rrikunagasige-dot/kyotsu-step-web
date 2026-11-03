@@ -1,13 +1,11 @@
 {
-  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
-  "gitHubTree": "5369ab2153dac6273160e15b7050d3c4285713f4",
-  "localMirrorCommit": "2b9a13cd8281c8137449cb449ba6323fc57cd7cf",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "gitHubTree": "302e026121038938ab1744647a83250b11111a6d",
+  "localMirrorCommit": "0388390f94e16a56e612135af5019134191bf303",
   "N11": "P006_AND_R1_APPROVED",
   "N12": "P006_FIVE_NODES_APPLIED",
-  "releaseUnits": [
-    "n11",
-    "n12"
-  ],
-  "published": false,
-  "mainUnchanged": "04b823259a0873235e39099864d454330eed5d81"
+  "commitManifestCheck": "S1_COMMIT_MANIFEST_CORRECTED_PASS.json",
+  "remoteBlobCheck": "S1_REMOTE_SOURCE_CHECK.json",
+  "supersedesIncompleteSource087": true,
+  "published": false
 }

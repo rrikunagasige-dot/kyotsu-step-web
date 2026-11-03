@@ -1,0 +1,107 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "claimRef": "implemented-visible",
+  "facet": "render",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "targetHash": null,
+  "runId": 41657273611,
+  "verdict": "PASS",
+  "firstPass": true,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blind": false,
+  "firstPassScope": "今回初めて見るactual CI artifactの原画像可視意味審査。元案/preview/旧CI/G2/工程は既視・既知。新盲検や本人確認ではない。",
+  "firstObservations": [
+    "原資料N11全43blockを位置/数式付きで再読し、現Authored47node/39回答/revision11とP006対象before/afterを先に確認。その後manifest/CODEreport/作者説明を読まずに新CI画像を実見した。",
+    "R1商の四幅pending/wrongは3x<7、除数3という既解決根拠のあと、3x/3<slotで商を作る。選択肢以外に完成商7/3や完成範囲x<7/3を認めない。correct後にのみ商→左辺整理の説明→x<7/3→実数全体と境界確認へ接続する。",
+    "320wrongのもう一度と番号16は近接するが、対象の式や候補の判読不能は認めなかった。他三幅も四候補/本文/番号が読める。",
+    "n11-03 initialはc<0とb-a>0から積の符号/大小を判断させ、complete後にac>bc/bc-ac<0と負数倍規則。n11-07/10 initialは5<5/5≤5を根拠に真偽/境界含有を問うだけで、complete後に含有理由を表示する。",
+    "q11constant initialは-17-9を計算させ、complete後に-26。n11-11 initialは既解決の係数/定数を元不等式へ戻して全式を組み、complete後に-4x≥-26。n11-12 initialは-26/-4から約分/範囲を選び、complete後にx≤13/2。",
+    "fraction contextは確認区分/次の不等式で、分母を打ち消す乗数を選ぶ行為を残し、3倍を先に断定しない。",
+    "通常viewport2枚は(25)係数と(26)定数、その結果を元不等式へ戻す説明と未回答(27)/四候補をヘッダに覆われず読める。CI-V06の不足はこの通常viewportで解消した。",
+    "reset画像は0/39・1/14。stage6/14長大写真にはsticky headerの重なりが残るが、R1/局所計算の対象文脈は別の通常viewportで可読。history全体画像は43x2048へ縮小表示されたため、履歴全行の文字を実見したとは主張しない。"
+  ],
+  "findings": [
+    {
+      "id": "CI-V06",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n11-local-result-complete-context-viewport.png",
+        "n11-whole-state-initial-context-viewport.png"
+      ],
+      "reason": "今回actual CIの通常viewportで(25)係数→(26)-17-9=-26→全式に戻す本文→未回答(27)と四候補を可読。旧長大写真の文脈不足を補う証拠として解決。旧長大写真自体のheader重なりを直したとは言わない。"
+    },
+    {
+      "id": "S1-N11-CI-A01",
+      "status": "確認済み",
+      "targetIds": [
+        "n11-06",
+        "n11-tg-divide",
+        "n11-tg-final"
+      ],
+      "reason": "四幅三状態で商生成から完成範囲への正答gateを確認。G2 formal finding closureをこのR07の別claimから新たに生成しない。"
+    },
+    {
+      "id": "D04",
+      "status": "確認済み",
+      "targetIds": [
+        "n11-07",
+        "n11-10"
+      ],
+      "reason": "今回画像でも未評価の5<5/5≤5から端点判断を行うP006修正を保持。"
+    },
+    {
+      "id": "D05",
+      "status": "確認済み",
+      "targetIds": [
+        "n11-fraction-problem"
+      ],
+      "reason": "分母を打ち消す数の選択を残すP006修正を今回画像でも保持。"
+    }
+  ],
+  "rationale": [
+    "原問の規則適用/中間計算/範囲構成/元式での端点評価が画像上の順序に残り、直接精査範囲で新たな意味的可視欠陥を認めなかった。"
+  ],
+  "limits": [
+    "正式target manifest/proof/全filehashは初回観察固定後に照合する。",
+    "CIを自身で操作/起動していない。全回答/全誤答/保存移行/reset実行過程/履歴全行の独立実操作合格ではない。",
+    "N12新版合格、G2/公開/本人確認/品質labelを本N11 R07審査から付与しない。",
+    "stage長大写真のheader重なりは残る。通常viewportで直接精査した範囲と区別。",
+    "Store/Git/製品/Work編集なし。指定/tmp原報告のみ保存。"
+  ],
+  "imageHashes": {
+    "n11-focus/r1-quotient-390-pending.png": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f",
+    "n11-focus/r1-quotient-390-wrong.png": "44f9ecb72a5e0cb36519c12e24542f85021caf863a406aceaafeb36e72a76e51",
+    "n11-focus/r1-quotient-390-correct.png": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4",
+    "n11-focus/r1-quotient-320-pending.png": "d74a3383f2af04907da1fdb025584d882b460b0605eeb4da498ec86d17ac8eda",
+    "n11-focus/r1-quotient-320-wrong.png": "c59e38b71abccfec841b96a854b4e300924290cc5cad8ea08906bd7aa9171350",
+    "n11-focus/r1-quotient-320-correct.png": "dca3972e3dd590607a15784dd65f2764d202ba5f10c17af1f402867267e9ff91",
+    "n11-focus/r1-quotient-430-pending.png": "8f44f2da1c1c6525595fe64e87e81065e931ded0ff4217b1ea0511d591bc23d5",
+    "n11-focus/r1-quotient-430-wrong.png": "768c8c15926d50ec0082dc60ff0a0119532315ac33f1192f1752ae712d342a50",
+    "n11-focus/r1-quotient-430-correct.png": "e2e61bab62341c1376c1d816e81bf473d4abdb86515c58560a1a5b4b1d98fe95",
+    "n11-focus/r1-quotient-1440-pending.png": "ebfd102a765611e9bad316ae67cecdf19317470040320df7fc9d3cba701662c7",
+    "n11-focus/r1-quotient-1440-wrong.png": "917956fc29242ee5d8e993bc8563ad85fda5f6c8232124abc67745def95a7c7d",
+    "n11-focus/r1-quotient-1440-correct.png": "3714bdf67b880bfcc72df0710dba16b7cc7f7a0d0cbe3992a50ab71b102500d9",
+    "n11-focus/n11-03-focus-initial.png": "fd76177bfb153cb29c8b27609866a5ac0d70a370757b128d65b3b8211755e137",
+    "n11-focus/n11-03-focus-complete.png": "0502dc401f528468e9a70cd4259fedd1df4c152557dc32edc97fb66f62063973",
+    "n11-focus/n11-07-focus-initial.png": "31e8db9c67ec759d2293be945e8f331c171fb48097b6946574ad74ca9631884d",
+    "n11-focus/n11-07-focus-complete.png": "b8ec1c608897c5b5f163ef84f7def739aa7d998815fd63040841b7dce91a064d",
+    "n11-focus/n11-10-focus-initial.png": "5ba839264c6ef710a93b20bdf7653bbc6957d50fde6ed77ca654db7c33a128c2",
+    "n11-focus/n11-10-focus-complete.png": "32d7c231bb7d6443e43e85fb73209902f40d2abb2b3d73bd9a4ec12cd42c9eb4",
+    "n11-focus/n11-q11-constant-focus-initial.png": "b9d02321cdf1be2c57500916f11063e2be2dfc85a69caeec2be9879750976ab2",
+    "n11-focus/n11-q11-constant-focus-complete.png": "af23c06dbe67b79f75f6de5182c04168171859ead249f698a95b86b0e8ba1771",
+    "n11-focus/n11-11-focus-initial.png": "a9462fd5b89374da3d4f44b4184de50773611893a4b06fc02e8a457ae68f2851",
+    "n11-focus/n11-11-focus-complete.png": "3b8be3f746c4e6ab85adc3be3215d5846104de3ca1b5533b1b1eb62a068f2f22",
+    "n11-focus/n11-12-focus-initial.png": "1e5112cfca2ac4053483dbb31b730c8aae02a797c68680155a0ad12a8cbaaa38",
+    "n11-focus/n11-12-focus-complete.png": "1469bad2805f43f4c03a2fb36449317a2fcbceae87be28259b95f761ee177d32",
+    "n11-focus/n11-fraction-problem-context.png": "c394c045208d0365c70bd7f8ce2e66df7a6f7bf2ecb3b9346bdcc2ae2df28eb1",
+    "n11-focus/n11-local-result-complete-context-viewport.png": "1b454e8f112468c560e3721deff86c7ea7be95a34dd50e3386a4d149f5f89169",
+    "n11-focus/n11-whole-state-initial-context-viewport.png": "a8eac444a94e19d0c08bb7c8625a497c4d3f7c69041e6b33c827ca15387a6740",
+    "n11-focus/r1-reset-reload-start.png": "84e3ff9704ed0e86c487bc399fe0933f3166084c8872ac824f2e22ada2dbbf0c",
+    "n11/n11-390-stage-6.png": "7ab4b38dcbc4f70eda0eea795d46641bfc4e4a192761aabc72793e79a5bf7006",
+    "n11/n11-390-stage-14.png": "07abddab8a9784280bd9491e1f7c326802eecc53c3c679b2552944853b11f161",
+    "n11/n11-390-history.png": "4d6295c3d9a7703d5e1fcec3cc06d60379d3e6cc7bfcad1818699df6e0ed1447"
+  },
+  "seenPNGCount": 31,
+  "detailedReadablePNGCount": 30
+}

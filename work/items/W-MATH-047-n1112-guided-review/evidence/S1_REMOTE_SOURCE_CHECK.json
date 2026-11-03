@@ -1,0 +1,9 @@
+{
+  "remoteCommit": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "remoteTree": "302e026121038938ab1744647a83250b11111a6d",
+  "localCommit": "0388390f94e16a56e612135af5019134191bf303",
+  "remoteN12Blob": "ff13e393c4bc6303e032fd3d0f261f2887710ddf",
+  "expectedN12Blob": "ff13e393c4bc6303e032fd3d0f261f2887710ddf",
+  "checkedRemoteHeader": "{\n  \"schemaVersion\": \"guided-math-presentation/1\",\n  \"choiceDisplay\": \"semantic\",\n  \"code\": \"n12\",\n  \"approvedCommit\": \"36a781c732a9638289430cab2ded37d7b5404bdd\",\n  \"proposalHash\": \"e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e\",\n  \"irHash\": \"770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840\",\n  \"unit\": {",
+  "sourceURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/f129ba78e496f0ccbce917c762357a81b92b0a2c/src/data/textbook/math/numbers/n12Authored.json"
+}

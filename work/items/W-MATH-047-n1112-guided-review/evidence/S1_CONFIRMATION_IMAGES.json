@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_HASH_MATCH_ACTUAL_CI",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "files": [
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-01-390-pending-viewport.png",
+      "sha256": "f4a7c0e2bffe9c60340f24f477b227252dba77b4da574c30c66d6c45513e6265"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-01-390-correct-viewport.png",
+      "sha256": "7bac04e32c48385ccfca40774c4832f233fe86ee80e4b64fad63e3366e3a2d89"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-q04-left-end-390-pending-viewport.png",
+      "sha256": "24b3c495eb050a4374e18bcb72395427408ae1b59b983f729cacc4d18da65e72"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-q04-left-end-390-correct-viewport.png",
+      "sha256": "b84877a405c50b71b6c07b7398ec30e1e9ab952a12729c6778feefb67a183fd8"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-04-390-pending-viewport.png",
+      "sha256": "be23a8f90794f443d71750bfc4b49ddf2a7b04ce2f34855018d69cee8ca1bd77"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-04-390-correct-viewport.png",
+      "sha256": "c8d7fbfba3a76db50dc42e4432b43adeb9ba258770020870604893d12605b4cc"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-07-390-pending-viewport.png",
+      "sha256": "0dc07bac602250d9e4ba7ebb4569cccbacf4bb6c9156201dca5c0bf99d99584d"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-07-390-correct-viewport.png",
+      "sha256": "aefb9008646290604bb850078a1b06e542a26feecee954e055709d105aa5c7e1"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-q13-operation-390-pending-viewport.png",
+      "sha256": "d696c9ae236928b4cd722de1f6715581e23671b0676880594691f65cc07bffc6"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12-focus/n12-q13-operation-390-correct-viewport.png",
+      "sha256": "7f72334d40890ed93ee1acfd664e147ff9b701940de8677618d85a5d23ff0913"
+    }
+  ],
+  "remoteVisibilityCheck": "PENDING_GITHUB_SAVE"
+}

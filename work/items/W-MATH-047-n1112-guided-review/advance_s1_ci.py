@@ -1,0 +1,25 @@
+"""Actual both-approved current CI into the existing unit R07 nodes; no USER acceptance."""
+import sys,json,hashlib,os
+from pathlib import Path
+B=Path(__file__).resolve().parent;R=B.parents[2];sys.path.insert(0,str(R/'workflow'));os.environ['PYTHONPATH']='/tmp/w046-sympy'
+from runtime import Runtime
+from runner import run_code
+from production import ai_request
+from team_transport import bind_target,capture_harness,register_task
+from store import digest
+r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-047';code=sys.argv[1];assert code in ['n11','n12'];upper=code.upper();load=lambda p:json.loads(Path(p).read_text())
+def write(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+proof=load(B/('evidence/'+upper+'_CI_CAPTURE_REFS.json'));sha=proof['run']['head_sha'];assert sha==r.state(w)['candidate_sha']and proof['n11Mode']==proof['n12Mode']=='APPROVED'
+root=B/'evidence/ci'/str(proof['run']['id'])/'raw';report=load(root/code/'REPORT.json');assert report['status']=='PASS'and report['sourceSHA']==sha
+old=R/'work/items/W-MATH-036-ne02-n11-n12-guided-design';ir=load(B/(upper+'_CANDIDATE_IR.json'));refs=[proof['ciRef'],proof['captureRef'],*proof['screenshotRefs']]
+receipt={'status':'PASS','sourceSHA':sha,'widths':[x['width']for x in report['results']],'semanticIdsVerified':True,'statesVerified':True,'ciRef':proof['ciRef'],'captureRef':proof['captureRef'],'artifactId':proof['artifact']['id'],'reportPath':str((root/code/'REPORT.json').relative_to(R))}
+job=run_code(r,w,{'math.verify':load(old/(upper+'_COMPLETE_SOLUTION.json')),'ir.verify':ir,'browser.verify':{'browserReceipt':receipt},'protected.verify':{'protectedManifest':r.state(w)['plan']['protected_manifest']}});assert job['node']=='R07_VERIFY@'+code;q=ai_request(r,w,job['node'])
+r.production_result(w,job['node'],job['claimToken'],{'verdict':'PASS','evidence_refs':refs,'capability_receipts':job['receipts'],'proofStatus':'AI_ARGUMENT_REVIEWED','formalProof':False,'aiReview':{'requestHash':q['requestHash'],'inputHash':q['task']['input_hash'],'reviewer':'M actual source/archive/finite operations integration','evidence':'Both units are APPROVED in the exact checked-out source, unlike the rejected incomplete source087 run. Actual report/source/archive hashes and four-width full operations checked. Static/finite technical results do not supply learner-visible semantic or user acceptance.'}});print(upper+' R07_VERIFY accepted at '+sha,flush=True)
+job=run_code(r,w,{'source.audit':{'coverage':ir['coverage'],'sourceBlocks':load(old/('evidence/'+upper+'_SOURCE_INDEX.json'))['blocks'],'candidate':load(R/('src/data/textbook/math/numbers/'+code+'Authored.json'))},'novice.audit':{'ir':ir}});assert job['node']=='R07_SEMANTIC@'+code;q=ai_request(r,w,job['node'])
+doc={'sourceSHA':sha,'unit':code,'runId':proof['run']['id'],'artifactId':proof['artifact']['id'],'artifactDigest':proof['artifact']['digest'],'rawFiles':proof['rawFiles'],'contract':'First review of this actual source-bound CI artifact; prior inactive/component/plan exposure disclosed, not blind'}
+tp=B/('evidence/'+upper+'_S1_CI_VISIBLE_TARGET.json');write(tp,doc);h=hashlib.sha256(tp.read_bytes()).hexdigest();refs.append(r.evidence(w,'file',{'path':str(tp.relative_to(R)),'sha256':h},source_ref='Actual both-approved CI visible target',verification_level='local_execution'))
+target=bind_target(r,w,job['node'],'render',job['receipts'],refs,{'implemented-visible':h});logical,agent=('A','/root/w047_review_design')if code=='n11'else('B','/root/w047_layout_sourcefirst')
+a={'assignmentId':'w047-s1-'+code+'-ci-'+q['task']['input_hash'][:12],'roleEpoch':10,'node':job['node'],'block':code,'facet':'render','claimRefs':['implemented-visible'],'performerRef':agent,'role':'reviewer','inputHash':q['task']['input_hash'],'sourceSHA':sha,'artifactHashes':{'implemented-visible':h},'allowedPaths':[],'writeMode':'READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX','dependsOnTasks':[],'budget':{'tokenBudget':None},'independent':True,'targetManifestRef':target['targetManifestRef']}
+packet={'baseNodeInputHash':a['inputHash'],'sourceRefs':next(b['sources']for b in r.state(w)['plan']['blocks']if b['id']==code),'authorHistory':[{'claimRef':'implemented-visible','facet':'render','block':code,'semanticContributorRefs':['/root','/root/w046_source_review'if code=='n11'else'/root/w046_render_review']}],'contextExposure':{'forkMode':'filtered','authorRationaleVisibleAtFirstPass':False,'priorExposure':'Original source, P006/R1 plans and inactive/earlier component images known. Actual new source-bound CI PNGs are reviewed before author diagnostics/reports. B assisted capture/import tools, not lesson content. Not blind or model independent.'}}
+packet['packetHash']=digest(packet);task='W047-S1-'+upper+'-R07-'+logical
+write(B/('evidence/'+upper+'_S1_R07_PENDING.json'),{'job':job,'request':q,'evidenceRefs':refs,'assignment':a,'packet':packet,'logicalRole':logical,'taskRef':task,'targetHash':h,'registrationPendingActualTaskLaunch':True});print(upper+' actual CI target '+h+' ready for '+agent,flush=True)

@@ -1,6 +1,18 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / S1適用・N12 R04/R05通過・五変更適用済み / 現bytes再検証中 / 未公開
+Status: VERIFYING / N11・N12 R07正式PASS / N12実画像確認①待ち / 未公開
+
+現在：固定source `f129ba78e496f0ccbce917c762357a81b92b0a2c`。N11 P006＋R1、N12 P006五変更を既存CODEで適用し、A/Bの初回実画像所見を正式team記録へ対応付けた。両unitのR07_VERIFY/R07_SEMANTICがPASSED。全85正答・236誤答候補を320/390/430/1440で検証し、履歴/再読込/保存移行/図gateを確認。reset・先頭reload・単元境界のfocus確認は390pxで、四幅で行ったと拡張しない。未解決の新しい教材所見はない。長大履歴PNGの全行細部をAIが実読したとは主張しない。
+
+火柴図のnative nextは`G2_AUDIT@n11`。main04b823 WORK_SYSTEM12Aに従い、その前にN12の本人実画像確認①を行う。`CONFIRM_N12_S1_f129ba78.md`は4確認点/五箇所/未回答と正答後の10実CI画像。N11の不変表示へのac2ac082了承は保持。今回の内部PASSを本人確認・公開許可・最終アプリ受入/学習labelへ転用しない。了承後は現sourceのG2をN11→N12の順に行い、両unitをそろえたG3公開前資料へ進む。
+
+専用CI41657273611 / artifact13240616794 / ZIP SHA256 abdffd3fad108f5419be263ec150ba60039a7ea896ee0306729763932ead9801。実248raw/両APPROVED、native N11PNG74件/N12PNG169件、N12focus60frames/135PNGを照合。Mが原ZIPを実downloadしてdigest検証、A/Bは実画像とtarget/proof/rawhashを独立照合し、Bの原ZIP再download未実施は限界として保持。N11 original source43blocks、N12 source41blocks、Word ZIP再renderは主張しない。
+
+配布漏れを検出した旧source087/run41655234217は保存して新版の証拠から除外。N12本体のstage漏れを修正し、全8candidate pathのcommit/worktree/native SHA256一致とremote blobを確認してからsourcef129を正式固定。Bが旧commit一path FAIL/新commit全8PASSを独立実行。S1適用記録があるのにBASELINEならCIを拒否するguardを追加。旧失敗/誤bindingの履歴、旧固定CIの原FAIL、先行Work記録を消さない。
+
+担当はM（唯一のStore/Git writer）、A w047_review_design（理念/文章/工程）、B w047_layout_sourcefirst（非作者の表示/操作・独立CODE確認）の二人のみ。Bの撮影/import tool補助は明記し、教材作者とは扱わない。残留lockは各停止session/namespace PID再使用開始時刻/台帳連鎖を照合して一度ずつ復旧、共有guard未変更。現在claimは残っていない。
+
+## 以下は過去checkpointの履歴
 
 配布版照合で検出した作業ミス：source087842ac…のCI41655234217は成功だが、N12本体をgit addへ含め損ね、commit内はBASELINEのままだった。ZIP digest d5a7…、原ログ、BASELINE契約とN12focus欠落を保存し、新版のnativeCI/capture/PASSとして登録していない。誤ったcandidate bindingも履歴として保持。手元のN12限定patch/実審査bytesは承認版8ba…のままで再適用しない。
 

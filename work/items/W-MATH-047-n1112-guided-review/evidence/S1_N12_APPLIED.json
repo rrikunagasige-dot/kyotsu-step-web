@@ -7,9 +7,9 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R06_PATCH@n12",
-    "claimToken": "05fcb48d87434e0e9acd5db57685ffd9",
+    "claimToken": "0e1aab5cb18c468b8218d98cbb338235",
     "receipts": [
-      "49c87833dbaec8be9380f4553d96b9ab092d3c3b6f6e913b1fc1b08c35821b04"
+      "3675ddac94951926ee4b48656a7297b12aa1e686c9d9cc7d8deeffc0a683658c"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -67,10 +67,10 @@
           ],
           "required_ai_receipts": []
         },
-        "task_id": "066abff8ce94c363fd0c41331e286b4f2bdf3cae3d59ddfd467e3b3f656b25e8",
-        "input_hash": "eb2026823bec5114ca5e6c3fb55de0a967b8c8beee9d121807d45f5ea61290b2",
+        "task_id": "5c164f83a8d68593ffd83886e37778c71565d4033684644bd3e9a17b679a0656",
+        "input_hash": "ab6604e496786d6e0100f06e2731a3405b23f0da5f5f6afca49926e105c62ee6",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+        "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -125,7 +125,7 @@
           "R05_APPROVAL@n12": {
             "actor": "user-record/conversation_transcribed",
             "artifact": "07a5fbc293d8284824a8d2d8aed2a91acc0ca6cf5d3b3eaac418a11a22cc5950",
-            "input_hash": "256c4478b879bba21622d6b496a564604c30ba5061e9b4176ebff8fe80f6b914",
+            "input_hash": "05cd525373e03f91fc8e891847854c487a6982d401e0ca10723192e2fe1adc87",
             "node": "R05_APPROVAL@n12",
             "verdict": "PASS"
           }
@@ -169,7 +169,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "2d2255bb05b1ea9a2b335a21587cd4ea4711c55e5486b36f7452cc6f05daa0ef",
+      "requestHash": "329186bad0a027573a5a5c174c962515bc5917a0c8b215178c5d01f710c7c342",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [],
@@ -184,5 +184,5 @@
     },
     "automaticAcceptance": false
   },
-  "notReapplied": false
+  "notReapplied": true
 }

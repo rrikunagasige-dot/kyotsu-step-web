@@ -22,14 +22,15 @@ if mode=='prepare':
   packet={'baseNodeInputHash':a['inputHash'],'sourceRefs':r.state(w)['plan']['blocks'][1]['sources'],'authorHistory':[{'claimRef':claim,'facet':facet,'block':'n12','semanticContributorRefs':['/root','/root/w046_render_review']}],'contextExposure':{'forkMode':'filtered','authorRationaleVisibleAtFirstPass':False,'priorExposure':'P006 plan/old IR/source and S1 known; fresh actual render observed before capture report/manifest commentary. Not blind. B assisted capture-tool code, not lesson content.'}}
   packet['packetHash']=digest(packet)
   task='W047-S1-N12-actual-render-'+logical
-  cap=capture_harness(r,w,{'agentRef':agent,'taskRef':task,'parentRef':'/root','toolName':'collaboration.followup_task','rawResult':{'target':agent,'actualTask':'Primary source first, then new actual render PNGs before capture diagnostic/report; preserve first observations and prior exposure'},'attestationMethod':'transcribed-tool-result'})
-  harness={'agentRef':agent,'taskRef':task,'parentRef':'/root','logicalRole':logical,'toolResultRef':cap['artifactRef'],'attestationMethod':'transcribed-tool-result'}
   history=project(r.store.events(),w)
   originals=[v for v in history['registrations'].values()if v['assignment']['performerRef']==agent and v['assignment']['node']==nid and v['assignment']['artifactHashes'].get(claim)==h]
   if originals:
    original=originals[-1];a['roleEpoch']=original['assignment']['roleEpoch']+1
    packet['contextExposure']['historicalUnchangedRenderRebind']={'originalRegistrationRef':original['registrationRef'],'unchangedTargetHash':h,'newFirstPassClaimed':False,'originalHarnessRetained':True,'sameN12BytesNowActive':True}
    packet['packetHash']=digest({k:v for k,v in packet.items()if k!='packetHash'});harness=original['harness']
+  else:
+   cap=capture_harness(r,w,{'agentRef':agent,'taskRef':task,'parentRef':'/root','toolName':'collaboration.followup_task','rawResult':{'target':agent,'actualTask':'Primary source first, then new actual render PNGs before capture diagnostic/report; preserve first observations and prior exposure'},'attestationMethod':'transcribed-tool-result'})
+   harness={'agentRef':agent,'taskRef':task,'parentRef':'/root','logicalRole':logical,'toolResultRef':cap['artifactRef'],'attestationMethod':'transcribed-tool-result'}
   reg=register_task(r,w,a,packet,harness);bundles.append({'logical':logical,'assignment':a,'packet':packet,'harness':harness,'registration':reg,'reviewKind':kind,'evidenceRefs':refs})
  write(B/'evidence/S1_N12_R04_TEAM.json',bundles);print('N12 actual-render target bound '+h,flush=True)
 elif mode=='collect':
@@ -49,7 +50,7 @@ elif mode=='collect':
   cap=capture_harness(r,w,{'agentRef':a['performerRef'],'taskRef':bundle['harness']['taskRef'],'attestationMethod':'transcribed-tool-result','channel':'subagent-final','rawResult':raw,'structuredOutputHash':digest(out)})
   out['harnessOutputRef']=cap['artifactRef'];rec=record_output(r,w,reg['registrationRef'],out);reconcile_task(r,w,reg['registrationRef'],'COMPLETED',[cap['artifactRef']]);regs.append(reg['registrationRef']);outputs.append(rec['outputRef']);allpass=allpass and raw['verdict']=='PASS'
  result=p['result'];result['evidence_refs']=refs;result['teamCollection']={'submissionActor':'M','registrationRefs':regs,'outputRefs':outputs}
- result['aiReview']['evidence']='Existing math/teaching/step/blank/prose/figure CODE at exact approved P006 IR plus independent first actual inactive-render observations. Prior plan exposure and B capture-tool assistance disclosed. Authored candidate remains inactive until R05/R06; CI/learner acceptance not inferred.'
+ result['aiReview']['evidence']='Existing math/teaching/step/blank/prose/figure CODE at exact approved P006 IR plus independent first actual inactive-render observations. Prior plan exposure and B capture-tool assistance disclosed. These exact bytes were captured before activation; current unchanged-target historical rebinding is explicit in the packet. CI/learner acceptance is not inferred from the inactive render.'
  if allpass:r.submit(w,nid,p['job']['claimToken'],result)
  write(B/'evidence/S1_N12_R04_RESULT.json',{'result':result,'targetHash':h,'submitted':allpass});print('N12 R04 submitted='+str(allpass),flush=True)
 else:raise ValueError(mode)

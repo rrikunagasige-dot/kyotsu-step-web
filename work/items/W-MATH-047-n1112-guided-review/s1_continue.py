@@ -36,6 +36,8 @@ elif mode=='n12-preflight':
  try:run('advance_review.py')
  except SystemExit as e:
   if e.code not in (None,0):raise
+elif mode=='n12-r04-apply':
+ run('s1_n12_team.py','prepare');run('s1_n12_team.py','collect');run('s1_n12_apply.py')
 elif mode=='diagram':real_render(r,w,B/'generated')
 else:raise ValueError(mode)
 print('S1 handoff next:',r.next(w).get('task',{}).get('node',{}).get('id'),flush=True)

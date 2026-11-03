@@ -1,0 +1,45 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_TECHNICAL_GUARDS",
+  "candidateSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "ciRun": "41657273611",
+  "technicalOnly": true,
+  "lessonFirstPassClaim": false,
+  "toolContribution": "Capture/import tooling advice and draft contribution disclosed; no lesson authorship.",
+  "rows": [
+    {
+      "status": "PASS",
+      "check": "Actual commit-manifest execution against old local commit",
+      "evidence": "/tmp/w047-s1-commit-2b9a13cd-b.json",
+      "evidenceSHA256": "b05774797c37b256b05b0747e66740089311dbb7d88fe0d2a202272124ede6f4",
+      "result": "FAIL",
+      "localCommit": "2b9a13cd8281c8137449cb449ba6323fc57cd7cf",
+      "mismatches": [
+        "src/data/textbook/math/numbers/n12Authored.json"
+      ],
+      "reason": "Old committed N12 remained baseline bd7e994…; other7 candidate paths match. Process exited1, as required."
+    },
+    {
+      "status": "PASS",
+      "check": "Actual commit-manifest execution against corrected local commit",
+      "evidence": "/tmp/w047-s1-commit-0388390f-b.json",
+      "evidenceSHA256": "b011a0650ef4d79418cf5898a0a366581d7546c1c7f95f03e06444da4249246c",
+      "result": "PASS",
+      "localCommit": "0388390f94e16a56e612135af5019134191bf303",
+      "reason": "All8 committed/working/native-manifest SHA256 values agree. Process exited0."
+    },
+    {
+      "status": "PASS",
+      "check": "S1 recorded-application guard source comparison and isolated assertion",
+      "evidence": "work/items/W-MATH-047-n1112-guided-review/verify_current.mjs:15; git objects 2b9a13cd and0388390f",
+      "reason": "S1_N12_APPLIED exists in both commits. Old commit has BASELINE N12 and lacks the new guard; corrected commit has APPROVED N12 and the guard. Isolated exact assert.equal(mode,APPROVED) rejects old bytes and accepts corrected bytes. Full verify_current was not rerun here."
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "No new CI REPORT or PNG viewed; no independent current run status/digest acceptance is claimed.",
+    "Commit-manifest tool reads Runtime state and writes only requested /tmp output; no Store/Git/product write performed.",
+    "Native manifest is the current candidate; old source comparison is deliberately against that fixed candidate.",
+    "Earlier static localworkingbytes PASS does not validate omitted-staging source087 or rejected run41655234217. Original failure evidence and candidate artifacts unchanged."
+  ]
+}

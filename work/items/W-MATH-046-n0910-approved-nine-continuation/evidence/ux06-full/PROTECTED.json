@@ -1,0 +1,79 @@
+{
+  "status": "PASS_SCOPED_SOURCE_PROTECTION",
+  "sourceCommit": "5e83a17ba73c39f855384b31fc51488028b96a09",
+  "protected": [
+    {
+      "nodeId": "n10-q03-expand",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-03",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-q04-sign",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-04",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-q05-denominator",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-q05-square",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-05",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-q06-sign",
+      "wholeObjectUnchanged": true
+    },
+    {
+      "nodeId": "n10-06",
+      "wholeObjectUnchanged": true
+    }
+  ],
+  "immutableR9AndN10R5ByteExactToBase": true,
+  "affected": [
+    {
+      "unit": "n09",
+      "changedNodeIds": [
+        "n09-q01-negative",
+        "n09-q02-negative-square",
+        "n09-02",
+        "n09-q04-negative",
+        "n09-decimal-method",
+        "n09-p001-q08-left-square",
+        "n09-p001-q08-right-square",
+        "n09-parts-target"
+      ],
+      "nodeCount": 41,
+      "partCount": 55
+    },
+    {
+      "unit": "n10",
+      "changedNodeIds": [
+        "n10-q01-square",
+        "n10-q11-formula",
+        "n10-q13-identity",
+        "n10-15",
+        "n10-17",
+        "n10-20"
+      ],
+      "nodeCount": 45,
+      "partCount": 70
+    }
+  ],
+  "otherUnits": {
+    "sourceIR": "unchanged",
+    "authoredSourceN09N10": "unchanged",
+    "sharedRuntimeRenderer": "unchanged",
+    "globalCSS": "unchanged"
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "compiledHash": "3de5a6b3ad5d7f03c4381ca92faef4d57306f03c35b0b1de5e03b42d1535e306",
+  "rawSHA256": "0a902997b3c766636e9805cecbc660459021a57652c0e61e9fe83b84fb5ba263",
+  "states": [
+    {
+      "width": 320,
+      "state": "01-initial",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06BinomialBase",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06DistributeA",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06DistributeB",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06CrossProduct",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06LastSquare",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 320,
+      "state": "correct-ux06LikeTermCount",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "01-initial",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06BinomialBase",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06DistributeA",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06DistributeB",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06CrossProduct",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06LastSquare",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 390,
+      "state": "correct-ux06LikeTermCount",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "01-initial",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06BinomialBase",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06DistributeA",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06DistributeB",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06CrossProduct",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06LastSquare",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 430,
+      "state": "correct-ux06LikeTermCount",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "01-initial",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06BinomialBase",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06DistributeA",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06DistributeB",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06CrossProduct",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06LastSquare",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    },
+    {
+      "width": 1440,
+      "state": "correct-ux06LikeTermCount",
+      "visibleMainRows": [
+        "n09-decimal-method::ux06-proposal-row-01",
+        "n09-decimal-method::ux06-proposal-row-02",
+        "n09-decimal-method::ux06-proposal-row-03",
+        "n09-decimal-method::ux06-proposal-row-04",
+        "n09-decimal-method::ux06-proposal-row-05"
+      ],
+      "relationXSpread": 0.0,
+      "rootRelationRectXSpread": 0.0
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+PASS n10-legacy-r2-seven-records 63
+{"results":[{"name":"n10-legacy-r2-seven-records","status":"PASS","retained":0,"answered":63,"oldStorageProtected":true}],"errors":[],"failures":[]}

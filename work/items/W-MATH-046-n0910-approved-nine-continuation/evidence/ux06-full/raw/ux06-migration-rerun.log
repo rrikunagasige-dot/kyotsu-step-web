@@ -1,0 +1,21 @@
+PASS n09-r9-main 7
+PASS n09-r9-dedicated 7
+PASS n09-r8-main 13
+PASS n09-r8-dedicated 13
+PASS n10-r5-main 12
+PASS n10-r5-dedicated 12
+AssertionError [ERR_ASSERTION]: reset-stale-math-numbers-expressions-n09-r9-to-10-1 retained initially n09-q01-negative::powerAction
++ actual - expected
+
++ undefined
+- {
+-   firstSelectedAt: 1001,
+-   firstValue: 'repeat-whole-base',
+-   lastSelectedAt: 1001,
+-   selectionCount: 1,
+-   value: 'repeat-whole-base'
+- }
+
+    at run (file:///tmp/ux06-migration.mjs:16:698)
+    at async file:///tmp/ux06-migration.mjs:29:150
+{"results":[{"name":"n09-r9-main","status":"PASS","retained":48,"answered":7,"oldStorageProtected":true},{"name":"n09-r9-dedicated","status":"PASS","retained":48,"answered":7,"oldStorageProtected":true},{"name":"n09-r8-main","status":"PASS","retained":42,"answered":13,"oldStorageProtected":true},{"name":"n09-r8-dedicated","status":"PASS","retained":42,"answered":13,"oldStorageProtected":true},{"name":"n10-r5-main","status":"PASS","retained":58,"answered":12,"oldStorageProtected":true},{"name":"n10-r5-dedicated","status":"PASS","retained":58,"answered":12,"oldStorageProtected":true},{"name":"reset-stale-math-numbers-expressions-n09-r9-to-10-0","status":"PASS","records":0}],"errors":[],"failures":["reset-stale-math-numbers-expressions-n09-r9-to-10-1 retained initially n09-q01-negative::powerAction\n+ actual - expected\n\n+ undefined\n- {\n-   firstSelectedAt: 1001,\n-   firstValue: 'repeat-whole-base',\n-   lastSelectedAt: 1001,\n-   selectionCount: 1,\n-   value: 'repeat-whole-base'\n- }\n","CASE_COVERAGE_EXPECTED_18_ACTUAL_7"]}

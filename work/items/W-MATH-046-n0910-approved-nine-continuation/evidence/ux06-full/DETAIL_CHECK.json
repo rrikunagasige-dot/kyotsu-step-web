@@ -1,5 +1,5 @@
 {
-  "status": "ROOT_CODE_AND_IMAGE_CHECKED_NONAUTHOR_PENDING",
+  "status": "DETAIL_CONDITIONS_CHECKED_BY_ROOT_A_B",
   "page": "e95fae75-162d-4d66-bcb5-5d61dd7bddcc",
   "conditionalAuthorization": true,
   "publicReleaseAuthorization": false,
@@ -22,5 +22,6 @@
     "candidate-square context to 140+1/140+2 to A/B to concrete reuse",
     "main 5-row derivation shares equal column; independent support calculations use separate groups"
   ],
-  "formalStoreReceipt": false
+  "formalStoreReceipt": false,
+  "scopeNote": "Historical fix-only candidate3de5a6 verification; not substituted for full5e83 R07/G2 results"
 }

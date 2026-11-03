@@ -12,23 +12,23 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：UX06本人承認を記録し、R05照合→R06和の平方代表→R07の限定検査/意味/実画像審査まで実施。現在は**代表本人細部確認待ち**。[確認票](evidence/ux06-pilot/REVIEW.md)。残り10導出/3本文は未適用、mainf4c/公開source691dも未変更。正式Storeの受理ではない。
+- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、G2の限定非作者監査を統合完了。次はG3公開前確認（公開は別具体的承認）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
 ## 最新照合（2026-11-03 JST）
 
-R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)へ保存。続くR04は下記UX06案を作成。現在も製品NEEDS-FIX、実装・公開は未着手。正式Storeのnext認定ではない。
+R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)へ保存。続くR04は下記UX06案を作成。これはR03/R04時点の履歴。最新の実装・検査状態は上記現在地を優先。正式Storeのnext認定ではない。
 
 ## R04具体案の現在地（UX06 / 2026-11-03 JST）
 
-[案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。新案は[承認済み](evidence/ux06-proposal/APPROVAL.json)。代表を限定実装・検査し、現在は本人細部確認待ち。公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
+[案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。新案は[承認済み](evidence/ux06-proposal/APPROVAL.json)。代表限定実装後、本人の条件付き細部承認を補修・検査で充足し、本適用へ進んだ。公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
 
-今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。次は本人細部確認→残り限定適用。小ブロックごとにこの入口とMASTER§52を照合する。
+今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。条件付き本人細部承認を充足して残り限定適用を実施。現在はG2限定監査統合済み、次はG3公開前確認。小ブロックごとにこの入口とMASTER§52を照合する。
 
 ## 本適用の版と保存
 
-UX05のN09r7 pilot/r8・N10r5を固定保存。UX06代表はN09r9（from8）、本人細部OK後の本適用はN09r10（from9）/N10r6（from5）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。
+UX05のN09r7 pilot/r8・N10r5を固定保存。UX06代表はN09r9（from8）、条件付き本人細部OKを充足した本適用はN09r10（from9）/N10r6（from5）。UX05の数学/学習契約は変えず、同じrevisionの異なるartifactへ回答を黙って流用しないための保存判断。旧全revision/hashの鎖、KEEP/RETIRE/NEWと新gateを厳密に照合する。
 
 ## 今回の実行順
 

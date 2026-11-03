@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w046-ux06-full
+
+························································································································································
+
+ Test Files  12 passed (12)
+      Tests  152 passed (152)
+   Start at  17:34:32
+   Duration  4.32s (transform 2.94s, setup 0ms, collect 6.66s, tests 5.68s, environment 825ms, prepare 1.15s)
+

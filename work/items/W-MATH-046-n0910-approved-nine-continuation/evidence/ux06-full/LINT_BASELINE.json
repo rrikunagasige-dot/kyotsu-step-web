@@ -1,0 +1,46 @@
+{
+  "globalStatus": "FAIL_EXISTING_25_ERRORS_1_WARNING",
+  "changedSourceLint": "PASS",
+  "files": [
+    {
+      "path": "e2e/math-practice-pilot.spec.ts",
+      "unchangedFromBase": true,
+      "SHA256": "c66e15f084fd36820699a47bdf924c6e220d201490bb54921a1b50892f33ac19"
+    },
+    {
+      "path": "src/data/mathPractice/setsBatchA.zh.ts",
+      "unchangedFromBase": true,
+      "SHA256": "267a7dd3877589be8a0adbd0f4ee62ed0cc75266a49ce53f2018ac9eeee27301"
+    },
+    {
+      "path": "src/data/textbook/ch01/chapter1Continuous.ts",
+      "unchangedFromBase": true,
+      "SHA256": "fff2fd6b31a5aa6ebf37af3b34f89aa0b18d72d1223c5f085d5c0086a219464a"
+    },
+    {
+      "path": "src/data/textbook/math/proposition/propositionReadingLesson.ts",
+      "unchangedFromBase": true,
+      "SHA256": "9932b6655ee187ec86f02cd5aa771993d2acb90b29d81eb81871a316119ec4ac"
+    },
+    {
+      "path": "src/data/textbookUnits.test.ts",
+      "unchangedFromBase": true,
+      "SHA256": "bd385b58b8740bbe88930e666cfa0c15486e3c0d702f0d75fbe1339d3979c2b3"
+    },
+    {
+      "path": "src/domain/textbookMath.ts",
+      "unchangedFromBase": true,
+      "SHA256": "6b240512377d64d37954cc5ea657d3338d04069a8f41fc36dcbd9c7e7e5c4f59"
+    },
+    {
+      "path": "work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx",
+      "unchangedFromBase": true,
+      "SHA256": "498e884560fa9255cfbca937e3d921b1f212331f929bd620b4a5d36d9f9abc98"
+    },
+    {
+      "path": "work/items/W-MATH-038-transformation-groups/fixture.tsx",
+      "unchangedFromBase": true,
+      "SHA256": "f933fca94bb6107f7cc22bde5dab2bb419950986f6a11e55cedac7f2bca1e4b7"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "status": "SCOPED_R07_G2_REVIEW_COMPLETE_NOT_PUBLISHED",
+  "sourceCommit": "5e83a17ba73c39f855384b31fc51488028b96a09",
+  "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
+  "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
+  "regressionTests": 152,
+  "nativeTests": 31,
+  "typecheck": "PASS",
+  "build": "PASS_WITH_EXISTING_CHUNK_SIZE_WARNING",
+  "lint": {
+    "changedSource": "PASS",
+    "repository": "FAIL_EXISTING_25_ERRORS_1_WARNING",
+    "evidence": "LINT_BASELINE.json"
+  },
+  "math": {
+    "adapter": "existing finite-math.py/SymPy1.14.0",
+    "status": "PARTIAL",
+    "partCount": 125,
+    "candidateCount": 171,
+    "unsupportedParts": 70,
+    "failures": 0,
+    "meaningReview": "SOURCE_REVIEW_A.md + RENDER_REVIEW_B.md; no automatic acceptance"
+  },
+  "browser": {
+    "n09": {
+      "status": "PASS",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "states": 920,
+      "importer": {
+        "status": "PASS",
+        "schemaVersion": "nested-run-validation/1",
+        "findings": [],
+        "measurementCount": 2620,
+        "widths": [
+          320,
+          390,
+          430,
+          1440
+        ],
+        "partCount": 55,
+        "layoutHash": "5811e0d53c75921231b347fa8a1cf890ff2246f6e03a6b6c1ff1c83d8bb168b3",
+        "automaticAcceptance": false
+      },
+      "sourceManifestStable": true
+    },
+    "n10": {
+      "status": "PASS",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "states": 1140,
+      "importer": {
+        "status": "PASS",
+        "schemaVersion": "nested-run-validation/1",
+        "findings": [],
+        "measurementCount": 2640,
+        "widths": [
+          320,
+          390,
+          430,
+          1440
+        ],
+        "partCount": 70,
+        "layoutHash": "ffdae2e09359c7cf1995bc7e6c493d4eb6517aab4838c0d1b51e6c2851265a30",
+        "automaticAcceptance": false
+      },
+      "sourceManifestStable": true
+    }
+  },
+  "migration": {
+    "fullCases": 19,
+    "status": "PASS",
+    "legacyR2SevenRecords": {
+      "status": "PASS_SCOPED_EXTRA_CASE",
+      "retained": 7,
+      "newAnswered": 63
+    },
+    "sourceUnchanged": true,
+    "fixturePolicy": "Synthetic ledger; no real learner records"
+  },
+  "imageEvidence": {
+    "status": "ROOT_AND_B_VISUALLY_REVIEWED",
+    "mainCrops": 44,
+    "extraX4Crops": 2,
+    "fullPageOriginalsSaved": true,
+    "oldElementCropStatus": "FAIL_STICKY_HEADER_OCCLUSION",
+    "fontEnvironment": [
+      "Noto Sans CJK JP",
+      "KaTeX Main",
+      "KaTeX Math italic"
+    ],
+    "BVisualCropsReviewed": 45,
+    "BReviewManifest": "IMAGES_REVIEWED_B.json",
+    "BInkColumnIndependentCheck": {
+      "packets": 84,
+      "maxDifferencePx": 0
+    }
+  },
+  "protected": "PROTECTED.json",
+  "formalStoreReceipt": false,
+  "publicationApproval": false,
+  "published": false,
+  "goldOrFit": false,
+  "nextWorkflowStageAfterG2": "G3 publication preflight/detail approval; public release needs separate concrete authorization under main WORK_SYSTEM12A",
+  "limits": [
+    "Not whole-app acceptance",
+    "Global lint remains pre-existing FAIL",
+    "Finite adapter unsupported 70parts not promoted to proof",
+    "Formal W046 Store missing26 events exception preserved"
+  ],
+  "nonAuthorReviews": {
+    "A": "SOURCE_REVIEW_A.md: initial q11/q13 REVISE resolved on source5e83",
+    "B": "RENDER_REVIEW_B.md: new44crops + x+4 complete crop, no new STOP",
+    "root": "same-source code/actual ink relation measurements/semantic integration; not claimed as non-author"
+  }
+}

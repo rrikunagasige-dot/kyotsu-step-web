@@ -1,3 +1,5 @@
+> 履歴の代表確認票。最新の本人条件付き細部承認は[DETAIL_ACCEPTANCE](../ux06-full/DETAIL_ACCEPTANCE.json)、本適用の現在地は[最新確認票](../ux06-full/REVIEW.md)を参照。以下の当時の待ち状態を現在へ流用しない。
+
 # N09 和の平方 — 代表ブロックの確認票
 
 Review: W046 / P-W046-UX-06  

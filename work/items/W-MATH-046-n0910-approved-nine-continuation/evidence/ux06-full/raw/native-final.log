@@ -1,0 +1,39 @@
+✔ four widths and three states require fixed image/source/geometry evidence (2.5847ms)
+✔ reject 1.21em regression (0.477121ms)
+✔ reject scale despite apparent basefont (0.340908ms)
+✔ reject moving math center (1.346175ms)
+✔ reject collapsed hit target (0.245085ms)
+✔ reject missing complete state (0.199948ms)
+✔ reject different source (0.250603ms)
+✔ reject no image evidence (0.202492ms)
+✔ reject active prompt retained (0.237423ms)
+✔ reject overflow (0.279767ms)
+✔ reject duplicate state (0.283783ms)
+✔ reject foreign initial row (0.179327ms)
+✔ reject undefined relation (0.166047ms)
+✔ reject wrong gap (0.411613ms)
+✔ reject number points to choice (0.198897ms)
+✔ relation columns compared within group (0.204505ms)
+✔ partial state uses the approved row prefix (0.53701ms)
+✔ only a proven candidate line may overlap its own hit (1.612383ms)
+✔ parent radical/fraction ink is never exempted as a DOM descendant (0.20865ms)
+✔ forged owner, sibling owner, missing raster and false axis are rejected (0.5638ms)
+✔ same-sized hit swap cannot be hidden by a copied owner label (0.179027ms)
+✔ a common body can center an off-center row only with a measured root relation proof (0.855274ms)
+✔ n09 native blank and interaction planning must use nested parents without flat interactions (588.182573ms)
+✔ n10 native blank and interaction planning must use nested parents without flat interactions (476.828619ms)
+✔ n09 native novice snapshots use every real part and preserve the runtime frontier (193.488117ms)
+✔ n10 native novice snapshots use every real part and preserve the runtime frontier (186.527406ms)
+✔ nested layout operations reject partial, stale and legacy-axis evidence instead of accepting geometry alone (106.146366ms)
+✔ synthetic all-state labels cannot substitute an unrelated formula for real rows and slots (242.738219ms)
+✔ public layout phases retain neutral frames for wrong choices and replan only after certification or exposure (73.840747ms)
+✔ reader formula contract has no memo, preserves history tags, and does not prefix math extras (1.063234ms)
+✔ full-run importer rejects wrong stage, old filled readonly mode, memo injection and incomplete auto stages (665.324578ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2847.467325

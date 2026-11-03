@@ -1,12 +1,12 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
-Status: VERIFYING
-Review: UX06-REPRESENTATIVE-BLOCK-CHECK-PENDING / APP-NEEDS-FIX
-- P-W046-UX-06は本人「可以来吧」（page818ccd59…）で承認。[承認記録](evidence/ux06-proposal/APPROVAL.json)。R05照合→R06和の平方代表→R07の限定CODE/意味/実画像審査を実施。次は**代表の本人細部確認**。[確認票](evidence/ux06-pilot/REVIEW.md)。同じ案の承認を聞き直さない。
-- 固定source `a98640fd2757b2b9766cbbd085d16ea37ec437ad`、N09代表r9/compiled de799…。decimal-methodに6NEW、旧43KEEP、他40node/N10教材不変。代表を固定し、本人細部OK後の本適用はN09r10/N10r6として同r9を上書きしない。
-- Aは数学/保存、Bは主担当の理念/工程/実画像を非作者審査。Bがlead16px残存を止め、追加CODEがfont403を検出。旧font-ready判定を撤回し、全role18px＋Main/Math italic実load/HTTP0で再検査。[検査結果と原FAIL](evidence/ux06-pilot/VERIFICATION.json)。
-- 現在の四幅88packetは実fontの2生batch、保存/未知版6ケース、115関連回帰/native9、恒等式検査、代表6slotの画像審査と取込を限定根拠にする。旧固定port timeoutは原因未確定で原記録を保持。全単元の新規受入/正式Store受理へ拡張しない。
-- 次：main§12Aの代表細部OK→承認済み残り10導出/3本文を限定適用→R07/G2横断検証。新確定欠陥は差戻し。mainf4c/公開source691dは未変更、公開/本人総合受入/Gold/fitなし。Store26欠落特例・他Work未採用を維持。
+Status: REVIEW_READY
+Review: UX06-FULL-SCOPED-G2-COMPLETE / NOT-PUBLISHED
+- 本人page e95fae75…の「修正後は承認として自動で次へ」に基づき、文脈/等号列の2点を同一候補でroot/A/Bが検査し、代表細部承認条件を充足。[条件と根拠](evidence/ux06-full/DETAIL_ACCEPTANCE.json)。代表の再承認待ちへ戻さない。
+- 承認済み残り10導出/3本文を適用。検査source5e83a17ba73c39f855384b31fc51488028b96a09、GitHub同一tree製品commit d588d1c395de3132805395f2708bed7535c1767d。[完全一致](evidence/ux06-full/SOURCE_SYNC.json)。N09r10/from9・55parts（48KEEP/1RETIRE/7NEW）、N10r6/from5・70parts（58KEEP/2RETIRE/12NEW）。旧r9/r5をbyte固定し、旧revisionを上書きしない。
+- A/Bの理念監視でN10差の平方/和差積にも同型のA/B接続不足を発見し補修。初回REVISEを保持、修正前画像/計測を新sourceの合格へ流用しない。√a/√bの積・商の証明9node objectを保持。
+- R07：関連152回帰/native31、型/build、両unit全4幅2060状態packetと既存importer、保存/未知版19case＋legacy7履歴の実browserを確認。有限数学はPARTIAL/70未対応・意味審査を分離。全体lintは既存25error/1warningのまま、変更source lintは合格。
+- G2の限定非作者監査を統合完了。[最新確認票](evidence/ux06-full/REVIEW.md)・[火柴図/工程入口](WORKFLOW_CURRENT.md)。次はG3公開前確認。公開は別具体的承認、mainf4c/公開source691dは未変更。Store26欠落特例を維持し、正式receipt・本人総合受入・Gold/fitを作らない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

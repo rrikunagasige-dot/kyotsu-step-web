@@ -1,0 +1,18 @@
+{
+  "kind": "CONDITIONAL_USER_REPRESENTATIVE_DETAIL_ACCEPTANCE",
+  "page": "e95fae75-162d-4d66-bcb5-5d61dd7bddcc",
+  "quote": "你改掉了之后直接可以当成承認自动下一步就行。一定要监视你有没有按照理念做哦",
+  "conditions": [
+    "具体例とA/Bの文脈接続",
+    "主導出の等号列を揃える"
+  ],
+  "conditionCheck": "同一detail候補3de5a6の4幅28状態と実画像をroot/A/Bが照合。A/Bとも修正条件成立、残り適用の停止指摘なし。",
+  "scope": "UX06代表細部確認から残り承認済み10導出/3本文への限定適用",
+  "publicationApproval": false,
+  "formalStoreReceipt": false,
+  "evidence": [
+    "DETAIL_REVIEW_A.md",
+    "DETAIL_REVIEW_B.md",
+    "DETAIL_CHECK.json"
+  ]
+}

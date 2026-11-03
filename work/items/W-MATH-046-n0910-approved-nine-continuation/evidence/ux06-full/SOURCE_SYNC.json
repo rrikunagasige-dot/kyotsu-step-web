@@ -1,0 +1,10 @@
+{
+  "localVerifiedSource": "5e83a17ba73c39f855384b31fc51488028b96a09",
+  "remoteProductCommit": "d588d1c395de3132805395f2708bed7535c1767d",
+  "exactFullTreeSHA": "adc60a5161275425e23320b6bb5ccec6eb713520",
+  "method": "GitHub create_blob/create_tree/create_commit; native git push lacked write authentication",
+  "equality": "Remote create_tree SHA equals local full Git tree SHA. All product, source, test, tool and existing evidence blobs are byte identical; only commit author/committer metadata differs. Original local-source browser evidence remains unchanged.",
+  "verification": "R07 evidence bound to local5e83; tree equality is synchronization proof, not a fabricated rerun or formal Store receipt. G3 must bind its own release checks to remote d588.",
+  "mainUnchanged": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "published": false
+}

@@ -1,0 +1,8 @@
+file:///workspace/scratch/6ff917b2ec4a/w046-ux06-full/work/items/W-MATH-046-n0910-approved-nine-continuation/evidence/ux06-full/g3-publish-check.mjs:71
+ let matched=false,last='';for(let i=0;i<30;i++){try{const r=await request(new URL('w046-release.json?source='+SOURCE,base),{cache:'no-store'});if(r.ok&&sha(Buffer.from(await r.arrayBuffer()))===sha(expected)){matched=true;break;}last='manifest differs';}catch(e){last=String(e);}await new Promise(r=>setTimeout(r,2000));}if(!matched)throw Error('HOST_MANIFEST_MISMATCH '+last);
+                                                                                                                                                                                                                                                                                                                                                    ^
+
+Error: HOST_MANIFEST_MISMATCH TypeError: fetch failed
+    at file:///workspace/scratch/6ff917b2ec4a/w046-ux06-full/work/items/W-MATH-046-n0910-approved-nine-continuation/evidence/ux06-full/g3-publish-check.mjs:71:341
+
+Node.js v24.22.1

@@ -31,8 +31,13 @@
     },
     {
       "path": "FAILURE_NOTES.md",
-      "sha256": "7c819a0960da7855f358e7b09afcb2f03a3c4afbc1c072aabffc2dd13ab807ab",
-      "bytes": 1795
+      "sha256": "05228f993ed13ea9c3dcd9cfeb781c6ccfb212632697cb2e0f6e5ba78c93bec3",
+      "bytes": 3400
+    },
+    {
+      "path": "G3_PREFLIGHT.json",
+      "sha256": "8c14914dd1ff48ac1735e2cd39621cf197862f617e7d97b4fe7743226e40f6a5",
+      "bytes": 2124
     },
     {
       "path": "IMAGES_REVIEWED_B.json",
@@ -43,6 +48,11 @@
       "path": "LINT_BASELINE.json",
       "sha256": "b99d69d3d80f2d7370b67ecaa5bbf5963b966ff5ed1a4655c14c8301e41b73d2",
       "bytes": 1639
+    },
+    {
+      "path": "PROSE_CODE_CHECK.json",
+      "sha256": "3f8b071a86d740120cd1799b359325c9527ce9b8bfb706fdcba2f360a94bc1bb",
+      "bytes": 52116
     },
     {
       "path": "PROTECTED.json",
@@ -61,18 +71,18 @@
     },
     {
       "path": "RENDER_REVIEW_B.md",
-      "sha256": "ac21a21f21f16e2a969b4b60061b960f30273cf4411df986c0a4c954a68da23b",
-      "bytes": 9737
+      "sha256": "e70dce94bf10011167b5987253c9c9f7e831a2674e526badc040faab1931b06f",
+      "bytes": 24000
     },
     {
       "path": "REVIEW.md",
-      "sha256": "bd8b916511e8579d28ed1228df9451325abc68d44eafb0dce2b7d6b99781eb18",
-      "bytes": 5524
+      "sha256": "ef6072ac8e93f08a12643ac65616c8ee1c052651d87f4cb5687bf9244e889c4d",
+      "bytes": 7397
     },
     {
       "path": "SOURCE_REVIEW_A.md",
-      "sha256": "055f7a3a1f290d2792a9984b89fd3c978f3b4ad71b9a2279245972c9f9411e45",
-      "bytes": 17191
+      "sha256": "bf5bd99407b92f2bc40b88265ffbe0293a73624c5b50d62e7bad9ac7fa8f7b93",
+      "bytes": 27179
     },
     {
       "path": "SOURCE_SYNC.json",
@@ -81,8 +91,8 @@
     },
     {
       "path": "VERIFICATION.json",
-      "sha256": "9687c311f00489d2697c83978f9121306b7ce7ff6f3ab10b1de4d06ce60689d8",
-      "bytes": 3792
+      "sha256": "4e6827ada6454a989b4a3c12b8078c42c1f35c92995564aeaa2f592428811e6f",
+      "bytes": 4868
     },
     {
       "path": "apply-full.py",
@@ -103,6 +113,21 @@
       "path": "capture-x4.mjs",
       "sha256": "9d8f2e9ccb30bf923eb41b37a5fe2d806a83b0e10121bfea3c2f17a22c33c345",
       "bytes": 4227
+    },
+    {
+      "path": "g3-deploy-pages.yml",
+      "sha256": "c14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891",
+      "bytes": 9141
+    },
+    {
+      "path": "g3-local-run.mjs",
+      "sha256": "130eeda5c896209458f884587bcac9f1c8f5ec955e21ab17c2645631bd7a1da6",
+      "bytes": 2319
+    },
+    {
+      "path": "g3-publish-check.mjs",
+      "sha256": "6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139",
+      "bytes": 17756
     },
     {
       "path": "images/1440-n09-decimal-method-complete.png",
@@ -565,6 +590,16 @@
       "bytes": 137068
     },
     {
+      "path": "images/g3-n09-390.png",
+      "sha256": "17ebfa50db51fda63948aea8ee2ecab4b1d6f81785b328e7645d1b67d406db79",
+      "bytes": 1647961
+    },
+    {
+      "path": "images/g3-n10-390.png",
+      "sha256": "e78ca012a1879c0fcc94813ce08e9a1a0df825dae05ce87293d4514c47d18715",
+      "bytes": 1670698
+    },
+    {
       "path": "import-browser.mjs",
       "sha256": "9d4ab4bcfff8a9ad61f394d5ccb95d46f18c699ae6b66feef639eb7cb2fc807f",
       "bytes": 917
@@ -588,6 +623,11 @@
       "path": "native-ops.mjs",
       "sha256": "e007308e1143d9a272972112e00992dca91e22718d2af7f3dcd24f85a5800e37",
       "bytes": 1877
+    },
+    {
+      "path": "prose-code-check.mjs",
+      "sha256": "afa44cb244bda8a674c25008492271014ae3ab222ad0ead9e0147984e97d7955",
+      "bytes": 5288
     },
     {
       "path": "raw/build-final.log",
@@ -620,6 +660,111 @@
       "bytes": 44607
     },
     {
+      "path": "raw/g3-final-legacy.log",
+      "sha256": "086ebcae19d71b588f4451cf2af51a7aa57729e9f9b58d3810ee4f691307dd30",
+      "bytes": 43
+    },
+    {
+      "path": "raw/g3-final-n08.log",
+      "sha256": "c6dcf3903fe657182c8bf2edff99946cdfa02a832487814d3818c61d7fa9137f",
+      "bytes": 963
+    },
+    {
+      "path": "raw/g3-final-n0910.log",
+      "sha256": "f0d0cf0293d1659d7857bc1ecd4786cfb3902fe3160b40fde5384dfcc3cfb762",
+      "bytes": 38
+    },
+    {
+      "path": "raw/g3-final-n11.log",
+      "sha256": "b6b8080120bfc9979b2e62bd2bf25ab54e21486e4517643ef645fcf59e1c9f21",
+      "bytes": 951
+    },
+    {
+      "path": "raw/g3-final-r6.log",
+      "sha256": "c3b2e5edfc7301456bccb26647b521798afdbf344ad19fa1eba7aa65d7673cf4",
+      "bytes": 57
+    },
+    {
+      "path": "raw/g3-final-server-error.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "raw/g3-final-server.log",
+      "sha256": "8bd6d446be4f0b9a842cdd153e85e608cb10d6ae8b382a1150b3997a4dc35a2e",
+      "bytes": 55
+    },
+    {
+      "path": "raw/g3-legacy-REPORT.json.gz",
+      "sha256": "91a14f1abded6109bfea9f48ee22ced95dd01679ad60ef9c45728661a51af553",
+      "bytes": 151
+    },
+    {
+      "path": "raw/g3-local-RESULT.json.gz",
+      "sha256": "fa53469b32f5de1f3e3d09eff6e99c2c59cb0d7550f6d4a89551205418491de6",
+      "bytes": 186
+    },
+    {
+      "path": "raw/g3-n08-REPORT.json.gz",
+      "sha256": "44cbf1d3b13df831ff45e96121a088c885b59fbcad3bd6673c65846dda742457",
+      "bytes": 494906
+    },
+    {
+      "path": "raw/g3-n0910-result.json.gz",
+      "sha256": "d2153d27ca328a8b429aed49763f1f21b04fc7bbbaf09f5d5942843c1c0ad682",
+      "bytes": 495
+    },
+    {
+      "path": "raw/g3-n11-REPORT.json.gz",
+      "sha256": "7fb2f8e1dd2ea68bd2d0f580b16d16f12c99a934709ed38fa127db88a4085aca",
+      "bytes": 345
+    },
+    {
+      "path": "raw/g3-r6-REPORT.json.gz",
+      "sha256": "885b387ab41a74ac4c9653bedd882e5b0123c7bec1b15ed5b47a7a298111d655",
+      "bytes": 148
+    },
+    {
+      "path": "raw/g3-retained-release.json.gz",
+      "sha256": "649253e9adbd8fe1a32d1455aa8fe6fa8363ec9846908103decbcd77905e1fa1",
+      "bytes": 4421
+    },
+    {
+      "path": "raw/g3-w046-g3-export.log",
+      "sha256": "03ed692c36c9d472258d24dd34244ea204baddf76664144ec9d71c8003d2414a",
+      "bytes": 1804
+    },
+    {
+      "path": "raw/g3-w046-g3-fixed-source-build.log",
+      "sha256": "844a47be4262fbafadaf12f32908300289f43568870c7369843ef2dd1bd208a6",
+      "bytes": 5608
+    },
+    {
+      "path": "raw/g3-w046-g3-legacy.log",
+      "sha256": "d6b6888eb23ddefcd98edcd7a206ce66f4b5585839bd82d2ba661aa4894cde0f",
+      "bytes": 663
+    },
+    {
+      "path": "raw/g3-w046-g3-n08.log",
+      "sha256": "feaecb8b718d3eb8f000d0855f436c75920e3029afd916734d0950b83ceec5ba",
+      "bytes": 640
+    },
+    {
+      "path": "raw/g3-w046-g3-prepublish.log",
+      "sha256": "26ec4c5d6073e83607a27392568785110ccafa9bde2cb552d41a8ea7b26f4f54",
+      "bytes": 1109
+    },
+    {
+      "path": "raw/g3-w046-g3-r6.log",
+      "sha256": "daafc0a5de014626326ddb3893ec0261f7b0f134bbc745502c6bdfd5fad73998",
+      "bytes": 674
+    },
+    {
+      "path": "raw/g3-w046-release.json.gz",
+      "sha256": "cb95f8d0034e0acbc89da9a964b0ded5f7c7f367e1f1b3aca04e46fc6825eb80",
+      "bytes": 9336
+    },
+    {
       "path": "raw/lint-changed.log",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
@@ -643,6 +788,26 @@
       "path": "raw/native-final.log",
       "sha256": "7dd0f56cbc05c0d0ec98afe216ad6a36487dd91edc2f269a2430bad58b6c835d",
       "bytes": 2368
+    },
+    {
+      "path": "raw/prose-import.json.gz",
+      "sha256": "d8a13eea2a1afdee9fae684b7adec5a41bd7197864407c952bb3eb3dc64b969d",
+      "bytes": 14690
+    },
+    {
+      "path": "raw/prose-requests.json.gz",
+      "sha256": "634e643eb2f30d81f370600658f5a774b47b03d7989d4da0fa3878e1ecf1fb5e",
+      "bytes": 67722
+    },
+    {
+      "path": "raw/prose-responses-A.json.gz",
+      "sha256": "844d8a1568e126bd3e7e7c650eba3e3328e0328ef4f7ad6c930c5ff0097d4b79",
+      "bytes": 7637
+    },
+    {
+      "path": "raw/prose-responses-B.json.gz",
+      "sha256": "92c3338c2f10014e91b736ec28a4c1bfa83169718b99d1f82217d67890c7fb6e",
+      "bytes": 7676
     },
     {
       "path": "raw/ux06-finite-math.json.gz",
@@ -784,5 +949,6 @@
       "sha256": "ac5f4191b02c5b96d5391db6803c7d86d512678baac54bc46e4b6c6ffcc02b25",
       "bytes": 635
     }
-  ]
+  ],
+  "currentStage": "Prose supplement/G2 reintegration and G3 local prepublication checks complete; separate publication approval pending"
 }

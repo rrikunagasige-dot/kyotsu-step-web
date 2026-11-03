@@ -1,0 +1,174 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/deploy-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CANDIDATE_SHA: d588d1c395de3132805395f2708bed7535c1767d
+      VITE_PREVIEW_COMMIT: d588d1c395de3132805395f2708bed7535c1767d
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d588d1c395de3132805395f2708bed7535c1767d
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout publisher checks from reviewed publisher revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: publisher
+          sparse-checkout: tools/release/w046-publish-check.mjs
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      # W046 records the fixed candidate R07/G2 and scoped product checks; publication verifies bytes and operations again.
+      - name: Existing Word source adapter dependency
+        run: |
+          timeout 120s sudo apt-get update -qq
+          timeout 600s sudo apt-get install -y -o Acquire::Retries=3 pandoc fonts-noto-cjk
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
+      - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs --check
+      - run: pnpm run build
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs
+      - name: Generate exact N09/N10 release supplement
+        run: node publisher/tools/release/w046-publish-check.mjs manifest
+      - run: pnpm exec playwright install --with-deps chromium
+      - uses: actions/configure-pages@v5
+      - name: Verify exact release before upload
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ConstructionPresentationR7.json'));
+          if(m.sourceSHA!==process.env.CANDIDATE_SHA||m.work!=='W-MATH-041'||m.activeN08Revision!==7||m.construction.requiredParents!==30||m.construction.independentParts!==42||m.construction.planHash!==p.planHash||m.construction.layoutDesignHash!==p.layoutDesignHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08.revision!==4||m.originalN08.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
+          NODE
+      - name: Prepare original N11 figure decoding for prepublication verification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          s=p.read_text()
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+          else:
+              assert new in s
+          PY
+      - name: Verify candidate bytes and N09/N10 operations before publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort > /tmp/w046-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w046-publish-check.mjs verify
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n08 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish approved N09/N10 candidate with retained N08 and N11
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify published N09/N10 bytes and operations
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/w046-hosted
+        run: node publisher/tools/release/w046-publish-check.mjs verify
+      - name: Verify public source and N08 operations
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';import {createHash} from 'node:crypto';
+          const sha=body=>createHash('sha256').update(body).digest('hex');
+          const expected=fs.readFileSync('dist/release.json'),expectedHash=sha(expected);
+          let matched=false,lastError='';
+          for(let i=0;i<60;i++){
+            try{
+              const url=process.env.APP_URL+'release.json?sha='+process.env.CANDIDATE_SHA;
+              const r=await fetch(url,{cache:'no-store'}),body=Buffer.from(await r.arrayBuffer()),m=JSON.parse(body.toString('utf8'));
+              if(r.ok&&m.sourceSHA===process.env.CANDIDATE_SHA&&sha(body)===expectedHash){
+                fs.mkdirSync('/tmp/w041-hosted-release',{recursive:true});
+                fs.writeFileSync('/tmp/w041-hosted-release/release.json',body);
+                fs.writeFileSync('/tmp/w041-hosted-release/HTTP.json',JSON.stringify({url,resolvedURL:r.url,status:r.status,sourceSHA:m.sourceSHA,publisherSHA:m.workflowSHA,storageKey:m.storageKey,expectedHash,actualHash:sha(body),fullContractMatched:true},null,2));
+                matched=true;break;
+              }
+              lastError='source or complete release contract mismatch';
+            }catch(e){lastError=String(e)}
+            await new Promise(r=>setTimeout(r,2000));
+          }
+          if(!matched)throw Error('PUBLIC_FULL_CONTRACT_MISMATCH '+lastError);
+          NODE
+          EVIDENCE_DIR=/tmp/w041-hosted node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
+          EVIDENCE_DIR=/tmp/w041-hosted-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
+          EVIDENCE_DIR=/tmp/w041-hosted-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
+          # W035 targets the retired N09/N10 renderer. Current and archived routes are checked by the W046 verifier above.
+      - name: Await original N11 figure decoding in verification only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          s=p.read_text()
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+          else:
+              assert new in s
+          PY
+      - name: Verify retained public N11
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: EVIDENCE_DIR=/tmp/w041-hosted-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w046-publication-evidence
+          path: |
+            /tmp/w046-prepublish
+            /tmp/w046-prepublish-n08
+            /tmp/w046-prepublish-r6
+            /tmp/w046-prepublish-legacy
+            /tmp/w046-prepublish-n11
+            /tmp/w046-hosted
+            /tmp/w046-preview.log
+            /tmp/w041-hosted
+            /tmp/w041-hosted-r6
+            /tmp/w041-hosted-release
+            /tmp/w041-hosted-legacy
+            /tmp/w041-hosted-protected
+            /tmp/w041-hosted-n11

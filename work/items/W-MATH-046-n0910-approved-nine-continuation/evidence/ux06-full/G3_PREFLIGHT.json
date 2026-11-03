@@ -1,0 +1,54 @@
+{
+  "status": "LOCAL_PREPUBLICATION_VERIFIED_AWAITING_SEPARATE_PUBLICATION_APPROVAL",
+  "source": "d588d1c395de3132805395f2708bed7535c1767d",
+  "publisherBase": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "publisherBaseRetrievedVia": "connected GitHub; anonymous git main read stale e494 and was not used as authority",
+  "plannedMainChanges": [
+    ".github/workflows/deploy-pages.yml",
+    "tools/release/w046-publish-check.mjs"
+  ],
+  "workflowChanges": "fixed candidate SHA only (3 occurrences); all existing gates retained",
+  "helperChanges": "fixed source, source-derived strict file hashes, UX06 approval scope only; no verifier weakened; additionally require real KaTeX Main/Math italic loaded faces, font error-free and HTTP status checks before/after public interactions (B finding)",
+  "requiredSourcePaths": 46,
+  "storageNamespace": "kyotsu-step-gate3-math-20261023",
+  "mainModified": false,
+  "published": false,
+  "publicationApprovalReceived": false,
+  "localRun": {
+    "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
+    "build": "PASS_WITH_EXISTING_CHUNK_SIZE_WARNING",
+    "runtimeExport": 16,
+    "assetBytesVerified": 121,
+    "n0910Cases": 8,
+    "n0910Widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "n0910FontAndHTTP": "Main/Math italic real loaded; font errors0 and HTTP errors0 in all8 cases",
+    "retainedN08": {
+      "status": "PASS",
+      "widths": 4,
+      "measurements": 3936,
+      "captures": 1200
+    },
+    "retainedR6": "PASS",
+    "legacy": "PASS",
+    "retainedN11": {
+      "status": "PASS",
+      "widths": 4
+    },
+    "rawOverall": "raw/g3-local-RESULT.json.gz"
+  },
+  "publisherHashes": {
+    "g3-publish-check.mjs": "6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139",
+    "g3-deploy-pages.yml": "c14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891"
+  },
+  "formalStoreReceipt": false,
+  "limits": [
+    "Local verification is not GitHub Actions execution or actual hosted delivery",
+    "Repository global lint retains existing failures as separately recorded",
+    "No final learner/app acceptance inferred"
+  ]
+}

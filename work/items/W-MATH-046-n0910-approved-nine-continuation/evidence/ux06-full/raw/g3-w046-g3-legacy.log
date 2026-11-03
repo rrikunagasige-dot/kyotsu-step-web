@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4179/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n08?version=5
+Call log:
+[2m  - navigating to "http://127.0.0.1:4179/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n08?version=5", waiting until "load"[22m
+
+    at /tmp/w046-g3-source/work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs:5:16 {
+  log: [
+    '  - navigating to "http://127.0.0.1:4179/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n08?version=5", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v24.22.1

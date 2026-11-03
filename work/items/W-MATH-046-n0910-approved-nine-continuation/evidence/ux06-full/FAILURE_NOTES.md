@@ -7,3 +7,11 @@
 - 次の移行試験はRETIRE対象powerActionをtargetへ保持すると誤期待してFAIL。原JSON `raw/ux06-migration-retired-expectation-failure.json.gz` とlogを保持。Aがscope/採点契約から訂正を独立確認。KEEPだけを期待し、旧archiveの全保存、KEEP value16保持、resetAt/processedEventIds/旧key保護のassertを残し19caseを実行し直した。製品側の保存条件は緩めていない。
 - repo全体lintは既存25error/1warningでFAIL。指摘ファイルの着手baseとのbyte一致をLINT_BASELINE.jsonへ保存。変更source lint、型/build、関連回帰の成功と混同しない。
 - finite-mathは70parts未対応のPARTIAL、construction/blank/interactionはNEEDS_AI_REVIEW。CODEの未対応を消さず、A/Bの根拠付き意味審査へ接続する。正式Store receiptや本人受入は作らない。
+
+## 本文工程補完とG3公開前準備
+
+- 本文S11/S12の明示実行/対応記録の不足を確認し、前回G2の総合完了報告を一旦補完待ちへ訂正。旧construction内にも同じnative構造検査は含まれるため、本文が全くCODE無検査だったとも主張しない。既存verify-ir native入口の直接実行と全86node/51text row逆対応、A/Bのpublic本文14件ずつの意味審査を既存U07へ取込み、影響G2を再統合した。原productionIR NOT_RUNは履歴として残る。
+- public審査依頼の初回生成で、存在しないresultRefsプロパティを参照して前段認定contextが空になった。Aの指摘でcertifiedResultIdsと実resolved前提nodeへ修正し、依頼hashを再発行。旧応答を新依頼へ流用せず、更新依頼の28応答だけを取込した。
+- G3の旧helperはMath italic/error faces/HTTP失敗を明示していなかった。Bの指摘により既存helperを最小補完し、実load/loaded/error0/HTTP>=400検出を追加。検査を弱めていない。
+- 別commandから起動したpreviewを後続commandが参照できず、公開前検査で接続拒否/manifest到達失敗が発生。原logを保存し製品不具合とは推定しない。server起動/到達確認/検査群を一つの既存script子process構成へまとめ、sourceを変えずに再実行した。
+- anonymous gitのmain取得は古いe494を返したため、現main権限/公開経路は接続GitHubで得たf4cとその原byteを採用した。古い公開設定を最新として採用していない。

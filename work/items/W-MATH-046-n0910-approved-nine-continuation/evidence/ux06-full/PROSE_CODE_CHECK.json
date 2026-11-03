@@ -1,0 +1,1326 @@
+{
+  "status": "NATIVE_STRUCTURE_AND_NONAUTHOR_MEANING_REVIEW_INTEGRATED",
+  "candidateSource": "d588d1c395de3132805395f2708bed7535c1767d",
+  "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
+  "productionIRHistory": "Original NOT_RUN retained; no retrospective claim",
+  "checks": [
+    {
+      "code": "n09",
+      "services": [
+        "S11 prose.compose",
+        "S12 text.verify"
+      ],
+      "executionCount": 1,
+      "sharedOperation": "verify-ir",
+      "dispatch": "operate -> validateTransformationPlan -> validateTransformationV3 -> validateNestedTransformationPlan -> validateDesign; same structural validator was also called inside prior compilation/construction checks",
+      "inputBinding": {
+        "sourceSHA256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+        "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
+        "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+        "planHash": "1ca34a21139176f824022fc6fdf48daa22eccdfd9225ef347a2377fe68f68ae6",
+        "actualPlanNodesEqualCompiled": true
+      },
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "meaningAuditRequired": true,
+        "mathProofStatus": "SEPARATE_SOURCE_BOUND_REVIEW_REQUIRED",
+        "automaticAcceptance": false
+      },
+      "coverage": [
+        {
+          "nodeId": "n09-q01-positive",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q01-negative",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-q01-negative::ux06-proposal-row-02-intro",
+              "template": "二つの因子を掛け、平方の値を確かめます。",
+              "requiresCorrectKeys": [
+                "ux06RepeatedBase"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-q01-negative::ux06-after-text",
+              "template": "正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
+              "requiresCorrectKeys": [
+                "ux06RepeatedBase",
+                "value"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-01",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-01::ux05-rule-01",
+              "template": "既習の平方差の公式を使います。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-01::ux05-rule-03",
+              "template": "実数の零積の法則。一方が0なら積は0です。どちらも0でなければ積は0になりません。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-01::ux05-row-05",
+              "template": "因子についての零条件の組：{factorZeroConditionUX05}",
+              "requiresCorrectKeys": [
+                "factorisedFormUX05"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-01::ux05-row-10",
+              "template": "同値変形で場合を尽くしたため、4と−4が全ての解です。",
+              "requiresCorrectKeys": [
+                "factorisedFormUX05",
+                "factorZeroConditionUX05"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-definition",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q02-root",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q02-negative-square",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-q02-negative-square::ux06-proposal-row-02-intro",
+              "template": "掛ける順を入れ替え、符号の部分と根号の部分をまとめます。",
+              "requiresCorrectKeys": [
+                "ux06RootBase"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-q02-negative-square::ux06-proposal-row-04-intro",
+              "template": "根号の定義を、残った平方へ適用します。",
+              "requiresCorrectKeys": [
+                "ux06RootBase",
+                "ux06SignProduct"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-q02-negative-square::ux06-after-text",
+              "template": "負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
+              "requiresCorrectKeys": [
+                "ux06RootBase",
+                "ux06SignProduct",
+                "signedRootSquareUX05"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-02",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-boundary",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q03-inside",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-03",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q04-nonnegative",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q04-negative",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-q04-negative::ux06-proposal-row-02-intro",
+              "template": "続いて候補の平方を確かめます。",
+              "requiresCorrectKeys": [
+                "ux06CandidateSign"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-q04-negative::ux06-proposal-row-03-intro",
+              "template": "候補は正で、その平方は元の数の平方と一致します。根号の定義に合う値を結論にします。",
+              "requiresCorrectKeys": [
+                "ux06CandidateSign",
+                "ux06CandidateSquare"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-q04-negative::ux06-after-text",
+              "template": "元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
+              "requiresCorrectKeys": [
+                "ux06CandidateSign",
+                "ux06CandidateSquare",
+                "value"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-04",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-05",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q06-squares",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q06-order",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-06",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q07-negation",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-07",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-decimal-method",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-02-intro",
+              "template": "後ろの括弧の各項へ、それぞれ前の括弧を掛けます。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-03-intro",
+              "template": "さらに各括弧を分配し、二つの積から四つの項を作ります。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-04-intro",
+              "template": "積の順を入れ替え、二つの交差項を同じ順にそろえます。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-05-intro",
+              "template": "同じ交差項をまとめると、どの係数になるでしょうか。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-06-intro",
+              "template": "和の平方が導けました。ここからA=140、B=1または2として分子を計算し、分母の平方で割って、小数の候補へ戻します。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare",
+                "ux06LikeTermCount"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-07-intro",
+              "template": "分数の平方は同じ分数どうしの積なので、分子と分母をそれぞれ平方できます。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare",
+                "ux06LikeTermCount"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-proposal-row-08-intro",
+              "template": "共通して使う平方を先に計算しておきます。残る小さい平方は各候補の計算で使います。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare",
+                "ux06LikeTermCount"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-decimal-method::ux06-after-text",
+              "template": "導いた和の平方へ、まず下側の小数候補の分子を対応させます。その計算が終わったら、上側の候補へ進みます。",
+              "requiresCorrectKeys": [
+                "ux06BinomialBase",
+                "ux06DistributeA",
+                "ux06DistributeB",
+                "ux06CrossProduct",
+                "ux06LastSquare",
+                "ux06LikeTermCount"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-p001-q08-left-square",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-p001-q08-right-square",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-p001-q08-lower-sign",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-p001-q08-upper-sign",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-08",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-09",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-parts-target",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-parts-target::ux06-proposal-row-01-intro",
+              "template": "定義の式を、小数部分について書き直します。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-parts-target::ux06-proposal-row-02-intro",
+              "template": "小数部分の条件へ、いまの式を代入します。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-parts-target::ux06-proposal-row-03-intro",
+              "template": "各辺に同じ整数部分を加え、中央を元の数だけにします。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n09-parts-target::ux06-after-text",
+              "template": "整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+              "requiresCorrectKeys": [
+                "ux06IntervalLower",
+                "ux06IntervalUpper"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q10-reject-truncation",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-q10-reject-truncation::ux05-row-02",
+              "template": "候補の判断：{candidateValidityUX05}",
+              "requiresCorrectKeys": [
+                "value"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-10",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q11-remainder",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-11",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q12-lower",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q12-upper",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-12",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q13-reverse",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n09-q13-reverse::ux05-given-01",
+              "template": "負の数を掛けると、大小の向きが変わります。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-13",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q14-positive-integer",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q14-positive-remainder",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q14-negative-integer",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-q14-negative-remainder",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n09-14",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        }
+      ],
+      "limits": [
+        "Native source-bound shape/coverage/dependency validation only",
+        "No prose/operationSentence auto-writing claim",
+        "No production-ir/1 or /2 remapping or schema success claimed",
+        "Natural-language causal adequacy, definition/reuse distinctions and concrete-to-general bridges require public-view AI review"
+      ],
+      "automaticAcceptance": false
+    },
+    {
+      "code": "n10",
+      "services": [
+        "S11 prose.compose",
+        "S12 text.verify"
+      ],
+      "executionCount": 1,
+      "sharedOperation": "verify-ir",
+      "dispatch": "operate -> validateTransformationPlan -> validateTransformationV3 -> validateNestedTransformationPlan -> validateDesign; same structural validator was also called inside prior compilation/construction checks",
+      "inputBinding": {
+        "sourceSHA256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+        "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
+        "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+        "planHash": "e7a62d6f19ac8f077db29b42bfe4a8736753a03e09fedb53d31ecdb4eaeb64c6",
+        "actualPlanNodesEqualCompiled": true
+      },
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "meaningAuditRequired": true,
+        "mathProofStatus": "SEPARATE_SOURCE_BOUND_REVIEW_REQUIRED",
+        "automaticAcceptance": false
+      },
+      "coverage": [
+        {
+          "nodeId": "n10-q01-square",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-q01-square::ux06-proposal-row-02-intro",
+              "template": "積の順を入れ替え、係数同士と根号同士をまとめます。",
+              "requiresCorrectKeys": [
+                "ux06ProductBase"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q01-square::ux06-proposal-row-03-intro",
+              "template": "根号の定義を使って、平方を計算します。",
+              "requiresCorrectKeys": [
+                "ux06ProductBase",
+                "ux06CoefficientExponent"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q01-square::ux06-after-text",
+              "template": "候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
+              "requiresCorrectKeys": [
+                "ux06ProductBase",
+                "ux06CoefficientExponent",
+                "rootSquare"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-01",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q02-sign",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-02",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-02::row-04",
+              "template": "この候補が正の平方根といえるのは、{identificationReason}。",
+              "requiresCorrectKeys": [
+                "candidateSign",
+                "squareValue"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q03-expand",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-03",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q04-sign",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-04",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-04::row-01",
+              "template": "正の平方根を特定できる根拠は、{rootReason}。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q05-denominator",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q05-square",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-05",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q06-sign",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-06",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-06::row-01",
+              "template": "商を根号一つで表せるのは、{quotientReason}。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q07-product",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-07",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q08-factor",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-08",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q09-left",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q09-right",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-09",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q10-coefficients",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-10",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q11-formula",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-q11-formula::ux06-proposal-row-02-intro",
+              "template": "分配法則で、第一項への積と、符号を含む第二項への積に分けます。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q11-formula::ux06-proposal-row-03-intro",
+              "template": "各括弧をさらに分配します。最後は負の項同士の積です。",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q11-formula::ux06-proposal-row-04-intro",
+              "template": "同じ負の交差項どうしをまとめます。",
+              "requiresCorrectKeys": [
+                "ux06LastProductSign"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q11-formula::ux06-proposal-row-05-intro",
+              "template": "導いた式へ、元の問題の二つの根号を対応させます。",
+              "requiresCorrectKeys": [
+                "ux06LastProductSign",
+                "ux06DifferenceCount"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q11-formula::ux06-after-text",
+              "template": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+              "requiresCorrectKeys": [
+                "ux06LastProductSign",
+                "ux06DifferenceCount",
+                "signedMiddleTermUX05"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-11",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q12-product",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-12",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q13-identity",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-q13-identity::ux06-proposal-row-02-intro",
+              "template": "積の順を入れ替えて同じ大きさと確かめ、交差項の和をまとめます。",
+              "requiresCorrectKeys": [
+                "ux06CrossSign"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q13-identity::ux06-proposal-row-03-intro",
+              "template": "交差項が消え、二つの平方の差が残りました。",
+              "requiresCorrectKeys": [
+                "ux06CrossSign",
+                "ux06CrossSum"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q13-identity::ux06-proposal-row-04-intro",
+              "template": "同じ構造を、元の二つの根号の場合で確かめます。",
+              "requiresCorrectKeys": [
+                "ux06CrossSign",
+                "ux06CrossSum"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q13-identity::ux06-proposal-row-04",
+              "template": "相殺する交差項の組：{cancellingPairUX05}",
+              "requiresCorrectKeys": [
+                "ux06CrossSign",
+                "ux06CrossSum"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-q13-identity::ux06-after-text",
+              "template": "残った左右の平方を計算し、その差を求めます。",
+              "requiresCorrectKeys": [
+                "ux06CrossSign",
+                "ux06CrossSum",
+                "cancellingPairUX05"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-13",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-14",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-14::row-02",
+              "template": "値を保つ操作：{operation}",
+              "requiresCorrectKeys": [],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q15-factor",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-15",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-15::ux06-proposal-row-02-intro",
+              "template": "分子の積は、掛けた因子そのものです。分母は同じ根号の二つの因子をまとめます。",
+              "requiresCorrectKeys": [
+                "ux06CompensatingFactor"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-15::ux06-after-text",
+              "template": "分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
+              "requiresCorrectKeys": [
+                "ux06CompensatingFactor",
+                "ux06DenominatorPower"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q16-denominator",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-16",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q17-factor",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q17-nonzero",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-17",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-17::ux06-proposal-row-02-intro",
+              "template": "因子の文字に、選んだ差を戻します。分母は和と差の積になりました。",
+              "requiresCorrectKeys": [
+                "ux06NumeratorProduct",
+                "ux06DenominatorScope"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-17::ux06-after-text",
+              "template": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+              "requiresCorrectKeys": [
+                "ux06NumeratorProduct",
+                "ux06DenominatorScope"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-18",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q19-distribute",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-19",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q20-factor",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-q20-factor::ux05-reason",
+              "template": "この変形で式の値を保って有理化できるのは、{reason}。",
+              "requiresCorrectKeys": [
+                "factor",
+                "positiveComparisonLeftSquareUX05",
+                "positiveComparisonRootSquareUX05",
+                "factorSign"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-20",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [
+            {
+              "id": "n10-20::ux06-proposal-row-02-intro",
+              "template": "分子の平方は保ち、今度は分母の和と差の積を直します。",
+              "requiresCorrectKeys": [
+                "ux06NumeratorPower"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-20::ux06-proposal-row-03-intro",
+              "template": "比較で確かめた二つの平方の値を使います。",
+              "requiresCorrectKeys": [
+                "ux06NumeratorPower",
+                "ux06DenominatorSign"
+              ],
+              "exactToCompiled": true
+            },
+            {
+              "id": "n10-20::ux06-after-text",
+              "template": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+              "requiresCorrectKeys": [
+                "ux06NumeratorPower",
+                "ux06DenominatorSign"
+              ],
+              "exactToCompiled": true
+            }
+          ],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q21-denominator",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q21-expand",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-q21-constants",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        },
+        {
+          "nodeId": "n10-21",
+          "leadPartsBound": true,
+          "assumptionsBound": true,
+          "assumptionPartsBound": true,
+          "textRows": [],
+          "terminalRecordBound": true,
+          "terminalRenderScope": "source-bound record, not an extra learner-visible memo in current reader"
+        }
+      ],
+      "limits": [
+        "Native source-bound shape/coverage/dependency validation only",
+        "No prose/operationSentence auto-writing claim",
+        "No production-ir/1 or /2 remapping or schema success claimed",
+        "Natural-language causal adequacy, definition/reuse distinctions and concrete-to-general bridges require public-view AI review"
+      ],
+      "automaticAcceptance": false
+    }
+  ],
+  "formalStoreReceipt": false,
+  "semanticReview": {
+    "operation": "solution-review / importSolutionReview",
+    "requests": 14,
+    "responses": 28,
+    "reviewers": [
+      "/root/w046_source_review",
+      "/root/w046_render_review"
+    ],
+    "status": "PASS",
+    "automaticAcceptance": false,
+    "requestInput": "same-runtime public initial/current/progression with certifiedResultIds and certified prerequisite context",
+    "inputCorrection": "Initial request builder used absent resultRefs field; A detected empty context, corrected to certifiedResultIds and regenerated hashes before accepted imports. Old responses are stale, not accepted."
+  }
+}

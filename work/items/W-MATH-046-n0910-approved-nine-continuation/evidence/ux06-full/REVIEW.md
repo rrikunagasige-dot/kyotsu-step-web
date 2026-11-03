@@ -1,3 +1,5 @@
+> 2026-11-03追記：前回G2完了報告には本文CODE工程の適用照合・明示実行・公開本文審査への接続が不足していた。限定の画像・操作合格は保持し、[本文CODE補完](PROSE_CODE_CHECK.json)とA/Bの可視本文14件ずつ、計28応答を既存審査CODEへ取り込み直してG2へ統合。元のNOT_RUN履歴を実行済みへ書き換えない。G3のローカル公開前検査も完了。固定候補の別公開承認待ちで、公開は未実施。
+
 # UX06 本適用・確認票
 
 本人page `e95fae75-162d-4d66-bcb5-5d61dd7bddcc` の「修正後は承認として自動で次へ」に従い、代表2点の補修・確認後、残り承認済み10導出/3本文へ進めた。今回の代表細部を再承認待ちへ戻さない。公開承認・本人の単元総合受入は別。
@@ -44,3 +46,16 @@
 [火柴図の正本/現在地](../../WORKFLOW_CURRENT.md)に戻って照合する。R05→R06→R07→G2の必要結果をそろえた後の次工程はG3公開前確認。main§12Aに従い公開は別の具体的承認を要し、この条件付き代表承認から推測しない。公開後にrelease.verify/配信byte/操作確認→本人の実物評価→事後同型確認→R08/L01/Z01へ進む。
 
 既存26イベント欠落の本人特例は継続。空Store、架空receipt、正式next認定、本人受入、Gold/fitを作らない。mainと実公開は今回変更していない。
+
+## G3 固定候補の公開前準備
+
+候補sourceは **d588d1c395de3132805395f2708bed7535c1767d**（N09r10/N10r6）。[公開前検査記録](G3_PREFLIGHT.json)。新規製品変更なし。既存Pagesへ反映する案は次の2ファイルのみで、Work branch全体をmainへmergeしない。
+
+|main上の反映先|準備した正確な案|
+|---|---|
+|`.github/workflows/deploy-pages.yml`|[g3-deploy-pages.yml](g3-deploy-pages.yml)：候補SHAの3箇所を固定|
+|`tools/release/w046-publish-check.mjs`|[g3-publish-check.mjs](g3-publish-check.mjs)：source/46ファイルhash/UX06scopeと厳密font・HTTP検査|
+
+固定d588の隔離作業treeでbuild→既存runtime export/manifest生成→121asset生byte→N09/N10四幅8ケース→保持N08四幅/旧r6/旧版/N11四幅が合格。N08は3936寸法・1200採取。CODE/本文/公開設定をBが監視し、公開fontの不足を補修した。source/名前空間と以前の保存契約は保持する。
+
+次のUSER判断はこの固定候補を既存Pagesへ公開するか。承認後はこの2ファイルだけをmainの現版へ適用し、既存の公開前CIが成功してから公開→実配信byte/操作/URLを検証→本人の実物評価へ進む。main WORK_SYSTEM§12Aの公開権限分離に従い、今回の継続指示や代表細部承認を公開許可へ拡張していない。

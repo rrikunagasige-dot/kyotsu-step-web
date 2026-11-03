@@ -1,0 +1,105 @@
+6:25:24 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+{
+  "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
+  "executedHead": "d588d1c395de3132805395f2708bed7535c1767d",
+  "validatedRuntimeUnits": 16,
+  "items": 502,
+  "sourceMarkers": [
+    {
+      "code": "01",
+      "originals": 10,
+      "revision": 7,
+      "items": 27
+    },
+    {
+      "code": "02",
+      "originals": 12,
+      "revision": 6,
+      "items": 40
+    },
+    {
+      "code": "03",
+      "originals": 13,
+      "revision": 7,
+      "items": 39
+    },
+    {
+      "code": "04",
+      "originals": 22,
+      "revision": 7,
+      "items": 59
+    },
+    {
+      "code": "05",
+      "originals": 20,
+      "revision": 7,
+      "items": 45
+    },
+    {
+      "code": "06",
+      "originals": 16,
+      "revision": 8,
+      "items": 41
+    },
+    {
+      "code": "07",
+      "originals": 14,
+      "revision": 4,
+      "items": 36
+    },
+    {
+      "code": "08",
+      "originals": 12,
+      "revision": 7,
+      "items": 10
+    },
+    {
+      "code": "09",
+      "originals": 14,
+      "revision": 10,
+      "items": 0
+    },
+    {
+      "code": "10",
+      "originals": 21,
+      "revision": 6,
+      "items": 0
+    },
+    {
+      "code": "11",
+      "originals": 14,
+      "revision": 11,
+      "items": 39
+    },
+    {
+      "code": "12",
+      "originals": 15,
+      "revision": 4,
+      "items": 46
+    },
+    {
+      "code": "13",
+      "originals": 9,
+      "revision": 4,
+      "items": 12
+    },
+    {
+      "code": "14",
+      "originals": 16,
+      "revision": 10,
+      "items": 38
+    },
+    {
+      "code": "e01",
+      "originals": 13,
+      "revision": 6,
+      "items": 40
+    },
+    {
+      "code": "e02",
+      "originals": 12,
+      "revision": 2,
+      "items": 30
+    }
+  ]
+}

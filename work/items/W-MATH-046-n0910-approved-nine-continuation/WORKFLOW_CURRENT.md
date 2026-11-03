@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、G2の限定非作者監査を統合完了。次はG3公開前確認（公開は別具体的承認）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
+- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、前回G2完了報告後、本文CODE工程の適用照合・明示実行・公開本文審査への接続の不足を確認。R07本文CODE補完（native86node/51行）とA/Bの14件ずつの可視意味審査/既存CODE取込28件を実行し、影響G2を再統合。G3固定候補のローカル公開前検査まで完了。現在は別の公開承認待ち（main/Pages未変更）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
@@ -24,7 +24,7 @@ R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報�
 
 [案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。新案は[承認済み](evidence/ux06-proposal/APPROVAL.json)。代表限定実装後、本人の条件付き細部承認を補修・検査で充足し、本適用へ進んだ。公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
 
-今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。条件付き本人細部承認を充足して残り限定適用を実施。現在はG2限定監査統合済み、次はG3公開前確認。小ブロックごとにこの入口とMASTER§52を照合する。
+今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。条件付き本人細部承認を充足して残り限定適用を実施。本文CODE補完・影響G2再統合済み。既存の画像・操作の限定合格は保持し、G3のローカル公開前準備は完了し、別の公開承認待ち。小ブロックごとにこの入口とMASTER§52を照合する。
 
 ## 本適用の版と保存
 
@@ -119,3 +119,18 @@ flowchart TD
 | Z01_CLOSE | CODE | — |
 
 AIが主担当の工程でもCODE receiptを先に取り込み、意味の判断は根拠付きで別提出する。USERは依頼・既承認・実物評価。TOOLは既存実装/公開操作で、CODEによる意味の自動合格ではない。
+
+## 2026-11-03 本文CODE補完と今回の担当照合
+
+本人page346968bd…の助言により、図→詳細手順→実装→入力/出力→担当の順を再照合。native構造validatorは既存compileでも実行されていたが、本文工程でのCODE適用照合・明示実行・公開本文再審査への接続を補完せずG2を先行集約したため、R07本文補完と影響G2へ戻り、[実結果](evidence/ux06-full/PROSE_CODE_CHECK.json)を統合した。文章生成helperを名目的に呼ぶ修正や新engineは作らない。
+
+|担当|今回実行した責任と判断境界|
+|---|---|
+|主担当M|図の現在地/停止条件、具体手順と実装入口を照合。本文の目的・操作理由・次使用を起草しCODE入力へ対応。A/B所見と生結果を統合し次工程を報告|
+|A|既習前提・数学的理由・作用対象・認定結果の再使用・保存を、実public本文から非作者審査|
+|B|承上啓下/生徒が次に考える理由・表示と工程を監視。rootのG2完了記録不足と公開font検査不足も指摘|
+|既存CODE|今回はS11/S12相当のverify-ir native分岐でsource/design/compiledと本文構造・参照/gateを照合。U07でpublic依頼生成と28応答のhash/契約を検査。G3では固定source/build/manifest/asset生byte/操作/font/HTTPを検査|
+
+S11という名称だけで自動作文・自然言語の因果自動合格とは言わない。helper operationSentenceは別のproduction-ir/1のslot付き段落用で現nativeへ直接適合しないため、呼んで出力を捨てる利用はしない。CODE検査の範囲外をA/Bへ明示し、意味審査で埋める。
+
+G3最新結果：exact d588隔離build/121assets/N0910四幅8cases、保持N08四幅（3936測定）・旧r6・旧版・N11四幅合格。[2file案/停止条件](evidence/ux06-full/G3_PREFLIGHT.json)。次はこの固定候補の公開承認→mainの公開設定2ファイルのみ適用→既存CI→実配信検証→本人実物評価。mainへの適用/Pages公開/最終本人受入は未実施。

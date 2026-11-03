@@ -140,3 +140,68 @@ source `5e83a17ba73c39f855384b31fc51488028b96a09`、design `c96418c7aa41e30270dd
 
 - /tmp/ux06-migration-retired-expectation-failure.json：`b665dd98a1662a308e7883f2c573d8a5a7cb62ce345d1a722518d6eae7340b25`
 - /tmp/ux06-migration.mjs：`e33d222b6252c2a4e5fd9da8ed8d1af6d9452fb4b19e526fdb3deeb6dc1b595b`
+
+## G3前：本文CODEの実利用・互換範囲の追加監査
+
+読取時HEAD `3633eb2139a3ba1217c5308fda7c905445a7e9d8`。現在はG2の限定監査統合後、G3の準備/既存公開経路へ進む段階で、公開/本人総チェック受入は未実施。最新本人の日本語統一と「火柴図→詳細手順→root/A/B/CODE分担」の順を工程入口へ反映し、本文CODEの未実施を過去の合格へ紛れ込ませない。今回も空Store/Runtime初期化・製品変更・独自checker作成はしていない。
+
+### 実記録への反証
+
+`ux06-proposal/run-code.mjs` はsummaryへproseIR NOT_RUN/meaningImport NOT_RUNを明示する。`ux06-full/native-ops.mjs` が明示呼出するoperationはconstruction-validate/blank-candidates/interaction-planだけ。したがって「S11 prose.compose/S12 text.verifyを個別に実行した」「本文IR生成までCODEが完了した」とは言えない。以前のNOT_RUNは履歴として維持する。
+
+一方、construction-validateはnative枝でvalidateNestedTransformationPlanを呼ぶ。同じ関数はoperate('verify-ir',{ir,transformationPlan})のnative枝にも使われ、source/planの完全対応、validateDesign、layout契約、math rowの閉じた文法を検査する。よって「本文を含むnative構造のCODE検査が全くなかった」も誤り。**同じ下位構造検査を通った事実と、本文機能として実入力/実出力を明示した記録の不足を分ける。**
+
+### 既存本文実装ができること
+
+|処理|入力/実装/出力|保証しないこと|
+|---|---|---|
+|S11 prose.compose/S12 text.verify|workflow/runner.pyでは両方とも既存verify-irへ対応。nativeの{ir,transformationPlan}ならoperationsがvalidateTransformationPlan→validateNestedTransformationPlanへ渡す。nativeの各本文/条件/行/gate/sourceを含む構造出力。|日本語の因果説明を自動執筆する処理ではない。PASSでも文章の論理/読みやすさはAI審査が必要。|
+|operationSentence|prose/index.mjs。AIが渡したsubjectPartsとpurposePartsの間へanswerSlotを挿入し、operation.targets、subtractのdirection等を束縛したproduction-ir/1形式paragraphを返す。|新しい教授内容や理由文を発見しない。入力した文の意味の正しさも証明しない。|
+|quantity|value/semanticRole/appliesToと単位/表示方針を持つ数量objectを返す。|日本語本文生成やnativeの数学条件・保存意味の証明ではない。|
+|native教材生成|既存NODE_DESIGNのleadParts/assumptionParts/text/math rows/terminalをsource-bound planへmaterializeしcompiledへ組み立て、rendererが可視gateに沿って表示。|元の言葉・式の段階はAI作者の設計。CODEが自発的に全本文/思考分解を生成したとは言わない。|
+
+operationSentenceのanswerSlot/paragraphは旧production-ir/1のpart契約で、今のn0910はmath slot＋gate付きtext rowが中心。これはそのまま同じJSON型ではない。手元の本文に合わないhelperを呼び、slotを捨てる/出力を使わないだけで「本文生成CODE利用」と数えるのは不適切。helperに合わせて新しい本文穴・二重slot・UIを追加することも今回の承認範囲から必要とは言えない。
+
+production-ir/2はpurpose/reason/afterTextとgraph/state/slotTargets等を要求し、n0910 Authoredをそのまま渡せば適合しない。一般根号やOR論理等にも対応境界がある。G3直前に全教材を別IRへ再設計したり、正解/私有rationaleを可視本文へ写して形式だけ通したりしない。
+
+### G3前に補う最小の実施事項
+
+1. **既存S11/S12相当のoperationを実際に直接実行する。** 現候補の各unitで、sourceRaw/承認済designRaw/asset hashから既存buildNestedTransformationPlanを使い、実際の{ir:JSON.parse(sourceRaw),transformationPlan:plan}をoperate('verify-ir',input)へ渡す。現在compiledとplanHash/source/design hashが一致することを記録する。入力/実装hash/出力/対象unitを保存し、正式Store receiptとは呼ばない。新しいcheckerは不要。
+2. **判定範囲を明記する。** native構造・本文配置/gate/source対応の既存CODE結果であり、自動執筆/因果意味/全数理証明ではない。旧NOT_RUNを後日成功で書き換えず、今回実行分を追記する。CODE FAILならG3へ進めず入力/実装の該当箇所へ戻す。
+3. **既存の実publicの意味審査へ結ぶ。** Aの数学/前提/保存のSOURCE_REVIEWとBの理念/文章/実画像RENDER_REVIEWのうち、今回14nodeの目的→使う対象/規則→式内操作→正答後意味→元問題復帰を照合した箇所を索引化する。A/Bの私有理由欄や「本文がある」というだけを根拠にしない。これが既に同じ最終sourceで確認済みなら、新しい全再審査を義務化せず、その実根拠を対応させる。
+4. **本人へ分担を日本語で正確に示す。** rootは要求/本文設計統合/公開判断、Aは数学・既習・保存とroot実装の反証、Bは理念/文章の接続/実画像/工程の監視、CODEは既存の組立・構造検証・候補等。本文の言葉をAIが作ったこと、CODEが組立/検証した範囲、未対応を分ける。火柴図の工程→詳細操作→この分担の順で説明する。
+
+この不足は、現在の製品に新しい数学欠陥があると確認したものではない。本文機能の実施記録と主張範囲を正すためのG3前補完である。本人の既承認を聞き直す条件ではなく、現在の続行権限内で既存関数の直接実行と証拠整理を完了できる。本文の自動生成器が存在しない範囲を、名前prose.composeから存在すると推定してはならない。
+
+### 本追加監査の読取実装SHA256
+
+|path|sha256|
+|---|---|
+|workflow/runner.py|f4e09bd4811c1816e655d9d30de9c2e078b7202a59498ae7bdef0718fbea169c|
+|tools/textbook/operations.mjs|14141b312ae939405285ca8bb0c5e24e78cc5c9a56d12413a00a8de10a4f8530|
+|tools/textbook/prose/index.mjs|3236e9fac02347e8c50ec468aacba02ab1c0c836a94e78ccba47eaacefbd951b|
+|tools/textbook/transformation/nested-lesson.mjs|ce6207cd726e29edea8d4383e35a06386b07e0aeae3fd3ae37dbcf60bd6811d1|
+|tools/textbook/ir/index.mjs|f4dc507498c31c5135f4e7623916683b3b544513ca7105fbd45b895a86cd53f8|
+|work/items/W-MATH-046-n0910-approved-nine-continuation/evidence/ux06-full/native-ops.mjs|e007308e1143d9a272972112e00992dca91e22718d2af7f3dcd24f85a5800e37|
+|work/items/W-MATH-046-n0910-approved-nine-continuation/evidence/ux06-proposal/run-code.mjs|cb2a866a217ba8237b137abf3b0db22da86a0912e1a6dfe10d506cf7d3e36908|
+
+## 既存S11/S12直接実行後の確認とU07本文意味応答 A
+
+主担当が提案した最小補完を実施し、PROSE_CODE_CHECK.jsonへ両unitのverify-ir直接実行を保存した。Aはその実入力binding/actual dispatch/result/coverageを読取。N09/N10ともPASS、meaningAuditRequired=true/automaticAcceptance=false。明示実行の不足はこの実行で補われた。過去のproseIR NOT_RUNを遡って成功へ改記しない。
+
+coverageはN09 41node・26text row、N10 45node・25text row、合計86node/51text rowで、lead/条件/assumptionParts/text row gate/terminal等がcompiledと一致することを表す。これは文字列・構造のbindingであり、51行が文章として十分、86nodeが全て因果的に教えられる、あるいは自然な日本語をCODEが自動作成したという証明ではない。terminalRecordがsourceに束縛されることと、それを新しい可視memoとして表示することも別。独自の日本語validatorが追加された事実はない。
+
+続いて既存U07 ordinary-transformationの14変更nodeについて、initial/current/part毎initial・wrong・filledのpublic投影を読み、目的→対象/規則→式内の判断→正答後の意味→元問題復帰を個別の日本語で応答した。所見欄はこの限定範囲に新しい欠陥なしとしてfindings=[]。CODEの構造PASSを因果の合格理由には使っていない。数学の前提・保存の旧SOURCE_REVIEWと、今回可視文章の審査は分ける。
+
+初回requestではknownResultRefsが生成元の誤参照で全て空だったためAが指摘し、rootがcertifiedResultIdsへ訂正して、resolvedなrequiredResultRefsに対応するcertifiedPrerequisiteContextを追加した。Aは更新requestの14件を再読した。具体例には、q01の正候補4²、n09-02の根号値/平方値、Q08の導出済み一般公式と共通平方値、n10-15の因子、n10-17/20の値保存・非零認定が含まれる。前のa≥0の場合をa<0へ無条件に流用するなどの誤った条件跨ぎはしていない。
+
+requestHashが全件変わったので初回応答はstaleとして別保存し、最新requestHash/phaseへ応答を再生成した。旧応答は取込不可。現在の応答は `/tmp/w046-prose-responses-A.json` のJSON配列14件、reviewer=/root/w046_source_review、request.required全欄/caseDispositions=[]/findings=[]を持つ。既存import実行結果はrootが別途記録するもので、この追記はimport成功を先取りしない。
+
+実publicデータによる本文接続のAI判断であり、新しい画像/日本語font/幾何の再測定やG3配信検証は実施していない。追加の自由入力/本文穴/新checker/製品変更は行っていない。
+
+証拠SHA256：
+
+- PROSE_CODE_CHECK.json：`c6f05068514a693d4f79a5bb2a6c16a216c918dfd38104b6bd8c18e65242570a`
+- 最新U07 requests：`4ea83720ac488557879b4a42685b34fc541e8b0377d9b8eac4273f97aa1e66ae`
+- 最新A responses：`8b25233aba70469797a959d773f98a925a7f7e475ccae33b1a482b425afffb12`
+- 取込不可の旧A responses：`1a38428ea2d4b846408ce32d8978bb3bc8aed70b88f10dd8fea89040a19eaf37`

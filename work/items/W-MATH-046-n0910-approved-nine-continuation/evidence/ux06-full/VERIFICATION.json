@@ -1,5 +1,5 @@
 {
-  "status": "SCOPED_R07_G2_REVIEW_COMPLETE_NOT_PUBLISHED",
+  "status": "SCOPED_R07_G2_REINTEGRATED_AFTER_PROSE_SUPPLEMENT",
   "sourceCommit": "5e83a17ba73c39f855384b31fc51488028b96a09",
   "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
   "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
@@ -122,5 +122,27 @@
     "A": "SOURCE_REVIEW_A.md: initial q11/q13 REVISE resolved on source5e83",
     "B": "RENDER_REVIEW_B.md: new44crops + x+4 complete crop, no new STOP",
     "root": "same-source code/actual ink relation measurements/semantic integration; not claimed as non-author"
+  },
+  "proseCodeSupplement": {
+    "record": "PROSE_CODE_CHECK.json",
+    "nativeNodes": 86,
+    "textRows": 51,
+    "serviceAliases": [
+      "S11",
+      "S12"
+    ],
+    "operation": "verify-ir native/transformation-plan3 branch",
+    "meaningResponses": 28,
+    "meaningImport": "PASS",
+    "priorSummaryCorrection": "Prior native structural validation inside compilation was real, but explicit prose capability applicability/execution and public-meaning review linkage were not completed before aggregating G2. This was an execution/judgment gap, not only missing paperwork. Limited prior image/operation evidence is retained; original productionIR NOT_RUN remains historical. Supplementary native structural and 28 nonauthor meaning imports now integrated.",
+    "automaticWriting": false,
+    "automaticSemanticAcceptance": false
+  },
+  "g3Prepublication": {
+    "status": "LOCAL_PASS_PUBLICATION_APPROVAL_PENDING",
+    "record": "G3_PREFLIGHT.json",
+    "candidate": "d588d1c395de3132805395f2708bed7535c1767d",
+    "mainModified": false,
+    "published": false
   }
 }

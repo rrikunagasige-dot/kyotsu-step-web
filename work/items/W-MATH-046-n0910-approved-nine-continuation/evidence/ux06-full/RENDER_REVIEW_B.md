@@ -58,3 +58,84 @@ BはUX06主担当案の非作者だが旧N10一部/共有renderer/一部checker�
 - IMAGES_REVIEWED_B.json SHA256 0568e2144d53751b02756a40275913aa23f98ec3c5ba2a8fb82b689d24445de6
 - 新N09 browser RESULT SHA256 ab5dec7198b3e716486b9005c359a27e0dc7d7c5ec5fef40d4de2c6a52a27815
 - 新N10 browser RESULT SHA256 59c424c35d5f1f84bc3931d0db535b5a2ca67ce8764266e725ef012f19594a4c
+
+## 本文CODE未実行の再点検 — G3への進行は補完後
+
+最新の本人指示に従い、日本語で火柴図→詳細工程→担当分担を確認し直した。現在のsource/画像に新たな本文欠陥を認定したわけではないが、本文CODE `proseIR: NOT_RUN` は未解決である。上記の限定source/意味/表示結果を、本文CODE完了や工程全体完了へ拡張しない。B自身も未実行を既知の制約として記しながら、全適用のG2集約前に不足補完を止める監視が不十分だった。この不足を隠さず、現時点ではG3実行へ進めない。
+
+### 火柴図→詳細→責任
+
+|順序|実際に必要な内容|責任分担|
+|---|---|---|
+|不足の記録/現在地訂正|提案段階NOT_RUNと全適用段階の本文CODE未実行を分けて記録。R07/G2の本文検査補完中を現在地とし、G3完了/実行可能へ扱わない|rootが記録を訂正、Bが工程監視、A/Bの限定結果は維持|
+|本文CODE入力/実行|現在の製品本文を既存IRへsource-boundに対応させ、既存S11/S12の実入口と実関数を確かめ、入力/出力/hash/findingsを保存|rootが既存CODE接続、CODEが対応する構造検査|
+|G2の必要部分再確認|本文coverage/公開タイミング/前提/理由接続/元問題復帰とCODE所見を非作者が照合。未対応は明示し、人間相当審査で補える範囲か判断|Aが数学前提・内容、Bが理念/本文/工程、rootが統合|
+|G3準備|上記の不足が閉じた後に、固定候補/実差分/公開前検査/別具体的な公開承認の条件を照合|rootが準備、Bが権限監視。main/公開操作はこのBに権限なし|
+
+不足補完→影響するG2再確認→G3準備の順は妥当。ただしG3の単なる準備が公開/main反映の許可になるわけではない。本人の「G3を続けよ」を確認省略や旧条件付き代表承認の公開許可への拡張に使わない。main正本§12Aの小ブロック確認/非作者横断監査/SHA一致の実アプリ総チェック、および別の具体的公開承認・本人実物評価を維持する。旧26イベント欠落の特例も、CODE未実行を完了扱いにする例外ではない。
+
+### CODEの読取確認と停止条件
+
+`workflow/capabilities.py` ではR04 DESIGNにprose.compose/text.verify/ir.verifyがあり、`workflow/runner.py` はS11/S12をともに `verify-ir` へ対応させる。`tools/textbook/operations.mjs` はtransformationPlan付きのverify-irを `validateTransformationPlan` へ先に分岐し、通常の入力を `validateIR` へ渡す。したがってoperation名だけを根拠に「本文IRを検査済み」としない。既に検査したnative/transformation入力を名前だけ替えて再実行しても、不足の補完とはしない。
+
+現sourceのleadParts・assumptions・intro/after text rows・認定済み参照の対象範囲と、IR token/block/stepの逆対応を明示し、取り落としを検出できる形を要する。一般的な薄い例文IRや私的rationaleで実本文を代用しない。binding、source被覆、前提/未来情報、slot、実可視タイミングのどれをCODEが検査し、何を非作者が判断したか分ける。既存IRの表現限界があればUNSUPPORTED/未確認とし、形だけのPASSを作らない。
+
+`tools/textbook/prose/index.mjs` のoperationSentenceは与えられたsubject/slot/purposeを連結し、quantityは役割/対象を束縛する小関数であり、理由の自然な執筆や数学の十分性を自動保証しない。任意補助を未使用だったことだけを欠陥とはしない。CODEのPASSも本文の教育的な因果接続の自動合格ではない。
+
+既存製品byteが不変なら、前の四幅font/geometry/操作の有効な証拠を破棄し全試験を機械的に繰り返す必要はない。CODE所見で本文やgate/sourceが変わった場合にだけ、変わった範囲の承認差分・意味・実表示・source依存証拠を再確認する。意味の実質変更なら承認範囲の再判断へ戻す。
+
+### 訂正範囲
+
+提案段階CODE_SUMMARYのNOT_RUNは当時の事実として保持する。旧MEANING_RESPONSE_B/IMPORT_Bの本文接続審査はAIの限定読取結果であり、verify-ir実行を主張する記録へ改書しない。全適用のWORKFLOW_CURRENTの「G2限定監査統合完了」二箇所、REVIEWの次G3への断定、VERIFICATIONの `SCOPED_R07_G2_REVIEW_COMPLETE_NOT_PUBLISHED` /nextWorkflowStageAfterG2は、本文CODE不足を補完するまで総合完了として使えない。rootへ訂正を依頼した。今回のB報告冒頭SCOPED結果はsource/目視に限る結果として有効で、本文CODE完了を含まない。本節により現在のG3進行判定は保留とする。
+
+本文が直ったこと、CODEが未実行だったこと、その不足を後から補ったことは別の事実である。後の補完PASSで過去の未実行/G2先行集約を消さない。正式Store receiptや架空next認定も作らない。
+
+本追記のmain正本：f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75:governance/WORK_SYSTEM.md、原byte SHA256 dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346。候補P004/未採用Work文言をmain権限へ昇格しない。
+
+## 本文補完の限定再審査・G3案の読取
+
+本文CODE補完後、最新 `/tmp/w046-prose-requests.json` の14requestを独立再審査し、全required13項目のresponse配列を `/tmp/w046-prose-responses-B.json` に保存した（SHA256 e9f60b088b7fe6a023763223c519143f1acd2c070866da936e798130ede35eb7）。各responseはrequestHash/phase=ux06-prose-completion/reviewer=/root/w046_render_review/caseDispositions=[]へ束縛。knownResultRefsの誤参照を修正し、実resolved requiredResultRefsのcertifiedPrerequisiteContextを含む最終requestと全14hash一致を確認した。旧空参照版の応答を取込む扱いではない。
+
+各nodeの初期・完成・part別progressionを、目的→操作する理由→次の使用の順で読んだ。負の数/負の根号の平方は構成から計算へ、負aの平方根は正性/平方から同定へ、和平方は具体分子から一般文字へ移って具体へ戻る。Q08左右は中項構成/計算/和/小数復帰がleadと対応する。差平方・和差積は一般の操作を具体根号へ戻し、有理化は補償因子/作用範囲/分母・分子の別操作と次の計算を結ぶ。誤答時のrow集合は同part初期と同じことも独立照合した。本文意味の新しいSTOPはない。Q08にafter text rowは無く、terminal metadataだけで説明済みとしない点をresponseへ明記。構造CODEのPASSを自然言語因果の自動証明とせず、親の既存importとG2再統合は別途確認対象。過去NOT_RUNと早すぎたG2集約の記録は保持する。
+
+G3案の限定読取：main f4cのGit object原byteと比較し、g3-deploy-pages.ymlは3箇所の候補SHAだけをd588へ変更。g3-publish-check.mjsはSOURCE/required46map/approvalScopeを除いて同一byte。46pathのrawhashは検査5e83 treeと全一致。namespaceと公開前/後検証、保持N08/r6/legacy/N11検査は削られていない。G3_PREFLIGHTの本文G2/現地build待ち、publicationApprovalReceived:falseは適切。この読取は実行成功や公開許可ではない。
+
+既存公開helperのfont検査には限界が残る：readyはfonts.readyを待ち、最終にKaTeX_Main loadedを確認するだけで、Math italicの実load/error faces/HTTP403を明示assertしない。今回既知のfont403再発防止を公開時にも検証するなら、同helperへの厳密font/HTTP検査の最小追加、または別の厳密hosted smokeを必須補完とする必要がある。準備差分の無改悪と公開fontの十分な確認を混同しないようrootへ所見を送付した。
+
+- g3-deploy-pages.yml SHA256 c14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891
+- g3-publish-check.mjs SHA256 d0f977e43aeb2513d67faf41c7b32703eab1d898b9b954e62b509209ede0ee23
+- G3_PREFLIGHT.json SHA256 5451f35416ea5134d4a8cbbb664c28f72d0f09635bc4a04e0ea2c0e8e6f2d5ac
+
+## 補完結果確認・公開font所見の解消（読取）
+
+`/tmp/w046-prose-import.json` 原byte SHA256 228460df030934454814447afeb3e10b20e67094b909e7c119e8e7112168cf3e を確認し、A14/B14の全28reviewがPASS・findings0・automaticAcceptance:falseだった。`PROSE_CODE_CHECK.json` はN09の41node/26textrow、N10の45node/25textrowの逆対応を記録し、実dispatchは既存native validatorへ到達したと正確に記す。production-ir/1・/2の検査合格や文章自動生成へ仮装せず、自然言語の因果/定義と再利用/具体から一般への橋渡しをpublic-view AI審査へ残すlimitsを確認した。この区別と上記28応答を合わせる補完方法に新STOPはない。ファイルのSEMANTIC_IMPORT_PENDINGという集約状態の更新とG2再統合はrootの責任であり、過去NOT_RUNを遡及して実施済みにしない。
+
+g3-publish-check.mjs新SHA256 8219cd1fd741ece9a436d9b48a99f084fb3a1475dd1884d7d8116feca154415fを再読取。旧差分に加えてready()/履歴展開後に `fonts.load('18px KaTeX_Main')` と `fonts.load('italic 18px KaTeX_Math')` を実行し、両familyのloaded、Math italic style、error face0をassertする。全pageのresponse status>=400をhttpErrorsへ原記録し、pageerror/requestfailedとともに最終失敗条件へ入れる。先の公開font所見は、検査コード上の条件として解消した。実際の公開前/配信検証の成功はまだ受け取っておらず、読取合格を実行PASSへ読み替えない。
+
+G3_PREFLIGHTは追加font/HTTP検査をhelperChangesへ明記し、mainModified/published/publicationApprovalReceived=falseを維持する。exact d588隔離sourceでbuild/公開前検証を行う方針は適切。HEADの違う旧worktree予備buildを正式結果へ混ぜない。本文G2再統合後のG3準備に対するBの残るSTOPはないが、main反映/公開は別の具体的承認条件を保持する。
+
+## G3最終helperと固定source公開前結果の照合
+
+最終helper SHA256 6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139を確認。8219版からは実検査済みloaded結果を `row.realFontFaces` に保存する一行だけであり、その行を除いたbyteは旧8219hashへ完全一致。YAMLはc14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891のまま。SOURCE=d588とstorage namespaceは維持される。
+
+`/tmp/w046-g3-local/n0910/result.json` 原SHA256 cf9b484496c0fea3da50b6e0c104f2b740b403c05c8a4e3ac5712c7f4c579113を読取確認：sourceSHA=d588d1c395de3132805395f2708bed7535c1767d、local preview 4183、121assetbyte一致、N09/N10×320/390/430/1440の全8case PASS。N09各55回答/55誤答、N10各70回答/70誤答（公開前smokeは各part一誤答、R07全265誤答候補とは区別）。realFontFaces Main/Math true・errors空、HTTP/pageerror/networkFailures空。これは固定sourceのlocal公開前検証で、実配信検証や公開の承認/実行ではない。保持N08/N11の進行中検査をこの8caseへ含めない。
+
+PROSE_CODE_CHECKはNATIVE_STRUCTURE_AND_NONAUTHOR_MEANING_REVIEW_INTEGRATEDへ更新され、原NOT_RUNと28意味応答の補完履歴を保持したことを確認。WORKFLOW_CURRENT末尾のroot/A/B/CODEの責任は妥当。なお、過去のG2先行集約を「明示記録不足」だけと書くと実行/判断不足が薄まるため、native構造validatorは既存compileでも実行済みだった事実と、S11/S12相当の明示実行/本文再審査の不足を閉じずG2を集約した事実を分けて一文補うようrootへ所見を送付した。現在の補完結果に対する新たな実装STOPではない。
+
+同じ代表条件付き承認の再要求は不要。G2再統合の次にG3準備を行い、公開だけはmain§12Aの別具体的承認を維持する。候補G3_PREFLIGHT現SHA256 cdcc618f631c90e6b48acc8dd5b73314c358d88f4165492cc92529ce4fb54ee2。G3全体完了・main変更・公開完了は発行しない。
+
+## G3ローカル公開前5群の最終監視
+
+`/tmp/w046-g3-local/RESULT.json` SHA256 b8f956753b21bcbc74b3bc5e5b38c77d4f152e26ef898de89c1ad3ffb861e1d8を読取確認。sourceSHA=d588d1c395de3132805395f2708bed7535c1767d、status PASS、localOnly:true、published:falseで、n0910/n08/r6/legacy/n11の5群は全てexit status0。各群logの末尾の生結果も照合した。
+
+|群|公開前local結果の範囲|
+|---|---|
+|N09/N10|121assetbyte一致、4幅×2unitの8case、125partの正答と各part一誤答、実Main/Math italic/HTTP0。前節記録の原resultと一致|
+|N08|320/390/430/1440、各42判断/70誤答、完了/部分再読込/履歴/比較5route/保存分離/geometry PASS、3936測定・1200採取|
+|旧r6|33parent/37判断/69誤答、PASS|
+|旧版|34回答/80誤答、PASS|
+|N11|4幅、各39回答/109誤答、14stage・二図・history/reload/resize/migrationとgeometry PASS、旧revision1〜10移行|
+
+これらはroot実行の固定sourceローカル公開前結果をBが独立読取したものであり、B自身が再実行した検査でも、GitHub Actions/実Pages配信での検査でもない。本文CODEの限定補完・28意味応答取込・影響G2再統合後、公開前local5群までそろったという現在地は妥当。WORKFLOW_CURRENTは過去不足を「CODE適用照合・明示実行・公開本文再審査への接続を補完せずG2を先行集約した」と明記し、記録漏れだけに縮小する先の文言所見を解消した。
+
+次のUSER確認は固定d588を既存Pagesへ公開するかだけに限定する。同じ代表/二点修正/残適用の承認を再要求しない。現在mainf4c/Pages source691dは変更されておらず、公開承認受領/実反映/公開後のbyte・操作・最終URL検証/本人実物評価は未実施。全Workの終了、正式Store受理、Gold/fitへ拡張しない。工程/5群結果/未公開境界について新しいSTOPはない。

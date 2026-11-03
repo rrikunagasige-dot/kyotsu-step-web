@@ -1,0 +1,40 @@
+diff --git a/tools/textbook/transformation/n11-source-binding.mjs b/work/items/W-MATH-047-n1112-guided-review/proposed-tooling/n11-source-binding.mjs
+index 971e0b5c..202a0860 100644
+--- a/tools/textbook/transformation/n11-source-binding.mjs
++++ b/work/items/W-MATH-047-n1112-guided-review/proposed-tooling/n11-source-binding.mjs
+@@ -7,3 +7,11 @@ export const n11SourceBinding={
+     "coefficient": "220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"
+   }
+ };
++
++/** Exact P-W047-06 source; existing three graphs remain unchanged. */
++export const n11AdditionalSourceBindings={
++  "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe": {
++    graphs: {...n11SourceBinding.graphs},
++    proposalHash: "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e"
++  }
++};
+
+diff --git a/tools/textbook/transformation/validate.mjs b/work/items/W-MATH-047-n1112-guided-review/proposed-tooling/validate.mjs
+index 732a1511..ad271794 100644
+--- a/tools/textbook/transformation/validate.mjs
++++ b/work/items/W-MATH-047-n1112-guided-review/proposed-tooling/validate.mjs
+@@ -2,7 +2,7 @@ import {validateTransformationV3} from './v3.mjs';
+ import {planSchema,getPath} from './schema.mjs';
+ import {graphSchema} from '../solution/graph.mjs';
+ import {n08SourceBinding} from './n08-source-binding.mjs';
+-import {n11SourceBinding} from './n11-source-binding.mjs';
++import {n11SourceBinding,n11AdditionalSourceBindings} from './n11-source-binding.mjs';
+ import {PATTERNS} from './patterns.mjs';
+ import {hash} from '../util.mjs';
+ import {verifySolution} from '../solution/verify.mjs';
+@@ -28,7 +28,8 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
+  if(sourceGraphs){
+   if(p.graphs.some(g=>!sourceGraphs.some(source=>source.id===g.id&&hash(graphSchema.parse(source))===hash(g))))add('TG03_COVERAGE','source AST differs from display graph');
+  }else if(ir.schemaVersion==='guided-math-presentation/1'&&ir.unit?.unitId==='math-numbers-expressions-n11'){
+-  if(hash(ir)!==n11SourceBinding.sourceHash||p.graphs.length!==Object.keys(n11SourceBinding.graphs).length||p.graphs.some(g=>n11SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N11 frozen source/AST bridge changed');
++  const sourceHash=hash(ir),binding=sourceHash===n11SourceBinding.sourceHash?n11SourceBinding:n11AdditionalSourceBindings[sourceHash];
++  if(!binding||p.graphs.length!==Object.keys(binding.graphs).length||new Set(p.graphs.map(g=>g.id)).size!==p.graphs.length||p.graphs.some(g=>binding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N11 frozen source/AST bridge changed');
+  }else if(ir.unit?.unitId==='math-numbers-expressions-n08'){
+   if(hash(ir)!==n08SourceBinding.sourceHash||p.graphs.length!==Object.keys(n08SourceBinding.graphs).length||p.graphs.some(g=>n08SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N08 frozen source/AST bridge changed');
+  }else add('TG03_COVERAGE','NEEDS_MAPPING: no source AST or registered legacy bridge');

@@ -7,3 +7,7 @@
 - Formal現在地はshared Storeから生成したgenerated/を優先。Storeの合格と教育の本人受入を混同しない。USER承認・教材実装・公開・Gold/fitはない。
 
 - R04 N11/N12を正式提出済み。P006の提案書誤記訂正でIRは不変。同一targetの元初見を保持した再束縛を新たな初回審査とは扱わない。N12最終検算は既存materializeの独立行後処理を保持することを照合。
+
+- P006承認を原文・request ID・proposal hashへ記録しR05@n11受理。稼働子agent二人のみ。
+- 実製品へは未適用。既存compilerのTG03_COVERAGE原FAILを保存。未適用生成の全85回答/安定ID/式番号/保持nodeを検証。
+- 追加2pathは隔離コピーのみで実行。7case PASS、旧/新source/同一W038表示・採点維持、未知sourceおよびgraph改変・欠落・追加・重複はFAIL。実画面検証とは別。

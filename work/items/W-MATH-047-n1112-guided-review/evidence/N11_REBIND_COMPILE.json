@@ -1,0 +1,94 @@
+{
+  "status": "FAIL",
+  "findings": [
+    {
+      "ruleId": "TG03_COVERAGE",
+      "detail": "N11 frozen source/AST bridge changed"
+    }
+  ],
+  "mathReceipts": [
+    {
+      "graphId": "n11-linear",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "a01",
+          "status": "PASS",
+          "ruleId": "add-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a02",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a03",
+          "status": "PASS",
+          "ruleId": "divide-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a04",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"
+    },
+    {
+      "graphId": "cancel",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "cancel-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"
+    },
+    {
+      "graphId": "coefficient",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "coefficient-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"
+    }
+  ],
+  "baseIRHash": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+  "planHash": "eccf3510ac9f787dec39383da72219b2bb556e2277af26df07fdbeadaca7faac",
+  "learnerCopyHash": "8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f",
+  "meaningAuditRequired": true
+}

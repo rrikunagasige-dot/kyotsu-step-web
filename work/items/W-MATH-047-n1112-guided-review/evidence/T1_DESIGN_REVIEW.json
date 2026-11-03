@@ -1,0 +1,48 @@
+{
+  "task": "P-W047-06/T1追加検証器scope審査",
+  "performerRef": "/root/w047_review_design",
+  "role": "A 内容・理念/工程監視・非実装者",
+  "verdict": "PASS",
+  "pass": true,
+  "scope": [
+    "tools/textbook/transformation/n11-source-binding.mjs",
+    "tools/textbook/transformation/validate.mjs"
+  ],
+  "findings": [
+    {
+      "id": "T1-A01",
+      "status": "PASS",
+      "reason": "旧sourceHashと3graph hashは不変。追加は固定source3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10feに対する同じgraph集合1件で、任意hashの許可や採点・数学ガードの無効化ではない。proposalHashは実PROPOSAL.mdのSHA256 e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947eと一致。"
+    },
+    {
+      "id": "T1-A02",
+      "status": "PASS",
+      "reason": "validatorは旧sourceなら既存binding、新sourceなら当該sourceのbindingを選び、未知source・graph数差・graphID重複・各graph hash不一致を拒否する。その他の採点、scope、visibility、slot、数学の検査には差分がない。"
+    },
+    {
+      "id": "T1-A03",
+      "status": "PASS",
+      "reason": "check_bridge.mjsを静的に確認。旧/新sourceは既存compilerのPASSをassertし、未知sourceとgraph改変/欠落/追加/重複の5負例はFAILに加えTG03_COVERAGEの存在をassertする。7caseの報告形式は成功した拒否をstatus PASS/actual FAILと明示しており、FAILを合格へ読み替えていない。負例はverifyMath=falseだが、source/graph対応の拒否を切り分けるため妥当。正例には3graphの数学receiptがある。"
+    },
+    {
+      "id": "T1-A04",
+      "status": "PASS",
+      "reason": "提出済みoverlayと現W038を自分でread-only比較し、groups/interactions/gradingHash/numberAliases/scopeの全項目一致を確認。生成N11は現authoredに対しsemantic変更が承認6nodeだけで、nodes/stages/semanticDisplay/equationNumbersは同一。unit内差分も同じ6nodeのreadingFlow本文・計算式の反映で、教材設計追加を認めなかった。"
+    },
+    {
+      "id": "T1-A05",
+      "status": "PASS",
+      "reason": "PATCH.jsonは追加2製品pathのみ。各before hashは現共有CODEのbytes、after hashは全文と一致し、proposed-tooling実ファイルもafter_textに一致。git diffで当該2toolsとN11/N12 active authoredに差分がないことを確認。未適用という説明と整合する。"
+    }
+  ],
+  "rationale": [
+    "P006の教材内容を変更せず、承認済み本文で変わった全体sourceを既存3graphへ明示対応する限定検証器差分として妥当。",
+    "追加2pathは旧P006内容承認から独立した確認対象。本人追加承認の後、scope/input/patchの正式束縛と再検証を行ってから適用する手順を維持する必要がある。"
+  ],
+  "limitations": [
+    "check_bridge.mjsは証拠とpatchをWorkへ書くため、今回のread-only指示下では再実行していない。7case実行結果は提出証拠とテストコードの照合であり、自分による独立再実行とは称さない。",
+    "既存solutionGraphs分岐全般の再設計や、任意入力に対する検証器全体の保証ではない。今回の旧/新N11 legacy bridgeの範囲に限定。",
+    "候補実画面、実装後85回答・保存移行・四幅・公開配信の合格を意味しない。R07で別途検証が必要。",
+    "この原報告JSON以外は書き換えていない。孫agentなし。"
+  ]
+}

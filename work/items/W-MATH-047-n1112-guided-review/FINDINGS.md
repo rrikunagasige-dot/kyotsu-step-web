@@ -6,3 +6,6 @@
 - N12のq13-operationは単独2650−□=0から、三辺へ同じ数を引く一つの操作パラメータの選択へ。新engineや同じ数を3回写す穴は不要。
 - 一次監査でKEEPとした境界2件もsource-firstの非作者審査で反証された。多数決や既承認を理由に新指摘を閉じず、本文だけを改訂する。
 - 基準の回答済み表示と未回答表示は別。resetは本人端末を実操作した場合だけ実施済みとする。今回の検証contextは独立。
+
+## R06 technical dependency
+既存n11-source-binding.mjsはW038範囲だけでなくAuthored全体をpinする。承認範囲外6nodeの本文変更でも既存validateTransformationPlanはTG03で停止。これを事前R04で候補Authoredへのcompileまで実行せず発見できていなかった。旧pin維持＋新exact source/3graph mappingを追加する未適用案を準備。未知source拒否や数学・保存ガードは外さない。TECHNICAL_SCOPE_ADDENDUM.mdと隔離7case検証を参照。

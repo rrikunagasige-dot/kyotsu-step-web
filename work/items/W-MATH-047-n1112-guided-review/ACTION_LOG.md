@@ -14,3 +14,8 @@
 - P006: 最終提示前に提案書の誤記911/411および旧版KEEP段落を訂正。候補IRは不変。元の初見を新たな初回とは呼ばず、同一targetへの報告として保持。旧input claimと一度のwriter競合は保護機構で停止し、実claimを照合して現inputへ再束縛。Store/規則を緩和していない。
 
 - 最終N11 target e370d18b / N12 target770b485c。design/renderの独立原報告と実taskを登録し、D04/D05/N11-R2-L07/N12-D04の修正確認を対象hashへ束縛。両R04を提出。候補UI/公開/本人受入は未実施。
+
+- 本人page eb12180fがP006承認、子agentを二人だけに制限。実稼働はw047_review_designとw047_layout_sourcefirstのみ。旧完了taskは保持し再稼働なし。
+- R05をRuntime.acceptで記録。初回にUSER nodeへexecuteを呼んだ操作は拒否され、acceptへ修正。承認イベントは同一原文・同一P006 hashを保持。
+- 未適用materializeで85回答/表示ID/番号/85node KEEPを照合。N11既存compilerが旧sourceHash pinを理由にTG03拒否。SymPy依存を解消後もTG03のみ残存。原結果を保存し、製品未適用。
+- scope外のtools二ファイルを黙って変更せず、exact追加mappingをWork内へ未適用差分化。隔離toolsコピーで7case合格。旧/新sourceとW038同一表示・採点を確認、未知sourceと不正graphを拒否。

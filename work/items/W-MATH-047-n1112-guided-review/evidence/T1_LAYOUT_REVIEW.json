@@ -1,0 +1,40 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "role": "B: 表示・保存/工程監視",
+  "scope": "P-W047-06/T1 未適用追加対応の最終静的確認",
+  "verdict": "PASS",
+  "pass": true,
+  "findings": [
+    {
+      "id": "T1-B-PIN",
+      "status": "PASS",
+      "reason": "提案差分は旧sourceHashを保持し、新固定Authored hash 3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10feだけを同じ3graphへ登録する。validatorは未知source、graph改変・欠落・追加・重複を拒否する。採点・scope・slot・gate・数学検査の残部は不変。PROPOSED_BRIDGE_CHECKの隔離実行結果は各拒否ケースとold/new PASSを示す。"
+    },
+    {
+      "id": "T1-B-W038",
+      "status": "PASS",
+      "reason": "生成候補Transformationとactive旧Transformationを直接比較し、groups/interactions/gradingHash/numberAliases/scope/presentationVersionが全一致。新baseIRHashはMATERIALIZED_N11のcanonical hashと一致。表示stage5/6の行・slot・採点・番号・aliasを維持し、bindingのみ正規compileで更新する。"
+    },
+    {
+      "id": "T1-B-PRESERVATION",
+      "status": "PASS",
+      "reason": "N11/N12 MATERIALIZEDとactiveを直接比較。node/stage metadata、semanticDisplay、unit.items、式番号map、全表示blockのID列、revision(11/4)は不変。変更semantic nodeはN11の6件とN12の5件のみ。残る85nodeと既存8件整列後処理を保持し、readingFlowは最終semantic全block列と一致。"
+    },
+    {
+      "id": "T1-B-N12-ALIASES",
+      "status": "PASS",
+      "reason": "n12-04の端点理由と定義は内容を保って既存n12-04-afterへ結合済み。n12-q13-operationのparagraphは旧interaction-0 IDで1slotを保持し、既存answerInsertionのunsuffixed blockIdも保持。readerの正解後before除去prefixと整合する。"
+    },
+    {
+      "id": "T1-B-UNAPPLIED",
+      "status": "PASS",
+      "reason": "active N11/N12 Authored bytesはW036凍結MATERIALIZEDと一致。active tooling2ファイルに追加binding参照はなく、追加対応は提案領域のみ。製品未適用を確認。"
+    }
+  ],
+  "limitations": [
+    "候補実画像・四幅実測は未検証。特に三辺2650操作の長い式、完成時番号、paragraph選択UI、履歴再読込はR07で確認する。",
+    "保存契約はitems/revision/IDsの直接一致から静的確認した。実Store読書き、旧版archive/attemptCount/firstValue/completedAtの実再読込は本審査では行っていない。",
+    "隔離bridge実行を再実行せず、原JSONと差分ロジックを照合した。生成候補のW038全表示/採点/binding一致は独立したread-only比較で再確認した。",
+    "承認前・未適用追加scopeの審査であり、製品適用や教材公開の承認とは区別する。"
+  ]
+}

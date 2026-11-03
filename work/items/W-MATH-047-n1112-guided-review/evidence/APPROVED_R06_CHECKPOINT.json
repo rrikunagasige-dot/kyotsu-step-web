@@ -1,0 +1,23 @@
+{
+  "formalNext": "R06_PATCH@n11",
+  "execution": "NOT_APPLIED",
+  "blockingCondition": "TG03 exact legacy source mapping; additional tooling paths outside P006 scope",
+  "proposalApproval": "P006 recorded",
+  "additionalScopeApproval": "NOT_RECEIVED",
+  "activeChildren": [
+    "w047_review_design",
+    "w047_layout_sourcefirst"
+  ],
+  "oldTasks": "COMPLETED; not resumed",
+  "chain": "VALID",
+  "eventCount": 3206,
+  "evidenceRefs": [
+    "35baeb09-25f9-4641-a95d-6d37da5a9deb",
+    "5bfb8411-b794-4bca-8415-1c0ba8406180",
+    "1d27fcef-1594-4f98-a8cc-7ca5f33691fb",
+    "941be1be-126f-448a-a288-14099e432752",
+    "53e3834d-2666-4fed-b0b3-3131674d5a65",
+    "a7633484-cbcb-439a-9453-9a7cf29204c6"
+  ],
+  "productAndSharedToolsUnchanged": true
+}

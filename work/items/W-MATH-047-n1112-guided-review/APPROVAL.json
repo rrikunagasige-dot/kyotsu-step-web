@@ -1,0 +1,16 @@
+{
+  "proposal": {
+    "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+    "hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
+    "id": "W-MATH-047/P-006"
+  },
+  "userEvent": "w047-p006-user-approval-eb12180f",
+  "quote": "いいよ承認。因みにsubagentすげえ増えているけど、subagent二人だけにしろよ。",
+  "sourceRef": "conversation:eb12180f-9dac-400e-8fb8-aa5736283a37",
+  "activeChildren": [
+    "/root/w047_review_design",
+    "/root/w047_layout_sourcefirst"
+  ],
+  "olderTasks": "completed; not resumed; retained as history",
+  "productAcceptance": false
+}

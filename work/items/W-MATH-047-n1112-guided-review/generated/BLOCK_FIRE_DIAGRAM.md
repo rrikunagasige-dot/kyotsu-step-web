@@ -1,6 +1,6 @@
 # ブロック火柴図（GENERATED）
 
-台帳HEAD: `fe75cba7f55c6598fa205caff5405573f4b06bfef8376f463f17a6492e771b13`
+台帳HEAD: `f20a62476f66c97423659229b1cb34bab1bee16ae045a7eb6d3836cc3752dafd`
 
 ```mermaid
 flowchart TD
@@ -10,7 +10,7 @@ flowchart TD
   N3["R02_CAUSE@n11 / AI / PASSED"]
   N4["R03_IMPACT@n11 / AI / PASSED"]
   N5["R04_PROPOSAL@n11 / AI / PASSED"]
-  N6["R05_APPROVAL@n11 / USER / PENDING"]
+  N6["R05_APPROVAL@n11 / USER / PASSED"]
   N7["R06_PATCH@n11 / TOOL / PENDING"]
   N8["R07_VERIFY@n11 / TOOL / PENDING"]
   N9["R07_SEMANTIC@n11 / AI / PENDING"]
@@ -74,7 +74,7 @@ flowchart TD
   N1 --> N10
 ```
 
-現在: R05_APPROVAL@n11 / WAITING
+現在: R06_PATCH@n11 / READY
 
 ## 主担当と2 subagent（同じsnapshot）
 

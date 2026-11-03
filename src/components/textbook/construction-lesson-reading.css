@@ -65,3 +65,15 @@
 /* UX06: match native answer text/math to the reader, including archived native views. */
 .construction-lesson-reading .reading-choice-option > strong { font-size: 1em; }
 .construction-lesson-reading .reading-paragraph { font-size: inherit; }
+
+/* Separate changes of purpose, while keeping a derivation and its equal column continuous. */
+.construction-lesson-reading .construction-lesson-node + .construction-lesson-node {
+  margin-top: 1.5rem;
+}
+.construction-lesson-reading .construction-lesson-text-row--paragraph-start {
+  margin-top: 1rem;
+}
+
+.construction-lesson-reading .construction-lesson-lead + .construction-lesson-lead {
+  margin-top: 1rem;
+}

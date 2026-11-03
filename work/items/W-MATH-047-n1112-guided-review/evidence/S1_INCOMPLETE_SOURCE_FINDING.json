@@ -1,0 +1,9 @@
+{
+  "status": "REJECTED_AS_N12_IMPLEMENTATION_EVIDENCE",
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
+  "archiveSHA256": "d5a7d356acc71518e42710e84e13133fff7eaee6b44419c684778988c6d0a10f",
+  "reason": "N12Authored modified in working tree but omitted from scoped git add; published Work commit still contained baseline. Both rendered/code local reviews were approved current bytes, but CI truthfully ran baseline. No native CI/capture/PASS registered for this run.",
+  "correction": "Stage actual N12 source, assert all candidate manifest paths equal commit bytes, require N12 APPROVED when S1 applied evidence is present, verify remote tree/blob then bind new actual source.",
+  "originalRuntimeBindingRetained": true,
+  "publishedToMain": false
+}

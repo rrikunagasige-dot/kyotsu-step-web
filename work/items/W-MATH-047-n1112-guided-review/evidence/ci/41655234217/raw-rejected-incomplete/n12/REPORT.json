@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
+  "root": "http://127.0.0.1:4391/kyotsu-step-web/",
+  "results": [
+    {
+      "code": "n12",
+      "width": 320,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 390,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 430,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 1440,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": []
+}

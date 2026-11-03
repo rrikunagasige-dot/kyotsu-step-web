@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "width": 390,
+  "targetNodes": [
+    "n11-03",
+    "n11-07",
+    "n11-10",
+    "n11-q11-constant",
+    "n11-11",
+    "n11-12"
+  ],
+  "contextOnlyNodes": [
+    "n11-fraction-problem"
+  ],
+  "contextFrames": [
+    {
+      "name": "n11-local-result-complete-context",
+      "width": 390,
+      "height": 1200,
+      "fullPage": false,
+      "geometry": [
+        {
+          "id": "n11-q11-constant",
+          "top": 647.84375,
+          "bottom": 819.78125,
+          "height": 171.9375
+        },
+        {
+          "id": "n11-11",
+          "top": 878.171875,
+          "bottom": 1029.9375,
+          "height": 151.765625
+        }
+      ],
+      "layoutModified": false
+    },
+    {
+      "name": "n11-whole-state-initial-context",
+      "width": 390,
+      "height": 1200,
+      "fullPage": false,
+      "geometry": [
+        {
+          "id": "n11-q11-constant",
+          "top": 283.84375,
+          "bottom": 455.78125,
+          "height": 171.9375
+        },
+        {
+          "id": "n11-11",
+          "top": 514.171875,
+          "bottom": 1029.859375,
+          "height": 515.6875
+        }
+      ],
+      "layoutModified": false
+    }
+  ],
+  "quotientFrames": [
+    {
+      "width": 320,
+      "state": "pending",
+      "geometry": {
+        "top": 542.34375,
+        "bottom": 1042.59375
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 390,
+      "state": "pending",
+      "geometry": {
+        "top": 542.515625,
+        "bottom": 1042.765625
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 430,
+      "state": "pending",
+      "geometry": {
+        "top": 542.4375,
+        "bottom": 1042.6875
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 1440,
+      "state": "pending",
+      "geometry": {
+        "top": 576.140625,
+        "bottom": 1027.640625
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 320,
+      "state": "wrong",
+      "geometry": {
+        "top": 390.34375,
+        "bottom": 1042.640625
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 390,
+      "state": "wrong",
+      "geometry": {
+        "top": 411.515625,
+        "bottom": 1042.984375
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 430,
+      "state": "wrong",
+      "geometry": {
+        "top": 432.4375,
+        "bottom": 1043.078125
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 1440,
+      "state": "wrong",
+      "geometry": {
+        "top": 486.140625,
+        "bottom": 1027.203125
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 320,
+      "state": "correct",
+      "geometry": {
+        "top": 673.34375,
+        "bottom": 778.40625
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 390,
+      "state": "correct",
+      "geometry": {
+        "top": 702.515625,
+        "bottom": 807.578125
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 430,
+      "state": "correct",
+      "geometry": {
+        "top": 702.4375,
+        "bottom": 807.5
+      },
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "width": 1440,
+      "state": "correct",
+      "geometry": {
+        "top": 744.140625,
+        "bottom": 820.40625
+      },
+      "fullPage": false,
+      "layoutModified": false
+    }
+  ],
+  "reset": {
+    "confirmedDialog": true,
+    "answersCleared": true,
+    "reloadStartsAtFirstStage": true
+  },
+  "chapterBoundary": {
+    "nextToN12": true,
+    "browserBackToCompletedN11": true
+  },
+  "states": [
+    "initial-choice-open",
+    "completed"
+  ],
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615"
+}

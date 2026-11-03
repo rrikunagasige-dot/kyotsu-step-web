@@ -2,19 +2,19 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R04_PROPOSAL@n11",
-    "claimToken": "5db5ce3a4b974a2c8cc3dee2ff500382",
+    "claimToken": "bf457af1d01f44079036d739741bebe6",
     "receipts": [
-      "7648debf5930233dfc353fafcf51fc43f3098b56c150ab1e97443bdc262f3bb3",
-      "a59db8de031cb62bd9dcd85432d6b0007172266fd87b9a1bd124fa574bd20e6e",
-      "00b28afa8e7e7baee1317ee76aa031a0f6bdf65cd1e4bc9716fc9565bde4f980",
-      "68c61e72084db9624ca8fe52ef60ac53477386bca6efef486f2a880e72785853",
-      "190676acc56b98fa294bff450a34081ee4f4c6bab065f0818578519cfbc7884a",
-      "902039ebf32c8e01090d67e368eedfde7e73c5913324a9b5feff46067e8740c5",
-      "48d8f3791a56d571b2d197a24356a8a61da5df3d874a36e8ad3cef8bfa73ea51",
-      "23b21bc8dea5913c525bd0eb3f870b27799d29868520c5446fea5bcd75e45d9f",
-      "e4c7d52f7b4a70d4ef59370c39cd67f3b198e8dc0e5afcc2cddacd51a6726213",
-      "a10713caf0ef3d4f29b99bd3148b2620c82de6a6c47bde565558300a6c566bdd",
-      "4d40da55a49595cfe383e6083cb21780dbbf375ea0d29d5a23f8a9707cd374ef"
+      "ff215e36f829a254d20d1f83b6535aeb4c7e16dd8081db6a31a1f9157712880c",
+      "b571f2b031af88a5fa19bd0a3f677f2a4117dd37b2f5835a78e3317a50ce7cec",
+      "fcd49b73b3c8d4fdf4bdd59574b6487b9f2f140c18ce5fc1807101c2355dcaba",
+      "93359786afeab9bf71c086228f93ae491ca512e22eeff17af615354f10484278",
+      "2df5a2a97f538db4ec7f2fd636db534f2b3b68520aead5bcce28b42fe43356b1",
+      "5a184e0b7d5c32e9f4d742a3f4ec0d8db1f8a320fb7815c52a2ac7deb92ca7c7",
+      "aa3594e7453dc76a27859296e6f582ff1d5c7979624434dc7153c41dba8b7c4d",
+      "0a6b7305066497faeae7dfdf795afb2e28ab802373b112da5b67d2a7b80a7cf4",
+      "41fc91e63c4c54bbf4dc602d9b89f3ad7e47f12a607558eb1a28c9b22306b024",
+      "d4bc4fdf90673e00de62f4274d2cd0415d3837b35c48261a3815ff75c12b97e9",
+      "d5df1bfe8ff02bfa42d3cbbe9f5f6038707f685b63c52971d89f9897ce35db3b"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -121,10 +121,10 @@
             }
           ]
         },
-        "task_id": "ba00e52cea090cbce3c864c2f8144185390e98f53e63d0d4c77c25eaeac02a9e",
-        "input_hash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
+        "task_id": "bcc3dcf0ee16ea5a8ce8a4c5596f7c4c4c0699528d1fd5ec33fe9a724b2ecf56",
+        "input_hash": "07c1047da05066e5853766343409bf7e1f533854eec679858bcced7aa2f74ed9",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+        "candidate_sha": "087842ac5b534a719da56d5027d5fdbb304c5615",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -178,8 +178,8 @@
         "previous_results": {
           "R03_IMPACT@n11": {
             "actor": "capability-runner",
-            "artifact": "4ff89b93df66fde9f89da82545af0170a4f2cc55841fb904c3f2d9e723690a4e",
-            "input_hash": "d50474ce7eeb465ef1b7f54419f8d40bf23b985da7dac6d36b961ff4033051d1",
+            "artifact": "feb57084b466127aa76a0a5f7081c073cbd0b92d154db3ba63e321839cd22f0e",
+            "input_hash": "119caba3f510056b960b4bde1f272dffc07ed35113f2f41890be83abd83cb04a",
             "node": "R03_IMPACT@n11",
             "verdict": "PASS"
           }
@@ -214,12 +214,12 @@
         "R03_IMPACT@n11": {
           "aiReview": {
             "evidence": "Source AST, unchanged authored IR and two-row operation boundary inspected. No grading/save/schema change. Technical evidence is not user quality evaluation.",
-            "inputHash": "d50474ce7eeb465ef1b7f54419f8d40bf23b985da7dac6d36b961ff4033051d1",
-            "requestHash": "53ba51bc5bcaa28e207a02177381ea10c32cd30033d87240c4e00c5587f9ade6",
+            "inputHash": "119caba3f510056b960b4bde1f272dffc07ed35113f2f41890be83abd83cb04a",
+            "requestHash": "f4611cf0fdd92b0a5d3367d8972e7a312eb16d2ebd3ef74d11380be3f1f478cd",
             "reviewer": "M integrating source-bound A/B diagnosis and exact approved relocation"
           },
           "capability_receipts": [
-            "2977e03ac33ba16e106dcb0e320e864241f4941acf2e169051e0cf593986b28c"
+            "881971b1a2d32359d048d8339659d0fab9921053716327bdddfb5ee91586316b"
           ],
           "case_dispositions": [
             {
@@ -314,11 +314,11 @@
             }
           ],
           "evidence_refs": [
-            "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-            "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-            "d46790c4-5095-467b-a3ac-72c93dfca549",
-            "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-            "14993c35-60c9-4445-9c1b-8133895acaf5"
+            "b36414c9-f148-429a-a72b-7cd105abd5dd",
+            "00300986-2845-467a-bc57-22be78b086bf",
+            "2e753796-8fb4-4239-99e5-a600fb285c12",
+            "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+            "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
           ],
           "impact_rows": [
             {
@@ -326,15 +326,15 @@
               "artifact": "src/data/textbook/math/numbers/n11Authored.json",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -344,15 +344,15 @@
               "artifact": "src/data/textbook/math/numbers/n11Transformation.json",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -362,15 +362,15 @@
               "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -380,15 +380,15 @@
               "artifact": "src/domain/textbook.ts",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -398,15 +398,15 @@
               "artifact": "src/pages/TextbookUnitPage.tsx",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -416,15 +416,15 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -434,15 +434,15 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
               "block_id": "n11",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -452,15 +452,15 @@
               "artifact": "src/data/textbook/math/numbers/n12Authored.json",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -470,15 +470,15 @@
               "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -488,15 +488,15 @@
               "artifact": "src/domain/textbook.ts",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -506,15 +506,15 @@
               "artifact": "src/pages/TextbookUnitPage.tsx",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -524,15 +524,15 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -542,15 +542,15 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
               "block_id": "n12",
               "evidence_refs": [
-                "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-                "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-                "d46790c4-5095-467b-a3ac-72c93dfca549",
-                "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-                "14993c35-60c9-4445-9c1b-8133895acaf5"
+                "b36414c9-f148-429a-a72b-7cd105abd5dd",
+                "00300986-2845-467a-bc57-22be78b086bf",
+                "2e753796-8fb4-4239-99e5-a600fb285c12",
+                "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+                "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
               ],
               "originFinding": "W047-G2-L01",
               "phase": "pre-design",
-              "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+              "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
               "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -576,7 +576,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
+      "requestHash": "3b4e59e1c3e174582191f33e5d12cd79b76200b909375ef35ab537b101b8a4be",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [
@@ -715,10 +715,10 @@
           }
         ]
       },
-      "task_id": "ba00e52cea090cbce3c864c2f8144185390e98f53e63d0d4c77c25eaeac02a9e",
-      "input_hash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
+      "task_id": "bcc3dcf0ee16ea5a8ce8a4c5596f7c4c4c0699528d1fd5ec33fe9a724b2ecf56",
+      "input_hash": "07c1047da05066e5853766343409bf7e1f533854eec679858bcced7aa2f74ed9",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+      "candidate_sha": "087842ac5b534a719da56d5027d5fdbb304c5615",
       "rules": {
         "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -772,8 +772,8 @@
       "previous_results": {
         "R03_IMPACT@n11": {
           "actor": "capability-runner",
-          "artifact": "4ff89b93df66fde9f89da82545af0170a4f2cc55841fb904c3f2d9e723690a4e",
-          "input_hash": "d50474ce7eeb465ef1b7f54419f8d40bf23b985da7dac6d36b961ff4033051d1",
+          "artifact": "feb57084b466127aa76a0a5f7081c073cbd0b92d154db3ba63e321839cd22f0e",
+          "input_hash": "119caba3f510056b960b4bde1f272dffc07ed35113f2f41890be83abd83cb04a",
           "node": "R03_IMPACT@n11",
           "verdict": "PASS"
         }
@@ -808,12 +808,12 @@
       "R03_IMPACT@n11": {
         "aiReview": {
           "evidence": "Source AST, unchanged authored IR and two-row operation boundary inspected. No grading/save/schema change. Technical evidence is not user quality evaluation.",
-          "inputHash": "d50474ce7eeb465ef1b7f54419f8d40bf23b985da7dac6d36b961ff4033051d1",
-          "requestHash": "53ba51bc5bcaa28e207a02177381ea10c32cd30033d87240c4e00c5587f9ade6",
+          "inputHash": "119caba3f510056b960b4bde1f272dffc07ed35113f2f41890be83abd83cb04a",
+          "requestHash": "f4611cf0fdd92b0a5d3367d8972e7a312eb16d2ebd3ef74d11380be3f1f478cd",
           "reviewer": "M integrating source-bound A/B diagnosis and exact approved relocation"
         },
         "capability_receipts": [
-          "2977e03ac33ba16e106dcb0e320e864241f4941acf2e169051e0cf593986b28c"
+          "881971b1a2d32359d048d8339659d0fab9921053716327bdddfb5ee91586316b"
         ],
         "case_dispositions": [
           {
@@ -908,11 +908,11 @@
           }
         ],
         "evidence_refs": [
-          "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-          "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-          "d46790c4-5095-467b-a3ac-72c93dfca549",
-          "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-          "14993c35-60c9-4445-9c1b-8133895acaf5"
+          "b36414c9-f148-429a-a72b-7cd105abd5dd",
+          "00300986-2845-467a-bc57-22be78b086bf",
+          "2e753796-8fb4-4239-99e5-a600fb285c12",
+          "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+          "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
         ],
         "impact_rows": [
           {
@@ -920,15 +920,15 @@
             "artifact": "src/data/textbook/math/numbers/n11Authored.json",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -938,15 +938,15 @@
             "artifact": "src/data/textbook/math/numbers/n11Transformation.json",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -956,15 +956,15 @@
             "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -974,15 +974,15 @@
             "artifact": "src/domain/textbook.ts",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -992,15 +992,15 @@
             "artifact": "src/pages/TextbookUnitPage.tsx",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1010,15 +1010,15 @@
             "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1028,15 +1028,15 @@
             "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
             "block_id": "n11",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1046,15 +1046,15 @@
             "artifact": "src/data/textbook/math/numbers/n12Authored.json",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1064,15 +1064,15 @@
             "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1082,15 +1082,15 @@
             "artifact": "src/domain/textbook.ts",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1100,15 +1100,15 @@
             "artifact": "src/pages/TextbookUnitPage.tsx",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1118,15 +1118,15 @@
             "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1136,15 +1136,15 @@
             "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
             "block_id": "n12",
             "evidence_refs": [
-              "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-              "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-              "d46790c4-5095-467b-a3ac-72c93dfca549",
-              "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-              "14993c35-60c9-4445-9c1b-8133895acaf5"
+              "b36414c9-f148-429a-a72b-7cd105abd5dd",
+              "00300986-2845-467a-bc57-22be78b086bf",
+              "2e753796-8fb4-4239-99e5-a600fb285c12",
+              "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+              "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
             ],
             "originFinding": "W047-G2-L01",
             "phase": "pre-design",
-            "resolution": "N11 two-row display correction only; N12 baseline remains unchanged",
+            "resolution": "N11 two-row correction retained. N12 is APPROVED_P006; both exact approved scopes are checked separately",
             "rootCauseSignature": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
             "status": "NOT-AFFECTED",
             "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -1170,7 +1170,7 @@
       "未解決は未解決と記録",
       "承認を生成しない"
     ],
-    "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
+    "requestHash": "3b4e59e1c3e174582191f33e5d12cd79b76200b909375ef35ab537b101b8a4be",
     "teamReview": {
       "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
       "requirements": [
@@ -1205,24 +1205,24 @@
   "result": {
     "verdict": "PASS",
     "evidence_refs": [
-      "69daa1e0-d3d4-4456-8443-de94da0631d4",
-      "cd55b5ed-a38f-47b8-9742-16d66b1aad03",
-      "cd15329e-1aa7-4d19-9830-98f3a65a8ead",
-      "a1ff65c3-b0e2-4ecc-acf7-2131d73a94a4",
-      "fcc134cc-3f9a-461b-b934-313890203323"
+      "b36414c9-f148-429a-a72b-7cd105abd5dd",
+      "00300986-2845-467a-bc57-22be78b086bf",
+      "2e753796-8fb4-4239-99e5-a600fb285c12",
+      "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+      "dd79d9bb-0a64-4ed0-a5f4-bdac11618502"
     ],
     "capability_receipts": [
-      "7648debf5930233dfc353fafcf51fc43f3098b56c150ab1e97443bdc262f3bb3",
-      "a59db8de031cb62bd9dcd85432d6b0007172266fd87b9a1bd124fa574bd20e6e",
-      "00b28afa8e7e7baee1317ee76aa031a0f6bdf65cd1e4bc9716fc9565bde4f980",
-      "68c61e72084db9624ca8fe52ef60ac53477386bca6efef486f2a880e72785853",
-      "190676acc56b98fa294bff450a34081ee4f4c6bab065f0818578519cfbc7884a",
-      "902039ebf32c8e01090d67e368eedfde7e73c5913324a9b5feff46067e8740c5",
-      "48d8f3791a56d571b2d197a24356a8a61da5df3d874a36e8ad3cef8bfa73ea51",
-      "23b21bc8dea5913c525bd0eb3f870b27799d29868520c5446fea5bcd75e45d9f",
-      "e4c7d52f7b4a70d4ef59370c39cd67f3b198e8dc0e5afcc2cddacd51a6726213",
-      "a10713caf0ef3d4f29b99bd3148b2620c82de6a6c47bde565558300a6c566bdd",
-      "4d40da55a49595cfe383e6083cb21780dbbf375ea0d29d5a23f8a9707cd374ef"
+      "ff215e36f829a254d20d1f83b6535aeb4c7e16dd8081db6a31a1f9157712880c",
+      "b571f2b031af88a5fa19bd0a3f677f2a4117dd37b2f5835a78e3317a50ce7cec",
+      "fcd49b73b3c8d4fdf4bdd59574b6487b9f2f140c18ce5fc1807101c2355dcaba",
+      "93359786afeab9bf71c086228f93ae491ca512e22eeff17af615354f10484278",
+      "2df5a2a97f538db4ec7f2fd636db534f2b3b68520aead5bcce28b42fe43356b1",
+      "5a184e0b7d5c32e9f4d742a3f4ec0d8db1f8a320fb7815c52a2ac7deb92ca7c7",
+      "aa3594e7453dc76a27859296e6f582ff1d5c7979624434dc7153c41dba8b7c4d",
+      "0a6b7305066497faeae7dfdf795afb2e28ab802373b112da5b67d2a7b80a7cf4",
+      "41fc91e63c4c54bbf4dc602d9b89f3ad7e47f12a607558eb1a28c9b22306b024",
+      "d4bc4fdf90673e00de62f4274d2cd0415d3837b35c48261a3815ff75c12b97e9",
+      "d5df1bfe8ff02bfa42d3cbbe9f5f6038707f685b63c52971d89f9897ce35db3b"
     ],
     "case_dispositions": [
       {
@@ -1317,8 +1317,8 @@
       }
     ],
     "aiReview": {
-      "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
-      "inputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
+      "requestHash": "3b4e59e1c3e174582191f33e5d12cd79b76200b909375ef35ab537b101b8a4be",
+      "inputHash": "07c1047da05066e5853766343409bf7e1f533854eec679858bcced7aa2f74ed9",
       "reviewer": "M integrating source-bound A/B diagnosis and exact approved relocation",
       "evidence": "Source AST, unchanged authored IR and two-row operation boundary inspected. No grading/save/schema change. Technical evidence is not user quality evaluation."
     },

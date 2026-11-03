@@ -24,6 +24,12 @@ if mode=='prepare':
   task='W047-S1-N12-actual-render-'+logical
   cap=capture_harness(r,w,{'agentRef':agent,'taskRef':task,'parentRef':'/root','toolName':'collaboration.followup_task','rawResult':{'target':agent,'actualTask':'Primary source first, then new actual render PNGs before capture diagnostic/report; preserve first observations and prior exposure'},'attestationMethod':'transcribed-tool-result'})
   harness={'agentRef':agent,'taskRef':task,'parentRef':'/root','logicalRole':logical,'toolResultRef':cap['artifactRef'],'attestationMethod':'transcribed-tool-result'}
+  history=project(r.store.events(),w)
+  originals=[v for v in history['registrations'].values()if v['assignment']['performerRef']==agent and v['assignment']['node']==nid and v['assignment']['artifactHashes'].get(claim)==h]
+  if originals:
+   original=originals[-1];a['roleEpoch']=original['assignment']['roleEpoch']+1
+   packet['contextExposure']['historicalUnchangedRenderRebind']={'originalRegistrationRef':original['registrationRef'],'unchangedTargetHash':h,'newFirstPassClaimed':False,'originalHarnessRetained':True,'sameN12BytesNowActive':True}
+   packet['packetHash']=digest({k:v for k,v in packet.items()if k!='packetHash'});harness=original['harness']
   reg=register_task(r,w,a,packet,harness);bundles.append({'logical':logical,'assignment':a,'packet':packet,'harness':harness,'registration':reg,'reviewKind':kind,'evidenceRefs':refs})
  write(B/'evidence/S1_N12_R04_TEAM.json',bundles);print('N12 actual-render target bound '+h,flush=True)
 elif mode=='collect':

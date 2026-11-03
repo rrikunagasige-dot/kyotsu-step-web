@@ -1,0 +1,79 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念/工程監視",
+  "verdict": "REQUIREMENTS_CONFIRMED_EXECUTION_PENDING",
+  "firstPass": false,
+  "sourceFirst": false,
+  "authorSeparation": true,
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
+  "ciRunId": 41655234217,
+  "imagesReadThisTask": false,
+  "authorityComparison": {
+    "mainCommit": "04b823259a0873235e39099864d454330eed5d81",
+    "main12A": "W-GOV-008/P003:①真正GitHub小ブロック画像確認→②影響横断監査→③固定SHA実アプリで合意範囲全体の本人確認。①は視覚限定で公開権限/最終受入ではない。",
+    "working12A": "W-GOV-010:各穴画像承認待ちは挟まず内部QA→既存Pages→本人の範囲付き受入。旧画像票方式は履歴扱い。",
+    "machinePolicy": "現REVIEW_POLICY version2はscreenshotApprovalRequired=false。production/2 graphsはG1_VISUALを生成しない。",
+    "conclusion": "今回の適用正本はmain04b823の§12A。前回からR1 CONFIRM→ac2ac082了承→G2の経路を採用済みとのMの明示を確認した。未採用worktree W-GOV010文書/CODEを上位正本にしない。G1 node不存在はmanualGate①省略の根拠ではない。新しい規則承認やN11再試験を生成せず、この継続経路を適用する。"
+  },
+  "rows": [
+    {
+      "id": "GATES-A01",
+      "status": "CONFIRMED",
+      "target": "N11旧視覚了承",
+      "reason": "ac2ac082原quote「いいよ続けて」、replyTo CONFIRM_N11_R1_2b7780b9、divide/final二checkpoint、source2b778…のpending/correct画像とBLOCK-VISUAL-OKがR1_GATE1_RESPONSEに明記。旧/新sourceの明示local mirrors b85cd5…/2b9a13…でN11 authored/Transformation/GuidedMathReadingFlow/domaintextbook/UnitPageのbytes完全一致を独立確認。",
+      "treatment": "その限定された表示了承を履歴保持する。新source087…で再度同じN11細部了承を取得したことにしない。全アプリ/新N12の了承へ拡張しない。対象不変根拠と新CIで共有影響なしを別々に記録。"
+    },
+    {
+      "id": "GATES-A02",
+      "status": "PENDING",
+      "target": "N12新画像確認",
+      "reason": "N12 inactive候補の内部actualrender審査PASSは本人確認①の代わりではない。今回source087…の専用CIは依頼時進行中。自分はその画像をまだ見ていない。",
+      "handoff": "CI完了successとheadSHA087…/artifact manifest一致、46回答/誤答候補/四幅/保存・reset・遷移など適用検査の完了後、新画像を内部非作者審査へ固定。main04b823の確認①を行う際は実app由来画像をGitHubで表示可能にし、N12の五変更と端点/共通範囲/三辺操作を2–4点へまとめ、完全SHA・範囲・図番号を明記する。旧N11の再確認要求へ広げない。実発言原文が来るまで視覚了承を生成しない。"
+    },
+    {
+      "id": "GATES-A03",
+      "status": "PENDING",
+      "target": "変更後G2",
+      "reason": "既存integration.validate G2はrelease_versionsに一致するversion、全必須source inventoryのaudit_rows、surface/evidence、independent根拠、release_readiness/impact完了を要求。PASS時new_regression/UNVERIFIEDを許さず、既存FAILはpre_existing+linkedCorrectionの限定処理しかない。",
+      "handoff": "両unitを含む現source087…でN11 R1商/完成式順序保持、N12端点D04/五変更、全85回答/採点/図/露出/前後単元/保存reset/既承認modeへの影響を現証拠で監査。不変N11旧PNGは履歴補助で、新SHA全体CI/影響監査を置換しない。S1により両unit内部工程がHOSTに先行する。"
+    },
+    {
+      "id": "GATES-A04",
+      "status": "PENDING",
+      "target": "最終アプリhandoff",
+      "reason": "Gate①扱いとG2が満たされた後も、GitHub画像やCI成功は動く実アプリではない。公開権限は適用する既存承認/直接指示と対応し、S1から生成しない。",
+      "handoff": "同一固定release SHA、build、実配信manifestを照合し、認証壁なし・phone/desktop・進捗分離・N11/N12両route実到達性を確認して直接app URLを提示。合意範囲N11/N12を初めから終わりまで本人が一回確認する。S1既定どおり同一原文/出所/sessionが両unitを明示して覆う場合だけ単元別二転記を各HOST証拠と結び、CODE順で受理。候補変更又は片方だけの発言なら共用しない。技術PASSから受入/quality labelを作らない。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "GATES-A05",
+      "status": "RESOLVED_AUTHORITY_MAPPING",
+      "reason": "Mが前回までに確定したauthority照合を明示。main04b823§12Aを正本とし、worktree未採用W-GOV010で上書きしない。N11不変表示のac2ac082限定了承保持、新source087の証拠対応別記、N12新CI/R07後にGitHub実画像で本人確認①→G2→両unitG3前資料の順を継続する。"
+    }
+  ],
+  "limits": [
+    "CI41655234217の結果・画像は本taskで未読。RUNNINGをPASSとしない。",
+    "mainと現worktreeの規則比較はGit読取。新しいuser event/視覚承認/受入を生成していない。",
+    "N11の不変表示は比較した主要5pathsのbytes根拠。共有全modeの実操作は未実行。",
+    "Store/Git/製品/Work編集なし。指定/tmp原報告のみ保存。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/governance/WORK_SYSTEM.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/governance/REVIEW_POLICY.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/graphs.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/integration.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/runtime.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/team_transport.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/R1_GATE1_RESPONSE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_SOURCE_FREEZE.json"
+  ],
+  "confirmedNextSequence": [
+    "N11/N12 native現入力再検証とsource087842…専用CI完了/成果物照合",
+    "N12現source実画像の非作者R07審査",
+    "N11不変表示の既了承を履歴保持し、新source証拠対応を提示。N12の新GitHub実画像のみ本人確認①",
+    "本人の実発言を限定視覚了承として記録。新品質評価/最終受入へ転用しない",
+    "現source対象の影響横断G2を正式受理",
+    "両unit共通固定候補・実HOST/公開前資料。合意した最終app確認一回の準備"
+  ]
+}

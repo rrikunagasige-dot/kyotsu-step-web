@@ -2,9 +2,9 @@
   "schemaVersion": "guided-math-presentation/1",
   "choiceDisplay": "semantic",
   "code": "n12",
-  "approvedCommit": "3d0310b8889c03244b8ec9e09f4d2251c5b15ffb",
-  "proposalHash": "db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9",
-  "irHash": "87016e7e1c24258c210b1eaae7515cc68d12ae08f78356494a5f2cfef69204dd",
+  "approvedCommit": "36a781c732a9638289430cab2ded37d7b5404bdd",
+  "proposalHash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
+  "irHash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
   "unit": {
     "schemaVersion": "1.1",
     "unitId": "math-numbers-expressions-n12",
@@ -350,32 +350,22 @@
               {
                 "type": "math",
                 "latex": "-7<2x",
-                "semanticId": "w36-p-690"
+                "semanticId": "w47-n12-01-lead-0"
               },
               {
                 "type": "text",
-                "text": " の両辺を正の2で割ると ",
-                "semanticId": "w36-p-691"
-              },
-              {
-                "type": "math",
-                "latex": "-7/2<x",
-                "semanticId": "w36-p-692"
-              },
-              {
-                "type": "text",
-                "text": " です。同じ範囲を ",
-                "semanticId": "w36-p-693"
+                "text": " の両辺を正の2で割り、",
+                "semanticId": "w47-n12-01-lead-1"
               },
               {
                 "type": "math",
                 "latex": "x",
-                "semanticId": "w36-p-694"
+                "semanticId": "w47-n12-01-lead-2"
               },
               {
                 "type": "text",
-                "text": " から書き、第一の条件として記録します。",
-                "semanticId": "w36-p-695"
+                "text": " を左にした形で第一の条件を記録します。正の数で割るので、不等号の向きは変わりません。",
+                "semanticId": "w47-n12-01-lead-3"
               }
             ]
           },
@@ -893,37 +883,37 @@
               {
                 "type": "text",
                 "text": "記録した二条件は ",
-                "semanticId": "w36-p-752"
+                "semanticId": "w47-n12-q04-left-end-lead-0"
               },
               {
                 "type": "math",
                 "latex": "x>-7/2",
-                "semanticId": "w36-p-753"
+                "semanticId": "w47-n12-q04-left-end-lead-1"
               },
               {
                 "type": "text",
                 "text": " と ",
-                "semanticId": "w36-p-754"
+                "semanticId": "w47-n12-q04-left-end-lead-2"
               },
               {
                 "type": "math",
                 "latex": "x\\le1/2",
-                "semanticId": "w36-p-755"
+                "semanticId": "w47-n12-q04-left-end-lead-3"
               },
               {
                 "type": "text",
                 "text": " です。左端 ",
-                "semanticId": "w36-p-756"
+                "semanticId": "w47-n12-q04-left-end-lead-4"
               },
               {
                 "type": "math",
                 "latex": "-7/2",
-                "semanticId": "w36-p-757"
+                "semanticId": "w47-n12-q04-left-end-lead-5"
               },
               {
                 "type": "text",
-                "text": " は第一の条件で等号になり、厳密な不等号を満たしません。左端側の記号を選びます。",
-                "semanticId": "w36-p-758"
+                "text": " が第一の条件を満たすかを調べ、左端側の記号を選びます。",
+                "semanticId": "w47-n12-q04-left-end-lead-6"
               }
             ]
           },
@@ -976,8 +966,8 @@
             "parts": [
               {
                 "type": "text",
-                "text": "確定した結果を記録し、次の操作に使います。",
-                "semanticId": "w36-p-759"
+                "text": "この端点は第一の厳密な不等号を満たさないため、含みません。確定した左端の扱いを、次に共通範囲へ使います。",
+                "semanticId": "w47-n12-q04-left-end-explanation"
               }
             ]
           },
@@ -987,18 +977,18 @@
             "parts": [
               {
                 "type": "text",
-                "text": "二本の数直線の重なる範囲を残します。左端は含まず、右端 ",
-                "semanticId": "w36-p-764"
+                "text": "左端側の記号は決まりました。右端 ",
+                "semanticId": "w47-n12-04-lead-0"
               },
               {
                 "type": "math",
-                "latex": "1/2",
-                "semanticId": "w36-p-765"
+                "latex": "\\frac12",
+                "semanticId": "w47-n12-04-lead-1"
               },
               {
                 "type": "text",
-                "text": " は第二の条件に含まれ、第一の条件も満たします。端点の扱いを残して一つにまとめます。",
-                "semanticId": "w36-p-766"
+                "text": " が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
+                "semanticId": "w47-n12-04-lead-2"
               }
             ]
           },
@@ -1048,6 +1038,15 @@
             "id": "n12-04-after",
             "type": "paragraph",
             "parts": [
+              {
+                "type": "text",
+                "text": "左端は第一の条件を満たさず、右端は両方の条件を満たすので、左端を除き右端を含む範囲になります。",
+                "semanticId": "w47-n12-04-endpoint-reason"
+              },
+              {
+                "type": "text",
+                "text": " "
+              },
               {
                 "type": "text",
                 "text": "二つ以上の不等式を組にしたものを ",
@@ -1652,34 +1651,39 @@
             "type": "paragraph",
             "parts": [
               {
-                "type": "math",
-                "latex": "5/3<2",
-                "semanticId": "w36-p-840"
-              },
-              {
                 "type": "text",
-                "text": " なので、",
-                "semanticId": "w36-p-841"
+                "text": "直前に求めた二つの条件は、どちらも上限を与えます。上限の ",
+                "semanticId": "w47-n12-07-lead-0"
               },
               {
                 "type": "math",
-                "latex": "x\\le5/3",
-                "semanticId": "w36-p-842"
+                "latex": "2",
+                "semanticId": "w47-n12-07-lead-1"
               },
               {
                 "type": "text",
-                "text": " に入る数は ",
-                "semanticId": "w36-p-843"
+                "text": " と ",
+                "semanticId": "w47-n12-07-lead-2"
               },
               {
                 "type": "math",
-                "latex": "x\\le2",
-                "semanticId": "w36-p-844"
+                "latex": "\\frac53",
+                "semanticId": "w47-n12-07-lead-3"
               },
               {
                 "type": "text",
-                "text": " も満たします。両方の条件を残す範囲を選びます。",
-                "semanticId": "w36-p-845"
+                "text": " を比べ、両方を満たす範囲を選びます。",
+                "semanticId": "w47-n12-07-lead-4"
+              },
+              {
+                "type": "math",
+                "latex": "x=2",
+                "semanticId": "w47-n12-07-lead-5"
+              },
+              {
+                "type": "text",
+                "text": " を除く必要は、元の式への代入で確かめました。",
+                "semanticId": "w47-n12-07-lead-6"
               }
             ]
           },
@@ -2818,12 +2822,12 @@
           },
           {
             "id": "n12-q13-operation-interaction-0",
-            "type": "formula",
+            "type": "paragraph",
             "parts": [
               {
-                "type": "math",
-                "latex": "2650-",
-                "semanticId": "w36-p-960"
+                "type": "text",
+                "text": "中央の定数を消すために、三辺から同じ ",
+                "semanticId": "w47-n12-q13-operation-action"
               },
               {
                 "type": "choice",
@@ -2831,12 +2835,11 @@
                 "semanticId": "n12-q13-operation-slot"
               },
               {
-                "type": "math",
-                "latex": "=0",
-                "semanticId": "w36-p-961"
+                "type": "text",
+                "text": " を引きます。",
+                "semanticId": "w47-n12-q13-operation-action-end"
               }
-            ],
-            "derivationId": "n12-q13-operation-interaction"
+            ]
           },
           {
             "id": "n12-q13-operation-equation",
@@ -2844,17 +2847,26 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "2650-2650",
-                "semanticId": "w36-p-962"
+                "latex": "3200-2650",
+                "semanticId": "w47-n12-q13-side-math-0"
               },
               {
                 "type": "math",
-                "latex": "="
+                "latex": "\\le"
               },
               {
                 "type": "math",
-                "latex": "0",
-                "semanticId": "w36-p-963"
+                "latex": "(2650+50x)-2650",
+                "semanticId": "w47-n12-q13-side-math-1"
+              },
+              {
+                "type": "math",
+                "latex": "<"
+              },
+              {
+                "type": "math",
+                "latex": "3300-2650",
+                "semanticId": "w47-n12-q13-side-math-2"
               }
             ],
             "derivationId": "n12-q13-operation-equation"
@@ -5436,7 +5448,7 @@
   ],
   "semantic": {
     "schemaVersion": "production-compiled/1",
-    "irHash": "87016e7e1c24258c210b1eaae7515cc68d12ae08f78356494a5f2cfef69204dd",
+    "irHash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
     "nodes": [
       {
         "id": "n12-intro",
@@ -5889,32 +5901,22 @@
               {
                 "type": "math",
                 "latex": "-7<2x",
-                "semanticId": "w36-p-690"
+                "semanticId": "w47-n12-01-lead-0"
               },
               {
                 "type": "text",
-                "text": " の両辺を正の2で割ると ",
-                "semanticId": "w36-p-691"
-              },
-              {
-                "type": "math",
-                "latex": "-7/2<x",
-                "semanticId": "w36-p-692"
-              },
-              {
-                "type": "text",
-                "text": " です。同じ範囲を ",
-                "semanticId": "w36-p-693"
+                "text": " の両辺を正の2で割り、",
+                "semanticId": "w47-n12-01-lead-1"
               },
               {
                 "type": "math",
                 "latex": "x",
-                "semanticId": "w36-p-694"
+                "semanticId": "w47-n12-01-lead-2"
               },
               {
                 "type": "text",
-                "text": " から書き、第一の条件として記録します。",
-                "semanticId": "w36-p-695"
+                "text": " を左にした形で第一の条件を記録します。正の数で割るので、不等号の向きは変わりません。",
+                "semanticId": "w47-n12-01-lead-3"
               }
             ]
           },
@@ -6816,37 +6818,37 @@
               {
                 "type": "text",
                 "text": "記録した二条件は ",
-                "semanticId": "w36-p-752"
+                "semanticId": "w47-n12-q04-left-end-lead-0"
               },
               {
                 "type": "math",
                 "latex": "x>-7/2",
-                "semanticId": "w36-p-753"
+                "semanticId": "w47-n12-q04-left-end-lead-1"
               },
               {
                 "type": "text",
                 "text": " と ",
-                "semanticId": "w36-p-754"
+                "semanticId": "w47-n12-q04-left-end-lead-2"
               },
               {
                 "type": "math",
                 "latex": "x\\le1/2",
-                "semanticId": "w36-p-755"
+                "semanticId": "w47-n12-q04-left-end-lead-3"
               },
               {
                 "type": "text",
                 "text": " です。左端 ",
-                "semanticId": "w36-p-756"
+                "semanticId": "w47-n12-q04-left-end-lead-4"
               },
               {
                 "type": "math",
                 "latex": "-7/2",
-                "semanticId": "w36-p-757"
+                "semanticId": "w47-n12-q04-left-end-lead-5"
               },
               {
                 "type": "text",
-                "text": " は第一の条件で等号になり、厳密な不等号を満たしません。左端側の記号を選びます。",
-                "semanticId": "w36-p-758"
+                "text": " が第一の条件を満たすかを調べ、左端側の記号を選びます。",
+                "semanticId": "w47-n12-q04-left-end-lead-6"
               }
             ]
           },
@@ -6901,8 +6903,8 @@
             "parts": [
               {
                 "type": "text",
-                "text": "確定した結果を記録し、次の操作に使います。",
-                "semanticId": "w36-p-759"
+                "text": "この端点は第一の厳密な不等号を満たさないため、含みません。確定した左端の扱いを、次に共通範囲へ使います。",
+                "semanticId": "w47-n12-q04-left-end-explanation"
               }
             ]
           }
@@ -6971,18 +6973,18 @@
             "parts": [
               {
                 "type": "text",
-                "text": "二本の数直線の重なる範囲を残します。左端は含まず、右端 ",
-                "semanticId": "w36-p-764"
+                "text": "左端側の記号は決まりました。右端 ",
+                "semanticId": "w47-n12-04-lead-0"
               },
               {
                 "type": "math",
-                "latex": "1/2",
-                "semanticId": "w36-p-765"
+                "latex": "\\frac12",
+                "semanticId": "w47-n12-04-lead-1"
               },
               {
                 "type": "text",
-                "text": " は第二の条件に含まれ、第一の条件も満たします。端点の扱いを残して一つにまとめます。",
-                "semanticId": "w36-p-766"
+                "text": " が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
+                "semanticId": "w47-n12-04-lead-2"
               }
             ]
           },
@@ -7034,6 +7036,15 @@
             "id": "n12-04-after",
             "type": "paragraph",
             "parts": [
+              {
+                "type": "text",
+                "text": "左端は第一の条件を満たさず、右端は両方の条件を満たすので、左端を除き右端を含む範囲になります。",
+                "semanticId": "w47-n12-04-endpoint-reason"
+              },
+              {
+                "type": "text",
+                "text": " "
+              },
               {
                 "type": "text",
                 "text": "二つ以上の不等式を組にしたものを ",
@@ -8109,34 +8120,39 @@
             "type": "paragraph",
             "parts": [
               {
-                "type": "math",
-                "latex": "5/3<2",
-                "semanticId": "w36-p-840"
-              },
-              {
                 "type": "text",
-                "text": " なので、",
-                "semanticId": "w36-p-841"
+                "text": "直前に求めた二つの条件は、どちらも上限を与えます。上限の ",
+                "semanticId": "w47-n12-07-lead-0"
               },
               {
                 "type": "math",
-                "latex": "x\\le5/3",
-                "semanticId": "w36-p-842"
+                "latex": "2",
+                "semanticId": "w47-n12-07-lead-1"
               },
               {
                 "type": "text",
-                "text": " に入る数は ",
-                "semanticId": "w36-p-843"
+                "text": " と ",
+                "semanticId": "w47-n12-07-lead-2"
               },
               {
                 "type": "math",
-                "latex": "x\\le2",
-                "semanticId": "w36-p-844"
+                "latex": "\\frac53",
+                "semanticId": "w47-n12-07-lead-3"
               },
               {
                 "type": "text",
-                "text": " も満たします。両方の条件を残す範囲を選びます。",
-                "semanticId": "w36-p-845"
+                "text": " を比べ、両方を満たす範囲を選びます。",
+                "semanticId": "w47-n12-07-lead-4"
+              },
+              {
+                "type": "math",
+                "latex": "x=2",
+                "semanticId": "w47-n12-07-lead-5"
+              },
+              {
+                "type": "text",
+                "text": " を除く必要は、元の式への代入で確かめました。",
+                "semanticId": "w47-n12-07-lead-6"
               }
             ]
           },
@@ -10222,12 +10238,12 @@
           },
           {
             "id": "n12-q13-operation-interaction-0",
-            "type": "formula",
+            "type": "paragraph",
             "parts": [
               {
-                "type": "math",
-                "latex": "2650-",
-                "semanticId": "w36-p-960"
+                "type": "text",
+                "text": "中央の定数を消すために、三辺から同じ ",
+                "semanticId": "w47-n12-q13-operation-action"
               },
               {
                 "type": "choice",
@@ -10235,12 +10251,11 @@
                 "semanticId": "n12-q13-operation-slot"
               },
               {
-                "type": "math",
-                "latex": "=0",
-                "semanticId": "w36-p-961"
+                "type": "text",
+                "text": " を引きます。",
+                "semanticId": "w47-n12-q13-operation-action-end"
               }
-            ],
-            "derivationId": "n12-q13-operation-interaction"
+            ]
           }
         ],
         "after": [
@@ -10250,17 +10265,26 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "2650-2650",
-                "semanticId": "w36-p-962"
+                "latex": "3200-2650",
+                "semanticId": "w47-n12-q13-side-math-0"
               },
               {
                 "type": "math",
-                "latex": "="
+                "latex": "\\le"
               },
               {
                 "type": "math",
-                "latex": "0",
-                "semanticId": "w36-p-963"
+                "latex": "(2650+50x)-2650",
+                "semanticId": "w47-n12-q13-side-math-1"
+              },
+              {
+                "type": "math",
+                "latex": "<"
+              },
+              {
+                "type": "math",
+                "latex": "3300-2650",
+                "semanticId": "w47-n12-q13-side-math-2"
               }
             ],
             "derivationId": "n12-q13-operation-equation"
@@ -11699,27 +11723,19 @@
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-690": {
+      "w47-n12-01-lead-0": {
         "kind": "math",
-        "semanticRef": "w36-p-690"
+        "semanticRef": "w47-n12-01-lead-0"
       },
-      "w36-p-691": {
+      "w47-n12-01-lead-1": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-692": {
+      "w47-n12-01-lead-2": {
         "kind": "math",
-        "semanticRef": "w36-p-692"
+        "semanticRef": "w47-n12-01-lead-2"
       },
-      "w36-p-693": {
-        "kind": "text",
-        "semanticRef": null
-      },
-      "w36-p-694": {
-        "kind": "math",
-        "semanticRef": "w36-p-694"
-      },
-      "w36-p-695": {
+      "w47-n12-01-lead-3": {
         "kind": "text",
         "semanticRef": null
       },
@@ -11975,31 +11991,31 @@
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-752": {
+      "w47-n12-q04-left-end-lead-0": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-753": {
+      "w47-n12-q04-left-end-lead-1": {
         "kind": "math",
-        "semanticRef": "w36-p-753"
+        "semanticRef": "w47-n12-q04-left-end-lead-1"
       },
-      "w36-p-754": {
+      "w47-n12-q04-left-end-lead-2": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-755": {
+      "w47-n12-q04-left-end-lead-3": {
         "kind": "math",
-        "semanticRef": "w36-p-755"
+        "semanticRef": "w47-n12-q04-left-end-lead-3"
       },
-      "w36-p-756": {
+      "w47-n12-q04-left-end-lead-4": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-757": {
+      "w47-n12-q04-left-end-lead-5": {
         "kind": "math",
-        "semanticRef": "w36-p-757"
+        "semanticRef": "w47-n12-q04-left-end-lead-5"
       },
-      "w36-p-758": {
+      "w47-n12-q04-left-end-lead-6": {
         "kind": "text",
         "semanticRef": null
       },
@@ -12023,19 +12039,19 @@
         "kind": "math",
         "semanticRef": "w36-p-763"
       },
-      "w36-p-759": {
+      "w47-n12-q04-left-end-explanation": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-764": {
+      "w47-n12-04-lead-0": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-765": {
+      "w47-n12-04-lead-1": {
         "kind": "math",
-        "semanticRef": "w36-p-765"
+        "semanticRef": "w47-n12-04-lead-1"
       },
-      "w36-p-766": {
+      "w47-n12-04-lead-2": {
         "kind": "text",
         "semanticRef": null
       },
@@ -12054,6 +12070,10 @@
       "w36-p-772": {
         "kind": "math",
         "semanticRef": "w36-p-772"
+      },
+      "w47-n12-04-endpoint-reason": {
+        "kind": "text",
+        "semanticRef": null
       },
       "w36-p-767": {
         "kind": "text",
@@ -12363,27 +12383,31 @@
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-840": {
-        "kind": "math",
-        "semanticRef": "w36-p-840"
-      },
-      "w36-p-841": {
+      "w47-n12-07-lead-0": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-842": {
+      "w47-n12-07-lead-1": {
         "kind": "math",
-        "semanticRef": "w36-p-842"
+        "semanticRef": "w47-n12-07-lead-1"
       },
-      "w36-p-843": {
+      "w47-n12-07-lead-2": {
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-844": {
+      "w47-n12-07-lead-3": {
         "kind": "math",
-        "semanticRef": "w36-p-844"
+        "semanticRef": "w47-n12-07-lead-3"
       },
-      "w36-p-845": {
+      "w47-n12-07-lead-4": {
+        "kind": "text",
+        "semanticRef": null
+      },
+      "w47-n12-07-lead-5": {
+        "kind": "math",
+        "semanticRef": "w47-n12-07-lead-5"
+      },
+      "w47-n12-07-lead-6": {
         "kind": "text",
         "semanticRef": null
       },
@@ -12895,25 +12919,29 @@
         "kind": "text",
         "semanticRef": null
       },
-      "w36-p-960": {
-        "kind": "math",
-        "semanticRef": "w36-p-960"
+      "w47-n12-q13-operation-action": {
+        "kind": "text",
+        "semanticRef": null
       },
       "n12-q13-operation-slot": {
         "kind": "answerSlot",
         "semanticRef": "n12-q13-operation"
       },
-      "w36-p-961": {
-        "kind": "math",
-        "semanticRef": "w36-p-961"
+      "w47-n12-q13-operation-action-end": {
+        "kind": "text",
+        "semanticRef": null
       },
-      "w36-p-962": {
+      "w47-n12-q13-side-math-0": {
         "kind": "math",
-        "semanticRef": "w36-p-962"
+        "semanticRef": "w47-n12-q13-side-math-0"
       },
-      "w36-p-963": {
+      "w47-n12-q13-side-math-1": {
         "kind": "math",
-        "semanticRef": "w36-p-963"
+        "semanticRef": "w47-n12-q13-side-math-1"
+      },
+      "w47-n12-q13-side-math-2": {
+        "kind": "math",
+        "semanticRef": "w47-n12-q13-side-math-2"
       },
       "w36-p-957": {
         "kind": "text",
@@ -13884,9 +13912,8 @@
       "w36-p-687",
       "w36-p-688",
       "w36-p-689",
-      "w36-p-690",
-      "w36-p-692",
-      "w36-p-694",
+      "w47-n12-01-lead-0",
+      "w47-n12-01-lead-2",
       "n12-01-slot",
       "w36-p-697",
       "w36-p-698",
@@ -13923,15 +13950,15 @@
       "n12-q03-second-slot",
       "w36-p-748",
       "n12-03-slot",
-      "w36-p-753",
-      "w36-p-755",
-      "w36-p-757",
+      "w47-n12-q04-left-end-lead-1",
+      "w47-n12-q04-left-end-lead-3",
+      "w47-n12-q04-left-end-lead-5",
       "w36-p-760",
       "n12-q04-left-end-slot",
       "w36-p-761",
       "w36-p-762",
       "w36-p-763",
-      "w36-p-765",
+      "w47-n12-04-lead-1",
       "n12-04-slot",
       "w36-p-770",
       "w36-p-771",
@@ -13980,9 +14007,9 @@
       "w36-p-835",
       "n12-q07-boundary-slot",
       "w36-p-837",
-      "w36-p-840",
-      "w36-p-842",
-      "w36-p-844",
+      "w47-n12-07-lead-1",
+      "w47-n12-07-lead-3",
+      "w47-n12-07-lead-5",
       "n12-07-slot",
       "w36-p-847",
       "w36-p-848",
@@ -14064,11 +14091,10 @@
       "w36-p-953",
       "w36-p-954",
       "w36-p-955",
-      "w36-p-960",
       "n12-q13-operation-slot",
-      "w36-p-961",
-      "w36-p-962",
-      "w36-p-963",
+      "w47-n12-q13-side-math-0",
+      "w47-n12-q13-side-math-1",
+      "w47-n12-q13-side-math-2",
       "w36-p-958",
       "n12-p002-q13-lower-slot",
       "w36-p-966",

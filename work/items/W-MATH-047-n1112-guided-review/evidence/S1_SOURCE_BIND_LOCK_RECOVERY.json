@@ -1,0 +1,16 @@
+{
+  "priorSession": 96028,
+  "priorSessionStatus": "Exited1 Conflict; no running writer resumed",
+  "lock": {
+    "pid": 2,
+    "time": 1793716563.565785
+  },
+  "chainValid": true,
+  "events": 4112,
+  "head": "cd1f6a6c0d17c84371eda761b6f06d1e5880f94c69dc99aefb72066f84ec951f",
+  "namespacePID": 2,
+  "procStatPath": "/proc/self/stat",
+  "currentPidStartEpoch": 1793716692.66,
+  "reason": "PID reused after terminated writer; current process began after lock creation",
+  "recovery": "Removed one verified stale lock; no guard changes"
+}

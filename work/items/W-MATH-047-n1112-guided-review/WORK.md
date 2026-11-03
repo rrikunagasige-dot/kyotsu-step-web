@@ -2,7 +2,11 @@
 
 Status: VERIFYING / S1適用・N12 R04/R05通過・五変更適用済み / 現bytes再検証中 / 未公開
 
-現在（N12適用後）：新actual-render target edf7dbfb…をA/Bが正式PASS、N12-D04を現画像でVERIFIED_FIXED。R04/R05を正式受理し、既存generic apply_patchが固定P006のN12一pathを適用（after8ba07062…）。全ID順を保つためN11専用の移動adapterは使用していない。適用で入力hashが変わったため元R06 claimを正式照合し、native nextはR01_CAPTURE@n11。N11/N12の必要工程を最終bytesへ再検証し、N12を二重適用しない。生成済み図はpre-apply checkpointで、次の正式handoffで現台帳から再生成する。新sourceの専用CIを開始し、CODE成功/原資料レビュー/画像審査/本人確認を区別する。
+配布版照合で検出した作業ミス：source087842ac…のCI41655234217は成功だが、N12本体をgit addへ含め損ね、commit内はBASELINEのままだった。ZIP digest d5a7…、原ログ、BASELINE契約とN12focus欠落を保存し、新版のnativeCI/capture/PASSとして登録していない。誤ったcandidate bindingも履歴として保持。手元のN12限定patch/実審査bytesは承認版8ba…のままで再適用しない。
+
+修正：N12製品pathを明示stageし、verify_commit_manifest.pyで全8candidate pathのcommit/作業tree/native SHA256一致を必要条件にした。欠落旧commitに実行するとN12一pathだけFAILを再現。verify_currentはS1_N12_APPLIED記録がある版ではN12 APPROVEDを必須にし、同じ配布漏れを成功表示で見逃さない。新commitの全path一致・remote tree/当該blob一致の確認後だけ新SHAを正式固定し、実CIを再実行する。旧CIを改変/合格へ転用しない。
+
+前回checkpoint（N12適用後・配布漏れ発見前）：新actual-render target edf7dbfb…をA/Bが正式PASS、N12-D04を現画像でVERIFIED_FIXED。R04/R05を正式受理し、既存generic apply_patchが固定P006のN12一pathを適用（after8ba07062…）。全ID順を保つためN11専用の移動adapterは使用していない。適用で入力hashが変わったため元R06 claimを正式照合し、native nextはR01_CAPTURE@n11。N11/N12の必要工程を最終bytesへ再検証し、N12を二重適用しない。生成済み図はpre-apply checkpointで、次の正式handoffで現台帳から再生成する。新sourceの専用CIを開始し、CODE成功/原資料レビュー/画像審査/本人確認を区別する。
 
 N12の隔離捕捉は60通常viewport（5target×3state×4幅）と補助画像を含む135PNG。46正答・5つの代表誤答、history/reload/reset/次N13往復は隔離candidateの実操作で確認。全127誤答×四幅はこれから実sourceCIで確認し、この5件を全件試験と称さない。Bの一枚の画像欠けnoteは同一SHA再openで非再現、原初見と訂正を別々に保持。実装前R04 claimは審査中に期限切れのため正式FAILED照合/同一inputの新claimへ原CODE/初見を保持して再受領、教材FAILとはしない。
 

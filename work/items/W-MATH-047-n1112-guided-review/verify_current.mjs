@@ -12,6 +12,7 @@ for(const c of ['n11','n12']){
  const mode=JSON.stringify(active)===JSON.stringify(approved)?'APPROVED':'BASELINE';
  assert.deepEqual(active,mode==='APPROVED'?approved:prior,'Only fixed baseline or approved content is allowed');
  if(c==='n11')assert.equal(mode,'APPROVED');
+ if(c==='n12'&&fs.existsSync(b+'evidence/S1_N12_APPLIED.json'))assert.equal(mode,'APPROVED','Recorded S1 N12 application must be included in the actual checked-out source');
  for(const k of ['nodes','stages','equationNumbers','semanticDisplay'])assert.deepEqual(active[k],prior[k],k);
  assert.equal(active.unit.unitId,prior.unit.unitId);assert.equal(active.unit.revision,prior.unit.revision);assert.deepEqual(active.unit.sections[0].items,prior.unit.sections[0].items);
  assert.deepEqual(active.unit.sections[0].readingFlow,active.semantic.nodes.flatMap(n=>[...n.before,...n.after]));

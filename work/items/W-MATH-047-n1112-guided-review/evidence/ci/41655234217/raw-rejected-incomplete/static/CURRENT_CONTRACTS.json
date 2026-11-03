@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
+  "rows": [
+    {
+      "code": "n11",
+      "mode": "APPROVED",
+      "changes": [
+        "n11-03",
+        "n11-07",
+        "n11-10",
+        "n11-q11-constant",
+        "n11-12",
+        "n11-fraction-problem"
+      ],
+      "answers": 39,
+      "revision": 11
+    },
+    {
+      "code": "n12",
+      "mode": "BASELINE",
+      "changes": [],
+      "answers": 46,
+      "revision": 4
+    }
+  ],
+  "bridgeCases": [
+    "old-source-accepted",
+    "approved-source-accepted",
+    "unknown-source-rejected",
+    "changed-graph-rejected",
+    "missing-graph-rejected",
+    "additional-graph-rejected",
+    "duplicate-graph-rejected"
+  ],
+  "W038": "APPROVED_R1_TWO_ROW_RELOCATION; grading/graphs/numberAliases preserved",
+  "projection": {
+    "status": "PASS",
+    "actualProjector": true,
+    "checks": [
+      "all predecessor prefixes hide final result",
+      "one quotient slot until n11-06 correct",
+      "final completed range only after correct",
+      "stale later answer does not unlock prerequisites"
+    ]
+  }
+}

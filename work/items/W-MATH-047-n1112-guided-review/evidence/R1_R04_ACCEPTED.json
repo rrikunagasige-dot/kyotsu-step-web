@@ -2,39 +2,39 @@
   "result": {
     "verdict": "PASS",
     "evidence_refs": [
-      "69daa1e0-d3d4-4456-8443-de94da0631d4",
-      "cd55b5ed-a38f-47b8-9742-16d66b1aad03",
-      "cd15329e-1aa7-4d19-9830-98f3a65a8ead",
-      "a1ff65c3-b0e2-4ecc-acf7-2131d73a94a4",
-      "fcc134cc-3f9a-461b-b934-313890203323",
-      "4a4f19d7-054a-4a57-add7-423653782e26",
-      "e0d1c41c-b752-4b0a-a818-3263b2ed13df",
-      "6c03dbd9-ea31-4a50-bb79-d34689609483",
-      "7d6e4b50-fa04-4f3d-9a8b-908e0ec1e06c",
-      "3481afcf-1ec7-40a2-9099-1d38a4ffca04",
-      "50174dd8-f056-4168-9e74-c9866099b1b9",
-      "1563ef4a-7103-411e-af7d-9d6d1143981b",
-      "7fd84939-4874-471b-b3f5-de1c8dbba3fc",
-      "507e68e3-6377-4073-ab93-2ff87c2548be",
-      "b49357e0-0d90-426d-b0ed-1c9fe4f2b3a8",
-      "0cab58bd-75c1-4e50-b074-215dfa138602",
-      "9c6cac17-2612-484b-896e-65818dba35ac",
-      "58345ef9-2bf1-45db-8802-7e193ae50f0d",
-      "b55694b0-75c5-4121-86fb-57317fa068b1",
-      "08f3d87f-fb64-41d5-b904-b0576b625e6b"
+      "b36414c9-f148-429a-a72b-7cd105abd5dd",
+      "00300986-2845-467a-bc57-22be78b086bf",
+      "2e753796-8fb4-4239-99e5-a600fb285c12",
+      "e5f1aa75-af7e-41c2-94a6-e2bc861c2c01",
+      "dd79d9bb-0a64-4ed0-a5f4-bdac11618502",
+      "5c4d0e1a-24e9-4cb0-9ce1-674376e0ffdd",
+      "31c07cf1-210a-4321-b02b-dfb20ecd4bc9",
+      "534908d6-6154-4aaa-82f8-ab2a244514a9",
+      "147c4304-228a-45a2-aaa4-b1bcb778ac0b",
+      "487da8f0-3f8f-4c24-90f8-c92c2f57a165",
+      "9156ec07-8b53-4bc7-8c9b-7f88bab9f848",
+      "d31903e6-0576-470a-ae55-70dbbd6efa5c",
+      "5fb162bb-e1f9-4abb-acd2-4ad5a552443c",
+      "92cb887b-080d-4bb1-8a54-ae85c68b258e",
+      "436d7414-6bf7-47d0-86ff-7f2bb91c1158",
+      "316461df-8448-4657-9433-21d9e108f7dd",
+      "f03d5a40-50f1-4947-9bed-6cb52dcc005a",
+      "c83d5ad7-6c04-447b-a830-a46edce7e0c0",
+      "e2178e56-5a57-4cc9-b908-8f654592f4ae",
+      "7ad004e1-ad41-4c87-8cea-1e4d3194557f"
     ],
     "capability_receipts": [
-      "7648debf5930233dfc353fafcf51fc43f3098b56c150ab1e97443bdc262f3bb3",
-      "a59db8de031cb62bd9dcd85432d6b0007172266fd87b9a1bd124fa574bd20e6e",
-      "00b28afa8e7e7baee1317ee76aa031a0f6bdf65cd1e4bc9716fc9565bde4f980",
-      "68c61e72084db9624ca8fe52ef60ac53477386bca6efef486f2a880e72785853",
-      "190676acc56b98fa294bff450a34081ee4f4c6bab065f0818578519cfbc7884a",
-      "902039ebf32c8e01090d67e368eedfde7e73c5913324a9b5feff46067e8740c5",
-      "48d8f3791a56d571b2d197a24356a8a61da5df3d874a36e8ad3cef8bfa73ea51",
-      "23b21bc8dea5913c525bd0eb3f870b27799d29868520c5446fea5bcd75e45d9f",
-      "e4c7d52f7b4a70d4ef59370c39cd67f3b198e8dc0e5afcc2cddacd51a6726213",
-      "a10713caf0ef3d4f29b99bd3148b2620c82de6a6c47bde565558300a6c566bdd",
-      "4d40da55a49595cfe383e6083cb21780dbbf375ea0d29d5a23f8a9707cd374ef"
+      "ff215e36f829a254d20d1f83b6535aeb4c7e16dd8081db6a31a1f9157712880c",
+      "b571f2b031af88a5fa19bd0a3f677f2a4117dd37b2f5835a78e3317a50ce7cec",
+      "fcd49b73b3c8d4fdf4bdd59574b6487b9f2f140c18ce5fc1807101c2355dcaba",
+      "93359786afeab9bf71c086228f93ae491ca512e22eeff17af615354f10484278",
+      "2df5a2a97f538db4ec7f2fd636db534f2b3b68520aead5bcce28b42fe43356b1",
+      "5a184e0b7d5c32e9f4d742a3f4ec0d8db1f8a320fb7815c52a2ac7deb92ca7c7",
+      "aa3594e7453dc76a27859296e6f582ff1d5c7979624434dc7153c41dba8b7c4d",
+      "0a6b7305066497faeae7dfdf795afb2e28ab802373b112da5b67d2a7b80a7cf4",
+      "41fc91e63c4c54bbf4dc602d9b89f3ad7e47f12a607558eb1a28c9b22306b024",
+      "d4bc4fdf90673e00de62f4274d2cd0415d3837b35c48261a3815ff75c12b97e9",
+      "d5df1bfe8ff02bfa42d3cbbe9f5f6038707f685b63c52971d89f9897ce35db3b"
     ],
     "case_dispositions": [
       {
@@ -129,8 +129,8 @@
       }
     ],
     "aiReview": {
-      "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
-      "inputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
+      "requestHash": "3b4e59e1c3e174582191f33e5d12cd79b76200b909375ef35ab537b101b8a4be",
+      "inputHash": "07c1047da05066e5853766343409bf7e1f533854eec679858bcced7aa2f74ed9",
       "reviewer": "M integrating source-bound A/B diagnosis and exact approved relocation",
       "evidence": "First actual new inactive render reviewed independently by A/B after primary source and before capture manifest; previous plan exposure disclosed. Full compiled display target replaces old IR-only layout target. Migration CODE separately tested and reviewed."
     },
@@ -169,12 +169,12 @@
     "teamCollection": {
       "submissionActor": "M",
       "registrationRefs": [
-        "65ed240c7bdeb6f80c3a03115f171aacfc5e9a338509502c8a1d12e62f57db8a",
-        "ed3f9287f6459b76a196dd7d1be1ee046fb3bc4258a6e111a50b2337d0d887ef"
+        "ad597bed6b0dd1b6251728a625bee549f479a2ca070a55d98a2d5bc7bb9f5e11",
+        "d76dde2e183ab089456ee780ba1f9807c3ede98301d35b0279916a6836f5e6e9"
       ],
       "outputRefs": [
-        "98af59677e78b08e4954e0cc078e92ac3b7fc4eb532ef19f95fa534c3c600d22",
-        "4fef531b9c85bf095eca9dee1daa9c30d17946d4c883d90d3008b6d5d1fb513d"
+        "86d6f1c617f44f87cfdac3d2f832ff164ed5918a816eeff201278dbed0d774b7",
+        "1fdd45d4b0b8fd256b9d0677c419a929ae30bd129970d68daaa610e4c4292844"
       ]
     }
   },

@@ -1,0 +1,17 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "sourceSHA": "087842ac5b534a719da56d5027d5fdbb304c5615",
+  "ciRun": "41655234217",
+  "verdict": "PASS_STATIC_TECHNICAL_BINDING",
+  "scope": "CI capture call chain and records only; not a lesson firstPass or image acceptance",
+  "toolContribution": "B supplied N12 capture draft/advice; no lesson authorship. Current capture_n12 retains this disclosure.",
+  "rows": [
+    {"status":"PASS","evidence":".github/workflows/w047-n1112-verification.yml:29,52,60-80","reason":"CANDIDATE_SHA and build commit are github.sha. One checked-out build and same preview server feed both all-answer runners and focus capture; failed child propagates via execFileSync and shell set -e. Artifact uploads the complete common evidence root, including sibling n12-focus."},
+    {"status":"PASS","evidence":"work/items/W-MATH-047-n1112-guided-review/capture_n11.mjs:67-70","reason":"After N11 browser close, exact UTF-8 active N12/MATERIALIZED_N12 equality invokes capture_n12 in inherited CI/APP_URL/browser env, replacing only EVIDENCE_DIR with n11-focus/../n12-focus. Both current byte hashes independently equal 8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c."},
+    {"status":"PASS","evidence":"work/items/W-MATH-047-n1112-guided-review/capture_n12.mjs:15,59-81,91-145","reason":"Five targets × pending/wrong/correct × four widths produce 60 frame records with real viewport and focus PNGs. Normal stage order answers all46; only five wrong answers belong to this focus helper, explicitly distinguished from all127 wrong in verify_app. No app DOM/style mutation or seeded progress."},
+    {"status":"PASS","evidence":"work/items/W-MATH-047-n1112-guided-review/capture_n12.mjs:122-145","reason":"Checks history14, completed-state reload, next-unit route with recorded href/URL, browser-back completion, accepted reset and post-reset reload/zero answers at390. Records sourceSHA inherited from CI; inactive metadata remains nullable, not reused as current CI source."},
+    {"status":"PASS","evidence":"work/items/W-MATH-047-n1112-guided-review/verify_current.mjs:11-20; .github/workflows/w047-n1112-verification.yml:69-72","reason":"Static contracts distinguish APPROVED and BASELINE; actual active P006 matches fixed artifact. Full-answer four-width verify_app remains separate and writes n11/REPORT and n12/REPORT."}
+  ],
+  "findings": [],
+  "limitations": ["CI is running; no run outcome, artifact digest, actual PNGs or new REPORT contents inspected.","Exact active/artifact equality is the entry condition, not an independent permanent hash pin: import must additionally require both contracts APPROVED and current candidate SHA.","Route assertion records the actual successor but does not independently hard-code N13; downstream proof/review should verify recorded route.","Header comment still describes the helper's original inactive usage; runtime sourceSHA uses CI env correctly."]
+}

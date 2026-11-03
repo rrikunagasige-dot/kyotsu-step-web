@@ -1,6 +1,14 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / N11修正版Gate①・G2正式PASS / 工程設定S1の実承認待ち / 未公開
+Status: VERIFYING / S1実承認・正式適用済み / N12 R04実表示審査中 / 未公開
+
+現在（S1適用後）：user3052d970「いいよ続けて」をS1 hash179e750…と新scopeの実承認として正式記録。元scope/元承認を変更せずRuntime.revise/userを使用。N11の不変target9bf4…/実CI targeteb79…を現CODEへ歴史的再結合し、R04/R05/R06/R07を再検証。R1の二行を再適用していない。原初見はStoreの原rawReportと一致し、今回を新初見とは称さない。N12 R01/R02/R03完了、R04 CODE完了・実表示のA/B審査待ち。active N12はまだBASELINEで、P006五変更は未適用。
+
+火柴図：generated/CURRENT_POSITION.md / FIRE_DIAGRAM.md は現台帳から再生成。次はR04_PROPOSAL@n12の実表示審査→既承認scopeでR05→既存generic adapterでR06→実sourceのCI/R07→画像確認/G2。公開工程G3は両unit検証後。今回のS1承認を公開/merge/最終受入へ拡張しない。
+
+AのN12限定再生成検査では固定MATERIALIZED/PATCHと完全一致、44KEEP/46契約/番号/revision/06・15のaligned保持を確認。Bは撮影helperの技術補助を担当し教材作者ではないことを開示。Mのみ共有Store/Git writer、A/B二人だけ。N12新renderは隔離candidateであり、本番実装・Gate①画像ではない。
+
+## S1適用前の履歴（下記の「未適用・承認待ち・G2正式PASS」は当時の状態）
 
 承認：P006 eb12180f、T1 49c00293、T2 68d67aad、G2-R1 8faa9b19「いいよ続けて」。R1 plan a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282。N11のP006六箇所を保持し、今回S3で商を答えS4完成式は正答後に表示。39回答/109誤答、保存ID/rev11/14stage/原図2枚/式番号16/alias不変。N12はP006承認済み・未適用のBASELINE rev4。R1承認をN12の新承認へ転用しない。
 

@@ -1,0 +1,80 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "verdict": "UNCHANGED_TARGET_AND_REGISTERED_ORIGINAL_CONFIRMED",
+  "reviewKind": "S1後の歴史的再結合に対する同一性照合。新しい実表示審査/新PASSではない。",
+  "firstPass": false,
+  "sourceFirst": false,
+  "authorSeparation": true,
+  "priorFlags": {
+    "firstPass": true,
+    "sourceFirst": true,
+    "authorSeparation": true,
+    "meaning": "旧登録済み初回報告の履歴値を保持。今回再確認を初見へ昇格しない。"
+  },
+  "targetHash": "eb79a9c26b7d86ddd016cb5dc06a239003307d2438264c781aaddf0d8aa4e1c9",
+  "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+  "runId": 41635935097,
+  "artifactId": 13231101167,
+  "artifactDigest": "sha256:0876cffba4984786b09cd3a4f2e12facdcaf4c448e1d93e436a12fc921a416da",
+  "sourceChecks": [
+    {
+      "path": "src/data/textbook/math/numbers/n11Authored.json",
+      "sha256": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+      "mirrorExactBytes": true
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n11Transformation.json",
+      "sha256": "906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9",
+      "mirrorExactBytes": true
+    },
+    {
+      "path": "tools/textbook/transformation/n11.mjs",
+      "sha256": "a1fe2913e66a6cdc0ef0bdf91956e09aaa63fe44f4ef92c893652b537b3c1132",
+      "mirrorExactBytes": true
+    }
+  ],
+  "rows": [
+    {
+      "id": "S1-N11-RB01",
+      "status": "CONFIRMED",
+      "reason": "SOURCE_FREEZE記載localMirrorCommit b85cd5…と現在authored/Transformation/adapterの全bytes一致。公開CI source2b778…はローカルGit objectとして直接比較できなかったため、sourceFreezeの明示mirror対応を使用。両commit名を同一視しない。"
+    },
+    {
+      "id": "S1-N11-RB02",
+      "status": "CONFIRMED",
+      "reason": "現在Transformationはevidence/R1_COMPILED.jsonとJSON完全一致。authored3465df…/overlay906c4f…/adaptera1fe…を保持。"
+    },
+    {
+      "id": "S1-N11-RB03",
+      "status": "CONFIRMED",
+      "reason": "target manifest実bytes eb79…、全112raw file SHA、原報告の既見16PNG SHAが全一致。source/run/artifactID/digestも原報告と一致。CI staticはN11 APPROVED/39/rev11、N12 BASELINE/46/rev4。"
+    },
+    {
+      "id": "S1-N11-RB04",
+      "status": "CONFIRMED",
+      "reason": "旧登録assignment d1eb…のevent3939 originalOutputRef e69df6…→firstPassArtifactRef1481f0…のrawReportが現Work JSONと構造完全一致、rawFirstObservations全7項も完全一致。現在再結合originalOutput18b2…→ff678…のrawReport/所見も同一。各Store artifact canonical hashを独立検算。",
+      "oldOriginalOutputRef": "e69df6b5692ca7339f31c2ecdb13316af4fbf60573138c748be20a8273343092",
+      "oldFirstPassArtifactRef": "1481f0cacb2b2105c2273e1ef36cf3c6ab8bed9e293b2fad67e27a3a94017f16",
+      "currentOriginalOutputRef": "18b2c056888ce7048bcb09b4a8f7436218db7f602f2957f3de974498050a7c49",
+      "currentFirstPassArtifactRef": "ff67831862a9869abff765ac3dce8e45f66efab30f44662603cf65fe95b05a6c",
+      "rawReportCanonicalHash": "9bb829bf9e20806daa39fc5af04ce67d84ac8e3e93eb413d62a210915959fb21"
+    }
+  ],
+  "provenanceNote": "手元/tmp/w047-r1-ci-first-a.jsonはfirstObservations4項で、Work原報告7項と不一致だったため一度未確認を通知した。固定Storeに旧登録時のrawReport/所見が完全一致して残ることを確認し、正式登録済み原報告保持は確認済みとした。/tmp版を正式原JSONと同一とは主張しない。",
+  "findings": [],
+  "limits": [
+    "読み取りのみ。新しい画像実見・CI起動・全回答再実行をしていない。",
+    "CI成功は保存済CAPTURE_PROOFと固定rawの照合。外部GitHubへ再照会/ZIP再ダウンロードはしていない。",
+    "旧firstPassの登録・同target保持を照合したもので、この報告自体のfirstPassはfalse。",
+    "旧pin/drift FAILを変更せず、全repo green/公開/本人受入を意味しない。",
+    "Store/Git/Work/製品編集なし。指定/tmp原報告のみ保存。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N11_CI_VISIBLE_TARGET_2b7780b9.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N11_CI_FIRST_VISIBLE_REVIEW.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/R1_SOURCE_FREEZE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/R1_COMPILED.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/REVIEW_n11_semantic.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/ci/41635935097/CAPTURE_PROOF.json"
+  ]
+}

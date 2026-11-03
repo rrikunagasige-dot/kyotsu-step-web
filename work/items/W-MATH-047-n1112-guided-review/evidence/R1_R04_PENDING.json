@@ -2,19 +2,19 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R04_PROPOSAL@n11",
-    "claimToken": "5c0e10122ec34588b100d10d86353844",
+    "claimToken": "5db5ce3a4b974a2c8cc3dee2ff500382",
     "receipts": [
-      "035da7fb8f7b3bb6278bddd64b550093177a198c14b090bf56d5db71bee34bf8",
-      "43d160ac1700de9efa4c6ee1cb65b034cc530f943dcda93b06f9c818c4a0e545",
-      "4db077de4ca614f90e94be0b0745f1b166e38b46cd2fd0678418e83a1ab060e3",
-      "f77685045d6352ce17715f3b8489af54afe41a7d323eea66debfe9879e5d4182",
-      "103a8c4a18b8c390194c99300b7b7d8edabd2eb7e378c29fd818e02b16660390",
-      "964e24452c850125b892e27301c5a12cbc7f006e7fafa64bcd7918433034ae0b",
-      "0700fe1eb22167b3125f157b7df4418c51fb2a9ee1703f7e37b3842f4ddcece2",
-      "1eb86229f32f916ee4c48b74828807cab5c9326ab964367b2b3d0282a30cefd3",
-      "08a7f1b1c9bf40a1583093eb191a520acb76f3662f2460ce571b4d2827d3f60b",
-      "38b28233bfdee0bc47a800ec9ccb098ba39045008cff22bbb0d4f6424d0f491c",
-      "9b74de1ef8180bd2b6aa1fee75de3827de63aa4bac456e9211e3308e4198ea76"
+      "7648debf5930233dfc353fafcf51fc43f3098b56c150ab1e97443bdc262f3bb3",
+      "a59db8de031cb62bd9dcd85432d6b0007172266fd87b9a1bd124fa574bd20e6e",
+      "00b28afa8e7e7baee1317ee76aa031a0f6bdf65cd1e4bc9716fc9565bde4f980",
+      "68c61e72084db9624ca8fe52ef60ac53477386bca6efef486f2a880e72785853",
+      "190676acc56b98fa294bff450a34081ee4f4c6bab065f0818578519cfbc7884a",
+      "902039ebf32c8e01090d67e368eedfde7e73c5913324a9b5feff46067e8740c5",
+      "48d8f3791a56d571b2d197a24356a8a61da5df3d874a36e8ad3cef8bfa73ea51",
+      "23b21bc8dea5913c525bd0eb3f870b27799d29868520c5446fea5bcd75e45d9f",
+      "e4c7d52f7b4a70d4ef59370c39cd67f3b198e8dc0e5afcc2cddacd51a6726213",
+      "a10713caf0ef3d4f29b99bd3148b2620c82de6a6c47bde565558300a6c566bdd",
+      "4d40da55a49595cfe383e6083cb21780dbbf375ea0d29d5a23f8a9707cd374ef"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -121,10 +121,10 @@
             }
           ]
         },
-        "task_id": "f9c1fbb72ce0d64b747d71e2c4c5d55b65df019fc6bfbac6e155b778478911f3",
-        "input_hash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+        "task_id": "ba00e52cea090cbce3c864c2f8144185390e98f53e63d0d4c77c25eaeac02a9e",
+        "input_hash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": null,
+        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -132,8 +132,8 @@
         },
         "proposal": {
           "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-          "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
-          "id": "W047/G2-R1"
+          "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+          "id": "W047/S1"
         },
         "scope": {
           "paths": [
@@ -160,6 +160,9 @@
             "public/assets/math/textbook/numbers/n12-f01.png",
             "public/assets/math/textbook/numbers/n12-f02.png",
             "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "prohibit": [
+            "G3_HOST"
           ]
         },
         "source_manifest": {
@@ -573,7 +576,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "a44d6f241a61cf024ef5e165379dc7652f1ae0d247ea941fb9f82f22ef1f5083",
+      "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [
@@ -712,10 +715,10 @@
           }
         ]
       },
-      "task_id": "f9c1fbb72ce0d64b747d71e2c4c5d55b65df019fc6bfbac6e155b778478911f3",
-      "input_hash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "task_id": "ba00e52cea090cbce3c864c2f8144185390e98f53e63d0d4c77c25eaeac02a9e",
+      "input_hash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": null,
+      "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
       "rules": {
         "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -723,8 +726,8 @@
       },
       "proposal": {
         "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-        "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
-        "id": "W047/G2-R1"
+        "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+        "id": "W047/S1"
       },
       "scope": {
         "paths": [
@@ -751,6 +754,9 @@
           "public/assets/math/textbook/numbers/n12-f01.png",
           "public/assets/math/textbook/numbers/n12-f02.png",
           "public/assets/math/textbook/numbers/n12-f03.png"
+        ],
+        "prohibit": [
+          "G3_HOST"
         ]
       },
       "source_manifest": {
@@ -1164,7 +1170,7 @@
       "未解決は未解決と記録",
       "承認を生成しない"
     ],
-    "requestHash": "a44d6f241a61cf024ef5e165379dc7652f1ae0d247ea941fb9f82f22ef1f5083",
+    "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
     "teamReview": {
       "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
       "requirements": [
@@ -1199,24 +1205,24 @@
   "result": {
     "verdict": "PASS",
     "evidence_refs": [
-      "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-      "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-      "d46790c4-5095-467b-a3ac-72c93dfca549",
-      "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-      "14993c35-60c9-4445-9c1b-8133895acaf5"
+      "69daa1e0-d3d4-4456-8443-de94da0631d4",
+      "cd55b5ed-a38f-47b8-9742-16d66b1aad03",
+      "cd15329e-1aa7-4d19-9830-98f3a65a8ead",
+      "a1ff65c3-b0e2-4ecc-acf7-2131d73a94a4",
+      "fcc134cc-3f9a-461b-b934-313890203323"
     ],
     "capability_receipts": [
-      "035da7fb8f7b3bb6278bddd64b550093177a198c14b090bf56d5db71bee34bf8",
-      "43d160ac1700de9efa4c6ee1cb65b034cc530f943dcda93b06f9c818c4a0e545",
-      "4db077de4ca614f90e94be0b0745f1b166e38b46cd2fd0678418e83a1ab060e3",
-      "f77685045d6352ce17715f3b8489af54afe41a7d323eea66debfe9879e5d4182",
-      "103a8c4a18b8c390194c99300b7b7d8edabd2eb7e378c29fd818e02b16660390",
-      "964e24452c850125b892e27301c5a12cbc7f006e7fafa64bcd7918433034ae0b",
-      "0700fe1eb22167b3125f157b7df4418c51fb2a9ee1703f7e37b3842f4ddcece2",
-      "1eb86229f32f916ee4c48b74828807cab5c9326ab964367b2b3d0282a30cefd3",
-      "08a7f1b1c9bf40a1583093eb191a520acb76f3662f2460ce571b4d2827d3f60b",
-      "38b28233bfdee0bc47a800ec9ccb098ba39045008cff22bbb0d4f6424d0f491c",
-      "9b74de1ef8180bd2b6aa1fee75de3827de63aa4bac456e9211e3308e4198ea76"
+      "7648debf5930233dfc353fafcf51fc43f3098b56c150ab1e97443bdc262f3bb3",
+      "a59db8de031cb62bd9dcd85432d6b0007172266fd87b9a1bd124fa574bd20e6e",
+      "00b28afa8e7e7baee1317ee76aa031a0f6bdf65cd1e4bc9716fc9565bde4f980",
+      "68c61e72084db9624ca8fe52ef60ac53477386bca6efef486f2a880e72785853",
+      "190676acc56b98fa294bff450a34081ee4f4c6bab065f0818578519cfbc7884a",
+      "902039ebf32c8e01090d67e368eedfde7e73c5913324a9b5feff46067e8740c5",
+      "48d8f3791a56d571b2d197a24356a8a61da5df3d874a36e8ad3cef8bfa73ea51",
+      "23b21bc8dea5913c525bd0eb3f870b27799d29868520c5446fea5bcd75e45d9f",
+      "e4c7d52f7b4a70d4ef59370c39cd67f3b198e8dc0e5afcc2cddacd51a6726213",
+      "a10713caf0ef3d4f29b99bd3148b2620c82de6a6c47bde565558300a6c566bdd",
+      "4d40da55a49595cfe383e6083cb21780dbbf375ea0d29d5a23f8a9707cd374ef"
     ],
     "case_dispositions": [
       {
@@ -1311,8 +1317,8 @@
       }
     ],
     "aiReview": {
-      "requestHash": "a44d6f241a61cf024ef5e165379dc7652f1ae0d247ea941fb9f82f22ef1f5083",
-      "inputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "requestHash": "f2da17588b5dc385d7de64b1b900864207e237d9b0d24b8d69506310f3fd14af",
+      "inputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "reviewer": "M integrating source-bound A/B diagnosis and exact approved relocation",
       "evidence": "Source AST, unchanged authored IR and two-row operation boundary inspected. No grading/save/schema change. Technical evidence is not user quality evaluation."
     },

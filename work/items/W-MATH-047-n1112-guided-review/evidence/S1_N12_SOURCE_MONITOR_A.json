@@ -1,0 +1,204 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 内容・理念/工程監視",
+  "verdict": "SOURCE_MONITORING_READY",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blind": false,
+  "exposure": "P006候補・過去design審査・S1工程案は既視。今回source再確認であり実表示の初見審査ではない。過去のfirstPass原報告を改変・昇格しない。",
+  "candidateIRHash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+  "currentN12AuthoredSHA256": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+  "baseline": {
+    "nodes": 49,
+    "interactions": 46,
+    "revision": 4,
+    "status": "今回読取時BASELINE。新版適用/実表示PASSの主張なし。"
+  },
+  "readOrder": [
+    "S1文書と既存TEAM_PROTOCOL/現在地/火柴図",
+    "位置付きN12_SOURCE_INDEX全41block（数式付きcompact再読）",
+    "現n12Authored全49node・本文/結果・15stages/図gates/採点契約",
+    "既承認候補IR全49nodeと五変更、既存compile-irとの差分",
+    "MASTER8/17/20再確認と採点契約独立比較"
+  ],
+  "monitoringRows": [
+    {
+      "targetId": "n12-01",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "learningAction": "-7<2xから正数除算、負の商とx左側の不等号を自分で構成",
+      "approvedBefore": "-7<2x の両辺を正の2で割り、xを左にした形で第一の条件を記録します。正の数で割るので、不等号の向きは変わりません。",
+      "checks": [
+        "未回答時に完成した-7/2<xやx>-7/2を直前式・本文・結果・履歴から先出ししない",
+        "除算規則を教えることと今回の商/完成範囲を与えることを区別",
+        "正解後の第一条件を第二条件で上書きせず共通部分判断へ保持"
+      ]
+    },
+    {
+      "targetId": "n12-q04-left-end",
+      "sourceRefs": [
+        "word-p-000520",
+        "word-p-000525",
+        "word-p-000526"
+      ],
+      "learningAction": "既に求めた二条件に左端を照らし、含有を不等号へ対応",
+      "approvedBefore": "左端-7/2が第一の条件を満たすかを調べ、左端側の記号を選びます。",
+      "checks": [
+        "左端が満たさない/含まないという今回の判定は正答後afterへ限定",
+        "第一/第二条件の再掲と一般の白丸黒丸説明は根拠として許容",
+        "先行q03 afterは一般の共通部分の方針に止め、この端点の真偽を断定しない"
+      ]
+    },
+    {
+      "targetId": "n12-04",
+      "sourceRefs": [
+        "word-p-000526",
+        "word-p-000527"
+      ],
+      "learningAction": "確定左端を再利用し、右端1/2の両条件評価と共通範囲の式化",
+      "approvedBefore": "左端側の記号は決まりました。右端1/2が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
+      "checks": [
+        "右端が両方を満たすという今回の結論と完成範囲は回答後",
+        "左端の既解決結果利用は新しい右端評価/全範囲構成につながるため許容",
+        "F01は別々の二条件の図を維持し、未解決共通部分を加筆しない",
+        "N12-D04は今回実装/実画像の現targetで解決確認する。過去VERIFIED_FIXEDだけで閉じない"
+      ]
+    },
+    {
+      "targetId": "n12-07",
+      "sourceRefs": [
+        "word-p-000533",
+        "word-p-000536",
+        "word-p-000537"
+      ],
+      "learningAction": "2と5/3を比較し、両条件を満たす上限を選ぶ",
+      "approvedBefore": "上限の2と5/3を比べ、両方を満たす範囲を選びます。x=2を除く必要は、元の式への代入で確かめました。",
+      "checks": [
+        "旧本文5/3<2なのでx≤5/3の数はx≤2も満たすという完成推論を復活させない",
+        "既解決q07-boundaryのx=2不適は引用可能だが今回の最終共通範囲は先出ししない",
+        "三連式は中央との二比較を保持し、両端だけの比較へ省略しない",
+        "F02の二上限は根拠。共通範囲の答えを追加表示しない"
+      ]
+    },
+    {
+      "targetId": "n12-q13-operation",
+      "sourceRefs": [
+        "word-p-000547",
+        "word-p-000548"
+      ],
+      "learningAction": "中央2650+50xの定数を消すため三辺から引く数を判断",
+      "approvedBefore": "中央の定数を消すために、三辺から同じ[slot]を引きます。",
+      "checks": [
+        "旧2650-[slot]=0の穴合わせへ戻さない",
+        "元の3200≤2650+50x<3300は根拠として保持し、三辺から2650を引いた完成操作は正解後",
+        "正答2650を同時に全結果/history/tooltipへ表示しない",
+        "後続で550/650、11/13をそれぞれ計算し、得た結果を11≤x<13へ戻す"
+      ]
+    }
+  ],
+  "preservationMonitoring": [
+    "変更五node以外の44nodeの条件/本文/導出/表示を保持。49node/46回答、全answer/choices、revision4、ID/保存移行契約を正式現bytesで照合する。今回IRの46interaction ID/expected/choice contentと現46itemsのanswer/choicesは独立に全件一致。",
+    "原問15件、図3点と提示順を維持。F01は第二条件後、F02は別々の解後、F03は元の金額検算完了後。caption/alt/履歴/前後式も漏洩監査に含める。",
+    "文章題の50円箱/単価180,130/合計20/3200以上3300未満を保持。20-x、整数かつ0≤x≤20を残し、実数範囲から11,12個へ戻した後3200円/3250円で別々に元条件を検算する。",
+    "係数/定数を別々に求め全不等式へ戻す行為や、個数へ解釈し直す行為を、同じ値が見えるだけでコピーと一律判断しない。未生成の当該答え自体の先出しを区別する。",
+    "N11 R1商slot/正解後完成式、39回答、図/番号/保存を保持。N09/N10と共有reader/CSSへ変更を広げない。N12成功をN11旧版証拠だけから主張しない。"
+  ],
+  "findings": [
+    {
+      "id": "S1-N12-A01",
+      "status": "STATIC_ROUTE_CONFIRMED_EXECUTION_PENDING",
+      "targetIds": [
+        "n12-06",
+        "n12-15"
+      ],
+      "reason": "materialize.mjsを直接確認。変更対象nodeの許可fields before/afterのみをコピーし、変更数5、他semantic nodesのdeepEqual、全items/stages/nodes/semanticDisplay/番号/全ID順一致をassertする。Mの指定したPATCH_N12/MATERIALIZED_N12の固定artifact経路は旧compiled全文コピーと異なり、n12-06/n12-15の既存配置を保持する設計。",
+      "requiredCheck": "生成後の固定MATERIALIZED_N12/実適用bytesと現二nodeの一致を確認。今回未実行。",
+      "notClaimed": "現製品での新退行または未承認新candidate欠陥の断定ではない。実装前の生成/保持境界の注意。"
+    }
+  ],
+  "workflowMonitoring": [
+    "TEAM_PROTOCOLに従いMのみ共有Store/Git書込、M+A/B二人で追加subagentなし。CODEは数学/保存/有限候補/対象束縛、AIは空の意味・原問対応・文脈・実表示を担当。",
+    "S1実承認user3052d970の受領と正式適用はMの通知として認識。読取時generated現在地/火柴図はまだ旧G3_HOST@n11/READYのsnapshotだったため、新scope適用の現台帳証拠と混同しない。Mの後続通知は次R04@n11、不変R1target再結合、R01–R03有効。",
+    "scope/入力変更で失効したR04等を不変targetの原初見報告と現CODEへ正しく再結合する。既視の再確認をfirstPass=trueへ昇格しない。N12新版actualrenderの初回所見は依頼後に別artifact targetで記録する。",
+    "最終確認1回/単元別二記録はS1補足条件どおり。公開許可や受入、quality labelをこのsource監視から生成しない。"
+  ],
+  "limitations": [
+    "実表示を今回は見ていない。pending/wrong/correct、四幅、保存/reload/reset/移行/前後単元の実操作PASSを主張しない。",
+    "candidate既視の反復監視。新たな正式R04/R07初回結果の代用ではない。",
+    "旧compiledの二表示差はMへ即時通知済み。意味/表示保持は実生成後に確認する。",
+    "読み取りと指定/tmp原報告以外に書き込んでいない。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/TEAM_PROTOCOL.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/docs/MASTER_APP_LESSONS.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/src/data/textbook/math/numbers/n12Authored.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/N11_N12_SEQUENCE_ADDENDUM.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/generated/CURRENT_POSITION.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/generated/FIRE_DIAGRAM.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/N12_CANDIDATE_IR.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N12_CANDIDATE_SCOPE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/n12-candidate-compile-ir.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/materialize.mjs"
+  ],
+  "inactivePreviewCaptureRequests": [
+    {
+      "target": "n12-01",
+      "position": "第1段階、一つ目の条件を解く。先行subtract-x/coef/constの3回答だけ正解後、最後の全式slot。",
+      "states": [
+        "pending",
+        "wrong（不等号逆向き又は負号誤り）",
+        "correct"
+      ],
+      "context": "-7<2x、正数除算説明、未回答slot/四選択肢/直前結果を同一通常viewportで。正解後は完成範囲と次の第二条件への接続。"
+    },
+    {
+      "target": "n12-q04-left-end",
+      "position": "第4段階、共通範囲。第3段階x=1の確認を終え、左端slotが最初に出る位置。",
+      "states": [
+        "pending",
+        "wrong（左端を含む≤）",
+        "correct"
+      ],
+      "context": "記録したx>-7/2とx≤1/2、左端を満たすか問う本文、slot/選択肢/直前結果。未回答で左端不充足の断定が見えないこと。"
+    },
+    {
+      "target": "n12-04",
+      "position": "同じ第4段階、left-end正解後に現れる共通範囲slot。",
+      "states": [
+        "pending",
+        "wrong（右端除外又は和集合）",
+        "correct"
+      ],
+      "context": "左端の確定結果、右端1/2を両条件で確かめる本文、全範囲slot/選択肢。正解後の端点理由と連立不等式定義までスクロールし、説明が答案前に出ていないか確認。"
+    },
+    {
+      "target": "n12-07",
+      "position": "第7段階、直前boundaryのx=2不適を正解した後、最終共通範囲slot。",
+      "states": [
+        "pending",
+        "wrong（x≤2）",
+        "correct"
+      ],
+      "context": "直前の元三連式への代入結果、二つの上限2と5/3、今回比較の本文/四選択肢。正解後は中央との二比較が必要という結論。F02前段との接続は別viewportでも撮影。"
+    },
+    {
+      "target": "n12-q13-operation",
+      "position": "第13段階の先頭、第12段階で3200≤2650+50x<3300を完成済み。",
+      "states": [
+        "pending",
+        "wrong（50又は3200）",
+        "correct"
+      ],
+      "context": "前段の金額不等式、中央定数を消す目的、三辺から同じ[slot]を引く文章/選択肢。正解後の3200-2650≤50x<3300-2650と次の左端550計算slotまで。未回答時に完成した引く数を別表示しないこと。"
+    }
+  ],
+  "captureConditions": [
+    "まずsourceを再確認し、新artifactの実PNGを作者まとめ/manifest解説より先に見る。今回state指定は既知planからの撮影依頼であり画像初見観察そのものではない。",
+    "390x通常viewportを本文/直前式/選択肢/after接続の初回観察中心にし、320/430/1440でも改行・長い選択肢・式番号・slot同一性を確認。CSS/layoutを改変せずfullPage長大写真だけに依存しない。",
+    "1枚で必要文脈が入らない場合は前後通常viewportを追加し、sticky headerが対象を隠さない位置で撮る。",
+    "resetで開始状態、reloadで各state保存、図3枚のgate、historyを別途実操作。これらは初見画像とREPORT等の後照合を区別。"
+  ]
+}

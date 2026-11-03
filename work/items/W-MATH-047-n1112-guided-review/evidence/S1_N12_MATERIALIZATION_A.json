@@ -1,0 +1,38 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "verdict": "PASS_REGENERATION_CHECK_ONLY",
+  "firstPass": false,
+  "sourceFirst": false,
+  "authorSeparation": true,
+  "method": "Existing operate compile-ir plus N12-only literal materialize before/after and alias merge, captured in memory; no Work/product/Store mutation",
+  "irHash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+  "currentBeforeSHA256": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+  "regeneratedAfterSHA256": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c",
+  "immutableMaterializedBytesEqual": true,
+  "immutablePatchEqual": true,
+  "keepCount": 44,
+  "changedIds": [
+    "n12-01",
+    "n12-q04-left-end",
+    "n12-04",
+    "n12-07",
+    "n12-q13-operation"
+  ],
+  "answers": 46,
+  "revision": 4,
+  "stableIdOrder": true,
+  "numbering": true,
+  "semanticDisplay": true,
+  "kept06and15": true,
+  "aliasMap": {
+    "w47-n12-04-endpoint-explanation": "n12-04-after",
+    "n12-q13-operation-interaction": "n12-q13-operation-interaction-0"
+  },
+  "findings": [],
+  "limits": [
+    "Not product application, UI review, CI execution, or learner-visible PASS.",
+    "Snapshot8d130e0f materializer output compared with actual current baseline bytes and fixed materialized/patch artifacts.",
+    "No new initial observations claimed; existing first-pass reports retained.",
+    "Only /tmp script/report written; no Work/product/Store/Git edits."
+  ]
+}

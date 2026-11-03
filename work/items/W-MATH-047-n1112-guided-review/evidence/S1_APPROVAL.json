@@ -1,0 +1,86 @@
+{
+  "proposalHash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+  "userEvent": "w047-s1-approval-3052d970",
+  "quote": "いいよ続けて",
+  "sourceRef": "conversation:3052d970-e077-4175-9ba0-70b48f41a08a",
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "work/items/W-MATH-047-n1112-guided-review/",
+      "tools/textbook/transformation/n11.mjs"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+      "src/components/textbook/construction-lesson-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "public/assets/math/textbook/numbers/n11-f01.png",
+      "public/assets/math/textbook/numbers/n11-f02.png",
+      "public/assets/math/textbook/numbers/n12-f01.png",
+      "public/assets/math/textbook/numbers/n12-f02.png",
+      "public/assets/math/textbook/numbers/n12-f03.png"
+    ],
+    "prohibit": [
+      "G3_HOST"
+    ]
+  },
+  "actualRecord": {
+    "approved_bundles": {
+      "n11-r1": "95c5f3bdf7122af7f75dbea645e37da3b1925a84378818abd2ef59176784c6e7",
+      "n12-p006": "a4d05f19fed8103be0c494a863f78c8d411415cc9fa88b6d8d2b3619b6e6e068"
+    },
+    "block": null,
+    "block_manifest": null,
+    "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+    "id": "w047-s1-approval-3052d970",
+    "intent": "approve_proposal",
+    "proposal_hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+    "quote": "いいよ続けて",
+    "release_unit": null,
+    "reply_to": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+    "scope": {
+      "paths": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "work/items/W-MATH-047-n1112-guided-review/",
+        "tools/textbook/transformation/n11.mjs"
+      ],
+      "preserve": [
+        "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+        "src/components/textbook/construction-lesson-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "public/assets/math/textbook/numbers/n11-f01.png",
+        "public/assets/math/textbook/numbers/n11-f02.png",
+        "public/assets/math/textbook/numbers/n12-f01.png",
+        "public/assets/math/textbook/numbers/n12-f02.png",
+        "public/assets/math/textbook/numbers/n12-f03.png"
+      ],
+      "prohibit": [
+        "G3_HOST"
+      ]
+    },
+    "source_ref": "conversation:3052d970-e077-4175-9ba0-70b48f41a08a",
+    "verification_level": "conversation_transcribed"
+  },
+  "beforePlanHash": "279e239d0324e164ee8eb9082f4e66841f97bcc70122ee1b35b4000515077f71",
+  "afterPlanHash": "375b957b1f7828e791316503922d723a4c56b808488013ad6d0957a081b834f0",
+  "applied": true
+}

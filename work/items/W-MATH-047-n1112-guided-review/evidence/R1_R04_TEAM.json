@@ -2,8 +2,8 @@
   {
     "logical": "A",
     "assignment": {
-      "assignmentId": "w047-r1-render-r04-A-b39c752cc7",
-      "roleEpoch": 9,
+      "assignmentId": "w047-r1-render-r04-A-97ba5a5cc4",
+      "roleEpoch": 10,
       "node": "R04_PROPOSAL@n11",
       "block": "n11",
       "facet": "design",
@@ -12,7 +12,7 @@
       ],
       "performerRef": "/root/w047_review_design",
       "role": "reviewer",
-      "inputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "inputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "artifactHashes": {
         "teaching": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a"
@@ -24,10 +24,10 @@
         "tokenBudget": null
       },
       "independent": true,
-      "targetManifestRef": "a958fd3b2717c1732e9f214fdc6bd2c041009fb1898b8ce2f5a36a5823e835ee"
+      "targetManifestRef": "ef3eac61d75d628b3c15fe0f7e303fdccaaf876aacc81ace3c13e2f38faf200c"
     },
     "packet": {
-      "baseNodeInputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "baseNodeInputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "sourceRefs": [
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n11Transformation.json",
@@ -53,48 +53,48 @@
         "authorRationaleVisibleAtFirstPass": false,
         "priorExposure": "Both know draft plan; first actual images of the newly compiled inactive candidate seen before manifest/author capture report. Not blind. Historical IR is not used as a layout target.",
         "historicalUnchangedRenderRebind": {
-          "originalRegistrationRef": "6533d37f4b3dec3bb6e77b84d2741150df8550054e6a01841ecc84dc5edef315",
+          "originalRegistrationRef": "566d266e400a616e85e5cbe48317639c21c82f1bbb04db5b6d24c802e3b35317",
           "unchangedTargetHash": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a",
           "newFirstPassClaimed": false,
           "originalHarnessRetained": true
         }
       },
-      "packetHash": "5e71699df4f085f75a4c7d1e8023c22702c71b33c8e9221cc92c7f3ed2ecf620"
+      "packetHash": "665b241702cd36f701abe44b63197cbd153e1de7f544fb1c1da5cde99d947868"
     },
     "registration": {
-      "registrationRef": "566d266e400a616e85e5cbe48317639c21c82f1bbb04db5b6d24c802e3b35317",
-      "assignmentHash": "5706f0b008d974f90e818f0d259b225c3dbe4ba66155a76f556c36205cce87c1",
-      "eventRef": "490d94aeffd79e171c05a170b79c57fca5f4b8b25bb1cbdf3473d54fcb2304d7"
+      "registrationRef": "65ed240c7bdeb6f80c3a03115f171aacfc5e9a338509502c8a1d12e62f57db8a",
+      "assignmentHash": "78f9ba7cdd6a05546c52ae2b90fbe3972746cf41af3b78fdc1442d2a45bfdb44",
+      "eventRef": "8ebfe1ca1ebc43d8b077de16152cf28d19ecebdb98fff465d3103b32a1050aff"
     },
     "kind": "source-review",
     "evidenceRefs": [
-      "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-      "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-      "d46790c4-5095-467b-a3ac-72c93dfca549",
-      "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-      "14993c35-60c9-4445-9c1b-8133895acaf5",
-      "bd094113-bee0-48e5-952d-a0c8cc3b8b05",
-      "43dbae5a-6f6e-4cde-89df-952681e90db3",
-      "8a085313-4107-4fb8-9743-b1694def6cfb",
-      "a06f8f8f-b268-4abe-b737-5556295f18da",
-      "4abf086d-d167-4772-8c61-ea7fd60bf766",
-      "65b0d678-f2a3-40a2-9be7-a2404660935a",
-      "2f853baf-db4f-4a07-9599-907decafdc0c",
-      "967ed895-8b78-4d7d-82e8-a6fffd03a78c",
-      "f313d246-17b0-4458-8007-7e1bd866cab0",
-      "6cb7354e-5acc-47d0-b0a2-2a8d2819897c",
-      "b9048b9f-e6cc-4195-b460-8885fdfe7058",
-      "32a3e1e6-ab63-41cc-a5cb-a36832ff145b",
-      "7b83a9e9-4279-4d79-b84f-bc1ba65b1b00",
-      "c744e511-88ee-4d04-82a3-2aadd5235855",
-      "2359bd4d-6cf1-4aa5-9344-116eac3a7872"
+      "69daa1e0-d3d4-4456-8443-de94da0631d4",
+      "cd55b5ed-a38f-47b8-9742-16d66b1aad03",
+      "cd15329e-1aa7-4d19-9830-98f3a65a8ead",
+      "a1ff65c3-b0e2-4ecc-acf7-2131d73a94a4",
+      "fcc134cc-3f9a-461b-b934-313890203323",
+      "4a4f19d7-054a-4a57-add7-423653782e26",
+      "e0d1c41c-b752-4b0a-a818-3263b2ed13df",
+      "6c03dbd9-ea31-4a50-bb79-d34689609483",
+      "7d6e4b50-fa04-4f3d-9a8b-908e0ec1e06c",
+      "3481afcf-1ec7-40a2-9099-1d38a4ffca04",
+      "50174dd8-f056-4168-9e74-c9866099b1b9",
+      "1563ef4a-7103-411e-af7d-9d6d1143981b",
+      "7fd84939-4874-471b-b3f5-de1c8dbba3fc",
+      "507e68e3-6377-4073-ab93-2ff87c2548be",
+      "b49357e0-0d90-426d-b0ed-1c9fe4f2b3a8",
+      "0cab58bd-75c1-4e50-b074-215dfa138602",
+      "9c6cac17-2612-484b-896e-65818dba35ac",
+      "58345ef9-2bf1-45db-8802-7e193ae50f0d",
+      "b55694b0-75c5-4121-86fb-57317fa068b1",
+      "08f3d87f-fb64-41d5-b904-b0576b625e6b"
     ]
   },
   {
     "logical": "B",
     "assignment": {
-      "assignmentId": "w047-r1-render-r04-B-b39c752cc7",
-      "roleEpoch": 9,
+      "assignmentId": "w047-r1-render-r04-B-97ba5a5cc4",
+      "roleEpoch": 10,
       "node": "R04_PROPOSAL@n11",
       "block": "n11",
       "facet": "render",
@@ -103,7 +103,7 @@
       ],
       "performerRef": "/root/w047_layout_sourcefirst",
       "role": "reviewer",
-      "inputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "inputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "artifactHashes": {
         "layout": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a"
@@ -115,10 +115,10 @@
         "tokenBudget": null
       },
       "independent": true,
-      "targetManifestRef": "8ec8cee2941bc58fa2d079cb4752601fbd0c5efdbe72a800e6d3230095f6f772"
+      "targetManifestRef": "9bf3b0c1fb650791d56cd20e92d314c63053a210a64c2e29becf1ae29e2056a9"
     },
     "packet": {
-      "baseNodeInputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "baseNodeInputHash": "97ba5a5cc4754fe4c8d22e5244c5ae64efbb7a60f2cff07227c29217988a31f6",
       "sourceRefs": [
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n11Transformation.json",
@@ -144,41 +144,41 @@
         "authorRationaleVisibleAtFirstPass": false,
         "priorExposure": "Both know draft plan; first actual images of the newly compiled inactive candidate seen before manifest/author capture report. Not blind. Historical IR is not used as a layout target.",
         "historicalUnchangedRenderRebind": {
-          "originalRegistrationRef": "030673c08055ae73f6e40e0f44243a5b6270e14f4890e3ffcea7e9b83674dd24",
+          "originalRegistrationRef": "6fd0f61b98292377f3e5e8edae5225389a1b1731244e89983a52357a7ca0161f",
           "unchangedTargetHash": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a",
           "newFirstPassClaimed": false,
           "originalHarnessRetained": true
         }
       },
-      "packetHash": "1677a1f79639d133b7e4ce1baace77617ba1f5107f84c97daa6a2115f8145c81"
+      "packetHash": "49fe23b07de230c7956bc2e3e378e3b0be49038faed0be9689fa24c9d4d2df15"
     },
     "registration": {
-      "registrationRef": "6fd0f61b98292377f3e5e8edae5225389a1b1731244e89983a52357a7ca0161f",
-      "assignmentHash": "532e68233c475f3f721efcc0bb22153b6ae0322d1180d9bea67b88a89cabdee5",
-      "eventRef": "fa3ba6720c8d8fe67a7c8b23c50c2509059a748dcd0e789db3837df4c4b9b778"
+      "registrationRef": "ed3f9287f6459b76a196dd7d1be1ee046fb3bc4258a6e111a50b2337d0d887ef",
+      "assignmentHash": "fc1c4d75b1a09d48a22d3ab0b0b0e43ea2b447f1f413fef03e0ce7370a98ba99",
+      "eventRef": "61e58ef2af1c3b958148bf6ede7ad3c988f52883046b7eb564533d3cb9180643"
     },
     "kind": "learner-visible-review",
     "evidenceRefs": [
-      "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
-      "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
-      "d46790c4-5095-467b-a3ac-72c93dfca549",
-      "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
-      "14993c35-60c9-4445-9c1b-8133895acaf5",
-      "bd094113-bee0-48e5-952d-a0c8cc3b8b05",
-      "43dbae5a-6f6e-4cde-89df-952681e90db3",
-      "8a085313-4107-4fb8-9743-b1694def6cfb",
-      "a06f8f8f-b268-4abe-b737-5556295f18da",
-      "4abf086d-d167-4772-8c61-ea7fd60bf766",
-      "65b0d678-f2a3-40a2-9be7-a2404660935a",
-      "2f853baf-db4f-4a07-9599-907decafdc0c",
-      "967ed895-8b78-4d7d-82e8-a6fffd03a78c",
-      "f313d246-17b0-4458-8007-7e1bd866cab0",
-      "6cb7354e-5acc-47d0-b0a2-2a8d2819897c",
-      "b9048b9f-e6cc-4195-b460-8885fdfe7058",
-      "32a3e1e6-ab63-41cc-a5cb-a36832ff145b",
-      "7b83a9e9-4279-4d79-b84f-bc1ba65b1b00",
-      "c744e511-88ee-4d04-82a3-2aadd5235855",
-      "2359bd4d-6cf1-4aa5-9344-116eac3a7872"
+      "69daa1e0-d3d4-4456-8443-de94da0631d4",
+      "cd55b5ed-a38f-47b8-9742-16d66b1aad03",
+      "cd15329e-1aa7-4d19-9830-98f3a65a8ead",
+      "a1ff65c3-b0e2-4ecc-acf7-2131d73a94a4",
+      "fcc134cc-3f9a-461b-b934-313890203323",
+      "4a4f19d7-054a-4a57-add7-423653782e26",
+      "e0d1c41c-b752-4b0a-a818-3263b2ed13df",
+      "6c03dbd9-ea31-4a50-bb79-d34689609483",
+      "7d6e4b50-fa04-4f3d-9a8b-908e0ec1e06c",
+      "3481afcf-1ec7-40a2-9099-1d38a4ffca04",
+      "50174dd8-f056-4168-9e74-c9866099b1b9",
+      "1563ef4a-7103-411e-af7d-9d6d1143981b",
+      "7fd84939-4874-471b-b3f5-de1c8dbba3fc",
+      "507e68e3-6377-4073-ab93-2ff87c2548be",
+      "b49357e0-0d90-426d-b0ed-1c9fe4f2b3a8",
+      "0cab58bd-75c1-4e50-b074-215dfa138602",
+      "9c6cac17-2612-484b-896e-65818dba35ac",
+      "58345ef9-2bf1-45db-8802-7e193ae50f0d",
+      "b55694b0-75c5-4121-86fb-57317fa068b1",
+      "08f3d87f-fb64-41d5-b904-b0576b625e6b"
     ]
   }
 ]

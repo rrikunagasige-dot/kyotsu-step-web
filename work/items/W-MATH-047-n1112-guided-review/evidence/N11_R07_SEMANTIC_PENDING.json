@@ -2,10 +2,10 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R07_SEMANTIC@n11",
-    "claimToken": "bac30618a9fb4125921e7bdc3aa612b4",
+    "claimToken": "8680d1fa01ca49daa5fc8ac1a6b30de3",
     "receipts": [
-      "3705f1366bca7b2d59d8aaf2b2388d05ec4136fe52537b15142af66d09b0488c",
-      "01e1f5211b1a1deb39fd1db31114a609be61654c0b3d1ebc7ce374daec3f1a98"
+      "57de2552cebc9b7b1b41bd84025fd02a98553a85335ead78b60404ea8aab171a",
+      "8d7776e0ee6b775b010dced75ef8f9ae802d7d92e4de69ec36d4be5d9eb8bfe9"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -84,8 +84,8 @@
             }
           ]
         },
-        "task_id": "9b86575742514e3055a4966f5e19392e9b0de390910b128e57f7829ddd9d247a",
-        "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+        "task_id": "ae2531e35513761805c9aea2dd5b36368ef14f947d8bfd0518e50003ea2b03cc",
+        "input_hash": "2dea5ab13ef80cc3b5911484bdfbec3fa0015e4c33f5e36813943449c872673c",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
         "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
         "rules": {
@@ -95,8 +95,8 @@
         },
         "proposal": {
           "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-          "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
-          "id": "W047/G2-R1"
+          "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+          "id": "W047/S1"
         },
         "scope": {
           "paths": [
@@ -123,6 +123,9 @@
             "public/assets/math/textbook/numbers/n12-f01.png",
             "public/assets/math/textbook/numbers/n12-f02.png",
             "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "prohibit": [
+            "G3_HOST"
           ]
         },
         "source_manifest": {
@@ -138,8 +141,8 @@
         "previous_results": {
           "R07_VERIFY@n11": {
             "actor": "capability-runner",
-            "artifact": "686019c968804706782501877ce569c50086718b3451eb685e234e0c231d54d4",
-            "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+            "artifact": "fb380c7b938b17d8feb3d8137d799e230a83eea61c2b4ae9d33de9b10678ace5",
+            "input_hash": "bd4d2627ab3226482b44176a904b13d62ef2623676aacd573683830492b3b6dc",
             "node": "R07_VERIFY@n11",
             "verdict": "PASS"
           }
@@ -174,15 +177,15 @@
         "R07_VERIFY@n11": {
           "aiReview": {
             "evidence": "Actual successful CI run/source SHA/archive digest and all reports checked. N11 approved 39 interactions at four widths; protected hashes unchanged. N12 baseline is not presented as implemented.",
-            "inputHash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
-            "requestHash": "8b1cac80841c8c084a02207f3c2719eb5153ece4507ecb85066b62898181f567",
+            "inputHash": "bd4d2627ab3226482b44176a904b13d62ef2623676aacd573683830492b3b6dc",
+            "requestHash": "982d87665253b8686d593520d88b83791e214a7c0f3fe00b85e95cfcd9c5d09e",
             "reviewer": "M integrates original nonauthor math/source/image checks"
           },
           "capability_receipts": [
-            "10cee092758ba2449cbce469d77b1d28547dd52ca14ebd5c0a7997651de9f5b9",
-            "b51eb729197d6480bcf1714199c78c684533833af64a2d3d472120426d33cd3e",
-            "afeaa24c211dfd0a174f521ae7b1f3795b37c2b347072de60345c4d2f0d2d8f4",
-            "7c0222caeae8371a3d096c5c611042b345a446f01d36975618a4ecfd00a7b518"
+            "153b1961a7aa3aa06f20777e8fed254b27c9b244eba02aa8520166b3ae972bc9",
+            "f7afd1055242b6f183f7040daed065dbb2e20929cd1718f4fcf0473e7e2eba4e",
+            "af769a6d17e4fc7df23317009c87a4f8b061c4527082c169792b96b2138de75b",
+            "c7d1e6c5478c094fdd24a0323df6827b5fd30914bd8b816e55a9c6390609a605"
           ],
           "evidence_refs": [
             "a98b6717-8090-46e9-b627-810a0cfd33eb",
@@ -222,7 +225,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "76b1829e4974813e08f2369fdb5e6b51491f9c14cd68af074eeae1f93228f2ee",
+      "requestHash": "fd107bf8b6fdc6defd0bf0eea09b71852e896fd20dc2b389a30585cc643fd41e",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [
@@ -324,8 +327,8 @@
           }
         ]
       },
-      "task_id": "9b86575742514e3055a4966f5e19392e9b0de390910b128e57f7829ddd9d247a",
-      "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+      "task_id": "ae2531e35513761805c9aea2dd5b36368ef14f947d8bfd0518e50003ea2b03cc",
+      "input_hash": "2dea5ab13ef80cc3b5911484bdfbec3fa0015e4c33f5e36813943449c872673c",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
       "rules": {
@@ -335,8 +338,8 @@
       },
       "proposal": {
         "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-        "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
-        "id": "W047/G2-R1"
+        "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+        "id": "W047/S1"
       },
       "scope": {
         "paths": [
@@ -363,6 +366,9 @@
           "public/assets/math/textbook/numbers/n12-f01.png",
           "public/assets/math/textbook/numbers/n12-f02.png",
           "public/assets/math/textbook/numbers/n12-f03.png"
+        ],
+        "prohibit": [
+          "G3_HOST"
         ]
       },
       "source_manifest": {
@@ -378,8 +384,8 @@
       "previous_results": {
         "R07_VERIFY@n11": {
           "actor": "capability-runner",
-          "artifact": "686019c968804706782501877ce569c50086718b3451eb685e234e0c231d54d4",
-          "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+          "artifact": "fb380c7b938b17d8feb3d8137d799e230a83eea61c2b4ae9d33de9b10678ace5",
+          "input_hash": "bd4d2627ab3226482b44176a904b13d62ef2623676aacd573683830492b3b6dc",
           "node": "R07_VERIFY@n11",
           "verdict": "PASS"
         }
@@ -414,15 +420,15 @@
       "R07_VERIFY@n11": {
         "aiReview": {
           "evidence": "Actual successful CI run/source SHA/archive digest and all reports checked. N11 approved 39 interactions at four widths; protected hashes unchanged. N12 baseline is not presented as implemented.",
-          "inputHash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
-          "requestHash": "8b1cac80841c8c084a02207f3c2719eb5153ece4507ecb85066b62898181f567",
+          "inputHash": "bd4d2627ab3226482b44176a904b13d62ef2623676aacd573683830492b3b6dc",
+          "requestHash": "982d87665253b8686d593520d88b83791e214a7c0f3fe00b85e95cfcd9c5d09e",
           "reviewer": "M integrates original nonauthor math/source/image checks"
         },
         "capability_receipts": [
-          "10cee092758ba2449cbce469d77b1d28547dd52ca14ebd5c0a7997651de9f5b9",
-          "b51eb729197d6480bcf1714199c78c684533833af64a2d3d472120426d33cd3e",
-          "afeaa24c211dfd0a174f521ae7b1f3795b37c2b347072de60345c4d2f0d2d8f4",
-          "7c0222caeae8371a3d096c5c611042b345a446f01d36975618a4ecfd00a7b518"
+          "153b1961a7aa3aa06f20777e8fed254b27c9b244eba02aa8520166b3ae972bc9",
+          "f7afd1055242b6f183f7040daed065dbb2e20929cd1718f4fcf0473e7e2eba4e",
+          "af769a6d17e4fc7df23317009c87a4f8b061c4527082c169792b96b2138de75b",
+          "c7d1e6c5478c094fdd24a0323df6827b5fd30914bd8b816e55a9c6390609a605"
         ],
         "evidence_refs": [
           "a98b6717-8090-46e9-b627-810a0cfd33eb",
@@ -462,7 +468,7 @@
       "未解決は未解決と記録",
       "承認を生成しない"
     ],
-    "requestHash": "76b1829e4974813e08f2369fdb5e6b51491f9c14cd68af074eeae1f93228f2ee",
+    "requestHash": "fd107bf8b6fdc6defd0bf0eea09b71852e896fd20dc2b389a30585cc643fd41e",
     "teamReview": {
       "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
       "requirements": [
@@ -511,7 +517,6 @@
     "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
     "a9c92900-fc34-4f64-948f-74c6a22e2287",
     "378f7c4e-927d-44a4-bff5-ba2200994912",
-    "6f7d3007-6c95-4e9e-9a45-2bb463732990",
-    "d86531ca-b752-4a8b-a485-6e10bf62d0e4"
+    "8cfe1cf9-bfc7-4684-9d00-48cc43cf3c97"
   ]
 }

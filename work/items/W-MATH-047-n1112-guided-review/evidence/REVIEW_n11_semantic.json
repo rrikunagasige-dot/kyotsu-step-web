@@ -1,7 +1,7 @@
 {
   "assignment": {
-    "assignmentId": "w047-n11-ci-meaning-c77442d0f035",
-    "roleEpoch": 5,
+    "assignmentId": "w047-n11-ci-meaning-2dea5ab13ef8-s1-historical-rebind",
+    "roleEpoch": 6,
     "node": "R07_SEMANTIC@n11",
     "block": "n11",
     "facet": "render",
@@ -10,7 +10,7 @@
     ],
     "performerRef": "/root/w047_review_design",
     "role": "reviewer",
-    "inputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+    "inputHash": "2dea5ab13ef80cc3b5911484bdfbec3fa0015e4c33f5e36813943449c872673c",
     "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
     "artifactHashes": {
       "implemented-visible": "eb79a9c26b7d86ddd016cb5dc06a239003307d2438264c781aaddf0d8aa4e1c9"
@@ -22,10 +22,10 @@
       "tokenBudget": null
     },
     "independent": true,
-    "targetManifestRef": "e932594d22e504c2d360ea636661e9f5e2b5c58da75d942ceb69617b28e4d1b9"
+    "targetManifestRef": "7ff8f6d5174b8cc3ea3fb02eb04e67baa294bc067d6ac341ccb45bc31c798773"
   },
   "packet": {
-    "baseNodeInputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+    "baseNodeInputHash": "2dea5ab13ef80cc3b5911484bdfbec3fa0015e4c33f5e36813943449c872673c",
     "sourceRefs": [
       "src/data/textbook/math/numbers/n11Authored.json",
       "src/data/textbook/math/numbers/n11Transformation.json",
@@ -48,17 +48,27 @@
     ],
     "contextExposure": {
       "forkMode": "filtered",
-      "authorRationaleVisibleAtFirstPass": false
+      "authorRationaleVisibleAtFirstPass": false,
+      "historicalUnchangedTargetRebind": {
+        "originalRegistration": {
+          "registrationRef": "5059523de113de24f50fd1bcd10e0d469dee6142c12b83da6f5d33372942eb05",
+          "assignmentHash": "d1ebf93e2fee02189196ea8d3d30e514557bf105f5bc723d5b952499824be744",
+          "eventRef": "65b12f43105d559842493b77b57b44e3e0d39b89b80c147f7acf175558598f35"
+        },
+        "newFirstPassClaimed": false,
+        "originalHarnessRetained": true,
+        "sameActualCIArtifact": true
+      }
     },
-    "packetHash": "0b4e7f62beb96215239e28664265d4785ba06242f0c1c39066ebfdf54156ff43"
+    "packetHash": "7611535bf33af08e3a7389f9d0bfff6de35922043e973874adf9e9b4a12060fa"
   },
   "target": {
     "artifactHashes": {
       "implemented-visible": "eb79a9c26b7d86ddd016cb5dc06a239003307d2438264c781aaddf0d8aa4e1c9"
     },
     "artifactRefs": [
-      "3705f1366bca7b2d59d8aaf2b2388d05ec4136fe52537b15142af66d09b0488c",
-      "01e1f5211b1a1deb39fd1db31114a609be61654c0b3d1ebc7ce374daec3f1a98"
+      "57de2552cebc9b7b1b41bd84025fd02a98553a85335ead78b60404ea8aab171a",
+      "8d7776e0ee6b775b010dced75ef8f9ae802d7d92e4de69ec36d4be5d9eb8bfe9"
     ],
     "block": "n11",
     "blockContext": {
@@ -90,10 +100,10 @@
       "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
       "a9c92900-fc34-4f64-948f-74c6a22e2287",
       "378f7c4e-927d-44a4-bff5-ba2200994912",
-      "6f7d3007-6c95-4e9e-9a45-2bb463732990"
+      "8cfe1cf9-bfc7-4684-9d00-48cc43cf3c97"
     ],
     "facet": "render",
-    "inputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+    "inputHash": "2dea5ab13ef80cc3b5911484bdfbec3fa0015e4c33f5e36813943449c872673c",
     "node": "R07_SEMANTIC@n11",
     "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
     "schemaVersion": "team-target/1",
@@ -128,14 +138,9 @@
     "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
     "a9c92900-fc34-4f64-948f-74c6a22e2287",
     "378f7c4e-927d-44a4-bff5-ba2200994912",
-    "6f7d3007-6c95-4e9e-9a45-2bb463732990"
+    "8cfe1cf9-bfc7-4684-9d00-48cc43cf3c97"
   ],
   "limits": "Original source-first/first-pass observations retained. Reviewer later read proposal/workflow. CI confirmation is not called a new blinded first pass.",
-  "registration": {
-    "registrationRef": "5059523de113de24f50fd1bcd10e0d469dee6142c12b83da6f5d33372942eb05",
-    "assignmentHash": "d1ebf93e2fee02189196ea8d3d30e514557bf105f5bc723d5b952499824be744",
-    "eventRef": "65b12f43105d559842493b77b57b44e3e0d39b89b80c147f7acf175558598f35"
-  },
   "harness": {
     "agentRef": "/root/w047_review_design",
     "taskRef": "/root/w047_review_design",
@@ -144,8 +149,13 @@
     "toolResultRef": "62817ed41552807b1540b4cbada262d9ebada7dbfad88542f5b16d34c37dfb03",
     "attestationMethod": "transcribed-tool-result"
   },
+  "registration": {
+    "registrationRef": "fc463d6add17b408162e561e0d6eacf19ee7a97d75db9b41a64baf21652aa2b5",
+    "assignmentHash": "b0c28e7d5e03b6547075718e452057504f6e5de7d3bcabb6900222b344ed6380",
+    "eventRef": "d2034cdcc8904d4ed81a996c162046efba7b04b988d0affa4221077254cb7902"
+  },
   "output": {
-    "outputRef": "55339d75702487ef5651503e8b219bb26ec43939343c15447bbc845c1190fa26",
-    "eventRef": "dc57cf06914df87a0710b83590e94ba6cd66aa8ed75d953c5bdc043869c6fdf5"
+    "outputRef": "c9f5758f5917337a3afa48c3dc6ea06ccc68014d1d7ccce68cf513703d2c7ee8",
+    "eventRef": "336f16c3d318f5acba5571fda2fd5edc848036de809b7aa353ae4417dec093bf"
   }
 }

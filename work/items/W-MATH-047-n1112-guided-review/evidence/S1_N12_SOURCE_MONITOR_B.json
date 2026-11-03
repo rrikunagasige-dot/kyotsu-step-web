@@ -1,0 +1,76 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "scope": "S1承認後N12 source-first実render R04準備計画",
+  "approval": "user3052d970 / S1 proposal179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+  "status": "READ_ONLY_PLAN_READY",
+  "currentObservation": {
+    "diagram": "読取時generated/CURRENT_POSITIONはまだ旧HEADでG3_HOST@n11が次、N12 R01〜R04 INVALIDATED。MがS1正式改訂/実承認記録/再生成後にN12経路へ戻し、旧図を適用済みと称さない。",
+    "roles": "TEAM_PROTOCOLとagent_teamはM唯一Store/Git writer、A design/B render、同時subagent2・孫禁止。Bは今回調査のみでrender作者ではない。",
+    "candidate": "active n12はPATCH_N12 beforeSHA bd7e994…と一致。after bytesはMATERIALIZED_N12と完全一致。5nodeのみ変更、49node/46items/15stage/revision4とmeta/stages/番号/semanticDisplay/itemsを維持。"
+  },
+  "targetRequired": {
+    "nativeOriginalSource": "6b439d0d31fcd46708c256ed23a391009ab73164およびW036/evidence/N12_SOURCE_INDEX.jsonの41block",
+    "approvedContentIR": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+    "candidateProduct": "src/data/textbook/math/numbers/n12Authored.json afterSHA256 8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c",
+    "workingBase": "現N11 P006/R1と保護pathを含む正確local HEAD/remote mirrorを別々に記録し、隔離candidateへN12 one-path overrideのみ。原資料SHAと候補build baseを混同しない。",
+    "renderManifest": "INACTIVE_LOCAL_CANDIDATE_RENDER、base local/remote、one override hash、実Vite build/Chromium URL/viewport、layoutModified=false、notPublished/notGate1、全PNG/raw report hashを固定。R04 targetはIRだけでなくこの実render artifactへ束縛。"
+  },
+  "executionPlan": [
+    {
+      "step": 1,
+      "owner": "M",
+      "action": "S1実承認を新scopeへ記録しRuntime正式改訂/入力再検証/火柴図再生成。N12 R01/R02/R03を原資料/現source/既承認IRと現在入力へ結ぶ。旧PASSを文字列差替えしない。"
+    },
+    {
+      "step": 2,
+      "owner": "M/CODE",
+      "action": "既存PATCH_N12/MATERIALIZEDをbefore/after SHAとIR限定compile差分へ照合。現在materialize.mjsは旧snapshot8d130e0fを固定しn11/n12両方を再出力、旧W038完全同一をassertするため、現N11R1上で無条件再実行してN11生成物を巻き戻さない。N12分だけ既存compileIR＋限定before/after合成を検証するか、凍結旧基準隔離で再生成して同じN12 bytesを照合する。"
+    },
+    {
+      "step": 3,
+      "owner": "M/CODE",
+      "action": "隔離worktreeへ承認N12 Authored一pathだけoverride、現N11R1等不変をhash照合。Vite実buildとPlaywright Chromiumで新candidateを読み、DOM/style改造せず正常viewport撮影。実製品/Storeはまだ未適用。"
+    },
+    {
+      "step": 4,
+      "owner": "M/CODE",
+      "action": "CODES=n12 WIDTHS=320,390,430,1440 APP_URL=<isolated preview> EVIDENCE_DIR=<Work inactive evidence> node W038/verify_app.mjsをそのまま利用し46正答/127誤答・全15stage/3図gate・履歴/reload/resize・旧rev1〜3移行を確認。共有W038スクリプトを改変しない。"
+    },
+    {
+      "step": 5,
+      "owner": "M/CODE",
+      "action": "既存Work capture_n11の方式をN12専用Work captureへ適応し、変更5nodeの初期choice-open/誤答hint/正解後と前後文脈を撮る。代表は01、q04-left-end→04（既答左端と未答右端）、07（元三連x=2試験の後の上限判断）、q13-operation（1paragraph slot→三辺2650式）。q13は四幅で番号/折返しと後続lower/upper未回答を確認。"
+    },
+    {
+      "step": 6,
+      "owner": "M/CODE",
+      "action": "KEEPの06/15独立二行、整数条件09→実数範囲13→整数14→検算15と完成図gate、reset dialog/reload先頭、N11↔N12/N12→次単元を補助撮影。誤答前の図/答え先出し、対話/alt/captionにも注意する。"
+    },
+    {
+      "step": 7,
+      "owner": "B reviewer",
+      "action": "新候補実PNGを作者報告/FOCUSED_CAPTUREより先に見る。原資料先読と今回新render対象への初回所見を固定し、既視IR/旧baseline/非盲検は開示。後から同じPNG hash manifestへ正式targetHashを補い、A designとB layoutの原出力をMがteam-capture/bind/registerへ結ぶ。"
+    },
+    {
+      "step": 8,
+      "owner": "M/CODE",
+      "action": "R04/R05正式受理後に既存generic apply_patchでN12一path適用（全再帰ID順は候補で維持済み）。実装後はAPPROVED N11＋APPROVED N12のCIで各REPORT/source/PNGを新sourceへ固定し、R07非作者意味確認とN12G2へ。N11R1回帰と保護16pathも再照合。"
+    }
+  ],
+  "captureRouteNotes": [
+    "既存専用CIはverify_appをN11/N12双方で呼ぶので全操作証拠は既に対応可能。verify_currentもN12をAPPROVEDとして認識できる。",
+    "現CIのfocus呼出はcapture_n11.mjsだけ。N12 focusを同一CIartifactへ入れるにはWork内capture接続の具体実装が必要。既存呼出からWork内N12 helperを実行するなど、承認scope内のWork pathで接続し、.github変更が必要ならscope外を黙って変更しない。",
+    "既存capture_n11はN11固定unit/targets/reset/nextN12なのでCODES=n12を渡すだけでN12 focusへ切替わるものではない。汎用harnessの全操作と専用focusの役割を混同しない。"
+  ],
+  "knownStaticRequirements": [
+    "q13 paragraph blockは旧interaction-0へaliasを保持。正解時prefix置換と式番号32の一回表示を実見する。",
+    "n12-04新端点理由は旧n12-04-after内へ統合し、定義の強調とblock ID列を保持。",
+    "06/15は既存W036 postprocessing後aligned結果とsemanticDisplayを丸ごとKEEPし、compile出力の全面置換で独立二行を壊さない。",
+    "全46回答/採点/保存revision4/原3図/番号map不変、N11R1 Transform/graph/item/保存も保護する。"
+  ],
+  "limits": [
+    "調査・具体計画のみ。S1/Store/製品/画像作成/CIの適用や書込は実行していない。",
+    "新candidate画像の初見レビューは別依頼待ち。今の報告をその意味審査PASSへ流用しない。",
+    "指定報告以外のStore/Git/製品書込、追加subagent起動なし。"
+  ]
+}

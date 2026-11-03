@@ -7,9 +7,9 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R06_PATCH@n11",
-    "claimToken": "63d0c56b3c6a445d92b31949846c61c1",
+    "claimToken": "621912dfbb944da8a12e77d2d8c0bd23",
     "receipts": [
-      "c438f06249159ac19b361a4805b42e0bcc45b5cafe12e2af15a25c3b971eed2f"
+      "d6ea1117e1a48c32662e64a5b4b7f950cbf61a1ec56960bacaa9e504db354b94"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -68,10 +68,10 @@
           ],
           "required_ai_receipts": []
         },
-        "task_id": "8b0b66f44c9fe9d593958b751cb2974bd0ac01fcd2187aea2db3fbe1c55de5f8",
-        "input_hash": "aaee37ad7600b4c008c540913ae45cb4c9471411daf0302cadd7b6b004c370a1",
+        "task_id": "31eeea14a825562ff9aa1c89e7ecb087739cf513f53e2675b3da795d97a338ea",
+        "input_hash": "586402a3f4720a979f46dbde39ebf0c27e643e5c6d8b6b2928bc2e1d6beb0519",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": null,
+        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -79,8 +79,8 @@
         },
         "proposal": {
           "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-          "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
-          "id": "W047/G2-R1"
+          "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+          "id": "W047/S1"
         },
         "scope": {
           "paths": [
@@ -107,6 +107,9 @@
             "public/assets/math/textbook/numbers/n12-f01.png",
             "public/assets/math/textbook/numbers/n12-f02.png",
             "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "prohibit": [
+            "G3_HOST"
           ]
         },
         "source_manifest": {
@@ -122,8 +125,8 @@
         "previous_results": {
           "R05_APPROVAL@n11": {
             "actor": "user-record/conversation_transcribed",
-            "artifact": "261cf6ae913a394dcdc4a7a09accfbb7da1ea9bf42198a7c8b87058beac35ed9",
-            "input_hash": "fcd1555146c37c21103099907b80701201e786d374f1d59653ccbb17e128cd9d",
+            "artifact": "07a5fbc293d8284824a8d2d8aed2a91acc0ca6cf5d3b3eaac418a11a22cc5950",
+            "input_hash": "7204befd80d4b3af28d0ebf1c9c2eb9ca0d12692f45f711622f693b7c4284a70",
             "node": "R05_APPROVAL@n11",
             "verdict": "PASS"
           }
@@ -157,7 +160,7 @@
       "dependencies": {
         "R05_APPROVAL@n11": {
           "evidence_refs": [],
-          "user_event": "w047-r1-proposal-approval-8faa9b19",
+          "user_event": "w047-s1-approval-3052d970",
           "verdict": "PASS"
         }
       },
@@ -167,7 +170,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "6cc3d02320a4bf1fc5082c23b33d0ce4099b689cacaaed0f6f68333ce0861a7c",
+      "requestHash": "0517878e37854d4fd0ab126c6f34fb4d2b908d6b7f2bf9a4a7c42304db3e9a02",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [],

@@ -1,0 +1,59 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念・適用dataの補足監視",
+  "verdict": "PASS",
+  "scope": "R06適用dataと承認表示planの静的理念整合。実製品漏洩解決の最終実表示PASSではない。",
+  "firstPass": false,
+  "authorSeparation": true,
+  "observations": [
+    "現active n11Transformation.jsonを直接読み、evidence/R1_COMPILED.jsonとJSON全文一致を確認。planHashは承認a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282。compileやB担当の技術検査は再実行していない。",
+    "n11Authored.jsonの実bytes SHA256は既承認3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10feのまま。47node/39回答/revision11、原図参照とgateはintro→F01、n11-10→F02を維持。"
+  ],
+  "findings": [
+    {
+      "id": "R1-A-APPLIED01",
+      "status": "確認済み",
+      "targetIds": [
+        "n11-tg-divide",
+        "n11-06"
+      ],
+      "reason": "S3 divideはn11-06に対応し、右辺に既存slot n11-tg-final-quotientが一つ。beforeは決めた数で両辺を割り、右辺の商を分数化する指示。masked右辺に完成7/3はなく、商を本人が作る学習行為を残す。"
+    },
+    {
+      "id": "R1-A-APPLIED02",
+      "status": "確認済み",
+      "targetIds": [
+        "n11-tg-final"
+      ],
+      "reason": "S4 finalはinteractionなし/slotなしで、visibleAfterにn11-06の正答を必要とする。商が求まってから左辺を整理し、x<7/3を実数全体の範囲として読み、元式の境界確認へ進む説明を保持。正答前の単なる結果転記から、商生成と回答後の意味確認へ役割が分離した。"
+    },
+    {
+      "id": "R1-A-APPLIED03",
+      "status": "確認済み",
+      "targetIds": [
+        "39回答",
+        "原資料・原図",
+        "著者IR"
+      ],
+      "reason": "author bytesが完全据置なので、採点items/回答ID・正答・選択肢・stage・保存revision・著者IR・図参照/gateに今回の変更はない。原資料q06の変形結果からq07の境界代入判断への接続に適合。原画像assetsの独立再hashは今回Aでは実行していない。"
+    },
+    {
+      "id": "G2-L01",
+      "status": "OPEN",
+      "reason": "適用dataは承認修正に整合するが、固定sourceの実CI画像はまだ未確認。未回答/誤答/再試行/正答/履歴の全表示経路で完成式が漏れないことは後続の実表示審査で確認する。静的適用確認だけで現製品の最終解決登録をしない。"
+    }
+  ],
+  "limits": [
+    "同じ短いCODEを三重実行しないため、B担当のcompiler/数学/全契約/原図asset/保護manifest等の検査は重複していない。Aはdataの直接読取と理念監視を担当。",
+    "原初回観察、既視plan/候補/工程文脈は既知であり、新しい盲検ではない。",
+    "全39回答/誤答、保存移行、四幅、reset/章境界等の実操作合格を意味しない。",
+    "Store/Git/製品編集なし。指定/tmp報告のみ保存。孫agentなし。"
+  ],
+  "evidencePaths": [
+    "src/data/textbook/math/numbers/n11Transformation.json",
+    "src/data/textbook/math/numbers/n11Authored.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_COMPILED.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/N11_G2_CORRECTION_DRAFT_PLAN.json",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
+  ]
+}

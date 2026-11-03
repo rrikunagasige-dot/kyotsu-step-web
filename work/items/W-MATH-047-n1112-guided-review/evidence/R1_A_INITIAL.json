@@ -1,0 +1,72 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念・工程の補足監視",
+  "verdict": "PASS",
+  "verdictScope": "G2-R1承認済み表示planの静的理念整合。現製品の欠陥解決判定ではない。",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "observations": [
+    "原資料q05/q06とMASTER§8/17/20を再読し、現overlay/source adapterでW047-G2-L01を再確認した。その後承認済みG2_CORRECTION_PROPOSALとDRAFT_PLANを照合。",
+    "同型問題は前回自分が指摘済み。今回の承認済み具体planは初めて精査したが、問題・提案方針は既知であり盲検や新しい初回問題発見とは称さない。",
+    "現製品はまだdivide右辺7/3完成とfinal右辺slotを同時表示する旧状態。承認だけで現欠陥をVERIFIED_FIXEDにはしない。"
+  ],
+  "findings": [
+    {
+      "id": "G2-L01",
+      "status": "OPEN",
+      "targetIds": [
+        "n11-tg-divide",
+        "n11-tg-final",
+        "n11-06"
+      ],
+      "reason": "現overlayと現n11.mjsは、前4回答正答後にS3完成右辺7/3とS4右辺slotを同じgateで出す。MASTERの学習行為/異なる役割の反復/全表示経路の先出し監査に照らし、現表示の問題は継続。"
+    },
+    {
+      "id": "R1-A-PLAN",
+      "status": "確認済み",
+      "targetIds": [
+        "draft S3",
+        "draft S4"
+      ],
+      "reason": "draft S3はsourceNodeId=n11-06、interactionRef=n11-06、既存slot ID=n11-tg-final-quotientをrightへ移し、両辺同除算の右辺の商を分数で表す行為を残す。S4はinteraction=nullでn11-06をvisibleAfterに追加し、商が求まってから左辺を整理して解の範囲をまとめる。数値の単なる再入力を除去し、既存の除数選択→商の生成→完成範囲→境界検査を一続きに接続する。"
+    },
+    {
+      "id": "R1-A-CONTRACT",
+      "status": "確認済み",
+      "reason": "draftのscope/gradingHash/numberAliasesは現overlayと一致。5candidateのID/期待値/選択肢/前提順は維持され、n11-06の指示文が新しい回答位置に対応する。S0〜S4の連続graphと番号16を保持する方針であり、新しい穴や回答回数を要求しない。"
+    },
+    {
+      "id": "R1-A-SIBLINGS",
+      "status": "確認済み",
+      "targetIds": [
+        "N11全体の同型箇所"
+      ],
+      "reason": "前回全47before/after監査と今回effective W038全7rowを照合。add右辺+2は確定操作を別辺へ適用する行為、sum7は未計算5+2から生成する行為、divisor3は係数1にする操作判断なので、今回の同結果転記とは異なる。n11-11の局所結果からの全式再構成、n11-14の辺入替表現も別行為が残る。q07/q10の関係評価と境界判断、q12の未計算商からの範囲生成も既修正を維持する。追加の同型欠陥を支持する具体的根拠は見つからなかった。"
+    },
+    {
+      "id": "R1-A-RESPONSIBILITY",
+      "status": "確認済み",
+      "reason": "CODEはexact source/graph/coverage/slot/alias/採点保存契約、各状態projectionと実画面幾何を確認し、AIは可視情報から商を自分で構成できるか・結果を単に写すだけになっていないか・説明の接続を評価する分担が適切。数学graphのpin拒否を緩めず、scope追加が必要なら承認へ戻す。"
+    },
+    {
+      "id": "R1-A-NEXT-GATES",
+      "status": "確認済み",
+      "reason": "実装後は除数未回答/正答後商未回答/誤答再試行/商正答後/履歴の全経路で、未回答7/3が他row・前結果・履歴・caption等に出ないことを確認する必要がある。39回答109誤答、旧rev移行、reset・章境界、四幅、保護pathと他modeの範囲を明示する計画は不足を隠さない。"
+    }
+  ],
+  "limits": [
+    "planの静的整合を確認した段階であり、compiler再実行/現製品修正/実画像の合格を主張しない。",
+    "現L01はOPENのまま。後の固定source・実画像・REPORTで実装と可視gateが一致して初めて解決判定できる。",
+    "原Word全ページではなく既存の位置付き抽出を用いた。全他単元の再審査ではない。",
+    "Store/Git/製品編集なし。原報告/tmp保存のみ。孫agentなし。"
+  ],
+  "evidencePaths": [
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+    "docs/MASTER_APP_LESSONS.md",
+    "src/data/textbook/math/numbers/n11Transformation.json",
+    "tools/textbook/transformation/n11.mjs",
+    "work/items/W-MATH-047-n1112-guided-review/G2_CORRECTION_PROPOSAL.md",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/N11_G2_CORRECTION_DRAFT_PLAN.json"
+  ]
+}

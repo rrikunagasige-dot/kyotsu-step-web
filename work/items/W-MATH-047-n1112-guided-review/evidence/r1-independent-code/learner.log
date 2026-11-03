@@ -1,0 +1,25 @@
+? Verifying lockfile against supply-chain policies (335 entries)...
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+   ╭──────────────────────────────────────────────────────────────────────╮
+   │                                                                      │
+   │                 Update available! 11.25.0 → 12.16.1.                 │
+   │                 Changelog: https://pnpm.io/v/12.16.1                 │
+   │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+   │                                                                      │
+   ╰──────────────────────────────────────────────────────────────────────╯
+
+✓ Lockfile passes supply-chain policies (335 entries in 9.6s)
+
+Done in 10.6s using pnpm v11.25.0
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w047-n1112
+
+ ✓ work/items/W-MATH-038-transformation-groups/implementation.test.tsx (6 tests | 2 skipped) 523ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed | 2 skipped (6)
+   Start at  04:13:44
+   Duration  3.32s (transform 1.27s, setup 0ms, collect 2.11s, tests 523ms, environment 359ms, prepare 95ms)
+

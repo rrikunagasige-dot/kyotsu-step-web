@@ -4,8 +4,8 @@
   "presentationVersion": 1,
   "baseIRHash": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
   "irHash": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
-  "planHash": "eccf3510ac9f787dec39383da72219b2bb556e2277af26df07fdbeadaca7faac",
-  "learnerCopyHash": "8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f",
+  "planHash": "a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282",
+  "learnerCopyHash": "a75af738b7c4f959343ee45f79be9f76c2ddea15c1647d77c26f6a5ad799be19",
   "gradingHash": "7d1c0714ad5b182d2705de4a589e726264e95372cd01a91f691048b9caeef4f4",
   "scope": {
     "problemId": "n11-q05-q06",
@@ -462,12 +462,12 @@
           "id": "n11-tg-divide",
           "graphRef": "n11-linear",
           "stateRef": "S3",
-          "sourceNodeId": "n11-q06-operation",
+          "sourceNodeId": "n11-06",
           "sourceRefs": [
-            "n11-q06-operation-before",
-            "n11-q06-operation-interaction-0",
-            "n11-q06-operation-equation",
-            "n11-q06-operation-after"
+            "n11-06-before",
+            "n11-06-interaction-0",
+            "n11-06-equation",
+            "n11-06-after"
           ],
           "role": "main",
           "visibleAfter": [
@@ -476,12 +476,18 @@
             "n11-05",
             "n11-q06-operation"
           ],
-          "interactionRef": null,
-          "slots": [],
+          "interactionRef": "n11-06",
+          "slots": [
+            {
+              "id": "n11-tg-final-quotient",
+              "interactionRef": "n11-06",
+              "path": "right"
+            }
+          ],
           "before": [
             {
               "type": "text",
-              "text": "両辺へ同じ除算を行います。"
+              "text": "両辺を決めた数で割ります。右辺の商を分数で表しましょう。"
             }
           ],
           "after": [],
@@ -512,8 +518,9 @@
             "relation": "<",
             "right": [
               {
-                "type": "math",
-                "latex": "\\frac{7}{3}"
+                "type": "slot",
+                "id": "n11-tg-final-quotient",
+                "interactionRef": "n11-06"
               }
             ]
           }
@@ -534,20 +541,15 @@
             "n11-wm017-q05-operation",
             "n11-wm017-q05-balance",
             "n11-05",
-            "n11-q06-operation"
+            "n11-q06-operation",
+            "n11-06"
           ],
-          "interactionRef": "n11-06",
-          "slots": [
-            {
-              "id": "n11-tg-final-quotient",
-              "interactionRef": "n11-06",
-              "path": "right"
-            }
-          ],
+          "interactionRef": null,
+          "slots": [],
           "before": [
             {
               "type": "text",
-              "text": "右辺の商を入れて、範囲を表します。"
+              "text": "右辺の商が求まりました。左辺を整理して、解の範囲をまとめます。"
             }
           ],
           "after": [
@@ -583,9 +585,8 @@
             "relation": "<",
             "right": [
               {
-                "type": "slot",
-                "id": "n11-tg-final-quotient",
-                "interactionRef": "n11-06"
+                "type": "math",
+                "latex": "\\frac{7}{3}"
               }
             ]
           }
@@ -662,7 +663,7 @@
       "id": "n11-06",
       "nodeId": "n11-06",
       "blankRole": "calculation",
-      "learnerDecision": "右辺の商を入れて、範囲を表します。",
+      "learnerDecision": "両辺を決めた数で割ります。右辺の商を分数で表しましょう。",
       "prerequisiteInteractionIds": [
         "n11-wm017-q05-operation",
         "n11-wm017-q05-balance",
@@ -679,5 +680,5 @@
     }
   ],
   "automaticAcceptance": false,
-  "compiledPresentationHash": "6dc04c1e632b550b8625e43fa2111d8b2d649c8f58abed2d2ab7d06d420e6b45"
+  "compiledPresentationHash": "7240d92e6850ae2d2f292584972fe733c480a223f53db1209dd4e649f3be18cb"
 }

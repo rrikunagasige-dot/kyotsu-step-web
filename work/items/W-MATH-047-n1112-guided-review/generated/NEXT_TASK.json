@@ -1,23 +1,18 @@
 {
   "work_id": "W-MATH-047",
   "node": {
-    "id": "R01_CAPTURE@n11",
-    "stage_kind": "R01_CAPTURE",
-    "contract_kind": "R01_CAPTURE",
-    "actor": "AI",
+    "id": "R07_VERIFY@n11",
+    "stage_kind": "R07_VERIFY",
+    "contract_kind": "R07_VERIFY",
+    "actor": "TOOL",
     "depends_on": [
-      "S01_ROUTE"
+      "R06_PATCH@n11"
     ],
-    "required": [
-      "complaint",
-      "before_evidence",
-      "reproduction",
-      "target_versions"
-    ],
+    "required": [],
     "block": "n11",
     "release_unit": "n11",
     "watch": "integration",
-    "phase": "pre-design",
+    "phase": "post-implementation",
     "priority": 0,
     "source_refs": [
       "src/data/textbook/math/numbers/n11Authored.json",
@@ -46,23 +41,25 @@
       "public/assets/math/textbook/numbers/n12-f02.png",
       "public/assets/math/textbook/numbers/n12-f03.png"
     ],
-    "approval_scope_ref": "proposal",
+    "approval_scope_ref": "n11-r1",
     "capability_requests": [
-      "source.fixed",
-      "feedback.capture"
+      "math.verify",
+      "ir.verify",
+      "browser.verify",
+      "protected.verify"
     ],
     "required_code_receipts": [
-      "source.fixed",
-      "feedback.capture"
+      "math.verify",
+      "ir.verify",
+      "browser.verify",
+      "protected.verify"
     ],
-    "required_ai_receipts": [
-      "meaning-review"
-    ]
+    "required_ai_receipts": []
   },
-  "task_id": "ac2fa7520c4479f6c9057de940d219a60c8295017712f31b096a73c42a343aaf",
-  "input_hash": "ae4208d932472de0eac1c5d788612a137673ac92bfec438312a4f4bf847819bc",
+  "task_id": "75591c0ae4202c0ecbd3f1820a8180dc6599e8121b0aab536ba89a340a7b6913",
+  "input_hash": "cce33cd2f87b24f4452594785ba5b247d8d47c6674f9a2d672c02eb94c4c9a88",
   "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-  "candidate_sha": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "candidate_sha": null,
   "rules": {
     "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -70,15 +67,16 @@
   },
   "proposal": {
     "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-    "hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
-    "id": "W-MATH-047/P-006"
+    "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
+    "id": "W047/G2-R1"
   },
   "scope": {
     "paths": [
       "src/data/textbook/math/numbers/n11Authored.json",
       "src/data/textbook/math/numbers/n12Authored.json",
       "src/data/textbook/math/numbers/n11Transformation.json",
-      "work/items/W-MATH-047-n1112-guided-review/"
+      "work/items/W-MATH-047-n1112-guided-review/",
+      "tools/textbook/transformation/n11.mjs"
     ],
     "preserve": [
       "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
@@ -110,11 +108,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
   },
   "previous_results": {
-    "S01_ROUTE": {
-      "actor": "deterministic-code",
-      "artifact": "2b35cd8a33bae602190bcf49824d0acc26e7acf4f82a186e30c9600771ced43a",
-      "input_hash": "1165b5b17834fcd477c3ab40a206c4d621ecb40f37a087f17bd243ab471b89b4",
-      "node": "S01_ROUTE",
+    "R06_PATCH@n11": {
+      "actor": "capability-runner",
+      "artifact": "89b0757cc078151f53dcc6f009249fa270e328623e7a5448466bb2c80074b689",
+      "input_hash": "aaee37ad7600b4c008c540913ae45cb4c9471411daf0302cadd7b6b004c370a1",
+      "node": "R06_PATCH@n11",
       "verdict": "PASS"
     }
   },

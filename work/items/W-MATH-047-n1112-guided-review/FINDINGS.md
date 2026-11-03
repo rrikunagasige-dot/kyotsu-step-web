@@ -16,3 +16,7 @@
 ## 2026-11-03 G2再開
 
 G2-A01/G2-B-L01: 保持W038の未回答商7/3先出しを確認しG2 FAIL、issue W047-G2-L01を正式登録。必須初見を満たさないfirstPass=falseを保存し、PASSに変換していない。原報告と未確認面はCROSS_BLOCK_AUDIT_N11.md/evidence/N11_G2_*参照。G2結果初回提出はaudit_rows version欠落で拒否され、全行に正しいrelease SHAを付与して再提出。CODEの拒否条件は変更していない。未適用修正案の初回compileは数学依存不足、PYTHONPATH=/tmp/w046-sympyで再実行し静的PASS。製品ファイルはこの再開中に未変更。次はG2_CORRECTION_PROPOSAL.mdの具体案承認と修正工程。
+
+## 2026-11-03 W047/G2-R1 承認・限定適用
+
+8faa9b19の実発言をR1へ記録。R1承認planのsource coverage/aliasを生成器が追従しない原FAILを検出し、承認planの完全一致を保つため限定技術patchを既存adapterで適用（W-TECH-050初回→W-TECH-051整合補修、初回を成功へ書換えない）。汎用JSON ID順guardは変更せず実拒否を保存。Work専用のexact移行CODEは17動的/負例/復旧検査とA/B審査を経て使用。新実render初回所見は旧IRの初見再利用と区別。R04では旧finding解決の現在入力版への束縛不足、同taskの報告変更、figure.verify空入力をCODEが拒否し、改訂assignment/実画像確認/原図2件検査で補修、原拒否を保持した。R06適用後の入力失効はclaim照合→R01〜R06再結合で修復し、同じpatchを再適用していない。現在R06受理/R07待ち。独立CODE検証はevidence/r1-independent-codeへ保存、実CI未取得と区別する。

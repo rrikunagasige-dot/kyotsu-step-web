@@ -23,6 +23,8 @@ const n11=read('src/data/textbook/math/numbers/n11Authored.json'),prior=historic
 const plan=n11TransformationPlan(n11),before=compileTransformationPresentation(prior,n11TransformationPlan(prior)),after=compileTransformationPresentation(n11,plan);
 assert.equal(before.status,'PASS');assert.equal(after.status,'PASS');
 const compiled=JSON.parse(JSON.stringify(after.compiled));assert.deepEqual(compiled,read('src/data/textbook/math/numbers/n11Transformation.json'));
+assert.deepEqual(plan,read(b+'evidence/N11_G2_CORRECTION_DRAFT_PLAN.json'),'Only exact approved R1 presentation is allowed');
+assert.deepEqual(compiled,read(b+'evidence/R1_COMPILED.json'),'Generated full artifact equals approved frozen R1 bytes');
 for(const k of ['groups','interactions','gradingHash','numberAliases','scope'])assert.deepEqual(compiled[k],JSON.parse(JSON.stringify(before.compiled))[k]);
 const cases=['old-source-accepted','approved-source-accepted'];
 const unknown=structuredClone(n11);unknown.unit.title+='unregistered';
@@ -31,5 +33,6 @@ for(const mode of ['changed','missing','additional','duplicate']){
  const p=structuredClone(plan);if(mode==='changed')p.graphs[0].states[0].statement.right.n='999';if(mode==='missing')p.graphs.pop();if(mode==='additional')p.graphs.push({...p.graphs[0],id:'unregistered'});if(mode==='duplicate')p.graphs[2]=structuredClone(p.graphs[0]);
  const result=validateTransformationPlan(n11,p,{verifyMath:false});assert.equal(result.status,'FAIL');assert.ok(result.findings.some(f=>f.ruleId==='TG03_COVERAGE'));cases.push(mode+'-graph-rejected');
 }
-const result={status:'PASS',sourceSHA:process.env.CANDIDATE_SHA??process.env.GITHUB_SHA??null,rows,bridgeCases:cases,W038:'IDENTICAL_EXCEPT_BINDING'};
+const projection=JSON.parse(execFileSync(process.execPath,['--experimental-strip-types',b+'verify_r1_projection.mjs'],{encoding:'utf8'}));
+const result={status:'PASS',sourceSHA:process.env.CANDIDATE_SHA??process.env.GITHUB_SHA??null,rows,bridgeCases:cases,W038:'APPROVED_R1_TWO_ROW_RELOCATION; grading/graphs/numberAliases preserved',projection};
 fs.writeFileSync(out+'/CURRENT_CONTRACTS.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

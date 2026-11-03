@@ -1,0 +1,51 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "status": "PASS_WITH_ORIGINAL_ENV_FAILURE_RETAINED",
+  "checks": [
+    {
+      "id": "default-static",
+      "exitCode": 1,
+      "log": "/tmp/w047-r1-b-checks/static.log",
+      "reason": "929f3c5 baseline path unavailable in local git; no assertion altered."
+    },
+    {
+      "id": "static-local-exact-baseline",
+      "exitCode": 0,
+      "log": "/tmp/w047-r1-b-checks/static-local-baseline.log",
+      "baselineRef": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "baselineValidation": "N11/N12 raw bytes from git show equal frozen W036 MATERIALIZED files exactly."
+    },
+    {
+      "id": "transformation-tests",
+      "exitCode": 0,
+      "log": "/tmp/w047-r1-b-checks/transformation.log",
+      "passed": 33
+    },
+    {
+      "id": "selected-learner-tests",
+      "exitCode": 0,
+      "log": "/tmp/w047-r1-b-checks/learner.log",
+      "passed": 4,
+      "skipped": 2,
+      "scope": "Existing CI selection; no test modified."
+    },
+    {
+      "id": "build",
+      "exitCode": 0,
+      "log": "/tmp/w047-r1-b-checks/build.log",
+      "warning": "Existing large chunks warning; build succeeded."
+    }
+  ],
+  "staticEvidence": "/tmp/w047-r1-static/CURRENT_CONTRACTS.json",
+  "postCheckHashes": {
+    "src/data/textbook/math/numbers/n11Authored.json": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+    "src/data/textbook/math/numbers/n11Transformation.json": "906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9",
+    "tools/textbook/transformation/n11.mjs": "a1fe2913e66a6cdc0ef0bdf91956e09aaa63fe44f4ef92c893652b537b3c1132",
+    "work/items/W-MATH-047-n1112-guided-review/verify_current.mjs": "b6d15579a659f04895664b72b606f36490b52a3f0cbd19b46bc0d752cb2698ea"
+  },
+  "limits": [
+    "Local static result sourceSHA remains null; no invented CI/source binding. Formal source fixation follows root workflow.",
+    "Browser all39/all109, saves/reset/history/migration need later actual CI. No claim these were rerun here.",
+    "Shared Store/Gitindex and product source not written by reviewer. Logs/temp evidence and build outputs only."
+  ]
+}

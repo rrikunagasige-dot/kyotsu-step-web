@@ -1,0 +1,32 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "scope": "W047/G2-R1 exact relocation CODE final review",
+  "verdict": "PASS",
+  "authorSeparation": true,
+  "sourceFirst": true,
+  "firstPass": false,
+  "resolves": "R1-RELOCATION-B-01",
+  "findings": [],
+  "rationale": {
+    "codeAssessment": "前回確認したexact approval/claim/scope/input/integrity/patch/hash/plan再compile/唯一slot移動/他ID順/採点/alias/gateのguardに変更なし。共有generic adapterも変更なし。",
+    "dynamicEvidence": "更新test_r1_relocation.py、R1_RELOCATION_CONTRACT.json、/tmp/w047-r1-relocation-test.logを照合。全17検査PASS、specializedApplyExecuted=true。実専用applyをコピーsrc/toolsと実Runtimeの隔離fixtureで実行し、4拒否の無intent/無書込、正規成功、replace前/後中断と既存reconcileを検査している。",
+    "recovery": "replace前障害ではbefore bytesと未完intentを確認しRESTORE_BEFOREへ、replace後applied前障害ではafter bytesと未完intentを確認しRECORD_COMPLETEDへ進む。手書き成功eventによる迂回ではなく既存reconcileを使用する。",
+    "genericGuard": "既存generic adapterのexact原拒否と拒否時無書込・無patch eventの試験を引き続き保持。専用routeは汎用guard無効化ではなく固定plan a3f9…の一つの移動だけを許す。",
+    "productUnapplied": true,
+    "scope": "承認済み2row/既存1slotの再配置だけの実装routeとして許容。製品JSON一path、その他ID・採点・保存revision・数学graphは保護する。"
+  },
+  "evidencePaths": [
+    "work/items/W-MATH-047-n1112-guided-review/r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/test_r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_RELOCATION_CONTRACT.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_DATA_PATCH.json",
+    "/tmp/w047-r1-relocation-test.log"
+  ],
+  "limits": [
+    "試験結果とCODEを読取監査した。担当B自身はStoreへ書く試験を再実行していない。",
+    "fixtureのapprovalは明示simulation、R06claimは隔離seed。これを本Workの正式R01〜R06完了や本人承認の証明へ流用しない。",
+    "全17は個別expiry/scope/source/hash変異の全組合せを網羅するとの主張ではない。主要書込経路と拒否/中断復旧の前回未確認を解消する証拠と評価。",
+    "本PASSは専用移行CODEの適用前レビュー。製品適用、修正後実CI画像、G2漏洩欠陥のVERIFIED_FIXED、公開・本人受入は未完了。",
+    "報告以外の製品/Store/Git書込、孫agent起動なし。"
+  ]
+}

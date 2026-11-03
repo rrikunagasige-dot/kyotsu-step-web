@@ -1,0 +1,42 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "scope": "W047/G2-R1 dedicated relocation CODE review",
+  "verdict": "UNVERIFIED_APPLY_ROUTE_TESTS",
+  "authorSeparation": true,
+  "sourceFirst": true,
+  "firstPass": false,
+  "findings": [
+    {
+      "id": "R1-RELOCATION-B-01",
+      "status": "OPEN_VERIFICATION",
+      "reason": "test_r1_relocation.pyはvalidate単体の成功/7負例と既存generic拒否を隔離Runtimeで検査するが、専用r1_relocation.applyは一度も呼んでいない。有効claim/承認/scope/input/patch/hash/integrityの実route拒否、成功時backup/intent/atomic replacement/applied、intent前後障害と既存reconcileの実検証が不足。専用書込routeの適用可否を確定する前に隔離temp Runtimeで実施する必要がある。",
+      "requiredCases": [
+        "専用applyの有効exact承認patch成功：製品役fixture bytesがafterへ、backupはbefore、intent→appliedと返却file evidenceを照合",
+        "無効/期限切れclaim、違う承認/plan/patch、before/after/source hash drift、scope外でintent/ファイル書込なし",
+        "intent作成後replace前障害とreplace直後applied前障害を注入し、既存reconcile_patchのRESTORE_BEFORE/RECORD_COMPLETEDで復旧可能なこと",
+        "二重適用拒否と製品未適用の継続確認"
+      ]
+    }
+  ],
+  "positiveObservations": [
+    "共有workflow/adapters.pyは未変更でhash固定。generic拒否証拠を隔離fixtureで保持している。",
+    "専用applyはwork/node/claim/input/approval source_refとquote/integrity/fixed patch hash/path/before/afterhash/generator/Authoredhashをintent前に検査する。",
+    "固定plan a3f9…を実n11.mjsから生成し、既存compileを実行してcompiled全文と一致させる。",
+    "validateは唯一slotの多重集合2出現と他全ID順、先頭5row不変、2row origin/destination、slot target、S4 gate、masked right、protected scope/alias/gradingを照合する。",
+    "書込はbackup/proof→patch_intent→fsync temp→os.replace→posthash→patch_appliedで、既存reconcileが読むpatch/backup/beforeキーと整合する。",
+    "R1_DATA_PATCHはn11Transformation一path。active bytesのSHA256がbeforeHashと一致するため製品JSONはまだ未適用。Authored/generatorの実bytesもR1_GENERATEDのhashと一致。"
+  ],
+  "scopeAssessment": "具体CODEの主要guardに無条件緩和や汎用slot移動許可は見当たらない。これは承認済みexact slot移動だけの移行契約として評価できるが、Work内にあることだけで承認や試験を代用せず、専用applyの実route未検証を残す。",
+  "evidencePaths": [
+    "work/items/W-MATH-047-n1112-guided-review/r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/test_r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_RELOCATION_CONTRACT.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_GENERATED.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_DATA_PATCH.json"
+  ],
+  "limits": [
+    "CODE/証拠をread-onlyで照合。testsは証拠ファイルを書き直すため本担当から再実行していない。",
+    "専用applyの製品実行やStore/Git変更、孫agent起動は行っていない。",
+    "これは書込route検証の不足であり、承認済み教材2row案の意味評価を撤回するものではない。"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "role": "B",
+  "scope": "W047/G2-R1 修正案観察の固定",
+  "approvalRef": "user8faa9b19",
+  "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "draftPlanHash": "a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282",
+  "verdict": "PASS_STATIC_PROPOSAL_ONLY",
+  "authorSeparation": true,
+  "sourceFirst": true,
+  "firstPass": false,
+  "blindReview": false,
+  "history": "前G2の先出し判定と同draft案を既に読んでいる。今回の修正案観察を固定するが、新たな盲検初回とは称さない。原資料q05〜q07/実装前stage6画像/MASTER8,17,20を先に再確認し、その後承認済み修正proposalとdraft planを照合した。",
+  "firstObservations": [
+    "原問q06は係数を1にする変形と向きを含む結果を求め、q07で境界を元式へ戻す。除数決定後に商を生成し、解の範囲を確定して境界へ進む順序が必要。",
+    "修正前はS3非穴の7/3をS4の右辺だけの穴へ写せるため、G2-B-L01は実在する。修正前stage6再確認でも完成式の数学は正しいが、未回答時の学習行為は不足する。",
+    "draftはS3右辺へ既存n11-06の一つのslotを移し、S4を正解後gateにする。商未回答時は分母3と元の右辺7から分数を作る学習行為が残り、商の完成値は先出ししない。",
+    "S4の左辺整理と解の実数範囲という意味づけ、その後の境界検証へのafter接続は保持される。"
+  ],
+  "checks": {
+    "scopeTwoRows": "S3 divideのsourceNode/interaction/slotと指示文、S4 finalの非穴化/公開gateと指示文に限定。S0〜S4の数学graphは不変。",
+    "contracts": "全39itemsとrevision11、既存n11-06の正答7/3、4選択肢、前提順を変更しない。穴/回答回数追加なし。",
+    "slot": "S3にn11-tg-final-quotientが一つ、S4はslotなし。n11-06正解までS4非表示。",
+    "numbering": "group番号16と既存numberAliasesを維持。n11-06のaliasはS4を指すため未回答時のalias anchorがまだ無いことを実装後に確認し、link/scrollが必須なら影響を評価する。",
+    "conditions": "x実数、正の除数3、不等号<を維持。",
+    "transition": "正答後x<7/3を完成表示し、次に境界含有を元式で確かめる接続を保持。"
+  },
+  "findings": [],
+  "pendingVerification": [
+    "修正版実CIのraw initial/除数正解・商未回答/wrong/correct PNGを他者理由より先に確認する。",
+    "39正答/109誤答×四幅、式番号16、S4 gate、history/reload/保存/旧rev1〜10移行/reset/章境界を修正sourceに結び直す。",
+    "N12 BASELINEとN09/N10/共有renderer/Store保持、exact source/graph拒否条件の維持を確認する。"
+  ],
+  "limits": [
+    "修正案の静的整合のみ確認。アプリ本体は未修正の時点でありG2 FAILを解除しない。",
+    "正規工程・適用・CI実画像・本人受入の完了を主張しない。",
+    "指定報告以外の書込み、Store/Git操作、孫agent起動なし。"
+  ]
+}

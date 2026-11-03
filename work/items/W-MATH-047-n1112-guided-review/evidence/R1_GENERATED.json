@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "implemented": false,
+  "planHash": "a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282",
+  "compiledHash": "906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9",
+  "compiledPresentationHash": "7240d92e6850ae2d2f292584972fe733c480a223f53db1209dd4e649f3be18cb",
+  "authoredHash": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+  "adapterHash": "a1fe2913e66a6cdc0ef0bdf91956e09aaa63fe44f4ef92c893652b537b3c1132",
+  "beforeHash": "5848f90b1e9889e8fac3f55b7709e309ce281df2640826c8fd3a0d1ee5e42969",
+  "gradingHash": "7d1c0714ad5b182d2705de4a589e726264e95372cd01a91f691048b9caeef4f4",
+  "checks": [
+    "Actual changed generator produces exactly approved plan",
+    "Unchanged source graph set checked by existing TG03",
+    "Full compiled bytes frozen before application",
+    "All grading contracts remain the authored originals"
+  ],
+  "mathReceipts": [
+    {
+      "graphId": "n11-linear",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "a01",
+          "status": "PASS",
+          "ruleId": "add-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a02",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a03",
+          "status": "PASS",
+          "ruleId": "divide-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a04",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"
+    },
+    {
+      "graphId": "cancel",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "cancel-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"
+    },
+    {
+      "graphId": "coefficient",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "coefficient-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"
+    }
+  ]
+}

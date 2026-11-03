@@ -1,0 +1,57 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A R04審査scope・初回要件の監視",
+  "verdict": "BLOCKED",
+  "scope": "不変IRの履歴再bindは妥当。ただしそれだけでR1新表示のR04 layout要件充足とはできない。",
+  "firstPass": false,
+  "authorSeparation": true,
+  "findings": [
+    {
+      "id": "R1-R04-A01",
+      "status": "確認済み",
+      "reason": "authored IR e370d18b…が完全不変なら、そのIRを実際に読んだ原初見/原作者分離/原所見を履歴証拠として再利用できる。現在の非初見再確認を初見へ昇格する必要はない。元assignment/packet/harness/report hashと新inputへの再bind理由を保持し、原targetの対象範囲を限定する。"
+    },
+    {
+      "id": "R1-R04-A02",
+      "status": "OPEN",
+      "targetIds": [
+        "R04 layout/render",
+        "display plan a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282"
+      ],
+      "reason": "R1で変更するのはeffective displayの回答所有/gate/本文であり、authored IRが同一でもlayout審査対象は同一ではない。freeze_review.pyはdesignとrenderの両方にir.verifyのirHashだけを割り当てるため、新display planをartifactHashが識別しない。旧IR対象layout報告を再bindして新display planのfirstPass要件まで充足したとみなすのは、審査対象の取り違えになる。"
+    },
+    {
+      "id": "R1-R04-A03",
+      "status": "OPEN",
+      "reason": "team policyはR04 layout/render/learner-visible-reviewにもsourceFirst=true/firstPass=trueを要求する。R1新表示へのA/B補足を実態どおりfirstPass=falseとするなら、それは静的意味評価の有効な追加証拠だが、firstPass=true必須の別artifact要件の代用にはならない。R04で新表示初回審査を必要とするのか、不変IRの要件に限定し表示の初回を別正式node/claimへ置くのかを、現在のtarget契約と有効なpolicyに即して明示する必要がある。技術的にhash一致assertを通すだけでは解決しない。"
+    },
+    {
+      "id": "R1-R04-A04",
+      "status": "要求条件",
+      "reason": "rebind結果にはunchanged authored IR hashとchanged display plan hashを併記し、原報告の有効範囲/補足対象/未充足要件を分離する。元firstPassArtifactを新しい観察として作り直さず、original registration/packet/observationsへの派生関係を保持。作者説明を後で読んだ事実を隠さず、packet contextExposureも「原初見時」の属性として扱う。"
+    },
+    {
+      "id": "R1-R04-A05",
+      "status": "確認済み",
+      "reason": "rebind_review.pyは同artifactHashes確認、元harness保持、newPlatformTaskLaunched=false/newFirstPassClaimed=falseという履歴情報を残す。ただしcollect_review.pyは新assignmentHash/packetHashのfirst artifactを作るため、その生成物は再bind証拠であり新たなsource-first初見の実行証拠ではないという説明が必要。"
+    }
+  ],
+  "rationale": [
+    "原初見を保存して不変artifactへ再利用することと、新表示変更に必要な独立評価をすることは両立する。原報告の守備範囲を新displayへ拡張しないことが条件。",
+    "今回の提案を「不変IRの履歴再bind＋非初見のR1表示補足」という証拠整理としては支持する。しかし現required layout firstPass要件の対象が新displayまで含むか未整理のため、R04全体をPASSにする判断にはBLOCKEDを残す。"
+  ],
+  "limits": [
+    "READ ONLYでworkflow/team.py、TEAM_POLICY、freeze/rebind/collectスクリプトを確認した。Storeの変更・再bind実行・policy変更は行っていない。",
+    "必要な解決を新しい盲検・新子agent起動へ自動的に読み替えない。既存2名制約と実態の開示を維持する。",
+    "新表示plan自体の理念は前回の静的監視で整合と判断済み。ここで指摘するのは審査契約と証拠scopeの問題。",
+    "指定/tmp原報告のみ保存。孫agentなし。"
+  ],
+  "evidencePaths": [
+    "governance/TEAM_POLICY.json",
+    "workflow/team.py",
+    "work/items/W-MATH-047-n1112-guided-review/freeze_review.py",
+    "work/items/W-MATH-047-n1112-guided-review/rebind_review.py",
+    "work/items/W-MATH-047-n1112-guided-review/collect_review.py",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/N11_G2_CORRECTION_DRAFT_PLAN.json"
+  ]
+}

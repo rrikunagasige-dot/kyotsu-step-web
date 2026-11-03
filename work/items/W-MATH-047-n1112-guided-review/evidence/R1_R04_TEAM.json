@@ -1,0 +1,184 @@
+[
+  {
+    "logical": "A",
+    "assignment": {
+      "assignmentId": "w047-r1-render-r04-A-b39c752cc7",
+      "roleEpoch": 9,
+      "node": "R04_PROPOSAL@n11",
+      "block": "n11",
+      "facet": "design",
+      "claimRefs": [
+        "teaching"
+      ],
+      "performerRef": "/root/w047_review_design",
+      "role": "reviewer",
+      "inputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "artifactHashes": {
+        "teaching": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a"
+      },
+      "allowedPaths": [],
+      "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+      "dependsOnTasks": [],
+      "budget": {
+        "tokenBudget": null
+      },
+      "independent": true,
+      "targetManifestRef": "a958fd3b2717c1732e9f214fdc6bd2c041009fb1898b8ce2f5a36a5823e835ee"
+    },
+    "packet": {
+      "baseNodeInputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "sourceRefs": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ],
+      "authorHistory": [
+        {
+          "claimRef": "teaching",
+          "facet": "design",
+          "block": "n11",
+          "semanticContributorRefs": [
+            "/root",
+            "/root/w046_source_review"
+          ]
+        }
+      ],
+      "contextExposure": {
+        "forkMode": "filtered",
+        "authorRationaleVisibleAtFirstPass": false,
+        "priorExposure": "Both know draft plan; first actual images of the newly compiled inactive candidate seen before manifest/author capture report. Not blind. Historical IR is not used as a layout target.",
+        "historicalUnchangedRenderRebind": {
+          "originalRegistrationRef": "6533d37f4b3dec3bb6e77b84d2741150df8550054e6a01841ecc84dc5edef315",
+          "unchangedTargetHash": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a",
+          "newFirstPassClaimed": false,
+          "originalHarnessRetained": true
+        }
+      },
+      "packetHash": "5e71699df4f085f75a4c7d1e8023c22702c71b33c8e9221cc92c7f3ed2ecf620"
+    },
+    "registration": {
+      "registrationRef": "566d266e400a616e85e5cbe48317639c21c82f1bbb04db5b6d24c802e3b35317",
+      "assignmentHash": "5706f0b008d974f90e818f0d259b225c3dbe4ba66155a76f556c36205cce87c1",
+      "eventRef": "490d94aeffd79e171c05a170b79c57fca5f4b8b25bb1cbdf3473d54fcb2304d7"
+    },
+    "kind": "source-review",
+    "evidenceRefs": [
+      "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
+      "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
+      "d46790c4-5095-467b-a3ac-72c93dfca549",
+      "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
+      "14993c35-60c9-4445-9c1b-8133895acaf5",
+      "bd094113-bee0-48e5-952d-a0c8cc3b8b05",
+      "43dbae5a-6f6e-4cde-89df-952681e90db3",
+      "8a085313-4107-4fb8-9743-b1694def6cfb",
+      "a06f8f8f-b268-4abe-b737-5556295f18da",
+      "4abf086d-d167-4772-8c61-ea7fd60bf766",
+      "65b0d678-f2a3-40a2-9be7-a2404660935a",
+      "2f853baf-db4f-4a07-9599-907decafdc0c",
+      "967ed895-8b78-4d7d-82e8-a6fffd03a78c",
+      "f313d246-17b0-4458-8007-7e1bd866cab0",
+      "6cb7354e-5acc-47d0-b0a2-2a8d2819897c",
+      "b9048b9f-e6cc-4195-b460-8885fdfe7058",
+      "32a3e1e6-ab63-41cc-a5cb-a36832ff145b",
+      "7b83a9e9-4279-4d79-b84f-bc1ba65b1b00",
+      "c744e511-88ee-4d04-82a3-2aadd5235855",
+      "2359bd4d-6cf1-4aa5-9344-116eac3a7872"
+    ]
+  },
+  {
+    "logical": "B",
+    "assignment": {
+      "assignmentId": "w047-r1-render-r04-B-b39c752cc7",
+      "roleEpoch": 9,
+      "node": "R04_PROPOSAL@n11",
+      "block": "n11",
+      "facet": "render",
+      "claimRefs": [
+        "layout"
+      ],
+      "performerRef": "/root/w047_layout_sourcefirst",
+      "role": "reviewer",
+      "inputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "artifactHashes": {
+        "layout": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a"
+      },
+      "allowedPaths": [],
+      "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+      "dependsOnTasks": [],
+      "budget": {
+        "tokenBudget": null
+      },
+      "independent": true,
+      "targetManifestRef": "8ec8cee2941bc58fa2d079cb4752601fbd0c5efdbe72a800e6d3230095f6f772"
+    },
+    "packet": {
+      "baseNodeInputHash": "b39c752cc770fa7fb0aeebbd1a2b064f00398e1e1a9a37883ddbfb898310c00e",
+      "sourceRefs": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ],
+      "authorHistory": [
+        {
+          "claimRef": "layout",
+          "facet": "render",
+          "block": "n11",
+          "semanticContributorRefs": [
+            "/root",
+            "/root/w046_source_review"
+          ]
+        }
+      ],
+      "contextExposure": {
+        "forkMode": "filtered",
+        "authorRationaleVisibleAtFirstPass": false,
+        "priorExposure": "Both know draft plan; first actual images of the newly compiled inactive candidate seen before manifest/author capture report. Not blind. Historical IR is not used as a layout target.",
+        "historicalUnchangedRenderRebind": {
+          "originalRegistrationRef": "030673c08055ae73f6e40e0f44243a5b6270e14f4890e3ffcea7e9b83674dd24",
+          "unchangedTargetHash": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a",
+          "newFirstPassClaimed": false,
+          "originalHarnessRetained": true
+        }
+      },
+      "packetHash": "1677a1f79639d133b7e4ce1baace77617ba1f5107f84c97daa6a2115f8145c81"
+    },
+    "registration": {
+      "registrationRef": "6fd0f61b98292377f3e5e8edae5225389a1b1731244e89983a52357a7ca0161f",
+      "assignmentHash": "532e68233c475f3f721efcc0bb22153b6ae0322d1180d9bea67b88a89cabdee5",
+      "eventRef": "fa3ba6720c8d8fe67a7c8b23c50c2509059a748dcd0e789db3837df4c4b9b778"
+    },
+    "kind": "learner-visible-review",
+    "evidenceRefs": [
+      "ae1cec49-d2c6-48a9-a13c-8411c87d921c",
+      "727a1298-93a3-40e2-8383-b7f3ff39e5dc",
+      "d46790c4-5095-467b-a3ac-72c93dfca549",
+      "d65bf530-8b11-48c3-ae2d-cb66b42cf781",
+      "14993c35-60c9-4445-9c1b-8133895acaf5",
+      "bd094113-bee0-48e5-952d-a0c8cc3b8b05",
+      "43dbae5a-6f6e-4cde-89df-952681e90db3",
+      "8a085313-4107-4fb8-9743-b1694def6cfb",
+      "a06f8f8f-b268-4abe-b737-5556295f18da",
+      "4abf086d-d167-4772-8c61-ea7fd60bf766",
+      "65b0d678-f2a3-40a2-9be7-a2404660935a",
+      "2f853baf-db4f-4a07-9599-907decafdc0c",
+      "967ed895-8b78-4d7d-82e8-a6fffd03a78c",
+      "f313d246-17b0-4458-8007-7e1bd866cab0",
+      "6cb7354e-5acc-47d0-b0a2-2a8d2819897c",
+      "b9048b9f-e6cc-4195-b460-8885fdfe7058",
+      "32a3e1e6-ab63-41cc-a5cb-a36832ff145b",
+      "7b83a9e9-4279-4d79-b84f-bc1ba65b1b00",
+      "c744e511-88ee-4d04-82a3-2aadd5235855",
+      "2359bd4d-6cf1-4aa5-9344-116eac3a7872"
+    ]
+  }
+]

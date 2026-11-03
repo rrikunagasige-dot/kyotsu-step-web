@@ -1,0 +1,42 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 専用移行CODE・理念の補足監視",
+  "verdict": "PASS",
+  "scope": "前報告R1-RA06の専用apply未実行という検証不足の解決確認",
+  "findings": [
+    {
+      "id": "R1-RA06",
+      "status": "VERIFIED_FIXED",
+      "reason": "更新testはr1_relocation.applyを実際にimportして呼び出す。コピーされたsrc/toolsと隔離実Runtime上で、正規成功時のafter全文一致・intent→applied順序・返却証拠を確認し、不正claim/patch/before/approvalでファイルとpatchイベントが書かれないことをassertする。replace前の中断とreplace後/applied前の中断ではpending transactionを検出し、既存reconcile_patchのRESTORE_BEFORE/RECORD_COMPLETEDを実行する。提出CONTRACTは17検査・specializedApplyExecuted=trueでコードに対応し、旧10検査を専用apply全体の実行証拠と誤認する問題は解消した。"
+    },
+    {
+      "id": "R1-RAF01",
+      "status": "確認済み",
+      "reason": "fixtureはsimulation=True、実承認と同じquote/sourceを模したsimulated approval、準備済みR06 claimだけを明示seedしている。これは既存workflowの工程準備を省略した専用transaction試験であり、実Work承認/claimが存在する証明ではないという区別がコメントとCONTRACTに明記される。実Storeへfixtureを混ぜていない構造を確認。"
+    },
+    {
+      "id": "R1-RAF02",
+      "status": "確認済み",
+      "reason": "前報告のexact plan再compile/全文一致、唯一slot移動、採点保存契約・他id順序・共通guard保護の静的整合と理念判断を維持。教材JSONの正式適用やG2-L01の実表示解決を、このテストだけで合格とは扱わない。"
+    },
+    {
+      "id": "R1-RAF03",
+      "status": "非阻害の精度注意",
+      "reason": "no_intentはRejectedに加えKeyErrorも受理するため、将来fixtureの無関係な欠落による失敗でも拒否テストが通り得る。bad-tokenケースは文字列違いのtokenではなくclaim削除で有効claim不存在を試している。現専用CODEのguardは静的に明確であり今回の結論を阻害しないが、ケース名を実態に合わせ、可能ならRejectedと対象rule文字列まで照合すると因果がより明確になる。"
+    }
+  ],
+  "rationale": [
+    "前報告の動的検証不足を埋める実apply成功・拒否・中断復旧の隔離試験が追加され、提出17検査の範囲を明確に説明できる。正式適用へ進む上で、この特定の未実行懸念は解決と判断する。"
+  ],
+  "limits": [
+    "更新テストはWorkのCONTRACTを書き換えるため、自分で再実行していない。提出実行証拠とコードの照合であり独立の二重実行ではない。",
+    "simulated approval/seeded claimの試験は実Workの正式台帳準備、権限、R06実適用の証明ではない。",
+    "実装後の未回答/誤答/正答/履歴の実画像、四幅、全39回答/109誤答、保存移行等は後続の固定source/CIで確認が必要。",
+    "共有Store/Git/製品編集なし。指定/tmp報告のみ保存。孫agentなし。"
+  ],
+  "evidencePaths": [
+    "work/items/W-MATH-047-n1112-guided-review/test_r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_RELOCATION_CONTRACT.json"
+  ]
+}

@@ -1,0 +1,1 @@
+{"design":["Select final row for coverage mapping while moving the display slot"],"evidence_refs":["88ff1caf-c831-428a-8ce4-ff53258017be"],"protected_scope":["No source/grading/slot ID/figure change"],"rule_mapping":["Exact approved plan coverage and aliases retained"],"unknowns":[],"verdict":"PASS"}

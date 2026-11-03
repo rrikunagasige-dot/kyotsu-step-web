@@ -1,29 +1,29 @@
 # 機能火柴図（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 # R01_CAPTURE@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R01_CAPTURE@n11 / pre-design / INVALIDATED"]
+  N0["R01_CAPTURE@n11 / pre-design / PASSED"]
   N1["source.fixed"]
   N2["feedback.capture"]
   N0 --> N2
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R02_CAUSE@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R02_CAUSE@n11 / pre-design / INVALIDATED"]
+  N0["R02_CAUSE@n11 / pre-design / PASSED"]
   N1["case.retrieve"]
   N2["knowledge.ledger"]
   N3["math.verify"]
@@ -34,15 +34,15 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R02_CAUSE@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R02_CAUSE@n11 / pre-design / INVALIDATED"]
+  N0["R02_CAUSE@n11 / pre-design / PASSED"]
   N1["source.audit"]
   N2["novice.audit"]
   N3["math.solve"]
@@ -51,28 +51,28 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R03_IMPACT@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R03_IMPACT@n11 / pre-design / INVALIDATED"]
+  N0["R03_IMPACT@n11 / pre-design / PASSED"]
   N1["impact.inventory"]
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n11 / pre-design / INVALIDATED"]
+  N0["R04_PROPOSAL@n11 / pre-design / PASSED"]
   N1["math.solve"]
   N2["math.verify"]
   N3["teaching.plan"]
@@ -83,15 +83,15 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n11 / pre-design / INVALIDATED"]
+  N0["R04_PROPOSAL@n11 / pre-design / PASSED"]
   N1["blank.plan"]
   N2["prose.compose"]
   N3["text.verify"]
@@ -102,15 +102,15 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n11 / pre-design / INVALIDATED"]
+  N0["R04_PROPOSAL@n11 / pre-design / PASSED"]
   N1["ir.verify"]
   N2["source.audit"]
   N3["novice.audit"]
@@ -119,24 +119,24 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R06_PATCH@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
-  N0["R06_PATCH@n11 / pre-design / INVALIDATED"]
+  N0["R06_PATCH@n11 / pre-design / PASSED"]
   N1["ir.compile"]
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R07_VERIFY@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -151,11 +151,11 @@ flowchart TD
   N0 --> N4
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R07_SEMANTIC@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -166,11 +166,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R01_CAPTURE@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -181,11 +181,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R02_CAUSE@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -200,11 +200,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R02_CAUSE@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -217,11 +217,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R03_IMPACT@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -230,11 +230,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -249,11 +249,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -268,11 +268,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R04_PROPOSAL@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -285,11 +285,11 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R06_PATCH@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -298,11 +298,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R07_VERIFY@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -317,11 +317,11 @@ flowchart TD
   N0 --> N4
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R07_SEMANTIC@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -332,11 +332,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # G2_AUDIT@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -347,11 +347,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # G3_HOST@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -360,11 +360,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R03_IMPACT_SWEEP@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -373,11 +373,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R08_CAPTURE_LEARNING@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -386,11 +386,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # L01_LEARNING@n11（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -401,11 +401,11 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # G2_AUDIT@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -416,11 +416,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # G3_HOST@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -429,11 +429,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R03_IMPACT_SWEEP@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -442,11 +442,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # R08_CAPTURE_LEARNING@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -455,11 +455,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 # L01_LEARNING@n12（GENERATED）
 
-台帳HEAD: `c80b74c84cad591e5caf48f1a9eef2c0bb60687147d5550b6e6d03b3d881ab47`
+台帳HEAD: `55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6`
 
 ```mermaid
 flowchart TD
@@ -470,7 +470,7 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R01_CAPTURE@n11 / READY
+現在: R07_VERIFY@n11 / READY
 
 code実行receiptはsnapshot.jsonのcapability_receiptsを参照。AIの意味審査は別記録。
 
@@ -508,11 +508,17 @@ code実行receiptはsnapshot.jsonのcapability_receiptsを参照。AIの意味�
 | R07_SEMANTIC@n11 | A / /root/w047_review_design | reviewer | render: implemented-visible | COMPLETED |
 | R07_SEMANTIC@n11 | A / /root/w047_review_design | reviewer | render: implemented-visible | COMPLETED |
 | G2_AUDIT@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: integrated-release | COMPLETED |
+| R04_PROPOSAL@n11 | A / /root/w047_review_design | reviewer | design: teaching | COMPLETED |
+| R04_PROPOSAL@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: layout | COMPLETED |
+| R04_PROPOSAL@n11 | A / /root/w047_review_design | reviewer | design: teaching | COMPLETED |
+| R04_PROPOSAL@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: layout | COMPLETED |
+| R04_PROPOSAL@n11 | A / /root/w047_review_design | reviewer | design: teaching | COMPLETED |
+| R04_PROPOSAL@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: layout | COMPLETED |
 
 CODE: 担当・packet・対象hash・非作者・未解決を検査。AI: 原資料・数学・教え方・実表示を審査。USER: 具体案承認と実アプリ評価。
 役割交代は作者履歴を消さない。差戻しは元工程への改訂taskとして記録。
 
-finding記録: 31
+finding記録: 37
 - D04 / n11 / teaching / OPEN / KEEPに残る判断の先出し。直前の代入計算は左右の数値を得る行為だが、その後の意味判断は成立・不成立まで本文で確定している。学習者が根拠を評価して境界を判断する部分が、説明済みの結論と選択肢を対応させる行為へ縮小する。変更3nodeの改善だけではN11全体の学習行為保存を肯定できない。
 - D04 / n11 / teaching / VERIFIED_FIXED / 成立・不成立の断定を削除した。先行する代入nodeの回答後説明も5<5または5≤5という関係の提示までで、その評価を断定しない。数値計算から関係の評価、境界包含と理由の選択へ進む行為が復帰した。既に求めた範囲を根拠として参照できることは、原文の順序にも整合する。
 - D04 / n11 / teaching / VERIFIED_FIXED / word-p-000495/000501の関係評価と境界包含判断が維持される。直前の代入nodeの回答後説明も関係の提示までで、成立・不成立は断定しない。前回修正の解決を維持。
@@ -521,6 +527,8 @@ finding記録: 31
 - D04 / n11 / teaching / VERIFIED_FIXED / 原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。
 - D04 / n11 / teaching / VERIFIED_FIXED / 原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。
 - D04 / n11 / teaching / VERIFIED_FIXED / 原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。
+- D04 / n11 / teaching / VERIFIED_FIXED / 同じ正式render manifest内のn11-07-focus-initial.pngとn11-10-focus-initial.pngを追加実見。旧本文の成立/不成立の断定がなく、原問の関係評価・包含・理由の判断を残す。P006の既修正が現在の未適用R1候補にも保持されている。実製品R1適用済みの主張ではない。
+- D04 / n11 / teaching / VERIFIED_FIXED / 同じ正式render manifest内のn11-07-focus-initial.pngとn11-10-focus-initial.pngを追加実見。旧本文の成立/不成立の断定がなく、原問の関係評価・包含・理由の判断を残す。P006の既修正が現在の未適用R1候補にも保持されている。実製品R1適用済みの主張ではない。
 - D05 / n11 / teaching / OPEN / 操作を選択させる前段で、操作と数3を指定している。後続の左辺・右辺の空欄は同じ3の再現になる。正数倍の根拠を教える説明自体は正しいが、原文q13にある『操作を選ぶ』行為を保存したKEEPと評価するには不足がある。
 - D05 / n11 / teaching / VERIFIED_FIXED / 両辺3倍という具体操作の先出しを除去。乗算という足場の下で、分母を打ち消す乗数を3/-3/1/6から判断する行為が残る。右辺にも3を掛けるnodeは左辺で3を選んだ後なので、既知の結果を使う段階であり未選択答案の先出しには当たらない。
 - D05 / n11 / teaching / VERIFIED_FIXED / 具体的な両辺3倍を先出しせず、乗数を選ぶ空欄が残る。word-p-000511の具体操作選択と直後の不等式の構成が維持される。前回に自身で読んだ候補では冒頭が「例題は」だったが、現候補は「次の不等式」となり、原文の確認問題との役割の不一致も弱まった。
@@ -529,6 +537,8 @@ finding記録: 31
 - D05 / n11 / teaching / VERIFIED_FIXED / 原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。
 - D05 / n11 / teaching / VERIFIED_FIXED / 原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。
 - D05 / n11 / teaching / VERIFIED_FIXED / 原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。
+- D05 / n11 / teaching / VERIFIED_FIXED / 同manifestのn11-fraction-problem-context.pngを追加実見。「学んだことを使う」「分数の確認問題」の区分を保ち、未選択の両辺3倍を先出ししない。分母から乗数を選ぶ行為を残すP006修正が、現在の未適用R1候補にも保持される。
+- D05 / n11 / teaching / VERIFIED_FIXED / 同manifestのn11-fraction-problem-context.pngを追加実見。「学んだことを使う」「分数の確認問題」の区分を保ち、未選択の両辺3倍を先出ししない。分母から乗数を選ぶ行為を残すP006修正が、現在の未適用R1候補にも保持される。
 - N11-R2-L07 / n11 / layout / OPEN / 原資料word-p-000509の「確認」および現role=checkに対し、新本文が「例題は」と呼ぶため、教材区分の呼称整合が未解決。配置の静的評価は良好のまま。
 - N11-R2-L07 / n11 / layout / VERIFIED_FIXED / IR・compiled・現在nodeのvisible snapshotのすべてで旧「例題は」が「次の不等式」へ変わった。原文p509「確認」、role=check、goal「分数の確認問題を提示」と矛盾する呼称を除去した。
 - N11-R2-L07 / n11 / layout / VERIFIED_FIXED / IR・compiled・現在nodeのvisible snapshotのすべてで旧「例題は」が「次の不等式」へ変わった。原文p509「確認」、role=check、goal「分数の確認問題を提示」と矛盾する呼称を除去した。
@@ -537,6 +547,8 @@ finding記録: 31
 - N11-R2-L07 / n11 / layout / VERIFIED_FIXED / 原問word-p-000509は「確認」、word-p-000510は分数不等式を解く設問。候補n11-fraction-problemはrole=check、goal=「分数の確認問題を提示」を維持し、beforeは「次の不等式…です。分母をなくす操作を考えます」と接続する。既存readerはcheckを「学んだことを使う」と表示するため、例題・導出・定義への誤分類はない。候補本文もこの確認問題を例題とは呼ばず、未解決の呼称・設問区分の不一致は認めない。分母を打ち消す数は次の設問に残される。
 - N11-R2-L07 / n11 / layout / VERIFIED_FIXED / 原問word-p-000509は「確認」、word-p-000510は分数不等式を解く設問。候補n11-fraction-problemはrole=check、goal=「分数の確認問題を提示」を維持し、beforeは「次の不等式…です。分母をなくす操作を考えます」と接続する。既存readerはcheckを「学んだことを使う」と表示するため、例題・導出・定義への誤分類はない。候補本文もこの確認問題を例題とは呼ばず、未解決の呼称・設問区分の不一致は認めない。分母を打ち消す数は次の設問に残される。
 - N11-R2-L07 / n11 / layout / VERIFIED_FIXED / 原問word-p-000509は「確認」、word-p-000510は分数不等式を解く設問。候補n11-fraction-problemはrole=check、goal=「分数の確認問題を提示」を維持し、beforeは「次の不等式…です。分母をなくす操作を考えます」と接続する。既存readerはcheckを「学んだことを使う」と表示するため、例題・導出・定義への誤分類はない。候補本文もこの確認問題を例題とは呼ばず、未解決の呼称・設問区分の不一致は認めない。分母を打ち消す数は次の設問に残される。
+- N11-R2-L07 / n11 / layout / VERIFIED_FIXED / 原Word抽出word-p-000509は「確認」。現role=check/goal「分数の確認問題を提示」を確認し、R1_RENDER_TARGETに収録された実候補n11-fraction-problem-context.png（SHA256 dfd82d833d7ea66482eb98098f96f978535a443951574024ee4dec301c255c4f）を実見。UIは「学んだことを使う」「分数の確認問題を提示」「次の不等式」であり、旧「例題は」は表示されない。P006で修正済みの呼称整合がR1未適用候補でも保持される。原初回5画像観察は変更しない。
+- N11-R2-L07 / n11 / layout / VERIFIED_FIXED / 原Word抽出word-p-000509は「確認」。現role=check/goal「分数の確認問題を提示」を確認し、R1_RENDER_TARGETに収録された実候補n11-fraction-problem-context.png（SHA256 dfd82d833d7ea66482eb98098f96f978535a443951574024ee4dec301c255c4f）を実見。UIは「学んだことを使う」「分数の確認問題を提示」「次の不等式」であり、旧「例題は」は表示されない。P006で修正済みの呼称整合がR1未適用候補でも保持される。原初回5画像観察は変更しない。
 - N12-D04 / n12 / teaching / OPEN / KEEPに今回の端点判断の結果を先出しする箇所が残る。左端を含むか判断するというnodeのgoalに対し、本文が不充足を確定してから<と≤を選ばせる。続くnodeも右端が両条件を満たすことまで確定する。原問の共通部分・端点判断のうち端点の評価を学習者が行う段階が説明に置き換わる。既知条件の再掲や一般的な端点記号の説明とは異なり、この問題の端点についての判断結果である。SPECの「既知知識から導ける判断は考えさせる」と整合しない。
 - N12-D04 / n12 / teaching / VERIFIED_FIXED / 回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。
 - N12-D04 / n12 / teaching / VERIFIED_FIXED / 回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。

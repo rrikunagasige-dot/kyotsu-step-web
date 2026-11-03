@@ -1,0 +1,59 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念・限定移行CODEのread-only監視",
+  "verdict": "PASS",
+  "verdictScope": "専用routeの静的実装・提出テスト構造・限定的pure validator実行の審査。専用apply全経路の動的検証合格ではない。",
+  "findings": [
+    {
+      "id": "R1-RA01",
+      "status": "確認済み",
+      "reason": "共有adapters.pyはhash374c5be5c115d7273906e5b222d49f9303f5372383dad0928eb2ab6e0f35cfb3と一致し、通常の再帰ID順序拒否を維持。専用routeはW-MATH-047/R06_PATCH@n11/path n11Transformation.json/plan a3f9…に限定され、汎用guardの自動fallbackではない。"
+    },
+    {
+      "id": "R1-RA02",
+      "status": "確認済み",
+      "reason": "有効claim/token/inputhash、有効期限、exact承認sourceRefとquote、integrity、固定patchとblock patch_hash、scope/candidate_manifest、前後bytes、adapter/authored hashを適用前に照合する。既存compilerで承認plan hashを再確認し、compile PASSとafter JSON全文一致を要求するため、IDを並べ替えるだけの迂回になっていない。"
+    },
+    {
+      "id": "R1-RA03",
+      "status": "確認済み",
+      "reason": "全id multiset同一、slotの2出現、他全id順序同一、全row順序、最初5row同一、正確なS4→S3 ownership/interaction/path/gate/masked式を検証する。scope/baseIR/irHash/grading/aliasと5interactionの指示文以外の契約も保持する。sourceRefsや完成式等の残余差分はexact生成物一致で限定する。"
+    },
+    {
+      "id": "R1-RA04",
+      "status": "確認済み",
+      "reason": "R1_GENERATEDのbefore/compiledHashとR1_DATA_PATCHは現before bytes/after全文のSHA256と一致。patchはn11Transformation.jsonの1pathだけ。plan hash a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282、authored hash3465…、gradingHash7d1c…へ固定。教材JSONは今回読取時未適用。"
+    },
+    {
+      "id": "R1-RA05",
+      "status": "確認済み",
+      "reason": "提出10検査はexact構造受理1、構造負例7、共通adapter実拒否と無書込確認2で整合。純粋validateを自分でもread-only実行しexact移動を受理、異なるslot参照/正答のmasked欄露出/完成式改変が固定expectedとの全文不一致で拒否されることを確認した。"
+    },
+    {
+      "id": "R1-RA06",
+      "status": "検証範囲の注意",
+      "reason": "提出testはr1_relocation.applyを実行せず、実Runtimeの拒否・無書込は共通adapters.apply_patchの検査。専用applyの不正token/承認/patch/source drift/共通guard driftの拒否、正規成功時backup/intent/appliedの対応はこの10検査で動的確認済みではない。適用前の隔離検証または正式実行証拠で補い、現10件の説明を専用route全体の動的合格へ広げない。"
+    },
+    {
+      "id": "R1-RA07",
+      "status": "確認済み",
+      "reason": "slot移動は同じ39回答契約を保持し、除数決定→商の生成→正答後の左辺整理/範囲解釈へ接続する理念に適合。Work内のexact移行CODEは承認具体案の実装検証として整理できるが、共有workflowの一般例外へ拡張せず、承認根拠とroute選択理由を台帳へ残す必要がある。"
+    }
+  ],
+  "limits": [
+    "test_r1_relocation.pyはWorkに証拠を書き込むため再実行していない。10検査結果は提出証拠とコードを照合したものである。",
+    "自分が実行したのはpython -Bによるpure validateとin-memory負例だけ。専用apply/実Runtime/製品適用は行っていない。",
+    "未回答/誤答/再試行/正答/履歴の実画像と四幅、保存移行の合格を意味しない。G2-L01は実装後の対象固定審査まで解決済みにはしない。",
+    "最初に指定されたR1_GENERATED.jsonはWork直下にはなく、実際のevidence/R1_GENERATED.jsonを確認した。",
+    "Store/Git/教材・工程編集なし、指定/tmp原報告のみ保存。孫agentなし。"
+  ],
+  "evidencePaths": [
+    "work/items/W-MATH-047-n1112-guided-review/r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/test_r1_relocation.py",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_RELOCATION_CONTRACT.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_GENERATED.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_COMPILED.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_DATA_PATCH.json",
+    "workflow/adapters.py"
+  ]
+}

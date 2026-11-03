@@ -1,0 +1,70 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "scope": "W047/G2-R1 recursive-ID guard and existing migration route investigation",
+  "firstPass": false,
+  "authorSeparation": true,
+  "sourceFirst": true,
+  "verdict": "BLOCKED_EXISTING_ADAPTER",
+  "firstObservationsRetained": "/tmp/w047-r1-b-first.jsonの観察を保持。承認済み案の意味評価は変わらず、追加の技術整合調査であり新盲検初回ではない。",
+  "checks": {
+    "compile": "現n11Authoredと既存n11TransformationPlanから旧compiled、承認draftから新compiledを既存compileTransformationPresentationで実行。PYTHONPATH=/tmp/w046-sympyで双方PASS。書込なし。",
+    "recursiveIds": "workflow/adapters.pyと同じdict id→全values再帰/list順のidsをJSで比較。旧新とも23要素、ID多重集合は同一だが順序不一致。0-based15で旧n11-tg-final、新n11-tg-final-quotient。",
+    "oldSlice": [
+      "n11-tg-divide",
+      "n11-tg-final",
+      "n11-tg-final-quotient",
+      "n11-tg-final-quotient"
+    ],
+    "newSlice": [
+      "n11-tg-divide",
+      "n11-tg-final-quotient",
+      "n11-tg-final-quotient",
+      "n11-tg-final"
+    ],
+    "guard": "apply_patchの一般JSON branchはids(before)==ids(new)を必須にし、「安定ID・順序の変更には移行を含む別の具体案が必要」と拒否する。したがって正式adapterへ現draft patchを渡すと事前検査で停止する。"
+  },
+  "routeInvestigation": [
+    {
+      "path": "workflow/adapters.py:12",
+      "finding": "一般apply_patchに承認済みslot移動の移行オプションなし。path/work/approval/hash/scopeの検査とID順序検査が直結。"
+    },
+    {
+      "path": "workflow/materialization.py",
+      "finding": "bind_n07/bind_patchの特例はwork=W-MATH-032、n07Authoredおよび登録N07表示3pathに限定。N11へ流用できない。"
+    },
+    {
+      "path": "workflow/migrations.py",
+      "finding": "legacy workflow→production/2の工程定義移行であり、教材表示ID再配置のrouteではない。"
+    },
+    {
+      "path": "workflow/runtime.py / workflow/cli.py",
+      "finding": "migrate-definition/adopt-team-policy等は工程/チーム移行、reconcile-patchは既知intentの中断復旧のみ。承認slot relocationを正規適用するrouteは検索範囲に見つからない。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-B-GUARD-01",
+      "status": "OPEN_TECHNICAL_SCOPE",
+      "reason": "承認済みslot一つのrow移動は表示/保存意味として妥当だが、現正式adapterの全再帰ID順序guardに阻まれる。現承認scopeにないguard変更・手動適用＋event追記・N07専用特例の転用で迂回しない。追加技術範囲の具体案と承認が必要。"
+    }
+  ],
+  "recommendation": "追加技術案はexact旧source/新生成物/承認planに束縛した表示slot移行証拠を検証し、row順・全永続item/node/stage/revision/採点契約とID多重集合を保持、許されたslotの親row移動だけを認める限定routeとして具体化する。未知移動・ID追加削除・採点/保存変更を拒否するnegative caseが必要。一般guardの無条件緩和やJSONproperty順の細工による素通しはしない。",
+  "limits": [
+    "READ ONLYのcompileと検索のみ。実adapter適用、Store/Git書込、製品修正は行っていない。",
+    "既存route不存在はworkflow/adapters/materialization/migrations/runtime/cliおよび関連test検索範囲の結論。外部の未取得APIを不存在と断定しない。",
+    "修正版実画面はまだ未生成。本技術BLOCKEDは教材案の意味上FAILとは別。"
+  ],
+  "dedicatedRouteSupplement": {
+    "status": "UNVERIFIED_PENDING_CONCRETE_CODE",
+    "assessment": "親から追加提示されたWork内専用移行CODEは、汎用guardを無効化するfallbackではなく、承認された1件だけの別移行契約として明示・審査するなら妥当になり得る。Work配下の位置だけで権限を推定しない。製品書込対象を増やさずexact承認2row/plan移動を実行し、全guardと原子適用記録をCODEで完結する必要がある。",
+    "requiredChecks": [
+      "generic rejectionを証拠として保存",
+      "承認plan完全一致と再compile生成bytes一致",
+      "claim/scope/approval/input/patch/before/after/integrity全guard保持",
+      "唯一slotの出現数/親row移動/他ID順/2row差分/graph/grading/items/revision保存を事前検査",
+      "検査後のみbackup→patch_intent→原子置換→patch_applied、失敗/中断復旧を検証",
+      "未知plan/hash/移動/追加削除/採点差分の負例拒否"
+    ],
+    "limit": "実CODEと負例試験を未見のため、現段階で適用可・既存BLOCKED解消とは判定しない。"
+  }
+}

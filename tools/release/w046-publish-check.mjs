@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
-const SOURCE='6b439d0d31fcd46708c256ed23a391009ab73164';
+const SOURCE='f129ba78e496f0ccbce917c762357a81b92b0a2c';
 const STORAGE='kyotsu-step-gate3-math-20261023';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(p));

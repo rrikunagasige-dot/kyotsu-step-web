@@ -1,9 +1,15 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main]
+    branches: [main, work/w047-publisher-g3-20261104]
     paths: ['.github/workflows/deploy-pages.yml']
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Verify fixed candidate without uploading or deploying Pages
+        type: boolean
+        required: true
+        default: true
 permissions:
   contents: read
   pages: write
@@ -14,19 +20,19 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 6b439d0d31fcd46708c256ed23a391009ab73164
-      VITE_PREVIEW_COMMIT: 6b439d0d31fcd46708c256ed23a391009ab73164
+      CANDIDATE_SHA: f129ba78e496f0ccbce917c762357a81b92b0a2c
+      VITE_PREVIEW_COMMIT: f129ba78e496f0ccbce917c762357a81b92b0a2c
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 6b439d0d31fcd46708c256ed23a391009ab73164
+          ref: f129ba78e496f0ccbce917c762357a81b92b0a2c
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -34,7 +40,10 @@ jobs:
         with:
           ref: ${{ github.sha }}
           path: publisher
-          sparse-checkout: tools/release/w046-publish-check.mjs
+          sparse-checkout: |
+            tools/release/w046-publish-check.mjs
+            tools/release/w047-publish-check.mjs
+            tools/release/w047-release-contract.json
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -55,14 +64,15 @@ jobs:
           timeout 120s sudo apt-get update -qq
           timeout 600s sudo apt-get install -y -o Acquire::Retries=3 pandoc fonts-noto-cjk
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
-      - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs --check
+      - run: node publisher/tools/release/w047-publish-check.mjs retained-check
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
-      - run: node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs
+      - run: node publisher/tools/release/w047-publish-check.mjs manifest
       - name: Generate exact N09/N10 release supplement
         run: node publisher/tools/release/w046-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
       - name: Verify exact release before upload
         run: |
           node --input-type=module <<'NODE'
@@ -95,19 +105,23 @@ jobs:
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n08 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w047-publish-check.mjs verify
       - uses: actions/upload-pages-artifact@v3
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         with:
           path: ./dist
-      - name: Publish approved N09/N10 candidate with retained N08 and N11
+      - name: Publish approved N11/N12 candidate with retained N08 and N09/N10
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify published N09/N10 bytes and operations
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w046-hosted
         run: node publisher/tools/release/w046-publish-check.mjs verify
       - name: Verify public source and N08 operations
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -151,9 +165,10 @@ jobs:
               assert new in s
           PY
       - name: Verify retained public N11
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
-        run: EVIDENCE_DIR=/tmp/w041-hosted-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+        run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w047-publish-check.mjs verify
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -163,7 +178,7 @@ jobs:
             /tmp/w046-prepublish-n08
             /tmp/w046-prepublish-r6
             /tmp/w046-prepublish-legacy
-            /tmp/w046-prepublish-n11
+            /tmp/w047-prepublish
             /tmp/w046-hosted
             /tmp/w046-preview.log
             /tmp/w041-hosted
@@ -171,4 +186,4 @@ jobs:
             /tmp/w041-hosted-release
             /tmp/w041-hosted-legacy
             /tmp/w041-hosted-protected
-            /tmp/w041-hosted-n11
+            /tmp/w047-hosted

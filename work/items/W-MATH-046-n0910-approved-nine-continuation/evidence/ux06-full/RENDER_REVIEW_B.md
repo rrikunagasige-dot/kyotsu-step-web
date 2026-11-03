@@ -184,3 +184,13 @@ CI artifact→公開raw manifest→公開121assetの結合を確認でき、旧s
 WORK/WORKFLOW_CURRENTの最新現在地とPUBLICATION/G3_PREFLIGHT/VERIFICATIONはG3_HOST完了→G3_FINAL本人確認へ対応し、正式Store/Gold/fitを発行していない。旧G3待機や未公開の記載は履歴節として区別される。最終実URL案内へ進む工程上の新STOPはない。
 
 票の内部checkboxにテンプレート由来の「総チェックOK」表現が残るが、案内/末尾が示すとおり自然な明示評価を原文とsource/scopeへ束縛し、合言葉の入力を必要条件にしないようrootへ確認した。技術成功を本人受入へ代用しない。今回のB監視はここまでの提示状態であり、本人がこれから全対象を評価した結果を先取りしない。
+
+## 段落修正の限定審査（新source6b439）
+
+本人はreset後に空欄が復活することを確認して良好と評価し、先の空欄なしは回答済表示だったと訂正した。添付image(20261103-045902).pngをBも実見し、これを新たな空欄消失不具合として扱わない。今回は本文段落だけの修正であり、新穴/数学/gate/進捗契約を変更しない。本人の「これで全部通せる」という条件付き評価を、本人未実施のresetや別ブラウザでの初期化へ置換せず記録する。
+
+新source6b439d0d31fcd46708c256ed23a391009ab73164の差分はConstructionLessonReadingFlow.tsxと専用CSSの2file。lead分割はdecimal-methodの具体準備→一般A/B導出と、definitionの平方根二数→根号一値の注意の二箇所。明示6rowIDとux06-after-textで本文目的境界16px、node境界24pxを付ける。主導出row01〜05の数学group、式/文字/数字/符号穴、解放順、compiledは不変。共有native/archive/historyへの余白影響を公開前後helperの保護対象へ含める。
+
+予備dirty版6画像とは別に、固定source `/tmp/w046-paragraph-images/RESULT.json` のPASS/88画像/source6b439/errors空を確認。Bは新folderのdecimal-method/q11-formula/q13-identity完成×320/390/430/1440の12crop、および320decimal初期1cropをview_imageで実見し、原hash一致を確認した。計13枚の記録はPARAGRAPH_IMAGES_REVIEWED_B.json。88全枚を目視したとは主張しない。
+
+実見範囲では、一般導出から具体適用、分数準備、共通平方準備、次の具体計算への目的切替が分かりやすくなり、同じ導出の理由と式は近接し、等号列・通常括弧・式番号・未回答穴を維持する。理由が次式から孤立する余白や初期完成答えの先出しを認めない。新STOPなし。親の固定source21回帰/型/対象lint/四幅撮影HTTP・pageerror0は実行報告として別扱い。新公開を旧d588配信と混同せず、6b439の公開前後操作・manifest/byte照合と本人端末resetの事実を後続で確認する。段落修正を理由に代表の数学案再承認を要求しない。

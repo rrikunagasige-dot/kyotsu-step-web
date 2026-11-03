@@ -1,0 +1,47 @@
+{
+  "feedbackPage": "89b9b8f8-6ab7-4bd2-bbda-72da611e4257",
+  "instruction": "N09/N10段落修正。resetで未回答の空欄が表示されたことを本人確認。段落修正後なら全部通せるとの条件付き受入。",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "sourceParent": "d588d1c395de3132805395f2708bed7535c1767d",
+  "changedProductPaths": [
+    "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+    "src/components/textbook/construction-lesson-reading.css"
+  ],
+  "compiledAndStorage": "UNCHANGED; N09r10 / N10r6; no forced reset",
+  "checks": {
+    "typecheck": "PASS",
+    "scopedLint": "PASS",
+    "relatedVitest": {
+      "files": 3,
+      "tests": 21,
+      "status": "PASS"
+    },
+    "capture": {
+      "status": "PASS",
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "images": 88,
+      "errors": [],
+      "scriptSHA256": "1ecdaf5a99c93f3cfdfad04da67ce26d0f1fdb5c1e7be3249b949fbc02f21c15"
+    }
+  },
+  "reviewA": "2 product files only; text tokens/math/gates/compiled/storage unchanged; publisher base/head full byte comparison: only SOURCE and two required hashes updated",
+  "reviewB": "13 fixed-source crops viewed (completed decimal/q11/q13 x4 widths and320decimal initial); no new STOP; prior dirty crops not reused as fixed source evidence",
+  "publisher": {
+    "pr": 137,
+    "head": "2a47e5cbb916bd9a95146733106bd17798109a75",
+    "mergeSHA": "04b823259a0873235e39099864d454330eed5d81",
+    "ci": "check and governance success",
+    "hostedStatus": "PENDING"
+  },
+  "actualUserBrowserReset": {
+    "status": "BLOCKED",
+    "reason": "Browser requires originating browser context; no local browser connection; separate test reset does not reset user device"
+  },
+  "workflowNext": "G3_HOST exact bytes/operations verification, then evaluate conditional acceptance and post-fix impact sweep; no formal Store PASSED/next or Gold/fit inferred"
+}

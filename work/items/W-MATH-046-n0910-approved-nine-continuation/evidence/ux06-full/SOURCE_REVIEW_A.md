@@ -282,3 +282,23 @@ G3の公開/配信検証完了と、本人が合意範囲を最初から最後�
 - /tmp/w046-ux06-ci-pages.zip：`68d69ba124ec7e9cf70993ef7c6ceb1f16a105eb739e2b9a1423ab4808d6e364`
 - /tmp/w046-ux06-hosted/ci-w046-release.json：`4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524`
 - /tmp/w046-ux06-hosted/ci-release.json：`da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7`
+
+
+### 段落区切り修正の限定impact監査 A（PR137）
+
+本人はreset後に穴が復帰することを確認し、先の空欄なし画面を回答済み表示だったと訂正した。今回の要求はN09/N10の段落区切りと本人端末での各教材reset。段落修正後なら全体を通せるという条件付き発言であり、本節時点の最終受入を先取りしない。
+
+Aは固定source `d588d1c395de3132805395f2708bed7535c1767d` と `6b439d0d31fcd46708c256ed23a391009ab73164` のGit tree差分を直接読み、変更pathが次の2つだけであることを確認した。
+
+- `src/components/textbook/ConstructionLessonReadingFlow.tsx`：SHA256 `736befadae05761100e62a24d644cb36b6d949f989c19f162b0c49b844abce0a`
+- `src/components/textbook/construction-lesson-reading.css`：SHA256 `0e056d35bc72192258605ab5bbf7a69a14f53074dac20a0372c4a571c821b9d8`
+
+LeadCopyはdecimalの『まず二つの数を』前・definitionの『根号』前だけをp分割し、既存Copyへ元のmath/term/textを順序通り渡す。明示6text境界とafter-text、lead間、node間に余白を付ける。本文文字列、数式、part、採点値、前提、gate、同じ導出のmathgroupと等号列は変更していない。共用rendererのため該当する旧版表示の余白にも及ぶが、旧版データや保存契約の変更ではない。
+
+2path以外のtreeが完全一致するため、NODE_DESIGN、N09/N10 compiledと旧snapshot、保護する積・商証明9node、N08/N11教材、保存・移行・reset実装は同一byte。さらにAはN09/N10 compiled、nestedLesson、nestedMigration、nestedLessonStorage、useAppStore、textbook、N0910RevisionPageをgit showで個別byte比較し一致を確認した。N09r10のcompiledHash `7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b`、N10r6のcompiledHash `6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879` は据え置き。教材revision・保存key/hash・namespaceを変える必要はなく、表示更新で自動初期化もしない。
+
+既回答を通常式として表示する既存動作は正常。本人端末resetは既存教材別操作で、直前ledgerをreset archiveへ保護し、新しい空ledgerとresetAtを作る。検証環境のresetは本人端末へのreset実施を意味しない。本節は保存処理と契約の不変を読取確認したもので、本人端末localStorageの実byteを取得・比較したとの主張ではない。
+
+PR137について、接続profile rrikunagasige-dot、対象repo1391122224、base e734337f1e18dd285f04f1b8ed63532ceff3b72f／head2a47e5cbb916bd9a95146733106bd17798109a75を照合済み。GitHubからbase/head完全fileを取得して全体比較し、main変更は `.github/workflows/deploy-pages.yml` のsource SHA三置換と `tools/release/w046-publish-check.mjs` のSOURCE／上記二hash三置換だけ。required46paths・namespace・公開前後検査・失敗時deploy停止・N08旧版/N11保護は同一内容を維持。full Work mergeは含まれない。
+
+rootからmerge後publisher `04b823259a0873235e39099864d454330eed5d81`、run41582855292が公開前操作検査中との連絡を受領。本節では新run成功や新source実配信を未確認のまま保持し、旧d588の配信証拠を6b439の公開証拠へ流用しない。新配信byte／CI artifact照合はrootの実行後に別途監査する。正式Store化、Gold/fit、本人最終受入は行っていない。Aの今回範囲は読取監査と本書追記のみ。

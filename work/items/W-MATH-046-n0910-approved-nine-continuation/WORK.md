@@ -1,4 +1,6 @@
 <!-- W046_CURRENT_START -->
+最新修正：本人page89b9b8f8の段落限定補修中。現状と次工程は [WORKFLOW_CURRENT.md](WORKFLOW_CURRENT.md) の現在地を優先。以下d588公開完了は前回履歴。
+
 # W046 — 現在地
 Status: VERIFYING
 Review: UX06-G3-HOSTED-VERIFIED / FINAL-REVIEW-READY / USER-PENDING

@@ -10,11 +10,13 @@
 
 ## 現在地
 
-UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
+本人page `89b9b8f8-6ab7-4bd2-bbda-72da611e4257` の最新指示：reset後に未回答の空欄を確認し、設計への指摘を撤回。N09/N10の段落だけを修正し、それが済めば全体を通せるという条件付き受入。回答済み表示を穴欠落と誤認した前pageのスクリーンショットを、新規穴設計の根拠にしない。
 
-- 実質の現在地：UX06本文CODE補完・G2再統合後、本人page ec054575…の固定d588既存Pages公開を実行。PR136の2file限定merge、publisher e734、run41569692346全32step success、実HTTP121files/46sourcehashとCIartifact両manifestのbyte完全一致を確認。現在は**G3_HOST技術完了→G3_FINAL本人実物確認**。[最終票/実URL/全scope](evidence/ux06-full/FINAL_APP_WALKTHROUGH.md)。N09r10/N10r6の本人playthroughはPENDING。代表再承認・公開再許可待ちへ戻さない。正式Store受理ではない。
-- 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
-- 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
+- 修正ループ R01/R02/R03→R06→R07。表示source `6b439d0d31fcd46708c256ed23a391009ab73164` は既公開d588からrenderer/CSSの2パスのみ変更。本文token・数学・穴・gate・compiled・revision・保存namespaceを保持。
+- Mが意味境界を指定、Aが数学/保存と公開2パスbyte差分を非作者審査、Bが理念/工程と実画像を監視。既存CODEで型/対象lint/21回帰と4幅88画像を検査。公開PR137のCI/governance成功。画像最終審査後にG3_HOSTへ進み、公開後の実配信byte/操作確認を行う。RUNNINGを公開成功と記さない。
+- 前回公開d588/publisher e734/run41569692346の技術成功証拠は履歴として保持。今回sourceの成功へ流用しない。
+- 本人ブラウザのBrowser接続はoriginating browser context不足で失敗。検証contextのresetと本人端末のresetを区別する。全員自動reset・namespace変更はしない。
+- 正式Storeの26イベント欠落に関する本人特例は保持。空Store・架空receipt・正式PASSED/next・Gold/fitを作らない。
 
 ## 最新照合（2026-11-03 JST）
 

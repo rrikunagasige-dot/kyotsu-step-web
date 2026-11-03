@@ -20,6 +20,20 @@ function Copy({ parts }: { parts: NestedCopy[] }) {
   return <>{parts.map((p, index) => p.type === 'math' ? <MathCopy key={index} latex={p.latex ?? ''} /> : p.type === 'term' || p.semanticRole === 'term' && p.usage === 'first_definition' && p.emphasis === 'black-bold' ? <strong key={index}>{p.text}</strong> : <span key={index}>{p.text}</span>)}</>
 }
 
+function LeadCopy({ nodeId, parts }: { nodeId: string; parts: NestedCopy[] }) {
+  const paragraphs: NestedCopy[][] = [[]]
+  for (const part of parts) {
+    const boundary = nodeId === 'n09-decimal-method' && part.type === 'text' ? part.text?.indexOf('まず二つの数を') ?? -1 : -1
+    if (boundary >= 0) {
+      paragraphs.at(-1)!.push({ ...part, text: part.text!.slice(0, boundary) })
+      paragraphs.push([{ ...part, text: part.text!.slice(boundary) }])
+    } else if (nodeId === 'n09-definition' && part.semanticRole === 'term' && part.text === '根号') {
+      paragraphs.push([part])
+    } else paragraphs.at(-1)!.push(part)
+  }
+  return <>{paragraphs.map((paragraph, index) => <p key={index} className="construction-lesson-lead reading-paragraph"><Copy parts={paragraph} /></p>)}</>
+}
+
 /** Anchor a tag to the visible math row, not to the prose or group bottom. */
 function TaggedMathRow({ number, children }: { number?: string; children: ReactNode }) {
   const row = useRef<HTMLDivElement>(null), tag = useRef<HTMLSpanElement>(null)
@@ -69,9 +83,19 @@ function TaggedMathRow({ number, children }: { number?: string; children: ReactN
   </div>
 }
 
+// Presentation boundaries only: keep the compiled lesson and answer bindings intact.
+const paragraphStarts = new Set([
+  'n09-01::ux05-rule-03',
+  'n09-decimal-method::ux06-proposal-row-06-intro',
+  'n09-decimal-method::ux06-proposal-row-07-intro',
+  'n09-decimal-method::ux06-proposal-row-08-intro',
+  'n10-q11-formula::ux06-proposal-row-05-intro',
+  'n10-q13-identity::ux06-proposal-row-04-intro',
+])
+
 function TextRow({ row, parts, onActivate }: { row: NestedRow; parts: PublicNestedPart[]; onActivate: () => void }) {
   const tokens = row.template.split(/(\{(?:mirror:)?[A-Za-z][A-Za-z0-9_.-]*\})/)
-  return <p className="construction-lesson-text-row" data-text-row-id={row.id}>{tokens.map((token, index) => {
+  return <p className={'construction-lesson-text-row' + (paragraphStarts.has(row.id) || row.id.endsWith('::ux06-after-text') ? ' construction-lesson-text-row--paragraph-start' : '')} data-text-row-id={row.id}>{tokens.map((token, index) => {
     const match = /^\{(mirror:)?([^}]+)\}$/.exec(token)
     if (!match) return <span key={index}>{token}</span>
     const part = parts.find(p => p.key === match[2])
@@ -155,7 +179,7 @@ function BoundConstructionLesson({ compiled, ledger, onAnswer, lesson }: Constru
   const renderNode = (item: typeof view.visible[number], readonly = false) => {
     const meta = nodeMeta(item.node.nodeId)
     return <div key={item.node.nodeId} className="construction-lesson-node" data-node-id={item.node.nodeId} data-node-resolved={item.resolved ? 'true' : 'false'}>
-      <p className="construction-lesson-lead reading-paragraph"><Copy parts={item.node.leadParts} /></p>
+      <LeadCopy nodeId={item.node.nodeId} parts={item.node.leadParts} />
       {(meta.assumptionsDisplay === 'in-context' ? [] : meta.assumptionParts ?? item.node.assumptions.map(text => [{ type: 'text' as const, text }])).map((parts, index) => <p className="construction-lesson-condition reading-paragraph" key={index}><Copy parts={parts} /></p>)}
       <NodeRows planningNode={meta} planningNodes={view.visible.map(item => ({ nodeId: item.node.nodeId, rows: item.rows, parts: item.parts }))} rows={item.rows} parts={item.parts} readonly={readonly} number={meta.equationNumber === undefined ? undefined : [meta.equationNumber, ...(meta.numberAliases ?? [])].join(' / ')} onActivate={readonly ? () => undefined : activate} idPrefix={readonly ? 'history-' : ''} />
       {item.node.displayExtras?.map((extra, index) => extra.kind === 'math' ? <div key={index} className="construction-lesson-extra"><NestedConstructionMath id={item.node.nodeId + '-extra-' + index} template={extra.latex} parts={[]} values={{}} certifiedKeys={[]} editableKey={null} onActivate={() => undefined} mode="readonly" /></div> : extra.kind === 'table' ? <div key={index} className="construction-lesson-extra"><table><caption>{extra.caption}</caption><thead><tr>{extra.headers.map((header, column) => <th scope="col" key={column}>{header}</th>)}</tr></thead><tbody>{extra.rows.map((cells, row) => <tr key={row}>{cells.map((cell, column) => <td key={column}><MathCopy latex={cell} /></td>)}</tr>)}</tbody></table></div> : <figure key={index} className="construction-lesson-extra" data-figure-id={extra.id}><img src={import.meta.env.BASE_URL + extra.src.replace(/^\//, '')} alt={extra.alt} data-figure-sha256={extra.sha256} /><figcaption>{extra.caption}</figcaption></figure>)}

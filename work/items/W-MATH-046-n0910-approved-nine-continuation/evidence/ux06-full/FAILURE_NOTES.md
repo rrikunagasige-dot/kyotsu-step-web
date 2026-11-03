@@ -15,3 +15,12 @@
 - G3の旧helperはMath italic/error faces/HTTP失敗を明示していなかった。Bの指摘により既存helperを最小補完し、実load/loaded/error0/HTTP>=400検出を追加。検査を弱めていない。
 - 別commandから起動したpreviewを後続commandが参照できず、公開前検査で接続拒否/manifest到達失敗が発生。原logを保存し製品不具合とは推定しない。server起動/到達確認/検査群を一つの既存script子process構成へまとめ、sourceを変えずに再実行した。
 - anonymous gitのmain取得は古いe494を返したため、現main権限/公開経路は接続GitHubで得たf4cとその原byteを採用した。古い公開設定を最新として採用していない。
+
+
+## 本人page89b9b8f8：回答済み表示と未回答表示を混同しない
+
+直前pageの完成式だけの画像について、主担当は回答済み状態の可能性を先に確かめず、穴設計不足へ議論を進めた。本人reset後に未回答の穴を確認し、設計自体への指摘を撤回した。今回の修正は段落だけ。画像を設計修正の根拠にする前に、unit/revision/source、回答状態、reset前後を照合する。正答後に通常数式へ戻す既存仕様を欠落と呼ばない。
+
+段落の改善では一文ごとに自動分割せず、一般式導出→具体適用、準備の目的変更、次判断開始の境界を指定。数式と直前の理由・同一導出内の等号列を保持。完成/未回答の両画像を使用する。共用rendererの変更なのでnative旧版/historyにも余白が作用する範囲を保護確認に含める。教材版/hash/namespaceの変更や全生徒の強制resetは不要。
+
+本人端末へBrowser接続できない場合、検証contextのresetを本人resetと報告しない。今回はoriginating browser context不足で接続失敗。既存の単元別resetは公開前後の別contextで動作確認する。

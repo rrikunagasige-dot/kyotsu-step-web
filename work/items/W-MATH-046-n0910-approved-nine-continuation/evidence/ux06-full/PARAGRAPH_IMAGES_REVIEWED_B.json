@@ -1,0 +1,227 @@
+{
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "scope": "13 crop images manually viewed. All88 capture results read; not all88 manually viewed. Dirty preliminary6 separate.",
+  "images": [
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "width": 320,
+      "nodeId": "n09-decimal-method",
+      "state": "initial",
+      "path": "/tmp/w046-paragraph-images/320-n09-decimal-method-initial.png",
+      "original": "/tmp/w046-paragraph-images/320-n09-decimal-method-initial-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 1027.171875,
+        "width": 266,
+        "height": 841.390625
+      },
+      "sha256": "a1e5a63066c1d4e33990dbfb508e974edb2cfea592408eb2799a2a7ce6b1aa44",
+      "fullPageSHA256": "e5f28739c4c9c6a82aef2e7a8888c2177832a2a6b989567db4e39b1c86261d55"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "width": 320,
+      "nodeId": "n09-decimal-method",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/320-n09-decimal-method-complete.png",
+      "original": "/tmp/w046-paragraph-images/320-n09-decimal-method-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 1027.171875,
+        "width": 266,
+        "height": 1608.1875
+      },
+      "sha256": "2dca4dbc237109429d28d1def37b4c1aefab1d3275cd76355b6a3f259c3ed6bf",
+      "fullPageSHA256": "7c7f1902e5232932d68d5f24c18d01471a43b78eacf857964fe37dfc2001d527"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 320,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/320-n10-q11-formula-complete.png",
+      "original": "/tmp/w046-paragraph-images/320-n10-q11-formula-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 1027.46875,
+        "width": 266,
+        "height": 1051.9375
+      },
+      "sha256": "75acbaf7ac6608bbc1b0e3f8b950b0e61dabbc178a6aa9ea2b4e0c8e049236b5",
+      "fullPageSHA256": "3ead9e23be5e1c826a3f6aef6127fc0b653b3916be5a6bd85aaea6c65fd2bd97"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 320,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/320-n10-q13-identity-complete.png",
+      "original": "/tmp/w046-paragraph-images/320-n10-q13-identity-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 1027.46875,
+        "width": 266,
+        "height": 1008.625
+      },
+      "sha256": "09c940a183b2c7a502e5fc92aadae4bcfcd3c1a2819d95d4ad6d7a1400756054",
+      "fullPageSHA256": "3a31da7bdfe52697843bfefed79a1eeb2eb489ab27b9706bf0acd20bbd2bd6c7"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "width": 390,
+      "nodeId": "n09-decimal-method",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/390-n09-decimal-method-complete.png",
+      "original": "/tmp/w046-paragraph-images/390-n09-decimal-method-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 922.328125,
+        "width": 336,
+        "height": 1457.28125
+      },
+      "sha256": "f7e2b8036897d309cdf9a381356658c7110f5e45aba44548f66ac0fdcad431b5",
+      "fullPageSHA256": "ea0680a204c307e4c2f9101425ed56b676282202094bf9368040f83f84df97ce"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 390,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/390-n10-q11-formula-complete.png",
+      "original": "/tmp/w046-paragraph-images/390-n10-q11-formula-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 933.625,
+        "width": 336,
+        "height": 812.171875
+      },
+      "sha256": "4b5d5919345e94ca2216b7b817acac98355fda2ca39fee40464803bc32474c1c",
+      "fullPageSHA256": "2a674f1d8f7881fa4b52e51ff65967af1b14a45eaabe840512896f09130fa78b"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 390,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/390-n10-q13-identity-complete.png",
+      "original": "/tmp/w046-paragraph-images/390-n10-q13-identity-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 933.625,
+        "width": 336,
+        "height": 810.265625
+      },
+      "sha256": "1d74dd9256ad6754d63135bbd548e9c44cf4445d143a4c95c7f57e5988ed151e",
+      "fullPageSHA256": "f6c6730a460ec5e5270465b1e3f0e0c94f733a2eda61cfe1c799112a030539a7"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "width": 430,
+      "nodeId": "n09-decimal-method",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/430-n09-decimal-method-complete.png",
+      "original": "/tmp/w046-paragraph-images/430-n09-decimal-method-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 925.4375,
+        "width": 376,
+        "height": 1327.71875
+      },
+      "sha256": "5a3dde074d67d7fd4a19cfe4e4ca9838e80c45703d896e3f05265081f290fd30",
+      "fullPageSHA256": "40f625935642ce74d669b1c1c0a9415b74512133843d459c1848b998a064c378"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 430,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/430-n10-q11-formula-complete.png",
+      "original": "/tmp/w046-paragraph-images/430-n10-q11-formula-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 936.734375,
+        "width": 376,
+        "height": 779.78125
+      },
+      "sha256": "939dac88d302ccb5d765068b8f1ad006955ef0b375c55738b30c34928a20dc13",
+      "fullPageSHA256": "d5d7779230b1c6e65c33923e96f2974b79110681288aa763f0c35b0ea0d551ec"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 430,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/430-n10-q13-identity-complete.png",
+      "original": "/tmp/w046-paragraph-images/430-n10-q13-identity-complete-full-page.png",
+      "bounds": {
+        "x": 27,
+        "y": 936.734375,
+        "width": 376,
+        "height": 810.265625
+      },
+      "sha256": "3737aa7732998c4b5b79d523d4b549c70fe4947b5c9fb40d5d53047baa103684",
+      "fullPageSHA256": "d9d0ff6253c7e406c70551339c27405bbc0bcc016be24558f23cabc45e3c29e8"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b",
+      "width": 1440,
+      "nodeId": "n09-decimal-method",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/1440-n09-decimal-method-complete.png",
+      "original": "/tmp/w046-paragraph-images/1440-n09-decimal-method-complete-full-page.png",
+      "bounds": {
+        "x": 416.59375,
+        "y": 842.953125,
+        "width": 606.8125,
+        "height": 1036.203125
+      },
+      "sha256": "3ffbb33ebb53f5916eef8663cca8f42e2ec1fc58f1be6f904c6749f4a86d342c",
+      "fullPageSHA256": "602310171a14a31616db66151e30f9df008eeb49d0edc42eef0e0ef68ac6668a"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 1440,
+      "nodeId": "n10-q11-formula",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/1440-n10-q11-formula-complete.png",
+      "original": "/tmp/w046-paragraph-images/1440-n10-q11-formula-complete-full-page.png",
+      "bounds": {
+        "x": 416.59375,
+        "y": 878.25,
+        "width": 606.8125,
+        "height": 577.828125
+      },
+      "sha256": "218c19514fd6fddcd27b98b2c5a43540bc81ace880539e7d56e449f71a10a8db",
+      "fullPageSHA256": "198c7c0351bcfcb9ce150a033592bdd4a649fcd44ecd7a8b091fdd352e8cf1ef"
+    },
+    {
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879",
+      "width": 1440,
+      "nodeId": "n10-q13-identity",
+      "state": "complete",
+      "path": "/tmp/w046-paragraph-images/1440-n10-q13-identity-complete.png",
+      "original": "/tmp/w046-paragraph-images/1440-n10-q13-identity-complete-full-page.png",
+      "bounds": {
+        "x": 416.59375,
+        "y": 878.25,
+        "width": 606.8125,
+        "height": 517.671875
+      },
+      "sha256": "57a26708946602fc8426c774ea28db16384ca6ba879e65e20143cf6d6bef9c02",
+      "fullPageSHA256": "3b799d4612a838aa360eb45db1cfea33d1e417c7a2e8b8f1960167e5b0f3024c"
+    }
+  ]
+}

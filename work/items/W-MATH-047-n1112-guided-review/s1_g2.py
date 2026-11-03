@@ -2,6 +2,8 @@
 import sys,json,hashlib
 from pathlib import Path
 B=Path(__file__).resolve().parent;R=B.parents[2];sys.path.insert(0,str(R/'workflow'))
+from restore_native_snapshots import restore
+restore()
 from runtime import Runtime
 from runner import run_code
 from production import ai_request

@@ -1,0 +1,13 @@
+{
+  "kind": "LOSSLESS_NATIVE_SNAPSHOT_ARCHIVE",
+  "files": [
+    {
+      "name": "4c3b861000d949b480cf37311f27f200efa74dcbde6b0356d6ba27e1c3df2dc2.json",
+      "archive": "4c3b861000d949b480cf37311f27f200efa74dcbde6b0356d6ba27e1c3df2dc2.json.gz",
+      "bytes": 39987327,
+      "rawSHA256": "efcab3c148de3ff32a724040bbef2bfbe0b0a5d3d9a8cfa1e0cacb4f23ecf092",
+      "archiveSHA256": "15d1bf7dc702ca3fb3d414febe57e9599887869efe79dc5c174a4d4d93e09be8",
+      "nativeCanonicalDigest": "4c3b861000d949b480cf37311f27f200efa74dcbde6b0356d6ba27e1c3df2dc2"
+    }
+  ]
+}

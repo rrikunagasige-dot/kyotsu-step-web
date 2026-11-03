@@ -6,7 +6,11 @@ Status: VERIFYING / N12確認①了承・両G2正式PASS / G3公開設定4path�
 
 G3前確認でmain04b823 publisherが旧source6b439を固定し、W041の旧protected20項目中N11二hashだけが承認版と異なるため検査停止することを実再現。他18項目とW046required46は同byte。旧検査を外さず、明示した新版契約で全69pathを固定する公開設定4path案を作成。G3_PUBLISHER_PROPOSAL.md / G3_PUBLISHER_PATCH.json / G3_PUBLISHER_DRAFT/が具体案。A/B静的審査と限定6検査PASS、実publisher CI/build/browser/配信成功は未実施。
 
+技術Work W-TECH-052はT01分析を正式受理しT02_APPROVAL待ちです。教材W047のplan/承認は変更せず、今回の承認を新4path scopeへ転用していません。
+
 次は新scopeの実承認後、main起点publisher branchで4pathだけ適用して公開なし実dry-run。publisher branch push/manual既定trueは配送6stepをskipする。main merge/manualfalse/Pages公開許可は今回のscope承認へ含めず、実証が揃った後に別途確認。既承認教材内容は変更しない。N11/N12の最終本人アプリ確認は公開後に一回。
+
+再開時のCODE入口：`python work/items/W-MATH-047-n1112-guided-review/restore_native_snapshots.py` を先に実行します。技術Workの原source snapshotは巨大なため、共有Runtimeを変えずlossless gzipで保存。CODEがraw SHA256とnative canonical digestを照合し、元の同一bytesを正規artifact pathへ復元してからRuntimeを使います。現行s1_continue/s1_g2入口は自動復元します。snapshotの削除/改変やguard緩和ではありません。
 
 以下は前checkpointまでの履歴です。
 

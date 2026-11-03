@@ -1,7 +1,7 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "3969911417f3146c0c60cf655ecb7076fa949c4aa33efb06d6a0f5e0faf5eac0",
+  "ledger_head": "a5360d3aff4d2a85c599c6930e77d09b49980933f2f8247272510ed1b770138a",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
@@ -11,25 +11,19 @@
     "task": {
       "work_id": "W-MATH-047",
       "node": {
-        "id": "G2_AUDIT@n11",
-        "stage_kind": "G2_AUDIT",
-        "contract_kind": "G2_AUDIT",
-        "actor": "AI",
+        "id": "G3_HOST@n11",
+        "stage_kind": "G3_HOST",
+        "contract_kind": "G3_HOST",
+        "actor": "TOOL",
         "depends_on": [
-          "R07_SEMANTIC@n11"
+          "G2_AUDIT@n11"
         ],
-        "required": [
-          "audit_rows",
-          "release_readiness",
-          "impact_sweep_completion",
-          "audit_method",
-          "unknowns"
-        ],
+        "required": [],
         "block": null,
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "pre-release",
-        "priority": 2,
+        "phase": "release",
+        "priority": 4,
         "source_refs": [],
         "protected_refs": [
           "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
@@ -50,30 +44,15 @@
           "public/assets/math/textbook/numbers/n12-f03.png"
         ],
         "capability_requests": [
-          "protected.verify",
-          "impact.inventory"
+          "release.verify"
         ],
         "required_code_receipts": [
-          "protected.verify",
-          "impact.inventory"
+          "release.verify"
         ],
-        "required_ai_receipts": [
-          "meaning-review"
-        ],
-        "team_requirements": [
-          {
-            "claimRef": "integrated-release",
-            "facet": "render",
-            "firstPass": true,
-            "independent": true,
-            "reviewKind": "learner-visible-review",
-            "sourceFirst": true,
-            "stage_kind": "G2_AUDIT"
-          }
-        ]
+        "required_ai_receipts": []
       },
-      "task_id": "4f43f8f6120e2e8c2d7b2a2d9a6e218d267d2392585327ca536f0cedebda5c73",
-      "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+      "task_id": "52fd624b15821391e65069084e047c15ecaf4c81957c2e75d6d7e1ec2a240c43",
+      "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
       "rules": {
@@ -127,11 +106,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
       },
       "previous_results": {
-        "R07_SEMANTIC@n11": {
+        "G2_AUDIT@n11": {
           "actor": "capability-runner",
-          "artifact": "3620fc491973a72ac5b7ceea422fd1547fe0ae563c060eccd798571d3d1e4ec1",
-          "input_hash": "c447db25d0a13cf2bc9f1746c05208e574567dfbba1155a2a86abadcbb9d9205",
-          "node": "R07_SEMANTIC@n11",
+          "artifact": "6663dd2486d4b4f0903df8a66f9b4214b7c8b30ad258fa89dd878aca06dcf130",
+          "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+          "node": "G2_AUDIT@n11",
           "verdict": "PASS"
         }
       },
@@ -1310,7 +1289,7 @@
           "stage_kind": "G2_AUDIT"
         }
       ],
-      "status": "INVALIDATED"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n11",
@@ -1614,7 +1593,7 @@
           "stage_kind": "G2_AUDIT"
         }
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n12",
@@ -1978,16 +1957,16 @@
       "work": "W-MATH-047"
     },
     {
-      "id": "W-MATH-037",
-      "work": "W-MATH-037",
-      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "id": "W-MATH-037",
+      "work": "W-MATH-037",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1999,16 +1978,9 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-047",
-      "work": "W-MATH-047",
-      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -2016,6 +1988,13 @@
       "id": "W-MATH-038",
       "work": "W-MATH-038",
       "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-047",
+      "work": "W-MATH-047",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -2033,7 +2012,8 @@
     "W-TECH-048",
     "W-TECH-049",
     "W-TECH-050",
-    "W-TECH-051"
+    "W-TECH-051",
+    "W-TECH-052"
   ],
   "capability_receipts": [
     {
@@ -3955,6 +3935,26 @@
       "input_hash": "386286b0a990e7e0cc6f5abd819b15e34f3e91d961805f2083cdfdc464de10cb",
       "node": "R07_SEMANTIC@n12",
       "receipt": "cddc56c5aad6e5145316b43a1b175a741a4b6895a1db7ac92d9647fde63a5e32"
+    },
+    {
+      "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+      "node": "G2_AUDIT@n11",
+      "receipt": "9ad30137db34fffeb868f171a8bb3975492678f93a8b142962ff70bbc649c08d"
+    },
+    {
+      "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+      "node": "G2_AUDIT@n11",
+      "receipt": "d987cbd8414f60414124ad5a16ccb99c14d4463503aabc9f1c2e0ddf858fcafb"
+    },
+    {
+      "input_hash": "781d215d2b2a0e688aa4568f2bca4eb81ffe81cd953ee9fd63c9fd3d02156901",
+      "node": "G2_AUDIT@n12",
+      "receipt": "a7eebba3b67305d3ca3c2667d721462c31d6a0263be0eb18313eb8fcd210c1bb"
+    },
+    {
+      "input_hash": "781d215d2b2a0e688aa4568f2bca4eb81ffe81cd953ee9fd63c9fd3d02156901",
+      "node": "G2_AUDIT@n12",
+      "receipt": "1e50a1fa45d9a02fcaf56de0c37ded8c7174f0da5159b5de4194b72c6e9f5caa"
     }
   ],
   "release_acceptance": {
@@ -5567,6 +5567,146 @@
         "resolutionEvidenceRef": "3cb332859d4a8bc84945c6139d8bc3d7b3bebc50a30a1b5548331f15cd3a14ed",
         "resolvesOutputRef": "93d422b5c16c5319f603ce47470af43b7f64e27fa851df3d047ee635f4c4d062",
         "outputRef": "939174058d41102c80d8e8289c995cd9388dc2c00f933e5edab698d43b854a56"
+      },
+      {
+        "affectedRefs": [
+          "n11-tg-divide",
+          "n11-tg-final",
+          "n11-06"
+        ],
+        "block": null,
+        "claimRef": "integrated-release",
+        "evidenceRefs": [
+          "7a72ed11-eedc-41a6-ac47-363a8334941a",
+          "0b0531d2-fcd0-4dea-ac3a-a1cf511431c9",
+          "0055d9b3-7c40-4719-ae13-e431d2454774",
+          "b1f5ceb5-4ac8-4bd6-b005-9d51e11bf97d",
+          "d33ec4b0-f5fa-4834-8b90-5f2c032874f9",
+          "a14ee9a7-9b56-4e40-8ac2-701ddf11c5c3",
+          "b5ea436a-eb05-4059-bf87-a4aa77e44b4b",
+          "d9464197-aeb9-412d-a49a-5425b0dabc4b",
+          "735df94a-d57e-4c1d-a2da-a2ebecd4d2e1",
+          "fe394685-b68d-43c2-ab88-451f723a7949",
+          "b3cf3450-ea5a-4a05-aeab-daace5b9f3ac",
+          "4ae90fe0-f40f-42db-bde6-c91c67b1ace8",
+          "0177cdd5-aa54-49e7-b7ae-84434c21b139",
+          "46318a7c-df3e-4ad0-8029-86b1cb9ef712",
+          "3bde1d27-9d5b-49bf-9472-e34bb73b8fc5",
+          "8ffd539d-70a3-4c05-9aec-5bf654e7b92a",
+          "375199e8-6b39-4898-9de5-4d95ef9c23a8",
+          "e6a7cfeb-5920-4d1b-a3f0-d29a0c6574c9",
+          "650ac302-167a-4fd1-ad46-d1ecb7fe721a",
+          "909d5bd3-c740-4d64-8935-4f5a008050bc",
+          "06d30047-7269-427a-ba6f-6bfc0e75b7f9",
+          "2a515e72-eebf-4b5c-9bc8-379c1a32d71b",
+          "66b446ea-24e5-4eb7-a3ec-23ac99fc1c61",
+          "f6c050c2-6335-47a5-9f0c-421054b6ff91",
+          "66ab5690-12ad-438c-9692-5c6858e78c72",
+          "68317441-c89c-4b07-9b39-0eb570b77b6c",
+          "d99179ef-9067-49ae-bf98-83ca56d51769",
+          "f183e121-4368-4b75-b0fe-b7da21afa4ce",
+          "1544dad1-7c52-4c2a-a4cd-920d3a4df2e8",
+          "8f396443-42b1-4724-9448-305422df0eff",
+          "a504ed1d-2103-4dc5-a9ee-66da29b232c5",
+          "cb2ccf3a-61af-4a89-807b-fd91f3bf229e",
+          "b78fcc98-e398-4ce9-83eb-6d9771754cb3",
+          "7883845d-c656-4875-92d4-740b1f22b8be",
+          "a57381e9-be48-4c56-a2aa-c37bae6b6d45",
+          "2e768078-d42b-42f0-bf0c-1e3dd874b1ac",
+          "36e3bdc0-dd92-4ebc-ab39-97542c31d591",
+          "954b62bc-ac2c-4d49-b57f-2f90ae97c2d1",
+          "363a718e-78c3-4369-9ea7-b0c106a39fe0",
+          "8d64fd4b-b629-4db5-bfe6-e763f3d2ba28",
+          "89f4ff2e-fa6d-442b-ae84-1cb433d7fe8e",
+          "da6c4772-9ca0-4bbd-9820-dda9b99fc01f",
+          "f29f6aee-81a0-41ee-b54f-ef3403869380",
+          "cdb79b30-9bb7-4878-8ffe-338f2c672c16",
+          "a5ae2c38-ca2e-41be-aedd-20aaac24326b",
+          "6da67f1d-6afd-482e-8c59-a873040a2af3",
+          "2dade434-38e1-441d-b939-4cfce9f07083",
+          "e24517f6-bbc8-4762-9e9c-7c3f0cbc8969",
+          "ed40b297-9ad3-4ca3-883b-b54a9fcb5eeb",
+          "43fe862e-c32b-4e68-bee8-e8b90240162b"
+        ],
+        "facet": "render",
+        "findingId": "G2-B-L01",
+        "inputHash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+        "node": "G2_AUDIT@n11",
+        "reason": "Exact current R1 row sourceNode/interactionRef n11-06 holds sole quotient slot at S3; S4 visibleAfter additionally requires n11-06 and has no slot. Actual pending/wrong across4widths hide completed7/3 before correct; correct shows division result thenx<7/3 numbered16, followed by boundary task. Canonical grading39/109,graphs/alias stable. Prior original failure is retained, not erased.",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "f7eb5c505885af0b8f0c7faf98cb031b69e137f991a5a2881b0914be02625ffe",
+        "resolvesOutputRef": "93d422b5c16c5319f603ce47470af43b7f64e27fa851df3d047ee635f4c4d062",
+        "outputRef": "ff5de059946caf8aff7c0a82ef661a0061140acd3af13ddf5550568eb701ccaf"
+      },
+      {
+        "affectedRefs": [
+          "n11-tg-divide",
+          "n11-tg-final",
+          "n11-06"
+        ],
+        "block": null,
+        "claimRef": "integrated-release",
+        "evidenceRefs": [
+          "7a72ed11-eedc-41a6-ac47-363a8334941a",
+          "0b0531d2-fcd0-4dea-ac3a-a1cf511431c9",
+          "0055d9b3-7c40-4719-ae13-e431d2454774",
+          "b1f5ceb5-4ac8-4bd6-b005-9d51e11bf97d",
+          "d33ec4b0-f5fa-4834-8b90-5f2c032874f9",
+          "a14ee9a7-9b56-4e40-8ac2-701ddf11c5c3",
+          "b5ea436a-eb05-4059-bf87-a4aa77e44b4b",
+          "d9464197-aeb9-412d-a49a-5425b0dabc4b",
+          "735df94a-d57e-4c1d-a2da-a2ebecd4d2e1",
+          "fe394685-b68d-43c2-ab88-451f723a7949",
+          "b3cf3450-ea5a-4a05-aeab-daace5b9f3ac",
+          "4ae90fe0-f40f-42db-bde6-c91c67b1ace8",
+          "0177cdd5-aa54-49e7-b7ae-84434c21b139",
+          "46318a7c-df3e-4ad0-8029-86b1cb9ef712",
+          "3bde1d27-9d5b-49bf-9472-e34bb73b8fc5",
+          "8ffd539d-70a3-4c05-9aec-5bf654e7b92a",
+          "375199e8-6b39-4898-9de5-4d95ef9c23a8",
+          "e6a7cfeb-5920-4d1b-a3f0-d29a0c6574c9",
+          "650ac302-167a-4fd1-ad46-d1ecb7fe721a",
+          "909d5bd3-c740-4d64-8935-4f5a008050bc",
+          "06d30047-7269-427a-ba6f-6bfc0e75b7f9",
+          "2a515e72-eebf-4b5c-9bc8-379c1a32d71b",
+          "66b446ea-24e5-4eb7-a3ec-23ac99fc1c61",
+          "f6c050c2-6335-47a5-9f0c-421054b6ff91",
+          "66ab5690-12ad-438c-9692-5c6858e78c72",
+          "68317441-c89c-4b07-9b39-0eb570b77b6c",
+          "d99179ef-9067-49ae-bf98-83ca56d51769",
+          "f183e121-4368-4b75-b0fe-b7da21afa4ce",
+          "1544dad1-7c52-4c2a-a4cd-920d3a4df2e8",
+          "8f396443-42b1-4724-9448-305422df0eff",
+          "a504ed1d-2103-4dc5-a9ee-66da29b232c5",
+          "cb2ccf3a-61af-4a89-807b-fd91f3bf229e",
+          "b78fcc98-e398-4ce9-83eb-6d9771754cb3",
+          "7883845d-c656-4875-92d4-740b1f22b8be",
+          "a57381e9-be48-4c56-a2aa-c37bae6b6d45",
+          "2e768078-d42b-42f0-bf0c-1e3dd874b1ac",
+          "36e3bdc0-dd92-4ebc-ab39-97542c31d591",
+          "954b62bc-ac2c-4d49-b57f-2f90ae97c2d1",
+          "363a718e-78c3-4369-9ea7-b0c106a39fe0",
+          "8d64fd4b-b629-4db5-bfe6-e763f3d2ba28",
+          "89f4ff2e-fa6d-442b-ae84-1cb433d7fe8e",
+          "da6c4772-9ca0-4bbd-9820-dda9b99fc01f",
+          "f29f6aee-81a0-41ee-b54f-ef3403869380",
+          "cdb79b30-9bb7-4878-8ffe-338f2c672c16",
+          "a5ae2c38-ca2e-41be-aedd-20aaac24326b",
+          "6da67f1d-6afd-482e-8c59-a873040a2af3",
+          "2dade434-38e1-441d-b939-4cfce9f07083",
+          "e24517f6-bbc8-4762-9e9c-7c3f0cbc8969",
+          "ed40b297-9ad3-4ca3-883b-b54a9fcb5eeb",
+          "5ceea10f-86cb-41b6-b1bb-1f7a0835d5bf"
+        ],
+        "facet": "render",
+        "findingId": "G2-B-L01",
+        "inputHash": "781d215d2b2a0e688aa4568f2bca4eb81ffe81cd953ee9fd63c9fd3d02156901",
+        "node": "G2_AUDIT@n12",
+        "reason": "Exact current R1 row sourceNode/interactionRef n11-06 holds sole quotient slot at S3; S4 visibleAfter additionally requires n11-06 and has no slot. Actual pending/wrong across4widths hide completed7/3 before correct; correct shows division result thenx<7/3 numbered16, followed by boundary task. Canonical grading39/109,graphs/alias stable. Prior original failure is retained, not erased.",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "46c29f2ef65c96b2f7ea7140c0a27df562a374148c2c4196789ae24169b49e7a",
+        "resolvesOutputRef": "93d422b5c16c5319f603ce47470af43b7f64e27fa851df3d047ee635f4c4d062",
+        "outputRef": "994fa8ed5d3ac852dbd46afb27fa5bbfaee25fa420399c08def37492ece7edcf"
       }
     ],
     "tasks": [
@@ -6576,6 +6716,46 @@
           "authorRationaleVisibleAtFirstPass": false,
           "forkMode": "filtered",
           "priorExposure": "Original source, P006/R1 plans and inactive/earlier component images known. Actual new source-bound CI PNGs are reviewed before author diagnostics/reports. B assisted capture/import tools, not lesson content. Not blind or model independent."
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "d9c9423c04306423eb3bd96307e5e0b5ca3edd5a61aebf9ba17a1de667479504",
+        "assignmentId": "w047-s1-g2-n11-0a1de7b33bd9",
+        "node": "G2_AUDIT@n11",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "integrated-release"
+        ],
+        "packetHash": "be7fa1826007e9a6f2c4f6781c495f094ad1b6823fda57c59bc6ec74278f9eaf",
+        "assignmentHash": "46b39b827358feb7f48ca6dcc83f0b152c53ec28f11ce2ebedc8e85d85cde764",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered",
+          "priorExposure": "P006/R1/inactive/component R07 known. First observation of current both-unit integrated target, not blind. B capture/import tool contributor, not lesson author. Same actual integrated review transcribed per native unit, not two independent evaluations."
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "745a2ea36778799ca0adbfbfdb15b060391d4619a1b9f84a3038732d184374c0",
+        "assignmentId": "w047-s1-g2-n12-781d215d2b2a",
+        "node": "G2_AUDIT@n12",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "integrated-release"
+        ],
+        "packetHash": "1fb2dd6400ac10072944a367c81596f70d75f6f677c644d38a3245acf5c634a8",
+        "assignmentHash": "02b4db1a1804979b4fbbe0e922bf480230070802aa933f8f101d784e4f4727c6",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered",
+          "priorExposure": "P006/R1/inactive/component R07 known. First observation of current both-unit integrated target, not blind. B capture/import tool contributor, not lesson author. Same actual integrated review transcribed per native unit, not two independent evaluations."
         },
         "status": "COMPLETED"
       }

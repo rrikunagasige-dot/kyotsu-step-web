@@ -1,0 +1,13 @@
+{
+  "status": "PASS_LOSSLESS_STORAGE_ONLY",
+  "checks": [
+    "Missing snapshot restored to exact original bytes and native digest",
+    "Idempotent existing original bytes checked",
+    "Tampered archive rejected before native path creation"
+  ],
+  "bytes": 39987327,
+  "gzipBytes": 2113626,
+  "nativeDigest": "4c3b861000d949b480cf37311f27f200efa74dcbde6b0356d6ba27e1c3df2dc2",
+  "sharedGuardChanged": false,
+  "transportReason": "create_blob transport rejected original 39987327-byte snapshot because MCP request body exceeds16MiB; lossless gzip archive and exact restoration preserve original native evidence"
+}

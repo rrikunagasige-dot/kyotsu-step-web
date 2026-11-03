@@ -2,6 +2,8 @@
 import sys,runpy,json,os
 from pathlib import Path
 B=Path(__file__).resolve().parent;R=B.parents[2];sys.path[:0]=[str(R/'workflow'),str(B)];os.environ['PYTHONPATH']='/tmp/w046-sympy'
+from restore_native_snapshots import restore
+restore()
 from runtime import Runtime
 import views
 r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-047'

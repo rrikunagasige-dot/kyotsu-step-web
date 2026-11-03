@@ -1,48 +1,55 @@
 {
+  "status": "BOTH_G2_PASSED_G3_PUBLISHER_SCOPE_APPROVAL_REQUIRED",
   "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
-  "nativeNext": "G2_AUDIT@n11",
-  "manualCheckpoint": "N12 Gate1 actual GitHub images before cross-unit G2, under main04b823 WORK_SYSTEM12A",
-  "nativeStatuses": {
-    "R07_VERIFY@n11": "PASSED",
-    "R07_SEMANTIC@n11": "PASSED",
-    "R07_VERIFY@n12": "PASSED",
-    "R07_SEMANTIC@n12": "PASSED",
-    "G2_AUDIT@n11": "INVALIDATED",
-    "G2_AUDIT@n12": "PENDING"
+  "nativeNext": "G3_HOST@n11",
+  "technicalWork": "W-TECH-052",
+  "technicalNext": "T02_APPROVAL",
+  "g2": {
+    "G2_AUDIT@n11": "PASSED",
+    "G2_AUDIT@n12": "PASSED"
   },
-  "claims": {},
-  "ledgerHead": "3969911417f3146c0c60cf655ecb7076fa949c4aa33efb06d6a0f5e0faf5eac0",
-  "applicationAccepted": false,
+  "visualN12": "ACCEPTED_ed7d140b",
+  "proposal": "P-W047-G3-01",
+  "proposalHash": "89adee55d77d164b0aef79881fac9931bc285fd18979196a27e2e3726d1c9e2c",
+  "publisherPaths": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "existsBefore": true,
+      "beforeSHA256": "ae547b88f391102484cf05acf263e4ed60ce0706c65e4040dee282af575f9603",
+      "afterSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml"
+    },
+    {
+      "path": "tools/release/w046-publish-check.mjs",
+      "existsBefore": true,
+      "beforeSHA256": "bf9295f9927eb058f801c045d344c06d5ec7bba8b8cc766e94e380b069312acf",
+      "afterSHA256": "e5b47e807e8cdceac463084cc907299d363a6587624026ae0a0562563a5ac6b7",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w046-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-publish-check.mjs",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "5f6381fb3261d35ed7465ff98153da833edefb318d011ec7a3dd4ed27bc7fad1",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-release-contract.json",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-release-contract.json"
+    }
+  ],
+  "fullPublisherDryRunExecuted": false,
   "published": false,
-  "visualN11": "ac2ac082 unchanged display approval retained; new source/CI correspondence independently checked",
-  "visualN12": "REQUESTED_NOT_YET_ACCEPTED",
-  "runId": 41657273611,
-  "artifactId": 13240616794,
-  "artifactDigest": "sha256:abdffd3fad108f5419be263ec150ba60039a7ea896ee0306729763932ead9801",
-  "N11": {
-    "answers": 39,
-    "wrongOptions": 109,
-    "widths": [
-      320,
-      390,
-      430,
-      1440
-    ]
-  },
-  "N12": {
-    "answers": 46,
-    "wrongOptions": 127,
-    "widths": [
-      320,
-      390,
-      430,
-      1440
-    ]
-  },
-  "roles": {
-    "M": "Only Store/Git writer",
-    "A": "/root/w047_review_design",
-    "B": "/root/w047_layout_sourcefirst"
-  },
-  "rejectedIncompleteSource": "087842ac5b534a719da56d5027d5fdbb304c5615 / run41655234217; original logs retained, no native CI/PASS registered"
+  "mainUnchanged": "04b823259a0873235e39099864d454330eed5d81",
+  "appAccepted": false,
+  "actualUserAppFinalCheckPlanned": "One N11/N12 combined playthrough after actual hosting proof; not performed now",
+  "nextAfterScopeApproval": [
+    "Main-based publisher branch exactly4paths",
+    "Automatic no-deployment dry-run CI",
+    "A/B actual evidence verification",
+    "Separate concrete main merge and Pages publication permission"
+  ]
 }

@@ -1,25 +1,19 @@
 {
   "work_id": "W-MATH-047",
   "node": {
-    "id": "G2_AUDIT@n11",
-    "stage_kind": "G2_AUDIT",
-    "contract_kind": "G2_AUDIT",
-    "actor": "AI",
+    "id": "G3_HOST@n11",
+    "stage_kind": "G3_HOST",
+    "contract_kind": "G3_HOST",
+    "actor": "TOOL",
     "depends_on": [
-      "R07_SEMANTIC@n11"
+      "G2_AUDIT@n11"
     ],
-    "required": [
-      "audit_rows",
-      "release_readiness",
-      "impact_sweep_completion",
-      "audit_method",
-      "unknowns"
-    ],
+    "required": [],
     "block": null,
     "release_unit": "n11",
     "watch": "integration",
-    "phase": "pre-release",
-    "priority": 2,
+    "phase": "release",
+    "priority": 4,
     "source_refs": [],
     "protected_refs": [
       "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
@@ -40,30 +34,15 @@
       "public/assets/math/textbook/numbers/n12-f03.png"
     ],
     "capability_requests": [
-      "protected.verify",
-      "impact.inventory"
+      "release.verify"
     ],
     "required_code_receipts": [
-      "protected.verify",
-      "impact.inventory"
+      "release.verify"
     ],
-    "required_ai_receipts": [
-      "meaning-review"
-    ],
-    "team_requirements": [
-      {
-        "claimRef": "integrated-release",
-        "facet": "render",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
-        "stage_kind": "G2_AUDIT"
-      }
-    ]
+    "required_ai_receipts": []
   },
-  "task_id": "4f43f8f6120e2e8c2d7b2a2d9a6e218d267d2392585327ca536f0cedebda5c73",
-  "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+  "task_id": "52fd624b15821391e65069084e047c15ecaf4c81957c2e75d6d7e1ec2a240c43",
+  "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
   "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
   "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "rules": {
@@ -117,11 +96,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
   },
   "previous_results": {
-    "R07_SEMANTIC@n11": {
+    "G2_AUDIT@n11": {
       "actor": "capability-runner",
-      "artifact": "3620fc491973a72ac5b7ceea422fd1547fe0ae563c060eccd798571d3d1e4ec1",
-      "input_hash": "c447db25d0a13cf2bc9f1746c05208e574567dfbba1155a2a86abadcbb9d9205",
-      "node": "R07_SEMANTIC@n11",
+      "artifact": "6663dd2486d4b4f0903df8a66f9b4214b7c8b30ad258fa89dd878aca06dcf130",
+      "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
+      "node": "G2_AUDIT@n11",
       "verdict": "PASS"
     }
   },

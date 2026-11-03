@@ -1,0 +1,116 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念/手順/承認scope監視",
+  "verdict": "PASS_STATIC_INACTIVE_PROPOSAL_ONLY",
+  "firstPass": false,
+  "authorSeparation": true,
+  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "candidateSource": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "patchManifestSHA256": "8473b68caa5be5a6bdfa5df8384820bd6f09d35cde63ccfe8224aea55175c165",
+  "approvalRequired": {
+    "type": "main起点publisher branch用の新4path設定/非公開検証scopeの具体承認（main merge/Pages公開許可とは別）",
+    "contentReapprovalRequired": false,
+    "reason": "P006/R1教材本文/採点/保存の再設計ではない。一方S1_G3_BINDING_PREFLIGHTはcandidateScopeApprovalCoversMainPublisherPaths=falseで、既存教材scopeはmain publisher四pathを覆わない。4pathのbefore/after hash付き未適用差分と公開先/sourceを提示して実承認へ結ぶ必要がある。",
+    "notGenerated": "今回の監視は承認・merge・Pages公開・最終受入・qualitylabelを生成しない。"
+  },
+  "paths": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "existsBefore": true,
+      "beforeSHA256": "ae547b88f391102484cf05acf263e4ed60ce0706c65e4040dee282af575f9603",
+      "afterSHA256": "8bae788ad991992917022cbbb3d5d8cad0e82ee3fc4e2d70d53cdefbb7e8c488",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml"
+    },
+    {
+      "path": "tools/release/w046-publish-check.mjs",
+      "existsBefore": true,
+      "beforeSHA256": "bf9295f9927eb058f801c045d344c06d5ec7bba8b8cc766e94e380b069312acf",
+      "afterSHA256": "e5b47e807e8cdceac463084cc907299d363a6587624026ae0a0562563a5ac6b7",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w046-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-publish-check.mjs",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "5f6381fb3261d35ed7465ff98153da833edefb318d011ec7a3dd4ed27bc7fad1",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-release-contract.json",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-release-contract.json"
+    }
+  ],
+  "checks": [
+    {
+      "id": "G3-A01",
+      "status": "CONFIRMED",
+      "reason": "patch manifestはmain04b823からdeploy-pages既存更新、w046-publish-check既存更新、w047-publish-check新規、w047-release-contract新規の4pathsのみ。既存2before SHAをmain実bytes、新規2不存在、全4draft after SHAを独立照合。branch全体mergeは含まれない。"
+    },
+    {
+      "id": "G3-A02",
+      "status": "CONFIRMED",
+      "reason": "W041旧RELEASE_CONTRACT.json/旧release_manifest.mjsのbytesSHAを新contractの旧版pinと照合。旧contractを複製してn11Authored/n11Transformationの2protected hashのみ置換したJSONがretainedN08と完全一致。元Work原版は書き換えない。旧N11 pin/drift FAILは歴史として保持し、当時のPASSへ改変しない。"
+    },
+    {
+      "id": "G3-A03",
+      "status": "CONFIRMED",
+      "reason": "新contract required69pathは全件現bytesと一致。W046required46全保持のpreflightと、旧w046publisherのmain差分がSOURCE定数だけという直接diffを確認。N08 construction plan/layout/learnercopy/compiled/baseIR hash、30parents/42decisions、旧版4/5/6、active7、元storage namespaceの検査を保持。"
+    },
+    {
+      "id": "G3-A04",
+      "status": "CONFIRMED",
+      "reason": "新w047 retainedReleaseの検査は旧W041generatorの在庫/六hash/bodyhash/sourcehash/runtime16units/HEADとcandidate一致を維持。通常modeではSOURCEf129をHEADへ要求し、W047manifestはN11/N12 authoredhash/answers/revision、N11presentation、contracthash、dist全asset hashを含む。verifyは取得manifest bytes、全記載asset bytes、両unit四幅既存W038verify_app、N11 focused captureを実行する設計。"
+    },
+    {
+      "id": "G3-A05",
+      "status": "CONFIRMED",
+      "reason": "deploy-pages差分はcheckout/env sourceをf129へ固定、publisher三artifactをreviewed publisherSHAから取得、W041呼出をstrict新retained/manifestへ移行、旧N11callを両N11/N12を検証するw047verifyへ置換。N08現/旧版・N09N10のprepublish/hosted検査とrelease完全manifest検査を削除していない。sourceSHAとpublisherSHAを別々に記録する。"
+    },
+    {
+      "id": "G3-A06",
+      "status": "LIMITED",
+      "reason": "bytes-onlyは69現bytesと契約/保持条件を検査するlocal限定route。意図的にHEAD_SOURCE一致を要求しないため、production mode実行/Pages成功/実公開source証明と呼べない。retained-check/manifest/verifyの実行証拠と公開後hash/操作確認が将来必要。"
+    },
+    {
+      "id": "G3-A07",
+      "status": "CONFIRMED_STATIC_DRYRUN_BOUNDARY",
+      "reason": "改訂YAMLのworkflow_dispatch.dry_runはboolean/required/default:true。configure-pages、upload-pages-artifact、deploy-pages、公開W046検証、公開source/N08検証、公開N11/N12検証の6stepsはpush又はdry_run=falseに限定。branch上で明示dry_run=trueならbuild/prepublish/browserは実施し配信/host工程は実行しない設計。main pushは公開条件を満たすため、今回のscope承認だけでmainへmergeしない。別途公開許可までpublisher branchに限定する。"
+    },
+    {
+      "id": "G3-A08",
+      "status": "REPORTED_BOUNDED_CHECKS_ONLY",
+      "reason": "G3_DRAFT_CHECKSは二script構文、69bytes/retained、非sourceHEAD拒否、unknownauthored拒否、YAML6gateの限定6件。原報告はmainFilesApplied=false、publisherBranchCreated=false、fullPublisherCIExecuted=false、publicationPermission=falseと明記。自分が負例6件を再実行したとはしない。"
+    }
+  ],
+  "procedureRequirements": [
+    "今回の新4path設定/検証scopeが承認されるまでmain/Pagesを変更せず、publisher branchも作らない。承認後はmain起点の限定publisher branchでdry_run=trueの本物CIを行う。この承認をmain merge/Pages配信許可に拡張しない。",
+    "承認後もmain04b823から4pathsだけのpublisher差分として適用し、appsourcef129 checkoutとpublisher commitを区別。別Workや未採用governanceをbranchから一括mergeしない。",
+    "本物の非公開publisher CIでcompile/build/元N08/N09N10/両N11N12のprepublish操作証拠を揃え、実行結果/source/publisher hashをレビュー可能にする。その後に具体公開差分/実証を添え、公開許可を最終段階として扱う。",
+    "候補byte/元hash/afterhashと実patchを正式adapter/承認scopeへ束縛し、scope外Writeを黙って追加しない。",
+    "通常CI/Pages実runの成功、source/build/dist manifests/hostingSHA、N08/N09N10保持、N11/N12全操作を実証拠で照合。必須検査のFAIL/UNVERIFIEDは無視せず原記録/原因/適切な厳密移行を残す。",
+    "source087の誤staging成功CIをN12新版証拠へ使わない。現f129専用CIと旧固定pin/drift FAILは別に保持。",
+    "公開前後の実行完了と認証壁なし・phone/desktop・進捗分離・両route到達性を確認後、合意N11/N12全範囲の本人最終app確認一回へ進む。画像Gate①了承/両G2PASSは公開権限/本人最終受入を代行しない。"
+  ],
+  "findings": [],
+  "limits": [
+    "静的な未適用案審査。publisher本番各mode、外部HTTP/asset、Pages deploymentは自分で実行していない。",
+    "全69必須byte/旧contract2hash移行/4pathbefore-afterは独立確認したが、負例fixtureや動作coverageの実実行を認定しない。",
+    "main4path案の追加承認が未記録であることを保持。公開/merge/最終受入を生成しない。",
+    "repo/Work/Store/Git編集なし。指定/tmp原報告のみ保存。",
+    "改訂YAML/patch afterSHAを再照合。dry-runの実CIは未実施であり、default:trueの静的設定だけから無副作用の本番実行成功を認定しない。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_PATCH.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_G3_BINDING_PREFLIGHT.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w046-publish-check.mjs",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-publish-check.mjs",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-release-contract.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-041-n08-inline-derivation-alignment/RELEASE_CONTRACT.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_DRAFT_CHECKS.json"
+  ]
+}

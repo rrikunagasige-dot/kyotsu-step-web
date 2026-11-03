@@ -1,0 +1,40 @@
+{
+  "status": "PASS_BOUNDED_DRAFT_ONLY",
+  "rows": [
+    {
+      "check": "syntax_w047",
+      "expectedSuccess": true,
+      "exitCode": 0
+    },
+    {
+      "check": "syntax_w046",
+      "expectedSuccess": true,
+      "exitCode": 0
+    },
+    {
+      "check": "bytes_69_and_retained_contract",
+      "expectedSuccess": true,
+      "exitCode": 0
+    },
+    {
+      "check": "reject_local_metadata_head_as_production_source",
+      "expectedSuccess": false,
+      "exitCode": 1
+    },
+    {
+      "check": "reject_unknown_authored_hash",
+      "expectedSuccess": false,
+      "exitCode": 1
+    },
+    {
+      "check": "yaml_publisher_branch_push_dryrun_and_four_case_six_step_delivery_truth_table",
+      "status": "PASS"
+    }
+  ],
+  "mainFilesApplied": false,
+  "publisherBranchCreated": false,
+  "fullPublisherCIExecuted": false,
+  "publicationPermission": false,
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "limits": "Local bytes-only and explicit rejection tests, not actual publisher dry-run/build/browser/hosting PASS; those require approval of the new four-path publisher scope."
+}

@@ -1,0 +1,11 @@
+file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs:3
+for(const[p,h]of Object.entries(contract.protectedManifest))if(sha(p)!==h)throw Error('PROTECTED_SOURCE_CHANGED '+p);
+                                                                                ^
+
+Error: PROTECTED_SOURCE_CHANGED src/data/textbook/math/numbers/n11Authored.json
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs:3:81
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1

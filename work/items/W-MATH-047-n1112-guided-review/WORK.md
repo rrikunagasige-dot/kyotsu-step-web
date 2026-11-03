@@ -1,6 +1,14 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / N11・N12 R07正式PASS / N12実画像確認①待ち / 未公開
+Status: VERIFYING / N12確認①了承・両G2正式PASS / G3公開設定4path提案の承認待ち / 未公開
+
+現在：user ed7d140b「いいよ続けて」をN12の4点/五箇所の画像確認①への限定了承として記録（S1_N12_GATE1_RESPONSE.json）。sourcef129の両G2を既存CODEとA/Bの実統合監査で正式受理。旧G2-B-L01は現在の統合target d980927…でVERIFIED_FIXED。両unit共通の実監査一回をnative二記録へ忠実転記し、独立評価二回/新盲検とは数えない。火柴図の次はG3_HOST@n11。
+
+G3前確認でmain04b823 publisherが旧source6b439を固定し、W041の旧protected20項目中N11二hashだけが承認版と異なるため検査停止することを実再現。他18項目とW046required46は同byte。旧検査を外さず、明示した新版契約で全69pathを固定する公開設定4path案を作成。G3_PUBLISHER_PROPOSAL.md / G3_PUBLISHER_PATCH.json / G3_PUBLISHER_DRAFT/が具体案。A/B静的審査と限定6検査PASS、実publisher CI/build/browser/配信成功は未実施。
+
+次は新scopeの実承認後、main起点publisher branchで4pathだけ適用して公開なし実dry-run。publisher branch push/manual既定trueは配送6stepをskipする。main merge/manualfalse/Pages公開許可は今回のscope承認へ含めず、実証が揃った後に別途確認。既承認教材内容は変更しない。N11/N12の最終本人アプリ確認は公開後に一回。
+
+以下は前checkpointまでの履歴です。
 
 現在：固定source `f129ba78e496f0ccbce917c762357a81b92b0a2c`。N11 P006＋R1、N12 P006五変更を既存CODEで適用し、A/Bの初回実画像所見を正式team記録へ対応付けた。両unitのR07_VERIFY/R07_SEMANTICがPASSED。全85正答・236誤答候補を320/390/430/1440で検証し、履歴/再読込/保存移行/図gateを確認。reset・先頭reload・単元境界のfocus確認は390pxで、四幅で行ったと拡張しない。未解決の新しい教材所見はない。長大履歴PNGの全行細部をAIが実読したとは主張しない。
 

@@ -1,0 +1,106 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_STATIC_INACTIVE_DRAFT",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "proposalStatus": "INACTIVE_DRAFT_NOT_AUTHORIZED",
+  "authorSeparation": true,
+  "toolContributionDisclosure": "B previously assisted capture/import tooling only; no publisher draft authorship and no lesson authorship. This is code review, not lesson firstPass.",
+  "rows": [
+    {
+      "surface": "Exact4path draft vs main",
+      "status": "PASS",
+      "observation": "All2existing before hashes match main04b823 Git objects; all4after hashes match draft/patch. No source/main/Store/index changes made.",
+      "hashes": {
+        ".github/workflows/deploy-pages.yml": {
+          "beforeSHA256": "ae547b88f391102484cf05acf263e4ed60ce0706c65e4040dee282af575f9603",
+          "afterSHA256": "8bae788ad991992917022cbbb3d5d8cad0e82ee3fc4e2d70d53cdefbb7e8c488",
+          "PASS": true
+        },
+        "tools/release/w046-publish-check.mjs": {
+          "beforeSHA256": "bf9295f9927eb058f801c045d344c06d5ec7bba8b8cc766e94e380b069312acf",
+          "afterSHA256": "e5b47e807e8cdceac463084cc907299d363a6587624026ae0a0562563a5ac6b7",
+          "PASS": true
+        },
+        "tools/release/w047-publish-check.mjs": {
+          "beforeSHA256": null,
+          "afterSHA256": "5f6381fb3261d35ed7465ff98153da833edefb318d011ec7a3dd4ed27bc7fad1",
+          "PASS": true
+        },
+        "tools/release/w047-release-contract.json": {
+          "beforeSHA256": null,
+          "afterSHA256": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0",
+          "PASS": true
+        }
+      }
+    },
+    {
+      "surface": "Retained W041 assertions",
+      "status": "PASS",
+      "observation": "Exact old protected/hash/inventory/compiled-body validation statements and complete source/runtime-export/release-manifest body retained. Original W041contract and generator file hashes checked. retainedN08 differs solely by approved twoN11protected hashes; other contract keys and20-entry inventory preserved."
+    },
+    {
+      "surface": "Required source contract",
+      "status": "PASS",
+      "observation": "69required paths independently hash-match current approved working bytes; strict non-bytes mode HEAD=f129, source field=f129, approved overrides limited to N11Authored/Transformation. bytes-only explicitly skips GitSHA solely for local validation and is not invoked in publisher workflow."
+    },
+    {
+      "surface": "W046 nonimpact",
+      "status": "PASS",
+      "observation": "Exact old/new text equality after replacing SOURCE constant only. Required N09/N10 hashes, bytes verification, four-width browser/history/storage/archive/reset checks unchanged."
+    },
+    {
+      "surface": "Workflow pin/sequencing",
+      "status": "PASS",
+      "observation": "Candidate checkout/build env f129 fixed; separate publisher github.sha sparse3files. W047retained-check before build; export runtime thenW047manifest thenW046manifest. Existing N08current/r6/legacy and N09/N10 pre/host checks retained. NewW047pre+host verify performs exact deployed manifest/allassets, bothunit4widths/allanswers/wrongs and focus+reset/boundary chain. 60min timeout; always evidence upload includes newpre/host dirs."
+    },
+    {
+      "surface": "Manifest asset dependency",
+      "status": "PASS",
+      "observation": "W047manifest excludes itself and subsequently generatedW046manifest to avoid circular hashing; W046manifest generated afterward includesW047manifest. Both are verified before upload and after deployment. Actual hosted/source acceptance remains future execution."
+    },
+    {
+      "surface": "Read-only checks performed",
+      "status": "PASS",
+      "observation": "node--check both mjs passed; independent bytes-only run passed69required/W041contract. /tmp/w047-g3-b-bytes.log only. These do not execute manifest/verify/deployment."
+    },
+    {
+      "surface": "Revised default dry-run delivery boundary",
+      "status": "PASS",
+      "observation": "Boolean workflow_dispatch dry_run required/defaulttrue. Exactly6steps gated by push OR inputs.dry_run==false: configure-pages,upload-pages-artifact,deploy-pages and3host verification steps. Default manual dryrun keeps candidate build/runtime export/prepublication asset+all-unit operations/focus checks and ordinary evidence upload, skips actual Pages delivery/host claims. Push remainsmain+workflow-path only, explicit manualfalse permits delivery; no dry-run path unconditionally deploys. GlobalPagespermissions retained frommain but delivery actions gated.",
+      "evidence": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml",
+      "afterSHA256": "8bae788ad991992917022cbbb3d5d8cad0e82ee3fc4e2d70d53cdefbb7e8c488"
+    }
+  ],
+  "findings": [],
+  "rationale": "No static unresolved publisher-contract loss or authorization expansion found within fixed four-path draft. It maintains all existing N08/N09/N10 validators while introducing strict current N11/N12 source/asset/operation checks. Inactive draft review cannot grant publication or establish success.",
+  "limitations": [
+    {
+      "status": "UNVERIFIED",
+      "surface": "Actual publisher workflow execution, Pages deployment, hosted image acceptance",
+      "reason": "Not executed by B; bytes-only is not publisher execution."
+    },
+    {
+      "status": "UNVERIFIED",
+      "surface": "60minute total duration and actual network/font/browser availability",
+      "reason": "Requires real publisher run; no timeout/runtime guarantee from static review."
+    },
+    {
+      "status": "UNVERIFIED",
+      "surface": "Publication authorization",
+      "reason": "Patch remains INACTIVE_DRAFT_NOT_AUTHORIZED. No nativeHOST/PASS or user confirmation asserted."
+    },
+    {
+      "status": "UNVERIFIED",
+      "surface": "Actual manual dryrun workflow/branch/environment acceptance",
+      "reason": "No dispatch/build/browser execution performed; github-pages environment policies may separately constrain branch runs. This report does not assert runnable-host success."
+    }
+  ],
+  "supplements": [
+    {
+      "reason": "Parent updated workflow with default dry_run while initial review was being completed. Latest YAML reread and updated PATCH hash verified; other3draft files unchanged.",
+      "supportingEvidence": "evidence/G3_DRAFT_CHECKS.json",
+      "interpretation": "Six bounded local checks and explicit failure tests only; full publisherCI/build/browser/host not executed."
+    }
+  ]
+}

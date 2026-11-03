@@ -1,0 +1,35 @@
+{
+  "status": "INACTIVE_DRAFT_NOT_AUTHORIZED",
+  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "candidateSource": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "files": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "existsBefore": true,
+      "beforeSHA256": "ae547b88f391102484cf05acf263e4ed60ce0706c65e4040dee282af575f9603",
+      "afterSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml"
+    },
+    {
+      "path": "tools/release/w046-publish-check.mjs",
+      "existsBefore": true,
+      "beforeSHA256": "bf9295f9927eb058f801c045d344c06d5ec7bba8b8cc766e94e380b069312acf",
+      "afterSHA256": "e5b47e807e8cdceac463084cc907299d363a6587624026ae0a0562563a5ac6b7",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w046-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-publish-check.mjs",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "5f6381fb3261d35ed7465ff98153da833edefb318d011ec7a3dd4ed27bc7fad1",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-publish-check.mjs"
+    },
+    {
+      "path": "tools/release/w047-release-contract.json",
+      "existsBefore": false,
+      "beforeSHA256": null,
+      "afterSHA256": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0",
+      "draft": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-release-contract.json"
+    }
+  ]
+}

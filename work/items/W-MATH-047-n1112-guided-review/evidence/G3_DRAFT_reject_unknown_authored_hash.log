@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: REQUIRED_SOURCE_MISMATCH src/data/textbook/math/numbers/n11Authored.json
++ actual - expected
+
++ '3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe'
+- '0000000000000000000000000000000000000000000000000000000000000000'
+
+    at file:///tmp/w047-g3-negative-lz0dh9kv/w047-publish-check.mjs:11:59
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe',
+  expected: '0000000000000000000000000000000000000000000000000000000000000000',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

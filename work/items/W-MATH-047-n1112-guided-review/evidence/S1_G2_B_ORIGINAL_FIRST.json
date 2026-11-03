@@ -1,0 +1,163 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "claimRef": "integrated-release",
+  "facet": "render",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "ciRun": 41657273611,
+  "targetHash": null,
+  "verdict": "PASS",
+  "scope": "N11+N12 integrated-release rendering/persistence/static nonimpact audit only; no user acceptance or publication authority",
+  "sourceFirst": true,
+  "firstPass": true,
+  "integratedReleaseFirstReview": true,
+  "blindReview": false,
+  "authorSeparation": true,
+  "exposure": "Prior4a09G2/2bR1G2/R07/P006/IR/plans/inactive previews known. Current N12CI images viewed during immediately previous R07; reused as known images. First observations here apply only to new both-unit sourcef129 integrated-release target, not two independent new image reviews. B assisted capture/import tooling, not lesson content author.",
+  "firstObservations": [
+    "New integrated sourcef129 contains N11revision11 and N12revision4 together:96 instructional nodes,85 response items,236 wrong choices. Original N11 negative multiplication/zero restrictions/open-vs-closed boundaries and N12 simultaneous-vs-union/three-term comparisons/integer quantity constraints remain coherent through both units.",
+    "All96 before/after nodes and all85 canonical answers plus semantic hint/feedback text were reread. N11 constant arithmetic remains local (-17-9), then summary -4x≥-26; N12 subtraction2650 remains one operation slot and hands off to separate lower/upper arithmetic. Existing hints may explain the governing sign or endpoint rule after error; no newly premature completed future result was found.",
+    "Current N11 S3 divisor result has a single7/3 slot and S4 completion is gated by n11-06 success.12 actual CI quotient state×width images reconfirm absence of printed completed quotient before correct, and completedx<7/3 only after correct. Boundary07 then uses5<5; boundary10 uses5≤5 and reveals the two-range diagram afterward.",
+    "Current N12 actual CI five-target60viewports were viewed during preceding R07 and are reused as known images here, not newly blind observations. KEEP06/15 separate lines and diagrams, operation32→arithmetic33 transition, reset0/46 and successorN13 remain correct. Additional node-focus images were reopened for this integrated audit.",
+    "Both all-answer runners report their complete39/109 and46/127 matrices at320/390/430/1440. Their source code tests every wrong option, frontier retention, after-gate and original-figure gates, option/KaTeX/number geometry, completion/history/reload/resize and old-save migrations. These are existing actual execution records, not a fresh UI run by B.",
+    "Preservation comparison against byte-equivalent original local830 confirms stable recursive authored IDs, nodes/stages/semanticDisplay/equationNumbers,grading and original figures for both units; only authored semantic6+5 nodes changed. Current N11 transformation equals frozen approved R1 compiled. All16 protected file hashes remain equal.",
+    "N11→N12 and N12→N13/back have actual focus assertions; reset/reload390 has both actual screenshots and focus records. Unit-specific storage keys/revision routing and unchanged domain/reader/page isolate both flows. Whole-history images are too tall to read every line in supplied thumbnails; no all-other-mode live playthrough claimed."
+  ],
+  "rows": [
+    {
+      "surface": "Original source/IDs/wording fidelity",
+      "status": "PASS",
+      "observation": "N11 source43blocks and N12source41blocks reread; roles and conditions preserved, including fraction confirmation wording; stable authored IDs/roles/stages unchanged.",
+      "evidence": [
+        "W036/evidence/N11_SOURCE_INDEX.json",
+        "W036/evidence/N12_SOURCE_INDEX.json",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "/tmp/w047-s1-g2-b-source-checks.json"
+      ]
+    },
+    {
+      "surface": "Mathematical chain and dependencies across blocks",
+      "status": "PASS",
+      "observation": "39+46 answers individually reread. N11 x<7/3,x≥-1,x≤13/2,fractionx≥-1; N12 intersection(-7/2,1/2],x≤5/3 and11≤x<13→integers11,12→totals3200,3250 are correct. Original simultaneous conditions and currency/quantity meanings persist.",
+      "evidence": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n12Authored.json"
+      ]
+    },
+    {
+      "surface": "Correct answers/choice types/missing-term representation",
+      "status": "PASS",
+      "observation": "85 answers/236 distractors per width; all four runners PASS. Stable grading and semantic choice/hint maps match original; q13 one slot and quotient one slot retained.",
+      "evidence": [
+        "evidence/ci/41657273611/raw/n11/REPORT.json",
+        "evidence/ci/41657273611/raw/n12/REPORT.json",
+        "/tmp/w047-s1-g2-b-source-checks.json"
+      ]
+    },
+    {
+      "surface": "Premature answers/hints/leakage",
+      "status": "PASS",
+      "observation": "G2-B-L01 no longer reproducible in current transformation/actual images. Completed7/3 not printed on unsolved row, S4 gated. R1 compiled/projector contract exact; hints/correct feedback remain under matching resolved state.",
+      "evidence": [
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "src/domain/transformationReading.ts",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "evidence/ci/41657273611/raw/n11-focus/r1-quotient-{320,390,430,1440}-{pending,wrong,correct}.png",
+        "evidence/ci/41657273611/raw/static/CURRENT_CONTRACTS.json"
+      ]
+    },
+    {
+      "surface": "Figure/KaTeX/number gates",
+      "status": "PASS",
+      "observation": "Five original diagrams unchanged. N11 gates intro/10,N12 gates02/06/15. Reader and actual runner test no future figure+caption, correct gate/decode; KEEP independent rows numbered16/42 visually preserved.",
+      "evidence": [
+        "src/components/textbook/GuidedMathReadingFlow.tsx:265",
+        "work/items/W-MATH-038-transformation-groups/verify_app.mjs:46",
+        "evidence/ci/41657273611/raw/n12-focus/n12-06-independent-complete.png",
+        "evidence/ci/41657273611/raw/n12-focus/n12-15-independent-complete.png"
+      ]
+    },
+    {
+      "surface": "Wrong/retry/correct and chapter navigation",
+      "status": "PASS",
+      "observation": "All wrong choices retain unresolved item and block next unresolved sibling. Current actual focus images show wrong hint→correct progression. N11nextN12/back and N12nextN13/back asserted and recorded.",
+      "evidence": [
+        "evidence/ci/41657273611/raw/n11-focus/FOCUSED_CAPTURE.json",
+        "evidence/ci/41657273611/raw/n12-focus/FOCUSED_CAPTURE.json",
+        "evidence/ci/41657273611/raw/n12-focus/n12-next-unit-route.png"
+      ]
+    },
+    {
+      "surface": "Shared UI/other subjects and modes/static scope",
+      "status": "PASS",
+      "observation": "Protected16 hashes unchanged, including N09/N10 compiled+authored,N08,shared reader/domain/page/construction CSS and five diagrams. Routing remains unit/revision-specific. N11original-layout toggle also in all-answer harness with saved records identical. This PASS is static nonimpact + N11toggle check, not every-mode live playthrough.",
+      "evidence": [
+        "src/pages/TextbookUnitPage.tsx:174",
+        "src/domain/textbook.ts",
+        "evidence/R1_G2_TARGET.json:protectedManifest",
+        "work/items/W-MATH-038-transformation-groups/verify_app.mjs:57"
+      ]
+    },
+    {
+      "surface": "320/390/430/1440 scroll/overflow",
+      "status": "PASS",
+      "observation": "N12 sixty principal viewports directly viewed in R07; N11 twelve quotient viewports directly viewed now. Number/formula/choices visible and nonoverlapping; long formula wraps at320 preserve both relations. All-answer geometry covers96nodes across all widths.",
+      "evidence": [
+        "evidence/ci/41657273611/raw/n11/REPORT.json",
+        "evidence/ci/41657273611/raw/n12/REPORT.json",
+        "/tmp/w047-s1-n12-ci-first-b.json",
+        "evidence/ci/41657273611/raw/n11-focus/r1-quotient-320-wrong.png"
+      ]
+    },
+    {
+      "surface": "Persistence/reset/history/migration/review isolation",
+      "status": "PASS",
+      "observation": "Actual reports PASS history/reload/resize; N11legacy1–10,N12legacy1–3 archive migration with untouched-unit assertion. Actual focus reset390 confirms dialog,zero answers,stage1 afterreload for each. Stable revisions/items imply no new migration required; scoped storage key unchanged. Full history text not manually read line-by-line.",
+      "evidence": [
+        "src/components/textbook/GuidedMathReadingFlow.tsx:95",
+        "src/domain/textbook.ts",
+        "work/items/W-MATH-038-transformation-groups/verify_app.mjs:60",
+        "evidence/ci/41657273611/raw/n11-focus/r1-reset-reload-start.png",
+        "evidence/ci/41657273611/raw/n12-focus/n12-reset-reload-start.png"
+      ]
+    },
+    {
+      "surface": "Prior corrections/accepted blocks/failed evidence",
+      "status": "PASS",
+      "observation": "R1exactcompiled and original preservation checked. source087/run41655234217 omitted N12 staging,was rejected despite green CI,never used as updated N12 proof. Commit guard independently demonstrates old7/8,new8/8 and S1_APPLIED requires N12APPROVED. Local baseline929f lookup failed due mirror history and was corrected using exact original blob830 without editing files.",
+      "evidence": [
+        "/tmp/w047-s1-commit-guard-b.json",
+        "evidence/S1_COMMIT_MANIFEST_OMISSION_FAIL.json",
+        "evidence/S1_COMMIT_MANIFEST_CORRECTED_PASS.json",
+        "verify_current.mjs:15",
+        "/tmp/w047-s1-g2-b-source-checks.json"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "G2-B-L01",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n11-tg-divide",
+        "n11-tg-final",
+        "n11-06"
+      ],
+      "reason": "Exact current R1 row sourceNode/interactionRef n11-06 holds sole quotient slot at S3; S4 visibleAfter additionally requires n11-06 and has no slot. Actual pending/wrong across4widths hide completed7/3 before correct; correct shows division result thenx<7/3 numbered16, followed by boundary task. Canonical grading39/109,graphs/alias stable. Prior original failure is retained, not erased.",
+      "evidence": [
+        "src/data/textbook/math/numbers/n11Transformation.json",
+        "evidence/ci/41657273611/raw/n11-focus/r1-quotient-{320,390,430,1440}-{pending,wrong,correct}.png",
+        "evidence/ci/41657273611/raw/static/CURRENT_CONTRACTS.json"
+      ]
+    }
+  ],
+  "rationale": "Original mathematical purposes, all current node copy and answer contracts, actual CI behavior and representative raw images jointly support integrated limited-scope PASS. No new unresolved learning-harming defect identified.",
+  "limits": [
+    "Not every history text line directly readable in long image thumbnails.",
+    "No live full playthrough of all other modes/subjects; static protected-path evidence and N11original toggle check only.",
+    "No fresh all-answer browser rerun by B; actual execution reports/harness semantics inspected.",
+    "CI original archive not redownloaded/rehashed by B; local raw hashes and proof correspondence to be bound next.",
+    "New both-unit integrated observations count once; any unit-specific native transcription is not independent duplicate evaluation.",
+    "No Store/Git/repo writes performed; reports only/tmp."
+  ]
+}

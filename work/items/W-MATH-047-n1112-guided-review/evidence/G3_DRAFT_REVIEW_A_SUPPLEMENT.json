@@ -1,0 +1,54 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "verdict": "PASS_STATIC_FINAL_SCOPE_SUPPLEMENT",
+  "firstPass": false,
+  "parentReportPath": "/tmp/w047-g3-draft-a.json",
+  "parentReportSHA256": "06c64a239bb5853d1a56caad245e6601177becc81ed4d8819cf0f860b85fecd7",
+  "originalReportUnmodified": true,
+  "patchManifestSHA256": "9823c7fd35507bca4a204956b85d3fc491b49cb6ff336af809672e939f738156",
+  "finalYAMLSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+  "otherThreeDraftsUnchanged": true,
+  "scope": "今回の追加承認はmain起点publisher branch work/w047-publisher-g3-20261104のpush起動の非公開実dry-runまで。main merge/manual dry_run=false/Pages実公開許可は含めない。",
+  "checks": [
+    "push対象はmainと特定publisher branch一つ。paths filterはdeploy-pages.ymlのみ。",
+    "6配信/実host stepsは同じ厳密条件。branch pushはinputsに依存せずfalse。manual defaulttrueもfalse。main push又はmanualfalseだけtrue。",
+    "4case truth評価と6箇所条件一致を独立検査。実GitHub expression/runtime実行済みとは称さない。",
+    "他3draftのafterhashは前報告から不変。最新PATCH全4draft afterhashを一致確認。"
+  ],
+  "truthTable": [
+    {
+      "event": "push",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": null,
+      "deliverySixSteps": false
+    },
+    {
+      "event": "push",
+      "ref": "refs/heads/main",
+      "dry_run": null,
+      "deliverySixSteps": true
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": true,
+      "deliverySixSteps": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": false,
+      "deliverySixSteps": true
+    }
+  ],
+  "requirements": [
+    "承認後publisher branch pushで実build/prepublish/browser検証を実行し、配信6stepがskipとなることを実runで確認。",
+    "main merge/manualfalseは配信可能なので別途具体公開承認前に実行しない。",
+    "実dry-run成功/manifest/retainedN08N09N10/両unit証拠を揃えた後、公開許可の最終段階へ。本人最終app受入とは別。"
+  ],
+  "limits": [
+    "未適用YAMLの静的補足。branch作成/push/実CI/配信/受入を実行していない。",
+    "元報告のW041二hash限定移行/69required/元検査保持の所見を維持。教材再承認を要求しない。",
+    "Store/Git/repo編集なし。/tmp補足のみ保存。"
+  ]
+}

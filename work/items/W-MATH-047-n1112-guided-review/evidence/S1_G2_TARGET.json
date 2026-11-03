@@ -1,0 +1,81 @@
+{
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "releaseUnits": [
+    "n11",
+    "n12"
+  ],
+  "requiredInventory": [
+    {
+      "block_id": "n11",
+      "artifact": "src/data/textbook/math/numbers/n11Authored.json"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/data/textbook/math/numbers/n11Transformation.json"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/domain/textbook.ts"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/pages/TextbookUnitPage.tsx"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
+    },
+    {
+      "block_id": "n11",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/data/textbook/math/numbers/n12Authored.json"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/domain/textbook.ts"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/pages/TextbookUnitPage.tsx"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
+    },
+    {
+      "block_id": "n12",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+    }
+  ],
+  "protectedManifest": {
+    "public/assets/math/textbook/numbers/n11-f01.png": "f0c384f8773369152c3f60dc1ab7aaa4504d7cfc8d2957df1b22bb9abe739d2e",
+    "public/assets/math/textbook/numbers/n11-f02.png": "13690a1f2f310049cd25125603b26923cc9bce0818ad720d35e77e07f58d1677",
+    "public/assets/math/textbook/numbers/n12-f01.png": "2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f",
+    "public/assets/math/textbook/numbers/n12-f02.png": "5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3",
+    "public/assets/math/textbook/numbers/n12-f03.png": "514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f",
+    "src/components/textbook/ConstructionLessonReadingFlow.tsx": "736befadae05761100e62a24d644cb36b6d949f989c19f162b0c49b844abce0a",
+    "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+    "src/components/textbook/construction-lesson-reading.css": "0e056d35bc72192258605ab5bbf7a69a14f53074dac20a0372c4a571c821b9d8",
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n09Authored.json": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "62babe0c9bfc4e47d920fbd6abe09f55d7b0b9b5bd51afdfd9f8a0dd5e0a106d",
+    "src/data/textbook/math/numbers/n10Authored.json": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "src/data/textbook/math/numbers/n10ConstructionCompiled.json": "facd768ca7aa6df88ef98288838bb9e1e2e9b2eedc0a991a4c1a252ed9bc643b",
+    "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+    "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f"
+  },
+  "ciRun": 41657273611,
+  "scope": "One integrated both-unit source audit, two native unit records. Original source/math/96nodes/85answers/236wrong options/four widths/figures/gates/numbering/hints/transitions/history/migration/reset390/boundaries/protected paths/correction history. Other modes static nonimpact only. No publication or app acceptance."
+}

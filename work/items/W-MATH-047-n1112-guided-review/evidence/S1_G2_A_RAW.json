@@ -1,0 +1,1068 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A補足理念/文章/工程監視。Mがnative G2受理を担当。",
+  "verdict": "PASS_SUPPLEMENTAL_PEDAGOGY_ONLY",
+  "targetHash": "d980927402f1efa98482b58d14dd77c3155d1c2dd53c5d7315d31695d254d68d",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "ciRunId": 41657273611,
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blind": false,
+  "exposure": "過去IR/preview/R07/旧CI/G2/工程は既視。今回を新盲検・初見と称さない。Bの原所見/他review reportは読まず、自分の原資料/source/実PNG観察を使う。",
+  "readOrder": [
+    "N11原資料43blockとN12原資料41blockを全件位置/数式付き再読",
+    "現Authored47+49nodeの全before/after、85item prompt/answerを再読。N11R1 active overlayは既審査固定bytes保持を確認",
+    "現CI41657273611のN12五変更390pending/correct10PNG、KEEP06/15/reset3PNG、N11R1二状態/局所全体viewport計4PNGを実見",
+    "固定G2target/protected16paths、基準8d130e0fとの契約比較、両CI REPORT/本人画像了承記録、main04b823公開workflow条件を照合"
+  ],
+  "observations": [
+    {
+      "ids": [
+        "n11-03",
+        "n11-07",
+        "n11-10",
+        "n11-fraction-problem"
+      ],
+      "source": "p484/p495/p501/p511",
+      "reason": "積の符号→大小、元式関係5<5/5≤5→境界含有、分母を打ち消す数の判断がP006で残る。一般規則/既解決計算の説明と今回判断結果の先出しを区別。"
+    },
+    {
+      "ids": [
+        "n11-q11-constant",
+        "n11-11",
+        "n11-12"
+      ],
+      "source": "p507/p508",
+      "reason": "係数と定数を別計算して元不等式へ戻し、負数除算の向きと商の約分へ進む。通常viewportに(25)/(26)→(27)の接続が読め、既解決局所値の利用は未生成答えのコピーとは違う。"
+    },
+    {
+      "ids": [
+        "n11-tg-divide",
+        "n11-tg-final",
+        "n11-06"
+      ],
+      "source": "p493/p494/p495",
+      "reason": "現CIのpendingは3x/3<slot、correctのみ商7/3→左辺整理→x<7/3→境界検査。旧G2-B-L01の先出し症状は現sourceでも解消を維持。元著者IRの古いn11-06表現とactive overlayを混同せず、実際の読取はR1 overlayで確認。"
+    },
+    {
+      "ids": [
+        "n12-q04-left-end",
+        "n12-04"
+      ],
+      "source": "p525/p526",
+      "reason": "現CI pendingで左端第一条件/右端両条件の評価が問われ、各正答後にだけ不充足/充足理由と全範囲が出る。左端既解決結果の再利用後に右端評価が残る。"
+    },
+    {
+      "ids": [
+        "n12-01",
+        "n12-07",
+        "n12-q13-operation"
+      ],
+      "source": "p518/p536/p548",
+      "reason": "第一条件の商/方向、二上限比較、三辺から引く数の生成を残す。一般正数除算規則や先行x=2不適の確定結果は根拠として参照できる。"
+    },
+    {
+      "ids": [
+        "n12-06",
+        "n12-15"
+      ],
+      "source": "p532/p551",
+      "reason": "別条件x≤2とx≤5/3、別内訳T(11)=3200円/T(12)=3250円が独立二行で表示され、誤った等号連鎖にならない。"
+    },
+    {
+      "ids": [
+        "n12-08",
+        "n12-09",
+        "n12-10",
+        "n12-11",
+        "n12-12",
+        "n12-13",
+        "n12-q14-integer",
+        "n12-14",
+        "n12-15"
+      ],
+      "source": "p539–554",
+      "reason": "20-x、整数0≤x≤20、箱代含むT(x)、以上/未満、分配/同類項、三辺操作、11≤x<13、整数11/12、元の金額検算へ戻る順を全sourceで確認。実数範囲をそのまま個数と答えず条件を保持する。"
+    },
+    {
+      "ids": [
+        "n11-14",
+        "n12-intro"
+      ],
+      "source": "p513/p515–517",
+      "reason": "一つの不等式の全範囲から二つの条件を同時に満たす共通部分へ進む単元接続は論理的。係数計算結果を他問題の条件として混ぜない。"
+    }
+  ],
+  "findings": [],
+  "previousCorrections": [
+    {
+      "id": "G2-B-L01",
+      "status": "RESOLUTION_MAINTAINED_IN_OBSERVED_SOURCE_AND_CI",
+      "formalClosure": "現native G2でMが入力/targetを束縛して扱う。A補足から過去記録を改変しない。"
+    },
+    {
+      "id": "N12-D04",
+      "status": "RESOLUTION_MAINTAINED_IN_CURRENT_CI",
+      "reason": "今回source/actualCI端点pending/correctで先代行の不在を再確認。"
+    },
+    {
+      "id": "CI-V06",
+      "status": "RESOLUTION_MAINTAINED_BY_NORMAL_VIEWPORT",
+      "reason": "長大写真そのもののsticky重なりは残る。局所から全式への通常viewport2枚が可読。"
+    }
+  ],
+  "contractChecks": [
+    {
+      "unit": "n11",
+      "nodes": 47,
+      "answers": 39,
+      "revision": 11,
+      "allItemContractsBaselineExact": true,
+      "graphStagesNumberingSemanticDisplayExact": true,
+      "changedSemanticNodes": [
+        "n11-03",
+        "n11-07",
+        "n11-10",
+        "n11-q11-constant",
+        "n11-12",
+        "n11-fraction-problem"
+      ],
+      "keptSemanticNodes": 41,
+      "sourceSHA256": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe"
+    },
+    {
+      "unit": "n12",
+      "nodes": 49,
+      "answers": 46,
+      "revision": 4,
+      "allItemContractsBaselineExact": true,
+      "graphStagesNumberingSemanticDisplayExact": true,
+      "changedSemanticNodes": [
+        "n12-01",
+        "n12-q04-left-end",
+        "n12-04",
+        "n12-07",
+        "n12-q13-operation"
+      ],
+      "keptSemanticNodes": 44,
+      "sourceSHA256": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c"
+    }
+  ],
+  "protectedManifestMatched": 16,
+  "nodeRows": [
+    {
+      "unit": "n11",
+      "id": "n11-intro",
+      "stageId": "n11-stage-01",
+      "goal": "元の問題を例題として置く",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-01",
+      "stageId": "n11-stage-01",
+      "goal": "数直線の−2と−5を比べ、不等号を選ぼう。",
+      "interaction": "n11-01",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-difference-basis",
+      "stageId": "n11-stage-02",
+      "goal": "差の符号を使う根拠",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q02-open",
+      "stageId": "n11-stage-02",
+      "goal": "引く括弧の符号を配る",
+      "interaction": "n11-q02-open",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-02",
+      "stageId": "n11-stage-02",
+      "goal": "両辺に同じcを加えたあとの差を計算しよう。",
+      "interaction": "n11-02",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm011-q02-compare",
+      "stageId": "n11-stage-02",
+      "goal": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "interaction": "n11-wm011-q02-compare",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm011-q03-factor",
+      "stageId": "n11-stage-03",
+      "goal": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+      "interaction": "n11-wm011-q03-factor",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm011-q03-positive",
+      "stageId": "n11-stage-03",
+      "goal": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "interaction": "n11-wm011-q03-positive",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-03",
+      "stageId": "n11-stage-03",
+      "goal": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "interaction": "n11-03",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm011-q03-zero",
+      "stageId": "n11-stage-03",
+      "goal": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "interaction": "n11-wm011-q03-zero",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-division-basis",
+      "stageId": "n11-stage-03",
+      "goal": "割り算の規則も接続する",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm011-q04-fraction",
+      "stageId": "n11-stage-04",
+      "goal": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "interaction": "n11-wm011-q04-fraction",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q04-negate",
+      "stageId": "n11-stage-04",
+      "goal": "元の大小へ戻り負の1倍をする",
+      "interaction": "n11-q04-negate",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-04",
+      "stageId": "n11-stage-04",
+      "goal": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+      "interaction": "n11-04",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-solve-problem",
+      "stageId": "n11-stage-05",
+      "goal": "一つ目の一次不等式を提示",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm017-q05-operation",
+      "stageId": "n11-stage-05",
+      "goal": "左辺の−2を消すため、左辺に加える数を考えよう。",
+      "interaction": "n11-wm017-q05-operation",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm017-q05-balance",
+      "stageId": "n11-stage-05",
+      "goal": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+      "interaction": "n11-wm017-q05-balance",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-05",
+      "stageId": "n11-stage-05",
+      "goal": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+      "interaction": "n11-05",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q06-operation",
+      "stageId": "n11-stage-06",
+      "goal": "係数を1にする除数を選ぶ",
+      "interaction": "n11-q06-operation",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-06",
+      "stageId": "n11-stage-06",
+      "goal": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+      "interaction": "n11-06",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q07-substitution",
+      "stageId": "n11-stage-07",
+      "goal": "境界を元の式へ代入する",
+      "interaction": "n11-q07-substitution",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-07",
+      "stageId": "n11-stage-07",
+      "goal": "境界の値が含まれるかを選ぼう。",
+      "interaction": "n11-07",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-negative-problem",
+      "stageId": "n11-stage-08",
+      "goal": "負の係数の例題を提示",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p007-q08-subtract-left",
+      "stageId": "n11-stage-08",
+      "goal": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+      "interaction": "n11-p007-q08-subtract-left",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p007-q08-subtract-right",
+      "stageId": "n11-stage-08",
+      "goal": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+      "interaction": "n11-p007-q08-subtract-right",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-08",
+      "stageId": "n11-stage-08",
+      "goal": "左辺を整理したあとの右辺、5−3を計算しよう。",
+      "interaction": "n11-08",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p007-q09-direction",
+      "stageId": "n11-stage-09",
+      "goal": "負の係数で割った後の不等号を選ぼう。",
+      "interaction": "n11-p007-q09-direction",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-09",
+      "stageId": "n11-stage-09",
+      "goal": "負の2で割った右辺、2÷(−2)を計算しよう。",
+      "interaction": "n11-09",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q10-substitution",
+      "stageId": "n11-stage-10",
+      "goal": "境界を代入した左辺を求める",
+      "interaction": "n11-q10-substitution",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-10",
+      "stageId": "n11-stage-10",
+      "goal": "境界を含むかどうか、根拠とともに選ぼう。",
+      "interaction": "n11-10",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-linear-definition",
+      "stageId": "n11-stage-11",
+      "goal": "一次不等式と移項を定義する",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-bracket-problem",
+      "stageId": "n11-stage-11",
+      "goal": "括弧のある確認問題を提示",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm012-q11-expand",
+      "stageId": "n11-stage-11",
+      "goal": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "interaction": "n11-wm012-q11-expand",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm012-q11-xcoef",
+      "stageId": "n11-stage-11",
+      "goal": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+      "interaction": "n11-wm012-q11-xcoef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q11-constant",
+      "stageId": "n11-stage-11",
+      "goal": "定数を同じ操作でまとめる",
+      "interaction": "n11-q11-constant",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-11",
+      "stageId": "n11-stage-11",
+      "goal": "整理した不等式を選ぼう。",
+      "interaction": "n11-11",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q12-sign",
+      "stageId": "n11-stage-12",
+      "goal": "負数で割る向きを判断する",
+      "interaction": "n11-q12-sign",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-12",
+      "stageId": "n11-stage-12",
+      "goal": "解の範囲を選ぼう。",
+      "interaction": "n11-12",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-fraction-problem",
+      "stageId": "n11-stage-13",
+      "goal": "分数の確認問題を提示",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p008-q13-mul-left",
+      "stageId": "n11-stage-13",
+      "goal": "左辺の分母3を消すために掛ける数を選ぼう。",
+      "interaction": "n11-p008-q13-mul-left",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p008-q13-mul-right",
+      "stageId": "n11-stage-13",
+      "goal": "右辺にも同じ数を掛けよう。",
+      "interaction": "n11-p008-q13-mul-right",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-13",
+      "stageId": "n11-stage-13",
+      "goal": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+      "interaction": "n11-13",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-p008-q13-constant",
+      "stageId": "n11-stage-13",
+      "goal": "3(2x+1) の定数項を計算しよう。",
+      "interaction": "n11-p008-q13-constant",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm013-q14-xcoef",
+      "stageId": "n11-stage-14",
+      "goal": "両辺からxを引いて右辺のxの係数を選ぼう。",
+      "interaction": "n11-wm013-q14-xcoef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-wm013-q14-const",
+      "stageId": "n11-stage-14",
+      "goal": "両辺から3を引いて左辺の定数を選ぼう。",
+      "interaction": "n11-wm013-q14-const",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-q14-divide",
+      "stageId": "n11-stage-14",
+      "goal": "正の係数で割り向きを読む",
+      "interaction": "n11-q14-divide",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n11",
+      "id": "n11-14",
+      "stageId": "n11-stage-14",
+      "goal": "最終的な解の範囲を選ぼう。",
+      "interaction": "n11-14",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-intro",
+      "stageId": "n12-stage-01",
+      "goal": "連立の原問題を先に置く",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q01-subtract-x",
+      "stageId": "n12-stage-01",
+      "goal": "移項を両辺の同じ操作に戻す",
+      "interaction": "n12-q01-subtract-x",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q01-coef",
+      "stageId": "n12-stage-01",
+      "goal": "xを右へ移した後、xの係数はいくつ？",
+      "interaction": "n12-p002-q01-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q01-const",
+      "stageId": "n12-stage-01",
+      "goal": "両辺から5を引くと左辺の定数はいくつ？",
+      "interaction": "n12-p002-q01-const",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-01",
+      "stageId": "n12-stage-01",
+      "goal": "最初の不等式をxについて解こう。",
+      "interaction": "n12-01",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q02-coef",
+      "stageId": "n12-stage-02",
+      "goal": "−xを左辺に移すとxの係数はいくつ？",
+      "interaction": "n12-p002-q02-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q02-const",
+      "stageId": "n12-stage-02",
+      "goal": "両辺から4を引くと右辺の定数はいくつ？",
+      "interaction": "n12-p002-q02-const",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-02",
+      "stageId": "n12-stage-02",
+      "goal": "二つ目の不等式をxについて解こう。",
+      "interaction": "n12-02",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q03-first",
+      "stageId": "n12-stage-03",
+      "goal": "試す数が第一条件を満たすか調べる",
+      "interaction": "n12-q03-first",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q03-second",
+      "stageId": "n12-stage-03",
+      "goal": "同じ数を第二条件へ代入する",
+      "interaction": "n12-q03-second",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-03",
+      "stageId": "n12-stage-03",
+      "goal": "x=1は二つとも満たす？",
+      "interaction": "n12-03",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q04-left-end",
+      "stageId": "n12-stage-04",
+      "goal": "左端を含むか条件で判断する",
+      "interaction": "n12-q04-left-end",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-04",
+      "stageId": "n12-stage-04",
+      "goal": "二つの範囲の共通部分を選ぼう。",
+      "interaction": "n12-04",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-triple-problem",
+      "stageId": "n12-stage-05",
+      "goal": "三連不等式の確認問題を提示",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-05",
+      "stageId": "n12-stage-05",
+      "goal": "三連不等式を二つの条件に分けよう。",
+      "interaction": "n12-05",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q06-left-coef",
+      "stageId": "n12-stage-06",
+      "goal": "3x−2xの係数を埋めよう。",
+      "interaction": "n12-p002-q06-left-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q06-left-const",
+      "stageId": "n12-stage-06",
+      "goal": "x+2≤4 の右辺の定数を求めよう。",
+      "interaction": "n12-p002-q06-left-const",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q06-right-coef",
+      "stageId": "n12-stage-06",
+      "goal": "−xを左辺に移した後のxの係数を求めよう。",
+      "interaction": "n12-p002-q06-right-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q06-right-const",
+      "stageId": "n12-stage-06",
+      "goal": "3x+4≤9 の右辺の定数を求めよう。",
+      "interaction": "n12-p002-q06-right-const",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-06",
+      "stageId": "n12-stage-06",
+      "goal": "二つの不等式の解をそれぞれ選ぼう。",
+      "interaction": "n12-06",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q07-boundary",
+      "stageId": "n12-stage-07",
+      "goal": "大きい方の上限を実際に試す",
+      "interaction": "n12-q07-boundary",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-07",
+      "stageId": "n12-stage-07",
+      "goal": "二つの上限のうち、共通に残る範囲は？",
+      "interaction": "n12-07",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-count-problem",
+      "stageId": "n12-stage-08",
+      "goal": "文章題の条件を先に全部示す",
+      "interaction": null,
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-08",
+      "stageId": "n12-stage-08",
+      "goal": "プリンの個数をxで表そう。",
+      "interaction": "n12-08",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-09",
+      "stageId": "n12-stage-09",
+      "goal": "xの取りうる数の種類と範囲を選ぼう。",
+      "interaction": "n12-09",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q10-meaning",
+      "stageId": "n12-stage-10",
+      "goal": "T(x) は何の金額を表す？",
+      "interaction": "n12-p003-q10-meaning",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q10-cream-coef",
+      "stageId": "n12-stage-10",
+      "goal": "シュークリームの単価をxの係数へ入れよう。",
+      "interaction": "n12-p003-q10-cream-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q10-pudding-coef",
+      "stageId": "n12-stage-10",
+      "goal": "プリンの単価を括弧の係数へ入れよう。",
+      "interaction": "n12-p003-q10-pudding-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q10-box-fee",
+      "stageId": "n12-stage-10",
+      "goal": "固定の箱代はいくら？",
+      "interaction": "n12-p003-q10-box-fee",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-10",
+      "stageId": "n12-stage-10",
+      "goal": "箱代と二種類の菓子代を合わせよう。",
+      "interaction": "n12-10",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q11-lower-sign",
+      "stageId": "n12-stage-11",
+      "goal": "3200円以上を表す不等号を選ぼう。",
+      "interaction": "n12-p003-q11-lower-sign",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q11-upper-sign",
+      "stageId": "n12-stage-11",
+      "goal": "3300円未満を表す不等号を選ぼう。",
+      "interaction": "n12-p003-q11-upper-sign",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-11",
+      "stageId": "n12-stage-11",
+      "goal": "金額の「以上・未満」を式にしよう。",
+      "interaction": "n12-11",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q12-product-constant",
+      "stageId": "n12-stage-12",
+      "goal": "130×20を計算して定数項を作ろう。",
+      "interaction": "n12-p003-q12-product-constant",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q12-signed-coef",
+      "stageId": "n12-stage-12",
+      "goal": "130を−xに分配した符号付き係数はいくつ？",
+      "interaction": "n12-p002-q12-signed-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q12-total-constant",
+      "stageId": "n12-stage-12",
+      "goal": "箱代とプリン20個分の定数項を足そう。",
+      "interaction": "n12-p003-q12-total-constant",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p003-q12-x-coef",
+      "stageId": "n12-stage-12",
+      "goal": "xの項の係数をまとめよう。",
+      "interaction": "n12-p003-q12-x-coef",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-12",
+      "stageId": "n12-stage-12",
+      "goal": "同類項をまとめて金額を整理しよう。",
+      "interaction": "n12-12",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q13-operation",
+      "stageId": "n12-stage-13",
+      "goal": "三辺へ行う操作を選ぶ",
+      "interaction": "n12-q13-operation",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q13-lower",
+      "stageId": "n12-stage-13",
+      "goal": "3200−2650を計算して下端を埋めよう。",
+      "interaction": "n12-p002-q13-lower",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-p002-q13-upper",
+      "stageId": "n12-stage-13",
+      "goal": "3300−2650を計算して上端を埋めよう。",
+      "interaction": "n12-p002-q13-upper",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q13-lower-divide",
+      "stageId": "n12-stage-13",
+      "goal": "下限を50で割る",
+      "interaction": "n12-q13-lower-divide",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q13-upper-divide",
+      "stageId": "n12-stage-13",
+      "goal": "上限を50で割る",
+      "interaction": "n12-q13-upper-divide",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-13",
+      "stageId": "n12-stage-13",
+      "goal": "実数としてのxの範囲を解こう。",
+      "interaction": "n12-13",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q14-integer",
+      "stageId": "n12-stage-14",
+      "goal": "範囲に入る整数を選ぶ",
+      "interaction": "n12-q14-integer",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-14",
+      "stageId": "n12-stage-14",
+      "goal": "整数条件に戻って可能な個数を選ぼう。",
+      "interaction": "n12-14",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q15-eleven",
+      "stageId": "n12-stage-15",
+      "goal": "11個の内訳で元の金額を検算する",
+      "interaction": "n12-q15-eleven",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-q15-twelve",
+      "stageId": "n12-stage-15",
+      "goal": "12個の内訳も別に検算する",
+      "interaction": "n12-q15-twelve",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    },
+    {
+      "unit": "n12",
+      "id": "n12-15",
+      "stageId": "n12-stage-15",
+      "goal": "箱代を含め、候補二つの合計金額を確かめよう。",
+      "interaction": "n12-15",
+      "check": "SOURCE_RECHECKED",
+      "scope": "本文before/after・元問の学習行為・前後接続の静的監視。全node個別UI実操作PASSではない。"
+    }
+  ],
+  "siblingAudit": "同じ値が再登場しても、他辺へ同操作を適用、局所係数/定数を全式へ戻す、−1≤xをx≥−1へ読む、11/12を個数/元金額へ解釈する行為を区別。n12-q14-integer→n12-14→n12-15は数の集合抽出→個数の可能性→別内訳の元条件検算。未生成の商を直前完成式に置く旧R1型症状をこれらへ無差別に一般化しない。",
+  "workflow": {
+    "authority": "main04b823259a0873235e39099864d454330eed5d81 WORK_SYSTEM12A/P003。worktree未採用W-GOV010とG1node不存在をmanualGate①省略の根拠にしない。",
+    "Gate1": "N11 ac2ac082の不変表示限定了承保持。N12 ed7d140b「いいよ続けて」は当該四ポイント/五node実画像確認①への限定了承として正式原文記録を確認。公開/merge/品質label/最終受入ではない。",
+    "next": "現sourceのG2をN11→N12で正式受理した後G3前資料。合意N11/N12最終app確認一回。単元別HOST/受入記録はS1条件を守る。"
+  },
+  "G3RequirementsAndScope": [
+    "main04b823から出版候補への正確なpath差分・承認範囲を具体化。学習内容三JSONとn11 adapter、T1追加検証器二path、T2専用CI等はそれぞれ既承認範囲/technical Workへ対応付ける。branch全体にある未採用governance/他Work差分を無選別mergeしない。",
+    "mainのdeploy-pages.ymlはcheckout/CANDIDATE_SHA/VITEを6b439…へ固定し、W041 release.json契約、W046 publisher、旧W038 retainedN11検査を含む。専用CI sourcef129成功だけではPagesがf129をbuild/配信する証明にならない。",
+    "publisher/source pin/manifest/通常CI検査の適合作業がscope外pathに及ぶ場合、未適用の具体差分と必要な承認coverageを先に照合。旧pinを消す、FAILを無視/書換、ガードを外すことで公開を通さない。旧固定source/drift FAILを原ログ付きで残し、現候補の適用可能性と新証拠を正式に説明する。",
+    "通常CI/Pagesの必須検査と対象sourceを列挙し、publisherと教材sourceの区別、lock依存、compile/build、retainedN08/N09/N10/N11、N12全操作、実配信manifest/hashとprogress namespaceを公開前後で照合。未確認の必須検査はUNVERIFIEDとして公開準備を止める。",
+    "main merge/Pages公開の実権限を別途既承認/直接指示へ結び、今回Gate①の了承を根拠として新権限を作らない。公開後は両route/mobile/desktop/auth壁なし/進捗分離を確認した実URLで合意全範囲の本人最終確認一回。"
+  ],
+  "CIInterpretation": "両REPORTはsourcef129で四幅各N11 39正答/109誤答/14段階/2図、N12 46正答/127誤答/15段階/3図、保存migration/reload/resize/historyとgeometryPASS/errorsなしを報告。これはCI実行証拠であり自分が全操作した主張ではない。誤staging source087のN12BASELINE成功は新版proofから除外し履歴保持。専用CI PASSを全repository greenへ拡張しない。",
+  "limits": [
+    "全96nodeはsource全件監視。全85回答/236誤答/全状態を自分で再操作したものではない。代表実PNG17枚の再確認とCI REPORTを区別。",
+    "他modeはprotected16path/hashと共有主要sourceの非変更による静的非影響。全受入済modeの実playthroughPASSを主張しない。",
+    "G3 publisher差分/通常CI適合の最終具体物・公開権限/配信URLは未完了。補足理念PASSを公開準備全体PASSとしない。",
+    "新しい盲検・firstPass・本人受入/qualitylabelを生成しない。",
+    "Store/Git/repo編集なし。指定/tmp原報告のみ保存。"
+  ],
+  "imageHashes": {
+    "n12-focus/n12-01-390-pending-viewport.png": "f4a7c0e2bffe9c60340f24f477b227252dba77b4da574c30c66d6c45513e6265",
+    "n12-focus/n12-01-390-correct-viewport.png": "7bac04e32c48385ccfca40774c4832f233fe86ee80e4b64fad63e3366e3a2d89",
+    "n12-focus/n12-q04-left-end-390-pending-viewport.png": "24b3c495eb050a4374e18bcb72395427408ae1b59b983f729cacc4d18da65e72",
+    "n12-focus/n12-q04-left-end-390-correct-viewport.png": "b84877a405c50b71b6c07b7398ec30e1e9ab952a12729c6778feefb67a183fd8",
+    "n12-focus/n12-04-390-pending-viewport.png": "be23a8f90794f443d71750bfc4b49ddf2a7b04ce2f34855018d69cee8ca1bd77",
+    "n12-focus/n12-04-390-correct-viewport.png": "c8d7fbfba3a76db50dc42e4432b43adeb9ba258770020870604893d12605b4cc",
+    "n12-focus/n12-07-390-pending-viewport.png": "0dc07bac602250d9e4ba7ebb4569cccbacf4bb6c9156201dca5c0bf99d99584d",
+    "n12-focus/n12-07-390-correct-viewport.png": "aefb9008646290604bb850078a1b06e542a26feecee954e055709d105aa5c7e1",
+    "n12-focus/n12-q13-operation-390-pending-viewport.png": "d696c9ae236928b4cd722de1f6715581e23671b0676880594691f65cc07bffc6",
+    "n12-focus/n12-q13-operation-390-correct-viewport.png": "7f72334d40890ed93ee1acfd664e147ff9b701940de8677618d85a5d23ff0913",
+    "n12-focus/n12-06-independent-complete.png": "baf6551589d1cdefb68985368c7bc34ad88eeebae18b1fc04a91024208846420",
+    "n12-focus/n12-15-independent-complete.png": "ab6591642f39ef5da5de6d52eae6d7ba8bf2c6c4f419ebda3cb7b0e632d933f4",
+    "n12-focus/n12-reset-reload-start.png": "16de978b3bfcdac4a7eac53735872ef751015f0ad0b0470412e1d646fb9824b8",
+    "n11-focus/r1-quotient-390-pending.png": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f",
+    "n11-focus/r1-quotient-390-correct.png": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4",
+    "n11-focus/n11-local-result-complete-context-viewport.png": "1b454e8f112468c560e3721deff86c7ea7be95a34dd50e3386a4d149f5f89169",
+    "n11-focus/n11-whole-state-initial-context-viewport.png": "a8eac444a94e19d0c08bb7c8625a497c4d3f7c69041e6b33c827ca15387a6740"
+  },
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_G2_TARGET.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_N12_GATE1_RESPONSE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_SOURCE_FREEZE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n11/REPORT.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/ci/41657273611/raw/n12/REPORT.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/integration.py"
+  ],
+  "mainPolicyEvidence": "git show 04b823:governance/WORK_SYSTEM.md と git show 04b823:.github/workflows/deploy-pages.yml の直接読取"
+}

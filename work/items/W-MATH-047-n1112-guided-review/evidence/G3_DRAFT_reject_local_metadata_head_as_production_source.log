@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: SOURCE_COMMIT_MISMATCH
++ actual - expected
+
++ 'dbb7771f59b919c21f3282fc24338549485298c6'
+- 'f129ba78e496f0ccbce917c762357a81b92b0a2c'
+
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-publish-check.mjs:13:31 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'dbb7771f59b919c21f3282fc24338549485298c6',
+  expected: 'f129ba78e496f0ccbce917c762357a81b92b0a2c',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

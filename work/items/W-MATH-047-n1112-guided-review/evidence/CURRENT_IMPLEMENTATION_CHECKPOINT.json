@@ -33,7 +33,13 @@
   "R07_VERIFY": "PASS",
   "R07_SEMANTIC": "PASS",
   "CI_V06": "VERIFIED_FIXED",
-  "G2_B_L01": "Actual symptom fixed; integrated finding closure reserved for Gate1 then G2",
-  "next": "G2_AUDIT@n11 after corrected visual Gate1 reply",
-  "published": false
+  "G2_B_L01": "VERIFIED_FIXED in source2b integrated-release audit",
+  "next": "Native G3_HOST@n11; S1 scope-setting proposal awaiting actual approval to put N12 implementation before hosting",
+  "published": false,
+  "Gate1": "BLOCK_VISUAL_OK",
+  "Gate1Response": "いいよ続けて",
+  "Gate1Source": "ac2ac082-94dc-49b5-81f7-85d946bcce1b",
+  "G2": "PASS_N11_SCOPE",
+  "S1Applied": false,
+  "finalAppAccepted": false
 }

@@ -1,0 +1,90 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A:内容・理念/工程監視（非作者、読み取り）",
+  "verdict": "PASS_STATIC_PROPOSAL_ONLY",
+  "proposalHash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+  "applied": false,
+  "firstPass": false,
+  "authorSeparation": true,
+  "scopeAssessment": "補足後S1案は既存API条件に静的整合する。新scopeの実承認待ちで未適用。教材/paths/公開権限の拡張なし。本人確認一回と単元別二記録の区別を明文化し、旧OPENの手順不足を解消。実承認・実配信・実受入が完了したことは意味しない。",
+  "findings": [
+    {
+      "id": "S1-A01",
+      "status": "VERIFIED",
+      "reason": "実plan差分はscope.prohibit=[G3_HOST]追加、proposal.id/hash更新、当該addendumのdesign_inputs追加だけ。agent_team/approval_bundles/blocks/IR/patch/source_manifest/source_sha/rules/protected_manifest/release_unitsが完全同一。paths/preserveも同一。proposal実bytes SHAを独立照合。"
+    },
+    {
+      "id": "S1-A02",
+      "status": "VERIFIED",
+      "reason": "integration.approvalは実user.scopeと現plan.scopeの完全一致、bundle指紋一致を要求。addendumは旧scope変更・承認生成をせずS1への実返信を記録する。承認対象は同一P006/R1教材範囲の継続と追加の工程制約であり、新しい穴・問の再設計承認でも、公開/merge/最終受入の付与でもない。失効結果は正式再結合と再検査が必要。"
+    },
+    {
+      "id": "S1-A03",
+      "status": "VERIFIED",
+      "reason": "既存instantiateを読み取り実行。N12 R06/R07 priority1、N12 G2 priority3、N11 HOST priority4。node IDs/依存は旧版と同一。従って既存nextの優先規則によりN12実装・検証とG2がN11公開より先になる。prohibitはhard公開禁止ではなく優先順制御であるとの記述も正確。"
+    },
+    {
+      "id": "S1-A04",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "G3_FINAL@n11",
+        "G3_HOST@n12",
+        "G3_FINAL@n12"
+      ],
+      "reason": "追記は同一固定SHA/同一appの両route実HOST証拠を本人への提示前に取得し、HOST nodeの受理は既存CODE順を維持する。実発言が両unitを覆う場合のみ同一原文/出所/確認sessionを保存したunit別二記録を作り、各reply_toを各unitの実HOST証拠へ結ぶ。Runtime.evidence(app)はnodeの先行PASSを要求せずunit/route/source/manifest/reachable/mobile/desktop/progress_isolatedを照合するため、先に両route実証拠を取得可能。integration.acceptはそのunitのHOST結果、user.release_unit、candidate_sha、reply_to一致を要求し、この二記録方式は条件に整合する。未到達nodeのPASS作成、再公開、二回目の本人確認、架空同意を要求しない。片方のみの発言やSHA/URL変更では共用不可とも明記。",
+      "executionCondition": "両unitを明示する実際の確認依頼・返信と両route証拠の対応を将来実行時に保存すること。原文のない意思やセッション識別を生成しない。"
+    },
+    {
+      "id": "S1-A05",
+      "status": "NOTE",
+      "reason": "公開権限を確認という文言は新規の公開許可をS1から生成しない意味で妥当。既存REVIEW_POLICYの既存公開アプリに対するrepeatPublicationApproval=falseとRuntime.external_intentの継承条件も維持される。別途公開権限を確認を、既存権限が十分でも毎回新しい本人許可を要求する意味に拡張しない。"
+    }
+  ],
+  "rationale": {
+    "independentChecks": [
+      "全top-level key比較、scopeの厳密な追加差分比較",
+      "既存graphs.instantiateによる全node ID/deps一致確認とN12 R06/R07/G2、両unit HOST/FINALのpriority確認",
+      "proposalの実ファイルSHA256照合",
+      "integration.approval/accept、Runtime.user/next_integration/external_intentの直接読取"
+    ],
+    "priorityRows": {
+      "R06_PATCH@n12": 1,
+      "R07_VERIFY@n12": 1,
+      "R07_SEMANTIC@n12": 1,
+      "G2_AUDIT@n12": 3,
+      "G3_HOST@n11": 4,
+      "G3_FINAL@n11": 4,
+      "G3_HOST@n12": 5,
+      "G3_FINAL@n12": 5
+    },
+    "supplementChecks": [
+      "補足addendum実bytes SHA179e7506…とproposal/design_inputs参照一致。差分top-levelは引き続きdesign_inputs/proposal/scopeのみ。scope厳密追加と他全key一致を再確認。",
+      "Runtime.evidence(app):単元route・実source/manifest SHA・到達性・端末/進捗分離を要求、対応HOST結果の事前PASSは要求しない。",
+      "Runtime.user:accept_appレコードは実quote/reply_to/source_refと現在candidateを保持し、単一release_unitを選択可能。integration.acceptは各unitのHOST証拠との一致を照合。",
+      "requests.capture_feedbackはaccept_appを品質feedback対象としない。二つのaccept_app転記から自動的に二つの品質labelは生成されない。"
+    ]
+  },
+  "limitations": [
+    "S1は未適用。実user新scope承認・Runtime.revise・入力再結合・N12新版実装/CI・公開/受入は実行していない。",
+    "既知のP006/R1案・工程文脈を持つ反復監視であり盲検初見ではない。",
+    "静的優先順PASSは公開許可、実運用受入PASS、全repository CI greenを意味しない。旧固定pin/drift FAILの保存方針を変更しない。",
+    "Store/Git/Work/製品は書き換えていない。この/tmp原報告のみ保存。",
+    "今回のVERIFIED_FIXEDはS1文書/API手順不足の静的解消。将来の両route実HOST証拠や本人の全範囲受入を先取りしていない。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/N11_N12_SEQUENCE_ADDENDUM.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/S1_WORKFLOW_PLAN.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/WORKFLOW_PLAN.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/S1_SEQUENCE_CHECK.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/graphs.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/integration.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/runtime.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/governance/REVIEW_POLICY.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/requests.py"
+  ],
+  "priorReport": {
+    "path": "work/items/W-MATH-047-n1112-guided-review/evidence/S1_A_REVIEW_INITIAL.json",
+    "sha256": "7b4079ab22126a16f2fa453011fbe23a37b6d37d69018ee8f110a25163193922",
+    "disposition": "原OPEN報告は履歴保持。今回の補足再確認で文書上の不備だけ解決する。"
+  }
+}

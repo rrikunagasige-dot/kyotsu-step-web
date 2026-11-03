@@ -1,6 +1,6 @@
 # 全体火柴図（GENERATED）
 
-台帳HEAD: `b70e81b5737ed7f8ba435c42e03f8410194311308a4b0440d85fb8e61570489f`
+台帳HEAD: `565ea5469f3f96fba000e43a28a4ee31742abce63840aaedca863d5315498bf4`
 
 ```mermaid
 flowchart TD
@@ -8,7 +8,7 @@ flowchart TD
   N1["S01_ROUTE 1/1"]
   N2["n11:design 5/5"]
   N3["APPROVAL:n11-r1 1/1"]
-  N4["n11:release 2/5"]
+  N4["n11:release 3/5"]
   N5["n12:design 0/5"]
   N6["APPROVAL:n12-p006 0/1"]
   N7["n12:release 0/5"]
@@ -32,7 +32,7 @@ flowchart TD
   N7 --> N9
 ```
 
-現在: G2_AUDIT@n11 / READY
+現在: G3_HOST@n11 / READY
 保留・修正queue: 10
 関連修正Work: W-TECH-048, W-TECH-049, W-TECH-050, W-TECH-051
 差戻しは再分析・失効・子Workの台帳イベントで記録し、実行依存へ循環を入れない。
@@ -78,11 +78,12 @@ flowchart TD
 | R04_PROPOSAL@n11 | A / /root/w047_review_design | reviewer | design: teaching | COMPLETED |
 | R04_PROPOSAL@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: layout | COMPLETED |
 | R07_SEMANTIC@n11 | A / /root/w047_review_design | reviewer | render: implemented-visible | COMPLETED |
+| G2_AUDIT@n11 | B / /root/w047_layout_sourcefirst | reviewer | render: integrated-release | COMPLETED |
 
 CODE: 担当・packet・対象hash・非作者・未解決を検査。AI: 原資料・数学・教え方・実表示を審査。USER: 具体案承認と実アプリ評価。
 役割交代は作者履歴を消さない。差戻しは元工程への改訂taskとして記録。
 
-finding記録: 38
+finding記録: 39
 - D04 / n11 / teaching / OPEN / KEEPに残る判断の先出し。直前の代入計算は左右の数値を得る行為だが、その後の意味判断は成立・不成立まで本文で確定している。学習者が根拠を評価して境界を判断する部分が、説明済みの結論と選択肢を対応させる行為へ縮小する。変更3nodeの改善だけではN11全体の学習行為保存を肯定できない。
 - D04 / n11 / teaching / VERIFIED_FIXED / 成立・不成立の断定を削除した。先行する代入nodeの回答後説明も5<5または5≤5という関係の提示までで、その評価を断定しない。数値計算から関係の評価、境界包含と理由の選択へ進む行為が復帰した。既に求めた範囲を根拠として参照できることは、原文の順序にも整合する。
 - D04 / n11 / teaching / VERIFIED_FIXED / word-p-000495/000501の関係評価と境界包含判断が維持される。直前の代入nodeの回答後説明も関係の提示までで、成立・不成立は断定しない。前回修正の解決を維持。
@@ -121,3 +122,4 @@ finding記録: 38
 - CI-V06 / n11 / implemented-visible / VERIFIED_FIXED / 前者で3(2x+3)=6x+9、(6-10)x+9≥-17/6-10=-4、-17-9=-26(26)、記録説明、結果を元不等式へ戻す説明と未回答(27)が一つの通常画面に見える。後者で(26)から(27)への接続と4選択肢を同時に確認できる。対象本文・式を画面中央の固定ヘッダが覆う旧長大写真の不足は新viewport証拠で解消した。旧画像そのものを修正済みとは称さず、旧UNVERIFIED報告は履歴として保持する。
 - CI-V06 / n11 / implemented-visible / VERIFIED_FIXED / 今回実CIの通常viewportで、係数計算(25)、-17-9=-26(26)、元不等式へ結果を戻す本文と未回答全式(27)、4選択肢をヘッダに覆われず読めた。旧長大写真の隠れた文脈を今回画像から確認できる。
 - G2-B-L01 / None / integrated-release / OPEN / divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。
+- G2-B-L01 / None / integrated-release / VERIFIED_FIXED / 改修後source2b7780b…のactive TransformationでS3をn11-06一slot回答行、S4をn11-06正解後の非穴完成行へ変更。actual projectTransformationViewを現sourceで直接実行し、除数正解・商未回答では右辺slotのみで完成7/3とS4が非表示、商正解後にだけ両完成行が現れることを独立再現した。CI41635935097の四幅pending/wrong/correct原画像にも同じ順があり、未回答の商を写す旧症状は消えている。39採点契約/graph/番号16/alias/保存revisionと境界確認への接続を保持。新targetへ正式束縛するG2として解決確認し、過去のFAIL証拠を上書きしない。

@@ -1,0 +1,42 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "scope": "W047/S1 未適用工程設定のread-only照合",
+  "verdict": "PASS_STATIC_PROPOSAL_ONLY",
+  "applied": false,
+  "findings": [],
+  "rationale": [
+    "現WORKFLOW_PLANとS1_WORKFLOW_PLANのトップレベル差分はscope/proposal/design_inputsのみ。scopeのpaths/preserveは完全一致で、prohibit=[G3_HOST]だけが追加される。blocks/IR/patch/source_manifest/source_sha/rules/agent_team等は不変。",
+    "workflow/graphs.pyの既存priority制御を直接読み、pre-release以降の優先度を下げるだけでnode/dependenciesを追加・削除しないことを確認。静的priority表は実装と整合し、N12 R06/07をN11 G3より先に扱える。",
+    "G3_HOSTのprohibit flagはhard guardではないと案が明記。公開は別権限であり、新flagを公開承認や完了eventへ読み替えない。",
+    "workflow/integration.py approvalはuser.scope==current.scope完全一致を必要とする。案は旧user scope/承認を付け替えず、実際の新scopeへの返信を記録すると明示しており迂回は認めない。",
+    "N12内容はP006の既承認5node/46回答契約を据置。N11 P006/R1とG2解決、保護16path、旧失敗CI履歴を保持する。",
+    "提案文書のSHA256はplan.proposal.hashと追加design_inputに一致。実体と承認対象識別が整合。",
+    "scope改訂で失効する入力/結果は再検査・再束縛し、旧PASS書換えなしと明記。N12の実装後R07/Gate1/G2、追加欠陥時の修正工程、公開前権限確認とN11/N12を合わせた範囲付き本人最終確認を区別している。"
+  ],
+  "evidencePaths": [
+    "work/items/W-MATH-047-n1112-guided-review/N11_N12_SEQUENCE_ADDENDUM.md",
+    "work/items/W-MATH-047-n1112-guided-review/S1_WORKFLOW_PLAN.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/S1_SEQUENCE_CHECK.json",
+    "workflow/graphs.py",
+    "workflow/integration.py"
+  ],
+  "limits": [
+    "rootの静的検査をread-onlyで照合し、重複実行・Store適用は行っていない。",
+    "新scope承認はまだ要求する未適用案。過去内容承認と今回工程設定承認を混同しない。",
+    "本PASSは案の権限/順序/不変範囲の整合のみ。N12適用完了、G3実行済み、公開/main merge許可、最終受入や学習labelを主張しない。",
+    "指定報告以外のStore/Git/製品編集、孫agent起動なし。"
+  ],
+  "proposalHash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+  "supplement": {
+    "status": "PASS_STATIC_PROPOSAL_ONLY",
+    "reviewedChange": "最終確認一回と単元別台帳記録の追加説明",
+    "observations": [
+      "既存node順G3_FINAL@n11→G3_HOST@n12とaccept_appの単一release_unit契約を保持する。",
+      "本人に渡す前に同SHA/同appの両routeの実HOST証拠を取得し、未到達nodeをPASSにせず正式node順に束縛する。",
+      "N11/N12全範囲を明示した一つの実発言だけを原文/出所/セッション共通の単元別2記録に転記し、reply_toは各単元の実HOST証拠へ対応する。",
+      "独立2評価や品質labelとして二重計上せず、片方のみの発言・SHA/URL変更時に共通確認を適用しない。",
+      "追記後もpaths/preserve/blocks/source/rules/team/node/depsは不変。文書SHAはproposal.hash/追加design_input/S1_SEQUENCE_CHECKの新hashに一致。"
+    ],
+    "limits": "未適用案。実HOST証拠や本人最終受入が既に存在するとの主張ではない。追加CODE試験・Store適用を行わず読取照合のみ。"
+  }
+}

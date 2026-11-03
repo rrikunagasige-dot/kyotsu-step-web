@@ -1,24 +1,18 @@
 {
   "work_id": "W-MATH-047",
   "node": {
-    "id": "G2_AUDIT@n11",
-    "stage_kind": "G2_AUDIT",
-    "contract_kind": "G2_AUDIT",
-    "actor": "AI",
+    "id": "G3_HOST@n11",
+    "stage_kind": "G3_HOST",
+    "contract_kind": "G3_HOST",
+    "actor": "TOOL",
     "depends_on": [
-      "R07_SEMANTIC@n11"
+      "G2_AUDIT@n11"
     ],
-    "required": [
-      "audit_rows",
-      "release_readiness",
-      "impact_sweep_completion",
-      "audit_method",
-      "unknowns"
-    ],
+    "required": [],
     "block": null,
     "release_unit": "n11",
     "watch": "integration",
-    "phase": "pre-release",
+    "phase": "release",
     "priority": 0,
     "source_refs": [],
     "protected_refs": [
@@ -40,30 +34,15 @@
       "public/assets/math/textbook/numbers/n12-f03.png"
     ],
     "capability_requests": [
-      "protected.verify",
-      "impact.inventory"
+      "release.verify"
     ],
     "required_code_receipts": [
-      "protected.verify",
-      "impact.inventory"
+      "release.verify"
     ],
-    "required_ai_receipts": [
-      "meaning-review"
-    ],
-    "team_requirements": [
-      {
-        "claimRef": "integrated-release",
-        "facet": "render",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
-        "stage_kind": "G2_AUDIT"
-      }
-    ]
+    "required_ai_receipts": []
   },
-  "task_id": "453ed25657d48df50e9a7f0f7c74be509e9addeb28e675a8014ba4c8590ea019",
-  "input_hash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+  "task_id": "5b0a69324d8f48b87f4c61c17304789ccd5b028bb0f4e1ebcac6660fc460c3f6",
+  "input_hash": "f78b95fa5f5225e4513bfff68ecd962493d36e7f3b6b7057a723ff499cec7071",
   "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
   "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
   "rules": {
@@ -114,11 +93,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
   },
   "previous_results": {
-    "R07_SEMANTIC@n11": {
+    "G2_AUDIT@n11": {
       "actor": "capability-runner",
-      "artifact": "a321d80341e94ac7a7b2ef51fc8aa2bf61f8848ad6c549623686e3b0e39d901f",
-      "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
-      "node": "R07_SEMANTIC@n11",
+      "artifact": "cdf1503c454dd5bfeff2c6070ea26d5b5322f1c1bf29f9d13f86e5306e997a7a",
+      "input_hash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+      "node": "G2_AUDIT@n11",
       "verdict": "PASS"
     }
   },

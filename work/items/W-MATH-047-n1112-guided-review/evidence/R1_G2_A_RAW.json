@@ -1,0 +1,363 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 補足理念・workflow監視。正式integrated-release担当Bとは別。",
+  "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+  "runId": 41635935097,
+  "verdict": "PASS",
+  "verdictScope": "N11理念・実症状・静的共有影響の補足監査。N11/N12合意範囲の公開準備完了や最終受入ではない。",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "rows": [
+    {
+      "nodeId": "n11-intro",
+      "learningAction": "元の問題を例題として置く",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-01",
+      "learningAction": "数直線の−2と−5を比べ、不等号を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-difference-basis",
+      "learningAction": "差の符号を使う根拠",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q02-open",
+      "learningAction": "引く括弧の符号を配る",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-02",
+      "learningAction": "両辺に同じcを加えたあとの差を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm011-q02-compare",
+      "learningAction": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm011-q03-factor",
+      "learningAction": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm011-q03-positive",
+      "learningAction": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-03",
+      "learningAction": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm011-q03-zero",
+      "learningAction": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-division-basis",
+      "learningAction": "割り算の規則も接続する",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm011-q04-fraction",
+      "learningAction": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q04-negate",
+      "learningAction": "元の大小へ戻り負の1倍をする",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-04",
+      "learningAction": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-solve-problem",
+      "learningAction": "一つ目の一次不等式を提示",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm017-q05-operation",
+      "learningAction": "左辺の−2を消すため、左辺に加える数を考えよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm017-q05-balance",
+      "learningAction": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-05",
+      "learningAction": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q06-operation",
+      "learningAction": "係数を1にする除数を選ぶ",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-06",
+      "learningAction": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q07-substitution",
+      "learningAction": "境界を元の式へ代入する",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-07",
+      "learningAction": "境界の値が含まれるかを選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-negative-problem",
+      "learningAction": "負の係数の例題を提示",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p007-q08-subtract-left",
+      "learningAction": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p007-q08-subtract-right",
+      "learningAction": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-08",
+      "learningAction": "左辺を整理したあとの右辺、5−3を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p007-q09-direction",
+      "learningAction": "負の係数で割った後の不等号を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-09",
+      "learningAction": "負の2で割った右辺、2÷(−2)を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q10-substitution",
+      "learningAction": "境界を代入した左辺を求める",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-10",
+      "learningAction": "境界を含むかどうか、根拠とともに選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-linear-definition",
+      "learningAction": "一次不等式と移項を定義する",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-bracket-problem",
+      "learningAction": "括弧のある確認問題を提示",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm012-q11-expand",
+      "learningAction": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm012-q11-xcoef",
+      "learningAction": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q11-constant",
+      "learningAction": "定数を同じ操作でまとめる",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-11",
+      "learningAction": "整理した不等式を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q12-sign",
+      "learningAction": "負数で割る向きを判断する",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-12",
+      "learningAction": "解の範囲を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-fraction-problem",
+      "learningAction": "分数の確認問題を提示",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p008-q13-mul-left",
+      "learningAction": "左辺の分母3を消すために掛ける数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p008-q13-mul-right",
+      "learningAction": "右辺にも同じ数を掛けよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-13",
+      "learningAction": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-p008-q13-constant",
+      "learningAction": "3(2x+1) の定数項を計算しよう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm013-q14-xcoef",
+      "learningAction": "両辺からxを引いて右辺のxの係数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-wm013-q14-const",
+      "learningAction": "両辺から3を引いて左辺の定数を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-q14-divide",
+      "learningAction": "正の係数で割り向きを読む",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    },
+    {
+      "nodeId": "n11-14",
+      "learningAction": "最終的な解の範囲を選ぼう。",
+      "status": "確認済み",
+      "evidence": "現authored before/afterの既存全件監査と据置、R1 effective overlay/実画像の再確認"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G2-B-L01",
+      "status": "VERIFIED_FIXED",
+      "reason": "現overlayはS3右辺を既存n11-06の一つのslotとしS4をn11-06正答後gateへ移動。CI41635935097の320/390/430/1440 pending/wrong/correctを自分でview_imageで実見し、未回答/誤答に完成範囲はなく正答後だけ商→左辺整理→完成範囲→実数全体→境界検査へ進む。STATIC/CURRENT_CONTRACTSも実projectorで全前提prefix/S4非表示/単一slot/古い後続回答非unlockをPASSと記録。Aの解消支持であり、Store上の正式integrated-release finding閉鎖操作はB/rootへ留保。"
+    },
+    {
+      "id": "G2-R1-A01",
+      "status": "確認済み",
+      "reason": "MASTER§8/17/20と原資料に照らして、計算・条件評価・式合成・表現変換を区別した。n11-tg-addの確定操作の反対辺適用、n11-11の局所係数/定数から全式への合成、n11-14の辺入替には異なる学習行為があり一律に除去しない。同型の完成計算結果転記という新規残存欠陥の根拠は見つからなかった。"
+    },
+    {
+      "id": "G2-R1-A02",
+      "status": "確認済み",
+      "reason": "N11全47node/39回答、原図2点、条件a<b/差正/cの正負0/除算非0/x実数/一次a≠0、境界代入、元式への結果戻しの理念を保持。P006の既修正とR1の商生成から完成範囲への接続を維持し、新規退行を認めない。通常viewportの(26)→(27)も遮蔽なく読み、reset画像は0/39第1段階を確認。"
+    },
+    {
+      "id": "G2-R1-A03",
+      "status": "確認済み",
+      "reason": "共有renderer/CSS/StoreとN09/N10 authoredは静的保持の監査範囲。これを他mode全実操作の合格とはしない。N12はBASELINE46回答保持であり、承認済み5修正は未適用。専用CIのN12結果を新版合格へ使わない。"
+    },
+    {
+      "id": "G2-R1-A04",
+      "status": "確認済み",
+      "reason": "旧CI41635935294は旧pin ae382とP006 authored3465の不一致assertionでFAIL、41635935415は旧W038 N11_TRANSFORMATION_PLAN.jsonのDRIFTでFAIL。原テスト/資料を保持した結果であり失敗を消さない。専用41635935097は新exact source/承認R1 planと実状態を検査してPASS。両者は基準が異なり、専用PASSを全repository CI greenと表現しない。"
+    },
+    {
+      "id": "G2-R1-A05",
+      "status": "工程上の保留",
+      "reason": "generated現在地はG2@n11の次にG3_HOST@n11を出す。Runtime.claimはnext()と同じnodeだけ受理するため、未実行hostを擬似PASSにしたり直接N12 claimへ飛ぶことは不可。graphs.pyにはscope.prohibitにG3_HOSTを含む場合、pre-release以降priorityを全unitのpre-design後へ送る既存制御がある。ただしこれは優先度制御であり、external_intentのhard公開禁止ではない。scope変更は承認照合fingerprintも変えるため、正式なplan/承認coverageの扱いを決めてから用いる必要がある。"
+    },
+    {
+      "id": "G2-R1-A06",
+      "status": "工程上の保留",
+      "reason": "main12Aは原則N一つとし既存アプリ公開の再許可を求めない規則だが、今回の明示合意はN11/N12の最終アプリ確認1回。これを優先し、N12未適用の今N11単独公開/受入要求を増やさない。適切な次工程は、N11 G2結果を保持してN12承認済5nodeの現在入力への再束縛・実装・R07/G2を進める正式工程配置を整え、両範囲完了後にsourceを揃えた既存公開アプリの確認へ戻ること。N12再承認や新しい公開許可を勝手に作らない。"
+    }
+  ],
+  "releaseReadiness": {
+    "n11Internal": "理念・可視症状の補足監査PASS",
+    "agreedN11N12Scope": "N12未適用のため合意範囲の公開準備は未完了",
+    "nextAction": "既存workflowのscope/優先制御を正式照合しN12内部工程へ。G3未実行の擬似PASSや無許可スキップはしない。"
+  },
+  "limits": [
+    "G2は前回監査の再確認でfirstPass=false。新実CIartifactの原初回観察は別/tmp/w047-r1-ci-first-a.jsonへ固定し、これと混同しない。",
+    "提出CIの全回答/全誤答/移行・reset/章境界REPORTは証拠照合。自分が実行したのは指定16実PNGの目視で、全mode/全遷移の再操作ではない。",
+    "旧CI失敗の基準差説明はログと専用検査の対応による。CI branch protection上の扱いや公開可否を独断で変更しない。",
+    "workflow優先制御は静的読取のみ。plan改訂/approval migration/claim/Store/公開操作を実行していない。",
+    "N11内容監査PASSを合意範囲N11/N12の全工程PASSへ拡張しない。",
+    "指定/tmp原報告以外の書込、Store/Git本体編集、孫agent起動なし。"
+  ],
+  "evidencePaths": [
+    "docs/MASTER_APP_LESSONS.md",
+    "governance/WORK_SYSTEM.md",
+    "governance/REVIEW_POLICY.json",
+    "workflow/graphs.py",
+    "workflow/runtime.py",
+    "workflow/integration.py",
+    "src/data/textbook/math/numbers/n11Authored.json",
+    "src/data/textbook/math/numbers/n11Transformation.json",
+    "work/items/W-MATH-047-n1112-guided-review/generated/CURRENT_POSITION.md",
+    "work/items/W-MATH-047-n1112-guided-review/WORKFLOW_PLAN.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_ALL_CI_STATUS.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_LEGACY_CI_JOB_125917013690.log",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/R1_LEGACY_CI_JOB_125917013957.log",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41635935097/raw/static/CURRENT_CONTRACTS.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41635935097/raw/n11/REPORT.json",
+    "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41635935097/raw/n11-focus/"
+  ]
+}

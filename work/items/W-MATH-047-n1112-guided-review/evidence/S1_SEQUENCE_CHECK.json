@@ -1,0 +1,54 @@
+{
+  "status": "PASS_STATIC_PROPOSAL_ONLY",
+  "applied": false,
+  "proposalHash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+  "beforePlanHash": "279e239d0324e164ee8eb9082f4e66841f97bcc70122ee1b35b4000515077f71",
+  "afterPlanHash": "375b957b1f7828e791316503922d723a4c56b808488013ad6d0957a081b834f0",
+  "changedTopLevelKeys": [
+    "design_inputs",
+    "proposal",
+    "scope"
+  ],
+  "sameNodeIdsAndDependencies": true,
+  "sameLearnerBlocksIRPatchesSourceRulesAndTeam": true,
+  "noNewWritePaths": true,
+  "priorityRows": [
+    {
+      "node": "R06_PATCH@n11",
+      "beforePriority": 0,
+      "afterPriority": 0
+    },
+    {
+      "node": "R06_PATCH@n12",
+      "beforePriority": 1,
+      "afterPriority": 1
+    },
+    {
+      "node": "G2_AUDIT@n11",
+      "beforePriority": 0,
+      "afterPriority": 2
+    },
+    {
+      "node": "G2_AUDIT@n12",
+      "beforePriority": 1,
+      "afterPriority": 3
+    },
+    {
+      "node": "G3_HOST@n11",
+      "beforePriority": 0,
+      "afterPriority": 4
+    },
+    {
+      "node": "G3_FINAL@n11",
+      "beforePriority": 0,
+      "afterPriority": 4
+    },
+    {
+      "node": "G3_HOST@n12",
+      "beforePriority": 1,
+      "afterPriority": 5
+    }
+  ],
+  "requiresActualNewScopeApproval": true,
+  "finalConfirmation": "One actual N11/N12 playthrough and statement; two unit-specific transcriptions with same real source/session, no second evaluation or invented consent; actual both-route host proof before user handoff, node results remain in CODE order"
+}

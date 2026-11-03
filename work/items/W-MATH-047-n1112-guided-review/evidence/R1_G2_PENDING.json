@@ -1,0 +1,958 @@
+{
+  "job": {
+    "status": "NEEDS_REVIEW",
+    "node": "G2_AUDIT@n11",
+    "claimToken": "1763b6a1c2dc4325a7a9136066da2eb0",
+    "receipts": [
+      "fbb47e4d5cca085e1109d280a4e9e2d80dd28d0281b40e337b5944ffc3344864",
+      "c0441de56444dbe0a9d1c631fccc265cdbebccfcd8551a9c8aa5aede7d521913"
+    ],
+    "aiRequest": {
+      "schemaVersion": "production/2",
+      "solutionReview": null,
+      "adoptedCorrections": [],
+      "reusableHistory": [],
+      "task": {
+        "work_id": "W-MATH-047",
+        "node": {
+          "id": "G2_AUDIT@n11",
+          "stage_kind": "G2_AUDIT",
+          "contract_kind": "G2_AUDIT",
+          "actor": "AI",
+          "depends_on": [
+            "R07_SEMANTIC@n11"
+          ],
+          "required": [
+            "audit_rows",
+            "release_readiness",
+            "impact_sweep_completion",
+            "audit_method",
+            "unknowns"
+          ],
+          "block": null,
+          "release_unit": "n11",
+          "watch": "integration",
+          "phase": "pre-release",
+          "priority": 0,
+          "source_refs": [],
+          "protected_refs": [
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09Authored.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10Authored.json",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/components/textbook/GuidedMathReadingFlow.tsx",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "public/assets/math/textbook/numbers/n11-f01.png",
+            "public/assets/math/textbook/numbers/n11-f02.png",
+            "public/assets/math/textbook/numbers/n12-f01.png",
+            "public/assets/math/textbook/numbers/n12-f02.png",
+            "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "capability_requests": [
+            "protected.verify",
+            "impact.inventory"
+          ],
+          "required_code_receipts": [
+            "protected.verify",
+            "impact.inventory"
+          ],
+          "required_ai_receipts": [
+            "meaning-review"
+          ],
+          "team_requirements": [
+            {
+              "claimRef": "integrated-release",
+              "facet": "render",
+              "firstPass": true,
+              "independent": true,
+              "reviewKind": "learner-visible-review",
+              "sourceFirst": true,
+              "stage_kind": "G2_AUDIT"
+            }
+          ]
+        },
+        "task_id": "453ed25657d48df50e9a7f0f7c74be509e9addeb28e675a8014ba4c8590ea019",
+        "input_hash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+        "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+        "rules": {
+          "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
+          "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+          "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+        },
+        "proposal": {
+          "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+          "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
+          "id": "W047/G2-R1"
+        },
+        "scope": {
+          "paths": [
+            "src/data/textbook/math/numbers/n11Authored.json",
+            "src/data/textbook/math/numbers/n12Authored.json",
+            "src/data/textbook/math/numbers/n11Transformation.json",
+            "work/items/W-MATH-047-n1112-guided-review/",
+            "tools/textbook/transformation/n11.mjs"
+          ],
+          "preserve": [
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09Authored.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10Authored.json",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/components/textbook/GuidedMathReadingFlow.tsx",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "public/assets/math/textbook/numbers/n11-f01.png",
+            "public/assets/math/textbook/numbers/n11-f02.png",
+            "public/assets/math/textbook/numbers/n12-f01.png",
+            "public/assets/math/textbook/numbers/n12-f02.png",
+            "public/assets/math/textbook/numbers/n12-f03.png"
+          ]
+        },
+        "source_manifest": {
+          "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+          "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+          "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+          "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+          "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+          "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
+        },
+        "previous_results": {
+          "R07_SEMANTIC@n11": {
+            "actor": "capability-runner",
+            "artifact": "a321d80341e94ac7a7b2ef51fc8aa2bf61f8848ad6c549623686e3b0e39d901f",
+            "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+            "node": "R07_SEMANTIC@n11",
+            "verdict": "PASS"
+          }
+        },
+        "do_not_touch": [
+          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+          "src/components/textbook/construction-lesson-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "public/assets/math/textbook/numbers/n11-f01.png",
+          "public/assets/math/textbook/numbers/n11-f02.png",
+          "public/assets/math/textbook/numbers/n12-f01.png",
+          "public/assets/math/textbook/numbers/n12-f02.png",
+          "public/assets/math/textbook/numbers/n12-f03.png"
+        ],
+        "completion_is_not_semantic_proof": true
+      },
+      "context": {
+        "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+        "featureSchema": "learner-visible-json/2",
+        "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+        "rulesHash": "6d567314cb71539f65e7035736d36ac3bb0c75d074cf8f9a9b62f120a6aacc23"
+      },
+      "dependencies": {
+        "R07_SEMANTIC@n11": {
+          "aiReview": {
+            "evidence": "First observations of the actual current CI artifact retained; local preview/plan familiarity disclosed. B supplemental report retains firstPass=false and is not used for required first-pass scope. Exact source/API artifact/archive/raw image hashes verified. Not blind or model-independent. Integrated-release G2 finding closure remains for Gate1 then G2.",
+            "inputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+            "requestHash": "76b1829e4974813e08f2369fdb5e6b51491f9c14cd68af074eeae1f93228f2ee",
+            "reviewer": "M integrating actual independent first CI-visible report"
+          },
+          "capability_receipts": [
+            "3705f1366bca7b2d59d8aaf2b2388d05ec4136fe52537b15142af66d09b0488c",
+            "01e1f5211b1a1deb39fd1db31114a609be61654c0b3d1ebc7ce374daec3f1a98"
+          ],
+          "case_dispositions": [
+            {
+              "dimension": "prerequisite_missing",
+              "disposition": "APPLY",
+              "id": "N07-USER-F01",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "orphan_output",
+              "disposition": "APPLY",
+              "id": "N07-USER-F02",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "unmotivated_operation",
+              "disposition": "APPLY",
+              "id": "N07-USER-F03",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "broken_derivation",
+              "disposition": "APPLY",
+              "id": "N07-USER-F04",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "term_semantics_missing",
+              "disposition": "APPLY",
+              "id": "N07-USER-F05",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "math_render_omission",
+              "disposition": "APPLY",
+              "id": "N07-USER-F06",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "layout_discomfort",
+              "disposition": "APPLY",
+              "id": "n07-layout-relation",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "layout_style_rejection",
+              "disposition": "APPLY",
+              "id": "n07-layout-positive",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "layout_discomfort",
+              "disposition": "APPLY",
+              "id": "first-title-layout-positive",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "overall_material_acceptance",
+              "disposition": "APPLY",
+              "id": "N07-ACCEPTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "overall_material_acceptance",
+              "disposition": "APPLY",
+              "id": "N08-ACCEPTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "operation_order",
+              "disposition": "APPLY",
+              "id": "N09-REJECTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "factor_grouping",
+              "disposition": "APPLY",
+              "id": "N10-REJECTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "overall_material_acceptance",
+              "disposition": "APPLY",
+              "id": "N09-ACCEPTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            },
+            {
+              "dimension": "overall_material_acceptance",
+              "disposition": "APPLY",
+              "id": "N10-ACCEPTED-20261025",
+              "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+            }
+          ],
+          "evidence_refs": [
+            "a98b6717-8090-46e9-b627-810a0cfd33eb",
+            "36238c58-82d0-4a90-a15b-6cd9e9d587ec",
+            "74bfc01b-4773-4f7d-92ed-502d6103f5ad",
+            "d8a3b837-48a1-4ac4-b14d-1f7150702ce9",
+            "25c71735-58d3-4efc-adac-b597aca840d5",
+            "f5e4441d-74ba-434c-863a-66612c4f82b9",
+            "9869d61d-cf23-49ea-97bb-408d0f528a58",
+            "dac4364c-3e9a-41e4-b936-125ffa78ab28",
+            "7074fd21-6d15-485b-aee7-eb0d0aa840e5",
+            "4f0a21a1-cbfc-406a-9a17-c5f275e1e097",
+            "2e5e1ad5-6f57-42ce-8af0-652b9061d925",
+            "885b722a-edde-415a-a76d-b40875f6661b",
+            "63df84bc-97f9-49ec-8086-3fc35b9ca796",
+            "a56b4322-62bc-4125-8d71-b86f8058a195",
+            "439e1de9-4adf-4c17-9a8b-d851f7b53063",
+            "c9921339-5d5c-4941-8e77-93909bfc19aa",
+            "294a390d-e9cd-43fa-acbd-7d1e62e29081",
+            "5ea2280e-c8ce-4152-8f97-127018a836cb",
+            "290fccff-f6be-4074-9d7d-8b43e83d5ed4",
+            "f12bb6ad-702e-441b-9269-41d3c702f816",
+            "aa4fa507-b604-40d6-9901-d4fe95d419e6",
+            "19940c44-3615-4e49-a196-873aa0369560",
+            "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
+            "a9c92900-fc34-4f64-948f-74c6a22e2287",
+            "378f7c4e-927d-44a4-bff5-ba2200994912",
+            "6f7d3007-6c95-4e9e-9a45-2bb463732990",
+            "d86531ca-b752-4a8b-a485-6e10bf62d0e4"
+          ],
+          "protected_scope_review": [
+            "85 grading contracts, revisions, stages, numbers and source graph/alias contracts preserved; exactly two W038 display rows changed under approved R1"
+          ],
+          "regression_review": [
+            "Actual CI source/image/report SHA match",
+            "All39 answers/109 wrong options at each of4 widths, history/reload/resize/old saves passed",
+            "N12 BASELINE remains a protected surface, not an implemented claim"
+          ],
+          "symptom_resolution": [
+            "P006 six-node content fixes retained; R1 quotient slot is generated before completed range is revealed",
+            "Local arithmetic at26 returns to whole inequality at27; current CI normal viewport evidence retained"
+          ],
+          "teamCollection": {
+            "outputRefs": [
+              "55339d75702487ef5651503e8b219bb26ec43939343c15447bbc845c1190fa26"
+            ],
+            "registrationRefs": [
+              "5059523de113de24f50fd1bcd10e0d469dee6142c12b83da6f5d33372942eb05"
+            ],
+            "submissionActor": "M"
+          },
+          "unknowns": [],
+          "verdict": "PASS"
+        }
+      },
+      "constraints": [
+        "原資料・既習・可視状態だけを根拠にする",
+        "作成者の自己評価を監査根拠にしない",
+        "未解決は未解決と記録",
+        "承認を生成しない"
+      ],
+      "requestHash": "8e1c69a2d4ca47418a0ad3eb34835f2836bc7c9d6778a9b1bec619a22fd69ceb",
+      "teamReview": {
+        "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+        "requirements": [
+          {
+            "claimRef": "integrated-release",
+            "facet": "render",
+            "firstPass": true,
+            "independent": true,
+            "reviewKind": "learner-visible-review",
+            "sourceFirst": true,
+            "stage_kind": "G2_AUDIT"
+          }
+        ],
+        "submissionActor": "M",
+        "constraints": [
+          "実agent taskを登録する",
+          "対象claimの作者履歴を維持する",
+          "個別taskは固定packetを先に読む",
+          "agentの合意をUSER評価へ昇格しない"
+        ]
+      }
+    },
+    "automaticAcceptance": false
+  },
+  "request": {
+    "schemaVersion": "production/2",
+    "solutionReview": null,
+    "adoptedCorrections": [],
+    "reusableHistory": [],
+    "task": {
+      "work_id": "W-MATH-047",
+      "node": {
+        "id": "G2_AUDIT@n11",
+        "stage_kind": "G2_AUDIT",
+        "contract_kind": "G2_AUDIT",
+        "actor": "AI",
+        "depends_on": [
+          "R07_SEMANTIC@n11"
+        ],
+        "required": [
+          "audit_rows",
+          "release_readiness",
+          "impact_sweep_completion",
+          "audit_method",
+          "unknowns"
+        ],
+        "block": null,
+        "release_unit": "n11",
+        "watch": "integration",
+        "phase": "pre-release",
+        "priority": 0,
+        "source_refs": [],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+          "src/components/textbook/construction-lesson-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "public/assets/math/textbook/numbers/n11-f01.png",
+          "public/assets/math/textbook/numbers/n11-f02.png",
+          "public/assets/math/textbook/numbers/n12-f01.png",
+          "public/assets/math/textbook/numbers/n12-f02.png",
+          "public/assets/math/textbook/numbers/n12-f03.png"
+        ],
+        "capability_requests": [
+          "protected.verify",
+          "impact.inventory"
+        ],
+        "required_code_receipts": [
+          "protected.verify",
+          "impact.inventory"
+        ],
+        "required_ai_receipts": [
+          "meaning-review"
+        ],
+        "team_requirements": [
+          {
+            "claimRef": "integrated-release",
+            "facet": "render",
+            "firstPass": true,
+            "independent": true,
+            "reviewKind": "learner-visible-review",
+            "sourceFirst": true,
+            "stage_kind": "G2_AUDIT"
+          }
+        ]
+      },
+      "task_id": "453ed25657d48df50e9a7f0f7c74be509e9addeb28e675a8014ba4c8590ea019",
+      "input_hash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+      "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+      "rules": {
+        "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+        "hash": "355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d",
+        "id": "W047/G2-R1"
+      },
+      "scope": {
+        "paths": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n12Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json",
+          "work/items/W-MATH-047-n1112-guided-review/",
+          "tools/textbook/transformation/n11.mjs"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+          "src/components/textbook/construction-lesson-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "public/assets/math/textbook/numbers/n11-f01.png",
+          "public/assets/math/textbook/numbers/n11-f02.png",
+          "public/assets/math/textbook/numbers/n12-f01.png",
+          "public/assets/math/textbook/numbers/n12-f02.png",
+          "public/assets/math/textbook/numbers/n12-f03.png"
+        ]
+      },
+      "source_manifest": {
+        "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+        "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+        "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+        "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+        "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+        "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
+      },
+      "previous_results": {
+        "R07_SEMANTIC@n11": {
+          "actor": "capability-runner",
+          "artifact": "a321d80341e94ac7a7b2ef51fc8aa2bf61f8848ad6c549623686e3b0e39d901f",
+          "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+          "node": "R07_SEMANTIC@n11",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+        "src/components/textbook/construction-lesson-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "public/assets/math/textbook/numbers/n11-f01.png",
+        "public/assets/math/textbook/numbers/n11-f02.png",
+        "public/assets/math/textbook/numbers/n12-f01.png",
+        "public/assets/math/textbook/numbers/n12-f02.png",
+        "public/assets/math/textbook/numbers/n12-f03.png"
+      ],
+      "completion_is_not_semantic_proof": true
+    },
+    "context": {
+      "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+      "featureSchema": "learner-visible-json/2",
+      "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+      "rulesHash": "6d567314cb71539f65e7035736d36ac3bb0c75d074cf8f9a9b62f120a6aacc23"
+    },
+    "dependencies": {
+      "R07_SEMANTIC@n11": {
+        "aiReview": {
+          "evidence": "First observations of the actual current CI artifact retained; local preview/plan familiarity disclosed. B supplemental report retains firstPass=false and is not used for required first-pass scope. Exact source/API artifact/archive/raw image hashes verified. Not blind or model-independent. Integrated-release G2 finding closure remains for Gate1 then G2.",
+          "inputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+          "requestHash": "76b1829e4974813e08f2369fdb5e6b51491f9c14cd68af074eeae1f93228f2ee",
+          "reviewer": "M integrating actual independent first CI-visible report"
+        },
+        "capability_receipts": [
+          "3705f1366bca7b2d59d8aaf2b2388d05ec4136fe52537b15142af66d09b0488c",
+          "01e1f5211b1a1deb39fd1db31114a609be61654c0b3d1ebc7ce374daec3f1a98"
+        ],
+        "case_dispositions": [
+          {
+            "dimension": "prerequisite_missing",
+            "disposition": "APPLY",
+            "id": "N07-USER-F01",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "orphan_output",
+            "disposition": "APPLY",
+            "id": "N07-USER-F02",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "unmotivated_operation",
+            "disposition": "APPLY",
+            "id": "N07-USER-F03",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "broken_derivation",
+            "disposition": "APPLY",
+            "id": "N07-USER-F04",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "term_semantics_missing",
+            "disposition": "APPLY",
+            "id": "N07-USER-F05",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "math_render_omission",
+            "disposition": "APPLY",
+            "id": "N07-USER-F06",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "layout_discomfort",
+            "disposition": "APPLY",
+            "id": "n07-layout-relation",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "layout_style_rejection",
+            "disposition": "APPLY",
+            "id": "n07-layout-positive",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "layout_discomfort",
+            "disposition": "APPLY",
+            "id": "first-title-layout-positive",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "overall_material_acceptance",
+            "disposition": "APPLY",
+            "id": "N07-ACCEPTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "overall_material_acceptance",
+            "disposition": "APPLY",
+            "id": "N08-ACCEPTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "operation_order",
+            "disposition": "APPLY",
+            "id": "N09-REJECTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "factor_grouping",
+            "disposition": "APPLY",
+            "id": "N10-REJECTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "overall_material_acceptance",
+            "disposition": "APPLY",
+            "id": "N09-ACCEPTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          },
+          {
+            "dimension": "overall_material_acceptance",
+            "disposition": "APPLY",
+            "id": "N10-ACCEPTED-20261025",
+            "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+          }
+        ],
+        "evidence_refs": [
+          "a98b6717-8090-46e9-b627-810a0cfd33eb",
+          "36238c58-82d0-4a90-a15b-6cd9e9d587ec",
+          "74bfc01b-4773-4f7d-92ed-502d6103f5ad",
+          "d8a3b837-48a1-4ac4-b14d-1f7150702ce9",
+          "25c71735-58d3-4efc-adac-b597aca840d5",
+          "f5e4441d-74ba-434c-863a-66612c4f82b9",
+          "9869d61d-cf23-49ea-97bb-408d0f528a58",
+          "dac4364c-3e9a-41e4-b936-125ffa78ab28",
+          "7074fd21-6d15-485b-aee7-eb0d0aa840e5",
+          "4f0a21a1-cbfc-406a-9a17-c5f275e1e097",
+          "2e5e1ad5-6f57-42ce-8af0-652b9061d925",
+          "885b722a-edde-415a-a76d-b40875f6661b",
+          "63df84bc-97f9-49ec-8086-3fc35b9ca796",
+          "a56b4322-62bc-4125-8d71-b86f8058a195",
+          "439e1de9-4adf-4c17-9a8b-d851f7b53063",
+          "c9921339-5d5c-4941-8e77-93909bfc19aa",
+          "294a390d-e9cd-43fa-acbd-7d1e62e29081",
+          "5ea2280e-c8ce-4152-8f97-127018a836cb",
+          "290fccff-f6be-4074-9d7d-8b43e83d5ed4",
+          "f12bb6ad-702e-441b-9269-41d3c702f816",
+          "aa4fa507-b604-40d6-9901-d4fe95d419e6",
+          "19940c44-3615-4e49-a196-873aa0369560",
+          "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
+          "a9c92900-fc34-4f64-948f-74c6a22e2287",
+          "378f7c4e-927d-44a4-bff5-ba2200994912",
+          "6f7d3007-6c95-4e9e-9a45-2bb463732990",
+          "d86531ca-b752-4a8b-a485-6e10bf62d0e4"
+        ],
+        "protected_scope_review": [
+          "85 grading contracts, revisions, stages, numbers and source graph/alias contracts preserved; exactly two W038 display rows changed under approved R1"
+        ],
+        "regression_review": [
+          "Actual CI source/image/report SHA match",
+          "All39 answers/109 wrong options at each of4 widths, history/reload/resize/old saves passed",
+          "N12 BASELINE remains a protected surface, not an implemented claim"
+        ],
+        "symptom_resolution": [
+          "P006 six-node content fixes retained; R1 quotient slot is generated before completed range is revealed",
+          "Local arithmetic at26 returns to whole inequality at27; current CI normal viewport evidence retained"
+        ],
+        "teamCollection": {
+          "outputRefs": [
+            "55339d75702487ef5651503e8b219bb26ec43939343c15447bbc845c1190fa26"
+          ],
+          "registrationRefs": [
+            "5059523de113de24f50fd1bcd10e0d469dee6142c12b83da6f5d33372942eb05"
+          ],
+          "submissionActor": "M"
+        },
+        "unknowns": [],
+        "verdict": "PASS"
+      }
+    },
+    "constraints": [
+      "原資料・既習・可視状態だけを根拠にする",
+      "作成者の自己評価を監査根拠にしない",
+      "未解決は未解決と記録",
+      "承認を生成しない"
+    ],
+    "requestHash": "8e1c69a2d4ca47418a0ad3eb34835f2836bc7c9d6778a9b1bec619a22fd69ceb",
+    "teamReview": {
+      "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+      "requirements": [
+        {
+          "claimRef": "integrated-release",
+          "facet": "render",
+          "firstPass": true,
+          "independent": true,
+          "reviewKind": "learner-visible-review",
+          "sourceFirst": true,
+          "stage_kind": "G2_AUDIT"
+        }
+      ],
+      "submissionActor": "M",
+      "constraints": [
+        "実agent taskを登録する",
+        "対象claimの作者履歴を維持する",
+        "個別taskは固定packetを先に読む",
+        "agentの合意をUSER評価へ昇格しない"
+      ]
+    }
+  },
+  "assignment": {
+    "assignmentId": "w047-r1-g2-2b28bcc51660",
+    "roleEpoch": 10,
+    "node": "G2_AUDIT@n11",
+    "block": null,
+    "facet": "render",
+    "claimRefs": [
+      "integrated-release"
+    ],
+    "performerRef": "/root/w047_layout_sourcefirst",
+    "role": "reviewer",
+    "inputHash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+    "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+    "artifactHashes": {
+      "integrated-release": "58fc1abc2b0e87d1a6d540ea5a3c5bcf3d19e033731ed92d598180392bcdfb3b"
+    },
+    "allowedPaths": [],
+    "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+    "dependsOnTasks": [],
+    "budget": {
+      "tokenBudget": null
+    },
+    "independent": true,
+    "targetManifestRef": "db570369c357120473df53dd62eaf6201b1dacb57c583edaea9be3b4d23ee438"
+  },
+  "packet": {
+    "baseNodeInputHash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
+    "sourceRefs": [
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+    ],
+    "authorHistory": [
+      {
+        "claimRef": "integrated-release",
+        "facet": "render",
+        "block": "n11",
+        "semanticContributorRefs": [
+          "/root",
+          "/root/w046_source_review"
+        ]
+      }
+    ],
+    "contextExposure": {
+      "forkMode": "filtered",
+      "authorRationaleVisibleAtFirstPass": false,
+      "previousReviewExposure": "Reviewer has seen draft/local preview and component R07 images. This is the initial observation of the new source2b integrated-release scope, not a new first viewing of each image or a blind review."
+    },
+    "packetHash": "a728c9d1b0c801295e9eacc377021ddea488682a9a777d46e0cdc3aa4dc1d6dc"
+  },
+  "registration": {
+    "registrationRef": "87636857759c882dc7cb3958288950e44b9704c485e95911088772401c96338e",
+    "assignmentHash": "f6112daeb06b8d0196860a0a0dd90f68a9fdee783cd7ba78212ee4a0f55f49f8",
+    "eventRef": "6a9bd60109e7c493043aa00c3ff356a0ef3363f9781f0b74fcc6d310d154a816"
+  },
+  "evidenceRefs": [
+    "a98b6717-8090-46e9-b627-810a0cfd33eb",
+    "36238c58-82d0-4a90-a15b-6cd9e9d587ec",
+    "74bfc01b-4773-4f7d-92ed-502d6103f5ad",
+    "d8a3b837-48a1-4ac4-b14d-1f7150702ce9",
+    "25c71735-58d3-4efc-adac-b597aca840d5",
+    "f5e4441d-74ba-434c-863a-66612c4f82b9",
+    "9869d61d-cf23-49ea-97bb-408d0f528a58",
+    "dac4364c-3e9a-41e4-b936-125ffa78ab28",
+    "7074fd21-6d15-485b-aee7-eb0d0aa840e5",
+    "4f0a21a1-cbfc-406a-9a17-c5f275e1e097",
+    "2e5e1ad5-6f57-42ce-8af0-652b9061d925",
+    "885b722a-edde-415a-a76d-b40875f6661b",
+    "63df84bc-97f9-49ec-8086-3fc35b9ca796",
+    "a56b4322-62bc-4125-8d71-b86f8058a195",
+    "439e1de9-4adf-4c17-9a8b-d851f7b53063",
+    "c9921339-5d5c-4941-8e77-93909bfc19aa",
+    "294a390d-e9cd-43fa-acbd-7d1e62e29081",
+    "5ea2280e-c8ce-4152-8f97-127018a836cb",
+    "290fccff-f6be-4074-9d7d-8b43e83d5ed4",
+    "f12bb6ad-702e-441b-9269-41d3c702f816",
+    "aa4fa507-b604-40d6-9901-d4fe95d419e6",
+    "19940c44-3615-4e49-a196-873aa0369560",
+    "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
+    "a9c92900-fc34-4f64-948f-74c6a22e2287",
+    "378f7c4e-927d-44a4-bff5-ba2200994912",
+    "f54c8231-8f07-47fc-be9e-383bf4cf34ae"
+  ],
+  "target": {
+    "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+    "releaseUnit": "n11",
+    "requiredInventory": [
+      {
+        "block_id": "n11",
+        "artifact": "src/data/textbook/math/numbers/n11Authored.json"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "src/data/textbook/math/numbers/n11Transformation.json"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "src/domain/textbook.ts"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "src/pages/TextbookUnitPage.tsx"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
+      },
+      {
+        "block_id": "n11",
+        "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      }
+    ],
+    "protectedManifest": {
+      "public/assets/math/textbook/numbers/n11-f01.png": "f0c384f8773369152c3f60dc1ab7aaa4504d7cfc8d2957df1b22bb9abe739d2e",
+      "public/assets/math/textbook/numbers/n11-f02.png": "13690a1f2f310049cd25125603b26923cc9bce0818ad720d35e77e07f58d1677",
+      "public/assets/math/textbook/numbers/n12-f01.png": "2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f",
+      "public/assets/math/textbook/numbers/n12-f02.png": "5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3",
+      "public/assets/math/textbook/numbers/n12-f03.png": "514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f",
+      "src/components/textbook/ConstructionLessonReadingFlow.tsx": "736befadae05761100e62a24d644cb36b6d949f989c19f162b0c49b844abce0a",
+      "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+      "src/components/textbook/construction-lesson-reading.css": "0e056d35bc72192258605ab5bbf7a69a14f53074dac20a0372c4a571c821b9d8",
+      "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+      "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+      "src/data/textbook/math/numbers/n09Authored.json": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+      "src/data/textbook/math/numbers/n09ConstructionCompiled.json": "62babe0c9bfc4e47d920fbd6abe09f55d7b0b9b5bd51afdfd9f8a0dd5e0a106d",
+      "src/data/textbook/math/numbers/n10Authored.json": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+      "src/data/textbook/math/numbers/n10ConstructionCompiled.json": "facd768ca7aa6df88ef98288838bb9e1e2e9b2eedc0a991a4c1a252ed9bc643b",
+      "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+      "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f"
+    },
+    "ciManifest": {
+      "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+      "runId": 41635935097,
+      "artifactId": 13231101167,
+      "artifactDigest": "sha256:0876cffba4984786b09cd3a4f2e12facdcaf4c448e1d93e436a12fc921a416da",
+      "rawFiles": {
+        "n11/n11-1440-history.png": "fba707ed0ed83bb0261b8d3629f1137025e846513a5bdc38a0c9548252fe7dc3",
+        "n11/n11-1440-stage-1.png": "9d76238e9a2f341d914b7694130967707ee02c82982cbcc52495ad46ef052445",
+        "n11/REPORT.json": "3354f3c39622de27454b46c9cac1944fe029c7634b70d574a240c10e02731b20",
+        "n11/n11-1440-stage-14.png": "1e58e6cf0f0694586a652bb972906141ffbad9b5bdc7c4f93f1f824c73caa9fd",
+        "n11/n11-1440-stage-4.png": "5468ee7be80493354f62869f202d9b870e533140b399b467877fe21ff53ac50f",
+        "n11/n11-1440-stage-5.png": "9b556cf2c12dbbc96a3d535a9662df51fdac8fdab417123f81a295f16b7aa225",
+        "n11/n11-1440-stage-6.png": "7d31b0e91bf7ba0a146174f3d6a8ae2da54630774a956a98d932e0ca531c6671",
+        "n11/n11-1440-stage-7.png": "4bfc2d135d915989371d1f6c4a12eab012ef9e56afbea9a07b2975635a379100",
+        "n11/n11-1440-stage-8.png": "c7ea9576e710f36359f7eb177a682952c110f0cd83976f72ef2b53246e416c32",
+        "n11/n11-320-history.png": "e4c3cb30c134cc2416d52d486e610d5b1f7ed5ba003990800102e3a4d8ea49d7",
+        "n11/n11-320-stage-1.png": "0b11e64107025e1db35038f2f821cb8cf0fb0c235b91af6163e8860308b204b2",
+        "n11/n11-320-stage-14.png": "73edeef2d0b2d2f1ab7175116a682fc9f0bef5feeee0ec1050921bfe7003aaa1",
+        "n11/n11-320-stage-4.png": "8f0c2530e5395e900c0ab5a0cfa046d1cab4b320ea7e3b9a738a23ae1c4d6242",
+        "n11/n11-320-stage-5.png": "6d3554e5dd01b6c84a18166b009a8aadc016ab2ad20b68363cda1db54e4f5454",
+        "n11/n11-320-stage-6.png": "111fe05d9eb23fd02b5f5e98073457c1669227747222af7d59bbd71f09f58276",
+        "n11/n11-320-stage-7.png": "ad2ca982fdf099cb5ff92b9b83c35f4e4ce4f9ec49fc2ad0db7f899a2d2ebe74",
+        "n11/n11-320-stage-8.png": "9d06d30476bc2a7cb16fb50b73428630e8cbb9bbe58f080ae44e20d64fecb9b4",
+        "n11/n11-390-history.png": "4d6295c3d9a7703d5e1fcec3cc06d60379d3e6cc7bfcad1818699df6e0ed1447",
+        "n11/n11-390-stage-1.png": "6273021a06280c3b7b0f0eb24e36a0bcfb8ff59a6b8d50adb0d08cffed0ae9da",
+        "n11/n11-390-stage-14.png": "07abddab8a9784280bd9491e1f7c326802eecc53c3c679b2552944853b11f161",
+        "n11/n11-390-stage-4.png": "ba312994dd790beb5b6b9c190e13f99de20d0a05cbc7dd2137ab959f2fceb949",
+        "n11/n11-390-stage-5.png": "a52991f354ae6a99ac94f393706792584b10d8bd630536498fd5a038d90333c0",
+        "n11/n11-390-stage-7.png": "c3088c234454b159b0a5dc9ad0ea5fbb8ccf145a4b22b951e8f0435743578b8f",
+        "n11/n11-390-stage-6.png": "7ab4b38dcbc4f70eda0eea795d46641bfc4e4a192761aabc72793e79a5bf7006",
+        "n11/n11-390-stage-8.png": "93b837f89b0bf1a75fa5c3d7915d78bdfc246ded8c3f50115e9a094f68e2517c",
+        "n11/n11-430-history.png": "e91a538e99b1388b1053425b493f888f33636b33d576515012a0e2147987a531",
+        "n11/n11-430-stage-1.png": "8821bdae1678b194b89de541af3e740fe754f83dcbfd4b1a86147d1229d77870",
+        "n11/n11-430-stage-14.png": "3f4eb0283e2339644d76a7a3bb4ce653f545a5d4901d1add77e4af18efb46ab5",
+        "n11/n11-430-stage-4.png": "86cb5f2926c58634398ec0b3802b4616692334480e6180b3d8bcb8da508a65c3",
+        "n11/n11-430-stage-5.png": "06d63fabdd501547b8c04bca0bdf71bf45feacb0460ef664c00e75cb95f33638",
+        "n11/n11-430-stage-6.png": "436cebd43f40b3136c09e6196d0079f7fc08c97c82dc826286a0feb4e1dd89dd",
+        "n11/n11-430-stage-7.png": "4182adb141a9ccd37c5ca1650af8473895cfd6d4841de26c873b89a961e76695",
+        "n11/n11-430-stage-8.png": "39658fb010f59dc9c9852e03498b8c11fd11c8807efa24ebb16a2e79e89165ac",
+        "n11/n11-wm011-q03-positive-options.png": "db730e6de6beee500765a6252f2df7f17e9f43ff7cf6b15b992893878d913c34",
+        "n11/n11-wm011-q03-zero-options.png": "3e6cf39e61bd6324e01ac3c8695df34113602e995196dc657d0d197d64f78b86",
+        "n11-focus/FOCUSED_CAPTURE.json": "23c4e1e6581a8731fd6d3529c550ff13ccf14304a2796aee994fa1c18993e9cb",
+        "n11-focus/n11-03-complete.png": "1610da9ca54ae8f9671c1c586c446ffc9578c57d021d0e5df98cf143f31f8b05",
+        "n11-focus/n11-03-focus-complete.png": "0502dc401f528468e9a70cd4259fedd1df4c152557dc32edc97fb66f62063973",
+        "n11-focus/n11-03-focus-initial.png": "fd76177bfb153cb29c8b27609866a5ac0d70a370757b128d65b3b8211755e137",
+        "n11-focus/n11-03-initial.png": "35d8cc450ddeab750c0358a065785aa576bc5ec0c02a12d3415ce29c4169e638",
+        "n11-focus/n11-07-focus-complete.png": "b8ec1c608897c5b5f163ef84f7def739aa7d998815fd63040841b7dce91a064d",
+        "n11-focus/n11-07-initial.png": "6978eb775d3971841150196b508ea6863500f7cd902fea3e5dd1ac2eeace0e6f",
+        "n11-focus/n11-07-complete.png": "e9f359039fc52d0762f29f15f7e92eed29b04410ed5e62c5f9baa83b5aa5fb92",
+        "n11-focus/n11-07-focus-initial.png": "31e8db9c67ec759d2293be945e8f331c171fb48097b6946574ad74ca9631884d",
+        "n11-focus/n11-10-complete.png": "a06b1579f1ec869d37498cad3397305794b74f0fab140e2b1aa53ba4d3e3fb9b",
+        "n11-focus/n11-10-focus-complete.png": "32d7c231bb7d6443e43e85fb73209902f40d2abb2b3d73bd9a4ec12cd42c9eb4",
+        "n11-focus/n11-10-focus-initial.png": "5ba839264c6ef710a93b20bdf7653bbc6957d50fde6ed77ca654db7c33a128c2",
+        "n11-focus/n11-10-initial.png": "fe5a6d989c8753d6917528d66c8e83d5665c423b4cbdc3911e2c30aca43e10a5",
+        "n11-focus/n11-11-complete.png": "d052a9f49b10dc6ac9e1d8c888e1af9e08d508af56413ff05e27730dbf7c66db",
+        "n11-focus/n11-11-focus-complete.png": "3b8be3f746c4e6ab85adc3be3215d5846104de3ca1b5533b1b1eb62a068f2f22",
+        "n11-focus/n11-11-focus-initial.png": "a9462fd5b89374da3d4f44b4184de50773611893a4b06fc02e8a457ae68f2851",
+        "n11-focus/n11-11-initial.png": "5300075cd83f0a6e078cacf6c2cf44be59c16e226324d1c368169bf9efb2ab99",
+        "n11-focus/n11-12-complete.png": "d4f8eacce219018eaf9410f83997b1d334f532486e08a25ebf446768df7e4092",
+        "n11-focus/n11-12-focus-complete.png": "1469bad2805f43f4c03a2fb36449317a2fcbceae87be28259b95f761ee177d32",
+        "n11-focus/n11-12-focus-initial.png": "1e5112cfca2ac4053483dbb31b730c8aae02a797c68680155a0ad12a8cbaaa38",
+        "n11-focus/n11-12-initial.png": "0d0139def229da70309cbd4be2c3e2cf8a17d0ede14c1c0e0bb9dfd9232e6c4c",
+        "n11-focus/n11-fraction-problem-context.png": "c394c045208d0365c70bd7f8ce2e66df7a6f7bf2ecb3b9346bdcc2ae2df28eb1",
+        "n11-focus/n11-local-result-complete-context-viewport.png": "1b454e8f112468c560e3721deff86c7ea7be95a34dd50e3386a4d149f5f89169",
+        "n11-focus/n11-q11-constant-complete.png": "3aa7365fce41e5c7f416e3a9621a7b59897ae02f91ead09f5ad87f38d6724256",
+        "n11-focus/n11-q11-constant-focus-complete.png": "af23c06dbe67b79f75f6de5182c04168171859ead249f698a95b86b0e8ba1771",
+        "n11-focus/n11-q11-constant-focus-initial.png": "b9d02321cdf1be2c57500916f11063e2be2dfc85a69caeec2be9879750976ab2",
+        "n11-focus/n11-q11-constant-initial.png": "747445bd65422571eb010629a72bd64cf0f82dd087a3cd8c4cfb0bff66e883ad",
+        "n11-focus/n11-whole-state-initial-context-viewport.png": "a8eac444a94e19d0c08bb7c8625a497c4d3f7c69041e6b33c827ca15387a6740",
+        "n11-focus/r1-quotient-1440-correct.png": "3714bdf67b880bfcc72df0710dba16b7cc7f7a0d0cbe3992a50ab71b102500d9",
+        "n11-focus/r1-quotient-1440-pending.png": "ebfd102a765611e9bad316ae67cecdf19317470040320df7fc9d3cba701662c7",
+        "n11-focus/r1-quotient-1440-wrong.png": "917956fc29242ee5d8e993bc8563ad85fda5f6c8232124abc67745def95a7c7d",
+        "n11-focus/r1-quotient-320-correct.png": "dca3972e3dd590607a15784dd65f2764d202ba5f10c17af1f402867267e9ff91",
+        "n11-focus/r1-quotient-320-pending.png": "d74a3383f2af04907da1fdb025584d882b460b0605eeb4da498ec86d17ac8eda",
+        "n11-focus/r1-quotient-320-wrong.png": "c59e38b71abccfec841b96a854b4e300924290cc5cad8ea08906bd7aa9171350",
+        "n11-focus/r1-quotient-390-correct.png": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4",
+        "n11-focus/r1-quotient-390-pending.png": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f",
+        "n11-focus/r1-quotient-390-wrong.png": "44f9ecb72a5e0cb36519c12e24542f85021caf863a406aceaafeb36e72a76e51",
+        "n11-focus/r1-quotient-430-correct.png": "e2e61bab62341c1376c1d816e81bf473d4abdb86515c58560a1a5b4b1d98fe95",
+        "n11-focus/r1-quotient-430-pending.png": "8f44f2da1c1c6525595fe64e87e81065e931ded0ff4217b1ea0511d591bc23d5",
+        "n11-focus/r1-quotient-430-wrong.png": "768c8c15926d50ec0082dc60ff0a0119532315ac33f1192f1752ae712d342a50",
+        "n11-focus/r1-reset-reload-start.png": "84e3ff9704ed0e86c487bc399fe0933f3166084c8872ac824f2e22ada2dbbf0c",
+        "n12/REPORT.json": "04dcf3946dd48f0118bf5a42160ba6815ea3a58e2ab78296eee05b9609906e02",
+        "n12/n12-06-options.png": "5d4447693d66455d322c0d2996475c2727b161430169afce80bd831dca2484b0",
+        "n12/n12-1440-history.png": "0c56543840fcc9ee6a5e6eb4a4f44bf3030ef8df29c5450ff85a8a06675a03ce",
+        "n12/n12-1440-stage-1.png": "1ef59ef39e9c37b4f307b56a36555bd19ccb1adb5862c9274acda9b684b4645c",
+        "n12/n12-1440-stage-15.png": "d5e1d91c8a735c8371876a024c66c74f450d58e07131b0223dcb003e524c0ce2",
+        "n12/n12-1440-stage-4.png": "6d5e92efcc851cfadd3a77a95bc9cd62a8951910b06d2332a73aace1a8688cfe",
+        "n12/n12-1440-stage-5.png": "21ef98e790b1828bfd7a791368cdec993f5886886ede7a9826b33d23af719e3d",
+        "n12/n12-1440-stage-6.png": "3794976ce6f102f3ba72d2378e8b088057f9762f630fd2dc5f5dc61f1cb6f0f2",
+        "n12/n12-1440-stage-7.png": "142c19496e3a2dc1d4abede9776fb6691607e6f9287e778c56674938e3319ae5",
+        "n12/n12-1440-stage-8.png": "60f7eb242dc256838793c6e5f5b590916617e37ae96dae485664bdb69eb2a17e",
+        "n12/n12-320-history.png": "8e1ef0802ab6c0d260914d902e753efa89a23cfe39bb169346b65f3f8302eea1",
+        "n12/n12-15-options.png": "124b16b08ff76eacf7dc268dc55a940c73efbbbf275df802f96e310cf82ee1e6",
+        "n12/n12-320-stage-1.png": "0394f1b44d78f264b7fe8df493486ed41db22ad72f5e67515822a1f784bf7996",
+        "n12/n12-320-stage-15.png": "39f7d87cfb75839a5e7cf2923006c676da4b3621b0bccddd12ac29f9bc1d7e68",
+        "n12/n12-320-stage-4.png": "b3c9f09d9ca0295dee44f2d674fbf187ae855aaa04986020e0a043516f0433cc",
+        "n12/n12-320-stage-5.png": "e33837a295edc1e03cd6a2b5b3b891db035f4c8ebd9f1e84fd9afd122b2531aa",
+        "n12/n12-320-stage-6.png": "e179476ccf74cfb3eb0e5b97ddf853e64d78246fb8046cc181969f5e106ec3ff",
+        "n12/n12-320-stage-7.png": "60a0af236695d46374ade1cf690a9489654d7dcba51bc9d2bc7d6fb0ba81e880",
+        "n12/n12-320-stage-8.png": "fdeaa8db7c245692e7e431b2d16f4fcb488c6433413d53cd8039f59ff1e81bc3",
+        "n12/n12-390-stage-1.png": "d331deb4d4ddf1232465cfc9aca2a53b00e99e555c9fe67a57524b85fef7ab6e",
+        "n12/n12-390-history.png": "fff0b069e5967cb269a019069756fdb3fabd8f686a8df5ae3fde581d2c7627df",
+        "n12/n12-390-stage-15.png": "9812d55af73a5f78a621f67f215494dee4d9005287f9bce822863b7338679b7f",
+        "n12/n12-390-stage-4.png": "e586cdd80b4679a2acb979bdbf16bcd830716287da3aa5f1ab8323e64bbcfc25",
+        "n12/n12-390-stage-5.png": "2cf77cd9cb319bcee4c01aa990b18ca5fc350ea7e60831cc8995a129f8cbacbb",
+        "n12/n12-390-stage-6.png": "501d9e8a533a64a07a9038413d92f745a2a2181a62c406ee9b5e473b975fe461",
+        "n12/n12-390-stage-7.png": "d4bd757cca6cef255030fe8fcc2c042bdf612ee34f02a5ca348d4bcca5b0b557",
+        "n12/n12-390-stage-8.png": "715c9f2c6e8d3213e8f375050594b76b8eb55634f47765da8669bf02daf82c57",
+        "n12/n12-430-history.png": "90b06c962a5f744bec072075dbab9a7d0b1561068205dd20e87b34c1bdc28ef3",
+        "n12/n12-430-stage-1.png": "79b384bb36092954864e25709edfec36db412836601d6ed8ce3c58a02a06892b",
+        "n12/n12-430-stage-15.png": "710de34cbc62d513329f10c02493d6983779fae95b0b3eb9829692d430d218b7",
+        "n12/n12-430-stage-5.png": "8d36fd74d4f728a87c52c213f7ef3094076e6984886da721f1a9c32ba7c182ee",
+        "n12/n12-430-stage-6.png": "65c8bd40da16b4c89d51fc3dcc0c01480418b340e5a8451187e3fb6ae31d55a0",
+        "n12/n12-430-stage-4.png": "3669c5c6c012ba80e4f8349857c19272b4783d5fcfdddb4876e11b5db9c56de2",
+        "n12/n12-430-stage-7.png": "10e76a48407c675528aa4d8a384a4f66aa16cfd8584727562f333e6831e58009",
+        "n12/n12-430-stage-8.png": "052e19b5a970f5f4f1bed4bc4a1b8f0706b2fd8407783633c0f7416d215cb352",
+        "static/CURRENT_CONTRACTS.json": "d3029e62a009b139d22c129aeb9ae52d6b0ebce838f4fd7f43c948db1efba6e7"
+      },
+      "contract": "Actual revised CI visible artifact; original review history retained"
+    },
+    "scope": "First integrated-release audit of source2b after R1, distinct from prior4a09 G2 and component R07 reviews; all original source/math/47nodes/39answers and wrong gates/figures/numbering/hints/transitions/history/migration/reset390/nextN12/back/protected sixteen paths/correction siblings/historical CI exceptions covered. Other modes statically unaffected; no claim of full other-mode playthrough. N12 baseline only. No publication permission."
+  }
+}

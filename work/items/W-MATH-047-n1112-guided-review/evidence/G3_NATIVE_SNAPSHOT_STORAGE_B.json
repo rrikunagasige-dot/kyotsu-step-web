@@ -1,0 +1,40 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_LOSSLESS_STORAGE_ONLY",
+  "scope": "Read-only code audit and isolated/tmp restoration tests, no shared Runtime/Store/raw edits",
+  "checks": [
+    {
+      "check": "Missingraw restore",
+      "status": "PASS",
+      "originalBytes": 39987327,
+      "rawSHA256": "efcab3c148de3ff32a724040bbef2bfbe0b0a5d3d9a8cfa1e0cacb4f23ecf092",
+      "nativeCanonicalDigest": "4c3b861000d949b480cf37311f27f200efa74dcbde6b0356d6ba27e1c3df2dc2"
+    },
+    {
+      "check": "Idempotent revalidation",
+      "status": "PASS"
+    },
+    {
+      "check": "Tamperedarchive rejected beforetarget creation",
+      "status": "PASS"
+    }
+  ],
+  "archiveBytes": 2113626,
+  "canonicalMatchesNativeStore": true,
+  "codeObservations": [
+    "Fixed64hex.json name and archive-name relation reject arbitrary path input. Raw-target/archive symlinks rejected. Missing target decompression bounded by declaredbytes+1; raw length/rawSHA256/nativecanonical digest must all match before exclusive temp write/fsync/atomic replace.",
+    "Existing target is revalidated rather than overwritten; malformed currentraw cannot silently be replaced. Same canonical serialization as workflow/store.py digest. Snapshot is original samebytes, not regenerated filtered content or a fabricated native artifact.",
+    "s1_continue.py and s1_g2.py call restore() before importing Runtime. WORK.md explicitly requires M restore entry before directRuntime access. Omitted restoration would fail missing-artifact checks, not bypass them.",
+    "Current publisher4draft hashes still match patch; lossless archive packaging does not change lesson source or publication authorization."
+  ],
+  "findings": [],
+  "limitations": [
+    "Packing index is a local archival input, not an independent signature or authorization. Native digest/event bindings remain authoritative and unchanged.",
+    "Only declaredS00snapshot restored in/tmp; no native pipeline/T02 approval or publication executed.",
+    "Publisher4draft hashes checked against current fixedPATCH; proposal/sourceManifest73 nonchange is not independently reconstructed from Store in this read-only check."
+  ],
+  "sharedRawUnchanged": true,
+  "sharedRuntimeGuardsChanged": false,
+  "restoreCodeSHA256": "a0f56db07254b50bca6a419fa7ef0ad9a6d5d73fb5545f31bd1ca11048f500f7",
+  "manifestSHA256": "188a0136700d66918b5db73a0833456148dc57f7ee7c25dae3f486ef311217e0"
+}

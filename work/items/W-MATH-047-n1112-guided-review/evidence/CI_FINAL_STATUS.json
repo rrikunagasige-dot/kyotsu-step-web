@@ -1,0 +1,49 @@
+{
+  "sourceSHA": "0ac1ada17fe1a4177252f5ad2004f142b3e29793",
+  "runs": [
+    {
+      "id": 41608964415,
+      "name": "N08 connected transformations and protected N11",
+      "status": "completed",
+      "conclusion": "failure",
+      "sourceSHA": "0ac1ada17fe1a4177252f5ad2004f142b3e29793",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41608964415"
+    },
+    {
+      "id": 41608964412,
+      "name": "Ordinary transformation code and N11 pilot",
+      "status": "completed",
+      "conclusion": "failure",
+      "sourceSHA": "0ac1ada17fe1a4177252f5ad2004f142b3e29793",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41608964412"
+    },
+    {
+      "id": 41608964509,
+      "name": "Textbook code and AI authoring pilot",
+      "status": "completed",
+      "conclusion": "success",
+      "sourceSHA": "0ac1ada17fe1a4177252f5ad2004f142b3e29793",
+      "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41608964509"
+    }
+  ],
+  "failureAnalysis": [
+    {
+      "runId": 41608964412,
+      "jobId": 125825750428,
+      "actual": "Error: DRIFT work/items/W-MATH-038-transformation-groups/N11_TRANSFORMATION_PLAN.json",
+      "classification": "Frozen W038 plan bytes; new binding is stored in W047. Historical check was not weakened.",
+      "n11ImagesUploaded": false
+    },
+    {
+      "runId": 41608964415,
+      "jobId": 125825749454,
+      "actual": "not ok 15 - old source, original figure, grading and N11 display remain byte-identical",
+      "expected": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+      "observed": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+      "classification": "Historical exact-source assertion detects approved N11 update; no old test modified.",
+      "n11ImagesUploaded": false
+    }
+  ],
+  "requiredCapture": "Existing manual review-screenshot-evidence workflow; dispatch capability unavailable and originating browser context unavailable",
+  "formalR07Complete": false
+}

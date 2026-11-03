@@ -24,3 +24,5 @@
 - 導入したCODEは本体app import closureもhashへ含むため、N11適用後にprepatch receiptが古くなることをガードが拒否。差分を再適用せず、同target原審査の履歴を保って最終sourceへ再検証・再束縛した。
 - N11 R06/R07_VERIFY正式受理、build/変形33件/現在behavior4件/四幅39正答109誤答と保存移行PASS。旧W038全テストの版固定FAILと最初の環境FAILは保存し、旧テストを変更しなかった。
 - R07SEMANTIC native targetは普通教材のローカルcaptureを受け入れないため拒否。CI起動APIはなく、Browser toolもoriginating context unavailable。正式画像登録から再開。非作者原報告と実画像を保全、公開・本人受入は未実施。
+
+- GitHub保存0ac1adaにより自動CI3本が起動。Textbook authoring成功、ordinary transformationはW038 plan DRIFT、N08 transformationは旧N11全体hash固定1件で停止。実job logsを取得し、画像生成前停止・artifactなしを確認。evidence/CI_FINAL_STATUS.jsonにrun/job/期待・実hashを保存。旧テストを変更しない。必要な手動review screenshot workflowのAPI起動と接続browserは利用不可。

@@ -2,10 +2,10 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R07_SEMANTIC@n11",
-    "claimToken": "85f447d2850f4bb58b3ecfd8e7dd05f7",
+    "claimToken": "833d7bd14130453a9c4abbc32c8d1970",
     "receipts": [
-      "d7297957474a638cbad41195f3af5e652d9c73e22adeedef1ac3128813153c5a",
-      "8a591ffe1c588798871edf6f85695636807fa07d64d6275b859a47deaadbccc1"
+      "c89b21171f8f1af264cc8dc1998b60fac748f1f43f2ae976884f931f4e794f2f",
+      "f33b43573d76c92799789ac8cb87ee233cd8708f15e181d250183bbe3788b63d"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -84,10 +84,10 @@
             }
           ]
         },
-        "task_id": "fb5b50130a31e79246950317e36b8b1d2ef8489e91120618c7cb0107ff95d0e5",
-        "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
+        "task_id": "50d4a26358f61124a423f71282214c462774b8035a9d665f729c7b9e52d698f0",
+        "input_hash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+        "candidate_sha": "4a09de7a0f910669946466daf918ab28c820a5f2",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -137,8 +137,8 @@
         "previous_results": {
           "R07_VERIFY@n11": {
             "actor": "capability-runner",
-            "artifact": "285f53d83ebb664e8a0732979dda03df3ce5438083929fa5a3404b8b10bdff7b",
-            "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+            "artifact": "26cc56eca50cc6a18064c55a661738696273f1859e67d525a5c6698778deecc8",
+            "input_hash": "828db781bab2a3f47d40af53e68a11487770173e074cbae98fa1a44a40642e36",
             "node": "R07_VERIFY@n11",
             "verdict": "PASS"
           }
@@ -172,21 +172,30 @@
       "dependencies": {
         "R07_VERIFY@n11": {
           "aiReview": {
-            "evidence": "Original source and active six-node copy checked. Math argument unchanged. Actual four-width all-answer browser run passed. Legacy byte-frozen tests retain their original failures and are not current-source certification.",
-            "inputHash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
-            "requestHash": "c464f0d02a4380da05e4603ba8a93b0e1e48de1069689191f2f9f22292fc2c44",
-            "reviewer": "M integrating two nonauthor implementation reports"
+            "evidence": "Actual successful CI run/source SHA/archive digest and all reports checked. N11 approved 39 interactions at four widths; protected hashes unchanged. N12 baseline is not presented as implemented.",
+            "inputHash": "828db781bab2a3f47d40af53e68a11487770173e074cbae98fa1a44a40642e36",
+            "requestHash": "05756d1243681f6bc55c50055cc083afb5b6ecfccd9fda0e560a9304acf464c9",
+            "reviewer": "M integrates original nonauthor math/source/image checks"
           },
           "capability_receipts": [
-            "289f06bb62f9485fb3e00f39cba72a0812d7f2412c2ce132fab76f4a18bb4ea7",
-            "bd4f54cb264297d5804b252a4e3f4318102b76e064f825167cd53ea5cc874fa4",
-            "c5ac9616996712ebefbd805b5835565fdd7dd240f6fc9bf56ebc0134eb904f09",
-            "76abad1db1f09e2dce41826f2f5b5ce9742faaffd6825e77436878dc68e325af"
+            "fa9c973a94eadbdd9e2657967d73ffe41173366b231a53830d443c332860cecf",
+            "2a178ad826bdaa7a07d6c48019dad99489ad9b6e1566e34723475da2cb1e838f",
+            "60589e31c30fa0caa49ea082ad7989900a3319d3d13b9a3fbe49a46d7e542ccb",
+            "b64b9035d7e26d55729d2d75bce37a7f3631b7d87e80f3ff924c7b4dda172a21"
           ],
           "evidence_refs": [
-            "6e859d3a-5826-4fab-b388-6dd63c737183",
-            "0c19161b-04b4-4a9c-b861-d7f2804d9ed1",
-            "ccee9eda-b322-4dfe-afce-3c643c36f841"
+            "1d17f2f4-1141-415a-bedd-e55ca1395315",
+            "3ce5defc-b626-4626-a07c-312b7a077375",
+            "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+            "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+            "6672629a-56de-444b-85be-702311a05f8d",
+            "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+            "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+            "efe4da01-c32e-4121-8900-88284c0822ff",
+            "e1f5206f-643f-4759-af2d-4931964547af",
+            "40358da4-f4c7-4376-bf78-e813a74bc54a",
+            "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+            "8ebf30be-8cc9-40c2-8e96-f4b5716e927d"
           ],
           "formalProof": false,
           "proofStatus": "AI_ARGUMENT_REVIEWED",
@@ -199,7 +208,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "00e306b7eb50be52949d415e72861d1f39c2af9e76958e7427a544536cffc87d",
+      "requestHash": "ccd284df59b2f572aa6f8fb4e7a173e521eaa1985e7fe52550d49eaf1412c490",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [
@@ -301,10 +310,10 @@
           }
         ]
       },
-      "task_id": "fb5b50130a31e79246950317e36b8b1d2ef8489e91120618c7cb0107ff95d0e5",
-      "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
+      "task_id": "50d4a26358f61124a423f71282214c462774b8035a9d665f729c7b9e52d698f0",
+      "input_hash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+      "candidate_sha": "4a09de7a0f910669946466daf918ab28c820a5f2",
       "rules": {
         "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -354,8 +363,8 @@
       "previous_results": {
         "R07_VERIFY@n11": {
           "actor": "capability-runner",
-          "artifact": "285f53d83ebb664e8a0732979dda03df3ce5438083929fa5a3404b8b10bdff7b",
-          "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+          "artifact": "26cc56eca50cc6a18064c55a661738696273f1859e67d525a5c6698778deecc8",
+          "input_hash": "828db781bab2a3f47d40af53e68a11487770173e074cbae98fa1a44a40642e36",
           "node": "R07_VERIFY@n11",
           "verdict": "PASS"
         }
@@ -389,21 +398,30 @@
     "dependencies": {
       "R07_VERIFY@n11": {
         "aiReview": {
-          "evidence": "Original source and active six-node copy checked. Math argument unchanged. Actual four-width all-answer browser run passed. Legacy byte-frozen tests retain their original failures and are not current-source certification.",
-          "inputHash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
-          "requestHash": "c464f0d02a4380da05e4603ba8a93b0e1e48de1069689191f2f9f22292fc2c44",
-          "reviewer": "M integrating two nonauthor implementation reports"
+          "evidence": "Actual successful CI run/source SHA/archive digest and all reports checked. N11 approved 39 interactions at four widths; protected hashes unchanged. N12 baseline is not presented as implemented.",
+          "inputHash": "828db781bab2a3f47d40af53e68a11487770173e074cbae98fa1a44a40642e36",
+          "requestHash": "05756d1243681f6bc55c50055cc083afb5b6ecfccd9fda0e560a9304acf464c9",
+          "reviewer": "M integrates original nonauthor math/source/image checks"
         },
         "capability_receipts": [
-          "289f06bb62f9485fb3e00f39cba72a0812d7f2412c2ce132fab76f4a18bb4ea7",
-          "bd4f54cb264297d5804b252a4e3f4318102b76e064f825167cd53ea5cc874fa4",
-          "c5ac9616996712ebefbd805b5835565fdd7dd240f6fc9bf56ebc0134eb904f09",
-          "76abad1db1f09e2dce41826f2f5b5ce9742faaffd6825e77436878dc68e325af"
+          "fa9c973a94eadbdd9e2657967d73ffe41173366b231a53830d443c332860cecf",
+          "2a178ad826bdaa7a07d6c48019dad99489ad9b6e1566e34723475da2cb1e838f",
+          "60589e31c30fa0caa49ea082ad7989900a3319d3d13b9a3fbe49a46d7e542ccb",
+          "b64b9035d7e26d55729d2d75bce37a7f3631b7d87e80f3ff924c7b4dda172a21"
         ],
         "evidence_refs": [
-          "6e859d3a-5826-4fab-b388-6dd63c737183",
-          "0c19161b-04b4-4a9c-b861-d7f2804d9ed1",
-          "ccee9eda-b322-4dfe-afce-3c643c36f841"
+          "1d17f2f4-1141-415a-bedd-e55ca1395315",
+          "3ce5defc-b626-4626-a07c-312b7a077375",
+          "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+          "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+          "6672629a-56de-444b-85be-702311a05f8d",
+          "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+          "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+          "efe4da01-c32e-4121-8900-88284c0822ff",
+          "e1f5206f-643f-4759-af2d-4931964547af",
+          "40358da4-f4c7-4376-bf78-e813a74bc54a",
+          "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+          "8ebf30be-8cc9-40c2-8e96-f4b5716e927d"
         ],
         "formalProof": false,
         "proofStatus": "AI_ARGUMENT_REVIEWED",
@@ -416,7 +434,7 @@
       "未解決は未解決と記録",
       "承認を生成しない"
     ],
-    "requestHash": "00e306b7eb50be52949d415e72861d1f39c2af9e76958e7427a544536cffc87d",
+    "requestHash": "ccd284df59b2f572aa6f8fb4e7a173e521eaa1985e7fe52550d49eaf1412c490",
     "teamReview": {
       "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
       "requirements": [
@@ -440,8 +458,18 @@
     }
   },
   "evidenceRefs": [
-    "6e859d3a-5826-4fab-b388-6dd63c737183",
-    "0c19161b-04b4-4a9c-b861-d7f2804d9ed1",
-    "ccee9eda-b322-4dfe-afce-3c643c36f841"
+    "1d17f2f4-1141-415a-bedd-e55ca1395315",
+    "3ce5defc-b626-4626-a07c-312b7a077375",
+    "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+    "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+    "6672629a-56de-444b-85be-702311a05f8d",
+    "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+    "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+    "efe4da01-c32e-4121-8900-88284c0822ff",
+    "e1f5206f-643f-4759-af2d-4931964547af",
+    "40358da4-f4c7-4376-bf78-e813a74bc54a",
+    "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+    "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+    "ad2a7c7d-fab9-45b9-a8a1-23aedc10e90b"
   ]
 }

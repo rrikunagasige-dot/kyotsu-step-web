@@ -1,0 +1,64 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "claimRef": "implemented-visible",
+  "facet": "render",
+  "targetHash": "e370d18b41e3fb404c0bc14b63001b24a598f2b7a680d37ef2db682937de9495",
+  "sourceSHA": "7c156e5a7f5f4d25762939ff6f464a6c60dd042d",
+  "verdict": "PASS",
+  "authorSeparation": true,
+  "sourceFirst": true,
+  "firstPass": false,
+  "reviewHistory": {
+    "originalSourceFirst": true,
+    "originalFirstPass": true,
+    "currentReview": "同一内容への正式CI画像確認。原資料先読時の初見を保持する。後に提案と工程文脈を読んだため、新たな盲検初回ではない。教材/実装への作者寄与なし。"
+  },
+  "firstObservations": [
+    "同一問題の不等式変形を追えること、補助等式と主不等式を区別し独立な比較・境界検証・定義を混ぜないこと。",
+    "未回答frontier、正解後置換、誤答hint、段階完了後の次へ、履歴結果と全文の操作契約を保持すること。",
+    "390pxで式・番号・選択UIが衝突せず、後続式や完成図で先の穴を漏らさないこと。",
+    "既存stage5〜6のW038変形群を保持し、stage14等の縦長さは既存任意改善として区別すること。"
+  ],
+  "findings": [],
+  "rationale": {
+    "packet": "REVIEW_n11_semantic.jsonのperformer、claim/facet、sourceSHA、targetHashを照合した。正式R07_SEMANTIC@n11に対する非作者render評価。",
+    "ciBinding": {
+      "runId": "41617178126",
+      "artifactId": "13221039727",
+      "sourceSHA": "7c156e5a7f5f4d25762939ff6f464a6c60dd042d",
+      "verification": "raw/static/CURRENT_CONTRACTS.json、raw/n11/REPORT.json、raw/n11-focus/FOCUSED_CAPTURE.jsonのsourceSHAがpacketと一致。登録済みCIartifact由来のraw画像を直接view_imageで実見。run成功とZIP検証は親からの取得・登録証拠を受領し、本担当が外部APIから再取得したとは称さない。"
+    },
+    "contentMode": "CURRENT_CONTRACTSはN11 APPROVED、変更6node、39回答、revision11。N12はBASELINE、変更0であり今回のN11 PASSをN12新版実装済み評価へ転用しない。",
+    "visualAssessment": [
+      "q11constantのinitialは−17−9=選択と三選択肢、completeは−17−9=−26、式番号(26)が一つ。続くn11-11は全式へ戻す問いと四選択肢、completeは−4x≥−26で(27)を一つ表示。補助計算から主不等式への復帰が明瞭で、番号や選択UIの衝突はない。",
+      "境界07は5<5の関係を提示し真偽/含有を回答前に断定しない。completeで理由付き不含を示す。境界10も5≤5の関係を評価させ、completeで含む理由と完成図を表示する。両者で選択UIと本文が判読可能。",
+      "03 initialは負と正の積という根拠から差と大小を判断させ、completeはac>bcとbc−ac<0を独立二行で一つの(7)として示す。",
+      "12 initialの本文は−26/−4のみを提示し、約分後の境界13/2を本文で先取りしない。completeでx≤13/2と(29)が読める。",
+      "fraction-problem contextは「学んだことを使う」「分数の確認問題を提示」「次の不等式」で原問の確認区分に整合。分数が構造化して表示され、具体倍率3を先取りしない。旧N11-R2-L07の解消をCI実表示でも確認。"
+    ],
+    "operationEvidence": "N11 REPORTは320/390/430/1440各幅で39正答/109誤答、14stage、原図2点、history/reload/resize、旧revision1〜10移行、geometry PASS、errorsなしを記録。レビュー担当は原結果を読取確認し、同じ共有Storeを再操作していない。",
+    "preservationEvidence": "CURRENT_CONTRACTSはexact旧/新source受理、未知source・graph変更/欠落/追加/重複拒否の7caseとW038 IDENTICAL_EXCEPT_BINDINGを記録。既存のsource直接比較で39items/番号map/semanticDisplay/revision/block列の保持も確認済み。",
+    "inspectedImages": [
+      "n11-q11-constant-focus-initial.png",
+      "n11-q11-constant-focus-complete.png",
+      "n11-11-focus-initial.png",
+      "n11-11-focus-complete.png",
+      "n11-07-focus-initial.png",
+      "n11-07-focus-complete.png",
+      "n11-03-focus-initial.png",
+      "n11-03-focus-complete.png",
+      "n11-10-focus-initial.png",
+      "n11-10-focus-complete.png",
+      "n11-12-focus-initial.png",
+      "n11-12-focus-complete.png",
+      "n11-fraction-problem-context.png"
+    ],
+    "imageRoot": "work/items/W-MATH-047-n1112-guided-review/evidence/ci/41617178126/raw/n11-focus"
+  },
+  "limitations": [
+    "CI focus画像の独立実見は390pxの代表6nodeと分数導入。全操作・四幅・移行は同CI REPORTの機械検証証拠に依拠し、全PNG全行を実見したとは称さない。",
+    "以前のlocal REPORTのsourceSHA:nullを改変していない。今回は正式CI raw証拠の明示sourceSHAで確認した。",
+    "本人の実アプリ受入、公開後動作、N12新版の意味審査は本PASSに含まない。",
+    "Store/Git編集、共有保存データの変更、孫agent起動は行っていない。"
+  ]
+}

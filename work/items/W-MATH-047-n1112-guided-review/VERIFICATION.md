@@ -18,3 +18,6 @@
 - 各320/390/430/1440pxで39正答/109誤答、14段階・2原図、履歴/reload/resize/旧rev1–10移行、幾何PASS。原REPORT.sourceSHA=nullは維持し、実行した固定local buildのsource bindingを別receiptに記録。
 - 6代表nodeのinitial/complete実画像と非作者source/image PASS。正式CI captureではない。
 - R06/R07_VERIFYは正式受理。R07_SEMANTICはcapture登録条件が未充足。G2/公開/本人受入は未実施。N12本体は未変更。
+
+## 正式CI・R07完了
+T2の成功CI41617178126と、文脈画像改善後の成功CI41620137341を実APIで確認。後者source4a09de7a、artifact13223652318、ZIP sha256 c6e9868609860de690d791a8e7f9ce0de9faff7a80e564999c3901df255b4144。native CI/capture/screenshotを経てR07_VERIFY/R07_SEMANTIC PASS。修正版99 raw files、全四幅39/109、保存移行、原図/番号/契約/W038一致。N12 mode BASELINEは旧版保持のみ。公開/本人アプリ受入は未実施。main Gate①の実画像確認票を提示する。

@@ -1,0 +1,12 @@
+{
+  "originalLock": {
+    "pid": 6,
+    "time": 1793702424.7238142
+  },
+  "recovery": {
+    "removed_dead_pid": 6
+  },
+  "chain": "VALID",
+  "events": 3624,
+  "head": "b0562937ee0e3d757046c084a7ad8b8f47e1d1d1c08df2988af1113cb514f9f9"
+}

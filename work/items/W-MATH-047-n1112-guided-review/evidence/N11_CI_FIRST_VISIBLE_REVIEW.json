@@ -1,21 +1,30 @@
 {
   "claimRef": "implemented-visible",
   "facet": "render",
-  "targetHash": "e57350410cf0f1d548401d10e2684f90f8c2072b8d29e9226adc7913c87b950a",
-  "sourceSHA": "7c156e5a7f5f4d25762939ff6f464a6c60dd042d",
-  "runId": 41617178126,
+  "targetHash": "815b6c8d35bb7bb92f828607012af6ae325a81ff92cb7b45d672ea1d4fa986b1",
+  "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+  "runId": 41620137341,
+  "artifactId": 13223652318,
   "reviewer": "/root/w047_review_design",
-  "verdict": "UNVERIFIED",
+  "verdict": "PASS",
   "firstPass": true,
   "sourceFirst": true,
   "authorSeparation": true,
   "firstObservations": [
-    "今回がこの実CI画像/REPORT artifactの初回審査。以前の提案・design・工程文脈と自分の報告は既知であり、教材自体の盲検ではない。今回の他者画像報告やrootの実装理由は読んでいない。",
-    "位置付き原資料43block→現Authored→実PNGの順で確認。q11constant/全式11/07/03/10/12のfocus initial/complete12枚、fraction context、q11constant complete/全式11 initial/12 initialの段階文脈画像をview_imageで読み、packet/manifest/REPORT読前に親へ所見を固定した。",
-    "focus画像では局所計算-17-9と全式合成が分かれ、番号26/27、選択肢、本文に重なりはない。符号・境界・商の判断結果の先出し削減を確認した。",
-    "段階全体画像q11constant-complete/11-initialでは、画面途中のヘッダと「本文へ移動」の帯が展開の本文・数式領域を覆っている。focusは明瞭だが全段階の文脈には視認できない箇所がある。"
+    "今回が修正版実CI artifactへの初回表示審査。旧runの実画像初見・UNVERIFIED/CI-V06と提案/design/工程文脈は既知であり、新しい盲検とは称さない。",
+    "原資料の該当設問と現Authoredの係数計算/局所計算/全式合成を先に確認し、390×1200通常viewport2枚をview_imageで実見した。packet/manifest/REPORTを読む前に観察を親へ送信し固定した。",
+    "新画像ではヘッダは画面上端にあり、係数計算(25)、定数計算(26)、確定結果の記録、元式へ戻す説明、未回答全式(27)の流れが連続して読める。選択肢を開いた画面も(26)と(27)の文脈を保持し、4候補まで覆われず読める。"
   ],
   "findings": [
+    {
+      "id": "CI-V06",
+      "targetIds": [
+        "n11-local-result-complete-context-viewport.png",
+        "n11-whole-state-initial-context-viewport.png"
+      ],
+      "status": "VERIFIED_FIXED",
+      "reason": "前者で3(2x+3)=6x+9、(6-10)x+9≥-17/6-10=-4、-17-9=-26(26)、記録説明、結果を元不等式へ戻す説明と未回答(27)が一つの通常画面に見える。後者で(26)から(27)への接続と4選択肢を同時に確認できる。対象本文・式を画面中央の固定ヘッダが覆う旧長大写真の不足は新viewport証拠で解消した。旧画像そのものを修正済みとは称さず、旧UNVERIFIED報告は履歴として保持する。"
+    },
     {
       "id": "CI-V01",
       "targetIds": [
@@ -23,32 +32,18 @@
         "n11-11"
       ],
       "status": "確認済み",
-      "reason": "initialは-17-9=選択と3候補のみ、completeは-17-9=-26。段階文脈でもその後の全式27は未回答であり、-4x≥-26は全式の選択肢と回答後表示で初めて完成する。局所計算と元不等式への合成を区別し、式番号とボタンの衝突は見えない。"
+      "reason": "局所結果-26が確定しても全式27は未回答であり、-4x≥-26は候補から学習者が選ぶ。本文・番号26/27・選択ボタン・枠内4候補が分離して読める。今回hashが変わったn11-11-focus-initialも直接再実見し、同じ内容と可読性を確認。"
     },
     {
-      "id": "CI-V02",
+      "id": "CI-V02-04",
       "targetIds": [
-        "n11-03"
-      ],
-      "status": "確認済み",
-      "reason": "beforeは負と正の積を材料とし、結果の符号を断定しない。選択肢はac/bcと差の符号を二行で示し、completeではac>bcとbc-ac<0を整列した二行で表示。番号7は本体と離れ、結論後に負数倍規則を説明する。"
-    },
-    {
-      "id": "CI-V03",
-      "targetIds": [
+        "n11-03",
         "n11-07",
-        "n11-10"
-      ],
-      "status": "確認済み",
-      "reason": "initial画像は5<5または5≤5という関係までで真偽を断定せず、包含と理由を選ぶ。completeは理由付き結論と説明へ進み、F02はn11-10のcompleteにのみ見える。選択肢の日本語折返しは枠内で読める。"
-    },
-    {
-      "id": "CI-V04",
-      "targetIds": [
+        "n11-10",
         "n11-12"
       ],
       "status": "確認済み",
-      "reason": "initialでは未計算の(-26)/(-4)と既に回答した≤を参照し、本文が13/2を計算済みで示さない。選択肢は方向・符号・等号を区別でき、completeでx≤13/2と番号29が明瞭に示される。"
+      "reason": "この4nodeと局所計算のfocus initial/complete PNGは、前回自分が実見した画像と今回manifestでbytes同一。差の符号、境界関係の真偽、負数同士の商を回答前に断定せず、正答後の結論/整列式へ進む可視内容を維持。"
     },
     {
       "id": "N11-R2-L07",
@@ -56,37 +51,38 @@
         "n11-fraction-problem"
       ],
       "status": "確認済み",
-      "reason": "実context PNGに「学んだことを使う」「分数の確認問題を提示」「次の不等式」と表示され、例題との呼称混同がない。本文は同じ数を掛ける方針までで具体的3倍を先出ししない。"
+      "reason": "fraction context画像も前回実見したbytesと同一。「学んだことを使う」「分数の確認問題」「次の不等式」と表示され、具体的3倍の先出しはない。"
     },
     {
       "id": "CI-V05",
       "targetIds": [
-        "manifest",
+        "revised manifest",
         "CURRENT_CONTRACTS",
-        "n11/REPORT"
+        "n11/REPORT",
+        "FOCUSED_CAPTURE"
       ],
       "status": "確認済み",
-      "reason": "manifestの既存hash関数によるhashは指定targetHashと一致し、rawFiles全97件のSHA256を実bytesと照合して不一致0。manifest/契約REPORT/n11 REPORTのsourceSHAは一致。N11 APPROVED、39回答、revision11、W038 IDENTICAL_EXCEPT_BINDINGを記録。n11 REPORTは320/390/430/1440で各39正答・109誤答・14段階・2図・履歴/再読込/resize/旧revision1〜10移行・geometry PASS、errors空。N12 BASELINEは保持確認に限定し、新版合格へ転用しない。"
+      "reason": "新manifest N11_CI_VISIBLE_TARGET_4a09de7a.jsonのhashは815b6c8d…でpacket targetと一致。run41620137341/artifact13223652318/digest c6e9868609860de690d791a8e7f9ce0de9faff7a80e564999c3901df255b4144とsource4a09de7a…を確認。rawFiles99件の実bytes SHA256は全件一致。static/n11 REPORT/FOCUSED_CAPTUREも同source。contextFramesは両方390×1200/fullPage=false/layoutModified=falseで対象nodeがヘッダ下に収まり、実画像に整合。"
     },
     {
-      "id": "CI-V06",
+      "id": "CI-V07",
       "targetIds": [
-        "n11-focus/n11-q11-constant-complete.png",
-        "n11-focus/n11-11-initial.png"
+        "n11 REPORT",
+        "N12 BASELINE"
       ],
-      "status": "OPEN",
-      "reason": "段階全体の実PNGには中央位置で固定ヘッダ/本文へ移動ボタンが展開説明の上に重なり、当該本文・式の一部を視認できない。局所focusの合格からこの隠れた全段階文脈まで合格とはできない。通常UIの恒常欠陥かスクリーンショット時のscroll/sticky由来かは未切分け。隠れた箇所を覆わない文脈画像または通常viewportの証拠が必要。"
+      "status": "確認済み",
+      "reason": "N11はAPPROVED/39回答/revision11、四幅320/390/430/1440で各39正答/109誤答/14段階/2図/履歴/再読込/resize/旧revision1〜10移行/geometry PASS、errors空。W038はIDENTICAL_EXCEPT_BINDING。N12はBASELINE/46回答/revision4であり、今回も保持確認だけで新版合格に用いない。"
     }
   ],
   "rationale": [
-    "承認修正の焦点画像は、意味・説明接続・選択肢・式番号が実表示で成立することを支持する。提出REPORTの機械的geometry合格は独立の画像評価を置き換えない。",
-    "現manifestには段階文脈の一部を隠す画像が含まれ、その範囲を実表示合格として確認できないため、全対象artifactの最終verdictはUNVERIFIED。教材内容の数学的FAILと断定する所見ではない。"
+    "旧判定で未確認だった局所結果から全式合成への段階文脈は、遮蔽のない通常viewport証拠で確認できた。修正版artifactに未解決の可視意味上のOPENは認めず、実CI表示審査としてPASS。",
+    "REPORTの技術合格だけではなく、新規2画像と変更focus画像の独立実見、および前回精査画像とのbytes同一性を根拠とする。"
   ],
   "limitations": [
-    "CIを自分で再実行/ブラウザ操作していない。reportに記された全誤答・保存移行等は実行済み証拠との照合であり、自分の操作確認ではない。",
-    "view_imageで直接精査したのは上記focusと文脈画像。manifest全PNGを目視したとは称さない。",
-    "指定CI source commitオブジェクトはこのlocal Gitでtreeとして参照できず、現Authoredと当該commit bytesの独立比較はできなかった。source束縛は一致するmanifest/REPORTと全raw bytes hashに基づく。",
-    "初回可視artifact審査を過去提案審査や他者の再確認報告で代用していない。",
-    "Store/Git/製品の編集なし。指定/tmp原報告のみ保存、孫agentなし。"
+    "自分によるCI再実行・実ブラウザ操作ではない。四幅全操作/誤答/移行等は同sourceのREPORT照合であり、全PNGの独立目視とは称さない。",
+    "今回の通常viewport2枚は390幅の対象文脈を示す。すべての端末/scroll位置に関するUI保証ではない。",
+    "現Authoredと指定CI commitのbyte比較は今回実施せず、sourceの対応はpacket/manifest/CI REPORTの一致と全raw hashの確認による。",
+    "旧長大画像は遮蔽を残したまま履歴保持されるが、その画像だけを新しい文脈合格の根拠にしていない。",
+    "保存先JSON以外のStore/Git/製品編集なし。孫agentなし。"
   ]
 }

@@ -9,3 +9,6 @@
 
 ## R06 technical dependency
 既存n11-source-binding.mjsはW038範囲だけでなくAuthored全体をpinする。承認範囲外6nodeの本文変更でも既存validateTransformationPlanはTG03で停止。これを事前R04で候補Authoredへのcompileまで実行せず発見できていなかった。旧pin維持＋新exact source/3graph mappingを追加する未適用案を準備。未知source拒否や数学・保存ガードは外さない。TECHNICAL_SCOPE_ADDENDUM.mdと隔離7case検証を参照。
+
+## CI-V06 — 解決済み
+初回CIの長大なstage写真で固定ヘッダが文脈を覆いUNVERIFIEDとなった。実UIの恒常欠陥とは断定せず、UI/CSSを変えない390×1200通常viewportを追加した。成功CI41620137341の2枚で(26)の局所結果→(27)の未回答主式を同時に視認でき、非作者がVERIFIED_FIXEDと確認。原OPEN、原画像、修正後画像、対象hash、解決出力を保存。

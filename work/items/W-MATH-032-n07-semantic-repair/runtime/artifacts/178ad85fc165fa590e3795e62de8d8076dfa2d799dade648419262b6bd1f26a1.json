@@ -1,0 +1,1 @@
+{"case_updates":[],"deduplication":"Technical provenance; not learner quality labels","evidence_refs":["c0ee132c-a64d-4339-8a95-19390ffcf4dd"],"regression_links":["Dedicated current-source CI; historical tests retained"],"rule_links":["CI source and actual artifacts must agree"],"unresolved":[],"verdict":"PASS"}

@@ -1,25 +1,11 @@
-# N11 実装・確認用画像
+# N11 — 実CI・R07完了、細部確認待ち
 
-承認P-W047-06の6箇所を実装。39回答、41保持node、旧保存revision11、W038表示・採点・式番号は保持。子agentは内容担当と表示担当の2人だけを稼働。
+確認する実画面は **[N11の確認①・②](CONFIRM_N11_4a09de7a.md)** です。CI source4a09de7a0f910669946466daf918ab28c820a5f2の原画像を掲載しています。
 
-## 自分で計算し、元の不等式へ戻る
+N11の6箇所を実装し、専用CI41620137341と正式R07_VERIFY/R07_SEMANTICがPASS。四幅の全39回答・109誤答候補、保存/履歴/移行、採点/番号/W038を検証。最初の画像遮蔽指摘を保存し、通常viewport2枚で解消を確認しました。
 
-先に定数部分を計算する。全体の不等式をこの空で先に完成させない。
+次の正式nodeはG2_AUDIT@n11。その前に現行main WORK_SYSTEM§12A Gate①の本人画像確認を記録します。N12は承認済み・現行leaf BASELINE・未適用。公開/本人アプリ受入は未実施です。子agentは既存の二人だけを稼働しています。
 
-![補助計算の未回答画面](evidence/browser-n11/n11-q11-constant-focus-initial.png)
+[火柴図](generated/CURRENT_POSITION.md) / [現在のCI出所](evidence/CI_CURRENT_STATUS.json) / [画像原本hashとnative登録](evidence/ci/41620137341/CAPTURE_PROOF.json)
 
-次に、認定した係数・定数を使って元の不等式全体を組み立てる。
-
-![元の不等式を組み立てる未回答画面](evidence/browser-n11/n11-11-focus-initial.png)
-
-## 検証と現在地
-
-- 固定local source：f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b。GitHubの保存版は同一製品bytesを収録し、記録ファイルを追加している。
-- 各320/390/430/1440pxで39正答・109誤答候補、14段階・原図2点、履歴/再読込/resize、旧revision1〜10移行がPASS。
-- build、変形33件、現在版の既存behavior4件がPASS。非作者の内容・実画像評価もPASS。
-- 旧Workのファイル固定テストと自動CI2本のFAILは保存。検査を弱めて全体PASSにはしていない。教材作成基盤のCIは成功。
-- 正式R06とR07_VERIFYは完了。次はR07_SEMANTICのCI画像登録・意味審査。普通教材のローカル画像を受け入れる既存経路がないため、実画像の評価と正式登録を区別している。
-- 手動CI起動APIは現在未提供、接続元ブラウザも取得できない。接続ブラウザを使用できる状態から、既存review-screenshot-evidenceの実行・現在sourceのcapture登録へ再開する。
-- N12の5箇所は承認・生成・契約検査済み。本体はまだ未適用。公開と本人受入は未実施。
-
-[生成された火柴図の現在地](generated/CURRENT_POSITION.md) / [CI原結果と失敗理由](evidence/CI_FINAL_STATUS.json) / [四幅の原結果](evidence/browser-n11/REPORT.json)
+以前のCI_FINAL_STATUS.jsonはsource0ac1adaの旧版固定検査の履歴です。現在版専用CIやR07の状態とは区別しています。旧Work・テストは変更していません。

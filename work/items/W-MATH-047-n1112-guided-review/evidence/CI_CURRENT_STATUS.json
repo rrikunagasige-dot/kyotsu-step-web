@@ -1,0 +1,37 @@
+{
+  "run": {
+    "id": 41620137341,
+    "head_sha": "4a09de7a0f910669946466daf918ab28c820a5f2",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41620137341",
+    "name": "W047 approved N11 N12 verification and screenshots"
+  },
+  "artifact": {
+    "id": 13223652318,
+    "name": "w047-n1112-evidence-4a09de7a0f910669946466daf918ab28c820a5f2",
+    "size_in_bytes": 22550263,
+    "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/13223652318",
+    "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/13223652318/zip",
+    "expired": false,
+    "created_at": "2026-11-03T10:38:17Z",
+    "expires_at": "2026-11-17T10:38:16Z",
+    "updated_at": "2026-11-03T10:38:17Z",
+    "digest": "sha256:c6e9868609860de690d791a8e7f9ce0de9faff7a80e564999c3901df255b4144",
+    "workflow_run": {
+      "id": 41620137341,
+      "repository_id": 1391122224,
+      "head_repository_id": 1391122224,
+      "head_branch": "work/n1112-guided-review-20261103",
+      "head_sha": "4a09de7a0f910669946466daf918ab28c820a5f2"
+    }
+  },
+  "rawArchiveSHA256": "c6e9868609860de690d791a8e7f9ce0de9faff7a80e564999c3901df255b4144",
+  "N11Mode": "APPROVED",
+  "N12Mode": "BASELINE",
+  "R07_VERIFY": "PASS",
+  "R07_SEMANTIC": "PASS",
+  "CI_V06": "VERIFIED_FIXED",
+  "next": "G2_AUDIT@n11 after main Gate1 visual reply",
+  "published": false
+}

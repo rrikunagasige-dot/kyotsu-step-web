@@ -1,0 +1,125 @@
+{
+  "assignment": {
+    "assignmentId": "w047-n11-ci-meaning-7eb19540c4a7",
+    "roleEpoch": 5,
+    "node": "R07_SEMANTIC@n11",
+    "block": "n11",
+    "facet": "render",
+    "claimRefs": [
+      "implemented-visible"
+    ],
+    "performerRef": "/root/w047_review_design",
+    "role": "reviewer",
+    "inputHash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
+    "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+    "artifactHashes": {
+      "implemented-visible": "815b6c8d35bb7bb92f828607012af6ae325a81ff92cb7b45d672ea1d4fa986b1"
+    },
+    "allowedPaths": [],
+    "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+    "dependsOnTasks": [],
+    "budget": {
+      "tokenBudget": null
+    },
+    "independent": true,
+    "targetManifestRef": "36a26785fa78680a2caf3f53c2eeb8e0810b8df6a64ce413941ea4818d7818e2"
+  },
+  "packet": {
+    "baseNodeInputHash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
+    "sourceRefs": [
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+    ],
+    "authorHistory": [
+      {
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "block": "n11",
+        "semanticContributorRefs": [
+          "/root",
+          "/root/w046_source_review"
+        ]
+      }
+    ],
+    "contextExposure": {
+      "forkMode": "filtered",
+      "authorRationaleVisibleAtFirstPass": false
+    },
+    "packetHash": "bf4a20141d92860759636dd64af463848e15bc3c3b6b2ef2f0ac5eb4109c6069"
+  },
+  "target": {
+    "artifactHashes": {
+      "implemented-visible": "815b6c8d35bb7bb92f828607012af6ae325a81ff92cb7b45d672ea1d4fa986b1"
+    },
+    "artifactRefs": [
+      "c89b21171f8f1af264cc8dc1998b60fac748f1f43f2ae976884f931f4e794f2f",
+      "f33b43573d76c92799789ac8cb87ee233cd8708f15e181d250183bbe3788b63d"
+    ],
+    "block": "n11",
+    "blockContext": {
+      "n11": {}
+    },
+    "evidenceRefs": [
+      "1d17f2f4-1141-415a-bedd-e55ca1395315",
+      "3ce5defc-b626-4626-a07c-312b7a077375",
+      "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+      "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+      "6672629a-56de-444b-85be-702311a05f8d",
+      "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+      "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+      "efe4da01-c32e-4121-8900-88284c0822ff",
+      "e1f5206f-643f-4759-af2d-4931964547af",
+      "40358da4-f4c7-4376-bf78-e813a74bc54a",
+      "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+      "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+      "ad2a7c7d-fab9-45b9-a8a1-23aedc10e90b"
+    ],
+    "facet": "render",
+    "inputHash": "7eb19540c4a71ae1ac05a56b79cf4831f6058140c8d6c794be661a88f4379a48",
+    "node": "R07_SEMANTIC@n11",
+    "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+    "schemaVersion": "team-target/1",
+    "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2",
+    "work": "W-MATH-047"
+  },
+  "logicalRole": "A",
+  "reviewKind": "learner-visible-review",
+  "evidenceRefs": [
+    "1d17f2f4-1141-415a-bedd-e55ca1395315",
+    "3ce5defc-b626-4626-a07c-312b7a077375",
+    "f0c50712-2680-4011-b3e6-17cd9f743a6d",
+    "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
+    "6672629a-56de-444b-85be-702311a05f8d",
+    "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
+    "bead0a85-aed8-40a8-8a41-e2342981a8dc",
+    "efe4da01-c32e-4121-8900-88284c0822ff",
+    "e1f5206f-643f-4759-af2d-4931964547af",
+    "40358da4-f4c7-4376-bf78-e813a74bc54a",
+    "bbef722b-2d5a-4957-9992-ea7c850e21b7",
+    "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
+    "ad2a7c7d-fab9-45b9-a8a1-23aedc10e90b"
+  ],
+  "limits": "Original source-first/first-pass observations retained. Reviewer later read proposal/workflow. CI confirmation is not called a new blinded first pass.",
+  "registration": {
+    "registrationRef": "a52df3136c9a68ea5dd7138d67a397d32b706ef892eb620f0aeadbb91122c4e4",
+    "assignmentHash": "c1eda70e54ba274cc989d1ba507fbeed8459e5bbe5b2958522ef56d4184b1dd9",
+    "eventRef": "a17cde886fb407e4be702bf1152ef51238fff86d2dc9cbcdd91d0e3083891d70"
+  },
+  "harness": {
+    "agentRef": "/root/w047_review_design",
+    "taskRef": "/root/w047_review_design",
+    "parentRef": "/root",
+    "logicalRole": "A",
+    "toolResultRef": "62817ed41552807b1540b4cbada262d9ebada7dbfad88542f5b16d34c37dfb03",
+    "attestationMethod": "transcribed-tool-result"
+  },
+  "output": {
+    "outputRef": "dac9a55b89f1664232c4b4bf819944b31d51cd98cf11555dd5cce72d98e64777",
+    "eventRef": "48a62aa2b83251f9dccba71915ded52ba5460d8869039f4b9668a0cc81bc80d4"
+  }
+}

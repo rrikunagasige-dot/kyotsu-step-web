@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "width": 390,
+  "targetNodes": [
+    "n11-03",
+    "n11-07",
+    "n11-10",
+    "n11-q11-constant",
+    "n11-11",
+    "n11-12"
+  ],
+  "contextOnlyNodes": [
+    "n11-fraction-problem"
+  ],
+  "contextFrames": [
+    {
+      "name": "n11-local-result-complete-context",
+      "width": 390,
+      "height": 1200,
+      "fullPage": false,
+      "geometry": [
+        {
+          "id": "n11-q11-constant",
+          "top": 647.84375,
+          "bottom": 819.78125,
+          "height": 171.9375
+        },
+        {
+          "id": "n11-11",
+          "top": 878.171875,
+          "bottom": 1029.9375,
+          "height": 151.765625
+        }
+      ],
+      "layoutModified": false
+    },
+    {
+      "name": "n11-whole-state-initial-context",
+      "width": 390,
+      "height": 1200,
+      "fullPage": false,
+      "geometry": [
+        {
+          "id": "n11-q11-constant",
+          "top": 283.84375,
+          "bottom": 455.78125,
+          "height": 171.9375
+        },
+        {
+          "id": "n11-11",
+          "top": 514.171875,
+          "bottom": 1029.859375,
+          "height": 515.6875
+        }
+      ],
+      "layoutModified": false
+    }
+  ],
+  "states": [
+    "initial-choice-open",
+    "completed"
+  ],
+  "sourceSHA": "4a09de7a0f910669946466daf918ab28c820a5f2"
+}

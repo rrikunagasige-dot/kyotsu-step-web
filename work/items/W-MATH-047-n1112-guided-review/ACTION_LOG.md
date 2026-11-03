@@ -26,3 +26,9 @@
 - R07SEMANTIC native targetは普通教材のローカルcaptureを受け入れないため拒否。CI起動APIはなく、Browser toolもoriginating context unavailable。正式画像登録から再開。非作者原報告と実画像を保全、公開・本人受入は未実施。
 
 - GitHub保存0ac1adaにより自動CI3本が起動。Textbook authoring成功、ordinary transformationはW038 plan DRIFT、N08 transformationは旧N11全体hash固定1件で停止。実job logsを取得し、画像生成前停止・artifactなしを確認。evidence/CI_FINAL_STATUS.jsonにrun/job/期待・実hashを保存。旧テストを変更しない。必要な手動review screenshot workflowのAPI起動と接続browserは利用不可。
+
+- T2承認68d67aadをW-TECH-049へ記録し、新CI1pathを空baseline local commitからnative patchで適用。専用push CI41617178126成功、artifact13221039727 ZIP SHA2eef6c2f...一致、59枚をnative captureへ登録。
+- 実CI-visible targetを提案IRと区別して生成し、未見の画像を内容担当Aが原資料から初回審査。初回UNVERIFIED/CI-V06（長大な画面写真のheader遮蔽）をnative teamへ記録。通常viewport画像を追加し、教材/CSSは変えずCI41620137341で再検証。artifact13223652318 ZIP SHAc6e98686...、全99 raw filesを照合。
+- 修正版初回表示監査PASS・CI-V06 VERIFIED_FIXEDを登録し、R07_SEMANTIC正式受理。再確認のfirstPass=false報告は補助証拠に留め、必要な初回審査へ流用しなかった。
+- 台帳書込後の死んだworker lockは既存recover_lockで回収し、連鎖・所有者・原lockを記録。検査/ガードのコードは変更していない。
+- main04b823のGate①と確認票テンプレートを再読。Work側テンプレートは内部QAへ変更されているため上書き根拠にせず、実CI source4a09の本人確認票を作成。次G2の前に細部確認を記録。

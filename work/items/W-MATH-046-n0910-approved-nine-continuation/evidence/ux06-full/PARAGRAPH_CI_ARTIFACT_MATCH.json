@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "artifactId": 13206549962,
+  "runId": 41582855292,
+  "artifactZipSHA256": "b1d2e2c74290166d90c7b54b3b14a311864b603cb4da7930baa642366a9c0ba8",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "publisherSHA": "04b823259a0873235e39099864d454330eed5d81",
+  "manifests": {
+    "w046-release.json": {
+      "sha256": "38a6fcbd1ceed810b4d68be870c42233fe9aa892ded5088a83c060be3677bf18",
+      "rawEqualsPublicHTTP": true
+    },
+    "release.json": {
+      "sha256": "aacda087d3bfb030658833f8246ecc2b319494b9ae3b1652cf750ace08292d9d",
+      "rawEqualsPublicHTTP": true
+    }
+  },
+  "artifactFilesChecked": 121,
+  "scope": "CI Pages archive manifests raw bytes equal public HTTP manifests; archive assets match all manifest hashes. Browser operations are separate."
+}

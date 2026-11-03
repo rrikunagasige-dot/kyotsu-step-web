@@ -37,11 +37,16 @@
     "head": "2a47e5cbb916bd9a95146733106bd17798109a75",
     "mergeSHA": "04b823259a0873235e39099864d454330eed5d81",
     "ci": "check and governance success",
-    "hostedStatus": "PENDING"
+    "hostedStatus": "PASS;run41582855292 all32steps success",
+    "hostedN09N10Operations": "PASS (workflow step22)",
+    "publicHTTP": "PASS;121assets/46source hashes",
+    "CIArtifact": "PASS; both manifest raw bytes equal publicHTTP;121artifact hashes",
+    "runId": 41582855292,
+    "retainedN08N11": "PASS"
   },
   "actualUserBrowserReset": {
     "status": "BLOCKED",
     "reason": "Browser requires originating browser context; no local browser connection; separate test reset does not reset user device"
   },
-  "workflowNext": "G3_HOST exact bytes/operations verification, then evaluate conditional acceptance and post-fix impact sweep; no formal Store PASSED/next or Gold/fit inferred"
+  "workflowNext": "G3_HOST complete; latest conditional paragraph-fix criterion technically fulfilled; R03 impact sweep recorded by A and R08 lessons recorded in FAILURE_NOTES. No fabricated formal Store receipts, Gold or fit. Actual user browser reset remains unavailable."
 }

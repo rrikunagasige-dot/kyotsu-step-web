@@ -1,15 +1,10 @@
 <!-- W046_CURRENT_START -->
-最新修正：本人page89b9b8f8の段落限定補修中。現状と次工程は [WORKFLOW_CURRENT.md](WORKFLOW_CURRENT.md) の現在地を優先。以下d588公開完了は前回履歴。
-
 # W046 — 現在地
 Status: VERIFYING
-Review: UX06-G3-HOSTED-VERIFIED / FINAL-REVIEW-READY / USER-PENDING
-- 本人page ec054575…「いいよつづけて」で固定d588/既存Pages/main公開設定2fileを承認。[公開承認](evidence/ux06-full/PUBLICATION_APPROVAL.json)。PR136をexpected c620でmergeし、実publisherはe734337f1e18dd285f04f1b8ed63532ceff3b72f。Work全体をmainへmergeしていない。
-- 公開run41569692346は全32step success。公開前検査→deploy→実公開N09/N10四幅・保存/旧版/リセット/font/HTTP→保持N08/旧r6/旧版/N11まで成功。実HTTP121asset/46sourcehashを独立確認し、CI Pages artifact13200882841の両manifest＝実HTTP raw完全一致もA/B照合。
-- 公開source d588d1c395de3132805395f2708bed7535c1767d、N09r10・55parts、N10r6・70parts。√a/√bの証明9node保持、旧r9/r5のimmutable履歴とKEEP/RETIRE/NEW厳密移行を維持。本人の代表細部条件は充足し再承認待ちへ戻さない。
-- 本文CODEの適用/明示実行・公開本文審査への接続を補完せずG2を先行集約した点は訂正済み。native86node/51行照合とA/B14件ずつの28応答を既存CODEへ取込みG2再統合。有限数学70parts未対応/全体lint既存FAILを限定合格で隠さない。
-- 現在地はG3_HOST技術公開・配信確認完了→G3_FINAL本人実物確認。[最終票・全対象scopeと実URL](evidence/ux06-full/FINAL_APP_WALKTHROUGH.md)・[公開生証拠](evidence/ux06-full/PUBLICATION.json)・[火柴図](WORKFLOW_CURRENT.md)。全N09/N10の本人playthroughはPENDING。公開承認/テストを本人受入に変換しない。
-- 次：本人が合意scopeを実物評価。NGならCMD-WORK-001へ戻し同型監査、OKなら評価原文/source/scopeを記録して事後影響確認→R08/L01/Z01の適用条件へ。Store26欠落特例を維持し、架空receipt/正式next認定/Gold/fitは作らない。
+Review: PARAGRAPH-CORRECTION-PUBLISHED / TECHNICAL-CONDITION-FULFILLED
+- 本人page89b9b8f8のN09/N10段落限定修正を公開。source6b439／publisher04b823／PR137／run41582855292全32step success。[今回の証拠](evidence/ux06-full/PARAGRAPH_PUBLICATION.json)。段落修正後なら全体を通せるとの条件付き受入の条件を充足し、同案を聞き直さない。本人の新source再playthroughを作らない。
+- A/B審査、21回帰、型/対象lint、4幅88画像、実HTTP121assetとCI成果物の両manifest/全asset、公開前後操作と既存N08/N11保持確認が成功。数学/穴/compiled/N09r10・N10r6/保存は不変。
+- 本人ブラウザresetのみ接続不能で未実行。検証contextのreset成功とは区別。[工程と次手](WORKFLOW_CURRENT.md)。事後impact/教訓を記録し、次は既存の事例整理/終了照合。正式Store/Gold/fitは未認定。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

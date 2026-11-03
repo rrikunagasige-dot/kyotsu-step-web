@@ -10,13 +10,13 @@
 
 ## 現在地
 
-本人page `89b9b8f8-6ab7-4bd2-bbda-72da611e4257` の最新指示：reset後に未回答の空欄を確認し、設計への指摘を撤回。N09/N10の段落だけを修正し、それが済めば全体を通せるという条件付き受入。回答済み表示を穴欠落と誤認した前pageのスクリーンショットを、新規穴設計の根拠にしない。
+本人page `89b9b8f8-6ab7-4bd2-bbda-72da611e4257` はreset後に未回答の空欄を確認し、設計への指摘を撤回。N09/N10の段落だけを修正し、それが済めば全体を通せるという条件付き受入を受領。同じ設計の再承認を求めない。
 
-- 修正ループ R01/R02/R03→R06→R07。表示source `6b439d0d31fcd46708c256ed23a391009ab73164` は既公開d588からrenderer/CSSの2パスのみ変更。本文token・数学・穴・gate・compiled・revision・保存namespaceを保持。
-- Mが意味境界を指定、Aが数学/保存と公開2パスbyte差分を非作者審査、Bが理念/工程と実画像を監視。既存CODEで型/対象lint/21回帰と4幅88画像を検査。公開PR137のCI/governance成功。画像最終審査後にG3_HOSTへ進み、公開後の実配信byte/操作確認を行う。RUNNINGを公開成功と記さない。
-- 前回公開d588/publisher e734/run41569692346の技術成功証拠は履歴として保持。今回sourceの成功へ流用しない。
-- 本人ブラウザのBrowser接続はoriginating browser context不足で失敗。検証contextのresetと本人端末のresetを区別する。全員自動reset・namespace変更はしない。
-- 正式Storeの26イベント欠落に関する本人特例は保持。空Store・架空receipt・正式PASSED/next・Gold/fitを作らない。
+- 段落限定修正source `6b439d0d31fcd46708c256ed23a391009ab73164`、publisher `04b823259a0873235e39099864d454330eed5d81` をPR137で公開。run `41582855292` は全32step success。既公開d588から製品renderer/CSSの2パスのみ変更。本文token・数学・穴・gate・compiled・revision・保存namespaceは同一byte/契約。
+- Mが意味境界を指定。Aが数学/保存・公開2パス全byte・事後impactを非作者審査。Bが理念/工程・固定13画像を実見。既存CODEの型/対象lint/21回帰成功、固定4幅88画像成功。実配信121asset/46source hashes、CI Pages archive両manifest raw＝実HTTP、N09/N10公開前後操作・保存・旧版・reset・保持N08/旧r6/旧版/N11の検査まで成功。[今回の公開証拠](evidence/ux06-full/PARAGRAPH_PUBLICATION.json)。前回d588の証拠を新sourceへ流用していない。
+- G3_HOSTの技術確認を完了し、条件付き受入の段落修正条件を充足。新sourceを本人が再playthroughしたとは記録しない。R03事後影響照合はA記録、R08の教訓はFAILURE_NOTESへ反映。次は既存工程の事例整理/終了照合であり、新しい数学/穴の改変や同案の再承認へ戻らない。
+- 本人ブラウザresetは未実行。Browserがoriginating browser context不足で接続不可だった。別の検証contextのreset成功を本人端末のresetと呼ばない。既存の各単元「この単元を最初から」を使用し、全員自動reset・namespace変更はしない。
+- 正式Storeの26イベント欠落に関する本人特例を保持。空Store・架空receipt・正式PASSED/next・Gold/fitを作らない。
 
 ## 最新照合（2026-11-03 JST）
 

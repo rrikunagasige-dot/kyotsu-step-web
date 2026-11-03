@@ -1,0 +1,1 @@
+{"design":["contents:read only; specific work branch push; actual four-width browser artifacts"],"evidence_refs":["96f4303a-0184-4ef0-b778-69f9efe867b7"],"protected_scope":["No learner-content/grading/storage/main/publication changes"],"rule_mapping":["Keep frozen historical tests; add current-source checks and CI provenance"],"unknowns":[],"verdict":"PASS"}

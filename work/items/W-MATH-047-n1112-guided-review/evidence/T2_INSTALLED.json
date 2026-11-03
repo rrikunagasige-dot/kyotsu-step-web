@@ -1,0 +1,13 @@
+{
+  "work": "W-TECH-049",
+  "approvalEvent": "w047-t2-user-approval-68d67aad",
+  "proposalHash": "918b9b8b08c9892cb30af8d031a0053aa92e046ba3e3965010ef399ab75f4065",
+  "path": ".github/workflows/w047-n1112-verification.yml",
+  "afterHash": "f4eb94c178096657c0377287dcb518922267f28d925b3fc07ebd8819525c8825",
+  "patchHash": "a712c1eea273b7db520cb63d19891c815309194a24aef981d60c81e4109c6495",
+  "evidenceRefs": [
+    "eb75a801-808d-4ce4-85ed-77dfbecd73e2"
+  ],
+  "newPathBaseline": "Explicit empty-file local commit 8b5950ac8d56e2bd2b1617fbf30912e365c4abed",
+  "next": "Push full approved workflow; actual CI success required before T04"
+}

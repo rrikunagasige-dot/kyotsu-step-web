@@ -1,0 +1,80 @@
+name: W047 approved N11 N12 verification and screenshots
+
+on:
+  push:
+    branches: ['work/n1112-guided-review-20261103']
+    paths:
+      - '.github/workflows/w047-n1112-verification.yml'
+      - 'src/data/textbook/math/numbers/n11Authored.json'
+      - 'src/data/textbook/math/numbers/n11Transformation.json'
+      - 'src/data/textbook/math/numbers/n12Authored.json'
+      - 'tools/textbook/transformation/n11-source-binding.mjs'
+      - 'tools/textbook/transformation/validate.mjs'
+      - 'work/items/W-MATH-047-n1112-guided-review/verify_current.mjs'
+      - 'work/items/W-MATH-047-n1112-guided-review/capture_n11.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: w047-n1112-verification
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CANDIDATE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
+      - name: Verify current approved content, grading, saves and exact AST bridge
+        run: EVIDENCE_DIR="$RUNNER_TEMP/w047-evidence/static" node work/items/W-MATH-047-n1112-guided-review/verify_current.mjs
+      - name: Mathematical and existing learner behavior regression
+        run: |
+          node --test tools/textbook/tests/transformation.test.mjs
+          pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs -t 'node and browser|fraction blank|N11 opts in|legacy later answers'
+      - name: Build exact checked-out app
+        run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Both units at four widths, all answers and wrong choices, saved histories
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4391 > "$RUNNER_TEMP/w047-preview.log" 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node --input-type=module -e 'for(let i=0;i<100;i++){try{if((await fetch("http://127.0.0.1:4391/kyotsu-step-web/")).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,100))}process.exit(1)'
+          export APP_URL=http://127.0.0.1:4391/kyotsu-step-web/
+          for code in n11 n12; do
+            CODES="$code" WIDTHS=320,390,430,1440 EVIDENCE_DIR="$RUNNER_TEMP/w047-evidence/$code" node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+          done
+          EVIDENCE_DIR="$RUNNER_TEMP/w047-evidence/n11-focus" node work/items/W-MATH-047-n1112-guided-review/capture_n11.mjs
+      - name: Retain actual current-source reports and PNGs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w047-n1112-evidence-${{ github.sha }}
+          path: ${{ runner.temp }}/w047-evidence
+          if-no-files-found: error
+          retention-days: 14

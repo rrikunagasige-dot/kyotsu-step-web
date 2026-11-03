@@ -43,5 +43,7 @@
       "sha256": "7f72334d40890ed93ee1acfd664e147ff9b701940de8677618d85a5d23ff0913"
     }
   ],
-  "remoteVisibilityCheck": "PENDING_GITHUB_SAVE"
+  "remoteVisibilityCheck": "GITHUB_API_FILES_PRESENT_AND_GIT_BLOBS_MATCH",
+  "remoteCheckedCommit": "cce2670be8e3b357dcc4b9002709d47a887fd510",
+  "inlineDOMBrowserCheckPerformed": false
 }

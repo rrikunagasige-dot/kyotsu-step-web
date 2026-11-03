@@ -1,5 +1,5 @@
 {
-  "status": "PUBLICATION_APPROVED_PR136_CI_PASS",
+  "status": "HOSTED_VERIFIED_FINAL_USER_REVIEW_PENDING",
   "source": "d588d1c395de3132805395f2708bed7535c1767d",
   "publisherBase": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
   "publisherBaseRetrievedVia": "connected GitHub; anonymous git main read stale e494 and was not used as authority",
@@ -11,8 +11,8 @@
   "helperChanges": "fixed source, source-derived strict file hashes, UX06 approval scope only; no verifier weakened; additionally require real KaTeX Main/Math italic loaded faces, font error-free and HTTP status checks before/after public interactions (B finding)",
   "requiredSourcePaths": 46,
   "storageNamespace": "kyotsu-step-gate3-math-20261023",
-  "mainModified": false,
-  "published": false,
+  "mainModified": true,
+  "published": true,
   "publicationApprovalReceived": true,
   "localRun": {
     "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
@@ -53,5 +53,9 @@
   ],
   "approvalRecord": "PUBLICATION_APPROVAL.json",
   "pr": 136,
-  "publisherHead": "c6201114d3b8a1bb0d4b8402694f81e9138dc9dd"
+  "publisherHead": "c6201114d3b8a1bb0d4b8402694f81e9138dc9dd",
+  "mainModifiedAtPreflight": false,
+  "publisherMergedSHA": "e734337f1e18dd285f04f1b8ed63532ceff3b72f",
+  "publicationRunId": 41569692346,
+  "publicationEvidence": "PUBLICATION.json"
 }

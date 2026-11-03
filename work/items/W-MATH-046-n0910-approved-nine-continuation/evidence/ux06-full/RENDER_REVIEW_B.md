@@ -161,3 +161,26 @@ PRのCI成功は公開runの前検査/deploy/実配信確認ではない。製�
 rootからPR136をexpected head c620でmerge成功、実main publisherSHA=e734337f1e18dd285f04f1b8ed63532ceff3b72fとの通知を受領。PR事前の仮mergeSHA5228を実mainと認定しない。製品固定source d588とは別のpublisher commitである。
 
 既存Deploy to GitHub Pages run41569692346（https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41569692346）は開始中。checkout/setup/installの成功は部分結果で、Word adapter apt依存step中という通知時点では公開前全検査/deploy/全runをPASSとしない。直接HTTP200はまだ旧source691d/publisherf4c/N09r8/N10r5であり、新source公開済みではない。BはAPI二重pollをせず、rootの公開前step/実deploy/実配信manifest・asset・操作証拠の通知を待つ。現在の出所/工程境界に新STOPはない。
+
+## G3_HOST完了・G3_FINAL本人評価待ちの最終監視
+
+公開run41569692346の生結果 `/tmp/w046-ux06-finished-run.json`（SHA256 5718a1b9de47830dc17df78bd0a9fe05cebfee9fc821655f79e05c578b5ea17a）を読み、run head=e734337f1e18dd285f04f1b8ed63532ceff3b72f、completed/success、publish jobおよび全32stepがcompleted/successと独立照合した。公開前検査→artifact upload→deploy（03:14:43Z完了）→公開N09/N10のbyte/操作→公開N08とr6/legacyの保持→公開N11→証拠uploadまで成功。PRCIやlocal結果を公開結果へ転用した判定ではない。
+
+rootの独立HTTP `/tmp/w046-ux06-hosted/HTTP.json` SHA256 efcf609339c9cb04b8f392b9342763a1eff4863ccb0b421c0a20eca6cb57449fを読み、source=d588d1c395de3132805395f2708bed7535c1767d / publisher=e734337f1e18dd285f04f1b8ed63532ceff3b72f / N09r10 compiled7ccea0da… / N10r6 compiled6ecda0e4…を確認した。HTTPの全121pathとhashが配信manifest.filesの集合・値に完全一致し、全HTTP200、requiredSourceHashes46、namespace kyotsu-step-gate3-math-20261023を保つ。最終URLは https://rrikunagasige-dot.github.io/kyotsu-step-web/ 。このHTTP取得はroot実行、Bは保存rawの読取監査である。
+
+`CI_ARTIFACT_MATCH.json` SHA256 4b78a24512bc32fc749aa11a1ea0ad34e341dbeedfacd7f73d52a87a0a2a6bdcを照合。run41569692346のgithub-pages artifact13200882841（archive SHA256 68d69ba124ec7e9cf70993ef7c6ceb1f16a105eb739e2b9a1423ab4808d6e364）の両manifestと保存public rawのbyteが一致：
+
+- w046-release.json：4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524
+- release.json：da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7
+
+CI artifact→公開raw manifest→公開121assetの結合を確認でき、旧source691d/f4cのHTTP200を新sourceとしたものではない。現在の技術工程はG3_HOST完了、次はG3_FINAL本人の全N09/N10実物評価PENDING。本人page ec054575の公開許可、以前の代表細部承認、agent/CODEの全成功は、本人による合意対象の最初から最後までの実物評価へ代用しない。正式Store受理/Gold/fit/Work閉鎖は未発行。
+
+最終票はactual main e734のP003 FINAL_APP_WALKTHROUGHを採用する方針を監視し、Work内未採用W-GOV010 templateを権限にしない。作成中票の古いNOT-READY/保持検査待ちと空のURL確認欄は提示前に新結果へ更新するようrootへ連絡した。本人ledgerのPENDINGは維持し、新規全他教科/モードの本人受入へ範囲を拡張しない。G3_HOST完了判断と次ゲートの権限区分に新STOPはない。
+
+## G3_FINAL提示状態の最終読取
+
+更新済みFINAL_APP_WALKTHROUGHはFINAL-REVIEW-READY（公開技術確認済み/本人PENDING/正式Storeではない）を明記し、N09全14問/55回答・N10全21問/70回答に範囲を限定する。本人の実物ledger8欄は全PENDING。run32step成功、source d588/publisher e734、開始URLの到達根拠、CIartifact/公開byte一致を示し、既承認の代表細部や公開許可を再要求しない。対象外の教科/モードを新たな本人受入へ拡張する文言は修正されている。
+
+WORK/WORKFLOW_CURRENTの最新現在地とPUBLICATION/G3_PREFLIGHT/VERIFICATIONはG3_HOST完了→G3_FINAL本人確認へ対応し、正式Store/Gold/fitを発行していない。旧G3待機や未公開の記載は履歴節として区別される。最終実URL案内へ進む工程上の新STOPはない。
+
+票の内部checkboxにテンプレート由来の「総チェックOK」表現が残るが、案内/末尾が示すとおり自然な明示評価を原文とsource/scopeへ束縛し、合言葉の入力を必要条件にしないようrootへ確認した。技術成功を本人受入へ代用しない。今回のB監視はここまでの提示状態であり、本人がこれから全対象を評価した結果を先取りしない。

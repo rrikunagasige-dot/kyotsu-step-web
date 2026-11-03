@@ -1,13 +1,13 @@
 <!-- W046_CURRENT_START -->
 # W046 — 現在地
 Status: VERIFYING
-Review: UX06-G3-PUBLICATION-APPROVED / PR136-MERGED / RUN41569692346 / PUBLISHING
-- 本人page e95fae75…の「修正後は承認として自動で次へ」に基づき、文脈/等号列の2点を同一候補でroot/A/Bが検査し、代表細部承認条件を充足。[条件と根拠](evidence/ux06-full/DETAIL_ACCEPTANCE.json)。代表の再承認待ちへ戻さない。
-- 承認済み残り10導出/3本文を適用。検査source5e83a17ba73c39f855384b31fc51488028b96a09、GitHub同一tree製品commit d588d1c395de3132805395f2708bed7535c1767d。[完全一致](evidence/ux06-full/SOURCE_SYNC.json)。N09r10/from9・55parts（48KEEP/1RETIRE/7NEW）、N10r6/from5・70parts（58KEEP/2RETIRE/12NEW）。旧r9/r5をbyte固定し、旧revisionを上書きしない。
-- A/Bの理念監視でN10差の平方/和差積にも同型のA/B接続不足を発見し補修。初回REVISEを保持、修正前画像/計測を新sourceの合格へ流用しない。√a/√bの積・商の証明9node objectを保持。
-- R07：関連152回帰/native31、型/build、両unit全4幅2060状態packetと既存importer、保存/未知版19case＋legacy7履歴の実browserを確認。有限数学はPARTIAL/70未対応・意味審査を分離。全体lintは既存25error/1warningのまま、変更source lintは合格。
-- 前回のG2完了報告を訂正：本文CODEの明示実行/分担対応記録が不足。本文CODE補完（86node/51行）と非作者意味28応答の取込を実施して影響G2再統合済み。G3固定候補のローカル公開前検査も完了、別の公開承認待ち。[最新確認票](evidence/ux06-full/REVIEW.md)・[火柴図/工程入口](WORKFLOW_CURRENT.md)。次は固定d588の公開承認→main公開設定2ファイルのみ適用→既存CI/公開/配信検証。公開は別具体的承認、mainf4c/公開source691dは未変更。Store26欠落特例を維持し、正式receipt・本人総合受入・Gold/fitを作らない。
-- 最新：本人page ec054575…「いいよつづけて」で固定d588/既存Pages/main設定2file公開を承認受領。PR136 headc620のcheck/governance成功。PR136をexpected c620でmerge、main publisher e734。公開run41569692346実行中、実公開/実配信/本人総合受入はまだ未了。
+Review: UX06-G3-HOSTED-VERIFIED / FINAL-REVIEW-READY / USER-PENDING
+- 本人page ec054575…「いいよつづけて」で固定d588/既存Pages/main公開設定2fileを承認。[公開承認](evidence/ux06-full/PUBLICATION_APPROVAL.json)。PR136をexpected c620でmergeし、実publisherはe734337f1e18dd285f04f1b8ed63532ceff3b72f。Work全体をmainへmergeしていない。
+- 公開run41569692346は全32step success。公開前検査→deploy→実公開N09/N10四幅・保存/旧版/リセット/font/HTTP→保持N08/旧r6/旧版/N11まで成功。実HTTP121asset/46sourcehashを独立確認し、CI Pages artifact13200882841の両manifest＝実HTTP raw完全一致もA/B照合。
+- 公開source d588d1c395de3132805395f2708bed7535c1767d、N09r10・55parts、N10r6・70parts。√a/√bの証明9node保持、旧r9/r5のimmutable履歴とKEEP/RETIRE/NEW厳密移行を維持。本人の代表細部条件は充足し再承認待ちへ戻さない。
+- 本文CODEの適用/明示実行・公開本文審査への接続を補完せずG2を先行集約した点は訂正済み。native86node/51行照合とA/B14件ずつの28応答を既存CODEへ取込みG2再統合。有限数学70parts未対応/全体lint既存FAILを限定合格で隠さない。
+- 現在地はG3_HOST技術公開・配信確認完了→G3_FINAL本人実物確認。[最終票・全対象scopeと実URL](evidence/ux06-full/FINAL_APP_WALKTHROUGH.md)・[公開生証拠](evidence/ux06-full/PUBLICATION.json)・[火柴図](WORKFLOW_CURRENT.md)。全N09/N10の本人playthroughはPENDING。公開承認/テストを本人受入に変換しない。
+- 次：本人が合意scopeを実物評価。NGならCMD-WORK-001へ戻し同型監査、OKなら評価原文/source/scopeを記録して事後影響確認→R08/L01/Z01の適用条件へ。Store26欠落特例を維持し、架空receipt/正式next認定/Gold/fitは作らない。
 <!-- W046_CURRENT_END -->
 
 ## 詳細履歴（保存済み記録を保持）

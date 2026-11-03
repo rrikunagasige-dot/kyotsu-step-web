@@ -239,3 +239,46 @@ CI rawは同headに束縛されたcheck/governance SUCCESS、N04対象外job SKI
 
 - /tmp/w046-ux06-publisher-pr136.diff：`58b83e13b60ed57614bf8a782a5e8a13511f0de74d3806b7d4dd5d2785a595dd`
 - /tmp/w046-ux06-publisher-checks.json：`2f8c1197a48ef611e5d04d0bae59ca98e61194faad1207db641ec944b59ae40d`
+
+## G3実配信HTTP証拠の独立整合読取（全run完了前）
+
+rootが取得した `/tmp/w046-ux06-hosted/HTTP.json` と同directoryの実HTTP生 `w046-release.json` / `release.json` を独立に読取照合した。ここはrootのHTTP取得とAの整合監査を分離し、Aが121fileを再downloadした記録とはしない。
+
+- source=`d588d1c395de3132805395f2708bed7535c1767d`、publisher=`e734337f1e18dd285f04f1b8ed63532ceff3b72f`。両manifestとHTTP記録で一致。製品sourceとmainのpublisher commitを同じSHAとして扱わない。
+- raw w046 manifestの生byte SHA256がHTTP.manifest.sha256と一致。raw retained releaseの生byte SHA256もHTTP.retainedReleaseとmanifest.files.release.jsonへ一致した。
+- manifestの全121file集合とHTTP.filesの集合が完全一致し、重複なし、全HTTP200、全sha256一致。filesVerified=121。source query文字列や単なるHTTP200だけで新版と推定していない。
+- 46requiredSourceHashesを現在の固定製品fileから独立に再計算し不一致0。N09r10/previous9/hash7ccea0da…、N10r6/previous5/hash6ecda0e4…は審査済compiledと一致。
+- storageKeyは両manifestで従来 `kyotsu-step-gate3-math-20261023` のまま。旧namespaceからの変更を導入していない。旧版snapshotや実ledger保護の操作検査はこのHTTP byte照合とは別。
+- retainedN08Revision/activeN08Revision=7。N11 retained planHashは両manifestと固定sourceのn11Transformation.planHashに一致。これは保持metadataの一致で、N08/N11の全実操作成功を意味しない。
+- userAcceptance/Gold/fitはfalse。公開許可・配信byte確認を本人のアプリ全体受入へ読み替えない。
+
+rootからdeploy stepおよび「Verify published N09/N10 bytes and operations」成功の報告を受領したが、この追記は公開workflow全step完了・保持N08/N11実操作の合格を先取りしない。run41569692346の後続検査が進行中であることを維持する。現在このHTTP/source/namespace/版/保持metadataの範囲に所見なし。通常pollはrootに任せ、Aは最終証拠が揃ってから追加確認する。
+
+実HTTP証拠SHA256：
+
+- HTTP.json：`efcf609339c9cb04b8f392b9342763a1eff4863ccb0b421c0a20eca6cb57449f`
+- w046-release.json：`4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524`
+- release.json：`da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7`
+
+## G3最終run・CI原artifactから実配信までの照合 A
+
+`/tmp/w046-ux06-finished-run.json` と `/tmp/w046-ux06-hosted/CI_ARTIFACT_MATCH.json` を読取。run41569692346はpublisher head e734337f…、completed/success。公開前のcandidate byte/操作検査、Pages deploy、公開後N09/N10 byte/操作、公開source/N08各旧版、保持N11のstepが全てsuccessで完了している。前節の「まだrun進行中」はその時点の履歴であり、現在は完了として更新する。
+
+Aは取得済みGitHub Pages原artifact ZIP `/tmp/w046-ux06-ci-pages.zip` を直接開き、唯一のartifact.tarをメモリ内で順に読取した（filesystemへ展開・製品変更なし）。
+
+- artifact ID13200882841/name github-pages/4294231bytesは最終run要約と一致。ZIP SHA256は `68d69ba124ec7e9cf70993ef7c6ceb1f16a105eb739e2b9a1423ab4808d6e364` でCI_ARTIFACT_MATCHへ一致。
+- tar内w046-release.jsonとrelease.jsonの実bytesは、root保存の各実HTTP body、およびci-*.jsonへそれぞれ完全一致。単なるmanifest内source文字列の一致ではない。
+- 加えてAがtar内全fileのSHA256を独立計算し、公開manifest.filesの全121fileでCI tar hash＝manifest hash＝rootのHTTP取得報告hashを確認。欠落0・集合内全121一致。前節で全HTTP200も確認済み。
+- このbyte結合により、公開前のCI build artifact、実配信manifest、実配信121fileが同一内容と追跡できる。Aが実HTTPを再downloadしたという記録ではなく、rootのHTTP取得とAの原artifact/整合監査を分ける。
+
+最終sourceはd588d1c395de3132805395f2708bed7535c1767d、publisherはe734337f1e18dd285f04f1b8ed63532ceff3b72f。保存namespaceは従来kyotsu-step-gate3-math-20261023。N09r10/previous9/hash7ccea0da…、N10r6/previous5/hash6ecda0e4…、46requiredSourceHashes、保持N08r7/N11 planHashは前節の審査済みmanifestそのものとCI/HTTPのbyte一致で結合された。公開後の保持unit操作stepも完了しており、この公開検証の範囲に未解決所見はない。
+
+G3の公開/配信検証完了と、本人が合意範囲を最初から最後まで評価する最終アプリ受入は別。本人G3最終受入はPENDING、userAcceptance=false、Gold/fit未実施。R03事後sweep/R08/L01/Z01や他Workの受入、正式Store26欠落の復元成功へ拡張しない。rootだけが公開操作を行い、Aの本作業は独立読取・監査文書追記のみである。
+
+最終証拠SHA256：
+
+- /tmp/w046-ux06-finished-run.json：`5718a1b9de47830dc17df78bd0a9fe05cebfee9fc821655f79e05c578b5ea17a`
+- /tmp/w046-ux06-hosted/CI_ARTIFACT_MATCH.json：`4b78a24512bc32fc749aa11a1ea0ad34e341dbeedfacd7f73d52a87a0a2a6bdc`
+- /tmp/w046-ux06-ci-pages.zip：`68d69ba124ec7e9cf70993ef7c6ceb1f16a105eb739e2b9a1423ab4808d6e364`
+- /tmp/w046-ux06-hosted/ci-w046-release.json：`4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524`
+- /tmp/w046-ux06-hosted/ci-release.json：`da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7`

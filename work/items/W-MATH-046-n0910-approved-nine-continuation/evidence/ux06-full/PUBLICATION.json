@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_NOT_DEPLOYED",
+  "status": "HOSTED_VERIFIED_FINAL_USER_REVIEW_PENDING",
   "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
   "publisherSHA": "e734337f1e18dd285f04f1b8ed63532ceff3b72f",
   "pr": 136,
@@ -23,5 +23,72 @@
   "finalUserAcceptance": false,
   "formalStoreReceipt": false,
   "Gold": false,
-  "fit": false
+  "fit": false,
+  "published": true,
+  "runConclusion": "success",
+  "jobSteps": 32,
+  "jobStepsAllSuccess": true,
+  "independentHTTP": {
+    "status": "PASS",
+    "filesVerified": 121,
+    "requiredSourceHashes": 46,
+    "units": [
+      {
+        "code": "n09",
+        "id": "math-numbers-expressions-n09",
+        "revision": 10,
+        "previousRevision": 9,
+        "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b"
+      },
+      {
+        "code": "n10",
+        "id": "math-numbers-expressions-n10",
+        "revision": 6,
+        "previousRevision": 5,
+        "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879"
+      }
+    ],
+    "manifestSHA256": "4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524"
+  },
+  "ciArtifactMatch": {
+    "runId": 41569692346,
+    "artifactId": 13200882841,
+    "artifactName": "github-pages",
+    "archiveSHA256": "68d69ba124ec7e9cf70993ef7c6ceb1f16a105eb739e2b9a1423ab4808d6e364",
+    "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
+    "publisherSHA": "e734337f1e18dd285f04f1b8ed63532ceff3b72f",
+    "matches": [
+      {
+        "file": "w046-release.json",
+        "ciArtifactSHA256": "4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524",
+        "publicHTTPBodySHA256": "4160b28ef542942302e68882f39a4ebb9c2a2d9037f7d402627590db4230a524",
+        "byteExact": true
+      },
+      {
+        "file": "release.json",
+        "ciArtifactSHA256": "da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7",
+        "publicHTTPBodySHA256": "da673848cf5b1f8125407cc88ad6bd02996e4bac867562cdbf4adcd1c689d5d7",
+        "byteExact": true
+      }
+    ],
+    "status": "PASS"
+  },
+  "verifiedStartURLs": [
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?release=d588d1c3#/learning/textbook/math-numbers-expressions-n09",
+      "status": 200,
+      "indexSHA256": "b4816105c45cc1ea608c70d8df5dd63ac3295b716fd8380e50766c7a593c172e",
+      "matchedPublishedIndex": true,
+      "routeInteractiveCheck": "matching N09/N10 source/compiled verified in successful workflow41569692346; this request checks real start HTML only"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?release=d588d1c3#/learning/textbook/math-numbers-expressions-n10",
+      "status": 200,
+      "indexSHA256": "b4816105c45cc1ea608c70d8df5dd63ac3295b716fd8380e50766c7a593c172e",
+      "matchedPublishedIndex": true,
+      "routeInteractiveCheck": "matching N09/N10 source/compiled verified in successful workflow41569692346; this request checks real start HTML only"
+    }
+  ],
+  "retainedN08R6LegacyN11PublicOperations": "All workflow steps success",
+  "nextWorkflowStep": "G3_FINAL_USER_WALKTHROUGH_ALL_N09_N10"
 }

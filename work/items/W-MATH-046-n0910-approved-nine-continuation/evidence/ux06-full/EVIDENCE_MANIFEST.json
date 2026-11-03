@@ -35,9 +35,14 @@
       "bytes": 3400
     },
     {
+      "path": "FINAL_APP_WALKTHROUGH.md",
+      "sha256": "3d8133f9193a78e22e3f01c4c479225d1266e2419218746921bd03d68ded43bd",
+      "bytes": 5243
+    },
+    {
       "path": "G3_PREFLIGHT.json",
-      "sha256": "5e993799cbbe468b4808780290490aea2acc69421082dd6dded3115cad843de3",
-      "bytes": 2214
+      "sha256": "beca07a3513b34392425054f26fe7d178aa9ccd8cd04a82a1a94e25aca3d5266",
+      "bytes": 2403
     },
     {
       "path": "IMAGES_REVIEWED_B.json",
@@ -61,8 +66,8 @@
     },
     {
       "path": "PUBLICATION.json",
-      "sha256": "3a0a88443bbb7d784a21731c58ee4b4d0fc4aafceabbf26dca077cea9c6ba19e",
-      "bytes": 831
+      "sha256": "6027a9845e6a9420155ac33fc210078d6d650bbf359b396bdf5b7ec38d5734af",
+      "bytes": 3614
     },
     {
       "path": "PUBLICATION_APPROVAL.json",
@@ -76,23 +81,23 @@
     },
     {
       "path": "RELEASE_SCOPE.json",
-      "sha256": "b9a0bf0ce270174f8098c53573289ae7e1bcf5e4da84ce26cdd529c804285eb5",
-      "bytes": 1876
+      "sha256": "6029b1acb36a0d3b53db526707566a8070bec136e1426cee59e2549b1efaca0b",
+      "bytes": 11412
     },
     {
       "path": "RENDER_REVIEW_B.md",
-      "sha256": "ffd45b1de2c7a656fd8b26213720a96c664014532ba3d6fdfd49a07dfedd1c28",
-      "bytes": 27819
+      "sha256": "d68b598061d738d3c8ee298f1321ffae5a0c464225e26344461bcb6473205581",
+      "bytes": 31781
     },
     {
       "path": "REVIEW.md",
-      "sha256": "ef6072ac8e93f08a12643ac65616c8ee1c052651d87f4cb5687bf9244e889c4d",
-      "bytes": 7397
+      "sha256": "62594f40ac37fe693c30d34beb8cbf50aa8420bd0fb6547bbd836c2adf78df45",
+      "bytes": 7723
     },
     {
       "path": "SOURCE_REVIEW_A.md",
-      "sha256": "63a55ce77805b0a9820af79289997c62425a31ec2b65f0a90c3d46e7aa34d8d6",
-      "bytes": 32023
+      "sha256": "0453c824cdfcff91a59d5eedf0949c884bb3f66edb311c073c85e28dd8dc1254",
+      "bytes": 37546
     },
     {
       "path": "SOURCE_SYNC.json",
@@ -101,8 +106,8 @@
     },
     {
       "path": "VERIFICATION.json",
-      "sha256": "4e6827ada6454a989b4a3c12b8078c42c1f35c92995564aeaa2f592428811e6f",
-      "bytes": 4868
+      "sha256": "b285196ad8c2956b149e8c8104f82829571df82d58ad91a3d97903389e8043c4",
+      "bytes": 5196
     },
     {
       "path": "apply-full.py",
@@ -138,6 +143,11 @@
       "path": "g3-publish-check.mjs",
       "sha256": "6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139",
       "bytes": 17756
+    },
+    {
+      "path": "hosted-byte-check.mjs",
+      "sha256": "c980ca1c3570e78238847906abac6f67076c8da87f46123002d406e050afacbb",
+      "bytes": 2884
     },
     {
       "path": "images/1440-n09-decimal-method-complete.png",
@@ -640,6 +650,16 @@
       "bytes": 5288
     },
     {
+      "path": "raw/CI_ARTIFACT_MATCH.json.gz",
+      "sha256": "a7e604f453c8a1145bcf15dc5bbd74ec1ed157d3a359f79cc7dac482c878385e",
+      "bytes": 420
+    },
+    {
+      "path": "raw/START_URLS.json.gz",
+      "sha256": "c33d3cae2ed6f67f821d79a9d9f67a471ac5e4e6aeb64bfcef9a54d48e66b716",
+      "bytes": 490
+    },
+    {
       "path": "raw/build-final.log",
       "sha256": "9354014d92c7e0d25c21bf23e24eb8b056a780d5134f8911ab3be5277097cdb7",
       "bytes": 5608
@@ -830,6 +850,26 @@
       "bytes": 7676
     },
     {
+      "path": "raw/publication-run41569692346.json.gz",
+      "sha256": "3aadbcac2509c01d26c6ca65ffd8b5227ba5b61d95875621610abfe7b280a23e",
+      "bytes": 1155
+    },
+    {
+      "path": "raw/published-HTTP.json.gz",
+      "sha256": "d944a117221d15ac64a7dff3bbfb3016e567db8ed4f6146b11a3b0e8736b42a4",
+      "bytes": 7277
+    },
+    {
+      "path": "raw/published-release.json.gz",
+      "sha256": "faf8c82ac37f98b92c083285e3bb2086b78e5ff6424d72c7cb49f47fe017648d",
+      "bytes": 4442
+    },
+    {
+      "path": "raw/published-w046-release.json.gz",
+      "sha256": "148e120def83209ec4055cfb531d463c07b46e7e59976dff139df492ce49560a",
+      "bytes": 9358
+    },
+    {
       "path": "raw/ux06-finite-math.json.gz",
       "sha256": "887b4d75d410a491bc92451f75a57cd4c540c1d162d18cb72323f30d49685991",
       "bytes": 2335
@@ -970,5 +1010,5 @@
       "bytes": 635
     }
   ],
-  "currentStage": "Publication approved; PR136 merged; run41569692346 in progress. Not yet hosted-verified."
+  "currentStage": "G3_HOST completed and hosted-verified; G3_FINAL actual user playthrough PENDING. No formal Store receipt/Gold/fit."
 }

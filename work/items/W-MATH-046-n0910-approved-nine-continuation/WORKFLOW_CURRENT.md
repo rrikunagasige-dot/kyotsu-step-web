@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、前回G2完了報告後、本文CODE工程の適用照合・明示実行・公開本文審査への接続の不足を確認。R07本文CODE補完（native86node/51行）とA/Bの14件ずつの可視意味審査/既存CODE取込28件を実行し、影響G2を再統合。G3固定候補のローカル公開前検査まで完了。本人page ec054575…「いいよつづけて」により固定d588既存Pages公開とmain設定2file反映を承認受領。現在PR136のCI成功を確認し、G3公開実行へ進行中（実公開/配信確認は未了）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
+- 実質の現在地：UX06本文CODE補完・G2再統合後、本人page ec054575…の固定d588既存Pages公開を実行。PR136の2file限定merge、publisher e734、run41569692346全32step success、実HTTP121files/46sourcehashとCIartifact両manifestのbyte完全一致を確認。現在は**G3_HOST技術完了→G3_FINAL本人実物確認**。[最終票/実URL/全scope](evidence/ux06-full/FINAL_APP_WALKTHROUGH.md)。N09r10/N10r6の本人playthroughはPENDING。代表再承認・公開再許可待ちへ戻さない。正式Store受理ではない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
@@ -20,11 +20,11 @@ UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-propo
 
 R03の全86設計の個別記録・主担当の反証・A/B訂正は[統合報告](evidence/ux05-full-re-audit/ROOT_REVIEW.md)へ保存。続くR04は下記UX06案を作成。これはR03/R04時点の履歴。最新の実装・検査状態は上記現在地を優先。正式Storeのnext認定ではない。
 
-## R04具体案の現在地（UX06 / 2026-11-03 JST）
+## R04具体案の経緯（UX06履歴 / 2026-11-03 JST）
 
 [案の確認入口](evidence/ux06-proposal/README.md)・[厳密なR04必須項目](evidence/ux06-proposal/R04_RESULT.json)。本人の案作成指示で、Aの数学/保存審査とBの理念/工程監視を実施。Bはroot案の旧条件からの先出し等を指摘し、実公開モデルで再照合。新案は[承認済み](evidence/ux06-proposal/APPROVAL.json)。代表限定実装後、本人の条件付き細部承認を補修・検査で充足し、本適用へ進んだ。公開は未実施。native/数学/教授CODEの限定結果とUNSUPPORTED/NEEDS_AI_REVIEW/NOT_RUNは案に明記。正式Store PASSEDやnext生成は未認定。
 
-今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。条件付き本人細部承認を充足して残り限定適用を実施。本文CODE補完・影響G2再統合済み。既存の画像・操作の限定合格は保持し、G3のローカル公開前準備は完了し、別の公開承認待ち。小ブロックごとにこの入口とMASTER§52を照合する。
+今回の案の代表は**n09-decimal-methodの和の平方導出**。下表の旧UX05でのq01代表順序は履歴であり、新案にはこの指定を優先する。R05/R06代表は実施、R07 CODE/意味/実画像の限定結果は[検査記録](evidence/ux06-pilot/VERIFICATION.json)。条件付き本人細部承認を充足して残り限定適用を実施。本文CODE補完・影響G2再統合済み。既存の画像・操作の限定合格は保持し、この時点ではG3のローカル公開前準備と別公開承認を待った（履歴）。最新は上記G3_FINAL。小ブロックごとにこの入口とMASTER§52を照合する。
 
 ## 本適用の版と保存
 
@@ -133,10 +133,14 @@ AIが主担当の工程でもCODE receiptを先に取り込み、意味の判断
 
 S11という名称だけで自動作文・自然言語の因果自動合格とは言わない。helper operationSentenceは別のproduction-ir/1のslot付き段落用で現nativeへ直接適合しないため、呼んで出力を捨てる利用はしない。CODE検査の範囲外をA/Bへ明示し、意味審査で埋める。
 
-G3最新結果：exact d588隔離build/121assets/N0910四幅8cases、保持N08四幅（3936測定）・旧r6・旧版・N11四幅合格。[2file案/停止条件](evidence/ux06-full/G3_PREFLIGHT.json)。次はこの固定候補の公開承認→mainの公開設定2ファイルのみ適用→既存CI→実配信検証→本人実物評価。mainへの適用/Pages公開/最終本人受入は未実施。
+G3公開前準備時の履歴：exact d588隔離build/121assets/N0910四幅8cases、保持N08四幅（3936測定）・旧r6・旧版・N11四幅合格。[2file案/停止条件](evidence/ux06-full/G3_PREFLIGHT.json)。次はこの固定候補の公開承認→mainの公開設定2ファイルのみ適用→既存CI→実配信検証→本人実物評価。mainへの適用/Pages公開/最終本人受入は未実施。
 
-## 2026-11-03 公開承認受領・G3実行
+## 2026-11-03 公開承認受領・G3実行の経緯（完了済み履歴）
 
 [本人公開承認](evidence/ux06-full/PUBLICATION_APPROVAL.json)を受領。PR136はmainf4c基底、headc620、公開設定2filesのみ。check/governance成功を確認。次はexpected headでmerge→既存公開jobの前段検査→deploy→実配信byte/操作→G3本人実物評価。PR成功を公開済み/本人受入へ転用しない。
 
 G3実行追記：PR136をexpected c620でmerge成功。main publisher e734337f1e18dd285f04f1b8ed63532ceff3b72f、公開run41569692346実行中。製品sourceはd588固定。旧公開source691dのHTTP200を新候補公開成功へ読み替えない。[生状態](evidence/ux06-full/PUBLICATION.json)。
+
+## G3_HOST完了・次の本人ゲート
+
+[PUBLICATION.json](evidence/ux06-full/PUBLICATION.json)：実公開source d588/publisher e734、公開run全32step成功、独立HTTP全121asset、CI artifact13200882841 raw両manifest一致。A/Bが境界込みで独立照合。次はG3_FINALで合意済み全N09/N10の本人実物評価。本人受入未了のままR08/L01/Z01やGold/fit完了へ進めない。NGは修正/同型監査へ戻る。

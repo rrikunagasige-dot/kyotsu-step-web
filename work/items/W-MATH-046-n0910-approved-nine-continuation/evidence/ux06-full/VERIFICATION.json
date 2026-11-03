@@ -1,5 +1,5 @@
 {
-  "status": "SCOPED_R07_G2_REINTEGRATED_AFTER_PROSE_SUPPLEMENT",
+  "status": "SCOPED_G3_HOST_COMPLETE_FINAL_USER_REVIEW_PENDING",
   "sourceCommit": "5e83a17ba73c39f855384b31fc51488028b96a09",
   "proposalSHA256": "a604ffa8f14499973ab5a3799bc1d4d3d605111883ba6046966d812fbacf3840",
   "designSHA256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
@@ -108,10 +108,10 @@
   },
   "protected": "PROTECTED.json",
   "formalStoreReceipt": false,
-  "publicationApproval": false,
-  "published": false,
+  "publicationApproval": true,
+  "published": true,
   "goldOrFit": false,
-  "nextWorkflowStageAfterG2": "G3 publication preflight/detail approval; public release needs separate concrete authorization under main WORK_SYSTEM12A",
+  "nextWorkflowStageAfterG2": "G3_HOST complete; G3_FINAL user playthrough of N09/N10 pending, then post-acceptance sweep/R08/L01/Z01 as applicable",
   "limits": [
     "Not whole-app acceptance",
     "Global lint remains pre-existing FAIL",
@@ -139,10 +139,20 @@
     "automaticSemanticAcceptance": false
   },
   "g3Prepublication": {
-    "status": "LOCAL_PASS_PUBLICATION_APPROVAL_PENDING",
+    "status": "LOCAL_AND_HOSTED_CHECKS_PASS",
     "record": "G3_PREFLIGHT.json",
     "candidate": "d588d1c395de3132805395f2708bed7535c1767d",
-    "mainModified": false,
-    "published": false
+    "mainModified": true,
+    "published": true
+  },
+  "hostedVerification": {
+    "record": "PUBLICATION.json",
+    "runId": 41569692346,
+    "runConclusion": "success",
+    "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
+    "publisherSHA": "e734337f1e18dd285f04f1b8ed63532ceff3b72f",
+    "all32StepsSuccess": true,
+    "CIArtifactMatchesRawHTTP": true,
+    "all121AssetsMatch": true
   }
 }

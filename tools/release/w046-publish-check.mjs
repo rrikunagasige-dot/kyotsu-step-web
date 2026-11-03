@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
-const SOURCE='d588d1c395de3132805395f2708bed7535c1767d';
+const SOURCE='6b439d0d31fcd46708c256ed23a391009ab73164';
 const STORAGE='kyotsu-step-gate3-math-20261023';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(p));
@@ -11,9 +11,9 @@ const request=(url,options={})=>fetch(url,{...options,signal:AbortSignal.timeout
 const required={
   "package.json": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",
   "pnpm-lock.yaml": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006",
-  "src/components/textbook/ConstructionLessonReadingFlow.tsx": "b19b87e143db7db3f838cc9740745e2d4b2afa236775dbe8a11829c0ef5dd959",
+  "src/components/textbook/ConstructionLessonReadingFlow.tsx": "736befadae05761100e62a24d644cb36b6d949f989c19f162b0c49b844abce0a",
   "src/components/textbook/NestedConstructionMath.tsx": "1bd91a39e382fe73fffd67170fb3fc7be8beec4e36f53002f3f6f14baf6dce9e",
-  "src/components/textbook/construction-lesson-reading.css": "00aa7db228b56f768dfc9050e382b0effbe24f501979d236457b8a11c8458254",
+  "src/components/textbook/construction-lesson-reading.css": "0e056d35bc72192258605ab5bbf7a69a14f53074dac20a0372c4a571c821b9d8",
   "src/components/textbook/nestedMathGeometry.ts": "bd1eab249c57ac8308327b1cacc27e928a94b2dcf29d56087d53de12c5c12256",
   "src/components/textbook/nestedMathTemplate.ts": "446db868ff28c0036cb9c0ec1b3954c82fbe495510e418876f28693ab9042633",
   "src/data/textbook/math/numbers/n0910CandidatePins.json": "0677fcfcaabde5b4efb55ec51945377dd8b76f0fdeb6e101330454036ac345a2",

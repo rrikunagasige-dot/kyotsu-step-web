@@ -2,12 +2,12 @@
   "schemaVersion": "transformation-reading/3",
   "nestedPipeline": "n0910/1",
   "unitId": "math-numbers-expressions-n10",
-  "fromRevision": 4,
-  "toRevision": 5,
+  "fromRevision": 5,
+  "toRevision": 6,
   "title": "平方根の証明と有理化",
   "irHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
   "sourceIRHash": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-  "planHash": "bab85e3d90d2994dc8820cd92128168a489abdbfd6c646d94ec500143c170a00",
+  "planHash": "e7a62d6f19ac8f077db29b42bfe4a8736753a03e09fedb53d31ecdb4eaeb64c6",
   "stages": [
     {
       "id": "n10-stage-01",
@@ -242,11 +242,11 @@
         },
         {
           "type": "math",
-          "latex": "125=25\\times 5"
+          "latex": "125=25\\times5"
         },
         {
           "type": "text",
-          "text": "に着目し"
+          "text": "に着目し、"
         },
         {
           "type": "math",
@@ -258,7 +258,7 @@
         },
         {
           "type": "math",
-          "latex": "t\\sqrt{5}"
+          "latex": "t\\sqrt5"
         },
         {
           "type": "text",
@@ -270,15 +270,7 @@
         },
         {
           "type": "text",
-          "text": "になるよう"
-        },
-        {
-          "type": "math",
-          "latex": "t"
-        },
-        {
-          "type": "text",
-          "text": "を決めたいので、まず平方を計算します。まだ根号の積の公式は使いません。"
+          "text": "になるよう、まず平方を積に戻します。根号の積の公式はまだ使いません。"
         }
       ],
       "assumptions": [
@@ -296,25 +288,168 @@
       "requiredResultRefs": [],
       "rows": [
         {
-          "id": "n10-q01-square::row-01",
-          "template": "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)=t^2(\\sqrt5)^2",
+          "id": "n10-q01-square::ux06-proposal-row-01",
           "kind": "math",
-          "partKeys": [],
+          "template": "(t\\sqrt5)^2=(t\\sqrt5)({ux06ProductBase})",
+          "partKeys": [
+            "ux06ProductBase"
+          ],
           "requiresCorrectKeys": [],
-          "certifiedFrom": []
+          "mathGroupId": "n10-q01-square-ux06-derivation"
         },
         {
-          "id": "n10-q01-square::row-02",
-          "template": "={rootSquare}t^2",
+          "id": "n10-q01-square::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "積の順を入れ替え、係数同士と根号同士をまとめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06ProductBase"
+          ]
+        },
+        {
+          "id": "n10-q01-square::ux06-proposal-row-02",
           "kind": "math",
+          "template": "=t^{ux06CoefficientExponent}(\\sqrt5)^2",
+          "partKeys": [
+            "ux06CoefficientExponent"
+          ],
+          "requiresCorrectKeys": [
+            "ux06ProductBase"
+          ],
+          "mathGroupId": "n10-q01-square-ux06-derivation"
+        },
+        {
+          "id": "n10-q01-square::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "根号の定義を使って、平方を計算します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06ProductBase",
+            "ux06CoefficientExponent"
+          ]
+        },
+        {
+          "id": "n10-q01-square::ux06-proposal-row-03",
+          "kind": "math",
+          "template": "={rootSquare}t^2",
           "partKeys": [
             "rootSquare"
           ],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": []
+          "requiresCorrectKeys": [
+            "ux06ProductBase",
+            "ux06CoefficientExponent"
+          ],
+          "mathGroupId": "n10-q01-square-ux06-derivation"
+        },
+        {
+          "id": "n10-q01-square::ux06-after-text",
+          "kind": "text",
+          "template": "候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06ProductBase",
+            "ux06CoefficientExponent",
+            "rootSquare"
+          ]
         }
       ],
       "parts": [
+        {
+          "id": "n10-q01-square::ux06ProductBase",
+          "key": "ux06ProductBase",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "2乗の基底をもう一つの因子にします。",
+          "learningAction": "文字と根号を含む基底全体を構成",
+          "expected": "t\\sqrt5",
+          "choices": [
+            {
+              "value": "t\\sqrt5",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "t\\sqrt5",
+              "latex": "t\\sqrt5",
+              "misconception": "正答"
+            },
+            {
+              "value": "t^2\\sqrt5",
+              "feedback": "平方前の基底全体をもう一度掛けます。",
+              "kind": "math",
+              "display": "t^2\\sqrt5",
+              "latex": "t^2\\sqrt5",
+              "misconception": "平方前の基底全体をもう一度掛けます。"
+            },
+            {
+              "value": "5t",
+              "feedback": "√5を勝手に5へ変えません。",
+              "kind": "math",
+              "display": "5t",
+              "latex": "5t",
+              "misconception": "√5を勝手に5へ変えません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q01-square-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "t\\sqrt5",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "文字と根号を含む基底全体を構成",
+            "sourceRefs": [
+              "n10-q01-square-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-q01-square::ux06CoefficientExponent",
+          "key": "ux06CoefficientExponent",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "t同士をまとめた指数を入れます。",
+          "learningAction": "交換結合後の同じ文字の積を累乗へ変換",
+          "expected": "2",
+          "choices": [
+            {
+              "value": "2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "正答"
+            },
+            {
+              "value": "1",
+              "feedback": "tが二つ掛かっています。",
+              "kind": "math",
+              "display": "1",
+              "latex": "1",
+              "misconception": "tが二つ掛かっています。"
+            },
+            {
+              "value": "4",
+              "feedback": "t²同士を掛けているのではありません。",
+              "kind": "math",
+              "display": "4",
+              "latex": "4",
+              "misconception": "t²同士を掛けているのではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q01-square-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "交換結合後の同じ文字の積を累乗へ変換",
+            "sourceRefs": [
+              "n10-q01-square-source-contract"
+            ]
+          }
+        },
         {
           "key": "rootSquare",
           "role": "rational",
@@ -370,18 +505,22 @@
         }
       ],
       "partOrder": [
+        "ux06ProductBase",
+        "ux06CoefficientExponent",
         "rootSquare"
       ],
       "terminalRecord": {
         "id": "n10-q01-square::terminal",
         "formulas": [
-          "(t\\sqrt5)^2=5t^2"
+          "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)=t^2(\\sqrt5)^2=5t^2"
         ],
         "conditions": [
           "t>0。根号の定義と実数乗法の交換・結合を使う。"
         ],
-        "prose": "候補の平方が5t²と分かりました。この値を125と等しくするためのtを求めます。",
+        "prose": "候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
         "requiresCorrectKeys": [
+          "ux06ProductBase",
+          "ux06CoefficientExponent",
           "rootSquare"
         ],
         "certifiedFrom": [],
@@ -4885,21 +5024,61 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "既習の差の平方を、二つの根号を含む式に適用します。中項を自分で作りましょう。"
+          "text": "次は"
+        },
+        {
+          "type": "math",
+          "latex": "(\\sqrt2-\\sqrt3)^2"
+        },
+        {
+          "type": "text",
+          "text": "です。二つの数をいったん"
+        },
+        {
+          "type": "math",
+          "latex": "A"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B"
+        },
+        {
+          "type": "text",
+          "text": "と表して、差の平方の仕組みを調べます。同じ二つの因子へ戻し、分配して中項の符号と係数を確かめたら、"
+        },
+        {
+          "type": "math",
+          "latex": "A=\\sqrt2"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B=\\sqrt3"
+        },
+        {
+          "type": "text",
+          "text": "として元の計算へ戻ります。"
         }
       ],
       "assumptions": [
-        "既習公式：(A-B)^2=A^2-2AB+B^2。"
+        "A,Bは実数。実数乗法の分配法則を使って差の平方を導く。"
       ],
       "assumptionParts": [
         [
           {
-            "type": "text",
-            "text": "既習公式："
+            "type": "math",
+            "latex": "A,B\\in\\mathbb R"
           },
           {
-            "type": "math",
-            "latex": "(A-B)^2=A^2-2AB+B^2"
+            "type": "text",
+            "text": "。分配法則を使います。"
           }
         ]
       ],
@@ -4913,21 +5092,198 @@
       ],
       "rows": [
         {
-          "id": "n10-q11-formula::ux05-middle",
+          "id": "n10-q11-formula::ux06-proposal-row-01",
           "kind": "math",
-          "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+          "template": "(A-B)^2=(A-B)(A-B)",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n10-q11-formula-ux06-derivation"
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "分配法則で、第一項への積と、符号を含む第二項への積に分けます。",
+          "partKeys": [],
+          "requiresCorrectKeys": []
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "=A(A-B)-B(A-B)",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n10-q11-formula-ux06-derivation"
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "各括弧をさらに分配します。最後は負の項同士の積です。",
+          "partKeys": [],
+          "requiresCorrectKeys": []
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-03",
+          "kind": "math",
+          "template": "=A^2-AB-AB\\ {ux06LastProductSign}\\ B^2",
+          "partKeys": [
+            "ux06LastProductSign"
+          ],
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n10-q11-formula-ux06-derivation"
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-04-intro",
+          "kind": "text",
+          "template": "同じ負の交差項どうしをまとめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06LastProductSign"
+          ]
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-04",
+          "kind": "math",
+          "template": "=A^2-{ux06DifferenceCount}AB+B^2",
+          "partKeys": [
+            "ux06DifferenceCount"
+          ],
+          "requiresCorrectKeys": [
+            "ux06LastProductSign"
+          ],
+          "mathGroupId": "n10-q11-formula-ux06-derivation"
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-05-intro",
+          "kind": "text",
+          "template": "導いた式へ、元の問題の二つの根号を対応させます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06LastProductSign",
+            "ux06DifferenceCount"
+          ]
+        },
+        {
+          "id": "n10-q11-formula::ux06-proposal-row-05",
+          "kind": "math",
+          "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2\\ {signedMiddleTermUX05}+(\\sqrt3)^2",
           "partKeys": [
             "signedMiddleTermUX05"
           ],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-04-result",
-            "n10-10-result"
+          "requiresCorrectKeys": [
+            "ux06LastProductSign",
+            "ux06DifferenceCount"
           ],
-          "mathGroupId": "n10-q11-formula-ux05-group-1"
+          "mathGroupId": "n10-q11-formula-ux06-derivation"
+        },
+        {
+          "id": "n10-q11-formula::ux06-after-text",
+          "kind": "text",
+          "template": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06LastProductSign",
+            "ux06DifferenceCount",
+            "signedMiddleTermUX05"
+          ]
         }
       ],
       "parts": [
+        {
+          "id": "n10-q11-formula::ux06LastProductSign",
+          "key": "ux06LastProductSign",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "最後のB同士の積の符号を入れます。",
+          "learningAction": "負の因子同士の積を展開の符号へ反映",
+          "expected": "+",
+          "choices": [
+            {
+              "value": "+",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "+",
+              "latex": "+",
+              "misconception": "正答"
+            },
+            {
+              "value": "-",
+              "feedback": "最後は負の項同士の積です。",
+              "kind": "math",
+              "display": "-",
+              "latex": "-",
+              "misconception": "最後は負の項同士の積です。"
+            },
+            {
+              "value": "\\pm",
+              "feedback": "積の符号は一意に決まります。",
+              "kind": "math",
+              "display": "\\pm",
+              "latex": "\\pm",
+              "misconception": "積の符号は一意に決まります。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q11-formula-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "+",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "負の因子同士の積を展開の符号へ反映",
+            "sourceRefs": [
+              "n10-q11-formula-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-q11-formula::ux06DifferenceCount",
+          "key": "ux06DifferenceCount",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "同類項をまとめたABの係数を入れます。",
+          "learningAction": "負の交差項二つを中項の係数へまとめる",
+          "expected": "2",
+          "choices": [
+            {
+              "value": "2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "正答"
+            },
+            {
+              "value": "1",
+              "feedback": "−ABが二つあります。",
+              "kind": "math",
+              "display": "1",
+              "latex": "1",
+              "misconception": "−ABが二つあります。"
+            },
+            {
+              "value": "4",
+              "feedback": "四項すべてが交差項ではありません。",
+              "kind": "math",
+              "display": "4",
+              "latex": "4",
+              "misconception": "四項すべてが交差項ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q11-formula-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "負の交差項二つを中項の係数へまとめる",
+            "sourceRefs": [
+              "n10-q11-formula-source-contract"
+            ]
+          }
+        },
         {
           "key": "signedMiddleTermUX05",
           "id": "n10-q11-formula::signedMiddleTermUX05",
@@ -4992,18 +5348,24 @@
         }
       ],
       "partOrder": [
+        "ux06LastProductSign",
+        "ux06DifferenceCount",
         "signedMiddleTermUX05"
       ],
       "terminalRecord": {
         "id": "n10-q11-formula::terminal",
         "formulas": [
+          "(A-B)^2=(A-B)(A-B)=A(A-B)-B(A-B)",
+          "=A^2-AB-AB+B^2=A^2-2AB+B^2",
           "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2-2\\sqrt2\\sqrt3+(\\sqrt3)^2"
         ],
         "conditions": [
           "既習の乗法公式。A=√2、B=√3。"
         ],
-        "prose": "差の平方の中項は引く項です。根号を含む本題へ公式を適用します。",
+        "prose": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
         "requiresCorrectKeys": [
+          "ux06LastProductSign",
+          "ux06DifferenceCount",
           "signedMiddleTermUX05"
         ],
         "certifiedFrom": [
@@ -5685,17 +6047,61 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "和と差の積で、消える交差項を確かめます。残る平方の項を次に計算します。"
+          "text": "今度は"
+        },
+        {
+          "type": "math",
+          "latex": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)"
+        },
+        {
+          "type": "text",
+          "text": "です。二つの数を"
+        },
+        {
+          "type": "math",
+          "latex": "A"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B"
+        },
+        {
+          "type": "text",
+          "text": "と表し、和と差の積を分配して、どの項が残るかを調べます。仕組みを確かめてから、"
+        },
+        {
+          "type": "math",
+          "latex": "A=\\sqrt7"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B=\\sqrt2"
+        },
+        {
+          "type": "text",
+          "text": "として元の積へ戻りましょう。"
         }
       ],
       "assumptions": [
-        "既習の分配法則と和と差の積を使う。"
+        "A,Bは実数。既習の分配法則と乗法の交換法則を使い、和と差の積を導く。"
       ],
       "assumptionParts": [
         [
           {
+            "type": "math",
+            "latex": "A,B\\in\\mathbb R"
+          },
+          {
             "type": "text",
-            "text": "既習の分配法則と和と差の積を使う。"
+            "text": "。分配法則と乗法の交換法則を使います。"
           }
         ]
       ],
@@ -5709,63 +6115,200 @@
       ],
       "rows": [
         {
-          "id": "n10-q13-identity::ux05-problem",
+          "id": "n10-q13-identity::ux06-proposal-row-01",
           "kind": "math",
-          "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-04-result",
-            "n10-12-result"
+          "template": "(A+B)(A-B)=A^2\\ {ux06CrossSign}\\ AB+BA-B^2",
+          "partKeys": [
+            "ux06CrossSign"
           ],
-          "mathGroupId": "n10-q13-identity-ux05-group-1"
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n10-q13-identity-ux06-derivation"
         },
         {
-          "id": "n10-q13-identity::ux05-pair",
+          "id": "n10-q13-identity::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "積の順を入れ替えて同じ大きさと確かめ、交差項の和をまとめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CrossSign"
+          ]
+        },
+        {
+          "id": "n10-q13-identity::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "-AB+BA={ux06CrossSum}",
+          "partKeys": [
+            "ux06CrossSum"
+          ],
+          "requiresCorrectKeys": [
+            "ux06CrossSign"
+          ],
+          "mathGroupId": "n10-q13-identity-ux06-derivation"
+        },
+        {
+          "id": "n10-q13-identity::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "交差項が消え、二つの平方の差が残りました。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum"
+          ]
+        },
+        {
+          "id": "n10-q13-identity::ux06-proposal-row-03",
+          "kind": "math",
+          "template": "(A+B)(A-B)=A^2-B^2",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum"
+          ],
+          "mathGroupId": "n10-q13-identity-ux06-derivation"
+        },
+        {
+          "id": "n10-q13-identity::ux06-proposal-row-04-intro",
+          "kind": "text",
+          "template": "同じ構造を、元の二つの根号の場合で確かめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum"
+          ]
+        },
+        {
+          "id": "n10-q13-identity::ux06-proposal-row-04",
           "kind": "text",
           "template": "相殺する交差項の組：{cancellingPairUX05}",
           "partKeys": [
             "cancellingPairUX05"
           ],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-04-result",
-            "n10-12-result"
-          ],
-          "hideAfterCorrectKeys": [
-            "cancellingPairUX05"
+          "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum"
           ]
         },
         {
-          "id": "n10-q13-identity::ux05-expand",
+          "id": "n10-q13-identity::ux06-proposal-row-05",
           "kind": "math",
-          "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2",
+          "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2",
           "partKeys": [],
           "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum",
             "cancellingPairUX05"
           ],
-          "certifiedFrom": [
-            "n10-04-result",
-            "n10-12-result"
-          ],
-          "mathGroupId": "n10-q13-identity-ux05-group-3"
+          "mathGroupId": "n10-q13-identity-ux06-derivation"
         },
         {
-          "id": "n10-q13-identity::ux05-cancel",
-          "kind": "math",
-          "template": "=(\\sqrt7)^2-(\\sqrt2)^2",
+          "id": "n10-q13-identity::ux06-after-text",
+          "kind": "text",
+          "template": "残った左右の平方を計算し、その差を求めます。",
           "partKeys": [],
           "requiresCorrectKeys": [
+            "ux06CrossSign",
+            "ux06CrossSum",
             "cancellingPairUX05"
-          ],
-          "certifiedFrom": [
-            "n10-04-result",
-            "n10-12-result"
-          ],
-          "mathGroupId": "n10-q13-identity-ux05-group-3"
+          ]
         }
       ],
       "parts": [
+        {
+          "id": "n10-q13-identity::ux06CrossSign",
+          "key": "ux06CrossSign",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "Aと−Bからできる交差項の符号を入れます。",
+          "learningAction": "分配時の因子の符号を項へ対応",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "-",
+              "latex": "-",
+              "misconception": "正答"
+            },
+            {
+              "value": "+",
+              "feedback": "Aと−Bからできる項です。",
+              "kind": "math",
+              "display": "+",
+              "latex": "+",
+              "misconception": "Aと−Bからできる項です。"
+            },
+            {
+              "value": "\\pm",
+              "feedback": "因子の符号から積の符号は一意です。",
+              "kind": "math",
+              "display": "\\pm",
+              "latex": "\\pm",
+              "misconception": "因子の符号から積の符号は一意です。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q13-identity-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "-",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分配時の因子の符号を項へ対応",
+            "sourceRefs": [
+              "n10-q13-identity-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-q13-identity::ux06CrossSum",
+          "key": "ux06CrossSum",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "交差項どうしの和を入れます。",
+          "learningAction": "交換法則と逆符号の和による相殺",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "0",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "0",
+              "latex": "0",
+              "misconception": "正答"
+            },
+            {
+              "value": "2AB",
+              "feedback": "二つの交差項の符号は反対です。",
+              "kind": "math",
+              "display": "2AB",
+              "latex": "2AB",
+              "misconception": "二つの交差項の符号は反対です。"
+            },
+            {
+              "value": "-2AB",
+              "feedback": "どちらも負ではありません。",
+              "kind": "math",
+              "display": "-2AB",
+              "latex": "-2AB",
+              "misconception": "どちらも負ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-q13-identity-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "0",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "交換法則と逆符号の和による相殺",
+            "sourceRefs": [
+              "n10-q13-identity-source-contract"
+            ]
+          }
+        },
         {
           "key": "cancellingPairUX05",
           "id": "n10-q13-identity::cancellingPairUX05",
@@ -5842,18 +6385,25 @@
         }
       ],
       "partOrder": [
+        "ux06CrossSign",
+        "ux06CrossSum",
         "cancellingPairUX05"
       ],
       "terminalRecord": {
         "id": "n10-q13-identity::terminal",
         "formulas": [
+          "(A+B)(A-B)=A^2-AB+BA-B^2",
+          "-AB+BA=0",
+          "(A+B)(A-B)=A^2-B^2",
           "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2"
         ],
         "conditions": [
           "既習の和と差の積。A=√7、B=√2。"
         ],
-        "prose": "積を二つの平方の差へ直せます。次に各平方と差を計算します。",
+        "prose": "残った左右の平方を計算し、その差を求めます。",
         "requiresCorrectKeys": [
+          "ux06CrossSign",
+          "ux06CrossSum",
           "cancellingPairUX05"
         ],
         "certifiedFrom": [
@@ -6594,20 +7144,16 @@
       "classification": "NEW_CONSTRUCTION",
       "leadParts": [
         {
-          "type": "math",
-          "latex": "\\sqrt{3}/\\sqrt{3}"
-        },
-        {
           "type": "text",
-          "text": "を元の分数へ掛けます。分母全体"
+          "text": "分母の根号へ掛ける因子は"
         },
         {
           "type": "math",
-          "latex": "2\\sqrt{3}"
+          "latex": "\\sqrt3"
         },
         {
           "type": "text",
-          "text": "を保持し、分子にも因子を掛けた計算を行います。"
+          "text": "と決まりました。元の値を保つため、分子側にもどの因子を掛けるかを式の中に入れます。"
         }
       ],
       "assumptions": [
@@ -6633,97 +7179,161 @@
       ],
       "rows": [
         {
-          "id": "n10-15::row-01",
-          "template": "\\frac1{2\\sqrt3}\\frac{\\sqrt3}{\\sqrt3}=\\frac{1\\times\\sqrt3}{2\\sqrt3\\sqrt3}",
+          "id": "n10-15::ux06-proposal-row-01",
           "kind": "math",
-          "partKeys": [],
+          "template": "\\frac1{2\\sqrt3}=\\frac{1\\times{ux06CompensatingFactor}}{(2\\sqrt3)\\times\\sqrt3}",
+          "partKeys": [
+            "ux06CompensatingFactor"
+          ],
           "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-q15-factor-result"
+          "mathGroupId": "n10-15-ux06-derivation"
+        },
+        {
+          "id": "n10-15::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "分子の積は、掛けた因子そのものです。分母は同じ根号の二つの因子をまとめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CompensatingFactor"
           ]
         },
         {
-          "id": "n10-15::row-02",
-          "template": "=\\frac{ {numerator} }{2(\\sqrt3)^2}",
+          "id": "n10-15::ux06-proposal-row-02",
           "kind": "math",
+          "template": "=\\frac{\\sqrt3}{2(\\sqrt3)^{ux06DenominatorPower}}",
           "partKeys": [
-            "numerator"
+            "ux06DenominatorPower"
           ],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-q15-factor-result"
+          "requiresCorrectKeys": [
+            "ux06CompensatingFactor"
+          ],
+          "mathGroupId": "n10-15-ux06-derivation"
+        },
+        {
+          "id": "n10-15::ux06-after-text",
+          "kind": "text",
+          "template": "分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CompensatingFactor",
+            "ux06DenominatorPower"
           ]
         }
       ],
       "parts": [
         {
-          "key": "numerator",
-          "role": "operand",
+          "id": "n10-15::ux06CompensatingFactor",
+          "key": "ux06CompensatingFactor",
           "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "分母へ√3を掛けるとき、値を保つため分子に掛ける因子を入れます。",
+          "learningAction": "分子分母の等しい倍率を式へ適用",
           "expected": "\\sqrt3",
-          "prompt": "分子1×√3を計算します。",
           "choices": [
             {
               "value": "\\sqrt3",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
               "kind": "math",
-              "latex": "\\sqrt3",
               "display": "\\sqrt3",
-              "misconception": "正答",
-              "feedback": "確定した結果を次の計算へ使います。"
+              "latex": "\\sqrt3",
+              "misconception": "正答"
             },
             {
               "value": "1",
+              "feedback": "分母だけに因子を掛けると分数の値が変わります。",
               "kind": "math",
-              "latex": "1",
               "display": "1",
-              "misconception": "分子にも選んだ因子を掛けます。",
-              "feedback": "分子にも選んだ因子を掛けます。"
+              "latex": "1",
+              "misconception": "分母だけに因子を掛けると分数の値が変わります。"
             },
             {
               "value": "3",
+              "feedback": "分母へ掛けた因子と同じ数を分子にも掛けます。",
               "kind": "math",
-              "latex": "3",
               "display": "3",
-              "misconception": "分子は根号同士の平方ではなく1×√3です。",
-              "feedback": "分子は根号同士の平方ではなく1×√3です。"
+              "latex": "3",
+              "misconception": "分母へ掛けた因子と同じ数を分子にも掛けます。"
             }
           ],
-          "mathAssertion": {
-            "kind": "exact-evaluation",
-            "expression": "sqrt(3)",
-            "expected": "\\sqrt3",
-            "reviewStatus": "PENDING_CODE",
-            "sourceRefs": [
-              "n10-15-before",
-              "n10-15-interaction-0",
-              "n10-15-equation",
-              "n10-15-after"
-            ]
-          },
-          "id": "n10-15::numerator",
-          "learningAction": "指定した演算の結果を計算する",
           "sourceRefs": [
-            "n10-15-before",
-            "n10-15-interaction-0",
-            "n10-15-equation",
-            "n10-15-after"
-          ]
+            "n10-15-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "\\sqrt3",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分子分母の等しい倍率を式へ適用",
+            "sourceRefs": [
+              "n10-15-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-15::ux06DenominatorPower",
+          "key": "ux06DenominatorPower",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "分母の√3同士の積を累乗にまとめます。",
+          "learningAction": "分母の根号をなくす平方の構造を作る",
+          "expected": "2",
+          "choices": [
+            {
+              "value": "2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "正答"
+            },
+            {
+              "value": "1",
+              "feedback": "√3が二因子あります。",
+              "kind": "math",
+              "display": "1",
+              "latex": "1",
+              "misconception": "√3が二因子あります。"
+            },
+            {
+              "value": "3",
+              "feedback": "因子の中の数と指数を区別します。",
+              "kind": "math",
+              "display": "3",
+              "latex": "3",
+              "misconception": "因子の中の数と指数を区別します。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-15-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分母の根号をなくす平方の構造を作る",
+            "sourceRefs": [
+              "n10-15-source-contract"
+            ]
+          }
         }
       ],
       "partOrder": [
-        "numerator"
+        "ux06CompensatingFactor",
+        "ux06DenominatorPower"
       ],
       "terminalRecord": {
         "id": "n10-15::terminal",
         "formulas": [
-          "\\frac1{2\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}"
+          "\\frac1{2\\sqrt3}=\\frac{1\\times\\sqrt3}{(2\\sqrt3)\\times\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}"
         ],
         "conditions": [
           "√3≠0。上下に同じ因子を掛ける。"
         ],
-        "prose": "分母は根号の平方を含む形になりました。分母全体を計算します。",
+        "prose": "分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
         "requiresCorrectKeys": [
-          "numerator"
+          "ux06CompensatingFactor",
+          "ux06DenominatorPower"
         ],
         "certifiedFrom": [
           "n10-q15-factor-result"
@@ -7561,11 +8171,35 @@
       "resultId": "n10-17-result",
       "stageId": "n10-stage-09",
       "q": 17,
-      "classification": "AUTO_RECORDED_CONCLUSION",
+      "classification": "NEW_CONSTRUCTION",
       "leadParts": [
         {
           "type": "text",
-          "text": "非零と確認した同じ因子を、分子と分母の両方へ掛けます。"
+          "text": "選んだ"
+        },
+        {
+          "type": "math",
+          "latex": "c=\\sqrt3-\\sqrt2"
+        },
+        {
+          "type": "text",
+          "text": "は"
+        },
+        {
+          "type": "math",
+          "latex": "0"
+        },
+        {
+          "type": "text",
+          "text": "でないと確かめました。"
+        },
+        {
+          "type": "math",
+          "latex": "c/c=1"
+        },
+        {
+          "type": "text",
+          "text": "を掛ける操作を、元の分子と分母へそれぞれ反映しましょう。"
         }
       ],
       "assumptions": [
@@ -7603,31 +8237,164 @@
       ],
       "rows": [
         {
-          "id": "n10-17::ux05-fraction",
+          "id": "n10-17::ux06-proposal-row-01",
           "kind": "math",
-          "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-13-result",
-            "n10-14-result",
-            "n10-q17-nonzero-result"
+          "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ {ux06NumeratorProduct} }{({ux06DenominatorScope})c}",
+          "partKeys": [
+            "ux06NumeratorProduct",
+            "ux06DenominatorScope"
           ],
-          "mathGroupId": "n10-17-ux05-group-1"
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n10-17-ux06-derivation"
+        },
+        {
+          "id": "n10-17::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "因子の文字に、選んだ差を戻します。分母は和と差の積になりました。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorProduct",
+            "ux06DenominatorScope"
+          ]
+        },
+        {
+          "id": "n10-17::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorProduct",
+            "ux06DenominatorScope"
+          ],
+          "mathGroupId": "n10-17-ux06-derivation"
+        },
+        {
+          "id": "n10-17::ux06-after-text",
+          "kind": "text",
+          "template": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorProduct",
+            "ux06DenominatorScope"
+          ]
         }
       ],
-      "parts": [],
-      "partOrder": [],
+      "parts": [
+        {
+          "id": "n10-17::ux06NumeratorProduct",
+          "key": "ux06NumeratorProduct",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "元の分子へcを掛けた積を入れます。",
+          "learningAction": "分数の値保持を分子の積へ適用",
+          "expected": "\\sqrt3c",
+          "choices": [
+            {
+              "value": "\\sqrt3c",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "\\sqrt3c",
+              "latex": "\\sqrt3c",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\sqrt3",
+              "feedback": "分子にもcを掛けます。",
+              "kind": "math",
+              "display": "\\sqrt3",
+              "latex": "\\sqrt3",
+              "misconception": "分子にもcを掛けます。"
+            },
+            {
+              "value": "c",
+              "feedback": "元の分子√3を落としません。",
+              "kind": "math",
+              "display": "c",
+              "latex": "c",
+              "misconception": "元の分子√3を落としません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-17-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "\\sqrt3c",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分数の値保持を分子の積へ適用",
+            "sourceRefs": [
+              "n10-17-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-17::ux06DenominatorScope",
+          "key": "ux06DenominatorScope",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "分母でcを掛ける対象を括弧の中へ入れます。",
+          "learningAction": "分母全体という作用範囲を構成",
+          "expected": "\\sqrt3+\\sqrt2",
+          "choices": [
+            {
+              "value": "\\sqrt3+\\sqrt2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "\\sqrt3+\\sqrt2",
+              "latex": "\\sqrt3+\\sqrt2",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\sqrt3",
+              "feedback": "元の分母の和全体に掛けます。",
+              "kind": "math",
+              "display": "\\sqrt3",
+              "latex": "\\sqrt3",
+              "misconception": "元の分母の和全体に掛けます。"
+            },
+            {
+              "value": "\\sqrt2",
+              "feedback": "元の分母の一項だけには掛けません。",
+              "kind": "math",
+              "display": "\\sqrt2",
+              "latex": "\\sqrt2",
+              "misconception": "元の分母の一項だけには掛けません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-17-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "\\sqrt3+\\sqrt2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "分母全体という作用範囲を構成",
+            "sourceRefs": [
+              "n10-17-source-contract"
+            ]
+          }
+        }
+      ],
+      "partOrder": [
+        "ux06NumeratorProduct",
+        "ux06DenominatorScope"
+      ],
       "terminalRecord": {
         "id": "n10-17::terminal",
         "formulas": [
-          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}"
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{\\sqrt3c}{(\\sqrt3+\\sqrt2)c}",
+          "=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}"
         ],
         "conditions": [
           "元分母√3+√2>0、掛ける因子√3−√2≠0。"
         ],
-        "prose": "値を保ったまま分母を和と差の積へ変えました。先に分母、次に分子を計算します。",
-        "requiresCorrectKeys": [],
+        "prose": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+        "requiresCorrectKeys": [
+          "ux06NumeratorProduct",
+          "ux06DenominatorScope"
+        ],
         "certifiedFrom": [
           "n10-13-result",
           "n10-14-result",
@@ -8815,7 +9582,23 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "非零と確認した同じ因子を上下へ掛けます。分子と分母に適用する公式の違いに注意しましょう。"
+          "text": "元の分母と、選んだ因子"
+        },
+        {
+          "type": "math",
+          "latex": "2-\\sqrt3"
+        },
+        {
+          "type": "text",
+          "text": "が"
+        },
+        {
+          "type": "math",
+          "latex": "0"
+        },
+        {
+          "type": "text",
+          "text": "でないことは確かめました。同じ因子を上下へ掛けると、分子と分母では異なる積ができます。"
         }
       ],
       "assumptions": [
@@ -8861,127 +9644,183 @@
       ],
       "rows": [
         {
-          "id": "n10-20::ux05-start",
+          "id": "n10-20::ux06-proposal-row-01",
           "kind": "math",
-          "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-13-result",
-            "n10-14-result",
-            "n10-q20-factor-result"
-          ],
-          "mathGroupId": "n10-20-ux05-group-1"
-        },
-        {
-          "id": "n10-20::ux05-form",
-          "kind": "math",
-          "template": "={rationalisedFractionUX05}",
+          "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^{ux06NumeratorPower}}{(2+\\sqrt3)(2-\\sqrt3)}",
           "partKeys": [
-            "rationalisedFractionUX05"
+            "ux06NumeratorPower"
           ],
           "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n10-13-result",
-            "n10-14-result",
-            "n10-q20-factor-result"
-          ],
-          "mathGroupId": "n10-20-ux05-group-1"
+          "mathGroupId": "n10-20-ux06-derivation"
         },
         {
-          "id": "n10-20::ux05-known-squares",
+          "id": "n10-20::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "分子の平方は保ち、今度は分母の和と差の積を直します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorPower"
+          ]
+        },
+        {
+          "id": "n10-20::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "=\\frac{(2-\\sqrt3)^2}{2^2\\ {ux06DenominatorSign}\\ (\\sqrt3)^2}",
+          "partKeys": [
+            "ux06DenominatorSign"
+          ],
+          "requiresCorrectKeys": [
+            "ux06NumeratorPower"
+          ],
+          "mathGroupId": "n10-20-ux06-derivation"
+        },
+        {
+          "id": "n10-20::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "比較で確かめた二つの平方の値を使います。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorPower",
+            "ux06DenominatorSign"
+          ]
+        },
+        {
+          "id": "n10-20::ux06-proposal-row-03",
           "kind": "math",
           "template": "=\\frac{(2-\\sqrt3)^2}{4-3}",
           "partKeys": [],
           "requiresCorrectKeys": [
-            "rationalisedFractionUX05"
+            "ux06NumeratorPower",
+            "ux06DenominatorSign"
           ],
-          "certifiedFrom": [
-            "n10-13-result",
-            "n10-14-result",
-            "n10-q20-factor-result"
-          ],
-          "mathGroupId": "n10-20-ux05-group-1"
+          "mathGroupId": "n10-20-ux06-derivation"
+        },
+        {
+          "id": "n10-20::ux06-after-text",
+          "kind": "text",
+          "template": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06NumeratorPower",
+            "ux06DenominatorSign"
+          ]
         }
       ],
       "parts": [
         {
-          "key": "rationalisedFractionUX05",
-          "id": "n10-20::rationalisedFractionUX05",
-          "role": "expression",
+          "id": "n10-20::ux06NumeratorPower",
+          "key": "ux06NumeratorPower",
           "kind": "math",
-          "expected": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-          "prompt": "同じ非零因子を上下へ掛けた式で、分子全体の積を平方、分母の和と差の積を平方差で表します。",
+          "role": "meaningful-expression-construction",
+          "prompt": "分子の同じ二因子の積を累乗にします。",
+          "learningAction": "差全体に平方が作用する範囲を構成",
+          "expected": "2",
           "choices": [
             {
-              "value": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "value": "2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
               "kind": "math",
-              "latex": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-              "display": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-              "feedback": "分子は差全体の平方、分母は和と差の積の公式です。",
+              "display": "2",
+              "latex": "2",
               "misconception": "正答"
             },
             {
-              "value": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+              "value": "1",
+              "feedback": "分子には同じ差が二因子あります。",
               "kind": "math",
-              "latex": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-              "display": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-              "feedback": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。",
-              "misconception": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。"
+              "display": "1",
+              "latex": "1",
+              "misconception": "分子には同じ差が二因子あります。"
             },
             {
-              "value": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
+              "value": "4",
+              "feedback": "平方した因子を二つ掛けているのではありません。",
               "kind": "math",
-              "latex": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
-              "display": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
-              "feedback": "分母は和と差の積なので、残るのは平方の差です。",
-              "misconception": "分母は和と差の積なので、残るのは平方の差です。"
-            },
-            {
-              "value": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-              "kind": "math",
-              "latex": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-              "display": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-              "feedback": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。",
-              "misconception": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。"
+              "display": "4",
+              "latex": "4",
+              "misconception": "平方した因子を二つ掛けているのではありません。"
             }
           ],
-          "learningAction": "有理化の分数全体で二つの既習公式を対応させ、値保持した式を構成。",
           "sourceRefs": [
-            "n10-20-before",
-            "n10-20-interaction-0",
-            "n10-20-equation",
-            "n10-20-after"
+            "n10-20-source-contract"
           ],
           "mathAssertion": {
-            "kind": "exact-evaluation",
-            "expected": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-            "reviewStatus": "PENDING_CODE",
+            "kind": "requires-semantic-review",
+            "expected": "2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "差全体に平方が作用する範囲を構成",
             "sourceRefs": [
-              "n10-20-before",
-              "n10-20-interaction-0",
-              "n10-20-equation",
-              "n10-20-after"
-            ],
-            "rationale": "CODEは閉じた有限候補の値照合のみ。根号対象と公式・相殺する項の意味対応は別の非作者審査を要し、数値一致だけで教授契約を証明しない。",
-            "expression": "(2-sqrt(3))**2/(2**2-sqrt(3)**2)"
+              "n10-20-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n10-20::ux06DenominatorSign",
+          "key": "ux06DenominatorSign",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "分母の和と差の積を平方差に直します。",
+          "learningAction": "相殺後に残る平方の関係を符号で構成",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "-",
+              "latex": "-",
+              "misconception": "正答"
+            },
+            {
+              "value": "+",
+              "feedback": "和と差の積では交差項が相殺し、平方の差が残ります。",
+              "kind": "math",
+              "display": "+",
+              "latex": "+",
+              "misconception": "和と差の積では交差項が相殺し、平方の差が残ります。"
+            },
+            {
+              "value": "\\times",
+              "feedback": "二つの平方の積へはなりません。",
+              "kind": "math",
+              "display": "\\times",
+              "latex": "\\times",
+              "misconception": "二つの平方の積へはなりません。"
+            }
+          ],
+          "sourceRefs": [
+            "n10-20-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "-",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "相殺後に残る平方の関係を符号で構成",
+            "sourceRefs": [
+              "n10-20-source-contract"
+            ]
           }
         }
       ],
       "partOrder": [
-        "rationalisedFractionUX05"
+        "ux06NumeratorPower",
+        "ux06DenominatorSign"
       ],
       "terminalRecord": {
         "id": "n10-20::terminal",
         "formulas": [
-          "\\frac{2-\\sqrt3}{2+\\sqrt3}=\\frac{(2-\\sqrt3)^2}{4-3}"
+          "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}",
+          "=\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}=\\frac{(2-\\sqrt3)^2}{4-3}"
         ],
         "conditions": [
           "元分母と掛ける因子は非零。"
         ],
-        "prose": "分母と分子を計算できる形へ直せました。まず分母4−3を計算します。",
+        "prose": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
         "requiresCorrectKeys": [
-          "rationalisedFractionUX05"
+          "ux06NumeratorPower",
+          "ux06DenominatorSign"
         ],
         "certifiedFrom": [
           "n10-13-result",
@@ -9760,25 +10599,168 @@
         "nodeId": "n10-q01-square",
         "rows": [
           {
-            "id": "n10-q01-square::row-01",
-            "template": "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)=t^2(\\sqrt5)^2",
+            "id": "n10-q01-square::ux06-proposal-row-01",
             "kind": "math",
-            "partKeys": [],
+            "template": "(t\\sqrt5)^2=(t\\sqrt5)({ux06ProductBase})",
+            "partKeys": [
+              "ux06ProductBase"
+            ],
             "requiresCorrectKeys": [],
-            "certifiedFrom": []
+            "mathGroupId": "n10-q01-square-ux06-derivation"
           },
           {
-            "id": "n10-q01-square::row-02",
-            "template": "={rootSquare}t^2",
+            "id": "n10-q01-square::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "積の順を入れ替え、係数同士と根号同士をまとめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06ProductBase"
+            ]
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-02",
             "kind": "math",
+            "template": "=t^{ux06CoefficientExponent}(\\sqrt5)^2",
+            "partKeys": [
+              "ux06CoefficientExponent"
+            ],
+            "requiresCorrectKeys": [
+              "ux06ProductBase"
+            ],
+            "mathGroupId": "n10-q01-square-ux06-derivation"
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "根号の定義を使って、平方を計算します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06ProductBase",
+              "ux06CoefficientExponent"
+            ]
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03",
+            "kind": "math",
+            "template": "={rootSquare}t^2",
             "partKeys": [
               "rootSquare"
             ],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": []
+            "requiresCorrectKeys": [
+              "ux06ProductBase",
+              "ux06CoefficientExponent"
+            ],
+            "mathGroupId": "n10-q01-square-ux06-derivation"
+          },
+          {
+            "id": "n10-q01-square::ux06-after-text",
+            "kind": "text",
+            "template": "候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06ProductBase",
+              "ux06CoefficientExponent",
+              "rootSquare"
+            ]
           }
         ],
         "parts": [
+          {
+            "id": "n10-q01-square::ux06ProductBase",
+            "key": "ux06ProductBase",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "2乗の基底をもう一つの因子にします。",
+            "learningAction": "文字と根号を含む基底全体を構成",
+            "expected": "t\\sqrt5",
+            "choices": [
+              {
+                "value": "t\\sqrt5",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "t\\sqrt5",
+                "latex": "t\\sqrt5",
+                "misconception": "正答"
+              },
+              {
+                "value": "t^2\\sqrt5",
+                "feedback": "平方前の基底全体をもう一度掛けます。",
+                "kind": "math",
+                "display": "t^2\\sqrt5",
+                "latex": "t^2\\sqrt5",
+                "misconception": "平方前の基底全体をもう一度掛けます。"
+              },
+              {
+                "value": "5t",
+                "feedback": "√5を勝手に5へ変えません。",
+                "kind": "math",
+                "display": "5t",
+                "latex": "5t",
+                "misconception": "√5を勝手に5へ変えません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q01-square-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "t\\sqrt5",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "文字と根号を含む基底全体を構成",
+              "sourceRefs": [
+                "n10-q01-square-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-q01-square::ux06CoefficientExponent",
+            "key": "ux06CoefficientExponent",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "t同士をまとめた指数を入れます。",
+            "learningAction": "交換結合後の同じ文字の積を累乗へ変換",
+            "expected": "2",
+            "choices": [
+              {
+                "value": "2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "正答"
+              },
+              {
+                "value": "1",
+                "feedback": "tが二つ掛かっています。",
+                "kind": "math",
+                "display": "1",
+                "latex": "1",
+                "misconception": "tが二つ掛かっています。"
+              },
+              {
+                "value": "4",
+                "feedback": "t²同士を掛けているのではありません。",
+                "kind": "math",
+                "display": "4",
+                "latex": "4",
+                "misconception": "t²同士を掛けているのではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q01-square-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "交換結合後の同じ文字の積を累乗へ変換",
+              "sourceRefs": [
+                "n10-q01-square-source-contract"
+              ]
+            }
+          },
           {
             "key": "rootSquare",
             "role": "rational",
@@ -9834,6 +10816,8 @@
           }
         ],
         "partOrder": [
+          "ux06ProductBase",
+          "ux06CoefficientExponent",
           "rootSquare"
         ]
       },
@@ -12222,21 +13206,198 @@
         "nodeId": "n10-q11-formula",
         "rows": [
           {
-            "id": "n10-q11-formula::ux05-middle",
+            "id": "n10-q11-formula::ux06-proposal-row-01",
             "kind": "math",
-            "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+            "template": "(A-B)^2=(A-B)(A-B)",
+            "partKeys": [],
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n10-q11-formula-ux06-derivation"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "分配法則で、第一項への積と、符号を含む第二項への積に分けます。",
+            "partKeys": [],
+            "requiresCorrectKeys": []
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "=A(A-B)-B(A-B)",
+            "partKeys": [],
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n10-q11-formula-ux06-derivation"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "各括弧をさらに分配します。最後は負の項同士の積です。",
+            "partKeys": [],
+            "requiresCorrectKeys": []
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03",
+            "kind": "math",
+            "template": "=A^2-AB-AB\\ {ux06LastProductSign}\\ B^2",
+            "partKeys": [
+              "ux06LastProductSign"
+            ],
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n10-q11-formula-ux06-derivation"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04-intro",
+            "kind": "text",
+            "template": "同じ負の交差項どうしをまとめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06LastProductSign"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04",
+            "kind": "math",
+            "template": "=A^2-{ux06DifferenceCount}AB+B^2",
+            "partKeys": [
+              "ux06DifferenceCount"
+            ],
+            "requiresCorrectKeys": [
+              "ux06LastProductSign"
+            ],
+            "mathGroupId": "n10-q11-formula-ux06-derivation"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05-intro",
+            "kind": "text",
+            "template": "導いた式へ、元の問題の二つの根号を対応させます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06LastProductSign",
+              "ux06DifferenceCount"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05",
+            "kind": "math",
+            "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2\\ {signedMiddleTermUX05}+(\\sqrt3)^2",
             "partKeys": [
               "signedMiddleTermUX05"
             ],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-04-result",
-              "n10-10-result"
+            "requiresCorrectKeys": [
+              "ux06LastProductSign",
+              "ux06DifferenceCount"
             ],
-            "mathGroupId": "n10-q11-formula-ux05-group-1"
+            "mathGroupId": "n10-q11-formula-ux06-derivation"
+          },
+          {
+            "id": "n10-q11-formula::ux06-after-text",
+            "kind": "text",
+            "template": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06LastProductSign",
+              "ux06DifferenceCount",
+              "signedMiddleTermUX05"
+            ]
           }
         ],
         "parts": [
+          {
+            "id": "n10-q11-formula::ux06LastProductSign",
+            "key": "ux06LastProductSign",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "最後のB同士の積の符号を入れます。",
+            "learningAction": "負の因子同士の積を展開の符号へ反映",
+            "expected": "+",
+            "choices": [
+              {
+                "value": "+",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "+",
+                "latex": "+",
+                "misconception": "正答"
+              },
+              {
+                "value": "-",
+                "feedback": "最後は負の項同士の積です。",
+                "kind": "math",
+                "display": "-",
+                "latex": "-",
+                "misconception": "最後は負の項同士の積です。"
+              },
+              {
+                "value": "\\pm",
+                "feedback": "積の符号は一意に決まります。",
+                "kind": "math",
+                "display": "\\pm",
+                "latex": "\\pm",
+                "misconception": "積の符号は一意に決まります。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q11-formula-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "+",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "負の因子同士の積を展開の符号へ反映",
+              "sourceRefs": [
+                "n10-q11-formula-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-q11-formula::ux06DifferenceCount",
+            "key": "ux06DifferenceCount",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "同類項をまとめたABの係数を入れます。",
+            "learningAction": "負の交差項二つを中項の係数へまとめる",
+            "expected": "2",
+            "choices": [
+              {
+                "value": "2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "正答"
+              },
+              {
+                "value": "1",
+                "feedback": "−ABが二つあります。",
+                "kind": "math",
+                "display": "1",
+                "latex": "1",
+                "misconception": "−ABが二つあります。"
+              },
+              {
+                "value": "4",
+                "feedback": "四項すべてが交差項ではありません。",
+                "kind": "math",
+                "display": "4",
+                "latex": "4",
+                "misconception": "四項すべてが交差項ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q11-formula-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "負の交差項二つを中項の係数へまとめる",
+              "sourceRefs": [
+                "n10-q11-formula-source-contract"
+              ]
+            }
+          },
           {
             "key": "signedMiddleTermUX05",
             "id": "n10-q11-formula::signedMiddleTermUX05",
@@ -12301,6 +13462,8 @@
           }
         ],
         "partOrder": [
+          "ux06LastProductSign",
+          "ux06DifferenceCount",
           "signedMiddleTermUX05"
         ]
       },
@@ -12613,63 +13776,200 @@
         "nodeId": "n10-q13-identity",
         "rows": [
           {
-            "id": "n10-q13-identity::ux05-problem",
+            "id": "n10-q13-identity::ux06-proposal-row-01",
             "kind": "math",
-            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-04-result",
-              "n10-12-result"
+            "template": "(A+B)(A-B)=A^2\\ {ux06CrossSign}\\ AB+BA-B^2",
+            "partKeys": [
+              "ux06CrossSign"
             ],
-            "mathGroupId": "n10-q13-identity-ux05-group-1"
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n10-q13-identity-ux06-derivation"
           },
           {
-            "id": "n10-q13-identity::ux05-pair",
+            "id": "n10-q13-identity::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "積の順を入れ替えて同じ大きさと確かめ、交差項の和をまとめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CrossSign"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "-AB+BA={ux06CrossSum}",
+            "partKeys": [
+              "ux06CrossSum"
+            ],
+            "requiresCorrectKeys": [
+              "ux06CrossSign"
+            ],
+            "mathGroupId": "n10-q13-identity-ux06-derivation"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "交差項が消え、二つの平方の差が残りました。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03",
+            "kind": "math",
+            "template": "(A+B)(A-B)=A^2-B^2",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum"
+            ],
+            "mathGroupId": "n10-q13-identity-ux06-derivation"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04-intro",
+            "kind": "text",
+            "template": "同じ構造を、元の二つの根号の場合で確かめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04",
             "kind": "text",
             "template": "相殺する交差項の組：{cancellingPairUX05}",
             "partKeys": [
               "cancellingPairUX05"
             ],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-04-result",
-              "n10-12-result"
-            ],
-            "hideAfterCorrectKeys": [
-              "cancellingPairUX05"
+            "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum"
             ]
           },
           {
-            "id": "n10-q13-identity::ux05-expand",
+            "id": "n10-q13-identity::ux06-proposal-row-05",
             "kind": "math",
-            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2",
+            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2",
             "partKeys": [],
             "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum",
               "cancellingPairUX05"
             ],
-            "certifiedFrom": [
-              "n10-04-result",
-              "n10-12-result"
-            ],
-            "mathGroupId": "n10-q13-identity-ux05-group-3"
+            "mathGroupId": "n10-q13-identity-ux06-derivation"
           },
           {
-            "id": "n10-q13-identity::ux05-cancel",
-            "kind": "math",
-            "template": "=(\\sqrt7)^2-(\\sqrt2)^2",
+            "id": "n10-q13-identity::ux06-after-text",
+            "kind": "text",
+            "template": "残った左右の平方を計算し、その差を求めます。",
             "partKeys": [],
             "requiresCorrectKeys": [
+              "ux06CrossSign",
+              "ux06CrossSum",
               "cancellingPairUX05"
-            ],
-            "certifiedFrom": [
-              "n10-04-result",
-              "n10-12-result"
-            ],
-            "mathGroupId": "n10-q13-identity-ux05-group-3"
+            ]
           }
         ],
         "parts": [
+          {
+            "id": "n10-q13-identity::ux06CrossSign",
+            "key": "ux06CrossSign",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "Aと−Bからできる交差項の符号を入れます。",
+            "learningAction": "分配時の因子の符号を項へ対応",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "-",
+                "latex": "-",
+                "misconception": "正答"
+              },
+              {
+                "value": "+",
+                "feedback": "Aと−Bからできる項です。",
+                "kind": "math",
+                "display": "+",
+                "latex": "+",
+                "misconception": "Aと−Bからできる項です。"
+              },
+              {
+                "value": "\\pm",
+                "feedback": "因子の符号から積の符号は一意です。",
+                "kind": "math",
+                "display": "\\pm",
+                "latex": "\\pm",
+                "misconception": "因子の符号から積の符号は一意です。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q13-identity-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "-",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分配時の因子の符号を項へ対応",
+              "sourceRefs": [
+                "n10-q13-identity-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-q13-identity::ux06CrossSum",
+            "key": "ux06CrossSum",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "交差項どうしの和を入れます。",
+            "learningAction": "交換法則と逆符号の和による相殺",
+            "expected": "0",
+            "choices": [
+              {
+                "value": "0",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "0",
+                "latex": "0",
+                "misconception": "正答"
+              },
+              {
+                "value": "2AB",
+                "feedback": "二つの交差項の符号は反対です。",
+                "kind": "math",
+                "display": "2AB",
+                "latex": "2AB",
+                "misconception": "二つの交差項の符号は反対です。"
+              },
+              {
+                "value": "-2AB",
+                "feedback": "どちらも負ではありません。",
+                "kind": "math",
+                "display": "-2AB",
+                "latex": "-2AB",
+                "misconception": "どちらも負ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-q13-identity-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "0",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "交換法則と逆符号の和による相殺",
+              "sourceRefs": [
+                "n10-q13-identity-source-contract"
+              ]
+            }
+          },
           {
             "key": "cancellingPairUX05",
             "id": "n10-q13-identity::cancellingPairUX05",
@@ -12746,6 +14046,8 @@
           }
         ],
         "partOrder": [
+          "ux06CrossSign",
+          "ux06CrossSum",
           "cancellingPairUX05"
         ]
       },
@@ -13129,85 +14431,148 @@
         "nodeId": "n10-15",
         "rows": [
           {
-            "id": "n10-15::row-01",
-            "template": "\\frac1{2\\sqrt3}\\frac{\\sqrt3}{\\sqrt3}=\\frac{1\\times\\sqrt3}{2\\sqrt3\\sqrt3}",
+            "id": "n10-15::ux06-proposal-row-01",
             "kind": "math",
-            "partKeys": [],
+            "template": "\\frac1{2\\sqrt3}=\\frac{1\\times{ux06CompensatingFactor}}{(2\\sqrt3)\\times\\sqrt3}",
+            "partKeys": [
+              "ux06CompensatingFactor"
+            ],
             "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-q15-factor-result"
+            "mathGroupId": "n10-15-ux06-derivation"
+          },
+          {
+            "id": "n10-15::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "分子の積は、掛けた因子そのものです。分母は同じ根号の二つの因子をまとめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CompensatingFactor"
             ]
           },
           {
-            "id": "n10-15::row-02",
-            "template": "=\\frac{ {numerator} }{2(\\sqrt3)^2}",
+            "id": "n10-15::ux06-proposal-row-02",
             "kind": "math",
+            "template": "=\\frac{\\sqrt3}{2(\\sqrt3)^{ux06DenominatorPower}}",
             "partKeys": [
-              "numerator"
+              "ux06DenominatorPower"
             ],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-q15-factor-result"
+            "requiresCorrectKeys": [
+              "ux06CompensatingFactor"
+            ],
+            "mathGroupId": "n10-15-ux06-derivation"
+          },
+          {
+            "id": "n10-15::ux06-after-text",
+            "kind": "text",
+            "template": "分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CompensatingFactor",
+              "ux06DenominatorPower"
             ]
           }
         ],
         "parts": [
           {
-            "key": "numerator",
-            "role": "operand",
+            "id": "n10-15::ux06CompensatingFactor",
+            "key": "ux06CompensatingFactor",
             "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "分母へ√3を掛けるとき、値を保つため分子に掛ける因子を入れます。",
+            "learningAction": "分子分母の等しい倍率を式へ適用",
             "expected": "\\sqrt3",
-            "prompt": "分子1×√3を計算します。",
             "choices": [
               {
                 "value": "\\sqrt3",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
                 "kind": "math",
-                "latex": "\\sqrt3",
                 "display": "\\sqrt3",
-                "misconception": "正答",
-                "feedback": "確定した結果を次の計算へ使います。"
+                "latex": "\\sqrt3",
+                "misconception": "正答"
               },
               {
                 "value": "1",
+                "feedback": "分母だけに因子を掛けると分数の値が変わります。",
                 "kind": "math",
-                "latex": "1",
                 "display": "1",
-                "misconception": "分子にも選んだ因子を掛けます。",
-                "feedback": "分子にも選んだ因子を掛けます。"
+                "latex": "1",
+                "misconception": "分母だけに因子を掛けると分数の値が変わります。"
               },
               {
                 "value": "3",
+                "feedback": "分母へ掛けた因子と同じ数を分子にも掛けます。",
                 "kind": "math",
-                "latex": "3",
                 "display": "3",
-                "misconception": "分子は根号同士の平方ではなく1×√3です。",
-                "feedback": "分子は根号同士の平方ではなく1×√3です。"
+                "latex": "3",
+                "misconception": "分母へ掛けた因子と同じ数を分子にも掛けます。"
               }
             ],
-            "mathAssertion": {
-              "kind": "exact-evaluation",
-              "expression": "sqrt(3)",
-              "expected": "\\sqrt3",
-              "reviewStatus": "PENDING_CODE",
-              "sourceRefs": [
-                "n10-15-before",
-                "n10-15-interaction-0",
-                "n10-15-equation",
-                "n10-15-after"
-              ]
-            },
-            "id": "n10-15::numerator",
-            "learningAction": "指定した演算の結果を計算する",
             "sourceRefs": [
-              "n10-15-before",
-              "n10-15-interaction-0",
-              "n10-15-equation",
-              "n10-15-after"
-            ]
+              "n10-15-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "\\sqrt3",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分子分母の等しい倍率を式へ適用",
+              "sourceRefs": [
+                "n10-15-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-15::ux06DenominatorPower",
+            "key": "ux06DenominatorPower",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "分母の√3同士の積を累乗にまとめます。",
+            "learningAction": "分母の根号をなくす平方の構造を作る",
+            "expected": "2",
+            "choices": [
+              {
+                "value": "2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "正答"
+              },
+              {
+                "value": "1",
+                "feedback": "√3が二因子あります。",
+                "kind": "math",
+                "display": "1",
+                "latex": "1",
+                "misconception": "√3が二因子あります。"
+              },
+              {
+                "value": "3",
+                "feedback": "因子の中の数と指数を区別します。",
+                "kind": "math",
+                "display": "3",
+                "latex": "3",
+                "misconception": "因子の中の数と指数を区別します。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-15-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分母の根号をなくす平方の構造を作る",
+              "sourceRefs": [
+                "n10-15-source-contract"
+              ]
+            }
           }
         ],
         "partOrder": [
-          "numerator"
+          "ux06CompensatingFactor",
+          "ux06DenominatorPower"
         ]
       },
       {
@@ -13560,21 +14925,150 @@
         "nodeId": "n10-17",
         "rows": [
           {
-            "id": "n10-17::ux05-fraction",
+            "id": "n10-17::ux06-proposal-row-01",
             "kind": "math",
-            "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-13-result",
-              "n10-14-result",
-              "n10-q17-nonzero-result"
+            "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ {ux06NumeratorProduct} }{({ux06DenominatorScope})c}",
+            "partKeys": [
+              "ux06NumeratorProduct",
+              "ux06DenominatorScope"
             ],
-            "mathGroupId": "n10-17-ux05-group-1"
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n10-17-ux06-derivation"
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "因子の文字に、選んだ差を戻します。分母は和と差の積になりました。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorProduct",
+              "ux06DenominatorScope"
+            ]
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorProduct",
+              "ux06DenominatorScope"
+            ],
+            "mathGroupId": "n10-17-ux06-derivation"
+          },
+          {
+            "id": "n10-17::ux06-after-text",
+            "kind": "text",
+            "template": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorProduct",
+              "ux06DenominatorScope"
+            ]
           }
         ],
-        "parts": [],
-        "partOrder": []
+        "parts": [
+          {
+            "id": "n10-17::ux06NumeratorProduct",
+            "key": "ux06NumeratorProduct",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "元の分子へcを掛けた積を入れます。",
+            "learningAction": "分数の値保持を分子の積へ適用",
+            "expected": "\\sqrt3c",
+            "choices": [
+              {
+                "value": "\\sqrt3c",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "\\sqrt3c",
+                "latex": "\\sqrt3c",
+                "misconception": "正答"
+              },
+              {
+                "value": "\\sqrt3",
+                "feedback": "分子にもcを掛けます。",
+                "kind": "math",
+                "display": "\\sqrt3",
+                "latex": "\\sqrt3",
+                "misconception": "分子にもcを掛けます。"
+              },
+              {
+                "value": "c",
+                "feedback": "元の分子√3を落としません。",
+                "kind": "math",
+                "display": "c",
+                "latex": "c",
+                "misconception": "元の分子√3を落としません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-17-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "\\sqrt3c",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分数の値保持を分子の積へ適用",
+              "sourceRefs": [
+                "n10-17-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-17::ux06DenominatorScope",
+            "key": "ux06DenominatorScope",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "分母でcを掛ける対象を括弧の中へ入れます。",
+            "learningAction": "分母全体という作用範囲を構成",
+            "expected": "\\sqrt3+\\sqrt2",
+            "choices": [
+              {
+                "value": "\\sqrt3+\\sqrt2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "\\sqrt3+\\sqrt2",
+                "latex": "\\sqrt3+\\sqrt2",
+                "misconception": "正答"
+              },
+              {
+                "value": "\\sqrt3",
+                "feedback": "元の分母の和全体に掛けます。",
+                "kind": "math",
+                "display": "\\sqrt3",
+                "latex": "\\sqrt3",
+                "misconception": "元の分母の和全体に掛けます。"
+              },
+              {
+                "value": "\\sqrt2",
+                "feedback": "元の分母の一項だけには掛けません。",
+                "kind": "math",
+                "display": "\\sqrt2",
+                "latex": "\\sqrt2",
+                "misconception": "元の分母の一項だけには掛けません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-17-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "\\sqrt3+\\sqrt2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "分母全体という作用範囲を構成",
+              "sourceRefs": [
+                "n10-17-source-contract"
+              ]
+            }
+          }
+        ],
+        "partOrder": [
+          "ux06NumeratorProduct",
+          "ux06DenominatorScope"
+        ]
       },
       {
         "nodeId": "n10-18",
@@ -14374,115 +15868,169 @@
         "nodeId": "n10-20",
         "rows": [
           {
-            "id": "n10-20::ux05-start",
+            "id": "n10-20::ux06-proposal-row-01",
             "kind": "math",
-            "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-13-result",
-              "n10-14-result",
-              "n10-q20-factor-result"
-            ],
-            "mathGroupId": "n10-20-ux05-group-1"
-          },
-          {
-            "id": "n10-20::ux05-form",
-            "kind": "math",
-            "template": "={rationalisedFractionUX05}",
+            "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^{ux06NumeratorPower}}{(2+\\sqrt3)(2-\\sqrt3)}",
             "partKeys": [
-              "rationalisedFractionUX05"
+              "ux06NumeratorPower"
             ],
             "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n10-13-result",
-              "n10-14-result",
-              "n10-q20-factor-result"
-            ],
-            "mathGroupId": "n10-20-ux05-group-1"
+            "mathGroupId": "n10-20-ux06-derivation"
           },
           {
-            "id": "n10-20::ux05-known-squares",
+            "id": "n10-20::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "分子の平方は保ち、今度は分母の和と差の積を直します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorPower"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "=\\frac{(2-\\sqrt3)^2}{2^2\\ {ux06DenominatorSign}\\ (\\sqrt3)^2}",
+            "partKeys": [
+              "ux06DenominatorSign"
+            ],
+            "requiresCorrectKeys": [
+              "ux06NumeratorPower"
+            ],
+            "mathGroupId": "n10-20-ux06-derivation"
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "比較で確かめた二つの平方の値を使います。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorPower",
+              "ux06DenominatorSign"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-03",
             "kind": "math",
             "template": "=\\frac{(2-\\sqrt3)^2}{4-3}",
             "partKeys": [],
             "requiresCorrectKeys": [
-              "rationalisedFractionUX05"
+              "ux06NumeratorPower",
+              "ux06DenominatorSign"
             ],
-            "certifiedFrom": [
-              "n10-13-result",
-              "n10-14-result",
-              "n10-q20-factor-result"
-            ],
-            "mathGroupId": "n10-20-ux05-group-1"
+            "mathGroupId": "n10-20-ux06-derivation"
+          },
+          {
+            "id": "n10-20::ux06-after-text",
+            "kind": "text",
+            "template": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06NumeratorPower",
+              "ux06DenominatorSign"
+            ]
           }
         ],
         "parts": [
           {
-            "key": "rationalisedFractionUX05",
-            "id": "n10-20::rationalisedFractionUX05",
-            "role": "expression",
+            "id": "n10-20::ux06NumeratorPower",
+            "key": "ux06NumeratorPower",
             "kind": "math",
-            "expected": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-            "prompt": "同じ非零因子を上下へ掛けた式で、分子全体の積を平方、分母の和と差の積を平方差で表します。",
+            "role": "meaningful-expression-construction",
+            "prompt": "分子の同じ二因子の積を累乗にします。",
+            "learningAction": "差全体に平方が作用する範囲を構成",
+            "expected": "2",
             "choices": [
               {
-                "value": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+                "value": "2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
                 "kind": "math",
-                "latex": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-                "display": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-                "feedback": "分子は差全体の平方、分母は和と差の積の公式です。",
+                "display": "2",
+                "latex": "2",
                 "misconception": "正答"
               },
               {
-                "value": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
+                "value": "1",
+                "feedback": "分子には同じ差が二因子あります。",
                 "kind": "math",
-                "latex": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-                "display": "\\frac{2^2-(\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-                "feedback": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。",
-                "misconception": "分子は差どうしの積です。和と差の積ではないので平方差にはなりません。"
+                "display": "1",
+                "latex": "1",
+                "misconception": "分子には同じ差が二因子あります。"
               },
               {
-                "value": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
+                "value": "4",
+                "feedback": "平方した因子を二つ掛けているのではありません。",
                 "kind": "math",
-                "latex": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
-                "display": "\\frac{(2-\\sqrt3)^2}{2^2+(\\sqrt3)^2}",
-                "feedback": "分母は和と差の積なので、残るのは平方の差です。",
-                "misconception": "分母は和と差の積なので、残るのは平方の差です。"
-              },
-              {
-                "value": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-                "kind": "math",
-                "latex": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-                "display": "\\frac{2-\\sqrt3}{2^2-(\\sqrt3)^2}",
-                "feedback": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。",
-                "misconception": "分子にも同じ因子を掛けています。分子全体のもう一つの因子を落とさないでください。"
+                "display": "4",
+                "latex": "4",
+                "misconception": "平方した因子を二つ掛けているのではありません。"
               }
             ],
-            "learningAction": "有理化の分数全体で二つの既習公式を対応させ、値保持した式を構成。",
             "sourceRefs": [
-              "n10-20-before",
-              "n10-20-interaction-0",
-              "n10-20-equation",
-              "n10-20-after"
+              "n10-20-source-contract"
             ],
             "mathAssertion": {
-              "kind": "exact-evaluation",
-              "expected": "\\frac{(2-\\sqrt3)^2}{2^2-(\\sqrt3)^2}",
-              "reviewStatus": "PENDING_CODE",
+              "kind": "requires-semantic-review",
+              "expected": "2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "差全体に平方が作用する範囲を構成",
               "sourceRefs": [
-                "n10-20-before",
-                "n10-20-interaction-0",
-                "n10-20-equation",
-                "n10-20-after"
-              ],
-              "rationale": "CODEは閉じた有限候補の値照合のみ。根号対象と公式・相殺する項の意味対応は別の非作者審査を要し、数値一致だけで教授契約を証明しない。",
-              "expression": "(2-sqrt(3))**2/(2**2-sqrt(3)**2)"
+                "n10-20-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n10-20::ux06DenominatorSign",
+            "key": "ux06DenominatorSign",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "分母の和と差の積を平方差に直します。",
+            "learningAction": "相殺後に残る平方の関係を符号で構成",
+            "expected": "-",
+            "choices": [
+              {
+                "value": "-",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "-",
+                "latex": "-",
+                "misconception": "正答"
+              },
+              {
+                "value": "+",
+                "feedback": "和と差の積では交差項が相殺し、平方の差が残ります。",
+                "kind": "math",
+                "display": "+",
+                "latex": "+",
+                "misconception": "和と差の積では交差項が相殺し、平方の差が残ります。"
+              },
+              {
+                "value": "\\times",
+                "feedback": "二つの平方の積へはなりません。",
+                "kind": "math",
+                "display": "\\times",
+                "latex": "\\times",
+                "misconception": "二つの平方の積へはなりません。"
+              }
+            ],
+            "sourceRefs": [
+              "n10-20-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "-",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "相殺後に残る平方の関係を符号で構成",
+              "sourceRefs": [
+                "n10-20-source-contract"
+              ]
             }
           }
         ],
         "partOrder": [
-          "rationalisedFractionUX05"
+          "ux06NumeratorPower",
+          "ux06DenominatorSign"
         ]
       },
       {
@@ -15003,39 +16551,100 @@
         ],
         "rows": [
           {
-            "id": "n10-q01-square::row-01",
-            "nodeId": "n10-q01-square",
-            "kind": "math",
-            "interactionRef": "n10-q01-square",
-            "requiresCorrectParts": [],
-            "partIds": [],
-            "visibleAfter": []
-          },
-          {
-            "id": "n10-q01-square::row-02",
+            "id": "n10-q01-square::ux06-proposal-row-01",
             "nodeId": "n10-q01-square",
             "kind": "math",
             "interactionRef": "n10-q01-square",
             "requiresCorrectParts": [],
             "partIds": [
+              "n10-q01-square::ux06ProductBase"
+            ],
+            "visibleAfter": []
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-02-intro",
+            "nodeId": "n10-q01-square",
+            "kind": "prose",
+            "interactionRef": "n10-q01-square",
+            "requiresCorrectParts": [
+              "n10-q01-square::ux06ProductBase"
+            ],
+            "partIds": [],
+            "visibleAfter": []
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-02",
+            "nodeId": "n10-q01-square",
+            "kind": "math",
+            "interactionRef": "n10-q01-square",
+            "requiresCorrectParts": [
+              "n10-q01-square::ux06ProductBase"
+            ],
+            "partIds": [
+              "n10-q01-square::ux06CoefficientExponent"
+            ],
+            "visibleAfter": []
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03-intro",
+            "nodeId": "n10-q01-square",
+            "kind": "prose",
+            "interactionRef": "n10-q01-square",
+            "requiresCorrectParts": [
+              "n10-q01-square::ux06ProductBase",
+              "n10-q01-square::ux06CoefficientExponent"
+            ],
+            "partIds": [],
+            "visibleAfter": []
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03",
+            "nodeId": "n10-q01-square",
+            "kind": "math",
+            "interactionRef": "n10-q01-square",
+            "requiresCorrectParts": [
+              "n10-q01-square::ux06ProductBase",
+              "n10-q01-square::ux06CoefficientExponent"
+            ],
+            "partIds": [
               "n10-q01-square::rootSquare"
             ],
+            "visibleAfter": []
+          },
+          {
+            "id": "n10-q01-square::ux06-after-text",
+            "nodeId": "n10-q01-square",
+            "kind": "prose",
+            "interactionRef": "n10-q01-square",
+            "requiresCorrectParts": [
+              "n10-q01-square::ux06ProductBase",
+              "n10-q01-square::ux06CoefficientExponent",
+              "n10-q01-square::rootSquare"
+            ],
+            "partIds": [],
             "visibleAfter": []
           }
         ],
         "rowIds": [
-          "n10-q01-square::row-01",
-          "n10-q01-square::row-02"
+          "n10-q01-square::ux06-proposal-row-01",
+          "n10-q01-square::ux06-proposal-row-02-intro",
+          "n10-q01-square::ux06-proposal-row-02",
+          "n10-q01-square::ux06-proposal-row-03-intro",
+          "n10-q01-square::ux06-proposal-row-03",
+          "n10-q01-square::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-q01-square::row-01",
-          "n10-q01-square::row-02"
+          "n10-q01-square::ux06-proposal-row-01",
+          "n10-q01-square::ux06-proposal-row-02",
+          "n10-q01-square::ux06-proposal-row-03"
         ],
         "partIds": [
+          "n10-q01-square::ux06ProductBase",
+          "n10-q01-square::ux06CoefficientExponent",
           "n10-q01-square::rootSquare"
         ],
         "number": "1",
-        "numberRowRef": "n10-q01-square::row-02",
+        "numberRowRef": "n10-q01-square::ux06-proposal-row-03",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -15056,11 +16665,11 @@
               },
               {
                 "type": "math",
-                "latex": "125=25\\times 5"
+                "latex": "125=25\\times5"
               },
               {
                 "type": "text",
-                "text": "に着目し"
+                "text": "に着目し、"
               },
               {
                 "type": "math",
@@ -15072,7 +16681,7 @@
               },
               {
                 "type": "math",
-                "latex": "t\\sqrt{5}"
+                "latex": "t\\sqrt5"
               },
               {
                 "type": "text",
@@ -15084,15 +16693,7 @@
               },
               {
                 "type": "text",
-                "text": "になるよう"
-              },
-              {
-                "type": "math",
-                "latex": "t"
-              },
-              {
-                "type": "text",
-                "text": "を決めたいので、まず平方を計算します。まだ根号の積の公式は使いません。"
+                "text": "になるよう、まず平方を積に戻します。根号の積の公式はまだ使いません。"
               }
             ],
             "requiresCorrectParts": [],
@@ -16878,11 +18479,121 @@
         ],
         "rows": [
           {
-            "id": "n10-q11-formula::ux05-middle",
+            "id": "n10-q11-formula::ux06-proposal-row-01",
             "nodeId": "n10-q11-formula",
             "kind": "math",
             "interactionRef": "n10-q11-formula",
             "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02-intro",
+            "nodeId": "n10-q11-formula",
+            "kind": "prose",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02",
+            "nodeId": "n10-q11-formula",
+            "kind": "math",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03-intro",
+            "nodeId": "n10-q11-formula",
+            "kind": "prose",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03",
+            "nodeId": "n10-q11-formula",
+            "kind": "math",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [],
+            "partIds": [
+              "n10-q11-formula::ux06LastProductSign"
+            ],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04-intro",
+            "nodeId": "n10-q11-formula",
+            "kind": "prose",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [
+              "n10-q11-formula::ux06LastProductSign"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04",
+            "nodeId": "n10-q11-formula",
+            "kind": "math",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [
+              "n10-q11-formula::ux06LastProductSign"
+            ],
+            "partIds": [
+              "n10-q11-formula::ux06DifferenceCount"
+            ],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05-intro",
+            "nodeId": "n10-q11-formula",
+            "kind": "prose",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [
+              "n10-q11-formula::ux06LastProductSign",
+              "n10-q11-formula::ux06DifferenceCount"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05",
+            "nodeId": "n10-q11-formula",
+            "kind": "math",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [
+              "n10-q11-formula::ux06LastProductSign",
+              "n10-q11-formula::ux06DifferenceCount"
+            ],
             "partIds": [
               "n10-q11-formula::signedMiddleTermUX05"
             ],
@@ -16890,19 +18601,50 @@
               "n10-04",
               "n10-10"
             ]
+          },
+          {
+            "id": "n10-q11-formula::ux06-after-text",
+            "nodeId": "n10-q11-formula",
+            "kind": "prose",
+            "interactionRef": "n10-q11-formula",
+            "requiresCorrectParts": [
+              "n10-q11-formula::ux06LastProductSign",
+              "n10-q11-formula::ux06DifferenceCount",
+              "n10-q11-formula::signedMiddleTermUX05"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-10"
+            ]
           }
         ],
         "rowIds": [
-          "n10-q11-formula::ux05-middle"
+          "n10-q11-formula::ux06-proposal-row-01",
+          "n10-q11-formula::ux06-proposal-row-02-intro",
+          "n10-q11-formula::ux06-proposal-row-02",
+          "n10-q11-formula::ux06-proposal-row-03-intro",
+          "n10-q11-formula::ux06-proposal-row-03",
+          "n10-q11-formula::ux06-proposal-row-04-intro",
+          "n10-q11-formula::ux06-proposal-row-04",
+          "n10-q11-formula::ux06-proposal-row-05-intro",
+          "n10-q11-formula::ux06-proposal-row-05",
+          "n10-q11-formula::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-q11-formula::ux05-middle"
+          "n10-q11-formula::ux06-proposal-row-01",
+          "n10-q11-formula::ux06-proposal-row-02",
+          "n10-q11-formula::ux06-proposal-row-03",
+          "n10-q11-formula::ux06-proposal-row-04",
+          "n10-q11-formula::ux06-proposal-row-05"
         ],
         "partIds": [
+          "n10-q11-formula::ux06LastProductSign",
+          "n10-q11-formula::ux06DifferenceCount",
           "n10-q11-formula::signedMiddleTermUX05"
         ],
         "number": "23",
-        "numberRowRef": "n10-q11-formula::ux05-middle",
+        "numberRowRef": "n10-q11-formula::ux06-proposal-row-05",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -16915,7 +18657,47 @@
             "content": [
               {
                 "type": "text",
-                "text": "既習の差の平方を、二つの根号を含む式に適用します。中項を自分で作りましょう。"
+                "text": "次は"
+              },
+              {
+                "type": "math",
+                "latex": "(\\sqrt2-\\sqrt3)^2"
+              },
+              {
+                "type": "text",
+                "text": "です。二つの数をいったん"
+              },
+              {
+                "type": "math",
+                "latex": "A"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B"
+              },
+              {
+                "type": "text",
+                "text": "と表して、差の平方の仕組みを調べます。同じ二つの因子へ戻し、分配して中項の符号と係数を確かめたら、"
+              },
+              {
+                "type": "math",
+                "latex": "A=\\sqrt2"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B=\\sqrt3"
+              },
+              {
+                "type": "text",
+                "text": "として元の計算へ戻ります。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17176,11 +18958,27 @@
         ],
         "rows": [
           {
-            "id": "n10-q13-identity::ux05-problem",
+            "id": "n10-q13-identity::ux06-proposal-row-01",
             "nodeId": "n10-q13-identity",
             "kind": "math",
             "interactionRef": "n10-q13-identity",
             "requiresCorrectParts": [],
+            "partIds": [
+              "n10-q13-identity::ux06CrossSign"
+            ],
+            "visibleAfter": [
+              "n10-04",
+              "n10-12"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-02-intro",
+            "nodeId": "n10-q13-identity",
+            "kind": "prose",
+            "interactionRef": "n10-q13-identity",
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n10-04",
@@ -17188,13 +18986,74 @@
             ]
           },
           {
-            "id": "n10-q13-identity::ux05-pair",
+            "id": "n10-q13-identity::ux06-proposal-row-02",
+            "nodeId": "n10-q13-identity",
+            "kind": "math",
+            "interactionRef": "n10-q13-identity",
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign"
+            ],
+            "partIds": [
+              "n10-q13-identity::ux06CrossSum"
+            ],
+            "visibleAfter": [
+              "n10-04",
+              "n10-12"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03-intro",
             "nodeId": "n10-q13-identity",
             "kind": "prose",
             "interactionRef": "n10-q13-identity",
-            "requiresCorrectParts": [],
-            "hideAfterCorrectParts": [
-              "n10-q13-identity::cancellingPairUX05"
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-12"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03",
+            "nodeId": "n10-q13-identity",
+            "kind": "math",
+            "interactionRef": "n10-q13-identity",
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-12"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04-intro",
+            "nodeId": "n10-q13-identity",
+            "kind": "prose",
+            "interactionRef": "n10-q13-identity",
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-04",
+              "n10-12"
+            ]
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04",
+            "nodeId": "n10-q13-identity",
+            "kind": "prose",
+            "interactionRef": "n10-q13-identity",
+            "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum"
             ],
             "partIds": [
               "n10-q13-identity::cancellingPairUX05"
@@ -17205,11 +19064,13 @@
             ]
           },
           {
-            "id": "n10-q13-identity::ux05-expand",
+            "id": "n10-q13-identity::ux06-proposal-row-05",
             "nodeId": "n10-q13-identity",
             "kind": "math",
             "interactionRef": "n10-q13-identity",
             "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum",
               "n10-q13-identity::cancellingPairUX05"
             ],
             "partIds": [],
@@ -17219,11 +19080,13 @@
             ]
           },
           {
-            "id": "n10-q13-identity::ux05-cancel",
+            "id": "n10-q13-identity::ux06-after-text",
             "nodeId": "n10-q13-identity",
-            "kind": "math",
+            "kind": "prose",
             "interactionRef": "n10-q13-identity",
             "requiresCorrectParts": [
+              "n10-q13-identity::ux06CrossSign",
+              "n10-q13-identity::ux06CrossSum",
               "n10-q13-identity::cancellingPairUX05"
             ],
             "partIds": [],
@@ -17234,21 +19097,29 @@
           }
         ],
         "rowIds": [
-          "n10-q13-identity::ux05-problem",
-          "n10-q13-identity::ux05-pair",
-          "n10-q13-identity::ux05-expand",
-          "n10-q13-identity::ux05-cancel"
+          "n10-q13-identity::ux06-proposal-row-01",
+          "n10-q13-identity::ux06-proposal-row-02-intro",
+          "n10-q13-identity::ux06-proposal-row-02",
+          "n10-q13-identity::ux06-proposal-row-03-intro",
+          "n10-q13-identity::ux06-proposal-row-03",
+          "n10-q13-identity::ux06-proposal-row-04-intro",
+          "n10-q13-identity::ux06-proposal-row-04",
+          "n10-q13-identity::ux06-proposal-row-05",
+          "n10-q13-identity::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-q13-identity::ux05-problem",
-          "n10-q13-identity::ux05-expand",
-          "n10-q13-identity::ux05-cancel"
+          "n10-q13-identity::ux06-proposal-row-01",
+          "n10-q13-identity::ux06-proposal-row-02",
+          "n10-q13-identity::ux06-proposal-row-03",
+          "n10-q13-identity::ux06-proposal-row-05"
         ],
         "partIds": [
+          "n10-q13-identity::ux06CrossSign",
+          "n10-q13-identity::ux06CrossSum",
           "n10-q13-identity::cancellingPairUX05"
         ],
         "number": "27",
-        "numberRowRef": "n10-q13-identity::ux05-cancel",
+        "numberRowRef": "n10-q13-identity::ux06-proposal-row-05",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -17261,7 +19132,47 @@
             "content": [
               {
                 "type": "text",
-                "text": "和と差の積で、消える交差項を確かめます。残る平方の項を次に計算します。"
+                "text": "今度は"
+              },
+              {
+                "type": "math",
+                "latex": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)"
+              },
+              {
+                "type": "text",
+                "text": "です。二つの数を"
+              },
+              {
+                "type": "math",
+                "latex": "A"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B"
+              },
+              {
+                "type": "text",
+                "text": "と表し、和と差の積を分配して、どの項が残るかを調べます。仕組みを確かめてから、"
+              },
+              {
+                "type": "math",
+                "latex": "A=\\sqrt7"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B=\\sqrt2"
+              },
+              {
+                "type": "text",
+                "text": "として元の積へ戻りましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17532,43 +19443,77 @@
         ],
         "rows": [
           {
-            "id": "n10-15::row-01",
+            "id": "n10-15::ux06-proposal-row-01",
             "nodeId": "n10-15",
             "kind": "math",
             "interactionRef": "n10-15",
             "requiresCorrectParts": [],
+            "partIds": [
+              "n10-15::ux06CompensatingFactor"
+            ],
+            "visibleAfter": [
+              "n10-q15-factor"
+            ]
+          },
+          {
+            "id": "n10-15::ux06-proposal-row-02-intro",
+            "nodeId": "n10-15",
+            "kind": "prose",
+            "interactionRef": "n10-15",
+            "requiresCorrectParts": [
+              "n10-15::ux06CompensatingFactor"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n10-q15-factor"
             ]
           },
           {
-            "id": "n10-15::row-02",
+            "id": "n10-15::ux06-proposal-row-02",
             "nodeId": "n10-15",
             "kind": "math",
             "interactionRef": "n10-15",
-            "requiresCorrectParts": [],
-            "partIds": [
-              "n10-15::numerator"
+            "requiresCorrectParts": [
+              "n10-15::ux06CompensatingFactor"
             ],
+            "partIds": [
+              "n10-15::ux06DenominatorPower"
+            ],
+            "visibleAfter": [
+              "n10-q15-factor"
+            ]
+          },
+          {
+            "id": "n10-15::ux06-after-text",
+            "nodeId": "n10-15",
+            "kind": "prose",
+            "interactionRef": "n10-15",
+            "requiresCorrectParts": [
+              "n10-15::ux06CompensatingFactor",
+              "n10-15::ux06DenominatorPower"
+            ],
+            "partIds": [],
             "visibleAfter": [
               "n10-q15-factor"
             ]
           }
         ],
         "rowIds": [
-          "n10-15::row-01",
-          "n10-15::row-02"
+          "n10-15::ux06-proposal-row-01",
+          "n10-15::ux06-proposal-row-02-intro",
+          "n10-15::ux06-proposal-row-02",
+          "n10-15::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-15::row-01",
-          "n10-15::row-02"
+          "n10-15::ux06-proposal-row-01",
+          "n10-15::ux06-proposal-row-02"
         ],
         "partIds": [
-          "n10-15::numerator"
+          "n10-15::ux06CompensatingFactor",
+          "n10-15::ux06DenominatorPower"
         ],
         "number": "30",
-        "numberRowRef": "n10-15::row-02",
+        "numberRowRef": "n10-15::ux06-proposal-row-02",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -17580,20 +19525,16 @@
             "nodeId": "n10-15",
             "content": [
               {
-                "type": "math",
-                "latex": "\\sqrt{3}/\\sqrt{3}"
-              },
-              {
                 "type": "text",
-                "text": "を元の分数へ掛けます。分母全体"
+                "text": "分母の根号へ掛ける因子は"
               },
               {
                 "type": "math",
-                "latex": "2\\sqrt{3}"
+                "latex": "\\sqrt3"
               },
               {
                 "type": "text",
-                "text": "を保持し、分子にも因子を掛けた計算を行います。"
+                "text": "と決まりました。元の値を保つため、分子側にもどの因子を掛けるかを式の中に入れます。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17942,11 +19883,62 @@
         ],
         "rows": [
           {
-            "id": "n10-17::ux05-fraction",
+            "id": "n10-17::ux06-proposal-row-01",
             "nodeId": "n10-17",
             "kind": "math",
-            "interactionRef": null,
+            "interactionRef": "n10-17",
             "requiresCorrectParts": [],
+            "partIds": [
+              "n10-17::ux06NumeratorProduct",
+              "n10-17::ux06DenominatorScope"
+            ],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q17-nonzero"
+            ]
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02-intro",
+            "nodeId": "n10-17",
+            "kind": "prose",
+            "interactionRef": "n10-17",
+            "requiresCorrectParts": [
+              "n10-17::ux06NumeratorProduct",
+              "n10-17::ux06DenominatorScope"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q17-nonzero"
+            ]
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02",
+            "nodeId": "n10-17",
+            "kind": "math",
+            "interactionRef": "n10-17",
+            "requiresCorrectParts": [
+              "n10-17::ux06NumeratorProduct",
+              "n10-17::ux06DenominatorScope"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q17-nonzero"
+            ]
+          },
+          {
+            "id": "n10-17::ux06-after-text",
+            "nodeId": "n10-17",
+            "kind": "prose",
+            "interactionRef": "n10-17",
+            "requiresCorrectParts": [
+              "n10-17::ux06NumeratorProduct",
+              "n10-17::ux06DenominatorScope"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n10-13",
@@ -17956,14 +19948,21 @@
           }
         ],
         "rowIds": [
-          "n10-17::ux05-fraction"
+          "n10-17::ux06-proposal-row-01",
+          "n10-17::ux06-proposal-row-02-intro",
+          "n10-17::ux06-proposal-row-02",
+          "n10-17::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-17::ux05-fraction"
+          "n10-17::ux06-proposal-row-01",
+          "n10-17::ux06-proposal-row-02"
         ],
-        "partIds": [],
+        "partIds": [
+          "n10-17::ux06NumeratorProduct",
+          "n10-17::ux06DenominatorScope"
+        ],
         "number": "35",
-        "numberRowRef": "n10-17::ux05-fraction",
+        "numberRowRef": "n10-17::ux06-proposal-row-02",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -17976,7 +19975,31 @@
             "content": [
               {
                 "type": "text",
-                "text": "非零と確認した同じ因子を、分子と分母の両方へ掛けます。"
+                "text": "選んだ"
+              },
+              {
+                "type": "math",
+                "latex": "c=\\sqrt3-\\sqrt2"
+              },
+              {
+                "type": "text",
+                "text": "は"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "でないと確かめました。"
+              },
+              {
+                "type": "math",
+                "latex": "c/c=1"
+              },
+              {
+                "type": "text",
+                "text": "を掛ける操作を、元の分子と分母へそれぞれ反映しましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -18392,26 +20415,13 @@
         ],
         "rows": [
           {
-            "id": "n10-20::ux05-start",
-            "nodeId": "n10-20",
-            "kind": "math",
-            "interactionRef": "n10-20",
-            "requiresCorrectParts": [],
-            "partIds": [],
-            "visibleAfter": [
-              "n10-13",
-              "n10-14",
-              "n10-q20-factor"
-            ]
-          },
-          {
-            "id": "n10-20::ux05-form",
+            "id": "n10-20::ux06-proposal-row-01",
             "nodeId": "n10-20",
             "kind": "math",
             "interactionRef": "n10-20",
             "requiresCorrectParts": [],
             "partIds": [
-              "n10-20::rationalisedFractionUX05"
+              "n10-20::ux06NumeratorPower"
             ],
             "visibleAfter": [
               "n10-13",
@@ -18420,12 +20430,77 @@
             ]
           },
           {
-            "id": "n10-20::ux05-known-squares",
+            "id": "n10-20::ux06-proposal-row-02-intro",
+            "nodeId": "n10-20",
+            "kind": "prose",
+            "interactionRef": "n10-20",
+            "requiresCorrectParts": [
+              "n10-20::ux06NumeratorPower"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q20-factor"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-02",
             "nodeId": "n10-20",
             "kind": "math",
             "interactionRef": "n10-20",
             "requiresCorrectParts": [
-              "n10-20::rationalisedFractionUX05"
+              "n10-20::ux06NumeratorPower"
+            ],
+            "partIds": [
+              "n10-20::ux06DenominatorSign"
+            ],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q20-factor"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-03-intro",
+            "nodeId": "n10-20",
+            "kind": "prose",
+            "interactionRef": "n10-20",
+            "requiresCorrectParts": [
+              "n10-20::ux06NumeratorPower",
+              "n10-20::ux06DenominatorSign"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q20-factor"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-03",
+            "nodeId": "n10-20",
+            "kind": "math",
+            "interactionRef": "n10-20",
+            "requiresCorrectParts": [
+              "n10-20::ux06NumeratorPower",
+              "n10-20::ux06DenominatorSign"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n10-13",
+              "n10-14",
+              "n10-q20-factor"
+            ]
+          },
+          {
+            "id": "n10-20::ux06-after-text",
+            "nodeId": "n10-20",
+            "kind": "prose",
+            "interactionRef": "n10-20",
+            "requiresCorrectParts": [
+              "n10-20::ux06NumeratorPower",
+              "n10-20::ux06DenominatorSign"
             ],
             "partIds": [],
             "visibleAfter": [
@@ -18436,20 +20511,24 @@
           }
         ],
         "rowIds": [
-          "n10-20::ux05-start",
-          "n10-20::ux05-form",
-          "n10-20::ux05-known-squares"
+          "n10-20::ux06-proposal-row-01",
+          "n10-20::ux06-proposal-row-02-intro",
+          "n10-20::ux06-proposal-row-02",
+          "n10-20::ux06-proposal-row-03-intro",
+          "n10-20::ux06-proposal-row-03",
+          "n10-20::ux06-after-text"
         ],
         "mathRowIds": [
-          "n10-20::ux05-start",
-          "n10-20::ux05-form",
-          "n10-20::ux05-known-squares"
+          "n10-20::ux06-proposal-row-01",
+          "n10-20::ux06-proposal-row-02",
+          "n10-20::ux06-proposal-row-03"
         ],
         "partIds": [
-          "n10-20::rationalisedFractionUX05"
+          "n10-20::ux06NumeratorPower",
+          "n10-20::ux06DenominatorSign"
         ],
         "number": "40",
-        "numberRowRef": "n10-20::ux05-known-squares",
+        "numberRowRef": "n10-20::ux06-proposal-row-03",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -18462,7 +20541,23 @@
             "content": [
               {
                 "type": "text",
-                "text": "非零と確認した同じ因子を上下へ掛けます。分子と分母に適用する公式の違いに注意しましょう。"
+                "text": "元の分母と、選んだ因子"
+              },
+              {
+                "type": "math",
+                "latex": "2-\\sqrt3"
+              },
+              {
+                "type": "text",
+                "text": "が"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "でないことは確かめました。同じ因子を上下へ掛けると、分子と分母では異なる積ができます。"
               }
             ],
             "requiresCorrectParts": [],
@@ -18781,6 +20876,8 @@
       }
     ],
     "partIds": [
+      "n10-q01-square::ux06ProductBase",
+      "n10-q01-square::ux06CoefficientExponent",
       "n10-q01-square::rootSquare",
       "n10-01::value",
       "n10-q02-sign::value",
@@ -18811,22 +20908,29 @@
       "n10-q09-right::coefficient",
       "n10-q10-coefficients::collectedExpressionUX05",
       "n10-q10-coefficients::coefficient",
+      "n10-q11-formula::ux06LastProductSign",
+      "n10-q11-formula::ux06DifferenceCount",
       "n10-q11-formula::signedMiddleTermUX05",
       "n10-11::leftSquare",
       "n10-11::rightSquare",
       "n10-q12-product::inside",
       "n10-12::constant",
+      "n10-q13-identity::ux06CrossSign",
+      "n10-q13-identity::ux06CrossSum",
       "n10-q13-identity::cancellingPairUX05",
       "n10-13::left",
       "n10-13::right",
       "n10-13::difference",
       "n10-14::operation",
       "n10-q15-factor::factor",
-      "n10-15::numerator",
+      "n10-15::ux06CompensatingFactor",
+      "n10-15::ux06DenominatorPower",
       "n10-q16-denominator::square",
       "n10-q16-denominator::denominator",
       "n10-q17-factor::factor",
       "n10-q17-nonzero::relation",
+      "n10-17::ux06NumeratorProduct",
+      "n10-17::ux06DenominatorScope",
       "n10-18::A",
       "n10-18::B",
       "n10-18::C",
@@ -18837,7 +20941,8 @@
       "n10-q20-factor::positiveComparisonRootSquareUX05",
       "n10-q20-factor::factorSign",
       "n10-q20-factor::reason",
-      "n10-20::rationalisedFractionUX05",
+      "n10-20::ux06NumeratorPower",
+      "n10-20::ux06DenominatorSign",
       "n10-q21-denominator::D",
       "n10-q21-expand::signedMiddleTermUX05",
       "n10-q21-constants::C"
@@ -18854,14 +20959,34 @@
         "nodeId": "n10-q01-square",
         "rows": [
           {
-            "id": "n10-q01-square::row-01",
-            "template": "(t\\sqrt5)^2=(t\\sqrt5)(t\\sqrt5)=t^2(\\sqrt5)^2",
+            "id": "n10-q01-square::ux06-proposal-row-01",
+            "template": "(t\\sqrt5)^2=(t\\sqrt5)({ux06ProductBase})",
             "kind": "math"
           },
           {
-            "id": "n10-q01-square::row-02",
+            "id": "n10-q01-square::ux06-proposal-row-02-intro",
+            "template": "積の順を入れ替え、係数同士と根号同士をまとめます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-02",
+            "template": "=t^{ux06CoefficientExponent}(\\sqrt5)^2",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03-intro",
+            "template": "根号の定義を使って、平方を計算します。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q01-square::ux06-proposal-row-03",
             "template": "={rootSquare}t^2",
             "kind": "math"
+          },
+          {
+            "id": "n10-q01-square::ux06-after-text",
+            "template": "候補の平方が式で表せました。次に、これを元の被開平数と等しくする係数を求めます。",
+            "kind": "text"
           }
         ]
       },
@@ -19194,9 +21319,54 @@
         "nodeId": "n10-q11-formula",
         "rows": [
           {
-            "id": "n10-q11-formula::ux05-middle",
-            "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2{signedMiddleTermUX05}+(\\sqrt3)^2",
+            "id": "n10-q11-formula::ux06-proposal-row-01",
+            "template": "(A-B)^2=(A-B)(A-B)",
             "kind": "math"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02-intro",
+            "template": "分配法則で、第一項への積と、符号を含む第二項への積に分けます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-02",
+            "template": "=A(A-B)-B(A-B)",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03-intro",
+            "template": "各括弧をさらに分配します。最後は負の項同士の積です。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-03",
+            "template": "=A^2-AB-AB\\ {ux06LastProductSign}\\ B^2",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04-intro",
+            "template": "同じ負の交差項どうしをまとめます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-04",
+            "template": "=A^2-{ux06DifferenceCount}AB+B^2",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05-intro",
+            "template": "導いた式へ、元の問題の二つの根号を対応させます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q11-formula::ux06-proposal-row-05",
+            "template": "(\\sqrt2-\\sqrt3)^2=(\\sqrt2)^2\\ {signedMiddleTermUX05}+(\\sqrt3)^2",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q11-formula::ux06-after-text",
+            "template": "中項の符号と係数を保ったまま、次に左右の平方、最後に根号の積を計算します。",
+            "kind": "text"
           }
         ]
       },
@@ -19244,24 +21414,49 @@
         "nodeId": "n10-q13-identity",
         "rows": [
           {
-            "id": "n10-q13-identity::ux05-problem",
-            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)",
+            "id": "n10-q13-identity::ux06-proposal-row-01",
+            "template": "(A+B)(A-B)=A^2\\ {ux06CrossSign}\\ AB+BA-B^2",
             "kind": "math"
           },
           {
-            "id": "n10-q13-identity::ux05-pair",
+            "id": "n10-q13-identity::ux06-proposal-row-02-intro",
+            "template": "積の順を入れ替えて同じ大きさと確かめ、交差項の和をまとめます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-02",
+            "template": "-AB+BA={ux06CrossSum}",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03-intro",
+            "template": "交差項が消え、二つの平方の差が残りました。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-03",
+            "template": "(A+B)(A-B)=A^2-B^2",
+            "kind": "math"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04-intro",
+            "template": "同じ構造を、元の二つの根号の場合で確かめます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-q13-identity::ux06-proposal-row-04",
             "template": "相殺する交差項の組：{cancellingPairUX05}",
             "kind": "text"
           },
           {
-            "id": "n10-q13-identity::ux05-expand",
-            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-\\sqrt7\\sqrt2+\\sqrt2\\sqrt7-(\\sqrt2)^2",
+            "id": "n10-q13-identity::ux06-proposal-row-05",
+            "template": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=(\\sqrt7)^2-(\\sqrt2)^2",
             "kind": "math"
           },
           {
-            "id": "n10-q13-identity::ux05-cancel",
-            "template": "=(\\sqrt7)^2-(\\sqrt2)^2",
-            "kind": "math"
+            "id": "n10-q13-identity::ux06-after-text",
+            "template": "残った左右の平方を計算し、その差を求めます。",
+            "kind": "text"
           }
         ]
       },
@@ -19314,14 +21509,24 @@
         "nodeId": "n10-15",
         "rows": [
           {
-            "id": "n10-15::row-01",
-            "template": "\\frac1{2\\sqrt3}\\frac{\\sqrt3}{\\sqrt3}=\\frac{1\\times\\sqrt3}{2\\sqrt3\\sqrt3}",
+            "id": "n10-15::ux06-proposal-row-01",
+            "template": "\\frac1{2\\sqrt3}=\\frac{1\\times{ux06CompensatingFactor}}{(2\\sqrt3)\\times\\sqrt3}",
             "kind": "math"
           },
           {
-            "id": "n10-15::row-02",
-            "template": "=\\frac{ {numerator} }{2(\\sqrt3)^2}",
+            "id": "n10-15::ux06-proposal-row-02-intro",
+            "template": "分子の積は、掛けた因子そのものです。分母は同じ根号の二つの因子をまとめます。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-15::ux06-proposal-row-02",
+            "template": "=\\frac{\\sqrt3}{2(\\sqrt3)^{ux06DenominatorPower}}",
             "kind": "math"
+          },
+          {
+            "id": "n10-15::ux06-after-text",
+            "template": "分母が根号の平方を含む形になりました。次に、その平方に残った係数を掛けます。",
+            "kind": "text"
           }
         ]
       },
@@ -19384,9 +21589,24 @@
         "nodeId": "n10-17",
         "rows": [
           {
-            "id": "n10-17::ux05-fraction",
-            "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+            "id": "n10-17::ux06-proposal-row-01",
+            "template": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\frac cc=\\frac{ {ux06NumeratorProduct} }{({ux06DenominatorScope})c}",
             "kind": "math"
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02-intro",
+            "template": "因子の文字に、選んだ差を戻します。分母は和と差の積になりました。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-17::ux06-proposal-row-02",
+            "template": "=\\frac{\\sqrt3(\\sqrt3-\\sqrt2)}{(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)}",
+            "kind": "math"
+          },
+          {
+            "id": "n10-17::ux06-after-text",
+            "template": "先に分母を平方の差で計算し、それから分子を分配して求めます。",
+            "kind": "text"
           }
         ]
       },
@@ -19479,19 +21699,34 @@
         "nodeId": "n10-20",
         "rows": [
           {
-            "id": "n10-20::ux05-start",
-            "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}",
+            "id": "n10-20::ux06-proposal-row-01",
+            "template": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\frac{2-\\sqrt3}{2-\\sqrt3}=\\frac{(2-\\sqrt3)^{ux06NumeratorPower}}{(2+\\sqrt3)(2-\\sqrt3)}",
             "kind": "math"
           },
           {
-            "id": "n10-20::ux05-form",
-            "template": "={rationalisedFractionUX05}",
+            "id": "n10-20::ux06-proposal-row-02-intro",
+            "template": "分子の平方は保ち、今度は分母の和と差の積を直します。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-02",
+            "template": "=\\frac{(2-\\sqrt3)^2}{2^2\\ {ux06DenominatorSign}\\ (\\sqrt3)^2}",
             "kind": "math"
           },
           {
-            "id": "n10-20::ux05-known-squares",
+            "id": "n10-20::ux06-proposal-row-03-intro",
+            "template": "比較で確かめた二つの平方の値を使います。",
+            "kind": "text"
+          },
+          {
+            "id": "n10-20::ux06-proposal-row-03",
             "template": "=\\frac{(2-\\sqrt3)^2}{4-3}",
             "kind": "math"
+          },
+          {
+            "id": "n10-20::ux06-after-text",
+            "template": "分母の差を求めた後、分子の差の平方を展開して計算します。両方を確定してから最終形を記録します。",
+            "kind": "text"
           }
         ]
       },
@@ -19551,11 +21786,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
-    "designSha256": "475035b4d8f04a7d9fda8a72d386879adb2cd55132620ac409014ca6b1672dc8"
+    "designSha256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4"
   },
-  "learnerCopyHash": "1bffb0a7a8cfbb40a2c9e2a2665c010e5f7a7425d4fb4fe14df117b6163bd5e7",
-  "constructionDesignHash": "75d105114a1b5d9f9ea59dde000df615561ee66d1b71379ed2cee33266c3063a",
-  "layoutDesignHash": "0b8a388a977f319a814d5882179e670024e9a50d833c010950ca4392abdda1ba",
+  "learnerCopyHash": "986b6cbfd41bc9d47e96114e208b4c8bd0e2614a21910892cab14cbb4ec1d6d3",
+  "constructionDesignHash": "221cd26781e43922e27086403773250be3d38f69b030fcdd01b67ff46990c818",
+  "layoutDesignHash": "ffdae2e09359c7cf1995bc7e6c493d4eb6517aab4838c0d1b51e6c2851265a30",
   "automaticAcceptance": false,
-  "compiledHash": "6f86b3d250ca9bae45698aab208126031a7b9ea0a453a9772c7d2c848cac9b1c"
+  "compiledHash": "6ecda0e4bb4458f4d8876a8fe0cf4b8deb10aafda96ce76e0926f4dd18403879"
 }

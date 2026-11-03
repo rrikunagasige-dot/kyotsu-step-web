@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import compiled from '../data/textbook/math/numbers/n10ConstructionCompiled.json'
+import compiled from '../data/textbook/math/numbers/n10ConstructionCompiledR5.json'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from './compiledNestedLesson'
 import { answerNestedPart, emptyNestedLedger, projectNestedLesson, type NestedLedger } from './nestedLesson'
 

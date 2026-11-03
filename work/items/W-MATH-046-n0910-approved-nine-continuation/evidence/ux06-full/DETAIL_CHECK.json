@@ -1,0 +1,26 @@
+{
+  "status": "ROOT_CODE_AND_IMAGE_CHECKED_NONAUTHOR_PENDING",
+  "page": "e95fae75-162d-4d66-bcb5-5d61dd7bddcc",
+  "conditionalAuthorization": true,
+  "publicReleaseAuthorization": false,
+  "candidateCompiledHash": "3de5a6b3ad5d7f03c4381ca92faef4d57306f03c35b0b1de5e03b42d1535e306",
+  "browserReport": "/tmp/w046-ux06/detail-fixed/RESULT.json",
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "statesPerWidth": 7,
+  "actualFonts": [
+    "KaTeX_Main",
+    "KaTeX_Math italic",
+    "Noto Sans CJK JP"
+  ],
+  "absoluteRelationTolerancePx": 1,
+  "changes": [
+    "candidate-square context to 140+1/140+2 to A/B to concrete reuse",
+    "main 5-row derivation shares equal column; independent support calculations use separate groups"
+  ],
+  "formalStoreReceipt": false
+}

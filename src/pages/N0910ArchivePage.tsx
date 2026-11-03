@@ -1,3 +1,5 @@
+import previousN09R9 from '../data/textbook/math/numbers/n09ConstructionCompiledR9.json'
+import previousN10R5 from '../data/textbook/math/numbers/n10ConstructionCompiledR5.json'
 import previousN09R8 from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'
 import previousN09R7 from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
 import previousN10R4 from '../data/textbook/math/numbers/n10ConstructionCompiledR4.json'
@@ -56,7 +58,7 @@ function IsolatedArchive({ code }: { code: 'n09' | 'n10' }) {
 export default N0910ArchivePage
 
 function NativeArchive({ code, revision }: { code: 'n09' | 'n10'; revision?: number }) {
-  const compiled = (code === 'n09' ? revision === 8 ? previousN09R8 : revision === 7 ? previousN09R7 : revision === 6 ? previousN09R6 : revision === 5 ? previousN09R5 : previousN09 : revision === 4 ? previousN10R4 : previousN10) as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
+  const compiled = (code === 'n09' ? revision === 9 ? previousN09R9 : revision === 8 ? previousN09R8 : revision === 7 ? previousN09R7 : revision === 6 ? previousN09R6 : revision === 5 ? previousN09R5 : previousN09 : revision === 5 ? previousN10R5 : revision === 4 ? previousN10R4 : previousN10) as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
   const main = useAppStore(state => state.textbookProgress[compiled.unitId])
   const [ledger, setLedger] = useState(() => {
     const key = nestedStorageKey(lesson), oldKey = legacyNestedStorageKey(lesson)

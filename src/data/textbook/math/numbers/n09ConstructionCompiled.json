@@ -2,12 +2,12 @@
   "schemaVersion": "transformation-reading/3",
   "nestedPipeline": "n0910/1",
   "unitId": "math-numbers-expressions-n09",
-  "fromRevision": 8,
-  "toRevision": 9,
+  "fromRevision": 9,
+  "toRevision": 10,
   "title": "平方根の符号と数直線",
   "irHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
   "sourceIRHash": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-  "planHash": "1de716a0c2609b42eb1b4f2561f965fe17e28f17bbd0d45216bb9814b50d3bdb",
+  "planHash": "1ca34a21139176f824022fc6fdf48daa22eccdfd9225ef347a2377fe68f68ae6",
   "stages": [
     {
       "id": "n09-stage-01",
@@ -331,7 +331,7 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "負の候補も確かめます。括弧と指数に注意しましょう。"
+          "text": "正の候補に続いて、負の候補も調べます。平方する対象が括弧のどこまでかに注意しましょう。"
         }
       ],
       "assumptions": [
@@ -365,83 +365,94 @@
       ],
       "rows": [
         {
-          "kind": "text",
-          "template": "2乗の操作は、{powerAction}。",
+          "id": "n09-q01-negative::ux06-proposal-row-01",
+          "kind": "math",
+          "template": "(-4)^2=(-4)\\times({ux06RepeatedBase})",
           "partKeys": [
-            "powerAction"
+            "ux06RepeatedBase"
           ],
           "requiresCorrectKeys": [],
-          "id": "n09-q01-negative::ux05-row-01",
-          "certifiedFrom": [
-            "n09-q01-positive-result"
+          "mathGroupId": "n09-q01-negative-ux06-derivation"
+        },
+        {
+          "id": "n09-q01-negative::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "二つの因子を掛け、平方の値を確かめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06RepeatedBase"
           ]
         },
         {
+          "id": "n09-q01-negative::ux06-proposal-row-02",
           "kind": "math",
-          "template": "(-4)^2=(-4)\\times(-4)={value}",
+          "template": "={value}",
           "partKeys": [
             "value"
           ],
           "requiresCorrectKeys": [
-            "powerAction"
+            "ux06RepeatedBase"
           ],
-          "id": "n09-q01-negative::ux05-row-02",
-          "mathGroupId": "n09-q01-negative-ux05-math-02",
-          "certifiedFrom": [
-            "n09-q01-positive-result"
+          "mathGroupId": "n09-q01-negative-ux06-derivation"
+        },
+        {
+          "id": "n09-q01-negative::ux06-after-text",
+          "kind": "text",
+          "template": "正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06RepeatedBase",
+            "value"
           ]
         }
       ],
       "parts": [
         {
-          "id": "n09-q01-negative::powerAction",
-          "key": "powerAction",
-          "role": "power-scope-action",
-          "kind": "text",
-          "expected": "repeat-whole-base",
-          "prompt": "(-4)²で、指数2が指定している操作を選びます。",
-          "learningAction": "累乗の作用範囲と反復乗算を選ぶ",
-          "sourceRefs": [
-            "n09-q01-negative-before",
-            "n09-q01-negative-interaction-0",
-            "n09-q01-negative-equation",
-            "n09-q01-negative-after"
-          ],
+          "id": "n09-q01-negative::ux06RepeatedBase",
+          "key": "ux06RepeatedBase",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "同じ基底をもう一度掛ける形にします。",
+          "learningAction": "指数の作用対象を積の因子として構成",
+          "expected": "-4",
           "choices": [
             {
-              "value": "repeat-whole-base",
-              "kind": "text",
-              "display": "負号を含む−4全体を、同じ二因子の積にする",
-              "feedback": "2乗の基底は括弧内全体です。",
+              "value": "-4",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "-4",
+              "latex": "-4",
               "misconception": "正答"
             },
             {
-              "value": "leave-minus-outside",
-              "kind": "text",
-              "display": "負号を外に残し、4だけを2乗する",
-              "feedback": "括弧の中に負号があります。−(4²)と(−4)²を区別してください。",
-              "misconception": "括弧の中に負号があります。−(4²)と(−4)²を区別してください。"
+              "value": "4",
+              "feedback": "括弧の中の負号も基底に含まれます。",
+              "kind": "math",
+              "display": "4",
+              "latex": "4",
+              "misconception": "括弧の中の負号も基底に含まれます。"
             },
             {
-              "value": "multiply-by-two",
-              "kind": "text",
-              "display": "−4全体へ2を掛ける",
-              "feedback": "指数2は2倍ではありません。同じ基底を何因子掛けるかを表します。",
-              "misconception": "指数2は2倍ではありません。同じ基底を何因子掛けるかを表します。"
+              "value": "-8",
+              "feedback": "2乗は2倍ではありません。",
+              "kind": "math",
+              "display": "-8",
+              "latex": "-8",
+              "misconception": "2乗は2倍ではありません。"
             }
+          ],
+          "sourceRefs": [
+            "n09-q01-negative-source-contract"
           ],
           "mathAssertion": {
             "kind": "requires-semantic-review",
-            "expected": "repeat-whole-base",
-            "sourceRefs": [
-              "n09-q01-negative-before",
-              "n09-q01-negative-interaction-0",
-              "n09-q01-negative-equation",
-              "n09-q01-negative-after"
-            ],
+            "expected": "-4",
             "codeSupported": false,
             "reviewStatus": "NEEDS_AI_REVIEW",
-            "rationale": "直前の4²という手本と既習の累乗の定義。負号を含む括弧が対象。"
+            "rationale": "指数の作用対象を積の因子として構成",
+            "sourceRefs": [
+              "n09-q01-negative-source-contract"
+            ]
           }
         },
         {
@@ -499,20 +510,20 @@
         }
       ],
       "partOrder": [
-        "powerAction",
+        "ux06RepeatedBase",
         "value"
       ],
       "terminalRecord": {
         "id": "n09-q01-negative::terminal",
         "formulas": [
-          "(-4)^2=16"
+          "(-4)^2=(-4)(-4)=16"
         ],
         "conditions": [
           "x∈ℝ、x²=16を満たすすべての実数を求める。"
         ],
-        "prose": "「負の候補も確かめる」として (-4)^2=16 を確定しました。次の「すべての解を答える」では、この認定結果と条件を使います。",
+        "prose": "正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
         "requiresCorrectKeys": [
-          "powerAction",
+          "ux06RepeatedBase",
           "value"
         ],
         "certifiedFrom": [
@@ -1482,7 +1493,7 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "平方根の前に負号があるときも、括弧全体の平方を計算します。"
+          "text": "先ほどの負の数と同じように、今度は根号を含む数を平方します。括弧内全体を二つの因子に戻しましょう。"
         }
       ],
       "assumptions": [
@@ -1512,6 +1523,7 @@
           }
         ]
       ],
+      "assumptionsDisplay": "in-context",
       "prerequisiteNodeIds": [
         "n09-q02-root"
       ],
@@ -1520,68 +1532,178 @@
       ],
       "rows": [
         {
-          "kind": "text",
-          "template": "積の平方と平方根の定義を使います。",
-          "partKeys": [],
+          "id": "n09-q02-negative-square::ux06-proposal-row-01",
+          "kind": "math",
+          "template": "(-\\sqrt5)^2=(-\\sqrt5)({ux06RootBase})",
+          "partKeys": [
+            "ux06RootBase"
+          ],
           "requiresCorrectKeys": [],
-          "id": "n09-q02-negative-square::ux05-given-01",
-          "certifiedFrom": [
-            "n09-q02-root-result"
+          "mathGroupId": "n09-q02-negative-square-ux06-derivation"
+        },
+        {
+          "id": "n09-q02-negative-square::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "掛ける順を入れ替え、符号の部分と根号の部分をまとめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06RootBase"
           ]
         },
         {
+          "id": "n09-q02-negative-square::ux06-proposal-row-02",
           "kind": "math",
-          "template": "(uv)^2=u^2v^2",
+          "template": "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-q02-negative-square::ux05-given-02",
-          "certifiedFrom": [
-            "n09-q02-root-result"
+          "requiresCorrectKeys": [
+            "ux06RootBase"
           ],
-          "mathGroupId": "n09-q02-negative-square-ux05-given-02"
+          "mathGroupId": "n09-q02-negative-square-ux06-derivation"
         },
         {
+          "id": "n09-q02-negative-square::ux06-proposal-row-03",
           "kind": "math",
-          "template": "(\\sqrt a)^2=a\\quad(a\\ge0)",
-          "partKeys": [],
-          "requiresCorrectKeys": [],
-          "id": "n09-q02-negative-square::ux05-given-03",
-          "certifiedFrom": [
-            "n09-q02-root-result"
+          "template": "={ux06SignProduct}(\\sqrt5)^2",
+          "partKeys": [
+            "ux06SignProduct"
           ],
-          "mathGroupId": "n09-q02-negative-square-ux05-given-03"
+          "requiresCorrectKeys": [
+            "ux06RootBase"
+          ],
+          "mathGroupId": "n09-q02-negative-square-ux06-derivation"
         },
         {
+          "id": "n09-q02-negative-square::ux06-proposal-row-04-intro",
+          "kind": "text",
+          "template": "根号の定義を、残った平方へ適用します。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06RootBase",
+            "ux06SignProduct"
+          ]
+        },
+        {
+          "id": "n09-q02-negative-square::ux06-proposal-row-04",
           "kind": "math",
-          "template": "(-\\sqrt5)^2={signedRootSquareUX05}",
+          "template": "={signedRootSquareUX05}",
           "partKeys": [
             "signedRootSquareUX05"
           ],
-          "requiresCorrectKeys": [],
-          "hideAfterCorrectKeys": [
-            "signedRootSquareUX05"
+          "requiresCorrectKeys": [
+            "ux06RootBase",
+            "ux06SignProduct"
           ],
-          "id": "n09-q02-negative-square::ux05-row-01",
-          "mathGroupId": "n09-q02-negative-square-ux05-math-01",
-          "certifiedFrom": [
-            "n09-q02-root-result"
-          ]
+          "mathGroupId": "n09-q02-negative-square-ux06-derivation"
         },
         {
-          "kind": "math",
-          "template": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=1\\times5=5",
+          "id": "n09-q02-negative-square::ux06-after-text",
+          "kind": "text",
+          "template": "負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
           "partKeys": [],
           "requiresCorrectKeys": [
+            "ux06RootBase",
+            "ux06SignProduct",
             "signedRootSquareUX05"
-          ],
-          "id": "n09-q02-negative-square::ux05-row-02",
-          "mathGroupId": "n09-q02-negative-square-ux05-math-02",
-          "certifiedFrom": [
-            "n09-q02-root-result"
           ]
         }
       ],
       "parts": [
+        {
+          "id": "n09-q02-negative-square::ux06RootBase",
+          "key": "ux06RootBase",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "二つ目の因子を入れます。",
+          "learningAction": "負号と根号を含む基底の構成",
+          "expected": "-\\sqrt5",
+          "choices": [
+            {
+              "value": "-\\sqrt5",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "-\\sqrt5",
+              "latex": "-\\sqrt5",
+              "misconception": "正答"
+            },
+            {
+              "value": "\\sqrt5",
+              "feedback": "負号は括弧の中にあります。",
+              "kind": "math",
+              "display": "\\sqrt5",
+              "latex": "\\sqrt5",
+              "misconception": "負号は括弧の中にあります。"
+            },
+            {
+              "value": "-5",
+              "feedback": "基底は5ではなく根号を含む数です。",
+              "kind": "math",
+              "display": "-5",
+              "latex": "-5",
+              "misconception": "基底は5ではなく根号を含む数です。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-q02-negative-square-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "-\\sqrt5",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "負号と根号を含む基底の構成",
+            "sourceRefs": [
+              "n09-q02-negative-square-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-q02-negative-square::ux06SignProduct",
+          "key": "ux06SignProduct",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "負号の部分を掛けた結果を入れます。",
+          "learningAction": "符号の積を平方の外側の因子へ反映",
+          "expected": "1",
+          "choices": [
+            {
+              "value": "1",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "1",
+              "latex": "1",
+              "misconception": "正答"
+            },
+            {
+              "value": "-1",
+              "feedback": "負と負の積の符号を確かめます。",
+              "kind": "math",
+              "display": "-1",
+              "latex": "-1",
+              "misconception": "負と負の積の符号を確かめます。"
+            },
+            {
+              "value": "2",
+              "feedback": "二つの因子の積を計算します。和ではありません。",
+              "kind": "math",
+              "display": "2",
+              "latex": "2",
+              "misconception": "二つの因子の積を計算します。和ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-q02-negative-square-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "1",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "符号の積を平方の外側の因子へ反映",
+            "sourceRefs": [
+              "n09-q02-negative-square-source-contract"
+            ]
+          }
+        },
         {
           "key": "signedRootSquareUX05",
           "id": "n09-q02-negative-square::signedRootSquareUX05",
@@ -1646,18 +1768,22 @@
         }
       ],
       "partOrder": [
+        "ux06RootBase",
+        "ux06SignProduct",
         "signedRootSquareUX05"
       ],
       "terminalRecord": {
         "id": "n09-q02-negative-square::terminal",
         "formulas": [
-          "(-\\sqrt5)^2=5"
+          "(-\\sqrt5)^2=(-\\sqrt5)(-\\sqrt5)=(-1)(-1)(\\sqrt5)(\\sqrt5)=1(\\sqrt5)^2=5"
         ],
         "conditions": [
           "根号は非負の一つの値。√16と(−√5)²を元の順で求める。"
         ],
-        "prose": "「負号を含めて二乗する」として (-\\sqrt5)^2=5 を確定しました。次の「二つの値を元の順序でまとめる」では、この認定結果と条件を使います。",
+        "prose": "負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
         "requiresCorrectKeys": [
+          "ux06RootBase",
+          "ux06SignProduct",
           "signedRootSquareUX05"
         ],
         "certifiedFrom": [
@@ -1737,6 +1863,7 @@
           }
         ]
       ],
+      "assumptionsDisplay": "in-context",
       "prerequisiteNodeIds": [
         "n09-q02-negative-square",
         "n09-q02-root"
@@ -2463,7 +2590,23 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "aが負の場合、a²の非負の平方根を選びます。"
+          "text": "次は"
+        },
+        {
+          "type": "math",
+          "latex": "a<0"
+        },
+        {
+          "type": "text",
+          "text": "の場合です。根号は非負の値を表すので、符号を反対にした"
+        },
+        {
+          "type": "math",
+          "latex": "-a"
+        },
+        {
+          "type": "text",
+          "text": "が条件に合うか、符号と平方の両方を調べます。"
         }
       ],
       "assumptions": [
@@ -2497,72 +2640,168 @@
       ],
       "rows": [
         {
-          "kind": "text",
-          "template": "平方根記号は非負の平方根を表します。",
-          "partKeys": [],
+          "id": "n09-q04-negative::ux06-proposal-row-01",
+          "kind": "math",
+          "template": "a<0\\quad\\Rightarrow\\quad -a\\ {ux06CandidateSign}\\ 0",
+          "partKeys": [
+            "ux06CandidateSign"
+          ],
           "requiresCorrectKeys": [],
-          "id": "n09-q04-negative::ux05-given-01",
-          "certifiedFrom": [
-            "n09-q04-nonnegative-result"
+          "mathGroupId": "n09-q04-negative-ux06-derivation"
+        },
+        {
+          "id": "n09-q04-negative::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "続いて候補の平方を確かめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CandidateSign"
           ]
         },
         {
+          "id": "n09-q04-negative::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "(-a)^2=(-a)(-a)={ux06CandidateSquare}",
+          "partKeys": [
+            "ux06CandidateSquare"
+          ],
+          "requiresCorrectKeys": [
+            "ux06CandidateSign"
+          ],
+          "mathGroupId": "n09-q04-negative-ux06-derivation"
+        },
+        {
+          "id": "n09-q04-negative::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "候補は正で、その平方は元の数の平方と一致します。根号の定義に合う値を結論にします。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06CandidateSign",
+            "ux06CandidateSquare"
+          ]
+        },
+        {
+          "id": "n09-q04-negative::ux06-proposal-row-03",
           "kind": "math",
           "template": "\\sqrt{a^2}={value}",
           "partKeys": [
             "value"
           ],
-          "requiresCorrectKeys": [],
-          "hideAfterCorrectKeys": [
-            "value"
+          "requiresCorrectKeys": [
+            "ux06CandidateSign",
+            "ux06CandidateSquare"
           ],
-          "id": "n09-q04-negative::ux05-row-01",
-          "mathGroupId": "n09-q04-negative-ux05-math-01",
-          "certifiedFrom": [
-            "n09-q04-nonnegative-result"
-          ]
+          "mathGroupId": "n09-q04-negative-ux06-derivation"
         },
         {
-          "kind": "math",
-          "template": "a<0\\ \\Rightarrow\\ -a>0",
+          "id": "n09-q04-negative::ux06-after-text",
+          "kind": "text",
+          "template": "元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
           "partKeys": [],
           "requiresCorrectKeys": [
+            "ux06CandidateSign",
+            "ux06CandidateSquare",
             "value"
-          ],
-          "id": "n09-q04-negative::ux05-row-02",
-          "mathGroupId": "n09-q04-negative-ux05-math-02",
-          "certifiedFrom": [
-            "n09-q04-nonnegative-result"
-          ]
-        },
-        {
-          "kind": "math",
-          "template": "(-a)^2=a^2",
-          "partKeys": [],
-          "requiresCorrectKeys": [
-            "value"
-          ],
-          "id": "n09-q04-negative::ux05-row-03",
-          "mathGroupId": "n09-q04-negative-ux05-math-03",
-          "certifiedFrom": [
-            "n09-q04-nonnegative-result"
-          ]
-        },
-        {
-          "kind": "math",
-          "template": "\\sqrt{a^2}=-a",
-          "partKeys": [],
-          "requiresCorrectKeys": [
-            "value"
-          ],
-          "id": "n09-q04-negative::ux05-row-04",
-          "mathGroupId": "n09-q04-negative-ux05-math-04",
-          "certifiedFrom": [
-            "n09-q04-nonnegative-result"
           ]
         }
       ],
       "parts": [
+        {
+          "id": "n09-q04-negative::ux06CandidateSign",
+          "key": "ux06CandidateSign",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "候補−aの符号を入れます。",
+          "learningAction": "非負性の条件を具体的に確かめる",
+          "expected": ">",
+          "choices": [
+            {
+              "value": ">",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": ">",
+              "latex": ">",
+              "misconception": "正答"
+            },
+            {
+              "value": "<",
+              "feedback": "a<0の両辺に−1を掛けると不等号の向きが変わります。",
+              "kind": "math",
+              "display": "<",
+              "latex": "<",
+              "misconception": "a<0の両辺に−1を掛けると不等号の向きが変わります。"
+            },
+            {
+              "value": "=",
+              "feedback": "aは0ではありません。",
+              "kind": "math",
+              "display": "=",
+              "latex": "=",
+              "misconception": "aは0ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-q04-negative-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": ">",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "非負性の条件を具体的に確かめる",
+            "sourceRefs": [
+              "n09-q04-negative-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-q04-negative::ux06CandidateSquare",
+          "key": "ux06CandidateSquare",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "候補−aを2回掛けた平方を入れます。",
+          "learningAction": "平方が元のa²へ戻ることを構成",
+          "expected": "a^2",
+          "choices": [
+            {
+              "value": "a^2",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "a^2",
+              "latex": "a^2",
+              "misconception": "正答"
+            },
+            {
+              "value": "-a^2",
+              "feedback": "負号も二つの因子の中にあります。",
+              "kind": "math",
+              "display": "-a^2",
+              "latex": "-a^2",
+              "misconception": "負号も二つの因子の中にあります。"
+            },
+            {
+              "value": "2a",
+              "feedback": "平方は2倍ではありません。",
+              "kind": "math",
+              "display": "2a",
+              "latex": "2a",
+              "misconception": "平方は2倍ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-q04-negative-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "a^2",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "平方が元のa²へ戻ることを構成",
+            "sourceRefs": [
+              "n09-q04-negative-source-contract"
+            ]
+          }
+        },
         {
           "key": "value",
           "role": "operand",
@@ -2620,18 +2859,24 @@
         }
       ],
       "partOrder": [
+        "ux06CandidateSign",
+        "ux06CandidateSquare",
         "value"
       ],
       "terminalRecord": {
         "id": "n09-q04-negative::terminal",
         "formulas": [
-          "\\sqrt{a^2}=-a\\quad(a<0)"
+          "a<0\\Rightarrow-a>0",
+          "(-a)^2=(-a)(-a)=a^2",
+          "\\sqrt{a^2}=-a"
         ],
         "conditions": [
           "a∈ℝ、a<0。"
         ],
-        "prose": "「負の場合」として \\sqrt{a^2}=-a\\quad(a<0) を確定しました。次の「条件と結果の対応を保持する」では、この認定結果と条件を使います。",
+        "prose": "元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
         "requiresCorrectKeys": [
+          "ux06CandidateSign",
+          "ux06CandidateSquare",
           "value"
         ],
         "certifiedFrom": [
@@ -4010,11 +4255,11 @@
         },
         {
           "type": "text",
-          "text": "をそれぞれ平方して2と比べます。"
+          "text": "を平方して2と比べます。分数に直すと分子は"
         },
         {
           "type": "math",
-          "latex": "141^2"
+          "latex": "141"
         },
         {
           "type": "text",
@@ -4022,15 +4267,55 @@
         },
         {
           "type": "math",
-          "latex": "142^2"
+          "latex": "142"
         },
         {
           "type": "text",
-          "text": "を計算しやすくするため、まず和の平方の作り方を確かめましょう。"
+          "text": "です。これらを"
+        },
+        {
+          "type": "math",
+          "latex": "141=140+1"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "142=140+2"
+        },
+        {
+          "type": "text",
+          "text": "と分けると、和の平方として計算できます。まず二つの数を"
+        },
+        {
+          "type": "math",
+          "latex": "A"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B"
+        },
+        {
+          "type": "text",
+          "text": "と表し、"
+        },
+        {
+          "type": "math",
+          "latex": "(A+B)^2"
+        },
+        {
+          "type": "text",
+          "text": "を同じ式の積に戻すところから、一段ずつ式を作りましょう。"
         }
       ],
       "assumptions": [
-        "A,Bは実数。小数候補の平方を2と比較する。"
+        "A,Bは実数。導出後にA=140、B=1または2として候補の平方へ使う。"
       ],
       "assumptionParts": [
         [
@@ -4040,7 +4325,23 @@
           },
           {
             "type": "text",
-            "text": "。小数候補の平方を"
+            "text": "。このあと"
+          },
+          {
+            "type": "math",
+            "latex": "A=140"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "B=1"
+          },
+          {
+            "type": "text",
+            "text": "または"
           },
           {
             "type": "math",
@@ -4048,7 +4349,7 @@
           },
           {
             "type": "text",
-            "text": "と比較する。"
+            "text": "として、候補の平方の計算に使います。"
           }
         ]
       ],
@@ -4176,7 +4477,7 @@
         {
           "id": "n09-decimal-method::ux06-proposal-row-06-intro",
           "kind": "text",
-          "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+          "template": "和の平方が導けました。ここからA=140、B=1または2として分子を計算し、分母の平方で割って、小数の候補へ戻します。",
           "partKeys": [],
           "requiresCorrectKeys": [
             "ux06BinomialBase",
@@ -4200,7 +4501,7 @@
             "ux06LastSquare",
             "ux06LikeTermCount"
           ],
-          "mathGroupId": "n09-decimal-method-ux06-derivation"
+          "mathGroupId": "n09-decimal-method-ux06-support-06"
         },
         {
           "id": "n09-decimal-method::ux06-proposal-row-07-intro",
@@ -4229,7 +4530,7 @@
             "ux06LastSquare",
             "ux06LikeTermCount"
           ],
-          "mathGroupId": "n09-decimal-method-ux06-derivation"
+          "mathGroupId": "n09-decimal-method-ux06-support-07"
         },
         {
           "id": "n09-decimal-method::ux06-proposal-row-08-intro",
@@ -4258,7 +4559,7 @@
             "ux06LastSquare",
             "ux06LikeTermCount"
           ],
-          "mathGroupId": "n09-decimal-method-ux06-derivation"
+          "mathGroupId": "n09-decimal-method-ux06-support-08"
         },
         {
           "id": "n09-decimal-method::ux06-after-text",
@@ -4657,7 +4958,31 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "直前の参照公式を、この分子の二項へ適用します。"
+          "text": "導いた和の平方へ"
+        },
+        {
+          "type": "math",
+          "latex": "A=140"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B=1"
+        },
+        {
+          "type": "text",
+          "text": "を対応させ、"
+        },
+        {
+          "type": "math",
+          "latex": "141^2"
+        },
+        {
+          "type": "text",
+          "text": "を求めます。まず中項を作り、その値・和・小数への戻しを順に計算しましょう。"
         }
       ],
       "assumptions": [
@@ -5107,7 +5432,31 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "直前の参照公式を、この分子の二項へ適用します。"
+          "text": "次は"
+        },
+        {
+          "type": "math",
+          "latex": "142=140+2"
+        },
+        {
+          "type": "text",
+          "text": "です。同じ導出の"
+        },
+        {
+          "type": "math",
+          "latex": "A=140"
+        },
+        {
+          "type": "text",
+          "text": "、"
+        },
+        {
+          "type": "math",
+          "latex": "B=2"
+        },
+        {
+          "type": "text",
+          "text": "として、中項から順に計算します。"
         }
       ],
       "assumptions": [
@@ -6424,7 +6773,7 @@
       "resultId": "n09-parts-target-result",
       "stageId": "n09-stage-07",
       "q": 10,
-      "classification": "KEEP_EXPOSITION",
+      "classification": "NEW_CONSTRUCTION",
       "leadParts": [
         {
           "type": "math",
@@ -6432,37 +6781,7 @@
         },
         {
           "type": "text",
-          "text": "を、"
-        },
-        {
-          "type": "text",
-          "text": "整数部分",
-          "semanticRole": "term",
-          "usage": "first_definition",
-          "emphasis": "black-bold"
-        },
-        {
-          "type": "text",
-          "text": "と"
-        },
-        {
-          "type": "text",
-          "text": "小数部分",
-          "semanticRole": "term",
-          "usage": "first_definition",
-          "emphasis": "black-bold"
-        },
-        {
-          "type": "text",
-          "text": "に分けます。実数"
-        },
-        {
-          "type": "math",
-          "latex": "x"
-        },
-        {
-          "type": "text",
-          "text": "を"
+          "text": "を整数部分と小数部分に分けます。"
         },
         {
           "type": "math",
@@ -6470,15 +6789,15 @@
         },
         {
           "type": "text",
-          "text": "と書き、"
+          "text": "、"
         },
         {
           "type": "math",
-          "latex": "n\\in\\mathbb Z"
+          "latex": "n"
         },
         {
           "type": "text",
-          "text": "、"
+          "text": "は整数、"
         },
         {
           "type": "math",
@@ -6502,7 +6821,15 @@
         },
         {
           "type": "text",
-          "text": "を小数部分と定めます。まず、見た目の整数の桁だけを切り取った候補が、この条件に合うか確かめます。"
+          "text": "を小数部分と定めます。この定義から、"
+        },
+        {
+          "type": "math",
+          "latex": "n"
+        },
+        {
+          "type": "text",
+          "text": "を探すときに使える不等式を作りましょう。"
         }
       ],
       "assumptions": [
@@ -6528,39 +6855,181 @@
       ],
       "rows": [
         {
-          "id": "n09-parts-target::row-01",
-          "template": "x=n+r,\\quad n\\in\\mathbb Z,\\quad0\\le r<1",
-          "kind": "math",
+          "id": "n09-parts-target::ux06-proposal-row-01-intro",
+          "kind": "text",
+          "template": "定義の式を、小数部分について書き直します。",
           "partKeys": [],
-          "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n09-09-result"
-          ]
+          "requiresCorrectKeys": []
         },
         {
-          "id": "n09-parts-target::row-02",
-          "template": "r=x-n,\\quad n\\le x<n+1",
+          "id": "n09-parts-target::ux06-proposal-row-01",
           "kind": "math",
+          "template": "r=x-n",
           "partKeys": [],
           "requiresCorrectKeys": [],
-          "certifiedFrom": [
-            "n09-09-result"
+          "mathGroupId": "n09-parts-target-ux06-derivation"
+        },
+        {
+          "id": "n09-parts-target::ux06-proposal-row-02-intro",
+          "kind": "text",
+          "template": "小数部分の条件へ、いまの式を代入します。",
+          "partKeys": [],
+          "requiresCorrectKeys": []
+        },
+        {
+          "id": "n09-parts-target::ux06-proposal-row-02",
+          "kind": "math",
+          "template": "0\\le x-n<1",
+          "partKeys": [],
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n09-parts-target-ux06-derivation"
+        },
+        {
+          "id": "n09-parts-target::ux06-proposal-row-03-intro",
+          "kind": "text",
+          "template": "各辺に同じ整数部分を加え、中央を元の数だけにします。",
+          "partKeys": [],
+          "requiresCorrectKeys": []
+        },
+        {
+          "id": "n09-parts-target::ux06-proposal-row-03",
+          "kind": "math",
+          "template": "{ux06IntervalLower}\\le x<{ux06IntervalUpper}",
+          "partKeys": [
+            "ux06IntervalLower",
+            "ux06IntervalUpper"
+          ],
+          "requiresCorrectKeys": [],
+          "mathGroupId": "n09-parts-target-ux06-derivation"
+        },
+        {
+          "id": "n09-parts-target::ux06-after-text",
+          "kind": "text",
+          "template": "整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+          "partKeys": [],
+          "requiresCorrectKeys": [
+            "ux06IntervalLower",
+            "ux06IntervalUpper"
           ]
         }
       ],
-      "parts": [],
-      "partOrder": [],
+      "parts": [
+        {
+          "id": "n09-parts-target::ux06IntervalLower",
+          "key": "ux06IntervalLower",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "各辺にnを加えた後の下端を入れます。",
+          "learningAction": "定義の下限を元のxの区間へ変換",
+          "expected": "n",
+          "choices": [
+            {
+              "value": "n",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "n",
+              "latex": "n",
+              "misconception": "正答"
+            },
+            {
+              "value": "0",
+              "feedback": "不等式の各辺にnを加えた後の左端です。",
+              "kind": "math",
+              "display": "0",
+              "latex": "0",
+              "misconception": "不等式の各辺にnを加えた後の左端です。"
+            },
+            {
+              "value": "n-1",
+              "feedback": "各辺に同じnを加えます。",
+              "kind": "math",
+              "display": "n-1",
+              "latex": "n-1",
+              "misconception": "各辺に同じnを加えます。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-parts-target-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "n",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "定義の下限を元のxの区間へ変換",
+            "sourceRefs": [
+              "n09-parts-target-source-contract"
+            ]
+          }
+        },
+        {
+          "id": "n09-parts-target::ux06IntervalUpper",
+          "key": "ux06IntervalUpper",
+          "kind": "math",
+          "role": "meaningful-expression-construction",
+          "prompt": "同じ操作をした後の上端を入れます。",
+          "learningAction": "上限1を整数部分基準の上端へ変換",
+          "expected": "n+1",
+          "choices": [
+            {
+              "value": "n+1",
+              "feedback": "この式の関係を確定し、続く導出へ使います。",
+              "kind": "math",
+              "display": "n+1",
+              "latex": "n+1",
+              "misconception": "正答"
+            },
+            {
+              "value": "n",
+              "feedback": "上端は1にもnを加えます。",
+              "kind": "math",
+              "display": "n",
+              "latex": "n",
+              "misconception": "上端は1にもnを加えます。"
+            },
+            {
+              "value": "n-1",
+              "feedback": "nを引く操作ではありません。",
+              "kind": "math",
+              "display": "n-1",
+              "latex": "n-1",
+              "misconception": "nを引く操作ではありません。"
+            }
+          ],
+          "sourceRefs": [
+            "n09-parts-target-source-contract"
+          ],
+          "mathAssertion": {
+            "kind": "requires-semantic-review",
+            "expected": "n+1",
+            "codeSupported": false,
+            "reviewStatus": "NEEDS_AI_REVIEW",
+            "rationale": "上限1を整数部分基準の上端へ変換",
+            "sourceRefs": [
+              "n09-parts-target-source-contract"
+            ]
+          }
+        }
+      ],
+      "partOrder": [
+        "ux06IntervalLower",
+        "ux06IntervalUpper"
+      ],
       "terminalRecord": {
         "id": "n09-parts-target::terminal",
         "formulas": [
-          "x=n+r,\\quad r=x-n",
-          "n\\le x<n+1,\\quad0\\le r<1"
+          "x=n+r\\Rightarrow r=x-n",
+          "0\\le x-n<1",
+          "n\\le x<n+1"
         ],
         "conditions": [
           "nは整数。整数部分と小数部分をこの条件で定義する。"
         ],
-        "prose": "まず候補−2を調べ、定義を満たすかを判断します。",
-        "requiresCorrectKeys": [],
+        "prose": "整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+        "requiresCorrectKeys": [
+          "ux06IntervalLower",
+          "ux06IntervalUpper"
+        ],
         "certifiedFrom": [
           "n09-09-result"
         ],
@@ -10023,83 +10492,94 @@
         "nodeId": "n09-q01-negative",
         "rows": [
           {
-            "kind": "text",
-            "template": "2乗の操作は、{powerAction}。",
+            "id": "n09-q01-negative::ux06-proposal-row-01",
+            "kind": "math",
+            "template": "(-4)^2=(-4)\\times({ux06RepeatedBase})",
             "partKeys": [
-              "powerAction"
+              "ux06RepeatedBase"
             ],
             "requiresCorrectKeys": [],
-            "id": "n09-q01-negative::ux05-row-01",
-            "certifiedFrom": [
-              "n09-q01-positive-result"
+            "mathGroupId": "n09-q01-negative-ux06-derivation"
+          },
+          {
+            "id": "n09-q01-negative::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "二つの因子を掛け、平方の値を確かめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06RepeatedBase"
             ]
           },
           {
+            "id": "n09-q01-negative::ux06-proposal-row-02",
             "kind": "math",
-            "template": "(-4)^2=(-4)\\times(-4)={value}",
+            "template": "={value}",
             "partKeys": [
               "value"
             ],
             "requiresCorrectKeys": [
-              "powerAction"
+              "ux06RepeatedBase"
             ],
-            "id": "n09-q01-negative::ux05-row-02",
-            "mathGroupId": "n09-q01-negative-ux05-math-02",
-            "certifiedFrom": [
-              "n09-q01-positive-result"
+            "mathGroupId": "n09-q01-negative-ux06-derivation"
+          },
+          {
+            "id": "n09-q01-negative::ux06-after-text",
+            "kind": "text",
+            "template": "正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06RepeatedBase",
+              "value"
             ]
           }
         ],
         "parts": [
           {
-            "id": "n09-q01-negative::powerAction",
-            "key": "powerAction",
-            "role": "power-scope-action",
-            "kind": "text",
-            "expected": "repeat-whole-base",
-            "prompt": "(-4)²で、指数2が指定している操作を選びます。",
-            "learningAction": "累乗の作用範囲と反復乗算を選ぶ",
-            "sourceRefs": [
-              "n09-q01-negative-before",
-              "n09-q01-negative-interaction-0",
-              "n09-q01-negative-equation",
-              "n09-q01-negative-after"
-            ],
+            "id": "n09-q01-negative::ux06RepeatedBase",
+            "key": "ux06RepeatedBase",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "同じ基底をもう一度掛ける形にします。",
+            "learningAction": "指数の作用対象を積の因子として構成",
+            "expected": "-4",
             "choices": [
               {
-                "value": "repeat-whole-base",
-                "kind": "text",
-                "display": "負号を含む−4全体を、同じ二因子の積にする",
-                "feedback": "2乗の基底は括弧内全体です。",
+                "value": "-4",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "-4",
+                "latex": "-4",
                 "misconception": "正答"
               },
               {
-                "value": "leave-minus-outside",
-                "kind": "text",
-                "display": "負号を外に残し、4だけを2乗する",
-                "feedback": "括弧の中に負号があります。−(4²)と(−4)²を区別してください。",
-                "misconception": "括弧の中に負号があります。−(4²)と(−4)²を区別してください。"
+                "value": "4",
+                "feedback": "括弧の中の負号も基底に含まれます。",
+                "kind": "math",
+                "display": "4",
+                "latex": "4",
+                "misconception": "括弧の中の負号も基底に含まれます。"
               },
               {
-                "value": "multiply-by-two",
-                "kind": "text",
-                "display": "−4全体へ2を掛ける",
-                "feedback": "指数2は2倍ではありません。同じ基底を何因子掛けるかを表します。",
-                "misconception": "指数2は2倍ではありません。同じ基底を何因子掛けるかを表します。"
+                "value": "-8",
+                "feedback": "2乗は2倍ではありません。",
+                "kind": "math",
+                "display": "-8",
+                "latex": "-8",
+                "misconception": "2乗は2倍ではありません。"
               }
+            ],
+            "sourceRefs": [
+              "n09-q01-negative-source-contract"
             ],
             "mathAssertion": {
               "kind": "requires-semantic-review",
-              "expected": "repeat-whole-base",
-              "sourceRefs": [
-                "n09-q01-negative-before",
-                "n09-q01-negative-interaction-0",
-                "n09-q01-negative-equation",
-                "n09-q01-negative-after"
-              ],
+              "expected": "-4",
               "codeSupported": false,
               "reviewStatus": "NEEDS_AI_REVIEW",
-              "rationale": "直前の4²という手本と既習の累乗の定義。負号を含む括弧が対象。"
+              "rationale": "指数の作用対象を積の因子として構成",
+              "sourceRefs": [
+                "n09-q01-negative-source-contract"
+              ]
             }
           },
           {
@@ -10157,7 +10637,7 @@
           }
         ],
         "partOrder": [
-          "powerAction",
+          "ux06RepeatedBase",
           "value"
         ]
       },
@@ -10588,68 +11068,178 @@
         "nodeId": "n09-q02-negative-square",
         "rows": [
           {
-            "kind": "text",
-            "template": "積の平方と平方根の定義を使います。",
-            "partKeys": [],
+            "id": "n09-q02-negative-square::ux06-proposal-row-01",
+            "kind": "math",
+            "template": "(-\\sqrt5)^2=(-\\sqrt5)({ux06RootBase})",
+            "partKeys": [
+              "ux06RootBase"
+            ],
             "requiresCorrectKeys": [],
-            "id": "n09-q02-negative-square::ux05-given-01",
-            "certifiedFrom": [
-              "n09-q02-root-result"
+            "mathGroupId": "n09-q02-negative-square-ux06-derivation"
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "掛ける順を入れ替え、符号の部分と根号の部分をまとめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06RootBase"
             ]
           },
           {
+            "id": "n09-q02-negative-square::ux06-proposal-row-02",
             "kind": "math",
-            "template": "(uv)^2=u^2v^2",
+            "template": "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-q02-negative-square::ux05-given-02",
-            "certifiedFrom": [
-              "n09-q02-root-result"
+            "requiresCorrectKeys": [
+              "ux06RootBase"
             ],
-            "mathGroupId": "n09-q02-negative-square-ux05-given-02"
+            "mathGroupId": "n09-q02-negative-square-ux06-derivation"
           },
           {
+            "id": "n09-q02-negative-square::ux06-proposal-row-03",
             "kind": "math",
-            "template": "(\\sqrt a)^2=a\\quad(a\\ge0)",
-            "partKeys": [],
-            "requiresCorrectKeys": [],
-            "id": "n09-q02-negative-square::ux05-given-03",
-            "certifiedFrom": [
-              "n09-q02-root-result"
+            "template": "={ux06SignProduct}(\\sqrt5)^2",
+            "partKeys": [
+              "ux06SignProduct"
             ],
-            "mathGroupId": "n09-q02-negative-square-ux05-given-03"
+            "requiresCorrectKeys": [
+              "ux06RootBase"
+            ],
+            "mathGroupId": "n09-q02-negative-square-ux06-derivation"
           },
           {
+            "id": "n09-q02-negative-square::ux06-proposal-row-04-intro",
+            "kind": "text",
+            "template": "根号の定義を、残った平方へ適用します。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06RootBase",
+              "ux06SignProduct"
+            ]
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-04",
             "kind": "math",
-            "template": "(-\\sqrt5)^2={signedRootSquareUX05}",
+            "template": "={signedRootSquareUX05}",
             "partKeys": [
               "signedRootSquareUX05"
             ],
-            "requiresCorrectKeys": [],
-            "hideAfterCorrectKeys": [
-              "signedRootSquareUX05"
+            "requiresCorrectKeys": [
+              "ux06RootBase",
+              "ux06SignProduct"
             ],
-            "id": "n09-q02-negative-square::ux05-row-01",
-            "mathGroupId": "n09-q02-negative-square-ux05-math-01",
-            "certifiedFrom": [
-              "n09-q02-root-result"
-            ]
+            "mathGroupId": "n09-q02-negative-square-ux06-derivation"
           },
           {
-            "kind": "math",
-            "template": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=1\\times5=5",
+            "id": "n09-q02-negative-square::ux06-after-text",
+            "kind": "text",
+            "template": "負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
             "partKeys": [],
             "requiresCorrectKeys": [
+              "ux06RootBase",
+              "ux06SignProduct",
               "signedRootSquareUX05"
-            ],
-            "id": "n09-q02-negative-square::ux05-row-02",
-            "mathGroupId": "n09-q02-negative-square-ux05-math-02",
-            "certifiedFrom": [
-              "n09-q02-root-result"
             ]
           }
         ],
         "parts": [
+          {
+            "id": "n09-q02-negative-square::ux06RootBase",
+            "key": "ux06RootBase",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "二つ目の因子を入れます。",
+            "learningAction": "負号と根号を含む基底の構成",
+            "expected": "-\\sqrt5",
+            "choices": [
+              {
+                "value": "-\\sqrt5",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "-\\sqrt5",
+                "latex": "-\\sqrt5",
+                "misconception": "正答"
+              },
+              {
+                "value": "\\sqrt5",
+                "feedback": "負号は括弧の中にあります。",
+                "kind": "math",
+                "display": "\\sqrt5",
+                "latex": "\\sqrt5",
+                "misconception": "負号は括弧の中にあります。"
+              },
+              {
+                "value": "-5",
+                "feedback": "基底は5ではなく根号を含む数です。",
+                "kind": "math",
+                "display": "-5",
+                "latex": "-5",
+                "misconception": "基底は5ではなく根号を含む数です。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-q02-negative-square-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "-\\sqrt5",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "負号と根号を含む基底の構成",
+              "sourceRefs": [
+                "n09-q02-negative-square-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-q02-negative-square::ux06SignProduct",
+            "key": "ux06SignProduct",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "負号の部分を掛けた結果を入れます。",
+            "learningAction": "符号の積を平方の外側の因子へ反映",
+            "expected": "1",
+            "choices": [
+              {
+                "value": "1",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "1",
+                "latex": "1",
+                "misconception": "正答"
+              },
+              {
+                "value": "-1",
+                "feedback": "負と負の積の符号を確かめます。",
+                "kind": "math",
+                "display": "-1",
+                "latex": "-1",
+                "misconception": "負と負の積の符号を確かめます。"
+              },
+              {
+                "value": "2",
+                "feedback": "二つの因子の積を計算します。和ではありません。",
+                "kind": "math",
+                "display": "2",
+                "latex": "2",
+                "misconception": "二つの因子の積を計算します。和ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-q02-negative-square-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "1",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "符号の積を平方の外側の因子へ反映",
+              "sourceRefs": [
+                "n09-q02-negative-square-source-contract"
+              ]
+            }
+          },
           {
             "key": "signedRootSquareUX05",
             "id": "n09-q02-negative-square::signedRootSquareUX05",
@@ -10714,6 +11304,8 @@
           }
         ],
         "partOrder": [
+          "ux06RootBase",
+          "ux06SignProduct",
           "signedRootSquareUX05"
         ]
       },
@@ -10945,72 +11537,168 @@
         "nodeId": "n09-q04-negative",
         "rows": [
           {
-            "kind": "text",
-            "template": "平方根記号は非負の平方根を表します。",
-            "partKeys": [],
+            "id": "n09-q04-negative::ux06-proposal-row-01",
+            "kind": "math",
+            "template": "a<0\\quad\\Rightarrow\\quad -a\\ {ux06CandidateSign}\\ 0",
+            "partKeys": [
+              "ux06CandidateSign"
+            ],
             "requiresCorrectKeys": [],
-            "id": "n09-q04-negative::ux05-given-01",
-            "certifiedFrom": [
-              "n09-q04-nonnegative-result"
+            "mathGroupId": "n09-q04-negative-ux06-derivation"
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "続いて候補の平方を確かめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CandidateSign"
             ]
           },
           {
+            "id": "n09-q04-negative::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "(-a)^2=(-a)(-a)={ux06CandidateSquare}",
+            "partKeys": [
+              "ux06CandidateSquare"
+            ],
+            "requiresCorrectKeys": [
+              "ux06CandidateSign"
+            ],
+            "mathGroupId": "n09-q04-negative-ux06-derivation"
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "候補は正で、その平方は元の数の平方と一致します。根号の定義に合う値を結論にします。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06CandidateSign",
+              "ux06CandidateSquare"
+            ]
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03",
             "kind": "math",
             "template": "\\sqrt{a^2}={value}",
             "partKeys": [
               "value"
             ],
-            "requiresCorrectKeys": [],
-            "hideAfterCorrectKeys": [
-              "value"
+            "requiresCorrectKeys": [
+              "ux06CandidateSign",
+              "ux06CandidateSquare"
             ],
-            "id": "n09-q04-negative::ux05-row-01",
-            "mathGroupId": "n09-q04-negative-ux05-math-01",
-            "certifiedFrom": [
-              "n09-q04-nonnegative-result"
-            ]
+            "mathGroupId": "n09-q04-negative-ux06-derivation"
           },
           {
-            "kind": "math",
-            "template": "a<0\\ \\Rightarrow\\ -a>0",
+            "id": "n09-q04-negative::ux06-after-text",
+            "kind": "text",
+            "template": "元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
             "partKeys": [],
             "requiresCorrectKeys": [
+              "ux06CandidateSign",
+              "ux06CandidateSquare",
               "value"
-            ],
-            "id": "n09-q04-negative::ux05-row-02",
-            "mathGroupId": "n09-q04-negative-ux05-math-02",
-            "certifiedFrom": [
-              "n09-q04-nonnegative-result"
-            ]
-          },
-          {
-            "kind": "math",
-            "template": "(-a)^2=a^2",
-            "partKeys": [],
-            "requiresCorrectKeys": [
-              "value"
-            ],
-            "id": "n09-q04-negative::ux05-row-03",
-            "mathGroupId": "n09-q04-negative-ux05-math-03",
-            "certifiedFrom": [
-              "n09-q04-nonnegative-result"
-            ]
-          },
-          {
-            "kind": "math",
-            "template": "\\sqrt{a^2}=-a",
-            "partKeys": [],
-            "requiresCorrectKeys": [
-              "value"
-            ],
-            "id": "n09-q04-negative::ux05-row-04",
-            "mathGroupId": "n09-q04-negative-ux05-math-04",
-            "certifiedFrom": [
-              "n09-q04-nonnegative-result"
             ]
           }
         ],
         "parts": [
+          {
+            "id": "n09-q04-negative::ux06CandidateSign",
+            "key": "ux06CandidateSign",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "候補−aの符号を入れます。",
+            "learningAction": "非負性の条件を具体的に確かめる",
+            "expected": ">",
+            "choices": [
+              {
+                "value": ">",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": ">",
+                "latex": ">",
+                "misconception": "正答"
+              },
+              {
+                "value": "<",
+                "feedback": "a<0の両辺に−1を掛けると不等号の向きが変わります。",
+                "kind": "math",
+                "display": "<",
+                "latex": "<",
+                "misconception": "a<0の両辺に−1を掛けると不等号の向きが変わります。"
+              },
+              {
+                "value": "=",
+                "feedback": "aは0ではありません。",
+                "kind": "math",
+                "display": "=",
+                "latex": "=",
+                "misconception": "aは0ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-q04-negative-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": ">",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "非負性の条件を具体的に確かめる",
+              "sourceRefs": [
+                "n09-q04-negative-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-q04-negative::ux06CandidateSquare",
+            "key": "ux06CandidateSquare",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "候補−aを2回掛けた平方を入れます。",
+            "learningAction": "平方が元のa²へ戻ることを構成",
+            "expected": "a^2",
+            "choices": [
+              {
+                "value": "a^2",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "a^2",
+                "latex": "a^2",
+                "misconception": "正答"
+              },
+              {
+                "value": "-a^2",
+                "feedback": "負号も二つの因子の中にあります。",
+                "kind": "math",
+                "display": "-a^2",
+                "latex": "-a^2",
+                "misconception": "負号も二つの因子の中にあります。"
+              },
+              {
+                "value": "2a",
+                "feedback": "平方は2倍ではありません。",
+                "kind": "math",
+                "display": "2a",
+                "latex": "2a",
+                "misconception": "平方は2倍ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-q04-negative-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "a^2",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "平方が元のa²へ戻ることを構成",
+              "sourceRefs": [
+                "n09-q04-negative-source-contract"
+              ]
+            }
+          },
           {
             "key": "value",
             "role": "operand",
@@ -11068,6 +11756,8 @@
           }
         ],
         "partOrder": [
+          "ux06CandidateSign",
+          "ux06CandidateSquare",
           "value"
         ]
       },
@@ -11762,7 +12452,7 @@
           {
             "id": "n09-decimal-method::ux06-proposal-row-06-intro",
             "kind": "text",
-            "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+            "template": "和の平方が導けました。ここからA=140、B=1または2として分子を計算し、分母の平方で割って、小数の候補へ戻します。",
             "partKeys": [],
             "requiresCorrectKeys": [
               "ux06BinomialBase",
@@ -11786,7 +12476,7 @@
               "ux06LastSquare",
               "ux06LikeTermCount"
             ],
-            "mathGroupId": "n09-decimal-method-ux06-derivation"
+            "mathGroupId": "n09-decimal-method-ux06-support-06"
           },
           {
             "id": "n09-decimal-method::ux06-proposal-row-07-intro",
@@ -11815,7 +12505,7 @@
               "ux06LastSquare",
               "ux06LikeTermCount"
             ],
-            "mathGroupId": "n09-decimal-method-ux06-derivation"
+            "mathGroupId": "n09-decimal-method-ux06-support-07"
           },
           {
             "id": "n09-decimal-method::ux06-proposal-row-08-intro",
@@ -11844,7 +12534,7 @@
               "ux06LastSquare",
               "ux06LikeTermCount"
             ],
-            "mathGroupId": "n09-decimal-method-ux06-derivation"
+            "mathGroupId": "n09-decimal-method-ux06-support-08"
           },
           {
             "id": "n09-decimal-method::ux06-after-text",
@@ -13113,28 +13803,166 @@
         "nodeId": "n09-parts-target",
         "rows": [
           {
-            "id": "n09-parts-target::row-01",
-            "template": "x=n+r,\\quad n\\in\\mathbb Z,\\quad0\\le r<1",
-            "kind": "math",
+            "id": "n09-parts-target::ux06-proposal-row-01-intro",
+            "kind": "text",
+            "template": "定義の式を、小数部分について書き直します。",
             "partKeys": [],
-            "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n09-09-result"
-            ]
+            "requiresCorrectKeys": []
           },
           {
-            "id": "n09-parts-target::row-02",
-            "template": "r=x-n,\\quad n\\le x<n+1",
+            "id": "n09-parts-target::ux06-proposal-row-01",
             "kind": "math",
+            "template": "r=x-n",
             "partKeys": [],
             "requiresCorrectKeys": [],
-            "certifiedFrom": [
-              "n09-09-result"
+            "mathGroupId": "n09-parts-target-ux06-derivation"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-02-intro",
+            "kind": "text",
+            "template": "小数部分の条件へ、いまの式を代入します。",
+            "partKeys": [],
+            "requiresCorrectKeys": []
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-02",
+            "kind": "math",
+            "template": "0\\le x-n<1",
+            "partKeys": [],
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n09-parts-target-ux06-derivation"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03-intro",
+            "kind": "text",
+            "template": "各辺に同じ整数部分を加え、中央を元の数だけにします。",
+            "partKeys": [],
+            "requiresCorrectKeys": []
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03",
+            "kind": "math",
+            "template": "{ux06IntervalLower}\\le x<{ux06IntervalUpper}",
+            "partKeys": [
+              "ux06IntervalLower",
+              "ux06IntervalUpper"
+            ],
+            "requiresCorrectKeys": [],
+            "mathGroupId": "n09-parts-target-ux06-derivation"
+          },
+          {
+            "id": "n09-parts-target::ux06-after-text",
+            "kind": "text",
+            "template": "整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+            "partKeys": [],
+            "requiresCorrectKeys": [
+              "ux06IntervalLower",
+              "ux06IntervalUpper"
             ]
           }
         ],
-        "parts": [],
-        "partOrder": []
+        "parts": [
+          {
+            "id": "n09-parts-target::ux06IntervalLower",
+            "key": "ux06IntervalLower",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "各辺にnを加えた後の下端を入れます。",
+            "learningAction": "定義の下限を元のxの区間へ変換",
+            "expected": "n",
+            "choices": [
+              {
+                "value": "n",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "n",
+                "latex": "n",
+                "misconception": "正答"
+              },
+              {
+                "value": "0",
+                "feedback": "不等式の各辺にnを加えた後の左端です。",
+                "kind": "math",
+                "display": "0",
+                "latex": "0",
+                "misconception": "不等式の各辺にnを加えた後の左端です。"
+              },
+              {
+                "value": "n-1",
+                "feedback": "各辺に同じnを加えます。",
+                "kind": "math",
+                "display": "n-1",
+                "latex": "n-1",
+                "misconception": "各辺に同じnを加えます。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-parts-target-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "n",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "定義の下限を元のxの区間へ変換",
+              "sourceRefs": [
+                "n09-parts-target-source-contract"
+              ]
+            }
+          },
+          {
+            "id": "n09-parts-target::ux06IntervalUpper",
+            "key": "ux06IntervalUpper",
+            "kind": "math",
+            "role": "meaningful-expression-construction",
+            "prompt": "同じ操作をした後の上端を入れます。",
+            "learningAction": "上限1を整数部分基準の上端へ変換",
+            "expected": "n+1",
+            "choices": [
+              {
+                "value": "n+1",
+                "feedback": "この式の関係を確定し、続く導出へ使います。",
+                "kind": "math",
+                "display": "n+1",
+                "latex": "n+1",
+                "misconception": "正答"
+              },
+              {
+                "value": "n",
+                "feedback": "上端は1にもnを加えます。",
+                "kind": "math",
+                "display": "n",
+                "latex": "n",
+                "misconception": "上端は1にもnを加えます。"
+              },
+              {
+                "value": "n-1",
+                "feedback": "nを引く操作ではありません。",
+                "kind": "math",
+                "display": "n-1",
+                "latex": "n-1",
+                "misconception": "nを引く操作ではありません。"
+              }
+            ],
+            "sourceRefs": [
+              "n09-parts-target-source-contract"
+            ],
+            "mathAssertion": {
+              "kind": "requires-semantic-review",
+              "expected": "n+1",
+              "codeSupported": false,
+              "reviewStatus": "NEEDS_AI_REVIEW",
+              "rationale": "上限1を整数部分基準の上端へ変換",
+              "sourceRefs": [
+                "n09-parts-target-source-contract"
+              ]
+            }
+          }
+        ],
+        "partOrder": [
+          "ux06IntervalLower",
+          "ux06IntervalUpper"
+        ]
       },
       {
         "nodeId": "n09-q10-reject-truncation",
@@ -14917,25 +15745,38 @@
         ],
         "rows": [
           {
-            "id": "n09-q01-negative::ux05-row-01",
+            "id": "n09-q01-negative::ux06-proposal-row-01",
             "nodeId": "n09-q01-negative",
-            "kind": "prose",
+            "kind": "math",
             "interactionRef": "n09-q01-negative",
             "requiresCorrectParts": [],
             "partIds": [
-              "n09-q01-negative::powerAction"
+              "n09-q01-negative::ux06RepeatedBase"
             ],
             "visibleAfter": [
               "n09-q01-positive"
             ]
           },
           {
-            "id": "n09-q01-negative::ux05-row-02",
+            "id": "n09-q01-negative::ux06-proposal-row-02-intro",
+            "nodeId": "n09-q01-negative",
+            "kind": "prose",
+            "interactionRef": "n09-q01-negative",
+            "requiresCorrectParts": [
+              "n09-q01-negative::ux06RepeatedBase"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-q01-positive"
+            ]
+          },
+          {
+            "id": "n09-q01-negative::ux06-proposal-row-02",
             "nodeId": "n09-q01-negative",
             "kind": "math",
             "interactionRef": "n09-q01-negative",
             "requiresCorrectParts": [
-              "n09-q01-negative::powerAction"
+              "n09-q01-negative::ux06RepeatedBase"
             ],
             "partIds": [
               "n09-q01-negative::value"
@@ -14943,21 +15784,38 @@
             "visibleAfter": [
               "n09-q01-positive"
             ]
+          },
+          {
+            "id": "n09-q01-negative::ux06-after-text",
+            "nodeId": "n09-q01-negative",
+            "kind": "prose",
+            "interactionRef": "n09-q01-negative",
+            "requiresCorrectParts": [
+              "n09-q01-negative::ux06RepeatedBase",
+              "n09-q01-negative::value"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-q01-positive"
+            ]
           }
         ],
         "rowIds": [
-          "n09-q01-negative::ux05-row-01",
-          "n09-q01-negative::ux05-row-02"
+          "n09-q01-negative::ux06-proposal-row-01",
+          "n09-q01-negative::ux06-proposal-row-02-intro",
+          "n09-q01-negative::ux06-proposal-row-02",
+          "n09-q01-negative::ux06-after-text"
         ],
         "mathRowIds": [
-          "n09-q01-negative::ux05-row-02"
+          "n09-q01-negative::ux06-proposal-row-01",
+          "n09-q01-negative::ux06-proposal-row-02"
         ],
         "partIds": [
-          "n09-q01-negative::powerAction",
+          "n09-q01-negative::ux06RepeatedBase",
           "n09-q01-negative::value"
         ],
         "number": "1",
-        "numberRowRef": "n09-q01-negative::ux05-row-02",
+        "numberRowRef": "n09-q01-negative::ux06-proposal-row-02",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -14970,7 +15828,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "負の候補も確かめます。括弧と指数に注意しましょう。"
+                "text": "正の候補に続いて、負の候補も調べます。平方する対象が括弧のどこまでかに注意しましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -15438,46 +16296,81 @@
         ],
         "rows": [
           {
-            "id": "n09-q02-negative-square::ux05-given-01",
+            "id": "n09-q02-negative-square::ux06-proposal-row-01",
+            "nodeId": "n09-q02-negative-square",
+            "kind": "math",
+            "interactionRef": "n09-q02-negative-square",
+            "requiresCorrectParts": [],
+            "partIds": [
+              "n09-q02-negative-square::ux06RootBase"
+            ],
+            "visibleAfter": [
+              "n09-q02-root"
+            ]
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-02-intro",
             "nodeId": "n09-q02-negative-square",
             "kind": "prose",
             "interactionRef": "n09-q02-negative-square",
-            "requiresCorrectParts": [],
+            "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-q02-root"
             ]
           },
           {
-            "id": "n09-q02-negative-square::ux05-given-02",
+            "id": "n09-q02-negative-square::ux06-proposal-row-02",
             "nodeId": "n09-q02-negative-square",
             "kind": "math",
             "interactionRef": "n09-q02-negative-square",
-            "requiresCorrectParts": [],
+            "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-q02-root"
             ]
           },
           {
-            "id": "n09-q02-negative-square::ux05-given-03",
+            "id": "n09-q02-negative-square::ux06-proposal-row-03",
             "nodeId": "n09-q02-negative-square",
             "kind": "math",
             "interactionRef": "n09-q02-negative-square",
-            "requiresCorrectParts": [],
+            "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase"
+            ],
+            "partIds": [
+              "n09-q02-negative-square::ux06SignProduct"
+            ],
+            "visibleAfter": [
+              "n09-q02-root"
+            ]
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-04-intro",
+            "nodeId": "n09-q02-negative-square",
+            "kind": "prose",
+            "interactionRef": "n09-q02-negative-square",
+            "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase",
+              "n09-q02-negative-square::ux06SignProduct"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-q02-root"
             ]
           },
           {
-            "id": "n09-q02-negative-square::ux05-row-01",
+            "id": "n09-q02-negative-square::ux06-proposal-row-04",
             "nodeId": "n09-q02-negative-square",
             "kind": "math",
             "interactionRef": "n09-q02-negative-square",
-            "requiresCorrectParts": [],
-            "hideAfterCorrectParts": [
-              "n09-q02-negative-square::signedRootSquareUX05"
+            "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase",
+              "n09-q02-negative-square::ux06SignProduct"
             ],
             "partIds": [
               "n09-q02-negative-square::signedRootSquareUX05"
@@ -15487,11 +16380,13 @@
             ]
           },
           {
-            "id": "n09-q02-negative-square::ux05-row-02",
+            "id": "n09-q02-negative-square::ux06-after-text",
             "nodeId": "n09-q02-negative-square",
-            "kind": "math",
+            "kind": "prose",
             "interactionRef": "n09-q02-negative-square",
             "requiresCorrectParts": [
+              "n09-q02-negative-square::ux06RootBase",
+              "n09-q02-negative-square::ux06SignProduct",
               "n09-q02-negative-square::signedRootSquareUX05"
             ],
             "partIds": [],
@@ -15501,23 +16396,27 @@
           }
         ],
         "rowIds": [
-          "n09-q02-negative-square::ux05-given-01",
-          "n09-q02-negative-square::ux05-given-02",
-          "n09-q02-negative-square::ux05-given-03",
-          "n09-q02-negative-square::ux05-row-01",
-          "n09-q02-negative-square::ux05-row-02"
+          "n09-q02-negative-square::ux06-proposal-row-01",
+          "n09-q02-negative-square::ux06-proposal-row-02-intro",
+          "n09-q02-negative-square::ux06-proposal-row-02",
+          "n09-q02-negative-square::ux06-proposal-row-03",
+          "n09-q02-negative-square::ux06-proposal-row-04-intro",
+          "n09-q02-negative-square::ux06-proposal-row-04",
+          "n09-q02-negative-square::ux06-after-text"
         ],
         "mathRowIds": [
-          "n09-q02-negative-square::ux05-given-02",
-          "n09-q02-negative-square::ux05-given-03",
-          "n09-q02-negative-square::ux05-row-01",
-          "n09-q02-negative-square::ux05-row-02"
+          "n09-q02-negative-square::ux06-proposal-row-01",
+          "n09-q02-negative-square::ux06-proposal-row-02",
+          "n09-q02-negative-square::ux06-proposal-row-03",
+          "n09-q02-negative-square::ux06-proposal-row-04"
         ],
         "partIds": [
+          "n09-q02-negative-square::ux06RootBase",
+          "n09-q02-negative-square::ux06SignProduct",
           "n09-q02-negative-square::signedRootSquareUX05"
         ],
         "number": "4",
-        "numberRowRef": "n09-q02-negative-square::ux05-row-02",
+        "numberRowRef": "n09-q02-negative-square::ux06-proposal-row-04",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -15530,7 +16429,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "平方根の前に負号があるときも、括弧全体の平方を計算します。"
+                "text": "先ほどの負の数と同じように、今度は根号を含む数を平方します。括弧内全体を二つの因子に戻しましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -15901,24 +16800,68 @@
         ],
         "rows": [
           {
-            "id": "n09-q04-negative::ux05-given-01",
+            "id": "n09-q04-negative::ux06-proposal-row-01",
+            "nodeId": "n09-q04-negative",
+            "kind": "math",
+            "interactionRef": "n09-q04-negative",
+            "requiresCorrectParts": [],
+            "partIds": [
+              "n09-q04-negative::ux06CandidateSign"
+            ],
+            "visibleAfter": [
+              "n09-q04-nonnegative"
+            ]
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-02-intro",
             "nodeId": "n09-q04-negative",
             "kind": "prose",
             "interactionRef": "n09-q04-negative",
-            "requiresCorrectParts": [],
+            "requiresCorrectParts": [
+              "n09-q04-negative::ux06CandidateSign"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-q04-nonnegative"
             ]
           },
           {
-            "id": "n09-q04-negative::ux05-row-01",
+            "id": "n09-q04-negative::ux06-proposal-row-02",
             "nodeId": "n09-q04-negative",
             "kind": "math",
             "interactionRef": "n09-q04-negative",
-            "requiresCorrectParts": [],
-            "hideAfterCorrectParts": [
-              "n09-q04-negative::value"
+            "requiresCorrectParts": [
+              "n09-q04-negative::ux06CandidateSign"
+            ],
+            "partIds": [
+              "n09-q04-negative::ux06CandidateSquare"
+            ],
+            "visibleAfter": [
+              "n09-q04-nonnegative"
+            ]
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03-intro",
+            "nodeId": "n09-q04-negative",
+            "kind": "prose",
+            "interactionRef": "n09-q04-negative",
+            "requiresCorrectParts": [
+              "n09-q04-negative::ux06CandidateSign",
+              "n09-q04-negative::ux06CandidateSquare"
+            ],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-q04-nonnegative"
+            ]
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03",
+            "nodeId": "n09-q04-negative",
+            "kind": "math",
+            "interactionRef": "n09-q04-negative",
+            "requiresCorrectParts": [
+              "n09-q04-negative::ux06CandidateSign",
+              "n09-q04-negative::ux06CandidateSquare"
             ],
             "partIds": [
               "n09-q04-negative::value"
@@ -15928,37 +16871,13 @@
             ]
           },
           {
-            "id": "n09-q04-negative::ux05-row-02",
+            "id": "n09-q04-negative::ux06-after-text",
             "nodeId": "n09-q04-negative",
-            "kind": "math",
+            "kind": "prose",
             "interactionRef": "n09-q04-negative",
             "requiresCorrectParts": [
-              "n09-q04-negative::value"
-            ],
-            "partIds": [],
-            "visibleAfter": [
-              "n09-q04-nonnegative"
-            ]
-          },
-          {
-            "id": "n09-q04-negative::ux05-row-03",
-            "nodeId": "n09-q04-negative",
-            "kind": "math",
-            "interactionRef": "n09-q04-negative",
-            "requiresCorrectParts": [
-              "n09-q04-negative::value"
-            ],
-            "partIds": [],
-            "visibleAfter": [
-              "n09-q04-nonnegative"
-            ]
-          },
-          {
-            "id": "n09-q04-negative::ux05-row-04",
-            "nodeId": "n09-q04-negative",
-            "kind": "math",
-            "interactionRef": "n09-q04-negative",
-            "requiresCorrectParts": [
+              "n09-q04-negative::ux06CandidateSign",
+              "n09-q04-negative::ux06CandidateSquare",
               "n09-q04-negative::value"
             ],
             "partIds": [],
@@ -15968,23 +16887,25 @@
           }
         ],
         "rowIds": [
-          "n09-q04-negative::ux05-given-01",
-          "n09-q04-negative::ux05-row-01",
-          "n09-q04-negative::ux05-row-02",
-          "n09-q04-negative::ux05-row-03",
-          "n09-q04-negative::ux05-row-04"
+          "n09-q04-negative::ux06-proposal-row-01",
+          "n09-q04-negative::ux06-proposal-row-02-intro",
+          "n09-q04-negative::ux06-proposal-row-02",
+          "n09-q04-negative::ux06-proposal-row-03-intro",
+          "n09-q04-negative::ux06-proposal-row-03",
+          "n09-q04-negative::ux06-after-text"
         ],
         "mathRowIds": [
-          "n09-q04-negative::ux05-row-01",
-          "n09-q04-negative::ux05-row-02",
-          "n09-q04-negative::ux05-row-03",
-          "n09-q04-negative::ux05-row-04"
+          "n09-q04-negative::ux06-proposal-row-01",
+          "n09-q04-negative::ux06-proposal-row-02",
+          "n09-q04-negative::ux06-proposal-row-03"
         ],
         "partIds": [
+          "n09-q04-negative::ux06CandidateSign",
+          "n09-q04-negative::ux06CandidateSquare",
           "n09-q04-negative::value"
         ],
         "number": "9",
-        "numberRowRef": "n09-q04-negative::ux05-row-04",
+        "numberRowRef": "n09-q04-negative::ux06-proposal-row-03",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -15997,7 +16918,23 @@
             "content": [
               {
                 "type": "text",
-                "text": "aが負の場合、a²の非負の平方根を選びます。"
+                "text": "次は"
+              },
+              {
+                "type": "math",
+                "latex": "a<0"
+              },
+              {
+                "type": "text",
+                "text": "の場合です。根号は非負の値を表すので、符号を反対にした"
+              },
+              {
+                "type": "math",
+                "latex": "-a"
+              },
+              {
+                "type": "text",
+                "text": "が条件に合うか、符号と平方の両方を調べます。"
               }
             ],
             "requiresCorrectParts": [],
@@ -16856,11 +17793,11 @@
               },
               {
                 "type": "text",
-                "text": "をそれぞれ平方して2と比べます。"
+                "text": "を平方して2と比べます。分数に直すと分子は"
               },
               {
                 "type": "math",
-                "latex": "141^2"
+                "latex": "141"
               },
               {
                 "type": "text",
@@ -16868,11 +17805,51 @@
               },
               {
                 "type": "math",
-                "latex": "142^2"
+                "latex": "142"
               },
               {
                 "type": "text",
-                "text": "を計算しやすくするため、まず和の平方の作り方を確かめましょう。"
+                "text": "です。これらを"
+              },
+              {
+                "type": "math",
+                "latex": "141=140+1"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "142=140+2"
+              },
+              {
+                "type": "text",
+                "text": "と分けると、和の平方として計算できます。まず二つの数を"
+              },
+              {
+                "type": "math",
+                "latex": "A"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B"
+              },
+              {
+                "type": "text",
+                "text": "と表し、"
+              },
+              {
+                "type": "math",
+                "latex": "(A+B)^2"
+              },
+              {
+                "type": "text",
+                "text": "を同じ式の積に戻すところから、一段ずつ式を作りましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -16995,7 +17972,31 @@
             "content": [
               {
                 "type": "text",
-                "text": "直前の参照公式を、この分子の二項へ適用します。"
+                "text": "導いた和の平方へ"
+              },
+              {
+                "type": "math",
+                "latex": "A=140"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B=1"
+              },
+              {
+                "type": "text",
+                "text": "を対応させ、"
+              },
+              {
+                "type": "math",
+                "latex": "141^2"
+              },
+              {
+                "type": "text",
+                "text": "を求めます。まず中項を作り、その値・和・小数への戻しを順に計算しましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17118,7 +18119,31 @@
             "content": [
               {
                 "type": "text",
-                "text": "直前の参照公式を、この分子の二項へ適用します。"
+                "text": "次は"
+              },
+              {
+                "type": "math",
+                "latex": "142=140+2"
+              },
+              {
+                "type": "text",
+                "text": "です。同じ導出の"
+              },
+              {
+                "type": "math",
+                "latex": "A=140"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "B=2"
+              },
+              {
+                "type": "text",
+                "text": "として、中項から順に計算します。"
               }
             ],
             "requiresCorrectParts": [],
@@ -17399,10 +18424,10 @@
         ],
         "rows": [
           {
-            "id": "n09-parts-target::row-01",
+            "id": "n09-parts-target::ux06-proposal-row-01-intro",
             "nodeId": "n09-parts-target",
-            "kind": "math",
-            "interactionRef": null,
+            "kind": "prose",
+            "interactionRef": "n09-parts-target",
             "requiresCorrectParts": [],
             "partIds": [],
             "visibleAfter": [
@@ -17410,11 +18435,72 @@
             ]
           },
           {
-            "id": "n09-parts-target::row-02",
+            "id": "n09-parts-target::ux06-proposal-row-01",
             "nodeId": "n09-parts-target",
             "kind": "math",
-            "interactionRef": null,
+            "interactionRef": "n09-parts-target",
             "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-09"
+            ]
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-02-intro",
+            "nodeId": "n09-parts-target",
+            "kind": "prose",
+            "interactionRef": "n09-parts-target",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-09"
+            ]
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-02",
+            "nodeId": "n09-parts-target",
+            "kind": "math",
+            "interactionRef": "n09-parts-target",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-09"
+            ]
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03-intro",
+            "nodeId": "n09-parts-target",
+            "kind": "prose",
+            "interactionRef": "n09-parts-target",
+            "requiresCorrectParts": [],
+            "partIds": [],
+            "visibleAfter": [
+              "n09-09"
+            ]
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03",
+            "nodeId": "n09-parts-target",
+            "kind": "math",
+            "interactionRef": "n09-parts-target",
+            "requiresCorrectParts": [],
+            "partIds": [
+              "n09-parts-target::ux06IntervalLower",
+              "n09-parts-target::ux06IntervalUpper"
+            ],
+            "visibleAfter": [
+              "n09-09"
+            ]
+          },
+          {
+            "id": "n09-parts-target::ux06-after-text",
+            "nodeId": "n09-parts-target",
+            "kind": "prose",
+            "interactionRef": "n09-parts-target",
+            "requiresCorrectParts": [
+              "n09-parts-target::ux06IntervalLower",
+              "n09-parts-target::ux06IntervalUpper"
+            ],
             "partIds": [],
             "visibleAfter": [
               "n09-09"
@@ -17422,16 +18508,25 @@
           }
         ],
         "rowIds": [
-          "n09-parts-target::row-01",
-          "n09-parts-target::row-02"
+          "n09-parts-target::ux06-proposal-row-01-intro",
+          "n09-parts-target::ux06-proposal-row-01",
+          "n09-parts-target::ux06-proposal-row-02-intro",
+          "n09-parts-target::ux06-proposal-row-02",
+          "n09-parts-target::ux06-proposal-row-03-intro",
+          "n09-parts-target::ux06-proposal-row-03",
+          "n09-parts-target::ux06-after-text"
         ],
         "mathRowIds": [
-          "n09-parts-target::row-01",
-          "n09-parts-target::row-02"
+          "n09-parts-target::ux06-proposal-row-01",
+          "n09-parts-target::ux06-proposal-row-02",
+          "n09-parts-target::ux06-proposal-row-03"
         ],
-        "partIds": [],
+        "partIds": [
+          "n09-parts-target::ux06IntervalLower",
+          "n09-parts-target::ux06IntervalUpper"
+        ],
         "number": null,
-        "numberRowRef": "n09-parts-target::row-02",
+        "numberRowRef": "n09-parts-target::ux06-proposal-row-03",
         "numberBaselineRef": "current-visible-last-math-row",
         "axisContract": "axis-contract/1",
         "framePolicy": "fixed-group-envelope",
@@ -17448,37 +18543,7 @@
               },
               {
                 "type": "text",
-                "text": "を、"
-              },
-              {
-                "type": "text",
-                "text": "整数部分",
-                "semanticRole": "term",
-                "usage": "first_definition",
-                "emphasis": "black-bold"
-              },
-              {
-                "type": "text",
-                "text": "と"
-              },
-              {
-                "type": "text",
-                "text": "小数部分",
-                "semanticRole": "term",
-                "usage": "first_definition",
-                "emphasis": "black-bold"
-              },
-              {
-                "type": "text",
-                "text": "に分けます。実数"
-              },
-              {
-                "type": "math",
-                "latex": "x"
-              },
-              {
-                "type": "text",
-                "text": "を"
+                "text": "を整数部分と小数部分に分けます。"
               },
               {
                 "type": "math",
@@ -17486,15 +18551,15 @@
               },
               {
                 "type": "text",
-                "text": "と書き、"
+                "text": "、"
               },
               {
                 "type": "math",
-                "latex": "n\\in\\mathbb Z"
+                "latex": "n"
               },
               {
                 "type": "text",
-                "text": "、"
+                "text": "は整数、"
               },
               {
                 "type": "math",
@@ -17518,7 +18583,15 @@
               },
               {
                 "type": "text",
-                "text": "を小数部分と定めます。まず、見た目の整数の桁だけを切り取った候補が、この条件に合うか確かめます。"
+                "text": "を小数部分と定めます。この定義から、"
+              },
+              {
+                "type": "math",
+                "latex": "n"
+              },
+              {
+                "type": "text",
+                "text": "を探すときに使える不等式を作りましょう。"
               }
             ],
             "requiresCorrectParts": [],
@@ -18740,14 +19813,18 @@
       }
     ],
     "partIds": [
-      "n09-q01-negative::powerAction",
+      "n09-q01-negative::ux06RepeatedBase",
       "n09-q01-negative::value",
       "n09-01::factorisedFormUX05",
       "n09-01::factorZeroConditionUX05",
       "n09-q02-root::value",
+      "n09-q02-negative-square::ux06RootBase",
+      "n09-q02-negative-square::ux06SignProduct",
       "n09-q02-negative-square::signedRootSquareUX05",
       "n09-03::value",
       "n09-q04-nonnegative::value",
+      "n09-q04-negative::ux06CandidateSign",
+      "n09-q04-negative::ux06CandidateSquare",
       "n09-q04-negative::value",
       "n09-05::value",
       "n09-q06-squares::value",
@@ -18773,6 +19850,8 @@
       "n09-p001-q08-upper-sign::D",
       "n09-09::lowerRelation",
       "n09-09::upperRelation",
+      "n09-parts-target::ux06IntervalLower",
+      "n09-parts-target::ux06IntervalUpper",
       "n09-q10-reject-truncation::value",
       "n09-q10-reject-truncation::candidateValidityUX05",
       "n09-10::n",
@@ -18812,14 +19891,24 @@
         "nodeId": "n09-q01-negative",
         "rows": [
           {
-            "id": "n09-q01-negative::ux05-row-01",
-            "template": "2乗の操作は、{powerAction}。",
+            "id": "n09-q01-negative::ux06-proposal-row-01",
+            "template": "(-4)^2=(-4)\\times({ux06RepeatedBase})",
+            "kind": "math"
+          },
+          {
+            "id": "n09-q01-negative::ux06-proposal-row-02-intro",
+            "template": "二つの因子を掛け、平方の値を確かめます。",
             "kind": "text"
           },
           {
-            "id": "n09-q01-negative::ux05-row-02",
-            "template": "(-4)^2=(-4)\\times(-4)={value}",
+            "id": "n09-q01-negative::ux06-proposal-row-02",
+            "template": "={value}",
             "kind": "math"
+          },
+          {
+            "id": "n09-q01-negative::ux06-after-text",
+            "template": "正負の候補が条件に合うことは確かめられました。次は、ほかに解がないことまで示します。",
+            "kind": "text"
           }
         ]
       },
@@ -18927,29 +20016,39 @@
         "nodeId": "n09-q02-negative-square",
         "rows": [
           {
-            "id": "n09-q02-negative-square::ux05-given-01",
-            "template": "積の平方と平方根の定義を使います。",
+            "id": "n09-q02-negative-square::ux06-proposal-row-01",
+            "template": "(-\\sqrt5)^2=(-\\sqrt5)({ux06RootBase})",
+            "kind": "math"
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-02-intro",
+            "template": "掛ける順を入れ替え、符号の部分と根号の部分をまとめます。",
             "kind": "text"
           },
           {
-            "id": "n09-q02-negative-square::ux05-given-02",
-            "template": "(uv)^2=u^2v^2",
+            "id": "n09-q02-negative-square::ux06-proposal-row-02",
+            "template": "=(-1)(-1)(\\sqrt5)(\\sqrt5)",
             "kind": "math"
           },
           {
-            "id": "n09-q02-negative-square::ux05-given-03",
-            "template": "(\\sqrt a)^2=a\\quad(a\\ge0)",
+            "id": "n09-q02-negative-square::ux06-proposal-row-03",
+            "template": "={ux06SignProduct}(\\sqrt5)^2",
             "kind": "math"
           },
           {
-            "id": "n09-q02-negative-square::ux05-row-01",
-            "template": "(-\\sqrt5)^2={signedRootSquareUX05}",
+            "id": "n09-q02-negative-square::ux06-proposal-row-04-intro",
+            "template": "根号の定義を、残った平方へ適用します。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-q02-negative-square::ux06-proposal-row-04",
+            "template": "={signedRootSquareUX05}",
             "kind": "math"
           },
           {
-            "id": "n09-q02-negative-square::ux05-row-02",
-            "template": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=1\\times5=5",
-            "kind": "math"
+            "id": "n09-q02-negative-square::ux06-after-text",
+            "template": "負号も含めて同じ数を二回掛けたので、結果は正になりました。根号自体の値と、負号を含む数の平方の値を区別して記録します。",
+            "kind": "text"
           }
         ]
       },
@@ -19017,29 +20116,34 @@
         "nodeId": "n09-q04-negative",
         "rows": [
           {
-            "id": "n09-q04-negative::ux05-given-01",
-            "template": "平方根記号は非負の平方根を表します。",
+            "id": "n09-q04-negative::ux06-proposal-row-01",
+            "template": "a<0\\quad\\Rightarrow\\quad -a\\ {ux06CandidateSign}\\ 0",
+            "kind": "math"
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-02-intro",
+            "template": "続いて候補の平方を確かめます。",
             "kind": "text"
           },
           {
-            "id": "n09-q04-negative::ux05-row-01",
+            "id": "n09-q04-negative::ux06-proposal-row-02",
+            "template": "(-a)^2=(-a)(-a)={ux06CandidateSquare}",
+            "kind": "math"
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03-intro",
+            "template": "候補は正で、その平方は元の数の平方と一致します。根号の定義に合う値を結論にします。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-q04-negative::ux06-proposal-row-03",
             "template": "\\sqrt{a^2}={value}",
             "kind": "math"
           },
           {
-            "id": "n09-q04-negative::ux05-row-02",
-            "template": "a<0\\ \\Rightarrow\\ -a>0",
-            "kind": "math"
-          },
-          {
-            "id": "n09-q04-negative::ux05-row-03",
-            "template": "(-a)^2=a^2",
-            "kind": "math"
-          },
-          {
-            "id": "n09-q04-negative::ux05-row-04",
-            "template": "\\sqrt{a^2}=-a",
-            "kind": "math"
+            "id": "n09-q04-negative::ux06-after-text",
+            "template": "元の数の符号によって、その数自体を使う場合と符号を反対にする場合が分かれました。次は条件と結果を対にしてまとめます。",
+            "kind": "text"
           }
         ]
       },
@@ -19188,7 +20292,7 @@
           },
           {
             "id": "n09-decimal-method::ux06-proposal-row-06-intro",
-            "template": "これで和の平方が導けました。次は小数を分数に直し、分子を計算しやすい二項の和として、この式を使います。",
+            "template": "和の平方が導けました。ここからA=140、B=1または2として分子を計算し、分母の平方で割って、小数の候補へ戻します。",
             "kind": "text"
           },
           {
@@ -19337,14 +20441,39 @@
         "nodeId": "n09-parts-target",
         "rows": [
           {
-            "id": "n09-parts-target::row-01",
-            "template": "x=n+r,\\quad n\\in\\mathbb Z,\\quad0\\le r<1",
+            "id": "n09-parts-target::ux06-proposal-row-01-intro",
+            "template": "定義の式を、小数部分について書き直します。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-01",
+            "template": "r=x-n",
             "kind": "math"
           },
           {
-            "id": "n09-parts-target::row-02",
-            "template": "r=x-n,\\quad n\\le x<n+1",
+            "id": "n09-parts-target::ux06-proposal-row-02-intro",
+            "template": "小数部分の条件へ、いまの式を代入します。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-02",
+            "template": "0\\le x-n<1",
             "kind": "math"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03-intro",
+            "template": "各辺に同じ整数部分を加え、中央を元の数だけにします。",
+            "kind": "text"
+          },
+          {
+            "id": "n09-parts-target::ux06-proposal-row-03",
+            "template": "{ux06IntervalLower}\\le x<{ux06IntervalUpper}",
+            "kind": "math"
+          },
+          {
+            "id": "n09-parts-target::ux06-after-text",
+            "template": "整数部分は、いま導いた区間の左端になる整数です。負の数でも桁を切り取るだけでよいか、次に元の小数で確かめます。",
+            "kind": "text"
           }
         ]
       },
@@ -19594,11 +20723,11 @@
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "sourceBase": "18839ba97ec73c99f41c8715c3a888524b743358",
     "sourceSha256": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
-    "designSha256": "a962a38671a482d6c5df413573b0b3022c21c4a296f81a5bcc31efc6effae525"
+    "designSha256": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4"
   },
-  "learnerCopyHash": "706ed16df85e9c53687e1a7f3744291430e89b10a0e2ccdb9cbc29a25705078e",
-  "constructionDesignHash": "b674a3b0cb2d4eca4f04bcb51caf31572996121812d8ee524af58ec89f6d8df2",
-  "layoutDesignHash": "5383ee13d567a057c3a0c6ba85e91477745e0fd624509f5e8a4d82596d4a7911",
+  "learnerCopyHash": "1de1cbbd789123317dd9b4310cb8e262dc0bfa5247e4b4593974b41d73636d5c",
+  "constructionDesignHash": "bd3c7c1f9a3bc0d9b5e2771032a7787b13aa01d4ae7d69dd1c662289b46cd624",
+  "layoutDesignHash": "5811e0d53c75921231b347fa8a1cf890ff2246f6e03a6b6c1ff1c83d8bb168b3",
   "automaticAcceptance": false,
-  "compiledHash": "de799a4d1ab2db03d204e5024f33aab67cf36d6f8b217a28cdd2a959ebef10d4"
+  "compiledHash": "7ccea0daae7cc9fa65ccf36ab0b0f8680a17116d633da65a405338ba086f340b"
 }

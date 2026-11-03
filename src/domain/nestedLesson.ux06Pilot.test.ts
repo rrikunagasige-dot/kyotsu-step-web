@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import current from '../data/textbook/math/numbers/n09ConstructionCompiled.json'
+import current from '../data/textbook/math/numbers/n09ConstructionCompiledR9.json'
 import previous from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'
 import mapping from '../data/textbook/math/numbers/n0910Ux06Migration.json'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from './compiledNestedLesson'

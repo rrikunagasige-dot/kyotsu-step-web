@@ -1,3 +1,5 @@
+import n09PreviousR9 from '../data/textbook/math/numbers/n09ConstructionCompiledR9.json'
+import n10PreviousR5 from '../data/textbook/math/numbers/n10ConstructionCompiledR5.json'
 import n09PreviousR8 from '../data/textbook/math/numbers/n09ConstructionCompiledR8.json'
 import n09PreviousR7 from '../data/textbook/math/numbers/n09ConstructionCompiledR7.json'
 import n10PreviousR4 from '../data/textbook/math/numbers/n10ConstructionCompiledR4.json'
@@ -27,7 +29,7 @@ import { validateTextbookUnits } from '../domain/textbookSchema'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 const registry = { n09: n09Compiled, n10: n10Compiled } as unknown as Record<'n09' | 'n10', CompiledNestedLesson>
-const migrationSources = { n09: [n09PreviousR8, n09PreviousR7, n09PreviousR6, n09PreviousR5, n09Previous], n10: [n10PreviousR4, n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
+const migrationSources = { n09: [n09PreviousR9, n09PreviousR8, n09PreviousR7, n09PreviousR6, n09PreviousR5, n09Previous], n10: [n10PreviousR5, n10PreviousR4, n10Pilot, n10Previous] } as unknown as Record<'n09' | 'n10', CompiledNestedLesson[]>
 const activeUnits = { n09: mathNumbersN09Unit, n10: mathNumbersN10Unit }
 const legacyUnits = { n09: validateTextbookUnits([n09Presentation.unit])[0], n10: validateTextbookUnits([n10Presentation.unit])[0] }
 function readSaved(key: string, compiled: CompiledNestedLesson): Saved | undefined {
@@ -132,7 +134,7 @@ export function N0910RevisionPage({ code, embedded = false }: { code: 'n09' | 'n
             sourceLedger = migrateNativeRevisionLedger({ source: sourceLesson, target: fullR4, sourceLedger, now: Date.now() }).ledger
             sourceLesson = fullR4
           }
-          const intermediates = code === 'n09' ? [n09PreviousR5, n09PreviousR6, n09PreviousR7, n09PreviousR8] as unknown as CompiledNestedLesson[] : [n10PreviousR4] as unknown as CompiledNestedLesson[]
+          const intermediates = code === 'n09' ? [n09PreviousR5, n09PreviousR6, n09PreviousR7, n09PreviousR8, n09PreviousR9] as unknown as CompiledNestedLesson[] : [n10PreviousR4, n10PreviousR5] as unknown as CompiledNestedLesson[]
           for (const snapshot of intermediates.filter(c => c.toRevision > sourceLesson.toRevision && c.toRevision < lesson.toRevision)) {
             const target = nestedLessonFromCompiled(snapshot)
             sourceLedger = migrateNativeRevisionLedger({ source: sourceLesson, target, sourceLedger, now: Date.now() }).ledger

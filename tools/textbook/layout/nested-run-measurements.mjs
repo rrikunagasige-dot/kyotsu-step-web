@@ -110,12 +110,14 @@ export function checkNestedRuns(compiled, runs, context = {}) {
         if (g) {
           const groupKey = g.groupId + ':' + formula.mode + ':' + layoutState, old = groups.get(groupKey);
           const localColumn = g.relationX - g.bodyLeft;
-          if (!old) groups.set(groupKey, { bodyWidth: g.bodyWidth, neutralLayoutKey: g.neutralLayoutKey, column: g.status === 'ALIGNED' ? localColumn : undefined });
+          if (!old) groups.set(groupKey, { bodyWidth: g.bodyWidth, neutralLayoutKey: g.neutralLayoutKey, column: g.status === 'ALIGNED' ? localColumn : undefined, absoluteColumn: g.status === 'ALIGNED' ? g.relationX : undefined });
           else {
             if (old.neutralLayoutKey !== g.neutralLayoutKey || Math.abs(old.bodyWidth - g.bodyWidth) > 1) reject('NESTED_GROUP_STATE_CHANGED', at + ':' + groupKey);
             if (g.status === 'ALIGNED') {
               if (old.column !== undefined && Math.abs(old.column - localColumn) > 1) reject('NESTED_RELATION_COLUMN_CHANGED', at + ':' + groupKey);
+              if (!finite(g.relationX) || old.absoluteColumn !== undefined && Math.abs(old.absoluteColumn - g.relationX) > 1) reject('NESTED_ABSOLUTE_RELATION_COLUMN_CHANGED', at + ':' + groupKey);
               old.column ??= localColumn;
+              old.absoluteColumn ??= g.relationX;
             }
           }
         }

@@ -1,0 +1,8 @@
+{
+  "initialAttempt": "FAIL at N11 math compile without required local SymPy path; original log retained",
+  "retry": "PASS with PYTHONPATH=/tmp/w046-sympy",
+  "baselineRef": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "baselineReason": "Frozen W036 baseline byte-equal to remote929f; remote929f object is not locally available",
+  "appBytesChangedForRetry": false,
+  "CIClaimed": false
+}

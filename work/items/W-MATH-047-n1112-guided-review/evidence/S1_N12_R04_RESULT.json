@@ -1,0 +1,177 @@
+{
+  "result": {
+    "verdict": "PASS",
+    "evidence_refs": [
+      "fb5d28c6-9130-4954-8093-235d8f5ced86",
+      "4576e84d-d46e-4061-8980-ccb13d550658",
+      "b56246b7-7893-4bae-9ab7-a4eb4b9a6b4a",
+      "d6ec9692-e357-4187-8d1b-028f4d5178af",
+      "960b1abf-0858-41e0-9821-bf9b4d461b30",
+      "0bd7d789-ba2e-4e27-8caf-eac1eed3ef4b",
+      "9b61241b-5e2d-48aa-80c1-7c7fccbb37ca",
+      "2fd71f16-e6d0-47a0-b751-c7ad22e96706",
+      "08d8bec6-84d6-4851-a5a5-d87a3705a5d7",
+      "1a172561-e782-446f-99f3-99340f63b51b",
+      "87078ec8-5aaf-4e11-8287-fed602bb5f64"
+    ],
+    "capability_receipts": [
+      "8761042c930198d23ba5cbf1b08e62f6a15578094b647a051da7b645c0c26340",
+      "b86f7525674725cb05235e4688d842923cd4c0bdb8461cb4af4cc0a7d024706e",
+      "97c1b6bf93303d252a4b109f4813024808ddea66b72e5a9bfd71537c8e247b66",
+      "6a5d50a94e2066107cb6bf59dd7d610bcec4191d977eb44ade7e5b043ad5737f",
+      "2b4de55d813c9716eefd7921b4f7524fbf8adcc3bb0446d691ae4665e039162d",
+      "e9dee408ea59246b36469d15e06301e59d7586be59137fd73ac8288918162548",
+      "f2c241f789cc3e316ca0729fc2d8858c32288e6c6526b8498d37097dd0cd125c",
+      "92468225d72657447a59db411d1b8ce13357c04d564b7c5890f9d3e12303621c",
+      "c1d541a17140bcec2527aca62e926b3c118ac70393a91120a6e2303d8916cb68",
+      "ec439a6bf09e6b24efaa3dc1e984e7fe8adf182e70670fb00593e8ecc3d1b247",
+      "0315de242f9f136c8e1d5f78cf140f2f8f8f058b0e5d5cc76b178849178be312"
+    ],
+    "case_dispositions": [
+      {
+        "id": "N07-USER-F01",
+        "dimension": "prerequisite_missing",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-USER-F02",
+        "dimension": "orphan_output",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-USER-F03",
+        "dimension": "unmotivated_operation",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-USER-F04",
+        "dimension": "broken_derivation",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-USER-F05",
+        "dimension": "term_semantics_missing",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-USER-F06",
+        "dimension": "math_render_omission",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "n07-layout-relation",
+        "dimension": "layout_discomfort",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "n07-layout-positive",
+        "dimension": "layout_style_rejection",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "first-title-layout-positive",
+        "dimension": "layout_discomfort",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N07-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N08-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N09-REJECTED-20261025",
+        "dimension": "operation_order",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N10-REJECTED-20261025",
+        "dimension": "factor_grouping",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N09-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      },
+      {
+        "id": "N10-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "APPLY",
+        "reason": "今回の96nodeを原問・意味境界・操作対象・既認定結果・保存と照合。元事例の数値や品質ラベルは今回へ転記しない。"
+      }
+    ],
+    "aiReview": {
+      "requestHash": "0de8edd1fc25a0a79a72ff658e0f91b464f407e718c5a3654d89d731e17793ef",
+      "inputHash": "b5550ba58d5218faa882867388480b6eb8ec0157bfe84ef4e6dec5ebdd00b085",
+      "reviewer": "M integrating actual A/B source reports",
+      "evidence": "Existing math/teaching/step/blank/prose/figure CODE at exact approved P006 IR plus independent first actual inactive-render observations. Prior plan exposure and B capture-tool assistance disclosed. Authored candidate remains inactive until R05/R06; CI/learner acceptance not inferred."
+    },
+    "before_after": [
+      "N11 41KEEP/6CHANGE; N12 44KEEP/5CHANGE (q13 optional adopted)",
+      "85 IDs/answers/choices/dependencies unchanged"
+    ],
+    "protected_scope": [
+      "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+      "src/components/textbook/construction-lesson-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "public/assets/math/textbook/numbers/n11-f01.png",
+      "public/assets/math/textbook/numbers/n11-f02.png",
+      "public/assets/math/textbook/numbers/n12-f01.png",
+      "public/assets/math/textbook/numbers/n12-f02.png",
+      "public/assets/math/textbook/numbers/n12-f03.png"
+    ],
+    "patch_plan": [
+      "Only eleven node copies/operation scaffolds",
+      "Use existing compile and preserve current postprocessing/overlay",
+      "No renderer/schema/namespace replacement"
+    ],
+    "verification_plan": [
+      "Existing compile/coverage/snapshots and proposal audits",
+      "After approval: four widths/initial-partial-completed/85 answers and allwrong",
+      "Preserve saved/archive histories, N09/N10 and five original diagrams"
+    ],
+    "proposal_hash": "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e",
+    "proofStatus": "AI_ARGUMENT_REVIEWED",
+    "formalProof": false,
+    "teamCollection": {
+      "submissionActor": "M",
+      "registrationRefs": [
+        "70c4da04f6aa1045c6498be5e8e9c01d42e4ff09f20430deb0cfc11bccefcff1",
+        "d1c4064278d2f3052df122ceca1a5f0becc2e56a5a9bfe89181f548b26144e13"
+      ],
+      "outputRefs": [
+        "604f88e9875be3895ef1e8792ea4b757103e7ca9dda5c75c76cb0a196eb6a3b4",
+        "7867be503a02cbfdb36c3876bd57550842f1e9f896973f9435017fa9a6921b63"
+      ]
+    }
+  },
+  "targetHash": "edf7dbfbfc38d551b77339bb915b62433c608439eca3e20abad1cf39f2301cc6",
+  "submitted": true
+}

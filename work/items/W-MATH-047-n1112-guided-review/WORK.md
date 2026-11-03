@@ -1,8 +1,12 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / S1実承認・正式適用済み / N12 R04実表示審査中 / 未公開
+Status: VERIFYING / S1適用・N12 R04/R05通過・五変更適用済み / 現bytes再検証中 / 未公開
 
-現在（S1適用後）：user3052d970「いいよ続けて」をS1 hash179e750…と新scopeの実承認として正式記録。元scope/元承認を変更せずRuntime.revise/userを使用。N11の不変target9bf4…/実CI targeteb79…を現CODEへ歴史的再結合し、R04/R05/R06/R07を再検証。R1の二行を再適用していない。原初見はStoreの原rawReportと一致し、今回を新初見とは称さない。N12 R01/R02/R03完了、R04 CODE完了・実表示のA/B審査待ち。active N12はまだBASELINEで、P006五変更は未適用。
+現在（N12適用後）：新actual-render target edf7dbfb…をA/Bが正式PASS、N12-D04を現画像でVERIFIED_FIXED。R04/R05を正式受理し、既存generic apply_patchが固定P006のN12一pathを適用（after8ba07062…）。全ID順を保つためN11専用の移動adapterは使用していない。適用で入力hashが変わったため元R06 claimを正式照合し、native nextはR01_CAPTURE@n11。N11/N12の必要工程を最終bytesへ再検証し、N12を二重適用しない。生成済み図はpre-apply checkpointで、次の正式handoffで現台帳から再生成する。新sourceの専用CIを開始し、CODE成功/原資料レビュー/画像審査/本人確認を区別する。
+
+N12の隔離捕捉は60通常viewport（5target×3state×4幅）と補助画像を含む135PNG。46正答・5つの代表誤答、history/reload/reset/次N13往復は隔離candidateの実操作で確認。全127誤答×四幅はこれから実sourceCIで確認し、この5件を全件試験と称さない。Bの一枚の画像欠けnoteは同一SHA再openで非再現、原初見と訂正を別々に保持。実装前R04 claimは審査中に期限切れのため正式FAILED照合/同一inputの新claimへ原CODE/初見を保持して再受領、教材FAILとはしない。
+
+S1適用時の履歴：user3052d970「いいよ続けて」をS1 hash179e750…と新scopeの実承認として正式記録。元scope/元承認を変更せずRuntime.revise/userを使用。N11の不変target9bf4…/実CI targeteb79…を現CODEへ歴史的再結合し、R04/R05/R06/R07を再検証。R1の二行を再適用していない。原初見はStoreの原rawReportと一致し、今回を新初見とは称さない。N12 R01/R02/R03完了、R04 CODE完了・実表示のA/B審査待ち。active N12はまだBASELINEで、P006五変更は未適用。
 
 火柴図：generated/CURRENT_POSITION.md / FIRE_DIAGRAM.md は現台帳から再生成。次はR04_PROPOSAL@n12の実表示審査→既承認scopeでR05→既存generic adapterでR06→実sourceのCI/R07→画像確認/G2。公開工程G3は両unit検証後。今回のS1承認を公開/merge/最終受入へ拡張しない。
 

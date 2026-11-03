@@ -1,0 +1,168 @@
+[
+  {
+    "logical": "A",
+    "assignment": {
+      "assignmentId": "w047-s1-n12-render-A-b5550ba58d",
+      "roleEpoch": 8,
+      "node": "R04_PROPOSAL@n12",
+      "block": "n12",
+      "facet": "design",
+      "claimRefs": [
+        "teaching"
+      ],
+      "performerRef": "/root/w047_review_design",
+      "role": "reviewer",
+      "inputHash": "b5550ba58d5218faa882867388480b6eb8ec0157bfe84ef4e6dec5ebdd00b085",
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "artifactHashes": {
+        "teaching": "edf7dbfbfc38d551b77339bb915b62433c608439eca3e20abad1cf39f2301cc6"
+      },
+      "allowedPaths": [],
+      "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+      "dependsOnTasks": [],
+      "budget": {
+        "tokenBudget": null
+      },
+      "independent": true,
+      "targetManifestRef": "0da8ccd226eb1ae6ad6ff2e862b6f0db469e4866a3e58b580a8ec62fd417db5c"
+    },
+    "packet": {
+      "baseNodeInputHash": "b5550ba58d5218faa882867388480b6eb8ec0157bfe84ef4e6dec5ebdd00b085",
+      "sourceRefs": [
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ],
+      "authorHistory": [
+        {
+          "claimRef": "teaching",
+          "facet": "design",
+          "block": "n12",
+          "semanticContributorRefs": [
+            "/root",
+            "/root/w046_render_review"
+          ]
+        }
+      ],
+      "contextExposure": {
+        "forkMode": "filtered",
+        "authorRationaleVisibleAtFirstPass": false,
+        "priorExposure": "P006 plan/old IR/source and S1 known; fresh actual render observed before capture report/manifest commentary. Not blind. B assisted capture-tool code, not lesson content."
+      },
+      "packetHash": "34da4c132d9baadbbb4f16074626869a3cfdb06982bc5263a354f1b556653cfe"
+    },
+    "harness": {
+      "agentRef": "/root/w047_review_design",
+      "taskRef": "W047-S1-N12-actual-render-A",
+      "parentRef": "/root",
+      "logicalRole": "A",
+      "toolResultRef": "537dc3713e474dcdc6e4735c364dd5ad94fa02e2510806606087c6ef33c0b652",
+      "attestationMethod": "transcribed-tool-result"
+    },
+    "registration": {
+      "registrationRef": "70c4da04f6aa1045c6498be5e8e9c01d42e4ff09f20430deb0cfc11bccefcff1",
+      "assignmentHash": "15a6beb7e3d1a9e0ffb4ffacfa79643179f2d847a7122eb23acc7ea3c2de0e66",
+      "eventRef": "39bc1baa37b2bbf7183e0917ebe0cb52bd125ed491200596d9c0f3b100c7c97a"
+    },
+    "reviewKind": "source-review",
+    "evidenceRefs": [
+      "fb5d28c6-9130-4954-8093-235d8f5ced86",
+      "4576e84d-d46e-4061-8980-ccb13d550658",
+      "b56246b7-7893-4bae-9ab7-a4eb4b9a6b4a",
+      "d6ec9692-e357-4187-8d1b-028f4d5178af",
+      "960b1abf-0858-41e0-9821-bf9b4d461b30",
+      "0bd7d789-ba2e-4e27-8caf-eac1eed3ef4b",
+      "9b61241b-5e2d-48aa-80c1-7c7fccbb37ca",
+      "2fd71f16-e6d0-47a0-b751-c7ad22e96706",
+      "08d8bec6-84d6-4851-a5a5-d87a3705a5d7",
+      "1a172561-e782-446f-99f3-99340f63b51b",
+      "87078ec8-5aaf-4e11-8287-fed602bb5f64"
+    ]
+  },
+  {
+    "logical": "B",
+    "assignment": {
+      "assignmentId": "w047-s1-n12-render-B-b5550ba58d",
+      "roleEpoch": 8,
+      "node": "R04_PROPOSAL@n12",
+      "block": "n12",
+      "facet": "render",
+      "claimRefs": [
+        "layout"
+      ],
+      "performerRef": "/root/w047_layout_sourcefirst",
+      "role": "reviewer",
+      "inputHash": "b5550ba58d5218faa882867388480b6eb8ec0157bfe84ef4e6dec5ebdd00b085",
+      "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "artifactHashes": {
+        "layout": "edf7dbfbfc38d551b77339bb915b62433c608439eca3e20abad1cf39f2301cc6"
+      },
+      "allowedPaths": [],
+      "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+      "dependsOnTasks": [],
+      "budget": {
+        "tokenBudget": null
+      },
+      "independent": true,
+      "targetManifestRef": "dcde34338b4bac13863dd5f90f365b139fd37417823d678b60d7dd9b01b11810"
+    },
+    "packet": {
+      "baseNodeInputHash": "b5550ba58d5218faa882867388480b6eb8ec0157bfe84ef4e6dec5ebdd00b085",
+      "sourceRefs": [
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/domain/textbook.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+      ],
+      "authorHistory": [
+        {
+          "claimRef": "layout",
+          "facet": "render",
+          "block": "n12",
+          "semanticContributorRefs": [
+            "/root",
+            "/root/w046_render_review"
+          ]
+        }
+      ],
+      "contextExposure": {
+        "forkMode": "filtered",
+        "authorRationaleVisibleAtFirstPass": false,
+        "priorExposure": "P006 plan/old IR/source and S1 known; fresh actual render observed before capture report/manifest commentary. Not blind. B assisted capture-tool code, not lesson content."
+      },
+      "packetHash": "e0b426c508b9f42bfb67b0ad11decf518e74c9d3e49f66748b239503e962db74"
+    },
+    "harness": {
+      "agentRef": "/root/w047_layout_sourcefirst",
+      "taskRef": "W047-S1-N12-actual-render-B",
+      "parentRef": "/root",
+      "logicalRole": "B",
+      "toolResultRef": "779f6d4845acbdf3dd782f8c2840246cf96f0348b3ba8431ce7a315424099c54",
+      "attestationMethod": "transcribed-tool-result"
+    },
+    "registration": {
+      "registrationRef": "d1c4064278d2f3052df122ceca1a5f0becc2e56a5a9bfe89181f548b26144e13",
+      "assignmentHash": "47ef9cc0c5afcdcdfcc76cc8cc5257dd46eb2bc4c4b39b30b830df30ef1fa8ae",
+      "eventRef": "903e6bd1f85165ae4c79b6a4ef6dee62a665620332fd8863d35ab03593ff10b9"
+    },
+    "reviewKind": "learner-visible-review",
+    "evidenceRefs": [
+      "fb5d28c6-9130-4954-8093-235d8f5ced86",
+      "4576e84d-d46e-4061-8980-ccb13d550658",
+      "b56246b7-7893-4bae-9ab7-a4eb4b9a6b4a",
+      "d6ec9692-e357-4187-8d1b-028f4d5178af",
+      "960b1abf-0858-41e0-9821-bf9b4d461b30",
+      "0bd7d789-ba2e-4e27-8caf-eac1eed3ef4b",
+      "9b61241b-5e2d-48aa-80c1-7c7fccbb37ca",
+      "2fd71f16-e6d0-47a0-b751-c7ad22e96706",
+      "08d8bec6-84d6-4851-a5a5-d87a3705a5d7",
+      "1a172561-e782-446f-99f3-99340f63b51b",
+      "87078ec8-5aaf-4e11-8287-fed602bb5f64"
+    ]
+  }
+]

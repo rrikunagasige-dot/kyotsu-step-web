@@ -1,0 +1,194 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "claimRef": "teaching",
+  "facet": "design",
+  "targetHash": "edf7dbfbfc38d551b77339bb915b62433c608439eca3e20abad1cf39f2301cc6",
+  "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "verdict": "PASS",
+  "verdictScope": "指定新render PNGの初回可視意味審査。正式manifest/source束縛前。",
+  "firstPass": true,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blind": false,
+  "exposure": "P006/過去IR/静的design/工程/source調査は既視。この新actualrender artifactの実PNGは今回初見。別の案初見や盲検とは呼ばない。",
+  "readOrder": [
+    "原資料N12_SOURCE_INDEX全41blockを位置/数式付き再確認。原問p518/526/536/548、一般説明と具体判定結果の区別、旧N12-D04の解決条件を確認。",
+    "390通常viewport:五target×pending/wrong/correct全15PNG",
+    "320→430→1440通常viewport:各幅15PNG、計45PNG",
+    "stagecontext4PNGとKEEP06/15各PNG",
+    "FOCUSED_CAPTURE/manifest/作者・他agent報告は原所見固定前には未読。"
+  ],
+  "firstObservations": [
+    "原問p518の第一不等式は、直前-7<2xと正の2による除算の規則を根拠に、学習者がx左側の解を選ぶ。四幅pending/wrongでは商-7/2と完成範囲の断定を選択肢外に認めず、correctでx>-7/2(4)と第一条件保持の文章が現れる。",
+    "左端pendingは既解決二条件x>-7/2とx≤1/2、x=1不適の記録を参照し、「左端-7/2が第一の条件を満たすかを調べ」る。未回答時に不充足/含まないと断定していない。correct後に-7/2<x(9)と第一の厳密な不等号を満たさないため含まないという理由が出る。wrongの助言は誤答後のfeedbackとして区別される。",
+    "共通範囲pendingでは確定した左端を根拠に再利用し、右端1/2が元の二条件を満たすか確かめる課題が残る。correct後にだけ-7/2<x≤1/2(10)、両端の理由、連立不等式の定義が接続する。既解決左端の再掲は右端評価/全範囲構成を残すため答えの単純コピーとは異なる。",
+    "上限pendingは別々の二条件x≤2/x≤5/3、x=2の8≤7不成立という既解決結果を参照し、2と5/3を比較して共通範囲を選ぶ。旧本文の完成推論5/3<2なのでx≤5/3の数はx≤2も満たすという断定はなく、correctでx≤5/3(17)と中央との二比較の必要性へつながる。",
+    "三辺操作は3200≤2650+50x<3300を根拠に、文章「三辺から同じ[選択]を引きます」の空へ数を入れる。旧2650-[slot]=0の形ではない。correct後に三辺へ2650を引いた式(32)、中央を整理した式、次の左端3200-2650計算slot(33)が現れ、学習者の操作選択→差の計算へ接続する。",
+    "四幅の60通常viewportで対象本文/slot/選択肢/番号は読める。320の三辺操作slotやwrongボタンは文中で折り返すが、文として追え、文字遮蔽/候補読取不能は認めなかった。320/390/430で完成三辺操作の長式は改行するが、括弧内中央から-2650を引く続きと両端を追える。",
+    "KEEP06はx≤2とx≤5/3を二行で別々に記録し、元の二段図F02が続く。KEEP15はT(11)=3200円、T(12)=3250円を二行で独立に記録し、整数解11/12を示すF03が検算後に続く。等号で無関係な結果を連鎖させない。",
+    "長いstagecontextの一部には上部sticky header/本文へ移動が原問先頭や段階見出しへ重なる画像がある。今回の対象本文/式/選択肢の可読判断は通常viewport60枚を中心に行い、この長い写真だけで画面外/隠れた原問全体まで確認済みとはしない。"
+  ],
+  "findings": [
+    {
+      "id": "N12-D04",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n12-q04-left-end",
+        "n12-04"
+      ],
+      "reason": "旧OPENは原問p526の端点判断を本文が先に代行する点。今回各四幅のleft-end pendingは条件評価を問うだけ、left-end correct後にのみ左端不充足理由を表示。n12-04 pendingでは右端の両条件評価を問い、correct後に両端理由と完成範囲を表示する。現実画像の状態差で旧先出し症状の解消を確認した。過去IRだけからの解決流用ではない。",
+      "evidenceFiles": [
+        "n12-q04-left-end-390-pending-viewport.png",
+        "n12-q04-left-end-390-correct-viewport.png",
+        "n12-04-390-pending-viewport.png",
+        "n12-04-390-correct-viewport.png",
+        "n12-04-correct-stage-context.png"
+      ]
+    },
+    {
+      "id": "N12-RENDER-A01",
+      "status": "確認済み",
+      "targetIds": [
+        "n12-01",
+        "n12-07",
+        "n12-q13-operation"
+      ],
+      "reason": "未回答/誤答/正答の状態差は本文の根拠→選択/計算→確定結果→次の問題への接続を保持し、対象の答えを選択肢外の未解決前段に先出しする新しい欠陥は直接精査範囲で認めなかった。"
+    },
+    {
+      "id": "N12-RENDER-A02",
+      "status": "確認済み",
+      "targetIds": [
+        "n12-06",
+        "n12-15"
+      ],
+      "reason": "既存二条件と二検算の独立二行表示を実PNGで確認。古いcompile全面コピー時に懸念した配置変更を今回画像には認めない。"
+    }
+  ],
+  "rationale": [
+    "原問の条件評価・範囲の式化・三辺同操作と、その結果を次の判断へ使う学習行為が画像に残る。必要な規則/既解決根拠の説明と、今回未解決の端点/範囲/操作の答えを区別できる。",
+    "N12-D04の左端と右端をそれぞれ判断する順序が初めて実見した今回画像で成立し、文章が回答後に理由へ接続する。"
+  ],
+  "limitations": [
+    "正式manifest/sourceSHA/撮影環境/未適用previewか実製品かの最終照合は未実施。後送固定manifestと別finalreportで結ぶ。",
+    "FOCUSED_CAPTURE/作者・他agent報告/manifestはこの原所見保存まで未読。",
+    "自分で操作/撮影したわけではない。全46正答/誤答、保存移行/reload/reset/履歴/前後単元/他modeの実行過程を画像66枚だけで証明しない。",
+    "五targetとKEEP06/15以外の全49node実表示合格や公開/本人受入/CI成功を主張しない。",
+    "以前の静的案レビューは既視。このreportのfirstPassは新しいactualrender画像を初めて読む範囲だけ。",
+    "repo/Store/Git編集なし。指定/tmp報告だけ保存。"
+  ],
+  "imageHashes": {
+    "n12-01-390-pending-viewport.png": "bd349fa0f2df23b3ec33e2ed82f4596ec7ece8dcd4abe1087c77c457e8483a7a",
+    "n12-01-390-wrong-viewport.png": "3d63f06bc743a958f784553dc3710470aa46dc044b92871269230e4848ef316b",
+    "n12-01-390-correct-viewport.png": "7bf22f78e79ee25f7a59916884dede150f5675e0b6a8e8e98b0abc598a1ac51b",
+    "n12-q04-left-end-390-pending-viewport.png": "188f9ebd8b07c7bee6e6152045bdbcd2f91355f8b6e8d15fbfc886bf36da6198",
+    "n12-q04-left-end-390-wrong-viewport.png": "20c8fd0c1014975776af7870c9bbca1dcbc7939a2d56ffe43d304979dbbb8898",
+    "n12-q04-left-end-390-correct-viewport.png": "86544ea013e520dd4dda3da0f14781e1e86e5c6feaa866452a9e55659bab271b",
+    "n12-04-390-pending-viewport.png": "543b84e28e2140e28c27be4a3cf44653deaabc2812d1d7c724a243e96a1ef56b",
+    "n12-04-390-wrong-viewport.png": "ac407bd14e62ad2a298bd10320947e47b698eb024809084893be9ab7fbcaa6df",
+    "n12-04-390-correct-viewport.png": "b2b01b0dc94712d5e11fa381b02f89b83a0a60adf2970af74723f950d520ce1e",
+    "n12-07-390-pending-viewport.png": "3f0d5d42fc64c3ca1841c1719b92e9597cc959f0c119434915ffcc171bb008cc",
+    "n12-07-390-wrong-viewport.png": "cbfaad19eec1c8009ce8c03559606704d99c0c5e6f2a1ee4978e50874863cceb",
+    "n12-07-390-correct-viewport.png": "c8e30df4ac108afb6c5d82061e3461c53440a96e8c9f19ab3772b1ce8f63df1f",
+    "n12-q13-operation-390-pending-viewport.png": "855ebe7f6be93bf098dbbb8ef8a68fd83a86a82d553451f7a069a1afa609a170",
+    "n12-q13-operation-390-wrong-viewport.png": "eeaa497144e52e8967001bd6a020331b11f938c4498ace57be15c3e83900ec69",
+    "n12-q13-operation-390-correct-viewport.png": "8798dd85ec6ed0b05d62a7f6566d01681071751fe4b2866f3c57532a6c3393b8",
+    "n12-01-320-pending-viewport.png": "be670a570400be85bc14c172c32b4d82a54486cef9e5e6473ab7fe170b7494bd",
+    "n12-01-320-wrong-viewport.png": "1fd94c82df88f5570b8ecd98558a1f0664eb30f8378b3f12b14f2a533ac20b40",
+    "n12-01-320-correct-viewport.png": "2a4b7af9d24d555824f3c88c9751fbe92aa2e5b5220adda26d69abb383a455a0",
+    "n12-q04-left-end-320-pending-viewport.png": "f38162fb132fa2dfb63f41cd043ec6580a3336dd3e890fca3deda59a18535a12",
+    "n12-q04-left-end-320-wrong-viewport.png": "1a0562670735bd466adba65055e50deeb4d39e0fe1c00e26587d307adec9ff4e",
+    "n12-q04-left-end-320-correct-viewport.png": "f8cdde9e92d2c0f1a2311001e3ed04dacc9d264966149da3695884ee23dd7180",
+    "n12-04-320-pending-viewport.png": "41bfed478abd8c28397b371aef61ad98b09847c2ebe6a731eafc7b3a2a4bfbeb",
+    "n12-04-320-wrong-viewport.png": "98823c0a1c4e593e44e99941c081573017503a786b3b15066117c6e68b27bdf3",
+    "n12-04-320-correct-viewport.png": "bd3b9c3edfd6259e571a584a720a0bb9892cc58d45d3889a37176a0e404639c3",
+    "n12-07-320-pending-viewport.png": "a1d8f96d8525a42d03a13884c5d1c84c202237ecd422a2b3e33ad983845a1bb3",
+    "n12-07-320-wrong-viewport.png": "a507402435ccdb2b6e63c5ac62f5916c3baf57086658b494804d1d1260b91e84",
+    "n12-07-320-correct-viewport.png": "23822791992bd751d6acac0e631a0af70612b2e04d321a0b7e9b8cf90be0e479",
+    "n12-q13-operation-320-pending-viewport.png": "99726563578e2bc1670a26c11dff7bef92921f45f008c869b8e9fc130b1565f7",
+    "n12-q13-operation-320-wrong-viewport.png": "b42a8d865e991e039c6ea26d30dd743e8f6e907360d68f03a0ce81a249efee13",
+    "n12-q13-operation-320-correct-viewport.png": "81570be87e6e79cbe672f3a5f14bb4b80773f87bc53a8458c4601765be260cb4",
+    "n12-01-430-pending-viewport.png": "57045fdd71febcf71ca6906d699f760cf03c60c5ace518ef87ec67315f28237f",
+    "n12-01-430-wrong-viewport.png": "f14016e56c55cfa8292c1c82aeae34e50cc38ea634fb440289c6396544dbb5e8",
+    "n12-01-430-correct-viewport.png": "f43cd5e59ea647fff063494b343c6b22c3e0909c3cc9f79b9be663acdfe9c5b8",
+    "n12-q04-left-end-430-pending-viewport.png": "dd6fff6acb1c0921cc297c43de6f045c5d0311c707f155604c82c49fbe58d863",
+    "n12-q04-left-end-430-wrong-viewport.png": "a84af7c584b0f72f2fd10f87a04fc1a122fd0c5a6774ec8c8e557d3d38a0e43d",
+    "n12-q04-left-end-430-correct-viewport.png": "3c34b80ca725f8af78e8a03ce9325011b75acd3b6021c426281de021b613ddec",
+    "n12-04-430-pending-viewport.png": "b5bb2e5072d6c9f19620c348f5bcf789535c5b806a10199612acb1f89a16ba36",
+    "n12-04-430-wrong-viewport.png": "e0b44d537e9b87968ffc5aedb64d49d78b4fa5b594c850d2b973a00b969585dd",
+    "n12-04-430-correct-viewport.png": "ffe945c92ddea32de7680332a44144b168f5ec499ec8cfb04587ef542b215f83",
+    "n12-07-430-pending-viewport.png": "a66a5855489809f8bedf752411ce1b12c44be6962afbdbc50f42851428a89d4d",
+    "n12-07-430-wrong-viewport.png": "74901a72599ce9d04a9f63cc0a7c83ee561d9efb68f3d6fb04142c79a1e3b17e",
+    "n12-07-430-correct-viewport.png": "3081c2dd4768925a76658e9d4a41c710e6381b31f9b1e367d15476ea0fde42e0",
+    "n12-q13-operation-430-pending-viewport.png": "05babe9d83d5d4a075d6c0324e278ff862f4905f1a8078460d7ad877ee0d996c",
+    "n12-q13-operation-430-wrong-viewport.png": "f5148935cabb5d5991cdce708d41daf5948e8807cf8818fc8bd6f73b5ad118e8",
+    "n12-q13-operation-430-correct-viewport.png": "3ca6f3d9c299f7b86e4e4333c16edee826d2320551372f55358d8edd6f6349b6",
+    "n12-01-1440-pending-viewport.png": "16c16308d35283382b8be7b4a0a7c7eefdd1fcd7ff0b436ccb653dc91179d8ef",
+    "n12-01-1440-wrong-viewport.png": "b3f6d235702ec4bcbe4644916369df1b6094e6819a5ed77aed98cbb31702d524",
+    "n12-01-1440-correct-viewport.png": "499ed0189405c80016a90012af962467345477c7498239aafa7bb306d5f9511e",
+    "n12-q04-left-end-1440-pending-viewport.png": "f46a1d1f58f3d80d404a5680f9bdf56d3f747ce67551143b6567281eaefe0040",
+    "n12-q04-left-end-1440-wrong-viewport.png": "1867efd1a6ba2714d1981c70909bcba2572f9b53280ba2a2dd1842628c394aec",
+    "n12-q04-left-end-1440-correct-viewport.png": "4de276d41670c1f106eb1447dab1cc6c5420f8ef32ecd41a49a88bb70c3b18a8",
+    "n12-04-1440-pending-viewport.png": "2169181825d639705db0f92f598b892e33238dcf8ae2b7023df616621fd15f6c",
+    "n12-04-1440-wrong-viewport.png": "ce9199b7eca5b57d81d460b842528698a637729acca8de2c3474bf4bb606c5eb",
+    "n12-04-1440-correct-viewport.png": "5f5c02e070880279099513755f398841b04fd21f0f52e34a759ab4d302b7c3d9",
+    "n12-07-1440-pending-viewport.png": "ba7a518512327d0a79375f61a38f72f2a51bd6f8bf434e6ebf6d716f800dc4ed",
+    "n12-07-1440-wrong-viewport.png": "f6bb5ba571d835381afc745692f0e8dec9ada73d3a222aed878076bf99b65360",
+    "n12-07-1440-correct-viewport.png": "421e9d96eb4e27bc5daf004cd8df96dd1f3c8e4c9420a775a05a3a66f085004b",
+    "n12-q13-operation-1440-pending-viewport.png": "90411c40fc0e54924af22f882d3961f27a11162bcf5492623c03813511db20d8",
+    "n12-q13-operation-1440-wrong-viewport.png": "ddcffda96cc2ec136323b333dc530405f9c8621900fc3424706416aa8b733a55",
+    "n12-q13-operation-1440-correct-viewport.png": "f8d8b2665a42ebfa991121ea25bf8a16c21dcaeb02545d1544b879e5c23ad1b8",
+    "n12-q04-left-end-pending-stage-context.png": "9b57353eb881c4a046a69e504b30e18f654bb5e2769ecf2e82c6003bc63bee3f",
+    "n12-04-correct-stage-context.png": "8c99e3d57be4042d22ad48153cfc87c2eadd7a9b10645529997996f16cf2227d",
+    "n12-07-pending-stage-context.png": "195f7ca68a827e5afe2ac5c77a622a2f6f132daca113f9db962bc838807e034d",
+    "n12-q13-operation-correct-stage-context.png": "118833331d9ad9ff7ec3faa1d37db5be68ee079ca0ba186597d962d2ed0c37f0",
+    "n12-06-independent-complete.png": "3f0a08695cb76992f4d6643d23ad070b2155e79352af7e93449b9e17fe3efcc6",
+    "n12-15-independent-complete.png": "34aeddc76070bddb6d7c56176d1ea15e3402a5f87d78f3b084a431e2ee6b9860"
+  },
+  "evidenceDirectory": "/tmp/w047-n12-render",
+  "seenImageCount": 66,
+  "originalReportSHA": "da14d20bde87046211827425a91068ac4cb79b1d3e405c201eb8b41ffbc729e3",
+  "nativeRoleMapping": {
+    "originalClaimRef": "actualrender",
+    "originalFacet": "teaching",
+    "nativeClaimRef": "teaching",
+    "nativeFacet": "design",
+    "reason": "実画像を根拠に穴の学習行為・先出し・文章論理を審査した原観察を、正式R04のA teaching/design担当へ明示対応する。新しい初見やlayout作者への変更ではない。"
+  },
+  "sourceBinding": {
+    "meaning": "sourceSHA6b439…はnative pre-design原資料の元SHAであり、実候補の公開commit/GitSHAを意味しない。",
+    "originalSourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+    "candidateSourceSHA": null,
+    "buildBaseLocalCommit": "6d72e882feb7e7593874f7d1f5188b57f8d0cb86",
+    "buildBaseRemoteCommit": "77a501120b6e8cb6f25e7225d4073125124f84b3",
+    "baseTree": "ced9eb37aa8bfbc23a46db667d3cd8a9a6921957",
+    "candidateOverride": {
+      "src/data/textbook/math/numbers/n12Authored.json": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c"
+    },
+    "kind": "INACTIVE_LOCAL_CANDIDATE_RENDER",
+    "published": false,
+    "gate1": false,
+    "layoutModified": false,
+    "remoteMappingLimit": "B原manifestはremote mapping未提供と記録。remote commit77a501…はM固定targetに後付けされた対応情報として区別し、自分でGitHubへ照会したとはしない。"
+  },
+  "bindingConfirmation": {
+    "reviewKind": "原初見の対象束縛のみ。追加の初見審査ではない。",
+    "firstPass": false,
+    "targetManifestPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N12_INACTIVE_RENDER_TARGET.json",
+    "targetManifestSHA256": "edf7dbfbfc38d551b77339bb915b62433c608439eca3e20abad1cf39f2301cc6",
+    "originalBManifestPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/N12_INACTIVE_ORIGINAL_MANIFEST.json",
+    "originalBManifestSHA256": "1e73954d420e72ea447578ec6fb00791e98fd85a730fcf9a02d87ddbc6e54aae",
+    "manifestFilesEqual": true,
+    "seenPNGMatched": 66,
+    "matchChain": "原report imageHashes → /tmp実見PNG現bytes → Work保存PNG現bytes → 元Bmanifest → 固定targetmanifest の全66件一致",
+    "originalFirstObservationsUnchanged": true,
+    "originalFlagsRetained": {
+      "firstPass": true,
+      "sourceFirst": true,
+      "authorSeparation": true
+    },
+    "originalJSONUnmodified": true,
+    "verdictRetained": "PASS",
+    "limits": "原limitationsの未束縛は初回時点の履歴として保持し、本補足でtarget/source由来を対応した。未実見の残る画像・全実操作・CI/公開/本人受入を認定しない。"
+  }
+}

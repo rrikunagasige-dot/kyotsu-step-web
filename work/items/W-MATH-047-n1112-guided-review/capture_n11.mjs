@@ -63,3 +63,8 @@ const progress=await page.evaluate(()=>Object.keys(localStorage).flatMap(k=>{try
 await page.screenshot({path:out+'/r1-reset-reload-start.png',fullPage:false});
 fs.writeFileSync(out+'/FOCUSED_CAPTURE.json',JSON.stringify({status:'PASS',width:390,targetNodes:targets,contextOnlyNodes:['n11-fraction-problem'],contextFrames,quotientFrames,reset:{confirmedDialog:true,answersCleared:true,reloadStartsAtFirstStage:true},chapterBoundary:{nextToN12:true,browserBackToCompletedN11:true},states:['initial-choice-open','completed'],sourceSHA:process.env.CANDIDATE_SHA??process.env.GITHUB_SHA??execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},null,2)+'\n');
 }finally{await browser.close();}
+
+// N12 focus joins the existing CI entry point only when the immutable P006 bytes are active.
+if(fs.readFileSync("src/data/textbook/math/numbers/n12Authored.json","utf8")===fs.readFileSync(base+"MATERIALIZED_N12.json","utf8")){
+ execFileSync(process.execPath,[base+"capture_n12.mjs"],{stdio:"inherit",env:{...process.env,EVIDENCE_DIR:out+"/../n12-focus"}});
+}

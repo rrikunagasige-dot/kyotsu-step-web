@@ -1,0 +1,188 @@
+{
+  "patchHash": "28dddeae125a53809ecaa01deab5b3fde0fbd697cc25a193cbdcd2a2a84a75d6",
+  "appliedAfterHash": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c",
+  "evidenceRefs": [
+    "08cf2868-ac05-4799-a101-52ba1f8ef879"
+  ],
+  "job": {
+    "status": "NEEDS_REVIEW",
+    "node": "R06_PATCH@n12",
+    "claimToken": "05fcb48d87434e0e9acd5db57685ffd9",
+    "receipts": [
+      "49c87833dbaec8be9380f4553d96b9ab092d3c3b6f6e913b1fc1b08c35821b04"
+    ],
+    "aiRequest": {
+      "schemaVersion": "production/2",
+      "solutionReview": null,
+      "adoptedCorrections": [],
+      "reusableHistory": [],
+      "task": {
+        "work_id": "W-MATH-047",
+        "node": {
+          "id": "R06_PATCH@n12",
+          "stage_kind": "R06_PATCH",
+          "contract_kind": "R06_PATCH",
+          "actor": "TOOL",
+          "depends_on": [
+            "R05_APPROVAL@n12"
+          ],
+          "required": [],
+          "block": "n12",
+          "release_unit": "n12",
+          "watch": "integration",
+          "phase": "pre-design",
+          "priority": 1,
+          "source_refs": [
+            "src/data/textbook/math/numbers/n12Authored.json",
+            "src/components/textbook/GuidedMathReadingFlow.tsx",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+            "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
+          ],
+          "protected_refs": [
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09Authored.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10Authored.json",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/components/textbook/GuidedMathReadingFlow.tsx",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "public/assets/math/textbook/numbers/n11-f01.png",
+            "public/assets/math/textbook/numbers/n11-f02.png",
+            "public/assets/math/textbook/numbers/n12-f01.png",
+            "public/assets/math/textbook/numbers/n12-f02.png",
+            "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "approval_scope_ref": "n12-p006",
+          "capability_requests": [
+            "ir.compile"
+          ],
+          "required_code_receipts": [
+            "ir.compile"
+          ],
+          "required_ai_receipts": []
+        },
+        "task_id": "066abff8ce94c363fd0c41331e286b4f2bdf3cae3d59ddfd467e3b3f656b25e8",
+        "input_hash": "eb2026823bec5114ca5e6c3fb55de0a967b8c8beee9d121807d45f5ea61290b2",
+        "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+        "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+        "rules": {
+          "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
+          "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+          "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+        },
+        "proposal": {
+          "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
+          "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+          "id": "W047/S1"
+        },
+        "scope": {
+          "paths": [
+            "src/data/textbook/math/numbers/n11Authored.json",
+            "src/data/textbook/math/numbers/n12Authored.json",
+            "src/data/textbook/math/numbers/n11Transformation.json",
+            "work/items/W-MATH-047-n1112-guided-review/",
+            "tools/textbook/transformation/n11.mjs"
+          ],
+          "preserve": [
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09Authored.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10Authored.json",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/components/textbook/GuidedMathReadingFlow.tsx",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "public/assets/math/textbook/numbers/n11-f01.png",
+            "public/assets/math/textbook/numbers/n11-f02.png",
+            "public/assets/math/textbook/numbers/n12-f01.png",
+            "public/assets/math/textbook/numbers/n12-f02.png",
+            "public/assets/math/textbook/numbers/n12-f03.png"
+          ],
+          "prohibit": [
+            "G3_HOST"
+          ]
+        },
+        "source_manifest": {
+          "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+          "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+          "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+          "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+          "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+          "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
+        },
+        "previous_results": {
+          "R05_APPROVAL@n12": {
+            "actor": "user-record/conversation_transcribed",
+            "artifact": "07a5fbc293d8284824a8d2d8aed2a91acc0ca6cf5d3b3eaac418a11a22cc5950",
+            "input_hash": "256c4478b879bba21622d6b496a564604c30ba5061e9b4176ebff8fe80f6b914",
+            "node": "R05_APPROVAL@n12",
+            "verdict": "PASS"
+          }
+        },
+        "do_not_touch": [
+          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+          "src/components/textbook/construction-lesson-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "public/assets/math/textbook/numbers/n11-f01.png",
+          "public/assets/math/textbook/numbers/n11-f02.png",
+          "public/assets/math/textbook/numbers/n12-f01.png",
+          "public/assets/math/textbook/numbers/n12-f02.png",
+          "public/assets/math/textbook/numbers/n12-f03.png"
+        ],
+        "completion_is_not_semantic_proof": true
+      },
+      "context": {
+        "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+        "featureSchema": "learner-visible-json/2",
+        "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+        "rulesHash": "6d567314cb71539f65e7035736d36ac3bb0c75d074cf8f9a9b62f120a6aacc23"
+      },
+      "dependencies": {
+        "R05_APPROVAL@n12": {
+          "evidence_refs": [],
+          "user_event": "w047-s1-approval-3052d970",
+          "verdict": "PASS"
+        }
+      },
+      "constraints": [
+        "原資料・既習・可視状態だけを根拠にする",
+        "作成者の自己評価を監査根拠にしない",
+        "未解決は未解決と記録",
+        "承認を生成しない"
+      ],
+      "requestHash": "2d2255bb05b1ea9a2b335a21587cd4ea4711c55e5486b36f7452cc6f05daa0ef",
+      "teamReview": {
+        "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+        "requirements": [],
+        "submissionActor": "M",
+        "constraints": [
+          "実agent taskを登録する",
+          "対象claimの作者履歴を維持する",
+          "個別taskは固定packetを先に読む",
+          "agentの合意をUSER評価へ昇格しない"
+        ]
+      }
+    },
+    "automaticAcceptance": false
+  },
+  "notReapplied": false
+}

@@ -1,0 +1,872 @@
+{
+  "status": "PASS",
+  "targetNodes": [
+    "n12-01",
+    "n12-q04-left-end",
+    "n12-04",
+    "n12-07",
+    "n12-q13-operation"
+  ],
+  "frames": [
+    {
+      "nodeId": "n12-01",
+      "state": "pending",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 396.078125,
+        "bottom": 1029.65625,
+        "height": 633.578125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "pending",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 486.921875,
+        "bottom": 1029.96875,
+        "height": 543.046875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "pending",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 486.5,
+        "bottom": 1029.546875,
+        "height": 543.046875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "pending",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 489.328125,
+        "bottom": 1014.328125,
+        "height": 525
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "wrong",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 244.078125,
+        "bottom": 1029.703125,
+        "height": 785.625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "wrong",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 355.921875,
+        "bottom": 1030.1875,
+        "height": 674.265625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "wrong",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 376.5,
+        "bottom": 1029.9375,
+        "height": 653.4375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "wrong",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 400.328125,
+        "bottom": 1014.890625,
+        "height": 614.5625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "correct",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 684.078125,
+        "bottom": 975.28125,
+        "height": 291.203125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "correct",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 747.921875,
+        "bottom": 974.984375,
+        "height": 227.0625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "correct",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 748.5,
+        "bottom": 975.5625,
+        "height": 227.0625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-01",
+      "state": "correct",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 783.328125,
+        "bottom": 959.984375,
+        "height": 176.65625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "pending",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 529.609375,
+        "bottom": 1029.828125,
+        "height": 500.21875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "pending",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 557.53125,
+        "bottom": 1030.390625,
+        "height": 472.859375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "pending",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 556.9375,
+        "bottom": 1029.796875,
+        "height": 472.859375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "pending",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 560.03125,
+        "bottom": 1014.84375,
+        "height": 454.8125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "wrong",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 419.609375,
+        "bottom": 1030.21875,
+        "height": 610.609375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "wrong",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 446.53125,
+        "bottom": 1029.78125,
+        "height": 583.25
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "wrong",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 467.9375,
+        "bottom": 1030.359375,
+        "height": 562.421875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "wrong",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 470.03125,
+        "bottom": 1014.40625,
+        "height": 544.375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "correct",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 419.453125,
+        "bottom": 728.59375,
+        "height": 309.140625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "correct",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 538.375,
+        "bottom": 792.796875,
+        "height": 254.421875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "correct",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 538.21875,
+        "bottom": 792.640625,
+        "height": 254.421875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q04-left-end",
+      "state": "correct",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 594.3125,
+        "bottom": 799.765625,
+        "height": 205.453125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "pending",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 422.984375,
+        "bottom": 1030.171875,
+        "height": 607.1875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "pending",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 487.1875,
+        "bottom": 1030.234375,
+        "height": 543.046875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "pending",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 487.03125,
+        "bottom": 1030.078125,
+        "height": 543.046875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "pending",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 490.15625,
+        "bottom": 1015.15625,
+        "height": 525
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "wrong",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 270.984375,
+        "bottom": 1030.21875,
+        "height": 759.234375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "wrong",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 356.1875,
+        "bottom": 1030.453125,
+        "height": 674.265625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "wrong",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 356.03125,
+        "bottom": 1030.296875,
+        "height": 674.265625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "wrong",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 400.15625,
+        "bottom": 1014.71875,
+        "height": 614.5625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "correct",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 574.984375,
+        "bottom": 975.625,
+        "height": 400.640625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "correct",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 666.1875,
+        "bottom": 975.328125,
+        "height": 309.140625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "correct",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 693.03125,
+        "bottom": 974.8125,
+        "height": 281.78125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-04",
+      "state": "correct",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 726.15625,
+        "bottom": 960.40625,
+        "height": 234.25
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "pending",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 343.140625,
+        "bottom": 1030.46875,
+        "height": 687.328125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "pending",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 423.25,
+        "bottom": 1030.4375,
+        "height": 607.1875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "pending",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 486.96875,
+        "bottom": 1030.015625,
+        "height": 543.046875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "pending",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 490.09375,
+        "bottom": 1015.09375,
+        "height": 525
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "wrong",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 190.140625,
+        "bottom": 1029.515625,
+        "height": 839.375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "wrong",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 291.25,
+        "bottom": 1029.65625,
+        "height": 738.40625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "wrong",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 376.96875,
+        "bottom": 1030.40625,
+        "height": 653.4375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "wrong",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 400.09375,
+        "bottom": 1014.65625,
+        "height": 614.5625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "correct",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 603.140625,
+        "bottom": 975.453125,
+        "height": 372.3125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "correct",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 684.25,
+        "bottom": 975.453125,
+        "height": 291.203125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "correct",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 747.96875,
+        "bottom": 975.03125,
+        "height": 227.0625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-07",
+      "state": "correct",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 783.09375,
+        "bottom": 959.75,
+        "height": 176.65625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "pending",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 515.96875,
+        "bottom": 1029.953125,
+        "height": 513.984375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "pending",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 551.890625,
+        "bottom": 1030.28125,
+        "height": 478.390625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "pending",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 551.609375,
+        "bottom": 1030,
+        "height": 478.390625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "pending",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 580.265625,
+        "bottom": 1014.65625,
+        "height": 434.390625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "wrong",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 405.96875,
+        "bottom": 1030.34375,
+        "height": 624.375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "wrong",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 461.890625,
+        "bottom": 1029.84375,
+        "height": 567.953125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "wrong",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 461.609375,
+        "bottom": 1029.5625,
+        "height": 567.953125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "wrong",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 491.265625,
+        "bottom": 1015.21875,
+        "height": 523.953125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "correct",
+      "width": 320,
+      "height": 1200,
+      "geometry": {
+        "top": 344.328125,
+        "bottom": 705.59375,
+        "height": 361.265625
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "correct",
+      "width": 390,
+      "height": 1200,
+      "geometry": {
+        "top": 405.90625,
+        "bottom": 731.578125,
+        "height": 325.671875
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "correct",
+      "width": 430,
+      "height": 1200,
+      "geometry": {
+        "top": 515.625,
+        "bottom": 795.703125,
+        "height": 280.078125
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    },
+    {
+      "nodeId": "n12-q13-operation",
+      "state": "correct",
+      "width": 1440,
+      "height": 1200,
+      "geometry": {
+        "top": 575.71875,
+        "bottom": 776.203125,
+        "height": 200.484375
+      },
+      "issues": [],
+      "fullPage": false,
+      "layoutModified": false
+    }
+  ],
+  "answered": 46,
+  "focusedWrongCount": 5,
+  "allWrongCountNotTestedHere": true,
+  "history": true,
+  "reload": true,
+  "reset": {
+    "confirmedDialog": true,
+    "answersCleared": true,
+    "reloadStartsAtFirstStage": true
+  },
+  "chapterBoundary": {
+    "nextHref": "#/learning/textbook/math-numbers-expressions-n13",
+    "nextURL": "http://127.0.0.1:4398/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n13",
+    "browserBackToCompletedN12": true
+  },
+  "sourceSHA": null,
+  "originalSourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "inactiveCandidateManifestRef": null,
+  "errors": [],
+  "layoutModified": false
+}

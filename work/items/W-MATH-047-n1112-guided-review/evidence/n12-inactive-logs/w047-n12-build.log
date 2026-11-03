@@ -1,0 +1,11 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1802 modules transformed.
+✗ Build failed in 2.57s
+error during build:
+Could not resolve "../../tools/textbook/interaction/construction-v2-runtime.mjs" from "src/domain/constructionProgressV2.ts"
+file: /tmp/w047-n12-preview/src/domain/constructionProgressV2.ts
+    at getRollupError (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/parseAst.js:317:41)
+    at error (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/parseAst.js:313:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:21930:24)
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:21890:26

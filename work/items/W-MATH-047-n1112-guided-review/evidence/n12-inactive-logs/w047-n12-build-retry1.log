@@ -1,0 +1,11 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1798 modules transformed.
+✗ Build failed in 2.81s
+error during build:
+Could not resolve "../../work/items/W-MATH-043-n0910-restart/evidence/migration-analysis.json?raw" from "src/pages/N0910RevisionPage.tsx"
+file: /tmp/w047-n12-preview/src/pages/N0910RevisionPage.tsx
+    at getRollupError (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/parseAst.js:317:41)
+    at error (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/parseAst.js:313:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:21930:24)
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:21890:26

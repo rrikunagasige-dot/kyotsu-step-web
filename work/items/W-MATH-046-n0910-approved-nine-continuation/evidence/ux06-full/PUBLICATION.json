@@ -1,0 +1,27 @@
+{
+  "status": "RUNNING_NOT_DEPLOYED",
+  "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
+  "publisherSHA": "e734337f1e18dd285f04f1b8ed63532ceff3b72f",
+  "pr": 136,
+  "prHead": "c6201114d3b8a1bb0d4b8402694f81e9138dc9dd",
+  "runId": 41569692346,
+  "runURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41569692346",
+  "mainOnlyChanged": [
+    ".github/workflows/deploy-pages.yml",
+    "tools/release/w046-publish-check.mjs"
+  ],
+  "deploymentApproval": "PUBLICATION_APPROVAL.json",
+  "observedBeforeDeploy": {
+    "httpStatus": 200,
+    "sourceSHA": "691d3d160493bf684ca8a31a22476d31d98caeec",
+    "publisherSHA": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+    "revisions": [
+      8,
+      5
+    ]
+  },
+  "finalUserAcceptance": false,
+  "formalStoreReceipt": false,
+  "Gold": false,
+  "fit": false
+}

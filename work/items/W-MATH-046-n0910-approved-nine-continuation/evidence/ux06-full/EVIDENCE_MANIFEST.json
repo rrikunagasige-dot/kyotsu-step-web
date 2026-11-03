@@ -36,8 +36,8 @@
     },
     {
       "path": "G3_PREFLIGHT.json",
-      "sha256": "8c14914dd1ff48ac1735e2cd39621cf197862f617e7d97b4fe7743226e40f6a5",
-      "bytes": 2124
+      "sha256": "5e993799cbbe468b4808780290490aea2acc69421082dd6dded3115cad843de3",
+      "bytes": 2214
     },
     {
       "path": "IMAGES_REVIEWED_B.json",
@@ -60,6 +60,16 @@
       "bytes": 1669
     },
     {
+      "path": "PUBLICATION.json",
+      "sha256": "3a0a88443bbb7d784a21731c58ee4b4d0fc4aafceabbf26dca077cea9c6ba19e",
+      "bytes": 831
+    },
+    {
+      "path": "PUBLICATION_APPROVAL.json",
+      "sha256": "e20ca3daf3998da29893bd5590b20790bd8b2ff1c02f026c8eb0d3bb0c44f475",
+      "bytes": 786
+    },
+    {
       "path": "RAW_MAP.json",
       "sha256": "3cc2aec36d1aa844022b8e637ae15c3d5dc1baff581384d2f2820eef441190b6",
       "bytes": 5781
@@ -71,8 +81,8 @@
     },
     {
       "path": "RENDER_REVIEW_B.md",
-      "sha256": "e70dce94bf10011167b5987253c9c9f7e831a2674e526badc040faab1931b06f",
-      "bytes": 24000
+      "sha256": "ffd45b1de2c7a656fd8b26213720a96c664014532ba3d6fdfd49a07dfedd1c28",
+      "bytes": 27819
     },
     {
       "path": "REVIEW.md",
@@ -81,8 +91,8 @@
     },
     {
       "path": "SOURCE_REVIEW_A.md",
-      "sha256": "bf5bd99407b92f2bc40b88265ffbe0293a73624c5b50d62e7bad9ac7fa8f7b93",
-      "bytes": 27179
+      "sha256": "63a55ce77805b0a9820af79289997c62425a31ec2b65f0a90c3d46e7aa34d8d6",
+      "bytes": 32023
     },
     {
       "path": "SOURCE_SYNC.json",
@@ -790,6 +800,16 @@
       "bytes": 2368
     },
     {
+      "path": "raw/pr136-checks.json",
+      "sha256": "2f8c1197a48ef611e5d04d0bae59ca98e61194faad1207db641ec944b59ae40d",
+      "bytes": 1138
+    },
+    {
+      "path": "raw/pr136.diff",
+      "sha256": "58b83e13b60ed57614bf8a782a5e8a13511f0de74d3806b7d4dd5d2785a595dd",
+      "bytes": 19953
+    },
+    {
       "path": "raw/prose-import.json.gz",
       "sha256": "d8a13eea2a1afdee9fae684b7adec5a41bd7197864407c952bb3eb3dc64b969d",
       "bytes": 14690
@@ -950,5 +970,5 @@
       "bytes": 635
     }
   ],
-  "currentStage": "Prose supplement/G2 reintegration and G3 local prepublication checks complete; separate publication approval pending"
+  "currentStage": "Publication approved; PR136 merged; run41569692346 in progress. Not yet hosted-verified."
 }

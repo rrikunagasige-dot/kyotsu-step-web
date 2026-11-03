@@ -12,7 +12,7 @@
 
 UX05固定案の明示承認を受領：[原発言と範囲](evidence/ux05-proposal/APPROVAL.json)。同じ案を聞き直さない。
 
-- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、前回G2完了報告後、本文CODE工程の適用照合・明示実行・公開本文審査への接続の不足を確認。R07本文CODE補完（native86node/51行）とA/Bの14件ずつの可視意味審査/既存CODE取込28件を実行し、影響G2を再統合。G3固定候補のローカル公開前検査まで完了。現在は別の公開承認待ち（main/Pages未変更）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
+- 実質の現在地：UX06代表の本人条件付き細部承認（page e95fae75…）を、2点補修とroot/A/Bの同一候補照合で充足。残り10導出/3本文をN09r10/N10r6へ限定適用し、R07の全4幅CODE/実画像/保存検査を実施、前回G2完了報告後、本文CODE工程の適用照合・明示実行・公開本文審査への接続の不足を確認。R07本文CODE補完（native86node/51行）とA/Bの14件ずつの可視意味審査/既存CODE取込28件を実行し、影響G2を再統合。G3固定候補のローカル公開前検査まで完了。本人page ec054575…「いいよつづけて」により固定d588既存Pages公開とmain設定2file反映を承認受領。現在PR136のCI成功を確認し、G3公開実行へ進行中（実公開/配信確認は未了）。[最新確認票](evidence/ux06-full/REVIEW.md)。旧代表を再承認待ちへ戻さない。G3候補はremote d588d1c395de3132805395f2708bed7535c1767d、検査local5e83とfull tree一致を[SOURCE_SYNC](evidence/ux06-full/SOURCE_SYNC.json)で記録。mainf4c/公開source691dは未変更。正式Storeの受理ではない。
 - 正式台帳上のPASSEDやnext-nodeは未認定。既存26イベント欠落の本人特例を保持し、新しい空Store・架空receipt・旧工程の再合格で埋めない。
 - 下記の図は既存実装定義の配置図であり、W046最新Storeから生成した実行状況図ではない。W034や技術Workのgenerated図をW046の完了証拠へ転用しない。
 
@@ -134,3 +134,9 @@ AIが主担当の工程でもCODE receiptを先に取り込み、意味の判断
 S11という名称だけで自動作文・自然言語の因果自動合格とは言わない。helper operationSentenceは別のproduction-ir/1のslot付き段落用で現nativeへ直接適合しないため、呼んで出力を捨てる利用はしない。CODE検査の範囲外をA/Bへ明示し、意味審査で埋める。
 
 G3最新結果：exact d588隔離build/121assets/N0910四幅8cases、保持N08四幅（3936測定）・旧r6・旧版・N11四幅合格。[2file案/停止条件](evidence/ux06-full/G3_PREFLIGHT.json)。次はこの固定候補の公開承認→mainの公開設定2ファイルのみ適用→既存CI→実配信検証→本人実物評価。mainへの適用/Pages公開/最終本人受入は未実施。
+
+## 2026-11-03 公開承認受領・G3実行
+
+[本人公開承認](evidence/ux06-full/PUBLICATION_APPROVAL.json)を受領。PR136はmainf4c基底、headc620、公開設定2filesのみ。check/governance成功を確認。次はexpected headでmerge→既存公開jobの前段検査→deploy→実配信byte/操作→G3本人実物評価。PR成功を公開済み/本人受入へ転用しない。
+
+G3実行追記：PR136をexpected c620でmerge成功。main publisher e734337f1e18dd285f04f1b8ed63532ceff3b72f、公開run41569692346実行中。製品sourceはd588固定。旧公開source691dのHTTP200を新候補公開成功へ読み替えない。[生状態](evidence/ux06-full/PUBLICATION.json)。

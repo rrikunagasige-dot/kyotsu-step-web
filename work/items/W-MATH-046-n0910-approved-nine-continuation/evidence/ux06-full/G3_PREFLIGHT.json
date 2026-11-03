@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_PREPUBLICATION_VERIFIED_AWAITING_SEPARATE_PUBLICATION_APPROVAL",
+  "status": "PUBLICATION_APPROVED_PR136_CI_PASS",
   "source": "d588d1c395de3132805395f2708bed7535c1767d",
   "publisherBase": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
   "publisherBaseRetrievedVia": "connected GitHub; anonymous git main read stale e494 and was not used as authority",
@@ -13,7 +13,7 @@
   "storageNamespace": "kyotsu-step-gate3-math-20261023",
   "mainModified": false,
   "published": false,
-  "publicationApprovalReceived": false,
+  "publicationApprovalReceived": true,
   "localRun": {
     "sourceSHA": "d588d1c395de3132805395f2708bed7535c1767d",
     "build": "PASS_WITH_EXISTING_CHUNK_SIZE_WARNING",
@@ -50,5 +50,8 @@
     "Local verification is not GitHub Actions execution or actual hosted delivery",
     "Repository global lint retains existing failures as separately recorded",
     "No final learner/app acceptance inferred"
-  ]
+  ],
+  "approvalRecord": "PUBLICATION_APPROVAL.json",
+  "pr": 136,
+  "publisherHead": "c6201114d3b8a1bb0d4b8402694f81e9138dc9dd"
 }

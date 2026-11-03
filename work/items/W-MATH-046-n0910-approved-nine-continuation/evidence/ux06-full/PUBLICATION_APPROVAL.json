@@ -1,0 +1,20 @@
+{
+  "dateJST": "2026-11-03",
+  "page": "ec054575-1bcf-436c-bbeb-053e3fff50ca",
+  "quote": "いいよつづけて",
+  "respondingTo": "固定候補d588のN09/N10修正版を既存Pagesへ公開してよいか、main反映は公開設定2ファイル限定という直前質問",
+  "candidateSource": "d588d1c395de3132805395f2708bed7535c1767d",
+  "publisherBase": "f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75",
+  "scope": [
+    ".github/workflows/deploy-pages.yml",
+    "tools/release/w046-publish-check.mjs"
+  ],
+  "proposalEvidenceCommit": "7d4de74d8bb55ae40d3be94eb072362a02592c73",
+  "publisherHead": "c6201114d3b8a1bb0d4b8402694f81e9138dc9dd",
+  "pr": 136,
+  "appSourceChanges": false,
+  "userFinalAppAcceptance": false,
+  "formalStoreReceipt": false,
+  "Gold": false,
+  "fit": false
+}

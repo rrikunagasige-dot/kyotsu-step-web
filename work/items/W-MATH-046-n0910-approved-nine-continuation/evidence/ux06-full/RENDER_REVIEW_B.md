@@ -139,3 +139,25 @@ PROSE_CODE_CHECKはNATIVE_STRUCTURE_AND_NONAUTHOR_MEANING_REVIEW_INTEGRATEDへ�
 これらはroot実行の固定sourceローカル公開前結果をBが独立読取したものであり、B自身が再実行した検査でも、GitHub Actions/実Pages配信での検査でもない。本文CODEの限定補完・28意味応答取込・影響G2再統合後、公開前local5群までそろったという現在地は妥当。WORKFLOW_CURRENTは過去不足を「CODE適用照合・明示実行・公開本文再審査への接続を補完せずG2を先行集約した」と明記し、記録漏れだけに縮小する先の文言所見を解消した。
 
 次のUSER確認は固定d588を既存Pagesへ公開するかだけに限定する。同じ代表/二点修正/残適用の承認を再要求しない。現在mainf4c/Pages source691dは変更されておらず、公開承認受領/実反映/公開後のbyte・操作・最終URL検証/本人実物評価は未実施。全Workの終了、正式Store受理、Gold/fitへ拡張しない。工程/5群結果/未公開境界について新しいSTOPはない。
+
+## G3公開の明示承認受領・監視開始
+
+本人page ec054575-1bcf-436c-bbeb-053e3fff50ca「いいよつづけて」は、直前に提示した固定source d588d1c395de3132805395f2708bed7535c1767d・既存Pages・main設定2ファイル案に対する明示公開承認として受領した。代表の再承認ではない。Bが再計算した案hashはYAML c14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891、helper 6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139のまま。storage namespace/baseと製品sourceは変更しない。
+
+監視順を火柴図と詳細へ戻して確認：承認記録→main実HEAD/限定PR2path差分/案byte照合→PR対象CI成功→main限定反映→pushで既存deploy workflow→公開前検査→deploy→実配信manifest/source・publisher/全assetbyte/操作/font/保存と保持route→本人の実物評価。PRの一般CI、deploy内の公開前検査、全runの終了成功は別の証拠であり、一段のPASSを後段へ流用しない。deploy workflowはmainのworkflow pathへのpushで開始するため、PR CI完了はmain反映前に確認する。
+
+Bは製品/Store/Git/公開操作を行わず、rootが操作・統合する。mainが既知f4cから変わっていれば実差分を再照合し、scope外の混入や固定候補/namespace不一致、検査失敗/未確認のまま公開段へ進む場合は停止所見を即通知する。通知前にAPI二重pollは行わない。現在は監視開始であり、PR作成/CI成功/main反映/deploy/実配信を完了認定していない。公開承認は本人実物受入/正式Store/Gold/fitを含まない。
+
+## PR136の限定merge前監視
+
+PR136のbase f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75/head c6201114d3b8a1bb0d4b8402694f81e9138dc9ddについて、提供されたrawdiffをBがf4c原byteへメモリ内適用し、完成2ファイルを復元した。変更pathは承認どおり `.github/workflows/deploy-pages.yml` と `tools/release/w046-publish-check.mjs` のみ。復元byteはYAMLc14f/helper6bc1の承認案と完全一致。rawdiff SHA256 58b83e13b60ed57614bf8a782a5e8a13511f0de74d3806b7d4dd5d2785a595dd。filesystemへのpatch適用やGit操作はBが行っていない。
+
+提供されたchecks原JSONを読み、check/governanceはどちらもhead c6201114でcompleted/success。N04画像jobのskippedは今回対象外、Vercelコメントjobを教材/公開検証の根拠には使わない。root提供のmergeable trueと合わせ、当該scope/PRCIにBのmerge STOPはない。操作直前の現main/base/head照合とexpected head指定はroot責任で維持する。
+
+PRのCI成功は公開runの前検査/deploy/実配信確認ではない。製品sourceはd588、将来のmerge/run headはpublisherであり、両者を混同しない。現在本節はmerge前監視結果であり、main反映や公開完了を先取りしない。
+
+## main反映・公開run開始の監視記録
+
+rootからPR136をexpected head c620でmerge成功、実main publisherSHA=e734337f1e18dd285f04f1b8ed63532ceff3b72fとの通知を受領。PR事前の仮mergeSHA5228を実mainと認定しない。製品固定source d588とは別のpublisher commitである。
+
+既存Deploy to GitHub Pages run41569692346（https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41569692346）は開始中。checkout/setup/installの成功は部分結果で、Word adapter apt依存step中という通知時点では公開前全検査/deploy/全runをPASSとしない。直接HTTP200はまだ旧source691d/publisherf4c/N09r8/N10r5であり、新source公開済みではない。BはAPI二重pollをせず、rootの公開前step/実deploy/実配信manifest・asset・操作証拠の通知を待つ。現在の出所/工程境界に新STOPはない。

@@ -205,3 +205,37 @@ requestHashが全件変わったので初回応答はstaleとして別保存し�
 - 最新U07 requests：`4ea83720ac488557879b4a42685b34fc541e8b0377d9b8eac4273f97aa1e66ae`
 - 最新A responses：`8b25233aba70469797a959d773f98a925a7f7e475ccae33b1a482b425afffb12`
 - 取込不可の旧A responses：`1a38428ea2d4b846408ce32d8978bb3bc8aed70b88f10dd8fea89040a19eaf37`
+
+## G3公開承認後：publisher案の事前独立照合 A
+
+本人page `ec054575-1bcf-436c-bbeb-053e3fff50ca`「いいよつづけて」は、直前の固定source d588・既存Pages公開・main2file限定案への承認としてrootから受領した。N09r10/N10r6の意味審査・代表細部承認とは別の公開権限であり、本人の最終アプリ全体受入にはしない。main反映対象はpublisher2fileで、製品コード全体をmainへ一括混入する案ではない。公開後の実配信検証・本人総チェックは未完了である。
+
+対象案：g3-deploy-pages.yml と g3-publish-check.mjs。Aは公開操作・製品/Git/Store操作を行わず、固定案を読取した。
+
+- source定数、workflow CANDIDATE_SHA/VITE_PREVIEW_COMMIT、actions checkout refは全て `d588d1c395de3132805395f2708bed7535c1767d`。publisher utilityだけgithub.shaの別checkoutから使い、sourceとpublisherを混同しない。
+- requiredSourceHashesは46path。Aが全46の現在file SHA256および固定d588のgit blobから得たSHA256を独立計算し、どちらも不一致0。renderer/CSS、active compiled/catalog/pin、旧snapshot、migration/storage/schema、route、W043設計等のsourceを固定する。これは46fileだけで全appを検査したという意味ではなく、immutable checkoutと公開全dist byte検証を併用する。
+- 保存namespaceは既存 `kyotsu-step-gate3-math-20261023`。main storeと専用nested keyを同namespaceへ固定し、旧 `kyotsu-step-store` や非scope nested keyの生成を拒否する。N09r10/N10r6の実compiledHashをpageとledgerで一致させる。
+- manifestはuserAcceptance/Gold/fit=false。URL queryだけからsourceを推定せず、生成済w046-release.jsonの生byteと実HTTP応答のhashを比較し、manifestに含む全dist fileのbyteを検査する。
+- 公開前にbuilt appのN09/N10全4幅の全正答/誤答/保存/reload/history/旧版/resetと、N08r7/r6/legacy・N11の既存実操作を実行し、その後にのみPages artifact upload/deployへ進む。shellのset -eと通常step依存で公開前FAILはdeploy前に停止する。if:alwaysは証拠保存のためでありdeployを強制しない。
+- 公開後は同じcheckerでmanifest/全assetbyte/実操作を再検査し、保持N08/N11も再確認する。公開step成功を配信byte成功と読み替えない。公開後検査FAILはそのまま失敗として残し、本人受入で隠さない。
+- namespaceを持つ他unit currentと当unit旧版のvalid ledgerをseedし、reset後のbyte不変を検査する。旧版trialは全localStorageが不変、戻ったcurrent完了が保持されることを確認する。これらは隔離browser contextのテストであり、実利用者の保存を書き換える操作ではない。
+
+今後のA確認：PRが承認時main f4c基底か、差分が `.github/workflows/deploy-pages.yml` と `tools/release/w046-publish-check.mjs` の2fileだけか、review済案と一致するかをPR確定後一回照合する。公開後の実run/HTTP証拠は届く前にPASSとしない。rootの通常pollを重複実行せず固定版/実結果だけを独立確認する。
+
+事前案SHA256：
+
+- g3-deploy-pages.yml：`c14f11a4a647def0d5f8e6a9fa9f300da2610c6aa1e1b7bafd167c1baed96891`
+- g3-publish-check.mjs：`6bc1cb3402eb0fb9b8723452d3bf5dddfbd4afdbedaa6783f7dbdcfa2bf56139`
+
+## PR136 限定差分の独立確認 A
+
+GitHubのPR136を直接読取した時点でopen/mergeable、base=`main` / `f4c50963e26d3d4f9b33c3ca9f43e91e57dbdb75`、head=`c6201114d3b8a1bb0d4b8402694f81e9138dc9dd`、head repo1391122224を確認。changed_files=2で、取得済みraw diffの対象も `.github/workflows/deploy-pages.yml` と `tools/release/w046-publish-check.mjs` の2fileだけだった。
+
+PR head両fileをGitHubからfetchしblob SHAを取得した。審査済み案の生bytesからAがGit blob hashを独立計算し、workflow `45d403691d06702dc96c199c33f4d112900d655a`、checker `68e4bf022f1a700fe1d1a96f35a550e6ac8c396a`へ完全一致した。固定d588・46source hash・namespace・旧版保護・公開前後検証に新たな差分はない。mergeを止める所見なし。expected-head mergeの実操作はrootのみ。
+
+CI rawは同headに束縛されたcheck/governance SUCCESS、N04対象外job SKIPPED。Vercel Preview Commentsのsuccessは公開・配信byteの証拠として用いない。CI成功はUX06の本人全体受入でもない。この追記時点の公開結果は未確認であり、merge/run開始を公開検査PASSへ読み替えない。
+
+証拠SHA256：
+
+- /tmp/w046-ux06-publisher-pr136.diff：`58b83e13b60ed57614bf8a782a5e8a13511f0de74d3806b7d4dd5d2785a595dd`
+- /tmp/w046-ux06-publisher-checks.json：`2f8c1197a48ef611e5d04d0bae59ca98e61194faad1207db641ec944b59ae40d`

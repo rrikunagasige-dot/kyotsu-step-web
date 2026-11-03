@@ -1,0 +1,9 @@
+{
+  "approvedDesign": "a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282",
+  "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+  "finalGeneratorTechnicalWork": "W-TECH-051",
+  "finalTechnicalStatus": "DONE",
+  "initialImplementationWork": "W-TECH-050",
+  "initialResult": "Initial T03 applied but exact approved coverage/alias validation failed; original records retained, not declared successful. Final correction is verified by W-TECH-051 and current R1 compile/projector checks.",
+  "notAppAcceptance": true
+}

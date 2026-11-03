@@ -1,38 +1,36 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "55da8348d089bccbebea1cbae341265e4bf548817b153ebafacee691c990daf6",
+  "ledger_head": "b70e81b5737ed7f8ba435c42e03f8410194311308a4b0440d85fb8e61570489f",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": null,
+  "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
   "next": {
     "status": "READY",
     "task": {
       "work_id": "W-MATH-047",
       "node": {
-        "id": "R07_VERIFY@n11",
-        "stage_kind": "R07_VERIFY",
-        "contract_kind": "R07_VERIFY",
-        "actor": "TOOL",
+        "id": "G2_AUDIT@n11",
+        "stage_kind": "G2_AUDIT",
+        "contract_kind": "G2_AUDIT",
+        "actor": "AI",
         "depends_on": [
-          "R06_PATCH@n11"
+          "R07_SEMANTIC@n11"
         ],
-        "required": [],
-        "block": "n11",
+        "required": [
+          "audit_rows",
+          "release_readiness",
+          "impact_sweep_completion",
+          "audit_method",
+          "unknowns"
+        ],
+        "block": null,
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "post-implementation",
+        "phase": "pre-release",
         "priority": 0,
-        "source_refs": [
-          "src/data/textbook/math/numbers/n11Authored.json",
-          "src/data/textbook/math/numbers/n11Transformation.json",
-          "src/components/textbook/GuidedMathReadingFlow.tsx",
-          "src/domain/textbook.ts",
-          "src/pages/TextbookUnitPage.tsx",
-          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
-          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
-        ],
+        "source_refs": [],
         "protected_refs": [
           "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
           "src/data/textbook/math/numbers/n09Authored.json",
@@ -51,25 +49,33 @@
           "public/assets/math/textbook/numbers/n12-f02.png",
           "public/assets/math/textbook/numbers/n12-f03.png"
         ],
-        "approval_scope_ref": "n11-r1",
         "capability_requests": [
-          "math.verify",
-          "ir.verify",
-          "browser.verify",
-          "protected.verify"
+          "protected.verify",
+          "impact.inventory"
         ],
         "required_code_receipts": [
-          "math.verify",
-          "ir.verify",
-          "browser.verify",
-          "protected.verify"
+          "protected.verify",
+          "impact.inventory"
         ],
-        "required_ai_receipts": []
+        "required_ai_receipts": [
+          "meaning-review"
+        ],
+        "team_requirements": [
+          {
+            "claimRef": "integrated-release",
+            "facet": "render",
+            "firstPass": true,
+            "independent": true,
+            "reviewKind": "learner-visible-review",
+            "sourceFirst": true,
+            "stage_kind": "G2_AUDIT"
+          }
+        ]
       },
-      "task_id": "75591c0ae4202c0ecbd3f1820a8180dc6599e8121b0aab536ba89a340a7b6913",
-      "input_hash": "cce33cd2f87b24f4452594785ba5b247d8d47c6674f9a2d672c02eb94c4c9a88",
+      "task_id": "453ed25657d48df50e9a7f0f7c74be509e9addeb28e675a8014ba4c8590ea019",
+      "input_hash": "2b28bcc516601a65bd000fb0f9976d2bbb7fc511b30fe3f22d4d57ed1df561b6",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": null,
+      "candidate_sha": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
       "rules": {
         "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -118,11 +124,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
       },
       "previous_results": {
-        "R06_PATCH@n11": {
+        "R07_SEMANTIC@n11": {
           "actor": "capability-runner",
-          "artifact": "89b0757cc078151f53dcc6f009249fa270e328623e7a5448466bb2c80074b689",
-          "input_hash": "aaee37ad7600b4c008c540913ae45cb4c9471411daf0302cadd7b6b004c370a1",
-          "node": "R06_PATCH@n11",
+          "artifact": "a321d80341e94ac7a7b2ef51fc8aa2bf61f8848ad6c549623686e3b0e39d901f",
+          "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+          "node": "R07_SEMANTIC@n11",
           "verdict": "PASS"
         }
       },
@@ -662,7 +668,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "INVALIDATED"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n11",
@@ -733,7 +739,7 @@
           "stage_kind": "R07_SEMANTIC"
         }
       ],
-      "status": "INVALIDATED"
+      "status": "PASSED"
     },
     {
       "id": "R01_CAPTURE@n12",
@@ -1918,30 +1924,6 @@
   "application_accepted": false,
   "correction_queue": [
     {
-      "block": "n09",
-      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
-      "evidence_refs": [
-        "W034-N09-ORDER-NEGATIVE-20261025"
-      ],
-      "id": "9edbc81e2181722b430e",
-      "origin": "user",
-      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "work": "W-MATH-034"
-    },
-    {
-      "block": "n10",
-      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
-      "evidence_refs": [
-        "W034-N10-FACTOR-NEGATIVE-20261025"
-      ],
-      "id": "ff234332d7d5ec0beaf3",
-      "origin": "user",
-      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "work": "W-MATH-034"
-    },
-    {
       "block": "n11",
       "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
       "evidence_refs": [
@@ -1969,16 +1951,40 @@
       "work": "W-MATH-047"
     },
     {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "id": "W-MATH-047",
+      "work": "W-MATH-047",
+      "version": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1990,9 +1996,16 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-047",
-      "work": "W-MATH-047",
-      "version": null,
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -2000,13 +2013,6 @@
       "id": "W-MATH-038",
       "work": "W-MATH-038",
       "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3426,6 +3432,36 @@
       "input_hash": "aaee37ad7600b4c008c540913ae45cb4c9471411daf0302cadd7b6b004c370a1",
       "node": "R06_PATCH@n11",
       "receipt": "c438f06249159ac19b361a4805b42e0bcc45b5cafe12e2af15a25c3b971eed2f"
+    },
+    {
+      "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+      "node": "R07_VERIFY@n11",
+      "receipt": "10cee092758ba2449cbce469d77b1d28547dd52ca14ebd5c0a7997651de9f5b9"
+    },
+    {
+      "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+      "node": "R07_VERIFY@n11",
+      "receipt": "b51eb729197d6480bcf1714199c78c684533833af64a2d3d472120426d33cd3e"
+    },
+    {
+      "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+      "node": "R07_VERIFY@n11",
+      "receipt": "afeaa24c211dfd0a174f521ae7b1f3795b37c2b347072de60345c4d2f0d2d8f4"
+    },
+    {
+      "input_hash": "ac5118e1fa078dabc26d602876e05ff7d81c233941aee88ef055d8cb9718a619",
+      "node": "R07_VERIFY@n11",
+      "receipt": "7c0222caeae8371a3d096c5c611042b345a446f01d36975618a4ecfd00a7b518"
+    },
+    {
+      "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "3705f1366bca7b2d59d8aaf2b2388d05ec4136fe52537b15142af66d09b0488c"
+    },
+    {
+      "input_hash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "01e1f5211b1a1deb39fd1db31114a609be61654c0b3d1ebc7ce374daec3f1a98"
     }
   ],
   "release_acceptance": {
@@ -4553,6 +4589,52 @@
       },
       {
         "affectedRefs": [
+          "n11-whole-state-initial-context-viewport.png",
+          "n11-local-result-complete-context-viewport.png"
+        ],
+        "block": "n11",
+        "claimRef": "implemented-visible",
+        "evidenceRefs": [
+          "a98b6717-8090-46e9-b627-810a0cfd33eb",
+          "36238c58-82d0-4a90-a15b-6cd9e9d587ec",
+          "74bfc01b-4773-4f7d-92ed-502d6103f5ad",
+          "d8a3b837-48a1-4ac4-b14d-1f7150702ce9",
+          "25c71735-58d3-4efc-adac-b597aca840d5",
+          "f5e4441d-74ba-434c-863a-66612c4f82b9",
+          "9869d61d-cf23-49ea-97bb-408d0f528a58",
+          "dac4364c-3e9a-41e4-b936-125ffa78ab28",
+          "7074fd21-6d15-485b-aee7-eb0d0aa840e5",
+          "4f0a21a1-cbfc-406a-9a17-c5f275e1e097",
+          "2e5e1ad5-6f57-42ce-8af0-652b9061d925",
+          "885b722a-edde-415a-a76d-b40875f6661b",
+          "63df84bc-97f9-49ec-8086-3fc35b9ca796",
+          "a56b4322-62bc-4125-8d71-b86f8058a195",
+          "439e1de9-4adf-4c17-9a8b-d851f7b53063",
+          "c9921339-5d5c-4941-8e77-93909bfc19aa",
+          "294a390d-e9cd-43fa-acbd-7d1e62e29081",
+          "5ea2280e-c8ce-4152-8f97-127018a836cb",
+          "290fccff-f6be-4074-9d7d-8b43e83d5ed4",
+          "f12bb6ad-702e-441b-9269-41d3c702f816",
+          "aa4fa507-b604-40d6-9901-d4fe95d419e6",
+          "19940c44-3615-4e49-a196-873aa0369560",
+          "adfe9b54-6b4b-4449-8bc7-da53bab4aeb6",
+          "a9c92900-fc34-4f64-948f-74c6a22e2287",
+          "378f7c4e-927d-44a4-bff5-ba2200994912",
+          "6f7d3007-6c95-4e9e-9a45-2bb463732990",
+          "d86531ca-b752-4a8b-a485-6e10bf62d0e4"
+        ],
+        "facet": "render",
+        "findingId": "CI-V06",
+        "inputHash": "c77442d0f0359a0b6a7f55aa38359ca23e115261260b8e92daf63e5cd3fd492b",
+        "node": "R07_SEMANTIC@n11",
+        "reason": "今回実CIの通常viewportで、係数計算(25)、-17-9=-26(26)、元不等式へ結果を戻す本文と未回答全式(27)、4選択肢をヘッダに覆われず読めた。旧長大写真の隠れた文脈を今回画像から確認できる。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "c965951a119c142020915a17b21e7f7719e5fc66b5475dc2e5082949a680554f",
+        "resolvesOutputRef": "578102f6b4ca965494430747d1d344763be4e7923649fec4dc5ceb72789e60e5",
+        "outputRef": "55339d75702487ef5651503e8b219bb26ec43939343c15447bbc845c1190fa26"
+      },
+      {
+        "affectedRefs": [
           "n11-tg-divide",
           "n11-tg-final",
           "n11-06"
@@ -5286,6 +5368,25 @@
             "unchangedTargetHash": "9bf4a89204552238505bc8dfaaa179389d9e89994fcb72ab9f7c187b549c1b2a"
           },
           "priorExposure": "Both know draft plan; first actual images of the newly compiled inactive candidate seen before manifest/author capture report. Not blind. Historical IR is not used as a layout target."
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "5059523de113de24f50fd1bcd10e0d469dee6142c12b83da6f5d33372942eb05",
+        "assignmentId": "w047-n11-ci-meaning-c77442d0f035",
+        "node": "R07_SEMANTIC@n11",
+        "performerRef": "/root/w047_review_design",
+        "logicalRole": "A",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "implemented-visible"
+        ],
+        "packetHash": "0b4e7f62beb96215239e28664265d4785ba06242f0c1c39066ebfdf54156ff43",
+        "assignmentHash": "d1ebf93e2fee02189196ea8d3d30e514557bf105f5bc723d5b952499824be744",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
         },
         "status": "COMPLETED"
       }

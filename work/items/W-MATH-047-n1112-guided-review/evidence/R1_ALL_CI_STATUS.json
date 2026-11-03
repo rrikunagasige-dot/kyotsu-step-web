@@ -1,0 +1,25 @@
+{
+  "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+  "dedicatedRun": 41635935097,
+  "dedicatedConclusion": "success",
+  "legacyRuns": [
+    {
+      "id": 41635935294,
+      "conclusion": "failure",
+      "reason": "Historical N11 source pin ae3823 differs from approved P0063465; original assertion retained",
+      "jobId": 125917013690
+    },
+    {
+      "id": 41635935415,
+      "conclusion": "failure",
+      "reason": "Historical W038 frozen plan DRIFT; original plan/test retained; dedicated current R1 checks pass",
+      "jobId": 125917013957
+    },
+    {
+      "id": 41635935324,
+      "conclusion": "success",
+      "name": "Textbook code and AI authoring pilot"
+    }
+  ],
+  "allRepositoryCIClaimedGreen": false
+}

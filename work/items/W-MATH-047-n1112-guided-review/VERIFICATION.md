@@ -29,3 +29,7 @@ G2-A01/G2-B-L01: 保持W038の未回答商7/3先出しを確認しG2 FAIL、issu
 ## 2026-11-03 W047/G2-R1 承認・限定適用
 
 8faa9b19の実発言をR1へ記録。R1承認planのsource coverage/aliasを生成器が追従しない原FAILを検出し、承認planの完全一致を保つため限定技術patchを既存adapterで適用（W-TECH-050初回→W-TECH-051整合補修、初回を成功へ書換えない）。汎用JSON ID順guardは変更せず実拒否を保存。Work専用のexact移行CODEは17動的/負例/復旧検査とA/B審査を経て使用。新実render初回所見は旧IRの初見再利用と区別。R04では旧finding解決の現在入力版への束縛不足、同taskの報告変更、figure.verify空入力をCODEが拒否し、改訂assignment/実画像確認/原図2件検査で補修、原拒否を保持した。R06適用後の入力失効はclaim照合→R01〜R06再結合で修復し、同じpatchを再適用していない。現在R06受理/R07待ち。独立CODE検証はevidence/r1-independent-codeへ保存、実CI未取得と区別する。
+
+## 2026-11-03 R1固定sourceのR07完了
+
+source 2b7780b97bf8c3bde463742e71bf3e816ea8b562、実CI41635935097成功、artifact13231101167/ZIP0876cff…/raw112件を照合。74PNGを既存capture経路で登録。残留lockを原session終了・PID開始時刻・台帳連鎖で照合して復旧し、既登録capture再利用のidempotent取込で完了。A実CI初回・B非初回補足を保持。R07技術/意味PASS、CI-V06 VERIFIED_FIXED。G2-L01は実症状修正を確認し統合閉鎖は次G2へ留保。修正版Gate①シート作成。旧固定CI二本FAIL原ログ保持。未公開・N12未適用・最終受入未実施。

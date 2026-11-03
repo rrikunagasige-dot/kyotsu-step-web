@@ -1,0 +1,16 @@
+{
+  "originalLock": {
+    "pid": 2,
+    "time": 1793709306.92905
+  },
+  "observedCurrentProcess": {
+    "pid": 2,
+    "exists": false
+  },
+  "completedWriterSession": 18244,
+  "sessionResult": "Exited with Conflict; no writer remains active",
+  "chain": "VALID",
+  "events": 3904,
+  "head": "d6d3eba3344f076dd403f087c856edf0afa507ce77f2d9b7a599add9ab032d1d",
+  "reason": "PID reused by a later execution, verified by process start time; explicit one-time recovery, no generic guard change"
+}

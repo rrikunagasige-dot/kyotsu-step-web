@@ -1,0 +1,1193 @@
+﻿2026-11-03T12:28:05.9599463Z Current runner version: '2.338.2'
+2026-11-03T12:28:05.9624084Z ##[group]Runner Image Provisioner
+2026-11-03T12:28:05.9625292Z Hosted Compute Agent
+2026-11-03T12:28:05.9625941Z Version: 20261021.618
+2026-11-03T12:28:05.9626676Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T12:28:05.9627412Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T12:28:05.9628070Z Worker ID: {65c9e874-d943-4098-9e4d-e2116107370b}
+2026-11-03T12:28:05.9628833Z Region: westus3
+2026-11-03T12:28:05.9629373Z Cloud: Azure
+2026-11-03T12:28:05.9630343Z ##[endgroup]
+2026-11-03T12:28:05.9631871Z ##[group]Operating System
+2026-11-03T12:28:05.9632521Z Ubuntu
+2026-11-03T12:28:05.9633170Z 26.04.1
+2026-11-03T12:28:05.9633721Z LTS
+2026-11-03T12:28:05.9634310Z ##[endgroup]
+2026-11-03T12:28:05.9635275Z ##[group]Runner Image
+2026-11-03T12:28:05.9635993Z Image: ubuntu-26.04
+2026-11-03T12:28:05.9636639Z Version: 20261025.179.1
+2026-11-03T12:28:05.9637948Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-03T12:28:05.9639614Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+2026-11-03T12:28:05.9640634Z ##[endgroup]
+2026-11-03T12:28:05.9641806Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T12:28:05.9643779Z Contents: read
+2026-11-03T12:28:05.9644511Z Metadata: read
+2026-11-03T12:28:05.9645490Z ##[endgroup]
+2026-11-03T12:28:05.9647978Z Secret source: Actions
+2026-11-03T12:28:05.9649153Z Cache mode: write
+2026-11-03T12:28:05.9649852Z Prepare workflow directory
+2026-11-03T12:28:06.0211376Z Prepare all required actions
+2026-11-03T12:28:06.0260322Z Getting action download info
+2026-11-03T12:28:06.3621389Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-03T12:28:06.5354438Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-11-03T12:28:07.1560611Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-03T12:28:07.2185752Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-03T12:28:07.2890155Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-03T12:28:07.4669630Z Complete job name: verify
+2026-11-03T12:28:07.5550363Z ##[group]Run actions/checkout@v4
+2026-11-03T12:28:07.5551268Z with:
+2026-11-03T12:28:07.5551739Z   fetch-depth: 0
+2026-11-03T12:28:07.5552202Z   persist-credentials: false
+2026-11-03T12:28:07.5552770Z   repository: rrikunagasige-dot/kyotsu-step-web
+2026-11-03T12:28:07.5557097Z   token: ***
+2026-11-03T12:28:07.5557533Z   ssh-strict: true
+2026-11-03T12:28:07.5557967Z   ssh-user: git
+2026-11-03T12:28:07.5558376Z   clean: true
+2026-11-03T12:28:07.5558817Z   sparse-checkout-cone-mode: true
+2026-11-03T12:28:07.5559344Z   fetch-tags: false
+2026-11-03T12:28:07.5559780Z   show-progress: true
+2026-11-03T12:28:07.5560216Z   lfs: false
+2026-11-03T12:28:07.5560618Z   submodules: false
+2026-11-03T12:28:07.5561080Z   set-safe-directory: true
+2026-11-03T12:28:07.5561572Z   allow-unsafe-pr-checkout: false
+2026-11-03T12:28:07.5562338Z env:
+2026-11-03T12:28:07.5562842Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:28:07.5563645Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:28:07.5564402Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:28:07.5565259Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:28:07.5565784Z ##[endgroup]
+2026-11-03T12:28:07.8714450Z Syncing repository: rrikunagasige-dot/kyotsu-step-web
+2026-11-03T12:28:07.8718422Z ##[group]Getting Git version info
+2026-11-03T12:28:07.8720183Z Working directory is '/home/runner/work/kyotsu-step-web/kyotsu-step-web'
+2026-11-03T12:28:07.8832169Z [command]/usr/bin/git version
+2026-11-03T12:28:07.8834276Z git version 2.56.0
+2026-11-03T12:28:07.8838071Z ##[endgroup]
+2026-11-03T12:28:07.8843965Z Temporarily overriding HOME='/home/runner/work/_temp/2b8cb7cb-baf1-4fbe-b313-d73bc36a99f9' before making global git config changes
+2026-11-03T12:28:07.8846315Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T12:28:07.8847667Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-11-03T12:28:07.8879845Z Deleting the contents of '/home/runner/work/kyotsu-step-web/kyotsu-step-web'
+2026-11-03T12:28:07.8886238Z ##[group]Initializing the repository
+2026-11-03T12:28:07.8892697Z [command]/usr/bin/git init /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-11-03T12:28:07.9039899Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T12:28:07.9042404Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T12:28:07.9044539Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T12:28:07.9046622Z hint: call:
+2026-11-03T12:28:07.9047706Z hint:
+2026-11-03T12:28:07.9048955Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T12:28:07.9050504Z hint:
+2026-11-03T12:28:07.9051939Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T12:28:07.9053970Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T12:28:07.9056027Z hint:
+2026-11-03T12:28:07.9057212Z hint: 	git branch -m <name>
+2026-11-03T12:28:07.9058158Z hint:
+2026-11-03T12:28:07.9059444Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T12:28:07.9061812Z Initialized empty Git repository in /home/runner/work/kyotsu-step-web/kyotsu-step-web/.git/
+2026-11-03T12:28:07.9074126Z [command]/usr/bin/git remote add origin https://github.com/rrikunagasige-dot/kyotsu-step-web
+2026-11-03T12:28:07.9138614Z ##[endgroup]
+2026-11-03T12:28:07.9140207Z ##[group]Disabling automatic garbage collection
+2026-11-03T12:28:07.9142467Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-03T12:28:07.9180548Z ##[endgroup]
+2026-11-03T12:28:07.9182200Z ##[group]Setting up auth
+2026-11-03T12:28:07.9189138Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:28:07.9250394Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:28:07.9824601Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:28:07.9860035Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:28:08.0150763Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:28:08.0195200Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:28:08.0497167Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T12:28:08.0545649Z ##[endgroup]
+2026-11-03T12:28:08.0547522Z ##[group]Fetching the repository
+2026-11-03T12:28:08.0558024Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-11-03T12:29:01.9792933Z From https://github.com/rrikunagasige-dot/kyotsu-step-web
+2026-11-03T12:29:01.9798342Z  * [new branch]        backend         -> origin/backend
+2026-11-03T12:29:01.9799549Z  * [new branch]        backup/main-before-ch01-questionbank-20260928 -> origin/backup/main-before-ch01-questionbank-20260928
+2026-11-03T12:29:01.9801177Z  * [new branch]        backup/main-before-physics-taxonomy-20260928 -> origin/backup/main-before-physics-taxonomy-20260928
+2026-11-03T12:29:01.9802862Z  * [new branch]        backup/main-before-reader-repair-docs-20260929 -> origin/backup/main-before-reader-repair-docs-20260929
+2026-11-03T12:29:01.9805838Z  * [new branch]        backup/main-before-source-archive-p32-20260929 -> origin/backup/main-before-source-archive-p32-20260929
+2026-11-03T12:29:01.9807682Z  * [new branch]        backup/main-before-textbook-catalog-p20-p25-20260928 -> origin/backup/main-before-textbook-catalog-p20-p25-20260928
+2026-11-03T12:29:01.9809560Z  * [new branch]        backup/main-before-textbook-reader-repair-20260928 -> origin/backup/main-before-textbook-reader-repair-20260928
+2026-11-03T12:29:01.9811281Z  * [new branch]        chatgpt/math-100-counterexample-pilot -> origin/chatgpt/math-100-counterexample-pilot
+2026-11-03T12:29:01.9812635Z  * [new branch]        chatgpt/math-101-negation-pilot -> origin/chatgpt/math-101-negation-pilot
+2026-11-03T12:29:01.9813909Z  * [new branch]        chatgpt/math-102-and-or-pilot -> origin/chatgpt/math-102-and-or-pilot
+2026-11-03T12:29:01.9815547Z  * [new branch]        chatgpt/math-103-compound-negation-pilot -> origin/chatgpt/math-103-compound-negation-pilot
+2026-11-03T12:29:01.9817200Z  * [new branch]        chatgpt/math-104-necessary-sufficient-pilot -> origin/chatgpt/math-104-necessary-sufficient-pilot
+2026-11-03T12:29:01.9818660Z  * [new branch]        chatgpt/math-105-truth-pilot -> origin/chatgpt/math-105-truth-pilot
+2026-11-03T12:29:01.9820193Z  * [new branch]        chatgpt/math-106-set-condition-pilot -> origin/chatgpt/math-106-set-condition-pilot
+2026-11-03T12:29:01.9821490Z  * [new branch]        chatgpt/math-107-necessary-sufficient-advanced-pilot -> origin/chatgpt/math-107-necessary-sufficient-advanced-pilot
+2026-11-03T12:29:01.9822624Z  * [new branch]        chatgpt/math-107-necessary-sufficient-pilot -> origin/chatgpt/math-107-necessary-sufficient-pilot
+2026-11-03T12:29:01.9823538Z  * [new branch]        chatgpt/math-108-equivalence-proof-pilot -> origin/chatgpt/math-108-equivalence-proof-pilot
+2026-11-03T12:29:01.9824394Z  * [new branch]        chatgpt/math-109-quantifier-negation-pilot -> origin/chatgpt/math-109-quantifier-negation-pilot
+2026-11-03T12:29:01.9825761Z  * [new branch]        chatgpt/math-110-converse-contrapositive-inverse-pilot -> origin/chatgpt/math-110-converse-contrapositive-inverse-pilot
+2026-11-03T12:29:01.9827062Z  * [new branch]        chatgpt/math-111-contrapositive-proof-pilot -> origin/chatgpt/math-111-contrapositive-proof-pilot
+2026-11-03T12:29:01.9827932Z  * [new branch]        chatgpt/math-112-irrational-proof-pilot -> origin/chatgpt/math-112-irrational-proof-pilot
+2026-11-03T12:29:01.9828938Z  * [new branch]        chatgpt/math-112-irrationality-proof-pilot -> origin/chatgpt/math-112-irrationality-proof-pilot
+2026-11-03T12:29:01.9829874Z  * [new branch]        chatgpt/math-113-sqrt-irrational-pilot -> origin/chatgpt/math-113-sqrt-irrational-pilot
+2026-11-03T12:29:01.9830736Z  * [new branch]        chatgpt/math-114-divisibility-proof-pilot -> origin/chatgpt/math-114-divisibility-proof-pilot
+2026-11-03T12:29:01.9831632Z  * [new branch]        chatgpt/math-115-irrational-difference-pilot -> origin/chatgpt/math-115-irrational-difference-pilot
+2026-11-03T12:29:01.9832596Z  * [new branch]        chatgpt/math-116-rational-irrational-linear-proof -> origin/chatgpt/math-116-rational-irrational-linear-proof
+2026-11-03T12:29:01.9833544Z  * [new branch]        chatgpt/math-117-cross-problem-theorem-pilot -> origin/chatgpt/math-117-cross-problem-theorem-pilot
+2026-11-03T12:29:01.9834567Z  * [new branch]        chatgpt/math-118-function-criterion-pilot -> origin/chatgpt/math-118-function-criterion-pilot
+2026-11-03T12:29:01.9835768Z  * [new branch]        chatgpt/math-119-120-prep -> origin/chatgpt/math-119-120-prep
+2026-11-03T12:29:01.9836528Z  * [new branch]        chatgpt/math-119-function-values-pilot -> origin/chatgpt/math-119-function-values-pilot
+2026-11-03T12:29:01.9837324Z  * [new branch]        chatgpt/math-120-verbal-function-pilot -> origin/chatgpt/math-120-verbal-function-pilot
+2026-11-03T12:29:01.9838185Z  * [new branch]        chatgpt/math-120-verbal-function-pilot-clean -> origin/chatgpt/math-120-verbal-function-pilot-clean
+2026-11-03T12:29:01.9839214Z  * [new branch]        chatgpt/math-87-120-final-qa-audit -> origin/chatgpt/math-87-120-final-qa-audit
+2026-11-03T12:29:01.9839937Z  * [new branch]        chatgpt/math-87-120-structure-map -> origin/chatgpt/math-87-120-structure-map
+2026-11-03T12:29:01.9840713Z  * [new branch]        chatgpt/math-87-97-subproblem-compression -> origin/chatgpt/math-87-97-subproblem-compression
+2026-11-03T12:29:01.9841492Z  * [new branch]        chatgpt/math-87-inline-markup-fix -> origin/chatgpt/math-87-inline-markup-fix
+2026-11-03T12:29:01.9842264Z  * [new branch]        chatgpt/math-87-textbook-like-design -> origin/chatgpt/math-87-textbook-like-design
+2026-11-03T12:29:01.9843023Z  * [new branch]        chatgpt/math-88-96-content-design -> origin/chatgpt/math-88-96-content-design
+2026-11-03T12:29:01.9843754Z  * [new branch]        chatgpt/math-88-96-implementation -> origin/chatgpt/math-88-96-implementation
+2026-11-03T12:29:01.9844453Z  * [new branch]        chatgpt/math-88-review-repair -> origin/chatgpt/math-88-review-repair
+2026-11-03T12:29:01.9845440Z  * [new branch]        chatgpt/math-94-97-textbook-flow -> origin/chatgpt/math-94-97-textbook-flow
+2026-11-03T12:29:01.9846248Z  * [new branch]        chatgpt/math-94-subproblem-compression -> origin/chatgpt/math-94-subproblem-compression
+2026-11-03T12:29:01.9847097Z  * [new branch]        chatgpt/math-98-120-reasoning-figures-v2 -> origin/chatgpt/math-98-120-reasoning-figures-v2
+2026-11-03T12:29:01.9847900Z  * [new branch]        chatgpt/math-98-proposition-pilot -> origin/chatgpt/math-98-proposition-pilot
+2026-11-03T12:29:01.9848635Z  * [new branch]        chatgpt/math-99-implication-pilot -> origin/chatgpt/math-99-implication-pilot
+2026-11-03T12:29:01.9849467Z  * [new branch]        chatgpt/math-pilot-target-rendering-repair -> origin/chatgpt/math-pilot-target-rendering-repair
+2026-11-03T12:29:01.9850244Z  * [new branch]        chatgpt/math-practice-119-v1 -> origin/chatgpt/math-practice-119-v1
+2026-11-03T12:29:01.9850984Z  * [new branch]        chatgpt/math-practice-87-120-final-qa -> origin/chatgpt/math-practice-87-120-final-qa
+2026-11-03T12:29:01.9851821Z  * [new branch]        chatgpt/math-practice-87-120-integration -> origin/chatgpt/math-practice-87-120-integration
+2026-11-03T12:29:01.9852851Z  * [new branch]        chatgpt/math-practice-entry-architecture -> origin/chatgpt/math-practice-entry-architecture
+2026-11-03T12:29:01.9853697Z  * [new branch]        chatgpt/math-practice-master-lessons -> origin/chatgpt/math-practice-master-lessons
+2026-11-03T12:29:01.9854553Z  * [new branch]        chatgpt/math-practice-physics-title-layout -> origin/chatgpt/math-practice-physics-title-layout
+2026-11-03T12:29:01.9855794Z  * [new branch]        chatgpt/math-practice-release-qa-docs -> origin/chatgpt/math-practice-release-qa-docs
+2026-11-03T12:29:01.9856649Z  * [new branch]        chatgpt/math-practice-release-qa-figures -> origin/chatgpt/math-practice-release-qa-figures
+2026-11-03T12:29:01.9857516Z  * [new branch]        chatgpt/math-practice-title-architecture -> origin/chatgpt/math-practice-title-architecture
+2026-11-03T12:29:01.9858404Z  * [new branch]        chatgpt/math-release-qa-figures-99-101-110 -> origin/chatgpt/math-release-qa-figures-99-101-110
+2026-11-03T12:29:01.9859190Z  * [new branch]        chatgpt/math-textbook-sets-v1 -> origin/chatgpt/math-textbook-sets-v1
+2026-11-03T12:29:01.9859893Z  * [new branch]        chatgpt/math-theme-direct-entry -> origin/chatgpt/math-theme-direct-entry
+2026-11-03T12:29:01.9860640Z  * [new branch]        chatgpt/physics-ch01-e2e-route-fix -> origin/chatgpt/physics-ch01-e2e-route-fix
+2026-11-03T12:29:01.9861397Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix2 -> origin/chatgpt/physics-ch01-full-e2e-fix2
+2026-11-03T12:29:01.9862169Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix3 -> origin/chatgpt/physics-ch01-full-e2e-fix3
+2026-11-03T12:29:01.9862918Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix4 -> origin/chatgpt/physics-ch01-full-e2e-fix4
+2026-11-03T12:29:01.9863836Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix5 -> origin/chatgpt/physics-ch01-full-e2e-fix5
+2026-11-03T12:29:01.9864607Z  * [new branch]        chatgpt/physics-ch01-p14-finalize -> origin/chatgpt/physics-ch01-p14-finalize
+2026-11-03T12:29:01.9865868Z  * [new branch]        chatgpt/physics-ch01-questionbank-docs -> origin/chatgpt/physics-ch01-questionbank-docs
+2026-11-03T12:29:01.9866804Z  * [new branch]        chatgpt/physics-ch01-questionbank-v1 -> origin/chatgpt/physics-ch01-questionbank-v1
+2026-11-03T12:29:01.9867567Z  * [new branch]        chatgpt/physics-ch01-textbook-v2 -> origin/chatgpt/physics-ch01-textbook-v2
+2026-11-03T12:29:01.9868368Z  * [new branch]        chatgpt/physics-export-package-20261003 -> origin/chatgpt/physics-export-package-20261003
+2026-11-03T12:29:01.9869198Z  * [new branch]        chatgpt/physics-pedagogy-handoff-p33 -> origin/chatgpt/physics-pedagogy-handoff-p33
+2026-11-03T12:29:01.9869923Z  * [new branch]        chatgpt/physics-taxonomy-v1 -> origin/chatgpt/physics-taxonomy-v1
+2026-11-03T12:29:01.9870682Z  * [new branch]        chatgpt/physics-textbook-catalog-docs -> origin/chatgpt/physics-textbook-catalog-docs
+2026-11-03T12:29:01.9871533Z  * [new branch]        chatgpt/physics-textbook-catalog-p20-p25 -> origin/chatgpt/physics-textbook-catalog-p20-p25
+2026-11-03T12:29:01.9872840Z  * [new branch]        chatgpt/source-archive-index-p32 -> origin/chatgpt/source-archive-index-p32
+2026-11-03T12:29:01.9873863Z  * [new branch]        chatgpt/textbook-reader-repair-docs -> origin/chatgpt/textbook-reader-repair-docs
+2026-11-03T12:29:01.9874636Z  * [new branch]        chatgpt/textbook-reader-repair-v1 -> origin/chatgpt/textbook-reader-repair-v1
+2026-11-03T12:29:01.9875842Z  * [new branch]        docs/w-math-009-010-memory-close -> origin/docs/w-math-009-010-memory-close
+2026-11-03T12:29:01.9876628Z  * [new branch]        fix/w-math-008-n12-cost-derivation -> origin/fix/w-math-008-n12-cost-derivation
+2026-11-03T12:29:01.9877406Z  * [new branch]        fix/w-math-009-n09-square-atomicity -> origin/fix/w-math-009-n09-square-atomicity
+2026-11-03T12:29:01.9878253Z  * [new branch]        fix/w-math-010-n02-zero-term-prompt -> origin/fix/w-math-010-n02-zero-term-prompt
+2026-11-03T12:29:01.9879188Z  * [new branch]        front-ui--test  -> origin/front-ui--test
+2026-11-03T12:29:01.9880162Z  * [new branch]        governance/close-repository-os-port-20261010 -> origin/governance/close-repository-os-port-20261010
+2026-11-03T12:29:01.9881137Z  * [new branch]        governance/port-repository-os-20261010 -> origin/governance/port-repository-os-20261010
+2026-11-03T12:29:01.9881786Z  * [new branch]        main            -> origin/main
+2026-11-03T12:29:01.9882547Z  * [new branch]        proposal/W-GOV-006-workflow-integrity-20261010 -> origin/proposal/W-GOV-006-workflow-integrity-20261010
+2026-11-03T12:29:01.9883599Z  * [new branch]        proposal/W-GOV-007-repository-os-parity-20261011 -> origin/proposal/W-GOV-007-repository-os-parity-20261011
+2026-11-03T12:29:01.9884655Z  * [new branch]        proposal/W-GOV-009-ci-wait-independent-work-20261021 -> origin/proposal/W-GOV-009-ci-wait-independent-work-20261021
+2026-11-03T12:29:01.9886543Z  * [new branch]        proposal/W-MATH-002-textbook-ui-compression-20261011 -> origin/proposal/W-MATH-002-textbook-ui-compression-20261011
+2026-11-03T12:29:01.9887745Z  * [new branch]        proposal/W-MATH-013-n11-q14-derivation-20261021 -> origin/proposal/W-MATH-013-n11-q14-derivation-20261021
+2026-11-03T12:29:01.9888796Z  * [new branch]        proposal/W-MATH-014-n14-q07-general-proof-20261021 -> origin/proposal/W-MATH-014-n14-q07-general-proof-20261021
+2026-11-03T12:29:01.9889796Z  * [new branch]        proposal/W-MATH-015-n14-q08-outside-proof-20261021 -> origin/proposal/W-MATH-015-n14-q08-outside-proof-20261021
+2026-11-03T12:29:01.9890775Z  * [new branch]        proposal/W-MATH-016-n14-q12-two-branches-20261021 -> origin/proposal/W-MATH-016-n14-q12-two-branches-20261021
+2026-11-03T12:29:01.9891880Z  * [new branch]        proposal/W-MATH-017-n11-arithmetic-learner-operations-20261021 -> origin/proposal/W-MATH-017-n11-arithmetic-learner-operations-20261021
+2026-11-03T12:29:01.9893101Z  * [new branch]        proposal/w-math-008-n12-cost-derivation -> origin/proposal/w-math-008-n12-cost-derivation
+2026-11-03T12:29:01.9893981Z  * [new branch]        proposal/w-math-009-010-cross-unit-audit -> origin/proposal/w-math-009-010-cross-unit-audit
+2026-11-03T12:29:01.9895200Z  * [new branch]        publish/w046-ux06-d588-20261103 -> origin/publish/w046-ux06-d588-20261103
+2026-11-03T12:29:01.9895958Z  * [new branch]        release/sync-completed-modes-20261010 -> origin/release/sync-completed-modes-20261010
+2026-11-03T12:29:01.9896607Z  * [new branch]        source-archives -> origin/source-archives
+2026-11-03T12:29:01.9897256Z  * [new branch]        work/W-GOV-006-create-command-20261014 -> origin/work/W-GOV-006-create-command-20261014
+2026-11-03T12:29:01.9898187Z  * [new branch]        work/W-GOV-006-preservation-implementation-20261010 -> origin/work/W-GOV-006-preservation-implementation-20261010
+2026-11-03T12:29:01.9899269Z  * [new branch]        work/W-GOV-007-correction-first-cross-creation-20261018 -> origin/work/W-GOV-007-correction-first-cross-creation-20261018
+2026-11-03T12:29:01.9900422Z  * [new branch]        work/W-GOV-007-repository-os-parity-implementation-20261011 -> origin/work/W-GOV-007-repository-os-parity-implementation-20261011
+2026-11-03T12:29:01.9901487Z  * [new branch]        work/W-GOV-008-P001-pr92-review-pilot-20261019 -> origin/work/W-GOV-008-P001-pr92-review-pilot-20261019
+2026-11-03T12:29:01.9902368Z  * [new branch]        work/W-GOV-008-P001-review-link-20261019 -> origin/work/W-GOV-008-P001-review-link-20261019
+2026-11-03T12:29:01.9903212Z  * [new branch]        work/W-GOV-008-P002-marked-review-20261019 -> origin/work/W-GOV-008-P002-marked-review-20261019
+2026-11-03T12:29:01.9904217Z  * [new branch]        work/W-GOV-008-P003-github-review-final-check-20261019 -> origin/work/W-GOV-008-P003-github-review-final-check-20261019
+2026-11-03T12:29:01.9905597Z  * [new branch]        work/W-GOV-008-P003-main-rule-integration-20261019 -> origin/work/W-GOV-008-P003-main-rule-integration-20261019
+2026-11-03T12:29:01.9906609Z  * [new branch]        work/W-GOV-008-P003-pilot-visual-sheets-20261019 -> origin/work/W-GOV-008-P003-pilot-visual-sheets-20261019
+2026-11-03T12:29:01.9908295Z  * [new branch]        work/W-GOV-008-review-delivery-contract-20261011 -> origin/work/W-GOV-008-review-delivery-contract-20261011
+2026-11-03T12:29:01.9909935Z  * [new branch]        work/W-GOV-009-ci-wait-implementation-20261021 -> origin/work/W-GOV-009-ci-wait-implementation-20261021
+2026-11-03T12:29:01.9911451Z  * [new branch]        work/W-GOV-010-adoption-close-20261024 -> origin/work/W-GOV-010-adoption-close-20261024
+2026-11-03T12:29:01.9913017Z  * [new branch]        work/W-GOV-010-coded-authoring-proposal-20261023 -> origin/work/W-GOV-010-coded-authoring-proposal-20261023
+2026-11-03T12:29:01.9915069Z  * [new branch]        work/W-MATH-002-P-002-context-and-history-20261014 -> origin/work/W-MATH-002-P-002-context-and-history-20261014
+2026-11-03T12:29:01.9916431Z  * [new branch]        work/W-MATH-002-P-003-display-fidelity-20261014 -> origin/work/W-MATH-002-P-003-display-fidelity-20261014
+2026-11-03T12:29:01.9917560Z  * [new branch]        work/W-MATH-002-P-004-published-figure-assets-20261014 -> origin/work/W-MATH-002-P-004-published-figure-assets-20261014
+2026-11-03T12:29:01.9919169Z  * [new branch]        work/W-MATH-002-P-005-subset-approved-png-20261014 -> origin/work/W-MATH-002-P-005-subset-approved-png-20261014
+2026-11-03T12:29:01.9920326Z  * [new branch]        work/W-MATH-002-textbook-ui-compression-implementation-20261011 -> origin/work/W-MATH-002-textbook-ui-compression-implementation-20261011
+2026-11-03T12:29:01.9921626Z  * [new branch]        work/W-MATH-003-gate3-pages-20261023 -> origin/work/W-MATH-003-gate3-pages-20261023
+2026-11-03T12:29:01.9922489Z  * [new branch]        work/W-MATH-003-n02-n09-app-review-20261017 -> origin/work/W-MATH-003-n02-n09-app-review-20261017
+2026-11-03T12:29:01.9923820Z  * [new branch]        work/W-MATH-003-n02-n09-source-design-20261017 -> origin/work/W-MATH-003-n02-n09-source-design-20261017
+2026-11-03T12:29:01.9924734Z  * [new branch]        work/W-MATH-003-n03-n10-n12-app-20261017 -> origin/work/W-MATH-003-n03-n10-n12-app-20261017
+2026-11-03T12:29:01.9926053Z  * [new branch]        work/W-MATH-003-n03-n10-n12-release-evidence-20261017 -> origin/work/W-MATH-003-n03-n10-n12-release-evidence-20261017
+2026-11-03T12:29:01.9927026Z  * [new branch]        work/W-MATH-003-n04-q01-first-block-20261019 -> origin/work/W-MATH-003-n04-q01-first-block-20261019
+2026-11-03T12:29:01.9927882Z  * [new branch]        work/W-MATH-003-ne01-ne02-app-20261023 -> origin/work/W-MATH-003-ne01-ne02-app-20261023
+2026-11-03T12:29:01.9929167Z  * [new branch]        work/W-MATH-003-ne01-ne02-batch-design-20261023 -> origin/work/W-MATH-003-ne01-ne02-batch-design-20261023
+2026-11-03T12:29:01.9930709Z  * [new branch]        work/W-MATH-003-ne01-ne02-evidence-20261023 -> origin/work/W-MATH-003-ne01-ne02-evidence-20261023
+2026-11-03T12:29:01.9931799Z  * [new branch]        work/W-MATH-003-next-pilots-review-20261017 -> origin/work/W-MATH-003-next-pilots-review-20261017
+2026-11-03T12:29:01.9932807Z  * [new branch]        work/W-MATH-003-numbers-expressions-creation-20261017 -> origin/work/W-MATH-003-numbers-expressions-creation-20261017
+2026-11-03T12:29:01.9933853Z  * [new branch]        work/W-MATH-003-numbers-expressions-pilot-20261017 -> origin/work/W-MATH-003-numbers-expressions-pilot-20261017
+2026-11-03T12:29:01.9935202Z  * [new branch]        work/W-MATH-003-numbers-expressions-textbook-20261017 -> origin/work/W-MATH-003-numbers-expressions-textbook-20261017
+2026-11-03T12:29:01.9936263Z  * [new branch]        work/W-MATH-003-p002-chapter1-review-pages-20261017 -> origin/work/W-MATH-003-p002-chapter1-review-pages-20261017
+2026-11-03T12:29:01.9938144Z  * [new branch]        work/W-MATH-003-p003-n04-n14-123-source-review-20261018 -> origin/work/W-MATH-003-p003-n04-n14-123-source-review-20261018
+2026-11-03T12:29:01.9939804Z  * [new branch]        work/W-MATH-003-p003-r1-n04-n14-batch-20261019 -> origin/work/W-MATH-003-p003-r1-n04-n14-batch-20261019
+2026-11-03T12:29:01.9941044Z  * [new branch]        work/W-MATH-004-N12-published-release-evidence-20261018 -> origin/work/W-MATH-004-N12-published-release-evidence-20261018
+2026-11-03T12:29:01.9942176Z  * [new branch]        work/W-MATH-004-P002-inline-token-implementation-20261018 -> origin/work/W-MATH-004-P002-inline-token-implementation-20261018
+2026-11-03T12:29:01.9943255Z  * [new branch]        work/W-MATH-004-P002-inline-token-proposal-20261018 -> origin/work/W-MATH-004-P002-inline-token-proposal-20261018
+2026-11-03T12:29:01.9944295Z  * [new branch]        work/W-MATH-004-inequality-derivation-audit-20261018 -> origin/work/W-MATH-004-inequality-derivation-audit-20261018
+2026-11-03T12:29:01.9946074Z  * [new branch]        work/W-MATH-004-inequality-derivation-impl-20261018 -> origin/work/W-MATH-004-inequality-derivation-impl-20261018
+2026-11-03T12:29:01.9947743Z  * [new branch]        work/W-MATH-005-P002-n01-n03-20261018 -> origin/work/W-MATH-005-P002-n01-n03-20261018
+2026-11-03T12:29:01.9948649Z  * [new branch]        work/W-MATH-005-R3-linked-proposal-20261018 -> origin/work/W-MATH-005-R3-linked-proposal-20261018
+2026-11-03T12:29:01.9949667Z  * [new branch]        work/W-MATH-005-R3-local-token-implementation-20261018 -> origin/work/W-MATH-005-R3-local-token-implementation-20261018
+2026-11-03T12:29:01.9950802Z  * [new branch]        work/W-MATH-006-inline-hole-visual-implementation-20261018 -> origin/work/W-MATH-006-inline-hole-visual-implementation-20261018
+2026-11-03T12:29:01.9951927Z  * [new branch]        work/W-MATH-006-inline-hole-visual-proposal-20261018 -> origin/work/W-MATH-006-inline-hole-visual-proposal-20261018
+2026-11-03T12:29:01.9953083Z  * [new branch]        work/W-MATH-007-coefficient-one-display-implementation-20261018 -> origin/work/W-MATH-007-coefficient-one-display-implementation-20261018
+2026-11-03T12:29:01.9954479Z  * [new branch]        work/W-MATH-007-coefficient-one-display-proposal-20261018 -> origin/work/W-MATH-007-coefficient-one-display-proposal-20261018
+2026-11-03T12:29:01.9955835Z  * [new branch]        work/W-MATH-013-n11-q14-derivation-20261021 -> origin/work/W-MATH-013-n11-q14-derivation-20261021
+2026-11-03T12:29:01.9956739Z  * [new branch]        work/W-MATH-014-n14-q07-general-proof-20261021 -> origin/work/W-MATH-014-n14-q07-general-proof-20261021
+2026-11-03T12:29:01.9957652Z  * [new branch]        work/W-MATH-015-n14-q08-outside-proof-20261021 -> origin/work/W-MATH-015-n14-q08-outside-proof-20261021
+2026-11-03T12:29:01.9958554Z  * [new branch]        work/W-MATH-016-n14-q12-two-branches-20261021 -> origin/work/W-MATH-016-n14-q12-two-branches-20261021
+2026-11-03T12:29:01.9959528Z  * [new branch]        work/W-MATH-017-p003-inline-prose-correction-20261021 -> origin/work/W-MATH-017-p003-inline-prose-correction-20261021
+2026-11-03T12:29:01.9960472Z  * [new branch]        work/W-MATH-019-n14-q14-proposal-20261022 -> origin/work/W-MATH-019-n14-q14-proposal-20261022
+2026-11-03T12:29:01.9961295Z  * [new branch]        work/W-MATH-020-n14-q15-proposal-20261022 -> origin/work/W-MATH-020-n14-q15-proposal-20261022
+2026-11-03T12:29:01.9962489Z  * [new branch]        work/W-MATH-021-n14-q15-middle-hint-proposal-20261022 -> origin/work/W-MATH-021-n14-q15-middle-hint-proposal-20261022
+2026-11-03T12:29:01.9963561Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-check-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-check-proposal-20261022
+2026-11-03T12:29:01.9964596Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-proposal-20261022
+2026-11-03T12:29:01.9965979Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-substitution-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-substitution-proposal-20261022
+2026-11-03T12:29:01.9967331Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-verification-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-verification-proposal-20261022
+2026-11-03T12:29:01.9968452Z  * [new branch]        work/W-MATH-022-n14-q16-endpoints-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoints-proposal-20261022
+2026-11-03T12:29:01.9969575Z  * [new branch]        work/W-MATH-022-q16-reconcile-accepted-20261023 -> origin/work/W-MATH-022-q16-reconcile-accepted-20261023
+2026-11-03T12:29:01.9970621Z  * [new branch]        work/W-MATH-022-q16-reconcile-evidence-20261023 -> origin/work/W-MATH-022-q16-reconcile-evidence-20261023
+2026-11-03T12:29:01.9971605Z  * [new branch]        work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022 -> origin/work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022
+2026-11-03T12:29:01.9972577Z  * [new branch]        work/W-MATH-024-n05-q18-hint-leak-impl-20261022 -> origin/work/W-MATH-024-n05-q18-hint-leak-impl-20261022
+2026-11-03T12:29:01.9973751Z  * [new branch]        work/W-MATH-024-n05-q18-hint-leak-proposal-20261022 -> origin/work/W-MATH-024-n05-q18-hint-leak-proposal-20261022
+2026-11-03T12:29:01.9974657Z  * [new branch]        work/W-MATH-025-chapter-audit-20261023 -> origin/work/W-MATH-025-chapter-audit-20261023
+2026-11-03T12:29:01.9975868Z  * [new branch]        work/W-MATH-025-factor-hint-leak-qa-proposals-20261022 -> origin/work/W-MATH-025-factor-hint-leak-qa-proposals-20261022
+2026-11-03T12:29:01.9976853Z  * [new branch]        work/W-MATH-025-five-accepted-audit-20261023 -> origin/work/W-MATH-025-five-accepted-audit-20261023
+2026-11-03T12:29:01.9977758Z  * [new branch]        work/W-MATH-025-hints-p005-p007-batch-20261023 -> origin/work/W-MATH-025-hints-p005-p007-batch-20261023
+2026-11-03T12:29:01.9978662Z  * [new branch]        work/W-MATH-025-n05-q11-hint-approved-20261023 -> origin/work/W-MATH-025-n05-q11-hint-approved-20261023
+2026-11-03T12:29:01.9979839Z  * [new branch]        work/W-MATH-025-n05-q11-p001-implementation-20261023 -> origin/work/W-MATH-025-n05-q11-p001-implementation-20261023
+2026-11-03T12:29:01.9980894Z  * [new branch]        work/W-MATH-025-n12-display-diagnosis-20261023 -> origin/work/W-MATH-025-n12-display-diagnosis-20261023
+2026-11-03T12:29:01.9981944Z  * [new branch]        work/W-MATH-025-p008-p014-evidence-20261023 -> origin/work/W-MATH-025-p008-p014-evidence-20261023
+2026-11-03T12:29:01.9983262Z  * [new branch]        work/W-MATH-025-p008-p014-hints-approved-20261023 -> origin/work/W-MATH-025-p008-p014-hints-approved-20261023
+2026-11-03T12:29:01.9985287Z  * [new branch]        work/W-MATH-025-p015-frozen-capture-20261023 -> origin/work/W-MATH-025-p015-frozen-capture-20261023
+2026-11-03T12:29:01.9986964Z  * [new branch]        work/W-MATH-025-p015-n12-layout-approved-20261023 -> origin/work/W-MATH-025-p015-n12-layout-approved-20261023
+2026-11-03T12:29:01.9988610Z  * [new branch]        work/W-MATH-025-p015-n12-layout-evidence-20261023 -> origin/work/W-MATH-025-p015-n12-layout-evidence-20261023
+2026-11-03T12:29:01.9990268Z  * [new branch]        work/W-MATH-025-p016-groups-approved-20261023 -> origin/work/W-MATH-025-p016-groups-approved-20261023
+2026-11-03T12:29:01.9991852Z  * [new branch]        work/W-MATH-025-p016-groups-evidence-20261023 -> origin/work/W-MATH-025-p016-groups-evidence-20261023
+2026-11-03T12:29:01.9993667Z  * [new branch]        work/W-MATH-025-p017-first-audit-evidence-20261023 -> origin/work/W-MATH-025-p017-first-audit-evidence-20261023
+2026-11-03T12:29:01.9995731Z  * [new branch]        work/W-MATH-025-p017-groups-approved-20261023 -> origin/work/W-MATH-025-p017-groups-approved-20261023
+2026-11-03T12:29:01.9997377Z  * [new branch]        work/W-MATH-025-p017-p018-final-evidence-20261023 -> origin/work/W-MATH-025-p017-p018-final-evidence-20261023
+2026-11-03T12:29:01.9999069Z  * [new branch]        work/W-MATH-025-p018-second-audit-evidence-20261023 -> origin/work/W-MATH-025-p018-second-audit-evidence-20261023
+2026-11-03T12:29:02.0000739Z  * [new branch]        work/W-MATH-025-p018-third-audit-evidence-20261023 -> origin/work/W-MATH-025-p018-third-audit-evidence-20261023
+2026-11-03T12:29:02.0002739Z  * [new branch]        work/W-MATH-026-n06-q12-distinct-distractor-20261023 -> origin/work/W-MATH-026-n06-q12-distinct-distractor-20261023
+2026-11-03T12:29:02.0004695Z  * [new branch]        work/W-MATH-027-eju-guidance-audit-20261024 -> origin/work/W-MATH-027-eju-guidance-audit-20261024
+2026-11-03T12:29:02.0006051Z  * [new branch]        work/W-MATH-027-n02-r1-20261024 -> origin/work/W-MATH-027-n02-r1-20261024
+2026-11-03T12:29:02.0006820Z  * [new branch]        work/W-MATH-027-n02-r1-evidence-20261024 -> origin/work/W-MATH-027-n02-r1-evidence-20261024
+2026-11-03T12:29:02.0007638Z  * [new branch]        work/W-MATH-027-p001-r1-evidence-20261024 -> origin/work/W-MATH-027-p001-r1-evidence-20261024
+2026-11-03T12:29:02.0008588Z  * [new branch]        work/W-MATH-027-three-theme-pedagogy-repair-20261023 -> origin/work/W-MATH-027-three-theme-pedagogy-repair-20261023
+2026-11-03T12:29:02.0009544Z  * [new branch]        work/W-MATH-027-workflow-resume-20261024 -> origin/work/W-MATH-027-workflow-resume-20261024
+2026-11-03T12:29:02.0010348Z  * [new branch]        work/n01-teaching-sequence-20261024 -> origin/work/n01-teaching-sequence-20261024
+2026-11-03T12:29:02.0011178Z  * [new branch]        work/n07-semantic-repair-proposal-20261025 -> origin/work/n07-semantic-repair-proposal-20261025
+2026-11-03T12:29:02.0012479Z  * [new branch]        work/n08-absolute-value-design-20261025 -> origin/work/n08-absolute-value-design-20261025
+2026-11-03T12:29:02.0013972Z  * [new branch]        work/n08-construction-application-20261026 -> origin/work/n08-construction-application-20261026
+2026-11-03T12:29:02.0015559Z  * [new branch]        work/n08-grouped-transformations-20261026 -> origin/work/n08-grouped-transformations-20261026
+2026-11-03T12:29:02.0016393Z  * [new branch]        work/n08-r7-derivation-axis-20261026 -> origin/work/n08-r7-derivation-axis-20261026
+2026-11-03T12:29:02.0017210Z  * [new branch]        work/n08-solution-workflow-trial-20261026 -> origin/work/n08-solution-workflow-trial-20261026
+2026-11-03T12:29:02.0018003Z  * [new branch]        work/n09-n10-guided-design-20261025 -> origin/work/n09-n10-guided-design-20261025
+2026-11-03T12:29:02.0019063Z  * [new branch]        work/n0910-choice-order-factor-audit-20261025 -> origin/work/n0910-choice-order-factor-audit-20261025
+2026-11-03T12:29:02.0019877Z  * [new branch]        work/n1112-guided-review-20261103 -> origin/work/n1112-guided-review-20261103
+2026-11-03T12:29:02.0020638Z  * [new branch]        work/ne02-n11-n12-guided-design-20261025 -> origin/work/ne02-n11-n12-guided-design-20261025
+2026-11-03T12:29:02.0021456Z  * [new branch]        work/production-workflow-p003-20261024 -> origin/work/production-workflow-p003-20261024
+2026-11-03T12:29:02.0022320Z  * [new branch]        work/section-one-formula-centering-20261024 -> origin/work/section-one-formula-centering-20261024
+2026-11-03T12:29:02.0023181Z  * [new branch]        work/section-one-results-blanks-20261024 -> origin/work/section-one-results-blanks-20261024
+2026-11-03T12:29:02.0023967Z  * [new branch]        work/section-one-teaching-20261024 -> origin/work/section-one-teaching-20261024
+2026-11-03T12:29:02.0025196Z  * [new branch]        work/section-one-typesetting-20261024 -> origin/work/section-one-typesetting-20261024
+2026-11-03T12:29:02.0026022Z  * [new branch]        work/textbook-code-ai-pilot-20261024 -> origin/work/textbook-code-ai-pilot-20261024
+2026-11-03T12:29:02.0026748Z  * [new branch]        work/theme-one-detail-20261024 -> origin/work/theme-one-detail-20261024
+2026-11-03T12:29:02.0027948Z  * [new branch]        work/theme-one-full-derivation-20261024 -> origin/work/theme-one-full-derivation-20261024
+2026-11-03T12:29:02.0029488Z  * [new branch]        work/theme-one-guided-repair-20261024 -> origin/work/theme-one-guided-repair-20261024
+2026-11-03T12:29:02.0030979Z  * [new branch]        work/transform-pattern-proposal-20261026 -> origin/work/transform-pattern-proposal-20261026
+2026-11-03T12:29:02.0032687Z  * [new branch]        work/transformation-groups-implementation-20261026 -> origin/work/transformation-groups-implementation-20261026
+2026-11-03T12:29:02.0034344Z  * [new branch]        work/w046-layout-verification-20261101 -> origin/work/w046-layout-verification-20261101
+2026-11-03T12:29:02.0036158Z  * [new branch]        work/w046-pages-publisher-proposal-20261102 -> origin/work/w046-pages-publisher-proposal-20261102
+2026-11-03T12:29:02.0038048Z  * [new branch]        work/w046-paragraph-display-20261103 -> origin/work/w046-paragraph-display-20261103
+2026-11-03T12:29:02.0039593Z  * [new branch]        work/w046-paragraph-publisher-20261103 -> origin/work/w046-paragraph-publisher-20261103
+2026-11-03T12:29:02.0040870Z  * [new branch]        work/w046-ux03-publish-20261102 -> origin/work/w046-ux03-publish-20261102
+2026-11-03T12:29:02.0042114Z  * [new branch]        work/w046-ux05-publication-20261102 -> origin/work/w046-ux05-publication-20261102
+2026-11-03T12:29:02.0043389Z  * [new branch]        work/w38-hosted-verification-20261026 -> origin/work/w38-hosted-verification-20261026
+2026-11-03T12:29:02.0045082Z  * [new branch]        work/workflow-cr-integration-p004-20261024 -> origin/work/workflow-cr-integration-p004-20261024
+2026-11-03T12:29:02.0046857Z  * [new branch]        work/workflow-rebuild-proposal-20261024 -> origin/work/workflow-rebuild-proposal-20261024
+2026-11-03T12:29:02.0047921Z  * [new branch]        work/workflow-solution-upgrade-20261025 -> origin/work/workflow-solution-upgrade-20261025
+2026-11-03T12:29:02.0048774Z  * [new branch]        work/workflow-team-construction-20261026 -> origin/work/workflow-team-construction-20261026
+2026-11-03T12:29:02.0050525Z [command]/usr/bin/git branch --list --remote origin/work/n1112-guided-review-20261103
+2026-11-03T12:29:02.0051047Z   origin/work/n1112-guided-review-20261103
+2026-11-03T12:29:02.0051968Z [command]/usr/bin/git rev-parse refs/remotes/origin/work/n1112-guided-review-20261103
+2026-11-03T12:29:02.0052472Z 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:02.0053389Z ##[endgroup]
+2026-11-03T12:29:02.0054157Z ##[group]Determining the checkout info
+2026-11-03T12:29:02.0055716Z ##[endgroup]
+2026-11-03T12:29:02.0056259Z [command]/usr/bin/git sparse-checkout disable
+2026-11-03T12:29:02.0057205Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-03T12:29:02.0058174Z ##[group]Checking out the ref
+2026-11-03T12:29:02.0058898Z [command]/usr/bin/git checkout --progress --force -B work/n1112-guided-review-20261103 refs/remotes/origin/work/n1112-guided-review-20261103
+2026-11-03T12:29:03.0599443Z Updating files:  23% (2596/11061)
+2026-11-03T12:29:03.0683315Z Updating files:  24% (2655/11061)
+2026-11-03T12:29:03.1154021Z Updating files:  25% (2766/11061)
+2026-11-03T12:29:03.1281174Z Updating files:  26% (2876/11061)
+2026-11-03T12:29:03.1469240Z Updating files:  27% (2987/11061)
+2026-11-03T12:29:03.1641926Z Updating files:  28% (3098/11061)
+2026-11-03T12:29:03.1766137Z Updating files:  29% (3208/11061)
+2026-11-03T12:29:03.1866125Z Updating files:  30% (3319/11061)
+2026-11-03T12:29:03.1990958Z Updating files:  31% (3429/11061)
+2026-11-03T12:29:03.2248023Z Updating files:  32% (3540/11061)
+2026-11-03T12:29:03.2371127Z Updating files:  33% (3651/11061)
+2026-11-03T12:29:03.2468450Z Updating files:  34% (3761/11061)
+2026-11-03T12:29:03.2536525Z Updating files:  35% (3872/11061)
+2026-11-03T12:29:03.2776719Z Updating files:  36% (3982/11061)
+2026-11-03T12:29:03.2908002Z Updating files:  37% (4093/11061)
+2026-11-03T12:29:03.3085126Z Updating files:  38% (4204/11061)
+2026-11-03T12:29:03.3197054Z Updating files:  39% (4314/11061)
+2026-11-03T12:29:03.3343081Z Updating files:  40% (4425/11061)
+2026-11-03T12:29:03.3456885Z Updating files:  41% (4536/11061)
+2026-11-03T12:29:03.3584024Z Updating files:  42% (4646/11061)
+2026-11-03T12:29:03.3705119Z Updating files:  43% (4757/11061)
+2026-11-03T12:29:03.3771214Z Updating files:  44% (4867/11061)
+2026-11-03T12:29:03.3870981Z Updating files:  45% (4978/11061)
+2026-11-03T12:29:03.3913120Z Updating files:  46% (5089/11061)
+2026-11-03T12:29:03.3957008Z Updating files:  47% (5199/11061)
+2026-11-03T12:29:03.3999984Z Updating files:  48% (5310/11061)
+2026-11-03T12:29:03.4046876Z Updating files:  49% (5420/11061)
+2026-11-03T12:29:03.4090808Z Updating files:  50% (5531/11061)
+2026-11-03T12:29:03.4135775Z Updating files:  51% (5642/11061)
+2026-11-03T12:29:03.4181084Z Updating files:  52% (5752/11061)
+2026-11-03T12:29:03.4225496Z Updating files:  53% (5863/11061)
+2026-11-03T12:29:03.4270874Z Updating files:  54% (5973/11061)
+2026-11-03T12:29:03.4315629Z Updating files:  55% (6084/11061)
+2026-11-03T12:29:03.4360555Z Updating files:  56% (6195/11061)
+2026-11-03T12:29:03.4405587Z Updating files:  57% (6305/11061)
+2026-11-03T12:29:03.4448965Z Updating files:  58% (6416/11061)
+2026-11-03T12:29:03.4491885Z Updating files:  59% (6526/11061)
+2026-11-03T12:29:03.4537650Z Updating files:  60% (6637/11061)
+2026-11-03T12:29:03.4581514Z Updating files:  61% (6748/11061)
+2026-11-03T12:29:03.4627429Z Updating files:  62% (6858/11061)
+2026-11-03T12:29:03.4672786Z Updating files:  63% (6969/11061)
+2026-11-03T12:29:03.4718204Z Updating files:  64% (7080/11061)
+2026-11-03T12:29:03.4761679Z Updating files:  65% (7190/11061)
+2026-11-03T12:29:03.4805844Z Updating files:  66% (7301/11061)
+2026-11-03T12:29:03.4850399Z Updating files:  67% (7411/11061)
+2026-11-03T12:29:03.4895939Z Updating files:  68% (7522/11061)
+2026-11-03T12:29:03.4940141Z Updating files:  69% (7633/11061)
+2026-11-03T12:29:03.4984628Z Updating files:  70% (7743/11061)
+2026-11-03T12:29:03.5029478Z Updating files:  71% (7854/11061)
+2026-11-03T12:29:03.5072306Z Updating files:  72% (7964/11061)
+2026-11-03T12:29:03.5116694Z Updating files:  73% (8075/11061)
+2026-11-03T12:29:03.5161382Z Updating files:  74% (8186/11061)
+2026-11-03T12:29:03.5204876Z Updating files:  75% (8296/11061)
+2026-11-03T12:29:03.5249424Z Updating files:  76% (8407/11061)
+2026-11-03T12:29:03.5292842Z Updating files:  77% (8517/11061)
+2026-11-03T12:29:03.5337702Z Updating files:  78% (8628/11061)
+2026-11-03T12:29:03.5381853Z Updating files:  79% (8739/11061)
+2026-11-03T12:29:03.5438743Z Updating files:  80% (8849/11061)
+2026-11-03T12:29:03.5573737Z Updating files:  81% (8960/11061)
+2026-11-03T12:29:03.5675561Z Updating files:  82% (9071/11061)
+2026-11-03T12:29:03.5778613Z Updating files:  83% (9181/11061)
+2026-11-03T12:29:03.5869541Z Updating files:  84% (9292/11061)
+2026-11-03T12:29:03.6126976Z Updating files:  85% (9402/11061)
+2026-11-03T12:29:03.6275702Z Updating files:  86% (9513/11061)
+2026-11-03T12:29:03.6662125Z Updating files:  87% (9624/11061)
+2026-11-03T12:29:03.7291862Z Updating files:  88% (9734/11061)
+2026-11-03T12:29:03.7696338Z Updating files:  89% (9845/11061)
+2026-11-03T12:29:03.8081119Z Updating files:  90% (9955/11061)
+2026-11-03T12:29:03.8525831Z Updating files:  91% (10066/11061)
+2026-11-03T12:29:03.8921092Z Updating files:  92% (10177/11061)
+2026-11-03T12:29:03.9119211Z Updating files:  93% (10287/11061)
+2026-11-03T12:29:03.9190852Z Updating files:  94% (10398/11061)
+2026-11-03T12:29:04.0179543Z Updating files:  95% (10508/11061)
+2026-11-03T12:29:04.0189131Z Updating files:  96% (10619/11061)
+2026-11-03T12:29:04.1204749Z Updating files:  96% (10621/11061)
+2026-11-03T12:29:04.2108254Z Updating files:  97% (10730/11061)
+2026-11-03T12:29:04.2976709Z Updating files:  98% (10840/11061)
+2026-11-03T12:29:04.3124065Z Updating files:  99% (10951/11061)
+2026-11-03T12:29:04.3124693Z Updating files: 100% (11061/11061)
+2026-11-03T12:29:04.3125527Z Updating files: 100% (11061/11061), done.
+2026-11-03T12:29:04.3260645Z Switched to a new branch 'work/n1112-guided-review-20261103'
+2026-11-03T12:29:04.3267741Z branch 'work/n1112-guided-review-20261103' set up to track 'origin/work/n1112-guided-review-20261103'.
+2026-11-03T12:29:04.3410920Z ##[endgroup]
+2026-11-03T12:29:04.3465699Z [command]/usr/bin/git log -1 --format=%H
+2026-11-03T12:29:04.3495045Z 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:04.3516299Z ##[group]Removing auth
+2026-11-03T12:29:04.3516826Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:29:04.3549831Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:29:04.3862519Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:29:04.3892505Z http.https://github.com/.extraheader
+2026-11-03T12:29:04.3900851Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-03T12:29:04.3968215Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:29:04.4274738Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:29:04.4311018Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:29:04.4601690Z ##[endgroup]
+2026-11-03T12:29:04.4842459Z ##[group]Run pnpm/action-setup@v4
+2026-11-03T12:29:04.4842762Z with:
+2026-11-03T12:29:04.4842961Z   version: 11.9.0
+2026-11-03T12:29:04.4843167Z   run_install: false
+2026-11-03T12:29:04.4843384Z   dest: ~/setup-pnpm
+2026-11-03T12:29:04.4843591Z   cache: false
+2026-11-03T12:29:04.4843815Z   cache_dependency_path: pnpm-lock.yaml
+2026-11-03T12:29:04.4844106Z   package_json_file: package.json
+2026-11-03T12:29:04.4844366Z   standalone: false
+2026-11-03T12:29:04.4844570Z env:
+2026-11-03T12:29:04.4845092Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:04.4845491Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:04.4845883Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:04.4846215Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:04.4846468Z ##[endgroup]
+2026-11-03T12:29:04.6479918Z ##[group]Running self-installer...
+2026-11-03T12:29:05.0978566Z (node:2492) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-03T12:29:05.0980815Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T12:29:05.3133611Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-11-03T12:29:05.3236439Z Packages: +1
+2026-11-03T12:29:05.3237222Z +
+2026-11-03T12:29:05.6522279Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-11-03T12:29:05.7030607Z 
+2026-11-03T12:29:05.7065697Z dependencies:
+2026-11-03T12:29:05.7085569Z + pnpm 11.9.0 (12.16.1 is available)
+2026-11-03T12:29:05.7105174Z 
+2026-11-03T12:29:05.7231071Z Done in 884ms
+2026-11-03T12:29:05.7479084Z ##[endgroup]
+2026-11-03T12:29:05.7479709Z Installation Completed!
+2026-11-03T12:29:05.7711166Z ##[group]Run actions/setup-node@v4
+2026-11-03T12:29:05.7711453Z with:
+2026-11-03T12:29:05.7711653Z   node-version: 22
+2026-11-03T12:29:05.7711858Z   cache: pnpm
+2026-11-03T12:29:05.7712067Z   always-auth: false
+2026-11-03T12:29:05.7712282Z   check-latest: false
+2026-11-03T12:29:05.7715448Z   token: ***
+2026-11-03T12:29:05.7715670Z env:
+2026-11-03T12:29:05.7715927Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:05.7716332Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:05.7716732Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:05.7717078Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:05.7717411Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:29:05.7717725Z ##[endgroup]
+2026-11-03T12:29:05.9291703Z (node:2507) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T12:29:05.9292527Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T12:29:05.9293705Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-03T12:29:05.9294403Z ##[group]Environment details
+2026-11-03T12:29:06.3989696Z node: v22.23.4
+2026-11-03T12:29:06.3990163Z npm: 10.9.9
+2026-11-03T12:29:06.3990504Z yarn: 1.22.22
+2026-11-03T12:29:06.3991327Z ##[endgroup]
+2026-11-03T12:29:06.4014705Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-11-03T12:29:07.0147008Z /home/runner/setup-pnpm/node_modules/.bin/store/v11
+2026-11-03T12:29:07.2689084Z Cache hit for: node-cache-Linux-x64-pnpm-7ca4069e0872fd5c54f772918c19d19e0a3afffdb4936e549388102bcc969e9e
+2026-11-03T12:29:07.2826897Z (node:2507) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-03T12:29:08.3811733Z Received 38511959 of 38511959 (100.0%), 41.0 MBs/sec
+2026-11-03T12:29:08.3812309Z Cache Size: ~37 MB (38511959 B)
+2026-11-03T12:29:08.3839709Z [command]/usr/bin/tar -xf /home/runner/work/_temp/59b1bf66-07a3-454b-a7f6-ccdf75c52eb7/cache.tzst -P -C /home/runner/work/kyotsu-step-web/kyotsu-step-web --use-compress-program unzstd
+2026-11-03T12:29:08.9737258Z Cache restored successfully
+2026-11-03T12:29:08.9757215Z Cache restored from key: node-cache-Linux-x64-pnpm-7ca4069e0872fd5c54f772918c19d19e0a3afffdb4936e549388102bcc969e9e
+2026-11-03T12:29:08.9993508Z ##[group]Run actions/setup-python@v5
+2026-11-03T12:29:08.9993824Z with:
+2026-11-03T12:29:08.9994047Z   python-version: 3.11
+2026-11-03T12:29:08.9994288Z   check-latest: false
+2026-11-03T12:29:08.9997482Z   token: ***
+2026-11-03T12:29:08.9997724Z   update-environment: true
+2026-11-03T12:29:08.9997980Z   allow-prereleases: false
+2026-11-03T12:29:08.9998219Z   freethreaded: false
+2026-11-03T12:29:08.9998440Z env:
+2026-11-03T12:29:08.9998704Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:08.9999105Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:08.9999519Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:08.9999863Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:09.0000400Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:29:09.0000711Z ##[endgroup]
+2026-11-03T12:29:09.1421893Z ##[group]Installed versions
+2026-11-03T12:29:09.1549216Z (node:2561) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T12:29:09.1550651Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T12:29:09.1551496Z Successfully set up CPython (3.11.17)
+2026-11-03T12:29:09.1552211Z ##[endgroup]
+2026-11-03T12:29:09.1690428Z ##[group]Run pnpm install --frozen-lockfile --ignore-scripts
+2026-11-03T12:29:09.1691238Z [36;1mpnpm install --frozen-lockfile --ignore-scripts[0m
+2026-11-03T12:29:09.1758056Z shell: /usr/bin/bash -e {0}
+2026-11-03T12:29:09.1758514Z env:
+2026-11-03T12:29:09.1758949Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:09.1759638Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:09.1760351Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:09.1760923Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:09.1761453Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:29:09.1762085Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:09.1762799Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-03T12:29:09.1763530Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:09.1764257Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:09.1765207Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:09.1766050Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-03T12:29:09.1766606Z ##[endgroup]
+2026-11-03T12:29:09.8963024Z ? Verifying lockfile against supply-chain policies (335 entries)...
+2026-11-03T12:29:09.9052266Z Lockfile is up to date, resolution step is skipped
+2026-11-03T12:29:10.0074629Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-11-03T12:29:10.0629543Z Packages: +284
+2026-11-03T12:29:10.0667428Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-11-03T12:29:11.0110237Z Progress: resolved 284, reused 284, downloaded 0, added 10
+2026-11-03T12:29:11.4681678Z Progress: resolved 284, reused 284, downloaded 0, added 284, done
+2026-11-03T12:29:12.0169889Z 
+2026-11-03T12:29:12.0170878Z dependencies:
+2026-11-03T12:29:12.0171317Z + katex 0.16.47
+2026-11-03T12:29:12.0171766Z + lucide-react 0.468.0
+2026-11-03T12:29:12.0172208Z + react 19.2.8
+2026-11-03T12:29:12.0172589Z + react-dom 19.2.8
+2026-11-03T12:29:12.0172981Z + react-katex 3.1.0
+2026-11-03T12:29:12.0173440Z + react-router-dom 7.18.2
+2026-11-03T12:29:12.0173864Z + zod 4.4.3
+2026-11-03T12:29:12.0174147Z + zustand 5.0.14
+2026-11-03T12:29:12.0174289Z 
+2026-11-03T12:29:12.0174390Z devDependencies:
+2026-11-03T12:29:12.0174657Z + @eslint/js 9.39.5
+2026-11-03T12:29:12.0175231Z + @playwright/test 1.62.1
+2026-11-03T12:29:12.0175763Z + @testing-library/jest-dom 6.9.1
+2026-11-03T12:29:12.0176370Z + @testing-library/react 16.3.2
+2026-11-03T12:29:12.0176839Z + @types/katex 0.16.8
+2026-11-03T12:29:12.0177239Z + @types/node 24.13.3
+2026-11-03T12:29:12.0177622Z + @types/react 19.2.18
+2026-11-03T12:29:12.0178048Z + @types/react-dom 19.2.4
+2026-11-03T12:29:12.0178483Z + @vitejs/plugin-react 4.7.0
+2026-11-03T12:29:12.0178868Z + eslint 9.39.5
+2026-11-03T12:29:12.0179299Z + eslint-plugin-react-hooks 5.2.0
+2026-11-03T12:29:12.0179790Z + eslint-plugin-react-refresh 0.4.26
+2026-11-03T12:29:12.0180309Z + fraction.js 5.3.4
+2026-11-03T12:29:12.0180648Z + globals 16.5.0
+2026-11-03T12:29:12.0180959Z + jsdom 26.1.0
+2026-11-03T12:29:12.0181282Z + typescript 5.8.3
+2026-11-03T12:29:12.0181645Z + typescript-eslint 8.65.0
+2026-11-03T12:29:12.0182006Z + vite 7.3.6
+2026-11-03T12:29:12.0182303Z + vitest 3.2.7
+2026-11-03T12:29:12.0182484Z 
+2026-11-03T12:29:12.8851569Z ✓ Lockfile passes supply-chain policies (335 entries in 2.9s)
+2026-11-03T12:29:12.9069511Z Done in 3.6s using pnpm v11.9.0
+2026-11-03T12:29:12.9777164Z ##[group]Run sudo apt-get update -qq
+2026-11-03T12:29:12.9777714Z [36;1msudo apt-get update -qq[0m
+2026-11-03T12:29:12.9778246Z [36;1msudo apt-get install -y pandoc fonts-noto-cjk[0m
+2026-11-03T12:29:12.9779335Z [36;1mpython -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1[0m
+2026-11-03T12:29:12.9821642Z shell: /usr/bin/bash -e {0}
+2026-11-03T12:29:12.9822046Z env:
+2026-11-03T12:29:12.9822461Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:12.9823128Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:12.9823809Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:12.9824378Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:12.9825102Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:29:12.9825745Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:12.9826533Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-03T12:29:12.9827266Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:12.9827920Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:12.9828568Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:12.9829236Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-03T12:29:12.9829796Z ##[endgroup]
+2026-11-03T12:29:16.4489415Z Reading package lists...
+2026-11-03T12:29:16.6326623Z Building dependency tree...
+2026-11-03T12:29:16.6334002Z Reading state information...
+2026-11-03T12:29:16.7485129Z Solving dependencies...
+2026-11-03T12:29:16.8525624Z The following additional packages will be installed:
+2026-11-03T12:29:16.8526162Z   pandoc-data
+2026-11-03T12:29:16.8534723Z Suggested packages:
+2026-11-03T12:29:16.8535724Z   fonts-noto-cjk-extra citation-style-language-styles context ghc groff
+2026-11-03T12:29:16.8536787Z   libjs-katex libjs-mathjax librsvg2-bin nodejs pandoc-citeproc r-base-core
+2026-11-03T12:29:16.8537709Z   texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-xetex
+2026-11-03T12:29:16.8538161Z   wkhtmltopdf
+2026-11-03T12:29:16.8751123Z The following NEW packages will be installed:
+2026-11-03T12:29:16.8759066Z   fonts-noto-cjk pandoc pandoc-data
+2026-11-03T12:29:16.9032458Z 0 upgraded, 3 newly installed, 0 to remove and 16 not upgraded.
+2026-11-03T12:29:16.9033227Z Need to get 90.1 MB of archives.
+2026-11-03T12:29:16.9033980Z After this operation, 301 MB of additional disk space will be used.
+2026-11-03T12:29:16.9035158Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-03T12:29:16.9678435Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 fonts-noto-cjk all 1:20240730+repack1-1build1 [61.2 MB]
+2026-11-03T12:29:19.4886934Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 pandoc-data all 3.7.0.2-1build1 [91.2 kB]
+2026-11-03T12:29:19.5352116Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 pandoc amd64 3.7.0.2+ds-1 [28.9 MB]
+2026-11-03T12:29:21.0463578Z Fetched 90.1 MB in 4s (23.7 MB/s)
+2026-11-03T12:29:21.0776918Z Selecting previously unselected package fonts-noto-cjk.
+2026-11-03T12:29:21.1125637Z (Reading database ... 
+2026-11-03T12:29:21.1126068Z (Reading database ... 5%
+2026-11-03T12:29:21.1126376Z (Reading database ... 10%
+2026-11-03T12:29:21.1126672Z (Reading database ... 15%
+2026-11-03T12:29:21.1126966Z (Reading database ... 20%
+2026-11-03T12:29:21.1127379Z (Reading database ... 25%
+2026-11-03T12:29:21.1127785Z (Reading database ... 30%
+2026-11-03T12:29:21.1128158Z (Reading database ... 35%
+2026-11-03T12:29:21.1128567Z (Reading database ... 40%
+2026-11-03T12:29:21.1128970Z (Reading database ... 45%
+2026-11-03T12:29:21.1129359Z (Reading database ... 50%
+2026-11-03T12:29:21.1900545Z (Reading database ... 55%
+2026-11-03T12:29:21.3723886Z (Reading database ... 60%
+2026-11-03T12:29:21.5309047Z (Reading database ... 65%
+2026-11-03T12:29:21.6776867Z (Reading database ... 70%
+2026-11-03T12:29:21.8336049Z (Reading database ... 75%
+2026-11-03T12:29:22.0186865Z (Reading database ... 80%
+2026-11-03T12:29:22.2260465Z (Reading database ... 85%
+2026-11-03T12:29:22.3997023Z (Reading database ... 90%
+2026-11-03T12:29:22.5492849Z (Reading database ... 95%
+2026-11-03T12:29:22.5493383Z (Reading database ... 100%
+2026-11-03T12:29:22.5494097Z (Reading database ... 212715 files and directories currently installed.)
+2026-11-03T12:29:22.5535843Z Preparing to unpack .../fonts-noto-cjk_1%3a20240730+repack1-1build1_all.deb ...
+2026-11-03T12:29:22.5653885Z Unpacking fonts-noto-cjk (1:20240730+repack1-1build1) ...
+2026-11-03T12:29:23.0427656Z Selecting previously unselected package pandoc-data.
+2026-11-03T12:29:23.0563834Z Preparing to unpack .../pandoc-data_3.7.0.2-1build1_all.deb ...
+2026-11-03T12:29:23.0572465Z Unpacking pandoc-data (3.7.0.2-1build1) ...
+2026-11-03T12:29:23.1078534Z Selecting previously unselected package pandoc.
+2026-11-03T12:29:23.1217851Z Preparing to unpack .../pandoc_3.7.0.2+ds-1_amd64v3.deb ...
+2026-11-03T12:29:23.1228012Z Unpacking pandoc (3.7.0.2+ds-1) ...
+2026-11-03T12:29:23.9186471Z Setting up fonts-noto-cjk (1:20240730+repack1-1build1) ...
+2026-11-03T12:29:23.9276816Z Setting up pandoc-data (3.7.0.2-1build1) ...
+2026-11-03T12:29:23.9307236Z Setting up pandoc (3.7.0.2+ds-1) ...
+2026-11-03T12:29:23.9334036Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-03T12:29:23.9362584Z Not building database; man-db/auto-update is not 'true'.
+2026-11-03T12:29:23.9377927Z Processing triggers for fontconfig (2.17.1-3ubuntu1) ...
+2026-11-03T12:29:24.7012778Z 
+2026-11-03T12:29:24.7013516Z Running kernel seems to be up-to-date.
+2026-11-03T12:29:24.7014046Z 
+2026-11-03T12:29:24.7014216Z Restarting services...
+2026-11-03T12:29:24.7109663Z 
+2026-11-03T12:29:24.7110325Z Service restarts being deferred:
+2026-11-03T12:29:24.7114491Z  systemctl restart hosted-compute-agent.service
+2026-11-03T12:29:24.7115194Z 
+2026-11-03T12:29:24.7115717Z No containers need to be restarted.
+2026-11-03T12:29:24.7116145Z 
+2026-11-03T12:29:24.7116641Z No user sessions are running outdated binaries.
+2026-11-03T12:29:24.7117022Z 
+2026-11-03T12:29:24.7117403Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-03T12:29:26.9510483Z Collecting numpy==2.3.5
+2026-11-03T12:29:26.9977656Z   Downloading numpy-2.3.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-11-03T12:29:27.1042889Z Collecting scikit-learn==1.8.0
+2026-11-03T12:29:27.1156331Z   Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (11 kB)
+2026-11-03T12:29:27.3531635Z Collecting lxml==6.1.1
+2026-11-03T12:29:27.3641891Z   Downloading lxml-6.1.1-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.5 kB)
+2026-11-03T12:29:27.3871025Z Collecting sympy==1.14.0 (from -r tools/textbook/research/requirements-solution.txt (line 1))
+2026-11-03T12:29:27.4037833Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2026-11-03T12:29:27.5218050Z Collecting scipy>=1.10.0 (from scikit-learn==1.8.0)
+2026-11-03T12:29:27.5328041Z   Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-11-03T12:29:27.5701504Z Collecting joblib>=1.3.0 (from scikit-learn==1.8.0)
+2026-11-03T12:29:27.5809822Z   Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+2026-11-03T12:29:27.6011222Z Collecting threadpoolctl>=3.2.0 (from scikit-learn==1.8.0)
+2026-11-03T12:29:27.6121109Z   Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+2026-11-03T12:29:27.6353671Z Collecting mpmath<1.4,>=1.1.0 (from sympy==1.14.0->-r tools/textbook/research/requirements-solution.txt (line 1))
+2026-11-03T12:29:27.6462478Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2026-11-03T12:29:27.6685515Z Collecting cloudpickle>=3.0 (from joblib>=1.3.0->scikit-learn==1.8.0)
+2026-11-03T12:29:27.6790221Z   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+2026-11-03T12:29:27.6956479Z Downloading numpy-2.3.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+2026-11-03T12:29:27.7806490Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 234.0 MB/s  0:00:00
+2026-11-03T12:29:27.7916841Z Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)
+2026-11-03T12:29:27.8208820Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 333.7 MB/s  0:00:00
+2026-11-03T12:29:27.8319840Z Downloading lxml-6.1.1-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-11-03T12:29:27.8507069Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 305.3 MB/s  0:00:00
+2026-11-03T12:29:27.8616454Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2026-11-03T12:29:27.8801856Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 378.3 MB/s  0:00:00
+2026-11-03T12:29:27.8917843Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2026-11-03T12:29:27.8972111Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 85.4 MB/s  0:00:00
+2026-11-03T12:29:27.9081007Z Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+2026-11-03T12:29:27.9215576Z Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+2026-11-03T12:29:27.9339873Z Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+2026-11-03T12:29:28.0286397Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 381.1 MB/s  0:00:00
+2026-11-03T12:29:28.0395385Z Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+2026-11-03T12:29:28.2452620Z Installing collected packages: mpmath, threadpoolctl, sympy, numpy, lxml, cloudpickle, scipy, joblib, scikit-learn
+2026-11-03T12:29:41.9127522Z 
+2026-11-03T12:29:41.9139255Z Successfully installed cloudpickle-3.1.2 joblib-1.6.0 lxml-6.1.1 mpmath-1.3.0 numpy-2.3.5 scikit-learn-1.8.0 scipy-1.17.1 sympy-1.14.0 threadpoolctl-3.7.0
+2026-11-03T12:29:41.9147733Z 
+2026-11-03T12:29:41.9148233Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+2026-11-03T12:29:41.9148992Z [notice] To update, run: pip install --upgrade pip
+2026-11-03T12:29:42.0015866Z ##[group]Run node --test tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs
+2026-11-03T12:29:42.0017464Z [36;1mnode --test tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs[0m
+2026-11-03T12:29:42.0018483Z [36;1mnode work/items/W-MATH-038-transformation-groups/materialize.mjs --check[0m
+2026-11-03T12:29:42.0019013Z [36;1mpython -m unittest discover -s workflow -p 'test_*.py' -q[0m
+2026-11-03T12:29:42.0019502Z [36;1mpython -m unittest discover -s tools/textbook/tests -p '*_test.py' -q[0m
+2026-11-03T12:29:42.0050498Z shell: /usr/bin/bash -e {0}
+2026-11-03T12:29:42.0050760Z env:
+2026-11-03T12:29:42.0051034Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:42.0051501Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:29:42.0051926Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:29:42.0052275Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:29:42.0052597Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:29:42.0052978Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:42.0053400Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-03T12:29:42.0053830Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:42.0054221Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:42.0054626Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:29:42.0055214Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-03T12:29:42.0055554Z ##[endgroup]
+2026-11-03T12:29:42.0626268Z TAP version 13
+2026-11-03T12:29:52.7807325Z # Subtest: all N08 elementary segments are checked, without certifying prose
+2026-11-03T12:29:52.7826393Z ok 1 - all N08 elementary segments are checked, without certifying prose
+2026-11-03T12:29:52.7865816Z   ---
+2026-11-03T12:29:52.7901263Z   duration_ms: 915.179722
+2026-11-03T12:29:52.7911013Z   type: 'test'
+2026-11-03T12:29:52.7911661Z   ...
+2026-11-03T12:29:52.7912535Z # Subtest: Abs(a)=a without its sign restriction fails
+2026-11-03T12:29:52.7913547Z ok 2 - Abs(a)=a without its sign restriction fails
+2026-11-03T12:29:52.7914203Z   ---
+2026-11-03T12:29:52.7914687Z   duration_ms: 694.443269
+2026-11-03T12:29:52.7915521Z   type: 'test'
+2026-11-03T12:29:52.7916022Z   ...
+2026-11-03T12:29:52.7916714Z # Subtest: conditional results cannot escape their domain
+2026-11-03T12:29:52.7917669Z ok 3 - conditional results cannot escape their domain
+2026-11-03T12:29:52.7918422Z   ---
+2026-11-03T12:29:52.7918901Z   duration_ms: 557.205207
+2026-11-03T12:29:52.7919411Z   type: 'test'
+2026-11-03T12:29:52.7919866Z   ...
+2026-11-03T12:29:52.7920620Z # Subtest: case joins detect a missing zero and overlapping branches
+2026-11-03T12:29:52.7921605Z ok 4 - case joins detect a missing zero and overlapping branches
+2026-11-03T12:29:52.7922315Z   ---
+2026-11-03T12:29:52.7922797Z   duration_ms: 1224.515254
+2026-11-03T12:29:52.7923343Z   type: 'test'
+2026-11-03T12:29:52.7923922Z   ...
+2026-11-03T12:29:52.7924697Z # Subtest: squared order is not used with negative original numbers
+2026-11-03T12:29:52.7925955Z ok 5 - squared order is not used with negative original numbers
+2026-11-03T12:29:52.7926750Z   ---
+2026-11-03T12:29:52.7927235Z   duration_ms: 829.697273
+2026-11-03T12:29:52.7927878Z   type: 'test'
+2026-11-03T12:29:52.7928376Z   ...
+2026-11-03T12:29:52.7929203Z # Subtest: false pi/root signs and distribution are rejected exactly
+2026-11-03T12:29:52.7930298Z ok 6 - false pi/root signs and distribution are rejected exactly
+2026-11-03T12:29:52.7931088Z   ---
+2026-11-03T12:29:52.7931619Z   duration_ms: 2483.197665
+2026-11-03T12:29:52.7932232Z   type: 'test'
+2026-11-03T12:29:52.7932782Z   ...
+2026-11-03T12:29:52.7934138Z # Subtest: equivalence needs both correctly scoped implications
+2026-11-03T12:29:52.7935508Z ok 7 - equivalence needs both correctly scoped implications
+2026-11-03T12:29:52.7936337Z   ---
+2026-11-03T12:29:52.7936881Z   duration_ms: 1643.517553
+2026-11-03T12:29:52.7937499Z   type: 'test'
+2026-11-03T12:29:52.7938046Z   ...
+2026-11-03T12:29:52.7938846Z # Subtest: future or another problem facts cannot be referenced
+2026-11-03T12:29:52.7939897Z ok 8 - future or another problem facts cannot be referenced
+2026-11-03T12:29:52.7940681Z   ---
+2026-11-03T12:29:52.7941216Z   duration_ms: 6.543777
+2026-11-03T12:29:52.7941802Z   type: 'test'
+2026-11-03T12:29:52.7942324Z   ...
+2026-11-03T12:29:52.7943047Z # Subtest: case proof must establish the declared claim
+2026-11-03T12:29:52.7943966Z ok 9 - case proof must establish the declared claim
+2026-11-03T12:29:52.7944718Z   ---
+2026-11-03T12:29:52.7945461Z   duration_ms: 831.589281
+2026-11-03T12:29:52.7946064Z   type: 'test'
+2026-11-03T12:29:52.7946598Z   ...
+2026-11-03T12:29:52.7947554Z # Subtest: unknown AST and arbitrary radical arguments stay outside supported scope
+2026-11-03T12:29:52.7948870Z ok 10 - unknown AST and arbitrary radical arguments stay outside supported scope
+2026-11-03T12:29:52.7949763Z   ---
+2026-11-03T12:29:52.7950300Z   duration_ms: 6.744613
+2026-11-03T12:29:52.7950881Z   type: 'test'
+2026-11-03T12:29:52.7951419Z   ...
+2026-11-03T12:29:52.7952303Z # Subtest: blank candidates cannot acquire a future or other problem fact
+2026-11-03T12:29:52.7953486Z ok 11 - blank candidates cannot acquire a future or other problem fact
+2026-11-03T12:29:52.7954339Z   ---
+2026-11-03T12:29:52.7955057Z   duration_ms: 9.77313
+2026-11-03T12:29:52.7955659Z   type: 'test'
+2026-11-03T12:29:52.7956192Z   ...
+2026-11-03T12:29:52.7957174Z # Subtest: batched meaning review keeps each visible state separate and rejects answer leakage
+2026-11-03T12:29:52.7958685Z ok 12 - batched meaning review keeps each visible state separate and rejects answer leakage
+2026-11-03T12:29:52.7960028Z   ---
+2026-11-03T12:29:52.7960632Z   duration_ms: 1.754774
+2026-11-03T12:29:52.7961280Z   type: 'test'
+2026-11-03T12:29:52.7961800Z   ...
+2026-11-03T12:29:52.7962696Z # Subtest: a transformation must start from an established, true premise
+2026-11-03T12:29:52.7963885Z ok 13 - a transformation must start from an established, true premise
+2026-11-03T12:29:52.7964737Z   ---
+2026-11-03T12:29:52.7965433Z   duration_ms: 1187.161265
+2026-11-03T12:29:52.7965970Z   type: 'test'
+2026-11-03T12:29:52.7966426Z   ...
+2026-11-03T12:29:52.8067048Z # Subtest: minimum display includes domain and attainment; an infimum is not called a minimum
+2026-11-03T12:29:52.8068367Z ok 14 - minimum display includes domain and attainment; an infimum is not called a minimum
+2026-11-03T12:29:52.8075508Z   ---
+2026-11-03T12:29:52.8076219Z   duration_ms: 4.485407
+2026-11-03T12:29:52.8076865Z   type: 'test'
+2026-11-03T12:29:52.8077463Z   ...
+2026-11-03T12:29:52.8078432Z # Subtest: redeclaring an initial fact or a given as a future result is rejected
+2026-11-03T12:29:52.8079834Z ok 15 - redeclaring an initial fact or a given as a future result is rejected
+2026-11-03T12:29:52.8080744Z   ---
+2026-11-03T12:29:52.8081329Z   duration_ms: 41.053908
+2026-11-03T12:29:52.8081913Z   type: 'test'
+2026-11-03T12:29:52.8082483Z   ...
+2026-11-03T12:29:52.8083555Z # Subtest: blank availability comes from its own state; supplied future facts cannot bypass it
+2026-11-03T12:29:52.8085359Z ok 16 - blank availability comes from its own state; supplied future facts cannot bypass it
+2026-11-03T12:29:52.8086365Z   ---
+2026-11-03T12:29:52.8086964Z   duration_ms: 5.431077
+2026-11-03T12:29:52.8087612Z   type: 'test'
+2026-11-03T12:29:52.8088250Z   ...
+2026-11-03T12:29:52.8089291Z # Subtest: unopened choices and hints are absent; opening each state exposes only its contents
+2026-11-03T12:29:52.8090816Z ok 17 - unopened choices and hints are absent; opening each state exposes only its contents
+2026-11-03T12:29:52.8091687Z   ---
+2026-11-03T12:29:52.8092232Z   duration_ms: 504.490452
+2026-11-03T12:29:52.8093135Z   type: 'test'
+2026-11-03T12:29:52.8093727Z   ...
+2026-11-03T12:29:52.8094463Z # Subtest: deep adversarial IR cannot overflow the recursive parser
+2026-11-03T12:29:52.8095913Z ok 18 - deep adversarial IR cannot overflow the recursive parser
+2026-11-03T12:29:52.8096580Z   ---
+2026-11-03T12:29:52.8097068Z   duration_ms: 1.20769
+2026-11-03T12:29:52.8097548Z   type: 'test'
+2026-11-03T12:29:52.8097994Z   ...
+2026-11-03T12:29:52.8098871Z # Subtest: successive calculations in a choice retain full equalities as separate rows
+2026-11-03T12:29:52.8100857Z ok 19 - successive calculations in a choice retain full equalities as separate rows
+2026-11-03T12:29:52.8101790Z   ---
+2026-11-03T12:29:52.8102281Z   duration_ms: 431.916705
+2026-11-03T12:29:52.8102781Z   type: 'test'
+2026-11-03T12:29:52.8103252Z   ...
+2026-11-03T12:29:56.1483740Z # Subtest: three authored families compile through the public v1/v2 entry with exact checks
+2026-11-03T12:29:56.1485803Z ok 20 - three authored families compile through the public v1/v2 entry with exact checks
+2026-11-03T12:29:56.1487205Z   ---
+2026-11-03T12:29:56.1487894Z   duration_ms: 3938.875973
+2026-11-03T12:29:56.1488551Z   type: 'test'
+2026-11-03T12:29:56.1489105Z   ...
+2026-11-03T12:29:56.1490036Z # Subtest: one decision binds both sides without becoming two questions
+2026-11-03T12:29:56.1491559Z ok 21 - one decision binds both sides without becoming two questions
+2026-11-03T12:29:56.1495916Z   ---
+2026-11-03T12:29:56.1496290Z   duration_ms: 374.80969
+2026-11-03T12:29:56.1496719Z   type: 'test'
+2026-11-03T12:29:56.1497071Z   ...
+2026-11-03T12:29:56.1497893Z # Subtest: incorrect arithmetic and negative division direction are detected
+2026-11-03T12:29:56.1506248Z ok 22 - incorrect arithmetic and negative division direction are detected
+2026-11-03T12:29:56.1507137Z   ---
+2026-11-03T12:29:56.1507726Z   duration_ms: 1232.012789
+2026-11-03T12:29:56.1508388Z   type: 'test'
+2026-11-03T12:29:56.1508922Z   ...
+2026-11-03T12:29:56.1510603Z # Subtest: numerically matching a few points does not replace identity checks
+2026-11-03T12:29:56.1515301Z ok 23 - numerically matching a few points does not replace identity checks
+2026-11-03T12:29:56.1516307Z   ---
+2026-11-03T12:29:56.1516885Z   duration_ms: 372.32089
+2026-11-03T12:29:56.1517515Z   type: 'test'
+2026-11-03T12:29:56.1518071Z   ...
+2026-11-03T12:29:56.1519092Z # Subtest: vertex outside domain and open-domain non-attainment are handled exactly
+2026-11-03T12:29:56.1520441Z ok 24 - vertex outside domain and open-domain non-attainment are handled exactly
+2026-11-03T12:29:56.1521359Z   ---
+2026-11-03T12:29:56.1521889Z   duration_ms: 1045.349773
+2026-11-03T12:29:56.1522478Z   type: 'test'
+2026-11-03T12:29:56.1523001Z   ...
+2026-11-03T12:29:56.1523878Z # Subtest: case partitions reject gaps, overlaps and missing endpoints
+2026-11-03T12:29:56.1525260Z ok 25 - case partitions reject gaps, overlaps and missing endpoints
+2026-11-03T12:29:56.1526130Z   ---
+2026-11-03T12:29:56.1526709Z   duration_ms: 1006.911507
+2026-11-03T12:29:56.1527333Z   type: 'test'
+2026-11-03T12:29:56.1527917Z   ...
+2026-11-03T12:29:56.1540521Z # Subtest: a mathematically equivalent answer can fail the requested form separately
+2026-11-03T12:29:56.1541956Z ok 26 - a mathematically equivalent answer can fail the requested form separately
+2026-11-03T12:29:56.1542968Z   ---
+2026-11-03T12:29:56.1543684Z   duration_ms: 745.163803
+2026-11-03T12:29:56.1544329Z   type: 'test'
+2026-11-03T12:29:56.1544721Z   ...
+2026-11-03T12:29:56.1545771Z # Subtest: unjustified substitutions and unknown signs cannot silently pass
+2026-11-03T12:29:56.1547603Z ok 27 - unjustified substitutions and unknown signs cannot silently pass
+2026-11-03T12:29:56.1575673Z   ---
+2026-11-03T12:29:56.1576105Z   duration_ms: 763.162859
+2026-11-03T12:29:56.1576558Z   type: 'test'
+2026-11-03T12:29:56.1576923Z   ...
+2026-11-03T12:29:56.1577662Z # Subtest: equivalent distractors and broken factor grouping are rejected
+2026-11-03T12:29:56.1578703Z ok 28 - equivalent distractors and broken factor grouping are rejected
+2026-11-03T12:29:56.1580020Z   ---
+2026-11-03T12:29:56.1580418Z   duration_ms: 1035.078067
+2026-11-03T12:29:56.1580848Z   type: 'test'
+2026-11-03T12:29:56.1581211Z   ...
+2026-11-03T12:29:56.1581977Z # Subtest: graph cycles, orphan states and future prerequisites fail structurally
+2026-11-03T12:29:56.1583102Z ok 29 - graph cycles, orphan states and future prerequisites fail structurally
+2026-11-03T12:29:56.1583814Z   ---
+2026-11-03T12:29:56.1584170Z   duration_ms: 2.34581
+2026-11-03T12:29:56.1584573Z   type: 'test'
+2026-11-03T12:29:56.1585171Z   ...
+2026-11-03T12:29:56.1585975Z # Subtest: semantic target tampering and local calculations not rejoined are detected
+2026-11-03T12:29:56.1587162Z ok 30 - semantic target tampering and local calculations not rejoined are detected
+2026-11-03T12:29:56.1587892Z   ---
+2026-11-03T12:29:56.1588246Z   duration_ms: 731.426733
+2026-11-03T12:29:56.1588663Z   type: 'test'
+2026-11-03T12:29:56.1589014Z   ...
+2026-11-03T12:29:56.1589813Z # Subtest: visible review excludes rationale, answers, unopened hints and future rows
+2026-11-03T12:29:56.1590992Z ok 31 - visible review excludes rationale, answers, unopened hints and future rows
+2026-11-03T12:29:56.1591706Z   ---
+2026-11-03T12:29:56.1592058Z   duration_ms: 735.139232
+2026-11-03T12:29:56.1592472Z   type: 'test'
+2026-11-03T12:29:56.1592821Z   ...
+2026-11-03T12:29:56.1616253Z # Subtest: support variants share checked math rather than drifting copies
+2026-11-03T12:29:56.1617357Z ok 32 - support variants share checked math rather than drifting copies
+2026-11-03T12:29:56.1618019Z   ---
+2026-11-03T12:29:56.1618392Z   duration_ms: 359.860097
+2026-11-03T12:29:56.1618814Z   type: 'test'
+2026-11-03T12:29:56.1619166Z   ...
+2026-11-03T12:29:56.1619897Z # Subtest: blank roles require available facts and an explicit adoption decision
+2026-11-03T12:29:56.1620925Z ok 33 - blank roles require available facts and an explicit adoption decision
+2026-11-03T12:29:56.1621676Z   ---
+2026-11-03T12:29:56.1622472Z   duration_ms: 1.220635
+2026-11-03T12:29:56.1622938Z   type: 'test'
+2026-11-03T12:29:56.1623285Z   ...
+2026-11-03T12:29:56.1624125Z # Subtest: meaning reviews are bound to visible inputs, phase, sources and case consumption
+2026-11-03T12:29:56.1625549Z ok 34 - meaning reviews are bound to visible inputs, phase, sources and case consumption
+2026-11-03T12:29:56.1626348Z   ---
+2026-11-03T12:29:56.1626744Z   duration_ms: 380.046277
+2026-11-03T12:29:56.1627246Z   type: 'test'
+2026-11-03T12:29:56.1627656Z   ...
+2026-11-03T12:29:56.1628464Z # Subtest: research analysis keeps source positions, observation and inference separate
+2026-11-03T12:29:56.1646173Z ok 35 - research analysis keeps source positions, observation and inference separate
+2026-11-03T12:29:56.1647347Z   ---
+2026-11-03T12:29:56.1648022Z   duration_ms: 2.247516
+2026-11-03T12:29:56.1648739Z   type: 'test'
+2026-11-03T12:29:56.1649302Z   ...
+2026-11-03T12:29:56.1650393Z # Subtest: figure is generated from original function and is gated after the answer
+2026-11-03T12:29:56.1651796Z ok 36 - figure is generated from original function and is gated after the answer
+2026-11-03T12:29:56.1652771Z   ---
+2026-11-03T12:29:56.1653367Z   duration_ms: 955.15612
+2026-11-03T12:29:56.1654057Z   type: 'test'
+2026-11-03T12:29:56.1654653Z   ...
+2026-11-03T12:30:04.4370344Z # Subtest: F01 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4371515Z ok 37 - F01 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4372527Z   ---
+2026-11-03T12:30:04.4373417Z   duration_ms: 566.340798
+2026-11-03T12:30:04.4374084Z   type: 'test'
+2026-11-03T12:30:04.4374643Z   ...
+2026-11-03T12:30:04.4375738Z # Subtest: F02 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4376673Z ok 38 - F02 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4377405Z   ---
+2026-11-03T12:30:04.4377957Z   duration_ms: 534.56608
+2026-11-03T12:30:04.4378584Z   type: 'test'
+2026-11-03T12:30:04.4379144Z   ...
+2026-11-03T12:30:04.4383059Z # Subtest: F03 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4384446Z ok 39 - F03 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4385613Z   ---
+2026-11-03T12:30:04.4386021Z   duration_ms: 547.943641
+2026-11-03T12:30:04.4386428Z   type: 'test'
+2026-11-03T12:30:04.4386771Z   ...
+2026-11-03T12:30:04.4389024Z # Subtest: F04 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4390452Z ok 40 - F04 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4391206Z   ---
+2026-11-03T12:30:04.4405998Z   duration_ms: 547.829375
+2026-11-03T12:30:04.4406643Z   type: 'test'
+2026-11-03T12:30:04.4407240Z   ...
+2026-11-03T12:30:04.4408033Z # Subtest: F05 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4409061Z ok 41 - F05 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4409573Z   ---
+2026-11-03T12:30:04.4409956Z   duration_ms: 567.566643
+2026-11-03T12:30:04.4410359Z   type: 'test'
+2026-11-03T12:30:04.4410707Z   ...
+2026-11-03T12:30:04.4411155Z # Subtest: F06 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4411709Z ok 42 - F06 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4412159Z   ---
+2026-11-03T12:30:04.4412524Z   duration_ms: 540.883525
+2026-11-03T12:30:04.4412901Z   type: 'test'
+2026-11-03T12:30:04.4413240Z   ...
+2026-11-03T12:30:04.4413669Z # Subtest: F07 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4414185Z ok 43 - F07 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4414605Z   ---
+2026-11-03T12:30:04.4415410Z   duration_ms: 546.914114
+2026-11-03T12:30:04.4415859Z   type: 'test'
+2026-11-03T12:30:04.4416182Z   ...
+2026-11-03T12:30:04.4416665Z # Subtest: F09 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4417345Z ok 44 - F09 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4417876Z   ---
+2026-11-03T12:30:04.4418256Z   duration_ms: 570.438448
+2026-11-03T12:30:04.4418668Z   type: 'test'
+2026-11-03T12:30:04.4419031Z   ...
+2026-11-03T12:30:04.4419553Z # Subtest: F12 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4420240Z ok 45 - F12 explicit math/scope fixture: FAIL
+2026-11-03T12:30:04.4445813Z   ---
+2026-11-03T12:30:04.4475825Z   duration_ms: 528.702435
+2026-11-03T12:30:04.4485770Z   type: 'test'
+2026-11-03T12:30:04.4486343Z   ...
+2026-11-03T12:30:04.4487113Z # Subtest: F08 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4487990Z ok 46 - F08 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4488674Z   ---
+2026-11-03T12:30:04.4489191Z   duration_ms: 971.79528
+2026-11-03T12:30:04.4489766Z   type: 'test'
+2026-11-03T12:30:04.4490286Z   ...
+2026-11-03T12:30:04.4490949Z # Subtest: F10 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4491823Z ok 47 - F10 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4497939Z   ---
+2026-11-03T12:30:04.4498544Z   duration_ms: 540.222711
+2026-11-03T12:30:04.4499185Z   type: 'test'
+2026-11-03T12:30:04.4499751Z   ...
+2026-11-03T12:30:04.4500467Z # Subtest: F11 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4501390Z ok 48 - F11 explicit math/scope fixture: PASS
+2026-11-03T12:30:04.4502117Z   ---
+2026-11-03T12:30:04.4502685Z   duration_ms: 539.775885
+2026-11-03T12:30:04.4503347Z   type: 'test'
+2026-11-03T12:30:04.4503908Z   ...
+2026-11-03T12:30:04.4505188Z # Subtest: one statement, two shared slots, two decisions, no future or author metadata
+2026-11-03T12:30:04.4506647Z ok 49 - one statement, two shared slots, two decisions, no future or author metadata
+2026-11-03T12:30:04.4507688Z   ---
+2026-11-03T12:30:04.4508275Z   duration_ms: 554.531069
+2026-11-03T12:30:04.4508967Z   type: 'test'
+2026-11-03T12:30:04.4509703Z   ...
+2026-11-03T12:30:04.4510425Z # Subtest: reject wrong IR
+2026-11-03T12:30:04.4511181Z ok 50 - reject wrong IR
+2026-11-03T12:30:04.4511756Z   ---
+2026-11-03T12:30:04.4512286Z   duration_ms: 538.76287
+2026-11-03T12:30:04.4512869Z   type: 'test'
+2026-11-03T12:30:04.4513365Z   ...
+2026-11-03T12:30:04.4513942Z # Subtest: reject wrong grading
+2026-11-03T12:30:04.4514596Z ok 51 - reject wrong grading
+2026-11-03T12:30:04.4515448Z   ---
+2026-11-03T12:30:04.4516007Z   duration_ms: 548.115423
+2026-11-03T12:30:04.4516637Z   type: 'test'
+2026-11-03T12:30:04.4517198Z   ...
+2026-11-03T12:30:04.4517860Z # Subtest: reject disconnected row
+2026-11-03T12:30:04.4519006Z ok 52 - reject disconnected row
+2026-11-03T12:30:04.4519719Z   ---
+2026-11-03T12:30:04.4520308Z   duration_ms: 510.660154
+2026-11-03T12:30:04.4520917Z   type: 'test'
+2026-11-03T12:30:04.4521435Z   ...
+2026-11-03T12:30:04.4522090Z # Subtest: reject missing block mapping
+2026-11-03T12:30:04.4522910Z ok 53 - reject missing block mapping
+2026-11-03T12:30:04.4523572Z   ---
+2026-11-03T12:30:04.4524100Z   duration_ms: 381.853427
+2026-11-03T12:30:04.4524662Z   type: 'test'
+2026-11-03T12:30:04.4525452Z   ...
+2026-11-03T12:30:04.4526099Z # Subtest: reject inequality continuation
+2026-11-03T12:30:04.4526862Z ok 54 - reject inequality continuation
+2026-11-03T12:30:04.4527484Z   ---
+2026-11-03T12:30:04.4527991Z   duration_ms: 368.674705
+2026-11-03T12:30:04.4528555Z   type: 'test'
+2026-11-03T12:30:04.4529036Z   ...
+2026-11-03T12:30:04.4529592Z # Subtest: reject mixed condition
+2026-11-03T12:30:04.4530363Z ok 55 - reject mixed condition
+2026-11-03T12:30:04.4530970Z   ---
+2026-11-03T12:30:04.4531494Z   duration_ms: 368.270188
+2026-11-03T12:30:04.4532063Z   type: 'test'
+2026-11-03T12:30:04.4532562Z   ...
+2026-11-03T12:30:04.4533163Z # Subtest: reject slot wrong side
+2026-11-03T12:30:04.4533868Z ok 56 - reject slot wrong side
+2026-11-03T12:30:04.4534463Z   ---
+2026-11-03T12:30:04.4535205Z   duration_ms: 367.264866
+2026-11-03T12:30:04.4535773Z   type: 'test'
+2026-11-03T12:30:04.4536258Z   ...
+2026-11-03T12:30:04.4536776Z # Subtest: reject future gate
+2026-11-03T12:30:04.4537422Z ok 57 - reject future gate
+2026-11-03T12:30:04.4537974Z   ---
+2026-11-03T12:30:04.4538484Z   duration_ms: 362.364024
+2026-11-03T12:30:04.4539075Z   type: 'test'
+2026-11-03T12:30:04.4539582Z   ...
+2026-11-03T12:30:04.4540174Z # Subtest: reject duplicate final
+2026-11-03T12:30:04.4540869Z ok 58 - reject duplicate final
+2026-11-03T12:30:04.4541437Z   ---
+2026-11-03T12:30:04.4541944Z   duration_ms: 370.443626
+2026-11-03T12:30:04.4542506Z   type: 'test'
+2026-11-03T12:30:04.4543325Z   ...
+2026-11-03T12:30:04.4543916Z # Subtest: reject dangling number
+2026-11-03T12:30:04.4544628Z ok 59 - reject dangling number
+2026-11-03T12:30:04.4545512Z   ---
+2026-11-03T12:30:04.4546040Z   duration_ms: 376.795974
+2026-11-03T12:30:04.4546601Z   type: 'test'
+2026-11-03T12:30:04.4547096Z   ...
+2026-11-03T12:30:04.4547750Z # Subtest: reject duplicate equivalent option
+2026-11-03T12:30:04.4548600Z ok 60 - reject duplicate equivalent option
+2026-11-03T12:30:04.4549289Z   ---
+2026-11-03T12:30:04.4549799Z   duration_ms: 374.294322
+2026-11-03T12:30:04.4550370Z   type: 'test'
+2026-11-03T12:30:04.4550891Z   ...
+2026-11-03T12:30:04.4551831Z # Subtest: negative division with unchanged inequality and zero divisor cannot pass
+2026-11-03T12:30:04.4553194Z ok 61 - negative division with unchanged inequality and zero divisor cannot pass
+2026-11-03T12:30:04.4554084Z   ---
+2026-11-03T12:30:04.4554616Z   duration_ms: 997.866363
+2026-11-03T12:30:04.4555723Z   type: 'test'
+2026-11-03T12:30:04.4556289Z   ...
+2026-11-03T12:30:04.4557396Z # Subtest: existing operations route through transformation checks and compiler
+2026-11-03T12:30:04.4558736Z ok 62 - existing operations route through transformation checks and compiler
+2026-11-03T12:30:04.4559621Z   ---
+2026-11-03T12:30:04.4560145Z   duration_ms: 1407.629283
+2026-11-03T12:30:04.4560719Z   type: 'test'
+2026-11-03T12:30:04.4561224Z   ...
+2026-11-03T12:30:04.4562253Z # Subtest: N11 uses exact existing grading contracts and completed helper statements are checked
+2026-11-03T12:30:04.4563777Z ok 63 - N11 uses exact existing grading contracts and completed helper statements are checked
+2026-11-03T12:30:04.4564774Z   ---
+2026-11-03T12:30:04.4565581Z   duration_ms: 2095.574712
+2026-11-03T12:30:04.4566156Z   type: 'test'
+2026-11-03T12:30:04.4566681Z   ...
+2026-11-03T12:30:04.4567632Z # Subtest: AI ordinary profile adds six concrete review obligations without future keys
+2026-11-03T12:30:04.4568976Z ok 64 - AI ordinary profile adds six concrete review obligations without future keys
+2026-11-03T12:30:04.4569855Z   ---
+2026-11-03T12:30:04.4570642Z   duration_ms: 362.394549
+2026-11-03T12:30:04.4571278Z   type: 'test'
+2026-11-03T12:30:04.4571787Z   ...
+2026-11-03T12:30:04.4572864Z # Subtest: same polynomial can be added without knowing its sign, division still needs a numeric sign
+2026-11-03T12:30:04.4574508Z ok 65 - same polynomial can be added without knowing its sign, division still needs a numeric sign
+2026-11-03T12:30:04.4575784Z   ---
+2026-11-03T12:30:04.4576334Z   duration_ms: 742.454338
+2026-11-03T12:30:04.4576939Z   type: 'test'
+2026-11-03T12:30:04.4577476Z   ...
+2026-11-03T12:30:04.4578307Z # Subtest: equivalent expression in an unrequested form is rejected
+2026-11-03T12:30:04.4579421Z ok 66 - equivalent expression in an unrequested form is rejected
+2026-11-03T12:30:04.4580249Z   ---
+2026-11-03T12:30:04.4580792Z   duration_ms: 365.700416
+2026-11-03T12:30:04.4581391Z   type: 'test'
+2026-11-03T12:30:04.4581903Z   ...
+2026-11-03T12:30:04.4582705Z # Subtest: slot paths cannot target prototypes or AST metadata
+2026-11-03T12:30:04.4583764Z ok 67 - slot paths cannot target prototypes or AST metadata
+2026-11-03T12:30:04.4584495Z   ---
+2026-11-03T12:30:04.4585193Z   duration_ms: 707.258858
+2026-11-03T12:30:04.4585760Z   type: 'test'
+2026-11-03T12:30:04.4586314Z   ...
+2026-11-03T12:30:04.4587419Z # Subtest: expression chains have continuation equalities; relation sequences retain each inequality
+2026-11-03T12:30:04.4589108Z ok 68 - expression chains have continuation equalities; relation sequences retain each inequality
+2026-11-03T12:30:04.4590392Z   ---
+2026-11-03T12:30:04.4590966Z   duration_ms: 705.844752
+2026-11-03T12:30:04.4591586Z   type: 'test'
+2026-11-03T12:30:04.4592113Z   ...
+2026-11-03T12:30:04.4593065Z # Subtest: a valid but different source problem cannot masquerade as the original N11
+2026-11-03T12:30:04.4594407Z ok 69 - a valid but different source problem cannot masquerade as the original N11
+2026-11-03T12:30:04.4595611Z   ---
+2026-11-03T12:30:04.4596163Z   duration_ms: 1155.930391
+2026-11-03T12:30:04.4597115Z   type: 'test'
+2026-11-03T12:30:04.4597653Z   ...
+2026-11-03T12:30:04.4785315Z 1..69
+2026-11-03T12:30:04.4785746Z # tests 69
+2026-11-03T12:30:04.4787884Z # suites 0
+2026-11-03T12:30:04.4788230Z # pass 69
+2026-11-03T12:30:04.4788561Z # fail 0
+2026-11-03T12:30:04.4788853Z # cancelled 0
+2026-11-03T12:30:04.4789097Z # skipped 0
+2026-11-03T12:30:04.4789313Z # todo 0
+2026-11-03T12:30:04.4789587Z # duration_ms 22439.192441
+2026-11-03T12:30:05.7236884Z file:///home/runner/work/kyotsu-step-web/kyotsu-step-web/work/items/W-MATH-038-transformation-groups/materialize.mjs:10
+2026-11-03T12:30:05.7239424Z  if(process.argv.includes('--check')){if(fs.readFileSync(path,'utf8')!==bytes)throw Error('DRIFT '+path);}else fs.writeFileSync(path,bytes);
+2026-11-03T12:30:05.7240612Z                                                                                     ^
+2026-11-03T12:30:05.7241168Z 
+2026-11-03T12:30:05.7241815Z Error: DRIFT work/items/W-MATH-038-transformation-groups/N11_TRANSFORMATION_PLAN.json
+2026-11-03T12:30:05.7242925Z     at file:///home/runner/work/kyotsu-step-web/kyotsu-step-web/work/items/W-MATH-038-transformation-groups/materialize.mjs:10:85
+2026-11-03T12:30:05.7243692Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-11-03T12:30:05.7244291Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-11-03T12:30:05.7245276Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2026-11-03T12:30:05.7245660Z 
+2026-11-03T12:30:05.7245762Z Node.js v22.23.4
+2026-11-03T12:30:05.7346786Z ##[error]Process completed with exit code 1.
+2026-11-03T12:30:05.7447050Z ##[group]Run actions/upload-artifact@v4
+2026-11-03T12:30:05.7447383Z with:
+2026-11-03T12:30:05.7447607Z   name: w38-exact-source-evidence
+2026-11-03T12:30:05.7447903Z   path: /tmp/w38-n11
+/tmp/w38-fixtures
+
+2026-11-03T12:30:05.7448210Z   if-no-files-found: warn
+2026-11-03T12:30:05.7448454Z   compression-level: 6
+2026-11-03T12:30:05.7448681Z   overwrite: false
+2026-11-03T12:30:05.7448922Z   include-hidden-files: false
+2026-11-03T12:30:05.7449173Z env:
+2026-11-03T12:30:05.7449420Z   CANDIDATE_SHA: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:30:05.7449824Z   VITE_PREVIEW_COMMIT: 2b7780b97bf8c3bde463742e71bf3e816ea8b562
+2026-11-03T12:30:05.7450228Z   VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+2026-11-03T12:30:05.7450578Z   VITE_BASE_PATH: /kyotsu-step-web/
+2026-11-03T12:30:05.7450894Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-11-03T12:30:05.7451274Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:30:05.7451738Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-11-03T12:30:05.7452170Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:30:05.7452555Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:30:05.7452950Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-11-03T12:30:05.7453345Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-11-03T12:30:05.7453682Z ##[endgroup]
+2026-11-03T12:30:05.9219240Z (node:3019) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T12:30:05.9220149Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T12:30:05.9260678Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-03T12:30:05.9263039Z The least common ancestor is /tmp. This will be the root directory of the artifact
+2026-11-03T12:30:05.9281529Z ##[warning]No files were found with the provided path: /tmp/w38-n11
+/tmp/w38-fixtures. No artifacts will be uploaded.
+2026-11-03T12:30:05.9496855Z Post job cleanup.
+2026-11-03T12:30:06.1120291Z Pruning is unnecessary.
+2026-11-03T12:30:06.1285400Z Post job cleanup.
+2026-11-03T12:30:06.2307508Z [command]/usr/bin/git version
+2026-11-03T12:30:06.2354214Z git version 2.56.0
+2026-11-03T12:30:06.2395314Z Temporarily overriding HOME='/home/runner/work/_temp/671f80c5-1df3-44af-8234-60618352cc31' before making global git config changes
+2026-11-03T12:30:06.2397332Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T12:30:06.2401145Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-11-03T12:30:06.2449453Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:30:06.2496325Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:30:06.2854498Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:30:06.2897428Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:30:06.3275494Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:30:06.3316915Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:30:06.3775324Z Cleaning up orphan processes
+2026-11-03T12:30:06.4189737Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

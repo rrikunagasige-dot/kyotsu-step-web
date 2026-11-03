@@ -1,0 +1,9 @@
+{
+  "sourceSHA": "2b7780b97bf8c3bde463742e71bf3e816ea8b562",
+  "gitHubTree": "2c5ebe4f043ef225b29d203643e59a9b62b9d5ae",
+  "localMirrorCommit": "b85cd5b115a4a1af16200967ec2de19836fabcfe",
+  "N11": "R1_APPLIED",
+  "N12": "BASELINE",
+  "next": "R07_VERIFY@n11",
+  "published": false
+}

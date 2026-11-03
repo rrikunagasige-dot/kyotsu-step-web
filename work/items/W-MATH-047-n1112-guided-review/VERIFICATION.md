@@ -11,3 +11,10 @@
 - P006承認を原文・request ID・proposal hashへ記録しR05@n11受理。稼働子agent二人のみ。
 - 実製品へは未適用。既存compilerのTG03_COVERAGE原FAILを保存。未適用生成の全85回答/安定ID/式番号/保持nodeを検証。
 - 追加2pathは隔離コピーのみで実行。7case PASS、旧/新source/同一W038表示・採点維持、未知sourceおよびgraph改変・欠落・追加・重複はFAIL。実画面検証とは別。
+
+## N11実装後 source f04e3d
+- T1 exact mapping 2tool適用済み。旧/新sourceと不正graph/sourceの7case PASS。
+- build PASS。transformation tests33 PASS。旧W038の現在behavior4 PASS（旧byte固定2項目は今回の内容判定に使用せず、原FAIL保持）。
+- 各320/390/430/1440pxで39正答/109誤答、14段階・2原図、履歴/reload/resize/旧rev1–10移行、幾何PASS。原REPORT.sourceSHA=nullは維持し、実行した固定local buildのsource bindingを別receiptに記録。
+- 6代表nodeのinitial/complete実画像と非作者source/image PASS。正式CI captureではない。
+- R06/R07_VERIFYは正式受理。R07_SEMANTICはcapture登録条件が未充足。G2/公開/本人受入は未実施。N12本体は未変更。

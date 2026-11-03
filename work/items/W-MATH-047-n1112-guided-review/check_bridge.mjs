@@ -33,7 +33,8 @@ const priorOverlay=read('src/data/textbook/math/numbers/n11Transformation.json')
 for(const key of ['groups','interactions','gradingHash','numberAliases','scope'])assert.deepEqual(next.compiled[key],priorOverlay[key],key);
 save('proposed-tooling/MATERIALIZED_N11_TRANSFORMATION.json',next.compiled);
 save('evidence/PROPOSED_BRIDGE_CHECK.json',{status:'PASS',execution:'isolated temporary tooling copy; active tools/product unchanged',cases,groupsUnchanged:true,interactionsUnchanged:true,gradingHashUnchanged:true,oldSourceAccepted:true,unknownSourceRejected:true,newBaseIRHash:next.compiled.baseIRHash,mathReceipts:next.mathReceipts??next.validation?.mathReceipts??null});
-const patch={files:files.map(f=>{const p='tools/textbook/transformation/'+f,before=fs.readFileSync(p,'utf8'),after=fs.readFileSync(b+'proposed-tooling/'+f,'utf8');return {path:p,before_sha256:sha(before),after_sha256:sha(after),after_text:after};})};save('proposed-tooling/PATCH.json',patch);
+const patch={files:files.map(f=>{const p='tools/textbook/transformation/'+f,before=fs.readFileSync(p,'utf8'),after=fs.readFileSync(b+'proposed-tooling/'+f,'utf8');return {path:p,before_sha256:sha(before),after_sha256:sha(after),after_text:after};})};
+if(!fs.existsSync(b+'proposed-tooling/PATCH.json'))save('proposed-tooling/PATCH.json',patch);
 const activePath='src/data/textbook/math/numbers/n11Transformation.json',before=fs.readFileSync(activePath,'utf8'),after=JSON.stringify(next.compiled,null,2)+'\n';
 const learner=read(b+'PATCH_N11.json');learner.files.push({path:activePath,before_sha256:sha(before),after_sha256:sha(after),after_text:after});save('proposed-tooling/PATCH_N11_WITH_BRIDGE.json',learner);
 console.log(JSON.stringify({status:'PASS',cases:cases.length,activeToolsChanged:false,productChanged:false,newBaseIRHash:next.compiled.baseIRHash}));

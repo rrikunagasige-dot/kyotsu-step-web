@@ -72,6 +72,7 @@ for(const code of ['n11','n12']){
   if(result.status!=='PASS'){
    report.status='BLOCKED';report.bindingFailure=result;
   }else{
+  result.compiled=JSON.parse(JSON.stringify(result.compiled));
   for(const key of ['groups','gradingHash','coverage','numberAliases'])if(key in old)assert.deepEqual(result.compiled[key],old[key],key);
   const p='src/data/textbook/math/numbers/n11Transformation.json',prior=execFileSync('git',['show',snapshot+':'+p],{encoding:'utf8'}),next=JSON.stringify(result.compiled,null,2)+'\n';
   assert.deepEqual(ids(result.compiled),ids(old));

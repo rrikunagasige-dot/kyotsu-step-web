@@ -1,0 +1,8 @@
+{
+  "sourceSHA": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+  "patchApplied": true,
+  "resultRevalidationRequired": "App import closure changed code receipt inputs; rebind without reapplying patch",
+  "evidenceRefs": [
+    "5d1f419d-45c2-482f-91a8-9008a6f49534"
+  ]
+}

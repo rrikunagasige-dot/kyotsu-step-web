@@ -1,0 +1,18 @@
+{
+  "formalNode": "R07_SEMANTIC@n11",
+  "localUI": "PASS four widths; 39 answers/109 wrong each; history/reload/resize/revision1-10 migration",
+  "nonauthorSourceAndImageReviews": "PASS; not blinded; source-first history retained",
+  "nativeTargetBinding": "REJECTED: render target requires phase-matching screenshot capture",
+  "localCaptureBridge": "existing bridge supports nested-math/1 only; N11 is guided-math-presentation/1",
+  "CITriggerAPI": "Not exposed in current GitHub connector",
+  "browserFallback": "Browser access requires the originating browser context. Open ChatGPT in the browser with the connected extension and try again.",
+  "notClaimed": [
+    "CI execution",
+    "CI screenshot provenance",
+    "R07 semantic completion",
+    "G2",
+    "publication",
+    "user acceptance"
+  ],
+  "next": "Resume existing GitHub review screenshot workflow using connected originating browser; bind actual current-source capture then complete R07 semantic review. Do not create false CI or remove guards."
+}

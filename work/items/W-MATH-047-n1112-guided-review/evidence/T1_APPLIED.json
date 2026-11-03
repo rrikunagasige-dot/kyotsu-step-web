@@ -1,0 +1,11 @@
+{
+  "work": "W-TECH-048",
+  "sourceSHA": "67c31499edd6f67ccf5f3bf853598d45ddc306ae",
+  "approval": "w047-t1-user-approval-49c00293",
+  "check": "3991ec8e-784f-4613-89a1-9fe30a149091",
+  "status": "DONE",
+  "manifest": {
+    "tools/textbook/transformation/n11-source-binding.mjs": "723b9f4e6e583f7ba4802777704e1f16ef5158523109e349305018f8b9bd292a",
+    "tools/textbook/transformation/validate.mjs": "c0d5750dee3056441c5f973a1f4c7b3c6e84eb6f4d775e515ee0229fd5f06591"
+  }
+}

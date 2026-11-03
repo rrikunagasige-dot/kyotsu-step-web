@@ -1,0 +1,9 @@
+{
+  "originalLock": {
+    "pid": 2,
+    "time": 1793694645.5339234
+  },
+  "reconciliation": "All prior exec sessions completed or failed; no active writer process; all children completed/read-only. Isolated process ID 2 is reused across cells, so PID-only recovery cannot distinguish the exited worker. Preserved lock before removing it.",
+  "currentPid": 5,
+  "ledgerHead": "e35f311aed954ac213c91710e7fb8eb9bfb61f56305ff825b81afa480b77bfd5"
+}

@@ -1,18 +1,23 @@
 {
   "work_id": "W-MATH-047",
   "node": {
-    "id": "R06_PATCH@n11",
-    "stage_kind": "R06_PATCH",
-    "contract_kind": "R06_PATCH",
-    "actor": "TOOL",
+    "id": "R07_SEMANTIC@n11",
+    "stage_kind": "R07_SEMANTIC",
+    "contract_kind": "R07_SEMANTIC",
+    "actor": "AI",
     "depends_on": [
-      "R05_APPROVAL@n11"
+      "R07_VERIFY@n11"
     ],
-    "required": [],
+    "required": [
+      "symptom_resolution",
+      "regression_review",
+      "protected_scope_review",
+      "unknowns"
+    ],
     "block": "n11",
     "release_unit": "n11",
     "watch": "integration",
-    "phase": "pre-design",
+    "phase": "post-implementation",
     "priority": 0,
     "source_refs": [
       "src/data/textbook/math/numbers/n11Authored.json",
@@ -43,17 +48,32 @@
     ],
     "approval_scope_ref": "proposal",
     "capability_requests": [
-      "ir.compile"
+      "source.audit",
+      "novice.audit"
     ],
     "required_code_receipts": [
-      "ir.compile"
+      "source.audit",
+      "novice.audit"
     ],
-    "required_ai_receipts": []
+    "required_ai_receipts": [
+      "meaning-review"
+    ],
+    "team_requirements": [
+      {
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "R07_SEMANTIC"
+      }
+    ]
   },
-  "task_id": "21149aec414df6b1bef43cefb623bdf64f6da85622c1e0b7578c096e4be3082d",
-  "input_hash": "1b8f93b13100d849db4d85e4a26a8a76fc6608abb9a97fcb68b4117c5a8ed8e6",
+  "task_id": "fb5b50130a31e79246950317e36b8b1d2ef8489e91120618c7cb0107ff95d0e5",
+  "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
   "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-  "candidate_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
   "rules": {
     "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -101,11 +121,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
   },
   "previous_results": {
-    "R05_APPROVAL@n11": {
-      "actor": "user-record/conversation_transcribed",
-      "artifact": "1863f03d597dc727d9ed5da5db3cdd675872261b458f9728f0601b792a7c3d3d",
-      "input_hash": "f2eb583565130a301f90d270aa0fa1f657c050f644615dfdc935217ef1dd0852",
-      "node": "R05_APPROVAL@n11",
+    "R07_VERIFY@n11": {
+      "actor": "capability-runner",
+      "artifact": "285f53d83ebb664e8a0732979dda03df3ce5438083929fa5a3404b8b10bdff7b",
+      "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+      "node": "R07_VERIFY@n11",
       "verdict": "PASS"
     }
   },

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "sourceSHA": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "semanticIdsVerified": true,
+  "statesVerified": true,
+  "rawReportSourceSHA": null,
+  "sourceBinding": "Fixed local build HEAD and unchanged native candidate file hashes; not hosted execution",
+  "reportPath": "work/items/W-MATH-047-n1112-guided-review/evidence/browser-n11/REPORT.json"
+}

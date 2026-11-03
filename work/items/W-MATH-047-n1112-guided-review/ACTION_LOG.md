@@ -19,3 +19,8 @@
 - R05をRuntime.acceptで記録。初回にUSER nodeへexecuteを呼んだ操作は拒否され、acceptへ修正。承認イベントは同一原文・同一P006 hashを保持。
 - 未適用materializeで85回答/表示ID/番号/85node KEEPを照合。N11既存compilerが旧sourceHash pinを理由にTG03拒否。SymPy依存を解消後もTG03のみ残存。原結果を保存し、製品未適用。
 - scope外のtools二ファイルを黙って変更せず、exact追加mappingをWork内へ未適用差分化。隔離toolsコピーで7case合格。旧/新sourceとW038同一表示・採点を確認、未知sourceと不正graphを拒否。
+
+- T1追加承認49c00293。immutable W047原資料manifestは増やさず、2tool pathをtechnical W-TECH-048へ分離し、既存patch adapter/7case/学習記録/closeを実行。
+- 導入したCODEは本体app import closureもhashへ含むため、N11適用後にprepatch receiptが古くなることをガードが拒否。差分を再適用せず、同target原審査の履歴を保って最終sourceへ再検証・再束縛した。
+- N11 R06/R07_VERIFY正式受理、build/変形33件/現在behavior4件/四幅39正答109誤答と保存移行PASS。旧W038全テストの版固定FAILと最初の環境FAILは保存し、旧テストを変更しなかった。
+- R07SEMANTIC native targetは普通教材のローカルcaptureを受け入れないため拒否。CI起動APIはなく、Browser toolもoriginating context unavailable。正式画像登録から再開。非作者原報告と実画像を保全、公開・本人受入は未実施。

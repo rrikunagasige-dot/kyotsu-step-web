@@ -1,0 +1,1 @@
+{"capability_receipts":["ea38bbc90abbe82a68b0de638fb4ee8898a5a308863ea8bf9b9fe7421d568916"],"evidence_refs":["6e859d3a-5826-4fab-b388-6dd63c737183","0c19161b-04b4-4a9c-b861-d7f2804d9ed1"],"implementation":"Exact already-applied approved patch; recompiled at final source to respect transitive import manifest invalidation","verdict":"PASS"}

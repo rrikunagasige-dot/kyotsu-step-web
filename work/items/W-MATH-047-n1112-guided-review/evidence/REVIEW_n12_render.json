@@ -1,6 +1,6 @@
 {
   "assignment": {
-    "assignmentId": "w047-n12-render-fresh-770b485c-29695178-w047_layout_sourcefirst",
+    "assignmentId": "w047-n12-render-fresh-770b485c-1cc01524-w047_layout_sourcefirst-native-rebind",
     "roleEpoch": 3,
     "node": "R04_PROPOSAL@n12",
     "block": "n12",
@@ -10,7 +10,7 @@
     ],
     "performerRef": "/root/w047_layout_sourcefirst",
     "role": "reviewer",
-    "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "inputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
     "sourceSHA": "6b439d0d31fcd46708c256ed23a391009ab73164",
     "artifactHashes": {
       "layout": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840"
@@ -22,10 +22,10 @@
       "tokenBudget": null
     },
     "independent": true,
-    "targetManifestRef": "39853e9a3d4829a4946499614627dca78c3d4075280c13449c1f6f327a4b685c"
+    "targetManifestRef": "e1b8da9f570db721b4aa754f994cfa0a833c83f0f997291e927c3371c4b5b727"
   },
   "packet": {
-    "baseNodeInputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "baseNodeInputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
     "sourceRefs": [
       "src/data/textbook/math/numbers/n12Authored.json",
       "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
@@ -46,30 +46,30 @@
       "forkMode": "filtered",
       "authorRationaleVisibleAtFirstPass": false
     },
-    "packetHash": "1076d7443d6b8eec5c778796efb8c66f32f74cdee147801a791461284fb92452"
+    "packetHash": "bddb1a62524c196f2817604a2f88fe1efe1e4564a616682f235f5d8bdd9719cf"
   },
   "target": {
     "artifactHashes": {
       "layout": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840"
     },
     "artifactRefs": [
-      "d8683bb633fea373688514e0e6f8ffb3bdcbab896ba0334fab1ac9e8ed7faf46"
+      "829ec24dca28171808f238be62797e3f7ec6ff22bb3457929d90543568ad9c81"
     ],
     "block": "n12",
     "blockContext": {
       "n12": {}
     },
     "evidenceRefs": [
-      "da395103-442d-4ad0-9c0b-88b0ba916f53",
-      "d575b2df-aa4e-4f83-85d9-a19103c0c91b",
-      "31856966-beeb-4d0b-924b-ac4be46e775f",
-      "c8d771e2-aac4-44c8-aad0-f7dedcea983a",
-      "3905ba3c-53ef-48ad-823e-19d394101483",
-      "7e31ce7a-2c6c-4ecf-873e-4a38996ed205",
-      "9752a7ab-7a19-4a32-bc89-ae6c63ed1ffe"
+      "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+      "2eddb399-4a6f-4586-95b9-abd13941017a",
+      "c3a3422c-51d3-4a54-ab9a-a88779661662",
+      "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+      "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+      "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+      "feb45c01-08af-485b-bcbd-31b1e8931025"
     ],
     "facet": "render",
-    "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+    "inputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
     "node": "R04_PROPOSAL@n12",
     "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
     "schemaVersion": "team-target/1",
@@ -80,9 +80,9 @@
   "reviewKind": "learner-visible-review",
   "instruction": "Read the original positioned source and baseline current public snapshots before the inactive candidate. Do not read PROPOSAL.md or *_AUDIT_*.json before returning first observations. Review is proposal/static only; candidate rendered UI is not yet available.",
   "registration": {
-    "registrationRef": "cb48b453cde8f7ee2b9cf3a7bf8d0244296e15e96b3bf494f3e99787872c7d25",
-    "assignmentHash": "3a7601e2ea1b9d966f65f29101c28d2389e879e4d6bd2055cc32818c0bc033d7",
-    "eventRef": "3c2b97aca456b68d525fbe586920b50e10781ba494110d73ca0b3b3857a816f5"
+    "registrationRef": "8c75e35d4bd0155b560508beaf0bfa063c32d323ba31b26169c65610ed8caa2a",
+    "assignmentHash": "d77e429112fc3a55b02ba18f177b11695f9fbfffff63c6e27f00251f50917d47",
+    "eventRef": "21c86d78f87d2d0f1e2a069a6950657275e2877f7fafe853a9f98928661522f7"
   },
   "harness": {
     "agentRef": "/root/w047_layout_sourcefirst",
@@ -92,9 +92,24 @@
     "toolResultRef": "53f5a0f567f2b83f51c0d77497dcd3372ed9b2b0c46b1d0ad9c07147751ccf94",
     "attestationMethod": "transcribed-tool-result"
   },
+  "historicalRebind": {
+    "originalRegistration": {
+      "registrationRef": "9c373c2e0555da9545bd3ee04880dd45a15c25cc6bf2990c0fed5921c1c47d94",
+      "assignmentHash": "9ee6e498ad15307d9795196ae78ef5d3f005d948f66b93e899fa0ef380e8d91d",
+      "eventRef": "55ce25ae5470b26ebc7a9b6aeafe8e74b780acbce87837d63b1fb1107b784eb4"
+    },
+    "originalOutput": {
+      "outputRef": "6a6de32b5eae58e278cd903f4d0d1602e75bb7aaf7e3beef34c543d06a64a0ff",
+      "eventRef": "e5936e99889792cac1a9a8a741f9de4efc5ce4867387c76402b64175e7a741e1"
+    },
+    "unchangedTarget": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+    "newPlatformTaskLaunched": false,
+    "newFirstPassClaimed": false,
+    "originalHarnessRetained": "53f5a0f567f2b83f51c0d77497dcd3372ed9b2b0c46b1d0ad9c07147751ccf94"
+  },
   "output": {
-    "outputRef": "9be999e64af9586dbea759f57fb8a083a9713aabb2efd98fead56927e1612e60",
-    "eventRef": "3ea141716480c9c2d79e1a948b4b0378b67375d87de8f92f512ec0b2ef3936b9"
+    "outputRef": "bdf5100ca0d998711b57bfd81606c86c6682335fe95513b6ce6a10d6e00d406a",
+    "eventRef": "079edd9f3b7ecaa151a5e617dc163cc44183c1fe9f84c34ed37fc9ebf165df47"
   },
   "rawReportSHA256": "9952f890fd8c4fd6256aedb902ab49a4aa0a5a0615fc34c025ac1bf111ca4ca1"
 }

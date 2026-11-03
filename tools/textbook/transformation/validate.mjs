@@ -2,7 +2,7 @@ import {validateTransformationV3} from './v3.mjs';
 import {planSchema,getPath} from './schema.mjs';
 import {graphSchema} from '../solution/graph.mjs';
 import {n08SourceBinding} from './n08-source-binding.mjs';
-import {n11SourceBinding} from './n11-source-binding.mjs';
+import {n11SourceBinding,n11AdditionalSourceBindings} from './n11-source-binding.mjs';
 import {PATTERNS} from './patterns.mjs';
 import {hash} from '../util.mjs';
 import {verifySolution} from '../solution/verify.mjs';
@@ -28,7 +28,8 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
  if(sourceGraphs){
   if(p.graphs.some(g=>!sourceGraphs.some(source=>source.id===g.id&&hash(graphSchema.parse(source))===hash(g))))add('TG03_COVERAGE','source AST differs from display graph');
  }else if(ir.schemaVersion==='guided-math-presentation/1'&&ir.unit?.unitId==='math-numbers-expressions-n11'){
-  if(hash(ir)!==n11SourceBinding.sourceHash||p.graphs.length!==Object.keys(n11SourceBinding.graphs).length||p.graphs.some(g=>n11SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N11 frozen source/AST bridge changed');
+  const sourceHash=hash(ir),binding=sourceHash===n11SourceBinding.sourceHash?n11SourceBinding:n11AdditionalSourceBindings[sourceHash];
+  if(!binding||p.graphs.length!==Object.keys(binding.graphs).length||new Set(p.graphs.map(g=>g.id)).size!==p.graphs.length||p.graphs.some(g=>binding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N11 frozen source/AST bridge changed');
  }else if(ir.unit?.unitId==='math-numbers-expressions-n08'){
   if(hash(ir)!==n08SourceBinding.sourceHash||p.graphs.length!==Object.keys(n08SourceBinding.graphs).length||p.graphs.some(g=>n08SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N08 frozen source/AST bridge changed');
  }else add('TG03_COVERAGE','NEEDS_MAPPING: no source AST or registered legacy bridge');

@@ -7,3 +7,11 @@ export const n11SourceBinding={
     "coefficient": "220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"
   }
 };
+
+/** Exact P-W047-06 source; existing three graphs remain unchanged. */
+export const n11AdditionalSourceBindings={
+  "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe": {
+    graphs: {...n11SourceBinding.graphs},
+    proposalHash: "e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e"
+  }
+};

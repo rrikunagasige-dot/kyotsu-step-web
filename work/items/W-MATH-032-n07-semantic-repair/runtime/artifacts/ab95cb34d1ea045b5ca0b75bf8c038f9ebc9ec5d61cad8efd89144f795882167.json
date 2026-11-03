@@ -1,0 +1,1 @@
+{"design":["Exact new source to same graph set; no learner change"],"evidence_refs":["26959519-0966-40cc-abbd-cb84aeb2fe6b"],"protected_scope":["All 85 answer contracts, W038 groups/slots/numbers, existing source pin"],"rule_mapping":["Keep old exact source/graph pin and unknown-source rejection"],"unknowns":[],"verdict":"PASS"}

@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w047-n1112
+
+ ✓ work/items/W-MATH-038-transformation-groups/implementation.test.tsx (6 tests | 2 skipped) 408ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed | 2 skipped (6)
+   Start at  01:02:56
+   Duration  2.63s (transform 988ms, setup 0ms, collect 1.70s, tests 408ms, environment 287ms, prepare 72ms)
+

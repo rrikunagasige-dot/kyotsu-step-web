@@ -150,7 +150,9 @@
         "src/pages/TextbookUnitPage.tsx",
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
-      ]
+      ],
+      "content_design_hash": "e370d18b41e3fb404c0bc14b63001b24a598f2b7a680d37ef2db682937de9495",
+      "patch_hash": "1da5816aaec089d3e09b9d75a25bebcf0c1a43c74bdd69fa7b6248d8c62cfd39"
     },
     {
       "change_facets": [
@@ -220,7 +222,9 @@
         "src/pages/TextbookUnitPage.tsx",
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json"
-      ]
+      ],
+      "content_design_hash": "770b485ccabe431dbeba424c1c6a64f563f226111851c80a6cbeb67b19524840",
+      "patch_hash": "28dddeae125a53809ecaa01deab5b3fde0fbd697cc25a193cbdcd2a2a84a75d6"
     }
   ],
   "command": "CMD-WORK-001",

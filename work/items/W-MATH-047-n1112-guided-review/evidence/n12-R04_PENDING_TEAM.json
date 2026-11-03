@@ -2,19 +2,19 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R04_PROPOSAL@n12",
-    "claimToken": "18e37addd0164b799cf2fd6f4c596494",
+    "claimToken": "e03cba35445449f2a529c19f308f254b",
     "receipts": [
-      "39a7260c34f74bc45e8619f4977aebed6cfe5e1573c51b607ed08ba9ce9210b1",
-      "0a20cc8f26d55d94575e9bd47c65b759239bb3d9cfb3b1cd9f50c09d21380bff",
-      "84f50cf673368506e8d5ba1bf0d0098752693ed985964004ffb79f548da4ab97",
-      "9be6737284c979dfe2998ff08bead4b53e7d9edd959cce0893f00fc99f7f6bf4",
-      "0359284b6a19d07f53ddfe068089cef84c37b9c4e80796d9ae17a74ab6835163",
-      "24d0673f127ea160eb823e208550cff8f8a2001e2b5f6a1f6a442ed1acd9ceab",
-      "bb8a2bbf889624faef2096ded5e9e85fdbba70e0df26ab3eb6334788c13c15fe",
-      "11e411c1c19c1dbd628ee12ce3d3b6390ac02f7d517ae7179a556e716825f60c",
-      "d8683bb633fea373688514e0e6f8ffb3bdcbab896ba0334fab1ac9e8ed7faf46",
-      "7491fed2da2713e50b536f141454c338f42da79e31046577f1e476967af69476",
-      "4061d88d6190f8176647e2e0ddeb84f7e87ea64961728256ee773cc3e90f12e9"
+      "28d43647c664fab193f4e5f6fcaab6c399e934d86d763cb324b3f5252c9707eb",
+      "1079d1985399d493288cb46ffbd52e37f229a3025746ec27c62bd37b97462387",
+      "ff6ded09b4abc1cd6f6ff10673d90c51a124d48b5c894db16b39fbfb6116b38d",
+      "8b16f6a3cec319484c78a919581fec0a6a8189133d978e521d2563ff6dfb71a4",
+      "deee4c71f68630f788bb93d87794aa05744e048c1c274045207924515edfdfd5",
+      "46ec5bfbd065e894857d2cfa9c29852d3fada3189c260ef16fa436140b41d567",
+      "39e578657948fcc22f932de8137fafd07846d0815014a8bcaa82afecd3f7727d",
+      "fb0e049b868ad9622a7e4a339b98db115ee20d296f515d0ed966d3b2c6981c02",
+      "829ec24dca28171808f238be62797e3f7ec6ff22bb3457929d90543568ad9c81",
+      "190c0def856ca9b2747e81c9183ea22f5224a256bcf57daf3896826e9cb32b03",
+      "2a3cc8cda944593741216d8b9feba4cfd053fec65803401ba9fbf2871fce9fa8"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -120,10 +120,10 @@
             }
           ]
         },
-        "task_id": "b5285759cba5d9396ad2d260f8e6cb5af7a5870c341831dd86fe4237901e5a62",
-        "input_hash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+        "task_id": "250172263d51e15ebb0b2be209c1e3478e256714bd4bb07e038ffa9557f7a1dc",
+        "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
         "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-        "candidate_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+        "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
         "rules": {
           "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -173,8 +173,8 @@
         "previous_results": {
           "R03_IMPACT@n12": {
             "actor": "capability-runner",
-            "artifact": "54a90e88db515c20f1ce7764dba13f6fe77d32ec5c8f4fbbca35ec44c5fc8287",
-            "input_hash": "6e4a773fdaf3507de10d2300f74bbf094fe18c8c73708f44e364404e30cfd36c",
+            "artifact": "5e0921c1f70152521647f1d8e46416fd8a233cea059cfab6a1159c0714e3783c",
+            "input_hash": "b172f8dbed1add9fea9235f6ee9ff1e7641fd95cdd09027574a62bb1a97f54e2",
             "node": "R03_IMPACT@n12",
             "verdict": "PASS"
           }
@@ -209,12 +209,12 @@
         "R03_IMPACT@n12": {
           "aiReview": {
             "evidence": "Read all96-node reports and current source. Input conditional results vs current decisions distinguished; no forced hole expansion. Exact source/candidate/operation objects checked. Original questions and all grading preserved. CODE cannot certify prose meaning. Source ZIP and candidate rendered UI are not claimed.",
-            "inputHash": "6e4a773fdaf3507de10d2300f74bbf094fe18c8c73708f44e364404e30cfd36c",
-            "requestHash": "a2b3fdb6a51b15e8ed7717df852e95f6f7e97a27fbade0fe25d047a8f9f28f27",
+            "inputHash": "b172f8dbed1add9fea9235f6ee9ff1e7641fd95cdd09027574a62bb1a97f54e2",
+            "requestHash": "41b9542bff64b8769e5b5eb0453a0c571f474ed923282196a69995a9032b2ecf",
             "reviewer": "M integrating actual A/B source reports"
           },
           "capability_receipts": [
-            "0e4fc69552faa2f7ad07b6c02e313db56a2d8c5046561615da5d7ba9869437fd"
+            "69585a38c5815007e69a953ff4fa6a4f7f5eac59f9928be5c567aaccd7254995"
           ],
           "case_dispositions": [
             {
@@ -309,13 +309,13 @@
             }
           ],
           "evidence_refs": [
-            "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-            "cc8f193b-6a06-444a-9f53-566cce20335d",
-            "50b19298-60d7-4c67-8bb3-b79a44421f44",
-            "a5045e98-ac69-4ec2-892f-5557dc816abd",
-            "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-            "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-            "30abd106-2628-4bb2-8b6e-ee71bf543285"
+            "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+            "2eddb399-4a6f-4586-95b9-abd13941017a",
+            "c3a3422c-51d3-4a54-ab9a-a88779661662",
+            "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+            "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+            "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+            "feb45c01-08af-485b-bcbd-31b1e8931025"
           ],
           "impact_rows": [
             {
@@ -323,17 +323,17 @@
               "artifact": "src/data/textbook/math/numbers/n11Authored.json",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -343,17 +343,17 @@
               "artifact": "src/data/textbook/math/numbers/n11Transformation.json",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -363,17 +363,17 @@
               "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -383,17 +383,17 @@
               "artifact": "src/domain/textbook.ts",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -403,17 +403,17 @@
               "artifact": "src/pages/TextbookUnitPage.tsx",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -423,17 +423,17 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -443,17 +443,17 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
               "block_id": "n11",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -463,17 +463,17 @@
               "artifact": "src/data/textbook/math/numbers/n12Authored.json",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -483,17 +483,17 @@
               "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -503,17 +503,17 @@
               "artifact": "src/domain/textbook.ts",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -523,17 +523,17 @@
               "artifact": "src/pages/TextbookUnitPage.tsx",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -543,17 +543,17 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -563,17 +563,17 @@
               "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
               "block_id": "n12",
               "evidence_refs": [
-                "b0c689b3-0b35-4b29-b4f4-1c5349b60521",
-                "cc8f193b-6a06-444a-9f53-566cce20335d",
-                "50b19298-60d7-4c67-8bb3-b79a44421f44",
-                "a5045e98-ac69-4ec2-892f-5557dc816abd",
-                "c3a99ff7-0651-4d03-9612-2fbd2ae4edaa",
-                "3ed44847-4ab3-47ad-8701-c0637ffc177c",
-                "30abd106-2628-4bb2-8b6e-ee71bf543285"
+                "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+                "2eddb399-4a6f-4586-95b9-abd13941017a",
+                "c3a3422c-51d3-4a54-ab9a-a88779661662",
+                "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+                "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+                "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+                "feb45c01-08af-485b-bcbd-31b1e8931025"
               ],
               "originFinding": "W047 source audit of current N11/N12",
               "phase": "pre-design",
-              "resolution": "Limited nine-node candidate; original contracts and shared consumers retained",
+              "resolution": "Limited eleven-node candidate; original contracts and shared consumers retained",
               "rootCauseSignature": "answer-before-judgment / local-calculation-vs-whole-state / operation-object",
               "status": "NOT-AFFECTED",
               "version": "6b439d0d31fcd46708c256ed23a391009ab73164"
@@ -599,7 +599,7 @@
         "未解決は未解決と記録",
         "承認を生成しない"
       ],
-      "requestHash": "d7775005fefb931fc3ee65a9c72aa06b0efc06b92f5add23c046b66b6622daf0",
+      "requestHash": "93e392b82b651bdbe535d35cde88f5b735a179ee2244fa230b9e32f529eaf18d",
       "teamReview": {
         "policyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
         "requirements": [
@@ -636,26 +636,26 @@
   "result": {
     "verdict": "PASS",
     "evidence_refs": [
-      "da395103-442d-4ad0-9c0b-88b0ba916f53",
-      "d575b2df-aa4e-4f83-85d9-a19103c0c91b",
-      "31856966-beeb-4d0b-924b-ac4be46e775f",
-      "c8d771e2-aac4-44c8-aad0-f7dedcea983a",
-      "3905ba3c-53ef-48ad-823e-19d394101483",
-      "7e31ce7a-2c6c-4ecf-873e-4a38996ed205",
-      "9752a7ab-7a19-4a32-bc89-ae6c63ed1ffe"
+      "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+      "2eddb399-4a6f-4586-95b9-abd13941017a",
+      "c3a3422c-51d3-4a54-ab9a-a88779661662",
+      "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+      "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+      "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+      "feb45c01-08af-485b-bcbd-31b1e8931025"
     ],
     "capability_receipts": [
-      "39a7260c34f74bc45e8619f4977aebed6cfe5e1573c51b607ed08ba9ce9210b1",
-      "0a20cc8f26d55d94575e9bd47c65b759239bb3d9cfb3b1cd9f50c09d21380bff",
-      "84f50cf673368506e8d5ba1bf0d0098752693ed985964004ffb79f548da4ab97",
-      "9be6737284c979dfe2998ff08bead4b53e7d9edd959cce0893f00fc99f7f6bf4",
-      "0359284b6a19d07f53ddfe068089cef84c37b9c4e80796d9ae17a74ab6835163",
-      "24d0673f127ea160eb823e208550cff8f8a2001e2b5f6a1f6a442ed1acd9ceab",
-      "bb8a2bbf889624faef2096ded5e9e85fdbba70e0df26ab3eb6334788c13c15fe",
-      "11e411c1c19c1dbd628ee12ce3d3b6390ac02f7d517ae7179a556e716825f60c",
-      "d8683bb633fea373688514e0e6f8ffb3bdcbab896ba0334fab1ac9e8ed7faf46",
-      "7491fed2da2713e50b536f141454c338f42da79e31046577f1e476967af69476",
-      "4061d88d6190f8176647e2e0ddeb84f7e87ea64961728256ee773cc3e90f12e9"
+      "28d43647c664fab193f4e5f6fcaab6c399e934d86d763cb324b3f5252c9707eb",
+      "1079d1985399d493288cb46ffbd52e37f229a3025746ec27c62bd37b97462387",
+      "ff6ded09b4abc1cd6f6ff10673d90c51a124d48b5c894db16b39fbfb6116b38d",
+      "8b16f6a3cec319484c78a919581fec0a6a8189133d978e521d2563ff6dfb71a4",
+      "deee4c71f68630f788bb93d87794aa05744e048c1c274045207924515edfdfd5",
+      "46ec5bfbd065e894857d2cfa9c29852d3fada3189c260ef16fa436140b41d567",
+      "39e578657948fcc22f932de8137fafd07846d0815014a8bcaa82afecd3f7727d",
+      "fb0e049b868ad9622a7e4a339b98db115ee20d296f515d0ed966d3b2c6981c02",
+      "829ec24dca28171808f238be62797e3f7ec6ff22bb3457929d90543568ad9c81",
+      "190c0def856ca9b2747e81c9183ea22f5224a256bcf57daf3896826e9cb32b03",
+      "2a3cc8cda944593741216d8b9feba4cfd053fec65803401ba9fbf2871fce9fa8"
     ],
     "case_dispositions": [
       {
@@ -750,8 +750,8 @@
       }
     ],
     "aiReview": {
-      "requestHash": "d7775005fefb931fc3ee65a9c72aa06b0efc06b92f5add23c046b66b6622daf0",
-      "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
+      "requestHash": "93e392b82b651bdbe535d35cde88f5b735a179ee2244fa230b9e32f529eaf18d",
+      "inputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
       "reviewer": "M integrating actual A/B source reports",
       "evidence": "Read all96-node reports and current source. Input conditional results vs current decisions distinguished; no forced hole expansion. Exact source/candidate/operation objects checked. Original questions and all grading preserved. CODE cannot certify prose meaning. Source ZIP and candidate rendered UI are not claimed."
     },
@@ -791,5 +791,5 @@
     "proofStatus": "AI_ARGUMENT_REVIEWED",
     "formalProof": false
   },
-  "inputHash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41"
+  "inputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef"
 }

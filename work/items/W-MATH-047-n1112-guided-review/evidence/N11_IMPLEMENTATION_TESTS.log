@@ -1,0 +1,76 @@
+
+ RUN  v3.2.7 /workspace/scratch/6ff917b2ec4a/w047-n1112
+
+file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7
+if(result.status!=='PASS')throw Error(JSON.stringify(result));
+                                ^
+
+Error: {"status":"FAIL","findings":[{"ruleId":"TG05_CONDITION","detail":{"graph":"n11-linear","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"cancel","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"coefficient","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}}}],"mathReceipts":[{"graphId":"n11-linear","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"},{"graphId":"cancel","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"},{"graphId":"coefficient","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}],"baseIRHash":"3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe","planHash":"eccf3510ac9f787dec39383da72219b2bb556e2277af26df07fdbeadaca7faac","learnerCopyHash":"8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f","meaningAuditRequired":true}
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+fatal: path 'src/data/textbook/math/numbers/n11Authored.json' exists on disk, but not in 'f297503b574e92f1d2f120f9f9d09d7da6cd0af9'
+ ❯ work/items/W-MATH-038-transformation-groups/implementation.test.tsx (6 tests | 2 failed) 774ms
+   × generated artifact exactly matches approved source adapter and current engine 323ms
+     → Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node work/items/W-MATH-038-transformation-groups/materialize.mjs --check
+file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7
+if(result.status!=='PASS')throw Error(JSON.stringify(result));
+                                ^
+
+Error: {"status":"FAIL","findings":[{"ruleId":"TG05_CONDITION","detail":{"graph":"n11-linear","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"cancel","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"coefficient","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}}}],"mathReceipts":[{"graphId":"n11-linear","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"},{"graphId":"cancel","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"},{"graphId":"coefficient","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}],"baseIRHash":"3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe","planHash":"eccf3510ac9f787dec39383da72219b2bb556e2277af26df07fdbeadaca7faac","learnerCopyHash":"8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f","meaningAuditRequired":true}
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+
+   ✓ node and browser visible projections agree without answer metadata 207ms
+   ✓ fraction blank is one valid button and no split LaTeX fragment 153ms
+   ✓ N11 opts in only two stages, preserves original as selectable input and hides future divisor 59ms
+   × unchanged N08 r4/r5 and original N11 source remain byte-identical to approved base 5ms
+     → Command failed: git show f297503b574e92f1d2f120f9f9d09d7da6cd0af9:src/data/textbook/math/numbers/n11Authored.json
+fatal: path 'src/data/textbook/math/numbers/n11Authored.json' exists on disk, but not in 'f297503b574e92f1d2f120f9f9d09d7da6cd0af9'
+
+   ✓ legacy later answers remain stored while new prerequisite questions are visible 26ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  work/items/W-MATH-038-transformation-groups/implementation.test.tsx > generated artifact exactly matches approved source adapter and current engine
+Error: Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node work/items/W-MATH-038-transformation-groups/materialize.mjs --check
+file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7
+if(result.status!=='PASS')throw Error(JSON.stringify(result));
+                                ^
+
+Error: {"status":"FAIL","findings":[{"ruleId":"TG05_CONDITION","detail":{"graph":"n11-linear","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"cancel","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"}}},{"ruleId":"TG05_CONDITION","detail":{"graph":"coefficient","receipt":{"status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}}}],"mathReceipts":[{"graphId":"n11-linear","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"},{"graphId":"cancel","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"},{"graphId":"coefficient","status":"UNSUPPORTED","reason":"MATH_DEPENDENCY_MISSING","detail":"Install the pinned solution requirements in KYOTSU_MATH_PYTHON.","graphHash":"220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"}],"baseIRHash":"3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe","planHash":"eccf3510ac9f787dec39383da72219b2bb556e2277af26df07fdbeadaca7faac","learnerCopyHash":"8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f","meaningAuditRequired":true}
+    at file:///workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-038-transformation-groups/materialize.mjs:7:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+
+ ❯ work/items/W-MATH-038-transformation-groups/materialize.mjs:7:33
+ ❯ work/items/W-MATH-038-transformation-groups/implementation.test.tsx:14:89
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  work/items/W-MATH-038-transformation-groups/implementation.test.tsx > unchanged N08 r4/r5 and original N11 source remain byte-identical to approved base
+Error: Command failed: git show f297503b574e92f1d2f120f9f9d09d7da6cd0af9:src/data/textbook/math/numbers/n11Authored.json
+fatal: path 'src/data/textbook/math/numbers/n11Authored.json' exists on disk, but not in 'f297503b574e92f1d2f120f9f9d09d7da6cd0af9'
+
+ ❯ work/items/W-MATH-038-transformation-groups/implementation.test.tsx:32:303
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  00:42:37
+   Duration  3.63s (transform 1.32s, setup 0ms, collect 2.28s, tests 774ms, environment 312ms, prepare 67ms)
+

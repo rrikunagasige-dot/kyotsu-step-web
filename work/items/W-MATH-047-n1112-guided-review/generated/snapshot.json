@@ -1,28 +1,33 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "f20a62476f66c97423659229b1cb34bab1bee16ae045a7eb6d3836cc3752dafd",
-  "work_status": "APPROVED",
+  "ledger_head": "a48653ff2b99e914dfeaf18b86f3529e907b1347b8a586e4dffa82ca3b70fe0a",
+  "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+  "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
   "next": {
     "status": "READY",
     "task": {
       "work_id": "W-MATH-047",
       "node": {
-        "id": "R06_PATCH@n11",
-        "stage_kind": "R06_PATCH",
-        "contract_kind": "R06_PATCH",
-        "actor": "TOOL",
+        "id": "R07_SEMANTIC@n11",
+        "stage_kind": "R07_SEMANTIC",
+        "contract_kind": "R07_SEMANTIC",
+        "actor": "AI",
         "depends_on": [
-          "R05_APPROVAL@n11"
+          "R07_VERIFY@n11"
         ],
-        "required": [],
+        "required": [
+          "symptom_resolution",
+          "regression_review",
+          "protected_scope_review",
+          "unknowns"
+        ],
         "block": "n11",
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "pre-design",
+        "phase": "post-implementation",
         "priority": 0,
         "source_refs": [
           "src/data/textbook/math/numbers/n11Authored.json",
@@ -53,17 +58,32 @@
         ],
         "approval_scope_ref": "proposal",
         "capability_requests": [
-          "ir.compile"
+          "source.audit",
+          "novice.audit"
         ],
         "required_code_receipts": [
-          "ir.compile"
+          "source.audit",
+          "novice.audit"
         ],
-        "required_ai_receipts": []
+        "required_ai_receipts": [
+          "meaning-review"
+        ],
+        "team_requirements": [
+          {
+            "claimRef": "implemented-visible",
+            "facet": "render",
+            "firstPass": true,
+            "independent": true,
+            "reviewKind": "learner-visible-review",
+            "sourceFirst": true,
+            "stage_kind": "R07_SEMANTIC"
+          }
+        ]
       },
-      "task_id": "21149aec414df6b1bef43cefb623bdf64f6da85622c1e0b7578c096e4be3082d",
-      "input_hash": "1b8f93b13100d849db4d85e4a26a8a76fc6608abb9a97fcb68b4117c5a8ed8e6",
+      "task_id": "fb5b50130a31e79246950317e36b8b1d2ef8489e91120618c7cb0107ff95d0e5",
+      "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
+      "candidate_sha": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
       "rules": {
         "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
@@ -111,11 +131,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
       },
       "previous_results": {
-        "R05_APPROVAL@n11": {
-          "actor": "user-record/conversation_transcribed",
-          "artifact": "1863f03d597dc727d9ed5da5db3cdd675872261b458f9728f0601b792a7c3d3d",
-          "input_hash": "f2eb583565130a301f90d270aa0fa1f657c050f644615dfdc935217ef1dd0852",
-          "node": "R05_APPROVAL@n11",
+        "R07_VERIFY@n11": {
+          "actor": "capability-runner",
+          "artifact": "285f53d83ebb664e8a0732979dda03df3ce5438083929fa5a3404b8b10bdff7b",
+          "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+          "node": "R07_VERIFY@n11",
           "verdict": "PASS"
         }
       },
@@ -599,7 +619,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_VERIFY@n11",
@@ -656,7 +676,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n11",
@@ -1910,9 +1930,9 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "id": "W-MATH-047",
+      "work": "W-MATH-047",
+      "version": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1920,6 +1940,20 @@
       "id": "W-MATH-037",
       "work": "W-MATH-037",
       "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-038",
+      "work": "W-MATH-038",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1938,20 +1972,6 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-047",
-      "work": "W-MATH-047",
-      "version": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-038",
-      "work": "W-MATH-038",
-      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "n08-workflow-trial-20261026",
       "kind": "correction",
       "quote": "一旦試しに不等式N08の修正をやってみよう",
@@ -1961,7 +1981,9 @@
       "origin": "request-intake"
     }
   ],
-  "child_works": [],
+  "child_works": [
+    "W-TECH-048"
+  ],
   "capability_receipts": [
     {
       "input_hash": "105ec0394a5d3e7c1bf1d09618c3c5d31ff416ec479e560cd328d9d88974ee3a",
@@ -2552,6 +2574,521 @@
       "input_hash": "29695178e50cc492589bb2dbabcca01b8081d532f93a6cc72471584265920d41",
       "node": "R04_PROPOSAL@n12",
       "receipt": "4061d88d6190f8176647e2e0ddeb84f7e87ea64961728256ee773cc3e90f12e9"
+    },
+    {
+      "input_hash": "3a347e44e391e6f3c2cbe6f49c49e0b60f47329809d3b4c84c2339253d2a8836",
+      "node": "R01_CAPTURE@n11",
+      "receipt": "4fc72ba02393d302b44a5b8a16d8ed8fded91ca256a75c2a321c17000f020aa3"
+    },
+    {
+      "input_hash": "3a347e44e391e6f3c2cbe6f49c49e0b60f47329809d3b4c84c2339253d2a8836",
+      "node": "R01_CAPTURE@n11",
+      "receipt": "706ebc165716e915d96d584d89cfcf2fbf5d239475b00706b297c66745d498a1"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "69a0f8d680d3e6a70ea3ec54f6da01ba691d1db452f16626bcd2014e3d30bf3a"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "8982f31868a31b9268365455c582ae5daebecede46f5863161ded7b197335a7b"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "5716164b2623e9c76e9eda003fa46ea95513b8d62312e4c56b23386f67edd213"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "a88faa01cc361637f4f89738fc86b27c092a110566acd597655d2fba25173123"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "59939891128ed435fa5d15ea9c9cecf9f2113e70cb60d50ac55927456fd0d3b4"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "07eced6960bef083ffcb7822d03646c540f84d9592706b124868bfa6c4d5e1d8"
+    },
+    {
+      "input_hash": "3a0523458ec83e399fa990511599bd6a631abb355dcd84e5c958163f05e124d9",
+      "node": "R02_CAUSE@n11",
+      "receipt": "6c6e957bed2449d4fa73d5aea948195df7d85a87902825b1e9998aaae6e88445"
+    },
+    {
+      "input_hash": "6d1eab9e1f07f1f92930333be529aaf18f80097101e22225dddb71b0e47e199e",
+      "node": "R03_IMPACT@n11",
+      "receipt": "0eac3ee0359654ebf33f2157589bff872a8f3d431bce0593a2bcb647263c8460"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "1f50336ae36f14c11cff358e44524d6c1942f14c7067045e3ebcd644722e1f50"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "c44b2d659e781641b92bd2ccaf01e454a9cd1e6ee2497bbbe3cb60aebc331b15"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "c99568ebc9bfd40ba79c72468469a124651060e2371638ff3173081816673c2e"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "b0ab49cc94591c67c11b972c401697c611eb3aaec3721fa6f98a89c0929fa7c5"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "99d29fb81a615b9c950b45613610c632b2b262a934a0d1ae7db03d10b65c22cd"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "c2f8ffe22eb7f7ccd50f3d00c0ac29b008c51b4019aca716fed266defa12db56"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "1f1cdb03c4432ddd0c92566659699060fbe95bdbff504c4f94cf7a5d8ddb79c5"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "5f4524a90c5014ec49d594310d7540ff770d49d9c22235207172f9f730c6701e"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "78e989ad628df804c3838aebc3cb9283bd233ca747e7c12e56f9798e2d0b7304"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "9ce8f519cbed51d8ab2453ddc5e513b17db7c86d5f6c06bccc52a1c93119fb83"
+    },
+    {
+      "input_hash": "817c37cfd941c3dbe4c2480154083e0b7b9689ccbe0848c92c2dc66933baea1f",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "6c3ac1920d26641f6234d5f95bd127fe7ef56be48809863691bc5d1ddf1c1be0"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "38b892791d9f83d4f9052fc8a2134e372aec18983fe7e40c0313f5d3d1e2ef11"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "68ddc3e8dac7f5baf22db10ac2dfad7aeb52d88457ae3d0dc849830413e86d3c"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "6059b5022366a6ee81dffd9ebc4692de8c1c49bbbba8b7be94d6cb262069ea63"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "69dbe1aa3fb373e929e26b4686d7310975067f072e644dc546e8b5f8ebadc4a6"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "7f6a879e2ad5542166a8497e975a3aab5bb77fb44bdc88eefac6716bd5fddd5d"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "1d7d19507a3860109395af782e264cabedfc7e3815a2e001ddcfb9cd0d2d7f42"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "6d23e067062a4983a148b737e3eb59d13d7302db925636384f45cd6afacc69a4"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "73ab49b95201c91669dca09920bac47f7a316f13c52de248e8228160d07e77e4"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "f17a8051eb4113dd3c343dece1511f3a6cc8fe4d2acf4ec55a959b2279fbabe3"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "2d2ef1df367ef90e54945389042a9984f9cb61f8a54ac8d986c5cb0e02f22949"
+    },
+    {
+      "input_hash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "1cd3137735e9e52795eb341f59a4a4492756995a1ebdc7c96f9e0461b9dd6063"
+    },
+    {
+      "input_hash": "032f6d701db9f8c3c1f98e2af411124157a96e08831c57039c6da83e783dd9f9",
+      "node": "R01_CAPTURE@n12",
+      "receipt": "8b545ce9476733bfb539a526614cff971fae3549d5f9b45913e3fd44aa976568"
+    },
+    {
+      "input_hash": "032f6d701db9f8c3c1f98e2af411124157a96e08831c57039c6da83e783dd9f9",
+      "node": "R01_CAPTURE@n12",
+      "receipt": "fab50d193d5faa40f5ca231f924a0d66201a475f103d771867d1b37c69740950"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "c1b92d4d9144a3c97ae212bbd848997a37f283fa821686317545ada3662ad1ef"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "ca6073d85446a0fa024484a9a6cb92f3929a5babea2ccc3778b1a9109e2777a0"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "3c73787c13bdb8f3393230ef6b2ee420b2075b9ef5faf81e6c2f0e091a48b22d"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "c5cd8854d0abffbc9ce3f89204e9f40a41bb632722b9abc9d81e599470d53cbf"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "c10649ae7f6d0efef5e81f34c6743751ae88316700038d2eb877ae5aba7bd8b9"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "7a36a87cba536af1bfc5be1e56042102c8ec265c99680953381a616dd12f5681"
+    },
+    {
+      "input_hash": "ab61cdc0e2636d5d8a4011672719b1630f56e0c7eac18911cfc3a53cbf4dc6aa",
+      "node": "R02_CAUSE@n12",
+      "receipt": "73412fbfd740c0f74efbec080e14498e98610fb1adc699a31daf1165ecd06eea"
+    },
+    {
+      "input_hash": "5bec85b86c41b3d0f90b3e58865ca913bc6baed019a5fa242346f8a64880517a",
+      "node": "R03_IMPACT@n12",
+      "receipt": "d744c17f4d41a927c18e529d7bb577fb95407f2c543d6b030b5697970dde00ed"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "96c5144227b4e64087ab0c2c6453874fe360c53ad4a8a1303c1690d40850acb7"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "cce0d4f622a3c289fbfca5baff41c2d6e3027dbc79ea658b14f5be2074adddb8"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "2edd6ead249cc07fa6b18ce6b5ea1d93c9c80fe25ac1f40c8f456b15da225a55"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "ae5f7e055be929c17c94357c5322d1d6eaac639c1d25d7874d5417dd3a024aba"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "3daa74d1fba3d0d6f0c471ee71594fda7e9c8339d846e817935aab58c024b6e2"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "501a1d348cf1a3a35e4a87ae41fe1f6bc2659d85769591313fe044e79e72be06"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "ce9952ce24eb65fcb18d41e250011954a7f128a33dc1bff793b8c4f758dfa999"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "f65c9b7d9f984e8204d437e71d52cef526aa5652db330fe89add6faaa6960d96"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "c4594d124830b479adef5331f1a5c4ab0886eeb8f3efd750041f80e3888ad036"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "911949e7eb16d2667762b9dcf265519d5eeea1680d4cf2903bc1c403fd920ead"
+    },
+    {
+      "input_hash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "8848a07f9c1e4f51f84c63f49f8b6322fed450de83ca520f22e9f0d75e9ed034"
+    },
+    {
+      "input_hash": "93c4ddd4889bb5b2fa405b340ecbb6092974372b349bf54e15616682c8da3552",
+      "node": "R06_PATCH@n11",
+      "receipt": "5506138d38911719bc4c4b7177a1f9b4d906c727cd6a0d25da9eb18b69b0f450"
+    },
+    {
+      "input_hash": "a04d5c9ea75b7e06d4d941a69f963e0efa1f0984c80238f5b35bc22c038c1658",
+      "node": "R01_CAPTURE@n11",
+      "receipt": "fe69b0ac160673d69776911f5580c33647d779ac7b553625b6cb304fcf14a8b2"
+    },
+    {
+      "input_hash": "a04d5c9ea75b7e06d4d941a69f963e0efa1f0984c80238f5b35bc22c038c1658",
+      "node": "R01_CAPTURE@n11",
+      "receipt": "f20e02683a50dce6ac11a674a46e5b3af7d3eb75654f31065b97bbda7aad421b"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "291d0614c80f0f73945d8af0312f4701c1a70ad0a8e1923fcc7d8881d7f44ef5"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "02c2198ba78014fbec6a48e1b1a5b2c3fddf2514f3952a0c37fdc623782dc5bc"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "d8613491de1abda4c0cb7cdf0e29beae0acdc7ab0a9fd7e42013ee77380afb6f"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "15768ca097c2af10fb87b4db6bb1247ef2d7306db9ddccaba0c8120e98e3729b"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "fb6b0ec31f31c002eda550ab33d7a62bbf5340db103b53d4f63eba6f63f15dff"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "93f2cbc5ccf82b0008ad2d2f61b2d637d2bee0bdb8dcc1588220c146ec321a9a"
+    },
+    {
+      "input_hash": "83893750902a0612cdc055f150020e8c46c0c19fd0d24be04d6d61c67ce9c8bb",
+      "node": "R02_CAUSE@n11",
+      "receipt": "8d9846a33ebfdbbeda4b91bfad2ed8a6adf50bd20481702bbff1f116caf8d275"
+    },
+    {
+      "input_hash": "d42c8f56534bf1b4bd80ab7b7bbcf1d8da5bb2590f366f0668af89d2e3bbca44",
+      "node": "R03_IMPACT@n11",
+      "receipt": "919d21658e93011c9ae526a4b8eb9fd529066023539db52e4e641b1259178a0a"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "5790fe4274165b2c61d7444c5b3c0f2f7403ae18a8bccdd1a5973ab6e0a56139"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "57e97bff6f2b438a1c69984a00287ba14f7dc8832394cda08fd6f536a0ffd0f1"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "e05a2b4b4682edabdc0b54ea01033b18492f750cb6c2526e4d1c83f93658c7fd"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "43eaf15cd6dcaa9d227ea29100169e4b5a40f6e3ff2e75b49c9d149377f226e6"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "85f7898039cd0ddb241a21f9b65d948ff92cc19352fe3cf464434147e22babb4"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "927c9a99be92d405933de405a9a65b335c3a4b448c39b2087380c1ae0a99c43f"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "16ca2123c370c0bffdf70c192f81b9346a6dddca5d857e2335c329a09f952f6a"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "8dc3167d8e96a456e880bb529f6be3c82bbf9c8c29bdc742bccded28fda9a4a0"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "61e14f8564538bc3fbb1b639257f698e5eafa4c8e865eb50443b606a9fa761af"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "9a9b7d800b4b1e8c93479c4fb9aa308b989afa94f6ac07298b99514e6d6f265f"
+    },
+    {
+      "input_hash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+      "node": "R04_PROPOSAL@n11",
+      "receipt": "202d94a7fa0b364788de26b0a9c363b39e5caf7d9d7ca75601d181f26c1dcafb"
+    },
+    {
+      "input_hash": "9c8493a74820a33fd0b2d9f82264834665955848506c2bacf16e619c6027cb0d",
+      "node": "R01_CAPTURE@n12",
+      "receipt": "f65d3eb1708e838fae39c6fb3d0bca7d35155ff3202548e5915ba9fef35b5ee9"
+    },
+    {
+      "input_hash": "9c8493a74820a33fd0b2d9f82264834665955848506c2bacf16e619c6027cb0d",
+      "node": "R01_CAPTURE@n12",
+      "receipt": "cccdc5f93e48acf3b433974dbab6ce8330971af130219c862075c314d859f799"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "c9ca792b3591613e2b0b66d6858b38bf2e6fb29a710b8878be5f4b5464f265bf"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "98f5e5116cb10d703d848e9e5d2ce3204d98bc71b9abc660e454a836cd459e87"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "d7ce84536fc28c93fbcbc862f703e4a09c4a8173be973197284ab37a877f8879"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "1b342f827fa88dc20f4b2127adf01cdd1589b619715e8cfbb3a840f659494d19"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "6c85ea430e18d67e98c56e9885d5aba33985d92277fd866f61354b3a490135d0"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "acf894aef8e8cb6e6b034cd0d7dceae2eb0e0ed4820dbd39d0e0ae0f45644cbe"
+    },
+    {
+      "input_hash": "a367b597c848d9295423962ed412016e3b0fa467dbc94f4be44ce04ea2b6d79f",
+      "node": "R02_CAUSE@n12",
+      "receipt": "ff003d9da6e7afb805ad6ed0034e0d58c5633a982f0c41a793fd7a5d4b11f74c"
+    },
+    {
+      "input_hash": "b172f8dbed1add9fea9235f6ee9ff1e7641fd95cdd09027574a62bb1a97f54e2",
+      "node": "R03_IMPACT@n12",
+      "receipt": "69585a38c5815007e69a953ff4fa6a4f7f5eac59f9928be5c567aaccd7254995"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "28d43647c664fab193f4e5f6fcaab6c399e934d86d763cb324b3f5252c9707eb"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "1079d1985399d493288cb46ffbd52e37f229a3025746ec27c62bd37b97462387"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "ff6ded09b4abc1cd6f6ff10673d90c51a124d48b5c894db16b39fbfb6116b38d"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "8b16f6a3cec319484c78a919581fec0a6a8189133d978e521d2563ff6dfb71a4"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "deee4c71f68630f788bb93d87794aa05744e048c1c274045207924515edfdfd5"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "46ec5bfbd065e894857d2cfa9c29852d3fada3189c260ef16fa436140b41d567"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "39e578657948fcc22f932de8137fafd07846d0815014a8bcaa82afecd3f7727d"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "fb0e049b868ad9622a7e4a339b98db115ee20d296f515d0ed966d3b2c6981c02"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "829ec24dca28171808f238be62797e3f7ec6ff22bb3457929d90543568ad9c81"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "190c0def856ca9b2747e81c9183ea22f5224a256bcf57daf3896826e9cb32b03"
+    },
+    {
+      "input_hash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+      "node": "R04_PROPOSAL@n12",
+      "receipt": "2a3cc8cda944593741216d8b9feba4cfd053fec65803401ba9fbf2871fce9fa8"
+    },
+    {
+      "input_hash": "4beac115426d980af8051af04cafc6caf112fccb84ebbd16f21b34e8ac1c2d8e",
+      "node": "R06_PATCH@n11",
+      "receipt": "ea38bbc90abbe82a68b0de638fb4ee8898a5a308863ea8bf9b9fe7421d568916"
+    },
+    {
+      "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+      "node": "R07_VERIFY@n11",
+      "receipt": "289f06bb62f9485fb3e00f39cba72a0812d7f2412c2ce132fab76f4a18bb4ea7"
+    },
+    {
+      "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+      "node": "R07_VERIFY@n11",
+      "receipt": "bd4f54cb264297d5804b252a4e3f4318102b76e064f825167cd53ea5cc874fa4"
+    },
+    {
+      "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+      "node": "R07_VERIFY@n11",
+      "receipt": "c5ac9616996712ebefbd805b5835565fdd7dd240f6fc9bf56ebc0134eb904f09"
+    },
+    {
+      "input_hash": "1d5a7392ccbac53a10a268b05f43014e6194d79360de17ea10a77b07b48024c7",
+      "node": "R07_VERIFY@n11",
+      "receipt": "76abad1db1f09e2dce41826f2f5b5ce9742faaffd6825e77436878dc68e325af"
+    },
+    {
+      "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "d7297957474a638cbad41195f3af5e652d9c73e22adeedef1ac3128813153c5a"
+    },
+    {
+      "input_hash": "34e505fa9a645c62256a31bd2859b7d610a8d861d8eb4c7963c0a7155845aece",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "8a591ffe1c588798871edf6f85695636807fa07d64d6275b859a47deaadbccc1"
     }
   ],
   "release_acceptance": {
@@ -2800,6 +3337,62 @@
       },
       {
         "affectedRefs": [
+          "n11-07",
+          "n11-10"
+        ],
+        "block": "n11",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "8afa0bda-d881-449a-b214-73bb63ddd126",
+          "8b39d8bb-8f9e-4c77-8315-55acbf196710",
+          "3984adeb-5cff-41cc-ade4-56972c78f54c",
+          "cb06c072-e9d5-4aa2-b739-ccb4c587f332",
+          "3ebd7d66-74d1-4e3b-a3ca-4d02640c0601",
+          "b27f6aaf-43d3-4562-a2a0-072466234e41",
+          "679eccff-c3e1-48a2-8a40-bf87fb75fb32"
+        ],
+        "facet": "design",
+        "findingId": "D04",
+        "inputHash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "6bb5fbb6b95e9b5ccd689fb23a7d5a2bbd1666cb446b732c6d0fb473e3273d55",
+        "resolvesOutputRef": "fb6ae5e228e4fcc3c4da4595541a6b8b5ae0b10aa5195210f679cdc90db5bb09",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "ee58521eb4cc6cabf688e3e1caf794c7fefd0928d0e58b9afef5dc2d81753eaa"
+      },
+      {
+        "affectedRefs": [
+          "n11-07",
+          "n11-10"
+        ],
+        "block": "n11",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "3888c8a3-f2f4-4bc8-95d2-27211850162f",
+          "76145de0-c567-4a92-b99a-614189f3b0d3",
+          "227c2896-52bd-488b-97f9-a4572d721401",
+          "c7ced789-b445-4282-86fd-5d6b9773bcf0",
+          "91f9d513-52b0-48a9-8d3e-ffdb33e2fd0a",
+          "997d719b-7577-4eea-8d7c-d1ee052b1324",
+          "55858788-8592-49fc-b832-65f3f14b9c7a"
+        ],
+        "facet": "design",
+        "findingId": "D04",
+        "inputHash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原文p495は元式への代入関係を根拠に境界を含むか答える課題、p501も含有と理由の判断課題。候補は既習計算で得た5<5/5≤5を提示するが、baselineの「成り立ちません」「成り立ちます」を除去。学習者が関係の真偽と境界含有を対応させる操作を残す。解決後に理由付き結論を示し、F02はn11-10解決後なので未回答判断を図で先出ししない。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "026d0954df3f5c2007a47861d8d355c090e8f02102e3f8e1006585d88fff8edd",
+        "resolvesOutputRef": "fb6ae5e228e4fcc3c4da4595541a6b8b5ae0b10aa5195210f679cdc90db5bb09",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "b1c740fa8c51144dc074a05f2d7b6c0c16a798faa16579d403a6449dfe5cb2f9"
+      },
+      {
+        "affectedRefs": [
           "n11-fraction-problem",
           "n11-p008-q13-mul-left",
           "n11-p008-q13-mul-right"
@@ -2971,6 +3564,64 @@
       },
       {
         "affectedRefs": [
+          "n11-fraction-problem",
+          "n11-p008-q13-mul-left",
+          "n11-p008-q13-mul-right"
+        ],
+        "block": "n11",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "8afa0bda-d881-449a-b214-73bb63ddd126",
+          "8b39d8bb-8f9e-4c77-8315-55acbf196710",
+          "3984adeb-5cff-41cc-ade4-56972c78f54c",
+          "cb06c072-e9d5-4aa2-b739-ccb4c587f332",
+          "3ebd7d66-74d1-4e3b-a3ca-4d02640c0601",
+          "b27f6aaf-43d3-4562-a2a0-072466234e41",
+          "679eccff-c3e1-48a2-8a40-bf87fb75fb32"
+        ],
+        "facet": "design",
+        "findingId": "D05",
+        "inputHash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "7f2d7994ddd74dced038c5c317698bca93aa6b8a1fb36def9cd0b5713430bced",
+        "resolvesOutputRef": "fb6ae5e228e4fcc3c4da4595541a6b8b5ae0b10aa5195210f679cdc90db5bb09",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "ee58521eb4cc6cabf688e3e1caf794c7fefd0928d0e58b9afef5dc2d81753eaa"
+      },
+      {
+        "affectedRefs": [
+          "n11-fraction-problem",
+          "n11-p008-q13-mul-left",
+          "n11-p008-q13-mul-right"
+        ],
+        "block": "n11",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "3888c8a3-f2f4-4bc8-95d2-27211850162f",
+          "76145de0-c567-4a92-b99a-614189f3b0d3",
+          "227c2896-52bd-488b-97f9-a4572d721401",
+          "c7ced789-b445-4282-86fd-5d6b9773bcf0",
+          "91f9d513-52b0-48a9-8d3e-ffdb33e2fd0a",
+          "997d719b-7577-4eea-8d7c-d1ee052b1324",
+          "55858788-8592-49fc-b832-65f3f14b9c7a"
+        ],
+        "facet": "design",
+        "findingId": "D05",
+        "inputHash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原文p511は分母をなくす操作を選び直後の不等式を書く課題。候補問題導入は「両辺に同じ数を掛ける」まで教え、baselineの「両辺を3倍」を削除。左nodeで分母を打ち消す乗数3を選び、解決後その同じ3を右辺の和全体へ適用する。右nodeの左辺結果は既解決情報であり先代行ではない。原文p509「確認」に対する呼称も「次の不等式」で整合。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "ff9cdefab7501ff9bcf79e1435a6d44a41ad9ae33d259705fae963b25ae4a282",
+        "resolvesOutputRef": "fb6ae5e228e4fcc3c4da4595541a6b8b5ae0b10aa5195210f679cdc90db5bb09",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "b1c740fa8c51144dc074a05f2d7b6c0c16a798faa16579d403a6449dfe5cb2f9"
+      },
+      {
+        "affectedRefs": [
           "n11-fraction-problem"
         ],
         "block": "n11",
@@ -3131,6 +3782,60 @@
       },
       {
         "affectedRefs": [
+          "n11-fraction-problem"
+        ],
+        "block": "n11",
+        "claimRef": "layout",
+        "evidenceRefs": [
+          "8afa0bda-d881-449a-b214-73bb63ddd126",
+          "8b39d8bb-8f9e-4c77-8315-55acbf196710",
+          "3984adeb-5cff-41cc-ade4-56972c78f54c",
+          "cb06c072-e9d5-4aa2-b739-ccb4c587f332",
+          "3ebd7d66-74d1-4e3b-a3ca-4d02640c0601",
+          "b27f6aaf-43d3-4562-a2a0-072466234e41",
+          "679eccff-c3e1-48a2-8a40-bf87fb75fb32"
+        ],
+        "facet": "render",
+        "findingId": "N11-R2-L07",
+        "inputHash": "3a57d327ef798e0c0bf82f244a1fb9682bdfbf8bc78c81ffd4dc1bba440cb4d9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原問word-p-000509は「確認」、word-p-000510は分数不等式を解く設問。候補n11-fraction-problemはrole=check、goal=「分数の確認問題を提示」を維持し、beforeは「次の不等式…です。分母をなくす操作を考えます」と接続する。既存readerはcheckを「学んだことを使う」と表示するため、例題・導出・定義への誤分類はない。候補本文もこの確認問題を例題とは呼ばず、未解決の呼称・設問区分の不一致は認めない。分母を打ち消す数は次の設問に残される。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "80a742bfee9824d39c59149c77ff3f459d7ebc3441ea22fa015e57080ab8d976",
+        "resolvesOutputRef": "6980118793c440274b850970bde0f1caa36fb3063ecf689118657da80dbe13ed",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "0eb1dec941724b533a187fbd4df3ac7db704a574f2f1a0377d138a2e25aa5844"
+      },
+      {
+        "affectedRefs": [
+          "n11-fraction-problem"
+        ],
+        "block": "n11",
+        "claimRef": "layout",
+        "evidenceRefs": [
+          "3888c8a3-f2f4-4bc8-95d2-27211850162f",
+          "76145de0-c567-4a92-b99a-614189f3b0d3",
+          "227c2896-52bd-488b-97f9-a4572d721401",
+          "c7ced789-b445-4282-86fd-5d6b9773bcf0",
+          "91f9d513-52b0-48a9-8d3e-ffdb33e2fd0a",
+          "997d719b-7577-4eea-8d7c-d1ee052b1324",
+          "55858788-8592-49fc-b832-65f3f14b9c7a"
+        ],
+        "facet": "render",
+        "findingId": "N11-R2-L07",
+        "inputHash": "253ee5ad7169361048b26061e229017a458b754e39829b47a0a6442aa2bc37f9",
+        "node": "R04_PROPOSAL@n11",
+        "reason": "原問word-p-000509は「確認」、word-p-000510は分数不等式を解く設問。候補n11-fraction-problemはrole=check、goal=「分数の確認問題を提示」を維持し、beforeは「次の不等式…です。分母をなくす操作を考えます」と接続する。既存readerはcheckを「学んだことを使う」と表示するため、例題・導出・定義への誤分類はない。候補本文もこの確認問題を例題とは呼ばず、未解決の呼称・設問区分の不一致は認めない。分母を打ち消す数は次の設問に残される。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "c9fc860641792caa9e2bda54709e8fe25a8e9ec6af9cbe1a641e2f994cf21be6",
+        "resolvesOutputRef": "6980118793c440274b850970bde0f1caa36fb3063ecf689118657da80dbe13ed",
+        "sourceQuote": null,
+        "visibleQuote": null,
+        "outputRef": "7316cb43246f82341d08d763d0137a50fb7ec1ef6308ad5eaeeeaa6bb291d128"
+      },
+      {
+        "affectedRefs": [
           "n12-q04-left-end",
           "n12-04"
         ],
@@ -3182,6 +3887,62 @@
         "sourceQuote": "word-p-000526: 二本の範囲からどこを残すか判断し、端点の扱いも含めて一つの不等式にしよう。",
         "visibleQuote": "n12-q04-left-end before: 左端-7/2が第一の条件を満たすかを調べ、左端側の記号を選びます。／n12-04 before: 左端側の記号は決まりました。右端1/2が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
         "outputRef": "1271a4c86881c31bbff9d3bb904979bc97c704530dae68ffc1a8db9495e54ea6"
+      },
+      {
+        "affectedRefs": [
+          "n12-q04-left-end",
+          "n12-04"
+        ],
+        "block": "n12",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "dc2cd3e8-f401-4efb-9759-371c35c20ffa",
+          "e29b4c00-18be-4ebb-8a0d-14c09444540c",
+          "c6f3c890-11a8-45a5-94f5-afdb37b1de74",
+          "6fa0dedb-53d9-4a0b-9485-0fa8db8ea9fb",
+          "3ce681fb-f464-4d92-8d98-dcc84f4c557d",
+          "e839d0ba-0edc-4a13-b31b-98f938f383e9",
+          "52db1a7e-801e-4140-8bcc-c7ee3e623d12"
+        ],
+        "facet": "design",
+        "findingId": "N12-D04",
+        "inputHash": "dc5ed7e138604d3832f68e4124bd265f74dd7a51062e20e8dc5801477c39ff13",
+        "node": "R04_PROPOSAL@n12",
+        "reason": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "01fb6e4e8d7a0ef2794d5540c3a990ad37d79e31df55ea918456efdd2e3747b7",
+        "resolvesOutputRef": "ec4a171267aa70378a2a03d21e6245fecb63857e26dc467d9ece8f35380bb4d6",
+        "sourceQuote": "word-p-000526: 二本の範囲からどこを残すか判断し、端点の扱いも含めて一つの不等式にしよう。",
+        "visibleQuote": "n12-q04-left-end before: 左端-7/2が第一の条件を満たすかを調べ、左端側の記号を選びます。／n12-04 before: 左端側の記号は決まりました。右端1/2が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
+        "outputRef": "e439f079a877680c550d6212e680f801681455e4f032666fbabd1b2a9588f1d5"
+      },
+      {
+        "affectedRefs": [
+          "n12-q04-left-end",
+          "n12-04"
+        ],
+        "block": "n12",
+        "claimRef": "teaching",
+        "evidenceRefs": [
+          "bf4d8c24-2ab9-4618-8314-aa365ccb49fa",
+          "2eddb399-4a6f-4586-95b9-abd13941017a",
+          "c3a3422c-51d3-4a54-ab9a-a88779661662",
+          "2687f6aa-7ec6-401a-a966-61f7e84f0429",
+          "ee6960ce-4cf4-43c0-9015-6c77caeeafa4",
+          "10e8623b-98c0-4c71-a0b0-7d06f82871e1",
+          "feb45c01-08af-485b-bcbd-31b1e8931025"
+        ],
+        "facet": "design",
+        "findingId": "N12-D04",
+        "inputHash": "1cc0152494587eda24d81636719663b6ffb1ed07e55e4c30dfe05c2374f75cef",
+        "node": "R04_PROPOSAL@n12",
+        "reason": "回答前の左端不充足・右端充足の断定を除去し、左端の条件評価、確定結果の利用、右端の二条件評価、共通範囲の式化を学習者に戻している。左端の理由は左端nodeのafterへ、両端の理由は範囲回答後のafterへ移っており、compiledにも同じ順序で残る。先行q03のafterは一般的な共通部分の方針までで、この二端点の答えを先出ししない。",
+        "resolution": "VERIFIED_FIXED",
+        "resolutionEvidenceRef": "44744e6025f2dc769d97cf4f6fa71b31ef0b5fdd4f4bf56f9ac1dc4e644568eb",
+        "resolvesOutputRef": "ec4a171267aa70378a2a03d21e6245fecb63857e26dc467d9ece8f35380bb4d6",
+        "sourceQuote": "word-p-000526: 二本の範囲からどこを残すか判断し、端点の扱いも含めて一つの不等式にしよう。",
+        "visibleQuote": "n12-q04-left-end before: 左端-7/2が第一の条件を満たすかを調べ、左端側の記号を選びます。／n12-04 before: 左端側の記号は決まりました。右端1/2が元の二条件を満たすかを確かめ、重なる範囲を一つの不等式にまとめます。",
+        "outputRef": "6c70b33e65a4d7fb5689f614bef595572135b06b2ac72c3231b3c4234519fb4b"
       }
     ],
     "tasks": [
@@ -3540,6 +4301,158 @@
         ],
         "packetHash": "1076d7443d6b8eec5c778796efb8c66f32f74cdee147801a791461284fb92452",
         "assignmentHash": "3a7601e2ea1b9d966f65f29101c28d2389e879e4d6bd2055cc32818c0bc033d7",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "8cca2eadbd03465b90664dffd8859f94d3b0e203aa7d5b37cc6bb182adb9ece2",
+        "assignmentId": "w047-n11-design-fresh-e370d18b-3a57d327-w047_review_layout-native-rebind",
+        "node": "R04_PROPOSAL@n11",
+        "performerRef": "/root/w047_review_layout",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "design",
+        "claimRefs": [
+          "teaching"
+        ],
+        "packetHash": "3e0a224bbd32fe9c3e3a9db9da1e839ab82126808128574af2fc14cc6b304f92",
+        "assignmentHash": "2063b49c8d6126375b1126bbc0de4040f7b911a6c631bc432127b6a2eb180b7a",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "55f0706ee11d4172e6abda60a5eb6f22f10382ca4aef0e35cad5280be7be1d65",
+        "assignmentId": "w047-n11-render-fresh-e370d18b-3a57d327-w047_layout_sourcefirst-native-rebind",
+        "node": "R04_PROPOSAL@n11",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "A",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "layout"
+        ],
+        "packetHash": "a8aa774b71cbb42c7d82fa20e737f9848395ee58325a6afa504c48fa977b1aec",
+        "assignmentHash": "4983e44d392c5cb3ed2fe81def90a488808705093fbdd31df0735b4b66e9c051",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "f9e7cf0d768852493e44271b2d7967d7cf90c9f66b435421fdac7fb4f04a14cd",
+        "assignmentId": "w047-n12-design-fresh-770b485c-dc5ed7e1-w047_review_design-native-rebind",
+        "node": "R04_PROPOSAL@n12",
+        "performerRef": "/root/w047_review_design",
+        "logicalRole": "A",
+        "role": "reviewer",
+        "facet": "design",
+        "claimRefs": [
+          "teaching"
+        ],
+        "packetHash": "3eea7c76788562be944dd4edbcc5cef07ec8f3580993502286c4a5408ccfb00e",
+        "assignmentHash": "b2ef02e1708a9a0b6f04a758c142113c4ed20893952e1d6bdac0458bf49bb33f",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "9c373c2e0555da9545bd3ee04880dd45a15c25cc6bf2990c0fed5921c1c47d94",
+        "assignmentId": "w047-n12-render-fresh-770b485c-dc5ed7e1-w047_layout_sourcefirst-native-rebind",
+        "node": "R04_PROPOSAL@n12",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "layout"
+        ],
+        "packetHash": "27eca4416bba47cdc81ee8207467706a3a25f731dfa54a61cd19896d8eaecca8",
+        "assignmentHash": "9ee6e498ad15307d9795196ae78ef5d3f005d948f66b93e899fa0ef380e8d91d",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "d2d156bfcbae2743c293b661a64d9664abda9afa555a697336aa980490fea672",
+        "assignmentId": "w047-n11-design-fresh-e370d18b-253ee5ad-w047_review_layout-native-rebind",
+        "node": "R04_PROPOSAL@n11",
+        "performerRef": "/root/w047_review_layout",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "design",
+        "claimRefs": [
+          "teaching"
+        ],
+        "packetHash": "e451f7e4aa95fa6628108a272ffe35328f0fc90d29018f7a5af95ed7a0d4e49e",
+        "assignmentHash": "6d71c51050495032957cf29e6d46d6a89babe34e2757d980717bc500a6740eb9",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "c9e5f966874cff4c58bbcf72701fcae3198ff9300bc71b662b34c4822ee2e533",
+        "assignmentId": "w047-n11-render-fresh-e370d18b-253ee5ad-w047_layout_sourcefirst-native-rebind",
+        "node": "R04_PROPOSAL@n11",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "A",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "layout"
+        ],
+        "packetHash": "bddbe439c4f152bd8b9388368a920bf689e375b91eaa39172f8750cb790f15bb",
+        "assignmentHash": "de48c9dd70e8ddaa67e559a541d97be1575577821318cf4a6e046d2527b5d757",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "fb37d6b9184dbd4419d5332a802fc71a72a13787efdd2f878158648e81fecd99",
+        "assignmentId": "w047-n12-design-fresh-770b485c-1cc01524-w047_review_design-native-rebind",
+        "node": "R04_PROPOSAL@n12",
+        "performerRef": "/root/w047_review_design",
+        "logicalRole": "A",
+        "role": "reviewer",
+        "facet": "design",
+        "claimRefs": [
+          "teaching"
+        ],
+        "packetHash": "e86dbfd9e72403e533ea2e38872609cffa76de226b51ac457d0a2cc1d638559e",
+        "assignmentHash": "eae779d35cdf413a8db849ab7ef58ba0f925cf51eebf9e1623a16bad2b6f29bd",
+        "contextExposure": {
+          "authorRationaleVisibleAtFirstPass": false,
+          "forkMode": "filtered"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "registrationRef": "8c75e35d4bd0155b560508beaf0bfa063c32d323ba31b26169c65610ed8caa2a",
+        "assignmentId": "w047-n12-render-fresh-770b485c-1cc01524-w047_layout_sourcefirst-native-rebind",
+        "node": "R04_PROPOSAL@n12",
+        "performerRef": "/root/w047_layout_sourcefirst",
+        "logicalRole": "B",
+        "role": "reviewer",
+        "facet": "render",
+        "claimRefs": [
+          "layout"
+        ],
+        "packetHash": "bddb1a62524c196f2817604a2f88fe1efe1e4564a616682f235f5d8bdd9719cf",
+        "assignmentHash": "d77e429112fc3a55b02ba18f177b11695f9fbfffff63c6e27f00251f50917d47",
         "contextExposure": {
           "authorRationaleVisibleAtFirstPass": false,
           "forkMode": "filtered"

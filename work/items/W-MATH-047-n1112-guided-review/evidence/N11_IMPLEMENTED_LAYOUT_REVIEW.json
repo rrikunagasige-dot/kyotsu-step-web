@@ -1,0 +1,92 @@
+{
+  "reviewer": "/root/w047_layout_sourcefirst",
+  "claimRef": "layout",
+  "facet": "render",
+  "sourceSHA": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+  "targetAuthoredHash": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+  "verdict": "PASS",
+  "sourceFirst": true,
+  "firstPass": true,
+  "authorSeparation": true,
+  "blindReview": false,
+  "contextDisclosure": "新実装への初確認。以前の提案審査と工程文脈を知っており盲検ではない。内容作者・実装作者ではない。",
+  "findings": [],
+  "rationale": {
+    "sourceAssessment": "原問の差の符号判断、境界評価、括弧整理、分数確認を再照合。active authoredは審査済み限定生成物に一致し、変更6nodeの本文/補助計算は原問の要求を保つ。確認問題の呼称も整合。",
+    "preservation": "旧W036 Authored比で47node順、14stage、39items全内容、semanticDisplay、式番号map、全block-ID列、revision11は不変。semanticとunit.readingFlowは一致。変更6node以外の41nodeと既存整列後処理を保持。",
+    "w038": "active TransformationのbaseIRHashはactive Authored canonical hashと一致。実validatorでverifyMath:falseのbinding確認PASS。旧W038 compiled比でgroups/interactions/gradingHash/numberAliases/scopeが全一致。数学検証を独立再実行したとは扱わない。",
+    "imageAssessment": [
+      "q11補助計算initial/completeで−17−9=選択→−26の(26)、続くn11-11 initial/completeで主不等式−4x≥−26を(27)として復帰する表示を実見。局所等式と主不等式が混ざらず読める。",
+      "n11-07 initialで5<5という既計算結果を根拠に境界含有を未断定で問う。completeで理由つき不含を示し次へ進める。320/430/1440のstage7にも式・番号・本文が衝突せず配置される。",
+      "390 stage5/6でW038の一続きの変形と補助等式の区別、式番号(16)の保持を実見。",
+      "四幅history全景に前段の記録と全文領域があることを実見。全景縮小表示のため全行の文字可読性の独立確認とはしない。",
+      "代表node-only focus四画像を追加実見。q11constantの本文/−17−9=選択/3選択肢/(26)、完成−17−9=−26、n11-11の全式復帰の問い/4選択肢/(27)、完成−4x≥−26がいずれも遮蔽・数式番号衝突なく読める。固定navの全景撮影上の懸念は代表nodeについて解消。"
+    ],
+    "reportedBrowserVerification": {
+      "sourceSHA": null,
+      "status": "PASS",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ],
+      "eachWidth": {
+        "correctAnswers": 39,
+        "wrongAnswers": 109,
+        "stages": 14,
+        "figures": [
+          "n11-f01",
+          "n11-f02"
+        ],
+        "history": true,
+        "reload": true,
+        "resize": true,
+        "legacyMigrationRevisions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "geometry": "PASS"
+      },
+      "attribution": "browser-n11/REPORT.jsonの既実行結果を読取。レビュー担当がUIを再操作したとの主張ではない。sourceSHA:nullは改変しない。"
+    },
+    "focusedCaptureBinding": "FOCUSED_CAPTURE.jsonはsourceSHA=f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b、390px、03/07/10/q11constant/11/12 initial-choice-open/completedを記録。正式な四幅source固定のbindingは別証拠で扱う。",
+    "workflowCheckpoint": "ローカル実画像と非作者表示報告は保存済みだが、普通教材の正式R07意味審査target bindはCI capture要求により未受理。正式R07_SEMANTIC/G2のPASSやアプリ受入の代用にはしない。CI画像の正規登録後、新targetとの一致を確認して正式非作者審査へ再開する。"
+  },
+  "inspectedImages": [
+    "n11-q11-constant-initial.png",
+    "n11-q11-constant-complete.png",
+    "n11-11-initial.png",
+    "n11-11-complete.png",
+    "n11-07-initial.png",
+    "n11-07-complete.png",
+    "n11-320-stage-7.png",
+    "n11-430-stage-7.png",
+    "n11-1440-stage-7.png",
+    "n11-390-stage-5.png",
+    "n11-390-stage-6.png",
+    "n11-320-history.png",
+    "n11-390-history.png",
+    "n11-430-history.png",
+    "n11-1440-history.png",
+    "n11-q11-constant-focus-initial.png",
+    "n11-q11-constant-focus-complete.png",
+    "n11-11-focus-initial.png",
+    "n11-11-focus-complete.png"
+  ],
+  "limitations": [
+    "長いhistory全景は縮小のため全行の可読性までは独立実見していない。代表q11constant/11はnode-only focus画像で遮蔽なく確認済み。",
+    "保存再読込・全誤答・旧revision移行はREPORTの実操作証拠を確認した。レビュー担当による共有Store操作や実データ書込は行っていない。",
+    "四幅REPORTのsourceSHA欄はnull。依頼で提示された固定sourceとfocused capture sourceを記録したが、別の正式binding証拠を本報告で捏造しない。",
+    "実アプリ本人受入・公開後確認は未実施であり本PASSに含めない。",
+    "正式R07意味審査targetへの登録は未完了。CI capture不在とツール制約により工程上停止しており、偽CI参照・検証器緩和を行わない。"
+  ]
+}

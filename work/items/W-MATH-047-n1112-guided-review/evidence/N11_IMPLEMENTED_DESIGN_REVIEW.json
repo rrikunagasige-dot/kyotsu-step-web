@@ -1,0 +1,107 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "targetSourceSHA": "f04e3d214ce1fd26fd7342a548f7fcd75b29bc0b",
+  "status": "PASS",
+  "reviewType": "実装後 内容・理念 静的非作者監査",
+  "contextDisclosure": [
+    "原Word位置付き抽出を先に読み、次に現src/data/textbook/math/numbers/n11Authored.jsonの全47node before/afterを直接確認した。git HEADは指定sourceSHAと一致。",
+    "初回source先読の履歴は保持するが、提案・工程・T1説明と候補は既知。今回の実装sourceは初めて確認した。新しい盲検ではない。",
+    "過去の自分の所見と、指示により読んだ提案・火柴図内の他報告要約が既知である。"
+  ],
+  "findings": [
+    {
+      "id": "N11-I01",
+      "targetIds": [
+        "n11-03"
+      ],
+      "status": "PASS",
+      "sourceRef": "word-p-000484",
+      "reason": "beforeはc<0、b-a>0、負と正の積という材料まで提示し、差の符号とac/bcの関係を判断させる。afterはac>bcとbc-ac<0の独立二行と負数倍の一般化であり、結論の先出しを解消して導出の根拠を保持。"
+    },
+    {
+      "id": "D04",
+      "targetIds": [
+        "n11-07",
+        "n11-10"
+      ],
+      "status": "VERIFIED_FIXED",
+      "sourceRefs": [
+        "word-p-000495",
+        "word-p-000501"
+      ],
+      "visibleQuote": "この関係が成り立つかを確かめ、境界が解に含まれるかを判断します。／元の不等号に注意して、この境界が条件を満たすかを判断します。",
+      "reason": "先行代入計算のafterは5<5/5≤5の関係を示すまでで、真偽は未確定。実装beforeも成立/不成立を先に判断せず、回答後に理由付き包含結論へ進む。"
+    },
+    {
+      "id": "N11-I02",
+      "targetIds": [
+        "n11-q11-constant",
+        "n11-11"
+      ],
+      "status": "PASS",
+      "sourceRef": "word-p-000507",
+      "reason": "元の-4x+9≥-17と両辺から9を引く説明を残し、局所計算-17-9=[空欄]、回答後-17-9=-26を用いる。次のn11-11で既に得た係数/定数を元式へ戻し-4x≥-26を初めて合成する行為が保持される。"
+    },
+    {
+      "id": "N11-I03",
+      "targetIds": [
+        "n11-12"
+      ],
+      "status": "PASS",
+      "sourceRef": "word-p-000508",
+      "reason": "beforeは未計算の(-26)/(-4)と約分する指示まで。前nodeで確定した≤を用い、商の符号・約分・範囲表現を本人が選んでからafterでx≤13/2を示す。"
+    },
+    {
+      "id": "D05",
+      "targetIds": [
+        "n11-fraction-problem",
+        "n11-p008-q13-mul-left",
+        "n11-p008-q13-mul-right"
+      ],
+      "status": "VERIFIED_FIXED",
+      "sourceRefs": [
+        "word-p-000509",
+        "word-p-000510",
+        "word-p-000511"
+      ],
+      "visibleQuote": "次の不等式(x-2)/3≤2x+1です。分母をなくす操作を考えます。両辺に同じ数を掛けることを使い、分母を打ち消す数を選びましょう。",
+      "reason": "確認問題を例題と呼ばず、未選択の具体操作3倍を先出ししない。次nodeで乗数3を選び、その確定結果を右辺の和全体へ適用する行為を保持。"
+    },
+    {
+      "id": "N11-I04",
+      "targetIds": [
+        "全47node",
+        "全39interaction",
+        "保持41node"
+      ],
+      "status": "PASS",
+      "reason": "旧基準6b439の実authoredと現在の実authoredを直接比較。semanticの変更は承認6nodeだけ、保持41node。nodes全体、全items、stages、semanticDisplay、equationNumbersは同一、revision11を維持。39回答の正答/選択肢等の実採点データを含むitemsが全項目一致し、穴数と導出の経路を保持する。"
+    },
+    {
+      "id": "N11-I05",
+      "targetIds": [
+        "W038第5・6段階"
+      ],
+      "status": "PASS",
+      "reason": "現在n11Transformation.jsonと旧基準のgroups/interactions/gradingHash/numberAliases/scopeは全項目一致。表現bindingの更新によって、定数取消→両辺同操作→整理→係数除算→範囲という承認済み学習行為を変更していない。"
+    },
+    {
+      "id": "N11-I06",
+      "targetIds": [
+        "保持41node"
+      ],
+      "status": "PASS",
+      "reason": "差の正負、加減、正負乗除と0、二つの確認変形、代入、展開、係数/定数整理、分数の分配と最終範囲を全before/afterで再確認。既知結果の再掲と未回答判断を区別し、追加OPENの具体的根拠は見つからなかった。"
+    }
+  ],
+  "rationale": [
+    "原資料の学習行為を承認6箇所の実装で回復し、必要な条件と説明を残して回答後に結論を接続している。実装は固定案を超える教材内容変更を示さない。",
+    "旧基準との直接比較で保持41node・39回答とW038の意味契約を確認したため、指定sourceの内容・理念は静的にPASS。"
+  ],
+  "limitations": [
+    "四幅UIはrootが別途実行中。この報告は実画像の折返し、選択肢配置、式番号衝突、操作感、図の可視タイミングの合格を意味しない。",
+    "正答前後の意味はauthoredのbefore/afterと依存・採点データで確認した。実際のイベント操作、保存復元・旧履歴移行は独立には実行していない。",
+    "Word ZIP/全ページではなく既存の位置付き抽出43blockを用いた。",
+    "共有Store/Git/製品の編集は行わず、指定/tmp原報告だけ保存した。孫agentなし。"
+  ]
+}

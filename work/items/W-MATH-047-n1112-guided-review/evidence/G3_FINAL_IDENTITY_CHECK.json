@@ -1,0 +1,16 @@
+{
+  "status": "PASS_LOCAL_IDENTITY_ONLY",
+  "source_sha": "188476b10ea366c116409fa46677818569da824b",
+  "actualPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualAppSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "actualRunId": 41754189894,
+  "originalMetadataManifestPaths": 73,
+  "requiredAppSourcePaths": 69,
+  "actualPublisherFiles": 4,
+  "exactGitBlobMatch": true,
+  "originalDraftPreserved": true,
+  "finalWorkflowSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96",
+  "actualCI": "PENDING_SEPARATE_EVIDENCE",
+  "publicHost": "UNVERIFIED",
+  "publicationAuthorized": false
+}

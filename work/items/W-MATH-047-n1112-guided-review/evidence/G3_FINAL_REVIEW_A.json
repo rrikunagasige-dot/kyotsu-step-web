@@ -1,0 +1,73 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A理念/承認scope/identity監視",
+  "verdict": "PASS_STATIC_FINAL_EVIDENCE_COMPLETION",
+  "firstPass": false,
+  "authorSeparation": true,
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "originalDraftSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+  "repairSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "finalWorkflowSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96",
+  "scopeAssessment": "既承認4path中同じ外部workflow pathの非公開dry-run検証と証拠採取を完成させる通常修復。今回追加は両jobのupload-artifact pathに生成manifest原bytes3件を含めるだけ。教材/実行手順/権限/環境保護/公開gateは不変で、追加のユーザー承認を人工的に増やす必要はない。main merge/manualfalse/実公開は未承認のまま。",
+  "findings": [
+    {
+      "id": "G3-FINAL-A01",
+      "status": "CONFIRMED",
+      "reason": "58da repair→9b22 finalの構造差分はverify/publish両job最終upload-artifact.with.pathにdist/release.json,dist/w046-release.json,dist/w047-release.jsonを先頭追加しただけ。残る全YAML構造は完全一致。実manifestの原bytesを後で検算可能にする。",
+      "artifactPaths": [
+        "dist/release.json",
+        "dist/w046-release.json",
+        "dist/w047-release.json"
+      ]
+    },
+    {
+      "id": "G3-FINAL-A02",
+      "status": "CONFIRMED_SCOPE",
+      "reason": "verifyはenvironmentなしcontents:read、publishは保護environmentあり/厳密job条件。branchpush/manualtrueでverifyだけ、mainpush/manualfalseでpublishだけという境界は不変。承認済dryRunOnly scopeを公開/merge許可へ広げない。"
+    },
+    {
+      "id": "G3-FINAL-A03",
+      "status": "NATIVE_IDENTITY_MAPPING_CONDITIONALLY_VALID",
+      "reason": "T04はmetadata candidate188の原draft現bytes/73path固定と、承認同scope内で生成した外部publisher出力の検証を複合checkとして扱える。actual CIをkind=ci/head188と誤登録せず、metadata188を検査するcheckの中に生成連鎖/実外部head/run/artifactを明示して照合することが条件。単に別headのCI成功だけをsource188チェックと呼ぶと対象対応が不足する。"
+    },
+    {
+      "id": "G3-FINAL-A04",
+      "status": "CONFIRMED_REGISTERED_REPAIR_EVIDENCE",
+      "reason": "G3_REPAIR_NATIVE_BINDINGの6refsをStore evidenceイベントから読み取り、全てW-TECH-052のfile証拠として実現bytesSHA一致を独立確認。INPUT/APPLIED/両review/失敗/repairYAMLの束縛がある。B報告内容は読まずfilehashのみ照合。最終9b22への補足INPUT/APPLIED/実runも同様に必要。"
+    }
+  ],
+  "identities": {
+    "nativeMetadataCandidate": "188476b10ea366c116409fa46677818569da824b",
+    "appSource": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "initialPublisher": "6808eb07f768b31d9cf493cf9a742a8e8992d0a3",
+    "initialFailedRun": 41718315741,
+    "repairPublisher": "c133d356987cf29c792a8a7d7675294ac614ea45",
+    "repairRun": 41753645581,
+    "repairRunStatus": "親通知ではpublish skipped/verify runner開始。全完了successは今回未確認。",
+    "finalPublisher": "未通知。9b2274…YAMLを実適用したcommitを後で固定。",
+    "finalRun": "未通知。c133runを最終9b22版の実行証拠に転用しない。"
+  },
+  "T04SubmissionConditions": [
+    "原T03は初回6808作成の履歴として保持し、c133/最終版の生成証明へ書き換えない。",
+    "metadata188のsource/candidateManifest73pathと原draftの現byte/旧native integrityを実検査し、そのcheckのsource_shaだけを188にする。actualPublisherSHA/appSourceSHA/実run headは別fieldと原JSONで正確に記載する。",
+    "原57ca→repair58da→final9b22のbefore-after/承認scope/既存2review/実compareを現file evidenceへ追記してfingerprintを維持する。修復ファイルが原candidateManifest内であるかのように偽らない。",
+    "最終9b22 publisherへCAS適用した実commit/compareと、対応CI head/run/結論success、verify実行/publish skipped、delivery6step skippedを確認。必要検査/生成3manifest/全artifact filehashを実downloadした原bytesへ束縛する。",
+    "upload-artifactはrelative distとabsolute tmpを含むためZIP内の実際のpathを列挙して3manifest原bytesを特定し、manifestがrootにあると仮定しない。sourcef129/publisherSHA/contract69hash/units39+46/retainedN08N09N10を照合する。",
+    "実check出力・関係file証拠・CI原JSON/ZIP検算・レビューをまとめ、現在T04のclaim/inputhash/integrity/approval条件を既存tool_resultへ提出する。別headのkind=ci登録を許すためにguardを変更しない。",
+    "CI未完了/失敗/必須artifact欠落のままPASS checkを作らない。T04通過は非公開技術検証の範囲に限り、親G3_HOSTの配信PASS/公開許可/本人最終受入を生成しない。"
+  ],
+  "limitations": [
+    "静的最終YAMLとnative修復filehashの監視。最終publisher/run/生成manifestartifactはまだ未通知・未検証。",
+    "この報告からT04を受理/実CI完了と宣言しない。実証後の条件付き提出可能性の判断。",
+    "元の環境拒否失敗とc133runを履歴保持。両unit教材の再設計/新初見審査ではない。",
+    "repo/Store/Git編集なし。指定/tmp報告のみ保存。追加subagentなし。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_REPAIR_NATIVE_BINDING.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_REPAIR_INPUT.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_REPAIR_APPLIED.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_DRY_RUN_01_FAILURE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_REPAIR/deploy-pages.yml",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_FINAL/deploy-pages.yml"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "evidenceRefs": [
+    "99b14df3-fff5-4ba8-a752-ec14dbb83bcb",
+    "edc83a24-e519-470e-91c6-018b16080bbf",
+    "7817903f-1513-4ec5-951f-b6c8256130a1",
+    "8eeddb04-edad-45d5-92ef-3a7a0d44edbd",
+    "dd138ae5-fe35-41c6-9890-3191f3ab22c1"
+  ],
+  "actualPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualRunId": 41754189894,
+  "nativeMetadataCandidate": "188476b10ea366c116409fa46677818569da824b",
+  "status": "PENDING_ACTUAL_FINAL_CI",
+  "publicationAuthorized": false
+}

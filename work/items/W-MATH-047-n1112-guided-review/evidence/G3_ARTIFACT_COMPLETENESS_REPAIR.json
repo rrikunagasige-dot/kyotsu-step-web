@@ -1,0 +1,11 @@
+{
+  "parentPublisherSHA": "c133d356987cf29c792a8a7d7675294ac614ea45",
+  "path": ".github/workflows/deploy-pages.yml",
+  "beforeSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "afterSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96",
+  "reason": "B identified generated manifest bytes absent in uploaded artifact. Add only3existing dist manifests to artifact in both jobs, keeping all checks, source, delivery guards, permissions and environment unchanged.",
+  "supersedesForFinalEvidence": "c133 run remains actual non-delivery verification history; final run must carry original manifest bytes.",
+  "scope": "Same authorized4paths/no-delivery dryrun, workflow path only.",
+  "publicationAuthorized": false,
+  "reviewStatus": "pending"
+}

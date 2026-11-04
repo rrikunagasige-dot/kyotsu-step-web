@@ -1,0 +1,43 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_STATIC_EVIDENCE_RETENTION_ONLY",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "previousWorkflowSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "finalWorkflowSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96",
+  "checks": [
+    {
+      "job": "verify",
+      "status": "PASS",
+      "addedExactArtifactPaths": [
+        "dist/release.json",
+        "dist/w046-release.json",
+        "dist/w047-release.json"
+      ],
+      "existingArtifactPathsPreserved": true
+    },
+    {
+      "job": "publish",
+      "status": "PASS",
+      "addedExactArtifactPaths": [
+        "dist/release.json",
+        "dist/w046-release.json",
+        "dist/w047-release.json"
+      ],
+      "existingArtifactPathsPreserved": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "G3-B-EVIDENCE-01",
+      "status": "MITIGATED_IN_UNEXECUTED_FINAL_WORKFLOW",
+      "reason": "Threeexactgenerateddistmanifestfiles nowrequestedby ordinaryevidenceartifact inbothjobs. DoesnotweakenPagesguards oraddPagesartifactupload. FinalactualCIartifactmuststillcontaincorrectmanifestbytes beforedeclaring evidencegap VERIFIED_FIXED."
+    }
+  ],
+  "rationale": "ParsedYAML structures areexactlyequal after removingonlythreeartifactpaths perjob. Alljobifs,25steps,6deliveryhostguards,permissions/sourcepin/checker/69contract andPagesprotection untouched. Actualbuild manifests willbe preserved insteadoflocallyregenerated substitutes.",
+  "limits": [
+    "Newfinalworkflow notexecutedbyB; realartifactretention/hash comparison pending.",
+    "c133/run41753645581 outcome remainsoriginalevidence; finalworkflowdoesnotretroactivelysupply itsmissingmanifestbytes.",
+    "No actualpublichosting,mainmerge,sourcecontentedit orpublicationauthority conferred."
+  ],
+  "writes": "Only/tmpreport, noStore/Git/repochanges"
+}

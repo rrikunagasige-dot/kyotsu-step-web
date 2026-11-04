@@ -1,0 +1,35 @@
+{
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "parentPublisherSHA": "c133d356987cf29c792a8a7d7675294ac614ea45",
+  "tree": "8ec4ea95c155c923767f8258d29a78d35239eedd",
+  "workflowSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96",
+  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "runId": 41754189894,
+  "event": "push",
+  "status": "pending",
+  "files": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "sha": "b038a02d289f4f2d418f615ee2f11dae8ad6cc42",
+      "status": "modified"
+    },
+    {
+      "path": "tools/release/w046-publish-check.mjs",
+      "sha": "24d95c1ac98b20239b102703db9cdac310aebb34",
+      "status": "modified"
+    },
+    {
+      "path": "tools/release/w047-publish-check.mjs",
+      "sha": "ac00861b9ed010f42b281eeb845c7c2761d3a0ad",
+      "status": "added"
+    },
+    {
+      "path": "tools/release/w047-release-contract.json",
+      "sha": "cca60701a61a9f23e002fcba245215387a49845d",
+      "status": "added"
+    }
+  ],
+  "compareURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/compare/04b823259a0873235e39099864d454330eed5d81...6cd11dc1e65810281ed897f865eed3e52b974992",
+  "publicationAuthorized": false
+}

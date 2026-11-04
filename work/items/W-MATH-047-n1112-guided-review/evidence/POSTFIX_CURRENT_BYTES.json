@@ -1,0 +1,54 @@
+{
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "files": [
+    {
+      "path": "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "sha256": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+      "matchesFixedSource": true,
+      "changedFromOriginal": false
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n11Authored.json",
+      "sha256": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+      "matchesFixedSource": true,
+      "changedFromOriginal": true
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n11Transformation.json",
+      "sha256": "906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9",
+      "matchesFixedSource": true,
+      "changedFromOriginal": true
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n12Authored.json",
+      "sha256": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c",
+      "matchesFixedSource": true,
+      "changedFromOriginal": true
+    },
+    {
+      "path": "src/domain/textbook.ts",
+      "sha256": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+      "matchesFixedSource": true,
+      "changedFromOriginal": false
+    },
+    {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "sha256": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+      "matchesFixedSource": true,
+      "changedFromOriginal": false
+    },
+    {
+      "path": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "sha256": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+      "matchesFixedSource": true,
+      "changedFromOriginal": false
+    },
+    {
+      "path": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
+      "sha256": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b",
+      "matchesFixedSource": true,
+      "changedFromOriginal": false
+    }
+  ],
+  "scope": "Fresh eight-path byte comparison; semantic scope derives from actual live reports and A/B review, not bytes alone."
+}

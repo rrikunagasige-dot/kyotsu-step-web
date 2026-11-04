@@ -1,0 +1,268 @@
+{
+  "reviewer": "A / w047_review_design",
+  "verdict": "PASS",
+  "verdictScope": "READINESS_FOR_NEW_POST_FIX_SWEEP; not a submitted native sweep or Z01 completion",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "runId": "41760954117",
+  "firstPass": false,
+  "blind": false,
+  "readOnly": true,
+  "decision": "13pairsを現source/actual liveに対する別のpost-fix調査として埋め、既存CODEへ提出可能。現在確認した必須linked-child blockerはない。8pathだけへ圧縮する提出は不可。",
+  "requiredInventory": {
+    "explicitImpactInventory": null,
+    "uniquePaths": 8,
+    "requiredPairs": 13,
+    "n11Pairs": 7,
+    "n12Pairs": 6,
+    "bothSweepNodesRequireAllPairs": true
+  },
+  "oldR03": {
+    "R03_IMPACT@n11": {
+      "artifact": "feb57084b466127aa76a0a5f7081c073cbd0b92d154db3ba63e321839cd22f0e",
+      "inventoryCount": 8,
+      "rowCount": 13,
+      "linkedCorrections": []
+    },
+    "R03_IMPACT@n12": {
+      "artifact": "1fb131fdf22e2dd8ed48fcecdcee2039ae73bcd1599f968701cc88b15b25f781",
+      "inventoryCount": 8,
+      "rowCount": 13,
+      "linkedCorrections": []
+    }
+  },
+  "proposedNewEvaluationRows": [
+    {
+      "block_id": "n11",
+      "artifact": "src/data/textbook/math/numbers/n11Authored.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "AFFECTED",
+      "resolution": "VERIFIED_FIXED",
+      "reason": "P006六箇所と41KEEP、39回答/原図/保存契約を現source・実liveに対応。R1は著者IRを変更せず表示plan側で解消。",
+      "currentLocalSHA256": "3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/data/textbook/math/numbers/n11Transformation.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "AFFECTED",
+      "resolution": "VERIFIED_FIXED",
+      "reason": "R1商slotをdivide行に一度だけ置き、未回答/誤答では完成商を出さず正答後finalを公開。現live四幅とG2で原症状の解消確認済み。",
+      "currentLocalSHA256": "906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/domain/textbook.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "Word位置付き一次資料の保持。修正対象は教材表示であり原問原文は書換えず、G2原資料照合の根拠として保持。",
+      "currentLocalSHA256": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n11",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "Word位置付き一次資料の保持。修正対象は教材表示であり原問原文は書換えず、G2原資料照合の根拠として保持。",
+      "currentLocalSHA256": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/data/textbook/math/numbers/n12Authored.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "AFFECTED",
+      "resolution": "VERIFIED_FIXED",
+      "reason": "P006五変更・44KEEP・46回答、端点判断の先代行防止と説明接続を現source・実liveで確認。",
+      "currentLocalSHA256": "8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/domain/textbook.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "共有reader/domain/pageは承認済み教材局所修正の対象外。69byte guardsと実公開N08各mode/N09/N10回帰により保存・遷移・採点・描画の共有退行なし。全legacy単元の意味合格までは主張しない。",
+      "currentLocalSHA256": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "Word位置付き一次資料の保持。修正対象は教材表示であり原問原文は書換えず、G2原資料照合の根拠として保持。",
+      "currentLocalSHA256": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    },
+    {
+      "block_id": "n12",
+      "artifact": "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "phase": "post-fix",
+      "recommendedStatus": "NOT-AFFECTED",
+      "resolution": "retained/no current causal regression",
+      "reason": "Word位置付き一次資料の保持。修正対象は教材表示であり原問原文は書換えず、G2原資料照合の根拠として保持。",
+      "currentLocalSHA256": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b",
+      "matchesCandidateGitBytes": true,
+      "requiresNativeFingerprintEvidenceRefs": true
+    }
+  ],
+  "G2": {
+    "G2_AUDIT@n11": {
+      "artifact": "6663dd2486d4b4f0903df8a66f9b4214b7c8b30ad258fa89dd878aca06dcf130",
+      "auditRows": 23,
+      "linkedCorrections": [],
+      "unknowns": []
+    },
+    "G2_AUDIT@n12": {
+      "artifact": "fb64cfc94657d25baef2abe948629b52976bc743ad9aa8cc30a911191764f634",
+      "auditRows": 23,
+      "linkedCorrections": [],
+      "unknowns": []
+    }
+  },
+  "findings": [
+    {
+      "id": "POST-PAIR-COVERAGE",
+      "status": "CONFIRMED",
+      "reason": "impact.inventoryはblock.sourcesの直積リストをfallbackとし、checkのkeyは(block_id,artifact)。両post nodeとも13行必要。旧13行のphase/version置換だけでは新調査にならない。"
+    },
+    {
+      "id": "MANDATORY-SIBLING",
+      "status": "NO_CURRENT_BLOCKER_FOUND",
+      "reason": "旧R03 impact_rowsと受理済G2 audit_rowsにlinkedCorrectionなし。現issuesはW047-G2-L01のみ。N13/N14を今回の確定同型未解決とする記録は確認できない。inventory外という理由だけで適用可能欠陥を免除することはできない。"
+    },
+    {
+      "id": "PRIMARY-ISSUE-CLOSE",
+      "status": "REQUIRED_LATER",
+      "reason": "W047-G2-L01の症状は実CI/実live/G2で解消。issueのresolved_by未設定はR08 case_updates VERIFIED_FIXED+repair_evidence_refsと両unit FINAL/post/L01をZ01が確認して自動解決するまで保持する。手動削除・先行close不可。"
+    }
+  ],
+  "siblingDisposition": {
+    "N13_N14": "既存legacyの次の原資料/理念監査候補として分離。今回の意味PASS/最終受入範囲へ含めない。今回の必須未解決siblingとする具体的記録は未確認。新たな適用可能な確定欠陥が出れば§12Bに従いlinked correctionが必要。",
+    "NE02_N08": "旧受入receipt未照合を未実装・未受入と断定しない。N08の今回公開版保持実操作証拠はあるが、歴史的受入来歴の別照合とは区別。",
+    "scopeRule": "main04b823 WORK_SYSTEM §12Bの原因/適用条件による横断監査を維持。現在13pairsの機械最小要件を全教材品質合格へ拡張しない。"
+  },
+  "closureRequirements": [
+    "n11FINAL→n11post13pairs→R08→L01→n12HOST→n12FINAL→n12post13pairs→R08→L01→Z01の既存priority順を保持。",
+    "両unit accept_appは同一実発言/出所/セッションと各実HOST evidenceへ対応。二独立評価またはquality POSITIVEへ転用しない。",
+    "全case capture/learning receiptを既存CODEで登録。quality UNKNOWNを維持し、学習適格でなければNOT_TRAINABLEを正しく記録。",
+    "Z01は両unit FINAL/post/L01 PASS、必須子DONE、R08原症状修正証拠、未解決issueなしを満たしてから実行。"
+  ],
+  "evidence": [
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/G3_LIVE_CI.json",
+      "sha256": "ffd647be4fba3549b94b199372343fd009a7cbbc69f1cfee8ec4f60e4baac636"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/G3_PUBLIC_HTTP_PROBE.json",
+      "sha256": "9fd7ef2b557c50c645ef6b1b5e4e2a45d7cf983e79ff765453a174aae1fa8ba8"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/PUBLIC_HOST_ASSERTIONS.json",
+      "sha256": "d525e6e07f9ce7ec0fc6f787be8e95c207cb291bc35125cbad90e7d012ce4e3d"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/evidence/S1_G2_TARGET.json",
+      "sha256": "d980927402f1efa98482b58d14dd77c3155d1c2dd53c5d7315d31695d254d68d"
+    },
+    {
+      "path": "work/items/W-MATH-047-n1112-guided-review/CONFIRM_LIVE_N11_N12_f129ba78.md",
+      "sha256": "361e77db48a2675b6725204936b6f127f15c2e3582225f94ebf3ff24d815935d"
+    }
+  ],
+  "codeEvidence": [
+    "workflow/impact.py:7-33",
+    "workflow/runtime.py:315-328",
+    "workflow/runtime.py:612-634",
+    "main04b823259a0873235e39099864d454330eed5d81:governance/WORK_SYSTEM.md §12B"
+  ],
+  "limitations": [
+    "現在の工程監視と提出準備判定。nativeR03合格またはZ01完了を生成していない。",
+    "N13/N14/NE02の新しい全文意味監査や歴史的受入receipt調査は今回実施していない。現行既知記録に必須未解決がないことと全単元無欠陥は異なる。",
+    "旧source6b439/8d130e0fのGit objectは現在checkoutから直接参照できなかったため、その版との新規byte比較は主張しない。固定protected/public実証と旧nativeartifactを根拠とする。main04bとf129間のN13/N14差を今回修正の差とは扱わない。",
+    "過去案/preview/CI/G2既視。今回を新盲検/新初見とは扱わない。"
+  ]
+}

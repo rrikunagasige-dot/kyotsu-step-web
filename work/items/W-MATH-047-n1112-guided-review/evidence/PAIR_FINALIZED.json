@@ -1,0 +1,15 @@
+{
+  "work": "W-MATH-047",
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "acceptanceSource": "conversation:6cb6aef5-5796-40d4-a828-3770700d2187",
+  "quality": "UNKNOWN",
+  "trainingRun": false,
+  "nextMaterialReview": [
+    "N13",
+    "N14"
+  ]
+}

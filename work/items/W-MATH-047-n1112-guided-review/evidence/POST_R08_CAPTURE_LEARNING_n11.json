@@ -1,0 +1,77 @@
+{
+  "case_updates": [
+    {
+      "id": "W047-G2-L01",
+      "disposition": "EXISTING_RULE",
+      "quality": "UNKNOWN",
+      "links": [
+        "d6333078-5a5d-43ba-a708-116608f86399",
+        "907b42f4-1054-4659-8aa2-2abcd70404a4",
+        "7f6b47aa-4cdd-4e1a-aff8-b048627d5953",
+        "c50ee7a9-71f1-4d55-9f69-ee9a1bea0003",
+        "419cca4b-2160-4fe5-8894-60ae5f47d7e2",
+        "d14c7dc6-23fd-4401-802d-1a231c8afbba",
+        "e40e7913-efb5-4c28-ac77-b8ba6a1a79a3",
+        "da210e2c-fc87-4b74-bc59-6ecca988e3b6"
+      ],
+      "resolution": "VERIFIED_FIXED",
+      "origin_version": "4a09de7a0f910669946466daf918ab28c820a5f2",
+      "target_version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "repair_evidence_refs": [
+        "d6333078-5a5d-43ba-a708-116608f86399",
+        "907b42f4-1054-4659-8aa2-2abcd70404a4",
+        "7f6b47aa-4cdd-4e1a-aff8-b048627d5953",
+        "c50ee7a9-71f1-4d55-9f69-ee9a1bea0003",
+        "419cca4b-2160-4fe5-8894-60ae5f47d7e2",
+        "d14c7dc6-23fd-4401-802d-1a231c8afbba",
+        "e40e7913-efb5-4c28-ac77-b8ba6a1a79a3",
+        "da210e2c-fc87-4b74-bc59-6ecca988e3b6"
+      ]
+    }
+  ],
+  "rule_links": [
+    "governance/WORK_SYSTEM.md#12B",
+    "docs/MASTER_APP_LESSONS.md"
+  ],
+  "regression_links": [
+    "d6333078-5a5d-43ba-a708-116608f86399",
+    "907b42f4-1054-4659-8aa2-2abcd70404a4",
+    "7f6b47aa-4cdd-4e1a-aff8-b048627d5953",
+    "c50ee7a9-71f1-4d55-9f69-ee9a1bea0003",
+    "419cca4b-2160-4fe5-8894-60ae5f47d7e2",
+    "d14c7dc6-23fd-4401-802d-1a231c8afbba",
+    "e40e7913-efb5-4c28-ac77-b8ba6a1a79a3",
+    "da210e2c-fc87-4b74-bc59-6ecca988e3b6"
+  ],
+  "unresolved": [],
+  "deduplication": "One actual pair-acceptance utterance; per-unit gates are not independent quality observations. Existing issue retained and repaired; no generated quality labels.",
+  "verdict": "PASS",
+  "evidence_refs": [
+    "d6333078-5a5d-43ba-a708-116608f86399",
+    "907b42f4-1054-4659-8aa2-2abcd70404a4",
+    "7f6b47aa-4cdd-4e1a-aff8-b048627d5953",
+    "c50ee7a9-71f1-4d55-9f69-ee9a1bea0003",
+    "419cca4b-2160-4fe5-8894-60ae5f47d7e2",
+    "d14c7dc6-23fd-4401-802d-1a231c8afbba",
+    "e40e7913-efb5-4c28-ac77-b8ba6a1a79a3",
+    "da210e2c-fc87-4b74-bc59-6ecca988e3b6"
+  ],
+  "capability_receipts": [
+    "74ce38be56170e12e213d4c289e405820bc6dd357d920fd56fba71f1a798330f"
+  ],
+  "aiReview": {
+    "requestHash": "2149b3ac790ea37624e4dac18e0bb6d3f1c88a1acc2f9706e269972a1f05b37f",
+    "inputHash": "c2bc372a56de85a157bca53b6ce32fa48c021f99d549f15ec634b67d58428bf6",
+    "reviewer": "M with actual A workflow and B source reviews",
+    "evidence": [
+      "d6333078-5a5d-43ba-a708-116608f86399",
+      "907b42f4-1054-4659-8aa2-2abcd70404a4",
+      "7f6b47aa-4cdd-4e1a-aff8-b048627d5953",
+      "c50ee7a9-71f1-4d55-9f69-ee9a1bea0003",
+      "419cca4b-2160-4fe5-8894-60ae5f47d7e2",
+      "d14c7dc6-23fd-4401-802d-1a231c8afbba",
+      "e40e7913-efb5-4c28-ac77-b8ba6a1a79a3",
+      "da210e2c-fc87-4b74-bc59-6ecca988e3b6"
+    ]
+  }
+}

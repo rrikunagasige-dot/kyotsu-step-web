@@ -1,6 +1,6 @@
 # 全体火柴図（GENERATED）
 
-台帳HEAD: `5cef1915c9dd6e4f132f7da96acf9e0b53c9512766185031c3b770381c74b3d3`
+台帳HEAD: `f16b57b9cbe5a131a23adadf4a610b73145c81e08459e3f8e4af3af1b790be85`
 
 ```mermaid
 flowchart TD
@@ -8,13 +8,13 @@ flowchart TD
   N1["S01_ROUTE 1/1"]
   N2["n11:design 5/5"]
   N3["APPROVAL:n11-r1 1/1"]
-  N4["n11:release 4/5"]
+  N4["n11:release 5/5"]
   N5["n12:design 5/5"]
   N6["APPROVAL:n12-p006 1/1"]
-  N7["n12:release 3/5"]
-  N8["n11:learning 0/3"]
-  N9["n12:learning 0/3"]
-  N10["Z01_CLOSE 0/1"]
+  N7["n12:release 5/5"]
+  N8["n11:learning 3/3"]
+  N9["n12:learning 3/3"]
+  N10["Z01_CLOSE 1/1"]
   N3 --> N2
   N6 --> N5
   N0 --> N1
@@ -32,8 +32,8 @@ flowchart TD
   N7 --> N9
 ```
 
-現在: G3_FINAL@n11 / WAITING
-保留・修正queue: 10
+現在: — / DONE
+保留・修正queue: 8
 関連修正Work: W-TECH-048, W-TECH-049, W-TECH-050, W-TECH-051, W-TECH-052
 差戻しは再分析・失効・子Workの台帳イベントで記録し、実行依存へ循環を入れない。
 

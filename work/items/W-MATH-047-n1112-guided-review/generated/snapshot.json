@@ -1,136 +1,14 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "5cef1915c9dd6e4f132f7da96acf9e0b53c9512766185031c3b770381c74b3d3",
-  "work_status": "VERIFYING",
+  "ledger_head": "f16b57b9cbe5a131a23adadf4a610b73145c81e08459e3f8e4af3af1b790be85",
+  "work_status": "DONE",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
-    "task": {
-      "work_id": "W-MATH-047",
-      "node": {
-        "id": "G3_FINAL@n11",
-        "stage_kind": "G3_FINAL",
-        "contract_kind": "G3_FINAL",
-        "actor": "USER",
-        "depends_on": [
-          "G3_HOST@n11"
-        ],
-        "required": [],
-        "block": null,
-        "release_unit": "n11",
-        "watch": "integration",
-        "phase": "acceptance",
-        "priority": 4,
-        "source_refs": [],
-        "protected_refs": [
-          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
-          "src/data/textbook/math/numbers/n09Authored.json",
-          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
-          "src/data/textbook/math/numbers/n10Authored.json",
-          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
-          "src/components/textbook/construction-lesson-reading.css",
-          "src/data/textbook/math/numbers/n08Authored.json",
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/components/textbook/GuidedMathReadingFlow.tsx",
-          "src/domain/textbook.ts",
-          "src/pages/TextbookUnitPage.tsx",
-          "public/assets/math/textbook/numbers/n11-f01.png",
-          "public/assets/math/textbook/numbers/n11-f02.png",
-          "public/assets/math/textbook/numbers/n12-f01.png",
-          "public/assets/math/textbook/numbers/n12-f02.png",
-          "public/assets/math/textbook/numbers/n12-f03.png"
-        ],
-        "capability_requests": [],
-        "required_code_receipts": [],
-        "required_ai_receipts": []
-      },
-      "task_id": "ba94cc857274548d2d0188a6d86d6d7c11718e61ab64af514e68b12d7ab06c67",
-      "input_hash": "fce6d13ede958ab62b032b745f26be00129e132744fd853829e9174aad7ed480",
-      "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
-      "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
-      "rules": {
-        "docs/MASTER_APP_LESSONS.md": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b",
-        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
-        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
-      },
-      "proposal": {
-        "contentDesignHash": "7ff7db55404e08499484bc4150250d37cea1d09bb06f1bb5e344968918133b14",
-        "hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
-        "id": "W047/S1"
-      },
-      "scope": {
-        "paths": [
-          "src/data/textbook/math/numbers/n11Authored.json",
-          "src/data/textbook/math/numbers/n12Authored.json",
-          "src/data/textbook/math/numbers/n11Transformation.json",
-          "work/items/W-MATH-047-n1112-guided-review/",
-          "tools/textbook/transformation/n11.mjs"
-        ],
-        "preserve": [
-          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
-          "src/data/textbook/math/numbers/n09Authored.json",
-          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
-          "src/data/textbook/math/numbers/n10Authored.json",
-          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
-          "src/components/textbook/construction-lesson-reading.css",
-          "src/data/textbook/math/numbers/n08Authored.json",
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/components/textbook/GuidedMathReadingFlow.tsx",
-          "src/domain/textbook.ts",
-          "src/pages/TextbookUnitPage.tsx",
-          "public/assets/math/textbook/numbers/n11-f01.png",
-          "public/assets/math/textbook/numbers/n11-f02.png",
-          "public/assets/math/textbook/numbers/n12-f01.png",
-          "public/assets/math/textbook/numbers/n12-f02.png",
-          "public/assets/math/textbook/numbers/n12-f03.png"
-        ],
-        "prohibit": [
-          "G3_HOST"
-        ]
-      },
-      "source_manifest": {
-        "src/components/textbook/GuidedMathReadingFlow.tsx": "7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e",
-        "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
-        "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
-        "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
-        "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
-        "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
-        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8",
-        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
-      },
-      "previous_results": {
-        "G3_HOST@n11": {
-          "actor": "capability-runner",
-          "artifact": "e36a4fe1f2b7172fbe239cdd623d58dc384ef5a5bfb258560154f9debd3f7900",
-          "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
-          "node": "G3_HOST@n11",
-          "verdict": "PASS"
-        }
-      },
-      "do_not_touch": [
-        "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
-        "src/data/textbook/math/numbers/n09Authored.json",
-        "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
-        "src/data/textbook/math/numbers/n10Authored.json",
-        "src/components/textbook/ConstructionLessonReadingFlow.tsx",
-        "src/components/textbook/construction-lesson-reading.css",
-        "src/data/textbook/math/numbers/n08Authored.json",
-        "src/data/textbook/math/numbers/firstSectionTeaching.json",
-        "src/components/textbook/GuidedMathReadingFlow.tsx",
-        "src/domain/textbook.ts",
-        "src/pages/TextbookUnitPage.tsx",
-        "public/assets/math/textbook/numbers/n11-f01.png",
-        "public/assets/math/textbook/numbers/n11-f02.png",
-        "public/assets/math/textbook/numbers/n12-f01.png",
-        "public/assets/math/textbook/numbers/n12-f02.png",
-        "public/assets/math/textbook/numbers/n12-f03.png"
-      ],
-      "completion_is_not_semantic_proof": true
-    }
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
   },
   "nodes": [
     {
@@ -1366,7 +1244,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT_SWEEP@n11",
@@ -1415,7 +1293,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R08_CAPTURE_LEARNING@n11",
@@ -1474,7 +1352,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "L01_LEARNING@n11",
@@ -1527,7 +1405,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G2_AUDIT@n12",
@@ -1632,7 +1510,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_FINAL@n12",
@@ -1670,7 +1548,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT_SWEEP@n12",
@@ -1719,7 +1597,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R08_CAPTURE_LEARNING@n12",
@@ -1777,7 +1655,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "L01_LEARNING@n12",
@@ -1830,7 +1708,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "Z01_CLOSE",
@@ -1869,66 +1747,12 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     }
   ],
-  "pending_issues": [
-    {
-      "block": "n11",
-      "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
-      "evidence_refs": [
-        "1d17f2f4-1141-415a-bedd-e55ca1395315",
-        "3ce5defc-b626-4626-a07c-312b7a077375",
-        "f0c50712-2680-4011-b3e6-17cd9f743a6d",
-        "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
-        "6672629a-56de-444b-85be-702311a05f8d",
-        "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
-        "bead0a85-aed8-40a8-8a41-e2342981a8dc",
-        "efe4da01-c32e-4121-8900-88284c0822ff",
-        "e1f5206f-643f-4759-af2d-4931964547af",
-        "40358da4-f4c7-4376-bf78-e813a74bc54a",
-        "bbef722b-2d5a-4957-9992-ea7c850e21b7",
-        "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
-        "00e3ef42-3531-45d4-8620-1b1787cf7c79",
-        "3e64380d-a2c2-4780-a647-0c8698993784",
-        "c77ee2bb-69f7-4d65-a89d-fd470dd06dd0"
-      ],
-      "id": "W047-G2-L01",
-      "origin": "G2 independent cross-audit",
-      "proposalRef": "work/items/W-MATH-047-n1112-guided-review/G2_CORRECTION_PROPOSAL.md",
-      "root_cause": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
-      "version": "4a09de7a0f910669946466daf918ab28c820a5f2"
-    }
-  ],
-  "application_accepted": false,
+  "pending_issues": [],
+  "application_accepted": true,
   "correction_queue": [
-    {
-      "block": "n11",
-      "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
-      "evidence_refs": [
-        "1d17f2f4-1141-415a-bedd-e55ca1395315",
-        "3ce5defc-b626-4626-a07c-312b7a077375",
-        "f0c50712-2680-4011-b3e6-17cd9f743a6d",
-        "4ca4584b-c5ee-4f4f-b792-50e2725ccffb",
-        "6672629a-56de-444b-85be-702311a05f8d",
-        "f19daed2-71fe-4ea8-b33a-015ca25ebb88",
-        "bead0a85-aed8-40a8-8a41-e2342981a8dc",
-        "efe4da01-c32e-4121-8900-88284c0822ff",
-        "e1f5206f-643f-4759-af2d-4931964547af",
-        "40358da4-f4c7-4376-bf78-e813a74bc54a",
-        "bbef722b-2d5a-4957-9992-ea7c850e21b7",
-        "8ebf30be-8cc9-40c2-8e96-f4b5716e927d",
-        "00e3ef42-3531-45d4-8620-1b1787cf7c79",
-        "3e64380d-a2c2-4780-a647-0c8698993784",
-        "c77ee2bb-69f7-4d65-a89d-fd470dd06dd0"
-      ],
-      "id": "W047-G2-L01",
-      "origin": "G2 independent cross-audit",
-      "proposalRef": "work/items/W-MATH-047-n1112-guided-review/G2_CORRECTION_PROPOSAL.md",
-      "root_cause": "UNSOLVED_QUOTIENT_REVEALED_BY_CONCURRENT_COMPLETED_ROW",
-      "version": "4a09de7a0f910669946466daf918ab28c820a5f2",
-      "work": "W-MATH-047"
-    },
     {
       "block": "n09",
       "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
@@ -1954,16 +1778,23 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-038",
-      "work": "W-MATH-038",
-      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-047",
-      "work": "W-MATH-047",
-      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-038",
+      "work": "W-MATH-038",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1975,23 +1806,9 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "W-MATH-039",
       "work": "W-MATH-039",
       "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3957,11 +3774,56 @@
       "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
       "node": "G3_HOST@n11",
       "receipt": "0a9bb1dafc20653f155d922de713ccb32e65721b7171f8d5d6c29db50ad01ede"
+    },
+    {
+      "input_hash": "bcefbe03e15bad3e3972adc5f45491000dd005bf1878b133b2a875f73f009152",
+      "node": "R03_IMPACT_SWEEP@n11",
+      "receipt": "91e78ca8af8e63093811c349e3a33d3fa3740035283b34c78746b2bde62e27d1"
+    },
+    {
+      "input_hash": "c2bc372a56de85a157bca53b6ce32fa48c021f99d549f15ec634b67d58428bf6",
+      "node": "R08_CAPTURE_LEARNING@n11",
+      "receipt": "74ce38be56170e12e213d4c289e405820bc6dd357d920fd56fba71f1a798330f"
+    },
+    {
+      "input_hash": "d05b2aae953215b45ad63256b9c8270572443089aff04bcd951d6f0ddf0c0d91",
+      "node": "L01_LEARNING@n11",
+      "receipt": "15a2e87409817deff6457ff8a45a937b2b88bc01029fd8eaeb9cb1f2f9357c18"
+    },
+    {
+      "input_hash": "d05b2aae953215b45ad63256b9c8270572443089aff04bcd951d6f0ddf0c0d91",
+      "node": "L01_LEARNING@n11",
+      "receipt": "3e53cbd46d94ea66e5aa2b5c24d472e8bf1ab67b6580bdf8f2bfc1109058a7ab"
+    },
+    {
+      "input_hash": "88be62c7f22655b921607e01b8416fdc6b75ce3e104a560d7c405f9442d4bea4",
+      "node": "G3_HOST@n12",
+      "receipt": "71d8b8dfe2f92a651c37e48c31387490aa634d4b7b01e1a16de2187d377105b5"
+    },
+    {
+      "input_hash": "1203772c0f0e701ef933f36a5a8e76cfec2fd728b5b9137a4a91318286eff4fd",
+      "node": "R03_IMPACT_SWEEP@n12",
+      "receipt": "6c39c51df3121f3979faba39395b995f5372e87e71a15cce403ad8ebbb3df2bc"
+    },
+    {
+      "input_hash": "2945290acc309ce769a25bc412e6822ddad1af6c53f6253c65217ff1cecf0800",
+      "node": "R08_CAPTURE_LEARNING@n12",
+      "receipt": "dc42228a320bbcc3687ae9e6fcb959d73f72b4b348a4ab5fba5f0b6f89f3ad90"
+    },
+    {
+      "input_hash": "3ec214b8fdd5d307ba610516b4dfdbd83dff62aae67512cb9b41dabd38df19d2",
+      "node": "L01_LEARNING@n12",
+      "receipt": "7c8ebec1bf3cca5eb291a9911ce77ae5d9ba08ce7af1eb39fe34b590546dcfae"
+    },
+    {
+      "input_hash": "3ec214b8fdd5d307ba610516b4dfdbd83dff62aae67512cb9b41dabd38df19d2",
+      "node": "L01_LEARNING@n12",
+      "receipt": "e93d6108dc1ce0b5f5f308ddc3ffd581c3c4b7fc64eb8ad614d8d524bf52b310"
     }
   ],
   "release_acceptance": {
-    "n11": false,
-    "n12": false
+    "n11": true,
+    "n12": true
   },
   "agent_team": {
     "policy": {

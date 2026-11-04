@@ -1,5 +1,15 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
+Status: DONE / 公開版N11/N12の本人受入・事後影響確認・事例整理・Z01終了済み
+
+本人6cb6aef5「いいよ。そして続けてまた残っているNはあるかい？」を、公開版両routeへの一回の受入として記録。CODE順の両G3_FINAL、各13pairsのpost-fix影響確認、R08、L01、Z01を完了。sourcef129/publisher6cd11は不変。実issue W047-G2-L01は修正証拠に結んで終了。品質UNKNOWN・trainingRun false、二つの独立評価にはしない。証拠はevidence/PAIR_FINALIZED.jsonとPOST_*、火柴図はgenerated。
+
+次の教材見直し候補はN13（絶対値方程式）→N14（絶対値不等式）。既存公開稿あり、未作成単元ではない。まず原資料・既存穴設計・文章接続・理念を全体照合し、具体修正案を作る。この章はN14まで。旧N08/NE02の受入記録照合は新規制作残と分け、未受入とは断定しない。A理念/工程、B原資料/既存稿の二人体制。N13/N14本文変更は未実施。
+
+## 以下は本人最終受入前までの履歴
+
+# W-MATH-047 — N11/N12の判断と導出の照合
+
 Status: VERIFYING / 公開・両route実配信検証・A/B実監査完了 / 本人のN11/N12まとめて確認一回待ち
 
 現在：main/publisher6cd11、教材sourcef129を既存Pagesへ公開。実run41760954117はmainpush/publish success/verify skip、配送・実host6step全success。Mの公開HTTP三manifest/HTMLは実buildと一致、Pages原build123file/原報告5328file/可逆保存2423JSON(81722023原bytes)をM/A/B独立照合。N11全39/109・N12全46/127×4幅と保持N08/N09/N10、focus/reset/単元境界390pxも公開後に実検査。原代表9PNG/全配布buildも原bytesを保存。初回失敗・先行dryrun・実公開は別記録のまま。

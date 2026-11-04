@@ -1,28 +1,29 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "3f5df00c8c149c25bb9c4e1be4db854feaa11ce587c0a1466e41176fa8085b65",
+  "ledger_head": "5cef1915c9dd6e4f132f7da96acf9e0b53c9512766185031c3b770381c74b3d3",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "next": {
-    "status": "READY",
+    "status": "WAITING",
+    "reason": "USER_DECISION",
     "task": {
       "work_id": "W-MATH-047",
       "node": {
-        "id": "G3_HOST@n11",
-        "stage_kind": "G3_HOST",
-        "contract_kind": "G3_HOST",
-        "actor": "TOOL",
+        "id": "G3_FINAL@n11",
+        "stage_kind": "G3_FINAL",
+        "contract_kind": "G3_FINAL",
+        "actor": "USER",
         "depends_on": [
-          "G2_AUDIT@n11"
+          "G3_HOST@n11"
         ],
         "required": [],
         "block": null,
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "release",
+        "phase": "acceptance",
         "priority": 4,
         "source_refs": [],
         "protected_refs": [
@@ -43,16 +44,12 @@
           "public/assets/math/textbook/numbers/n12-f02.png",
           "public/assets/math/textbook/numbers/n12-f03.png"
         ],
-        "capability_requests": [
-          "release.verify"
-        ],
-        "required_code_receipts": [
-          "release.verify"
-        ],
+        "capability_requests": [],
+        "required_code_receipts": [],
         "required_ai_receipts": []
       },
-      "task_id": "52fd624b15821391e65069084e047c15ecaf4c81957c2e75d6d7e1ec2a240c43",
-      "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
+      "task_id": "ba94cc857274548d2d0188a6d86d6d7c11718e61ab64af514e68b12d7ab06c67",
+      "input_hash": "fce6d13ede958ab62b032b745f26be00129e132744fd853829e9174aad7ed480",
       "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
       "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
       "rules": {
@@ -106,11 +103,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
       },
       "previous_results": {
-        "G2_AUDIT@n11": {
+        "G3_HOST@n11": {
           "actor": "capability-runner",
-          "artifact": "6663dd2486d4b4f0903df8a66f9b4214b7c8b30ad258fa89dd878aca06dcf130",
-          "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
-          "node": "G2_AUDIT@n11",
+          "artifact": "e36a4fe1f2b7172fbe239cdd623d58dc384ef5a5bfb258560154f9debd3f7900",
+          "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
+          "node": "G3_HOST@n11",
           "verdict": "PASS"
         }
       },
@@ -1331,7 +1328,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_FINAL@n11",
@@ -1957,6 +1954,13 @@
       "work": "W-MATH-034"
     },
     {
+      "id": "W-MATH-038",
+      "work": "W-MATH-038",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
       "id": "W-MATH-047",
       "work": "W-MATH-047",
       "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
@@ -1974,13 +1978,6 @@
       "id": "W-MATH-034",
       "work": "W-MATH-034",
       "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-038",
-      "work": "W-MATH-038",
-      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3955,6 +3952,11 @@
       "input_hash": "781d215d2b2a0e688aa4568f2bca4eb81ffe81cd953ee9fd63c9fd3d02156901",
       "node": "G2_AUDIT@n12",
       "receipt": "1e50a1fa45d9a02fcaf56de0c37ded8c7174f0da5159b5de4194b72c6e9f5caa"
+    },
+    {
+      "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
+      "node": "G3_HOST@n11",
+      "receipt": "0a9bb1dafc20653f155d922de713ccb32e65721b7171f8d5d6c29db50ad01ede"
     }
   ],
   "release_acceptance": {

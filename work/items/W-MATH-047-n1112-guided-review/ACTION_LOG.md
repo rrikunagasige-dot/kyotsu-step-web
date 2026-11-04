@@ -70,3 +70,8 @@ Bの生成manifest原bytes欠落指摘G3-B-EVIDENCE-01を採用。配信/検査/
 
 
 Pages配送stepは実successとなりDEPLOY outcome SUCCESSを既存Runtimeへ記録。これは配送操作の成否で、全HOST検査完了とは区別。Mの直接HTTPでpublic release/w046/w047三manifestとHTMLを200取得しsourcef129/publisher6cd11/HTMLfilemap一致を検算、G3_PUBLIC_HTTP_PROBE.jsonへ保存。実公開run41760954117は公開後全操作の検査中。旧R6/legacyREPORTはrootfieldを持たないためactual JOB.envと固定verifier入力をURL出所にするWork adapterを準備、架空のreportfield追加や共有guard変更はしない。
+
+
+## 2026-11-04 実公開検証と本人待ちへの正式受理
+
+実run41760954117 success、6配送/hoststep全success・verify skip。M直接publicHTTP3manifest/HTMLと原Pagesbuild123file/原報告5328file/原JSON2423を検算、A/B実公開監査PASS。元JSON81722023bytesは2595014byte/b443f72fへ可逆保存、原PagesZIP4301631byte/9bff8421と9原PNGを保存。両kindapp登録のstdout sessionは既に失われていたが、process不在/原outputfile/Storeの両appを成否照合し再登録せず。既存release.verifyとproduction_resultでG3_HOST@n11正式受理、nextG3_FINAL@n11 WAITING。N12実証app907b…は登録済みだがformal HOST/FINALはPENDINGを維持、plan/priority変更なし。本人の両単元確認一回の確認票を作成し、公開承認を本人最終受入へ転用しない。

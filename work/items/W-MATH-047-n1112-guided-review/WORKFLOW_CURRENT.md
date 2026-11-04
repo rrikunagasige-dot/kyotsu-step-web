@@ -12,3 +12,6 @@ R04の現候補では、Mが各本文・操作境界を統合、A/Bが自分の�
 
 
 2026-11-04 G3 checkpoint：技術W-TECH-052はT04/L01/Z01 DONE、親nextはG3_HOST@n11。生成図の同じ台帳HEADをAが監視。具体main反映・既存Pages公開はG3_PUBLICATION_REQUEST.mdで次の許可を確認する段階。実公開・本人最終受入は未記録。
+
+
+最新G3：実公開/両route証拠/実監査完了、G3_HOST@n11 PASSED、nextG3_FINAL@n11 WAITING。N12formal HOST/FINALは原CODE順のままPENDING。本人は公開版両単元をまとめて確認一回、その原発言をCODE順unit記録へ対応。公開承認≠本人受入。最新確認票CONFIRM_LIVE_N11_N12_f129ba78.md。

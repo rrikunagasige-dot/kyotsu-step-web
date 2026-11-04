@@ -1,3 +1,9 @@
+# 実公開G3検証（2026-11-04）
+
+実公開run41760954117・publicsourcef129/publisher6cd11/三manifest/HTML/配布123file・両route全操作を確認し、A/B実監査PASS。原報告5328file/2423JSON、原Pagesbuild、9代表PNGを保存。既存CODEでG3_HOST@n11正式PASSED、本人最終受入なし、nextG3_FINAL@n11。N12実証は登録済みでformal順序を保ってPENDING。最新確認票CONFIRM_LIVE_N11_N12_f129ba78.md/原証拠G3_LIVE_*と両generated参照。
+
+以下は非公開検査を含む以前の検証履歴。
+
 # 2026-11-04 G3現在の検証範囲
 
 最終publisher6cd11/run41754189894は実success、publish/配送6step skipped。原73input・教材69path・実4blob、原ZIP全2665filehash、原3manifest、N11/N12全85回答/236誤答×4幅と保持N08/N09/N10、focus/reset390を照合しA/B実監査PASS。技術W-TECH-052はT04/L01/Z01正式DONE、親G3_HOSTは未配信。詳細はG3_FINAL_TECHNICAL_CHECK/G3_FINAL_CI/G3_ACTUAL_REVIEW_A/B/G3_TECH_DONEと両generatedを参照。

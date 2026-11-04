@@ -1,14 +1,14 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / 公開承認・main反映・Pages配送成功 / 実配信source一致・公開後全操作検査中 / 本人最終受入なし
+Status: VERIFYING / 公開・両route実配信検証・A/B実監査完了 / 本人のN11/N12まとめて確認一回待ち
 
-本人2a472bf1「いいよ続けて」を確認票P-W047-G3-PUBLISH-01/hashac15e68fの具体main4path反映・既存Pages公開への承認として記録。原発言一回からmerge/deploy二操作面を忠実転記し、内容再承認/本人受入へはしない。既存Runtimeのexternal_intent後、main04b823→検証済みpublisher6cd11へforceなしCAS反映。MERGE SUCCESSを正式記録。sourcef129固定の公開run41760954117(main push)が実行中。旧dryrun41754189894と別run。公開完了/配信source一致はまだ未確定。
+現在：main/publisher6cd11、教材sourcef129を既存Pagesへ公開。実run41760954117はmainpush/publish success/verify skip、配送・実host6step全success。Mの公開HTTP三manifest/HTMLは実buildと一致、Pages原build123file/原報告5328file/可逆保存2423JSON(81722023原bytes)をM/A/B独立照合。N11全39/109・N12全46/127×4幅と保持N08/N09/N10、focus/reset/単元境界390pxも公開後に実検査。原代表9PNG/全配布buildも原bytesを保存。初回失敗・先行dryrun・実公開は別記録のまま。
 
-火柴図の親nextはG3_HOST@n11。技術W-TECH-052はDONEのまま。MがStore/Git writer、A w047_review_designが理念/火柴図/境界監視、B w047_layout_sourcefirstが実原artifact/公開byte/操作監査の二人。scope.prohibitG3_HOSTは既存graphのpriorityのみで、禁止と誤読してplan変更しない。
+既存Runtimeへ両unitの実kindappを登録し、release.verify CODE/production_resultでG3_HOST@n11正式PASSED。火柴図nextはG3_FINAL@n11 WAITING。N12の実証は取得・登録済みだがformal HOST/FINALは現CODE順を保ってPENDING。現graphがn11FINALをn12HOSTより先に要求するため、両routeの実証確認とformal node完了を混同しない。
 
-次は実公開runで全prepublish→配送→公開後両route操作/manifestを照合し、両単元の実HOST証拠を揃える→n11HOST正式受理→N11/N12の本人最終確認一回。native nextの順序がn11FINALをn12HOSTより先に要求するため、両route実証と両HOST node正式受理を混同せず、一つの原発言/実証をCODE順に各unit記録へ結ぶ。G3_NATIVE_HOST_ORDER_NOTE.json参照。公開承認を本人最終受入へ広げない。
+次はCONFIRM_LIVE_N11_N12_f129ba78.mdの公開版両単元を本人がまとめて確認一回。実発言が同じsource/両routeを覆う場合だけ、同じ原文/出所/sessionをunit別記録へ忠実に対応付け、二つの独立評価や品質labelにしない。修正があれば既存修正工程へ戻し、未確認を受入へ代用しない。公開承認2a472bf1を本人最終受入へ転用していない。
 
-原metadata188/教材f129/publisher6cd11は別identity。原73input/69教材path/4publisherblobと最終dryrun原2665file/3manifest/1212JSONの可逆保存・7代表PNG・A/B実監査を保持。初回環境拒否と先行c133run、enum拒否履歴は消さない。再開時はrestore_native_snapshots.py、報告原bytesはrestore_g3_reports.pyで復元可能。
+MがStore/Git writer、Aが理念/火柴図/順序監視、Bが非作者の実原artifact/配布build/公開REPORT・代表画像確認の二人。共有guard/plan/priority未変更。技術W-TECH-052はDONE、親は未完了/本人待ち。両generatedの同じ台帳headを確認。再開時はrestore_native_snapshots.py、原報告はrestore_g3_reports.py/restore_g3_live_reports.pyで復元可能。
 
 ## 以下はG3追加scope承認前までの履歴
 

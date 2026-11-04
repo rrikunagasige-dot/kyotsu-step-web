@@ -1,18 +1,18 @@
 {
   "work_id": "W-MATH-047",
   "node": {
-    "id": "G3_HOST@n11",
-    "stage_kind": "G3_HOST",
-    "contract_kind": "G3_HOST",
-    "actor": "TOOL",
+    "id": "G3_FINAL@n11",
+    "stage_kind": "G3_FINAL",
+    "contract_kind": "G3_FINAL",
+    "actor": "USER",
     "depends_on": [
-      "G2_AUDIT@n11"
+      "G3_HOST@n11"
     ],
     "required": [],
     "block": null,
     "release_unit": "n11",
     "watch": "integration",
-    "phase": "release",
+    "phase": "acceptance",
     "priority": 4,
     "source_refs": [],
     "protected_refs": [
@@ -33,16 +33,12 @@
       "public/assets/math/textbook/numbers/n12-f02.png",
       "public/assets/math/textbook/numbers/n12-f03.png"
     ],
-    "capability_requests": [
-      "release.verify"
-    ],
-    "required_code_receipts": [
-      "release.verify"
-    ],
+    "capability_requests": [],
+    "required_code_receipts": [],
     "required_ai_receipts": []
   },
-  "task_id": "52fd624b15821391e65069084e047c15ecaf4c81957c2e75d6d7e1ec2a240c43",
-  "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
+  "task_id": "ba94cc857274548d2d0188a6d86d6d7c11718e61ab64af514e68b12d7ab06c67",
+  "input_hash": "fce6d13ede958ab62b032b745f26be00129e132744fd853829e9174aad7ed480",
   "source_sha": "6b439d0d31fcd46708c256ed23a391009ab73164",
   "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "rules": {
@@ -96,11 +92,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N12_SOURCE_INDEX.json": "642f7f47c4cbf6ac871ce5fb37bb4eb8c42e10750f77219fee9fe05781a3fa4b"
   },
   "previous_results": {
-    "G2_AUDIT@n11": {
+    "G3_HOST@n11": {
       "actor": "capability-runner",
-      "artifact": "6663dd2486d4b4f0903df8a66f9b4214b7c8b30ad258fa89dd878aca06dcf130",
-      "input_hash": "0a1de7b33bd958b64d5ca2aebc110c9661b7ca5dea57c1bd9f2438376fb4f8db",
-      "node": "G2_AUDIT@n11",
+      "artifact": "e36a4fe1f2b7172fbe239cdd623d58dc384ef5a5bfb258560154f9debd3f7900",
+      "input_hash": "262821284004a715efc8445f636ff3a8ec16040e44f0eb859d6935be6636e224",
+      "node": "G3_HOST@n11",
       "verdict": "PASS"
     }
   },

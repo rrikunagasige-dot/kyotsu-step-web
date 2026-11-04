@@ -1,0 +1,29 @@
+{
+  "status": "PASS_SCOPED_COMPOSITE_TECHNICAL_CHECK",
+  "source_sha": "188476b10ea366c116409fa46677818569da824b",
+  "meaningOfSourceSHA": "Original native metadata/input manifest verification target; never asserted as actual GitHub CI head.",
+  "actualAppSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "actualPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualCIHeadSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualRunId": 41754189894,
+  "artifactId": 13287912706,
+  "archiveSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+  "checks": [
+    "original73metadataInputsUnchanged",
+    "fixedAppSource69PathsCurrentAndGitShowEqual",
+    "fourActualPublisherBlobsEqual",
+    "original57caTo58daToFinal9b22BoundedRepairChain",
+    "actualFinalCIAndSixDeliverySkips",
+    "all2665OriginalArtifactHashes",
+    "threeOriginalGeneratedManifestsAndMaps",
+    "all85Answers236WrongChoicesFourWidths",
+    "retainedN08N09N10Operations",
+    "focusResetAndBoundaries390Only",
+    "actualABReviewAndResolvedEvidenceGap",
+    "lossless1212JSONRestoration"
+  ],
+  "actualPublicHost": "UNVERIFIED_OUTSIDE_DRYRUN_SCOPE",
+  "publicationAuthorized": false,
+  "studentAcceptance": false,
+  "scope": "Approved four-path/main-based nondeployment publisher dry-run only. Original6808 creation and failed/preliminary runs retained."
+}

@@ -1,0 +1,101 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A理念/手順/identity/公開境界監視",
+  "verdict": "ACTUAL_DRYRUN_EVIDENCE_SUFFICIENT_FOR_T04_COMPOSITE_CHECK",
+  "firstPass": false,
+  "authorSeparation": true,
+  "identities": {
+    "nativeMetadataCandidate": "188476b10ea366c116409fa46677818569da824b",
+    "actualAppSource": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "actualPublisher": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "actualRun": 41754189894,
+    "actualWorkflowSHA256": "9b2274fc5e1c634923145bb8a908e3bc6fd00ee3c06799ceaa39afe1d5553a96"
+  },
+  "scope": "承認済み4path/非公開publisher dry-runの技術証拠審査。Mによるnative T04提出・受理を代行しない。教材品質/公開/本人最終受入へ拡張しない。",
+  "checks": [
+    {
+      "id": "G3-ACTUAL-A01",
+      "status": "VERIFIED",
+      "reason": "保存済実APIrunはhead6cd11、指定publisher branchpush、completed/success。jobsはverify success/publish skipped、verify内の6配信/実host stepsも全skippedを独立照合。mainや実Pages公開が成功したとの証拠ではない。"
+    },
+    {
+      "id": "G3-ACTUAL-A02",
+      "status": "VERIFIED",
+      "reason": "原ZIP172663175bytesを自分でSHA256検算しb7a02a…を得て保存APIartifact digestと一致。ZIPfile集合2665件に重複なし、indexとpath集合完全一致、全2665byte長/SHA一致を独立確認。"
+    },
+    {
+      "id": "G3-ACTUAL-A03",
+      "status": "VERIFIED",
+      "reason": "3manifest原bytesをZIPから読み、release.jsonのworkflowSHAとW046/W047のpublisherSHAが6cd11、全sourceSHAがf129、同storageKeyを照合。W047unitsはN11rev11/39回答/hash3465df…、N12rev4/46/hash8ba070…、presentation906c4f…、contract710ad6…で固定教材に一致。manifestはindexの原SHAと対応。",
+      "manifests": {
+        "release.json": {
+          "path": "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/release.json",
+          "sha256": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d"
+        },
+        "w046-release.json": {
+          "path": "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/w046-release.json",
+          "sha256": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3"
+        },
+        "w047-release.json": {
+          "path": "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/w047-release.json",
+          "sha256": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b"
+        }
+      }
+    },
+    {
+      "id": "G3-ACTUAL-A04",
+      "status": "VERIFIED_REPORT_COVERAGE",
+      "reason": "ZIP原REPORTとJOB.logを読取。N11/N12は各4幅39/46正答、109/127誤答、geometry/history/reload/resize/旧revisionmigration、errorsなし。N08 active7四幅30親42判断/70誤答、revision6 33親37判断/69誤答、legacy34回答80誤答を保持する実report/ログ。N09/N10計8caseはerrors/httpErrors/networkFailuresなしstatusPASS、進捗/reset/旧route保持を報告しuserAcceptance=false。HOST_CONTRACTはlocalhost4179でassets121実検証を報告。自分がブラウザを操作/全assetsをHTTP再fetchしたとはしない。"
+    },
+    {
+      "id": "G3-ACTUAL-A05",
+      "status": "VERIFIED_IDENTITY_ONLY",
+      "reason": "既存check_g3_binding.pyを読み、その末尾の共有evidence書込を除いた同assert本体をread-onlyで再実行。原metadata73path/actualAppSource69path/currentとgitshow一致、scope外部4pathとGitblob一致、57ca→58da→9b22の限定構造差分がPASS_LOCAL_IDENTITY_ONLY。これと別の実CI証拠を合成し、CI headを188へ偽装しない。"
+    },
+    {
+      "id": "G3-ACTUAL-A06",
+      "status": "VERIFIED_LOSSLESS_ARCHIVE",
+      "reason": "現保存形式はRAW_JSON.tar.gz。SHA91e977…/1304178bytesを独立検算。1212JSON path集合が原ZIP/indexの全JSON集合と一致、全40888874原bytesの各長/SHAをtarストリームから独立確認。最大17MB級N08REPORTを含め再生成/省略なし。格納圧縮SHAは原ZIPSHAと別identity。",
+      "archive": {
+        "file": "RAW_JSON.tar.gz",
+        "sha256": "91e97793b24022acc4006e3455b3c895a314cd890a44ed1e1bffaabea9dbf28e",
+        "bytes": 1304178,
+        "originalFiles": 1212,
+        "originalBytes": 40888874,
+        "allOriginalBytesRestoredAndCompared": true,
+        "nativeGuardsChanged": false,
+        "originalArtifactSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+        "originalPathAndFileHashes": "ARTIFACT_INDEX.json",
+        "reason": "Lossless transport/storage of1212actual JSON files, including17130385byteN08REPORT exceeding API request limit. No regeneration or substitution."
+      }
+    },
+    {
+      "id": "G3-ACTUAL-A07",
+      "status": "VERIFIED_BOUNDARY",
+      "reason": "非公開verify成功は環境保護拒否の修復とmanifest証拠不足の解決を示す。元run41718315741/旧publisher6808、先行c133runは履歴保持。旧source087のN12BASELINEを新版proofへ流用しない。現mainmerge/manualfalse/Pages公開許可・G3_HOST実配信PASS・本人最終受入は作らない。"
+    }
+  ],
+  "T04Procedure": "現native claim/inputhash/integrity/承認coverageが有効なことをMが確認後、metadata188の原候補入力/原draft現bytesを検査したcheckに、実publisher6cd11/run41754189894の原metadata・ZIP・manifests・REPORTと厳密生成連鎖のfileRefsを含めて提出できる。check.source_sha=188はこの複合入力検査対象を意味し、kind=ci.head_sha=188という虚偽登録をしない。原T03は6808の初回作成として保持。",
+  "closureBoundary": "T04後は環境保護拒否/manifest保存不足/複数identityの技術学習をqualityUNKNOWNでL01へ記録。未解決技術issueがなければ既存Z01で技術Workを閉じられるが、親W047のG3_HOSTは未公開のまま。公開前に具体4path/実証を揃えた実公開許可の最終段階が必要。N11/N12本人最終app確認一回は公開後に留保。",
+  "findings": [],
+  "limits": [
+    "実APImetadata/logは保存済証拠を照合。自分でGitHub APIへ再問い合わせ/ZIP再downloadしたとはしない。原ZIPと可逆圧縮版の現localbytesは独立検算。",
+    "全2665ファイルhashを検算したが、PNG全件の可視意味/全subjectmodeを今回新規審査していない。",
+    "実HTTPasset検査は成功job/原HOST_CONTRACT121assetsに依拠。自分の外部再fetch/公開検査ではない。",
+    "正式T04受理/Storeイベント作成はMのみ。この報告は提出可能な証拠条件の審査。",
+    "repo/Store/Git編集なし。指定/tmp原報告のみ保存。追加subagentなし。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_FINAL_CI.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_FINAL_CI_JOB.log",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/ARTIFACT_INDEX.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/RAW_JSON_ARCHIVE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/RAW_JSON.tar.gz",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/check_g3_binding.py",
+    "/tmp/w047-final-g3-41754189894.zip",
+    "/tmp/w047-final-g3-artifact-41754189894"
+  ],
+  "originalArchiveSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+  "runProofSHA256": "978bb2f7f5c046ddde84a96ff4234146f9029b4568bfc1b7dfb2a6fe16be5453",
+  "indexSHA256": "8a6951b1db1dea0d35a3899a1928962507a140fa89349d0613800cf846ec93e3"
+}

@@ -2,7 +2,7 @@
 
 状態: VERIFYING / 内部: READY / 次: G3_HOST@n11
 
-台帳HEAD: `a5360d3aff4d2a85c599c6930e77d09b49980933f2f8247272510ed1b770138a`
+台帳HEAD: `3f5df00c8c149c25bb9c4e1be4db854feaa11ce587c0a1466e41176fa8085b65`
 候補SHA: `f129ba78e496f0ccbce917c762357a81b92b0a2c`
 
 模擬実行: False。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。

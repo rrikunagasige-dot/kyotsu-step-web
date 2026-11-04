@@ -1,0 +1,13 @@
+{
+  "requestId": "P-W047-G3-PUBLISH-01",
+  "path": "work/items/W-MATH-047-n1112-guided-review/G3_PUBLICATION_REQUEST.md",
+  "sha256": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+  "mainExpected": "04b823259a0873235e39099864d454330eed5d81",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "operations": [
+    "main_fast_forward_exact_four_path_tree",
+    "existing_Pages_publication"
+  ],
+  "approvalReceived": false
+}

@@ -1,23 +1,14 @@
 {
   "work": "W-TECH-052",
   "engine_version": "1.0.0",
-  "ledger_head": "f9653587a36cfc79052388676881d7d1e3f75600fdb4059996bf0c099064e057",
-  "work_status": "VERIFYING",
+  "ledger_head": "3f5df00c8c149c25bb9c4e1be4db854feaa11ce587c0a1466e41176fa8085b65",
+  "work_status": "DONE",
   "profile": "technical",
   "simulation": false,
   "candidate_sha": "188476b10ea366c116409fa46677818569da824b",
   "next": {
-    "status": "WAITING",
-    "reason": "TOOL_RESULT",
-    "node": "T04_VERIFY",
-    "claim": {
-      "actor": "M",
-      "expires_at": 1793769806.9913132,
-      "input_hash": "337a37df52f43a87358abdc76728102cabebae1535e5a5e03b07016d3adba245",
-      "node": "T04_VERIFY",
-      "task_id": "2380690c03c04b8440c4559bfd761e55d58def7ab95f28ee82d00b5028e590d1",
-      "token": "d29ffa2d39534b32a2c63710c70282b6"
-    }
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
   },
   "nodes": [
     {
@@ -87,7 +78,7 @@
       "required": [],
       "block": null,
       "watch": "candidate",
-      "status": "RUNNING"
+      "status": "PASSED"
     },
     {
       "id": "L01_LEARNING",
@@ -104,7 +95,7 @@
       ],
       "block": null,
       "watch": "learning",
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "Z01_CLOSE",
@@ -115,7 +106,7 @@
       "required": [],
       "block": null,
       "watch": "all",
-      "status": "PENDING"
+      "status": "PASSED"
     }
   ],
   "pending_issues": [],

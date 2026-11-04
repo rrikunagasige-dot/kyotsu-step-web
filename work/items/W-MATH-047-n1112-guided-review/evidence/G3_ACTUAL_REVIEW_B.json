@@ -1,0 +1,182 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_ACTUAL_NONPUBLIC_DRY_RUN_ARTIFACT",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "runId": 41754189894,
+  "artifactId": 13287912706,
+  "archiveSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+  "scope": "Fixed-sourceactualbytes/publisherdryrun/retainedcontracts/operations/evidenceretention only. No publicG3HOSTPASS orstudentacceptance.",
+  "authorSeparation": true,
+  "blindReview": false,
+  "firstActualArtifactInspection": true,
+  "lessonFirstPass": false,
+  "exposure": "Breviewedpublisherdraft/repair andhelpedcapture/importtools. Earlierlesson/source/CI/previewreviews known; this isindependentfinalartifacttechnicalaudit,notnewblindlessonreview.",
+  "rows": [
+    {
+      "surface": "Authentic final run identity and delivery boundary",
+      "status": "PASS",
+      "observation": "Finalrun41754189894/publisher6cd11 verifyjob126328713531 success;publishjob skipped. Metadata sixconfigure/uploadPages/deploy/realhoststeps skipped. Sourcecheckoutf129 andpublishercheckout6cd11 seen inactualjoblog. Original6808environmentfailure andpreliminaryc133success are separate; neither used as finalrun proof.",
+      "evidence": [
+        "evidence/G3_FINAL_CI.json",
+        "evidence/G3_FINAL_CI_JOB.log"
+      ]
+    },
+    {
+      "surface": "Original ZIP / complete raw bytes / safe paths",
+      "status": "PASS",
+      "observation": "Independently rehashed172663175byte originalZIP to actualAPI digestb7a02a…; all2665files/218113814expandedbytes matchedZIPreadbytes, extractedfiles andauthoritativeindex. Allactualpaths canonical relative/no traversal/no backslash/no normalizedduplicates/nonlink.1212JSON copies matchedoriginalZIPbytes; actualJSONarchive separately restored into/tmp andcomparedall1212.",
+      "evidence": [
+        "/tmp/w047-final-g3-41754189894.zip",
+        "/tmp/w047-g3-b-independent-bytes.json"
+      ]
+    },
+    {
+      "surface": "Three actual generated manifests and filemaps",
+      "status": "PASS",
+      "observation": "All3originalCIgeneratedmanifestbytes present. Sourcef129/publisher6cd11 match;W047contractSHA matchesreviewedcontract,N11/N12revision+counts+authoredhashes exact. W047121assetfilemap equalsW046122map minusw047-release.json;actualrelease/w047manifestsha matchreferencingfilemap.W041retainedN08construction equalW047retainedN08,activeR7/16runtimeunits preserved. No locallyregeneratedmanifestused.",
+      "manifestHashes": {
+        "release.json": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+        "w046-release.json": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3",
+        "w047-release.json": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b"
+      }
+    },
+    {
+      "surface": "Strict69 source guard and retained contracts",
+      "status": "PASS",
+      "observation": "ActualCIlog STRICT_CURRENT_SOURCE_RETAINED_CONTRACT requiredPaths69;approvedonly2N11oldhashmigrations. Independentlyrequired69workingbytesmatchfixedcontract;W04646requiredsourcehashes equalsubset andN09revision10/N10revision6 compiledcontracts preserved. SourceHEADguardexecuted innonbytesmode; notjustlocalbytes-only.",
+      "evidence": [
+        "evidence/G3_FINAL_CI_JOB.log:826",
+        "G3_PUBLISHER_DRAFT/w047-release-contract.json"
+      ]
+    },
+    {
+      "surface": "Actual N11/N12 all-answer/wrong-fourwidth reports",
+      "status": "PASS",
+      "observation": "EachREPORT sourcef129/statusPASS/errorsempty;exact4widthrows320/390/430/1440:39answers109wrong,N1114stages2figures/legacy1–10;46answers127wrong,N1215stages3figures/legacy1–3. Geometry/history/reload/resize/migration true. These areactualCIrunneroperations,notBfreshbrowserplaythrough.",
+      "evidence": [
+        "tmp/w047-prepublish/n11/REPORT.json",
+        "tmp/w047-prepublish/n12/REPORT.json"
+      ]
+    },
+    {
+      "surface": "Actual focus/reset/boundaries and representative PNGs",
+      "status": "PASS",
+      "observation": "N11quotient12frames4widths×3states;N12five-target60frames/issues0,46answers/5focusedwrongdistinctfromall127.390reset/reloadandN11→N12/back,N12→N13/back recorded. DirectrepresentativePNG observations showquotientmaskedbeforecorrect,completedaftercorrect;N12oneslot2650andnumber32→33,independentKEEP06/15separatelines,reset0/39and0/46,successorabsoluteunit0/12.",
+      "evidence": [
+        "tmp/w047-prepublish/n11-focus/FOCUSED_CAPTURE.json",
+        "tmp/w047-prepublish/n12-focus/FOCUSED_CAPTURE.json"
+      ]
+    },
+    {
+      "surface": "Retained N08 / N09 / N10 actual operations",
+      "status": "PASS",
+      "observation": "N08R7fourwidths30parents42decisions70wrong,partialreload/history/5comparisonroutes/isolation/geometryPASS;1200captures3936measurements. N08R6at390:33parents37decisions69wrong/isolatedhistory;R5legacy390:34answers80wrong/originalswitchisolated. N09/N10exact8casesfourwidths55/70correctandonewrongperpart55/70;allcasePASS,realfonts/storage/archive/resetguardsPASS,errorarrays empty. W046122localhostassets verified. No allN09/N10wrongchoice claim.",
+      "evidence": [
+        "tmp/w046-prepublish/result.json",
+        "tmp/w046-prepublish-n08/REPORT.json",
+        "tmp/w046-prepublish-r6/REPORT.json",
+        "tmp/w046-prepublish-legacy/REPORT.json"
+      ]
+    },
+    {
+      "surface": "Manifest evidence retention gap",
+      "status": "PASS",
+      "observation": "G3-B-EVIDENCE-01 resolved byexact3actualgeneratedmanifestfiles infinalactualZIP; source/publisher/filemap hashes independentlychecked andlosslessarchiveverified. Originalc133absence isnotretrospectivelyrelabelled.",
+      "evidence": [
+        "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/release.json",
+        "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/w046-release.json",
+        "home/runner/work/kyotsu-step-web/kyotsu-step-web/dist/w047-release.json"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "G3-B-EVIDENCE-01",
+      "status": "VERIFIED_FIXED",
+      "reason": "FinalactualAPI-digest-matchingZIP contains exact3generatedmanifestbytes; independentrawhash/source/publisher/mapcomparison andtararchivefullreadbackconfirmed. Existingpreliminaryrunmissingmanifestlimitationremains inhistory.",
+      "evidence": {
+        "release.json": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+        "w046-release.json": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3",
+        "w047-release.json": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b"
+      }
+    }
+  ],
+  "independentBytes": {
+    "status": "PASS_INDEPENDENT_ORIGINAL_BYTES",
+    "archiveSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+    "archiveBytes": 172663175,
+    "expandedFiles": 2665,
+    "expandedBytes": 218113814,
+    "originalJSONCopiesCompared": 1212,
+    "manifestHashes": {
+      "release.json": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+      "w046-release.json": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3",
+      "w047-release.json": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b"
+    },
+    "manifestAssets": {
+      "w047": 121,
+      "w046": 122
+    },
+    "required69SourceHashesMatch": true,
+    "rawArchiveRestore": {
+      "verifiedOriginalFiles": 1212,
+      "restored": 1212,
+      "archiveSHA256": "91e97793b24022acc4006e3455b3c895a314cd890a44ed1e1bffaabea9dbf28e",
+      "originalArtifactSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+      "nativeGuardsChanged": false
+    },
+    "publisher": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "source": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "originalSafePathsVerified": true
+  },
+  "viewedRepresentativePNGsSHA256": {
+    "tmp/w047-prepublish/n11-focus/r1-quotient-390-pending.png": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f",
+    "tmp/w047-prepublish/n11-focus/r1-quotient-390-wrong.png": "44f9ecb72a5e0cb36519c12e24542f85021caf863a406aceaafeb36e72a76e51",
+    "tmp/w047-prepublish/n11-focus/r1-quotient-390-correct.png": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4",
+    "tmp/w047-prepublish/n11-focus/r1-reset-reload-start.png": "84e3ff9704ed0e86c487bc399fe0933f3166084c8872ac824f2e22ada2dbbf0c",
+    "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-pending-viewport.png": "55f64a608f274f37c975287f83053309d60a7d906b4e0f435d2b1194eb86c5aa",
+    "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-wrong-viewport.png": "e6c66d9c4d415419961ac16a63e576bd5d3ed5f615362f30b5fa266f25de555d",
+    "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-correct-viewport.png": "84e16e7a4d08af8be80449ca2720c0cbff35805d86f7c94b388aa34b131c62ce",
+    "tmp/w047-prepublish/n12-focus/n12-06-independent-complete.png": "baf6551589d1cdefb68985368c7bc34ad88eeebae18b1fc04a91024208846420",
+    "tmp/w047-prepublish/n12-focus/n12-15-independent-complete.png": "ab6591642f39ef5da5de6d52eae6d7ba8bf2c6c4f419ebda3cb7b0e632d933f4",
+    "tmp/w047-prepublish/n12-focus/n12-reset-reload-start.png": "16de978b3bfcdac4a7eac53735872ef751015f0ad0b0470412e1d646fb9824b8",
+    "tmp/w047-prepublish/n12-focus/n12-next-unit-route.png": "b5b4d77cf31a64140884cdfc3f4066e0ab1eed814ec45ec1919e53b010405204",
+    "tmp/w046-prepublish-n08/0302-390-empty-n08-q01-left.png": "7f1f4cc7bc74da06009c98a0cf3dc9f69e0d5c2ba9c9ff14ec6f2259befcf2d3",
+    "tmp/w046-prepublish-n08/0305-390-wrong-n08-q01-left.png": "d09c5c23655aef49999d3ec37e8d0f6a12053b2d8c97b6469e8663f348bcd85f",
+    "tmp/w046-prepublish-n08/0307-390-filled-n08-q01-left.png": "d0a06bcaab03b8c0717147bd48d0b4f4d3dca027bd7db4c231cdedd7b665ba3e",
+    "tmp/w046-prepublish/n09-390.png": "b87f2da5833e82a9183ffa0562a3bed1a8685fe9c667c5ee822e51470006e25d",
+    "tmp/w046-prepublish/n10-390.png": "7708061b36eb84f3c4f08aa63959b9c902e5ebd5ee6434d4858e31cd58a81421"
+  },
+  "rationale": "Actualfinalartifactsupportsnonpublicpublisherdryrun verification:strictsource/contractguards,authenticgeneratedmanifests,completeN11/N12runnerrecordsandretainedN08/N09/N10testsallmatch. Nopublicationperformed;6delivery/hoststepsskipped.",
+  "limits": [
+    {
+      "surface": "PublicPagesdelivery/hostG3/useracceptance",
+      "status": "UNVERIFIED",
+      "reason": "Dryrunlocalhost4179only.Publishskipped;HOST_CONTRACT andW046_HOSTED lognamesalsoemittedbylocalverify anddonotprovepublichosting."
+    },
+    {
+      "surface": "EveryPNG/everylonghistoryline",
+      "status": "UNVERIFIED",
+      "reason": "Directviewlimitedtodeclared16representatives.N09/N10long390PNGstool-resized;onlyoverallappearance,notalllinesread.N08elementshotsmaycapturefixednavatcapture-scrollposition;notnewviewportlayoutcertification."
+    },
+    {
+      "surface": "IndependentHTTPfetchofall121/122buildassetsbyB",
+      "status": "UNVERIFIED",
+      "reason": "ActualCIcheckerreport/logverifieslocalhostassetbytes;Bcheckedmanifestmapsandoriginalartifactbytes,notrepeatedHTTPsession. BundleassetfilesnotallpresentintheCIreportartifact."
+    }
+  ],
+  "helperReview": "Rootinspecthelperisboundedcurrentartifactinspection,notgeneraluntrustedZIPimportercertification. Bindmetadata/digest,strictactualpathnormalization,andfullreportcounts/statuscheckscompletedindependentlyhere beyondhelperminimumasserts. Noactualartifactpath/schema discrepancy found.",
+  "rawJSONStorage": "All1212originalJSON/40888874bytes restored into a fresh/tmpdestination fromRAW_JSON.tar.gzSHA91e977… andmatchedoriginalZIPbytes. Sourcefiles/nativeRuntimeguardsnotchanged.",
+  "writes": "Reports andisolatedrestoreonly/tmp; noStore/Git/repowrites",
+  "requestedRepresentativeOriginalPNGPaths": [
+    "tmp/w047-prepublish/n11-focus/r1-quotient-390-pending.png",
+    "tmp/w047-prepublish/n11-focus/r1-quotient-390-correct.png",
+    "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-pending-viewport.png",
+    "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-correct-viewport.png",
+    "tmp/w047-prepublish/n11-focus/r1-reset-reload-start.png",
+    "tmp/w047-prepublish/n12-focus/n12-reset-reload-start.png",
+    "tmp/w046-prepublish-n08/0307-390-filled-n08-q01-left.png"
+  ],
+  "unchangedAppProofDistinction": "The earlier approved sourcef129 lesson implementation/semantic/G2 evidence remains the content acceptance basis. This new publisher run independently proves checkout/build-contract/localhost asset bytes/operations and evidence retention; it neither reapplies content nor creates a new lesson authorization/first review."
+}

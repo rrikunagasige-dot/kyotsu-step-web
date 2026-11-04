@@ -1,0 +1,12 @@
+{
+  "file": "RAW_JSON.tar.gz",
+  "sha256": "91e97793b24022acc4006e3455b3c895a314cd890a44ed1e1bffaabea9dbf28e",
+  "bytes": 1304178,
+  "originalFiles": 1212,
+  "originalBytes": 40888874,
+  "allOriginalBytesRestoredAndCompared": true,
+  "nativeGuardsChanged": false,
+  "originalArtifactSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+  "originalPathAndFileHashes": "ARTIFACT_INDEX.json",
+  "reason": "Lossless transport/storage of1212actual JSON files, including17130385byteN08REPORT exceeding API request limit. No regeneration or substitution."
+}

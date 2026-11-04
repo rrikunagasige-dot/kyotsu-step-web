@@ -1,0 +1,23 @@
+{
+  "actualOriginalArtifactId": 13287912706,
+  "originalArtifactSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+  "compressedReports": {
+    "file": "RAW_JSON.tar.gz",
+    "sha256": "91e97793b24022acc4006e3455b3c895a314cd890a44ed1e1bffaabea9dbf28e",
+    "bytes": 1304178,
+    "originalFiles": 1212,
+    "originalBytes": 40888874,
+    "allOriginalBytesRestoredAndCompared": true,
+    "nativeGuardsChanged": false,
+    "originalArtifactSHA256": "b7a02a577a8c7bd7c8791cc2b05d38dd8fb2554c3b75869270439b3550f60793",
+    "originalPathAndFileHashes": "ARTIFACT_INDEX.json",
+    "reason": "Lossless transport/storage of1212actual JSON files, including17130385byteN08REPORT exceeding API request limit. No regeneration or substitution."
+  },
+  "githubBlobSHA": "07e34372707540037d1ef69a7772efe5406a2ad4",
+  "localGitBlobVerified": true,
+  "restorationChecks": "evidence/G3_REPORT_RESTORATION_CHECK.json",
+  "status": "EXACT_LOSSLESS_REPORT_STORAGE",
+  "limits": "All1212originalJSON retained losslessly. Full2665file originalZIP digest/index retained;7examined originalPNGs copied unchanged. OtherPNGs remain in current originalZIP/extraction andGitHub artifact retention. No allPNGsemantic-reading claim.",
+  "selectedPNGsSaved": 7,
+  "selectedPNGManifest": "evidence/G3_REPRESENTATIVE_IMAGES.json"
+}

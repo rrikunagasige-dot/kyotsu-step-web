@@ -37,3 +37,6 @@ S1案の最終照合：既存CODEのG3_FINAL@n11→G3_HOST@n12順と単一releas
 - 環境保護のrunner前拒否：原run41718315741保持。環境なし/read-only verify分離後c133の実run success、publish skippedで解決を検証。保護設定を弱めていない。
 - G3-B-EVIDENCE-01：生成3manifestの原bytes不足。最終9b22案で保存対象へ追加し静的確認。実最終artifact保存確認まではMITIGATED/未検証。
 - 旧metadata188をactual CI headへ偽装しない。原73input検査と、生成publisher6cd11/appsourcef129/実run41754189894の対応を複合checkへ明示する。
+
+
+G3-B-EVIDENCE-01 最終解決：最終API-digest一致原ZIPへ3実生成manifestが収録され、元byte/hash・sourcef129/publisher6cd11・121/122filemap相互対応をA/B独立照合。VERIFIED_FIXED。先行c133の欠落は履歴のまま。結果enumのCODE拒否もG3_NATIVE_VERIFY_ENUM_REJECTION.jsonに保存しguardは不変。

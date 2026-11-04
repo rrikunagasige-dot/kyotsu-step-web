@@ -1,6 +1,8 @@
 # 2026-11-04 G3現在の検証範囲
 
-原73input/教材69path/実4blob一致は限定CODE PASS。c133/run41753645581は実全検査success・publish/配送6step skipped。最終9b22/publisher6cd11/run41754189894は実行中、原artifact/3manifest照合待ち。実公開・本人最終受入は未実施。親G3と技術T04の火柴図を優先する。
+最終publisher6cd11/run41754189894は実success、publish/配送6step skipped。原73input・教材69path・実4blob、原ZIP全2665filehash、原3manifest、N11/N12全85回答/236誤答×4幅と保持N08/N09/N10、focus/reset390を照合しA/B実監査PASS。技術W-TECH-052はT04/L01/Z01正式DONE、親G3_HOSTは未配信。詳細はG3_FINAL_TECHNICAL_CHECK/G3_FINAL_CI/G3_ACTUAL_REVIEW_A/B/G3_TECH_DONEと両generatedを参照。
+
+技術試験と限定表示確認であり、実公開HOST・本人最終受入・全repositoryCIgreen・全1452PNGの意味/全長大履歴行読了を意味しない。原JSON1212件はlossless archiveで全byte保存、7代表PNGも原byte保存。
 
 以下は以前の検証履歴。NOT_RUN/未適用は記録時点の状態である。
 

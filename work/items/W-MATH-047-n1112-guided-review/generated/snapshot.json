@@ -1,7 +1,7 @@
 {
   "work": "W-MATH-047",
   "engine_version": "1.0.0",
-  "ledger_head": "a5360d3aff4d2a85c599c6930e77d09b49980933f2f8247272510ed1b770138a",
+  "ledger_head": "3f5df00c8c149c25bb9c4e1be4db854feaa11ce587c0a1466e41176fa8085b65",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
@@ -1906,30 +1906,6 @@
   "application_accepted": false,
   "correction_queue": [
     {
-      "block": "n09",
-      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
-      "evidence_refs": [
-        "W034-N09-ORDER-NEGATIVE-20261025"
-      ],
-      "id": "9edbc81e2181722b430e",
-      "origin": "user",
-      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "work": "W-MATH-034"
-    },
-    {
-      "block": "n10",
-      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
-      "evidence_refs": [
-        "W034-N10-FACTOR-NEGATIVE-20261025"
-      ],
-      "id": "ff234332d7d5ec0beaf3",
-      "origin": "user",
-      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "work": "W-MATH-034"
-    },
-    {
       "block": "n11",
       "description": "divisorを解いた同じvisibleAfter条件で、S3 divideはinteractionRef=nullのためcompleted=3x/3<7/3を表示し、S4 finalはn11-06未回答のx<slotを表示する。n11-06はblankRole=calculation/課題「右辺の商を入れる」/正答7/3。直前式がその正答を同じ標準分数で確定表示し、slotには新たな演算・比較・全式組立て・意味判断が残らない。MASTER8の中間結果再利用の許容とは異なり、商自体を学習者はまだ生成していない。MASTER17の新しい学習行為とMASTER20のprevious formula経由の漏洩検査に反する。",
       "evidence_refs": [
@@ -1957,9 +1933,33 @@
       "work": "W-MATH-047"
     },
     {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "id": "W-MATH-047",
+      "work": "W-MATH-047",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1967,13 +1967,6 @@
       "id": "W-MATH-037",
       "work": "W-MATH-037",
       "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1992,9 +1985,16 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-047",
-      "work": "W-MATH-047",
-      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },

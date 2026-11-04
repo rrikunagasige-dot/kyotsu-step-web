@@ -1,0 +1,75 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "cd02f14a-b6f0-4325-ad91-3fac82f6bd8d",
+    "0ff229f0-be12-4234-ab94-5be24f8e12a0",
+    "cd6dc1dd-ace3-49d3-9d09-f6f2d909876c",
+    "1c10ab02-9984-4778-baea-2c1b067c8826",
+    "e0feadb3-3f06-4c34-8331-db8747e4e69a",
+    "3d47aabf-8849-4dc4-9a15-8497a6642bdf",
+    "205189bf-564d-4688-8597-a44ee5484062",
+    "1141982b-8b37-41d9-a1a6-ba6a9dec4923",
+    "463d5ada-eed0-4ce0-9483-af316e0a65b6",
+    "53a38431-072f-454b-80b4-0a4a6da1e74e",
+    "d00affae-627f-4b3c-b4bd-e00dfd55f50f",
+    "eda6c939-be4c-4b05-bfc2-4cc74578b0f3",
+    "c345b7b4-360c-4075-b0d1-f7f7b445feeb",
+    "f3e8365f-fa23-4ef5-8d8d-a685e039e80a",
+    "64b69f90-eac1-4abb-aff9-9c12ebb1c823",
+    "37565486-0829-4306-b7c5-bba1cbbf3464"
+  ],
+  "case_updates": [
+    {
+      "id": "W047-G3-ENVIRONMENT-PRE-RUN-REJECTION",
+      "disposition": "EXISTING_RULE",
+      "quality": "UNKNOWN",
+      "links": [
+        "evidence/G3_DRY_RUN_01_FAILURE.json",
+        "evidence/G3_REPAIR_INPUT.json",
+        "evidence/G3_FINAL_CI.json"
+      ],
+      "lesson": "Keep protected deployment environment on publishing; a nondeployment read-only verification job must be separate. Original failed run remains failed."
+    },
+    {
+      "id": "G3-B-EVIDENCE-01",
+      "disposition": "TEST",
+      "quality": "UNKNOWN",
+      "links": [
+        "evidence/G3_ARTIFACT_COMPLETENESS_REPAIR.json",
+        "evidence/g3-final-ci/ARTIFACT_INDEX.json",
+        "evidence/G3_ACTUAL_REVIEW_B.json"
+      ],
+      "lesson": "Retain original generated manifest bytes. Final actual ZIP independently resolves the missing-evidence finding; preliminary run is not relabelled."
+    },
+    {
+      "id": "W047-G3-MULTIPLE-IDENTITIES",
+      "disposition": "EXISTING_RULE",
+      "quality": "UNKNOWN",
+      "links": [
+        "check_g3_binding.py",
+        "evidence/G3_FINAL_TECHNICAL_CHECK.json"
+      ],
+      "lesson": "Distinguish original metadata input, appsource, publisher, actual CI head/run and artifact digest; never register different-head CI at metadata SHA."
+    }
+  ],
+  "rule_links": [
+    "governance/WORK_SYSTEM.md#11",
+    "governance/WORK_SYSTEM.md#12A",
+    "governance/WORK_SYSTEM.md#12B",
+    "docs/MASTER_APP_LESSONS.md"
+  ],
+  "regression_links": [
+    "check_g3_binding.py",
+    "restore_g3_reports.py",
+    "evidence/G3_FINAL_CI.json",
+    "evidence/G3_REPORT_RESTORATION_CHECK.json"
+  ],
+  "unresolved": [],
+  "deduplication": [
+    "Technical environment/evidence/identity cases only; existing authorization and exact-source rules retained. No new lesson quality label or duplicated student evaluation."
+  ],
+  "scope_exclusions": [
+    "Public main merge/Pages delivery and parent G3_HOST",
+    "Student final-app acceptance and parent learning closure"
+  ]
+}

@@ -1,6 +1,6 @@
 # ブロック火柴図（GENERATED）
 
-台帳HEAD: `a5360d3aff4d2a85c599c6930e77d09b49980933f2f8247272510ed1b770138a`
+台帳HEAD: `3f5df00c8c149c25bb9c4e1be4db854feaa11ce587c0a1466e41176fa8085b65`
 
 ```mermaid
 flowchart TD

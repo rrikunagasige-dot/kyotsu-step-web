@@ -1,0 +1,10 @@
+{
+  "status": "REJECTED_BEFORE_T04_RESULT",
+  "node": "T04_VERIFY",
+  "cause": "check evidence requires exact status PASS; submitted descriptive status PASS_SCOPED_COMPOSITE_TECHNICAL_CHECK was rejected by unchanged Runtime guard.",
+  "repair": "Keep original file proof unchanged; adapter sends status=PASS and keeps the descriptive scope in verificationClass. No CI identity or guard changed.",
+  "actualPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualRunId": 41754189894,
+  "actualCIConclusion": "success",
+  "notAppFailure": true
+}

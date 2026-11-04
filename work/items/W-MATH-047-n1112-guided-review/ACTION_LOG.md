@@ -57,3 +57,8 @@ S1案の最終照合：既存CODEのG3_FINAL@n11→G3_HOST@n12順と単一releas
 89b1ef8fの実continueをP-W047-G3-01へ記録。main04b823起点4pathのみのpublisher6808を実作成。run41718315741はgithub-pages環境branch制限でrunner前拒否（steps=[]）。元案57caと原失敗を保持し、環境保護は変えずverify専用job分離58daをA/Bで審査。publisherc133/run41753645581は実success、publish/6delivery skipped。
 
 Bの生成manifest原bytes欠落指摘G3-B-EVIDENCE-01を採用。配信/検査/権限は変えず、普通artifactへdist3manifestを追加9b22。A/B静的PASS、publisher6cd11/run41754189894実行中。原metadata/appsource/publisher/runを別identityで結び、既存73inputと69source/4actualblobをCODE照合。最終実artifact未取得のためT04合格・G3HOST合格・本人受入は未記録。復旧後の原approval/初回T03と修復input/outputをGitHubのevidence branchへ保存した。
+
+
+## 2026-11-04 最終G3非公開検証の正式完了
+
+最終6cd11/run41754189894 success・publish/6delivery skipped。artifact13287912706の172663175bytes/b7a02aを実取得、2665file/原3manifest/1212JSONをM/A/B独立照合。1212原JSON40,888,874bytesは1,304,178byte tar.gz/91e977へ可逆保存しfresh復元/既存改変拒否/圧縮改竄拒否を検査。7代表PNGは原hashのまま保存。B所見G3-B-EVIDENCE-01 VERIFIED_FIXED。checkの記述的statusは既存RuntimeのPASS enumで拒否され原記録保存、原proofを変えずadapterでstatus=PASS/verificationClassへ接続。原metadata188/教材f129/publisher6cd11を区別した複合checkが正式受理され、技術T04→L01(qualityUNKNOWN)→Z01 DONE。親/技術の両火柴図は同台帳HEADで、親nextG3_HOST@n11。次の具体4path/main/既存Pages公開許可待ち、公開/本人受入は未記録。

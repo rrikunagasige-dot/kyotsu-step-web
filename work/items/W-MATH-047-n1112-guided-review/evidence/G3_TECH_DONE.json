@@ -1,0 +1,13 @@
+{
+  "technicalNext": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "technicalWork": "W-TECH-052",
+  "parentWork": "W-MATH-047",
+  "parentNext": "G3_HOST@n11",
+  "actualPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "actualAppSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publicationAuthorized": false,
+  "studentAcceptance": false
+}

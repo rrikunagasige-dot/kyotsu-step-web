@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "originalPath": "tmp/w047-prepublish/n11-focus/r1-quotient-390-pending.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/r1-quotient-390-pending.png",
+      "bytes": 88488,
+      "sha256": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f"
+    },
+    {
+      "originalPath": "tmp/w047-prepublish/n11-focus/r1-quotient-390-correct.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/r1-quotient-390-correct.png",
+      "bytes": 116148,
+      "sha256": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4"
+    },
+    {
+      "originalPath": "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-pending-viewport.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/n12-q13-operation-320-pending-viewport.png",
+      "bytes": 77386,
+      "sha256": "55f64a608f274f37c975287f83053309d60a7d906b4e0f435d2b1194eb86c5aa"
+    },
+    {
+      "originalPath": "tmp/w047-prepublish/n12-focus/n12-q13-operation-320-correct-viewport.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/n12-q13-operation-320-correct-viewport.png",
+      "bytes": 86446,
+      "sha256": "84e16e7a4d08af8be80449ca2720c0cbff35805d86f7c94b388aa34b131c62ce"
+    },
+    {
+      "originalPath": "tmp/w047-prepublish/n11-focus/r1-reset-reload-start.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/r1-reset-reload-start.png",
+      "bytes": 84802,
+      "sha256": "84e3ff9704ed0e86c487bc399fe0933f3166084c8872ac824f2e22ada2dbbf0c"
+    },
+    {
+      "originalPath": "tmp/w047-prepublish/n12-focus/n12-reset-reload-start.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/n12-reset-reload-start.png",
+      "bytes": 126315,
+      "sha256": "16de978b3bfcdac4a7eac53735872ef751015f0ad0b0470412e1d646fb9824b8"
+    },
+    {
+      "originalPath": "tmp/w046-prepublish-n08/0307-390-filled-n08-q01-left.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-final-ci/representatives/0307-390-filled-n08-q01-left.png",
+      "bytes": 94411,
+      "sha256": "d0a06bcaab03b8c0717147bd48d0b4f4d3dca027bd7db4c231cdedd7b665ba3e"
+    }
+  ],
+  "origin": "Actual final13287912706artifact172663175bytes/b7a02a; originals copied unchanged after B visual audit",
+  "notAllImagesRead": true
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "rows": [
+    "fresh1212_exact_restoration_and_idempotence",
+    "refuse_changed_existing_report_without_overwriting_it",
+    "refuse_tampered_archive_before_extraction"
+  ],
+  "originalArchiveSHA256": "91e97793b24022acc4006e3455b3c895a314cd890a44ed1e1bffaabea9dbf28e",
+  "sharedRawReportsChanged": false,
+  "nativeGuardsChanged": false
+}

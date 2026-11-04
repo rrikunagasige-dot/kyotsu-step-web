@@ -1,3 +1,5 @@
+import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
+import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import type { NestedLedger } from './nestedLesson'
 import { isConstructionResolvedV2, selectConstructionPartV2, type ConstructionProgressV2 } from './constructionProgressV2'
 import n08Revision6 from '../data/textbook/math/numbers/n08Revision6.json'
@@ -199,6 +201,27 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   // N09/N10 constructor revisions are migrated only by the source-bound Store bridge.
   if (unit.constructionLessonVersion === 'n0910/1') return progress.unitId === unit.unitId && progress.unitRevision === unit.revision ? progress : undefined
   if (progress.unitRevision === unit.revision) return progress
+  // W048: use the real prior unit and prior migrations before adding new decisions.
+  const w048Legacy = unit.unitId === 'math-numbers-expressions-n13' && unit.revision === 5
+    ? (w048N13Module as unknown as { mathNumbersN13LegacyUnit?: TextbookUnit }).mathNumbersN13LegacyUnit ?? w048N13Module.mathNumbersN13Unit
+    : unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 11
+      ? (w048N14Module as unknown as { mathNumbersN14LegacyUnit?: TextbookUnit }).mathNumbersN14LegacyUnit ?? w048N14Module.mathNumbersN14Unit
+      : undefined
+  if (w048Legacy && progress.unitId === unit.unitId && progress.unitRevision <= w048Legacy.revision) {
+    const previous = effectiveTextbookProgress(w048Legacy, progress)
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const anchors = new Set(w048Legacy.sections.flatMap(section => section.items.map(item => item.id)))
+    return {
+      unitId: unit.unitId, unitRevision: unit.revision,
+      startedAt: previous.startedAt, updatedAt: previous.updatedAt,
+      answers: Object.fromEntries(Object.entries(previous.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, [String(w048Legacy.revision)]: archive },
+      migratedFromRevision: w048Legacy.revision,
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
   // W041 is opt-in: an archived r7, including reset-empty records, is authoritative.
   if (unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId && unit.revision === 7) {
     const previous = progress.unitRevision === 6 ? progress : effectiveTextbookProgress(n08Revision6.unit as unknown as TextbookUnit, progress)

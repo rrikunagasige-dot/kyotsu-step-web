@@ -1,3 +1,5 @@
+import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
+import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import n11TransformationPresentation from '../data/textbook/math/numbers/n11Transformation.json'
 import * as n12LessonModule from '../data/textbook/math/numbers/n12Lesson'
 import * as n11LessonModule from '../data/textbook/math/numbers/n11Lesson'
@@ -40,6 +42,23 @@ import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThem
 const n11GuidedPresentation = (n11LessonModule as unknown as { n11Presentation?: unknown }).n11Presentation
 
 const n12GuidedPresentation = (n12LessonModule as unknown as { n12Presentation?: unknown }).n12Presentation
+
+type W048DisplayContract = { unitId: string; revision: number; equationNumbers: Readonly<Record<string, number>> }
+function w048DisplayContractFor(unit: TextbookUnit): W048DisplayContract | undefined {
+  const value = unit.unitId === 'math-numbers-expressions-n13' && unit.revision === 5
+    ? (w048N13Module as unknown as { n13W048DisplayContract?: W048DisplayContract }).n13W048DisplayContract
+    : unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 11
+      ? (w048N14Module as unknown as { n14W048DisplayContract?: W048DisplayContract }).n14W048DisplayContract
+      : undefined
+  return value?.unitId === unit.unitId && value.revision === unit.revision ? value : undefined
+}
+const w048ScopedStyle = `.w048-reading-flow .reading-formula-line{font-size:18px}
+.w048-reading-flow .reading-choice-option>strong{font-size:18px}
+.w048-reading-flow .reading-choice-option .katex,.w048-reading-flow .reading-formula-line .katex{font-size:1em}
+.w048-reading-flow .reading-paragraph .katex{font-size:1em}
+.w048-reading-flow .reading-derivation-chain .reading-formula-line{text-align:left}
+.w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^="textbook-formula-"] .reading-formula-expression{justify-content:flex-start;justify-items:start}
+.w048-reading-flow .reading-choice-option .first-theme-choice-math{max-width:100%}`
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -178,6 +197,7 @@ export function TextbookReadingFlow(props: ReadingFlowProps) {
 
 function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {
   const { text, language } = useI18n()
+  const w048Contract = w048DisplayContractFor(unit)
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
@@ -309,7 +329,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{(isFirstThemeUnit(unit.unitId) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}</span>
+          <span>{((isFirstThemeUnit(unit.unitId) || Boolean(w048Contract)) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}</span>
         </div>
         {activeHint && (
           <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
@@ -320,7 +340,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
         <div
           className={`reading-choice-options${wideMathChoices ? ' reading-choice-options--math-wide' : ''}`}
           role="group"
-          aria-label={(isFirstThemeUnit(unit.unitId) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}
+          aria-label={((isFirstThemeUnit(unit.unitId) || Boolean(w048Contract)) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}
         >
           {activeChoices.map((choice, index) => {
             const isLastWrongChoice = unit.subject === 'math-1a'
@@ -340,7 +360,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
               <span>{index + 1}</span>
               <strong>
                 {activeItem.answerType === 'formula'
-                  ? (isFirstThemeUnit(unit.unitId) ? <FirstThemeChoiceFormula itemId={activeItem.id} value={choice} /> :
+                  ? ((isFirstThemeUnit(unit.unitId) || Boolean(w048Contract)) ? <FirstThemeChoiceFormula itemId={activeItem.id} value={choice} /> :
                     <span className="reading-choice-formula-lines">
                       {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
@@ -402,7 +422,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     if (block.type === 'formula') {
       return (
         <div className="reading-block-with-choice" key={block.id}>
-          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} />
+          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} equationNumber={w048Contract?.equationNumbers[block.id]} />
           {renderInlineChoicePanel(block)}
         </div>
       )
@@ -505,7 +525,8 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
   })
 
   return (
-    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
+    <article className={"textbook-reading-flow" + (w048Contract ? " w048-reading-flow" : "")} data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
+      {w048Contract && <style>{w048ScopedStyle}</style>}
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
           {activeCompactIndex > 0 && (

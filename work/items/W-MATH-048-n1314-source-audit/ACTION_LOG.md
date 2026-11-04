@@ -44,3 +44,12 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 
 ## 2026-11-04 R03再検証と再審査条件
 CURRENT_R03_RESULT.jsonのとおりR03_IMPACT@n13を正式提出、次R04。12影響行・保護対象・固定差分を確認。現在の二人への情報露出とteam.pyのsourceFirst/firstPass条件が両立しないため、偽申告や旧所見流用をせず、W048限定P-W048-REVIEW-001を具体化。validate_policy PASS、8boolean差分。未承認・未採用、engine/教材変更なし。
+
+## 2026-11-04 承認済み露出明記再審査の実行
+User request3f0bb6d6-2a1c-4c3d-9618-5a24bb7151d1「いいよ続けて」をP-W048-REVIEW-001へ照合し専用policy承認を登録。旧R06 claimをRESULT_LOST_REVIEW_REQUIREDとして退役、productは保持。adopt-team-policyが教材bundle hash不変を確認。現二人の原task/出力をnative登録しN13/N14 R04を正式提出。旧LEFT-ALIGN二件も現inputのB解決taskで照合。N13 R05既承認照合/R06新compile+既存patch証拠で完了、再patchなし。candidate bindで共有影響両unitが必要とのguardに従いd34d9fe5へ両unitを固定（N14leafはr10未適用）。
+追加probeはfirst接続隔離FAIL、second320成功後browser終了FAIL、third四幅PASS。全原報告を保持。3.7MB実測原JSONはlossless gzip+SHAで保存。rootの追加座標解析では320 Q04だけ32px差がありR07を止めて原因切分け。正式R07やN14実装の成功を先取りしない。
+
+## 2026-11-05 JST 接続復帰後の補修案検証
+A/B二人を再開し非作者・既露出静的審査。CODEはM一回の四幅実行。Q04開始位置と回答行scrollLeft0、320px別行20px保持、拡張検査四幅各18回答/旧保存4版が成功。初回サーバ接続失敗二回は製品FAILと混同せず保持。Page正式差分は未適用、追加案P-W048-SCROLL-001を提示可能にした。N14動的検証/R07全体未完了。
+
+新画像の日本語豆腐をMの実見で発見。既存fontconfig/ライブラリ環境を復元し四幅診断を再実行成功、320px原画像を実見。元の豆腐画像は保持し視覚PASSにしない。公開GitHub pushは自動承認レビューがpayload明示許可不足で拒否、代替経路で回避しない。記録はlocal commitに保持、公開保存の明示承認待ち。

@@ -1,0 +1,70 @@
+{
+  "taskRef": "W048-current-R04-n13-B-e4",
+  "assignmentId": "w048-R04_PROPOSAL@n13-B-94f3d525aa-e4",
+  "roleEpoch": 4,
+  "node": "R04_PROPOSAL@n13",
+  "inputHash": "94f3d525aacf1ce396216bf666069e70dfa3d466723b620f16368daaf05cbabe",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "packetHash": "8e0c170055aa36984c8f8d0911616ec05f08686d683fea04882b19b72443a1cd",
+  "targetManifestRef": "95e96a7c14b9a55c2d8a7a76d1e9303cfebbf50cdedbbd2184d79173d90ac844",
+  "targetHash": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+  "claimRef": "layout",
+  "facet": "render",
+  "reviewKind": "learner-visible-review",
+  "performerRef": "/root/w048_review_b",
+  "sourceFirst": false,
+  "firstPass": false,
+  "authorSeparation": true,
+  "verdict": "PASS",
+  "reviewScope": "R04 current fixed proposal display/save design only; exposed nonauthor re-review under P-W048-REVIEW-001. Not R07 rendered acceptance.",
+  "contextExposure": {
+    "forkMode": "all",
+    "authorRationaleVisibleAtFirstPass": true,
+    "priorExposure": "Existing A/B saw P003 rationale and prior targets. Approved P-W048-REVIEW-001 allows exposed nonauthor current-target re-review; no blind/first-pass claim."
+  },
+  "firstObservations": [
+    "N13_LEARNER_REVIEW file SHA256 equals fixed layout target e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d; fullCopy and figures equal materialized candidate readingFlow and figures. This is my current exposed observation, not an unexposed first encounter.",
+    "The 60-block copy keeps positive/negative branches separate in Q04/Q07 and zero/negative-distance decisions separate in Q09; progressive views end at their current interaction. f02 follows Q01, f01 follows completed Q04 before Q05. Old-complete projection resumes Q04-positive rather than silently completing six added decisions.",
+    "The snapshot has 18 question views and 54 raw distractors. openChoices is authored option data, not an assertion all four choices appear simultaneously: actual getTextbookChoices applies scaffold filtering, yielding 42 displayed distractors. CI confirms 18 correct and 42 displayed wrong choices per width, not raw54 browser coverage.",
+    "Actual Page/domain bytes equal r3 proposed shared code and fixed after hashes; N13 is fixed after, N14 remains before. Revision-scoped contract and migration activation prevents present N14 r10 or other units from acquiring the new display/save branch."
+  ],
+  "rationale": [
+    "Packet inputHash, assignment layout target, target manifest node/block/facet/sourceSHA/policyHash and evidence references agree. r3 DESIGN_INPUTS fixes this same learner target. Preserved old r3 first observations remain historical provenance and are not used as this assignment firstPass evidence.",
+    "Display selection requires exact N13 r5 or N14 r11 and matching contract unitId/revision. Scoped class/style, equation-number mapping, authored prompt and formula choice renderer are only enabled with that contract. The derivation selector matches the actual wrapper→formula-line[data-testid]→expression ancestry and sets both flex justify-content and grid justify-items, including narrow Q05 structure. This supports design adequacy; actual equal-axis coordinates and computed font checks remain R07 obligations.",
+    "Save migration first calls the actual legacy unit and existing revision migrations, preserves old anchor answer records and archive/completion history, removes current completion and leaves added IDs unanswered. Existing non-W048 migration branches and grading/choice-generation functions are unchanged. CI synthetic r1-r4 checks and actual r4 save-resume are supporting bounded technical evidence, not exhaustive real-storage coverage.",
+    "CI 41809002629 source d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5 reports four widths 320/390/430/1440,18 correct+42 displayed wrong each, hint/reopen, geometry, history/reload and r4 resume at Q04-positive. Product hashes match this fixed proposal, but CI source is distinct from assignment sourceSHA and is retained with its own provenance; it is not a native current-assignment R07 receipt.",
+    "I authored the bounded CI probe, not lesson copy, proposed Page/domain or layout semantic content. My probe authorship is disclosed; CI success is technical support, not an independent review of my own probe. This PASS is the current proposal layout/save design judgment and verification-plan adequacy, not acceptance of implemented rendering."
+  ],
+  "findings": [],
+  "evidenceRefs": [
+    "f2a8ec87-d581-4bc4-9a7a-964f0976d87a",
+    "d031e48c-19fb-4d54-94c1-20fb2631df4b",
+    "172195c3-8ea5-4e1e-b8ea-6f4b97a9efb5",
+    "bdb6a82e-b3a7-42aa-bf42-1f021ab1a5e0",
+    "61979acf-28a5-4c68-a573-31c1a890b72f",
+    "cba9357a-6c5c-4d69-868c-40ffea71788e",
+    "da6d003c-9869-430d-a3e6-673b8cad5b78",
+    "e7c551ed-3904-407f-8377-25a587ff82e1",
+    "cf545551-97bd-41f4-a04c-b6eef4c1ae84",
+    "18de79b2-2c3d-49cb-a393-ee57ffa50ccc",
+    "13d38368-410f-4d21-8080-0d46e47ed9b6",
+    "2e6a09d2-2352-4f39-81ec-367fd659ae42",
+    "32f755c2-d3ef-4ec2-b8eb-b9b12f3390d4",
+    "06631344-0b1d-4be0-95ad-9efaa5b8664b",
+    "8fe62cf1-cb0d-4d5a-9dea-8d28093a56d7",
+    "a1a7a35c-196c-49b6-b52c-50f31e85666f",
+    "b9691472-9024-4a0d-8098-b8c60f240847",
+    "854f37b4-56b5-4b3c-8343-ccadfdaaa2ab",
+    "0e29986e-2d35-4817-837f-aa1cb9c68a7f",
+    "3c560cf6-5f7f-4262-9cff-8a99cd0eff96",
+    "7521ea9e-09e3-4671-bf73-dfa536982caa"
+  ],
+  "limits": [
+    "Exposed same-model nonauthor re-review: sourceFirst=false,firstPass=false; no blind or model-independent claim.",
+    "R07 still requires actual left-edge/equal-axis measurements for Q04/Q05/Q07/Q08/Q09 across unanswered/wrong/correct states and flex/grid; equation numbers1-9 final-row uniqueness/collision; computed18px/KaTeX1em and paragraph/figure/caption inspection.",
+    "R07 still requires explicit figure-release timing, r1-r4 real persisted record/archive metadata and out-of-order answer resume, reset/reload, chapter transitions and other-unit/old-revision regression.",
+    "Raw54 distractors were inspected as design option data; CI browser covers only42 actually displayed distractors per width. Omitted raw distractors are not browser-tested.",
+    "N14 remains NOT_APPLIED and receives no current-source browser PASS. Its44 partial-answer states and formal application/QA remain separate.",
+    "Previous screenshot header overlap was corrected and sampled images reobserved with provenance, but long-image downscaling limits fine-text inspection. Formal native R07 target/packet and comprehensive semantic/visual review remain outstanding."
+  ]
+}

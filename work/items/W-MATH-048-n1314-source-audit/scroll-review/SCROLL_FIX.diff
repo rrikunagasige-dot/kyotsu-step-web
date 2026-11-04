@@ -1,0 +1,43 @@
+diff --git a/src/pages/TextbookUnitPage.tsx b/src/pages/TextbookUnitPage.tsx
+index 2751dc77..daa5b614 100644
+--- a/src/pages/TextbookUnitPage.tsx
++++ b/src/pages/TextbookUnitPage.tsx
+@@ -198,6 +198,7 @@ export function TextbookReadingFlow(props: ReadingFlowProps) {
+ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {
+   const { text, language } = useI18n()
+   const w048Contract = w048DisplayContractFor(unit)
++  const readingFlowRef = useRef<HTMLElement>(null)
+   const answerTextbook = useAppStore((state) => state.answerTextbook)
+   const [activeItemId, setActiveItemId] = useState<string | null>(null)
+   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
+@@ -304,9 +305,21 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached,
+ 
+   const selectChoice = (choice: string) => {
+     if (!activeItem || isTextbookItemResolved(activeItem, activeRecord)) return
++    const selectedFlow = readingFlowRef.current
++    const formulaTestId = w048Contract
++      ? selectedFlow?.querySelector<HTMLElement>(`[data-testid="textbook-item-${activeItem.id}"]`)
++        ?.closest<HTMLElement>('[data-testid^="textbook-formula-"]')?.dataset.testid
++      : undefined
+     if (onReviewAnswer) onReviewAnswer(activeItem, choice)
+     else answerTextbook(unit, activeItem.id, choice)
+     setActiveItemId(null)
++    if (formulaTestId) {
++      window.requestAnimationFrame(() => {
++        if (readingFlowRef.current !== selectedFlow || !selectedFlow?.isConnected || !selectedFlow.classList.contains('w048-reading-flow')) return
++        selectedFlow.querySelector<HTMLElement>(`[data-testid="${formulaTestId}"]`)
++          ?.scrollTo({ left: 0, behavior: 'instant' })
++      })
++    }
+   }
+ 
+   const blockContainsActiveItem = (block: TextbookReadingBlock) => {
+@@ -525,7 +538,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached,
+   })
+ 
+   return (
+-    <article className={"textbook-reading-flow" + (w048Contract ? " w048-reading-flow" : "")} data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
++    <article ref={readingFlowRef} className={"textbook-reading-flow" + (w048Contract ? " w048-reading-flow" : "")} data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
+       {w048Contract && <style>{w048ScopedStyle}</style>}
+       {compactStages ? (
+         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">

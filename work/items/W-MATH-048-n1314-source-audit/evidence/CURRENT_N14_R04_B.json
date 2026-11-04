@@ -1,0 +1,71 @@
+{
+  "taskRef": "W048-current-R04-n14-B-e4",
+  "assignmentId": "w048-R04_PROPOSAL@n14-B-871ed7b7ad-e4",
+  "roleEpoch": 4,
+  "node": "R04_PROPOSAL@n14",
+  "inputHash": "871ed7b7ad16b440f3c731b0276953e5654f3b9729fa9747f788ccbddffbb9a1",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "packetHash": "aa6601f4b55b29721184cf3b6ecbb283a40136c46b4094735b2c827430989973",
+  "targetManifestRef": "4c6ec98ba44b3341797ed6bab1f8288c372f54eb5fc3dd3eddcb9c8030975992",
+  "targetHash": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33",
+  "claimRef": "layout",
+  "facet": "render",
+  "reviewKind": "learner-visible-review",
+  "performerRef": "/root/w048_review_b",
+  "sourceFirst": false,
+  "firstPass": false,
+  "authorSeparation": true,
+  "contextExposure": {
+    "forkMode": "all",
+    "authorRationaleVisibleAtFirstPass": true,
+    "priorExposure": "Both reviewers already saw P003 and earlier targets. Approved W048 exposed nonauthor re-review; no blind/first-pass claim."
+  },
+  "verdict": "PASS",
+  "reviewScope": "Current fixed N14 R04 proposal display/save design and verification plan only. N14 r11 is not applied; no implementation/browser R07 PASS.",
+  "firstObservations": [
+    "The fixed N14 learner target SHA25639ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33 matches the actual N14_LEARNER_REVIEW file. Manifest input/source/block/facet and assignment/packet agree. I have already seen author rationale; these are exposed current observations, not a new source-first encounter.",
+    "Learner fullCopy100 physical blocks and one original figure exactly match materialized candidate readingFlow/figures;41 interaction views correspond to38 preserved prior interactions plus3 new decisions. Full copy restores separate boundary/region/endpoint decisions and chapter summary/next-chapter bridge.",
+    "Q10/Q14/Q15 retain three independent same-row operation slots, followed by two endpoint-result slots. Q16 retains separate inner-value and absolute-value slots on both branches. Eight multi-slot rows yield44 binary solved/unresolved masks, not all126 missing/wrong/correct three-valued combinations.",
+    "Q03 and Q05 region decisions precede endpoint integration; the comparison figure follows Q06. The proposal old-complete resume starts at n14-w048-q03-region rather than bypassing newly inserted decisions."
+  ],
+  "rationale": [
+    "All38 original IDs, answers, acceptedAnswers and choices remain equal to baseline r10. Only n14-w048-q03-region/n14-w048-q05-boundaries/n14-w048-q05-region are added. Candidate remains r11; actual src N14 hash5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014 is fixed before, while proposed hash e399e5547bebcc784e349b3e8d023d45617f99272bd1e5aad6005560de6abd2d is after.",
+    "Row projection has100 rows and20 logical groups. Equation-number map1-20 matches proposed leaf DisplayContract and identifies formula terminal rows, including Q10/Q14/Q15 result rows and Q16 right check. The number is passed through existing equationNumber prop to NumberedEquation; no new renderer or grading mechanism is introduced. Physical collision/uniqueness in all states remains a post-application R07 check.",
+    "Actual shared Page/domain are byte-identical to r3 proposed versions. N14 display/migration branches activate only at exact unitId+r11, so current r10 and other units do not acquire W048 display/save behavior. Scoped actual-ancestry CSS specifies flex/grid left alignment and18px mathematical lines/options with KaTeX1em; paragraph math inherits paragraph font. This is static design adequacy, not measured N14 browser output.",
+    "Migration retains the real r10 LegacyUnit, calls existing prior-revision migration chain first, preserves anchor answer metadata/archive/history, archives prior completion and leaves3 new decisions unanswered. R1-r10 browser-seeded fixtures must verify both preserved and intentionally reopened legacy IDs in their historical order; current N13 CI cannot establish those N14 claims.",
+    "The44-mask plan is adequate when each of8 rows tests every binary subset, including right/center answered before left; unresolved slots must remain actionable and the following explanation/numbered result must stay gated until all required slots resolve. Missing and wrong-record cases need explicit additional tests;44 does not imply exhaustive ternary state coverage.",
+    "Authored41 views contain123 raw distractors. Existing scaffold filtering predicts105 actually displayed distractors, subject to exact getTextbookChoices fixture generation after application. Browser checks must use actual displayed keys and report omitted raw distractors separately. Previous isolated N14 claims are historical proposal support only; no recovered same-source current N14 browser receipt is available.",
+    "This reviewer did not author lesson/row projection/Page/domain/renderer semantics. Probe authorship is disclosed as CODE work. PASS is a nonauthor judgment of the frozen R04 display/save design and verification plan; it does not adopt CI/prototype evidence as formal R07 acceptance."
+  ],
+  "findings": [],
+  "evidenceRefs": [
+    "e4835615-01cf-42e6-9df4-33f85895fff8",
+    "2629ceb1-e2b7-40ae-ac25-1f5837181db0",
+    "4c7361d6-b8dc-4e22-92a2-3dff3e1185d4",
+    "b10c6495-0762-4271-a1f8-8234a3392639",
+    "2352ad19-de33-4bc6-8643-baee03f97551",
+    "cf6da961-f5a6-43a9-bc16-29628eded914",
+    "be5c2923-4b25-4ce0-ba59-c1ba5d2f2cb0",
+    "adab0a6f-28ca-4130-ace2-7190be2d0c41",
+    "bf08a418-3ac9-4c8e-8935-dd8e70f62da0",
+    "655fb281-7703-47c0-ad82-124d05a6869b",
+    "e488da97-4ffd-4cb7-b1a4-e9cd6a22363a",
+    "abfabf3a-3f6a-4c4d-9ef5-a9809119486b",
+    "e13cefbf-804e-4155-b10a-4849f4a05d20",
+    "54aa8077-bd10-425a-90ac-a602cd9afa3c",
+    "ca90ec08-f71b-4628-90a5-67cd67bcb604",
+    "aeed8db2-a815-4bd7-a8a3-bf2dd1a833fc",
+    "4fedb428-d67d-4f2d-8935-16a053c3db7b",
+    "a457fd13-be49-4b6f-a647-041dc233d492",
+    "796ef247-e0aa-46fe-9f39-015304adbabe",
+    "67c18757-41a4-456c-939f-7de49bd9a3c6",
+    "e499b6f1-3aee-4d88-8919-0d698543e79d"
+  ],
+  "limits": [
+    "N14 r11 is not applied. Current CI41809002629 and extended probe are N13-only and cannot prove N14 rendering or migration.",
+    "After formal application, verify320/390/430/1440 widths, all41 correct choices and actual displayed wrong choices/hints/reopen with pointer/keyboard, all44 binary row masks plus missing/wrong variants.",
+    "Actual number1-20 terminal mapping/uniqueness/collision,18px/KaTeX and paragraph inheritance, Q10/Q14/Q15/Q16 formula left-start geometry, original figure release after Q06/scale/caption and chapter bridge remain R07 requirements.",
+    "R1-r10 actual persisted schema fixtures need record/firstValue/attempt/time/archive/completion/reopened-ID and out-of-order future-answer checks, plus reset/reload/history, actual neighboring-unit transitions and protected-unit/other-mode regression.",
+    "No formal native R07 packet, public-release verification, human acceptance, blind/first-pass or model-independent claim. Old first observations remain historical evidence only."
+  ]
+}

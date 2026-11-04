@@ -1,24 +1,18 @@
 {
   "work_id": "W-MATH-048",
   "node": {
-    "id": "R04_PROPOSAL@n13",
-    "stage_kind": "R04_PROPOSAL",
-    "contract_kind": "R04_PROPOSAL",
-    "actor": "AI",
+    "id": "R07_VERIFY@n13",
+    "stage_kind": "R07_VERIFY",
+    "contract_kind": "R07_VERIFY",
+    "actor": "TOOL",
     "depends_on": [
-      "R03_IMPACT@n13"
+      "R06_PATCH@n13"
     ],
-    "required": [
-      "before_after",
-      "protected_scope",
-      "patch_plan",
-      "verification_plan",
-      "proposal_hash"
-    ],
+    "required": [],
     "block": "n13",
     "release_unit": "n13",
     "watch": "integration",
-    "phase": "pre-design",
+    "phase": "post-implementation",
     "priority": 0,
     "source_refs": [
       "src/data/textbook/math/numbers/n13Lesson.ts",
@@ -103,55 +97,21 @@
     ],
     "approval_scope_ref": "proposal",
     "capability_requests": [
-      "teaching.plan",
-      "step.plan",
-      "blank.plan",
-      "prose.compose",
-      "text.verify",
-      "figure.verify",
       "ir.verify",
-      "source.audit",
-      "novice.audit"
+      "browser.verify",
+      "protected.verify"
     ],
     "required_code_receipts": [
-      "teaching.plan",
-      "step.plan",
-      "blank.plan",
-      "prose.compose",
-      "text.verify",
-      "figure.verify",
       "ir.verify",
-      "source.audit",
-      "novice.audit"
+      "browser.verify",
+      "protected.verify"
     ],
-    "required_ai_receipts": [
-      "meaning-review"
-    ],
-    "team_requirements": [
-      {
-        "claimRef": "teaching",
-        "facet": "design",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "source-review",
-        "sourceFirst": true,
-        "stage_kind": "R04_PROPOSAL"
-      },
-      {
-        "claimRef": "layout",
-        "facet": "render",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
-        "stage_kind": "R04_PROPOSAL"
-      }
-    ]
+    "required_ai_receipts": []
   },
-  "task_id": "88fff5d2d4bf05ff00521c0504287b3c91be23cb679255c376e931b3895f0d14",
-  "input_hash": "0438ee3639f7a3d7a0e43e005c14dd7b01435a6762865b1da9e964e8282fc363",
+  "task_id": "e31cbbd47d5ea68718eff1c0dfce20c4562d21e8358ea46c9bc9f07898257c94",
+  "input_hash": "fa4a9b4aa9ed01d0a6f0e790fc50343002e7bfeb6e8ec959860a29e2f37e2517",
   "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
-  "candidate_sha": null,
+  "candidate_sha": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
   "rules": {
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
     "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -260,11 +220,11 @@
     "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
   },
   "previous_results": {
-    "R03_IMPACT@n13": {
-      "actor": "capability-runner",
-      "artifact": "5ffed65c16150705ad5caf77e3c6648d13622b403403b20cc3e40ccd8d37d591",
-      "input_hash": "9410f15b6ecb112d364257a80e456abf864e0588d16288615e631070fb65f67e",
-      "node": "R03_IMPACT@n13",
+    "R06_PATCH@n13": {
+      "actor": "M-current-compile-existing-patch",
+      "artifact": "d61bc3287f3ca35b6dc550c55f133e900f0241d5157031df44b8b5090a1d9ed2",
+      "input_hash": "472bece562fb5f5c774df9f2934c48f6aec03cd37f6d191d797668428165d37d",
+      "node": "R06_PATCH@n13",
       "verdict": "PASS"
     }
   },

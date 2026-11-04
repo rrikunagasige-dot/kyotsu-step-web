@@ -1,0 +1,124 @@
+{
+  "root": "/workspace/scratch/55b12fe3f8aa/repo",
+  "store": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "work": "W-MATH-048",
+  "node": "R04_PROPOSAL@n13",
+  "inputHash": "94f3d525aacf1ce396216bf666069e70dfa3d466723b620f16368daaf05cbabe",
+  "roleEpoch": 4,
+  "artifactRefs": [
+    "554792e7bd3cfcc146a4e3ddba016303ae7440e51c9a0b8b44311267fd5f6da7",
+    "21cdda63146616f2a6bf796c4fb7aacfaf2ef28ba4fe817bcc3fe52674efd72f",
+    "78a77cfb01ce5c85e4f67bd0778e4c842efcccf494223bd9b8aa6790bbcc43e4",
+    "06979682ac5f180489420a924e0037db1c1c8b805cd11b43d3a019f11bab23f3",
+    "7c5c55306db269e8c007a17a8278e8004522505c89e54c7a091942e844e393b1",
+    "945e7a96b8016bd5c4c49b75134b4b71ee8a6bb2be8b7a898a1b9ccdbe0e24a6",
+    "b13224b3723f0827ef6c7a28ebd63458b1fd76b8a663783df31e80d2bfa1711d",
+    "617be29c60fa3490b3e2f6c60e77ea1a8037494efdaf61b11956aa932aba2915",
+    "01866507a19647e8ac58b344de409f61d33303bf4259d90162b280d96b9471cf"
+  ],
+  "evidenceRefs": [
+    "f2a8ec87-d581-4bc4-9a7a-964f0976d87a",
+    "d031e48c-19fb-4d54-94c1-20fb2631df4b",
+    "172195c3-8ea5-4e1e-b8ea-6f4b97a9efb5",
+    "bdb6a82e-b3a7-42aa-bf42-1f021ab1a5e0",
+    "61979acf-28a5-4c68-a573-31c1a890b72f",
+    "cba9357a-6c5c-4d69-868c-40ffea71788e",
+    "da6d003c-9869-430d-a3e6-673b8cad5b78",
+    "e7c551ed-3904-407f-8377-25a587ff82e1",
+    "cf545551-97bd-41f4-a04c-b6eef4c1ae84",
+    "18de79b2-2c3d-49cb-a393-ee57ffa50ccc",
+    "13d38368-410f-4d21-8080-0d46e47ed9b6",
+    "2e6a09d2-2352-4f39-81ec-367fd659ae42",
+    "32f755c2-d3ef-4ec2-b8eb-b9b12f3390d4",
+    "06631344-0b1d-4be0-95ad-9efaa5b8664b",
+    "8fe62cf1-cb0d-4d5a-9dea-8d28093a56d7",
+    "a1a7a35c-196c-49b6-b52c-50f31e85666f",
+    "b9691472-9024-4a0d-8098-b8c60f240847",
+    "854f37b4-56b5-4b3c-8343-ccadfdaaa2ab",
+    "0e29986e-2d35-4817-837f-aa1cb9c68a7f",
+    "3c560cf6-5f7f-4262-9cff-8a99cd0eff96",
+    "7521ea9e-09e3-4671-bf73-dfa536982caa"
+  ],
+  "reviewers": [
+    {
+      "logical": "A",
+      "agentRef": "/root/w048_review_a",
+      "taskRef": "W048-current-R04-n13-A-e4",
+      "facet": "design",
+      "claim": "teaching",
+      "reviewKind": "source-review",
+      "artifactHashes": {
+        "teaching": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "94f3d525aacf1ce396216bf666069e70dfa3d466723b620f16368daaf05cbabe",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "teaching",
+            "facet": "design",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "all",
+          "authorRationaleVisibleAtFirstPass": true,
+          "priorExposure": "Existing A/B saw P003 rationale and prior targets. Approved P-W048-REVIEW-001 allows exposed nonauthor current-target re-review; no blind/first-pass claim."
+        }
+      },
+      "reportPath": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/evidence/CURRENT_N13_R04_A.json",
+      "launchPath": "/tmp/w048-current-r04-launch-A.json",
+      "finalPath": "/tmp/w048-current-r04-final-A.json"
+    },
+    {
+      "logical": "B",
+      "agentRef": "/root/w048_review_b",
+      "taskRef": "W048-current-R04-n13-B-e4",
+      "facet": "render",
+      "claim": "layout",
+      "reviewKind": "learner-visible-review",
+      "artifactHashes": {
+        "layout": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "94f3d525aacf1ce396216bf666069e70dfa3d466723b620f16368daaf05cbabe",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "layout",
+            "facet": "render",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "all",
+          "authorRationaleVisibleAtFirstPass": true,
+          "priorExposure": "Existing A/B saw P003 rationale and prior targets. Approved P-W048-REVIEW-001 allows exposed nonauthor current-target re-review; no blind/first-pass claim."
+        }
+      },
+      "reportPath": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/evidence/CURRENT_N13_R04_B.json",
+      "launchPath": "/tmp/w048-current-r04-launch-B.json",
+      "finalPath": "/tmp/w048-current-r04-final-B.json"
+    }
+  ]
+}

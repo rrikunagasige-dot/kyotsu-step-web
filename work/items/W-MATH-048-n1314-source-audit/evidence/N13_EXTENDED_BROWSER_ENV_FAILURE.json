@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "fixtureSourceSHA": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+  "scope": "B_CODE_EXTENDED_N13_ONLY_NOT_FORMAL_R07",
+  "rows": [],
+  "failures": [
+    {
+      "message": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4393/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n13\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4393/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n13\", waiting until \"load\"\u001b[22m\n",
+      "stack": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4393/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n13\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4393/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n13\", waiting until \"load\"\u001b[22m\n\n    at load (/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/ci-review/verify_extended.mjs:18:53)\n    at /workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/ci-review/verify_extended.mjs:40:202"
+    }
+  ],
+  "limits": [
+    "Synthetic old-answer records are seeded into real browser persistence; this is not authentic historical learner data.",
+    "No N14/44 partial-slot validation; N14 is not applied.",
+    "No old-image baseline comparison, other-mode exhaustive regression, semantic teaching acceptance or formal native R07 packet.",
+    "Equal-axis probe measures visible formula starts and computed flex/grid alignment, not mathematical relation-glyph alignment across arbitrary line breaks.",
+    "A pointer click and keyboard Enter exercise real browser actionability; exhaustive keyboard tab order and assistive technology audit are not covered."
+  ],
+  "images": []
+}

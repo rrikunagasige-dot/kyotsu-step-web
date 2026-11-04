@@ -1,0 +1,121 @@
+{
+  "status": "PASS_BOUNDED_EXTENDED_CODE",
+  "sourceSHA": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+  "rawSHA256": "3434bb3d0fb1b8cfb88e0cb915f69cb9d602205087ea4205bdc0043d13dec748",
+  "gzipSHA256": "cda2ce419ef847cf7aecd529cb97132ecf349fdbeac1dbc3ad518479d8e410ee",
+  "reportPath": "work/items/W-MATH-048-n1314-source-audit/evidence/N13_EXTENDED_BROWSER_REPORT.json.gz",
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "rows": [
+    {
+      "width": 320,
+      "states": 73,
+      "answered": 18,
+      "figureGates": 18,
+      "saveTests": 4,
+      "navigation": 3,
+      "pointerSelections": 18,
+      "keyboardSelections": 18,
+      "reset": {
+        "firstPending": [
+          "n13-01"
+        ],
+        "saved": null
+      }
+    },
+    {
+      "width": 390,
+      "states": 73,
+      "answered": 18,
+      "figureGates": 18,
+      "saveTests": 4,
+      "navigation": 3,
+      "pointerSelections": 18,
+      "keyboardSelections": 18,
+      "reset": {
+        "firstPending": [
+          "n13-01"
+        ],
+        "saved": null
+      }
+    },
+    {
+      "width": 430,
+      "states": 73,
+      "answered": 18,
+      "figureGates": 18,
+      "saveTests": 4,
+      "navigation": 3,
+      "pointerSelections": 18,
+      "keyboardSelections": 18,
+      "reset": {
+        "firstPending": [
+          "n13-01"
+        ],
+        "saved": null
+      }
+    },
+    {
+      "width": 1440,
+      "states": 73,
+      "answered": 18,
+      "figureGates": 18,
+      "saveTests": 4,
+      "navigation": 3,
+      "pointerSelections": 18,
+      "keyboardSelections": 18,
+      "reset": {
+        "firstPending": [
+          "n13-01"
+        ],
+        "saved": null
+      }
+    }
+  ],
+  "failures": [],
+  "limits": [
+    "Synthetic old-answer records are seeded into real browser persistence; this is not authentic historical learner data.",
+    "No N14/44 partial-slot validation; N14 is not applied.",
+    "No old-image baseline comparison, other-mode exhaustive regression, semantic teaching acceptance or formal native R07 packet.",
+    "Equal-axis probe measures visible formula starts and computed flex/grid alignment, not mathematical relation-glyph alignment across arbitrary line breaks.",
+    "A pointer click and keyboard Enter exercise real browser actionability; exhaustive keyboard tab order and assistive technology audit are not covered."
+  ],
+  "images": [
+    {
+      "name": "n13-1440-extended-history.png",
+      "sha256": "55040956e010697a908d18a6ddb8731a426cf45b013373890dce1224dfb49711"
+    },
+    {
+      "name": "n13-1440-reset.png",
+      "sha256": "d73238a046b27caed6ca7bb1d31b43cd140cb00115e68d55795d5a7d133acac5"
+    },
+    {
+      "name": "n13-320-extended-history.png",
+      "sha256": "f08254693bd87388355c2389e16f10f25150ebf5249f96b6c7ddc69d70b4a805"
+    },
+    {
+      "name": "n13-320-reset.png",
+      "sha256": "7a0240b68d5212393f447701490bf526c1d03a6ae9c3b137ee2cca13f5719fe3"
+    },
+    {
+      "name": "n13-390-extended-history.png",
+      "sha256": "d82ec8a12d4853e8e5da5041cb00dac25db59d46dca0ab274eab0f9439486f28"
+    },
+    {
+      "name": "n13-390-reset.png",
+      "sha256": "1c44e6a9adb57c37d4686881cc12c19258481a902c38ba25ca11b07c920c45dd"
+    },
+    {
+      "name": "n13-430-extended-history.png",
+      "sha256": "c98bbf3b4d04880bc9a5e551c3ffcc9cae824d82d0e04515a5daf764ad4446e0"
+    },
+    {
+      "name": "n13-430-reset.png",
+      "sha256": "50197f980ce70453a1f8ea42936e29e34c620e80899afe4792c9879173e88982"
+    }
+  ]
+}

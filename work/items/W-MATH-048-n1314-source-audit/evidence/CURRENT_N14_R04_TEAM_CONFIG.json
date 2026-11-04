@@ -1,0 +1,124 @@
+{
+  "root": "/workspace/scratch/55b12fe3f8aa/repo",
+  "store": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "work": "W-MATH-048",
+  "node": "R04_PROPOSAL@n14",
+  "inputHash": "871ed7b7ad16b440f3c731b0276953e5654f3b9729fa9747f788ccbddffbb9a1",
+  "roleEpoch": 4,
+  "artifactRefs": [
+    "fde2bb7b03f8c6d02b887d20d368cec9511e1c23f8c1212f13f507f162c92ae8",
+    "a39b7294161c78d21cd2970b802bc8043c1863586a0a5507f0c5cb50f4c1397a",
+    "3305c987dc73724af67708c663797d12cfe121945e410e6788838faebc239464",
+    "02792e62e8f664be6428e4dccbbce2b0520b4e95ba57b674fecdc61b21018ea3",
+    "c6464980071f69bb9a61f3c1fb11fbd424694072e5dc409b86bcc793019b0364",
+    "74f6e6899cdc01bcbfa864194a09872a6362ead0f0ac1fe36dad4aa671b63ed6",
+    "136a70e814f708a3a988601da7bee77aa7e5f9ae9ec64559a7b0530acb2f41ea",
+    "0e9289a62f8c68b5c02eb5d59f0a2587b753dfd2740bee30eaa540a7dd04b6f1",
+    "3cb63edf44dd62ed4c24cb890da7064170110de9e7d00115f4d1ccca110fe3f8"
+  ],
+  "evidenceRefs": [
+    "e4835615-01cf-42e6-9df4-33f85895fff8",
+    "2629ceb1-e2b7-40ae-ac25-1f5837181db0",
+    "4c7361d6-b8dc-4e22-92a2-3dff3e1185d4",
+    "b10c6495-0762-4271-a1f8-8234a3392639",
+    "2352ad19-de33-4bc6-8643-baee03f97551",
+    "cf6da961-f5a6-43a9-bc16-29628eded914",
+    "be5c2923-4b25-4ce0-ba59-c1ba5d2f2cb0",
+    "adab0a6f-28ca-4130-ace2-7190be2d0c41",
+    "bf08a418-3ac9-4c8e-8935-dd8e70f62da0",
+    "655fb281-7703-47c0-ad82-124d05a6869b",
+    "e488da97-4ffd-4cb7-b1a4-e9cd6a22363a",
+    "abfabf3a-3f6a-4c4d-9ef5-a9809119486b",
+    "e13cefbf-804e-4155-b10a-4849f4a05d20",
+    "54aa8077-bd10-425a-90ac-a602cd9afa3c",
+    "ca90ec08-f71b-4628-90a5-67cd67bcb604",
+    "aeed8db2-a815-4bd7-a8a3-bf2dd1a833fc",
+    "4fedb428-d67d-4f2d-8935-16a053c3db7b",
+    "a457fd13-be49-4b6f-a647-041dc233d492",
+    "796ef247-e0aa-46fe-9f39-015304adbabe",
+    "67c18757-41a4-456c-939f-7de49bd9a3c6",
+    "e499b6f1-3aee-4d88-8919-0d698543e79d"
+  ],
+  "reviewers": [
+    {
+      "logical": "A",
+      "agentRef": "/root/w048_review_a",
+      "taskRef": "W048-current-R04-n14-A-e4",
+      "facet": "design",
+      "claim": "teaching",
+      "reviewKind": "source-review",
+      "artifactHashes": {
+        "teaching": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+      },
+      "packet": {
+        "baseNodeInputHash": "871ed7b7ad16b440f3c731b0276953e5654f3b9729fa9747f788ccbddffbb9a1",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n14Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "teaching",
+            "facet": "design",
+            "block": "n14",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "all",
+          "authorRationaleVisibleAtFirstPass": true,
+          "priorExposure": "Both reviewers already saw P003 and earlier targets. Approved W048 exposed nonauthor re-review; no blind/first-pass claim."
+        }
+      },
+      "reportPath": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/evidence/CURRENT_N14_R04_A.json",
+      "launchPath": "/tmp/w048-current-n14-r04-launch-A.json",
+      "finalPath": "/tmp/w048-current-n14-r04-final-A.json"
+    },
+    {
+      "logical": "B",
+      "agentRef": "/root/w048_review_b",
+      "taskRef": "W048-current-R04-n14-B-e4",
+      "facet": "render",
+      "claim": "layout",
+      "reviewKind": "learner-visible-review",
+      "artifactHashes": {
+        "layout": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+      },
+      "packet": {
+        "baseNodeInputHash": "871ed7b7ad16b440f3c731b0276953e5654f3b9729fa9747f788ccbddffbb9a1",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n14Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "layout",
+            "facet": "render",
+            "block": "n14",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "all",
+          "authorRationaleVisibleAtFirstPass": true,
+          "priorExposure": "Both reviewers already saw P003 and earlier targets. Approved W048 exposed nonauthor re-review; no blind/first-pass claim."
+        }
+      },
+      "reportPath": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/evidence/CURRENT_N14_R04_B.json",
+      "launchPath": "/tmp/w048-current-n14-r04-launch-B.json",
+      "finalPath": "/tmp/w048-current-n14-r04-final-B.json"
+    }
+  ]
+}

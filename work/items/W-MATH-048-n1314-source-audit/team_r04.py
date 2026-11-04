@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Root-only W048 team/1 transport driver PROPOSAL. Never invokes agents or CODE.
+"""Root-only W048 team/1 transport for approved exposed R04/R07 re-review. Never invokes agents or CODE.
 
 Run once per ready node: bind -> ACTUAL collaboration.followup_task A/B ->
 register (transcribe returned results) -> ACTUAL child finals -> collect.
@@ -29,7 +29,7 @@ launchPath JSON: {"toolName":"collaboration.followup_task", "target":"actual age
  "rawResult":<unaltered actual tool response>, "request":<actual request text/object>}
 finalPath JSON: {"channel":"subagent-final", "rawResult":<actual child final>,
  "reportSHA256":"sha256 of exact child report file (root attestation)"}
-Formal report JSON (child-owned): targetHash, sourceFirst=true, firstPass=true,
+Formal report JSON (child-owned): targetHash, sourceFirst=false, firstPass=false (approved W048 exposed re-review),
 authorSeparation=true, verdict=PASS|FAIL|UNVERIFIED, firstObservations, rationale,
 findings=[native schema: findingId/claimRef/facet/reason/evidenceRefs/resolution].
 The final transcript must identify this exact report file/hash as the child's output.
@@ -82,7 +82,7 @@ def main():
 
     rt = Runtime(config['store'], root)
     work, nid = config['work'], config['node']
-    require(work == 'W-MATH-048' and nid in ('R04_PROPOSAL@n13', 'R04_PROPOSAL@n14'), 'Wrong work/node')
+    require(work == 'W-MATH-048' and nid in ('R04_PROPOSAL@n13', 'R04_PROPOSAL@n14', 'R07_SEMANTIC@n13', 'R07_SEMANTIC@n14'), 'Wrong work/node')
     state = rt.state(work)
     node = instantiate(state['plan'])[nid]
     require(rt.integrity(state) is None, 'Runtime/source integrity drift')
@@ -98,7 +98,7 @@ def main():
         rows = []
         for r in config['reviewers']:
             require((r['logical'], r['facet'], r['claim'], r['reviewKind']) in
-                    {('A', 'design', 'teaching', 'source-review'), ('B', 'render', 'layout', 'learner-visible-review')}, 'Wrong review scope')
+                    {('A', 'design', 'teaching', 'source-review'), ('B', 'render', 'layout', 'learner-visible-review'), ('B', 'render', 'implemented-visible', 'learner-visible-review')}, 'Wrong review scope')
             packet = dict(r['packet'])
             packet['packetHash'] = digest({k: v for k, v in packet.items() if k != 'packetHash'})
             assignment = dict(assignmentId=f"w048-{nid}-{r['logical']}-{config['inputHash'][:10]}-e{config['roleEpoch']}",
@@ -148,7 +148,11 @@ def main():
         require('registration' in row, 'Not registered')
         r = row['reviewer']; raw = load(r['reportPath']); final = load(r['finalPath'])
         require(raw.get('targetHash') in row['assignment']['artifactHashes'].values(), 'Wrong report target')
-        require(all(raw.get(k) is True for k in ('sourceFirst', 'firstPass', 'authorSeparation')), 'Review conditions not confirmed')
+        require(raw.get('authorSeparation') is True, 'Author separation not confirmed')
+        reqs = [q for q in state['plan']['agent_team']['required_scopes'] if q['stage_kind'] == node['stage_kind'] and q['claimRef'] == r['claim'] and q['facet'] == r['facet']]
+        require(len(reqs) <= 1, 'Ambiguous review policy')
+        require(all(not q[k] or raw.get(k) is True for q in reqs for k in ('sourceFirst', 'firstPass')), 'Required review condition missing')
+        require(raw.get('sourceFirst') is False and raw.get('firstPass') is False and row['packet']['contextExposure']['authorRationaleVisibleAtFirstPass'] is True, 'W048 exposed re-review must be recorded honestly')
         require(raw.get('verdict') in ('PASS', 'FAIL', 'UNVERIFIED'), 'No verdict conversion')
         require(raw.get('firstObservations') and raw.get('rationale') and isinstance(raw.get('findings'), list), 'Incomplete actual report')
         require(final.get('channel') == 'subagent-final' and final.get('rawResult') is not None, 'Actual final transcript required')
@@ -164,7 +168,7 @@ def main():
         out = dict(kind='review', assignmentHash=reg['assignmentHash'], packetHash=row['packet']['packetHash'],
             performerRef=r['agentRef'], verdict=raw['verdict'], findings=raw['findings'], claimRef=r['claim'],
             facet=r['facet'], targetHash=raw['targetHash'], reviewKind=r['reviewKind'], authorSeparation=True,
-            sourceFirst=True, firstPass=True, firstPassArtifactRef=first, evidenceRefs=row['evidenceRefs'], rationale=raw['rationale'])
+            sourceFirst=raw['sourceFirst'], firstPass=raw['firstPass'], currentObservationsArtifactRef=first, evidenceRefs=row['evidenceRefs'], rationale=raw['rationale'])
         cap = capture_harness(rt, work, dict(agentRef=r['agentRef'], taskRef=r['taskRef'],
             attestationMethod='transcribed-tool-result', channel='subagent-final', rawResult=final['rawResult'],
             report=raw, structuredOutputHash=digest(out)))

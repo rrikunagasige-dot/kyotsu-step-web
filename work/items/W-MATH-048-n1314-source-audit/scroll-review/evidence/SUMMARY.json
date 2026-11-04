@@ -1,0 +1,46 @@
+{
+  "prototypeOnly": true,
+  "productApplied": false,
+  "R07passed": false,
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "scrollDiagnosis": "Q04 starts aligned; answered rows scrollLeft zero in all four widths; 320px unrelated row manual20 preserved. Wider rows do not overflow, so preservation there is not tested.",
+  "extended": {
+    "status": "PASS_BOUNDED_EXTENDED_CODE",
+    "failures": [],
+    "limits": [
+      "Synthetic old-answer records are seeded into real browser persistence; this is not authentic historical learner data.",
+      "No N14/44 partial-slot validation; N14 is not applied.",
+      "No old-image baseline comparison, other-mode exhaustive regression, semantic teaching acceptance or formal native R07 packet.",
+      "Equal-axis probe measures visible formula starts and computed flex/grid alignment, not mathematical relation-glyph alignment across arbitrary line breaks.",
+      "A pointer click and keyboard Enter exercise real browser actionability; exhaustive keyboard tab order and assistive technology audit are not covered."
+    ]
+  },
+  "failuresRetained": [
+    "Two preview server connection-refused setup attempts; combined server and runner succeeded."
+  ],
+  "before": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+  "after": "0a0e628e2c0ce1dbb1d87304d264e8772da2c9ac0184be89959585e2309c7af1",
+  "limits": [
+    "N14r11 not applied; requires its own dynamic validation",
+    "Not formal R07 or learner acceptance",
+    "Q04 wrong then correct sequence tested; wrong-only immediate scroll state not separately asserted"
+  ],
+  "fontCorrection": "Initial new screenshot had missing Japanese glyphs; not accepted as visual PASS. Rerun all four scroll diagnostics with existing FONTCONFIG_PATH and LD_LIBRARY_PATH; PASS, M opened corrected320 screenshot. Original tofu screenshot retained.",
+  "publication": "Public GitHub push rejected by automatic approval review. No retry/workaround. Await explicit approval of payload publication to existing work branch.",
+  "fontExtended": {
+    "status": "PASS_BOUNDED_EXTENDED_CODE",
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "failures": []
+  },
+  "Bvisual": "Actually opened corrected320 screenshot; Japanese and both Q04 starts visible. Right edge outside viewport remains scrollable; screenshot alone not full-line legibility proof."
+}

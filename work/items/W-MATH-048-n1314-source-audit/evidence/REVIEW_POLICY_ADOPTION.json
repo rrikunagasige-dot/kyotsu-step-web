@@ -1,0 +1,8 @@
+{
+  "proposal": "P-W048-REVIEW-001",
+  "userQuote": "いいよ続けて",
+  "request": "3f0bb6d6-2a1c-4c3d-9618-5a24bb7151d1",
+  "policyHash": "bfbcb115bb7b33463ba60879ba5640f4865faf1473bbec0139d33344feab0196",
+  "retiredClaim": "R06_PATCH@n13",
+  "retirementReason": "Patch was applied and exact bytes remain, but its old claim input was invalidated by shared source change; no product rollback or reapply. Requires current compile and normal submission."
+}

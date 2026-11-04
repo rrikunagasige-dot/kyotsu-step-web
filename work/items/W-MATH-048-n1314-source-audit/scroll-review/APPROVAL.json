@@ -1,0 +1,11 @@
+{
+  "proposal": "P-W048-SCROLL-001",
+  "quote": "承認",
+  "source_ref": "conversation request 5ce46790-7585-4a0c-a8fa-8b0c32d60ebb",
+  "scope": [
+    "exact Page patch",
+    "publish records and evidence to rrikunagasige-dot/kyotsu-step-web branch work/n1314-source-audit-20261104"
+  ],
+  "reply_to": "Prior final specific approval request",
+  "acceptance": false
+}

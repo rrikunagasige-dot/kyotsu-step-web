@@ -1,0 +1,375 @@
+{
+  "status": "FAIL",
+  "scope": "actual .katex-html first formula starts in complete-history derivation chains; not equal glyph x constraint",
+  "reportRawSHA256": "3434bb3d0fb1b8cfb88e0cb915f69cb9d602205087ea4205bdc0043d13dec748",
+  "rows": [
+    {
+      "width": 320,
+      "chain": "n13-q04-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q04-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q04-negative-formula",
+          16.375
+        ],
+        [
+          "textbook-formula-n13-formula-04",
+          48.375
+        ]
+      ],
+      "delta": 32.0,
+      "status": "FAIL"
+    },
+    {
+      "width": 320,
+      "chain": "n13-q05-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-wm023-q05-right",
+          41.1875
+        ],
+        [
+          "textbook-formula-n13-formula-05",
+          41.1875
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "chain": "n13-q07-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q07-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q07-negative-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-07",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "chain": "n13-q08-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-formula-08",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-positive-root",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-negative-root",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "chain": "n13-q09-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q09-zero-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q09-negative-formula",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "chain": "n13-q04-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q04-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q04-negative-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-04",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "chain": "n13-q05-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-wm023-q05-right",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-05",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "chain": "n13-q07-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q07-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q07-negative-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-07",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "chain": "n13-q08-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-formula-08",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-positive-root",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-negative-root",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "chain": "n13-q09-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q09-zero-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q09-negative-formula",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "chain": "n13-q04-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q04-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q04-negative-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-04",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "chain": "n13-q05-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-wm023-q05-right",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-05",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "chain": "n13-q07-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q07-positive-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q07-negative-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-formula-07",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "chain": "n13-q08-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-formula-08",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-positive-root",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-negative-root",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "chain": "n13-q09-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q09-zero-formula",
+          48.375
+        ],
+        [
+          "textbook-formula-n13-w048-q09-negative-formula",
+          48.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q04-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q04-positive-formula",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-w048-q04-negative-formula",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-formula-04",
+          436.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q05-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-wm023-q05-right",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-formula-05",
+          436.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q07-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q07-positive-formula",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-w048-q07-negative-formula",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-formula-07",
+          436.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q08-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-formula-08",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-positive-root",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-wm023-q08-negative-root",
+          436.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q09-chain",
+      "formulaStarts": [
+        [
+          "textbook-formula-n13-w048-q09-zero-formula",
+          436.375
+        ],
+        [
+          "textbook-formula-n13-w048-q09-negative-formula",
+          436.375
+        ]
+      ],
+      "delta": 0.0,
+      "status": "PASS"
+    }
+  ]
+}

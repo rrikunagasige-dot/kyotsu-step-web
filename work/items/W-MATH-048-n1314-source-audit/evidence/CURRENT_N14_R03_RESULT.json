@@ -1,0 +1,281 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "667ad018-851f-406a-8a6c-f201a851e3ae",
+    "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+    "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+    "37590794-32fe-4d34-b74e-5138f571f500",
+    "d5d343c5-121e-4871-a1b6-85039df2ac82",
+    "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+  ],
+  "capability_receipts": [
+    "d13fc9b5e8e2467ef00f10683ee4cc0d1a2509ce448449b9a92f1fdef3b04dbb"
+  ],
+  "aiReview": {
+    "requestHash": "ff19af190c4e2aaef4b69d87b8a9b182632acaba76bc80d08b552ab53acc6752",
+    "inputHash": "78d2de56f25b37279b97e089f2a0f4d43ae2adb1e342eaedd979169c7e2a57d6",
+    "reviewer": "M current baseline revalidation with actual A/B N14 primary-source preparation observations",
+    "evidence": [
+      "667ad018-851f-406a-8a6c-f201a851e3ae",
+      "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+      "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+      "37590794-32fe-4d34-b74e-5138f571f500",
+      "d5d343c5-121e-4871-a1b6-85039df2ac82",
+      "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+    ]
+  },
+  "source_inventory": [
+    "src/data/textbook/math/numbers/n13Lesson.ts",
+    "src/data/textbook/math/numbers/n14Lesson.ts",
+    "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+    "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+    "src/domain/textbook.ts",
+    "src/pages/TextbookUnitPage.tsx",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+  ],
+  "unknowns": [],
+  "scope": "Current planned-impact inventory. N14 leaf pending; shared domain/Page affect both units; no browser acceptance implied.",
+  "impact_rows": [
+    {
+      "artifact": "src/data/textbook/math/numbers/n13Lesson.ts",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "5d416e145f4f489709150aa539acb4eee8bfc33c404fa88b576626e82b7988e8",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Applied exact approved AFTER; revision-scoped regression still required."
+    },
+    {
+      "artifact": "src/domain/textbook.ts",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Applied exact approved AFTER; revision-scoped regression still required."
+    },
+    {
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Applied exact approved AFTER; revision-scoped regression still required."
+    },
+    {
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    },
+    {
+      "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "d731ae26a7cad1460e28ce5040be784534dcdcf7cf9b6b759210deff75f22b18",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    },
+    {
+      "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+      "block_id": "n13",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    },
+    {
+      "artifact": "src/data/textbook/math/numbers/n14Lesson.ts",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "N14 leaf is still BEFORE, approved correction pending; its shared dependencies already changed."
+    },
+    {
+      "artifact": "src/domain/textbook.ts",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Applied exact approved AFTER; revision-scoped regression still required."
+    },
+    {
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Applied exact approved AFTER; revision-scoped regression still required."
+    },
+    {
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    },
+    {
+      "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "d731ae26a7cad1460e28ce5040be784534dcdcf7cf9b6b759210deff75f22b18",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    },
+    {
+      "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json",
+      "block_id": "n14",
+      "originFinding": "W048 original source-first audit and approved P003 planned impact",
+      "rootCauseSignature": "bundled-independent-decisions-and-revision-scoped-display-save-support",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "actualSHA256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6",
+      "approvedCreationWork": "W-MATH-003/W-MATH-048 P003",
+      "evidence_refs": [
+        "667ad018-851f-406a-8a6c-f201a851e3ae",
+        "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+        "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+        "37590794-32fe-4d34-b74e-5138f571f500",
+        "d5d343c5-121e-4871-a1b6-85039df2ac82",
+        "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "disposition": "Bytes unchanged; original helper/source index preserved."
+    }
+  ]
+}

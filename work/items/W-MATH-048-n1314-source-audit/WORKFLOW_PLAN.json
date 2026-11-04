@@ -24,19 +24,19 @@
       {
         "claimRef": "teaching",
         "facet": "design",
-        "firstPass": true,
+        "firstPass": false,
         "independent": true,
         "reviewKind": "source-review",
-        "sourceFirst": true,
+        "sourceFirst": false,
         "stage_kind": "R04_PROPOSAL"
       },
       {
         "claimRef": "layout",
         "facet": "render",
-        "firstPass": true,
+        "firstPass": false,
         "independent": true,
         "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
+        "sourceFirst": false,
         "stage_kind": "R04_PROPOSAL"
       },
       {
@@ -51,19 +51,19 @@
       {
         "claimRef": "implemented-visible",
         "facet": "render",
-        "firstPass": true,
+        "firstPass": false,
         "independent": true,
         "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
+        "sourceFirst": false,
         "stage_kind": "R07_SEMANTIC"
       },
       {
         "claimRef": "integrated-release",
         "facet": "render",
-        "firstPass": true,
+        "firstPass": false,
         "independent": true,
         "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
+        "sourceFirst": false,
         "stage_kind": "G2_AUDIT"
       }
     ],
@@ -73,13 +73,13 @@
   },
   "approval_bundles": [
     {
-      "id": "proposal",
       "block_ids": [
         "n13",
         "n14"
       ],
-      "proposal_hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
-      "content_hash": "8b6544cc83e2f4bc549182e4ba5fd94a01aa50e99d5cd00bf7bb6f8355b5cb16"
+      "content_hash": "8b6544cc83e2f4bc549182e4ba5fd94a01aa50e99d5cd00bf7bb6f8355b5cb16",
+      "id": "proposal",
+      "proposal_hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9"
     }
   ],
   "blocks": [
@@ -130,8 +130,8 @@
   "mode": "textbook",
   "profile": "material",
   "proposal": {
-    "id": "P-W048-003",
-    "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9"
+    "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
+    "id": "P-W048-003"
   },
   "protected_manifest": {
     "package.json": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",

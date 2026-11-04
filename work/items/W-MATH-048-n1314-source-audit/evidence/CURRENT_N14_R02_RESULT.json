@@ -1,0 +1,127 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "667ad018-851f-406a-8a6c-f201a851e3ae",
+    "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+    "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+    "37590794-32fe-4d34-b74e-5138f571f500",
+    "d5d343c5-121e-4871-a1b6-85039df2ac82",
+    "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+  ],
+  "capability_receipts": [
+    "8fcd5d0b23a724f59008c9eb52dd9d6c36b6b469cf893e2458b04e6d4f89c5d0",
+    "27600d6900ccb6ffaae4f743e9b9ee7b8a83bae6074e5f1c046243d661ba101d",
+    "ba89ae0178b14afb4d0dc1aee8d37a4bc3ea612b1803256068c4b248cdc7026c",
+    "266cbf3335288c960a2450fc02c455534f6474016a0e0bc008f2bf15be99a200"
+  ],
+  "aiReview": {
+    "requestHash": "1de432d01aef7db1003667a244580eb67f7301a5a792390b4e83d2f4baaa36db",
+    "inputHash": "e7f9f2b0836bc7456ad5ea3bd624340d48d867d15731569b5eea3dc731f59e38",
+    "reviewer": "M current baseline revalidation with actual A/B N14 primary-source preparation observations",
+    "evidence": [
+      "667ad018-851f-406a-8a6c-f201a851e3ae",
+      "3c4035a2-1649-4eb0-bc31-a95f48019fc5",
+      "5ccfc533-99c3-4537-a1a0-f141febf1d56",
+      "37590794-32fe-4d34-b74e-5138f571f500",
+      "d5d343c5-121e-4871-a1b6-85039df2ac82",
+      "6ad31a18-3faa-4288-9c5d-810e572a8cf1"
+    ]
+  },
+  "symptoms": [
+    "見出しとQ02後の二点の間が未判断のQ03の答えを先出し",
+    "Q03/Q05の内外と端点がまとめられ、Q05の境界判断も学生に独立させる必要",
+    "章結びの注目文字と次章への用途が旧現稿で薄い"
+  ],
+  "confirmed_causes": [
+    "原問単位の一択へ境界・領域・端点をまとめた",
+    "解説文/ヒントの可視時点と未解決判断の境界が不十分",
+    "原典の無番号本文が採点表に入らず接続が欠落"
+  ],
+  "hypotheses": [],
+  "missing_learning_actions": [
+    "領域を選び、その後元の不等号から端点を判断する",
+    "外側の場合にも境界二点を先に特定する"
+  ],
+  "root_cause_signatures": [
+    "bundled-independent-decisions",
+    "premature-answer-in-prose-title-hint",
+    "missing-source-bridge"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "N08の距離と絶対値の場合分け、N11の同じ加減を必要時に明示する。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "追加の数値はxの位置・分岐方程式・元問の全解に結ぶ。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "Q04の+1、Q07の−2は左辺の定数を打ち消す目的と両辺への同じ操作として扱う。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "Q04/Q07の正負二枝、Q09の0/負を別判断へ分け、元問へ戻る。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "APPLY",
+      "reason": "Xはx−1全体の置換。距離の意味とORの意味を一般形の前後で明示する。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "追加式・全選択肢を結合KaTeXで検査し、283件の現候補結果へ結ぶ。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "等号の変形と独立した正負枝を混同せず、R04で行・番号・軸を別に設計する。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "Q04/Q07は正の枝→負の枝→全解、Q09は0→負の順。独立計算を一択の結論で代行しない。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "絶対値は中身全体へ掛かる。x−1・x+2と三辺全体への操作を保持する。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    }
+  ]
+}

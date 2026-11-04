@@ -1,0 +1,71 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "status": "PREPARED_LIVE_G3_SCHEMA_NOT_ACTUAL_PUBLICATION_PASS",
+  "approvedAppSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "approvedPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "approvalReference": "User2a472bf1 approved confirmationac15e68f/main04b823→6cd11 andexistingPagespublication, as conveyed byroot; BdoesnotwriteapprovalStore.",
+  "expectedRunBoundary": [
+    "Actualnewpushmain runhead=6cd11. Verifyjobskipped,publishjobactualsuccess; configure-pages/upload-pages-artifact/deploy-pages and3publichostverification steps mustsucceed,not skipped.",
+    "Runmetadata/deploymentURL/branch/ref/publisher/appsource checked againstactualjoblogs andoriginalartifactdigest. Existingdryrun41754189894 not usedassubstitute.",
+    "PublicbaseURL fromactualdeploymentoutput must beHTTPS; allhostedREPORTroots/bases andHTTPjson URLs must match expectedPagesbasepath,notlocalhost:4179. Localprepublicationlogs remainseparate."
+  ],
+  "expectedPublicReports": [
+    {
+      "path": "tmp/w041-hosted-release/HTTP.json + release.json",
+      "minimum": "ActualHTTPstatus200/sourcef129/publisher6cd11/storage namespace fixed;fullContractMatchedtrue;expectedHash=actualHash=SHA256actualretainedrelease.json bytes;URL/resolvedURL agreeactualpublicPagesbase. Thisispublicbyteevidence,notonlybuildmanifest."
+    },
+    {
+      "path": "tmp/w047-hosted/HOST_CONTRACT.json",
+      "minimum": "statusPASS/sourcef129/publisher6cd11;N11revision11 answers39/3465authored,N12revision4 answers46/8baauthored;actualAssetBytesVerified matchesactualW047manifestfilemap count. Publicness independentlyprovedbyREPORTroot/logstepenvironment."
+    },
+    {
+      "path": "tmp/w047-hosted/n11/REPORT.json + n12/REPORT.json",
+      "minimum": "PASS/sourcef129/publicroot. Exactly320/390/430/1440. N11=39correct109wrong14stages2figures,legacyrevisions1–10;N12=46correct127wrong15stages3figures,legacy1–3. geometry/history/reload/resize/migrationPASS,errors[]. Bothactualpublicroutes,notbuild/prepublishreports."
+    },
+    {
+      "path": "tmp/w047-hosted/n11-focus/FOCUSED_CAPTURE.json + n12-focus/FOCUSED_CAPTURE.json",
+      "minimum": "PASS/sourcef129. N11quotient4width×3state12frames;N12five-target4width×3state60frames/issues0,46correct5focuswrong separatefromall127. PublicN11→N12/back andN12→N13/back records;reset+reload390only. RequiredrawPNG representativereset/quotient/q13 andKEEPmustbindtoactualpublicartifact."
+    },
+    {
+      "path": "tmp/w046-hosted/result.json",
+      "minimum": "PublicbaseURL/sourcef129;8uniquecasesN09/N10×4widths;allPASS,55/70correctand55/70onewrongperpart. Realfonts;storage/archive/resetguardsPASS;errors/httpErrors/networkFailures[];filesVerifiedmatchesW046manifestassetcount. No allwrongchoicecountclaimforN09/N10."
+    },
+    {
+      "path": "tmp/w041-hosted/REPORT.json",
+      "minimum": "Publicroot/sourcef129/PASS. N08R7fourwidths30parents42decisions70wrongeach;partialreload/history/5comparisonroutes/nextN09/isolation/geometryPASS;authenticmeasurements/captures."
+    },
+    {
+      "path": "tmp/w041-hosted-r6/REPORT.json",
+      "minimum": "Publicoperationstep/sourcef129/PASS,33parents37decisions69wrong,isolatedhistorytrue,390only."
+    },
+    {
+      "path": "tmp/w041-hosted-legacy/REPORT.json",
+      "minimum": "Publicoperationstep/sourcef129/PASS,34answers80wrong,390,isolated/originalSwitchtrue."
+    }
+  ],
+  "manifestChecks": [
+    "ThreeactualnewCIgenerateddist/release.json,w046-release.json,w047-release.json mustexist. AllsourceSHAf129/publisher6cd11 andfixedcontracthash,69sourcepin/logstrictguard checked.",
+    "W047filemap=W046filemapminusw047-release.json;actualrelease/w047manifestbytesmatchmap. RetainedN08construction equalsW041manifest;N09/N10compiledhash/revision matchcontract;N11/N12authoredhash/revision/counts exact.",
+    "W041actualpublicreleaseHTTPbytes equalactualnewCIgeneratedreleasebytes;W046/W047verifyactualpublicmanifest/allassets evidence comesfromcurrentpublicstep logs/reports. Ifindependentpublicfetchcapability available,useit;otherwiseclearlydistinguishreport/codeexecutedHTTPfromBownfetch.",
+    "HashfulloriginalZIP,index,safeallentrypaths/nonlinks,extractedbytes/JSONarchivesandrepresentativePNGs;actualcurrentmetadataartifactdigest required. No locallyregeneratedfile labelledactualCI."
+  ],
+  "recommendedRepresentativePNGs": [
+    "tmp/w047-hosted/n11-focus/r1-quotient-390-pending.png",
+    "tmp/w047-hosted/n11-focus/r1-quotient-390-correct.png",
+    "tmp/w047-hosted/n12-focus/n12-q13-operation-320-pending-viewport.png",
+    "tmp/w047-hosted/n12-focus/n12-q13-operation-320-correct-viewport.png",
+    "tmp/w047-hosted/n11-focus/r1-reset-reload-start.png",
+    "tmp/w047-hosted/n12-focus/n12-reset-reload-start.png",
+    "tmp/w047-hosted/n12-focus/n12-next-unit-route.png",
+    "tmp/w047-hosted/n12-focus/n12-06-independent-complete.png",
+    "tmp/w047-hosted/n12-focus/n12-15-independent-complete.png"
+  ],
+  "reportScope": [
+    "FinalreportwillbeactualpublicG3technical/visibleasset/operationverificationonly;notstudentacceptanceorGold/fit/learningresult.",
+    "Existingfixedsourcef129lessonsemantic/G2acceptance retained;Bcapture/importtoolassistanceandpriorexposure disclosed,notnewblindlessonreview.",
+    "ExplicitPASS/FAIL/UNVERIFIED rows andOPENfindings. Missingpublicreport,skippedhosttest,localhostroot/source/publishermismatch isnotcoveredbydryrunPASS.",
+    "No claimallhugehistorylinesorall1452PNGs manuallyreviewed; representativeimagesandfullreport/byteindexscope distinguished.",
+    "Oneintegratedbothunitpublicaudit maybetranscribedintounitnative recordsfaithfully;notindependentduplicateevaluation."
+  ],
+  "pending": "AwaitactualnewrunID,publicdeploymentURL,originalartifact+metadata/log. Nothinghereassertsdeploymentalreadyoccurred."
+}

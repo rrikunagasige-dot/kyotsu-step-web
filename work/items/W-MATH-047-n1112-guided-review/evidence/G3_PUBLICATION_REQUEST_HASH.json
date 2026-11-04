@@ -9,5 +9,7 @@
     "main_fast_forward_exact_four_path_tree",
     "existing_Pages_publication"
   ],
-  "approvalReceived": false
+  "approvalReceived": true,
+  "approvalSource": "conversation:2a472bf1-0286-4d8a-91b6-351335030481",
+  "approvalRecord": "evidence/G3_PUBLICATION_AUTHORIZATION.json"
 }

@@ -62,3 +62,8 @@ Bの生成manifest原bytes欠落指摘G3-B-EVIDENCE-01を採用。配信/検査/
 ## 2026-11-04 最終G3非公開検証の正式完了
 
 最終6cd11/run41754189894 success・publish/6delivery skipped。artifact13287912706の172663175bytes/b7a02aを実取得、2665file/原3manifest/1212JSONをM/A/B独立照合。1212原JSON40,888,874bytesは1,304,178byte tar.gz/91e977へ可逆保存しfresh復元/既存改変拒否/圧縮改竄拒否を検査。7代表PNGは原hashのまま保存。B所見G3-B-EVIDENCE-01 VERIFIED_FIXED。checkの記述的statusは既存RuntimeのPASS enumで拒否され原記録保存、原proofを変えずadapterでstatus=PASS/verificationClassへ接続。原metadata188/教材f129/publisher6cd11を区別した複合checkが正式受理され、技術T04→L01(qualityUNKNOWN)→Z01 DONE。親/技術の両火柴図は同台帳HEADで、親nextG3_HOST@n11。次の具体4path/main/既存Pages公開許可待ち、公開/本人受入は未記録。
+
+
+## 2026-11-04 具体公開承認とmain反映
+
+2a472bf1の原発言を確認票hashac15e68fへのmerge/deploy許可として二操作面へ記録。既存external_intent後、main04b823→6cd11へforceなし期待SHA付きCAS成功、MERGE outcome SUCCESS。実公開run41760954117とGovernance41760954164がmainpushで起動。DEPLOYと両route実配信検査は未完了、dryrunを流用しない。Aがnative順序n11HOST→n11FINAL→n12HOSTを指摘し、既承認S1通り両route実証を先に揃え、本人確認一回の原発言をCODE順unit記録へ対応させると明示。plan/priority/guard未変更、本人受入は未記録。

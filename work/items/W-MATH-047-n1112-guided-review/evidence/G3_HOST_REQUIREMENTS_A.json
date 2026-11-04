@@ -1,0 +1,61 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "verdict": "G3_HOST_REQUIREMENTS_AND_EXISTING_SEQUENCE_CONFIRMED",
+  "firstPass": false,
+  "authorSeparation": true,
+  "publicationRequestHash": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+  "publicationAuthority": "M通知の実user2a472bf1-0286-4d8a-91b6-351335030481「いいよ続けて」は直前P-W047-G3-PUBLISH-01のmain4path反映+既存Pages公開の実承認。自分で承認eventを生成しない。",
+  "identities": {
+    "expectedMain": "04b823259a0873235e39099864d454330eed5d81",
+    "publisher": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "appSource": "f129ba78e496f0ccbce917c762357a81b92b0a2c"
+  },
+  "scopeProhibitFinding": {
+    "value": [
+      "G3_HOST"
+    ],
+    "meaning": "workflow/graphs.py:addは該当phaseのpriorityへunit数を加算するだけ。実行禁止/公開許可のhardguardではない。flagを削除してscope改訂する必要はなく、公開権限は実authorize_merge/authorize_deployとrequesthash対応で別に扱う。"
+  },
+  "hostAcceptanceRequirements": [
+    "integration G3_HOST:固定review_routeあり、未記録outcomeのexternal操作なし、release_versions[unit]=candidate_sha、result.sourceSHA=candidate_sha、そのunit/sourceのapp証拠がevidence_refs内にあること。",
+    "production/2 app証拠:release_unitが定義unit、URLfragmentがそのunitのreview_routeと完全一致、source_sha/manifest_sha=f129、HTTPS/reachable/auth_wallfalse/mobile/desktop/progress_isolatedが必要。",
+    "release.verify CODE receipt:inputs.appEvidenceを登録済みappへ対応させ、unit/source一致の実receiptを現在node/inputへ束縛する。CIlocalhost/dry-run/技術DONEをappへ代用しない。",
+    "mainは期待SHAをCASで再照合し4pathのみのpublisherへ進め、main反映とPages実runの成否をexternal_outcomeへ記録。公開run成功だけでなく実配信source/publisher/manifests/assets/両route実操作を確認。"
+  ],
+  "helperRequirements": [
+    "実HTTPでappとrelease/w046/w047manifestの200/同host/認証壁なしを確認し、原bodySHA/responseURL/時刻/source/publisherをreceiptへ保存。w047manifestの全asset bytesとfixedsource/contract69/39+46/revision/保持単元を既存publishercheckerで照合。",
+    "両routeでmobile/desktop操作、履歴/reload/reset範囲/旧進捗保護を実検証し、check/sourcef129にmobile_play,desktop_play,progress_isolation,no_auth_wallを含む操作証拠を保存。本人端末をreset済みとは記録しない。",
+    "旧adapters HTTPprobeの戻りにはrelease_unitが無いためproduction/2へそのまま流用しない。Workhelperで実証拠に基づき各unitのURLfragmentとrelease_unitを付けたappをrt.evidenceへ登録し、そのrefをcapabilities.release.verifyへ渡す。共有guardを緩めない。",
+    "N11/N12両routeの実証拠は正式HOSTnode到達前に取得可能。先行node結果を擬似PASSにせず、同じ固定build証拠を後続正式nodeに結ぶ。"
+  ],
+  "nativeSequence": {
+    "priorities": {
+      "G3_HOST@n11": 4,
+      "G3_FINAL@n11": 4,
+      "G3_HOST@n12": 5,
+      "G3_FINAL@n12": 5
+    },
+    "constraint": "現nextはN11HOST後のN11FINAL(USER)をN12HOSTより先に選ぶ。本人確認前に両HOSTnode正式PASSを揃える、という言い方は現graphと不一致。",
+    "agreedCorrection": "Mは表現を訂正済み。両route実HOST証拠を先に揃え→N11HOST正式受理→両unitを覆う本人最終アプリ確認一回→N11FINAL/事後工程→N12HOST/FINALをCODE順で受理。新priority/plan変更なし。",
+    "acceptanceRecords": "実原発言が同source/同app両unitを明示して覆う場合のみ、同じ原文/出所/sessionを単元別二記録として転記。各reply_toは各unitの実HOST証拠へ対応。二つの独立評価/qualitylabelsと数えず、片unitのみ発言や候補変更なら共用しない。"
+  },
+  "acceptanceBoundary": "公開承認2a472bf1はmain4path/Pages公開の権限であり本人最終受入ではない。現段階でG3_FINAL/accept_app/qualitylabelを生成しない。公開/実host失敗やsource不一致は記録して修復へ戻し、旧版Pagesを新候補実証としない。",
+  "notes": [
+    "G3_PUBLICATION_REQUEST_HASH.jsonのapprovalReceived=falseは提示前の静的記録として読取。今回新しい実承認はMがnative原発言へ記録するため、それを過去requestfileのfalseで否定したり既存ファイルを黙って書き換えたりしない。"
+  ],
+  "findings": [],
+  "limits": [
+    "公開操作/実HTTP/ブラウザ/Store/claim/受理は自分で実行していない。",
+    "helper要件の静的調査であり実配信PASSではない。",
+    "共有repo/Store/Git書込なし。指定/tmp原報告のみ保存。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLICATION_REQUEST.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/WORKFLOW_PLAN.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/graphs.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/runtime.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/integration.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/adapters.py",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/workflow/capabilities.py"
+  ]
+}

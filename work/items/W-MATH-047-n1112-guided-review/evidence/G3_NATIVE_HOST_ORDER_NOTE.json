@@ -1,0 +1,18 @@
+{
+  "source": "A actual G3_HOST requirements review, accepted S1 route ordering",
+  "planUnchanged": true,
+  "sequence": [
+    "Acquire authentic live evidence for bothN11/N12 routes before asking the user",
+    "Formally submit G3_HOST@n11 via native release.verify",
+    "Ask for one final scoped app confirmation covering bothN11/N12",
+    "Bind the one original response to per-unit native records in CODE order; do not invent a second independent evaluation"
+  ],
+  "pendingUntilUserResponse": [
+    "G3_FINAL@n11",
+    "G3_HOST@n12 formal node if current priority still requires n11 final first",
+    "G3_FINAL@n12"
+  ],
+  "realRouteVerificationNotSameAsFormalNodeCompletion": true,
+  "scopeProhibitG3HOSTMeaning": "Existing graphs priority adjustment only, not execution ban",
+  "studentAcceptance": false
+}

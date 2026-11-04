@@ -1,16 +1,14 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
-Status: VERIFYING / 両G2・非公開G3技術検証完了 / 具体main反映・既存Pages公開の許可待ち / 未公開
+Status: VERIFYING / 公開承認済み・main反映済み / 既存Pages実公開・配信検査中 / 本人最終受入なし
 
-現在地：固定教材sourcef129、検証済みpublisher6cd11。最終run41754189894の実success、publish/配信6step skipped、原ZIP172663175bytes/b7a02a、全2665file原hash・原3manifestと1212JSONの可逆保存・A/B実監査を照合済み。CODEが原73input/固定教材69path/実publisher4blob一致を検査し、技術W-TECH-052のT04→L01→Z01を正式受理してDONE。親のgenerated火柴図はG3_HOST@n11、未公開・本人最終受入なし。
+本人2a472bf1「いいよ続けて」を確認票P-W047-G3-PUBLISH-01/hashac15e68fの具体main4path反映・既存Pages公開への承認として記録。原発言一回からmerge/deploy二操作面を忠実転記し、内容再承認/本人受入へはしない。既存Runtimeのexternal_intent後、main04b823→検証済みpublisher6cd11へforceなしCAS反映。MERGE SUCCESSを正式記録。sourcef129固定の公開run41760954117(main push)が実行中。旧dryrun41754189894と別run。公開完了/配信source一致はまだ未確定。
 
-初回6808/run41718315741の環境保護拒否、先行c133/run41753645581 success、最終9b22/6cd11/run41754189894を別々に保持。G3-B-EVIDENCE-01は原3manifestを含む最終artifactでVERIFIED_FIXED。原metadata188をactual CI headへ偽装せず、既存Runtimeのcheckへ複合入力/生成出力/原実証を明示。結果形式のenum拒否も保存し、adapterの提出形式だけを修正、guard不変。
+火柴図の親nextはG3_HOST@n11。技術W-TECH-052はDONEのまま。MがStore/Git writer、A w047_review_designが理念/火柴図/境界監視、B w047_layout_sourcefirstが実原artifact/公開byte/操作監査の二人。scope.prohibitG3_HOSTは既存graphのpriorityのみで、禁止と誤読してplan変更しない。
 
-Mが共有Store/Git書込、A w047_review_designが理念・手順・identity/公開境界、B w047_layout_sourcefirstが非作者CODE・実原artifact/代表画像を確認。二人以外を増やさない。実checkpointと火柴図を揃えて次へ進める。
+次は実公開runで全prepublish→配送→公開後両route操作/manifestを照合し、両単元の実HOST証拠を揃える→n11HOST正式受理→N11/N12の本人最終確認一回。native nextの順序がn11FINALをn12HOSTより先に要求するため、両route実証と両HOST node正式受理を混同せず、一つの原発言/実証をCODE順に各unit記録へ結ぶ。G3_NATIVE_HOST_ORDER_NOTE.json参照。公開承認を本人最終受入へ広げない。
 
-次はG3_PUBLICATION_REQUEST.md (P-W047-G3-PUBLISH-01) の検証済み4pathをmain04b823→6cd11へ反映し既存Pagesへ公開する具体許可。その後は実配信版/両route照合→N11/N12本人アプリ確認一回→既存の事後工程。既承認教材内容を変更せず、今回までのdry-run承認を公開/最終受入へ広げない。
-
-再開時はrestore_native_snapshots.pyで元native snapshotを復元。実CI報告はrestore_g3_reports.pyで全原SHAを照合して復元できる。実APPsourceはf129、native metadataは188、publisherは6cd11で別identity。mainと教材の期待SHAが変わっていれば先に再照合する。
+原metadata188/教材f129/publisher6cd11は別identity。原73input/69教材path/4publisherblobと最終dryrun原2665file/3manifest/1212JSONの可逆保存・7代表PNG・A/B実監査を保持。初回環境拒否と先行c133run、enum拒否履歴は消さない。再開時はrestore_native_snapshots.py、報告原bytesはrestore_g3_reports.pyで復元可能。
 
 ## 以下はG3追加scope承認前までの履歴
 

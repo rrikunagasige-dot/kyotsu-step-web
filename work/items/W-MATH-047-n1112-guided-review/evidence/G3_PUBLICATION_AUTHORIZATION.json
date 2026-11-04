@@ -1,0 +1,112 @@
+{
+  "actualUserSource": "conversation:2a472bf1-0286-4d8a-91b6-351335030481",
+  "quote": "いいよ続けて",
+  "replyTo": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+  "interpretation": "Direct assent to concrete4path main fast-forward and existing Pages publication. One original utterance, two operation facets, not student acceptance.",
+  "users": {
+    "w047-g3-merge-approval-2a472bf1": {
+      "block": null,
+      "block_manifest": null,
+      "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "id": "w047-g3-merge-approval-2a472bf1",
+      "intent": "authorize_merge",
+      "proposal_hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+      "quote": "いいよ続けて",
+      "release_unit": null,
+      "reply_to": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+      "scope": {
+        "mainExpected": "04b823259a0873235e39099864d454330eed5d81",
+        "operations": [
+          "main_fast_forward_exact_four_path_tree",
+          "existing_Pages_publication"
+        ],
+        "paths": [
+          ".github/workflows/deploy-pages.yml",
+          "tools/release/w046-publish-check.mjs",
+          "tools/release/w047-publish-check.mjs",
+          "tools/release/w047-release-contract.json"
+        ],
+        "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+        "releaseUnits": [
+          "n11",
+          "n12"
+        ],
+        "requestId": "P-W047-G3-PUBLISH-01",
+        "requestSHA256": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+        "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c"
+      },
+      "source_ref": "conversation:2a472bf1-0286-4d8a-91b6-351335030481",
+      "verification_level": "conversation_transcribed"
+    },
+    "w047-g3-deploy-approval-2a472bf1": {
+      "block": null,
+      "block_manifest": null,
+      "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "id": "w047-g3-deploy-approval-2a472bf1",
+      "intent": "authorize_deploy",
+      "proposal_hash": "179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52",
+      "quote": "いいよ続けて",
+      "release_unit": null,
+      "reply_to": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+      "scope": {
+        "mainExpected": "04b823259a0873235e39099864d454330eed5d81",
+        "operations": [
+          "main_fast_forward_exact_four_path_tree",
+          "existing_Pages_publication"
+        ],
+        "paths": [
+          ".github/workflows/deploy-pages.yml",
+          "tools/release/w046-publish-check.mjs",
+          "tools/release/w047-publish-check.mjs",
+          "tools/release/w047-release-contract.json"
+        ],
+        "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+        "releaseUnits": [
+          "n11",
+          "n12"
+        ],
+        "requestId": "P-W047-G3-PUBLISH-01",
+        "requestSHA256": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+        "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c"
+      },
+      "source_ref": "conversation:2a472bf1-0286-4d8a-91b6-351335030481",
+      "verification_level": "conversation_transcribed"
+    }
+  },
+  "externalOperations": {
+    "w047-g3-main-6cd11-2a472bf1": {
+      "id": "w047-g3-main-6cd11-2a472bf1",
+      "operation": "MERGE",
+      "release_unit": null,
+      "request_hash": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870"
+    },
+    "w047-g3-pages-6cd11-2a472bf1": {
+      "id": "w047-g3-pages-6cd11-2a472bf1",
+      "operation": "DEPLOY",
+      "release_unit": "n11",
+      "request_hash": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870"
+    }
+  },
+  "scope": {
+    "requestId": "P-W047-G3-PUBLISH-01",
+    "requestSHA256": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+    "mainExpected": "04b823259a0873235e39099864d454330eed5d81",
+    "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "paths": [
+      ".github/workflows/deploy-pages.yml",
+      "tools/release/w046-publish-check.mjs",
+      "tools/release/w047-publish-check.mjs",
+      "tools/release/w047-release-contract.json"
+    ],
+    "releaseUnits": [
+      "n11",
+      "n12"
+    ],
+    "operations": [
+      "main_fast_forward_exact_four_path_tree",
+      "existing_Pages_publication"
+    ]
+  },
+  "studentAcceptance": false
+}

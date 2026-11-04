@@ -1,0 +1,25 @@
+{
+  "outcome": "SUCCESS",
+  "operation": "main_fast_forward_exact_four_path_tree",
+  "beforeSHA": "04b823259a0873235e39099864d454330eed5d81",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "sourceMeaning": "Approved fixed build target, not a served-host assertion at merge time",
+  "force": false,
+  "actualMainRef": {
+    "ref": "refs/heads/main",
+    "node_id": "REF_kwDOUurXMK9yZWZzL2hlYWRzL21haW4",
+    "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/refs/heads/main",
+    "object": {
+      "sha": "6cd11dc1e65810281ed897f865eed3e52b974992",
+      "type": "commit",
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/commits/6cd11dc1e65810281ed897f865eed3e52b974992"
+    }
+  },
+  "publicationRunId": 41760954117,
+  "governanceRunId": 41760954164,
+  "actualUserSource": "conversation:2a472bf1-0286-4d8a-91b6-351335030481",
+  "requestHash": "ac15e68f3b5a9a1d4298a3c2541ad86251223eaca55f7e898e9362dd97c8a870",
+  "liveVerification": "PENDING",
+  "studentAcceptance": false
+}

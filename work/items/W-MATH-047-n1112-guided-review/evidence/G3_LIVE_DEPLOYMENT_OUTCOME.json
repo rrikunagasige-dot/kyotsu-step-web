@@ -1,0 +1,327 @@
+{
+  "outcome": "SUCCESS",
+  "operation": "existing_GitHub_Pages_delivery",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "sourceMeaning": "Fixed approved build target from verified prepublish source. Post-delivery source/route HTTP verification is pending at this operation snapshot and recorded separately.",
+  "runId": 41760954117,
+  "jobId": 126348267637,
+  "actualDeliveryStep": {
+    "name": "Publish approved N11/N12 candidate with retained N08 and N09/N10",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 21,
+    "started_at": "2026-11-04T02:38:44Z",
+    "completed_at": "2026-11-04T02:38:51Z"
+  },
+  "jobsAtDeliveryCapture": {
+    "total_count": 2,
+    "jobs": [
+      {
+        "id": 126348267637,
+        "run_id": 41760954117,
+        "workflow_name": "Deploy to GitHub Pages",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/runs/41760954117",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUurXMM8AAAAdavGQdQ",
+        "head_sha": "6cd11dc1e65810281ed897f865eed3e52b974992",
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/jobs/126348267637",
+        "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41760954117/job/126348267637",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-04T02:28:16Z",
+        "started_at": "2026-11-04T02:28:20Z",
+        "completed_at": null,
+        "name": "publish",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-04T02:28:21Z",
+            "completed_at": "2026-11-04T02:28:23Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-04T02:28:23Z",
+            "completed_at": "2026-11-04T02:28:50Z"
+          },
+          {
+            "name": "Checkout publisher checks from reviewed publisher revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-04T02:28:50Z",
+            "completed_at": "2026-11-04T02:28:51Z"
+          },
+          {
+            "name": "Run pnpm/action-setup@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-04T02:28:51Z",
+            "completed_at": "2026-11-04T02:28:52Z"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-04T02:28:52Z",
+            "completed_at": "2026-11-04T02:28:54Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-11-04T02:28:54Z",
+            "completed_at": "2026-11-04T02:28:54Z"
+          },
+          {
+            "name": "Run pnpm install --frozen-lockfile --ignore-scripts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-11-04T02:28:54Z",
+            "completed_at": "2026-11-04T02:28:57Z"
+          },
+          {
+            "name": "Existing Word source adapter dependency",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-04T02:28:57Z",
+            "completed_at": "2026-11-04T02:29:06Z"
+          },
+          {
+            "name": "Run python -m pip install -r tools/textbook/research/requirements-solution.txt",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-04T02:29:06Z",
+            "completed_at": "2026-11-04T02:29:13Z"
+          },
+          {
+            "name": "Run node publisher/tools/release/w047-publish-check.mjs retained-check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-04T02:29:13Z",
+            "completed_at": "2026-11-04T02:29:13Z"
+          },
+          {
+            "name": "Run pnpm run build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-04T02:29:13Z",
+            "completed_at": "2026-11-04T02:29:32Z"
+          },
+          {
+            "name": "Run node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-11-04T02:29:32Z",
+            "completed_at": "2026-11-04T02:29:34Z"
+          },
+          {
+            "name": "Run node publisher/tools/release/w047-publish-check.mjs manifest",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-11-04T02:29:34Z",
+            "completed_at": "2026-11-04T02:29:34Z"
+          },
+          {
+            "name": "Generate exact N09/N10 release supplement",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-11-04T02:29:34Z",
+            "completed_at": "2026-11-04T02:29:34Z"
+          },
+          {
+            "name": "Run pnpm exec playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-11-04T02:29:34Z",
+            "completed_at": "2026-11-04T02:29:47Z"
+          },
+          {
+            "name": "Run actions/configure-pages@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-11-04T02:29:47Z",
+            "completed_at": "2026-11-04T02:29:47Z"
+          },
+          {
+            "name": "Verify exact release before upload",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-11-04T02:29:47Z",
+            "completed_at": "2026-11-04T02:29:47Z"
+          },
+          {
+            "name": "Prepare original N11 figure decoding for prepublication verification",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-11-04T02:29:47Z",
+            "completed_at": "2026-11-04T02:29:47Z"
+          },
+          {
+            "name": "Verify candidate bytes and N09/N10 operations before publication",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-11-04T02:29:47Z",
+            "completed_at": "2026-11-04T02:38:42Z"
+          },
+          {
+            "name": "Run actions/upload-pages-artifact@v3",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-11-04T02:38:42Z",
+            "completed_at": "2026-11-04T02:38:44Z"
+          },
+          {
+            "name": "Publish approved N11/N12 candidate with retained N08 and N09/N10",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-11-04T02:38:44Z",
+            "completed_at": "2026-11-04T02:38:51Z"
+          },
+          {
+            "name": "Verify published N09/N10 bytes and operations",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 22,
+            "started_at": "2026-11-04T02:38:51Z",
+            "completed_at": null
+          },
+          {
+            "name": "Verify public source and N08 operations",
+            "status": "pending",
+            "conclusion": null,
+            "number": 23,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Await original N11 figure decoding in verification only",
+            "status": "pending",
+            "conclusion": null,
+            "number": 24,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Verify retained public N11",
+            "status": "pending",
+            "conclusion": null,
+            "number": 25,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 26,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 48,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 49,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run pnpm/action-setup@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 50,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Checkout publisher checks from reviewed publisher revision",
+            "status": "pending",
+            "conclusion": null,
+            "number": 51,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 52,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/check-runs/126348267637",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000003841,
+        "runner_name": "GitHub Actions 1000003841",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 126348268965,
+        "run_id": 41760954117,
+        "workflow_name": "Deploy to GitHub Pages",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/runs/41760954117",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUurXMM8AAAAdavGVpQ",
+        "head_sha": "6cd11dc1e65810281ed897f865eed3e52b974992",
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/jobs/126348268965",
+        "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41760954117/job/126348268965",
+        "status": "completed",
+        "conclusion": "skipped",
+        "created_at": "2026-11-04T02:28:17Z",
+        "started_at": "2026-11-04T02:28:17Z",
+        "completed_at": "2026-11-04T02:28:16Z",
+        "name": "verify",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/check-runs/126348268965",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      }
+    ]
+  },
+  "postDeliveryVerification": "PENDING_AT_OPERATION_CAPTURE",
+  "studentAcceptance": false
+}

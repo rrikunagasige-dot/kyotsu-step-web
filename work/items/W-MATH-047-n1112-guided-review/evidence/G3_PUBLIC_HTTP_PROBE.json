@@ -1,0 +1,38 @@
+{
+  "status": "PASS_ACTUAL_PUBLIC_HTTP",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "publicBase": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "rows": [
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "resolvedURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "status": 200,
+      "bytes": 37685,
+      "sha256": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/w046-release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "resolvedURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/w046-release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "status": 200,
+      "bytes": 21200,
+      "sha256": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/w047-release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "resolvedURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/w047-release.json?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "status": 200,
+      "bytes": 16002,
+      "sha256": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "resolvedURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?source=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "status": 200,
+      "bytes": 2406,
+      "sha256": "9ed77e44517d517fc2d28bd33a4a7b5bb6b5688cc798d0a3996f428b8fc755c2"
+    }
+  ],
+  "reviewRoutesNotDirectlyBrowserPlayedByM": true,
+  "studentAcceptance": false
+}

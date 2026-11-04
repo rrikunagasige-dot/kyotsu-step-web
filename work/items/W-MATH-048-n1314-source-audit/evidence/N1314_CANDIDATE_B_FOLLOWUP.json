@@ -1,0 +1,72 @@
+{
+  "role": "B non-author candidate follow-up reviewer",
+  "verdict": "PASS",
+  "scope": "Static follow-up to B-W048-C01; candidate content/order review only, no implemented/rendered acceptance.",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blindReview": false,
+  "originalReview": {
+    "path": "/tmp/n1314-candidate-b.json",
+    "sha256": "58b7b3c8826d613f3518ab3164524cb9057045ecae7e7290d9dca0f4281caede",
+    "verdict": "FAIL",
+    "preservedUnchanged": true
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N13_CANDIDATE.json",
+      "sha256": "4dc80740f021ca27dc108ca8a94b0c74007823f81b181178de24a533a1df93b2"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N14_CANDIDATE.json",
+      "sha256": "7265ade4671cd43e9b102b32d2503038eba0c62cdc47d09afa6045bea66dadf3"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/prepare_proposal.py",
+      "sha256": "60d2b2e521fa51a4a9311fca2bf7d4065e3c289bc6fcc67e47901b132865d7e4"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/CANDIDATE_CHECK.json",
+      "sha256": "13b6873c66c5d99d2deabbf131a74452e814a5708b4e9dc25821bd88dd7e347f"
+    }
+  ],
+  "findings": [
+    {
+      "id": "B-W048-C01",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n14-w048-chapter-summary"
+      ],
+      "sourceIds": [
+        "word-p-000630"
+      ],
+      "reason": "生成CODEと再生成N14候補の両方に「式を整理するときは注目する文字を決め、」が追加され、原Wordの欠落していた概念が章末まとめへ復元された。初回FAIL報告は変更していない。"
+    }
+  ],
+  "checks": [
+    {
+      "unit": "N13",
+      "oldItems": 12,
+      "candidateItems": 18,
+      "oldGradingKeysPreserved": true
+    },
+    {
+      "unit": "N14",
+      "oldItems": 38,
+      "candidateItems": 40,
+      "oldGradingKeysPreserved": true
+    }
+  ],
+  "reportedBoundedChecks": {
+    "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/CANDIDATE_CHECK.json",
+    "status": "PASS_BOUNDED_CANDIDATE_DATA",
+    "katexChecks": 283,
+    "verification": "Read existing check evidence; not re-executed or claimed as independent browser verification."
+  },
+  "rationale": "The sole confirmed content omission in the first candidate review is repaired. Prior static review conclusions stand; consolidation after independently answered slots is appropriate and existing grading keys remain unchanged.",
+  "limits": [
+    "Future revision5/11 old-save migration remains implementation QA: preserve old50 answers/archives while exposing new8 unresolved slots and recomputing completion.",
+    "No actual candidate screenshots, four-width layout, browser progression, reload/reset or history verification performed.",
+    "Formal nativeR04 collection/implementation/user acceptance is not inferred. No shared repository/Store/Git writes."
+  ]
+}

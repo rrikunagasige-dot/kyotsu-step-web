@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N14",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000589",
+      "locator": "word/document.xml:p[589]",
+      "text": "N14　距離の上限と下限から、残す範囲を決める",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000590",
+      "locator": "word/document.xml:p[590]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000591",
+      "locator": "word/document.xml:p[591]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "ba3f396b3b7af1f07ed81e9742b5069bdba041739ddd77f6ade7128237c23221",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x\\text{|} < 3"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000592",
+      "locator": "word/document.xml:p[592]",
+      "text": "【1】 この条件を、原点からの距離を使った言葉に直そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000593",
+      "locator": "word/document.xml:p[593]",
+      "text": "先生　「まず境界になる二つの位置を考え、その間と外側のどちらが原点に近いかを見ます。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000594",
+      "locator": "word/document.xml:p[594]",
+      "text": "【2】 距離がちょうど3になる二つの位置を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000595",
+      "locator": "word/document.xml:p[595]",
+      "text": "【3】 残すのは二点の間か、外側か。また、境界を含むか答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000596",
+      "locator": "word/document.xml:p[596]",
+      "text": "【4】 絶対値を使わずに、解の範囲を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000597",
+      "locator": "word/document.xml:p[597]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000598",
+      "locator": "word/document.xml:p[598]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "0f2e4003b78d02323da75a2176a8991afe22b93e110faf86b72fd1a83e693093",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x\\text{|} \\geq 4"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000599",
+      "locator": "word/document.xml:p[599]",
+      "text": "花子　「今度は原点に近い点ではなく、ある程度離れた点を残すんだね。左右のどちらかだけでは足りなさそう。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000600",
+      "locator": "word/document.xml:p[600]",
+      "text": "【5】 境界を求め、間と外側のどちらを残すか、等号も含めて判断しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000601",
+      "locator": "word/document.xml:p[601]",
+      "text": "【6】 二つの範囲を、正しいつなぎ方で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000602",
+      "locator": "word/document.xml:p[602]",
+      "text": "ここまで求めた二つの条件を図で比べる。上の図は距離の上限、下の図は距離の下限に対応する。次の問いの答えではなく、直前の二題を整理した図である。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000603",
+      "locator": "word/document.xml:p[603]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image14.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000604",
+      "locator": "word/document.xml:p[604]",
+      "text": "N14-F01　直前に求めた二つの範囲の比較。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000605",
+      "locator": "word/document.xml:p[605]",
+      "text": "具体的な距離を、一般の数と式へ広げる",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000606",
+      "locator": "word/document.xml:p[606]",
+      "text": "導出",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000607",
+      "locator": "word/document.xml:p[607]",
+      "text": " とする。絶対値の中身を  という一つの数で表す。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "cbcb095965d5f5c1c06c7265b34bbdc51b7f990c5effa58930fb5e3b7615657b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1e8b383ac446f35692920d22241e408a26f6d960100d0bddb9de289e68c7ae33",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "X"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000608",
+      "locator": "word/document.xml:p[608]",
+      "text": "【7】  を、絶対値のない不等式で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [
+        {
+          "sha256": "8b904595e427c9b61978775d8db6c64a890260890bd9364f3eb08d1e66e75859",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}X\\text{|} < a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000609",
+      "locator": "word/document.xml:p[609]",
+      "text": "【8】  を、絶対値のない二つの範囲で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [
+        {
+          "sha256": "cb427e0c962fe75c77c286963c16f1ef6824c1e9ee9a5306665157e03c45b6fc",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}X\\text{|} > a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000610",
+      "locator": "word/document.xml:p[610]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "339e905911b68d4d4be0a5c3e5146813682d7f905f6846b3f106e8942e93b9fb",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}X\\text{|} < a\\ \\text{の解は}\\  - a < X < a\\quad(a > 0)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000611",
+      "locator": "word/document.xml:p[611]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "1ee5d1e1e63aa0899dfc04568644e69b746d943f90694615edd30c9661ba8dee",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}X\\text{|} > a\\ \\text{の解は}\\ X < - a\\ \\text{または}\\ X > a\\quad(a > 0)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000612",
+      "locator": "word/document.xml:p[612]",
+      "text": "等号が付く場合は、距離がちょうど  の境界も含める。中身  が文字式であっても、式全体を一つの実数として同じ意味で読める。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1e8b383ac446f35692920d22241e408a26f6d960100d0bddb9de289e68c7ae33",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "X"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000613",
+      "locator": "word/document.xml:p[613]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000614",
+      "locator": "word/document.xml:p[614]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "1a9c9e8c5f877428ade9bc2b781283e4078e5293d6f849158d2ab027bfe2fd26",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x - 3\\text{|} < 5"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000615",
+      "locator": "word/document.xml:p[615]",
+      "text": "【9】 中の式全体を一つの数と見て、絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000616",
+      "locator": "word/document.xml:p[616]",
+      "text": "【10】  だけを中央へ残すため、各辺に同じ操作をしよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000617",
+      "locator": "word/document.xml:p[617]",
+      "text": "連なった不等式を変形するときは、左・中央・右のすべてに同じ加減を行う。一部分だけを変えてはいけない。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000618",
+      "locator": "word/document.xml:p[618]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000619",
+      "locator": "word/document.xml:p[619]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "5c1b6c120d618a731bf79ee9fa34907848fdaf8752341f3a0d996c05a8fcd68d",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x + 3\\text{|} \\geq 2"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000620",
+      "locator": "word/document.xml:p[620]",
+      "text": "【11】 間と外側のどちらを選ぶか判断し、絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000621",
+      "locator": "word/document.xml:p[621]",
+      "text": "【12】 それぞれを解き、二つの範囲をまとめて答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000622",
+      "locator": "word/document.xml:p[622]",
+      "text": "係数が付いた式でも、同じ順序で解く",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000623",
+      "locator": "word/document.xml:p[623]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000624",
+      "locator": "word/document.xml:p[624]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "30f27b82539e747bcb05604da9671fed536c948182709b0d9d9f88acc1f77b71",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}3x - 2\\text{|} \\leq 4"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000625",
+      "locator": "word/document.xml:p[625]",
+      "text": "【13】 絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        13
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000626",
+      "locator": "word/document.xml:p[626]",
+      "text": "【14】 まず定数項をなくす変形をしよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000627",
+      "locator": "word/document.xml:p[627]",
+      "text": "【15】 係数を1にし、最終的な範囲を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        15
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000628",
+      "locator": "word/document.xml:p[628]",
+      "text": "【16】 両端の値を元の絶対値に代入し、どちらも含めてよいことを確認しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        16
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000629",
+      "locator": "word/document.xml:p[629]",
+      "text": "まとめ",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000630",
+      "locator": "word/document.xml:p[630]",
+      "text": "「数と式」では、同じ値や同じ条件を別の形に表してきた。式を整理するときは注目する文字を決め、展開ではすべての積を拾い、因数分解では展開との一致を調べる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000631",
+      "locator": "word/document.xml:p[631]",
+      "text": "平方根では平方と符号の両方を確かめ、絶対値では距離の意味から中身の扱いを決めた。不等式では、変形に使う数の符号と、境界を含むかどうかを確認した。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000632",
+      "locator": "word/document.xml:p[632]",
+      "text": "太郎　「式の形が変わっても、元と同じ値や条件を保っているかを確かめることは共通していますね。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000633",
+      "locator": "word/document.xml:p[633]",
+      "text": "次の二次関数では、一つの値を変えたときに、もう一つの値がどう変わるかを調べる。ここで使った展開、因数分解、平方根、不等式が、グラフの形や値の範囲を読む道具になる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000634",
+      "locator": "word/document.xml:p[634]",
+      "text": "参考・発展",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

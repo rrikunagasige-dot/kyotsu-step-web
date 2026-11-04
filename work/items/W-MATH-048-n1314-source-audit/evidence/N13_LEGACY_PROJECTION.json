@@ -1,0 +1,1585 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n13",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000556",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000557",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000558",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000559",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000560",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000561",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000562",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000563",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000564",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000565",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000566",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000567",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000568",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000569",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000570",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000571",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000572",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000573",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000574",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000575",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000576",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000577",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000578",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000579",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000580",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000581",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000582",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000583",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000584",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000585",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000586",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000587",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000588",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000556",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000557",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000558",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000559",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000560",
+      "nodeIds": [
+        "n13-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000561",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000562",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000563",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000564",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000565",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000566",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000567",
+      "nodeIds": [
+        "n13-02"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000568",
+      "nodeIds": [
+        "n13-03"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000569",
+      "nodeIds": [
+        "n13-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000570",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000571",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000572",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000573",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000574",
+      "nodeIds": [
+        "n13-wm023-q05-right",
+        "n13-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000575",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000576",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000577",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000578",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000579",
+      "nodeIds": [
+        "n13-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000580",
+      "nodeIds": [
+        "n13-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000581",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000582",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000583",
+      "nodeIds": [
+        "n13-wm023-q08-branches",
+        "n13-wm023-q08-positive-root",
+        "n13-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000584",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000585",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000586",
+      "nodeIds": [
+        "n13-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000587",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000588",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    }
+  ],
+  "initialFacts": [],
+  "nodes": [
+    {
+      "id": "n13-01",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000560"
+      ],
+      "requires": [],
+      "produces": [
+        "n13-01-legacy-result"
+      ],
+      "role": "check",
+      "goal": "すべての実数解を選ぼう。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000560"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-01-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-01-old-text",
+              "kind": "text",
+              "text": "すべての実数解を選ぼう。"
+            },
+            {
+              "id": "n13-01-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-01",
+              "semanticRef": "n13-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-01-old-hint",
+              "kind": "text",
+              "text": "距離は正でも点の座標は左右で符号が違う。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "すべての実数解を選ぼう。",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": "x=5\\;\\text{または}\\;x=-5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-01-choice-0",
+            "content": "x=5\\;\\text{または}\\;x=-5",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。"
+          },
+          {
+            "id": "n13-01-choice-1",
+            "content": "x=5",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-01-choice-2",
+            "content": "x=-5",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-01-choice-3",
+            "content": "x=5\\;\\text{かつ}\\;x=-5",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "距離は正でも点の座標は左右で符号が違う。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-01-old",
+          "slotId": "n13-01-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-02",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000567"
+      ],
+      "requires": [
+        "n13-01-legacy-result"
+      ],
+      "produces": [
+        "n13-02-legacy-result"
+      ],
+      "role": "check",
+      "goal": "Xについての二つの可能性を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000567"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-02-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-02-old-text",
+              "kind": "text",
+              "text": "Xについての二つの可能性を選ぼう。"
+            },
+            {
+              "id": "n13-02-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-02",
+              "semanticRef": "n13-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-02-old-hint",
+              "kind": "text",
+              "text": "|X|=正の数の解は左右の二つに分かれる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "Xについての二つの可能性を選ぼう。",
+        "prerequisiteIds": [
+          "n13-01-legacy-result"
+        ],
+        "expected": {
+          "value": "X=4\\;\\text{または}\\;X=-4",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-02-choice-0",
+            "content": "X=4\\;\\text{または}\\;X=-4",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。"
+          },
+          {
+            "id": "n13-02-choice-1",
+            "content": "X=4",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-02-choice-2",
+            "content": "X=4\\;\\text{かつ}\\;X=-4",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-02-choice-3",
+            "content": "X=\\pm1",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "|X|=正の数の解は左右の二つに分かれる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-02-old",
+          "slotId": "n13-02-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-03",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000568"
+      ],
+      "requires": [
+        "n13-02-legacy-result"
+      ],
+      "produces": [
+        "n13-03-legacy-result"
+      ],
+      "role": "check",
+      "goal": "xについての二つの方程式を書こう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000568"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-03-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-03-old-text",
+              "kind": "text",
+              "text": "xについての二つの方程式を書こう。"
+            },
+            {
+              "id": "n13-03-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-03",
+              "semanticRef": "n13-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-03-old-hint",
+              "kind": "text",
+              "text": "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xについての二つの方程式を書こう。",
+        "prerequisiteIds": [
+          "n13-02-legacy-result"
+        ],
+        "expected": {
+          "value": "x-1=4\\;\\text{または}\\;x-1=-4",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-03-choice-0",
+            "content": "x-1=4\\;\\text{または}\\;x-1=-4",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+          },
+          {
+            "id": "n13-03-choice-1",
+            "content": "x=4\\;\\text{または}\\;x=-4",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-03-choice-2",
+            "content": "x+1=4\\;\\text{または}\\;x+1=-4",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-03-choice-3",
+            "content": "x-1=4\\;\\text{かつ}\\;x-1=-4",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-03-old",
+          "slotId": "n13-03-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-04",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000569"
+      ],
+      "requires": [
+        "n13-03-legacy-result"
+      ],
+      "produces": [
+        "n13-04-legacy-result"
+      ],
+      "role": "check",
+      "goal": "xの解をすべて選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000569"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-04-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-04-old-text",
+              "kind": "text",
+              "text": "xの解をすべて選ぼう。"
+            },
+            {
+              "id": "n13-04-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-04",
+              "semanticRef": "n13-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-04-old-hint",
+              "kind": "text",
+              "text": "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xの解をすべて選ぼう。",
+        "prerequisiteIds": [
+          "n13-03-legacy-result"
+        ],
+        "expected": {
+          "value": "x=5\\;\\text{または}\\;x=-3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-04-choice-0",
+            "content": "x=5\\;\\text{または}\\;x=-3",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+          },
+          {
+            "id": "n13-04-choice-1",
+            "content": "x=5",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-04-choice-2",
+            "content": "x=3\\;\\text{または}\\;x=-5",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-04-choice-3",
+            "content": "x=4\\;\\text{または}\\;x=-4",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-04-old",
+          "slotId": "n13-04-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-wm023-q05-right",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000574"
+      ],
+      "requires": [
+        "n13-04-legacy-result"
+      ],
+      "produces": [
+        "n13-wm023-q05-right-legacy-result"
+      ],
+      "role": "check",
+      "goal": "x≥1 のとき、距離を式で表そう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000574"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-wm023-q05-right-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q05-right-old-text",
+              "kind": "text",
+              "text": "x≥1 のとき、距離を式で表そう。"
+            },
+            {
+              "id": "n13-wm023-q05-right-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-wm023-q05-right",
+              "semanticRef": "n13-wm023-q05-right"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q05-right-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q05-right-old-hint",
+              "kind": "text",
+              "text": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q05-right",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x≥1 のとき、距離を式で表そう。",
+        "prerequisiteIds": [
+          "n13-04-legacy-result"
+        ],
+        "expected": {
+          "value": "x-1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q05-right-choice-0",
+            "content": "x-1",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-1",
+            "content": "1-x",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-2",
+            "content": "x+1",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-3",
+            "content": "-1-x",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q05-right-old",
+          "slotId": "n13-wm023-q05-right-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-05",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000574"
+      ],
+      "requires": [
+        "n13-wm023-q05-right-legacy-result"
+      ],
+      "produces": [
+        "n13-05-legacy-result"
+      ],
+      "role": "check",
+      "goal": "x<1 のとき、距離を式で表そう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000574"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-05-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-05-old-text",
+              "kind": "text",
+              "text": "x<1 のとき、距離を式で表そう。"
+            },
+            {
+              "id": "n13-05-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-05",
+              "semanticRef": "n13-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-05-old-hint",
+              "kind": "text",
+              "text": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x<1 のとき、距離を式で表そう。",
+        "prerequisiteIds": [
+          "n13-wm023-q05-right-legacy-result"
+        ],
+        "expected": {
+          "value": "1-x",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-05-choice-0",
+            "content": "1-x",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+          },
+          {
+            "id": "n13-05-choice-1",
+            "content": "x-1",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-05-choice-2",
+            "content": "1+x",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-05-choice-3",
+            "content": "-1-x",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-05-old",
+          "slotId": "n13-05-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-06",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000579"
+      ],
+      "requires": [
+        "n13-05-legacy-result"
+      ],
+      "produces": [
+        "n13-06-legacy-result"
+      ],
+      "role": "check",
+      "goal": "絶対値なしの二つの方程式を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000579"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-06-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-06-old-text",
+              "kind": "text",
+              "text": "絶対値なしの二つの方程式を選ぼう。"
+            },
+            {
+              "id": "n13-06-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-06",
+              "semanticRef": "n13-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-06-old-hint",
+              "kind": "text",
+              "text": "中の式全体が3か−3のどちらかになる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "絶対値なしの二つの方程式を選ぼう。",
+        "prerequisiteIds": [
+          "n13-05-legacy-result"
+        ],
+        "expected": {
+          "value": "x+2=3\\;\\text{または}\\;x+2=-3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-06-choice-0",
+            "content": "x+2=3\\;\\text{または}\\;x+2=-3",
+            "feedback": "中の式全体が3か−3のどちらかになる。"
+          },
+          {
+            "id": "n13-06-choice-1",
+            "content": "x=3\\;\\text{または}\\;x=-3",
+            "feedback": "中の式全体が3か−3のどちらかになる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-06-choice-2",
+            "content": "x+2=3\\;\\text{かつ}\\;x+2=-3",
+            "feedback": "中の式全体が3か−3のどちらかになる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-06-choice-3",
+            "content": "x-2=3\\;\\text{または}\\;x-2=-3",
+            "feedback": "中の式全体が3か−3のどちらかになる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "中の式全体が3か−3のどちらかになる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-06-old",
+          "slotId": "n13-06-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-07",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000580"
+      ],
+      "requires": [
+        "n13-06-legacy-result"
+      ],
+      "produces": [
+        "n13-07-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両方の解を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000580"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-07-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-07-old-text",
+              "kind": "text",
+              "text": "両方の解を選ぼう。"
+            },
+            {
+              "id": "n13-07-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-07",
+              "semanticRef": "n13-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-07-old-hint",
+              "kind": "text",
+              "text": "どちらの枝も両辺から2を引く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両方の解を選ぼう。",
+        "prerequisiteIds": [
+          "n13-06-legacy-result"
+        ],
+        "expected": {
+          "value": "x=1\\;\\text{または}\\;x=-5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-07-choice-0",
+            "content": "x=1\\;\\text{または}\\;x=-5",
+            "feedback": "どちらの枝も両辺から2を引く。"
+          },
+          {
+            "id": "n13-07-choice-1",
+            "content": "x=1",
+            "feedback": "どちらの枝も両辺から2を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-07-choice-2",
+            "content": "x=5\\;\\text{または}\\;x=-1",
+            "feedback": "どちらの枝も両辺から2を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-07-choice-3",
+            "content": "x=-1\\;\\text{または}\\;x=-5",
+            "feedback": "どちらの枝も両辺から2を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "どちらの枝も両辺から2を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-07-old",
+          "slotId": "n13-07-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-wm023-q08-branches",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000583"
+      ],
+      "requires": [
+        "n13-07-legacy-result"
+      ],
+      "produces": [
+        "n13-wm023-q08-branches-legacy-result"
+      ],
+      "role": "check",
+      "goal": "中身3xがとり得る二つの等式を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000583"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-wm023-q08-branches-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q08-branches-old-text",
+              "kind": "text",
+              "text": "中身3xがとり得る二つの等式を選ぼう。"
+            },
+            {
+              "id": "n13-wm023-q08-branches-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-wm023-q08-branches",
+              "semanticRef": "n13-wm023-q08-branches"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q08-branches-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q08-branches-old-hint",
+              "kind": "text",
+              "text": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q08-branches",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "中身3xがとり得る二つの等式を選ぼう。",
+        "prerequisiteIds": [
+          "n13-07-legacy-result"
+        ],
+        "expected": {
+          "value": "3x=6\\;\\text{または}\\;3x=-6",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q08-branches-choice-0",
+            "content": "3x=6\\;\\text{または}\\;3x=-6",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-1",
+            "content": "3x=6\\;\\text{かつ}\\;3x=-6",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-2",
+            "content": "3x=6",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-3",
+            "content": "3x=-6",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q08-branches-old",
+          "slotId": "n13-wm023-q08-branches-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-wm023-q08-positive-root",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000583"
+      ],
+      "requires": [
+        "n13-wm023-q08-branches-legacy-result"
+      ],
+      "produces": [
+        "n13-wm023-q08-positive-root-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3x=6 の解を求めよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000583"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-wm023-q08-positive-root-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q08-positive-root-old-text",
+              "kind": "text",
+              "text": "3x=6 の解を求めよう。"
+            },
+            {
+              "id": "n13-wm023-q08-positive-root-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-wm023-q08-positive-root",
+              "semanticRef": "n13-wm023-q08-positive-root"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q08-positive-root-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-wm023-q08-positive-root-old-hint",
+              "kind": "text",
+              "text": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q08-positive-root",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x=6 の解を求めよう。",
+        "prerequisiteIds": [
+          "n13-wm023-q08-branches-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q08-positive-root-choice-0",
+            "content": "2",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-1",
+            "content": "-2",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-2",
+            "content": "6",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-3",
+            "content": "\\frac12",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q08-positive-root-old",
+          "slotId": "n13-wm023-q08-positive-root-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-08",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000583"
+      ],
+      "requires": [
+        "n13-wm023-q08-positive-root-legacy-result"
+      ],
+      "produces": [
+        "n13-08-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3x=−6 の解を求めよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000583"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-08-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-08-old-text",
+              "kind": "text",
+              "text": "3x=−6 の解を求めよう。"
+            },
+            {
+              "id": "n13-08-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-08",
+              "semanticRef": "n13-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-08-old-hint",
+              "kind": "text",
+              "text": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x=−6 の解を求めよう。",
+        "prerequisiteIds": [
+          "n13-wm023-q08-positive-root-legacy-result"
+        ],
+        "expected": {
+          "value": "-2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-08-choice-0",
+            "content": "-2",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+          },
+          {
+            "id": "n13-08-choice-1",
+            "content": "2",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-08-choice-2",
+            "content": "-6",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-08-choice-3",
+            "content": "-\\frac12",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-08-old",
+          "slotId": "n13-08-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-09",
+      "problemId": "n13",
+      "sourceRefs": [
+        "word-p-000586"
+      ],
+      "requires": [
+        "n13-08-legacy-result"
+      ],
+      "produces": [
+        "n13-09-legacy-result"
+      ],
+      "role": "check",
+      "goal": "それぞれの実数解について選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000586"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n13-09-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-09-old-text",
+              "kind": "text",
+              "text": "それぞれの実数解について選ぼう。"
+            },
+            {
+              "id": "n13-09-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n13-09",
+              "semanticRef": "n13-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n13-09-old-hint",
+              "kind": "text",
+              "text": "距離0は原点、負の距離を持つ点は存在しない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "それぞれの実数解について選ぼう。",
+        "prerequisiteIds": [
+          "n13-08-legacy-result"
+        ],
+        "expected": {
+          "value": "0ならx=0、負なら実数解なし",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n13-09-choice-0",
+            "content": "0ならx=0、負なら実数解なし",
+            "feedback": "距離0は原点、負の距離を持つ点は存在しない。"
+          },
+          {
+            "id": "n13-09-choice-1",
+            "content": "0ならx=±0、負ならx=±2",
+            "feedback": "距離0は原点、負の距離を持つ点は存在しない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-09-choice-2",
+            "content": "0なら解なし、負ならx=−2",
+            "feedback": "距離0は原点、負の距離を持つ点は存在しない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n13-09-choice-3",
+            "content": "両方ともすべての実数",
+            "feedback": "距離0は原点、負の距離を持つ点は存在しない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "距離0は原点、負の距離を持つ点は存在しない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-09-old",
+          "slotId": "n13-09-old-slot"
+        }
+      }
+    }
+  ]
+}

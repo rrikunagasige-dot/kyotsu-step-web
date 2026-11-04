@@ -1,0 +1,461 @@
+{
+  "reviewer": "A / w047_review_design",
+  "task": "N13→N14 全体具体修正案の理念・工程監視（実装なし）",
+  "status": "SOURCE_AND_CURRENT_READING_FLOW_AUDIT_COMPLETE; PROPOSAL_DIRECTION_REVIEWED",
+  "verdict": "FAIL",
+  "verdictScope": "現r4/r10の確認済み欠落・先出しに対する判定。未作成の新候補の合否ではない。Mの方向は下記条件で支持。",
+  "authorization": {
+    "source": "conversation:d1dfd1d9",
+    "quote": "いいよ続けてくれ",
+    "scope": "N13→N14調査と具体修正案作成の続行。教材全面実装・公開・本人受入を生成しない。"
+  },
+  "sourceReading": {
+    "motherWordRead": true,
+    "expectedWord": "01_数と式_教科書モード_対話段階導入版_v2(3).docx",
+    "expectedSHA256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+    "readEvidence": [
+      "旧W003 source comparison報告の原典由来/原問key一覧",
+      "W025 current-word-source-auditの段落番号map（本文完全性の証明ではない）",
+      "数学SPECとMASTER7/8/17/18/19/20/45/52/53、2026-10-24学習順序/前結果/番号原則",
+      "現n13Lesson.ts r4、n14Lesson.ts r10の原稿/個別fix構成と主要保護境界"
+    ],
+    "N13": {
+      "originalQuestions": 9,
+      "currentGradedItemsHistoricalMap": 12,
+      "currentSourcePages": [
+        33,
+        34
+      ],
+      "currentIndexSHA256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4",
+      "allSourceBlocksRead": 33,
+      "currentQuestionLocators": [
+        {
+          "text": "【1】 原点の左右それぞれで、条件を満たす位置を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[560]"
+        },
+        {
+          "text": "【2】  と置くと、 にどのような二つの可能性があるか。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[567]"
+        },
+        {
+          "text": "【3】  を戻し、 についての二つの方程式を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[568]"
+        },
+        {
+          "text": "【4】 二つをそれぞれ解き、解をすべて答えよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[569]"
+        },
+        {
+          "text": "【5】  と  のそれぞれで、二点間の距離を式で書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[574]"
+        },
+        {
+          "text": "【6】 絶対値を使わない二つの方程式へ直そう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[579]"
+        },
+        {
+          "text": "【7】 解をすべて求めよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[580]"
+        },
+        {
+          "text": "【8】 絶対値を使わない条件にし、解を求めよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[583]"
+        },
+        {
+          "text": "【9】  の解と、絶対値が負の数に等しい方程式の実数解について答えよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[586]"
+        }
+      ],
+      "oldWordQuestionParagraphsHistoricalOnly": [
+        543,
+        550,
+        551,
+        552,
+        557,
+        562,
+        563,
+        566,
+        569
+      ]
+    },
+    "N14": {
+      "originalQuestions": 16,
+      "currentGradedItemsHistoricalMap": 38,
+      "currentSourcePages": [
+        35,
+        36
+      ],
+      "currentIndexSHA256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6",
+      "allSourceBlocksRead": 46,
+      "currentQuestionLocators": [
+        {
+          "text": "【1】 この条件を、原点からの距離を使った言葉に直そう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[592]"
+        },
+        {
+          "text": "【2】 距離がちょうど3になる二つの位置を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[594]"
+        },
+        {
+          "text": "【3】 残すのは二点の間か、外側か。また、境界を含むか答えよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[595]"
+        },
+        {
+          "text": "【4】 絶対値を使わずに、解の範囲を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[596]"
+        },
+        {
+          "text": "【5】 境界を求め、間と外側のどちらを残すか、等号も含めて判断しよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[600]"
+        },
+        {
+          "text": "【6】 二つの範囲を、正しいつなぎ方で表そう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[601]"
+        },
+        {
+          "text": "【7】  を、絶対値のない不等式で表そう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[608]"
+        },
+        {
+          "text": "【8】  を、絶対値のない二つの範囲で表そう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[609]"
+        },
+        {
+          "text": "【9】 中の式全体を一つの数と見て、絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[615]"
+        },
+        {
+          "text": "【10】  だけを中央へ残すため、各辺に同じ操作をしよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[616]"
+        },
+        {
+          "text": "【11】 間と外側のどちらを選ぶか判断し、絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[620]"
+        },
+        {
+          "text": "【12】 それぞれを解き、二つの範囲をまとめて答えよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[621]"
+        },
+        {
+          "text": "【13】 絶対値を外した条件を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[625]"
+        },
+        {
+          "text": "【14】 まず定数項をなくす変形をしよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[626]"
+        },
+        {
+          "text": "【15】 係数を1にし、最終的な範囲を書こう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[627]"
+        },
+        {
+          "text": "【16】 両端の値を元の絶対値に代入し、どちらも含めてよいことを確認しよう。［　　　　　　　　　　　　　　　　］",
+          "locator": "word/document.xml:p[628]"
+        }
+      ],
+      "oldWordQuestionParagraphsHistoricalOnly": [
+        575,
+        577,
+        578,
+        579,
+        583,
+        584,
+        591,
+        592,
+        598,
+        599,
+        603,
+        604,
+        608,
+        609,
+        610,
+        611
+      ]
+    },
+    "gap": "原典取得の前報告OPENは解消。別冊公式解答は未提供。原典import status PASSでもsemanticFidelity=REQUIRES_SOURCE_REVIEWであり自動意味合格ではない。",
+    "readMethod": "原docx bytes/ZIP media hash照合、既存CODE抽出N13全33/N14全46blocks（原文・数式・図参照）を全読。現export N13全41/N14全88readingBlocksをその後照合。docx全ページの組版renderを読んだ主張ではない。",
+    "wordBytes": 212863,
+    "currentSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "locatorCorrection": "旧W025番号は歴史的mapとしてのみ保持。母Word同一hashでもextractor段落の数え方が異なるため現indexのword/document.xml:p[n]を正本locatorとする。旧番号と新番号を混用しない。"
+  },
+  "protection": [
+    {
+      "unit": "N13",
+      "work": "W-MATH-023/P-002",
+      "targets": [
+        "Q05 右側/左側の距離を独立判断",
+        "Q08 二分岐→正の枝を解く→負の枝を解く"
+      ],
+      "protect": "Q05の既存2判断・Q08既存3判断、元source marker/採点ID/正答/順序/元図2点を保持。既存境界throwを汎用置換で除去しない。"
+    },
+    {
+      "unit": "N14",
+      "work": "W-MATH-014/015",
+      "targets": [
+        "Q07 |X|<a のX≥0/X<0場合分けと和集合/逆向き確認",
+        "Q08 |X|>a の符号場合分けとOR"
+      ],
+      "protect": "a>0条件、0の所属、負数倍で向き反転、各branch条件のAND、branch間のORを維持。"
+    },
+    {
+      "unit": "N14",
+      "work": "W-MATH-016",
+      "targets": [
+        "Q12 左枝x≤−5/右枝x≥−1の独立計算→OR再結合"
+      ],
+      "protect": "一括完成解選択へ戻さず左右の計算と元条件への帰還を保持。"
+    },
+    {
+      "unit": "N14",
+      "work": "W-MATH-018/019/020/021",
+      "targets": [
+        "Q10 三辺+3と両端計算",
+        "Q14 三辺+2と両端計算",
+        "Q15 三辺÷3と両端計算/中心hint"
+      ],
+      "protect": "3辺すべての同一操作/正数除算/不等号と等号保持。既承認hintを旧hintへ戻さない。結果を先出しして操作を写すだけにしない。"
+    },
+    {
+      "unit": "N14",
+      "work": "W-MATH-022",
+      "targets": [
+        "Q16 左端中身→絶対値、右端中身→絶対値、端点包含判断"
+      ],
+      "protect": "負の中身−4と絶対値4を区別し両端で原不等式を検算。最終解の選択だけへ圧縮しない。"
+    }
+  ],
+  "designChecks": [
+    {
+      "id": "A01",
+      "rule": "穴数KPIにしない",
+      "test": "各主要非自明操作を学習行為/既習根拠/可視入力/作る出力/正答後再利用で記述。既知公式の必要な説明は先に教え、今回の具体計算や判断は先に代行しない。"
+    },
+    {
+      "id": "A02",
+      "rule": "N13独立問題ごとの推導を完結",
+      "test": "|x−1|=4や|x+2|=3は中身を一数として分岐→各branch解法→OR→元式/距離に戻す。二問を並行に進めて結論だけ先に出さない。0/負右辺の区別も条件から判断する。"
+    },
+    {
+      "id": "A03",
+      "rule": "N14内外/端点/and-orを別判断として追える",
+      "test": "距離の上限/下限→境界→残す内外→等号有無→AND/OR翻訳。条件を一つの完成選択肢に束ねて未習の複数操作を飛ばさない。"
+    },
+    {
+      "id": "A04",
+      "rule": "絶対値の符号は中身全体で判断",
+      "test": "X<0なら|X|=−X、xの符号とX=x−cの符号を混同しない。−X<aからX>−aへの反転とX<0の共通部分を明示し、二場合の和集合と区別する。a>0を一般公式の仮定として固定。"
+    },
+    {
+      "id": "A05",
+      "rule": "全文と可視全channelの漏洩監査",
+      "test": "title/lead/hint/alt/caption/前式/次式/完成原図/選択肢説明/履歴/途中状態をpending/wrong/correctで読む。前結果の正当な再利用と今回未生成の商や境界判断の先出しを区別。"
+    },
+    {
+      "id": "A06",
+      "rule": "本文の連続性と本体帰還",
+      "test": "目的→根拠→局所計算→保持結果→元問題へ再利用→結論。式だけ増やさず、何をなぜ計算し今どの条件を得たかを前後文章で接続。"
+    },
+    {
+      "id": "A07",
+      "rule": "保存と実操作",
+      "test": "既存12/38という数は穴KPIではなく保存契約の出発点。旧item ID/正答/選択肢順/誤答ゲート/revision/履歴の意味を固定し、必要な追加は承認案とmigrationに明記。320/390/430/1440でpending/wrong/correct、再読込/reset/進捗隔離を実確認。"
+    }
+  ],
+  "workflow": {
+    "route": "既存稿全面修正はCMD-WORK-001。N13→N14順で原問/概念の小blockpreflightを繰返し、depends_on_blocksとfact_dependenciesを別定義する。",
+    "beforeApproval": [
+      "R01原問/現稿/症状・queue復元",
+      "R02数学独立解法と原因・可視情報整理",
+      "R03同型/共有surface inventory",
+      "R04全文before/after・KEEP/変更・学習行為・source coverage・原図・保存契約・hashを具体化し非作者審査"
+    ],
+    "afterApproval": "既存R05exact承認照合→R06限定patch→R07CODE＋現実画像意味審査→G2→権限/現main規則に従うG3→範囲付き本人受入→事後sweep/R08/L01/Z01。今回続行をR05教材実装承認にしない。",
+    "codeOwns": [
+      "原資料coverageとID/番号対応",
+      "solver対応範囲/候補検算/IRcompile",
+      "before/after/patchhash、scope/protectedmanifestと保存契約照合",
+      "四幅実測/採点/遷移/HTTP/CI/capturemanifest"
+    ],
+    "aiOwns": [
+      "完全解法の理由と符号/AND-ORの意味",
+      "主要非自明操作の穴設計",
+      "文章連続/先出し/必要説明/再利用の区別",
+      "現artifact実見に基づく意味審査。CODE PASSや未来UIを代理合格にしない。"
+    ],
+    "team": "Mが正式claim/Store/Git唯一writer。既存A/B二人のみ、孫agentなし。作者履歴・元所見・露出を残し、今回調査を将来候補初見や盲検と偽らない。"
+  },
+  "authorityNotes": [
+    "localMASTER54/runbookにW-GOV010現役方式の記述がある一方、直前W047はmain04b823権威を継続した。新Workでauthority確認なしにlocal文面をmain採用済みへ昇格しない。今回権限/公開順の改訂を作らない。",
+    "navigation/memory冒頭のCURRENTが旧W039を示す。W047DONE/live6cd11/evidence902b1596は親の現証拠との対応で扱い、古い冒頭だけで現在地を戻さない。",
+    "今回ローカルGitから6cd11objectを再読できなかった。新しいremote identity/現mainの独立再検証は未実施、親の確認済み事項として区別。"
+  ],
+  "findings": [
+    {
+      "id": "N1314-A-SOURCE01",
+      "status": "VERIFIED_FIXED",
+      "reason": "原Word212863bytes SHA93827322完全一致。N13 33/N14 46blocks全文と対応原図3点の実見/bytes一致を確認。旧番号から今回locatorへ明示訂正。"
+    },
+    {
+      "id": "N1314-A-N14-LEAK01",
+      "status": "OPEN",
+      "targetIds": [
+        "n14-after-02",
+        "n14-03"
+      ],
+      "sourceLocator": "word/document.xml:p[594]→p[595]",
+      "currentQuote": "距離が3未満なら二点の間にある点だけを残す。",
+      "reason": "Q2で境界を求めた後、Q3が問う内側/外側の判断を本文が先に確定。移動/正答後表示を支持。候補未実装につき解決とはしない。"
+    },
+    {
+      "id": "N1314-A-N13-GENERAL01",
+      "status": "OPEN",
+      "targetIds": [
+        "N13 Q1→Q2接続"
+      ],
+      "sourceLocator": "word/document.xml:p[563]",
+      "sourceQuote": "正の数aについても、|x|=aはx=aまたはx=−aを意味する。",
+      "reason": "現稿はOR説明をQ1後に持つが、a>0の一般形の明示正式化をQ2前に持たない。Q9後のa分類だけでは原典の具体例→一般化→式全体への適用という接続を代替しない。"
+    },
+    {
+      "id": "N1314-A-N14-CLOSE01",
+      "status": "OPEN",
+      "targetIds": [
+        "N14 Q16後章結び"
+      ],
+      "sourceLocators": [
+        "word/document.xml:p[629]",
+        "word/document.xml:p[630]",
+        "word/document.xml:p[631]",
+        "word/document.xml:p[632]",
+        "word/document.xml:p[633]"
+      ],
+      "reason": "現readingFlowはQ16検算結論で終了し、値/条件を保つ章全体の統合、展開/因数分解/平方根/不等式の振返り、二次関数へのbridgeが欠落。復元を支持。新しい未習二次関数計算を要求せず必要な説明として置く。"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "9934f0d14004a1eba95712e801630f1302f549f6a5e212151e127e64d772e459"
+    },
+    {
+      "path": "governance/CONSTITUTION.md",
+      "sha256": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774"
+    },
+    {
+      "path": "governance/COMMAND_WORDS.md",
+      "sha256": "df12ca870ceefe169ad22960467b7f1b2c176f252abe5e5a965bf4a5634b7e1c"
+    },
+    {
+      "path": "subjects/mathematics/AGENTS.md",
+      "sha256": "b5edc766cd539cdcd0db4bd3c8ca81a44c81086ab9639a2cd45bc3973cfe19fb"
+    },
+    {
+      "path": "subjects/mathematics/textbook/SPEC.md",
+      "sha256": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+    },
+    {
+      "path": "docs/MASTER_APP_LESSONS.md",
+      "sha256": "5e8ca93f707c6c98e2605f76ab3625f23663dfbb05253a5fb77e599dbc3c7e1b"
+    },
+    {
+      "path": "workflow/INTEGRATION_RUNBOOK.md",
+      "sha256": "03f6da83f4d0f4d73cdd6b530e552591c4fb575b0188c9a266542e21783bdf5e"
+    },
+    {
+      "path": "workflow/TEAM_PROTOCOL.md",
+      "sha256": "c9b916645dca1cf8ac799ab8aead162665aad31783cdfe9f27ef4f00e937090a"
+    },
+    {
+      "path": "workflow/graphs.py",
+      "sha256": "9713da6f713f238e474ff061ef0673f225a026fe35c5bd2e4907bfd6f2a9fbc1"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n13Lesson.ts",
+      "sha256": "953f0cec42e046c6c42e9e4a73b39ce9c9d92ae523b1afd2e7bc9175ca99c18c"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n14Lesson.ts",
+      "sha256": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014"
+    },
+    {
+      "path": "work/items/W-MATH-003-numbers-expressions-creation/N04_N14_SOURCE_SOLUTION_AUDIT.md",
+      "sha256": "9607a3e02af371ede9c8e15c27acd7994eb81c5febb27dd6837df82d4c3f4a36"
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/evidence/p017-p018-final/audit/current-word-source-audit.json",
+      "sha256": "71e7413c20de1aae265675ed4aab342f141af0b657d1ef89c087cdfd8eff7322"
+    },
+    {
+      "path": "/tmp/N13_SOURCE_INDEX.json",
+      "sha256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4"
+    },
+    {
+      "path": "/tmp/N14_SOURCE_INDEX.json",
+      "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    },
+    {
+      "path": "/tmp/n13-current.json",
+      "sha256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42"
+    },
+    {
+      "path": "/tmp/n14-current.json",
+      "sha256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede"
+    }
+  ],
+  "limits": [
+    "現稿全129readingBlocksと原典全79抽出blocksを照合済み。新候補IR/実render/実CIはまだ未審査。",
+    "原典取得前に現稿・旧照合報告を読んだ履歴を保持。今回原典→runtime export順の再照合であり、未露出の盲検/source-first初見と偽らない。",
+    "原図3点をview_imageで実見、母Word内mediaとbyte一致。Word全ページの組版実見とは区別。",
+    "旧fix原発言receiptの全面再照合は今回未実施。保持方針は現実装/注記と旧原資料対応に基づく。",
+    "現main/live source/remote evidenceの再独立照合は親の確認済み事項を参照。Store/Git/製品を書かず、tmp報告のみ更新。"
+  ],
+  "priorReport": {
+    "sha256": "aa33ce2c1a8b1acceec11df314f4bf00cf13fe6ae1d72fdc8ae20dbde66be921",
+    "status": "PRELIMINARY_AUDIT_COMPLETE_SOURCE_TEXT_PENDING",
+    "verdict": "UNVERIFIED",
+    "sourceGapFindingPreserved": {
+      "id": "N1314-A-SOURCE01",
+      "status": "OPEN",
+      "targetIds": [
+        "N13全体",
+        "N14全体"
+      ],
+      "reason": "母Word本文/全文source index未確認。旧Q段落mapは無番号説明・原文・図配置の全文coverageを保証しない。原典読了前に全面案source PASSを出さない。"
+    }
+  },
+  "sourceFigures": [
+    {
+      "id": "n13-f02",
+      "media": "word/media/image12.png",
+      "bytesIdentical": true,
+      "viewed": true,
+      "role": "±5完成二点/距離図。Q1正答後のみ。"
+    },
+    {
+      "id": "n13-f01",
+      "media": "word/media/image13.png",
+      "bytesIdentical": true,
+      "viewed": true,
+      "role": "x>1/x<1の位置と距離?図。Q5前に必要。図のx>1は境界x=1を排除する一般定義ではない。"
+    },
+    {
+      "id": "n14-f01",
+      "media": "word/media/image14.png",
+      "bytesIdentical": true,
+      "viewed": true,
+      "role": "|x|<3/|x|≥4の完成領域図。Q1–6後、Q7前の既確定結果比較。"
+    }
+  ],
+  "proposalDirectionReview": {
+    "verdict": "SUPPORTED_WITH_CONDITIONS",
+    "existingContracts": "既存N13 12/N14 38の50採点IDとchoice keyを保持し既存Guided reader/IRへopt-inする方針を支持。新エンジンは要求しない。ただし新helper IDs/依存と番号alias/既存保存revision対応はexact案に明記し既存runtime/adapterで検証する。",
+    "N13_Q04_Q07": "二枝を独立計算し、既存pairでORを保って全解へまとめる案を支持。前branch結果を保持し本体へ戻す。pairは新しい全解統合であり、既確定値の再利用自体を答え漏れとはしない。",
+    "N13_Q09": "0は唯一位置x=0、負右辺は非負性による不可能判断なので分離は妥当。距離非負は既習根拠として先に教えてよく、その必要説明まで消さない。元まとめは分類統合として保持。",
+    "N14_Q03": "after02をQ3正答後へ移す案を支持。同時にhint/後続本文/図/履歴のvisible conditionsを監査する。",
+    "N14_Q05": "境界計算・内外・等号の別判断は複合非自明操作を残すので支持。旧hint「遠い点は原点の左右どちらか外側。≥には等号がある」は新補助段階が未回答の間にそのまま見せない。元まとめはこれらを一つの条件へ統合する役割を与える。",
+    "N14_Q07_Q08": "符号穴の機械的一律追加には反対。各既承認branchが負数倍/反転と符号制約の共通部分を同時に要求するため必要なら一段の変形（−X<a→X>−a等）を補助する。helperが完成branch範囲−a<X<0等を先に確定して元branchをそのまま写すだけにしない。既承認各3判断は削除せず新旧の異なる学習行為を明記。",
+    "N14_Q10_Q14_Q15": "既存5回答ずつの同一三辺操作と端点計算をそのまま保持する案を支持。三回同数入力は新規推論数として水増しせず、同値変形を三辺へ保つ操作実行の役割を説明する。回答前にexplainの具体+3/+2/÷3が見えてしまわないこと。",
+    "N14_Q12_Q16": "二枝各計算とOR統合、端点の中身/絶対値/包含判断の既承認段階を保持。Q16で前問端点を再掲するのは検算の入力再利用であり、Q15未回答時の漏洩とは別。",
+    "sourceEnds": "N13 p563一般形をQ1解答後→Q2前、N14p630–633をQ16後に復元。p588/p634等の節見出し/参考・発展は抽出境界/教材メタデータとして判断し、無関係な新内容を自動追加しない。"
+  }
+}

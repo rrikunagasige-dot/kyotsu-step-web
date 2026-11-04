@@ -1,0 +1,31 @@
+{
+  "status": "PASS_BOUNDED_CANDIDATE_DATA",
+  "contracts": [
+    {
+      "unit": "N13",
+      "oldRevision": 4,
+      "proposedRevision": 5,
+      "oldItems": 12,
+      "proposedItems": 18,
+      "oldKeysPreserved": true,
+      "schema": "PASS"
+    },
+    {
+      "unit": "N14",
+      "oldRevision": 10,
+      "proposedRevision": 11,
+      "oldItems": 38,
+      "proposedItems": 40,
+      "oldKeysPreserved": true,
+      "schema": "PASS"
+    }
+  ],
+  "katexChecks": 283,
+  "failures": [],
+  "learnerSourceModified": false,
+  "liveBrowserVerified": false,
+  "workflowR04Completed": false,
+  "limits": [
+    "Actual schema/choice and composed-math checks; no teaching acceptance, migration implementation or four-width browser PASS inferred."
+  ]
+}

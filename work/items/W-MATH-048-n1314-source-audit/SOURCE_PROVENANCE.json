@@ -1,0 +1,19 @@
+{
+  "libraryFileId": "libfile_615a0946abcc8191a986e15a39f38964",
+  "filename": "01_数と式_教科書モード_対話段階導入版_v2.docx",
+  "bytes": 212863,
+  "sha256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceKind": "Teacher-edited pedagogical draft; publisher original or unrestricted reuse is not asserted",
+  "extraction": "Existing tools/textbook/source/import-word.py",
+  "N13": {
+    "blocks": 33,
+    "math": 22,
+    "markers": 9
+  },
+  "N14": {
+    "blocks": 46,
+    "math": 14,
+    "markers": 16
+  },
+  "sourceParagraphLocatorRule": "Current exact import indexes; old extraction paragraph numbering is not silently reused."
+}

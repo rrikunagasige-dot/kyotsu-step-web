@@ -1,0 +1,258 @@
+{
+  "phase": "pre-design",
+  "rows": [
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/n13Lesson.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/domain/textbook.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n13",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/n14Lesson.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/domain/textbook.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    },
+    {
+      "originFinding": "W048 source-first investigation",
+      "rootCauseSignature": "bundled-independent-decisions / premature-answer-in-prose-title-hint / missing-source-bridge",
+      "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json",
+      "version": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-014..023 scoped fixes retained",
+      "block_id": "n14",
+      "evidence_refs": [
+        "353a2c66-5a42-452e-b364-38d589cc812e",
+        "c3673ab1-1ea3-4ac8-98dd-50026770bd98",
+        "b15a9720-8bfc-4daf-90ad-6021b0ce84d3",
+        "f1166c3a-0e37-41f1-8082-07f3bc41021b",
+        "67b5b61a-e6ef-4fae-9f8f-2b610913862b",
+        "7de74ce1-3a69-4cff-83e9-09ed418842a6",
+        "1c0d45dd-fa86-4172-9874-a60afe3b8ba8",
+        "2a65afe0-d8af-48e6-9104-a4f3927e60b8"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "reason": "Source indexes are evidence; shared helpers and consumers remain unchanged. Both N13 and N14 findings retained in the same scoped repair proposal. Full-reader migration is a later explicit R04 decision, not an implemented change."
+    }
+  ],
+  "limits": "Current scoped source/cause sweep. N01–N12/NE extras protected by fixed hashes; not an assertion that every prior lesson has no independent teaching improvement."
+}

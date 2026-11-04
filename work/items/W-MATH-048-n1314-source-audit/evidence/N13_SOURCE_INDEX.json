@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N13",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000556",
+      "locator": "word/document.xml:p[556]",
+      "text": "N13　距離の条件を、二つの位置へ戻す",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000557",
+      "locator": "word/document.xml:p[557]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000558",
+      "locator": "word/document.xml:p[558]",
+      "text": " を満たす実数  を求めよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "82b796005ad526f210e2d688286098f6a305df5cbb29d793097ffc30122d3b7b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x\\text{|} = 5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000559",
+      "locator": "word/document.xml:p[559]",
+      "text": "先生　「絶対値の意味へ戻りましょう。原点から5だけ離れた場所は、右側だけにありますか。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000560",
+      "locator": "word/document.xml:p[560]",
+      "text": "【1】 原点の左右それぞれで、条件を満たす位置を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000561",
+      "locator": "word/document.xml:p[561]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image12.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000562",
+      "locator": "word/document.xml:p[562]",
+      "text": "N13-F02　答えた後に、左右の二点と原点からの距離を確かめる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000563",
+      "locator": "word/document.xml:p[563]",
+      "text": "正の数  についても、 は  または  を意味する。「または」は二つを同時に満たすという意味ではなく、どちらかを満たせばよいということである。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "5ef2f91da1f19c21ee4fbe8250a27dd6018f9a268f1207817aa3a34b5aa3cb00",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "8201c2edb6926250ac6fe4c75a144757bf12fb85c011c6a6cfc50108b3b44cec",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "bb71d39973a8467e3841ee8d4c8fa8587aa8b176d9e873cad6c5a7b880ca4dcd",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x\\text{|} = a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x = a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x = - a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000564",
+      "locator": "word/document.xml:p[564]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000565",
+      "locator": "word/document.xml:p[565]",
+      "text": " を解こう。絶対値が掛かっているのは、 だけでなく  全体である。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "721b3861cdb0e5e907d4b1fee94471577e682e862ef79a680aeca76f901d7a3d",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "8d538e738450e98098296dd78201dc1f4dc51fec70867bd015d0df843665000f",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x - 1\\text{|} = 4"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x - 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000566",
+      "locator": "word/document.xml:p[566]",
+      "text": "花子　「中身が式でも、まずそれ全体を一つの数だと思えば、さっきと同じ条件で考えられそう。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000567",
+      "locator": "word/document.xml:p[567]",
+      "text": "【2】  と置くと、 にどのような二つの可能性があるか。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [
+        {
+          "sha256": "35a7251dfa79f959aa222759cf92d986ce89fa11419952b715eb9f7b3237872b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1e8b383ac446f35692920d22241e408a26f6d960100d0bddb9de289e68c7ae33",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "X = x - 1"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "X"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000568",
+      "locator": "word/document.xml:p[568]",
+      "text": "【3】  を戻し、 についての二つの方程式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [
+        {
+          "sha256": "1e8b383ac446f35692920d22241e408a26f6d960100d0bddb9de289e68c7ae33",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "X"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000569",
+      "locator": "word/document.xml:p[569]",
+      "text": "【4】 二つをそれぞれ解き、解をすべて答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000570",
+      "locator": "word/document.xml:p[570]",
+      "text": "意味を確かめる",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000571",
+      "locator": "word/document.xml:p[571]",
+      "text": " は、数直線上の  と1の距離でもある。下の二つの図で、右側の座標から左側の座標を引いた距離を考える。図は位置関係を示し、具体的な  の値は指定しない。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "6ff1b7c4b57b9b555a6d240c0fb66016252fbc778f5b692c0ab74a868510f1e8",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x - 1\\text{|}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000572",
+      "locator": "word/document.xml:p[572]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image13.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000573",
+      "locator": "word/document.xml:p[573]",
+      "text": "N13-F01　1より右にある場合と、左にある場合。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000574",
+      "locator": "word/document.xml:p[574]",
+      "text": "【5】  と  のそれぞれで、二点間の距離を式で書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [
+        {
+          "sha256": "769ef2981b01e900d10679c8423bd3c6f5c4c94c244c13ee08d2a5ef48ece1e6",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "38994ae0dc58dd4ce4f811246a055adc0395d5376adbd1d96685f7c6b951a263",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x \\geq 1"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x < 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000575",
+      "locator": "word/document.xml:p[575]",
+      "text": "二つの式は  の場合分けと同じである。さきほど得た二つの解は、1から左右に同じ距離だけ離れている。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "6ff1b7c4b57b9b555a6d240c0fb66016252fbc778f5b692c0ab74a868510f1e8",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x - 1\\text{|}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000576",
+      "locator": "word/document.xml:p[576]",
+      "text": "中身をひとまとまりにして、自分で分ける",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000577",
+      "locator": "word/document.xml:p[577]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000578",
+      "locator": "word/document.xml:p[578]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "6ac98bd0e511ecd2c4dd89aeb729159cfc2a3d86244f0efe5fd56857d0966e22",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x + 2\\text{|} = 3"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000579",
+      "locator": "word/document.xml:p[579]",
+      "text": "【6】 絶対値を使わない二つの方程式へ直そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000580",
+      "locator": "word/document.xml:p[580]",
+      "text": "【7】 解をすべて求めよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000581",
+      "locator": "word/document.xml:p[581]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000582",
+      "locator": "word/document.xml:p[582]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "080b71a8d803408250870df813948e87deaf9dd029fc0cad50cea64d49835d96",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}3x\\text{|} = 6"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000583",
+      "locator": "word/document.xml:p[583]",
+      "text": "【8】 絶対値を使わない条件にし、解を求めよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000584",
+      "locator": "word/document.xml:p[584]",
+      "text": "性質",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000585",
+      "locator": "word/document.xml:p[585]",
+      "text": "先生　「ここまでは距離が正の場合でした。距離が0の場合や、負の値を要求された場合も、二つの位置があるでしょうか。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000586",
+      "locator": "word/document.xml:p[586]",
+      "text": "【9】  の解と、絶対値が負の数に等しい方程式の実数解について答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [
+        {
+          "sha256": "63d9b2d626b8b832edbd8c514e721c1f22df57a71028fc6478d89807540ad5f6",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\text{|}x\\text{|} = 0"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000587",
+      "locator": "word/document.xml:p[587]",
+      "text": "右辺が距離として可能かを確かめてから、位置を求める。次は「近い・遠い」という条件を調べる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000588",
+      "locator": "word/document.xml:p[588]",
+      "text": "第3節　1次不等式",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

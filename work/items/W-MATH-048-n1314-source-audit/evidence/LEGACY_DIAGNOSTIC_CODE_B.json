@@ -1,0 +1,146 @@
+{
+  "role": "B deterministic CODE preparation; lesson author remains M",
+  "status": "PASS_BOUNDED_DIAGNOSTIC_PROJECTION",
+  "baselineSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "schemaVersion": "production-ir/1",
+  "basis": {
+    "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-036-ne02-n11-n12-guided-design/verify.py",
+    "sha256": "6dbe5688c2308ab5dc81951d7033b90a4d22c381ccdddfc8589ab2ded7eb9380",
+    "method": "Replicated LEGACY_PROJECTION node/interaction construction; header instantiated for each current unit and exact marker mapping used."
+  },
+  "script": {
+    "path": "/tmp/n1314-build-legacy-b.py",
+    "sha256": "22adb9793b8b6d5bfcac3c16d9c2ffbb91d88e4e4e785730b91421a97d4200af"
+  },
+  "existingCode": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/tools/textbook/operations.mjs",
+      "sha256": "14141b312ae939405285ca8bb0c5e24e78cc5c9a56d12413a00a8de10a4f8530"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/tools/textbook/ir/index.mjs",
+      "sha256": "f4dc507498c31c5135f4e7623916683b3b544513ca7105fbd45b895a86cd53f8"
+    }
+  ],
+  "units": [
+    {
+      "unit": "N13",
+      "inputCurrent": {
+        "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+        "sha256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42"
+      },
+      "inputSourceIndex": {
+        "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+        "sha256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4"
+      },
+      "output": {
+        "path": "/tmp/N13_LEGACY_PROJECTION.json",
+        "sha256": "ff67e66dcde6d3c0e73426f9c012d7d762a71a456d241f7fdfa02a1368f459a0"
+      },
+      "legacyNodes": 12,
+      "oldChoices": 48,
+      "numberedQuestionBlocks": 9,
+      "excludedSourceBlocks": 24,
+      "checks": {
+        "verify-ir": {
+          "status": "PASS",
+          "evidencePath": "/tmp/N13_LEGACY_VERIFY_IR.json",
+          "sha256": "ec4fe965471c735e69c0723f26830c6c142aa5d0822830dc49cf4f85199dd206"
+        },
+        "compile-ir": {
+          "status": "PASS",
+          "evidencePath": "/tmp/N13_LEGACY_COMPILE_IR.json",
+          "sha256": "b096f792c8c06cfd9a11c809fc6d5aad4c733b609fb3ed3a5781e9d3cb2a4c86"
+        }
+      },
+      "initialCompileEvidence": "/tmp/N13_LEGACY_COMPILE_IR_INITIAL.json",
+      "warningResolutionEvidence": "/tmp/N13_LEGACY_WARNING_RESOLUTIONS.json",
+      "allOldAnswerChoiceOrderHintsPreserved": true,
+      "sourceMapMethod": "Exact sourceToItemIds question to unique source-index marker; no first-block fallback."
+    },
+    {
+      "unit": "N14",
+      "inputCurrent": {
+        "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+        "sha256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede"
+      },
+      "inputSourceIndex": {
+        "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json",
+        "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+      },
+      "output": {
+        "path": "/tmp/N14_LEGACY_PROJECTION.json",
+        "sha256": "ab12f310ffa4e43b8e1e733528855bd8e9bfc272f73ab0af23b0e59b3c461322"
+      },
+      "legacyNodes": 38,
+      "oldChoices": 152,
+      "numberedQuestionBlocks": 16,
+      "excludedSourceBlocks": 30,
+      "checks": {
+        "verify-ir": {
+          "status": "PASS",
+          "evidencePath": "/tmp/N14_LEGACY_VERIFY_IR.json",
+          "sha256": "6e9e90ec83ca280fb0687ca7db7cf08dbaff211eda533c02eaf3ac175e1007ad"
+        },
+        "compile-ir": {
+          "status": "PASS",
+          "evidencePath": "/tmp/N14_LEGACY_COMPILE_IR.json",
+          "sha256": "95a553a82ddd1f9df06a101a488e268cffb505db84ff743b7db343ec3d729350"
+        }
+      },
+      "initialCompileEvidence": "/tmp/N14_LEGACY_COMPILE_IR_INITIAL.json",
+      "warningResolutionEvidence": "/tmp/N14_LEGACY_WARNING_RESOLUTIONS.json",
+      "allOldAnswerChoiceOrderHintsPreserved": true,
+      "sourceMapMethod": "Exact sourceToItemIds question to unique source-index marker; no first-block fallback."
+    }
+  ],
+  "coverageMeaning": "Only existing graded contracts are projected. Numbered source questions are linked to their old slots. All unnumbered explanatory/structural/figure blocks are explicitly excluded. taught is schema disposition for diagnostic linkage, not an assertion of complete lesson teaching.",
+  "syntheticOrder": "Each prior old item produces a serial legacy-result prerequisite as in W036; this is diagnostic ordering, not an independently validated mathematical graph or actual stage structure.",
+  "purpose": "Native R02 cause CODE input only. Do not reuse as R04 finished lesson IR.",
+  "limitations": [
+    "Initial operations compile-ir refused unresolved TEXT_MAY_CONTAIN_MATH warnings. Initial failures preserved. Existing compileIR API warningResolutions then bound every exact warning ID to copied source text/hash and diagnostic-only use; no shared guard change or unknown warning accepted.",
+    "No candidate new8 decisions, prose, figures, roles, equation layout, actual hint timing or lesson-stage fidelity are claimed by this projection. Old hints are copied to after as mandated by the legacy diagnostic template; this is not an intended lesson display.",
+    "Existing validateIR/compileIR PASS establishes this bounded schema/contract projection only; no full79block coverage/meaning PASS.",
+    "Original79blocks and fullcandidate content comparisons remain in separate original A/B audit reports; these diagnostic files do not replace them.",
+    "No candidate semantic design changes, product writes, Store/Git operations, browser tests or publication.",
+    "Existing node_modules symlink reused read-only; no dependency or shared symlink modifications."
+  ],
+  "fullIR1OptInBoundary": {
+    "status": "STATICALLY_FEASIBLE_WITH_EXPLICIT_DESIGN_BOUNDARY",
+    "notImplemented": true,
+    "question": "Preserve current N14 three grading IDs for a three-slot row using three serial IR1 nodes under the same stage/derivation.",
+    "schemaFacts": [
+      "IR1 node schema has one optional interaction, not an interaction array. Each interaction targets its own one or multiple equivalent insertion slots. slotIds does not create multiple independently graded interactions.",
+      "Represent independent three grading IDs as three nodes retaining each interaction ID/expected key. Prior resolved node result is an explicit requires dependency. For each successive node, prior correct entries may be displayed as known math, current entry is the only answerSlot, future entries must remain static math square with no interactive ID.",
+      "This changes current simultaneous three-button row into cumulative serial local judgments. It is not an exact preservation of the old physical row/input affordance."
+    ],
+    "rendererFacts": [
+      "GuidedMathReadingFlow frontier is first unresolved node; current stage nodes up to frontier are rendered cumulatively, not merged by same derivationId. No built-in general dedup of these three versions exists without transformationData grouping.",
+      "blank can address any item ID in its block; putting future interactive IDs in an earlier node would make those future buttons operable. Do not model future unknowns as real answerSlots.",
+      "renderNode removes resolved before rows only when block id starts n.id+interaction naming convention (literal prefix n.id+\"-interaction\"); other before rows remain alongside after. Design before/after IDs to prevent unintended duplicate equation displays.",
+      "History past stages renders all nodes as solved, and collapsed result uses the last stage node after. Last result must include the complete three-sided equation and connecting explanation; intermediate partial rows must not be mistaken for final results."
+    ],
+    "numberingAndIdentity": [
+      "W036 materialize.mjs explicitly reassigns equationNumbers by node, which would multiply logical-row numbering when splitting one original row into three nodes. Use an explicitly reviewed stable logical-row map/group to preserve intended numbers; same stage/derivation name alone does not achieve this.",
+      "Preserve existing item IDs and correct keys; give distinct semantic/token and generated state block IDs. Old block ID retained/aliased exactly once where required, not copied across repeated rows. Generic ID/order/patch guards may reject the structural change and must not be silently bypassed."
+    ],
+    "futureSaveConditions": [
+      "Existing independently clicked legacy row may have later-slot answers saved while earlier slot is unresolved. Serial frontier can hide future solved records temporarily without discarding them; this case needs real restore/history validation.",
+      "A new revision must preserve unaffected answers/archives, require new eight judgments, and recompute completion and stage cursor. Current old50 grading keys alone cannot prove migration works.",
+      "Legacy compact-cursor key and new Guided key share unit/revision format, but stage meanings differ. New revision migration/route opt-in must not treat old group-index as new semantic stage-index."
+    ],
+    "scopeRequired": [
+      "Full source79block mapping including explanations, figures and final prose; actual fullIR1 and display specifications, not prompt-only diagnostics.",
+      "Explicit opted-in authored artifact/lesson route and semanticDisplay, sourceQuestionParts, roles, figure gates, result refs and correct per-choice hint rendering.",
+      "Existing accepted Q5/Q8 and N14 Q7/8/Q10/Q12/Q14/Q15/Q16 content/UI/hint contract protection; changed presentation requires disclosed review and real widths/history tests."
+    ],
+    "conclusion": "Possible to retain three independent answer IDs with a serial cumulative IR1 encoding, but not proven to retain the exact existing three-control row by schema alone. Treat full opt-in as separate R04 design/render boundary; no full migration design has been applied to the candidates."
+  },
+  "existingCompilerWarningReview": {
+    "N13Warnings": 7,
+    "N14Warnings": 6,
+    "review": "All13 inspected; they are existing formula-bearing prose prompts/hints copied literally into diagnostic text. No ERROR findings and no non-TEXT_MAY_CONTAIN_MATH warning accepted.",
+    "runnerPath": "/tmp/n1314-compile-legacy-b.mjs",
+    "runnerSHA256": "80fc3a6b4b35a2a132c4aef2e22640dbfef33f82649ab183f05ad3388f37a0a0"
+  }
+}

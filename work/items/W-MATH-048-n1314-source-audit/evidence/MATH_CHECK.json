@@ -1,0 +1,484 @@
+{
+  "status": "PASS_BOUNDED_EXACT_SOLUTION_SETS",
+  "engine": "1.14.0",
+  "checks": [
+    {
+      "id": "n13-q01",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "5",
+          "d": "1"
+        }
+      },
+      "actualSet": "{-5, 5}",
+      "expectedSet": "{-5, 5}",
+      "status": "PASS"
+    },
+    {
+      "id": "n13-q02-q04",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "4",
+          "d": "1"
+        }
+      },
+      "actualSet": "{-3, 5}",
+      "expectedSet": "{-3, 5}",
+      "status": "PASS"
+    },
+    {
+      "id": "n13-q06-q07",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "2",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "3",
+          "d": "1"
+        }
+      },
+      "actualSet": "{-5, 1}",
+      "expectedSet": "{-5, 1}",
+      "status": "PASS"
+    },
+    {
+      "id": "n13-q08",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "6",
+          "d": "1"
+        }
+      },
+      "actualSet": "{-2, 2}",
+      "expectedSet": "{-2, 2}",
+      "status": "PASS"
+    },
+    {
+      "id": "n13-q09-zero",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "0",
+          "d": "1"
+        }
+      },
+      "actualSet": "{0}",
+      "expectedSet": "{0}",
+      "status": "PASS"
+    },
+    {
+      "id": "n13-q09-negative",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "=",
+        "right": {
+          "kind": "rational",
+          "n": "-2",
+          "d": "1"
+        }
+      },
+      "actualSet": "EmptySet",
+      "expectedSet": "EmptySet",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q01-q04",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "<",
+        "right": {
+          "kind": "rational",
+          "n": "3",
+          "d": "1"
+        }
+      },
+      "actualSet": "Interval.open(-3, 3)",
+      "expectedSet": "Interval.open(-3, 3)",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q05-q06",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": ">=",
+        "right": {
+          "kind": "rational",
+          "n": "4",
+          "d": "1"
+        }
+      },
+      "actualSet": "Union(Interval(-oo, -4), Interval(4, oo))",
+      "expectedSet": "Union(Interval(-oo, -4), Interval(4, oo))",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q09-q10",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "<",
+        "right": {
+          "kind": "rational",
+          "n": "5",
+          "d": "1"
+        }
+      },
+      "actualSet": "Interval.open(-2, 8)",
+      "expectedSet": "Interval.open(-2, 8)",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q11-q12",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": ">=",
+        "right": {
+          "kind": "rational",
+          "n": "2",
+          "d": "1"
+        }
+      },
+      "actualSet": "Union(Interval(-oo, -5), Interval(-1, oo))",
+      "expectedSet": "Union(Interval(-oo, -5), Interval(-1, oo))",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q13-q16",
+      "statement": {
+        "kind": "relation",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "x"
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "n": "-2",
+                "d": "1"
+              }
+            ]
+          }
+        },
+        "operator": "<=",
+        "right": {
+          "kind": "rational",
+          "n": "4",
+          "d": "1"
+        }
+      },
+      "actualSet": "Interval(-2/3, 2)",
+      "expectedSet": "Interval(-2/3, 2)",
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q16-endpoint--2/3",
+      "value": "4",
+      "satisfiesOriginal": true,
+      "status": "PASS"
+    },
+    {
+      "id": "n14-q16-endpoint-2",
+      "value": "4",
+      "satisfiesOriginal": true,
+      "status": "PASS"
+    }
+  ],
+  "formalProof": false,
+  "limits": [
+    "Existing closed-AST exact solution_set function reused. General symbolic-a proofs, teaching quality, UI and saving are separate AI/implementation checks."
+  ]
+}

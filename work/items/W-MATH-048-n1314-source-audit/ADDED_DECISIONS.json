@@ -1,0 +1,138 @@
+[
+  {
+    "unit": "n13",
+    "q": 4,
+    "id": "n13-w048-q04-positive",
+    "prompt": "右の位置を求めます。右辺の4+1を計算しましょう。",
+    "template": "x-1=4\\ \\Rightarrow\\ x=4+1=□",
+    "answer": "5",
+    "wrong": [
+      "3",
+      "-5",
+      "4"
+    ],
+    "hint": "両辺に1を足した結果を計算します。",
+    "after": "右の位置が決まりました。次は負の方程式を解きます。",
+    "action": "calculation",
+    "beforeBlock": "n13-formula-04"
+  },
+  {
+    "unit": "n13",
+    "q": 4,
+    "id": "n13-w048-q04-negative",
+    "prompt": "左の位置を求めます。負号を残し、−4+1を計算しましょう。",
+    "template": "x-1=-4\\ \\Rightarrow\\ x=-4+1=□",
+    "answer": "-3",
+    "wrong": [
+      "3",
+      "-5",
+      "-4"
+    ],
+    "hint": "負の数に正の1を加える位置を考えます。",
+    "after": "二本の方程式の解が揃いました。元の問いへの答えとして一組にします。",
+    "action": "calculation",
+    "beforeBlock": "n13-formula-04"
+  },
+  {
+    "unit": "n13",
+    "q": 7,
+    "id": "n13-w048-q07-positive",
+    "prompt": "正の枝をxについて解きましょう。",
+    "template": "x+2=3\\ \\Rightarrow\\ x=□",
+    "answer": "1",
+    "wrong": [
+      "5",
+      "-1",
+      "3"
+    ],
+    "hint": "xだけを残すため、両辺から同じ数を引きます。",
+    "after": "もう一方の枝も同じ操作で解きます。",
+    "action": "calculation",
+    "beforeBlock": "n13-formula-07"
+  },
+  {
+    "unit": "n13",
+    "q": 7,
+    "id": "n13-w048-q07-negative",
+    "prompt": "負の枝もxについて解きましょう。",
+    "template": "x+2=-3\\ \\Rightarrow\\ x=□",
+    "answer": "-5",
+    "wrong": [
+      "-1",
+      "5",
+      "-3"
+    ],
+    "hint": "右辺が負でも、左辺の定数を打ち消す操作は同じです。",
+    "after": "二つの結果を元の絶対値方程式の解としてまとめます。",
+    "action": "calculation",
+    "beforeBlock": "n13-formula-07"
+  },
+  {
+    "unit": "n13",
+    "q": 9,
+    "id": "n13-w048-q09-zero",
+    "prompt": "まず、原点からの距離が0になる位置を求めましょう。",
+    "template": "|x|=0\\ \\Rightarrow\\ x=□",
+    "answer": "0",
+    "wrong": [
+      "1",
+      "-1",
+      "2"
+    ],
+    "hint": "点と原点が同じ位置にある場合の距離を考えます。",
+    "after": "距離が0の場合は一つの位置です。次は負の値を要求した条件を調べます。",
+    "action": "calculation",
+    "beforeBlock": "n13-formula-09"
+  },
+  {
+    "unit": "n13",
+    "q": 9,
+    "id": "n13-w048-q09-negative",
+    "prompt": "次に、絶対値が負の数に等しくなる実数があるか判断しましょう。",
+    "template": "|x|=-2\\quad □",
+    "answer": "実数解なし",
+    "wrong": [
+      "x=-2",
+      "x=2",
+      "すべての実数"
+    ],
+    "hint": "絶対値が取り得る値と、右辺の符号を照合します。",
+    "after": "二つの場合の違いを、元の問いの順にまとめます。",
+    "action": "meaning",
+    "beforeBlock": "n13-formula-09"
+  },
+  {
+    "unit": "n14",
+    "q": 5,
+    "id": "n14-w048-q05-boundaries",
+    "prompt": "距離がちょうど4になる二つの境界を選びましょう。",
+    "template": "□",
+    "answer": "x=-4,\\quad x=4",
+    "wrong": [
+      "x=0,\\quad x=4",
+      "x=-4,\\quad x=0",
+      "x=4,\\quad x=8"
+    ],
+    "hint": "境界では距離がちょうど4になります。N13で求めた左右の位置を使います。",
+    "after": "境界の二点が決まりました。次は残す領域を考えます。",
+    "action": "calculation",
+    "beforeBlock": "n14-formula-05"
+  },
+  {
+    "unit": "n14",
+    "q": 5,
+    "id": "n14-w048-q05-region",
+    "prompt": "元の距離の下限を満たすのは、二点の間と外側のどちらでしょう。",
+    "template": "□",
+    "answer": "二点の外側",
+    "wrong": [
+      "二点の間",
+      "右側だけ",
+      "左側だけ"
+    ],
+    "hint": "原点と、境界より遠い位置をそれぞれ条件に当てはめて比べます。",
+    "after": "残す領域が決まりました。最後に、元の不等号が境界を含むかを判断します。",
+    "action": "meaning",
+    "beforeBlock": "n14-formula-05"
+  }
+]

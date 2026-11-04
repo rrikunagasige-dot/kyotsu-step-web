@@ -1,0 +1,27 @@
+{
+  "status": "DRAFT_REVIEW_PENDING",
+  "units": {
+    "n13": {
+      "fromRevision": 4,
+      "toRevision": 5,
+      "oldAnswers": 12,
+      "proposedAnswers": 18
+    },
+    "n14": {
+      "fromRevision": 10,
+      "toRevision": 11,
+      "oldAnswers": 38,
+      "proposedAnswers": 40
+    }
+  },
+  "oldAnswerAndChoiceKeysPreserved": true,
+  "learnerImplementation": false,
+  "published": false,
+  "newEngine": false,
+  "originalFiguresPreserved": true,
+  "notes": [
+    "Candidate JSON is an exact review-only data contract, not a deployed revision.",
+    "Existing accepted case derivations and three-sided operations remain intact.",
+    "Math templates, schema, source coverage, wrong-only hints, and nonauthor reviews must be checked before proposal acceptance."
+  ]
+}

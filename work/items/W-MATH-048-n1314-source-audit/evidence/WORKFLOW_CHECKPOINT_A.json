@@ -1,0 +1,136 @@
+{
+  "reviewer": "A / w047_review_design",
+  "verdict": "PASS",
+  "scope": "Generated workflow checkpoint consistency only; not R04 review substitute",
+  "firstPass": false,
+  "ledgerHead": "e816a11b8ecc2cef3964663e682060c045f4a462394c71ac010c2b5a355d2571",
+  "candidateSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "workStatus": "PROPOSED",
+  "next": {
+    "status": "READY",
+    "node": "R04_PROPOSAL@n13"
+  },
+  "heads": {
+    "CURRENT_POSITION.md": [
+      "e816a11b8ecc2cef3964663e682060c045f4a462394c71ac010c2b5a355d2571"
+    ],
+    "FIRE_DIAGRAM.md": [
+      "e816a11b8ecc2cef3964663e682060c045f4a462394c71ac010c2b5a355d2571"
+    ],
+    "CAPABILITY_FIRE_DIAGRAM.md": [
+      "e816a11b8ecc2cef3964663e682060c045f4a462394c71ac010c2b5a355d2571"
+    ]
+  },
+  "completedNodeChecks": [
+    {
+      "node": "R01_CAPTURE@n13",
+      "status": "PASSED",
+      "receipts": [
+        "5a87003a0deb47d0168e8e00cb82ae2452ceecd5ddfdefca98c9db139f8d3ab0",
+        "a81969e35601c302e30f373b0b4bd52c330ca4f7ff0b6253be5e9bf2f34a92a9"
+      ],
+      "aiInputHash": "4843e705b36441fb688300a97da6110a9f1520e7fc1140486ddaff4ebefb719d",
+      "snapshotResultRefsAndInputMatch": true
+    },
+    {
+      "node": "R02_CAUSE@n13",
+      "status": "PASSED",
+      "receipts": [
+        "45b51bded3542cebf28284cf4fe72d55cea71c27527888965ab5f5a48e55d573",
+        "ea6192e26db0e447335d63f0a98ddab983f8273964f820e460f94144bef42745",
+        "db6f0f006402b661f58dee36d5ba90a89f94025c1a1497d5e11c56d6ce4a2467",
+        "9c5076df1fe8f38b961417222eb9a10b2b0b80082247b6f2dc6f017a40061f06"
+      ],
+      "aiInputHash": "f4efc3899ae66c0c30d08795aeb3e1dd36a6a444ee94aa493a832fe0788b2cf4",
+      "snapshotResultRefsAndInputMatch": true
+    },
+    {
+      "node": "R03_IMPACT@n13",
+      "status": "PASSED",
+      "receipts": [
+        "337b91507a1c6159386a9d3fdd6de769ba4ca5e94c0302b813d318c45a2065a0"
+      ],
+      "aiInputHash": "821c994917cd0922cbfc7fa149d70aba5d6c23f43c8b4c6505b5f5fd1366a26d",
+      "snapshotResultRefsAndInputMatch": true
+    }
+  ],
+  "n14FormalNodes": [
+    {
+      "node": "R01_CAPTURE@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R02_CAUSE@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R03_IMPACT@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R04_PROPOSAL@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R05_APPROVAL@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R06_PATCH@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R07_VERIFY@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R07_SEMANTIC@n14",
+      "status": "PENDING"
+    },
+    {
+      "node": "R08_CAPTURE_LEARNING@n14",
+      "status": "PENDING"
+    }
+  ],
+  "teamPolicy": {
+    "maxActiveSubagents": 2,
+    "allowGrandchildren": false,
+    "currentAssignment": "未割当/未実行。候補静的審査を正式native teamCollectionとして先登録済みとは主張しない。"
+  },
+  "findings": [],
+  "observations": [
+    "R01/R02/R03@n13 PASSEDを7receipt参照とAI提出のinputHashで対応確認。正式次工程R04@n13。",
+    "N14の原典・候補調査完了とformal node実行を分離し、N14R01以降はPENDINGを保持。N14R04はN13R04依存、両R05は両R04依存。",
+    "R04全文IR/表示map・native team未完、R05/R06/R07/G2/G3すべてPENDING。候補静的PASSをformalR04、実装、公開または受入にしていない。",
+    "snapshot application_accepted=false、NATIVE_CHECKPOINT implemented=false/proposalApprovalRequested=falseを保持。",
+    "task.rules全6pathの現bytehashはcheckpointと一致。max_active_subagents=2/allow_grandchildren=falseのpolicyを維持。",
+    "全体FIRE_DIAGRAMの集約design groupにはR06等も入るためAPPROVALとの表示上の往復辺がある。実行依存は個別node表/既存DAGで判断し、表示だけを循環workflowと誤認しない。"
+  ],
+  "evidence": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/generated/CURRENT_POSITION.md",
+      "sha256": "fd1f7fb0eb499b097dd752f4f7d40b58dffafb6db0e71cac351df5c7b6833145"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/generated/FIRE_DIAGRAM.md",
+      "sha256": "b2f3fbe5e1be184d912ab323afccb02df74a126e32ec9bf9daa53f2b0e6931d4"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/generated/CAPABILITY_FIRE_DIAGRAM.md",
+      "sha256": "8f4b16148af66d4e1d7c330732c5b23340a65a8aca1c8ca7cfea9c437e09cbcd"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/generated/snapshot.json",
+      "sha256": "36bd817493353a67cb162d326a6148a5a7a0cc379c1673983ce6890a6c8c0eaf"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/NATIVE_CHECKPOINT.json",
+      "sha256": "f772a64a2be23e6c99e6501d732aa796ad4c7a2ff2dcb9f39ebb4adcd11bfb99"
+    }
+  ],
+  "limitations": [
+    "Storeを読み書きせず、生成snapshot/result/checkpointの同head照合。receipt原artifactの内部実行ログをこの確認で再実行/再検算していない。",
+    "現rule hash一致は確認したが全guardコードを過去版と網羅diffした主張ではない。共有guardの変更許可は生成しない。",
+    "本報告を正式R04 teaching/design/render審査に流用不可。全案/実visible target/作者分離の現入力束縛が別途必要。"
+  ]
+}

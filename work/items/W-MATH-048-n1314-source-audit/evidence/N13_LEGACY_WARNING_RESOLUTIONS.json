@@ -1,0 +1,72 @@
+[
+  {
+    "findingId": "7e3c27f7990c2fdf36dfe953d1c4384ba875bd4eb41f275b98a55cb7afdca29d",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "2c756a2bd45c8b907f1ffcae132d3e1b8ee9447fce108367c742d3abaac3dac4",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "x<1 のとき、距離を式で表そう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "606e148b061917a4596120315dfc74b58509e3127b6c6feae440fe3a9eed9657",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "9696cdf818eccf5bdf5b83f3d1cfae589764509c8b601b8e4b8ad3dd267f716b",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "3x=6 の解を求めよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "955add7d7bb73e10feba4c76bcab817145f894b0dddfcb63c10f6c2ad3fcbee3",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "99540d86a4343b51867534042657b4638c4f66affbe451df57bca5473dc1f1bd",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "3x=−6 の解を求めよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "8d48c31194195bd571705bdc3378aac32293e627638e15c9ee2f08973c5ce06a",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json",
+      "sourceSHA256": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+      "originalText": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  }
+]

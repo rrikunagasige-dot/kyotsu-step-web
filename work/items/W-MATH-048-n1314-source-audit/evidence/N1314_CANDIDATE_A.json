@@ -1,0 +1,172 @@
+{
+  "reviewer": "A / w047_review_design",
+  "claimRef": "teaching",
+  "facet": "design",
+  "phase": "pre-formal-R04 candidate static nonauthor review",
+  "verdict": "FAIL",
+  "displayVerdict": "UNVERIFIED",
+  "firstPass": true,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "firstPassScope": "今回N13_CANDIDATE/N14_CANDIDATEの初回審査。原資料/現稿/方向性監査は既視で非盲検、別モデルではない。以前の監視指摘/条件を提供したが候補JSON/generatorは作成していない。",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "sourceCoverage": "母Word SHA93827322完全一致、N13全33/N14全46抽出blocksと元図3点を既に読了/実見。その後現稿129blocks、今回候補157blocksの旧版差分/保持範囲を照合。旧W025段落番号は再利用せず今回index locatorを使用。",
+  "firstObservations": [
+    "Q04/Q07は枝ごとにxを計算して元pairへ戻す。完成pairを先に見て空欄へ写す構成を静的本文順から除去できている。Q09は0位置と負右辺の不可能性を別判断して元分類へ戻す。",
+    "N14 Q05の追加2判断は境界/内外、旧Q05は等号と全体統合を担うため8新itemは穴数増加だけではない。旧Q7/Q8の3回答ずつや三辺5回答ずつを追加helperで置換していない。",
+    "Q03のafter02/hintと見出しの先出しを中立化、Q05旧hintも新補助の答えを直接言わない。",
+    "N13p563一般形をQ1原図後・Q2前へ正式化し、距離4を先ほど扱ったとする旧接続を修正。N14章末bridgeは復元するが章まとめの原典1項目が残る。"
+  ],
+  "checks": [
+    {
+      "unit": "n13",
+      "oldItems": 12,
+      "candidateItems": 18,
+      "oldBlocks": 41,
+      "candidateBlocks": 60,
+      "allOldAnswerAndChoiceKeysPreserved": true,
+      "allOldItemIdsPreserved": true,
+      "allOldBlockIdsPreserved": true,
+      "oldBlockRelativeOrderPreserved": true,
+      "unchangedBlocks": 37,
+      "changedOldBlocks": [
+        "n13-lead-02",
+        "n13-lead-04",
+        "n13-lead-07",
+        "n13-lead-09"
+      ],
+      "newBlocks": [
+        "n13-w048-positive-distance-property",
+        "n13-w048-q04-positive-lead",
+        "n13-w048-q04-positive-formula",
+        "n13-w048-q04-positive-after",
+        "n13-w048-q04-negative-lead",
+        "n13-w048-q04-negative-formula",
+        "n13-w048-q04-negative-after",
+        "n13-w048-q07-positive-lead",
+        "n13-w048-q07-positive-formula",
+        "n13-w048-q07-positive-after",
+        "n13-w048-q07-negative-lead",
+        "n13-w048-q07-negative-formula",
+        "n13-w048-q07-negative-after",
+        "n13-w048-q09-zero-lead",
+        "n13-w048-q09-zero-formula",
+        "n13-w048-q09-zero-after",
+        "n13-w048-q09-negative-lead",
+        "n13-w048-q09-negative-formula",
+        "n13-w048-q09-negative-after"
+      ]
+    },
+    {
+      "unit": "n14",
+      "oldItems": 38,
+      "candidateItems": 40,
+      "oldBlocks": 88,
+      "candidateBlocks": 97,
+      "allOldAnswerAndChoiceKeysPreserved": true,
+      "allOldItemIdsPreserved": true,
+      "allOldBlockIdsPreserved": true,
+      "oldBlockRelativeOrderPreserved": true,
+      "unchangedBlocks": 84,
+      "changedOldBlocks": [
+        "n14-heading-1",
+        "n14-after-02",
+        "n14-lead-05",
+        "n14-marker-3"
+      ],
+      "newBlocks": [
+        "n14-w048-q05-boundaries-lead",
+        "n14-w048-q05-boundaries-formula",
+        "n14-w048-q05-boundaries-after",
+        "n14-w048-q05-region-lead",
+        "n14-w048-q05-region-formula",
+        "n14-w048-q05-region-after",
+        "n14-w048-check-marker",
+        "n14-w048-chapter-summary",
+        "n14-w048-next-chapter-bridge"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "N1314-A-SOURCE01",
+      "status": "VERIFIED_FIXED",
+      "reason": "母Word/全文index/元図を今回locatorで照合済み。原典未取得という以前の不足は解消。"
+    },
+    {
+      "id": "N1314-A-N14-LEAK01",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n14-after-02",
+        "n14-03",
+        "n14-heading-1"
+      ],
+      "reason": "候補after02は「その間と外側のどちらを残すか、元の距離の条件から考えます」、Q03hintは「x=0と境界の外にある点を…当てはめます」。内側を確定する旧文を消し、未決の判断を残す。静的修正確認であり実UI公開状態の合格ではない。"
+    },
+    {
+      "id": "N1314-A-N13-GENERAL01",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n13-w048-positive-distance-property"
+      ],
+      "sourceLocator": "word/document.xml:p[563]",
+      "reason": "Q1/F02の後、Q2前でa>0:|x|=a iff (x=aまたはx=−a)と「どちらか一方」の意味を示す。一般化→中身全体Xの適用が接続。"
+    },
+    {
+      "id": "N1314-A-N14-CLOSE01",
+      "status": "OPEN",
+      "targetIds": [
+        "n14-w048-chapter-summary"
+      ],
+      "sourceLocator": "word/document.xml:p[630]",
+      "sourceQuote": "式を整理するときは注目する文字を決め",
+      "candidateQuote": "この章では、同じ値や同じ条件を別の形で表してきました。展開ではすべての積を拾い…",
+      "reason": "p630–633の章全体振返り/二次関数bridgeの大半は復元したが、式整理で注目文字を決めるという原典の独立した振返りが欠ける。全79block対応を掲げる具体案では、展開/因数分解等の並列項目と同様に残す必要がある。",
+      "requestedResolution": "章まとめに「式を整理するときは注目する文字を決める」趣旨を追加し、他項目の文章連続を保持する。新しい穴は不要。"
+    }
+  ],
+  "rationale": [
+    "既存50採点IDのanswer/choices配列をすべて比較して同一。旧readingBlockの削除なし・相対順維持。N14 prior-fix由来wm014/015/016/018/019/020/022の30readingBlocksは全てdeepEqual。",
+    "原典N13p569/p580「二つをそれぞれ解く」に対しQ04/Q07の独立計算が対応。Q09p586の二case分離も条件を変えない。N14p600の境界→内外→等号判断に対応し、既存最後の選択肢キーを保つ。",
+    "N14Q07/Q08を増穴しない判断を支持。符号場合分け・負数倍の反転・branch条件ANDとケース間ORを既存導出が保持し、補助の完成範囲を先出しして旧branchをコピーにしない。",
+    "prepare_proposal.pyは候補をWork内へ出力し元教材fileを変更するコードを含まない。審査では実行せず、現候補bytesを読んだ。",
+    "source SHAは候補が基づく現稿の識別であり、新candidateを実装した公開Git sourceとは扱わない。revision5/11もPROPOSED_ONLY。"
+  ],
+  "requiredNextEvidence": [
+    "R04正式targetでは候補filehash/原資料locator/新helper8件の原問対応/既存50採点契約/番号alias/revision保存移行を固定。",
+    "既存Guided reader/IR opt-inで現在のpendingから次正答後だけ解説/後続式/完成図が見える依存を生成し、候補compiled/visible snapshotsで検査。readingFlow順だけでは実unlockを証明しない。",
+    "四幅のpending/wrong/correctを実renderし、長い元pair/元Q05まとめ/日本語選択肢/原図/直前結果/履歴を確認。compileや未来画像を本審査でPASSにしない。"
+  ],
+  "limitations": [
+    "正式R04登録前の実taskであり工程合格ではない。実装/Store/Gitを変更していない。",
+    "原案方向と以前の学習理念監視は既知。今回新候補初回という範囲だけfirstPass=true。",
+    "新candidate schema/compile/数学solver/実UIは未実行。表示・保存移行の成功は未検証。",
+    "元50choice key保持は教育設計の十分条件ではなく、上記1件の本文source欠落がOPENなので静的verdictはFAIL。"
+  ],
+  "evidence": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N13_CANDIDATE.json",
+      "sha256": "4dc80740f021ca27dc108ca8a94b0c74007823f81b181178de24a533a1df93b2"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N14_CANDIDATE.json",
+      "sha256": "7265ade4671cd43e9b102b32d2503038eba0c62cdc47d09afa6045bea66dadf3"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/ADDED_DECISIONS.json",
+      "sha256": "ec3a1125af415d6fbbef0f75b9019398150a78c3e255996bd130cb9def95312d"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/prepare_proposal.py",
+      "sha256": "60d2b2e521fa51a4a9311fca2bf7d4065e3c289bc6fcc67e47901b132865d7e4"
+    },
+    {
+      "path": "/tmp/N13_SOURCE_INDEX.json",
+      "sha256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4"
+    },
+    {
+      "path": "/tmp/N14_SOURCE_INDEX.json",
+      "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    }
+  ]
+}

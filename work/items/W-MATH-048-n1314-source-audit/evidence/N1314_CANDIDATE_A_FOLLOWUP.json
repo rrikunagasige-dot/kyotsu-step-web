@@ -1,0 +1,62 @@
+{
+  "reviewer": "A / w047_review_design",
+  "claimRef": "teaching",
+  "facet": "design",
+  "phase": "pre-formal-R04 static follow-up",
+  "verdict": "PASS",
+  "verdictScope": "初回静的候補審査の唯一OPEN N1314-A-N14-CLOSE01の現文言修正を確認。正式R04/実UI/教材受入の合格ではない。",
+  "firstPass": false,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blind": false,
+  "originalReport": {
+    "path": "/tmp/n1314-candidate-a.json",
+    "sha256": "3897687ad62d1f7dd95c40bf1f36689f937d683b8e677352be380605a891b7a7",
+    "verdict": "FAIL",
+    "preservedUnmodified": true
+  },
+  "findings": [
+    {
+      "id": "N1314-A-N14-CLOSE01",
+      "status": "VERIFIED_FIXED",
+      "targetIds": [
+        "n14-w048-chapter-summary"
+      ],
+      "sourceLocator": "word/document.xml:p[630]",
+      "sourceQuote": "式を整理するときは注目する文字を決め",
+      "candidateQuote": "この章では、同じ値や同じ条件を別の形で表してきました。式を整理するときは注目する文字を決め、展開ではすべての積を拾い、因数分解では展開との一致を確かめました。平方根では平方と符号を、絶対値では距離の意味を、不等式では変形に使う数の符号と境界の扱いを確かめました。",
+      "reason": "元原典p630の独立した振返り項目を現candidate章まとめへ復元。展開/因数分解/平方根/絶対値/不等式の他項目と自然に連続し、続く二次関数bridgeも保持。generatorにも同文があり再生成時に消えない。新しい穴追加はない。"
+    }
+  ],
+  "rationale": [
+    "候補末尾とprepare_proposal.pyを直接読取り、既存原典locatorと照合。",
+    "CANDIDATE_CHECKはschema/choice/composedKaTeX283件の限定PASS、liveBrowserVerified=false/workflowR04Completed=falseを明記。これを意味監査や実表示PASSの代用にしない。"
+  ],
+  "evidence": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N13_CANDIDATE.json",
+      "sha256": "4dc80740f021ca27dc108ca8a94b0c74007823f81b181178de24a533a1df93b2"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N14_CANDIDATE.json",
+      "sha256": "7265ade4671cd43e9b102b32d2503038eba0c62cdc47d09afa6045bea66dadf3"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/prepare_proposal.py",
+      "sha256": "60d2b2e521fa51a4a9311fca2bf7d4065e3c289bc6fcc67e47901b132865d7e4"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/CANDIDATE_CHECK.json",
+      "sha256": "13b6873c66c5d99d2deabbf131a74452e814a5708b4e9dc25821bd88dd7e347f"
+    },
+    {
+      "path": "/tmp/N14_SOURCE_INDEX.json",
+      "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    }
+  ],
+  "limitations": [
+    "今回の修正確認は既読候補のfollow-up。新初見/新盲検と呼ばない。",
+    "初回報告で記載した未実装の依存/可視state/保存移行/四幅実render検査の必要性は維持。新たな実画像は見ていない。",
+    "Store/Git/製品は未変更、tmp追補のみ保存。"
+  ]
+}

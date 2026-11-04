@@ -1,0 +1,242 @@
+{
+  "role": "B non-author static candidate reviewer",
+  "verdict": "FAIL",
+  "verdictScope": "One source-concept omission remains in proposed chapter summary. Other reviewed candidate changes pass static content/order checks. This is not an implemented/rendered release verdict.",
+  "candidateFirstReview": true,
+  "firstPass": true,
+  "sourceFirst": true,
+  "authorSeparation": true,
+  "blindReview": false,
+  "nativeR04CollectionRegistered": false,
+  "exposure": "B reviewed original Word and existing N13/N14 runtime first, produced prior source audit, saw M preliminary proposal explanations, then read these candidate JSONs for the first time. M authored the candidate. B did not write lesson content. Previous capture/import tool assistance concerned N11/N12 and is disclosed. This is a new candidate review, not a relabeling of the source audit or a blind render review.",
+  "baselineSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "candidateGitSHA": null,
+  "targetHash": null,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N13_CANDIDATE.json",
+      "sha256": "4dc80740f021ca27dc108ca8a94b0c74007823f81b181178de24a533a1df93b2"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/N14_CANDIDATE.json",
+      "sha256": "7265ade4671cd43e9b102b32d2503038eba0c62cdc47d09afa6045bea66dadf3"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/ADDED_DECISIONS.json",
+      "sha256": "ec3a1125af415d6fbbef0f75b9019398150a78c3e255996bd130cb9def95312d"
+    }
+  ],
+  "originalWordSHA256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "originalIndexes": [
+    {
+      "path": "/tmp/N13_SOURCE_INDEX.json",
+      "sha256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4"
+    },
+    {
+      "path": "/tmp/N14_SOURCE_INDEX.json",
+      "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    }
+  ],
+  "firstObservations": [
+    "New Q4/Q7 branch calculations and Q9 boundary cases now precede the original combined answers. Keeping the original combined answer is legitimate consolidation of already answered results, not a new answer leak.",
+    "N14 Q5 boundaries, then region, then original integrated equality judgment is coherent. The prior n14-heading-1/after02 inside-answer exposure is neutralized.",
+    "Original 50 IDs and grading keys are unchanged. Eight new IDs produce 18 N13 plus40 N14 answers. Existing protected calculation/proof/hint repairs remain.",
+    "Chapter summary and next-chapter bridge are restored, but the original instruction to select the variable of focus when organizing an expression is still missing."
+  ],
+  "units": [
+    {
+      "code": "N13",
+      "baselineRevision": 4,
+      "candidateRevision": 5,
+      "baselineItemCount": 12,
+      "candidateItemCount": 18,
+      "addedItemIds": [
+        "n13-w048-q04-positive",
+        "n13-w048-q04-negative",
+        "n13-w048-q07-positive",
+        "n13-w048-q07-negative",
+        "n13-w048-q09-zero",
+        "n13-w048-q09-negative"
+      ],
+      "allOldIdsAndKeysPreserved": true,
+      "oldAnswerContractFieldsCompared": [
+        "answer",
+        "acceptedAnswers",
+        "answerType",
+        "choices"
+      ],
+      "allSlotsExactlyOneFlowOccurrence": true,
+      "oldBlockIdsPreserved": true,
+      "flowBlockCount": 60,
+      "changedOldBlocks": [
+        "n13-lead-02",
+        "n13-lead-04",
+        "n13-lead-07",
+        "n13-lead-09"
+      ],
+      "allExistingFiguresExactObjectMatch": true,
+      "protectedItemObjectsExactMatch": true,
+      "protectedOriginalQuestions": [
+        5,
+        8
+      ],
+      "sourceMarkerCount": 9,
+      "note": "candidate JSON does not contain a revised sourceToItemIds export; ADDED_DECISIONS provides new per-q associations, which must be emitted by final lesson export."
+    },
+    {
+      "code": "N14",
+      "baselineRevision": 10,
+      "candidateRevision": 11,
+      "baselineItemCount": 38,
+      "candidateItemCount": 40,
+      "addedItemIds": [
+        "n14-w048-q05-boundaries",
+        "n14-w048-q05-region"
+      ],
+      "allOldIdsAndKeysPreserved": true,
+      "oldAnswerContractFieldsCompared": [
+        "answer",
+        "acceptedAnswers",
+        "answerType",
+        "choices"
+      ],
+      "allSlotsExactlyOneFlowOccurrence": true,
+      "oldBlockIdsPreserved": true,
+      "flowBlockCount": 97,
+      "changedOldBlocks": [
+        "n14-heading-1",
+        "n14-after-02",
+        "n14-lead-05",
+        "n14-marker-3"
+      ],
+      "allExistingFiguresExactObjectMatch": true,
+      "protectedItemObjectsExactMatch": true,
+      "protectedOriginalQuestions": [
+        7,
+        8,
+        10,
+        12,
+        14,
+        15,
+        16
+      ],
+      "sourceMarkerCount": 16,
+      "note": "candidate JSON does not contain a revised sourceToItemIds export; ADDED_DECISIONS provides new per-q associations, which must be emitted by final lesson export."
+    }
+  ],
+  "rows": [
+    {
+      "surface": "source mathematical validity",
+      "status": "PASS",
+      "observation": "All eight new answers are correct: Q4 5/−3, Q7 1/−5, Q9 0/no real root, Q5 ±4/outside. Original50 answer keys unchanged and previously independently checked."
+    },
+    {
+      "surface": "visible answer order",
+      "status": "PASS_STATIC",
+      "observation": "Legacy renderer truncates after first unresolved choice row. All eight new slots occur before old consolidation and each has its own row. After explanations do not show unknown later numeric roots. Q4 intermediate4+1/−4+1 are intended arithmetic to complete, not supplied computed roots."
+    },
+    {
+      "surface": "N14Q3 exposure",
+      "status": "PASS_STATIC",
+      "observation": "Heading becomes neutral, after02 leaves inside/outside open; Q3 hint now asks testing x=0 and an outside point, with equality evaluated separately."
+    },
+    {
+      "surface": "N14Q5 progression",
+      "status": "PASS_STATIC",
+      "observation": "New boundary and region rows precede n14-05. Existing integrated answer now evaluates endpoint inclusion after its other components are known; existing grading contract retained."
+    },
+    {
+      "surface": "after-wrong hints",
+      "status": "PASS_STATIC",
+      "observation": "n13-06 and n13-09 exact current answer assertions removed. New hints recall operations, distance meaning, or checking the sign rather than compute exact new answers. Q9zero geometric coincidence is conceptual help; it does not explicitly supply numeric x=0. n14-04 old verbal hint remains an already-known interval re-expression, previously classified a debatable support candidate, not an unresolved confirmed defect."
+    },
+    {
+      "surface": "source general form/property/roles",
+      "status": "PASS_STATIC",
+      "observation": "a>0 iff afterQ1, corrected lead02, Q9 property term, N14Q9 example marker plus Q11 check marker restore source concept/role distinctions. Q7/8 proofs kept unchanged."
+    },
+    {
+      "surface": "figures",
+      "status": "PASS_STATIC",
+      "observation": "All figure objects match baseline. N13F02 afterQ1; schematicF01 afterQ4/beforeQ5; N14F01 afterQ6. Neither new branch slots nor new Q5 choices are preceded by a completed answer figure."
+    },
+    {
+      "surface": "chapter ending source completeness",
+      "status": "FAIL",
+      "observation": "word-p-000630 selecting the focus variable in organizing expressions remains omitted from n14-w048-chapter-summary. See finding below."
+    },
+    {
+      "surface": "future saves/migrations",
+      "status": "UNVERIFIED_IMPLEMENTATION",
+      "observation": "Candidate revisions5/11 have no new migration implementation in these three artifacts. Preserve old answers and archives, add eight unresolved slots, and recompute completion. Do not use prior completedAt to skip them; do not reset all50 existing answers. Exact new lesson source mappings and regression tests are needed before apply."
+    },
+    {
+      "surface": "actual layout/history/mobile",
+      "status": "UNVERIFIED",
+      "observation": "No new candidate screenshot requested or inspected. 320/390/430/1440 fit, formula wrapping, choice menu, wrong hint, progression, history/reload/reset and old-save cases remain actual implementation QA."
+    }
+  ],
+  "findings": [
+    {
+      "id": "B-W048-C01",
+      "status": "OPEN",
+      "targetIds": [
+        "n14-w048-chapter-summary"
+      ],
+      "sourceIds": [
+        "word-p-000630"
+      ],
+      "reason": "原文「式を整理するときは注目する文字を決め」が候補の章末まとめから引き続き抜けている。展開の全積/因数分解の検算とは異なる、N01以来の文字と係数の見方を総括する概念であり、全concept coverage復元の範囲なら未解決。",
+      "minimalCorrection": "章末まとめへ「式を整理するときは、注目する文字を決めました。」等の内容を一文復元。新しい穴や採点IDは不要。"
+    }
+  ],
+  "priorFindingDisposition": [
+    {
+      "id": "B-N14-01",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "heading1/after02 both neutralized."
+    },
+    {
+      "id": "B-N13-02",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "Separate branch calculations added before original union."
+    },
+    {
+      "id": "B-N13-03",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "Separate zero/negative cases before original summary."
+    },
+    {
+      "id": "B-N14-04",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "Boundaries and region separate; oldslot checks equality plus consolidation."
+    },
+    {
+      "id": "B-N13-05",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "Current concrete answers removed from original after-wrong hints."
+    },
+    {
+      "id": "B-N13-06",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "False prior distance4 reference removed."
+    },
+    {
+      "id": "B-N14-07",
+      "status": "PARTIALLY_FIXED",
+      "reason": "Chapter ending/next chapter restored except focus-variable concept; tracked B-W048-C01."
+    },
+    {
+      "id": "B-N14-08",
+      "status": "VERIFIED_FIXED_IN_CANDIDATE",
+      "reason": "Example/check distinction and property role restored."
+    }
+  ],
+  "rationale": "Judged cognitive operations and source meaning, not blank-count targets. Reusing solved intermediate results in old summary is appropriate; no reason to reopen approved sign-case proof or three-sided arithmetic. One short source-summary omission can be repaired without broadening lesson scope.",
+  "limits": [
+    "Static candidate JSON review only; no implemented bytes or actual render PASS.",
+    "No Store/Git/repository mutation and no new subagents.",
+    "No original question IDs or approved answer keys changed; future migration correctness is conditional on implementation and real tests.",
+    "Source association is human-reviewed, not a new compiler-certified source-coverage graph."
+  ]
+}

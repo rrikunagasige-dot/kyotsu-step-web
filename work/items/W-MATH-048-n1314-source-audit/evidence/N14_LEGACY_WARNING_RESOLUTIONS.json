@@ -1,0 +1,62 @@
+[
+  {
+    "findingId": "5bc86719b8ed77f5efb3b10c8e169608f0aa3fa04c62d72cd992952795190fff",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "Xが負のとき、−X<aを解き、X<0と組み合わせよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "234194b76176d21ee27270f48c73a00ec70e9926a69a05d0fa9506faa7f1936d",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "Xに直すため−1倍すると、不等号の向きが逆になる。X<0も忘れない。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "f57d3be20eda33faae0a8ffcf2393bb63ef200aa39a56580596432755b58c6bb",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "Xが負のとき、−X>aを解こう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "fc6bd3737cc016a493707b04e2d7549b85b2c189fd840f7f20a5ef80bbaedc85",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "左端x=−2/3を代入して、3x−2を計算しよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "2cf52c83a1907ccbc5f8f90dedf002109280e7af62ae65d397be54882de3993e",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "右端x=2を代入して、3x−2を計算しよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  },
+  {
+    "findingId": "ac97df9f62a02573ccfe3fe58c7b108750c26348bfc816567dd781936c8dd001",
+    "evidence": {
+      "sourcePath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json",
+      "sourceSHA256": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+      "originalText": "たとえばx=1なら3×1−2を計算する。同じ順序で、今回はx=2を入れよう。",
+      "diagnosticOnly": true,
+      "reason": "Copied legacy prompt/hint text, not authored mathematical render tokens. Preserve exact old contract; this resolves diagnostic text-use only, not lesson mathematical typesetting."
+    }
+  }
+]

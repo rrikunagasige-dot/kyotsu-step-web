@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "findings": [
+    {
+      "id": "7e3c27f7990c2fdf36dfe953d1c4384ba875bd4eb41f275b98a55cb7afdca29d",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-wm023-q05-right",
+      "state": "after",
+      "detail": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "2c756a2bd45c8b907f1ffcae132d3e1b8ee9447fce108367c742d3abaac3dac4",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-05",
+      "state": "before",
+      "detail": "x<1 のとき、距離を式で表そう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "606e148b061917a4596120315dfc74b58509e3127b6c6feae440fe3a9eed9657",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-05",
+      "state": "after",
+      "detail": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "9696cdf818eccf5bdf5b83f3d1cfae589764509c8b601b8e4b8ad3dd267f716b",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-wm023-q08-positive-root",
+      "state": "before",
+      "detail": "3x=6 の解を求めよう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "955add7d7bb73e10feba4c76bcab817145f894b0dddfcb63c10f6c2ad3fcbee3",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-wm023-q08-positive-root",
+      "state": "after",
+      "detail": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "99540d86a4343b51867534042657b4638c4f66affbe451df57bca5473dc1f1bd",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-08",
+      "state": "before",
+      "detail": "3x=−6 の解を求めよう。",
+      "severity": "WARN"
+    },
+    {
+      "id": "8d48c31194195bd571705bdc3378aac32293e627638e15c9ee2f08973c5ce06a",
+      "ruleId": "TEXT_MAY_CONTAIN_MATH",
+      "nodeId": "n13-08",
+      "state": "after",
+      "detail": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。",
+      "severity": "WARN"
+    }
+  ],
+  "irHash": "23ff8abd5973e650b59b0684afc6eb4506698e231351443881f098ec94095d38",
+  "expectedSemanticIds": [
+    "n13-01-old-slot",
+    "n13-02-old-slot",
+    "n13-03-old-slot",
+    "n13-04-old-slot",
+    "n13-wm023-q05-right-old-slot",
+    "n13-05-old-slot",
+    "n13-06-old-slot",
+    "n13-07-old-slot",
+    "n13-wm023-q08-branches-old-slot",
+    "n13-wm023-q08-positive-root-old-slot",
+    "n13-08-old-slot",
+    "n13-09-old-slot"
+  ]
+}

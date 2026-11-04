@@ -1,0 +1,32 @@
+{
+  "status": "PASS_ACTUAL_PUBLIC_REPORTS",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "runId": 41760954117,
+  "publicBase": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "actualHTTPReceipt": {
+    "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?sha=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "resolvedURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?sha=f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "status": 200,
+    "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "storageKey": "kyotsu-step-gate3-math-20261023",
+    "expectedHash": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+    "actualHash": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+    "fullContractMatched": true
+  },
+  "actualPublicReleaseSHA256": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+  "requiredHostedReports": [
+    "n11",
+    "n12",
+    "n11-focus",
+    "n12-focus",
+    "n08r7",
+    "n08r6",
+    "n08legacy",
+    "n09",
+    "n10"
+  ],
+  "legacyReportURLProvenance": "Original R6/legacy report schemas omit root. Public URL comes from actual live step environment in original job log and fixed verifier APP_URL input; it is not invented as a report field.",
+  "studentAcceptance": false
+}

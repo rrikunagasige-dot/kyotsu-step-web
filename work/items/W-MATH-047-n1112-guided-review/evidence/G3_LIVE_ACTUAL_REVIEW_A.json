@@ -1,0 +1,103 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "verdict": "PASS",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "runId": 41760954117,
+  "publicBase": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "bothRoutesVerified": true,
+  "firstPass": false,
+  "authorSeparation": true,
+  "scope": "実公開原APImetadata/原ZIP/manifest/配布bytes/実public-root操作REPORTを照合したG3実証監視。A本人のブラウザ全playthroughや本人最終受入ではない。",
+  "routes": [
+    {
+      "unit": "n11",
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11",
+      "verifiedBy": "実live runner公開root、fresh browser contexts、四幅39正答/109誤答/14段階/2図、history/reload/resize/migration/geometryPASS、errorsなし。"
+    },
+    {
+      "unit": "n12",
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12",
+      "verifiedBy": "実live runner公開root、fresh browser contexts、四幅46正答/127誤答/15段階/3図、history/reload/resize/migration/geometryPASS、errorsなし。"
+    }
+  ],
+  "checks": [
+    {
+      "id": "LIVE-A01",
+      "status": "VERIFIED",
+      "reason": "実保存APIrun41760954117はmain/publisher6cd11/completed-success。publish job success、verify skipped、6配信/実公開後step全successを確認。非公開dry-run41754189894とは別run。"
+    },
+    {
+      "id": "LIVE-A02",
+      "status": "VERIFIED",
+      "reason": "原ZIP345269434byte/SHA8644e147…を自分で検算しAPIartifact13291382534のdigestと一致。全5328fileのpath集合/重複なし/byte長/SHAを原ZIPと索引で全件独立照合。"
+    },
+    {
+      "id": "LIVE-A03",
+      "status": "VERIFIED",
+      "reason": "実public-release HTTP receiptの200/fullContractMatchedとsourcef129/publisher6cd11/storageを原reportで確認。原generated3manifestはsourcef129、publisher/workflow6cd11、N11hash3465df…/presentation906c4f…、N12hash8ba070…、39+46回答/rev11+4、contract710ad6…へ対応。M直接HTTP4docs原receiptも同bodyhash。自分の新外部fetchとは称さない。"
+    },
+    {
+      "id": "LIVE-A04",
+      "status": "VERIFIED",
+      "reason": "Pagesbuildartifact13290512745の原ZIP4301631byte/SHA9bff8421…、内部artifact.tar SHA013085…を独立検算。全123配布fileのpath/長/SHAをPAGES_BUILD_INDEXに照合し、w047manifest121mapも実配布bytes全件に一致。3manifest原bodyのSHAもlive原reportと一致。"
+    },
+    {
+      "id": "LIVE-A05",
+      "status": "VERIFIED_PUBLIC_OPERATION_REPORTS",
+      "reason": "原ZIPのtmp/w047-hosted/n11|n12/REPORT.jsonは明確にhttps公開root、sourcef129、四幅/全正答誤答/履歴/reload/resize/旧移行/geometry成功、errorsなし。既存固定verifierはfresh contextで各unitfragmentへ直接gotoし実selectorを待ち、untouched-unit保存sentinelを維持するassertを含む。no auth wall/両routemobile-desktop操作/進捗隔離のapp証拠へ結べる範囲。"
+    },
+    {
+      "id": "LIVE-A06",
+      "status": "VERIFIED_WITH_WIDTH_LIMIT",
+      "reason": "両FOCUSED_CAPTUREはsourcef129/statusPASS。reset confirmed/answersCleared/reloadFirst、N11→N12往復、N12→N13とbackCompletedを実publicURLで記録。focus/reset/境界は390幅限定で、四幅全回答harnessと区別。本人端末の保存をreset済みという意味ではない。"
+    },
+    {
+      "id": "LIVE-A07",
+      "status": "VERIFIED_RETAINED_REPORTS",
+      "reason": "N09/N10の実w046-hosted8caseは公開root/errorなし/byte検査、保持N08r7は明示publicrootでPASS。R6/legacy旧reportschemaはroot欄を持たないため、原G3_LIVE_CI_JOB.logのAPP_URL公開envと固定verifier入力からpublic操作の出所を結び、存在しないreportfieldを補っていない。"
+    },
+    {
+      "id": "LIVE-A08",
+      "status": "VERIFIED_LOSSLESS",
+      "reason": "RAW_JSON.tar.gz 2595014byte/SHA b443f72f…を検算。2423JSONの全path集合、81722023原bytesの全長/SHAが原ZIP/indexに一致。lossless保存は元CI原JSONを再生成/要約する処理ではなく、共有guardを変更しない。"
+    }
+  ],
+  "findings": [],
+  "nativeOrder": {
+    "currentIntendedAction": "Mのみが両unitの実app証拠を既存rt.evidenceへ登録し、release.verify→production_result@G3_HOST@n11を正式受理する。AはStore/claim/受理を書き込まない。",
+    "routeEvidenceBeforeFormalNodes": "今回bothRoutesVerified=trueは両route実証が揃ったという意味で、両G3_HOSTnodeが既に正式PASSという意味ではない。",
+    "existingOrder": "現priorityでN11HOST→N11FINAL(USER)がN12HOSTより先。S1通り両route実証を確保しN11HOST正式→本人の両単元確認一回→N11FINAL/事後工程→N12HOST/FINALを同じ固定build実証と実原発言に忠実対応する。新plan/priority変更や擬似PASSなし。"
+  },
+  "acceptanceBoundary": {
+    "publication": "実公開承認2a472bf1とmain4path/P-W047-G3-PUBLISH-01に基づく公開成功の実証として扱える。",
+    "studentAcceptance": false,
+    "qualityLabelsGenerated": false,
+    "finalUserCheck": "合意N11/N12を本人が初めから終わりまで一回確認することを留保。同じ実原発言が両unit/同候補を覆う場合だけunit別二転記。独立評価二回へ数えない。",
+    "failureRecovery": "後で公開破損/未一致/本人指摘があれば原証拠を保持し正規修正へ。技術PASSを本人受入へ転用しない。"
+  },
+  "limits": [
+    "Aは保存済実API/原joblog/原ZIPと配布artifactを独立読取/検算。GitHubAPI/公開HTTPを自分で再取得していない。Mの直接HTTPとrunnerのブラウザ実操作を出所として明記。",
+    "全5328filehashを検算したが、全PNGの見え方・教材全mode・本人端末での独立playthroughを今回実行したわけではない。",
+    "進捗隔離はfresh runner browserと保存sentinel/旧移行等の検査範囲。本人の端末設定や端末内全学習データを検証したとはしない。",
+    "公開URLの現在到達性は記録時点の実証。?source等はcache対策で永続的旧版固定URLではない。",
+    "native apprefs/G3_HOST正式受理はMの後続操作。本人最終受入は未完。",
+    "共有repo/Store/Git編集なし。指定/tmp原報告のみ保存。追加subagentなし。"
+  ],
+  "archiveSHA256": "8644e147c6e30672831597098f249d58621f814771f351b1389f436551085a32",
+  "pagesBuildArtifactSHA256": "9bff8421aaeb6714dad74d5817dbefba57009e7aedad7c049a7fa568a11cf5b7",
+  "publicReleaseSHA256": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_LIVE_CI.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_LIVE_CI_JOB.log",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_PUBLIC_HTTP_PROBE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/PUBLIC_HOST_ASSERTIONS.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/ARTIFACT_INDEX.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/PAGES_BUILD_INDEX.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/PAGES_BUILD.zip",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/RAW_JSON_ARCHIVE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/RAW_JSON.tar.gz",
+    "/tmp/w047-live-13291382534.zip",
+    "/tmp/w047-live-g3-artifact-41760954117"
+  ]
+}

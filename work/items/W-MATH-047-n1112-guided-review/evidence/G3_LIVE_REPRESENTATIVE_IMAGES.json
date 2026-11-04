@@ -1,0 +1,63 @@
+{
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "runId": 41760954117,
+  "originalArchiveSHA256": "8644e147c6e30672831597098f249d58621f814771f351b1389f436551085a32",
+  "files": [
+    {
+      "originalPath": "tmp/w047-hosted/n11-focus/r1-quotient-390-pending.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/r1-quotient-390-pending.png",
+      "bytes": 88488,
+      "sha256": "911f523f20584d9d47f8aa345159964ae911d263364108495e8f342917da2a7f"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n11-focus/r1-quotient-390-correct.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/r1-quotient-390-correct.png",
+      "bytes": 116148,
+      "sha256": "f3acb39a82c5eabfc91534354f7ebd697ca5980a42f1506910f328427378bfd4"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-q13-operation-320-pending-viewport.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-q13-operation-320-pending-viewport.png",
+      "bytes": 77386,
+      "sha256": "55f64a608f274f37c975287f83053309d60a7d906b4e0f435d2b1194eb86c5aa"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-q13-operation-320-correct-viewport.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-q13-operation-320-correct-viewport.png",
+      "bytes": 86446,
+      "sha256": "84e16e7a4d08af8be80449ca2720c0cbff35805d86f7c94b388aa34b131c62ce"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n11-focus/r1-reset-reload-start.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/r1-reset-reload-start.png",
+      "bytes": 84802,
+      "sha256": "84e3ff9704ed0e86c487bc399fe0933f3166084c8872ac824f2e22ada2dbbf0c"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-reset-reload-start.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-reset-reload-start.png",
+      "bytes": 126315,
+      "sha256": "16de978b3bfcdac4a7eac53735872ef751015f0ad0b0470412e1d646fb9824b8"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-next-unit-route.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-next-unit-route.png",
+      "bytes": 89797,
+      "sha256": "b5b4d77cf31a64140884cdfc3f4066e0ab1eed814ec45ec1919e53b010405204"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-06-independent-complete.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-06-independent-complete.png",
+      "bytes": 36556,
+      "sha256": "baf6551589d1cdefb68985368c7bc34ad88eeebae18b1fc04a91024208846420"
+    },
+    {
+      "originalPath": "tmp/w047-hosted/n12-focus/n12-15-independent-complete.png",
+      "savedPath": "work/items/W-MATH-047-n1112-guided-review/evidence/g3-live-ci/41760954117/representatives/n12-15-independent-complete.png",
+      "bytes": 53862,
+      "sha256": "ab6591642f39ef5da5de6d52eae6d7ba8bf2c6c4f419ebda3cb7b0e632d933f4"
+    }
+  ],
+  "notAllImagesRead": true
+}

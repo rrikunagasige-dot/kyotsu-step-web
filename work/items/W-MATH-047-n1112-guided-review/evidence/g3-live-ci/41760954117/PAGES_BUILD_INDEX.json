@@ -1,0 +1,509 @@
+{
+  "status": "PASS_ACTUAL_PAGES_BUILD_BYTES",
+  "runId": 41760954117,
+  "artifactId": 13290512745,
+  "artifactBytes": 4301631,
+  "artifactSHA256": "9bff8421aaeb6714dad74d5817dbefba57009e7aedad7c049a7fa568a11cf5b7",
+  "tarSHA256": "01308569c4490d273996eca690b475ef9c7a86845d2fdaf4f20dfc91b2dbc845",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "publisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "files": {
+    "w046-release.json": {
+      "sha256": "eec597d1e8de606c181a90b82aa6d988f2dc2f01a167349e9f52d01112ce4ea3",
+      "bytes": 21200
+    },
+    "release.json": {
+      "sha256": "2be90a0fd0345469b99260b1072a59a04b9ceec90230c41bfddb5ff5121b959d",
+      "bytes": 37685
+    },
+    "assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff": {
+      "sha256": "11e4dc8a6471ff6d6ee561d53d10fde8f7489e798257ff449c5d37c197435605",
+      "bytes": 12316
+    },
+    "assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2": {
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "bytes": 16400
+    },
+    "assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf": {
+      "sha256": "f01f3e87d9c6a61c0c081ceb577abd864eb00a612f7ac1620dd6915fad2ef5aa",
+      "bytes": 27556
+    },
+    "assets/KaTeX_Fraktur-Bold-BsDP51OF.woff": {
+      "sha256": "9be7ceb88004ab8ad124082246fbfcca4091e36385d4ec6ed1df67375dad50fb",
+      "bytes": 13296
+    },
+    "assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2": {
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "bytes": 12028
+    },
+    "assets/react-core-EjQVioS3.js": {
+      "sha256": "b1421073ffa9ca3fe3593ff840e337a0bd5477e4dced8958f7ef304beb56b42b",
+      "bytes": 231391
+    },
+    "assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf": {
+      "sha256": "ed0b74372feefcbb9c0666b2e210da37b7e49fa7fbbf3eeb11db5f693dacfbb7",
+      "bytes": 12344
+    },
+    "assets/KaTeX_SansSerif-Italic-DN2j7dab.woff": {
+      "sha256": "91ee67500cc0129aa0ace3ac5c61ff1692102f0f31d02b69347fba35dcb75bf2",
+      "bytes": 14112
+    },
+    "assets/KaTeX_Main-Regular-Dr94JaBh.woff": {
+      "sha256": "c6368d87e8a1a3a5d337623d83d8dc4b868f242a9ad476237d6f8d1e0f168cdc",
+      "bytes": 30772
+    },
+    "assets/KaTeX_Main-Bold-Jm3AIy58.woff": {
+      "sha256": "c76c5d696297d51b9cb1639c7da4334f0e7dec81b42b11213b5e25ef671bb822",
+      "bytes": 29912
+    },
+    "assets/KaTeX_Script-Regular-D3wIWfF6.woff2": {
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "bytes": 9644
+    },
+    "assets/KaTeX_Main-Regular-B22Nviop.woff2": {
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "bytes": 26272
+    },
+    "assets/KaTeX_Size1-Regular-Dbsnue_I.ttf": {
+      "sha256": "95b6d2f1a50173bfedb8c63e1d1c99b10427d0a4df4201cb44513b226951a22b",
+      "bytes": 12228
+    },
+    "assets/App-CrFY190a.js": {
+      "sha256": "c5776a9ff99a599a965550a848872f555f6e0df876ca6958cf0ce91a9a0515c6",
+      "bytes": 17260263
+    },
+    "assets/index-DxugQc5X.js": {
+      "sha256": "8f08d370b2e93c11adc1599a70b698393ce41a2c322c582becaefe7bfcfd67df",
+      "bytes": 3053
+    },
+    "assets/KaTeX_Math-Italic-flOr_0UB.ttf": {
+      "sha256": "08ce98e51b04d58945a301e639e02b6998af29fdfd61a7b8afdd07bbfc479d4a",
+      "bytes": 31308
+    },
+    "assets/KaTeX_Size3-Regular-DgpXs0kz.ttf": {
+      "sha256": "500e04d54f0d51666332c9d2089aa803be22aa878eca539e59fa53c6e522b082",
+      "bytes": 7588
+    },
+    "assets/KaTeX_Main-BoldItalic-SpSLRI95.woff": {
+      "sha256": "a6f7ec0d846ac7ad975adb8959c37ed49b94acbc4ae436db9ce9e20287e4a64c",
+      "bytes": 19412
+    },
+    "assets/KaTeX_Math-Italic-DA0__PXp.woff": {
+      "sha256": "8a8d244581371912b8f3f5a23e2437cb2a59cd9bcaebb0346e722c05737a2571",
+      "bytes": 18748
+    },
+    "assets/schema-Dz9Z7B40.js": {
+      "sha256": "b7313d1e9f424914577c2d1f4accdaca70e3c24dd5e9ba7d9cfde0bfaba4d7d6",
+      "bytes": 75232
+    },
+    "assets/math-renderer-BuLMlLbP.css": {
+      "sha256": "c94bbda0fb43969e1c3b320c9ba3ab0684f4ff61a644f6a3c6019e4105f83147",
+      "bytes": 30232
+    },
+    "assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf": {
+      "sha256": "70ee1f64a20f2048c21940ef46d0144fd215baa953ca69afd1e31e98544f708f",
+      "bytes": 32968
+    },
+    "assets/KaTeX_Size1-Regular-mCD8mA8B.woff2": {
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+      "bytes": 5468
+    },
+    "assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2": {
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "bytes": 13568
+    },
+    "assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2": {
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "bytes": 16780
+    },
+    "assets/KaTeX_Size4-Regular-BF-4gkZK.woff": {
+      "sha256": "99f9c6750b489c9462bf04900bd3f939df9b829339daaaaa99ef5495cdddea58",
+      "bytes": 5980
+    },
+    "assets/KaTeX_Main-Regular-ypZvNtVU.ttf": {
+      "sha256": "d0332f52868370fd83ae7fa46470f90c8f2eab2fcf12bc4f88080b340c95a830",
+      "bytes": 53580
+    },
+    "assets/KaTeX_Main-Bold-Cx986IdX.woff2": {
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "bytes": 25324
+    },
+    "assets/KaTeX_AMS-Regular-DRggAlZN.ttf": {
+      "sha256": "68534840bcfdd2bffb6f0e8deb48684dd01e7f04ea2813267577afb906de1d13",
+      "bytes": 63632
+    },
+    "assets/App-DuNJtXxN.css": {
+      "sha256": "8c5d5c39cd31aa43bef9b75fe1910efb01e3fc4ca708730917b2103971641725",
+      "bytes": 32901
+    },
+    "assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2": {
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "bytes": 11348
+    },
+    "assets/KaTeX_Size1-Regular-C195tn64.woff": {
+      "sha256": "c943cc986384f59e86bea5fd7dc50a9c4dfe567a7c05eb40d6790720dead97c9",
+      "bytes": 6496
+    },
+    "assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff": {
+      "sha256": "5e28753be717dac97f559f49bc10be9cf3c124ddcabda6659d11cb68febc6463",
+      "bytes": 13208
+    },
+    "assets/KaTeX_Size3-Regular-CTq5MqoE.woff": {
+      "sha256": "6ab6b62e9b62dae2c00dd90f791bd10950be0ecc3490d7d6045f51c2e8fe0949",
+      "bytes": 4420
+    },
+    "assets/KaTeX_Script-Regular-D5yQViql.woff": {
+      "sha256": "d96cdf2b3bdd4d64a8fd5f74a4c467f123a8a73931cd435889f08ffaf9bf947a",
+      "bytes": 10588
+    },
+    "assets/KaTeX_AMS-Regular-DMm9YOAa.woff": {
+      "sha256": "30da91e84c893f875e252689faebdc590b2871145e8adc7f9a9d4dbd8ce0b251",
+      "bytes": 33516
+    },
+    "assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf": {
+      "sha256": "9163df9c7122432e6495b4229fa9071cf9ae86a758ae5efc4924ec2e1a6dbce1",
+      "bytes": 19584
+    },
+    "assets/ErrorBoundary-lFxKgWKL.js": {
+      "sha256": "62924ac23691a300a6c25edaa81522d46b193ced247cb99f2c43fa6e9f5f8ddc",
+      "bytes": 992
+    },
+    "assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2": {
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "bytes": 12216
+    },
+    "assets/KaTeX_Main-Italic-BMLOBm91.woff": {
+      "sha256": "f1d6ef86f3b11a528bd5185199bd2443ecb2b0dead96d88674b5a2c12be24bdf",
+      "bytes": 19676
+    },
+    "assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2": {
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "bytes": 4928
+    },
+    "assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf": {
+      "sha256": "07d8e303ce4fc12b4bb54f1004170dd190a1f3db45d400fe68060df3e0897268",
+      "bytes": 12368
+    },
+    "assets/KaTeX_AMS-Regular-BQhdFMY1.woff2": {
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "bytes": 28076
+    },
+    "assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2": {
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "bytes": 11316
+    },
+    "assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp": {
+      "sha256": "dab4a49c7d9c9ea078f6417a25f01f4b219cbb0f185763ef430425f56b8921c7",
+      "bytes": 31460
+    },
+    "assets/physics/textbook/ch01/1f/oblique-projectile-components.webp": {
+      "sha256": "ee126839f71ebffe2d273c10ed37d2a8432ca385bca2b6936e2670bf39b2ec3a",
+      "bytes": 35484
+    },
+    "assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp": {
+      "sha256": "a205be9d442e5068b71554fde6a72fc3e128fc2124659d72433c4ee2f1b3092e",
+      "bytes": 40098
+    },
+    "assets/physics/textbook/ch01/1a/curve-velocity-directions.webp": {
+      "sha256": "f883aefd29875516a89877f022c502a0f412477b59ed9db25826992910b6f311",
+      "bytes": 34454
+    },
+    "assets/physics/textbook/ch01/1a/displacement-components.webp": {
+      "sha256": "b162fb205adb3e1cee5c67acc74422d320ca65273746c89ccd94ccd1e9a94a8b",
+      "bytes": 40334
+    },
+    "assets/physics/textbook/ch01/1a/position-vector-displacement.webp": {
+      "sha256": "2641bc68806ecd7b298c01802b869ee4b58095b303d07c5e796a344d4a58b5a0",
+      "bytes": 40268
+    },
+    "assets/physics/textbook/ch01/1b/velocity-composition.webp": {
+      "sha256": "7fc115f7b44bafa4afdf9071adc9aae0bc2c9b1c4048e8432046ec99850441db",
+      "bytes": 62148
+    },
+    "assets/physics/textbook/ch01/1b/velocity-components.webp": {
+      "sha256": "8a64aa28c8ed6e804e416816ef724d771206b3c294fced04a63335b3e3fabb1e",
+      "bytes": 45220
+    },
+    "assets/physics/textbook/ch01/1d/acceleration-trajectory.webp": {
+      "sha256": "6c18f8c80ba21ec46f46fdff7afc6de4a1d06c8f16cc0a514f2e468afc71006e",
+      "bytes": 34178
+    },
+    "assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp": {
+      "sha256": "a149cf9beebcae145a01bb1ce7906ed733629776e88d1b2d53636e1df664f0f0",
+      "bytes": 46730
+    },
+    "assets/physics/textbook/ch01/1d/vt-area-derivation.svg": {
+      "sha256": "842cdf3049b63a6ccbd22d94ae75d945dff5f3f898544c2a9f0cc2f07f806626",
+      "bytes": 3545
+    },
+    "assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp": {
+      "sha256": "6913014ae8cc6e5a29f7299b7cf5a331403fae52b62f0f36698efe06bfe13557",
+      "bytes": 67632
+    },
+    "assets/physics/textbook/ch01/1c/relative-velocity-cars.webp": {
+      "sha256": "6fe60bff95d49715a7680185d9ba83c1624a3fe5f8197c4a1da0a4ea97f5a539",
+      "bytes": 72916
+    },
+    "assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp": {
+      "sha256": "947a5e361729a4b488a0219ff4c9bf45c87ee0814f7ac542d6072c3a659ee798",
+      "bytes": 37512
+    },
+    "assets/physics/textbook/ch01/1g/drag-force-stages.webp": {
+      "sha256": "db7b3f858724c4854d2e7281e60d680a28c698e9050bd4fb2d73f9c5ee3dfe3b",
+      "bytes": 53874
+    },
+    "assets/physics/textbook/ch01/1g/gravity-vs-air-resistance.webp": {
+      "sha256": "d5f28b44ebacecfe3f3e038193e2b3f5d021e01991bb9b99de2b1444e9023067",
+      "bytes": 36928
+    },
+    "assets/physics/textbook/ch01/1e/horizontal-projectile-strobe.webp": {
+      "sha256": "9d8f19b1d966fa6745dac12f17f58221dc4d155fb384f5035416ef1a7c4a87bf",
+      "bytes": 31666
+    },
+    "assets/physics/textbook/ch01/1e/horizontal-projectile-velocity.webp": {
+      "sha256": "d366c657ddae247849a531bae15a61b07e3609c01da4fa55d67ba9066a1b44fb",
+      "bytes": 29612
+    },
+    "assets/KaTeX_Fraktur-Regular-CB_wures.ttf": {
+      "sha256": "1e6f9579e90e2cac37f8f60a597c436e075c114385652b7cbeb0dec0421291b3",
+      "bytes": 19572
+    },
+    "assets/KaTeX_Main-Bold-waoOVXN0.ttf": {
+      "sha256": "138ac28d1663b3037e9c5f52371fa5c63d8324f4a38d22cd573e6ea3a3fd0cf8",
+      "bytes": 51336
+    },
+    "assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2": {
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "bytes": 10344
+    },
+    "assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff": {
+      "sha256": "1ae6bd7475590e97e7f145a89e09ccde322f7a6bc0b91607b1c8b8ee28290fed",
+      "bytes": 7716
+    },
+    "assets/KaTeX_Math-Italic-t53AETM-.woff2": {
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "bytes": 16440
+    },
+    "assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf": {
+      "sha256": "f36ea897e19f4a2e571d1e900e4e3710e438deb05a842486045ba0a3e616a4ad",
+      "bytes": 19436
+    },
+    "assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff": {
+      "sha256": "ece03cfd83e22c212cdef66feb8442d25a083beb988db3f1883f3f9738d750ba",
+      "bytes": 14408
+    },
+    "assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf": {
+      "sha256": "3931dd81faed86ba021bb2bbdc36f5bed9a38d6b4f4077aca59b265aa1b02083",
+      "bytes": 22364
+    },
+    "assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2": {
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "bytes": 6912
+    },
+    "assets/KaTeX_Script-Regular-C5JkGWo-.ttf": {
+      "sha256": "1c67f068fea8bb09bf099c088b1cf64bd27516a6e07f4684344873564bb66a67",
+      "bytes": 16648
+    },
+    "assets/KaTeX_Size2-Regular-oD1tc_U0.woff": {
+      "sha256": "2014c523c3210bcc166648c4d4cc57f05b747df07a24277bf71c51e67dc79e3d",
+      "bytes": 6188
+    },
+    "assets/icons-B3Rw4lb9.js": {
+      "sha256": "7178d2a7be874619b5646454b71264fae22b1b0c96174d2d078c27aa7c30cb3e",
+      "bytes": 9573
+    },
+    "assets/KaTeX_Size4-Regular-DWFBv043.ttf": {
+      "sha256": "c647367d1dd4e162468717d020e1fc0f1dc5c26ebfdffbe55261713bf88c5877",
+      "bytes": 10364
+    },
+    "assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf": {
+      "sha256": "1ece03f79f95277d57dc7f6b435a74e1379b0d46104a8530286b60ff49369ea0",
+      "bytes": 24504
+    },
+    "assets/index-9WGIKvw3.css": {
+      "sha256": "50c803fe5650291a99900772e7705f46dae9bd3e757e4b36cae832cfa5acdd05",
+      "bytes": 79648
+    },
+    "assets/math/textbook/sets/demorgan-intersection-complement.svg": {
+      "sha256": "6c8071c4ed4a41b532b9258128bb20025c0ece443cf7e59af24cfbcc9a031c1a",
+      "bytes": 1017
+    },
+    "assets/math/textbook/sets/venn-two-blank.svg": {
+      "sha256": "ccef8f58338dd16f0c966ced5bf7eda8fc7f518c3d51dc6e7b15ce09da0b3d07",
+      "bytes": 680
+    },
+    "assets/math/textbook/sets/number-line-b.svg": {
+      "sha256": "d9fe85cb5c076190549b3e2906bc2617e405cfe354c4567eb462cfe498654a4a",
+      "bytes": 937
+    },
+    "assets/math/textbook/sets/subset-after.svg": {
+      "sha256": "349f346be8c7f23d2793112e35fa424ad2ccfa0fd1edaec493fc36cc73b530a8",
+      "bytes": 953
+    },
+    "assets/math/textbook/sets/demorgan-union-complement.svg": {
+      "sha256": "a590701070a43ffd96b12d8f1de1493f7063c70be337da193562633eee895886",
+      "bytes": 967
+    },
+    "assets/math/textbook/sets/venn-union.svg": {
+      "sha256": "837534b039cd8ffcbe276ba4068fa2aca2fd4d3c85bb7b4d574158a3c6395552",
+      "bytes": 681
+    },
+    "assets/math/textbook/sets/number-line-bbar.svg": {
+      "sha256": "05b19e6b712958566ace0d701dd17802865d1354b96f16665c470f8043e26bb2",
+      "bytes": 892
+    },
+    "assets/math/textbook/sets/complement-after.svg": {
+      "sha256": "48e88f8c6dd322a18fa9c0aa454529d7518be389b68c0a1b6d44cd9ffeffa4e5",
+      "bytes": 580
+    },
+    "assets/math/textbook/sets/venn-intersection.svg": {
+      "sha256": "fa84eb15fe090bc1ddaafe9e4a4b1d6aac7dbab098291b0deb1045be154f50dd",
+      "bytes": 945
+    },
+    "assets/math/textbook/sets/subset-after.png": {
+      "sha256": "b5eccaf59bd44fc6ae2acea18573200d6cd848b60560ab284066a311e56a281a",
+      "bytes": 4515
+    },
+    "assets/math/textbook/sets/number-line-a.svg": {
+      "sha256": "8731c5656285aa0aa5a08a3f2e04717bba904b2fcc5fb0e14370f3ab22109a96",
+      "bytes": 872
+    },
+    "assets/math/textbook/sets/number-line-abar.svg": {
+      "sha256": "a122deaf73977b72df3e64a9a11a4b20eb636b9703afbc8f6d9d806a61fb4920",
+      "bytes": 981
+    },
+    "assets/math/textbook/propositions/implication-counterexample.svg": {
+      "sha256": "902a2766d2b1a2a3bc0e313fb8ab5d603d5d6311de0ebd5857fd33cf794ed4c8",
+      "bytes": 920
+    },
+    "assets/math/textbook/propositions/equal-diagonals-quadrilateral.svg": {
+      "sha256": "f31603fe21796eb3092431b87d5bf624dac7c5ca2100043bdccb07c44b57fa04",
+      "bytes": 855
+    },
+    "assets/math/textbook/propositions/implication-inclusion.svg": {
+      "sha256": "ee93977f19de30613755b07e576c6f7cbc646bb0861a7fbaec37d968c2dd7c05",
+      "bytes": 793
+    },
+    "assets/math/textbook/numbers/n11-f01.png": {
+      "sha256": "f0c384f8773369152c3f60dc1ab7aaa4504d7cfc8d2957df1b22bb9abe739d2e",
+      "bytes": 18330
+    },
+    "assets/math/textbook/numbers/n12-f02.png": {
+      "sha256": "5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3",
+      "bytes": 13262
+    },
+    "assets/math/textbook/numbers/n09-f01.png": {
+      "sha256": "24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd",
+      "bytes": 5112
+    },
+    "assets/math/textbook/numbers/n04-f01.png": {
+      "sha256": "30473a1bc46c5826264f1bfd69ffd66927b1041694bf2f9f2b8fbb81ab2e6f6e",
+      "bytes": 6344
+    },
+    "assets/math/textbook/numbers/n11-f02.png": {
+      "sha256": "13690a1f2f310049cd25125603b26923cc9bce0818ad720d35e77e07f58d1677",
+      "bytes": 13365
+    },
+    "assets/math/textbook/numbers/n03-f01.png": {
+      "sha256": "1373f26fa3664dc39d29bd22f2fb063e2fb31c4495b5c8229498002084888e9b",
+      "bytes": 6796
+    },
+    "assets/math/textbook/numbers/n05-f02.png": {
+      "sha256": "3d3340a879baf5b9cf7854e6caaf7b49479435be5a79b68b1552c634839a64bb",
+      "bytes": 20935
+    },
+    "assets/math/textbook/numbers/n12-f03.png": {
+      "sha256": "514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f",
+      "bytes": 11956
+    },
+    "assets/math/textbook/numbers/n05-f01.png": {
+      "sha256": "0047c6f0a594d278d985fbeba0693e0ec6adff89330c55c86564e470cbcc5ea2",
+      "bytes": 22092
+    },
+    "assets/math/textbook/numbers/n14-f01.png": {
+      "sha256": "0f4423c1134a92824bb75226d3dd0307449871f45a4063fbfd5e23a0ba7f1195",
+      "bytes": 12500
+    },
+    "assets/math/textbook/numbers/n12-f01.png": {
+      "sha256": "2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f",
+      "bytes": 13079
+    },
+    "assets/math/textbook/numbers/n13-f02.png": {
+      "sha256": "f6da628bb27b8214bb3c4492fa66de4775aadbcde2b7ea427536dde68272e8bc",
+      "bytes": 5740
+    },
+    "assets/math/textbook/numbers/n08-f01.png": {
+      "sha256": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+      "bytes": 4858
+    },
+    "assets/math/textbook/numbers/n13-f01.png": {
+      "sha256": "1552aee535bfb4996da4a10c61927c466fc09f9b3b607ad9f0bd1efe42dbe3df",
+      "bytes": 10708
+    },
+    "assets/math/textbook/functions/rectangle-perimeter-40.svg": {
+      "sha256": "939b74a8e884ed827d10d0ad4d5b0dfd9ef03e89b1c9b8934c292348d1542ad2",
+      "bytes": 699
+    },
+    "assets/KaTeX_Size2-Regular-Dy4dx90m.woff2": {
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "bytes": 5208
+    },
+    "assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff": {
+      "sha256": "3398dd02302557a793f2863f88e02d96ce10df2abffa07c8e9fa90775116e65c",
+      "bytes": 7656
+    },
+    "assets/useAppStore-C6AgXB3N.js": {
+      "sha256": "757eb459ad28699ccaa9f29022568b0c37529c18d55d3dc8f0d2ef2abd90a4a1",
+      "bytes": 4210981
+    },
+    "assets/KaTeX_Main-Italic-NWA7e6Wa.woff2": {
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "bytes": 16988
+    },
+    "assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff": {
+      "sha256": "850c0af5c2238497febaf5e461d880bf458c341f42f4f330f1b1ab5698b1998e",
+      "bytes": 18668
+    },
+    "assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf": {
+      "sha256": "f9377ab0271cda59af24bcffbd46a4d0c8a3572ffafdbb38de2ad5ea7b0d5ee5",
+      "bytes": 31196
+    },
+    "assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2": {
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "bytes": 6908
+    },
+    "assets/state-BxtOnv23.js": {
+      "sha256": "391fdc8a9794e331ceeabe7981f4255111e9fe0b5f868551e3e56d5fba17de6a",
+      "bytes": 2690
+    },
+    "assets/KaTeX_Size2-Regular-B7gKUWhC.ttf": {
+      "sha256": "a6b2099fb555c60e3a0db3a08842ebf1d732c6eb4e4bf44913613bed4fc4e39b",
+      "bytes": 11508
+    },
+    "assets/math-renderer-ChtEDlZ5.js": {
+      "sha256": "bd43aadfe6ba3123c17509389e82a792ca888e9450312028f7e25701bbb4d5c2",
+      "bytes": 528983
+    },
+    "assets/KaTeX_Main-Italic-3WenGoN9.ttf": {
+      "sha256": "0d85ae7cc30f23790a7f1a58c4a112fdca8aae769b6ba11429af1d98b1b6cb3a",
+      "bytes": 33580
+    },
+    "assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff": {
+      "sha256": "e14fed02b1aba7ce9f5afd5844b5d0321b22351febc720e0de8b8723527609f7",
+      "bytes": 16028
+    },
+    "index.html": {
+      "sha256": "9ed77e44517d517fc2d28bd33a4a7b5bb6b5688cc798d0a3996f428b8fc755c2",
+      "bytes": 2406
+    },
+    "w047-release.json": {
+      "sha256": "3bd89bd1e4840db1828f8bf32e37a08f4f1b2dc508d2a3299efd7c352f1c607b",
+      "bytes": 16002
+    }
+  },
+  "fileCount": 123,
+  "publicHTTPProbe": "evidence/G3_PUBLIC_HTTP_PROBE.json",
+  "liveReportArchiveSHA256": "8644e147c6e30672831597098f249d58621f814771f351b1389f436551085a32",
+  "scope": "All123actualdistributionfilebytes independently compared with original generated live manifest map, including3manifestbodies. PublicHTTPallassetchecks are separately recorded in actual live runner reports.",
+  "studentAcceptance": false
+}

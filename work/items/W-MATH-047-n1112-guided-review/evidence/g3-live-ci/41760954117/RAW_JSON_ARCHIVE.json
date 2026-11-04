@@ -1,0 +1,12 @@
+{
+  "file": "RAW_JSON.tar.gz",
+  "sha256": "b443f72f1052437c7e711b9392a1671703e373a2a69153eaa17441cf7eefb62e",
+  "bytes": 2595014,
+  "originalFiles": 2423,
+  "originalBytes": 81722023,
+  "allOriginalBytesRestoredAndCompared": true,
+  "nativeGuardsChanged": false,
+  "originalArtifactSHA256": "8644e147c6e30672831597098f249d58621f814771f351b1389f436551085a32",
+  "originalPathAndFileHashes": "ARTIFACT_INDEX.json",
+  "reason": "Lossless actual live CI rawJSON storage; no regeneration or substitution"
+}

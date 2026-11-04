@@ -21,5 +21,19 @@
     "reason": "Chromium archive download failed; no actual browser launch in this recovery"
   },
   "r07": "NOT_COMPLETE",
-  "guardsChanged": false
+  "guardsChanged": false,
+  "generated": {
+    "status": "PASS",
+    "pythonHashSeed": 0,
+    "initialExactCheck": "FAIL_QUEUE_ORDER_ONLY",
+    "cause": "Set iteration order changes pending correction queue ordering between Python processes. Node states, ledger HEAD and next task match. Engine unchanged."
+  },
+  "regression": {
+    "status": "PASS",
+    "tests": 26,
+    "files": [
+      "src/domain/textbook.test.ts",
+      "src/components/textbook/TextbookFormula.test.tsx"
+    ]
+  }
 }

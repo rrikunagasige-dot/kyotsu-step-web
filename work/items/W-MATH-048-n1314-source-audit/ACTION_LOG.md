@@ -24,3 +24,5 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 - 復元イベントを同じ共有Storeへ保存。source変更に伴う結果失効を維持し、次R01再検証を隠さない。
 - CI案はBがci-review内へ作成、非作者Aが別審査。active workflowは未適用。
 - CODE: depsをlock不変で導入、build PASS。mathの誤interpreter呼出し失敗、Python sympy不足、Chromium取得失敗を保持。限定契約検査PASSを実画面やWork完了へ拡大しない。
+
+- 最終: 回帰26件・数理解集合13件PASS。生成物の初回exact checkはqueue列挙順だけでFAIL。同じPYTHONHASHSEED=0で再生成と照合PASS。core/guardを変更せず出所と失敗を保持。

@@ -6,7 +6,9 @@ P-W048-003の承認は保持。保存済みsource `17e39f0a` のN13 leaf/domain/
 
 生成現在地は共有source変更により失効した `R01_CAPTURE@n13` の再検証。R06 claimも保存済みであり、無条件再patch禁止。次は現sourceに対する必要な結果の再検証・既承認照合とR06完了記録、同版CI、R07非作者審査。N14の正式適用、G2、公開・配信確認、本人受入、事後sweep/R08/L01/Z01は未完了。
 
-検査: build PASS（N14未適用export/既存bundle警告あり）。現在契約・旧採点保持・N13 r1〜r4のsynthetic移行 PASS。ブラウザ取得失敗につき今回DOM/画像はUNVERIFIED。
+火柴図の再生成は `PYTHONHASHSEED=0` で行い、同じ台帳からの一致を確認。初回の不一致は未完了queueの集合列挙順だけで、ノード状態・台帳HEAD・次課題は一致。engine/guardは変更しない。
+
+検査: 共有表示・保存の回帰26件PASS。数理解集合13件PASS。build PASS（N14未適用export/既存bundle警告あり）。現在契約・旧採点保持・N13 r1〜r4のsynthetic移行 PASS。ブラウザ取得失敗につき今回DOM/画像はUNVERIFIED。
 
 CI具体案は `ci-review/README.md` と同directoryのYAML・二script。前案とは同一と称さずREVIEW_ONLY。active .githubへは未適用。Work内の検査準備と、範囲外workflow一ファイルの有効化を分離する。
 

@@ -3762,13 +3762,6 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "W-MATH-048",
       "work": "W-MATH-048",
       "version": null,
@@ -3776,9 +3769,16 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
+      "id": "W-MATH-038",
+      "work": "W-MATH-038",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3790,16 +3790,16 @@
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-038",
-      "work": "W-MATH-038",
-      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },

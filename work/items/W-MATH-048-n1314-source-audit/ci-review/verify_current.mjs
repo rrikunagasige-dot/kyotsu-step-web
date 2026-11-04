@@ -18,7 +18,7 @@ const files = index.files.map(row => ({ ...row, actualSHA256: hash(row.path) }))
 const rows = [], fixtures = [];
 const server = await createServer({ configFile: false, server: { middlewareMode: true }, optimizeDeps: { noDiscovery: true, include: [] }, appType: 'custom' });
 try {
-  const { effectiveTextbookProgress } = await server.ssrLoadModule('/src/domain/textbook.ts');
+  const { effectiveTextbookProgress, getTextbookChoices } = await server.ssrLoadModule('/src/domain/textbook.ts');
   for (const code of ['n13', 'n14']) {
     const row = files.find(r => r.path.endsWith(`/${code}Lesson.ts`));
     assert.ok([row.before_sha256, row.after_sha256].includes(row.actualSHA256), `${code}: unknown product bytes`);
@@ -56,7 +56,7 @@ try {
       migrationRows.push({ revision, status: 'PASS_SYNTHETIC_DOMAIN' });
     }
     rows.push({ code, state: 'APPLIED_FIXED_PATCH', revision: unit.revision, answers: items.length, migrationRows, browserEligible: true });
-    fixtures.push({ code, unit, legacy, contract: module[`${code}W048DisplayContract`] });
+    fixtures.push({ code, unit, legacy, visibleChoices: Object.fromEntries(items.map(item => [item.id, getTextbookChoices(unit, item)])), contract: module[`${code}W048DisplayContract`] });
   }
   for (const row of files.filter(r => !r.path.endsWith('Lesson.ts'))) assert.equal(row.actualSHA256, row.after_sha256, `${row.path}: exact scoped shared patch`);
 } finally { await server.close(); }

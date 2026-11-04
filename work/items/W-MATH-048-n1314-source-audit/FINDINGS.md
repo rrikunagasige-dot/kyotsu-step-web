@@ -20,3 +20,7 @@ A/Bは元79block・現129block・50回答を読んで調査。CODEによる抽�
 - CONFIRMED: 既存guardは未記録差分を拒否。隔離rootで正式再現でき、過去のpatch_intentを捏造せず回復。
 - OPEN-QUESTION: 前回CI案と実画面原証拠の保存先は未回収。再構成案を元案と同一視しない。
 - UNVERIFIED: 今回Chromium取得失敗、R07実画面と非作者審査は未完了。
+
+## CI初回失敗 — 41807740789
+
+ERROR-QA: capture_currentは原稿の全4候補と実表示を同一視していた。実getTextbookChoicesはstrong2択/medium3択へ絞る既存仕様。最初のN13で実2候補とraw4候補の集合比較がFAIL。教材差分なし。検査側fixtureを実getTextbookChoicesへ接続し、全実表示候補の比較/誤答操作/件数へ合わせる。raw非表示候補までブラウザ検査したとは称さない。初回runのFAILとartifactを保持する。

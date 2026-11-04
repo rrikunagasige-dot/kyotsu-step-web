@@ -10,12 +10,12 @@ const inputs = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
 assert.equal(inputs.sourceSHA, process.env.CANDIDATE_SHA);
 const jsonDir = path.join(out, 'reports'), imageDir = path.join(out, 'images');
 fs.mkdirSync(jsonDir, { recursive: true }); fs.mkdirSync(imageDir, { recursive: true });
-const report = { status: 'RUNNING', sourceSHA: inputs.sourceSHA, scope: 'APPLIED_CURRENT_BUILD_ONLY', results: [], failures: [], limits: ['No N14 isolated prototype is labelled current-source proof.', 'Geometry and exhaustive choices are technical evidence; teaching/reading quality requires nonauthor review.', 'Reset button, figure timing, chapter transitions, old-layout comparison and cross-mode regression remain separately required R07/G2 checks.'] };
+const report = { status: 'RUNNING', sourceSHA: inputs.sourceSHA, scope: 'APPLIED_CURRENT_BUILD_ONLY', results: [], failures: [], limits: ['No N14 isolated prototype is labelled current-source proof.', 'Geometry and all actually displayed choices are bounded technical evidence; raw omitted distractors are not browser-tested; teaching/reading quality requires nonauthor review.', 'Reset button, figure timing, chapter transitions, old-layout comparison and cross-mode regression remain separately required R07/G2 checks.'] };
 const browser = await chromium.launch({ headless: true, ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {}), args: ['--no-sandbox'] });
 const record = item => ({ itemId: item.id, value: item.answer, firstValue: item.answer, resolved: true, isFirstCorrect: true, attemptCount: 1, firstAnsweredAt: 11, lastAnsweredAt: 22 });
 try {
   for (const fixture of inputs.fixtures) for (const width of [320, 390, 430, 1440]) {
-    const { code, unit, legacy } = fixture, section = unit.sections[0], items = new Map(section.items.map(i => [i.id, i]));
+    const { code, unit, legacy, visibleChoices } = fixture, section = unit.sections[0], items = new Map(section.items.map(i => [i.id, i]));
     const context = await browser.newContext({ viewport: { width, height: 1000 } }), page = await context.newPage(), errors = [];
     page.on('pageerror', e => errors.push(e.message));
     const route = process.env.APP_URL + '#/learning/textbook/' + unit.unitId;
@@ -61,7 +61,7 @@ try {
       const panel = page.getByTestId('inline-choice-panel-' + item.id);
       await panel.waitFor();
       const labels = await panel.locator('button[aria-label]').evaluateAll(nodes => nodes.map(n => n.getAttribute('aria-label')));
-      assert.deepEqual([...labels].sort(), [...item.choices].sort(), 'all exact choice keys visible');
+      assert.deepEqual([...labels].sort(), [...visibleChoices[item.id]].sort(), 'actual scaffold-filtered choice keys visible');
       await geometry(item.id + '-options');
       await panel.locator('button[aria-label]').evaluateAll((nodes, expected) => {
         const found = nodes.find(n => n.getAttribute('aria-label') === expected); if (!found) throw Error('choice missing'); found.click();
@@ -78,7 +78,7 @@ try {
         break;
       }
       const id = available[0], item = items.get(id); assert.ok(item, `known item ${id}`); assert.ok(!visited.has(id), 'solved item must advance');
-      for (const value of item.choices.filter(value => value !== item.answer)) {
+      for (const value of visibleChoices[item.id].filter(value => value !== item.answer)) {
         await choose(item, value); wrong++;
         assert.ok((await ids()).includes(id), 'wrong answer remains unresolved');
         await page.getByTestId('textbook-item-' + id).click();
@@ -89,7 +89,7 @@ try {
       if (correct === 1 || correct === Math.floor(section.items.length / 2)) await page.screenshot({ path: path.join(imageDir, `${code}-${width}-answered-${correct}.png`), fullPage: true });
     }
     assert.equal(correct, section.items.length, 'all current-source interactions answered');
-    assert.equal(wrong, section.items.reduce((n, i) => n + i.choices.filter(c => c !== i.answer).length, 0));
+    assert.equal(wrong, section.items.reduce((n, i) => n + visibleChoices[i.id].filter(c => c !== i.answer).length, 0));
     await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor(); await geometry('completed-reload');
     const history = page.getByTestId('math-textbook-history-toggle');
     if (await history.count()) { await history.click(); await page.getByTestId('math-textbook-expand-all').click(); await geometry('expanded-history'); }

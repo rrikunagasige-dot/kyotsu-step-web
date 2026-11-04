@@ -30,3 +30,5 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 ## P-W048-CI-001承認後
 
 ユーザー「承認」を固定案7d29caf3へ結合。YAMLのbyte一致を検査してactive .github一fileへ追加。子二人の既存担当を再開、M唯一writer。run取得前はPENDING、教材受入/公開には転用しない。
+
+- CI41807740789/source2cf3c1fは固定byte/採点保存/build/Chromium導入PASS、実画面の選択肢集合比較でFAIL。B先行指摘を実ログで確認。検査用二scriptだけを既存getTextbookChoicesへ接続する限定修正。教材・workflow権限・guardは変更しない。

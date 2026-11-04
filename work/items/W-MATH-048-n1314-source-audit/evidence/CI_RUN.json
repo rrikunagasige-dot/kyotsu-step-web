@@ -1,0 +1,18 @@
+{
+  "run_id": 41807740789,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41807740789",
+  "head_sha": "2cf3c1f37eb06a0bcfb40deb376274ae62bc1a8c",
+  "status": "COMPLETED",
+  "conclusion": "FAILURE",
+  "proposal": "P-W048-CI-001",
+  "scope": "Current-source N13 bounded contracts and four-width browser capture; N14 NOT_APPLIED excluded",
+  "returnOnSuccess": "Import same-SHA CI artifacts; preserve incomplete native R01/R06/R07",
+  "returnOnFailure": "Record failed job/step; diagnose original failure inside approved CI scope",
+  "humanAcceptance": false,
+  "failedStep": "Applied units only, actual build at four widths",
+  "rootCause": "Probe compared raw choices with scaffold-filtered actual UI choices",
+  "artifacts": {
+    "images": 13310521633,
+    "reports": 13310871167
+  }
+}

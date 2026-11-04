@@ -1,0 +1,26 @@
+{
+  "reviewer": "B / current /root/w048_review_b",
+  "provenance": "Actual view_image observations transcribed from current collaboration task messages",
+  "formalR07Packet": false,
+  "modelIndependent": false,
+  "initial": {
+    "run": 41808153351,
+    "sourceSHA": "99203245ebd6e449ea68fb5194f81a21223f5ef6",
+    "imagesViewed": 9,
+    "finding": "320 and 1440 answered9 full-page images show fixed header across middle text. Do not use as formal R07 PASS."
+  },
+  "recheck": {
+    "run": 41809002629,
+    "sourceSHA": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+    "imagesViewed": [
+      "n13-320-answered-9.png",
+      "n13-1440-answered-9.png",
+      "n13-390-fresh.png"
+    ],
+    "observation": "Previous middle-text fixed header overlay resolved in both answered9 images; header is at top only. No obvious clipping or overlap in 390 fresh.",
+    "limits": [
+      "Long-image downscaling prevents fine text audit",
+      "Not a complete nonauthor R07 semantic or visual audit"
+    ]
+  }
+}

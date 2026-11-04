@@ -33,5 +33,26 @@
     },
     "downloadVerified": true,
     "imageCount": 16
+  },
+  "finalCaptureRun": {
+    "run_id": 41809002629,
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/41809002629",
+    "head_sha": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+    "status": "COMPLETED",
+    "conclusion": "SUCCESS",
+    "imageCount": 16,
+    "imageFilesSHA256Verified": true,
+    "artifactDigestsVerified": true,
+    "imagesArtifact": {
+      "id": 13311437028,
+      "sha256": "b86ee332d7b1be1c834fa17263d23e59db0ed9472a23ad9e4a74f5d4635ac753",
+      "bytes": 4121896
+    },
+    "reportsArtifact": {
+      "id": 13311094027,
+      "sha256": "a88d3c6fc6f7851aa06d359335439fe116bcc19925e54b2a0779cc070a95df25",
+      "bytes": 10976
+    },
+    "scope": "N13 only; scroll-top capture correction; formal R07 not completed"
   }
 }

@@ -1,3 +1,15 @@
+# CURRENT — 撮影補修後CI成功・正式R02まで再検証
+
+P-W048-CI-001の承認範囲でworkflow一fileを有効化。run41807740789は検査側候補数の仮定でFAIL、41808153351は限定CODE PASSだが画像の中段header重畳をBが発見。撮影前scroll topを追加し、最終run41809002629/source d34d9fe5 SUCCESS。PNG16枚・JSON別artifactを取得し、ZIP digestと全PNG hashを照合。前の失敗/画像所見は保持。
+
+各320/390/430/1440pxでN13 18正答・42実表示誤答、履歴/再読込/旧r4完了保存の追加未回答再開を確認。pointer/keyboard actionability、全状態18px/軸/番号、reset、図gate等をこの限定CIだけで完了としない。N14はr10未適用。
+
+現sourceに対する正式R01/R02を新CODE receiptsとAI根拠で提出。生成現在地はR03_IMPACT@n13。P003具体案・承認は保持。R03/R04再検証、R06新compile receiptと既存patch証拠による完了（再patch不要）、R07非作者審査、N14適用と検査、G2/G3/受入/事後sweep/終了が残る。
+
+CODEとAIの判定、実装承認と教材受入を分離。子二人・M唯一writer・guard変更なし。以下は経緯。
+
+---
+
 # CURRENT — CI成功・正式R01再検証完了
 
 P-W048-CI-001は承認済み・有効化済み。初回run41807740789は検査側のraw/実表示候補混同でFAIL。二scriptだけを既存getTextbookChoicesへ接続し、run41808153351/source99203245でSUCCESS。N13の各320/390/430/1440pxに18正答・42実表示誤答、履歴/再読込/旧r4完了保存から追加未回答への再開を確認。非表示raw候補はbrowser検査と称さない。PNG16枚とJSON別artifactを取得しZIP digest一致を確認。

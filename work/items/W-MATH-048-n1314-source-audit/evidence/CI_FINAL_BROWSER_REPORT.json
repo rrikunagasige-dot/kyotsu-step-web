@@ -1,0 +1,131 @@
+{
+  "status": "PASS_BOUNDED_CURRENT_BUILD_BROWSER",
+  "sourceSHA": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+  "scope": "APPLIED_CURRENT_BUILD_ONLY",
+  "results": [
+    {
+      "code": "n13",
+      "width": 320,
+      "correct": 18,
+      "wrong": 42,
+      "geometryChecks": 80,
+      "observedScrollContainers": 70,
+      "latestBaselineSaveResume": [
+        "n13-w048-q04-positive"
+      ],
+      "oldRevision": 4,
+      "historyAndReload": true
+    },
+    {
+      "code": "n13",
+      "width": 390,
+      "correct": 18,
+      "wrong": 42,
+      "geometryChecks": 80,
+      "observedScrollContainers": 0,
+      "latestBaselineSaveResume": [
+        "n13-w048-q04-positive"
+      ],
+      "oldRevision": 4,
+      "historyAndReload": true
+    },
+    {
+      "code": "n13",
+      "width": 430,
+      "correct": 18,
+      "wrong": 42,
+      "geometryChecks": 80,
+      "observedScrollContainers": 0,
+      "latestBaselineSaveResume": [
+        "n13-w048-q04-positive"
+      ],
+      "oldRevision": 4,
+      "historyAndReload": true
+    },
+    {
+      "code": "n13",
+      "width": 1440,
+      "correct": 18,
+      "wrong": 42,
+      "geometryChecks": 80,
+      "observedScrollContainers": 0,
+      "latestBaselineSaveResume": [
+        "n13-w048-q04-positive"
+      ],
+      "oldRevision": 4,
+      "historyAndReload": true
+    }
+  ],
+  "failures": [],
+  "limits": [
+    "No N14 isolated prototype is labelled current-source proof.",
+    "Geometry and all actually displayed choices are bounded technical evidence; raw omitted distractors are not browser-tested; teaching/reading quality requires nonauthor review.",
+    "Reset button, figure timing, chapter transitions, old-layout comparison and cross-mode regression remain separately required R07/G2 checks."
+  ],
+  "images": [
+    {
+      "name": "n13-1440-answered-1.png",
+      "sha256": "39160bcfa71787139bf8a98da4ff6a682ce11c85e598c70df1be637dd79c0b43"
+    },
+    {
+      "name": "n13-1440-answered-9.png",
+      "sha256": "36904929b578cf8e0b0796d3ed44ff835df8b92825cdcb33e48a47c9dfdedbb9"
+    },
+    {
+      "name": "n13-1440-fresh.png",
+      "sha256": "ba2089549305973a84ae5404fefbf560bceba22b15a2bcce108299ba39a50eba"
+    },
+    {
+      "name": "n13-1440-history.png",
+      "sha256": "a1400957d03c1cadb9a06ad027a005ff2f79433a322243ab3476db8f672514b8"
+    },
+    {
+      "name": "n13-320-answered-1.png",
+      "sha256": "a91f622e48ce5cd95b0a0e3b549f266e002528f7d0ce1021b52b934fe30df51e"
+    },
+    {
+      "name": "n13-320-answered-9.png",
+      "sha256": "59e53d03b7e7360ac7c9f7257ed0a9d597dd381d513c7cd11bb07f1cf031208f"
+    },
+    {
+      "name": "n13-320-fresh.png",
+      "sha256": "94c0aad0185dd8dd55385ba6245f6391fd8677ea03acf7530764d831c2651afa"
+    },
+    {
+      "name": "n13-320-history.png",
+      "sha256": "9bdf55aba5b3b66026c5f1c2ac94b7ddd2e364679fe155e44c73eaaa71cfd7f9"
+    },
+    {
+      "name": "n13-390-answered-1.png",
+      "sha256": "ef35e79eceecc196024d10a38d4f98e692bee8b101c58c2c6e486ffc0fbff392"
+    },
+    {
+      "name": "n13-390-answered-9.png",
+      "sha256": "89faeebee64003f091d64e0742753051bf74743220b1c64f197db2f4ce07e922"
+    },
+    {
+      "name": "n13-390-fresh.png",
+      "sha256": "4464d43273270ba3e0b6ffdb87757dfe1e349f98c7f175c46411f81aa5513aae"
+    },
+    {
+      "name": "n13-390-history.png",
+      "sha256": "9b5b110b5c8cc4fca69bc171d891a37bae29b862fc87d31892f6534f77037330"
+    },
+    {
+      "name": "n13-430-answered-1.png",
+      "sha256": "ae7f86bccd624ca0aaa1e7d861477a9e46189818c878f0e36818ba2132a4628f"
+    },
+    {
+      "name": "n13-430-answered-9.png",
+      "sha256": "3bfd82f6621068c43202baf5aafaceb5259e170414394c2a27405a568a36eb1e"
+    },
+    {
+      "name": "n13-430-fresh.png",
+      "sha256": "6525debdba6c9452abc6ce3137a0635f2af7255d265734b35bcb932666e0fe69"
+    },
+    {
+      "name": "n13-430-history.png",
+      "sha256": "b85b75d529bd5278e85cd1e96c5b413a1d5fbc259161900e468c7a44ecb9e4a0"
+    }
+  ]
+}

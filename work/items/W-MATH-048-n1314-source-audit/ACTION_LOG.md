@@ -37,3 +37,7 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 - 既存RuntimeでR01_CAPTURE@n13を現混在版の新CODE receiptsとAI根拠で再提出。次R02。既存P003を保持、guard変更・二重patchなし。
 
 - BがCI画像9枚をview_imageで初回事前観察。fresh/answered1に明白な左右欠けは見えず、answered9では固定headerの中段重畳を検出。正式packet/PASSではない。capture前scroll topを追加して同じ教材を再撮影する。
+
+- 撮影前scroll top補修のrun41809002629/source d34d9fe5 SUCCESS。二artifact digestとPNG16枚の個別hash一致。旧CI2画像所見は保持。
+- 正式R02_CAUSE@n13を現在の全文IR・旧病因と修正後状態の区別・新capability receipts・全取得事例の適用理由で再提出。次R03。モデルfallbackは範囲付きcatalog参照、fitや品質labelの生成なし。
+- Git ref更新時の一回GraphQL UNKNOWNは実refが旧SHAのままであることを再読取後、同じexpected_sha/新commitで再試行して成功。未知結果のまま重複操作していない。

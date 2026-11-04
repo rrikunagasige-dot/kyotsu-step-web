@@ -1,0 +1,9 @@
+{
+  "toolName": "collaboration.followup_task",
+  "target": "/root/review_a",
+  "rawResult": "",
+  "request": {
+    "target": "review_a",
+    "message": "正式task W048-SCROLL-R04-n14-A-df639182e209。現在のN14 R04非作者・既露出審査をお願いします。config: work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_TEAM_CONFIG.json、bound:/tmp/w048-scroll-n14-r04-team-state.json。A packetを先に読み原典/数学/推導/保持された教材内容hashと承認済みscroll補修の境界を確認。指定reportPathのみ原報告作成、targetHash=artifactHashes.teaching、sourceFirst=false,firstPass=false,authorSeparation=true,verdict,firstObservations,rationale,findings。N14未適用・R07未確認は保持。Store/product/Git編集・孫禁止。最終でpath/SHA/verdict明記。"
+  }
+}

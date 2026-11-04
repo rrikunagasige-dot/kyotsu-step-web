@@ -1,0 +1,9 @@
+{
+  "toolName": "collaboration.followup_task",
+  "target": "/root/review_b",
+  "rawResult": "",
+  "request": {
+    "target": "review_b",
+    "message": "正式task W048-SCROLL-R04-n14-B-df639182e209。現在のN14 R04表示/保存設計の非作者・既露出審査をお願いします。config: work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_TEAM_CONFIG.json、bound:/tmp/w048-scroll-n14-r04-team-state.json。B packetを先に読み、固定leaf案・Page補修のN13r5/N14r11限定・対象行のみ復帰・保存採点不変を確認。指定reportPathのみ原報告作成、targetHash=artifactHashes.layout、sourceFirst=false,firstPass=false,authorSeparation=true,verdict,firstObservations,rationale,findings。N14は未適用、41判断/44二値状態等のR07は別途必要。Store/product/Git編集・孫禁止。最終でpath/SHA/verdict明記。"
+  }
+}

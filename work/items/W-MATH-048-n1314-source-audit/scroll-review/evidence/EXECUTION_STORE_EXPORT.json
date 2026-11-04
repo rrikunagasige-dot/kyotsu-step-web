@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED_APPEND_ONLY_EXPORT",
+  "fromEvents": 5137,
+  "toEvents": 5232,
+  "head": "90c6ca8878e17a17342db03e6d45cb9285c70710cd46abfe206f9fee3efc0746",
+  "addedArtifacts": 55,
+  "source": "/tmp/w048-scroll-execution-store",
+  "destination": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "noDivergentMerge": true
+}

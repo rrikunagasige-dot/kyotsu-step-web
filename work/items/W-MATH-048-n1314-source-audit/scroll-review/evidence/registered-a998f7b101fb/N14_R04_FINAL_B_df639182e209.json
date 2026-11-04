@@ -1,0 +1,5 @@
+{
+  "channel": "subagent-final",
+  "rawResult": "判定：**PASS（N14 R04表示・保存設計のみ）**。固定leaf案、版限定・対象行限定の補修、旧採点契約保持を確認しました。N14未適用、41判断／44二値状態などのR07検証は別途必要です。\n\npath: `/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_B_df639182e209.json`\n\nSHA256: `e6cf2eb66bbc44c7142321fb4eb4158481679f9e5c14aad94b1346a2277e1c3a`",
+  "reportSHA256": "e6cf2eb66bbc44c7142321fb4eb4158481679f9e5c14aad94b1346a2277e1c3a"
+}

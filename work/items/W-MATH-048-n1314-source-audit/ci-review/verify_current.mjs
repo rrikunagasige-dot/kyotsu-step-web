@@ -58,7 +58,19 @@ try {
     rows.push({ code, state: 'APPLIED_FIXED_PATCH', revision: unit.revision, answers: items.length, migrationRows, browserEligible: true });
     fixtures.push({ code, unit, legacy, visibleChoices: Object.fromEntries(items.map(item => [item.id, getTextbookChoices(unit, item)])), contract: module[`${code}W048DisplayContract`] });
   }
-  for (const row of files.filter(r => !r.path.endsWith('Lesson.ts'))) assert.equal(row.actualSHA256, row.after_sha256, `${row.path}: exact scoped shared patch`);
+  const scroll = read(`${work}/scroll-review/PROPOSED_PATCH.json`);
+  assert.deepEqual(scroll.files.map(f => f.path), ['src/pages/TextbookUnitPage.tsx'], 'approved supplement is exactly the Page file');
+  const scrollApproval = read(`${work}/scroll-review/APPROVAL.json`);
+  assert.equal(scrollApproval.proposal, 'P-W048-SCROLL-001');
+  assert.equal(scrollApproval.acceptance, false);
+  for (const row of files.filter(r => !r.path.endsWith('Lesson.ts'))) {
+    const supplement = scroll.files.find(f => f.path === row.path);
+    if (supplement) {
+      assert.equal(supplement.before_sha256, row.after_sha256, 'supplement extends exact original shared patch');
+      assert.equal(crypto.createHash('sha256').update(supplement.after_text).digest('hex'), supplement.after_sha256);
+    }
+    assert.equal(row.actualSHA256, supplement?.after_sha256 ?? row.after_sha256, `${row.path}: exact approved scoped shared patch plus supplement`);
+  }
 } finally { await server.close(); }
 const report = { status: 'PASS_BOUNDED_CURRENT_CONTRACTS', sourceSHA, rows, files, pendingUnits: rows.filter(r => !r.browserEligible).map(r => r.code), limits: ['NOT_APPLIED units are explicitly excluded from current-source browser proof.', 'Synthetic migration checks are not real learner data.', 'This does not complete native R07, nonauthor review, G2, publication or acceptance.'] };
 fs.writeFileSync(path.join(out, 'CURRENT_CONTRACTS.json'), JSON.stringify(report, null, 2) + '\n');

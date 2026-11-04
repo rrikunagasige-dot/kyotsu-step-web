@@ -1,0 +1,5 @@
+{
+  "channel": "subagent-final",
+  "rawResult": "判定：**PASS（R04原典・数学・推導・追加設計）**。既露出の非作者再審査です。R07・N14動的検証・本人受入は未完了として保持しました。\n\nreportPath:\n`/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N13_R04_A_74dd8347bdd2.json`\n\nSHA256:\n`2b5947e4c23465771284cfb06d0329a04fb92ebd433965b74a191b49372d40c5`",
+  "reportSHA256": "2b5947e4c23465771284cfb06d0329a04fb92ebd433965b74a191b49372d40c5"
+}

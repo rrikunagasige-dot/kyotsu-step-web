@@ -1,0 +1,9 @@
+{
+  "source": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "executionReplica": "/tmp/w048-scroll-execution-store",
+  "baseHead": "519e5f57d1d31c3ed965f9efaafb527de318ea08ea51381bb0d8c2577c353adf",
+  "baseEvents": 5061,
+  "identicalEventsAndArtifacts": true,
+  "nativeRulesUnmodified": true,
+  "reason": "Shared workspace synchronization reintroduces transient writer-lock mid sequential append; execute same verified ledger in nonsynced tmp, then strict append-only sync with unchanged-base guard. No guards removed."
+}

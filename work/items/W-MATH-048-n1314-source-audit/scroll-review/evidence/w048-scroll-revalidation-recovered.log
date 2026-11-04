@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/store.py", line 28, in append
+    try:fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: '/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-032-n07-semantic-repair/runtime/.writer-lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/revalidate_registered.py", line 244, in <module>
+    main()
+  File "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/revalidate_registered.py", line 97, in main
+    refs = evidence(rt, basepaths)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/revalidate_registered.py", line 46, in evidence
+    return [rt.evidence(WORK, "file", {"path": str(p.relative_to(ROOT)), "sha256": sha(p)},
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/runtime.py", line 238, in evidence
+    ref=eid or str(uuid.uuid4());self.append('evidence',work,{'id':ref,'kind':kind,'data':data,'source_ref':source_ref,'verification_level':verification_level},event_id='evidence-'+ref)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/runtime.py", line 13, in append
+    event=self.store.append(kind,work,payload,expected=self._head,**kwargs);self._head=event['hash'];return event
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/store.py", line 29, in append
+    except FileExistsError as ex:raise Conflict('書込ロックあり。実行中または中断を照合するまで再実行しない') from ex
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+store.Conflict: 書込ロックあり。実行中または中断を照合するまで再実行しない

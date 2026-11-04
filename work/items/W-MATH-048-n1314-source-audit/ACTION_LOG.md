@@ -53,3 +53,8 @@ User request3f0bb6d6-2a1c-4c3d-9618-5a24bb7151d1「いいよ続けて」をP-W04
 A/B二人を再開し非作者・既露出静的審査。CODEはM一回の四幅実行。Q04開始位置と回答行scrollLeft0、320px別行20px保持、拡張検査四幅各18回答/旧保存4版が成功。初回サーバ接続失敗二回は製品FAILと混同せず保持。Page正式差分は未適用、追加案P-W048-SCROLL-001を提示可能にした。N14動的検証/R07全体未完了。
 
 新画像の日本語豆腐をMの実見で発見。既存fontconfig/ライブラリ環境を復元し四幅診断を再実行成功、320px原画像を実見。元の豆腐画像は保持し視覚PASSにしない。公開GitHub pushは自動承認レビューがpayload明示許可不足で拒否、代替経路で回避しない。記録はlocal commitに保持、公開保存の明示承認待ち。
+
+## 2026-11-04 SCROLL-001承認と正規工程再検証
+request5ce46790-7585-4a0c-a8fa-8b0c32d60ebb「承認」をPage固定差分・既存公開作業branchへの記録保存に照合。旧P003承認を書換えずcompositeとしてnative登録、両block render context追加。e9dd9f0cへ記録証拠を接続GitHubで保存。Git CLI pushは認証失敗。共有workspace内の.writer-lock再出現二回は停止し、原lock/PID照合/chain検査を保存。厳密同一Storeをtmpで実行し、元Storeへのappend-only照合exportを使用。N13/N14 R01〜R03 fresh receipts、N13 R04 fresh A/B審査を実施。旧LEFT-ALIGN解決の現input再登録がないためcollectionは一回拒否、Bの専用改訂taskの実報告で二件再照合後、N13 R04を正式提出。N14 R04審査中、製品は未変更。
+
+両unitR04提出後R05@n13承認を照合し、compile内容hashを確認して正規adapterでPage一fileを適用。適用後services実装hash変更によりR06提出は旧compile receipt失効で拒否された。未記録差分ではなくpatch_applied/evidenceあり。RESULT_LOST_REVIEW_REQUIREDで残留claimを照合し、同じafterを保持して再検証する。beforeへ戻さず再patchなし。

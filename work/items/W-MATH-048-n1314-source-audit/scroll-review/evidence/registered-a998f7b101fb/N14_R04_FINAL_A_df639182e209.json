@@ -1,0 +1,5 @@
+{
+  "channel": "subagent-final",
+  "rawResult": "判定：**PASS（N14 R04原典・数学・推導・scroll設計境界）**。N14未適用・R07未確認を保持しました。\n\nreportPath:\n`/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_A_df639182e209.json`\n\nSHA256:\n`452c2da0e96e70f89452e8bce25272612825070b5e9d7e8689ee2eba0075625c`",
+  "reportSHA256": "452c2da0e96e70f89452e8bce25272612825070b5e9d7e8689ee2eba0075625c"
+}

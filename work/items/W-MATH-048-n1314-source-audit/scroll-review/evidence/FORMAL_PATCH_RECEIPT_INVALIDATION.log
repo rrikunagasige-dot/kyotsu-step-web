@@ -1,0 +1,16 @@
+ACCEPTED R05_APPROVAL@n13
+Traceback (most recent call last):
+  File "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/apply_approved.py", line 28, in <module>
+    r.production_result(w,node['id'],claim['claim_token'],result)
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/runtime.py", line 476, in production_result
+    check_result(self,work,n,result);self.fingerprint_refs(s,result['evidence_refs'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/production.py", line 26, in check_result
+    return cr_check(rt,work,node,result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/integration.py", line 96, in check_result
+    need((ref, rt.input_hash(s, node)) in bound, '実行イベントのないcode receipt')
+  File "/workspace/scratch/55b12fe3f8aa/repo/workflow/contracts.py", line 7, in need
+    if not test:raise Rejected(message)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+contracts.Rejected: 実行イベントのないcode receipt

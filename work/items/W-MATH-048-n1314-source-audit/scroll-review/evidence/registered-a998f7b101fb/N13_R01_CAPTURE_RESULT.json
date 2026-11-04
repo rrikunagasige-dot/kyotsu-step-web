@@ -1,0 +1,115 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "a68d86d9-e37c-4e71-b1d0-4586d6263b5e",
+    "4f5db452-ab2f-4888-a7a9-8a82799a306d",
+    "ded51895-4ed8-4c36-91bd-5e490d0a9923",
+    "581acdd2-bdc7-434a-a33f-5a6808a3436f",
+    "704abf35-a69c-4ba1-a358-80ee6691c86b",
+    "a0d2a349-d3ca-43e9-8171-364c4ce06681",
+    "a8958b87-f630-4a1d-b77e-d9850dfc7695",
+    "8019349f-fd6a-4bd3-a013-a20d7dbdb563",
+    "2597ccc0-eb73-4bbb-80f4-f7529690d4a5",
+    "35d2855a-03ee-4014-a7be-13e1ff0b82b1",
+    "bc808631-89d8-4f12-ad4a-cdd1ee297d7a",
+    "3a58c33f-5ee6-4349-a577-f2caa740508f",
+    "d5ef071e-8596-4a01-8f5e-037469ae8d10",
+    "4a0ea49c-1a99-40ad-9283-10d3ca8aa6cf",
+    "a25d0e42-d267-4578-bc01-1a0e737173bc",
+    "7cf81492-e4f6-4f19-8788-f3e593c79ab4",
+    "dd6038ae-afff-4c00-bceb-7d12dc39405e",
+    "f11ebdfd-9b1e-46b7-927f-83bf592704c1",
+    "81ddaa57-d612-4179-beed-dcff4d063896",
+    "8bc230ea-eba1-45cf-a364-30aa8202bf81"
+  ],
+  "capability_receipts": [
+    "514794cc7b0ffb63d5c8771b3904ba6cc68b1dc08c58373863461fde1aac1303",
+    "36639cf6fab912534f451527b21ea2c02257d7a3dcf4346628e4bccdf7665ec8"
+  ],
+  "aiReview": {
+    "requestHash": "471dccd009b60751fe7c922049d7ce2ba06a9dce3d746998830179d3c13b14d1",
+    "inputHash": "f20fc92467a373d1ad1b75a98b787ebc69c907ba06d4cc37c819d2b8c39db996",
+    "reviewer": "M executing reviewed current-source investigation; R04 A/B review remains separate",
+    "evidence": [
+      "a68d86d9-e37c-4e71-b1d0-4586d6263b5e",
+      "4f5db452-ab2f-4888-a7a9-8a82799a306d",
+      "ded51895-4ed8-4c36-91bd-5e490d0a9923",
+      "581acdd2-bdc7-434a-a33f-5a6808a3436f",
+      "704abf35-a69c-4ba1-a358-80ee6691c86b",
+      "a0d2a349-d3ca-43e9-8171-364c4ce06681",
+      "a8958b87-f630-4a1d-b77e-d9850dfc7695",
+      "8019349f-fd6a-4bd3-a013-a20d7dbdb563",
+      "2597ccc0-eb73-4bbb-80f4-f7529690d4a5",
+      "35d2855a-03ee-4014-a7be-13e1ff0b82b1",
+      "bc808631-89d8-4f12-ad4a-cdd1ee297d7a",
+      "3a58c33f-5ee6-4349-a577-f2caa740508f",
+      "d5ef071e-8596-4a01-8f5e-037469ae8d10",
+      "4a0ea49c-1a99-40ad-9283-10d3ca8aa6cf",
+      "a25d0e42-d267-4578-bc01-1a0e737173bc",
+      "7cf81492-e4f6-4f19-8788-f3e593c79ab4",
+      "dd6038ae-afff-4c00-bceb-7d12dc39405e",
+      "f11ebdfd-9b1e-46b7-927f-83bf592704c1",
+      "81ddaa57-d612-4179-beed-dcff4d063896",
+      "8bc230ea-eba1-45cf-a364-30aa8202bf81"
+    ]
+  },
+  "complaint": "Resume approved P003 and SCROLL-001. Issue registration invalidated prior R01; capture both historical教材 defects and new scroll observation without conflation.",
+  "before_evidence": [
+    "work/items/W-MATH-048-n1314-source-audit/P003_FINAL.md",
+    "work/items/W-MATH-048-n1314-source-audit/P-W048-SCROLL-001.md",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/APPROVAL.json",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/PROPOSED_PATCH.json",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/SCROLL_FIX.diff",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/REVIEW_A.md",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/REVIEW_B.md",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/SUMMARY.json",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/MANIFEST.json",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/CURRENT_MANIFEST_CHECK.json",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/FONT_DIAGNOSIS_1440.json.gz",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/FONT_DIAGNOSIS_320.json.gz",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/FONT_DIAGNOSIS_390.json.gz",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/FONT_DIAGNOSIS_430.json.gz",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/FONT_EXTENDED_REPORT.json.gz"
+  ],
+  "reproduction": {
+    "historical": [
+      "Q04/Q07の独立した二枝の計算が最終pairへ束ねられる",
+      "Q09の0/負の二判断が一つへ束ねられ、Q06/Q09ヒントにも具体結論がある",
+      "直前の距離5から新しい距離4への接続誤記と一般形の位置が不十分"
+    ],
+    "current": {
+      "leafApplied": true,
+      "leafSHA256": "5d416e145f4f489709150aa539acb4eee8bfc33c404fa88b576626e82b7988e8",
+      "pageSHA256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+      "scrollApplied": false,
+      "R07": "UNVERIFIED"
+    },
+    "newScroll": {
+      "issue": "W048-N13-ANSWER-SCROLL-001",
+      "cause": "answer-focus-horizontal-scroll-retained",
+      "reproduction": "320px normal wrong/correct Q04 interaction retains scrollLeft32 on negative branch; reload or zeroing restores48.375px equation starts.",
+      "prototype": "Isolated exact after patch: four widths aligned; 320px unrelated manual20 retained. Prototype checks are not current product R07 or N14 dynamic validation.",
+      "remainingChecks": [
+        "wrong-only immediate scroll",
+        "legacy revisions no-op",
+        "new product CI",
+        "N14r11 after leaf application"
+      ],
+      "separation": "Historical P003 pedagogy/data causes remain separate from this browser focus/scroll cause."
+    }
+  },
+  "target_versions": {
+    "original": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "candidate": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+    "actualManifest": {
+      "src/data/textbook/math/numbers/n13Lesson.ts": "5d416e145f4f489709150aa539acb4eee8bfc33c404fa88b576626e82b7988e8",
+      "src/data/textbook/math/numbers/n14Lesson.ts": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+      "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+      "src/data/textbook/math/numbers/reviewLessonHelpers.ts": "d731ae26a7cad1460e28ce5040be784534dcdcf7cf9b6b759210deff75f22b18",
+      "src/domain/textbook.ts": "3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a",
+      "src/pages/TextbookUnitPage.tsx": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+      "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4",
+      "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    }
+  }
+}

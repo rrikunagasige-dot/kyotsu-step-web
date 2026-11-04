@@ -1,0 +1,5 @@
+{
+  "channel": "subagent-final",
+  "rawResult": "判定：**PASS（R04表示・保存設計のみ）**。対象行限定の補修、採点・保存不変、N13r5／N14r11境界を確認。実装後R07・N14動的検証は未合格として保持しました。\n\nreportPath: `/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N13_R04_B_74dd8347bdd2.json`\n\nSHA256: `f23b4234a51f857db9aee86cbadd81fc726a0ce3e1f6d7509a24e3680bb16faf`",
+  "reportSHA256": "f23b4234a51f857db9aee86cbadd81fc726a0ce3e1f6d7509a24e3680bb16faf"
+}

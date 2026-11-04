@@ -1,0 +1,11 @@
+{
+  "kind": "stale-lock-recovery",
+  "time": 1793792845.5249891,
+  "rawLock": "{\"pid\":5,\"time\":1793792764.665721}",
+  "recordedPidCurrentCommand": "/bin/bash /usr/local/scripts/sync_share.sh ",
+  "noActiveW048Writer": true,
+  "originalInvocation": "60892 completed exit1",
+  "ledgerHead": "bf34585604b9e1ce1cb42738a93454c001e6954f32bc76096a8c030655ed3c3b",
+  "events": 5050,
+  "explanation": "Per-command PID namespace reuses pid5; host pid5 sync_share is not the departed W048 writer. No lock contract bypass or ledger alteration."
+}

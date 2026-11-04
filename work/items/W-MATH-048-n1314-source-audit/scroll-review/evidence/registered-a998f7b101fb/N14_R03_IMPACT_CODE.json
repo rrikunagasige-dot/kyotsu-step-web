@@ -1,0 +1,612 @@
+{
+  "job": {
+    "status": "NEEDS_REVIEW",
+    "node": "R03_IMPACT@n14",
+    "claimToken": "7653989dec7e4acf9d556881a5d86bea",
+    "receipts": [
+      "b077a9cc3eb71c1bca6bb7539626621fd02327b6766feffc71fec2cfeadee138"
+    ],
+    "aiRequest": {
+      "schemaVersion": "production/2",
+      "solutionReview": null,
+      "adoptedCorrections": [],
+      "reusableHistory": [],
+      "task": {
+        "work_id": "W-MATH-048",
+        "node": {
+          "id": "R03_IMPACT@n14",
+          "stage_kind": "R03_IMPACT",
+          "contract_kind": "R03_IMPACT",
+          "actor": "AI",
+          "depends_on": [
+            "R02_CAUSE@n14"
+          ],
+          "required": [
+            "impact_rows",
+            "source_inventory",
+            "unknowns"
+          ],
+          "block": "n14",
+          "release_unit": "n14",
+          "watch": "integration",
+          "phase": "pre-design",
+          "priority": 1,
+          "source_refs": [
+            "src/data/textbook/math/numbers/n14Lesson.ts",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+            "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+            "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+          ],
+          "protected_refs": [
+            "package.json",
+            "pnpm-lock.yaml",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/NestedConstructionMath.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/components/textbook/nestedMathGeometry.ts",
+            "src/components/textbook/nestedMathTemplate.ts",
+            "src/data/textbook/math/numbers/n0910CandidatePins.json",
+            "src/data/textbook/math/numbers/n0910Ux05Migration.json",
+            "src/data/textbook/math/numbers/n0910Ux06Migration.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR4.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR5.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR6.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR7.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR8.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR9.json",
+            "src/data/textbook/math/numbers/n09Lesson.ts",
+            "src/data/textbook/math/numbers/n09Revision10.json",
+            "src/data/textbook/math/numbers/n09Revision5.json",
+            "src/data/textbook/math/numbers/n09Revision8.json",
+            "src/data/textbook/math/numbers/n09Revision9.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR3.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR4.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR5.json",
+            "src/data/textbook/math/numbers/n10Lesson.ts",
+            "src/data/textbook/math/numbers/n10Revision4.json",
+            "src/data/textbook/math/numbers/n10Revision5.json",
+            "src/data/textbook/math/numbers/n10Revision6.json",
+            "src/domain/compiledNestedLesson.ts",
+            "src/domain/nestedLesson.ts",
+            "src/domain/nestedLesson.ux05.n10.test.ts",
+            "src/domain/nestedLesson.ux05Full.test.ts",
+            "src/domain/nestedLesson.ux06Pilot.test.ts",
+            "src/domain/nestedLessonStorage.ts",
+            "src/domain/nestedMigration.ts",
+            "src/domain/nestedMigration.ux05Full.test.ts",
+            "src/domain/nestedMigration.ux06Full.test.ts",
+            "src/domain/textbookNestedContract.test.ts",
+            "src/domain/textbookSchema.ts",
+            "src/pages/N0910ArchivePage.tsx",
+            "src/pages/N0910RevisionPage.tsx",
+            "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/n08Revision5.json",
+            "src/data/textbook/math/numbers/n08Revision6.json",
+            "src/data/textbook/math/numbers/n08Construction.json",
+            "src/data/textbook/math/numbers/n08Layout.json",
+            "src/data/textbook/math/numbers/n08ConstructionPresentation.json",
+            "src/data/textbook/math/numbers/n08Transformation.json",
+            "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+            "src/components/textbook/N08ConstructionReadingFlow.tsx",
+            "src/components/textbook/ConstructionSlot.tsx",
+            "src/components/textbook/ConstructionPanel.tsx",
+            "src/components/textbook/construction-reading.css",
+            "src/components/textbook/N08SolutionReadingFlow.tsx",
+            "src/components/textbook/N08ReadingFlow.tsx",
+            "src/components/textbook/n08-reading.css",
+            "src/components/textbook/n08-solution-reading.css",
+            "src/components/textbook/NumberedEquation.tsx",
+            "src/data/textbook/math/numbers/n11Authored.json",
+            "src/data/textbook/math/numbers/n11Transformation.json",
+            "src/data/textbook/math/numbers/n12Authored.json",
+            "tools/textbook/transformation/n11.mjs",
+            "tools/textbook/transformation/n11-source-binding.mjs",
+            "tools/textbook/transformation/validate.mjs",
+            "public/assets/math/textbook/numbers/n13-f01.png",
+            "public/assets/math/textbook/numbers/n13-f02.png",
+            "public/assets/math/textbook/numbers/n14-f01.png"
+          ],
+          "approval_scope_ref": "proposal",
+          "capability_requests": [
+            "impact.inventory"
+          ],
+          "required_code_receipts": [
+            "impact.inventory"
+          ],
+          "required_ai_receipts": [
+            "meaning-review"
+          ]
+        },
+        "task_id": "33bf1792e3f1957e73ca5d0f6a6775d18160b6d21dd5d4920f38f0938c95bab5",
+        "input_hash": "c193ad2fdb00a8861671152ae850b2f17b9058329b6700d7fc88d103b2e0ab5b",
+        "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+        "candidate_sha": "d34d9fe50a4e7c3d14c04f85bb0be9f629fdc2a5",
+        "rules": {
+          "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+          "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+          "governance/TEAM_POLICY.json": "9f5ad8e24143e543741197ebaab6d4947fde48ab6d0d891b9a2eacc4f6f952f2",
+          "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+          "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277",
+          "workflow/INTEGRATION_RUNBOOK.md": "03f6da83f4d0f4d73cdd6b530e552591c4fb575b0188c9a266542e21783bdf5e"
+        },
+        "proposal": {
+          "hash": "a998f7b101fb6248e856837f88177152662d706df5745a4fa9710027cb246302",
+          "id": "P-W048-003-SCROLL-001"
+        },
+        "scope": {
+          "paths": [
+            "work/items/W-MATH-048-n1314-source-audit/",
+            "src/data/textbook/math/numbers/n13Lesson.ts",
+            "src/data/textbook/math/numbers/n14Lesson.ts",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx"
+          ],
+          "preserve": [
+            "package.json",
+            "pnpm-lock.yaml",
+            "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+            "src/components/textbook/NestedConstructionMath.tsx",
+            "src/components/textbook/construction-lesson-reading.css",
+            "src/components/textbook/nestedMathGeometry.ts",
+            "src/components/textbook/nestedMathTemplate.ts",
+            "src/data/textbook/math/numbers/n0910CandidatePins.json",
+            "src/data/textbook/math/numbers/n0910Ux05Migration.json",
+            "src/data/textbook/math/numbers/n0910Ux06Migration.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR4.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR5.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR6.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR7.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR8.json",
+            "src/data/textbook/math/numbers/n09ConstructionCompiledR9.json",
+            "src/data/textbook/math/numbers/n09Lesson.ts",
+            "src/data/textbook/math/numbers/n09Revision10.json",
+            "src/data/textbook/math/numbers/n09Revision5.json",
+            "src/data/textbook/math/numbers/n09Revision8.json",
+            "src/data/textbook/math/numbers/n09Revision9.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR3.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR4.json",
+            "src/data/textbook/math/numbers/n10ConstructionCompiledR5.json",
+            "src/data/textbook/math/numbers/n10Lesson.ts",
+            "src/data/textbook/math/numbers/n10Revision4.json",
+            "src/data/textbook/math/numbers/n10Revision5.json",
+            "src/data/textbook/math/numbers/n10Revision6.json",
+            "src/domain/compiledNestedLesson.ts",
+            "src/domain/nestedLesson.ts",
+            "src/domain/nestedLesson.ux05.n10.test.ts",
+            "src/domain/nestedLesson.ux05Full.test.ts",
+            "src/domain/nestedLesson.ux06Pilot.test.ts",
+            "src/domain/nestedLessonStorage.ts",
+            "src/domain/nestedMigration.ts",
+            "src/domain/nestedMigration.ux05Full.test.ts",
+            "src/domain/nestedMigration.ux06Full.test.ts",
+            "src/domain/textbookNestedContract.test.ts",
+            "src/domain/textbookSchema.ts",
+            "src/pages/N0910ArchivePage.tsx",
+            "src/pages/N0910RevisionPage.tsx",
+            "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/data/textbook/math/numbers/n08Revision5.json",
+            "src/data/textbook/math/numbers/n08Revision6.json",
+            "src/data/textbook/math/numbers/n08Construction.json",
+            "src/data/textbook/math/numbers/n08Layout.json",
+            "src/data/textbook/math/numbers/n08ConstructionPresentation.json",
+            "src/data/textbook/math/numbers/n08Transformation.json",
+            "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+            "src/components/textbook/N08ConstructionReadingFlow.tsx",
+            "src/components/textbook/ConstructionSlot.tsx",
+            "src/components/textbook/ConstructionPanel.tsx",
+            "src/components/textbook/construction-reading.css",
+            "src/components/textbook/N08SolutionReadingFlow.tsx",
+            "src/components/textbook/N08ReadingFlow.tsx",
+            "src/components/textbook/n08-reading.css",
+            "src/components/textbook/n08-solution-reading.css",
+            "src/components/textbook/NumberedEquation.tsx",
+            "src/data/textbook/math/numbers/n11Authored.json",
+            "src/data/textbook/math/numbers/n11Transformation.json",
+            "src/data/textbook/math/numbers/n12Authored.json",
+            "tools/textbook/transformation/n11.mjs",
+            "tools/textbook/transformation/n11-source-binding.mjs",
+            "tools/textbook/transformation/validate.mjs",
+            "public/assets/math/textbook/numbers/n13-f01.png",
+            "public/assets/math/textbook/numbers/n13-f02.png",
+            "public/assets/math/textbook/numbers/n14-f01.png"
+          ],
+          "prohibit": [
+            "G3_HOST"
+          ]
+        },
+        "source_manifest": {
+          "src/data/textbook/math/numbers/n13Lesson.ts": "953f0cec42e046c6c42e9e4a73b39ce9c9d92ae523b1afd2e7bc9175ca99c18c",
+          "src/data/textbook/math/numbers/n14Lesson.ts": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts": "d731ae26a7cad1460e28ce5040be784534dcdcf7cf9b6b759210deff75f22b18",
+          "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+          "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+        },
+        "previous_results": {
+          "R02_CAUSE@n14": {
+            "actor": "capability-runner",
+            "artifact": "601a70b84c401d3e2a026bbf30b2dc14ef4fd86a6848788e99f49746fbe134a8",
+            "input_hash": "a55b3eefeb5252615f08e60c9aa06cf271aafd79c56f31213ec8611711f3b922",
+            "node": "R02_CAUSE@n14",
+            "verdict": "PASS"
+          }
+        },
+        "do_not_touch": [
+          "package.json",
+          "pnpm-lock.yaml",
+          "src/components/textbook/ConstructionLessonReadingFlow.tsx",
+          "src/components/textbook/NestedConstructionMath.tsx",
+          "src/components/textbook/construction-lesson-reading.css",
+          "src/components/textbook/nestedMathGeometry.ts",
+          "src/components/textbook/nestedMathTemplate.ts",
+          "src/data/textbook/math/numbers/n0910CandidatePins.json",
+          "src/data/textbook/math/numbers/n0910Ux05Migration.json",
+          "src/data/textbook/math/numbers/n0910Ux06Migration.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR4.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR5.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR6.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR7.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR8.json",
+          "src/data/textbook/math/numbers/n09ConstructionCompiledR9.json",
+          "src/data/textbook/math/numbers/n09Lesson.ts",
+          "src/data/textbook/math/numbers/n09Revision10.json",
+          "src/data/textbook/math/numbers/n09Revision5.json",
+          "src/data/textbook/math/numbers/n09Revision8.json",
+          "src/data/textbook/math/numbers/n09Revision9.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiled.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiledPilotR4.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiledR3.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiledR4.json",
+          "src/data/textbook/math/numbers/n10ConstructionCompiledR5.json",
+          "src/data/textbook/math/numbers/n10Lesson.ts",
+          "src/data/textbook/math/numbers/n10Revision4.json",
+          "src/data/textbook/math/numbers/n10Revision5.json",
+          "src/data/textbook/math/numbers/n10Revision6.json",
+          "src/domain/compiledNestedLesson.ts",
+          "src/domain/nestedLesson.ts",
+          "src/domain/nestedLesson.ux05.n10.test.ts",
+          "src/domain/nestedLesson.ux05Full.test.ts",
+          "src/domain/nestedLesson.ux06Pilot.test.ts",
+          "src/domain/nestedLessonStorage.ts",
+          "src/domain/nestedMigration.ts",
+          "src/domain/nestedMigration.ux05Full.test.ts",
+          "src/domain/nestedMigration.ux06Full.test.ts",
+          "src/domain/textbookNestedContract.test.ts",
+          "src/domain/textbookSchema.ts",
+          "src/pages/N0910ArchivePage.tsx",
+          "src/pages/N0910RevisionPage.tsx",
+          "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08Revision6.json",
+          "src/data/textbook/math/numbers/n08Construction.json",
+          "src/data/textbook/math/numbers/n08Layout.json",
+          "src/data/textbook/math/numbers/n08ConstructionPresentation.json",
+          "src/data/textbook/math/numbers/n08Transformation.json",
+          "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+          "src/components/textbook/N08ConstructionReadingFlow.tsx",
+          "src/components/textbook/ConstructionSlot.tsx",
+          "src/components/textbook/ConstructionPanel.tsx",
+          "src/components/textbook/construction-reading.css",
+          "src/components/textbook/N08SolutionReadingFlow.tsx",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/components/textbook/NumberedEquation.tsx",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json",
+          "src/data/textbook/math/numbers/n12Authored.json",
+          "tools/textbook/transformation/n11.mjs",
+          "tools/textbook/transformation/n11-source-binding.mjs",
+          "tools/textbook/transformation/validate.mjs",
+          "public/assets/math/textbook/numbers/n13-f01.png",
+          "public/assets/math/textbook/numbers/n13-f02.png",
+          "public/assets/math/textbook/numbers/n14-f01.png"
+        ],
+        "completion_is_not_semantic_proof": true
+      },
+      "context": {
+        "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+        "featureSchema": "learner-visible-json/2",
+        "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+        "rulesHash": "0fb45f9e46a1cb0c11a10e501cacaef02a2b97bc16f8ee1abf401a0c5ac14b1c"
+      },
+      "dependencies": {
+        "R02_CAUSE@n14": {
+          "aiReview": {
+            "evidence": [
+              "8af15805-f83a-4493-a530-b794164ea62f",
+              "a10acc18-44e0-49d7-9dde-e1df68e56b58",
+              "42fa8ff2-be67-4f80-ab4b-f5de518e1e55",
+              "2058742a-9bb3-4041-b9cc-2e1d0ac856a9",
+              "b2cd5c7d-f819-404e-9c17-dd46c58c0427",
+              "e26cdc6c-4140-4eed-9f43-99a7e1efa70d",
+              "ad781e97-4e52-4585-bbb6-f1e567e7d14d",
+              "59530148-a9dc-475c-ac21-a6a07ab00ab3",
+              "9998d3dd-06c6-4af8-b6c1-494eea2140ca",
+              "a71904d4-d090-453e-bee6-e6875dff1562",
+              "3425a0bb-5c3f-40de-baa0-020aad5d1cc6",
+              "38935a1b-24e2-4c4a-853d-117215a5c325",
+              "39cd19ff-ff87-4807-b2b3-1a1ce2941a5d",
+              "e48738ce-417b-47f3-a225-5948643c41b0",
+              "46cec32e-3ea0-4fcb-b3a9-65bb28bbccf0",
+              "09c28fbd-47ec-4b14-9d24-1960fe1dde2e",
+              "eb65c709-bfd6-4862-b3ee-d4ea8ee0ecc1",
+              "6ca5eed6-55e0-41e1-9b20-6b05273f8779",
+              "64bdc62e-d824-4474-951e-8522683118cd",
+              "68031e0e-3ea3-43d3-8fc0-0c3477f6c5bc"
+            ],
+            "inputHash": "a55b3eefeb5252615f08e60c9aa06cf271aafd79c56f31213ec8611711f3b922",
+            "requestHash": "9f258a0fe791755875d7a72b7d9ead7a8e325647015b2112c6492a4689af6a07",
+            "reviewer": "M executing reviewed current-source investigation; R04 A/B review remains separate"
+          },
+          "capability_receipts": [
+            "c09ac0e489c502344ba8af6e17c4c05bd6b93c842a46326377f72823c02b3603",
+            "0bed2b46fc166f92ad6ac6a2ee1a3e654df4304235e8b6e0b6b9dff6c11631f2",
+            "cbb56a73fc77a005f0a1a2d808aea2814fd4381e4c7f95f17a3c0b7a7b8aa57a",
+            "498a9a9d4204abac379c94132905f6fbc6444b2d61ef1a47f362303b92620acc"
+          ],
+          "case_dispositions": [
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F01",
+              "reason": "N08の距離と絶対値の場合分け、N11の同じ加減を必要時に明示する。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F02",
+              "reason": "追加の数値はxの位置・分岐方程式・元問の全解に結ぶ。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F03",
+              "reason": "Q04の+1、Q07の−2は左辺の定数を打ち消す目的と両辺への同じ操作として扱う。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F04",
+              "reason": "Q04/Q07の正負二枝、Q09の0/負を別判断へ分け、元問へ戻る。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F05",
+              "reason": "Xはx−1全体の置換。距離の意味とORの意味を一般形の前後で明示する。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N07-USER-F06",
+              "reason": "追加式・全選択肢を結合KaTeXで検査し、283件の現候補結果へ結ぶ。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "n07-layout-relation",
+              "reason": "等号の変形と独立した正負枝を混同せず、R04で行・番号・軸を別に設計する。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "n07-layout-positive",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "first-title-layout-positive",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "N07-ACCEPTED-20261025",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "N08-ACCEPTED-20261025",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N09-REJECTED-20261025",
+              "reason": "Q04/Q07は正の枝→負の枝→全解、Q09は0→負の順。独立計算を一択の結論で代行しない。"
+            },
+            {
+              "disposition": "APPLY",
+              "id": "N10-REJECTED-20261025",
+              "reason": "絶対値は中身全体へ掛かる。x−1・x+2と三辺全体への操作を保持する。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "N09-ACCEPTED-20261025",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            },
+            {
+              "disposition": "OUT_OF_SCOPE",
+              "id": "N10-ACCEPTED-20261025",
+              "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+            }
+          ],
+          "confirmed_causes": [
+            "原問単位の一択へ境界・領域・端点をまとめた",
+            "解説文/ヒントの可視時点と未解決判断の境界が不十分",
+            "原典の無番号本文が採点表に入らず接続が欠落",
+            "N13r5 Q04: answering/focus movement leaves formula container horizontally scrolled; normalization removes offset without changing equation data."
+          ],
+          "currentDisposition": {
+            "R07": "UNVERIFIED",
+            "leafApplied": false,
+            "leafSHA256": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+            "pageSHA256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+            "scrollApplied": false
+          },
+          "evidence_refs": [
+            "8af15805-f83a-4493-a530-b794164ea62f",
+            "a10acc18-44e0-49d7-9dde-e1df68e56b58",
+            "42fa8ff2-be67-4f80-ab4b-f5de518e1e55",
+            "2058742a-9bb3-4041-b9cc-2e1d0ac856a9",
+            "b2cd5c7d-f819-404e-9c17-dd46c58c0427",
+            "e26cdc6c-4140-4eed-9f43-99a7e1efa70d",
+            "ad781e97-4e52-4585-bbb6-f1e567e7d14d",
+            "59530148-a9dc-475c-ac21-a6a07ab00ab3",
+            "9998d3dd-06c6-4af8-b6c1-494eea2140ca",
+            "a71904d4-d090-453e-bee6-e6875dff1562",
+            "3425a0bb-5c3f-40de-baa0-020aad5d1cc6",
+            "38935a1b-24e2-4c4a-853d-117215a5c325",
+            "39cd19ff-ff87-4807-b2b3-1a1ce2941a5d",
+            "e48738ce-417b-47f3-a225-5948643c41b0",
+            "46cec32e-3ea0-4fcb-b3a9-65bb28bbccf0",
+            "09c28fbd-47ec-4b14-9d24-1960fe1dde2e",
+            "eb65c709-bfd6-4862-b3ee-d4ea8ee0ecc1",
+            "6ca5eed6-55e0-41e1-9b20-6b05273f8779",
+            "64bdc62e-d824-4474-951e-8522683118cd",
+            "68031e0e-3ea3-43d3-8fc0-0c3477f6c5bc"
+          ],
+          "historicalP003Diagnosis": {
+            "confirmed_causes": [
+              "原問単位の一択へ境界・領域・端点をまとめた",
+              "解説文/ヒントの可視時点と未解決判断の境界が不十分",
+              "原典の無番号本文が採点表に入らず接続が欠落"
+            ],
+            "root_cause_signatures": [
+              "bundled-independent-decisions",
+              "premature-answer-in-prose-title-hint",
+              "missing-source-bridge"
+            ],
+            "symptoms": [
+              "見出しとQ02後の二点の間が未判断のQ03の答えを先出し",
+              "Q03/Q05の内外と端点がまとめられ、Q05の境界判断も学生に独立させる必要",
+              "章結びの注目文字と次章への用途が旧現稿で薄い"
+            ]
+          },
+          "hypotheses": [],
+          "missing_learning_actions": [
+            "領域を選び、その後元の不等号から端点を判断する",
+            "外側の場合にも境界二点を先に特定する"
+          ],
+          "retrievalDisposition": {
+            "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+            "limits": "SCOPED_CATALOG is unranked explicit local-only fallback; no model inference/training or quality acceptance claimed. Preserve fresh actual service output.",
+            "modelRan": false,
+            "ranked": false,
+            "retrievalMode": "SCOPED_CATALOG",
+            "trainingRun": false,
+            "unavailableReason": "No module named 'torch'"
+          },
+          "root_cause_signatures": [
+            "bundled-independent-decisions",
+            "premature-answer-in-prose-title-hint",
+            "missing-source-bridge",
+            "answer-focus-horizontal-scroll-retained"
+          ],
+          "scrollCause": {
+            "cause": "answer-focus-horizontal-scroll-retained",
+            "issue": "W048-N13-ANSWER-SCROLL-001",
+            "prototype": "Isolated exact after patch: four widths aligned; 320px unrelated manual20 retained. Prototype checks are not current product R07 or N14 dynamic validation.",
+            "remainingChecks": [
+              "wrong-only immediate scroll",
+              "legacy revisions no-op",
+              "new product CI",
+              "N14r11 after leaf application"
+            ],
+            "reproduction": "320px normal wrong/correct Q04 interaction retains scrollLeft32 on negative branch; reload or zeroing restores48.375px equation starts.",
+            "separation": "Historical P003 pedagogy/data causes remain separate from this browser focus/scroll cause."
+          },
+          "symptoms": [
+            "P003 baseline symptoms below are historical where leafApplied=true; no claim of recurrence.",
+            "見出しとQ02後の二点の間が未判断のQ03の答えを先出し",
+            "Q03/Q05の内外と端点がまとめられ、Q05の境界判断も学生に独立させる必要",
+            "章結びの注目文字と次章への用途が旧現稿で薄い",
+            "New separate scroll cause is measured on N13r5 only; N14r11 is a shared-code risk, not a reproduced N14 defect."
+          ],
+          "verdict": "PASS"
+        }
+      },
+      "constraints": [
+        "原資料・既習・可視状態だけを根拠にする",
+        "作成者の自己評価を監査根拠にしない",
+        "未解決は未解決と記録",
+        "承認を生成しない"
+      ],
+      "requestHash": "d472164ebd5d568cb3baffccbd5f1620422a50f1d383833661a85b76a54e4698",
+      "teamReview": {
+        "policyHash": "bfbcb115bb7b33463ba60879ba5640f4865faf1473bbec0139d33344feab0196",
+        "requirements": [],
+        "submissionActor": "M",
+        "constraints": [
+          "実agent taskを登録する",
+          "対象claimの作者履歴を維持する",
+          "個別taskは固定packetを先に読む",
+          "agentの合意をUSER評価へ昇格しない"
+        ]
+      }
+    },
+    "automaticAcceptance": false
+  },
+  "outputs": {
+    "impact.inventory": {
+      "inventory": [
+        {
+          "artifact": "src/data/textbook/math/numbers/n13Lesson.ts",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "src/domain/textbook.ts",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+          "block_id": "n13"
+        },
+        {
+          "artifact": "src/data/textbook/math/numbers/n14Lesson.ts",
+          "block_id": "n14"
+        },
+        {
+          "artifact": "src/domain/textbook.ts",
+          "block_id": "n14"
+        },
+        {
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "block_id": "n14"
+        },
+        {
+          "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "block_id": "n14"
+        },
+        {
+          "artifact": "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "block_id": "n14"
+        },
+        {
+          "artifact": "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json",
+          "block_id": "n14"
+        }
+      ],
+      "phase": "pre-design",
+      "sourceSHA": null,
+      "status": "NEEDS_AI_REVIEW"
+    }
+  }
+}

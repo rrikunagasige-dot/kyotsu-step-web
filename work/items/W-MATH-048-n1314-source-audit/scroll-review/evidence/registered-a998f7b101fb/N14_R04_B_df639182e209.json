@@ -1,0 +1,69 @@
+{
+  "assignmentId": "w048-R04_PROPOSAL@n14-B-df639182e2-e5",
+  "roleEpoch": 5,
+  "node": "R04_PROPOSAL@n14",
+  "inputHash": "df639182e209f258d59985d07cd91e2d917c610538e3518ce650935a59c4d5d5",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "targetManifestRef": "1de86fc13d0f7b6e8b2b1eea23a707905df0af9f0226952a9fbd4c6172646c76",
+  "taskRef": "W048-SCROLL-R04-n14-B-df639182e209",
+  "packetHash": "084c914443cab043524b41950dac005f600d4eac4a6b9dcb31246c9697e984f0",
+  "targetHash": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33",
+  "claimRef": "layout",
+  "facet": "render",
+  "reviewKind": "learner-visible-review",
+  "performerRef": "/root/review_b",
+  "sourceFirst": false,
+  "firstPass": false,
+  "authorSeparation": true,
+  "verdict": "PASS",
+  "contextExposure": {
+    "forkMode": "all",
+    "authorRationaleVisibleAtFirstPass": true,
+    "priorExposure": "Approved exposed nonauthor re-review; actual A/B already saw prior design and scroll proposal. No blind/first-pass/model independence claim."
+  },
+  "reviewScope": "Current N14 R04 fixed leaf plus approved Page scroll supplement display/save design only. N14r11 remains unapplied; no R07 implementation or browser acceptance.",
+  "firstObservations": [
+    "Assigned layout hash39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33 matches current N14_LEARNER_REVIEW bytes. I read the current B packet and already know author rationale; these observations are exposed re-review.",
+    "Learner fullCopy100 blocks and figures exactly match the materialized candidate. It has41 interaction views. Q10/Q14/Q15 each preserve three operation slots and two result slots; Q16 preserves two inner/absolute slots on each branch. Eight multi-slot rows yield44 binary solved/unresolved masks.",
+    "Baseline revision10 has38 items, candidate revision11 has41. I compared every original id/answer/acceptedAnswers/choices field to candidate and found exact retention. The old-complete resume projection begins n14-w048-q03-region before later rows.",
+    "Actual current Page remains before SHA0754122c and actual N14 leaf remains r10 SHA5671746f; approved Page after is0a0e628e and candidate N14 leaf after e399e554. R04 design adequacy does not imply these have been applied."
+  ],
+  "rationale": [
+    "The Page display contract requires exact N13 unitId/revision5 or N14 unitId/revision11 and matching module contract unitId/revision. Existing r10 and other units therefore do not activate the W048 display class or supplement. The CSS targets actual derivation wrapper/formula-expression ancestry, and covers flex/grid start alignment and18px formula/choice sizing without replacing multi-slot row layout.",
+    "The approved supplement captures only the answered item enclosing formula testid before invoking the unchanged grading/save call. On animation frame it verifies the same connected article/ref and W048 class and resets only that formula. Other rows remain untouched; stale/unmounted flow is rejected. The same mechanism is structurally appropriate for a N14 multi-slot row: each answer restores that row, not later or earlier rows.",
+    "No scoring inputs, choices, item identities, save/archive functions or migration contracts change in the scroll patch. Shared domain migration invokes the actual prior legacy unit and prior migration chain, retains existing anchor records and completion archive, and leaves new decisions unanswered. Baseline/candidate field equality supports design invariance; browser-seeded r1-r10 migration remains required after actual application.",
+    "The layout and verification plan retains41 separate learner decisions and44 binary multi-slot states, including out-of-order slots. Wrong records require additional explicit probes:44 is not exhaustive ternary missing/wrong/correct coverage. Current N13 prototype evidence cannot establish N14 slot gating, geometry, numbering or saves.",
+    "I did not author the N14 leaf, Page supplement, layout semantics or domain migration. My bounded CODE probe authorship is disclosed and not presented as an independent review of its own correctness. This PASS is limited to current R04 design and verification-plan adequacy."
+  ],
+  "findings": [],
+  "evidenceRefs": [
+    "8af15805-f83a-4493-a530-b794164ea62f",
+    "a10acc18-44e0-49d7-9dde-e1df68e56b58",
+    "42fa8ff2-be67-4f80-ab4b-f5de518e1e55",
+    "2058742a-9bb3-4041-b9cc-2e1d0ac856a9",
+    "b2cd5c7d-f819-404e-9c17-dd46c58c0427",
+    "e26cdc6c-4140-4eed-9f43-99a7e1efa70d",
+    "ad781e97-4e52-4585-bbb6-f1e567e7d14d",
+    "59530148-a9dc-475c-ac21-a6a07ab00ab3",
+    "9998d3dd-06c6-4af8-b6c1-494eea2140ca",
+    "a71904d4-d090-453e-bee6-e6875dff1562",
+    "3425a0bb-5c3f-40de-baa0-020aad5d1cc6",
+    "38935a1b-24e2-4c4a-853d-117215a5c325",
+    "39cd19ff-ff87-4807-b2b3-1a1ce2941a5d",
+    "e48738ce-417b-47f3-a225-5948643c41b0",
+    "46cec32e-3ea0-4fcb-b3a9-65bb28bbccf0",
+    "8f9a43ef-fabd-44dc-8572-1fe8551c155d",
+    "00e333ec-8efd-443a-af3a-caa5110d99c7",
+    "c2a68d5e-5cdc-48f5-9127-5028a262986b",
+    "45c9dea4-3273-4011-b85f-f35848c3ea48",
+    "bbc409d5-6e7c-4e9a-b3d4-6386593392b5",
+    "d8b01d7f-fd47-4969-996b-b44732c2ba04"
+  ],
+  "limits": [
+    "Exposed nonauthor re-review; sourceFirst=false,firstPass=false, no blind or model-independent claim.",
+    "N14r11 is not applied. Post-application41 judgments, actual displayed wrong choices,44 binary states plus explicit wrong/missing probes, four-width geometry/fonts/numbers/figure gating and real-browser saves/reset/history remain required.",
+    "R1-r10 saves may intentionally reopen historical repurposed IDs before the three new decisions; verify actual prior migration sequence and retained metadata rather than assuming uniform resume.",
+    "Images inspected for N13 prototype do not prove N14 readability, partial-slot rendering, long-expression reachability or current product R07.",
+    "No formal R07/G2/publication/delivery or user acceptance claim."
+  ]
+}

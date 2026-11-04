@@ -79,9 +79,38 @@
       ],
       "content_hash": "8b6544cc83e2f4bc549182e4ba5fd94a01aa50e99d5cd00bf7bb6f8355b5cb16",
       "id": "proposal",
-      "proposal_hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9"
+      "proposal_hash": "a998f7b101fb6248e856837f88177152662d706df5745a4fa9710027cb246302"
     }
   ],
+  "approved_supplement_composition": {
+    "approvalSource": "conversation request 5ce46790-7585-4a0c-a8fa-8b0c32d60ebb",
+    "retainedApprovalBundles": [
+      {
+        "block_ids": [
+          "n13",
+          "n14"
+        ],
+        "content_hash": "8b6544cc83e2f4bc549182e4ba5fd94a01aa50e99d5cd00bf7bb6f8355b5cb16",
+        "id": "proposal",
+        "proposal_hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9"
+      }
+    ],
+    "retainedApprovalEvent": "W048-P003-RECOVERED-APPROVAL-20261104",
+    "retainedContentDesignHashes": {
+      "n13": "eeebc72ad77f484720c768991e2b29ce6a4e5dd00d6d48403c3401e5aef3c827",
+      "n14": "e4cc4488df65fc59fbe820cb7d85d769f792f562f6ca6feb3600517c659f75aa"
+    },
+    "retainedProposal": {
+      "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
+      "id": "P-W048-003"
+    },
+    "schema": "w048-approved-scroll-composition/1",
+    "supplementPatchHash": "c9d0d73dce08f911f042f1397879866f7ba6502f0c32a5e4620998eef721d11c",
+    "supplementProposal": {
+      "id": "P-W048-SCROLL-001",
+      "sha256": "626598031491ebbecde1cba89d2c2939da85edfe30ef319747b1f2f0b0f8c0da"
+    }
+  },
   "blocks": [
     {
       "change_facets": [
@@ -92,7 +121,7 @@
       "depends_on_blocks": [],
       "fact_dependencies": [],
       "id": "n13",
-      "patch_hash": "52c414957e7e74450737cb8732e86acd348f887772006806ed9137db27f15935",
+      "patch_hash": "c9d0d73dce08f911f042f1397879866f7ba6502f0c32a5e4620998eef721d11c",
       "release_unit": "n13",
       "sources": [
         "src/data/textbook/math/numbers/n13Lesson.ts",
@@ -130,8 +159,8 @@
   "mode": "textbook",
   "profile": "material",
   "proposal": {
-    "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
-    "id": "P-W048-003"
+    "hash": "a998f7b101fb6248e856837f88177152662d706df5745a4fa9710027cb246302",
+    "id": "P-W048-003-SCROLL-001"
   },
   "protected_manifest": {
     "package.json": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",

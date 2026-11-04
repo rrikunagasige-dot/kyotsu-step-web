@@ -1,0 +1,9 @@
+{
+  "toolName": "collaboration.followup_task",
+  "target": "/root/review_b",
+  "rawResult": "",
+  "request": {
+    "target": "review_b",
+    "message": "正式native assignment W048-SCROLL-R04-n13-B-74dd8347bdd2。正確な対象 /workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N13_R04_TEAM_CONFIG.json と /tmp/w048-scroll-n13-r04-team-state.json B packet。現input74dd8347bdd243a03f3729cff9b31df80f0358e2a9e7bf703b254cea77421dd8への表示/保存設計の非作者・既露出再審査。固定scroll案、対象行のみreset、保存採点不変、共有2unit/revision境界を確認。config指定reportPath一fileだけ原報告作成。targetHashはartifactHashes.layout、sourceFirst=false,firstPass=false,authorSeparation=true,verdict,firstObservations,rationale,findings必須。原画像の限界も保持。Store/product/Git書込禁止、孫禁止。最終返答でreportPath/SHA256/判定を明示。CI検査のPage一件assert追加済み。"
+  }
+}

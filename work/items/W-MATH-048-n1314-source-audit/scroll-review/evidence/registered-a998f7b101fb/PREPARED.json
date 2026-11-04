@@ -1,0 +1,17 @@
+{
+  "prepared": [
+    {
+      "node": "R04_PROPOSAL@n14",
+      "pending": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_PENDING.json",
+      "draftResult": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_RESULT_DRAFT.json",
+      "teamConfig": "/workspace/scratch/55b12fe3f8aa/repo/work/items/W-MATH-048-n1314-source-audit/scroll-review/evidence/registered-a998f7b101fb/N14_R04_TEAM_CONFIG.json",
+      "nextAction": "bind_target then actual new A/B followups/register/finals/collect. M must set reviewed verdict; this driver does not submit R04."
+    }
+  ],
+  "next": {
+    "status": "WAITING",
+    "reason": "CLAIM_RECONCILIATION_OR_RESULT",
+    "node": "R04_PROPOSAL@n14"
+  },
+  "productChanged": false
+}

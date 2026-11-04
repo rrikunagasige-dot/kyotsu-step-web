@@ -1,0 +1,8 @@
+{
+  "task": "W048-P003-n14-R04-B",
+  "incorrectParentMessage": "式番号1〜16",
+  "correctFrozenContract": "Original questions16; generated logical equation groups20. Verify exact frozen map1〜20 without editing it.",
+  "reportedBy": "/root/w048_review_b",
+  "rootAcknowledged": true,
+  "materialChanged": false
+}

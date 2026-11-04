@@ -1,0 +1,3521 @@
+{
+  "schemaVersion": "production-compiled/1",
+  "irHash": "eeebc72ad77f484720c768991e2b29ce6a4e5dd00d6d48403c3401e5aef3c827",
+  "nodes": [
+    {
+      "id": "n13-heading-1-whole-copy",
+      "before": [
+        {
+          "id": "n13-heading-1-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "距離を満たす二つの位置",
+              "semanticId": "n13-ir-part-1"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-marker-1-whole-copy",
+      "before": [
+        {
+          "id": "n13-marker-1-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "例題",
+              "semanticId": "n13-ir-part-2"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-group-1-whole-copy",
+      "before": [
+        {
+          "id": "n13-group-1-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "絶対値は数直線上の距離を表す。距離が正であれば原点の左右に同じ距離の点が一つずつある。「または」で二つの位置を表す。",
+              "semanticId": "n13-ir-part-3"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-01-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-01-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x|=5",
+              "semanticId": "n13-ir-part-4"
+            },
+            {
+              "type": "text",
+              "text": "は原点から5離れた点の条件。左右どちらも調べる。",
+              "semanticId": "n13-ir-part-5"
+            },
+            {
+              "type": "math",
+              "latex": "|x|=5",
+              "semanticId": "n13-ir-part-6"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-01",
+      "before": [
+        {
+          "id": "n13-01-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-01",
+              "semanticId": "n13-01-slot"
+            }
+          ],
+          "derivationId": "n13-01-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-01-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=5\\;\\text{または}\\;x=-5",
+              "semanticId": "n13-ir-part-7"
+            }
+          ],
+          "derivationId": "n13-01-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "すべての実数解を選ぼう。",
+        "prerequisiteIds": [
+          "n13-lead-01-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x=5\\;\\text{または}\\;x=-5",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-01-choice-0",
+            "content": "x=5\\;\\text{または}\\;x=-5",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-01-choice-1",
+            "content": "x=5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。"
+          },
+          {
+            "id": "n13-01-choice-2",
+            "content": "x=-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。"
+          },
+          {
+            "id": "n13-01-choice-3",
+            "content": "x=5\\;\\text{かつ}\\;x=-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "距離は正でも点の座標は左右で符号が違う。"
+          }
+        ],
+        "hints": [
+          "距離は正でも点の座標は左右で符号が違う。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-01-before",
+          "slotId": "n13-01-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-01-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-01-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "「または」はどちらか一方を満たせばよい条件で、両方を同時に満たす意味ではない。",
+              "semanticId": "n13-ir-part-8"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-show-n13-f02-whole-copy",
+      "before": [
+        {
+          "id": "n13-show-n13-f02-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "左右の位置と等しい距離を検算する。",
+              "semanticId": "n13-ir-part-9"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-positive-distance-property-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-positive-distance-property-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "今の二つの位置を、正の距離",
+              "semanticId": "n13-ir-part-10"
+            },
+            {
+              "type": "math",
+              "latex": "a",
+              "semanticId": "n13-ir-part-11"
+            },
+            {
+              "type": "text",
+              "text": "に広げます。",
+              "semanticId": "n13-ir-part-12"
+            },
+            {
+              "type": "math",
+              "latex": "a>0:\\quad |x|=a\\iff(x=a\\;\\text{または}\\;x=-a)",
+              "semanticId": "n13-ir-part-13"
+            },
+            {
+              "type": "text",
+              "text": "「または」は、どちらか一方を満たせばよいという条件です。",
+              "semanticId": "n13-ir-part-14"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-02-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-02-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "次の例題は、中身が式になっています。",
+              "semanticId": "n13-ir-part-15"
+            },
+            {
+              "type": "math",
+              "latex": "|x-1|=4",
+              "semanticId": "n13-ir-part-16"
+            },
+            {
+              "type": "text",
+              "text": "中身全体を一つの数として扱うため、",
+              "semanticId": "n13-ir-part-17"
+            },
+            {
+              "type": "math",
+              "latex": "X=x-1",
+              "semanticId": "n13-ir-part-18"
+            },
+            {
+              "type": "text",
+              "text": "と置きます。いまの距離の条件を",
+              "semanticId": "n13-ir-part-19"
+            },
+            {
+              "type": "math",
+              "latex": "X",
+              "semanticId": "n13-ir-part-20"
+            },
+            {
+              "type": "text",
+              "text": "について書き直しましょう。",
+              "semanticId": "n13-ir-part-21"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-02",
+      "before": [
+        {
+          "id": "n13-02-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-02",
+              "semanticId": "n13-02-slot"
+            }
+          ],
+          "derivationId": "n13-02-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-02-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "X=4\\;\\text{または}\\;X=-4",
+              "semanticId": "n13-ir-part-22"
+            }
+          ],
+          "derivationId": "n13-02-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "Xについての二つの可能性を選ぼう。",
+        "prerequisiteIds": [
+          "n13-lead-02-whole-copy-result"
+        ],
+        "expected": {
+          "value": "X=4\\;\\text{または}\\;X=-4",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-02-choice-0",
+            "content": "X=4\\;\\text{または}\\;X=-4",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-02-choice-1",
+            "content": "X=4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。"
+          },
+          {
+            "id": "n13-02-choice-2",
+            "content": "X=4\\;\\text{かつ}\\;X=-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。"
+          },
+          {
+            "id": "n13-02-choice-3",
+            "content": "X=\\pm1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|X|=正の数の解は左右の二つに分かれる。"
+          }
+        ],
+        "hints": [
+          "|X|=正の数の解は左右の二つに分かれる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-02-before",
+          "slotId": "n13-02-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-02-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-02-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "中身をひとまとまりにしたまま、距離の条件を方程式へ戻せた。",
+              "semanticId": "n13-ir-part-23"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-03-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-03-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "仮の文字",
+              "semanticId": "n13-ir-part-24"
+            },
+            {
+              "type": "math",
+              "latex": "X",
+              "semanticId": "n13-ir-part-25"
+            },
+            {
+              "type": "text",
+              "text": "を元の",
+              "semanticId": "n13-ir-part-26"
+            },
+            {
+              "type": "math",
+              "latex": "x-1",
+              "semanticId": "n13-ir-part-27"
+            },
+            {
+              "type": "text",
+              "text": "に置き換え、二つの普通の方程式にする。",
+              "semanticId": "n13-ir-part-28"
+            },
+            {
+              "type": "math",
+              "latex": "X=x-1",
+              "semanticId": "n13-ir-part-29"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-03",
+      "before": [
+        {
+          "id": "n13-03-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-03",
+              "semanticId": "n13-03-slot"
+            }
+          ],
+          "derivationId": "n13-03-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-03-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x-1=4\\;\\text{または}\\;x-1=-4",
+              "semanticId": "n13-ir-part-30"
+            }
+          ],
+          "derivationId": "n13-03-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xについての二つの方程式を書こう。",
+        "prerequisiteIds": [
+          "n13-lead-03-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x-1=4\\;\\text{または}\\;x-1=-4",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-03-choice-0",
+            "content": "x-1=4\\;\\text{または}\\;x-1=-4",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-03-choice-1",
+            "content": "x=4\\;\\text{または}\\;x=-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+          },
+          {
+            "id": "n13-03-choice-2",
+            "content": "x+1=4\\;\\text{または}\\;x+1=-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+          },
+          {
+            "id": "n13-03-choice-3",
+            "content": "x-1=4\\;\\text{かつ}\\;x-1=-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+          }
+        ],
+        "hints": [
+          "Xだけをx−1へ戻す。両方の符号の枝を残す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-03-before",
+          "slotId": "n13-03-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-03-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-03-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二本の式をそれぞれ解けば、元の絶対値方程式の候補が揃う。",
+              "semanticId": "n13-ir-part-31"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-04-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-04-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "絶対値を外して得た二つの方程式を、それぞれ解きます。両辺に同じ数を加える規則を使い、片方を解いた後も、もう片方の枝を残します。",
+              "semanticId": "n13-ir-part-32"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q04-positive-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q04-positive-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "右の位置を求めます。右辺の4+1を計算しましょう。",
+              "semanticId": "n13-ir-part-33"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q04-positive",
+      "before": [
+        {
+          "id": "n13-w048-q04-positive-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x-1=4\\ \\Rightarrow\\ x=4+1=",
+              "semanticId": "n13-ir-part-34"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q04-positive",
+              "semanticId": "n13-w048-q04-positive-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q04-positive-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q04-positive-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x-1=4\\ \\Rightarrow\\ x=4+1=",
+              "semanticId": "n13-ir-part-35"
+            },
+            {
+              "type": "math",
+              "latex": "5",
+              "semanticId": "n13-ir-part-36"
+            }
+          ],
+          "derivationId": "n13-w048-q04-positive-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q04-positive",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "右の位置を求めます。右辺の4+1を計算しましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q04-positive-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "5",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q04-positive-choice-0",
+            "content": "5",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q04-positive-choice-1",
+            "content": "3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両辺に1を足した結果を計算します。"
+          },
+          {
+            "id": "n13-w048-q04-positive-choice-2",
+            "content": "-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両辺に1を足した結果を計算します。"
+          },
+          {
+            "id": "n13-w048-q04-positive-choice-3",
+            "content": "4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両辺に1を足した結果を計算します。"
+          }
+        ],
+        "hints": [
+          "両辺に1を足した結果を計算します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q04-positive-before",
+          "slotId": "n13-w048-q04-positive-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q04-positive-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q04-positive-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "右の位置が決まりました。次は負の方程式を解きます。",
+              "semanticId": "n13-ir-part-37"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q04-negative-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q04-negative-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "左の位置を求めます。負号を残し、−4+1を計算しましょう。",
+              "semanticId": "n13-ir-part-38"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q04-negative",
+      "before": [
+        {
+          "id": "n13-w048-q04-negative-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x-1=-4\\ \\Rightarrow\\ x=-4+1=",
+              "semanticId": "n13-ir-part-39"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q04-negative",
+              "semanticId": "n13-w048-q04-negative-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q04-negative-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q04-negative-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x-1=-4\\ \\Rightarrow\\ x=-4+1=",
+              "semanticId": "n13-ir-part-40"
+            },
+            {
+              "type": "math",
+              "latex": "-3",
+              "semanticId": "n13-ir-part-41"
+            }
+          ],
+          "derivationId": "n13-w048-q04-negative-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q04-negative",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "左の位置を求めます。負号を残し、−4+1を計算しましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q04-negative-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "-3",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q04-negative-choice-0",
+            "content": "-3",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q04-negative-choice-1",
+            "content": "3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "負の数に正の1を加える位置を考えます。"
+          },
+          {
+            "id": "n13-w048-q04-negative-choice-2",
+            "content": "-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "負の数に正の1を加える位置を考えます。"
+          },
+          {
+            "id": "n13-w048-q04-negative-choice-3",
+            "content": "-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "負の数に正の1を加える位置を考えます。"
+          }
+        ],
+        "hints": [
+          "負の数に正の1を加える位置を考えます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q04-negative-before",
+          "slotId": "n13-w048-q04-negative-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q04-negative-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q04-negative-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二本の方程式の解が揃いました。元の問いへの答えとして一組にします。",
+              "semanticId": "n13-ir-part-42"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-04",
+      "before": [
+        {
+          "id": "n13-04-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-04",
+              "semanticId": "n13-04-slot"
+            }
+          ],
+          "derivationId": "n13-04-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-04-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=5\\;\\text{または}\\;x=-3",
+              "semanticId": "n13-ir-part-43"
+            }
+          ],
+          "derivationId": "n13-04-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xの解をすべて選ぼう。",
+        "prerequisiteIds": [
+          "n13-w048-q04-negative-after-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x=5\\;\\text{または}\\;x=-3",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-04-choice-0",
+            "content": "x=5\\;\\text{または}\\;x=-3",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-04-choice-1",
+            "content": "x=5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+          },
+          {
+            "id": "n13-04-choice-2",
+            "content": "x=3\\;\\text{または}\\;x=-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+          },
+          {
+            "id": "n13-04-choice-3",
+            "content": "x=4\\;\\text{または}\\;x=-4",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+          }
+        ],
+        "hints": [
+          "両方の等式でxを一つだけにする。−4+1の符号にも注意。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-04-before",
+          "slotId": "n13-04-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-04-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-04-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二つの点は1を中心として左右に同じ4だけ離れている。",
+              "semanticId": "n13-ir-part-44"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-show-n13-f01-whole-copy",
+      "before": [
+        {
+          "id": "n13-show-n13-f01-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "中心1からの距離を、引き算の順として考えよう。",
+              "semanticId": "n13-ir-part-45"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-heading-2-whole-copy",
+      "before": [
+        {
+          "id": "n13-heading-2-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "中心を移しても距離は同じ",
+              "semanticId": "n13-ir-part-46"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-marker-2-whole-copy",
+      "before": [
+        {
+          "id": "n13-marker-2-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "確認",
+              "semanticId": "n13-ir-part-47"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-group-2-whole-copy",
+      "before": [
+        {
+          "id": "n13-group-2-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x-1|",
+              "semanticId": "n13-ir-part-48"
+            },
+            {
+              "type": "text",
+              "text": "は点",
+              "semanticId": "n13-ir-part-49"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-50"
+            },
+            {
+              "type": "text",
+              "text": "と点1の間の距離。",
+              "semanticId": "n13-ir-part-51"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-52"
+            },
+            {
+              "type": "text",
+              "text": "が1の右側か左側かによって、引き算の順を変える。",
+              "semanticId": "n13-ir-part-53"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-05-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-05-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x-1|",
+              "semanticId": "n13-ir-part-54"
+            },
+            {
+              "type": "text",
+              "text": " は点 ",
+              "semanticId": "n13-ir-part-55"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-56"
+            },
+            {
+              "type": "text",
+              "text": " と点 1 の距離。数直線でどちらが右にあるかを先に見て、右の座標から左の座標を引こう。",
+              "semanticId": "n13-ir-part-57"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-wm023-q05-right",
+      "before": [
+        {
+          "id": "n13-wm023-q05-right-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x\\ge1:\\quad |x-1|=",
+              "semanticId": "n13-ir-part-58"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-wm023-q05-right",
+              "semanticId": "n13-wm023-q05-right-slot"
+            }
+          ],
+          "derivationId": "n13-wm023-q05-right-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q05-right-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x\\ge1:\\quad |x-1|=",
+              "semanticId": "n13-ir-part-59"
+            },
+            {
+              "type": "math",
+              "latex": "x-1",
+              "semanticId": "n13-ir-part-60"
+            }
+          ],
+          "derivationId": "n13-wm023-q05-right-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q05-right",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x≥1 のとき、距離を式で表そう。",
+        "prerequisiteIds": [
+          "n13-lead-05-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x-1",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q05-right-choice-0",
+            "content": "x-1",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-1",
+            "content": "1-x",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-2",
+            "content": "x+1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+          },
+          {
+            "id": "n13-wm023-q05-right-choice-3",
+            "content": "-1-x",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+          }
+        ],
+        "hints": [
+          "たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q05-right-before",
+          "slotId": "n13-wm023-q05-right-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-05",
+      "before": [
+        {
+          "id": "n13-05-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x<1:\\quad |x-1|=",
+              "semanticId": "n13-ir-part-61"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-05",
+              "semanticId": "n13-05-slot"
+            }
+          ],
+          "derivationId": "n13-05-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-05-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x<1:\\quad |x-1|=",
+              "semanticId": "n13-ir-part-62"
+            },
+            {
+              "type": "math",
+              "latex": "1-x",
+              "semanticId": "n13-ir-part-63"
+            }
+          ],
+          "derivationId": "n13-05-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x<1 のとき、距離を式で表そう。",
+        "prerequisiteIds": [
+          "n13-wm023-q05-right-result"
+        ],
+        "expected": {
+          "value": "1-x",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-05-choice-0",
+            "content": "1-x",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-05-choice-1",
+            "content": "x-1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+          },
+          {
+            "id": "n13-05-choice-2",
+            "content": "1+x",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+          },
+          {
+            "id": "n13-05-choice-3",
+            "content": "-1-x",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+          }
+        ],
+        "hints": [
+          "たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-05-before",
+          "slotId": "n13-05-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-05-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-05-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x\\ge 1",
+              "semanticId": "n13-ir-part-64"
+            },
+            {
+              "type": "text",
+              "text": "なら",
+              "semanticId": "n13-ir-part-65"
+            },
+            {
+              "type": "math",
+              "latex": "x-1\\ge 0",
+              "semanticId": "n13-ir-part-66"
+            },
+            {
+              "type": "text",
+              "text": "、",
+              "semanticId": "n13-ir-part-67"
+            },
+            {
+              "type": "math",
+              "latex": "x<1",
+              "semanticId": "n13-ir-part-68"
+            },
+            {
+              "type": "text",
+              "text": "なら",
+              "semanticId": "n13-ir-part-69"
+            },
+            {
+              "type": "math",
+              "latex": "1-x>0",
+              "semanticId": "n13-ir-part-70"
+            },
+            {
+              "type": "text",
+              "text": "。どちらも二点間の距離として負にならない。",
+              "semanticId": "n13-ir-part-71"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-heading-3-whole-copy",
+      "before": [
+        {
+          "id": "n13-heading-3-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "中の式を一つの数として扱う",
+              "semanticId": "n13-ir-part-72"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-marker-3-whole-copy",
+      "before": [
+        {
+          "id": "n13-marker-3-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "確認",
+              "semanticId": "n13-ir-part-73"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-group-3-whole-copy",
+      "before": [
+        {
+          "id": "n13-group-3-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "別の式でも距離の二分岐がそのまま使える。右辺が0や負のときは、距離として可能かどうかを先に確かめる。",
+              "semanticId": "n13-ir-part-74"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-06-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-06-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x+2|=3",
+              "semanticId": "n13-ir-part-75"
+            },
+            {
+              "type": "text",
+              "text": "を解く。中身の",
+              "semanticId": "n13-ir-part-76"
+            },
+            {
+              "type": "math",
+              "latex": "x+2",
+              "semanticId": "n13-ir-part-77"
+            },
+            {
+              "type": "text",
+              "text": "を、原点から距離3の一つの数と見よう。",
+              "semanticId": "n13-ir-part-78"
+            },
+            {
+              "type": "math",
+              "latex": "|x+2|=3",
+              "semanticId": "n13-ir-part-79"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-06",
+      "before": [
+        {
+          "id": "n13-06-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-06",
+              "semanticId": "n13-06-slot"
+            }
+          ],
+          "derivationId": "n13-06-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-06-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x+2=3\\;\\text{または}\\;x+2=-3",
+              "semanticId": "n13-ir-part-80"
+            }
+          ],
+          "derivationId": "n13-06-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "絶対値なしの二つの方程式を選ぼう。",
+        "prerequisiteIds": [
+          "n13-lead-06-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x+2=3\\;\\text{または}\\;x+2=-3",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-06-choice-0",
+            "content": "x+2=3\\;\\text{または}\\;x+2=-3",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-06-choice-1",
+            "content": "x=3\\;\\text{または}\\;x=-3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が付いている範囲を確認し、中身全体を一つの数として、最初の例題で使った分け方を適用します。"
+          },
+          {
+            "id": "n13-06-choice-2",
+            "content": "x+2=3\\;\\text{かつ}\\;x+2=-3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が付いている範囲を確認し、中身全体を一つの数として、最初の例題で使った分け方を適用します。"
+          },
+          {
+            "id": "n13-06-choice-3",
+            "content": "x-2=3\\;\\text{または}\\;x-2=-3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が付いている範囲を確認し、中身全体を一つの数として、最初の例題で使った分け方を適用します。"
+          }
+        ],
+        "hints": [
+          "絶対値が付いている範囲を確認し、中身全体を一つの数として、最初の例題で使った分け方を適用します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-06-before",
+          "slotId": "n13-06-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-06-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-06-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二つの方程式を解くとき、+2を両方の枝から引く。",
+              "semanticId": "n13-ir-part-81"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-07-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-07-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "次の確認でも、二つの方程式を別々に解きます。前の例題より説明を減らし、符号を自分で確かめましょう。",
+              "semanticId": "n13-ir-part-82"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q07-positive-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q07-positive-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "正の枝を",
+              "semanticId": "n13-ir-part-83"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-84"
+            },
+            {
+              "type": "text",
+              "text": "について解きましょう。",
+              "semanticId": "n13-ir-part-85"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q07-positive",
+      "before": [
+        {
+          "id": "n13-w048-q07-positive-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x+2=3\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-86"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q07-positive",
+              "semanticId": "n13-w048-q07-positive-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q07-positive-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q07-positive-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x+2=3\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-87"
+            },
+            {
+              "type": "math",
+              "latex": "1",
+              "semanticId": "n13-ir-part-88"
+            }
+          ],
+          "derivationId": "n13-w048-q07-positive-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q07-positive",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "正の枝をxについて解きましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q07-positive-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "1",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q07-positive-choice-0",
+            "content": "1",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q07-positive-choice-1",
+            "content": "5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "xだけを残すため、両辺から同じ数を引きます。"
+          },
+          {
+            "id": "n13-w048-q07-positive-choice-2",
+            "content": "-1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "xだけを残すため、両辺から同じ数を引きます。"
+          },
+          {
+            "id": "n13-w048-q07-positive-choice-3",
+            "content": "3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "xだけを残すため、両辺から同じ数を引きます。"
+          }
+        ],
+        "hints": [
+          "xだけを残すため、両辺から同じ数を引きます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q07-positive-before",
+          "slotId": "n13-w048-q07-positive-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q07-positive-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q07-positive-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "もう一方の枝も同じ操作で解きます。",
+              "semanticId": "n13-ir-part-89"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q07-negative-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q07-negative-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "負の枝も",
+              "semanticId": "n13-ir-part-90"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-91"
+            },
+            {
+              "type": "text",
+              "text": "について解きましょう。",
+              "semanticId": "n13-ir-part-92"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q07-negative",
+      "before": [
+        {
+          "id": "n13-w048-q07-negative-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x+2=-3\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-93"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q07-negative",
+              "semanticId": "n13-w048-q07-negative-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q07-negative-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q07-negative-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x+2=-3\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-94"
+            },
+            {
+              "type": "math",
+              "latex": "-5",
+              "semanticId": "n13-ir-part-95"
+            }
+          ],
+          "derivationId": "n13-w048-q07-negative-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q07-negative",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "負の枝もxについて解きましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q07-negative-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "-5",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q07-negative-choice-0",
+            "content": "-5",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q07-negative-choice-1",
+            "content": "-1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "右辺が負でも、左辺の定数を打ち消す操作は同じです。"
+          },
+          {
+            "id": "n13-w048-q07-negative-choice-2",
+            "content": "5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "右辺が負でも、左辺の定数を打ち消す操作は同じです。"
+          },
+          {
+            "id": "n13-w048-q07-negative-choice-3",
+            "content": "-3",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "右辺が負でも、左辺の定数を打ち消す操作は同じです。"
+          }
+        ],
+        "hints": [
+          "右辺が負でも、左辺の定数を打ち消す操作は同じです。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q07-negative-before",
+          "slotId": "n13-w048-q07-negative-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q07-negative-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q07-negative-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二つの結果を元の絶対値方程式の解としてまとめます。",
+              "semanticId": "n13-ir-part-96"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-07",
+      "before": [
+        {
+          "id": "n13-07-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-07",
+              "semanticId": "n13-07-slot"
+            }
+          ],
+          "derivationId": "n13-07-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-07-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=1\\;\\text{または}\\;x=-5",
+              "semanticId": "n13-ir-part-97"
+            }
+          ],
+          "derivationId": "n13-07-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両方の解を選ぼう。",
+        "prerequisiteIds": [
+          "n13-w048-q07-negative-after-whole-copy-result"
+        ],
+        "expected": {
+          "value": "x=1\\;\\text{または}\\;x=-5",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-07-choice-0",
+            "content": "x=1\\;\\text{または}\\;x=-5",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-07-choice-1",
+            "content": "x=1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "どちらの枝も両辺から2を引く。"
+          },
+          {
+            "id": "n13-07-choice-2",
+            "content": "x=5\\;\\text{または}\\;x=-1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "どちらの枝も両辺から2を引く。"
+          },
+          {
+            "id": "n13-07-choice-3",
+            "content": "x=-1\\;\\text{または}\\;x=-5",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "どちらの枝も両辺から2を引く。"
+          }
+        ],
+        "hints": [
+          "どちらの枝も両辺から2を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-07-before",
+          "slotId": "n13-07-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-07-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-07-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二つの解は−2を中心に左右へ3ずつ離れた位置にある。",
+              "semanticId": "n13-ir-part-98"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-08-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-08-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|3x|=6",
+              "semanticId": "n13-ir-part-99"
+            },
+            {
+              "type": "text",
+              "text": " では、はじめに絶対値の中身がとり得る二通りの等式を作り、それぞれを ",
+              "semanticId": "n13-ir-part-100"
+            },
+            {
+              "type": "math",
+              "latex": "x",
+              "semanticId": "n13-ir-part-101"
+            },
+            {
+              "type": "text",
+              "text": " について解こう。",
+              "semanticId": "n13-ir-part-102"
+            },
+            {
+              "type": "math",
+              "latex": "|3x|=6",
+              "semanticId": "n13-ir-part-103"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-wm023-q08-branches",
+      "before": [
+        {
+          "id": "n13-wm023-q08-branches-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n13-wm023-q08-branches",
+              "semanticId": "n13-wm023-q08-branches-slot"
+            }
+          ],
+          "derivationId": "n13-wm023-q08-branches-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q08-branches-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "3x=6\\;\\text{または}\\;3x=-6",
+              "semanticId": "n13-ir-part-104"
+            }
+          ],
+          "derivationId": "n13-wm023-q08-branches-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q08-branches",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "中身3xがとり得る二つの等式を選ぼう。",
+        "prerequisiteIds": [
+          "n13-lead-08-whole-copy-result"
+        ],
+        "expected": {
+          "value": "3x=6\\;\\text{または}\\;3x=-6",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q08-branches-choice-0",
+            "content": "3x=6\\;\\text{または}\\;3x=-6",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-1",
+            "content": "3x=6\\;\\text{かつ}\\;3x=-6",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-2",
+            "content": "3x=6",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+          },
+          {
+            "id": "n13-wm023-q08-branches-choice-3",
+            "content": "3x=-6",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+          }
+        ],
+        "hints": [
+          "|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q08-branches-before",
+          "slotId": "n13-wm023-q08-branches-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-wm023-q08-positive-root",
+      "before": [
+        {
+          "id": "n13-wm023-q08-positive-root-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "3x=6\\Rightarrow x=",
+              "semanticId": "n13-ir-part-105"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-wm023-q08-positive-root",
+              "semanticId": "n13-wm023-q08-positive-root-slot"
+            }
+          ],
+          "derivationId": "n13-wm023-q08-positive-root-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-wm023-q08-positive-root-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "3x=6\\Rightarrow x=",
+              "semanticId": "n13-ir-part-106"
+            },
+            {
+              "type": "math",
+              "latex": "2",
+              "semanticId": "n13-ir-part-107"
+            }
+          ],
+          "derivationId": "n13-wm023-q08-positive-root-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-wm023-q08-positive-root",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x=6 の解を求めよう。",
+        "prerequisiteIds": [
+          "n13-wm023-q08-branches-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-wm023-q08-positive-root-choice-0",
+            "content": "2",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-1",
+            "content": "-2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-2",
+            "content": "6",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+          },
+          {
+            "id": "n13-wm023-q08-positive-root-choice-3",
+            "content": "\\frac12",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+          }
+        ],
+        "hints": [
+          "たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-wm023-q08-positive-root-before",
+          "slotId": "n13-wm023-q08-positive-root-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-08",
+      "before": [
+        {
+          "id": "n13-08-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "3x=-6\\Rightarrow x=",
+              "semanticId": "n13-ir-part-108"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-08",
+              "semanticId": "n13-08-slot"
+            }
+          ],
+          "derivationId": "n13-08-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-08-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "3x=-6\\Rightarrow x=",
+              "semanticId": "n13-ir-part-109"
+            },
+            {
+              "type": "math",
+              "latex": "-2",
+              "semanticId": "n13-ir-part-110"
+            }
+          ],
+          "derivationId": "n13-08-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x=−6 の解を求めよう。",
+        "prerequisiteIds": [
+          "n13-wm023-q08-positive-root-result"
+        ],
+        "expected": {
+          "value": "-2",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-08-choice-0",
+            "content": "-2",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-08-choice-1",
+            "content": "2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+          },
+          {
+            "id": "n13-08-choice-2",
+            "content": "-6",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+          },
+          {
+            "id": "n13-08-choice-3",
+            "content": "-\\frac12",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+          }
+        ],
+        "hints": [
+          "たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-08-before",
+          "slotId": "n13-08-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-08-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-08-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=2\\;\\text{または}\\;x=-2",
+              "semanticId": "n13-ir-part-111"
+            },
+            {
+              "type": "text",
+              "text": "。二つの解は「または」で結ぶ。両方の条件を同時に満たすという意味ではない。",
+              "semanticId": "n13-ir-part-112"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-lead-09-whole-copy",
+      "before": [
+        {
+          "id": "n13-lead-09-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "term",
+              "text": "性質",
+              "semanticId": "n13-ir-part-113",
+              "usage": "ordinary"
+            },
+            {
+              "type": "text",
+              "text": "を確かめます。ここまでは距離が正の場合でした。距離が0の場合と、負の値を要求された場合を分けて考えます。",
+              "semanticId": "n13-ir-part-114"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q09-zero-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q09-zero-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "まず、原点からの距離が0になる位置を求めましょう。",
+              "semanticId": "n13-ir-part-115"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q09-zero",
+      "before": [
+        {
+          "id": "n13-w048-q09-zero-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x|=0\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-116"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q09-zero",
+              "semanticId": "n13-w048-q09-zero-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q09-zero-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q09-zero-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x|=0\\ \\Rightarrow\\ x=",
+              "semanticId": "n13-ir-part-117"
+            },
+            {
+              "type": "math",
+              "latex": "0",
+              "semanticId": "n13-ir-part-118"
+            }
+          ],
+          "derivationId": "n13-w048-q09-zero-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q09-zero",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "まず、原点からの距離が0になる位置を求めましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q09-zero-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "0",
+          "form": "formula",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q09-zero-choice-0",
+            "content": "0",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q09-zero-choice-1",
+            "content": "1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "点と原点が同じ位置にある場合の距離を考えます。"
+          },
+          {
+            "id": "n13-w048-q09-zero-choice-2",
+            "content": "-1",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "点と原点が同じ位置にある場合の距離を考えます。"
+          },
+          {
+            "id": "n13-w048-q09-zero-choice-3",
+            "content": "2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "点と原点が同じ位置にある場合の距離を考えます。"
+          }
+        ],
+        "hints": [
+          "点と原点が同じ位置にある場合の距離を考えます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q09-zero-before",
+          "slotId": "n13-w048-q09-zero-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q09-zero-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q09-zero-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "距離が0の場合は一つの位置です。次は負の値を要求した条件を調べます。",
+              "semanticId": "n13-ir-part-119"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q09-negative-lead-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q09-negative-lead-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "次に、絶対値が負の数に等しくなる実数があるか判断しましょう。",
+              "semanticId": "n13-ir-part-120"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-w048-q09-negative",
+      "before": [
+        {
+          "id": "n13-w048-q09-negative-before-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x|=-2\\quad ",
+              "semanticId": "n13-ir-part-121"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-w048-q09-negative",
+              "semanticId": "n13-w048-q09-negative-slot"
+            }
+          ],
+          "derivationId": "n13-w048-q09-negative-before"
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-w048-q09-negative-after-0",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|x|=-2\\quad ",
+              "semanticId": "n13-ir-part-122"
+            },
+            {
+              "type": "text",
+              "text": "実数解なし",
+              "semanticId": "n13-ir-part-123"
+            }
+          ],
+          "derivationId": "n13-w048-q09-negative-after"
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-w048-q09-negative",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "meaning",
+        "whyHere": "次に、絶対値が負の数に等しくなる実数があるか判断しましょう。",
+        "prerequisiteIds": [
+          "n13-w048-q09-negative-lead-whole-copy-result"
+        ],
+        "expected": {
+          "value": "実数解なし",
+          "form": "text",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-w048-q09-negative-choice-0",
+            "content": "実数解なし",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-w048-q09-negative-choice-1",
+            "content": "x=-2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が取り得る値と、右辺の符号を照合します。"
+          },
+          {
+            "id": "n13-w048-q09-negative-choice-2",
+            "content": "x=2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が取り得る値と、右辺の符号を照合します。"
+          },
+          {
+            "id": "n13-w048-q09-negative-choice-3",
+            "content": "すべての実数",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "絶対値が取り得る値と、右辺の符号を照合します。"
+          }
+        ],
+        "hints": [
+          "絶対値が取り得る値と、右辺の符号を照合します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-w048-q09-negative-before",
+          "slotId": "n13-w048-q09-negative-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-w048-q09-negative-after-whole-copy",
+      "before": [
+        {
+          "id": "n13-w048-q09-negative-after-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "二つの場合の違いを、元の問いの順にまとめます。",
+              "semanticId": "n13-ir-part-124"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    },
+    {
+      "id": "n13-09",
+      "before": [
+        {
+          "id": "n13-09-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "考えて選ぶ：",
+              "semanticId": "n13-ir-part-125"
+            },
+            {
+              "type": "choice",
+              "itemId": "n13-09",
+              "semanticId": "n13-09-slot"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n13-09-after",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "考えて選ぶ：",
+              "semanticId": "n13-ir-part-126"
+            },
+            {
+              "type": "text",
+              "text": "0なら",
+              "semanticId": "n13-ir-part-127"
+            },
+            {
+              "type": "math",
+              "latex": "x=0",
+              "semanticId": "n13-ir-part-128"
+            },
+            {
+              "type": "text",
+              "text": "、負なら実数解なし",
+              "semanticId": "n13-ir-part-129"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n13-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "それぞれの実数解について選ぼう。",
+        "prerequisiteIds": [
+          "n13-w048-q09-negative-after-whole-copy-result"
+        ],
+        "expected": {
+          "value": "0ならx=0、負なら実数解なし",
+          "form": "text",
+          "semanticType": "source-preserved-decision"
+        },
+        "choices": [
+          {
+            "id": "n13-09-choice-0",
+            "content": "0ならx=0、負なら実数解なし",
+            "feedback": "確定した結果を同じ論理行と元の問いへ戻します。"
+          },
+          {
+            "id": "n13-09-choice-1",
+            "content": "0ならx=±0、負ならx=±2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "直前に別々に求めた二つの結果を、距離が0の場合、負の場合の順に対応させます。"
+          },
+          {
+            "id": "n13-09-choice-2",
+            "content": "0なら解なし、負ならx=−2",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "直前に別々に求めた二つの結果を、距離が0の場合、負の場合の順に対応させます。"
+          },
+          {
+            "id": "n13-09-choice-3",
+            "content": "両方ともすべての実数",
+            "misconception": "符号・境界・対象・条件の取り違え。元の問いと照合する。",
+            "feedback": "直前に別々に求めた二つの結果を、距離が0の場合、負の場合の順に対応させます。"
+          }
+        ],
+        "hints": [
+          "直前に別々に求めた二つの結果を、距離が0の場合、負の場合の順に対応させます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n13-09-before",
+          "slotId": "n13-09-slot"
+        }
+      }
+    },
+    {
+      "id": "n13-after-09-whole-copy",
+      "before": [
+        {
+          "id": "n13-after-09-whole-copy-before",
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "|X|=a",
+              "semanticId": "n13-ir-part-130"
+            },
+            {
+              "type": "text",
+              "text": "では、",
+              "semanticId": "n13-ir-part-131"
+            },
+            {
+              "type": "math",
+              "latex": "a>0",
+              "semanticId": "n13-ir-part-132"
+            },
+            {
+              "type": "text",
+              "text": "なら二枝、",
+              "semanticId": "n13-ir-part-133"
+            },
+            {
+              "type": "math",
+              "latex": "a=0",
+              "semanticId": "n13-ir-part-134"
+            },
+            {
+              "type": "text",
+              "text": "なら一つ、",
+              "semanticId": "n13-ir-part-135"
+            },
+            {
+              "type": "math",
+              "latex": "a<0",
+              "semanticId": "n13-ir-part-136"
+            },
+            {
+              "type": "text",
+              "text": "なら実数解なし。次は距離に上限・下限を付ける。",
+              "semanticId": "n13-ir-part-137"
+            }
+          ]
+        }
+      ],
+      "after": [],
+      "contextNeed": []
+    }
+  ],
+  "semanticMap": {
+    "n13-ir-part-1": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-2": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-3": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-4": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-4"
+    },
+    "n13-ir-part-5": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-6": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-6"
+    },
+    "n13-01-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-01"
+    },
+    "n13-ir-part-7": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-7"
+    },
+    "n13-ir-part-8": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-9": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-10": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-11": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-11"
+    },
+    "n13-ir-part-12": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-13": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-13"
+    },
+    "n13-ir-part-14": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-15": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-16": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-16"
+    },
+    "n13-ir-part-17": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-18": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-18"
+    },
+    "n13-ir-part-19": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-20": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-20"
+    },
+    "n13-ir-part-21": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-02-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-02"
+    },
+    "n13-ir-part-22": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-22"
+    },
+    "n13-ir-part-23": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-24": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-25": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-25"
+    },
+    "n13-ir-part-26": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-27": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-27"
+    },
+    "n13-ir-part-28": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-29": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-29"
+    },
+    "n13-03-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-03"
+    },
+    "n13-ir-part-30": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-30"
+    },
+    "n13-ir-part-31": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-32": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-33": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-34": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-34"
+    },
+    "n13-w048-q04-positive-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q04-positive"
+    },
+    "n13-ir-part-35": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-35"
+    },
+    "n13-ir-part-36": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-36"
+    },
+    "n13-ir-part-37": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-38": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-39": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-39"
+    },
+    "n13-w048-q04-negative-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q04-negative"
+    },
+    "n13-ir-part-40": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-40"
+    },
+    "n13-ir-part-41": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-41"
+    },
+    "n13-ir-part-42": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-04-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-04"
+    },
+    "n13-ir-part-43": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-43"
+    },
+    "n13-ir-part-44": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-45": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-46": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-47": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-48": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-48"
+    },
+    "n13-ir-part-49": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-50": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-50"
+    },
+    "n13-ir-part-51": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-52": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-52"
+    },
+    "n13-ir-part-53": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-54": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-54"
+    },
+    "n13-ir-part-55": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-56": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-56"
+    },
+    "n13-ir-part-57": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-58": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-58"
+    },
+    "n13-wm023-q05-right-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-wm023-q05-right"
+    },
+    "n13-ir-part-59": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-59"
+    },
+    "n13-ir-part-60": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-60"
+    },
+    "n13-ir-part-61": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-61"
+    },
+    "n13-05-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-05"
+    },
+    "n13-ir-part-62": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-62"
+    },
+    "n13-ir-part-63": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-63"
+    },
+    "n13-ir-part-64": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-64"
+    },
+    "n13-ir-part-65": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-66": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-66"
+    },
+    "n13-ir-part-67": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-68": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-68"
+    },
+    "n13-ir-part-69": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-70": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-70"
+    },
+    "n13-ir-part-71": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-72": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-73": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-74": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-75": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-75"
+    },
+    "n13-ir-part-76": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-77": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-77"
+    },
+    "n13-ir-part-78": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-79": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-79"
+    },
+    "n13-06-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-06"
+    },
+    "n13-ir-part-80": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-80"
+    },
+    "n13-ir-part-81": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-82": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-83": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-84": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-84"
+    },
+    "n13-ir-part-85": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-86": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-86"
+    },
+    "n13-w048-q07-positive-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q07-positive"
+    },
+    "n13-ir-part-87": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-87"
+    },
+    "n13-ir-part-88": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-88"
+    },
+    "n13-ir-part-89": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-90": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-91": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-91"
+    },
+    "n13-ir-part-92": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-93": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-93"
+    },
+    "n13-w048-q07-negative-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q07-negative"
+    },
+    "n13-ir-part-94": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-94"
+    },
+    "n13-ir-part-95": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-95"
+    },
+    "n13-ir-part-96": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-07-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-07"
+    },
+    "n13-ir-part-97": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-97"
+    },
+    "n13-ir-part-98": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-99": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-99"
+    },
+    "n13-ir-part-100": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-101": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-101"
+    },
+    "n13-ir-part-102": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-103": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-103"
+    },
+    "n13-wm023-q08-branches-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-wm023-q08-branches"
+    },
+    "n13-ir-part-104": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-104"
+    },
+    "n13-ir-part-105": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-105"
+    },
+    "n13-wm023-q08-positive-root-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-wm023-q08-positive-root"
+    },
+    "n13-ir-part-106": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-106"
+    },
+    "n13-ir-part-107": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-107"
+    },
+    "n13-ir-part-108": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-108"
+    },
+    "n13-08-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-08"
+    },
+    "n13-ir-part-109": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-109"
+    },
+    "n13-ir-part-110": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-110"
+    },
+    "n13-ir-part-111": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-111"
+    },
+    "n13-ir-part-112": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-113": {
+      "kind": "term",
+      "semanticRef": "n13-ir-part-113"
+    },
+    "n13-ir-part-114": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-115": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-116": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-116"
+    },
+    "n13-w048-q09-zero-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q09-zero"
+    },
+    "n13-ir-part-117": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-117"
+    },
+    "n13-ir-part-118": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-118"
+    },
+    "n13-ir-part-119": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-120": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-121": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-121"
+    },
+    "n13-w048-q09-negative-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-w048-q09-negative"
+    },
+    "n13-ir-part-122": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-122"
+    },
+    "n13-ir-part-123": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-124": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-125": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-09-slot": {
+      "kind": "answerSlot",
+      "semanticRef": "n13-09"
+    },
+    "n13-ir-part-126": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-127": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-128": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-128"
+    },
+    "n13-ir-part-129": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-130": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-130"
+    },
+    "n13-ir-part-131": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-132": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-132"
+    },
+    "n13-ir-part-133": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-134": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-134"
+    },
+    "n13-ir-part-135": {
+      "kind": "text",
+      "semanticRef": null
+    },
+    "n13-ir-part-136": {
+      "kind": "math",
+      "semanticRef": "n13-ir-part-136"
+    },
+    "n13-ir-part-137": {
+      "kind": "text",
+      "semanticRef": null
+    }
+  },
+  "equationNumbers": {
+    "n13-formula-01": 1,
+    "n13-formula-02": 2,
+    "n13-formula-03": 3,
+    "n13-w048-q04-positive-formula": 4,
+    "n13-w048-q04-negative-formula": 5,
+    "n13-formula-04": 6,
+    "n13-wm023-q05-right": 7,
+    "n13-formula-05": 8,
+    "n13-formula-06": 9,
+    "n13-w048-q07-positive-formula": 10,
+    "n13-w048-q07-negative-formula": 11,
+    "n13-formula-07": 12,
+    "n13-formula-08": 13,
+    "n13-wm023-q08-positive-root": 14,
+    "n13-wm023-q08-negative-root": 15,
+    "n13-w048-q09-zero-formula": 16,
+    "n13-w048-q09-negative-formula": 17
+  },
+  "equationGroups": [
+    {
+      "id": "n13-01-before",
+      "stableId": "n13-formula-01",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-01-after",
+      "stableId": "n13-formula-01",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-02-before",
+      "stableId": "n13-formula-02",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-02-after",
+      "stableId": "n13-formula-02",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-03-before",
+      "stableId": "n13-formula-03",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-03-after",
+      "stableId": "n13-formula-03",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q04-positive-before",
+      "stableId": "n13-w048-q04-positive-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q04-positive-after",
+      "stableId": "n13-w048-q04-positive-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q04-negative-before",
+      "stableId": "n13-w048-q04-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q04-negative-after",
+      "stableId": "n13-w048-q04-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-04-before",
+      "stableId": "n13-formula-04",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-04-after",
+      "stableId": "n13-formula-04",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q05-right-before",
+      "stableId": "n13-wm023-q05-right",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q05-right-after",
+      "stableId": "n13-wm023-q05-right",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-05-before",
+      "stableId": "n13-formula-05",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-05-after",
+      "stableId": "n13-formula-05",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-06-before",
+      "stableId": "n13-formula-06",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-06-after",
+      "stableId": "n13-formula-06",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q07-positive-before",
+      "stableId": "n13-w048-q07-positive-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q07-positive-after",
+      "stableId": "n13-w048-q07-positive-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q07-negative-before",
+      "stableId": "n13-w048-q07-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q07-negative-after",
+      "stableId": "n13-w048-q07-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-07-before",
+      "stableId": "n13-formula-07",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-07-after",
+      "stableId": "n13-formula-07",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q08-branches-before",
+      "stableId": "n13-formula-08",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q08-branches-after",
+      "stableId": "n13-formula-08",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q08-positive-root-before",
+      "stableId": "n13-wm023-q08-positive-root",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-wm023-q08-positive-root-after",
+      "stableId": "n13-wm023-q08-positive-root",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-08-before",
+      "stableId": "n13-wm023-q08-negative-root",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-08-after",
+      "stableId": "n13-wm023-q08-negative-root",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q09-zero-before",
+      "stableId": "n13-w048-q09-zero-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q09-zero-after",
+      "stableId": "n13-w048-q09-zero-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q09-negative-before",
+      "stableId": "n13-w048-q09-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    },
+    {
+      "id": "n13-w048-q09-negative-after",
+      "stableId": "n13-w048-q09-negative-formula",
+      "mode": "group-end",
+      "relation": "independent",
+      "layoutProfile": "single"
+    }
+  ],
+  "expectedSemanticIds": [
+    "n13-ir-part-4",
+    "n13-ir-part-6",
+    "n13-01-slot",
+    "n13-ir-part-7",
+    "n13-ir-part-11",
+    "n13-ir-part-13",
+    "n13-ir-part-16",
+    "n13-ir-part-18",
+    "n13-ir-part-20",
+    "n13-02-slot",
+    "n13-ir-part-22",
+    "n13-ir-part-25",
+    "n13-ir-part-27",
+    "n13-ir-part-29",
+    "n13-03-slot",
+    "n13-ir-part-30",
+    "n13-ir-part-34",
+    "n13-w048-q04-positive-slot",
+    "n13-ir-part-35",
+    "n13-ir-part-36",
+    "n13-ir-part-39",
+    "n13-w048-q04-negative-slot",
+    "n13-ir-part-40",
+    "n13-ir-part-41",
+    "n13-04-slot",
+    "n13-ir-part-43",
+    "n13-ir-part-48",
+    "n13-ir-part-50",
+    "n13-ir-part-52",
+    "n13-ir-part-54",
+    "n13-ir-part-56",
+    "n13-ir-part-58",
+    "n13-wm023-q05-right-slot",
+    "n13-ir-part-59",
+    "n13-ir-part-60",
+    "n13-ir-part-61",
+    "n13-05-slot",
+    "n13-ir-part-62",
+    "n13-ir-part-63",
+    "n13-ir-part-64",
+    "n13-ir-part-66",
+    "n13-ir-part-68",
+    "n13-ir-part-70",
+    "n13-ir-part-75",
+    "n13-ir-part-77",
+    "n13-ir-part-79",
+    "n13-06-slot",
+    "n13-ir-part-80",
+    "n13-ir-part-84",
+    "n13-ir-part-86",
+    "n13-w048-q07-positive-slot",
+    "n13-ir-part-87",
+    "n13-ir-part-88",
+    "n13-ir-part-91",
+    "n13-ir-part-93",
+    "n13-w048-q07-negative-slot",
+    "n13-ir-part-94",
+    "n13-ir-part-95",
+    "n13-07-slot",
+    "n13-ir-part-97",
+    "n13-ir-part-99",
+    "n13-ir-part-101",
+    "n13-ir-part-103",
+    "n13-wm023-q08-branches-slot",
+    "n13-ir-part-104",
+    "n13-ir-part-105",
+    "n13-wm023-q08-positive-root-slot",
+    "n13-ir-part-106",
+    "n13-ir-part-107",
+    "n13-ir-part-108",
+    "n13-08-slot",
+    "n13-ir-part-109",
+    "n13-ir-part-110",
+    "n13-ir-part-111",
+    "n13-ir-part-113",
+    "n13-ir-part-116",
+    "n13-w048-q09-zero-slot",
+    "n13-ir-part-117",
+    "n13-ir-part-118",
+    "n13-ir-part-121",
+    "n13-w048-q09-negative-slot",
+    "n13-ir-part-122",
+    "n13-09-slot",
+    "n13-ir-part-128",
+    "n13-ir-part-130",
+    "n13-ir-part-132",
+    "n13-ir-part-134",
+    "n13-ir-part-136"
+  ]
+}

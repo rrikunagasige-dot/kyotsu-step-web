@@ -1,0 +1,1067 @@
+{
+  "status": "PASS_STATIC_SELECTOR_CASCADE",
+  "engine": "cssselect2 0.8.0 + tinycss2 1.5.1",
+  "scenarios": [
+    {
+      "width": 320,
+      "chain": "n13-q04-chain",
+      "formula": "n13-w048-q04-positive",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n13-q05-chain",
+      "formula": "n13-wm023-q05-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 6
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n13-q05-chain",
+      "formula": "n13-formula-05",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 6
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n14-q10-chain",
+      "formula": "n14-formula-10",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n14-q14-chain",
+      "formula": "n14-formula-14",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n14-q15-chain",
+      "formula": "n14-formula-15",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n14-q16-chain",
+      "formula": "n14-formula-16",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 320,
+      "chain": "n14-q16-chain",
+      "formula": "n14-wm022-q16-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n13-q04-chain",
+      "formula": "n13-w048-q04-positive",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n13-q05-chain",
+      "formula": "n13-wm023-q05-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n13-q05-chain",
+      "formula": "n13-formula-05",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n14-q10-chain",
+      "formula": "n14-formula-10",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n14-q14-chain",
+      "formula": "n14-formula-14",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n14-q15-chain",
+      "formula": "n14-formula-15",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n14-q16-chain",
+      "formula": "n14-formula-16",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 390,
+      "chain": "n14-q16-chain",
+      "formula": "n14-wm022-q16-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n13-q04-chain",
+      "formula": "n13-w048-q04-positive",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n13-q05-chain",
+      "formula": "n13-wm023-q05-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n13-q05-chain",
+      "formula": "n13-formula-05",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n14-q10-chain",
+      "formula": "n14-formula-10",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n14-q14-chain",
+      "formula": "n14-formula-14",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n14-q15-chain",
+      "formula": "n14-formula-15",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n14-q16-chain",
+      "formula": "n14-formula-16",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 430,
+      "chain": "n14-q16-chain",
+      "formula": "n14-wm022-q16-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 4
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 5
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q04-chain",
+      "formula": "n13-w048-q04-positive",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q05-chain",
+      "formula": "n13-wm023-q05-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n13-q05-chain",
+      "formula": "n13-formula-05",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n14-q10-chain",
+      "formula": "n14-formula-10",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n14-q14-chain",
+      "formula": "n14-formula-14",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n14-q15-chain",
+      "formula": "n14-formula-15",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n14-q16-chain",
+      "formula": "n14-formula-16",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "chain": "n14-q16-chain",
+      "formula": "n14-wm022-q16-right",
+      "winners": {
+        "justify-content": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-content",
+          "value": "flex-start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 2
+        },
+        "justify-items": {
+          "selector": ".w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^=\"textbook-formula-\"] .reading-formula-expression",
+          "specificity": [
+            0,
+            5,
+            0
+          ],
+          "name": "justify-items",
+          "value": "start",
+          "important": false,
+          "origin": "proposed-scoped",
+          "order": 3
+        }
+      }
+    }
+  ],
+  "pageSHA256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973",
+  "actualDOM": false,
+  "limits": [
+    "Selector matching and cascade priority on modeled consumer ancestry; actual geometry, layout, wrapping and browser computed style remain R07."
+  ]
+}

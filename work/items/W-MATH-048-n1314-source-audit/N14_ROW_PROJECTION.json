@@ -1,0 +1,3349 @@
+{
+  "schemaVersion": "w048-physical-row-projection/1",
+  "unitId": "math-numbers-expressions-n14",
+  "revision": 11,
+  "irHash": "e4cc4488df65fc59fbe820cb7d85d769f792f562f6ca6feb3600517c659f75aa",
+  "unitShell": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n14",
+    "revision": 11,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 14,
+      "sourcePages": [
+        35,
+        36
+      ]
+    },
+    "title": "距離の上限と下限から、残す範囲を決める",
+    "subtitle": "絶対値の内側・外側と端点を、数直線で選び分ける。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14",
+      "rightsNote": "教師編集WordのN14原問16件、答えの後に開く元数直線1点、別冊解答未提供の独立導出、レビュー限定。"
+    },
+    "objectives": [
+      "距離の上限と下限を内外の範囲へ翻訳する",
+      "等号の有無から端点の包含を判断する",
+      "二重不等式と「または」の二枝を区別して解く"
+    ]
+  },
+  "sectionShell": {
+    "id": "lesson",
+    "number": "14",
+    "title": "本文",
+    "description": "範囲の意味から変形し、元の条件へ戻して検算する。",
+    "role": "concept",
+    "figures": [
+      {
+        "id": "n14-f01",
+        "src": "/assets/math/textbook/numbers/n14-f01.png",
+        "alt": "距離が3より小さい範囲と4以上の範囲を上下で比較した、解答後確認用の元図。",
+        "caption": "二つの範囲を導いた後で、内側と外側を図で比較する。",
+        "overlays": []
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "n14-heading-1",
+      "shape": {
+        "id": "n14-heading-1",
+        "type": "heading"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-heading-1-whole-copy",
+          "beforeBlockId": "n14-heading-1-whole-copy-before",
+          "compiledBlockId": "n14-heading-1-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000589"
+      ]
+    },
+    {
+      "id": "n14-marker-1",
+      "shape": {
+        "id": "n14-marker-1",
+        "type": "marker",
+        "kind": "example"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-marker-1-whole-copy",
+          "beforeBlockId": "n14-marker-1-whole-copy-before",
+          "compiledBlockId": "n14-marker-1-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000590"
+      ]
+    },
+    {
+      "id": "n14-group-1",
+      "shape": {
+        "id": "n14-group-1",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-group-1-whole-copy",
+          "beforeBlockId": "n14-group-1-whole-copy-before",
+          "compiledBlockId": "n14-group-1-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000599"
+      ]
+    },
+    {
+      "id": "n14-lead-01",
+      "shape": {
+        "id": "n14-lead-01",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-01-whole-copy",
+          "beforeBlockId": "n14-lead-01-whole-copy-before",
+          "compiledBlockId": "n14-lead-01-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000591"
+      ]
+    },
+    {
+      "id": "n14-formula-01",
+      "shape": {
+        "id": "n14-formula-01",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-01",
+          "beforeBlockId": "n14-01-before",
+          "compiledBlockId": "n14-01-before",
+          "itemId": "n14-01",
+          "slotId": "n14-01-slot"
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000592"
+      ]
+    },
+    {
+      "id": "n14-after-01",
+      "shape": {
+        "id": "n14-after-01",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-01-whole-copy",
+          "beforeBlockId": "n14-after-01-whole-copy-before",
+          "compiledBlockId": "n14-after-01-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000593"
+      ]
+    },
+    {
+      "id": "n14-lead-02",
+      "shape": {
+        "id": "n14-lead-02",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-02-whole-copy",
+          "beforeBlockId": "n14-lead-02-whole-copy-before",
+          "compiledBlockId": "n14-lead-02-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000593"
+      ]
+    },
+    {
+      "id": "n14-formula-02",
+      "shape": {
+        "id": "n14-formula-02",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-02",
+          "beforeBlockId": "n14-02-before",
+          "compiledBlockId": "n14-02-before-0",
+          "itemId": "n14-02",
+          "slotId": "n14-02-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000594"
+      ]
+    },
+    {
+      "id": "n14-after-02",
+      "shape": {
+        "id": "n14-after-02",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-02-whole-copy",
+          "beforeBlockId": "n14-after-02-whole-copy-before",
+          "compiledBlockId": "n14-after-02-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000594"
+      ]
+    },
+    {
+      "id": "n14-lead-03",
+      "shape": {
+        "id": "n14-lead-03",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-03-whole-copy",
+          "beforeBlockId": "n14-lead-03-whole-copy-before",
+          "compiledBlockId": "n14-lead-03-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-w048-q03-region-lead",
+      "shape": {
+        "id": "n14-w048-q03-region-lead",
+        "type": "paragraph",
+        "derivationId": "n14-q03-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q03-region-lead-whole-copy",
+          "beforeBlockId": "n14-w048-q03-region-lead-whole-copy-before",
+          "compiledBlockId": "n14-w048-q03-region-lead-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-w048-q03-region-formula",
+      "shape": {
+        "id": "n14-w048-q03-region-formula",
+        "type": "paragraph",
+        "derivationId": "n14-q03-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q03-region",
+          "beforeBlockId": "n14-w048-q03-region-before",
+          "compiledBlockId": "n14-w048-q03-region-before",
+          "itemId": "n14-w048-q03-region",
+          "slotId": "n14-w048-q03-region-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-w048-q03-region-after",
+      "shape": {
+        "id": "n14-w048-q03-region-after",
+        "type": "paragraph",
+        "derivationId": "n14-q03-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q03-region-after-whole-copy",
+          "beforeBlockId": "n14-w048-q03-region-after-whole-copy-before",
+          "compiledBlockId": "n14-w048-q03-region-after-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-formula-03",
+      "shape": {
+        "id": "n14-formula-03",
+        "type": "paragraph",
+        "derivationId": "n14-q03-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-03",
+          "beforeBlockId": "n14-03-before",
+          "compiledBlockId": "n14-03-before",
+          "itemId": "n14-03",
+          "slotId": "n14-03-slot"
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-after-03",
+      "shape": {
+        "id": "n14-after-03",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-03-whole-copy",
+          "beforeBlockId": "n14-after-03-whole-copy-before",
+          "compiledBlockId": "n14-after-03-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000595"
+      ]
+    },
+    {
+      "id": "n14-lead-04",
+      "shape": {
+        "id": "n14-lead-04",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-04-whole-copy",
+          "beforeBlockId": "n14-lead-04-whole-copy-before",
+          "compiledBlockId": "n14-lead-04-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000596"
+      ]
+    },
+    {
+      "id": "n14-formula-04",
+      "shape": {
+        "id": "n14-formula-04",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-04",
+          "beforeBlockId": "n14-04-before",
+          "compiledBlockId": "n14-04-before-0",
+          "itemId": "n14-04",
+          "slotId": "n14-04-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000596"
+      ]
+    },
+    {
+      "id": "n14-after-04",
+      "shape": {
+        "id": "n14-after-04",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-04-whole-copy",
+          "beforeBlockId": "n14-after-04-whole-copy-before",
+          "compiledBlockId": "n14-after-04-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000596"
+      ]
+    },
+    {
+      "id": "n14-lead-05",
+      "shape": {
+        "id": "n14-lead-05",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-05-whole-copy",
+          "beforeBlockId": "n14-lead-05-whole-copy-before",
+          "compiledBlockId": "n14-lead-05-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000597",
+        "word-p-000598",
+        "word-p-000599"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-boundaries-lead",
+      "shape": {
+        "id": "n14-w048-q05-boundaries-lead",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-boundaries-lead-whole-copy",
+          "beforeBlockId": "n14-w048-q05-boundaries-lead-whole-copy-before",
+          "compiledBlockId": "n14-w048-q05-boundaries-lead-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-boundaries-formula",
+      "shape": {
+        "id": "n14-w048-q05-boundaries-formula",
+        "type": "formula",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-boundaries",
+          "beforeBlockId": "n14-w048-q05-boundaries-before",
+          "compiledBlockId": "n14-w048-q05-boundaries-before-0",
+          "itemId": "n14-w048-q05-boundaries",
+          "slotId": "n14-w048-q05-boundaries-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-boundaries-after",
+      "shape": {
+        "id": "n14-w048-q05-boundaries-after",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-boundaries-after-whole-copy",
+          "beforeBlockId": "n14-w048-q05-boundaries-after-whole-copy-before",
+          "compiledBlockId": "n14-w048-q05-boundaries-after-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-region-lead",
+      "shape": {
+        "id": "n14-w048-q05-region-lead",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-region-lead-whole-copy",
+          "beforeBlockId": "n14-w048-q05-region-lead-whole-copy-before",
+          "compiledBlockId": "n14-w048-q05-region-lead-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-region-formula",
+      "shape": {
+        "id": "n14-w048-q05-region-formula",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-region",
+          "beforeBlockId": "n14-w048-q05-region-before",
+          "compiledBlockId": "n14-w048-q05-region-before",
+          "itemId": "n14-w048-q05-region",
+          "slotId": "n14-w048-q05-region-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-region-after",
+      "shape": {
+        "id": "n14-w048-q05-region-after",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-q05-region-after-whole-copy",
+          "beforeBlockId": "n14-w048-q05-region-after-whole-copy-before",
+          "compiledBlockId": "n14-w048-q05-region-after-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-formula-05",
+      "shape": {
+        "id": "n14-formula-05",
+        "type": "paragraph",
+        "derivationId": "n14-q05-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-05",
+          "beforeBlockId": "n14-05-before",
+          "compiledBlockId": "n14-05-before",
+          "itemId": "n14-05",
+          "slotId": "n14-05-slot"
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-after-05",
+      "shape": {
+        "id": "n14-after-05",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-05-whole-copy",
+          "beforeBlockId": "n14-after-05-whole-copy-before",
+          "compiledBlockId": "n14-after-05-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000600"
+      ]
+    },
+    {
+      "id": "n14-lead-06",
+      "shape": {
+        "id": "n14-lead-06",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-06-whole-copy",
+          "beforeBlockId": "n14-lead-06-whole-copy-before",
+          "compiledBlockId": "n14-lead-06-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 4,
+      "sourceRefs": [
+        "word-p-000601"
+      ]
+    },
+    {
+      "id": "n14-formula-06",
+      "shape": {
+        "id": "n14-formula-06",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-06",
+          "beforeBlockId": "n14-06-before",
+          "compiledBlockId": "n14-06-before-0",
+          "itemId": "n14-06",
+          "slotId": "n14-06-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000601"
+      ]
+    },
+    {
+      "id": "n14-after-06",
+      "shape": {
+        "id": "n14-after-06",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-06-whole-copy",
+          "beforeBlockId": "n14-after-06-whole-copy-before",
+          "compiledBlockId": "n14-after-06-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000602"
+      ]
+    },
+    {
+      "id": "n14-show-n14-f01",
+      "shape": {
+        "id": "n14-show-n14-f01",
+        "type": "figure",
+        "figureId": "n14-f01"
+      },
+      "metadata": true,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-show-n14-f01-whole-copy",
+          "beforeBlockId": "n14-show-n14-f01-whole-copy-before",
+          "compiledBlockId": "n14-show-n14-f01-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000602",
+        "word-p-000603",
+        "word-p-000604"
+      ]
+    },
+    {
+      "id": "n14-heading-2",
+      "shape": {
+        "id": "n14-heading-2",
+        "type": "heading"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-heading-2-whole-copy",
+          "beforeBlockId": "n14-heading-2-whole-copy-before",
+          "compiledBlockId": "n14-heading-2-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000605"
+      ]
+    },
+    {
+      "id": "n14-marker-2",
+      "shape": {
+        "id": "n14-marker-2",
+        "type": "marker",
+        "kind": "proof"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-marker-2-whole-copy",
+          "beforeBlockId": "n14-marker-2-whole-copy-before",
+          "compiledBlockId": "n14-marker-2-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000606"
+      ]
+    },
+    {
+      "id": "n14-group-2",
+      "shape": {
+        "id": "n14-group-2",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-group-2-whole-copy",
+          "beforeBlockId": "n14-group-2-whole-copy-before",
+          "compiledBlockId": "n14-group-2-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000607"
+      ]
+    },
+    {
+      "id": "n14-lead-wm014-q07-nonnegative",
+      "shape": {
+        "id": "n14-lead-wm014-q07-nonnegative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm014-q07-nonnegative-whole-copy",
+          "beforeBlockId": "n14-lead-wm014-q07-nonnegative-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm014-q07-nonnegative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 14,
+      "sourceRefs": [
+        "word-p-000607"
+      ]
+    },
+    {
+      "id": "n14-formula-wm014-q07-nonnegative",
+      "shape": {
+        "id": "n14-formula-wm014-q07-nonnegative",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm014-q07-nonnegative",
+          "beforeBlockId": "n14-wm014-q07-nonnegative-before",
+          "compiledBlockId": "n14-wm014-q07-nonnegative-before-0",
+          "itemId": "n14-wm014-q07-nonnegative",
+          "slotId": "n14-wm014-q07-nonnegative-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-after-wm014-q07-nonnegative",
+      "shape": {
+        "id": "n14-after-wm014-q07-nonnegative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm014-q07-nonnegative-whole-copy",
+          "beforeBlockId": "n14-after-wm014-q07-nonnegative-whole-copy-before",
+          "compiledBlockId": "n14-after-wm014-q07-nonnegative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 8,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-lead-wm014-q07-negative",
+      "shape": {
+        "id": "n14-lead-wm014-q07-negative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm014-q07-negative-whole-copy",
+          "beforeBlockId": "n14-lead-wm014-q07-negative-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm014-q07-negative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 12,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-formula-wm014-q07-negative",
+      "shape": {
+        "id": "n14-formula-wm014-q07-negative",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm014-q07-negative",
+          "beforeBlockId": "n14-wm014-q07-negative-before",
+          "compiledBlockId": "n14-wm014-q07-negative-before-0",
+          "itemId": "n14-wm014-q07-negative",
+          "slotId": "n14-wm014-q07-negative-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-after-wm014-q07-negative",
+      "shape": {
+        "id": "n14-after-wm014-q07-negative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm014-q07-negative-whole-copy",
+          "beforeBlockId": "n14-after-wm014-q07-negative-whole-copy-before",
+          "compiledBlockId": "n14-after-wm014-q07-negative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 8,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-lead-07",
+      "shape": {
+        "id": "n14-lead-07",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-07-whole-copy",
+          "beforeBlockId": "n14-lead-07-whole-copy-before",
+          "compiledBlockId": "n14-lead-07-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 7,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-formula-07",
+      "shape": {
+        "id": "n14-formula-07",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-07",
+          "beforeBlockId": "n14-07-before",
+          "compiledBlockId": "n14-07-before-0",
+          "itemId": "n14-07",
+          "slotId": "n14-07-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000608"
+      ]
+    },
+    {
+      "id": "n14-after-07",
+      "shape": {
+        "id": "n14-after-07",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-07-whole-copy",
+          "beforeBlockId": "n14-after-07-whole-copy-before",
+          "compiledBlockId": "n14-after-07-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000612"
+      ]
+    },
+    {
+      "id": "n14-after-wm014-q07-converse",
+      "shape": {
+        "id": "n14-after-wm014-q07-converse",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm014-q07-converse-whole-copy",
+          "beforeBlockId": "n14-after-wm014-q07-converse-whole-copy-before",
+          "compiledBlockId": "n14-after-wm014-q07-converse-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 16,
+      "sourceRefs": [
+        "word-p-000610"
+      ]
+    },
+    {
+      "id": "n14-lead-wm015-q08-nonnegative",
+      "shape": {
+        "id": "n14-lead-wm015-q08-nonnegative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm015-q08-nonnegative-whole-copy",
+          "beforeBlockId": "n14-lead-wm015-q08-nonnegative-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm015-q08-nonnegative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 12,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-formula-wm015-q08-nonnegative",
+      "shape": {
+        "id": "n14-formula-wm015-q08-nonnegative",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm015-q08-nonnegative",
+          "beforeBlockId": "n14-wm015-q08-nonnegative-before",
+          "compiledBlockId": "n14-wm015-q08-nonnegative-before-0",
+          "itemId": "n14-wm015-q08-nonnegative",
+          "slotId": "n14-wm015-q08-nonnegative-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-after-wm015-q08-nonnegative",
+      "shape": {
+        "id": "n14-after-wm015-q08-nonnegative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm015-q08-nonnegative-whole-copy",
+          "beforeBlockId": "n14-after-wm015-q08-nonnegative-whole-copy-before",
+          "compiledBlockId": "n14-after-wm015-q08-nonnegative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 6,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-lead-wm015-q08-negative",
+      "shape": {
+        "id": "n14-lead-wm015-q08-negative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm015-q08-negative-whole-copy",
+          "beforeBlockId": "n14-lead-wm015-q08-negative-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm015-q08-negative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 8,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-formula-wm015-q08-negative",
+      "shape": {
+        "id": "n14-formula-wm015-q08-negative",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm015-q08-negative",
+          "beforeBlockId": "n14-wm015-q08-negative-before",
+          "compiledBlockId": "n14-wm015-q08-negative-before-0",
+          "itemId": "n14-wm015-q08-negative",
+          "slotId": "n14-wm015-q08-negative-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-after-wm015-q08-negative",
+      "shape": {
+        "id": "n14-after-wm015-q08-negative",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm015-q08-negative-whole-copy",
+          "beforeBlockId": "n14-after-wm015-q08-negative-whole-copy-before",
+          "compiledBlockId": "n14-after-wm015-q08-negative-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 4,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-lead-08",
+      "shape": {
+        "id": "n14-lead-08",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-08-whole-copy",
+          "beforeBlockId": "n14-lead-08-whole-copy-before",
+          "compiledBlockId": "n14-lead-08-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-formula-08",
+      "shape": {
+        "id": "n14-formula-08",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-08",
+          "beforeBlockId": "n14-08-before",
+          "compiledBlockId": "n14-08-before-0",
+          "itemId": "n14-08",
+          "slotId": "n14-08-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000609"
+      ]
+    },
+    {
+      "id": "n14-after-08",
+      "shape": {
+        "id": "n14-after-08",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-08-whole-copy",
+          "beforeBlockId": "n14-after-08-whole-copy-before",
+          "compiledBlockId": "n14-after-08-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000612"
+      ]
+    },
+    {
+      "id": "n14-after-wm015-q08-converse",
+      "shape": {
+        "id": "n14-after-wm015-q08-converse",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm015-q08-converse-whole-copy",
+          "beforeBlockId": "n14-after-wm015-q08-converse-whole-copy-before",
+          "compiledBlockId": "n14-after-wm015-q08-converse-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 19,
+      "sourceRefs": [
+        "word-p-000611"
+      ]
+    },
+    {
+      "id": "n14-heading-3",
+      "shape": {
+        "id": "n14-heading-3",
+        "type": "heading"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-heading-3-whole-copy",
+          "beforeBlockId": "n14-heading-3-whole-copy-before",
+          "compiledBlockId": "n14-heading-3-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000612",
+        "word-p-000613"
+      ]
+    },
+    {
+      "id": "n14-marker-3",
+      "shape": {
+        "id": "n14-marker-3",
+        "type": "marker",
+        "kind": "example"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-marker-3-whole-copy",
+          "beforeBlockId": "n14-marker-3-whole-copy-before",
+          "compiledBlockId": "n14-marker-3-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000613"
+      ]
+    },
+    {
+      "id": "n14-group-3",
+      "shape": {
+        "id": "n14-group-3",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-group-3-whole-copy",
+          "beforeBlockId": "n14-group-3-whole-copy-before",
+          "compiledBlockId": "n14-group-3-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000612",
+        "word-p-000617"
+      ]
+    },
+    {
+      "id": "n14-lead-09",
+      "shape": {
+        "id": "n14-lead-09",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-09-whole-copy",
+          "beforeBlockId": "n14-lead-09-whole-copy-before",
+          "compiledBlockId": "n14-lead-09-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 7,
+      "sourceRefs": [
+        "word-p-000614"
+      ]
+    },
+    {
+      "id": "n14-formula-09",
+      "shape": {
+        "id": "n14-formula-09",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-09",
+          "beforeBlockId": "n14-09-before",
+          "compiledBlockId": "n14-09-before-0",
+          "itemId": "n14-09",
+          "slotId": "n14-09-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000615"
+      ]
+    },
+    {
+      "id": "n14-after-09",
+      "shape": {
+        "id": "n14-after-09",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-09-whole-copy",
+          "beforeBlockId": "n14-after-09-whole-copy-before",
+          "compiledBlockId": "n14-after-09-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000615"
+      ]
+    },
+    {
+      "id": "n14-lead-10",
+      "shape": {
+        "id": "n14-lead-10",
+        "type": "formula",
+        "derivationId": "n14-q10-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-10-whole-copy",
+          "beforeBlockId": "n14-lead-10-whole-copy-before",
+          "compiledBlockId": "n14-lead-10-whole-copy-before-0",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000616"
+      ]
+    },
+    {
+      "id": "n14-formula-10",
+      "shape": {
+        "id": "n14-formula-10",
+        "type": "formula",
+        "derivationId": "n14-q10-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm018-q10-add-left",
+          "beforeBlockId": "n14-wm018-q10-add-left-before",
+          "compiledBlockId": "n14-wm018-q10-add-left-before-0",
+          "itemId": "n14-wm018-q10-add-left",
+          "slotId": "n14-wm018-q10-add-left-slot"
+        },
+        {
+          "nodeId": "n14-wm018-q10-add-center",
+          "beforeBlockId": "n14-wm018-q10-add-center-before",
+          "compiledBlockId": "n14-wm018-q10-add-center-before-0",
+          "itemId": "n14-wm018-q10-add-center",
+          "slotId": "n14-wm018-q10-add-center-slot"
+        },
+        {
+          "nodeId": "n14-wm018-q10-add-right",
+          "beforeBlockId": "n14-wm018-q10-add-right-before",
+          "compiledBlockId": "n14-wm018-q10-add-right-before-0",
+          "itemId": "n14-wm018-q10-add-right",
+          "slotId": "n14-wm018-q10-add-right-slot"
+        }
+      ],
+      "partCount": 6,
+      "sourceRefs": [
+        "word-p-000616"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-explain",
+      "shape": {
+        "id": "n14-wm018-q10-explain",
+        "type": "paragraph",
+        "derivationId": "n14-q10-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm018-q10-explain-whole-copy",
+          "beforeBlockId": "n14-wm018-q10-explain-whole-copy-before",
+          "compiledBlockId": "n14-wm018-q10-explain-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000616"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-result",
+      "shape": {
+        "id": "n14-wm018-q10-result",
+        "type": "formula",
+        "derivationId": "n14-q10-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-10",
+          "beforeBlockId": "n14-10-before",
+          "compiledBlockId": "n14-10-before-0",
+          "itemId": "n14-10",
+          "slotId": "n14-10-slot"
+        },
+        {
+          "nodeId": "n14-wm018-q10-bound-right",
+          "beforeBlockId": "n14-wm018-q10-bound-right-before",
+          "compiledBlockId": "n14-wm018-q10-bound-right-before-0",
+          "itemId": "n14-wm018-q10-bound-right",
+          "slotId": "n14-wm018-q10-bound-right-slot"
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000616"
+      ]
+    },
+    {
+      "id": "n14-after-10",
+      "shape": {
+        "id": "n14-after-10",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-10-whole-copy",
+          "beforeBlockId": "n14-after-10-whole-copy-before",
+          "compiledBlockId": "n14-after-10-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000617"
+      ]
+    },
+    {
+      "id": "n14-w048-check-marker",
+      "shape": {
+        "id": "n14-w048-check-marker",
+        "type": "marker",
+        "kind": "check"
+      },
+      "metadata": true,
+      "textField": "text",
+      "owners": [
+        {
+          "nodeId": "n14-w048-check-marker-whole-copy",
+          "beforeBlockId": "n14-w048-check-marker-whole-copy-before",
+          "compiledBlockId": "n14-w048-check-marker-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000618"
+      ]
+    },
+    {
+      "id": "n14-lead-11",
+      "shape": {
+        "id": "n14-lead-11",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-11-whole-copy",
+          "beforeBlockId": "n14-lead-11-whole-copy-before",
+          "compiledBlockId": "n14-lead-11-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 7,
+      "sourceRefs": [
+        "word-p-000618",
+        "word-p-000619"
+      ]
+    },
+    {
+      "id": "n14-formula-11",
+      "shape": {
+        "id": "n14-formula-11",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-11",
+          "beforeBlockId": "n14-11-before",
+          "compiledBlockId": "n14-11-before-0",
+          "itemId": "n14-11",
+          "slotId": "n14-11-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000620"
+      ]
+    },
+    {
+      "id": "n14-after-11",
+      "shape": {
+        "id": "n14-after-11",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-11-whole-copy",
+          "beforeBlockId": "n14-after-11-whole-copy-before",
+          "compiledBlockId": "n14-after-11-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 7,
+      "sourceRefs": [
+        "word-p-000620"
+      ]
+    },
+    {
+      "id": "n14-lead-wm016-q12-left",
+      "shape": {
+        "id": "n14-lead-wm016-q12-left",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm016-q12-left-whole-copy",
+          "beforeBlockId": "n14-lead-wm016-q12-left-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm016-q12-left-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-formula-wm016-q12-left",
+      "shape": {
+        "id": "n14-formula-wm016-q12-left",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm016-q12-left",
+          "beforeBlockId": "n14-wm016-q12-left-before",
+          "compiledBlockId": "n14-wm016-q12-left-before-0",
+          "itemId": "n14-wm016-q12-left",
+          "slotId": "n14-wm016-q12-left-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-after-wm016-q12-left",
+      "shape": {
+        "id": "n14-after-wm016-q12-left",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm016-q12-left-whole-copy",
+          "beforeBlockId": "n14-after-wm016-q12-left-whole-copy-before",
+          "compiledBlockId": "n14-after-wm016-q12-left-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-lead-wm016-q12-right",
+      "shape": {
+        "id": "n14-lead-wm016-q12-right",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-wm016-q12-right-whole-copy",
+          "beforeBlockId": "n14-lead-wm016-q12-right-whole-copy-before",
+          "compiledBlockId": "n14-lead-wm016-q12-right-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-formula-wm016-q12-right",
+      "shape": {
+        "id": "n14-formula-wm016-q12-right",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm016-q12-right",
+          "beforeBlockId": "n14-wm016-q12-right-before",
+          "compiledBlockId": "n14-wm016-q12-right-before-0",
+          "itemId": "n14-wm016-q12-right",
+          "slotId": "n14-wm016-q12-right-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-after-wm016-q12-right",
+      "shape": {
+        "id": "n14-after-wm016-q12-right",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm016-q12-right-whole-copy",
+          "beforeBlockId": "n14-after-wm016-q12-right-whole-copy-before",
+          "compiledBlockId": "n14-after-wm016-q12-right-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 4,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-lead-12",
+      "shape": {
+        "id": "n14-lead-12",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-12-whole-copy",
+          "beforeBlockId": "n14-lead-12-whole-copy-before",
+          "compiledBlockId": "n14-lead-12-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-formula-12",
+      "shape": {
+        "id": "n14-formula-12",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-12",
+          "beforeBlockId": "n14-12-before",
+          "compiledBlockId": "n14-12-before-0",
+          "itemId": "n14-12",
+          "slotId": "n14-12-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-after-12",
+      "shape": {
+        "id": "n14-after-12",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-12-whole-copy",
+          "beforeBlockId": "n14-after-12-whole-copy-before",
+          "compiledBlockId": "n14-after-12-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000622"
+      ]
+    },
+    {
+      "id": "n14-after-wm016-q12-union",
+      "shape": {
+        "id": "n14-after-wm016-q12-union",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-wm016-q12-union-whole-copy",
+          "beforeBlockId": "n14-after-wm016-q12-union-whole-copy-before",
+          "compiledBlockId": "n14-after-wm016-q12-union-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 11,
+      "sourceRefs": [
+        "word-p-000621"
+      ]
+    },
+    {
+      "id": "n14-lead-13",
+      "shape": {
+        "id": "n14-lead-13",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-13-whole-copy",
+          "beforeBlockId": "n14-lead-13-whole-copy-before",
+          "compiledBlockId": "n14-lead-13-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000622",
+        "word-p-000623",
+        "word-p-000624"
+      ]
+    },
+    {
+      "id": "n14-formula-13",
+      "shape": {
+        "id": "n14-formula-13",
+        "type": "formula"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-13",
+          "beforeBlockId": "n14-13-before",
+          "compiledBlockId": "n14-13-before-0",
+          "itemId": "n14-13",
+          "slotId": "n14-13-slot"
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000625"
+      ]
+    },
+    {
+      "id": "n14-after-13",
+      "shape": {
+        "id": "n14-after-13",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-13-whole-copy",
+          "beforeBlockId": "n14-after-13-whole-copy-before",
+          "compiledBlockId": "n14-after-13-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000625"
+      ]
+    },
+    {
+      "id": "n14-lead-14",
+      "shape": {
+        "id": "n14-lead-14",
+        "type": "formula",
+        "derivationId": "n14-q14-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-14-whole-copy",
+          "beforeBlockId": "n14-lead-14-whole-copy-before",
+          "compiledBlockId": "n14-lead-14-whole-copy-before-0",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000626"
+      ]
+    },
+    {
+      "id": "n14-formula-14",
+      "shape": {
+        "id": "n14-formula-14",
+        "type": "formula",
+        "derivationId": "n14-q14-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm019-q14-add-left",
+          "beforeBlockId": "n14-wm019-q14-add-left-before",
+          "compiledBlockId": "n14-wm019-q14-add-left-before-0",
+          "itemId": "n14-wm019-q14-add-left",
+          "slotId": "n14-wm019-q14-add-left-slot"
+        },
+        {
+          "nodeId": "n14-wm019-q14-add-center",
+          "beforeBlockId": "n14-wm019-q14-add-center-before",
+          "compiledBlockId": "n14-wm019-q14-add-center-before-0",
+          "itemId": "n14-wm019-q14-add-center",
+          "slotId": "n14-wm019-q14-add-center-slot"
+        },
+        {
+          "nodeId": "n14-wm019-q14-add-right",
+          "beforeBlockId": "n14-wm019-q14-add-right-before",
+          "compiledBlockId": "n14-wm019-q14-add-right-before-0",
+          "itemId": "n14-wm019-q14-add-right",
+          "slotId": "n14-wm019-q14-add-right-slot"
+        }
+      ],
+      "partCount": 6,
+      "sourceRefs": [
+        "word-p-000626"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-explain",
+      "shape": {
+        "id": "n14-wm019-q14-explain",
+        "type": "paragraph",
+        "derivationId": "n14-q14-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm019-q14-explain-whole-copy",
+          "beforeBlockId": "n14-wm019-q14-explain-whole-copy-before",
+          "compiledBlockId": "n14-wm019-q14-explain-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000626"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-result",
+      "shape": {
+        "id": "n14-wm019-q14-result",
+        "type": "formula",
+        "derivationId": "n14-q14-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-14",
+          "beforeBlockId": "n14-14-before",
+          "compiledBlockId": "n14-14-before-0",
+          "itemId": "n14-14",
+          "slotId": "n14-14-slot"
+        },
+        {
+          "nodeId": "n14-wm019-q14-bound-right",
+          "beforeBlockId": "n14-wm019-q14-bound-right-before",
+          "compiledBlockId": "n14-wm019-q14-bound-right-before-0",
+          "itemId": "n14-wm019-q14-bound-right",
+          "slotId": "n14-wm019-q14-bound-right-slot"
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000626"
+      ]
+    },
+    {
+      "id": "n14-after-14",
+      "shape": {
+        "id": "n14-after-14",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-14-whole-copy",
+          "beforeBlockId": "n14-after-14-whole-copy-before",
+          "compiledBlockId": "n14-after-14-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000626"
+      ]
+    },
+    {
+      "id": "n14-lead-15",
+      "shape": {
+        "id": "n14-lead-15",
+        "type": "formula",
+        "derivationId": "n14-q15-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-15-whole-copy",
+          "beforeBlockId": "n14-lead-15-whole-copy-before",
+          "compiledBlockId": "n14-lead-15-whole-copy-before-0",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000627"
+      ]
+    },
+    {
+      "id": "n14-formula-15",
+      "shape": {
+        "id": "n14-formula-15",
+        "type": "formula",
+        "derivationId": "n14-q15-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm020-q15-divide-left",
+          "beforeBlockId": "n14-wm020-q15-divide-left-before",
+          "compiledBlockId": "n14-wm020-q15-divide-left-before-0",
+          "itemId": "n14-wm020-q15-divide-left",
+          "slotId": "n14-wm020-q15-divide-left-slot"
+        },
+        {
+          "nodeId": "n14-wm020-q15-divide-center",
+          "beforeBlockId": "n14-wm020-q15-divide-center-before",
+          "compiledBlockId": "n14-wm020-q15-divide-center-before-0",
+          "itemId": "n14-wm020-q15-divide-center",
+          "slotId": "n14-wm020-q15-divide-center-slot"
+        },
+        {
+          "nodeId": "n14-wm020-q15-divide-right",
+          "beforeBlockId": "n14-wm020-q15-divide-right-before",
+          "compiledBlockId": "n14-wm020-q15-divide-right-before-0",
+          "itemId": "n14-wm020-q15-divide-right",
+          "slotId": "n14-wm020-q15-divide-right-slot"
+        }
+      ],
+      "partCount": 6,
+      "sourceRefs": [
+        "word-p-000627"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-explain",
+      "shape": {
+        "id": "n14-wm020-q15-explain",
+        "type": "paragraph",
+        "derivationId": "n14-q15-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm020-q15-explain-whole-copy",
+          "beforeBlockId": "n14-wm020-q15-explain-whole-copy-before",
+          "compiledBlockId": "n14-wm020-q15-explain-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000627"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-result",
+      "shape": {
+        "id": "n14-wm020-q15-result",
+        "type": "formula",
+        "derivationId": "n14-q15-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-15",
+          "beforeBlockId": "n14-15-before",
+          "compiledBlockId": "n14-15-before-0",
+          "itemId": "n14-15",
+          "slotId": "n14-15-slot"
+        },
+        {
+          "nodeId": "n14-wm020-q15-bound-right",
+          "beforeBlockId": "n14-wm020-q15-bound-right-before",
+          "compiledBlockId": "n14-wm020-q15-bound-right-before-0",
+          "itemId": "n14-wm020-q15-bound-right",
+          "slotId": "n14-wm020-q15-bound-right-slot"
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000627"
+      ]
+    },
+    {
+      "id": "n14-after-15",
+      "shape": {
+        "id": "n14-after-15",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-15-whole-copy",
+          "beforeBlockId": "n14-after-15-whole-copy-before",
+          "compiledBlockId": "n14-after-15-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000627"
+      ]
+    },
+    {
+      "id": "n14-lead-16",
+      "shape": {
+        "id": "n14-lead-16",
+        "type": "paragraph",
+        "derivationId": "n14-q16-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-lead-16-whole-copy",
+          "beforeBlockId": "n14-lead-16-whole-copy-before",
+          "compiledBlockId": "n14-lead-16-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 6,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-formula-16",
+      "shape": {
+        "id": "n14-formula-16",
+        "type": "formula",
+        "derivationId": "n14-q16-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm022-q16-left-inner",
+          "beforeBlockId": "n14-wm022-q16-left-inner-before",
+          "compiledBlockId": "n14-wm022-q16-left-inner-before-0",
+          "itemId": "n14-wm022-q16-left-inner",
+          "slotId": "n14-wm022-q16-left-inner-slot"
+        },
+        {
+          "nodeId": "n14-wm022-q16-left-abs",
+          "beforeBlockId": "n14-wm022-q16-left-abs-before",
+          "compiledBlockId": "n14-wm022-q16-left-abs-before-0",
+          "itemId": "n14-wm022-q16-left-abs",
+          "slotId": "n14-wm022-q16-left-abs-slot"
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-right",
+      "shape": {
+        "id": "n14-wm022-q16-right",
+        "type": "formula",
+        "derivationId": "n14-q16-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm022-q16-right-inner",
+          "beforeBlockId": "n14-wm022-q16-right-inner-before",
+          "compiledBlockId": "n14-wm022-q16-right-inner-before-0",
+          "itemId": "n14-wm022-q16-right-inner",
+          "slotId": "n14-wm022-q16-right-inner-slot"
+        },
+        {
+          "nodeId": "n14-wm022-q16-right-abs",
+          "beforeBlockId": "n14-wm022-q16-right-abs-before",
+          "compiledBlockId": "n14-wm022-q16-right-abs-before-0",
+          "itemId": "n14-wm022-q16-right-abs",
+          "slotId": "n14-wm022-q16-right-abs-slot"
+        }
+      ],
+      "partCount": 5,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-bridge",
+      "shape": {
+        "id": "n14-wm022-q16-bridge",
+        "type": "paragraph",
+        "derivationId": "n14-q16-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-wm022-q16-bridge-whole-copy",
+          "beforeBlockId": "n14-wm022-q16-bridge-whole-copy-before",
+          "compiledBlockId": "n14-wm022-q16-bridge-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-conclusion",
+      "shape": {
+        "id": "n14-wm022-q16-conclusion",
+        "type": "paragraph",
+        "derivationId": "n14-q16-chain"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-16",
+          "beforeBlockId": "n14-16-before",
+          "compiledBlockId": "n14-16-before",
+          "itemId": "n14-16",
+          "slotId": "n14-16-slot"
+        }
+      ],
+      "partCount": 2,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-after-16",
+      "shape": {
+        "id": "n14-after-16",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-after-16-whole-copy",
+          "beforeBlockId": "n14-after-16-whole-copy-before",
+          "compiledBlockId": "n14-after-16-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 3,
+      "sourceRefs": [
+        "word-p-000628"
+      ]
+    },
+    {
+      "id": "n14-w048-chapter-summary",
+      "shape": {
+        "id": "n14-w048-chapter-summary",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-chapter-summary-whole-copy",
+          "beforeBlockId": "n14-w048-chapter-summary-whole-copy-before",
+          "compiledBlockId": "n14-w048-chapter-summary-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000630",
+        "word-p-000631",
+        "word-p-000632"
+      ]
+    },
+    {
+      "id": "n14-w048-next-chapter-bridge",
+      "shape": {
+        "id": "n14-w048-next-chapter-bridge",
+        "type": "paragraph"
+      },
+      "metadata": false,
+      "textField": null,
+      "owners": [
+        {
+          "nodeId": "n14-w048-next-chapter-bridge-whole-copy",
+          "beforeBlockId": "n14-w048-next-chapter-bridge-whole-copy-before",
+          "compiledBlockId": "n14-w048-next-chapter-bridge-whole-copy-before",
+          "itemId": null,
+          "slotId": null
+        }
+      ],
+      "partCount": 1,
+      "sourceRefs": [
+        "word-p-000633"
+      ]
+    }
+  ],
+  "itemContracts": [
+    {
+      "id": "n14-01",
+      "label": "N14-01",
+      "prompt": "言葉で表した条件を選ぼう。",
+      "answer": "原点からの距離が3より小さい",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "原点からの距離が3より小さい",
+        "原点からの距離が3より大きい",
+        "座標が3より大きい",
+        "原点からの距離が3以上"
+      ],
+      "purpose": "concept-formation",
+      "scaffoldLevel": "strong",
+      "hints": [
+        "絶対値は座標の符号ではなく原点からの距離。"
+      ]
+    },
+    {
+      "id": "n14-02",
+      "label": "N14-02",
+      "prompt": "二つの境界を選ぼう。",
+      "answer": "x=-3,\\quad x=3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x=-3,\\quad x=3",
+        "x=0,\\quad x=3",
+        "x=-3,\\quad x=0",
+        "x=3,\\quad x=6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "strong",
+      "hints": [
+        "3だけ左へ動いた点と3だけ右へ動いた点。"
+      ]
+    },
+    {
+      "id": "n14-w048-q03-region",
+      "label": "N14-W048-Q03-REGION",
+      "prompt": "距離が3未満となる領域を、二点の間と外側から選びましょう。",
+      "answer": "二点の間",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "二点の間",
+        "二点の外側",
+        "右側だけ",
+        "左側だけ"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "原点と、境界の外にある点をそれぞれ元の条件に当てはめて比べます。"
+      ]
+    },
+    {
+      "id": "n14-03",
+      "label": "N14-03",
+      "prompt": "判定した領域に、境界を含むかどうかを合わせてまとめよう。",
+      "answer": "二点の間、両端を含まない",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "二点の間、両端を含まない",
+        "二点の外側、両端を含まない",
+        "二点の間、両端を含む",
+        "二点の外側、両端を含む"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "境界では距離がちょうど3です。その値が元の不等号を満たすか確かめます。"
+      ]
+    },
+    {
+      "id": "n14-04",
+      "label": "N14-04",
+      "prompt": "xについての範囲を選ぼう。",
+      "answer": "-3<x<3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-3<x<3",
+        "x<-3\\;\\text{または}\\;x>3",
+        "-3\\le x\\le3",
+        "3<x<-3"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "xは−3より大きく、かつ3より小さい。"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-boundaries",
+      "label": "N14-W048-Q05-BOUNDARIES",
+      "prompt": "距離がちょうど4になる二つの境界を選びましょう。",
+      "answer": "x=-4,\\quad x=4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x=-4,\\quad x=4",
+        "x=0,\\quad x=4",
+        "x=-4,\\quad x=0",
+        "x=4,\\quad x=8"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "境界では距離がちょうど4になります。N13で求めた左右の位置を使います。"
+      ]
+    },
+    {
+      "id": "n14-w048-q05-region",
+      "label": "N14-W048-Q05-REGION",
+      "prompt": "元の距離の下限を満たすのは、二点の間と外側のどちらでしょう。",
+      "answer": "二点の外側",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "二点の外側",
+        "二点の間",
+        "右側だけ",
+        "左側だけ"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "原点と、境界より遠い位置をそれぞれ条件に当てはめて比べます。"
+      ]
+    },
+    {
+      "id": "n14-05",
+      "label": "N14-05",
+      "prompt": "求めた境界と領域に、等号の条件を合わせて結果をまとめよう。",
+      "answer": "境界−4と4、外側、端点を含む",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "境界−4と4、外側、端点を含む",
+        "境界−4と4、内側、端点を含む",
+        "境界−4と4、外側、端点を含まない",
+        "境界0と4、外側、端点を含む"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "境界では距離がちょうど4です。その値が元の不等号を満たすか確かめます。"
+      ]
+    },
+    {
+      "id": "n14-06",
+      "label": "N14-06",
+      "prompt": "残す範囲と二つの枝のつなぎ方を選ぼう。",
+      "answer": "x\\le-4\\;\\text{または}\\;x\\ge4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x\\le-4\\;\\text{または}\\;x\\ge4",
+        "-4\\le x\\le4",
+        "x<-4\\;\\text{または}\\;x>4",
+        "x\\le-4\\;\\text{かつ}\\;x\\ge4"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "左右に離れた二つの範囲のいずれかを満たせばよい。等号も確認する。"
+      ]
+    },
+    {
+      "id": "n14-wm014-q07-nonnegative",
+      "label": "N14-WM014-Q07-NONNEGATIVE",
+      "prompt": "Xが0以上のとき、|X|<aとX≥0の両方から範囲を考えよう。",
+      "answer": "0\\le X<a",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "0\\le X<a",
+        "0\\le X\\le a",
+        "X>a",
+        "-a<X<0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "X≥0では絶対値を外すとXのまま。もとの「より小さい」は厳密な不等号。"
+      ]
+    },
+    {
+      "id": "n14-wm014-q07-negative",
+      "label": "N14-WM014-Q07-NEGATIVE",
+      "prompt": "Xが負のとき、−X<aを解き、X<0と組み合わせよう。",
+      "answer": "-a<X<0",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-a<X<0",
+        "-a\\le X<0",
+        "X<-a",
+        "0\\le X<a"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "Xに直すため−1倍すると、不等号の向きが逆になる。X<0も忘れない。"
+      ]
+    },
+    {
+      "id": "n14-07",
+      "label": "N14-07",
+      "prompt": "絶対値なしの一つの範囲を選ぼう。",
+      "answer": "-a<X<a",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-a<X<a",
+        "X<-a\\;\\text{または}\\;X>a",
+        "-a\\le X\\le a",
+        "a<X<-a"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "距離の上限は二つの境界の間で、等号を含まない。"
+      ]
+    },
+    {
+      "id": "n14-wm015-q08-nonnegative",
+      "label": "N14-WM015-Q08-NONNEGATIVE",
+      "prompt": "Xが0以上のとき、|X|>aを絶対値のない条件へ直そう。",
+      "answer": "X>a",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "X>a",
+        "X\\ge a",
+        "0\\le X<a",
+        "X<-a"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "X≥0なら|X|はXのまま。元の不等号は「より大きい」。"
+      ]
+    },
+    {
+      "id": "n14-wm015-q08-negative",
+      "label": "N14-WM015-Q08-NEGATIVE",
+      "prompt": "Xが負のとき、−X>aを解こう。",
+      "answer": "X<-a",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "X<-a",
+        "X\\le-a",
+        "X>-a",
+        "X>a"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "−1を掛けると不等号の向きが変わる。"
+      ]
+    },
+    {
+      "id": "n14-08",
+      "label": "N14-08",
+      "prompt": "絶対値のない二つの範囲を選ぼう。",
+      "answer": "X<-a\\;\\text{または}\\;X>a",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "X<-a\\;\\text{または}\\;X>a",
+        "-a<X<a",
+        "X\\le-a\\;\\text{または}\\;X\\ge a",
+        "X<-a\\;\\text{かつ}\\;X>a"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "左右の外側に分かれ、等号を含まない。"
+      ]
+    },
+    {
+      "id": "n14-09",
+      "label": "N14-09",
+      "prompt": "最初に得られる二重不等式を選ぼう。",
+      "answer": "-5<x-3<5",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-5<x-3<5",
+        "x-3<-5\\;\\text{または}\\;x-3>5",
+        "-5\\le x-3\\le5",
+        "-5<x<5"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "まだ3を移動せず、中身x−3のまま−5と5の間に挟む。"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-add-left",
+      "label": "N14-WM018-Q10-ADD-LEFT",
+      "prompt": "左端−5に足す数を選ぼう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "2",
+        "5"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "中央の−3を打ち消す操作を、左端にも行おう。"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-add-center",
+      "label": "N14-WM018-Q10-ADD-CENTER",
+      "prompt": "真ん中のx−3の定数を打ち消す数を選ぼう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "0",
+        "5"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "負の定数を打ち消すには、符号が逆の数を足す。"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-add-right",
+      "label": "N14-WM018-Q10-ADD-RIGHT",
+      "prompt": "右端5にも同じ数を足そう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "-5",
+        "2"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "左端と真ん中に使った加える数にそろえる。"
+      ]
+    },
+    {
+      "id": "n14-10",
+      "label": "N14-10",
+      "prompt": "左端の−5と加えた数を計算しよう。",
+      "answer": "-2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-2",
+        "2",
+        "-8",
+        "-5"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "−5に正の数を足したときの位置を数直線で考える。"
+      ]
+    },
+    {
+      "id": "n14-wm018-q10-bound-right",
+      "label": "N14-WM018-Q10-BOUND-RIGHT",
+      "prompt": "右端の5と加えた数を計算しよう。",
+      "answer": "8",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "8",
+        "2",
+        "5",
+        "-8"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "5から正の方向へ動いた結果を計算する。"
+      ]
+    },
+    {
+      "id": "n14-11",
+      "label": "N14-11",
+      "prompt": "内外と端点を判断し、絶対値を外した二条件を選ぼう。",
+      "answer": "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+        "-2\\le x+3\\le2",
+        "x+3<-2\\;\\text{または}\\;x+3>2",
+        "x+3\\le-2\\;\\text{かつ}\\;x+3\\ge2"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "≥という距離の下限を、x+3が取りうる位置として数直線で想像しよう。端点を含むかも考える。"
+      ]
+    },
+    {
+      "id": "n14-wm016-q12-left",
+      "label": "N14-WM016-Q12-LEFT",
+      "prompt": "左側の不等式x+3≤−2について、両辺から3を引こう。",
+      "answer": "x\\le-5",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x\\le-5",
+        "x<-5",
+        "x\\ge-5",
+        "x\\le-1"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "両辺から同じ3を引いても不等号の向きは変わらない。"
+      ]
+    },
+    {
+      "id": "n14-wm016-q12-right",
+      "label": "N14-WM016-Q12-RIGHT",
+      "prompt": "右側の不等式x+3≥2について、両辺から3を引こう。",
+      "answer": "x\\ge-1",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x\\ge-1",
+        "x>-1",
+        "x\\le-1",
+        "x\\ge1"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "右辺では2−3を計算する。両辺から3を引くと向きは変わらない。"
+      ]
+    },
+    {
+      "id": "n14-12",
+      "label": "N14-12",
+      "prompt": "最終的な二領域を選ぼう。",
+      "answer": "x\\le-5\\;\\text{または}\\;x\\ge-1",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "x\\le-5\\;\\text{または}\\;x\\ge-1",
+        "-5\\le x\\le-1",
+        "x<-5\\;\\text{または}\\;x>-1",
+        "x\\le-1\\;\\text{または}\\;x\\ge5"
+      ],
+      "purpose": "transfer",
+      "scaffoldLevel": "light",
+      "hints": [
+        "両方の枝から同じ3を引くが、枝どうしは結合しない。"
+      ]
+    },
+    {
+      "id": "n14-13",
+      "label": "N14-13",
+      "prompt": "絶対値を外した条件を選ぼう。",
+      "answer": "-4\\le3x-2\\le4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-4\\le3x-2\\le4",
+        "3x-2\\le-4\\;\\text{または}\\;3x-2\\ge4",
+        "-4<3x-2<4",
+        "-4\\le3x\\le4"
+      ],
+      "purpose": "transfer",
+      "scaffoldLevel": "light",
+      "hints": [
+        "≤では内側の両端も残し、中身全体を挟む。"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-add-left",
+      "label": "N14-WM019-Q14-ADD-LEFT",
+      "prompt": "左端−4にも同じ数を足そう。",
+      "answer": "2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "2",
+        "-2",
+        "4",
+        "6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "中央の−2を打ち消すには何を足すか考え、左端にも同じ操作をしよう。"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-add-center",
+      "label": "N14-WM019-Q14-ADD-CENTER",
+      "prompt": "中央3x−2の定数を打ち消す数を選ぼう。",
+      "answer": "2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "2",
+        "-2",
+        "0",
+        "3"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "−2と足して0になる数を考えよう。"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-add-right",
+      "label": "N14-WM019-Q14-ADD-RIGHT",
+      "prompt": "右端4にも同じ数を足そう。",
+      "answer": "2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "2",
+        "-2",
+        "4",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "左端と中央に使った同じ数を右端にも足そう。"
+      ]
+    },
+    {
+      "id": "n14-14",
+      "label": "N14-14",
+      "prompt": "左端の−4と加えた数を計算しよう。",
+      "answer": "-2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-2",
+        "2",
+        "-6",
+        "-4"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "−4に正の2を足すと数直線上でどこに動くか考えよう。"
+      ]
+    },
+    {
+      "id": "n14-wm019-q14-bound-right",
+      "label": "N14-WM019-Q14-BOUND-RIGHT",
+      "prompt": "右端の4と加えた数を計算しよう。",
+      "answer": "6",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "6",
+        "2",
+        "4",
+        "-6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "4と2を足した結果を計算しよう。"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-divide-left",
+      "label": "N14-WM020-Q15-DIVIDE-LEFT",
+      "prompt": "左端−2を割る正の数を選ぼう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "2",
+        "6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "中央の3xから係数3を取り除くには何で割ればよいか考え、左端にも同じ除数を使おう。"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-divide-center",
+      "label": "N14-WM020-Q15-DIVIDE-CENTER",
+      "prompt": "中央3xの係数を1にする除数を選ぼう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "1",
+        "6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-divide-right",
+      "label": "N14-WM020-Q15-DIVIDE-RIGHT",
+      "prompt": "右端6にも同じ正の除数を使おう。",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "2",
+        "6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "左端と中央に使った正の除数と同じ数で割ろう。"
+      ]
+    },
+    {
+      "id": "n14-15",
+      "label": "N14-15",
+      "prompt": "左端−2を正の3で割った値を計算しよう。",
+      "answer": "-\\frac23",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-\\frac23",
+        "\\frac23",
+        "-6",
+        "-\\frac32"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "負の2を正の3で割るので答えは負。分子と分母を確認しよう。"
+      ]
+    },
+    {
+      "id": "n14-wm020-q15-bound-right",
+      "label": "N14-WM020-Q15-BOUND-RIGHT",
+      "prompt": "右端6を正の3で割った値を計算しよう。",
+      "answer": "2",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "2",
+        "3",
+        "-2",
+        "\\frac12"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "6÷3を計算し、等号の有無を変えずに右端の境界を埋めよう。"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-left-inner",
+      "label": "N14-WM022-Q16-LEFT-INNER",
+      "prompt": "左端x=−2/3を代入して、3x−2を計算しよう。",
+      "answer": "-4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "-4",
+        "4",
+        "-2",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "まず3×(−1/3)=−1を考えよう。今度は−2/3を掛ける。その積を求めた後で2を引こう。"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-left-abs",
+      "label": "N14-WM022-Q16-LEFT-ABS",
+      "prompt": "左端の中身を使って絶対値を求めよう。",
+      "answer": "4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "4",
+        "-4",
+        "2",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "たとえば|−3|=3。絶対値は0からの距離だよ。直前に求めた負の数にも同じ規則を使おう。"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-right-inner",
+      "label": "N14-WM022-Q16-RIGHT-INNER",
+      "prompt": "右端x=2を代入して、3x−2を計算しよう。",
+      "answer": "4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "4",
+        "-4",
+        "2",
+        "6"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "たとえばx=1なら3×1−2を計算する。同じ順序で、今回はx=2を入れよう。"
+      ]
+    },
+    {
+      "id": "n14-wm022-q16-right-abs",
+      "label": "N14-WM022-Q16-RIGHT-ABS",
+      "prompt": "右端の中身を使って絶対値を求めよう。",
+      "answer": "4",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "4",
+        "-4",
+        "2",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "たとえば|2|=2。中身が0以上のときは、その値がそのまま距離になる。直前の結果に当てはめよう。"
+      ]
+    },
+    {
+      "id": "n14-16",
+      "label": "N14-16",
+      "prompt": "元の不等式を満たすか確認し、両端の扱いを選ぼう。",
+      "answer": "両端とも含む",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "両端とも含む",
+        "左端だけ含む",
+        "右端だけ含む",
+        "両端とも含まない"
+      ],
+      "purpose": "transfer",
+      "scaffoldLevel": "light",
+      "hints": [
+        "たとえば|−2|≤2は、等号でも成り立つ。左右の絶対値と元の上限4を一つずつ比べよう。"
+      ]
+    }
+  ],
+  "logicalGroups": [
+    {
+      "number": 1,
+      "rowIds": [
+        "n14-formula-02"
+      ],
+      "numberedRowId": "n14-formula-02",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 2,
+      "rowIds": [
+        "n14-formula-04"
+      ],
+      "numberedRowId": "n14-formula-04",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 3,
+      "rowIds": [
+        "n14-w048-q05-boundaries-formula"
+      ],
+      "numberedRowId": "n14-w048-q05-boundaries-formula",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 4,
+      "rowIds": [
+        "n14-formula-06"
+      ],
+      "numberedRowId": "n14-formula-06",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 5,
+      "rowIds": [
+        "n14-formula-wm014-q07-nonnegative"
+      ],
+      "numberedRowId": "n14-formula-wm014-q07-nonnegative",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 6,
+      "rowIds": [
+        "n14-formula-wm014-q07-negative"
+      ],
+      "numberedRowId": "n14-formula-wm014-q07-negative",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 7,
+      "rowIds": [
+        "n14-formula-07"
+      ],
+      "numberedRowId": "n14-formula-07",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 8,
+      "rowIds": [
+        "n14-formula-wm015-q08-nonnegative"
+      ],
+      "numberedRowId": "n14-formula-wm015-q08-nonnegative",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 9,
+      "rowIds": [
+        "n14-formula-wm015-q08-negative"
+      ],
+      "numberedRowId": "n14-formula-wm015-q08-negative",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 10,
+      "rowIds": [
+        "n14-formula-08"
+      ],
+      "numberedRowId": "n14-formula-08",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 11,
+      "rowIds": [
+        "n14-formula-09"
+      ],
+      "numberedRowId": "n14-formula-09",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 12,
+      "rowIds": [
+        "n14-lead-10",
+        "n14-formula-10",
+        "n14-wm018-q10-result"
+      ],
+      "numberedRowId": "n14-wm018-q10-result",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 13,
+      "rowIds": [
+        "n14-formula-11"
+      ],
+      "numberedRowId": "n14-formula-11",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 14,
+      "rowIds": [
+        "n14-formula-wm016-q12-left"
+      ],
+      "numberedRowId": "n14-formula-wm016-q12-left",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 15,
+      "rowIds": [
+        "n14-formula-wm016-q12-right"
+      ],
+      "numberedRowId": "n14-formula-wm016-q12-right",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 16,
+      "rowIds": [
+        "n14-formula-12"
+      ],
+      "numberedRowId": "n14-formula-12",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 17,
+      "rowIds": [
+        "n14-formula-13"
+      ],
+      "numberedRowId": "n14-formula-13",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 18,
+      "rowIds": [
+        "n14-lead-14",
+        "n14-formula-14",
+        "n14-wm019-q14-result"
+      ],
+      "numberedRowId": "n14-wm019-q14-result",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 19,
+      "rowIds": [
+        "n14-lead-15",
+        "n14-formula-15",
+        "n14-wm020-q15-result"
+      ],
+      "numberedRowId": "n14-wm020-q15-result",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    },
+    {
+      "number": 20,
+      "rowIds": [
+        "n14-formula-16",
+        "n14-wm022-q16-right"
+      ],
+      "numberedRowId": "n14-wm022-q16-right",
+      "reason": "同じderivationIdの一続きの導出は最後の物理行だけに一つの番号を置く。"
+    }
+  ],
+  "equationNumbers": {
+    "n14-formula-02": 1,
+    "n14-formula-04": 2,
+    "n14-w048-q05-boundaries-formula": 3,
+    "n14-formula-06": 4,
+    "n14-formula-wm014-q07-nonnegative": 5,
+    "n14-formula-wm014-q07-negative": 6,
+    "n14-formula-07": 7,
+    "n14-formula-wm015-q08-nonnegative": 8,
+    "n14-formula-wm015-q08-negative": 9,
+    "n14-formula-08": 10,
+    "n14-formula-09": 11,
+    "n14-wm018-q10-result": 12,
+    "n14-formula-11": 13,
+    "n14-formula-wm016-q12-left": 14,
+    "n14-formula-wm016-q12-right": 15,
+    "n14-formula-12": 16,
+    "n14-formula-13": 17,
+    "n14-wm019-q14-result": 18,
+    "n14-wm020-q15-result": 19,
+    "n14-wm022-q16-right": 20
+  },
+  "referenceLabelsAreNotStudentCopy": true,
+  "mechanicalProjectionOnly": true
+}

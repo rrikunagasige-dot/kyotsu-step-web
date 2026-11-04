@@ -7,3 +7,11 @@
 - A005：既存schema/choice/KaTeX283件、既存closed-AST解集合/端点13件を限定検査。CODE結果とAI判断を分離。
 - A006：正式C/R台帳でS00/S01、R01→R02→R03@n13を記録。次R04_PROPOSAL@n13。N14のformal工程は先PASSにしない。結果はgeneratedとevidence/NATIVE_CHECKPOINT.jsonを参照。
 - A007：production_context初回登録はmodelHash不足で拒否されたため、既存OFFLINE_ONLYモデルの版を指定して登録。R02初回提出も取得15事例の適用判断欠落で拒否された。現claimと実receiptを保持し、各事例の理由付き適用/範囲外を追加して正式再提出した。guardは変更していない。作業再開時のclaimed状態はnextにtaskが無いため、既存claimを照合して使用する分岐を補修。これらの内部拒否を最初からPASSだったとは記録しない。
+
+## 2026-11-04 — R04全文具体案と二段階の修正
+
+2f33f70a/06b23101の続行に従い、全文IR→既存CODE→物理行projection→実consumer/migration/式番号の具体4file patchを作成。原問25・旧50採点/200choiceを保持して9判断を追加。N13 R04初回/二回目のB FAILは合意で消さずnative記録し、P003の強いrevision限定selectorを非作者Bが再検査して両出力を解決。N14 R01〜R04を既存graph順に実行。新target審査時のN14著者説明既露出も原報告・packetに記載し、元のsource-first観察と分けた。
+
+A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画面未実施を区別。隔離型検査の初回fixture欠落、browser起動/zip取得失敗、親taskの原問16と番号20の混同も記録。実src/public/.github未変更、旧完了保存は新判断を未回答にする28条件を候補domainで実行。
+
+両R04正式PASS。次R05_APPROVAL@n13、両unitのP-W048-003具体案への本人判断を待つ。承認後R06→R07の実装・実画面検証。過去の続行/受入を今回の承認や品質labelへ代用しない。

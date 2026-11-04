@@ -1,0 +1,109 @@
+{
+  "status": "PASS_FULL_COPY_AND_PROJECTION",
+  "units": [
+    {
+      "unit": "n13",
+      "status": "PASS_FULL_COPY_ROUNDTRIP",
+      "irHash": "eeebc72ad77f484720c768991e2b29ce6a4e5dd00d6d48403c3401e5aef3c827",
+      "planHash": "d68f4f36d876779298fe731e968393045869d547513ee383f55f293a67b46d16",
+      "sourceBlocks": 33,
+      "taughtSourceBlocks": 32,
+      "structuralSourceBlocks": [
+        "word-p-000588"
+      ],
+      "nodes": 60,
+      "interactions": 18,
+      "physicalBlocks": 60,
+      "multiSlotRows": [],
+      "warningIds": [],
+      "roundTripExact": true,
+      "diagnosticProjectionUsed": false,
+      "liveUI": false
+    },
+    {
+      "unit": "n14",
+      "status": "PASS_FULL_COPY_ROUNDTRIP",
+      "irHash": "e4cc4488df65fc59fbe820cb7d85d769f792f562f6ca6feb3600517c659f75aa",
+      "planHash": "a55a646d9200c61d8c3451f1371086898a117a34b26b4a65a1a664b15c9cb63c",
+      "sourceBlocks": 46,
+      "taughtSourceBlocks": 44,
+      "structuralSourceBlocks": [
+        "word-p-000629",
+        "word-p-000634"
+      ],
+      "nodes": 111,
+      "interactions": 41,
+      "physicalBlocks": 100,
+      "multiSlotRows": [
+        {
+          "row": "n14-formula-10",
+          "items": [
+            "n14-wm018-q10-add-left",
+            "n14-wm018-q10-add-center",
+            "n14-wm018-q10-add-right"
+          ]
+        },
+        {
+          "row": "n14-wm018-q10-result",
+          "items": [
+            "n14-10",
+            "n14-wm018-q10-bound-right"
+          ]
+        },
+        {
+          "row": "n14-formula-14",
+          "items": [
+            "n14-wm019-q14-add-left",
+            "n14-wm019-q14-add-center",
+            "n14-wm019-q14-add-right"
+          ]
+        },
+        {
+          "row": "n14-wm019-q14-result",
+          "items": [
+            "n14-14",
+            "n14-wm019-q14-bound-right"
+          ]
+        },
+        {
+          "row": "n14-formula-15",
+          "items": [
+            "n14-wm020-q15-divide-left",
+            "n14-wm020-q15-divide-center",
+            "n14-wm020-q15-divide-right"
+          ]
+        },
+        {
+          "row": "n14-wm020-q15-result",
+          "items": [
+            "n14-15",
+            "n14-wm020-q15-bound-right"
+          ]
+        },
+        {
+          "row": "n14-formula-16",
+          "items": [
+            "n14-wm022-q16-left-inner",
+            "n14-wm022-q16-left-abs"
+          ]
+        },
+        {
+          "row": "n14-wm022-q16-right",
+          "items": [
+            "n14-wm022-q16-right-inner",
+            "n14-wm022-q16-right-abs"
+          ]
+        }
+      ],
+      "warningIds": [],
+      "roundTripExact": true,
+      "diagnosticProjectionUsed": false,
+      "liveUI": false
+    }
+  ],
+  "limits": [
+    "All source/candidate copy and physical independent slots are reconstructed from actual compileIR output.",
+    "This Work-scoped projection is not a new shared renderer or a UI/teaching acceptance result.",
+    "Metadata/figure placements remain explicit in row projection; figure bytes are separate source-bound inputs."
+  ]
+}

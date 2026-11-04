@@ -1,0 +1,59 @@
+{
+  "status": "PASS_DESIGN_PROTOTYPE_ONLY",
+  "readerSourceSHA256": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+  "exactExtractedFunctionNames": [
+    "groupReadingFlow",
+    "readingGroupItemIds",
+    "visibleBlocksInGroup",
+    "firstIncompleteGroup",
+    "visibleGroupCount",
+    "visibleGroups"
+  ],
+  "implementationHash": "232e2c71b407c3369ec89a707c6bcc22a21ae71113ec320bf45e4de975be7c79",
+  "cases": [
+    {
+      "unit": "N13",
+      "status": "PASS_DESIGN_CONSUMER_PROTOTYPE",
+      "correctSteps": 18,
+      "wrongChoices": 54,
+      "allPartialMultiSlotMasks": 0,
+      "oldCurrentRevisionCompletePreserved": true,
+      "firstNewItem": "n13-w048-q04-positive",
+      "allNewUnanswered": true,
+      "futureRowsWithheld": true,
+      "oldBaselineMigrationUsed": true,
+      "productMigrationImplemented": false,
+      "actualDOM": false
+    },
+    {
+      "unit": "N14",
+      "status": "PASS_DESIGN_CONSUMER_PROTOTYPE",
+      "correctSteps": 41,
+      "wrongChoices": 123,
+      "allPartialMultiSlotMasks": 44,
+      "oldCurrentRevisionCompletePreserved": true,
+      "firstNewItem": "n14-w048-q03-region",
+      "allNewUnanswered": true,
+      "futureRowsWithheld": true,
+      "oldBaselineMigrationUsed": true,
+      "productMigrationImplemented": false,
+      "actualDOM": false
+    }
+  ],
+  "packets": [
+    {
+      "unit": "N13",
+      "learnerCopyHash": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+    },
+    {
+      "unit": "N14",
+      "learnerCopyHash": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+    }
+  ],
+  "prototypeMigrationSource": "function migrateProposal(oldUnit,newUnit,progress){\n  if(!progress)return undefined;\n  const previous=effectiveTextbookProgress(oldUnit,progress);if(!previous)return undefined;\n  const {archivedRevisions,...archive}=previous,ids=new Set(oldUnit.sections[0].items.map(i=>i.id));\n  return{unitId:newUnit.unitId,unitRevision:newUnit.revision,startedAt:previous.startedAt,updatedAt:previous.updatedAt,answers:Object.fromEntries(Object.entries(previous.answers).filter(([id])=>ids.has(id))),archivedRevisions:{...archivedRevisions,[String(oldUnit.revision)]:archive},migratedFromRevision:oldUnit.revision,...(previous.completedAt!==undefined?{previousRevisionCompletedAt:previous.completedAt}:previous.previousRevisionCompletedAt!==undefined?{previousRevisionCompletedAt:previous.previousRevisionCompletedAt}:{})};\n }",
+  "limits": [
+    "Baseline effectiveTextbookProgress/isTextbookItemResolved and exact reader declarations were executed read-only.",
+    "Migration prototype is a proposed algorithm, not a patch to src/domain/textbook.ts.",
+    "Existing older revision migrations, real DOM/history/reset/font/axis geometry and frozen-source hosted checks remain implementation gates."
+  ]
+}

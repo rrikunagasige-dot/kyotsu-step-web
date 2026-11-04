@@ -1,0 +1,117 @@
+{
+  "root": "/workspace/scratch/6ff917b2ec4a/w047-n1112",
+  "store": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "work": "W-MATH-048",
+  "node": "R04_PROPOSAL@n13",
+  "inputHash": "c3673fd11b6e986617a9e8a1b04d41defe162725c2e5a1ec8dd199746000c184",
+  "roleEpoch": 2,
+  "artifactRefs": [
+    "174249d06199430810c94a53c4c2e863bfad70f5303f9dd37dc27ad802d886d0",
+    "f00b29bb1a7c13c06e9d41b7d335809001d8fb627da61ff93d11456fdf8f5faa",
+    "e9655c097ca9ddd377a25b0a87f405ee82e8da6ec9d6cab0560828dc8b5fb4d1",
+    "2a61801347b5c74b1b0bcda203a02565f6bbec0e68390b4abb2d7e614a6729a8",
+    "12e7f513ed40aaa452e52fa02aa4ffa957c7256c2a44cbedc052c48eeb3b5ff3",
+    "06a697182f684d8b33da4a70443a0dd90e545d748fd0c1cb88daf25b59a512b0",
+    "7f4d51136ed183aa65b2fae936fdc124e52664f7734d85812b9dddaf4e6c899b",
+    "00dffac216ad28dbf2a185c88850fa1ebe9b704d7933ecb3f082fc5ace74fbde",
+    "01b541fdc4e2ea849ac680074a2caae69b0b47933b410043b985e90f85b692a6"
+  ],
+  "evidenceRefs": [
+    "c2e10495-e289-4e2c-926b-a8019a83d5fd",
+    "4a01e9a2-2b0a-4abc-88b5-d7534d5a99fa",
+    "87436c03-7012-4921-9aae-6e37f2ef6a52",
+    "c0efa56a-48fa-48c2-ab44-d39cddac2e45",
+    "b5a40006-ef04-4526-8fac-b3dc4bd885c7",
+    "800faca3-4a30-4f37-a3e0-5e81f88102cb",
+    "862d7814-9140-4437-a176-6efc66160f7c",
+    "c6ac696a-23c8-4a3b-adff-1ad7ad48a360",
+    "acca30f2-e42f-4ab1-826f-21b8c2cf93cd",
+    "88772729-9855-4ae4-b00c-ba2b1a7a9a3b",
+    "917ce7d8-5bcb-4469-b8ab-b48f235f17c4",
+    "66bcc9e1-6ab4-4f57-92b0-8adcf2515ddb",
+    "155fe71a-01b5-443f-be95-a12c55da7655",
+    "5efc74e1-7cc6-4939-a88a-c8e256ba01ec"
+  ],
+  "reviewers": [
+    {
+      "logical": "A",
+      "agentRef": "/root/w048_review_a",
+      "taskRef": "W048-P001-n13-R04-A",
+      "facet": "design",
+      "claim": "teaching",
+      "reviewKind": "source-review",
+      "artifactHashes": {
+        "teaching": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "c3673fd11b6e986617a9e8a1b04d41defe162725c2e5a1ec8dd199746000c184",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "teaching",
+            "facet": "design",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "Old draft/constraints and initial primary-source observations known before new full learner target. Not blind. Original learner-copy first observations retained across CSS-only revision if epoch2; revised consumer is rechecked after initial FAIL, not a new blind first encounter. A assisted transport script only; B assisted prototype check script only. Neither authored lesson copy."
+        }
+      },
+      "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/r2/evidence/N13_R04_FIRST_A.json",
+      "launchPath": "/tmp/w048-e2-n13-launch-A.json",
+      "finalPath": "/tmp/w048-e2-n13-final-A.json"
+    },
+    {
+      "logical": "B",
+      "agentRef": "/root/w048_review_b",
+      "taskRef": "W048-P001-n13-R04-B",
+      "facet": "render",
+      "claim": "layout",
+      "reviewKind": "learner-visible-review",
+      "artifactHashes": {
+        "layout": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "c3673fd11b6e986617a9e8a1b04d41defe162725c2e5a1ec8dd199746000c184",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "layout",
+            "facet": "render",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "Old draft/constraints and initial primary-source observations known before new full learner target. Not blind. Original learner-copy first observations retained across CSS-only revision if epoch2; revised consumer is rechecked after initial FAIL, not a new blind first encounter. A assisted transport script only; B assisted prototype check script only. Neither authored lesson copy."
+        }
+      },
+      "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/r2/evidence/N13_R04_FIRST_B.json",
+      "launchPath": "/tmp/w048-e2-n13-launch-B.json",
+      "finalPath": "/tmp/w048-e2-n13-final-B.json"
+    }
+  ]
+}

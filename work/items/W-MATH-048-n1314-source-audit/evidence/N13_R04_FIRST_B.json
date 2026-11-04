@@ -1,0 +1,78 @@
+{
+  "taskRef": "W048-P001-n13-R04-B",
+  "assignmentId": "w048-R04_PROPOSAL@n13-B-426bb406ab-e1",
+  "targetHash": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+  "sourceFirst": true,
+  "firstPass": true,
+  "authorSeparation": true,
+  "verdict": "FAIL",
+  "firstObservations": [
+    {
+      "id": "FIRST-B-01",
+      "observation": "Read learner fullCopy (60 blocks), 18 option/hint views, two figure descriptions, and oldCompleteResume before current R04 author rationale. These are static proposed consumer states, not actual DOM."
+    },
+    {
+      "id": "FIRST-B-02",
+      "observation": "Q04, Q07, Q09 split computation/judgment into two added local choices before original final answer. Q05/Q08 retain staged approved local decisions. Every view ends at its current interaction; Q01 figure f02 is absent before first answer and visible by Q02; f01 appears after Q04 and before Q05."
+    },
+    {
+      "id": "FIRST-B-03",
+      "observation": "Number metadata and actual font/line geometry are not in learner snapshot, so need consumer/CSS route verification. Prior completed resume claims stop at new Q04-positive, preserving old answers without showing later new prerequisites."
+    },
+    {
+      "id": "FIRST-B-04",
+      "observation": "Some leads repeat the same math twice (Q01, Q06, Q08); this is visible copy redundancy, not source evidence. Inspect whether intended removal is required by frozen design."
+    }
+  ],
+  "firstObservationFreeze": {
+    "learnerFileSHA256": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+    "beforeAuthorRationale": true,
+    "priorExposure": "Old draft/constraints and initial primary-source observations known before new full learner target. Not blind. A assisted transport script only; B assisted prototype check script only. Neither authored lesson copy."
+  },
+  "rationale": [
+    "Frozen learner target SHA256 exactly matches assignment.artifactHashes.layout. Full learner copy, 18 per-interaction choice/hint views, figure descriptions and oldCompleteResume were inspected before new author rationale. Reviewer B authored only the independent probe script, not lesson copy or proposed patch; prior exposure is disclosed and this is not blind review.",
+    "Blocking static defect: scoped text-align:left targets the outer formula container. Existing .reading-formula-expression is display:flex with justify-content:center; N13 is absent from enabledUnits and follows this non-typeset branch. Text alignment does not change flex main-axis alignment. At <=350px existing Q05 grid also sets justify-content:center and justify-items:center. Thus same-derivation left-edge alignment promised by P001 is not implemented by the four-file target.",
+    "Explicit row projection maps all 60 N13 physical blocks to 60 compiled nodes; original 12 IDs, 48 choice strings, answers, acceptedAnswers and answerTypes are preserved. Q04/Q07/Q09 add six separate decisions, yielding 18. Term usage ordinary is deliberately removed by the mechanical projection and is not treated as display loss.",
+    "Equation-number mapping chooses nine end rows, all formula blocks; proposed Page passes the exact revision-gated map to the existing TextbookFormula equationNumber prop. This resolves the earlier metadata-only gap statically; number collision, placement and font geometry remain R07 actual-screen obligations.",
+    "Source Q01 figure f02 (Word p561-562) remains after Q01, and f01 (Word p572-573) remains before Q05 following Q04. Current first-unresolved-block/group prefix logic withholds both later figure/prose and new later holes until earlier holes resolve. Learner per-step views and old-complete resume agree with this ordering.",
+    "Proposed migration invokes actual LegacyUnit prior chains, archives prior revision/completion, preserves old item records and leaves six added N13 IDs missing. From a complete r4 save the first unresolved block is new Q04-positive. Retained out-of-order old future answers do not bypass earlier unresolved rows. This is static code/design evidence, not actual persisted browser verification.",
+    "Scoped font contract explicitly selects 18px formula rows/options and 1em KaTeX, with paragraph math inheriting paragraph font. No actual computed geometry was obtained; the browser installation/launch failed and actual DOM remains zero."
+  ],
+  "findings": [
+    {
+      "findingId": "W048-P001-N13-R04-B-LEFT-ALIGN-001",
+      "claimRef": "layout",
+      "facet": "render",
+      "reason": "同一導出の左端揃えが実式本文へ届かない。proposed Page w048ScopedStyleの .reading-formula-line{text-align:left} に対し、実consumer TextbookFormulaContentは .reading-formula-expression のflex内へ式partsを出す。global.css:974-980のjustify-content:centerが存続し、N13はtypesetting非対象のため中央配置が続く。Q05の350px以下はglobal.css:1457-1481でgrid中央配置も残る。revision限定で実本文flex/gridの配置を明示的に上書きし、新targetとして再審査が必要。",
+      "evidenceRefs": [
+        "fb2018c5-3f91-439a-9e9d-2e13d4adf4ac",
+        "502629c8-c659-4647-be37-fdf1e134d796",
+        "4d5a832f-2356-4720-a325-089d3dd5b233",
+        "1a6dc016-2d09-4830-9310-1a654a57670e",
+        "ec19f884-abd3-4d8c-b421-f51130f077c7",
+        "c4350e98-dcba-4643-a6f0-91a077cd6ce6",
+        "025b72c8-89ca-41b1-bd36-699b7cc6e86e",
+        "593e1582-389d-4e39-af26-d6e9bc13e965",
+        "5b79094e-a652-491f-964c-f0e2899ca70b",
+        "a328b46a-1864-4506-9c10-56489f043784",
+        "7b3a5185-3d1d-4dd6-98fd-ea11aab501c6",
+        "d4d89c45-a57c-4655-b171-d2238c01fa9a",
+        "93f7ae94-7aa7-4ced-9121-324c09e29c31",
+        "ff9ee726-1c0d-4351-9fbb-f6151e5593ad"
+      ],
+      "resolution": "OPEN"
+    }
+  ],
+  "reviewScope": "R04 static proposal/layout design review; actualDOMChecks=0",
+  "actualDOMVerified": false,
+  "priorSourceFirstReport": "/tmp/w048-r04-source-first-b.json",
+  "r07Conditions": [
+    "320/390/430/1440pxでfresh、誤答、誤答panel再open、正答、全解答、reloadを実DOM確認。全18判断と全54誤答候補を対象にし、正答までの先出しとhintの見え方を確認する。",
+    "修正後のN13 Q04/Q05/Q07/Q08/Q09各derivationについて実数式の左端座標を測り、flex/grid双方、未回答/誤答/正答、320px既存Q05特例を確認する。独立した枝を等号連結しない。",
+    "式番号1-9が指定終端rowに各1回だけ出現し、本文や途中rowへ付かず、未回答button/正答KaTeXとの衝突や狭幅の欠けがないことを確認する。",
+    "実computedStyleで数式/数式選択肢18px、KaTeX 1em、文章内数式のfont継承を確認。paragraph間隔/改段落とscrollWidth、選択肢wrap、原図の縮尺・captionを確認する。",
+    "Q01未回答中f02を非表示、Q01解答後表示。Q04各追加判断未完ではf01を非表示、Q04完後/Q05前に表示し、Q05左右条件の図との対応を確認する。",
+    "N13 r1-r4の保存を実旧移行経由で読み、recordのfirstValue/試行/時刻/archive/旧完了を保持。旧r4完了からQ04-positiveへ再開し、後の既回答を持つout-of-order状態でもQ04-negative/Q07/Q09を飛ばさない。新追加6IDは未回答。",
+    "明示resetとreload、履歴再読、N12→N13→N14導線と他教材/旧revisionの番号・字サイズ・採点・保存回帰を確認する。"
+  ]
+}

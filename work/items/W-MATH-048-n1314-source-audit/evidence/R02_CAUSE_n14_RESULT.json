@@ -1,0 +1,132 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "a6ea484b-f75a-4fc2-b57e-1bcd60aacc04",
+    "37ee8113-2b67-4144-83ce-1143119ec26a",
+    "c65a11b4-9641-4497-ad9e-bc44cc98b24d",
+    "87033143-515d-4a6b-8243-31652f7cfb22",
+    "3a7c0775-f856-4ee9-bc49-463030d75372",
+    "d5e91ff6-deb9-4756-9240-0269f58cd59d",
+    "34a0ff84-715a-4ced-9aba-f13bdffd0cb0",
+    "f0a87332-2f56-4119-8e66-a690f38e4015"
+  ],
+  "capability_receipts": [
+    "6a64039fd4c6e1543d9eb19f1e55642fb2cd97cabca4f635374e7c8e82d4e49e",
+    "a3e21360c552a546b382db5e7aad5689b575c75f5b6b5385fe13d3cea19bc261",
+    "77555b3840c471fbfcf64b46b4c850a878113ebfcf4259d2608d03e25ce57882",
+    "9fe14a954c014fd5f96e2eb755beadffa65037ee263465489f96c3f72bb4f1c2"
+  ],
+  "aiReview": {
+    "requestHash": "a70e94797c706b13001bcb9968269ea1547d3efbe324ae789c77a0d171bdfe18",
+    "inputHash": "0f7db896f621dfd450448f063ebf1363f95cabc516c7eb9dc219299fa9b1b2dc",
+    "reviewer": "M integrating original source-first A/B observations and R04 full-copy evidence",
+    "evidence": [
+      "a6ea484b-f75a-4fc2-b57e-1bcd60aacc04",
+      "37ee8113-2b67-4144-83ce-1143119ec26a",
+      "c65a11b4-9641-4497-ad9e-bc44cc98b24d",
+      "87033143-515d-4a6b-8243-31652f7cfb22",
+      "3a7c0775-f856-4ee9-bc49-463030d75372",
+      "d5e91ff6-deb9-4756-9240-0269f58cd59d",
+      "34a0ff84-715a-4ced-9aba-f13bdffd0cb0",
+      "f0a87332-2f56-4119-8e66-a690f38e4015"
+    ]
+  },
+  "symptoms": [
+    "見出しとQ02後の二点の間が未判断のQ03の答えを先出し",
+    "Q03/Q05の内外と端点がまとめられ、Q05の境界判断も学生に独立させる必要",
+    "章結びの注目文字と次章への用途が旧現稿で薄い"
+  ],
+  "confirmed_causes": [
+    "原問単位の一択へ境界・領域・端点をまとめた",
+    "解説文/ヒントの可視時点と未解決判断の境界が不十分",
+    "原典の無番号本文が採点表に入らず接続が欠落"
+  ],
+  "hypotheses": [],
+  "missing_learning_actions": [
+    "領域を選び、その後元の不等号から端点を判断する",
+    "外側の場合にも境界二点を先に特定する"
+  ],
+  "root_cause_signatures": [
+    "bundled-independent-decisions",
+    "premature-answer-in-prose-title-hint",
+    "missing-source-bridge"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "N08の距離と絶対値の場合分け、N11の同じ加減を必要時に明示する。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "追加の数値はxの位置・分岐方程式・元問の全解に結ぶ。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "Q04の+1、Q07の−2は左辺の定数を打ち消す目的と両辺への同じ操作として扱う。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "Q04/Q07の正負二枝、Q09の0/負を別判断へ分け、元問へ戻る。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "APPLY",
+      "reason": "Xはx−1全体の置換。距離の意味とORの意味を一般形の前後で明示する。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "追加式・全選択肢を結合KaTeXで検査し、283件の現候補結果へ結ぶ。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "等号の変形と独立した正負枝を混同せず、R04で行・番号・軸を別に設計する。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "Q04/Q07は正の枝→負の枝→全解、Q09は0→負の順。独立計算を一択の結論で代行しない。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "絶対値は中身全体へ掛かる。x−1・x+2と三辺全体への操作を保持する。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "他単元・旧版の受入や見た目の肯定は今回のN13/N14の受入・品質labelへ移さない。"
+    }
+  ],
+  "boundedCodeScope": "Legacy diagnostic IR checks baseline grade contracts only; full IR/row consumer checked separately for R04. No app acceptance/classifier inference/training claimed."
+}

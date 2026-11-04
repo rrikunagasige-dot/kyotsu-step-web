@@ -80,8 +80,12 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x|=5"
+              },
+              {
                 "type": "text",
-                "text": "|x|=5は原点から5離れた点の条件。左右どちらも調べる。"
+                "text": "は原点から5離れた点の条件。左右どちらも調べる。"
               },
               {
                 "type": "math",
@@ -120,7 +124,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "今の二つの位置を、正の距離aに広げます。"
+                "text": "今の二つの位置を、正の距離"
+              },
+              {
+                "type": "math",
+                "latex": "a"
+              },
+              {
+                "type": "text",
+                "text": "に広げます。"
               },
               {
                 "type": "math",
@@ -154,7 +166,15 @@
               },
               {
                 "type": "text",
-                "text": "と置きます。いまの距離の条件をXについて書き直しましょう。"
+                "text": "と置きます。いまの距離の条件を"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "について書き直しましょう。"
               }
             ]
           },
@@ -184,7 +204,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "仮の文字Xを元のx−1に置き換え、二つの普通の方程式にする。"
+                "text": "仮の文字"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "を元の"
+              },
+              {
+                "type": "math",
+                "latex": "x-1"
+              },
+              {
+                "type": "text",
+                "text": "に置き換え、二つの普通の方程式にする。"
               },
               {
                 "type": "math",
@@ -304,7 +340,8 @@
                 "type": "choice",
                 "itemId": "n13-04"
               }
-            ]
+            ],
+            "derivationId": "n13-q04-chain"
           },
           {
             "id": "n13-after-04",
@@ -337,8 +374,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x-1|"
+              },
+              {
                 "type": "text",
-                "text": "|x−1|は点xと点1の間の距離。xが1の右側か左側かによって、引き算の順を変える。"
+                "text": "は点"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "と点1の間の距離。"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "が1の右側か左側かによって、引き算の順を変える。"
               }
             ]
           },
@@ -347,8 +404,20 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x-1|"
+              },
+              {
                 "type": "text",
-                "text": "|x−1| は点 x と点 1 の距離。数直線でどちらが右にあるかを先に見て、右の座標から左の座標を引こう。"
+                "text": " は点 "
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " と点 1 の距離。数直線でどちらが右にあるかを先に見て、右の座標から左の座標を引こう。"
               }
             ],
             "derivationId": "n13-q05-chain"
@@ -388,8 +457,36 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "x\\ge 1"
+              },
+              {
                 "type": "text",
-                "text": "x≥1ならx−1≥0、x<1なら1−x>0。どちらも二点間の距離として負にならない。"
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "x-1\\ge 0"
+              },
+              {
+                "type": "text",
+                "text": "、"
+              },
+              {
+                "type": "math",
+                "latex": "x<1"
+              },
+              {
+                "type": "text",
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "1-x>0"
+              },
+              {
+                "type": "text",
+                "text": "。どちらも二点間の距離として負にならない。"
               }
             ]
           },
@@ -419,8 +516,20 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x+2|=3"
+              },
+              {
                 "type": "text",
-                "text": "|x+2|=3を解く。中身のx+2を、原点から距離3の一つの数と見よう。"
+                "text": "を解く。中身の"
+              },
+              {
+                "type": "math",
+                "latex": "x+2"
+              },
+              {
+                "type": "text",
+                "text": "を、原点から距離3の一つの数と見よう。"
               },
               {
                 "type": "math",
@@ -464,7 +573,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "正の枝をxについて解きましょう。"
+                "text": "正の枝を"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "について解きましょう。"
               }
             ],
             "derivationId": "n13-q07-chain"
@@ -501,7 +618,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "負の枝もxについて解きましょう。"
+                "text": "負の枝も"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "について解きましょう。"
               }
             ],
             "derivationId": "n13-q07-chain"
@@ -540,7 +665,8 @@
                 "type": "choice",
                 "itemId": "n13-07"
               }
-            ]
+            ],
+            "derivationId": "n13-q07-chain"
           },
           {
             "id": "n13-after-07",
@@ -557,8 +683,20 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|3x|=6"
+              },
+              {
                 "type": "text",
-                "text": "|3x|=6 では、はじめに絶対値の中身がとり得る二通りの等式を作り、それぞれを x について解こう。"
+                "text": " では、はじめに絶対値の中身がとり得る二通りの等式を作り、それぞれを "
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " について解こう。"
               },
               {
                 "type": "math",
@@ -722,15 +860,44 @@
                 "type": "choice",
                 "itemId": "n13-09"
               }
-            ]
+            ],
+            "derivationId": "n13-q09-chain"
           },
           {
             "id": "n13-after-09",
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|X|=a"
+              },
+              {
                 "type": "text",
-                "text": "|X|=aでは、a>0なら二枝、a=0なら一つ、a<0なら実数解なし。次は距離に上限・下限を付ける。"
+                "text": "では、"
+              },
+              {
+                "type": "math",
+                "latex": "a>0"
+              },
+              {
+                "type": "text",
+                "text": "なら二枝、"
+              },
+              {
+                "type": "math",
+                "latex": "a=0"
+              },
+              {
+                "type": "text",
+                "text": "なら一つ、"
+              },
+              {
+                "type": "math",
+                "latex": "a<0"
+              },
+              {
+                "type": "text",
+                "text": "なら実数解なし。次は距離に上限・下限を付ける。"
               }
             ]
           }

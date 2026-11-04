@@ -1,0 +1,1063 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "B",
+  "phase": "SOURCE_FIRST_PREPARATION_ONLY",
+  "targetPacket": null,
+  "newR04Reviewed": false,
+  "verdict": "AWAIT_FORMAL_TARGET",
+  "readOnly": "Product, Store, Git untouched; /tmp report only",
+  "sourceAuthority": {
+    "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+    "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c"
+  },
+  "fileHashes": {
+    "AGENTS.md": "9934f0d14004a1eba95712e801630f1302f549f6a5e212151e127e64d772e459",
+    "subjects/mathematics/AGENTS.md": "b5edc766cd539cdcd0db4bd3c8ca81a44c81086ab9639a2cd45bc3973cfe19fb",
+    "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+    "src/domain/textbook.ts": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+    "src/domain/textbookSchema.ts": "f6156ad017672b66b0dc5b01926240efe038a215e755799c2491425ac423c246",
+    "src/components/textbook/TextbookFormula.tsx": "9fab1796ccd0d063c9054b76608fa4f304b82a17302a6e02d8027311bfec0bd9",
+    "src/data/textbook/math/presentation.ts": "8edf74b9ec739c5dd026eaff496ecb294762e0d9f34a3c1fa039313ab62e0a03",
+    "src/data/textbook/math/numbers/n13Lesson.ts": "953f0cec42e046c6c42e9e4a73b39ce9c9d92ae523b1afd2e7bc9175ca99c18c",
+    "src/data/textbook/math/numbers/n14Lesson.ts": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+    "tools/textbook/ir/index.mjs": "f4dc507498c31c5135f4e7623916683b3b544513ca7105fbd45b895a86cd53f8"
+  },
+  "units": {
+    "N13": {
+      "baselineRevision": 4,
+      "sourceParagraphCount": 33,
+      "sourceMarkers": {
+        "1": "word-p-000560",
+        "2": "word-p-000567",
+        "3": "word-p-000568",
+        "4": "word-p-000569",
+        "5": "word-p-000574",
+        "6": "word-p-000579",
+        "7": "word-p-000580",
+        "8": "word-p-000583",
+        "9": "word-p-000586"
+      },
+      "sourceFigures": [
+        {
+          "sourceId": "word-p-000561",
+          "images": [
+            "media/image12.png"
+          ]
+        },
+        {
+          "sourceId": "word-p-000572",
+          "images": [
+            "media/image13.png"
+          ]
+        }
+      ],
+      "readingBlockCount": 41,
+      "itemCount": 12,
+      "choiceKeyCount": 48,
+      "protectedItemSignatures": [
+        {
+          "id": "n13-01",
+          "answer": "x=5\\;\\text{または}\\;x=-5",
+          "acceptedAnswers": [],
+          "choices": [
+            "x=5\\;\\text{または}\\;x=-5",
+            "x=5",
+            "x=-5",
+            "x=5\\;\\text{かつ}\\;x=-5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-02",
+          "answer": "X=4\\;\\text{または}\\;X=-4",
+          "acceptedAnswers": [],
+          "choices": [
+            "X=4\\;\\text{または}\\;X=-4",
+            "X=4",
+            "X=4\\;\\text{かつ}\\;X=-4",
+            "X=\\pm1"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-03",
+          "answer": "x-1=4\\;\\text{または}\\;x-1=-4",
+          "acceptedAnswers": [],
+          "choices": [
+            "x-1=4\\;\\text{または}\\;x-1=-4",
+            "x=4\\;\\text{または}\\;x=-4",
+            "x+1=4\\;\\text{または}\\;x+1=-4",
+            "x-1=4\\;\\text{かつ}\\;x-1=-4"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-04",
+          "answer": "x=5\\;\\text{または}\\;x=-3",
+          "acceptedAnswers": [],
+          "choices": [
+            "x=5\\;\\text{または}\\;x=-3",
+            "x=5",
+            "x=3\\;\\text{または}\\;x=-5",
+            "x=4\\;\\text{または}\\;x=-4"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-wm023-q05-right",
+          "answer": "x-1",
+          "acceptedAnswers": [],
+          "choices": [
+            "x-1",
+            "1-x",
+            "x+1",
+            "-1-x"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-05",
+          "answer": "1-x",
+          "acceptedAnswers": [],
+          "choices": [
+            "1-x",
+            "x-1",
+            "1+x",
+            "-1-x"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-06",
+          "answer": "x+2=3\\;\\text{または}\\;x+2=-3",
+          "acceptedAnswers": [],
+          "choices": [
+            "x+2=3\\;\\text{または}\\;x+2=-3",
+            "x=3\\;\\text{または}\\;x=-3",
+            "x+2=3\\;\\text{かつ}\\;x+2=-3",
+            "x-2=3\\;\\text{または}\\;x-2=-3"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-07",
+          "answer": "x=1\\;\\text{または}\\;x=-5",
+          "acceptedAnswers": [],
+          "choices": [
+            "x=1\\;\\text{または}\\;x=-5",
+            "x=1",
+            "x=5\\;\\text{または}\\;x=-1",
+            "x=-1\\;\\text{または}\\;x=-5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-wm023-q08-branches",
+          "answer": "3x=6\\;\\text{または}\\;3x=-6",
+          "acceptedAnswers": [],
+          "choices": [
+            "3x=6\\;\\text{または}\\;3x=-6",
+            "3x=6\\;\\text{かつ}\\;3x=-6",
+            "3x=6",
+            "3x=-6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-wm023-q08-positive-root",
+          "answer": "2",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "-2",
+            "6",
+            "\\frac12"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-08",
+          "answer": "-2",
+          "acceptedAnswers": [],
+          "choices": [
+            "-2",
+            "2",
+            "-6",
+            "-\\frac12"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n13-09",
+          "answer": "0ならx=0、負なら実数解なし",
+          "acceptedAnswers": [],
+          "choices": [
+            "0ならx=0、負なら実数解なし",
+            "0ならx=±0、負ならx=±2",
+            "0なら解なし、負ならx=−2",
+            "両方ともすべての実数"
+          ],
+          "answerType": "text"
+        }
+      ],
+      "multiChoiceRows": [],
+      "sourceToItemIds": {
+        "N13-Q01": [
+          "n13-01"
+        ],
+        "N13-Q02": [
+          "n13-02"
+        ],
+        "N13-Q03": [
+          "n13-03"
+        ],
+        "N13-Q04": [
+          "n13-04"
+        ],
+        "N13-Q05": [
+          "n13-wm023-q05-right",
+          "n13-05"
+        ],
+        "N13-Q06": [
+          "n13-06"
+        ],
+        "N13-Q07": [
+          "n13-07"
+        ],
+        "N13-Q08": [
+          "n13-wm023-q08-branches",
+          "n13-wm023-q08-positive-root",
+          "n13-08"
+        ],
+        "N13-Q09": [
+          "n13-09"
+        ]
+      }
+    },
+    "N14": {
+      "baselineRevision": 10,
+      "sourceParagraphCount": 46,
+      "sourceMarkers": {
+        "1": "word-p-000592",
+        "2": "word-p-000594",
+        "3": "word-p-000595",
+        "4": "word-p-000596",
+        "5": "word-p-000600",
+        "6": "word-p-000601",
+        "7": "word-p-000608",
+        "8": "word-p-000609",
+        "9": "word-p-000615",
+        "10": "word-p-000616",
+        "11": "word-p-000620",
+        "12": "word-p-000621",
+        "13": "word-p-000625",
+        "14": "word-p-000626",
+        "15": "word-p-000627",
+        "16": "word-p-000628"
+      },
+      "sourceFigures": [
+        {
+          "sourceId": "word-p-000603",
+          "images": [
+            "media/image14.png"
+          ]
+        }
+      ],
+      "readingBlockCount": 88,
+      "itemCount": 38,
+      "choiceKeyCount": 152,
+      "protectedItemSignatures": [
+        {
+          "id": "n14-01",
+          "answer": "原点からの距離が3より小さい",
+          "acceptedAnswers": [],
+          "choices": [
+            "原点からの距離が3より小さい",
+            "原点からの距離が3より大きい",
+            "座標が3より大きい",
+            "原点からの距離が3以上"
+          ],
+          "answerType": "text"
+        },
+        {
+          "id": "n14-02",
+          "answer": "x=-3,\\quad x=3",
+          "acceptedAnswers": [],
+          "choices": [
+            "x=-3,\\quad x=3",
+            "x=0,\\quad x=3",
+            "x=-3,\\quad x=0",
+            "x=3,\\quad x=6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-03",
+          "answer": "二点の間、両端を含まない",
+          "acceptedAnswers": [],
+          "choices": [
+            "二点の間、両端を含まない",
+            "二点の外側、両端を含まない",
+            "二点の間、両端を含む",
+            "二点の外側、両端を含む"
+          ],
+          "answerType": "text"
+        },
+        {
+          "id": "n14-04",
+          "answer": "-3<x<3",
+          "acceptedAnswers": [],
+          "choices": [
+            "-3<x<3",
+            "x<-3\\;\\text{または}\\;x>3",
+            "-3\\le x\\le3",
+            "3<x<-3"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-05",
+          "answer": "境界−4と4、外側、端点を含む",
+          "acceptedAnswers": [],
+          "choices": [
+            "境界−4と4、外側、端点を含む",
+            "境界−4と4、内側、端点を含む",
+            "境界−4と4、外側、端点を含まない",
+            "境界0と4、外側、端点を含む"
+          ],
+          "answerType": "text"
+        },
+        {
+          "id": "n14-06",
+          "answer": "x\\le-4\\;\\text{または}\\;x\\ge4",
+          "acceptedAnswers": [],
+          "choices": [
+            "x\\le-4\\;\\text{または}\\;x\\ge4",
+            "-4\\le x\\le4",
+            "x<-4\\;\\text{または}\\;x>4",
+            "x\\le-4\\;\\text{かつ}\\;x\\ge4"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm014-q07-nonnegative",
+          "answer": "0\\le X<a",
+          "acceptedAnswers": [],
+          "choices": [
+            "0\\le X<a",
+            "0\\le X\\le a",
+            "X>a",
+            "-a<X<0"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm014-q07-negative",
+          "answer": "-a<X<0",
+          "acceptedAnswers": [],
+          "choices": [
+            "-a<X<0",
+            "-a\\le X<0",
+            "X<-a",
+            "0\\le X<a"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-07",
+          "answer": "-a<X<a",
+          "acceptedAnswers": [],
+          "choices": [
+            "-a<X<a",
+            "X<-a\\;\\text{または}\\;X>a",
+            "-a\\le X\\le a",
+            "a<X<-a"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm015-q08-nonnegative",
+          "answer": "X>a",
+          "acceptedAnswers": [],
+          "choices": [
+            "X>a",
+            "X\\ge a",
+            "0\\le X<a",
+            "X<-a"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm015-q08-negative",
+          "answer": "X<-a",
+          "acceptedAnswers": [],
+          "choices": [
+            "X<-a",
+            "X\\le-a",
+            "X>-a",
+            "X>a"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-08",
+          "answer": "X<-a\\;\\text{または}\\;X>a",
+          "acceptedAnswers": [],
+          "choices": [
+            "X<-a\\;\\text{または}\\;X>a",
+            "-a<X<a",
+            "X\\le-a\\;\\text{または}\\;X\\ge a",
+            "X<-a\\;\\text{かつ}\\;X>a"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-09",
+          "answer": "-5<x-3<5",
+          "acceptedAnswers": [],
+          "choices": [
+            "-5<x-3<5",
+            "x-3<-5\\;\\text{または}\\;x-3>5",
+            "-5\\le x-3\\le5",
+            "-5<x<5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm018-q10-add-left",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "2",
+            "5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm018-q10-add-center",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "0",
+            "5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm018-q10-add-right",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "-5",
+            "2"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-10",
+          "answer": "-2",
+          "acceptedAnswers": [],
+          "choices": [
+            "-2",
+            "2",
+            "-8",
+            "-5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm018-q10-bound-right",
+          "answer": "8",
+          "acceptedAnswers": [],
+          "choices": [
+            "8",
+            "2",
+            "5",
+            "-8"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-11",
+          "answer": "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+          "acceptedAnswers": [],
+          "choices": [
+            "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+            "-2\\le x+3\\le2",
+            "x+3<-2\\;\\text{または}\\;x+3>2",
+            "x+3\\le-2\\;\\text{かつ}\\;x+3\\ge2"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm016-q12-left",
+          "answer": "x\\le-5",
+          "acceptedAnswers": [],
+          "choices": [
+            "x\\le-5",
+            "x<-5",
+            "x\\ge-5",
+            "x\\le-1"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm016-q12-right",
+          "answer": "x\\ge-1",
+          "acceptedAnswers": [],
+          "choices": [
+            "x\\ge-1",
+            "x>-1",
+            "x\\le-1",
+            "x\\ge1"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-12",
+          "answer": "x\\le-5\\;\\text{または}\\;x\\ge-1",
+          "acceptedAnswers": [],
+          "choices": [
+            "x\\le-5\\;\\text{または}\\;x\\ge-1",
+            "-5\\le x\\le-1",
+            "x<-5\\;\\text{または}\\;x>-1",
+            "x\\le-1\\;\\text{または}\\;x\\ge5"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-13",
+          "answer": "-4\\le3x-2\\le4",
+          "acceptedAnswers": [],
+          "choices": [
+            "-4\\le3x-2\\le4",
+            "3x-2\\le-4\\;\\text{または}\\;3x-2\\ge4",
+            "-4<3x-2<4",
+            "-4\\le3x\\le4"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm019-q14-add-left",
+          "answer": "2",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "-2",
+            "4",
+            "6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm019-q14-add-center",
+          "answer": "2",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "-2",
+            "0",
+            "3"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm019-q14-add-right",
+          "answer": "2",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "-2",
+            "4",
+            "0"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-14",
+          "answer": "-2",
+          "acceptedAnswers": [],
+          "choices": [
+            "-2",
+            "2",
+            "-6",
+            "-4"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm019-q14-bound-right",
+          "answer": "6",
+          "acceptedAnswers": [],
+          "choices": [
+            "6",
+            "2",
+            "4",
+            "-6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm020-q15-divide-left",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "2",
+            "6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm020-q15-divide-center",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "1",
+            "6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm020-q15-divide-right",
+          "answer": "3",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "-3",
+            "2",
+            "6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-15",
+          "answer": "-\\frac23",
+          "acceptedAnswers": [],
+          "choices": [
+            "-\\frac23",
+            "\\frac23",
+            "-6",
+            "-\\frac32"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm020-q15-bound-right",
+          "answer": "2",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "3",
+            "-2",
+            "\\frac12"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm022-q16-left-inner",
+          "answer": "-4",
+          "acceptedAnswers": [],
+          "choices": [
+            "-4",
+            "4",
+            "-2",
+            "0"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm022-q16-left-abs",
+          "answer": "4",
+          "acceptedAnswers": [],
+          "choices": [
+            "4",
+            "-4",
+            "2",
+            "0"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm022-q16-right-inner",
+          "answer": "4",
+          "acceptedAnswers": [],
+          "choices": [
+            "4",
+            "-4",
+            "2",
+            "6"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-wm022-q16-right-abs",
+          "answer": "4",
+          "acceptedAnswers": [],
+          "choices": [
+            "4",
+            "-4",
+            "2",
+            "0"
+          ],
+          "answerType": "formula"
+        },
+        {
+          "id": "n14-16",
+          "answer": "両端とも含む",
+          "acceptedAnswers": [],
+          "choices": [
+            "両端とも含む",
+            "左端だけ含む",
+            "右端だけ含む",
+            "両端とも含まない"
+          ],
+          "answerType": "text"
+        }
+      ],
+      "multiChoiceRows": [
+        {
+          "id": "n14-formula-10",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "-5+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm018-q10-add-left"
+            },
+            {
+              "type": "math",
+              "latex": "<x-3+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm018-q10-add-center"
+            },
+            {
+              "type": "math",
+              "latex": "<5+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm018-q10-add-right"
+            }
+          ],
+          "derivationId": "n14-q10-chain"
+        },
+        {
+          "id": "n14-wm018-q10-result",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n14-10"
+            },
+            {
+              "type": "math",
+              "latex": "<x<"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm018-q10-bound-right"
+            }
+          ],
+          "derivationId": "n14-q10-chain"
+        },
+        {
+          "id": "n14-formula-14",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "-4+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm019-q14-add-left"
+            },
+            {
+              "type": "math",
+              "latex": "\\le3x-2+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm019-q14-add-center"
+            },
+            {
+              "type": "math",
+              "latex": "\\le4+"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm019-q14-add-right"
+            }
+          ],
+          "derivationId": "n14-q14-chain"
+        },
+        {
+          "id": "n14-wm019-q14-result",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n14-14"
+            },
+            {
+              "type": "math",
+              "latex": "\\le3x\\le"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm019-q14-bound-right"
+            }
+          ],
+          "derivationId": "n14-q14-chain"
+        },
+        {
+          "id": "n14-formula-15",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "-2\\div"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm020-q15-divide-left"
+            },
+            {
+              "type": "math",
+              "latex": "\\le3x\\div"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm020-q15-divide-center"
+            },
+            {
+              "type": "math",
+              "latex": "\\le6\\div"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm020-q15-divide-right"
+            }
+          ],
+          "derivationId": "n14-q15-chain"
+        },
+        {
+          "id": "n14-wm020-q15-result",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "choice",
+              "itemId": "n14-15"
+            },
+            {
+              "type": "math",
+              "latex": "\\le x\\le"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm020-q15-bound-right"
+            }
+          ],
+          "derivationId": "n14-q15-chain"
+        },
+        {
+          "id": "n14-formula-16",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=-\\frac23:\\quad|3(-\\frac23)-2|"
+            },
+            {
+              "type": "math",
+              "latex": "=|"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm022-q16-left-inner"
+            },
+            {
+              "type": "math",
+              "latex": "|="
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm022-q16-left-abs"
+            }
+          ],
+          "derivationId": "n14-q16-chain"
+        },
+        {
+          "id": "n14-wm022-q16-right",
+          "type": "formula",
+          "parts": [
+            {
+              "type": "math",
+              "latex": "x=2:\\quad|3\\cdot2-2|"
+            },
+            {
+              "type": "math",
+              "latex": "=|"
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm022-q16-right-inner"
+            },
+            {
+              "type": "math",
+              "latex": "|="
+            },
+            {
+              "type": "choice",
+              "itemId": "n14-wm022-q16-right-abs"
+            }
+          ],
+          "derivationId": "n14-q16-chain"
+        }
+      ],
+      "sourceToItemIds": {
+        "N14-Q01": [
+          "n14-01"
+        ],
+        "N14-Q02": [
+          "n14-02"
+        ],
+        "N14-Q03": [
+          "n14-03"
+        ],
+        "N14-Q04": [
+          "n14-04"
+        ],
+        "N14-Q05": [
+          "n14-05"
+        ],
+        "N14-Q06": [
+          "n14-06"
+        ],
+        "N14-Q07": [
+          "n14-wm014-q07-nonnegative",
+          "n14-wm014-q07-negative",
+          "n14-07"
+        ],
+        "N14-Q08": [
+          "n14-wm015-q08-nonnegative",
+          "n14-wm015-q08-negative",
+          "n14-08"
+        ],
+        "N14-Q09": [
+          "n14-09"
+        ],
+        "N14-Q10": [
+          "n14-wm018-q10-add-left",
+          "n14-wm018-q10-add-center",
+          "n14-wm018-q10-add-right",
+          "n14-10",
+          "n14-wm018-q10-bound-right"
+        ],
+        "N14-Q11": [
+          "n14-11"
+        ],
+        "N14-Q12": [
+          "n14-wm016-q12-left",
+          "n14-wm016-q12-right",
+          "n14-12"
+        ],
+        "N14-Q13": [
+          "n14-13"
+        ],
+        "N14-Q14": [
+          "n14-wm019-q14-add-left",
+          "n14-wm019-q14-add-center",
+          "n14-wm019-q14-add-right",
+          "n14-14",
+          "n14-wm019-q14-bound-right"
+        ],
+        "N14-Q15": [
+          "n14-wm020-q15-divide-left",
+          "n14-wm020-q15-divide-center",
+          "n14-wm020-q15-divide-right",
+          "n14-15",
+          "n14-wm020-q15-bound-right"
+        ],
+        "N14-Q16": [
+          "n14-wm022-q16-left-inner",
+          "n14-wm022-q16-left-abs",
+          "n14-wm022-q16-right-inner",
+          "n14-wm022-q16-right-abs",
+          "n14-16"
+        ]
+      }
+    }
+  },
+  "consumerConstraints": [
+    {
+      "id": "ROW-ATOMICITY",
+      "evidence": "TextbookUnitPage.tsx:63,179,274",
+      "constraint": "Legacy uses first unresolved block, includes that entire block; all same-block choices can be selected independently. Projection must reconstruct each original logical row with original ordered choice itemIds. A 3-slot row must not become 3 sequential blocks."
+    },
+    {
+      "id": "OUT-OF-ORDER",
+      "evidence": "TextbookUnitPage.tsx:274; TextbookFormula.tsx:83; textbook.ts:1185",
+      "constraint": "Old saved later-slot success does not resolve earlier missing slot. Every visible slot renders independently from its own record. isFirstCorrect preserves previously accepted records; do not infer new-slot correctness from completedAt or later saved answers."
+    },
+    {
+      "id": "UNANSWERED",
+      "evidence": "TextbookUnitPage.tsx:179,274; domain/textbook.ts:201",
+      "constraint": "Same revision keeps existing progress. Missing newly added IDs remain unresolved. Preserve original answer ledgers and distinguish old completedAt from completion of all new IDs; new revision requires explicit migration design."
+    },
+    {
+      "id": "FIGURE-GATE",
+      "evidence": "newBatchGuidedSteps.ts:60-91; TextbookUnitPage.tsx:274",
+      "constraint": "Legacy has positional gating only. N13-f02 after Q01, N13-f01 before Q05, N14-f01 after Q06; retain image/caption/source ordering and keep post-answer figures beyond first unresolved prior block."
+    },
+    {
+      "id": "NUMBERING-GAP",
+      "severity": "BLOCKING_IF_UNRESOLVED",
+      "evidence": "TextbookFormula.tsx:43; TextbookUnitPage.tsx:402; presentation.ts:235; textbookSchema.ts:59",
+      "constraint": "compileIR equationNumbers is metadata; Legacy only passes unitId, not equationNumber. TextbookFormula resolves optional prop or firstThemeEquationNumber. Reading block schema has no number field. Formal proposal must specify a real scoped consumer route or explicit approved presentation mapping; metadata presence alone is not a display proof."
+    },
+    {
+      "id": "PARAGRAPH",
+      "evidence": "TextbookUnitPage.tsx:364-420,440-477; ir/index.mjs:16-27,101-105",
+      "constraint": "Legacy supports heading/marker/dialogue/note/figure absent from production-ir/1 blockSchema. CompileIR converts paragraphs and relationChains only; compiled after blocks do not independently carry a gate. Projection must explicitly map every candidate block with order, type, source refs, role and before/after gate; preserve paragraphs and avoid treating structural omissions as taught."
+    },
+    {
+      "id": "IR-SLOT-SCOPE",
+      "evidence": "ir/index.mjs:69-71,97-105",
+      "constraint": "Each IR node has at most one interaction. slotIds may duplicate the same interaction, never substitute three distinct item IDs. Each atomic node must reference its own slot and expected choices; projection can reassemble 3 independently compiled choice parts into one logical row."
+    },
+    {
+      "id": "IR-PASS-LIMIT",
+      "evidence": "ir/index.mjs:36-39,75-80,85-90",
+      "constraint": "validateIR coverage checks reference bookkeeping, not source prose identity/order/full reproduction. visibleSnapshot walks node order, not Legacy logical-row selection. Diagnostic subset or atomic IR PASS cannot prove full candidate rendering or old-save behavior."
+    }
+  ],
+  "formalTargetChecks": [
+    "Hash packet and confirm fresh R04 target, excluding pre-existing DRAFT/diagnostic evidence",
+    "Source 33+46 paragraph coverage with explicit taught/structural/excluded disposition and actual prose/math/figure reconciliation",
+    "Bidirectional candidate-block <-> compiled node/block/part projection, no duplicate/drop/invented choice keys",
+    "Exact existing 50 IDs and 200 choice strings/answer types/accepted answers retained, new IDs independently unresolved",
+    "N14 Q10/Q14/Q15 operations have 3 distinct choice IDs in one same logical row; boundary rows retain 2 slots; Q16 retains two endpoint checks",
+    "Check all partial permutations of each multi-slot row (including right solved first, left missing/wrong) against Legacy gate",
+    "Counterexample: late saved answers and completedAt cannot expose new prerequisites, later prose or post-answer figure",
+    "Compiled equation-number stableIds map to an actually consumed display number exactly once at chosen group end, absent on prose",
+    "No mixed derivationId or unrelated equation alignment introduced by row recombination",
+    "Historical N13 revisions1-4 / N14 revisions1-10 retain archives and prior accepted keys; no new migration assumed from same-revision display test",
+    "Need real scoped consumer render evidence for paragraph breaks, formula order, figure gate, and number route before approval claim"
+  ]
+}

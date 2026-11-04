@@ -28,4 +28,4 @@ try{
  }
 }finally{await server.close();}
 const result={status:failures.length?'FAIL':'PASS_BOUNDED_CANDIDATE_DATA',contracts,katexChecks:math.length,failures,learnerSourceModified:false,liveBrowserVerified:false,workflowR04Completed:false,limits:['Actual schema/choice and composed-math checks; no teaching acceptance, migration implementation or four-width browser PASS inferred.']};
-fs.writeFileSync(path.join(B,'evidence/CANDIDATE_CHECK.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(failures.length)process.exitCode=1;
+fs.writeFileSync(path.join(B,'evidence/R04_CANDIDATE_CHECK.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(failures.length)process.exitCode=1;

@@ -1,0 +1,285 @@
+{
+  "configHash": "f80080b526916f3aaf9e5cc437fa5829b37ff21c65654669d42b8d3ea0154a3c",
+  "rows": [
+    {
+      "reviewer": {
+        "logical": "A",
+        "agentRef": "/root/w048_review_a",
+        "taskRef": "W048-P003-n14-R04-A",
+        "facet": "design",
+        "claim": "teaching",
+        "reviewKind": "source-review",
+        "artifactHashes": {
+          "teaching": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+        },
+        "packet": {
+          "baseNodeInputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+          "sourceRefs": [
+            "src/data/textbook/math/numbers/n14Lesson.ts",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+            "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+            "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+          ],
+          "authorHistory": [
+            {
+              "claimRef": "teaching",
+              "facet": "design",
+              "block": "n14",
+              "semanticContributorRefs": [
+                "/root"
+              ]
+            }
+          ],
+          "contextExposure": {
+            "forkMode": "filtered",
+            "authorRationaleVisibleAtFirstPass": false,
+            "priorExposure": "A read P002 all including N14 plan; B read P001 all including N14 plan during N13 reviews. Both already saw shared consumer/CSS contracts. Neither has read new N14 learner target. No claim of unexposed or model-independent current-target review.",
+            "firstPassOrigin": "Original primary-source N14 observation fixed in R04_SOURCE_FIRST_A/B before P001/P002 final rationale; that source-first origin is retained. Current full-learner target review is exposed, not a fresh blind first encounter.",
+            "currentTargetAuthorRationalePreviouslySeen": true,
+            "originalSourceFirstRefs": [
+              "work/items/W-MATH-048-n1314-source-audit/evidence/R04_SOURCE_FIRST_A.json"
+            ]
+          }
+        },
+        "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/r3/evidence/N14_R04_FIRST_A.json",
+        "launchPath": "/tmp/w048-e3-n14-launch-A.json",
+        "finalPath": "/tmp/w048-e3-n14-final-A.json"
+      },
+      "assignment": {
+        "assignmentId": "w048-R04_PROPOSAL@n14-A-8df487df36-e3",
+        "roleEpoch": 3,
+        "node": "R04_PROPOSAL@n14",
+        "block": "n14",
+        "facet": "design",
+        "claimRefs": [
+          "teaching"
+        ],
+        "performerRef": "/root/w048_review_a",
+        "role": "reviewer",
+        "inputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+        "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+        "artifactHashes": {
+          "teaching": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+        },
+        "allowedPaths": [],
+        "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+        "dependsOnTasks": [],
+        "budget": {
+          "tokenBudget": null
+        },
+        "independent": true,
+        "targetManifestRef": "80071335a0ce9f7ce6f52cb63b1b092c99c02980345d93867df0a1b00781e009"
+      },
+      "packet": {
+        "baseNodeInputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n14Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "teaching",
+            "facet": "design",
+            "block": "n14",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "A read P002 all including N14 plan; B read P001 all including N14 plan during N13 reviews. Both already saw shared consumer/CSS contracts. Neither has read new N14 learner target. No claim of unexposed or model-independent current-target review.",
+          "firstPassOrigin": "Original primary-source N14 observation fixed in R04_SOURCE_FIRST_A/B before P001/P002 final rationale; that source-first origin is retained. Current full-learner target review is exposed, not a fresh blind first encounter.",
+          "currentTargetAuthorRationalePreviouslySeen": true,
+          "originalSourceFirstRefs": [
+            "work/items/W-MATH-048-n1314-source-audit/evidence/R04_SOURCE_FIRST_A.json"
+          ]
+        },
+        "packetHash": "e4b44fb67bb08dba217e67a7ca630167dc520f47d892eb640293dbd29c7e4786"
+      },
+      "evidenceRefs": [
+        "49309a81-7d79-4911-879c-9af6fe4cf5de",
+        "8698dd33-a1d6-475b-b13a-4f541be19e15",
+        "11874fd1-ff75-459e-ba7a-9faf4c8964bb",
+        "1d5485a5-6be7-4038-916d-6e5b4f46db9b",
+        "6d097ae4-34e0-457a-8e1b-de965e4e0997",
+        "ee6a4043-b7bf-4c97-95e8-5e7919a99c2e",
+        "39ef3842-168d-4e8e-a26e-4771ae07a6a7",
+        "15db2762-f308-4c73-9f5c-fb5d33de6050",
+        "8002060b-f5a4-4867-8c08-d500d97552dc",
+        "72c3c4f0-874f-4fb4-935f-72f56d4de6de",
+        "137ca724-a281-4428-9e15-e629692138b5",
+        "b9b1fdcc-be2f-4430-a6f0-519d966ff090",
+        "49220f71-f8f6-434f-a56b-08cc7d6180b8",
+        "9c1416c7-471e-4987-80e5-897b1f6c56c1",
+        "90e4589b-b2c2-431a-bb87-e6958d41a043",
+        "09eb6fbe-2c70-4807-bfe6-bb3583344b0c",
+        "2e9db93e-7dba-4a98-9114-3af963707e96",
+        "1df82738-eb63-4f4e-86f7-e708ac247d23",
+        "c8709a46-ce06-4afc-ab31-6a506cb5d258",
+        "93ab9527-df6d-4335-81c5-b93542348426",
+        "9e7f5fac-fb44-4089-a232-be70e8734ebb"
+      ],
+      "harness": {
+        "agentRef": "/root/w048_review_a",
+        "taskRef": "W048-P003-n14-R04-A",
+        "parentRef": "/root",
+        "logicalRole": "A",
+        "toolResultRef": "b073d4fc42ff8149f73e6c87559e37ff7c5ce90e6cfd8e01dcad67fec5ed4a7a",
+        "attestationMethod": "transcribed-tool-result"
+      },
+      "registration": {
+        "registrationRef": "206cf6cb5081616b93e2fcb252926ccfb348639199ff4e00f96b4b27ebc209a6",
+        "assignmentHash": "f43b8a38c2b743fcafe49e8c894d576f525a745414bedd3750b3694c989d4d20",
+        "eventRef": "9ce3315455950055044ece716427b902c1315e7f01af6da4241f61ad45d156e5"
+      }
+    },
+    {
+      "reviewer": {
+        "logical": "B",
+        "agentRef": "/root/w048_review_b",
+        "taskRef": "W048-P003-n14-R04-B",
+        "facet": "render",
+        "claim": "layout",
+        "reviewKind": "learner-visible-review",
+        "artifactHashes": {
+          "layout": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+        },
+        "packet": {
+          "baseNodeInputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+          "sourceRefs": [
+            "src/data/textbook/math/numbers/n14Lesson.ts",
+            "src/domain/textbook.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+            "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+            "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+          ],
+          "authorHistory": [
+            {
+              "claimRef": "layout",
+              "facet": "render",
+              "block": "n14",
+              "semanticContributorRefs": [
+                "/root"
+              ]
+            }
+          ],
+          "contextExposure": {
+            "forkMode": "filtered",
+            "authorRationaleVisibleAtFirstPass": false,
+            "priorExposure": "A read P002 all including N14 plan; B read P001 all including N14 plan during N13 reviews. Both already saw shared consumer/CSS contracts. Neither has read new N14 learner target. No claim of unexposed or model-independent current-target review.",
+            "firstPassOrigin": "Original primary-source N14 observation fixed in R04_SOURCE_FIRST_A/B before P001/P002 final rationale; that source-first origin is retained. Current full-learner target review is exposed, not a fresh blind first encounter.",
+            "currentTargetAuthorRationalePreviouslySeen": true,
+            "originalSourceFirstRefs": [
+              "work/items/W-MATH-048-n1314-source-audit/evidence/R04_SOURCE_FIRST_B.json"
+            ]
+          }
+        },
+        "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/r3/evidence/N14_R04_FIRST_B.json",
+        "launchPath": "/tmp/w048-e3-n14-launch-B.json",
+        "finalPath": "/tmp/w048-e3-n14-final-B.json"
+      },
+      "assignment": {
+        "assignmentId": "w048-R04_PROPOSAL@n14-B-8df487df36-e3",
+        "roleEpoch": 3,
+        "node": "R04_PROPOSAL@n14",
+        "block": "n14",
+        "facet": "render",
+        "claimRefs": [
+          "layout"
+        ],
+        "performerRef": "/root/w048_review_b",
+        "role": "reviewer",
+        "inputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+        "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+        "artifactHashes": {
+          "layout": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33"
+        },
+        "allowedPaths": [],
+        "writeMode": "READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX",
+        "dependsOnTasks": [],
+        "budget": {
+          "tokenBudget": null
+        },
+        "independent": true,
+        "targetManifestRef": "be25e027d1b7f98f5518ce2dc5494b3e56e61139bb71b4cedf5d36d7394ced74"
+      },
+      "packet": {
+        "baseNodeInputHash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n14Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "layout",
+            "facet": "render",
+            "block": "n14",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "A read P002 all including N14 plan; B read P001 all including N14 plan during N13 reviews. Both already saw shared consumer/CSS contracts. Neither has read new N14 learner target. No claim of unexposed or model-independent current-target review.",
+          "firstPassOrigin": "Original primary-source N14 observation fixed in R04_SOURCE_FIRST_A/B before P001/P002 final rationale; that source-first origin is retained. Current full-learner target review is exposed, not a fresh blind first encounter.",
+          "currentTargetAuthorRationalePreviouslySeen": true,
+          "originalSourceFirstRefs": [
+            "work/items/W-MATH-048-n1314-source-audit/evidence/R04_SOURCE_FIRST_B.json"
+          ]
+        },
+        "packetHash": "c3906572fa1e486526c6b3d1d3d278a02b7a503590af811b9d1cc09311f04696"
+      },
+      "evidenceRefs": [
+        "49309a81-7d79-4911-879c-9af6fe4cf5de",
+        "8698dd33-a1d6-475b-b13a-4f541be19e15",
+        "11874fd1-ff75-459e-ba7a-9faf4c8964bb",
+        "1d5485a5-6be7-4038-916d-6e5b4f46db9b",
+        "6d097ae4-34e0-457a-8e1b-de965e4e0997",
+        "ee6a4043-b7bf-4c97-95e8-5e7919a99c2e",
+        "39ef3842-168d-4e8e-a26e-4771ae07a6a7",
+        "15db2762-f308-4c73-9f5c-fb5d33de6050",
+        "8002060b-f5a4-4867-8c08-d500d97552dc",
+        "72c3c4f0-874f-4fb4-935f-72f56d4de6de",
+        "137ca724-a281-4428-9e15-e629692138b5",
+        "b9b1fdcc-be2f-4430-a6f0-519d966ff090",
+        "49220f71-f8f6-434f-a56b-08cc7d6180b8",
+        "9c1416c7-471e-4987-80e5-897b1f6c56c1",
+        "90e4589b-b2c2-431a-bb87-e6958d41a043",
+        "09eb6fbe-2c70-4807-bfe6-bb3583344b0c",
+        "2e9db93e-7dba-4a98-9114-3af963707e96",
+        "1df82738-eb63-4f4e-86f7-e708ac247d23",
+        "c8709a46-ce06-4afc-ab31-6a506cb5d258",
+        "93ab9527-df6d-4335-81c5-b93542348426",
+        "9e7f5fac-fb44-4089-a232-be70e8734ebb"
+      ],
+      "harness": {
+        "agentRef": "/root/w048_review_b",
+        "taskRef": "W048-P003-n14-R04-B",
+        "parentRef": "/root",
+        "logicalRole": "B",
+        "toolResultRef": "741b80d4c9e35ea4596aab9275d905a7c4f3869a95616f8dde0c657b79bf9d83",
+        "attestationMethod": "transcribed-tool-result"
+      },
+      "registration": {
+        "registrationRef": "ba5907ef1a6967c170cfed5f861564bfb5f89ef9696199fda055c7fd66394db7",
+        "assignmentHash": "122c283f32ec91dac3a6c9900aa826bb567808d2795f6515529740873f252a86",
+        "eventRef": "fac5bf30ceb312eb9d3621bc999b1343c3950baa2ed758ad08b922f15a390940"
+      }
+    }
+  ]
+}

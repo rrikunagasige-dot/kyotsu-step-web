@@ -1,0 +1,117 @@
+{
+  "root": "/workspace/scratch/6ff917b2ec4a/w047-n1112",
+  "store": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "work": "W-MATH-048",
+  "node": "R04_PROPOSAL@n13",
+  "inputHash": "426bb406ab7567e43f3a7280fc3c526147cedbaf27e57f637c21a20acd28310b",
+  "roleEpoch": 1,
+  "artifactRefs": [
+    "56e8186fef2f88573006b792074638d2e9b7c73e17ec59e6bc0feb53b778df32",
+    "a3bced5bd1f3648d6410a07e0ffca21ed735eb62ca124e1f0a8284706eeaf1d1",
+    "af620dd7eaad76dbf593965ba57d3b5095b275a706162d229a8d9a9e5858e219",
+    "4610921be1c932050266d8a9a14476fcc3047cbb5d6533dfa429b9cf205cce9e",
+    "cf1be7389f7b1c8d8b095a3c4a800d4aa87e4a03aa52bbb3750e176f5cf6cc67",
+    "f6ada1367826fc324de82c88b4928ee300ead99f74c61c32df3b09fb009ea9c5",
+    "69b1b41a00faa33df582fe1feeb49332e997fc2016bb424b33eda1d329472ebd",
+    "f57298afaf555f16b09b0974d0af07b7e0471f6a1a5214fd1085ad59620c115a",
+    "568fede14e05d5f838f35775f6a89d3c6aab0b02ae697608b2ccf8b7771fdaa7"
+  ],
+  "evidenceRefs": [
+    "fb2018c5-3f91-439a-9e9d-2e13d4adf4ac",
+    "502629c8-c659-4647-be37-fdf1e134d796",
+    "4d5a832f-2356-4720-a325-089d3dd5b233",
+    "1a6dc016-2d09-4830-9310-1a654a57670e",
+    "ec19f884-abd3-4d8c-b421-f51130f077c7",
+    "c4350e98-dcba-4643-a6f0-91a077cd6ce6",
+    "025b72c8-89ca-41b1-bd36-699b7cc6e86e",
+    "593e1582-389d-4e39-af26-d6e9bc13e965",
+    "5b79094e-a652-491f-964c-f0e2899ca70b",
+    "a328b46a-1864-4506-9c10-56489f043784",
+    "7b3a5185-3d1d-4dd6-98fd-ea11aab501c6",
+    "d4d89c45-a57c-4655-b171-d2238c01fa9a",
+    "93f7ae94-7aa7-4ced-9121-324c09e29c31",
+    "ff9ee726-1c0d-4351-9fbb-f6151e5593ad"
+  ],
+  "reviewers": [
+    {
+      "logical": "A",
+      "agentRef": "/root/w048_review_a",
+      "taskRef": "W048-P001-n13-R04-A",
+      "facet": "design",
+      "claim": "teaching",
+      "reviewKind": "source-review",
+      "artifactHashes": {
+        "teaching": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "426bb406ab7567e43f3a7280fc3c526147cedbaf27e57f637c21a20acd28310b",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "teaching",
+            "facet": "design",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "Old draft/constraints and initial primary-source observations known before new full learner target. Not blind. A assisted transport script only; B assisted prototype check script only. Neither authored lesson copy."
+        }
+      },
+      "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_R04_FIRST_A.json",
+      "launchPath": "/tmp/w048-n13-launch-A.json",
+      "finalPath": "/tmp/w048-n13-final-A.json"
+    },
+    {
+      "logical": "B",
+      "agentRef": "/root/w048_review_b",
+      "taskRef": "W048-P001-n13-R04-B",
+      "facet": "render",
+      "claim": "layout",
+      "reviewKind": "learner-visible-review",
+      "artifactHashes": {
+        "layout": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d"
+      },
+      "packet": {
+        "baseNodeInputHash": "426bb406ab7567e43f3a7280fc3c526147cedbaf27e57f637c21a20acd28310b",
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n13Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/data/textbook/math/numbers/reviewLessonHelpers.ts",
+          "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json"
+        ],
+        "authorHistory": [
+          {
+            "claimRef": "layout",
+            "facet": "render",
+            "block": "n13",
+            "semanticContributorRefs": [
+              "/root"
+            ]
+          }
+        ],
+        "contextExposure": {
+          "forkMode": "filtered",
+          "authorRationaleVisibleAtFirstPass": false,
+          "priorExposure": "Old draft/constraints and initial primary-source observations known before new full learner target. Not blind. A assisted transport script only; B assisted prototype check script only. Neither authored lesson copy."
+        }
+      },
+      "reportPath": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_R04_FIRST_B.json",
+      "launchPath": "/tmp/w048-n13-launch-B.json",
+      "finalPath": "/tmp/w048-n13-final-B.json"
+    }
+  ]
+}

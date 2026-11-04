@@ -18,12 +18,14 @@ def add_before(c,target,q,id,prompt,stem,answer,wrong,hint,after,action='calcula
  assert len(item['choices'])==len(set(item['choices']))==4
  before,tail=stem.split('□')
  parts=([M(before)]if before else[])+[C(id)]+([M(tail)]if tail else[])
- rows=[paragraph(id+'-lead',T(prompt),chain=chain),formula(id+'-formula',*parts,chain=chain),paragraph(id+'-after',T(after),chain=chain)]
+ question=(paragraph if action=='meaning'and stem=='□'else formula)(id+'-formula',*parts,chain=chain)
+ rows=[paragraph(id+'-lead',T(prompt),chain=chain),question,paragraph(id+'-after',T(after),chain=chain)]
  index=next(i for i,x in enumerate(s['readingFlow'])if x['id']==target);s['readingFlow'][index:index]=rows
  # Keep the original grade ID at the integration step, and insert only new IDs.
- anchor={'n13':{4:'n13-04',7:'n13-07',9:'n13-09'},'n14':{5:'n14-05'}}[c][q]
+ anchor={'n13':{4:'n13-04',7:'n13-07',9:'n13-09'},'n14':{3:'n14-03',5:'n14-05'}}[c][q]
  at=next(i for i,x in enumerate(s['items'])if x['id']==anchor);s['items'].insert(at,item)
  added.append({'unit':c,'q':q,'id':id,'prompt':prompt,'template':stem,'answer':answer,'wrong':wrong,'hint':hint,'after':after,'action':action,'beforeBlock':target})
+ block(c,target)['derivationId']=chain
 
 # N13: retain every previously approved question/choice key and branch decision.
 units['n13']['revision']=5
@@ -47,11 +49,12 @@ for item in s['items']:
 units['n14']['revision']=11
 block('n14','n14-heading-1')['text']='距離から残す範囲を考える'
 block('n14','n14-after-02')['parts']=[T('境界の二点が決まりました。次に、その間と外側のどちらを残すか、元の距離の条件から考えます。')]
+add_before('n14','n14-formula-03',3,'n14-w048-q03-region','距離が3未満となる領域を、二点の間と外側から選びましょう。','□','二点の間',['二点の外側','右側だけ','左側だけ'],'原点と、境界の外にある点をそれぞれ元の条件に当てはめて比べます。','残す領域が決まりました。次は、距離がちょうど3の境界を含むかを判断します。',action='meaning')
 block('n14','n14-lead-05')['parts']=[T('次の例題は、距離に下限がある条件です。境界の位置、残す領域、等号の扱いを順に判断します。'),M(r'|x|\ge4')]
 add_before('n14','n14-formula-05',5,'n14-w048-q05-boundaries','距離がちょうど4になる二つの境界を選びましょう。','□',r'x=-4,\quad x=4',[r'x=0,\quad x=4',r'x=-4,\quad x=0',r'x=4,\quad x=8'],'境界では距離がちょうど4になります。N13で求めた左右の位置を使います。','境界の二点が決まりました。次は残す領域を考えます。')
 add_before('n14','n14-formula-05',5,'n14-w048-q05-region','元の距離の下限を満たすのは、二点の間と外側のどちらでしょう。','□','二点の外側',['二点の間','右側だけ','左側だけ'],'原点と、境界より遠い位置をそれぞれ条件に当てはめて比べます。','残す領域が決まりました。最後に、元の不等号が境界を含むかを判断します。',action='meaning')
 for item in units['n14']['sections'][0]['items']:
- if item['id']=='n14-03':item['hints']=['x=0と境界の外にある点を、元の距離の条件に当てはめます。等号が許されるかも別に確かめます。']
+ if item['id']=='n14-03':item['prompt']='判定した領域に、境界を含むかどうかを合わせてまとめよう。';item['hints']=['境界では距離がちょうど3です。その値が元の不等号を満たすか確かめます。']
  if item['id']=='n14-05':item['prompt']='求めた境界と領域に、等号の条件を合わせて結果をまとめよう。';item['hints']=['境界では距離がちょうど4です。その値が元の不等号を満たすか確かめます。']
 block('n14','n14-marker-3').update(kind='example',text='例題')
 f=units['n14']['sections'][0]['readingFlow'];at=next(i for i,x in enumerate(f)if x['id']=='n14-lead-11');f.insert(at,{'id':'n14-w048-check-marker','type':'marker','kind':'check','text':'確認'})
@@ -60,6 +63,23 @@ f.extend([
  paragraph('n14-w048-next-chapter-bridge',T('次の二次関数では、一つの値を変えたときに、もう一つの値がどう変わるかを調べます。この章で使った展開・因数分解・平方根・不等式を、グラフの形や値の範囲を読む道具として使います。'))])
 
 for c,u in units.items():
+ # Explicit lexical formatting only: source wording and canonical grading keys
+ # remain unchanged. The restricted spans are retained for nonauthor review.
+ spans=[]
+ def math_parts(text):
+  out=[];at=0
+  for match in re.finditer(r'[A-Za-z0-9−+×÷=<>≤≥±|/().-]+',text):
+   raw=match.group()
+   if not (re.search(r'[Xxa]',raw) or re.search(r'[=<>≤≥±|×÷]',raw)):continue
+   if raw.count('|')%2:continue
+   latex=raw.replace('−','-').replace('≥',r'\ge ').replace('≤',r'\le ').replace('±',r'\pm ').replace('×',r'\times ').replace('÷',r'\div ')
+   if match.start()>at:out.append(T(text[at:match.start()]))
+   out.append(M(latex));spans.append({'text':text,'start':match.start(),'end':match.end(),'source':raw,'latex':latex});at=match.end()
+  if at<len(text):out.append(T(text[at:]))
+  return out or [T(text)]
+ for entry in u['sections'][0]['readingFlow']:
+  if 'parts'in entry:entry['parts']=[p2 for p in entry['parts']for p2 in (math_parts(p['text'])if p['type']=='text'else[p])]
+ write('evidence/'+c.upper()+'_INLINE_SPANS.json',spans)
  old=load('evidence/'+c.upper()+'_CURRENT.json')['unit']['sections'][0]['items'];now={i['id']:i for i in u['sections'][0]['items']}
  for item in old:
   assert item['answer']==now[item['id']]['answer'] and item['choices']==now[item['id']]['choices'],item['id']

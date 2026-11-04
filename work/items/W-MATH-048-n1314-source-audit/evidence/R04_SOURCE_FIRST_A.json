@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "role": "A source-first education/process reviewer",
+  "author": "M",
+  "reviewStage": "INITIAL_SOURCE_FIRST_ONLY",
+  "sourceFirst": true,
+  "blindReview": false,
+  "modelIndependent": false,
+  "newFullIRReceived": false,
+  "formalPacketReceived": false,
+  "verdict": "NOT_A_FORMAL_R04_PASS",
+  "readFiles": [
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/AGENTS.md",
+      "sha256": "9934f0d14004a1eba95712e801630f1302f549f6a5e212151e127e64d772e459"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/subjects/mathematics/AGENTS.md",
+      "sha256": "b5edc766cd539cdcd0db4bd3c8ca81a44c81086ab9639a2cd45bc3973cfe19fb"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/subjects/mathematics/textbook/SPEC.md",
+      "sha256": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/WORK.md",
+      "sha256": "f3af2ca91822c2496b2f728fc3ba096780a244bd0ccde9fbb6192b5cd9af3e3e"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/generated/CURRENT_POSITION.md",
+      "sha256": "fd1f7fb0eb499b097dd752f4f7d40b58dffafb6db0e71cac351df5c7b6833145"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json",
+      "sha256": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json",
+      "sha256": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/src/data/textbook/math/numbers/n13Lesson.ts",
+      "sha256": "953f0cec42e046c6c42e9e4a73b39ce9c9d92ae523b1afd2e7bc9175ca99c18c"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/src/data/textbook/math/numbers/n14Lesson.ts",
+      "sha256": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014"
+    },
+    {
+      "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/SOURCE_AUDIT_B.json",
+      "sha256": "0d967d61af38f5a08d9b3a3e46e8c5059037449124a734a3d179d6e673aca5fa"
+    }
+  ],
+  "observations": [
+    {
+      "id": "A-SF-01",
+      "topic": "理念",
+      "finding": "穴数・追加8判断という個数を合格根拠にせず、学生が既知から独立に行う判断・計算と、その直前/直後の可視状態を一段ずつ検査する。複数slotは一つの論理行に置けるが、同時表示により一方の答えや後段計算を漏らさない必要がある。"
+    },
+    {
+      "id": "A-SF-02",
+      "topic": "原問と採点の区別",
+      "finding": "原WordはN13 9問/N14 16問、現最終runtimeは12+38回答。原問25と採点50と表示block129を区別し、原問番号を追加判断の個数で改番しない。"
+    },
+    {
+      "id": "A-SF-03",
+      "topic": "N13教育判断",
+      "finding": "Q04/Q07の正負二枝は別々の算術計算、Q09の距離0と負の距離は別の境界判断。旧一括回答を残したまま、局所判断を前に置く案なら旧50ID/正答/choiceキー保持と両立できる。旧IDを一枝へ再割当てする以前監査の候補は、今回の保持条件では採らない。"
+    },
+    {
+      "id": "A-SF-04",
+      "topic": "N14教育判断",
+      "finding": "Q03の内外/端点、Q05の境界/内外/端点は別判断として設計検討を要する。Q03とQ05の基準をそろえる。二つの式・境界という見かけだけで他の既習規則適用まで機械的分割しない。"
+    },
+    {
+      "id": "A-SF-05",
+      "topic": "先出し",
+      "finding": "現N14見出し「近い点は内側、遠い点は外側」とafter02の「二点の間にある点だけを残す」はQ03前の内外判断を確定している。中立な導入へ替えるだけでなく、最終可視順でQ03の未回答時に答えが見えないか検査する。"
+    },
+    {
+      "id": "A-SF-06",
+      "topic": "ヒント",
+      "finding": "現N13Q06/Q09のヒントは当該正答を直接断定する。誤答後ヒントと初期表示の先出しは区別する。別数値での既習想起と現在課題への適用を促す支援が適切。"
+    },
+    {
+      "id": "A-SF-07",
+      "topic": "本文と役割",
+      "finding": "N13Q02の「さきほどの距離4」は直前距離5と不連続。N13Q09は性質、N14Q09/10は例題、Q11以降は確認という原資料の役割を可視に保持する。N14末尾は原Word章まとめと二次関数への接続が欠落しているので最終回答後の復元が妥当。"
+    },
+    {
+      "id": "A-SF-08",
+      "topic": "既承認保護",
+      "finding": "n13Lesson.ts/n14Lesson.tsのoriginalContentだけで再欠陥認定しない。実際は後段置換でQ05/Q08、Q07/Q08/Q10/Q12/Q14/Q15/Q16が構成され、承認済みの符号場合分け・三辺操作・二枝解・端点代入がある。"
+    },
+    {
+      "id": "A-SF-09",
+      "topic": "可視状態",
+      "finding": "現経路はLegacyであり、同じchoice行の全slot完了で後段を開くという既監査契約がある。新IRの一論理行/複数slotと、初期・部分正答・全正答・誤答hint・旧保存再開の可視順を一致させること。診断IRは対象部分の診断以上の全文合格証拠にしない。"
+    },
+    {
+      "id": "A-SF-10",
+      "topic": "工程",
+      "finding": "現在generatedの次はR04_PROPOSAL@n13、N14正式R01〜R04は未完了。N14資料監査済みを正式node完了へ読み替えない。最終具体案・実装・承認・アプリ受入を分離する。"
+    }
+  ],
+  "protected": [
+    "既存50回答ID・正答・200choiceキー",
+    "原問25の同一性",
+    "原図3点のbytesと回答後gate",
+    "N13Q05/Q08既承認推導・hint・migration",
+    "N14Q07/Q08/Q10/Q12/Q14/Q15/Q16既承認推導・hint・migration",
+    "既受入単元・他mode・旧保存archiveと選択migration"
+  ],
+  "requiredFormalPacket": [
+    "固定target hashと作者履歴",
+    "新全文IRおよび全source/新判断/旧item/row対応",
+    "各状態の可視順と番号仕様",
+    "旧保存で新判断前に後段が露出しない再開仕様",
+    "保持対象の値比較と正式非作者review対象"
+  ],
+  "draftBoundary": "旧PROPOSAL/CANDIDATE/ADDED_DECISIONSの存在はWORK経由で把握。新全文IR/正式packet未受領で、旧DRAFTを新R04確定案として評価していない。",
+  "limits": [
+    "静的sourceレビューのみ。新表示生成案・実画面を未レビュー。",
+    "SOURCE_AUDIT_Bは可視の既報であり盲検ではない。",
+    "製品・Store・Gitへの書込なし。tmp報告のみ。"
+  ]
+}

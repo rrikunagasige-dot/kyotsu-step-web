@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "taskRef": "W048-P001-n13-R04-A",
+  "targetHash": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+  "sourceFirst": true,
+  "firstPass": true,
+  "authorSeparation": true,
+  "blindReview": false,
+  "modelIndependent": false,
+  "verdict": "PASS",
+  "firstObservations": [
+    {
+      "id": "A-N13-FIRST-01",
+      "observation": "学習者全文を先に読み、Q04/Q07は正負の独立計算を順に答えてから旧二解セットへ進み、Q09は0/負の別判断後に旧総括へ進むことを確認した。旧総括の選択肢は局所計算前のvisibleBlockIdsに出ていない。"
+    },
+    {
+      "id": "A-N13-FIRST-02",
+      "observation": "Q01後の正距離一般式、Q02の新例導入、Q03のXからx−1への復元は接続する。Q05は図を用いた右座標−左座標、Q08は二枝→各解→ORの既存線を保つ。Q09に性質の役割がある。"
+    },
+    {
+      "id": "A-N13-FIRST-03",
+      "observation": "Q06ヒントは中身全体と既習分け方へ戻す支援、Q09局所ヒントは位置/非負性の想起で、当該二解答の断定から改められている。"
+    },
+    {
+      "id": "A-N13-FIRST-04",
+      "observation": "提示された全18 current statesは各未回答choice行で止まり、future解答/after/原図の早期露出を認めない。旧全回答済みも最初の新判断Q04正枝で止まる設計。実DOMではない。"
+    },
+    {
+      "id": "A-N13-FIRST-05",
+      "observation": "学習者JSONのLaTeXにはコンソール出力上で二重バックスラッシュが見える。元データ・IR・consumerの文字列扱いとの一致を後段で照合する必要がある。"
+    }
+  ],
+  "firstObservationFrozenBefore": [
+    "N13_FULL_IR.json",
+    "N13_ROW_PROJECTION.json",
+    "P001_FINAL",
+    "patch explanations"
+  ],
+  "learnerCopySHA256": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+  "rationale": "原資料初回所見を保持し、固定学習者全文と全18未回答状態を先に観察・報告内固定した。その後Q01〜Q09の原問、全文IR60node、60物理row、18interaction、旧12回答契約を照合。追加6判断はQ04/Q07の正負独立計算とQ09の異なる境界判断を担い、旧総括を後に残す。OR・図gate・既承認Q05/Q08・旧回答の意味を保持し、未回答を越える未来結果の露出を静的設計に認めなかった。未解決findingなし。",
+  "findings": [],
+  "reviewScope": "R04_PROPOSAL@n13 static concrete teaching design only",
+  "evidenceRefs": [
+    "fb2018c5-3f91-439a-9e9d-2e13d4adf4ac",
+    "502629c8-c659-4647-be37-fdf1e134d796",
+    "4d5a832f-2356-4720-a325-089d3dd5b233",
+    "1a6dc016-2d09-4830-9310-1a654a57670e",
+    "ec19f884-abd3-4d8c-b421-f51130f077c7",
+    "c4350e98-dcba-4643-a6f0-91a077cd6ce6",
+    "025b72c8-89ca-41b1-bd36-699b7cc6e86e",
+    "593e1582-389d-4e39-af26-d6e9bc13e965",
+    "5b79094e-a652-491f-964c-f0e2899ca70b",
+    "a328b46a-1864-4506-9c10-56489f043784",
+    "7b3a5185-3d1d-4dd6-98fd-ea11aab501c6",
+    "d4d89c45-a57c-4655-b171-d2238c01fa9a",
+    "93f7ae94-7aa7-4ced-9121-324c09e29c31",
+    "ff9ee726-1c0d-4351-9fbb-f6151e5593ad"
+  ],
+  "firstObservationFollowup": [
+    {
+      "firstObservationId": "A-N13-FIRST-05",
+      "disposition": "DISPROVEN",
+      "reason": "文字配列を確認すると各LaTeX命令のバックスラッシュは1文字。コンソール/JSONのescaped表示で二重に見えただけで、本文・旧契約・IR間に二重エスケープ欠陥を認めない。実KaTeX/DOMの合格を意味しない。"
+    }
+  ],
+  "questionChecks": [
+    {
+      "sourceQuestion": "N13-Q01",
+      "sourceRefs": [
+        "word-p-000558",
+        "word-p-000559",
+        "word-p-000560",
+        "word-p-000561",
+        "word-p-000562",
+        "word-p-000563"
+      ],
+      "cognitiveOperation": "正の距離5から左右の二位置とORを判断。一般的な二位置の支援は具体座標を代答しない。",
+      "assessment": "PASS",
+      "visibleCheck": "n13-01時に原図f02/一般式は未表示、回答後に図とa>0一般式を開く。"
+    },
+    {
+      "sourceQuestion": "N13-Q02",
+      "sourceRefs": [
+        "word-p-000564",
+        "word-p-000565",
+        "word-p-000566",
+        "word-p-000567"
+      ],
+      "cognitiveOperation": "式全体X=x−1に正距離の規則を1回適用してX=4または−4。",
+      "assessment": "PASS",
+      "visibleCheck": "距離5の後に距離4を新例として明示し、旧「さきほどの距離4」の接続不整合を解消。"
+    },
+    {
+      "sourceQuestion": "N13-Q03",
+      "sourceRefs": [
+        "word-p-000568"
+      ],
+      "cognitiveOperation": "Xをx−1へ戻して両枝を保つ一つの代入操作。",
+      "assessment": "PASS",
+      "visibleCheck": "後段Q04計算行は未回答Q03時に非表示。"
+    },
+    {
+      "sourceQuestion": "N13-Q04",
+      "sourceRefs": [
+        "word-p-000569"
+      ],
+      "cognitiveOperation": "4+1と−4+1を各々計算し、二解を元の絶対値方程式の全解へまとめる。",
+      "assessment": "PASS",
+      "visibleCheck": "正枝→負枝→旧n13-04総括。後段choice/解答確認本文/原図f01はそれぞれ先行未回答時に非表示。旧総括の正答・選択肢保持。"
+    },
+    {
+      "sourceQuestion": "N13-Q05",
+      "sourceRefs": [
+        "word-p-000570",
+        "word-p-000571",
+        "word-p-000572",
+        "word-p-000573",
+        "word-p-000574",
+        "word-p-000575"
+      ],
+      "cognitiveOperation": "右座標−左座標からx≥1とx<1で距離式を各々生成。x=1の距離0も含む。",
+      "assessment": "PASS",
+      "visibleCheck": "既承認2slot/正答/choices/hints/derivationId保持。原図はQ04後・Q05前で、特定xの解答図へ変更していない。"
+    },
+    {
+      "sourceQuestion": "N13-Q06",
+      "sourceRefs": [
+        "word-p-000578",
+        "word-p-000579"
+      ],
+      "cognitiveOperation": "中身x+2全体へ既習の二位置規則を適用。",
+      "assessment": "PASS",
+      "visibleCheck": "新hintは現在の具体右辺±3を断定せず、中身全体と最初の例題へ戻す。Q07の計算結果は未表示。"
+    },
+    {
+      "sourceQuestion": "N13-Q07",
+      "sourceRefs": [
+        "word-p-000580"
+      ],
+      "cognitiveOperation": "x+2=3、x+2=−3を独立に解いてから二解へ統合。Q04より途中計算表記を減らして適用。",
+      "assessment": "PASS",
+      "visibleCheck": "正枝→負枝→旧n13-07。前問で教えた同じ数を引く操作を呼び戻し、計算結果1/−5は学生が選ぶ。"
+    },
+    {
+      "sourceQuestion": "N13-Q08",
+      "sourceRefs": [
+        "word-p-000581",
+        "word-p-000582",
+        "word-p-000583"
+      ],
+      "cognitiveOperation": "3xの二枝→各枝を3で割る→二解のORを回答後確認。",
+      "assessment": "PASS",
+      "visibleCheck": "既承認3slot/正答/choices/hintsを保持。未回答branch時に各root行なし、負root完了前に完成二解本文なし。"
+    },
+    {
+      "sourceQuestion": "N13-Q09",
+      "sourceRefs": [
+        "word-p-000584",
+        "word-p-000585",
+        "word-p-000586",
+        "word-p-000587"
+      ],
+      "cognitiveOperation": "距離0の一位置と負の距離の不存在を別々に判断してから旧総括へ対応づけ、a>0/a=0/a<0を回答後整理。",
+      "assessment": "PASS",
+      "visibleCheck": "性質の役割を本文で示す。zero→negative→旧n13-09。新hintは位置/値域の想起、総括hintは解答済み二結果の対応であり未来の独立判断を代答しない。"
+    }
+  ],
+  "preservationChecks": {
+    "originalGradedIDs": 12,
+    "originalChoiceValues": 48,
+    "allOriginalAnswersAndChoicesEqual": true,
+    "originalItemContractChanges": {
+      "n13-06": [
+        "hints"
+      ],
+      "n13-09": [
+        "hints"
+      ]
+    },
+    "approvedQ05Q08FullItemContractsEqual": true,
+    "figureDefinitionsEqual": true,
+    "figureGates": "f02 after Q01; f01 after Q04 and before Q05",
+    "originalQuestionNumbers": "1〜9を一論理導出ごとに保持。Q04/Q07は総括行、Q05/Q08は最後の計算行。Q09の数式群に9、総括は番号追加なし。",
+    "sourceBlockCoverage": "33 source blocks reviewed; p588 section boundary remains structural, not invented new content."
+  },
+  "stateChecks": {
+    "unansweredStateCount": 18,
+    "allViewsExactPrefixThroughCurrentChoiceRow": true,
+    "oldCompleteResume": "旧12回答を保持し、新6判断だけ未回答。最初のQ04正枝で表示停止する。以後旧総括は対応する新局所判断完了後に再表示。",
+    "proposedMigrationStaticInspection": "旧版unitへの既存migrationを先に実行し、旧IDを保ちarchive追加・completedAtをpreviousRevisionCompletedAtへ保存。実行検証は本review範囲外。",
+    "physicalRowProjection": "learner fullCopy IDs = projection row IDs = 60; interaction count18。Q04/Q07/Q09のbefore/afterと結果値を照合。"
+  },
+  "readOrder": [
+    "existing /tmp/w048-r04-source-first-a.json retained",
+    "N13_R04_TEAM_STATE.json rows[A]",
+    "N13_LEARNER_REVIEW.json fullCopy/figures/views/oldCompleteResume (first observations fixed)",
+    "N13_FULL_IR.json / N13_ROW_PROJECTION.json",
+    "N13_SOURCE_INDEX.json / N13_CURRENT.json",
+    "proposed TextbookUnitPage.tsx visible gate and proposed domain/textbook.ts migration excerpt"
+  ],
+  "notReadForVerdict": [
+    "P001_FINAL.md author rationale unnecessary after source/full learner/IR comparison"
+  ],
+  "artifactHashes": {
+    "work/items/W-MATH-048-n1314-source-audit/N13_LEARNER_REVIEW.json": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+    "work/items/W-MATH-048-n1314-source-audit/N13_FULL_IR.json": "72db4107ed6a642fe465ec200fbc418b794b5cb84f371d71016cc6c7face68cc",
+    "work/items/W-MATH-048-n1314-source-audit/N13_ROW_PROJECTION.json": "d68f4f36d876779298fe731e968393045869d547513ee383f55f293a67b46d16",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N13_SOURCE_INDEX.json": "ae32d16c76f20adb7904a1e2b303951bf65d30f94a9657071d6736f6dd970ae4",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42"
+  },
+  "limits": [
+    "静的具体設計のteaching/source-review PASS。製品patch適用・実DOM・実KaTeX・画面幅/幾何・実ブラウザ操作は未検査。",
+    "旧保存migrationは提案コードの静的確認のみ。本reviewではnative CODEや技術試験を実行していない。",
+    "原図は既存source-first報告のhash/view履歴を保持し、今回は図定義とgateを照合。新たな原画像目視はしていない。",
+    "旧draft/既存初回原資料所見の露出あり。モデル独立・盲検は主張しない。",
+    "書込はこのreview reportのみ。製品・Store・Gitへの書込なし。"
+  ]
+}

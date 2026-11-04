@@ -73,8 +73,12 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x|<3"
+              },
+              {
                 "type": "text",
-                "text": "|x|<3は、数直線上で原点からの距離に上限を付けた条件。"
+                "text": "は、数直線上で原点からの距離に上限を付けた条件。"
               },
               {
                 "type": "math",
@@ -145,14 +149,51 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x|<3"
+              },
+              {
                 "type": "text",
-                "text": "|x|<3の意味から、−3と3の間か外側か、端点を含むかを判断する。"
+                "text": "の意味から、−3と3の間か外側か、端点を含むかを判断する。"
               },
               {
                 "type": "math",
                 "latex": "|x|<3"
               }
             ]
+          },
+          {
+            "id": "n14-w048-q03-region-lead",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "距離が3未満となる領域を、二点の間と外側から選びましょう。"
+              }
+            ],
+            "derivationId": "n14-q03-chain"
+          },
+          {
+            "id": "n14-w048-q03-region-formula",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n14-w048-q03-region"
+              }
+            ],
+            "derivationId": "n14-q03-chain"
+          },
+          {
+            "id": "n14-w048-q03-region-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "残す領域が決まりました。次は、距離がちょうど3の境界を含むかを判断します。"
+              }
+            ],
+            "derivationId": "n14-q03-chain"
           },
           {
             "id": "n14-formula-03",
@@ -166,7 +207,8 @@
                 "type": "choice",
                 "itemId": "n14-03"
               }
-            ]
+            ],
+            "derivationId": "n14-q03-chain"
           },
           {
             "id": "n14-after-03",
@@ -272,7 +314,7 @@
           },
           {
             "id": "n14-w048-q05-region-formula",
-            "type": "formula",
+            "type": "paragraph",
             "parts": [
               {
                 "type": "choice",
@@ -304,7 +346,8 @@
                 "type": "choice",
                 "itemId": "n14-05"
               }
-            ]
+            ],
+            "derivationId": "n14-q05-chain"
           },
           {
             "id": "n14-after-05",
@@ -322,7 +365,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "直前に決めた境界・内外・端点の扱いを、xについての二つの不等式へ翻訳しよう。二つの枝をどう結ぶかも自分で判断する。"
+                "text": "直前に決めた境界・内外・端点の扱いを、"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "についての二つの不等式へ翻訳しよう。二つの枝をどう結ぶかも自分で判断する。"
               },
               {
                 "type": "math",
@@ -346,7 +397,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "境界を含む左右の外側なのでx≤−4またはx≥4となる。二つの問題を解いたので完成原図で比較しよう。"
+                "text": "境界を含む左右の外側なので"
+              },
+              {
+                "type": "math",
+                "latex": "x\\le -4"
+              },
+              {
+                "type": "text",
+                "text": "または"
+              },
+              {
+                "type": "math",
+                "latex": "x\\ge 4"
+              },
+              {
+                "type": "text",
+                "text": "となる。二つの問題を解いたので完成原図で比較しよう。"
               }
             ]
           },
@@ -372,7 +439,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "境界の距離を正の数aとし、中の式全体をXと見ても、数直線の意味は同じである。"
+                "text": "境界の距離を正の数"
+              },
+              {
+                "type": "math",
+                "latex": "a"
+              },
+              {
+                "type": "text",
+                "text": "とし、中の式全体を"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "と見ても、数直線の意味は同じである。"
               }
             ]
           },
@@ -382,15 +465,59 @@
             "parts": [
               {
                 "type": "text",
-                "text": "距離の規則を一般の数Xで考える。a>0とし、まずXが0以上の場合を調べよう。"
+                "text": "距離の規則を一般の数"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "で考える。"
+              },
+              {
+                "type": "math",
+                "latex": "a>0"
+              },
+              {
+                "type": "text",
+                "text": "とし、まず"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "が0以上の場合を調べよう。"
               },
               {
                 "type": "math",
                 "latex": "|X|<a\\quad(a>0)"
               },
               {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
                 "type": "text",
-                "text": "X≥0なら|X|=Xとなる。この場合に成り立つXの範囲を選ぼう。"
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X"
+              },
+              {
+                "type": "text",
+                "text": "となる。この場合に成り立つ"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "の範囲を選ぼう。"
               }
             ]
           },
@@ -409,8 +536,36 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
                 "type": "text",
-                "text": "X≥0なので|X|=X。よってX<aであり、二つの条件を合わせて0≤X<aとなる。"
+                "text": "なので"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X"
+              },
+              {
+                "type": "text",
+                "text": "。よって"
+              },
+              {
+                "type": "math",
+                "latex": "X<a"
+              },
+              {
+                "type": "text",
+                "text": "であり、二つの条件を合わせて"
+              },
+              {
+                "type": "math",
+                "latex": "0\\le X<a"
+              },
+              {
+                "type": "text",
+                "text": "となる。"
               }
             ]
           },
@@ -420,7 +575,47 @@
             "parts": [
               {
                 "type": "text",
-                "text": "次にXが負の場合を調べる。X<0なら|X|=−Xだから、−X<aとなる。両辺に−1を掛けると不等号は反転する。X<0も考慮した範囲を選ぼう。"
+                "text": "次に"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "が負の場合を調べる。"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=-X"
+              },
+              {
+                "type": "text",
+                "text": "だから、"
+              },
+              {
+                "type": "math",
+                "latex": "-X<a"
+              },
+              {
+                "type": "text",
+                "text": "となる。両辺に−1を掛けると不等号は反転する。"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "も考慮した範囲を選ぼう。"
               },
               {
                 "type": "math",
@@ -443,8 +638,36 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "-X<a"
+              },
+              {
                 "type": "text",
-                "text": "−X<aの両辺を−1倍するとX>−a。X<0と合わせて−a<X<0となる。"
+                "text": "の両辺を−1倍すると"
+              },
+              {
+                "type": "math",
+                "latex": "X>-a"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "と合わせて"
+              },
+              {
+                "type": "math",
+                "latex": "-a<X<0"
+              },
+              {
+                "type": "text",
+                "text": "となる。"
               }
             ]
           },
@@ -453,8 +676,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
                 "type": "text",
-                "text": "X≥0とX<0の二つの場合を合わせよう。いずれか一方に入るX全体を、絶対値なしの一つの範囲で表す。"
+                "text": "と"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "の二つの場合を合わせよう。いずれか一方に入る"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "全体を、絶対値なしの一つの範囲で表す。"
               },
               {
                 "type": "math",
@@ -477,8 +720,12 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "X"
+              },
+              {
                 "type": "text",
-                "text": "Xが文字式でも、式全体を一つの数としてこの関係を使える。"
+                "text": "が文字式でも、式全体を一つの数としてこの関係を使える。"
               }
             ]
           },
@@ -488,7 +735,63 @@
             "parts": [
               {
                 "type": "text",
-                "text": "逆も確かめる。今得た範囲にXがあるとする。X≥0なら|X|=X<a。X<0ならX>−aより−X<aであり、|X|=−X<a。どちらも元の条件を満たすので、両方向が成り立つ。"
+                "text": "逆も確かめる。今得た範囲に"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "があるとする。"
+              },
+              {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
+                "type": "text",
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X<a"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "X>-a"
+              },
+              {
+                "type": "text",
+                "text": "より"
+              },
+              {
+                "type": "math",
+                "latex": "-X<a"
+              },
+              {
+                "type": "text",
+                "text": "であり、"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=-X<a"
+              },
+              {
+                "type": "text",
+                "text": "。どちらも元の条件を満たすので、両方向が成り立つ。"
               },
               {
                 "type": "math",
@@ -502,15 +805,51 @@
             "parts": [
               {
                 "type": "text",
-                "text": "次は原点からの距離がaより大きい場合を考える。a>0として、まずXが0以上のとき。"
+                "text": "次は原点からの距離が"
+              },
+              {
+                "type": "math",
+                "latex": "a"
+              },
+              {
+                "type": "text",
+                "text": "より大きい場合を考える。"
+              },
+              {
+                "type": "math",
+                "latex": "a>0"
+              },
+              {
+                "type": "text",
+                "text": "として、まず"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "が0以上のとき。"
               },
               {
                 "type": "math",
                 "latex": "|X|>a\\quad(a>0)"
               },
               {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
                 "type": "text",
-                "text": "X≥0では|X|=X。この場合に必要な条件を選ぼう。"
+                "text": "では"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X"
+              },
+              {
+                "type": "text",
+                "text": "。この場合に必要な条件を選ぼう。"
               }
             ]
           },
@@ -529,8 +868,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "X\\ge 0"
+              },
+              {
                 "type": "text",
-                "text": "X≥0なら|X|=Xなので、この場合はX>aとなる。等号は含めない。"
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X"
+              },
+              {
+                "type": "text",
+                "text": "なので、この場合は"
+              },
+              {
+                "type": "math",
+                "latex": "X>a"
+              },
+              {
+                "type": "text",
+                "text": "となる。等号は含めない。"
               }
             ]
           },
@@ -539,8 +898,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
                 "type": "text",
-                "text": "X<0なら|X|=−X。−X>aの両辺に−1を掛けると不等号の向きが変わる。"
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=-X"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              },
+              {
+                "type": "math",
+                "latex": "-X>a"
+              },
+              {
+                "type": "text",
+                "text": "の両辺に−1を掛けると不等号の向きが変わる。"
               },
               {
                 "type": "math",
@@ -567,8 +946,20 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "-X>a"
+              },
+              {
                 "type": "text",
-                "text": "−X>aを−1倍するとX<−aとなる。こちらも等号を含めない。"
+                "text": "を−1倍すると"
+              },
+              {
+                "type": "math",
+                "latex": "X<-a"
+              },
+              {
+                "type": "text",
+                "text": "となる。こちらも等号を含めない。"
               }
             ]
           },
@@ -612,11 +1003,75 @@
             "parts": [
               {
                 "type": "text",
-                "text": "逆も確かめよう。X>aならa>0よりX>0なので|X|=X>a。X<−aならX<0なので|X|=−X>a。"
+                "text": "逆も確かめよう。"
+              },
+              {
+                "type": "math",
+                "latex": "X>a"
               },
               {
                 "type": "text",
-                "text": "左右のどちらか一方でよく「または」で結ぶ。「かつ」では両方同時に満たせない。X=±aも等号がないため含まれない。"
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "a>0"
+              },
+              {
+                "type": "text",
+                "text": "より"
+              },
+              {
+                "type": "math",
+                "latex": "X>0"
+              },
+              {
+                "type": "text",
+                "text": "なので"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=X>a"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              },
+              {
+                "type": "math",
+                "latex": "X<-a"
+              },
+              {
+                "type": "text",
+                "text": "なら"
+              },
+              {
+                "type": "math",
+                "latex": "X<0"
+              },
+              {
+                "type": "text",
+                "text": "なので"
+              },
+              {
+                "type": "math",
+                "latex": "|X|=-X>a"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              },
+              {
+                "type": "text",
+                "text": "左右のどちらか一方でよく「または」で結ぶ。「かつ」では両方同時に満たせない。"
+              },
+              {
+                "type": "math",
+                "latex": "X=\\pm a"
+              },
+              {
+                "type": "text",
+                "text": "も等号がないため含まれない。"
               },
               {
                 "type": "math",
@@ -650,8 +1105,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x-3|<5"
+              },
+              {
                 "type": "text",
-                "text": "|x−3|<5を解く。中身x−3全体をXと見て、一般化した内側の規則を使う。"
+                "text": "を解く。中身"
+              },
+              {
+                "type": "math",
+                "latex": "x-3"
+              },
+              {
+                "type": "text",
+                "text": "全体を"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "と見て、一般化した内側の規則を使う。"
               },
               {
                 "type": "math",
@@ -675,7 +1150,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "次は三辺に同じ操作をして、中央をxだけにする。"
+                "text": "次は三辺に同じ操作をして、中央を"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "だけにする。"
               }
             ]
           },
@@ -727,7 +1210,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "三辺に同じ数を足しても、二つの不等号の向きは変わらない。真ん中の−3と＋3が打ち消し合い、xだけが残る。"
+                "text": "三辺に同じ数を足しても、二つの不等号の向きは変わらない。真ん中の−3と＋3が打ち消し合い、"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "だけが残る。"
               }
             ],
             "derivationId": "n14-q10-chain"
@@ -772,8 +1263,28 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|x+3|\\ge 2"
+              },
+              {
                 "type": "text",
-                "text": "|x+3|≥2の絶対値を外す。中身x+3を一つの数Xと考え、距離の下限が表す領域と等号の扱いを判断しよう。"
+                "text": "の絶対値を外す。中身"
+              },
+              {
+                "type": "math",
+                "latex": "x+3"
+              },
+              {
+                "type": "text",
+                "text": "を一つの数"
+              },
+              {
+                "type": "math",
+                "latex": "X"
+              },
+              {
+                "type": "text",
+                "text": "と考え、距離の下限が表す領域と等号の扱いを判断しよう。"
               },
               {
                 "type": "math",
@@ -797,7 +1308,31 @@
             "parts": [
               {
                 "type": "text",
-                "text": "外側で端点を含むため、x+3≤−2またはx+3≥2。続いて各枝をxについて解く。"
+                "text": "外側で端点を含むため、"
+              },
+              {
+                "type": "math",
+                "latex": "x+3\\le -2"
+              },
+              {
+                "type": "text",
+                "text": "または"
+              },
+              {
+                "type": "math",
+                "latex": "x+3\\ge 2"
+              },
+              {
+                "type": "text",
+                "text": "。続いて各枝を"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "について解く。"
               }
             ]
           },
@@ -815,7 +1350,15 @@
               },
               {
                 "type": "text",
-                "text": "両辺から3を引いたときのxの範囲を選ぼう。"
+                "text": "両辺から3を引いたときの"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "の範囲を選ぼう。"
               }
             ]
           },
@@ -835,7 +1378,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "両辺から同じ3を引けば不等号の向きは変わらない。右辺は−2−3=−5なので、x≤−5となる。"
+                "text": "両辺から同じ3を引けば不等号の向きは変わらない。右辺は"
+              },
+              {
+                "type": "math",
+                "latex": "-2-3=-5"
+              },
+              {
+                "type": "text",
+                "text": "なので、"
+              },
+              {
+                "type": "math",
+                "latex": "x\\le -5"
+              },
+              {
+                "type": "text",
+                "text": "となる。"
               }
             ]
           },
@@ -853,7 +1412,15 @@
               },
               {
                 "type": "text",
-                "text": "両辺から3を引いてxの範囲を選ぼう。"
+                "text": "両辺から3を引いて"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "の範囲を選ぼう。"
               }
             ]
           },
@@ -872,8 +1439,20 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "2-3=-1"
+              },
+              {
                 "type": "text",
-                "text": "2−3=−1だからx≥−1となる。ここでも同じ数を引くだけなので、不等号は反転しない。"
+                "text": "だから"
+              },
+              {
+                "type": "math",
+                "latex": "x\\ge -1"
+              },
+              {
+                "type": "text",
+                "text": "となる。ここでも同じ数を引くだけなので、不等号は反転しない。"
               }
             ]
           },
@@ -917,11 +1496,43 @@
             "parts": [
               {
                 "type": "text",
-                "text": "左の枝ではx≤−5、右の枝ではx≥−1。どちらか一方を満たせばよいため「または」で結ぶ。"
+                "text": "左の枝では"
+              },
+              {
+                "type": "math",
+                "latex": "x\\le -5"
               },
               {
                 "type": "text",
-                "text": "もとの不等号には等号があるので、x=−5とx=−1はどちらも解に含まれる。その間は解にならない。"
+                "text": "、右の枝では"
+              },
+              {
+                "type": "math",
+                "latex": "x\\ge -1"
+              },
+              {
+                "type": "text",
+                "text": "。どちらか一方を満たせばよいため「または」で結ぶ。"
+              },
+              {
+                "type": "text",
+                "text": "もとの不等号には等号があるので、"
+              },
+              {
+                "type": "math",
+                "latex": "x=-5"
+              },
+              {
+                "type": "text",
+                "text": "と"
+              },
+              {
+                "type": "math",
+                "latex": "x=-1"
+              },
+              {
+                "type": "text",
+                "text": "はどちらも解に含まれる。その間は解にならない。"
               },
               {
                 "type": "math",
@@ -934,8 +1545,12 @@
             "type": "paragraph",
             "parts": [
               {
+                "type": "math",
+                "latex": "|3x-2|\\le 4"
+              },
+              {
                 "type": "text",
-                "text": "|3x−2|≤4では等号を含む距離の上限。内側の二重不等式を作る。"
+                "text": "では等号を含む距離の上限。内側の二重不等式を作る。"
               },
               {
                 "type": "math",
@@ -1011,7 +1626,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "三辺に同じ数を足しても、不等号の向きと等号は変わらない。中央の−2と＋2が打ち消し合い、3xだけが残る。"
+                "text": "三辺に同じ数を足しても、不等号の向きと等号は変わらない。中央の−2と＋2が打ち消し合い、"
+              },
+              {
+                "type": "math",
+                "latex": "3x"
+              },
+              {
+                "type": "text",
+                "text": "だけが残る。"
               }
             ],
             "derivationId": "n14-q14-chain"
@@ -1041,7 +1664,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "三辺に同じ変形を行い、中央のxの係数を1にする段階へ進もう。"
+                "text": "三辺に同じ変形を行い、中央の"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "の係数を1にする段階へ進もう。"
               }
             ]
           },
@@ -1093,7 +1724,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "三辺を正の3で割っても、不等号の向きと等号は変わらない。中央の3xを3で割ると、xだけが残る。"
+                "text": "三辺を正の3で割っても、不等号の向きと等号は変わらない。中央の"
+              },
+              {
+                "type": "math",
+                "latex": "3x"
+              },
+              {
+                "type": "text",
+                "text": "を3で割ると、"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": "だけが残る。"
               }
             ],
             "derivationId": "n14-q15-chain"
@@ -1123,7 +1770,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "最後に両端を元の|3x−2|へ戻して、本当に等号が成立するか検査する。"
+                "text": "最後に両端を元の"
+              },
+              {
+                "type": "math",
+                "latex": "|3x-2|"
+              },
+              {
+                "type": "text",
+                "text": "へ戻して、本当に等号が成立するか検査する。"
               }
             ]
           },
@@ -1133,7 +1788,23 @@
             "parts": [
               {
                 "type": "text",
-                "text": "前問で求めた左端 x=−2/3 と右端 x=2 を、元の不等式に戻して確かめよう。まず絶対値の中身を計算し、次に絶対値を求める。"
+                "text": "前問で求めた左端 "
+              },
+              {
+                "type": "math",
+                "latex": "x=-2/3"
+              },
+              {
+                "type": "text",
+                "text": " と右端 "
+              },
+              {
+                "type": "math",
+                "latex": "x=2"
+              },
+              {
+                "type": "text",
+                "text": " を、元の不等式に戻して確かめよう。まず絶対値の中身を計算し、次に絶対値を求める。"
               },
               {
                 "type": "math",
@@ -1228,7 +1899,15 @@
             "parts": [
               {
                 "type": "text",
-                "text": "左端も右端も絶対値が4となり、4≤4を満たす。もとの不等号には等号があるので、両端とも解に含まれる。"
+                "text": "左端も右端も絶対値が4となり、"
+              },
+              {
+                "type": "math",
+                "latex": "4\\le 4"
+              },
+              {
+                "type": "text",
+                "text": "を満たす。もとの不等号には等号があるので、両端とも解に含まれる。"
               }
             ]
           },
@@ -1293,9 +1972,28 @@
             ]
           },
           {
+            "id": "n14-w048-q03-region",
+            "label": "N14-W048-Q03-REGION",
+            "prompt": "距離が3未満となる領域を、二点の間と外側から選びましょう。",
+            "answer": "二点の間",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "二点の間",
+              "二点の外側",
+              "右側だけ",
+              "左側だけ"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "原点と、境界の外にある点をそれぞれ元の条件に当てはめて比べます。"
+            ]
+          },
+          {
             "id": "n14-03",
             "label": "N14-03",
-            "prompt": "残す位置と境界の扱いを選ぼう。",
+            "prompt": "判定した領域に、境界を含むかどうかを合わせてまとめよう。",
             "answer": "二点の間、両端を含まない",
             "acceptedAnswers": [],
             "answerType": "text",
@@ -1308,7 +2006,7 @@
             "purpose": "causal-reasoning",
             "scaffoldLevel": "medium",
             "hints": [
-              "x=0と境界の外にある点を、元の距離の条件に当てはめます。等号が許されるかも別に確かめます。"
+              "境界では距離がちょうど3です。その値が元の不等号を満たすか確かめます。"
             ]
           },
           {

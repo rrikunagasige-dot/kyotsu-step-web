@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "taskRef": "W048-P003-n14-R04-A",
+  "targetHash": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33",
+  "sourceFirst": true,
+  "firstPass": true,
+  "sourceFirstFlagScope": "元原資料初回所見の履歴だけを指す。今回targetへの作者説明未露出を意味しない。",
+  "authorSeparation": true,
+  "currentTargetAuthorRationalePreviouslySeen": true,
+  "currentTargetUnexposedFirstPass": false,
+  "blindReview": false,
+  "modelIndependent": false,
+  "verdict": "PASS",
+  "firstObservations": [
+    {
+      "id": "A-SF-01",
+      "topic": "理念",
+      "finding": "穴数・追加8判断という個数を合格根拠にせず、学生が既知から独立に行う判断・計算と、その直前/直後の可視状態を一段ずつ検査する。複数slotは一つの論理行に置けるが、同時表示により一方の答えや後段計算を漏らさない必要がある。"
+    },
+    {
+      "id": "A-SF-02",
+      "topic": "原問と採点の区別",
+      "finding": "原WordはN13 9問/N14 16問、現最終runtimeは12+38回答。原問25と採点50と表示block129を区別し、原問番号を追加判断の個数で改番しない。"
+    },
+    {
+      "id": "A-SF-03",
+      "topic": "N13教育判断",
+      "finding": "Q04/Q07の正負二枝は別々の算術計算、Q09の距離0と負の距離は別の境界判断。旧一括回答を残したまま、局所判断を前に置く案なら旧50ID/正答/choiceキー保持と両立できる。旧IDを一枝へ再割当てする以前監査の候補は、今回の保持条件では採らない。"
+    },
+    {
+      "id": "A-SF-04",
+      "topic": "N14教育判断",
+      "finding": "Q03の内外/端点、Q05の境界/内外/端点は別判断として設計検討を要する。Q03とQ05の基準をそろえる。二つの式・境界という見かけだけで他の既習規則適用まで機械的分割しない。"
+    },
+    {
+      "id": "A-SF-05",
+      "topic": "先出し",
+      "finding": "現N14見出し「近い点は内側、遠い点は外側」とafter02の「二点の間にある点だけを残す」はQ03前の内外判断を確定している。中立な導入へ替えるだけでなく、最終可視順でQ03の未回答時に答えが見えないか検査する。"
+    },
+    {
+      "id": "A-SF-06",
+      "topic": "ヒント",
+      "finding": "現N13Q06/Q09のヒントは当該正答を直接断定する。誤答後ヒントと初期表示の先出しは区別する。別数値での既習想起と現在課題への適用を促す支援が適切。"
+    },
+    {
+      "id": "A-SF-07",
+      "topic": "本文と役割",
+      "finding": "N13Q02の「さきほどの距離4」は直前距離5と不連続。N13Q09は性質、N14Q09/10は例題、Q11以降は確認という原資料の役割を可視に保持する。N14末尾は原Word章まとめと二次関数への接続が欠落しているので最終回答後の復元が妥当。"
+    },
+    {
+      "id": "A-SF-08",
+      "topic": "既承認保護",
+      "finding": "n13Lesson.ts/n14Lesson.tsのoriginalContentだけで再欠陥認定しない。実際は後段置換でQ05/Q08、Q07/Q08/Q10/Q12/Q14/Q15/Q16が構成され、承認済みの符号場合分け・三辺操作・二枝解・端点代入がある。"
+    },
+    {
+      "id": "A-SF-09",
+      "topic": "可視状態",
+      "finding": "現経路はLegacyであり、同じchoice行の全slot完了で後段を開くという既監査契約がある。新IRの一論理行/複数slotと、初期・部分正答・全正答・誤答hint・旧保存再開の可視順を一致させること。診断IRは対象部分の診断以上の全文合格証拠にしない。"
+    },
+    {
+      "id": "A-SF-10",
+      "topic": "工程",
+      "finding": "現在generatedの次はR04_PROPOSAL@n13、N14正式R01〜R04は未完了。N14資料監査済みを正式node完了へ読み替えない。最終具体案・実装・承認・アプリ受入を分離する。"
+    }
+  ],
+  "originalSourceFirst": {
+    "path": "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-048-n1314-source-audit/evidence/R04_SOURCE_FIRST_A.json",
+    "sha256": "e4d20b2295f276ecae513d2b8b1ca8747dbeaf39addefa2085c5545b18f942a7",
+    "originalReportWasNotFormalR04Pass": true,
+    "priorExposure": "当初は原典index/現N14本文/既存B監査の後に原資料所見を固定。P002のN14作者設計説明はその後N13 epoch2で全文既読。"
+  },
+  "currentTargetObservations": [
+    {
+      "id": "A-N14-CURRENT-01",
+      "observation": "100blockと41current stageの選択肢/hintsを先に順に観察した。見出しとafter02が中立化され、Q03の領域を学生が決めてから端点判断を含む旧総括へ進む。Q05は境界→領域→等号を含む旧総括となる。"
+    },
+    {
+      "id": "A-N14-CURRENT-02",
+      "observation": "Q06のOR、Q07/08のa>0/正負場合/和集合/逆向き確認が後続のX全体への適用を支える。Q09/10に例題、Q11前に確認を示す。"
+    },
+    {
+      "id": "A-N14-CURRENT-03",
+      "observation": "Q10/14/15は同じ物理行内の三つの操作slotと結果二端点slotを保つ。Q16も代入の中身→絶対値を同じ論理行に保持し、その後に両端包含を答える。未回答stageを越える説明行/図/章結びは見えていない。"
+    },
+    {
+      "id": "A-N14-CURRENT-04",
+      "observation": "新Q03領域hintは原点と外点を条件へ代入比較、Q05も境界/内外を比べる支援で、当該領域を先に断定しない。既存Q04のhintは既に求めた区間の言い換えであり、未判断の内外を漏らす箇所と区別する。"
+    },
+    {
+      "id": "A-N14-CURRENT-05",
+      "observation": "原図はQ06後の二既習題の比較。最後の章結びは注目文字・展開・因数分解・平方根・絶対値・不等式を同じ値/条件の保持へ接続し、次の二次関数での用途を示す。旧全回答済み再開は最初の新Q03領域で停止する。"
+    }
+  ],
+  "currentTargetObservationFrozenBefore": [
+    "N14_FULL_IR.json",
+    "N14_ROW_PROJECTION.json",
+    "N14_CURRENT.json",
+    "r3 N14 patch"
+  ],
+  "rationale": "P002のN14設計説明への既露出を先に開示し、元の原資料初回所見と今回のcurrentTargetObservationsを分離して固定した。その後全16原問、46原資料block、全文IR111node/41interaction、100物理row、旧38回答/152choice値を照合。新3判断はQ03領域とQ05境界/領域で、旧総括に残る端点判断へ段階を作る。見出し/after02の未知領域先出しを解消し、a>0の導出・OR・三辺同一操作と端点計算・元条件での検算・原図gate・章結びと次章用途を保つ。数学的誤りや新たなteaching blockerは認めない。未解決findingなし。",
+  "findings": [],
+  "reviewScope": "R04_PROPOSAL@n14 静的teaching/design審査。原資料先行の起源を保持するが、今回の全学習者targetは既露出あり。",
+  "evidenceRefs": [
+    "49309a81-7d79-4911-879c-9af6fe4cf5de",
+    "8698dd33-a1d6-475b-b13a-4f541be19e15",
+    "11874fd1-ff75-459e-ba7a-9faf4c8964bb",
+    "1d5485a5-6be7-4038-916d-6e5b4f46db9b",
+    "6d097ae4-34e0-457a-8e1b-de965e4e0997",
+    "ee6a4043-b7bf-4c97-95e8-5e7919a99c2e",
+    "39ef3842-168d-4e8e-a26e-4771ae07a6a7",
+    "15db2762-f308-4c73-9f5c-fb5d33de6050",
+    "8002060b-f5a4-4867-8c08-d500d97552dc",
+    "72c3c4f0-874f-4fb4-935f-72f56d4de6de",
+    "137ca724-a281-4428-9e15-e629692138b5",
+    "b9b1fdcc-be2f-4430-a6f0-519d966ff090",
+    "49220f71-f8f6-434f-a56b-08cc7d6180b8",
+    "9c1416c7-471e-4987-80e5-897b1f6c56c1",
+    "90e4589b-b2c2-431a-bb87-e6958d41a043",
+    "09eb6fbe-2c70-4807-bfe6-bb3583344b0c",
+    "2e9db93e-7dba-4a98-9114-3af963707e96",
+    "1df82738-eb63-4f4e-86f7-e708ac247d23",
+    "c8709a46-ce06-4afc-ab31-6a506cb5d258",
+    "93ab9527-df6d-4335-81c5-b93542348426",
+    "9e7f5fac-fb44-4089-a232-be70e8734ebb"
+  ],
+  "flagInterpretation": {
+    "sourceFirst": {
+      "value": true,
+      "refersOnlyTo": "R04_SOURCE_FIRST_A.jsonの当初原典/現稿先行観察",
+      "doesNotMean": "今回のlearner targetが著者説明に未露出だったこと"
+    },
+    "firstPass": {
+      "value": true,
+      "refersOnlyTo": "元原資料初回所見の固定起源",
+      "currentLearnerObservation": "今回も後段IR照合前にcurrentTargetObservationsを固定したが、既露出ありの観察"
+    },
+    "authorSeparation": {
+      "value": true,
+      "reason": "Mが教材作者。Aは輸送driver案と審査報告だけを作成し、N14教材本文/採点/図/IR/patchの作者ではない。"
+    },
+    "currentTargetAuthorRationalePreviouslySeen": true,
+    "currentTargetUnexposedFirstPass": false
+  },
+  "questionChecks": [
+    {
+      "sourceQuestion": "N14-Q01",
+      "sourceRefs": [
+        "word-p-000591",
+        "word-p-000592"
+      ],
+      "cognitiveOperation": "|x|<3を座標条件と混同せず、原点からの距離の上限へ翻訳。",
+      "visibleAndTeachingCheck": "中立な見出しはまだ内外を断定しない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q02",
+      "sourceRefs": [
+        "word-p-000593",
+        "word-p-000594"
+      ],
+      "cognitiveOperation": "N13の正距離二位置を呼び戻し境界−3/3を求める。",
+      "visibleAndTeachingCheck": "after02は境界のみ確認し、未回答Q03の内側を代答しない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q03",
+      "sourceRefs": [
+        "word-p-000595"
+      ],
+      "cognitiveOperation": "原点/外点の距離を比較して領域を決め、その結果へ等号なしの端点判断を加えて旧総括へ。",
+      "visibleAndTeachingCheck": "新領域hintは試す点を促す。旧総括prompt/hintは端点の条件照合へ焦点化し、正答/choicesは不変。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q04",
+      "sourceRefs": [
+        "word-p-000596"
+      ],
+      "cognitiveOperation": "既に決めた境界・内側・両端なしを−3<x<3へ翻訳。",
+      "visibleAndTeachingCheck": "hintは直前に判断済みの範囲の言い換え。未判断の内外先出しと区別。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q05",
+      "sourceRefs": [
+        "word-p-000597",
+        "word-p-000598",
+        "word-p-000599",
+        "word-p-000600"
+      ],
+      "cognitiveOperation": "距離4の境界二点→下限の領域→等号ありの端点を、前問と同基準で判断。",
+      "visibleAndTeachingCheck": "新境界/領域が終わるまで旧総括choicesを出さない。旧総括は三判断を一度に新規計算させる役割から、二既知結果と端点判断の統合へ。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q06",
+      "sourceRefs": [
+        "word-p-000601",
+        "word-p-000602",
+        "word-p-000603",
+        "word-p-000604"
+      ],
+      "cognitiveOperation": "左右に離れた範囲の一方でよいことをORで表す。",
+      "visibleAndTeachingCheck": "Q06後に直前二題の完成原図を比較。図は次の一般aの解を先に示すものではない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q07",
+      "sourceRefs": [
+        "word-p-000607",
+        "word-p-000608",
+        "word-p-000610"
+      ],
+      "cognitiveOperation": "a>0でX≥0とX<0の両場合を各々導出し、和集合を−a<X<aへ統合、逆向きを確認。",
+      "visibleAndTeachingCheck": "負数倍による向き反転は既習法則として提示し、その具体結果は学生が選ぶ。既承認3回答契約保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q08",
+      "sourceRefs": [
+        "word-p-000609",
+        "word-p-000611",
+        "word-p-000612"
+      ],
+      "cognitiveOperation": "同じa>0で外側の正負場合を導出し、X<−aまたはX>aを統合、逆向きと等号なしを確認。",
+      "visibleAndTeachingCheck": "ORとANDを混同しない説明を回答後に保持。既承認3回答契約保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q09",
+      "sourceRefs": [
+        "word-p-000613",
+        "word-p-000614",
+        "word-p-000615"
+      ],
+      "cognitiveOperation": "式全体x−3を一数として一般内側規則へ代入し−5<x−3<5。",
+      "visibleAndTeachingCheck": "例題markerに修正。適用規則は既習で、未知の名称当てではない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q10",
+      "sourceRefs": [
+        "word-p-000616",
+        "word-p-000617"
+      ],
+      "cognitiveOperation": "三辺それぞれへ+3を入れ、全三slot完了後に説明、その後両端−2/8を別計算。",
+      "visibleAndTeachingCheck": "一物理行の三slot/結果二slot、derivationIdと既承認5回答を保持。部分slotの段階で結果行を開かない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q11",
+      "sourceRefs": [
+        "word-p-000618",
+        "word-p-000619",
+        "word-p-000620"
+      ],
+      "cognitiveOperation": "x+3全体を距離の下限/等号へ適用して二枝をORで表す。",
+      "visibleAndTeachingCheck": "前に確認markerを置き、具体例から自力確認へ移る役割を表示。既存connector採点保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q12",
+      "sourceRefs": [
+        "word-p-000621"
+      ],
+      "cognitiveOperation": "二枝から3を別々に引きx≤−5とx≥−1を求め、ORで統合。",
+      "visibleAndTeachingCheck": "各枝の計算→正答後説明→最終和集合という既承認3回答/本文を保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q13",
+      "sourceRefs": [
+        "word-p-000622",
+        "word-p-000623",
+        "word-p-000624",
+        "word-p-000625"
+      ],
+      "cognitiveOperation": "3x−2を一数として≤の内側・端点包含を−4≤3x−2≤4へ適用。",
+      "visibleAndTeachingCheck": "中身全体を扱う既習操作で、機械的に新しい穴を増やさない。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q14",
+      "sourceRefs": [
+        "word-p-000626"
+      ],
+      "cognitiveOperation": "三辺へ+2をそれぞれ適用し、両端−2/6を別計算。",
+      "visibleAndTeachingCheck": "三辺の等号・不等号を保ち、既承認5回答と一行構成を保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q15",
+      "sourceRefs": [
+        "word-p-000627"
+      ],
+      "cognitiveOperation": "三辺を正の3で割り、両端−2/3と2を別計算。",
+      "visibleAndTeachingCheck": "正の除数なので向き/等号を保つ。既承認5回答と中央の4例想起hintを保持。",
+      "assessment": "PASS"
+    },
+    {
+      "sourceQuestion": "N14-Q16",
+      "sourceRefs": [
+        "word-p-000628"
+      ],
+      "cognitiveOperation": "左端と右端それぞれで中身→絶対値を求め、元の≤4と比較して両端を含むと判断。",
+      "visibleAndTeachingCheck": "既承認5回答と計算途中slotを保持。結論後に元式との確認と章結びを開く。",
+      "assessment": "PASS"
+    }
+  ],
+  "chapterEndingCheck": {
+    "sourceRefs": [
+      "word-p-000630",
+      "word-p-000631",
+      "word-p-000632",
+      "word-p-000633"
+    ],
+    "assessment": "PASS",
+    "reason": "注目文字→すべての積→展開との照合→平方と符号→距離→不等式操作の符号/境界を、同じ値・条件を保つ共通点で回収。二次関数でグラフの形や値の範囲を読む道具として使う用途も復元。新採点や未承認N15を追加しない。",
+    "gate": "n14-16完了後のみ。"
+  },
+  "preservationChecks": {
+    "N14OriginalAnswerIDs": 38,
+    "N14OriginalChoiceValues": 152,
+    "allOriginalN14AnswersChoicesAcceptedAnswersEqual": true,
+    "N14OriginalContractsChangedOnly": {
+      "n14-03": [
+        "prompt",
+        "hints"
+      ],
+      "n14-05": [
+        "prompt",
+        "hints"
+      ]
+    },
+    "protectedQ07Q08Q10Q12Q14Q15Q16FullItemContractsEqual": true,
+    "N13PlusN14OriginalAnswerIDs": 50,
+    "N13PlusN14OriginalChoiceValues": 200,
+    "allOriginal50AnswerChoiceAcceptedContractsEqual": true,
+    "figureDefinitionUnchanged": true,
+    "oldCompleteResume": "旧38回答を保持し、最初の新Q03領域で停止。Q05の新2判断も未回答。旧総括の未来行は新判断前に表示しない。"
+  },
+  "stateChecks": {
+    "currentStageCount": 41,
+    "learnerCopyBlocks": 100,
+    "IRNodes": 111,
+    "IRInteractions": 41,
+    "sourceBlockCount": 46,
+    "allCurrentVisibleBlockListsMatchPrefixThroughCurrentRow": true,
+    "multiSlotRowCount": 8,
+    "sameRowContract": "Q10/Q14/Q15は操作3slot→結果2slot。Q16は左右各2slot。同じ行内の一方の未回答はref/slotとして保持し、未来のexpected値を本文に挿入しない。",
+    "referenceLabels": "ROW_PROJECTION.referenceLabelsAreNotStudentCopy=true。IRの「後で判断する独立した回答欄」は学習者本文そのものにしない。",
+    "numbering": "同一derivationIdは最後の物理数式行へ一つ。式番号1〜20と原問16のidentityは別。原問ID対応を維持。"
+  },
+  "artifactHashes": {
+    "N14_LEARNER_REVIEW.json": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33",
+    "N14_FULL_IR.json": "3a9de66d90b66191ec3398bf2bbba06a6562fa1154c5622f8bc64c6b06138f2e",
+    "N14_ROW_PROJECTION.json": "a55a646d9200c61d8c3451f1371086898a117a34b26b4a65a1a664b15c9cb63c",
+    "evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6",
+    "evidence/N14_CURRENT.json": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+    "r3/N14_PROPOSED_PATCH.json": "b31121d06de8d2183bff059d5f7c4173d8a2fa1c83399d7f7e85d61c79f33147"
+  },
+  "readOrder": [
+    "packet rows[A] and original R04_SOURCE_FIRST_A origin",
+    "N14_LEARNER_REVIEW fullCopy/figure/41state choices+hints/oldCompleteResume",
+    "currentTargetObservations frozen in this report",
+    "N14_FULL_IR/ROW_PROJECTION/source index/current",
+    "r3 N14 patch/sourceToItemIds and whole original50 read-only contracts comparison"
+  ],
+  "limits": [
+    "静的teaching/design審査PASS。実DOM0、実画面・実KaTeX・幾何・実ブラウザ操作・実migration/再読込/resetは本審査未実施。",
+    "current target作者理由は既読。sourceFirst/firstPass trueは元の原資料初回固定の履歴を指し、今回targetへの未露出・blind・モデル独立を意味しない。",
+    "原資料初回の旧B監査露出を保持し、当初のNOT_A_FORMAL_R04_PASSを今回全文審査の代わりにしない。",
+    "R04のPASSは実装/公開承認・R07/G2・本人受入を意味しない。",
+    "指定report以外の書込なし。製品/Store/Git変更なし。"
+  ]
+}

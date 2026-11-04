@@ -1,0 +1,31 @@
+{
+  "status": "PASS_NATIVE_PROPOSAL_CHECKPOINT",
+  "proposal": {
+    "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
+    "id": "P-W048-003"
+  },
+  "nativeR04": {
+    "n13": {
+      "actor": "M-full-copy-design",
+      "artifact": "11d0fca39ebc91d8fd456890fbad2fd1e8c834ce4ea3bde2e6ef2225cf9e28a5",
+      "input_hash": "449b1fa27c5166116dcca37c5a45fa1dc87de2579769fe909d5c559fb222a67d",
+      "node": "R04_PROPOSAL@n13",
+      "verdict": "PASS"
+    },
+    "n14": {
+      "actor": "M-full-copy-design",
+      "artifact": "6a9819134b3bc86531a251cdd4f06b1ad4211f2d0f7c64b7d618135e616baebf",
+      "input_hash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+      "node": "R04_PROPOSAL@n14",
+      "verdict": "PASS"
+    }
+  },
+  "registeredHistoricalFilesUnchanged": true,
+  "next": "R05_APPROVAL@n13",
+  "userDecisionNeeded": "Exact P-W048-003 full IR/projection and four-file patch for N13/N14; not old continue/acceptance reused",
+  "implemented": false,
+  "hosted": false,
+  "actualDOM": false,
+  "teamCount": 2,
+  "sourceFirstOrigin": "Original primary-source observations retained; N14 current-target author rationale prior exposure explicitly disclosed, not blind."
+}

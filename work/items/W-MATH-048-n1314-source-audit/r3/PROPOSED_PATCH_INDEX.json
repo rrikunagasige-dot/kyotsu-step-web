@@ -1,0 +1,30 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPLIED",
+  "files": [
+    {
+      "path": "src/data/textbook/math/numbers/n13Lesson.ts",
+      "before_sha256": "953f0cec42e046c6c42e9e4a73b39ce9c9d92ae523b1afd2e7bc9175ca99c18c",
+      "after_sha256": "5d416e145f4f489709150aa539acb4eee8bfc33c404fa88b576626e82b7988e8"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n14Lesson.ts",
+      "before_sha256": "5671746fdd3091a08b8f7a15529df2a0c3421be881e58796a985b47642152014",
+      "after_sha256": "e399e5547bebcc784e349b3e8d023d45617f99272bd1e5aad6005560de6abd2d"
+    },
+    {
+      "path": "src/domain/textbook.ts",
+      "before_sha256": "fef4d6a4a08b8dc8a82778cbefe3055d3ee4bfd603771b2be5438198b5077cb5",
+      "after_sha256": "3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a"
+    },
+    {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "before_sha256": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+      "after_sha256": "0754122cf7ce414211cd297af8e6727974bb0f25b52b03a62b7a74a550afb973"
+    }
+  ],
+  "sequence": [
+    "N13 leaf + inactive scoped consumers and migrations",
+    "N14 leaf only; prior consumer activation is guarded by exact revision"
+  ],
+  "sharedGuardsChanged": false
+}

@@ -1,0 +1,23 @@
+{
+  "toolName": "collaboration.list_agents",
+  "attestationMethod": "transcribed-tool-result",
+  "rawResult": {
+    "agents": [
+      {
+        "agent_name": "/root",
+        "agent_status": "running"
+      },
+      {
+        "agent_name": "/root/w048_review_a",
+        "agent_status": "running"
+      },
+      {
+        "agent_name": "/root/w048_review_b",
+        "agent_status": "running"
+      }
+    ]
+  },
+  "subagentCount": 2,
+  "grandchildren": false,
+  "storeGitWriter": "/root"
+}

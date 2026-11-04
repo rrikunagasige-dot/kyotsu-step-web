@@ -1,0 +1,9 @@
+{
+  "status": "PASS_ISOLATED_PROPOSAL_TYPES",
+  "initialAttempt": "FAIL_MISSING_EXTERNAL_REPO_FIXTURES",
+  "resolution": "Isolated work/tools symlinks supply actual unchanged baseline fixtures and runtime imports; no product changes",
+  "typescript": "5.8.3",
+  "command": "tsc -p /tmp/w048-p001-prototype/tsconfig.app.json --noEmit",
+  "recheckedAfterCSSRevision": true,
+  "actualDOM": false
+}

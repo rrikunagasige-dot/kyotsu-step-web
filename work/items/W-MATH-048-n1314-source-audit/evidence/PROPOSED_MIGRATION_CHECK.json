@@ -1,0 +1,262 @@
+{
+  "status": "PASS_ISOLATED_PROPOSED_DOMAIN",
+  "scenarios": [
+    {
+      "unit": "N13",
+      "revision": 1,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 1,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 2,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 2,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 3,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 3,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 4,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N13",
+      "revision": 4,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 1,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 1,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 2,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 2,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 3,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 3,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 4,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 4,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 5,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 5,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 6,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 6,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 7,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 7,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 8,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 8,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 9,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 9,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 10,
+      "complete": false,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    },
+    {
+      "unit": "N14",
+      "revision": 10,
+      "complete": true,
+      "preserved": true,
+      "archived": true,
+      "newUnanswered": true,
+      "idempotent": true
+    }
+  ],
+  "actualDOM": false,
+  "productSourceModified": false,
+  "limits": [
+    "Synthetic old saves execute actual existing migration first; no claim of real user data reset or hosted app verification."
+  ]
+}

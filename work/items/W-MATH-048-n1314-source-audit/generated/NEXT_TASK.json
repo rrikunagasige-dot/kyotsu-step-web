@@ -1,20 +1,15 @@
 {
   "work_id": "W-MATH-048",
   "node": {
-    "id": "R04_PROPOSAL@n13",
-    "stage_kind": "R04_PROPOSAL",
-    "contract_kind": "R04_PROPOSAL",
-    "actor": "AI",
+    "id": "R05_APPROVAL@n13",
+    "stage_kind": "R05_APPROVAL",
+    "contract_kind": "R05_APPROVAL",
+    "actor": "USER",
     "depends_on": [
-      "R03_IMPACT@n13"
+      "R04_PROPOSAL@n13",
+      "R04_PROPOSAL@n14"
     ],
-    "required": [
-      "before_after",
-      "protected_scope",
-      "patch_plan",
-      "verification_plan",
-      "proposal_hash"
-    ],
+    "required": [],
     "block": "n13",
     "release_unit": "n13",
     "watch": "integration",
@@ -102,54 +97,12 @@
       "public/assets/math/textbook/numbers/n14-f01.png"
     ],
     "approval_scope_ref": "proposal",
-    "capability_requests": [
-      "teaching.plan",
-      "step.plan",
-      "blank.plan",
-      "prose.compose",
-      "text.verify",
-      "figure.verify",
-      "ir.verify",
-      "source.audit",
-      "novice.audit"
-    ],
-    "required_code_receipts": [
-      "teaching.plan",
-      "step.plan",
-      "blank.plan",
-      "prose.compose",
-      "text.verify",
-      "figure.verify",
-      "ir.verify",
-      "source.audit",
-      "novice.audit"
-    ],
-    "required_ai_receipts": [
-      "meaning-review"
-    ],
-    "team_requirements": [
-      {
-        "claimRef": "teaching",
-        "facet": "design",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "source-review",
-        "sourceFirst": true,
-        "stage_kind": "R04_PROPOSAL"
-      },
-      {
-        "claimRef": "layout",
-        "facet": "render",
-        "firstPass": true,
-        "independent": true,
-        "reviewKind": "learner-visible-review",
-        "sourceFirst": true,
-        "stage_kind": "R04_PROPOSAL"
-      }
-    ]
+    "capability_requests": [],
+    "required_code_receipts": [],
+    "required_ai_receipts": []
   },
-  "task_id": "a993a496247089893185a8b656f543f76c13de489a846356bccfeb840882685e",
-  "input_hash": "36f8e436a30defe1ad2f7869c4ca749fe341c7d0c7aeacd8b5d769c894b035d8",
+  "task_id": "02ca95b8e2ed04992fd2dfc35e2062e689b236ea0569436cc34f983c60a948b9",
+  "input_hash": "57570cc0543e714a003b230ae9ae5a8e863e30750cb42e7317c17443356ebf49",
   "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "rules": {
@@ -161,8 +114,8 @@
     "workflow/INTEGRATION_RUNBOOK.md": "03f6da83f4d0f4d73cdd6b530e552591c4fb575b0188c9a266542e21783bdf5e"
   },
   "proposal": {
-    "hash": "115459e4daddd8b067a87ddd6303c44dc56289f23f2aec94720d609b679874ca",
-    "id": "P-W048-DRAFT-01"
+    "hash": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
+    "id": "P-W048-003"
   },
   "scope": {
     "paths": [
@@ -260,11 +213,18 @@
     "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
   },
   "previous_results": {
-    "R03_IMPACT@n13": {
-      "actor": "capability-runner",
-      "artifact": "4ef82b8fd539fd812ec284b044dca477ba47aed8da9fd02f4cb0199e7795e7d3",
-      "input_hash": "821c994917cd0922cbfc7fa149d70aba5d6c23f43c8b4c6505b5f5fd1366a26d",
-      "node": "R03_IMPACT@n13",
+    "R04_PROPOSAL@n13": {
+      "actor": "M-full-copy-design",
+      "artifact": "11d0fca39ebc91d8fd456890fbad2fd1e8c834ce4ea3bde2e6ef2225cf9e28a5",
+      "input_hash": "449b1fa27c5166116dcca37c5a45fa1dc87de2579769fe909d5c559fb222a67d",
+      "node": "R04_PROPOSAL@n13",
+      "verdict": "PASS"
+    },
+    "R04_PROPOSAL@n14": {
+      "actor": "M-full-copy-design",
+      "artifact": "6a9819134b3bc86531a251cdd4f06b1ad4211f2d0f7c64b7d618135e616baebf",
+      "input_hash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
+      "node": "R04_PROPOSAL@n14",
       "verdict": "PASS"
     }
   },

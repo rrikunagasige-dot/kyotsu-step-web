@@ -1,29 +1,29 @@
 # 機能火柴図（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 # R01_CAPTURE@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R01_CAPTURE@n13 / pre-design / PASSED"]
+  N0["R01_CAPTURE@n13 / pre-design / INVALIDATED"]
   N1["source.fixed"]
   N2["feedback.capture"]
   N0 --> N2
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R02_CAUSE@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R02_CAUSE@n13 / pre-design / PASSED"]
+  N0["R02_CAUSE@n13 / pre-design / INVALIDATED"]
   N1["case.retrieve"]
   N2["ir.verify"]
   N3["source.audit"]
@@ -34,28 +34,28 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R03_IMPACT@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R03_IMPACT@n13 / pre-design / PASSED"]
+  N0["R03_IMPACT@n13 / pre-design / INVALIDATED"]
   N1["impact.inventory"]
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n13 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n13 / pre-design / INVALIDATED"]
   N1["teaching.plan"]
   N2["step.plan"]
   N3["blank.plan"]
@@ -66,15 +66,15 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n13 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n13 / pre-design / INVALIDATED"]
   N1["text.verify"]
   N2["figure.verify"]
   N3["ir.verify"]
@@ -85,37 +85,37 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n13 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n13 / pre-design / INVALIDATED"]
   N1["novice.audit"]
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R06_PATCH@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R06_PATCH@n13 / pre-design / PENDING"]
+  N0["R06_PATCH@n13 / pre-design / BLOCKED"]
   N1["ir.compile"]
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R07_VERIFY@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -128,11 +128,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R07_SEMANTIC@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -143,30 +143,30 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R01_CAPTURE@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R01_CAPTURE@n14 / pre-design / PASSED"]
+  N0["R01_CAPTURE@n14 / pre-design / INVALIDATED"]
   N1["source.fixed"]
   N2["feedback.capture"]
   N0 --> N2
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R02_CAUSE@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R02_CAUSE@n14 / pre-design / PASSED"]
+  N0["R02_CAUSE@n14 / pre-design / INVALIDATED"]
   N1["case.retrieve"]
   N2["ir.verify"]
   N3["source.audit"]
@@ -177,28 +177,28 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R03_IMPACT@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R03_IMPACT@n14 / pre-design / PASSED"]
+  N0["R03_IMPACT@n14 / pre-design / INVALIDATED"]
   N1["impact.inventory"]
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n14 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n14 / pre-design / INVALIDATED"]
   N1["teaching.plan"]
   N2["step.plan"]
   N3["blank.plan"]
@@ -209,15 +209,15 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n14 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n14 / pre-design / INVALIDATED"]
   N1["text.verify"]
   N2["figure.verify"]
   N3["ir.verify"]
@@ -228,24 +228,24 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R04_PROPOSAL@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n14 / pre-design / PASSED"]
+  N0["R04_PROPOSAL@n14 / pre-design / INVALIDATED"]
   N1["novice.audit"]
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R06_PATCH@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -254,11 +254,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R07_VERIFY@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -271,11 +271,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R07_SEMANTIC@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -286,11 +286,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # G2_AUDIT@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -301,11 +301,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # G3_HOST@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -314,11 +314,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R03_IMPACT_SWEEP@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -327,11 +327,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R08_CAPTURE_LEARNING@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -340,11 +340,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # L01_LEARNING@n13（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -355,11 +355,11 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # G2_AUDIT@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -370,11 +370,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # G3_HOST@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -383,11 +383,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R03_IMPACT_SWEEP@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -396,11 +396,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # R08_CAPTURE_LEARNING@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -409,11 +409,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 # L01_LEARNING@n14（GENERATED）
 
-台帳HEAD: `49d0cb4b980ce3d740353dd62078f5132e3b68b64a0711f0de9b4b7817944fcb`
+台帳HEAD: `fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2`
 
 ```mermaid
 flowchart TD
@@ -424,7 +424,7 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R05_APPROVAL@n13 / WAITING
+現在: R01_CAPTURE@n13 / READY
 
 code実行receiptはsnapshot.jsonのcapability_receiptsを参照。AIの意味審査は別記録。
 

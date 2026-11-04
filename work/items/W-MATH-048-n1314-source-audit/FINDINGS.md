@@ -12,3 +12,11 @@
 A/Bは元79block・現129block・50回答を読んで調査。CODEによる抽出成功・数値検算と、意味の判断を区別する。新しい実画面の描画はまだ検査していない。
 
 候補の初回A/B審査は共にFAIL：章末の「注目する文字」が欠落。修正し、別のfollowupでVERIFIED_FIXED。初回FAILは書き換えない。これらは正式R04の完了・教材品質labelではない。
+
+## 継続復元のfinding — 2026-11-04
+
+- ERROR-PROCESS / provenance: 前チャット報告のR05以降実行と保存済み台帳が不一致。保存を報告しただけでは耐久記録を証明しない。
+- CONFIRMED: N13実装三fileはr3固定afterと一致、N14はbefore。未知の教材差分なし。
+- CONFIRMED: 既存guardは未記録差分を拒否。隔離rootで正式再現でき、過去のpatch_intentを捏造せず回復。
+- OPEN-QUESTION: 前回CI案と実画面原証拠の保存先は未回収。再構成案を元案と同一視しない。
+- UNVERIFIED: 今回Chromium取得失敗、R07実画面と非作者審査は未完了。

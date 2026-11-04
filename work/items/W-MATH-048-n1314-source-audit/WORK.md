@@ -1,3 +1,21 @@
+# CURRENT — 2026-11-04 継続復元
+
+P-W048-003の承認は保持。保存済みsource `17e39f0a` のN13 leaf/domain/Pageはr3 after hashと一致し、N14 leafはbefore hash。前チャットの実画面・CI案本体は今回取得したGit全refsから回収できなかった。過去のローカルPASS報告は会話上の報告として保持し、今回の検証証拠へ代用しない。
+
+元snapshotの隔離コピーで既存RuntimeのR05とR06固定patchを実行し、現src三ファイルとbyte一致を確認。過去の実行イベントは捏造せず、今回の復元イベントとして共有Storeへ追加した。実srcへ同じpatchを二重適用していない。guard変更なし。
+
+生成現在地は共有source変更により失効した `R01_CAPTURE@n13` の再検証。R06 claimも保存済みであり、無条件再patch禁止。次は現sourceに対する必要な結果の再検証・既承認照合とR06完了記録、同版CI、R07非作者審査。N14の正式適用、G2、公開・配信確認、本人受入、事後sweep/R08/L01/Z01は未完了。
+
+検査: build PASS（N14未適用export/既存bundle警告あり）。現在契約・旧採点保持・N13 r1〜r4のsynthetic移行 PASS。ブラウザ取得失敗につき今回DOM/画像はUNVERIFIED。
+
+CI具体案は `ci-review/README.md` と同directoryのYAML・二script。前案とは同一と称さずREVIEW_ONLY。active .githubへは未適用。Work内の検査準備と、範囲外workflow一ファイルの有効化を分離する。
+
+今回のMとA/Bは新チャットの実担当。前回と同名でも同一セッションの継続実体とは扱わない。CODEはhash/compile/型/build/採点保存の契約検査、AIは意味と工程の審査、USERは具体案と実物受入を担う。子二人、孫なし、MのみStore/Git writer。
+
+以下は保存済みR04時点の履歴。
+
+---
+
 # W-MATH-048 — N13/N14 修正具体案
 
 Status: PROPOSED / N13・N14のR01〜R04正式PASS / 次R05_APPROVAL@n13（両unit共通bundleの本人判断待ち）。製品未適用・未公開。

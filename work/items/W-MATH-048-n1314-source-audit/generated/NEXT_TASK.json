@@ -1,15 +1,19 @@
 {
   "work_id": "W-MATH-048",
   "node": {
-    "id": "R05_APPROVAL@n13",
-    "stage_kind": "R05_APPROVAL",
-    "contract_kind": "R05_APPROVAL",
-    "actor": "USER",
+    "id": "R01_CAPTURE@n13",
+    "stage_kind": "R01_CAPTURE",
+    "contract_kind": "R01_CAPTURE",
+    "actor": "AI",
     "depends_on": [
-      "R04_PROPOSAL@n13",
-      "R04_PROPOSAL@n14"
+      "S01_ROUTE"
     ],
-    "required": [],
+    "required": [
+      "complaint",
+      "before_evidence",
+      "reproduction",
+      "target_versions"
+    ],
     "block": "n13",
     "release_unit": "n13",
     "watch": "integration",
@@ -97,14 +101,22 @@
       "public/assets/math/textbook/numbers/n14-f01.png"
     ],
     "approval_scope_ref": "proposal",
-    "capability_requests": [],
-    "required_code_receipts": [],
-    "required_ai_receipts": []
+    "capability_requests": [
+      "source.fixed",
+      "feedback.capture"
+    ],
+    "required_code_receipts": [
+      "source.fixed",
+      "feedback.capture"
+    ],
+    "required_ai_receipts": [
+      "meaning-review"
+    ]
   },
-  "task_id": "02ca95b8e2ed04992fd2dfc35e2062e689b236ea0569436cc34f983c60a948b9",
-  "input_hash": "57570cc0543e714a003b230ae9ae5a8e863e30750cb42e7317c17443356ebf49",
+  "task_id": "8c6ce9f5f7fd44ec5ef73079d74533620db1ec9676f3095db5254f9fe52fe50e",
+  "input_hash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
   "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
-  "candidate_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "candidate_sha": null,
   "rules": {
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
     "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -213,18 +225,11 @@
     "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
   },
   "previous_results": {
-    "R04_PROPOSAL@n13": {
-      "actor": "M-full-copy-design",
-      "artifact": "11d0fca39ebc91d8fd456890fbad2fd1e8c834ce4ea3bde2e6ef2225cf9e28a5",
-      "input_hash": "449b1fa27c5166116dcca37c5a45fa1dc87de2579769fe909d5c559fb222a67d",
-      "node": "R04_PROPOSAL@n13",
-      "verdict": "PASS"
-    },
-    "R04_PROPOSAL@n14": {
-      "actor": "M-full-copy-design",
-      "artifact": "6a9819134b3bc86531a251cdd4f06b1ad4211f2d0f7c64b7d618135e616baebf",
-      "input_hash": "8df487df36e82efe59e316fb9f285ca9e1995c23b09d55bf5b66062f3fdf5d89",
-      "node": "R04_PROPOSAL@n14",
+    "S01_ROUTE": {
+      "actor": "deterministic-code",
+      "artifact": "b5558d9d65f7c9e8413d64d3d096c4dbc6eeb08c59f7b902ebee642566984e1f",
+      "input_hash": "376a1214955c2e7aff80eadef0efdbb5ce1d82248f9b484d7b90da78b68a7c53",
+      "node": "S01_ROUTE",
       "verdict": "PASS"
     }
   },

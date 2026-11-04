@@ -1,0 +1,25 @@
+{
+  "sourceSHA": "17e39f0aa4a93318a6de8dc9ece34b5a7416a451",
+  "build": {
+    "status": "PASS",
+    "warnings": [
+      "N14 LegacyUnit/DisplayContract exports absent while N14 remains unpatched; guarded fallback retained",
+      "Existing large bundle warning"
+    ]
+  },
+  "mathCheck": {
+    "status": "PASS_BOUNDED_EXACT_SOLUTION_SETS",
+    "checks": 13,
+    "engine": "sympy1.14.0",
+    "historicalFailuresRetained": [
+      "Incorrect node interpreter rejected .py",
+      "Python sympy missing before dependency installation"
+    ]
+  },
+  "browser": {
+    "status": "UNVERIFIED",
+    "reason": "Chromium archive download failed; no actual browser launch in this recovery"
+  },
+  "r07": "NOT_COMPLETE",
+  "guardsChanged": false
+}

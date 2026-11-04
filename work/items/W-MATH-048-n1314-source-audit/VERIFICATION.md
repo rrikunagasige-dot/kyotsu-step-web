@@ -1,3 +1,9 @@
+# CURRENT — 継続復元検証（2026-11-04）
+
+詳細はevidence/RECOVERY_EXECUTION.json、RECOVERY_CURRENT_CONTRACTS.json、RECOVERY_CHECKS.json。隔離rootの正式R05/compile/patch再現と現src三file一致、現版build、限定採点保存契約、数理解集合13件PASS。Chromium取得失敗で今回実画面UNVERIFIED。R07/G2/G3/受入完了とは扱わない。旧R04時点の記録を以下に保持する。
+
+---
+
 # W048 修正具体案の検証範囲
 
 P003は製品未適用。実装後R07/G2/G3の合格を先取りしない。

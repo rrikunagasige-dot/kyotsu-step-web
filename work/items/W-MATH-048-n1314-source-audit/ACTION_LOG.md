@@ -15,3 +15,12 @@
 A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画面未実施を区別。隔離型検査の初回fixture欠落、browser起動/zip取得失敗、親taskの原問16と番号20の混同も記録。実src/public/.github未変更、旧完了保存は新判断を未回答にする28条件を候補domainで実行。
 
 両R04正式PASS。次R05_APPROVAL@n13、両unitのP-W048-003具体案への本人判断を待つ。承認後R06→R07の実装・実画面検証。過去の続行/受入を今回の承認や品質labelへ代用しない。
+
+## 2026-11-04 — 新チャットでの継続復元
+
+- 現repo/mainとbranch HEAD17e39f0a、憲法・Work OS・runbook・P003・r3固定入力・元台帳を照合。A/B二人のみ。
+- 共有Store旧4830eventsはR04まで。src三fileは固定after、N14はbefore。前回CI案/実画面の保存物は全Git refsから未回収。
+- 復元用隔離checkout47480265で既承認のR05を会話転記として登録、正式adapterでN13 ir.compile PASSとpatchを実行。現三fileとのbyte一致を確認。現在src再patchなし。
+- 復元イベントを同じ共有Storeへ保存。source変更に伴う結果失効を維持し、次R01再検証を隠さない。
+- CI案はBがci-review内へ作成、非作者Aが別審査。active workflowは未適用。
+- CODE: depsをlock不変で導入、build PASS。mathの誤interpreter呼出し失敗、Python sympy不足、Chromium取得失敗を保持。限定契約検査PASSを実画面やWork完了へ拡大しない。

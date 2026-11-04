@@ -26,3 +26,7 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 - CODE: depsをlock不変で導入、build PASS。mathの誤interpreter呼出し失敗、Python sympy不足、Chromium取得失敗を保持。限定契約検査PASSを実画面やWork完了へ拡大しない。
 
 - 最終: 回帰26件・数理解集合13件PASS。生成物の初回exact checkはqueue列挙順だけでFAIL。同じPYTHONHASHSEED=0で再生成と照合PASS。core/guardを変更せず出所と失敗を保持。
+
+## P-W048-CI-001承認後
+
+ユーザー「承認」を固定案7d29caf3へ結合。YAMLのbyte一致を検査してactive .github一fileへ追加。子二人の既存担当を再開、M唯一writer。run取得前はPENDING、教材受入/公開には転用しない。

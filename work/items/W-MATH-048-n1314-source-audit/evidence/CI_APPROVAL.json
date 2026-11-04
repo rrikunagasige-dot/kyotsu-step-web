@@ -1,0 +1,14 @@
+{
+  "proposal": "P-W048-CI-001",
+  "quote": "承認",
+  "source_ref": "current-chat:request-0a4dd681-f48f-4bd1-840d-51c8fac40f16",
+  "verification_level": "conversation_transcribed",
+  "reviewed_commit": "7d29caf354870d90732b2caba2e5093a7e2143e9",
+  "workflow": ".github/workflows/w048-n1314-verification.yml",
+  "workflowSHA256": "2e16c9e519cd15e70feff089f915d1d68e5bc075526c0013a963900e940154dd",
+  "scope": [
+    "Activate identical reviewed workflow on work/n1314-source-audit-20261104",
+    "Run bounded current-source CI; PNG and machine reports separate"
+  ],
+  "notAcceptance": true
+}

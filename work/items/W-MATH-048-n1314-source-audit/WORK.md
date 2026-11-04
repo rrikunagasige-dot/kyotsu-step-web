@@ -1,3 +1,13 @@
+# CURRENT — P-W048-CI-001承認・CI開始準備
+
+ユーザー「承認」（current request 0a4dd681-f48f-4bd1-840d-51c8fac40f16）をci-reviewの固定案へ照合。evidence/CI_APPROVAL.json参照。同一byteのworkflow一fileを作業branch限定で有効化する。教材P003の承認と本人受入は別。
+
+CI対象はこの起動commitの現source。N13 r5/18回答、N14未適用r10はNOT_APPLIEDで画像対象外。run/SHA/result/artifactは取得後に追記し、成功を先取りしない。元runtimeの失効結果の再検証、R06完了、R07非作者審査、N14正式適用、G2以降は未完了。
+
+以下は継続復元記録。
+
+---
+
 # CURRENT — 2026-11-04 継続復元
 
 P-W048-003の承認は保持。保存済みsource `17e39f0a` のN13 leaf/domain/Pageはr3 after hashと一致し、N14 leafはbefore hash。前チャットの実画面・CI案本体は今回取得したGit全refsから回収できなかった。過去のローカルPASS報告は会話上の報告として保持し、今回の検証証拠へ代用しない。

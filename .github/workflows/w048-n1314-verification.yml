@@ -1,0 +1,75 @@
+# REVIEW ONLY: not active until the exact additional technical scope is approved.
+name: W048 current-source bounded verification and images
+on:
+  push:
+    branches: ['work/n1314-source-audit-20261104']
+    paths:
+      - '.github/workflows/w048-n1314-verification.yml'
+      - 'work/items/W-MATH-048-n1314-source-audit/ci-review/**'
+      - 'src/data/textbook/math/numbers/n13Lesson.ts'
+      - 'src/data/textbook/math/numbers/n14Lesson.ts'
+      - 'src/domain/textbook.ts'
+      - 'src/pages/TextbookUnitPage.tsx'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: w048-n1314-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'rrikunagasige-dot/kyotsu-step-web' && github.ref == 'refs/heads/work/n1314-source-audit-20261104'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Check exact actual product bytes, old grading and domain migration
+        run: EVIDENCE_DIR="$RUNNER_TEMP/w048-evidence/contracts" node work/items/W-MATH-048-n1314-source-audit/ci-review/verify_current.mjs
+      - name: Typecheck and build exact checked-out app
+        run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Applied units only, actual build at four widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4391 > "$RUNNER_TEMP/w048-preview.log" 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node --input-type=module -e 'for(let i=0;i<100;i++){try{if((await fetch("http://127.0.0.1:4391/kyotsu-step-web/")).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,100))}process.exit(1)'
+          APP_URL=http://127.0.0.1:4391/kyotsu-step-web/ W048_FIXTURES="$RUNNER_TEMP/w048-evidence/contracts/BROWSER_FIXTURES.json" EVIDENCE_DIR="$RUNNER_TEMP/w048-evidence/browser" node work/items/W-MATH-048-n1314-source-audit/ci-review/capture_current.mjs
+      - name: Preserve original PNGs separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w048-current-images-${{ github.sha }}
+          path: ${{ runner.temp }}/w048-evidence/browser/images/*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Preserve machine reports separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w048-current-reports-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/w048-evidence/contracts/*.json
+            ${{ runner.temp }}/w048-evidence/browser/reports/*.json
+            ${{ runner.temp }}/w048-preview.log
+          if-no-files-found: error
+          retention-days: 14

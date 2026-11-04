@@ -1,0 +1,72 @@
+{
+  "allow_grandchildren": false,
+  "max_active_subagents": 2,
+  "required_scopes": [
+    {
+      "claimRef": "teaching",
+      "facet": "design",
+      "firstPass": true,
+      "independent": true,
+      "reviewKind": "source-review",
+      "sourceFirst": true,
+      "stage_kind": "C05_DESIGN"
+    },
+    {
+      "claimRef": "layout",
+      "facet": "render",
+      "firstPass": true,
+      "independent": true,
+      "reviewKind": "learner-visible-review",
+      "sourceFirst": true,
+      "stage_kind": "C05_DESIGN"
+    },
+    {
+      "claimRef": "teaching",
+      "facet": "design",
+      "firstPass": false,
+      "independent": true,
+      "reviewKind": "source-review",
+      "sourceFirst": false,
+      "stage_kind": "R04_PROPOSAL"
+    },
+    {
+      "claimRef": "layout",
+      "facet": "render",
+      "firstPass": false,
+      "independent": true,
+      "reviewKind": "learner-visible-review",
+      "sourceFirst": false,
+      "stage_kind": "R04_PROPOSAL"
+    },
+    {
+      "claimRef": "implemented-visible",
+      "facet": "render",
+      "firstPass": true,
+      "independent": true,
+      "reviewKind": "learner-visible-review",
+      "sourceFirst": true,
+      "stage_kind": "C09_SEMANTIC"
+    },
+    {
+      "claimRef": "implemented-visible",
+      "facet": "render",
+      "firstPass": false,
+      "independent": true,
+      "reviewKind": "learner-visible-review",
+      "sourceFirst": false,
+      "stage_kind": "R07_SEMANTIC"
+    },
+    {
+      "claimRef": "integrated-release",
+      "facet": "render",
+      "firstPass": false,
+      "independent": true,
+      "reviewKind": "learner-visible-review",
+      "sourceFirst": false,
+      "stage_kind": "G2_AUDIT"
+    }
+  ],
+  "root_agent_ref": "/root",
+  "schema_version": "team/1",
+  "store_writer": "M"
+}

@@ -41,3 +41,6 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 - 撮影前scroll top補修のrun41809002629/source d34d9fe5 SUCCESS。二artifact digestとPNG16枚の個別hash一致。旧CI2画像所見は保持。
 - 正式R02_CAUSE@n13を現在の全文IR・旧病因と修正後状態の区別・新capability receipts・全取得事例の適用理由で再提出。次R03。モデルfallbackは範囲付きcatalog参照、fitや品質labelの生成なし。
 - Git ref更新時の一回GraphQL UNKNOWNは実refが旧SHAのままであることを再読取後、同じexpected_sha/新commitで再試行して成功。未知結果のまま重複操作していない。
+
+## 2026-11-04 R03再検証と再審査条件
+CURRENT_R03_RESULT.jsonのとおりR03_IMPACT@n13を正式提出、次R04。12影響行・保護対象・固定差分を確認。現在の二人への情報露出とteam.pyのsourceFirst/firstPass条件が両立しないため、偽申告や旧所見流用をせず、W048限定P-W048-REVIEW-001を具体化。validate_policy PASS、8boolean差分。未承認・未採用、engine/教材変更なし。

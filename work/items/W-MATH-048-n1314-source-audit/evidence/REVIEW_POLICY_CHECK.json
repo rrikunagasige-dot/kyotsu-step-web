@@ -1,0 +1,68 @@
+{
+  "proposal": "P-W048-REVIEW-001",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "originalPolicyHash": "2e76a07889a60665a883966f0e46b1d93ed8529d8f493eec26415b4f251f29ed",
+  "proposedPolicyHash": "bfbcb115bb7b33463ba60879ba5640f4865faf1473bbec0139d33344feab0196",
+  "changes": [
+    {
+      "stage": "R04_PROPOSAL",
+      "claimRef": "teaching",
+      "field": "sourceFirst",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "R04_PROPOSAL",
+      "claimRef": "teaching",
+      "field": "firstPass",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "R04_PROPOSAL",
+      "claimRef": "layout",
+      "field": "sourceFirst",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "R04_PROPOSAL",
+      "claimRef": "layout",
+      "field": "firstPass",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "R07_SEMANTIC",
+      "claimRef": "implemented-visible",
+      "field": "sourceFirst",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "R07_SEMANTIC",
+      "claimRef": "implemented-visible",
+      "field": "firstPass",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "G2_AUDIT",
+      "claimRef": "integrated-release",
+      "field": "sourceFirst",
+      "before": true,
+      "after": false
+    },
+    {
+      "stage": "G2_AUDIT",
+      "claimRef": "integrated-release",
+      "field": "firstPass",
+      "before": true,
+      "after": false
+    }
+  ],
+  "validate_policy": "PASS",
+  "engineChanged": false,
+  "lessonChanged": false,
+  "maxChildren": 2
+}

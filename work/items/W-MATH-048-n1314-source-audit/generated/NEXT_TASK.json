@@ -1,17 +1,19 @@
 {
   "work_id": "W-MATH-048",
   "node": {
-    "id": "R03_IMPACT@n13",
-    "stage_kind": "R03_IMPACT",
-    "contract_kind": "R03_IMPACT",
+    "id": "R04_PROPOSAL@n13",
+    "stage_kind": "R04_PROPOSAL",
+    "contract_kind": "R04_PROPOSAL",
     "actor": "AI",
     "depends_on": [
-      "R02_CAUSE@n13"
+      "R03_IMPACT@n13"
     ],
     "required": [
-      "impact_rows",
-      "source_inventory",
-      "unknowns"
+      "before_after",
+      "protected_scope",
+      "patch_plan",
+      "verification_plan",
+      "proposal_hash"
     ],
     "block": "n13",
     "release_unit": "n13",
@@ -101,17 +103,53 @@
     ],
     "approval_scope_ref": "proposal",
     "capability_requests": [
-      "impact.inventory"
+      "teaching.plan",
+      "step.plan",
+      "blank.plan",
+      "prose.compose",
+      "text.verify",
+      "figure.verify",
+      "ir.verify",
+      "source.audit",
+      "novice.audit"
     ],
     "required_code_receipts": [
-      "impact.inventory"
+      "teaching.plan",
+      "step.plan",
+      "blank.plan",
+      "prose.compose",
+      "text.verify",
+      "figure.verify",
+      "ir.verify",
+      "source.audit",
+      "novice.audit"
     ],
     "required_ai_receipts": [
       "meaning-review"
+    ],
+    "team_requirements": [
+      {
+        "claimRef": "teaching",
+        "facet": "design",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "source-review",
+        "sourceFirst": true,
+        "stage_kind": "R04_PROPOSAL"
+      },
+      {
+        "claimRef": "layout",
+        "facet": "render",
+        "firstPass": true,
+        "independent": true,
+        "reviewKind": "learner-visible-review",
+        "sourceFirst": true,
+        "stage_kind": "R04_PROPOSAL"
+      }
     ]
   },
-  "task_id": "c327b1d9897a29e9bce87e0cb59bcb85724214ed47a98559c49d1566f7469a6f",
-  "input_hash": "9410f15b6ecb112d364257a80e456abf864e0588d16288615e631070fb65f67e",
+  "task_id": "88fff5d2d4bf05ff00521c0504287b3c91be23cb679255c376e931b3895f0d14",
+  "input_hash": "0438ee3639f7a3d7a0e43e005c14dd7b01435a6762865b1da9e964e8282fc363",
   "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
   "candidate_sha": null,
   "rules": {
@@ -222,11 +260,11 @@
     "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
   },
   "previous_results": {
-    "R02_CAUSE@n13": {
+    "R03_IMPACT@n13": {
       "actor": "capability-runner",
-      "artifact": "63ff8f0514b3aea0e4114117d7a8788ad246680c14edd4a871849336dea181f9",
-      "input_hash": "7f5f2cc3a39a475bb132d73dd59d90c82ebc8d062b87f50ca34bd040a65f4b3e",
-      "node": "R02_CAUSE@n13",
+      "artifact": "5ffed65c16150705ad5caf77e3c6648d13622b403403b20cc3e40ccd8d37d591",
+      "input_hash": "9410f15b6ecb112d364257a80e456abf864e0588d16288615e631070fb65f67e",
+      "node": "R03_IMPACT@n13",
       "verdict": "PASS"
     }
   },

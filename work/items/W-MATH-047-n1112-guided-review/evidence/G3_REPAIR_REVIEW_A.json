@@ -1,0 +1,105 @@
+{
+  "reviewer": "/root/w047_review_design",
+  "role": "A 理念/手順/承認scope監視",
+  "verdict": "PASS_STATIC_AUTHORIZED_DRYRUN_REPAIR",
+  "firstPass": false,
+  "authorSeparation": true,
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "originalWorkflowSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+  "repairedWorkflowSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "failureRunId": 41718315741,
+  "published": false,
+  "publicationAuthorized": false,
+  "observations": [
+    {
+      "id": "G3-REPAIR-A01",
+      "status": "CONFIRMED",
+      "reason": "復元後元draft57ca24…とrepair58da70…を実bytesで再確認。YAML top-level差分はjobsのみ。旧publish jobはjob-level if以外すべて構造完全一致、保護github-pages environmentと6配信stepを保持。"
+    },
+    {
+      "id": "G3-REPAIR-A02",
+      "status": "CONFIRMED",
+      "reason": "新verify jobはenvironmentなし、job権限contents:readのみ。元publish jobと全stepsが完全一致し、元の6配信stepはstep条件でfalseになる。branch push/manualtrueではverifyだけが選択されるため、環境branch保護を変更せず非公開検証を行う設計。GitHub環境保護を弱める迂回ではなく、配信しない検証jobを配信環境から分離する。"
+    },
+    {
+      "id": "G3-REPAIR-A03",
+      "status": "CONFIRMED",
+      "reason": "sourcef129、storage namespace、build/retained checks/両unit四幅/N08N09N10検証の全stepsは旧版と同一。required69pathsの現byteを独立照合。教材/採点/保存/原図や他3publisher draftを変更する修正ではない。"
+    },
+    {
+      "id": "G3-REPAIR-A04",
+      "status": "CONFIRMED_SCOPE",
+      "reason": "G3_PUBLISHER_PROPOSALの手順3はdry-run失敗時に原因を修正工程へ戻すことを明記。今回修正は承認済み4path中同じ外部deploy-pages.yml一pathで、非公開dry-runの実現に必要な通常修復。89b1ef8fの既存実承認を回復/照合して同scope内で継続できる。可逆的なこの修復のために人工的な教材再承認/新ユーザー承認を増やす必要はない。"
+    },
+    {
+      "id": "G3-REPAIR-A05",
+      "status": "CONFIRMED_FAILURE_LIMIT",
+      "reason": "run41718315741はsteps=[]、environment protectionでrunner開始前にfailure。元YAMLと失敗は保持。環境名/失敗job表示から実Pages配信や教材検査実行済みを推定しない。復元された失敗JSONは中断前公開summaryの保存/会話回収であり、自分の新外部照会ではない。"
+    }
+  ],
+  "caseTruthTable": [
+    {
+      "event": "push",
+      "ref": "refs/heads/main",
+      "dry_run": null,
+      "verify": false,
+      "protectedPublish": true
+    },
+    {
+      "event": "push",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": null,
+      "verify": true,
+      "protectedPublish": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/main",
+      "dry_run": true,
+      "verify": true,
+      "protectedPublish": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": true,
+      "verify": true,
+      "protectedPublish": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/main",
+      "dry_run": false,
+      "verify": false,
+      "protectedPublish": true
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/work/w047-publisher-g3-20261104",
+      "dry_run": false,
+      "verify": false,
+      "protectedPublish": true
+    }
+  ],
+  "nativeBindingRecommendation": [
+    "失われた承認/T03は実user89b1ef8fの原文/出所/replyTo/proposal/scopeを根拠に復旧し、擬似承認や新発言を生成しない。",
+    "修正YAML58da70…、元YAML57ca24…、失敗run41718315741、修復理由を新input/patch/afterhashへ正式に束縛し、失効した旧T03/旧検査receiptを新hashのPASSへ上書きしない。",
+    "G3_PUBLISHER_REPAIRは修復入力の証拠pathとして登録し、適用先は許可済外部workflow一path。現planの旧DRAFT入力hashから変わる点を明示しCODEのscope/approval/before-after/inputhash検査を維持する。同じ外部path/非公開scopeの修復であることと、教材source不変を正本に結ぶ。",
+    "実publisher branchへ限定適用後のrunでverify起動/publish skipped/配信6step skipped/全prepublish検査artifactを照合。静的case表はGitHubの実実行証拠を置換しない。"
+  ],
+  "workflowBoundary": "親Workは両G2後のG3_HOST段階。技術dry-runはprepublication検証であり、G3_HOST実配信PASS/本人最終アプリ受入ではない。main merge/manualfalse/Pages公開は現在禁止のまま。実dry-runの証拠がそろった後に具体公開許可の最終段階へ進み、N11/N12本人最終確認一回を保持。",
+  "findings": [],
+  "limits": [
+    "静的な復元後再審査。修正版実CI/runner/build/browser/host実行は未確認。",
+    "mainmerge/manualfalseはjob選択上publishを動かせるため、既存の承認/実行管理で禁止を維持する。YAML自体に本人承認が埋め込まれているとは主張しない。",
+    "共有repo/Store/Git編集なし。指定/tmp原報告だけ保存。追加subagentなし。"
+  ],
+  "evidencePaths": [
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/deploy-pages.yml",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_REPAIR/deploy-pages.yml",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_PROPOSAL.md",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/G3_TECH_PLAN.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_DRY_RUN_01_FAILURE.json",
+    "/workspace/scratch/6ff917b2ec4a/w047-n1112/work/items/W-MATH-047-n1112-guided-review/evidence/G3_REPAIR_STATIC_CHECK.json"
+  ]
+}

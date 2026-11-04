@@ -1,0 +1,16 @@
+{
+  "runId": 41718315741,
+  "publisherSHA": "6808eb07f768b31d9cf493cf9a742a8e8992d0a3",
+  "jobId": 126204070551,
+  "conclusion": "failure",
+  "steps": [],
+  "annotations": [
+    "Branch \"work/w047-publisher-g3-20261104\" is not allowed to deploy to github-pages due to environment protection rules.",
+    "The deployment was rejected or didn't satisfy other protection rules."
+  ],
+  "observation": "Public GitHub run summary read via browser before interruption. Runner never started. Restored from preserved conversation; not a new browser observation.",
+  "repairScope": "Same external workflow path only; read-only environment-free verify, protected publish unchanged plus job-level gate. Source and69required unchanged.",
+  "originalWorkflowSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+  "repairedWorkflowSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "publicationAuthorized": false
+}

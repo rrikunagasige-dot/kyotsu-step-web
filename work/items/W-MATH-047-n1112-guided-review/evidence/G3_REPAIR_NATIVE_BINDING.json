@@ -1,0 +1,14 @@
+{
+  "evidenceRefs": [
+    "fa01f38c-6eb4-4ce6-ad9d-063397a9abed",
+    "352dff0d-1c7a-4b75-a37d-e130a5e5b413",
+    "35825af8-1eab-465c-bf21-11e7bebe8a5f",
+    "87f855ac-4310-4b27-bd9d-dcd68d37e043",
+    "bb6a2b5a-45d9-46a1-af16-bb65c32c6201",
+    "1ef6d8e2-1f4f-49ce-afc4-757eb4a928f6"
+  ],
+  "actualPublisherSHA": "c133d356987cf29c792a8a7d7675294ac614ea45",
+  "nativeMetadataCandidate": "188476b10ea366c116409fa46677818569da824b",
+  "note": "Native candidate retains original approved source/draft manifest. Actual external repaired output/run have separate exact identity. No CI PASS at either identity yet.",
+  "verification": "PENDING"
+}

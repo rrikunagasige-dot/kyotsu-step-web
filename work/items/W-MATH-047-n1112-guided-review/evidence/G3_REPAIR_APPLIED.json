@@ -1,0 +1,20 @@
+{
+  "publisherSHA": "c133d356987cf29c792a8a7d7675294ac614ea45",
+  "parentPublisherSHA": "6808eb07f768b31d9cf493cf9a742a8e8992d0a3",
+  "tree": "b60d72cb3338befd53168c9b2889ed236add918e",
+  "workflowSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "actualChangedFiles": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "sha": "65cb2f46f68f14193c1e9ad1525a1e21fdecf4c1",
+      "status": "modified"
+    }
+  ],
+  "runId": 41753645581,
+  "event": "push",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "mainSHA": "04b823259a0873235e39099864d454330eed5d81",
+  "publicationAuthorized": false,
+  "status": "RUNNING_NOT_VERIFIED",
+  "binding": "evidence/G3_REPAIR_INPUT.json maps preserved original57ca draft to exact58da repair and actual one-path GitHub compare. Original T03 only attests initial6808 creation; not reused as repaired-byte verification."
+}

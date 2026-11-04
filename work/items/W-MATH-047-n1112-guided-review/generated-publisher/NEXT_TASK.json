@@ -1,17 +1,17 @@
 {
   "work_id": "W-TECH-052",
   "node": {
-    "id": "T02_APPROVAL",
-    "actor": "USER",
+    "id": "T04_VERIFY",
+    "actor": "TOOL",
     "depends_on": [
-      "T01_ANALYSIS"
+      "T03_BUILD"
     ],
     "required": [],
     "block": null,
-    "watch": "source"
+    "watch": "candidate"
   },
-  "task_id": "1d2b1b5e07b5edb02d08e23d0847c907ea206c776bd8959f7b91061fee91c868",
-  "input_hash": "b4111971aca25db17fb2b352e8d355f07129a0b161db506875716b8ea611687b",
+  "task_id": "2380690c03c04b8440c4559bfd761e55d58def7ab95f28ee82d00b5028e590d1",
+  "input_hash": "337a37df52f43a87358abdc76728102cabebae1535e5a5e03b07016d3adba245",
   "source_sha": "188476b10ea366c116409fa46677818569da824b",
   "candidate_sha": "188476b10ea366c116409fa46677818569da824b",
   "rules": {
@@ -191,11 +191,11 @@
     "work/items/W-MATH-047-n1112-guided-review/G3_PUBLISHER_DRAFT/w047-release-contract.json": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0"
   },
   "previous_results": {
-    "T01_ANALYSIS": {
+    "T03_BUILD": {
       "actor": "M",
-      "artifact": "e43261690df22cb5d8ffdce7023285334f1d60a813776a43bcc8fffc37e7d045",
-      "input_hash": "bd82811cbaaa8d19996752c910cfe159ea8112d486539d10abff42702a6ccc8d",
-      "node": "T01_ANALYSIS",
+      "artifact": "9275883293e74d14c53409d8684f81ee7feb90cabf73426060c48f1abbf7699f",
+      "input_hash": "09f948ef9861f0512f7d0ff64d98f891bcdd6aac454cf065cbf7b3adb46dd55a",
+      "node": "T03_BUILD",
       "verdict": "PASS"
     }
   },

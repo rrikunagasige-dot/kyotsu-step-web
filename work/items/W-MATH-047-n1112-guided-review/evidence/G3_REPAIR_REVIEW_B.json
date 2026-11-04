@@ -1,0 +1,88 @@
+{
+  "reviewer": "B / w047_layout_sourcefirst",
+  "verdict": "PASS_STATIC_REPAIR_ONLY",
+  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+  "originalWorkflowSHA256": "57ca24abe22b553a11386f9fdcdbee43f5467604488af3259c42227cc6f147e7",
+  "repairedWorkflowSHA256": "58da7055e9a97c2dbe2e5dd249fad5a75ee475cd434494c920c0cf0fb8cd1d96",
+  "authorSeparation": true,
+  "exposure": "Prior publisherdraft reviewer and capture/importtool helper, not lesson or repair author; not new blind review.",
+  "rows": [
+    {
+      "surface": "Failure retained",
+      "status": "PASS",
+      "observation": "Run41718315741/publisher6808eb07 rejected bygithub-pages environmentbranchrule before runnersteps. No actualbuild/browser/host success inferred.",
+      "evidence": "evidence/G3_DRY_RUN_01_FAILURE.json"
+    },
+    {
+      "surface": "Exactpublishwholebody retention",
+      "status": "PASS",
+      "observation": "StructuralYAML comparison confirms repairedpublish excludingnewjobif equals original25stepjob, includingprotectedgithub-pages environment,env/sourcepins,alltestandhostchecks,6deliveryguards. Top-leveltrigger/permissions/concurrency unchanged."
+    },
+    {
+      "surface": "Environmentfree readonlyverification",
+      "status": "PASS",
+      "observation": "Verify has noenvironment andjobpermissions contents:read only. Alloriginal25steps preserved; jobbody equals originalminusenvironment asidefromjobif/permissions. Complementaryjobif meansverify runs onlynondelivery cases; each6delivery/hoststep alsoexplicitlyskip. Ordinaryevidenceupload retained."
+    },
+    {
+      "surface": "Strictsourceand69contracts",
+      "status": "PASS",
+      "observation": "Bothjobcandidateenv/checkout fixedf129; publishergithub.sha sparse3files unchanged.69requiredsource hashes independentlymatch. W046/W047checker+contract unchanged byworkflowrepair; retainedN08/N09/N10 verification retained."
+    },
+    {
+      "surface": "Job/6steptruth table",
+      "status": "PASS",
+      "cases": [
+        {
+          "event": "push",
+          "ref": "refs/heads/main",
+          "dry_run": null,
+          "verifyJob": false,
+          "publishJobAndSixDeliverySteps": true
+        },
+        {
+          "event": "push",
+          "ref": "refs/heads/work/w047-publisher-g3-20261104",
+          "dry_run": null,
+          "verifyJob": true,
+          "publishJobAndSixDeliverySteps": false
+        },
+        {
+          "event": "workflow_dispatch",
+          "ref": "refs/heads/work/w047-publisher-g3-20261104",
+          "dry_run": true,
+          "verifyJob": true,
+          "publishJobAndSixDeliverySteps": false
+        },
+        {
+          "event": "workflow_dispatch",
+          "ref": "refs/heads/work/w047-publisher-g3-20261104",
+          "dry_run": false,
+          "verifyJob": false,
+          "publishJobAndSixDeliverySteps": true
+        }
+      ],
+      "observation": "Mainpush ormanualfalse selectsprotectedpublish; publisherbranchpush ormanualdefaulttrue selectsenvironmentfreeverify. Bothjobs retainidentical6stepdeliveryconditions. Originalenvironmentprotections stillapply todelivery."
+    },
+    {
+      "surface": "YAML/GitHubstaticcompatibility",
+      "status": "PASS",
+      "observation": "YAMLparses; distinctjobs; jobif usesgithub/inputs contexts; jobpermissions override confinesverify; publishdeploymentstepid preservedforenvironmentoutput. Mutuallyexclusivejobexecution avoids artifactnamecollision. No staticinvalidcontext detected."
+    }
+  ],
+  "findings": [],
+  "rationale": "Addressesenvironmentrejection throughenvironmentfreeverification while retainingprotectedpublishjobandallchecks. No guardweakening orpublicationauthorityexpansion identified.",
+  "limitations": [
+    {
+      "surface": "ActualnewGitHubschema/runtimeacceptance",
+      "status": "UNVERIFIED",
+      "reason": "Noactionlint ornewCIexecution here; YAMLstaticparse isnotremoteacceptance."
+    },
+    {
+      "surface": "Actualbuild/browser/dryrun/Pages/hostacceptance",
+      "status": "UNVERIFIED",
+      "reason": "ActualnewCIrequired afterreview; firstfailurehadnosteps."
+    }
+  ],
+  "recovery": "Recreatedexact58daworkflow reread andchecks repeated afterinterruption. Prior/tmp reportwas absent afterrecovery; thisfile is a reconstructed review with freshstaticchecks, not a byte-preservedpreviousreport.",
+  "writes": "Only/tmpreport; noStore/Git/sharedrepoedits"
+}

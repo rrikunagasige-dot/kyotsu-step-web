@@ -1,0 +1,31 @@
+{
+  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "publisherSHA": "6808eb07f768b31d9cf493cf9a742a8e8992d0a3",
+  "publisherTree": "e5bd021ac4821926b8baebcd1ac07c62cb48c4d2",
+  "files": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "status": "modified",
+      "sha": "9bc9d4d62eabcaab5cf59a6afe9b15c88a03ba4d"
+    },
+    {
+      "path": "tools/release/w046-publish-check.mjs",
+      "status": "modified",
+      "sha": "24d95c1ac98b20239b102703db9cdac310aebb34"
+    },
+    {
+      "path": "tools/release/w047-publish-check.mjs",
+      "status": "added",
+      "sha": "ac00861b9ed010f42b281eeb845c7c2761d3a0ad"
+    },
+    {
+      "path": "tools/release/w047-release-contract.json",
+      "status": "added",
+      "sha": "cca60701a61a9f23e002fcba245215387a49845d"
+    }
+  ],
+  "publicationAuthorized": false,
+  "compareURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/compare/04b823259a0873235e39099864d454330eed5d81...6808eb07f768b31d9cf493cf9a742a8e8992d0a3",
+  "firstRun": 41718315741,
+  "note": "Initial approved branch creation only; failed verification retained."
+}

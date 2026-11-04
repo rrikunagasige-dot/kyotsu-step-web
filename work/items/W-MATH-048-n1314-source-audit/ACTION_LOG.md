@@ -32,3 +32,8 @@ A/B実子二人のみ、root唯一Store/Git writer。CODEの限定PASSと実画�
 ユーザー「承認」を固定案7d29caf3へ結合。YAMLのbyte一致を検査してactive .github一fileへ追加。子二人の既存担当を再開、M唯一writer。run取得前はPENDING、教材受入/公開には転用しない。
 
 - CI41807740789/source2cf3c1fは固定byte/採点保存/build/Chromium導入PASS、実画面の選択肢集合比較でFAIL。B先行指摘を実ログで確認。検査用二scriptだけを既存getTextbookChoicesへ接続する限定修正。教材・workflow権限・guardは変更しない。
+
+- 再CI41808153351/source99203245 SUCCESS。PNG16枚・検査JSON別artifactを取得し両ZIP digest照合。各幅N13 18正答/42実表示誤答、履歴/再読込/旧保存再開を確認。N14は未適用、正式R07/本人受入ではない。
+- 既存RuntimeでR01_CAPTURE@n13を現混在版の新CODE receiptsとAI根拠で再提出。次R02。既存P003を保持、guard変更・二重patchなし。
+
+- BがCI画像9枚をview_imageで初回事前観察。fresh/answered1に明白な左右欠けは見えず、answered9では固定headerの中段重畳を検出。正式packet/PASSではない。capture前scroll topを追加して同じ教材を再撮影する。

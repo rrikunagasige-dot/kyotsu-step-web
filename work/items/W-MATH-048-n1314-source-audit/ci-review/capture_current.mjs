@@ -18,6 +18,12 @@ try {
     const { code, unit, legacy, visibleChoices } = fixture, section = unit.sections[0], items = new Map(section.items.map(i => [i.id, i]));
     const context = await browser.newContext({ viewport: { width, height: 1000 } }), page = await context.newPage(), errors = [];
     page.on('pageerror', e => errors.push(e.message));
+    async function capture(name) {
+      // Clicks scroll to lower rows; a fixed header must not obscure a full-page capture.
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForFunction(() => window.scrollY === 0);
+      await page.screenshot({ path: path.join(imageDir, `${code}-${width}-${name}.png`), fullPage: true });
+    }
     const route = process.env.APP_URL + '#/learning/textbook/' + unit.unitId;
     await page.goto(route); await page.getByTestId('textbook-reading-flow').waitFor();
     await page.evaluate(() => document.fonts.ready);
@@ -68,7 +74,7 @@ try {
       }, value);
       await panel.waitFor({ state: 'detached' });
     }
-    await geometry('fresh'); await page.screenshot({ path: path.join(imageDir, `${code}-${width}-fresh.png`), fullPage: true });
+    await geometry('fresh'); await capture('fresh');
     const visited = new Set();
     for (let guard = 0; guard < section.items.length * 4 + 100; guard++) {
       const available = await ids();
@@ -86,14 +92,14 @@ try {
         await page.getByTestId('textbook-item-' + id).click();
       }
       await choose(item, item.answer); correct++; visited.add(id); await geometry(id + '-correct');
-      if (correct === 1 || correct === Math.floor(section.items.length / 2)) await page.screenshot({ path: path.join(imageDir, `${code}-${width}-answered-${correct}.png`), fullPage: true });
+      if (correct === 1 || correct === Math.floor(section.items.length / 2)) await capture(`answered-${correct}`);
     }
     assert.equal(correct, section.items.length, 'all current-source interactions answered');
     assert.equal(wrong, section.items.reduce((n, i) => n + visibleChoices[i.id].filter(c => c !== i.answer).length, 0));
     await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor(); await geometry('completed-reload');
     const history = page.getByTestId('math-textbook-history-toggle');
     if (await history.count()) { await history.click(); await page.getByTestId('math-textbook-expand-all').click(); await geometry('expanded-history'); }
-    await page.screenshot({ path: path.join(imageDir, `${code}-${width}-history.png`), fullPage: true });
+    await capture('history');
     // Reuse the actual persisted storage format, only inside this fresh browser context.
     const seeded = await page.evaluate(({ unit, legacy, answers }) => {
       const key = Object.keys(localStorage).find(k => { try { return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress); } catch { return false; } });

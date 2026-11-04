@@ -8,7 +8,7 @@
 
 N13は実checkoutがP003固定after hashであることを必須にする。N14がbefore hashならNOT_APPLIEDを明記し、その隔離コピーを現在sourceの実画面証拠へ混ぜない。N14が正式にafter hashへ適用された後の新CIでのみN14を測定する。未知のbyteは拒否する。
 
-検査候補は実build上の四幅320/390/430/1440、全正答・全誤答・ヒント、内部数式の横スクロール両端到達、履歴・再読込、直前版保存の追加判断への再開を扱う。旧版chainはactual domainによるsynthetic検査。既存prototypeのhardcoded scratch pathは使わない。
+検査候補は実build上の四幅320/390/430/1440、全問の正答・実表示される全誤答・ヒント、内部数式の横スクロール両端到達、履歴・再読込、直前版保存の追加判断への再開を扱う。旧版chainはactual domainによるsynthetic検査。既存prototypeのhardcoded scratch pathは使わない。
 
 これはR07全体の完了条件を縮小しない。複数slot44状態、reset操作、原図の解放順、章間移動、旧版画像比較、等号軸/18px/式番号の状態別計測、他モードの回帰と非作者意味審査は、別の正式R07/G2証拠が必要。CI成功を本人受入や全Work PASSへ変換しない。現在のverify_current.mjsは17e39f0aで限定契約検査PASS（N13 18回答・旧r1〜r4 synthetic保存移行、N14 NOT_APPLIED）。両mjs構文検査PASS。build PASS（N14未適用export/既存bundle警告）。capture_current.mjsの実画面検査とCIは未実行。Chromium取得失敗を記録している。
 

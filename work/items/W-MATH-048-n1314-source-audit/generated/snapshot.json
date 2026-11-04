@@ -1,7 +1,7 @@
 {
   "work": "W-MATH-048",
   "engine_version": "1.0.0",
-  "ledger_head": "fabee4751dc312ea96e4c38dfd5a065157c3eccbb6849d1ffde8f22711e4c5a2",
+  "ledger_head": "360c69354d29682958b428952c9a781c8044ff51fa9f72fd64b19a5e6887740d",
   "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
@@ -11,18 +11,19 @@
     "task": {
       "work_id": "W-MATH-048",
       "node": {
-        "id": "R01_CAPTURE@n13",
-        "stage_kind": "R01_CAPTURE",
-        "contract_kind": "R01_CAPTURE",
+        "id": "R02_CAUSE@n13",
+        "stage_kind": "R02_CAUSE",
+        "contract_kind": "R02_CAUSE",
         "actor": "AI",
         "depends_on": [
-          "S01_ROUTE"
+          "R01_CAPTURE@n13"
         ],
         "required": [
-          "complaint",
-          "before_evidence",
-          "reproduction",
-          "target_versions"
+          "symptoms",
+          "confirmed_causes",
+          "hypotheses",
+          "missing_learning_actions",
+          "root_cause_signatures"
         ],
         "block": "n13",
         "release_unit": "n13",
@@ -112,19 +113,23 @@
         ],
         "approval_scope_ref": "proposal",
         "capability_requests": [
-          "source.fixed",
-          "feedback.capture"
+          "case.retrieve",
+          "ir.verify",
+          "source.audit",
+          "novice.audit"
         ],
         "required_code_receipts": [
-          "source.fixed",
-          "feedback.capture"
+          "case.retrieve",
+          "ir.verify",
+          "source.audit",
+          "novice.audit"
         ],
         "required_ai_receipts": [
           "meaning-review"
         ]
       },
-      "task_id": "8c6ce9f5f7fd44ec5ef73079d74533620db1ec9676f3095db5254f9fe52fe50e",
-      "input_hash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
+      "task_id": "ee2595d87f108c07ab4fd906550f6e3cae80d301c8990071b665e0f6887ccdbf",
+      "input_hash": "7f5f2cc3a39a475bb132d73dd59d90c82ebc8d062b87f50ca34bd040a65f4b3e",
       "source_sha": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
       "candidate_sha": null,
       "rules": {
@@ -235,11 +240,11 @@
         "work/items/W-MATH-048-n1314-source-audit/evidence/N14_SOURCE_INDEX.json": "b00bc0958e7750fa496d8af85c771c42b49072a43e20dd454c98e9ced8019bb6"
       },
       "previous_results": {
-        "S01_ROUTE": {
-          "actor": "deterministic-code",
-          "artifact": "b5558d9d65f7c9e8413d64d3d096c4dbc6eeb08c59f7b902ebee642566984e1f",
-          "input_hash": "376a1214955c2e7aff80eadef0efdbb5ce1d82248f9b484d7b90da78b68a7c53",
-          "node": "S01_ROUTE",
+        "R01_CAPTURE@n13": {
+          "actor": "capability-runner",
+          "artifact": "fbc400228d30cbc6dced841567977d963999b82d0302d577c085a800c96e0155",
+          "input_hash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
+          "node": "R01_CAPTURE@n13",
           "verdict": "PASS"
         }
       },
@@ -616,7 +621,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "INVALIDATED"
+      "status": "PASSED"
     },
     {
       "id": "R02_CAUSE@n13",
@@ -4069,6 +4074,16 @@
       "input_hash": "5d2fdc584849decbcfad644052a727a786f2c1925ff352bebce9a0e8d9001c6e",
       "node": "R06_PATCH@n13",
       "receipt": "03083c70f7ddff5ca200beae4250782865312eb76a5d3732a9c51a4a8a23de63"
+    },
+    {
+      "input_hash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
+      "node": "R01_CAPTURE@n13",
+      "receipt": "3038cd2e261b2ee4c6bc0e1017d914b245757d4b3072fb36e512c3ab47a2ff48"
+    },
+    {
+      "input_hash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
+      "node": "R01_CAPTURE@n13",
+      "receipt": "5f04ccbf26bb0f7bbc6d2f4767d158dd70caf7f682517a3197c411b5334dc626"
     }
   ],
   "release_acceptance": {

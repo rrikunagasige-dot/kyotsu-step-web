@@ -1,0 +1,41 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "642a49c5-c446-49fa-a799-072392e4ba16",
+    "bf592465-546b-4f0d-b18f-74478f0403d1",
+    "74aada5a-e833-47a6-b977-93ff1772bd5c",
+    "efb8f45b-1ca7-48b3-9356-ec8d2383eb6f",
+    "cd62ed57-2272-463b-be87-3840a6ce3591",
+    "dcbeb1b6-007b-433b-a540-d5a2d1c9664e"
+  ],
+  "capability_receipts": [
+    "3038cd2e261b2ee4c6bc0e1017d914b245757d4b3072fb36e512c3ab47a2ff48",
+    "5f04ccbf26bb0f7bbc6d2f4767d158dd70caf7f682517a3197c411b5334dc626"
+  ],
+  "complaint": "Continue exactly approved N13/N14 correction while recovering missing execution records; continuation is not a new quality label.",
+  "before_evidence": [
+    "Original source index and original N13 r4/N14 r10 retained in immutable snapshot",
+    "Exact r3 frozen patch index"
+  ],
+  "reproduction": "Current mixed version is N13 r5/18 answers plus revision-scoped domain/Page after hashes, N14 r10/38 answers before hash. Original 25 questions/79 blocks/3 figures remain authoritative. N13 original symptoms are historical diagnosis, not declared still present; N14 planned correction is not applied. Current browser/non-author R07 remains unverified.",
+  "target_versions": {
+    "original": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "recordedN13Product": "17e39f0aa4a93318a6de8dc9ece34b5a7416a451",
+    "n13Revision": 5,
+    "n14Revision": 10,
+    "currentHashes": "r3 index: N13/domain/Page AFTER, N14 BEFORE"
+  },
+  "aiReview": {
+    "requestHash": "8b39485f046bee6884b64c124dd90a37ac2342f28358c6900af03f68ea1168ee",
+    "inputHash": "645ab4becf9ac4b67cf966503f86a07b460f95f2769dd96cc5c4ab1170feb178",
+    "reviewer": "M current recovery diagnosis; separate A read-only source/hash check retained in chat",
+    "evidence": [
+      "642a49c5-c446-49fa-a799-072392e4ba16",
+      "bf592465-546b-4f0d-b18f-74478f0403d1",
+      "74aada5a-e833-47a6-b977-93ff1772bd5c",
+      "efb8f45b-1ca7-48b3-9356-ec8d2383eb6f",
+      "cd62ed57-2272-463b-be87-3840a6ce3591",
+      "dcbeb1b6-007b-433b-a540-d5a2d1c9664e"
+    ]
+  }
+}

@@ -24,3 +24,7 @@ A/Bは元79block・現129block・50回答を読んで調査。CODEによる抽�
 ## CI初回失敗 — 41807740789
 
 ERROR-QA: capture_currentは原稿の全4候補と実表示を同一視していた。実getTextbookChoicesはstrong2択/medium3択へ絞る既存仕様。最初のN13で実2候補とraw4候補の集合比較がFAIL。教材差分なし。検査側fixtureを実getTextbookChoicesへ接続し、全実表示候補の比較/誤答操作/件数へ合わせる。raw非表示候補までブラウザ検査したとは称さない。初回runのFAILとartifactを保持する。
+
+## CI画像の撮影位置 — B初回観察
+
+ERROR-QA: run41808153351の320/1440 answered9 fullPage画像で固定headerが中段本文へ重畳。操作後scrollYを保持したまま全ページ撮影したことが原因候補。アプリ常時不具合とは断定せず、撮影前scroll top/scrollY待機を検査scriptに追加して再撮影する。前回画像と機械検査PASSを保持するが、その画像を正式R07合格へ利用しない。

@@ -14,5 +14,24 @@
   "artifacts": {
     "images": 13310521633,
     "reports": 13310871167
+  },
+  "retry": {
+    "run_id": 41808153351,
+    "head_sha": "99203245ebd6e449ea68fb5194f81a21223f5ef6",
+    "status": "COMPLETED",
+    "scope": "N13 18 correct and 42 actually visible wrong choices per width; raw omitted distractors not browser-tested",
+    "conclusion": "SUCCESS",
+    "imagesArtifact": {
+      "id": 13309704523,
+      "sha256": "06b747d1fef9ec5948e8361483da82052e1c0e386e7f9c57d02132a3991b9a45",
+      "bytes": 4119362
+    },
+    "reportsArtifact": {
+      "id": 13310472218,
+      "sha256": "5bef7f5c5c92a6942f2928ec373dfe78ec207a162cddd357e43a3bd32f6f9c17",
+      "bytes": 10980
+    },
+    "downloadVerified": true,
+    "imageCount": 16
   }
 }

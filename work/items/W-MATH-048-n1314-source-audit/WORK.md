@@ -1,3 +1,15 @@
+# CURRENT — CI成功・正式R01再検証完了
+
+P-W048-CI-001は承認済み・有効化済み。初回run41807740789は検査側のraw/実表示候補混同でFAIL。二scriptだけを既存getTextbookChoicesへ接続し、run41808153351/source99203245でSUCCESS。N13の各320/390/430/1440pxに18正答・42実表示誤答、履歴/再読込/旧r4完了保存から追加未回答への再開を確認。非表示raw候補はbrowser検査と称さない。PNG16枚とJSON別artifactを取得しZIP digest一致を確認。
+
+正式R01_CAPTURE@n13は現sourceの混在版を明記して新capability receiptsとAI審査を提出済み。生成現在地はR02_CAUSE@n13。R02以降の再検証・既承認照合・R06完了記録・R07非作者意味審査は残る。N14はr10/38回答でNOT_APPLIED、今回のCI成功を流用しない。
+
+次は原典・数学・具体案を保持しつつ、新inputHashに対してR02/R03/R04を再検証。R06は新compile receipt＋既存patch証拠で完了し、N13差分は再適用しない。CIはCODEの限定証拠で、正式R07や本人受入の代行ではない。
+
+以下は経緯。
+
+---
+
 # CURRENT — P-W048-CI-001承認・CI開始準備
 
 ユーザー「承認」（current request 0a4dd681-f48f-4bd1-840d-51c8fac40f16）をci-reviewの固定案へ照合。evidence/CI_APPROVAL.json参照。同一byteのworkflow一fileを作業branch限定で有効化する。教材P003の承認と本人受入は別。

@@ -1,3 +1,9 @@
+# 2026-11-04 G3現在の検証範囲
+
+原73input/教材69path/実4blob一致は限定CODE PASS。c133/run41753645581は実全検査success・publish/配送6step skipped。最終9b22/publisher6cd11/run41754189894は実行中、原artifact/3manifest照合待ち。実公開・本人最終受入は未実施。親G3と技術T04の火柴図を優先する。
+
+以下は以前の検証履歴。NOT_RUN/未適用は記録時点の状態である。
+
 # Verification
 
 - 既存verify-ir/compile-ir/coverage/blank-candidates/teaching-candidates/visible-snapshots：基準/候補のN11/N12とも限定PASS。W038 active overlayのverify-irもPASS。

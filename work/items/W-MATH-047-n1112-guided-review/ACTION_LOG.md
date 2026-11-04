@@ -50,3 +50,10 @@ source 2b7780b97bf8c3bde463742e71bf3e816ea8b562、実CI41635935097成功、artif
 ac2ac082実発言「いいよ続けて」を提示済み修正版二箇所/source2bへの限定画面了承として記録。G2の10監査面PASS、原G2-B-L01を同claim/facet/blockの現在targetへ対応付けVERIFIED_FIXED。BのfirstPassの初期false（既視/非盲検の意味）とsource2b統合対象初回の意味訂正を開示、復元版を直接退避原版とは称していない。A監視/B正式統合審査を保存、N11限定PASS。native nextG3_HOSTがN12より先のため、未適用S1を具体化。既存CODEのscope完全一致guardを外さず、新scopeの実承認待ち。CODE静的差分検査で権限拡張・paths追加・教材/graph/保存/旧検査の変更なしを確認。未公開・N12未適用。
 
 S1案の最終照合：既存CODEのG3_FINAL@n11→G3_HOST@n12順と単一release_unit受入をAが指摘（S1-A04）。実HOST証拠を両routeで本人提示前に取得し、一回の実確認を同source/sessionのunit別二記録へ対応付け、未到達node/権限/評価を捏造しない手順を補足。A/B静的PASS、元OPEN原報告を直接保存。提案hash179e750…に再生成し、ネイティブplanと元user scopeは変更せず実承認待ち。
+
+
+## 2026-11-04 G3非公開検証の復旧と修復
+
+89b1ef8fの実continueをP-W047-G3-01へ記録。main04b823起点4pathのみのpublisher6808を実作成。run41718315741はgithub-pages環境branch制限でrunner前拒否（steps=[]）。元案57caと原失敗を保持し、環境保護は変えずverify専用job分離58daをA/Bで審査。publisherc133/run41753645581は実success、publish/6delivery skipped。
+
+Bの生成manifest原bytes欠落指摘G3-B-EVIDENCE-01を採用。配信/検査/権限は変えず、普通artifactへdist3manifestを追加9b22。A/B静的PASS、publisher6cd11/run41754189894実行中。原metadata/appsource/publisher/runを別identityで結び、既存73inputと69source/4actualblobをCODE照合。最終実artifact未取得のためT04合格・G3HOST合格・本人受入は未記録。復旧後の原approval/初回T03と修復input/outputをGitHubのevidence branchへ保存した。

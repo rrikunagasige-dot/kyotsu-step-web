@@ -1,5 +1,19 @@
 # W-MATH-047 — N11/N12の判断と導出の照合
 
+Status: VERIFYING / 両G2正式PASS / G3非公開dry-run最終版の実行中 / 未公開
+
+2026-11-04現在：本人89b1ef8fの具体4path/dry-run承認を記録し、W-TECH-052はT02/T03を正式受理。中断後は実GitHub headと失敗runを照合して復旧。元案57caと初回publisher6808/run41718315741の環境保護によるrunner前拒否を保持した。
+
+環境なしread-only verifyと保護publishを分離した58da修復/c133の実run41753645581は全検査success、publishと6配送step skipped。生成manifest原bytes不足をBが指摘し、artifact保存3pathだけを補完した9b22最終版をA/Bが確認。実publisher `6cd11dc1e65810281ed897f865eed3e52b974992` / run `41754189894` は実行中で、成功へ転記していない。先行c133の結果は最終版の実行証拠へ流用しない。
+
+CODE `check_g3_binding.py` は原metadata73path・sourcef129の69path・実publisher4blob一致を再現。原candidate188、教材sourcef129、外部publisher6cd11、run41754189894を区別し、CI head188とは偽らない。before/after/失敗/実compare/両レビューを既存native file証拠へ束縛し、T04は実成果物待ち。汎用guard・元plan・元承認は変更していない。
+
+現在の火柴図は親 `generated/` のG3_HOST@n11、および技術 `generated-publisher/` のT04_VERIFY。Mが共有Store/Git書込、A w047_review_designが理念/手順、B w047_layout_sourcefirstが非作者CODE/実成果物を確認。二人以外を追加しない。
+
+次は最終実runのsuccess/配送skip・原ZIP/digest・3manifest原bytes・両unit/保持単元操作を照合し、A/B回収後にT04→技術学習/終了を進める。その後、既定の停止点で具体main統合/Pages公開の許可を確認する。main04b823・教材f129を保持。現dry-runの承認はmain merge/manualfalse/公開/本人最終受入へ広げない。
+
+## 以下はG3追加scope承認前までの履歴
+
 Status: VERIFYING / N12確認①了承・両G2正式PASS / G3公開設定4path提案の承認待ち / 未公開
 
 現在：user ed7d140b「いいよ続けて」をN12の4点/五箇所の画像確認①への限定了承として記録（S1_N12_GATE1_RESPONSE.json）。sourcef129の両G2を既存CODEとA/Bの実統合監査で正式受理。旧G2-B-L01は現在の統合target d980927…でVERIFIED_FIXED。両unit共通の実監査一回をnative二記録へ忠実転記し、独立評価二回/新盲検とは数えない。火柴図の次はG3_HOST@n11。

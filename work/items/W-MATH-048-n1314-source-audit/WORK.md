@@ -1,3 +1,23 @@
+# CURRENT — W-MATH-048 / 2026-11-05
+
+教材source: `f752c34e8ac1a875588a8588cf1eb4541bf3af60`。この記録のcommitと教材sourceを区別する。
+
+CI [42003044835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/42003044835) SUCCESS。両leaf適用済み（N13r5/18判断、N14r11/41判断）。N13 R07_VERIFY・R07_SEMANTICは正式PASS。N14 R06・R07_VERIFYは正式PASS、R07_SEMANTICは正式FAIL。
+
+未解決: `W048-N14-R07-EXPRESSION-START-001`。Q10/Q14/Q15の同一導出で320/390/430pxの式コンテナ開始が48.375/41.1875、差7.1875px。1440pxは一致。承認P003に狭幅例外はなく、機械CIの合格で表示不適合を閉じない。
+
+具体補修案: [P-W048-ALIGN-001.md](P-W048-ALIGN-001.md)。≤430px・W048 N14の三groupだけpadding-inline0へ統一し、同一開始差≤1pxと未/途中/完成coverageの検査を追加。Pageと検査scriptの固定afterはPRODUCT_PATCH.json/VERIFICATION_PATCH.jsonへ保存。提案SHA256 `d10a0d29490cb0ae71f812c87f552cf2ea7707dc86def8d6282fa726191bc86d`。静的132caseと非作者審査は限定PASS、候補の実画面は未検証・未承認・未適用。
+
+共有consumer等20suite/179件、実Legacy版の既存17件PASS。旧revisionをcurrentへ固定する7失敗と環境/検査失敗は履歴として保持。これを全modeの実browser合格と呼ばない。
+
+次: 追加固定差分への承認→保持承認とのnative整合→限定補修→失効した検査/審査を再取得→G2。公開binding草案は補修後sourceへ再結合が必要。main統合・アプリ公開・本人受入は未実施。
+
+この公開保存は技術的現在地・具体案・二つのコードpatchだけ。原台帳/会話/画像/検査ZIP一式は一括公開せず、照合済み作業記録に保持。最新ローカル台帳は5893events、HEAD c954f24cb1d13b89dbfadc8cf2491e93fde1387693de1786ee8c58f313eaa1aa。正式FAIL/原報告の実体と公開要約を区別する。
+
+---
+
+## 以下は以前の保存checkpoint（現状判定には上記を使用）
+
 # W-MATH-048 — 現在地
 
 P-W048-003、P-W048-CI-001、P-W048-REVIEW-001、P-W048-SCROLL-001は承認済み。再審査方針を専用native移行で登録し、教材承認hashは保持。二人・孫禁止・M単一writer・非作者審査を維持。露出ありを明記し、盲検/初回審査とは呼ばない。

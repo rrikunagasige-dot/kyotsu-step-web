@@ -1,0 +1,66 @@
+name: W049 read-only NE02 current public verification
+on:
+  push:
+    branches: ['work/ne02-record-verification-20261105']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
+      APP_URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/
+      CODES: ne02
+      WIDTHS: 320,390,430,1440
+    steps:
+      - name: Checkout review tools
+        uses: actions/checkout@v4
+        with:
+          path: qa
+          persist-credentials: false
+      - name: Checkout immutable material
+        uses: actions/checkout@v4
+        with:
+          ref: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
+          path: app
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+        working-directory: app
+      - name: Current public source and byte contract
+        working-directory: app
+        env:
+          QA_CONTRACT: ${{ github.workspace }}/qa/work/items/W-MATH-049-ne0102-record-reconciliation/readonly/w049-contract.json
+          EVIDENCE_DIR: ${{ runner.temp }}/w049-source
+        run: node ../qa/work/items/W-MATH-049-ne0102-record-reconciliation/readonly/verify_source.mjs
+      - run: pnpm exec playwright install --with-deps chromium
+        working-directory: app
+      - name: Original NE02 full four-width public operations
+        working-directory: app
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/w049-browser
+        run: node work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs
+      - name: Bounded NE02 reset and persistence isolation
+        working-directory: app
+        env:
+          QA_CONTRACT: ${{ github.workspace }}/qa/work/items/W-MATH-049-ne0102-record-reconciliation/readonly/w049-contract.json
+          EVIDENCE_DIR: ${{ runner.temp }}/w049-reset
+        run: node ../qa/work/items/W-MATH-049-ne0102-record-reconciliation/readonly/verify_reset.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w049-ne02-readonly-evidence
+          path: |
+            ${{ runner.temp }}/w049-source
+            ${{ runner.temp }}/w049-browser
+            ${{ runner.temp }}/w049-reset
+          if-no-files-found: error

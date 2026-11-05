@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "w049-ne02-readonly-contract/1",
+  "sourceSHA": "96a24d6bffa3a0f6e4c5340e29a5a0364664fb77",
+  "publisherSHA": "a39827c8ca25f7318c14ec28339c2379207dbe86",
+  "base": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "storageKey": "kyotsu-step-gate3-math-20261023",
+  "NE02": {
+    "code": "ne02",
+    "unitId": "math-numbers-expressions-ne02",
+    "revision": 2,
+    "title": "二重根号を、平方の形から外す",
+    "sections": 1,
+    "items": 30,
+    "sha256": "374438fb47ea66109eb8f01e1202eda83e353c12e68d234413f5f094586860e8"
+  },
+  "NE01AcceptedSource": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+  "sourceHashes": {
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+    "src/data/textbook/math/numbers/firstSectionTeaching.ts": "49cf6a1a8e82d8546d17ed63478d81ee9739a225dce7b0b1e06094765de6d127",
+    "src/data/textbook/math/numbers/firstThemeDeepening.json": "b7ac32c2fb0cd257b860696ed92286df2ef35dfccbd7d27406f279c74d41c9cd",
+    "src/data/textbook/math/numbers/firstThemeDerivations.json": "f033273c9b9e3009f76201e194529e0ae80ccca75dd60a5d3fc64cdc63f05cc3",
+    "src/data/textbook/math/numbers/firstThemeRepair.json": "377196cd30fe4b164a652fc6837a37ecd252118d516c25b6f86054d6a9955f91",
+    "src/data/textbook/math/numbers/firstThemeRepair.ts": "46ffb00ebab657c9d2435136e4d838b79a3eadfad45526d677d71e072bdd5a3d",
+    "src/data/textbook/math/numbers/ne01Lesson.ts": "bc1fca4702bc0d47a81b437fa4209f1d192f6190bd1436a61fbed63b322afc06",
+    "src/data/textbook/math/numbers/reviewLessonHelpers.ts": "d731ae26a7cad1460e28ce5040be784534dcdcf7cf9b6b759210deff75f22b18",
+    "src/data/textbook/math/numbers/ne02Authored.json": "cdd077c7d67a448f4341fdfca92c58f263f449caf80341ff5f77232a42755552",
+    "src/data/textbook/math/numbers/ne02Lesson.ts": "be1a77360bb18a86915f08460f56ed2a16be6c37cf139fc89119c4b4ced7ab39"
+  },
+  "filesExpected": 123,
+  "browserVerifier": "work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs",
+  "browserScope": {
+    "codes": [
+      "ne02"
+    ],
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ]
+  },
+  "noDeploy": true,
+  "noSharedStoreMutation": true,
+  "userAcceptance": false,
+  "manifestHashes": {
+    "release.json": "c83ad181970fec93635bfe4d85c79f3b90d8efa0e1c96ee402a29b09fc679790",
+    "w046-release.json": "70bebf7d0ae1f3fe65697d4635e6d8356e89a0a0cb120019004da03bfa616420",
+    "w047-release.json": "17632fbb6bb2eb69011a6a116d603129d7741d487c6c7d74ddbe10435aa0def0",
+    "w048-release.json": "1dcd0d9313e3fc0c8c44b48ee988b7ff7fd9c0be61a0deccbd716e096956444e"
+  }
+}

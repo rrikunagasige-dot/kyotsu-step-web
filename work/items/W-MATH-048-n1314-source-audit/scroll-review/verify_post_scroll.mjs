@@ -9,7 +9,7 @@ const out=process.env.EVIDENCE_DIR;assert.ok(out && out.startsWith('/') && !out.
 const input=JSON.parse(fs.readFileSync(process.env.W048_FIXTURES||'/tmp/w048-ci-final/reports/w048-evidence/contracts/BROWSER_FIXTURES.json'));
 const fixture=input.fixtures.find(f=>f.code==='n13');assert.ok(fixture);const map=new Map(fixture.unit.sections[0].items.map(i=>[i.id,i]));
 const report={scope:'POST_APPLICATION_SCROLL_ONLY_NOT_FORMAL_R07',width,status:'RUNNING',steps:[],limits:['N12 unaffected-revision no-op smoke only; N14r11 is verified separately.','Synthetic DOM scroll instrumentation observes calls and offsets, not exhaustive keyboard or historical saves.']};
-const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--disable-software-rasterizer','--no-zygote','--single-process']});
+const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),args:['--no-sandbox', ...(process.env.W048_SINGLE_PROCESS === '1' ? ['--disable-dev-shm-usage','--disable-gpu','--disable-software-rasterizer','--no-zygote','--single-process'] : [])]});
 try{
  const context=await browser.newContext({viewport:{width,height:1000}}),page=await context.newPage();page.setDefaultTimeout(15000);
  await page.addInitScript(()=>{window.__w048ScrollCalls=[];const original=Element.prototype.scrollTo;Element.prototype.scrollTo=function(...args){if(this.dataset?.testid?.startsWith('textbook-formula-'))window.__w048ScrollCalls.push({id:this.dataset.testid,args});return original.apply(this,args);};});

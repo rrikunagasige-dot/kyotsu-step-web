@@ -48,6 +48,8 @@ const report = { schemaVersion: 'w048-n14-browser-extended/1', status: 'RUNNING'
     'Old saves and partial masks are synthetic records seeded into real browser persistence, never user data.',
     'Independent seed-record/archive assertions and the approved re-key allowlist are primary old-save checks. SSR actual effectiveTextbookProgress is supplementary, not an independent migration oracle.',
     'Formula-start/computed alignment is bounded geometry, not proof of all relation-glyph positions or visual teaching quality.',
+    'Real formula answers test wrong/correct post-answer scroll at every encountered formula judgment; manual20 retention requires a different visible overflowing row. Widths without overflow report zero-offset observations separately.',
+    'Correct answers alternate pointer/Enter; this is not all-41-ID keyboard coverage. Manual20 retention is after another row answer, not reload persistence.',
     'N14 is the last numbers unit: existing catalog has no next-chapter link. Test actual return-to-setup and written quadratic-function bridge.',
     'No hosted-source, user acceptance, semantic review, all-mode regression, or native R07 PASS is created by this script.'
   ] };
@@ -90,8 +92,16 @@ try {
     const context = await browser.newContext({ viewport: { width, height: 1000 } });
     const page = await context.newPage(); page.setDefaultTimeout(15000);
     const errors = []; page.on('pageerror', e => errors.push(e.message));
-    const row = { width, answered: [], figures: [], measurements: [], masks: [], saves: [], navigation: [], images: [] };
+    const row = { width, answered: [], figures: [], measurements: [], masks: [], saves: [], navigation: [], images: [], scrollProbes: [] };
     report.rows.push(row);
+    await page.addInitScript(() => {
+      window.__w048N14ScrollCalls = [];
+      const original = Element.prototype.scrollTo;
+      Element.prototype.scrollTo = function (...args) {
+        if (this.dataset?.testid?.startsWith('textbook-formula-')) window.__w048N14ScrollCalls.push({ id: this.dataset.testid, args });
+        return original.apply(this, args);
+      };
+    });
     const route = id => process.env.APP_URL + '#/learning/textbook/' + id;
     const ids = () => page.locator('button[data-testid^="textbook-item-"]:visible').evaluateAll(ns => ns.map(n => n.dataset.testid.slice('textbook-item-'.length)));
     async function open(id = unit.unitId) {
@@ -120,6 +130,62 @@ try {
       if (keyboard) { await option.focus(); await page.keyboard.press('Enter'); } else await option.click();
       await panel.waitFor({ state: 'detached' });
       await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+    }
+    // Instrument an actual answer rather than inferring the scroll effect from
+    // styles. Different-row selection excludes the entire current formula, so
+    // another slot on that same formula cannot masquerade as an unrelated row.
+    async function chooseWithScrollProbe(id, value, state, keyboard = false) {
+      const button = page.getByTestId('textbook-item-' + id);
+      await button.click();
+      const panel = page.getByTestId('inline-choice-panel-' + id); await panel.waitFor();
+      const option = panel.getByRole('button', { name: value, exact: true });
+      if (keyboard) await option.focus();
+      const before = await button.evaluate(e => {
+        const current = e.closest('[data-testid^="textbook-formula-"]');
+        const root = e.closest('[data-testid="textbook-reading-flow"]');
+        const read = n => n && ({ id: n.dataset.testid, scrollLeft: n.scrollLeft,
+          scrollWidth: n.scrollWidth, clientWidth: n.clientWidth, connected: n.isConnected });
+        const other = current && [...root.querySelectorAll('[data-testid^="textbook-formula-"]')]
+          .find(n => n !== current && n.getClientRects().length && n.scrollWidth - n.clientWidth >= 20);
+        if (current) current.scrollLeft = 20;
+        if (other) other.scrollLeft = 20;
+        window.__w048N14ScrollCalls = [];
+        return { target: read(current), unrelated: read(other) };
+      });
+      // Push before the interaction so an actual execution error retains its
+      // attempted target, seeded offset and state in the original FAIL report.
+      const probe = { id, state, method: keyboard ? 'Enter' : 'pointer', before, status: 'RUNNING' };
+      row.scrollProbes.push(probe);
+      if (keyboard) await page.keyboard.press('Enter'); else await option.click();
+      await panel.waitFor({ state: 'detached' });
+      await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+      probe.after = await page.getByTestId('textbook-reading-flow').evaluate((root, before) => {
+        const read = prior => {
+          const n = prior && root.querySelector(`[data-testid="${prior.id}"]`);
+          return n && { id: n.dataset.testid, scrollLeft: n.scrollLeft,
+            scrollWidth: n.scrollWidth, clientWidth: n.clientWidth, connected: n.isConnected };
+        };
+        return { target: read(before.target), unrelated: read(before.unrelated), calls: window.__w048N14ScrollCalls };
+      }, before);
+      probe.answerResolved = await button.count() === 0;
+      check(probe.answerResolved === (state === 'correct'), `${width}/${id}/${state}/real-answer-state`, probe);
+      if (before.target) {
+        check(probe.after.target?.scrollLeft === 0, `${width}/${id}/${state}/target-left-zero`, probe);
+        check(probe.after.calls.length === 1 && probe.after.calls[0].id === before.target.id,
+          `${width}/${id}/${state}/only-answer-formula-reset`, probe);
+        const overflow = before.target.scrollWidth > before.target.clientWidth + 1;
+        check(!overflow || before.target.scrollLeft > 0, `${width}/${id}/${state}/real-overflow-seed`, probe);
+        probe.targetObservation = before.target.scrollLeft > 0 ? 'ACTUAL_OVERFLOW_OFFSET_RESET'
+          : overflow ? 'OVERFLOW_WITHOUT_SEEDED_OFFSET' : 'ZERO_OFFSET_NO_OVERFLOW';
+      } else {
+        check(probe.after.calls.length === 0, `${width}/${id}/${state}/nonformula-no-reset`, probe);
+        probe.targetObservation = 'NONFORMULA_ANSWER';
+      }
+      if (before.unrelated) {
+        check(before.unrelated.scrollLeft === 20 && probe.after.unrelated?.scrollLeft === 20,
+          `${width}/${id}/${state}/different-formula-manual20-preserved`, probe);
+      }
+      probe.status = 'MEASURED';
     }
     async function image(name) {
       await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
@@ -189,11 +255,24 @@ try {
       await measure(id + '-before');
       await page.getByTestId('textbook-item-' + id).click();
       await page.getByTestId('inline-choice-panel-' + id).waitFor(); await measure(id + '-options');
-      // choose() reselects this same target; it does not rely on a toggle-close.
-      await choose(id, item.answer, solved.size % 2 === 1); solved.add(id); row.answered.push(id);
+      const wrong = visibleChoices[id].find(value => value !== item.answer);
+      assert.ok(wrong, 'Real displayed wrong choice is required for the scroll probe');
+      await chooseWithScrollProbe(id, wrong, 'wrong');
+      await chooseWithScrollProbe(id, item.answer, 'correct', solved.size % 2 === 1); solved.add(id); row.answered.push(id);
       await measure(id + '-resolved');
     }
     check(row.answered.length === 41, `${width}/all41-real-answers`, row.answered);
+    row.scrollSummary = {
+      targetFormulaAnswers: row.scrollProbes.filter(p => p.before.target).length,
+      actualOverflowResets: row.scrollProbes.filter(p => p.targetObservation === 'ACTUAL_OVERFLOW_OFFSET_RESET').length,
+      zeroOffsetObservations: row.scrollProbes.filter(p => p.targetObservation === 'ZERO_OFFSET_NO_OVERFLOW').length,
+      differentRowManual20: row.scrollProbes.filter(p => p.before.unrelated).length,
+    };
+    check(row.scrollSummary.targetFormulaAnswers > 0, `${width}/real-formula-scroll-observations`, row.scrollSummary);
+    if (width === 320) {
+      check(row.scrollSummary.actualOverflowResets > 0, `${width}/real-overflow-reproduction-required`, row.scrollSummary);
+      check(row.scrollSummary.differentRowManual20 > 0, `${width}/different-row-manual20-required`, row.scrollSummary);
+    }
     await nextUntilPending(); await expandHistory(); await figures('complete', solved);
     const full = await measure('complete-expanded-history');
     check(JSON.stringify(full.numbers.map(n => n.number).sort((a, b) => a - b)) === JSON.stringify(expectedNumbers), `${width}/all20-equation-numbers`, full.numbers);
@@ -297,6 +376,7 @@ try {
     await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor();
     check((await nextUntilPending()).includes('n14-01'), `${width}/explicit-reset-first-question`);
     const resetState = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).state.textbookProgress, storageKey);
+    check(resetState[unit.unitId] == null, `${width}/reset-current-progress-removed`, resetState[unit.unitId]);
     check(JSON.stringify(resetState[sentinel.unitId]) === JSON.stringify(sentinel), `${width}/reset-other-unit-kept`);
     row.reset = { firstPending: await ids(), currentProgress: resetState[unit.unitId] ?? null };
     await image(`n14-${width}-reset`);

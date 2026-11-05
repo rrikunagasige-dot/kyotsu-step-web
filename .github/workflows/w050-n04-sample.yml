@@ -8,6 +8,10 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:

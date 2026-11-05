@@ -17,6 +17,7 @@ import { N08ConstructionReadingFlow } from '../components/textbook/N08Constructi
 import { N08ConstructionReadingFlowV7 } from '../components/textbook/N08ConstructionReadingFlowV7'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
 import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
+import '../components/textbook/n04-sample-reading.css'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
 import { TypesetInlineMath } from '../components/textbook/TypesetFormula'
 import { FirstThemeChoiceFormula } from '../components/textbook/FirstThemeChoiceFormula'
@@ -473,7 +474,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     )
   }
 
-  const renderVisibleBlocks = (blocks: TextbookReadingBlock[]) => {
+  const renderVisibleBlocks = (blocks: TextbookReadingBlock[], n04SampleStage = false) => {
     const rendered: ReactNode[] = []
     let index = 0
 
@@ -498,10 +499,18 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
         }
 
         rendered.push(
-          <div className="reading-derivation-chain" data-derivation-id={derivationId} key={`derivation-${derivationId}`}>
+          <div className="reading-derivation-chain" data-derivation-id={derivationId} data-n04-sample-chain={n04SampleStage ? true : undefined} key={`derivation-${derivationId}`}>
             {run.map((entry) => (
               <div
                 className={`reading-derivation-step reading-derivation-step--${entry.type}`}
+                data-n04-sample-block={n04SampleStage ? entry.id : undefined}
+                data-n04-sample-spacing={n04SampleStage
+                  ? /^n04-bridge-worked-n04-q01-p[1-4]-before-0-lead$/.test(entry.id)
+                    || entry.id === 'n04-s4-square-plan' || entry.id === 'paragraph-n04-collect-without-combining'
+                    ? 'purpose'
+                    : /^n04-bridge-worked-n04-q01-p[1-4]-before-0-equation-0$/.test(entry.id)
+                      ? 'reason-equation' : 'body'
+                  : undefined}
                 key={entry.id}
               >
                 {renderBlockWithReviewMark(entry)}
@@ -579,6 +588,8 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
           {compactStages.map((stage, index) => {
             if (index > activeCompactIndex || (index < activeCompactIndex && !showPastHistory)) return null
             const completedBefore = index < activeCompactIndex
+            const n04SampleStage = unit.unitId === 'math-numbers-expressions-n04'
+              && unit.revision === 7 && stage.id === 'heading-four-products'
             const expanded = expandAllPast || expandedPastStages.includes(stage.id)
             const stageItemIds = readingGroupItemIds([...stage.blocks], section)
             const currentQuestionId = stageItemIds.find(id => {
@@ -596,6 +607,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                 key={stage.id}
                 className={'math-textbook-stage' + (completedBefore ? ' math-textbook-stage--past' : ' math-textbook-stage--current')}
                 data-testid={'math-textbook-stage-' + stage.id}
+                data-n04-sample-stage={n04SampleStage && !completedBefore ? stage.id : undefined}
                 tabIndex={completedBefore ? undefined : -1}
               >
                 {completedBefore ? (
@@ -624,8 +636,8 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                       </div>
                     )}
                     {expanded && (
-                      <div className="math-textbook-stage-detail" id={'math-textbook-stage-detail-' + stage.id}>
-                        {renderVisibleBlocks([...stage.blocks])}
+                      <div className="math-textbook-stage-detail" id={'math-textbook-stage-detail-' + stage.id} data-n04-sample-stage={n04SampleStage ? stage.id : undefined}>
+                        {renderVisibleBlocks([...stage.blocks], n04SampleStage)}
                       </div>
                     )}
                   </>
@@ -675,7 +687,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                         })}
                       </div>
                     )}
-                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')))}
+                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')), n04SampleStage)}
                     {stageAnswered && resultIds.length > 0 && (
                       <aside className="first-theme-recorded-results first-theme-recorded-results--current" data-testid={'recorded-results-' + stage.id}>
                         <strong>{text('この段階で確かめたこと', '本阶段确认的内容')}</strong>

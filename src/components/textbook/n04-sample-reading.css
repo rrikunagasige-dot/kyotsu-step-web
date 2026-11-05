@@ -1,0 +1,64 @@
+/* P-W050-001: only N04 r7 / heading-four-products receives this attribute.
+   Current stage and expanded history detail opt in separately. Result summaries
+   and references never receive the chain/block attributes used below. */
+[data-n04-sample-stage="heading-four-products"].math-textbook-stage.math-textbook-stage--current[data-testid] {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  gap: 12px;
+}
+
+[data-n04-sample-stage="heading-four-products"] > .math-textbook-stage-active-title {
+  padding-inline: 0;
+  margin-inline: 0;
+}
+
+[data-n04-sample-stage="heading-four-products"] .reading-derivation-chain[data-n04-sample-chain][data-derivation-id] {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] {
+  min-width: 0;
+  margin: 0;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] + [data-n04-sample-block] {
+  margin-top: 12px;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] + [data-n04-sample-spacing="purpose"] {
+  margin-top: 24px;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] + [data-n04-sample-spacing="reason-equation"] {
+  margin-top: 8px;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] > .reading-block-with-choice {
+  margin: 0;
+}
+
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] > .reading-block-with-choice > .reading-paragraph {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Preserve the existing relation-column plan, equation numbering and fallback.
+   Only controls grow; TypesetFormula measures the actual controls already shown. */
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] .reading-formula-choice,
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] .reading-inline-blank,
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block] .reading-choice-option {
+  min-width: 44px;
+  min-height: 44px;
+}

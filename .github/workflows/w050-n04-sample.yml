@@ -1,0 +1,48 @@
+name: W050 N04 scoped prose and layout verification
+on:
+  push:
+    branches: ['work/w050-n04-sample']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Approved text and protected byte checks
+        run: python work/items/W-MATH-050-n0107-layout-prose/verify_source.py
+      - name: Typecheck
+        run: pnpm run typecheck
+      - name: Math textbook, formula and progress regressions
+        run: pnpm exec vitest run src/data/textbook/math src/components/textbook/TextbookFormula.test.tsx src/domain/textbook.test.ts src/domain/textbookSchema.test.ts
+      - name: Production build
+        run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Four-width N04 operations, geometry and save fixtures
+        env:
+          APP_URL: http://127.0.0.1:4173/kyotsu-step-web/
+          SOURCE_SHA: ${{ github.sha }}
+          EVIDENCE_DIR: ${{ runner.temp }}/w050-browser
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > "$RUNNER_TEMP/w050-vite.log" 2>&1 &
+          node work/items/W-MATH-050-n0107-layout-prose/verify_browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w050-n04-original-browser-evidence
+          path: |
+            ${{ runner.temp }}/w050-browser
+            ${{ runner.temp }}/w050-vite.log
+          if-no-files-found: error

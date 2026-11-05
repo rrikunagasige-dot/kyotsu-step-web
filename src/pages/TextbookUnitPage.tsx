@@ -58,7 +58,12 @@ const w048ScopedStyle = `.w048-reading-flow .reading-formula-line{font-size:18px
 .w048-reading-flow .reading-paragraph .katex{font-size:1em}
 .w048-reading-flow .reading-derivation-chain .reading-formula-line{text-align:left}
 .w048-reading-flow .reading-derivation-chain[data-derivation-id] [data-testid^="textbook-formula-"] .reading-formula-expression{justify-content:flex-start;justify-items:start}
-.w048-reading-flow .reading-choice-option .first-theme-choice-math{max-width:100%}`
+.w048-reading-flow .reading-choice-option .first-theme-choice-math{max-width:100%}
+@media(max-width:430px){
+.w048-reading-flow .reading-derivation-chain[data-derivation-id="n14-q10-chain"] .reading-formula-line,
+.w048-reading-flow .reading-derivation-chain[data-derivation-id="n14-q14-chain"] .reading-formula-line,
+.w048-reading-flow .reading-derivation-chain[data-derivation-id="n14-q15-chain"] .reading-formula-line{padding-inline:0}
+}`
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {

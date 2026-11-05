@@ -92,7 +92,7 @@ try {
     const context = await browser.newContext({ viewport: { width, height: 1000 } });
     const page = await context.newPage(); page.setDefaultTimeout(15000);
     const errors = []; page.on('pageerror', e => errors.push(e.message));
-    const row = { width, answered: [], figures: [], measurements: [], masks: [], saves: [], navigation: [], images: [], scrollProbes: [] };
+    const row = { width, answered: [], figures: [], measurements: [], masks: [], saves: [], navigation: [], images: [], scrollProbes: [], alignmentCoverage: {} };
     report.rows.push(row);
     await page.addInitScript(() => {
       window.__w048N14ScrollCalls = [];
@@ -204,7 +204,10 @@ try {
             katex: [...e.querySelectorAll('.katex')].map(k => getComputedStyle(k).fontSize),
             derivation: e.closest('[data-derivation-id]')?.dataset.derivationId,
             justify: x && getComputedStyle(x).justifyContent, justifyItems: x && getComputedStyle(x).justifyItems,
-            firstMath: m && box(m), expression: x && box(x), scrollLeft: e.scrollLeft };
+            firstMath: m && box(m), expression: x && box(x), scrollLeft: e.scrollLeft,
+            line: box(e), paddingInlineStart: getComputedStyle(e).paddingInlineStart,
+            pendingIds: [...e.querySelectorAll('button[data-testid^="textbook-item-"]')].filter(shown).map(n => n.dataset.testid.slice('textbook-item-'.length)),
+            resolvedIds: [...e.querySelectorAll('[data-testid^="resolved-"]')].filter(shown).map(n => n.dataset.testid.slice('resolved-'.length)) };
         });
         const numbers = [...root.querySelectorAll('[data-equation-number]')].filter(shown).map(e => {
           const l = e.querySelector('.numbered-equation-label'), label = l && box(l);
@@ -214,7 +217,7 @@ try {
               const b = box(n); return b.left < label.right && b.right > label.left && b.top < label.bottom && b.bottom > label.top;
             }) };
         });
-        return { overflow: document.documentElement.scrollWidth > innerWidth + 1,
+        return { rootFont: getComputedStyle(document.documentElement).fontSize, overflow: document.documentElement.scrollWidth > innerWidth + 1,
           katexErrors: root.querySelectorAll('.katex-error').length, formulas, numbers,
           optionFonts: [...root.querySelectorAll('.reading-choice-option>strong')].filter(shown).map(e => ({
             font: getComputedStyle(e).fontSize, katex: [...e.querySelectorAll('.katex')].map(k => getComputedStyle(k).fontSize) })) };
@@ -223,6 +226,28 @@ try {
       for (const f of data.formulas) {
         check(f.font === '18px' && f.katex.every(s => s === '18px'), `${width}/${label}/formula18`, f);
         if (f.derivation) check(f.justify === 'flex-start' && f.justifyItems === 'start', `${width}/${label}/derivation-alignment`, f);
+      }
+      // Compare expression containers within one authored derivation group.
+      // firstMath remains the first KaTeX HTML box, not a glyph/text Range axis.
+      data.expressionStartGroups = [];
+      for (const chain of ['n14-q10-chain', 'n14-q14-chain', 'n14-q15-chain']) {
+        const members = data.formulas.filter(f => f.derivation === chain && f.expression);
+        if (members.length < 2) continue;
+        const starts = members.map(f => ({ id: f.id, left: f.expression.left,
+          firstMathLeft: f.firstMath?.left ?? null, paddingInlineStart: f.paddingInlineStart,
+          pendingIds: f.pendingIds, resolvedIds: f.resolvedIds }));
+        const delta = Math.max(...starts.map(f => f.left)) - Math.min(...starts.map(f => f.left));
+        const op = members.find(f => f.id === 'textbook-formula-n14-formula-' + chain.match(/q(\d+)/)[1]);
+        const stateKind = !op ? 'NO_OPERATION_ROW' : op.pendingIds.length === 3 ? 'UNANSWERED'
+          : op.pendingIds.length > 0 ? 'PARTIAL' : op.resolvedIds.length === 3 ? 'COMPLETED' : 'UNKNOWN';
+        const observation = { chain, stateKind, starts, delta, tolerancePx: 1,
+          measure: 'reading-formula-expression DOMRect.left; not glyph or relation-sign alignment' };
+        data.expressionStartGroups.push(observation);
+        check(delta <= 1, `${width}/${label}/${chain}/expression-start-delta`, observation);
+        if (['UNANSWERED', 'PARTIAL', 'COMPLETED'].includes(stateKind)) {
+          const states = row.alignmentCoverage[chain] ??= [];
+          if (!states.includes(stateKind)) states.push(stateKind);
+        }
       }
       for (const f of data.optionFonts) check(f.font === '18px' && f.katex.every(s => s === '18px'), `${width}/${label}/option18`, f);
       const numbers = new Set();
@@ -266,6 +291,7 @@ try {
       const wrong = visibleChoices[id].find(value => value !== item.answer);
       assert.ok(wrong, 'Real displayed wrong choice is required for the scroll probe');
       await chooseWithScrollProbe(id, wrong, 'wrong');
+      await measure(id + '-wrong');
       await chooseWithScrollProbe(id, item.answer, 'correct', solved.size % 2 === 1); solved.add(id); row.answered.push(id);
       await measure(id + '-resolved');
     }
@@ -351,6 +377,9 @@ try {
       if (width === 320 && (mask === 0 || mask === 5 || mask === 2 ** slots.length - 1) && slots.length === 3) await image(`n14-${width}-${block.id}-mask${mask}`);
     }
     check(row.masks.length === 44, `${width}/all44-binary-masks`, row.masks.length);
+    for (const chain of ['n14-q10-chain', 'n14-q14-chain', 'n14-q15-chain'])
+      check(['UNANSWERED', 'PARTIAL', 'COMPLETED'].every(s => row.alignmentCoverage[chain]?.includes(s)),
+        `${width}/${chain}/alignment-three-state-coverage`, row.alignmentCoverage[chain] ?? []);
     // Old revision chains retain the real migration's intentional reopening.
     // Compare every pre-existing answer record and archive after a real click.
     for (const test of migrationCases) {

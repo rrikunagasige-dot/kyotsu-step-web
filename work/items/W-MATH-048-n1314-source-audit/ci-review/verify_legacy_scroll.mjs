@@ -26,7 +26,7 @@ const report = { schemaVersion: 'w048-legacy-scroll-fixture/1', status: 'RUNNING
   scope: 'Current-source Vite dev Page + in-memory exported N13 r4/N14 r10 fixtures only',
   author: 'B test harness author, not lesson/product patch author', sourceHashes: beforeHashes,
   eligibleUnits: eligible, notAppliedExcluded: ['n13','n14'].filter(c => !eligible.includes(c)),
-  rows: [], failures: [], limits: [
+  rows: [], attempts: [], failures: [], limits: [
     'Object.assign changes only the isolated browser module object; no source bytes, formal workflow Store or real user persistence is modified.',
     'Catalog/repository object identity, legacy revision and absent W048 class are required. Cloned catalog values or missing exports return UNVERIFIED, never fixture PASS.',
     'Exercises one actual formula judgment with wrong/correct answer per unit/width; not every old interaction, historical rendering, migration or hosted route.',
@@ -34,10 +34,11 @@ const report = { schemaVersion: 'w048-legacy-scroll-fixture/1', status: 'RUNNING
     'Observes formula Element.scrollTo calls; unrelated window/stage scrolling is outside this bounded no-op test.',
   ] };
 class Unverified extends Error {}
-let server, browser;
+let server, browser, activePage, activeAttempt;
 try {
-  server = await createServer({ root, base: '/', server: { host: '127.0.0.1', port: 0, strictPort: false },
-    optimizeDeps: { noDiscovery: true, include: [] } });
+  // Preserve normal vite.config dependency discovery/optimization. The previous
+  // noDiscovery fixture timed out before ready; its root cause is not established.
+  server = await createServer({ root, base: '/', server: { host: '127.0.0.1', port: 0, strictPort: false } });
   await server.listen();
   const address = server.httpServer.address();
   assert.ok(address && typeof address !== 'string');
@@ -50,7 +51,17 @@ try {
   for (const code of eligible) for (const width of [320, 390, 430, 1440]) {
     const context = await browser.newContext({ viewport: { width, height: 1000 } });
     const page = await context.newPage(); page.setDefaultTimeout(20000);
-    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    activePage = page;
+    activeAttempt = { code, width, phase: 'initial-ready', pageErrors: [], consoleErrors: [], requestFailures: [], httpResponses: [] };
+    report.attempts.push(activeAttempt);
+    const attempt = activeAttempt;
+    const errors = attempt.pageErrors;
+    page.on('pageerror', e => errors.push({ message: e.message, stack: e.stack }));
+    page.on('console', message => {
+      if (message.type() === 'error') attempt.consoleErrors.push({ text: message.text(), location: message.location() });
+    });
+    page.on('requestfailed', request => attempt.requestFailures.push({ url: request.url(), method: request.method(), resourceType: request.resourceType(), failure: request.failure() }));
+    page.on('response', response => attempt.httpResponses.push({ url: response.url(), status: response.status(), resourceType: response.request().resourceType() }));
     await page.addInitScript(() => {
       window.__w048LegacyScrollCalls = [];
       const original = Element.prototype.scrollTo;
@@ -59,8 +70,12 @@ try {
         return original.apply(this, args);
       };
     });
-    await page.goto(app + '#/learning/setup?subject=math-1a');
+    const initialResponse = await page.goto(app + '#/learning/setup?subject=math-1a');
+    attempt.navigationResponse = initialResponse ? { url: initialResponse.url(), status: initialResponse.status() } : null;
+    // Keep the actual app-ready gate. Diagnostic changes must not turn a boot
+    // timeout into a successful fixture by bypassing readiness.
     await page.waitForFunction(() => document.querySelector('a,button,input'));
+    attempt.phase = 'construct-legacy-fixture';
     const fixture = await page.evaluate(async code => {
       const upper = code.toUpperCase();
       const module = await import(`/src/data/textbook/math/numbers/${code}Lesson.ts`);
@@ -88,6 +103,7 @@ try {
         items: Object.fromEntries(current.sections[0].items.map(i => [i.id, { answer: i.answer, choices: getTextbookChoices(current, i) }])) };
     }, code);
     if (!fixture.ready) throw new Unverified(JSON.stringify(fixture));
+    attempt.phase = 'legacy-revision-answer';
     // SPA navigation preserves the deliberately altered in-memory module object.
     await page.evaluate(id => { location.hash = '/learning/textbook/' + id; }, fixture.id);
     await page.getByTestId('textbook-reading-flow').waitFor(); await page.evaluate(() => document.fonts.ready);
@@ -146,6 +162,7 @@ try {
     // Hard reload must restore the original exported current revision. Failure
     // means this fixture cannot establish clean isolation and is not a PASS.
     await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor();
+    attempt.phase = 'reload-restoration';
     const restored = await page.evaluate(async code => {
       const upper = code.toUpperCase(), module = await import(`/src/data/textbook/math/numbers/${code}Lesson.ts`);
       const current = module[`mathNumbers${upper}Unit`];
@@ -156,15 +173,26 @@ try {
     assert.equal(restored.revision, fixture.originalRevision); assert.equal(restored.sameRepositoryObject, true);
     assert.equal(restored.w048Class, 1, 'Reloaded current N13r5/N14r11 must restore current W048 branch');
     assert.deepEqual(errors, []); row.restoredOnReload = restored; row.status = 'PASS_BOUNDED_LEGACY_FIXTURE_NOOP';
+    attempt.phase = 'complete';
     // Keep isolated contexts alive through browser.close for constrained runtimes.
   }
   report.status = 'PASS_BOUNDED_LEGACY_FIXTURE_NOOP';
 } catch (error) {
   report.status = error instanceof Unverified ? 'UNVERIFIED_LEGACY_FIXTURE' : 'FAIL_LEGACY_FIXTURE';
   report.failures.push({ message: error.message, stack: error.stack });
+  // Capture the initial failed page even when no unit fixture row exists yet.
+  if (activeAttempt) {
+    activeAttempt.failure = { message: error.message, stack: error.stack };
+    try { activeAttempt.failureURL = activePage.url(); } catch (diagnosticError) { activeAttempt.urlDiagnosticError = String(diagnosticError); }
+    try { activeAttempt.failureBodyText = await activePage.locator('body').innerText({ timeout: 2000 }); }
+    catch (diagnosticError) { activeAttempt.bodyDiagnosticError = String(diagnosticError); }
+  }
   process.exitCode = 1;
 } finally {
-  if (browser) await browser.close(); if (server) await server.close();
+  for (const [name, resource] of [['browser', browser], ['server', server]]) if (resource) {
+    try { await resource.close(); }
+    catch (error) { (report.cleanupErrors ??= []).push({ name, message: error.message }); }
+  }
   report.afterSourceHashes = Object.fromEntries(sourceFiles.map(p => [p, hash(path.join(root, p))]));
   if (JSON.stringify(report.afterSourceHashes) !== JSON.stringify(beforeHashes)) {
     report.status = 'FAIL_SOURCE_CHANGED'; report.failures.push({ message: 'Read-only source hash boundary changed' }); process.exitCode = 1;

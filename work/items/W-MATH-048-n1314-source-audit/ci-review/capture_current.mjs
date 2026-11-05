@@ -4,6 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
+import { spawnSync } from 'node:child_process';
 const out = process.env.EVIDENCE_DIR, fixturePath = process.env.W048_FIXTURES;
 assert.ok(out && fixturePath && process.env.APP_URL, 'explicit output/fixtures/app URL required');
 const inputs = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
@@ -128,4 +129,26 @@ finally {
   report.images = fs.readdirSync(imageDir).map(name => ({ name, sha256: crypto.createHash('sha256').update(fs.readFileSync(path.join(imageDir, name))).digest('hex') }));
   fs.writeFileSync(path.join(jsonDir, 'BROWSER_REPORT.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ status: report.status, rows: report.results.length, failures: report.failures }));
+}
+
+// Extend the already authorized current-source verification with the remaining
+// bounded R07 probes. The workflow YAML, permissions and publication are unchanged.
+if (report.status === 'PASS_BOUNDED_CURRENT_BUILD_BROWSER') {
+  for (const [name, relative] of [
+    ['N13_EXTENDED', 'ci-review/verify_extended.mjs'],
+    ['SCROLL', 'scroll-review/verify_post_scroll.mjs'],
+    ...(inputs.fixtures.some(f => f.code === 'n14') ? [['N14_EXTENDED', 'ci-review/verify_n14_extended.mjs']] : []),
+  ]) {
+    const target = path.join(out, 'extended-' + name.toLowerCase());
+    fs.mkdirSync(target, { recursive: true });
+    const child = spawnSync(process.execPath, [path.resolve('work/items/W-MATH-048-n1314-source-audit', relative)], {
+      env: { ...process.env, W048_APP_ROOT: process.cwd(), EVIDENCE_DIR: target }, encoding: 'utf8', timeout: 600000,
+    });
+    fs.writeFileSync(path.join(jsonDir, name + '_EXECUTION.json'), JSON.stringify({ status: child.status, error: child.error?.message, stdout: child.stdout, stderr: child.stderr }, null, 2) + '\n');
+    for (const file of fs.readdirSync(target)) {
+      if (file.endsWith('.png')) fs.copyFileSync(path.join(target, file), path.join(imageDir, name + '-' + file));
+      if (file.endsWith('.json')) fs.copyFileSync(path.join(target, file), path.join(jsonDir, name + '-' + file));
+    }
+    if (child.status !== 0 || child.error) { process.exitCode = 1; break; }
+  }
 }

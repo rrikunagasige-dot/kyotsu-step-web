@@ -5,14 +5,14 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 const out=process.env.EVIDENCE_DIR;
-assert.ok(out?.startsWith('/tmp/w048-extended-'),'explicit owned temporary output required');
+assert.ok(out && path.isAbsolute(out) && !path.resolve(out).startsWith(path.resolve('.')+path.sep), 'explicit output outside repository required');
 fs.mkdirSync(out,{recursive:true});
 const input=JSON.parse(fs.readFileSync(process.env.W048_FIXTURES||'/tmp/w048-ci-final/reports/w048-evidence/contracts/BROWSER_FIXTURES.json'));
 const fixture=input.fixtures.find(f=>f.code==='n13');assert.ok(fixture);
 const {unit,legacy,visibleChoices,contract}=fixture, section=unit.sections[0], itemMap=new Map(section.items.map(i=>[i.id,i]));
 const app=process.env.APP_URL||'http://127.0.0.1:4391/kyotsu-step-web/';
-const report={status:'RUNNING',fixtureSourceSHA:input.sourceSHA,scope:'B_CODE_EXTENDED_N13_ONLY_NOT_FORMAL_R07',rows:[],failures:[],limits:['Synthetic old-answer records are seeded into real browser persistence; this is not authentic historical learner data.','No N14/44 partial-slot validation; N14 is not applied.','No old-image baseline comparison, other-mode exhaustive regression, semantic teaching acceptance or formal native R07 packet.','Equal-axis probe measures visible formula starts and computed flex/grid alignment, not mathematical relation-glyph alignment across arbitrary line breaks.','A pointer click and keyboard Enter exercise real browser actionability; exhaustive keyboard tab order and assistive technology audit are not covered.'],images:[]};
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'/tmp/w048-chromium-runtime/chromium',args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--disable-software-rasterizer','--no-zygote','--single-process']});
+const report={status:'RUNNING',fixtureSourceSHA:input.sourceSHA,scope:'B_CODE_EXTENDED_N13_ONLY_NOT_FORMAL_R07',rows:[],failures:[],limits:['Synthetic old-answer records are seeded into real browser persistence; this is not authentic historical learner data.','This script covers N13; N14/44 partial-slot evidence is produced separately by verify_n14_extended.','No old-image baseline comparison, other-mode exhaustive regression, semantic teaching acceptance or formal native R07 packet.','Equal-axis probe measures visible formula starts and computed flex/grid alignment, not mathematical relation-glyph alignment across arbitrary line breaks.','A pointer click and keyboard Enter exercise real browser actionability; exhaustive keyboard tab order and assistive technology audit are not covered.'],images:[]};
+const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--disable-software-rasterizer','--no-zygote','--single-process']});
 const check=(ok,label,data)=>{if(!ok)report.failures.push({label,data});};
 const rec=(i)=>({itemId:i.id,value:i.answer,firstValue:'old-original-wrong',resolved:true,isFirstCorrect:false,attemptCount:3,firstAnsweredAt:111,lastAnsweredAt:222});
 async function load(page,id=unit.unitId){await page.goto(app+'#/learning/textbook/'+id);await page.getByTestId('textbook-reading-flow').waitFor();await page.evaluate(()=>document.fonts.ready);}
@@ -62,7 +62,7 @@ try{
   await shot(page,`n13-${width}-extended-history`);
   // Navigate using actual completion link, then reload both neighboring source units.
   const nextUnit=page.getByTestId('textbook-next-unit');if(await nextUnit.count()){const href=await nextUnit.getAttribute('href');await nextUnit.click();await page.getByTestId('textbook-reading-flow').waitFor();row.navigation.push({method:'actual-next-link',href,url:page.url()});check(page.url().includes('n14'),`${width}/next-N14`,page.url());}else report.limits.push(`${width}: no completion next-unit link found`);
-  for(const neighbor of ['n12','n14']){await load(page,'math-numbers-expressions-'+neighbor);check(await page.locator('.w048-reading-flow').count()===0,`${width}/${neighbor}/no-W048-class`);row.navigation.push({method:'direct-route-smoke',neighbor,url:page.url()});}
+  for(const neighbor of ['n12','n14']){await load(page,'math-numbers-expressions-'+neighbor);const expectedClass=neighbor==='n14'&&input.fixtures.some(f=>f.code==='n14');check((await page.locator('.w048-reading-flow').count()>0)===expectedClass,`${width}/${neighbor}/revision-scoped-W048-class`);row.navigation.push({method:'direct-route-smoke',neighbor,url:page.url()});}
   await load(page);
   // Seed real persisted schema with synthetic metadata; fresh page context keeps user data isolated.
   const storageKey=await page.evaluate(()=>Object.keys(localStorage).find(k=>{try{return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress)}catch{return false}}));assert.ok(storageKey);

@@ -1,0 +1,328 @@
+// B authored this bounded verification script, not the textbook or its product patch.
+// Root runs CODE once. This script never writes product source or native Store/Git.
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+
+const root = path.resolve(process.env.W048_APP_ROOT || process.cwd());
+const require = createRequire(path.join(root, 'package.json'));
+const { chromium } = require('@playwright/test');
+const { createServer } = await import(require.resolve('vite'));
+const out = process.env.EVIDENCE_DIR;
+assert.ok(out && path.isAbsolute(out), 'Explicit absolute temporary evidence output required');
+const resolvedOut = path.resolve(out);
+// CI may place evidence under RUNNER_TEMP. Refuse any repository-owned path,
+// including source/Store/Work, regardless of the chosen temporary root.
+assert.ok(resolvedOut !== root && !resolvedOut.startsWith(root + path.sep), 'Evidence output must be outside the repository');
+assert.ok(!root.startsWith(resolvedOut + path.sep), 'Evidence output must not contain the repository');
+assert.ok(process.env.W048_FIXTURES && process.env.APP_URL, 'Current fixtures and built-app URL required');
+fs.mkdirSync(out, { recursive: true });
+const input = JSON.parse(fs.readFileSync(process.env.W048_FIXTURES, 'utf8'));
+if (process.env.CANDIDATE_SHA) assert.equal(input.sourceSHA, process.env.CANDIDATE_SHA);
+const f = input.fixtures.find(x => x.code === 'n14');
+assert.ok(f, 'N14 must be formally applied and eligible in verify_current fixtures');
+const { unit, legacy, contract, visibleChoices } = f;
+assert.equal(unit.revision, 11); assert.equal(legacy.revision, 10);
+const section = unit.sections[0], flow = section.readingFlow;
+const items = new Map(section.items.map(i => [i.id, i]));
+assert.equal(items.size, 41, 'Approved N14 has 41 judgments');
+const record = i => ({ itemId: i.id, value: i.answer, firstValue: 'old-wrong-first', resolved: true,
+  isFirstCorrect: false, attemptCount: 3, firstAnsweredAt: 111, lastAnsweredAt: 222 });
+const slotsOf = b => (b.parts || []).filter(p => p.type === 'choice').map(p => p.itemId);
+const multi = flow.map((block, index) => ({ block, index, slots: slotsOf(block) })).filter(x => x.slots.length > 1);
+assert.equal(multi.reduce((n, x) => n + 2 ** x.slots.length, 0), 44, 'Includes completed masks, not three-state permutations');
+const expectedNumbers = Object.values(contract.equationNumbers).sort((a, b) => a - b);
+assert.equal(expectedNumbers.length, 20);
+const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const report = { schemaVersion: 'w048-n14-browser-extended/1', status: 'RUNNING', sourceSHA: input.sourceSHA,
+  author: 'B: verification script only; textbook/product author separation retained',
+  scope: 'Applied N14 r11 extra R07 evidence; root separately runs all-displayed-wrong-choice capture_current',
+  actualProductHashes: Object.fromEntries(['src/pages/TextbookUnitPage.tsx', 'src/domain/textbook.ts',
+    'src/data/textbook/math/numbers/n13Lesson.ts', 'src/data/textbook/math/numbers/n14Lesson.ts'].map(p => [p, sha(path.join(root, p))])),
+  rows: [], failures: [], images: [], limits: [
+    'Binary masks mean resolved/unanswered per same-row slot; wrong/resolved/unanswered Cartesian products are not claimed.',
+    'The 44 masks are rendered state snapshots; clicking every remaining slot from every mask is not exhaustively covered.',
+    'later-row-withheld checks unresolved choice buttons only; it does not exhaustively inspect future static prose or completed-formula answer leakage.',
+    'Old saves and partial masks are synthetic records seeded into real browser persistence, never user data.',
+    'Independent seed-record/archive assertions and the approved re-key allowlist are primary old-save checks. SSR actual effectiveTextbookProgress is supplementary, not an independent migration oracle.',
+    'Formula-start/computed alignment is bounded geometry, not proof of all relation-glyph positions or visual teaching quality.',
+    'N14 is the last numbers unit: existing catalog has no next-chapter link. Test actual return-to-setup and written quadratic-function bridge.',
+    'No hosted-source, user acceptance, semantic review, all-mode regression, or native R07 PASS is created by this script.'
+  ] };
+function check(ok, label, detail) { if (!ok) report.failures.push({ label, detail }); }
+
+// Explicitly approved old-key reopening boundaries, read from the existing
+// W003/P004, W003/P004-R2 and W018/W019/W020/W022 migrations. This constant is
+// independent of the migration function used by the browser under test.
+const approvedReopens = revision => new Set([
+  ...(revision <= 1 ? ['n14-06', 'n14-11'] : []),
+  ...(revision <= 6 ? ['n14-10'] : []),
+  ...(revision <= 7 ? ['n14-14'] : []),
+  ...(revision <= 8 ? ['n14-15'] : []),
+  ...(revision <= 9 ? ['n14-16'] : []),
+]);
+// Retain real-domain expectations only as a supplemental consistency check.
+// The browser must separately satisfy the seed-based invariants below.
+const ssr = await createServer({ root, configFile: false, server: { middlewareMode: true },
+  optimizeDeps: { noDiscovery: true, include: [] }, appType: 'custom' });
+const migrationCases = [];
+try {
+  const { effectiveTextbookProgress } = await ssr.ssrLoadModule('/src/domain/textbook.ts');
+  for (let revision = 1; revision <= legacy.revision; revision++) for (const completed of [false, true]) {
+    const seed = { unitId: unit.unitId, unitRevision: revision, startedAt: 11, updatedAt: 22,
+      answers: Object.fromEntries(legacy.sections[0].items.map(i => [i.id, record(i)])),
+      archivedRevisions: { 'audit-sentinel': { unitRevision: 1, startedAt: 1, updatedAt: 2, answers: {} } },
+      ...(completed ? { completedAt: 33 } : {}) };
+    const expected = effectiveTextbookProgress(unit, seed);
+    assert.ok(expected && expected.unitRevision === 11 && expected.completedAt === undefined);
+    assert.deepEqual(effectiveTextbookProgress(unit, expected), expected, 'Actual domain migration is idempotent');
+    migrationCases.push({ revision, completed, seed, expected });
+  }
+} finally { await ssr.close(); }
+
+const browser = await chromium.launch({ headless: true,
+  ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {}),
+  args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+try {
+  for (const width of [320, 390, 430, 1440]) {
+    const context = await browser.newContext({ viewport: { width, height: 1000 } });
+    const page = await context.newPage(); page.setDefaultTimeout(15000);
+    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    const row = { width, answered: [], figures: [], measurements: [], masks: [], saves: [], navigation: [], images: [] };
+    report.rows.push(row);
+    const route = id => process.env.APP_URL + '#/learning/textbook/' + id;
+    const ids = () => page.locator('button[data-testid^="textbook-item-"]:visible').evaluateAll(ns => ns.map(n => n.dataset.testid.slice('textbook-item-'.length)));
+    async function open(id = unit.unitId) {
+      await page.goto(route(id)); await page.getByTestId('textbook-reading-flow').waitFor(); await page.evaluate(() => document.fonts.ready);
+    }
+    async function nextUntilPending() {
+      for (let n = 0; n < 100; n++) {
+        const pending = await ids(); if (pending.length) return pending;
+        const next = page.getByTestId('math-textbook-next-stage'); if (!await next.count()) return [];
+        await next.click();
+      }
+      throw Error('Compact-stage traversal exceeded bound');
+    }
+    async function expandHistory() {
+      const toggle = page.getByTestId('math-textbook-history-toggle');
+      if (await toggle.count()) {
+        if (await toggle.getAttribute('aria-expanded') !== 'true') await toggle.click();
+        const all = page.getByTestId('math-textbook-expand-all');
+        if (await all.count() && await all.getAttribute('aria-expanded') !== 'true') await all.click();
+      }
+    }
+    async function choose(id, value, keyboard = false) {
+      await page.getByTestId('textbook-item-' + id).click();
+      const panel = page.getByTestId('inline-choice-panel-' + id); await panel.waitFor();
+      const option = panel.getByRole('button', { name: value, exact: true });
+      if (keyboard) { await option.focus(); await page.keyboard.press('Enter'); } else await option.click();
+      await panel.waitFor({ state: 'detached' });
+      await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+    }
+    async function image(name) {
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      await page.screenshot({ path: path.join(out, name + '.png'), fullPage: true }); row.images.push(name + '.png');
+    }
+    async function measure(label) {
+      const data = await page.getByTestId('textbook-reading-flow').evaluate(root => {
+        const shown = e => Boolean(e.getClientRects().length), box = e => {
+          const b = e.getBoundingClientRect(); return { left: b.left, right: b.right, top: b.top, bottom: b.bottom }; };
+        const formulas = [...root.querySelectorAll('.reading-formula-line')].filter(shown).map(e => {
+          const x = e.querySelector('.reading-formula-expression'), m = x?.querySelector('.katex-html');
+          return { id: e.dataset.testid, font: getComputedStyle(e).fontSize,
+            katex: [...e.querySelectorAll('.katex')].map(k => getComputedStyle(k).fontSize),
+            derivation: e.closest('[data-derivation-id]')?.dataset.derivationId,
+            justify: x && getComputedStyle(x).justifyContent, justifyItems: x && getComputedStyle(x).justifyItems,
+            firstMath: m && box(m), expression: x && box(x), scrollLeft: e.scrollLeft };
+        });
+        const numbers = [...root.querySelectorAll('[data-equation-number]')].filter(shown).map(e => {
+          const l = e.querySelector('.numbered-equation-label'), label = l && box(l);
+          return { number: Number(e.dataset.equationNumber), label,
+            formulaIds: [...e.querySelectorAll('[data-testid^="textbook-formula-"]')].map(n => n.dataset.testid.slice('textbook-formula-'.length)),
+            collision: label && [...e.querySelectorAll('.katex-html,button')].filter(shown).some(n => {
+              const b = box(n); return b.left < label.right && b.right > label.left && b.top < label.bottom && b.bottom > label.top;
+            }) };
+        });
+        return { overflow: document.documentElement.scrollWidth > innerWidth + 1,
+          katexErrors: root.querySelectorAll('.katex-error').length, formulas, numbers,
+          optionFonts: [...root.querySelectorAll('.reading-choice-option>strong')].filter(shown).map(e => ({
+            font: getComputedStyle(e).fontSize, katex: [...e.querySelectorAll('.katex')].map(k => getComputedStyle(k).fontSize) })) };
+      });
+      check(!data.overflow && data.katexErrors === 0, `${width}/${label}/overflow-katex`, data);
+      for (const f of data.formulas) {
+        check(f.font === '18px' && f.katex.every(s => s === '18px'), `${width}/${label}/formula18`, f);
+        if (f.derivation) check(f.justify === 'flex-start' && f.justifyItems === 'start', `${width}/${label}/derivation-alignment`, f);
+      }
+      for (const f of data.optionFonts) check(f.font === '18px' && f.katex.every(s => s === '18px'), `${width}/${label}/option18`, f);
+      const numbers = new Set();
+      for (const n of data.numbers) {
+        check(!numbers.has(n.number), `${width}/${label}/duplicate-number`, n); numbers.add(n.number);
+        check(n.formulaIds.length === 1 && contract.equationNumbers[n.formulaIds[0]] === n.number, `${width}/${label}/numbered-final-row`, n);
+        check(n.label && !n.collision && n.label.left >= -1 && n.label.right <= width + 1, `${width}/${label}/number-placement`, n);
+      }
+      row.measurements.push({ label, ...data }); return data;
+    }
+    // Revealed history is included when checking figure timing; collapsed past
+    // stages must not be mistaken for a missing source figure.
+    async function figures(label, solved) {
+      await expandHistory();
+      const expected = flow.filter(b => b.type === 'figure' &&
+        flow.slice(0, flow.indexOf(b)).flatMap(slotsOf).every(id => solved.has(id)))
+        .map(b => section.figures.find(f => f.id === b.figureId).src);
+      const actual = await page.getByTestId('textbook-reading-flow').locator('img:visible').evaluateAll(ns => ns.map(e => e.getAttribute('src')));
+      check(JSON.stringify([...new Set(actual)].sort()) === JSON.stringify([...new Set(expected)].sort()), `${width}/${label}/source-figure-gate`, { expected, actual });
+      row.figures.push({ label, expected, actual });
+    }
+    await open();
+    let storageKey = await page.evaluate(() => Object.keys(localStorage).find(k => {
+      try { return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress); } catch { return false; }
+    }));
+    // Store may not have persisted an untouched page yet. The first real answer
+    // creates its normal persistence; no invented storage key is used.
+    const solved = new Set();
+    for (let guard = 0; guard < 100; guard++) {
+      const pending = await nextUntilPending(); if (!pending.length) break;
+      const id = pending[0], item = items.get(id); assert.ok(item && !solved.has(id));
+      await figures(id + '-before', solved);
+      await measure(id + '-before');
+      await page.getByTestId('textbook-item-' + id).click();
+      await page.getByTestId('inline-choice-panel-' + id).waitFor(); await measure(id + '-options');
+      // choose() reselects this same target; it does not rely on a toggle-close.
+      await choose(id, item.answer, solved.size % 2 === 1); solved.add(id); row.answered.push(id);
+      await measure(id + '-resolved');
+    }
+    check(row.answered.length === 41, `${width}/all41-real-answers`, row.answered);
+    await nextUntilPending(); await expandHistory(); await figures('complete', solved);
+    const full = await measure('complete-expanded-history');
+    check(JSON.stringify(full.numbers.map(n => n.number).sort((a, b) => a - b)) === JSON.stringify(expectedNumbers), `${width}/all20-equation-numbers`, full.numbers);
+    check(await page.getByTestId('textbook-reading-flow').innerText().then(t => t.includes('二次関数')), `${width}/written-next-chapter-bridge`);
+    await image(`n14-${width}-complete-history`);
+    await page.getByTestId('textbook-unit-complete').waitFor();
+    check(await page.getByTestId('textbook-next-unit').count() === 0, `${width}/N14-no-invented-next-unit`);
+    const returnLink = page.getByTestId('textbook-return-to-setup');
+    const returnHref = await returnLink.getAttribute('href'); await returnLink.click();
+    row.navigation.push({ kind: 'N14-terminal-return', href: returnHref, actualURL: page.url() });
+    check(page.url().includes(returnHref.replace(/^#/, '')), `${width}/return-to-setup-route`, { returnHref, url: page.url() });
+    await open();
+    storageKey = await page.evaluate(() => Object.keys(localStorage).find(k => {
+      try { return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress); } catch { return false; }
+    })); assert.ok(storageKey, 'Find actual persisted schema');
+    const sentinel = { unitId: 'w048-n14-extended-sentinel', unitRevision: 1, startedAt: 77, updatedAt: 88, answers: {} };
+    async function seed(progress, otherUnit) {
+      await page.evaluate(({ key, progress, sentinel, otherUnit }) => {
+        const value = JSON.parse(localStorage.getItem(key));
+        value.state.textbookProgress[progress.unitId] = progress;
+        value.state.textbookProgress[sentinel.unitId] = sentinel;
+        if (otherUnit) value.state.textbookProgress[otherUnit.unitId] = otherUnit;
+        localStorage.setItem(key, JSON.stringify(value));
+        for (const k of Object.keys(localStorage)) if (k.startsWith('math-textbook-compact-v1:')) localStorage.removeItem(k);
+      }, { key: storageKey, progress, sentinel, otherUnit });
+      await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor(); await page.evaluate(() => document.fonts.ready);
+    }
+    // All 44 same-row binary masks, including all-complete. Test DOM row
+    // membership/independence and withheld future rows before expanding history.
+    for (const { block, index, slots } of multi) for (let mask = 0; mask < 2 ** slots.length; mask++) {
+      const prior = flow.slice(0, index).flatMap(slotsOf);
+      const answers = Object.fromEntries(prior.map(id => [id, record(items.get(id))]));
+      slots.forEach((id, bit) => { if (mask & (1 << bit)) answers[id] = record(items.get(id)); });
+      await seed({ unitId: unit.unitId, unitRevision: 11, startedAt: 11, updatedAt: 22, answers });
+      await nextUntilPending();
+      const missing = slots.filter((id, bit) => !(mask & (1 << bit))), allPending = await ids();
+      const visibleCurrent = allPending.filter(id => slots.includes(id));
+      check(JSON.stringify(visibleCurrent) === JSON.stringify(missing), `${width}/${block.id}/mask${mask}/independent-missing-slots`, { slots, missing, allPending });
+      if (missing.length) check(allPending.every(id => slots.includes(id)), `${width}/${block.id}/mask${mask}/later-row-withheld`, allPending);
+      await expandHistory();
+      const formula = page.getByTestId('textbook-formula-' + block.id); await formula.waitFor();
+      const completed = [];
+      for (const [bit, id] of slots.entries()) if (mask & (1 << bit)) {
+        const count = await formula.getByTestId('resolved-' + id).count();
+        check(count === 1, `${width}/${block.id}/mask${mask}/${id}/resolved-in-same-row`, count); completed.push(id);
+      }
+      await measure(block.id + '-mask' + mask);
+      row.masks.push({ block: block.id, mask, slots, missing, completed, allPending });
+      if (width === 320 && (mask === 0 || mask === 5 || mask === 2 ** slots.length - 1) && slots.length === 3) await image(`n14-${width}-${block.id}-mask${mask}`);
+    }
+    check(row.masks.length === 44, `${width}/all44-binary-masks`, row.masks.length);
+    // Old revision chains retain the real migration's intentional reopening.
+    // Compare every pre-existing answer record and archive after a real click.
+    for (const test of migrationCases) {
+      await seed(test.seed); const pending = await nextUntilPending();
+      assert.ok(pending.length); const first = pending[0];
+      check(!test.expected.answers[first]?.resolved, `${width}/r${test.revision}/${test.completed}/expected-unresolved-first`, { first });
+      check(first === 'n14-w048-q03-region', `${width}/r${test.revision}/${test.completed}/first-new-region`, { first });
+      await choose(first, items.get(first).answer);
+      const state = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).state.textbookProgress, storageKey);
+      const actual = state[unit.unitId], expected = test.expected;
+      check(actual.unitRevision === 11 && actual.completedAt === undefined, `${width}/r${test.revision}/${test.completed}/revision-open`, actual);
+      const allowedReopens = approvedReopens(test.revision);
+      // Independent oracle: every un-rekeyed old record must match the original
+      // seed exactly, including firstValue/attemptCount/timestamps. Only the
+      // explicitly approved old keys may be removed, and they must reopen.
+      for (const [id, original] of Object.entries(test.seed.answers)) {
+        if (allowedReopens.has(id)) {
+          check(actual.answers[id] === undefined, `${width}/r${test.revision}/${test.completed}/${id}/approved-old-key-reopened`, actual.answers[id]);
+        } else {
+          check(JSON.stringify(actual.answers[id]) === JSON.stringify(original), `${width}/r${test.revision}/${test.completed}/${id}/independent-seed-record-preserved`, { original, actual: actual.answers[id] });
+        }
+      }
+      for (const [revision, originalArchive] of Object.entries(test.seed.archivedRevisions)) {
+        check(JSON.stringify(actual.archivedRevisions?.[revision]) === JSON.stringify(originalArchive), `${width}/r${test.revision}/${test.completed}/${revision}/independent-original-archive-preserved`, { original: originalArchive, actual: actual.archivedRevisions?.[revision] });
+      }
+      const originArchive = actual.archivedRevisions?.[String(test.revision)];
+      check(originArchive && JSON.stringify(originArchive.answers) === JSON.stringify(test.seed.answers), `${width}/r${test.revision}/${test.completed}/independent-origin-answer-archive`, { expected: test.seed.answers, actual: originArchive?.answers });
+      for (const key of ['unitRevision', 'startedAt', 'updatedAt', 'completedAt']) {
+        check(originArchive?.[key] === test.seed[key], `${width}/r${test.revision}/${test.completed}/independent-origin-archive-${key}`, { expected: test.seed[key], actual: originArchive?.[key] });
+      }
+      if (test.revision === 10) {
+        const { archivedRevisions: originalArchives, ...originalR10 } = test.seed;
+        check(Object.keys(test.seed.answers).length === 38 && allowedReopens.size === 0, `${width}/r10/${test.completed}/38-old-records-no-rekey`);
+        check(JSON.stringify(actual.archivedRevisions?.['10']) === JSON.stringify(originalR10), `${width}/r10/${test.completed}/independent-exact-r10-archive`, { original: originalR10, actual: actual.archivedRevisions?.['10'] });
+        check(Object.entries(originalArchives).every(([key, archive]) => JSON.stringify(actual.archivedRevisions?.[key]) === JSON.stringify(archive)), `${width}/r10/${test.completed}/independent-exact-original-archives`);
+      }
+      for (const [id, answer] of Object.entries(expected.answers)) check(JSON.stringify(actual.answers[id]) === JSON.stringify(answer), `${width}/r${test.revision}/${test.completed}/${id}/original-metadata`, { expected: answer, actual: actual.answers[id] });
+      check(JSON.stringify(actual.archivedRevisions) === JSON.stringify(expected.archivedRevisions), `${width}/r${test.revision}/${test.completed}/archive-chain`, { expected: expected.archivedRevisions, actual: actual.archivedRevisions });
+      check(actual.previousRevisionCompletedAt === expected.previousRevisionCompletedAt, `${width}/r${test.revision}/${test.completed}/old-completion`, actual.previousRevisionCompletedAt);
+      const added = section.items.filter(i => !legacy.sections[0].items.some(j => j.id === i.id)).map(i => i.id);
+      check(added.filter(id => id !== first).every(id => actual.answers[id] === undefined), `${width}/r${test.revision}/${test.completed}/later-new-unanswered`, added);
+      check(JSON.stringify(state[sentinel.unitId]) === JSON.stringify(sentinel), `${width}/r${test.revision}/${test.completed}/other-unit-kept`, state[sentinel.unitId]);
+      await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor();
+      const afterReload = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).state.textbookProgress[unit.unitId], storageKey);
+      check(JSON.stringify(afterReload) === JSON.stringify(actual), `${width}/r${test.revision}/${test.completed}/reload-idempotent`);
+      row.saves.push({ revision: test.revision, completed: test.completed, pending, preservedOldAnswers: Object.keys(test.seed.answers).length - allowedReopens.size, approvedReopenedIds: [...allowedReopens], independentSeedAndArchiveAssertions: true, firstRealAnswer: first });
+    }
+    page.once('dialog', d => d.accept());
+    await page.getByRole('button', { name: 'この単元を最初から', exact: false }).last().click();
+    await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor();
+    check((await nextUntilPending()).includes('n14-01'), `${width}/explicit-reset-first-question`);
+    const resetState = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).state.textbookProgress, storageKey);
+    check(JSON.stringify(resetState[sentinel.unitId]) === JSON.stringify(sentinel), `${width}/reset-other-unit-kept`);
+    row.reset = { firstPending: await ids(), currentProgress: resetState[unit.unitId] ?? null };
+    await image(`n14-${width}-reset`);
+    // N13 -> N14 must use the actual existing completion link, not a direct-route
+    // smoke labelled as a transition. Seed only this isolated context.
+    const previous = input.fixtures.find(x => x.code === 'n13'); assert.ok(previous, 'N13 fixture for real predecessor transition');
+    const previousUnit = previous.unit;
+    const previousProgress = { unitId: previousUnit.unitId, unitRevision: previousUnit.revision, startedAt: 1, updatedAt: 2,
+      completedAt: 3, answers: Object.fromEntries(previousUnit.sections[0].items.map(i => [i.id, record(i)])) };
+    await seed({ unitId: unit.unitId, unitRevision: 11, startedAt: 11, updatedAt: 22, answers: {} }, previousProgress);
+    await open(previousUnit.unitId); await nextUntilPending();
+    const nextLink = page.getByTestId('textbook-next-unit'); await nextLink.waitFor();
+    const nextHref = await nextLink.getAttribute('href'); await nextLink.click(); await page.getByTestId('textbook-reading-flow').waitFor();
+    row.navigation.push({ kind: 'N13-completion-to-N14', href: nextHref, actualURL: page.url() });
+    check(page.url().includes(unit.unitId) && (await ids()).includes('n14-01'), `${width}/actual-N13-N14-transition`, { nextHref, url: page.url(), pending: await ids() });
+    check(errors.length === 0, `${width}/uncaught-page-errors`, errors);
+    // Retain contexts until browser.close; constrained --single-process browsers
+    // can terminate if a context is closed during a multi-width run.
+  }
+  report.status = report.failures.length ? 'FAIL_N14_EXTENDED' : 'PASS_BOUNDED_N14_EXTENDED';
+} catch (error) {
+  report.status = 'FAIL_N14_EXTENDED'; report.failures.push({ label: 'probe-execution', message: error.message, stack: error.stack });
+} finally {
+  await browser.close();
+  report.images = fs.readdirSync(out).filter(n => n.endsWith('.png')).map(name => ({ name, sha256: sha(path.join(out, name)) }));
+  fs.writeFileSync(path.join(out, 'N14_EXTENDED_REPORT.json'), JSON.stringify(report, null, 2) + '\n');
+  console.log(JSON.stringify({ status: report.status, rows: report.rows.map(r => ({ width: r.width, answers: r.answered.length, masks: r.masks.length, saves: r.saves.length })), failures: report.failures.length, firstFailures: report.failures.slice(0, 3), output: out }));
+  if (report.status.startsWith('FAIL')) process.exitCode = 1;
+}

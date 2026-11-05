@@ -139,3 +139,94 @@ jobs:
           git diff --cached --quiet && exit 0
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N04-Q01 marked screenshots [review only]'
           git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+
+
+  # W-MATH-017/P-003 — reuse W-GOV-008's exact-SHA, numbered in-app Gate① method.
+  # Only this review PR. Never publish Pages, merge main or change learner progress.
+  n14-wmath018-q10-authentic-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.head_ref, 'work/W-MATH-017-p003-inline-prose-correction-') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_WM018_GATE1: '1'
+      E2E_USE_PREVIEW: '1'
+      TARGET_BRANCH: ${{ github.head_ref }}
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Avoid re-capturing evidence-only PR head (prevents recursion)
+        id: need
+        shell: bash
+        run: |
+          if git log -1 --format=%s | grep -q '^Store genuine N14 Q10 P002 Gate1 images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Capture actual numbered learner decisions (320/390/1440px)
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath018-n14-q10-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Preserve raw screenshot artifact even on test failure
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath018-q10-real-gate1-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit real screenshot sheet to independent PR branch only
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-018-n14-q10-three-sided-inequality/evidence/p002-gate1"
+          mkdir -p "$dir"
+          cp e2e-evidence/p002-* "$dir/"
+          {
+            printf '# W-MATH-018/P-002 — N14 Q10 スマホ横切れ修正・実アプリ細部確認\n\n'
+            printf '描画した実教材コードの完全SHA: %s\n\n' "$CAPTURE_SHA"
+            printf 'GitHub Actions Chromiumで実画面操作。320/390pxでは第2式の内側scrollWidth、全ての未回答穴の表示領域、幅と高さ、誤答後の↻も検査。1440pxは従来表示を保つ。図面やモックではありません。\n\n'
+            printf '## 通常の学習画面（確認用の黄色い枠なし）\n\n'
+            for part in left-before addition-2-before addition-3-before left-bound-before right-bound-before final; do
+              printf '### %s\n\n![実際の教材 %s 390px](p002-normal-%s-390.png)\n\n[320px](p002-normal-%s-320.png) ・ [PC1440px](p002-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
+            done
+            printf '## 今回だけの変更箇所・確認①〜③\n\n'
+            printf '**確認①：** 三辺に同じ数を足す第2式の中に3つの穴が並ぶ。\n\n'
+            printf '**確認②：** 三辺に同じ数を足す理由は第2式を解いた後、第3式の前に出る。\n\n'
+            printf '**確認③：** 最終行の左端と右端は、それぞれ独立した数値穴になる。\n\n'
+            for i in 1 2 3 4 5; do
+              printf '### 解答小操作 %s\n\n' "$i"
+              for state in before wrong resolved; do
+                printf '**%s**\n\n![操作%s %s 390px](p002-review-%s-%s-390.png)\n\n[320px](p002-review-%s-%s-320.png) ・ [PC1440px](p002-review-%s-%s-1440.png)\n\n' "$state" "$i" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
+              done
+            done
+            printf 'N14 Q07/Q08/Q12とN11 P006/P007/P008は既に細部承認済み。今回の確認はN14 Q10のみであり、Gate②横断監査とGate③全体総チェックとは別です。\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q10 P002 Gate1 images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi

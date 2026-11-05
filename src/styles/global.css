@@ -1349,3 +1349,39 @@ button.math-theme-link {
   font-weight: 650;
 }
 .n12-restart-top:focus-visible { outline: 3px solid var(--focus-ring); }
+
+
+/* W-MATH-018/P-003: preserve the canonical full-size blue '選択' / red '×'
+   formula buttons. On narrow screens, show ONLY N14 Q10's second logical
+   equation as a two-row visual continuation, without changing any DOM parts. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] {
+    padding-inline: 0;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: .16rem;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression > :nth-child(5) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression > :nth-child(6) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}

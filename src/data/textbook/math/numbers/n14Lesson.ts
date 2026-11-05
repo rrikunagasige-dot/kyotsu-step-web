@@ -6,6 +6,7 @@ export const n14SourceToItemIds = oneToOneSourceMap('N14', 16)
 n14SourceToItemIds['N14-Q07'] = ['n14-wm014-q07-nonnegative', 'n14-wm014-q07-negative', 'n14-07']
 n14SourceToItemIds['N14-Q08'] = ['n14-wm015-q08-nonnegative', 'n14-wm015-q08-negative', 'n14-08']
 n14SourceToItemIds['N14-Q12'] = ['n14-wm016-q12-left', 'n14-wm016-q12-right', 'n14-12']
+n14SourceToItemIds['N14-Q10'] = ['n14-wm018-q10-add-left', 'n14-wm018-q10-add-center', 'n14-wm018-q10-add-right', 'n14-10', 'n14-wm018-q10-bound-right']
 const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
@@ -240,8 +241,75 @@ const content = {
     ...q08Content.items.slice(oldQ12Index),
   ],
 }
+
+// W-MATH-018/P-001: N14 original Q10 is a three-sided algebra chain.
+// Existing Q07/Q08/Q12 branches, N14 figure and original Q09/Q11 stay intact.
+const q10Start = content.readingFlow.findIndex(b => b.id === 'n14-lead-10')
+const q10After = content.readingFlow.findIndex(b => b.id === 'n14-after-10')
+const q09After = content.readingFlow.findIndex(b => b.id === 'n14-after-09')
+const q11Lead = content.readingFlow.findIndex(b => b.id === 'n14-lead-11')
+const oldQ10Index = content.items.findIndex(item => item.id === 'n14-10')
+if (q09After < 0 || q10Start !== q09After + 1 || q10After !== q10Start + 2
+  || q11Lead !== q10After + 1 || oldQ10Index < 0) {
+  throw new Error('N14 Q09→Q10→Q11 approved Word boundaries changed')
+}
+const q10Flow: TextbookReadingBlock[] = [
+  { id: 'n14-lead-10', type: 'formula', derivationId: 'n14-q10-chain', parts: [
+    M('-5<x-3<5'),
+  ] },
+  { id: 'n14-formula-10', type: 'formula', derivationId: 'n14-q10-chain', parts: [
+    M('-5+'), C('n14-wm018-q10-add-left'),
+    M('<x-3+'), C('n14-wm018-q10-add-center'),
+    M('<5+'), C('n14-wm018-q10-add-right'),
+  ] },
+  { id: 'n14-wm018-q10-explain', type: 'paragraph', derivationId: 'n14-q10-chain', parts: [
+    T('三辺に同じ数を足しても、二つの不等号の向きは変わらない。真ん中の−3と＋3が打ち消し合い、xだけが残る。'),
+  ] },
+  { id: 'n14-wm018-q10-result', type: 'formula', derivationId: 'n14-q10-chain', parts: [
+    C('n14-10'), M('<x<'), C('n14-wm018-q10-bound-right'),
+  ] },
+  content.readingFlow[q10After], // keep original Q10 transition outside chain
+]
+const q10LeftItem: TextbookItem = reviewItem(
+  'n14-wm018-q10-add-left', '左端−5に足す数を選ぼう。',
+  '3', 'formula', ['-3', '2', '5'], 'causal-reasoning', 'light',
+  ['中央の−3を打ち消す操作を、左端にも行おう。'],
+)
+const q10CenterItem: TextbookItem = reviewItem(
+  'n14-wm018-q10-add-center', '真ん中のx−3の定数を打ち消す数を選ぼう。',
+  '3', 'formula', ['-3', '0', '5'], 'causal-reasoning', 'light',
+  ['負の定数を打ち消すには、符号が逆の数を足す。'],
+)
+const q10RightItem: TextbookItem = reviewItem(
+  'n14-wm018-q10-add-right', '右端5にも同じ数を足そう。',
+  '3', 'formula', ['-3', '-5', '2'], 'causal-reasoning', 'light',
+  ['左端と真ん中に使った加える数にそろえる。'],
+)
+const q10LowerItem: TextbookItem = reviewItem(
+  'n14-10', '左端の−5と加えた数を計算しよう。',
+  '-2', 'formula', ['2', '-8', '-5'], 'causal-reasoning', 'light',
+  ['−5に正の数を足したときの位置を数直線で考える。'],
+)
+const q10UpperItem: TextbookItem = reviewItem(
+  'n14-wm018-q10-bound-right', '右端の5と加えた数を計算しよう。',
+  '8', 'formula', ['2', '5', '-8'], 'causal-reasoning', 'light',
+  ['5から正の方向へ動いた結果を計算する。'],
+)
+const q10Content = {
+  readingFlow: [
+    ...content.readingFlow.slice(0, q10Start),
+    ...q10Flow,
+    ...content.readingFlow.slice(q10After + 1),
+  ],
+  items: [
+    ...content.items.slice(0, oldQ10Index),
+    q10LeftItem, q10CenterItem, q10RightItem, q10LowerItem, q10UpperItem,
+    ...content.items.slice(oldQ10Index + 1),
+  ],
+}
+
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:6,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:7,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',
@@ -250,6 +318,6 @@ const rawN14={
   sections:[{id:'lesson',number:'14',title:'本文',role:'concept' as const,
     description:'範囲の意味から変形し、元の条件へ戻して検算する。',
     figures:[{id:'n14-f01',src:'/assets/math/textbook/numbers/n14-f01.png',alt:'距離が3より小さい範囲と4以上の範囲を上下で比較した、解答後確認用の元図。',caption:'二つの範囲を導いた後で、内側と外側を図で比較する。',overlays:[]}],
-    readingFlow:content.readingFlow,items:content.items}],
+    readingFlow:q10Content.readingFlow,items:q10Content.items}],
 }
 export const mathNumbersN14Unit=validateTextbookUnits([rawN14])[0]

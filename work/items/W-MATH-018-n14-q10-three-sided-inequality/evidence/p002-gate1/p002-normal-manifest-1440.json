@@ -1,0 +1,32 @@
+{
+  "sha": "857127cba2351054a1070b65b10cda2a56d64209",
+  "width": 1440,
+  "source": "N14-Q10",
+  "steps": [
+    {
+      "id": "n14-wm018-q10-add-left",
+      "answer": "3",
+      "mark": "n14-formula-10"
+    },
+    {
+      "id": "n14-wm018-q10-add-center",
+      "answer": "3",
+      "mark": "n14-formula-10"
+    },
+    {
+      "id": "n14-wm018-q10-add-right",
+      "answer": "3",
+      "mark": "n14-formula-10"
+    },
+    {
+      "id": "n14-10",
+      "answer": "-2",
+      "mark": "n14-wm018-q10-result"
+    },
+    {
+      "id": "n14-wm018-q10-bound-right",
+      "answer": "8",
+      "mark": "n14-wm018-q10-result"
+    }
+  ]
+}

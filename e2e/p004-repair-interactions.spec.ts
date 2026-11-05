@@ -107,7 +107,20 @@ for (const [n, id] of repaired) {
         }
         await correct.click()
         await expect(page.getByTestId('resolved-' + item.id)).toBeVisible()
-        if (item.id === id && (r5Ids.has(id) || ['n11-13', 'n14-14', 'n14-15'].includes(id))) {
+        if (item.id === id && id === 'n11-13') {
+          // W-MATH-017/P-008 supersedes P-004/R4's completed two-line
+          // operation+inequality card ONLY for N11-Q13. The currently graded
+          // result is the coefficient 6 inside the final inequality; its four
+          // local decisions have their own dedicated real Chromium test.
+          // Preserve this original wrong/hint/retry + mobile screenshot test.
+          const localAnswer = page.getByTestId('resolved-' + id)
+          await expect(localAnswer).toBeVisible()
+          const size = await localAnswer.evaluate(element =>
+            [element.scrollWidth, element.clientWidth])
+          expect(size[0], 'P-008 Q13 coefficient answer clipped at ' + width + 'px')
+            .toBeLessThanOrEqual(size[1] + 1)
+        }
+        if (item.id === id && (r5Ids.has(id) || ['n14-14', 'n14-15'].includes(id))) {
           // P-004-R4: the 320/390px *resolved* white formula card must
           // show operation and inequality as two distinct, fully readable rows.
           const answer = page.getByTestId('resolved-' + id)

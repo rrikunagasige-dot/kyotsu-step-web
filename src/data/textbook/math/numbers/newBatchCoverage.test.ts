@@ -1,3 +1,5 @@
+import './wMath017ProseIntegration.test'
+import './wMath018P001.test'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -46,7 +48,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 6 : n === '14' ? 6 : ['06', '07', '08'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 10 : n === '14' ? 7 : ['06', '07', '08'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -58,7 +60,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(142) // 123 original + 4 N04 + 5 N11 proof + 2 Q11 + 2 Q14 + 2 Q07 + 2 Q08 + 2 Q12
+    expect(allChoiceCount).toBe(154) // W-MATH-018 adds 4 Q10 learner actions; 123 Word source labels unchanged
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -124,14 +126,15 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
   })
 
-  it('P-004 keeps the original 123 source markers while recovering eight omitted reasoning operations', () => {
+  it('P-004 and P-005 preserve the 123 Word questions while N11-Q06 changes from combined answer to numeric result', () => {
     const cases = [
       ['04', 'n04-13', ['3x\\cdot2=6x', '1\\cdot x=x', '3x^2+7x+2']],
       ['05', 'n05-17', ['異符号', 'rs=-3<0']],
       ['06', 'n06-08', ['xについて3次', 'yについて1次', 'yで整理']],
       ['07', 'n07-06', ['10\\text{倍}', '10x=8.\\overline8']],
       ['08', 'n08-05', ['5<9', '\\sqrt5<3']],
-      ['11', 'n11-05', ['両辺に }2\\text{ を足す', '3x<7']],
+      ['11', 'n11-05', ['7']],
+      ['11', 'n11-06', ['\\frac73']],
       ['14', 'n14-06', ['x\\le-4', '\\text{または}', 'x\\ge4']],
       ['14', 'n14-11', ['x+3\\le-2', '\\text{または}', 'x+3\\ge2']],
     ] as const
@@ -207,7 +210,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(distance.lead).not.toContain('原点から離れた点を残し')
     expect(distance.lead).not.toContain('等号も許す')
     expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(3)
-    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(6)
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(7)
   })
 
   it('P-004-R2 requires 11 actual original-source cognitive actions before disclosing answers', () => {
@@ -216,13 +219,13 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       '07': { '09': ['\\text{100倍}', '100x=69.', '99x=69'] },
       '08': { '02': ['|a|=a'] },
       '11': {
-        '06': ['\\text{両辺を正の}3\\text{で割る}', 'x<\\frac73'],
-        '08': ['\\text{両辺から}3\\text{を引く}', '-2x\\le2'],
-        '09': ['\\text{両辺を}-2\\text{で割る}', 'x\\ge-1'],
-        '13': ['\\text{両辺に正の}3\\text{を掛ける}', 'x-2\\le6x+3'],
+        '06': ['\\frac73'], // P-005: operation is taught by the four-row chain; Q06 now grades the fractional RHS
+        '08': ['2'], // P007: choice now grades arithmetic RHS
+        '09': ['-1'], // P007: choice now grades numeric quotient
+        '13': ['6'], // P008 Q13 coefficient only
       },
       '14': {
-        '10': ['\\text{三辺に}3\\text{を足す}', '-2<x<8'],
+        '10': ['-2'], // P001: local left bound, three operations and upper bound graded separately
         '14': ['\\text{三辺に}2\\text{を足す}', '-2\\le3x\\le6'],
         '15': ['\\text{三辺を正の}3\\text{で割る}', '-\\frac23\\le x\\le2'],
       },
@@ -234,10 +237,19 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         count += 1
         const id = 'n' + n + '-' + q
         const item = section.items.find(v => v.id === id)!
-        const lead = section.readingFlow.find(block => block.id === 'n' + n + '-lead-' + q)
+        const lead = section.readingFlow.find(block => block.id ===
+          (n === '11' && q === '06' ? 'n11-formula-06'
+            : n === '11' && q === '09' ? 'n11-formula-09'
+            : 'n' + n + '-lead-' + q))
         expect(lead).toBeDefined()
         const leadCopy = JSON.stringify(lead)
-        expect(leadCopy, id).not.toContain(item.answer)
+        if(n === '11' && (q === '08' || q === '09')) {
+          // P-007: checking for a one-character answer inside an earlier
+          // mathematical premise is invalid (the -2x coefficient contains 2).
+          // Assert the *completed result and orientation* are not revealed.
+          expect(leadCopy,id).not.toContain('x\\ge-1')
+          expect(leadCopy,id).not.toContain('-2x\\le2')
+        } else expect(leadCopy, id).not.toContain(item.answer)
         for (const required of expected) expect(item.answer, id).toContain(required)
         expect(item.choices).toHaveLength(4)
         expect(new Set(item.choices)).toHaveProperty('size', 4)
@@ -253,8 +265,12 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       ['14', '15', '正の3で割り'],
     ] as const) {
       const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
-      const lead = JSON.stringify(section.readingFlow.find(v => v.id === 'n' + n + '-lead-' + q))
-      expect(lead, 'n' + n + '-' + q).not.toContain(forbidden)
+      const leadBlockId = n === '11' && q === '06' ? 'n11-formula-06'
+        : n === '11' && q === '09' ? 'n11-formula-09'
+        : 'n' + n + '-lead-' + q
+      const lead = section.readingFlow.find(v => v.id === leadBlockId)
+      expect(lead, leadBlockId).toBeDefined()
+      expect(JSON.stringify(lead), 'n' + n + '-' + q).not.toContain(forbidden)
     }
   })
 
@@ -326,12 +342,19 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(after).toContain(replacement)
       expect(section.readingFlow.indexOf(prevBlock!)).toBeLessThan(section.readingFlow.indexOf(nextBlock!))
     }
-    inspectAfter('11', '08', '09', '次は負の数で割るので', '次はxの係数を1にする操作')
+    // P007 supersedes the old detached Q08→Q09 paragraph: the negative
+    // division reason now lives *inside* the same sequential derivation.
+    const newN11Flow = pick('11').sections[0].readingFlow
+    const reason = newN11Flow.findIndex(b=>b.id==='n11-p007-q09-explain')
+    const final = newN11Flow.findIndex(b=>b.id==='n11-formula-09')
+    expect(reason).toBeGreaterThan(newN11Flow.findIndex(b=>b.id==='n11-after-08'))
+    expect(final).toBeGreaterThan(reason)
+    expect(JSON.stringify(newN11Flow[reason])).toContain('不等号の向きが逆になる')
     inspectAfter('14', '09', '10', '次は三辺に同じ3を足して', '次は三辺に同じ操作をして')
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
     for (const n of ['06', '11', '14']) {
-      expect(pick(n).revision).toBe(n === '11' ? 6 : n === '14' ? 6 : 3)
+      expect(pick(n).revision).toBe(n === '11' ? 10 : n === '14' ? 7 : 3)
     }
   })
 
@@ -353,7 +376,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('P-004-R4 preserves three compound grading keys while displaying operation and inequality as two KaTeX rows', () => {
-    for (const id of ['n11-13', 'n14-14', 'n14-15']) {
+    for (const id of ['n14-14', 'n14-15']) {
       const section = mathTextbookUnits.find(unit => unit.unitId.endsWith(id.slice(0, 3)))!.sections[0]
       const item = section.items.find(candidate => candidate.id === id)!
       expect(item.choices).toHaveLength(4)
@@ -378,7 +401,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
     for (const n of ['11', '14']) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
-      expect(unit.revision).toBe(n === '11' ? 6 : 6)
+      expect(unit.revision).toBe(n === '11' ? 10 : 7)
     }
   })
 
@@ -483,8 +506,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       'n11-03', 'n11-wm011-q03-zero',
       'n11-wm011-q04-fraction', 'n11-04',
     ]
-    expect(unit.revision).toBe(6)
-    expect(unit.sections[0].items).toHaveLength(23)
+    expect(unit.revision).toBe(10)
+    expect(unit.sections[0].items).toHaveLength(31)
     expect(unit.sections[0].items.slice(0, 9).map(v => v.id)).toEqual(expected)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(x => x.id))
@@ -586,8 +609,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const section = unit.sections[0]
     const ids = section.items.map(q => q.id)
-    expect(unit.revision).toBe(6)
-    expect(ids).toHaveLength(23)
+    expect(unit.revision).toBe(10)
+    expect(ids).toHaveLength(31)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(n11SourceToItemIds['N11-Q11']).toEqual([
       'n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11',
@@ -692,8 +715,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const section = unit.sections[0]
     const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
-    expect(unit.revision).toBe(6)
-    expect(section.items).toHaveLength(23)
+    expect(unit.revision).toBe(10)
+    expect(section.items).toHaveLength(31)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(n11SourceToItemIds['N11-Q14']).toEqual(ids)
     expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(i => i.id))
@@ -732,7 +755,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('W-MATH-013/P-001 N11 rev1/2/3/4/5→6 archives v5 and keeps original answers', () => {
-    const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
+    const unit = { ...mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!, revision: 6 }
     const mk=(id:string):TextbookAnswerRecord=>({
       itemId:id,value:'old-answer',firstValue:'old-answer',
       isFirstCorrect:true,resolved:true,attemptCount:2,firstAnsweredAt:100,lastAnsweredAt:200,
@@ -765,8 +788,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
     const section=unit.sections[0]
     const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
-    expect(unit.revision).toBe(6)
-    expect(section.items).toHaveLength(22)
+    expect(unit.revision).toBe(7)
+    expect(section.items).toHaveLength(26)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
     expect(n14SourceToItemIds['N14-Q07']).toEqual(ids)
     expect(Object.values(n14SourceToItemIds).flat()).toEqual(section.items.map(i=>i.id))
@@ -829,9 +852,9 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
     const section=unit.sections[0],items=section.items
     const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
-    expect(unit.revision).toBe(6)
+    expect(unit.revision).toBe(7)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
-    expect(items).toHaveLength(22)
+    expect(items).toHaveLength(26)
     expect(n14SourceToItemIds['N14-Q08']).toEqual(ids)
     expect(Object.values(n14SourceToItemIds).flat()).toEqual(items.map(i=>i.id))
     const q7=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
@@ -917,12 +940,12 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
     const section=unit.sections[0],flow=section.readingFlow,items=section.items
     const ids=['n14-wm016-q12-left','n14-wm016-q12-right','n14-12']
-    expect(unit.revision).toBe(6)
+    expect(unit.revision).toBe(7)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
     expect(n14SourceToItemIds['N14-Q12']).toEqual(ids)
-    expect(items).toHaveLength(22)
+    expect(items).toHaveLength(26)
     expect(Object.values(n14SourceToItemIds).flat()).toEqual(items.map(i=>i.id))
-    const three=items.slice(15,18)
+    const three=items.slice(19,22) // N14-Q10 inserts 4 decisions before Q12
     expect(three.map(i=>i.id)).toEqual(ids)
     expect(three[0].choices).toEqual(['x\\le-5','x<-5','x\\ge-5','x\\le-1'])
     expect(three[1].choices).toEqual(['x\\ge-1','x>-1','x\\le-1','x\\ge1'])
@@ -960,7 +983,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('W-MATH-016/P-001 N14 historical v1–v5 →v6 migration preserves Q07/Q08/Q12 answers',()=>{
-    const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+    const unit={...mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!, revision:6} // historical v6 fixture
     const ids=['n14-01','n14-06','n14-wm014-q07-nonnegative','n14-wm014-q07-negative',
       'n14-07','n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08',
       'n14-10','n14-11','n14-12','n14-16']

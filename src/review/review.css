@@ -34,6 +34,13 @@
   background: #fff8dc;
   scroll-margin-top: 1rem;
 }
+/* W-MATH-018/P-004: ONLY N14 Q10's yellow numbered review frame. */
+@media (max-width: 430px) {
+  .review-preview [data-testid="review-mark-n14-formula-10"] {
+    padding-inline: .4rem;
+  }
+}
+
 .review-preview .review-marked-block__label {
   display: inline-block;
   margin-bottom: 0.45rem;

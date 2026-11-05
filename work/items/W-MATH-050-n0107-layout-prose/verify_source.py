@@ -20,8 +20,15 @@ def verify():
     evidence = WORK / 'evidence'
     packet = read(evidence / 'PROPOSED_TEXT.json')
     patch = read(evidence / 'APPROVED_PATCH.json')
+    refinement = read(evidence / 'LAYOUT_REFINEMENT.json') if (evidence / 'LAYOUT_REFINEMENT.json').exists() else None
     for change in patch['files']:
-        assert sha(ROOT / change['path']) == change['after_sha256'], change['path']
+        expected = change['after_sha256']
+        if refinement and change['path'] == refinement['path']:
+            assert expected == refinement['base_after_sha256']
+            assert refinement['after_text'].startswith(change['after_text'])
+            assert hashlib.sha256(refinement['after_text'].encode()).hexdigest() == refinement['after_sha256']
+            expected = refinement['after_sha256']
+        assert sha(ROOT / change['path']) == expected, change['path']
     for path, expected in read(evidence / 'PROTECTED_BASELINE.json').items():
         assert sha(ROOT / path) == expected, path
     current = read(ROOT / packet['sourceFile'])

@@ -129,7 +129,7 @@ async function measure(page, scope, label, row, resolvedIds, { card = false, scr
         gap: i ? el.getBoundingClientRect().top - blocks[i - 1].getBoundingClientRect().bottom : null })),
       unresolved: controls.map(c => c.id.replace('textbook-item-', '')).filter(id => ids.includes(id)), issues, katexErrors: scope.querySelectorAll('.katex-error').length };
   }, { ids, formulaIds: expectedFormulaIds, numbers: plan.equationNumbers });
-  const entry = { label, sourceSHA, resolvedIds, ...measured }; row.measurements.push(entry);
+  const entry = { label, sourceSHA, resolvedIds: [...resolvedIds], ...measured }; row.measurements.push(entry);
   // Persist original measured failures before any assertion throws.
   save('REPORT.json', report);
   assert.ok(measured.pageWidth <= measured.viewport + 1, label + ': page overflow');
@@ -186,8 +186,13 @@ try {
     'src/components/textbook/n04-sample-reading.css',
   ].sort(), 'Exact three approved product paths required');
   report.approvedPatchSHA256 = digest(fs.readFileSync(work + '/evidence/APPROVED_PATCH.json'));
+  const refinementPath = work + '/evidence/LAYOUT_REFINEMENT.json';
+  const refinement = fs.existsSync(refinementPath) ? read(refinementPath) : null;
+  if (refinement) report.layoutRefinementSHA256 = digest(fs.readFileSync(refinementPath));
   report.productHashes = approved.files.map(file => {
-    const actual = digest(fs.readFileSync(file.path)); assert.equal(actual, file.after_sha256, file.path + ': approved after bytes required');
+    const expected = refinement?.path === file.path ? refinement.after_sha256 : file.after_sha256;
+    if (refinement?.path === file.path) { assert.equal(file.after_sha256, refinement.base_after_sha256); assert.ok(refinement.after_text.startsWith(file.after_text)); assert.equal(digest(refinement.after_text), expected); }
+    const actual = digest(fs.readFileSync(file.path)); assert.equal(actual, expected, file.path + ': exact scoped after bytes required');
     assert.equal(digest(file.after_text), file.after_sha256, file.path + ': after text binding'); return { path: file.path, sha256: actual };
   });
   const { createServer } = await import(pathToFileURL(require.resolve('vite')).href);

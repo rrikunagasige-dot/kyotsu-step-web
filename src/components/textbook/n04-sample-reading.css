@@ -62,3 +62,11 @@
   min-width: 44px;
   min-height: 44px;
 }
+
+/* Reserve punctuation space when this exact introduction equation becomes a
+   display line. The original prose and mathematical source remain unchanged. */
+[data-n04-sample-stage="heading-four-products"] [data-n04-sample-block="paragraph-n04-intro"] .typeset-inline-math--display {
+  display: inline-block;
+  width: calc(100% - 1em);
+  vertical-align: baseline;
+}

@@ -416,9 +416,54 @@ try {
     await seed({ unitId: unit.unitId, unitRevision: 11, startedAt: 11, updatedAt: 22, answers: {} }, previousProgress);
     await open(previousUnit.unitId); await nextUntilPending();
     const nextLink = page.getByTestId('textbook-next-unit'); await nextLink.waitFor();
-    const nextHref = await nextLink.getAttribute('href'); await nextLink.click(); await page.getByTestId('textbook-reading-flow').waitFor();
-    row.navigation.push({ kind: 'N13-completion-to-N14', href: nextHref, actualURL: page.url() });
-    check(page.url().includes(unit.unitId) && (await ids()).includes('n14-01'), `${width}/actual-N13-N14-transition`, { nextHref, url: page.url(), pending: await ids() });
+    const nextHref = await nextLink.getAttribute('href');
+    const transition = { kind: 'N13-completion-to-N14', href: nextHref, status: 'RUNNING', timeoutMs: 15000 };
+    row.navigation.push(transition);
+    const navigationSnapshot = () => page.evaluate(({ key, previousId, currentId }) => {
+      const root = document.querySelector('[data-testid="textbook-reading-flow"]');
+      const pending = [...document.querySelectorAll('button[data-testid^="textbook-item-"]')]
+        .filter(n => n.getClientRects().length).map(n => n.dataset.testid.slice('textbook-item-'.length));
+      let progress;
+      try {
+        const stored = JSON.parse(localStorage.getItem(key))?.state?.textbookProgress ?? {};
+        progress = Object.fromEntries([previousId, currentId].map(id => [id, stored[id] ? {
+          revision: stored[id].unitRevision, answerIds: Object.keys(stored[id].answers ?? {}),
+          completedAt: stored[id].completedAt ?? null,
+        } : null]));
+      } catch (error) { progress = { diagnosticError: String(error) }; }
+      return { url: location.href, hash: location.hash, pending,
+        readingFlowPresent: Boolean(root), w048Class: root?.classList.contains('w048-reading-flow') ?? false,
+        formulaIds: root && [...root.querySelectorAll('[data-testid^="textbook-formula-"]')].slice(0, 8).map(n => n.dataset.testid),
+        textPrefix: root?.textContent?.slice(0, 240) ?? null, progress };
+    }, { key: storageKey, previousId: previousUnit.unitId, currentId: unit.unitId });
+    transition.beforeClick = await navigationSnapshot();
+    try {
+      await nextLink.click();
+      transition.immediatelyAfterClick = await navigationSnapshot();
+      // The generic reading-flow element is reused while the asynchronous unit
+      // repository request resolves. Its presence alone cannot identify N14.
+      // Keep a bounded wait for BOTH the exact route and N14's real first slot;
+      // a wrong unit, stale completed page or hidden slot still fails the probe.
+      await Promise.all([
+        page.waitForURL(url => url.hash === '#/learning/textbook/' + unit.unitId, { timeout: 15000 }),
+        page.getByTestId('textbook-item-n14-01').waitFor({ state: 'visible', timeout: 15000 }),
+      ]);
+      await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+      transition.settled = await navigationSnapshot();
+      transition.actualURL = page.url();
+      transition.firstQuestionVisible = await page.getByTestId('textbook-item-n14-01').isVisible();
+      transition.status = transition.settled.hash === '#/learning/textbook/' + unit.unitId &&
+        transition.firstQuestionVisible && transition.settled.pending.includes('n14-01') ? 'PASS' : 'FAIL';
+      check(transition.status === 'PASS', `${width}/actual-N13-N14-transition`, transition);
+    } catch (error) {
+      transition.status = 'FAIL'; transition.failure = { message: error.message, stack: error.stack };
+      try { transition.failureSnapshot = await navigationSnapshot(); }
+      catch (diagnosticError) { transition.snapshotError = String(diagnosticError); }
+      const name = `n14-${width}-transition-failure.png`;
+      try { await page.screenshot({ path: path.join(out, name), fullPage: true, timeout: 5000 }); row.images.push(name); transition.failureImage = name; }
+      catch (diagnosticError) { transition.imageError = String(diagnosticError); }
+      check(false, `${width}/actual-N13-N14-transition`, transition);
+    }
     check(errors.length === 0, `${width}/uncaught-page-errors`, errors);
     // Retain contexts until browser.close; constrained --single-process browsers
     // can terminate if a context is closed during a multi-width run.

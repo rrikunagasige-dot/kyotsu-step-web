@@ -34,6 +34,22 @@ try{
  }
  assert.ok(reached,'Q04 completed');
  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:out+'/N13-Q04-post-answer.png',fullPage:true});
+ // Preserve a deliberately scrolled DIFFERENT row during the next real answer.
+ // 320px is the approved overflow reproduction width; wider rows may fit.
+ if(width===320){
+  const untouched=page.getByTestId('textbook-formula-n13-w048-q04-negative-formula');
+  const before=await untouched.evaluate(e=>{e.scrollLeft=20;return {scrollLeft:e.scrollLeft,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth};});
+  assert.equal(before.scrollLeft,20,'real overflowing different row seeded at20');
+  const nextItem=map.get('n13-wm023-q05-right');assert.ok(nextItem);
+  await page.getByTestId('textbook-item-'+nextItem.id).click();await page.evaluate(()=>{window.__w048ScrollCalls=[];});
+  await page.getByTestId('inline-choice-panel-'+nextItem.id).getByRole('button',{name:nextItem.answer,exact:true}).click();await settle();
+  assert.equal(await page.getByTestId('textbook-item-'+nextItem.id).count(),0,'different-row correct answer resolved');
+  const after=await untouched.evaluate(e=>({scrollLeft:e.scrollLeft,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}));
+  const calls=await page.evaluate(()=>window.__w048ScrollCalls);
+  assert.equal(after.scrollLeft,20,'unrelated manual position retained after real Q05 answer');
+  assert.ok(calls.every(c=>c.id!=='textbook-formula-n13-w048-q04-negative-formula'),'unrelated row was not reset');
+  report.unrelatedManualScroll={before,after,answered:nextItem.id,calls,pass:true,scope:'current-source320px different-row real answer; not reload persistence'};
+ }
  // N12 is outside the exact N13r5/N14r11 scroll contract: no formula scrollTo on answer.
  await page.goto(app+'#/learning/textbook/math-numbers-expressions-n12');await page.getByTestId('textbook-reading-flow').waitFor();await page.evaluate(()=>document.fonts.ready);assert.equal(await page.locator('.w048-reading-flow').count(),0,'N12 outside W048 contract');
  const oldButton=page.locator('button[data-testid^="textbook-item-"]:visible').first();await oldButton.waitFor();const oldId=(await oldButton.getAttribute('data-testid')).slice('textbook-item-'.length);await oldButton.click();

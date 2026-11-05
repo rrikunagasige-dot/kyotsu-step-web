@@ -134,6 +134,7 @@ finally {
 // Extend the already authorized current-source verification with the remaining
 // bounded R07 probes. The workflow YAML, permissions and publication are unchanged.
 if (report.status === 'PASS_BOUNDED_CURRENT_BUILD_BROWSER') {
+  const extensionRuns = [];
   for (const [name, relative] of [
     ['N13_EXTENDED', 'ci-review/verify_extended.mjs'],
     ['SCROLL', 'scroll-review/verify_post_scroll.mjs'],
@@ -150,6 +151,14 @@ if (report.status === 'PASS_BOUNDED_CURRENT_BUILD_BROWSER') {
       if (file.endsWith('.png')) fs.copyFileSync(path.join(target, file), path.join(imageDir, name + '-' + file));
       if (file.endsWith('.json')) fs.copyFileSync(path.join(target, file), path.join(jsonDir, name + '-' + file));
     }
+    extensionRuns.push({ name, status: child.status, error: child.error?.message });
     if (child.status !== 0 || child.error) { process.exitCode = 1; break; }
   }
+  fs.writeFileSync(path.join(jsonDir, 'EXTENDED_SUMMARY.json'), JSON.stringify({
+    sourceSHA: inputs.sourceSHA,
+    status: process.exitCode ? 'FAIL' : 'PASS_ALL_CONFIGURED_EXTENSIONS',
+    appliedUnits: inputs.fixtures.map(f => f.code), runs: extensionRuns,
+    images: fs.readdirSync(imageDir).filter(n => n.endsWith('.png')).map(name => ({ name,
+      sha256: crypto.createHash('sha256').update(fs.readFileSync(path.join(imageDir, name))).digest('hex') })),
+  }, null, 2) + '\n');
 }

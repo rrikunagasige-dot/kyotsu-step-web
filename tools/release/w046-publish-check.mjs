@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
-const SOURCE='f129ba78e496f0ccbce917c762357a81b92b0a2c';
+const SOURCE='96a24d6bffa3a0f6e4c5340e29a5a0364664fb77';
 const STORAGE='kyotsu-step-gate3-math-20261023';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(p));
@@ -53,7 +53,7 @@ const required={
   "src/domain/textbookSchema.ts": "f6156ad017672b66b0dc5b01926240efe038a215e755799c2491425ac423c246",
   "src/pages/N0910ArchivePage.tsx": "321b2b864c22a96eb842ab5dd9fccd60ec2bbde1a52e341678aaf6669e331d61",
   "src/pages/N0910RevisionPage.tsx": "6753ea46ed117c6229c69a1751f301c3096275e24c912b98cadb8e7aed98f8f8",
-  "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+  "src/pages/TextbookUnitPage.tsx": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7",
   "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4"
 };
 for(const [p,h] of Object.entries(required))if(sha(fs.readFileSync(p))!==h)throw Error('SOURCE_BYTES_MISMATCH '+p);

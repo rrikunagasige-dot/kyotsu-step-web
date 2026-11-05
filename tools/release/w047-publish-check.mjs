@@ -1,6 +1,6 @@
 // Inactive G3 proposal. Strict new release binding; old W041/W046 files remain auditable.
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';import{fileURLToPath,pathToFileURL}from'node:url';
-const SOURCE='f129ba78e496f0ccbce917c762357a81b92b0a2c',mode=process.argv[2],base='work/items/W-MATH-041-n08-inline-derivation-alignment/';
+const SOURCE='96a24d6bffa3a0f6e4c5340e29a5a0364664fb77',mode=process.argv[2],base='work/items/W-MATH-041-n08-inline-derivation-alignment/';
 const digest=b=>createHash('sha256').update(b).digest('hex'),sha=p=>digest(fs.readFileSync(p)),read=p=>JSON.parse(fs.readFileSync(p));
 const approved=read(path.join(path.dirname(fileURLToPath(import.meta.url)),'w047-release-contract.json'));
 assert.equal(approved.sourceSHA,SOURCE);assert.equal(sha(base+'RELEASE_CONTRACT.json'),approved.oldW041ContractSHA256);assert.equal(sha(base+'release_manifest.mjs'),approved.oldW041GeneratorSHA256);

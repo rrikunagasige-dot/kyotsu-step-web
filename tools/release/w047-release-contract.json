@@ -1,6 +1,6 @@
 {
-  "sourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
-  "mainBase": "04b823259a0873235e39099864d454330eed5d81",
+  "sourceSHA": "96a24d6bffa3a0f6e4c5340e29a5a0364664fb77",
+  "mainBase": "6cd11dc1e65810281ed897f865eed3e52b974992",
   "storageKey": "kyotsu-step-gate3-math-20261023",
   "required": {
     "package.json": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",
@@ -47,7 +47,7 @@
     "src/domain/textbookSchema.ts": "f6156ad017672b66b0dc5b01926240efe038a215e755799c2491425ac423c246",
     "src/pages/N0910ArchivePage.tsx": "321b2b864c22a96eb842ab5dd9fccd60ec2bbde1a52e341678aaf6669e331d61",
     "src/pages/N0910RevisionPage.tsx": "6753ea46ed117c6229c69a1751f301c3096275e24c912b98cadb8e7aed98f8f8",
-    "src/pages/TextbookUnitPage.tsx": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+    "src/pages/TextbookUnitPage.tsx": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7",
     "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
     "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
     "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
@@ -137,5 +137,5 @@
     "#/learning/textbook/math-numbers-expressions-n11",
     "#/learning/textbook/math-numbers-expressions-n12"
   ],
-  "approvalBoundary": "DRAFT: new publisher scope requires actual approval; no hosting/merge permission supplied by this file"
+  "approvalBoundary": "W048 publisher binding DRAFT UNAPPROVED; R07/G2 pending. No execution, main merge, hosting or acceptance authorized by this file."
 }

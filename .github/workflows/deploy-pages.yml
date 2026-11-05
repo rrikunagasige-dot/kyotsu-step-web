@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main, work/w047-publisher-g3-20261104]
+    branches: [main, work/w048-publisher-g3-20261105]
     paths: ['.github/workflows/deploy-pages.yml']
   workflow_dispatch:
     inputs:
@@ -25,14 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      CANDIDATE_SHA: f129ba78e496f0ccbce917c762357a81b92b0a2c
-      VITE_PREVIEW_COMMIT: f129ba78e496f0ccbce917c762357a81b92b0a2c
+      CANDIDATE_SHA: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
+      VITE_PREVIEW_COMMIT: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: f129ba78e496f0ccbce917c762357a81b92b0a2c
+          ref: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -44,6 +44,8 @@ jobs:
             tools/release/w046-publish-check.mjs
             tools/release/w047-publish-check.mjs
             tools/release/w047-release-contract.json
+            tools/release/w048-publish-check.mjs
+            tools/release/w048-release-contract.json
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -65,11 +67,16 @@ jobs:
           timeout 600s sudo apt-get install -y -o Acquire::Retries=3 pandoc fonts-noto-cjk
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
       - run: node publisher/tools/release/w047-publish-check.mjs retained-check
+      - run: node publisher/tools/release/w048-publish-check.mjs bytes-only
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - name: Require clean release supplement outputs before manifest sequence
+        run: node --input-type=module -e "import fs from 'node:fs'; for(const p of ['dist/w047-release.json','dist/w046-release.json','dist/w048-release.json'])if(fs.existsSync(p))throw Error('STALE_RELEASE_MANIFEST '+p);"
       - run: node publisher/tools/release/w047-publish-check.mjs manifest
       - name: Generate exact N09/N10 release supplement
         run: node publisher/tools/release/w046-publish-check.mjs manifest
+      - name: Generate W048 manifest last without digest cycles
+        run: node publisher/tools/release/w048-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
@@ -106,6 +113,7 @@ jobs:
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w047-publish-check.mjs verify
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w048-publish-check.mjs verify
       - uses: actions/upload-pages-artifact@v3
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         with:
@@ -169,6 +177,12 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
         run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w047-publish-check.mjs verify
+      - name: Verify published W048 exact bytes and N13/N14 operations
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/w048-hosted
+        run: node publisher/tools/release/w048-publish-check.mjs verify
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -177,6 +191,7 @@ jobs:
             dist/release.json
             dist/w046-release.json
             dist/w047-release.json
+            dist/w048-release.json
             /tmp/w046-prepublish
             /tmp/w046-prepublish-n08
             /tmp/w046-prepublish-r6
@@ -190,6 +205,8 @@ jobs:
             /tmp/w041-hosted-legacy
             /tmp/w041-hosted-protected
             /tmp/w047-hosted
+            /tmp/w048-prepublish
+            /tmp/w048-hosted
   publish:
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
     runs-on: ubuntu-latest
@@ -198,14 +215,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: f129ba78e496f0ccbce917c762357a81b92b0a2c
-      VITE_PREVIEW_COMMIT: f129ba78e496f0ccbce917c762357a81b92b0a2c
+      CANDIDATE_SHA: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
+      VITE_PREVIEW_COMMIT: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: f129ba78e496f0ccbce917c762357a81b92b0a2c
+          ref: 96a24d6bffa3a0f6e4c5340e29a5a0364664fb77
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -217,6 +234,8 @@ jobs:
             tools/release/w046-publish-check.mjs
             tools/release/w047-publish-check.mjs
             tools/release/w047-release-contract.json
+            tools/release/w048-publish-check.mjs
+            tools/release/w048-release-contract.json
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -238,11 +257,16 @@ jobs:
           timeout 600s sudo apt-get install -y -o Acquire::Retries=3 pandoc fonts-noto-cjk
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
       - run: node publisher/tools/release/w047-publish-check.mjs retained-check
+      - run: node publisher/tools/release/w048-publish-check.mjs bytes-only
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - name: Require clean release supplement outputs before manifest sequence
+        run: node --input-type=module -e "import fs from 'node:fs'; for(const p of ['dist/w047-release.json','dist/w046-release.json','dist/w048-release.json'])if(fs.existsSync(p))throw Error('STALE_RELEASE_MANIFEST '+p);"
       - run: node publisher/tools/release/w047-publish-check.mjs manifest
       - name: Generate exact N09/N10 release supplement
         run: node publisher/tools/release/w046-publish-check.mjs manifest
+      - name: Generate W048 manifest last without digest cycles
+        run: node publisher/tools/release/w048-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
@@ -279,6 +303,7 @@ jobs:
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w047-publish-check.mjs verify
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w048-publish-check.mjs verify
       - uses: actions/upload-pages-artifact@v3
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         with:
@@ -342,6 +367,12 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
         run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w047-publish-check.mjs verify
+      - name: Verify published W048 exact bytes and N13/N14 operations
+        if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/w048-hosted
+        run: node publisher/tools/release/w048-publish-check.mjs verify
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -350,6 +381,7 @@ jobs:
             dist/release.json
             dist/w046-release.json
             dist/w047-release.json
+            dist/w048-release.json
             /tmp/w046-prepublish
             /tmp/w046-prepublish-n08
             /tmp/w046-prepublish-r6
@@ -363,3 +395,5 @@ jobs:
             /tmp/w041-hosted-legacy
             /tmp/w041-hosted-protected
             /tmp/w047-hosted
+            /tmp/w048-prepublish
+            /tmp/w048-hosted

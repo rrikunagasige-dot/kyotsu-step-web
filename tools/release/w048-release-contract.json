@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "w048-publication-contract/1",
+  "status": "DRAFT_UNAPPROVED_NOT_APPLIED",
+  "sourceSHA": "96a24d6bffa3a0f6e4c5340e29a5a0364664fb77",
+  "mainBase": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "publisherBranch": "work/w048-publisher-g3-20261105",
+  "storageKey": "kyotsu-step-gate3-math-20261023",
+  "basePath": "/kyotsu-step-web/",
+  "nativeGateStateAtDraft": {
+    "R07": "PASS_BOTH",
+    "G2": "PASS_BOTH",
+    "currentCI": 42012807728,
+    "ciStateAtDraft": "SUCCESS",
+    "publication": false,
+    "acceptance": false,
+    "previousCI": 42000682233,
+    "nativeCurrentSourceProof": {
+      "n13": {
+        "R07_SEMANTIC": {
+          "artifact": "fd69076c67c1df7b58754f9b6a8bcdb9ce56a3cd324c7f87f49d84bb2d9628d8",
+          "file": "work/items/W-MATH-048-n1314-source-audit/evidence/R07-n13-96a24d6bffa3/SEMANTIC_RESULT.json",
+          "fileSHA256": "45bec627a5fdfa8b65239ff43ea239b6ef17532f7d947bafaf58acf381b1999c"
+        },
+        "G2_AUDIT": {
+          "artifact": "c00510931216c4533e2add6fffacb509bbd79796fcba57b6405f05ca557b4fb9",
+          "file": "work/items/W-MATH-048-n1314-source-audit/evidence/G2-n13-96a24d6bffa3/RESULT.json",
+          "fileSHA256": "dee01bf9e5e97a243390561e82639bd71811b5b283efc40dfb34a39e08efc063"
+        }
+      },
+      "n14": {
+        "R07_SEMANTIC": {
+          "artifact": "8b3aa125774a3f01304378acf21c9e5c4ceb06ac1b5141d623085a90c449e58d",
+          "file": "work/items/W-MATH-048-n1314-source-audit/evidence/R07-n14-96a24d6bffa3/SEMANTIC_RESULT.json",
+          "fileSHA256": "9115d764292bdc76d57e9a965bc6a9c7f104fceaed65408bb52596d946d0e2de"
+        },
+        "G2_AUDIT": {
+          "artifact": "7e8dec8cabaefa3af7e25a61871aeb50b0b5864a3e73af74b131b114883962c6",
+          "file": "work/items/W-MATH-048-n1314-source-audit/evidence/G2-n14-96a24d6bffa3/RESULT.json",
+          "fileSHA256": "3fc89c157fc6fe863fa99cacfc27fc290dd08557b7700d018be40d623b6cb288"
+        }
+      }
+    },
+    "postAcceptanceImpactSweep": "NOT_EXECUTED"
+  },
+  "requiredProductHashes": {
+    "src/data/textbook/math/numbers/n13Lesson.ts": "5d416e145f4f489709150aa539acb4eee8bfc33c404fa88b576626e82b7988e8",
+    "src/data/textbook/math/numbers/n14Lesson.ts": "e399e5547bebcc784e349b3e8d023d45617f99272bd1e5aad6005560de6abd2d",
+    "src/domain/textbook.ts": "3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a",
+    "src/pages/TextbookUnitPage.tsx": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7"
+  },
+  "originalFigureHashes": {
+    "public/assets/math/textbook/numbers/n13-f01.png": "1552aee535bfb4996da4a10c61927c466fc09f9b3b607ad9f0bd1efe42dbe3df",
+    "public/assets/math/textbook/numbers/n13-f02.png": "f6da628bb27b8214bb3c4492fa66de4775aadbcde2b7ea427536dde68272e8bc",
+    "public/assets/math/textbook/numbers/n14-f01.png": "0f4423c1134a92824bb75226d3dd0307449871f45a4063fbfd5e23a0ba7f1195"
+  },
+  "verificationSourceHashes": {
+    "work/items/W-MATH-048-n1314-source-audit/P003_FINAL.md": "eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9",
+    "work/items/W-MATH-048-n1314-source-audit/r3/DESIGN_INPUTS.json": "3a4f29d9d570fc3fe4287f065b9c2520015a9c66d0f6952f5d44396764fbfe0c",
+    "work/items/W-MATH-048-n1314-source-audit/r3/PROPOSED_PATCH_INDEX.json": "befbf159168e37da10b1258c6a37fdc2a3b94b45dc046949e79785a1718164fc",
+    "work/items/W-MATH-048-n1314-source-audit/r3/N13_PROPOSED_PATCH.json": "8095c2ae0d8c0afff32043d0615981af9f32c46f5eb194aaf0b369f017c59f73",
+    "work/items/W-MATH-048-n1314-source-audit/r3/N14_PROPOSED_PATCH.json": "b31121d06de8d2183bff059d5f7c4173d8a2fa1c83399d7f7e85d61c79f33147",
+    "work/items/W-MATH-048-n1314-source-audit/N13_FULL_IR.json": "72db4107ed6a642fe465ec200fbc418b794b5cb84f371d71016cc6c7face68cc",
+    "work/items/W-MATH-048-n1314-source-audit/N14_FULL_IR.json": "3a9de66d90b66191ec3398bf2bbba06a6562fa1154c5622f8bc64c6b06138f2e",
+    "work/items/W-MATH-048-n1314-source-audit/N13_ROW_PROJECTION.json": "d68f4f36d876779298fe731e968393045869d547513ee383f55f293a67b46d16",
+    "work/items/W-MATH-048-n1314-source-audit/N14_ROW_PROJECTION.json": "a55a646d9200c61d8c3451f1371086898a117a34b26b4a65a1a664b15c9cb63c",
+    "work/items/W-MATH-048-n1314-source-audit/N13_LEARNER_REVIEW.json": "e5a21bef9e626c082f91b2a950365d740523370dbc1447295511da61b12bfc5d",
+    "work/items/W-MATH-048-n1314-source-audit/N14_LEARNER_REVIEW.json": "39ae683c62df5b0dccd20fead57246e61e7d4b5fd35ab80113a1714b7ae4ea33",
+    "work/items/W-MATH-048-n1314-source-audit/N13_MATERIALIZED_CANDIDATE.json": "e8f2c63c60b2e6d5212e4b1d304ed11093c5a6d25eb5c1858cc5e571ad1b5fb1",
+    "work/items/W-MATH-048-n1314-source-audit/N14_MATERIALIZED_CANDIDATE.json": "4fbdd685aaf5496e1f546f34e7c7901f86084dfaef5056463dd5448fc1137b53",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N13_CURRENT.json": "4c5b67b48d5db4c102ae56143ab4cdb041147912b5b57cea7ae62aa927f4ea42",
+    "work/items/W-MATH-048-n1314-source-audit/evidence/N14_CURRENT.json": "e5bc0b9e3656869fdcbca3179643007cbc56af382b72480bcbfaa3ed26ca4ede",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/PROPOSED_PATCH.json": "d94adcc41ff89b4411fcb93f4a470ed8794c43430b0cf038697e3aba4ec7e2de",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/APPROVAL.json": "2c51d219758f0f0402138378701bcdaf7426fdf2d3ecf23351639bf9a33858b9",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_current.mjs": "5d6f957e90c1153df25bb43f8870ed4216182cf1a848458a5ff37c56fc215a6e",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/capture_current.mjs": "123bbaf10b1a63330e3fec8383b4d86a0afe6e17c0a46a5c9234f0f913081a7f",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_extended.mjs": "b32525241fa2f5042dbc2d94ce0a45b04cae436ffcdc98ba6e4434a22613a2b4",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_n14_extended.mjs": "3fbe3cdb9c8a058f8f96364b3c0a7237e117f747779f5dfc1be0e19390d1c41c",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_legacy_scroll.mjs": "0c1ee6dee991bf340772f36e98f40ce1b8ed52f4bb03d592d971a31def1ee765",
+    "work/items/W-MATH-048-n1314-source-audit/scroll-review/verify_post_scroll.mjs": "d057291ec666fed2717b568717c8cdb414d283ca78bf33448097c4c57743fd4a",
+    "work/items/W-MATH-048-n1314-source-audit/P-W048-ALIGN-001.md": "d10a0d29490cb0ae71f812c87f552cf2ea7707dc86def8d6282fa726191bc86d",
+    "work/items/W-MATH-048-n1314-source-audit/alignment-review/PRODUCT_PATCH.json": "5d0169f7cc58d4ed3f4dee8e7b41ffc5bfb3b312035b87f5103e37af34ad149d"
+  },
+  "units": [
+    {
+      "code": "n13",
+      "unitId": "math-numbers-expressions-n13",
+      "revision": 5,
+      "answers": 18,
+      "itemIds": [
+        "n13-01",
+        "n13-02",
+        "n13-03",
+        "n13-w048-q04-positive",
+        "n13-w048-q04-negative",
+        "n13-04",
+        "n13-wm023-q05-right",
+        "n13-05",
+        "n13-06",
+        "n13-w048-q07-positive",
+        "n13-w048-q07-negative",
+        "n13-07",
+        "n13-wm023-q08-branches",
+        "n13-wm023-q08-positive-root",
+        "n13-08",
+        "n13-w048-q09-zero",
+        "n13-w048-q09-negative",
+        "n13-09"
+      ],
+      "displayContract": {
+        "unitId": "math-numbers-expressions-n13",
+        "revision": 5,
+        "irHash": "eeebc72ad77f484720c768991e2b29ce6a4e5dd00d6d48403c3401e5aef3c827",
+        "equationNumbers": {
+          "n13-formula-01": 1,
+          "n13-formula-02": 2,
+          "n13-formula-03": 3,
+          "n13-formula-04": 4,
+          "n13-formula-05": 5,
+          "n13-formula-06": 6,
+          "n13-formula-07": 7,
+          "n13-wm023-q08-negative-root": 8,
+          "n13-w048-q09-negative-formula": 9
+        }
+      },
+      "route": "/learning/textbook/math-numbers-expressions-n13"
+    },
+    {
+      "code": "n14",
+      "unitId": "math-numbers-expressions-n14",
+      "revision": 11,
+      "answers": 41,
+      "itemIds": [
+        "n14-01",
+        "n14-02",
+        "n14-w048-q03-region",
+        "n14-03",
+        "n14-04",
+        "n14-w048-q05-boundaries",
+        "n14-w048-q05-region",
+        "n14-05",
+        "n14-06",
+        "n14-wm014-q07-nonnegative",
+        "n14-wm014-q07-negative",
+        "n14-07",
+        "n14-wm015-q08-nonnegative",
+        "n14-wm015-q08-negative",
+        "n14-08",
+        "n14-09",
+        "n14-wm018-q10-add-left",
+        "n14-wm018-q10-add-center",
+        "n14-wm018-q10-add-right",
+        "n14-10",
+        "n14-wm018-q10-bound-right",
+        "n14-11",
+        "n14-wm016-q12-left",
+        "n14-wm016-q12-right",
+        "n14-12",
+        "n14-13",
+        "n14-wm019-q14-add-left",
+        "n14-wm019-q14-add-center",
+        "n14-wm019-q14-add-right",
+        "n14-14",
+        "n14-wm019-q14-bound-right",
+        "n14-wm020-q15-divide-left",
+        "n14-wm020-q15-divide-center",
+        "n14-wm020-q15-divide-right",
+        "n14-15",
+        "n14-wm020-q15-bound-right",
+        "n14-wm022-q16-left-inner",
+        "n14-wm022-q16-left-abs",
+        "n14-wm022-q16-right-inner",
+        "n14-wm022-q16-right-abs",
+        "n14-16"
+      ],
+      "displayContract": {
+        "unitId": "math-numbers-expressions-n14",
+        "revision": 11,
+        "irHash": "e4cc4488df65fc59fbe820cb7d85d769f792f562f6ca6feb3600517c659f75aa",
+        "equationNumbers": {
+          "n14-formula-02": 1,
+          "n14-formula-04": 2,
+          "n14-w048-q05-boundaries-formula": 3,
+          "n14-formula-06": 4,
+          "n14-formula-wm014-q07-nonnegative": 5,
+          "n14-formula-wm014-q07-negative": 6,
+          "n14-formula-07": 7,
+          "n14-formula-wm015-q08-nonnegative": 8,
+          "n14-formula-wm015-q08-negative": 9,
+          "n14-formula-08": 10,
+          "n14-formula-09": 11,
+          "n14-wm018-q10-result": 12,
+          "n14-formula-11": 13,
+          "n14-formula-wm016-q12-left": 14,
+          "n14-formula-wm016-q12-right": 15,
+          "n14-formula-12": 16,
+          "n14-formula-13": 17,
+          "n14-wm019-q14-result": 18,
+          "n14-wm020-q15-result": 19,
+          "n14-wm022-q16-right": 20
+        }
+      },
+      "route": "/learning/textbook/math-numbers-expressions-n14"
+    }
+  ],
+  "approvalLineage": {
+    "existingMaterialApprovalsOnly": [
+      {
+        "block_ids": [
+          "n13",
+          "n14"
+        ],
+        "content_hash": "8b6544cc83e2f4bc549182e4ba5fd94a01aa50e99d5cd00bf7bb6f8355b5cb16",
+        "id": "proposal",
+        "proposal_hash": "a998f7b101fb6248e856837f88177152662d706df5745a4fa9710027cb246302"
+      }
+    ],
+    "scrollProposal": "P-W048-SCROLL-001",
+    "scrollPatchSHA256": "d94adcc41ff89b4411fcb93f4a470ed8794c43430b0cf038697e3aba4ec7e2de",
+    "newPublisherApproval": "NOT_GRANTED",
+    "alignmentSupplement": {
+      "proposal": "P-W048-ALIGN-001",
+      "proposalSHA256": "d10a0d29490cb0ae71f812c87f552cf2ea7707dc86def8d6282fa726191bc86d",
+      "approval": {
+        "proposal": "P-W048-ALIGN-001",
+        "quote": "いいよ続けて",
+        "source_ref": "conversation:current-user-reply-to-P-W048-ALIGN-001",
+        "proposalSHA256": "d10a0d29490cb0ae71f812c87f552cf2ea7707dc86def8d6282fa726191bc86d",
+        "acceptance": false,
+        "interpretation": "Actual adjacent assent to the exact additional Page/verification proposal; not quality-positive or application acceptance."
+      },
+      "approvalSHA256": "8faa376a85acae97398d1b3bbb6c211692619a60e7f3655a387616f37d430e08",
+      "productPatchSHA256": "5d0169f7cc58d4ed3f4dee8e7b41ffc5bfb3b312035b87f5103e37af34ad149d",
+      "verificationPatchSHA256": "1e15e5b437cf9b253c848df1be706d2fba1ff8f5acc897ae4cc19ecbf352ecc1",
+      "fullPatchSHA256": "e0f63169372664e911ec588b055d13a99ddba0916a9f3ef0db8cdaadfffee451",
+      "composition": "P-W048-003-SCROLL-001-ALIGN-001",
+      "retainsExistingP003AndScroll": true,
+      "applicationAcceptance": false
+    }
+  },
+  "retainedContractTransition": {
+    "previousPublisherSHA": "6cd11dc1e65810281ed897f865eed3e52b974992",
+    "previousSourceSHA": "f129ba78e496f0ccbce917c762357a81b92b0a2c",
+    "previousW047ContractSHA256": "710ad686343f89e751e1dadb72ddc01de9a8b0db7a75b5aa1e423c08842981e0",
+    "newW047ContractSHA256": "e029ff5f338ba2e9afb5fbe58a26111e7f06a626d0357f251a94ae9d9586662d",
+    "page": {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "before": "28560905206edb08a1cf1460692e9ccda9d7857d9b884af56dafa1ff42b9ed5f",
+      "after": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7"
+    },
+    "retainedW047Paths": 68,
+    "retainedW046Paths": 45,
+    "allW041Protected20Unchanged": true
+  },
+  "manifestOrder": [
+    "release.json",
+    "w047-release.json",
+    "w046-release.json",
+    "w048-release.json"
+  ],
+  "limits": [
+    "Current-source native R07/G2 passed for both units. New publisher-scope approval, actual dry-run and publication remain separate pending steps.",
+    "Legacy revision probes are current-Page isolated fixtures, never hosted old routes.",
+    "N14 manual20 is NOT_APPLICABLE_NO_OVERFLOW when supported by actual geometry; N13 manual20 remains separately measured.",
+    "User acceptance, Gold and fit are never generated by technical PASS."
+  ]
+}

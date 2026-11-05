@@ -137,6 +137,7 @@ if (report.status === 'PASS_BOUNDED_CURRENT_BUILD_BROWSER') {
   for (const [name, relative] of [
     ['N13_EXTENDED', 'ci-review/verify_extended.mjs'],
     ['SCROLL', 'scroll-review/verify_post_scroll.mjs'],
+    ['LEGACY_SCROLL', 'ci-review/verify_legacy_scroll.mjs'],
     ...(inputs.fixtures.some(f => f.code === 'n14') ? [['N14_EXTENDED', 'ci-review/verify_n14_extended.mjs']] : []),
   ]) {
     const target = path.join(out, 'extended-' + name.toLowerCase());

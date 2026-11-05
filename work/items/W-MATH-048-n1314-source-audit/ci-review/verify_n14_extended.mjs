@@ -48,7 +48,7 @@ const report = { schemaVersion: 'w048-n14-browser-extended/1', status: 'RUNNING'
     'Old saves and partial masks are synthetic records seeded into real browser persistence, never user data.',
     'Independent seed-record/archive assertions and the approved re-key allowlist are primary old-save checks. SSR actual effectiveTextbookProgress is supplementary, not an independent migration oracle.',
     'Formula-start/computed alignment is bounded geometry, not proof of all relation-glyph positions or visual teaching quality.',
-    'Real formula answers test wrong/correct post-answer scroll at every encountered formula judgment; manual20 retention requires a different visible overflowing row. Widths without overflow report zero-offset observations separately.',
+    'Real formula answers test wrong/correct post-answer scroll at every encountered formula judgment; manual20 retention requires a different visible row with at least 20px real overflow. Visible-row geometry inventories support explicit NOT_APPLICABLE_NO_OVERFLOW results; zero offsets alone do not establish manual20 retention.',
     'Correct answers alternate pointer/Enter; this is not all-41-ID keyboard coverage. Manual20 retention is after another row answer, not reload persistence.',
     'N14 is the last numbers unit: existing catalog has no next-chapter link. Test actual return-to-setup and written quadratic-function bridge.',
     'No hosted-source, user acceptance, semantic review, all-mode regression, or native R07 PASS is created by this script.'
@@ -145,12 +145,12 @@ try {
         const root = e.closest('[data-testid="textbook-reading-flow"]');
         const read = n => n && ({ id: n.dataset.testid, scrollLeft: n.scrollLeft,
           scrollWidth: n.scrollWidth, clientWidth: n.clientWidth, connected: n.isConnected });
-        const other = current && [...root.querySelectorAll('[data-testid^="textbook-formula-"]')]
-          .find(n => n !== current && n.getClientRects().length && n.scrollWidth - n.clientWidth >= 20);
+        const visible = [...root.querySelectorAll('[data-testid^="textbook-formula-"]')].filter(n => n.getClientRects().length);
+        const other = current && visible.find(n => n !== current && n.scrollWidth - n.clientWidth >= 20);
         if (current) current.scrollLeft = 20;
         if (other) other.scrollLeft = 20;
         window.__w048N14ScrollCalls = [];
-        return { target: read(current), unrelated: read(other) };
+        return { target: read(current), unrelated: read(other), visibleFormulaGeometry: visible.map(read) };
       });
       // Push before the interaction so an actual execution error retains its
       // attempted target, seeded offset and state in the original FAIL report.
@@ -165,7 +165,10 @@ try {
           return n && { id: n.dataset.testid, scrollLeft: n.scrollLeft,
             scrollWidth: n.scrollWidth, clientWidth: n.clientWidth, connected: n.isConnected };
         };
-        return { target: read(before.target), unrelated: read(before.unrelated), calls: window.__w048N14ScrollCalls };
+        const visibleFormulaGeometry = [...root.querySelectorAll('[data-testid^="textbook-formula-"]')]
+          .filter(n => n.getClientRects().length).map(n => ({ id: n.dataset.testid, scrollLeft: n.scrollLeft,
+            scrollWidth: n.scrollWidth, clientWidth: n.clientWidth, connected: n.isConnected }));
+        return { target: read(before.target), unrelated: read(before.unrelated), visibleFormulaGeometry, calls: window.__w048N14ScrollCalls };
       }, before);
       probe.answerResolved = await button.count() === 0;
       check(probe.answerResolved === (state === 'correct'), `${width}/${id}/${state}/real-answer-state`, probe);
@@ -238,8 +241,13 @@ try {
         flow.slice(0, flow.indexOf(b)).flatMap(slotsOf).every(id => solved.has(id)))
         .map(b => section.figures.find(f => f.id === b.figureId).src);
       const actual = await page.getByTestId('textbook-reading-flow').locator('img:visible').evaluateAll(ns => ns.map(e => e.getAttribute('src')));
-      check(JSON.stringify([...new Set(actual)].sort()) === JSON.stringify([...new Set(expected)].sort()), `${width}/${label}/source-figure-gate`, { expected, actual });
-      row.figures.push({ label, expected, actual });
+      // The source catalog uses /assets while the built app mounts those exact
+      // paths under VITE_BASE_PATH. Compare complete resolved URLs, never just
+      // filenames, so another asset/origin/path still fails the gate.
+      const expectedURLs = expected.map(src => new URL(src.startsWith('/assets/') ? src.slice(1) : src, process.env.APP_URL).href);
+      const actualURLs = actual.map(src => new URL(src, process.env.APP_URL).href);
+      check(JSON.stringify([...new Set(actualURLs)].sort()) === JSON.stringify([...new Set(expectedURLs)].sort()), `${width}/${label}/source-figure-gate`, { expected, actual, expectedURLs, actualURLs });
+      row.figures.push({ label, expected, actual, expectedURLs, actualURLs });
     }
     await open();
     let storageKey = await page.evaluate(() => Object.keys(localStorage).find(k => {
@@ -269,10 +277,29 @@ try {
       differentRowManual20: row.scrollProbes.filter(p => p.before.unrelated).length,
     };
     check(row.scrollSummary.targetFormulaAnswers > 0, `${width}/real-formula-scroll-observations`, row.scrollSummary);
-    if (width === 320) {
-      check(row.scrollSummary.actualOverflowResets > 0, `${width}/real-overflow-reproduction-required`, row.scrollSummary);
-      check(row.scrollSummary.differentRowManual20 > 0, `${width}/different-row-manual20-required`, row.scrollSummary);
-    }
+    const targetGeometry = row.scrollProbes.flatMap(p => p.before.target ? [p.before.target] : []);
+    const visibleGeometry = row.scrollProbes.flatMap(p => [...p.before.visibleFormulaGeometry, ...(p.after?.visibleFormulaGeometry ?? [])]);
+    const delta = n => n.scrollWidth - n.clientWidth;
+    row.scrollSummary.geometryEvidence = {
+      targetObservations: targetGeometry.length, visibleRowObservations: visibleGeometry.length,
+      maximumTargetOverflow: Math.max(0, ...targetGeometry.map(delta)),
+      maximumVisibleOverflow: Math.max(0, ...visibleGeometry.map(delta)),
+      scope: 'Actual before/after visible rows during the 41 judgment traversal; no artificial widths or style changes.',
+    };
+    row.scrollSummary.overflowResetStatus = targetGeometry.some(n => delta(n) > 1)
+      ? 'ACTUAL_OVERFLOW_RESET_MEASURED' : 'NOT_APPLICABLE_NO_OVERFLOW';
+    if (targetGeometry.some(n => delta(n) > 1)) check(row.scrollSummary.actualOverflowResets > 0, `${width}/real-overflow-reset-required-when-present`, row.scrollSummary);
+    // Do not require or fabricate a 20px position where the rendered content
+    // fits. Conversely, a real eligible different row must not be silently
+    // reported N/A if the probe failed to exercise it.
+    const eligibleOther20 = row.scrollProbes.some(p => p.before.target &&
+      p.before.visibleFormulaGeometry.some(n => n.id !== p.before.target.id && delta(n) >= 20));
+    row.scrollSummary.manual20Status = row.scrollSummary.differentRowManual20 > 0 ? 'ACTUAL_DIFFERENT_ROW_MANUAL20_MEASURED'
+      : eligibleOther20 ? 'UNVERIFIED_ELIGIBLE_DIFFERENT_ROW_NOT_MEASURED'
+      : !visibleGeometry.some(n => delta(n) > 1) ? 'NOT_APPLICABLE_NO_OVERFLOW'
+      : !visibleGeometry.some(n => delta(n) >= 20) ? 'NOT_APPLICABLE_NO_20PX_RANGE'
+      : 'NOT_APPLICABLE_NO_DIFFERENT_ROW_AT_ANSWER';
+    check(!eligibleOther20 || row.scrollSummary.differentRowManual20 > 0, `${width}/real-different-row-manual20-required-when-present`, row.scrollSummary);
     await nextUntilPending(); await expandHistory(); await figures('complete', solved);
     const full = await measure('complete-expanded-history');
     check(JSON.stringify(full.numbers.map(n => n.number).sort((a, b) => a - b)) === JSON.stringify(expectedNumbers), `${width}/all20-equation-numbers`, full.numbers);
@@ -367,7 +394,7 @@ try {
       check(added.filter(id => id !== first).every(id => actual.answers[id] === undefined), `${width}/r${test.revision}/${test.completed}/later-new-unanswered`, added);
       check(JSON.stringify(state[sentinel.unitId]) === JSON.stringify(sentinel), `${width}/r${test.revision}/${test.completed}/other-unit-kept`, state[sentinel.unitId]);
       await page.reload(); await page.getByTestId('textbook-reading-flow').waitFor();
-      const afterReload = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).state.textbookProgress[unit.unitId], storageKey);
+      const afterReload = await page.evaluate(({ key, unitId }) => JSON.parse(localStorage.getItem(key)).state.textbookProgress[unitId], { key: storageKey, unitId: unit.unitId });
       check(JSON.stringify(afterReload) === JSON.stringify(actual), `${width}/r${test.revision}/${test.completed}/reload-idempotent`);
       row.saves.push({ revision: test.revision, completed: test.completed, pending, preservedOldAnswers: Object.keys(test.seed.answers).length - allowedReopens.size, approvedReopenedIds: [...allowedReopens], independentSeedAndArchiveAssertions: true, firstRealAnswer: first });
     }

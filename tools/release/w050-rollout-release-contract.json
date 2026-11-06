@@ -1,0 +1,2500 @@
+{
+  "schema": "w050-rollout-publication-contract/2",
+  "status": "PINNED_SOURCE_T_WITH_ACTUAL_NATIVE13_PROOF",
+  "sourceSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+  "baselineSHA": "cb01da34c99005fde4a64fd932b31edeaa3790b3",
+  "assetPreparationSHA": "68ff774a90891a3db9a9f9a289b276dbf1b04363",
+  "previousPublisherSHA": "f223395815091ca7766241b152bcba014a8e808f",
+  "storageKey": "kyotsu-step-gate3-math-20261023",
+  "basePath": "/kyotsu-step-web/",
+  "approvedProposalSHA256": "417db7ecedd1161a2c595f5cc310cf3930dbe83b06eabe76401bcf9900c6a9c3",
+  "approvedPatchSHA256": "3bf5dcdcb443b7ffd0a32c5203937def2e1227da583d49639e5f9097dc61d2e5",
+  "productHashes": {
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+    "src/pages/TextbookUnitPage.tsx": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+    "src/components/textbook/n0106-reading-layout.css": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+    "src/data/textbook/math/numbers/n0106ReadingLayout.json": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+  },
+  "baselineModifiedHashes": {
+    "src/pages/TextbookUnitPage.tsx": "ffc165b4c6204045b85317995c748180365780d3d0a5cebd0e46ee573d1f77b8",
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "64a3ac59e5bab1dc384e4e3f69b448a8c1ff02404d32094ce9322b069970ba29"
+  },
+  "newProductPaths": [
+    "src/components/textbook/n0106-reading-layout.css",
+    "src/data/textbook/math/numbers/n0106ReadingLayout.json"
+  ],
+  "dataPointerChanges": [
+    {
+      "id": "A-TEXT-001",
+      "path": [
+        "n01",
+        "readingFlow",
+        40,
+        "parts"
+      ],
+      "beforeSHA256": "1533789a44772cb02879e87cf72f0ed0eb22cfa62ec5c49f6adece5751f0ced4",
+      "afterSHA256": "bf21ef8b8c09e82960f893d202b2adb70bccb992d0d07728ed4c0eb6b3192d45"
+    },
+    {
+      "id": "A-TEXT-002",
+      "path": [
+        "n02",
+        "readingFlow",
+        44,
+        "parts"
+      ],
+      "beforeSHA256": "6efd7a6de285d9bbae067a3001544d670123be60afc5768daf52c5cf367971ce",
+      "afterSHA256": "d232a1edff5fb5e7d05880b36b995cac14854550eb4413d20f4bcd7d83fa20ea"
+    },
+    {
+      "id": "A-TEXT-002",
+      "path": [
+        "n02",
+        "itemPrompts",
+        "n02-bridge-audit-sum-constant"
+      ],
+      "beforeSHA256": "433d99da6ccf8186af7f49a486f85da6217133aebfc2c11243a64469cb2c1b7f",
+      "afterSHA256": "55491c1015425c70ec154aed7ce7a2b36ec36c3a8bf040ea958ddfb4234fd5cf"
+    },
+    {
+      "id": "A-TEXT-003",
+      "path": [
+        "n02",
+        "readingFlow",
+        71,
+        "parts"
+      ],
+      "beforeSHA256": "6efd7a6de285d9bbae067a3001544d670123be60afc5768daf52c5cf367971ce",
+      "afterSHA256": "bb58b9f62122299a4e1295255465947a57336f979ad81cf29ec2f6a8abb7946d"
+    },
+    {
+      "id": "A-TEXT-003",
+      "path": [
+        "n02",
+        "itemPrompts",
+        "n02-bridge-audit-diff-constant"
+      ],
+      "beforeSHA256": "433d99da6ccf8186af7f49a486f85da6217133aebfc2c11243a64469cb2c1b7f",
+      "afterSHA256": "00f0300587dfd72b612b0ea3ad2cae17b86a8c94ade1217fe4add62f71fd92ff"
+    },
+    {
+      "id": "A-TEXT-004",
+      "path": [
+        "n02",
+        "readingFlow",
+        118,
+        "parts"
+      ],
+      "beforeSHA256": "2dec939425e90411c761dc02f16a44b20c1e64936b5c74e014eb1de4f49fdf85",
+      "afterSHA256": "8ebea8deed76c662724882795e9ba51485511d23b81536779cca25d60b0ab581"
+    },
+    {
+      "id": "A-TEXT-004",
+      "path": [
+        "n02",
+        "itemPrompts",
+        "n02-bridge-constant-sum"
+      ],
+      "beforeSHA256": "6d82244593b6e818205f11c636ef9135dc6b30a09153426c15a60f2d78f0d932",
+      "afterSHA256": "3a70d1dfeb6901dee13639dc947ce59b15ec8c761e0dd7be667d918aefa14b4c"
+    },
+    {
+      "id": "A-TEXT-005",
+      "path": [
+        "n02",
+        "itemPrompts",
+        "n02-05"
+      ],
+      "beforeSHA256": "4c2730bf271e931ebd5112e9e50e5f238dcd6cdb301ffc1207489646f0f76249",
+      "afterSHA256": "e93376a559a91b58ea15d32d975b44e43742480b620f94aedf615cdf0c99328c"
+    },
+    {
+      "id": "A-TEXT-006",
+      "path": [
+        "n03",
+        "readingFlow",
+        83,
+        "parts"
+      ],
+      "beforeSHA256": "f71f8074cc395f8121ff629583eaec34885fa3fe8ffc72d646794b8e85a3616e",
+      "afterSHA256": "3708bda0f2c0b914175f58219da75236bda7da5adb21929ca1ea5dc72ee94d16"
+    },
+    {
+      "id": "A-TEXT-007",
+      "path": [
+        "n04",
+        "readingFlow",
+        44,
+        "parts"
+      ],
+      "beforeSHA256": "3abe2eb550932b22368c8953944a923b2b9469c270971d6556497da348416b5e",
+      "afterSHA256": "86c99365d0c056e5d311f766c5f3e8a7fd5e7220a42bff995561d9c854d5ed71"
+    },
+    {
+      "id": "A-TEXT-007",
+      "path": [
+        "n04",
+        "itemPrompts",
+        "n04-bridge-audit-square-cross-count"
+      ],
+      "beforeSHA256": "3cb3910bb110386d191dbd4d69107b51890723caa8c899887d384106e8f78672",
+      "afterSHA256": "a8d7dfbe6b0fb2d809e76d83ef85942aab3ec22bbee8dc31c8d7693c5c41ee26"
+    },
+    {
+      "id": "A-TEXT-008",
+      "path": [
+        "n04",
+        "readingFlow",
+        192,
+        "parts"
+      ],
+      "beforeSHA256": "1140a960ffb5ffdf19db510ef26acc54494f08754fef3f26738b5f8e064de7a7",
+      "afterSHA256": "fa676dd77321a19324468e321759904adfdf21522c1146121bdaac331febb594"
+    },
+    {
+      "id": "A-TEXT-009",
+      "path": [
+        "n05",
+        "readingFlow",
+        39,
+        "parts"
+      ],
+      "beforeSHA256": "6015fc33ab983fa4698306af072908e88739ad36f1ef8197cdcfba70d50ad018",
+      "afterSHA256": "628bfe270d08892a13161e2ed42448e99f07bf334d34ee8781db6195ad9f370d"
+    },
+    {
+      "id": "A-TEXT-010",
+      "path": [
+        "n05",
+        "readingFlow",
+        40,
+        "parts"
+      ],
+      "beforeSHA256": "9c7457b0ab65318692c5f8db64bc25cb79bdd43e6b4da796189134f46d6c42c2",
+      "afterSHA256": "9527be59efa44a84da7ce8887c4dcf34e7750aaaa6abd244ca4f64fcf2274358"
+    },
+    {
+      "id": "A-TEXT-010",
+      "path": [
+        "n05",
+        "itemPrompts",
+        "n05-bridge-audit-positive-root-16"
+      ],
+      "beforeSHA256": "6e5d902bcc6cb062beff6346aaa07143d9da2dc8f710b4f5375ae90b804c4381",
+      "afterSHA256": "56686b514646bf1fe839abd4994d17b2e0ae49283dbcdb8d594466c7cf493c0b"
+    },
+    {
+      "id": "A-TEXT-011",
+      "path": [
+        "n05",
+        "readingFlow",
+        73,
+        "parts"
+      ],
+      "beforeSHA256": "c2ecc3f06b647b1fb120b58b5c4fdd12d0b2af721ae4ce814acc8b14c55e1891",
+      "afterSHA256": "1db5a3b2c5b19c0b3ee7fdaf6138194a0821ba19fd6c69329ef19dfffd4143b1"
+    },
+    {
+      "id": "A-TEXT-012",
+      "path": [
+        "n06",
+        "readingFlow",
+        13,
+        "parts"
+      ],
+      "beforeSHA256": "3055b7b6102a6fca3fe3bfc83daf36af48790454c05b15bd652baa9e3a9ec78d",
+      "afterSHA256": "b856ba24b9d3c1eddc6c07ecf39d35552194e3726e50ef8c848de35241310c78"
+    },
+    {
+      "id": "A-TEXT-013",
+      "path": [
+        "n06",
+        "readingFlow",
+        81,
+        "parts"
+      ],
+      "beforeSHA256": "f6424117d91d3b875e5d30a1a6b24051bfb11e7fcc3861e2516d9e3c48c37f72",
+      "afterSHA256": "d3bba1f35a6f0920aee06792e57451a7873303df1aca4e233b4e6c4bede62ab8"
+    },
+    {
+      "id": "A-TEXT-014",
+      "path": [
+        "n06",
+        "readingFlow",
+        86,
+        "parts"
+      ],
+      "beforeSHA256": "3411089c254347628699bbbc77fcdcefaaf5d99b16ad23687c4fb4478488b0ca",
+      "afterSHA256": "9616a245cc80e5badbf0401e9ebbe500b8cfb481a85b50cee7a3962950708150"
+    }
+  ],
+  "retainedOriginalPublisherHashes": {
+    "w048-release-contract.json": "c8082bb53d71ff0faae5a0abadc0ee167c6020963d486fa2e3fb5a9aec9294b6",
+    "w047-publish-check.mjs": "0255806892007ff2d09d70278a501f54ee5f5a51e9a6dc35f29f86f36b6bf2e5",
+    "w047-release-contract.json": "6d71168eb5bc08eb2fa3798ac48c1cd91e18b69549ede08a3b2e69b5e0bc48fc",
+    "w050-release-contract.json": "cbd9a57670c381c278d9670b9084a19cbe66c293f1829139916bb9882442172b",
+    "w046-publish-check.mjs": "4ae2269ecf43ad3b9b132073749fb880fb8b304209ec4dc9cff5da143fc80e99",
+    "w050-publish-check.mjs": "d882a6904d843f306f5a5c76fd9eced1f6ea5602cc7f9290374cf183a664ec7a",
+    "w048-publish-check.mjs": "24fb88d8d68e0d758ef2984cbeb20de703aeaea67c94c8f41deb7487dd1ae46e"
+  },
+  "retainedSourceScripts": {
+    "work/items/W-MATH-050-n0107-layout-prose/verify_source.py": "6652f03f05185e368e932ba24f0f0fecd3c654558fdd02909c9b4969f2360460",
+    "work/items/W-MATH-050-n0107-layout-prose/verify_browser.mjs": "53f65955d2a69487d608f1f8c0b28dc4e33ef5d5ee04947440613ee4db11f28a",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_current.mjs": "5d6f957e90c1153df25bb43f8870ed4216182cf1a848458a5ff37c56fc215a6e",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/capture_current.mjs": "123bbaf10b1a63330e3fec8383b4d86a0afe6e17c0a46a5c9234f0f913081a7f",
+    "work/items/W-MATH-048-n1314-source-audit/ci-review/verify_n14_extended.mjs": "3fbe3cdb9c8a058f8f96364b3c0a7237e117f747779f5dfc1be0e19390d1c41c"
+  },
+  "readinessHelperSHA256": "a91ccf52a7d592dde04020815590b141fa6feb627b4bc155b55c38a5d02cd637",
+  "rolloutVerifierSHA256": "b6d9ade0f49d65c9fea65c5805ca42fca840adf6a38199d0a62b7c542a7923c2",
+  "manifestOrder": [
+    "release.json",
+    "w047-release.json",
+    "w046-release.json",
+    "w048-release.json",
+    "w050-release.json"
+  ],
+  "units": [
+    {
+      "unitId": "math-numbers-expressions-n01",
+      "revision": 7,
+      "judgmentIDs": [
+        "n01-01",
+        "n01-bridge-r3-negative-coefficient",
+        "n01-bridge-r3-negative-degree",
+        "n01-bridge-r3-square-coefficient",
+        "n01-bridge-r3-square-degree",
+        "n01-bridge-r3-product-coefficient",
+        "n01-bridge-r3-product-degree",
+        "n01-03",
+        "n01-s4-y-coefficient",
+        "n01-s4-y-degree",
+        "n01-s4-axy-x",
+        "n01-s4-axy-y",
+        "n01-06a",
+        "n01-s5-square-regroup",
+        "n01-r3-q07-x2coef",
+        "n01-s5-linear-regroup",
+        "n01-r3-q07-xcoef",
+        "n01-r3-q07-const",
+        "n01-s4-like-degree",
+        "n01-s4-like-constant",
+        "n01-s5-example-linear-regroup",
+        "n01-bridge-r3-linear",
+        "n01-s5-example-cubic-regroup",
+        "n01-bridge-r3-cubic",
+        "n01-bridge-r3-reuse",
+        "n01-10a",
+        "n01-10b"
+      ],
+      "stages": [
+        {
+          "id": "heading-factors",
+          "blocks": 22,
+          "formulas": 7
+        },
+        {
+          "id": "heading-variable",
+          "blocks": 11,
+          "formulas": 4
+        },
+        {
+          "id": "marker-variable-check",
+          "blocks": 6,
+          "formulas": 2
+        },
+        {
+          "id": "heading-like-terms",
+          "blocks": 4,
+          "formulas": 1
+        },
+        {
+          "id": "n01-s4-like-square",
+          "blocks": 7,
+          "formulas": 4
+        },
+        {
+          "id": "n01-s4-like-linear",
+          "blocks": 5,
+          "formulas": 3
+        },
+        {
+          "id": "n01-s4-like-constant",
+          "blocks": 4,
+          "formulas": 2
+        },
+        {
+          "id": "n01-s4-like-assembly",
+          "blocks": 7,
+          "formulas": 3
+        },
+        {
+          "id": "marker-degree-check",
+          "blocks": 5,
+          "formulas": 1
+        },
+        {
+          "id": "n01-r3-linear-heading",
+          "blocks": 10,
+          "formulas": 5
+        },
+        {
+          "id": "n01-r3-quadratic-heading",
+          "blocks": 3,
+          "formulas": 1
+        },
+        {
+          "id": "n01-r3-cubic-heading",
+          "blocks": 9,
+          "formulas": 5
+        },
+        {
+          "id": "n01-r3-constant-heading",
+          "blocks": 3,
+          "formulas": 1
+        },
+        {
+          "id": "n01-r3-assembly-heading",
+          "blocks": 8,
+          "formulas": 3
+        },
+        {
+          "id": "n01-r3-interpret-heading",
+          "blocks": 6,
+          "formulas": 0
+        }
+      ]
+    },
+    {
+      "unitId": "math-numbers-expressions-n02",
+      "revision": 6,
+      "judgmentIDs": [
+        "n02-bridge-audit-like-b",
+        "n02-01",
+        "n02-02",
+        "n02-s5-classify-linear",
+        "n02-bridge-detail-linear-coefficient",
+        "n02-bridge-audit-constant-part",
+        "n02-s4-reuse-linear",
+        "n02-05",
+        "n02-bridge-audit-sum-cube",
+        "n02-s5-sum-square-regroup",
+        "n02-bridge-audit-sum-square",
+        "n02-bridge-audit-sum-linear",
+        "n02-bridge-audit-sum-constant",
+        "n02-s5-minus-distribute",
+        "n02-bridge-audit-minus-cube-sign",
+        "n02-bridge-audit-minus-square-sign",
+        "n02-bridge-audit-minus-constant-sign",
+        "n02-bridge-audit-diff-cube",
+        "n02-bridge-audit-diff-square",
+        "n02-bridge-audit-diff-linear",
+        "n02-bridge-audit-diff-constant",
+        "n02-bridge-distribute",
+        "n02-bridge-detail-cube-coefficient",
+        "n02-bridge-detail-signed-coefficient",
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant",
+        "n02-bridge-minus-multiplier",
+        "n02-bridge-minus-cube",
+        "n02-s5-minus-three-square-distribute",
+        "n02-bridge-minus-square",
+        "n02-bridge-minus-constant",
+        "n02-bridge-cube-sum",
+        "n02-bridge-like-square",
+        "n02-bridge-square-sum",
+        "n02-bridge-constant-sum",
+        "n02-bridge-outer-minus",
+        "n02-s5-group-a-coefficients",
+        "n02-bridge-audit-a-coefficient",
+        "n02-bridge-audit-b-coefficient",
+        "n02-12"
+      ],
+      "stages": [
+        {
+          "id": "heading-variable",
+          "blocks": 10,
+          "formulas": 3
+        },
+        {
+          "id": "marker-variable-check",
+          "blocks": 18,
+          "formulas": 7
+        },
+        {
+          "id": "heading-add",
+          "blocks": 23,
+          "formulas": 10
+        },
+        {
+          "id": "heading-minus",
+          "blocks": 12,
+          "formulas": 5
+        },
+        {
+          "id": "paragraph-minus-add",
+          "blocks": 12,
+          "formulas": 6
+        },
+        {
+          "id": "marker-multiply-check",
+          "blocks": 18,
+          "formulas": 7
+        },
+        {
+          "id": "n02-s4-minus-three-goal",
+          "blocks": 14,
+          "formulas": 6
+        },
+        {
+          "id": "paragraph-multiple-collect",
+          "blocks": 16,
+          "formulas": 7
+        },
+        {
+          "id": "heading-structure",
+          "blocks": 22,
+          "formulas": 8
+        }
+      ]
+    },
+    {
+      "unitId": "math-numbers-expressions-n03",
+      "revision": 7,
+      "judgmentIDs": [
+        "n03-bridge-audit-count-a",
+        "n03-01",
+        "n03-02",
+        "n03-03",
+        "n03-04",
+        "n03-05",
+        "n03-bridge-detail-negative-pair",
+        "n03-bridge-negative-cube",
+        "n03-s5-cube-x-count",
+        "n03-bridge-x-power",
+        "n03-bridge-detail-y-power",
+        "n03-06",
+        "n03-07",
+        "n03-bridge-audit-product-fourth",
+        "n03-s4-product-exponent",
+        "n03-bridge-audit-product-negative",
+        "n03-bridge-audit-product-last",
+        "n03-08",
+        "n03-09",
+        "n03-r3-q10-p1",
+        "n03-r3-q10-p2",
+        "n03-r3-q10-p3",
+        "n03-r3-q10-p4",
+        "n03-10",
+        "n03-bridge-audit-grid-collect",
+        "n03-11",
+        "n03-12",
+        "n03-bridge-detail-first-product",
+        "n03-bridge-detail-second-product",
+        "n03-bridge-detail-third-product",
+        "n03-bridge-first-row",
+        "n03-s5-minus-row-distribute",
+        "n03-bridge-audit-minus-minus",
+        "n03-bridge-second-row",
+        "n03-s5-collect-square-terms",
+        "n03-bridge-collect-square",
+        "n03-s5-collect-linear-terms",
+        "n03-bridge-collect-linear",
+        "n03-13"
+      ],
+      "stages": [
+        {
+          "id": "heading-indices",
+          "blocks": 21,
+          "formulas": 8
+        },
+        {
+          "id": "marker-powers-check",
+          "blocks": 26,
+          "formulas": 11
+        },
+        {
+          "id": "heading-distribute",
+          "blocks": 15,
+          "formulas": 7
+        },
+        {
+          "id": "paragraph-two-brackets",
+          "blocks": 16,
+          "formulas": 8
+        },
+        {
+          "id": "marker-final-check",
+          "blocks": 5,
+          "formulas": 2
+        },
+        {
+          "id": "n03-bridge-explain-n03-13-before",
+          "blocks": 12,
+          "formulas": 4
+        },
+        {
+          "id": "n03-bridge-second-row-lead",
+          "blocks": 19,
+          "formulas": 11
+        }
+      ]
+    },
+    {
+      "unitId": "math-numbers-expressions-n04",
+      "revision": 7,
+      "judgmentIDs": [
+        "n04-q01-p1",
+        "n04-q01-p2",
+        "n04-q01-p3",
+        "n04-q01-p4",
+        "n04-01",
+        "n04-s5-cross-regroup",
+        "n04-02",
+        "n04-03",
+        "n04-04",
+        "n04-bridge-audit-square-cross-count",
+        "n04-05",
+        "n04-bridge-audit-negative-cross-sign",
+        "n04-bridge-audit-negative-square-sign",
+        "n04-06",
+        "n04-bridge-audit-negative-cross-sum",
+        "n04-07",
+        "n04-bridge-audit-opposite-cancel",
+        "n04-08",
+        "n04-s4-square-rule",
+        "n04-bridge-formula-substitute",
+        "n04-bridge-audit-square-2a",
+        "n04-bridge-cross-coefficient",
+        "n04-s4-product-rule",
+        "n04-s5-product-substitute",
+        "n04-bridge-audit-square-3x",
+        "n04-11",
+        "n04-bridge-audit-general-linear",
+        "n04-12",
+        "n04-bridge-audit-concrete-cross",
+        "n04-bridge-audit-concrete-linear",
+        "n04-s5-three-substitute",
+        "n04-14",
+        "n04-bridge-restore-t",
+        "n04-bridge-expand-restored",
+        "n04-15",
+        "n04-s5-negative-c-substitute",
+        "n04-bridge-audit-minus-ac",
+        "n04-bridge-audit-minus-bc",
+        "n04-16",
+        "n04-s4-shared-part",
+        "n04-s4-opposite-part",
+        "n04-18",
+        "n04-bridge-audit-remaining-square",
+        "n04-19",
+        "n04-bridge-pairing",
+        "n04-bridge-pair-first",
+        "n04-bridge-pair-second",
+        "n04-20",
+        "n04-s5-four-substitute",
+        "n04-bridge-audit-t-linear",
+        "n04-21",
+        "n04-s5-four-restore-square",
+        "n04-bridge-detail-square-cross",
+        "n04-bridge-detail-square-last",
+        "n04-bridge-restore-square",
+        "n04-bridge-audit-ten-linear",
+        "n04-bridge-restore-ten",
+        "n04-bridge-restore-collect",
+        "n04-22"
+      ],
+      "stages": [
+        {
+          "id": "heading-four-products",
+          "blocks": 21,
+          "formulas": 9
+        },
+        {
+          "id": "n04-heading-1",
+          "blocks": 27,
+          "formulas": 10
+        },
+        {
+          "id": "n04-lead-06",
+          "blocks": 15,
+          "formulas": 7
+        },
+        {
+          "id": "n04-lead-08",
+          "blocks": 12,
+          "formulas": 6
+        },
+        {
+          "id": "n04-heading-2",
+          "blocks": 16,
+          "formulas": 5
+        },
+        {
+          "id": "n04-s4-product-heading",
+          "blocks": 10,
+          "formulas": 4
+        },
+        {
+          "id": "n04-lead-11",
+          "blocks": 26,
+          "formulas": 13
+        },
+        {
+          "id": "n04-s4-three-goal",
+          "blocks": 34,
+          "formulas": 15
+        },
+        {
+          "id": "n04-heading-3",
+          "blocks": 23,
+          "formulas": 10
+        },
+        {
+          "id": "n04-lead-20",
+          "blocks": 22,
+          "formulas": 9
+        },
+        {
+          "id": "n04-s5-four-definition",
+          "blocks": 11,
+          "formulas": 5
+        },
+        {
+          "id": "n04-s5-four-restore-square-formula",
+          "blocks": 28,
+          "formulas": 12
+        }
+      ]
+    },
+    {
+      "unitId": "math-numbers-expressions-n05",
+      "revision": 7,
+      "judgmentIDs": [
+        "n05-01",
+        "n05-bridge-detail-coefficient-factor",
+        "n05-bridge-factor-t",
+        "n05-02",
+        "n05-bridge-audit-reverse-constant",
+        "n05-03",
+        "n05-s5-reverse-difference",
+        "n05-05",
+        "n05-bridge-audit-positive-root-16",
+        "n05-bridge-audit-positive-root-9",
+        "n05-07",
+        "n05-08",
+        "n05-09",
+        "n05-s5-sum-condition-map",
+        "n05-s4-factor-product",
+        "n05-bridge-factor-candidates-1",
+        "n05-bridge-factor-candidates-2",
+        "n05-bridge-factor-candidates-3",
+        "n05-bridge-audit-factor-pair-select",
+        "n05-11",
+        "n05-s5-general-cross-regroup",
+        "n05-12",
+        "n05-s4-quadratic-condition",
+        "n05-s4-constant-condition",
+        "n05-s5-linear-condition-map",
+        "n05-bridge-cross-a",
+        "n05-bridge-cross-b",
+        "n05-bridge-cross-c",
+        "n05-15",
+        "n05-s5-last-linear-regroup",
+        "n05-s5-last-condition-map",
+        "n05-s4-last-constant-condition",
+        "n05-17",
+        "n05-bridge-search-rs-1",
+        "n05-bridge-search-rs-2",
+        "n05-bridge-search-rs-3",
+        "n05-bridge-search-rs-4",
+        "n05-bridge-select-rs",
+        "n05-18",
+        "n05-s4-common-factor",
+        "n05-bridge-audit-common-negative-four",
+        "n05-19",
+        "n05-bridge-audit-square-root-four",
+        "n05-s5-square-difference-rewrite",
+        "n05-20"
+      ],
+      "stages": [
+        {
+          "id": "n05-heading-1",
+          "blocks": 26,
+          "formulas": 8
+        },
+        {
+          "id": "n05-lead-04",
+          "blocks": 10,
+          "formulas": 4
+        },
+        {
+          "id": "n05-heading-2",
+          "blocks": 22,
+          "formulas": 9
+        },
+        {
+          "id": "n05-lead-09",
+          "blocks": 31,
+          "formulas": 14
+        },
+        {
+          "id": "n05-heading-3",
+          "blocks": 19,
+          "formulas": 9
+        },
+        {
+          "id": "n05-s4-candidate-heading",
+          "blocks": 21,
+          "formulas": 8
+        },
+        {
+          "id": "n05-heading-4",
+          "blocks": 17,
+          "formulas": 6
+        },
+        {
+          "id": "n05-lead-18",
+          "blocks": 21,
+          "formulas": 8
+        },
+        {
+          "id": "n05-lead-19",
+          "blocks": 19,
+          "formulas": 9
+        }
+      ]
+    },
+    {
+      "unitId": "math-numbers-expressions-n06",
+      "revision": 8,
+      "judgmentIDs": [
+        "n06-s4-substitution-part",
+        "n06-s5-substitute-whole",
+        "n06-bridge-x-expand",
+        "n06-bridge-audit-x-linear-sum",
+        "n06-bridge-audit-x-constant-sum",
+        "n06-02",
+        "n06-bridge-x-pair",
+        "n06-03",
+        "n06-bridge-audit-restore-x-first",
+        "n06-bridge-audit-restore-x-second",
+        "n06-04",
+        "n06-s4-fourth-substitution",
+        "n06-bridge-t-pair",
+        "n06-bridge-t-factor",
+        "n06-bridge-detail-restore-first",
+        "n06-bridge-detail-restore-second",
+        "n06-06",
+        "n06-bridge-detail-difference-first",
+        "n06-bridge-detail-difference-second",
+        "n06-07",
+        "n06-s4-x-degree",
+        "n06-s4-y-degree",
+        "n06-s4-choose-variable",
+        "n06-s5-classify-y",
+        "n06-bridge-audit-y-coefficient",
+        "n06-09",
+        "n06-10",
+        "n06-11",
+        "n06-bridge-last-pair",
+        "n06-12",
+        "n06-s5-classify-x",
+        "n06-bridge-audit-x-coefficient",
+        "n06-13",
+        "n06-s5-constant-linear-condition",
+        "n06-bridge-audit-constant-pair",
+        "n06-14",
+        "n06-bridge-audit-sum-y-coefficient",
+        "n06-bridge-audit-sum-y-constant",
+        "n06-s5-factor-sum-target",
+        "n06-s5-restore-coefficient-sum",
+        "n06-16"
+      ],
+      "stages": [
+        {
+          "id": "n06-heading-1",
+          "blocks": 25,
+          "formulas": 10
+        },
+        {
+          "id": "n06-s4-pair-method",
+          "blocks": 16,
+          "formulas": 7
+        },
+        {
+          "id": "n06-heading-2",
+          "blocks": 28,
+          "formulas": 11
+        },
+        {
+          "id": "n06-lead-07",
+          "blocks": 9,
+          "formulas": 3
+        },
+        {
+          "id": "n06-heading-3",
+          "blocks": 10,
+          "formulas": 2
+        },
+        {
+          "id": "n06-lead-09",
+          "blocks": 14,
+          "formulas": 7
+        },
+        {
+          "id": "n06-lead-11",
+          "blocks": 16,
+          "formulas": 7
+        },
+        {
+          "id": "n06-heading-4",
+          "blocks": 13,
+          "formulas": 4
+        },
+        {
+          "id": "n06-lead-14",
+          "blocks": 25,
+          "formulas": 14
+        },
+        {
+          "id": "n06-lead-15",
+          "blocks": 19,
+          "formulas": 8
+        }
+      ]
+    }
+  ],
+  "nativeGateState": "PASS_CURRENT_SIX_UNIT_R07_AND_SHARED_COHORT_G2",
+  "nativeProof": {
+    "schema": "w050-native-shared-cohort-proof/1",
+    "sourceSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+    "cohortID": "n0106-cohort",
+    "blockResults": {
+      "n01-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n01-rollout",
+          "artifactRef": "44658454d299725e28b885a4e8fd1e331572ff3c6ce1b6761560892b84c0a89a",
+          "inputHash": "ce87b724ef6ff990939eaff6a74b84df1652f89762a43a667291b8ff535145aa",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n01-rollout",
+          "artifactRef": "9c1340836c44e148e7d0ae5e08250ffd7ac14bbb0228e880ee686b942213cd33",
+          "inputHash": "0e580503cd05c504023e6d231b93b4a347e0e5583aee1afafd68d3fea9dd5df2",
+          "verdict": "PASS"
+        }
+      },
+      "n02-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n02-rollout",
+          "artifactRef": "f1d5c425dd91db484527b1b89cc981661f1e5985785920e5075f9aa58de564a0",
+          "inputHash": "e1a211e7c9d31080dafe8a08da93e73c4ceee30d9679bf761b00a8e555afc651",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n02-rollout",
+          "artifactRef": "4ed742a7706aaf257b2cf76ce07e104e1f076f716a70e3a84d006764847c5189",
+          "inputHash": "0f8deaeb3376d973a046b344bdec455cae5aef0737bc6a325b5aa44074fd85c1",
+          "verdict": "PASS"
+        }
+      },
+      "n03-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n03-rollout",
+          "artifactRef": "b65fda614d0d36477bc3869ad5a2c4fb8bed8e3c42619163bed8ddd33a0387a4",
+          "inputHash": "55c357a2897a713c10650b7003cf72bcde99b4b56d47b824eee661b070d2d964",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n03-rollout",
+          "artifactRef": "c23c5a28aec0c491102e6846450c8d3f8f64f263b9539641244851cacb2be540",
+          "inputHash": "0c3e19a1c848c592a533f80e2c84610af5874e68e78aa14957c533bb5972f91e",
+          "verdict": "PASS"
+        }
+      },
+      "n04-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n04-rollout",
+          "artifactRef": "8efcbfc85a5ba364caa3fc4dda3e118122ea520ac8b5f4e5d237dbb129b9691e",
+          "inputHash": "fe8466393ab6eb50408ff9bc201a55577c4d6e07a80cc45a6cd851f78e7b5f35",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n04-rollout",
+          "artifactRef": "c81117d7f4d704e650ab657a705744c43faff409bb32b2a29b418f736a077231",
+          "inputHash": "00ced1c5a119b43e38b8f02d06f25dc47cdd7dac211ae25d118acd78b562c298",
+          "verdict": "PASS"
+        }
+      },
+      "n05-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n05-rollout",
+          "artifactRef": "a4db4a2a53a4db143dedd5735e614abf5573e067978d89603e4ac696e94c5365",
+          "inputHash": "3bd86adf1ebea0b3ff752c057c9b314a8a912099a4bfa6febf59d6e174c3c35f",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n05-rollout",
+          "artifactRef": "def2b2cbb0b55e03e74159b256e02aba4254199766fbfb34d6bc8d94201456da",
+          "inputHash": "7d29c57eff5348280addba93ce0b7cc921a8f2bad89002325aa2eb069287f282",
+          "verdict": "PASS"
+        }
+      },
+      "n06-rollout": {
+        "R07_VERIFY": {
+          "node": "R07_VERIFY@n06-rollout",
+          "artifactRef": "00f3a33f01110fcef94cc77899174784bbd7db2bee9f05ff55cce9e5e39c039f",
+          "inputHash": "a4e96f8aeca61b38005379c848be73cf305d171607a82072990d7fe3ee7bcf61",
+          "verdict": "PASS"
+        },
+        "R07_SEMANTIC": {
+          "node": "R07_SEMANTIC@n06-rollout",
+          "artifactRef": "18c38e569ec5fcb9a5b2c7eb118cb91695276d8f318228bd3474b8b91b4173cf",
+          "inputHash": "5dd6ad56d94212e4a8317444c575e9d224a8ef48b33db02bcc14b9fec3846ce0",
+          "verdict": "PASS"
+        }
+      }
+    },
+    "cohortG2": {
+      "node": "G2_AUDIT@n0106-cohort",
+      "artifactRef": "d6b0453e2c55b4622af30831f2da844c0007040b8a848621431538e75b1c0b61",
+      "inputHash": "4a3f4fd66da0e063d92db95f4991ad000d757c7a58223e8092a8bfd2402d0148",
+      "verdict": "PASS",
+      "coveredBlocks": [
+        "n01-rollout",
+        "n02-rollout",
+        "n03-rollout",
+        "n04-rollout",
+        "n05-rollout",
+        "n06-rollout"
+      ],
+      "auditRows": [
+        {
+          "block_id": "n01-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "ffb3d59b55a7557d11f4587b9638063d298c1d5f191b62d4f796933004f18a8b"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "7bb0524b302111aeabb65d57f2233524e45b7e0ab5fafefac907e44c7d66f71e"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "f7221aef71c8f47c60b7f0b5decf69f6f7c42101ef3b6ba6c685888963d7803a"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "5c96209b0691791811a8fe222f9859745e0d01524e88cbb42bce48f642697ab4"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "src/data/textbook/math/numbers/n01Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "3528d887f4723f2413cb11fa77aac799023fbabd88784f5fb0f08c421a02ce4b",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "175ad762bbfcbe968ffae970ae1d4b25ccd8846a4473d9691fbc905d4bd7b191"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n01-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "48b02311b2f00824940eccefd3f0f5ca8aa7b1a829d949c206c54134d2d54360",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "6a1c3fa452254f247370ad189e5d17809435d6b566e961cd11b4a5bb43d6bfab"
+        },
+        {
+          "block_id": "n01-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n01-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "a7bef67303ba0816a43e2f92b6a1b113c8a9b4fa0ac77df6faafd428254d8ce9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "6df6b21e-09f9-45e1-b543-d53027481de7",
+            "b06c8f9d-4d48-4b34-9f14-f48f47137dc1",
+            "741d71a5-a0ce-4cc5-ae13-4a79b447d918",
+            "512631d1-ab01-490d-ae5f-d53bd001e413",
+            "ad14f5e2-0ed0-4f65-bf8d-252881aa0aff",
+            "4b308282-b094-4de1-92ab-b1fe4cb4e360",
+            "4ec1cebf-8d35-48bf-aac0-7ff0cc9418a8",
+            "c3a3ebeb-e632-482e-bc66-a617df49eebd",
+            "a6264dd8-ee39-47e5-94b8-a4f2f38be3f0",
+            "def7148e-d948-4887-abdd-88c5509af4cc",
+            "08dc20e9-f41a-4773-8321-1059e4fefbf7",
+            "1beb180f-6a66-49d6-89e5-3dd94cc3845d"
+          ],
+          "rowSHA256": "3f6ee64744d48bfb40a0a8dd74ef29a773d3b8aff4775b419903aa7d57660d85"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "9c408ee631f6647c278bee91e63b7dc78f699339c0fee9d199a69ac0e5e5e234"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "e8d7bdcb9547a5ae69ff61da11587cecc7a76e0da3e62b8a52cb430155802504"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "59c22a9342184bb5773099a8ad9f404b391205f0a820fee16028967b6c6f01f2"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "c8bfb0cdf6d1873b79e3e5801b920b8e9bb9f5240c74afbdb62f38eae2d4f041"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "src/data/textbook/math/numbers/n02Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "92d6aeb00449e051d420f9b19a4cf2ae8c8f143dad8a8be81e9675f9fdbcacb8",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "db8bf8f606e44e448e156a18b22619fce11cbba8399a624d7c98151310029eb5"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n02-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "bf6034cb59b86f610ceb15a756b083d3c363bf93e3dbed187e280ffa0b4844fa",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "82bb7c7636f06481e4d42dfcc1fbb78ba0ba1aa930be37d48698e84d7ea1f49c"
+        },
+        {
+          "block_id": "n02-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n02-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "757e9e859b60712eeae61b31dae81499b38bb9af2f68b6fa2dc1f498f1dd1bd9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "058df022-9bfc-4d48-9915-f8c6f21c3cbc",
+            "30d66890-2008-4ea4-9349-b04bf079090a",
+            "97163cfb-27ff-494b-a7ba-e71868a179f8",
+            "a278f33e-7b90-4e2c-829d-35c34c102ab5",
+            "138379df-af4b-4561-8ba2-d7d80ce60c94",
+            "4e4dfd3e-7403-4759-b20d-b94c1039af5e",
+            "ef4fabf4-580c-4d1e-8c3b-35deedb2cab0",
+            "7e5f8d15-b823-471a-ba31-081181188cef",
+            "ca00ba37-67c3-4c4f-90cb-4488cc8a1f92",
+            "d0915d32-ca4e-4f32-a162-eaf729d7b417",
+            "713a220e-4ce0-44f9-9739-1141e48b2038",
+            "24b22f95-95ec-4e5b-b358-6c1ae39ad4e5"
+          ],
+          "rowSHA256": "cff1d14ec4cc2fda89defee90f0fbe58c7b2d8326d8a860c1b4daa6563526ed2"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "9eb8b955be3c6839761a003a40cf8e25bde8b2bf281b6da5105a0159ab45c2c4"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "5d7183609d6817a9a1b9ff6990d2f7d0716239a4e1314610b62f61a525f0372d"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "af1daccbdf9b62a84fcf38bdfbe680b55b292cd5e9eb6c80479e0438af793643"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "a5015f1976072a46633a33d399f0e99f8982044bbadd9b5ab714c24bad1c700d"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "src/data/textbook/math/numbers/n03Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "b53f67a90a44660146549dd647a5546a55af1927a160735b37e3cc074b948651",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "0e081c622c70677238f3d3a71a52986837eee3a12f775e0ac49ca6909fc487d7"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n03-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "7f0c4fd2bbcf89318cda47de0d2b2cc3c67f899e1a285a3e06d081f0f1751972",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "a7abbf0ea85a21d20461576b6f40cdb2184a5d18b1311cbd522e8868df87046f"
+        },
+        {
+          "block_id": "n03-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n03-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "f19df2aff7d4590e5f5428ff8815eaa8328ff093c34c4f6d12eff74a6182c899",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "d38342f3-535f-42f0-8d37-c8e6f90ce2b4",
+            "7f35fc41-6c8b-4494-a90c-ce3c5e6014ab",
+            "57603c82-3270-4c05-b26f-d7857f62cc15",
+            "57b70a9c-f036-47a7-9c7b-28974f9bc58a",
+            "e643038b-1563-4d9e-a178-bcda48e75ce2",
+            "e4c038ac-80ee-4748-a303-b85f5201da36",
+            "de45fc27-18a1-4daf-9376-61684f7c8d44",
+            "df5e4a8f-795f-4e41-b9e5-68bc2c00a4f9",
+            "5c53ce36-13ef-4c1f-a32d-5ab999d54700",
+            "da4f67ea-8e39-46fd-9bd0-d1cec4560bb5",
+            "70fb41ba-7cbf-467c-93c2-cb5fc0665ab8",
+            "9e7347ad-0a15-400d-ad13-b5d0d0305836"
+          ],
+          "rowSHA256": "bc45f3dafb01ed8531128467db69c8a6558dd05d66ec20d390f33e824b445f0a"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "4bed909507cb7edd111ad50b61d808a83c6239d9b9b9de29a863650694af92c0"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "c6b446f6bc8b53fe81f8b37192bbdcd8c9e57a146a9a54ac5c828355c1cee7d2"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "39fa78e38bae7f0fcb45674c49faa2d518556db1adbe7101082a2eaaee99b21f"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "d3b571da54d7b5492aebe5a2cb882beeb90f6959c3ff2cd0a4f4d88555d3474d"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "src/data/textbook/math/numbers/n04Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "f866b9ec89cf53200a6ebe0b1f6de83556717661e89a9ec467d1f1c7a68e6a96",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "73342ebc6c6e78222962864eb7a07de7c651f2877775689bb56ca4511070ba1f"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n04-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "8feda4bb9ee6b7ae44147bb647be57fc2385d25329a2b5b43eda3e46c13f5ab2",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "06a60187b5be1f9315a731f49a615ee96da62e011faaf569542ea70673c64533"
+        },
+        {
+          "block_id": "n04-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n04-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "5fcce2441a6b70392fcde28e992acb25990d4cdb32f37a6a6ba9cfbc9f31c2ad",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "1cd2b90a-3827-45be-b55b-2e4f9b2c2500",
+            "b7ea0fe2-e3be-4179-b3cc-7708fc68a749",
+            "ec38ef56-2103-459d-9162-75aa670639cf",
+            "408062aa-f48f-43a9-aaca-dfc131b3b6a0",
+            "8051a56e-8edd-40f3-a068-c982b092959d",
+            "e61f6a98-af9d-4730-b689-84fc6bacbba1",
+            "cba6d72c-7be7-4463-b609-829b5833ba77",
+            "06a6dc63-b4bc-4767-9c3b-85d6b77a3b41",
+            "0ac74377-30f2-483d-b95b-7177102d17c9",
+            "e0de50e3-c31b-4b61-8a50-f167e144889d",
+            "c72ce0fd-1610-4d55-9249-13f08a66e1f3",
+            "8b625664-c474-4020-b0ee-bfb5e5effb5a"
+          ],
+          "rowSHA256": "c1f4fb293b1f3b7518f22f6b7d42e1794b445d0d5f2bca6939a11d158f6cd9d0"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "85a1aa2e0968c51502144851dc392b70e09ac7cc3ffc76b3bc01f88f162a739d"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "c8e28d6839f1fb473eeb1b24045f3de10137a230e47e25a2259eebabd3a9f233"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "35342c5df260fe591a380f310b87eb1a9f62f4e483cb50ee39acbebd796d1f2c"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "6538b55bfd2d20b4dd85f8709e983625af4b2968d0084392013d5bffd576ee98"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "src/data/textbook/math/numbers/n05Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "5784b497b7c54ca3de64ded66b78126400b600e31c966d2c23466278fafa40cb",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "1215604748c000310a8b95d18c06baf7e1e62b6f9197464e08418b838133f477"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n05-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "dc1f848f728d3396796e09b144f5fa158eea105ef8838dc9ce73a64eb52009a1",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "532365b75722728c493d385d34b2bfc68492afbd34d30f2bf6fb1ccaf50a86f7"
+        },
+        {
+          "block_id": "n05-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n05-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "3b609a18c35d5428c4a59e006b399ff9f7ac3f5bd5cce82d0d477bba00ee34e9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "4045df40-bc56-48db-a240-9695302f6da1",
+            "3502891c-9887-4dde-8ea2-beaa8ac7eb0f",
+            "59712876-1508-47ad-aea6-c32d0cc2a035",
+            "ff851c94-8b43-4dc7-910b-7b5249bf0067",
+            "c8652549-b116-4514-bf0f-fc5f668b4b66",
+            "370a2a10-f75c-4ec3-82b3-1999a651b06f",
+            "5b38789f-0af3-43a0-bab6-434e5ffcb099",
+            "b542c3f8-2067-4c39-974f-8346f4261a78",
+            "d0be067e-cefa-4355-a3ce-adc6a13c1ee8",
+            "2d900664-2606-4590-b452-ab107c565462",
+            "22c2197b-2d92-4c83-b8ba-afb68fabbac3",
+            "62656031-b6b5-45a8-b06e-2ee2311d97a3"
+          ],
+          "rowSHA256": "8e22b2c35d4dedce6fa4e6d85f05d9ead91b5a63f12e6f39d5faba51c65fd154"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "049b11805aaffcd9b3a5572310a1f76a5e6fd374a32b508d50d09096fd462356"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "src/pages/TextbookUnitPage.tsx",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "7b9c6337f94eef57b2276572bd343dcf8deef19396c84f1769f65fc6c2451fc2"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "src/components/textbook/n0106-reading-layout.css",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "52fc64d843e7ec5cc1e3a90e104d6a0d5ab9165fa18d2df925fb8dc80b2de533"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "73ce0f8fcfcf370a0320596b71894e4a14866d55668eb472962e7c8b6d7a71e3"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "src/data/textbook/math/numbers/n06Lesson.ts",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "c29c10ab6e1e9b10a31777395bf0b84c1c940a2ebd49c3b9dc96c5ed7bb8d79b",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "044b72abdd735d3742973a1c0d324fbbd81ac1e6b7221e2596e7d3724f359622"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n06-before.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "a56723f654194e0b2d090a2e3962e4d1cda2d2de11d793be9ca01287363d202b",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "8f6f44c294918ee48e9739e41eaf201359f5a476b4cb0beeb502834de817ed03"
+        },
+        {
+          "block_id": "n06-rollout",
+          "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n06-after.json",
+          "version": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+          "sha256": "3cbaa3d28421749d8b5fd0c79081423de08562de75969af363d225c882550b48",
+          "status": "PASS",
+          "new_regression": false,
+          "evidence_refs": [
+            "f06ff3c0-457e-453e-b69d-f6884d74827d",
+            "2c9cf9ac-3fd7-4bdd-9f0f-4ca8da9a47d6",
+            "5e9f3d9b-da03-40f8-9fde-346a253c2889",
+            "7b15eb09-9211-44c2-af1c-c655a9672a66",
+            "48644c6a-3193-4218-9fa2-aed0ef281c5d",
+            "bf2a95b0-2fb5-4bb2-828b-08b59946c4fa",
+            "f9b68087-47d2-400c-9280-c261e2e552dd",
+            "512467ac-118b-498a-91aa-c141f7ce29f6",
+            "b28a6d3b-9cf1-4c79-98a9-386742b7445b",
+            "205275b1-126d-49fe-8d32-32fe575a54fa",
+            "1418714c-79df-4ffd-80e6-a7e08a60dcad",
+            "590021d9-4ee1-4d83-9fcb-42e9ff15d380",
+            "044a522f-ce56-4993-885b-252d2a98b4dd",
+            "97d97505-b659-4962-a860-ba4570d30291",
+            "a63f020a-97d2-439f-a8c4-6172cfb02c71"
+          ],
+          "rowSHA256": "29f7e4dc5ec5ec7067444d0d042809caa10c53b636ac328a08ccabd811bac4b0"
+        }
+      ]
+    },
+    "ledgerHead": "048f429763cbef0ad8fbd56e359ac27034b9fd403c5ea8b04bc62609483b18a1",
+    "appAccepted": false,
+    "internalReportsPublic": false
+  },
+  "retainedNativeEvidenceQualification": "Historical native acceptance/gates remain at original source hashes; full retained publication suites run again on S. No old proof relabeled current.",
+  "userAcceptance": false,
+  "Gold": false,
+  "fit": false,
+  "publicBase": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "candidateBuild": {
+    "status": "PASS_SOURCE_QA_FOUR_SLICES_AND_IMMUTABLE_BUILD_BOUND",
+    "codeBindingMode": "SAME_HEAD_MATERIAL_AND_QA",
+    "sourceSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+    "qaProducerSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+    "runID": 42181751847,
+    "workflowPath": ".github/workflows/w050-rollout-browser.yml",
+    "distArtifact": {
+      "id": 13485997060,
+      "name": "w050-rollout-original-dist-42181751847-1",
+      "zipBytes": 4319779,
+      "zipSHA256": "f64d2d39618a89545b8caa1c7e764eb211a1064afd0702afa47a093909f790ec"
+    },
+    "reportSlices": [
+      {
+        "width": 320,
+        "id": 13486336380,
+        "name": "w050-rollout-reports-320-42181751847-1",
+        "zipBytes": 7121345,
+        "zipSHA256": "f10cfa8a1d2ada6add67f9ad399b630f204e7dbe3a6bd3685fa4679bdf7c2632"
+      },
+      {
+        "width": 390,
+        "id": 13488415345,
+        "name": "w050-rollout-reports-390-42181751847-1",
+        "zipBytes": 7077308,
+        "zipSHA256": "daf543bb528f2b9dd5ca103006dbbbd071806e44989f3c631e8d2a289e1d998a"
+      },
+      {
+        "width": 430,
+        "id": 13485991989,
+        "name": "w050-rollout-reports-430-42181751847-1",
+        "zipBytes": 7064342,
+        "zipSHA256": "c07a06613e05dcd9812010ea872603a02ed873461e851a9f8ed68c15ed10d70a"
+      },
+      {
+        "width": 1440,
+        "id": 13486531718,
+        "name": "w050-rollout-reports-1440-42181751847-1",
+        "zipBytes": 7086556,
+        "zipSHA256": "4dd056303e528a3c12f51b6eb98036fe5102a0d09406afdba34acca2ab28da27"
+      }
+    ],
+    "reuseScope": "Only actual same-head T immutable original build; no Q2/S relabeling or fallback.",
+    "workflowBranch": "work/w050-rollout-qa",
+    "imageSlices": [
+      {
+        "width": 320,
+        "id": 13486590937,
+        "name": "w050-rollout-images-320-42181751847-1",
+        "zipBytes": 3191594,
+        "zipSHA256": "cca925950fa89e3665ad826d892c120d5f79db9230dc231d294d69d7d46df92e"
+      },
+      {
+        "width": 390,
+        "id": 13488310674,
+        "name": "w050-rollout-images-390-42181751847-1",
+        "zipBytes": 3302972,
+        "zipSHA256": "44394b657d5982ea387fe1ba9bcb21add6a4f11cb49a7cbaa2455ec91fd2af7c"
+      },
+      {
+        "width": 430,
+        "id": 13486571073,
+        "name": "w050-rollout-images-430-42181751847-1",
+        "zipBytes": 3321294,
+        "zipSHA256": "133435ca5fa856107a929cfabe52ef4dd16887d46ec8b16aae2fddbc1d55b0fa"
+      },
+      {
+        "width": 1440,
+        "id": 13486367174,
+        "name": "w050-rollout-images-1440-42181751847-1",
+        "zipBytes": 3423737,
+        "zipSHA256": "6de05843d3a4aecddc9278d555517f9ba2ee8d34e1e64d4490d5f71699ff70c5"
+      }
+    ],
+    "originalDistFileCount": 120
+  },
+  "materialEquivalence": {
+    "previousMaterialSHA": "3a67ca4c75a21048d200cb55b540207783203f2c",
+    "productHashesUnchanged": {
+      "src/data/textbook/math/numbers/firstSectionTeaching.json": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
+      "src/pages/TextbookUnitPage.tsx": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9",
+      "src/components/textbook/n0106-reading-layout.css": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3",
+      "src/data/textbook/math/numbers/n0106ReadingLayout.json": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+    },
+    "requiredTrackedAppClosure": "src/public/package.json/pnpm-lock.yaml identical to previous material S; only approved QA infrastructure two-file changes permitted",
+    "status": "APP_SOURCE_EQUIVALENCE_AND_GENUINE_T_QA_SUCCESS_BOUND_NATIVE_PENDING",
+    "qualifiedMaterialT": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+    "appGitObjectEquality": {
+      "src": {
+        "priorGitObjectSHA": "0de21543beb331f673c61b158c52e0564afd0ab1",
+        "qualifiedGitObjectSHA": "0de21543beb331f673c61b158c52e0564afd0ab1",
+        "equal": true
+      },
+      "public": {
+        "priorGitObjectSHA": "f6369a54f998012513d969f83989026cfb78c729",
+        "qualifiedGitObjectSHA": "f6369a54f998012513d969f83989026cfb78c729",
+        "equal": true
+      },
+      "package.json": {
+        "priorGitObjectSHA": "b9bd72db44ce1cb397428006eb5e4bfaccc7a62f",
+        "qualifiedGitObjectSHA": "b9bd72db44ce1cb397428006eb5e4bfaccc7a62f",
+        "equal": true
+      },
+      "pnpm-lock.yaml": {
+        "priorGitObjectSHA": "149a1a1c936e36a6fdee006b849e72e8ad7756e0",
+        "qualifiedGitObjectSHA": "149a1a1c936e36a6fdee006b849e72e8ad7756e0",
+        "equal": true
+      }
+    },
+    "materialSToTChangedPaths": [
+      ".github/workflows/w050-rollout-browser.yml",
+      "tools/release/w050-rollout-browser.mjs",
+      "tools/release/w050-rollout-qa-contract.json"
+    ],
+    "qualificationRecordSHA256": "89cd67da9435a11c11b008417abfdbf24c22d4d91ff0398cc78d01c10b979871"
+  },
+  "p003": {
+    "approvedPatchCanonicalDigest": "79c60fd74822a77b3c378793ba510abd9cd5a376a43afbcd66f29b920f2291ea",
+    "approvedPatchRawSHA256": "328f2ac42113213834dca6686346ac469b3ed7af70b6d16011d911735f695ed6",
+    "operationsBeforeSHA256": "14141b312ae939405285ca8bb0c5e24e78cc5c9a56d12413a00a8de10a4f8530",
+    "afterHashes": {
+      "tools/textbook/operations.mjs": "0cbfa327b348668f6f481313814b226b7df6c28bf03608ab642ad50b277c0e3b",
+      "tools/textbook/tests/operations-warning-resolutions.test.mjs": "7c9efbe9e9035e58bab717ee092ea03d111c026de45878037cff7ff6a8edd17c"
+    },
+    "unchangedCompilerCoreSHA256": "f4dc507498c31c5135f4e7623916683b3b544513ca7105fbd45b895a86cd53f8",
+    "expectedTests": 27,
+    "serviceProducerSHA": "2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b",
+    "serviceParentSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+    "serviceTreeSHA": "a981619d19badc5386eb8cc673e0b06abfcdfb5a",
+    "serviceBranch": "work/w050-compiler-warning-forwarding-20261106"
+  },
+  "nativeServiceBinding": {
+    "status": "PASS_CURRENT_POST_P004_NATIVE_SERVICES",
+    "implementationHash": "8aaae74d28a5501f5ac3d606af387ad3d63e8a082bce08bd09d4a1a91cfade3c",
+    "p003PatchCanonicalDigest": "79c60fd74822a77b3c378793ba510abd9cd5a376a43afbcd66f29b920f2291ea",
+    "p003CodeHashes": {
+      "tools/textbook/operations.mjs": "0cbfa327b348668f6f481313814b226b7df6c28bf03608ab642ad50b277c0e3b",
+      "tools/textbook/tests/operations-warning-resolutions.test.mjs": "7c9efbe9e9035e58bab717ee092ea03d111c026de45878037cff7ff6a8edd17c"
+    },
+    "serviceProducerSHA": "a4dad490daa3d1bf8f7011f2915342c543e8a79c",
+    "definitionHash": "72a038fcc11618df7c2b7c202662026170e6770a485afae18c5cd6c2425c89e5",
+    "p004PatchRawSHA256": "f727d7ef680884dc01e59add4d8826b2122085158137f604270a51a18583cbbe",
+    "p004CodeHashes": {
+      "workflow/store.py": "4de52c3f4e4adb4b3c942172e26c583104d862a1c60c9d7477ece4156328d623",
+      "workflow/test_store_lock_identity.py": "379fa06f2510a2a4645e6c037b42a7811b81ed878cdeeff947b8a64f28071795"
+    },
+    "serviceManifestSHA256": "c5b5c8022ad7f634a858cedb720f9444923a73822f81a9945b3cdb40cfae3421",
+    "workflowManifestSHA256": "0bd8e5518fc50da22d3e9070c02ea126212e11ae6bf1c06f2d558dd7b8c4a791"
+  },
+  "cohort": {
+    "id": "n0106-cohort",
+    "coveredBlocks": [
+      "n01-rollout",
+      "n02-rollout",
+      "n03-rollout",
+      "n04-rollout",
+      "n05-rollout",
+      "n06-rollout"
+    ],
+    "requiredAuditRows": [
+      {
+        "block_id": "n01-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "src/data/textbook/math/numbers/n01Lesson.ts",
+        "sha256": "3528d887f4723f2413cb11fa77aac799023fbabd88784f5fb0f08c421a02ce4b"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n01-before.json",
+        "sha256": "48b02311b2f00824940eccefd3f0f5ca8aa7b1a829d949c206c54134d2d54360"
+      },
+      {
+        "block_id": "n01-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n01-after.json",
+        "sha256": "a7bef67303ba0816a43e2f92b6a1b113c8a9b4fa0ac77df6faafd428254d8ce9"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "src/data/textbook/math/numbers/n02Lesson.ts",
+        "sha256": "92d6aeb00449e051d420f9b19a4cf2ae8c8f143dad8a8be81e9675f9fdbcacb8"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n02-before.json",
+        "sha256": "bf6034cb59b86f610ceb15a756b083d3c363bf93e3dbed187e280ffa0b4844fa"
+      },
+      {
+        "block_id": "n02-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n02-after.json",
+        "sha256": "757e9e859b60712eeae61b31dae81499b38bb9af2f68b6fa2dc1f498f1dd1bd9"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "src/data/textbook/math/numbers/n03Lesson.ts",
+        "sha256": "b53f67a90a44660146549dd647a5546a55af1927a160735b37e3cc074b948651"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n03-before.json",
+        "sha256": "7f0c4fd2bbcf89318cda47de0d2b2cc3c67f899e1a285a3e06d081f0f1751972"
+      },
+      {
+        "block_id": "n03-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n03-after.json",
+        "sha256": "f19df2aff7d4590e5f5428ff8815eaa8328ff093c34c4f6d12eff74a6182c899"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "src/data/textbook/math/numbers/n04Lesson.ts",
+        "sha256": "f866b9ec89cf53200a6ebe0b1f6de83556717661e89a9ec467d1f1c7a68e6a96"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n04-before.json",
+        "sha256": "8feda4bb9ee6b7ae44147bb647be57fc2385d25329a2b5b43eda3e46c13f5ab2"
+      },
+      {
+        "block_id": "n04-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n04-after.json",
+        "sha256": "5fcce2441a6b70392fcde28e992acb25990d4cdb32f37a6a6ba9cfbc9f31c2ad"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "src/data/textbook/math/numbers/n05Lesson.ts",
+        "sha256": "5784b497b7c54ca3de64ded66b78126400b600e31c966d2c23466278fafa40cb"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n05-before.json",
+        "sha256": "dc1f848f728d3396796e09b144f5fa158eea105ef8838dc9ce73a64eb52009a1"
+      },
+      {
+        "block_id": "n05-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n05-after.json",
+        "sha256": "3b609a18c35d5428c4a59e006b399ff9f7ac3f5bd5cce82d0d477bba00ee34e9"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "sha256": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "src/pages/TextbookUnitPage.tsx",
+        "sha256": "63450da8e85a86634dc205844caa143897846a6fe5168f38394bea5e28f6adc9"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "src/components/textbook/n0106-reading-layout.css",
+        "sha256": "fc6b504cfa07ab1dcde0fe8415ebbfdcb42b4a69df6db5e3e5b1b1b0bf5a57a3"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "src/data/textbook/math/numbers/n0106ReadingLayout.json",
+        "sha256": "9873bce148e339c3a48e4ba9d5ca440cd834334c96890da9e839137a7248b7f7"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "src/data/textbook/math/numbers/n06Lesson.ts",
+        "sha256": "c29c10ab6e1e9b10a31777395bf0b84c1c940a2ebd49c3b9dc96c5ed7bb8d79b"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n06-before.json",
+        "sha256": "a56723f654194e0b2d090a2e3962e4d1cda2d2de11d793be9ca01287363d202b"
+      },
+      {
+        "block_id": "n06-rollout",
+        "artifact": "work/items/W-MATH-050-n0107-layout-prose/rollout/audit-ir/n06-after.json",
+        "sha256": "3cbaa3d28421749d8b5fd0c79081423de08562de75969af363d225c882550b48"
+      }
+    ],
+    "clientUnitMap": [
+      {
+        "blockID": "n01-rollout",
+        "unitId": "math-numbers-expressions-n01",
+        "route": "/learning/textbook/math-numbers-expressions-n01"
+      },
+      {
+        "blockID": "n02-rollout",
+        "unitId": "math-numbers-expressions-n02",
+        "route": "/learning/textbook/math-numbers-expressions-n02"
+      },
+      {
+        "blockID": "n03-rollout",
+        "unitId": "math-numbers-expressions-n03",
+        "route": "/learning/textbook/math-numbers-expressions-n03"
+      },
+      {
+        "blockID": "n04-rollout",
+        "unitId": "math-numbers-expressions-n04",
+        "route": "/learning/textbook/math-numbers-expressions-n04"
+      },
+      {
+        "blockID": "n05-rollout",
+        "unitId": "math-numbers-expressions-n05",
+        "route": "/learning/textbook/math-numbers-expressions-n05"
+      },
+      {
+        "blockID": "n06-rollout",
+        "unitId": "math-numbers-expressions-n06",
+        "route": "/learning/textbook/math-numbers-expressions-n06"
+      }
+    ],
+    "representativeReviewRoute": "/learning/textbook/math-numbers-expressions-n01",
+    "nativeArtifactCount": 13,
+    "auditRowBindingMode": "HASHED_PRIMITIVE_SUMMARIES_OF_REAL_PRIVATE_SHARED_G2_ROWS"
+  },
+  "p004": {
+    "serviceProducerSHA": "a4dad490daa3d1bf8f7011f2915342c543e8a79c",
+    "serviceParentSHA": "2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b",
+    "serviceTreeSHA": "5ad0824194168b8d724850fc23c72d2fa945a843",
+    "approvedPatchRawSHA256": "f727d7ef680884dc01e59add4d8826b2122085158137f604270a51a18583cbbe",
+    "afterHashes": {
+      "workflow/store.py": "4de52c3f4e4adb4b3c942172e26c583104d862a1c60c9d7477ece4156328d623",
+      "workflow/test_store_lock_identity.py": "379fa06f2510a2a4645e6c037b42a7811b81ed878cdeeff947b8a64f28071795"
+    },
+    "expectedTests": 20,
+    "definitionHash": "72a038fcc11618df7c2b7c202662026170e6770a485afae18c5cd6c2425c89e5",
+    "implementationHash": "8aaae74d28a5501f5ac3d606af387ad3d63e8a082bce08bd09d4a1a91cfade3c",
+    "serviceFileCount": 383,
+    "workflowFileCount": 39,
+    "serviceManifestSHA256": "c5b5c8022ad7f634a858cedb720f9444923a73822f81a9945b3cdb40cfae3421",
+    "workflowManifestSHA256": "0bd8e5518fc50da22d3e9070c02ea126212e11ae6bf1c06f2d558dd7b8c4a791"
+  }
+}

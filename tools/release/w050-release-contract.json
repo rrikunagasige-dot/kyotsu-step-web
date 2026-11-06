@@ -1,6 +1,6 @@
 {
   "schemaVersion": "w050-publication-contract/1",
-  "status": "DRAFT_UNAPPROVED_NOT_APPLIED",
+  "status": "APPROVED_SCOPE_CURRENT_NATIVE_GATES_VERIFIED",
   "sourceSHA": "cb01da34c99005fde4a64fd932b31edeaa3790b3",
   "publisherBase": "a39827c8ca25f7318c14ec28339c2379207dbe86",
   "publisherBranch": "work/w050-publisher-g3-20261106",
@@ -87,9 +87,25 @@
     "runID": 42073896975,
     "state": "SUCCESS_REPORTED_BY_ROOT_ORIGINALS_NOT_RETRIEVED_BY_THIS_DRAFT"
   },
-  "nativeGateState": "PENDING_ROOT_RECOVERY_NOT_ASSERTED",
+  "nativeGateState": "PASS_CURRENT_N04_R07_AND_G2",
   "publication": false,
   "userAcceptance": false,
   "Gold": false,
-  "fit": false
+  "fit": false,
+  "nativeProof": {
+    "work": "W-MATH-050-REVALIDATION",
+    "unit": "n04",
+    "sourceSHA": "cb01da34c99005fde4a64fd932b31edeaa3790b3",
+    "results": {
+      "R07_VERIFY": "8b05e3e24155ff10722a9635643b2a7c96a37a49b2bcf2a385d3de1e89f28d67",
+      "R07_SEMANTIC": "87700c3fb73d9b592937ef183e41ea550871bc7f9b8970dae498dc3fec4a95a4",
+      "G2_AUDIT": "b95c8fc62de80bb76ab245ddfd4e9665a850e450eac93d57276d3a708ae68ba2"
+    },
+    "ledgerHead": "749451e0c3d79a72a75f916b21682bc43f8e135446166751314710eeeafdfec6",
+    "ledgerEvents": 5422,
+    "proposalHash": "a87c1378476413a97d0b9a231010a96dc7426c740e907448d0527a60e61bef51",
+    "teamPolicyHash": "bfbcb115bb7b33463ba60879ba5640f4865faf1473bbec0139d33344feab0196",
+    "internalReportsPublic": false,
+    "appAccepted": false
+  }
 }

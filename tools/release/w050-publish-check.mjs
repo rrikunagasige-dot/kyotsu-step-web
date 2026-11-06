@@ -15,6 +15,13 @@ function bytes(){
  assert.equal(process.env.CANDIDATE_SHA,c.sourceSHA);
  assert.equal(process.env.VITE_STORAGE_NAMESPACE,c.storageKey);
  assert.equal(process.env.VITE_BASE_PATH,c.basePath);
+ // Only scoped gate identifiers/hashes are public; original native evidence stays private.
+ assert.equal(c.nativeGateState,'PASS_CURRENT_N04_R07_AND_G2','CURRENT_NATIVE_GATES_REQUIRED');
+ assert.equal(c.nativeProof?.sourceSHA,c.sourceSHA,'NATIVE_SOURCE_BINDING');
+ assert.equal(c.nativeProof?.unit,'n04','NATIVE_UNIT_BINDING');
+ assert.equal(c.nativeProof?.appAccepted,false,'NO_EARLY_APP_ACCEPTANCE');
+ for(const key of ['R07_VERIFY','R07_SEMANTIC','G2_AUDIT'])assert.match(c.nativeProof.results?.[key]??'',/^[0-9a-f]{64}$/,'NATIVE_RESULT_HASH '+key);
+ assert.match(c.nativeProof.ledgerHead,/^[0-9a-f]{64}$/,'NATIVE_LEDGER_HEAD');
  for(const[p,h]of Object.entries({...c.productHashes,...c.verificationHashes}))assert.equal(sha(p),h,'W050_EXACT_SOURCE '+p);
  for(const[p,h]of Object.entries(c.retainedPublisherHashes))assert.equal(sha(path.join(here,path.basename(p))),h,'W050_RETAINED_PUBLISHER '+p);
  // Existing exact reverse-four-parts check also validates all370 protected bytes.
@@ -49,7 +56,7 @@ else if(mode==='w048-current'){
 }else if(mode==='manifest'){
  assert.ok(!fs.existsSync('dist/w050-release.json'),'CLEAN_DIST_W050_REQUIRED');
  for(const name of c.manifestOrder.slice(0,-1)){const m=JSON.parse(fs.readFileSync('dist/'+name));assert.equal(m.sourceSHA,c.sourceSHA);assert.equal(m.storageKey,c.storageKey);assert.equal(m.publisherSHA??m.workflowSHA,process.env.GITHUB_SHA);}
- const m={schemaVersion:'w050-publication-manifest/1',work:'W-MATH-050',sourceSHA:c.sourceSHA,publisherSHA:process.env.GITHUB_SHA,storageKey:c.storageKey,basePath:c.basePath,contractSHA256:sha(contractPath),unit:c.unit,productHashes:c.productHashes,composition:c.composition,manifestOrder:c.manifestOrder,userAcceptance:false,Gold:false,fit:false,files:allFiles()};
+ const m={schemaVersion:'w050-publication-manifest/1',work:'W-MATH-050',sourceSHA:c.sourceSHA,publisherSHA:process.env.GITHUB_SHA,storageKey:c.storageKey,basePath:c.basePath,contractSHA256:sha(contractPath),unit:c.unit,productHashes:c.productHashes,composition:c.composition,manifestOrder:c.manifestOrder,userAcceptance:false,Gold:false,fit:false,nativeGateState:c.nativeGateState,nativeProof:c.nativeProof,files:allFiles()};
  assert.match(m.publisherSHA??'',/^[0-9a-f]{40}$/);assert.notEqual(m.publisherSHA,m.sourceSHA);
  fs.writeFileSync('dist/w050-release.json',JSON.stringify(m,null,2)+'\n');
 }else if(mode==='verify'){
@@ -57,7 +64,7 @@ else if(mode==='w048-current'){
  assert.ok(!fs.existsSync(path.join(out,'W050_HOST_CONTRACT.json')),'FRESH_ATTEMPT_REQUIRED');
  const raw=fs.readFileSync('dist/w050-release.json'),manifest=JSON.parse(raw),result={status:'RUNNING',sourceSHA:c.sourceSHA,publisherSHA:manifest.publisherSHA,base,filesVerified:0,publicHost:/^https:\/\/rrikunagasige-dot\.github\.io\/kyotsu-step-web\/$/.test(base),userAcceptance:false,nativeReceipt:false};
  try{
-  assert.equal(manifest.sourceSHA,c.sourceSHA);assert.equal(manifest.contractSHA256,sha(contractPath));assert.deepEqual(manifest.files,allFiles(),'DIST_CHANGED_AFTER_LAST_MANIFEST');
+  assert.equal(manifest.sourceSHA,c.sourceSHA);assert.equal(manifest.contractSHA256,sha(contractPath));assert.equal(manifest.nativeGateState,c.nativeGateState);assert.deepEqual(manifest.nativeProof,c.nativeProof);assert.deepEqual(manifest.files,allFiles(),'DIST_CHANGED_AFTER_LAST_MANIFEST');
   let match=false,last='';for(let i=0;i<60;i++){try{const r=await fetch(new URL('w050-release.json?source='+c.sourceSHA,base),{cache:'no-store',signal:AbortSignal.timeout(30000)});if(r.ok&&hash(Buffer.from(await r.arrayBuffer()))===hash(raw)){match=true;break;}last='manifest bytes differ';}catch(e){last=String(e)}await new Promise(r=>setTimeout(r,2000));}assert.ok(match,'ACTUAL_HOST_W050_MANIFEST '+last);
   for(const[p,h]of Object.entries(manifest.files)){assert.ok(!p.startsWith('/')&&!p.split('/').includes('..')&&!p.includes('://'),'UNSAFE_DIST_PATH');const response=await fetch(new URL(p,base),{cache:'no-store',signal:AbortSignal.timeout(30000)});assert.ok(response.ok,'ASSET_HTTP '+p);assert.equal(hash(Buffer.from(await response.arrayBuffer())),h,'ASSET_BYTES '+p);result.filesVerified++;}
   const browserOut=path.join(out,'browser');

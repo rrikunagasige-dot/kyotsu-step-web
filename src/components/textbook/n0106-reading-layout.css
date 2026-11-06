@@ -1,0 +1,23 @@
+/* Exact registry only. Specificity exceeds global first-theme card/prose rules. */
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile].math-textbook-stage.math-textbook-stage--current[data-testid] { padding:0; border:0; border-radius:0; box-shadow:none; background:transparent; gap:12px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile].math-textbook-stage > .math-textbook-stage-active-title { padding-inline:0; margin-inline:0; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] > [data-reading-layout-body] { min-width:0; font-size:18px; line-height:1.8; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] .reading-derivation-chain { display:flex; flex-direction:column; gap:0; margin:0; padding:0; border:0; background:transparent; font-size:18px; line-height:1.8; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] { min-width:0; margin:0; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] > * + [data-reading-layout-start-spacing],
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-chain] > [data-reading-layout-block] + [data-reading-layout-block] { margin-top:12px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] > * + [data-reading-layout-start-spacing="purpose"],
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-chain] > [data-reading-layout-block] + [data-reading-layout-spacing="purpose"] { margin-top:24px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] > * + [data-reading-layout-start-spacing="reason-equation"],
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-chain] > [data-reading-layout-block] + [data-reading-layout-spacing="reason-equation"] { margin-top:8px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] > .reading-block-with-choice,
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] .reading-paragraph { margin:0; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] .reading-paragraph { font-size:18px; line-height:1.8; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] .typeset-line { font-size:18px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] button.reading-formula-choice,
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] button.reading-inline-blank,
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] button.reading-choice-option { min-width:44px; min-height:44px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] button.reading-choice-option > strong { font-size:18px; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] > .reading-subheading,
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] > .reading-role-marker { margin:0; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] .reading-figure { margin-block:0; }

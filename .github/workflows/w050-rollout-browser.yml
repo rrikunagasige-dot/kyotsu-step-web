@@ -21,9 +21,9 @@ jobs:
       matrix:
         width: [320, 390, 430, 1440]
     env:
-      SOURCE_SHA: 3a67ca4c75a21048d200cb55b540207783203f2c
+      SOURCE_SHA: ${{ github.sha }}
       APP_URL: http://127.0.0.1:4173/kyotsu-step-web/
-      VITE_PREVIEW_COMMIT: 3a67ca4c75a21048d200cb55b540207783203f2c
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
       VITE_BASE_PATH: /kyotsu-step-web/
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
@@ -43,7 +43,7 @@ jobs:
       - name: Checkout fixed approved material source
         uses: actions/checkout@v4
         with:
-          ref: 3a67ca4c75a21048d200cb55b540207783203f2c
+          ref: ${{ github.sha }}
           path: app
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -70,10 +70,32 @@ jobs:
           pnpm run build
           pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/w050-rollout-preview.log 2>&1 &
           node --input-type=module -e 'for(let i=0;i<60;i++){try{const r=await fetch(process.env.APP_URL);if(r.ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,1000))}process.exit(1)'
+      - name: Bind contract to the actual material and QA checkout
+        working-directory: app
+        env:
+          QA_CONTRACT_TEMPLATE: ${{ github.workspace }}/qa/tools/release/w050-rollout-qa-contract.json
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import assert from 'node:assert/strict';
+          import { execFileSync } from 'node:child_process';
+          const head=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+          assert.match(head,/^[0-9a-f]{40}$/);
+          assert.equal(head,process.env.GITHUB_SHA,'Actual QA workflow head and material checkout must match');
+          assert.equal(head,process.env.SOURCE_SHA,'Material source identity must come from the actual checkout');
+          const raw=fs.readFileSync(process.env.QA_CONTRACT_TEMPLATE);
+          const contract=JSON.parse(raw);
+          assert.equal(contract.materialSourceSHA,'WORKFLOW_ACTUAL_CHECKED_OUT_HEAD');
+          assert.equal(contract.sourceBindingMode,'SAME_HEAD_MATERIAL_AND_QA');
+          for(const [path,expected] of Object.entries(contract.productHashes))
+            assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'),expected,'Approved product bytes: '+path);
+          fs.writeFileSync('/tmp/w050-qa-contract.json',JSON.stringify({...contract,materialSourceSHA:head,workflowHeadSHA:process.env.GITHUB_SHA,checkoutCommitSHA:head,contractTemplateSHA256:crypto.createHash('sha256').update(raw).digest('hex')},null,2)+'\n');
+          JS
       - name: All six units and protected readers in this width
         working-directory: app
         env:
-          W050_QA_CONTRACT: ${{ github.workspace }}/qa/tools/release/w050-rollout-qa-contract.json
+          W050_QA_CONTRACT: /tmp/w050-qa-contract.json
         run: node ../qa/tools/release/w050-rollout-browser.mjs
       - name: Preserve measured state JSON and progress logs
         if: always()
@@ -87,6 +109,7 @@ jobs:
             ${{ env.EVIDENCE_DIR }}/DIST_FILES.json
             ${{ env.EVIDENCE_DIR }}/states
             /tmp/w050-rollout-preview.log
+            /tmp/w050-qa-contract.json
           compression-level: 9
           if-no-files-found: warn
       - name: Preserve original source-QA app dist once
@@ -105,3 +128,4 @@ jobs:
           path: ${{ env.EVIDENCE_DIR }}/images
           compression-level: 6
           if-no-files-found: warn
+

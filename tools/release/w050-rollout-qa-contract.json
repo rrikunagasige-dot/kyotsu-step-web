@@ -1,6 +1,6 @@
 {
   "schema": "w050-rollout-qa-contract/1",
-  "materialSourceSHA": "3a67ca4c75a21048d200cb55b540207783203f2c",
+  "materialSourceSHA": "WORKFLOW_ACTUAL_CHECKED_OUT_HEAD",
   "approvedPatchSHA256": "3bf5dcdcb443b7ffd0a32c5203937def2e1227da583d49639e5f9097dc61d2e5",
   "productHashes": {
     "src/data/textbook/math/numbers/firstSectionTeaching.json": "292599f963a403fe9c693d4a70af2fdc866d22ade72e69723e553b8bd22e32ec",
@@ -621,5 +621,8 @@
   ],
   "scope": "LOCAL_CANDIDATE_BROWSER_QA_NO_DEPLOY_NO_ACCEPTANCE",
   "baselineMaterialSHA": "cb01da34c99005fde4a64fd932b31edeaa3790b3",
-  "assetPreparationCommitSHA": "68ff774a90891a3db9a9f9a289b276dbf1b04363"
+  "assetPreparationCommitSHA": "68ff774a90891a3db9a9f9a289b276dbf1b04363",
+  "sourceBindingMode": "SAME_HEAD_MATERIAL_AND_QA",
+  "equivalentPriorMaterialSourceSHA": "3a67ca4c75a21048d200cb55b540207783203f2c"
 }
+

@@ -1,0 +1,190 @@
+name: W050 read-only actual hosted verification
+on:
+  push:
+    branches: [work/w050-hosted-verification-20261106]
+    paths:
+      - .github/workflows/w050-hosted-verification.yml
+      - tools/release/w050-hosted-qa.py
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: w050-hosted-verification-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  w048:
+    name: W048 retained hosted verification with bounded figure readiness
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      CANDIDATE_SHA: cb01da34c99005fde4a64fd932b31edeaa3790b3
+      VITE_PREVIEW_COMMIT: cb01da34c99005fde4a64fd932b31edeaa3790b3
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+      APP_URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/
+      W050_EVIDENCE: /tmp/w050-hosted-w048
+    steps:
+      - name: Checkout actual QA producer Q
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: qa
+          sparse-checkout: |
+            .github/workflows/w050-hosted-verification.yml
+            tools/release/w050-hosted-qa.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Checkout immutable material CB
+        uses: actions/checkout@v4
+        with:
+          ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
+          path: app
+          persist-credentials: false
+      - name: Checkout actual public publisher f223
+        uses: actions/checkout@v4
+        with:
+          ref: f223395815091ca7766241b152bcba014a8e808f
+          path: publisher
+          sparse-checkout: tools/release
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve and verify original failed-run Pages artifact
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py prepare --job w048
+          --app "$GITHUB_WORKSPACE/app" --publisher "$GITHUB_WORKSPACE/publisher"
+          --qa "$GITHUB_WORKSPACE/qa" --evidence "$W050_EVIDENCE"
+      - name: Install exact existing application dependencies only
+        working-directory: app
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install original Japanese font coverage
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: Prepare Chromium for the original checks
+        working-directory: app
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Verify actual public site with preserved checks
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py verify --job w048
+          --app "$GITHUB_WORKSPACE/app" --publisher "$GITHUB_WORKSPACE/publisher"
+          --qa "$GITHUB_WORKSPACE/qa" --evidence "$W050_EVIDENCE"
+      - name: Collect original reports separately from large images
+        if: always()
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py collect --job w048
+          --evidence "$W050_EVIDENCE"
+      - name: Preserve small original w048 reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-hosted-w048-reports-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.W050_EVIDENCE }}/reports
+          compression-level: 9
+          if-no-files-found: warn
+      - name: Preserve original w048 PNGs independently
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-hosted-w048-images-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.W050_EVIDENCE }}/images
+          compression-level: 6
+          if-no-files-found: warn
+  n04:
+    name: N04 actual hosted stage1 verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: cb01da34c99005fde4a64fd932b31edeaa3790b3
+      VITE_PREVIEW_COMMIT: cb01da34c99005fde4a64fd932b31edeaa3790b3
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+      APP_URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/
+      W050_EVIDENCE: /tmp/w050-hosted-n04
+    steps:
+      - name: Checkout actual QA producer Q
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: qa
+          sparse-checkout: |
+            .github/workflows/w050-hosted-verification.yml
+            tools/release/w050-hosted-qa.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Checkout immutable material CB
+        uses: actions/checkout@v4
+        with:
+          ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
+          path: app
+          persist-credentials: false
+      - name: Checkout actual public publisher f223
+        uses: actions/checkout@v4
+        with:
+          ref: f223395815091ca7766241b152bcba014a8e808f
+          path: publisher
+          sparse-checkout: tools/release
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve and verify original failed-run Pages artifact
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py prepare --job n04
+          --app "$GITHUB_WORKSPACE/app" --publisher "$GITHUB_WORKSPACE/publisher"
+          --qa "$GITHUB_WORKSPACE/qa" --evidence "$W050_EVIDENCE"
+      - name: Install exact existing application dependencies only
+        working-directory: app
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install original Japanese font coverage
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: Prepare Chromium for the original checks
+        working-directory: app
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Verify actual public site with preserved checks
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py verify --job n04
+          --app "$GITHUB_WORKSPACE/app" --publisher "$GITHUB_WORKSPACE/publisher"
+          --qa "$GITHUB_WORKSPACE/qa" --evidence "$W050_EVIDENCE"
+      - name: Collect original reports separately from large images
+        if: always()
+        run: >-
+          python qa/tools/release/w050-hosted-qa.py collect --job n04
+          --evidence "$W050_EVIDENCE"
+      - name: Preserve small original n04 reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-hosted-n04-reports-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.W050_EVIDENCE }}/reports
+          compression-level: 9
+          if-no-files-found: warn
+      - name: Preserve original n04 PNGs independently
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-hosted-n04-images-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.W050_EVIDENCE }}/images
+          compression-level: 6
+          if-no-files-found: warn

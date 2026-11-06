@@ -1,0 +1,107 @@
+name: W050 N01-N06 candidate browser QA
+on:
+  push:
+    branches: [work/w050-rollout-qa]
+    paths:
+      - .github/workflows/w050-rollout-browser.yml
+      - tools/release/w050-rollout-browser.mjs
+      - tools/release/w050-rollout-qa-contract.json
+permissions:
+  contents: read
+concurrency:
+  group: w050-rollout-qa-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  browser:
+    name: Four-width candidate slice ${{ matrix.width }}px
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        width: [320, 390, 430, 1440]
+    env:
+      SOURCE_SHA: 3a67ca4c75a21048d200cb55b540207783203f2c
+      APP_URL: http://127.0.0.1:4173/kyotsu-step-web/
+      VITE_PREVIEW_COMMIT: 3a67ca4c75a21048d200cb55b540207783203f2c
+      VITE_BASE_PATH: /kyotsu-step-web/
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      STORAGE_KEY: kyotsu-step-gate3-math-20261023
+      W050_QA_WIDTHS: ${{ matrix.width }}
+      EVIDENCE_DIR: /tmp/w050-rollout-${{ matrix.width }}
+    steps:
+      - name: Checkout actual QA producer Q code only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: qa
+          persist-credentials: false
+          sparse-checkout: |
+            tools/release/w050-rollout-browser.mjs
+            tools/release/w050-rollout-qa-contract.json
+          sparse-checkout-cone-mode: false
+      - name: Checkout fixed approved material source
+        uses: actions/checkout@v4
+        with:
+          ref: 3a67ca4c75a21048d200cb55b540207783203f2c
+          path: app
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - name: Exact dependency installation
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+      - name: Original Japanese fonts and Chromium
+        working-directory: app
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+          pnpm exec playwright install --with-deps chromium
+      - name: Build exact candidate and start temporary local server
+        working-directory: app
+        run: |
+          pnpm run build
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/w050-rollout-preview.log 2>&1 &
+          node --input-type=module -e 'for(let i=0;i<60;i++){try{const r=await fetch(process.env.APP_URL);if(r.ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,1000))}process.exit(1)'
+      - name: All six units and protected readers in this width
+        working-directory: app
+        env:
+          W050_QA_CONTRACT: ${{ github.workspace }}/qa/tools/release/w050-rollout-qa-contract.json
+        run: node ../qa/tools/release/w050-rollout-browser.mjs
+      - name: Preserve measured state JSON and progress logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-rollout-reports-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.EVIDENCE_DIR }}/REPORT.json
+            ${{ env.EVIDENCE_DIR }}/PROGRESS.ndjson
+            ${{ env.EVIDENCE_DIR }}/FIXTURES.json
+            ${{ env.EVIDENCE_DIR }}/DIST_FILES.json
+            ${{ env.EVIDENCE_DIR }}/states
+            /tmp/w050-rollout-preview.log
+          compression-level: 9
+          if-no-files-found: warn
+      - name: Preserve original source-QA app dist once
+        if: ${{ success() && matrix.width == 320 }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-rollout-original-dist-${{ github.run_id }}-${{ github.run_attempt }}
+          path: app/dist
+          compression-level: 6
+          if-no-files-found: error
+      - name: Preserve representative and failure original PNGs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w050-rollout-images-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.EVIDENCE_DIR }}/images
+          compression-level: 6
+          if-no-files-found: warn

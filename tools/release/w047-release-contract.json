@@ -1,6 +1,6 @@
 {
-  "sourceSHA": "96a24d6bffa3a0f6e4c5340e29a5a0364664fb77",
-  "mainBase": "6cd11dc1e65810281ed897f865eed3e52b974992",
+  "sourceSHA": "cb01da34c99005fde4a64fd932b31edeaa3790b3",
+  "mainBase": "a39827c8ca25f7318c14ec28339c2379207dbe86",
   "storageKey": "kyotsu-step-gate3-math-20261023",
   "required": {
     "package.json": "7e65e33d4a9679015258b7700320bd7b426648868ea60ca01f770e5b36d6858e",
@@ -47,7 +47,7 @@
     "src/domain/textbookSchema.ts": "f6156ad017672b66b0dc5b01926240efe038a215e755799c2491425ac423c246",
     "src/pages/N0910ArchivePage.tsx": "321b2b864c22a96eb842ab5dd9fccd60ec2bbde1a52e341678aaf6669e331d61",
     "src/pages/N0910RevisionPage.tsx": "6753ea46ed117c6229c69a1751f301c3096275e24c912b98cadb8e7aed98f8f8",
-    "src/pages/TextbookUnitPage.tsx": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7",
+    "src/pages/TextbookUnitPage.tsx": "ffc165b4c6204045b85317995c748180365780d3d0a5cebd0e46ee573d1f77b8",
     "work/items/W-MATH-043-n0910-restart/NODE_DESIGN.json": "c96418c7aa41e30270ddce68e684fd98d1fed3224bf84a495ff9ff6a31fce1e4",
     "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
     "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
@@ -137,5 +137,33 @@
     "#/learning/textbook/math-numbers-expressions-n11",
     "#/learning/textbook/math-numbers-expressions-n12"
   ],
-  "approvalBoundary": "W048 publisher binding DRAFT UNAPPROVED; R07/G2 pending. No execution, main merge, hosting or acceptance authorized by this file."
+  "approvalBoundary": "W050 publisher proposal only: unapproved, unapplied; old acceptance/native records remain at original sources.",
+  "w050ApprovedComposition": {
+    "previousPublisher": "a39827c8ca25f7318c14ec28339c2379207dbe86",
+    "previousSource": "96a24d6bffa3a0f6e4c5340e29a5a0364664fb77",
+    "proposal": "P-W050-001",
+    "proposalSHA256": "28ea684b625175fc51a50b36219ddae8df051896893b9a806fc6e6d3255f1fa9",
+    "approvedProductPatchSHA256": "3834ccbd98601b5626bb7ec25ec745be380c34b6e0734c23749ad2fa9141144a",
+    "layoutRefinementSHA256": "afa725d9c7edb2310b22e910e748b06af94e32a94271376c1923cace8b59acb1",
+    "page": {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "before": "77d52186d55c949a088f5629dcfb8f5bb93e033f04a7748f6d9c21fd8c72b2b7",
+      "after": "ffc165b4c6204045b85317995c748180365780d3d0a5cebd0e46ee573d1f77b8"
+    },
+    "firstSectionTeaching": {
+      "path": "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "before": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+      "after": "64a3ac59e5bab1dc384e4e3f69b448a8c1ff02404d32094ce9322b069970ba29",
+      "delta": "Exactly four paragraph parts; original raw bytes reconstructed by existing verify_source.py"
+    },
+    "newCSS": {
+      "path": "src/components/textbook/n04-sample-reading.css",
+      "previousPublicState": "ABSENT",
+      "nativeScaffoldBeforeSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "8daa11a71424bd35001a9e60d9d0acb681a0cad753038216324d16af2a38446f"
+    },
+    "retainedW048Alignment": true,
+    "retainedW046W047AndW041Checks": true,
+    "scope": "N04r7 heading-four-products only; no new judgment/answer/revision/storage migration"
+  }
 }

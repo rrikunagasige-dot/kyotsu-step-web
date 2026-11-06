@@ -19,7 +19,7 @@ assert.equal(process.env.VITE_BASE_PATH,c.basePath,'EXISTING_BASE_PATH_REQUIRED'
 for(const[p,h]of Object.entries({...c.requiredProductHashes,...c.originalFigureHashes,...c.verificationSourceHashes}))assert.equal(sha(p),h,'EXACT_SOURCE_BYTES_MISMATCH '+p);
 assert.deepEqual(c.units.map(u=>[u.code,u.revision,u.itemIds.length]),[['n13',5,18],['n14',11,41]]);
 assert.equal(sha(path.join(here,'w047-release-contract.json')),c.retainedContractTransition.newW047ContractSHA256,'RETAINED_CONTRACT_TRANSITION_MISMATCH');
-const allFiles=()=>{const files={};function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);assert.ok(!e.isSymbolicLink(),'DIST_SYMLINK_REJECTED');if(e.isDirectory())walk(p);else if(e.isFile()&&p!=='dist/w048-release.json')files[p.slice(5)]=sha(p);}}walk('dist');return files;};
+const allFiles=()=>{const files={};function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);assert.ok(!e.isSymbolicLink(),'DIST_SYMLINK_REJECTED');if(e.isDirectory())walk(p);else if(e.isFile()&&!['dist/w048-release.json','dist/w050-release.json'].includes(p))files[p.slice(5)]=sha(p);}}walk('dist');return files;};
 if(mode==='bytes-only')console.log(JSON.stringify({status:'PASS_EXACT_SOURCE_BYTES_ONLY',sourceSHA:head,nativeGates:c.nativeGateStateAtDraft,publication:false}));
 else if(mode==='manifest'){
  assert.ok(!fs.existsSync('dist/w048-release.json'),'CLEAN_DIST_W048_MANIFEST_ALREADY_EXISTS');
@@ -27,7 +27,7 @@ else if(mode==='manifest'){
  const m={schemaVersion:'w048-publication-manifest/1',work:'W-MATH-048',sourceSHA:c.sourceSHA,publisherSHA:process.env.GITHUB_SHA??null,storageKey:c.storageKey,basePath:c.basePath,contractSHA256:sha(contractPath),units:c.units,requiredProductHashes:c.requiredProductHashes,originalFigureHashes:c.originalFigureHashes,manifestOrder:c.manifestOrder,userAcceptance:false,Gold:false,fit:false,files:allFiles()};
  assert.ok(/^[a-f0-9]{40}$/.test(m.publisherSHA??''),'ACTUAL_PUBLISHER_SHA_REQUIRED');assert.notEqual(m.publisherSHA,m.sourceSHA,'PUBLISHER_SOURCE_MUST_BE_DISTINCT');
  for(const name of ['release.json','w047-release.json','w046-release.json'])assert.ok(m.files[name]);
- fs.writeFileSync('dist/w048-release.json',JSON.stringify(m,null,2)+'\n');console.log('W048_MANIFEST_CREATED_LAST');
+ fs.writeFileSync('dist/w048-release.json',JSON.stringify(m,null,2)+'\n');console.log('W048_MANIFEST_CREATED_BEFORE_W050');
 }else if(mode==='verify'){
  const base=process.env.APP_URL,out=process.env.EVIDENCE_DIR;assert.ok(base&&/^https?:\/\//.test(base)&&base.endsWith('/'));assert.ok(out&&path.isAbsolute(out),'TEMP_EVIDENCE_OUTSIDE_SOURCE_REQUIRED');
  // Resolve existing ancestors too: a not-yet-created evidence directory under
@@ -47,7 +47,7 @@ else if(mode==='manifest'){
   let matched=false,last='';for(let i=0;i<60;i++){try{const response=await fetch(new URL('w048-release.json?source='+c.sourceSHA,base),{cache:'no-store',signal:AbortSignal.timeout(30000)}),bytes=Buffer.from(await response.arrayBuffer());if(response.ok&&digest(bytes)===digest(expected)){matched=true;break;}last='Complete manifest bytes differ';}catch(e){last=String(e)}await new Promise(r=>setTimeout(r,2000));}assert.ok(matched,'HOST_W048_MANIFEST_NOT_REACHED '+last);
   for(const[p,h]of Object.entries(m.files)){assert.ok(!p.startsWith('/')&&!p.split('/').includes('..'),'UNSAFE_ASSET_PATH');const response=await fetch(new URL(p,base),{cache:'no-store',signal:AbortSignal.timeout(30000)});assert.ok(response.ok,'HOST_ASSET_HTTP '+p);assert.equal(digest(Buffer.from(await response.arrayBuffer())),h,'HOST_ASSET_BYTES '+p);result.filesVerified++;}
   const fixtureOut=path.join(out,'contracts'),browserOut=path.join(out,'browser');
-  execFileSync(process.execPath,[work+'/ci-review/verify_current.mjs'],{stdio:'inherit',env:{...process.env,EVIDENCE_DIR:fixtureOut}});
+  execFileSync(process.execPath,[path.join(here,'w050-publish-check.mjs'),'w048-current'],{stdio:'inherit',env:{...process.env,EVIDENCE_DIR:fixtureOut}});
   const fixtures=JSON.parse(fs.readFileSync(path.join(fixtureOut,'BROWSER_FIXTURES.json')));assert.deepEqual(fixtures.fixtures.map(f=>f.code),['n13','n14']);
   for(const u of c.units){const f=fixtures.fixtures.find(f=>f.code===u.code);assert.equal(f.unit.revision,u.revision);assert.deepEqual(f.unit.sections[0].items.map(i=>i.id),u.itemIds);assert.deepEqual(f.contract,u.displayContract);}
   const require=createRequire(path.resolve('package.json')),{chromium}=require('@playwright/test'),browser=await chromium.launch({headless:true,args:['--no-sandbox']});

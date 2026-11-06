@@ -119,7 +119,19 @@ export function operate(operation,input){
  }
  if(operation==='choices')return validateChoices(input.choices,input.answer,input.options);
  if(operation==='verify-ir')return validateIR(input);
- if(operation==='compile-ir')return {status:'PASS',compiled:compileIR(input)};
+ if(operation==='compile-ir'){
+  if(!Object.hasOwn(input,'ir'))return {status:'PASS',compiled:compileIR(input)};
+  const ir=input.ir,resolutions=input.warningResolutions??[];
+  if(!Array.isArray(resolutions))throw Error('warningResolutions must be an array');
+  const warningIds=new Set(validateIR(ir).findings.filter(f=>f.severity==='WARN').map(f=>f.id)),seen=new Set();
+  for(const r of resolutions){
+   if(!r||typeof r.findingId!=='string'||!warningIds.has(r.findingId)||seen.has(r.findingId))throw Error('unknown or duplicate warning resolution');
+   const e=r.evidence,nonempty=typeof e==='string'?e.trim().length>0:e!==null&&typeof e==='object'&&!Array.isArray(e)&&Object.keys(e).length>0;
+   if(!nonempty)throw Error('warning resolution evidence is empty');
+   seen.add(r.findingId);
+  }
+  return {status:'PASS',compiled:compileIR(ir,{warningResolutions:resolutions})};
+ }
  if(operation==='visible-snapshots'){
   if(input.ir.schemaVersion==='production-ir/2'){
    const compiled=compileIR(input.ir);

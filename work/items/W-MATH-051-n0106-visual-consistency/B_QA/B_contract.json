@@ -1,15 +1,15 @@
 {
   "schema": "w051-browser-qa-contract/3",
-  "proposalId": "P-W051-004",
-  "baselineAppSourceSHA": "751b229cb7a99a6a5743b00c5b978c97585b4964",
+  "proposalId": "P-W051-005",
+  "baselineAppSourceSHA": "5b58d2ebc1671158f12b3614aed70a89f34efaf4",
   "productHashes": {
     "src/components/textbook/N0106SemanticText.tsx": "b3ffc993aa22e9eb51f59a40db5e0a53189dc73dd44493f245362e8bac92fb61",
     "src/components/textbook/TextbookFormula.tsx": "3c5c3e9adcc9b0ffc7d74425ad983cc9ceaebd8e17b773f13bf86ce64e85e08c",
     "src/components/textbook/n0106-reading-layout.css": "70c2fad67e8a849da855c192eec57b9ac06853ab126438fccaaa52e0ad523d85",
     "src/components/textbook/n04-sample-reading.css": "d43af2723cb4d4343663c41602f861bd95fff88f4a7ae27689ab3a5e1b2b8d09",
     "src/data/textbook/math/numbers/firstSectionTeaching.json": "557e619679d0a9993ac89c4623d96256089fac0c777ad2adcb518e0df0883c3c",
-    "src/data/textbook/math/numbers/n0106SemanticDisplay.json": "7a120f99cf314a51c5f906ff5ee6d03501b7d0541002970c2b6568c00c919d89",
-    "src/pages/TextbookUnitPage.tsx": "946994f8a71931f1f8c51fc4eafc1e3b515806aa48eca2ac616c66f014cb573c",
+    "src/data/textbook/math/numbers/n0106SemanticDisplay.json": "a745bb1d8d4b5f3ecc404c8417a935a39a7358a01df8fc34f593f0aae4baf4cb",
+    "src/pages/TextbookUnitPage.tsx": "8fb6d22d734a63d63dec2a30cbfefa8a4db58259a8f227c9f63b4710704b8dfa",
     "src/components/textbook/TypesetFormula.tsx": "2bfb46cc8380995b4bfef7599fc9689ba9e3e6a205ea06de988f5c985ccd9ffc"
   },
   "protectedSourceHashes": {
@@ -948,10 +948,10 @@
   "originalVerifierSHA256": "b6d9ade0f49d65c9fea65c5805ca42fca840adf6a38199d0a62b7c542a7923c2",
   "originalVerifierPath": "tools/release/w050-rollout-browser.mjs",
   "scope": "合成した新規Chromium contextで62段階/251判断と表示面を検査。既存ユーザー履歴・本人受入・公開・後半全suiteの合格を意味しない。",
-  "parentApprovedProposalId": "P-W051-003",
-  "parentApprovedPatchSHA256": "2688f3eee2a71495f3e88c269ad0c408293e93ee9c22846d30aa5e46e35e7062",
+  "parentApprovedProposalId": "P-W051-004",
+  "parentApprovedPatchSHA256": "03e77f505b949cac032774aa271c25b1a6a19ffa628f6d7af05f2a7c173f3ed4",
   "proposalApprovalStatus": "APPROVED_SOURCE_CANDIDATE_NOT_APP_ACCEPTED",
-  "proposedPatchSHA256": "03e77f505b949cac032774aa271c25b1a6a19ffa628f6d7af05f2a7c173f3ed4",
+  "proposedPatchSHA256": "81f8bade988c949ed5e17fd0316c4f1ab9ceeba6743f68932622be1a5075236a",
   "inlineFragmentVerifierSHA256": "9e6788db38cf39a5c2257b628e1574599dc96786fee5fc70009d5b2de6b05ef4",
-  "approvedProposalSHA256": "7c3c9d5758fe7e4af29b45e2996f3f97d1f538cab26754ce8695884dfa7c72e4"
+  "approvedProposalSHA256": "7dcb35f1225e2e363cd5ec58cfbe620fb31a31d0ae37d48c056f95f61362d2c1"
 }

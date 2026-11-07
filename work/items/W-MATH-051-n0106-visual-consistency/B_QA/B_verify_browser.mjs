@@ -1,4 +1,4 @@
-// P-W051-004の承認済み固定sourceの検証候補（本人受入は別）。主担当/CIだけが実行し、実ユーザーのcontextへ適用しない。
+// P-W051-005の承認済み固定sourceの検証候補（本人受入は別）。主担当/CIだけが実行し、実ユーザーのcontextへ適用しない。
 // Required: APP_URL, SOURCE_SHA (actual immutable material checkout), EVIDENCE_DIR outside checkout.
 // Optional W050_QA_CODES/W050_QA_WIDTHS declare diagnostic/job slices; a slice is never full-scope PASS.
 import {collectInlineFragments,verifyInlineFragments,collectIntroPunctuation,verifyIntroPunctuation} from './B_inline_fragment_checks.mjs';
@@ -46,6 +46,7 @@ const report = {schema:'w051-visual-browser/3',status:'RUNNING',startedAt:new Da
 report.limits=['実行するのは新規の合成Chromium contextのみ。現実のユーザー履歴ではない。','全域の合格は四幅×62段階×251判断と元保存/保護caseの完走が必要。単幅・単元sliceはその範囲だけ。','現在/結果/参照/履歴の字体と番号を測るが、数理同値の全証明や全字形の視認を意味しない。','後半は属性不在・代表の操作と表示比較のみ。後半既存の専用fullsuiteを代替しない。','CSS正当差を前半の値に押し込まない。後半は採取値を比較用として記録する。','Nativeの工程PASS・公開・本人受入・他モード・全ブラウザの保証は生成しない。'];
 const displayCoverage={areas:new Set(),prompts:new Set(),hints:new Set(),roles:new Set(),sizing:new Set(),labels:new Set()};
 const visualRegions=new Set();
+const termCoverage={body:new Set(),areas:new Set()};
 let semanticMap,developmentFeedback;
 let browser,ssr,activePage;const fixtures=new Map(),protectedFixtures=new Map();let domain,presentation,mathNormalize,mathPlan,choiceRows;
 const persist=()=>write('REPORT.json',report);
@@ -74,6 +75,34 @@ function assertMathSource(actual,source,label){
  assert.equal(actual.kind,(plan.independent||plan.table)?'independent':'chain',label+': original math group kind');
 }
 function assertMathEvidence(actual,source,label){assertMathSource(actual,source,label);for(const font of actual.fonts.length?actual.fonts:[actual.rootFont])assert.equal(parseFloat(font),18,label+': actual displayed math18');}
+// P005_TERM_CHECKS_START
+// 元termのpart位置へ実DOMを束縛する。KaTeXのMathML/HTML二重textContentは比較しない。
+function sourceTermSpecs(blocks) { return blocks.flatMap(b=>(b.parts??[]).flatMap((p,index)=>p.type==='term'?[{blockId:b.id,index,raw:p.text}]:[])); }
+function termPartsCanonical(parts,normalize) {
+ const out=[];for(const p of parts){const q=p.type==='math'?{type:'math',source:canonicalMath(p.annotations??[normalize(p.latex)])}:{type:'text',text:p.text};if(q.type==='text'&&out.at(-1)?.type==='text')out.at(-1).text+=q.text;else if(q.type!=='text'||q.text)out.push(q);}return out;
+}
+async function collectTermEvidence(scope) {
+ return scope.evaluate(scope=>{
+  const visible=e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return e.isConnected&&r.width>0&&r.height>0&&s.display!=='none'&&!['hidden','collapse'].includes(s.visibility)&&!e.closest('details:not([open]),.typeset-probe,.typeset-inline-probe');};
+  const parts=e=>{const out=[];function visit(n){if(n.nodeType===Node.TEXT_NODE){out.push({type:'text',text:n.textContent});return;}if(n.nodeType!==Node.ELEMENT_NODE||n.matches('svg,.typeset-probe,.typeset-inline-probe'))return;if(n.matches('.n0106-semantic-math,.katex')){out.push({type:'math',annotations:[...n.querySelectorAll('annotation[encoding="application/x-tex"]')].map(a=>a.textContent)});return;}for(const c of n.childNodes)visit(c);}visit(e);return out;};
+  return [...scope.querySelectorAll('.reading-term')].filter(visible).map(e=>{
+   const ref=e.closest('[data-testid^="math-textbook-context-"]'),result=e.closest('[data-result-source]'),owner=e.closest('[data-reading-layout-block],[data-n04-sample-block]');
+   const blockId=result?.dataset.resultSource??ref?.dataset.testid.replace('math-textbook-context-','')??owner?.getAttribute('data-reading-layout-block')??owner?.getAttribute('data-n04-sample-block')??null;
+   const para=e.closest('.reading-paragraph'),index=para?[...para.children].findIndex(c=>c.contains(e)):-1,css=getComputedStyle(e);
+   const roots=[...e.querySelectorAll('.n0106-semantic-math')].filter(visible).map(m=>({annotations:[...m.querySelectorAll('annotation[encoding="application/x-tex"]')].map(a=>a.textContent),rootFonts:[...m.querySelectorAll('.katex')].map(k=>parseFloat(getComputedStyle(k).fontSize)),glyphs:[...m.querySelectorAll('.katex-html .mathnormal')].filter(visible).map(g=>({text:g.textContent,fontFamily:getComputedStyle(g).fontFamily,fontSize:parseFloat(getComputedStyle(g).fontSize),fontStyle:getComputedStyle(g).fontStyle})),mathFaceLoaded:[...document.fonts].some(f=>f.family.replace(/["']/g,'')==='KaTeX_Math'&&f.status==='loaded')}));
+   return {blockId,index,body:!ref&&!result&&Boolean(owner),area:ref?'前段参照':result?'確定結果':e.closest('.math-textbook-stage-detail')?'展開履歴':'現在本文',tag:e.tagName,strong:e.matches('strong.reading-term'),fontSize:parseFloat(css.fontSize),fontWeight:css.fontWeight,parts:parts(e),roots,displayGate:Boolean(e.closest('article[data-n0106-display]')),rawTextForDiagnosis:e.textContent};
+  });
+ });
+}
+function verifyTermEvidence(rows,bodySpecs,allSpecs,map,normalize,{unitId,revision}) {
+ const eligible=map.revisions[unitId]===revision,byKey=new Map(allSpecs.map(x=>[x.blockId+'#'+x.index,x]));
+ assert.deepEqual(rows.filter(x=>x.body).map(x=>x.blockId+'#'+x.index),bodySpecs.map(x=>x.blockId+'#'+x.index),'表示中bodyの全termの元block/part順序');
+ for(const row of rows){const spec=byKey.get(row.blockId+'#'+row.index);assert.ok(spec,'未知のterm/source位置を黙って除外しない');assert.equal(row.tag,'STRONG');assert.equal(row.strong,true,'元strong強調を保持');assert.ok(Number(row.fontWeight)>=700,'termの日本語強調');assert.equal(row.displayGate,eligible,'termの実単元版gate');const expected=eligible?(map.partsByRaw[spec.raw]??[{type:'text',text:spec.raw}]):[{type:'text',text:spec.raw}];assert.deepEqual(termPartsCanonical(row.parts,normalize),termPartsCanonical(expected,normalize),'termの原文/数学/日本語の連続順序 '+row.blockId+'#'+row.index);const maths=expected.filter(x=>x.type==='math');assert.equal(row.roots.length,maths.length,'termの明示math片数');if(eligible)assert.equal(row.fontSize,18,'term主本文18px');
+  for(let i=0;i<maths.length;i++){const m=row.roots[i];assert.equal(canonicalMath(m.annotations),canonicalMath([normalize(maths[i].latex)]),'term元math annotation');assert.deepEqual(m.rootFonts,[18],'termの単一KaTeX根18px');assert.equal(m.mathFaceLoaded,true,'termで実ロード済みKaTeX Math face');if(spec.raw==='xが何回掛けられているか'){assert.equal(m.glyphs.length,1);assert.equal(m.glyphs[0].text,'x');assert.ok(m.glyphs[0].fontFamily.includes('KaTeX_Math'));assert.equal(m.glyphs[0].fontStyle,'italic');assert.equal(m.glyphs[0].fontSize,18);}}
+ }
+}
+// P005_TERM_CHECKS_END
+
 async function measure(page,scope,f,stage,row,label,{history=false,shot=false}={}) {
  await scope.waitFor({state:'visible'});await settle(page);
  const saved=await storeRecord(page,f.unit.unitId),effective=domain.effectiveTextbookProgress(f.unit,saved??undefined);
@@ -113,9 +142,12 @@ async function measure(page,scope,f,stage,row,label,{history=false,shot=false}={
  const inlineFragments=await collectInlineFragments(scope);
  const introPunctuation=await collectIntroPunctuation(scope);
  const display=await collectDisplay(page);
- const entry={introPunctuation,inlineFragments,paragraphTextSpecs,paragraphSourceText,display,label,sourceSHA,unitId:f.unit.unitId,revision:f.unit.revision,stageId:stage.id,history,expectedFormulaIds,expectedVisibleBlockIds:visible.map(b=>b.id),rawProgress:saved,effectiveProgress:effective??null,rawProgressSHA256:sha(JSON.stringify(saved)),...m};
+ const termBodySpecs=sourceTermSpecs(visible),termEvidence=await collectTermEvidence(scope);
+ const entry={termBodySpecs,termEvidence,introPunctuation,inlineFragments,paragraphTextSpecs,paragraphSourceText,display,label,sourceSHA,unitId:f.unit.unitId,revision:f.unit.revision,stageId:stage.id,history,expectedFormulaIds,expectedVisibleBlockIds:visible.map(b=>b.id),rawProgress:saved,effectiveProgress:effective??null,rawProgressSHA256:sha(JSON.stringify(saved)),...m};
  const stateFile='states/'+slug(row.name+'-'+label)+'.json';write(stateFile,entry);const stateRef={file:stateFile,sha256:sha(fs.readFileSync(path.join(out,stateFile))),sourceSHA,unit:f.code,stageId:stage.id,label};row.states.push(stateRef);report.states.push(stateRef);persist();
  verifyParagraphTextParts(paragraphSourceText,paragraphTextSpecs,semanticMap,mathNormalize);
+ verifyTermEvidence(termEvidence,termBodySpecs,sourceTermSpecs(f.unit.sections[0].readingFlow),semanticMap,mathNormalize,{unitId:f.unit.unitId,revision:f.unit.revision});
+ if(row.name.startsWith('live-'))for(const t of termEvidence){termCoverage.areas.add(t.area);if(t.body)termCoverage.body.add((await page.evaluate(()=>innerWidth))+':'+f.code+':'+t.blockId+'#'+t.index);}
  verifyInlineFragments(inlineFragments);
  verifyIntroPunctuation(introPunctuation);
  (report.introPunctuationStates??=[]);if(introPunctuation.rows.length)report.introPunctuationStates.push({state:stateRef,observed:introPunctuation.rows.length,width:await page.evaluate(()=>innerWidth)});
@@ -153,17 +185,17 @@ try {
  report.trackedProductDiff=execFileSync('git',['diff','--name-only','--','src'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
  report.sourceBindingKind=report.trackedProductDiff.length?'EXACT_HASHED_LOCAL_WORKTREE_CANDIDATE_NOT_COMMIT_BYTES':'COMMITTED_MATERIAL_WITH_EXACT_PRODUCT_HASHES';
  const contractPath=process.env.W051_QA_CONTRACT??fileURLToPath(new URL('./B_contract.json',import.meta.url));
- assert.equal(sha(fs.readFileSync(contractPath)),'70cb1e873c658289f446338792008c766c22adc1929f75c8cdaff41932d44877','固定した検証契約rawSHA');
- const contract=read(contractPath);assert.equal(contract.schema,'w051-browser-qa-contract/3');assert.equal(contract.proposalApprovalStatus,'APPROVED_SOURCE_CANDIDATE_NOT_APP_ACCEPTED');assert.equal(contract.proposedPatchSHA256,'03e77f505b949cac032774aa271c25b1a6a19ffa628f6d7af05f2a7c173f3ed4');
+ assert.equal(sha(fs.readFileSync(contractPath)),'2b43c9ba94815899a925a21574428ce491148ed0e12a01ef02220f8fb341d23f','固定した検証契約rawSHA');
+ const contract=read(contractPath);assert.equal(contract.schema,'w051-browser-qa-contract/3');assert.equal(contract.proposalApprovalStatus,'APPROVED_SOURCE_CANDIDATE_NOT_APP_ACCEPTED');assert.equal(contract.proposedPatchSHA256,'81f8bade988c949ed5e17fd0316c4f1ab9ceeba6743f68932622be1a5075236a');assert.equal(contract.approvedProposalSHA256,'7dcb35f1225e2e363cd5ec58cfbe620fb31a31d0ae37d48c056f95f61362d2c1');
  report.inlineFragmentVerifierSHA256=sha(fs.readFileSync(fileURLToPath(new URL('./B_inline_fragment_checks.mjs',import.meta.url))));assert.equal(report.inlineFragmentVerifierSHA256,contract.inlineFragmentVerifierSHA256);
  report.additionalVerifierSHA256=sha(fs.readFileSync(fileURLToPath(new URL('./B_display_checks.mjs',import.meta.url))));assert.equal(sha(fs.readFileSync(contract.originalVerifierPath)),contract.originalVerifierSHA256,'実成功版の旧検査原byte保持');
- report.qaContractSHA256=sha(fs.readFileSync(contractPath));report.patchSHA256=contract.proposedPatchSHA256;report.proposalApprovalStatus=contract.proposalApprovalStatus;report.proposalId=contract.proposalId;report.parentApprovedPatchSHA256=contract.parentApprovedPatchSHA256;assert.equal(contract.proposalId,'P-W051-004');assert.equal(contract.parentApprovedProposalId,'P-W051-003');assert.equal(contract.parentApprovedPatchSHA256,'2688f3eee2a71495f3e88c269ad0c408293e93ee9c22846d30aa5e46e35e7062');report.baselineMaterialSHA=contract.baselineAppSourceSHA;report.assetPreparationCommitSHA=null;
+ report.qaContractSHA256=sha(fs.readFileSync(contractPath));report.patchSHA256=contract.proposedPatchSHA256;report.proposalApprovalStatus=contract.proposalApprovalStatus;report.proposalId=contract.proposalId;report.parentApprovedPatchSHA256=contract.parentApprovedPatchSHA256;assert.equal(contract.proposalId,'P-W051-005');assert.equal(contract.parentApprovedProposalId,'P-W051-004');assert.equal(contract.parentApprovedPatchSHA256,'03e77f505b949cac032774aa271c25b1a6a19ffa628f6d7af05f2a7c173f3ed4');report.baselineMaterialSHA=contract.baselineAppSourceSHA;report.assetPreparationCommitSHA=null;
  const expectedProducts=Object.entries(contract.productHashes).map(([path,after_sha256])=>({path,after_sha256}));assert.equal(expectedProducts.length,8);
  report.productHashes=expectedProducts.map(x=>{const actual=sha(fs.readFileSync(x.path));assert.equal(actual,x.after_sha256,'固定8製品byte: '+x.path);return {path:x.path,sha256:actual};});
  report.retainedHashes=Object.entries(contract.protectedSourceHashes).map(([p,expected])=>{const actual=sha(fs.readFileSync(p));assert.equal(actual,expected,'対象外src保持: '+p);return {path:p,sha256:actual};});assert.equal(report.retainedHashes.length,319);
  const allSource=[];function sourceWalk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.posix.join(dir,e.name);assert.ok(!e.isSymbolicLink(),'src symlink不可');if(e.isDirectory())sourceWalk(p);else if(e.isFile())allSource.push(p);else assert.fail('未知のsrc entry');}}sourceWalk('src');assert.deepEqual(allSource.sort(),[...Object.keys(contract.protectedSourceHashes),...Object.keys(contract.productHashes)].sort(),'8差分と保護319以外のsrc追加/欠落不可');
  const registry=read('src/data/textbook/math/numbers/n0106ReadingLayout.json');assert.equal(sha(fs.readFileSync('src/data/textbook/math/numbers/n0106ReadingLayout.json')),contract.registrySHA256);const plans=read('src/data/textbook/math/numbers/firstSectionTeaching.json'),inventory={units:contract.units};
- semanticMap=read('src/data/textbook/math/numbers/n0106SemanticDisplay.json');assert.equal(Object.keys(semanticMap.partsByRaw).length,319);
+ semanticMap=read('src/data/textbook/math/numbers/n0106SemanticDisplay.json');assert.equal(Object.keys(semanticMap.partsByRaw).length,320);
  assert.equal(registry.length,61);assert.equal(new Set(registry.map(x=>x.id)).size,61);
  report.approvedN04SampleCSSSHA256=sha(fs.readFileSync('src/components/textbook/n04-sample-reading.css'));
  // Source-QA artifact identity: every slice records the complete original app dist.
@@ -187,6 +219,7 @@ try {
  }
  for(const code of ['n07','ne01']){const m=await ssr.ssrLoadModule('/src/data/textbook/math/numbers/'+code+'Lesson.ts');const unit=JSON.parse(JSON.stringify(m[code==='n07'?'mathNumbersN07Unit':'mathNumbersNE01Unit']));protectedFixtures.set(code,{unit,choices:Object.fromEntries(unit.sections.flatMap(s=>s.items).map(i=>[i.id,domain.getTextbookChoices(unit,code==='n07'?{...i,scaffoldLevel:'light'}:i)]))});}
  report.formulaTextPartInventory=[...fixtures.values()].map(f=>({unit:f.code,count:f.plan.readingFlow.filter(b=>b.type==='formula').reduce((n,b)=>n+b.parts.filter(p=>p.type==='text').length,0)}));assert.equal(report.formulaTextPartInventory.reduce((n,r)=>n+r.count,0),0,'現8afterのformula text対象は0。未知の対象を黙って除外しない');
+ report.termSourceInventory=[...fixtures.values()].flatMap(f=>sourceTermSpecs(f.unit.sections[0].readingFlow).map(t=>({...t,code:f.code,unitId:f.unit.unitId,revision:f.unit.revision,dictionaryHit:Object.hasOwn(semanticMap.partsByRaw,t.raw)})));assert.equal(report.termSourceInventory.length,13,'元13termを保持');assert.equal(report.termSourceInventory.filter(t=>t.dictionaryHit).length,1,'P005新辞書の適用はN02一件');assert.equal(report.termSourceInventory.find(t=>t.dictionaryHit).raw,'xが何回掛けられているか');
  assert.equal([...fixtures.values()].reduce((n,f)=>n+f.stages.length,0),62);assert.equal([...fixtures.values()].reduce((n,f)=>n+f.unit.sections[0].items.length,0),251);
  write('FIXTURES.json',{kind:'ACTUAL_SSR_MODULE_EXPORTS_NOT_BROWSER_PROOF',sourceSHA,productHashes:report.productHashes,units:[...fixtures.values()]});report.fixtureSHA256=sha(fs.readFileSync(path.join(out,'FIXTURES.json')));await ssr.close();ssr=undefined;
  const {chromium}=require('@playwright/test');const launchArgs=process.env.CHROMIUM_ARGS_JSON?JSON.parse(process.env.CHROMIUM_ARGS_JSON):undefined;if(launchArgs)assert.ok(Array.isArray(launchArgs)&&launchArgs.every(a=>typeof a==='string'),'明示Chromium args配列');report.browserLaunch={executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??null,args:launchArgs??null};browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined,args:launchArgs});report.browserVersion=browser.version();
@@ -232,6 +265,7 @@ try {
  const live=report.cases.filter(c=>c.name.startsWith('live-'));
  report.coverage={expectedCases,attemptedCases:report.cases.length,expectedStageCompletions:widths.length*codes.reduce((n,c)=>n+fixtures.get(c).stages.length,0),actualStageCompletions:live.reduce((n,c)=>n+(c.stages??[]).filter(s=>s.status==='PASS').length,0),expectedCorrectJudgments:widths.length*codes.reduce((n,c)=>n+fixtures.get(c).unit.sections[0].items.length,0),actualCorrectJudgments:live.reduce((n,c)=>n+(c.answers?.length??0),0),actualWrongChoices:live.reduce((n,c)=>n+(c.answers??[]).reduce((m,a)=>m+a.wrongChoicesExercised.length,0),0),unverifiedStages:live.flatMap(c=>{const code=c.name.split('-')[1];return fixtures.get(code).stages.filter(s=>!(c.stages??[]).some(x=>x.stageId===s.id&&x.status==='PASS')).map(s=>({case:c.name,stageId:s.id,status:'UNVERIFIED_NOT_COMPLETED'}));})};
  report.displayCoverage=Object.fromEntries(Object.entries(displayCoverage).map(([k,v])=>[k,[...v].sort()]));for(const w of widths)for(const code of codes){const f=fixtures.get(code);for(const item of f.unit.sections[0].items){assert.ok(displayCoverage.prompts.has(w+':'+item.id),'各判断の問いを実際に開いて観測');for(let i=0;i<item.hints.length;i++)assert.ok(displayCoverage.hints.has(w+':'+item.id+':'+i),'各元ヒント段階を元の誤答gateで観測');}for(const marker of f.plan.readingFlow.filter(b=>b.type==='marker'))assert.ok(displayCoverage.roles.has(w+':'+code+':'+marker.id),'役割全マーカーの実観測');assert.ok(displayCoverage.sizing.has(w+':'+code),'指数/添字の実寸測定が必要');}report.displayCoverage.expectedMarkerObservations=widths.length*codes.reduce((n,c)=>n+fixtures.get(c).plan.readingFlow.filter(b=>b.type==='marker').length,0);
+ for(const width of widths)for(const code of codes)for(const t of report.termSourceInventory.filter(x=>x.code===code))assert.ok(termCoverage.body.has(width+':'+code+':'+t.blockId+'#'+t.index),'全元termをlive状態で実測する');report.termCoverage={sourceTerms:report.termSourceInventory,liveBodyKeys:[...termCoverage.body].sort(),observedAreas:[...termCoverage.areas].sort(),scope:'現在/実展開履歴と表示された参照/結果だけ。未表示/対象外版をP005へ強制しない。Root限定16view/CDPと別の全状態測定。computed font＋実font-face loadedで検査し、各stateのCDP glyph証明とは称しない。'};
  check(report.coverage.expectedStageCompletions===report.coverage.actualStageCompletions,'unattempted/failed stages cannot PASS',report.coverage);check(report.coverage.expectedCorrectJudgments===report.coverage.actualCorrectJudgments,'unattempted judgments cannot PASS',report.coverage);
  report.status=report.failures.length?'FAIL':report.fullRequestedScope?'PASS_DECLARED_FULL_ROLLOUT_SCOPE':'PASS_DECLARED_DIAGNOSTIC_SLICE_ONLY';
 }catch(e){report.status='FAIL';report.failures.push({name:'setup-or-coverage',message:e.message,stack:e.stack,detail:e.detail??null});}

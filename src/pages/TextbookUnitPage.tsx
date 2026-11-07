@@ -163,7 +163,7 @@ function renderPart(
   semanticUnitId?: string,
 ): ReactNode {
   if (part.type === 'text') return <N0106SemanticText unitId={semanticUnitId} value={part.text} />
-  if (part.type === 'term') return <strong className="reading-term">{part.text}</strong>
+  if (part.type === 'term') return <strong className="reading-term"><N0106SemanticText unitId={semanticUnitId} value={part.text} /></strong>
   if (part.type === 'math') return <InlineMath math={part.latex} />
 
   const item = section.items.find((candidate) => candidate.id === part.itemId)

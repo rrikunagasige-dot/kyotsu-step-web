@@ -1,0 +1,92 @@
+name: W051 approved display candidate QA
+on:
+  push:
+    branches: [work/w051-p004-approved-qa-20261107]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: w051-qa-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        width: [320, 390, 430, 1440]
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_BASE_PATH: /kyotsu-step-web/
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      STORAGE_KEY: kyotsu-step-gate3-math-20261023
+      APP_URL: http://127.0.0.1:4173/kyotsu-step-web/
+      EVIDENCE_DIR: /tmp/w051-qa-${{ matrix.width }}
+      W051_QA_WIDTHS: ${{ matrix.width }}
+      CHROMIUM_EXECUTABLE_PATH: /tmp/w051-browser/chromium
+      CHROMIUM_ARGS_JSON: '["--no-sandbox","--disable-dev-shm-usage"]'
+      FONTCONFIG_FILE: /tmp/w051-fonts/fonts.conf
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Exact browser binary from the verified registry package
+        run: |
+          npm install --prefix /tmp/w051-browser --no-save --ignore-scripts @sparticuz/chromium@153.0.0
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';import {pipeline} from 'node:stream/promises';import {createBrotliDecompress} from 'node:zlib';
+          await pipeline(fs.createReadStream('/tmp/w051-browser/node_modules/@sparticuz/chromium/bin/chromium.br'),createBrotliDecompress(),fs.createWriteStream('/tmp/w051-browser/chromium',{mode:0o700}));
+          NODE
+      - name: Official Japanese font with an exact content hash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import urllib.request,hashlib
+          p=Path('/tmp/w051-fonts');p.mkdir(exist_ok=True)
+          b=urllib.request.urlopen('https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf',timeout=60).read()
+          assert hashlib.sha256(b).hexdigest()=='68a3fc98800b2a27b371f2fb79991daf3633bd89309d4ffaa6946fd587f375b5'
+          (p/'NotoSansCJKjp-Regular.otf').write_bytes(b)
+          (p/'fonts.conf').write_text('<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd"><fontconfig><include>/etc/fonts/fonts.conf</include><dir>/tmp/w051-fonts</dir><cachedir>/tmp/w051-fonts/cache</cachedir><alias><family>Noto Sans JP</family><prefer><family>Noto Sans CJK JP</family></prefer></alias></fontconfig>')
+          PY
+          fc-cache -f
+          fc-match 'Noto Sans JP'
+      - name: Current rendering, schema and save regressions
+        if: matrix.width == 390
+        run: pnpm exec vitest run src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/components/textbook/typesetRows.test.ts
+      - name: Actual typed production build
+        run: pnpm run build
+      - name: All six units and all judgments at the assigned width
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 --strictPort > /tmp/w051-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node --input-type=module <<'NODE'
+          let ready=false;for(let n=0;n<60;n++){try{const r=await fetch(process.env.APP_URL);if(r.ok){ready=true;break}}catch{}await new Promise(r=>setTimeout(r,500));}if(!ready)throw Error('PREVIEW_NOT_READY');
+          NODE
+          node work/items/W-MATH-051-n0106-visual-consistency/B_QA/B_verify_browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w051-qa-${{ matrix.width }}
+          path: /tmp/w051-qa-${{ matrix.width }}
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: matrix.width == 390 && success()
+        with:
+          name: w051-original-build
+          path: dist
+          if-no-files-found: error

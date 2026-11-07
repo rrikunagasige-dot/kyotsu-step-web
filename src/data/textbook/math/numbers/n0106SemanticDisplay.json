@@ -1,0 +1,5526 @@
+{
+  "revisions": {
+    "math-numbers-expressions-n01": 7,
+    "math-numbers-expressions-n02": 6,
+    "math-numbers-expressions-n03": 7,
+    "math-numbers-expressions-n04": 7,
+    "math-numbers-expressions-n05": 7,
+    "math-numbers-expressions-n06": 8
+  },
+  "partsByRaw": {
+    "(a+b)²の中央の項と、2cをaにもbにも掛けることを確かめよう。": [
+      {
+        "type": "math",
+        "latex": "(a+b)²"
+      },
+      {
+        "type": "text",
+        "text": "の中央の項と、"
+      },
+      {
+        "type": "math",
+        "latex": "2c"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "にも"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "にも掛けることを確かめよう。"
+      }
+    ],
+    "(x+U)(x+V)の展開でU+Vが掛かる場所を見ます。": [
+      {
+        "type": "math",
+        "latex": "(x+U)(x+V)"
+      },
+      {
+        "type": "text",
+        "text": "の展開で"
+      },
+      {
+        "type": "math",
+        "latex": "U+V"
+      },
+      {
+        "type": "text",
+        "text": "が掛かる場所を見ます。"
+      }
+    ],
+    "(x²+1)²には中央の2x²がある。最後の−x²を引く。": [
+      {
+        "type": "math",
+        "latex": "(x²+1)²"
+      },
+      {
+        "type": "text",
+        "text": "には中央の"
+      },
+      {
+        "type": "math",
+        "latex": "2x²"
+      },
+      {
+        "type": "text",
+        "text": "がある。最後の"
+      },
+      {
+        "type": "math",
+        "latex": "−x²"
+      },
+      {
+        "type": "text",
+        "text": "を引く。"
+      }
+    ],
+    "(x²+5x)²は二つの同じ括弧の積である。異なる二項を掛ける交差積は二回現れる。": [
+      {
+        "type": "math",
+        "latex": "(x²+5x)²"
+      },
+      {
+        "type": "text",
+        "text": "は二つの同じ括弧の積である。異なる二項を掛ける交差積は二回現れる。"
+      }
+    ],
+    "1+1ではなく1−1です。元の二つ目の三次の項には負号があります。": [
+      {
+        "type": "math",
+        "latex": "1+1"
+      },
+      {
+        "type": "text",
+        "text": "ではなく"
+      },
+      {
+        "type": "math",
+        "latex": "1−1"
+      },
+      {
+        "type": "text",
+        "text": "です。元の二つ目の三次の項には負号があります。"
+      }
+    ],
+    "16x²を平方の形で読むため、まず二乗すると16になる正の数を選びます。": [
+      {
+        "type": "math",
+        "latex": "16x²"
+      },
+      {
+        "type": "text",
+        "text": "を平方の形で読むため、まず二乗すると16になる正の数を選びます。"
+      }
+    ],
+    "1を掛けても3xの値は変わらない。": [
+      {
+        "type": "text",
+        "text": "1を掛けても"
+      },
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "の値は変わらない。"
+      }
+    ],
+    "2A−3Bは、2AにBの何倍を足す式だろう。": [
+      {
+        "type": "math",
+        "latex": "2A−3B"
+      },
+      {
+        "type": "text",
+        "text": "は、"
+      },
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "に"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の何倍を足す式だろう。"
+      }
+    ],
+    "2Aの2は括弧全体に掛かる。まず、各項に掛けた形を作ろう。": [
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "の2は括弧全体に掛かる。まず、各項に掛けた形を作ろう。"
+      }
+    ],
+    "2Aの一次項では2を1xへ掛ける。": [
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "の一次項では2を"
+      },
+      {
+        "type": "math",
+        "latex": "1x"
+      },
+      {
+        "type": "text",
+        "text": "へ掛ける。"
+      }
+    ],
+    "2Aの定数項−1にも2を掛ける。": [
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "の定数項"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "にも2を掛ける。"
+      }
+    ],
+    "2Aを完成させる": [
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "を完成させる"
+      }
+    ],
+    "2a²と(2a)²は、2を掛ける回数が異なる。": [
+      {
+        "type": "math",
+        "latex": "2a²"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "(2a)²"
+      },
+      {
+        "type": "text",
+        "text": "は、2を掛ける回数が異なる。"
+      }
+    ],
+    "2xy−3xをまとめたときの、xに掛かる括弧を使います。": [
+      {
+        "type": "math",
+        "latex": "2xy−3x"
+      },
+      {
+        "type": "text",
+        "text": "をまとめたときの、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "に掛かる括弧を使います。"
+      }
+    ],
+    "2yとs、rとyの交差積を足します。": [
+      {
+        "type": "math",
+        "latex": "2y"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "の交差積を足します。"
+      }
+    ],
+    "2を掛けても文字の種類と指数は変わらない。数の部分だけを計算してから、x²へ戻そう。": [
+      {
+        "type": "text",
+        "text": "2を掛けても文字の種類と指数は変わらない。数の部分だけを計算してから、"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "へ戻そう。"
+      }
+    ],
+    "2倍するのはxの指数ではなく、この項全体である。": [
+      {
+        "type": "text",
+        "text": "2倍するのは"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数ではなく、この項全体である。"
+      }
+    ],
+    "3xy−xからxを外へ出し、残りはxを含まない項。": [
+      {
+        "type": "math",
+        "latex": "3xy−x"
+      },
+      {
+        "type": "text",
+        "text": "から"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出し、残りは"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を含まない項。"
+      }
+    ],
+    "3xy−xの共通するxを外へ出す。": [
+      {
+        "type": "math",
+        "latex": "3xy−x"
+      },
+      {
+        "type": "text",
+        "text": "の共通する"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出す。"
+      }
+    ],
+    "3x×2x²、3x×(−x)、3x×5を別々に計算しよう。": [
+      {
+        "type": "math",
+        "latex": "3x×2x²"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "3x×(−x)"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "3x×5"
+      },
+      {
+        "type": "text",
+        "text": "を別々に計算しよう。"
+      }
+    ],
+    "3xを三項へ配るときも、一組ずつ積を作る。最初は係数3と2、文字xとx²に分けよう。": [
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "を三項へ配るときも、一組ずつ積を作る。最初は係数3と2、文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "に分けよう。"
+      }
+    ],
+    "3xを後ろの三項へ一つずつ掛ける。まずこの行だけ完成させよう。": [
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "を後ろの三項へ一つずつ掛ける。まずこの行だけ完成させよう。"
+      }
+    ],
+    "3xを掛けた行を作る": [
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "を掛けた行を作る"
+      }
+    ],
+    "3とbが両項に掛かる。−12b³÷3bを計算する。": [
+      {
+        "type": "text",
+        "text": "3と"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "が両項に掛かる。"
+      },
+      {
+        "type": "math",
+        "latex": "−12b³\\div 3b"
+      },
+      {
+        "type": "text",
+        "text": "を計算する。"
+      }
+    ],
+    "3に掛けて−12になる数を使い、残る文字はb²とする。": [
+      {
+        "type": "text",
+        "text": "3に掛けて"
+      },
+      {
+        "type": "math",
+        "latex": "−12"
+      },
+      {
+        "type": "text",
+        "text": "になる数を使い、残る文字は"
+      },
+      {
+        "type": "math",
+        "latex": "b²"
+      },
+      {
+        "type": "text",
+        "text": "とする。"
+      }
+    ],
+    "3倍のx²から5倍のx²を引きます。": [
+      {
+        "type": "text",
+        "text": "3倍の"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "から5倍の"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "を引きます。"
+      }
+    ],
+    "4b²=(2b)²。平方差A²−B²の公式を使う。": [
+      {
+        "type": "math",
+        "latex": "4b²=(2b)²"
+      },
+      {
+        "type": "text",
+        "text": "。平方差"
+      },
+      {
+        "type": "math",
+        "latex": "A²−B²"
+      },
+      {
+        "type": "text",
+        "text": "の公式を使う。"
+      }
+    ],
+    "4xと3yの積12xyは二組ある。": [
+      {
+        "type": "math",
+        "latex": "4x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "3y"
+      },
+      {
+        "type": "text",
+        "text": "の積"
+      },
+      {
+        "type": "math",
+        "latex": "12xy"
+      },
+      {
+        "type": "text",
+        "text": "は二組ある。"
+      }
+    ],
+    "4は2²なので、もう一方も平方差へ対応する。平方の内側の数を使って因子を作ろう。": [
+      {
+        "type": "text",
+        "text": "4は"
+      },
+      {
+        "type": "math",
+        "latex": "2²"
+      },
+      {
+        "type": "text",
+        "text": "なので、もう一方も平方差へ対応する。平方の内側の数を使って因子を作ろう。"
+      }
+    ],
+    "5x²と(5x)²では、5を掛ける回数が異なる。": [
+      {
+        "type": "math",
+        "latex": "5x²"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "(5x)²"
+      },
+      {
+        "type": "text",
+        "text": "では、5を掛ける回数が異なる。"
+      }
+    ],
+    "5xと4yの積を計算しよう。": [
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "4y"
+      },
+      {
+        "type": "text",
+        "text": "の積を計算しよう。"
+      }
+    ],
+    "A=x²+1、B=xとしてA²−B²を使う。": [
+      {
+        "type": "math",
+        "latex": "A=x²+1"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "B=x"
+      },
+      {
+        "type": "text",
+        "text": "として"
+      },
+      {
+        "type": "math",
+        "latex": "A²−B²"
+      },
+      {
+        "type": "text",
+        "text": "を使う。"
+      }
+    ],
+    "AとBのまま整理して再利用": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "のまま整理して再利用"
+      }
+    ],
+    "Aに−Bを足す": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "に"
+      },
+      {
+        "type": "math",
+        "latex": "−B"
+      },
+      {
+        "type": "text",
+        "text": "を足す"
+      }
+    ],
+    "Aの−3とBの+2を、そのまま足します。": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "の"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の"
+      },
+      {
+        "type": "math",
+        "latex": "+2"
+      },
+      {
+        "type": "text",
+        "text": "を、そのまま足します。"
+      }
+    ],
+    "Aの項だけをまとめた係数を計算する。": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "の項だけをまとめた係数を計算する。"
+      }
+    ],
+    "Aは1Aと読めます。": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "1A"
+      },
+      {
+        "type": "text",
+        "text": "と読めます。"
+      }
+    ],
+    "Aを1Aとして読む。": [
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "1A"
+      },
+      {
+        "type": "text",
+        "text": "として読む。"
+      }
+    ],
+    "Bの係数は−4と+1である。負号を係数に含めて足す。": [
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の係数は"
+      },
+      {
+        "type": "math",
+        "latex": "−4"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "+1"
+      },
+      {
+        "type": "text",
+        "text": "である。負号を係数に含めて足す。"
+      }
+    ],
+    "Bの値を変えずに補える一次項を選びます。": [
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の値を変えずに補える一次項を選びます。"
+      }
+    ],
+    "Bを1Bとして読む。": [
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "1B"
+      },
+      {
+        "type": "text",
+        "text": "として読む。"
+      }
+    ],
+    "Bを引く回数と、足し算に直したときの符号を考えよう。": [
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "を引く回数と、足し算に直したときの符号を考えよう。"
+      }
+    ],
+    "Qの番号ではなく、直前に求めた式の形を見返そう。": [
+      {
+        "type": "text",
+        "text": "Qの番号ではなく、直前に求めた式の形を見返そう。"
+      }
+    ],
+    "T=a+bを、T²と2Tcの両方へ戻そう。": [
+      {
+        "type": "math",
+        "latex": "T=a+b"
+      },
+      {
+        "type": "text",
+        "text": "を、"
+      },
+      {
+        "type": "math",
+        "latex": "T²"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "2Tc"
+      },
+      {
+        "type": "text",
+        "text": "の両方へ戻そう。"
+      }
+    ],
+    "T²−5T+4の因数を決める。積が4、和が−5になる二数はどれだろう。": [
+      {
+        "type": "math",
+        "latex": "T²−5T+4"
+      },
+      {
+        "type": "text",
+        "text": "の因数を決める。積が4、和が"
+      },
+      {
+        "type": "math",
+        "latex": "−5"
+      },
+      {
+        "type": "text",
+        "text": "になる二数はどれだろう。"
+      }
+    ],
+    "Tという一つのまとまりを、括弧ごと戻します。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "という一つのまとまりを、括弧ごと戻します。"
+      }
+    ],
+    "Tのままの因数分解ができたので、T=x²という定義へ戻る。まず最初の因数に同じ式を代入しよう。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "のままの因数分解ができたので、"
+      },
+      {
+        "type": "math",
+        "latex": "T=x²"
+      },
+      {
+        "type": "text",
+        "text": "という定義へ戻る。まず最初の因数に同じ式を代入しよう。"
+      }
+    ],
+    "Tの一次係数を計算する。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の一次係数を計算する。"
+      }
+    ],
+    "Tの二次式として展開しよう。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の二次式として展開しよう。"
+      }
+    ],
+    "Tの外に残る定数は、それぞれ4と6です。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の外に残る定数は、それぞれ4と6です。"
+      }
+    ],
+    "Tは一度だけ外へ出し、残る係数をx−3にする。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "は一度だけ外へ出し、残る係数を"
+      },
+      {
+        "type": "math",
+        "latex": "x−3"
+      },
+      {
+        "type": "text",
+        "text": "にする。"
+      }
+    ],
+    "Tを一つ外へ出したとき、各項から何が残るだろう。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "を一つ外へ出したとき、各項から何が残るだろう。"
+      }
+    ],
+    "Tを戻した式では、まず平方の部分だけを展開する。": [
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "を戻した式では、まず平方の部分だけを展開する。"
+      }
+    ],
+    "Xが表す式全体を代入し、後ろの−3はそのまま残す。": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "が表す式全体を代入し、後ろの"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "はそのまま残す。"
+      }
+    ],
+    "Xで因数分解し、元へ戻す": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "で因数分解し、元へ戻す"
+      }
+    ],
+    "Xの一次係数は−1、定数は−6。積が−6になる二数のうち、和が−1になる組を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "の一次係数は"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "、定数は"
+      },
+      {
+        "type": "math",
+        "latex": "−6"
+      },
+      {
+        "type": "text",
+        "text": "。積が"
+      },
+      {
+        "type": "math",
+        "latex": "−6"
+      },
+      {
+        "type": "text",
+        "text": "になる二数のうち、和が"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "になる組を選ぼう。"
+      }
+    ],
+    "Xは1Xとして読む。": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "1X"
+      },
+      {
+        "type": "text",
+        "text": "として読む。"
+      }
+    ],
+    "Xをどちらの括弧からもなくす。": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "をどちらの括弧からもなくす。"
+      }
+    ],
+    "Xを使う因数分解を完成させよう。": [
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "を使う因数分解を完成させよう。"
+      }
+    ],
+    "a+bだけをTと呼び、cと外の二乗は残します。": [
+      {
+        "type": "math",
+        "latex": "a+b"
+      },
+      {
+        "type": "text",
+        "text": "だけを"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "と呼び、"
+      },
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "と外の二乗は残します。"
+      }
+    ],
+    "abとbaを足すと係数がいくつになるか。": [
+      {
+        "type": "math",
+        "latex": "ab"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "ba"
+      },
+      {
+        "type": "text",
+        "text": "を足すと係数がいくつになるか。"
+      }
+    ],
+    "axとcx、axとd、bとcx、bとdの四組。": [
+      {
+        "type": "math",
+        "latex": "ax"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "cx"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "ax"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "d"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "cx"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "d"
+      },
+      {
+        "type": "text",
+        "text": "の四組。"
+      }
+    ],
+    "aとb、aとc、bとcの組をそれぞれ二度数える。": [
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "の組をそれぞれ二度数える。"
+      }
+    ],
+    "aとbを集め直した形を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "を集め直した形を選ぼう。"
+      }
+    ],
+    "aとyが、残したxに掛かっています。": [
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "が、残した"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "に掛かっています。"
+      }
+    ],
+    "aと−cの交差積の係数を計算する。": [
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−c"
+      },
+      {
+        "type": "text",
+        "text": "の交差積の係数を計算する。"
+      }
+    ],
+    "aの個数を、二つの組から合計する。係数4は個数へ入れない。": [
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "の個数を、二つの組から合計する。係数4は個数へ入れない。"
+      }
+    ],
+    "baをabと同じ文字の部分へそろえる。": [
+      {
+        "type": "math",
+        "latex": "ba"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "ab"
+      },
+      {
+        "type": "text",
+        "text": "と同じ文字の部分へそろえる。"
+      }
+    ],
+    "bxは1bxとして読む。": [
+      {
+        "type": "math",
+        "latex": "bx"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "1bx"
+      },
+      {
+        "type": "text",
+        "text": "として読む。"
+      }
+    ],
+    "bと−cの交差積も同じ符号の計算を使う。": [
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−c"
+      },
+      {
+        "type": "text",
+        "text": "の交差積も同じ符号の計算を使う。"
+      }
+    ],
+    "bを掛け合わせるのでなく、2bとbを足す。": [
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "を掛け合わせるのでなく、"
+      },
+      {
+        "type": "math",
+        "latex": "2b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "を足す。"
+      }
+    ],
+    "cを−cへ置き換えます。外の2aは変えません。": [
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "−c"
+      },
+      {
+        "type": "text",
+        "text": "へ置き換えます。外の"
+      },
+      {
+        "type": "math",
+        "latex": "2a"
+      },
+      {
+        "type": "text",
+        "text": "は変えません。"
+      }
+    ],
+    "cを一回だけ含む項は、負号も一回だけ掛かる。": [
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "を一回だけ含む項は、負号も一回だけ掛かる。"
+      }
+    ],
+    "m個とn個を一列に続けて数える。": [
+      {
+        "type": "math",
+        "latex": "m"
+      },
+      {
+        "type": "text",
+        "text": "個と"
+      },
+      {
+        "type": "math",
+        "latex": "n"
+      },
+      {
+        "type": "text",
+        "text": "個を一列に続けて数える。"
+      }
+    ],
+    "m個の組をn回繰り返すと？": [
+      {
+        "type": "math",
+        "latex": "m"
+      },
+      {
+        "type": "text",
+        "text": "個の組を"
+      },
+      {
+        "type": "math",
+        "latex": "n"
+      },
+      {
+        "type": "text",
+        "text": "回繰り返すと？"
+      }
+    ],
+    "rsは文字xを含まない部分です。": [
+      {
+        "type": "math",
+        "latex": "rs"
+      },
+      {
+        "type": "text",
+        "text": "は文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を含まない部分です。"
+      }
+    ],
+    "rとsの符号関係と、その理由を組にして選ぼう。": [
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "の符号関係と、その理由を組にして選ぼう。"
+      }
+    ],
+    "rとsはともに負（rs=-3だから）": [
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "はともに負（"
+      },
+      {
+        "type": "math",
+        "latex": "rs=-3"
+      },
+      {
+        "type": "text",
+        "text": "だから）"
+      }
+    ],
+    "rとsは同符号（rs=-3<0だから）": [
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "は同符号（"
+      },
+      {
+        "type": "math",
+        "latex": "rs=-3<0"
+      },
+      {
+        "type": "text",
+        "text": "だから）"
+      }
+    ],
+    "rとsは異符号（r+s=-2だから）": [
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "は異符号（"
+      },
+      {
+        "type": "math",
+        "latex": "r+s=-2"
+      },
+      {
+        "type": "text",
+        "text": "だから）"
+      }
+    ],
+    "rとsは異符号（rs=-3<0だから）": [
+      {
+        "type": "math",
+        "latex": "r"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "s"
+      },
+      {
+        "type": "text",
+        "text": "は異符号（"
+      },
+      {
+        "type": "math",
+        "latex": "rs=-3<0"
+      },
+      {
+        "type": "text",
+        "text": "だから）"
+      }
+    ],
+    "sxと5rxのそれぞれからxを外へ出します。": [
+      {
+        "type": "math",
+        "latex": "sx"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "5rx"
+      },
+      {
+        "type": "text",
+        "text": "のそれぞれから"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出します。"
+      }
+    ],
+    "x²=x×xに掛けている文字の個数を入れます。": [
+      {
+        "type": "math",
+        "latex": "x²=x×x"
+      },
+      {
+        "type": "text",
+        "text": "に掛けている文字の個数を入れます。"
+      }
+    ],
+    "x²−a²=(x−a)(x+a)を両方の因子に使う。": [
+      {
+        "type": "math",
+        "latex": "x²−a²=(x−a)(x+a)"
+      },
+      {
+        "type": "text",
+        "text": "を両方の因子に使う。"
+      }
+    ],
+    "x²で省略されている数の部分を入れます。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "で省略されている数の部分を入れます。"
+      }
+    ],
+    "x²の係数": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の係数"
+      }
+    ],
+    "x²の係数 3−5 を計算しよう。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の係数 "
+      },
+      {
+        "type": "math",
+        "latex": "3−5"
+      },
+      {
+        "type": "text",
+        "text": " を計算しよう。"
+      }
+    ],
+    "x²の係数と次数": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の係数と次数"
+      }
+    ],
+    "x²の係数を元の式と比べます。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の係数を元の式と比べます。"
+      }
+    ],
+    "x²の項と定数はこの足し算に入れない。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の項と定数はこの足し算に入れない。"
+      }
+    ],
+    "x²を含む二つの項を符号ごと選ぼう。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "を含む二つの項を符号ごと選ぼう。"
+      }
+    ],
+    "x²を括弧内の全項に掛けた形を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "を括弧内の全項に掛けた形を選ぼう。"
+      }
+    ],
+    "x³という項があります。yは係数側へ含めます。": [
+      {
+        "type": "math",
+        "latex": "x³"
+      },
+      {
+        "type": "text",
+        "text": "という項があります。"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "は係数側へ含めます。"
+      }
+    ],
+    "x³に掛かるものをまとめよう。": [
+      {
+        "type": "math",
+        "latex": "x³"
+      },
+      {
+        "type": "text",
+        "text": "に掛かるものをまとめよう。"
+      }
+    ],
+    "x×3と1×4xの和は7x。": [
+      {
+        "type": "math",
+        "latex": "x×3"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "1×4x"
+      },
+      {
+        "type": "text",
+        "text": "の和は"
+      },
+      {
+        "type": "math",
+        "latex": "7x"
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
+    "x×4と1×xを足すと一次項になる。": [
+      {
+        "type": "math",
+        "latex": "x×4"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "1×x"
+      },
+      {
+        "type": "text",
+        "text": "を足すと一次項になる。"
+      }
+    ],
+    "x⁴を(x²)²と読むと、x²が一つのまとまりとして使えます。": [
+      {
+        "type": "math",
+        "latex": "x^{4}"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "(x²)²"
+      },
+      {
+        "type": "text",
+        "text": "と読むと、"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "が一つのまとまりとして使えます。"
+      }
+    ],
+    "xが3個の組が、3組ある。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が3個の組が、3組ある。"
+      }
+    ],
+    "xが二つ、yが二つなので、2+2を計算します。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が二つ、"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "が二つなので、"
+      },
+      {
+        "type": "math",
+        "latex": "2+2"
+      },
+      {
+        "type": "text",
+        "text": "を計算します。"
+      }
+    ],
+    "xだけに注目した最高次数を読みます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "だけに注目した最高次数を読みます。"
+      }
+    ],
+    "xで各項を割ったときに何が残るかを、符号ごと比べる。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "で各項を割ったときに何が残るかを、符号ごと比べる。"
+      }
+    ],
+    "xとyを合わせた個数を入れます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を合わせた個数を入れます。"
+      }
+    ],
+    "xとyを含む因数分解の完成形を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を含む因数分解の完成形を選ぼう。"
+      }
+    ],
+    "xと−3のどちらにも掛かっている部分を残す。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "のどちらにも掛かっている部分を残す。"
+      }
+    ],
+    "xについて整理": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "について整理"
+      }
+    ],
+    "xについて整理した形を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "について整理した形を選ぼう。"
+      }
+    ],
+    "xに掛かる係数の部分を入れます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "に掛かる係数の部分を入れます。"
+      }
+    ],
+    "xに掛かる係数はadとbcの和。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "に掛かる係数は"
+      },
+      {
+        "type": "math",
+        "latex": "ad"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "bc"
+      },
+      {
+        "type": "text",
+        "text": "の和。"
+      }
+    ],
+    "xに注目するとき、yは係数に含められる。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "に注目するとき、"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "は係数に含められる。"
+      }
+    ],
+    "xの一次係数": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の一次係数"
+      }
+    ],
+    "xの一次係数を比べます。二次や定数の積と区別します。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の一次係数を比べます。二次や定数の積と区別します。"
+      }
+    ],
+    "xの二次式として条件を作る": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の二次式として条件を作る"
+      }
+    ],
+    "xの係数 −5+2 を計算しよう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の係数 "
+      },
+      {
+        "type": "math",
+        "latex": "−5+2"
+      },
+      {
+        "type": "text",
+        "text": " を計算しよう。"
+      }
+    ],
+    "xの係数は1、4。掛ける相手の定数は3、1である。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の係数は1、4。掛ける相手の定数は3、1である。"
+      }
+    ],
+    "xの係数は省略された1です。3xの係数3に、その1を足します。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の係数は省略された1です。"
+      },
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "の係数3に、その1を足します。"
+      }
+    ],
+    "xの前は和、最後の部分は積に対応します。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の前は和、最後の部分は積に対応します。"
+      }
+    ],
+    "xの定数部分": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の定数部分"
+      }
+    ],
+    "xの式として戻した積を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の式として戻した積を選ぼう。"
+      }
+    ],
+    "xの指数ではなく、yの指数を読みます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数ではなく、"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "の指数を読みます。"
+      }
+    ],
+    "xの指数は変えず、係数を掛ける。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数は変えず、係数を掛ける。"
+      }
+    ],
+    "xの次数3→2→1→0の順へ。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の次数"
+      },
+      {
+        "type": "math",
+        "latex": "3→2→1→0"
+      },
+      {
+        "type": "text",
+        "text": "の順へ。"
+      }
+    ],
+    "xの項どうしの係数を足す。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の項どうしの係数を足す。"
+      }
+    ],
+    "xは1xとして係数を数えよう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "1x"
+      },
+      {
+        "type": "text",
+        "text": "として係数を数えよう。"
+      }
+    ],
+    "xへ戻して元の問題を終える": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "へ戻して元の問題を終える"
+      }
+    ],
+    "xを1xとして読む。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "1x"
+      },
+      {
+        "type": "text",
+        "text": "として読む。"
+      }
+    ],
+    "xを一つも含まない項を、元の式から符号ごと集める。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一つも含まない項を、元の式から符号ごと集める。"
+      }
+    ],
+    "xを一つ含む二項を、前の符号と一緒に選びます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一つ含む二項を、前の符号と一緒に選びます。"
+      }
+    ],
+    "xを一つ含む項だけを選びます。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一つ含む項だけを選びます。"
+      }
+    ],
+    "xを二つ掛けています。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を二つ掛けています。"
+      }
+    ],
+    "xを含む一次項だけを取り出す。二つに共通するxを外へ出し、残った係数を一つの括弧に入れよう。": [
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を含む一次項だけを取り出す。二つに共通する"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出し、残った係数を一つの括弧に入れよう。"
+      }
+    ],
+    "y²の組も三つある。指数法則を、実際の因子の個数へ戻して確かめよう。": [
+      {
+        "type": "math",
+        "latex": "y²"
+      },
+      {
+        "type": "text",
+        "text": "の組も三つある。指数法則を、実際の因子の個数へ戻して確かめよう。"
+      }
+    ],
+    "yだけの個数を数えます。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "だけの個数を数えます。"
+      }
+    ],
+    "yについて整理": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "について整理"
+      }
+    ],
+    "yに掛かっている式を入れます。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "に掛かっている式を入れます。"
+      }
+    ],
+    "yに掛かる係数の部分を入れます。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "に掛かる係数の部分を入れます。"
+      }
+    ],
+    "yの有無ではなく、xを含むかで分類する。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "の有無ではなく、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を含むかで分類する。"
+      }
+    ],
+    "yをくくった形を選ぼう。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "をくくった形を選ぼう。"
+      }
+    ],
+    "yを一つ取り除いた各項を、符号を変えずに並べる。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を一つ取り除いた各項を、符号を変えずに並べる。"
+      }
+    ],
+    "yを二つ掛けると文字の指数はどうなる？": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を二つ掛けると文字の指数はどうなる？"
+      }
+    ],
+    "yを含むのはx²y、xy、−2yの三項。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を含むのは"
+      },
+      {
+        "type": "math",
+        "latex": "x²y"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "xy"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "−2y"
+      },
+      {
+        "type": "text",
+        "text": "の三項。"
+      }
+    ],
+    "yを含む部分と残りをまとめる": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を含む部分と残りをまとめる"
+      }
+    ],
+    "yを含む項は、どれもyが一つ掛かっています。": [
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を含む項は、どれも"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "が一つ掛かっています。"
+      }
+    ],
+    "−12b³の中へ3bを一つ作り、残る係数を計算する。": [
+      {
+        "type": "math",
+        "latex": "−12b³"
+      },
+      {
+        "type": "text",
+        "text": "の中へ"
+      },
+      {
+        "type": "math",
+        "latex": "3b"
+      },
+      {
+        "type": "text",
+        "text": "を一つ作り、残る係数を計算する。"
+      }
+    ],
+    "−1をAと−Bの両方へ掛けよう。": [
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−B"
+      },
+      {
+        "type": "text",
+        "text": "の両方へ掛けよう。"
+      }
+    ],
+    "−1をBの三次項へ掛ける。二つの負号を含めて数の部分を計算する。": [
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の三次項へ掛ける。二つの負号を含めて数の部分を計算する。"
+      }
+    ],
+    "−1を掛けた行を作る": [
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を掛けた行を作る"
+      }
+    ],
+    "−1を掛けると、三つの項の符号がそれぞれどう変わるだろう。": [
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を掛けると、三つの項の符号がそれぞれどう変わるだろう。"
+      }
+    ],
+    "−1を配るとき、後ろの各項の符号はどうなる？": [
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を配るとき、後ろの各項の符号はどうなる？"
+      }
+    ],
+    "−2x=(−2)×xです。前の負号も数の部分に含めます。": [
+      {
+        "type": "math",
+        "latex": "−2x=(−2)×x"
+      },
+      {
+        "type": "text",
+        "text": "です。前の負号も数の部分に含めます。"
+      }
+    ],
+    "−2x²の項が残っています。": [
+      {
+        "type": "math",
+        "latex": "−2x²"
+      },
+      {
+        "type": "text",
+        "text": "の項が残っています。"
+      }
+    ],
+    "−2xに掛けている文字の個数を入れます。": [
+      {
+        "type": "math",
+        "latex": "−2x"
+      },
+      {
+        "type": "text",
+        "text": "に掛けている文字の個数を入れます。"
+      }
+    ],
+    "−2xの係数と次数": [
+      {
+        "type": "math",
+        "latex": "−2x"
+      },
+      {
+        "type": "text",
+        "text": "の係数と次数"
+      }
+    ],
+    "−2xの数の部分を、符号も含めて入れます。": [
+      {
+        "type": "math",
+        "latex": "−2x"
+      },
+      {
+        "type": "text",
+        "text": "の数の部分を、符号も含めて入れます。"
+      }
+    ],
+    "−3Bを完成させる": [
+      {
+        "type": "math",
+        "latex": "−3B"
+      },
+      {
+        "type": "text",
+        "text": "を完成させる"
+      }
+    ],
+    "−3xは文字を含むので定数項ではありません。": [
+      {
+        "type": "math",
+        "latex": "−3x"
+      },
+      {
+        "type": "text",
+        "text": "は文字を含むので定数項ではありません。"
+      }
+    ],
+    "−3をyと5の両方に掛ける。": [
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "と5の両方に掛ける。"
+      }
+    ],
+    "−Bを完成させる": [
+      {
+        "type": "math",
+        "latex": "−B"
+      },
+      {
+        "type": "text",
+        "text": "を完成させる"
+      }
+    ],
+    "−abと+abが打ち消し合う。残る両端の符号を確かめる。": [
+      {
+        "type": "math",
+        "latex": "−ab"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "+ab"
+      },
+      {
+        "type": "text",
+        "text": "が打ち消し合う。残る両端の符号を確かめる。"
+      }
+    ],
+    "−abと−baの和は、−abが二つ分。": [
+      {
+        "type": "math",
+        "latex": "−ab"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−ba"
+      },
+      {
+        "type": "text",
+        "text": "の和は、"
+      },
+      {
+        "type": "math",
+        "latex": "−ab"
+      },
+      {
+        "type": "text",
+        "text": "が二つ分。"
+      }
+    ],
+    "−cの二乗は正。cを一度だけ含む交差項の符号が変わる。": [
+      {
+        "type": "math",
+        "latex": "−c"
+      },
+      {
+        "type": "text",
+        "text": "の二乗は正。"
+      },
+      {
+        "type": "math",
+        "latex": "c"
+      },
+      {
+        "type": "text",
+        "text": "を一度だけ含む交差項の符号が変わる。"
+      }
+    ],
+    "−x²y²の係数と次数": [
+      {
+        "type": "math",
+        "latex": "−x²y²"
+      },
+      {
+        "type": "text",
+        "text": "の係数と次数"
+      }
+    ],
+    "−x²y²の数の部分を、符号も含めて入れます。": [
+      {
+        "type": "math",
+        "latex": "−x²y²"
+      },
+      {
+        "type": "text",
+        "text": "の数の部分を、符号も含めて入れます。"
+      }
+    ],
+    "−xの係数−1も括弧内に残す。": [
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "の係数"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "も括弧内に残す。"
+      }
+    ],
+    "−xは係数−1、指数1の項として読む。": [
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "は係数"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "、指数1の項として読む。"
+      }
+    ],
+    "ここでは一次の項全体を戻します。係数4だけでなく、文字xも含めます。": [
+      {
+        "type": "text",
+        "text": "ここでは一次の項全体を戻します。係数4だけでなく、文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "も含めます。"
+      }
+    ],
+    "ここは係数だけの空欄ではありません。一次の項を、文字xも含めて戻します。": [
+      {
+        "type": "text",
+        "text": "ここは係数だけの空欄ではありません。一次の項を、文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "も含めて戻します。"
+      }
+    ],
+    "どの項にもxを一回ずつくくり出せる。": [
+      {
+        "type": "text",
+        "text": "どの項にも"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一回ずつくくり出せる。"
+      }
+    ],
+    "ない項は係数0。Bの値を変えてはいけない。": [
+      {
+        "type": "text",
+        "text": "ない項は係数0。"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の値を変えてはいけない。"
+      }
+    ],
+    "まずx²とx²の積です。同じ底xの積なので指数2と2を足します。": [
+      {
+        "type": "text",
+        "text": "まず"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の積です。同じ底"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の積なので指数2と2を足します。"
+      }
+    ],
+    "まとまりA−Bの前の負号を、二項それぞれへ配ろう。": [
+      {
+        "type": "text",
+        "text": "まとまり"
+      },
+      {
+        "type": "math",
+        "latex": "A−B"
+      },
+      {
+        "type": "text",
+        "text": "の前の負号を、二項それぞれへ配ろう。"
+      }
+    ],
+    "もう一方の交差積1xを足し、一次係数を決める。": [
+      {
+        "type": "text",
+        "text": "もう一方の交差積"
+      },
+      {
+        "type": "math",
+        "latex": "1x"
+      },
+      {
+        "type": "text",
+        "text": "を足し、一次係数を決める。"
+      }
+    ],
+    "一文字Tが表していたのは、a+bという括弧全体である。": [
+      {
+        "type": "text",
+        "text": "一文字"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "が表していたのは、"
+      },
+      {
+        "type": "math",
+        "latex": "a+b"
+      },
+      {
+        "type": "text",
+        "text": "という括弧全体である。"
+      }
+    ],
+    "一方に+1、もう一方に−2が残るように共通部分を取り出します。": [
+      {
+        "type": "text",
+        "text": "一方に"
+      },
+      {
+        "type": "math",
+        "latex": "+1"
+      },
+      {
+        "type": "text",
+        "text": "、もう一方に"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "が残るように共通部分を取り出します。"
+      }
+    ],
+    "一次の積はpx×sとq×rxの二組。": [
+      {
+        "type": "text",
+        "text": "一次の積は"
+      },
+      {
+        "type": "math",
+        "latex": "px×s"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "q×rx"
+      },
+      {
+        "type": "text",
+        "text": "の二組。"
+      }
+    ],
+    "一次係数はr+sではなく2s+rで比べる。": [
+      {
+        "type": "text",
+        "text": "一次係数は"
+      },
+      {
+        "type": "math",
+        "latex": "r+s"
+      },
+      {
+        "type": "text",
+        "text": "ではなく"
+      },
+      {
+        "type": "math",
+        "latex": "2s+r"
+      },
+      {
+        "type": "text",
+        "text": "で比べる。"
+      }
+    ],
+    "一次項−2XとXをまとめる。": [
+      {
+        "type": "text",
+        "text": "一次項"
+      },
+      {
+        "type": "math",
+        "latex": "−2X"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "をまとめる。"
+      }
+    ],
+    "一次項のxを外へ出し、残る二つの係数を足す。": [
+      {
+        "type": "text",
+        "text": "一次項の"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出し、残る二つの係数を足す。"
+      }
+    ],
+    "一次項はarとas、定数項はrs。": [
+      {
+        "type": "text",
+        "text": "一次項は"
+      },
+      {
+        "type": "math",
+        "latex": "ar"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "as"
+      },
+      {
+        "type": "text",
+        "text": "、定数項は"
+      },
+      {
+        "type": "math",
+        "latex": "rs"
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
+    "一組にyが2個あり、その組が3個ある。": [
+      {
+        "type": "text",
+        "text": "一組に"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "が2個あり、その組が3個ある。"
+      }
+    ],
+    "一項目3a²bにはbは一つしかありません。": [
+      {
+        "type": "text",
+        "text": "一項目"
+      },
+      {
+        "type": "math",
+        "latex": "3a²b"
+      },
+      {
+        "type": "text",
+        "text": "には"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "は一つしかありません。"
+      }
+    ],
+    "三つの項すべてに−1を掛けます。": [
+      {
+        "type": "text",
+        "text": "三つの項すべてに"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を掛けます。"
+      }
+    ],
+    "三番目の5には文字がない。数の部分を掛け、前のxを一つ残そう。": [
+      {
+        "type": "text",
+        "text": "三番目の5には文字がない。数の部分を掛け、前の"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一つ残そう。"
+      }
+    ],
+    "上のa、bと横のa、bを全部組み合わせよう。": [
+      {
+        "type": "text",
+        "text": "上の"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と横の"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "を全部組み合わせよう。"
+      }
+    ],
+    "両方とも文字の部分がx²の項を選びます。": [
+      {
+        "type": "text",
+        "text": "両方とも文字の部分が"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の項を選びます。"
+      }
+    ],
+    "並べ替えた二式で、+xと−x以外を比べます。": [
+      {
+        "type": "text",
+        "text": "並べ替えた二式で、"
+      },
+      {
+        "type": "math",
+        "latex": "+x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "以外を比べます。"
+      }
+    ],
+    "中央の項−xには、さらに−1が掛かる。": [
+      {
+        "type": "text",
+        "text": "中央の項"
+      },
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "には、さらに"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "が掛かる。"
+      }
+    ],
+    "二つずつ組にして展開したとき、xの係数が何の和になるか考えよう。その和が同じになる組合せを探そう。": [
+      {
+        "type": "text",
+        "text": "二つずつ組にして展開したとき、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の係数が何の和になるか考えよう。その和が同じになる組合せを探そう。"
+      }
+    ],
+    "二つのT+cを掛け、交差積を二回数える。": [
+      {
+        "type": "text",
+        "text": "二つの"
+      },
+      {
+        "type": "math",
+        "latex": "T+c"
+      },
+      {
+        "type": "text",
+        "text": "を掛け、交差積を二回数える。"
+      }
+    ],
+    "二つのXは同じ式の名前である。": [
+      {
+        "type": "text",
+        "text": "二つの"
+      },
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "は同じ式の名前である。"
+      }
+    ],
+    "二つのx一次項の係数を足そう。": [
+      {
+        "type": "text",
+        "text": "二つの"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "一次項の係数を足そう。"
+      }
+    ],
+    "二つのまとまりx²、5xを和の平方へ入れよう。": [
+      {
+        "type": "text",
+        "text": "二つのまとまり"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "を和の平方へ入れよう。"
+      }
+    ],
+    "二つの係数はyとx。その和が括弧の外に残る。": [
+      {
+        "type": "text",
+        "text": "二つの係数は"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "。その和が括弧の外に残る。"
+      }
+    ],
+    "二つの因子を足すとき、yの係数だけを先に計算する。": [
+      {
+        "type": "text",
+        "text": "二つの因子を足すとき、"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "の係数だけを先に計算する。"
+      }
+    ],
+    "二つの因数に出るTは同じ式の名前である。": [
+      {
+        "type": "text",
+        "text": "二つの因数に出る"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "は同じ式の名前である。"
+      }
+    ],
+    "二つの定数項は2y+1とy−2で、足すと3y−1。": [
+      {
+        "type": "text",
+        "text": "二つの定数項は"
+      },
+      {
+        "type": "math",
+        "latex": "2y+1"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "y−2"
+      },
+      {
+        "type": "text",
+        "text": "で、足すと"
+      },
+      {
+        "type": "math",
+        "latex": "3y−1"
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
+    "二つ目の式では3xの平方を計算する。": [
+      {
+        "type": "text",
+        "text": "二つ目の式では"
+      },
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "の平方を計算する。"
+      }
+    ],
+    "二乗すると4b²になるまとまりを使います。": [
+      {
+        "type": "text",
+        "text": "二乗すると"
+      },
+      {
+        "type": "math",
+        "latex": "4b²"
+      },
+      {
+        "type": "text",
+        "text": "になるまとまりを使います。"
+      }
+    ],
+    "二乗の公式でT²を展開し、それから一次のTの項も元の式へ戻そう。同じ次数の項を集め、各係数を自分で計算しよう。": [
+      {
+        "type": "text",
+        "text": "二乗の公式で"
+      },
+      {
+        "type": "math",
+        "latex": "T²"
+      },
+      {
+        "type": "text",
+        "text": "を展開し、それから一次の"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の項も元の式へ戻そう。同じ次数の項を集め、各係数を自分で計算しよう。"
+      }
+    ],
+    "二式の最後にある+xと−xを比べます。": [
+      {
+        "type": "text",
+        "text": "二式の最後にある"
+      },
+      {
+        "type": "math",
+        "latex": "+x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "を比べます。"
+      }
+    ],
+    "二次項と定数項ではなく、xを一回含む二つの積を使う。": [
+      {
+        "type": "text",
+        "text": "二次項と定数項ではなく、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一回含む二つの積を使う。"
+      }
+    ],
+    "二番目の因数にも、同じT=x²を使う。一方のTだけを残さず、両方を戻そう。": [
+      {
+        "type": "text",
+        "text": "二番目の因数にも、同じ"
+      },
+      {
+        "type": "math",
+        "latex": "T=x²"
+      },
+      {
+        "type": "text",
+        "text": "を使う。一方の"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "だけを残さず、両方を戻そう。"
+      }
+    ],
+    "二番目の項は−xである。負号を含めて3xへ掛けよう。": [
+      {
+        "type": "text",
+        "text": "二番目の項は"
+      },
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "である。負号を含めて"
+      },
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "へ掛けよう。"
+      }
+    ],
+    "二項目は−(a−b)yと書き直せる。": [
+      {
+        "type": "text",
+        "text": "二項目は"
+      },
+      {
+        "type": "math",
+        "latex": "−(a−b)y"
+      },
+      {
+        "type": "text",
+        "text": "と書き直せる。"
+      }
+    ],
+    "交差項−2X+Xをまとめ、定数−2−4を足す。": [
+      {
+        "type": "text",
+        "text": "交差項"
+      },
+      {
+        "type": "math",
+        "latex": "−2X+X"
+      },
+      {
+        "type": "text",
+        "text": "をまとめ、定数"
+      },
+      {
+        "type": "math",
+        "latex": "−2−4"
+      },
+      {
+        "type": "text",
+        "text": "を足す。"
+      }
+    ],
+    "今回は係数1をそのまま残すのではなく、1−1を計算します。": [
+      {
+        "type": "text",
+        "text": "今回は係数1をそのまま残すのではなく、"
+      },
+      {
+        "type": "math",
+        "latex": "1−1"
+      },
+      {
+        "type": "text",
+        "text": "を計算します。"
+      }
+    ],
+    "今度はaとxが係数側に残ります。": [
+      {
+        "type": "text",
+        "text": "今度は"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が係数側に残ります。"
+      }
+    ],
+    "今度はyだけに注目した最高次数を読みます。": [
+      {
+        "type": "text",
+        "text": "今度は"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "だけに注目した最高次数を読みます。"
+      }
+    ],
+    "代入した2a全体を二乗する。": [
+      {
+        "type": "text",
+        "text": "代入した"
+      },
+      {
+        "type": "math",
+        "latex": "2a"
+      },
+      {
+        "type": "text",
+        "text": "全体を二乗する。"
+      }
+    ],
+    "例えば r=1、s=−3 なら、積は−3でも s+5r=2 となり、−2には一致しない。候補は積だけでなく、一次の係数も計算して選ぼう。": [
+      {
+        "type": "text",
+        "text": "例えば "
+      },
+      {
+        "type": "math",
+        "latex": "r=1"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "s=−3"
+      },
+      {
+        "type": "text",
+        "text": " なら、積は"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "でも "
+      },
+      {
+        "type": "math",
+        "latex": "s+5r=2"
+      },
+      {
+        "type": "text",
+        "text": " となり、"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "には一致しない。候補は積だけでなく、一次の係数も計算して選ぼう。"
+      }
+    ],
+    "係数4は指数へ加えず、aの個数だけを合わせる。": [
+      {
+        "type": "text",
+        "text": "係数4は指数へ加えず、"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "の個数だけを合わせる。"
+      }
+    ],
+    "係数の−2ではなく、文字xの個数を数えます。": [
+      {
+        "type": "text",
+        "text": "係数の"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "ではなく、文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の個数を数えます。"
+      }
+    ],
+    "係数の−3を指数の計算へ混ぜません。": [
+      {
+        "type": "text",
+        "text": "係数の"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "を指数の計算へ混ぜません。"
+      }
+    ],
+    "係数の計算1+3の結果を入れます。": [
+      {
+        "type": "text",
+        "text": "係数の計算"
+      },
+      {
+        "type": "math",
+        "latex": "1+3"
+      },
+      {
+        "type": "text",
+        "text": "の結果を入れます。"
+      }
+    ],
+    "係数の計算1−1の結果を入れます。": [
+      {
+        "type": "text",
+        "text": "係数の計算"
+      },
+      {
+        "type": "math",
+        "latex": "1−1"
+      },
+      {
+        "type": "text",
+        "text": "の結果を入れます。"
+      }
+    ],
+    "係数の計算はできています。空欄の外にxがあるので、空欄には4だけを入れます。": [
+      {
+        "type": "text",
+        "text": "係数の計算はできています。空欄の外に"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "があるので、空欄には4だけを入れます。"
+      }
+    ],
+    "係数は2×3、文字はx×x。": [
+      {
+        "type": "text",
+        "text": "係数は"
+      },
+      {
+        "type": "math",
+        "latex": "2×3"
+      },
+      {
+        "type": "text",
+        "text": "、文字は"
+      },
+      {
+        "type": "math",
+        "latex": "x×x"
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
+    "係数は5と5の積、文字はxとxの積。": [
+      {
+        "type": "text",
+        "text": "係数は5と5の積、文字は"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の積。"
+      }
+    ],
+    "係数を2×4してxを残す。": [
+      {
+        "type": "text",
+        "text": "係数を"
+      },
+      {
+        "type": "math",
+        "latex": "2×4"
+      },
+      {
+        "type": "text",
+        "text": "して"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を残す。"
+      }
+    ],
+    "係数を掛け、xは一つ残す。": [
+      {
+        "type": "text",
+        "text": "係数を掛け、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "は一つ残す。"
+      }
+    ],
+    "係数を掛け、同じ底xの指数を足す。": [
+      {
+        "type": "text",
+        "text": "係数を掛け、同じ底"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数を足す。"
+      }
+    ],
+    "倍率は−3、Bの二次項は+2x²です。二次項への掛け算を作ります。": [
+      {
+        "type": "text",
+        "text": "倍率は"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の二次項は"
+      },
+      {
+        "type": "math",
+        "latex": "+2x²"
+      },
+      {
+        "type": "text",
+        "text": "です。二次項への掛け算を作ります。"
+      }
+    ],
+    "候補Aは(2x+1)(2x+3)。斜めの積だけを先に足そう。": [
+      {
+        "type": "text",
+        "text": "候補"
+      },
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "(2x+1)(2x+3)"
+      },
+      {
+        "type": "text",
+        "text": "。斜めの積だけを先に足そう。"
+      }
+    ],
+    "候補Bは(x+1)(4x+3)。同じ位置の交差積を計算しよう。": [
+      {
+        "type": "text",
+        "text": "候補"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "(x+1)(4x+3)"
+      },
+      {
+        "type": "text",
+        "text": "。同じ位置の交差積を計算しよう。"
+      }
+    ],
+    "候補Cは(x+3)(4x+1)。定数の置き方だけでも一次係数は変わる。": [
+      {
+        "type": "text",
+        "text": "候補"
+      },
+      {
+        "type": "math",
+        "latex": "C"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "(x+3)(4x+1)"
+      },
+      {
+        "type": "text",
+        "text": "。定数の置き方だけでも一次係数は変わる。"
+      }
+    ],
+    "候補の括弧へ−1を配り、b−aに戻るか確かめます。": [
+      {
+        "type": "text",
+        "text": "候補の括弧へ"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を配り、"
+      },
+      {
+        "type": "math",
+        "latex": "b−a"
+      },
+      {
+        "type": "text",
+        "text": "に戻るか確かめます。"
+      }
+    ],
+    "元のAの四つの項が、一度ずつ2倍されているかを確認しよう。": [
+      {
+        "type": "text",
+        "text": "元の"
+      },
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "の四つの項が、一度ずつ2倍されているかを確認しよう。"
+      }
+    ],
+    "元の一次係数に必要なのは−2。積の条件だけで候補を決めないようにしよう。": [
+      {
+        "type": "text",
+        "text": "元の一次係数に必要なのは"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "。積の条件だけで候補を決めないようにしよう。"
+      }
+    ],
+    "先にTの式のまま共通因数を外へ出す。元へ戻すのはその後にしよう。": [
+      {
+        "type": "text",
+        "text": "先に"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の式のまま共通因数を外へ出す。元へ戻すのはその後にしよう。"
+      }
+    ],
+    "先頭は2y²、最後は−2。交差積を合わせる。": [
+      {
+        "type": "text",
+        "text": "先頭は"
+      },
+      {
+        "type": "math",
+        "latex": "2y²"
+      },
+      {
+        "type": "text",
+        "text": "、最後は"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "。交差積を合わせる。"
+      }
+    ],
+    "公式のa、bに当たる部分をそれぞれ2a、5と見てみよう。": [
+      {
+        "type": "text",
+        "text": "公式の"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "に当たる部分をそれぞれ"
+      },
+      {
+        "type": "math",
+        "latex": "2a"
+      },
+      {
+        "type": "text",
+        "text": "、5と見てみよう。"
+      }
+    ],
+    "共通する3x全体を二乗します。": [
+      {
+        "type": "text",
+        "text": "共通する"
+      },
+      {
+        "type": "math",
+        "latex": "3x"
+      },
+      {
+        "type": "text",
+        "text": "全体を二乗します。"
+      }
+    ],
+    "共通のxを一つ外へ出します。": [
+      {
+        "type": "text",
+        "text": "共通の"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を一つ外へ出します。"
+      }
+    ],
+    "共通因数Tを外へ出すと、残るのは二項の係数である。足し算の形にそろえ、負号を係数に含めよう。": [
+      {
+        "type": "text",
+        "text": "共通因数"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "を外へ出すと、残るのは二項の係数である。足し算の形にそろえ、負号を係数に含めよう。"
+      }
+    ],
+    "共通部分をTと置いて展開": [
+      {
+        "type": "text",
+        "text": "共通部分を"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "と置いて展開"
+      }
+    ],
+    "分配して各項の積ができました。最初の三次項から、係数2と2の積を計算し、x³を残します。": [
+      {
+        "type": "text",
+        "text": "分配して各項の積ができました。最初の三次項から、係数2と2の積を計算し、"
+      },
+      {
+        "type": "math",
+        "latex": "x³"
+      },
+      {
+        "type": "text",
+        "text": "を残します。"
+      }
+    ],
+    "前の括弧の−1が後ろの全項へ掛かる。": [
+      {
+        "type": "text",
+        "text": "前の括弧の"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "が後ろの全項へ掛かる。"
+      }
+    ],
+    "前半に共通するyを一つ外へ出す。残る式を括弧に入れよう。": [
+      {
+        "type": "text",
+        "text": "前半に共通する"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を一つ外へ出す。残る式を括弧に入れよう。"
+      }
+    ],
+    "各候補の和を比べた結果から、和−6・積−16の両方を満たす組を選ぶ。": [
+      {
+        "type": "text",
+        "text": "各候補の和を比べた結果から、和"
+      },
+      {
+        "type": "math",
+        "latex": "−6"
+      },
+      {
+        "type": "text",
+        "text": "・積"
+      },
+      {
+        "type": "math",
+        "latex": "−16"
+      },
+      {
+        "type": "text",
+        "text": "の両方を満たす組を選ぶ。"
+      }
+    ],
+    "各組にxが3個ずつあります。": [
+      {
+        "type": "text",
+        "text": "各組に"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が3個ずつあります。"
+      }
+    ],
+    "各項にyが含まれるかを一つずつ見ます。": [
+      {
+        "type": "text",
+        "text": "各項に"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "が含まれるかを一つずつ見ます。"
+      }
+    ],
+    "同じaの因子を数えて簡単にしよう。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "の因子を数えて簡単にしよう。"
+      }
+    ],
+    "同じbxを残し、二つの係数を足す。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "bx"
+      },
+      {
+        "type": "text",
+        "text": "を残し、二つの係数を足す。"
+      }
+    ],
+    "同じx+2yだけをXへ置き換えます。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "x+2y"
+      },
+      {
+        "type": "text",
+        "text": "だけを"
+      },
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "へ置き換えます。"
+      }
+    ],
+    "同じxyの係数を足します。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "xy"
+      },
+      {
+        "type": "text",
+        "text": "の係数を足します。"
+      }
+    ],
+    "同じx²の二項だけをまとめる。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の二項だけをまとめる。"
+      }
+    ],
+    "同じxが掛かる二項を集める。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が掛かる二項を集める。"
+      }
+    ],
+    "同じxの個数を合わせます。": [
+      {
+        "type": "text",
+        "text": "同じ"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の個数を合わせます。"
+      }
+    ],
+    "同じ文字xyを残し、係数20を二つ足す。": [
+      {
+        "type": "text",
+        "text": "同じ文字"
+      },
+      {
+        "type": "math",
+        "latex": "xy"
+      },
+      {
+        "type": "text",
+        "text": "を残し、係数20を二つ足す。"
+      }
+    ],
+    "四候補のうちs+5r=−2を満たす組を使う。": [
+      {
+        "type": "text",
+        "text": "四候補のうち"
+      },
+      {
+        "type": "math",
+        "latex": "s+5r=−2"
+      },
+      {
+        "type": "text",
+        "text": "を満たす組を使う。"
+      }
+    ],
+    "変化させる文字yを残し、それ以外を一つにまとめます。": [
+      {
+        "type": "text",
+        "text": "変化させる文字"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を残し、それ以外を一つにまとめます。"
+      }
+    ],
+    "定数の1と−2も別に足す。": [
+      {
+        "type": "text",
+        "text": "定数の1と"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "も別に足す。"
+      }
+    ],
+    "定数項 6−3 を計算しよう。": [
+      {
+        "type": "text",
+        "text": "定数項 "
+      },
+      {
+        "type": "math",
+        "latex": "6−3"
+      },
+      {
+        "type": "text",
+        "text": " を計算しよう。"
+      }
+    ],
+    "定数項は−16です。": [
+      {
+        "type": "text",
+        "text": "定数項は"
+      },
+      {
+        "type": "math",
+        "latex": "−16"
+      },
+      {
+        "type": "text",
+        "text": "です。"
+      }
+    ],
+    "展開したaの一次係数に当たる式を入れます。aに掛かる括弧の中を読みます。": [
+      {
+        "type": "text",
+        "text": "展開した"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "の一次係数に当たる式を入れます。"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "に掛かる括弧の中を読みます。"
+      }
+    ],
+    "展開した二式の中から、x²の係数を足すために必要な二項だけを選ぼう。": [
+      {
+        "type": "text",
+        "text": "展開した二式の中から、"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "の係数を足すために必要な二項だけを選ぼう。"
+      }
+    ],
+    "展開後のxの係数は、括弧内の二つの定数の和になる。和が同じになる組み方を先に選ぼう。": [
+      {
+        "type": "text",
+        "text": "展開後の"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の係数は、括弧内の二つの定数の和になる。和が同じになる組み方を先に選ぼう。"
+      }
+    ],
+    "差の平方では、一つ目の交差積に−bを掛ける。": [
+      {
+        "type": "text",
+        "text": "差の平方では、一つ目の交差積に"
+      },
+      {
+        "type": "math",
+        "latex": "−b"
+      },
+      {
+        "type": "text",
+        "text": "を掛ける。"
+      }
+    ],
+    "式にはxが3回出てくるから": [
+      {
+        "type": "text",
+        "text": "式には"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "が3回出てくるから"
+      }
+    ],
+    "後ろの定数−4は、括弧の積とは別の項である。": [
+      {
+        "type": "text",
+        "text": "後ろの定数"
+      },
+      {
+        "type": "math",
+        "latex": "−4"
+      },
+      {
+        "type": "text",
+        "text": "は、括弧の積とは別の項である。"
+      }
+    ],
+    "戻すのは①で求めた一次の項です。文字の部分はxで、x²ではありません。": [
+      {
+        "type": "text",
+        "text": "戻すのは①で求めた一次の項です。文字の部分は"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "で、"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "ではありません。"
+      }
+    ],
+    "括弧から出た−2と、外にあった−4をまとめる。": [
+      {
+        "type": "text",
+        "text": "括弧から出た"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "と、外にあった"
+      },
+      {
+        "type": "math",
+        "latex": "−4"
+      },
+      {
+        "type": "text",
+        "text": "をまとめる。"
+      }
+    ],
+    "括弧の中央の項は、符号を含めて−xです。": [
+      {
+        "type": "text",
+        "text": "括弧の中央の項は、符号を含めて"
+      },
+      {
+        "type": "math",
+        "latex": "−x"
+      },
+      {
+        "type": "text",
+        "text": "です。"
+      }
+    ],
+    "括弧の前の−1は全項に掛かる。": [
+      {
+        "type": "text",
+        "text": "括弧の前の"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "は全項に掛かる。"
+      }
+    ],
+    "括弧内のaとbは毎回一つずつ現れる。": [
+      {
+        "type": "text",
+        "text": "括弧内の"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "は毎回一つずつ現れる。"
+      }
+    ],
+    "指数の2はxの個数です。数の部分は1です。": [
+      {
+        "type": "text",
+        "text": "指数の2は"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の個数です。数の部分は1です。"
+      }
+    ],
+    "文字xの指数2+1を計算します。": [
+      {
+        "type": "text",
+        "text": "文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数"
+      },
+      {
+        "type": "math",
+        "latex": "2+1"
+      },
+      {
+        "type": "text",
+        "text": "を計算します。"
+      }
+    ],
+    "文字yを一つ残して係数を足す。": [
+      {
+        "type": "text",
+        "text": "文字"
+      },
+      {
+        "type": "math",
+        "latex": "y"
+      },
+      {
+        "type": "text",
+        "text": "を一つ残して係数を足す。"
+      }
+    ],
+    "文字の部分abを変えず、係数を足す。": [
+      {
+        "type": "text",
+        "text": "文字の部分"
+      },
+      {
+        "type": "math",
+        "latex": "ab"
+      },
+      {
+        "type": "text",
+        "text": "を変えず、係数を足す。"
+      }
+    ],
+    "文字の部分がxの二項です。": [
+      {
+        "type": "text",
+        "text": "文字の部分が"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の二項です。"
+      }
+    ],
+    "既に計算した2A-3Bの結果を再利用しよう。": [
+      {
+        "type": "text",
+        "text": "既に計算した"
+      },
+      {
+        "type": "math",
+        "latex": "2A-3B"
+      },
+      {
+        "type": "text",
+        "text": "の結果を再利用しよう。"
+      }
+    ],
+    "最初どうしの積prがx²に掛かります。": [
+      {
+        "type": "text",
+        "text": "最初どうしの積"
+      },
+      {
+        "type": "math",
+        "latex": "pr"
+      },
+      {
+        "type": "text",
+        "text": "が"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "に掛かります。"
+      }
+    ],
+    "最初の因数x²−1はxの平方と1の平方の差である。平方差の公式へ対応させよう。": [
+      {
+        "type": "text",
+        "text": "最初の因数"
+      },
+      {
+        "type": "math",
+        "latex": "x²−1"
+      },
+      {
+        "type": "text",
+        "text": "は"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の平方と1の平方の差である。平方差の公式へ対応させよう。"
+      }
+    ],
+    "最初の因数のXを、定義したx+2yへ戻す。": [
+      {
+        "type": "text",
+        "text": "最初の因数の"
+      },
+      {
+        "type": "math",
+        "latex": "X"
+      },
+      {
+        "type": "text",
+        "text": "を、定義した"
+      },
+      {
+        "type": "math",
+        "latex": "x+2y"
+      },
+      {
+        "type": "text",
+        "text": "へ戻す。"
+      }
+    ],
+    "最初の組、5xと5xの積を計算しよう。": [
+      {
+        "type": "text",
+        "text": "最初の組、"
+      },
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "の積を計算しよう。"
+      }
+    ],
+    "最後どうしの積qsは文字xを含みません。": [
+      {
+        "type": "text",
+        "text": "最後どうしの積"
+      },
+      {
+        "type": "math",
+        "latex": "qs"
+      },
+      {
+        "type": "text",
+        "text": "は文字"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "を含みません。"
+      }
+    ],
+    "最後に、2Aと−3Bの定数項を足します。": [
+      {
+        "type": "text",
+        "text": "最後に、"
+      },
+      {
+        "type": "math",
+        "latex": "2A"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−3B"
+      },
+      {
+        "type": "text",
+        "text": "の定数項を足します。"
+      }
+    ],
+    "最後に、Aの定数項と、符号を変えたBの定数項を足します。": [
+      {
+        "type": "text",
+        "text": "最後に、"
+      },
+      {
+        "type": "math",
+        "latex": "A"
+      },
+      {
+        "type": "text",
+        "text": "の定数項と、符号を変えた"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の定数項を足します。"
+      }
+    ],
+    "最後に候補(4,−4)の和を計算する。": [
+      {
+        "type": "text",
+        "text": "最後に候補"
+      },
+      {
+        "type": "math",
+        "latex": "(4,−4)"
+      },
+      {
+        "type": "text",
+        "text": "の和を計算する。"
+      }
+    ],
+    "最後の9y²も、数の平方と文字の平方に分ける。正の底を選ぼう。": [
+      {
+        "type": "text",
+        "text": "最後の"
+      },
+      {
+        "type": "math",
+        "latex": "9y²"
+      },
+      {
+        "type": "text",
+        "text": "も、数の平方と文字の平方に分ける。正の底を選ぼう。"
+      }
+    ],
+    "最後の−x²も係数の計算へ含める。": [
+      {
+        "type": "text",
+        "text": "最後の"
+      },
+      {
+        "type": "math",
+        "latex": "−x²"
+      },
+      {
+        "type": "text",
+        "text": "も係数の計算へ含める。"
+      }
+    ],
+    "最後の定数項も−1倍する。": [
+      {
+        "type": "text",
+        "text": "最後の定数項も"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "倍する。"
+      }
+    ],
+    "最後の積は−bと−bなので、二つの負号が掛かる。": [
+      {
+        "type": "text",
+        "text": "最後の積は"
+      },
+      {
+        "type": "math",
+        "latex": "−b"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−b"
+      },
+      {
+        "type": "text",
+        "text": "なので、二つの負号が掛かる。"
+      }
+    ],
+    "最後の組、4yと4yの積を計算しよう。": [
+      {
+        "type": "text",
+        "text": "最後の組、"
+      },
+      {
+        "type": "math",
+        "latex": "4y"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "4y"
+      },
+      {
+        "type": "text",
+        "text": "の積を計算しよう。"
+      }
+    ],
+    "最後の項では5x全体を二乗する。係数5も二回掛かることを、積に戻して確かめよう。": [
+      {
+        "type": "text",
+        "text": "最後の項では"
+      },
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "全体を二乗する。係数5も二回掛かることを、積に戻して確かめよう。"
+      }
+    ],
+    "最後はx²と定数4です。数4を前へ置き、x²はそのまま残します。": [
+      {
+        "type": "text",
+        "text": "最後は"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "と定数4です。数4を前へ置き、"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "はそのまま残します。"
+      }
+    ],
+    "次に10Tの部分へ分配する。": [
+      {
+        "type": "text",
+        "text": "次に"
+      },
+      {
+        "type": "math",
+        "latex": "10T"
+      },
+      {
+        "type": "text",
+        "text": "の部分へ分配する。"
+      }
+    ],
+    "次に−3Bを完成させる": [
+      {
+        "type": "text",
+        "text": "次に"
+      },
+      {
+        "type": "math",
+        "latex": "−3B"
+      },
+      {
+        "type": "text",
+        "text": "を完成させる"
+      }
+    ],
+    "次はBの二次項へ同じ係数を掛ける。": [
+      {
+        "type": "text",
+        "text": "次は"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の二次項へ同じ係数を掛ける。"
+      }
+    ],
+    "次はx²と−3xです。係数−3を残し、xの指数2と1を足します。": [
+      {
+        "type": "text",
+        "text": "次は"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "−3x"
+      },
+      {
+        "type": "text",
+        "text": "です。係数"
+      },
+      {
+        "type": "math",
+        "latex": "−3"
+      },
+      {
+        "type": "text",
+        "text": "を残し、"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の指数2と1を足します。"
+      }
+    ],
+    "次は二次項へも同じ−1を掛ける。": [
+      {
+        "type": "text",
+        "text": "次は二次項へも同じ"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を掛ける。"
+      }
+    ],
+    "次は候補(2,−8)の和を比べよう。": [
+      {
+        "type": "text",
+        "text": "次は候補"
+      },
+      {
+        "type": "math",
+        "latex": "(2,−8)"
+      },
+      {
+        "type": "text",
+        "text": "の和を比べよう。"
+      }
+    ],
+    "次は前の括弧の−1を、後ろの全項に掛ける。": [
+      {
+        "type": "text",
+        "text": "次は前の括弧の"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を、後ろの全項に掛ける。"
+      }
+    ],
+    "残ったx²+x−2では、積が−2、和が1になる二数が必要になる。": [
+      {
+        "type": "text",
+        "text": "残った"
+      },
+      {
+        "type": "math",
+        "latex": "x²+x−2"
+      },
+      {
+        "type": "text",
+        "text": "では、積が"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "、和が1になる二数が必要になる。"
+      }
+    ],
+    "残る4b²を、正の係数を使った一つの式の平方へ戻す。": [
+      {
+        "type": "text",
+        "text": "残る"
+      },
+      {
+        "type": "math",
+        "latex": "4b²"
+      },
+      {
+        "type": "text",
+        "text": "を、正の係数を使った一つの式の平方へ戻す。"
+      }
+    ],
+    "直前の展開でxの前にある式を使います。": [
+      {
+        "type": "text",
+        "text": "直前の展開で"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "の前にある式を使います。"
+      }
+    ],
+    "直前の比較で、−2になった位置を見返そう。": [
+      {
+        "type": "text",
+        "text": "直前の比較で、"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "になった位置を見返そう。"
+      }
+    ],
+    "積rs=−3を満たす候補(r,s)=(1,−3)で、s+5rを計算しよう。": [
+      {
+        "type": "text",
+        "text": "積"
+      },
+      {
+        "type": "math",
+        "latex": "rs=−3"
+      },
+      {
+        "type": "text",
+        "text": "を満たす候補"
+      },
+      {
+        "type": "math",
+        "latex": "(r,s)=(1,−3)"
+      },
+      {
+        "type": "text",
+        "text": "で、"
+      },
+      {
+        "type": "math",
+        "latex": "s+5r"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "積rs=−3を満たす候補(r,s)=(3,−1)で、s+5rを計算しよう。": [
+      {
+        "type": "text",
+        "text": "積"
+      },
+      {
+        "type": "math",
+        "latex": "rs=−3"
+      },
+      {
+        "type": "text",
+        "text": "を満たす候補"
+      },
+      {
+        "type": "math",
+        "latex": "(r,s)=(3,−1)"
+      },
+      {
+        "type": "text",
+        "text": "で、"
+      },
+      {
+        "type": "math",
+        "latex": "s+5r"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "積rs=−3を満たす候補(r,s)=(−1,3)で、s+5rを計算しよう。": [
+      {
+        "type": "text",
+        "text": "積"
+      },
+      {
+        "type": "math",
+        "latex": "rs=−3"
+      },
+      {
+        "type": "text",
+        "text": "を満たす候補"
+      },
+      {
+        "type": "math",
+        "latex": "(r,s)=(−1,3)"
+      },
+      {
+        "type": "text",
+        "text": "で、"
+      },
+      {
+        "type": "math",
+        "latex": "s+5r"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "積rs=−3を満たす候補(r,s)=(−3,1)で、s+5rを計算しよう。": [
+      {
+        "type": "text",
+        "text": "積"
+      },
+      {
+        "type": "math",
+        "latex": "rs=−3"
+      },
+      {
+        "type": "text",
+        "text": "を満たす候補"
+      },
+      {
+        "type": "math",
+        "latex": "(r,s)=(−3,1)"
+      },
+      {
+        "type": "text",
+        "text": "で、"
+      },
+      {
+        "type": "math",
+        "latex": "s+5r"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "積が−16になる候補(1,−16)から、和を一つずつ計算しよう。": [
+      {
+        "type": "text",
+        "text": "積が"
+      },
+      {
+        "type": "math",
+        "latex": "−16"
+      },
+      {
+        "type": "text",
+        "text": "になる候補"
+      },
+      {
+        "type": "math",
+        "latex": "(1,−16)"
+      },
+      {
+        "type": "text",
+        "text": "から、和を一つずつ計算しよう。"
+      }
+    ],
+    "積が−2の候補から、2s+r=−3も満たす組を選ぶ。": [
+      {
+        "type": "text",
+        "text": "積が"
+      },
+      {
+        "type": "math",
+        "latex": "−2"
+      },
+      {
+        "type": "text",
+        "text": "の候補から、"
+      },
+      {
+        "type": "math",
+        "latex": "2s+r=−3"
+      },
+      {
+        "type": "text",
+        "text": "も満たす組を選ぶ。"
+      }
+    ],
+    "積が正なので二数は同符号。和が負なので両方とも負になる。和と積を確かめ、最後にTをx²へ戻そう。": [
+      {
+        "type": "text",
+        "text": "積が正なので二数は同符号。和が負なので両方とも負になる。和と積を確かめ、最後に"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "を"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "へ戻そう。"
+      }
+    ],
+    "積が負なので二数の符号は異なる。和が負になるには、絶対値の大きい方が負になる。積が−16、和が−6の両方に合うか確かめよう。": [
+      {
+        "type": "text",
+        "text": "積が負なので二数の符号は異なる。和が負になるには、絶対値の大きい方が負になる。積が"
+      },
+      {
+        "type": "math",
+        "latex": "−16"
+      },
+      {
+        "type": "text",
+        "text": "、和が"
+      },
+      {
+        "type": "math",
+        "latex": "−6"
+      },
+      {
+        "type": "text",
+        "text": "の両方に合うか確かめよう。"
+      }
+    ],
+    "積が負なので二数は異符号。和が正なので、絶対値の大きい方が正になる。元の因子(x+y)も残そう。": [
+      {
+        "type": "text",
+        "text": "積が負なので二数は異符号。和が正なので、絶対値の大きい方が正になる。元の因子"
+      },
+      {
+        "type": "math",
+        "latex": "(x+y)"
+      },
+      {
+        "type": "text",
+        "text": "も残そう。"
+      }
+    ],
+    "空欄の外にxがあります。空欄には係数だけを入れます。": [
+      {
+        "type": "text",
+        "text": "空欄の外に"
+      },
+      {
+        "type": "math",
+        "latex": "x"
+      },
+      {
+        "type": "text",
+        "text": "があります。空欄には係数だけを入れます。"
+      }
+    ],
+    "置換で決めたTの内容を変えず、その場所にx²を入れる。": [
+      {
+        "type": "text",
+        "text": "置換で決めた"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "の内容を変えず、その場所に"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "を入れる。"
+      }
+    ],
+    "置換後の二つの括弧を四組の積へ開く。最後の−4も残しておこう。": [
+      {
+        "type": "text",
+        "text": "置換後の二つの括弧を四組の積へ開く。最後の"
+      },
+      {
+        "type": "math",
+        "latex": "−4"
+      },
+      {
+        "type": "text",
+        "text": "も残しておこう。"
+      }
+    ],
+    "表の1マス目、2x×3xを計算しよう。": [
+      {
+        "type": "text",
+        "text": "表の1マス目、"
+      },
+      {
+        "type": "math",
+        "latex": "2x×3x"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "表の2マス目、2x×4を計算しよう。": [
+      {
+        "type": "text",
+        "text": "表の2マス目、"
+      },
+      {
+        "type": "math",
+        "latex": "2x×4"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "表の3マス目、1×3xを計算しよう。": [
+      {
+        "type": "text",
+        "text": "表の3マス目、"
+      },
+      {
+        "type": "math",
+        "latex": "1×3x"
+      },
+      {
+        "type": "text",
+        "text": "を計算しよう。"
+      }
+    ],
+    "負のbと正のaの積は二箇所とも負。負同士の積は正。": [
+      {
+        "type": "text",
+        "text": "負の"
+      },
+      {
+        "type": "math",
+        "latex": "b"
+      },
+      {
+        "type": "text",
+        "text": "と正の"
+      },
+      {
+        "type": "math",
+        "latex": "a"
+      },
+      {
+        "type": "text",
+        "text": "の積は二箇所とも負。負同士の積は正。"
+      }
+    ],
+    "負の係数を、Bの先頭の負の項へ掛けよう。": [
+      {
+        "type": "text",
+        "text": "負の係数を、"
+      },
+      {
+        "type": "math",
+        "latex": "B"
+      },
+      {
+        "type": "text",
+        "text": "の先頭の負の項へ掛けよう。"
+      }
+    ],
+    "負の数どうしの積を先に判断し、x³はそのまま残そう。": [
+      {
+        "type": "text",
+        "text": "負の数どうしの積を先に判断し、"
+      },
+      {
+        "type": "math",
+        "latex": "x³"
+      },
+      {
+        "type": "text",
+        "text": "はそのまま残そう。"
+      }
+    ],
+    "負号は−1を掛けることを表します。": [
+      {
+        "type": "text",
+        "text": "負号は"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "を掛けることを表します。"
+      }
+    ],
+    "負号を数の部分−1へ戻す。": [
+      {
+        "type": "text",
+        "text": "負号を数の部分"
+      },
+      {
+        "type": "math",
+        "latex": "−1"
+      },
+      {
+        "type": "text",
+        "text": "へ戻す。"
+      }
+    ],
+    "選んだ二数を使い、まだTのままで二つの因数を作ろう。": [
+      {
+        "type": "text",
+        "text": "選んだ二数を使い、まだ"
+      },
+      {
+        "type": "math",
+        "latex": "T"
+      },
+      {
+        "type": "text",
+        "text": "のままで二つの因数を作ろう。"
+      }
+    ],
+    "選んだ二項はx²が共通する。係数を足して一項にしよう。": [
+      {
+        "type": "text",
+        "text": "選んだ二項は"
+      },
+      {
+        "type": "math",
+        "latex": "x²"
+      },
+      {
+        "type": "text",
+        "text": "が共通する。係数を足して一項にしよう。"
+      }
+    ],
+    "順序を入れ替えた4yと5xの積を計算しよう。": [
+      {
+        "type": "text",
+        "text": "順序を入れ替えた"
+      },
+      {
+        "type": "math",
+        "latex": "4y"
+      },
+      {
+        "type": "text",
+        "text": "と"
+      },
+      {
+        "type": "math",
+        "latex": "5x"
+      },
+      {
+        "type": "text",
+        "text": "の積を計算しよう。"
+      }
+    ]
+  }
+}

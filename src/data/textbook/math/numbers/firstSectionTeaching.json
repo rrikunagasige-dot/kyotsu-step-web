@@ -46,7 +46,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "まず−x²y²を「数×文字×文字…」の形に戻します。前の負号を数の部分に含め、xとyがそれぞれ何回掛かっているか見えるようにします。"
+            "text": "まず"
+          },
+          {
+            "type": "math",
+            "latex": "−x²y²"
+          },
+          {
+            "type": "text",
+            "text": "を「数×文字×文字…」の形に戻します。前の負号を数の部分に含め、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "がそれぞれ何回掛かっているか見えるようにします。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -137,8 +161,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "−2x"
+          },
+          {
             "type": "text",
-            "text": "−2xを掛け算に戻すと、−2×xです。符号を含む数の部分が係数です。"
+            "text": "を掛け算に戻すと、"
+          },
+          {
+            "type": "math",
+            "latex": "−2×x"
+          },
+          {
+            "type": "text",
+            "text": "です。符号を含む数の部分が係数です。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -168,7 +204,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "次に次数を見ます。掛けている文字はxが一つなので、その個数を入れます。"
+            "text": "次に次数を見ます。掛けている文字は"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が一つなので、その個数を入れます。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -198,8 +242,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
             "type": "text",
-            "text": "x²は、xを二つ掛けた式です。文字の前に数がない場合は、1が省略されています。"
+            "text": "は、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を二つ掛けた式です。文字の前に数がない場合は、1が省略されています。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -249,7 +305,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "最初に扱った−x²y²も、同じ順に読みます。前の負号を数の部分に含めて、係数を入れます。"
+            "text": "最初に扱った"
+          },
+          {
+            "type": "math",
+            "latex": "−x²y²"
+          },
+          {
+            "type": "text",
+            "text": "も、同じ順に読みます。前の負号を数の部分に含めて、係数を入れます。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -279,7 +343,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "次数は、xとyを合わせて数えます。xが二つ、yが二つなので、2+2を計算します。"
+            "text": "次数は、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を合わせて数えます。"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が二つ、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "が二つなので、"
+          },
+          {
+            "type": "math",
+            "latex": "2+2"
+          },
+          {
+            "type": "text",
+            "text": "を計算します。"
           }
         ],
         "derivationId": "n01-s5-stage-1"
@@ -363,7 +467,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "この問題ではxだけが変化すると考える。yを消すのではなく、数5と一緒に係数側へ移して、x³に何が掛かるかを見える形にする。"
+            "text": "この問題では"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "だけが変化すると考える。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を消すのではなく、数5と一緒に係数側へ移して、"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "に何が掛かるかを見える形にする。"
           }
         ],
         "derivationId": "n01-s5-stage-2"
@@ -393,7 +521,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "掛け算の順を入れ替えただけなので式の値は変わらない。注目する文字をyへ変えるときも、同じ方法でyの外側に残るものを集める。"
+            "text": "掛け算の順を入れ替えただけなので式の値は変わらない。注目する文字を"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "へ変えるときも、同じ方法で"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の外側に残るものを集める。"
           }
         ],
         "derivationId": "n01-s5-stage-2"
@@ -404,7 +548,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じ5x³yを、今度はyについて読みます。yを一つ残し、それ以外を係数の側にまとめます。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "5x³y"
+          },
+          {
+            "type": "text",
+            "text": "を、今度は"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "について読みます。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を一つ残し、それ以外を係数の側にまとめます。"
           }
         ],
         "derivationId": "n01-s5-stage-2"
@@ -459,8 +627,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "y"
+          },
+          {
             "type": "text",
-            "text": "yについて見ると係数は5x³、次数は1です。xについて見たときと、残す文字が変わっています。"
+            "text": "について見ると係数は"
+          },
+          {
+            "type": "math",
+            "latex": "5x³"
+          },
+          {
+            "type": "text",
+            "text": "、次数は1です。"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "について見たときと、残す文字が変わっています。"
           }
         ],
         "derivationId": "n01-s5-stage-2"
@@ -477,7 +665,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "次はaxyに同じ方法を使います。まずxに注目します。掛け算の順序を変え、xだけを右に残します。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "axy"
+          },
+          {
+            "type": "text",
+            "text": "に同じ方法を使います。まず"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "に注目します。掛け算の順序を変え、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "だけを右に残します。"
           }
         ],
         "derivationId": "n01-s5-stage-3"
@@ -506,8 +718,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xの係数はayでした。今度はyだけを右に残し、同じ式を読み直します。"
+            "text": "の係数は"
+          },
+          {
+            "type": "math",
+            "latex": "ay"
+          },
+          {
+            "type": "text",
+            "text": "でした。今度は"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "だけを右に残し、同じ式を読み直します。"
           }
         ],
         "derivationId": "n01-s5-stage-3"
@@ -591,7 +823,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字の部分がx²の項を、元の式から符号ごと取り出します。"
+            "text": "文字の部分が"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の項を、元の式から符号ごと取り出します。"
           }
         ],
         "derivationId": "n01-s5-stage-5"
@@ -617,7 +857,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの項は同じx²の何倍かを表します。係数を引き、文字の部分x²を残します。"
+            "text": "二つの項は同じ"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の何倍かを表します。係数を引き、文字の部分"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "を残します。"
           }
         ],
         "derivationId": "n01-s5-stage-5"
@@ -682,7 +938,55 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字の部分がxの項は−5xと+2xです。同じxを残し、係数−5と+2を足します。"
+            "text": "文字の部分が"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の項は"
+          },
+          {
+            "type": "math",
+            "latex": "−5x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "+2x"
+          },
+          {
+            "type": "text",
+            "text": "です。同じ"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を残し、係数"
+          },
+          {
+            "type": "math",
+            "latex": "−5"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "+2"
+          },
+          {
+            "type": "text",
+            "text": "を足します。"
           }
         ],
         "derivationId": "n01-s5-stage-6"
@@ -789,7 +1093,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二次の項−2x²、一次の項−3x、定数項3が求まりました。これらを次数の高い順に並べます。異なる次数の項は、これ以上まとめません。"
+            "text": "二次の項"
+          },
+          {
+            "type": "math",
+            "latex": "−2x²"
+          },
+          {
+            "type": "text",
+            "text": "、一次の項"
+          },
+          {
+            "type": "math",
+            "latex": "−3x"
+          },
+          {
+            "type": "text",
+            "text": "、定数項3が求まりました。これらを次数の高い順に並べます。異なる次数の項は、これ以上まとめません。"
           }
         ],
         "derivationId": "n01-s5-stage-8"
@@ -912,7 +1232,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "元の式から、文字の部分がxの項を取り出します。項を取り出すときは、その項の前の符号も一緒に見ます。"
+            "text": "元の式から、文字の部分が"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の項を取り出します。項を取り出すときは、その項の前の符号も一緒に見ます。"
           }
         ],
         "derivationId": "n01-s5-stage-10"
@@ -934,7 +1262,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次の項はxと3xです。xには係数の1が省略されているので、x=1xと考えます。"
+            "text": "一次の項は"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "です。"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "には係数の1が省略されているので、"
+          },
+          {
+            "type": "math",
+            "latex": "x=1x"
+          },
+          {
+            "type": "text",
+            "text": "と考えます。"
           }
         ],
         "derivationId": "n01-s5-stage-10"
@@ -956,7 +1316,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じxが1個と3個あるので、文字の部分xを残して係数を足します。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が1個と3個あるので、文字の部分"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を残して係数を足します。"
           }
         ],
         "derivationId": "n01-s5-stage-10"
@@ -1005,7 +1381,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次の項は4xにまとまりました。この結果を、最後に式全体を組み立てるときに使います。"
+            "text": "一次の項は"
+          },
+          {
+            "type": "math",
+            "latex": "4x"
+          },
+          {
+            "type": "text",
+            "text": "にまとまりました。この結果を、最後に式全体を組み立てるときに使います。"
           }
         ],
         "derivationId": "n01-s5-stage-10"
@@ -1032,7 +1416,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字の部分がx²の項は、−2x²だけです。ほかに同類項がないため、この項はそのまま残します。"
+            "text": "文字の部分が"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の項は、"
+          },
+          {
+            "type": "math",
+            "latex": "−2x²"
+          },
+          {
+            "type": "text",
+            "text": "だけです。ほかに同類項がないため、この項はそのまま残します。"
           }
         ],
         "derivationId": "n01-s5-stage-11"
@@ -1059,7 +1459,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字の部分がx³の項は、x³と−x³です。一次の項と同じように、文字の部分を残して係数を計算します。"
+            "text": "文字の部分が"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "の項は、"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−x³"
+          },
+          {
+            "type": "text",
+            "text": "です。一次の項と同じように、文字の部分を残して係数を計算します。"
           }
         ],
         "derivationId": "n01-s5-stage-12"
@@ -2102,7 +2526,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じbxを残し、二つの係数を足す。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "bx"
+          },
+          {
+            "type": "text",
+            "text": "を残し、二つの係数を足す。"
           }
         ],
         "derivationId": "n02-s5-stage-1"
@@ -2170,7 +2602,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次の項は3bxになりました。残る項はx³、−ax²、5cです。xの個数が3個、2個、1個、0個となる順に、符号を保って並べます。"
+            "text": "一次の項は"
+          },
+          {
+            "type": "math",
+            "latex": "3bx"
+          },
+          {
+            "type": "text",
+            "text": "になりました。残る項は"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "−ax²"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "5c"
+          },
+          {
+            "type": "text",
+            "text": "です。"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の個数が3個、2個、1個、0個となる順に、符号を保って並べます。"
           }
         ],
         "derivationId": "n02-s5-stage-1"
@@ -2308,7 +2780,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "後でxの次数順に並べるため、まず一次係数と定数部分を分けて求める。yを含むかではなく、xを含むかを判定の基準にする。"
+            "text": "後で"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の次数順に並べるため、まず一次係数と定数部分を分けて求める。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を含むかではなく、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を含むかを判定の基準にする。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2319,7 +2815,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "元の式の項を、二次・一次・xを含まない部分へ並べ替える。項の符号は変えない。"
+            "text": "元の式の項を、二次・一次・"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を含まない部分へ並べ替える。項の符号は変えない。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2348,8 +2852,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xを含む一次項だけを取り出す。二つに共通するxを外へ出し、残った係数を一つの括弧に入れよう。"
+            "text": "を含む一次項だけを取り出す。二つに共通する"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を外へ出し、残った係数を一つの括弧に入れよう。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2390,7 +2906,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項は、この括弧全体にxを掛けた形になった。次にxを含まない項を別のまとまりとして読めば、係数と定数部分を区別できる。"
+            "text": "一次項は、この括弧全体に"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を掛けた形になった。次に"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を含まない項を別のまとまりとして読めば、係数と定数部分を区別できる。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2400,8 +2932,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xを一つも含まない項を、元の式から符号ごと集める。"
+            "text": "を一つも含まない項を、元の式から符号ごと集める。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2438,7 +2974,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "得た二つを次の式の一次係数と定数部分へ戻す。定数部分が一つの数でなく文字式でも、xがなければこの整理では定数として扱える。"
+            "text": "得た二つを次の式の一次係数と定数部分へ戻す。定数部分が一つの数でなく文字式でも、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "がなければこの整理では定数として扱える。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2476,7 +3020,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "二次の項x²はそのまま残します。求めた一次係数をxの前へ戻し、xを含まない部分を最後へ置きます。"
+            "text": "二次の項"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "はそのまま残します。求めた一次係数を"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の前へ戻し、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を含まない部分を最後へ置きます。"
           }
         ],
         "derivationId": "n02-s5-stage-2"
@@ -2621,7 +3189,15 @@
           },
           {
             "type": "text",
-            "text": " には一次の項が見当たらない。同じ次数の列をそろえるため、Bの値を変えずに補える一次項を考えよう。"
+            "text": " には一次の項が見当たらない。同じ次数の列をそろえるため、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の値を変えずに補える一次項を考えよう。"
           }
         ],
         "derivationId": "n02-s5-stage-3"
@@ -2677,8 +3253,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "B"
+          },
+          {
             "type": "text",
-            "text": "Bの一次係数を0としてそろえたので、同じ次数の列を一つずつ足せる。三次、二次、一次、定数の計算は、それぞれ別の列の計算である。"
+            "text": "の一次係数を0としてそろえたので、同じ次数の列を一つずつ足せる。三次、二次、一次、定数の計算は、それぞれ別の列の計算である。"
           }
         ],
         "derivationId": "n02-s5-stage-3"
@@ -2932,7 +3512,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "三次・二次・一次・定数の四つの結果を、A+Bの各位置へ戻しました。係数1は省略して書いています。"
+            "text": "三次・二次・一次・定数の四つの結果を、"
+          },
+          {
+            "type": "math",
+            "latex": "A+B"
+          },
+          {
+            "type": "text",
+            "text": "の各位置へ戻しました。係数1は省略して書いています。"
           }
         ],
         "derivationId": "n02-s5-stage-3"
@@ -3005,8 +3593,36 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "A−B"
+          },
+          {
             "type": "text",
-            "text": "A−Bでは、Bという式全体を引く。そこで−1をBの全項へ掛けた式を先に作れば、あとでは加法と同じ方法で次数をそろえられる。"
+            "text": "では、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "という式全体を引く。そこで"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の全項へ掛けた式を先に作れば、あとでは加法と同じ方法で次数をそろえられる。"
           }
         ],
         "derivationId": "n02-s5-stage-4"
@@ -3031,8 +3647,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
             "type": "text",
-            "text": "−1をBの三次項へ掛ける。二つの負号を含めて数の部分を計算する。"
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の三次項へ掛ける。二つの負号を含めて数の部分を計算する。"
           }
         ],
         "derivationId": "n02-s5-stage-4"
@@ -3133,7 +3761,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "この−Bを次のAへ足す。負号を変える操作と係数を足す操作を一度にせず、二段階に分けた結果を利用する。"
+            "text": "この"
+          },
+          {
+            "type": "math",
+            "latex": "−B"
+          },
+          {
+            "type": "text",
+            "text": "を次の"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "へ足す。負号を変える操作と係数を足す操作を一度にせず、二段階に分けた結果を利用する。"
           }
         ],
         "derivationId": "n02-s5-stage-4"
@@ -3264,7 +3908,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後に、Aの定数項と、符号を変えたBの定数項を足します。"
+            "text": "最後に、"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "の定数項と、符号を変えた"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の定数項を足します。"
           }
         ],
         "derivationId": "n02-s5-stage-5"
@@ -3356,8 +4016,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
             "type": "text",
-            "text": "2A−3Bをそのまま一度に整理すると、係数倍と同類項の計算が重なる。まず2Aと−3Bをそれぞれ完成させ、次の段階で同じ次数を集める。"
+            "text": "をそのまま一度に整理すると、係数倍と同類項の計算が重なる。まず"
+          },
+          {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−3B"
+          },
+          {
+            "type": "text",
+            "text": "をそれぞれ完成させ、次の段階で同じ次数を集める。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3367,8 +4047,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
             "type": "text",
-            "text": "2Aの2は括弧全体に掛かる。まず、各項に掛けた形を作ろう。"
+            "text": "の2は括弧全体に掛かる。まず、各項に掛けた形を作ろう。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3394,7 +4078,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "分配して各項の積ができました。最初の三次項から、係数2と2の積を計算し、x³を残します。"
+            "text": "分配して各項の積ができました。最初の三次項から、係数2と2の積を計算し、"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "を残します。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3435,7 +4127,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字の部分x²は残し、係数だけを掛ける。"
+            "text": "文字の部分"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "は残し、係数だけを掛ける。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3446,7 +4146,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "2を掛けても文字の種類と指数は変わらない。数の部分だけを計算してから、x²へ戻そう。"
+            "text": "2を掛けても文字の種類と指数は変わらない。数の部分だけを計算してから、"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "へ戻そう。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3476,7 +4184,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "係数だけが変わり、x²は残る。この係数を使って次の一項全体を完成させる。"
+            "text": "係数だけが変わり、"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "は残る。この係数を使って次の一項全体を完成させる。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3501,8 +4217,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
             "type": "text",
-            "text": "2Aの一次項では2を1xへ掛ける。"
+            "text": "の一次項では2を"
+          },
+          {
+            "type": "math",
+            "latex": "1x"
+          },
+          {
+            "type": "text",
+            "text": "へ掛ける。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3531,8 +4259,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
             "type": "text",
-            "text": "2Aの定数項−1にも2を掛ける。"
+            "text": "の定数項"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "にも2を掛ける。"
           }
         ],
         "derivationId": "n02-s5-stage-6"
@@ -3573,8 +4313,44 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
             "type": "text",
-            "text": "2Aの計算は終わりました。今度はB全体に−3を掛けます。Aの計算へ戻らず、Bの三次項、二次項、定数項を順に処理します。"
+            "text": "の計算は終わりました。今度は"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "全体に"
+          },
+          {
+            "type": "math",
+            "latex": "−3"
+          },
+          {
+            "type": "text",
+            "text": "を掛けます。"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "の計算へ戻らず、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の三次項、二次項、定数項を順に処理します。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3584,8 +4360,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
             "type": "text",
-            "text": "2A−3Bは、2AにBの何倍を足す式だろう。"
+            "text": "は、"
+          },
+          {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
+            "type": "text",
+            "text": "に"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の何倍を足す式だろう。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3611,7 +4407,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "いま選んだ数をB全体に掛ける。括弧の閉じを含めると2A+(-3)Bとなる。"
+            "text": "いま選んだ数を"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "全体に掛ける。括弧の閉じを含めると"
+          },
+          {
+            "type": "math",
+            "latex": "2A+(-3)B"
+          },
+          {
+            "type": "text",
+            "text": "となる。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3622,7 +4434,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "負の係数を、Bの先頭の負の項へ掛けよう。"
+            "text": "負の係数を、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の先頭の負の項へ掛けよう。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3659,7 +4479,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "次はBの二次項へ同じ係数を掛ける。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の二次項へ同じ係数を掛ける。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3721,8 +4549,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "−3B"
+          },
+          {
             "type": "text",
-            "text": "−3Bの計算も終わりました。次は、完成済みの2Aと−3Bを足します。三次から定数まで一列ずつ計算します。"
+            "text": "の計算も終わりました。次は、完成済みの"
+          },
+          {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−3B"
+          },
+          {
+            "type": "text",
+            "text": "を足します。三次から定数まで一列ずつ計算します。"
           }
         ],
         "derivationId": "n02-s5-stage-7"
@@ -3781,7 +4629,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "展開した二式の中から、x²の係数を足すために必要な二項だけを選ぼう。"
+            "text": "展開した二式の中から、"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の係数を足すために必要な二項だけを選ぼう。"
           }
         ],
         "derivationId": "n02-s5-stage-8"
@@ -3803,7 +4659,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "選んだ二項はx²が共通する。係数を足して一項にしよう。"
+            "text": "選んだ二項は"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "が共通する。係数を足して一項にしよう。"
           }
         ],
         "derivationId": "n02-s5-stage-8"
@@ -3843,8 +4707,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "B"
+          },
+          {
             "type": "text",
-            "text": "Bの一次係数は0。係数倍した後も一次項は増えないため、一次の計算は次のようになる。"
+            "text": "の一次係数は0。係数倍した後も一次項は増えないため、一次の計算は次のようになる。"
           }
         ],
         "derivationId": "n02-s5-stage-8"
@@ -3866,7 +4734,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後に、2Aと−3Bの定数項を足します。"
+            "text": "最後に、"
+          },
+          {
+            "type": "math",
+            "latex": "2A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−3B"
+          },
+          {
+            "type": "text",
+            "text": "の定数項を足します。"
           }
         ],
         "derivationId": "n02-s5-stage-8"
@@ -3918,7 +4802,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "この結果には2A−3Bという名前が付いている。後の式を同じ2A−3Bへ直せれば、計算を繰り返さずにこの結果へつなげられる。"
+            "text": "この結果には"
+          },
+          {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
+            "type": "text",
+            "text": "という名前が付いている。後の式を同じ"
+          },
+          {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
+            "type": "text",
+            "text": "へ直せれば、計算を繰り返さずにこの結果へつなげられる。"
           }
         ],
         "derivationId": "n02-s5-stage-8"
@@ -3963,7 +4863,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後の長い式でも、AとBをすぐxの式へ戻す必要はない。Aの係数、Bの係数を先に整理し、既に計算した式の形が現れるかを調べる。"
+            "text": "最後の長い式でも、"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "をすぐ"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の式へ戻す必要はない。"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "の係数、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の係数を先に整理し、既に計算した式の形が現れるかを調べる。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -3974,7 +4914,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "まとまりA−Bの前の負号を、二項それぞれへ配ろう。"
+            "text": "まとまり"
+          },
+          {
+            "type": "math",
+            "latex": "A−B"
+          },
+          {
+            "type": "text",
+            "text": "の前の負号を、二項それぞれへ配ろう。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4000,7 +4948,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "いまの結果を戻すと3A−4B−A+Bになる。AとBを別々に集めよう。"
+            "text": "いまの結果を戻すと"
+          },
+          {
+            "type": "math",
+            "latex": "3A−4B−A+B"
+          },
+          {
+            "type": "text",
+            "text": "になる。"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "を別々に集めよう。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4011,7 +4983,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "括弧を外した結果を、Aの二項とBの二項へ並べ替えた。"
+            "text": "括弧を外した結果を、"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "の二項と"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の二項へ並べ替えた。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4051,8 +5039,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "A"
+          },
+          {
             "type": "text",
-            "text": "Aの項だけをまとめた係数を計算する。"
+            "text": "の項だけをまとめた係数を計算する。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4081,8 +5073,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "B"
+          },
+          {
             "type": "text",
-            "text": "Bの係数は−4と+1である。負号を係数に含めて足す。"
+            "text": "の係数は"
+          },
+          {
+            "type": "math",
+            "latex": "−4"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "+1"
+          },
+          {
+            "type": "text",
+            "text": "である。負号を係数に含めて足す。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4141,8 +5153,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "A"
+          },
+          {
             "type": "text",
-            "text": "Aの係数が2、Bの係数が−3になった。これで、前の計算結果を使えることが式の一致から確かめられた。"
+            "text": "の係数が2、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "の係数が"
+          },
+          {
+            "type": "math",
+            "latex": "−3"
+          },
+          {
+            "type": "text",
+            "text": "になった。これで、前の計算結果を使えることが式の一致から確かめられた。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4164,7 +5196,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "ここで得た2A−3Bは、前の段階で計算済みです。その結果を使い、AとBをもう一度展開する計算を省きます。"
+            "text": "ここで得た"
+          },
+          {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
+            "type": "text",
+            "text": "は、前の段階で計算済みです。その結果を使い、"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "をもう一度展開する計算を省きます。"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -4174,8 +5230,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "2A−3B"
+          },
+          {
             "type": "text",
-            "text": "2A−3Bの計算結果"
+            "text": "の計算結果"
           }
         ],
         "derivationId": "n02-s5-stage-9"
@@ -5000,8 +6060,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "a"
+          },
+          {
             "type": "text",
-            "text": "aの個数を、二つの組から合計する。係数4は個数へ入れない。"
+            "text": "の個数を、二つの組から合計する。係数4は個数へ入れない。"
           }
         ],
         "derivationId": "n03-s5-stage-1"
@@ -5185,8 +6249,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "a"
+          },
+          {
             "type": "text",
-            "text": "aをm個掛けた組がn組ある形へ戻す。"
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "m"
+          },
+          {
+            "type": "text",
+            "text": "個掛けた組が"
+          },
+          {
+            "type": "math",
+            "latex": "n"
+          },
+          {
+            "type": "text",
+            "text": "組ある形へ戻す。"
           }
         ],
         "derivationId": "n03-s5-stage-1"
@@ -5258,7 +6342,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "まず三組の場合を、実際に並べ替えて確かめる。aとbをそれぞれ同じ種類で集める。"
+            "text": "まず三組の場合を、実際に並べ替えて確かめる。"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "をそれぞれ同じ種類で集める。"
           }
         ],
         "derivationId": "n03-s5-stage-1"
@@ -5365,7 +6465,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "三乗を同じ三つの因子の積へ戻す。次に、係数・xの組・yの組ごとに集める。"
+            "text": "三乗を同じ三つの因子の積へ戻す。次に、係数・"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の組・"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の組ごとに集める。"
           }
         ],
         "derivationId": "n03-s5-stage-2"
@@ -5402,7 +6518,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "指数法則の使い方を一度に混ぜず、係数、x、yに分ける。数の三乗の符号を決め、各文字については一組の個数×組の数を数える。"
+            "text": "指数法則の使い方を一度に混ぜず、係数、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "に分ける。数の三乗の符号を決め、各文字については一組の個数×組の数を数える。"
           }
         ],
         "derivationId": "n03-s5-stage-2"
@@ -5560,8 +6692,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "y²"
+          },
+          {
             "type": "text",
-            "text": "y²の組も三つある。指数法則を、実際の因子の個数へ戻して確かめよう。"
+            "text": "の組も三つある。指数法則を、実際の因子の個数へ戻して確かめよう。"
           }
         ],
         "derivationId": "n03-s5-stage-2"
@@ -5587,7 +6723,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "これで係数、xの指数、yの指数が別々に決まった。三つを一つの単項式へ組み立てる。"
+            "text": "これで係数、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の指数、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の指数が別々に決まった。三つを一つの単項式へ組み立てる。"
           }
         ],
         "derivationId": "n03-s5-stage-2"
@@ -5609,7 +6761,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "係数−8、xの部分x⁹、yの部分y⁶がそろいました。三つを掛けた形へ戻します。"
+            "text": "係数"
+          },
+          {
+            "type": "math",
+            "latex": "−8"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の部分"
+          },
+          {
+            "type": "math",
+            "latex": "x^{9}"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の部分"
+          },
+          {
+            "type": "math",
+            "latex": "y^{6}"
+          },
+          {
+            "type": "text",
+            "text": "がそろいました。三つを掛けた形へ戻します。"
           }
         ],
         "derivationId": "n03-s5-stage-2"
@@ -5754,7 +6946,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "まずx²とx²の積です。同じ底xの積なので指数2と2を足します。"
+            "text": "まず"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の積です。同じ底"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の積なので指数2と2を足します。"
           }
         ],
         "derivationId": "n03-s5-stage-3"
@@ -5780,7 +6996,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "次はx²と−3xです。係数−3を残し、xの指数2と1を足します。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−3x"
+          },
+          {
+            "type": "text",
+            "text": "です。係数"
+          },
+          {
+            "type": "math",
+            "latex": "−3"
+          },
+          {
+            "type": "text",
+            "text": "を残し、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の指数2と1を足します。"
           }
         ],
         "derivationId": "n03-s5-stage-3"
@@ -5832,7 +7080,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後はx²と定数4です。数4を前へ置き、x²はそのまま残します。"
+            "text": "最後は"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "と定数4です。数4を前へ置き、"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "はそのまま残します。"
           }
         ],
         "derivationId": "n03-s5-stage-3"
@@ -5922,7 +7186,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "表の上の3x・4が後ろの括弧、左の2x・1が前の括弧の項に当たる。一つのマスでは、同じ列の上の項と同じ行の左の項を掛ける。四つの交点を一回ずつ使えば、掛け漏れがないか確かめられる。"
+            "text": "表の上の"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "・4が後ろの括弧、左の"
+          },
+          {
+            "type": "math",
+            "latex": "2x"
+          },
+          {
+            "type": "text",
+            "text": "・1が前の括弧の項に当たる。一つのマスでは、同じ列の上の項と同じ行の左の項を掛ける。四つの交点を一回ずつ使えば、掛け漏れがないか確かめられる。"
           }
         ],
         "derivationId": "n03-s5-stage-4"
@@ -6154,7 +7434,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "前の3xと−1を、それぞれ後ろの括弧全体へ掛けます。後ろの三項を、途中で省略せず同じ形のまま保ちます。"
+            "text": "前の"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "を、それぞれ後ろの括弧全体へ掛けます。後ろの三項を、途中で省略せず同じ形のまま保ちます。"
           }
         ],
         "derivationId": "n03-s5-stage-5"
@@ -6201,8 +7497,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
             "type": "text",
-            "text": "3xを後ろの三項へ一つずつ掛ける。まずこの行だけ完成させよう。"
+            "text": "を後ろの三項へ一つずつ掛ける。まずこの行だけ完成させよう。"
           }
         ],
         "derivationId": "n03-s5-stage-6"
@@ -6212,8 +7512,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
             "type": "text",
-            "text": "3xを三項へ配るときも、一組ずつ積を作る。最初は係数3と2、文字xとx²に分けよう。"
+            "text": "を三項へ配るときも、一組ずつ積を作る。最初は係数3と2、文字"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "に分けよう。"
           }
         ],
         "derivationId": "n03-s5-stage-6"
@@ -6254,7 +7574,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二番目の項は−xである。負号を含めて3xへ掛けよう。"
+            "text": "二番目の項は"
+          },
+          {
+            "type": "math",
+            "latex": "−x"
+          },
+          {
+            "type": "text",
+            "text": "である。負号を含めて"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "へ掛けよう。"
           }
         ],
         "derivationId": "n03-s5-stage-6"
@@ -6295,7 +7631,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "三番目の5には文字がない。数の部分を掛け、前のxを一つ残そう。"
+            "text": "三番目の5には文字がない。数の部分を掛け、前の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を一つ残そう。"
           }
         ],
         "derivationId": "n03-s5-stage-6"
@@ -6325,7 +7669,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "三つの積を、元の項に対応する順序で一行に並べれば、3xを配った結果になる。"
+            "text": "三つの積を、元の項に対応する順序で一行に並べれば、"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "を配った結果になる。"
           }
         ],
         "derivationId": "n03-s5-stage-6"
@@ -6381,7 +7733,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "後半は−1を掛けた行です。二次項、一次項、定数項の順に計算します。まず−1を2x²へ掛けます。"
+            "text": "後半は"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "を掛けた行です。二次項、一次項、定数項の順に計算します。まず"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "2x²"
+          },
+          {
+            "type": "text",
+            "text": "へ掛けます。"
           }
         ],
         "derivationId": "n03-s5-stage-7"
@@ -6403,7 +7779,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "中央の項−xには、さらに−1が掛かる。"
+            "text": "中央の項"
+          },
+          {
+            "type": "math",
+            "latex": "−x"
+          },
+          {
+            "type": "text",
+            "text": "には、さらに"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "が掛かる。"
           }
         ],
         "derivationId": "n03-s5-stage-7"
@@ -6433,7 +7825,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項は+xになりました。最後に、−1を定数5へ掛けます。"
+            "text": "一次項は"
+          },
+          {
+            "type": "math",
+            "latex": "+x"
+          },
+          {
+            "type": "text",
+            "text": "になりました。最後に、"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "を定数5へ掛けます。"
           }
         ],
         "derivationId": "n03-s5-stage-7"
@@ -7295,7 +8703,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "係数5を二回掛け、xも二回掛ける。"
+            "text": "係数5を二回掛け、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "も二回掛ける。"
           }
         ],
         "derivationId": "n04-s5-stage-1"
@@ -7331,8 +8747,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
             "type": "text",
-            "text": "5xと4yの積では、数の部分と文字の部分を別に集める。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "4y"
+          },
+          {
+            "type": "text",
+            "text": "の積では、数の部分と文字の部分を別に集める。"
           }
         ],
         "derivationId": "n04-s5-stage-1"
@@ -7495,7 +8923,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "四組を計算できた。次に同じ文字の項をまとめ、具体例の構造を a、b に移そう。途中の組合せを飛ばさず、式を一行ずつ作る。"
+            "text": "四組を計算できた。次に同じ文字の項をまとめ、具体例の構造を "
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": " に移そう。途中の組合せを飛ばさず、式を一行ずつ作る。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7506,7 +8950,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "四項のうち、5x と4yを掛けた交差項は二度現れた。両方を加えると何になるだろう。"
+            "text": "四項のうち、"
+          },
+          {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
+            "type": "text",
+            "text": " と"
+          },
+          {
+            "type": "math",
+            "latex": "4y"
+          },
+          {
+            "type": "text",
+            "text": "を掛けた交差項は二度現れた。両方を加えると何になるだろう。"
           },
           {
             "type": "math",
@@ -7521,7 +8981,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字xyが同じなので、係数だけを足す形へ戻す。"
+            "text": "文字"
+          },
+          {
+            "type": "math",
+            "latex": "xy"
+          },
+          {
+            "type": "text",
+            "text": "が同じなので、係数だけを足す形へ戻す。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7623,7 +9091,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "具体例で二つのまとまりだった5xと4yを、一般の数aとbへ広げます。四マスのどの位置を掛けるかは変わりません。"
+            "text": "具体例で二つのまとまりだった"
+          },
+          {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "4y"
+          },
+          {
+            "type": "text",
+            "text": "を、一般の数"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "へ広げます。四マスのどの位置を掛けるかは変わりません。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7634,7 +9134,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "原資料の四マスの表を使う。今度は5x、4yの代わりにa、bを入れ、掛けた順を保つ。"
+            "text": "原資料の四マスの表を使う。今度は"
+          },
+          {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "4y"
+          },
+          {
+            "type": "text",
+            "text": "の代わりに"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "を入れ、掛けた順を保つ。"
           },
           {
             "type": "math",
@@ -7649,7 +9181,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "具体例と同じ四組の積を、aとbでも一回ずつ作る。"
+            "text": "具体例と同じ四組の積を、"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "でも一回ずつ作る。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7730,7 +9278,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "交差積abとbaはまだ二項のまま残す。"
+            "text": "交差積"
+          },
+          {
+            "type": "math",
+            "latex": "ab"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "ba"
+          },
+          {
+            "type": "text",
+            "text": "はまだ二項のまま残す。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7741,7 +9305,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "交換法則でba=abとなる。そこで中央の同類項だけを集めよう。"
+            "text": "交換法則で"
+          },
+          {
+            "type": "math",
+            "latex": "ba=ab"
+          },
+          {
+            "type": "text",
+            "text": "となる。そこで中央の同類項だけを集めよう。"
           },
           {
             "type": "math",
@@ -7755,8 +9327,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "ba"
+          },
+          {
             "type": "text",
-            "text": "baをabと同じ形で読み直し、係数を足します。"
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "ab"
+          },
+          {
+            "type": "text",
+            "text": "と同じ形で読み直し、係数を足します。"
           }
         ],
         "derivationId": "n04-s5-stage-2"
@@ -7812,7 +9396,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "差の平方(a−b)²を、同じ括弧二つの積へ戻して導きます。和の平方のときと同じ四組を作り、負号のある積を一つずつ計算します。"
+            "text": "差の平方"
+          },
+          {
+            "type": "math",
+            "latex": "(a−b)²"
+          },
+          {
+            "type": "text",
+            "text": "を、同じ括弧二つの積へ戻して導きます。和の平方のときと同じ四組を作り、負号のある積を一つずつ計算します。"
           }
         ],
         "derivationId": "n04-s5-stage-3"
@@ -7834,7 +9426,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "差の平方では、一つ目の交差積に−bを掛ける。"
+            "text": "差の平方では、一つ目の交差積に"
+          },
+          {
+            "type": "math",
+            "latex": "−b"
+          },
+          {
+            "type": "text",
+            "text": "を掛ける。"
           }
         ],
         "derivationId": "n04-s5-stage-3"
@@ -7864,7 +9464,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "もう一方の交差積も−abとなる。四つの積を元の順序で並べる。"
+            "text": "もう一方の交差積も"
+          },
+          {
+            "type": "math",
+            "latex": "−ab"
+          },
+          {
+            "type": "text",
+            "text": "となる。四つの積を元の順序で並べる。"
           }
         ],
         "derivationId": "n04-s5-stage-3"
@@ -7886,7 +9494,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後の積は−bと−bなので、二つの負号が掛かる。"
+            "text": "最後の積は"
+          },
+          {
+            "type": "math",
+            "latex": "−b"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−b"
+          },
+          {
+            "type": "text",
+            "text": "なので、二つの負号が掛かる。"
           }
         ],
         "derivationId": "n04-s5-stage-3"
@@ -8183,7 +9807,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "まず(2a−5)²を展開します。同じ括弧を二つ掛けた式であることに着目し、既に導いた公式のどれを使うか考えます。"
+            "text": "まず"
+          },
+          {
+            "type": "math",
+            "latex": "(2a−5)²"
+          },
+          {
+            "type": "text",
+            "text": "を展開します。同じ括弧を二つ掛けた式であることに着目し、既に導いた公式のどれを使うか考えます。"
           }
         ],
         "derivationId": "n04-s5-stage-5"
@@ -8205,7 +9837,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "差の平方の二つのまとまりは2aと5です。公式の各位置へ、まとまり全体を括弧ごと代入します。"
+            "text": "差の平方の二つのまとまりは"
+          },
+          {
+            "type": "math",
+            "latex": "2a"
+          },
+          {
+            "type": "text",
+            "text": "と5です。公式の各位置へ、まとまり全体を括弧ごと代入します。"
           }
         ],
         "derivationId": "n04-s5-stage-5"
@@ -8242,7 +9882,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "代入できたので、最初の平方、中央の積、最後の平方の順に計算します。まず2a全体を二乗します。"
+            "text": "代入できたので、最初の平方、中央の積、最後の平方の順に計算します。まず"
+          },
+          {
+            "type": "math",
+            "latex": "2a"
+          },
+          {
+            "type": "text",
+            "text": "全体を二乗します。"
           }
         ],
         "derivationId": "n04-s5-stage-5"
@@ -8253,7 +9901,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "代入した2a全体を二乗する。"
+            "text": "代入した"
+          },
+          {
+            "type": "math",
+            "latex": "2a"
+          },
+          {
+            "type": "text",
+            "text": "全体を二乗する。"
           }
         ],
         "derivationId": "n04-s5-stage-5"
@@ -8320,7 +9976,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "三つの結果は4a²、−20a、25です。これらを元の公式の三つの位置へ戻して、一問目を終えます。"
+            "text": "三つの結果は"
+          },
+          {
+            "type": "math",
+            "latex": "4a²"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "−20a"
+          },
+          {
+            "type": "text",
+            "text": "、25です。これらを元の公式の三つの位置へ戻して、一問目を終えます。"
           }
         ],
         "derivationId": "n04-s5-stage-5"
@@ -8347,7 +10019,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "今度は(3x−2)(3x+2)を展開します。二つの括弧は、同じ3xと2を使い、符号だけが反対です。"
+            "text": "今度は"
+          },
+          {
+            "type": "math",
+            "latex": "(3x−2)(3x+2)"
+          },
+          {
+            "type": "text",
+            "text": "を展開します。二つの括弧は、同じ"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "と2を使い、符号だけが反対です。"
           }
         ],
         "derivationId": "n04-s5-stage-6"
@@ -8369,7 +10057,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "和と差の積では交差項が打ち消し合います。二つのまとまり3xと2を、平方の差へ代入します。"
+            "text": "和と差の積では交差項が打ち消し合います。二つのまとまり"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "と2を、平方の差へ代入します。"
           }
         ],
         "derivationId": "n04-s5-stage-6"
@@ -8395,7 +10091,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つ目の式では3xの平方を計算する。"
+            "text": "二つ目の式では"
+          },
+          {
+            "type": "math",
+            "latex": "3x"
+          },
+          {
+            "type": "text",
+            "text": "の平方を計算する。"
           }
         ],
         "derivationId": "n04-s5-stage-6"
@@ -8458,7 +10162,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "係数a,b,c,dを一般の数として、二つの一次式の積を四組へ分ける。"
+            "text": "係数"
+          },
+          {
+            "type": "math",
+            "latex": "a,b,c,d"
+          },
+          {
+            "type": "text",
+            "text": "を一般の数として、二つの一次式の積を四組へ分ける。"
           },
           {
             "type": "math",
@@ -8506,7 +10218,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "前の定数bから生まれる二組も加える。"
+            "text": "前の定数"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "から生まれる二組も加える。"
           }
         ],
         "derivationId": "n04-s5-stage-7"
@@ -8565,7 +10285,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次の二項にはどちらもxが掛かる。係数を一つの括弧へ集めよう。"
+            "text": "一次の二項にはどちらも"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が掛かる。係数を一つの括弧へ集めよう。"
           },
           {
             "type": "math",
@@ -8580,7 +10308,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項のxを外へ出し、残る二つの係数を足す。"
+            "text": "一次項の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を外へ出し、残る二つの係数を足す。"
           }
         ],
         "derivationId": "n04-s5-stage-7"
@@ -8636,7 +10372,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一般式の文字a,b,c,dに具体的な係数を当てはめる。まず一次項を作る交差する二組の積を求め、最後に全体を展開しよう。"
+            "text": "一般式の文字"
+          },
+          {
+            "type": "math",
+            "latex": "a,b,c,d"
+          },
+          {
+            "type": "text",
+            "text": "に具体的な係数を当てはめる。まず一次項を作る交差する二組の積を求め、最後に全体を展開しよう。"
           },
           {
             "type": "math",
@@ -8651,7 +10395,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "一般式のa=3、b=1、c=1、d=2に当たります。一次項は交差する二組からできるので、まずその二つを求めます。"
+            "text": "一般式の"
+          },
+          {
+            "type": "math",
+            "latex": "a=3"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "b=1"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "c=1"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "d=2"
+          },
+          {
+            "type": "text",
+            "text": "に当たります。一次項は交差する二組からできるので、まずその二つを求めます。"
           }
         ],
         "derivationId": "n04-s5-stage-7"
@@ -8703,7 +10479,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "もう一方の交差積1xを足し、一次係数を決める。"
+            "text": "もう一方の交差積"
+          },
+          {
+            "type": "math",
+            "latex": "1x"
+          },
+          {
+            "type": "text",
+            "text": "を足し、一次係数を決める。"
           }
         ],
         "derivationId": "n04-s5-stage-7"
@@ -8777,7 +10561,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "交差積は6xとx。合計7xなので、展開結果は3x²+7x+2となる。"
+            "text": "交差積は"
+          },
+          {
+            "type": "math",
+            "latex": "6x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "。合計"
+          },
+          {
+            "type": "math",
+            "latex": "7x"
+          },
+          {
+            "type": "text",
+            "text": "なので、展開結果は"
+          },
+          {
+            "type": "math",
+            "latex": "3x²+7x+2"
+          },
+          {
+            "type": "text",
+            "text": "となる。"
           }
         ],
         "derivationId": "n04-s5-stage-7"
@@ -8788,7 +10604,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "次は(a+b+c)²を展開します。三項を一度に扱う代わりに、a+bを一つのまとまりTと呼び、二項の平方として計算してから元へ戻します。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "(a+b+c)²"
+          },
+          {
+            "type": "text",
+            "text": "を展開します。三項を一度に扱う代わりに、"
+          },
+          {
+            "type": "math",
+            "latex": "a+b"
+          },
+          {
+            "type": "text",
+            "text": "を一つのまとまり"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "と呼び、二項の平方として計算してから元へ戻します。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -8825,7 +10665,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "三項の平方でも一度に処理しない。T=a+bを一つのまとまりと見てから二項の公式に戻す。"
+            "text": "三項の平方でも一度に処理しない。"
+          },
+          {
+            "type": "math",
+            "latex": "T=a+b"
+          },
+          {
+            "type": "text",
+            "text": "を一つのまとまりと見てから二項の公式に戻す。"
           },
           {
             "type": "math",
@@ -8862,7 +10710,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "中央の二項は同じTcなので、係数を足す形へ直せる。"
+            "text": "中央の二項は同じ"
+          },
+          {
+            "type": "math",
+            "latex": "Tc"
+          },
+          {
+            "type": "text",
+            "text": "なので、係数を足す形へ直せる。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -8899,7 +10755,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "ここでのTは新しい数ではなく、a+bという式全体の名前である。"
+            "text": "ここでの"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "は新しい数ではなく、"
+          },
+          {
+            "type": "math",
+            "latex": "a+b"
+          },
+          {
+            "type": "text",
+            "text": "という式全体の名前である。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -8910,7 +10782,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "先ほどのTをa+bに戻す。T²と2Tcを別々に展開し、六つの項に整理する。"
+            "text": "先ほどの"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "a+b"
+          },
+          {
+            "type": "text",
+            "text": "に戻す。"
+          },
+          {
+            "type": "math",
+            "latex": "T²"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "2Tc"
+          },
+          {
+            "type": "text",
+            "text": "を別々に展開し、六つの項に整理する。"
           },
           {
             "type": "math",
@@ -8925,7 +10829,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "三項の公式を別に暗記する前に、二項の公式へ戻して導く。T=a+bと置いたのは、(T+c)²という既知の形へ変えるためである。"
+            "text": "三項の公式を別に暗記する前に、二項の公式へ戻して導く。"
+          },
+          {
+            "type": "math",
+            "latex": "T=a+b"
+          },
+          {
+            "type": "text",
+            "text": "と置いたのは、"
+          },
+          {
+            "type": "math",
+            "latex": "(T+c)²"
+          },
+          {
+            "type": "text",
+            "text": "という既知の形へ変えるためである。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -8935,8 +10855,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T=a+b"
+          },
+          {
             "type": "text",
-            "text": "T=a+bを、T²と2Tcの両方へ戻そう。"
+            "text": "を、"
+          },
+          {
+            "type": "math",
+            "latex": "T²"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "2Tc"
+          },
+          {
+            "type": "text",
+            "text": "の両方へ戻そう。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -8995,7 +10935,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "もう一方の括弧へは2cを分配する。"
+            "text": "もう一方の括弧へは"
+          },
+          {
+            "type": "math",
+            "latex": "2c"
+          },
+          {
+            "type": "text",
+            "text": "を分配する。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9046,8 +10994,60 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tを戻した段階と、その括弧を展開する段階は別である。aとb、aとc、bとcの各組が二回ずつ掛かることを、展開後の六項から読み取る。"
+            "text": "を戻した段階と、その括弧を展開する段階は別である。"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "c"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "c"
+          },
+          {
+            "type": "text",
+            "text": "の各組が二回ずつ掛かることを、展開後の六項から読み取る。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9069,7 +11069,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "元の式ではcが引かれている。今作った関係にc→−cを代入する。"
+            "text": "元の式では"
+          },
+          {
+            "type": "math",
+            "latex": "c"
+          },
+          {
+            "type": "text",
+            "text": "が引かれている。今作った関係に"
+          },
+          {
+            "type": "math",
+            "latex": "c→−c"
+          },
+          {
+            "type": "text",
+            "text": "を代入する。"
           },
           {
             "type": "math",
@@ -9084,7 +11100,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "三項の平方のcを、出てくる全ての場所で−cへ置き換える。まず負号を計算せずに残す。"
+            "text": "三項の平方の"
+          },
+          {
+            "type": "math",
+            "latex": "c"
+          },
+          {
+            "type": "text",
+            "text": "を、出てくる全ての場所で"
+          },
+          {
+            "type": "math",
+            "latex": "−c"
+          },
+          {
+            "type": "text",
+            "text": "へ置き換える。まず負号を計算せずに残す。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9113,8 +11145,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "a"
+          },
+          {
             "type": "text",
-            "text": "aと−cの交差積の係数を計算する。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−c"
+          },
+          {
+            "type": "text",
+            "text": "の交差積の係数を計算する。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9143,8 +11187,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "b"
+          },
+          {
             "type": "text",
-            "text": "bと−cの交差積も同じ符号の計算を使う。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−c"
+          },
+          {
+            "type": "text",
+            "text": "の交差積も同じ符号の計算を使う。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9173,8 +11229,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "c"
+          },
+          {
             "type": "text",
-            "text": "cの平方では負号が二回掛かるため正になる。三つの計算結果を元の位置へ戻す。"
+            "text": "の平方では負号が二回掛かるため正になる。三つの計算結果を元の位置へ戻す。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9211,7 +11271,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "符号反転が影響するのはcを奇数回含む項で、c²は正のまま残る。"
+            "text": "符号反転が影響するのは"
+          },
+          {
+            "type": "math",
+            "latex": "c"
+          },
+          {
+            "type": "text",
+            "text": "を奇数回含む項で、"
+          },
+          {
+            "type": "math",
+            "latex": "c²"
+          },
+          {
+            "type": "text",
+            "text": "は正のまま残る。"
           }
         ],
         "derivationId": "n04-s5-stage-8"
@@ -9333,7 +11409,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通の塊をA、符号が異なる塊をBと見れば、(A+B)(A−B)になる。"
+            "text": "共通の塊を"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "、符号が異なる塊を"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "と見れば、"
+          },
+          {
+            "type": "math",
+            "latex": "(A+B)(A−B)"
+          },
+          {
+            "type": "text",
+            "text": "になる。"
           }
         ],
         "derivationId": "n04-s5-stage-9"
@@ -9359,7 +11459,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "直前に見つけた共通部分をA=x²+1、符号が反対の部分をB=xと呼ぶ。使う関係を先に書く。"
+            "text": "直前に見つけた共通部分を"
+          },
+          {
+            "type": "math",
+            "latex": "A=x²+1"
+          },
+          {
+            "type": "text",
+            "text": "、符号が反対の部分を"
+          },
+          {
+            "type": "math",
+            "latex": "B=x"
+          },
+          {
+            "type": "text",
+            "text": "と呼ぶ。使う関係を先に書く。"
           }
         ],
         "derivationId": "n04-s5-stage-9"
@@ -9407,7 +11523,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "残った平方を展開し、−x²を忘れずに合わせる。"
+            "text": "残った平方を展開し、"
+          },
+          {
+            "type": "math",
+            "latex": "−x²"
+          },
+          {
+            "type": "text",
+            "text": "を忘れずに合わせる。"
           },
           {
             "type": "math",
@@ -9422,7 +11546,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "残る平方を開き、外側の−x²を最後まで残す。"
+            "text": "残る平方を開き、外側の"
+          },
+          {
+            "type": "math",
+            "latex": "−x²"
+          },
+          {
+            "type": "text",
+            "text": "を最後まで残す。"
           }
         ],
         "derivationId": "n04-s5-stage-9"
@@ -9444,7 +11576,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じx²の二項だけをまとめる。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の二項だけをまとめる。"
           }
         ],
         "derivationId": "n04-s5-stage-9"
@@ -9489,7 +11629,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二次の項は2x²−x²でx²になる。"
+            "text": "二次の項は"
+          },
+          {
+            "type": "math",
+            "latex": "2x²−x²"
+          },
+          {
+            "type": "text",
+            "text": "で"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "になる。"
           }
         ],
         "derivationId": "n04-s5-stage-9"
@@ -9500,7 +11656,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "四つの一次式を二組に分ける。xの一次係数が揃う組を探すと共通の塊を作れる。"
+            "text": "四つの一次式を二組に分ける。"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の一次係数が揃う組を探すと共通の塊を作れる。"
           },
           {
             "type": "math",
@@ -9515,7 +11679,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通する二次式を作ることが目的である。(x+p)(x+q)の一次係数はp+qなので、四つの定数を「和が等しい二組」に分ける方針が立つ。"
+            "text": "共通する二次式を作ることが目的である。"
+          },
+          {
+            "type": "math",
+            "latex": "(x+p)(x+q)"
+          },
+          {
+            "type": "text",
+            "text": "の一次係数は"
+          },
+          {
+            "type": "math",
+            "latex": "p+q"
+          },
+          {
+            "type": "text",
+            "text": "なので、四つの定数を「和が等しい二組」に分ける方針が立つ。"
           }
         ],
         "derivationId": "n04-s5-stage-10"
@@ -9526,7 +11706,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "目標は四つの因子の積を展開することです。二組を選んで共通部分を作り、Tと置いて展開し、最後にxへ戻します。ここでは三つの組み方を比較して、二組の一次係数が一致するものを選びます。"
+            "text": "目標は四つの因子の積を展開することです。二組を選んで共通部分を作り、"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "と置いて展開し、最後に"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "へ戻します。ここでは三つの組み方を比較して、二組の一次係数が一致するものを選びます。"
           }
         ],
         "derivationId": "n04-s5-stage-10"
@@ -9537,7 +11733,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "展開後のxの係数は、括弧内の二つの定数の和になる。和が同じになる組み方を先に選ぼう。"
+            "text": "展開後の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の係数は、括弧内の二つの定数の和になる。和が同じになる組み方を先に選ぼう。"
           }
         ],
         "derivationId": "n04-s5-stage-10"
@@ -9735,8 +11939,36 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "1+4"
+          },
+          {
             "type": "text",
-            "text": "1+4と2+3が同じ和になるため、両方にx²+5xが現れた。この共通部分へ次にTという名前を付ければ、四因子の積を二因子の積として扱える。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "2+3"
+          },
+          {
+            "type": "text",
+            "text": "が同じ和になるため、両方に"
+          },
+          {
+            "type": "math",
+            "latex": "x²+5x"
+          },
+          {
+            "type": "text",
+            "text": "が現れた。この共通部分へ次に"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "という名前を付ければ、四因子の積を二因子の積として扱える。"
           }
         ],
         "derivationId": "n04-s5-stage-10"
@@ -9746,8 +11978,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(x+1)(x+4)"
+          },
+          {
             "type": "text",
-            "text": "(x+1)(x+4)と(x+2)(x+3)は、どちらも一次項が5xとなる。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "(x+2)(x+3)"
+          },
+          {
+            "type": "text",
+            "text": "は、どちらも一次項が"
+          },
+          {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
+            "type": "text",
+            "text": "となる。"
           }
         ],
         "derivationId": "n04-s5-stage-10"
@@ -9783,8 +12035,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T=x²+5x"
+          },
+          {
             "type": "text",
-            "text": "T=x²+5xと置けば、各括弧はTに定数を足した形になる。"
+            "text": "と置けば、各括弧は"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "に定数を足した形になる。"
           },
           {
             "type": "math",
@@ -9799,7 +12063,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの括弧に共通するx²+5xをTと呼ぶ。括弧ごとに残る定数4と6は違うので、それぞれT+4、T+6になる。"
+            "text": "二つの括弧に共通する"
+          },
+          {
+            "type": "math",
+            "latex": "x²+5x"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "と呼ぶ。括弧ごとに残る定数4と6は違うので、それぞれ"
+          },
+          {
+            "type": "math",
+            "latex": "T+4"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "T+6"
+          },
+          {
+            "type": "text",
+            "text": "になる。"
           }
         ],
         "derivationId": "n04-s5-stage-11"
@@ -9809,8 +12105,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tの式を四組の積へ開き、一次項をまとめる。"
+            "text": "の式を四組の積へ開き、一次項をまとめる。"
           }
         ],
         "derivationId": "n04-s5-stage-11"
@@ -9831,8 +12131,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tの一次係数を計算する。"
+            "text": "の一次係数を計算する。"
           }
         ],
         "derivationId": "n04-s5-stage-11"
@@ -9876,8 +12180,52 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tの二次式へ整理できた。次はT=x²+5xをT²と10Tの両方へ戻す。T²は(x²+5x)²なので、各項を単に二乗する操作とは違う。"
+            "text": "の二次式へ整理できた。次は"
+          },
+          {
+            "type": "math",
+            "latex": "T=x²+5x"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "T²"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "10T"
+          },
+          {
+            "type": "text",
+            "text": "の両方へ戻す。"
+          },
+          {
+            "type": "math",
+            "latex": "T²"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(x²+5x)²"
+          },
+          {
+            "type": "text",
+            "text": "なので、各項を単に二乗する操作とは違う。"
           }
         ],
         "derivationId": "n04-s5-stage-11"
@@ -9913,8 +12261,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tを元の二次式へ戻す。T²の中の交差項にも気を付ける。"
+            "text": "を元の二次式へ戻す。"
+          },
+          {
+            "type": "math",
+            "latex": "T²"
+          },
+          {
+            "type": "text",
+            "text": "の中の交差項にも気を付ける。"
           },
           {
             "type": "math",
@@ -9939,8 +12299,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tを戻した式では、まず平方の部分だけを展開する。"
+            "text": "を戻した式では、まず平方の部分だけを展開する。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -9950,8 +12314,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(x²+5x)²"
+          },
+          {
             "type": "text",
-            "text": "(x²+5x)²は二つの同じ括弧の積である。異なる二項を掛ける交差積は二回現れる。"
+            "text": "は二つの同じ括弧の積である。異なる二項を掛ける交差積は二回現れる。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -9992,7 +12360,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後の項では5x全体を二乗する。係数5も二回掛かることを、積に戻して確かめよう。"
+            "text": "最後の項では"
+          },
+          {
+            "type": "math",
+            "latex": "5x"
+          },
+          {
+            "type": "text",
+            "text": "全体を二乗する。係数5も二回掛かることを、積に戻して確かめよう。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -10070,7 +12446,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "次に10Tの部分へ分配する。"
+            "text": "次に"
+          },
+          {
+            "type": "math",
+            "latex": "10T"
+          },
+          {
+            "type": "text",
+            "text": "の部分へ分配する。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -10210,8 +12594,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tを元へ戻し、残る同類項も整理できました。最初の四つの因子の積に対する答えを、元の式と結んで書きます。"
+            "text": "を元へ戻し、残る同類項も整理できました。最初の四つの因子の積に対する答えを、元の式と結んで書きます。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -10233,7 +12621,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二次項の35は、平方からの25と10Tからの10を足して得た係数である。途中でTへ置き換えた後も、復元した各項が最終式へ一つずつ対応している。"
+            "text": "二次項の35は、平方からの25と"
+          },
+          {
+            "type": "math",
+            "latex": "10T"
+          },
+          {
+            "type": "text",
+            "text": "からの10を足して得た係数である。途中で"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "へ置き換えた後も、復元した各項が最終式へ一つずつ対応している。"
           }
         ],
         "derivationId": "n04-s5-stage-12"
@@ -11383,7 +13787,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの項 x(y+5) と −3(y+5) に共通して掛かっている括弧を探す。"
+            "text": "二つの項 "
+          },
+          {
+            "type": "math",
+            "latex": "x(y+5)"
+          },
+          {
+            "type": "text",
+            "text": " と "
+          },
+          {
+            "type": "math",
+            "latex": "−3(y+5)"
+          },
+          {
+            "type": "text",
+            "text": " に共通して掛かっている括弧を探す。"
           },
           {
             "type": "math",
@@ -11413,7 +13833,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "括弧全体をTとすれば、式はxT−3Tという単純な形で見られる。"
+            "text": "括弧全体を"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "とすれば、式は"
+          },
+          {
+            "type": "math",
+            "latex": "xT−3T"
+          },
+          {
+            "type": "text",
+            "text": "という単純な形で見られる。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11424,7 +13860,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通因数をTと仮置きする。係数xと−3を一つの括弧へまとめ、最後にTを元へ戻す。"
+            "text": "共通因数を"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "と仮置きする。係数"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "−3"
+          },
+          {
+            "type": "text",
+            "text": "を一つの括弧へまとめ、最後に"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "を元へ戻す。"
           },
           {
             "type": "math",
@@ -11439,7 +13907,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通因数を探すのは、同じ括弧が何度も出る長い式を短い積へ戻すためである。一時的にTと呼べば、残る係数だけを比べやすくなる。"
+            "text": "共通因数を探すのは、同じ括弧が何度も出る長い式を短い積へ戻すためである。一時的に"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "と呼べば、残る係数だけを比べやすくなる。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11450,7 +13926,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "先にTの式のまま共通因数を外へ出す。元へ戻すのはその後にしよう。"
+            "text": "先に"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "の式のまま共通因数を外へ出す。元へ戻すのはその後にしよう。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11461,7 +13945,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通因数Tを外へ出すと、残るのは二項の係数である。足し算の形にそろえ、負号を係数に含めよう。"
+            "text": "共通因数"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "を外へ出すと、残るのは二項の係数である。足し算の形にそろえ、負号を係数に含めよう。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11491,7 +13983,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じTが掛かる項だけをまとめている。Tを二回外へ出すのではなく、一度だけ掛ける形になる。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "が掛かる項だけをまとめている。"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "を二回外へ出すのではなく、一度だけ掛ける形になる。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11531,8 +14039,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tをくくった結果にT=y+5を戻すと、元の文字だけの積が得られる。正しいかは次の逆向きの展開で検査する。"
+            "text": "をくくった結果に"
+          },
+          {
+            "type": "math",
+            "latex": "T=y+5"
+          },
+          {
+            "type": "text",
+            "text": "を戻すと、元の文字だけの積が得られる。正しいかは次の逆向きの展開で検査する。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11654,7 +14174,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "両方ともxy+5x−3y−15になりました。展開後の各項が一致するので、最初の式を(x−3)(y+5)へ因数分解できたことを確かめられます。"
+            "text": "両方とも"
+          },
+          {
+            "type": "math",
+            "latex": "xy+5x−3y−15"
+          },
+          {
+            "type": "text",
+            "text": "になりました。展開後の各項が一致するので、最初の式を"
+          },
+          {
+            "type": "math",
+            "latex": "(x−3)(y+5)"
+          },
+          {
+            "type": "text",
+            "text": "へ因数分解できたことを確かめられます。"
           }
         ],
         "derivationId": "n05-s5-stage-1"
@@ -11754,7 +14290,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "直前に得たb−a=−(a−b)を、二項目だけへ代入する。"
+            "text": "直前に得た"
+          },
+          {
+            "type": "math",
+            "latex": "b−a=−(a−b)"
+          },
+          {
+            "type": "text",
+            "text": "を、二項目だけへ代入する。"
           }
         ],
         "derivationId": "n05-s5-stage-2"
@@ -11838,8 +14382,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "16x²"
+          },
+          {
             "type": "text",
-            "text": "16x²を平方の形で読むため、まず二乗すると16になる正の数を選びます。"
+            "text": "を平方の形で読むため、まず二乗すると16になる正の数を選びます。"
           }
         ],
         "derivationId": "n05-s5-stage-3"
@@ -11869,7 +14417,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後の9y²も、数の平方と文字の平方に分ける。正の底を選ぼう。"
+            "text": "最後の"
+          },
+          {
+            "type": "math",
+            "latex": "9y²"
+          },
+          {
+            "type": "text",
+            "text": "も、数の平方と文字の平方に分ける。正の底を選ぼう。"
           }
         ],
         "derivationId": "n05-s5-stage-3"
@@ -11954,7 +14510,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "平方の候補を(4x+3y)²とする。中央に現れる二組の交差積はいくらになるか。"
+            "text": "平方の候補を"
+          },
+          {
+            "type": "math",
+            "latex": "(4x+3y)²"
+          },
+          {
+            "type": "text",
+            "text": "とする。中央に現れる二組の交差積はいくらになるか。"
           },
           {
             "type": "math",
@@ -12006,7 +14570,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "中央の項24xyが、元の式の係数と符号に一致する。"
+            "text": "中央の項"
+          },
+          {
+            "type": "math",
+            "latex": "24xy"
+          },
+          {
+            "type": "text",
+            "text": "が、元の式の係数と符号に一致する。"
           }
         ],
         "derivationId": "n05-s5-stage-3"
@@ -12069,7 +14641,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "次は整数の係数を持つ二次式を、整数係数の一次式の積に戻す場合を考えます。rとsを因数の定数部分を表す数とし、候補(a+r)(a+s)を展開して、必要な条件を作ります。"
+            "text": "次は整数の係数を持つ二次式を、整数係数の一次式の積に戻す場合を考えます。"
+          },
+          {
+            "type": "math",
+            "latex": "r"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "を因数の定数部分を表す数とし、候補"
+          },
+          {
+            "type": "math",
+            "latex": "(a+r)(a+s)"
+          },
+          {
+            "type": "text",
+            "text": "を展開して、必要な条件を作ります。"
           }
         ],
         "derivationId": "n05-s5-stage-4"
@@ -12102,7 +14698,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項に共通するaを外へ出す。"
+            "text": "一次項に共通する"
+          },
+          {
+            "type": "math",
+            "latex": "a"
+          },
+          {
+            "type": "text",
+            "text": "を外へ出す。"
           }
         ],
         "derivationId": "n05-s5-stage-4"
@@ -12150,7 +14754,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "もとの二次式a²−6a−16と、いまの一般展開の係数を比較する。"
+            "text": "もとの二次式"
+          },
+          {
+            "type": "math",
+            "latex": "a²−6a−16"
+          },
+          {
+            "type": "text",
+            "text": "と、いまの一般展開の係数を比較する。"
           },
           {
             "type": "math",
@@ -12254,7 +14866,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "三つの候補を一つずつ確かめます。積が合うだけで決めず、和が−6になるかを比べます。"
+            "text": "三つの候補を一つずつ確かめます。積が合うだけで決めず、和が"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "になるかを比べます。"
           }
         ],
         "derivationId": "n05-s5-stage-4"
@@ -12428,7 +15048,55 @@
         "parts": [
           {
             "type": "text",
-            "text": "和が−6になる候補は2と−8で、積も−16になる。二つの条件の一致を確認してから、(a+r)(a+s)のr、sの場所へ戻す。"
+            "text": "和が"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "になる候補は2と"
+          },
+          {
+            "type": "math",
+            "latex": "−8"
+          },
+          {
+            "type": "text",
+            "text": "で、積も"
+          },
+          {
+            "type": "math",
+            "latex": "−16"
+          },
+          {
+            "type": "text",
+            "text": "になる。二つの条件の一致を確認してから、"
+          },
+          {
+            "type": "math",
+            "latex": "(a+r)(a+s)"
+          },
+          {
+            "type": "text",
+            "text": "の"
+          },
+          {
+            "type": "math",
+            "latex": "r"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "の場所へ戻す。"
           }
         ],
         "derivationId": "n05-s5-stage-4"
@@ -12438,8 +15106,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(a−8)(a+2)"
+          },
+          {
             "type": "text",
-            "text": "(a−8)(a+2)を展開するとa²−6a−16に戻る。"
+            "text": "を展開すると"
+          },
+          {
+            "type": "math",
+            "latex": "a²−6a−16"
+          },
+          {
+            "type": "text",
+            "text": "に戻る。"
           }
         ],
         "derivationId": "n05-s5-stage-4"
@@ -12472,7 +15152,63 @@
         "parts": [
           {
             "type": "text",
-            "text": "次はx²の係数が1でない式です。候補を(px+q)(rx+s)と書きます。pとrは各因数のxの係数、qとsは各因数の定数部分を表す数です。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "の係数が1でない式です。候補を"
+          },
+          {
+            "type": "math",
+            "latex": "(px+q)(rx+s)"
+          },
+          {
+            "type": "text",
+            "text": "と書きます。"
+          },
+          {
+            "type": "math",
+            "latex": "p"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "r"
+          },
+          {
+            "type": "text",
+            "text": "は各因数の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の係数、"
+          },
+          {
+            "type": "math",
+            "latex": "q"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "は各因数の定数部分を表す数です。"
           }
         ],
         "derivationId": "n05-s5-stage-5"
@@ -12482,8 +15218,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(px+q)(rx+s)"
+          },
+          {
             "type": "text",
-            "text": "(px+q)(rx+s)では、最初どうし・交差どうし・最後どうしを掛ける。"
+            "text": "では、最初どうし・交差どうし・最後どうしを掛ける。"
           },
           {
             "type": "math",
@@ -12498,7 +15238,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "前のpxから二組、前のqから二組を作る。"
+            "text": "前の"
+          },
+          {
+            "type": "math",
+            "latex": "px"
+          },
+          {
+            "type": "text",
+            "text": "から二組、前の"
+          },
+          {
+            "type": "math",
+            "latex": "q"
+          },
+          {
+            "type": "text",
+            "text": "から二組を作る。"
           }
         ],
         "derivationId": "n05-s5-stage-5"
@@ -12531,7 +15287,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "残る二組を加え、一次項だけを共通のxでくくる。"
+            "text": "残る二組を加え、一次項だけを共通の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "でくくる。"
           }
         ],
         "derivationId": "n05-s5-stage-5"
@@ -12597,8 +15361,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "4x²+7x+3"
+          },
+          {
             "type": "text",
-            "text": "4x²+7x+3になるためには、二次、一次、定数の三つの係数が一致しなければならない。"
+            "text": "になるためには、二次、一次、定数の三つの係数が一致しなければならない。"
           },
           {
             "type": "math",
@@ -12689,8 +15457,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "pr=4"
+          },
+          {
             "type": "text",
-            "text": "pr=4には1と4、2と2という正の因数の組があり、qs=3には1と3があります。定数の置き方を変えると交差積も変わるので、ここでは図の三候補を比較します。"
+            "text": "には1と4、2と2という正の因数の組があり、"
+          },
+          {
+            "type": "math",
+            "latex": "qs=3"
+          },
+          {
+            "type": "text",
+            "text": "には1と3があります。定数の置き方を変えると交差積も変わるので、ここでは図の三候補を比較します。"
           }
         ],
         "derivationId": "n05-s5-stage-6"
@@ -12701,7 +15481,55 @@
         "parts": [
           {
             "type": "text",
-            "text": "原Wordの表の三候補を実際の積として並べる。Aは(2x+1)(2x+3)、Bは(x+1)(4x+3)、Cは(x+3)(4x+1)。原図の交差積をそれぞれ足そう。"
+            "text": "原Wordの表の三候補を実際の積として並べる。"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(2x+1)(2x+3)"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(x+1)(4x+3)"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "C"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(x+3)(4x+1)"
+          },
+          {
+            "type": "text",
+            "text": "。原図の交差積をそれぞれ足そう。"
           }
         ],
         "derivationId": "n05-s5-stage-6"
@@ -12756,7 +15584,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "候補Aは(2x+1)(2x+3)。斜めの積だけを先に足そう。"
+            "text": "候補"
+          },
+          {
+            "type": "math",
+            "latex": "A"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(2x+1)(2x+3)"
+          },
+          {
+            "type": "text",
+            "text": "。斜めの積だけを先に足そう。"
           }
         ],
         "derivationId": "n05-s5-stage-6"
@@ -12782,7 +15626,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "候補Bは(x+1)(4x+3)。同じ位置の交差積を計算しよう。"
+            "text": "候補"
+          },
+          {
+            "type": "math",
+            "latex": "B"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(x+1)(4x+3)"
+          },
+          {
+            "type": "text",
+            "text": "。同じ位置の交差積を計算しよう。"
           }
         ],
         "derivationId": "n05-s5-stage-6"
@@ -12808,7 +15668,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "候補Cは(x+3)(4x+1)。定数の置き方だけでも一次係数は変わる。"
+            "text": "候補"
+          },
+          {
+            "type": "math",
+            "latex": "C"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "(x+3)(4x+1)"
+          },
+          {
+            "type": "text",
+            "text": "。定数の置き方だけでも一次係数は変わる。"
           }
         ],
         "derivationId": "n05-s5-stage-6"
@@ -12924,7 +15800,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "次は5x²−2x−3です。まず因数の形を決め、展開から条件を作ります。その条件へ四つの整数候補を代入し、両方を満たす組を選ぶ練習をします。"
+            "text": "次は"
+          },
+          {
+            "type": "math",
+            "latex": "5x²−2x−3"
+          },
+          {
+            "type": "text",
+            "text": "です。まず因数の形を決め、展開から条件を作ります。その条件へ四つの整数候補を代入し、両方を満たす組を選ぶ練習をします。"
           }
         ],
         "derivationId": "n05-s5-stage-7"
@@ -12934,8 +15818,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "5x²−2x−3"
+          },
+          {
             "type": "text",
-            "text": "5x²−2x−3を(x+r)(5x+s)へ戻す。r,sはこれから決める数である。"
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "(x+r)(5x+s)"
+          },
+          {
+            "type": "text",
+            "text": "へ戻す。"
+          },
+          {
+            "type": "math",
+            "latex": "r,s"
+          },
+          {
+            "type": "text",
+            "text": "はこれから決める数である。"
           },
           {
             "type": "math",
@@ -12991,7 +15895,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項をまとめると、和ではなくs+5rが条件になる理由が分かる。"
+            "text": "一次項をまとめると、和ではなく"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r"
+          },
+          {
+            "type": "text",
+            "text": "が条件になる理由が分かる。"
           }
         ],
         "derivationId": "n05-s5-stage-7"
@@ -13076,7 +15988,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "直前に得た積の条件rs=−3から、二数の符号を判定しよう。判断には条件そのものを根拠として使う。"
+            "text": "直前に得た積の条件"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "から、二数の符号を判定しよう。判断には条件そのものを根拠として使う。"
           },
           {
             "type": "math",
@@ -13105,8 +16025,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "rs=−3<0"
+          },
+          {
             "type": "text",
-            "text": "rs=−3<0なのでrとsは異符号。どちらが正かは和の条件も使って決める。"
+            "text": "なので"
+          },
+          {
+            "type": "math",
+            "latex": "r"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "は異符号。どちらが正かは和の条件も使って決める。"
           }
         ],
         "derivationId": "n05-s5-stage-7"
@@ -13117,7 +16057,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "符号の異なる因子のうち、s+5r=−2も満たす組を探す。"
+            "text": "符号の異なる因子のうち、"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r=−2"
+          },
+          {
+            "type": "text",
+            "text": "も満たす組を探す。"
           },
           {
             "type": "math",
@@ -13132,7 +16080,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "積rs=−3で候補を絞っても、一次係数の条件s+5r=−2はまだ残っている。整数の各候補へ代入し、結果を一つずつ比較して両条件を満たす組を決める。"
+            "text": "積"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "で候補を絞っても、一次係数の条件"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r=−2"
+          },
+          {
+            "type": "text",
+            "text": "はまだ残っている。整数の各候補へ代入し、結果を一つずつ比較して両条件を満たす組を決める。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13143,7 +16107,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "整数でrs=−3となる候補は、(1,−3)、(−1,3)、(3,−1)、(−3,1)です。今回は四候補の一次係数をすべて比べ、条件に合うものを選びます。"
+            "text": "整数で"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "となる候補は、"
+          },
+          {
+            "type": "math",
+            "latex": "(1,−3)"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "(−1,3)"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "(3,−1)"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "(−3,1)"
+          },
+          {
+            "type": "text",
+            "text": "です。今回は四候補の一次係数をすべて比べ、条件に合うものを選びます。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13154,7 +16158,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "積rs=−3を満たす候補(r,s)=(1,−3)で、s+5rを計算しよう。"
+            "text": "積"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "を満たす候補"
+          },
+          {
+            "type": "math",
+            "latex": "(r,s)=(1,−3)"
+          },
+          {
+            "type": "text",
+            "text": "で、"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r"
+          },
+          {
+            "type": "text",
+            "text": "を計算しよう。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13180,7 +16208,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "積rs=−3を満たす候補(r,s)=(−1,3)で、s+5rを計算しよう。"
+            "text": "積"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "を満たす候補"
+          },
+          {
+            "type": "math",
+            "latex": "(r,s)=(−1,3)"
+          },
+          {
+            "type": "text",
+            "text": "で、"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r"
+          },
+          {
+            "type": "text",
+            "text": "を計算しよう。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13206,7 +16258,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "積rs=−3を満たす候補(r,s)=(3,−1)で、s+5rを計算しよう。"
+            "text": "積"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "を満たす候補"
+          },
+          {
+            "type": "math",
+            "latex": "(r,s)=(3,−1)"
+          },
+          {
+            "type": "text",
+            "text": "で、"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r"
+          },
+          {
+            "type": "text",
+            "text": "を計算しよう。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13232,7 +16308,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "積rs=−3を満たす候補(r,s)=(−3,1)で、s+5rを計算しよう。"
+            "text": "積"
+          },
+          {
+            "type": "math",
+            "latex": "rs=−3"
+          },
+          {
+            "type": "text",
+            "text": "を満たす候補"
+          },
+          {
+            "type": "math",
+            "latex": "(r,s)=(−3,1)"
+          },
+          {
+            "type": "text",
+            "text": "で、"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r"
+          },
+          {
+            "type": "text",
+            "text": "を計算しよう。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13258,7 +16358,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "四候補のうちs+5r=−2を満たす組を使う。"
+            "text": "四候補のうち"
+          },
+          {
+            "type": "math",
+            "latex": "s+5r=−2"
+          },
+          {
+            "type": "text",
+            "text": "を満たす組を使う。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13284,7 +16392,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "選んだr=−1、s=3を、候補(x+r)(5x+s)に戻す。まず最初の括弧だけを完成させよう。"
+            "text": "選んだ"
+          },
+          {
+            "type": "math",
+            "latex": "r=−1"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=3"
+          },
+          {
+            "type": "text",
+            "text": "を、候補"
+          },
+          {
+            "type": "math",
+            "latex": "(x+r)(5x+s)"
+          },
+          {
+            "type": "text",
+            "text": "に戻す。まず最初の括弧だけを完成させよう。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13306,7 +16438,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "最初の因数の定数部分にr=−1を戻したので、x−1になりました。次に二番目の因数へsを戻します。"
+            "text": "最初の因数の定数部分に"
+          },
+          {
+            "type": "math",
+            "latex": "r=−1"
+          },
+          {
+            "type": "text",
+            "text": "を戻したので、"
+          },
+          {
+            "type": "math",
+            "latex": "x−1"
+          },
+          {
+            "type": "text",
+            "text": "になりました。次に二番目の因数へ"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "を戻します。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13317,7 +16473,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二番目には、同じ組で求めたs=3を戻す。"
+            "text": "二番目には、同じ組で求めた"
+          },
+          {
+            "type": "math",
+            "latex": "s=3"
+          },
+          {
+            "type": "text",
+            "text": "を戻す。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13353,8 +16517,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "r"
+          },
+          {
             "type": "text",
-            "text": "r、sは因数の定数部分として導入した数である。選んだ組を(x+r)(5x+s)へ戻し、一次項と定数項が元へ戻ることを確かめる。"
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s"
+          },
+          {
+            "type": "text",
+            "text": "は因数の定数部分として導入した数である。選んだ組を"
+          },
+          {
+            "type": "math",
+            "latex": "(x+r)(5x+s)"
+          },
+          {
+            "type": "text",
+            "text": "へ戻し、一次項と定数項が元へ戻ることを確かめる。"
           }
         ],
         "derivationId": "n05-s5-stage-8"
@@ -13375,8 +16559,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "3a²b−12b³"
+          },
+          {
             "type": "text",
-            "text": "3a²b−12b³では、すべての項に共通する係数と文字を最初に外へ出す。"
+            "text": "では、すべての項に共通する係数と文字を最初に外へ出す。"
           },
           {
             "type": "math",
@@ -13391,7 +16579,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "まず係数3と−12を比べると、どちらも3で割れます。文字は両項とも少なくともbを一つ含みます。共通して取り出せる最大の数の因子と文字を組み合わせます。"
+            "text": "まず係数3と"
+          },
+          {
+            "type": "math",
+            "latex": "−12"
+          },
+          {
+            "type": "text",
+            "text": "を比べると、どちらも3で割れます。文字は両項とも少なくとも"
+          },
+          {
+            "type": "math",
+            "latex": "b"
+          },
+          {
+            "type": "text",
+            "text": "を一つ含みます。共通して取り出せる最大の数の因子と文字を組み合わせます。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -13417,7 +16621,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "一項目は3bを因子としてそのまま取り出せる。二項目にも同じ3bを作る。"
+            "text": "一項目は"
+          },
+          {
+            "type": "math",
+            "latex": "3b"
+          },
+          {
+            "type": "text",
+            "text": "を因子としてそのまま取り出せる。二項目にも同じ"
+          },
+          {
+            "type": "math",
+            "latex": "3b"
+          },
+          {
+            "type": "text",
+            "text": "を作る。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -13438,8 +16658,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "−12b³"
+          },
+          {
             "type": "text",
-            "text": "−12b³の中へ3bを一つ作り、残る係数を計算する。"
+            "text": "の中へ"
+          },
+          {
+            "type": "math",
+            "latex": "3b"
+          },
+          {
+            "type": "text",
+            "text": "を一つ作り、残る係数を計算する。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -13495,7 +16727,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "共通因数を残したまま、a²−(2b)²を和と差の積へ変える。"
+            "text": "共通因数を残したまま、"
+          },
+          {
+            "type": "math",
+            "latex": "a²−(2b)²"
+          },
+          {
+            "type": "text",
+            "text": "を和と差の積へ変える。"
           },
           {
             "type": "math",
@@ -13510,7 +16750,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "残る4b²を、正の係数を使った一つの式の平方へ戻す。"
+            "text": "残る"
+          },
+          {
+            "type": "math",
+            "latex": "4b²"
+          },
+          {
+            "type": "text",
+            "text": "を、正の係数を使った一つの式の平方へ戻す。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -13540,7 +16788,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "これで括弧の中を平方差へ直せる。外にある3bは残す。"
+            "text": "これで括弧の中を平方差へ直せる。外にある"
+          },
+          {
+            "type": "math",
+            "latex": "3b"
+          },
+          {
+            "type": "text",
+            "text": "は残す。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -13566,7 +16822,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "外にくくった3bも、変形の前後で残してつなぐ。"
+            "text": "外にくくった"
+          },
+          {
+            "type": "math",
+            "latex": "3b"
+          },
+          {
+            "type": "text",
+            "text": "も、変形の前後で残してつなぐ。"
           }
         ],
         "derivationId": "n05-s5-stage-9"
@@ -14590,8 +17854,44 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(x+2y+1)(x+2y−2)−4"
+          },
+          {
             "type": "text",
-            "text": "(x+2y+1)(x+2y−2)−4を因数分解します。繰り返す部分にXという名前を付け、Xの二次式として因数分解してから、最後にxとyへ戻します。"
+            "text": "を因数分解します。繰り返す部分に"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "という名前を付け、"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "の二次式として因数分解してから、最後に"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "へ戻します。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14602,7 +17902,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの括弧に繰り返し現れる式のまとまりを見つけ、それをXと置いてみよう。"
+            "text": "二つの括弧に繰り返し現れる式のまとまりを見つけ、それを"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "と置いてみよう。"
           },
           {
             "type": "math",
@@ -14658,7 +17966,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "同じXを、元の二つの括弧へそれぞれ対応させる。"
+            "text": "同じ"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "を、元の二つの括弧へそれぞれ対応させる。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14691,7 +18007,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "文字を変えただけで元の式の値は変わらない。最後にはXを戻す。"
+            "text": "文字を変えただけで元の式の値は変わらない。最後には"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "を戻す。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14717,7 +18041,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "置き換えても式の値は変わりません。Xの式を、既習の分配法則で展開します。"
+            "text": "置き換えても式の値は変わりません。"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "の式を、既習の分配法則で展開します。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14739,7 +18071,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "前のXと1を、後ろの括弧全体へ配る。外の−4も残す。"
+            "text": "前の"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "と1を、後ろの括弧全体へ配る。外の"
+          },
+          {
+            "type": "math",
+            "latex": "−4"
+          },
+          {
+            "type": "text",
+            "text": "も残す。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14776,7 +18124,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "一次項−2XとXをまとめる。"
+            "text": "一次項"
+          },
+          {
+            "type": "math",
+            "latex": "−2X"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "をまとめる。"
           }
         ],
         "derivationId": "n06-s5-stage-1"
@@ -14869,7 +18233,55 @@
         "parts": [
           {
             "type": "text",
-            "text": "前に学んだ(X+r)(X+s)=X²+(r+s)X+rsを使います。Xの係数が−1、定数が−6なので、積が−6になる整数の組から、和が−1になる組を選びます。"
+            "text": "前に学んだ"
+          },
+          {
+            "type": "math",
+            "latex": "(X+r)(X+s)=X²+(r+s)X+rs"
+          },
+          {
+            "type": "text",
+            "text": "を使います。"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "の係数が"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "、定数が"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "なので、積が"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "になる整数の組から、和が"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "になる組を選びます。"
           }
         ],
         "derivationId": "n06-s5-stage-2"
@@ -14894,8 +18306,44 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "X"
+          },
+          {
             "type": "text",
-            "text": "Xの一次係数は−1、定数は−6。積が−6になる二数のうち、和が−1になる組を選ぼう。"
+            "text": "の一次係数は"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "、定数は"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "。積が"
+          },
+          {
+            "type": "math",
+            "latex": "−6"
+          },
+          {
+            "type": "text",
+            "text": "になる二数のうち、和が"
+          },
+          {
+            "type": "math",
+            "latex": "−1"
+          },
+          {
+            "type": "text",
+            "text": "になる組を選ぼう。"
           }
         ],
         "derivationId": "n06-s5-stage-2"
@@ -14964,8 +18412,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "X"
+          },
+          {
             "type": "text",
-            "text": "Xのままでは元のx,yの問題の解答になっていない。"
+            "text": "のままでは元の"
+          },
+          {
+            "type": "math",
+            "latex": "x,y"
+          },
+          {
+            "type": "text",
+            "text": "の問題の解答になっていない。"
           }
         ],
         "derivationId": "n06-s5-stage-2"
@@ -14976,7 +18436,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "置換の定義X=x+2yを両方の因数へ戻そう。"
+            "text": "置換の定義"
+          },
+          {
+            "type": "math",
+            "latex": "X=x+2y"
+          },
+          {
+            "type": "text",
+            "text": "を両方の因数へ戻そう。"
           },
           {
             "type": "math",
@@ -14991,7 +18459,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最初の因数のXを、定義したx+2yへ戻す。"
+            "text": "最初の因数の"
+          },
+          {
+            "type": "math",
+            "latex": "X"
+          },
+          {
+            "type": "text",
+            "text": "を、定義した"
+          },
+          {
+            "type": "math",
+            "latex": "x+2y"
+          },
+          {
+            "type": "text",
+            "text": "へ戻す。"
           }
         ],
         "derivationId": "n06-s5-stage-2"
@@ -15106,7 +18590,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "まずx⁴を、ある式を二乗した形に戻します。次に元の三項を、その同じ式で読み直します。"
+            "text": "まず"
+          },
+          {
+            "type": "math",
+            "latex": "x^{4}"
+          },
+          {
+            "type": "text",
+            "text": "を、ある式を二乗した形に戻します。次に元の三項を、その同じ式で読み直します。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15175,8 +18667,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T²−5T+4"
+          },
+          {
             "type": "text",
-            "text": "T²−5T+4を積に直し、元のx²へ戻す。"
+            "text": "を積に直し、元の"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "へ戻す。"
           },
           {
             "type": "math",
@@ -15190,8 +18694,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tの二次式をまず積に直す。そのあとT=x²を戻す。因数分解と置換からの復元を分ければ、途中の文字Tを残したまま答える間違いを防げる。"
+            "text": "の二次式をまず積に直す。そのあと"
+          },
+          {
+            "type": "math",
+            "latex": "T=x²"
+          },
+          {
+            "type": "text",
+            "text": "を戻す。因数分解と置換からの復元を分ければ、途中の文字"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "を残したまま答える間違いを防げる。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15201,8 +18725,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T²−5T+4"
+          },
+          {
             "type": "text",
-            "text": "T²−5T+4の因数を決める。積が4、和が−5になる二数はどれだろう。"
+            "text": "の因数を決める。積が4、和が"
+          },
+          {
+            "type": "math",
+            "latex": "−5"
+          },
+          {
+            "type": "text",
+            "text": "になる二数はどれだろう。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15257,7 +18793,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "選んだ二数を使い、まだTのままで二つの因数を作ろう。"
+            "text": "選んだ二数を使い、まだ"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "のままで二つの因数を作ろう。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15282,8 +18826,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "T"
+          },
+          {
             "type": "text",
-            "text": "Tのままの因数分解ができたので、T=x²という定義へ戻る。まず最初の因数に同じ式を代入しよう。"
+            "text": "のままの因数分解ができたので、"
+          },
+          {
+            "type": "math",
+            "latex": "T=x²"
+          },
+          {
+            "type": "text",
+            "text": "という定義へ戻る。まず最初の因数に同じ式を代入しよう。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15320,7 +18876,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二番目の因数にも、同じT=x²を使う。一方のTだけを残さず、両方を戻そう。"
+            "text": "二番目の因数にも、同じ"
+          },
+          {
+            "type": "math",
+            "latex": "T=x²"
+          },
+          {
+            "type": "text",
+            "text": "を使う。一方の"
+          },
+          {
+            "type": "math",
+            "latex": "T"
+          },
+          {
+            "type": "text",
+            "text": "だけを残さず、両方を戻そう。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15346,7 +18918,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの復元結果を掛ければ元のxだけの式になる。次の回答ではこの二つを一つの積として書く。"
+            "text": "二つの復元結果を掛ければ元の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "だけの式になる。次の回答ではこの二つを一つの積として書く。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15372,7 +18952,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "まだ二つの因数にはx²が残る。ここで終わらず、それぞれが平方の差になっていることを使い、次に一次式の積へ分ける。"
+            "text": "まだ二つの因数には"
+          },
+          {
+            "type": "math",
+            "latex": "x²"
+          },
+          {
+            "type": "text",
+            "text": "が残る。ここで終わらず、それぞれが平方の差になっていることを使い、次に一次式の積へ分ける。"
           }
         ],
         "derivationId": "n06-s5-stage-3"
@@ -15393,8 +18981,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x²−1"
+          },
+          {
             "type": "text",
-            "text": "x²−1とx²−4をそれぞれ平方の差と見て、積を最後まで細かくする。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "x²−4"
+          },
+          {
+            "type": "text",
+            "text": "をそれぞれ平方の差と見て、積を最後まで細かくする。"
           },
           {
             "type": "math",
@@ -15409,7 +19009,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最初の因数x²−1はxの平方と1の平方の差である。平方差の公式へ対応させよう。"
+            "text": "最初の因数"
+          },
+          {
+            "type": "math",
+            "latex": "x²−1"
+          },
+          {
+            "type": "text",
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の平方と1の平方の差である。平方差の公式へ対応させよう。"
           }
         ],
         "derivationId": "n06-s5-stage-4"
@@ -15446,7 +19062,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "4は2²なので、もう一方も平方差へ対応する。平方の内側の数を使って因子を作ろう。"
+            "text": "4は"
+          },
+          {
+            "type": "math",
+            "latex": "2²"
+          },
+          {
+            "type": "text",
+            "text": "なので、もう一方も平方差へ対応する。平方の内側の数を使って因子を作ろう。"
           }
         ],
         "derivationId": "n06-s5-stage-4"
@@ -15519,8 +19143,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xとyが混ざるときは、低い次数でまとめられる文字に注目すると共通の括弧が浮かび上がる。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "が混ざるときは、低い次数でまとめられる文字に注目すると共通の括弧が浮かび上がる。"
           }
         ],
         "derivationId": "n06-s5-stage-5"
@@ -15531,7 +19167,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "次の式を因数分解します。まず、xとyそれぞれについての次数を比べます。"
+            "text": "次の式を因数分解します。まず、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "それぞれについての次数を比べます。"
           },
           {
             "type": "math",
@@ -15587,7 +19239,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "この式ではyについて見ると一次式です。yを含む部分と含まない部分の二つに分けられるので、共通部分を探しやすくなります。"
+            "text": "この式では"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "について見ると一次式です。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を含む部分と含まない部分の二つに分けられるので、共通部分を探しやすくなります。"
           }
         ],
         "derivationId": "n06-s5-stage-5"
@@ -15601,8 +19269,28 @@
             "text": "次数を比べた結果："
           },
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xについて3次、yについて1次。yで整理"
+            "text": "について3次、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "について1次。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "で整理"
           }
         ],
         "derivationId": "n06-s5-stage-5"
@@ -15612,8 +19300,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xについては3次、yについては1次。yで整理すると二つの部分に分けられる。"
+            "text": "については3次、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "については1次。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "で整理すると二つの部分に分けられる。"
           }
         ],
         "derivationId": "n06-s5-stage-5"
@@ -15623,8 +19331,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "y"
+          },
+          {
             "type": "text",
-            "text": "yの付く項をすべて集め、その残りと分けよう。"
+            "text": "の付く項をすべて集め、その残りと分けよう。"
           },
           {
             "type": "math",
@@ -15638,8 +19350,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "y"
+          },
+          {
             "type": "text",
-            "text": "yを含む三項を前へ集め、yを含まない残りの項と分ける。"
+            "text": "を含む三項を前へ集め、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を含まない残りの項と分ける。"
           }
         ],
         "derivationId": "n06-s5-stage-6"
@@ -15669,7 +19393,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "前半に共通するyを一つ外へ出す。残る式を括弧に入れよう。"
+            "text": "前半に共通する"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を一つ外へ出す。残る式を括弧に入れよう。"
           }
         ],
         "derivationId": "n06-s5-stage-6"
@@ -15714,7 +19446,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "残りの部分にも、よく似たxの二次式が隠れている。"
+            "text": "残りの部分にも、よく似た"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の二次式が隠れている。"
           }
         ],
         "derivationId": "n06-s5-stage-6"
@@ -15724,8 +19464,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "y"
+          },
+          {
             "type": "text",
-            "text": "yを含まない後半の三項は、全部にxが掛かっている。"
+            "text": "を含まない後半の三項は、全部に"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が掛かっている。"
           },
           {
             "type": "math",
@@ -15740,7 +19492,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "後半も、一項ずつxが掛かる形へ戻す。"
+            "text": "後半も、一項ずつ"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "が掛かる形へ戻す。"
           }
         ],
         "derivationId": "n06-s5-stage-6"
@@ -15799,7 +19559,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "前半と後半に同じ(x²+x−2)が現れる。"
+            "text": "前半と後半に同じ"
+          },
+          {
+            "type": "math",
+            "latex": "(x²+x−2)"
+          },
+          {
+            "type": "text",
+            "text": "が現れる。"
           }
         ],
         "derivationId": "n06-s5-stage-6"
@@ -15873,7 +19641,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "残ったx²+x−2では、和が1・積が−2の二数を探す。"
+            "text": "残った"
+          },
+          {
+            "type": "math",
+            "latex": "x²+x−2"
+          },
+          {
+            "type": "text",
+            "text": "では、和が1・積が"
+          },
+          {
+            "type": "math",
+            "latex": "−2"
+          },
+          {
+            "type": "text",
+            "text": "の二数を探す。"
           },
           {
             "type": "math",
@@ -15888,7 +19672,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "残ったx²+x−2では、積が−2、和が1になる二数が必要になる。"
+            "text": "残った"
+          },
+          {
+            "type": "math",
+            "latex": "x²+x−2"
+          },
+          {
+            "type": "text",
+            "text": "では、積が"
+          },
+          {
+            "type": "math",
+            "latex": "−2"
+          },
+          {
+            "type": "text",
+            "text": "、和が1になる二数が必要になる。"
           }
         ],
         "derivationId": "n06-s5-stage-7"
@@ -15943,7 +19743,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "外のx+yを残し、この積を元の場所へ戻す。"
+            "text": "外の"
+          },
+          {
+            "type": "math",
+            "latex": "x+y"
+          },
+          {
+            "type": "text",
+            "text": "を残し、この積を元の場所へ戻す。"
           }
         ],
         "derivationId": "n06-s5-stage-7"
@@ -15980,7 +19788,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "最後に逆展開すれば、元のx³から−2yまで全項が戻る。"
+            "text": "最後に逆展開すれば、元の"
+          },
+          {
+            "type": "math",
+            "latex": "x³"
+          },
+          {
+            "type": "text",
+            "text": "から"
+          },
+          {
+            "type": "math",
+            "latex": "−2y"
+          },
+          {
+            "type": "text",
+            "text": "まで全項が戻る。"
           }
         ],
         "derivationId": "n06-s5-stage-7"
@@ -15991,7 +19815,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "二次の因子も分解し、元の式の全体が(x+y)(x+2)(x−1)になりました。共通因数x+yは、最後まで残して使っています。"
+            "text": "二次の因子も分解し、元の式の全体が"
+          },
+          {
+            "type": "math",
+            "latex": "(x+y)(x+2)(x−1)"
+          },
+          {
+            "type": "text",
+            "text": "になりました。共通因数"
+          },
+          {
+            "type": "math",
+            "latex": "x+y"
+          },
+          {
+            "type": "text",
+            "text": "は、最後まで残して使っています。"
           }
         ],
         "derivationId": "n06-s5-stage-7"
@@ -16012,8 +19852,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xについての二次式と見れば、yを含む係数も「一つの数」と同じように扱える。"
+            "text": "についての二次式と見れば、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を含む係数も「一つの数」と同じように扱える。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16023,8 +19875,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x²+3xy+2y²−x−3y−2"
+          },
+          {
             "type": "text",
-            "text": "x²+3xy+2y²−x−3y−2を因数分解します。まずxの二次式へ整理し、定数部分を二因子へ分け、その二因子の和が一次係数にも一致するか調べます。"
+            "text": "を因数分解します。まず"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の二次式へ整理し、定数部分を二因子へ分け、その二因子の和が一次係数にも一致するか調べます。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16034,8 +19898,36 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "U,V"
+          },
+          {
             "type": "text",
-            "text": "U,Vはxを含まない式を表す仮の名前です。yを含んでいても、xについては定数として扱えます。前に学んだ関係を、この場合にも使います。"
+            "text": "は"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を含まない式を表す仮の名前です。"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "を含んでいても、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "については定数として扱えます。前に学んだ関係を、この場合にも使います。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16056,8 +19948,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x²+3xy+2y²−x−3y−2"
+          },
+          {
             "type": "text",
-            "text": "x²+3xy+2y²−x−3y−2を、xの二次・一次・定数の順に並べる。"
+            "text": "を、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の二次・一次・定数の順に並べる。"
           },
           {
             "type": "math",
@@ -16071,8 +19975,12 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xの一次項を一つに集め、それ以外を定数部分として残す。"
+            "text": "の一次項を一つに集め、それ以外を定数部分として残す。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16101,8 +20009,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "3xy−x"
+          },
+          {
             "type": "text",
-            "text": "3xy−xの共通するxを外へ出す。"
+            "text": "の共通する"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "を外へ出す。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16146,8 +20066,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xの係数3y−1と定数項2y²−3y−2を区別できた。"
+            "text": "の係数"
+          },
+          {
+            "type": "math",
+            "latex": "3y−1"
+          },
+          {
+            "type": "text",
+            "text": "と定数項"
+          },
+          {
+            "type": "math",
+            "latex": "2y²−3y−2"
+          },
+          {
+            "type": "text",
+            "text": "を区別できた。"
           }
         ],
         "derivationId": "n06-s5-stage-8"
@@ -16157,8 +20097,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x"
+          },
+          {
             "type": "text",
-            "text": "xに依存しない部分2y²−3y−2を、二つの一次式の積へ分ける。"
+            "text": "に依存しない部分"
+          },
+          {
+            "type": "math",
+            "latex": "2y²−3y−2"
+          },
+          {
+            "type": "text",
+            "text": "を、二つの一次式の積へ分ける。"
           },
           {
             "type": "math",
@@ -16173,7 +20125,31 @@
         "parts": [
           {
             "type": "text",
-            "text": "定数部分2y²−3y−2を因数分解します。候補の形を(2y+r)(y+s)と置き、展開から条件を作ります。r,sはここで決める整数です。候補を決めるのは、二条件を比べた後です。"
+            "text": "定数部分"
+          },
+          {
+            "type": "math",
+            "latex": "2y²−3y−2"
+          },
+          {
+            "type": "text",
+            "text": "を因数分解します。候補の形を"
+          },
+          {
+            "type": "math",
+            "latex": "(2y+r)(y+s)"
+          },
+          {
+            "type": "text",
+            "text": "と置き、展開から条件を作ります。"
+          },
+          {
+            "type": "math",
+            "latex": "r,s"
+          },
+          {
+            "type": "text",
+            "text": "はここで決める整数です。候補を決めるのは、二条件を比べた後です。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16195,7 +20171,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "元の式2y²−3y−2と比べると、中央と定数から二条件が得られる。"
+            "text": "元の式"
+          },
+          {
+            "type": "math",
+            "latex": "2y²−3y−2"
+          },
+          {
+            "type": "text",
+            "text": "と比べると、中央と定数から二条件が得られる。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16232,7 +20216,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "積が−2の候補から、2s+r=−3も満たす組を選ぶ。"
+            "text": "積が"
+          },
+          {
+            "type": "math",
+            "latex": "−2"
+          },
+          {
+            "type": "text",
+            "text": "の候補から、"
+          },
+          {
+            "type": "math",
+            "latex": "2s+r=−3"
+          },
+          {
+            "type": "text",
+            "text": "も満たす組を選ぶ。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16243,7 +20243,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "積が−2となる四候補について、一次係数2s+rも実際に計算して比較する。r=1、s=−2の場合。"
+            "text": "積が"
+          },
+          {
+            "type": "math",
+            "latex": "−2"
+          },
+          {
+            "type": "text",
+            "text": "となる四候補について、一次係数"
+          },
+          {
+            "type": "math",
+            "latex": "2s+r"
+          },
+          {
+            "type": "text",
+            "text": "も実際に計算して比較する。"
+          },
+          {
+            "type": "math",
+            "latex": "r=1"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=−2"
+          },
+          {
+            "type": "text",
+            "text": "の場合。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16275,8 +20307,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "r=−1"
+          },
+          {
             "type": "text",
-            "text": "r=−1、s=2の場合。"
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=2"
+          },
+          {
+            "type": "text",
+            "text": "の場合。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16308,8 +20352,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "r=2"
+          },
+          {
             "type": "text",
-            "text": "r=2、s=−1の場合。"
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=−1"
+          },
+          {
+            "type": "text",
+            "text": "の場合。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16341,8 +20397,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "r=−2"
+          },
+          {
             "type": "text",
-            "text": "r=−2、s=1の場合。"
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=1"
+          },
+          {
+            "type": "text",
+            "text": "の場合。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16390,7 +20458,47 @@
         "parts": [
           {
             "type": "text",
-            "text": "選んだr=1、s=−2を(2y+r)(y+s)へ戻すと、候補は(2y+1)(y−2)です。この実際の積の交差項でも、元の−3yへ戻ることを検算します。"
+            "text": "選んだ"
+          },
+          {
+            "type": "math",
+            "latex": "r=1"
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "s=−2"
+          },
+          {
+            "type": "text",
+            "text": "を"
+          },
+          {
+            "type": "math",
+            "latex": "(2y+r)(y+s)"
+          },
+          {
+            "type": "text",
+            "text": "へ戻すと、候補は"
+          },
+          {
+            "type": "math",
+            "latex": "(2y+1)(y−2)"
+          },
+          {
+            "type": "text",
+            "text": "です。この実際の積の交差項でも、元の"
+          },
+          {
+            "type": "math",
+            "latex": "−3y"
+          },
+          {
+            "type": "text",
+            "text": "へ戻ることを検算します。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16431,7 +20539,23 @@
         "parts": [
           {
             "type": "text",
-            "text": "定数部分の積の形が得られたが、元のxの二次式の因数に使えるかはまだ決まらない。次に二つの因子の和を調べ、xの一次係数へ一致するかを確かめる。"
+            "text": "定数部分の積の形が得られたが、元の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の二次式の因数に使えるかはまだ決まらない。次に二つの因子の和を調べ、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の一次係数へ一致するかを確かめる。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16442,7 +20566,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの因子の組は、xの一次係数との一致も検査する。"
+            "text": "二つの因子の組は、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の一次係数との一致も検査する。"
           }
         ],
         "derivationId": "n06-s5-stage-9"
@@ -16452,8 +20584,28 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "(2y+1)"
+          },
+          {
             "type": "text",
-            "text": "(2y+1)と(y−2)を二つの一次式の定数項と見たとき、展開後のxの係数は何になるだろう。"
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "(y−2)"
+          },
+          {
+            "type": "text",
+            "text": "を二つの一次式の定数項と見たとき、展開後の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の係数は何になるだろう。"
           },
           {
             "type": "math",
@@ -16468,7 +20620,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "和を、yの項と定数の二組へ並べ替える。次にこの二組を別々に計算する。"
+            "text": "和を、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の項と定数の二組へ並べ替える。次にこの二組を別々に計算する。"
           }
         ],
         "derivationId": "n06-s5-stage-10"
@@ -16490,7 +20650,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "二つの因子を足すとき、yの係数だけを先に計算する。"
+            "text": "二つの因子を足すとき、"
+          },
+          {
+            "type": "math",
+            "latex": "y"
+          },
+          {
+            "type": "text",
+            "text": "の係数だけを先に計算する。"
           }
         ],
         "derivationId": "n06-s5-stage-10"
@@ -16557,7 +20725,39 @@
         "parts": [
           {
             "type": "text",
-            "text": "定数部分の二因子の積は2y²−3y−2でした。いま求めた和3y−1を、元のxの一次係数3y−1と比べます。"
+            "text": "定数部分の二因子の積は"
+          },
+          {
+            "type": "math",
+            "latex": "2y²−3y−2"
+          },
+          {
+            "type": "text",
+            "text": "でした。いま求めた和"
+          },
+          {
+            "type": "math",
+            "latex": "3y−1"
+          },
+          {
+            "type": "text",
+            "text": "を、元の"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の一次係数"
+          },
+          {
+            "type": "math",
+            "latex": "3y−1"
+          },
+          {
+            "type": "text",
+            "text": "と比べます。"
           }
         ],
         "derivationId": "n06-s5-stage-10"
@@ -16590,7 +20790,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "和も積も一致したので、xについての二つの一次式へ戻せる。"
+            "text": "和も積も一致したので、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "についての二つの一次式へ戻せる。"
           }
         ],
         "derivationId": "n06-s5-stage-10"
@@ -16600,8 +20808,20 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "x²+(3y−1)x+(2y+1)(y−2)"
+          },
+          {
             "type": "text",
-            "text": "x²+(3y−1)x+(2y+1)(y−2)を、xに関する二つの一次式へまとめる。"
+            "text": "を、"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "に関する二つの一次式へまとめる。"
           },
           {
             "type": "math",
@@ -16616,7 +20836,15 @@
         "parts": [
           {
             "type": "text",
-            "text": "定数部分は積、一次係数はその二因子の和として求まった。それぞれをxの二次式へ戻す。"
+            "text": "定数部分は積、一次係数はその二因子の和として求まった。それぞれを"
+          },
+          {
+            "type": "math",
+            "latex": "x"
+          },
+          {
+            "type": "text",
+            "text": "の二次式へ戻す。"
           }
         ],
         "derivationId": "n06-s5-stage-10"
@@ -16645,8 +20873,52 @@
         "type": "paragraph",
         "parts": [
           {
+            "type": "math",
+            "latex": "U=2y+1"
+          },
+          {
             "type": "text",
-            "text": "U=2y+1、V=y−2とすると、U+VとUVが元の一次係数・定数部分に両方一致します。したがって、(x+U)(x+V)のU,Vへこの二因子を入れます。"
+            "text": "、"
+          },
+          {
+            "type": "math",
+            "latex": "V=y−2"
+          },
+          {
+            "type": "text",
+            "text": "とすると、"
+          },
+          {
+            "type": "math",
+            "latex": "U+V"
+          },
+          {
+            "type": "text",
+            "text": "と"
+          },
+          {
+            "type": "math",
+            "latex": "UV"
+          },
+          {
+            "type": "text",
+            "text": "が元の一次係数・定数部分に両方一致します。したがって、"
+          },
+          {
+            "type": "math",
+            "latex": "(x+U)(x+V)"
+          },
+          {
+            "type": "text",
+            "text": "の"
+          },
+          {
+            "type": "math",
+            "latex": "U,V"
+          },
+          {
+            "type": "text",
+            "text": "へこの二因子を入れます。"
           }
         ],
         "derivationId": "n06-s5-stage-10"

@@ -30,6 +30,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { TextbookFormula } from '../components/textbook/TextbookFormula'
+import { N0106SemanticText, isN0106DisplayUnit } from '../components/textbook/N0106SemanticText'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
@@ -116,7 +117,7 @@ function groupReadingFlow(blocks: TextbookReadingBlock[]) {
   return groups
 }
 
-function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord) {
+function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord, semanticUnitId?: string) {
   return (
     <span className="reading-inline-answer" data-testid={`resolved-${item.id}`}>
       {item.answerType === 'formula'
@@ -128,7 +129,7 @@ function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord) 
               </span>
             : <InlineMath math={normalizeTextbookMath(record.value)} />
         })()
-        : <>{record.value}</>}
+        : <N0106SemanticText unitId={semanticUnitId} value={record.value} />}
     </span>
   )
 }
@@ -159,15 +160,16 @@ function renderPart(
   progress: TextbookUnitProgress | undefined,
   onOpen: (itemId: string) => void,
   text: (ja: string, zh: string) => string,
+  semanticUnitId?: string,
 ): ReactNode {
-  if (part.type === 'text') return part.text
+  if (part.type === 'text') return <N0106SemanticText unitId={semanticUnitId} value={part.text} />
   if (part.type === 'term') return <strong className="reading-term">{part.text}</strong>
   if (part.type === 'math') return <InlineMath math={part.latex} />
 
   const item = section.items.find((candidate) => candidate.id === part.itemId)
   if (!item) return null
   const record = progress?.answers[item.id]
-  if (isTextbookItemResolved(item, record)) return renderResolvedChoice(item, record!)
+  if (isTextbookItemResolved(item, record)) return renderResolvedChoice(item, record!, semanticUnitId)
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
@@ -326,6 +328,9 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     })
   }
 
+  const semanticUnitId = isN0106DisplayUnit(unit.unitId, unit.revision) ? unit.unitId : undefined
+  const semanticText = (value: string) => <N0106SemanticText unitId={semanticUnitId} value={value} />
+
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
   const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : undefined
   const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : []
@@ -334,9 +339,10 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
   const wideMathChoices = unit.subject === 'math-1a'
     && activeItem?.answerType === 'formula'
     && activeChoices.some(choice => choice.length > 27 || choice.includes('\\quad'))
-  const activeHint = activeItem && activeRecord && !isTextbookItemResolved(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length
-    ? [developmentFeedback(activeItem.id, activeRecord.value), activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]].filter(Boolean).join(' ')
-    : undefined
+  const activeHintParts = activeItem && activeRecord && !isTextbookItemResolved(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length
+    ? [developmentFeedback(activeItem.id, activeRecord.value), activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]].filter((value): value is string => Boolean(value))
+    : []
+  const activeHint = activeHintParts.join(' ')
   const continuousLesson = unit.sections.length === 1 && section.id === 'lesson'
 
   const visibleBlocksInGroup = (group: TextbookReadingBlock[]) => {
@@ -389,12 +395,12 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{((isFirstThemeUnit(unit.unitId) || Boolean(w048Contract)) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}</span>
+          <span>{semanticText((isFirstThemeUnit(unit.unitId) || Boolean(w048Contract)) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}</span>
         </div>
         {activeHint && (
           <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
             <strong>{text('ヒント', '提示')}</strong>
-            <span>{activeHint}</span>
+            <span>{semanticUnitId ? activeHintParts.map((part, index) => <span key={index}>{index > 0 ? ' ' : ''}{semanticText(part)}</span>) : activeHint}</span>
           </div>
         )}
         <div
@@ -429,7 +435,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                       ))}
                     </span>
                   )
-                  : isFirstThemeUnit(unit.unitId) ? <span className="first-theme-choice-text">{choice.split('／').map((part,i)=><span key={i}>{part}</span>)}</span> : choice}
+                  : isFirstThemeUnit(unit.unitId) ? <span className="first-theme-choice-text">{choice.split('／').map((part,i)=><span key={i}>{semanticText(part)}</span>)}</span> : choice}
               </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
             </button>
@@ -441,7 +447,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
   }
 
   const renderBlock = (block: TextbookReadingBlock) => {
-    if (block.type === 'heading') return <h3 className="reading-subheading" key={block.id}>{block.text}</h3>
+    if (block.type === 'heading') return <h3 className="reading-subheading" key={block.id}>{semanticText(block.text)}</h3>
     if (block.type === 'marker') {
       return (
         <div
@@ -482,7 +488,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
     if (block.type === 'formula') {
       return (
         <div className="reading-block-with-choice" key={block.id}>
-          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} equationNumber={w048Contract?.equationNumbers[block.id]} />
+          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} semanticDisplay={Boolean(semanticUnitId)} equationNumber={w048Contract?.equationNumbers[block.id]} />
           {renderInlineChoicePanel(block)}
         </div>
       )
@@ -490,7 +496,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
 
     const content = block.parts.map((part, index) => (
       <span key={`${block.id}-part-${index}`}>
-        {part.type === 'math' && typesettingEnabled(unit.unitId) ? <TypesetInlineMath latex={part.latex} sourceId={'inline-' + block.id + '-' + index} unitId={unit.unitId} /> : renderPart(part, section, currentProgress, setActiveItemId, text)}
+        {part.type === 'math' && typesettingEnabled(unit.unitId) ? <TypesetInlineMath latex={part.latex} sourceId={'inline-' + block.id + '-' + index} unitId={unit.unitId} /> : renderPart(part, section, currentProgress, setActiveItemId, text, semanticUnitId)}
       </span>
     ))
 
@@ -597,7 +603,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
   })
 
   return (
-    <article ref={readingFlowRef} className={"textbook-reading-flow" + (w048Contract ? " w048-reading-flow" : "")} data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
+    <article ref={readingFlowRef} className={"textbook-reading-flow" + (w048Contract ? " w048-reading-flow" : "")} data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} data-n0106-display={Boolean(semanticUnitId) || undefined} tabIndex={-1}>
       {w048Contract && <style>{w048ScopedStyle}</style>}
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
@@ -663,7 +669,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                     <div className="math-textbook-stage-summary">
                       <span className="math-textbook-stage-summary__name">
                         <Check size={16} aria-hidden="true" />
-                        {resultIds.length ? stage.label[language] : stage.completedLabel ?? stage.label[language]}
+                        {semanticText(resultIds.length ? stage.label[language] : stage.completedLabel ?? stage.label[language])}
                       </span>
                       <button
                         type="button"
@@ -694,7 +700,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                 ) : (
                   <>
                     <header className="math-textbook-stage-active-title">
-                      <strong>{stage.label[language]}</strong>
+                      <strong>{semanticText(stage.label[language])}</strong>
                       <small>{index + 1} / {compactStages.length}</small>
                     </header>
                     {neededContextIds.length > 0 && (

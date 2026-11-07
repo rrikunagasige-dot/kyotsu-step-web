@@ -1,8 +1,8 @@
-/* Exact registry only. Specificity exceeds global first-theme card/prose rules. */
+/* 正確な登録対象のみ。全体CSSより強い詳細度で局所指定する。 */
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile].math-textbook-stage.math-textbook-stage--current[data-testid] { padding:0; border:0; border-radius:0; box-shadow:none; background:transparent; gap:12px; }
-[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile].math-textbook-stage > .math-textbook-stage-active-title { padding-inline:0; margin-inline:0; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile].math-textbook-stage > .math-textbook-stage-active-title { padding-inline:12px; margin-inline:0; }
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] > [data-reading-layout-body] { min-width:0; font-size:18px; line-height:1.8; }
-[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] .reading-derivation-chain { display:flex; flex-direction:column; gap:0; margin:0; padding:0; border:0; background:transparent; font-size:18px; line-height:1.8; }
+[data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] .reading-derivation-chain { display:flex; flex-direction:column; gap:0; margin:0; padding:12px; border:1px solid var(--color-line); border-left:3px solid var(--color-primary); background:#fcfbf7; font-size:18px; line-height:1.8; }
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] { min-width:0; margin:0; }
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] > * + [data-reading-layout-start-spacing],
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-chain] > [data-reading-layout-block] + [data-reading-layout-block] { margin-top:12px; }
@@ -21,3 +21,43 @@
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] > .reading-subheading,
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] > .reading-role-marker { margin:0; }
 [data-reading-layout-scope="w050-compact-reading-v1"][data-reading-layout-profile] [data-reading-layout-body] [data-reading-layout-block] .reading-figure { margin-block:0; }
+
+/* P-W051-002候補。PageのunitIdとrevisionの厳密opt-inを根拠に、同じ教材内の結果・参照・履歴の主本文へ届かせる。 */
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-paragraph,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-inline-choice-panel__head > span,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-choice-hint > span { font-size:18px; line-height:1.8; }
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-paragraph .katex,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-inline-choice-panel__head > span .katex,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-choice-hint > span .katex { font-size:1em; }
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-choice-option > strong { font-size:18px; line-height:1.8; }
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage button.reading-formula-choice,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage button.reading-inline-blank,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage button.reading-choice-option { min-width:44px; min-height:44px; }
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-role-marker--example,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-role-marker--proof,
+article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage .reading-role-marker--check { display:table; width:fit-content; font-size:.8rem; font-weight:400; line-height:1.4; padding:.15rem .45rem; border:1px solid #b7c4cc; border-radius:.15rem; white-space:nowrap; }
+
+/* 原文の文字/数式表示を意味で分ける補助component。欄の文字寸法は継承し、長い数式は局所スクロールに留める。 */
+article.textbook-reading-flow[data-n0106-display] .n0106-semantic-text { overflow-wrap:anywhere; }
+article.textbook-reading-flow[data-n0106-display] .n0106-semantic-math { display:inline-block; max-width:100%; overflow-x:auto; vertical-align:middle; }
+article.textbook-reading-flow[data-n0106-display] .n0106-semantic-math .katex { font-size:1em; line-height:1.2; }
+
+/* 全子孫spanを縮小する既存の問い指定を戻す。:whereでrootの詳細度を0にし、KaTeXの複数classによるscript縮尺を優先する。 */
+:where(article.textbook-reading-flow[data-n0106-display] > .math-textbook-compact-flow > section.math-textbook-stage) .reading-inline-choice-panel__head > span span { font-size:inherit; line-height:inherit; }
+
+/* 短い元数式は括弧の途中で改行させず、一つのまとまりとして送る。 */
+article.textbook-reading-flow[data-n0106-display] .typeset-inline-math:not(.typeset-inline-math--display) {
+  display:inline-block;
+  max-width:100%;
+  vertical-align:baseline;
+}
+/* N04と同じ句点予約。N01導入は実displayの自然幅に合わせる。 */
+article.textbook-reading-flow[data-n0106-display] [data-reading-layout-profile="n01:r7:heading-factors"] [data-reading-layout-block="paragraph-intro"] .typeset-inline-math--display {
+  display:inline-block;
+  width:min(calc(var(--typeset-inline-natural-width, 100%) + 2px), calc(100% - 1em));
+  vertical-align:baseline;
+}
+/* 読み専用の確定結果にある透明な数式boxが、履歴buttonを覆わないようにする。 */
+article.textbook-reading-flow[data-n0106-display] .first-theme-recorded-results .katex-html {
+  pointer-events:none;
+}

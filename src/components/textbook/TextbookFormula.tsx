@@ -1,3 +1,4 @@
+import { N0106SemanticText, n0106SemanticLatex } from './N0106SemanticText'
 import { isFirstThemeUnit, firstThemeUsesAlignedFormula, firstThemeFormulaLayout, firstThemeEquationNumber } from '../../data/textbook/math/presentation'
 import { NumberedEquation } from './NumberedEquation'
 import { TypesetFormula } from './TypesetFormula'
@@ -14,6 +15,7 @@ type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
 
 type Props = {
   unitId: string
+  semanticDisplay?: boolean
   equationNumber?: number
   block: FormulaBlock
   section: TextbookSection
@@ -46,7 +48,7 @@ export function TextbookFormula(props: Props) {
   return number === undefined ? body : <NumberedEquation number={number} logical={typesettingEnabled(props.unitId)}>{body}</NumberedEquation>
 }
 
-function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Props) {
+function TextbookFormulaContent({ block, section, progress, onOpen, unitId, semanticDisplay = false }: Props) {
   const n12Formula = unitId === 'math-numbers-expressions-n12'
   const renderedParts = block.parts.map((part, index) => {
     const key = `${block.id}-part-${index}`
@@ -71,7 +73,7 @@ function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Pr
     }
 
     if (part.type === 'text') {
-      return <span className="reading-formula-text" key={key}>{part.text}</span>
+      return <span className="reading-formula-text" key={key}><N0106SemanticText unitId={semanticDisplay ? unitId : undefined} value={part.text} /></span>
     }
 
     if (part.type === 'term') {
@@ -106,7 +108,7 @@ function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Pr
                   </span>
                 : <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(lines[0])} />
             })()
-            : value}
+            : <N0106SemanticText unitId={semanticDisplay ? unitId : undefined} value={value} />}
         </span>
       )
     }
@@ -130,12 +132,12 @@ function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Pr
     const itemIds = Object.fromEntries(block.parts.flatMap((part, index) => part.type === 'choice' ? [[index, part.itemId]] : []))
     const source = block.parts.map((part, index) => {
       if (part.type === 'math') return part.latex
-      if (part.type === 'text' || part.type === 'term') return '\\text{' + part.text + '}'
+      if (part.type === 'text' || part.type === 'term') return (part.type === 'text' ? n0106SemanticLatex(semanticDisplay ? unitId : undefined, part.text) : undefined) ?? ('\\text{' + part.text + '}')
       const item = section.items.find(q => q.id === part.itemId)
       const record = progress?.answers[part.itemId]
       if (!item || !isTextbookItemResolved(item, record)) return '§' + index + '§'
       const value = record?.value ?? item.answer
-      return '§a' + index + '§' + (item.answerType === 'formula' ? normalizeTextbookMath(value) : '\\text{' + value + '}') + '§z' + index + '§'
+      return '§a' + index + '§' + (item.answerType === 'formula' ? normalizeTextbookMath(value) : n0106SemanticLatex(semanticDisplay ? unitId : undefined, value) ?? ('\\text{' + value + '}')) + '§z' + index + '§'
     }).join('')
     return <TypesetFormula source={source} sourceId={block.id} unitId={unitId} parts={renderedParts} itemIds={itemIds} />
   }

@@ -86,10 +86,17 @@ export function TypesetFormula({ source, sourceId, unitId, parts = noParts, item
       alignGroup(node)
     }
     update()
-    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update)
+    let resizeFrame: number | undefined
+    const requestResizeUpdate = () => {
+      if (!alive) return
+      if (!node.closest('article.textbook-reading-flow[data-n0106-display]')) { update(); return }
+      if (resizeFrame !== undefined) return
+      resizeFrame = requestAnimationFrame(() => { resizeFrame = undefined; update() })
+    }
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(requestResizeUpdate)
     observer?.observe(node)
     void document.fonts?.ready.then(update)
-    return () => { alive = false; observer?.disconnect(); dimensions.delete(node) }
+    return () => { alive = false; observer?.disconnect(); if (resizeFrame !== undefined) cancelAnimationFrame(resizeFrame); dimensions.delete(node) }
   }, [source, sourceId, itemIds])
   useLayoutEffect(() => { if (root.current) alignGroup(root.current) }, [layout])
 
@@ -139,13 +146,29 @@ export function TypesetInlineMath({ latex, sourceId, unitId }: { latex: string; 
       probe.className = 'typeset-inline-probe'
       probe.innerHTML = katex.renderToString(normalized, { output: 'html', strict: 'ignore' })
       node.append(probe)
-      const wanted = probe.getBoundingClientRect().width > parent.clientWidth * .62
+      const inlineWidth = probe.getBoundingClientRect().width
+      if (node.closest('article.textbook-reading-flow[data-n0106-display] [data-reading-layout-profile="n01:r7:heading-factors"] [data-reading-layout-block="paragraph-intro"]')) {
+        // 独立行rendererと同じ符号処理で、表示用の自然幅だけを渡す。
+        probe.innerHTML = katex.renderToString(math(normalized), { output: 'html', strict: 'ignore' })
+        const displayWidth = probe.getBoundingClientRect().width + 'px'
+        if (node.style.getPropertyValue('--typeset-inline-natural-width') !== displayWidth) {
+          node.style.setProperty('--typeset-inline-natural-width', displayWidth)
+        }
+      }
+      const wanted = inlineWidth > parent.clientWidth * .62
       probe.remove(); setLong(value => value === wanted ? value : wanted)
     }
     update()
-    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update)
+    let resizeFrame: number | undefined
+    const requestResizeUpdate = () => {
+      if (!alive) return
+      if (!node.closest('article.textbook-reading-flow[data-n0106-display]')) { update(); return }
+      if (resizeFrame !== undefined) return
+      resizeFrame = requestAnimationFrame(() => { resizeFrame = undefined; update() })
+    }
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(requestResizeUpdate)
     observer?.observe(parent); void document.fonts?.ready.then(update)
-    return () => { alive = false; observer?.disconnect() }
+    return () => { alive = false; observer?.disconnect(); if (resizeFrame !== undefined) cancelAnimationFrame(resizeFrame) }
   }, [normalized])
   return <span ref={ref} className={'typeset-inline-math' + (long ? ' typeset-inline-math--display' : '')}>{long ? <TypesetFormula source={normalized} sourceId={sourceId} unitId={unitId} /> : <InlineMath math={normalized} />}</span>
 }

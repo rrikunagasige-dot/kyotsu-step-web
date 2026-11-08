@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main, work/w048-publisher-g3-20261105, work/w050-publisher-g3-20261106, work/w050-rollout-publisher-g3]
-    paths: ['.github/workflows/deploy-pages.yml', 'tools/release/w050-rollout-publish-check.mjs', 'tools/release/w050-rollout-release-contract.json', 'tools/release/w050-figure-readiness-original.py', 'tools/release/w050-rollout-browser.mjs']
+    branches: [main, work/w048-publisher-g3-20261105, work/w050-publisher-g3-20261106, work/w050-rollout-publisher-g3, work/w051-p005-publisher-draft]
+    paths: ['.github/workflows/deploy-pages.yml', 'tools/release/w050-rollout-publish-check.mjs', 'tools/release/w050-rollout-release-contract.json', 'tools/release/w050-figure-readiness-original.py', 'tools/release/w050-rollout-browser.mjs', 'tools/release/w051-p005-*']
   workflow_dispatch:
     inputs:
       dry_run:
@@ -27,15 +27,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      CANDIDATE_SHA: 751b229cb7a99a6a5743b00c5b978c97585b4964
-      VITE_PREVIEW_COMMIT: 751b229cb7a99a6a5743b00c5b978c97585b4964
+      CANDIDATE_SHA: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
+      VITE_PREVIEW_COMMIT: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
-      W050_BUILD_RECEIPT: /tmp/w050-sourceqa-build/REUSE.json
+      W051_SOURCE_QA_DIRECTORY: /tmp/w051-sourceqa-build
+      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
+      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/historical-publisher
+      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
+      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
+      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -55,6 +60,12 @@ jobs:
             tools/release/w050-rollout-release-contract.json
             tools/release/w050-figure-readiness-original.py
             tools/release/w050-rollout-browser.mjs
+            tools/release/w051-p005-publish-check.mjs
+            tools/release/w051-p005-release-contract.json
+            tools/release/w051-p005-native-proof.mjs
+            tools/release/w051-p005-sourceqa.py
+            tools/release/w051-p005-dist.mjs
+            tools/release/w051-p005-hosted.mjs
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - name: Checkout immutable native service U two-file overlay only
@@ -81,6 +92,20 @@ jobs:
           ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
           path: baseline-cb
           persist-credentials: false
+      - name: Checkout original T for unchanged historical guards
+        uses: actions/checkout@v4
+        with:
+          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          path: historical-t
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout original a425 tooling without modification
+        uses: actions/checkout@v4
+        with:
+          ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
+          path: historical-publisher
+          sparse-checkout: tools/release
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
           version: 11.9.0
@@ -93,6 +118,12 @@ jobs:
         with:
           python-version: '3.11'
       - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Connect unchanged historical dependency resolution
+        run: |
+          test ! -e historical-t/node_modules
+          test ! -e baseline-cb/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" historical-t/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" baseline-cb/node_modules
       # W046 records the fixed candidate R07/G2 and scoped product checks; publication verifies bytes and operations again.
       - name: Existing Word source adapter dependency
         run: |
@@ -135,25 +166,25 @@ jobs:
             test "$(dpkg-query -W -f='${Status}' "$package")" = 'install ok installed'
           done
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-check
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-048-bytes
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs bytes-only
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs retained-check
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs retained-048-bytes
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs bytes-only
       - name: Verify exact P003 only in external original-T tooling graph
         env:
           EVIDENCE_DIR: /tmp/w050-p003-regression-evidence
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs p003-test
+        run: node publisher/tools/release/w051-p005-publish-check.mjs p003-test
       - name: Verify exact P004 service V closure and twenty temp-only lock tests
         env:
           EVIDENCE_DIR: /tmp/w050-p004-regression-evidence
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs p004-test
+        run: node publisher/tools/release/w051-p005-publish-check.mjs p004-test
       - name: Retrieve immutable source-QA build and verify all four original slices
         env:
           GITHUB_TOKEN: ${{ github.token }}
           EVIDENCE_DIR: /tmp/w050-sourceqa-build
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retrieve-build
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retrieve-build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
-      - name: Append all five manifests without rebuilding the immutable app
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs manifest
+      - name: Append six manifests without rebuilding the immutable app
+        run: node publisher/tools/release/w051-p005-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
@@ -164,20 +195,8 @@ jobs:
           const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ConstructionPresentationR7.json'));
           if(m.sourceSHA!==process.env.CANDIDATE_SHA||m.work!=='W-MATH-041'||m.activeN08Revision!==7||m.construction.requiredParents!==30||m.construction.independentParts!==42||m.construction.planHash!==p.planHash||m.construction.layoutDesignHash!==p.layoutDesignHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08.revision!==4||m.originalN08.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
           NODE
-      - name: Prepare original N11 figure decoding for prepublication verification
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
-          old='im=>im.complete&&im.naturalWidth>0'
-          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
-          s=p.read_text()
-          if old in s:
-              assert s.count(old)==1
-              p.write_text(s.replace(old,new))
-          else:
-              assert new in s
-          PY
+      - name: Prepare exact external retained adapters including original N11 decode guard
+        run: node publisher/tools/release/w051-p005-publish-check.mjs prepare-adapters
       - name: Verify candidate bytes and N09/N10 operations before publication
         shell: bash
         run: |
@@ -185,13 +204,13 @@ jobs:
           pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort > /tmp/w046-preview.log 2>&1 &
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-046
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-046
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n08 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-047
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-048
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w050-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs verify-focused
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-047
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-048
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w050-prepublish node publisher/tools/release/w051-p005-publish-check.mjs verify-focused
       - uses: actions/upload-pages-artifact@v3
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         with:
@@ -205,7 +224,7 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w046-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-046
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retained-046
       - name: Verify public source and N08 operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
@@ -254,19 +273,19 @@ jobs:
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
-        run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w050-rollout-publish-check.mjs retained-047
+        run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w051-p005-publish-check.mjs retained-047
       - name: Verify published W048 exact bytes and N13/N14 operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w048-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-048
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retained-048
       - name: Verify published final bytes and retained N04 focused operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w050-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs verify-focused
+        run: node publisher/tools/release/w051-p005-publish-check.mjs verify-focused
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -294,9 +313,9 @@ jobs:
             /tmp/w048-hosted
             /tmp/w050-prepublish
             /tmp/w050-hosted
-            /tmp/w050-sourceqa-build/REUSE.json
-            /tmp/w050-sourceqa-build/SOURCE_QA_RUN.json
-            /tmp/w050-sourceqa-build/*-METADATA.json
+            /tmp/w051-sourceqa-build/REUSE.json
+            /tmp/w051-sourceqa-build/RUN_API.json
+            /tmp/w051-sourceqa-build/*_API.json
             /tmp/w050-rollout-publisher-adapters/**/PROVENANCE.json
             /tmp/w050-rollout-retained-cb/**/RETAINED_CB_SOURCE_RESULT.json
             /tmp/w050-rollout-retained-cb/**/ORIGINAL_W050_CB_BYTES.log
@@ -315,15 +334,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 751b229cb7a99a6a5743b00c5b978c97585b4964
-      VITE_PREVIEW_COMMIT: 751b229cb7a99a6a5743b00c5b978c97585b4964
+      CANDIDATE_SHA: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
+      VITE_PREVIEW_COMMIT: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
-      W050_BUILD_RECEIPT: /tmp/w050-sourceqa-build/REUSE.json
+      W051_SOURCE_QA_DIRECTORY: /tmp/w051-sourceqa-build
+      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
+      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/historical-publisher
+      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
+      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
+      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout publisher checks from reviewed publisher revision
@@ -343,6 +367,12 @@ jobs:
             tools/release/w050-rollout-release-contract.json
             tools/release/w050-figure-readiness-original.py
             tools/release/w050-rollout-browser.mjs
+            tools/release/w051-p005-publish-check.mjs
+            tools/release/w051-p005-release-contract.json
+            tools/release/w051-p005-native-proof.mjs
+            tools/release/w051-p005-sourceqa.py
+            tools/release/w051-p005-dist.mjs
+            tools/release/w051-p005-hosted.mjs
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - name: Checkout immutable native service U two-file overlay only
@@ -369,6 +399,20 @@ jobs:
           ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
           path: baseline-cb
           persist-credentials: false
+      - name: Checkout original T for unchanged historical guards
+        uses: actions/checkout@v4
+        with:
+          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          path: historical-t
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout original a425 tooling without modification
+        uses: actions/checkout@v4
+        with:
+          ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
+          path: historical-publisher
+          sparse-checkout: tools/release
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
           version: 11.9.0
@@ -381,6 +425,12 @@ jobs:
         with:
           python-version: '3.11'
       - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Connect unchanged historical dependency resolution
+        run: |
+          test ! -e historical-t/node_modules
+          test ! -e baseline-cb/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" historical-t/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" baseline-cb/node_modules
       # W046 records the fixed candidate R07/G2 and scoped product checks; publication verifies bytes and operations again.
       - name: Existing Word source adapter dependency
         run: |
@@ -423,25 +473,25 @@ jobs:
             test "$(dpkg-query -W -f='${Status}' "$package")" = 'install ok installed'
           done
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-check
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-048-bytes
-      - run: node publisher/tools/release/w050-rollout-publish-check.mjs bytes-only
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs retained-check
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs retained-048-bytes
+      - run: node publisher/tools/release/w051-p005-publish-check.mjs bytes-only
       - name: Verify exact P003 only in external original-T tooling graph
         env:
           EVIDENCE_DIR: /tmp/w050-p003-regression-evidence
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs p003-test
+        run: node publisher/tools/release/w051-p005-publish-check.mjs p003-test
       - name: Verify exact P004 service V closure and twenty temp-only lock tests
         env:
           EVIDENCE_DIR: /tmp/w050-p004-regression-evidence
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs p004-test
+        run: node publisher/tools/release/w051-p005-publish-check.mjs p004-test
       - name: Retrieve immutable source-QA build and verify all four original slices
         env:
           GITHUB_TOKEN: ${{ github.token }}
           EVIDENCE_DIR: /tmp/w050-sourceqa-build
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retrieve-build
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retrieve-build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
-      - name: Append all five manifests without rebuilding the immutable app
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs manifest
+      - name: Append six manifests without rebuilding the immutable app
+        run: node publisher/tools/release/w051-p005-publish-check.mjs manifest
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
@@ -452,20 +502,8 @@ jobs:
           const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ConstructionPresentationR7.json'));
           if(m.sourceSHA!==process.env.CANDIDATE_SHA||m.work!=='W-MATH-041'||m.activeN08Revision!==7||m.construction.requiredParents!==30||m.construction.independentParts!==42||m.construction.planHash!==p.planHash||m.construction.layoutDesignHash!==p.layoutDesignHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08.revision!==4||m.originalN08.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
           NODE
-      - name: Prepare original N11 figure decoding for prepublication verification
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
-          old='im=>im.complete&&im.naturalWidth>0'
-          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
-          s=p.read_text()
-          if old in s:
-              assert s.count(old)==1
-              p.write_text(s.replace(old,new))
-          else:
-              assert new in s
-          PY
+      - name: Prepare exact external retained adapters including original N11 decode guard
+        run: node publisher/tools/release/w051-p005-publish-check.mjs prepare-adapters
       - name: Verify candidate bytes and N09/N10 operations before publication
         shell: bash
         run: |
@@ -473,13 +511,13 @@ jobs:
           pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort > /tmp/w046-preview.log 2>&1 &
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-046
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-046
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-n08 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
           APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w046-prepublish-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-047
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs retained-048
-          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w050-prepublish node publisher/tools/release/w050-rollout-publish-check.mjs verify-focused
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w047-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-047
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w048-prepublish node publisher/tools/release/w051-p005-publish-check.mjs retained-048
+          APP_URL=http://127.0.0.1:4179/kyotsu-step-web/ EVIDENCE_DIR=/tmp/w050-prepublish node publisher/tools/release/w051-p005-publish-check.mjs verify-focused
       - uses: actions/upload-pages-artifact@v3
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         with:
@@ -493,7 +531,7 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w046-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-046
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retained-046
       - name: Verify public source and N08 operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
@@ -542,19 +580,19 @@ jobs:
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
-        run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w050-rollout-publish-check.mjs retained-047
+        run: EVIDENCE_DIR=/tmp/w047-hosted node publisher/tools/release/w051-p005-publish-check.mjs retained-047
       - name: Verify published W048 exact bytes and N13/N14 operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w048-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retained-048
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retained-048
       - name: Verify published final bytes and retained N04 focused operations
         if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false) }}
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/w050-hosted
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs verify-focused
+        run: node publisher/tools/release/w051-p005-publish-check.mjs verify-focused
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -582,9 +620,9 @@ jobs:
             /tmp/w048-hosted
             /tmp/w050-prepublish
             /tmp/w050-hosted
-            /tmp/w050-sourceqa-build/REUSE.json
-            /tmp/w050-sourceqa-build/SOURCE_QA_RUN.json
-            /tmp/w050-sourceqa-build/*-METADATA.json
+            /tmp/w051-sourceqa-build/REUSE.json
+            /tmp/w051-sourceqa-build/RUN_API.json
+            /tmp/w051-sourceqa-build/*_API.json
             /tmp/w050-rollout-publisher-adapters/**/PROVENANCE.json
             /tmp/w050-rollout-retained-cb/**/RETAINED_CB_SOURCE_RESULT.json
             /tmp/w050-rollout-retained-cb/**/ORIGINAL_W050_CB_BYTES.log
@@ -607,20 +645,25 @@ jobs:
       matrix:
         width: [320, 390, 430, 1440]
     env:
-      CANDIDATE_SHA: 751b229cb7a99a6a5743b00c5b978c97585b4964
-      SOURCE_SHA: 751b229cb7a99a6a5743b00c5b978c97585b4964
-      VITE_PREVIEW_COMMIT: 751b229cb7a99a6a5743b00c5b978c97585b4964
+      CANDIDATE_SHA: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
+      SOURCE_SHA: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
+      VITE_PREVIEW_COMMIT: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
-      W050_BUILD_RECEIPT: /tmp/w050-sourceqa-build/REUSE.json
-      W050_REQUIRE_PUBLIC: 'true'
+      W051_SOURCE_QA_DIRECTORY: /tmp/w051-sourceqa-build
+      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
+      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/historical-publisher
+      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
+      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
+      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
+      W051_REQUIRE_PUBLIC: 'true'
       APP_URL: ${{ needs.publish.outputs.page_url }}
-      W050_QA_WIDTHS: ${{ matrix.width }}
+      W051_QA_WIDTHS: ${{ matrix.width }}
     steps:
       - name: Checkout immutable approved material S
         uses: actions/checkout@v4
         with:
-          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
           fetch-depth: 0
           persist-credentials: false
       - name: Checkout actual publisher P code only
@@ -656,6 +699,20 @@ jobs:
           ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
           path: baseline-cb
           persist-credentials: false
+      - name: Checkout original T for unchanged historical guards
+        uses: actions/checkout@v4
+        with:
+          ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
+          path: historical-t
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout original a425 tooling without modification
+        uses: actions/checkout@v4
+        with:
+          ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
+          path: historical-publisher
+          sparse-checkout: tools/release
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
           version: 11.9.0
@@ -668,6 +725,12 @@ jobs:
         with:
           python-version: '3.11'
       - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Connect unchanged historical dependency resolution
+        run: |
+          test ! -e historical-t/node_modules
+          test ! -e baseline-cb/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" historical-t/node_modules
+          ln -s "$GITHUB_WORKSPACE/node_modules" baseline-cb/node_modules
       - name: Prepare original font and Chromium environment
         run: |
           set -euo pipefail
@@ -713,31 +776,30 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           EVIDENCE_DIR: /tmp/w050-sourceqa-build
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs retrieve-build
+        run: node publisher/tools/release/w051-p005-publish-check.mjs retrieve-build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - name: Recreate identical publisher manifests and preserve original app bytes
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs manifest
+        run: node publisher/tools/release/w051-p005-publish-check.mjs manifest
       - name: Verify actual public assets and all six units at this width
         env:
-          EVIDENCE_DIR: /tmp/w050-rollout-hosted-${{ matrix.width }}
-        run: node publisher/tools/release/w050-rollout-publish-check.mjs verify-slice
+          EVIDENCE_DIR: /tmp/w051-p005-hosted-${{ matrix.width }}
+        run: node publisher/tools/release/w051-p005-publish-check.mjs verify-slice
       - name: Preserve actual public reports and state JSON
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: w050-rollout-hosted-reports-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
+          name: w051-p005-hosted-reports-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/W050_HOST_CONTRACT.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/W051_HOST_CONTRACT.json
             /tmp/w050-apt-mirrors-*.before
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/HOST_BYTES.json
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/COHORT_HOSTED_ROUTES.json
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/ROLLOUT_QA_CONTRACT.json
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/rollout-browser/REPORT.json
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/rollout-browser/PROGRESS.ndjson
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/rollout-browser/DIST_FILES.json
-            /tmp/w050-rollout-hosted-${{ matrix.width }}/rollout-browser/states
-            /tmp/w050-sourceqa-build/REUSE.json
-            /tmp/w050-sourceqa-build/SOURCE_QA_RUN.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/HOST_BYTES.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/COHORT_HOSTED_ROUTES.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/browser/REPORT.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/browser/PROGRESS.ndjson
+            /tmp/w051-p005-hosted-${{ matrix.width }}/browser/DIST_FILES.json
+            /tmp/w051-p005-hosted-${{ matrix.width }}/browser/states
+            /tmp/w051-sourceqa-build/REUSE.json
+            /tmp/w051-sourceqa-build/RUN_API.json
             /tmp/w050-rollout-publisher-adapters/**/PROVENANCE.json
           compression-level: 9
           if-no-files-found: warn
@@ -745,7 +807,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: w050-rollout-hosted-images-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: /tmp/w050-rollout-hosted-${{ matrix.width }}/rollout-browser/images
+          name: w051-p005-hosted-images-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/w051-p005-hosted-${{ matrix.width }}/browser/images
           compression-level: 6
           if-no-files-found: warn

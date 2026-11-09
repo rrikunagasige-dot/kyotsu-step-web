@@ -33,7 +33,7 @@
       "number": "01",
       "title": "本文",
       "role": "concept",
-      "description": "原問1・2を9段階25判断で学ぶ。",
+      "description": "数や式を代入し、入力と出力の関係を調べる。",
       "figures": [],
       "readingFlow": [
         {
@@ -1990,7 +1990,7 @@
             "−3"
           ],
           "purpose": "concept-formation",
-          "scaffoldLevel": "strong",
+          "scaffoldLevel": "light",
           "hints": []
         },
         {

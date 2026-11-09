@@ -1,0 +1,2268 @@
+{
+  "schemaVersion": "1.1",
+  "unitId": "math-quadratic-qf01",
+  "revision": 1,
+  "status": "review",
+  "subject": "math-1a",
+  "chapter": {
+    "chapterId": "math-ch02-functions",
+    "chapterNumber": "2",
+    "chapterTitle": "2次関数",
+    "unitCode": "2QF01",
+    "orderInChapter": 2,
+    "sourcePages": [
+      53,
+      54
+    ]
+  },
+  "title": "関数の見方",
+  "subtitle": "規則に数や式を入れ、入力と出力の範囲を調べる。",
+  "source": {
+    "type": "reference",
+    "label": "ユーザー指定 教科書ガイド 第2章・問1/問2",
+    "rightsNote": "印刷p53–54前半（PDF55–56）。原記述と作者補足を区別。値域の逆対応による十分性は作者補足。"
+  },
+  "objectives": [
+    "入力に対応する関数の値を、式全体の代入で求める",
+    "長方形の条件を関数式と定義域へ結ぶ",
+    "出力の範囲とその全ての値が実現する根拠を確認する"
+  ],
+  "sections": [
+    {
+      "id": "lesson",
+      "number": "01",
+      "title": "本文",
+      "role": "concept",
+      "description": "原問1・2を9段階25判断で学ぶ。",
+      "figures": [],
+      "readingFlow": [
+        {
+          "id": "qf01-n01-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n01-prompt-t0",
+              "text": "数を",
+              "type": "text"
+            },
+            {
+              "latex": "4",
+              "semanticId": "qf01-n01-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n01-prompt-t2",
+              "text": "倍して",
+              "type": "text"
+            },
+            {
+              "latex": "6",
+              "semanticId": "qf01-n01-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n01-prompt-t4",
+              "text": "を引く。",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n01-prompt-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n01-prompt-t6",
+              "text": "を入れるとき、最初に作る積は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n01-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n01-answer",
+              "semanticId": "qf01-n01-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n01-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n01-after-t0",
+              "text": "まず",
+              "type": "text"
+            },
+            {
+              "latex": "4\\times 2=8",
+              "semanticId": "qf01-n01-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n01-after-t2",
+              "text": "となる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n02-interaction-0",
+          "parts": [
+            {
+              "latex": "8",
+              "semanticId": "qf01-n02-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-prompt-t1",
+              "text": "から",
+              "type": "text"
+            },
+            {
+              "latex": "6",
+              "semanticId": "qf01-n02-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-prompt-t3",
+              "text": "を引くと、出てくる数は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n02-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n02-answer",
+              "semanticId": "qf01-n02-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n02-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n02-after-t0",
+              "text": "入力",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n02-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t2",
+              "text": "に対して出力",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n02-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t4",
+              "text": "が一つ決まった。入力",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n02-after-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t6",
+              "text": "を一つ決めると出力",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n02-after-m7",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t8",
+              "text": "がただ一つ決まるとき、",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n02-after-m9",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t10",
+              "text": "は",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n02-after-m11",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t12",
+              "text": "の関数という。この規則を",
+              "type": "text"
+            },
+            {
+              "latex": "f",
+              "semanticId": "qf01-n02-after-m13",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t14",
+              "text": "と名付け、",
+              "type": "text"
+            },
+            {
+              "latex": "y=f(x)",
+              "semanticId": "qf01-n02-after-m15",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t16",
+              "text": "、ここでは",
+              "type": "text"
+            },
+            {
+              "latex": "f(x)=4x-6",
+              "semanticId": "qf01-n02-after-m17",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t18",
+              "text": "と書く。",
+              "type": "text"
+            },
+            {
+              "latex": "f(2)=2",
+              "semanticId": "qf01-n02-after-m19",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t20",
+              "text": "は、",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n02-after-m21",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t22",
+              "text": "に",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n02-after-m23",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t24",
+              "text": "を入れたときの値が",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n02-after-m25",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t26",
+              "text": "という意味で、",
+              "type": "text"
+            },
+            {
+              "latex": "f",
+              "semanticId": "qf01-n02-after-m27",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t28",
+              "text": "と",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n02-after-m29",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n02-after-t30",
+              "text": "の積ではない。 ここでは入力と出力が偶然等しいが、いつも等しいわけではない。次は別の入力で確かめる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n03-interaction-0",
+          "parts": [
+            {
+              "latex": "f(x)=4x-6",
+              "semanticId": "qf01-n03-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n03-prompt-t1",
+              "text": "で、",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n03-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n03-prompt-t3",
+              "text": "全体を",
+              "type": "text"
+            },
+            {
+              "latex": "-1",
+              "semanticId": "qf01-n03-prompt-m4",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n03-prompt-t5",
+              "text": "に置き換えた式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n03-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n03-answer",
+              "semanticId": "qf01-n03-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n03-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n03-after-t0",
+              "text": "負の数を入れるときは、入れた数を括弧で囲むと見失いにくい。まず",
+              "type": "text"
+            },
+            {
+              "latex": "4\\times (-1)=-4",
+              "semanticId": "qf01-n03-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n03-after-t2",
+              "text": "となる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n04-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n04-prompt-t0",
+              "text": "続けて",
+              "type": "text"
+            },
+            {
+              "latex": "-4-6",
+              "semanticId": "qf01-n04-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n04-prompt-t2",
+              "text": "を計算すると？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n04-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n04-answer",
+              "semanticId": "qf01-n04-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n04-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n04-after-t0",
+              "text": "したがって",
+              "type": "text"
+            },
+            {
+              "latex": "f(-1)=-10",
+              "semanticId": "qf01-n04-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n04-after-t2",
+              "text": "。入力",
+              "type": "text"
+            },
+            {
+              "latex": "-1",
+              "semanticId": "qf01-n04-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n04-after-t4",
+              "text": "と、そのときの出力",
+              "type": "text"
+            },
+            {
+              "latex": "-10",
+              "semanticId": "qf01-n04-after-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n04-after-t6",
+              "text": "を区別する。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n05-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n05-prompt-t0",
+              "text": "今度は数の代わりに",
+              "type": "text"
+            },
+            {
+              "latex": "a-1",
+              "semanticId": "qf01-n05-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n05-prompt-t2",
+              "text": "を入れる。置換した式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n05-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n05-answer",
+              "semanticId": "qf01-n05-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n05-completed",
+          "parts": [
+            {
+              "latex": "a-1",
+              "semanticId": "qf01-n05-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n05-after-t1",
+              "text": "全体が",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n05-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n05-after-t3",
+              "text": "の位置に入った。次は括弧を外す。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n06-interaction-0",
+          "parts": [
+            {
+              "latex": "4(a-1)",
+              "semanticId": "qf01-n06-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n06-prompt-t1",
+              "text": "の",
+              "type": "text"
+            },
+            {
+              "latex": "-1",
+              "semanticId": "qf01-n06-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n06-prompt-t3",
+              "text": "にも",
+              "type": "text"
+            },
+            {
+              "latex": "4",
+              "semanticId": "qf01-n06-prompt-m4",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n06-prompt-t5",
+              "text": "を掛けると？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n06-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n06-answer",
+              "semanticId": "qf01-n06-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n06-completed",
+          "parts": [
+            {
+              "latex": "f(a-1)=4a-4-6",
+              "semanticId": "qf01-n06-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n06-after-t1",
+              "text": "となる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n07-interaction-0",
+          "parts": [
+            {
+              "latex": "f(a-1)=4a-4-6",
+              "semanticId": "qf01-n07-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n07-prompt-t1",
+              "text": "で、定数の部分をまとめた式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n07-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n07-answer",
+              "semanticId": "qf01-n07-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n07-completed",
+          "parts": [
+            {
+              "latex": "f(a-1)=4a-10",
+              "semanticId": "qf01-n07-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n07-after-t1",
+              "text": "。文字の入力でも、一つの式全体を代入する考え方は変わらない。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n08-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n08-prompt-t0",
+              "text": "ここから規則を",
+              "type": "text"
+            },
+            {
+              "latex": "f(x)=x^2-1",
+              "semanticId": "qf01-n08-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n08-prompt-t2",
+              "text": "に替える。",
+              "type": "text"
+            },
+            {
+              "latex": "-1",
+              "semanticId": "qf01-n08-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n08-prompt-t4",
+              "text": "を入れたとき、平方する対象を正しく表す式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n08-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n08-answer",
+              "semanticId": "qf01-n08-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n08-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n08-after-t0",
+              "text": "まず",
+              "type": "text"
+            },
+            {
+              "latex": "(-1)^2=(-1)\\times (-1)=1",
+              "semanticId": "qf01-n08-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n08-after-t2",
+              "text": "。規則が変わったため、前の",
+              "type": "text"
+            },
+            {
+              "latex": "f(x)=4x-6",
+              "semanticId": "qf01-n08-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n08-after-t4",
+              "text": "をこの段階では使わない。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n09-interaction-0",
+          "parts": [
+            {
+              "latex": "1-1",
+              "semanticId": "qf01-n09-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n09-prompt-t1",
+              "text": "を計算した関数値は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n09-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n09-answer",
+              "semanticId": "qf01-n09-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n09-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n09-after-t0",
+              "text": "新しい規則では",
+              "type": "text"
+            },
+            {
+              "latex": "f(-1)=0",
+              "semanticId": "qf01-n09-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n09-after-t2",
+              "text": "となる。同じ入力でも、規則が違えば出力は変わる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n10-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n10-prompt-t0",
+              "text": "同じ規則",
+              "type": "text"
+            },
+            {
+              "latex": "f(x)=x^2-1",
+              "semanticId": "qf01-n10-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n10-prompt-t2",
+              "text": "に",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n10-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n10-prompt-t4",
+              "text": "を入れる。",
+              "type": "text"
+            },
+            {
+              "latex": "2^2-1",
+              "semanticId": "qf01-n10-prompt-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n10-prompt-t6",
+              "text": "の値は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n10-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n10-answer",
+              "semanticId": "qf01-n10-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n10-completed",
+          "parts": [
+            {
+              "latex": "f(2)=4-1=3",
+              "semanticId": "qf01-n10-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n10-after-t1",
+              "text": "。入力を置き換え、二乗してから",
+              "type": "text"
+            },
+            {
+              "latex": "1",
+              "semanticId": "qf01-n10-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n10-after-t3",
+              "text": "を引くことで求められる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n11-interaction-0",
+          "parts": [
+            {
+              "latex": "a-1",
+              "semanticId": "qf01-n11-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n11-prompt-t1",
+              "text": "全体を入力した式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n11-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n11-answer",
+              "semanticId": "qf01-n11-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n11-completed",
+          "parts": [
+            {
+              "latex": "f(a-1)=(a-1)^2-1",
+              "semanticId": "qf01-n11-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n11-after-t1",
+              "text": "。平方の展開では、中間の項も必要になる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12a-interaction-0",
+          "parts": [
+            {
+              "latex": "(a-1)(a-1)",
+              "semanticId": "qf01-n12a-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12a-prompt-t1",
+              "text": "を、最初の括弧の",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n12a-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12a-prompt-t3",
+              "text": "項に分ける。",
+              "type": "text"
+            },
+            {
+              "latex": "a(a-1)",
+              "semanticId": "qf01-n12a-prompt-m4",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12a-prompt-t5",
+              "text": "に続ける項は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12a-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n12a-answer",
+              "semanticId": "qf01-n12a-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12a-completed",
+          "parts": [
+            {
+              "latex": "(a-1)(a-1)=a(a-1)-1(a-1)",
+              "semanticId": "qf01-n12a-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12a-after-t1",
+              "text": "。括弧の各項を、後ろの括弧全体に掛ける。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12b-interaction-0",
+          "parts": [
+            {
+              "latex": "a(a-1)",
+              "semanticId": "qf01-n12b-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12b-prompt-t1",
+              "text": "の括弧を外した式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12b-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n12b-answer",
+              "semanticId": "qf01-n12b-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12b-completed",
+          "parts": [
+            {
+              "latex": "a(a-1)=a^2-a",
+              "semanticId": "qf01-n12b-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12b-after-t1",
+              "text": "。次は残った",
+              "type": "text"
+            },
+            {
+              "latex": "-1(a-1)",
+              "semanticId": "qf01-n12b-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12b-after-t3",
+              "text": "を整える。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12c-interaction-0",
+          "parts": [
+            {
+              "latex": "-1(a-1)",
+              "semanticId": "qf01-n12c-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12c-prompt-t1",
+              "text": "の括弧を外した式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12c-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n12c-answer",
+              "semanticId": "qf01-n12c-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12c-completed",
+          "parts": [
+            {
+              "latex": "-1(a-1)=-a+1",
+              "semanticId": "qf01-n12c-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12c-after-t1",
+              "text": "。合わせると",
+              "type": "text"
+            },
+            {
+              "latex": "(a-1)^2=a^2-a-a+1",
+              "semanticId": "qf01-n12c-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12c-after-t3",
+              "text": "となる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12-interaction-0",
+          "parts": [
+            {
+              "latex": "(a-1)^2=a^2+\\square a+1",
+              "semanticId": "qf01-n12-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12-prompt-t1",
+              "text": "。中央の係数は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n12-answer",
+              "semanticId": "qf01-n12-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n12-completed",
+          "parts": [
+            {
+              "latex": "(a-1)^2=a^2-2a+1",
+              "semanticId": "qf01-n12-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12-after-t1",
+              "text": "。次は、元の規則に残っている最後の",
+              "type": "text"
+            },
+            {
+              "latex": "-1",
+              "semanticId": "qf01-n12-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n12-after-t3",
+              "text": "を処理する。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n13-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n13-prompt-t0",
+              "text": "展開した式から最後の",
+              "type": "text"
+            },
+            {
+              "latex": "1",
+              "semanticId": "qf01-n13-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n13-prompt-t2",
+              "text": "を引き、",
+              "type": "text"
+            },
+            {
+              "latex": "+1-1",
+              "semanticId": "qf01-n13-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n13-prompt-t4",
+              "text": "をまとめると？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n13-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n13-answer",
+              "semanticId": "qf01-n13-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n13-completed",
+          "parts": [
+            {
+              "latex": "f(a-1)=a^2-2a",
+              "semanticId": "qf01-n13-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n13-after-t1",
+              "text": "。式全体の代入、展開、定数項の整理を順に行えば、文字の入力でも値を表せる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n14-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n14-prompt-t0",
+              "text": "周が",
+              "type": "text"
+            },
+            {
+              "latex": "40\\mathrm{cm}",
+              "semanticId": "qf01-n14-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-prompt-t2",
+              "text": "の長方形。縦",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n14-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-prompt-t4",
+              "text": " ",
+              "type": "text"
+            },
+            {
+              "latex": "\\mathrm{cm}",
+              "semanticId": "qf01-n14-prompt-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-prompt-t6",
+              "text": "、横",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n14-prompt-m7",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-prompt-t8",
+              "text": " ",
+              "type": "text"
+            },
+            {
+              "latex": "\\mathrm{cm}",
+              "semanticId": "qf01-n14-prompt-m9",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-prompt-t10",
+              "text": "とすると、周の式は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n14-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n14-answer",
+              "semanticId": "qf01-n14-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n14-completed",
+          "parts": [
+            {
+              "latex": "2x+2y=40",
+              "semanticId": "qf01-n14-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-after-t1",
+              "text": "、すなわち",
+              "type": "text"
+            },
+            {
+              "latex": "2(x+y)=40",
+              "semanticId": "qf01-n14-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n14-after-t3",
+              "text": "となる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n15-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n15-prompt-t0",
+              "text": "両辺を",
+              "type": "text"
+            },
+            {
+              "latex": "2",
+              "semanticId": "qf01-n15-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n15-prompt-t2",
+              "text": "で割ると？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n15-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n15-answer",
+              "semanticId": "qf01-n15-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n15-completed",
+          "parts": [
+            {
+              "latex": "x+y=20",
+              "semanticId": "qf01-n15-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n15-after-t1",
+              "text": "。縦",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n15-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n15-after-t3",
+              "text": "を決めたとき横",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n15-after-m4",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n15-after-t5",
+              "text": "がどう決まるかを調べるため、",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n15-after-m6",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n15-after-t7",
+              "text": "だけを左辺に残す。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n16-interaction-0",
+          "parts": [
+            {
+              "latex": "x+y=20",
+              "semanticId": "qf01-n16-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n16-prompt-t1",
+              "text": "を",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n16-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n16-prompt-t3",
+              "text": "について解くと？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n16-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n16-answer",
+              "semanticId": "qf01-n16-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n16-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n16-after-t0",
+              "text": "横の長さは",
+              "type": "text"
+            },
+            {
+              "latex": "y=20-x",
+              "semanticId": "qf01-n16-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n16-after-t2",
+              "text": "と決まる。式ができても、辺の長さとして使える",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n16-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n16-after-t4",
+              "text": "はまだ限定される。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n17-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n17-prompt-t0",
+              "text": "長方形を作るため、縦",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n17-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n17-prompt-t2",
+              "text": "と横",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n17-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n17-prompt-t4",
+              "text": "の両方に必要な条件をまとめたものは？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n17-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n17-answer",
+              "semanticId": "qf01-n17-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n17-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n17-after-t0",
+              "text": "両方の長さが正でなければならない。",
+              "type": "text"
+            },
+            {
+              "latex": "y=20-x",
+              "semanticId": "qf01-n17-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n17-after-t2",
+              "text": "にもこの条件を使う。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n18-interaction-0",
+          "parts": [
+            {
+              "latex": "20-x>0",
+              "semanticId": "qf01-n18-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n18-prompt-t1",
+              "text": "を満たす",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n18-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n18-prompt-t3",
+              "text": "の範囲を、過不足なく表すと？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n18-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n18-answer",
+              "semanticId": "qf01-n18-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n18-completed",
+          "parts": [
+            {
+              "latex": "x>0",
+              "semanticId": "qf01-n18-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n18-after-t1",
+              "text": "と",
+              "type": "text"
+            },
+            {
+              "latex": "x<20",
+              "semanticId": "qf01-n18-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n18-after-t3",
+              "text": "の両方が必要になる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n19-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n19-prompt-t0",
+              "text": "縦の長さ",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n19-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n19-prompt-t2",
+              "text": "がとれる範囲をまとめると？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n19-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n19-answer",
+              "semanticId": "qf01-n19-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n19-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n19-after-t0",
+              "text": "このような入力",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n19-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n19-after-t2",
+              "text": "の範囲を定義域という。今回の定義域は",
+              "type": "text"
+            },
+            {
+              "latex": "0<x<20",
+              "semanticId": "qf01-n19-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n19-after-t4",
+              "text": "。定義域は",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n19-after-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n19-after-t6",
+              "text": "の範囲を表す。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n20-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n20-prompt-t0",
+              "text": "次は出力",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n20-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n20-prompt-t2",
+              "text": "の範囲を考える。",
+              "type": "text"
+            },
+            {
+              "latex": "x<20",
+              "semanticId": "qf01-n20-prompt-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n20-prompt-t4",
+              "text": "なら",
+              "type": "text"
+            },
+            {
+              "latex": "20-x",
+              "semanticId": "qf01-n20-prompt-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n20-prompt-t6",
+              "text": "は？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n20-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n20-answer",
+              "semanticId": "qf01-n20-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n20-completed",
+          "parts": [
+            {
+              "latex": "y>0",
+              "semanticId": "qf01-n20-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n20-after-t1",
+              "text": "となる。次は",
+              "type": "text"
+            },
+            {
+              "latex": "x>0",
+              "semanticId": "qf01-n20-after-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n20-after-t3",
+              "text": "の条件から上側の境界を調べる。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n21-interaction-0",
+          "parts": [
+            {
+              "latex": "x>0",
+              "semanticId": "qf01-n21-prompt-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n21-prompt-t1",
+              "text": "なら、",
+              "type": "text"
+            },
+            {
+              "latex": "20-x",
+              "semanticId": "qf01-n21-prompt-m2",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n21-prompt-t3",
+              "text": "は",
+              "type": "text"
+            },
+            {
+              "latex": "20",
+              "semanticId": "qf01-n21-prompt-m4",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n21-prompt-t5",
+              "text": "と比べてどうなる？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n21-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n21-answer",
+              "semanticId": "qf01-n21-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n21-completed",
+          "parts": [
+            {
+              "latex": "y<20",
+              "semanticId": "qf01-n21-after-m0",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n21-after-t1",
+              "text": "となる。前の段階の下側の境界と合わせて、出力の範囲を自分でまとめよう。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n22-interaction-0",
+          "parts": [
+            {
+              "semanticId": "qf01-n22-prompt-t0",
+              "text": "出力",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n22-prompt-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-prompt-t2",
+              "text": "の範囲として正しいものは？",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n22-interaction-1",
+          "parts": [
+            {
+              "itemId": "qf01-n22-answer",
+              "semanticId": "qf01-n22-slot",
+              "type": "choice"
+            }
+          ],
+          "type": "paragraph"
+        },
+        {
+          "id": "qf01-n22-completed",
+          "parts": [
+            {
+              "semanticId": "qf01-n22-after-t0",
+              "text": "出力の範囲は",
+              "type": "text"
+            },
+            {
+              "latex": "0<y<20",
+              "semanticId": "qf01-n22-after-m1",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t2",
+              "text": "。逆に、この間の",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n22-after-m3",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t4",
+              "text": "を一つ選べば",
+              "type": "text"
+            },
+            {
+              "latex": "x=20-y",
+              "semanticId": "qf01-n22-after-m5",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t6",
+              "text": "も",
+              "type": "text"
+            },
+            {
+              "latex": "0<x<20",
+              "semanticId": "qf01-n22-after-m7",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t8",
+              "text": "を満たすので、どの中間の値も実現できる。この出力",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n22-after-m9",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t10",
+              "text": "の範囲を値域という。定義域は入力",
+              "type": "text"
+            },
+            {
+              "latex": "x",
+              "semanticId": "qf01-n22-after-m11",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t12",
+              "text": "、値域は出力",
+              "type": "text"
+            },
+            {
+              "latex": "y",
+              "semanticId": "qf01-n22-after-m13",
+              "type": "math"
+            },
+            {
+              "semanticId": "qf01-n22-after-t14",
+              "text": "の範囲。式と問題の条件を合わせて関数を捉える。",
+              "type": "text"
+            }
+          ],
+          "type": "paragraph"
+        }
+      ],
+      "items": [
+        {
+          "id": "qf01-n01-answer",
+          "label": "1",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "4×2",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "4×2",
+            "4+2",
+            "2−4"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n02-answer",
+          "label": "2",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "2",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "2",
+            "14",
+            "−2"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n03-answer",
+          "label": "3",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "4×(−1)−6",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "4×(−1)−6",
+            "4−1−6",
+            "4×(−1−6)"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n04-answer",
+          "label": "4",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "−10",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "−10",
+            "2",
+            "10"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n05-answer",
+          "label": "5",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "4(a−1)−6",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "4(a−1)−6",
+            "4a−1−6",
+            "4(a−1−6)"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n06-answer",
+          "label": "6",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "4a−4",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "4a−4",
+            "4a−1",
+            "4a+4"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n07-answer",
+          "label": "7",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "4a−10",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "4a−10",
+            "4a+2",
+            "4a−2"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n08-answer",
+          "label": "8",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "(−1)²−1",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "(−1)²−1",
+            "−1²−1",
+            "(−1−1)²"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n09-answer",
+          "label": "9",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "0",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "0",
+            "−2",
+            "1"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n10-answer",
+          "label": "10",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "3",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "3",
+            "1",
+            "−3"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n11-answer",
+          "label": "11",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "(a−1)²−1",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "(a−1)²−1",
+            "a²−1−1",
+            "(a−1)²"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n12a-answer",
+          "label": "12",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "−1(a−1)",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "−1(a−1)",
+            "+(a−1)",
+            "−1(a+1)"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n12b-answer",
+          "label": "13",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "a²−a",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "a²−a",
+            "a²−1",
+            "a²+a"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n12c-answer",
+          "label": "14",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "−a+1",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "−a+1",
+            "−a−1",
+            "a−1"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n12-answer",
+          "label": "15",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "−2",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "−2",
+            "−1",
+            "2"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": [
+            "二つの−aを合わせる。各項は−1×aと読める。"
+          ]
+        },
+        {
+          "id": "qf01-n13-answer",
+          "label": "16",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "a²−2a",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "a²−2a",
+            "a²−2a+2",
+            "a²−1"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n14-answer",
+          "label": "17",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "2x+2y=40",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "2x+2y=40",
+            "xy=40",
+            "x+y=40"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n15-answer",
+          "label": "18",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "x+y=20",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "x+y=20",
+            "x+y=40",
+            "x+y=80"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n16-answer",
+          "label": "19",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "y=20−x",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "y=20−x",
+            "y=x−20",
+            "y=20+x"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n17-answer",
+          "label": "20",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "x>0かつy>0",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "x>0かつy>0",
+            "x≥0かつy≥0",
+            "x>0だけでよい"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n18-answer",
+          "label": "21",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "x<20",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "x<20",
+            "x>20",
+            "x≤20"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n19-answer",
+          "label": "22",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "0<x<20",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "0<x<20",
+            "0≤x≤20",
+            "x<20だけ"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n20-answer",
+          "label": "23",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "0より大きい",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "0より大きい",
+            "0以下",
+            "20より大きい"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n21-answer",
+          "label": "24",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "20より小さい",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "20より小さい",
+            "20に等しい",
+            "20より大きい"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        },
+        {
+          "id": "qf01-n22-answer",
+          "label": "25",
+          "prompt": "この問いに合う答えを選びましょう。",
+          "answer": "0<y<20",
+          "answerType": "text",
+          "acceptedAnswers": [],
+          "choices": [
+            "0<y<20",
+            "0<x<20",
+            "0≤y≤20"
+          ],
+          "purpose": "concept-formation",
+          "scaffoldLevel": "strong",
+          "hints": []
+        }
+      ]
+    }
+  ],
+  "requiredInteractionRefs": [
+    "qf01-n01-answer",
+    "qf01-n02-answer",
+    "qf01-n03-answer",
+    "qf01-n04-answer",
+    "qf01-n05-answer",
+    "qf01-n06-answer",
+    "qf01-n07-answer",
+    "qf01-n08-answer",
+    "qf01-n09-answer",
+    "qf01-n10-answer",
+    "qf01-n11-answer",
+    "qf01-n12a-answer",
+    "qf01-n12b-answer",
+    "qf01-n12c-answer",
+    "qf01-n12-answer",
+    "qf01-n13-answer",
+    "qf01-n14-answer",
+    "qf01-n15-answer",
+    "qf01-n16-answer",
+    "qf01-n17-answer",
+    "qf01-n18-answer",
+    "qf01-n19-answer",
+    "qf01-n20-answer",
+    "qf01-n21-answer",
+    "qf01-n22-answer"
+  ]
+}

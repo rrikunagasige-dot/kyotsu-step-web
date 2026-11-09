@@ -120,7 +120,8 @@ jobs:
               // learner viewport separately; never hide sticky/skip-link UI.
               const learnerViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
               await page.evaluate(async()=>{
-                window.scrollTo(0,0);
+                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                window.scrollTo({left:0,top:0,behavior:'instant'});
                 await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
               });
               const captureViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
@@ -145,7 +146,7 @@ jobs:
                 await page.screenshot({path:out+'/'+png,fullPage:true});
               } finally {
                 await page.evaluate(async previous=>{
-                  window.scrollTo(previous.scrollX,previous.scrollY);
+                  window.scrollTo({left:previous.scrollX,top:previous.scrollY,behavior:'instant'});
                   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
                 },learnerViewport);
               }

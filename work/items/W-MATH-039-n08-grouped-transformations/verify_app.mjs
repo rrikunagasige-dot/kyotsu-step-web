@@ -1,4 +1,38 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from '@playwright/test';import {spawn} from 'node:child_process';
+// Version-bound QA dispatch. This changes the verifier target, never learner data or routes.
+import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export function assertVerifierRoot(sourceRoot = process.cwd()) {
+  const expected = fs.realpathSync(fileURLToPath(new URL('../../../', import.meta.url)));
+  if (fs.realpathSync(sourceRoot) !== expected) throw Error('N08_VERIFIER_ROOT_MISMATCH');
+  return expected;
+}
+
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+export function selectN08Verifier(sourceRoot = process.cwd()) {
+  const read = path => fs.readFileSync(resolve(sourceRoot, path));
+  const pointer = read('src/data/textbook/math/numbers/n08ActiveVersion.json');
+  const revision = JSON.parse(pointer).revision;
+  if (revision === 7) {
+    if (sha256(pointer) !== 'a5d754a9411eb3f7cb366ab37b2aed781b9ee786fc7d18a4a935b483312f7878') throw Error('N08_ACTIVE_POINTER_DRIFT');
+    if (sha256(read('src/data/textbook/math/numbers/n08Revision7.json')) !== 'affee5f8d482cca567e88c94e03b2c6746892131bdfb54354bb6c688e26d112c') throw Error('N08_R7_SOURCE_DRIFT');
+    const driver = 'work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs';
+    if (sha256(read(driver)) !== 'cccad11f53737576476c8454ec58d89e357894de0772f23b4bd8c4fd9bdbe528') throw Error('N08_R7_VERIFIER_DRIFT');
+    if (sha256(read('work/items/W-MATH-041-n08-inline-derivation-alignment/collect_geometry.mjs')) !== 'bb47c5633b563c916af70a0f062316e38d4292afece078781f1df8eb00bd3961') throw Error('N08_R7_GEOMETRY_DRIFT');
+    if (sha256(read('tools/textbook/layout/axis-measurements.mjs')) !== '03301e72a471a7ff3834c5ac5a71306470adcb3e016eee186503500215efd51c') throw Error('N08_R7_CHECKER_DRIFT');
+    return { revision, driver, target: 'actual-current-r7', expected: { parents: 30, decisions: 42, wrongSelections: 70, comparisonRoutes: 5 }, legacyR5Run: false };
+  }
+  if (revision === 5) {
+    if (sha256(pointer) !== 'b05269e287cb1c4d210081745c4099df9dd7bdc35d038dc1ffcd6f7bc0160f07') throw Error('N08_ACTIVE_POINTER_DRIFT');
+    if (sha256(read('src/data/textbook/math/numbers/n08Revision5.json')) !== '2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5') throw Error('N08_R5_SOURCE_DRIFT');
+    return { revision, driver: 'original-r5-driver-retained-below', target: 'actual-active-r5', legacyR5Run: true };
+  }
+  throw Error('UNSUPPORTED_ACTIVE_N08_REVISION:' + revision);
+}
+
+async function verifyOriginalActiveR5() {
 const base='work/items/W-MATH-037-n08-workflow-trial/',data=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision5.json')),old=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Authored.json'));
 const out=process.env.EVIDENCE_DIR??'/tmp/w39-browser';fs.mkdirSync(out,{recursive:true});
 let server;const root=process.env.APP_URL??'http://127.0.0.1:4173/kyotsu-step-web/';
@@ -60,3 +94,12 @@ try{
  }
  assert.deepEqual(errors,[]);fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',sourceSHA:process.env.CANDIDATE_SHA??null,root,results},null,2));console.log(JSON.stringify({status:'PASS',results}));
 }catch(e){fs.writeFileSync(out+'/ERROR.json',JSON.stringify({error:e.message,url:page?.url(),errors},null,2));if(page)await page.screenshot({path:out+'/ERROR.png',fullPage:true});throw e;}finally{await browser.close();if(server)server.kill();}
+
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const target = selectN08Verifier(assertVerifierRoot());
+  console.log(JSON.stringify({ check: 'N08_QA_VERSION_BINDING', sourceSHA: process.env.CANDIDATE_SHA ?? null, ...target }));
+  if (target.legacyR5Run) await verifyOriginalActiveR5();
+  else await import(new URL('../W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs', import.meta.url));
+}

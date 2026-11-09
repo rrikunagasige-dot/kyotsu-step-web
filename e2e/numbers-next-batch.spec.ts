@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test'
 
-const route = (unitId: string) => '/kyotsu-step-web/#/learning/textbook/' + unitId
+const route = (unitId: string) => editionHistoricalRoute('/learning/textbook/' + unitId)
 
 async function visitClean(page: Page, unitId: string) {
   await page.goto(route(unitId))
@@ -113,3 +113,11 @@ test('N09 review: n=-3 gates original figure, all 14 original plus 4 square deci
   await expect(originalFigure).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
+}

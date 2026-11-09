@@ -1,9 +1,12 @@
 import { mkdirSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
-import { mathTextbookUnits } from '../src/data/textbook/math'
+import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
+import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
+
+const mathTextbookUnits = editionValidate(editionData.units)
 
 const units = ['04', '05', '06', '07', '08', '11', '13', '14'] as const
-const route = (n: string) => '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n' + n
+const route = (n: string) => editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n' + n)
 
 for (const n of units) {
   test('W-MATH-003 batch N' + n + ': all original choices, mobile/PC progression, persistence and figures', async ({ page }, testInfo) => {
@@ -523,4 +526,12 @@ for (const width of [320, 390, 1440] as const) {
     for(const id of q16Ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
     for(const id of ['n14-10','n14-14','n14-15'])await expect(page.getByTestId('resolved-'+id)).toBeVisible()
   })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
 }

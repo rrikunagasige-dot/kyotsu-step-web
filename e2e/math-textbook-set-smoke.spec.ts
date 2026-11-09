@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 
-const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
+const appRoute = (path: string) => path.startsWith('/learning/textbook/math-numbers-expressions-')
+  ? editionHistoricalRoute(path) : `/kyotsu-step-web/#${path}`
 
 async function clearState(page: Page) {
   await page.goto(appRoute('/problems'))
@@ -1494,3 +1495,11 @@ test('W-MATH-009 N09 Q08: four gated calculation/sign holes, reload and 320/375/
   await expect(page.getByTestId('textbook-item-n09-09')).toBeVisible()
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
+}

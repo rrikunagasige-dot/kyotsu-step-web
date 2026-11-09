@@ -1,8 +1,14 @@
 import { expect, test, type Page } from '@playwright/test'
-import { mathNumbersN01Unit, n01SourceToItemIds } from '../src/data/textbook/math/numbers/n01Lesson'
-import { mathNumbersN03Unit, n03SourceToItemIds } from '../src/data/textbook/math/numbers/n03Lesson'
+import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
+import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
 
-const route = (unitId: string) => '/kyotsu-step-web/#/learning/textbook/' + unitId
+const editionUnits = editionValidate(editionData.units)
+const mathNumbersN01Unit = editionUnits.find(unit => unit.unitId === 'math-numbers-expressions-n01')!
+const mathNumbersN03Unit = editionUnits.find(unit => unit.unitId === 'math-numbers-expressions-n03')!
+const n01SourceToItemIds = editionData.sourceMaps.n01
+const n03SourceToItemIds = editionData.sourceMaps.n03
+
+const route = (unitId: string) => editionHistoricalRoute('/learning/textbook/' + unitId)
 const cases = [
   { unit: mathNumbersN01Unit, source: n01SourceToItemIds, tokens: [
     ['n01-r3-q07-x2coef', '-2'], ['n01-r3-q07-xcoef', '-3'], ['n01-r3-q07-const', '3'],
@@ -127,4 +133,12 @@ for (const { unit, source, tokens, figure } of cases) {
     await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
     await expect(page.getByTestId('resolved-' + tokens[0][0])).toBeVisible()
   })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
 }

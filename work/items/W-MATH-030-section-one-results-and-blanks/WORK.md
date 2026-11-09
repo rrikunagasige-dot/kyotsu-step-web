@@ -1,3 +1,19 @@
+# Current record reconciliation — W-MATH-030 / WORK.md
+
+Status: BLOCKED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: BLOCKED
+
+Historical record recovery remains blocked: exact current scope/approval/verification mapping is incomplete; no approval, completion, or learner acceptance is inferred.
+
+Evidence: existing fixed-candidate historical text below where present. Missing exact approval/closure provenance remains unresolved; do not substitute filename or informal positive wording.
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: fcf599f40eec17d66e35d04cf1521452a140a6116050ee71208f88cfe4b3b84c
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-030 — 第1節：結果の引継ぎ・推導空欄
 
 Status: PUBLISHED_FOR_USER_REVIEW

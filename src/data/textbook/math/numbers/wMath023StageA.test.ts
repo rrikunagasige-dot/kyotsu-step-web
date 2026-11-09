@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
-import { mathNumbersN13Unit, n13SourceToItemIds } from './n13Lesson'
+import { mathNumbersN13Unit, n13SourceToItemIds } from '../../../../test/n1314Legacy'
 import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
 
 const unit = mathNumbersN13Unit

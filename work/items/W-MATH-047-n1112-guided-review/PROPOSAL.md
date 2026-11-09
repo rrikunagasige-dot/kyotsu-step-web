@@ -1,3 +1,25 @@
+# Current record reconciliation — W-MATH-047 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: DONE
+
+Historical native closure is evidenced for its exact recorded version. This record repair does not reopen the closed Work or accept a later product version.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event w047-p006-user-approval-eb12180f, proposal_hash=e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e (historical, no new quote)
+- Store approval event w047-r1-proposal-approval-8faa9b19, proposal_hash=355793c145947d4355829f1ef307b328398639a90ef5c3c879259a6f7812a31d (historical, no new quote)
+- Store approval event w047-s1-approval-3052d970, proposal_hash=179e750660c62d74dd22627e9afa651788ef3e0fdf64c04ef1a2087e7a435c52 (historical, no new quote)
+- Store work_closed b21ee82c-5cba-4c09-8359-7630cae2e80b seq4545 hash=f16b57b9cbe5a131a23adadf4a610b73145c81e08459e3f8e4af3af1b790be85 source=f129ba78e496f0ccbce917c762357a81b92b0a2c result=2f394091cf591eb3680275860eefe2f09d1e98858164d56e9ef58c807e703c09
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: e32950480aed4ed8b7bcfaa891861003124de4ab721a9508f094d44b9ef3947e
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # P-W047-06 — N11/N12の判断を先に済ませない本文・足場の修正
 
 状態：具体案P-006。未提示P-001〜P-005の履歴と、source-first審査のFAILを保持してRuntime.reviseで更新する。未承認・製品未変更・未公開。

@@ -1,3 +1,20 @@
+# Current record reconciliation — W-MATH-037 / WORK.md
+
+Status: VERIFYING
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Evidence:
+- Store approval event W037-P001-PRESERVE-R4-APPROVED-20261026, proposal_hash=71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: fbbf70e522851f90666cb591cc08a13cdc47bdc588d935b67723a08cf3ee3f16
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-037 — N08新ワークフロー実地試験
 
 Command: CMD-WORK-001 / production/2 / solution_pipeline:solution/1

@@ -1,3 +1,20 @@
+# Current record reconciliation — W-MATH-036 / WORK.md
+
+Status: VERIFYING
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Evidence:
+- Store approval event W036-THREE-UNITS-P001-APPROVED-20261025, proposal_hash=db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: a39e6912126f19f8e97efcd0771ee08bcebf8e6f2b334c6dc6b4b5370470627c
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-036 — NE02・N11・N12の具体設計
 
 Status: VERIFYING / P-001 APPROVED / learner implementation complete; R07/G2/G3_HOST all units passed; WAITING_USER G3_FINAL

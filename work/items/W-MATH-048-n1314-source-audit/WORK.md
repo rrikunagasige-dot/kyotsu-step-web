@@ -1,3 +1,21 @@
+# Current record reconciliation — W-MATH-048 / WORK.md
+
+Status: BLOCKED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: BLOCKED
+
+Historical record recovery remains blocked: exact current scope/approval/verification mapping is incomplete; no approval, completion, or learner acceptance is inferred.
+
+Evidence:
+- Store approval event W048-P003-RECOVERED-APPROVAL-20261104, proposal_hash=eb58536046194f1194a0a3e1c54ef4a430c69b8fabcd3570fd4bb098f37245f9 (historical, no new quote)
+- Store approval event W048-SCROLL-001-APPROVAL-20261104, proposal_hash=a998f7b101fb6248e856837f88177152662d706df5745a4fa9710027cb246302 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 2eff1aaf0e196dcf608dcc7e5db2cb8d429383c29690fd510f09e8e2a3b3c3a9
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # CURRENT — W-MATH-048 / 2026-11-05
 
 教材source: `f752c34e8ac1a875588a8588cf1eb4541bf3af60`。この記録のcommitと教材sourceを区別する。

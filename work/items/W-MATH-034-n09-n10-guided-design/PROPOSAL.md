@@ -1,3 +1,22 @@
+# Current record reconciliation — W-MATH-034 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W034-N09-N10-P001-APPROVED-20261025, proposal_hash=401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # N09・N10 — 導出・穴・記録・表示の具体設計 P-001
 
 Status: PROPOSED

@@ -1,3 +1,22 @@
+# Current record reconciliation — W-MATH-036 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W036-THREE-UNITS-P001-APPROVED-20261025, proposal_hash=db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-036 / P-001 — NE02・N11・N12の誘導・導出・表示設計
 
 Status: PROPOSED。入口は CMD-WORK-001「修正」、既存production/2。対象は既存教材の改善である。設計承認前に教材srcや公開版を変更しない。

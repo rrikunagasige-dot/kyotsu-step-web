@@ -1,3 +1,20 @@
+# Current record reconciliation — W-MATH-038 / WORK.md
+
+Status: VERIFYING
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Evidence:
+- Store approval event W038-P001-APPROVED-20261026, proposal_hash=58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 42db6c605b919c4c60bcb4a74abb9db8a83268ce59333d1aa49e0f1f51d2b2e9
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-038 — 通常式変形の表示・穴設計の基盤改修
 
 Status: PROPOSED / USER_REVIEW。対象：数学・教科書／学習モード。

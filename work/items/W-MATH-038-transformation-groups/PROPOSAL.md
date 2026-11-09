@@ -1,3 +1,22 @@
+# Current record reconciliation — W-MATH-038 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W038-P001-APPROVED-20261026, proposal_hash=58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441 (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # 通常の数式変形を、一続きの解答として教えるための改修提案書
 
 **W-MATH-038 / P-001 — PROPOSED・実装承認待ち**  

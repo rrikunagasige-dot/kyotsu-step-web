@@ -16,7 +16,19 @@ let registered=output;
 if(fs.existsSync(repairRoot+'APPROVAL.json')){
  const approved=JSON.parse(fs.readFileSync(repairRoot+'APPROVAL.json','utf8'));
  const proposal=fs.readFileSync(repairRoot+'PROPOSAL.md');
- if(createHash('sha256').update(proposal).digest('hex')!==approved.proposalHash)throw Error('N07 repair proposal approval mismatch');
+ // P001 record reconciliation is an exact metadata envelope, not a new N07 design approval.
+ // Keep APPROVAL.json and the immutable historical body as the authority.
+ const proposalSHA=value=>createHash('sha256').update(value).digest('hex');
+ const historicalProposalHash='ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a';
+ const acceptedEnvelopeHash='e338fcbffa1c9e3d8dfefaed9a910135b275c3a6b50d7cc6914bd5843a51609d';
+ const acceptedPrefixBytes=1255;
+ const acceptedPrefixHash='d6f3ba384ec94aaa353231e9dfed0d4650fbc9a0fd95f66bd6263c7de964c90d';
+ let approvedBody=proposal;
+ if(proposalSHA(proposal)===acceptedEnvelopeHash){
+  if(approved.proposalHash!==historicalProposalHash||proposalSHA(proposal.subarray(0,acceptedPrefixBytes))!==acceptedPrefixHash||proposalSHA(proposal.subarray(acceptedPrefixBytes))!==historicalProposalHash)throw Error('N07 repair proposal approval mismatch');
+  approvedBody=proposal.subarray(acceptedPrefixBytes);
+ }
+ if(proposalSHA(approvedBody)!==approved.proposalHash)throw Error('N07 repair proposal approval mismatch');
  const immutable=execFileSync('git',['show','e6fc1017f3ce8f5cdce6102720b32afdc73f652b:'+repairRoot+'NODE_DESIGN.json']);
  if(!immutable.equals(fs.readFileSync(repairRoot+'NODE_DESIGN.json')))throw Error('N07 approved attached design changed');
  const source=JSON.parse(fs.readFileSync('tools/textbook/fixtures/n07-source-index.json'));

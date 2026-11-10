@@ -13,7 +13,7 @@ import n11Authored from '../data/textbook/math/numbers/n11Authored.json'
 import { validateTextbookUnits } from '../domain/textbookSchema'
 import previousN09 from '../data/textbook/math/numbers/n09ConstructionCompiledR4.json'
 import previousN10 from '../data/textbook/math/numbers/n10ConstructionCompiledR3.json'
-import { emptyNestedLedger, nestedStorageKey, type NestedLedger } from '../domain/nestedLesson'
+import { emptyNestedLedger, nestedStorageKey, nestedStorageScope, type NestedLedger } from '../domain/nestedLesson'
 import { nestedLessonFromCompiled, type CompiledNestedLesson } from '../domain/compiledNestedLesson'
 
 vi.mock('../components/textbook/GuidedMathReadingFlow', () => ({
@@ -33,7 +33,7 @@ describe('N09/N10旧版の隔離比較', () => {
   it.each([['n09', 3], ['n10', 2]] as const)('preserved %s第%i版を表示し通常新版へ戻る', (code, revision) => {
     show(code)
     expect(screen.getByTestId('archive-reading-flow').getAttribute('data-revision')).toBe(String(revision))
-    expect(screen.getByTestId('archive-reading-flow').getAttribute('data-storage-scope')).toBe('archive-review:kyotsu-step-store')
+    expect(screen.getByTestId('archive-reading-flow').getAttribute('data-storage-scope')).toBe('archive-review:' + nestedStorageScope())
     expect(screen.getByRole('link', { name: '現在の' + code.toUpperCase() + 'へ戻る' }).getAttribute('href')).toBe('/learning/textbook/' + id(code))
     expect(screen.getByTestId('preview-answers').textContent).toBe('{}')
   })

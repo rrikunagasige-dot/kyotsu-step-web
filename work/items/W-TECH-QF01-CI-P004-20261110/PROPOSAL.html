@@ -1,0 +1,1652 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>QF01 P004 追加補修提案</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1100px;margin:40px auto;padding:0 22px;color:#172334}h1{font-size:28px}h2{margin-top:36px}p{white-space:pre-wrap}pre{font:12px/1.5 monospace;overflow:auto;background:#f3f5f8;padding:16px}summary{cursor:pointer;font-weight:600;padding:12px;background:#eef3fa}details{margin:14px 0}table{width:100%;border-collapse:collapse;font-size:12px}td,th{border:1px solid #ccd5e0;padding:8px;text-align:left;overflow-wrap:anywhere}</style><h1>P-QF01-COMMON-CI-20261110-004 — 共通CIの追加補修</h1><p>状態：PROPOSED／未承認・未適用。二次関数QF01の作成命令とP003の承認は保持しています。本案は今回の実CIで初めて判明した7ファイルの追加差分です。</p><h2>実CIで判明した問題</h2><p>598c854の6失敗はGitHubの注記で全てInternal server errorと確認しました。同一treeの空commit860cebbで再検査し、4成功・3失敗・1skipとなりました。Mathは型・lint・259単体・build・画像6検査が成功し、N12旧版35穴と現行46判断の全経路も両幅で成功しました。残る短いv1移行検査は30秒の合計時間切れです。N08とOrdinaryはそれぞれ858中850成功・8失敗で、下記の旧版固定・保存先固定・既承認記録の照合に不一致がありました。P003 T04はFAILEDとして照合済みで、成功へ書き換えていません。</p><h2>固定7ファイルの変更</h2><p>1. textbookNestedContract.test.ts：旧N09r9/N10r5と現N09r10/N10r6の両方で、元の契約・負例・進捗・reset検査全体を実行します。旧版の値を現行値に置換して隠しません。</p><p>2. N0910ArchivePage.test.tsx：実storeの設定された保存先名を使い、archiveの保存と隔離を元どおり確認します。</p><p>3. qf01Lesson.test.tsx：実storeの保存先名を使い、QF01進捗の永続化を確認します。</p><p>4. firstSectionRefinements.test.tsx：文字列の厳密一致、旧math部分の保持、math型化を検査します。既承認W050/W051の文面差19件は旧/現のliteral対として限定し、任意の文面変更を許容しません。承認済み現データは原native snapshotとaccept_app/closedを照合済みです。</p><p>5. firstSectionTeaching.test.tsx：旧W029保護の範囲を既存の旧N13r4/N14r10 fixtureに固定し、現N13r5/N14r11の独立検査は維持します。</p><p>6. e2e/n12-derivation.spec.ts：v1移行検査の準備2行を修正します。同一originの静的JSONでlocalStorageを準備した後に本来の履歴画面を開きます。移行注記以降の検査・再読み込み・reset・30秒制限を維持します。ローカルはブラウザ起動制約で実行できず、改善効果は未検証です。</p><p>7. tools/textbook/integrate-n07.mjs：P001で既承認の注記付き原提案だけをfull/prefix/bodyの3つの厳密hashで認識します。その後、元の承認hash・不変Git設計・生成物一致を検査します。旧APPROVAL/PLAN/原文の更新や未知の注記の許容はありません。</p><h2>実施範囲と手順</h2><p>対象はrrikunagasige-dot/kyotsu-step-web（repository ID1391122224）、source860cebb5e093dc8130e2aa8dfaa70c98ee0e210f、tree8f5f9a365defda8e70f6374c616bc2556629624dです。既存の独立補修branch work/qf01-common-ci-repair-20261109とdraft PR141を継続します。7件は既存ファイルで、src配下5件はテストだけです。製品の教材JSON・画面実装・進捗処理・stable ID・元資料・core・定義・CI YAML・依存を変更しません。</p><p>承認後に新technical Work W-TECH-QF01-CI-P004-20261110を原APIで開始し、固定24入力、固定7差分を原adapterで一度適用します。24は既存18と今回7の和集合（N12重複）です。P003のFAILED履歴と旧P002未解決依頼を保持し、P003への再適用・偽の再承認をしません。親は実在するW-MATH-QF01-BUILD-20261109、既存の同親依頼QF01-CI-P003-CORRECTION-20261110と原CIRepair issueへ正規接続し、新Workが全検証後DONEとなった場合だけ原APIで解決します。</p><p>新CODE、型/lint/単体/build・全該当実CIを新commitで実行します。失敗は保存し、範囲追加は再提案します。全CI成功時だけ既承認QF featureへCAS照合して統合し、元source/bundle/rulesを維持して親保護373件の既承認差8＋本案追加4＝12例外を正式reviseします。残361件を保持し、新sourceの四幅320/390/430/1440・C09・G2を再検査します。本案固有の記録・証拠保存とdraft PR更新を含みます。main統合・本番公開・本人受入の承認は含みません。</p><h2>承認が必要な理由</h2><p>WORK_SYSTEM §11・§12Bと正確なpatch hashを照合する原adapterにより、P003の承認は固定16差分に結び付いています。今回の7差分は新しい内容です。旧承認hashを流用せず、以下の全文・before/after hashを提示して明示承認を待ちます。native Work未open・正本差分未適用です。</p><p>固定patch SHA-256：5ec7946a636af3a6ca8b09dc239da400cc7ac8585530d60dec78884b23e92e6a</p><p>native patch digest：6ac64bd6d6171b041a2656cf1e387c249a3b80cb7d3e92d477581b72b5b6be56</p><h2>検証と限界</h2><p>局所検証は実CIと同じ保存先・同じ広域選択で877/877成功（元858＋旧現保護19）、default/custom保存先の対象94/94ずつ成功、app型検査・変更5件lint成功です。N07は正例2・負例6と元検査3が成功し、原Runtime/adapterの隔離simulationは24入力・7差分一度適用、未知patch/再適用/過大src保護の拒否も確認しました。非作者の対象hash付き審査を保存しています。準備時の資料不足・型不備・ブラウザ起動失敗も保存しています。詳細は同梱VERIFICATION.mdとevidenceに記録します。局所PASSを全CI合格へ拡大しません。N12の新準備方法の実ブラウザ効果、最終commit全CI、QF四幅、C09/G2は未検証です。</p><h2>7差分の全after文面</h2><table><tr><th>ファイル</th><th>before / after SHA-256</th></tr><tr><td>src/domain/textbookNestedContract.test.ts</td><td>602ce098699789ff44233677c008a855049f4d6af54ebcc80a6260103dd59e20<br>6607e24957033f655956c298bd4a8035e3107e5972b00a23b161b7349efc07a1</td></tr><tr><td>src/pages/N0910ArchivePage.test.tsx</td><td>a966459bb3d1f685c2b4eb2fd872c2bdfc9f2c1e6e3ce11522db17a696d0d064<br>5caf70aa2d34f284e95296232a52e5349de23761224a8b35a2f58969af93913c</td></tr><tr><td>src/data/textbook/math/quadratic/qf01Lesson.test.tsx</td><td>5b557f6da40596eca0f464dcd2f345960772500ead7ec1dfa28eed424942b7c2<br>2e39e34d336b2ef91b61ea00cade9ca0317280b1069c88e53685da0479df4ca4</td></tr><tr><td>src/data/textbook/math/numbers/firstSectionRefinements.test.tsx</td><td>75df3e10a09cd06d3f247cad54676730a223ebb59e7df154995c3c2e9a9bcf14<br>a82e636d08821c161fea1fcba6a08457d68d3caacc2148f7b38f4997d157b7c5</td></tr><tr><td>src/data/textbook/math/numbers/firstSectionTeaching.test.tsx</td><td>7dec95714ae5cfa228cee7ced83388b40372de95b75d8cf486b4f93c1b90ecec<br>7365bca65f3c1a1c39064cbbe62108f6943675a9c4084126ad0a4e911faca8f9</td></tr><tr><td>e2e/n12-derivation.spec.ts</td><td>46e6be9d25745248b6f7c326dfa3dfc81e7cc3b6ac10b133b1ca02d621fa3782<br>440c5a5a1e971d1f2cc432761d9da7bc7c0b8f07b12c306b45d2edefba37a841</td></tr><tr><td>tools/textbook/integrate-n07.mjs</td><td>e479d533574dfe43e04f3d0fd6013f80face55b660a4294d13849a8c515f280c<br>ddad82e0c3950bca8b5ba9e50a3dc41c6aaf60f2a87cfdcd1c1ab127da88d7b6</td></tr></table><details><summary>src/domain/textbookNestedContract.test.ts</summary><pre>import { readFileSync } from &#x27;node:fs&#x27;
+import { describe, expect, it } from &#x27;vitest&#x27;
+import { TextbookSectionSchema, TextbookUnitSchema } from &#x27;./textbookSchema&#x27;
+import { answerNestedPart, emptyNestedLedger, projectNestedLesson, type NestedLesson } from &#x27;./nestedLesson&#x27;
+import { effectiveTextbookProgress, resetTextbookUnitProgress, textbookSectionProgress, textbookUnitProgress, type TextbookUnitProgress } from &#x27;./textbook&#x27;
+
+const raw = (name: string) =&gt; JSON.parse(readFileSync(new URL(&#x27;../data/textbook/math/numbers/&#x27; + name + &#x27;.json&#x27;, import.meta.url), &#x27;utf8&#x27;))
+type Edition = &#x27;previous-r9-r5&#x27; | &#x27;current-r10-r6&#x27;
+function fixture(code = &#x27;n09&#x27;, edition: Edition = &#x27;current-r10-r6&#x27;) {
+  const source = raw(code + &#x27;Authored&#x27;), compiled = raw(code + &#x27;ConstructionCompiled&#x27; + (edition === &#x27;previous-r9-r5&#x27; ? code === &#x27;n09&#x27; ? &#x27;R9&#x27; : &#x27;R5&#x27; : &#x27;&#x27;))
+  const lesson: NestedLesson = { unitId: compiled.unitId, fromRevision: compiled.fromRevision, toRevision: compiled.toRevision, compiledHash: compiled.compiledHash, nodes: compiled.nodeDesign }
+  const unitInput = { ...source.unit, revision: compiled.toRevision, sections: source.unit.sections.map((s: { id: string }) =&gt; ({ ...s, readingFlow: [], figures: [], items: [] })), constructionLessonVersion: &#x27;n0910/1&#x27;, nestedContract: { compiledHash: compiled.compiledHash, parents: lesson.nodes.filter(n =&gt; n.parts.length).map(n =&gt; ({ nodeId: n.nodeId, sectionId: source.unit.sections[0].id, parts: n.parts.map(p =&gt; ({ id: p.id, expected: p.expected })) })) }, requiredInteractionRefs: lesson.nodes.filter(n =&gt; n.parts.length).map(n =&gt; n.nodeId) }
+  return { source, lesson, unitInput, unit: TextbookUnitSchema.parse(unitInput) }
+}
+function progress(lesson: NestedLesson): TextbookUnitProgress { return { unitId: lesson.unitId, unitRevision: lesson.toRevision, startedAt: 1, updatedAt: 1, answers: {}, nestedProgress: emptyNestedLedger(lesson, 1) } }
+function solve(lesson: NestedLesson, state: TextbookUnitProgress, count = Infinity) {
+  let answered = 0
+  while (projectNestedLesson(lesson, state.nestedProgress).editable &amp;&amp; answered &lt; count) {
+    const edit = projectNestedLesson(lesson, state.nestedProgress).editable!, part = lesson.nodes.flatMap(n =&gt; n.parts).find(p =&gt; p.id === edit.partId)!
+    state.nestedProgress = answerNestedPart(lesson, state.nestedProgress, part.id, part.expected, &#x27;event-&#x27; + answered, 2)!
+    answered++
+  }
+  return state
+}
+
+// Both literal historical compiled editions and current editions run every contract/negative/reset check.
+describe.each([&#x27;previous-r9-r5&#x27;, &#x27;current-r10-r6&#x27;] as const)(&#x27;%s: explicit N09/N10 unit schema and real parent progress&#x27;, edition =&gt; {
+  const editionFixture = (code = &#x27;n09&#x27;) =&gt; fixture(code, edition)
+  const previous = edition === &#x27;previous-r9-r5&#x27;
+  it(&#x27;permits empty items only for the opted-in current section with actual nested parents&#x27;, () =&gt; {
+    expect(editionFixture(&#x27;n09&#x27;).unit.revision).toBe(previous ? 9 : 10)
+    expect(editionFixture(&#x27;n09&#x27;).unit.nestedContract!.parents).toHaveLength(previous ? 31 : 32)
+    expect(editionFixture(&#x27;n09&#x27;).unit.nestedContract!.parents.flatMap(parent =&gt; parent.parts)).toHaveLength(previous ? 49 : 55)
+    expect(editionFixture(&#x27;n10&#x27;).unit.revision).toBe(previous ? 5 : 6)
+    expect(editionFixture(&#x27;n10&#x27;).unit.nestedContract!.parents).toHaveLength(previous ? 39 : 40)
+    expect(editionFixture(&#x27;n10&#x27;).unit.nestedContract!.parents.flatMap(parent =&gt; parent.parts)).toHaveLength(previous ? 60 : 70)
+    const source = raw(&#x27;n10Authored&#x27;).unit
+    expect(TextbookUnitSchema.safeParse(source).success).toBe(true)
+    const ordinaryEmpty = { ...source, sections: source.sections.map((s: object) =&gt; ({ ...s, items: [], figures: [], readingFlow: [] })) }
+    expect(TextbookUnitSchema.safeParse(ordinaryEmpty).success).toBe(false)
+    expect(TextbookSectionSchema.safeParse(editionFixture().unitInput.sections[0]).success).toBe(false)
+  })
+  for (const [name, change] of Object.entries({
+    missingVersion: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { Object.assign(u, { constructionLessonVersion: undefined }) },
+    missingContract: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { Object.assign(u, { nestedContract: undefined }) },
+    foreignUnit: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.unitId = &#x27;math-numbers-expressions-n11&#x27; },
+    wrongRevision: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.revision = 3 },
+    zeroParts: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.nestedContract.parents[0].parts = [] },
+    wrongSection: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.nestedContract.parents[0].sectionId = &#x27;unknown&#x27; },
+    parentCollision: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.nestedContract.parents[1].nodeId = u.nestedContract.parents[0].nodeId },
+    partCollision: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.nestedContract.parents[1].parts[0].id = u.nestedContract.parents[0].parts[0].id },
+    missingRequired: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.requiredInteractionRefs.pop() },
+    unknownRequired: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.requiredInteractionRefs.push(&#x27;unknown&#x27;) },
+    ordinaryCollision: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { Object.assign(u.sections[0], { items: [{ id: u.nestedContract.parents[0].nodeId, label: &#x27;ordinary&#x27;, prompt: &#x27;ordinary&#x27;, answer: &#x27;1&#x27;, choices: [&#x27;1&#x27;, &#x27;2&#x27;] }] }) },
+    emptyUncoveredSection: (u: ReturnType&lt;typeof fixture&gt;[&#x27;unitInput&#x27;]) =&gt; { u.sections.push({ ...u.sections[0], id: &#x27;other-section&#x27; }) },
+  })) it(&#x27;rejects invalid opt-in contract: &#x27; + name, () =&gt; { const input = editionFixture().unitInput; change(input); expect(TextbookUnitSchema.safeParse(input).success).toBe(false) })
+
+  for (const code of [&#x27;n09&#x27;, &#x27;n10&#x27;]) it(&#x27;counts actual part-certified parents for &#x27; + code + &#x27;, never automatic nodes or old whole answers&#x27;, () =&gt; {
+    const f = editionFixture(code), initial = progress(f.lesson), total = f.unit.nestedContract!.parents.length
+    expect(textbookUnitProgress(f.unit, initial)).toEqual({ completed: 0, total, percent: 0 })
+    expect(projectNestedLesson(f.lesson).visible.some(n =&gt; n.resolved &amp;&amp; !n.parts.length)).toBe(code === &#x27;n09&#x27;)
+    const full = solve(f.lesson, initial)
+    expect(textbookUnitProgress(f.unit, full)).toEqual({ completed: total, total, percent: 100 })
+    expect(textbookSectionProgress(f.unit, full, f.unit.sections[0].id)).toEqual({ completed: total, total })
+    expect(textbookSectionProgress(f.unit, full, &#x27;unknown&#x27;)).toEqual({ completed: 0, total: 0 })
+    const previous = { ...full, unitRevision: f.lesson.fromRevision, answers: Object.fromEntries(f.unit.requiredInteractionRefs!.map(id =&gt; [id, { itemId: id, value: &#x27;correct-old&#x27;, isFirstCorrect: true, resolved: true, attemptCount: 1, firstAnsweredAt: 1, lastAnsweredAt: 1 }])) }
+    expect(effectiveTextbookProgress(f.unit, previous)).toBeUndefined()
+    expect(textbookUnitProgress(f.unit, previous).completed).toBe(0)
+  })
+  it(&#x27;does not count an unfinished multi-part parent or a future saved parent&#x27;, () =&gt; {
+    const f = editionFixture(&#x27;n09&#x27;), p = progress(f.lesson)
+    const multi = f.lesson.nodes.find(n =&gt; n.parts.length &gt; 1)!
+    let index = 0
+    while (projectNestedLesson(f.lesson, p.nestedProgress).editable?.nodeId !== multi.nodeId) {
+      const edit = projectNestedLesson(f.lesson, p.nestedProgress).editable!, part = f.lesson.nodes.flatMap(n =&gt; n.parts).find(q =&gt; q.id === edit.partId)!
+      p.nestedProgress = answerNestedPart(f.lesson, p.nestedProgress, part.id, part.expected, &#x27;pre-&#x27; + index++, 2)!
+    }
+    const before = textbookUnitProgress(f.unit, p).completed
+    p.nestedProgress = answerNestedPart(f.lesson, p.nestedProgress, multi.parts[0].id, multi.parts[0].expected, &#x27;partial&#x27;, 3)!
+    expect(textbookUnitProgress(f.unit, p).completed).toBe(before)
+    const fake = progress(f.lesson), last = f.unit.nestedContract!.parents.at(-1)!
+    fake.nestedProgress!.parents[last.nodeId] = { attemptCount: 1 }
+    for (const part of last.parts) {
+      fake.nestedProgress!.draft[part.id] = part.expected
+      fake.nestedProgress!.records[part.id] = { value: part.expected, firstValue: part.expected, selectionCount: 1, firstSelectedAt: 1, lastSelectedAt: 1 }
+    }
+    expect(textbookUnitProgress(f.unit, fake).completed).toBe(0)
+  })
+  it(&#x27;requires current unit/revision/hash and complete part records&#x27;, () =&gt; {
+    const f = editionFixture(), full = solve(f.lesson, progress(f.lesson))
+    for (const change of [ (p: TextbookUnitProgress) =&gt; { p.unitId = &#x27;other&#x27; }, (p: TextbookUnitProgress) =&gt; { p.nestedProgress!.revision++ }, (p: TextbookUnitProgress) =&gt; { p.nestedProgress!.compiledHash = &#x27;other&#x27; }, (p: TextbookUnitProgress) =&gt; { delete p.nestedProgress!.records[f.unit.nestedContract!.parents[0].parts[0].id] } ]) {
+      const state = structuredClone(full); change(state)
+      expect(textbookUnitProgress(f.unit, state).completed).toBe(0)
+    }
+  })
+  it(&#x27;home reset persists an empty current hash/revision and reset marker while archiving prior data&#x27;, () =&gt; {
+    const f = editionFixture(), old = solve(f.lesson, progress(f.lesson)), oldRaw = JSON.stringify(old)
+    const reset = resetTextbookUnitProgress(f.unit, old, 100)!
+    expect(reset.nestedResetAt).toBe(100); expect(reset.nestedProgress!.compiledHash).toBe(f.lesson.compiledHash)
+    expect(reset.nestedProgress!.records).toEqual({}); expect(reset.nestedProgress!.draft).toEqual({})
+    expect(reset.archivedRevisions![previous ? &#x27;9-reset-100&#x27; : &#x27;10-reset-100&#x27;].nestedProgress).toEqual(old.nestedProgress)
+    expect(JSON.stringify(old)).toBe(oldRaw); expect(textbookUnitProgress(f.unit, reset).completed).toBe(0)
+    const stale = { ...reset, nestedProgress: old.nestedProgress }
+    expect(textbookUnitProgress(f.unit, stale).completed).toBe(0)
+    expect(resetTextbookUnitProgress(f.unit, undefined, 100)?.nestedResetAt).toBe(100)
+  })
+})
+</pre></details><details><summary>src/pages/N0910ArchivePage.test.tsx</summary><pre>// @vitest-environment jsdom
+import { afterEach, beforeEach, describe, expect, it, vi } from &#x27;vitest&#x27;
+import { cleanup, fireEvent, render, screen } from &#x27;@testing-library/react&#x27;
+import { MemoryRouter } from &#x27;react-router-dom&#x27;
+import type { TextbookItem, TextbookSection, TextbookUnit } from &#x27;../domain/textbookSchema&#x27;
+import type { TextbookUnitProgress } from &#x27;../domain/textbook&#x27;
+import { useAppStore } from &#x27;../stores/useAppStore&#x27;
+import { N0910ArchivePage } from &#x27;./N0910ArchivePage&#x27;
+import n09Authored from &#x27;../data/textbook/math/numbers/n09Authored.json&#x27;
+import n10Authored from &#x27;../data/textbook/math/numbers/n10Authored.json&#x27;
+import n08Authored from &#x27;../data/textbook/math/numbers/n08Authored.json&#x27;
+import n11Authored from &#x27;../data/textbook/math/numbers/n11Authored.json&#x27;
+import { validateTextbookUnits } from &#x27;../domain/textbookSchema&#x27;
+import previousN09 from &#x27;../data/textbook/math/numbers/n09ConstructionCompiledR4.json&#x27;
+import previousN10 from &#x27;../data/textbook/math/numbers/n10ConstructionCompiledR3.json&#x27;
+import { emptyNestedLedger, nestedStorageKey, nestedStorageScope, type NestedLedger } from &#x27;../domain/nestedLesson&#x27;
+import { nestedLessonFromCompiled, type CompiledNestedLesson } from &#x27;../domain/compiledNestedLesson&#x27;
+
+vi.mock(&#x27;../components/textbook/GuidedMathReadingFlow&#x27;, () =&gt; ({
+  GuidedMathReadingFlow: ({ unit, section, progress, onReviewAnswer, storageScope }: { unit: TextbookUnit; section: TextbookSection; progress?: TextbookUnitProgress; onReviewAnswer: (item: TextbookItem, value: string) =&gt; void; storageScope?: string }) =&gt; &lt;div data-testid=&quot;archive-reading-flow&quot; data-revision={unit.revision} data-storage-scope={storageScope}&gt;
+    &lt;output data-testid=&quot;preview-answers&quot;&gt;{JSON.stringify(progress?.answers ?? {})}&lt;/output&gt;
+    &lt;button onClick={() =&gt; onReviewAnswer(section.items[0], section.items[0].answer)}&gt;旧版で試し解答&lt;/button&gt;
+  &lt;/div&gt;,
+}))
+const id = (code: &#x27;n09&#x27; | &#x27;n10&#x27;) =&gt; &#x27;math-numbers-expressions-&#x27; + code
+const progress = (unitId: string, unitRevision: number): TextbookUnitProgress =&gt; ({ unitId, unitRevision, startedAt: 1, updatedAt: 2, answers: {} })
+const oldAnswer = { itemId: &#x27;archived-only&#x27;, value: &#x27;old&#x27;, firstValue: &#x27;wrong&#x27;, isFirstCorrect: false, resolved: true, attemptCount: 2, firstAnsweredAt: 1, lastAnsweredAt: 2 }
+beforeEach(() =&gt; { localStorage.clear(); useAppStore.setState({ textbookProgress: {} }) })
+afterEach(() =&gt; { cleanup(); useAppStore.setState({ textbookProgress: {} }); localStorage.clear() })
+const show = (code: &#x27;n09&#x27; | &#x27;n10&#x27;) =&gt; render(&lt;MemoryRouter&gt;&lt;N0910ArchivePage code={code} /&gt;&lt;/MemoryRouter&gt;)
+
+describe(&#x27;N09/N10旧版の隔離比較&#x27;, () =&gt; {
+  it.each([[&#x27;n09&#x27;, 3], [&#x27;n10&#x27;, 2]] as const)(&#x27;preserved %s第%i版を表示し通常新版へ戻る&#x27;, (code, revision) =&gt; {
+    show(code)
+    expect(screen.getByTestId(&#x27;archive-reading-flow&#x27;).getAttribute(&#x27;data-revision&#x27;)).toBe(String(revision))
+    expect(screen.getByTestId(&#x27;archive-reading-flow&#x27;).getAttribute(&#x27;data-storage-scope&#x27;)).toBe(&#x27;archive-review:&#x27; + nestedStorageScope())
+    expect(screen.getByRole(&#x27;link&#x27;, { name: &#x27;現在の&#x27; + code.toUpperCase() + &#x27;へ戻る&#x27; }).getAttribute(&#x27;href&#x27;)).toBe(&#x27;/learning/textbook/&#x27; + id(code))
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toBe(&#x27;{}&#x27;)
+  })
+  it(&#x27;版が一致する旧記録はcloneして表示し、試し解答はmain storeにもnested保存にも書かない&#x27;, () =&gt; {
+    const saved = { ...progress(id(&#x27;n09&#x27;), 3), answers: { &#x27;archived-only&#x27;: oldAnswer } }
+    useAppStore.setState({ textbookProgress: { [id(&#x27;n09&#x27;)]: saved } })
+    const nestedKey = &#x27;math-textbook-nested-v1:&#x27; + id(&#x27;n09&#x27;) + &#x27;:r4:fixture&#x27;
+    localStorage.setItem(nestedKey, &#x27;original-nested-record&#x27;)
+    const beforeStore = JSON.stringify(useAppStore.getState().textbookProgress), beforeStorage = localStorage.getItem(import.meta.env.VITE_STORAGE_NAMESPACE || &#x27;kyotsu-step-store&#x27;)
+    show(&#x27;n09&#x27;)
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toContain(&#x27;archived-only&#x27;)
+    fireEvent.click(screen.getByText(&#x27;旧版で試し解答&#x27;))
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toContain(&#x27;n09-q01-negative&#x27;)
+    expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(beforeStore)
+    expect(localStorage.getItem(nestedKey)).toBe(&#x27;original-nested-record&#x27;)
+    expect(localStorage.getItem(import.meta.env.VITE_STORAGE_NAMESPACE || &#x27;kyotsu-step-store&#x27;)).toBe(beforeStorage)
+  })
+  it(&#x27;現storeが新版なら該当する実archiveを使い、新版の回答を旧版へ混ぜない&#x27;, () =&gt; {
+    const old = progress(id(&#x27;n10&#x27;), 2)
+    const saved = { ...progress(id(&#x27;n10&#x27;), 3), answers: { &#x27;new-only&#x27;: { ...oldAnswer, itemId: &#x27;new-only&#x27; } }, archivedRevisions: { &#x27;2&#x27;: { unitRevision: 2, startedAt: old.startedAt, updatedAt: old.updatedAt, answers: { &#x27;archived-only&#x27;: oldAnswer } } } }
+    useAppStore.setState({ textbookProgress: { [id(&#x27;n10&#x27;)]: saved } })
+    const before = JSON.stringify(saved)
+    show(&#x27;n10&#x27;)
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toContain(&#x27;archived-only&#x27;)
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).not.toContain(&#x27;new-only&#x27;)
+    fireEvent.click(screen.getByText(&#x27;旧版で試し解答&#x27;))
+    expect(JSON.stringify(useAppStore.getState().textbookProgress[id(&#x27;n10&#x27;)])).toBe(before)
+  })
+  it.each([undefined, { unitRevision: 3, startedAt: 1, updatedAt: 2, answers: { &#x27;bad-archive&#x27;: oldAnswer } }])(&#x27;旧archiveがないか版が違えば未回答で開き、archiveを作らない&#x27;, archive =&gt; {
+    const saved = { ...progress(id(&#x27;n10&#x27;), 3), answers: { &#x27;new-only&#x27;: oldAnswer }, ...(archive ? { archivedRevisions: { &#x27;2&#x27;: archive } } : {}) }
+    useAppStore.setState({ textbookProgress: { [id(&#x27;n10&#x27;)]: saved } })
+    const before = JSON.stringify(saved)
+    show(&#x27;n10&#x27;)
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toBe(&#x27;{}&#x27;)
+    fireEvent.click(screen.getByText(&#x27;旧版で試し解答&#x27;))
+    expect(JSON.stringify(useAppStore.getState().textbookProgress[id(&#x27;n10&#x27;)])).toBe(before)
+  })
+  it(&#x27;unitIdが違う記録は採用しない&#x27;, () =&gt; {
+    useAppStore.setState({ textbookProgress: { [id(&#x27;n09&#x27;)]: { ...progress(&#x27;other-unit&#x27;, 3), answers: { &#x27;other-answer&#x27;: oldAnswer } } } })
+    show(&#x27;n09&#x27;)
+    expect(screen.getByTestId(&#x27;preview-answers&#x27;).textContent).toBe(&#x27;{}&#x27;)
+  })
+  it(&#x27;N08専用readerの既存cursor namespaceを変更しない&#x27;, async () =&gt; {
+    const { N08ReadingFlow } = await vi.importActual&lt;typeof import(&#x27;../components/textbook/N08ReadingFlow&#x27;)&gt;(&#x27;../components/textbook/N08ReadingFlow&#x27;)
+    const unit = validateTextbookUnits([n08Authored.unit])[0], learnerKey = &#x27;math-textbook-compact-v1:&#x27; + unit.unitId + &#x27;:r&#x27; + unit.revision
+    localStorage.setItem(learnerKey, &#x27;original-cursor&#x27;)
+    localStorage.setItem(learnerKey + &#x27;:scope:archive-review&#x27;, &#x27;unrelated-isolated-cursor&#x27;)
+    render(&lt;MemoryRouter&gt;&lt;N08ReadingFlow unit={unit} section={unit.sections[0]} progress={undefined} onReviewAnswer={() =&gt; undefined} /&gt;&lt;/MemoryRouter&gt;)
+    expect(localStorage.getItem(learnerKey)).toBe(&#x27;0&#x27;)
+    expect(localStorage.getItem(learnerKey + &#x27;:scope:archive-review&#x27;)).toBe(&#x27;unrelated-isolated-cursor&#x27;)
+  })
+  it.each([n09Authored, n10Authored, n11Authored])(&#x27;実readerの比較cursorは旧本保存へ書かず、省略時のnamespaceは従来どおり&#x27;, async authored =&gt; {
+    const { GuidedMathReadingFlow: ActualReader } = await vi.importActual&lt;typeof import(&#x27;../components/textbook/GuidedMathReadingFlow&#x27;)&gt;(&#x27;../components/textbook/GuidedMathReadingFlow&#x27;)
+    const unit = validateTextbookUnits([authored.unit])[0], learnerKey = &#x27;math-textbook-compact-v1:&#x27; + unit.unitId + &#x27;:r&#x27; + unit.revision
+    localStorage.setItem(learnerKey, &#x27;original-learner-cursor&#x27;)
+    const scoped = render(&lt;MemoryRouter&gt;&lt;ActualReader unit={unit} section={unit.sections[0]} presentation={authored} progress={undefined} onReviewAnswer={() =&gt; undefined} storageScope=&quot;archive-review&quot; /&gt;&lt;/MemoryRouter&gt;)
+    expect(localStorage.getItem(learnerKey)).toBe(&#x27;original-learner-cursor&#x27;)
+    expect(localStorage.getItem(learnerKey + &#x27;:scope:archive-review&#x27;)).toBe(&#x27;0&#x27;)
+    scoped.unmount()
+    const regular = render(&lt;MemoryRouter&gt;&lt;ActualReader unit={unit} section={unit.sections[0]} presentation={authored} progress={undefined} onReviewAnswer={() =&gt; undefined} /&gt;&lt;/MemoryRouter&gt;)
+    expect(localStorage.getItem(learnerKey)).toBe(&#x27;0&#x27;)
+    expect(localStorage.getItem(learnerKey + &#x27;:scope:archive-review&#x27;)).toBe(&#x27;0&#x27;)
+    regular.unmount()
+  })
+})
+
+
+describe(&#x27;native previous-revision archives&#x27;, () =&gt; {
+  it.each([[&#x27;n09&#x27;, previousN09], [&#x27;n10&#x27;, previousN10]] as const)(&#x27;%s displays its exact native revision without changing saved records&#x27;, (code, source) =&gt; {
+    const compiled = source as unknown as CompiledNestedLesson, lesson = nestedLessonFromCompiled(compiled)
+    const ledger: NestedLedger = emptyNestedLedger(lesson, 10), key = nestedStorageKey(lesson)
+    const raw = JSON.stringify({ schemaVersion: &#x27;nested-reader-storage/1&#x27;, ledger })
+    localStorage.setItem(key, raw)
+    const main = { ...progress(compiled.unitId, compiled.toRevision + 1), archivedRevisions: { [String(compiled.toRevision)]: { ...progress(compiled.unitId, compiled.toRevision), nestedProgress: ledger } } }
+    useAppStore.setState({ textbookProgress: { [compiled.unitId]: main } })
+    const before = JSON.stringify(useAppStore.getState().textbookProgress)
+    render(&lt;MemoryRouter&gt;&lt;N0910ArchivePage code={code} nativeRevision /&gt;&lt;/MemoryRouter&gt;)
+    expect(screen.getByTestId(&#x27;n0910-archive-page&#x27;).getAttribute(&#x27;data-revision&#x27;)).toBe(String(compiled.toRevision))
+    expect(screen.getByRole(&#x27;heading&#x27;, { name: &#x27;以前の第&#x27; + compiled.toRevision + &#x27;版&#x27; })).toBeTruthy()
+    expect(localStorage.getItem(key)).toBe(raw)
+    expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
+  })
+})
+</pre></details><details><summary>src/data/textbook/math/quadratic/qf01Lesson.test.tsx</summary><pre>// @vitest-environment jsdom
+import { afterEach, beforeEach, describe, expect, it } from &#x27;vitest&#x27;
+import { act, cleanup, fireEvent, render, screen } from &#x27;@testing-library/react&#x27;
+import { GuidedMathReadingFlow } from &#x27;../../../../components/textbook/GuidedMathReadingFlow&#x27;
+import { useAppStore } from &#x27;../../../../stores/useAppStore&#x27;
+import { answerTextbookItem } from &#x27;../../../../domain/textbook&#x27;
+import { mathFunctionConditionsUnit } from &#x27;../function/functionConditionsLesson&#x27;
+import { mathNumbersN01Unit } from &#x27;../numbers/n01Lesson&#x27;
+import { mathQuadraticQF01Unit as unit, qf01GuidedPresentation as presentation } from &#x27;./qf01Lesson&#x27;
+function Lesson() {
+  const progress = useAppStore(state =&gt; state.textbookProgress[unit.unitId])
+  return &lt;GuidedMathReadingFlow presentation={presentation} unit={unit} section={unit.sections[0]} progress={progress} storageScope=&quot;qf01-v1&quot; /&gt;
+}
+beforeEach(() =&gt; {
+  localStorage.clear()
+  useAppStore.setState({ textbookProgress: {} })
+  Element.prototype.scrollIntoView = () =&gt; undefined
+  window.requestAnimationFrame = cb =&gt; { cb(0); return 1 }
+})
+afterEach(cleanup)
+describe(&#x27;QF01 approved lesson materialization&#x27;, () =&gt; {
+  it(&#x27;completes all real reading interactions, retains wrong attempts, removes the answered question, and protects old units on reset&#x27;, () =&gt; {
+    const oldUnits = [mathFunctionConditionsUnit, mathNumbersN01Unit]
+    const old = Object.fromEntries(oldUnits.map(u =&gt; [u.unitId, answerTextbookItem(undefined, u, u.sections[0].items[0], u.sections[0].items[0].answer, 1)]))
+    useAppStore.setState({ textbookProgress: old })
+    const oldSnapshot = JSON.stringify(old)
+    render(&lt;Lesson /&gt;)
+    const items = unit.sections[0].items
+    expect(items).toHaveLength(25)
+    for (let i = 0; i &lt; items.length; i++) {
+      const item = items[i]
+      if (!screen.queryByTestId(&#x27;textbook-item-&#x27; + item.id)) fireEvent.click(screen.getByTestId(&#x27;math-textbook-next-stage&#x27;))
+      const node = presentation.nodes[i]
+      expect(document.querySelector(`[data-node-id=&quot;${node.id}&quot;]`)).not.toBeNull()
+      if (node.id === &#x27;qf01-n05&#x27;) expect(screen.getByTestId(&#x27;guided-source-question&#x27;).textContent).toContain(&#x27;は数を表す文字です&#x27;)
+      expect(items.slice(i + 1).every(next =&gt; !screen.queryByTestId(&#x27;textbook-item-&#x27; + next.id))).toBe(true)
+      fireEvent.click(screen.getByTestId(&#x27;textbook-item-&#x27; + item.id))
+      for (const wrong of item.choices!.filter(c =&gt; c !== item.answer)) {
+        fireEvent.click(screen.getByRole(&#x27;button&#x27;, { name: wrong }))
+        expect(useAppStore.getState().textbookProgress[unit.unitId].answers[item.id].resolved).toBe(false)
+        expect(screen.queryByTestId(&#x27;textbook-item-&#x27; + item.id)).not.toBeNull()
+      }
+      fireEvent.click(screen.getByRole(&#x27;button&#x27;, { name: item.answer }))
+      expect(useAppStore.getState().textbookProgress[unit.unitId].answers[item.id].resolved).toBe(true)
+      expect(document.querySelector(`[data-node-id=&quot;${node.id}&quot;] [data-block-id*=&quot;-interaction-&quot;]`)).toBeNull()
+      expect(screen.queryByTestId(&#x27;inline-choice-panel-&#x27; + item.id)).toBeNull()
+    }
+    expect(screen.queryByTestId(&#x27;qf01-complete&#x27;)).not.toBeNull()
+    expect(Object.values(useAppStore.getState().textbookProgress[unit.unitId].answers).every(a =&gt; a.attemptCount === 3)).toBe(true)
+    expect(JSON.stringify(Object.fromEntries(oldUnits.map(u =&gt; [u.unitId, useAppStore.getState().textbookProgress[u.unitId]])))).toBe(oldSnapshot)
+    expect(useAppStore.persist.getOptions().name).toBe(import.meta.env.VITE_STORAGE_NAMESPACE || &#x27;kyotsu-step-store&#x27;)
+    expect(Object.keys(JSON.parse(localStorage.getItem(useAppStore.persist.getOptions().name!)!).state.textbookProgress[unit.unitId].answers)).toHaveLength(25)
+    if (import.meta.env.VITE_STORAGE_NAMESPACE &amp;&amp; import.meta.env.VITE_STORAGE_NAMESPACE !== &#x27;kyotsu-step-store&#x27;) expect(localStorage.getItem(&#x27;kyotsu-step-store&#x27;)).toBeNull()
+    act(() =&gt; useAppStore.getState().resetTextbookUnit(unit.unitId, unit))
+    expect(screen.queryByTestId(&#x27;textbook-item-qf01-n01-answer&#x27;)).not.toBeNull()
+    expect(JSON.stringify(Object.fromEntries(oldUnits.map(u =&gt; [u.unitId, useAppStore.getState().textbookProgress[u.unitId]])))).toBe(oldSnapshot)
+  })
+})
+</pre></details><details><summary>src/data/textbook/math/numbers/firstSectionRefinements.test.tsx</summary><pre>import { readFileSync } from &#x27;node:fs&#x27;
+import { describe, expect, it } from &#x27;vitest&#x27;
+import katex from &#x27;katex&#x27;
+import { renderToStaticMarkup } from &#x27;react-dom/server&#x27;
+import { TextbookFormula } from &#x27;../../../../components/textbook/TextbookFormula&#x27;
+import { mathTextbookUnits } from &#x27;../index&#x27;
+import { firstSectionTeachingPlans, type SectionTeachingPlan } from &#x27;./firstSectionTeaching&#x27;
+import { firstThemeSourceView, firstThemeRecordedResults, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeEquationNumber } from &#x27;../presentation&#x27;
+import { answerTextbookItem, effectiveTextbookProgress, isTextbookItemResolved, type TextbookUnitProgress } from &#x27;../../../../domain/textbook&#x27;
+import type { TextbookReadingBlock, TextbookUnit } from &#x27;../../../../domain/textbookSchema&#x27;
+import { firstThemeFormulaRows } from &#x27;../../../../components/textbook/formulaWrap&#x27;
+
+const previousPlans = JSON.parse(readFileSync(&#x27;work/items/W-MATH-030-section-one-results-and-blanks/BASELINE_PLANS.json&#x27;, &#x27;utf8&#x27;)) as Record&lt;string, SectionTeachingPlan&gt;
+const original = JSON.parse(readFileSync(&#x27;work/items/W-MATH-029-section-one-teaching/BASELINE.json&#x27;, &#x27;utf8&#x27;)) as Record&lt;string, TextbookUnit&gt;
+const ledger = JSON.parse(readFileSync(&#x27;work/items/W-MATH-030-section-one-results-and-blanks/IMPLEMENTATION_LEDGER.json&#x27;, &#x27;utf8&#x27;)) as { unit: string; design: string; itemId: string; blockId: string; replaces: string | null }[]
+const choices = (blocks: readonly TextbookReadingBlock[]) =&gt; blocks.flatMap(b =&gt; b.type === &#x27;formula&#x27; || b.type === &#x27;paragraph&#x27; ? b.parts.flatMap(p =&gt; p.type === &#x27;choice&#x27; ? [p.itemId] : []) : [])
+
+// Frozen accepted W050/W051 deltas only. All other old paragraph parts remain exact.
+// W050 raw artifact93f98dba... after SHA292599f9...; W051 current source is bound in the proposal ledger.
+const acceptedInlineMath: Record&lt;string, string[]&gt; = {
+  &quot;n01-bridge-explain-n01-01-before&quot;: [&quot;−x²y²&quot;, &quot;x&quot;, &quot;y&quot;],
+  &quot;n01-r3-negative-lead&quot;: [&quot;−2x&quot;, &quot;−2×x&quot;],
+  &quot;n01-r3-negative-degree-lead&quot;: [&quot;x&quot;],
+  &quot;n01-r3-square-lead&quot;: [&quot;x²&quot;, &quot;x&quot;],
+  &quot;n01-r3-product-lead&quot;: [&quot;−x²y²&quot;],
+  &quot;n01-r3-product-degree-lead&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;x&quot;, &quot;y&quot;, &quot;2+2&quot;],
+  &quot;n01-bridge-explain-n01-03-before&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;x³&quot;],
+  &quot;n01-bridge-explain-n01-03-after&quot;: [&quot;y&quot;, &quot;y&quot;],
+  &quot;n01-s4-y-goal&quot;: [&quot;5x³y&quot;, &quot;y&quot;, &quot;y&quot;],
+  &quot;n01-s4-y-result&quot;: [&quot;y&quot;, &quot;5x³&quot;, &quot;x&quot;],
+  &quot;n01-s4-axy-goal&quot;: [&quot;axy&quot;, &quot;x&quot;, &quot;x&quot;],
+  &quot;n01-s4-axy-switch&quot;: [&quot;x&quot;, &quot;ay&quot;, &quot;y&quot;],
+  &quot;n01-s4-like-goal&quot;: [],
+  &quot;n01-s4-like-square-target&quot;: [&quot;x²&quot;],
+  &quot;n01-s4-like-square-reason&quot;: [&quot;x²&quot;, &quot;x²&quot;],
+  &quot;n01-s4-like-linear-target&quot;: [&quot;x&quot;, &quot;−5x&quot;, &quot;+2x&quot;, &quot;x&quot;, &quot;−5&quot;, &quot;+2&quot;],
+  &quot;n01-s4-like-assembly-text&quot;: [&quot;−2x²&quot;, &quot;−3x&quot;],
+  &quot;n01-r3-linear-target&quot;: [&quot;x&quot;],
+  &quot;n01-r3-linear-reason&quot;: [&quot;x&quot;, &quot;3x&quot;, &quot;x&quot;, &quot;x=1x&quot;],
+  &quot;n01-r3-linear-operation&quot;: [&quot;x&quot;, &quot;x&quot;],
+  &quot;n01-r3-linear-result-text&quot;: [&quot;4x&quot;],
+  &quot;n01-r3-quadratic-text&quot;: [&quot;x²&quot;, &quot;−2x²&quot;],
+  &quot;n01-r3-cubic-target&quot;: [&quot;x³&quot;, &quot;x³&quot;, &quot;−x³&quot;],
+  &quot;n02-bridge-audit-like-b-lead&quot;: [&quot;bx&quot;],
+  &quot;n02-s4-order-map&quot;: [&quot;3bx&quot;, &quot;x³&quot;, &quot;−ax²&quot;, &quot;5c&quot;, &quot;x&quot;],
+  &quot;n02-bridge-explain-n02-03-before&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;x&quot;],
+  &quot;n02-bridge-worked-n02-04-before-0-lead&quot;: [&quot;x&quot;],
+  &quot;n02-bridge-detail-linear-coefficient-lead&quot;: [&quot;x&quot;, &quot;x&quot;],
+  &quot;n02-bridge-detail-linear-coefficient-after&quot;: [&quot;x&quot;, &quot;x&quot;],
+  &quot;n02-bridge-audit-constant-part-lead&quot;: [&quot;x&quot;],
+  &quot;n02-bridge-explain-n02-03-after&quot;: [&quot;x&quot;],
+  &quot;n02-s4-reuse-goal&quot;: [&quot;x²&quot;, &quot;x&quot;, &quot;x&quot;],
+  &quot;paragraph-b-missing&quot;: [&quot;A&quot;, &quot;x&quot;, &quot;B&quot;, &quot;B&quot;],
+  &quot;n02-bridge-explain-n02-06-before&quot;: [&quot;B&quot;],
+  &quot;n02-bridge-audit-sum-constant-lead&quot;: [],
+  &quot;n02-s4-sum-close&quot;: [&quot;A+B&quot;],
+  &quot;n02-bridge-explain-n02-07-before&quot;: [&quot;A−B&quot;, &quot;B&quot;, &quot;−1&quot;, &quot;B&quot;],
+  &quot;n02-bridge-audit-minus-cube-sign-lead&quot;: [&quot;−1&quot;, &quot;B&quot;],
+  &quot;n02-bridge-explain-n02-07-after&quot;: [&quot;−B&quot;, &quot;A&quot;],
+  &quot;n02-bridge-audit-diff-constant-lead&quot;: [&quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-explain-n02-09-before&quot;: [&quot;2A−3B&quot;, &quot;2A&quot;, &quot;−3B&quot;],
+  &quot;n02-bridge-distribute-lead&quot;: [&quot;2A&quot;],
+  &quot;n02-bridge-detail-cube-coefficient-lead&quot;: [&quot;x³&quot;],
+  &quot;n02-bridge-twice-square-lead&quot;: [&quot;x²&quot;],
+  &quot;n02-bridge-detail-signed-coefficient-lead&quot;: [&quot;x²&quot;],
+  &quot;n02-bridge-detail-signed-coefficient-after&quot;: [&quot;x²&quot;],
+  &quot;n02-bridge-audit-twice-linear-lead&quot;: [&quot;2A&quot;, &quot;1x&quot;],
+  &quot;n02-bridge-audit-twice-constant-lead&quot;: [&quot;2A&quot;, &quot;−1&quot;],
+  &quot;n02-s4-minus-three-text&quot;: [&quot;2A&quot;, &quot;B&quot;, &quot;−3&quot;, &quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-minus-multiplier-lead&quot;: [&quot;2A−3B&quot;, &quot;2A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-minus-multiplier-after&quot;: [&quot;B&quot;, &quot;2A+(-3)B&quot;],
+  &quot;n02-bridge-minus-cube-lead&quot;: [&quot;B&quot;],
+  &quot;n02-bridge-minus-square-lead&quot;: [&quot;B&quot;],
+  &quot;n02-bridge-explain-n02-09-after&quot;: [&quot;−3B&quot;, &quot;2A&quot;, &quot;−3B&quot;],
+  &quot;n02-bridge-like-square-lead&quot;: [&quot;x²&quot;],
+  &quot;n02-bridge-square-sum-lead&quot;: [&quot;x²&quot;],
+  &quot;n02-bridge-worked-n02-10-assemble-0-lead&quot;: [&quot;B&quot;],
+  &quot;n02-bridge-constant-sum-lead&quot;: [&quot;2A&quot;, &quot;−3B&quot;],
+  &quot;n02-bridge-explain-n02-10-after&quot;: [&quot;2A−3B&quot;, &quot;2A−3B&quot;],
+  &quot;n02-bridge-explain-n02-11-before&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;x&quot;, &quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-outer-minus-lead&quot;: [&quot;A−B&quot;],
+  &quot;n02-bridge-group-coefficients-lead&quot;: [&quot;3A−4B−A+B&quot;, &quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-worked-n02-bridge-group-coefficients-after-0-lead&quot;: [&quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-audit-a-coefficient-lead&quot;: [&quot;A&quot;],
+  &quot;n02-bridge-audit-b-coefficient-lead&quot;: [&quot;B&quot;, &quot;−4&quot;, &quot;+1&quot;],
+  &quot;n02-bridge-explain-n02-11-after&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;−3&quot;],
+  &quot;n02-bridge-reuse-lead&quot;: [&quot;2A−3B&quot;, &quot;A&quot;, &quot;B&quot;],
+  &quot;n02-bridge-reuse-formula&quot;: [&quot;2A−3B&quot;],
+  &quot;n03-bridge-audit-count-a-lead&quot;: [&quot;a&quot;],
+  &quot;n03-bridge-worked-n03-03-before-0-lead&quot;: [&quot;a&quot;, &quot;m&quot;, &quot;n&quot;],
+  &quot;n03-bridge-worked-n03-04-before-0-lead&quot;: [&quot;a&quot;, &quot;b&quot;],
+  &quot;n03-bridge-worked-n03-05-before-0-lead&quot;: [&quot;x&quot;, &quot;y&quot;],
+  &quot;n03-bridge-explain-n03-06-before&quot;: [&quot;x&quot;, &quot;y&quot;],
+  &quot;n03-bridge-detail-y-power-lead&quot;: [&quot;y²&quot;],
+  &quot;n03-bridge-detail-y-power-after&quot;: [&quot;x&quot;, &quot;y&quot;],
+  &quot;n03-s4-parts-return&quot;: [&quot;−8&quot;, &quot;x&quot;, &quot;x^{9}&quot;, &quot;y&quot;, &quot;y^{6}&quot;],
+  &quot;n03-bridge-audit-product-fourth-lead&quot;: [&quot;x²&quot;, &quot;x²&quot;, &quot;x&quot;],
+  &quot;n03-bridge-audit-product-negative-lead&quot;: [&quot;x²&quot;, &quot;−3x&quot;, &quot;−3&quot;, &quot;x&quot;],
+  &quot;n03-bridge-audit-product-last-lead&quot;: [&quot;x²&quot;, &quot;x²&quot;],
+  &quot;n03-bridge-grid-reading&quot;: [&quot;3x&quot;, &quot;2x&quot;],
+  &quot;n03-bridge-worked-n03-12-before-0-lead&quot;: [&quot;3x&quot;, &quot;−1&quot;],
+  &quot;n03-bridge-explain-n03-13-before&quot;: [],
+  &quot;n03-bridge-first-row-lead&quot;: [&quot;3x&quot;],
+  &quot;n03-bridge-detail-first-product-lead&quot;: [&quot;3x&quot;, &quot;x&quot;, &quot;x²&quot;],
+  &quot;n03-bridge-detail-second-product-lead&quot;: [&quot;−x&quot;, &quot;3x&quot;],
+  &quot;n03-bridge-detail-third-product-lead&quot;: [&quot;x&quot;],
+  &quot;n03-bridge-detail-third-product-after&quot;: [&quot;3x&quot;],
+  &quot;n03-bridge-worked-n03-bridge-second-row-before-0-lead&quot;: [&quot;−1&quot;, &quot;−1&quot;, &quot;2x²&quot;],
+  &quot;n03-bridge-audit-minus-minus-lead&quot;: [&quot;−x&quot;, &quot;−1&quot;],
+  &quot;n03-s4-minus-last&quot;: [&quot;+x&quot;, &quot;−1&quot;],
+  &quot;paragraph-n04-intro&quot;: [&quot;(5x+4y)^2&quot;, &quot;(5x+4y)^2=(5x+4y)(5x+4y)&quot;],
+  &quot;n04-s4-square-plan&quot;: [],
+  &quot;paragraph-n04-four-products&quot;: [&quot;5x&quot;, &quot;5x&quot;, &quot;4y&quot;, &quot;4y&quot;],
+  &quot;n04-bridge-worked-n04-q01-p1-before-0-lead&quot;: [&quot;x&quot;],
+  &quot;n04-bridge-worked-n04-q01-p2-before-0-lead&quot;: [&quot;5x&quot;, &quot;4y&quot;],
+  &quot;paragraph-n04-bridge&quot;: [],
+  &quot;n04-group-1&quot;: [&quot;a&quot;, &quot;b&quot;],
+  &quot;n04-lead-02&quot;: [&quot;5x&quot;, &quot;4y&quot;, &quot;20xy+20xy&quot;],
+  &quot;n04-bridge-worked-n04-02-before-0-lead&quot;: [&quot;xy&quot;],
+  &quot;n04-s4-general-map&quot;: [&quot;5x&quot;, &quot;4y&quot;, &quot;a&quot;, &quot;b&quot;],
+  &quot;n04-lead-04&quot;: [&quot;5x&quot;, &quot;4y&quot;, &quot;a&quot;, &quot;b&quot;, &quot;(a+b)(a+b)&quot;],
+  &quot;n04-bridge-worked-n04-04-before-0-lead&quot;: [&quot;a&quot;, &quot;b&quot;],
+  &quot;n04-after-04&quot;: [&quot;ab&quot;, &quot;ba&quot;],
+  &quot;n04-lead-05&quot;: [&quot;ba=ab&quot;, &quot;a^2+ab+ba+b^2&quot;],
+  &quot;n04-bridge-audit-square-cross-count-lead&quot;: [&quot;ba&quot;, &quot;ab&quot;],
+  &quot;n04-lead-06&quot;: [&quot;(a−b)²&quot;],
+  &quot;n04-bridge-audit-negative-cross-sign-lead&quot;: [&quot;−b&quot;],
+  &quot;n04-bridge-worked-n04-06-assemble-0-lead&quot;: [&quot;−ab&quot;],
+  &quot;n04-bridge-audit-negative-square-sign-lead&quot;: [&quot;−b&quot;, &quot;−b&quot;],
+  &quot;n04-s4-square-problem&quot;: [&quot;(2a−5)²&quot;],
+  &quot;n04-s4-square-map&quot;: [&quot;2a&quot;],
+  &quot;n04-s4-square-order&quot;: [&quot;2a&quot;],
+  &quot;n04-bridge-audit-square-2a-lead&quot;: [&quot;2a&quot;],
+  &quot;n04-s4-square-return&quot;: [&quot;4a²&quot;, &quot;−20a&quot;],
+  &quot;n04-s4-product-problem&quot;: [&quot;(3x−2)(3x+2)&quot;, &quot;3x&quot;],
+  &quot;n04-s4-product-map&quot;: [&quot;3x&quot;],
+  &quot;n04-bridge-audit-square-3x-lead&quot;: [&quot;3x&quot;],
+  &quot;n04-lead-11&quot;: [&quot;a,b,c,d&quot;, &quot;(ax+b)(cx+d)&quot;],
+  &quot;n04-bridge-worked-n04-11-before-1-lead&quot;: [&quot;b&quot;],
+  &quot;n04-lead-12&quot;: [&quot;x&quot;, &quot;acx^2+adx+bcx+bd&quot;],
+  &quot;n04-bridge-audit-general-linear-lead&quot;: [&quot;x&quot;],
+  &quot;n04-lead-13&quot;: [&quot;a,b,c,d&quot;, &quot;(3x+1)(x+2)&quot;],
+  &quot;n04-s4-coefficient-map&quot;: [&quot;a=3&quot;, &quot;b=1&quot;, &quot;c=1&quot;, &quot;d=2&quot;],
+  &quot;n04-bridge-audit-concrete-linear-lead&quot;: [&quot;1x&quot;],
+  &quot;n04-after-13&quot;: [&quot;6x&quot;, &quot;x&quot;, &quot;7x&quot;, &quot;3x²+7x+2&quot;],
+  &quot;n04-s4-three-goal&quot;: [&quot;(a+b+c)²&quot;, &quot;a+b&quot;, &quot;T&quot;],
+  &quot;n04-lead-14&quot;: [&quot;T=a+b&quot;, &quot;(T+c)^2&quot;],
+  &quot;n04-bridge-worked-n04-14-before-1-lead&quot;: [&quot;Tc&quot;],
+  &quot;n04-after-14&quot;: [&quot;T&quot;, &quot;a+b&quot;],
+  &quot;n04-lead-15&quot;: [&quot;T&quot;, &quot;a+b&quot;, &quot;T²&quot;, &quot;2Tc&quot;, &quot;(a+b+c)^2&quot;],
+  &quot;n04-bridge-explain-n04-15-before&quot;: [&quot;T=a+b&quot;, &quot;(T+c)²&quot;],
+  &quot;n04-bridge-restore-t-lead&quot;: [&quot;T=a+b&quot;, &quot;T²&quot;, &quot;2Tc&quot;],
+  &quot;n04-bridge-worked-n04-bridge-expand-restored-before-1-lead&quot;: [&quot;2c&quot;],
+  &quot;n04-bridge-explain-n04-15-after&quot;: [&quot;T&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;c&quot;, &quot;b&quot;, &quot;c&quot;],
+  &quot;n04-lead-16&quot;: [&quot;c&quot;, &quot;c→−c&quot;, &quot;(a+b-c)^2&quot;],
+  &quot;n04-bridge-worked-n04-16-before-0-lead&quot;: [&quot;c&quot;, &quot;−c&quot;],
+  &quot;n04-bridge-audit-minus-ac-lead&quot;: [&quot;a&quot;, &quot;−c&quot;],
+  &quot;n04-bridge-audit-minus-bc-lead&quot;: [&quot;b&quot;, &quot;−c&quot;],
+  &quot;n04-bridge-worked-n04-16-assemble-0-lead&quot;: [&quot;c&quot;],
+  &quot;n04-after-16&quot;: [&quot;c&quot;, &quot;c²&quot;],
+  &quot;n04-after-17&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;(A+B)(A−B)&quot;],
+  &quot;n04-bridge-worked-n04-18-before-0-lead&quot;: [&quot;A=x²+1&quot;, &quot;B=x&quot;],
+  &quot;n04-lead-19&quot;: [&quot;−x²&quot;, &quot;(x^2+1)^2-x^2&quot;],
+  &quot;n04-bridge-worked-n04-19-before-0-lead&quot;: [&quot;−x²&quot;],
+  &quot;n04-bridge-audit-remaining-square-lead&quot;: [&quot;x²&quot;],
+  &quot;n04-after-19&quot;: [&quot;2x²−x²&quot;, &quot;x²&quot;],
+  &quot;n04-lead-20&quot;: [&quot;x&quot;, &quot;(x+1)(x+2)(x+3)(x+4)&quot;],
+  &quot;n04-bridge-explain-n04-20-before&quot;: [&quot;(x+p)(x+q)&quot;, &quot;p+q&quot;],
+  &quot;n04-s4-four-plan&quot;: [&quot;T&quot;, &quot;x&quot;],
+  &quot;n04-bridge-pairing-lead&quot;: [&quot;x&quot;],
+  &quot;n04-bridge-worked-n04-bridge-pairing-before-2-lead&quot;: [],
+  &quot;n04-bridge-explain-n04-20-after&quot;: [&quot;1+4&quot;, &quot;2+3&quot;, &quot;x²+5x&quot;, &quot;T&quot;],
+  &quot;n04-after-20&quot;: [&quot;(x+1)(x+4)&quot;, &quot;(x+2)(x+3)&quot;, &quot;5x&quot;],
+  &quot;n04-lead-21&quot;: [&quot;T=x²+5x&quot;, &quot;T&quot;, &quot;(T+4)(T+6)&quot;],
+  &quot;n04-bridge-explain-n04-21-before&quot;: [&quot;x²+5x&quot;, &quot;T&quot;, &quot;T+4&quot;, &quot;T+6&quot;],
+  &quot;n04-bridge-worked-n04-21-before-0-lead&quot;: [&quot;T&quot;],
+  &quot;n04-bridge-audit-t-linear-lead&quot;: [&quot;T&quot;],
+  &quot;n04-bridge-explain-n04-21-after&quot;: [&quot;T&quot;, &quot;T=x²+5x&quot;, &quot;T²&quot;, &quot;10T&quot;, &quot;T²&quot;, &quot;(x²+5x)²&quot;],
+  &quot;n04-lead-22&quot;: [&quot;T&quot;, &quot;T²&quot;, &quot;(x^2+5x)^2+10(x^2+5x)+24&quot;],
+  &quot;n04-bridge-restore-square-lead&quot;: [&quot;T&quot;],
+  &quot;n04-bridge-detail-square-cross-lead&quot;: [&quot;(x²+5x)²&quot;],
+  &quot;n04-bridge-detail-square-last-lead&quot;: [&quot;5x&quot;],
+  &quot;n04-bridge-restore-ten-lead&quot;: [&quot;10T&quot;],
+  &quot;n04-s4-four-close&quot;: [&quot;T&quot;],
+  &quot;n04-bridge-explain-n04-22-after&quot;: [&quot;10T&quot;, &quot;T&quot;],
+  &quot;n05-lead-01&quot;: [&quot;x(y+5)&quot;, &quot;−3(y+5)&quot;, &quot;x(y+5)-3(y+5)&quot;],
+  &quot;n05-after-01&quot;: [&quot;T&quot;, &quot;xT−3T&quot;],
+  &quot;n05-lead-02&quot;: [&quot;T&quot;, &quot;x&quot;, &quot;−3&quot;, &quot;T&quot;, &quot;xT-3T,\\quad T=y+5&quot;],
+  &quot;n05-bridge-explain-n05-02-before&quot;: [&quot;T&quot;],
+  &quot;n05-bridge-factor-t-lead&quot;: [&quot;T&quot;],
+  &quot;n05-bridge-detail-coefficient-factor-lead&quot;: [&quot;T&quot;],
+  &quot;n05-bridge-detail-coefficient-factor-after&quot;: [&quot;T&quot;, &quot;T&quot;],
+  &quot;n05-bridge-explain-n05-02-after&quot;: [&quot;T&quot;, &quot;T=y+5&quot;],
+  &quot;n05-s4-check-conclusion&quot;: [&quot;xy+5x−3y−15&quot;, &quot;(x−3)(y+5)&quot;],
+  &quot;n05-bridge-worked-n05-05-before-0-lead&quot;: [&quot;b−a=−(a−b)&quot;],
+  &quot;n05-lead-06&quot;: [&quot;16x^2+24xy+9y^2&quot;],
+  &quot;n05-bridge-audit-positive-root-16-lead&quot;: [&quot;16x²&quot;],
+  &quot;n05-bridge-audit-positive-root-9-lead&quot;: [&quot;9y²&quot;],
+  &quot;n05-lead-07&quot;: [&quot;(4x+3y)²&quot;, &quot;(4x+3y)^2&quot;],
+  &quot;n05-after-07&quot;: [&quot;24xy&quot;],
+  &quot;n05-lead-09&quot;: [&quot;r&quot;, &quot;s&quot;, &quot;(a+r)(a+s)&quot;],
+  &quot;n05-bridge-worked-n05-09-before-1-lead&quot;: [&quot;a&quot;],
+  &quot;n05-lead-10&quot;: [&quot;a²−6a−16&quot;, &quot;a^2-6a-16&quot;],
+  &quot;n05-s4-candidate-purpose&quot;: [&quot;−6&quot;],
+  &quot;n05-bridge-explain-n05-11-after&quot;: [&quot;−6&quot;, &quot;−8&quot;, &quot;−16&quot;, &quot;(a+r)(a+s)&quot;, &quot;r&quot;, &quot;s&quot;],
+  &quot;n05-after-11&quot;: [&quot;(a−8)(a+2)&quot;, &quot;a²−6a−16&quot;],
+  &quot;n05-s4-general-definition&quot;: [&quot;x²&quot;, &quot;(px+q)(rx+s)&quot;, &quot;p&quot;, &quot;r&quot;, &quot;x&quot;, &quot;q&quot;, &quot;s&quot;],
+  &quot;n05-lead-12&quot;: [&quot;(px+q)(rx+s)&quot;, &quot;(px+q)(rx+s)&quot;],
+  &quot;n05-bridge-worked-n05-12-before-0-lead&quot;: [&quot;px&quot;, &quot;q&quot;],
+  &quot;n05-bridge-worked-n05-12-before-1-lead&quot;: [&quot;x&quot;],
+  &quot;n05-lead-13&quot;: [&quot;4x²+7x+3&quot;, &quot;4x^2+7x+3&quot;],
+  &quot;n05-s4-candidate-generation&quot;: [&quot;pr=4&quot;, &quot;qs=3&quot;],
+  &quot;n05-lead-14&quot;: [&quot;A&quot;, &quot;(2x+1)(2x+3)&quot;, &quot;B&quot;, &quot;(x+1)(4x+3)&quot;, &quot;C&quot;, &quot;(x+3)(4x+1)&quot;],
+  &quot;n05-bridge-cross-a-lead&quot;: [&quot;A&quot;, &quot;(2x+1)(2x+3)&quot;],
+  &quot;n05-bridge-cross-b-lead&quot;: [&quot;B&quot;, &quot;(x+1)(4x+3)&quot;],
+  &quot;n05-bridge-cross-c-lead&quot;: [&quot;C&quot;, &quot;(x+3)(4x+1)&quot;],
+  &quot;n05-group-4&quot;: [&quot;5x²−2x−3&quot;],
+  &quot;n05-lead-16&quot;: [&quot;5x²−2x−3&quot;, &quot;(x+r)(5x+s)&quot;, &quot;r,s&quot;, &quot;(x+r)(5x+s)&quot;],
+  &quot;n05-bridge-worked-n05-16-before-1-lead&quot;: [&quot;s+5r&quot;],
+  &quot;n05-lead-17&quot;: [&quot;rs=−3&quot;, &quot;rs=-3&quot;],
+  &quot;n05-after-17&quot;: [&quot;rs=−3&lt;0&quot;, &quot;r&quot;, &quot;s&quot;],
+  &quot;n05-lead-18&quot;: [&quot;s+5r=−2&quot;, &quot;5x^2-2x-3&quot;],
+  &quot;n05-bridge-explain-n05-18-before&quot;: [&quot;rs=−3&quot;, &quot;s+5r=−2&quot;],
+  &quot;n05-s4-last-candidates&quot;: [&quot;rs=−3&quot;, &quot;(1,−3)&quot;, &quot;(−1,3)&quot;, &quot;(3,−1)&quot;, &quot;(−3,1)&quot;],
+  &quot;n05-bridge-search-rs-1-lead&quot;: [&quot;rs=−3&quot;, &quot;(r,s)=(1,−3)&quot;, &quot;s+5r&quot;],
+  &quot;n05-bridge-search-rs-2-lead&quot;: [&quot;rs=−3&quot;, &quot;(r,s)=(−1,3)&quot;, &quot;s+5r&quot;],
+  &quot;n05-bridge-search-rs-3-lead&quot;: [&quot;rs=−3&quot;, &quot;(r,s)=(3,−1)&quot;, &quot;s+5r&quot;],
+  &quot;n05-bridge-search-rs-4-lead&quot;: [&quot;rs=−3&quot;, &quot;(r,s)=(−3,1)&quot;, &quot;s+5r&quot;],
+  &quot;n05-bridge-select-rs-lead&quot;: [&quot;s+5r=−2&quot;],
+  &quot;n05-bridge-detail-substitute-r-lead&quot;: [&quot;r=−1&quot;, &quot;s=3&quot;, &quot;(x+r)(5x+s)&quot;],
+  &quot;n05-bridge-detail-substitute-r-after&quot;: [&quot;r=−1&quot;, &quot;x−1&quot;, &quot;s&quot;],
+  &quot;n05-bridge-worked-n05-bridge-detail-substitute-r-after-0-lead&quot;: [&quot;s=3&quot;],
+  &quot;n05-bridge-explain-n05-18-after&quot;: [&quot;r&quot;, &quot;s&quot;, &quot;(x+r)(5x+s)&quot;],
+  &quot;n05-lead-19&quot;: [&quot;3a²b−12b³&quot;, &quot;3a^2b-12b^3&quot;],
+  &quot;n05-s4-common-search&quot;: [&quot;−12&quot;, &quot;b&quot;],
+  &quot;n05-bridge-worked-n05-19-before-0-lead&quot;: [&quot;3b&quot;, &quot;3b&quot;],
+  &quot;n05-bridge-audit-common-negative-four-lead&quot;: [&quot;−12b³&quot;, &quot;3b&quot;],
+  &quot;n05-lead-20&quot;: [&quot;a²−(2b)²&quot;, &quot;3b(a^2-4b^2)&quot;],
+  &quot;n05-bridge-audit-square-root-four-lead&quot;: [&quot;4b²&quot;],
+  &quot;n05-bridge-worked-n05-bridge-audit-square-root-four-after-0-lead&quot;: [&quot;3b&quot;],
+  &quot;n05-bridge-worked-n05-bridge-audit-square-root-four-after-1-lead&quot;: [&quot;3b&quot;],
+  &quot;n06-s4-first-goal&quot;: [&quot;(x+2y+1)(x+2y−2)−4&quot;, &quot;X&quot;, &quot;X&quot;, &quot;x&quot;, &quot;y&quot;],
+  &quot;n06-lead-01&quot;: [&quot;X&quot;, &quot;(x+2y+1)(x+2y-2)-4&quot;],
+  &quot;n06-bridge-worked-n06-01-after-0-lead&quot;: [&quot;X&quot;],
+  &quot;n06-after-01&quot;: [&quot;X&quot;],
+  &quot;n06-bridge-explain-n06-02-before&quot;: [&quot;X&quot;],
+  &quot;n06-bridge-worked-n06-bridge-x-expand-before-0-lead&quot;: [&quot;X&quot;, &quot;−4&quot;],
+  &quot;n06-bridge-audit-x-linear-sum-lead&quot;: [&quot;−2X&quot;, &quot;X&quot;],
+  &quot;n06-s4-pair-method&quot;: [&quot;(X+r)(X+s)=X²+(r+s)X+rs&quot;, &quot;X&quot;, &quot;−1&quot;, &quot;−6&quot;, &quot;−6&quot;, &quot;−1&quot;],
+  &quot;n06-bridge-x-pair-lead&quot;: [&quot;X&quot;, &quot;−1&quot;, &quot;−6&quot;, &quot;−6&quot;, &quot;−1&quot;],
+  &quot;n06-after-03&quot;: [&quot;X&quot;, &quot;x,y&quot;],
+  &quot;n06-lead-04&quot;: [&quot;X=x+2y&quot;, &quot;(X-3)(X+2)&quot;],
+  &quot;n06-bridge-audit-restore-x-first-lead&quot;: [&quot;X&quot;, &quot;x+2y&quot;],
+  &quot;n06-bridge-worked-n06-05-after-0-lead&quot;: [&quot;x^{4}&quot;],
+  &quot;n06-lead-06&quot;: [&quot;T²−5T+4&quot;, &quot;x²&quot;, &quot;T^2-5T+4&quot;],
+  &quot;n06-bridge-explain-n06-06-before&quot;: [&quot;T&quot;, &quot;T=x²&quot;, &quot;T&quot;],
+  &quot;n06-bridge-t-pair-lead&quot;: [&quot;T²−5T+4&quot;, &quot;−5&quot;],
+  &quot;n06-bridge-t-factor-lead&quot;: [&quot;T&quot;],
+  &quot;n06-bridge-detail-restore-first-lead&quot;: [&quot;T&quot;, &quot;T=x²&quot;],
+  &quot;n06-bridge-detail-restore-second-lead&quot;: [&quot;T=x²&quot;, &quot;T&quot;],
+  &quot;n06-bridge-detail-restore-second-after&quot;: [&quot;x&quot;],
+  &quot;n06-bridge-explain-n06-06-after&quot;: [&quot;x²&quot;],
+  &quot;n06-lead-07&quot;: [&quot;x²−1&quot;, &quot;x²−4&quot;, &quot;(x^2-1)(x^2-4)&quot;],
+  &quot;n06-bridge-detail-difference-first-lead&quot;: [&quot;x²−1&quot;, &quot;x&quot;],
+  &quot;n06-bridge-detail-difference-second-lead&quot;: [&quot;2²&quot;],
+  &quot;n06-group-3&quot;: [&quot;x&quot;, &quot;y&quot;],
+  &quot;n06-lead-08&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;x^3+x^2y+x^2+xy-2x-2y&quot;],
+  &quot;n06-s4-variable-reason&quot;: [&quot;y&quot;, &quot;y&quot;],
+  &quot;n06-formula-08&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;y&quot;],
+  &quot;n06-after-08&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;y&quot;],
+  &quot;n06-lead-09&quot;: [&quot;y&quot;, &quot;x^3+x^2y+x^2+xy-2x-2y&quot;],
+  &quot;n06-bridge-worked-n06-09-before-0-lead&quot;: [&quot;y&quot;, &quot;y&quot;],
+  &quot;n06-bridge-audit-y-coefficient-lead&quot;: [&quot;y&quot;],
+  &quot;n06-after-09&quot;: [&quot;x&quot;],
+  &quot;n06-lead-10&quot;: [&quot;y&quot;, &quot;x&quot;, &quot;x^3+x^2-2x&quot;],
+  &quot;n06-bridge-worked-n06-10-before-0-lead&quot;: [&quot;x&quot;],
+  &quot;n06-after-10&quot;: [&quot;(x²+x−2)&quot;],
+  &quot;n06-lead-12&quot;: [&quot;x²+x−2&quot;, &quot;−2&quot;, &quot;(x+y)(x^2+x-2)&quot;],
+  &quot;n06-bridge-last-pair-lead&quot;: [&quot;x²+x−2&quot;, &quot;−2&quot;],
+  &quot;n06-bridge-worked-n06-bridge-last-pair-after-1-lead&quot;: [&quot;x+y&quot;],
+  &quot;n06-after-12&quot;: [&quot;x³&quot;, &quot;−2y&quot;],
+  &quot;n06-s4-previous-close&quot;: [&quot;(x+y)(x+2)(x−1)&quot;, &quot;x+y&quot;],
+  &quot;n06-group-4&quot;: [&quot;x&quot;, &quot;y&quot;],
+  &quot;n06-s4-last-goal&quot;: [&quot;x²+3xy+2y²−x−3y−2&quot;, &quot;x&quot;],
+  &quot;n06-s4-rule-definition&quot;: [&quot;U,V&quot;, &quot;x&quot;, &quot;y&quot;, &quot;x&quot;],
+  &quot;n06-lead-13&quot;: [&quot;x²+3xy+2y²−x−3y−2&quot;, &quot;x&quot;, &quot;x^2+3xy+2y^2-x-3y-2&quot;],
+  &quot;n06-bridge-worked-n06-13-before-0-lead&quot;: [&quot;x&quot;],
+  &quot;n06-bridge-audit-x-coefficient-lead&quot;: [&quot;3xy−x&quot;, &quot;x&quot;],
+  &quot;n06-after-13&quot;: [&quot;x&quot;, &quot;3y−1&quot;, &quot;2y²−3y−2&quot;],
+  &quot;n06-lead-14&quot;: [&quot;x&quot;, &quot;2y²−3y−2&quot;, &quot;2y^2-3y-2&quot;],
+  &quot;n06-bridge-explain-n06-14-before&quot;: [&quot;2y²−3y−2&quot;, &quot;(2y+r)(y+s)&quot;, &quot;r,s&quot;],
+  &quot;n06-bridge-worked-n06-14-before-1-lead&quot;: [&quot;2y²−3y−2&quot;],
+  &quot;n06-bridge-audit-constant-pair-lead&quot;: [&quot;−2&quot;, &quot;2s+r=−3&quot;],
+  &quot;n06-bridge-worked-n06-bridge-audit-constant-pair-before-0-lead&quot;: [&quot;−2&quot;, &quot;2s+r&quot;, &quot;r=1&quot;, &quot;s=−2&quot;],
+  &quot;n06-bridge-worked-n06-bridge-audit-constant-pair-before-1-lead&quot;: [&quot;r=−1&quot;, &quot;s=2&quot;],
+  &quot;n06-bridge-worked-n06-bridge-audit-constant-pair-before-2-lead&quot;: [&quot;r=2&quot;, &quot;s=−1&quot;],
+  &quot;n06-bridge-worked-n06-bridge-audit-constant-pair-before-3-lead&quot;: [&quot;r=−2&quot;, &quot;s=1&quot;],
+  &quot;n06-bridge-constant-cross-lead&quot;: [&quot;r=1&quot;, &quot;s=−2&quot;, &quot;(2y+r)(y+s)&quot;, &quot;(2y+1)(y−2)&quot;, &quot;−3y&quot;],
+  &quot;n06-bridge-explain-n06-14-after&quot;: [&quot;x&quot;, &quot;x&quot;],
+  &quot;n06-after-14&quot;: [&quot;x&quot;],
+  &quot;n06-lead-15&quot;: [&quot;(2y+1)&quot;, &quot;(y−2)&quot;, &quot;x&quot;, &quot;(2y+1)+(y-2)&quot;],
+  &quot;n06-bridge-worked-n06-15-before-0-lead&quot;: [&quot;y&quot;],
+  &quot;n06-bridge-audit-sum-y-coefficient-lead&quot;: [&quot;y&quot;],
+  &quot;n06-s4-sum-compare&quot;: [&quot;2y²−3y−2&quot;, &quot;3y−1&quot;, &quot;x&quot;, &quot;3y−1&quot;],
+  &quot;n06-after-15&quot;: [&quot;x&quot;],
+  &quot;n06-lead-16&quot;: [&quot;x²+(3y−1)x+(2y+1)(y−2)&quot;, &quot;x&quot;, &quot;x^2+(3y-1)x+(2y^2-3y-2)&quot;],
+  &quot;n06-bridge-worked-n06-16-before-0-lead&quot;: [&quot;x&quot;],
+  &quot;n06-s4-last-return&quot;: [&quot;U=2y+1&quot;, &quot;V=y−2&quot;, &quot;U+V&quot;, &quot;UV&quot;, &quot;(x+U)(x+V)&quot;, &quot;U,V&quot;],
+}
+const acceptedProseChanges: Record&lt;string, { previous: string; current: string }&gt; = {
+  &quot;n01-s4-like-goal&quot;: {
+    &quot;previous&quot;: &quot;3x²−5x+6−5x²+2x−3を簡単にします。二次の項、一次の項、定数項の順に、一組ずつ計算してから全体を組み立てます。&quot;,
+    &quot;current&quot;: &quot;次の式を簡単にします。二次の項、一次の項、定数項の順に、一組ずつ計算してから全体を組み立てます。&quot;
+  },
+  &quot;n02-bridge-audit-sum-constant-lead&quot;: {
+    &quot;previous&quot;: &quot;定数項の係数だけを計算し、その文字の部分は残す。&quot;,
+    &quot;current&quot;: &quot;最後に、文字を含まない定数項どうしを足します。&quot;
+  },
+  &quot;n02-bridge-audit-diff-constant-lead&quot;: {
+    &quot;previous&quot;: &quot;定数項の係数だけを計算し、その文字の部分は残す。&quot;,
+    &quot;current&quot;: &quot;最後に、Aの定数項と、符号を変えたBの定数項を足します。&quot;
+  },
+  &quot;n02-bridge-constant-sum-lead&quot;: {
+    &quot;previous&quot;: &quot;Bには一次項がないので一次係数は2+0。最後に定数だけを足そう。&quot;,
+    &quot;current&quot;: &quot;最後に、2Aと−3Bの定数項を足します。&quot;
+  },
+  &quot;n03-s4-parts-return&quot;: {
+    &quot;previous&quot;: &quot;係数−8、xの部分x⁹、yの部分y⁶がそろいました。三つを掛けた形へ戻します。&quot;,
+    &quot;current&quot;: &quot;係数−8、xの部分x^{9}、yの部分y^{6}がそろいました。三つを掛けた形へ戻します。&quot;
+  },
+  &quot;n03-bridge-explain-n03-13-before&quot;: {
+    &quot;previous&quot;: &quot;前の括弧の二項をそれぞれ後ろの三項へ掛けるため、合計六つの積が必要になる。先に二行の積を作り、同類項を集めるのはその後にする。&quot;,
+    &quot;current&quot;: &quot;まず六つの積を二行に分けて求めます。同類項は、二行がそろってからまとめます。&quot;
+  },
+  &quot;paragraph-n04-intro&quot;: {
+    &quot;previous&quot;: &quot;(5x+4y)^2 を展開しよう。二乗とは、同じ括弧を二つ掛けること。(5x+4y)^2=(5x+4y)(5x+4y)。二つの括弧のどちらにも二つの項がある。&quot;,
+    &quot;current&quot;: &quot;(5x+4y)^2 を展開します。二乗は、同じ括弧を二つ掛けることです。(5x+4y)^2=(5x+4y)(5x+4y)。&quot;
+  },
+  &quot;n04-s4-square-plan&quot;: {
+    &quot;previous&quot;: &quot;目標は、括弧をなくして同類項をまとめた式です。まず四つの積を一つずつ求め、次に同じ文字の項だけを足し、最後に元の平方の答えへ戻します。&quot;,
+    &quot;current&quot;: &quot;四つの積を順に求めます。ここでは同類項をまとめず、得られた四項を並べます。&quot;
+  },
+  &quot;paragraph-n04-four-products&quot;: {
+    &quot;previous&quot;: &quot;一つ目の括弧の各項に、二つ目の括弧の各項を順に掛けよう。まず四組の積を計算する。同じ文字の項をまとめるのは、まだ先だ。&quot;,
+    &quot;current&quot;: &quot;まず、一つ目の括弧の 5x を、二つ目の括弧の 5x と 4y に掛けます。次に、一つ目の括弧の 4y も、二つ目の各項に掛けます。&quot;
+  },
+  &quot;paragraph-n04-bridge&quot;: {
+    &quot;previous&quot;: &quot;二項の平方では、両端の積だけでなく、異なる項どうしの掛け算も現れる。次は、その二つを一つにまとめる理由を考える。&quot;,
+    &quot;current&quot;: &quot;四つの積を並べた式ができました。次は、中央の二項をまとめる理由を考えます。&quot;
+  },
+  &quot;n04-bridge-audit-square-cross-count-lead&quot;: {
+    &quot;previous&quot;: &quot;ba=abなので、中央に同じabが二つある。&quot;,
+    &quot;current&quot;: &quot;baをabと同じ形で読み直し、係数を足します。&quot;
+  },
+  &quot;n04-bridge-worked-n04-bridge-pairing-before-2-lead&quot;: {
+    &quot;previous&quot;: &quot;最後の組み方では、二つの和が一致する。次はそれを実際の因数の組として選ぶ。&quot;,
+    &quot;current&quot;: &quot;残る組み方でも二つの和を計算し、三つの組み方を比べます。&quot;
+  },
+  &quot;n05-lead-06&quot;: {
+    &quot;previous&quot;: &quot;16x²+24xy+9y²の両端は、何を二乗したものだろう。16x^2+24xy+9y^2&quot;,
+    &quot;current&quot;: &quot;次の式の両端の項は、それぞれ何の平方でしょうか。16x^2+24xy+9y^2&quot;
+  },
+  &quot;n05-bridge-audit-positive-root-16-lead&quot;: {
+    &quot;previous&quot;: &quot;16x²を平方として読むため、まず正の数で16になる平方の底を選ぶ。&quot;,
+    &quot;current&quot;: &quot;16x²を平方の形で読むため、まず二乗すると16になる正の数を選びます。&quot;
+  },
+  &quot;n05-s4-candidate-purpose&quot;: {
+    &quot;previous&quot;: &quot;ここでは三候補の比較表を作り、和が目標の−6になる組を選びます。一つずつ計算するのは、積の条件だけでは候補を決められないことを比べるためです。&quot;,
+    &quot;current&quot;: &quot;三つの候補を一つずつ確かめます。積が合うだけで決めず、和が−6になるかを比べます。&quot;
+  },
+  &quot;n06-bridge-explain-n06-02-before&quot;: {
+    &quot;previous&quot;: &quot;置換は新しい式へ変える操作ではなく、繰り返す部分に仮の名前を付ける操作である。Xの式になった後は、既に学んだ分配法則で各項を開ける。&quot;,
+    &quot;current&quot;: &quot;置き換えても式の値は変わりません。Xの式を、既習の分配法則で展開します。&quot;
+  },
+  &quot;n06-bridge-worked-n06-05-after-0-lead&quot;: {
+    &quot;previous&quot;: &quot;まずx⁴を、ある式を二乗した形に戻します。次に元の三項を、その同じ式で読み直します。&quot;,
+    &quot;current&quot;: &quot;まずx^{4}を、ある式を二乗した形に戻します。次に元の三項を、その同じ式で読み直します。&quot;
+  },
+  &quot;n06-lead-08&quot;: {
+    &quot;previous&quot;: &quot;x³+x²y+x²+xy−2x−2yを、一つの文字について整理したい。xとyそれぞれを変数と見たときの最高次数を調べよう。x^3+x^2y+x^2+xy-2x-2y&quot;,
+    &quot;current&quot;: &quot;次の式を因数分解します。まず、xとyそれぞれについての次数を比べます。x^3+x^2y+x^2+xy-2x-2y&quot;
+  },
+  &quot;n06-formula-08&quot;: {
+    &quot;previous&quot;: &quot;考えて選ぶ：xについて3次、yについて1次。yで整理&quot;,
+    &quot;current&quot;: &quot;次数を比べた結果：xについて3次、yについて1次。yで整理&quot;
+  }
+}
+const proseText = (parts: Extract&lt;TextbookReadingBlock, { type: &#x27;paragraph&#x27; }&gt;[&#x27;parts&#x27;]) =&gt; parts.filter(p =&gt; p.type !== &#x27;choice&#x27;).map(p =&gt; p.type === &#x27;math&#x27; ? p.latex : p.text).join(&#x27;&#x27;)
+
+describe(&#x27;P-003 first section: active derivation and retained results&#x27;, () =&gt; {
+  it(&#x27;implements every approved decision once, preserving original prose or its exact accepted W050/W051 replacement&#x27;, () =&gt; {
+    expect(ledger).toHaveLength(46)
+    expect(Object.keys(acceptedInlineMath)).toHaveLength(288)
+    expect(Object.keys(acceptedProseChanges)).toHaveLength(19)
+    for (const [key, plan] of Object.entries(firstSectionTeachingPlans)) {
+      const old = previousPlans[key]
+      expect(plan.stages).toHaveLength(old.stages.length)
+      for (const entry of ledger.filter(e =&gt; e.unit === key)) {
+        expect(choices(plan.readingFlow).filter(id =&gt; id === entry.itemId), entry.design).toHaveLength(1)
+        expect(plan.readingFlow.find(b =&gt; b.id === entry.blockId)).toBeDefined()
+      }
+      for (const block of old.readingFlow.filter(b =&gt; b.type === &#x27;paragraph&#x27;)) {
+        const current = plan.readingFlow.find(b =&gt; b.id === block.id)
+        expect(current?.type, block.id).toBe(&#x27;paragraph&#x27;)
+        if (Object.hasOwn(acceptedInlineMath, block.id)) {
+          expect(current?.type).toBe(&#x27;paragraph&#x27;)
+          if (current?.type !== &#x27;paragraph&#x27;) throw new Error(&#x27;Missing accepted paragraph: &#x27; + block.id)
+          const wording = acceptedProseChanges[block.id]
+          if (wording) expect(proseText(block.parts), block.id + &#x27; historical wording&#x27;).toBe(wording.previous)
+          expect(proseText(current.parts), block.id + &#x27; accepted wording&#x27;).toBe(wording?.current ?? proseText(block.parts))
+          expect(current.parts.filter(p =&gt; p.type === &#x27;math&#x27;).map(p =&gt; p.latex), block.id + &#x27; typed math&#x27;).toEqual(acceptedInlineMath[block.id])
+          for (const part of block.parts.filter(p =&gt; p.type === &#x27;math&#x27;)) expect(current.parts, block.id + &#x27; original math&#x27;).toContainEqual(part)
+        } else {
+          expect(current &amp;&amp; &#x27;parts&#x27; in current ? current.parts.filter(p =&gt; p.type !== &#x27;choice&#x27;) : [], block.id).toEqual(&#x27;parts&#x27; in block ? block.parts.filter(p =&gt; p.type !== &#x27;choice&#x27;) : [])
+        }
+      }
+      expect(Object.keys(plan.resultBlockIdsByStage!)).toHaveLength(plan.stages.length)
+    }
+    expect(Object.values(firstSectionTeachingPlans).reduce((n, p) =&gt; n + choices(p.readingFlow).length, 0)).toBe(291)
+  })
+
+  it.each(Object.keys(previousPlans))(&#x27;%s references only earlier source steps, and records only its own stage&#x27;, key =&gt; {
+    const plan = firstSectionTeachingPlans[key]
+    const stages = partitionFirstThemeReadingFlow(&#x27;math-numbers-expressions-&#x27; + key, plan.readingFlow)!
+    const positions = new Map(plan.readingFlow.map((b, i) =&gt; [b.id, i]))
+    for (const stage of stages) {
+      for (const ref of firstThemeRecordedResults(stage, plan.readingFlow)) expect(stage.blocks.some(b =&gt; b.id === ref)).toBe(true)
+      for (const block of stage.blocks) for (const id of choices([block])) {
+        for (const ref of requiredFirstThemeContext(stage, plan.readingFlow, id)) {
+          expect(positions.get(ref.split(&#x27;#&#x27;)[0])!, id + &#x27; / &#x27; + ref).toBeLessThan(positions.get(block.id)!)
+          const source = firstThemeSourceView(ref, plan.readingFlow)!
+          expect(source).toBeDefined()
+          if (source.type === &#x27;formula&#x27;) for (const p of source.parts) if (p.type === &#x27;math&#x27;) expect(() =&gt; katex.renderToString(p.latex, { throwOnError: true })).not.toThrow()
+          expect(choices([source])).not.toContain(id)
+        }
+      }
+      expect(requiredFirstThemeContext(stage, plan.readingFlow, null)).toEqual([])
+    }
+  })
+
+  it.each(Object.keys(previousPlans))(&#x27;%s preserves completed S4 attempts and reopens new/replaced decisions&#x27;, key =&gt; {
+    const unit = mathTextbookUnits.find(u =&gt; u.unitId === &#x27;math-numbers-expressions-&#x27; + key)!
+    const old = previousPlans[key]
+    const all = [...original[unit.unitId].sections[0].items, ...old.newItems]
+    const before: TextbookUnit = { ...unit, revision: unit.revision - 1, sections: [{ ...unit.sections[0], readingFlow: old.readingFlow, items: choices(old.readingFlow).map(id =&gt; all.find(q =&gt; q.id === id)!) }] }
+    const progress: TextbookUnitProgress = { unitId: unit.unitId, unitRevision: before.revision, startedAt: 1, updatedAt: 2, completedAt: 3, answers: Object.fromEntries(before.sections[0].items.map(q =&gt; [q.id, { itemId: q.id, value: q.answer, resolved: true, attemptCount: 1, isFirstCorrect: true, firstAnsweredAt: 1, lastAnsweredAt: 2 }])) }
+    let current = effectiveTextbookProgress(unit, progress)!
+    expect(current.archivedRevisions![String(before.revision)].answers).toEqual(progress.answers)
+    expect(current.completedAt).toBeUndefined()
+    for (const q of unit.sections[0].items) {
+      if (progress.answers[q.id]) expect(current.answers[q.id]).toEqual(progress.answers[q.id])
+      else {
+        expect(current.answers[q.id]).toBeUndefined()
+        current = answerTextbookItem(current, unit, q, q.choices!.find(c =&gt; c !== q.answer)!, 4)
+        expect(isTextbookItemResolved(q, current.answers[q.id])).toBe(false)
+        current = answerTextbookItem(current, unit, q, q.answer, 5)
+        expect(isTextbookItemResolved(q, current.answers[q.id])).toBe(true)
+      }
+    }
+  })
+
+  it(&#x27;selects B and the applicable index law from their actual canonical rows&#x27;, () =&gt; {
+    const b = firstThemeSourceView(&#x27;formula-ab-definition#1&#x27;, firstSectionTeachingPlans.n02.readingFlow)!
+    expect(JSON.stringify(b)).toContain(&#x27;B=-x^3+2x^2+2&#x27;)
+    expect(JSON.stringify(b)).not.toContain(&#x27;A=&#x27;)
+    const law = firstThemeSourceView(&#x27;n03-s4-rules-summary#1&#x27;, firstSectionTeachingPlans.n03.readingFlow)!
+    expect(JSON.stringify(law)).toContain(&#x27;(a^m)^n=a^{mn}&#x27;)
+    expect(JSON.stringify(law)).not.toContain(&#x27;a^{m+n}&#x27;)
+  })
+
+  it(&#x27;keeps a parenthesized constant together and separates relations into aligned rows&#x27;, () =&gt; {
+    const block: Extract&lt;TextbookReadingBlock, { type: &#x27;formula&#x27; }&gt; = { id: &#x27;sample&#x27;, type: &#x27;formula&#x27;, parts: [{ type: &#x27;math&#x27;, latex: &#x27;x^2+2xy+y^2-3x-3y+2=x^2+(2y-3)x+(y^2-3y+2)&#x27; }] }
+    const rows = firstThemeFormulaRows(block)
+    expect(rows.map(r =&gt; r.relation)).toEqual([&#x27;&#x27;, &#x27;=&#x27;])
+    expect(rows[1].chunks).toContain(&#x27;+(y^2-3y+2)&#x27;)
+    expect(rows.flatMap(r =&gt; r.chunks)).not.toContain(&#x27;+2)&#x27;)
+    expect(firstThemeFormulaRows({ ...block, parts: [{ type: &#x27;math&#x27;, latex: &#x27;T=a+b\\qquad X=x+2y&#x27; }] }).map(r =&gt; r.relation)).toEqual([&#x27;&#x27;, &#x27;=&#x27;, &#x27;&#x27;, &#x27;=&#x27;])
+  })
+
+  it(&#x27;keeps source equation numbers in histories and prerequisite row views&#x27;, () =&gt; {
+    for (const [key, plan] of Object.entries(firstSectionTeachingPlans)) {
+      const ids = Object.keys(plan.equationNumbers!).filter(id =&gt; !id.includes(&#x27;#&#x27;))
+      expect(ids.map(id =&gt; plan.equationNumbers![id])).toEqual(ids.map((_, i) =&gt; i + 1))
+      for (const id of ids) expect(firstThemeEquationNumber(&#x27;math-numbers-expressions-&#x27; + key, &#x27;s5-record-&#x27; + id)).toBe(plan.equationNumbers![id])
+    }
+    expect(firstThemeEquationNumber(&#x27;math-numbers-expressions-n03&#x27;, &#x27;s5-record-n03-s4-rules-summary#1&#x27;)).toBe(firstThemeEquationNumber(&#x27;math-numbers-expressions-n03&#x27;, &#x27;formula-n03-03&#x27;))
+    expect(firstThemeEquationNumber(&#x27;math-sets&#x27;, &#x27;formula-set-a&#x27;)).toBeUndefined()
+  })
+
+  it(&#x27;renders every current formula before and after answers without breaking mathematical tokens&#x27;, () =&gt; {
+    for (const unit of mathTextbookUnits.filter(u =&gt; Object.hasOwn(firstSectionTeachingPlans, u.unitId.split(&#x27;-&#x27;).at(-1)!))) {
+      const section = unit.sections[0]
+      const progress: TextbookUnitProgress = { unitId: unit.unitId, unitRevision: unit.revision, startedAt: 1, updatedAt: 2, answers: Object.fromEntries(section.items.map(q =&gt; [q.id, { itemId: q.id, value: q.answer, resolved: true, attemptCount: 1, isFirstCorrect: true, firstAnsweredAt: 1, lastAnsweredAt: 2 }])) }
+      for (const block of section.readingFlow) if (block.type === &#x27;formula&#x27;) {
+        for (const attempt of [undefined, progress]) {
+          const html = renderToStaticMarkup(&lt;TextbookFormula block={block} section={section} progress={attempt} unitId={unit.unitId} onOpen={() =&gt; {}} /&gt;)
+          expect(html, block.id).not.toContain(&#x27;katex-error&#x27;)
+          expect(html, block.id).not.toContain(&#x27;§&#x27;)
+          for (const id of choices([block])) expect(html.match(new RegExp(&#x27;data-testid=&quot;&#x27; + (attempt ? &#x27;resolved-&#x27; : &#x27;textbook-item-&#x27;) + id + &#x27;&quot;&#x27;, &#x27;g&#x27;)), id).toHaveLength(1)
+        }
+      }
+    }
+  })
+})
+</pre></details><details><summary>src/data/textbook/math/numbers/firstSectionTeaching.test.tsx</summary><pre>import { readFileSync } from &#x27;node:fs&#x27;
+import { describe, expect, it } from &#x27;vitest&#x27;
+import katex from &#x27;katex&#x27;
+import { mathTextbookUnits } from &#x27;../index&#x27;
+import { mathNumbersN13LegacyUnit, mathNumbersN14LegacyUnit } from &#x27;../../../../test/n1314Legacy&#x27;
+// W029 protected the literal N13r4/N14r10 editions; current W048r5/r11 remains separate.
+const historicallyProtectedUnits = mathTextbookUnits.map(unit =&gt;
+  unit.unitId === mathNumbersN13LegacyUnit.unitId ? mathNumbersN13LegacyUnit
+    : unit.unitId === mathNumbersN14LegacyUnit.unitId ? mathNumbersN14LegacyUnit : unit)
+import { isFirstThemeUnit, partitionFirstThemeReadingFlow, requiredFirstThemeContext } from &#x27;../presentation&#x27;
+import type { TextbookUnit, TextbookReadingBlock } from &#x27;../../../../domain/textbookSchema&#x27;
+import { effectiveTextbookProgress, answerTextbookItem, textbookUnitProgress, type TextbookUnitProgress } from &#x27;../../../../domain/textbook&#x27;
+import { firstSectionTeachingPlans } from &#x27;./firstSectionTeaching&#x27;
+const baseline = JSON.parse(readFileSync(&#x27;work/items/W-MATH-029-section-one-teaching/BASELINE.json&#x27;,&#x27;utf8&#x27;)) as Record&lt;string,TextbookUnit&gt;
+const units = mathTextbookUnits.filter(u=&gt;isFirstThemeUnit(u.unitId))
+const itemIds = (blocks:readonly TextbookReadingBlock[]) =&gt; blocks.flatMap(b=&gt;b.type===&#x27;paragraph&#x27;||b.type===&#x27;formula&#x27;?b.parts.flatMap(p=&gt;p.type===&#x27;choice&#x27;?[p.itemId]:[]):[])
+describe(&#x27;W-MATH-029 current complete section teaching edition&#x27;,()=&gt;{
+  it(&#x27;covers all42 audited regions, preserves sample explanation and solved equations, and protects the remaining units outside the separately approved N07/N08 revisions&#x27;,()=&gt;{
+    expect(units).toHaveLength(7)
+    expect(Object.values(firstSectionTeachingPlans).reduce((n,p)=&gt;n+p.auditedRegions.length,0)).toBe(42)
+    for(const current of historicallyProtectedUnits) if(baseline[current.unitId]&amp;&amp;!isFirstThemeUnit(current.unitId)&amp;&amp;![&#x27;math-numbers-expressions-n07&#x27;,&#x27;math-numbers-expressions-n08&#x27;,&#x27;math-numbers-expressions-n09&#x27;,&#x27;math-numbers-expressions-n10&#x27;,&#x27;math-numbers-expressions-ne02&#x27;,&#x27;math-numbers-expressions-n12&#x27;,&#x27;math-numbers-expressions-n11&#x27;].includes(current.unitId)) expect(current,current.unitId).toEqual(baseline[current.unitId])
+    const unit=units.find(u=&gt;u.unitId.endsWith(&#x27;-n01&#x27;))!
+    const sample=(u:TextbookUnit)=&gt;{const flow=u.sections[0].readingFlow;return flow.slice(flow.findIndex(b=&gt;b.id===&#x27;marker-degree-check&#x27;))}
+    const solved=(u:TextbookUnit,b:TextbookReadingBlock)=&gt;b.type===&#x27;formula&#x27;||b.type===&#x27;paragraph&#x27;
+      ? b.parts.map(p=&gt;p.type===&#x27;math&#x27;?p.latex:p.type===&#x27;choice&#x27;?u.sections[0].items.find(q=&gt;q.id===p.itemId)!.answer:p.text).join(&#x27;&#x27;)
+      : &#x27;text&#x27; in b?b.text:JSON.stringify(b)
+    for(const old of sample(baseline[unit.unitId])) {
+      const current=sample(unit).find(b=&gt;b.id===old.id)!
+      expect(current,old.id).toBeDefined()
+      expect(solved(unit,current),old.id).toEqual(solved(baseline[unit.unitId],old))
+    }
+  })
+  it(&#x27;keeps historical N13/N14 protection separate from accepted current editions&#x27;, () =&gt; {
+    for (const [legacy, revision, count, currentRevision, currentCount] of [
+      [mathNumbersN13LegacyUnit, 4, 12, 5, 18],
+      [mathNumbersN14LegacyUnit, 10, 38, 11, 41],
+    ] as const) {
+      expect(legacy).toEqual(baseline[legacy.unitId])
+      expect(legacy.revision).toBe(revision)
+      expect(legacy.sections[0].items).toHaveLength(count)
+      const current = mathTextbookUnits.find(unit =&gt; unit.unitId === legacy.unitId)!
+      expect(current).not.toBe(legacy)
+      expect(current.revision).toBe(currentRevision)
+      expect(current.sections[0].items).toHaveLength(currentCount)
+    }
+  })
+  it.each(units)(&#x27;$unitId preserves surviving mathematical contracts, archives retired IDs, and has a complete continuous partition&#x27;,unit=&gt;{
+    const plan=firstSectionTeachingPlans[unit.unitId.split(&#x27;-&#x27;).at(-1)!]
+    const section=unit.sections[0],old=baseline[unit.unitId]
+    expect(Object.values(plan.sourceCoverage).flatMap(q=&gt;q.activeItemIds).sort()).toEqual(section.items.map(q=&gt;q.id).sort())
+    for(const source of Object.values(plan.sourceCoverage)){expect(source.activeItemIds.length+source.workedBlockIds.length).toBeGreaterThan(0);for(const id of source.workedBlockIds)expect(section.readingFlow.some(b=&gt;b.id===id)).toBe(true)}
+    expect(unit.revision).toBe(old.revision+(plan.editionIncrement??1))
+    expect(unit.sections[0].figures).toEqual(old.sections[0].figures)
+    expect(unit.source).toEqual(old.source)
+    const order=itemIds(section.readingFlow)
+    expect(order).toEqual(section.items.map(q=&gt;q.id));expect(new Set(order).size).toBe(order.length)
+    for(const q of old.sections[0].items){
+      const current=section.items.find(x=&gt;x.id===q.id)
+      if(plan.retiredItems.includes(q.id)){expect(current).toBeUndefined();continue}
+      expect(current).toEqual({...q,prompt:plan.itemPrompts[q.id]??q.prompt})
+    }
+    const stages=partitionFirstThemeReadingFlow(unit.unitId,section.readingFlow)!
+    expect(stages.flatMap(s=&gt;s.blocks)).toEqual(section.readingFlow)
+    const chains=new Map&lt;string,number&gt;()
+    stages.forEach((stage,i)=&gt;{
+      expect(()=&gt;requiredFirstThemeContext(stage,section.readingFlow)).not.toThrow()
+      for(const b of stage.blocks) if(&#x27;derivationId&#x27; in b&amp;&amp;b.derivationId){expect(chains.get(b.derivationId)??i,b.id).toBe(i);chains.set(b.derivationId,i)}
+    })
+    for(const b of section.readingFlow) if(b.type===&#x27;paragraph&#x27;||b.type===&#x27;formula&#x27;) for(const p of b.parts) if(p.type===&#x27;math&#x27;) expect(()=&gt;katex.renderToString(p.latex,{throwOnError:true}),b.id).not.toThrow()
+    for(const q of section.items) if(q.answerType===&#x27;formula&#x27;) for(const c of q.choices!) expect(()=&gt;katex.renderToString(c,{throwOnError:true}),q.id).not.toThrow()
+  })
+  it.each(units)(&#x27;$unitId keeps the entire previous attempt and requires every new decision&#x27;,unit=&gt;{
+    const old=baseline[unit.unitId]
+    const progress:TextbookUnitProgress={unitId:unit.unitId,unitRevision:old.revision,startedAt:1,updatedAt:2,completedAt:3,answers:Object.fromEntries(old.sections[0].items.map(q=&gt;[q.id,{itemId:q.id,value:q.answer,resolved:true,isFirstCorrect:true,attemptCount:2,firstAnsweredAt:1,lastAnsweredAt:2}]))}
+    let current=effectiveTextbookProgress(unit,progress)!
+    expect(current.archivedRevisions?.[String(old.revision)].answers).toEqual(progress.answers)
+    expect(current.completedAt).toBeUndefined()
+    const added=unit.sections[0].items.filter(q=&gt;!current.answers[q.id]);expect(added.length).toBeGreaterThan(0)
+    for(const q of added){const before=textbookUnitProgress(unit,current).completed;current=answerTextbookItem(current,unit,q,q.choices!.find(c=&gt;c!==q.answer)!,4);expect(textbookUnitProgress(unit,current).completed).toBe(before);current=answerTextbookItem(current,unit,q,q.answer,5)}
+    expect(textbookUnitProgress(unit,current).completed).toBe(unit.sections[0].items.length)
+  })
+  it(&#x27;enforces the exact temporal repairs rather than counting added paragraphs&#x27;,()=&gt;{
+    const flow=(key:string)=&gt;units.find(u=&gt;u.unitId.endsWith(&#x27;-&#x27;+key))!.sections[0].readingFlow
+    const before=(key:string,a:string,b:string)=&gt;{const f=flow(key);expect(f.findIndex(x=&gt;x.id===a),a).toBeGreaterThanOrEqual(0);expect(f.findIndex(x=&gt;x.id===a),a+&#x27; before &#x27;+b).toBeLessThan(f.findIndex(x=&gt;x.id===b))}
+    before(&#x27;n02&#x27;,&#x27;n02-bridge-audit-twice-constant-formula&#x27;,&#x27;n02-bridge-minus-multiplier-formula&#x27;)
+    before(&#x27;n04&#x27;,&#x27;n04-s4-square-result&#x27;,&#x27;n04-s4-product-heading&#x27;)
+    before(&#x27;n06&#x27;,&#x27;n06-bridge-audit-constant-pair-formula&#x27;,&#x27;n06-bridge-constant-cross-formula&#x27;)
+    before(&#x27;ne01&#x27;,&#x27;ne01-bridge-detail-quadratic-coefficient-formula&#x27;,&#x27;ne01-bridge-linear-number-formula&#x27;)
+    before(&#x27;ne01&#x27;,&#x27;ne01-bridge-factor-difference-formula&#x27;,&#x27;ne01-s4-second-factor-heading&#x27;)
+    for(const [key,anchor,answer] of [[&#x27;n04&#x27;,&#x27;n04-heading-2&#x27;,&#x27;差の平方&#x27;],[&#x27;n04&#x27;,&#x27;n04-s4-product-heading&#x27;,&#x27;和と差の積&#x27;],[&#x27;ne01&#x27;,&#x27;ne01-heading-12&#x27;,&#x27;3乗の差&#x27;],[&#x27;ne01&#x27;,&#x27;ne01-s4-second-factor-heading&#x27;,&#x27;3乗の和&#x27;]]) {
+      const plan=firstSectionTeachingPlans[key];expect(plan.stages.find(([id])=&gt;id===anchor)![1]).not.toContain(answer)
+    }
+    expect(flow(&#x27;ne01&#x27;).some(b=&gt;b.id===&#x27;ne01-before-02-2&#x27;)).toBe(false)
+    expect(flow(&#x27;ne01&#x27;).some(b=&gt;b.id===&#x27;ne01-result-07-1&#x27;)).toBe(false)
+    for(const id of [&#x27;ne01-lead-11&#x27;,&#x27;ne01-bridge-difference-substitute-lead&#x27;]){
+      const b=flow(&#x27;ne01&#x27;).find(b=&gt;b.id===id)!
+      expect(JSON.stringify(b)).not.toContain(&#x27;差の3乗&#x27;)
+      expect(JSON.stringify(b)).toContain(&#x27;3乗の差&#x27;)
+    }
+  })
+})
+</pre></details><details><summary>e2e/n12-derivation.spec.ts</summary><pre>import { expect, test, type Page } from &#x27;@playwright/test&#x27;
+
+// W-MATH-008/P-001: 15 original + 11 P-002 + 9 P-003 = 35 active stages.
+const path = &#x27;/kyotsu-step-web/e2e/fixtures/historical-math.html#/learning/textbook/math-numbers-expressions-n12&#x27;
+
+test.beforeEach(({ page }, info) =&gt; {
+  void page
+  if (!info.title.startsWith(&#x27;N12 current r4:&#x27;)) info.annotations.push({ type: &#x27;historical-edition&#x27;, description: &#x27;171c archival Page + pinned shared runtime; not current Page coverage&#x27; })
+})
+const choices: Array&lt;[string, string]&gt; = [
+  [&#x27;n12-p002-q01-coef&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q01-const&#x27;, &#x27;-7&#x27;],
+  [&#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;],
+  [&#x27;n12-p002-q02-coef&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q02-const&#x27;, &#x27;1&#x27;],
+  [&#x27;n12-02&#x27;, &#x27;x\\le\\frac12&#x27;],
+  [&#x27;n12-03&#x27;, &#x27;二つ目に反するので不適&#x27;],
+  [&#x27;n12-04&#x27;, &#x27;-\\frac72&lt;x\\le\\frac12&#x27;],
+  [&#x27;n12-05&#x27;, &#x27;3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x&#x27;],
+  [&#x27;n12-p002-q06-left-coef&#x27;, &#x27;1&#x27;],
+  [&#x27;n12-p002-q06-left-const&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q06-right-coef&#x27;, &#x27;3&#x27;],
+  [&#x27;n12-p002-q06-right-const&#x27;, &#x27;5&#x27;],
+  [&#x27;n12-06&#x27;, &#x27;x\\le2,\\quad x\\le\\frac53&#x27;],
+  [&#x27;n12-07&#x27;, &#x27;x\\le\\frac53&#x27;],
+  [&#x27;n12-08&#x27;, &#x27;20-x&#x27;],
+  [&#x27;n12-09&#x27;, &#x27;x\\in\\mathbb Z,\\ 0\\le x\\le20&#x27;],
+  [&#x27;n12-p003-q10-meaning&#x27;, &#x27;箱と20個の菓子の合計金額&#x27;],
+  [&#x27;n12-p003-q10-cream-coef&#x27;, &#x27;180&#x27;],
+  [&#x27;n12-p003-q10-pudding-coef&#x27;, &#x27;130&#x27;],
+  [&#x27;n12-p003-q10-box-fee&#x27;, &#x27;50&#x27;],
+  [&#x27;n12-10&#x27;, &#x27;50+180x+130(20-x)&#x27;],
+  [&#x27;n12-p003-q11-lower-sign&#x27;, &#x27;\\le&#x27;],
+  [&#x27;n12-p003-q11-upper-sign&#x27;, &#x27;&lt;&#x27;],
+  [&#x27;n12-11&#x27;, &#x27;3200\\le50+180x+130(20-x)&lt;3300&#x27;],
+  [&#x27;n12-p003-q12-product-constant&#x27;, &#x27;2600&#x27;],
+  [&#x27;n12-p002-q12-signed-coef&#x27;, &#x27;-130&#x27;],
+  [&#x27;n12-p003-q12-total-constant&#x27;, &#x27;2650&#x27;],
+  [&#x27;n12-p003-q12-x-coef&#x27;, &#x27;50&#x27;],
+  [&#x27;n12-12&#x27;, &#x27;3200\\le2650+50x&lt;3300&#x27;],
+  [&#x27;n12-p002-q13-lower&#x27;, &#x27;550&#x27;],
+  [&#x27;n12-p002-q13-upper&#x27;, &#x27;650&#x27;],
+  [&#x27;n12-13&#x27;, &#x27;11\\le x&lt;13&#x27;],
+  [&#x27;n12-14&#x27;, &#x27;x=11\\ \\text{または}\\ 12&#x27;],
+  [&#x27;n12-15&#x27;, &#x27;T(11)=3200\\text{円},\\ T(12)=3250\\text{円}&#x27;],
+]
+
+async function answer(page: Page, id: string, value: string) {
+  const trigger = page.getByTestId(&#x27;textbook-item-&#x27; + id)
+  await expect(trigger).toBeVisible()
+  if (id.startsWith(&#x27;n12-p002-&#x27;) || (id.startsWith(&#x27;n12-p003-&#x27;) &amp;&amp; id !== &#x27;n12-p003-q10-meaning&#x27; &amp;&amp; id !== &#x27;n12-p003-q10-box-fee&#x27;)) {
+    await expect(trigger).toHaveClass(/reading-formula-choice--token/)
+    await expect(trigger).toContainText(/選択|×/)
+  }
+  await trigger.click()
+  const panel = page.getByTestId(&#x27;inline-choice-panel-&#x27; + id)
+  await expect(panel).toBeVisible()
+  await panel.getByRole(&#x27;button&#x27;, { name: value, exact: true }).click()
+  await expect(page.getByTestId(&#x27;resolved-&#x27; + id)).toBeVisible()
+}
+
+test(&#x27;N12 P-003: 35 progressive inline holes, math, figure gates, retry and reload&#x27;, async ({ page }) =&gt; {
+  test.setTimeout(150_000)
+  await page.goto(path)
+  await page.evaluate(() =&gt; localStorage.clear())
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;n12-restart-top&#x27;)).toBeVisible()
+  expect(choices).toHaveLength(35);
+  const f01 = page.getByTestId(&#x27;textbook-figure-n12-f01&#x27;)
+  const f02 = page.getByTestId(&#x27;textbook-figure-n12-f02&#x27;)
+  const f03 = page.getByTestId(&#x27;textbook-figure-n12-f03&#x27;)
+  await expect(f01).toHaveCount(0)
+  await expect(f02).toHaveCount(0)
+  await expect(f03).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toHaveCount(0)
+
+  // Visual-only W-MATH-006/P-001: N02-style label/border, retained 44px touch target.
+  const firstToken = page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)
+  await expect(firstToken).toHaveText(&#x27;選択&#x27;)
+  const tokenBox = await firstToken.boundingBox()
+  expect(tokenBox?.width).toBeGreaterThanOrEqual(44)
+  expect(tokenBox?.height).toBeGreaterThanOrEqual(44)
+  const tokenBorder = await firstToken.evaluate((element) =&gt; {
+    const style = getComputedStyle(element)
+    return { radius: style.borderRadius, top: style.borderTopWidth }
+  })
+  expect(tokenBorder).toEqual({ radius: &#x27;0px&#x27;, top: &#x27;1px&#x27; })
+  await firstToken.focus()
+  await expect(firstToken).toBeFocused()
+
+  // Wrong coefficient: cannot unlock either the next local constant or original final question.
+  await page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;).click()
+  const panel = page.getByTestId(&#x27;inline-choice-panel-n12-p002-q01-coef&#x27;)
+  await expect(panel).toBeVisible()
+  const displayedOptions = panel.locator(&#x27;.reading-choice-option&#x27;)
+  let wrongClicked = false
+  for (let i = 0; i &lt; await displayedOptions.count(); i += 1) {
+    const option = displayedOptions.nth(i)
+    if (await option.getAttribute(&#x27;aria-label&#x27;) === &#x27;2&#x27;) continue
+    await option.click()
+    wrongClicked = true
+    break
+  }
+  expect(wrongClicked).toBe(true)
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-const&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toHaveCount(0)
+
+  for (const [id, value] of choices) {
+    await answer(page, id, value)
+    if (id === &#x27;n12-p002-q01-coef&#x27; || id === &#x27;n12-p002-q02-coef&#x27;) {
+      // Coefficients other than 1 must remain explicit before x.
+      await expect(page.getByTestId(&#x27;resolved-&#x27; + id).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;2&#x27;)
+    }
+    if (id === &#x27;n12-p002-q02-const&#x27;) {
+      // A numeric answer 1 at the end of an expression must remain 1.
+      await expect(page.getByTestId(&#x27;resolved-n12-p002-q02-const&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;1&#x27;)
+    }
+    if (id === &#x27;n12-p002-q06-left-coef&#x27;) {
+      // W-MATH-007: retain answer &quot;1&quot; internally, but the rendered formula reads x+2, never 1x.
+      const solved = page.getByTestId(&#x27;resolved-n12-p002-q06-left-coef&#x27;)
+      await expect(solved.locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;x&#x27;)
+      await expect(solved).toHaveAttribute(&#x27;aria-label&#x27;, &#x27;係数は1（式ではx）&#x27;)
+      const visibleParts = await page
+        .getByTestId(&#x27;textbook-formula-formula-q06-left-coef&#x27;)
+        .locator(&#x27;.katex-html&#x27;).allInnerTexts()
+      const visibleFormula = visibleParts.join(&#x27;&#x27;).replace(/\s+/g, &#x27;&#x27;)
+      expect(visibleFormula).toContain(&#x27;x+2&#x27;)
+      expect(visibleFormula).not.toContain(&#x27;1x&#x27;)
+      expect(visibleFormula).not.toContain(&#x27;xx+2&#x27;)
+      const savedAnswer = await page.evaluate(() =&gt;
+        JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;)
+          .state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;]
+          .answers[&#x27;n12-p002-q06-left-coef&#x27;].value,
+      )
+      expect(savedAnswer).toBe(&#x27;1&#x27;)
+    }
+    if (id === &#x27;n12-p002-q06-right-coef&#x27;) {
+      await expect(page.getByTestId(&#x27;resolved-n12-p002-q06-right-coef&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;3&#x27;)
+    }
+    if (id === &#x27;n12-02&#x27;) {
+      await expect(f01).toBeVisible()
+      await expect(f02).toHaveCount(0)
+    }
+    if (id === &#x27;n12-06&#x27;) {
+      await expect(f02).toBeVisible()
+      await expect(f03).toHaveCount(0)
+    }
+    if (id === &#x27;n12-14&#x27;) await expect(f03).toHaveCount(0)
+    if (id === &#x27;n12-15&#x27;) {
+      await expect(f03).toBeVisible()
+      await expect(f03.locator(&#x27;img&#x27;)).toHaveJSProperty(&#x27;complete&#x27;, true)
+    }
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+    const overflowing = await page.locator(&#x27;.reading-formula-line--n12&#x27;).evaluateAll(lines =&gt;
+      lines.filter(line =&gt; line.scrollWidth &gt; line.clientWidth + 2)
+        .map(line =&gt; line.getAttribute(&#x27;data-testid&#x27;)),
+    )
+    expect(overflowing, &#x27;No inner formula horizontal scrollbar&#x27;).toEqual([])
+  }
+
+  for (const derivation of [&#x27;solve-first&#x27;, &#x27;solve-second&#x27;, &#x27;triple-solve&#x27;, &#x27;cost-range&#x27;]) {
+    await expect(page.locator(&#x27;[data-derivation-id=&quot;&#x27; + derivation + &#x27;&quot;]&#x27;)).toHaveCount(1)
+  }
+  await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+
+  // Approved W-MATH-008/P-001 visual contract: all three phone widths,
+  // including every formula&#x27;s *internal* scroll (document-only is insufficient).
+  for (const width of [320, 375, 390]) {
+    await page.setViewportSize({ width, height: 760 })
+    const overflow = await page.locator(&#x27;.reading-formula-line--n12&#x27;).evaluateAll(lines =&gt;
+      lines.filter(line =&gt; line.scrollWidth &gt; line.clientWidth + 2)
+        .map(line =&gt; line.getAttribute(&#x27;data-testid&#x27;)),
+    )
+    expect(overflow, `N12 formula overflow at ${width}px`).toEqual([])
+    expect(await page.evaluate(() =&gt; document.documentElement.scrollWidth))
+      .toBeLessThanOrEqual(await page.evaluate(() =&gt; document.documentElement.clientWidth + 1))
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+  }
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q06-left-coef&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;x&#x27;)
+  await expect(f03).toBeVisible()
+})
+
+test(&#x27;N12 P-003: v1 history is archived and a genuine restart begins at Q01&#x27;, async ({ page }) =&gt; {
+  await page.goto(&#x27;/kyotsu-step-web/e2e/fixtures/historical-math-data.json&#x27;)
+  await page.evaluate(() =&gt; {
+    localStorage.clear()
+    const record = (id: string, value: string) =&gt; ({
+      itemId: id, value, firstValue: value, isFirstCorrect: true, resolved: true,
+      attemptCount: 1, firstAnsweredAt: 100, lastAnsweredAt: 200,
+    })
+    const progress = {
+      unitId: &#x27;math-numbers-expressions-n12&#x27;, unitRevision: 1,
+      startedAt: 100, updatedAt: 200, completedAt: 250,
+      answers: {
+        &#x27;n12-01&#x27;: record(&#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;),
+        &#x27;n12-01a&#x27;: record(&#x27;n12-01a&#x27;, &#x27;-7&lt;2x&#x27;),
+      },
+    }
+    localStorage.setItem(&#x27;kyotsu-step-store&#x27;, JSON.stringify({
+      state: { textbookProgress: { [progress.unitId]: progress } }, version: 1,
+    }))
+  })
+  await page.goto(path)
+  await expect(page.getByTestId(&#x27;n12-progress-upgrade-note&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toHaveCount(0)
+
+  await answer(page, &#x27;n12-p002-q01-coef&#x27;, &#x27;2&#x27;)
+  await answer(page, &#x27;n12-p002-q01-const&#x27;, &#x27;-7&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toBeVisible()
+  await answer(page, &#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q02-coef&#x27;)).toBeVisible()
+
+  const saved = await page.evaluate(() =&gt; {
+    const state = JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state
+    return state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;]
+  })
+  expect(saved.unitRevision).toBe(3)
+  expect(saved.migratedFromRevision).toBe(1)
+  expect(saved.previousRevisionCompletedAt).toBe(250)
+  expect(saved.completedAt).toBeUndefined()
+  expect(saved.archivedRevisions[&#x27;1&#x27;].answers[&#x27;n12-01&#x27;].value).toBe(&#x27;x&gt;-\\frac72&#x27;)
+  expect(saved.archivedRevisions[&#x27;1&#x27;].answers[&#x27;n12-01a&#x27;].value).toBe(&#x27;-7&lt;2x&#x27;)
+  expect(saved.answers[&#x27;n12-p002-q01-coef&#x27;].value).toBe(&#x27;2&#x27;)
+  await page.reload()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q02-coef&#x27;)).toBeVisible()
+
+  page.once(&#x27;dialog&#x27;, dialog =&gt; dialog.accept())
+  await page.getByTestId(&#x27;n12-restart-top&#x27;).click()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toHaveCount(0)
+  const afterReset = await page.evaluate(() =&gt;
+    JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state
+      .textbookProgress[&#x27;math-numbers-expressions-n12&#x27;],
+  )
+  expect(afterReset.unitRevision).toBe(3)
+  expect(afterReset.answers).toEqual({})
+  expect(afterReset.archivedRevisions[&#x27;1&#x27;]).toEqual(saved.archivedRevisions[&#x27;1&#x27;])
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+})
+
+
+// Current r4 ordinary-route coverage is independent of the historical fixture above.
+// Expected46 interactions/15 stages frozen from accepted n12Authored.json at84f90ba9.
+const currentR4 = [
+  {
+    &quot;id&quot;: &quot;n12-q01-subtract-x&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q01-subtract-x-equation&quot;,
+      &quot;n12-q01-subtract-x-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q01-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q01-coef-equation&quot;,
+      &quot;n12-p002-q01-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q01-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;-7&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q01-const-equation&quot;,
+      &quot;n12-p002-q01-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-01&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;x&gt;-\\frac72&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-01-equation&quot;,
+      &quot;n12-01-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q02-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q02-coef-equation&quot;,
+      &quot;n12-p002-q02-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q02-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;1&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q02-const-equation&quot;,
+      &quot;n12-p002-q02-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-02&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;x\\le\\frac12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-02-equation&quot;,
+      &quot;n12-02-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q03-first&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q03-first-equation&quot;,
+      &quot;n12-q03-first-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q03-second&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;成り立たない&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q03-second-result&quot;,
+      &quot;n12-q03-second-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-03&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;二つ目に反するので不適&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-03-result&quot;,
+      &quot;n12-03-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q04-left-end&quot;,
+    &quot;stage&quot;: &quot;n12-stage-04&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q04-left-end-equation&quot;,
+      &quot;n12-q04-left-end-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-04&quot;,
+    &quot;stage&quot;: &quot;n12-stage-04&quot;,
+    &quot;answer&quot;: &quot;-\\frac72&lt;x\\le\\frac12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-04-equation&quot;,
+      &quot;n12-04-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-05&quot;,
+    &quot;stage&quot;: &quot;n12-stage-05&quot;,
+    &quot;answer&quot;: &quot;3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-05-equation&quot;,
+      &quot;n12-05-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-left-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;1&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-left-coef-equation&quot;,
+      &quot;n12-p002-q06-left-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-left-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-left-const-equation&quot;,
+      &quot;n12-p002-q06-left-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-right-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;3&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-right-coef-equation&quot;,
+      &quot;n12-p002-q06-right-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-right-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;5&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-right-const-equation&quot;,
+      &quot;n12-p002-q06-right-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-06&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;x\\le2,\\quad x\\le\\frac53&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-06-equation&quot;,
+      &quot;n12-06-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q07-boundary&quot;,
+    &quot;stage&quot;: &quot;n12-stage-07&quot;,
+    &quot;answer&quot;: &quot;成り立たない&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q07-boundary-result&quot;,
+      &quot;n12-q07-boundary-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-07&quot;,
+    &quot;stage&quot;: &quot;n12-stage-07&quot;,
+    &quot;answer&quot;: &quot;x\\le\\frac53&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-07-equation&quot;,
+      &quot;n12-07-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-08&quot;,
+    &quot;stage&quot;: &quot;n12-stage-08&quot;,
+    &quot;answer&quot;: &quot;20-x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-08-equation&quot;,
+      &quot;n12-08-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-09&quot;,
+    &quot;stage&quot;: &quot;n12-stage-09&quot;,
+    &quot;answer&quot;: &quot;x\\in\\mathbb Z,\\ 0\\le x\\le20&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-09-equation&quot;,
+      &quot;n12-09-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-meaning&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;箱と20個の菓子の合計金額&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-meaning-result&quot;,
+      &quot;n12-p003-q10-meaning-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-cream-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;180&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-cream-coef-equation&quot;,
+      &quot;n12-p003-q10-cream-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-pudding-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;130&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-pudding-coef-equation&quot;,
+      &quot;n12-p003-q10-pudding-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-box-fee&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;50&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-box-fee-equation&quot;,
+      &quot;n12-p003-q10-box-fee-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-10&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;50+180x+130(20-x)&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-10-equation&quot;,
+      &quot;n12-10-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q11-lower-sign&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;\\le&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q11-lower-sign-equation&quot;,
+      &quot;n12-p003-q11-lower-sign-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q11-upper-sign&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q11-upper-sign-equation&quot;,
+      &quot;n12-p003-q11-upper-sign-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-11&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;3200\\le50+180x+130(20-x)&lt;3300&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-11-equation&quot;,
+      &quot;n12-11-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-product-constant&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;2600&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-product-constant-equation&quot;,
+      &quot;n12-p003-q12-product-constant-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q12-signed-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;-130&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q12-signed-coef-equation&quot;,
+      &quot;n12-p002-q12-signed-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-total-constant&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;2650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-total-constant-equation&quot;,
+      &quot;n12-p003-q12-total-constant-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-x-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;50&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-x-coef-equation&quot;,
+      &quot;n12-p003-q12-x-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-12&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;3200\\le2650+50x&lt;3300&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-12-equation&quot;,
+      &quot;n12-12-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-operation&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;2650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-operation-equation&quot;,
+      &quot;n12-q13-operation-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q13-lower&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;550&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q13-lower-equation&quot;,
+      &quot;n12-p002-q13-lower-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q13-upper&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q13-upper-equation&quot;,
+      &quot;n12-p002-q13-upper-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-lower-divide&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;11&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-lower-divide-equation&quot;,
+      &quot;n12-q13-lower-divide-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-upper-divide&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;13&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-upper-divide-equation&quot;,
+      &quot;n12-q13-upper-divide-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-13&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;11\\le x&lt;13&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-13-equation&quot;,
+      &quot;n12-13-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q14-integer&quot;,
+    &quot;stage&quot;: &quot;n12-stage-14&quot;,
+    &quot;answer&quot;: &quot;11,\\ 12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q14-integer-equation-0&quot;,
+      &quot;n12-q14-integer-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-14&quot;,
+    &quot;stage&quot;: &quot;n12-stage-14&quot;,
+    &quot;answer&quot;: &quot;x=11\\ \\text{または}\\ 12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-14-equation&quot;,
+      &quot;n12-14-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q15-eleven&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;3200&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q15-eleven-equation&quot;,
+      &quot;n12-q15-eleven-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q15-twelve&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;3250&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q15-twelve-equation&quot;,
+      &quot;n12-q15-twelve-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-15&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;T(11)=3200\\text{円},\\ T(12)=3250\\text{円}&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-15-equation&quot;,
+      &quot;n12-15-after&quot;
+    ]
+  }
+] as const
+
+test(&#x27;N12 current r4: ordinary route,46 decisions,15 stages,wrong gate,completion and reload&#x27;, async ({ page }) =&gt; {
+  test.setTimeout(150_000)
+  await page.goto(&#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12&#x27;)
+  await page.evaluate(() =&gt; localStorage.clear())
+  await page.reload()
+  expect(currentR4).toHaveLength(46)
+  expect(new Set(currentR4.map(row =&gt; row.stage)).size).toBe(15)
+  // The ordinary entry loads App lazily; await actual reader bootstrap, not the HTML loading shell.
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByTestId(&#x27;math-textbook-stage-n12-stage-01&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;guided-source-question&#x27;)).toContainText(&#x27;同時に満たす&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  const first = page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)
+  await first.click()
+  const firstPanel = page.getByTestId(&#x27;inline-choice-panel-n12-q01-subtract-x&#x27;)
+  await firstPanel.getByRole(&#x27;button&#x27;, { name: &#x27;2&#x27;, exact: true }).click()
+  await expect(page.getByTestId(&#x27;textbook-hint-n12-q01-subtract-x&#x27;)).toBeVisible()
+  await expect(page.locator(&#x27;[data-block-id=&quot;n12-q01-subtract-x-equation&quot;]&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  let stage = currentR4[0].stage as string
+  let transitions = 0
+  for (const row of currentR4) {
+    if (row.stage !== stage) {
+      await expect(page.getByTestId(&#x27;math-textbook-next-stage&#x27;)).toBeVisible()
+      await page.getByTestId(&#x27;math-textbook-next-stage&#x27;).click()
+      stage = row.stage
+      transitions += 1
+    }
+    await expect(page.getByTestId(&#x27;math-textbook-stage-&#x27; + row.stage)).toBeVisible()
+    await page.getByTestId(&#x27;textbook-item-&#x27; + row.id).click()
+    await page.getByTestId(&#x27;inline-choice-panel-&#x27; + row.id).getByRole(&#x27;button&#x27;, { name: row.answer, exact: true }).click()
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27; + row.id)).toHaveCount(0)
+    for (const blockId of row.afterIds) {
+      await expect(page.locator(&#x27;[data-block-id=&quot;&#x27; + blockId + &#x27;&quot;]&#x27;)).toBeVisible()
+    }
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+  }
+  expect(transitions).toBe(14)
+  await expect(page.getByTestId(&#x27;n12-complete&#x27;)).toBeVisible()
+  const saved = await page.evaluate(() =&gt; JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;])
+  expect(saved.unitRevision).toBe(4)
+  expect(Object.keys(saved.answers)).toHaveLength(46)
+  expect(saved.answers[&#x27;n12-q01-subtract-x&#x27;].attemptCount).toBe(2)
+  expect(saved.completedAt).toBeGreaterThan(0)
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByTestId(&#x27;n12-complete&#x27;)).toBeVisible()
+  await expect(page.locator(&#x27;[data-block-id=&quot;n12-15-equation&quot;]&#x27;)).toBeVisible()
+  page.once(&#x27;dialog&#x27;, dialog =&gt; dialog.accept())
+  await page.getByRole(&#x27;button&#x27;, { name: &#x27;この単元を最初から&#x27;, exact: true }).first().click()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)).toBeVisible()
+  expect(await page.evaluate(() =&gt; JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;])).toBeUndefined()
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)).toBeVisible({ timeout: 30_000 })
+})
+</pre></details><details><summary>tools/textbook/integrate-n07.mjs</summary><pre>import fs from &#x27;node:fs&#x27;;
+import{execFileSync}from&#x27;node:child_process&#x27;;
+import{isDeepStrictEqual}from&#x27;node:util&#x27;;
+import{repairN07}from&#x27;./repair-n07.mjs&#x27;;
+import { createHash } from &#x27;node:crypto&#x27;;
+import { compileLesson } from &#x27;./compile-lesson.mjs&#x27;;
+const root=&#x27;work/items/W-GOV-010-learning-production-workflow/n07/&#x27;;
+const raw=fs.readFileSync(root+&#x27;N07_DESIGN_PLAN.json&#x27;,&#x27;utf8&#x27;);
+const approval=JSON.parse(fs.readFileSync(root+&#x27;CONTENT_APPROVAL.json&#x27;,&#x27;utf8&#x27;));
+if(approval.status!==&#x27;APPROVED&#x27;||approval.planSHA256!==createHash(&#x27;sha256&#x27;).update(raw).digest(&#x27;hex&#x27;))throw Error(&#x27;Exact N07 content approval required&#x27;);
+const plan=JSON.parse(raw),compiled=compileLesson(plan);
+compiled.unit.source={type:&#x27;reference&#x27;,label:&#x27;教師編集Word「数と式」N07 / 承認済み段階設計&#x27;,rightsNote:&#x27;原問14件と無番号説明を段階化。本文設計承認2026-10-24。&#x27;};
+const output={...compiled,publishable:true,integrationStatus:&#x27;REGISTERED&#x27;,nodes:plan.nodes,contentApproval:approval.planSHA256};
+const repairRoot=&#x27;work/items/W-MATH-032-n07-semantic-repair/&#x27;;
+let registered=output;
+if(fs.existsSync(repairRoot+&#x27;APPROVAL.json&#x27;)){
+ const approved=JSON.parse(fs.readFileSync(repairRoot+&#x27;APPROVAL.json&#x27;,&#x27;utf8&#x27;));
+ const proposal=fs.readFileSync(repairRoot+&#x27;PROPOSAL.md&#x27;);
+ // P001 record reconciliation is an exact metadata envelope, not a new N07 design approval.
+ // Keep APPROVAL.json and the immutable historical body as the authority.
+ const proposalSHA=value=&gt;createHash(&#x27;sha256&#x27;).update(value).digest(&#x27;hex&#x27;);
+ const historicalProposalHash=&#x27;ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a&#x27;;
+ const acceptedEnvelopeHash=&#x27;e338fcbffa1c9e3d8dfefaed9a910135b275c3a6b50d7cc6914bd5843a51609d&#x27;;
+ const acceptedPrefixBytes=1255;
+ const acceptedPrefixHash=&#x27;d6f3ba384ec94aaa353231e9dfed0d4650fbc9a0fd95f66bd6263c7de964c90d&#x27;;
+ let approvedBody=proposal;
+ if(proposalSHA(proposal)===acceptedEnvelopeHash){
+  if(approved.proposalHash!==historicalProposalHash||proposalSHA(proposal.subarray(0,acceptedPrefixBytes))!==acceptedPrefixHash||proposalSHA(proposal.subarray(acceptedPrefixBytes))!==historicalProposalHash)throw Error(&#x27;N07 repair proposal approval mismatch&#x27;);
+  approvedBody=proposal.subarray(acceptedPrefixBytes);
+ }
+ if(proposalSHA(approvedBody)!==approved.proposalHash)throw Error(&#x27;N07 repair proposal approval mismatch&#x27;);
+ const immutable=execFileSync(&#x27;git&#x27;,[&#x27;show&#x27;,&#x27;e6fc1017f3ce8f5cdce6102720b32afdc73f652b:&#x27;+repairRoot+&#x27;NODE_DESIGN.json&#x27;]);
+ if(!immutable.equals(fs.readFileSync(repairRoot+&#x27;NODE_DESIGN.json&#x27;)))throw Error(&#x27;N07 approved attached design changed&#x27;);
+ const source=JSON.parse(fs.readFileSync(&#x27;tools/textbook/fixtures/n07-source-index.json&#x27;));
+ registered=repairN07(output,JSON.parse(immutable),plan,source).artifact;
+}
+const path=&#x27;src/data/textbook/math/numbers/n07Authored.json&#x27;,text=JSON.stringify(registered,null,2)+&#x27;\n&#x27;;
+if(process.argv.includes(&#x27;--check&#x27;)){if(!isDeepStrictEqual(JSON.parse(fs.readFileSync(path,&#x27;utf8&#x27;)),JSON.parse(text)))throw Error(&#x27;N07 integration artifact is stale&#x27;);console.log(&#x27;N07 exact approved generation PASS&#x27;);}
+else fs.writeFileSync(path,text);
+</pre></details></html>

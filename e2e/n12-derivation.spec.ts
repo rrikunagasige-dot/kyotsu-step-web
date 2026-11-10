@@ -186,7 +186,7 @@ test('N12 P-003: 35 progressive inline holes, math, figure gates, retry and relo
 })
 
 test('N12 P-003: v1 history is archived and a genuine restart begins at Q01', async ({ page }) => {
-  await page.goto(path)
+  await page.goto('/kyotsu-step-web/e2e/fixtures/historical-math-data.json')
   await page.evaluate(() => {
     localStorage.clear()
     const record = (id: string, value: string) => ({
@@ -205,7 +205,7 @@ test('N12 P-003: v1 history is archived and a genuine restart begins at Q01', as
       state: { textbookProgress: { [progress.unitId]: progress } }, version: 1,
     }))
   })
-  await page.reload()
+  await page.goto(path)
   await expect(page.getByTestId('n12-progress-upgrade-note')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n12-p002-q01-coef')).toBeVisible()
   await expect(page.getByTestId('resolved-n12-01')).toHaveCount(0)

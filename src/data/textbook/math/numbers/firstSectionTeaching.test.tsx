@@ -2,6 +2,11 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { mathTextbookUnits } from '../index'
+import { mathNumbersN13LegacyUnit, mathNumbersN14LegacyUnit } from '../../../../test/n1314Legacy'
+// W029 protected the literal N13r4/N14r10 editions; current W048r5/r11 remains separate.
+const historicallyProtectedUnits = mathTextbookUnits.map(unit =>
+  unit.unitId === mathNumbersN13LegacyUnit.unitId ? mathNumbersN13LegacyUnit
+    : unit.unitId === mathNumbersN14LegacyUnit.unitId ? mathNumbersN14LegacyUnit : unit)
 import { isFirstThemeUnit, partitionFirstThemeReadingFlow, requiredFirstThemeContext } from '../presentation'
 import type { TextbookUnit, TextbookReadingBlock } from '../../../../domain/textbookSchema'
 import { effectiveTextbookProgress, answerTextbookItem, textbookUnitProgress, type TextbookUnitProgress } from '../../../../domain/textbook'
@@ -13,7 +18,7 @@ describe('W-MATH-029 current complete section teaching edition',()=>{
   it('covers all42 audited regions, preserves sample explanation and solved equations, and protects the remaining units outside the separately approved N07/N08 revisions',()=>{
     expect(units).toHaveLength(7)
     expect(Object.values(firstSectionTeachingPlans).reduce((n,p)=>n+p.auditedRegions.length,0)).toBe(42)
-    for(const current of mathTextbookUnits) if(baseline[current.unitId]&&!isFirstThemeUnit(current.unitId)&&!['math-numbers-expressions-n07','math-numbers-expressions-n08','math-numbers-expressions-n09','math-numbers-expressions-n10','math-numbers-expressions-ne02','math-numbers-expressions-n12','math-numbers-expressions-n11'].includes(current.unitId)) expect(current,current.unitId).toEqual(baseline[current.unitId])
+    for(const current of historicallyProtectedUnits) if(baseline[current.unitId]&&!isFirstThemeUnit(current.unitId)&&!['math-numbers-expressions-n07','math-numbers-expressions-n08','math-numbers-expressions-n09','math-numbers-expressions-n10','math-numbers-expressions-ne02','math-numbers-expressions-n12','math-numbers-expressions-n11'].includes(current.unitId)) expect(current,current.unitId).toEqual(baseline[current.unitId])
     const unit=units.find(u=>u.unitId.endsWith('-n01'))!
     const sample=(u:TextbookUnit)=>{const flow=u.sections[0].readingFlow;return flow.slice(flow.findIndex(b=>b.id==='marker-degree-check'))}
     const solved=(u:TextbookUnit,b:TextbookReadingBlock)=>b.type==='formula'||b.type==='paragraph'
@@ -23,6 +28,20 @@ describe('W-MATH-029 current complete section teaching edition',()=>{
       const current=sample(unit).find(b=>b.id===old.id)!
       expect(current,old.id).toBeDefined()
       expect(solved(unit,current),old.id).toEqual(solved(baseline[unit.unitId],old))
+    }
+  })
+  it('keeps historical N13/N14 protection separate from accepted current editions', () => {
+    for (const [legacy, revision, count, currentRevision, currentCount] of [
+      [mathNumbersN13LegacyUnit, 4, 12, 5, 18],
+      [mathNumbersN14LegacyUnit, 10, 38, 11, 41],
+    ] as const) {
+      expect(legacy).toEqual(baseline[legacy.unitId])
+      expect(legacy.revision).toBe(revision)
+      expect(legacy.sections[0].items).toHaveLength(count)
+      const current = mathTextbookUnits.find(unit => unit.unitId === legacy.unitId)!
+      expect(current).not.toBe(legacy)
+      expect(current.revision).toBe(currentRevision)
+      expect(current.sections[0].items).toHaveLength(currentCount)
     }
   })
   it.each(units)('$unitId preserves surviving mathematical contracts, archives retired IDs, and has a complete continuous partition',unit=>{

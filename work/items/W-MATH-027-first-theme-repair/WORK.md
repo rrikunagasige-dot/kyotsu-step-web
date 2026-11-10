@@ -1,3 +1,19 @@
+# Current record reconciliation — W-MATH-027 / WORK.md
+
+Status: BLOCKED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: BLOCKED
+
+Historical record recovery remains blocked: exact current scope/approval/verification mapping is incomplete; no approval, completion, or learner acceptance is inferred.
+
+Evidence: existing fixed-candidate historical text below where present. Missing exact approval/closure provenance remains unresolved; do not substitute filename or informal positive wording.
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 124741381c2e08cd829cbee992772ad3fbe86e2c8b205599c32d9ebb083ffa14
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-027 — First theme, one-at-a-time public review
 
 2026-10-24. Target rrikunagasige-dot/kyotsu-step-web (1391122224).

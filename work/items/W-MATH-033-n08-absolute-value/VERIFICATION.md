@@ -1,3 +1,23 @@
+# Current record reconciliation — W-MATH-033 / VERIFICATION.md
+
+Status: PASS
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: DONE
+
+Historical native closure is evidenced for its exact recorded version. This record repair does not reopen the closed Work or accept a later product version.
+
+PASS is bounded to the exact historical closure/verification source listed below, not current repository-wide CI.
+
+Evidence:
+- Store approval event W033-N08-P001-APPROVED-20261025, proposal_hash=6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637 (historical, no new quote)
+- Store work_closed 354b6024-f218-4947-aa4a-7568ab39ebae seq840 hash=63440b7933a942927209a5f930b8644307d2b6b1dfd1c2bc312726d5a1f5d424 source=ea47dd97f7d323267281915e8d9a7bb92a8e7c03 result=2f394091cf591eb3680275860eefe2f09d1e98858164d56e9ef58c807e703c09
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 6263f99a30c8d74e13839e880b6711c9556998c79c12c53fb99f7a994eada7e9
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 2026-10-25 current: N08本人受入済み。USER_ACCEPTANCE.json、POST_ACCEPTANCE_SWEEP.json、LEARNING_RESULT.json、FEATURE_RECEIPTS.jsonとgenerated閉鎖記録を追加。以下の受入前の記載は履歴。
 
 # N08 実装の検証 — 現在

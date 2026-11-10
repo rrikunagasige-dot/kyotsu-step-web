@@ -48,9 +48,22 @@ class MaterializationBinding(unittest.TestCase):
         from runtime import Runtime
         self.tmp=tempfile.TemporaryDirectory();self.rt=Runtime(Path(self.tmp.name)/'ledger',ROOT)
         self.plan=json.loads((ROOT/'work/items/W-MATH-032-n07-semantic-repair/WORKFLOW_PLAN.json').read_text());self.plan['simulation']=True;self.plan['source_manifest']=manifest(ROOT,self.plan['source_manifest'])
+        # This is a current-root simulation, not a rewrite of the historical Work/approval.
+        self.historical_protected_manifest=copy.deepcopy(self.plan['protected_manifest'])
+        self.plan['protected_manifest']=manifest(ROOT,self.plan['protected_manifest'])
         self.rt.open(self.plan);self.work=self.plan['work_id']
         self.ev=self.rt.evidence(self.work,'file',{'path':PATH,'sha256':manifest(ROOT,[PATH])[PATH]},source_ref='simulation:binding-test',verification_level='simulation')
     def tearDown(self):self.tmp.cleanup()
+    def test_historical_protected_manifest_still_rejected(self):
+        from runtime import Runtime
+        from contracts import Rejected
+        historical=copy.deepcopy(self.plan)
+        historical['protected_manifest']=copy.deepcopy(self.historical_protected_manifest)
+        self.assertNotEqual(historical['protected_manifest'],self.plan['protected_manifest'])
+        rejected=Runtime(Path(self.tmp.name)/'historical-protection-ledger',ROOT)
+        with self.assertRaisesRegex(Rejected,'保護対象の固定版が違う'):
+            rejected.open(historical)
+        self.assertEqual(list(rejected.store.events()),[])
     def test_binding_requires_approval_and_preserves_its_identity(self):
         from materialization import bind_n07
         from contracts import Rejected

@@ -1,3 +1,23 @@
+# Current record reconciliation — W-MATH-035 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: DONE
+
+Historical native closure is evidenced for its exact recorded version. This record repair does not reopen the closed Work or accept a later product version.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W035-P001-APPROVED-20261025, proposal_hash=7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e (historical, no new quote)
+- Store work_closed b6d29206-eac5-4c70-ad2e-1305013c468f seq1413 hash=a0f9134380a16aa171f9c5afdccee31d237180e959ea352400e60e12549ea6d2 source=fa0eff271a97940fad08d83960ae50faeabc81b9 result=2f394091cf591eb3680275860eefe2f09d1e98858164d56e9ef58c807e703c09
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-035 / P-001 — 選択肢の操作順と因子全体の修正案
 
 Status: PROPOSED

@@ -22,6 +22,12 @@ export type MathTextbookTopicCatalogEntry = {
  */
 export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
   {
+    id: 'quadratic-functions-foundation', chapterId: 'math-ch02-functions',
+    label: { ja: '関数の見方', zh: '理解函数' },
+    flow: { ja: '関数の値 → 式全体の代入 → 定義域と値域', zh: '函数值 → 整体代入 → 定义域与值域' },
+    practiceLinks: [], unitIds: ['math-quadratic-qf01'], learnerHeadings: [],
+  },
+  {
     id: 'numbers-polynomials',
     chapterId: 'math-ch01-numbers-expressions',
     label: { ja: '式を整える', zh: '整理代数式' },

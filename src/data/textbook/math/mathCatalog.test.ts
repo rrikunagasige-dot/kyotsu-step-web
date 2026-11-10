@@ -24,6 +24,7 @@ describe('math textbook catalog', () => {
 
   it('keeps the three learning topics synchronized only where textbook content overlaps practice', () => {
     expect(mathTextbookTopics.map((topic) => topic.id)).toEqual([
+      'quadratic-functions-foundation',
       'numbers-polynomials',
       'numbers-real',
       'numbers-inequalities',
@@ -149,6 +150,7 @@ describe('math textbook catalog', () => {
       'math-propositions-proof',
       'math-quantifiers-all-exists',
       'math-functions-conditions',
+      'math-quadratic-qf01',
     ])
   })
 

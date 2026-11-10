@@ -1,3 +1,23 @@
+# Current record reconciliation — W-MATH-039 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W039-P001-APPROVED-20261026, proposal_hash=c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee (historical, no new quote)
+- Store approval event W039-P001-MATERIALIZED-APPROVAL-20261026, proposal_hash=c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # N08の再修正案 — 普通の変形を一列へ、概念と条件は残す
 
 **W-MATH-039 / P001 / PROPOSED。N08の実装は未着手。**

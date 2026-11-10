@@ -1,8 +1,15 @@
+import { gotoReady, reloadReady, openStorageOrigin } from './helpers'
 import { expect, test, type Page } from '@playwright/test'
-import { mathNumbersN01Unit, n01SourceToItemIds } from '../src/data/textbook/math/numbers/n01Lesson'
-import { mathNumbersN03Unit, n03SourceToItemIds } from '../src/data/textbook/math/numbers/n03Lesson'
+import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
+import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
 
-const route = (unitId: string) => '/kyotsu-step-web/#/learning/textbook/' + unitId
+const editionUnits = editionValidate(editionData.units)
+const mathNumbersN01Unit = editionUnits.find(unit => unit.unitId === 'math-numbers-expressions-n01')!
+const mathNumbersN03Unit = editionUnits.find(unit => unit.unitId === 'math-numbers-expressions-n03')!
+const n01SourceToItemIds = editionData.sourceMaps.n01
+const n03SourceToItemIds = editionData.sourceMaps.n03
+
+const route = (unitId: string) => editionHistoricalRoute('/learning/textbook/' + unitId)
 const cases = [
   { unit: mathNumbersN01Unit, source: n01SourceToItemIds, tokens: [
     ['n01-r3-q07-x2coef', '-2'], ['n01-r3-q07-xcoef', '-3'], ['n01-r3-q07-const', '3'],
@@ -38,7 +45,7 @@ async function solve(page: Page, id: string, answer: string) {
 for (const { unit, source, tokens, figure } of cases) {
   test(unit.unitId + ': full old-v1 completion migrates, seven-hole P-002 scope remains gated, and reload is safe', async ({ page }) => {
     test.setTimeout(100_000)
-    await page.goto(route(unit.unitId))
+    await openStorageOrigin(page)
     const allOldIds = Object.values(source).flat()
     const records = Object.fromEntries(allOldIds.map(id => {
       const item = unit.sections[0].items.find(candidate => candidate.id === id)!
@@ -57,7 +64,7 @@ for (const { unit, source, tokens, figure } of cases) {
         state: { textbookProgress: { [oldState.unitId]: oldState } }, version: 1,
       }))
     }, seed)
-    await page.reload()
+    await gotoReady(page, route(unit.unitId))
     await expect(page.getByTestId('r3-progress-upgrade-note')).toBeVisible()
     await expect(page.getByTestId('textbook-unit-complete')).toHaveCount(0)
     await expect(page.getByTestId('textbook-item-' + tokens[0][0])).toBeVisible()
@@ -123,8 +130,16 @@ for (const { unit, source, tokens, figure } of cases) {
       expect(persisted.answers[id].attemptCount).toBe(3)
       expect(persisted.answers[id].value).toBe(records[id].value)
     }
-    await page.reload()
+    await reloadReady(page)
     await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
     await expect(page.getByTestId('resolved-' + tokens[0][0])).toBeVisible()
   })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
 }

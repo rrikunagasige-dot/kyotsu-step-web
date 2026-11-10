@@ -18,6 +18,21 @@ test('old source, original figure, grading and N11 display remain byte-identical
   if(path==='src/data/textbook/math/numbers/n08ActiveVersion.json'&&JSON.parse(fs.readFileSync(path)).revision===6){
    const r6=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision6.json'));assert.equal(r6.unit.revision,6);assert.equal(r6.unit.requiredInteractionRefs.length,33);assert.equal(r6.unit.constructionItems.length,11);continue; // W040 explicitly changes only the active pointer; immutable W039 manifest is retained.
   }
+  // W047 explicitly replaced N11 after W039. Keep the immutable old manifest,
+  // recognize only the accepted r11 edition, and retain the strict fallback below.
+  const n11Path='src/data/textbook/math/numbers/n11Authored.json',n11DisplayPath='src/data/textbook/math/numbers/n11Transformation.json';
+  if((path===n11Path||path===n11DisplayPath)&&JSON.parse(fs.readFileSync(n11Path)).unit.revision===11){
+   assert.equal(manifest[n11Path],'ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74');
+   assert.equal(manifest[n11DisplayPath],'c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197');
+   const source=JSON.parse(fs.readFileSync(n11Path)),display=JSON.parse(fs.readFileSync(n11DisplayPath));
+   assert.equal(source.unit.unitId,'math-numbers-expressions-n11');
+   assert.equal(createHash('sha256').update(fs.readFileSync(n11Path)).digest('hex'),'3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe');
+   assert.equal(createHash('sha256').update(fs.readFileSync(n11DisplayPath)).digest('hex'),'906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9');
+   assert.equal(display.baseIRHash,'3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe');
+   assert.equal(display.planHash,'a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282');
+   assert.equal(display.gradingHash,'7d1c0714ad5b182d2705de4a589e726264e95372cd01a91f691048b9caeef4f4');
+   continue;
+  }
   assert.equal(createHash('sha256').update(fs.readFileSync(path)).digest('hex'),digest,path);
  }
 });

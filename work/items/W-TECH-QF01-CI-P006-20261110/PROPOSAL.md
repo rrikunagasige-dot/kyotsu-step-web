@@ -1,0 +1,53 @@
+Status: APPROVED
+
+2026-11-10 JST 本人の直接回答「承認」を原文記録。提示済HTML3e9a4e860a13a9e4b4b18030cb69e4eb5a4868ed3050041f21025d19db97a736、固定11patch5ccd1b54eab1b923f079b2448294dfef3f7889bfe43e256df4af3de9f3a6f96c。品質受入・main公開は含まない。以下は提示時原文。
+
+Status: PROPOSED
+
+# P-QF01-COMMON-CI-20261110-006 — 実画面を確認してから検査する
+
+未承認・未適用。二次関数QF01の作成は継続中です。P005の固定2差分は本人承認後に原adapterで一度適用済みです。最終source a0af8f8の実CIは6成功・1失敗・1skipでした。N12六ケース、W036の19件、広域877件、通常App入口のN08/N11四幅・誤答・保存/履歴/幾何は成功しています。
+
+残ったMath mobile smokeは51ケース中36失敗・13成功・2flakyでした。34ケースは普通のAppへの移動直後、最初の画面要素を5秒で確認できず停止しました。2ケースは総30秒切れです。通常Appで実操作した成功ケースもあり、恒常的なApp起動不能とは合いません。一方、失敗時のDOM/consoleは元CIに収録されず、原因をすべて起動待ちと確定したわけではありません。読取ソースと実ログを照合した新しい検査補助案です。
+
+## 今回の固定11ファイル
+
+既存e2e/helpers.tsと、同じ入口を使う数学8本・物理教科書1本・数学練習1本の計11既存ファイルです。新fixture、教材、画面実装、依存、CI YAMLを変更しません。直ったN12 derivationファイルの90秒/150秒と全本文は完全保持します。
+
+共通補助は、nativeのgoto/reloadが返すResponseと指定URL/optionsを保持したまま、実AppShellと、その遷移先に必要な実画面の表示を待ちます。最初のloadingに使われるfatal-error classを、真の起動失敗と混同しません。通常入口・歴史的入口の教材と設定画面を区別し、元のルート選択は変えません。空画面のエラー数0だけでは合格させず、実readerの存在を確認します。
+
+既存の静的同一origin SVGを200/MIME/origin照合で開き、従来どおりlocalStorageを消去してから本来の画面へ進みます。記憶消去のために重いAppを何度も起動する処理を減らします。このSVGは開発serverとcompiled previewの双方に存在し、Appのscriptを起動しません。教材や履歴の保存形式を変えません。
+
+表示待ちの失敗は、既存の本当の起動診断・画面本文・console/pageerrorを限定した長さでCIログへ残します。失敗を成功に変換せず、元の例外を再送出します。確認できない画面をfixtureへ差し替えて通す方法ではありません。
+
+## 時間枠と保存する検査
+
+global Playwright設定と既存expectの5秒は維持します。通常初期化を含む同型ファイルだけに限定default90秒、歴史catalogは複数遷移のため120秒を定めます。さらに、N01の完了後reload/setup、多段階SET、複数review/physics unit巡回には、その遷移数・判断数を表にして個別120/150/240秒を定めます。元から明示された100/150/180/240/90/120秒等はそのままです。対象と根拠の全件は同梱BUDGET_TABLE.jsonと差分全文で確認できます。時間を測る性能ベンチマークへの合格を主張しません。
+
+元1,392件の検査式、全答え/画面幅の配列、テスト名、元route helper、既存の明示timeoutをASTと原文で照合します。正誤・誤答後の未解決・段階ロック・保存/復元/リセット・図解・レイアウトの期待値を削除/緩和しません。新しい起動/reader確認を追加する案です。
+
+## 検証と未確認範囲
+
+strict型検査、変更部lintのbefore/after比較、テスト収集、1392元検査の保持、経路と時間枠の静的照合、非作者レビューを同梱します。practiceの既存unused currentTarget診断がある場合は元からの同一診断として保持し、今回ついでに原本文を削除しません。収集成功はブラウザ実行成功の代用ではありません。
+
+ローカルbrowserの既知起動制約があり、追加案の実効果と、先行停止したdesktop以降の10工程は未検証です。プレビューの直接確認も、Vercelアカウント画面への遷移可能性を自動承認審査が拒否しました。認証状態や画面内容を推測せず、迂回せず、既存のCI/sourceによる方法を使います。新sourceの実CIで合否を判定します。
+
+## 承認後の工程
+
+対象はrrikunagasige-dot/kyotsu-step-web（repository ID1391122224）、source a0af8f8b577e99207ed4feabd93856cfe8ed38ec、tree4a017c63189ad8baff83b0cfde997b5184691564です。独立補修branch work/qf01-common-ci-repair-20261109、draft PR141で固定11差分とP006自身の記録のみを扱います。全332src、原core/guard/定義、元資料、旧承認/設計/proof、依存、YAML、元fixtureを維持します。
+
+新technical Work W-TECH-QF01-CI-P006-20261110を原APIで開始し、固定95入力とpatchを照合して一度適用します。実親W-MATH-QF01-BUILD-20261109、同親の既存依頼QF01-CI-P003-CORRECTION-20261110、原CIRepair issueへ正規接続します。過去P003/P004/P005のFAILEDと、旧P002の別未解決依頼を保持し、古いpatchや承認を再実行しません。
+
+新commitの全該当CIを確認します。push filterで対象外になる検査には、既存CI補助ref又は必要時の新CI専用refを、既承認の祖先から同一sourceへCASで進めて再検査します。既存refを巻戻さず、新しい製品差分を混入させません。失敗は保存し、範囲が増える場合は再提案します。
+
+全CI成功後だけ既承認QF featureへCAS照合して統合し、承認済み親保護12例外（P0018＋P0044）の正式revise、無効化されたC01〜C09/G2の必要な新CODE/検証を原順で更新します。元bundle/facetと実旧USER承認を保持し、技術子をmaterial修正へ偽装しません。P006で親src保護例外を追加しません。新sourceの四幅320/390/430/1440・C09・G2を確認します。main統合・本番公開・本人受入はこの承認に含みません。全章61問の完成も宣言しません。
+
+## 新しい承認が必要な理由
+
+P005の承認は固定2after文面に結び付いており、今回の11差分はその外です。WORK_SYSTEM §11・§12Bと元adapterのexact patch承認照合に従い、この全文を提示してから明示承認を待ちます。P006はnative未open・正本未適用です。
+
+固定11patch SHA-256：5ccd1b54eab1b923f079b2448294dfef3f7889bfe43e256df4af3de9f3a6f96c
+
+native digest：04452f19d1c12dd73ef519cf62de0ef06c2ae771aae6d938a7d740e3ee8cdf6d
+
+固定before入力95件。全before文面・hashはproposal/DECLARED_INPUTS.json、全11afterは本HTML末尾とproposal/PATCH.jsonに収録。

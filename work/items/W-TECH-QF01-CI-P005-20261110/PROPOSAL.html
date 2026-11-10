@@ -1,0 +1,816 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>QF01 P005 残るCI補修提案</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1100px;margin:40px auto;padding:0 22px;color:#172334}h1{font-size:28px}h2{margin-top:36px}p{white-space:pre-wrap}pre{font:12px/1.5 monospace;overflow:auto;background:#f3f5f8;padding:16px}.hash{font:12px/1.8 monospace;overflow-wrap:anywhere}summary{cursor:pointer;padding:12px;background:#eef3fa}details{margin:16px 0}</style><p>Status: PROPOSED</p><h1>P-QF01-COMMON-CI-20261110-005 — 残る生成検査と移行検査の補修</h1><p>未承認・未適用。二次関数QF01の作成は継続中です。P004は本人承認後、原adapterで7件を一度適用しT03完了。最終source b0a512dの実CIは4成功・3失敗・1skipでした。広域877件は両pushで全成功、型/lint/259単体/build/画像6検査も成功しました。残る失敗に対する今回の具体差分は2ファイルです。</p><h2>変更1：旧生成結果と現行教材をそれぞれ検査する</h2><p>対象：work/items/W-MATH-036-ne02-n11-n12-guided-design/materialize.mjs。</p><p>P001で承認された説明注記により、旧提案書のwhole-file hashが旧APPROVALと一致せず3検査が停止していました。既承認の特定envelopeだけをfull/prefix/bodyの厳密hashで認識し、元の11設計入力のhash・元承認commitのGit原本比較を維持します。未知の注記や本文変更は拒否します。旧承認記録を更新しません。</p><p>注記だけを認識した試作では19中17成功・2失敗でした。残りはW036の旧N11/N12生成結果と、後に承認されたW047の現行表示が異なるためです。この試作の失敗も保存します。</p><p>最終案では--checkを読取専用にし、旧MATERIALIZED3件を固定Git原本・固定hashと再生成rawで厳密照合します。NE02は現教材との一致も維持します。N11/N12は既存W047のverify_current/projectionを固定helper・承認資料・計画・生成物・baseline commitに結び付けて実行し、双方のAPPROVEDモードを要求します。未知の現教材、改変helper/approval/plan/生成物、旧版への戻しは拒否します。旧MATERIALIZEDを上書きして一致を作りません。</p><h2>変更2：N12移行1ケースの合計時間枠</h2><p>対象：e2e/n12-derivation.spec.ts。</p><p>実CIでは旧35穴・現行46判断の全経路は両幅で成功しました。v1移行の短caseは両幅・各retryで合計30秒切れです。一部は保存・reset後の全検査を通過し、最後のreload中に30秒となりました。P004の準備2行の改善だけでは不十分でした。</p><p>今回、このv1移行caseにだけtest.setTimeout(90_000)を1行追加します。総待機許容量を30秒から90秒に広げる変更です。全assertion、移行/保存/reload/reset操作、expectの5秒制限、他caseの150秒制限、全体設定・retryは変更しません。ローカルのブラウザ起動制約は継続しており、新90秒案の実効果は未検証です。合格は新sourceの実CIで判定します。</p><h2>範囲と承認後の工程</h2><p>対象はrrikunagasige-dot/kyotsu-step-web（repository ID1391122224）、source b0a512d4b650b732eb43d096c2d930d3bda0abe7、tree a769fed74d8030912389f49c3edf792df316eb3aです。独立補修branch work/qf01-common-ci-repair-20261109、draft PR141を継続します。変更は固定2件とP005自身の記録だけです。全332src・教材・画面実装・進捗・stable ID・原文資料・原core/guard/定義・旧承認/設計/生成記録・依存・CI YAMLを保持します。</p><p>新technical Work W-TECH-QF01-CI-P005-20261110を原APIで開始し、固定入力とpatchを照合して2件を一度適用します。実親W-MATH-QF01-BUILD-20261109、同親の既存依頼QF01-CI-P003-CORRECTION-20261110、原CIRepair issueへ正規接続します。P003/P004の失敗と旧P002の別未解決依頼を保持し、過去Workの候補や承認を新差分へ書き換えません。</p><p>新commitに対する全該当CIを確認し、記録だけの補修でpush filterが対象外になる場合は既存CI専用補助branchで同一sourceを再検査します。失敗は保存し、新範囲は再提案します。全CI成功時だけ既承認QF featureへCAS照合して統合し、既承認の親保護12例外（P0018＋P0044）以外を維持して正式revise・新sourceのCODE/四幅320/390/430/1440・C09・G2を再検査します。P005によるsrc保護例外の追加はありません。main統合・本番公開・本人受入はこの承認に含みません。</p><h2>検証の限界と承認境界</h2><p>最終W036案は元の19検査が19/19成功し、正例2・負例14の別プロセス検査も全期待どおりです。旧注記/承認/設計・歴史raw・現教材/helper/marker/IR/plan・baseline環境・不明modeの改変を拒否し、歴史/proofファイルへの書込がないことも確認しました。後続のpipeline35件・runtime adapter4件、既存W038/W039/W037検査、共通lint/buildも局所で成功しました。3稼働workflowの60コマンドを棚卸ししています。N12の1行以外の全文一致と非作者の静的審査を保存しています。詳細はVERIFICATION.mdと原報告に記録します。ブラウザ後半は前段停止で未実行です。新2差分の実CI、新QF四幅/C09/G2は未検証です。旧失敗や限定PASSを全体成功へ拡大しません。</p><p>P004の承認は固定7after文面に結び付いています。今回のW036追加とN12の新時間枠はその外にあるため、WORK_SYSTEM §11・§12Bと元adapterのexact patch承認照合に従い、全文提示後の明示承認を待ちます。P005はnative未open・正本未適用です。</p><p>固定2patch SHA-256：4022a9dd9be5a128fb7ed9913dbf58086a4138f0307cb61e625388b893964669</p><p>native digest：ac151226dc3db3e098e35e1c7c131de0d511d262ae492fa48377451de5e64a2c</p><p>固定入力：92件（保持する既存24入力＋今回の全追加読取依存の和集合）。全before文面とhashはproposal/DECLARED_INPUTS.jsonに収録。</p><h2>固定2差分：before/afterと全after文面</h2><h3>work/items/W-MATH-036-ne02-n11-n12-guided-design/materialize.mjs</h3><p class="hash">before 4a394866aad439b33fff798b6145c45b53fa99a14071960b47426f6abe228c44<br>after 8ccf41e11ec0ac405d0af0aa783d7ff22be8f18637045f7d55849717dabb0c98</p><details><summary>全after文面</summary><pre>import fs from &#x27;node:fs&#x27;;import {execFileSync} from &#x27;node:child_process&#x27;;import {createHash} from &#x27;node:crypto&#x27;;
+import {tmpdir} from &#x27;node:os&#x27;;import {join} from &#x27;node:path&#x27;;
+import {compileIR} from &#x27;../../../tools/textbook/ir/index.mjs&#x27;;
+const base=&#x27;work/items/W-MATH-036-ne02-n11-n12-guided-design/&#x27;;const read=p=&gt;JSON.parse(fs.readFileSync(base+p,&#x27;utf8&#x27;));const approval=read(&#x27;APPROVAL.json&#x27;);
+const hash=value=&gt;createHash(&#x27;sha256&#x27;).update(value).digest(&#x27;hex&#x27;);
+for(const [p,h]of Object.entries(approval.designInputs)){
+ let v=fs.readFileSync(base+p);
+ // P001 adds only this exact metadata envelope; compare its untouched body to the original approval and Git blob.
+ if(p===&#x27;PROPOSAL.md&#x27;&amp;&amp;hash(v)===&#x27;4f044de4ea449e0a945443d13aecdee9ccd2b9bc11bcf00969778bd0a9e4715d&#x27;){
+  const body=v.subarray(1045);
+  if(h!==&#x27;db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9&#x27;||approval.proposalHash!==h||hash(fs.readFileSync(base+&#x27;APPROVAL.json&#x27;))!==&#x27;20f52be25e4e3240cf3bc669753687878feb10af88329c3a41e0472759c90377&#x27;||hash(v.subarray(0,1045))!==&#x27;2d396bbf78fcb3034228b411c989771ede946305a83862835547818cd2ad210f&#x27;||hash(body)!==h)throw Error(&#x27;Frozen design drift &#x27;+p);
+  v=body;
+ }
+ if(hash(v)!==h||!execFileSync(&#x27;git&#x27;,[&#x27;show&#x27;,approval.approvedCommit+&#x27;:&#x27;+base+p]).equals(v))throw Error(&#x27;Frozen design drift &#x27;+p);
+}
+const checkArgs=process.argv.slice(2).filter(a=&gt;a===&#x27;--check&#x27;||a.startsWith(&#x27;--check-&#x27;));
+if(checkArgs.some(a=&gt;![&#x27;--check&#x27;,&#x27;--check-ne02&#x27;,&#x27;--check-n11&#x27;,&#x27;--check-n12&#x27;].includes(a)))throw Error(&#x27;Unknown W036 check mode&#x27;);
+const checkMode=checkArgs.length&gt;0;
+// Read and pin immutable W036 outputs BEFORE generation; checks never rewrite these historical records.
+const historicalHashes={&quot;ne02&quot;:&quot;cdd077c7d67a448f4341fdfca92c58f263f449caf80341ff5f77232a42755552&quot;,&quot;n11&quot;:&quot;ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74&quot;,&quot;n12&quot;:&quot;bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a&quot;};
+const historicalRaw={};
+if(checkMode)for(const [code,h]of Object.entries(historicalHashes)){
+ const raw=fs.readFileSync(base+&#x27;MATERIALIZED_&#x27;+code.toUpperCase()+&#x27;.json&#x27;,&#x27;utf8&#x27;);
+ if(hash(raw)!==h)throw Error(&#x27;Frozen historical materialization drift &#x27;+code);
+ historicalRaw[code]=raw;
+}
+const spec=read(&#x27;DISPLAY_SPEC.json&#x27;);const titles={ne02:[&#x27;和の平方を展開する&#x27;,&#x27;元の式へ対応させる&#x27;,&#x27;和と積から候補を探す&#x27;,&#x27;平方と符号を検算する&#x27;,&#x27;差の平方を展開する&#x27;,&#x27;交差項の係数をそろえる&#x27;,&#x27;二つの順序を候補に残す&#x27;,&#x27;非負の差を選ぶ&#x27;,&#x27;根号内全体を分数へ直す&#x27;,&#x27;商の平方根を使う&#x27;,&#x27;分子の候補を確定する&#x27;,&#x27;有理化して全体へ戻す&#x27;],n11:[&#x27;負の数倍を数直線で読む&#x27;,&#x27;差の符号から加法を調べる&#x27;,&#x27;正・負・0の乗法と除法&#x27;,&#x27;元の大小へ戻って使う&#x27;,&#x27;定数を両辺で打ち消す&#x27;,&#x27;正の係数を1にする&#x27;,&#x27;元の式で境界を確かめる&#x27;,&#x27;定数を同じように引く&#x27;,&#x27;負の数で割る向きを選ぶ&#x27;,&#x27;等号を含む境界を確かめる&#x27;,&#x27;括弧・文字項・定数を順に整理&#x27;,&#x27;負の係数を1にする&#x27;,&#x27;分母を両辺からなくす&#x27;,&#x27;同類項をまとめ範囲を読む&#x27;],n12:[&#x27;一つ目の条件を解く&#x27;,&#x27;二つ目の条件を解く&#x27;,&#x27;同じ数を両方へ代入する&#x27;,&#x27;端点を含め共通部分を残す&#x27;,&#x27;三連を二つの条件へ分ける&#x27;,&#x27;二つの条件を別々に解く&#x27;,&#x27;上限を元の式で確かめる&#x27;,&#x27;個数の関係を式にする&#x27;,&#x27;整数と個数の範囲を保存する&#x27;,&#x27;合計金額を組み立てる&#x27;,&#x27;以上と未満を条件にする&#x27;,&#x27;分配と同類項を順に計算する&#x27;,&#x27;三辺を同じ操作で変形する&#x27;,&#x27;整数条件へ戻って個数を選ぶ&#x27;,&#x27;二つの内訳を元の金額で検算する&#x27;]};
+function sourceQuestion(code,q){
+ if(code===&#x27;ne02&#x27;)return q&lt;=4?&#x27;例題：$\\sqrt{5+2\\sqrt6}$ を簡単にする。候補の平方と非負性を確かめる。&#x27;:q&lt;=8?&#x27;例題：$\\sqrt{9-4\\sqrt5}$ を簡単にする。ここでも $a,b$ は正の実数として候補を作る。&#x27;:&#x27;確認：$\\sqrt{3+\\sqrt5}$ を簡単にする。根号内全体の値を保って変形する。&#x27;;
+ if(code===&#x27;n11&#x27;)return q===1?&#x27;例題：$2&lt;5$ の両辺を $-1$ 倍した数を、数直線で比べる。&#x27;:q&lt;=4?&#x27;条件は $a&lt;b$、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。&#x27;:q&lt;=7?&#x27;例題：$3x-2&lt;5$ を満たすすべての実数 $x$ を求める。&#x27;:q&lt;=10?&#x27;例題：$-2x+3\\le5$ を満たすすべての実数 $x$ を求める。&#x27;:q&lt;=12?&#x27;確認：$3(2x+3)\\ge10x-17$ を解く。&#x27;:&#x27;確認：$\\frac{x-2}{3}\\le2x+1$ を解く。&#x27;;
+ return q&lt;=4?&#x27;例題：$x-2&lt;3x+5$ と $x+4\\le5-x$ を同時に満たす実数 $x$ を求める。&#x27;:q&lt;=7?&#x27;確認：$3x+2\\le2x+4\\le9-x$ を解く。中央との二つの比較をどちらも残す。&#x27;:&#x27;例題：50円の箱に、180円のシュークリームと130円のプリンを合わせて20個入れる。合計は3200円以上3300円未満。シュークリームの個数を $x$ として、可能な個数を求める。&#x27;;
+}
+function splitRelation(s){let depth=0;for(let i=0;i&lt;s.length;i++){if(s[i]===&#x27;{&#x27;)depth++;if(s[i]===&#x27;}&#x27;)depth--;if(depth)continue;for(const t of [&#x27;\\le&#x27;,&#x27;\\ge&#x27;,&#x27;&lt;&#x27;,&#x27;&gt;&#x27;,&#x27;=&#x27;])if(s.startsWith(t,i)&amp;&amp;(!t.startsWith(&#x27;\\&#x27;)||!/[a-zA-Z]/.test(s[i+t.length]||&#x27;&#x27;)))return [s.slice(0,i),t,s.slice(i+t.length)];}return null;}
+function independentFunctionRows(s){return s.split(/,\s*\\(?:quad\b|\s+)(?=[A-Za-z]+\()/);}
+for(const code of [&#x27;ne02&#x27;,&#x27;n11&#x27;,&#x27;n12&#x27;]){
+ const ir=read(code.toUpperCase()+&#x27;_IR.json&#x27;),ds=read(code.toUpperCase()+&#x27;_NODE_DESIGN.json&#x27;).nodes,compiled=compileIR(ir);if(compiled.irHash!==approval.blockHashes[code])throw Error(&#x27;IR mismatch&#x27;);let serial=0;
+ const prose=s=&gt;s.split(/(\$[^$]+\$|\*\*[^*]+\*\*)/).filter(Boolean).map(t=&gt;{const semanticId=code+&#x27;-d-&#x27;+(++serial);return t.startsWith(&#x27;$&#x27;)?{type:&#x27;math&#x27;,latex:t.slice(1,-1),semanticId}:t.startsWith(&#x27;**&#x27;)?{type:&#x27;term&#x27;,text:t.slice(2,-2),usage:&#x27;first_definition&#x27;,semanticId}:{type:&#x27;text&#x27;,text:t,semanticId};});
+ function choiceParts(c){
+  const normalized=c.rows.map(r=&gt;r.parts.map(p=&gt;p.kind===&#x27;math&#x27;?{...p,latex:p.latex.replaceAll(&#x27;\\\\&#x27;,&#x27;\\&#x27;)}:p));
+  if(normalized.some(row=&gt;row.some(p=&gt;p.kind===&#x27;math&#x27;&amp;&amp;/^\\text\{[^{}]+\}$/.test(p.latex))))return normalized.flatMap(row=&gt;row.map(p=&gt;{const text=p.kind===&#x27;math&#x27;?p.latex.match(/^\\text\{([^{}]+)\}$/):null;return text?{type:&#x27;text&#x27;,text:text[1],optionRow:true,semanticId:code+&#x27;-option-&#x27;+(++serial)}:p.kind===&#x27;math&#x27;?{type:&#x27;math&#x27;,latex:p.latex,optionRow:true,semanticId:code+&#x27;-option-&#x27;+(++serial)}:{type:&#x27;text&#x27;,text:p.text,optionRow:true,semanticId:code+&#x27;-option-&#x27;+(++serial)};}));
+  if(c.rows.every(r=&gt;r.parts.every(p=&gt;p.kind===&#x27;math&#x27;))){const rows=c.rows.flatMap(r=&gt;r.parts.map(p=&gt;p.latex.replaceAll(&#x27;\\\\&#x27;,&#x27;\\&#x27;)).join(&#x27;&#x27;).split(/\\quad\s*\\text\{または\}\\quad\s*/).flatMap((t,i)=&gt;i?[&#x27;\\text{または}&#x27;,t]:[t])).flatMap(independentFunctionRows);if(rows.length===1)return [{type:&#x27;math&#x27;,latex:rows[0],semanticId:code+&#x27;-option-&#x27;+(++serial)}];
+   const aligned=rows.map(s=&gt;{const r=splitRelation(s);return r?r[0]+&#x27;&amp;&#x27;+r[1]+r[2]:&#x27;&amp;&#x27;+s;});return [{type:&#x27;math&#x27;,latex:&#x27;\\begin{aligned}&#x27;+aligned.join(&#x27;\\\\&#x27;)+&#x27;\\end{aligned}&#x27;,semanticId:code+&#x27;-option-&#x27;+(++serial)}];}
+  return c.rows.flatMap(r=&gt;r.parts.map(p=&gt;p.kind===&#x27;math&#x27;?{type:&#x27;math&#x27;,latex:p.latex,semanticId:code+&#x27;-option-&#x27;+(++serial)}:{type:&#x27;text&#x27;,text:p.text,semanticId:code+&#x27;-option-&#x27;+(++serial)}));
+ }
+ // Several independent statements are one displayed result group with one end number.
+ for(const node of compiled.nodes){const formulas=node.after.filter(b=&gt;b.type===&#x27;formula&#x27;);if(formulas.length&gt;1&amp;&amp;formulas.every(b=&gt;b.derivationId===formulas[0].derivationId)){
+  const sources=formulas.map(b=&gt;b.parts.map(p=&gt;p.type===&#x27;math&#x27;?p.latex:&#x27;&#x27;).join(&#x27;&#x27;));const rows=sources.map(t=&gt;{const r=splitRelation(t);return r?r[0]+&#x27;&amp;&#x27;+r[1]+r[2]:&#x27;&amp;&#x27;+t;});
+  const merged={id:formulas[0].derivationId,type:&#x27;formula&#x27;,derivationId:formulas[0].derivationId,parts:[{type:&#x27;math&#x27;,latex:&#x27;\\begin{aligned}&#x27;+rows.join(&#x27;\\\\&#x27;)+&#x27;\\end{aligned}&#x27;,semanticId:node.id+&#x27;-aligned-result&#x27;}]};
+  const first=node.after.indexOf(formulas[0]);node.after=node.after.filter(b=&gt;!formulas.includes(b));node.after.splice(first,0,merged);
+ }}
+ // Comma-separated function evaluations are independent results, not a single equality chain.
+ for(const node of compiled.nodes)for(const block of node.after.filter(b=&gt;b.type===&#x27;formula&#x27;&amp;&amp;b.parts.every(p=&gt;p.type===&#x27;math&#x27;))){
+  const rows=independentFunctionRows(block.parts.map(p=&gt;p.latex).join(&#x27;&#x27;).replaceAll(&#x27;\\\\&#x27;,&#x27;\\&#x27;));
+  if(rows.length&gt;1)block.parts=[{type:&#x27;math&#x27;,latex:&#x27;\\begin{aligned}&#x27;+rows.map(s=&gt;{const r=splitRelation(s);return r?r[0]+&#x27;&amp;&#x27;+r[1]+r[2]:&#x27;&amp;&#x27;+s;}).join(&#x27;\\\\&#x27;)+&#x27;\\end{aligned}&#x27;,semanticId:node.id+&#x27;-independent-results&#x27;}];
+ }
+ const semanticDisplay={},old=read(&#x27;evidence/&#x27;+code.toUpperCase()+&#x27;_CURRENT.json&#x27;).unit;const olditems=new Map(old.sections[0].items.map(i=&gt;[i.id,i]));
+ const items=ds.filter(n=&gt;n.itemId).map((n,i)=&gt;{const q=ir.nodes.find(x=&gt;x.id===n.id).interaction,cfg=spec.unitChoices[code].find(x=&gt;x.itemId===q.id);semanticDisplay[n.id]={hintParts:q.hints.map(prose),choices:Object.fromEntries(cfg.choices.map(c=&gt;[c.canonicalKey,choiceParts(c)])),feedback:Object.fromEntries(q.choices.map(c=&gt;[c.content,prose(c.feedback)]))};return {...(olditems.get(q.id)||{}),id:q.id,label:q.id.toUpperCase(),prompt:n.goal,answer:q.expected.value,acceptedAnswers:olditems.get(q.id)?.acceptedAnswers||[],answerType:q.expected.form===&#x27;text&#x27;?&#x27;text&#x27;:&#x27;formula&#x27;,choices:q.choices.map(c=&gt;c.content),purpose:&#x27;causal-reasoning&#x27;,scaffoldLevel:i&lt;3?&#x27;strong&#x27;:i&lt;25?&#x27;medium&#x27;:&#x27;light&#x27;,hints:q.hints};});
+ const gates={n11:{&#x27;n11-intro&#x27;:&#x27;n11-f01&#x27;,&#x27;n11-10&#x27;:&#x27;n11-f02&#x27;},n12:{&#x27;n12-02&#x27;:&#x27;n12-f01&#x27;,&#x27;n12-06&#x27;:&#x27;n12-f02&#x27;,&#x27;n12-15&#x27;:&#x27;n12-f03&#x27;}};
+ const nodes=ds.map(n=&gt;({id:n.id,stageId:n.stageId,q:n.q,goal:n.goal,role:n.role,knownRefs:n.knownRefs,resultId:n.resultId,interaction:n.itemId,extra:gates[code]?.[n.id]?{figure:{id:gates[code][n.id]}}:{}}));
+ const stages=titles[code].map((title,i)=&gt;({id:code+&#x27;-stage-&#x27;+String(i+1).padStart(2,&#x27;0&#x27;),title,q:i+1,sourceQuestionParts:prose(sourceQuestion(code,i+1))}));let n=0;const equationNumbers={};for(const node of compiled.nodes){const formulas=[...node.before,...node.after].filter(b=&gt;b.type===&#x27;formula&#x27;);if(formulas.length){n++;for(const b of formulas)equationNumbers[b.id]=n;}}
+ const revisions={ne02:2,n11:11,n12:4};const unit={...old,revision:revisions[code],sections:[{...old.sections[0],readingFlow:compiled.nodes.flatMap(n=&gt;[...n.before,...n.after]),items}]};const artifact={schemaVersion:&#x27;guided-math-presentation/1&#x27;,choiceDisplay:&#x27;semantic&#x27;,code,approvedCommit:approval.approvedCommit,proposalHash:approval.proposalHash,irHash:compiled.irHash,unit,nodes,stages,semantic:compiled,semanticDisplay,equationNumbers};const raw=JSON.stringify(artifact,null,2)+&#x27;\n&#x27;;
+ if(checkMode){
+  if(raw!==historicalRaw[code])throw Error(&#x27;Historical generated source drift &#x27;+code);
+  if(code===&#x27;ne02&#x27;&amp;&amp;fs.readFileSync(&#x27;src/data/textbook/math/numbers/ne02Authored.json&#x27;,&#x27;utf8&#x27;)!==raw)throw Error(&#x27;Generated source drift ne02&#x27;);
+ }else fs.writeFileSync(base+&#x27;MATERIALIZED_&#x27;+code.toUpperCase()+&#x27;.json&#x27;,raw);
+ console.log(JSON.stringify({code,nodes:nodes.length,items:items.length,stages:stages.length,irHash:compiled.irHash}));
+}
+
+// Current W047 is a distinct exact accepted edition, never a replacement for W036 proof.
+if(checkMode){
+ const baseline=&#x27;929f3c5677758b55bcc583b84a6166b92a600f10&#x27;;
+ if(process.env.BASELINE_REF&amp;&amp;process.env.BASELINE_REF!==baseline)throw Error(&#x27;W036 current baseline mismatch&#x27;);
+ const fixedInputs={&quot;work/items/W-MATH-047-n1112-guided-review/APPROVAL.json&quot;:&quot;2a5f4faabb9b60e711fa01e3cb683905cc74395b857a66de9e385a74c34455dd&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/verify_current.mjs&quot;:&quot;7ca1a5b211a5e56cf0c699fa7cb55ba1d04b87e165d429cb34bc812e58cd9079&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/verify_r1_projection.mjs&quot;:&quot;adf899f12de8314f88ae53af01e9c4fbd5bf44ea5026bebdbdb9e9d966f5f67a&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/MATERIALIZED_N11.json&quot;:&quot;3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/MATERIALIZED_N12.json&quot;:&quot;8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/evidence/N11_G2_CORRECTION_DRAFT_PLAN.json&quot;:&quot;a3f9b71b1c7776f4d86dcebd970d7874b095218bc92cb7b40fee97b7f6231282&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/evidence/R1_COMPILED.json&quot;:&quot;906c4fef2e53a9a992fae5f82e7a7255a504215eeee19954f179d2fa902707a9&quot;,&quot;work/items/W-MATH-047-n1112-guided-review/evidence/S1_N12_APPLIED.json&quot;:&quot;86bca3590d501cac5215aa7c301087fd96ae714f784de1a845b94979624463c9&quot;};
+ for(const [p,h]of Object.entries(fixedInputs))if(hash(fs.readFileSync(p))!==h)throw Error(&#x27;Frozen W047 proof drift &#x27;+p);
+ const authoredHashes={&quot;n11&quot;:&quot;3465df01e4d764a6aae14742b370804494450055205c968685715c9157cb10fe&quot;,&quot;n12&quot;:&quot;8ba070624e1e34804e836e652f049298a91625eadbf91881371fd354a5f74f7c&quot;};
+ for(const [code,h]of Object.entries(authoredHashes))if(hash(fs.readFileSync(&#x27;src/data/textbook/math/numbers/&#x27;+code+&#x27;Authored.json&#x27;))!==h)throw Error(&#x27;Current accepted source drift &#x27;+code);
+ const currentIRHashes={&quot;n11&quot;:&quot;3a1fd6ceb816c676edeb2bdcd9bf7e529fc2b6718da2d5810e5fe0087d591423&quot;,&quot;n12&quot;:&quot;7dfc39c14fee60a12ce6bea4bbb4ff56d6fe054288547c6e318e3e012dff95cb&quot;};
+ for(const [code,h]of Object.entries(currentIRHashes)){
+  const raw=fs.readFileSync(&#x27;work/items/W-MATH-047-n1112-guided-review/&#x27;+code.toUpperCase()+&#x27;_CANDIDATE_IR.json&#x27;);
+  if(hash(raw)!==h)throw Error(&#x27;Frozen W047 IR drift &#x27;+code);
+  const current=JSON.parse(fs.readFileSync(&#x27;src/data/textbook/math/numbers/&#x27;+code+&#x27;Authored.json&#x27;,&#x27;utf8&#x27;));
+  if(compileIR(JSON.parse(raw.toString(&#x27;utf8&#x27;))).irHash!==current.irHash)throw Error(&#x27;Current W047 IR compile drift &#x27;+code);
+ }
+ const baselineHashes={&quot;src/data/textbook/math/numbers/n11Authored.json&quot;:&quot;ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74&quot;,&quot;src/data/textbook/math/numbers/n12Authored.json&quot;:&quot;bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a&quot;};
+ for(const [p,h]of Object.entries(baselineHashes))if(hash(execFileSync(&#x27;git&#x27;,[&#x27;show&#x27;,baseline+&#x27;:&#x27;+p]))!==h)throw Error(&#x27;Frozen W047 baseline drift &#x27;+p);
+ const evidence=fs.mkdtempSync(join(tmpdir(),&#x27;w036-current-proof-&#x27;));
+ try{
+  const proof=JSON.parse(execFileSync(process.execPath,[&#x27;work/items/W-MATH-047-n1112-guided-review/verify_current.mjs&#x27;],{encoding:&#x27;utf8&#x27;,env:{...process.env,BASELINE_REF:baseline,EVIDENCE_DIR:evidence}}));
+  if(proof.status!==&#x27;PASS&#x27;||proof.rows.length!==2||![&#x27;n11&#x27;,&#x27;n12&#x27;].every(code=&gt;proof.rows.filter(row=&gt;row.code===code&amp;&amp;row.mode===&#x27;APPROVED&#x27;).length===1))throw Error(&#x27;Current W047 approved rows required&#x27;);
+ }finally{fs.rmSync(evidence,{recursive:true,force:true});}
+}
+</pre></details><h3>e2e/n12-derivation.spec.ts</h3><p class="hash">before 440c5a5a1e971d1f2cc432761d9da7bc7c0b8f07b12c306b45d2edefba37a841<br>after 5fcea3f4839dc87c1b1e74c2433c99c70a2f182b4caeeddaeaa31eee9c7c74b4</p><details><summary>全after文面</summary><pre>import { expect, test, type Page } from &#x27;@playwright/test&#x27;
+
+// W-MATH-008/P-001: 15 original + 11 P-002 + 9 P-003 = 35 active stages.
+const path = &#x27;/kyotsu-step-web/e2e/fixtures/historical-math.html#/learning/textbook/math-numbers-expressions-n12&#x27;
+
+test.beforeEach(({ page }, info) =&gt; {
+  void page
+  if (!info.title.startsWith(&#x27;N12 current r4:&#x27;)) info.annotations.push({ type: &#x27;historical-edition&#x27;, description: &#x27;171c archival Page + pinned shared runtime; not current Page coverage&#x27; })
+})
+const choices: Array&lt;[string, string]&gt; = [
+  [&#x27;n12-p002-q01-coef&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q01-const&#x27;, &#x27;-7&#x27;],
+  [&#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;],
+  [&#x27;n12-p002-q02-coef&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q02-const&#x27;, &#x27;1&#x27;],
+  [&#x27;n12-02&#x27;, &#x27;x\\le\\frac12&#x27;],
+  [&#x27;n12-03&#x27;, &#x27;二つ目に反するので不適&#x27;],
+  [&#x27;n12-04&#x27;, &#x27;-\\frac72&lt;x\\le\\frac12&#x27;],
+  [&#x27;n12-05&#x27;, &#x27;3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x&#x27;],
+  [&#x27;n12-p002-q06-left-coef&#x27;, &#x27;1&#x27;],
+  [&#x27;n12-p002-q06-left-const&#x27;, &#x27;2&#x27;],
+  [&#x27;n12-p002-q06-right-coef&#x27;, &#x27;3&#x27;],
+  [&#x27;n12-p002-q06-right-const&#x27;, &#x27;5&#x27;],
+  [&#x27;n12-06&#x27;, &#x27;x\\le2,\\quad x\\le\\frac53&#x27;],
+  [&#x27;n12-07&#x27;, &#x27;x\\le\\frac53&#x27;],
+  [&#x27;n12-08&#x27;, &#x27;20-x&#x27;],
+  [&#x27;n12-09&#x27;, &#x27;x\\in\\mathbb Z,\\ 0\\le x\\le20&#x27;],
+  [&#x27;n12-p003-q10-meaning&#x27;, &#x27;箱と20個の菓子の合計金額&#x27;],
+  [&#x27;n12-p003-q10-cream-coef&#x27;, &#x27;180&#x27;],
+  [&#x27;n12-p003-q10-pudding-coef&#x27;, &#x27;130&#x27;],
+  [&#x27;n12-p003-q10-box-fee&#x27;, &#x27;50&#x27;],
+  [&#x27;n12-10&#x27;, &#x27;50+180x+130(20-x)&#x27;],
+  [&#x27;n12-p003-q11-lower-sign&#x27;, &#x27;\\le&#x27;],
+  [&#x27;n12-p003-q11-upper-sign&#x27;, &#x27;&lt;&#x27;],
+  [&#x27;n12-11&#x27;, &#x27;3200\\le50+180x+130(20-x)&lt;3300&#x27;],
+  [&#x27;n12-p003-q12-product-constant&#x27;, &#x27;2600&#x27;],
+  [&#x27;n12-p002-q12-signed-coef&#x27;, &#x27;-130&#x27;],
+  [&#x27;n12-p003-q12-total-constant&#x27;, &#x27;2650&#x27;],
+  [&#x27;n12-p003-q12-x-coef&#x27;, &#x27;50&#x27;],
+  [&#x27;n12-12&#x27;, &#x27;3200\\le2650+50x&lt;3300&#x27;],
+  [&#x27;n12-p002-q13-lower&#x27;, &#x27;550&#x27;],
+  [&#x27;n12-p002-q13-upper&#x27;, &#x27;650&#x27;],
+  [&#x27;n12-13&#x27;, &#x27;11\\le x&lt;13&#x27;],
+  [&#x27;n12-14&#x27;, &#x27;x=11\\ \\text{または}\\ 12&#x27;],
+  [&#x27;n12-15&#x27;, &#x27;T(11)=3200\\text{円},\\ T(12)=3250\\text{円}&#x27;],
+]
+
+async function answer(page: Page, id: string, value: string) {
+  const trigger = page.getByTestId(&#x27;textbook-item-&#x27; + id)
+  await expect(trigger).toBeVisible()
+  if (id.startsWith(&#x27;n12-p002-&#x27;) || (id.startsWith(&#x27;n12-p003-&#x27;) &amp;&amp; id !== &#x27;n12-p003-q10-meaning&#x27; &amp;&amp; id !== &#x27;n12-p003-q10-box-fee&#x27;)) {
+    await expect(trigger).toHaveClass(/reading-formula-choice--token/)
+    await expect(trigger).toContainText(/選択|×/)
+  }
+  await trigger.click()
+  const panel = page.getByTestId(&#x27;inline-choice-panel-&#x27; + id)
+  await expect(panel).toBeVisible()
+  await panel.getByRole(&#x27;button&#x27;, { name: value, exact: true }).click()
+  await expect(page.getByTestId(&#x27;resolved-&#x27; + id)).toBeVisible()
+}
+
+test(&#x27;N12 P-003: 35 progressive inline holes, math, figure gates, retry and reload&#x27;, async ({ page }) =&gt; {
+  test.setTimeout(150_000)
+  await page.goto(path)
+  await page.evaluate(() =&gt; localStorage.clear())
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;n12-restart-top&#x27;)).toBeVisible()
+  expect(choices).toHaveLength(35);
+  const f01 = page.getByTestId(&#x27;textbook-figure-n12-f01&#x27;)
+  const f02 = page.getByTestId(&#x27;textbook-figure-n12-f02&#x27;)
+  const f03 = page.getByTestId(&#x27;textbook-figure-n12-f03&#x27;)
+  await expect(f01).toHaveCount(0)
+  await expect(f02).toHaveCount(0)
+  await expect(f03).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toHaveCount(0)
+
+  // Visual-only W-MATH-006/P-001: N02-style label/border, retained 44px touch target.
+  const firstToken = page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)
+  await expect(firstToken).toHaveText(&#x27;選択&#x27;)
+  const tokenBox = await firstToken.boundingBox()
+  expect(tokenBox?.width).toBeGreaterThanOrEqual(44)
+  expect(tokenBox?.height).toBeGreaterThanOrEqual(44)
+  const tokenBorder = await firstToken.evaluate((element) =&gt; {
+    const style = getComputedStyle(element)
+    return { radius: style.borderRadius, top: style.borderTopWidth }
+  })
+  expect(tokenBorder).toEqual({ radius: &#x27;0px&#x27;, top: &#x27;1px&#x27; })
+  await firstToken.focus()
+  await expect(firstToken).toBeFocused()
+
+  // Wrong coefficient: cannot unlock either the next local constant or original final question.
+  await page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;).click()
+  const panel = page.getByTestId(&#x27;inline-choice-panel-n12-p002-q01-coef&#x27;)
+  await expect(panel).toBeVisible()
+  const displayedOptions = panel.locator(&#x27;.reading-choice-option&#x27;)
+  let wrongClicked = false
+  for (let i = 0; i &lt; await displayedOptions.count(); i += 1) {
+    const option = displayedOptions.nth(i)
+    if (await option.getAttribute(&#x27;aria-label&#x27;) === &#x27;2&#x27;) continue
+    await option.click()
+    wrongClicked = true
+    break
+  }
+  expect(wrongClicked).toBe(true)
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-const&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toHaveCount(0)
+
+  for (const [id, value] of choices) {
+    await answer(page, id, value)
+    if (id === &#x27;n12-p002-q01-coef&#x27; || id === &#x27;n12-p002-q02-coef&#x27;) {
+      // Coefficients other than 1 must remain explicit before x.
+      await expect(page.getByTestId(&#x27;resolved-&#x27; + id).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;2&#x27;)
+    }
+    if (id === &#x27;n12-p002-q02-const&#x27;) {
+      // A numeric answer 1 at the end of an expression must remain 1.
+      await expect(page.getByTestId(&#x27;resolved-n12-p002-q02-const&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;1&#x27;)
+    }
+    if (id === &#x27;n12-p002-q06-left-coef&#x27;) {
+      // W-MATH-007: retain answer &quot;1&quot; internally, but the rendered formula reads x+2, never 1x.
+      const solved = page.getByTestId(&#x27;resolved-n12-p002-q06-left-coef&#x27;)
+      await expect(solved.locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;x&#x27;)
+      await expect(solved).toHaveAttribute(&#x27;aria-label&#x27;, &#x27;係数は1（式ではx）&#x27;)
+      const visibleParts = await page
+        .getByTestId(&#x27;textbook-formula-formula-q06-left-coef&#x27;)
+        .locator(&#x27;.katex-html&#x27;).allInnerTexts()
+      const visibleFormula = visibleParts.join(&#x27;&#x27;).replace(/\s+/g, &#x27;&#x27;)
+      expect(visibleFormula).toContain(&#x27;x+2&#x27;)
+      expect(visibleFormula).not.toContain(&#x27;1x&#x27;)
+      expect(visibleFormula).not.toContain(&#x27;xx+2&#x27;)
+      const savedAnswer = await page.evaluate(() =&gt;
+        JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;)
+          .state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;]
+          .answers[&#x27;n12-p002-q06-left-coef&#x27;].value,
+      )
+      expect(savedAnswer).toBe(&#x27;1&#x27;)
+    }
+    if (id === &#x27;n12-p002-q06-right-coef&#x27;) {
+      await expect(page.getByTestId(&#x27;resolved-n12-p002-q06-right-coef&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;3&#x27;)
+    }
+    if (id === &#x27;n12-02&#x27;) {
+      await expect(f01).toBeVisible()
+      await expect(f02).toHaveCount(0)
+    }
+    if (id === &#x27;n12-06&#x27;) {
+      await expect(f02).toBeVisible()
+      await expect(f03).toHaveCount(0)
+    }
+    if (id === &#x27;n12-14&#x27;) await expect(f03).toHaveCount(0)
+    if (id === &#x27;n12-15&#x27;) {
+      await expect(f03).toBeVisible()
+      await expect(f03.locator(&#x27;img&#x27;)).toHaveJSProperty(&#x27;complete&#x27;, true)
+    }
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+    const overflowing = await page.locator(&#x27;.reading-formula-line--n12&#x27;).evaluateAll(lines =&gt;
+      lines.filter(line =&gt; line.scrollWidth &gt; line.clientWidth + 2)
+        .map(line =&gt; line.getAttribute(&#x27;data-testid&#x27;)),
+    )
+    expect(overflowing, &#x27;No inner formula horizontal scrollbar&#x27;).toEqual([])
+  }
+
+  for (const derivation of [&#x27;solve-first&#x27;, &#x27;solve-second&#x27;, &#x27;triple-solve&#x27;, &#x27;cost-range&#x27;]) {
+    await expect(page.locator(&#x27;[data-derivation-id=&quot;&#x27; + derivation + &#x27;&quot;]&#x27;)).toHaveCount(1)
+  }
+  await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+
+  // Approved W-MATH-008/P-001 visual contract: all three phone widths,
+  // including every formula&#x27;s *internal* scroll (document-only is insufficient).
+  for (const width of [320, 375, 390]) {
+    await page.setViewportSize({ width, height: 760 })
+    const overflow = await page.locator(&#x27;.reading-formula-line--n12&#x27;).evaluateAll(lines =&gt;
+      lines.filter(line =&gt; line.scrollWidth &gt; line.clientWidth + 2)
+        .map(line =&gt; line.getAttribute(&#x27;data-testid&#x27;)),
+    )
+    expect(overflow, `N12 formula overflow at ${width}px`).toEqual([])
+    expect(await page.evaluate(() =&gt; document.documentElement.scrollWidth))
+      .toBeLessThanOrEqual(await page.evaluate(() =&gt; document.documentElement.clientWidth + 1))
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+  }
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-p002-q06-left-coef&#x27;).locator(&#x27;.katex-html&#x27;)).toHaveText(&#x27;x&#x27;)
+  await expect(f03).toBeVisible()
+})
+
+test(&#x27;N12 P-003: v1 history is archived and a genuine restart begins at Q01&#x27;, async ({ page }) =&gt; {
+  test.setTimeout(90_000)
+  await page.goto(&#x27;/kyotsu-step-web/e2e/fixtures/historical-math-data.json&#x27;)
+  await page.evaluate(() =&gt; {
+    localStorage.clear()
+    const record = (id: string, value: string) =&gt; ({
+      itemId: id, value, firstValue: value, isFirstCorrect: true, resolved: true,
+      attemptCount: 1, firstAnsweredAt: 100, lastAnsweredAt: 200,
+    })
+    const progress = {
+      unitId: &#x27;math-numbers-expressions-n12&#x27;, unitRevision: 1,
+      startedAt: 100, updatedAt: 200, completedAt: 250,
+      answers: {
+        &#x27;n12-01&#x27;: record(&#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;),
+        &#x27;n12-01a&#x27;: record(&#x27;n12-01a&#x27;, &#x27;-7&lt;2x&#x27;),
+      },
+    }
+    localStorage.setItem(&#x27;kyotsu-step-store&#x27;, JSON.stringify({
+      state: { textbookProgress: { [progress.unitId]: progress } }, version: 1,
+    }))
+  })
+  await page.goto(path)
+  await expect(page.getByTestId(&#x27;n12-progress-upgrade-note&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toHaveCount(0)
+
+  await answer(page, &#x27;n12-p002-q01-coef&#x27;, &#x27;2&#x27;)
+  await answer(page, &#x27;n12-p002-q01-const&#x27;, &#x27;-7&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-01&#x27;)).toBeVisible()
+  await answer(page, &#x27;n12-01&#x27;, &#x27;x&gt;-\\frac72&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q02-coef&#x27;)).toBeVisible()
+
+  const saved = await page.evaluate(() =&gt; {
+    const state = JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state
+    return state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;]
+  })
+  expect(saved.unitRevision).toBe(3)
+  expect(saved.migratedFromRevision).toBe(1)
+  expect(saved.previousRevisionCompletedAt).toBe(250)
+  expect(saved.completedAt).toBeUndefined()
+  expect(saved.archivedRevisions[&#x27;1&#x27;].answers[&#x27;n12-01&#x27;].value).toBe(&#x27;x&gt;-\\frac72&#x27;)
+  expect(saved.archivedRevisions[&#x27;1&#x27;].answers[&#x27;n12-01a&#x27;].value).toBe(&#x27;-7&lt;2x&#x27;)
+  expect(saved.answers[&#x27;n12-p002-q01-coef&#x27;].value).toBe(&#x27;2&#x27;)
+  await page.reload()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q02-coef&#x27;)).toBeVisible()
+
+  page.once(&#x27;dialog&#x27;, dialog =&gt; dialog.accept())
+  await page.getByTestId(&#x27;n12-restart-top&#x27;).click()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;resolved-n12-01&#x27;)).toHaveCount(0)
+  const afterReset = await page.evaluate(() =&gt;
+    JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state
+      .textbookProgress[&#x27;math-numbers-expressions-n12&#x27;],
+  )
+  expect(afterReset.unitRevision).toBe(3)
+  expect(afterReset.answers).toEqual({})
+  expect(afterReset.archivedRevisions[&#x27;1&#x27;]).toEqual(saved.archivedRevisions[&#x27;1&#x27;])
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toBeVisible()
+})
+
+
+// Current r4 ordinary-route coverage is independent of the historical fixture above.
+// Expected46 interactions/15 stages frozen from accepted n12Authored.json at84f90ba9.
+const currentR4 = [
+  {
+    &quot;id&quot;: &quot;n12-q01-subtract-x&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q01-subtract-x-equation&quot;,
+      &quot;n12-q01-subtract-x-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q01-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q01-coef-equation&quot;,
+      &quot;n12-p002-q01-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q01-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;-7&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q01-const-equation&quot;,
+      &quot;n12-p002-q01-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-01&quot;,
+    &quot;stage&quot;: &quot;n12-stage-01&quot;,
+    &quot;answer&quot;: &quot;x&gt;-\\frac72&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-01-equation&quot;,
+      &quot;n12-01-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q02-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q02-coef-equation&quot;,
+      &quot;n12-p002-q02-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q02-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;1&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q02-const-equation&quot;,
+      &quot;n12-p002-q02-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-02&quot;,
+    &quot;stage&quot;: &quot;n12-stage-02&quot;,
+    &quot;answer&quot;: &quot;x\\le\\frac12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-02-equation&quot;,
+      &quot;n12-02-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q03-first&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q03-first-equation&quot;,
+      &quot;n12-q03-first-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q03-second&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;成り立たない&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q03-second-result&quot;,
+      &quot;n12-q03-second-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-03&quot;,
+    &quot;stage&quot;: &quot;n12-stage-03&quot;,
+    &quot;answer&quot;: &quot;二つ目に反するので不適&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-03-result&quot;,
+      &quot;n12-03-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q04-left-end&quot;,
+    &quot;stage&quot;: &quot;n12-stage-04&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q04-left-end-equation&quot;,
+      &quot;n12-q04-left-end-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-04&quot;,
+    &quot;stage&quot;: &quot;n12-stage-04&quot;,
+    &quot;answer&quot;: &quot;-\\frac72&lt;x\\le\\frac12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-04-equation&quot;,
+      &quot;n12-04-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-05&quot;,
+    &quot;stage&quot;: &quot;n12-stage-05&quot;,
+    &quot;answer&quot;: &quot;3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-05-equation&quot;,
+      &quot;n12-05-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-left-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;1&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-left-coef-equation&quot;,
+      &quot;n12-p002-q06-left-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-left-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;2&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-left-const-equation&quot;,
+      &quot;n12-p002-q06-left-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-right-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;3&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-right-coef-equation&quot;,
+      &quot;n12-p002-q06-right-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q06-right-const&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;5&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q06-right-const-equation&quot;,
+      &quot;n12-p002-q06-right-const-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-06&quot;,
+    &quot;stage&quot;: &quot;n12-stage-06&quot;,
+    &quot;answer&quot;: &quot;x\\le2,\\quad x\\le\\frac53&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-06-equation&quot;,
+      &quot;n12-06-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q07-boundary&quot;,
+    &quot;stage&quot;: &quot;n12-stage-07&quot;,
+    &quot;answer&quot;: &quot;成り立たない&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q07-boundary-result&quot;,
+      &quot;n12-q07-boundary-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-07&quot;,
+    &quot;stage&quot;: &quot;n12-stage-07&quot;,
+    &quot;answer&quot;: &quot;x\\le\\frac53&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-07-equation&quot;,
+      &quot;n12-07-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-08&quot;,
+    &quot;stage&quot;: &quot;n12-stage-08&quot;,
+    &quot;answer&quot;: &quot;20-x&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-08-equation&quot;,
+      &quot;n12-08-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-09&quot;,
+    &quot;stage&quot;: &quot;n12-stage-09&quot;,
+    &quot;answer&quot;: &quot;x\\in\\mathbb Z,\\ 0\\le x\\le20&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-09-equation&quot;,
+      &quot;n12-09-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-meaning&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;箱と20個の菓子の合計金額&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-meaning-result&quot;,
+      &quot;n12-p003-q10-meaning-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-cream-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;180&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-cream-coef-equation&quot;,
+      &quot;n12-p003-q10-cream-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-pudding-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;130&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-pudding-coef-equation&quot;,
+      &quot;n12-p003-q10-pudding-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q10-box-fee&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;50&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q10-box-fee-equation&quot;,
+      &quot;n12-p003-q10-box-fee-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-10&quot;,
+    &quot;stage&quot;: &quot;n12-stage-10&quot;,
+    &quot;answer&quot;: &quot;50+180x+130(20-x)&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-10-equation&quot;,
+      &quot;n12-10-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q11-lower-sign&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;\\le&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q11-lower-sign-equation&quot;,
+      &quot;n12-p003-q11-lower-sign-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q11-upper-sign&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;&lt;&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q11-upper-sign-equation&quot;,
+      &quot;n12-p003-q11-upper-sign-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-11&quot;,
+    &quot;stage&quot;: &quot;n12-stage-11&quot;,
+    &quot;answer&quot;: &quot;3200\\le50+180x+130(20-x)&lt;3300&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-11-equation&quot;,
+      &quot;n12-11-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-product-constant&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;2600&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-product-constant-equation&quot;,
+      &quot;n12-p003-q12-product-constant-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q12-signed-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;-130&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q12-signed-coef-equation&quot;,
+      &quot;n12-p002-q12-signed-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-total-constant&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;2650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-total-constant-equation&quot;,
+      &quot;n12-p003-q12-total-constant-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p003-q12-x-coef&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;50&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p003-q12-x-coef-equation&quot;,
+      &quot;n12-p003-q12-x-coef-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-12&quot;,
+    &quot;stage&quot;: &quot;n12-stage-12&quot;,
+    &quot;answer&quot;: &quot;3200\\le2650+50x&lt;3300&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-12-equation&quot;,
+      &quot;n12-12-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-operation&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;2650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-operation-equation&quot;,
+      &quot;n12-q13-operation-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q13-lower&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;550&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q13-lower-equation&quot;,
+      &quot;n12-p002-q13-lower-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-p002-q13-upper&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;650&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-p002-q13-upper-equation&quot;,
+      &quot;n12-p002-q13-upper-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-lower-divide&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;11&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-lower-divide-equation&quot;,
+      &quot;n12-q13-lower-divide-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q13-upper-divide&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;13&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q13-upper-divide-equation&quot;,
+      &quot;n12-q13-upper-divide-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-13&quot;,
+    &quot;stage&quot;: &quot;n12-stage-13&quot;,
+    &quot;answer&quot;: &quot;11\\le x&lt;13&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-13-equation&quot;,
+      &quot;n12-13-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q14-integer&quot;,
+    &quot;stage&quot;: &quot;n12-stage-14&quot;,
+    &quot;answer&quot;: &quot;11,\\ 12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q14-integer-equation-0&quot;,
+      &quot;n12-q14-integer-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-14&quot;,
+    &quot;stage&quot;: &quot;n12-stage-14&quot;,
+    &quot;answer&quot;: &quot;x=11\\ \\text{または}\\ 12&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-14-equation&quot;,
+      &quot;n12-14-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q15-eleven&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;3200&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q15-eleven-equation&quot;,
+      &quot;n12-q15-eleven-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-q15-twelve&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;3250&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-q15-twelve-equation&quot;,
+      &quot;n12-q15-twelve-after&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;n12-15&quot;,
+    &quot;stage&quot;: &quot;n12-stage-15&quot;,
+    &quot;answer&quot;: &quot;T(11)=3200\\text{円},\\ T(12)=3250\\text{円}&quot;,
+    &quot;afterIds&quot;: [
+      &quot;n12-15-equation&quot;,
+      &quot;n12-15-after&quot;
+    ]
+  }
+] as const
+
+test(&#x27;N12 current r4: ordinary route,46 decisions,15 stages,wrong gate,completion and reload&#x27;, async ({ page }) =&gt; {
+  test.setTimeout(150_000)
+  await page.goto(&#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12&#x27;)
+  await page.evaluate(() =&gt; localStorage.clear())
+  await page.reload()
+  expect(currentR4).toHaveLength(46)
+  expect(new Set(currentR4.map(row =&gt; row.stage)).size).toBe(15)
+  // The ordinary entry loads App lazily; await actual reader bootstrap, not the HTML loading shell.
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByTestId(&#x27;math-textbook-stage-n12-stage-01&#x27;)).toBeVisible()
+  await expect(page.getByTestId(&#x27;guided-source-question&#x27;)).toContainText(&#x27;同時に満たす&#x27;)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  const first = page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)
+  await first.click()
+  const firstPanel = page.getByTestId(&#x27;inline-choice-panel-n12-q01-subtract-x&#x27;)
+  await firstPanel.getByRole(&#x27;button&#x27;, { name: &#x27;2&#x27;, exact: true }).click()
+  await expect(page.getByTestId(&#x27;textbook-hint-n12-q01-subtract-x&#x27;)).toBeVisible()
+  await expect(page.locator(&#x27;[data-block-id=&quot;n12-q01-subtract-x-equation&quot;]&#x27;)).toHaveCount(0)
+  await expect(page.getByTestId(&#x27;textbook-item-n12-p002-q01-coef&#x27;)).toHaveCount(0)
+  let stage = currentR4[0].stage as string
+  let transitions = 0
+  for (const row of currentR4) {
+    if (row.stage !== stage) {
+      await expect(page.getByTestId(&#x27;math-textbook-next-stage&#x27;)).toBeVisible()
+      await page.getByTestId(&#x27;math-textbook-next-stage&#x27;).click()
+      stage = row.stage
+      transitions += 1
+    }
+    await expect(page.getByTestId(&#x27;math-textbook-stage-&#x27; + row.stage)).toBeVisible()
+    await page.getByTestId(&#x27;textbook-item-&#x27; + row.id).click()
+    await page.getByTestId(&#x27;inline-choice-panel-&#x27; + row.id).getByRole(&#x27;button&#x27;, { name: row.answer, exact: true }).click()
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27; + row.id)).toHaveCount(0)
+    for (const blockId of row.afterIds) {
+      await expect(page.locator(&#x27;[data-block-id=&quot;&#x27; + blockId + &#x27;&quot;]&#x27;)).toBeVisible()
+    }
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+  }
+  expect(transitions).toBe(14)
+  await expect(page.getByTestId(&#x27;n12-complete&#x27;)).toBeVisible()
+  const saved = await page.evaluate(() =&gt; JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;])
+  expect(saved.unitRevision).toBe(4)
+  expect(Object.keys(saved.answers)).toHaveLength(46)
+  expect(saved.answers[&#x27;n12-q01-subtract-x&#x27;].attemptCount).toBe(2)
+  expect(saved.completedAt).toBeGreaterThan(0)
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByTestId(&#x27;n12-complete&#x27;)).toBeVisible()
+  await expect(page.locator(&#x27;[data-block-id=&quot;n12-15-equation&quot;]&#x27;)).toBeVisible()
+  page.once(&#x27;dialog&#x27;, dialog =&gt; dialog.accept())
+  await page.getByRole(&#x27;button&#x27;, { name: &#x27;この単元を最初から&#x27;, exact: true }).first().click()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)).toBeVisible()
+  expect(await page.evaluate(() =&gt; JSON.parse(localStorage.getItem(&#x27;kyotsu-step-store&#x27;) || &#x27;{}&#x27;).state.textbookProgress[&#x27;math-numbers-expressions-n12&#x27;])).toBeUndefined()
+  await page.reload()
+  await expect(page.getByTestId(&#x27;textbook-item-n12-q01-subtract-x&#x27;)).toBeVisible({ timeout: 30_000 })
+})
+</pre></details></html>

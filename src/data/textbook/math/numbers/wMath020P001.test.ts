@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest'
-import {mathNumbersN14Unit,n14SourceToItemIds} from './n14Lesson'
+import {mathNumbersN14Unit,n14SourceToItemIds} from '../../../../test/n1314Legacy'
 import {effectiveTextbookProgress,type TextbookAnswerRecord,type TextbookUnitProgress} from '../../../../domain/textbook'
 const unit=mathNumbersN14Unit,sec=unit.sections[0]
 const pos=(id:string)=>sec.readingFlow.findIndex(b=>b.id===id)

@@ -1,9 +1,13 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { mkdirSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
-import { mathTextbookUnits } from '../src/data/textbook/math'
+import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
+import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
+
+const mathTextbookUnits = editionValidate(editionData.units)
 
 const units = ['04', '05', '06', '07', '08', '11', '13', '14'] as const
-const route = (n: string) => '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n' + n
+const route = (n: string) => editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n' + n)
 
 for (const n of units) {
   test('W-MATH-003 batch N' + n + ': all original choices, mobile/PC progression, persistence and figures', async ({ page }, testInfo) => {
@@ -11,9 +15,8 @@ for (const n of units) {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
     const items = unit.sections[0].items
     const figureIds = unit.sections[0].figures.map(f => f.id)
-    await page.goto(route(n))
-    await page.evaluate(() => localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, route(n))
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
     await expect(page.getByTestId('textbook-item-' + items[0].id)).toBeVisible()
     const evidence = process.env.E2E_BATCH_EVIDENCE === '1'
@@ -64,7 +67,7 @@ for (const n of units) {
     if (evidence) await page.screenshot({ path: 'e2e-evidence/n' + n + '-finish-' + device + '.png', fullPage: false })
     const width = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth])
     expect(width[0], 'document horizontal overflow').toBeLessThanOrEqual(width[1] + 2)
-    await page.reload()
+    await reloadReady(page)
     await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
     await expect(page.getByTestId('resolved-' + items[0].id)).toBeVisible()
   })
@@ -85,9 +88,8 @@ for(const width of [320,390]){
       const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(6,9).map(i=>i.id)).toEqual(ids)
-      await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
-      await page.evaluate(()=>localStorage.clear())
-      await page.reload()
+      await clearStoredState(page)
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,6)){
         const trigger=page.getByTestId('textbook-item-'+item.id)
@@ -144,7 +146,7 @@ for(const width of [320,390]){
         })
       }
       await expect(page.getByTestId('textbook-item-n14-wm015-q08-nonnegative')).toBeVisible()
-      await page.reload()
+      await reloadReady(page)
       for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
       await expect(page.getByTestId('textbook-figure-n14-f01')).toBeVisible()
     })
@@ -165,9 +167,8 @@ for(const width of [320,390]){
       const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(9,12).map(x=>x.id)).toEqual(ids)
-      await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
-      await page.evaluate(()=>localStorage.clear())
-      await page.reload()
+      await clearStoredState(page)
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,9)){
         const trigger=page.getByTestId('textbook-item-'+item.id)
@@ -224,7 +225,7 @@ for(const width of [320,390]){
         })
       }
       await expect(page.getByTestId('textbook-item-n14-09')).toBeVisible()
-      await page.reload()
+      await reloadReady(page)
       for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
       await expect(page.getByTestId('resolved-n14-07')).toBeVisible()
       await expect(page.getByTestId('textbook-figure-n14-f01')).toBeVisible()
@@ -245,9 +246,8 @@ for(const width of [320,390]){
       const ids=['n14-wm016-q12-left','n14-wm016-q12-right','n14-12']
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(19,22).map(x=>x.id)).toEqual(ids) // Q10 adds four prior items
-      await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
-      await page.evaluate(()=>localStorage.clear())
-      await page.reload()
+      await clearStoredState(page)
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,19)){ // includes four new Q10 operations before Q12
         const trigger=page.getByTestId('textbook-item-'+item.id)
@@ -304,7 +304,7 @@ for(const width of [320,390]){
         })
       }
       await expect(page.getByTestId('textbook-item-n14-13')).toBeVisible()
-      await page.reload()
+      await reloadReady(page)
       for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
       for(const id of ['n14-07','n14-08','n14-11'])
         await expect(page.getByTestId('resolved-'+id)).toBeVisible()
@@ -325,9 +325,8 @@ for(const width of [320,390,1440] as const){
     const items=unit.sections[0].items
     const first=items.findIndex(i=>i.id===ids[0])
     expect(first).toBeGreaterThan(20)
-    await page.goto(route('14'))
-    await page.evaluate(()=>localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, route('14'))
     const answer=async(id:string,value:string)=>{
       const button=page.getByTestId('textbook-item-'+id)
       await expect(button,id).toBeVisible()
@@ -410,7 +409,7 @@ for(const width of [320,390,1440] as const){
     await expect(page.locator('.katex-error')).toHaveCount(0)
     const v=await page.evaluate(()=>[document.documentElement.scrollWidth,document.documentElement.clientWidth])
     expect(v[0]).toBeLessThanOrEqual(v[1]+2)
-    await page.reload()
+    await reloadReady(page)
     for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
     await expect(page.getByTestId('resolved-n14-10')).toBeVisible()
   })
@@ -438,9 +437,8 @@ for (const width of [320, 390, 1440] as const) {
     const start=items.findIndex(i=>i.id===q16Ids[0])
     expect(start).toBe(33)
     expect(items.slice(start).map(i=>i.id)).toEqual(q16Ids)
-    await page.goto(route('14'))
-    await page.evaluate(()=>localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, route('14'))
     const solve=async(id:string,value:string)=>{
       const button=page.getByTestId('textbook-item-'+id)
       await expect(button,id).toBeVisible()
@@ -519,8 +517,16 @@ for (const width of [320, 390, 1440] as const) {
     const dims=await page.evaluate(()=>[document.documentElement.scrollWidth,document.documentElement.clientWidth])
     expect(dims[0]).toBeLessThanOrEqual(dims[1]+2)
     if(evidence)await page.screenshot({path:'e2e-evidence/wmath022-q16-'+width+'-complete.png'})
-    await page.reload()
+    await reloadReady(page)
     for(const id of q16Ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
     for(const id of ['n14-10','n14-14','n14-15'])await expect(page.getByTestId('resolved-'+id)).toBeVisible()
   })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
 }

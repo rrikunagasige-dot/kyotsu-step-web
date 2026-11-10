@@ -1,3 +1,22 @@
+# Current record reconciliation — W-MATH-037 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: VERIFYING
+
+Exact historical approval and bounded implementation checks exist, but this native Work has no proved closure. Preserve pending acceptance/remaining workflow; do not promote it to DONE.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W037-P001-PRESERVE-R4-APPROVED-20261026, proposal_hash=71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d (historical, no new quote)
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # N08「絶対値」修正案 P-001
 
 Status: PROPOSAL_ONLY / 教材・共通コードの実装前。日付2026年10月26日（日本時間）。

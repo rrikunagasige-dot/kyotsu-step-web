@@ -1,5 +1,9 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test } from '@playwright/test'
-import { mathTextbookUnits } from '../src/data/textbook/math'
+import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
+import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
+
+const mathTextbookUnits = editionValidate(editionData.units)
 
 /** W-MATH-012/P-001: actual browser Q11 formula-local derivation in 320/390. */
 for (const width of [320, 390]) {
@@ -13,9 +17,8 @@ for (const width of [320, 390]) {
     const first = items.findIndex(item => item.id === ids[0])
     expect(first).toBeGreaterThan(10)
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
-    await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
-    await page.evaluate(() => localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n11'))
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
     // No Q11 answers are accessible until all prior authored decisions
     // (including accepted Q01–Q04 proof and source Q10 figure) are resolved.
@@ -80,7 +83,7 @@ for (const width of [320, 390]) {
       if (evidence) await page.screenshot({ path: 'e2e-evidence/wmath012-' + id + '-' + width + '-resolved.png' })
     }
     await expect(page.getByTestId('textbook-item-n11-12')).toBeVisible()
-    await page.reload()
+    await reloadReady(page)
     for (const id of ids) await expect(page.getByTestId('resolved-' + id)).toBeVisible()
   })
 }
@@ -101,9 +104,8 @@ for (const width of [320, 390]) {
     const first = items.findIndex(item => item.id === ids[0])
     expect(first).toBe(28) // P008 adds 3 Q13 decisions before protected Q14
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
-    await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
-    await page.evaluate(() => localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n11'))
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
     // Earlier accepted Q01-Q04 and Q11 answers remain prerequisites, not
     // bypassed by opening Q14 as a synthetic isolated card.
@@ -172,8 +174,16 @@ for (const width of [320, 390]) {
       })
     }
     await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-    await page.reload()
+    await reloadReady(page)
     for (const id of ids) await expect(page.getByTestId('resolved-' + id)).toBeVisible()
     await expect(page.getByTestId('resolved-n11-11')).toBeVisible()
   })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
 }

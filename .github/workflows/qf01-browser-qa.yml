@@ -1,0 +1,240 @@
+# PROPOSAL ONLY. Requires approval for this new workflow/settings scope.
+# No workflow/app/Store write, installation, push, or dispatch has been performed.
+name: QF01 full learner-state CI evidence (no deploy)
+on:
+  push:
+    branches: ['work/qf01-implementation-20261109']
+  workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: 'Full candidate SHA, equal to the dispatched workflow ref SHA'
+        type: string
+        required: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/work/qf01-implementation-20261109' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        width: [320, 390, 430, 1440]
+    env:
+      EXPECTED_SHA: ${{ inputs.expected_sha || github.sha }}
+      SOURCE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_BASE_PATH: /
+      VITE_STORAGE_NAMESPACE: qf01-ci-evidence-isolated
+      STORAGE_KEY: qf01-ci-evidence-isolated
+      WIDTH: ${{ matrix.width }}
+      APP_URL: http://127.0.0.1:4173/
+      OUT: /tmp/qf01-ci-${{ matrix.width }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require exact candidate identity
+        shell: bash
+        run: |
+          test "$EXPECTED_SHA" = "$SOURCE_SHA"
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Real ordinary-route walkthrough and source-bound capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 --strictPort >/tmp/qf01-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import assert from 'node:assert/strict';
+          import {chromium} from '@playwright/test';
+          const sourceSHA=process.env.SOURCE_SHA,width=Number(process.env.WIDTH),out=process.env.OUT;
+          assert.match(sourceSHA??'',/^[0-9a-f]{40}$/);
+          assert.ok([320,390,430,1440].includes(width));
+          const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+          const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+          const unitPath='src/data/textbook/math/quadratic/qf01Unit.json';
+          const displayPath='src/data/textbook/math/quadratic/qf01Presentation.json';
+          const unit=read(unitPath),display=read(displayPath),items=unit.sections[0].items;
+          assert.equal(unit.unitId,'math-quadratic-qf01');
+          assert.equal(items.length,25);assert.equal(display.nodes.length,25);
+          assert.equal(display.stages.length,9);assert.equal(unit.requiredInteractionRefs.length,25);
+          assert.deepEqual(display.nodes.map(n=>n.interaction),items.map(i=>i.id));
+          assert.deepEqual(unit.requiredInteractionRefs,items.map(i=>i.id));
+          const files=[unitPath,displayPath,'src/pages/TextbookUnitPage.tsx','src/data/textbook/math/index.ts'];
+          const sourceFiles=Object.fromEntries(files.map(p=>[p,hash(fs.readFileSync(p))]));
+          fs.mkdirSync(out+'/png',{recursive:true});fs.mkdirSync(out+'/states',{recursive:true});
+          const report={sourceSHA,width,route:'/#/learning/textbook/'+unit.unitId,
+            scope:'QF01_25_DECISIONS_ALL_50_WRONG_VALUES_AND_RELOAD',status:'RUNNING',
+            sourceFiles,unitId:unit.unitId,revision:unit.revision,
+            ci:{runId:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT},
+            images:[],states:[],answers:[],errors:[],
+            limits:['Not a deployment or user acceptance','Measurements and assertions need nonauthor review; no automatic teaching-quality label','Reload probes at decision13 and decision25, not every historical saved revision','No claim of unrelated-unit regression coverage']};
+          const persist=()=>fs.writeFileSync(out+'/REPORT.json',JSON.stringify(report,null,2)+'\n');persist();
+          let ready=false;for(let i=0;i<60;i++){try{if((await fetch(process.env.APP_URL)).ok){ready=true;break}}catch{}await new Promise(r=>setTimeout(r,500))}
+          if(!ready)throw Error('PREVIEW_NOT_READY');
+          const browser=await chromium.launch({headless:true});
+          try{
+            report.browserVersion=browser.version();
+            // One independent context per matrix job; no production/user session.
+            const context=await browser.newContext({viewport:{width,height:1000}});
+            const page=await context.newPage();
+            page.on('pageerror',e=>{report.errors.push(String(e));persist()});
+            page.setDefaultTimeout(20000);
+            await page.goto(process.env.APP_URL+'#/learning/textbook/'+unit.unitId);
+            await page.getByTestId('textbook-reading-flow').waitFor({state:'visible'});
+            await page.evaluate(()=>document.fonts.ready);
+            const progress=()=>page.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:process.env.STORAGE_KEY,id:unit.unitId});
+            const record=async id=>(await progress())?.answers?.[id];
+            const current=()=>page.locator('.math-textbook-stage--current');
+            async function unchangedReferences(node){
+              const actual=await current().locator('.math-textbook-stage-references [data-result-source]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-result-source')));
+              assert.deepEqual(actual,node.knownRefs,'EXACT_KNOWN_RESULTS:'+node.id);
+            }
+            async function noFuture(i,allowNextQuestion=false){
+              for(const future of display.nodes.slice(i+1)){
+                if(!(allowNextQuestion&&future===display.nodes[i+1]))assert.equal(await page.getByTestId('textbook-item-'+future.interaction).count(),0,'FUTURE_ANSWER_CONTROL:'+future.id);
+                const s=display.semantic.nodes.find(n=>n.id===future.id);
+                for(const b of s.after)assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'FUTURE_COMPLETED_TEXT:'+future.id);
+              }
+            }
+            async function capture(label,node,selectedValue=null){
+              await page.evaluate(()=>document.fonts.ready);
+              // Full-page PNG must be captured from the page top. Preserve the
+              // learner viewport separately; never hide sticky/skip-link UI.
+              const learnerViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
+              await page.evaluate(async()=>{
+                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                window.scrollTo({left:0,top:0,behavior:'instant'});
+                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+              });
+              const captureViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
+              assert.equal(captureViewport.scrollX,0,'CAPTURE_NOT_AT_LEFT:'+label);
+              assert.equal(captureViewport.scrollY,0,'CAPTURE_NOT_AT_TOP:'+label);
+              const measurements=await page.evaluate(()=>({
+                viewport:{width:innerWidth,height:innerHeight},documentWidth:document.documentElement.scrollWidth,
+                horizontalOverflow:document.documentElement.scrollWidth>innerWidth,
+                katexErrors:document.querySelectorAll('.katex-error').length,
+                fontsReady:document.fonts.status,
+                currentText:document.querySelector('.math-textbook-stage--current')?.textContent,
+                math:Array.from(document.querySelectorAll('.math-textbook-stage--current .katex')).map(e=>({
+                  text:e.textContent,fontSize:getComputedStyle(e).fontSize,
+                  rect:(()=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}})()
+                }))
+              }));
+              assert.equal(measurements.horizontalOverflow,false,'DOCUMENT_OVERFLOW:'+label);
+              assert.equal(measurements.katexErrors,0,'INVALID_MATH:'+label);
+              const stem=String(report.states.length).padStart(3,'0')+'-'+label;
+              const png='png/'+stem+'.png',state='states/'+stem+'.json';
+              try{
+                await page.screenshot({path:out+'/'+png,fullPage:true});
+              } finally {
+                await page.evaluate(async previous=>{
+                  window.scrollTo({left:previous.scrollX,top:previous.scrollY,behavior:'instant'});
+                  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                },learnerViewport);
+              }
+              const restoredViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
+              const image={file:png,sha256:hash(fs.readFileSync(out+'/'+png)),width,nodeId:node.id,label,selectedValue,
+                fullPage:true,captureOrigin:'top-after-two-animation-frames',captureViewport};
+              const data={sourceSHA,nodeId:node.id,interactionId:node.interaction,label,selectedValue,
+                measurements,measurementViewport: captureViewport,learnerViewportBeforeCapture:learnerViewport,
+                viewportAfterRestore:restoredViewport,progress:await progress(),image};
+              fs.writeFileSync(out+'/'+state,JSON.stringify(data,null,2)+'\n');
+              report.images.push(image);report.states.push({file:state,sha256:hash(fs.readFileSync(out+'/'+state)),image:png});persist();
+            }
+            for(let i=0;i<items.length;i++){
+              const item=items[i],node=display.nodes[i],compiled=display.semantic.nodes.find(n=>n.id===node.id);
+              if(await page.getByTestId('textbook-item-'+item.id).count()===0){
+                await page.getByTestId('math-textbook-next-stage').click();
+              }
+              await page.getByTestId('textbook-item-'+item.id).waitFor({state:'visible'});
+              await page.getByTestId('math-textbook-stage-'+node.stageId).waitFor({state:'visible'});
+              await unchangedReferences(node);await noFuture(i);
+              for(const b of compiled.after)assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'CURRENT_ANSWER_EARLY:'+node.id);
+              await capture(node.id+'-before',node);
+              await page.getByTestId('textbook-item-'+item.id).click();
+              const panel=page.getByTestId('inline-choice-panel-'+item.id);
+              await panel.waitFor({state:'visible'});
+              const shown=await panel.locator('button.reading-choice-option').evaluateAll(ns=>ns.map(n=>n.getAttribute('aria-label')));
+              assert.equal(shown.length,item.choices.length);assert.deepEqual([...shown].sort(),[...item.choices].sort());
+              await capture(node.id+'-choices',node);
+              const wrongs=item.choices.filter(v=>v!==item.answer&&!item.acceptedAnswers.includes(v));
+              assert.equal(wrongs.length,2);
+              for(let j=0;j<wrongs.length;j++){
+                const wrong=wrongs[j];await panel.getByRole('button',{name:wrong,exact:true}).click();
+                const saved=await record(item.id);
+                assert.equal(saved.value,wrong);assert.equal(saved.resolved,false);
+                await page.getByTestId('textbook-hint-'+item.id).waitFor({state:'visible'});
+                assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),1,'WRONG_ADVANCED');
+                await unchangedReferences(node);await noFuture(i);
+                await capture(node.id+'-wrong-'+j,node,wrong);
+              }
+              if([12,24].includes(i)){
+                const before=await progress();await page.reload();await page.getByTestId('textbook-item-'+item.id).waitFor({state:'visible'});
+                assert.deepEqual(await progress(),before,'WRONG_RELOAD_CHANGED_PROGRESS');
+                await unchangedReferences(node);await noFuture(i);
+                await capture(node.id+'-reload-wrong',node,wrongs.at(-1));
+                await page.getByTestId('textbook-item-'+item.id).click();
+              }
+              await page.getByTestId('inline-choice-panel-'+item.id).getByRole('button',{name:item.answer,exact:true}).click();
+              const saved=await record(item.id);assert.equal(saved.value,item.answer);assert.equal(saved.resolved,true);assert.equal(saved.attemptCount,3);
+              for(const b of compiled.before.filter(b=>b.id.startsWith(node.id+'-interaction'))){
+                assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'COMPLETED_QUESTION_RETAINED:'+node.id);
+              }
+              for(const b of compiled.after)await page.locator('[data-block-id="'+b.id+'"]').first().waitFor({state:'visible'});
+              await noFuture(i,true);await capture(node.id+'-correct',node,item.answer);
+              if([12,24].includes(i)){
+                const before=await progress();await page.reload();await page.getByTestId('textbook-reading-flow').waitFor({state:'visible'});
+                assert.deepEqual(await progress(),before,'CORRECT_RELOAD_CHANGED_PROGRESS');
+                for(const b of compiled.before.filter(b=>b.id.startsWith(node.id+'-interaction')))assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'RELOAD_RETAINED_QUESTION');
+                await noFuture(i,true);await capture(node.id+'-reload-correct',node,item.answer);
+              }
+              report.answers.push({nodeId:node.id,itemId:item.id,wrongValues:wrongs,correctValue:item.answer});persist();
+            }
+            await page.getByTestId('qf01-complete').waitFor({state:'visible'});
+            const saved=await progress();assert.equal(Object.keys(saved.answers).length,25);
+            assert.ok(Object.values(saved.answers).every(a=>a.resolved&&a.attemptCount===3));
+            assert.equal(report.answers.length,25);assert.equal(report.answers.flatMap(a=>a.wrongValues).length,50);
+            assert.deepEqual(report.errors,[]);
+            for(const [p,h]of Object.entries(sourceFiles))assert.equal(hash(fs.readFileSync(p)),h,'SOURCE_MUTATED:'+p);
+            report.coverage={correct:25,wrong:50,reloadWrong:2,reloadCorrect:2,stages:9,states:report.states.length};
+            report.status='CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE';persist();
+            await context.close();
+          } catch(e){report.status='FAIL';report.failure=String(e);persist();throw e}
+          finally{await browser.close();persist()}
+          NODE
+      - name: Retain PNG-only original CI artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qf01-png-${{ matrix.width }}-${{ github.sha }}
+          path: /tmp/qf01-ci-${{ matrix.width }}/png/*.png
+          if-no-files-found: error
+          retention-days: 7
+      - name: Retain raw report and state bindings separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qf01-states-${{ matrix.width }}-${{ github.sha }}
+          path: |
+            /tmp/qf01-ci-${{ matrix.width }}/REPORT.json
+            /tmp/qf01-ci-${{ matrix.width }}/states/*.json
+          if-no-files-found: error
+          retention-days: 7

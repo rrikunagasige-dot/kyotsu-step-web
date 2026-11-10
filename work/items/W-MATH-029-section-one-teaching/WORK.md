@@ -1,3 +1,19 @@
+# Current record reconciliation — W-MATH-029 / WORK.md
+
+Status: BLOCKED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: BLOCKED
+
+Historical record recovery remains blocked: exact current scope/approval/verification mapping is incomplete; no approval, completion, or learner acceptance is inferred.
+
+Evidence: existing fixed-candidate historical text below where present. Missing exact approval/closure provenance remains unresolved; do not substitute filename or informal positive wording.
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 5183d56df121684c6e371c66544844a0f5a9bf55eae6ed51c61054eaa97a8a29
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # W-MATH-029 / P-001 — approved section-wide teaching sequence repair
 2026-10-24 JST. Canonical rrikunagasige-dot/kyotsu-step-web1391122224, authenticated332552275.
 Source authority2977a44a08dedce8d082f5192946ab916357f259, main hosting7b04ea73456c7a072765d0d8de4724816b1a3ced.

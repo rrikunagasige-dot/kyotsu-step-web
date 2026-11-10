@@ -1,3 +1,23 @@
+# Current record reconciliation — W-MATH-032 / PROPOSAL.md
+
+Status: APPROVED
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: DONE
+
+Historical native closure is evidenced for its exact recorded version. This record repair does not reopen the closed Work or accept a later product version.
+
+Current approval applies only to the native proposal hash/event listed below, not every historical draft preserved below. No new user utterance is created.
+
+Evidence:
+- Store approval event W-MATH-032-P001-USER-APPROVAL, proposal_hash=ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a (historical, no new quote)
+- Store work_closed dae611f0-0177-4381-a7ca-36145bfcaff2 seq549 hash=0d104d0b2bef18d1f51d65851951b1959bf25d8601dcb5d16ab6a08a5f66eadf source=46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6 result=2f394091cf591eb3680275860eefe2f09d1e98858164d56e9ef58c807e703c09
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 # P-001 — N07の意味・式の接続・文脈復元の修正
 
 Status: PROPOSED / 未実装・未公開

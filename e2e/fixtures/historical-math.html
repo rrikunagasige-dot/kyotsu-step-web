@@ -1,0 +1,3585 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Historical math compatibility fixture</title><style>:root {
+  --color-bg: #f8f7f2;
+  --color-text: #1a2a3c;
+  --color-primary: #1e4a7c;
+  --color-error: #a22c2c;
+  --color-success: #2c5f2d;
+  --color-muted: #5c6b7e;
+  --color-section: #e6e4db;
+  --color-paper: #fffefa;
+  --color-line: #c8c7c0;
+  --color-border: #1a2a3c;
+  --focus-ring: #f0a202;
+  --content-max: 720px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --shadow-key: 0 4px 0 var(--color-border);
+  --radius-sm: 4px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: #e9e7df; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #e9e7df; color: var(--color-text); font-family: 'Noto Sans JP', 'Yu Gothic UI', 'Hiragino Kaku Gothic ProN', system-ui, sans-serif; line-height: 1.65; }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+.skip-link { position: fixed; z-index: 100; top: .5rem; left: .5rem; padding: .65rem .85rem; transform: translateY(-160%); border: 2px solid var(--color-border); background: var(--color-paper); font-weight: 700; }
+.skip-link:focus { transform: translateY(0); }
+.eyebrow { color: var(--color-primary); font: 700 .75rem/1.4 ui-monospace, monospace; letter-spacing: .12em; }
+.app-frame { position: relative; width: min(100%, var(--content-max)); min-height: 100dvh; margin: 0 auto; background: var(--color-bg); border-inline: 1px solid rgba(26,42,60,.18); box-shadow: 0 0 32px rgba(26,42,60,.08); }
+.top-header { position: sticky; z-index: 20; top: 0; display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: .75rem; padding: .55rem 1rem; border-bottom: 2px solid var(--color-border); background: rgba(248,247,242,.96); backdrop-filter: blur(8px); }
+.header-leading { display: inline-flex; min-width: 0; align-items: center; gap: .55rem; }
+.brand { display: inline-flex; min-width: 0; align-items: center; gap: .65rem; text-decoration: none; }
+.brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border: 2px solid var(--color-border); background: var(--color-primary); color: white; font: 700 .75rem/1 ui-monospace, monospace; }
+.brand strong, .brand small { display: block; line-height: 1.2; }
+.brand small { margin-top: .15rem; color: var(--color-muted); font-size: .67rem; letter-spacing: .08em; }
+.header-actions { display: inline-flex; align-items: center; gap: .4rem; color: var(--color-primary); }
+.header-back-link { display: inline-flex; min-height: 48px; align-items: center; gap: .35rem; padding: .25rem .55rem; border: 1px solid var(--color-primary); background: var(--color-paper); color: var(--color-primary); font-size: .72rem; font-weight: 700; text-decoration: none; }
+.header-back-link:hover { background: var(--color-section); }
+.language-switcher { display: inline-flex; overflow: hidden; border: 1px solid var(--color-primary); background: var(--color-paper); }
+.language-switcher button { min-width: 48px; min-height: 48px; padding: .25rem .48rem; border: 0; border-right: 1px solid var(--color-primary); background: transparent; color: var(--color-primary); font: 700 .72rem/1 sans-serif; cursor: pointer; }
+.language-switcher button:last-child { border-right: 0; }
+.language-switcher button[aria-pressed="true"] { background: var(--color-primary); color: white; }
+.app-content { min-height: calc(100dvh - 64px); padding: 1.25rem 1rem calc(96px + var(--safe-bottom)); }
+.app-frame--focus .app-content { padding-bottom: 2rem; }
+.bottom-navigation { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: grid; width: min(100%, var(--content-max)); min-height: calc(72px + var(--safe-bottom)); margin: 0 auto; padding-bottom: var(--safe-bottom); grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--color-border); background: var(--color-paper); }
+.nav-item { display: flex; min-width: 0; min-height: 72px; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border-inline-start: 1px solid var(--color-line); color: var(--color-muted); font-size: .69rem; font-weight: 700; text-decoration: none; }
+.nav-item:first-child { border-inline-start: 0; }
+.nav-item--active { background: var(--color-primary); color: white; }
+.page-stack { display: grid; gap: 1.5rem; }
+.page-hero { padding: .5rem 0 1rem; border-bottom: 2px solid var(--color-border); }
+.page-hero h1 { margin: .25rem 0 .5rem; font-size: clamp(2rem, 9vw, 3.75rem); line-height: 1.16; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.page-hero p:last-child { max-width: 52ch; margin: 0; color: var(--color-muted); }
+.numbered-section { border-top: 2px solid var(--color-border); }
+.section-heading { display: grid; grid-template-columns: 52px 1fr; background: var(--color-section); border-bottom: 1px solid var(--color-border); }
+.section-heading > span { display: grid; place-items: center; border-right: 2px solid var(--color-border); font: 700 1.05rem/1 ui-monospace, monospace; }
+.section-heading > div { min-width: 0; padding: .7rem .85rem; }
+.section-heading h2 { margin: 0; font-size: 1rem; }
+.section-heading p { margin: .18rem 0 0; color: var(--color-muted); font-size: .78rem; }
+.section-body { display: grid; gap: 1rem; padding: 1rem 0; }
+.raised-button, .raised-link { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: .65rem 1rem; border: 2px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-paper); box-shadow: var(--shadow-key); color: var(--color-text); font-weight: 700; text-decoration: none; cursor: pointer; }
+.raised-button:not(:disabled):active, .raised-link:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--color-border); }
+.raised-button:disabled { cursor: not-allowed; opacity: .5; box-shadow: 0 2px 0 var(--color-border); }
+.status-badge { display: inline-flex; width: fit-content; align-items: center; gap: .35rem; padding: .3rem .5rem; border: 1px solid currentColor; color: var(--color-primary); font-size: .76rem; font-weight: 700; }
+.status-badge--success { color: var(--color-success); }
+.status-badge--error { color: var(--color-error); }
+.status-badge--muted { color: var(--color-muted); }
+.state-panel { padding: 1.35rem 1rem; border: 2px dashed var(--color-line); background: var(--color-paper); text-align: center; }
+.state-panel h2 { margin: .45rem 0 .35rem; font-size: 1.1rem; }
+.state-panel p { max-width: 44ch; margin: 0 auto 1rem; color: var(--color-muted); }
+.state-panel__mark { font: 700 2rem/1 ui-monospace, monospace; }
+.state-panel--error { border-color: var(--color-error); color: var(--color-error); }
+.state-panel--error p { color: var(--color-text); }
+.inline-link { min-height: 48px; display: inline-flex; align-items: center; width: fit-content; font-weight: 700; }
+.progress-block { display: grid; gap: .35rem; }
+.progress-label { display: flex; justify-content: space-between; font-size: .8rem; font-weight: 700; }
+.progress-track { height: 10px; overflow: hidden; border: 1px solid var(--color-border); background: var(--color-section); }
+.progress-track span { display: block; height: 100%; background: var(--color-primary); }
+.sheet-backdrop, .dialog-backdrop { position: fixed; z-index: 60; inset: 0; display: flex; align-items: flex-end; justify-content: center; background: rgba(26,42,60,.48); }
+.bottom-sheet { width: min(100%, var(--content-max)); max-height: min(78dvh, 720px); overflow: auto; border: 2px solid var(--color-border); border-bottom: 0; background: var(--color-bg); box-shadow: 0 -8px 30px rgba(26,42,60,.22); }
+.bottom-sheet > header { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: .85rem 1rem; border-bottom: 2px solid var(--color-border); background: var(--color-section); }
+.bottom-sheet h2, .confirm-dialog h2 { margin: 0; font-size: 1.05rem; }
+.bottom-sheet__body { padding: 1rem; }
+.icon-button, .text-button { min-width: 48px; min-height: 48px; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.dialog-backdrop { align-items: center; padding: 1rem; }
+.confirm-dialog { width: min(100%, 440px); padding: 1.25rem; border: 2px solid var(--color-border); background: var(--color-bg); box-shadow: 8px 8px 0 rgba(26,42,60,.35); }
+.confirm-dialog p { color: var(--color-muted); }
+.button-row { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; flex-wrap: wrap; }
+.content-renderer { display: grid; gap: 1rem; min-width: 0; }
+.content-renderer > p { margin: 0; white-space: pre-line; }
+.dialogue-block { display: grid; gap: .35rem; padding: .75rem .85rem; border-left: 4px solid var(--color-primary); background: var(--color-section); }
+.dialogue-block strong { color: var(--color-primary); font-size: .78rem; }
+.dialogue-block p { margin: 0; white-space: pre-line; }
+.common-test-stepper { display: grid; grid-template-columns: repeat(3, 1fr); border: 2px solid var(--color-border); background: var(--color-paper); }
+.common-test-step { display: grid; min-width: 0; gap: .25rem; padding: .6rem .4rem; place-items: center; border-left: 1px solid var(--color-border); color: var(--color-muted); text-align: center; }
+.common-test-step:first-child { border-left: 0; }
+.common-test-step > span { display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid currentColor; font: 700 .72rem/1 ui-monospace, monospace; }
+.common-test-step small { font-size: .68rem; font-weight: 700; }
+.common-test-step--active { background: var(--color-primary); color: white; }
+.common-test-screen { display: grid; gap: 1rem; }
+.screen-kicker { width: fit-content; padding: .3rem .5rem; border: 1px solid var(--color-primary); color: var(--color-primary); font: 700 .72rem/1.4 ui-monospace, monospace; }
+.original-choice-preview, .final-choice-list { display: grid; gap: .65rem; }
+.original-choice-preview h2, .final-choice-list h2 { margin: 0; font-size: 1rem; }
+.original-choice, .final-choice { display: grid; min-width: 0; align-items: center; gap: .65rem; padding: .7rem .8rem; grid-template-columns: 34px minmax(0, 1fr); border: 2px solid var(--color-border); background: var(--color-paper); text-align: left; }
+.original-choice > span, .final-choice > span { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid var(--color-border); font: 700 .8rem/1 ui-monospace, monospace; }
+.final-choice { color: var(--color-text); cursor: pointer; box-shadow: 0 3px 0 var(--color-border); }
+.final-choice:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--color-border); }
+.final-choice--wrong { border-color: var(--color-error); background: #fff8f6; color: var(--color-error); }
+.final-retry { display: grid; gap: .65rem; padding: .8rem; border: 2px solid var(--color-error); background: #fff8f6; }
+.final-retry p { margin: 0; }
+.question-paper--compact { max-height: 44dvh; overflow: auto; }
+.guide-reference-panel { position: sticky; z-index: 11; top: 74px; display: grid; gap: .45rem; padding: .65rem; border: 2px solid var(--color-primary); background: rgba(248,247,242,.97); box-shadow: 0 4px 14px rgba(26,42,60,.12); backdrop-filter: blur(8px); }
+.guide-reference-panel__label { width: fit-content; padding: .18rem .38rem; background: var(--color-primary); color: white; font: 700 .68rem/1.35 ui-monospace, monospace; }
+.guide-reference-panel .question-figure { margin: 0; }
+.guide-reference-panel .question-figure img { display: block; width: 100%; max-height: 30dvh; object-fit: contain; }
+.guide-reference-panel .question-figure figcaption { margin-top: .3rem; font-size: .7rem; text-align: center; }
+.filled-blank--recovered { border-color: var(--color-primary); }
+.filled-blank--recovered .blank-state-label { color: var(--color-primary); }
+.formula-scroll, .table-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.formula-scroll { padding: .65rem .2rem; border-block: 1px solid var(--color-line); background: var(--color-paper); }
+.formula-scroll .katex-display { width: max-content; min-width: 100%; margin: 0; text-align: center; }
+.formula-inline { display: inline-block; max-width: 100%; }
+.question-figure, .question-table-wrap { min-width: 0; max-width: 100%; margin: 0; }
+.question-figure img { display: block; width: 100%; height: auto; border: 2px solid var(--color-border); background: var(--color-paper); }
+.question-figure figcaption, .question-table-wrap figcaption { margin-top: .4rem; color: var(--color-muted); font-size: .78rem; }
+.question-table-wrap figcaption { margin: 0 0 .4rem; font-weight: 700; }
+.question-table-wrap table { width: 100%; min-width: 460px; border-collapse: collapse; background: var(--color-paper); font-size: .86rem; }
+.question-table-wrap th, .question-table-wrap td { padding: .6rem .7rem; border: 1px solid var(--color-border); text-align: left; }
+.question-table-wrap th { background: var(--color-section); }
+.content-error { padding: .75rem; border: 2px solid var(--color-error); color: var(--color-error); }
+.field-label { font-weight: 700; font-size: .82rem; }
+.select-control, .text-control, .textarea-control { width: 100%; min-height: 48px; padding: .65rem .75rem; border: 2px solid var(--color-border); border-radius: 0; background: var(--color-paper); color: var(--color-text); }
+.tag-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.structure-list { margin: 0; padding-left: 1.5rem; }
+.structure-list li { padding: .35rem 0; border-bottom: 1px dashed var(--color-line); font-family: ui-monospace, monospace; font-size: .82rem; }
+.resume-strip, .mode-card { display: grid; min-height: 72px; align-items: center; gap: .8rem; padding: .8rem 1rem; grid-template-columns: auto 1fr auto; border: 2px solid var(--color-border); background: var(--color-paper); box-shadow: var(--shadow-key); text-decoration: none; }
+.resume-strip { background: var(--color-section); }
+.resume-strip span, .mode-card span { min-width: 0; }
+.resume-strip strong, .resume-strip small, .mode-card strong, .mode-card small { display: block; overflow-wrap: anywhere; }
+.resume-strip small, .mode-card small { color: var(--color-muted); font-size: .72rem; }
+.segmented-control { display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--color-border); }
+.segmented-control button { min-height: 52px; border: 0; border-left: 1px solid var(--color-border); background: var(--color-paper); cursor: pointer; }
+.segmented-control button:first-child { border-left: 0; }
+.segmented-control button[aria-pressed="true"] { background: var(--color-primary); color: white; font-weight: 700; }
+.choice-grid { display: grid; gap: .65rem; }
+.choice-grid button { min-height: 64px; padding: .7rem .85rem; border: 2px solid var(--color-border); background: var(--color-paper); text-align: left; cursor: pointer; }
+.choice-grid button[aria-checked="true"] { background: var(--color-primary); color: white; box-shadow: var(--shadow-key); }
+.choice-grid strong, .choice-grid small { display: block; }
+.choice-grid small { margin-top: .2rem; opacity: .82; }
+.primary-button { background: var(--color-primary); color: white; }
+.session-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; padding-bottom: .75rem; border-bottom: 2px solid var(--color-border); }
+.session-header h1 { margin: .2rem 0 0; font-size: clamp(1.35rem, 6vw, 2rem); line-height: 1.3; }
+.question-paper { padding: 1rem; border: 2px solid var(--color-border); background: var(--color-paper); box-shadow: inset 0 0 0 4px var(--color-bg); }
+.solution-heading { margin: 0 0 1rem; padding-bottom: .45rem; border-bottom: 2px solid var(--color-border); font-size: 1.2rem; }
+.learning-flow { display: grid; gap: .8rem; }
+.learning-flow > .content-renderer { padding: .25rem 0; }
+.empty-blank { display: grid; width: 100%; min-height: 64px; align-items: center; gap: .2rem .65rem; padding: .65rem .8rem; grid-template-columns: auto 1fr; border: 2px dashed var(--color-muted); background: var(--color-paper); color: var(--color-text); text-align: left; cursor: pointer; }
+.empty-blank small { grid-column: 2; color: var(--color-muted); }
+.empty-blank--active { border-style: solid; border-color: var(--color-primary); box-shadow: var(--shadow-key); color: var(--color-primary); }
+.filled-blank { position: relative; display: grid; gap: .55rem; padding: .8rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.filled-blank--guided { border-style: dashed; border-color: var(--color-line); }
+.filled-blank--correct { border-color: var(--color-success); }
+.filled-blank--wrong { border-color: var(--color-error); background: #fff8f6; }
+.blank-state-label { display: inline-flex; width: fit-content; align-items: center; gap: .25rem; color: var(--color-muted); font-size: .72rem; font-weight: 700; }
+.filled-blank--correct .blank-state-label { color: var(--color-success); }
+.filled-blank--wrong .blank-state-label { color: var(--color-error); }
+.blank-actions { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+.analysis-link, .revisit-link { min-height: 48px; border: 0; background: transparent; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.analysis-link { color: var(--color-error); }
+.revisit-link { color: var(--color-muted); font-size: .75rem; }
+.option-list, .explanation-stack { display: grid; gap: .8rem; }
+.option-button { width: 100%; min-height: 56px; padding: .7rem .8rem; border: 2px solid var(--color-border); background: var(--color-paper); box-shadow: 0 3px 0 var(--color-border); color: var(--color-text); text-align: left; cursor: pointer; }
+.option-button[aria-pressed="true"] { background: var(--color-primary); color: white; }
+.option-button .content-renderer { gap: .25rem; }
+.explanation-stack section { padding-bottom: 1rem; border-bottom: 1px solid var(--color-line); }
+.explanation-stack h3 { margin: 0 0 .45rem; font-size: .92rem; }
+.score-board { display: grid; grid-template-columns: repeat(3, 1fr); border: 2px solid var(--color-border); background: var(--color-paper); }
+.score-board span { display: grid; min-width: 0; padding: .8rem .4rem; place-items: center; border-left: 1px solid var(--color-border); text-align: center; }
+.score-board span:first-child { border-left: 0; }
+.score-board strong { font: 700 clamp(1.35rem, 7vw, 2.25rem)/1 ui-monospace, monospace; }
+.score-board small { margin-top: .4rem; color: var(--color-muted); font-size: .65rem; }
+.result-list { display: grid; gap: .65rem; }
+.result-row { display: grid; align-items: start; gap: .65rem; padding: .8rem; grid-template-columns: auto 1fr; border: 2px solid var(--color-line); background: var(--color-paper); }
+.result-row--correct { border-color: var(--color-success); }
+.result-row--wrong { border-color: var(--color-error); }
+.result-row h3, .result-row p { margin: 0; }
+.result-row h3 { font-size: .88rem; }
+.result-row p { color: var(--color-muted); font-size: .78rem; }
+.result-row--wrong > svg { color: var(--color-error); }
+.result-row--correct > svg { color: var(--color-success); }
+.result-actions { display: grid; gap: .8rem; }
+.selected-question-list { display: grid; gap: .6rem; }
+.selected-question-list > div { display: flex; min-height: 52px; align-items: center; justify-content: space-between; gap: .6rem; padding: .6rem .75rem; border: 1px solid var(--color-border); background: var(--color-paper); }
+.simulation-header { display: flex; align-items: start; justify-content: space-between; gap: .8rem; padding-bottom: .75rem; border-bottom: 2px solid var(--color-border); }
+.simulation-header h1 { margin: .2rem 0 0; font-size: clamp(1.2rem, 5vw, 1.7rem); line-height: 1.35; }
+.timer-box { display: grid; min-width: 92px; min-height: 54px; padding: .35rem .55rem; place-items: center; grid-template-columns: auto 1fr; gap: .3rem; border: 2px solid var(--color-border); background: var(--color-paper); font-family: ui-monospace, monospace; }
+.timer-box--urgent { border-color: var(--color-error); color: var(--color-error); }
+.question-navigator { display: flex; gap: .5rem; overflow-x: auto; padding: 0 0 .3rem; }
+.question-navigator button { min-width: 58px; min-height: 52px; border: 2px solid var(--color-border); background: var(--color-paper); cursor: pointer; }
+.question-navigator button[aria-current="step"] { background: var(--color-primary); color: white; }
+.question-navigator small { display: block; font-size: .62rem; }
+.simulation-items { display: grid; gap: 1rem; }
+.simulation-item { display: grid; gap: .8rem; padding: .9rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.simulation-item > header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--color-line); }
+.simulation-item h2 { margin: 0; font-size: 1rem; }
+.review-button { display: inline-flex; min-height: 48px; align-items: center; gap: .3rem; border: 1px solid var(--color-border); background: transparent; color: var(--color-muted); cursor: pointer; }
+.review-button--active { background: var(--color-section); color: var(--color-primary); font-weight: 700; }
+.simulation-options { display: grid; gap: .6rem; }
+.simulation-options > button { display: grid; min-height: 56px; align-items: center; gap: .55rem; padding: .65rem .75rem; grid-template-columns: auto 1fr; border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); text-align: left; cursor: pointer; }
+.simulation-options > button[aria-checked="true"] { background: var(--color-primary); color: white; }
+.selection-mark { font: 700 1.05rem/1 ui-monospace, monospace; }
+.number-answer { display: grid; gap: .35rem; font-weight: 700; }
+.session-controls { display: grid; gap: .8rem; grid-template-columns: repeat(2, 1fr); }
+.session-controls .raised-button { min-width: 0; padding-inline: .45rem; }
+.submit-button { position: sticky; z-index: 12; bottom: max(1rem, var(--safe-bottom)); width: 100%; margin-top: .5rem; background: var(--color-text); color: white; box-shadow: 0 4px 0 var(--color-border), 0 -8px 20px var(--color-bg); }
+.recommendation-list { display: grid; gap: .65rem; }
+.recommendation-list article { display: grid; align-items: center; gap: .7rem; padding: .75rem; grid-template-columns: 1fr auto; border: 1px solid var(--color-border); background: var(--color-paper); }
+.recommendation-list strong, .recommendation-list small { display: block; }
+.recommendation-list small { margin-top: .2rem; color: var(--color-muted); }
+.analytics-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--color-border); background: var(--color-paper); }
+.analytics-grid article { display: grid; min-width: 0; min-height: 122px; padding: .8rem .5rem; place-items: center; border: 1px solid var(--color-line); text-align: center; }
+.analytics-grid svg { color: var(--color-primary); }
+.analytics-grid strong { font: 700 clamp(1.45rem, 7vw, 2.2rem)/1 ui-monospace, monospace; }
+.analytics-grid small { color: var(--color-muted); font-size: .68rem; }
+.metric-list { display: grid; gap: .7rem; }
+.metric-list > a { display: grid; align-items: center; gap: .7rem; padding: .75rem; grid-template-columns: minmax(96px, .8fr) minmax(150px, 1.2fr) auto; border: 1px solid var(--color-border); background: var(--color-paper); text-decoration: none; }
+.metric-list strong, .metric-list small { display: block; overflow-wrap: anywhere; }
+.metric-list small { color: var(--color-muted); font-size: .7rem; }
+.mistake-list, .history-list { display: grid; gap: .75rem; }
+.mistake-list article { display: grid; gap: .75rem; padding: .8rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.mistake-list article > header { display: grid; align-items: center; gap: .65rem; grid-template-columns: auto 1fr auto; }
+.mistake-list header strong, .mistake-list header small { display: block; }
+.mistake-list header small { color: var(--color-muted); font-size: .72rem; }
+.plain-tag { padding: .2rem .4rem; background: var(--color-section); border: 1px solid var(--color-line); font: 700 .68rem/1.4 ui-monospace, monospace; }
+.history-list > a { display: grid; align-items: start; gap: .75rem; padding: .85rem; grid-template-columns: auto 1fr; border: 2px solid var(--color-border); background: var(--color-paper); text-decoration: none; }
+.history-list strong, .history-list small { display: block; }
+.history-list small, .history-list p, .history-list time { color: var(--color-muted); font-size: .72rem; }
+.history-list p { margin: .35rem 0 0; }
+.history-meta { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .35rem; }
+.ranking-callout { display: grid; align-items: center; gap: .75rem; padding: .85rem; grid-template-columns: auto 1fr; border: 2px solid var(--color-primary); background: var(--color-section); }
+.ranking-callout p { margin: .2rem 0 0; color: var(--color-muted); font-size: .78rem; }
+.ranking-list { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+.ranking-list li { display: grid; min-height: 64px; align-items: center; gap: .65rem; padding: .6rem .75rem; grid-template-columns: 42px 1fr auto; border: 1px solid var(--color-border); background: var(--color-paper); }
+.ranking-list li > div > strong, .ranking-list li > div > small { display: block; }
+.ranking-list li > div > small { color: var(--color-muted); font-size: .7rem; }
+.ranking-list__me { border-width: 2px !important; border-color: var(--color-primary) !important; background: var(--color-section) !important; }
+.rank-number { display: grid; place-items: center; font: 700 1.05rem/1 ui-monospace, monospace; }
+.toggle-row { display: grid; align-items: center; gap: 1rem; padding: .75rem; grid-template-columns: 1fr auto; border: 1px solid var(--color-border); background: var(--color-paper); cursor: pointer; }
+.toggle-row > span { display: grid; align-items: center; gap: .25rem .55rem; grid-template-columns: auto 1fr; }
+.toggle-row small { grid-column: 2; color: var(--color-muted); font-size: .72rem; }
+.toggle-row input { width: 28px; height: 28px; accent-color: var(--color-primary); }
+.data-summary { display: grid; align-items: start; gap: .75rem; padding: .75rem; grid-template-columns: auto 1fr; border: 1px solid var(--color-line); background: var(--color-paper); }
+.data-summary p { margin: 0; }
+.danger-button { color: var(--color-error); border-color: var(--color-error); }
+.app-frame--reduce-motion *, .app-frame--reduce-motion *::before, .app-frame--reduce-motion *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+.button-row--start { justify-content: flex-start; }
+.file-button { position: relative; overflow: hidden; cursor: pointer; }
+.file-button input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.json-editor { min-height: 240px; resize: vertical; font: 400 .76rem/1.5 ui-monospace, monospace; tab-size: 2; }
+.notice-box, .issue-box { padding: .75rem; border: 2px solid var(--color-success); background: var(--color-paper); }
+.issue-box { border-color: var(--color-error); color: var(--color-error); }
+.issue-box ol { margin: .5rem 0 0; padding-left: 1.4rem; }
+.issue-box li { padding: .25rem 0; overflow-wrap: anywhere; font: 400 .72rem/1.5 ui-monospace, monospace; }
+.fatal-error { width: min(calc(100% - 2rem), 680px); margin: 2rem auto; padding: 1.25rem; border: 2px solid var(--color-error); background: var(--color-bg); box-shadow: var(--shadow-key); }
+@media (min-width: 760px) { .app-content { padding-inline: 2rem; } .page-hero { padding-top: 1.5rem; } }
+@media (max-width: 420px) { .metric-list > a { grid-template-columns: 1fr auto; } .metric-list .progress-block { grid-column: 1 / -1; grid-row: 2; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+
+/* Textbook learning mode */
+.learning-mode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.learning-mode-grid > button { display: grid; min-height: 132px; gap: .45rem; align-content: start; padding: .9rem; border: 2px solid var(--color-border); background: var(--color-paper); color: var(--color-text); text-align: left; cursor: pointer; box-shadow: 0 3px 0 var(--color-border); }
+.learning-mode-grid > button[aria-checked="true"] { border-color: var(--color-primary); background: var(--color-section); box-shadow: 0 3px 0 var(--color-primary); }
+.learning-mode-grid svg { color: var(--color-primary); }
+.learning-mode-grid strong { font-size: .98rem; }
+.learning-mode-grid small { color: var(--color-muted); line-height: 1.55; }
+.field-help { margin: .65rem 0 0; color: var(--color-muted); font-size: .78rem; }
+.setup-progress-note { display: grid; gap: .2rem; margin-top: .7rem; padding: .7rem .8rem; border-left: 4px solid var(--color-primary); background: var(--color-section); }
+.setup-progress-note span { font-weight: 700; }
+.setup-progress-note small { color: var(--color-muted); }
+
+.textbook-part-list { display: grid; gap: 1.4rem; }
+.textbook-part-group { display: grid; gap: .8rem; }
+.textbook-part-heading { display: flex; align-items: center; gap: .65rem; padding: .65rem .75rem; border-left: 5px solid var(--color-primary); background: var(--color-section); }
+.textbook-part-heading span { color: var(--color-primary); font: 700 .76rem/1 ui-monospace, monospace; }
+.textbook-part-heading strong { font-size: 1.05rem; }
+.textbook-chapter-list { display: grid; gap: 1rem; }
+.textbook-chapter-card { display: grid; gap: .8rem; padding: .9rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.textbook-chapter-card--pending { opacity: .68; background: color-mix(in srgb, var(--color-paper) 82%, var(--color-section)); }
+.textbook-chapter-card > header { display: flex; align-items: center; gap: .75rem; padding-bottom: .65rem; border-bottom: 1px solid var(--color-line); }
+.textbook-chapter-card > header > span { display: grid; min-width: 58px; min-height: 36px; place-items: center; padding: .2rem .45rem; background: var(--color-primary); color: white; font: 700 .72rem/1.2 ui-monospace, monospace; }
+.textbook-chapter-card > header > div { display: grid; gap: .1rem; }
+.textbook-chapter-card > header strong { font-size: 1rem; }
+.textbook-chapter-card > header small { color: var(--color-muted); font-size: .72rem; }
+.textbook-unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: .6rem; }
+.textbook-unit-link { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .65rem; min-height: 70px; padding: .75rem .8rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 2px 0 var(--color-border); }
+.textbook-unit-link:hover { border-color: var(--color-primary); background: var(--color-section); box-shadow: 0 2px 0 var(--color-primary); }
+.textbook-unit-link > div { display: grid; min-width: 0; gap: .12rem; }
+.textbook-unit-link strong { overflow-wrap: anywhere; font-size: 1rem; }
+.textbook-unit-link small { color: var(--color-muted); font-size: .7rem; }
+.textbook-chunk-link { min-height: 88px; }
+.textbook-chunk-flow { line-height: 1.5; }
+.textbook-current-topic { display: flex; align-items: center; gap: .45rem; margin: .35rem 0 0; color: var(--color-muted); font-size: .78rem; }
+.textbook-current-topic span { padding: .12rem .35rem; border: 1px solid var(--color-line); background: var(--color-section); font: 700 .65rem/1.2 ui-monospace, monospace; }
+.textbook-current-topic strong { color: var(--color-text); font-size: .84rem; }
+.textbook-unit-percent { color: var(--color-primary); font: 700 .72rem/1 ui-monospace, monospace; }
+.textbook-chapter-pending { margin: 0; color: var(--color-muted); font-size: .78rem; }
+
+.textbook-page { padding-bottom: 2rem; }
+.textbook-objectives { display: grid; gap: .6rem; padding: 1rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.textbook-objectives strong { color: var(--color-primary); }
+.textbook-objectives ol { display: grid; gap: .35rem; margin: 0; padding-left: 1.4rem; }
+.textbook-objectives li { line-height: 1.5; }
+.textbook-section-nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; }
+.textbook-section-nav button { display: grid; min-width: 0; gap: .28rem; align-content: start; padding: .65rem .5rem; border: 1px solid var(--color-border); background: var(--color-paper); color: var(--color-text); text-align: left; cursor: pointer; }
+.textbook-section-nav button:disabled { cursor: not-allowed; opacity: .48; }
+.textbook-section-nav button[aria-pressed="true"] { border: 2px solid var(--color-primary); background: var(--color-section); }
+.textbook-section-nav button > span { display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid currentColor; color: var(--color-primary); font: 700 .7rem/1 ui-monospace, monospace; }
+.textbook-section-nav strong { min-width: 0; font-size: .74rem; line-height: 1.35; }
+.textbook-section-nav small { color: var(--color-muted); font: 600 .68rem/1.3 ui-monospace, monospace; }
+
+.textbook-section-stack { display: grid; gap: 1.6rem; }
+.textbook-section { display: grid; gap: 1rem; scroll-margin-top: 1rem; }
+.textbook-section + .textbook-section { padding-top: 1rem; border-top: 3px solid var(--color-border); }
+.textbook-section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; padding-bottom: .7rem; border-bottom: 2px solid var(--color-border); }
+.textbook-section-heading > div { display: flex; min-width: 0; gap: .7rem; }
+.textbook-section-heading > div > span { display: grid; flex: 0 0 38px; width: 38px; height: 38px; place-items: center; background: var(--color-primary); color: white; font: 700 .72rem/1 ui-monospace, monospace; }
+.textbook-section-heading h2 { margin: 0; font-size: 1.2rem; }
+.textbook-section-heading p { margin: .25rem 0 0; color: var(--color-muted); line-height: 1.6; }
+.textbook-section-heading > strong { white-space: nowrap; font: 700 .78rem/1.4 ui-monospace, monospace; color: var(--color-primary); }
+
+.textbook-figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: .8rem; }
+.textbook-figures figure { display: grid; gap: .45rem; margin: 0; padding: .75rem; border: 1px solid var(--color-border); background: white; }
+.textbook-figures img { display: block; width: 100%; max-height: 360px; object-fit: contain; }
+.textbook-figures figcaption { color: var(--color-muted); font-size: .72rem; text-align: center; }
+
+.textbook-check-list { display: grid; gap: .65rem; }
+.textbook-check-item { display: grid; gap: .6rem; padding: .8rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.textbook-check-item--correct { border-color: var(--color-success); }
+.textbook-check-item--wrong { border-color: var(--color-error); background: #fff8f6; }
+.textbook-check-item > header { display: flex; align-items: center; gap: .5rem; }
+.textbook-check-item > header > span { padding: .18rem .4rem; border: 1px solid var(--color-border); font: 700 .72rem/1.35 ui-monospace, monospace; }
+.textbook-check-item > header > small { display: inline-flex; align-items: center; gap: .2rem; margin-left: auto; font-weight: 700; }
+.textbook-check-item--correct > header > small { color: var(--color-success); }
+.textbook-check-item--wrong > header > small { color: var(--color-error); }
+.textbook-check-item > p { margin: 0; line-height: 1.65; }
+.textbook-choice-list { display: grid; gap: .5rem; }
+.textbook-choice { display: grid; min-width: 0; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; gap: .65rem; min-height: 50px; padding: .55rem .7rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); text-align: left; cursor: pointer; box-shadow: 0 2px 0 var(--color-border); }
+.textbook-choice:hover:not(:disabled) { border-color: var(--color-primary); }
+.textbook-choice:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 1px 0 var(--color-border); }
+.textbook-choice:disabled { cursor: default; opacity: .62; }
+.textbook-choice > span { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--color-border); font: 700 .72rem/1 ui-monospace, monospace; }
+.textbook-choice > strong { overflow-wrap: anywhere; font-size: .9rem; }
+.textbook-choice > small { color: var(--color-muted); font-weight: 700; }
+.textbook-choice--wrong { border-color: var(--color-error); background: #fff8f6; color: var(--color-error); }
+.textbook-choice--correct { border-color: var(--color-success); background: #f6fff8; color: var(--color-success); opacity: 1 !important; }
+.textbook-choice--correct > span { border-color: var(--color-success); }
+.textbook-answer-row { display: flex; align-items: stretch; gap: .5rem; }
+.textbook-answer-row input { min-width: 0; flex: 1; min-height: 46px; padding: .55rem .7rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); font: inherit; }
+.textbook-answer-row input:focus { outline: 3px solid color-mix(in srgb, var(--color-primary) 22%, transparent); border-color: var(--color-primary); }
+.textbook-answer-row input:disabled { background: var(--color-section); color: var(--color-text); opacity: 1; }
+.textbook-unit-label { display: inline-flex; align-items: center; padding: 0 .25rem; color: var(--color-muted); font-weight: 700; }
+.textbook-feedback { font-size: .74rem; }
+.textbook-feedback--wrong { color: var(--color-error); }
+.textbook-feedback--correct { color: var(--color-success); }
+
+.textbook-next-panel, .textbook-complete-panel { display: flex; align-items: center; gap: .8rem; padding: .9rem; border: 2px solid var(--color-primary); background: var(--color-section); }
+.textbook-next-panel > svg, .textbook-complete-panel > svg { flex: 0 0 auto; color: var(--color-primary); }
+.textbook-next-panel > div, .textbook-complete-panel > div { display: grid; flex: 1; gap: .2rem; }
+.textbook-next-panel small { color: var(--color-muted); }
+.textbook-complete-panel h2, .textbook-complete-panel p { margin: 0; }
+.textbook-complete-panel p { margin-top: .25rem; color: var(--color-muted); }
+.textbook-reset { display: inline-flex; align-items: center; gap: .35rem; width: fit-content; }
+
+/* Guided textbook reading flow */
+.textbook-reading-flow { display: grid; gap: 1rem; padding: clamp(.9rem, 2vw, 1.35rem); border: 2px solid var(--color-border); background: var(--color-paper); }
+.reading-subheading { margin: 1rem 0 .1rem; padding: .55rem .7rem; border-left: 5px solid var(--color-primary); background: var(--color-section); font-size: 1.05rem; }
+.reading-subheading:first-child { margin-top: 0; }
+.reading-note { padding: .7rem .8rem; border: 1px solid var(--color-primary); background: var(--color-section); color: var(--color-muted); font-size: .82rem; line-height: 1.65; }
+.reading-paragraph { margin: 0; font-size: 1rem; line-height: 2.05; }
+.reading-paragraph > span { display: inline; }
+.reading-paragraph .katex { font-size: 1.03em; }
+.reading-formula-line { overflow-x: auto; padding: .7rem .85rem; border: 1px solid var(--color-line); background: #fff; font-size: 1.08rem; line-height: 2; text-align: center; white-space: nowrap; }
+.reading-formula-line > span { display: inline; }
+.reading-figure { display: grid; justify-items: center; gap: .5rem; margin: .4rem 0; padding: .75rem; border: 1px solid var(--color-border); background: white; }
+.reading-figure img { display: block; width: auto; max-width: min(100%, 760px); height: auto; max-height: 560px; object-fit: contain; image-rendering: auto; }
+.reading-figure figcaption { color: var(--color-muted); font-size: .74rem; text-align: center; }
+.textbook-figure-stage { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; }
+.textbook-figure-stage > img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; object-fit: contain; image-rendering: auto; }
+/* Existing math-set SVGs have viewBox but no intrinsic width/height attributes.
+   Explicit stage width avoids a fit-content/auto sizing cycle collapsing the image
+   while leaving physics raster figure sizing untouched. */
+.textbook-figure-stage--math-set-svg { width: min(100%, 720px); }
+.textbook-figure-stage--math-set-svg > img { width: 100%; height: auto; }
+.textbook-figure-overlay { position: absolute; display: grid; min-width: 24px; min-height: 24px; place-items: center; padding: 0; border: 2px solid var(--color-primary); color: var(--color-primary); cursor: pointer; }
+.textbook-figure-overlay > span { padding: .1rem .22rem; background: var(--color-paper); font: 700 .62rem/1 ui-monospace, monospace; }
+.textbook-figure-overlay--mask { background: var(--color-paper); box-shadow: 0 0 0 2px rgba(255,255,255,.72); }
+.textbook-figure-overlay--hotspot { background: color-mix(in srgb, var(--color-primary) 12%, transparent); border-style: dashed; }
+.textbook-figure-overlay:hover, .textbook-figure-overlay:focus-visible { background: var(--color-section); }
+
+.reading-inline-blank, .reading-inline-answer { display: inline-flex; min-height: 34px; align-items: center; gap: .3rem; margin: 0 .16rem; padding: .15rem .45rem; vertical-align: baseline; border: 2px solid var(--color-primary); background: white; color: var(--color-primary); line-height: 1.35; }
+button.reading-inline-blank { font: inherit; cursor: pointer; box-shadow: none; }
+button.reading-inline-blank:hover { background: var(--color-section); }
+.reading-inline-blank > strong { font-size: .86rem; }
+.reading-inline-blank--wrong { border-color: var(--color-error); color: var(--color-error); background: #fff8f6; }
+.reading-inline-answer { display: inline; min-height: 0; margin: 0 .08rem; padding: 0; border: 0; background: transparent; color: inherit; line-height: inherit; }
+.reading-inline-answer strong { font-size: inherit; font-weight: inherit; }
+
+.reading-choice-panel { display: grid; gap: .65rem; margin: .1rem 0 .25rem; padding: .8rem; border: 2px solid var(--color-primary); background: var(--color-section); }
+.reading-choice-panel__head { display: flex; align-items: center; gap: .5rem; }
+.reading-choice-panel__head > span { padding: .15rem .38rem; border: 1px solid var(--color-primary); color: var(--color-primary); font: 700 .68rem/1.35 ui-monospace, monospace; }
+.reading-choice-panel__head > strong { font-size: .85rem; }
+.reading-choice-panel__head > small { display: inline-flex; align-items: center; gap: .2rem; margin-left: auto; color: var(--color-error); font-weight: 700; }
+.reading-choice-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.reading-choice-option { display: grid; min-width: 0; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: .55rem; min-height: 50px; padding: .55rem .65rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); text-align: left; cursor: pointer; box-shadow: 0 2px 0 var(--color-border); }
+.reading-choice-option:hover { border-color: var(--color-primary); }
+.reading-choice-option:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--color-border); }
+.reading-choice-option > span { display: grid; width: 27px; height: 27px; place-items: center; border: 1px solid var(--color-border); font: 700 .7rem/1 ui-monospace, monospace; }
+.reading-choice-option > strong { overflow-wrap: anywhere; font-size: .88rem; }
+.reading-choice-option > small { color: var(--color-muted); font-weight: 700; }
+/* Math textbook P-003: keep each long mathematical alternative intact. */
+.reading-choice-options--math-wide { grid-template-columns: minmax(0, 1fr); }
+.reading-choice-options--math-wide .reading-choice-option { grid-template-columns: 30px minmax(0, 1fr); }
+.reading-choice-formula-lines { display: grid; min-width: 0; width: 100%; gap: .3rem; font-weight: 500; }
+.reading-choice-formula-line { display: block; min-width: 0; max-width: 100%; overflow-x: auto; overflow-y: hidden; white-space: nowrap; overflow-wrap: normal; line-height: 1.7; }
+.reading-choice-formula-line .katex { font-size: .98em; }
+.reading-choice-option--wrong { border-color: var(--color-error); background: #fff8f6; color: var(--color-error); }
+.reading-choice-panel > p { margin: 0; color: var(--color-error); font-size: .75rem; }
+
+.reading-subsection { display: grid; gap: .9rem; }
+.reading-subsection + .reading-subsection { margin-top: .3rem; padding-top: .35rem; border-top: 1px solid var(--color-line); }
+.reading-subsection-complete { display: inline-flex; width: fit-content; align-items: center; gap: .35rem; padding: .35rem .5rem; border: 1px solid var(--color-success); background: #f6fff8; color: var(--color-success); font-size: .75rem; font-weight: 700; }
+
+.reading-sheet-choice-list { display: grid; gap: .6rem; }
+.reading-sheet-prompt { margin: 0 0 .15rem; line-height: 1.6; }
+.reading-sheet-choice-list .reading-choice-option { width: 100%; }
+.reading-sheet-error { margin: 0; color: var(--color-error); font-size: .78rem; }
+
+.reading-block-with-choice { display: grid; gap: .55rem; }
+.reading-inline-choice-panel { display: grid; gap: .6rem; margin: .1rem 0 .25rem; padding: .75rem; border: 2px solid var(--color-primary); background: var(--color-section); }
+.reading-inline-choice-panel__head { display: grid; gap: .2rem; }
+.reading-inline-choice-panel__head span { font-size: .82rem; line-height: 1.55; }
+
+
+/* Physics taxonomy board */
+.physics-taxonomy-board { display: grid; gap: 1.35rem; }
+.physics-domain-group { display: grid; gap: .75rem; }
+.physics-domain-heading { display: grid; grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr); align-items: center; gap: .8rem; }
+.physics-domain-heading > span { height: 2px; background: var(--color-border); }
+.physics-domain-heading h3 { margin: 0; color: var(--color-primary); font-size: 1rem; letter-spacing: .18em; white-space: nowrap; }
+.physics-topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: .7rem; }
+.physics-topic-card { position: relative; display: grid; min-height: 88px; place-items: center; padding: 1rem 1.9rem .85rem .85rem; border: 2px solid var(--color-border); background: var(--color-paper); box-shadow: var(--shadow-key); color: var(--color-text); text-align: center; text-decoration: none; }
+.physics-topic-card strong { font-size: 1.05rem; letter-spacing: .04em; }
+.physics-topic-card small { position: absolute; top: .4rem; right: .5rem; color: var(--color-muted); font: 700 .72rem/1 ui-monospace, monospace; }
+a.physics-topic-card:hover { border-color: var(--color-primary); background: var(--color-section); }
+a.physics-topic-card:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--color-border); }
+.physics-topic-card--empty { opacity: .42; box-shadow: 0 2px 0 var(--color-border); }
+.topic-filter-note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .65rem; padding: .65rem .75rem; border: 2px solid var(--color-primary); background: var(--color-section); }
+.topic-filter-note span { color: var(--color-muted); font-size: .72rem; font-weight: 700; }
+.topic-filter-note strong { color: var(--color-primary); }
+.topic-filter-note small { font: 700 .72rem/1 ui-monospace, monospace; color: var(--color-primary); }
+
+
+button.physics-topic-card {
+  width: 100%;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.physics-topic-card:disabled {
+  cursor: default;
+}
+
+button.physics-topic-card:not(:disabled):hover {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.physics-topic-card--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+}
+
+/* Math practice reuses the proven physics taxonomy shell, but titles carry a short learning flow. */
+.math-topic-card {
+  align-content: center;
+  justify-items: start;
+  gap: .28rem;
+  min-height: 104px;
+  padding: .9rem 2.2rem .9rem .9rem;
+  text-align: left;
+}
+
+.math-topic-card strong {
+  font-size: 1.02rem;
+}
+
+.math-topic-flow {
+  color: var(--color-muted);
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.math-topic-filter-copy {
+  display: grid;
+  min-width: 0;
+  gap: .12rem;
+}
+
+.math-topic-filter-copy > small {
+  position: static;
+  color: var(--color-muted);
+  font-size: .7rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.math-exercise-type-grid button {
+  min-height: 112px;
+}
+
+.math-practice-chapter-list {
+  gap: 1rem;
+}
+
+button.math-theme-link {
+  width: 100%;
+  font: inherit;
+}
+
+.math-theme-link {
+  text-align: left;
+}
+
+.math-theme-link--empty {
+  cursor: default;
+  opacity: .42;
+  box-shadow: 0 2px 0 var(--color-border);
+}
+
+.math-theme-link--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+}
+
+.math-common-test-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.math-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: .65rem;
+}
+
+.math-problem-button {
+  min-height: 58px;
+  padding: .75rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: 700 1rem/1 ui-monospace, monospace;
+  cursor: pointer;
+  box-shadow: var(--shadow-key);
+}
+
+.math-problem-button:hover,
+.math-problem-button:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-problem-button--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+  color: var(--color-primary);
+}
+
+.math-common-test-question-list {
+  display: grid;
+  gap: .65rem;
+}
+
+.math-common-test-question {
+  min-height: 64px;
+  padding: .8rem .9rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-key);
+}
+
+.math-common-test-question:hover,
+.math-common-test-question:focus-visible,
+.math-common-test-question--selected {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-topic-question-nav {
+  display: grid;
+  gap: .55rem;
+  margin: 0 0 1rem;
+  padding: 0 0 .85rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.math-topic-question-nav__status {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--color-muted);
+  font-size: .78rem;
+}
+
+.math-topic-question-nav__status strong {
+  color: var(--color-primary);
+  font: 700 .78rem/1 ui-monospace, monospace;
+}
+
+.math-topic-question-nav__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.math-topic-question-card {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: 700 .82rem/1 ui-monospace, monospace;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--color-border);
+}
+
+.math-topic-question-card:hover,
+.math-topic-question-card:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-topic-question-card--current {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 2px 0 var(--color-primary);
+}
+
+/* Math practice 87 design pilot: reuse the successful Physics textbook reading language. */
+.math-practice-target-anchor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .45rem .75rem;
+  margin: 0 0 .65rem;
+  padding: .7rem .85rem;
+  border-left: 4px solid var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-practice-target-anchor > span {
+  color: var(--color-muted);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.math-practice-target-anchor > strong {
+  color: var(--color-text);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+.math-practice-target-anchor__math .katex {
+  font-size: 1.05em;
+}
+
+.math-practice-inline-math {
+  white-space: nowrap;
+}
+
+.math-practice-content-renderer > p {
+  margin: 0;
+}
+
+.math-practice-dependency-links {
+  display: grid;
+  gap: .42rem;
+  margin: 0 0 .7rem;
+}
+
+.math-practice-dependency-links__label {
+  color: var(--color-muted);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.math-practice-dependency-item {
+  display: grid;
+  gap: .35rem;
+}
+
+.math-practice-dependency-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .65rem;
+  padding: .45rem .62rem;
+  border: 1px solid var(--color-line);
+  background: #fcfbf7;
+}
+
+.math-practice-dependency-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font: 700 .78rem/1.4 inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.math-practice-dependency-link:hover,
+.math-practice-dependency-link:focus-visible {
+  color: var(--color-text);
+  outline: none;
+}
+
+.math-practice-dependency-result {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem .55rem;
+  min-width: 0;
+  font-size: .88rem;
+}
+
+.math-practice-dependency-result__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .12rem;
+  min-width: 0;
+}
+
+.math-practice-dependency-result .content-renderer,
+.math-practice-dependency-result .content-renderer > p {
+  display: inline;
+  margin: 0;
+}
+
+.math-practice-dependency-detail {
+  display: grid;
+  gap: .45rem;
+  margin-left: .35rem;
+  padding: .55rem .7rem;
+  border-left: 3px solid var(--color-line);
+  background: var(--color-section);
+  font-size: .9rem;
+}
+
+.math-practice-dependency-detail .math-practice-reading-line {
+  font-size: .9rem;
+  line-height: 1.75;
+}
+
+.math-practice-reading-flow {
+  display: grid;
+  gap: .9rem;
+  padding: clamp(.9rem, 2vw, 1.35rem);
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+}
+
+.math-practice-reading-content {
+  min-width: 0;
+}
+
+.math-practice-reading-content .content-renderer {
+  display: grid;
+  gap: .45rem;
+}
+
+.math-practice-reading-content .content-renderer > p {
+  margin: 0;
+  line-height: 2.05;
+}
+
+.math-practice-reading-content .formula-scroll {
+  margin: 0;
+}
+
+.math-practice-reading-block {
+  display: grid;
+  gap: .55rem;
+}
+
+.math-practice-reading-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .38rem;
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 2.05;
+}
+
+.math-practice-inline-answer {
+  display: inline-flex;
+  align-items: baseline;
+  margin: 0 .08rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.math-practice-inline-answer .content-renderer,
+.math-practice-inline-answer .content-renderer > p {
+  display: inline;
+  margin: 0;
+}
+
+.math-practice-choice-content {
+  min-width: 0;
+}
+
+.math-practice-choice-content .content-renderer {
+  display: block;
+}
+
+.math-practice-choice-content .content-renderer > p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: .88rem;
+}
+
+.math-practice-reading-flow .reading-choice-hint .content-renderer > p {
+  margin: 0;
+}
+
+.math-practice-complete-panel {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: 1rem;
+  padding: .9rem;
+  border: 2px solid var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-practice-complete-panel > div {
+  display: grid;
+  flex: 1;
+  gap: .2rem;
+}
+
+.math-practice-complete-panel strong {
+  color: var(--color-primary);
+}
+
+.math-practice-complete-panel small {
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .math-practice-complete-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .math-practice-complete-panel button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .math-problem-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .math-problem-button {
+    min-width: 0;
+  }
+
+  .math-topic-question-nav__cards {
+    gap: .4rem;
+  }
+
+  .math-topic-question-card {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* Textbook formula holes are rendered inside one complete KaTeX expression. */
+.reading-formula-line .katex-display { margin: 0; }
+.reading-formula-line .tb-math-choice a,
+.reading-formula-line .tb-math-answer {
+  text-decoration: none;
+}
+.reading-formula-line .tb-math-choice a {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.reading-formula-line .tb-math-choice a:hover,
+.reading-formula-line .tb-math-choice a:focus-visible {
+  color: var(--color-text);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.reading-formula-line .tb-math-choice-wrong a {
+  color: var(--color-error);
+}
+.reading-formula-line .tb-math-answer {
+  color: inherit;
+  background: transparent;
+}
+.reading-formula-line--error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+.reading-formula-error {
+  font-weight: 700;
+}
+
+/* Figure masks should invite interaction without exposing internal item IDs. */
+.textbook-figure-overlay > span {
+  min-width: 1.25rem;
+  text-align: center;
+  font-family: inherit;
+}
+
+.reading-derivation-chain {
+  display: grid;
+  gap: .15rem;
+  margin: .55rem 0;
+  padding: .55rem .7rem;
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-primary);
+  background: #fcfbf7;
+}
+
+.reading-derivation-step {
+  min-width: 0;
+}
+
+.reading-derivation-chain .reading-block-with-choice {
+  gap: .3rem;
+}
+
+.reading-derivation-chain .reading-paragraph {
+  margin: .15rem 0;
+}
+
+.reading-derivation-chain .reading-formula-line {
+  margin: 0;
+  padding: .28rem .35rem;
+  border: 0;
+  background: transparent;
+}
+
+.reading-derivation-chain .reading-inline-choice-panel {
+  margin: .15rem .35rem .45rem;
+}
+
+@media (max-width: 640px) {
+  .reading-derivation-chain .reading-formula-line {
+    padding: .42rem .45rem;
+    font-size: 1rem;
+  }
+
+  .reading-derivation-chain .reading-inline-choice-panel {
+    margin: 0 .45rem .55rem;
+  }
+}
+
+
+.reading-formula-expression {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .08em;
+  min-width: max-content;
+}
+
+.reading-formula-math,
+.reading-formula-answer,
+.reading-formula-text {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.reading-formula-choice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.15rem;
+  min-height: 2rem;
+  padding: .12rem .48rem;
+  border: 1px solid var(--color-primary);
+  background: #fff;
+  color: var(--color-primary);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.reading-formula-choice:hover,
+.reading-formula-choice:focus-visible {
+  background: #f2f6fa;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.reading-formula-choice--wrong {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.reading-formula-answer {
+  color: inherit;
+}
+
+.reading-formula-missing {
+  display: inline-block;
+  min-width: 1.8rem;
+  color: var(--color-error);
+}
+
+.reading-choice-hint {
+  display: grid;
+  gap: .18rem;
+  padding: .55rem .65rem;
+  border-left: 3px solid var(--color-primary);
+  background: #f6f3e9;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+
+.reading-choice-hint strong {
+  font-size: .72rem;
+  letter-spacing: .04em;
+}
+
+.reading-choice-hint span {
+  color: var(--color-text);
+}
+
+
+/* Math practice progressive reasoning figures */
+.math-practice-figure {
+  width: 100%;
+  margin: .7rem 0 .95rem;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+}
+.math-practice-figure__title {
+  padding: .42rem .62rem;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: .72rem;
+  font-weight: 700;
+}
+.math-practice-figure__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  color: var(--color-text);
+}
+.math-practice-figure .mpf-line,
+.math-practice-figure .mpf-shape,
+.math-practice-figure .mpf-card,
+.math-practice-figure .mpf-guide-line,
+.math-practice-figure .mpf-emphasis-line,
+.math-practice-figure .mpf-angle,
+.math-practice-figure .mpf-tick,
+.math-practice-figure .mpf-cross {
+  vector-effect: non-scaling-stroke;
+}
+.math-practice-figure .mpf-line {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1.5;
+}
+.math-practice-figure .mpf-guide-line {
+  fill: none;
+  stroke: var(--color-muted);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+.math-practice-figure .mpf-emphasis-line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.math-practice-figure .mpf-shape {
+  fill: var(--color-bg);
+  stroke: var(--color-text);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-card {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+}
+.math-practice-figure .mpf-angle,
+.math-practice-figure .mpf-tick {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-cross {
+  fill: none;
+  stroke: var(--color-error);
+  stroke-width: 2.25;
+}
+.math-practice-figure .mpf-open-dot {
+  fill: var(--color-paper);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-closed-dot,
+.math-practice-figure .mpf-arrow {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+  stroke-width: 1;
+}
+.math-practice-figure .mpf-label {
+  fill: var(--color-text);
+  font-size: 12px;
+}
+.math-practice-figure .mpf-label--strong {
+  font-weight: 700;
+}
+.math-practice-figure .mpf-muted {
+  fill: var(--color-muted);
+  font-size: 11px;
+}
+@media (max-width: 420px) {
+  .math-practice-figure {
+    margin-inline: 0;
+  }
+  .math-practice-figure__title {
+    font-size: .68rem;
+  }
+  .math-practice-figure .mpf-label {
+    font-size: 11px;
+  }
+  .math-practice-figure .mpf-muted {
+    font-size: 10px;
+  }
+}
+
+
+/* 2026-10-10 integration: previously published math textbook presentation; retain main math-practice CSS */
+.textbook-unit-link--pending { cursor: default; opacity: .62; background: color-mix(in srgb, white 82%, var(--color-section)); box-shadow: none; }
+.textbook-unit-link--pending:hover { border-color: var(--color-border); background: color-mix(in srgb, white 82%, var(--color-section)); box-shadow: none; }
+.reading-role-marker { width: fit-content; margin: .85rem 0 -.25rem; color: var(--color-text); font-size: .95rem; font-weight: 800; line-height: 1.4; }
+.reading-role-marker--summary { margin-top: 1.2rem; font-size: 1.22rem; }
+.reading-dialogue { display: flex; flex-wrap: wrap; gap: .25rem; margin: .2rem 0; padding: .55rem .7rem; background: #f3f3f3; color: var(--color-text); font-size: .9rem; line-height: 1.7; }
+.reading-dialogue strong { color: var(--color-text); }
+.reading-term { color: var(--color-text); font-weight: 800; }
+@media (max-width: 640px) {
+  [data-textbook-subject='math-1a'] .reading-choice-options { grid-template-columns: 1fr; }
+}
+
+/* Math textbook "集合" view-only completion compacting.
+   No academic text styling / mathematical source edits. */
+/* W-MATH-002 P-002: one closed history row, not a pile of completed titles. */
+.math-textbook-history { display: grid; gap: .45rem; min-width: 0; }
+.math-textbook-history-toggle {
+  display: flex; justify-content: space-between; align-items: center; gap: .6rem;
+  width: 100%; border: 1px solid var(--color-border);
+  background: var(--color-paper); color: var(--color-text);
+  padding: .55rem .7rem; font: inherit; font-size: .84rem;
+  font-weight: 700; text-align: left; cursor: pointer;
+}
+.math-textbook-history-toggle:hover { border-color: var(--color-primary); }
+.math-textbook-history-toggle:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+.math-textbook-compact-flow { display: grid; gap: .65rem; min-width: 0; }
+.math-textbook-stage { min-width: 0; scroll-margin-top: 1.5rem; }
+.math-textbook-stage--current { display: grid; gap: .85rem; }
+.math-textbook-stage--current > .reading-block-with-choice,
+.math-textbook-stage--current > .reading-derivation-chain { min-width: 0; }
+.math-textbook-stage-active-title {
+  display: flex; align-items: baseline; justify-content: space-between; gap: .5rem;
+  padding: .7rem .75rem; border-left: 4px solid var(--color-primary);
+  background: var(--color-section); color: var(--color-text);
+}
+.math-textbook-stage-active-title strong { font-size: 1rem; font-weight: 800; }
+.math-textbook-stage-active-title small { flex: 0 0 auto; color: var(--color-muted); }
+.math-textbook-stage--past { border: 1px solid var(--color-border); background: var(--color-paper); }
+.math-textbook-stage-summary {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  gap: .5rem; padding: .45rem .65rem;
+}
+.math-textbook-stage-summary__name {
+  display: inline-flex; align-items: center; gap: .35rem; min-width: 0;
+  color: var(--color-text); font-weight: 700; font-size: .82rem;
+}
+.math-textbook-stage-summary__name svg { flex: 0 0 auto; color: var(--color-success); }
+.math-textbook-stage-toggle, .math-textbook-expand-all,
+.math-textbook-stage-reference button {
+  padding: .3rem .5rem; border: 1px solid var(--color-border);
+  color: var(--color-text); background: var(--color-paper);
+  font: inherit; font-size: .78rem; cursor: pointer; text-decoration: underline;
+}
+.math-textbook-stage-toggle:hover, .math-textbook-expand-all:hover,
+.math-textbook-stage-reference button:hover { border-color: var(--color-primary); }
+.math-textbook-stage-toggle:focus-visible, .math-textbook-expand-all:focus-visible,
+.math-textbook-stage-reference button:focus-visible, .math-textbook-next-stage:focus-visible {
+  outline: 3px solid var(--color-primary); outline-offset: 2px;
+}
+.math-textbook-expand-all { justify-self: start; }
+.math-textbook-stage-detail {
+  display: grid; gap: .85rem; padding: .65rem .7rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+.math-textbook-stage-references {
+  display: grid; gap: .35rem; min-width: 0;
+  padding: .55rem .65rem; border: 1px solid var(--color-line);
+  background: var(--color-paper); color: var(--color-text);
+  font-size: .82rem;
+}
+.math-textbook-stage-references__title { font-size: .8rem; color: var(--color-text); }
+.math-textbook-stage-reference { min-width: 0; max-width: 100%; }
+.math-textbook-stage-reference-content {
+  min-width: 0; max-width: 100%; overflow-x: auto;
+  padding: .25rem .4rem; border: 0; background: transparent;
+}
+.math-textbook-stage-reference-content .reading-formula-line {
+  width: max-content; max-width: 100%; margin: 0;
+  padding: .2rem .25rem; border: 0; background: transparent;
+  text-align: left; font-size: 1rem;
+}
+.math-textbook-stage-reference-content .reading-paragraph { font-size: .86rem; line-height: 1.65; }
+.math-textbook-stage-reference-content .reading-formula-line .katex,
+.math-textbook-stage-reference-content .reading-paragraph .katex {
+  font-size: 1em; /* Keep U, A, B, and their complements in one math style. */
+}
+.math-textbook-stage-reference-content--figure .reading-figure { padding: .4rem; border: 0; background: transparent; }
+.math-textbook-stage-reference-content--figure .reading-figure img { max-height: 240px; }
+@media (max-width: 640px) {
+  .math-textbook-stage-reference-content--figure .reading-figure img { max-height: 180px; }
+  .reading-choice-formula-line .katex { font-size: .9em; }
+}
+
+.math-textbook-stage-reference-content .reading-figure { margin: 0; }
+.math-textbook-next-stage-panel {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .6rem; padding: .7rem .8rem;
+  border: 1px solid var(--color-border); background: var(--color-section);
+}
+.math-textbook-next-stage-panel span { color: var(--color-text); font-size: .83rem; }
+.math-textbook-next-stage {
+  border: 1px solid var(--color-primary); background: var(--color-primary);
+  color: white; cursor: pointer; min-height: 40px; padding: .45rem 1.1rem; font-weight: 800;
+}
+
+
+/* W-MATH-006/P-001: established N02-style 選択 rectangle for N12 and linked R3 local blanks; keep 44px touch height. */
+.reading-formula-choice--token {
+  min-width: 3.15rem;
+  min-height: 44px;
+  padding: .12rem .48rem;
+  border-width: 1px;
+  border-radius: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  flex: 0 0 auto;
+}
+.reading-formula-choice--token:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.reading-formula-line:has(.reading-formula-choice--token) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.n12-progress-upgrade-note {
+  margin: 0;
+  padding: .7rem .85rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-section);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+
+/* W-MATH-008/P-001 — N12 only: stacked mathematical transformations and intact
+   token controls. Keep other textbook units' proven layout untouched. */
+.reading-formula-line.reading-formula-line--n12 {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: visible;
+  white-space: normal;
+}
+.reading-formula-line--n12 .reading-formula-expression {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: .14em;
+  row-gap: .22rem;
+}
+.reading-formula-n12-transform {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: .12rem;
+}
+.reading-formula-n12-arrow {
+  display: block;
+  color: var(--color-muted);
+  font-size: .8em;
+  line-height: 1;
+  text-align: center;
+}
+.reading-formula-n12-answer-lines {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .15rem;
+  text-align: left;
+  vertical-align: middle;
+}
+.reading-formula-n12-answer-lines > span {
+  display: block;
+  max-width: 100%;
+}
+.reading-formula-line--n12 .reading-formula-choice--token {
+  align-self: center;
+}
+.n12-restart-top {
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+  width: fit-content;
+  padding: .4rem .6rem;
+  border: 1px solid var(--color-primary);
+  background: white;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 650;
+}
+.n12-restart-top:focus-visible { outline: 3px solid var(--focus-ring); }
+
+
+/* W-MATH-018/P-003: preserve the canonical full-size blue '選択' / red '×'
+   formula buttons. On narrow screens, show ONLY N14 Q10's second logical
+   equation as a two-row visual continuation, without changing any DOM parts. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] {
+    padding-inline: 0;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: .16rem;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression > :nth-child(5) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .reading-derivation-chain[data-derivation-id="n14-q10-chain"]
+    [data-testid="textbook-formula-n14-formula-10"] .reading-formula-expression > :nth-child(6) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}
+
+/* W-MATH-019/P-001: Q14-only two visible mobile rows, same full-size
+   original choice buttons. The 3 mathematical equations stay unchanged. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q14-chain"]
+    [data-testid="textbook-formula-n14-formula-14"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q14-chain"]
+    [data-testid="textbook-formula-n14-formula-14"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: .16rem;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q14-chain"]
+    [data-testid="textbook-formula-n14-formula-14"] .reading-formula-expression > :nth-child(5) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q14-chain"]
+    [data-testid="textbook-formula-n14-formula-14"] .reading-formula-expression > :nth-child(6) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}
+
+
+/* W-MATH-020/P-001: Q15 division, only the second logical line wraps
+   into two visual rows on narrow screens. Do not resize choices. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q15-chain"]
+    [data-testid="textbook-formula-n14-formula-15"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q15-chain"]
+    [data-testid="textbook-formula-n14-formula-15"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: .16rem;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q15-chain"]
+    [data-testid="textbook-formula-n14-formula-15"] .reading-formula-expression > :nth-child(5) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q15-chain"]
+    [data-testid="textbook-formula-n14-formula-15"] .reading-formula-expression > :nth-child(6) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}
+
+
+/* W-MATH-023/P-002 Stage A: narrow-phone Q05 only.
+   Keep the accepted blue 選択 / red × native button width and feedback;
+   show the case condition+distance formula above its choice, not clipped. */
+@media (max-width: 350px) {
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-wm023-q05-right"],
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-formula-05"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-wm023-q05-right"] .reading-formula-expression,
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-formula-05"] .reading-formula-expression {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: auto auto;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: baseline;
+    row-gap: .16rem;
+  }
+}
+
+
+
+/* W-MATH-022/P-001: Q16-only phone wrapping, one logical substitution
+   per formula. Split after the entire substitution, before the '=|...|='
+   result; all original native choices retain their size and color. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"],
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"] .reading-formula-expression,
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: .1em;
+    row-gap: .16rem;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"] .reading-formula-expression > :first-child,
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] .reading-formula-expression > :first-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}
+
+
+/* W-MATH-025/P016: semantic groups ONLY for the two approved N12 blocks.
+   Keep canonical token sizes and all other formula layouts unchanged. */
+.reading-formula-line--n12 .reading-formula-expression--p016 {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: .22em;
+}
+.reading-formula-expression--p016 > .reading-formula-group {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: .08em;
+  white-space: nowrap;
+}
+.reading-formula-p016-arrow { flex: 0 0 auto; line-height: 1.2; }
+.reading-formula-p016-narrow { display: none; }
+@media (max-width: 430px) {
+  .reading-formula-line--n12 .reading-formula-expression--p016 {
+    flex-direction: column;
+    align-items: center;
+    gap: .16rem;
+  }
+  .reading-formula-p016-wide { display: none; }
+  .reading-formula-p016-narrow { display: block; }
+}
+
+/* W-MATH-025/P017: preserve the lower-bound chain at its relation boundary. */
+.reading-formula-line--n12 .reading-formula-expression--p017-chain {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: .08em;
+}
+.reading-formula-p017-bound {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  gap: .08em;
+  white-space: nowrap;
+}
+.reading-formula-p017-continuation { white-space: nowrap; }
+@media (max-width: 430px) {
+  .reading-formula-line--n12 .reading-formula-expression--p017-chain {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: .08em;
+    row-gap: .16rem;
+  }
+  .reading-formula-expression--p017-chain > .reading-formula-p017-bound {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .reading-formula-expression--p017-chain > .reading-formula-p017-continuation {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+}
+
+/* Chapter audit: only the 42 confirmed overflowing expressions opt into wrapping. */
+.reading-formula-line:has(.reading-formula-expression--chapter-wrap) {
+  min-width: 0;
+  overflow-x: auto;
+  white-space: normal;
+}
+.reading-formula-expression.reading-formula-expression--chapter-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: safe center;
+  align-items: baseline;
+  gap: .55rem .08em;
+  min-width: 0;
+  max-width: 100%;
+}
+.reading-formula-wrap-group {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .physics-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+  }
+
+  .physics-topic-card {
+    min-height: 78px;
+    padding: .8rem 1.45rem .7rem .65rem;
+  }
+
+  .physics-topic-card strong {
+    font-size: .92rem;
+  }
+
+  .physics-domain-heading {
+    gap: .55rem;
+  }
+
+  .physics-domain-heading h3 {
+    font-size: .9rem;
+  }
+
+  .topic-filter-note {
+    grid-template-columns: 1fr auto;
+  }
+
+  .topic-filter-note span {
+    grid-column: 1 / -1;
+  }
+
+  .top-header {
+    gap: .6rem;
+    padding: .5rem .7rem;
+  }
+
+  .header-leading {
+    min-width: 0;
+    gap: .35rem;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: .5rem;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+  }
+
+  .brand > span:last-child {
+    min-width: 0;
+  }
+
+  .brand strong {
+    font-size: .92rem;
+    white-space: nowrap;
+  }
+
+  .brand small {
+    font-size: .6rem;
+  }
+
+  .header-actions {
+    flex: 0 0 auto;
+    gap: .25rem;
+  }
+
+  .header-actions > svg {
+    display: none;
+  }
+
+  .header-back-link {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: .25rem;
+  }
+
+  .header-back-link span {
+    display: none;
+  }
+
+  .language-switcher button {
+    min-width: 44px;
+    min-height: 44px;
+    padding-inline: .35rem;
+  }
+
+  .app-content {
+    padding: 1rem .75rem calc(92px + var(--safe-bottom));
+  }
+
+  .page-stack {
+    gap: 1.15rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.9rem, 10vw, 2.8rem);
+  }
+
+  .section-heading {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .section-heading > div {
+    padding: .65rem .7rem;
+  }
+
+  .resume-strip,
+  .mode-card {
+    gap: .6rem;
+    padding: .75rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .question-paper,
+  .simulation-item,
+  .confirm-dialog {
+    padding: .8rem;
+  }
+
+  .common-test-step small {
+    font-size: .6rem;
+  }
+
+  .original-choice,
+  .final-choice {
+    padding: .65rem;
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .dialogue-block {
+    padding: .65rem .7rem;
+  }
+
+  .guide-reference-panel {
+    top: 64px;
+    padding: .5rem;
+  }
+
+  .guide-reference-panel .question-figure img {
+    max-height: 24dvh;
+  }
+
+  .guide-reference-panel__label {
+    font-size: .6rem;
+  }
+
+  .session-header,
+  .simulation-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .session-header > :last-child,
+  .simulation-header > :last-child {
+    align-self: flex-start;
+  }
+
+  .timer-box {
+    min-width: 0;
+    width: fit-content;
+  }
+
+  .session-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-question-list > div,
+  .history-meta,
+  .blank-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .recommendation-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-list article > :last-child {
+    justify-self: start;
+  }
+
+  .mistake-list article > header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .mistake-list article > header > :last-child {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .ranking-list li {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .ranking-list li > b {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .toggle-row {
+    gap: .65rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .data-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    align-items: stretch;
+  }
+
+  .button-row .raised-button,
+  .button-row .raised-link {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand small {
+    display: none;
+  }
+
+  .language-switcher button {
+    min-width: 44px;
+  }
+
+  .nav-item {
+    font-size: .64rem;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-board strong {
+    font-size: 1.25rem;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .learning-mode-grid { grid-template-columns: 1fr; }
+  .learning-mode-grid > button { min-height: 104px; }
+  .textbook-section-nav { grid-template-columns: 1fr; }
+  .textbook-section-nav button { grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; }
+  .textbook-section-nav button > span { grid-row: 1 / span 2; }
+  .textbook-section-nav strong, .textbook-section-nav small { grid-column: 2; }
+  .textbook-section-nav small { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+  .textbook-choice {
+    grid-template-columns: 30px minmax(0, 1fr);
+    min-height: 48px;
+    padding: .55rem .6rem;
+  }
+
+  .textbook-choice > small {
+    grid-column: 2;
+  }
+
+  .textbook-answer-row { flex-wrap: wrap; }
+  .textbook-answer-row input { flex-basis: calc(100% - 3rem); }
+  .textbook-answer-row .raised-button { flex: 1 0 100%; }
+  .textbook-next-panel, .textbook-complete-panel { align-items: flex-start; flex-wrap: wrap; }
+  .textbook-next-panel .raised-button, .textbook-complete-panel .raised-link { width: 100%; }
+
+  .textbook-reading-flow {
+    gap: .8rem;
+    padding: .75rem;
+  }
+
+  .reading-paragraph {
+    font-size: .95rem;
+    line-height: 1.95;
+  }
+
+  .reading-formula-line {
+    padding: .6rem .55rem;
+    font-size: .98rem;
+    text-align: left;
+  }
+
+  .reading-choice-options {
+    grid-template-columns: 1fr;
+  }
+
+  .reading-choice-panel {
+    padding: .65rem;
+  }
+
+  .reading-choice-panel__head {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .reading-choice-panel__head > small {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .reading-inline-blank,
+  .reading-inline-answer {
+    min-height: 30px;
+    margin-inline: .08rem;
+    padding: .1rem .3rem;
+  }
+
+  .reading-inline-blank > span {
+    font-size: .56rem;
+  }
+
+  .reading-inline-blank > strong,
+  .reading-inline-answer strong {
+    font-size: .82rem;
+  }
+
+  .reading-figure img {
+    max-height: 48dvh;
+  }
+
+  .reading-inline-choice-panel {
+    padding: .6rem;
+  }
+
+  .reading-inline-choice-panel__head span {
+    font-size: .76rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .math-textbook-stage-summary { align-items: flex-start; }
+  .math-textbook-stage-active-title { flex-wrap: wrap; }
+  .math-textbook-next-stage { width: 100%; }
+  .math-textbook-stage-detail { padding-inline: .45rem; }
+  .math-textbook-compact-flow .reading-derivation-chain { min-width: 0; }
+  .math-textbook-compact-flow .reading-formula-line { max-width: 100%; }
+}
+</style></head><body><div id="root"></div><script type="module">
+import * as __editionReact from 'react';
+
+// archive:src/data/textbook/math/numbers/developmentFeedback.ts
+var feedback = {
+  "ne01-01": {
+    "(x+3)(x^2+9)": "\u5E73\u65B9\u3092\u4F5C\u308B\u3068\u304D\u306E\u4E8C\u3064\u306E\u4EA4\u5DEE\u9805\u304C\u629C\u3051\u3066\u3044\u308B\u3002",
+    "(x+3)(x^2+3x+9)": "\u4EA4\u5DEE\u9805\u306F\u4E00\u3064\u3067\u306F\u306A\u304F\u4E8C\u3064\u3067\u304D\u308B\u3002"
+  },
+  "ne01-02": {
+    "x^3+27": "\u4E09\u4E57\u3082\u3001\u548C\u306E\u5404\u9805\u3092\u5225\u3005\u306B\u4E09\u4E57\u3059\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044\u3002",
+    "x^3+6x^2+9x+27": "3\u3092\u639B\u3051\u3066\u751F\u3058\u308Bx\xB2\u306E\u9805\u3068x\u306E\u9805\u3082\u5408\u6D41\u3059\u308B\u3002"
+  },
+  "ne01-03": {
+    "(a+b)(a^2+b^2)": "\u5E73\u65B9\u306E\u4E2D\u592E\u306E\u9805\u3092\u7701\u304B\u306A\u3044\u3002",
+    "(a+b)(a^2+ab+b^2)": "ab\u306F\u4E8C\u3064\u306E\u4EA4\u5DEE\u9805\u304B\u3089\u751F\u307E\u308C\u308B\u3002"
+  },
+  "ne01-04": {
+    "a^3+2a^2b+ab^2+b^3": "b\u3092\u639B\u3051\u3066\u751F\u3058\u308B\u4E8C\u3064\u306E\u4E2D\u592E\u9805\u304C\u629C\u3051\u3066\u3044\u308B\u3002",
+    "a^3+2a^2b+ab^2+a^2b+ab^2+b^3": "b\xD72ab\u306E\u4FC2\u65702\u3092\u4FDD\u3064\u3002"
+  },
+  "ne01-05": {
+    "a^3+2a^2b+2ab^2+b^3": "\u305D\u308C\u305E\u308C2\u30681\u30011\u30682\u304C\u5408\u6D41\u3059\u308B\u3002",
+    "a^3+3a^2b+3ab^2-b^3": "\u548C\u306E\u5C55\u958B\u3067\u306Fb\xB3\u306E\u9805\u3082\u6B63\u306B\u306A\u308B\u3002"
+  },
+  "ne01-06": {
+    "a^3-3a^2b-3ab^2-b^3": "\u4E8C\u4E57\u3055\u308C\u305F\u2212b\u306F\u6B63\u306B\u306A\u308B\u3002",
+    "a^3+3a^2b+3ab^2-b^3": "b\u304C\u4E00\u6B21\u306E\u9805\u3067\u306F\u7F6E\u63DB\u5F8C\u306E\u8CA0\u53F7\u304C\u6B8B\u308B\u3002"
+  },
+  "ne01-07": {
+    "x^3-6x^2-12x-8": "\u4E8C\u4E57\u3092\u542B\u3080\u4E2D\u592E\u9805\u306E\u7B26\u53F7\u3092\u78BA\u304B\u3081\u308B\u3002",
+    "x^3-8": "\u5DEE\u306E\u4E09\u4E57\u306B\u3082\u4E2D\u592E\u4E8C\u9805\u304C\u5FC5\u8981\u306B\u306A\u308B\u3002"
+  },
+  "ne01-08": {
+    "3ab(a-b)": "\u5143\u306E\u4E2D\u592E\u4E8C\u9805\u306F\u3068\u3082\u306B\u6B63\u3067\u3042\u308B\u3002",
+    "ab(a+b)": "\u5171\u901A\u3059\u308B\u6570\u306E\u4FC2\u6570\u3082\u53D6\u308A\u51FA\u3059\u3002"
+  },
+  "ne01-09": {
+    "(a+b)((a+b)^2+3ab)": "\u4E2D\u592E\u4E8C\u9805\u3092\u53D6\u308A\u9664\u304F\u306E\u3067\u5F15\u304D\u7B97\u306B\u306A\u308B\u3002",
+    "(a+b)((a+b)-3ab)": "\u4E09\u4E57\u304B\u3089\u4E00\u3064\u53D6\u308A\u51FA\u3057\u305F\u6B8B\u308A\u306F\u5E73\u65B9\u3067\u3042\u308B\u3002"
+  },
+  "ne01-10": {
+    "(a+b)(a^2+ab+b^2)": "\u5E73\u65B9\u306E\u4E2D\u592E\u9805\u304B\u30893ab\u3092\u5F15\u304F\u3002",
+    "(a+b)(a^2-3ab+b^2)": "\u5E73\u65B9\u304B\u3089\u751F\u3058\u308B2ab\u3082\u8A08\u7B97\u3078\u5165\u308C\u308B\u3002"
+  },
+  "ne01-11": {
+    "(a-b)(a^2-ab+b^2)": "\u4E8C\u6B21\u306E\u56E0\u5B50\u306B\u3042\u308B\u2212ab\u3082\u7F6E\u63DB\u3059\u308B\u3002",
+    "(a-b)(a^2+ab-b^2)": "b\xB2\u306F\u7F6E\u63DB\u3057\u3066\u3082\u6B63\u306B\u306A\u308B\u3002"
+  },
+  "ne01-12": {
+    "x^3-1^3\\quad;\\quad(8x)^3+(27y)^3": "\u62EC\u5F27\u5185\u306E\u6570\u3092\u4E09\u4E57\u3057\u3066\u5143\u306E\u4FC2\u6570\u306B\u306A\u308B\u304B\u78BA\u304B\u3081\u308B\u3002",
+    "x^3-1^3\\quad;\\quad(2x)^3-(3y)^3": "\u4E8C\u3064\u76EE\u306E\u5143\u306E\u5F0F\u306F\u548C\u3067\u3042\u308B\u3002"
+  },
+  "ne01-13": {
+    "(x-1)(x^2-x+1)\\quad;\\quad(2x+3y)(4x^2-6xy+9y^2)": "\u4E09\u4E57\u306E\u5DEE\u306E\u4E8C\u6B21\u56E0\u5B50\u3067\u306F\u4E2D\u592E\u9805\u304C\u6B63\u306B\u306A\u308B\u3002",
+    "(x-1)(x^2+x+1)\\quad;\\quad(2x+3y)(4x^2+6xy+9y^2)": "\u4E09\u4E57\u306E\u548C\u306E\u4E8C\u6B21\u56E0\u5B50\u3067\u306F\u4E2D\u592E\u9805\u304C\u8CA0\u306B\u306A\u308B\u3002"
+  },
+  "ne02-01": {
+    "a+b+\\sqrt{ab}": "\u4EA4\u5DEE\u9805\u306F\u4E8C\u3064\u3067\u304D\u308B\u3002",
+    "a+b+2ab": "\u5E73\u65B9\u6839\u540C\u58EB\u306E\u7A4D\u306B\u3082\u6839\u53F7\u304C\u6B8B\u308B\u3002"
+  },
+  "ne02-02": {
+    "a+b=5,\\quad ab=3": "\u4FC2\u65702\u3068\u6839\u53F7\u5185\u306E\u5024\u306F\u5206\u3051\u3066\u6BD4\u3079\u308B\u3002",
+    "a+b=5,\\quad ab=12": "\u4FC2\u65702\u3092\u6839\u53F7\u5185\u3078\u305D\u306E\u307E\u307E\u639B\u3051\u306A\u3044\u3002"
+  },
+  "ne02-03": {
+    "a=1,\\quad b=4": "\u548C\u306F\u5408\u3046\u304C\u3001\u7A4D\u304C\u5408\u308F\u306A\u3044\u3002",
+    "a=1,\\quad b=6": "\u7A4D\u306F\u5408\u3046\u304C\u3001\u548C\u304C\u5408\u308F\u306A\u3044\u3002"
+  },
+  "ne02-04": {
+    "\\sqrt{5+2\\sqrt6}=-\\sqrt2-\\sqrt3": "\u4E3B\u5E73\u65B9\u6839\u306F\u975E\u8CA0\u306E\u5024\u3092\u8868\u3059\u3002",
+    "\\sqrt{5+2\\sqrt6}=\\sqrt5+\\sqrt{2\\sqrt6}": "\u548C\u306E\u5E73\u65B9\u6839\u3092\u5404\u9805\u306E\u5E73\u65B9\u6839\u306E\u548C\u306B\u306F\u5206\u3051\u3089\u308C\u306A\u3044\u3002"
+  },
+  "ne02-05": {
+    "a+b+2\\sqrt{ab}": "\u5DEE\u306E\u5E73\u65B9\u3067\u306F\u4EA4\u5DEE\u9805\u304C\u8CA0\u306B\u306A\u308B\u3002",
+    "a-b-2\\sqrt{ab}": "\u6700\u5F8C\u306E\u9805\u306F\u4E8C\u4E57\u3055\u308C\u308B\u306E\u3067\u6B63\u306B\u306A\u308B\u3002"
+  },
+  "ne02-06": {
+    "a+b=9,\\quad ab=5": "\u6B8B\u308B\u4FC2\u65702\u3092\u6839\u53F7\u3078\u5165\u308C\u308B\u3068\u304D\u306F\u4E8C\u4E57\u3059\u308B\u3002",
+    "a+b=9,\\quad ab=10": "\u4FC2\u6570\u3092\u6839\u53F7\u3078\u5165\u308C\u308B\u3068\u304D\u306F\u305D\u306E\u5E73\u65B9\u3092\u639B\u3051\u308B\u3002"
+  },
+  "ne02-07": {
+    "a=8,\\ b=1:\\ \\sqrt8-1": "\u548C\u306F\u5408\u3046\u304C\u3001\u7A4D\u304C\u5408\u308F\u306A\u3044\u3002",
+    "a=5,\\ b=4:\\ \\sqrt{5-4}": "\u5E73\u65B9\u6839\u306E\u5DEE\u306F\u3001\u5DEE\u5168\u4F53\u306E\u5E73\u65B9\u6839\u306B\u306F\u307E\u3068\u3081\u3089\u308C\u306A\u3044\u3002"
+  },
+  "ne02-08": {
+    "\\sqrt{9-4\\sqrt5}=2-\\sqrt5": "\u305D\u306E\u5019\u88DC\u306F\u8CA0\u306B\u306A\u308B\u3002",
+    "\\sqrt{9-4\\sqrt5}=\\pm(\\sqrt5-2)": "\u65B9\u7A0B\u5F0F\u306E\u4E8C\u3064\u306E\u89E3\u3068\u3001\u4E3B\u5E73\u65B9\u6839\u306E\u5024\u3092\u533A\u5225\u3059\u308B\u3002"
+  },
+  "ne02-09": {
+    "\\frac{3+2\\sqrt5}{2}": "\u5B9A\u6570\u9805\u306B\u30822\u3092\u639B\u3051\u308B\u3002",
+    "\\frac{6+\\sqrt5}{2}": "\u6839\u53F7\u3092\u542B\u3080\u9805\u306B\u30822\u3092\u639B\u3051\u308B\u3002"
+  },
+  "ne02-10": {
+    "\\frac{\\sqrt{6+2\\sqrt5}}{2}": "\u5206\u6BCD2\u306B\u3082\u5E73\u65B9\u6839\u304C\u4ED8\u304F\u3002",
+    "\\frac{\\sqrt6+\\sqrt{2\\sqrt5}}{\\sqrt2}": "\u548C\u306E\u6839\u53F7\u3092\u9805\u3054\u3068\u306B\u5206\u3051\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044\u3002"
+  },
+  "ne02-11": {
+    "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{3,3\\};\\ \\sqrt{6+2\\sqrt5}=2\\sqrt3": "\u548C\u3060\u3051\u3067\u306A\u304F\u7A4D\u3082\u6761\u4EF6\u3078\u4EE3\u5165\u3059\u308B\u3002",
+    "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5-1": "\u4E2D\u592E\u9805\u306F\u6B63\u306A\u306E\u3067\u3001\u5E73\u65B9\u3057\u305F\u3068\u304D\u306E\u7B26\u53F7\u3092\u78BA\u304B\u3081\u308B\u3002"
+  },
+  "ne02-12": {
+    "\\frac{\\sqrt{10}+1}{2}": "\u5206\u5B50\u306E1\u306B\u3082\u221A2\u3092\u639B\u3051\u308B\u3002",
+    "\\sqrt{10}+\\sqrt2": "\u5206\u6BCD\u306E\u221A2\xD7\u221A2\u3082\u6B8B\u3057\u3066\u8A08\u7B97\u3059\u308B\u3002"
+  }
+};
+function developmentFeedback(itemId, value) {
+  return feedback[itemId]?.[value];
+}
+
+// archive:src/pages/TextbookUnitPage.tsx
+import { InlineMath as InlineMath2 } from "react-katex";
+import { Check, LockKeyhole, RotateCcw, X as X2 } from "lucide-react";
+import { useEffect as useEffect2, useMemo, useRef as useRef2, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+// archive:src/components/textbook/TextbookFigure.tsx
+import { isTextbookItemResolved } from "/src/domain/textbook.ts";
+function resolveAssetSrc(src) {
+  if (/^(?:https?:|data:|blob:)/i.test(src)) return src;
+  const viteBase = import.meta.env.BASE_URL;
+  const base = viteBase.endsWith("/") ? viteBase : `${viteBase}/`;
+  if (src.startsWith(base)) return src;
+  return `${base}${src.replace(/^\.?\/+/, "")}`;
+}
+function TextbookFigure({ figure, items, progress, onOpen }) {
+  const mathSetSvg = figure.src.startsWith("/assets/math/textbook/sets/") && figure.src.endsWith(".svg");
+  const numberLineSvg = mathSetSvg && figure.src.includes("/number-line-");
+  return /* @__PURE__ */ __editionReact.createElement("figure", { className: "reading-figure", "data-testid": `textbook-figure-${figure.id}` }, /* @__PURE__ */ __editionReact.createElement("div", { className: `textbook-figure-stage${mathSetSvg ? " textbook-figure-stage--math-set-svg" : ""}` }, /* @__PURE__ */ __editionReact.createElement("img", { src: resolveAssetSrc(figure.src), alt: figure.alt, width: mathSetSvg ? numberLineSvg ? 720 : 640 : void 0, height: mathSetSvg ? numberLineSvg ? 220 : 360 : void 0 }), figure.overlays.map((overlay) => {
+    const item = items.find((candidate) => candidate.id === overlay.itemId);
+    const record = progress?.answers[overlay.itemId];
+    const revealed = overlay.reveal === "always" || Boolean(item && isTextbookItemResolved(item, record));
+    if (revealed) return null;
+    const style = {
+      left: `${overlay.x}%`,
+      top: `${overlay.y}%`,
+      width: `${overlay.width}%`,
+      height: `${overlay.height}%`
+    };
+    if (overlay.interactive === false) {
+      return /* @__PURE__ */ __editionReact.createElement(
+        "span",
+        {
+          key: overlay.id,
+          className: `textbook-figure-overlay textbook-figure-overlay--${overlay.mode}`,
+          style,
+          "data-testid": `textbook-figure-overlay-${overlay.id}`,
+          "aria-hidden": "true"
+        },
+        /* @__PURE__ */ __editionReact.createElement("span", { "aria-hidden": "true" }, "?")
+      );
+    }
+    return /* @__PURE__ */ __editionReact.createElement(
+      "button",
+      {
+        type: "button",
+        key: overlay.id,
+        className: `textbook-figure-overlay textbook-figure-overlay--${overlay.mode}`,
+        style,
+        "data-testid": `textbook-figure-overlay-${overlay.id}`,
+        "aria-label": overlay.ariaLabel ?? item?.prompt ?? item?.label ?? overlay.itemId,
+        onClick: () => onOpen(overlay.itemId)
+      },
+      /* @__PURE__ */ __editionReact.createElement("span", { "aria-hidden": "true" }, "?")
+    );
+  })), figure.caption && /* @__PURE__ */ __editionReact.createElement("figcaption", null, figure.caption));
+}
+
+// archive:src/components/textbook/TextbookFormula.tsx
+import { InlineMath } from "react-katex";
+
+// archive:src/components/textbook/formulaWrap.ts
+function formulaWrapChunks(block) {
+  const source = block.parts.map((part, index) => part.type === "math" ? part.latex : part.type === "choice" ? `\xA7${index}\xA7` : "").join("");
+  const chunks = [];
+  let start = 0, braces = 0, parentheses = 0, absolute = false;
+  const push = (end) => {
+    if (end > start) chunks.push(source.slice(start, end));
+    start = end;
+  };
+  for (let i = 0; i < source.length; i++) {
+    const char = source[i];
+    if (char === "\\") {
+      const command = source.slice(i).match(/^\\[A-Za-z]+/)?.[0] ?? source.slice(i, i + 2);
+      if (!braces && !parentheses && !absolute) {
+        if (/^\\(?:Longrightarrow|longrightarrow)$/.test(command)) {
+          push(i);
+          push(i + command.length);
+        } else if ((command === "\\qquad" || block.id === "formula-n03-01" && /^\\(?:times|cdot)$/.test(command) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i);
+      }
+      i += command.length - 1;
+      continue;
+    }
+    if (char === "{") braces++;
+    if (char === "}") braces--;
+    if (braces) continue;
+    if (char === "(") parentheses++;
+    if (char === ")") parentheses--;
+    if (char === "|") absolute = !absolute;
+    if (!parentheses && !absolute && (char === "=" || (char === "+" || char === "-") && i > start)) push(i);
+    if (char === "," && parentheses <= 1 && !absolute) push(i + 1);
+  }
+  push(source.length);
+  return chunks.filter((chunk) => chunk.trim());
+}
+var auditedWrapBlocks = {
+  "math-numbers-expressions-ne02": ["ne02-problem-01", "ne02-formula-01", "ne02-before-02-1", "ne02-formula-02", "ne02-formula-03", "ne02-formula-04", "ne02-problem-05", "ne02-formula-05", "ne02-before-06-1", "ne02-formula-06", "ne02-result-06-1", "ne02-formula-07", "ne02-formula-08", "ne02-result-08-1", "ne02-problem-09", "ne02-formula-09", "ne02-formula-10", "ne02-formula-11", "ne02-before-12-1", "ne02-formula-12", "ne02-result-12-1"],
+  "math-numbers-expressions-ne01": ["ne01-problem-01", "ne01-formula-01", "ne01-before-02-1", "ne01-before-02-2", "ne01-formula-02", "ne01-formula-03", "ne01-formula-04", "ne01-formula-05", "ne01-formula-06", "ne01-problem-07", "ne01-formula-07", "ne01-result-07-1", "ne01-formula-08", "ne01-before-09-1", "ne01-formula-09", "ne01-result-09-1", "ne01-formula-10", "ne01-formula-11", "ne01-problem-12", "ne01-formula-12", "ne01-formula-13"],
+  "math-numbers-expressions-n01": ["formula-n01-01", "formula-n01-02a", "formula-n01-02b", "formula-n01-02c", "formula-r3-q07-x2coef", "formula-r3-q07-xcoef", "formula-r3-q07-const", "formula-n01-07"],
+  "math-numbers-expressions-n02": ["formula-n02-02", "formula-n02-03", "formula-n02-04", "formula-n02-07", "formula-n02-08", "formula-n02-09", "formula-n02-10", "formula-n02-11", "formula-n02-12"],
+  "math-numbers-expressions-n03": ["formula-n03-01", "formula-n03-04", "formula-n03-12", "formula-n03-05", "formula-n03-07", "formula-n03-09"],
+  "math-numbers-expressions-n09": ["formula-n09-04", "formula-n09-07"],
+  "math-numbers-expressions-n10": ["formula-n10-01", "formula-n10-03", "formula-n10-06", "formula-n10-13", "formula-n10-18", "formula-n10-11", "formula-n10-20"],
+  "math-numbers-expressions-n11": ["n11-formula-08", "n11-formula-13"],
+  "math-numbers-expressions-n04": ["formula-n04-q01-complete", "n04-formula-13", "n04-formula-15", "n04-formula-16"],
+  "math-numbers-expressions-n05": ["n05-formula-13"],
+  "math-numbers-expressions-n06": ["n06-formula-01", "n06-formula-09", "n06-formula-13"]
+};
+var auditedResolvedWrapBlocks = ["formula-n02-04", "formula-n02-09", "formula-n02-10", "formula-n02-11", "formula-n02-12", "formula-n03-05", "formula-n03-07", "formula-n03-09", "formula-n03-12", "formula-n04-q01-complete", "formula-n10-11", "formula-n10-20", "n04-formula-13", "n04-formula-15", "n04-formula-16", "n05-formula-13", "n06-formula-01", "n06-formula-09", "n06-formula-13"];
+
+// archive:src/components/textbook/TextbookFormula.tsx
+import { isTextbookItemResolved as isTextbookItemResolved2 } from "/src/domain/textbook.ts";
+
+// archive:src/domain/textbookMath.ts
+function stripTextbookMarkdown(value) {
+  return value.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/`([^`]+)`/g, "$1").trim();
+}
+function normalizeSubscriptSequence(value) {
+  const map = {
+    "\u2080": "0",
+    "\u2081": "1",
+    "\u2082": "2",
+    "\u2083": "3",
+    "\u2084": "4",
+    "\u2085": "5",
+    "\u2086": "6",
+    "\u2087": "7",
+    "\u2088": "8",
+    "\u2089": "9",
+    "\u2093": "x",
+    "\u1D67": "y",
+    "\u209C": "t"
+  };
+  return [...value].map((char) => map[char] ?? char).join("");
+}
+function normalizeUnicodeRadicals(value) {
+  let result = "";
+  let index = 0;
+  while (index < value.length) {
+    if (value[index] !== "\u221A") {
+      result += value[index];
+      index += 1;
+      continue;
+    }
+    if (value[index + 1] === "(") {
+      let depth = 0;
+      let closingIndex = -1;
+      for (let cursor = index + 1; cursor < value.length; cursor += 1) {
+        if (value[cursor] === "(") depth += 1;
+        if (value[cursor] === ")") {
+          depth -= 1;
+          if (depth === 0) {
+            closingIndex = cursor;
+            break;
+          }
+        }
+      }
+      if (closingIndex !== -1) {
+        const radicand = value.slice(index + 2, closingIndex);
+        result += `\\sqrt{${normalizeUnicodeRadicals(radicand)}}`;
+        index = closingIndex + 1;
+        continue;
+      }
+    }
+    const unwrapped = value.slice(index + 1).match(/^([A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_]+)/);
+    if (unwrapped) {
+      result += `\\sqrt{${unwrapped[1]}}`;
+      index += unwrapped[1].length + 1;
+      continue;
+    }
+    result += "\u221A";
+    index += 1;
+  }
+  return result;
+}
+function normalizeTextbookMath(value) {
+  let next = stripTextbookMarkdown(value);
+  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, (match, members, offset, source) => {
+    const before = source.slice(0, offset);
+    if (before.endsWith("\\") || /\\[A-Za-z]+\*?$/.test(before) || /[_^]$/.test(before)) return match;
+    if (/\\[A-Za-z]+\*?\{[^{}]*\}$/.test(before)) return match;
+    return `\\{${members}\\}`;
+  });
+  next = normalizeUnicodeRadicals(next);
+  next = next.replace(/overline\(([^()]*)\)/g, "\\overline{$1}").replace(/\s*∩\s*/g, " \\cap ").replace(/\s*∪\s*/g, " \\cup ").replace(/\s*∈\s*/g, " \\in ").replace(/\s*∉\s*/g, " \\notin ").replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base, sub) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`).replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base, sub) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`).replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base, sub) => `${base}_{${normalizeSubscriptSequence(sub)}}`).replace(/([A-Za-z])_([0-9]+)_([A-Za-z])/g, "$1_{$2$3}").replace(/v̄⃗/g, "\\vec{v}_{\\mathrm{avg}}").replace(/([A-Za-z])̄⃗/g, "\\bar{\\vec{$1}}").replace(/Δ([A-Za-z])⃗/g, "\\Delta \\vec{$1}").replace(/([A-Za-z])⃗/g, "\\vec{$1}").replace(/lim\(Δt→0\)/g, "\\lim_{\\Delta t\\to0}").replace(/Δ/g, "\\Delta ").replace(/θ/g, "\\theta ").replace(/°/g, "^{\\circ}").replace(/→/g, "\\to ").replace(/−/g, "-").replace(/×/g, "\\times ").replace(/·/g, "\\cdot ").replace(/}([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ])/g, (_, sub) => `}_{${normalizeSubscriptSequence(sub)}}`).replace(/₀/g, "_0").replace(/₁/g, "_1").replace(/₂/g, "_2").replace(/₃/g, "_3").replace(/₄/g, "_4").replace(/₅/g, "_5").replace(/₆/g, "_6").replace(/₇/g, "_7").replace(/₈/g, "_8").replace(/₉/g, "_9").replace(/ₓ/g, "_x").replace(/ᵧ/g, "_y").replace(/ₜ/g, "_t").replace(/²/g, "^2").replace(/³/g, "^3").replace(/sin/g, "\\sin ").replace(/cos/g, "\\cos ").replace(/tan/g, "\\tan ");
+  return next.trim();
+}
+
+// archive:src/domain/mathFractionDisplay.ts
+function mathFractionDisplayValue(itemId, value) {
+  if (!["n07-08", "n10-16", "ne02-10", "ne02-12"].includes(itemId)) return value;
+  return value.replace(/\\frac([0-9])\{([0-9]+)\}/g, "\\frac{$1}{\\mathord{$2}}").replace(/\}\{([0-9]+)\}/g, "}{\\mathord{$1}}");
+}
+
+// archive:src/domain/neDevelopmentDisplay.ts
+var rows = {
+  "ne01-01|(x+3)(x^2+6x+9)": [
+    "(x+3)(x^2+6x+9)"
+  ],
+  "ne01-01|(x+3)(x^2+9)": [
+    "(x+3)(x^2+9)"
+  ],
+  "ne01-01|(x+3)(x^2+3x+9)": [
+    "(x+3)(x^2+3x+9)"
+  ],
+  "ne01-02|x^3+9x^2+27x+27": [
+    "x^3+9x^2+27x+27"
+  ],
+  "ne01-02|x^3+27": [
+    "x^3+27"
+  ],
+  "ne01-02|x^3+6x^2+9x+27": [
+    "x^3+6x^2+9x+27"
+  ],
+  "ne01-03|(a+b)(a^2+2ab+b^2)": [
+    "(a+b)(a^2+2ab+b^2)"
+  ],
+  "ne01-03|(a+b)(a^2+b^2)": [
+    "(a+b)(a^2+b^2)"
+  ],
+  "ne01-03|(a+b)(a^2+ab+b^2)": [
+    "(a+b)(a^2+ab+b^2)"
+  ],
+  "ne01-04|a^3+2a^2b+ab^2+a^2b+2ab^2+b^3": [
+    "a^3+2a^2b+ab^2",
+    "+a^2b+2ab^2+b^3"
+  ],
+  "ne01-04|a^3+2a^2b+ab^2+b^3": [
+    "a^3+2a^2b+ab^2",
+    "+b^3"
+  ],
+  "ne01-04|a^3+2a^2b+ab^2+a^2b+ab^2+b^3": [
+    "a^3+2a^2b+ab^2",
+    "+a^2b+ab^2+b^3"
+  ],
+  "ne01-05|a^3+3a^2b+3ab^2+b^3": [
+    "a^3+3a^2b+3ab^2+b^3"
+  ],
+  "ne01-05|a^3+2a^2b+2ab^2+b^3": [
+    "a^3+2a^2b+2ab^2+b^3"
+  ],
+  "ne01-05|a^3+3a^2b+3ab^2-b^3": [
+    "a^3+3a^2b+3ab^2-b^3"
+  ],
+  "ne01-06|a^3-3a^2b+3ab^2-b^3": [
+    "a^3-3a^2b+3ab^2-b^3"
+  ],
+  "ne01-06|a^3-3a^2b-3ab^2-b^3": [
+    "a^3-3a^2b-3ab^2-b^3"
+  ],
+  "ne01-06|a^3+3a^2b+3ab^2-b^3": [
+    "a^3+3a^2b+3ab^2-b^3"
+  ],
+  "ne01-07|x^3-6x^2+12x-8": [
+    "x^3-6x^2+12x-8"
+  ],
+  "ne01-07|x^3-6x^2-12x-8": [
+    "x^3-6x^2-12x-8"
+  ],
+  "ne01-07|x^3-8": [
+    "x^3-8"
+  ],
+  "ne01-08|3ab(a+b)": [
+    "3ab(a+b)"
+  ],
+  "ne01-08|3ab(a-b)": [
+    "3ab(a-b)"
+  ],
+  "ne01-08|ab(a+b)": [
+    "ab(a+b)"
+  ],
+  "ne01-09|(a+b)((a+b)^2-3ab)": [
+    "(a+b)((a+b)^2-3ab)"
+  ],
+  "ne01-09|(a+b)((a+b)^2+3ab)": [
+    "(a+b)((a+b)^2+3ab)"
+  ],
+  "ne01-09|(a+b)((a+b)-3ab)": [
+    "(a+b)((a+b)-3ab)"
+  ],
+  "ne01-10|(a+b)(a^2-ab+b^2)": [
+    "(a+b)(a^2-ab+b^2)"
+  ],
+  "ne01-10|(a+b)(a^2+ab+b^2)": [
+    "(a+b)(a^2+ab+b^2)"
+  ],
+  "ne01-10|(a+b)(a^2-3ab+b^2)": [
+    "(a+b)(a^2-3ab+b^2)"
+  ],
+  "ne01-11|(a-b)(a^2+ab+b^2)": [
+    "(a-b)(a^2+ab+b^2)"
+  ],
+  "ne01-11|(a-b)(a^2-ab+b^2)": [
+    "(a-b)(a^2-ab+b^2)"
+  ],
+  "ne01-11|(a-b)(a^2+ab-b^2)": [
+    "(a-b)(a^2+ab-b^2)"
+  ],
+  "ne01-12|x^3-1^3\\quad;\\quad(2x)^3+(3y)^3": [
+    "x^3-1^3",
+    "(2x)^3+(3y)^3"
+  ],
+  "ne01-12|x^3-1^3\\quad;\\quad(8x)^3+(27y)^3": [
+    "x^3-1^3",
+    "(8x)^3+(27y)^3"
+  ],
+  "ne01-12|x^3-1^3\\quad;\\quad(2x)^3-(3y)^3": [
+    "x^3-1^3",
+    "(2x)^3-(3y)^3"
+  ],
+  "ne01-13|(x-1)(x^2+x+1)\\quad;\\quad(2x+3y)(4x^2-6xy+9y^2)": [
+    "(x-1)(x^2+x+1)",
+    "(2x+3y)",
+    "\\cdot(4x^2-6xy+9y^2)"
+  ],
+  "ne01-13|(x-1)(x^2-x+1)\\quad;\\quad(2x+3y)(4x^2-6xy+9y^2)": [
+    "(x-1)(x^2-x+1)",
+    "(2x+3y)",
+    "\\cdot(4x^2-6xy+9y^2)"
+  ],
+  "ne01-13|(x-1)(x^2+x+1)\\quad;\\quad(2x+3y)(4x^2+6xy+9y^2)": [
+    "(x-1)(x^2+x+1)",
+    "(2x+3y)",
+    "\\cdot(4x^2+6xy+9y^2)"
+  ],
+  "ne02-01|a+b+2\\sqrt{ab}": [
+    "a+b+2\\sqrt{ab}"
+  ],
+  "ne02-01|a+b+\\sqrt{ab}": [
+    "a+b+\\sqrt{ab}"
+  ],
+  "ne02-01|a+b+2ab": [
+    "a+b+2ab"
+  ],
+  "ne02-02|a+b=5,\\quad ab=6": [
+    "a+b=5,",
+    "ab=6"
+  ],
+  "ne02-02|a+b=5,\\quad ab=3": [
+    "a+b=5,",
+    "ab=3"
+  ],
+  "ne02-02|a+b=5,\\quad ab=12": [
+    "a+b=5,",
+    "ab=12"
+  ],
+  "ne02-03|a=2,\\quad b=3\\quad(\\text{\u9806\u4E0D\u540C})": [
+    "a=2,",
+    "b=3",
+    "(\\text{\u9806\u4E0D\u540C})"
+  ],
+  "ne02-03|a=1,\\quad b=4": [
+    "a=1,",
+    "b=4"
+  ],
+  "ne02-03|a=1,\\quad b=6": [
+    "a=1,",
+    "b=6"
+  ],
+  "ne02-04|\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3": [
+    "\\sqrt2+\\sqrt3>0,",
+    "\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3"
+  ],
+  "ne02-04|\\sqrt{5+2\\sqrt6}=-\\sqrt2-\\sqrt3": [
+    "\\sqrt{5+2\\sqrt6}=-\\sqrt2-\\sqrt3"
+  ],
+  "ne02-04|\\sqrt{5+2\\sqrt6}=\\sqrt5+\\sqrt{2\\sqrt6}": [
+    "\\sqrt{5+2\\sqrt6}=\\sqrt5+\\sqrt{2\\sqrt6}"
+  ],
+  "ne02-05|a+b-2\\sqrt{ab}": [
+    "a+b-2\\sqrt{ab}"
+  ],
+  "ne02-05|a+b+2\\sqrt{ab}": [
+    "a+b+2\\sqrt{ab}"
+  ],
+  "ne02-05|a-b-2\\sqrt{ab}": [
+    "a-b-2\\sqrt{ab}"
+  ],
+  "ne02-06|a+b=9,\\quad ab=20": [
+    "a+b=9,",
+    "ab=20"
+  ],
+  "ne02-06|a+b=9,\\quad ab=5": [
+    "a+b=9,",
+    "ab=5"
+  ],
+  "ne02-06|a+b=9,\\quad ab=10": [
+    "a+b=9,",
+    "ab=10"
+  ],
+  "ne02-07|a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{\u307E\u305F\u306F}\\quad a=4,\\ b=5:\\ 2-\\sqrt5": [
+    "a=5,\\ b=4:\\ \\sqrt5-2",
+    "\\text{\u307E\u305F\u306F}",
+    "a=4,\\ b=5:\\ 2-\\sqrt5"
+  ],
+  "ne02-07|a=8,\\ b=1:\\ \\sqrt8-1": [
+    "a=8,\\ b=1:\\ \\sqrt8-1"
+  ],
+  "ne02-07|a=5,\\ b=4:\\ \\sqrt{5-4}": [
+    "a=5,\\ b=4:\\ \\sqrt{5-4}"
+  ],
+  "ne02-08|\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2": [
+    "\\sqrt5>2,",
+    "\\sqrt{9-4\\sqrt5}=\\sqrt5-2"
+  ],
+  "ne02-08|\\sqrt{9-4\\sqrt5}=2-\\sqrt5": [
+    "\\sqrt{9-4\\sqrt5}=2-\\sqrt5"
+  ],
+  "ne02-08|\\sqrt{9-4\\sqrt5}=\\pm(\\sqrt5-2)": [
+    "\\sqrt{9-4\\sqrt5}=\\pm(\\sqrt5-2)"
+  ],
+  "ne02-09|\\frac{6+2\\sqrt5}{2}": [
+    "\\frac{6+2\\sqrt5}{2}"
+  ],
+  "ne02-09|\\frac{3+2\\sqrt5}{2}": [
+    "\\frac{3+2\\sqrt5}{2}"
+  ],
+  "ne02-09|\\frac{6+\\sqrt5}{2}": [
+    "\\frac{6+\\sqrt5}{2}"
+  ],
+  "ne02-10|\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}": [
+    "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}"
+  ],
+  "ne02-10|\\frac{\\sqrt{6+2\\sqrt5}}{2}": [
+    "\\frac{\\sqrt{6+2\\sqrt5}}{2}"
+  ],
+  "ne02-10|\\frac{\\sqrt6+\\sqrt{2\\sqrt5}}{\\sqrt2}": [
+    "\\frac{\\sqrt6+\\sqrt{2\\sqrt5}}{\\sqrt2}"
+  ],
+  "ne02-11|a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1": [
+    "a+b=6,\\ ab=5",
+    "\\ \\{a,b\\}=\\{5,1\\}",
+    "\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1"
+  ],
+  "ne02-11|a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{3,3\\};\\ \\sqrt{6+2\\sqrt5}=2\\sqrt3": [
+    "a+b=6,\\ ab=5",
+    "\\ \\{a,b\\}=\\{3,3\\}",
+    "\\ \\sqrt{6+2\\sqrt5}=2\\sqrt3"
+  ],
+  "ne02-11|a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5-1": [
+    "a+b=6,\\ ab=5",
+    "\\ \\{a,b\\}=\\{5,1\\}",
+    "\\ \\sqrt{6+2\\sqrt5}=\\sqrt5-1"
+  ],
+  "ne02-12|\\frac{\\sqrt{10}+\\sqrt2}{2}": [
+    "\\frac{\\sqrt{10}+\\sqrt2}{2}"
+  ],
+  "ne02-12|\\frac{\\sqrt{10}+1}{2}": [
+    "\\frac{\\sqrt{10}+1}{2}"
+  ],
+  "ne02-12|\\sqrt{10}+\\sqrt2": [
+    "\\sqrt{10}+\\sqrt2"
+  ]
+};
+function neDevelopmentDisplayLines(itemId, value) {
+  const lines = rows[itemId + "|" + value];
+  return lines ? [...lines] : void 0;
+}
+
+// archive:src/domain/n12CostDisplay.ts
+function n12CostDisplayLines(itemId, value) {
+  if (itemId === "n12-10" || itemId === "n12-11") {
+    const breakAt = value.lastIndexOf("+130(");
+    if (breakAt > 0) {
+      return [value.slice(0, breakAt), value.slice(breakAt)];
+    }
+  }
+  if (itemId === "n12-15") {
+    const breakAt = value.indexOf(",\\ ");
+    if (breakAt > 0) return [value.slice(0, breakAt), value.slice(breakAt + 3)];
+  }
+  return [value];
+}
+
+// archive:src/domain/textbookDisplayLines.ts
+function textbookDisplayLines(itemId, value) {
+  const developmentLines = neDevelopmentDisplayLines(itemId, value);
+  if (developmentLines) return developmentLines.map((line) => mathFractionDisplayValue(itemId, line));
+  if (itemId === "n07-09") return value.split(",\\;");
+  if (["n11-13", "n14-14", "n14-15"].includes(itemId)) return value.split(",\\quad");
+  if ([
+    "n11-wm011-q02-compare",
+    "n11-wm011-q03-positive",
+    "n11-03",
+    "n11-wm011-q03-zero",
+    "n11-wm011-q04-fraction"
+  ].includes(itemId)) return value.split(",\\quad");
+  if (["n06-15", "n08-10", "n13-08"].includes(itemId)) return value.split(",\\quad");
+  if (itemId === "n09-08") {
+    const match = /^1\.41\^2=(\d+\.\d+)([<>])2([<>])(\d+\.\d+)=1\.42\^2$/.exec(value);
+    if (match) {
+      const [, left, leftSign, rightSign, right] = match;
+      return [`1.41^2=${left}`, `${left}${leftSign}2${rightSign}${right}`, `${right}=1.42^2`];
+    }
+  }
+  return n12CostDisplayLines(itemId, mathFractionDisplayValue(itemId, value));
+}
+
+// archive:src/components/textbook/TextbookFormula.tsx
+function isSolvedUnitCoefficientBeforeX(block, index, section, progress) {
+  const part = block.parts[index];
+  const next = block.parts[index + 1];
+  if (part?.type !== "choice" || next?.type !== "math" || !/^x\+/.test(next.latex)) return false;
+  const item = section.items.find((candidate) => candidate.id === part.itemId);
+  if (!item || item.answerType !== "formula") return false;
+  const record = progress?.answers[item.id];
+  return isTextbookItemResolved2(item, record) && (record?.value ?? item.answer) === "1";
+}
+function TextbookFormula({ block, section, progress, onOpen, unitId }) {
+  const n12Formula = unitId === "math-numbers-expressions-n12";
+  const renderedParts = block.parts.map((part, index) => {
+    const key = `${block.id}-part-${index}`;
+    if (part.type === "math") {
+      const followsUnitCoefficient = isSolvedUnitCoefficientBeforeX(block, index - 1, section, progress);
+      const latex = followsUnitCoefficient ? part.latex.slice(1) : part.latex;
+      const arrow = "\\quad\\Longrightarrow\\quad";
+      const arrowAt = n12Formula ? latex.indexOf(arrow) : -1;
+      if (arrowAt >= 0) {
+        const left = latex.slice(0, arrowAt);
+        const right = latex.slice(arrowAt + arrow.length);
+        return /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-n12-transform", key }, left && /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: left })), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-n12-arrow", "aria-label": "\u6B21\u306E\u5F0F\u3078" }, "\u2193"), right && /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: right })));
+      }
+      return /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math", key }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: latex }));
+    }
+    if (part.type === "text") {
+      return /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-text", key }, part.text);
+    }
+    if (part.type === "term") {
+      return /* @__PURE__ */ __editionReact.createElement("strong", { className: "reading-term reading-formula-term", key }, part.text);
+    }
+    const item = section.items.find((candidate) => candidate.id === part.itemId);
+    if (!item) {
+      return /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-missing", key }, "\u25A1");
+    }
+    const record = progress?.answers[item.id];
+    const resolved = isTextbookItemResolved2(item, record);
+    if (resolved) {
+      const value = record?.value ?? item.answer;
+      const showCoefficientAsX = isSolvedUnitCoefficientBeforeX(block, index, section, progress);
+      return /* @__PURE__ */ __editionReact.createElement(
+        "span",
+        {
+          className: "reading-formula-answer",
+          "data-testid": `resolved-${item.id}`,
+          "aria-label": showCoefficientAsX ? "\u4FC2\u6570\u306F1\uFF08\u5F0F\u3067\u306Fx\uFF09" : void 0,
+          key
+        },
+        item.answerType === "formula" ? (() => {
+          const lines = textbookDisplayLines(item.id, value);
+          return lines.length > 1 ? /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-n12-answer-lines" }, lines.map((line, i) => /* @__PURE__ */ __editionReact.createElement("span", { key: i }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: normalizeTextbookMath(line) })))) : /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: showCoefficientAsX ? "x" : normalizeTextbookMath(lines[0]) });
+        })() : value
+      );
+    }
+    const wrong = Boolean(record);
+    const localToken = ["n12-p002-", "n12-p003-", "n09-p001-", "n01-r3-", "n03-r3-"].some((prefix) => item.id.startsWith(prefix));
+    return /* @__PURE__ */ __editionReact.createElement(
+      "button",
+      {
+        type: "button",
+        className: `reading-formula-choice${wrong ? " reading-formula-choice--wrong" : ""}${localToken ? " reading-formula-choice--token" : ""}`,
+        "data-testid": `textbook-item-${item.id}`,
+        "aria-label": item.prompt,
+        onClick: () => onOpen(item.id),
+        key
+      },
+      wrong ? "\xD7" : "\u9078\u629E"
+    );
+  });
+  const first = block.parts[0];
+  const n12Choice = block.parts[1];
+  const suffix = block.parts[2];
+  const q06Layout = n12Formula && block.parts.length === 3 && block.id === "formula-q06-left-coef" && first?.type === "math" && first.latex.endsWith("\\quad\\Longrightarrow\\quad") && n12Choice?.type === "choice" && n12Choice.itemId === "n12-p002-q06-left-coef" && suffix?.type === "math";
+  const q12Layout = n12Formula && block.parts.length === 3 && block.id === "formula-q12-signed-coef" && first?.type === "math" && first.latex.includes("=") && n12Choice?.type === "choice" && n12Choice.itemId === "n12-p002-q12-signed-coef" && suffix?.type === "math";
+  const transformLayout = n12Formula && block.parts.length === 3 && (block.id === "formula-q02-coef" && n12Choice?.type === "choice" && n12Choice.itemId === "n12-p002-q02-coef" || block.id === "formula-q06-right-coef" && n12Choice?.type === "choice" && n12Choice.itemId === "n12-p002-q06-right-coef") && first?.type === "math" && first.latex.endsWith("\\quad\\Longrightarrow\\quad") && suffix?.type === "math";
+  const puddingLayout = n12Formula && block.id === "formula-cost-pudding" && block.parts.length === 3 && first?.type === "math" && first.latex === "130\\times(20-x)=" && n12Choice?.type === "choice" && n12Choice.itemId === "n12-p003-q10-pudding-coef" && suffix?.type === "math" && suffix.latex === "(20-x)";
+  const lowerLayout = n12Formula && block.id === "formula-q13-lower" && block.parts.length === 2 && first?.type === "choice" && first.itemId === "n12-p002-q13-lower" && n12Choice?.type === "math" && n12Choice.latex === "\\le50x<3300-2650";
+  const auditedWrap = auditedWrapBlocks[unitId]?.includes(block.id) ?? false;
+  const wrapBlock = auditedWrap ? {
+    ...block,
+    parts: block.parts.map((part, index) => {
+      if (part.type !== "choice" || !auditedResolvedWrapBlocks.includes(block.id)) return part;
+      const item = section.items.find((q) => q.id === part.itemId);
+      const record = progress?.answers[part.itemId];
+      return item && isTextbookItemResolved2(item, record) ? { type: "math", latex: `\xA7a${index}\xA7${normalizeTextbookMath(record?.value ?? item.answer)}\xA7z${index}\xA7` } : part;
+    })
+  } : block;
+  let wrappedAnswer;
+  const markedAnswers = /* @__PURE__ */ new Set();
+  const grouped = q06Layout || q12Layout || transformLayout || puddingLayout;
+  return /* @__PURE__ */ __editionReact.createElement(
+    "div",
+    {
+      className: `reading-formula-line${n12Formula ? " reading-formula-line--n12" : ""}`,
+      "data-testid": `textbook-formula-${block.id}`,
+      "data-latex-status": "ok"
+    },
+    /* @__PURE__ */ __editionReact.createElement("div", { className: `reading-formula-expression${grouped ? " reading-formula-expression--p016" : ""}${lowerLayout ? " reading-formula-expression--p017-chain" : ""}${auditedWrap ? " reading-formula-expression--chapter-wrap" : ""}` }, (q06Layout || transformLayout) && first?.type === "math" ? /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-group", "data-testid": "p016-left" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: first.latex.slice(0, first.latex.indexOf("\\quad\\Longrightarrow\\quad")) })), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-p016-arrow", "aria-label": "\u6B21\u306E\u5F0F\u3078" }, /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-p016-wide", "aria-hidden": "true" }, "\u21D2"), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-p016-narrow", "aria-hidden": "true" }, "\u2193")), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-group", "data-testid": "p016-right" }, renderedParts.slice(1))) : (q12Layout || puddingLayout) && first?.type === "math" ? /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-group", "data-testid": "p016-left" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: first.latex.slice(0, first.latex.indexOf("=")) })), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-group", "data-testid": "p016-right" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: first.latex.slice(first.latex.indexOf("=")) }), renderedParts.slice(1))) : lowerLayout ? /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-p017-bound", "data-testid": "p017-bound" }, renderedParts[0], /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: "\\le50x" }))), /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math reading-formula-p017-continuation", "data-testid": "p017-continuation" }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: "<3300-2650" }))) : auditedWrap ? formulaWrapChunks(wrapBlock).map((chunk, groupIndex) => /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-wrap-group", key: `${block.id}-wrap-${groupIndex}` }, chunk.split(/(§(?:\d+|a\d+|z\d+)§)/).filter(Boolean).map((part, partIndex) => {
+      const begin = part.match(/^§a(\d+)§$/);
+      if (begin) {
+        wrappedAnswer = Number(begin[1]);
+        return null;
+      }
+      if (/^§z\d+§$/.test(part)) {
+        wrappedAnswer = void 0;
+        return null;
+      }
+      const choice = part.match(/^§(\d+)§$/);
+      const answerPart = wrappedAnswer === void 0 ? void 0 : block.parts[wrappedAnswer];
+      const answerId = answerPart?.type === "choice" && !markedAnswers.has(wrappedAnswer) ? answerPart.itemId : void 0;
+      if (answerId) markedAnswers.add(wrappedAnswer);
+      return choice ? renderedParts[Number(choice[1])] : /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-math", "data-testid": answerId ? `resolved-${answerId}` : void 0, key: `${block.id}-wrap-${groupIndex}-${partIndex}` }, /* @__PURE__ */ __editionReact.createElement(InlineMath, { math: part }));
+    }))) : renderedParts)
+  );
+}
+
+// archive:src/components/ui/Primitives.tsx
+import { useEffect, useRef } from "react";
+import { AlertTriangle, CheckCircle2, Info, X } from "lucide-react";
+import { useI18n } from "/src/i18n/runtime.ts";
+function RaisedButton({ className = "", ...props }) {
+  return /* @__PURE__ */ __editionReact.createElement("button", { type: "button", className: `raised-button ${className}`, ...props });
+}
+function StatusBadge({ tone = "info", children }) {
+  const Icon = tone === "success" ? CheckCircle2 : tone === "error" ? AlertTriangle : Info;
+  return /* @__PURE__ */ __editionReact.createElement("span", { className: `status-badge status-badge--${tone}` }, /* @__PURE__ */ __editionReact.createElement(Icon, { size: 15, "aria-hidden": "true" }), children);
+}
+function ProgressBar({ value, max, label }) {
+  const safeMax = Math.max(max, 1);
+  const percent = Math.min(100, Math.max(0, value / safeMax * 100));
+  return /* @__PURE__ */ __editionReact.createElement("div", { className: "progress-block" }, /* @__PURE__ */ __editionReact.createElement("div", { className: "progress-label" }, /* @__PURE__ */ __editionReact.createElement("span", null, label), /* @__PURE__ */ __editionReact.createElement("span", null, value, "/", max)), /* @__PURE__ */ __editionReact.createElement("div", { className: "progress-track", role: "progressbar", "aria-label": label, "aria-valuemin": 0, "aria-valuemax": max, "aria-valuenow": value }, /* @__PURE__ */ __editionReact.createElement("span", { style: { width: `${percent}%` } })));
+}
+function ErrorState({ title, body, action }) {
+  return /* @__PURE__ */ __editionReact.createElement("div", { className: "state-panel state-panel--error" }, /* @__PURE__ */ __editionReact.createElement(AlertTriangle, { "aria-hidden": "true" }), /* @__PURE__ */ __editionReact.createElement("h2", null, title), /* @__PURE__ */ __editionReact.createElement("p", null, body), action);
+}
+
+// archive:src/pages/TextbookUnitPage.tsx
+import { textbookRepository } from "/src/repositories/textbookRepository.ts";
+import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved as isTextbookItemResolved3, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress } from "/src/domain/textbook.ts";
+import { useAppStore } from "/src/stores/useAppStore.ts";
+import { useI18n as useI18n2 } from "/src/i18n/runtime.ts";
+
+// archive:src/data/textbook/ch01/chapter1Architecture.ts
+var chapter1LearningChunks = [
+  {
+    id: "represent-motion",
+    title: { ja: "\u904B\u52D5\u3092\u8868\u3059", zh: "\u8868\u793A\u8FD0\u52A8" },
+    flow: {
+      ja: "\u4F4D\u7F6E \u2192 \u5909\u4F4D \u2192 \u901F\u5EA6 \u2192 \u5408\u6210\u30FB\u5206\u89E3 \u2192 \u76F8\u5BFE\u901F\u5EA6",
+      zh: "\u4F4D\u7F6E \u2192 \u4F4D\u79FB \u2192 \u901F\u5EA6 \u2192 \u5408\u6210\u30FB\u5206\u89E3 \u2192 \u76F8\u5BF9\u901F\u5EA6"
+    },
+    unitCodes: ["1A", "1B", "1C"]
+  },
+  {
+    id: "changing-velocity",
+    title: { ja: "\u901F\u5EA6\u306E\u5909\u5316", zh: "\u901F\u5EA6\u53D8\u5316" },
+    flow: {
+      ja: "\u52A0\u901F\u5EA6 \u2192 \u7B49\u52A0\u901F\u5EA6\u904B\u52D5 \u2192 \u6C34\u5E73\u6295\u5C04 \u2192 \u659C\u65B9\u6295\u5C04",
+      zh: "\u52A0\u901F\u5EA6 \u2192 \u5300\u52A0\u901F\u8FD0\u52A8 \u2192 \u5E73\u629B \u2192 \u659C\u629B"
+    },
+    unitCodes: ["1D", "1E", "1F"]
+  },
+  {
+    id: "force-motion",
+    title: { ja: "\u529B\u3068\u904B\u52D5", zh: "\u529B\u4E0E\u8FD0\u52A8" },
+    flow: {
+      ja: "\u529B \u2192 \u52A0\u901F\u5EA6 \u2192 \u91CD\u529B\u30FB\u7A7A\u6C17\u62B5\u6297 \u2192 \u7D42\u7AEF\u901F\u5EA6",
+      zh: "\u529B \u2192 \u52A0\u901F\u5EA6 \u2192 \u91CD\u529B\u4E0E\u7A7A\u6C14\u963B\u529B \u2192 \u7EC8\u7AEF\u901F\u5EA6"
+    },
+    unitCodes: ["1G"]
+  }
+];
+var unitSequence = [
+  {
+    unitCode: "1A",
+    unitId: "physics-a-displacement-velocity",
+    bridge: {
+      ja: "\u901F\u5EA6\u306B\u306F\u5411\u304D\u304C\u3042\u308B\u3002\u6B21\u306F\u3001\u8907\u6570\u306E\u904B\u52D5\u3092\u30D9\u30AF\u30C8\u30EB\u3068\u3057\u3066\u7D44\u307F\u5408\u308F\u305B\u308B\u3002",
+      zh: "\u901F\u5EA6\u6709\u65B9\u5411\u3002\u63A5\u4E0B\u6765\u628A\u591A\u4E2A\u8FD0\u52A8\u4F5C\u4E3A\u5411\u91CF\u7EC4\u5408\u8D77\u6765\u3002"
+    }
+  },
+  {
+    unitCode: "1B",
+    unitId: "physics-1b-velocity-composition",
+    bridge: {
+      ja: "\u901F\u5EA6\u3092\u30D9\u30AF\u30C8\u30EB\u3068\u3057\u3066\u6271\u3048\u305F\u3002\u6B21\u306F\u3001\u300C\u8AB0\u304B\u3089\u898B\u305F\u901F\u5EA6\u304B\u300D\u3092\u8003\u3048\u308B\u3002",
+      zh: "\u5DF2\u7ECF\u80FD\u628A\u901F\u5EA6\u4F5C\u4E3A\u5411\u91CF\u5904\u7406\u3002\u63A5\u4E0B\u6765\u8003\u8651\u201C\u4ECE\u8C01\u770B\u6765\u201D\u7684\u901F\u5EA6\u3002"
+    }
+  },
+  {
+    unitCode: "1C",
+    unitId: "physics-1c-relative-velocity",
+    bridge: {
+      ja: "\u3053\u3053\u307E\u3067\u306F\u901F\u5EA6\u3092\u3069\u3046\u8868\u3059\u304B\u3092\u8003\u3048\u305F\u3002\u6B21\u306F\u3001\u305D\u306E\u901F\u5EA6\u305D\u306E\u3082\u306E\u304C\u6642\u9593\u3068\u3068\u3082\u306B\u5909\u308F\u308B\u904B\u52D5\u3092\u898B\u308B\u3002",
+      zh: "\u5230\u8FD9\u91CC\u6211\u4EEC\u4E00\u76F4\u5728\u601D\u8003\u5982\u4F55\u8868\u793A\u901F\u5EA6\u3002\u63A5\u4E0B\u6765\u7814\u7A76\u901F\u5EA6\u672C\u8EAB\u968F\u65F6\u95F4\u53D8\u5316\u7684\u8FD0\u52A8\u3002"
+    }
+  },
+  {
+    unitCode: "1D",
+    unitId: "physics-1d-acceleration",
+    bridge: {
+      ja: "\u52A0\u901F\u5EA6\u3068\u7B49\u52A0\u901F\u5EA6\u904B\u52D5\u306E\u5F0F\u3092\u4F5C\u3063\u305F\u3002\u6B21\u306F\u3001\u305D\u306E\u5F0F\u3092\u5E73\u9762\u5185\u306E\u904B\u52D5\u3078\u4F7F\u3046\u3002",
+      zh: "\u5DF2\u7ECF\u5EFA\u7ACB\u4E86\u52A0\u901F\u5EA6\u548C\u5300\u52A0\u901F\u8FD0\u52A8\u7684\u516C\u5F0F\u3002\u63A5\u4E0B\u6765\u628A\u8FD9\u4E9B\u516C\u5F0F\u7528\u4E8E\u5E73\u9762\u8FD0\u52A8\u3002"
+    }
+  },
+  {
+    unitCode: "1E",
+    unitId: "physics-1e-horizontal-projectile",
+    bridge: {
+      ja: "\u6C34\u5E73\u6295\u5C04\u3067\u306F\u521D\u901F\u5EA6\u304C\u6C34\u5E73\u65B9\u5411\u3060\u3051\u3060\u3063\u305F\u3002\u6B21\u306F\u3001\u521D\u901F\u5EA6\u3092\u659C\u3081\u306B\u3057\u3066\u540C\u3058\u8003\u3048\u65B9\u3092\u5E83\u3052\u308B\u3002",
+      zh: "\u5E73\u629B\u7684\u521D\u901F\u5EA6\u53EA\u6709\u6C34\u5E73\u65B9\u5411\u3002\u63A5\u4E0B\u6765\u628A\u521D\u901F\u5EA6\u6539\u4E3A\u659C\u5411\uFF0C\u7EE7\u7EED\u6269\u5C55\u540C\u4E00\u601D\u8DEF\u3002"
+    }
+  },
+  {
+    unitCode: "1F",
+    unitId: "physics-1f-oblique-projectile",
+    bridge: {
+      ja: "\u3053\u3053\u307E\u3067\u306F\u52A0\u901F\u5EA6\u3092\u4F7F\u3063\u3066\u904B\u52D5\u3092\u6C42\u3081\u305F\u3002\u6700\u5F8C\u306B\u3001\u305D\u306E\u52A0\u901F\u5EA6\u3092\u751F\u307F\u51FA\u3059\u529B\u307E\u3067\u3055\u304B\u306E\u307C\u308B\u3002",
+      zh: "\u5230\u8FD9\u91CC\u6211\u4EEC\u4E00\u76F4\u7528\u52A0\u901F\u5EA6\u6C42\u8FD0\u52A8\u3002\u6700\u540E\u518D\u8FFD\u6EAF\u5230\u4EA7\u751F\u52A0\u901F\u5EA6\u7684\u529B\u3002"
+    }
+  },
+  {
+    unitCode: "1G",
+    unitId: "physics-1g-gravity-drag-terminal-velocity"
+  }
+];
+function chapter1Localized(value, language) {
+  return language === "zh" ? value.zh : value.ja;
+}
+function chapter1ChunkForUnitCode(unitCode) {
+  if (!unitCode) return void 0;
+  return chapter1LearningChunks.find((chunk) => chunk.unitCodes.includes(unitCode));
+}
+function chapter1NextUnit(unitCode) {
+  if (!unitCode) return void 0;
+  const index = unitSequence.findIndex((unit) => unit.unitCode === unitCode);
+  if (index < 0 || index >= unitSequence.length - 1) return void 0;
+  const current = unitSequence[index];
+  const next = unitSequence[index + 1];
+  if (!("bridge" in current)) return void 0;
+  return {
+    unitCode: next.unitCode,
+    unitId: next.unitId,
+    bridge: current.bridge
+  };
+}
+
+// archive:src/data/textbook/math/mathCatalog.ts
+var mathTextbookTopics = [
+  {
+    id: "numbers-polynomials",
+    chapterId: "math-ch01-numbers-expressions",
+    label: { ja: "\u5F0F\u3092\u6574\u3048\u308B", zh: "\u6574\u7406\u4EE3\u6570\u5F0F" },
+    flow: { ja: "\u540C\u985E\u9805\u3068\u5F0F\u306E\u6574\u7406 \u2192 \u5C55\u958B\u3068\u4E57\u6CD5\u516C\u5F0F \u2192 \u56E0\u6570\u5206\u89E3", zh: "\u540C\u7C7B\u9879\u4E0E\u5316\u7B80 \u2192 \u5C55\u5F00\u516C\u5F0F \u2192 \u56E0\u5F0F\u5206\u89E3" },
+    practiceLinks: [],
+    unitIds: ["math-numbers-expressions-n01", "math-numbers-expressions-n02", "math-numbers-expressions-n03", "math-numbers-expressions-n04", "math-numbers-expressions-n05", "math-numbers-expressions-n06"],
+    learnerHeadings: ["\u591A\u9805\u5F0F\u306E\u57FA\u672C", "\u4E57\u6CD5\u516C\u5F0F\u3068\u56E0\u6570\u5206\u89E3"]
+  },
+  {
+    id: "numbers-real",
+    chapterId: "math-ch01-numbers-expressions",
+    label: { ja: "\u5B9F\u6570\u3092\u6271\u3046", zh: "\u8BA4\u8BC6\u5B9E\u6570" },
+    flow: { ja: "\u5C0F\u6570\u3068\u6709\u7406\u6570 \u2192 \u7D76\u5BFE\u5024\u306E\u610F\u5473 \u2192 \u6839\u53F7\u3068\u5B9F\u6570", zh: "\u5E73\u65B9\u6839\u4E0E\u7B26\u53F7 \u2192 \u6570\u8F74 \u2192 \u6839\u5F0F\u8BA1\u7B97\u4E0E\u6709\u7406\u5316" },
+    practiceLinks: [],
+    unitIds: ["math-numbers-expressions-n07", "math-numbers-expressions-n08", "math-numbers-expressions-n09", "math-numbers-expressions-n10"],
+    learnerHeadings: ["\u5C0F\u6570\u3068\u6709\u7406\u6570", "\u7D76\u5BFE\u5024\u306E\u610F\u5473", "\u6839\u53F7\u3068\u5B9F\u6570"]
+  },
+  {
+    id: "numbers-inequalities",
+    chapterId: "math-ch01-numbers-expressions",
+    label: { ja: "\u4E0D\u7B49\u5F0F\u3092\u4F7F\u3046", zh: "\u8FD0\u7528\u4E0D\u7B49\u5F0F" },
+    flow: { ja: "\u4E00\u6B21\u4E0D\u7B49\u5F0F \u2192 \u9023\u7ACB\u3068\u6574\u6570\u6761\u4EF6 \u2192 \u7D76\u5BFE\u5024\u306E\u65B9\u7A0B\u5F0F\u3068\u4E0D\u7B49\u5F0F", zh: "\u8303\u56F4\u4EA4\u96C6 \u2192 \u4E0D\u7B49\u5F0F\u7EC4 \u2192 \u6574\u6570\u6761\u4EF6" },
+    practiceLinks: [],
+    unitIds: ["math-numbers-expressions-n11", "math-numbers-expressions-n12", "math-numbers-expressions-n13", "math-numbers-expressions-n14"],
+    learnerHeadings: ["\u4E00\u6B21\u4E0D\u7B49\u5F0F", "\u7D76\u5BFE\u5024\u306E\u65B9\u7A0B\u5F0F\u3068\u4E0D\u7B49\u5F0F"]
+  },
+  {
+    id: "numbers-development",
+    chapterId: "math-ch01-numbers-expressions",
+    label: { ja: "\u53C2\u8003\u30FB\u767A\u5C55", zh: "\u53C2\u8003\u4E0E\u62D3\u5C55" },
+    flow: { ja: "3\u6B21\u306E\u5C55\u958B\u3068\u56E0\u6570\u5206\u89E3 \u2192 \u4E8C\u91CD\u6839\u53F7", zh: "\u4E09\u6B21\u5C55\u5F00\u4E0E\u56E0\u5F0F\u5206\u89E3 \u2192 \u4E8C\u91CD\u6839\u5F0F" },
+    practiceLinks: [],
+    unitIds: ["math-numbers-expressions-ne01", "math-numbers-expressions-ne02"],
+    learnerHeadings: ["3\u6B21\u306E\u5C55\u958B\u3068\u56E0\u6570\u5206\u89E3", "\u4E8C\u91CD\u6839\u53F7"]
+  },
+  {
+    id: "organize-sets",
+    chapterId: "math-ch03-sets-propositions",
+    label: { ja: "\u96C6\u5408\u3092\u6574\u7406\u3059\u308B", zh: "\u6574\u7406\u96C6\u5408" },
+    flow: {
+      ja: "\u96C6\u5408\u306E\u8868\u3057\u65B9 \u2192 \u5171\u901A\u90E8\u5206\u30FB\u548C\u96C6\u5408 \u2192 \u90E8\u5206\u96C6\u5408 \u2192 \u88DC\u96C6\u5408 \u2192 \u96C6\u5408\u306E\u6761\u4EF6",
+      zh: "\u96C6\u5408\u7684\u8868\u793A \u2192 \u4EA4\u96C6\u30FB\u5E76\u96C6 \u2192 \u5B50\u96C6 \u2192 \u8865\u96C6 \u2192 \u96C6\u5408\u6761\u4EF6"
+    },
+    practiceLinks: [
+      {
+        topicId: "organize-sets",
+        questionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]
+      }
+    ],
+    unitIds: ["math-sets"],
+    learnerHeadings: [
+      "\u7B2C1\u90E8\u3000\u96C6\u5408\u3092\u8868\u3059",
+      "\u7B2C2\u90E8\u3000\u96C6\u5408\u3069\u3046\u3057\u306E\u95A2\u4FC2\u3092\u898B\u308B",
+      "\u7B2C3\u90E8\u3000\u96C6\u5408\u306E\u5916\u5074\u307E\u3067\u8003\u3048\u308B"
+    ]
+  },
+  {
+    id: "read-propositions",
+    chapterId: "math-ch03-sets-propositions",
+    label: { ja: "\u6761\u4EF6\u304B\u3089\u547D\u984C\u3092\u8AAD\u3080", zh: "\u4ECE\u6761\u4EF6\u7406\u89E3\u547D\u9898" },
+    flow: {
+      ja: "\u771F\u507D \u2192 \u5FC5\u8981\u6761\u4EF6\u30FB\u5341\u5206\u6761\u4EF6 \u2192 \u6761\u4EF6\u306E\u5426\u5B9A \u2192 \u300C\u3059\u3079\u3066\u300D\u3068\u300C\u3042\u308B\u300D",
+      zh: "\u771F\u5047 \u2192 \u5FC5\u8981\u6761\u4EF6\u30FB\u5145\u5206\u6761\u4EF6 \u2192 \u6761\u4EF6\u7684\u5426\u5B9A \u2192 \u201C\u6240\u6709\u201D\u4E0E\u201C\u5B58\u5728\u201D"
+    },
+    practiceLinks: [
+      {
+        topicId: "read-propositions",
+        questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109]
+      }
+    ],
+    unitIds: ["math-propositions-reading", "math-quantifiers-all-exists"],
+    learnerHeadings: []
+  },
+  {
+    id: "prove-propositions",
+    chapterId: "math-ch03-sets-propositions",
+    label: { ja: "\u547D\u984C\u3092\u8A3C\u660E\u3059\u308B", zh: "\u8BC1\u660E\u547D\u9898" },
+    flow: {
+      ja: "\u9006\u30FB\u88CF\u30FB\u5BFE\u5076 \u2192 \u8A3C\u660E\u3057\u3084\u3059\u3044\u5411\u304D \u2192 \u5BFE\u5076\u306B\u3088\u308B\u8A3C\u660E \u2192 \u77DB\u76FE\u3092\u4F7F\u3046\u8A3C\u660E",
+      zh: "\u9006\u547D\u9898\u30FB\u5426\u547D\u9898\u30FB\u9006\u5426\u547D\u9898 \u2192 \u9009\u62E9\u6613\u8BC1\u660E\u7684\u65B9\u5411 \u2192 \u9006\u5426\u8BC1\u660E \u2192 \u7528\u77DB\u76FE\u8BC1\u660E"
+    },
+    practiceLinks: [
+      {
+        topicId: "prove-propositions",
+        questionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117]
+      }
+    ],
+    unitIds: ["math-propositions-proof"],
+    learnerHeadings: []
+  }
+];
+var mathNumbersReviewUnitIds = mathTextbookTopics.filter((topic) => topic.chapterId === "math-ch01-numbers-expressions").flatMap((topic) => topic.unitIds);
+function mathTextbookTopicForUnit(unitId) {
+  return mathTextbookTopics.find((topic) => topic.unitIds.includes(unitId));
+}
+function mathTextbookNextUnitId(unitId) {
+  const topic = mathTextbookTopicForUnit(unitId);
+  if (!topic) return void 0;
+  const index = topic.unitIds.indexOf(unitId);
+  if (index < 0 || index >= topic.unitIds.length - 1) return void 0;
+  return topic.unitIds[index + 1];
+}
+
+// archive:src/data/textbook/math/presentation.ts
+var mathSetReadingStages = [
+  { id: "gather", label: { ja: "\u96C6\u5408\u3068\u8981\u7D20", zh: "\u96C6\u5408\u4E0E\u5143\u7D20" }, startBlockId: "heading-represent" },
+  { id: "membership", label: { ja: "\u8981\u7D20\u306E\u6240\u5C5E", zh: "\u5143\u7D20\u7684\u5F52\u5C5E" }, startBlockId: "dialogue-teacher-membership" },
+  { id: "builder", label: { ja: "\u96C6\u5408\u306E\u8868\u3057\u65B9", zh: "\u96C6\u5408\u7684\u8868\u793A" }, startBlockId: "marker-example-builder" },
+  { id: "finite", label: { ja: "\u6709\u9650\u96C6\u5408\u3068\u7121\u9650\u96C6\u5408", zh: "\u6709\u9650\u96C6\u4E0E\u65E0\u9650\u96C6" }, startBlockId: "paragraph-a08b" },
+  { id: "intersection", label: { ja: "\u5171\u901A\u90E8\u5206", zh: "\u4EA4\u96C6" }, startBlockId: "heading-relations" },
+  { id: "union", label: { ja: "\u548C\u96C6\u5408", zh: "\u5E76\u96C6" }, startBlockId: "paragraph-b03" },
+  { id: "subset", label: { ja: "\u90E8\u5206\u96C6\u5408", zh: "\u5B50\u96C6" }, startBlockId: "marker-example-subset" },
+  { id: "empty-set", label: { ja: "\u7A7A\u96C6\u5408\u3068\u90E8\u5206\u96C6\u5408", zh: "\u7A7A\u96C6\u4E0E\u5B50\u96C6" }, startBlockId: "paragraph-c04" },
+  { id: "complement", label: { ja: "\u5168\u4F53\u96C6\u5408\u3068\u88DC\u96C6\u5408", zh: "\u5168\u96C6\u4E0E\u8865\u96C6" }, startBlockId: "heading-outside" },
+  { id: "complement-laws", label: { ja: "\u88DC\u96C6\u5408\u306E\u95A2\u4FC2", zh: "\u8865\u96C6\u7684\u5173\u7CFB" }, startBlockId: "paragraph-d03" },
+  { id: "de-morgan", label: { ja: "\u30C9\u30FB\u30E2\u30EB\u30AC\u30F3\u306E\u6CD5\u5247", zh: "\u5FB7\u6469\u6839\u5B9A\u5F8B" }, startBlockId: "marker-example-demorgan" },
+  { id: "check-de-morgan", label: { ja: "\u6CD5\u5247\u3092\u8981\u7D20\u3067\u78BA\u8A8D", zh: "\u7528\u5143\u7D20\u9A8C\u8BC1\u5B9A\u5F8B" }, startBlockId: "marker-check-demorgan" },
+  { id: "real-line", label: { ja: "\u5B9F\u6570\u3068\u6570\u76F4\u7DDA", zh: "\u5B9E\u6570\u4E0E\u6570\u8F74" }, startBlockId: "marker-example-real-line" },
+  { id: "real-line-operations", label: { ja: "\u6570\u76F4\u7DDA\u4E0A\u306E\u96C6\u5408\u306E\u95A2\u4FC2", zh: "\u6570\u8F74\u4E0A\u7684\u96C6\u5408\u5173\u7CFB" }, startBlockId: "paragraph-f07" },
+  { id: "summary", label: { ja: "\u96C6\u5408\u306E\u307E\u3068\u3081", zh: "\u96C6\u5408\u5C0F\u7ED3" }, startBlockId: "marker-summary-sets" }
+];
+var mathSetRequiredContextByItemId = {
+  "set-a02": ["formula-set-a"],
+  "set-a03": ["formula-set-a"],
+  "set-a04": ["formula-set-a"],
+  "set-a05": ["formula-set-a"],
+  "set-a08b": ["formula-set-b-rule", "formula-set-b-list"],
+  "set-a08c": ["formula-set-b-rule", "formula-set-b-list"],
+  "set-a09": ["formula-set-b-rule", "formula-set-b-list"],
+  "set-a10": ["formula-set-b-rule", "formula-set-b-list"],
+  "set-b03": ["formula-b-sets"],
+  "set-b04": ["formula-b-sets"],
+  "set-b05": ["formula-b-sets"],
+  "set-b06": ["formula-b-sets"],
+  "set-b07": ["formula-b-sets"],
+  "set-b08": ["formula-b-sets"],
+  "set-c04": ["formula-c-sets"],
+  "set-c05": ["formula-c-sets"],
+  "set-c06": ["formula-c-sets"],
+  "set-c07": ["formula-c-sets"],
+  "set-c08": ["paragraph-subset-concept"],
+  "set-d03": ["paragraph-universal-concept", "formula-d-b"],
+  "set-d04": ["formula-d-a", "formula-d-b"],
+  "set-d05": ["formula-d-a", "formula-d-b"],
+  "set-d06": ["formula-d-abar", "formula-d-b"],
+  "set-d07": ["formula-d-abar", "formula-d-b"],
+  "set-d08": ["paragraph-universal-concept", "formula-d-a", "formula-d-abar", "figure-d-complement"],
+  "set-d09": ["paragraph-universal-concept", "formula-d-a", "formula-d-abar", "figure-d-complement"],
+  "set-d10": ["paragraph-universal-concept", "formula-d-a", "formula-d-abar", "figure-d-complement"],
+  "set-d11a": ["paragraph-universal-concept"],
+  "set-d11b": ["paragraph-universal-concept"],
+  "set-e02": ["paragraph-complement-concept"],
+  "set-e03": ["paragraph-complement-concept"],
+  "set-e04": ["paragraph-complement-concept"],
+  "set-e05": ["paragraph-complement-concept"],
+  "set-e07": ["paragraph-complement-concept"],
+  "set-e08": ["paragraph-complement-concept"],
+  "set-e13": ["formula-e-laws"],
+  "set-e14": ["formula-e-laws"],
+  "set-f07": ["formula-f-sets", "figure-f-b"],
+  "set-f08": ["formula-f-sets", "figure-f-b"],
+  "set-f09": ["formula-f-sets"],
+  "set-f10": ["formula-f-sets"],
+  "set-f11": ["formula-f-sets"],
+  "set-f12": ["formula-f-sets"],
+  "set-f13": ["formula-f-sets"]
+};
+function requiredMathSetContext(itemId) {
+  return itemId ? mathSetRequiredContextByItemId[itemId] ?? [] : [];
+}
+function partitionMathSetReadingFlow(blocks) {
+  if (!blocks.length) throw new Error("math-sets readingFlow must not be empty");
+  const ids = /* @__PURE__ */ new Map();
+  for (const [index, block] of blocks.entries()) {
+    if (ids.has(block.id)) throw new Error("duplicate math-sets reading block: " + block.id);
+    ids.set(block.id, index);
+  }
+  const starts = mathSetReadingStages.map((stage) => {
+    const index = ids.get(stage.startBlockId);
+    if (index === void 0) throw new Error("missing math-sets stage anchor: " + stage.startBlockId);
+    return index;
+  });
+  if (starts[0] !== 0 || starts.some((index, i) => i > 0 && index <= starts[i - 1])) {
+    throw new Error("math-sets stages must form a strictly ordered complete partition");
+  }
+  const stages = mathSetReadingStages.map((stage, index) => ({
+    ...stage,
+    blocks: blocks.slice(starts[index], starts[index + 1] ?? blocks.length)
+  }));
+  const previousStageForBlock = /* @__PURE__ */ new Map();
+  for (const [index, stage] of stages.entries()) {
+    for (const block of stage.blocks) previousStageForBlock.set(block.id, index);
+    const next = stages[index + 1]?.blocks[0];
+    const last = stage.blocks[stage.blocks.length - 1];
+    if (last && next && (last.type === "paragraph" || last.type === "formula" || last.type === "note") && (next.type === "paragraph" || next.type === "formula" || next.type === "note") && last.derivationId && last.derivationId === next.derivationId) {
+      throw new Error("math-sets stage cuts a derivation chain: " + last.derivationId);
+    }
+  }
+  const stageForItem = /* @__PURE__ */ new Map();
+  for (const [index, stage] of stages.entries()) {
+    for (const block of stage.blocks) {
+      if (block.type === "paragraph" || block.type === "formula") {
+        for (const part of block.parts) {
+          if (part.type === "choice") stageForItem.set(part.itemId, index);
+        }
+      }
+    }
+  }
+  for (const [itemId, refs] of Object.entries(mathSetRequiredContextByItemId)) {
+    const stageIndex = stageForItem.get(itemId);
+    if (stageIndex === void 0) throw new Error("math-sets prerequisite target does not exist: " + itemId);
+    if (new Set(refs).size !== refs.length) throw new Error("math-sets duplicate prerequisite: " + itemId);
+    for (const ref of refs) {
+      const sourceStage = previousStageForBlock.get(ref);
+      if (sourceStage === void 0 || sourceStage >= stageIndex) {
+        throw new Error("math-sets prerequisite must be from a completed earlier stage: " + itemId + " / " + ref);
+      }
+    }
+  }
+  if (stages.reduce((n, stage) => n + stage.blocks.length, 0) !== blocks.length) {
+    throw new Error("math-sets stage coverage is incomplete");
+  }
+  return stages;
+}
+
+// archive:src/pages/TextbookUnitPage.tsx
+function interactionPrompt(item, text, subject) {
+  switch (item.purpose) {
+    case "concept-formation":
+      return text("\u56F3\u3084\u672C\u6587\u304B\u3089\u610F\u5473\u3092\u8003\u3048\u3088\u3046\u3002", "\u6839\u636E\u56FE\u548C\u6B63\u6587\u601D\u8003\u542B\u4E49\u3002");
+    case "representation-link":
+      return text("\u56F3\u30FB\u8A00\u8449\u30FB\u5F0F\u306E\u3064\u306A\u304C\u308A\u3092\u8003\u3048\u3088\u3046\u3002", "\u601D\u8003\u56FE\u3001\u6587\u5B57\u548C\u516C\u5F0F\u4E4B\u95F4\u7684\u8054\u7CFB\u3002");
+    case "definition":
+      return text("\u610F\u5473\u304B\u3089\u95A2\u4FC2\u3092\u4F5C\u308D\u3046\u3002", "\u4ECE\u542B\u4E49\u51FA\u53D1\u5EFA\u7ACB\u5173\u7CFB\u3002");
+    case "solution-planning":
+      return text("\u6B21\u306B\u4F55\u3092\u8003\u3048\u308B\u3079\u304D\u304B\u9078\u307C\u3046\u3002", "\u9009\u62E9\u4E0B\u4E00\u6B65\u5E94\u8BE5\u601D\u8003\u4EC0\u4E48\u3002");
+    case "transfer":
+      return text("\u3053\u3053\u307E\u3067\u306E\u8003\u3048\u65B9\u3092\u4F7F\u3063\u3066\u307F\u3088\u3046\u3002", "\u7528\u524D\u9762\u5B66\u8FC7\u7684\u601D\u8DEF\u6765\u5224\u65AD\u3002");
+    case "relation-selection":
+      return text("\u3053\u3053\u3067\u4F7F\u3046\u95A2\u4FC2\u3092\u9078\u307C\u3046\u3002", "\u9009\u62E9\u8FD9\u91CC\u5E94\u8BE5\u4F7F\u7528\u7684\u5173\u7CFB\u3002");
+    case "physical-condition":
+      return text("\u3053\u306E\u5834\u9762\u3067\u6210\u308A\u7ACB\u3064\u7269\u7406\u6761\u4EF6\u3092\u8003\u3048\u3088\u3046\u3002", "\u601D\u8003\u8FD9\u4E2A\u60C5\u5883\u4E0B\u6210\u7ACB\u7684\u7269\u7406\u6761\u4EF6\u3002");
+    case "graph-reading":
+      return text("\u30B0\u30E9\u30D5\u304C\u8868\u3057\u3066\u3044\u308B\u7269\u7406\u91CF\u3092\u8AAD\u3082\u3046\u3002", "\u8BFB\u53D6\u56FE\u50CF\u6240\u8868\u793A\u7684\u7269\u7406\u91CF\u3002");
+    case "elimination":
+      return text("\u3069\u306E\u95A2\u4FC2\u3092\u4F7F\u3063\u3066\u5909\u6570\u3092\u6D88\u3059\u304B\u8003\u3048\u3088\u3046\u3002", "\u601D\u8003\u7528\u54EA\u4E2A\u5173\u7CFB\u6D88\u53BB\u53D8\u91CF\u3002");
+    case "factorization":
+      return text("\u6B21\u306E\u5F0F\u5909\u5F62\u306E\u610F\u5473\u3092\u8003\u3048\u3088\u3046\u3002", "\u601D\u8003\u4E0B\u4E00\u6B65\u5F0F\u53D8\u5F62\u7684\u610F\u4E49\u3002");
+    case "causal-reasoning":
+      return subject === "math-1a" ? text("\u6761\u4EF6\u3084\u7406\u7531\u306E\u3064\u306A\u304C\u308A\u3092\u305F\u3069\u308D\u3046\u3002", "\u6CBF\u7740\u6761\u4EF6\u4E0E\u7406\u7531\u7684\u8054\u7CFB\u601D\u8003\u3002") : text("\u5909\u5316\u306E\u56E0\u679C\u95A2\u4FC2\u3092\u305F\u3069\u308D\u3046\u3002", "\u6CBF\u7740\u53D8\u5316\u7684\u56E0\u679C\u5173\u7CFB\u601D\u8003\u3002");
+    default:
+      return item.prompt;
+  }
+}
+function readingGroupItemIds(blocks, section) {
+  return blocks.flatMap((block) => {
+    if (block.type === "paragraph" || block.type === "formula") {
+      return block.parts.filter((part) => part.type === "choice").map((part) => part.itemId);
+    }
+    if (block.type === "figure") {
+      return section.figures.find((figure) => figure.id === block.figureId)?.overlays.filter((overlay) => overlay.interactive !== false).map((overlay) => overlay.itemId) ?? [];
+    }
+    return [];
+  });
+}
+function groupReadingFlow(blocks) {
+  const groups = [];
+  let current = [];
+  for (const block of blocks) {
+    if (block.type === "heading" && current.some((candidate) => candidate.type === "heading")) {
+      groups.push(current);
+      current = [];
+    }
+    current.push(block);
+  }
+  if (current.length) groups.push(current);
+  return groups;
+}
+function renderResolvedChoice(item, record) {
+  return /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-inline-answer", "data-testid": `resolved-${item.id}` }, item.answerType === "formula" ? (() => {
+    const lines = textbookDisplayLines(item.id, record.value);
+    return lines.length > 1 ? /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-formula-n12-answer-lines" }, lines.map((line, i) => /* @__PURE__ */ __editionReact.createElement("span", { key: i }, /* @__PURE__ */ __editionReact.createElement(InlineMath2, { math: normalizeTextbookMath(line) })))) : /* @__PURE__ */ __editionReact.createElement(InlineMath2, { math: normalizeTextbookMath(record.value) });
+  })() : /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, record.value));
+}
+function renderActiveChoice(item, isWrong, onOpen, text) {
+  return /* @__PURE__ */ __editionReact.createElement(
+    "button",
+    {
+      type: "button",
+      "data-testid": `textbook-item-${item.id}`,
+      className: `reading-inline-blank${isWrong ? " reading-inline-blank--wrong" : ""}`,
+      onClick: () => onOpen(item.id),
+      "aria-label": item.prompt
+    },
+    isWrong && /* @__PURE__ */ __editionReact.createElement(X2, { size: 14, "aria-hidden": "true" }),
+    /* @__PURE__ */ __editionReact.createElement("strong", null, isWrong ? text("\u3082\u3046\u4E00\u5EA6", "\u91CD\u65B0\u9009\u62E9") : text("\u9078\u629E", "\u9009\u62E9"))
+  );
+}
+function renderPart(part, section, progress, onOpen, text) {
+  if (part.type === "text") return part.text;
+  if (part.type === "term") return /* @__PURE__ */ __editionReact.createElement("strong", { className: "reading-term" }, part.text);
+  if (part.type === "math") return /* @__PURE__ */ __editionReact.createElement(InlineMath2, { math: part.latex });
+  const item = section.items.find((candidate) => candidate.id === part.itemId);
+  if (!item) return null;
+  const record = progress?.answers[item.id];
+  if (isTextbookItemResolved3(item, record)) return renderResolvedChoice(item, record);
+  return renderActiveChoice(item, Boolean(record), onOpen, text);
+}
+function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }) {
+  const { text, language } = useI18n2();
+  const answerTextbook = useAppStore((state) => state.answerTextbook);
+  const [activeItemId, setActiveItemId] = useState(null);
+  const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow]);
+  const currentProgress = progress?.unitRevision === unit.revision ? progress : void 0;
+  const firstIncompleteGroup = groups.findIndex((group) => {
+    const itemIds = readingGroupItemIds(group, section);
+    return itemIds.length > 0 && itemIds.some((itemId) => {
+      const item = section.items.find((candidate) => candidate.id === itemId);
+      return !item || !isTextbookItemResolved3(item, currentProgress?.answers[itemId]);
+    });
+  });
+  const visibleGroupCount = firstIncompleteGroup === -1 ? groups.length : firstIncompleteGroup + 1;
+  const visibleGroups = groups.slice(0, visibleGroupCount);
+  const compactStages = useMemo(
+    () => unit.subject === "math-1a" && unit.unitId === "math-sets" && unit.status === "published" && section.id === "lesson" ? partitionMathSetReadingFlow(section.readingFlow) : null,
+    [unit.subject, unit.unitId, unit.status, section.id, section.readingFlow]
+  );
+  const [compactCursor, setCompactCursor] = useState(0);
+  const [showPastHistory, setShowPastHistory] = useState(false);
+  const [expandedPastStages, setExpandedPastStages] = useState([]);
+  const [expandAllPast, setExpandAllPast] = useState(false);
+  const [expandedReference, setExpandedReference] = useState(null);
+  const compactKey = "math-textbook-compact-v1:" + unit.unitId + ":r" + unit.revision;
+  const firstIncompleteCompactIndex = compactStages?.findIndex((stage) => {
+    const itemIds = readingGroupItemIds([...stage.blocks], section);
+    return itemIds.some((id) => {
+      const item = section.items.find((candidate) => candidate.id === id);
+      return !item || !isTextbookItemResolved3(item, currentProgress?.answers[id]);
+    });
+  }) ?? -1;
+  const maxAvailableCompactIndex = compactStages ? firstIncompleteCompactIndex === -1 ? compactStages.length - 1 : firstIncompleteCompactIndex : 0;
+  const activeCompactIndex = Math.min(compactCursor, maxAvailableCompactIndex);
+  const allMathSetItemsResolved = compactStages !== null && currentProgress !== void 0 && section.items.every((item) => isTextbookItemResolved3(item, currentProgress.answers[item.id]));
+  useEffect2(() => {
+    if (!compactStages) return;
+    const stored = window.localStorage.getItem(compactKey);
+    const candidate = stored !== null ? Number(stored) : Math.max(0, maxAvailableCompactIndex - 1);
+    const safe = Number.isInteger(candidate) && candidate >= 0 ? Math.min(candidate, maxAvailableCompactIndex) : 0;
+    if (stored !== null && Number(stored) > maxAvailableCompactIndex) {
+      window.localStorage.setItem(compactKey, String(safe));
+    }
+    setCompactCursor(safe);
+  }, [compactKey, maxAvailableCompactIndex, compactStages]);
+  useEffect2(() => {
+    if (compactStages) {
+      onSummaryReached?.(allMathSetItemsResolved && activeCompactIndex === compactStages.length - 1);
+    }
+  }, [compactStages, activeCompactIndex, allMathSetItemsResolved, onSummaryReached]);
+  const goToNextCompactStage = () => {
+    if (!compactStages) return;
+    const next = Math.min(activeCompactIndex + 1, maxAvailableCompactIndex);
+    setCompactCursor(next);
+    setShowPastHistory(false);
+    setExpandedReference(null);
+    setExpandedPastStages([]);
+    setExpandAllPast(false);
+    window.localStorage.setItem(compactKey, String(next));
+    window.requestAnimationFrame(() => {
+      const nextSection = document.querySelector('[data-testid="math-textbook-stage-' + compactStages[next].id + '"]');
+      nextSection?.focus({ preventScroll: true });
+      nextSection?.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+  };
+  const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : void 0;
+  const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : void 0;
+  const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : [];
+  const wideMathChoices = unit.subject === "math-1a" && activeItem?.answerType === "formula" && activeChoices.some((choice) => choice.length > 27 || choice.includes("\\quad"));
+  const activeHint = activeItem && activeRecord && !isTextbookItemResolved3(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length ? [developmentFeedback(activeItem.id, activeRecord.value), activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]].filter(Boolean).join(" ") : void 0;
+  const continuousLesson = unit.sections.length === 1 && section.id === "lesson";
+  const visibleBlocksInGroup = (group) => {
+    const firstBlockedIndex = group.findIndex((block) => {
+      const itemIds = readingGroupItemIds([block], section);
+      return itemIds.some((itemId) => {
+        const item = section.items.find((candidate) => candidate.id === itemId);
+        return !item || !isTextbookItemResolved3(item, currentProgress?.answers[itemId]);
+      });
+    });
+    return firstBlockedIndex === -1 ? group : group.slice(0, firstBlockedIndex + 1);
+  };
+  const selectChoice = (choice) => {
+    if (!activeItem || isTextbookItemResolved3(activeItem, activeRecord)) return;
+    if (onReviewAnswer) onReviewAnswer(activeItem, choice);
+    else answerTextbook(unit, activeItem.id, choice);
+    setActiveItemId(null);
+  };
+  const blockContainsActiveItem = (block) => {
+    if (!activeItemId) return false;
+    if (block.type === "paragraph" || block.type === "formula") {
+      return block.parts.some((part) => part.type === "choice" && part.itemId === activeItemId);
+    }
+    if (block.type === "figure") {
+      return Boolean(
+        section.figures.find((figure) => figure.id === block.figureId)?.overlays.some((overlay) => overlay.itemId === activeItemId)
+      );
+    }
+    return false;
+  };
+  const renderInlineChoicePanel = (block) => {
+    if (!activeItem || !blockContainsActiveItem(block)) return null;
+    return /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-inline-choice-panel", "data-testid": `inline-choice-panel-${activeItem.id}` }, /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-inline-choice-panel__head" }, /* @__PURE__ */ __editionReact.createElement("span", null, interactionPrompt(activeItem, text, unit.subject))), activeHint && /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-choice-hint", "data-testid": `textbook-hint-${activeItem.id}` }, /* @__PURE__ */ __editionReact.createElement("strong", null, text("\u30D2\u30F3\u30C8", "\u63D0\u793A")), /* @__PURE__ */ __editionReact.createElement("span", null, activeHint)), /* @__PURE__ */ __editionReact.createElement(
+      "div",
+      {
+        className: `reading-choice-options${wideMathChoices ? " reading-choice-options--math-wide" : ""}`,
+        role: "group",
+        "aria-label": interactionPrompt(activeItem, text, unit.subject)
+      },
+      activeChoices.map((choice, index) => {
+        const isLastWrongChoice = unit.subject === "math-1a" && Boolean(activeRecord) && !isTextbookItemResolved3(activeItem, activeRecord) && normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(activeRecord?.value ?? "");
+        return /* @__PURE__ */ __editionReact.createElement(
+          "button",
+          {
+            type: "button",
+            "aria-label": choice,
+            "aria-invalid": isLastWrongChoice || void 0,
+            key: choice,
+            "data-testid": `textbook-choice-${activeItem.id}-${index}`,
+            className: `reading-choice-option${isLastWrongChoice ? " reading-choice-option--wrong" : ""}`,
+            onClick: () => selectChoice(choice)
+          },
+          /* @__PURE__ */ __editionReact.createElement("span", null, index + 1),
+          /* @__PURE__ */ __editionReact.createElement("strong", null, activeItem.answerType === "formula" ? /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-choice-formula-lines" }, textbookDisplayLines(activeItem.id, choice).flatMap((value) => value.split("\\quad")).map((line, lineIndex) => /* @__PURE__ */ __editionReact.createElement("span", { className: "reading-choice-formula-line", key: lineIndex }, /* @__PURE__ */ __editionReact.createElement(InlineMath2, { math: normalizeTextbookMath(line.trim()) })))) : choice),
+          activeItem.unit && /* @__PURE__ */ __editionReact.createElement("small", null, activeItem.unit)
+        );
+      })
+    ));
+  };
+  const renderBlock = (block) => {
+    if (block.type === "heading") return /* @__PURE__ */ __editionReact.createElement("h3", { className: "reading-subheading", key: block.id }, block.text);
+    if (block.type === "marker") {
+      return /* @__PURE__ */ __editionReact.createElement(
+        "div",
+        {
+          className: `reading-role-marker reading-role-marker--${block.kind}`,
+          "data-testid": `reading-role-${block.kind}-${block.id}`,
+          key: block.id
+        },
+        block.text
+      );
+    }
+    if (block.type === "dialogue") {
+      const speaker = block.speaker === "hanako" ? text("\u82B1\u5B50", "\u82B1\u5B50") : block.speaker === "taro" ? text("\u592A\u90CE", "\u592A\u90CE") : text("\u5148\u751F", "\u8001\u5E08");
+      return /* @__PURE__ */ __editionReact.createElement("aside", { className: "reading-dialogue", "data-speaker": block.speaker, key: block.id }, /* @__PURE__ */ __editionReact.createElement("strong", null, speaker, "\uFF1A"), /* @__PURE__ */ __editionReact.createElement("span", null, "\u300C", block.text, "\u300D"));
+    }
+    if (block.type === "note") return /* @__PURE__ */ __editionReact.createElement("aside", { className: "reading-note", key: block.id }, block.text);
+    if (block.type === "figure") {
+      const figure = section.figures.find((candidate) => candidate.id === block.figureId);
+      if (!figure) return null;
+      return /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-block-with-choice", key: block.id }, /* @__PURE__ */ __editionReact.createElement(TextbookFigure, { figure, items: section.items, progress: currentProgress, onOpen: setActiveItemId }), renderInlineChoicePanel(block));
+    }
+    if (block.type === "formula") {
+      return /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-block-with-choice", key: block.id }, /* @__PURE__ */ __editionReact.createElement(TextbookFormula, { block, section, progress: currentProgress, onOpen: setActiveItemId, unitId: unit.unitId }), renderInlineChoicePanel(block));
+    }
+    const content = block.parts.map((part, index) => /* @__PURE__ */ __editionReact.createElement("span", { key: `${block.id}-part-${index}` }, renderPart(part, section, currentProgress, setActiveItemId, text)));
+    return /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-block-with-choice", key: block.id }, /* @__PURE__ */ __editionReact.createElement("p", { className: "reading-paragraph" }, content), renderInlineChoicePanel(block));
+  };
+  const renderBlockWithReviewMark = (block) => {
+    const mark = reviewMarks?.[block.id];
+    if (!mark) return renderBlock(block);
+    return /* @__PURE__ */ __editionReact.createElement("div", { className: "review-marked-block", "data-testid": `review-mark-${block.id}`, key: block.id }, /* @__PURE__ */ __editionReact.createElement("span", { className: "review-marked-block__label", "aria-label": `\u78BA\u8A8D ${mark}` }, "\u78BA\u8A8D", String.fromCharCode(9312 + mark - 1)), renderBlock(block));
+  };
+  const renderVisibleBlocks = (blocks) => {
+    const rendered = [];
+    let index = 0;
+    while (index < blocks.length) {
+      const block = blocks[index];
+      const derivationId = block.type === "paragraph" || block.type === "formula" || block.type === "note" ? block.derivationId : void 0;
+      if (derivationId) {
+        const run = [];
+        while (index < blocks.length) {
+          const candidate = blocks[index];
+          const candidateId = candidate.type === "paragraph" || candidate.type === "formula" || candidate.type === "note" ? candidate.derivationId : void 0;
+          if (candidateId !== derivationId) break;
+          run.push(candidate);
+          index += 1;
+        }
+        rendered.push(
+          /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-derivation-chain", "data-derivation-id": derivationId, key: `derivation-${derivationId}` }, run.map((entry) => /* @__PURE__ */ __editionReact.createElement(
+            "div",
+            {
+              className: `reading-derivation-step reading-derivation-step--${entry.type}`,
+              key: entry.id
+            },
+            renderBlockWithReviewMark(entry)
+          )))
+        );
+        continue;
+      }
+      rendered.push(renderBlockWithReviewMark(block));
+      index += 1;
+    }
+    return rendered;
+  };
+  return /* @__PURE__ */ __editionReact.createElement("article", { className: "textbook-reading-flow", "data-testid": "textbook-reading-flow", tabIndex: unit.unitId === "math-numbers-expressions-n12" ? -1 : void 0 }, compactStages ? /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-compact-flow", "data-testid": "math-textbook-compact-flow" }, activeCompactIndex > 0 && /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-history" }, /* @__PURE__ */ __editionReact.createElement(
+    "button",
+    {
+      type: "button",
+      className: "math-textbook-history-toggle",
+      "data-testid": "math-textbook-history-toggle",
+      "aria-expanded": showPastHistory,
+      onClick: () => {
+        setShowPastHistory((value) => !value);
+        setExpandAllPast(false);
+        setExpandedPastStages([]);
+      }
+    },
+    /* @__PURE__ */ __editionReact.createElement("span", null, text("\u3053\u308C\u307E\u3067\u306E\u5B66\u7FD2", "\u4E4B\u524D\u7684\u5B66\u4E60"), "\uFF08", activeCompactIndex, text("\u6BB5\u968E", "\u9636\u6BB5"), "\uFF09"),
+    /* @__PURE__ */ __editionReact.createElement("span", { "aria-hidden": "true" }, showPastHistory ? "\u25B2" : "\u25BC")
+  ), showPastHistory && /* @__PURE__ */ __editionReact.createElement(
+    "button",
+    {
+      type: "button",
+      className: "math-textbook-expand-all",
+      "data-testid": "math-textbook-expand-all",
+      "aria-expanded": expandAllPast,
+      onClick: () => setExpandAllPast((value) => !value)
+    },
+    expandAllPast ? text("\u904E\u53BB\u306E\u5B66\u7FD2\u3092\u9589\u3058\u308B", "\u6536\u8D77\u4E4B\u524D\u7684\u5B66\u4E60") : text("\u904E\u53BB\u306E\u5B66\u7FD2\u3092\u3059\u3079\u3066\u898B\u308B", "\u67E5\u770B\u5168\u90E8\u5DF2\u5B66\u5185\u5BB9")
+  )), compactStages.map((stage, index) => {
+    if (index > activeCompactIndex || index < activeCompactIndex && !showPastHistory) return null;
+    const completedBefore = index < activeCompactIndex;
+    const expanded = expandAllPast || expandedPastStages.includes(stage.id);
+    const stageItemIds = readingGroupItemIds([...stage.blocks], section);
+    const currentQuestionId = stageItemIds.find((id) => {
+      const item = section.items.find((candidate) => candidate.id === id);
+      return !item || !isTextbookItemResolved3(item, currentProgress?.answers[id]);
+    }) ?? null;
+    const neededContextIds = completedBefore ? [] : requiredMathSetContext(currentQuestionId);
+    const stageAnswered = stageItemIds.every((id) => {
+      const item = section.items.find((candidate) => candidate.id === id);
+      return Boolean(item && isTextbookItemResolved3(item, currentProgress?.answers[id]));
+    });
+    return /* @__PURE__ */ __editionReact.createElement(
+      "section",
+      {
+        key: stage.id,
+        className: "math-textbook-stage" + (completedBefore ? " math-textbook-stage--past" : " math-textbook-stage--current"),
+        "data-testid": "math-textbook-stage-" + stage.id,
+        tabIndex: completedBefore ? void 0 : -1
+      },
+      completedBefore ? /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-summary" }, /* @__PURE__ */ __editionReact.createElement("span", { className: "math-textbook-stage-summary__name" }, /* @__PURE__ */ __editionReact.createElement(Check, { size: 16, "aria-hidden": "true" }), stage.label[language]), /* @__PURE__ */ __editionReact.createElement(
+        "button",
+        {
+          type: "button",
+          className: "math-textbook-stage-toggle",
+          "data-testid": "math-textbook-toggle-" + stage.id,
+          "aria-expanded": expanded,
+          "aria-controls": "math-textbook-stage-detail-" + stage.id,
+          onClick: () => setExpandedPastStages((current) => current.includes(stage.id) ? current.filter((id) => id !== stage.id) : [...current, stage.id])
+        },
+        expanded ? text("\u9589\u3058\u308B", "\u6536\u8D77") : text("\u5168\u6587\u3092\u898B\u308B", "\u67E5\u770B\u5168\u6587")
+      )), expanded && /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-detail", id: "math-textbook-stage-detail-" + stage.id }, renderVisibleBlocks([...stage.blocks]))) : /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement("header", { className: "math-textbook-stage-active-title" }, /* @__PURE__ */ __editionReact.createElement("strong", null, stage.label[language]), /* @__PURE__ */ __editionReact.createElement("small", null, index + 1, " / ", compactStages.length)), neededContextIds.length > 0 && /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-references", "data-testid": "math-textbook-stage-references", "data-for-item": currentQuestionId ?? void 0 }, /* @__PURE__ */ __editionReact.createElement("strong", { className: "math-textbook-stage-references__title" }, text("\u3053\u306E\u554F\u984C\u3067\u4F7F\u3046\u6761\u4EF6", "\u672C\u9898\u9700\u8981\u7684\u6761\u4EF6")), neededContextIds.map((blockId) => {
+        const source = section.readingFlow.find((block) => block.id === blockId);
+        if (!source) return null;
+        const isFigure = source.type === "figure";
+        const open = expandedReference === blockId;
+        return /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-reference", key: blockId, "data-testid": "math-textbook-context-" + blockId }, isFigure ? (
+          // This pre-existing, already-learned complement diagram is necessary
+          // for d08–d10. Keep other figures optional to avoid long pages.
+          blockId === "figure-d-complement" ? /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-reference-content math-textbook-stage-reference-content--figure", "data-testid": "math-textbook-reference-" + blockId }, renderBlock(source)) : /* @__PURE__ */ __editionReact.createElement(__editionReact.Fragment, null, /* @__PURE__ */ __editionReact.createElement(
+            "button",
+            {
+              type: "button",
+              "data-testid": "math-textbook-reference-" + blockId,
+              "aria-expanded": open,
+              onClick: () => setExpandedReference(open ? null : blockId)
+            },
+            open ? text("\u56F3\u3092\u9589\u3058\u308B", "\u6536\u8D77\u56FE\u5F62") : text("\u524D\u306B\u5B66\u3093\u3060\u56F3\u3092\u898B\u308B", "\u67E5\u770B\u4E4B\u524D\u5B66\u8FC7\u7684\u56FE\u5F62")
+          ), open && /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-reference-content" }, renderBlock(source)))
+        ) : /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-stage-reference-content", "data-testid": "math-textbook-reference-" + blockId }, renderBlock(source)));
+      })), renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks])), stageAnswered && index < compactStages.length - 1 && /* @__PURE__ */ __editionReact.createElement("div", { className: "math-textbook-next-stage-panel" }, /* @__PURE__ */ __editionReact.createElement("span", null, text("\u3053\u3053\u307E\u3067\u306E\u672C\u6587\u3068\u56F3\u3092\u78BA\u8A8D\u3057\u305F\u3089\u3001\u6B21\u3078\u9032\u3081\u307E\u3059\u3002", "\u8BFB\u5B8C\u672C\u6BB5\u6B63\u6587\u548C\u56FE\u540E\uFF0C\u53EF\u4EE5\u7EE7\u7EED\u4E0B\u4E00\u6BB5\u3002")), /* @__PURE__ */ __editionReact.createElement(
+        "button",
+        {
+          type: "button",
+          className: "math-textbook-next-stage",
+          "data-testid": "math-textbook-next-stage",
+          onClick: goToNextCompactStage
+        },
+        text("\u6B21\u3078", "\u4E0B\u4E00\u6B65")
+      )))
+    );
+  })) : visibleGroups.map((group, groupIndex) => {
+    const groupItemIds = readingGroupItemIds(group, section);
+    const completed = groupItemIds.length > 0 && groupItemIds.every((itemId) => {
+      const item = section.items.find((candidate) => candidate.id === itemId);
+      return Boolean(item && isTextbookItemResolved3(item, currentProgress?.answers[itemId]));
+    });
+    return /* @__PURE__ */ __editionReact.createElement("section", { className: "reading-subsection", "data-testid": `reading-subsection-${groupIndex}`, key: group[0]?.id ?? groupIndex }, renderVisibleBlocks(visibleBlocksInGroup(group)), !continuousLesson && completed && groupIndex < groups.length - 1 && /* @__PURE__ */ __editionReact.createElement("div", { className: "reading-subsection-complete" }, /* @__PURE__ */ __editionReact.createElement(Check, { size: 16, "aria-hidden": "true" }), /* @__PURE__ */ __editionReact.createElement("span", null, text("\u3053\u306E\u5C0F\u7BC0\u3092\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u6B21\u306E\u5C0F\u7BC0\u3078\u9032\u3081\u307E\u3059\u3002", "\u672C\u5C0F\u8282\u5DF2\u5B8C\u6210\uFF0C\u53EF\u4EE5\u7EE7\u7EED\u4E0B\u4E00\u5C0F\u8282\u3002"))));
+  }));
+}
+function TextbookUnitPage() {
+  const { unitId = "" } = useParams();
+  const [unit, setUnit] = useState(void 0);
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
+  const [visibleThroughIndex, setVisibleThroughIndex] = useState(0);
+  const [mathSummaryReached, setMathSummaryReached] = useState(false);
+  const [n12RestartEpoch, setN12RestartEpoch] = useState(0);
+  const initializedUnitRef = useRef2(null);
+  const savedProgress = useAppStore((state) => state.textbookProgress[unitId]);
+  const progress = useMemo(() => unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, [unit, savedProgress]);
+  useEffect2(() => setMathSummaryReached(false), [unitId]);
+  const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit);
+  const { language, text } = useI18n2();
+  useEffect2(() => {
+    let active = true;
+    textbookRepository.getById(unitId).then((value) => {
+      if (active) setUnit(value ?? null);
+    });
+    return () => {
+      active = false;
+    };
+  }, [unitId]);
+  const firstIncompleteIndex = useMemo(() => {
+    if (!unit) return 0;
+    const index = unit.sections.findIndex((section) => textbookSectionProgress(unit, progress, section.id).completed < section.items.length);
+    return index === -1 ? unit.sections.length - 1 : index;
+  }, [progress, unit]);
+  useEffect2(() => {
+    if (!unit || initializedUnitRef.current === unitId) return;
+    initializedUnitRef.current = unitId;
+    setSelectedSectionIndex(firstIncompleteIndex);
+    setVisibleThroughIndex(firstIncompleteIndex);
+  }, [firstIncompleteIndex, unit, unitId]);
+  if (unit === void 0) return /* @__PURE__ */ __editionReact.createElement("div", { className: "state-panel" }, /* @__PURE__ */ __editionReact.createElement("span", { className: "state-panel__mark" }, "\u2026"), /* @__PURE__ */ __editionReact.createElement("h2", null, text("\u6559\u6750\u3092\u8AAD\u307F\u8FBC\u3093\u3067\u3044\u307E\u3059", "\u6B63\u5728\u52A0\u8F7D\u6559\u6750")));
+  if (!unit) return /* @__PURE__ */ __editionReact.createElement(ErrorState, { title: text("\u6559\u6750\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093", "\u627E\u4E0D\u5230\u6559\u6750"), body: text("\u3053\u306E\u6559\u6750\u306F\u524A\u9664\u3055\u308C\u305F\u304B\u3001\u307E\u3060\u516C\u958B\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002", "\u8BE5\u6559\u6750\u53EF\u80FD\u5DF2\u88AB\u5220\u9664\u6216\u5C1A\u672A\u53D1\u5E03\u3002"), action: /* @__PURE__ */ __editionReact.createElement(Link, { className: "raised-link", to: "/learning/setup" }, text("\u5B66\u7FD2\u8A2D\u5B9A\u3078\u623B\u308B", "\u8FD4\u56DE\u5B66\u4E60\u8BBE\u7F6E")) });
+  const summary = textbookUnitProgress(unit, progress);
+  const continuousLesson = unit.sections.length === 1 && unit.sections[0]?.id === "lesson";
+  const unitCode = unit.chapter?.unitCode;
+  const legacyPrefix = unitCode?.slice(-1);
+  const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `) ? unit.title.slice(legacyPrefix.length + 1) : unit.title;
+  const chapterChunk = unit.subject === "physics" ? chapter1ChunkForUnitCode(unitCode) : void 0;
+  const mathNumbersChunk = unit.chapter?.chapterId === "math-ch01-numbers-expressions" ? mathTextbookTopicForUnit(unit.unitId) : void 0;
+  const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : mathNumbersChunk?.label[language] ?? displayTitle;
+  const nextChapter1Unit = unit.subject === "physics" ? chapter1NextUnit(unitCode) : void 0;
+  const nextMathUnitId = unit.subject === "math-1a" ? mathTextbookNextUnitId(unit.unitId) : void 0;
+  const setupReturnPath = unit.subject === "math-1a" ? "/learning/setup?subject=math-1a" : "/learning/setup";
+  const subjectEyebrow = unit.subject === "math-1a" ? "MATH I+A" : "PHYSICS";
+  const unitComplete = summary.completed === summary.total;
+  const canOpen = (index) => unitComplete || index <= firstIncompleteIndex;
+  const restartFromBeginning = () => {
+    if (!window.confirm(text("\u3053\u306E\u5358\u5143\u306E\u9032\u6357\u3092\u6700\u521D\u304B\u3089\u3084\u308A\u76F4\u3057\u307E\u3059\u304B\uFF1F", "\u786E\u5B9A\u8981\u6E05\u7A7A\u672C\u5355\u5143\u8FDB\u5EA6\u5E76\u91CD\u65B0\u5F00\u59CB\u5417\uFF1F"))) return;
+    resetTextbookUnit(unit.unitId, unit);
+    initializedUnitRef.current = null;
+    setSelectedSectionIndex(0);
+    setVisibleThroughIndex(0);
+    if (unit.unitId === "math-numbers-expressions-n12") {
+      setN12RestartEpoch((epoch) => epoch + 1);
+      window.requestAnimationFrame(() => {
+        const first = document.querySelector('[data-testid="textbook-reading-flow"]');
+        first?.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    }
+  };
+  const scrollToSection = (index) => {
+    window.setTimeout(() => {
+      document.getElementById(`textbook-section-${index}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+  const openSection = (index) => {
+    if (!canOpen(index)) return;
+    setSelectedSectionIndex(index);
+    setVisibleThroughIndex((current) => Math.max(current, index));
+    scrollToSection(index);
+  };
+  const goNext = (fromIndex) => {
+    const nextIndex = Math.min(unit.sections.length - 1, fromIndex + 1);
+    setSelectedSectionIndex(nextIndex);
+    setVisibleThroughIndex((current) => Math.max(current, nextIndex));
+    scrollToSection(nextIndex);
+  };
+  return /* @__PURE__ */ __editionReact.createElement("div", { className: "page-stack textbook-page", "data-textbook-subject": unit.subject }, /* @__PURE__ */ __editionReact.createElement("header", { className: "session-header" }, /* @__PURE__ */ __editionReact.createElement("div", null, /* @__PURE__ */ __editionReact.createElement("p", { className: "eyebrow" }, unit.chapter ? `TEXTBOOK / ${subjectEyebrow} / CHAPTER ${unit.chapter.chapterNumber}` : `TEXTBOOK / ${subjectEyebrow}`), /* @__PURE__ */ __editionReact.createElement("h1", null, majorTitle), (chapterChunk || mathNumbersChunk) && /* @__PURE__ */ __editionReact.createElement("p", { className: "textbook-current-topic", "data-testid": "textbook-current-topic" }, /* @__PURE__ */ __editionReact.createElement("span", null, text("\u73FE\u5728", "\u5F53\u524D")), /* @__PURE__ */ __editionReact.createElement("strong", null, displayTitle)), unit.subtitle && /* @__PURE__ */ __editionReact.createElement("p", null, unit.subtitle)), !continuousLesson && /* @__PURE__ */ __editionReact.createElement(StatusBadge, null, text(`\u7B2C ${unit.revision} \u7248`, `\u7B2C ${unit.revision} \u7248`))), /* @__PURE__ */ __editionReact.createElement(ProgressBar, { label: text("\u5358\u5143\u306E\u9032\u307F\u5177\u5408", "\u5355\u5143\u8FDB\u5EA6"), value: summary.completed, max: summary.total }), unit.unitId === "math-numbers-expressions-n12" && /* @__PURE__ */ __editionReact.createElement("button", { type: "button", className: "n12-restart-top", "data-testid": "n12-restart-top", onClick: restartFromBeginning }, /* @__PURE__ */ __editionReact.createElement(RotateCcw, { size: 15, "aria-hidden": "true" }), " ", text("\u3053\u306E\u5358\u5143\u3092\u6700\u521D\u304B\u3089", "\u672C\u5355\u5143\u91CD\u65B0\u5F00\u59CB")), unit.unitId === "math-numbers-expressions-n12" && unit.revision === 3 && progress?.migratedFromRevision !== void 0 && /* @__PURE__ */ __editionReact.createElement("p", { className: "n12-progress-upgrade-note", "data-testid": "n12-progress-upgrade-note" }, text(
+    "N12\u306F\u65B0\u3057\u3044\u7248\u3067\u3059\u3002\u4EE5\u524D\u306E\u56DE\u7B54\u306F\u5C65\u6B74\u3068\u3057\u3066\u4FDD\u5B58\u3057\u3001\u6700\u521D\u306E\u554F\u984C\u304B\u3089\u3059\u3079\u3066\u89E3\u304D\u76F4\u3057\u307E\u3059\u3002",
+    "N12\u5DF2\u66F4\u65B0\u3002\u4EE5\u524D\u7684\u7B54\u6848\u5DF2\u4FDD\u5B58\u4E3A\u5386\u53F2\u8BB0\u5F55\uFF0C\u672C\u6B21\u4ECE\u7B2C\u4E00\u9053\u9898\u91CD\u65B0\u5F00\u59CB\u3002"
+  )), ["math-numbers-expressions-n01", "math-numbers-expressions-n03"].includes(unit.unitId) && unit.revision === 2 && progress?.migratedFromRevision === 1 && /* @__PURE__ */ __editionReact.createElement("p", { className: "n12-progress-upgrade-note", "data-testid": "r3-progress-upgrade-note" }, text(
+    "\u4EE5\u524D\u306B\u89E3\u3044\u305F\u539F\u554F\u984C\u306E\u89E3\u7B54\u5C65\u6B74\u306F\u4FDD\u5B58\u3055\u308C\u3066\u3044\u307E\u3059\u3002\u8FFD\u52A0\u3057\u305F\u5F0F\u5185\u306E\u8A08\u7B97\u7A74\u3060\u3051\u3001\u9806\u756A\u306B\u5B8C\u6210\u3055\u305B\u3066\u304F\u3060\u3055\u3044\u3002",
+    "\u4E4B\u524D\u5B8C\u6210\u7684\u539F\u9898\u7B54\u6848\u548C\u8BB0\u5F55\u5DF2\u4FDD\u7559\u3002\u8BF7\u4F9D\u6B21\u5B8C\u6210\u65B0\u589E\u7684\u516C\u5F0F\u5185\u90E8\u8BA1\u7B97\u586B\u7A7A\u3002"
+  )), /* @__PURE__ */ __editionReact.createElement("section", { className: "textbook-objectives" }, /* @__PURE__ */ __editionReact.createElement("strong", null, text("\u3053\u306E\u5358\u5143\u3067\u78BA\u8A8D\u3059\u308B\u3053\u3068", "\u672C\u5355\u5143\u786E\u8BA4\u5185\u5BB9")), /* @__PURE__ */ __editionReact.createElement("ol", null, unit.objectives.map((objective) => /* @__PURE__ */ __editionReact.createElement("li", { key: objective }, objective)))), !continuousLesson && /* @__PURE__ */ __editionReact.createElement("nav", { className: "textbook-section-nav", "aria-label": text("\u5358\u5143\u5185\u306E\u7BC0", "\u5355\u5143\u5185\u7AE0\u8282") }, unit.sections.map((section, index) => {
+    const sectionProgress = textbookSectionProgress(unit, progress, section.id);
+    const complete = sectionProgress.completed === sectionProgress.total;
+    const allowed = canOpen(index);
+    return /* @__PURE__ */ __editionReact.createElement(
+      "button",
+      {
+        type: "button",
+        key: section.id,
+        disabled: !allowed,
+        "aria-pressed": selectedSectionIndex === index,
+        onClick: () => openSection(index)
+      },
+      /* @__PURE__ */ __editionReact.createElement("span", null, complete ? /* @__PURE__ */ __editionReact.createElement(Check, { size: 16, "aria-hidden": "true" }) : allowed ? section.number : /* @__PURE__ */ __editionReact.createElement(LockKeyhole, { size: 15, "aria-hidden": "true" })),
+      /* @__PURE__ */ __editionReact.createElement("strong", null, section.title),
+      /* @__PURE__ */ __editionReact.createElement("small", null, sectionProgress.completed, "/", sectionProgress.total)
+    );
+  })), /* @__PURE__ */ __editionReact.createElement("div", { className: "textbook-section-stack", "data-testid": "textbook-section-stack" }, unit.sections.slice(0, visibleThroughIndex + 1).map((section, index) => {
+    const sectionSummary = textbookSectionProgress(unit, progress, section.id);
+    const sectionComplete = sectionSummary.completed === sectionSummary.total;
+    const isLastVisible = index === visibleThroughIndex;
+    return /* @__PURE__ */ __editionReact.createElement(
+      "section",
+      {
+        className: "textbook-section",
+        "data-testid": `textbook-section-${section.id}`,
+        id: `textbook-section-${index}`,
+        key: section.id
+      },
+      !continuousLesson && /* @__PURE__ */ __editionReact.createElement("header", { className: "textbook-section-heading" }, /* @__PURE__ */ __editionReact.createElement("div", null, /* @__PURE__ */ __editionReact.createElement("span", null, section.number), /* @__PURE__ */ __editionReact.createElement("div", null, /* @__PURE__ */ __editionReact.createElement("h2", null, section.title), section.description && /* @__PURE__ */ __editionReact.createElement("p", null, section.description))), /* @__PURE__ */ __editionReact.createElement("strong", null, sectionSummary.completed, "/", sectionSummary.total)),
+      section.readingFlow.length > 0 ? /* @__PURE__ */ __editionReact.createElement(TextbookReadingFlow, { key: unit.unitId === "math-numbers-expressions-n12" ? `n12-restart-${n12RestartEpoch}` : section.id, unit, section, progress, onSummaryReached: setMathSummaryReached }) : null,
+      !continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && /* @__PURE__ */ __editionReact.createElement("div", { className: "textbook-next-panel" }, /* @__PURE__ */ __editionReact.createElement(Check, { size: 22, "aria-hidden": "true" }), /* @__PURE__ */ __editionReact.createElement("div", null, /* @__PURE__ */ __editionReact.createElement("strong", null, text("\u3053\u306E\u7BC0\u306F\u5B8C\u4E86\u3057\u307E\u3057\u305F", "\u672C\u8282\u5DF2\u5B8C\u6210")), /* @__PURE__ */ __editionReact.createElement("small", null, text("\u524D\u306E\u672C\u6587\u3068\u56F3\u3092\u6B8B\u3057\u305F\u307E\u307E\u3001\u6B21\u306E\u7BC0\u3092\u4E0B\u306B\u958B\u304D\u307E\u3059\u3002", "\u4FDD\u7559\u524D\u9762\u7684\u6B63\u6587\u548C\u56FE\u7247\uFF0C\u5E76\u5728\u4E0B\u65B9\u6253\u5F00\u4E0B\u4E00\u8282\u3002"))), /* @__PURE__ */ __editionReact.createElement(RaisedButton, { "data-testid": "textbook-next-section", onClick: () => goNext(index) }, text("\u6B21\u3078", "\u4E0B\u4E00\u8282")))
+    );
+  }), unitComplete && (unit.unitId !== "math-sets" || mathSummaryReached) && /* @__PURE__ */ __editionReact.createElement("div", { className: "textbook-complete-panel", "data-testid": "textbook-unit-complete" }, /* @__PURE__ */ __editionReact.createElement(Check, { size: 28, "aria-hidden": "true" }), /* @__PURE__ */ __editionReact.createElement("div", null, /* @__PURE__ */ __editionReact.createElement("strong", null, unit.subject === "math-1a" ? text("\u3053\u3053\u307E\u3067\u5B8C\u4E86", "\u5DF2\u5B8C\u6210\u8FD9\u4E00\u90E8\u5206") : nextChapter1Unit ? text("\u3053\u3053\u307E\u3067\u5B8C\u4E86", "\u5DF2\u5B8C\u6210\u8FD9\u4E00\u90E8\u5206") : text("\u7B2C1\u7AE0\u5B8C\u4E86", "\u7B2C1\u7AE0\u5B8C\u6210")), /* @__PURE__ */ __editionReact.createElement("p", null, unit.subject === "math-1a" ? unit.unitId === "math-sets" ? text("\u96C6\u5408\u306E\u8868\u3057\u65B9\u304B\u3089\u3001\u5171\u901A\u90E8\u5206\u30FB\u548C\u96C6\u5408\u30FB\u90E8\u5206\u96C6\u5408\u30FB\u88DC\u96C6\u5408\u30FB\u30C9\u30FB\u30E2\u30EB\u30AC\u30F3\u306E\u6CD5\u5247\u30FB\u6570\u76F4\u7DDA\u307E\u3067\u78BA\u8A8D\u3057\u307E\u3057\u305F\u3002", "\u5DF2\u7ECF\u5B66\u4E60\u4E86\u96C6\u5408\u7684\u8868\u793A\u3001\u4EA4\u96C6\u4E0E\u5E76\u96C6\u3001\u5B50\u96C6\u3001\u8865\u96C6\u3001\u5FB7\u6469\u6839\u5B9A\u5F8B\uFF0C\u4EE5\u53CA\u6570\u8F74\u4E0A\u7684\u96C6\u5408\u3002") : text("\u3053\u306E\u6559\u6750\u306E\u5185\u5BB9\u3092\u6700\u5F8C\u307E\u3067\u78BA\u8A8D\u3057\u307E\u3057\u305F\u3002\u5B66\u7FD2\u8A2D\u5B9A\u3078\u623B\u308B\u3068\u3001\u6B21\u306B\u5B66\u3076\u5185\u5BB9\u3092\u9078\u3079\u307E\u3059\u3002", "\u5DF2\u7ECF\u5B8C\u6210\u672C\u6559\u6750\u3002\u8FD4\u56DE\u5B66\u4E60\u8BBE\u7F6E\u540E\u53EF\u4EE5\u9009\u62E9\u4E0B\u4E00\u9879\u5B66\u4E60\u5185\u5BB9\u3002") : nextChapter1Unit ? chapter1Localized(nextChapter1Unit.bridge, language) : text("\u904B\u52D5\u3092\u8868\u3057\u3001\u901F\u5EA6\u306E\u5909\u5316\u3092\u8FFD\u3044\u3001\u305D\u306E\u539F\u56E0\u3092\u529B\u307E\u3067\u3064\u306A\u3052\u3066\u8003\u3048\u307E\u3057\u305F\u3002", "\u5DF2\u7ECF\u628A\u8FD0\u52A8\u7684\u8868\u793A\u3001\u901F\u5EA6\u7684\u53D8\u5316\u4EE5\u53CA\u4EA7\u751F\u53D8\u5316\u7684\u529B\u8054\u7CFB\u8D77\u6765\u4E86\u3002"))), nextChapter1Unit ? /* @__PURE__ */ __editionReact.createElement(Link, { className: "raised-link", "data-testid": "textbook-next-unit", to: `/learning/textbook/${nextChapter1Unit.unitId}` }, text("\u6B21\u3078", "\u7EE7\u7EED")) : nextMathUnitId ? /* @__PURE__ */ __editionReact.createElement(Link, { className: "raised-link", "data-testid": "textbook-next-unit", to: `/learning/textbook/${nextMathUnitId}` }, text("\u6B21\u3078", "\u7EE7\u7EED")) : /* @__PURE__ */ __editionReact.createElement(Link, { className: "raised-link", "data-testid": "textbook-return-to-setup", to: setupReturnPath }, text("\u5B66\u7FD2\u8A2D\u5B9A\u3078\u623B\u308B", "\u8FD4\u56DE\u5B66\u4E60\u8BBE\u7F6E")))), /* @__PURE__ */ __editionReact.createElement("button", { type: "button", className: "text-button textbook-reset", onClick: restartFromBeginning }, /* @__PURE__ */ __editionReact.createElement(RotateCcw, { size: 15, "aria-hidden": "true" }), " ", text("\u3053\u306E\u5358\u5143\u3092\u6700\u521D\u304B\u3089", "\u672C\u5355\u5143\u91CD\u65B0\u5F00\u59CB")));
+}
+export {
+  TextbookReadingFlow,
+  TextbookUnitPage
+};
+
+import {createRoot as editionCreateRoot} from 'react-dom/client';
+import {HashRouter as EditionHashRouter,Routes as EditionRoutes,Route as EditionRoute,useLocation as editionUseLocation} from 'react-router-dom';
+import EditionCurrentApp from '/src/app/App';
+import {AppShell as EditionAppShell} from '/src/components/layout/AppShell';
+import {textbookRepository as editionRepository} from '/src/repositories/textbookRepository';
+import {validateTextbookUnits as editionValidate} from '/src/domain/textbookSchema';
+import editionData from './historical-math-data.json';
+import {mathTextbookTopics as editionMutableTopics,mathNumbersReviewUnitIds as editionMutableReviewIds,mathTextbookTopicForUnit as editionSharedTopicForUnit,mathTextbookNextUnitId as editionSharedNextUnit} from '/src/data/textbook/math/mathCatalog';
+import {mathTextbookTopics as editionTopicsViaBarrel} from '/src/data/textbook/math';
+import 'katex/dist/katex.min.css';
+if(editionData.fixtureStatus!=='FROZEN_TEST_FIXTURE')throw Error('UNCONNECTED_HISTORICAL_INPUT');
+if(editionData.sourceCommit!=='171c04781f32c1286a0762905891b582714834f9')throw Error('UNKNOWN_HISTORICAL_EDITION');
+const editionUnits=editionValidate(editionData.units),editionMap=new Map(editionUnits.map(u=>[u.unitId,u]));
+const editionExpected=[["math-numbers-expressions-n01", 2, 18], ["math-numbers-expressions-n02", 1, 12], ["math-numbers-expressions-n03", 2, 17], ["math-numbers-expressions-n04", 2, 26], ["math-numbers-expressions-n05", 2, 20], ["math-numbers-expressions-n06", 3, 16], ["math-numbers-expressions-n07", 3, 14], ["math-numbers-expressions-n08", 3, 12], ["math-numbers-expressions-n09", 2, 18], ["math-numbers-expressions-n10", 1, 21], ["math-numbers-expressions-n11", 10, 31], ["math-numbers-expressions-n12", 3, 35], ["math-numbers-expressions-n13", 4, 12], ["math-numbers-expressions-n14", 10, 38], ["math-numbers-expressions-ne01", 1, 13], ["math-numbers-expressions-ne02", 1, 12]];
+if(editionMap.size!==16||editionUnits.length!==16||editionExpected.some(([id,revision,count])=>{const unit=editionMap.get(id);return !unit||unit.revision!==revision||unit.sections.flatMap(s=>s.items).length!==count}))throw Error('UNKNOWN_HISTORICAL_UNIT_EDITION');
+const editionOriginalGet=editionRepository.getById.bind(editionRepository),editionOriginalList=editionRepository.listLearningSetup.bind(editionRepository);
+editionRepository.getById=async id=>{if(editionMap.has(id))return editionMap.get(id);if(id.startsWith('math-numbers-expressions-'))throw Error('UNKNOWN_HISTORICAL_UNIT');return editionOriginalGet(id)};
+editionRepository.listLearningSetup=async()=> [...(await editionOriginalList()).filter(u=>!u.unitId.startsWith('math-numbers-expressions-')),...editionUnits];
+if(editionMutableTopics!==editionTopicsViaBarrel)throw Error('CATALOG_EXPORT_IDENTITY_MISMATCH');
+if(JSON.stringify({mathTextbookTopics:editionMutableTopics,mathNumbersReviewUnitIds:editionMutableReviewIds})!==JSON.stringify(editionData.currentCatalogInput))throw Error('UNKNOWN_SHARED_CURRENT_CATALOG_INPUT');
+editionMutableTopics.splice(0,editionMutableTopics.length,...structuredClone(editionData.catalogInput.mathTextbookTopics));
+editionMutableReviewIds.splice(0,editionMutableReviewIds.length,...structuredClone(editionData.catalogInput.mathNumbersReviewUnitIds));
+if(JSON.stringify(editionMutableTopics)!==JSON.stringify(editionData.catalogInput.mathTextbookTopics)||JSON.stringify(editionMutableReviewIds)!==JSON.stringify(editionData.catalogInput.mathNumbersReviewUnitIds)||editionSharedTopicForUnit('math-numbers-expressions-ne02')?.id!=='numbers-development'||editionSharedNextUnit('math-numbers-expressions-n10')!==undefined)throw Error('ARCHIVED_CATALOG_BINDING_FAILED');
+function EditionEntry(){const location=editionUseLocation();const match=/^\/learning\/textbook\/([^/]+)$/.exec(location.pathname);return match&&editionMap.has(match[1])?__editionReact.createElement(EditionRoutes,null,__editionReact.createElement(EditionRoute,{element:__editionReact.createElement(EditionAppShell)},__editionReact.createElement(EditionRoute,{path:'/learning/textbook/:unitId',element:__editionReact.createElement(TextbookUnitPage)}))):__editionReact.createElement(EditionCurrentApp);}
+const editionRoot=document.getElementById('root');if(!editionRoot)throw Error('FIXTURE_ROOT_MISSING');
+editionCreateRoot(editionRoot).render(__editionReact.createElement(__editionReact.StrictMode,null,__editionReact.createElement(EditionHashRouter,null,__editionReact.createElement(EditionEntry))));
+
+</script></body></html>

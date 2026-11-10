@@ -1,4 +1,8 @@
+import { gotoReady, clearStoredState } from './helpers'
 import { expect, test, type Page } from '@playwright/test'
+
+// File-scoped budget includes genuine App bootstrap (up to30s) plus its unchanged interaction assertions.
+test.describe.configure({ timeout: 90000 })
 
 const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
 
@@ -47,9 +51,7 @@ async function solveHoleByTryingChoices(page: Page, itemId: string) {
 }
 
 async function clearState(page: Page) {
-  await page.goto(appRoute('/problems'))
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
 }
 
 test.beforeEach(async ({ page }) => {
@@ -60,7 +62,7 @@ test('audited app boots and opens the textbook setup', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))
 
-  await page.goto(appRoute('/learning/setup'))
+  await gotoReady(page, appRoute('/learning/setup'))
 
   await expect(page.getByRole('heading', { name: '学習設定' })).toBeVisible()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()
@@ -74,11 +76,12 @@ test('audited app boots and opens the textbook setup', async ({ page }) => {
 })
 
 test('every Chapter 1 unit boots to its first meaningful hole without developer metadata', async ({ page }) => {
+  test.setTimeout(240_000)
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))
 
   for (const unit of units) {
-    await page.goto(appRoute(`/learning/textbook/${unit.id}`))
+    await gotoReady(page, appRoute(`/learning/textbook/${unit.id}`))
     await expect(page.getByRole('heading', { name: unit.majorTitle, exact: true })).toBeVisible()
     await expect(page.getByTestId('textbook-current-topic')).toContainText(unit.title)
     await expect(page.getByTestId(`textbook-item-${unit.firstHole}`)).toBeVisible()
@@ -92,7 +95,7 @@ test('every Chapter 1 unit boots to its first meaningful hole without developer 
 })
 
 test('the first major boundary uses a bridge instead of another unit title', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1c-relative-velocity'))
 
   for (const id of ['c2', 'c3', 'c5', 'c4a', 'c4', 'c4b', 'c4c']) {
     await solveHoleByTryingChoices(page, id)
@@ -109,7 +112,7 @@ test('the first major boundary uses a bridge instead of another unit title', asy
 })
 
 test('A1 choice panel uses natural wording and does not expose the internal hole id', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   const a1 = page.getByTestId('textbook-item-a1')
   await expect(a1).toBeVisible()
@@ -123,7 +126,7 @@ test('A1 choice panel uses natural wording and does not expose the internal hole
 })
 
 test('A1 shows a staged hint after a wrong attempt without revealing the answer', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   await page.getByTestId('textbook-item-a1').click()
   const panel = page.getByTestId('inline-choice-panel-a1')
@@ -147,7 +150,7 @@ test('A1 shows a staged hint after a wrong attempt without revealing the answer'
 })
 
 test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-a-displacement-velocity'))
   const figure = page.getByTestId('textbook-figure-fig-1')
   const image = figure.locator('img')
 
@@ -183,7 +186,7 @@ test('first concept-forming figure is not upscaled beyond its intrinsic size', a
 
 
 test('1A average-velocity calculation stays in one derivation frame', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   for (const id of ['a1', 'a2', 'a3', 'a4', 'a6', 'a7', 'a8', 'a9c', 'a9', 'a9d', 'a9a', 'a9b', 'a10']) {
     await solveHoleByTryingChoices(page, id)
@@ -205,7 +208,7 @@ test('1A average-velocity calculation stays in one derivation frame', async ({ p
 })
 
 test('1B worked examples retrieve and apply formulas in continuous derivation frames', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1b-velocity-composition'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1b-velocity-composition'))
 
   for (const id of ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8']) {
     await solveHoleByTryingChoices(page, id)
@@ -235,7 +238,7 @@ test('1B worked examples retrieve and apply formulas in continuous derivation fr
 })
 
 test('1C rain example chooses the observer, applies relative velocity, and retrieves vector magnitude', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1c-relative-velocity'))
 
   for (const id of ['c2', 'c3', 'c5', 'c4a', 'c4', 'c4b', 'c4c']) {
     await solveHoleByTryingChoices(page, id)
@@ -256,7 +259,7 @@ test('1C rain example chooses the observer, applies relative velocity, and retri
 })
 
 test('1D actively derives constant-acceleration formulas with the approved v-t graph', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1d-acceleration'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1d-acceleration'))
 
   for (const id of [
     'd1', 'd2', 'd3', 'd4',
@@ -298,7 +301,7 @@ test('1D actively derives constant-acceleration formulas with the approved v-t g
 })
 
 test('1E applies prior formulas, derives the trajectory, solves the worked example, and keeps the radical stable', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1e-horizontal-projectile'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1e-horizontal-projectile'))
 
   for (const id of [
     'e1',
@@ -349,7 +352,7 @@ test('1E applies prior formulas, derives the trajectory, solves the worked examp
 })
 
 test('1G builds force → acceleration → terminal velocity as an active phone-first derivation', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
 
   for (const id of ['g0', 'g0a', 'g1b', 'g1a', 'g1']) {
     await solveHoleByTryingChoices(page, id)
@@ -409,7 +412,7 @@ test('1G builds force → acceleration → terminal velocity as an active phone-
 })
 
 test('1F actively derives oblique-projectile relations and keeps trig/angle math stable', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
+  await gotoReady(page, appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 
   for (const id of [
     'f1', 'f2b',

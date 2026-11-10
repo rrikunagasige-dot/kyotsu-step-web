@@ -1,0 +1,1094 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>QF01 P008 旧N14検査の入口整合</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1000px;margin:40px auto;padding:0 22px;color:#172334}h1{font-size:28px}h2{margin-top:32px}p{white-space:pre-wrap;overflow-wrap:anywhere}pre{font:12px/1.5 monospace;overflow:auto;background:#f3f5f8;padding:16px}summary{cursor:pointer;padding:12px;background:#eef3fa}</style><p>Status: PROPOSED</p><h1>P-QF01-COMMON-CI-20261110-008 — 旧N14の証明検査を対応する旧版入口へ揃える</h1><p>未承認・未適用。P007は本人「承認」を原APIで記録し、Array.fromの一行を一度適用済みです。source fad1e6626578a240d51e9667d27bcc791ccb2169 / tree97ab3cae678abbc911b1f5e7806302a94e160e79、draft PR141。全CIは7成功・1失敗・1skipでした。失敗を原T04 FAILEDに照合し、claimなしで保存しています。</p><h2>通過した検査と残った失敗</h2><p>P007によりCIのビルド型エラーは解消しました。Mathの図読込6件、N12六ケース、数学教材の主要51ケース×スマホ/PC、N02/N09四ケース、N01/N03四ケース、catalog34ケースは成功しています。別CIの問題練習36mobile＋36desktop、N08/N11全操作・全誤答・4幅・保存/履歴/幾何と共通code検査も成功しました。</p><p>new-batch suiteは22成功・6失敗・既存12skip。失敗はW-MATH-014 N14 Q07、W-MATH-015 Q08、W-MATH-016 Q12の3種類×320/390pxだけです。18試行とも初期readerと先頭2問を通過した後、n14-03の表示待ち5秒で止まりました。後続W011/W012/P004/Physics/Practiceの5 namedstepsは未実行であり、全体合格とは扱いません。</p><h2>原因</h2><p>これら3種類は、明示的に凍結N14 revision10・38項目のデータと答案列を検査しています。しかし移動先3か所だけが通常Appの現行N14 revision11・41項目でした。現行版にはn14-w048-q03-regionが追加され、その判断を終えるまで次のn14-03を出さない正常な段階ロックがあります。旧データ列でその判断を飛ばしたため、次の要素が見つかりません。起動待ちの時間を延ばす問題とは分けます。</p><p>同じファイルの他の旧版N14検査は、すでに既存route(&#x27;14&#x27;)で正しい歴史版入口を使用しています。凍結r10/38の問題・表示・答案へ検査の入口を一致させる具体案です。</p><h2>固定差分：既存一ファイル・3引数</h2><p>e2e/new-batch-walkthrough.spec.tsの3つのgotoReady引数を、通常版の直書きURLから既存route(&#x27;14&#x27;)へ置き換えます。その他の全文は完全同一です。3引数を逆変換すると変更前全文へ完全一致します。</p><p>既存の全assert、答案、誤答/ヒント/再試行、保存/履歴、図、revision10 pin、38項目、320/390px、240秒等の時間枠、skip条件を保持します。現行N14の通常入口を使う別のcatalog guardはそのままで、sourcefadの実CIで成功済みです。現行版の中間判断や安定ID、学習者の進捗を変更しません。新fixture・新入口・新YAML・依存・設定の変更も加えません。</p><h2>影響調査と限定検証</h2><p>同じ検査補助を使う10specについて、凍結データの版と移動先を照合します。特に未実行5 namedstepsの入口を確認し、現行データを現行入口で検査するものはその目的を保持します。分類と根拠は同梱impact inventoryへ記録し、未確認を合格にしません。</p><p>sourcefadのsrc332/e2e55/config9＝396 Git blobと入力を照合し、候補の変更はこの3引数だけです。元tsc -b＋viteのfull buildはexit0、変更ファイルlintはexit0、before/afterの40テスト収集は同一です。全条件・答案・時間枠等の不変を原文/静的照合し、非作者レビューを固定全文hashへ結び付けます。ローカル実行環境とCIの差は原報告に明記します。修正後ブラウザと新source実CIは未検証です。</p><h2>承認後の工程</h2><p>新technical Work W-TECH-QF01-CI-P008-20261110を原APIで開始し、固定95入力と一ファイルpatchを照合して一度適用します。対象はrrikunagasige-dot/kyotsu-step-web（ID1391122224）、repair branch work/qf01-common-ci-repair-20261109、sourcefad/tree97ab、draft PR141です。実親W-MATH-QF01-BUILD-20261109と、既存QF01-CI-P003-CORRECTION-20261110/原CIRepair issueへの正規接続を維持します。旧FAILED・旧P002別未解決の履歴を保存し、P007等の差分を再適用しません。</p><p>新commitの全該当CIを確認します。push filterで対象外となる共通suiteは、既承認祖先から同一newsourceへ新CI専用refをCAS FFして起動し、既存refを巻戻しません。全成功後だけ原T04/L01/Z01と対応依頼を閉鎖し、既承認QF featureへ同じ検証版をCAS統合します。親の承認済み保護12例外（P0018＋P0044）を原reviseで照合し、元数学/設計facetと実旧USER承認を保持して失効C01〜C09/G2を原順で再検証します。四幅320/390/430/1440を確認します。main統合・本番公開・本人受入・全章61問完成は含みません。</p><p>全332src、原core/guard/定義、P007helper、残る9spec、元PDF/設計/承認/proof、tsconfig/YAML/依存/public/保存形式を保護します。P008で親の保護例外を追加しません。検査を削って成功にする変更ではなく、旧版の期待値へ旧版の入口を対応させます。</p><h2>新しい承認が必要な理由</h2><p>今回の3引数はP007の固定helper一行と別の差分です。WORK_SYSTEM §11・§12Bと原adapterのexact patch承認照合に従い、この変更後全文への明示承認を待ちます。旧本人発言を新hashの承認として記録せず、guardを変更しません。P008はnative未open・正本未適用です。</p><p>実施済み影響確認：Aがhelper＋10spec、Bが10specを独立読取し、既知3引数以外の同原因所見はありません。後続W011/W012/P004は歴史データと歴史入口が一致、Physics/Practiceは現行データと通常入口が一致しています。未実行の後続browser成功を保証するものではありません。</p><p>固定patch SHA-256：2973d7029bdfe2350e030fc6b84a8b835ed96814b1f41ece4dba5f017ed17d34</p><p>native digest：1485b815aa4574a68d292f58dc5d80786c9bc8a4ce95ae407ab7afe5dee8d584</p><p>固定95before全文はproposal/DECLARED_INPUTS.json、変更対象の完全before/afterは以下。</p><h2>固定3引数差分</h2><pre>--- a/e2e/new-batch-walkthrough.spec.ts
++++ b/e2e/new-batch-walkthrough.spec.ts
+@@ -89,7 +89,7 @@
+       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+       expect(items.slice(6,9).map(i=&gt;i.id)).toEqual(ids)
+       await clearStoredState(page)
+-      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
++      await gotoReady(page, route(&#x27;14&#x27;))
+       await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+       for(const item of items.slice(0,6)){
+         const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+@@ -168,7 +168,7 @@
+       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+       expect(items.slice(9,12).map(x=&gt;x.id)).toEqual(ids)
+       await clearStoredState(page)
+-      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
++      await gotoReady(page, route(&#x27;14&#x27;))
+       await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+       for(const item of items.slice(0,9)){
+         const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+@@ -247,7 +247,7 @@
+       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+       expect(items.slice(19,22).map(x=&gt;x.id)).toEqual(ids) // Q10 adds four prior items
+       await clearStoredState(page)
+-      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
++      await gotoReady(page, route(&#x27;14&#x27;))
+       await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+       for(const item of items.slice(0,19)){ // includes four new Q10 operations before Q12
+         const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+</pre><p>before 0ac1856fc690956f8ba094f0a33b71d64c6238f55c6c3666e6376e8c32ceb564<br>after fd9cb577aef8191dd39df22d0cd7597213e8412a8e77cefb7bd2291411b53a28</p><details><summary>変更前全文</summary><pre>import { gotoReady, reloadReady, clearStoredState } from &#x27;./helpers&#x27;
+import { mkdirSync } from &#x27;node:fs&#x27;
+import { expect, test } from &#x27;@playwright/test&#x27;
+import editionData from &#x27;./fixtures/historical-math-data.json&#x27; with { type: &#x27;json&#x27; }
+import { validateTextbookUnits as editionValidate } from &#x27;../src/domain/textbookSchema&#x27;
+
+const mathTextbookUnits = editionValidate(editionData.units)
+
+const units = [&#x27;04&#x27;, &#x27;05&#x27;, &#x27;06&#x27;, &#x27;07&#x27;, &#x27;08&#x27;, &#x27;11&#x27;, &#x27;13&#x27;, &#x27;14&#x27;] as const
+const route = (n: string) =&gt; editionHistoricalRoute(&#x27;/learning/textbook/math-numbers-expressions-n&#x27; + n)
+
+for (const n of units) {
+  test(&#x27;W-MATH-003 batch N&#x27; + n + &#x27;: all original choices, mobile/PC progression, persistence and figures&#x27;, async ({ page }, testInfo) =&gt; {
+    test.setTimeout(180_000)
+    const unit = mathTextbookUnits.find(u =&gt; u.unitId.endsWith(&#x27;n&#x27; + n))!
+    const items = unit.sections[0].items
+    const figureIds = unit.sections[0].figures.map(f =&gt; f.id)
+    await clearStoredState(page)
+    await gotoReady(page, route(n))
+    await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27; + items[0].id)).toBeVisible()
+    const evidence = process.env.E2E_BATCH_EVIDENCE === &#x27;1&#x27;
+    const device = testInfo.project.name.includes(&#x27;mobile&#x27;) ? &#x27;mobile&#x27; : &#x27;desktop&#x27;
+    const pictured = new Set&lt;string&gt;()
+    async function captureFigureWhenUnlocked() {
+      for (const fig of figureIds) {
+        if (pictured.has(fig)) continue
+        const locator = page.getByTestId(&#x27;textbook-figure-&#x27; + fig)
+        if (await locator.count() === 0) continue
+        await expect(locator).toBeVisible()
+        pictured.add(fig)
+        if (evidence) {
+          await locator.scrollIntoViewIfNeeded()
+          await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-figure-&#x27; + fig + &#x27;-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+        }
+      }
+    }
+    for (const fig of figureIds) {
+      const locator = page.getByTestId(&#x27;textbook-figure-&#x27; + fig)
+      if (fig === &#x27;n08-f01&#x27; || fig === &#x27;n11-f01&#x27;) await expect(locator).toBeVisible()
+      else await expect(locator).toHaveCount(0)
+    }
+    await captureFigureWhenUnlocked()
+
+    for (const [i, item] of items.entries()) {
+      const trigger = page.getByTestId(&#x27;textbook-item-&#x27; + item.id)
+      await expect(trigger, item.id).toBeVisible()
+      await trigger.click()
+      const panel = page.getByTestId(&#x27;inline-choice-panel-&#x27; + item.id)
+      await expect(panel).toBeVisible()
+      if (evidence &amp;&amp; (i === 0 || i === Math.floor(items.length / 2))) {
+        await trigger.scrollIntoViewIfNeeded()
+        await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-&#x27; + (i === 0 ? &#x27;start&#x27; : &#x27;middle&#x27;) + &#x27;-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+      }
+      await panel.getByRole(&#x27;button&#x27;, { name: item.answer, exact: true }).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27; + item.id)).toBeVisible()
+      await captureFigureWhenUnlocked()
+      await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+      if (i + 1 &lt; items.length) await expect(page.getByTestId(&#x27;textbook-item-&#x27; + items[i + 1].id)).toBeVisible()
+    }
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    for (const fig of figureIds) {
+      const image = page.getByTestId(&#x27;textbook-figure-&#x27; + fig).locator(&#x27;img&#x27;)
+      await expect(image).toBeVisible()
+      expect(await image.evaluate((img: HTMLImageElement) =&gt; img.complete &amp;&amp; img.naturalWidth &gt; 0), fig).toBe(true)
+    }
+    if (evidence) await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-finish-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+    const width = await page.evaluate(() =&gt; [document.documentElement.scrollWidth, document.documentElement.clientWidth])
+    expect(width[0], &#x27;document horizontal overflow&#x27;).toBeLessThanOrEqual(width[1] + 2)
+    await reloadReady(page)
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;resolved-&#x27; + items[0].id)).toBeVisible()
+  })
+}
+
+
+// W-MATH-014/P-001 — original N14 Q07: two sign-case thinking decisions
+// plus the unchanged original final four-choice interval. Actual screenshots
+// are written only when the existing native evidence workflow enables it.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-014 N14 Q07 sign-case proof, wrong/hint/retry and persisted choices at &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Capture once per requested viewport&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm014-q07-nonnegative&#x27;,&#x27;n14-wm014-q07-negative&#x27;,&#x27;n14-07&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(6,9).map(i=&gt;i.id)).toEqual(ids)
+      await clearStoredState(page)
+      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,6)){
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const correct=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(correct).toBeVisible()
+        const correctID=await correct.getAttribute(&#x27;data-testid&#x27;)
+        for(const option of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await option.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const dimensions=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(dimensions[0],id+&#x27; choice clipping&#x27;).toBeLessThanOrEqual(dimensions[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const options=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof options)[number]|undefined
+        for(const option of options){
+          if((await option.getAttribute(&#x27;data-testid&#x27;))!==correctID){wrong=option;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const bounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(bounds[0],id+&#x27; horizontal overflow&#x27;).toBeLessThanOrEqual(bounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-wm015-q08-nonnegative&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-015/P-001: true browser interaction with N14 Q08 positive,
+// negative and original final &quot;または&quot; choices; real screenshots only
+// under preexisting E2E_BATCH_EVIDENCE flow, not mock screenshots.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-015 N14 Q08 strict outside proof and history at &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Capture on mobile chromium&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm015-q08-nonnegative&#x27;,&#x27;n14-wm015-q08-negative&#x27;,&#x27;n14-08&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(9,12).map(x=&gt;x.id)).toEqual(ids)
+      await clearStoredState(page)
+      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,9)){
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(right).toBeVisible()
+        const rightKey=await right.getAttribute(&#x27;data-testid&#x27;)
+        for(const option of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await option.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const widths=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(widths[0],id+&#x27; choice overflow&#x27;).toBeLessThanOrEqual(widths[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const choices=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof choices)[number]|undefined
+        for(const choice of choices){
+          if((await choice.getAttribute(&#x27;data-testid&#x27;))!==rightKey){wrong=choice;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const bounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(bounds[0],id+&#x27; page overflow&#x27;).toBeLessThanOrEqual(bounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-09&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;resolved-n14-07&#x27;)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-016/P-001 — actual N14 Q12 branch subtraction and preserved OR final.
+// Capture only in existing, non-deploy evidence workflow; no mock screenshots.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-016 N14 Q12 separate subtraction branches and progress &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Mobile evidence viewport&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm016-q12-left&#x27;,&#x27;n14-wm016-q12-right&#x27;,&#x27;n14-12&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(19,22).map(x=&gt;x.id)).toEqual(ids) // Q10 adds four prior items
+      await clearStoredState(page)
+      await gotoReady(page, &#x27;/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14&#x27;)
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,19)){ // includes four new Q10 operations before Q12
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(right).toBeVisible()
+        const rightKey=await right.getAttribute(&#x27;data-testid&#x27;)
+        for(const opt of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await opt.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const w=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(w[0],id+&#x27; formula clipping&#x27;).toBeLessThanOrEqual(w[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const options=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof options)[number]|undefined
+        for(const option of options){
+          if((await option.getAttribute(&#x27;data-testid&#x27;))!==rightKey){wrong=option;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const pageBounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(pageBounds[0],id+&#x27; page horizontal overflow&#x27;).toBeLessThanOrEqual(pageBounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-13&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      for(const id of [&#x27;n14-07&#x27;,&#x27;n14-08&#x27;,&#x27;n14-11&#x27;])
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-019/P-001: independent real-browser Q14 check in an already-approved
+// math E2E workflow. Never infer formula fit from document scrollWidth only.
+for(const width of [320,390,1440] as const){
+  test(&#x27;W-MATH-019/Q14 narrow real Chromium &#x27;+width, async({page},info)=&gt;{
+    test.skip(width===1440?info.project.name!==&#x27;desktop-chromium&#x27;:info.project.name!==&#x27;mobile-chromium&#x27;)
+    test.setTimeout(240_000)
+    await page.setViewportSize({width,height:width===1440?1000:850})
+    const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+    const ids=[&#x27;n14-wm019-q14-add-left&#x27;,&#x27;n14-wm019-q14-add-center&#x27;,&#x27;n14-wm019-q14-add-right&#x27;,&#x27;n14-14&#x27;,&#x27;n14-wm019-q14-bound-right&#x27;]
+    const items=unit.sections[0].items
+    const first=items.findIndex(i=&gt;i.id===ids[0])
+    expect(first).toBeGreaterThan(20)
+    await clearStoredState(page)
+    await gotoReady(page, route(&#x27;14&#x27;))
+    const answer=async(id:string,value:string)=&gt;{
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await expect(button,id).toBeVisible()
+      await button.click()
+      await page.getByTestId(&#x27;inline-choice-panel-&#x27;+id).getByRole(&#x27;button&#x27;,{name:value,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    }
+    for(const prior of items.slice(0,first)) await answer(prior.id,prior.answer)
+    const line=page.getByTestId(&#x27;textbook-formula-n14-formula-14&#x27;)
+    const chain=page.locator(&#x27;[data-derivation-id=&quot;n14-q14-chain&quot;]&#x27;)
+    const reason=chain.locator(&#x27;.reading-derivation-step--paragraph&#x27;)
+    await expect(line).toBeVisible()
+    await expect(reason).toHaveCount(0)
+    await expect(chain.locator(&#x27;.reading-formula-line&#x27;)).toHaveCount(2)
+    const measure=async()=&gt;{
+      const m=await line.evaluate(el=&gt;{
+        const b=el.getBoundingClientRect()
+        const e=el.querySelector(&#x27;.reading-formula-expression&#x27;) as HTMLElement
+        const parts=Array.from(e.children).map(k=&gt;{const r=k.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top}})
+        const buttons=Array.from(el.querySelectorAll(&#x27;button.reading-formula-choice&#x27;)).map(k=&gt;{
+          const s=getComputedStyle(k),r=k.getBoundingClientRect()
+          return {text:k.textContent?.trim(),w:r.width,h:r.height,minw:parseFloat(s.minWidth),minh:parseFloat(s.minHeight),
+            label:k.getAttribute(&#x27;aria-label&#x27;),color:s.color,borderColor:s.borderColor}
+        })
+        return {scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,left:b.left,right:b.right,
+          display:getComputedStyle(e).display,parts,buttons}
+      })
+      expect(m.parts).toHaveLength(6)
+      expect(m.scrollWidth,&#x27;N14 Q14 formula clips internally at &#x27;+width).toBeLessThanOrEqual(m.clientWidth+1)
+      for(const p of m.parts){
+        expect(p.left,&#x27;N14 Q14 left clip &#x27;+width).toBeGreaterThanOrEqual(m.left-1)
+        expect(p.right,&#x27;N14 Q14 right clip &#x27;+width).toBeLessThanOrEqual(m.right+1)
+      }
+      for(const b of m.buttons){
+        expect([&#x27;選択&#x27;,&#x27;×&#x27;]).toContain(b.text)
+        expect(b.label).toBeTruthy()
+        expect(b.w).toBeGreaterThanOrEqual(b.minw-1)
+        expect(b.h).toBeGreaterThanOrEqual(b.minh-1)
+        expect(b.color).toBe(b.borderColor)
+      }
+      if(width&lt;=430){
+        expect(m.display).toBe(&#x27;grid&#x27;)
+        expect(Math.min(...m.parts.slice(4).map(k=&gt;k.top))-Math.min(...m.parts.slice(0,4).map(k=&gt;k.top))).toBeGreaterThan(12)
+      }else expect(m.display).toBe(&#x27;flex&#x27;)
+      return m
+    }
+    for(const [i,id] of ids.entries()){
+      const item=items.find(k=&gt;k.id===id)!
+      await page.getByTestId(&#x27;textbook-item-&#x27;+id).scrollIntoViewIfNeeded()
+      if(i&lt;3){
+        await measure()
+        await expect(reason).toHaveCount(0)
+        await expect(page.getByTestId(&#x27;textbook-item-n14-14&#x27;)).toHaveCount(0)
+      }else await expect(reason).toHaveCount(1)
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await button.focus()
+      await button.press(&#x27;Enter&#x27;)
+      const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+      const opts=await panel.getByRole(&#x27;button&#x27;).all()
+      const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+      const rightId=await right.getAttribute(&#x27;data-testid&#x27;)
+      let bad:(typeof opts)[number]|undefined
+      for(const opt of opts)if((await opt.getAttribute(&#x27;data-testid&#x27;))!==rightId){bad=opt;break}
+      expect(bad).toBeDefined()
+      await bad!.click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+      await button.click()
+      await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+      await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      if(i===2){
+        await expect(reason).toHaveCount(1)
+        await expect(reason.first()).toContainText(&#x27;中央の−2と＋2&#x27;)
+      }
+      if(i!==4) await expect(page.getByTestId(&#x27;textbook-item-n14-15&#x27;)).toHaveCount(0)
+    }
+    // W-MATH-020: Q15 opens with three division choices before its re-keyed left bound.
+    await expect(page.getByTestId(&#x27;textbook-item-n14-wm020-q15-divide-left&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;textbook-item-n14-15&#x27;)).toHaveCount(0)
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+    const v=await page.evaluate(()=&gt;[document.documentElement.scrollWidth,document.documentElement.clientWidth])
+    expect(v[0]).toBeLessThanOrEqual(v[1]+2)
+    await reloadReady(page)
+    for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    await expect(page.getByTestId(&#x27;resolved-n14-10&#x27;)).toBeVisible()
+  })
+}
+
+
+// W-MATH-022/P-001: Q16 must actually be solved in five local decisions,
+// with genuine 320/390/1440 rendering, wrong-hint-retry and saved progress.
+// The former combined Q16 answer MUST NOT be accepted as new progress.
+for (const width of [320, 390, 1440] as const) {
+  test(&#x27;W-MATH-022 N14 Q16 five-step endpoint check in Chromium &#x27;+width, async ({page}, info) =&gt; {
+    test.skip(width === 1440
+      ? info.project.name !== &#x27;desktop-chromium&#x27;
+      : info.project.name !== &#x27;mobile-chromium&#x27;)
+    test.setTimeout(240_000)
+    await page.setViewportSize({width, height: width === 1440 ? 1000 : 850})
+    const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+    const items=unit.sections[0].items
+    const q16Ids=[
+      &#x27;n14-wm022-q16-left-inner&#x27;,&#x27;n14-wm022-q16-left-abs&#x27;,
+      &#x27;n14-wm022-q16-right-inner&#x27;,&#x27;n14-wm022-q16-right-abs&#x27;,&#x27;n14-16&#x27;,
+    ]
+    expect(unit.revision).toBe(10)
+    expect(items).toHaveLength(38)
+    const start=items.findIndex(i=&gt;i.id===q16Ids[0])
+    expect(start).toBe(33)
+    expect(items.slice(start).map(i=&gt;i.id)).toEqual(q16Ids)
+    await clearStoredState(page)
+    await gotoReady(page, route(&#x27;14&#x27;))
+    const solve=async(id:string,value:string)=&gt;{
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await expect(button,id).toBeVisible()
+      await button.click()
+      await page.getByTestId(&#x27;inline-choice-panel-&#x27;+id).getByRole(&#x27;button&#x27;,{name:value,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    }
+    for (const prior of items.slice(0,start)) await solve(prior.id,prior.answer)
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27;+q16Ids[0])).toBeVisible()
+    await expect(page.getByTestId(&#x27;n14-after-16&#x27;)).toHaveCount(0)
+    const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+    if (evidence) mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+    const lineIds=[&#x27;n14-formula-16&#x27;,&#x27;n14-wm022-q16-right&#x27;]
+    const measure=async()=&gt;{
+      for (const id of lineIds) {
+        const target=page.getByTestId(&#x27;textbook-formula-&#x27;+id)
+        if(await target.count()===0)continue
+        const m=await target.evaluate(el=&gt;{
+          const r=el.getBoundingClientRect()
+          const e=el.querySelector(&#x27;.reading-formula-expression&#x27;) as HTMLElement
+          const parts=Array.from(e.children).map(p=&gt;{
+            const a=p.getBoundingClientRect()
+            return {left:a.left,right:a.right,top:a.top}
+          })
+          const buttons=Array.from(el.querySelectorAll(&#x27;button.reading-formula-choice&#x27;)).map(b=&gt;{
+            const rect=b.getBoundingClientRect(),style=getComputedStyle(b)
+            return {text:b.textContent?.trim(),w:rect.width,h:rect.height,minw:parseFloat(style.minWidth),minh:parseFloat(style.minHeight)}
+          })
+          return {left:r.left,right:r.right,scroll:el.scrollWidth,client:el.clientWidth,
+            display:getComputedStyle(e).display,parts,buttons}
+        })
+        expect(m.parts,id).toHaveLength(5)
+        expect(m.scroll,&#x27;Q16 horizontal clipping &#x27;+id+&#x27; at &#x27;+width).toBeLessThanOrEqual(m.client+1)
+        for (const part of m.parts){
+          expect(part.left,id+&#x27; left clip at &#x27;+width).toBeGreaterThanOrEqual(m.left-1)
+          expect(part.right,id+&#x27; right clip at &#x27;+width).toBeLessThanOrEqual(m.right+1)
+        }
+        for(const b of m.buttons){
+          expect([&#x27;選択&#x27;,&#x27;×&#x27;]).toContain(b.text)
+          expect(b.w).toBeGreaterThanOrEqual(b.minw-1)
+          expect(b.h).toBeGreaterThanOrEqual(b.minh-1)
+        }
+        if(width&lt;=430){
+          expect(m.display).toBe(&#x27;grid&#x27;)
+          expect(m.parts[1].top-m.parts[0].top).toBeGreaterThan(12)
+        }else expect(m.display).toBe(&#x27;flex&#x27;)
+      }
+    }
+    for(const [index,id] of q16Ids.entries()){
+      const q=items.find(z=&gt;z.id===id)!
+      await expect(page.getByTestId(&#x27;textbook-item-&#x27;+id)).toBeVisible()
+      if(index&lt;4) await measure()
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await button.scrollIntoViewIfNeeded()
+      if(evidence &amp;&amp; (index===0 || index===2 || index===4))
+        await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-step&#x27;+(index+1)+&#x27;-before.png&#x27;})
+      await button.focus()
+      await button.press(&#x27;Enter&#x27;)
+      const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+      await expect(panel).toBeVisible()
+      const wrong=q.choices!.find(c=&gt;c!==q.answer)!
+      await panel.getByRole(&#x27;button&#x27;,{name:wrong,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+      await button.click()
+      await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+      if(evidence &amp;&amp; index===0)
+        await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-wrong-hint.png&#x27;})
+      await panel.getByRole(&#x27;button&#x27;,{name:q.answer,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+      if(index&lt;4)await expect(page.getByTestId(&#x27;textbook-item-&#x27;+q16Ids[index+1])).toBeVisible()
+      if(index&lt;4)await expect(page.getByTestId(&#x27;resolved-n14-16&#x27;)).toHaveCount(0)
+    }
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    await expect(page.getByText(&#x27;左端も右端も絶対値が4となり&#x27;)).toBeVisible()
+    const dims=await page.evaluate(()=&gt;[document.documentElement.scrollWidth,document.documentElement.clientWidth])
+    expect(dims[0]).toBeLessThanOrEqual(dims[1]+2)
+    if(evidence)await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-complete.png&#x27;})
+    await reloadReady(page)
+    for(const id of q16Ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    for(const id of [&#x27;n14-10&#x27;,&#x27;n14-14&#x27;,&#x27;n14-15&#x27;])await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+  })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item =&gt; item.type === &#x27;historical-edition&#x27;)) {
+    test.info().annotations.push({ type: &#x27;historical-edition&#x27;, description: &#x27;171c archival Page + pinned shared runtime; not current Page coverage&#x27; })
+  }
+  return &#x27;/kyotsu-step-web/e2e/fixtures/historical-math.html#&#x27; + path
+}
+</pre></details><details><summary>変更後全文</summary><pre>import { gotoReady, reloadReady, clearStoredState } from &#x27;./helpers&#x27;
+import { mkdirSync } from &#x27;node:fs&#x27;
+import { expect, test } from &#x27;@playwright/test&#x27;
+import editionData from &#x27;./fixtures/historical-math-data.json&#x27; with { type: &#x27;json&#x27; }
+import { validateTextbookUnits as editionValidate } from &#x27;../src/domain/textbookSchema&#x27;
+
+const mathTextbookUnits = editionValidate(editionData.units)
+
+const units = [&#x27;04&#x27;, &#x27;05&#x27;, &#x27;06&#x27;, &#x27;07&#x27;, &#x27;08&#x27;, &#x27;11&#x27;, &#x27;13&#x27;, &#x27;14&#x27;] as const
+const route = (n: string) =&gt; editionHistoricalRoute(&#x27;/learning/textbook/math-numbers-expressions-n&#x27; + n)
+
+for (const n of units) {
+  test(&#x27;W-MATH-003 batch N&#x27; + n + &#x27;: all original choices, mobile/PC progression, persistence and figures&#x27;, async ({ page }, testInfo) =&gt; {
+    test.setTimeout(180_000)
+    const unit = mathTextbookUnits.find(u =&gt; u.unitId.endsWith(&#x27;n&#x27; + n))!
+    const items = unit.sections[0].items
+    const figureIds = unit.sections[0].figures.map(f =&gt; f.id)
+    await clearStoredState(page)
+    await gotoReady(page, route(n))
+    await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27; + items[0].id)).toBeVisible()
+    const evidence = process.env.E2E_BATCH_EVIDENCE === &#x27;1&#x27;
+    const device = testInfo.project.name.includes(&#x27;mobile&#x27;) ? &#x27;mobile&#x27; : &#x27;desktop&#x27;
+    const pictured = new Set&lt;string&gt;()
+    async function captureFigureWhenUnlocked() {
+      for (const fig of figureIds) {
+        if (pictured.has(fig)) continue
+        const locator = page.getByTestId(&#x27;textbook-figure-&#x27; + fig)
+        if (await locator.count() === 0) continue
+        await expect(locator).toBeVisible()
+        pictured.add(fig)
+        if (evidence) {
+          await locator.scrollIntoViewIfNeeded()
+          await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-figure-&#x27; + fig + &#x27;-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+        }
+      }
+    }
+    for (const fig of figureIds) {
+      const locator = page.getByTestId(&#x27;textbook-figure-&#x27; + fig)
+      if (fig === &#x27;n08-f01&#x27; || fig === &#x27;n11-f01&#x27;) await expect(locator).toBeVisible()
+      else await expect(locator).toHaveCount(0)
+    }
+    await captureFigureWhenUnlocked()
+
+    for (const [i, item] of items.entries()) {
+      const trigger = page.getByTestId(&#x27;textbook-item-&#x27; + item.id)
+      await expect(trigger, item.id).toBeVisible()
+      await trigger.click()
+      const panel = page.getByTestId(&#x27;inline-choice-panel-&#x27; + item.id)
+      await expect(panel).toBeVisible()
+      if (evidence &amp;&amp; (i === 0 || i === Math.floor(items.length / 2))) {
+        await trigger.scrollIntoViewIfNeeded()
+        await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-&#x27; + (i === 0 ? &#x27;start&#x27; : &#x27;middle&#x27;) + &#x27;-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+      }
+      await panel.getByRole(&#x27;button&#x27;, { name: item.answer, exact: true }).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27; + item.id)).toBeVisible()
+      await captureFigureWhenUnlocked()
+      await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+      if (i + 1 &lt; items.length) await expect(page.getByTestId(&#x27;textbook-item-&#x27; + items[i + 1].id)).toBeVisible()
+    }
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    for (const fig of figureIds) {
+      const image = page.getByTestId(&#x27;textbook-figure-&#x27; + fig).locator(&#x27;img&#x27;)
+      await expect(image).toBeVisible()
+      expect(await image.evaluate((img: HTMLImageElement) =&gt; img.complete &amp;&amp; img.naturalWidth &gt; 0), fig).toBe(true)
+    }
+    if (evidence) await page.screenshot({ path: &#x27;e2e-evidence/n&#x27; + n + &#x27;-finish-&#x27; + device + &#x27;.png&#x27;, fullPage: false })
+    const width = await page.evaluate(() =&gt; [document.documentElement.scrollWidth, document.documentElement.clientWidth])
+    expect(width[0], &#x27;document horizontal overflow&#x27;).toBeLessThanOrEqual(width[1] + 2)
+    await reloadReady(page)
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;resolved-&#x27; + items[0].id)).toBeVisible()
+  })
+}
+
+
+// W-MATH-014/P-001 — original N14 Q07: two sign-case thinking decisions
+// plus the unchanged original final four-choice interval. Actual screenshots
+// are written only when the existing native evidence workflow enables it.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-014 N14 Q07 sign-case proof, wrong/hint/retry and persisted choices at &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Capture once per requested viewport&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm014-q07-nonnegative&#x27;,&#x27;n14-wm014-q07-negative&#x27;,&#x27;n14-07&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(6,9).map(i=&gt;i.id)).toEqual(ids)
+      await clearStoredState(page)
+      await gotoReady(page, route(&#x27;14&#x27;))
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,6)){
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const correct=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(correct).toBeVisible()
+        const correctID=await correct.getAttribute(&#x27;data-testid&#x27;)
+        for(const option of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await option.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const dimensions=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(dimensions[0],id+&#x27; choice clipping&#x27;).toBeLessThanOrEqual(dimensions[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const options=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof options)[number]|undefined
+        for(const option of options){
+          if((await option.getAttribute(&#x27;data-testid&#x27;))!==correctID){wrong=option;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const bounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(bounds[0],id+&#x27; horizontal overflow&#x27;).toBeLessThanOrEqual(bounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath014-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-wm015-q08-nonnegative&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-015/P-001: true browser interaction with N14 Q08 positive,
+// negative and original final &quot;または&quot; choices; real screenshots only
+// under preexisting E2E_BATCH_EVIDENCE flow, not mock screenshots.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-015 N14 Q08 strict outside proof and history at &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Capture on mobile chromium&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm015-q08-nonnegative&#x27;,&#x27;n14-wm015-q08-negative&#x27;,&#x27;n14-08&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(9,12).map(x=&gt;x.id)).toEqual(ids)
+      await clearStoredState(page)
+      await gotoReady(page, route(&#x27;14&#x27;))
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,9)){
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(right).toBeVisible()
+        const rightKey=await right.getAttribute(&#x27;data-testid&#x27;)
+        for(const option of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await option.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const widths=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(widths[0],id+&#x27; choice overflow&#x27;).toBeLessThanOrEqual(widths[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const choices=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof choices)[number]|undefined
+        for(const choice of choices){
+          if((await choice.getAttribute(&#x27;data-testid&#x27;))!==rightKey){wrong=choice;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const bounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(bounds[0],id+&#x27; page overflow&#x27;).toBeLessThanOrEqual(bounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath015-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-09&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;resolved-n14-07&#x27;)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-016/P-001 — actual N14 Q12 branch subtraction and preserved OR final.
+// Capture only in existing, non-deploy evidence workflow; no mock screenshots.
+for(const width of [320,390]){
+  test(&#x27;W-MATH-016 N14 Q12 separate subtraction branches and progress &#x27;+width+&#x27;px&#x27;,
+    async({page},testInfo)=&gt;{
+      test.skip(testInfo.project.name!==&#x27;mobile-chromium&#x27;,&#x27;Mobile evidence viewport&#x27;)
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+      const items=unit.sections[0].items
+      const ids=[&#x27;n14-wm016-q12-left&#x27;,&#x27;n14-wm016-q12-right&#x27;,&#x27;n14-12&#x27;]
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
+      expect(items.slice(19,22).map(x=&gt;x.id)).toEqual(ids) // Q10 adds four prior items
+      await clearStoredState(page)
+      await gotoReady(page, route(&#x27;14&#x27;))
+      await expect(page.getByTestId(&#x27;textbook-reading-flow&#x27;)).toBeVisible()
+      for(const item of items.slice(0,19)){ // includes four new Q10 operations before Q12
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+item.id)
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+      if(evidence)mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=&gt;z.id===id)!
+        const trigger=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(panel).toBeVisible()
+        const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+        await expect(right).toBeVisible()
+        const rightKey=await right.getAttribute(&#x27;data-testid&#x27;)
+        for(const opt of await panel.locator(&#x27;.reading-choice-option&#x27;).all())
+          for(const line of await opt.locator(&#x27;.reading-choice-formula-line&#x27;).all()){
+            const w=await line.evaluate(node=&gt;[node.scrollWidth,node.clientWidth])
+            expect(w[0],id+&#x27; formula clipping&#x27;).toBeLessThanOrEqual(w[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-before.png&#x27;})
+        }
+        const options=await panel.getByRole(&#x27;button&#x27;).all()
+        let wrong:(typeof options)[number]|undefined
+        for(const option of options){
+          if((await option.getAttribute(&#x27;data-testid&#x27;))!==rightKey){wrong=option;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+        await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-wrong.png&#x27;,
+        })
+        await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+        await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+        const pageBounds=await page.evaluate(()=&gt;[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(pageBounds[0],id+&#x27; page horizontal overflow&#x27;).toBeLessThanOrEqual(pageBounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:&#x27;e2e-evidence/wmath016-&#x27;+id+&#x27;-&#x27;+width+&#x27;-resolved.png&#x27;,
+        })
+      }
+      await expect(page.getByTestId(&#x27;textbook-item-n14-13&#x27;)).toBeVisible()
+      await reloadReady(page)
+      for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      for(const id of [&#x27;n14-07&#x27;,&#x27;n14-08&#x27;,&#x27;n14-11&#x27;])
+        await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.getByTestId(&#x27;textbook-figure-n14-f01&#x27;)).toBeVisible()
+    })
+}
+
+
+// W-MATH-019/P-001: independent real-browser Q14 check in an already-approved
+// math E2E workflow. Never infer formula fit from document scrollWidth only.
+for(const width of [320,390,1440] as const){
+  test(&#x27;W-MATH-019/Q14 narrow real Chromium &#x27;+width, async({page},info)=&gt;{
+    test.skip(width===1440?info.project.name!==&#x27;desktop-chromium&#x27;:info.project.name!==&#x27;mobile-chromium&#x27;)
+    test.setTimeout(240_000)
+    await page.setViewportSize({width,height:width===1440?1000:850})
+    const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+    const ids=[&#x27;n14-wm019-q14-add-left&#x27;,&#x27;n14-wm019-q14-add-center&#x27;,&#x27;n14-wm019-q14-add-right&#x27;,&#x27;n14-14&#x27;,&#x27;n14-wm019-q14-bound-right&#x27;]
+    const items=unit.sections[0].items
+    const first=items.findIndex(i=&gt;i.id===ids[0])
+    expect(first).toBeGreaterThan(20)
+    await clearStoredState(page)
+    await gotoReady(page, route(&#x27;14&#x27;))
+    const answer=async(id:string,value:string)=&gt;{
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await expect(button,id).toBeVisible()
+      await button.click()
+      await page.getByTestId(&#x27;inline-choice-panel-&#x27;+id).getByRole(&#x27;button&#x27;,{name:value,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    }
+    for(const prior of items.slice(0,first)) await answer(prior.id,prior.answer)
+    const line=page.getByTestId(&#x27;textbook-formula-n14-formula-14&#x27;)
+    const chain=page.locator(&#x27;[data-derivation-id=&quot;n14-q14-chain&quot;]&#x27;)
+    const reason=chain.locator(&#x27;.reading-derivation-step--paragraph&#x27;)
+    await expect(line).toBeVisible()
+    await expect(reason).toHaveCount(0)
+    await expect(chain.locator(&#x27;.reading-formula-line&#x27;)).toHaveCount(2)
+    const measure=async()=&gt;{
+      const m=await line.evaluate(el=&gt;{
+        const b=el.getBoundingClientRect()
+        const e=el.querySelector(&#x27;.reading-formula-expression&#x27;) as HTMLElement
+        const parts=Array.from(e.children).map(k=&gt;{const r=k.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top}})
+        const buttons=Array.from(el.querySelectorAll(&#x27;button.reading-formula-choice&#x27;)).map(k=&gt;{
+          const s=getComputedStyle(k),r=k.getBoundingClientRect()
+          return {text:k.textContent?.trim(),w:r.width,h:r.height,minw:parseFloat(s.minWidth),minh:parseFloat(s.minHeight),
+            label:k.getAttribute(&#x27;aria-label&#x27;),color:s.color,borderColor:s.borderColor}
+        })
+        return {scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,left:b.left,right:b.right,
+          display:getComputedStyle(e).display,parts,buttons}
+      })
+      expect(m.parts).toHaveLength(6)
+      expect(m.scrollWidth,&#x27;N14 Q14 formula clips internally at &#x27;+width).toBeLessThanOrEqual(m.clientWidth+1)
+      for(const p of m.parts){
+        expect(p.left,&#x27;N14 Q14 left clip &#x27;+width).toBeGreaterThanOrEqual(m.left-1)
+        expect(p.right,&#x27;N14 Q14 right clip &#x27;+width).toBeLessThanOrEqual(m.right+1)
+      }
+      for(const b of m.buttons){
+        expect([&#x27;選択&#x27;,&#x27;×&#x27;]).toContain(b.text)
+        expect(b.label).toBeTruthy()
+        expect(b.w).toBeGreaterThanOrEqual(b.minw-1)
+        expect(b.h).toBeGreaterThanOrEqual(b.minh-1)
+        expect(b.color).toBe(b.borderColor)
+      }
+      if(width&lt;=430){
+        expect(m.display).toBe(&#x27;grid&#x27;)
+        expect(Math.min(...m.parts.slice(4).map(k=&gt;k.top))-Math.min(...m.parts.slice(0,4).map(k=&gt;k.top))).toBeGreaterThan(12)
+      }else expect(m.display).toBe(&#x27;flex&#x27;)
+      return m
+    }
+    for(const [i,id] of ids.entries()){
+      const item=items.find(k=&gt;k.id===id)!
+      await page.getByTestId(&#x27;textbook-item-&#x27;+id).scrollIntoViewIfNeeded()
+      if(i&lt;3){
+        await measure()
+        await expect(reason).toHaveCount(0)
+        await expect(page.getByTestId(&#x27;textbook-item-n14-14&#x27;)).toHaveCount(0)
+      }else await expect(reason).toHaveCount(1)
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await button.focus()
+      await button.press(&#x27;Enter&#x27;)
+      const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+      const opts=await panel.getByRole(&#x27;button&#x27;).all()
+      const right=panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true})
+      const rightId=await right.getAttribute(&#x27;data-testid&#x27;)
+      let bad:(typeof opts)[number]|undefined
+      for(const opt of opts)if((await opt.getAttribute(&#x27;data-testid&#x27;))!==rightId){bad=opt;break}
+      expect(bad).toBeDefined()
+      await bad!.click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+      await button.click()
+      await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+      await panel.getByRole(&#x27;button&#x27;,{name:item.answer,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      if(i===2){
+        await expect(reason).toHaveCount(1)
+        await expect(reason.first()).toContainText(&#x27;中央の−2と＋2&#x27;)
+      }
+      if(i!==4) await expect(page.getByTestId(&#x27;textbook-item-n14-15&#x27;)).toHaveCount(0)
+    }
+    // W-MATH-020: Q15 opens with three division choices before its re-keyed left bound.
+    await expect(page.getByTestId(&#x27;textbook-item-n14-wm020-q15-divide-left&#x27;)).toBeVisible()
+    await expect(page.getByTestId(&#x27;textbook-item-n14-15&#x27;)).toHaveCount(0)
+    await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+    const v=await page.evaluate(()=&gt;[document.documentElement.scrollWidth,document.documentElement.clientWidth])
+    expect(v[0]).toBeLessThanOrEqual(v[1]+2)
+    await reloadReady(page)
+    for(const id of ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    await expect(page.getByTestId(&#x27;resolved-n14-10&#x27;)).toBeVisible()
+  })
+}
+
+
+// W-MATH-022/P-001: Q16 must actually be solved in five local decisions,
+// with genuine 320/390/1440 rendering, wrong-hint-retry and saved progress.
+// The former combined Q16 answer MUST NOT be accepted as new progress.
+for (const width of [320, 390, 1440] as const) {
+  test(&#x27;W-MATH-022 N14 Q16 five-step endpoint check in Chromium &#x27;+width, async ({page}, info) =&gt; {
+    test.skip(width === 1440
+      ? info.project.name !== &#x27;desktop-chromium&#x27;
+      : info.project.name !== &#x27;mobile-chromium&#x27;)
+    test.setTimeout(240_000)
+    await page.setViewportSize({width, height: width === 1440 ? 1000 : 850})
+    const unit=mathTextbookUnits.find(u=&gt;u.unitId.endsWith(&#x27;n14&#x27;))!
+    const items=unit.sections[0].items
+    const q16Ids=[
+      &#x27;n14-wm022-q16-left-inner&#x27;,&#x27;n14-wm022-q16-left-abs&#x27;,
+      &#x27;n14-wm022-q16-right-inner&#x27;,&#x27;n14-wm022-q16-right-abs&#x27;,&#x27;n14-16&#x27;,
+    ]
+    expect(unit.revision).toBe(10)
+    expect(items).toHaveLength(38)
+    const start=items.findIndex(i=&gt;i.id===q16Ids[0])
+    expect(start).toBe(33)
+    expect(items.slice(start).map(i=&gt;i.id)).toEqual(q16Ids)
+    await clearStoredState(page)
+    await gotoReady(page, route(&#x27;14&#x27;))
+    const solve=async(id:string,value:string)=&gt;{
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await expect(button,id).toBeVisible()
+      await button.click()
+      await page.getByTestId(&#x27;inline-choice-panel-&#x27;+id).getByRole(&#x27;button&#x27;,{name:value,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    }
+    for (const prior of items.slice(0,start)) await solve(prior.id,prior.answer)
+    await expect(page.getByTestId(&#x27;textbook-item-&#x27;+q16Ids[0])).toBeVisible()
+    await expect(page.getByTestId(&#x27;n14-after-16&#x27;)).toHaveCount(0)
+    const evidence=process.env.E2E_BATCH_EVIDENCE===&#x27;1&#x27;
+    if (evidence) mkdirSync(&#x27;e2e-evidence&#x27;,{recursive:true})
+    const lineIds=[&#x27;n14-formula-16&#x27;,&#x27;n14-wm022-q16-right&#x27;]
+    const measure=async()=&gt;{
+      for (const id of lineIds) {
+        const target=page.getByTestId(&#x27;textbook-formula-&#x27;+id)
+        if(await target.count()===0)continue
+        const m=await target.evaluate(el=&gt;{
+          const r=el.getBoundingClientRect()
+          const e=el.querySelector(&#x27;.reading-formula-expression&#x27;) as HTMLElement
+          const parts=Array.from(e.children).map(p=&gt;{
+            const a=p.getBoundingClientRect()
+            return {left:a.left,right:a.right,top:a.top}
+          })
+          const buttons=Array.from(el.querySelectorAll(&#x27;button.reading-formula-choice&#x27;)).map(b=&gt;{
+            const rect=b.getBoundingClientRect(),style=getComputedStyle(b)
+            return {text:b.textContent?.trim(),w:rect.width,h:rect.height,minw:parseFloat(style.minWidth),minh:parseFloat(style.minHeight)}
+          })
+          return {left:r.left,right:r.right,scroll:el.scrollWidth,client:el.clientWidth,
+            display:getComputedStyle(e).display,parts,buttons}
+        })
+        expect(m.parts,id).toHaveLength(5)
+        expect(m.scroll,&#x27;Q16 horizontal clipping &#x27;+id+&#x27; at &#x27;+width).toBeLessThanOrEqual(m.client+1)
+        for (const part of m.parts){
+          expect(part.left,id+&#x27; left clip at &#x27;+width).toBeGreaterThanOrEqual(m.left-1)
+          expect(part.right,id+&#x27; right clip at &#x27;+width).toBeLessThanOrEqual(m.right+1)
+        }
+        for(const b of m.buttons){
+          expect([&#x27;選択&#x27;,&#x27;×&#x27;]).toContain(b.text)
+          expect(b.w).toBeGreaterThanOrEqual(b.minw-1)
+          expect(b.h).toBeGreaterThanOrEqual(b.minh-1)
+        }
+        if(width&lt;=430){
+          expect(m.display).toBe(&#x27;grid&#x27;)
+          expect(m.parts[1].top-m.parts[0].top).toBeGreaterThan(12)
+        }else expect(m.display).toBe(&#x27;flex&#x27;)
+      }
+    }
+    for(const [index,id] of q16Ids.entries()){
+      const q=items.find(z=&gt;z.id===id)!
+      await expect(page.getByTestId(&#x27;textbook-item-&#x27;+id)).toBeVisible()
+      if(index&lt;4) await measure()
+      const button=page.getByTestId(&#x27;textbook-item-&#x27;+id)
+      await button.scrollIntoViewIfNeeded()
+      if(evidence &amp;&amp; (index===0 || index===2 || index===4))
+        await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-step&#x27;+(index+1)+&#x27;-before.png&#x27;})
+      await button.focus()
+      await button.press(&#x27;Enter&#x27;)
+      const panel=page.getByTestId(&#x27;inline-choice-panel-&#x27;+id)
+      await expect(panel).toBeVisible()
+      const wrong=q.choices!.find(c=&gt;c!==q.answer)!
+      await panel.getByRole(&#x27;button&#x27;,{name:wrong,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toHaveCount(0)
+      await button.click()
+      await expect(page.getByTestId(&#x27;textbook-hint-&#x27;+id)).toBeVisible()
+      if(evidence &amp;&amp; index===0)
+        await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-wrong-hint.png&#x27;})
+      await panel.getByRole(&#x27;button&#x27;,{name:q.answer,exact:true}).click()
+      await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+      await expect(page.locator(&#x27;.katex-error&#x27;)).toHaveCount(0)
+      if(index&lt;4)await expect(page.getByTestId(&#x27;textbook-item-&#x27;+q16Ids[index+1])).toBeVisible()
+      if(index&lt;4)await expect(page.getByTestId(&#x27;resolved-n14-16&#x27;)).toHaveCount(0)
+    }
+    await expect(page.getByTestId(&#x27;textbook-unit-complete&#x27;)).toBeVisible()
+    await expect(page.getByText(&#x27;左端も右端も絶対値が4となり&#x27;)).toBeVisible()
+    const dims=await page.evaluate(()=&gt;[document.documentElement.scrollWidth,document.documentElement.clientWidth])
+    expect(dims[0]).toBeLessThanOrEqual(dims[1]+2)
+    if(evidence)await page.screenshot({path:&#x27;e2e-evidence/wmath022-q16-&#x27;+width+&#x27;-complete.png&#x27;})
+    await reloadReady(page)
+    for(const id of q16Ids)await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+    for(const id of [&#x27;n14-10&#x27;,&#x27;n14-14&#x27;,&#x27;n14-15&#x27;])await expect(page.getByTestId(&#x27;resolved-&#x27;+id)).toBeVisible()
+  })
+}
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item =&gt; item.type === &#x27;historical-edition&#x27;)) {
+    test.info().annotations.push({ type: &#x27;historical-edition&#x27;, description: &#x27;171c archival Page + pinned shared runtime; not current Page coverage&#x27; })
+  }
+  return &#x27;/kyotsu-step-web/e2e/fixtures/historical-math.html#&#x27; + path
+}
+</pre></details></html>

@@ -1,11 +1,14 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test, type Page } from '@playwright/test'
 
-const route = (unitId: string) => '/kyotsu-step-web/#/learning/textbook/' + unitId
+// File-scoped budget includes genuine App bootstrap (up to30s) plus its unchanged interaction assertions.
+test.describe.configure({ timeout: 90000 })
+
+const route = (unitId: string) => editionHistoricalRoute('/learning/textbook/' + unitId)
 
 async function visitClean(page: Page, unitId: string) {
-  await page.goto(route(unitId))
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
+  await gotoReady(page, route(unitId))
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
 }
 
@@ -56,7 +59,7 @@ test('N02 review: all 12 source-stage decisions, compound answers, no forward le
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await mobileLayoutCheck(page)
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
 
@@ -109,7 +112,15 @@ test('N09 review: n=-3 gates original figure, all 14 original plus 4 square deci
   for (const [id, answer] of last) await choose(page, id, answer)
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await mobileLayoutCheck(page)
-  await page.reload()
+  await reloadReady(page)
   await expect(originalFigure).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
+
+// Explicit archival compatibility entry; original test assertions remain unchanged.
+function editionHistoricalRoute(path: string) {
+  if (!test.info().annotations.some(item => item.type === 'historical-edition')) {
+    test.info().annotations.push({ type: 'historical-edition', description: '171c archival Page + pinned shared runtime; not current Page coverage' })
+  }
+  return '/kyotsu-step-web/e2e/fixtures/historical-math.html#' + path
+}

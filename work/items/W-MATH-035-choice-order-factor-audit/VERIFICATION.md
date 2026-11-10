@@ -1,3 +1,23 @@
+# Current record reconciliation — W-MATH-035 / VERIFICATION.md
+
+Status: PASS
+Record-Scope: Metadata/provenance restoration only; no product or Store mutation.
+Fixed-Candidate: 84f90ba9d6c7fea8ebbaed976fc0de68aaa0c91b
+Work-State: DONE
+
+Historical native closure is evidenced for its exact recorded version. This record repair does not reopen the closed Work or accept a later product version.
+
+PASS is bounded to the exact historical closure/verification source listed below, not current repository-wide CI.
+
+Evidence:
+- Store approval event W035-P001-APPROVED-20261025, proposal_hash=7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e (historical, no new quote)
+- Store work_closed b6d29206-eac5-4c70-ad2e-1305013c468f seq1413 hash=a0f9134380a16aa171f9c5afdccee31d237180e959ea352400e60e12549ea6d2 source=fa0eff271a97940fad08d83960ae50faeabc81b9 result=2f394091cf591eb3680275860eefe2f09d1e98858164d56e9ef58c807e703c09
+
+Original-Body-Source: fixed candidate Git blob
+Original-Git-Body-SHA256: 5a432df302a40f5c3337574f01e9e335a7fb78dab8b929525920ad8ed0dd634e
+Original-Physical-Body-SHA256: ABSENT
+
+<!-- HISTORICAL ORIGINAL BODY START — bytes below preserved exactly; current metadata is above -->
 ## CURRENT — 学習入力の最終訂正を反映
 
 否定2件の元snapshotがpresentationの管理metadataから抽出され`[]`になっていたため、semantic.nodesの実本文・数式と実選択肢へ訂正した。入力はN09が849文字、N10が703文字。元の評価イベント・対象版・ラベル・事例数は変更していない。

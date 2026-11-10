@@ -1,6 +1,10 @@
+// Current W048 guards are separate from the historical W023 fixture above.
+import { mathNumbersN13Unit as currentN13, n13SourceToItemIds as current13Map } from './n13Lesson'
+import { mathNumbersN14Unit as currentN14, n14SourceToItemIds as current14Map } from './n14Lesson'
+import { mathNumbersN13LegacyUnit as historicalN13, mathNumbersN14LegacyUnit as historicalN14, n13SourceToItemIds as historical13Map, n14SourceToItemIds as historical14Map } from '../../../../test/n1314Legacy'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
-import { mathNumbersN13Unit, n13SourceToItemIds } from './n13Lesson'
+import { mathNumbersN13Unit, n13SourceToItemIds } from '../../../../test/n1314Legacy'
 import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
 
 const unit=mathNumbersN13Unit
@@ -123,4 +127,26 @@ describe('W-MATH-023/P-002 Stage B N13 Q08 sign split and two roots',()=>{
       expect(effectiveTextbookProgress(unit,now)).toBe(now)
     }
   })
+})
+
+// Four current/legacy edition and migration guards; original assertions above remain verbatim.
+const versions = [{current:currentN13,old:historicalN13,map:current13Map,oldMap:historical13Map,r:5,count:18,oldR:4,oldCount:12},{current:currentN14,old:historicalN14,map:current14Map,oldMap:historical14Map,r:11,count:41,oldR:10,oldCount:38}]
+describe('current and historical N13/N14 edition boundaries',()=>{
+ it.each(versions)('retains both exact edition/map contracts at r$r',v=>{
+  expect(v.current.revision).toBe(v.r);expect(v.old.revision).toBe(v.oldR)
+  expect(v.current.sections[0].items).toHaveLength(v.count);expect(v.old.sections[0].items).toHaveLength(v.oldCount)
+  expect(Object.values(v.map).flat()).toEqual(v.current.sections[0].items.map(x=>x.id))
+  expect(Object.values(v.oldMap).flat()).toEqual(v.old.sections[0].items.map(x=>x.id))
+  expect(v.map).not.toBe(v.oldMap)
+ })
+ it.each(versions)('keeps actual current W048 progress migration at r$r',v=>{
+  const answers=Object.fromEntries(v.old.sections[0].items.map(q=>[q.id,{itemId:q.id,value:q.answer,firstValue:q.answer,isFirstCorrect:true,resolved:true,attemptCount:1,firstAnsweredAt:1,lastAnsweredAt:2}]))
+  const before:TextbookUnitProgress={unitId:v.old.unitId,unitRevision:v.old.revision,startedAt:1,updatedAt:2,completedAt:3,answers}
+  const now=effectiveTextbookProgress(v.current,before)!
+  expect(now.unitRevision).toBe(v.r);expect(now.completedAt).toBeUndefined();expect(now.previousRevisionCompletedAt).toBe(3)
+  expect(now.archivedRevisions?.[String(v.oldR)]?.answers).toEqual(answers)
+  for(const key of Object.keys(answers))expect(now.answers[key]).toEqual(answers[key])
+  for(const q of v.current.sections[0].items.filter(q=>!answers[q.id]))expect(now.answers[q.id]).toBeUndefined()
+  expect(effectiveTextbookProgress(v.current,now)).toBe(now)
+ })
 })

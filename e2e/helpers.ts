@@ -30,7 +30,7 @@ async function requireAppReady(page: Page) {
     const main = document.getElementById('main-content')
     if (!main || main.getClientRects().length === 0) return false
     if (!window.location.hash.slice(1).split('?')[0].startsWith('/learning/textbook/')) return true
-    return [...document.querySelectorAll<HTMLElement>('[data-testid="textbook-reading-flow"]')].some(flow => flow.getClientRects().length > 0 && getComputedStyle(flow).visibility !== 'hidden')
+    return Array.from(document.querySelectorAll<HTMLElement>('[data-testid="textbook-reading-flow"]')).some(flow => flow.getClientRects().length > 0 && getComputedStyle(flow).visibility !== 'hidden')
   }, undefined, { timeout: BOOT_READY_MS })
   await expect(page.locator('#root > main h1'), 'The genuine App must not show its boot/render error surface').toHaveCount(0)
   await expect(page.locator('#main-content')).toBeVisible()

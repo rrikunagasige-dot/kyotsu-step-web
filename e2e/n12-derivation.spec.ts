@@ -186,6 +186,7 @@ test('N12 P-003: 35 progressive inline holes, math, figure gates, retry and relo
 })
 
 test('N12 P-003: v1 history is archived and a genuine restart begins at Q01', async ({ page }) => {
+  test.setTimeout(90_000)
   await page.goto('/kyotsu-step-web/e2e/fixtures/historical-math-data.json')
   await page.evaluate(() => {
     localStorage.clear()

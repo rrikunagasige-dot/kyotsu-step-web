@@ -89,7 +89,7 @@ for(const width of [320,390]){
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(6,9).map(i=>i.id)).toEqual(ids)
       await clearStoredState(page)
-      await gotoReady(page, '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,6)){
         const trigger=page.getByTestId('textbook-item-'+item.id)
@@ -168,7 +168,7 @@ for(const width of [320,390]){
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(9,12).map(x=>x.id)).toEqual(ids)
       await clearStoredState(page)
-      await gotoReady(page, '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,9)){
         const trigger=page.getByTestId('textbook-item-'+item.id)
@@ -247,7 +247,7 @@ for(const width of [320,390]){
       expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(19,22).map(x=>x.id)).toEqual(ids) // Q10 adds four prior items
       await clearStoredState(page)
-      await gotoReady(page, '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
+      await gotoReady(page, route('14'))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       for(const item of items.slice(0,19)){ // includes four new Q10 operations before Q12
         const trigger=page.getByTestId('textbook-item-'+item.id)

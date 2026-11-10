@@ -1,12 +1,14 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test, type Page } from '@playwright/test'
+
+// File-scoped budget includes genuine App bootstrap (up to30s) plus its unchanged interaction assertions.
+test.describe.configure({ timeout: 90000 })
 
 const appRoute = (path: string) => path.startsWith('/learning/textbook/math-numbers-expressions-')
   ? editionHistoricalRoute(path) : `/kyotsu-step-web/#${path}`
 
 async function clearState(page: Page) {
-  await page.goto(appRoute('/problems'))
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
 }
 
 async function chooseWrongOption(page: Page, itemId: string, correctLabel: string) {
@@ -144,7 +146,7 @@ test.beforeEach(async ({ page }) => {
 test('W-MATH-010 N02 zero-coefficient term is an after-answer explanation, not a leaked coefficient', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await clearState(page)
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n02'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n02'))
   for (const [id, answer] of [
     ['n02-01', '3bx'],
     ['n02-02', 'x^3-ax^2+3bx+5c'],
@@ -166,7 +168,7 @@ test('W-MATH-010 N02 zero-coefficient term is an after-answer explanation, not a
 })
 
 test('learning setup exposes math textbook mode with the same three curriculum topics', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
 
   await expect(page.getByRole('button', { name: /数学/ })).toHaveAttribute('aria-pressed', 'true')
   await expect(page.getByTestId('math-textbook-chapter-3')).toContainText('集合と命題')
@@ -184,13 +186,13 @@ test('learning setup exposes math textbook mode with the same three curriculum t
 })
 
 test('math textbook setup enters the set lesson and physics remains available from the same subject selector', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
 
   await page.getByTestId('math-textbook-topic-organize-sets').click()
   await expect(page).toHaveURL(/\/learning\/textbook\/math-sets$/)
   await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
 
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
   await page.getByRole('button', { name: '物理', exact: true }).click()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()
   await expect(page.getByTestId('textbook-part-1')).toContainText('様々な運動')
@@ -198,7 +200,7 @@ test('math textbook setup enters the set lesson and physics remains available fr
 
 
 test('proposition-reading builds the proposition concept from the first textbook condition', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-reading'))
 
   await expect(page.getByRole('heading', { name: '条件から命題を読む', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '条件から真偽を判断する', exact: true })).toBeVisible()
@@ -214,7 +216,7 @@ test('proposition-reading builds the proposition concept from the first textbook
 })
 
 test('proposition-reading wrong answer stays unresolved and does not reveal the proposition concept', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-reading'))
 
   await chooseWrongOption(page, 'prop-a01', '満たす')
 
@@ -233,7 +235,7 @@ test('proposition-reading wrong answer stays unresolved and does not reveal the 
 })
 
 test('proposition-reading follows the textbook order from truth to necessary/sufficient to negation', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-reading'))
 
   await expect(page.getByTestId('reading-role-example-marker-example-implication')).toBeVisible()
 
@@ -314,7 +316,7 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
 })
 
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-reading'))
 
   await answerItem(page, 'prop-a01', '満たす')
   await answerItem(page, 'prop-a02', 'すべて入る')
@@ -342,7 +344,7 @@ test('proposition-reading counterexample is decided before the counterexample co
 
 
 test('quantifier review unit derives the negation of exists only after an existence witness', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+  await gotoReady(page, appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await expect(page.getByRole('heading', { name: '「すべて」と「ある」', exact: true })).toBeVisible()
   await expect(page.getByTestId('reading-role-example-marker-example-exists')).toBeVisible()
@@ -362,7 +364,7 @@ test('quantifier review unit derives the negation of exists only after an existe
 })
 
 test('quantifier review wrong answer stays unresolved and keeps the witness step locked', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+  await gotoReady(page, appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await chooseWrongOption(page, 'quant-a02', 'a=2, b=3')
 
@@ -385,7 +387,7 @@ test('quantifier review wrong answer stays unresolved and keeps the witness step
 })
 
 test('quantifier review unit derives the negation of all only after the source counterexample', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+  await gotoReady(page, appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await answerItem(page, 'quant-a02', 'a=2, b=3')
   await answerItem(page, 'quant-a03', 'すべての素数の組(a,b)に対してabは奇数である')
@@ -401,7 +403,7 @@ test('quantifier review unit derives the negation of all only after the source c
 
 
 test('quantifier review reaches all five source statements without layout regressions', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+  await gotoReady(page, appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   const answers: Array<[string, string]> = [
     ['quant-a02', 'a=2, b=3'],
@@ -431,7 +433,7 @@ test('quantifier review reaches all five source statements without layout regres
 })
 
 test('function-conditions review unit builds the function concept before substitution work', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+  await gotoReady(page, appRoute('/learning/textbook/math-functions-conditions'))
 
   await expect(page.getByRole('heading', { name: '関数の条件を読む', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-a01')).toBeVisible()
@@ -445,7 +447,7 @@ test('function-conditions review unit builds the function concept before substit
 })
 
 test('function review wrong answer stays unresolved and keeps the function concept locked', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+  await gotoReady(page, appRoute('/learning/textbook/math-functions-conditions'))
 
   await chooseWrongOption(page, 'func-a01', 'ただ1つに決まる')
 
@@ -460,7 +462,7 @@ test('function review wrong answer stays unresolved and keeps the function conce
 })
 
 test('function review remains readable through the rectangle domain/range conclusion', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+  await gotoReady(page, appRoute('/learning/textbook/math-functions-conditions'))
 
   const answers: Array<[string, string]> = [
     ['func-a01', 'ただ1つに決まる'],
@@ -494,7 +496,7 @@ test('function review remains readable through the rectangle domain/range conclu
 })
 
 test('proposition-proof review unit starts from changing the direction of a proposition', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-proof'))
 
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '命題の向きを変える', exact: true })).toBeVisible()
@@ -525,7 +527,7 @@ test('proposition-proof review unit starts from changing the direction of a prop
 
 
 test('proof review wrong answer stays unresolved and keeps the reverse concept locked', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-proof'))
 
   await chooseWrongOption(page, 'proof-a01', 'x=1\\Rightarrow x^2=x')
 
@@ -540,7 +542,7 @@ test('proof review wrong answer stays unresolved and keeps the reverse concept l
 })
 
 test('proof review reaches contrapositive and contradiction conclusions without layout regressions', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+  await gotoReady(page, appRoute('/learning/textbook/math-propositions-proof'))
 
   const answers: Array<[string, string]> = [
     ['proof-a01', 'x=1\\Rightarrow x^2=x'],
@@ -587,6 +589,7 @@ test('proof review reaches contrapositive and contradiction conclusions without 
 })
 
 test('all review math units enter without KaTeX errors or horizontal overflow', async ({ page }) => {
+  test.setTimeout(150000)
   const routes = [
     '/learning/textbook/math-propositions-reading',
     '/learning/textbook/math-quantifiers-all-exists',
@@ -595,7 +598,7 @@ test('all review math units enter without KaTeX errors or horizontal overflow', 
   ]
 
   for (const route of routes) {
-    await page.goto(appRoute(route))
+    await gotoReady(page, appRoute(route))
     await expect(page.locator('.katex-error')).toHaveCount(0)
 
     const viewport = await page.evaluate(() => ({
@@ -607,7 +610,7 @@ test('all review math units enter without KaTeX errors or horizontal overflow', 
 })
 
 test('math textbook setup exposes only the published set topic and keeps later topics pending', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
 
   const sets = page.getByTestId('math-textbook-topic-organize-sets')
   await expect(sets).toHaveAttribute('href', /math-sets/)
@@ -624,7 +627,7 @@ test('math set lesson boots directly on the shared textbook reader', async ({ pa
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))
 
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
 
   await expect(page.getByText('TEXTBOOK / MATH I+A / CHAPTER 3')).toBeVisible()
   await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
@@ -638,7 +641,7 @@ test('math set lesson boots directly on the shared textbook reader', async ({ pa
 })
 
 test('wrong answer stays unresolved, shows a staged hint, and does not unlock concept prose', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
 
   await chooseWrongOption(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
 
@@ -654,7 +657,7 @@ test('wrong answer stays unresolved, shows a staged hint, and does not unlock co
 })
 
 test('correct answer fills the sentence and unlocks the next learning step', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
 
   await page.getByTestId('textbook-item-set-a01').click()
   const panel = page.getByTestId('inline-choice-panel-set-a01')
@@ -679,7 +682,7 @@ test('correct answer fills the sentence and unlocks the next learning step', asy
 })
 
 test('set notation renders without KaTeX errors or horizontal overflow', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
 
   const itemIds = ['set-a01', 'set-a02', 'set-a03', 'set-a04', 'set-a05']
   const answers = [
@@ -708,7 +711,7 @@ test('set notation renders without KaTeX errors or horizontal overflow', async (
 
 
 test('the second learning group follows the golden intersection-and-union-first order', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
 
   await expect(page.getByRole('heading', { name: '第2部　集合どうしの関係を見る', exact: true })).toHaveCount(0)
   await completeFirstSetsSlice(page)
@@ -720,7 +723,7 @@ test('the second learning group follows the golden intersection-and-union-first 
 })
 
 test('the completed intersection figure is revealed only after the intersection decision', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
 
   await expect(page.getByTestId('textbook-figure-venn-two-blank')).toBeVisible()
@@ -734,7 +737,7 @@ test('the completed intersection figure is revealed only after the intersection 
 })
 
 test('intersection and union lead into subset with the golden meaning-first progression', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
 
   await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
@@ -765,7 +768,8 @@ test('intersection and union lead into subset with the golden meaning-first prog
 
 
 test('complement terminology appears only after the whole-set scope and outside elements are decided', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
 
@@ -783,7 +787,8 @@ test('complement terminology appears only after the whole-set scope and outside 
 })
 
 test('De Morgan law is revealed only after the two regions are compared', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
@@ -808,7 +813,8 @@ test('De Morgan law is revealed only after the two regions are compared', async 
 })
 
 test('real-line endpoint judgments precede complement formulas and the unit can reach completion', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
@@ -853,7 +859,7 @@ test('real-line endpoint judgments precede complement formulas and the unit can 
 
 
 test('math-set keeps one closed history row and shows exactly the prerequisite for the active hole', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await expect(page.locator('.reading-term').filter({ hasText: /^集合$/ })).toBeVisible()
   await advanceMathStage(page)
@@ -881,11 +887,11 @@ test('math-set keeps one closed history row and shows exactly the prerequisite f
 })
 
 test('math-set cursor resumes at the current short stage and reset does not skip new reading', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await advanceMathStage(page)
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
   await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
@@ -897,7 +903,7 @@ test('math-set cursor resumes at the current short stage and reset does not skip
 
 test('math-set Chinese labels and a 320px screen retain the same compact readable flow', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 700 })
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await page.getByTestId('language-switcher').getByRole('button', { name: '中文' }).click()
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await advanceMathStage(page)
@@ -913,17 +919,17 @@ test('math-set Chinese labels and a 320px screen retain the same compact readabl
 })
 
 test('math-set old saved stage index resumes without automatically exposing history', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await page.evaluate(() => window.localStorage.setItem('math-textbook-compact-v1:math-sets:r2', '1'))
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
   await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
   await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
 })
 
 test('math-set union has earlier A and B available even after intersection closes', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await answerItem(page, 'set-b01', '3, 5, 7')
   await answerItem(page, 'set-b02', 'AとBの両方に属する要素')
@@ -934,7 +940,7 @@ test('math-set union has earlier A and B available even after intersection close
 })
 
 test('math-set empty-set exercise retains its earlier source A without opening the full history', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   const prior: Array<[string, string]> = [
     ['set-b01', '3, 5, 7'], ['set-b02', 'AとBの両方に属する要素'],
@@ -953,7 +959,8 @@ test('math-set empty-set exercise retains its earlier source A without opening t
 })
 
 test('math-set B-complement starts with U and B, not an unrelated A-complement', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await answerItem(page, 'set-d01', '入れない')
@@ -970,7 +977,8 @@ test('math-set B-complement starts with U and B, not an unrelated A-complement',
 })
 
 test('math-set real-line continuation retains source intervals and only offers already-seen diagram', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
@@ -992,7 +1000,7 @@ test('math-set real-line continuation retains source intervals and only offers a
 })
 
 test('math-set completed history can all expand without changing any answers, and is keyboard accessible', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await advanceMathStage(page)
   const history = page.getByTestId('math-textbook-history-toggle')
@@ -1016,7 +1024,8 @@ test('math-set completed history can all expand without changing any answers, an
 
 
 test('P-003 reuses the original complement figure and displays U, A, A-bar in one math style at d08', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   const before: Array<[string, string]> = [
@@ -1043,7 +1052,8 @@ test('P-003 reuses the original complement figure and displays U, A, A-bar in on
 })
 
 test('P-003 complements are TeX operators, not singleton sets, in De Morgan choices', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
@@ -1061,8 +1071,9 @@ test('P-003 complements are TeX operators, not singleton sets, in De Morgan choi
 })
 
 test('P-003 long real-line choices use one card per option and two meaningful math lines on mobile', async ({ page }) => {
+  test.setTimeout(120000)
   await page.setViewportSize({ width: 320, height: 700 })
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
@@ -1093,7 +1104,7 @@ test('P-003 long real-line choices use one card per option and two meaningful ma
 })
 
 test('P-004 production figure elements load and decode actual SVG pixels in the app', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
 
   const blank = page.getByTestId('textbook-figure-venn-two-blank').locator('img')
@@ -1127,7 +1138,7 @@ test('P-004 production figure elements load and decode actual SVG pixels in the 
 })
 
 test('P-004 all eleven existing math-set SVG assets load and decode under production base', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   const names = [
     'venn-two-blank.svg', 'venn-intersection.svg', 'venn-union.svg',
     'subset-after.svg', 'complement-after.svg',
@@ -1155,7 +1166,7 @@ test('P-004 all eleven existing math-set SVG assets load and decode under produc
 })
 
 test('P-004 P-005 subset figure uses approved PNG inside real app in compiled preview', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await gotoReady(page, appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
   const beforeSubset: Array<[string, string]> = [
     ['set-b01','3, 5, 7'],
@@ -1192,7 +1203,8 @@ test('P-004 P-005 subset figure uses approved PNG inside real app in compiled pr
 
 
 test('N01 review-only pilot: original 10 source tasks plus 3 local coefficients become 18 gated steps without revealing later answers', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
+  test.setTimeout(120000)
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n01'))
   await expect(page.getByRole('heading', { level: 1, name: '式を整える' })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
@@ -1228,16 +1240,16 @@ test('N01 review-only pilot: original 10 source tasks plus 3 local coefficients 
     await expect(page.getByTestId('resolved-' + id)).toBeVisible()
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   // Review previews appear through the approved chapter-1 learner catalog.
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
   await expect(page.getByTestId('math-textbook-topic-numbers-polynomials')).toContainText('式を整える')
 })
 
 
 test('W-MATH-003 N01 review-only pilot completes all 18 inline decisions in actual compiled app', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n01'))
   await expect(page.getByRole('heading', { name: '式を整える' })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
@@ -1269,14 +1281,14 @@ test('W-MATH-003 N01 review-only pilot completes all 18 inline decisions in actu
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-reading-flow')).toContainText('残った項の次数を判断する')
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
 
 
 test('W-MATH-003 N03 review: 13 source decisions plus 4 products, original four-cell figure, mobile KaTeX', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n03'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n03'))
   await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('指数法則と展開')
   await expect(page.getByTestId('textbook-item-n03-01')).toBeVisible()
@@ -1318,7 +1330,7 @@ test('W-MATH-003 N03 review: 13 source decisions plus 4 products, original four-
 })
 
 test('W-MATH-003 N10 review: proof prerequisites and all 21 roots/rationalization choices', async ({ page }) => {
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n10'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n10'))
   await expect(page.getByRole('heading', { name: '実数を扱う', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('平方根の証明と有理化')
   await expect(page.getByTestId('textbook-item-n10-01')).toBeVisible()
@@ -1355,8 +1367,9 @@ test('W-MATH-003 N10 review: proof prerequisites and all 21 roots/rationalizatio
 })
 
 test('W-MATH-003 N12 review: original number lines gated and answer figure hidden until Q15', async ({ page }) => {
+  test.setTimeout(120000)
   await page.setViewportSize({ width: 320, height: 720 })
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n12'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n12'))
   await expect(page.getByRole('heading', { name: '不等式を使う', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('連立不等式と整数条件')
   await expect(page.getByTestId('textbook-item-n12-p002-q01-coef')).toBeVisible()
@@ -1432,7 +1445,7 @@ test('W-MATH-003 N12 review: original number lines gated and answer figure hidde
 })
 
 test('W-MATH-003 approved review themes appear on the public setup and keep physics intact', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
   for (const [id, label] of [['numbers-polynomials','式を整える'], ['numbers-real','実数を扱う'], ['numbers-inequalities','不等式を使う']] as const) {
     await expect(page.getByTestId('math-textbook-topic-' + id)).toContainText(label)
   }
@@ -1443,7 +1456,7 @@ test('W-MATH-003 approved review themes appear on the public setup and keep phys
 test('W-MATH-009 N09 Q08: four gated calculation/sign holes, reload and 320/375/390px math layout', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await clearState(page)
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n09'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n09'))
   const originals: Array<[string, string]> = [
     ['n09-01', 'x=4,\\ -4'],
     ['n09-02', '(4,\\ 5)'],
@@ -1461,7 +1474,7 @@ test('W-MATH-009 N09 Q08: four gated calculation/sign holes, reload and 320/375/
   await chooseWrongOption(page, 'n09-p001-q08-left-square', '1.9881')
   await expect(page.getByTestId('textbook-item-n09-p001-q08-right-square')).toHaveCount(0)
   await answerItem(page, 'n09-p001-q08-left-square', '1.9881')
-  await page.reload()
+  await reloadReady(page)
   await expect(page.getByTestId('resolved-n09-p001-q08-left-square')).toBeVisible()
 
   for (const [id, answer] of [

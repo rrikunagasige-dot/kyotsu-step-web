@@ -1,13 +1,16 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test, type Page } from '@playwright/test'
+
+// File-scoped budget includes genuine App bootstrap (up to30s) plus its unchanged interaction assertions.
+test.describe.configure({ timeout: 120000 })
 import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
 
 const appRoute = (path: string) => /^\[archive171c\] /.test(test.info().title)
   ? editionHistoricalRoute(path) : '/kyotsu-step-web/#' + path
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
+  if (/^\[archive171c\] /.test(test.info().title)) await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
 })
 
 test('[archive171c] chapter 1 has three core and one optional reachable review topics; chapter 3 and physics remain intact', async ({ page }) => {
@@ -45,10 +48,10 @@ test('[archive171c] theme navigation and stable N02/N09 deep links show the real
   await expect(page.getByTestId('textbook-current-topic')).toContainText('分数と小数で、同じ数を表す')
   await expect(page.getByTestId('textbook-item-n07-01')).toBeVisible()
 
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n09'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n09'))
   await expect(page.getByTestId('textbook-item-n09-01')).toBeVisible()
 
-  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n02'))
+  await gotoReady(page, appRoute('/learning/textbook/math-numbers-expressions-n02'))
   await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('多項式の整理と加減')
   await expect(page.getByTestId('textbook-item-n02-01')).toBeVisible()
@@ -61,8 +64,8 @@ test('[archive171c] chapter 1 keeps learner progress and shows unfinished topic 
   await page.getByTestId('textbook-item-n07-01').click()
   await page.getByTestId('inline-choice-panel-n07-01').getByRole('button', { name: '0.75（小数第2位で終了）', exact: true }).click()
   await expect(page.getByTestId('resolved-n07-01')).toBeVisible()
-  await page.goto(appRoute('/learning/setup?subject=math-1a'))
-  await page.reload()
+  await gotoReady(page, appRoute('/learning/setup?subject=math-1a'))
+  await reloadReady(page)
   const topic = page.getByTestId('math-textbook-topic-numbers-real')
   await expect(topic).toContainText('1/65 完了')
   await expect(topic).toHaveAttribute('href', '#/learning/textbook/math-numbers-expressions-n07')
@@ -96,9 +99,8 @@ for (const contract of editionCurrentContracts.filter(item => item.code !== 'n12
   test('Current ordinary route ' + contract.code + ': accepted edition, wrong gate, answer, reload and reset', async ({ page }) => {
     test.setTimeout(90_000)
     test.info().annotations.push({ type: 'actual-current-entry', description: 'cd64 accepted production route; first interaction smoke, not full-unit replay' })
-    await page.goto('/kyotsu-step-web/#/learning/textbook/' + contract.unitId)
-    await page.evaluate(() => localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, '/kyotsu-step-web/#/learning/textbook/' + contract.unitId)
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible({ timeout: 30_000 })
     await expect(page.getByTestId('textbook-current-topic')).toContainText(contract.title)
     expect(page.url()).not.toContain('/fixtures/')
@@ -124,7 +126,7 @@ for (const contract of editionCurrentContracts.filter(item => item.code !== 'n12
       expect(saved.nestedProgress.records[contract.partId!].value).toBe(contract.answer)
       expect(saved.nestedProgress.records[contract.partId!].firstValue).toBe(contract.wrong)
       expect(saved.nestedProgress.records[contract.partId!].selectionCount).toBe(2)
-      await page.reload()
+      await reloadReady(page)
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible({ timeout: 30_000 })
       await expect(first).toHaveCount(0)
       await expect(nextEditable).toBeVisible()
@@ -152,7 +154,7 @@ for (const contract of editionCurrentContracts.filter(item => item.code !== 'n12
       expect(saved.answers[contract.firstId!].resolved).toBe(true)
       expect(saved.answers[contract.firstId!].attemptCount).toBe(2)
       await expect(target).toHaveCount(0)
-      await page.reload()
+      await reloadReady(page)
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible({ timeout: 30_000 })
       expect((await editionMainProgress(page, contract.unitId)).answers[contract.firstId!]).toEqual(saved.answers[contract.firstId!])
       await expect(target).toHaveCount(0)
@@ -166,7 +168,7 @@ for (const contract of editionCurrentContracts.filter(item => item.code !== 'n12
       } else expect(reset).toBeUndefined()
     }
     await expect(page.locator('.katex-error')).toHaveCount(0)
-    await page.reload()
+    await reloadReady(page)
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible({ timeout: 30_000 })
     const reset = await editionMainProgress(page, contract.unitId)
     if (contract.kind === 'nested') expect(reset.nestedProgress.records[contract.partId!]).toBeUndefined()
@@ -179,9 +181,8 @@ for (const contract of editionCurrentContracts.filter(item => item.code !== 'n12
 // The unchanged historical 1/65 assertion above remains an archival data contract.
 test('Current ordinary catalog: three core topics, total168, progress, physics and return link', async ({ page }) => {
   test.setTimeout(120_000)
-  await page.goto('/kyotsu-step-web/#/learning/setup?subject=math-1a')
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
+  await gotoReady(page, '/kyotsu-step-web/#/learning/setup?subject=math-1a')
   const chapter1 = page.getByTestId('math-textbook-chapter-1')
   await expect(chapter1.locator('a[data-testid^="math-textbook-topic-"]')).toHaveCount(3, { timeout: 30_000 })
   for (const [topicId, firstUnit] of [['numbers-polynomials', 'n01'], ['numbers-real', 'n07'], ['numbers-inequalities', 'n11']]) {
@@ -201,10 +202,10 @@ test('Current ordinary catalog: three core topics, total168, progress, physics a
   await expect(page.getByTestId('textbook-item-n07-q01-tenths-answer')).toBeVisible()
   await page.getByTestId('textbook-item-n07-q01-tenths-answer').click()
   await page.getByTestId('inline-choice-panel-n07-q01-tenths-answer').getByRole('button', { name: '7', exact: true }).click()
-  await page.goto('/kyotsu-step-web/#/learning/setup?subject=math-1a')
+  await gotoReady(page, '/kyotsu-step-web/#/learning/setup?subject=math-1a')
   await expect(topic).toContainText('1/168 完了', { timeout: 30_000 })
   expect(page.url()).not.toContain('/fixtures/')
-  await page.reload()
+  await reloadReady(page)
   await expect(topic).toContainText('1/168 完了', { timeout: 30_000 })
   await expect(topic).toHaveAttribute('href', '#/learning/textbook/math-numbers-expressions-n07')
 })

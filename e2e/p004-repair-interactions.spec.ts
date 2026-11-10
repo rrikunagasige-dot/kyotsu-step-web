@@ -1,3 +1,4 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test } from '@playwright/test'
 import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
 import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
@@ -30,9 +31,8 @@ for (const [n, id] of repaired) {
       await page.setViewportSize({ width, height: 850 })
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
       const items = unit.sections[0].items
-      await page.goto(editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n' + n))
-      await page.evaluate(() => localStorage.clear())
-      await page.reload()
+      await clearStoredState(page)
+      await gotoReady(page, editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n' + n))
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       const save = process.env.E2E_P004_EVIDENCE === '1'
       const prefix = r5Ids.has(id) ? 'p004-r5-' : r2Ids.has(id) ? 'p004-r2-' : 'p004-'
@@ -187,7 +187,7 @@ for (const [n, id] of repaired) {
           if (save) {
             await page.screenshot({ path: 'e2e-evidence/' + prefix + id + '-' + width + '-resolved.png' })
           }
-          await page.reload()
+          await reloadReady(page)
           await expect(page.getByTestId('resolved-' + id)).toBeVisible()
           break
         }

@@ -1,3 +1,4 @@
+import { gotoReady, reloadReady, clearStoredState } from './helpers'
 import { expect, test } from '@playwright/test'
 import editionData from './fixtures/historical-math-data.json' with { type: 'json' }
 import { validateTextbookUnits as editionValidate } from '../src/domain/textbookSchema'
@@ -25,9 +26,8 @@ for (const width of [320, 390]) {
     const original = unit.sections[0].items
     expect(original.length).toBe(31)
     expect(original.slice(0, 9).map(x => x.id)).toEqual([...ids])
-    await page.goto(editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n11'))
-    await page.evaluate(() => localStorage.clear())
-    await page.reload()
+    await clearStoredState(page)
+    await gotoReady(page, editionHistoricalRoute('/learning/textbook/math-numbers-expressions-n11'))
     await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
 
     // Original number-line observation must be visible BEFORE any learner
@@ -87,7 +87,7 @@ for (const width of [320, 390]) {
       expect(w[0], item.id + ' document overflow').toBeLessThanOrEqual(w[1] + 2)
       if (save) await page.screenshot({ path: 'e2e-evidence/wmath011-' + item.id + '-' + width + '-resolved.png' })
     }
-    await page.reload()
+    await reloadReady(page)
     for (const id of ids) await expect(page.getByTestId('resolved-' + id)).toBeVisible()
     await expect(page.getByTestId('textbook-item-n11-wm017-q05-operation')).toBeVisible()
     // The original complete-solution figure cannot be used to reveal Q05–Q10.

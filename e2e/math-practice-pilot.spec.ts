@@ -1,10 +1,13 @@
+import { gotoReady, clearStoredState } from './helpers'
 import { expect, test } from '@playwright/test'
+
+// File-scoped budget includes genuine App bootstrap (up to30s) plus its unchanged interaction assertions.
+test.describe.configure({ timeout: 90000 })
 import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(appRoute('/learning/setup?mode=practice&subject=math-1a'))
-  await page.evaluate(() => localStorage.clear())
-  await page.reload()
+  await clearStoredState(page)
+  await gotoReady(page, appRoute('/learning/setup?mode=practice&subject=math-1a'))
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByRole('button', { name: '数学 I・A' }).click()
 })

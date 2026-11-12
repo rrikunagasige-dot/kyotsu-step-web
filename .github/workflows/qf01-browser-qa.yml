@@ -42,7 +42,7 @@ jobs:
         run: |
           test "$EXPECTED_SHA" = "$SOURCE_SHA"
           test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          test "$(git rev-parse HEAD^)" = "ad5f0c22202b1cb78e1578646415aa858480b9e9"
+          test "$(git rev-parse HEAD^)" = "651b8155561ab762925c76ff9ed10bb7b373a279"
           test "$(git diff --name-only HEAD^ HEAD)" = ".github/workflows/qf01-browser-qa.yml"
       - uses: pnpm/action-setup@v4
         with:
@@ -102,7 +102,7 @@ jobs:
             const page=await context.newPage();
             page.on('pageerror',e=>{report.errors.push(String(e));persist()});
             page.setDefaultTimeout(20000);
-            const menuURL=process.env.APP_URL+'#/learning?mode=textbook&subject=math-1a';
+            const menuURL=process.env.APP_URL+'#/learning/setup?mode=textbook&subject=math-1a';
             const foundation='math-textbook-topic-quadratic-functions-foundation';
             async function supplement(kind,data,targetPage=page){
               await targetPage.evaluate(()=>document.fonts.ready);

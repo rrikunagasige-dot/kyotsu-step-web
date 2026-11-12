@@ -121,3 +121,53 @@ describe('textbook math normalization', () => {
   })
 
 })
+
+
+// View-only pilot: learning/answer contracts come from the unchanged original unit.
+import { qf01TransformationPresentation, mathQuadraticQF01Unit } from '../data/textbook/math/quadratic/qf01Lesson'
+import { TransformationReadingSchema, projectTransformationView } from './transformationReading'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { TransformationReadingGroup } from '../components/textbook/TransformationReadingGroup'
+
+describe('P011 continuous substitution without changing grading', () => {
+  const view = TransformationReadingSchema.parse(qf01TransformationPresentation)
+  const substitution = 'qf01-n03-answer', result = 'qf01-n04-answer'
+  const items = mathQuadraticQF01Unit.sections.flatMap(section => section.items)
+  it('binds exactly the original two decisions and no other learning IDs', () => {
+    expect(view.scope.nodeIds).toEqual(['qf01-n03', 'qf01-n04'])
+    for (const interaction of view.interactions) {
+      const item = items.find(item => item.id === interaction.id)!
+      expect(interaction.correctValue).toBe(item.answer)
+      expect(interaction.choices).toEqual(item.choices)
+      expect(item.answerType).toBe('text')
+      expect(item.acceptedAnswers).toEqual([])
+    }
+    expect(items).toHaveLength(25)
+    expect(mathQuadraticQF01Unit.revision).toBe(1)
+  })
+  it('unlocks arithmetic and result only after the whole substitution is correct', () => {
+    expect(projectTransformationView(view).groups[0].rows.map(row => row.id)).toEqual(['qf01-input', 'qf01-substitution'])
+    expect(projectTransformationView(view, [result]).groups[0].rows.map(row => row.id)).toEqual(['qf01-input', 'qf01-substitution'])
+    const partial = projectTransformationView(view, [substitution]).groups[0]
+    expect(partial.rows).toHaveLength(4)
+    expect(partial.rows.at(-1)?.current?.id).toBe(result)
+    const complete = projectTransformationView(view, [substitution, result]).groups[0]
+    expect(complete.rows.every(row => row.done)).toBe(true)
+    expect(complete.rows.at(-1)?.after).toEqual([{ type: 'text', text: '入力が−1のとき、出力は−10です。' }])
+  })
+  it('retains the input and arithmetic in compact history and the whole chain once in full history', () => {
+    const group = projectTransformationView(view, [substitution, result]).groups[0]
+    const markup = (rows: typeof group.rows) => renderToStaticMarkup(createElement(TransformationReadingGroup, { group: { ...group, rows }, renderSlot: () => null, renderPanel: () => null }))
+    const full = markup(group.rows), compact = markup(group.rows.filter(row => row.sourceNodeId === 'qf01-n04'))
+    expect((full.match(/data-transformation-row=/g) ?? [])).toHaveLength(3)
+    expect((compact.match(/data-transformation-row=/g) ?? [])).toHaveLength(2)
+    for (const html of [full, compact]) {
+      expect(html).toContain('f(-1)')
+      expect(html).toContain('-4-6')
+      expect(html).toContain('-10')
+    }
+    expect(full).toContain('<mo>×</mo>')
+    expect(full).not.toContain('を計算すると？')
+  })
+})

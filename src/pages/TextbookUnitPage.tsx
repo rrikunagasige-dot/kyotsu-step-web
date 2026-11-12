@@ -1,4 +1,4 @@
-import { qf01GuidedPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
+import { qf01GuidedPresentation, qf01TransformationPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
 import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
 import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import n11TransformationPresentation from '../data/textbook/math/numbers/n11Transformation.json'
@@ -226,7 +226,7 @@ function readingLayoutProfile(unit: TextbookUnit, stageId: string): ReadingLayou
 }
 
 export function TextbookReadingFlow(props: ReadingFlowProps) {
-  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 1) return <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={qf01GuidedPresentation} storageScope="qf01-v1" />
+  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 1) return <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={qf01GuidedPresentation} transformationPresentation={qf01TransformationPresentation} storageScope="qf01-v1" />
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 7

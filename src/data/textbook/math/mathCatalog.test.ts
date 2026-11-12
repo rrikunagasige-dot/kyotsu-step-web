@@ -204,3 +204,26 @@ describe('math textbook catalog', () => {
   })
 })
 
+
+
+import { mathTextbookEntryTopics } from './mathCatalog'
+
+describe('P011 current chapter-2 entry contract', () => {
+  const topics = mathTextbookEntryTopics.filter(topic => topic.chapterId === 'math-ch02-functions')
+  it('keeps the guide section titles and separates partial from planned content', () => {
+    expect(topics.map(topic => topic.label.ja)).toEqual(['関数とグラフ', '2次関数の最大・最小', '2次関数と方程式・不等式'])
+    expect(topics.map(topic => topic.availability)).toEqual(['partial', 'planned', 'planned'])
+    expect(topics[0].id).toBe('quadratic-functions-foundation')
+    expect(topics[0].publishedLabel?.ja).toBe('関数の見方')
+    expect(topics[0].unitIds).toEqual(['math-quadratic-qf01'])
+    expect(mathTextbookTopicHasAllUnits(topics[0].id, ['math-quadratic-qf01'])).toBe(true)
+    expect(mathTextbookTopicHasAllUnits(topics[0].id, [])).toBe(false)
+  })
+  it('never opens a planned empty topic through vacuous every()', () => {
+    for (const topic of topics.slice(1)) {
+      expect(topic.unitIds).toEqual([])
+      expect(mathTextbookTopicHasAllUnits(topic.id, [])).toBe(false)
+      expect(mathTextbookTopicHasAllUnits(topic.id, ['math-quadratic-qf01'])).toBe(false)
+    }
+  })
+})

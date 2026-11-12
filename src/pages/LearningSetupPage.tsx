@@ -8,7 +8,8 @@ import type { TextbookUnit } from '../domain/textbookSchema'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { physicsTextbookParts } from '../data/textbook/chapterCatalog'
 import { chapter1LearningChunks, chapter1Localized } from '../data/textbook/ch01/chapter1Architecture'
-import { mathTextbookTopicHasAllUnits, mathTextbookTopics } from '../data/textbook/math'
+import { mathTextbookTopicHasAllUnits } from '../data/textbook/math'
+import { mathTextbookEntryTopics as mathTextbookTopics } from '../data/textbook/math/mathCatalog'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
@@ -96,8 +97,8 @@ export function LearningSetupPage() {
   )
 
   useEffect(() => {
-    textbookRepository.listLearningSetup().then((units) => {
-      setTextbookUnits(units)
+    Promise.all([textbookRepository.listLearningSetup(), textbookRepository.getById('math-quadratic-qf01')]).then(([units, qf01]) => {
+      setTextbookUnits(qf01 && !units.some(unit => unit.unitId === qf01.unitId) ? [...units, qf01] : units)
     })
   }, [])
 
@@ -346,6 +347,11 @@ export function LearningSetupPage() {
                   label: { ja: '数と式', zh: '数与式' },
                 },
                 {
+                  id: 'math-ch02-functions',
+                  number: '2',
+                  label: { ja: '2次関数', zh: '二次函数' },
+                },
+                {
                   id: 'math-ch03-sets-propositions',
                   number: '3',
                   label: { ja: '集合と命題', zh: '集合与命题' },
@@ -414,9 +420,16 @@ export function LearningSetupPage() {
                               {topic.chapterId === 'math-ch01-numbers-expressions' && (
                                 <small>{text('レビュー公開中', '公开试用中')}</small>
                               )}
-                              <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
+                              {topic.availability === 'partial' ? (
+                                <>
+                                  <small>{text('一部公開', '部分公开')}</small>
+                                  <small>{text('公開中：', '已公开：')}{topic.publishedLabel?.[language]}</small>
+                                  <small>{text(`公開中の内容：${completed}/${total} 完了`, `已公开的内容：已完成 ${completed}/${total}`)}</small>
+                                  <small>{text('この節の一部を公開中', '本节部分内容已公开')}</small>
+                                </>
+                              ) : <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>}
                             </div>
-                            <span className="textbook-unit-percent">{percent}%</span>
+                            {topic.availability !== 'partial' && <span className="textbook-unit-percent">{percent}%</span>}
                           </Link>
                         )
                       })}

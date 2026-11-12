@@ -11,6 +11,8 @@ export type MathTextbookTopicCatalogEntry = {
   practiceLinks: readonly MathTextbookPracticeLink[]
   unitIds: readonly string[]
   learnerHeadings: readonly string[]
+  availability?: 'partial' | 'planned'
+  publishedLabel?: { ja: string; zh: string }
 }
 
 /**
@@ -23,7 +25,8 @@ export type MathTextbookTopicCatalogEntry = {
 export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
   {
     id: 'quadratic-functions-foundation', chapterId: 'math-ch02-functions',
-    label: { ja: '関数の見方', zh: '理解函数' },
+    label: { ja: '関数とグラフ', zh: '函数与图像' },
+    availability: 'partial', publishedLabel: { ja: '関数の見方', zh: '理解函数' },
     flow: { ja: '関数の値 → 式全体の代入 → 定義域と値域', zh: '函数值 → 整体代入 → 定义域与值域' },
     practiceLinks: [], unitIds: ['math-quadratic-qf01'], learnerHeadings: [],
   },
@@ -121,9 +124,24 @@ export function mathTextbookTopicForUnit(unitId: string) {
 }
 
 
+export const mathTextbookEntryTopics: readonly MathTextbookTopicCatalogEntry[] = mathTextbookTopics.flatMap(topic => topic.id === 'quadratic-functions-foundation' ? [topic,
+  {
+    id: 'quadratic-functions-extrema', chapterId: 'math-ch02-functions',
+    label: { ja: '2次関数の最大・最小', zh: '二次函数的最大值与最小值' },
+    flow: { ja: 'グラフと定義域から最大・最小を考える', zh: '根据图像与定义域求最大值和最小值' },
+    availability: 'planned', practiceLinks: [], unitIds: [], learnerHeadings: [],
+  },
+  {
+    id: 'quadratic-functions-equations-inequalities', chapterId: 'math-ch02-functions',
+    label: { ja: '2次関数と方程式・不等式', zh: '二次函数与方程、不等式' },
+    flow: { ja: 'グラフと方程式・不等式の関係を見る', zh: '观察图像与方程、不等式的关系' },
+    availability: 'planned', practiceLinks: [], unitIds: [], learnerHeadings: [],
+  },
+ ] : [topic])
+
 export function mathTextbookTopicHasAllUnits(topicId: string, availableUnitIds: readonly string[]) {
-  const topic = mathTextbookTopics.find((candidate) => candidate.id === topicId)
-  if (!topic) return false
+  const topic = mathTextbookEntryTopics.find((candidate) => candidate.id === topicId)
+  if (!topic || topic.availability === 'planned' || topic.unitIds.length === 0) return false
   const available = new Set(availableUnitIds)
   return topic.unitIds.every((unitId) => available.has(unitId))
 }

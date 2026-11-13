@@ -1,8 +1,8 @@
-name: QF01 exact-source successor publisher (P010)
+name: QF01 exact-source successor publisher (P013 draft)
 'on':
   push:
     branches:
-    - work/qf01-publisher-g3-20261111
+    - work/qf01-p013-publisher-20261112
     paths:
     - .github/workflows/qf01-publisher-g3.yml
     - tools/release/qf01-*
@@ -27,7 +27,7 @@ name: QF01 exact-source successor publisher (P010)
         type: string
         required: false
         default: ''
-        description: Original native Store event suffix from fixed9972 prefix through scoped qf01 DEPLOY intent
+        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates full native authority from fixed10391 prefix
 permissions:
   contents: read
   actions: read
@@ -51,9 +51,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      CANDIDATE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      VITE_PREVIEW_COMMIT: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -68,7 +68,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+        ref: 384021f539967038a20fd98bd146e0e499f0df65
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -190,9 +190,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      CANDIDATE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      VITE_PREVIEW_COMMIT: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -208,7 +208,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+        ref: 384021f539967038a20fd98bd146e0e499f0df65
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -336,9 +336,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/artifact/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      CANDIDATE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      VITE_PREVIEW_COMMIT: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -438,9 +438,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      CANDIDATE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      VITE_PREVIEW_COMMIT: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -464,7 +464,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+        ref: 384021f539967038a20fd98bd146e0e499f0df65
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -628,9 +628,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      CANDIDATE_SHA: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
-      VITE_PREVIEW_COMMIT: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
+      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -646,7 +646,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 46af88381ceba8d5e01ae5e26c64477eab42dbe9
+        ref: 384021f539967038a20fd98bd146e0e499f0df65
         path: material
         fetch-depth: 0
         persist-credentials: false

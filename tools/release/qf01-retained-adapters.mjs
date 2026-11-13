@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 
-export const SOURCE='46af88381ceba8d5e01ae5e26c64477eab42dbe9';
+export const SOURCE='384021f539967038a20fd98bd146e0e499f0df65';
 export const BASELINE='1ac9f31ec205424f393a488f0d17cb3bb8bc75fd';
 const MAIN='1efb90d5cc1303500efa220ab9fe91985776f0db';
 const ENGINE='a23df3e005fbbcd7bc47ae43db0a32381f1b73238692399f6797b19b18d87c52';
@@ -40,6 +40,23 @@ export function projectContract(old,projection){
  return c;
 }
 
+
+export const HISTORICAL_SOURCE='46af88381ceba8d5e01ae5e26c64477eab42dbe9';
+export const SOURCE_OVERLAY_SHA256='3eb22c59e93f98a5c8c6658b4de0c2d7a3ece09c26ee4a5a5e207f13e0514051';
+const SOURCE_OVERLAY={"schema":"qf01-six-path-overlay/1","beforeSourceSHA":"46af88381ceba8d5e01ae5e26c64477eab42dbe9","afterSourceSHA":"384021f539967038a20fd98bd146e0e499f0df65","appByteEquivalentP011SHA":"ad5f0c22202b1cb78e1578646415aa858480b9e9","rows":[{"path":"src/data/textbook/math/mathCatalog.test.ts","beforeSHA256":"0ae2cfa4d5d25d37e07c430b2d4a15a6cf1d0e60b3454aad6f243a9774e58d18","afterSHA256":"e62d14488c4a00a35ba25426e455b77d15a36101686f5f95f3666865d4b1e615","bucket":"protected"},{"path":"src/data/textbook/math/mathCatalog.ts","beforeSHA256":"ddf09759921bfb7f254f41a4479704be8a0635f8b3eb9c972c5a9dd70a8a387e","afterSHA256":"3e89a3851bc8bfdf27d981307750f646f91724802e25af1a46d35beba46c48c6","bucket":"protected"},{"path":"src/data/textbook/math/quadratic/qf01Lesson.ts","beforeSHA256":"e2151cb0879d80a4d0b4bb58ac587c31d4fc9ef2dd9f9ee29470654855fd9b9e","afterSHA256":"f9e1d2957dbc2160eafb6274ace8dd83449f99f9c956ae46e94c7b04228fa43a","bucket":"protected"},{"path":"src/domain/textbookMath.test.ts","beforeSHA256":"ee16ad1a1db6ffac6d9987035919ced23d10dc48b176a98df9839e2c90d28db3","afterSHA256":"9aa400c208dc733e4d30998e87d92de06343da95676b10d98517bf239b964b3c","bucket":"protected"},{"path":"src/pages/LearningSetupPage.tsx","beforeSHA256":"830707a236991cdf3d70574dfa100bb53028d50712a3e6acb0a18c7fdb5a8e22","afterSHA256":"e6d9b80ed1c5c6fa4b11c8d2ab584796e3e6aa2e5e7c92b1e2b7f3f59e98d892","bucket":"protected"},{"path":"src/pages/TextbookUnitPage.tsx","beforeSHA256":"81de2df3dfa1047ac1805f2fe43ca3ec67874f59f109fd716ab35a638b29e279","afterSHA256":"4d707eba705517612df88f04c1864bca2b6aab2d05aeda8596f4e406bfcec117","bucket":"product"}],"scope":"Same332keys; sixexistingpaths;5protected1product; no newremovedsource","evidence":"Current raw p012-repo source bytes compared to exact main611 contract map; root/CI source384 equivalence must remain independently bound."};
+export function overlayCurrentSource(projected, overlay){
+ assert.equal(hash(JSON.stringify(overlay)),SOURCE_OVERLAY_SHA256,'FROZEN_SIX_SOURCE_OVERLAY');
+ assert.deepEqual(overlay,SOURCE_OVERLAY,'EXACT_SIX_SOURCE_OVERLAY');
+ assert.equal(overlay.beforeSourceSHA,HISTORICAL_SOURCE);assert.equal(overlay.afterSourceSHA,SOURCE);
+ const c=structuredClone(projected),key=Object.hasOwn(c,'protectedSourceHashes')?'protectedSourceHashes':'retained319';
+ assert.equal(Object.keys(c[key]).length,324);assert.equal(Object.keys(c.productHashes).length,8);
+ assert.equal(overlay.rows.length,6);assert.equal(new Set(overlay.rows.map(r=>r.path)).size,6);
+ for(const row of overlay.rows){const map=row.bucket==='product'?c.productHashes:c[key];assert.ok(Object.hasOwn(map,row.path),'OVERLAY_EXISTING_PATH');assert.equal(map[row.path],row.beforeSHA256,'OVERLAY_BEFORE_HASH '+row.path);map[row.path]=row.afterSHA256;}
+ assert.equal(overlay.rows.filter(r=>r.bucket==='product').length,1);assert.equal(overlay.rows.filter(r=>r.bucket==='protected').length,5);
+ assert.equal(new Set([...Object.keys(c[key]),...Object.keys(c.productHashes)]).size,332);
+ return c;
+}
+
 export function buildPinnedContractInputs({publisherRoot,baselineRoot}){
  publisherRoot=fs.realpathSync(publisherRoot);baselineRoot=fs.realpathSync(baselineRoot);
  assert.equal(git(baselineRoot,'rev-parse','HEAD').toString().trim(),BASELINE);
@@ -58,7 +75,7 @@ export function verifyProjectedSource({sourceRoot,publisherRoot,baselineRoot,con
  assert.equal(contract.storageKey,'kyotsu-step-gate3-math-20261023');assert.equal(contract.basePath,'/kyotsu-step-web/');
  assert.equal(contract.publicBase,'https://rrikunagasige-dot.github.io/kyotsu-step-web/');
  const pins=buildPinnedContractInputs({publisherRoot,baselineRoot});assert.deepEqual(contract.inputPins,pins,'FROZEN_INPUT_PINS');
- const old=read(path.join(publisherRoot,'tools/release/w051-p005-release-contract.json')),projected=projectContract(old,contract.exactSourceProjection);
+ const old=read(path.join(publisherRoot,'tools/release/w051-p005-release-contract.json')),projected=overlayCurrentSource(projectContract(old,contract.exactSourceProjection),contract.sourceOverlay);
  assert.equal(git(sourceRoot,'rev-parse','HEAD').toString().trim(),SOURCE);
  assert.equal(git(sourceRoot,'diff','--name-only','HEAD','--','src','public','package.json','pnpm-lock.yaml').toString().trim(),'','CLEAN_SOURCE');
  const all={...projected.productHashes,...projected.retained319};
@@ -96,7 +113,7 @@ export function prepareRetainedAdapters({sourceRoot,publisherRoot,baselineRoot,o
  edit(path.join(dir,'w048-release-contract.json'),old47hash,sha(c47),'downstream-exact-W047-contract-digest');
  edit(prepared.paths.w048,"['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json']","['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json','dist/qf01-release.json']",'exact-successor-manifest-exclusion');
  const qaDir=path.join(attempt,'w051-qa');fs.mkdirSync(qaDir);
- const qaContract=projectContract(read(path.join(sourceRoot,QA,'B_contract.json')),contract.exactSourceProjection),qaContractFile=path.join(qaDir,'B_contract.json');write(qaContractFile,qaContract);
+ const qaContract=overlayCurrentSource(projectContract(read(path.join(sourceRoot,QA,'B_contract.json')),contract.exactSourceProjection),contract.sourceOverlay),qaContractFile=path.join(qaDir,'B_contract.json');write(qaContractFile,qaContract);
  replaceExact(fs.readFileSync(path.join(sourceRoot,QA,'B_contract.json'),'utf8'),fs.readFileSync(path.join(sourceRoot,QA,'B_contract.json'),'utf8'),fs.readFileSync(qaContractFile,'utf8'),'B-complete-frozen-319-to-324-and-Page-projection',records);
  let verifier=fs.readFileSync(path.join(sourceRoot,QA,'B_verify_browser.mjs'),'utf8');
  verifier=once(verifier,old.qa4['B_contract.json'],sha(qaContractFile),'B-fixed-derived-contract-raw-SHA');
@@ -104,7 +121,7 @@ export function prepareRetainedAdapters({sourceRoot,publisherRoot,baselineRoot,o
  const browser=path.join(qaDir,'B_verify_browser.mjs');fs.writeFileSync(browser,verifier);
  for(const name of ['B_display_checks.mjs','B_inline_fragment_checks.mjs'])fs.copyFileSync(path.join(sourceRoot,QA,name),path.join(qaDir,name));
  const files=[];function inventory(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);if(e.isDirectory())inventory(p);else if(e.isFile()&&e.name!=='PROVENANCE.json'&&e.name!=='PREPARED.json')files.push({path:path.relative(attempt,p),sha256:sha(p)});else if(e.isSymbolicLink())assert.equal(p,path.join(attempt,'material/node_modules'));}}inventory(attempt);
- const result={schema:'qf01-retained-adapters/1',sourceRoot,publisherRoot,baselineRoot,sourceSHA:SOURCE,outputRoot:attempt,paths:{...prepared.paths,browser,qaContract:qaContractFile},inputPins:verified.pins,projectionSHA256:PROJECTION,replacements:records,files,executed:false,publication:false,learnerAssertionsModified:false};
+ const result={schema:'qf01-retained-adapters/1',sourceRoot,publisherRoot,baselineRoot,sourceSHA:SOURCE,outputRoot:attempt,paths:{...prepared.paths,browser,qaContract:qaContractFile},inputPins:verified.pins,projectionSHA256:PROJECTION,sourceOverlaySHA256:SOURCE_OVERLAY_SHA256,replacements:records,files,executed:false,publication:false,learnerAssertionsModified:false};
  verifyProjectedSource({sourceRoot,publisherRoot,baselineRoot,contract});write(path.join(attempt,'PREPARED.json'),result);return result;
 }
 

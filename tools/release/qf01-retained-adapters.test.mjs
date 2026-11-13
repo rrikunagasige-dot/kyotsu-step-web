@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {projectContract,overlayCurrentSource,replaceExact,SOURCE,BASELINE} from './qf01-retained-adapters.mjs';
+import {projectContract,overlayCurrentSource,overlayRepairSource,REPAIR_OVERLAY,replaceExact,SOURCE,BASELINE} from './qf01-retained-adapters.mjs';
 
 // Fixed fixtures are supplied from immutable publisher/baseline checkouts by CI.
 // Unit guard cases use the same frozen projection embedded in the successor contract.
@@ -23,7 +23,7 @@ test('unapproved projection fails before contract rebinding',()=>{
  assert.throws(()=>projectContract({retained319:{},productHashes:{}},{}),/FROZEN_EXACT_SOURCE_PROJECTION/);
 });
 test('frozen current identities cannot drift',()=>{
- assert.equal(SOURCE,'384021f539967038a20fd98bd146e0e499f0df65');assert.equal(BASELINE,'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd');
+ assert.equal(SOURCE,'a113022f03c5d28acd06af93a845bfcca8b08ff2');assert.equal(BASELINE,'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd');
 });
 test('full approved projection preserves all unknown entries and rejects old-map drift',{skip:!contract},()=>{
  const projection=contract.exactSourceProjection;
@@ -47,4 +47,15 @@ test('exact six-row overlay rejects unknown, duplicate, missing, wrong-before an
  for(const row of frozen.rows)assert.equal((row.bucket==='product'?current.productHashes:current.retained319)[row.path],row.afterSHA256);
  for(const change of [x=>x.rows.pop(),x=>x.rows.push(x.rows[0]),x=>x.rows[0].afterSHA256='0'.repeat(64),x=>x.rows[0].path='src/unknown',x=>x.afterSourceSHA='0'.repeat(40)]){const bad=structuredClone(frozen);change(bad);assert.throws(()=>overlayCurrentSource(base,bad),/FROZEN_SIX_SOURCE_OVERLAY/);}
  const drift=structuredClone(base),r=frozen.rows[0];(r.bucket==='product'?drift.productHashes:drift.retained319)[r.path]='0'.repeat(64);assert.throws(()=>overlayCurrentSource(drift,frozen),/OVERLAY_BEFORE_HASH/);
+});
+
+test('approved full-lesson thirteen-path projection preserves every other source and rejects arbitrary rebase',()=>{
+ const protectedMap=Object.fromEntries(Array.from({length:312},(_,i)=>['src/fixed-'+i,'a'.repeat(64)])),productHashes=Object.fromEntries(Array.from({length:7},(_,i)=>['src/product-'+i,'b'.repeat(64)]));
+ for(const r of REPAIR_OVERLAY.rows)(r.bucket==='product'?productHashes:protectedMap)[r.path]=r.beforeSHA256;
+ const base={retained319:protectedMap,productHashes},before=structuredClone(base),current=overlayRepairSource(base,REPAIR_OVERLAY);
+ assert.deepEqual(base,before);assert.equal(Object.keys(current.retained319).length,324);assert.equal(Object.keys(current.productHashes).length,8);
+ for(const row of REPAIR_OVERLAY.rows)assert.equal((row.bucket==='product'?current.productHashes:current.retained319)[row.path],row.afterSHA256);
+ for(const [p,h]of Object.entries(base.retained319))if(!REPAIR_OVERLAY.rows.some(r=>r.path===p))assert.equal(current.retained319[p],h);
+ for(const change of [x=>x.rows.pop(),x=>x.rows.push(x.rows[0]),x=>x.rows[0].afterSHA256='0'.repeat(64),x=>x.rows[0].path='src/unknown',x=>x.afterSourceSHA='0'.repeat(40),x=>x.proposalSHA256='f'.repeat(64)]){const bad=structuredClone(REPAIR_OVERLAY);change(bad);assert.throws(()=>overlayRepairSource(base,bad),/FROZEN_EXACT_REPAIR_OVERLAY/);}
+ const drift=structuredClone(base),r=REPAIR_OVERLAY.rows[0];(r.bucket==='product'?drift.productHashes:drift.retained319)[r.path]='0'.repeat(64);assert.throws(()=>overlayRepairSource(drift,REPAIR_OVERLAY),/REPAIR_BEFORE_HASH/);
 });

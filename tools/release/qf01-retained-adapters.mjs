@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 
-export const SOURCE='384021f539967038a20fd98bd146e0e499f0df65';
+export const SOURCE='a113022f03c5d28acd06af93a845bfcca8b08ff2';
 export const BASELINE='1ac9f31ec205424f393a488f0d17cb3bb8bc75fd';
 const MAIN='1efb90d5cc1303500efa220ab9fe91985776f0db';
 const ENGINE='a23df3e005fbbcd7bc47ae43db0a32381f1b73238692399f6797b19b18d87c52';
@@ -47,7 +47,7 @@ const SOURCE_OVERLAY={"schema":"qf01-six-path-overlay/1","beforeSourceSHA":"46af
 export function overlayCurrentSource(projected, overlay){
  assert.equal(hash(JSON.stringify(overlay)),SOURCE_OVERLAY_SHA256,'FROZEN_SIX_SOURCE_OVERLAY');
  assert.deepEqual(overlay,SOURCE_OVERLAY,'EXACT_SIX_SOURCE_OVERLAY');
- assert.equal(overlay.beforeSourceSHA,HISTORICAL_SOURCE);assert.equal(overlay.afterSourceSHA,SOURCE);
+ assert.equal(overlay.beforeSourceSHA,HISTORICAL_SOURCE);assert.equal(overlay.afterSourceSHA,'384021f539967038a20fd98bd146e0e499f0df65');
  const c=structuredClone(projected),key=Object.hasOwn(c,'protectedSourceHashes')?'protectedSourceHashes':'retained319';
  assert.equal(Object.keys(c[key]).length,324);assert.equal(Object.keys(c.productHashes).length,8);
  assert.equal(overlay.rows.length,6);assert.equal(new Set(overlay.rows.map(r=>r.path)).size,6);
@@ -55,6 +55,17 @@ export function overlayCurrentSource(projected, overlay){
  assert.equal(overlay.rows.filter(r=>r.bucket==='product').length,1);assert.equal(overlay.rows.filter(r=>r.bucket==='protected').length,5);
  assert.equal(new Set([...Object.keys(c[key]),...Object.keys(c.productHashes)]).size,332);
  return c;
+}
+
+
+export const REPAIR_OVERLAY_SHA256="1e40a99b221f972d762e00bd5b13d6d313de6ab82f0b7787947ccc4dc1f8e935";
+export const REPAIR_OVERLAY={"schema":"qf01-thirteen-path-repair-overlay/1","beforeSourceSHA":"384021f539967038a20fd98bd146e0e499f0df65","afterSourceSHA":"a113022f03c5d28acd06af93a845bfcca8b08ff2","rows":[{"path":"src/data/textbook/math/quadratic/qf01Unit.json","beforeSHA256":"5d0868d5ec2cdd6d1851e2e8b0c83f7c3db51ec703e7db75aa26d77074afea74","afterSHA256":"de8e6f70e33d26a7e92503401e435edcfc0639d2a4580af58080083f1fb93928","bucket":"protected"},{"path":"src/data/textbook/math/quadratic/qf01Presentation.json","beforeSHA256":"06e761a97c4c8ecd11816842b4bb392ceff7cc92568ce43056ea4539cc62d0b4","afterSHA256":"32bce9d3cb89809ee1024f986d52020cd56e4f825908d633768b1f26ef4bea6f","bucket":"protected"},{"path":"src/data/textbook/math/quadratic/qf01Lesson.ts","beforeSHA256":"f9e1d2957dbc2160eafb6274ace8dd83449f99f9c956ae46e94c7b04228fa43a","afterSHA256":"769975c725cc3f43155a589c7b852f6aaf084429617a7ee100253741cf246cd0","bucket":"protected"},{"path":"src/data/textbook/math/quadratic/qf01Lesson.test.tsx","beforeSHA256":"2e39e34d336b2ef91b61ea00cade9ca0317280b1069c88e53685da0479df4ca4","afterSHA256":"f9da4ba5a66ded0996c959c995bca4319406f497827ca8b76e34ce6cf9e6261d","bucket":"protected"},{"path":"src/components/textbook/GuidedMathReadingFlow.tsx","beforeSHA256":"7a3b182ab039ca811d9d7374e66cc8efc9fd661d523e32dbb00d70595aa0b99e","afterSHA256":"afa170098dd26e7703102cb79b710d6928fb40d3166a42be813d00dc16aa874c","bucket":"protected"},{"path":"src/components/textbook/guided-math-reading.css","beforeSHA256":"3ddb0eb284c9cd7c544cecbac069eb1daad5b0fab10b6ceef993d3ee914e5272","afterSHA256":"dbf8bdb4c146fc3aa8afc63f62521c69d10bc42351a48daea2b908817afc9e1e","bucket":"protected"},{"path":"src/pages/TextbookUnitPage.tsx","beforeSHA256":"4d707eba705517612df88f04c1864bca2b6aab2d05aeda8596f4e406bfcec117","afterSHA256":"e862027297c25bccfd6caa4632153927a96096310d735823086266665c887e32","bucket":"product"},{"path":"src/domain/textbook.ts","beforeSHA256":"3897884d158e27ce63f907c10e55fca6bc2264bcbdf2e3a186e599c7327e3a5a","afterSHA256":"e3682ee50cf10d377416676872f9d491e2ad4fcd6816d7159d1ca162d911444c","bucket":"protected"},{"path":"src/domain/textbook.test.ts","beforeSHA256":"a00c2583f390d6dbbd45ea1c803b6880ea77b9a3f318119969550f9f798ff3fb","afterSHA256":"62a20e50ab6dcd67e52391cf0d0b7957f01445c29d6fa3e084ce4dba12fa72a5","bucket":"protected"},{"path":"src/domain/textbookMath.test.ts","beforeSHA256":"9aa400c208dc733e4d30998e87d92de06343da95676b10d98517bf239b964b3c","afterSHA256":"034b79dc81b4d7fec62ae4b7a6ef2d87234cd211e03a951ebc5f3a90062c8ce0","bucket":"protected"},{"path":"src/data/textbook/math/mathCatalog.test.ts","beforeSHA256":"e62d14488c4a00a35ba25426e455b77d15a36101686f5f95f3666865d4b1e615","afterSHA256":"01a08515b52d2ce49aaff0d7d115ed26df7e30efa77cf1fdb0f614405c116252","bucket":"protected"},{"path":"src/domain/textbookSchema.ts","beforeSHA256":"f6156ad017672b66b0dc5b01926240efe038a215e755799c2491425ac423c246","afterSHA256":"a97764f177a1d5e5f2bcf643e56abff8d2ec399f593de30033f8493ac6dd3af3","bucket":"protected"},{"path":"src/domain/textbookSchema.test.ts","beforeSHA256":"cfcae58ab34cb5f74239f1a962af60f5df37c0a2c0d7fec60277305e8cd91e0d","afterSHA256":"c5f3feaefb76ddb02e2296b55c12ad8c4cc6267fede6ddf2020dcc6086ba67c6","bucket":"protected"}],"scope":"Same332keys; exact13approvedexistingpaths;12protected1product; no app/public/config additions or removals","proposalSHA256":"c2e9da6b90992565c00149044711435a9849400f1fd146db1710bef109724fe3","patchHash":"6f2e9f4d02ebfc18d0f00d0887246946673e8eff4f83c65e2b8bd8d91c873648"};
+export function overlayRepairSource(projected,overlay){
+ assert.equal(hash(JSON.stringify(overlay)),REPAIR_OVERLAY_SHA256,'FROZEN_EXACT_REPAIR_OVERLAY');assert.deepEqual(overlay,REPAIR_OVERLAY,'EXACT_APPROVED_THIRTEEN_PATH_REPAIR');
+ const c=structuredClone(projected),key=Object.hasOwn(c,'protectedSourceHashes')?'protectedSourceHashes':'retained319';
+ assert.equal(overlay.rows.length,13);assert.equal(new Set(overlay.rows.map(r=>r.path)).size,13);
+ for(const row of overlay.rows){const map=row.bucket==='product'?c.productHashes:c[key];assert.ok(Object.hasOwn(map,row.path));assert.equal(map[row.path],row.beforeSHA256,'REPAIR_BEFORE_HASH '+row.path);map[row.path]=row.afterSHA256;}
+ assert.equal(overlay.rows.filter(r=>r.bucket==='product').length,1);assert.equal(overlay.rows.filter(r=>r.bucket==='protected').length,12);assert.equal(Object.keys(c[key]).length,324);assert.equal(new Set([...Object.keys(c[key]),...Object.keys(c.productHashes)]).size,332);return c;
 }
 
 export function buildPinnedContractInputs({publisherRoot,baselineRoot}){
@@ -75,8 +86,10 @@ export function verifyProjectedSource({sourceRoot,publisherRoot,baselineRoot,con
  assert.equal(contract.storageKey,'kyotsu-step-gate3-math-20261023');assert.equal(contract.basePath,'/kyotsu-step-web/');
  assert.equal(contract.publicBase,'https://rrikunagasige-dot.github.io/kyotsu-step-web/');
  const pins=buildPinnedContractInputs({publisherRoot,baselineRoot});assert.deepEqual(contract.inputPins,pins,'FROZEN_INPUT_PINS');
- const old=read(path.join(publisherRoot,'tools/release/w051-p005-release-contract.json')),projected=overlayCurrentSource(projectContract(old,contract.exactSourceProjection),contract.sourceOverlay);
+ const old=read(path.join(publisherRoot,'tools/release/w051-p005-release-contract.json')),projected=overlayRepairSource(overlayCurrentSource(projectContract(old,contract.exactSourceProjection),contract.sourceOverlay),contract.repairOverlay);
  assert.equal(git(sourceRoot,'rev-parse','HEAD').toString().trim(),SOURCE);
+ assert.equal(git(sourceRoot,'rev-parse',SOURCE+'^').toString().trim(),'384021f539967038a20fd98bd146e0e499f0df65','EXACT_REPAIR_SOURCE_PARENT');
+ assert.deepEqual(git(sourceRoot,'diff','--name-only','384021f539967038a20fd98bd146e0e499f0df65',SOURCE).toString().trim().split('\n').sort(),REPAIR_OVERLAY.rows.map(r=>r.path).sort(),'EXACT_THIRTEEN_PATH_COMMIT');
  assert.equal(git(sourceRoot,'diff','--name-only','HEAD','--','src','public','package.json','pnpm-lock.yaml').toString().trim(),'','CLEAN_SOURCE');
  const all={...projected.productHashes,...projected.retained319};
  const actual=[];function walk(dir){for(const e of fs.readdirSync(path.join(sourceRoot,dir),{withFileTypes:true})){const p=path.posix.join(dir,e.name);assert.ok(!e.isSymbolicLink(),'NO_SRC_SYMLINK');if(e.isDirectory())walk(p);else{assert.ok(e.isFile());actual.push(p);}}}walk('src');
@@ -113,7 +126,7 @@ export function prepareRetainedAdapters({sourceRoot,publisherRoot,baselineRoot,o
  edit(path.join(dir,'w048-release-contract.json'),old47hash,sha(c47),'downstream-exact-W047-contract-digest');
  edit(prepared.paths.w048,"['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json']","['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json','dist/qf01-release.json']",'exact-successor-manifest-exclusion');
  const qaDir=path.join(attempt,'w051-qa');fs.mkdirSync(qaDir);
- const qaContract=overlayCurrentSource(projectContract(read(path.join(sourceRoot,QA,'B_contract.json')),contract.exactSourceProjection),contract.sourceOverlay),qaContractFile=path.join(qaDir,'B_contract.json');write(qaContractFile,qaContract);
+ const qaContract=overlayRepairSource(overlayCurrentSource(projectContract(read(path.join(sourceRoot,QA,'B_contract.json')),contract.exactSourceProjection),contract.sourceOverlay),contract.repairOverlay),qaContractFile=path.join(qaDir,'B_contract.json');write(qaContractFile,qaContract);
  replaceExact(fs.readFileSync(path.join(sourceRoot,QA,'B_contract.json'),'utf8'),fs.readFileSync(path.join(sourceRoot,QA,'B_contract.json'),'utf8'),fs.readFileSync(qaContractFile,'utf8'),'B-complete-frozen-319-to-324-and-Page-projection',records);
  let verifier=fs.readFileSync(path.join(sourceRoot,QA,'B_verify_browser.mjs'),'utf8');
  verifier=once(verifier,old.qa4['B_contract.json'],sha(qaContractFile),'B-fixed-derived-contract-raw-SHA');
@@ -121,7 +134,7 @@ export function prepareRetainedAdapters({sourceRoot,publisherRoot,baselineRoot,o
  const browser=path.join(qaDir,'B_verify_browser.mjs');fs.writeFileSync(browser,verifier);
  for(const name of ['B_display_checks.mjs','B_inline_fragment_checks.mjs'])fs.copyFileSync(path.join(sourceRoot,QA,name),path.join(qaDir,name));
  const files=[];function inventory(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);if(e.isDirectory())inventory(p);else if(e.isFile()&&e.name!=='PROVENANCE.json'&&e.name!=='PREPARED.json')files.push({path:path.relative(attempt,p),sha256:sha(p)});else if(e.isSymbolicLink())assert.equal(p,path.join(attempt,'material/node_modules'));}}inventory(attempt);
- const result={schema:'qf01-retained-adapters/1',sourceRoot,publisherRoot,baselineRoot,sourceSHA:SOURCE,outputRoot:attempt,paths:{...prepared.paths,browser,qaContract:qaContractFile},inputPins:verified.pins,projectionSHA256:PROJECTION,sourceOverlaySHA256:SOURCE_OVERLAY_SHA256,replacements:records,files,executed:false,publication:false,learnerAssertionsModified:false};
+ const result={schema:'qf01-retained-adapters/1',sourceRoot,publisherRoot,baselineRoot,sourceSHA:SOURCE,outputRoot:attempt,paths:{...prepared.paths,browser,qaContract:qaContractFile},inputPins:verified.pins,projectionSHA256:PROJECTION,sourceOverlaySHA256:SOURCE_OVERLAY_SHA256,repairOverlaySHA256:REPAIR_OVERLAY_SHA256,replacements:records,files,executed:false,publication:false,learnerAssertionsModified:false};
  verifyProjectedSource({sourceRoot,publisherRoot,baselineRoot,contract});write(path.join(attempt,'PREPARED.json'),result);return result;
 }
 

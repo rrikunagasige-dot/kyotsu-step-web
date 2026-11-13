@@ -1,5 +1,5 @@
-// P013 QF01 production-condition browser QA. Does not publish or use a user session.
-// Active assertions are exact P012 R2 at source384; old46af digests below are historical lineage only.
+// P019 full QF01 revision2 production-condition QA. No publication or user session.
+// P012/P016 hashes below are immutable historical lineage, not current assertion evidence.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 
-export const SOURCE_SHA = '384021f539967038a20fd98bd146e0e499f0df65';
+export const SOURCE_SHA = 'a113022f03c5d28acd06af93a845bfcca8b08ff2';
 export const PUBLIC_BASE = 'https://rrikunagasige-dot.github.io/kyotsu-step-web/';
 export const BASE_PATH = '/kyotsu-step-web/';
 export const STORAGE_KEY = 'kyotsu-step-gate3-math-20261023';
@@ -20,13 +20,22 @@ const THIS_FILE = fileURLToPath(import.meta.url);
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const json = filename => JSON.parse(fs.readFileSync(filename, 'utf8'));
 const requiredSourceFiles = Object.freeze({
-  'src/data/textbook/math/quadratic/qf01Unit.json': '5d0868d5ec2cdd6d1851e2e8b0c83f7c3db51ec703e7db75aa26d77074afea74',
-  'src/data/textbook/math/quadratic/qf01Presentation.json': '06e761a97c4c8ecd11816842b4bb392ceff7cc92568ce43056ea4539cc62d0b4',
-  'src/pages/TextbookUnitPage.tsx': '4d707eba705517612df88f04c1864bca2b6aab2d05aeda8596f4e406bfcec117',
-  'src/data/textbook/math/mathCatalog.ts': '3e89a3851bc8bfdf27d981307750f646f91724802e25af1a46d35beba46c48c6',
-  'src/pages/LearningSetupPage.tsx': 'e6d9b80ed1c5c6fa4b11c8d2ab584796e3e6aa2e5e7c92b1e2b7f3f59e98d892',
-  'src/data/textbook/math/quadratic/qf01Lesson.ts': 'f9e1d2957dbc2160eafb6274ace8dd83449f99f9c956ae46e94c7b04228fa43a',
-  'src/data/textbook/math/index.ts': '40de08acf04c5756321545ccc75a85e6579087b5a99994eb5b7b683f6990be73',
+  "src/domain/textbookSchema.test.ts": "c5f3feaefb76ddb02e2296b55c12ad8c4cc6267fede6ddf2020dcc6086ba67c6",
+  "src/domain/textbookMath.test.ts": "034b79dc81b4d7fec62ae4b7a6ef2d87234cd211e03a951ebc5f3a90062c8ce0",
+  "src/domain/textbook.ts": "e3682ee50cf10d377416676872f9d491e2ad4fcd6816d7159d1ca162d911444c",
+  "src/domain/textbookSchema.ts": "a97764f177a1d5e5f2bcf643e56abff8d2ec399f593de30033f8493ac6dd3af3",
+  "src/domain/textbook.test.ts": "62a20e50ab6dcd67e52391cf0d0b7957f01445c29d6fa3e084ce4dba12fa72a5",
+  "src/pages/LearningSetupPage.tsx": "e6d9b80ed1c5c6fa4b11c8d2ab584796e3e6aa2e5e7c92b1e2b7f3f59e98d892",
+  "src/pages/TextbookUnitPage.tsx": "e862027297c25bccfd6caa4632153927a96096310d735823086266665c887e32",
+  "src/data/textbook/math/mathCatalog.ts": "3e89a3851bc8bfdf27d981307750f646f91724802e25af1a46d35beba46c48c6",
+  "src/data/textbook/math/mathCatalog.test.ts": "01a08515b52d2ce49aaff0d7d115ed26df7e30efa77cf1fdb0f614405c116252",
+  "src/data/textbook/math/index.ts": "40de08acf04c5756321545ccc75a85e6579087b5a99994eb5b7b683f6990be73",
+  "src/data/textbook/math/quadratic/qf01Lesson.ts": "769975c725cc3f43155a589c7b852f6aaf084429617a7ee100253741cf246cd0",
+  "src/data/textbook/math/quadratic/qf01Presentation.json": "32bce9d3cb89809ee1024f986d52020cd56e4f825908d633768b1f26ef4bea6f",
+  "src/data/textbook/math/quadratic/qf01Lesson.test.tsx": "f9da4ba5a66ded0996c959c995bca4319406f497827ca8b76e34ce6cf9e6261d",
+  "src/data/textbook/math/quadratic/qf01Unit.json": "de8e6f70e33d26a7e92503401e435edcfc0639d2a4580af58080083f1fb93928",
+  "src/components/textbook/GuidedMathReadingFlow.tsx": "afa170098dd26e7703102cb79b710d6928fb40d3166a42be813d00dc16aa874c",
+  "src/components/textbook/guided-math-reading.css": "dbf8bdb4c146fc3aa8afc63f62521c69d10bc42351a48daea2b908817afc9e1e"
 });
 let chromium;
 
@@ -54,8 +63,8 @@ export function validateConfiguration(contract, manifest, contractBytes, env = p
   assert.equal(contract.storageKey, STORAGE_KEY, 'CONTRACT_STORAGE_KEY');
   assert.deepEqual(contract.expectedWidths, WIDTHS, 'CONTRACT_WIDTHS');
   assert.equal(contract.qf01.unitId, 'math-quadratic-qf01', 'CONTRACT_UNIT');
-  assert.equal(contract.qf01.statesPerWidth, 129, 'CONTRACT_STATES');
-  assert.equal(contract.qf01.decisions, 25, 'CONTRACT_DECISIONS');
+  assert.equal(contract.qf01.statesPerWidth, 124, 'CONTRACT_STATES');
+  assert.equal(contract.qf01.decisions, 24, 'CONTRACT_DECISIONS');
   assert.equal(contract.qf01.stages, 9, 'CONTRACT_STAGES');
   assert.equal(manifest.schemaVersion, 'qf01-dist/1', 'DIST_MANIFEST_SCHEMA');
   assert.equal(manifest.sourceSHA, SOURCE_SHA, 'DIST_MANIFEST_SOURCE');
@@ -152,277 +161,87 @@ export async function httpSourceProof(appURL, manifest) {
   return {sourceSHA: manifest.sourceSHA, publisherSHA: manifest.publisherSHA, appBase: appURL, allManifestFilesMatched: true, files: receipts};
 }
 
-async function runCurrentAssertionBody() {
-// BEGIN EXACT P012 R2 ASSERTION BODY
-const sourceSHA=process.env.SOURCE_SHA,width=Number(process.env.WIDTH),out=process.env.OUT;
-assert.match(sourceSHA??'',/^[0-9a-f]{40}$/);
-assert.ok([320,390,430,1440].includes(width));
-const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
-const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
-const unitPath='src/data/textbook/math/quadratic/qf01Unit.json';
-const displayPath='src/data/textbook/math/quadratic/qf01Presentation.json';
-const unit=read(unitPath),display=read(displayPath),items=unit.sections[0].items;
-assert.equal(unit.unitId,'math-quadratic-qf01');
-assert.equal(items.length,25);assert.equal(display.nodes.length,25);
-assert.equal(display.stages.length,9);assert.equal(unit.requiredInteractionRefs.length,25);
-assert.deepEqual(display.nodes.map(n=>n.interaction),items.map(i=>i.id));
-assert.deepEqual(unit.requiredInteractionRefs,items.map(i=>i.id));
-const files=[unitPath,displayPath,'src/pages/TextbookUnitPage.tsx','src/data/textbook/math/index.ts','src/data/textbook/math/quadratic/qf01Lesson.ts','src/data/textbook/math/mathCatalog.ts','src/pages/LearningSetupPage.tsx'];
-assert.equal(hash(fs.readFileSync(unitPath)),'5d0868d5ec2cdd6d1851e2e8b0c83f7c3db51ec703e7db75aa26d77074afea74');
-assert.equal(hash(fs.readFileSync(displayPath)),'06e761a97c4c8ecd11816842b4bb392ceff7cc92568ce43056ea4539cc62d0b4');
-const sourceFiles=Object.fromEntries(files.map(p=>[p,hash(fs.readFileSync(p))]));
-fs.mkdirSync(out+'/png',{recursive:true});fs.mkdirSync(out+'/states',{recursive:true});
-const report={sourceSHA,width,route:'/#/learning/textbook/'+unit.unitId,
-  scope:'QF01_25_DECISIONS_ALL_50_WRONG_VALUES_AND_RELOAD',status:'RUNNING',
-  sourceFiles,unitId:unit.unitId,revision:unit.revision,
-  ci:{runId:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT},
-  images:[],states:[],answers:[],errors:[],supplemental:[],
-  limits:['Not a deployment or user acceptance','Measurements and assertions need nonauthor review; no automatic teaching-quality label','Reload probes at decision13 and decision25, not every historical saved revision','No claim of unrelated-unit regression coverage']};
-const persist=()=>fs.writeFileSync(out+'/REPORT.json',JSON.stringify(report,null,2)+'\n');persist();
-let ready=false;for(let i=0;i<60;i++){try{if((await fetch(process.env.APP_URL)).ok){ready=true;break}}catch{}await new Promise(r=>setTimeout(r,500))}
-if(!ready)throw Error('PREVIEW_NOT_READY');
-const browser=await chromium.launch({headless:true});
-try{
-  report.browserVersion=browser.version();
-  // One independent context per matrix job; no production/user session.
-  const context=await browser.newContext({viewport:{width,height:1000}});
-  const page=await context.newPage();
-  page.on('pageerror',e=>{report.errors.push(String(e));persist()});
-  page.setDefaultTimeout(20000);
-  const menuURL=process.env.APP_URL+'#/learning/setup?mode=textbook&subject=math-1a';
-  const foundation='math-textbook-topic-quadratic-functions-foundation';
-  async function supplement(kind,data,targetPage=page){
-    await targetPage.evaluate(()=>document.fonts.ready);
-    const previous=await targetPage.evaluate(()=>({x:scrollX,y:scrollY}));
-    await targetPage.evaluate(async()=>{scrollTo(0,0);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});
-    assert.equal(await targetPage.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'SUPPLEMENT_OVERFLOW:'+kind);
-    assert.equal(await targetPage.locator('.katex-error').count(),0);
-    const dir=out+'/supplemental-png';fs.mkdirSync(dir,{recursive:true});
-    const file='supplemental-png/'+String(report.supplemental.length).padStart(2,'0')+'-'+kind+'.png';
-    await targetPage.screenshot({path:out+'/'+file,fullPage:true});
-    await targetPage.evaluate(p=>scrollTo(p.x,p.y),previous);
-    report.supplemental.push({kind,...data,image:{file,sha256:hash(fs.readFileSync(out+'/'+file)),sourceSHA,width,fullPage:true,captureOrigin:'top-after-two-animation-frames'}});persist();
+export const ACTIVE_IDS = Object.freeze(['n01','n02','n03','n04','n05','n06','n07','n08','n09','n10','n11','n12a','n12b','n12c','n12','n13','n14','n15','n16','n17','n18','n19','n21','n22'].map(n=>'qf01-'+n+'-answer'));
+export const RELOAD_IDS = Object.freeze(['qf01-n13-answer','qf01-n22-answer']);
+export const SUPPLEMENT_KINDS = Object.freeze(['menu-0','compact-history','full-history','menu-24',...Array.from({length:26},(_,i)=>'revision1-prefix-'+i),'reset-preserves-history']);
+export function expectedCaptureLabels(){return ACTIVE_IDS.flatMap(id=>{const n=id.slice(0,-7);return [n+'-before',n+'-choices',n+'-wrong-0',n+'-wrong-1',...(RELOAD_IDS.includes(id)?[n+'-reload-wrong']:[]),n+'-correct',...(RELOAD_IDS.includes(id)?[n+'-reload-correct']:[])];});}
+export function parsePresentationLiteral(source){
+ const marker='export const qf01TransformationPresentation = ',start=source.indexOf(marker);assert.ok(start>=0,'EXACT_PRESENTATION_EXPORT');const begin=source.indexOf('{',start+marker.length);let depth=0,quoted=false,escape=false;
+ for(let i=begin;i<source.length;i++){const c=source[i];if(quoted){if(escape)escape=false;else if(c==='\\')escape=true;else if(c==='"')quoted=false;}else if(c==='"')quoted=true;else if(c==='{')depth++;else if(c==='}'&&--depth===0)return JSON.parse(source.slice(begin,i+1));}
+ assert.fail('BALANCED_LITERAL_JSON');
+}
+export function validateViewportEvidence(v,{requireTarget=false,expectedSourceNode=null}={}){
+ assert.ok(v.viewport.width>0&&v.viewport.height>0);assert.ok(v.documentWidth<=v.viewport.width,'VIEWPORT_HORIZONTAL_OVERFLOW');assert.equal(v.katexErrors,0);assert.equal(v.fontsReady,'loaded');
+ if(v.flowFontSize!==null)assert.ok(v.flowFontSize>=18,'CURRENT_BODY_FONT_18');for(const copy of v.copyFonts??[])assert.ok(copy.fontSize>=18,'CURRENT_REQUIRED_COPY_FONT_18');for(const m of v.math){assert.ok(m.fontSize>=18,'CURRENT_MATH_FONT_18');assert.ok(m.rect.left>=-1&&m.rect.right<=v.viewport.width+1,'FORMULA_HORIZONTAL_CLIP');assert.deepEqual(m.clippedBy,[],'FORMULA_ANCESTOR_CLIP');}
+ for(const g of v.relationColumns)if(g.positions.length>1)assert.ok(Math.max(...g.positions)-Math.min(...g.positions)<2,'RELATION_COLUMN_ALIGNMENT:'+g.id);
+ for(const n of v.numberLabels){assert.ok(n.rect.left>=-1&&n.rect.right<=v.viewport.width+1,'NUMBER_LABEL_CLIP');assert.deepEqual(n.collisions,[],'NUMBER_FORMULA_COLLISION');}
+ for(const button of v.visibleButtons){assert.ok(button.rect.width>=44&&button.rect.height>=44,'VISIBLE_CONTROL_HIT_SIZE');assert.equal(button.centerHit,true,'VISIBLE_CONTROL_OCCLUDED');}
+ if(requireTarget){assert.ok(v.target,'CURRENT_STATE_TARGET_MISSING');if(expectedSourceNode)assert.equal(v.target.sourceNodeId,expectedSourceNode,'CURRENT_TARGET_SOURCE_NODE');assert.ok(v.target.rect.top>=v.headerBottom-1&&v.target.rect.bottom<=v.footerTop+1,'CURRENT_TARGET_HEADER_FOOTER_OCCLUSION');assert.ok(v.target.rect.left>=-1&&v.target.rect.right<=v.viewport.width+1);if(v.target.button)assert.equal(v.target.centerHit,true,'CURRENT_TARGET_NOT_HITTABLE');}
+ return true;
+}
+async function runCurrentAssertionBody(){
+ const sourceSHA=process.env.SOURCE_SHA,width=Number(process.env.WIDTH),out=process.env.OUT;
+ assert.equal(sourceSHA,SOURCE_SHA);assert.ok(WIDTHS.includes(width));
+ const unit=json('src/data/textbook/math/quadratic/qf01Unit.json'),display=json('src/data/textbook/math/quadratic/qf01Presentation.json'),plan=parsePresentationLiteral(fs.readFileSync('src/data/textbook/math/quadratic/qf01Lesson.ts','utf8'));
+ const physical=unit.sections[0].items,items=ACTIVE_IDS.map(id=>physical.find(i=>i.id===id)),nodes=items.map(i=>display.nodes.find(n=>n.interaction===i.id));
+ assert.equal(unit.revision,2);assert.equal(physical.length,25);assert.equal(display.nodes.length,25);assert.equal(display.stages.length,9);assert.deepEqual(unit.requiredInteractionRefs,ACTIVE_IDS);assert.deepEqual(unit.workedReuseRefs,['qf01-n20-answer']);assert.equal(display.nodes.find(n=>n.id==='qf01-n20').interaction,null);assert.deepEqual(plan.interactions.map(q=>q.id),ACTIVE_IDS);
+ const report={sourceSHA,width,route:BASE_PATH+'#/learning/textbook/'+unit.unitId,scope:'QF01_REVISION2_ALL9_STAGES_25_PHYSICAL_24_ACTIVE_48_WRONG',status:'RUNNING',sourceFiles:requiredSourceFiles,unitId:unit.unitId,revision:2,ci:{runId:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT},images:[],states:[],answers:[],errors:[],supplemental:[],limits:['Current asserted states and finite nonauthor review, not user acceptance or new gold quality','No claim of all three themes or unrelated intake closure']};
+ fs.mkdirSync(out+'/png',{recursive:true});fs.mkdirSync(out+'/states',{recursive:true});fs.mkdirSync(out+'/supplemental-png',{recursive:true});fs.mkdirSync(out+'/fullpage',{recursive:true});const persist=()=>fs.writeFileSync(out+'/REPORT.json',JSON.stringify(report,null,2)+'\n');persist();
+ const browser=await chromium.launch({headless:true});let page;
+ try{
+  report.browserVersion=browser.version();const context=await browser.newContext({viewport:{width,height:1000}});page=await context.newPage();page.setDefaultTimeout(20000);const track=p=>p.on('pageerror',e=>{report.errors.push(String(e));persist();});track(page);
+  const lessonURL=process.env.APP_URL+'#/learning/textbook/'+unit.unitId,menuURL=process.env.APP_URL+'#/learning/setup?mode=textbook&subject=math-1a';
+  const readProgress=(p=page)=>p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:STORAGE_KEY,id:unit.unitId});
+  const math=locator=>locator.locator('annotation[encoding="application/x-tex"]').allTextContents();
+  const current=(p=page)=>p.locator('.math-textbook-stage--current');
+  async function settle(p=page){await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});}
+  async function viewport(p,targetId=null,nodeId=null){
+   const evidence=await p.evaluate(({targetId,nodeId})=>{
+    const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};},hit=e=>{const r=e.getBoundingClientRect(),top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return !!top&&(top===e||e.contains(top));};
+    const current=document.querySelector('.math-textbook-stage--current'),flow=document.querySelector('.qf01-full-reading'),root=current??document.body;
+    const headers=[...document.querySelectorAll('header,nav,[data-fixed-header]')].map(e=>({s:getComputedStyle(e),r:rect(e)}));
+    const headerBottom=Math.max(0,...headers.filter(h=>['fixed','sticky'].includes(h.s.position)&&Number.isFinite(parseFloat(h.s.top))&&h.r.top<innerHeight/2).map(h=>h.r.bottom)),footerTop=Math.min(innerHeight,...headers.filter(h=>h.s.position==='fixed'&&Number.isFinite(parseFloat(h.s.bottom))&&h.r.bottom>innerHeight/2).map(h=>h.r.top));
+    const math=[...root.querySelectorAll('.katex')].map(e=>{const r=rect(e),clippedBy=[];for(let parent=e.parentElement;parent&&parent!==document.body;parent=parent.parentElement){const style=getComputedStyle(parent),pr=rect(parent);if(['hidden','clip'].includes(style.overflowX)&&(r.left<pr.left-1||r.right>pr.right+1))clippedBy.push({tag:parent.tagName,className:parent.className,rect:pr});}return{latex:e.querySelector('annotation')?.textContent,fontSize:parseFloat(getComputedStyle(e).fontSize),rect:r,clippedBy};});
+    const relationColumns=[...root.querySelectorAll('[data-transformation-group]')].map(g=>({id:g.getAttribute('data-transformation-group'),positions:[...g.querySelectorAll('.transformation-equation')].filter(r=>r.getAttribute('data-relation')).map(r=>rect(r.querySelector('.transformation-relation')).left)}));
+    const intersects=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
+    const numberLabels=[...root.querySelectorAll('.numbered-equation-label')].map(e=>{const r=rect(e);return {text:e.textContent,rect:r,collisions:[...e.parentElement.querySelectorAll('.katex')].map(m=>rect(m)).filter(m=>intersects(r,m))};});
+    const panel=targetId?document.querySelector('[data-testid="inline-choice-panel-'+targetId+'"]'):null,slot=targetId?document.querySelector('[data-testid="textbook-item-'+targetId+'"]'):null,resolved=targetId?document.querySelector('[data-testid="resolved-'+targetId+'"]'):null;
+    const completedRow=nodeId?[...current?.querySelectorAll('[data-transformation-row][data-source-node="'+nodeId+'"] .transformation-equation')??[]].at(-1):null;
+    const focused=panel?.contains(document.activeElement)&&document.activeElement.tagName==='BUTTON'?document.activeElement:null,target=focused??slot??resolved??completedRow;
+    const buttons=[...root.querySelectorAll('button')].filter(e=>{const r=rect(e);return r.width>0&&r.height>0&&r.top>=headerBottom&&r.bottom<=footerTop&&r.left>=0&&r.right<=innerWidth;});
+    return{viewport:{width:innerWidth,height:innerHeight,scrollX,scrollY},documentWidth:document.documentElement.scrollWidth,fontsReady:document.fonts.status,katexErrors:document.querySelectorAll('.katex-error').length,flowFontSize:flow?parseFloat(getComputedStyle(flow).fontSize):null,copyFonts:[...root.querySelectorAll('.transformation-prose,.reading-choice-hint,.qf01-local-context,.guided-source-question p')].map(e=>({className:e.className,fontSize:parseFloat(getComputedStyle(e).fontSize)})),headerBottom,footerTop,math,relationColumns,numberLabels,holeRect:slot?rect(slot):null,panelRect:panel?rect(panel):null,target:target?{sourceNodeId:target.closest('[data-source-node]')?.getAttribute('data-source-node'),testId:target.getAttribute('data-testid'),button:target.tagName==='BUTTON',rect:rect(target),centerHit:target.tagName==='BUTTON'?hit(target):null}:null,visibleButtons:buttons.map(e=>({testId:e.getAttribute('data-testid'),rect:rect(e),centerHit:hit(e)}))};
+   },{targetId,nodeId});validateViewportEvidence(evidence,{requireTarget:targetId!==null,expectedSourceNode:nodeId});return evidence;
   }
-  async function menu(expectedCount){
-    await page.goto(menuURL);
-    const chapter=page.getByTestId('math-textbook-chapter-2');await chapter.waitFor({state:'visible'});
-    const card=page.getByTestId(foundation);await card.waitFor({state:'visible'});
-    await page.waitForFunction(id=>document.querySelector('[data-testid="'+id+'"]')?.tagName==='A',foundation);
-    assert.equal(await card.evaluate(n=>n.tagName),'A');
-    assert.equal(await card.getAttribute('href'),'#/learning/textbook/'+unit.unitId);
-    const text=await chapter.innerText();
-    for(const title of ['関数とグラフ','2次関数の最大・最小','2次関数と方程式・不等式'])assert.ok(text.includes(title),'MENU_TITLE:'+title);
-    assert.ok((await card.innerText()).includes('公開中：関数の見方'));
-    assert.ok((await card.innerText()).includes('公開中の内容：'+expectedCount+'/25 完了'));
-    assert.ok(!(await card.innerText()).includes('100%'));
-    for(const id of ['quadratic-functions-extrema','quadratic-functions-equations-inequalities']){
-      const planned=page.getByTestId('math-textbook-topic-'+id);
-      assert.equal(await planned.getAttribute('aria-disabled'),'true');assert.equal(await planned.evaluate(n=>n.tagName),'DIV');
-      assert.equal(await planned.locator('a').count(),0);assert.ok(!(await planned.innerText()).includes('0/0'));
-    }
-    assert.deepEqual(await page.locator('[data-testid^="math-textbook-chapter-"]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-testid'))),['math-textbook-chapter-1','math-textbook-chapter-2','math-textbook-chapter-3']);
-    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'MENU_OVERFLOW');
-    await supplement('menu-'+expectedCount,{expectedCount,text});
+  async function capturePair(stem,p=page,directory='png'){
+   await settle(p);const captureViewport=await p.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight})),file=directory+'/'+stem+'.png';
+   await p.screenshot({path:out+'/'+file,fullPage:false});
+   await p.evaluate(()=>scrollTo(0,0));await settle(p);const fullFile='fullpage/'+stem+'.png';await p.screenshot({path:out+'/'+fullFile,fullPage:true});await p.evaluate(v=>scrollTo(v.scrollX,v.scrollY),captureViewport);await settle(p);
+   return {file,sha256:hash(fs.readFileSync(out+'/'+file)),sourceSHA,width,fullPage:false,captureOrigin:'learner-viewport-after-two-animation-frames',captureViewport,fullPageImage:{file:fullFile,sha256:hash(fs.readFileSync(out+'/'+fullFile)),fullPage:true,captureOrigin:'top-after-two-animation-frames'}};
   }
-  await menu(0);await page.getByTestId(foundation).click();
-  await page.getByTestId('textbook-reading-flow').waitFor({state:'visible'});
-  await page.evaluate(()=>document.fonts.ready);
-  const progress=()=>page.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:process.env.STORAGE_KEY,id:unit.unitId});
-  const record=async id=>(await progress())?.answers?.[id];
-  const current=()=>page.locator('.math-textbook-stage--current');
-  const substitutionTex='4'+String.fromCharCode(92)+'times(-1)-6';
-  const pilot=n=>['qf01-n03','qf01-n04'].includes(n.id);
-  const group=()=>current().locator('[data-transformation-group="qf01-substitution-chain"]');
-  const math=async locator=>locator.locator('annotation[encoding="application/x-tex"]').allTextContents();
-  async function chain(substitutionDone,valueDone){
-    assert.equal(await group().count(),1,'ONE_EXPRESSION_CHAIN');
-    assert.equal(await group().getAttribute('data-transformation-kind'),'expression-chain');
-    assert.deepEqual(await group().locator('[data-transformation-row]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-transformation-row'))),substitutionDone?['qf01-substitution','qf01-arithmetic','qf01-value']:['qf01-substitution']);
-    assert.equal(await group().locator('.guided-step-caption,.reading-paragraph,.guided-thinking-step').count(),0,'NO_SEPARATE_QUESTIONS');
-    assert.ok(!(await group().innerText()).includes('？'),'NO_INTERVENING_QUESTION');
-    const row=id=>group().locator('[data-transformation-row="'+id+'"]');
-    assert.deepEqual(await math(row('qf01-substitution').locator('.transformation-left')),['f(-1)']);
-    const expected=substitutionDone?substitutionTex:null;
-    assert.deepEqual(await math(row('qf01-substitution').locator('.transformation-right')),expected?[expected]:[]);
-    if(substitutionDone){
-      assert.deepEqual(await math(row('qf01-arithmetic').locator('.transformation-right')),['-4-6']);
-      assert.deepEqual(await math(row('qf01-value').locator('.transformation-right')),valueDone?['-10']:[]);
-      assert.equal(await row('qf01-substitution').locator('math mo').filter({hasText:'×'}).count(),1,'ONE_MULTIPLICATION');
-    }else assert.ok(!(await group().innerText()).includes('−10'),'NO_RESULT_LEAK');
-    assert.equal(await group().locator('.reading-inline-blank').count(),valueDone?0:1);
-    const geometry=await group().locator('.transformation-relation').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return{x:r.x,right:r.right}}));
-    if(geometry.length>1)assert.ok(Math.max(...geometry.map(r=>r.x))-Math.min(...geometry.map(r=>r.x))<2,'RELATIONS_ALIGNED');
-    return {substitutionDone,valueDone,geometry,math:await math(group())};
-  }
-  const legacy=[];
-  async function remember(label){legacy.push({label,progress:await progress()})}
-  await remember('unstarted');
+  async function snapshot(kind,data,p=page){await settle(p);const measurements=await viewport(p),image=await capturePair('supp-'+String(report.supplemental.length).padStart(2,'0')+'-'+kind,p,'supplemental-png');report.supplemental.push({kind,...data,measurements,image});persist();}
 
-  async function unchangedReferences(node){
-    const actual=await current().locator('.math-textbook-stage-references [data-result-source]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-result-source')));
-    assert.deepEqual(actual,node.knownRefs,'EXACT_KNOWN_RESULTS:'+node.id);
-  }
-  async function noFuture(i,allowNextQuestion=false){
-    for(const future of display.nodes.slice(i+1)){
-      if(!(allowNextQuestion&&future===display.nodes[i+1]))assert.equal(await page.getByTestId('textbook-item-'+future.interaction).count(),0,'FUTURE_ANSWER_CONTROL:'+future.id);
-      const s=display.semantic.nodes.find(n=>n.id===future.id);
-      for(const b of s.after)assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'FUTURE_COMPLETED_TEXT:'+future.id);
-    }
-  }
-  async function capture(label,node,selectedValue=null){
-    await page.evaluate(()=>document.fonts.ready);
-    // Full-page PNG must be captured from the page top. Preserve the
-    // learner viewport separately; never hide sticky/skip-link UI.
-    const learnerViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
-    await page.evaluate(async()=>{
-      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-      window.scrollTo({left:0,top:0,behavior:'instant'});
-      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-    });
-    const captureViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
-    assert.equal(captureViewport.scrollX,0,'CAPTURE_NOT_AT_LEFT:'+label);
-    assert.equal(captureViewport.scrollY,0,'CAPTURE_NOT_AT_TOP:'+label);
-    const measurements=await page.evaluate(()=>({
-      viewport:{width:innerWidth,height:innerHeight},documentWidth:document.documentElement.scrollWidth,
-      horizontalOverflow:document.documentElement.scrollWidth>innerWidth,
-      katexErrors:document.querySelectorAll('.katex-error').length,
-      fontsReady:document.fonts.status,
-      currentText:document.querySelector('.math-textbook-stage--current')?.textContent,
-      math:Array.from(document.querySelectorAll('.math-textbook-stage--current .katex')).map(e=>({
-        text:e.textContent,fontSize:getComputedStyle(e).fontSize,
-        rect:(()=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}})()
-      }))
-    }));
-    assert.equal(measurements.horizontalOverflow,false,'DOCUMENT_OVERFLOW:'+label);
-    assert.equal(measurements.katexErrors,0,'INVALID_MATH:'+label);
-    const stem=String(report.states.length).padStart(3,'0')+'-'+label;
-    const png='png/'+stem+'.png',state='states/'+stem+'.json';
-    try{
-      await page.screenshot({path:out+'/'+png,fullPage:true});
-    } finally {
-      await page.evaluate(async previous=>{
-        window.scrollTo({left:previous.scrollX,top:previous.scrollY,behavior:'instant'});
-        await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-      },learnerViewport);
-    }
-    const restoredViewport=await page.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
-    const image={file:png,sha256:hash(fs.readFileSync(out+'/'+png)),width,nodeId:node.id,label,selectedValue,
-      fullPage:true,captureOrigin:'top-after-two-animation-frames',captureViewport};
-    const data={sourceSHA,nodeId:node.id,interactionId:node.interaction,label,selectedValue,
-      measurements,measurementViewport: captureViewport,learnerViewportBeforeCapture:learnerViewport,
-      viewportAfterRestore:restoredViewport,progress:await progress(),image};
-    fs.writeFileSync(out+'/'+state,JSON.stringify(data,null,2)+'\n');
-    report.images.push(image);report.states.push({file:state,sha256:hash(fs.readFileSync(out+'/'+state)),image:png});persist();
-  }
+  async function menu(count){await page.goto(menuURL);const chapter=page.getByTestId('math-textbook-chapter-2'),card=page.getByTestId('math-textbook-topic-quadratic-functions-foundation');await card.waitFor();await page.waitForFunction(()=>document.querySelector('[data-testid="math-textbook-topic-quadratic-functions-foundation"]')?.tagName==='A');assert.equal(await card.getAttribute('href'),'#/learning/textbook/'+unit.unitId);const text=await chapter.innerText();for(const title of ['関数とグラフ','2次関数の最大・最小','2次関数と方程式・不等式'])assert.ok(text.includes(title));assert.ok((await card.innerText()).includes('公開中の内容：'+count+'/24 完了'));assert.ok(!(await card.innerText()).includes('100%'));for(const id of ['quadratic-functions-extrema','quadratic-functions-equations-inequalities']){const pending=page.getByTestId('math-textbook-topic-'+id);assert.equal(await pending.evaluate(e=>e.tagName),'DIV');assert.equal(await pending.getAttribute('aria-disabled'),'true');assert.equal(await pending.locator('a').count(),0);}await snapshot('menu-'+count,{count,text});}
+  await menu(0);await page.getByTestId('math-textbook-topic-quadratic-functions-foundation').click();await page.getByTestId('textbook-reading-flow').waitFor();
+  async function contextProof(node,p=page){await settle(p);const source=p.getByTestId('guided-source-question');assert.ok((await source.innerText()).includes('元の条件・求めるもの'));const actual=await math(source);for(const part of display.stages.find(s=>s.id===node.stageId).sourceQuestionParts)if(part.type==='math')assert.ok(actual.includes(part.latex),'ORIGINAL_CONDITION_OR_TARGET:'+node.id+':'+part.latex);assert.equal(await p.locator('.guided-thinking-step').count(),0,'NO_LEGACY_QUESTION');assert.equal(await p.getByTestId('textbook-item-qf01-n20-answer').count(),0,'PASSIVE_NOT_GRADED');return {sourceText:await source.innerText(),sourceMath:actual};}
+  async function noFuture(i){for(const item of items.slice(i+1))assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),0,'FUTURE_SLOT:'+item.id);}
+  async function capture(label,node,selectedValue=null){await settle();const contextEvidence=await contextProof(node),measurements=await viewport(page,node.interaction,node.id),stem=String(report.images.length).padStart(3,'0')+'-'+label,image={...await capturePair(stem),nodeId:node.id,label,selectedValue},file='states/'+stem+'.json';const state={sourceSHA,nodeId:node.id,interactionId:node.interaction,label,selectedValue,contextEvidence,measurements,progress:await readProgress(),image};fs.writeFileSync(out+'/'+file,JSON.stringify(state,null,2)+'\n');report.images.push(image);report.states.push({file,sha256:hash(fs.readFileSync(out+'/'+file)),image:image.file});persist();}
+
+  async function safeNames(item,node){const slot=page.getByTestId('textbook-item-'+item.id);assert.equal(await slot.getAttribute('aria-label'),'式中の空欄');const ctx=await page.getByTestId('guided-source-question').getAttribute('id');assert.ok(ctx);assert.equal(await slot.getAttribute('aria-describedby'),ctx);await slot.click();const panel=page.getByTestId('inline-choice-panel-'+item.id),group=panel.getByRole('group',{name:'この空欄の候補',exact:true});assert.equal(await group.getAttribute('aria-describedby'),ctx);assert.equal(await group.getAttribute('aria-label'),'この空欄の候補');assert.deepEqual((await panel.locator('button.reading-choice-option').evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')))).sort(),[...item.choices].sort());const geometry=[];for(const choice of await panel.locator('button.reading-choice-option').all()){await choice.focus();await settle();const v=await choice.evaluate(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e),content=e.querySelector(':scope>.qf01-option-content'),c=getComputedStyle(content),b=content.getBoundingClientRect();const headers=[...document.querySelectorAll('header,nav,[data-fixed-header]')].map(h=>({s:getComputedStyle(h),r:h.getBoundingClientRect()}));const top=Math.max(0,...headers.filter(h=>['fixed','sticky'].includes(h.s.position)&&Number.isFinite(parseFloat(h.s.top))&&h.r.top<innerHeight/2).map(h=>h.r.bottom));const bottom=Math.min(innerHeight,...headers.filter(h=>h.s.position==='fixed'&&Number.isFinite(parseFloat(h.s.bottom))&&h.r.bottom>innerHeight/2).map(h=>h.r.top));return{width:r.width,height:r.height,top:r.top,bottom:r.bottom,clearTop:top,clearBottom:bottom,display:s.display,grid:s.gridTemplateColumns,font:parseFloat(s.fontSize),contentWidth:b.width,border:parseFloat(c.borderTopWidth),contentDisplay:c.display,overflow:content.scrollWidth>content.clientWidth+1};});assert.ok(v.width>=44&&v.height>=44);assert.ok(v.top>=v.clearTop-1&&v.bottom<=v.clearBottom+1,'FOCUSED_CHOICE_CLEAR_HEADERS:'+node.id);assert.equal(v.display,'block');assert.equal(v.grid,'none');assert.ok(v.font>=18);assert.ok(v.contentWidth>27);assert.equal(v.border,0);assert.equal(v.contentDisplay,'block');assert.equal(v.overflow,false);geometry.push(v);}return{contextId:ctx,slotName:'式中の空欄',groupName:'この空欄の候補',geometry};}
   for(let i=0;i<items.length;i++){
-    const item=items[i],node=display.nodes[i],compiled=display.semantic.nodes.find(n=>n.id===node.id);
-    if(await page.getByTestId('textbook-item-'+item.id).count()===0){
-      await page.getByTestId('math-textbook-next-stage').click();
-    }
-    await page.getByTestId('textbook-item-'+item.id).waitFor({state:'visible'});
-    await page.getByTestId('math-textbook-stage-'+node.stageId).waitFor({state:'visible'});
-    await unchangedReferences(node);await noFuture(i);
-    for(const b of compiled.after)assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'CURRENT_ANSWER_EARLY:'+node.id);
-    if(pilot(node))await chain(i===3,false);
-    await capture(node.id+'-before',node);
-    await page.getByTestId('textbook-item-'+item.id).click();
-    const panel=page.getByTestId('inline-choice-panel-'+item.id);
-    await panel.waitFor({state:'visible'});
-    const shown=await panel.locator('button.reading-choice-option').evaluateAll(ns=>ns.map(n=>n.getAttribute('aria-label')));
-    assert.equal(shown.length,item.choices.length);assert.deepEqual([...shown].sort(),[...item.choices].sort());
-    await capture(node.id+'-choices',node);
-    const wrongs=item.choices.filter(v=>v!==item.answer&&!item.acceptedAnswers.includes(v));
-    assert.equal(wrongs.length,2);
-    for(let j=0;j<wrongs.length;j++){
-      const wrong=wrongs[j];await panel.getByRole('button',{name:wrong,exact:true}).click();
-      const saved=await record(item.id);
-      assert.equal(saved.value,wrong);assert.equal(saved.resolved,false);
-      await page.getByTestId('textbook-hint-'+item.id).waitFor({state:'visible'});
-      assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),1,'WRONG_ADVANCED');
-      await unchangedReferences(node);await noFuture(i);
-      if(pilot(node)){await chain(i===3,false);if(j===1)await remember(node.id+'-wrong');}
-      await capture(node.id+'-wrong-'+j,node,wrong);
-    }
-    if([12,24].includes(i)){
-      const before=await progress();await page.reload();await page.getByTestId('textbook-item-'+item.id).waitFor({state:'visible'});
-      assert.deepEqual(await progress(),before,'WRONG_RELOAD_CHANGED_PROGRESS');
-      await unchangedReferences(node);await noFuture(i);
-      await capture(node.id+'-reload-wrong',node,wrongs.at(-1));
-      await page.getByTestId('textbook-item-'+item.id).click();
-    }
-    await page.getByTestId('inline-choice-panel-'+item.id).getByRole('button',{name:item.answer,exact:true}).click();
-    const saved=await record(item.id);assert.equal(saved.value,item.answer);assert.equal(saved.resolved,true);assert.equal(saved.attemptCount,3);
-    for(const b of compiled.before.filter(b=>b.id.startsWith(node.id+'-interaction'))){
-      assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'COMPLETED_QUESTION_RETAINED:'+node.id);
-    }
-    if(pilot(node))await chain(true,i===3);
-    else for(const b of compiled.after)await page.locator('[data-block-id="'+b.id+'"]').first().waitFor({state:'visible'});
-    if([1,2,3,7,24].includes(i))await remember('completed-'+(i+1));
-    if(i===4){
-      const before=await progress();await page.getByTestId('qf01-history-toggle').click();
-      const history=page.getByTestId('recorded-results-qf01-stage-2');
-      const summary=history.locator('.guided-result').first();
-      assert.equal(await summary.locator('[data-transformation-row]').count(),2,'COMPACT_HISTORY_TWO_ROWS');
-      assert.deepEqual(await math(summary),['f(-1)','=','-4-6','=','-10']);
-      const details=history.locator('details');await details.locator('summary').click();
-      const full=details.locator('[data-transformation-group="qf01-substitution-chain"]');
-      assert.equal(await full.count(),1);assert.equal(await full.locator('[data-transformation-row]').count(),3);
-      assert.deepEqual(await math(full),['f(-1)','=',substitutionTex,'=','-4-6','=','-10']);
-      assert.deepEqual(await progress(),before,'HISTORY_MUTATED_PROGRESS');
-      await supplement('compact-and-full-history',{progress:before,compact:await math(summary),full:await math(full)});
-      await page.getByTestId('qf01-history-toggle').click();
-    }
-    await noFuture(i,true);await capture(node.id+'-correct',node,item.answer);
-    if([12,24].includes(i)){
-      const before=await progress();await page.reload();await page.getByTestId('textbook-reading-flow').waitFor({state:'visible'});
-      assert.deepEqual(await progress(),before,'CORRECT_RELOAD_CHANGED_PROGRESS');
-      for(const b of compiled.before.filter(b=>b.id.startsWith(node.id+'-interaction')))assert.equal(await page.locator('[data-block-id="'+b.id+'"]').count(),0,'RELOAD_RETAINED_QUESTION');
-      await noFuture(i,true);await capture(node.id+'-reload-correct',node,item.answer);
-    }
-    report.answers.push({nodeId:node.id,itemId:item.id,wrongValues:wrongs,correctValue:item.answer});persist();
+   const item=items[i],node=nodes[i];while(await page.getByTestId('textbook-item-'+item.id).count()===0)await page.getByTestId('math-textbook-next-stage').click();await noFuture(i);await capture(node.id+'-before',node);const accessible=await safeNames(item,node);await capture(node.id+'-choices',node);const panel=page.getByTestId('inline-choice-panel-'+item.id),wrongs=item.choices.filter(c=>c!==item.answer&&!item.acceptedAnswers.includes(c));assert.equal(wrongs.length,2);for(let j=0;j<2;j++){await panel.getByRole('button',{name:wrongs[j],exact:true}).click();const saved=(await readProgress()).answers[item.id];assert.equal(saved.resolved,false);assert.equal(saved.value,wrongs[j]);assert.ok((await page.getByTestId('textbook-hint-'+item.id).innerText()).includes('採用しません'));await noFuture(i);await capture(node.id+'-wrong-'+j,node,wrongs[j]);}
+   if(RELOAD_IDS.includes(item.id)){const before=await readProgress();await page.reload();await page.getByTestId('textbook-item-'+item.id).waitFor();assert.deepEqual(await readProgress(),before);await capture(node.id+'-reload-wrong',node,wrongs[1]);await page.getByTestId('textbook-item-'+item.id).click();}
+   await page.getByTestId('inline-choice-panel-'+item.id).getByRole('button',{name:item.answer,exact:true}).click();const saved=(await readProgress()).answers[item.id];assert.equal(saved.resolved,true);assert.equal(saved.value,item.answer);assert.equal(saved.attemptCount,3);assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),0);await capture(node.id+'-correct',node,item.answer);report.answers.push({id:item.id,correctValue:item.answer,wrongValues:wrongs,accessible});if(RELOAD_IDS.includes(item.id)){const before=await readProgress();await page.reload();await page.getByTestId('textbook-reading-flow').waitFor();assert.deepEqual(await readProgress(),before);await capture(node.id+'-reload-correct',node,item.answer);}
   }
-  await page.getByTestId('qf01-complete').waitFor({state:'visible'});
-  const saved=await progress();assert.equal(Object.keys(saved.answers).length,25);
-  assert.ok(Object.values(saved.answers).every(a=>a.resolved&&a.attemptCount===3));
-  assert.equal(report.answers.length,25);assert.equal(report.answers.flatMap(a=>a.wrongValues).length,50);
-  assert.deepEqual(report.errors,[]);
-  for(const [p,h]of Object.entries(sourceFiles))assert.equal(hash(fs.readFileSync(p)),h,'SOURCE_MUTATED:'+p);
-  assert.equal(report.states.length,129,'ORIGINAL_STATE_COUNT_UNCHANGED');
-  await menu(25);assert.deepEqual(await progress(),saved,'MENU_MUTATED_PROGRESS');
-  assert.equal(legacy.length,8);
-  for(const fixture of legacy){
-    const frontier=items.findIndex(item=>!fixture.progress?.answers?.[item.id]?.resolved);
-    const expectedStage=frontier<0?display.stages.at(-1).id:display.nodes[frontier].stageId;
-    const cursor=display.stages.findIndex(stage=>stage.id===expectedStage);
-    const oldContext=await browser.newContext({viewport:{width,height:1000}});const oldPage=await oldContext.newPage();
-    oldPage.on('pageerror',e=>{report.errors.push(String(e));persist()});
-    await oldPage.addInitScript(({key,id,progress,cursor})=>{
-      const marker='p012-fixture-seeded';if(sessionStorage.getItem(marker))return;
-      sessionStorage.setItem(marker,'1');
-      if(progress)localStorage.setItem(key,JSON.stringify({state:{textbookProgress:{[id]:progress}},version:1}));
-      localStorage.setItem('math-textbook-compact-v1:'+id+':r1:scope:qf01-v1',String(cursor));
-    },{key:process.env.STORAGE_KEY,id:unit.unitId,progress:fixture.progress,cursor});
-    const readOld=()=>oldPage.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:process.env.STORAGE_KEY,id:unit.unitId});
-    await oldPage.goto(process.env.APP_URL+'#/learning/textbook/'+unit.unitId);await oldPage.getByTestId('textbook-reading-flow').waitFor();
-    assert.deepEqual(await readOld(),fixture.progress,'OLD_REVISION1_LEDGER_CHANGED:'+fixture.label);
-    const controls=await oldPage.locator('.math-textbook-stage--current [data-testid^="textbook-item-"]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-testid')));
-    const expectedControls=frontier<0?[]:['textbook-item-'+items[frontier].id];
-    assert.deepEqual(controls,expectedControls,'OLD_REVISION1_EXPECTED_FRONTIER:'+fixture.label);
-    await oldPage.getByTestId('math-textbook-stage-'+expectedStage).waitFor({state:'visible'});
-    await oldPage.reload();await oldPage.getByTestId('textbook-reading-flow').waitFor();
-    assert.deepEqual(await readOld(),fixture.progress,'OLD_REVISION1_RELOAD_CHANGED:'+fixture.label);
-    assert.deepEqual(await oldPage.locator('.math-textbook-stage--current [data-testid^="textbook-item-"]').evaluateAll(ns=>ns.map(n=>n.getAttribute('data-testid'))),controls,'OLD_REVISION1_RELOAD_CONTROLS:'+fixture.label);
-    assert.equal(await oldPage.locator('.katex-error').count(),0);
-    assert.equal(await oldPage.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'OLD_SAVE_OVERFLOW:'+fixture.label);
-    await supplement('revision1-'+fixture.label,{label:fixture.label,progress:fixture.progress,controls,expectedStage},oldPage);await oldContext.close();
+  const saved=await readProgress();assert.equal(saved.unitRevision,2);assert.equal(Object.keys(saved.answers).length,24);assert.ok(!saved.answers['qf01-n20-answer']);await page.getByTestId('qf01-complete').waitFor();
+  await page.getByTestId('qf01-history-toggle').click();const compact=[];for(const g of plan.groups.filter(g=>!g.stageIds.includes('qf01-stage-9'))){const loc=page.locator('.guided-history [data-transformation-group="'+g.id+'"]');assert.equal(await loc.count(),1);assert.equal(await loc.locator('.transformation-equation').count(),1);const expected=g.rows.at(-1).completed;let left=expected.left;if(!left.length&&(expected.relation||expected.relationSlot))left=[...g.rows].reverse().find(r=>r.completed.left.length)?.completed.left??[...g.rows.slice(0,-1)].reverse().find(r=>!r.completed.relation&&r.completed.right.length)?.completed.right??[];const parts=x=>x.map(p=>{assert.equal(p.type,'math');return p.latex;});assert.deepEqual(await math(loc.locator('.transformation-left')),parts(left));assert.deepEqual(await math(loc.locator('.transformation-right')),parts(expected.right));compact.push({id:g.id,left:parts(left),relation:expected.relation,right:parts(expected.right)});}await snapshot('compact-history',{compact,progressUnchanged:true});await page.getByRole('button',{name:'全文を開く',exact:true}).click();for(const stage of display.stages.slice(0,-1))await page.getByTestId('qf01-chain-'+stage.id).waitFor();assert.deepEqual(await readProgress(),saved);await snapshot('full-history',{compact,progressUnchanged:true});await menu(24);assert.deepEqual(await readProgress(),saved);
+  for(let count=0;count<=25;count++){
+   const old={unitId:unit.unitId,unitRevision:1,startedAt:1,updatedAt:25,answers:Object.fromEntries(physical.slice(0,count).map((item,i)=>[item.id,{itemId:item.id,value:item.answer,firstValue:item.answer,isFirstCorrect:true,resolved:true,attemptCount:1,firstAnsweredAt:i+1,lastAnsweredAt:i+1}])),unknownMarker:{retain:['full',count]},archivedRevisions:{older:{opaque:'preserve'}},...(count===25?{completedAt:25}:{})};
+   const ctx=await browser.newContext({viewport:{width,height:1000}}),p=await ctx.newPage();track(p);const other={unitId:'protected-other-unit',answers:{opaque:{retain:true}}};await p.addInitScript(({key,id,old,other})=>{if(sessionStorage.getItem('qf01-seeded'))return;sessionStorage.setItem('qf01-seeded','1');localStorage.setItem(key,JSON.stringify({state:{textbookProgress:{[id]:old,'protected-other-unit':other}},version:1}));localStorage.setItem('kyotsu-step-store',JSON.stringify({notThisNamespace:true}));localStorage.setItem('math-textbook-compact-v1:'+id+':r1:scope:qf01-v1','8');},{key:STORAGE_KEY,id:unit.unitId,old,other});await p.goto(lessonURL);await p.getByTestId('textbook-reading-flow').waitFor();assert.deepEqual(await readProgress(p),old,'READ_MUST_NOT_OVERWRITE_R1');const next=items.find(i=>!old.answers[i.id]);const expectedStage=next?nodes[items.indexOf(next)].stageId:'qf01-stage-1';await p.getByTestId('math-textbook-stage-'+expectedStage).waitFor();assert.deepEqual(await current(p).locator('[data-testid^="textbook-item-"]').evaluateAll(es=>es.map(e=>e.getAttribute('data-testid'))),next?['textbook-item-'+next.id]:[]);assert.equal(await p.getByTestId('qf01-complete').count(),0);if(next){await contextProof(nodes[items.indexOf(next)],p);await p.getByTestId('textbook-item-'+next.id).click();const wrong=next.choices.find(v=>v!==next.answer);await p.getByTestId('inline-choice-panel-'+next.id).getByRole('button',{name:wrong,exact:true}).click();const migrated=await readProgress(p);assert.equal(migrated.unitRevision,2);assert.deepEqual(JSON.parse(migrated.qf01Revision1Snapshot.serializedProgress),old);assert.equal(migrated.answers[next.id].resolved,false);assert.equal(migrated.completedAt,undefined);const expectedCredit=items.filter(i=>old.answers[i.id]).length;assert.equal(Object.values(migrated.answers).filter(a=>a.resolved).length,expectedCredit);await p.reload();await p.getByTestId('textbook-reading-flow').waitFor();assert.deepEqual(await readProgress(p),migrated);}else{assert.equal(await p.getByTestId('qf01-imported-answer-history').count(),1);}const isolation=await p.evaluate(({key})=>({other:JSON.parse(localStorage.getItem(key)).state.textbookProgress['protected-other-unit'],outside:JSON.parse(localStorage.getItem('kyotsu-step-store'))}),{key:STORAGE_KEY});assert.deepEqual(isolation,{other,outside:{notThisNamespace:true}});await snapshot('revision1-prefix-'+count,{count,expectedStage,expectedActiveCredits:items.filter(i=>old.answers[i.id]).length,firstMissing:next?.id??null,originalSerialized:JSON.stringify(old),actualProgress:await readProgress(p),isolation},p);await ctx.close();
   }
-  assert.equal(report.supplemental.length,11);assert.deepEqual(report.errors,[]);
-  report.coverage={correct:25,wrong:50,reloadWrong:2,reloadCorrect:2,stages:9,states:report.states.length};
-  report.status='CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE';persist();
-  await context.close();
-} catch(e){report.status='FAIL';report.failure=String(e);persist();throw e}
-finally{await browser.close();persist()}
-// END EXACT P012 R2 ASSERTION BODY
+  // Page reset is intentionally exercised through its real existing action, never a forged synthetic attempt.
+  await page.goto(lessonURL);await page.getByTestId('textbook-reading-flow').waitFor();const reset=page.getByRole('button',{name:'この単元を最初から',exact:true});assert.equal(await reset.count(),1,'EXPLICIT_QF_RESET_CONTROL');page.once('dialog',d=>d.accept());await reset.click();await page.getByTestId('textbook-item-'+items[0].id).waitFor();const resetProgress=await readProgress();assert.equal(resetProgress.unitRevision,2);assert.equal(Object.keys(resetProgress.answers).length,0);assert.ok(resetProgress.qf01ResetSnapshots?.length,'RESET_ARCHIVE');await snapshot('reset-preserves-history',{before:saved,after:resetProgress});
+  assert.deepEqual(report.errors,[]);report.coverage={correct:24,wrong:48,reloadWrong:2,reloadCorrect:2,stages:9,physicalNodes:25,activeJudgments:24,states:report.states.length};report.status='CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE';persist();checkFullCoverage(report);await context.close();
+ }catch(e){report.status='FAIL';report.failure=String(e);persist();throw e;}finally{await browser.close();}
 }
 
 function addReportBinding(out, binding, failure) {
@@ -435,31 +254,19 @@ function addReportBinding(out, binding, failure) {
   report.route = BASE_PATH + '#/learning/textbook/math-quadratic-qf01';
   report.actualAppURL = binding.appURL + '#/learning/textbook/math-quadratic-qf01';
   report.publisherBinding = binding;
-  report.assertionProvenance = {workflowSource: SOURCE_SHA, workflowPath: '.github/workflows/qf01-browser-qa.yml', workflowSHA256: '3321e684f159a9b9dcc5333948524d94b51967c993fd158380756853827e742d', activeAssertionBodySHA256: 'dab59561befc12aa38adf970743bab0eaa55d325833295a760efcaaef1cd2750', historical46af: {workflowSHA256: ORIGINAL_WORKFLOW_SHA256, nodeSHA256: ORIGINAL_NODE_SHA256, assertionBodySHA256: ORIGINAL_ASSERTION_BODY_SHA256}, assertionBodyChanged: true};
+  report.assertionProvenance = {materialSourceSHA: SOURCE_SHA, modulePublisherSHA:binding.publisherSHA, modulePath:'tools/release/qf01-browser.mjs', moduleSHA256:hash(fs.readFileSync(THIS_FILE)), historicalP016Only:{workflowSHA256:'3321e684f159a9b9dcc5333948524d94b51967c993fd158380756853827e742d'}, assertionBodyChanged:true};
   for (const proof of report.supplemental ?? []) { proof.publisherBinding = binding; proof.sourceSHA = SOURCE_SHA; proof.width = report.width; }
   report.userAcceptance = false;
   if (failure) { report.status = 'FAIL'; report.bindingOrBrowserFailure = String(failure); }
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n');
   return report;
 }
-export function checkFullCoverage(report) {
-  assert.equal(report.status, 'CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE');
-  assert.deepEqual(report.coverage, {correct:25, wrong:50, reloadWrong:2, reloadCorrect:2, stages:9, states:129}, 'EXACT_ORIGINAL_COVERAGE');
-  assert.equal(report.images.length, 129); assert.equal(report.states.length, 129);
-  assert.equal(report.supplemental.length, 11, 'EXACT_SUPPLEMENTAL_COUNT');
-  assert.deepEqual(report.supplemental.map(p=>p.kind), ['menu-0','compact-and-full-history','menu-25','revision1-unstarted','revision1-completed-2','revision1-qf01-n03-wrong','revision1-completed-3','revision1-qf01-n04-wrong','revision1-completed-4','revision1-completed-8','revision1-completed-25'], 'EXACT_SUPPLEMENTAL_KINDS');
-  const counts = {before:0, choices:0, wrong:0, correct:0, reloadWrong:0, reloadCorrect:0};
-  for (const image of report.images) {
-    const label = image.label;
-    if (label.endsWith('-reload-wrong')) counts.reloadWrong++;
-    else if (label.endsWith('-reload-correct')) counts.reloadCorrect++;
-    else if (label.endsWith('-before')) counts.before++;
-    else if (label.endsWith('-choices')) counts.choices++;
-    else if (/-wrong-[01]$/.test(label)) counts.wrong++;
-    else if (label.endsWith('-correct')) counts.correct++;
-    else assert.fail('UNEXPECTED_CAPTURE_LABEL:' + label);
-  }
-  assert.deepEqual(counts, {before:25, choices:25, wrong:50, correct:25, reloadWrong:2, reloadCorrect:2}, 'STATE_CATEGORY_COVERAGE');
+export function checkFullCoverage(report){
+ assert.equal(report.status,'CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE');assert.equal(report.sourceSHA,SOURCE_SHA);assert.equal(report.revision,2);
+ assert.deepEqual(report.coverage,{correct:24,wrong:48,reloadWrong:2,reloadCorrect:2,stages:9,physicalNodes:25,activeJudgments:24,states:124});
+ assert.deepEqual(report.images.map(i=>i.label),expectedCaptureLabels(),'EXACT_NODE_STATE_COVERAGE');assert.equal(report.states.length,124);assert.equal(new Set(report.images.map(i=>i.file)).size,124);assert.equal(new Set(report.states.map(i=>i.file)).size,124);
+ for(const image of report.images){assert.equal(image.fullPage,false);assert.equal(image.captureOrigin,'learner-viewport-after-two-animation-frames');assert.equal(image.sourceSHA,SOURCE_SHA);assert.equal(image.width,report.width);assert.equal(image.captureViewport.width,report.width);assert.equal(image.fullPageImage?.fullPage,true);assert.equal(image.fullPageImage.captureOrigin,'top-after-two-animation-frames');assert.match(image.fullPageImage.sha256,/^[0-9a-f]{64}$/);}
+ assert.deepEqual(report.answers.map(a=>a.id),ACTIVE_IDS);assert.deepEqual(report.supplemental.map(p=>p.kind),SUPPLEMENT_KINDS,'EXACT_CURRENT_SUPPLEMENT_KINDS');assert.deepEqual(report.errors,[]);
 }
 export async function main(env = process.env) {
   assert.ok(env.QF01_CONTRACT && env.QF01_DIST_MANIFEST, 'CONTRACT_AND_DIST_MANIFEST_REQUIRED');

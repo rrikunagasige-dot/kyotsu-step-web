@@ -1,750 +1,184 @@
-name: QF01 exact-source successor publisher (P013 draft)
+# DRAFT ONLY: final request/authority hash review required; never merge this helper.
+name: QF01 P016 one-shot no-login dispatch transport
 'on':
   push:
-    branches:
-    - work/qf01-p013-publisher-20261112
-    paths:
-    - .github/workflows/qf01-publisher-g3.yml
-    - tools/release/qf01-*
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        type: boolean
-        default: true
-        required: true
-        description: Verification-only by default; false consumes an already successful immutable PUSH build
-      verified_run_id:
-        type: string
-        required: false
-        default: ''
-        description: Successful PUSH verification run ID at this exact publisher commit
-      verified_attempt:
-        type: string
-        required: false
-        default: '1'
-        description: Successful immutable producer attempt
-      native_intent_chain:
-        type: string
-        required: false
-        default: ''
-        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates full native authority from fixed10391 prefix
+    branches: ['work/qf01-dispatch-p016-b2ad612-20261113']
+    paths: ['.github/workflows/qf01-publisher-g3.yml']
 permissions:
   contents: read
-  actions: read
+  actions: write
 concurrency:
-  group: pages
+  group: qf01-one-shot-p016-b2ad612-20261113
   cancel-in-progress: false
 jobs:
-  build:
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+  dispatch-existing-main:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    outputs:
-      artifact_id: ${{ steps.build-upload.outputs.artifact-id }}
-      artifact_digest: ${{ steps.build-upload.outputs.artifact-digest }}
-    env:
-      SOURCE_ROOT: ${{ github.workspace }}/material
-      PUBLISHER_ROOT: ${{ github.workspace }}/publisher
-      BASELINE_ROOT: ${{ github.workspace }}/baseline
-      QF01_CONTRACT: ${{ github.workspace }}/publisher/tools/release/qf01-publish-contract.json
-      QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
-      QF01_DIST_MANIFEST: ${{ github.workspace }}/sealed/DIST_MANIFEST.json
-      DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
-      STORAGE_KEY: kyotsu-step-gate3-math-20261023
-      VITE_BASE_PATH: /kyotsu-step-web/
-      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
-      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/original-publisher
-      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
-      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
-      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
-      ADAPTER_ROOT: /tmp/qf01-adapters
-      OUT: /tmp/qf01-build
-      APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
+    timeout-minutes: 5
     steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: 384021f539967038a20fd98bd146e0e499f0df65
-        path: material
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.sha }}
-        path: publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
-        path: baseline
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
-        path: original-publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
-        path: historical-t
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
-        path: baseline-cb
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b
-        path: service-u
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a4dad490daa3d1bf8f7011f2915342c543e8a79c
-        path: service-v
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 11.9.0
-        run_install: false
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-        cache-dependency-path: material/pnpm-lock.yaml
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install fixed application dependencies
-      shell: bash
-      run: pnpm install --frozen-lockfile --ignore-scripts
-      working-directory: material
-    - name: Install unchanged retained Python dependencies
-      shell: bash
-      run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
-    - name: Test successor refusal guards
-      shell: bash
-      run: node --test publisher/tools/release/qf01-publish-check.test.mjs publisher/tools/release/qf01-retained-adapters.test.mjs
-    - &id001
-      name: Verify full current source and immutable original inputs
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs source
-    - &id002
-      name: Generate exact external adapters and freeze every substitution
-      shell: bash
-      run: 'node publisher/tools/release/qf01-publish-check.mjs prepare
-
-        node --input-type=module -e "import fs from ''node:fs'';const r=JSON.parse(fs.readFileSync(process.env.OUT+''/PREPARED_REF.json''));fs.appendFileSync(process.env.GITHUB_ENV,''QF01_PREPARED=''+r.path+''\n'');"'
-    - name: Build fixed material exactly once and seal complete distribution
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs build
-    - uses: actions/upload-artifact@v4
-      id: build-upload
-      with:
-        name: qf01-build-${{ github.sha }}-${{ github.run_attempt }}
-        path: 'material/dist
-
-          sealed/DIST_MANIFEST.json'
-        if-no-files-found: error
-        compression-level: 6
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: qf01-build-provenance-${{ github.sha }}-${{ github.run_attempt }}
-        path: '/tmp/qf01-build
-
-          /tmp/qf01-adapters/**/PREPARED.json
-
-          /tmp/qf01-adapters/**/PROVENANCE.json'
-        if-no-files-found: warn
-  qa:
-    needs: build
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-    runs-on: ubuntu-latest
-    timeout-minutes: 180
-    strategy:
-      fail-fast: false
-      matrix:
-        width:
-        - 320
-        - 390
-        - 430
-        - 1440
-    env:
-      SOURCE_ROOT: ${{ github.workspace }}/material
-      PUBLISHER_ROOT: ${{ github.workspace }}/publisher
-      BASELINE_ROOT: ${{ github.workspace }}/baseline
-      QF01_CONTRACT: ${{ github.workspace }}/publisher/tools/release/qf01-publish-contract.json
-      QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
-      QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
-      DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
-      STORAGE_KEY: kyotsu-step-gate3-math-20261023
-      VITE_BASE_PATH: /kyotsu-step-web/
-      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
-      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/original-publisher
-      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
-      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
-      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
-      ADAPTER_ROOT: /tmp/qf01-adapters
-      OUT: /tmp/qf01-setup
-      APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
-      WIDTH: ${{ matrix.width }}
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: 384021f539967038a20fd98bd146e0e499f0df65
-        path: material
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.sha }}
-        path: publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
-        path: baseline
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
-        path: original-publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
-        path: historical-t
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
-        path: baseline-cb
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b
-        path: service-u
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a4dad490daa3d1bf8f7011f2915342c543e8a79c
-        path: service-v
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 11.9.0
-        run_install: false
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-        cache-dependency-path: material/pnpm-lock.yaml
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install fixed application dependencies
-      shell: bash
-      run: pnpm install --frozen-lockfile --ignore-scripts
-      working-directory: material
-    - name: Install unchanged retained Python dependencies
-      shell: bash
-      run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
-    - name: Prepare original fonts and browser
-      shell: bash
-      run: 'set -euo pipefail
-
-        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update -qq
-
-        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 install -y fonts-noto-cjk pandoc
-
-        pnpm exec playwright install --with-deps chromium'
-      working-directory: material
-    - uses: actions/download-artifact@v4
-      with:
-        name: qf01-build-${{ github.sha }}-${{ github.run_attempt }}
-        path: artifact
-    - name: Restore same immutable build without rebuilding
-      shell: bash
-      run: 'test ! -e material/dist
-
-        cp -a artifact/material/dist material/dist'
-    - *id001
-    - *id002
-    - name: Verify and exercise current artifact at this width
-      shell: bash
-      run: 'set -euo pipefail
-
-        node publisher/tools/release/qf01-publish-check.mjs verify-dist
-
-        (cd material && pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort) >/tmp/qf01-preview.log 2>&1 &
-
-        server_pid=$!
-
-        trap ''kill "$server_pid" 2>/dev/null || true'' EXIT
-
-        OUT=/tmp/qf01-qa node publisher/tools/release/qf01-publish-check.mjs qa'
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: qf01-qa-${{ matrix.width }}-${{ github.run_attempt }}
-        path: '/tmp/qf01-qa
-
-          /tmp/qf01-preview.log
-
-          /tmp/qf01-adapters/**/PREPARED.json
-
-          /tmp/qf01-adapters/**/PROVENANCE.json'
-        compression-level: 6
-        if-no-files-found: error
-  attest:
-    needs:
-    - build
-    - qa
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      SOURCE_ROOT: ${{ github.workspace }}/material
-      PUBLISHER_ROOT: ${{ github.workspace }}/publisher
-      BASELINE_ROOT: ${{ github.workspace }}/baseline
-      QF01_CONTRACT: ${{ github.workspace }}/publisher/tools/release/qf01-publish-contract.json
-      QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
-      QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
-      DIST_ROOT: ${{ github.workspace }}/artifact/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
-      STORAGE_KEY: kyotsu-step-gate3-math-20261023
-      VITE_BASE_PATH: /kyotsu-step-web/
-      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
-      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/original-publisher
-      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
-      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
-      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
-      ADAPTER_ROOT: /tmp/qf01-adapters
-      OUT: /tmp/qf01-matrix
-      APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
-      RECEIPT_ROOT: ${{ github.workspace }}/receipts
-      BUILD_ARTIFACT_METADATA: ${{ github.workspace }}/BUILD_ARTIFACT.json
-      QA_ARTIFACT_METADATA: ${{ github.workspace }}/QA_ARTIFACT.json
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.sha }}
-        path: publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-    - uses: actions/download-artifact@v4
-      with:
-        name: qf01-build-${{ github.sha }}-${{ github.run_attempt }}
-        path: artifact
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: qf01-qa-*-${{ github.run_attempt }}
-        path: receipts
-    - name: Normalize only declared width receipts
-      shell: bash
-      run: "set -euo pipefail\nfor width in 320 390 430 1440; do\n mv \"receipts/qf01-qa-$width-${{ github.run_attempt }}\" \"receipts/$width\"\
-        \n test -f \"receipts/$width/qf01-qa/QA_RECEIPT.json\"\n cp \"receipts/$width/qf01-qa/QA_RECEIPT.json\" \"receipts/$width/QA_RECEIPT.json\"\
-        \ndone"
-    - uses: actions/upload-artifact@v4
-      id: reports-upload
-      with:
-        name: qf01-reports-${{ github.sha }}-${{ github.run_attempt }}
-        path: receipts
-        if-no-files-found: error
-        compression-level: 6
-    - name: Record immutable steps.reports-upload.outputs artifact identity
-      shell: bash
-      run: 'node --input-type=module <<''NODE''
-
-        import fs from ''node:fs'';
-
-        const digest=process.env.ARTIFACT_DIGEST;fs.writeFileSync(''QA_ARTIFACT.json'',JSON.stringify({id:Number(process.env.ARTIFACT_ID),name:process.env.ARTIFACT_NAME,digest:digest.startsWith(''sha256:'')?digest:''sha256:''+digest}));
-
-        NODE'
-      env:
-        ARTIFACT_ID: ${{ steps.reports-upload.outputs.artifact-id }}
-        ARTIFACT_DIGEST: ${{ steps.reports-upload.outputs.artifact-digest }}
-        ARTIFACT_NAME: qf01-reports-${{ github.sha }}-${{ github.run_attempt }}
-    - name: Bind original build artifact identity
-      shell: bash
-      run: 'node --input-type=module <<''NODE''
-
-        import fs from ''node:fs'';const d=process.env.DIGEST;fs.writeFileSync(''BUILD_ARTIFACT.json'',JSON.stringify({id:Number(process.env.ID),name:process.env.NAME,digest:d.startsWith(''sha256:'')?d:''sha256:''+d}));
-
-        NODE'
-      env:
-        ID: ${{ needs.build.outputs.artifact_id }}
-        DIGEST: ${{ needs.build.outputs.artifact_digest }}
-        NAME: qf01-build-${{ github.sha }}-${{ github.run_attempt }}
-    - name: Require all four width results and same complete artifact
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs matrix
-    - uses: actions/upload-artifact@v4
-      with:
-        name: qf01-ledger-${{ github.sha }}-${{ github.run_attempt }}
-        path: /tmp/qf01-matrix/QA_LEDGER.json
-        if-no-files-found: error
-  publish:
-    if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    permissions:
-      contents: read
-      actions: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    outputs:
-      page_url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      SOURCE_ROOT: ${{ github.workspace }}/material
-      PUBLISHER_ROOT: ${{ github.workspace }}/publisher
-      BASELINE_ROOT: ${{ github.workspace }}/baseline
-      QF01_CONTRACT: ${{ github.workspace }}/publisher/tools/release/qf01-publish-contract.json
-      QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
-      QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
-      DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
-      STORAGE_KEY: kyotsu-step-gate3-math-20261023
-      VITE_BASE_PATH: /kyotsu-step-web/
-      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
-      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/original-publisher
-      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
-      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
-      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
-      ADAPTER_ROOT: /tmp/qf01-adapters
-      OUT: /tmp/qf01-publish
-      APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
-      VERIFIED_RUN_ID: ${{ inputs.verified_run_id }}
-      VERIFIED_ATTEMPT: ${{ inputs.verified_attempt }}
-      GH_TOKEN: ${{ github.token }}
-      RUN_METADATA: ${{ github.workspace }}/RUN.json
-      ARTIFACTS_METADATA: ${{ github.workspace }}/ARTIFACTS.json
-      QA_LEDGER: ${{ github.workspace }}/ledger/QA_LEDGER.json
-      NATIVE_INTENT_CHAIN: ${{ inputs.native_intent_chain }}
-      BUILD_ARCHIVE: ${{ github.workspace }}/BUILD.zip
-      QA_ARCHIVE: ${{ github.workspace }}/QA.zip
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: 384021f539967038a20fd98bd146e0e499f0df65
-        path: material
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.sha }}
-        path: publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
-        path: baseline
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
-        path: original-publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
-        path: historical-t
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
-        path: baseline-cb
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b
-        path: service-u
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a4dad490daa3d1bf8f7011f2915342c543e8a79c
-        path: service-v
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 11.9.0
-        run_install: false
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-        cache-dependency-path: material/pnpm-lock.yaml
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install fixed application dependencies
-      shell: bash
-      run: pnpm install --frozen-lockfile --ignore-scripts
-      working-directory: material
-    - name: Install unchanged retained Python dependencies
-      shell: bash
-      run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
-    - name: Fetch exact completed producer and artifact metadata
-      shell: bash
-      run: 'set -euo pipefail
-
-        [[ "$VERIFIED_RUN_ID" =~ ^[1-9][0-9]*$ ]]
-
-        [[ "$VERIFIED_ATTEMPT" =~ ^[1-9][0-9]*$ ]]
-
-        gh api "repos/rrikunagasige-dot/kyotsu-step-web/actions/runs/$VERIFIED_RUN_ID/attempts/$VERIFIED_ATTEMPT" > RUN.json
-
-        gh api "repos/rrikunagasige-dot/kyotsu-step-web/actions/runs/$VERIFIED_RUN_ID/artifacts?per_page=100" > ARTIFACTS.json
-
-        node -e "const r=require(''./ARTIFACTS.json'');if(r.total_count>100)throw Error(''ARTIFACT_PAGE_INCOMPLETE'');"'
-    - uses: actions/download-artifact@v4
-      with:
-        name: qf01-build-${{ github.sha }}-${{ inputs.verified_attempt }}
-        path: artifact
-        run-id: ${{ inputs.verified_run_id }}
-        github-token: ${{ github.token }}
-    - uses: actions/download-artifact@v4
-      with:
-        name: qf01-ledger-${{ github.sha }}-${{ inputs.verified_attempt }}
-        path: ledger
-        run-id: ${{ inputs.verified_run_id }}
-        github-token: ${{ github.token }}
-    - name: Restore only verified artifact; no build allowed
-      shell: bash
-      run: 'test ! -e material/dist
-
-        cp -a artifact/material/dist material/dist'
-    - name: Validate producer metadata before retrieving ID-addressed archives
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs producer-metadata
-    - name: Hash the actual immutable build and QA archive bytes
-      shell: bash
-      run: 'set -euo pipefail
-
-        node --input-type=module <<''NODE''
-
-        import fs from ''node:fs'';const l=JSON.parse(fs.readFileSync(process.env.QA_LEDGER));for(const [k,v]of Object.entries({BUILD_ID:l.buildArtifact.id,QA_ID:l.qaArtifact.id})){if(!Number.isSafeInteger(v)||v<=0)throw
-        Error(''INVALID_ARTIFACT_ID'');fs.appendFileSync(process.env.GITHUB_ENV,k+''=''+v+''\n'');}
-
-        NODE'
-    - name: Download exact validated artifact archives
-      shell: bash
-      run: 'gh api "repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/$BUILD_ID/zip" > BUILD.zip
-
-        gh api "repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/$QA_ID/zip" > QA.zip'
-    - name: Reject failed, different-source or changed producer artifacts
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs producer
-    - name: Require native exact qf01 deployment intent
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs intent
-    - uses: actions/configure-pages@v5
-    - uses: actions/upload-pages-artifact@v3
-      with:
-        path: material/dist
-    - uses: actions/deploy-pages@v4
-      id: deployment
-    - name: Match actual hosted manifest and every asset
-      shell: bash
-      run: node publisher/tools/release/qf01-publish-check.mjs host
-      env:
-        APP_URL: ${{ steps.deployment.outputs.page_url }}
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: qf01-publish-evidence-${{ github.run_id }}-${{ github.run_attempt }}
-        path: '/tmp/qf01-publish
-
-          RUN.json
-
-          ARTIFACTS.json
-
-          ledger/QA_LEDGER.json'
-        if-no-files-found: warn
-  hosted:
-    needs: publish
-    if: needs.publish.result == 'success'
-    runs-on: ubuntu-latest
-    timeout-minutes: 180
-    strategy:
-      fail-fast: false
-      matrix:
-        width:
-        - 320
-        - 390
-        - 430
-        - 1440
-    env:
-      SOURCE_ROOT: ${{ github.workspace }}/material
-      PUBLISHER_ROOT: ${{ github.workspace }}/publisher
-      BASELINE_ROOT: ${{ github.workspace }}/baseline
-      QF01_CONTRACT: ${{ github.workspace }}/publisher/tools/release/qf01-publish-contract.json
-      QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
-      QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
-      DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      CANDIDATE_SHA: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_PREVIEW_COMMIT: 384021f539967038a20fd98bd146e0e499f0df65
-      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
-      STORAGE_KEY: kyotsu-step-gate3-math-20261023
-      VITE_BASE_PATH: /kyotsu-step-web/
-      W051_HISTORICAL_T_ROOT: ${{ github.workspace }}/historical-t
-      W051_ORIGINAL_PUBLISHER_ROOT: ${{ github.workspace }}/original-publisher
-      W050_BASELINE_CHECKOUT: ${{ github.workspace }}/baseline-cb
-      W050_SERVICE_ROOT: ${{ github.workspace }}/service-u
-      W050_SERVICE_V_ROOT: ${{ github.workspace }}/service-v
-      ADAPTER_ROOT: /tmp/qf01-adapters
-      OUT: /tmp/qf01-setup
-      APP_URL: ${{ needs.publish.outputs.page_url }}
-      WIDTH: ${{ matrix.width }}
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: 384021f539967038a20fd98bd146e0e499f0df65
-        path: material
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.sha }}
-        path: publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 1ac9f31ec205424f393a488f0d17cb3bb8bc75fd
-        path: baseline
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a425b357c5fb6e14de09743dcaf03d74e16c7244
-        path: original-publisher
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 751b229cb7a99a6a5743b00c5b978c97585b4964
-        path: historical-t
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: cb01da34c99005fde4a64fd932b31edeaa3790b3
-        path: baseline-cb
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: 2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b
-        path: service-u
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: actions/checkout@v4
-      with:
-        ref: a4dad490daa3d1bf8f7011f2915342c543e8a79c
-        path: service-v
-        fetch-depth: 0
-        persist-credentials: false
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 11.9.0
-        run_install: false
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-        cache-dependency-path: material/pnpm-lock.yaml
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install fixed application dependencies
-      shell: bash
-      run: pnpm install --frozen-lockfile --ignore-scripts
-      working-directory: material
-    - name: Install unchanged retained Python dependencies
-      shell: bash
-      run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
-    - name: Prepare original fonts and browser
-      shell: bash
-      run: 'set -euo pipefail
-
-        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update -qq
-
-        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 install -y fonts-noto-cjk pandoc
-
-        pnpm exec playwright install --with-deps chromium'
-      working-directory: material
-    - uses: actions/download-artifact@v4
-      with:
-        name: qf01-build-${{ github.sha }}-${{ inputs.verified_attempt }}
-        path: artifact
-        run-id: ${{ inputs.verified_run_id }}
-        github-token: ${{ github.token }}
-    - name: Restore exact already published artifact without build
-      shell: bash
-      run: 'test ! -e material/dist
-
-        cp -a artifact/material/dist material/dist'
-    - *id001
-    - *id002
-    - name: Verify public bytes and real same-artifact learner routes
-      shell: bash
-      run: 'node publisher/tools/release/qf01-publish-check.mjs host
-
-        OUT=/tmp/qf01-hosted node publisher/tools/release/qf01-publish-check.mjs qa'
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: qf01-hosted-${{ matrix.width }}-${{ github.run_id }}-${{ github.run_attempt }}
-        path: '/tmp/qf01-hosted
-
-          /tmp/qf01-setup'
-        if-no-files-found: error
-        compression-level: 6
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout: work/items/W-TECH-QF01-PUBLISHER-P016-20261113/ONE_SHOT_P016_DEPLOY_REQUEST.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate actual native authority and dispatch exact unchanged main once
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          # DRAFT ONLY. Final request hash and actual authority must be frozen/reviewed before push.
+          import os,json,hashlib,base64,re,urllib.request,subprocess
+          from pathlib import Path
+          REPO='rrikunagasige-dot/kyotsu-step-web'
+          REPO_ID=1391122224
+          OWNER_ID=332552275
+          MAIN='b2ad6121194707f033068287437aece2a90763f9'
+          SOURCE='384021f539967038a20fd98bd146e0e499f0df65'
+          PRODUCER=43397946853
+          ATTEMPT=1
+          PRODUCER_BRANCH='work/qf01-p013-publisher-20261112'
+          BRANCH='work/qf01-dispatch-p016-b2ad612-20261113'
+          WORKFLOW='.github/workflows/qf01-publisher-g3.yml'
+          WORKFLOW_ID=414041827
+          WORKFLOW_SHA='8f5c18a13780f298618280cf0218cee41e0a9804790f90a01076f447f7d331dd'
+          REQUEST='work/items/W-TECH-QF01-PUBLISHER-P016-20261113/ONE_SHOT_P016_DEPLOY_REQUEST.json'
+          REQUEST_SHA='75d5a5f061d1bc99fc550dd801eef7109ac5db4fca64fbcf1928e9806fa697aa'
+          PROPOSAL_SHA='ca02272fe00f469893027153f13d2b4a7690b2d8885016f1dae74ba17ffcba3e'
+          PUBLISHER_PINS={'.github/workflows/qf01-publisher-g3.yml': '8f5c18a13780f298618280cf0218cee41e0a9804790f90a01076f447f7d331dd', 'tools/release/qf01-browser.mjs': '25c01283e7afdd9431d85cb86d53464d8688fb06e2d67cab6c785325a74d6d12', 'tools/release/qf01-publish-check.mjs': 'c10d38ed9c59a3da8eaba4290c3172eed89f0813b555b22635824cd71304fffd', 'tools/release/qf01-publish-check.test.mjs': '89ed404952317d68ff30b639381a39d47b6b991ce36885869d6228e3eccaba84', 'tools/release/qf01-publish-contract.json': '8343c56bf9eb9513d0fccbb6518c0b9d90a8de9aa1c34f12371f43980961f493', 'tools/release/qf01-retained-adapters.mjs': 'ea21d2587e0cd074eda350fc33b4d2e5736974d7f526aaa1da1991049ca15ca6', 'tools/release/qf01-retained-adapters.test.mjs': '537113fac7de4bdad0729266fb5e51b3edcb83e2ae82725d1d0a352415a8d16a'}
+          
+          def require(ok,message):
+              if not ok: raise RuntimeError(message)
+          def sha(raw):return hashlib.sha256(raw).hexdigest()
+          def unique_pairs(pairs):
+              result={}
+              for key,value in pairs:
+                  require(key not in result,'duplicate JSON key')
+                  result[key]=value
+              return result
+          def parse(raw):return json.loads(raw,object_pairs_hook=unique_pairs)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,newurl):
+                  raise RuntimeError('Unexpected API redirect')
+          opener=urllib.request.build_opener(NoRedirect)
+          
+          def api(path,data=None):
+              require(path.startswith('/') or path=='','fixed repo-relative API only')
+              raw=None if data is None else json.dumps(data,separators=(',',':'),ensure_ascii=False).encode()
+              req=urllib.request.Request('https://api.github.com/repos/'+REPO+path,data=raw,headers={
+                  'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                  'Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},method='GET' if data is None else 'POST')
+              with opener.open(req,timeout=45) as response:
+                  body=response.read(9*1024*1024+1);require(len(body)<=9*1024*1024,'bounded API response')
+                  return response.status,parse(body) if body else None
+          
+          def content(path,expected):
+              _,item=api('/contents/'+path+'?ref='+MAIN)
+              require(item['type']=='file' and item['path']==path and item['encoding']=='base64','immutable source file')
+              raw=base64.b64decode(item['content'],validate=False)
+              require(len(raw)<=1024*1024,'bounded immutable source')
+              require(sha(raw)==expected,'exact immutable publisher bytes '+path)
+              require(hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==item['sha'],'Git blob binding '+path)
+              return raw
+          
+          def current_main_and_workflow():
+              _,main=api('/git/ref/heads/main');require(main['object']['sha']==MAIN,'live main must remain exact successful producer')
+              content(WORKFLOW,WORKFLOW_SHA)
+          
+          def no_existing_dispatch():
+              _,runs=api('/actions/workflows/'+str(WORKFLOW_ID)+'/runs?event=workflow_dispatch&head_sha='+MAIN+'&per_page=100')
+              require(runs['total_count']==0 and runs['workflow_runs']==[], 'existing dispatch: reconcile read-only instead of sending')
+          
+          require(os.environ['GITHUB_REPOSITORY']==REPO and os.environ['GITHUB_REPOSITORY_ID']==str(REPO_ID),'repository context')
+          require(os.environ['GITHUB_REF']=='refs/heads/'+BRANCH,'isolated operational branch only')
+          require(os.environ['GITHUB_EVENT_NAME']=='push' and os.environ['GITHUB_RUN_ATTEMPT']=='1','first push attempt only; no reruns')
+          event=parse(Path(os.environ['GITHUB_EVENT_PATH']).read_bytes())
+          require(event['repository']['id']==REPO_ID and event['repository']['owner']['id']==OWNER_ID and event['sender']['id']==OWNER_ID,'target sender/owner identity')
+          require(event['after']==os.environ['GITHUB_SHA'] and not event.get('deleted'),'push commit binding')
+          require(re.fullmatch('[0-9a-f]{64}',REQUEST_SHA),'draft cannot run')
+          raw=Path(REQUEST).read_bytes();require(sha(raw)==REQUEST_SHA,'exact frozen request bytes')
+          request=parse(raw)
+          require(request['schemaVersion']=='qf01-one-shot-p016-dispatch/1' and request['status']=='READY_WITH_ACTUAL_G2_AND_DEPLOY','actual request only')
+          require(b'__REQUIRES_' not in raw,'future authority placeholders are forbidden')
+          require(request['repository']==REPO and request['repositoryID']==REPO_ID and request['ownerID']==OWNER_ID,'request repo scope')
+          require(request['publisherSHA']==MAIN and request['sourceSHA']==SOURCE,'source and publisher separation')
+          require(request['producer']=={'runID':PRODUCER,'attempt':ATTEMPT,'headBranch':PRODUCER_BRANCH},'fixed new successful producer')
+          require(request['publisherPins']==PUBLISHER_PINS,'exact seven approved immutable files')
+          inputs=request['dispatch']['inputs']
+          require(request['dispatch']['ref']=='main' and inputs['dry_run']=='false' and inputs['verified_run_id']==str(PRODUCER) and inputs['verified_attempt']==str(ATTEMPT),'fixed same-action dispatch')
+          require(set(inputs)=={'dry_run','verified_run_id','verified_attempt','native_intent_chain'},'exact input keys')
+          require(len(json.dumps(inputs,ensure_ascii=False).encode())<65535 and len(json.dumps(inputs,ensure_ascii=False))<65535,'no truncated inputs')
+          ref=parse(inputs['native_intent_chain'])
+          require(ref==request['nativeAuthorityBlobRef'],'identical immutable blob reference')
+          require(ref['schemaVersion']=='qf01-native-authority-blob-ref/1' and ref['repository']==REPO and ref['encoding']=='gzip-base64','same-repo native blob only')
+          require(set(ref)=={'schemaVersion','repository','blobSHA','blobSHA256','encoding','expandedSHA256'},'exact blob reference schema')
+          require(re.fullmatch('[0-9a-f]{40}',ref['blobSHA']) and all(re.fullmatch('[0-9a-f]{64}',ref[k]) for k in ['blobSHA256','expandedSHA256']),'fixed blob hashes')
+          expected=request['nativeExpected']
+          require(set(expected)=={'operationID','eventHash','sourceSHA','work','releaseUnit','proposalHash','g2Artifact'},'exact native expectation')
+          require(expected['work']=='W-MATH-QF01-P011-20261112' and expected['releaseUnit']=='qf01-p011' and expected['sourceSHA']==SOURCE and expected['proposalHash']==PROPOSAL_SHA,'current approved material authority')
+          require(isinstance(expected['operationID'],str) and expected['operationID'] and all(re.fullmatch('[0-9a-f]{64}',expected[k]) for k in ['eventHash','proposalHash','g2Artifact']),'actual native operation/evidence hashes')
+          _,repo=api('');require(repo['id']==REPO_ID and repo['owner']['id']==OWNER_ID and repo['default_branch']=='main','live target identity')
+          _,workflow=api('/actions/workflows/'+str(WORKFLOW_ID));require(workflow['id']==WORKFLOW_ID and workflow['path']==WORKFLOW and workflow['state']=='active','existing workflow identity')
+          current_main_and_workflow()
+          _,producer=api('/actions/runs/'+str(PRODUCER))
+          require(producer['workflow_id']==WORKFLOW_ID and producer['id']==PRODUCER and producer['run_attempt']==ATTEMPT and producer['head_sha']==MAIN and producer['event']=='push' and producer['head_branch']==PRODUCER_BRANCH and producer['path']==WORKFLOW and producer['status']=='completed' and producer['conclusion']=='success','exact completed producer')
+          _,jobs=api('/actions/runs/'+str(PRODUCER)+'/attempts/'+str(ATTEMPT)+'/jobs?per_page=100')
+          require(jobs['total_count']==8 and len(jobs['jobs'])==8 and len({j['id'] for j in jobs['jobs']})==8,'complete unpaginated eight producer jobs')
+          require(all(j['status']=='completed' for j in jobs['jobs']),'producer jobs complete')
+          require({j['name'] for j in jobs['jobs'] if j['conclusion']=='success'}=={'build','qa (320)','qa (390)','qa (430)','qa (1440)','attest'},'six verified successful jobs')
+          require({j['name'] for j in jobs['jobs'] if j['conclusion']=='skipped'}=={'publish','hosted'},'producer did not publish')
+          no_existing_dispatch()
+          
+          # Fetch only fixed, already approved publisher code. No app build/install/patch.
+          snapshot=Path('_immutable_publisher_for_authority')
+          require(not snapshot.exists(),'fresh immutable validation snapshot')
+          for path,expected_sha in PUBLISHER_PINS.items():
+              target=snapshot/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content(path,expected_sha))
+          Path('REQUEST_FOR_AUTHORITY_CHECK.json').write_bytes(raw)
+          # Same unchanged native checker/hydrator as the target main workflow. Validates seed,
+          # definition/implementation, all required objects/events, scoped three intents,
+          # source384, exact fresh G2 and pending DEPLOY; no policy/identity fallback.
+          node_script="""import fs from 'node:fs';
+          import {hydrateNativeAuthority,validateNativeIntent} from './_immutable_publisher_for_authority/tools/release/qf01-publish-check.mjs';
+          const request=JSON.parse(fs.readFileSync('REQUEST_FOR_AUTHORITY_CHECK.json'));
+          const contract=JSON.parse(fs.readFileSync('_immutable_publisher_for_authority/tools/release/qf01-publish-contract.json'));
+          const envelope=await hydrateNativeAuthority(request.nativeAuthorityBlobRef);
+          const actual=validateNativeIntent(envelope,contract);
+          fs.writeFileSync('NATIVE_AUTHORITY_VALIDATION.json',JSON.stringify(actual,null,2)+String.fromCharCode(10));
+          """
+          subprocess.run(['node','--input-type=module','-e',node_script],check=True,timeout=120)
+          actual=parse(Path('NATIVE_AUTHORITY_VALIDATION.json').read_bytes())
+          require(actual==expected,'exact actual G2/DEPLOY authority; never substitute older operation')
+          # Recheck immediately before the sole POST. This is not an atomic ref lock;
+          # same-publisher target and returned head must both remain exact.
+          no_existing_dispatch();current_main_and_workflow()
+          receipt_file=Path('DISPATCH_RECEIPT.json')
+          base={'operationID':expected['operationID'],'publisherSHA':MAIN,'sourceSHA':SOURCE,'helperSHA':os.environ['GITHUB_SHA'],'helperRun':os.environ['GITHUB_RUN_ID'],'requestSHA256':sha(raw),'nativeAuthorityBlobRef':ref,'nativeEventHash':expected['eventHash'],'g2Artifact':expected['g2Artifact'],'producerRun':PRODUCER,'producerAttempt':ATTEMPT,'noAutomaticRetry':True}
+          receipt_file.write_text(json.dumps({**base,'status':'SINGLE_POST_ATTEMPT_STARTING'},indent=2)+chr(10))
+          try:
+              status,receipt=api('/actions/workflows/'+str(WORKFLOW_ID)+'/dispatches',{**request['dispatch'],'return_run_details':True})
+          except Exception as ex:
+              receipt_file.write_text(json.dumps({**base,'status':'AMBIGUOUS_RECONCILE_READ_ONLY','errorType':type(ex).__name__},indent=2)+chr(10))
+              raise RuntimeError('Dispatch response unknown: read-only reconciliation, no resending') from None
+          receipt_file.write_text(json.dumps({**base,'status':'RESPONSE_RECEIVED_NOT_DEPLOYMENT_PROOF','httpStatus':status,'receipt':receipt},indent=2)+chr(10))
+          require(status==200 and isinstance(receipt,dict) and type(receipt.get('workflow_run_id')) is int and receipt['workflow_run_id']>0,'ambiguous dispatch: do not retry')
+          runid=receipt['workflow_run_id']
+          require(receipt['run_url']=='https://api.github.com/repos/'+REPO+'/actions/runs/'+str(runid),'fixed result API URL')
+          require(receipt['html_url']=='https://github.com/'+REPO+'/actions/runs/'+str(runid),'fixed result HTML URL')
+          _,child=api('/actions/runs/'+str(runid))
+          observed={'id':child['id'],'workflow_id':child['workflow_id'],'head_sha':child['head_sha'],'head_branch':child['head_branch'],'event':child['event'],'path':child['path'],'run_attempt':child['run_attempt'],'repositoryID':child['repository']['id']}
+          receipt_file.write_text(json.dumps({**base,'status':'ACTUAL_CHILD_OBSERVED_NOT_DEPLOYMENT_PROOF','httpStatus':status,'receipt':receipt,'actualRun':observed,'dispatchActorID':child.get('actor',{}).get('id')},indent=2)+chr(10))
+          require(observed=={'id':runid,'workflow_id':WORKFLOW_ID,'head_sha':MAIN,'head_branch':'main','event':'workflow_dispatch','path':WORKFLOW,'run_attempt':1,'repositoryID':REPO_ID},'child binding differs: no retry')
+          # Built-in GitHubActions bot actor is expected for GITHUB_TOKEN dispatch (P010 observed
+          # actor41898282). It is distinct from the checked human owner/sender, not a new login.
+          print(json.dumps({'operationID':expected['operationID'],'dispatchedRunID':runid,'publisherSHA':MAIN,'sourceSHA':SOURCE,'html_url':receipt['html_url']}))
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qf01-p016-one-shot-dispatch-receipt-${{ github.run_id }}
+          path: |
+            DISPATCH_RECEIPT.json
+            NATIVE_AUTHORITY_VALIDATION.json
+          if-no-files-found: warn

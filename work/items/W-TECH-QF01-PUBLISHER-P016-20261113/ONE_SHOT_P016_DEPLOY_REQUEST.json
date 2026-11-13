@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "qf01-one-shot-p016-dispatch/1",
+  "status": "READY_WITH_ACTUAL_G2_AND_DEPLOY",
+  "repository": "rrikunagasige-dot/kyotsu-step-web",
+  "repositoryID": 1391122224,
+  "ownerID": 332552275,
+  "publisherSHA": "b2ad6121194707f033068287437aece2a90763f9",
+  "sourceSHA": "384021f539967038a20fd98bd146e0e499f0df65",
+  "producer": {
+    "runID": 43397946853,
+    "attempt": 1,
+    "headBranch": "work/qf01-p013-publisher-20261112"
+  },
+  "publisherPins": {
+    ".github/workflows/qf01-publisher-g3.yml": "8f5c18a13780f298618280cf0218cee41e0a9804790f90a01076f447f7d331dd",
+    "tools/release/qf01-browser.mjs": "25c01283e7afdd9431d85cb86d53464d8688fb06e2d67cab6c785325a74d6d12",
+    "tools/release/qf01-publish-check.mjs": "c10d38ed9c59a3da8eaba4290c3172eed89f0813b555b22635824cd71304fffd",
+    "tools/release/qf01-publish-check.test.mjs": "89ed404952317d68ff30b639381a39d47b6b991ce36885869d6228e3eccaba84",
+    "tools/release/qf01-publish-contract.json": "8343c56bf9eb9513d0fccbb6518c0b9d90a8de9aa1c34f12371f43980961f493",
+    "tools/release/qf01-retained-adapters.mjs": "ea21d2587e0cd074eda350fc33b4d2e5736974d7f526aaa1da1991049ca15ca6",
+    "tools/release/qf01-retained-adapters.test.mjs": "537113fac7de4bdad0729266fb5e51b3edcb83e2ae82725d1d0a352415a8d16a"
+  },
+  "nativeExpected": {
+    "operationID": "P016-DEPLOY-b2ad612-20261113",
+    "eventHash": "3b751c6bc585b1146e7217bacc759a0f7de2bc851a005550c14db0c1e2b99967",
+    "sourceSHA": "384021f539967038a20fd98bd146e0e499f0df65",
+    "work": "W-MATH-QF01-P011-20261112",
+    "releaseUnit": "qf01-p011",
+    "proposalHash": "ca02272fe00f469893027153f13d2b4a7690b2d8885016f1dae74ba17ffcba3e",
+    "g2Artifact": "98c1a75564712f62a8d99eb362855fd1847a535dc69667f52e7f3aa4c4afcff8"
+  },
+  "nativeAuthorityBlobRef": {
+    "schemaVersion": "qf01-native-authority-blob-ref/1",
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "blobSHA": "9774550d3ca925f4c92982b8eed8ee7f8f643f92",
+    "blobSHA256": "0b0f796aab34f77fbb66f71790ec03891ada4d0648d0e17abead0639c805a163",
+    "encoding": "gzip-base64",
+    "expandedSHA256": "a411240007adf031ab677a0c6c39d50ba51bd5e459a53125cc04a8ced7f6a1ae"
+  },
+  "dispatch": {
+    "ref": "main",
+    "inputs": {
+      "dry_run": "false",
+      "verified_run_id": "43397946853",
+      "verified_attempt": "1",
+      "native_intent_chain": "{\"schemaVersion\":\"qf01-native-authority-blob-ref/1\",\"repository\":\"rrikunagasige-dot/kyotsu-step-web\",\"blobSHA\":\"9774550d3ca925f4c92982b8eed8ee7f8f643f92\",\"blobSHA256\":\"0b0f796aab34f77fbb66f71790ec03891ada4d0648d0e17abead0639c805a163\",\"encoding\":\"gzip-base64\",\"expandedSHA256\":\"a411240007adf031ab677a0c6c39d50ba51bd5e459a53125cc04a8ced7f6a1ae\"}"
+    }
+  }
+}

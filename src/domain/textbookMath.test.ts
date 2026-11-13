@@ -124,7 +124,7 @@ describe('textbook math normalization', () => {
 
 
 // View-only pilot: learning/answer contracts come from the unchanged original unit.
-import { qf01TransformationPresentation, mathQuadraticQF01Unit } from '../data/textbook/math/quadratic/qf01Lesson'
+import { qf01PilotTransformationPresentation as qf01TransformationPresentation, mathQuadraticQF01Unit } from '../data/textbook/math/quadratic/qf01Lesson'
 import { TransformationReadingSchema, projectTransformationView } from './transformationReading'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -144,7 +144,7 @@ describe('P011 continuous substitution without changing grading', () => {
       expect(item.acceptedAnswers).toEqual([])
     }
     expect(items).toHaveLength(25)
-    expect(mathQuadraticQF01Unit.revision).toBe(1)
+    expect(mathQuadraticQF01Unit.revision).toBe(2)
   })
   it('unlocks arithmetic and result only after the whole substitution is correct', () => {
     expect(projectTransformationView(view).groups[0].rows.map(row => row.id)).toEqual(['qf01-input', 'qf01-substitution'])
@@ -169,5 +169,43 @@ describe('P011 continuous substitution without changing grading', () => {
     }
     expect(full).toContain('<mo>×</mo>')
     expect(full).not.toContain('を計算すると？')
+  })
+})
+
+import { qf01TransformationPresentation as qf01FullTransformation } from '../data/textbook/math/quadratic/qf01Lesson'
+describe('P017 full nine-stage mathematical reading', () => {
+  const full=TransformationReadingSchema.parse(qf01FullTransformation)
+  const ids=mathQuadraticQF01Unit.requiredInteractionRefs!
+  it('covers all physical nodes and stages while giving n20 no new judgment', () => {
+    expect(full.scope.stageIds).toEqual(Array.from({length:9},(_,i)=>`qf01-stage-${i+1}`))
+    expect(full.scope.nodeIds).toHaveLength(25)
+    expect(full.interactions.map(i=>i.id)).toEqual(ids)
+    expect(ids).toHaveLength(24)
+    expect(full.groups.flatMap(g=>g.rows).filter(r=>r.sourceNodeId==='qf01-n20').every(r=>r.interactionRef===null)).toBe(true)
+    expect(full.groups.flatMap(g=>g.rows).some(r=>r.sourceNodeId==='qf01-n20')).toBe(true)
+  })
+  it('opens only the actual next judgment for every active prefix and never future slots', () => {
+    for(let prefix=0;prefix<=ids.length;prefix++) {
+      const projected=projectTransformationView(full,ids.slice(0,prefix))
+      const current=projected.groups.flatMap(g=>g.rows).flatMap(r=>r.current ? [r.current.id] : [])
+      expect([...new Set(current)]).toEqual(prefix===ids.length ? [] : [ids[prefix]])
+      expect(projected.groups.flatMap(g=>g.rows).filter(r=>r.current).every(r=>!('choices' in r.current!))).toBe(true)
+    }
+  })
+  it('keeps the full parent function, square expansion and return as separately anchored true equalities', () => {
+    const projected=projectTransformationView(full,ids,{stageId:'qf01-stage-6'})
+    const parent=projected.groups.find(g=>g.id==='qf01-stage-6-parent')!
+    const square=projected.groups.find(g=>g.id==='qf01-stage-6-square')!
+    const returned=projected.groups.find(g=>g.id==='qf01-stage-6-return')!
+    expect(parent.numberId).toBe(returned.numberId);expect(square.numberId).not.toBe(parent.numberId)
+    expect(parent.rows[0].formula.left).toEqual([{type:'math',latex:'f(a-1)'}])
+    expect(parent.rows[0].formula.right).toEqual([{type:'math',latex:'(a-1)^2-1'}])
+    expect(square.rows[0].formula.left).toEqual([{type:'math',latex:'(a-1)^2'}])
+    expect(square.rows[0].formula.right).toEqual([{type:'math',latex:'(a-1)(a-1)'}])
+    expect(returned.rows[0].formula.left).toEqual([{type:'math',latex:'f(a-1)'}])
+    expect(returned.rows[0].formula.right).toEqual([{type:'math',latex:'a^2-2a+1-1'}])
+    expect(returned.rows.at(-1)!.formula.right).toEqual([{type:'math',latex:'a^2-2a'}])
+    const html=renderToStaticMarkup(createElement(TransformationReadingGroup,{group:square,renderSlot:()=>null,renderPanel:()=>null}))
+    expect(html).not.toContain('を入力した式は');expect(html).toContain('data-transformation-row')
   })
 })

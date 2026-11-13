@@ -148,3 +148,25 @@ describe('TextbookUnitSchema 1.1', () => {
     expect(() => TextbookUnitSchema.parse(unit)).toThrow(/右端/)
   })
 })
+
+
+import qf01Raw from '../data/textbook/math/quadratic/qf01Unit.json'
+it('preserves all25 original QF01 IDs while allowing only the declared n20 worked reuse in revision2', () => {
+  const current=structuredClone(qf01Raw)
+  expect(TextbookUnitSchema.safeParse(current).success).toBe(true)
+  expect(current.revision).toBe(2);expect(current.workedReuseRefs).toEqual(['qf01-n20-answer'])
+  expect(current.sections.flatMap(s => s.items)).toHaveLength(25);expect(current.requiredInteractionRefs).toHaveLength(24)
+  for(const bad of [
+    {...current,workedReuseRefs:undefined},
+    {...current,workedReuseRefs:['qf01-n21-answer']},
+    {...current,workedReuseRefs:['qf01-n20-answer','qf01-n21-answer']},
+    {...current,requiredInteractionRefs:[...current.requiredInteractionRefs,'qf01-n20-answer']},
+    {...current,requiredInteractionRefs:current.requiredInteractionRefs.slice(1)},
+    {...current,revision:1},
+    {...current,unitId:'math-another-unit'},
+  ]) expect(TextbookUnitSchema.safeParse(bad).success).toBe(false)
+})
+it('retains complete all-parent validation for other units', () => {
+  expect(TextbookUnitSchema.safeParse({...baseUnit,workedReuseRefs:['qf01-n20-answer']}).success).toBe(false)
+  expect(TextbookUnitSchema.safeParse({...baseUnit,requiredInteractionRefs:['unknown-parent']}).success).toBe(false)
+})

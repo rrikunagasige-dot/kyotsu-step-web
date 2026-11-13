@@ -227,3 +227,16 @@ describe('P011 current chapter-2 entry contract', () => {
     }
   })
 })
+
+
+import { mathQuadraticQF01Unit } from './quadratic/qf01Lesson'
+import { textbookUnitProgress } from '../../../domain/textbook'
+it('uses the same QF01 revision2 active24 unit in catalog and repository without opening unfinished themes', () => {
+  const unit=current_mathTextbookUnits.find(u => u.unitId === 'math-quadratic-qf01')!
+  expect(unit).toBe(mathQuadraticQF01Unit);expect(unit.revision).toBe(2)
+  expect(unit.sections.flatMap(s => s.items)).toHaveLength(25)
+  expect(textbookUnitProgress(unit,undefined)).toMatchObject({completed:0,total:24})
+  expect(mathTextbookTopicForUnit(unit.unitId)?.unitIds).toEqual([unit.unitId])
+  const topics=mathTextbookTopics.filter(t => t.id.startsWith('quadratic-'))
+  for(const topic of topics.filter(t => t.unitIds[0] !== unit.unitId)) expect(mathTextbookTopicHasAllUnits(topic.id,[unit.unitId])).toBe(false)
+})

@@ -136,6 +136,7 @@ const TextbookUnitBaseSchema = z.object({
   constructionItemsV2: z.array(ConstructionInteractionV2Schema).optional(),
   revisionMigration: z.object({fromRevision:z.number().int(), preservedInteractionIds:z.array(IdSchema), meaningFingerprints:z.record(z.string(),z.object({from:IdSchema,to:IdSchema}))}).optional(),
   requiredInteractionRefs: z.array(IdSchema).min(1).optional(),
+  workedReuseRefs: z.array(IdSchema).length(1).optional(),
 })
 
 function normalizeChoiceValue(value: string) {
@@ -176,7 +177,11 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   const visiting = new Set<string>(), visited = new Set<string>()
   const acyclic = (id:string):boolean => { if(visiting.has(id))return false;if(visited.has(id))return true;visiting.add(id);if((dependencyMap.get(id)??[]).some(dep=>!acyclic(dep)))return false;visiting.delete(id);visited.add(id);return true }
   if(constructions.some(i=>!acyclic(i.id)))context.addIssue({code:'custom',path:['constructionItemsV2'],message:'式組立の前提が循環しています'})
-  if (unit.requiredInteractionRefs && (new Set(unit.requiredInteractionRefs).size !== unit.requiredInteractionRefs.length || unit.requiredInteractionRefs.length !== allIds.length || allIds.some(id => !unit.requiredInteractionRefs!.includes(id)))) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '全親の進度契約に重複・不足・未知IDがあります' })
+  const qf01Revision2 = unit.unitId === 'math-quadratic-qf01' && unit.revision === 2 && unit.subject === 'math-1a'
+  if (unit.workedReuseRefs && (!qf01Revision2 || unit.workedReuseRefs[0] !== 'qf01-n20-answer' || !ordinaryIds.includes('qf01-n20-answer'))) context.addIssue({code:'custom',path:['workedReuseRefs'],message:'既習事項の再利用はQF01新版n20に限定します'})
+  if (qf01Revision2 && (!unit.workedReuseRefs || !unit.requiredInteractionRefs || allIds.length !== 25 || constructions.length || nested.length)) context.addIssue({code:'custom',path:['workedReuseRefs'],message:'QF01新版は25旧ID・24回答・n20再利用の契約が必要です'})
+  const activeIds = qf01Revision2 && unit.workedReuseRefs?.[0] === 'qf01-n20-answer' ? allIds.filter(id => id !== 'qf01-n20-answer') : allIds
+  if (unit.requiredInteractionRefs && (new Set(unit.requiredInteractionRefs).size !== unit.requiredInteractionRefs.length || unit.requiredInteractionRefs.length !== activeIds.length || activeIds.some(id => !unit.requiredInteractionRefs!.includes(id)))) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '全親の進度契約に重複・不足・未知IDがあります' })
 
   if (unit.schemaVersion === '1.1') {
     if (!unit.chapter) {

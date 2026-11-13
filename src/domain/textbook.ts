@@ -53,6 +53,8 @@ export type TextbookUnitProgress = {
   /** Prior revision completion is history, never current-version completion. */
   previousRevisionCompletedAt?: number
   migratedFromRevision?: number
+  qf01Revision1Snapshot?: { schemaVersion: 'qf01-revision1-snapshot/1'; sourceSHA: '384021f539967038a20fd98bd146e0e499f0df65'; serializedProgress: string }
+  qf01ResetSnapshots?: Array<{ schemaVersion: 'qf01-reset-snapshot/1'; priorResetCount: number; hadResetSnapshots: boolean; serializedProgressWithoutResetSnapshots: string }>
   /** Full old revision records remain recoverable after an approved restart. */
   archivedRevisions?: Record<string, TextbookRevisionArchive>
 }
@@ -196,8 +198,89 @@ function migrateN09ToRevision2(progress: TextbookUnitProgress): TextbookUnitProg
   }
 }
 
+// P017: only this source-bound QF01 revision uses this lossless migration.
+const qf01Grading = [{"id":"qf01-n01-answer","answer":"4×2","acceptedAnswers":[],"choices":["4×2","4+2","2−4"]},{"id":"qf01-n02-answer","answer":"2","acceptedAnswers":[],"choices":["2","14","−2"]},{"id":"qf01-n03-answer","answer":"4×(−1)−6","acceptedAnswers":[],"choices":["4×(−1)−6","4−1−6","4×(−1−6)"]},{"id":"qf01-n04-answer","answer":"−10","acceptedAnswers":[],"choices":["−10","2","10"]},{"id":"qf01-n05-answer","answer":"4(a−1)−6","acceptedAnswers":[],"choices":["4(a−1)−6","4a−1−6","4(a−1−6)"]},{"id":"qf01-n06-answer","answer":"4a−4","acceptedAnswers":[],"choices":["4a−4","4a−1","4a+4"]},{"id":"qf01-n07-answer","answer":"4a−10","acceptedAnswers":[],"choices":["4a−10","4a+2","4a−2"]},{"id":"qf01-n08-answer","answer":"(−1)²−1","acceptedAnswers":[],"choices":["(−1)²−1","−1²−1","(−1−1)²"]},{"id":"qf01-n09-answer","answer":"0","acceptedAnswers":[],"choices":["0","−2","1"]},{"id":"qf01-n10-answer","answer":"3","acceptedAnswers":[],"choices":["3","1","−3"]},{"id":"qf01-n11-answer","answer":"(a−1)²−1","acceptedAnswers":[],"choices":["(a−1)²−1","a²−1−1","(a−1)²"]},{"id":"qf01-n12a-answer","answer":"−1(a−1)","acceptedAnswers":[],"choices":["−1(a−1)","+(a−1)","−1(a+1)"]},{"id":"qf01-n12b-answer","answer":"a²−a","acceptedAnswers":[],"choices":["a²−a","a²−1","a²+a"]},{"id":"qf01-n12c-answer","answer":"−a+1","acceptedAnswers":[],"choices":["−a+1","−a−1","a−1"]},{"id":"qf01-n12-answer","answer":"−2","acceptedAnswers":[],"choices":["−2","−1","2"]},{"id":"qf01-n13-answer","answer":"a²−2a","acceptedAnswers":[],"choices":["a²−2a","a²−2a+2","a²−1"]},{"id":"qf01-n14-answer","answer":"2x+2y=40","acceptedAnswers":[],"choices":["2x+2y=40","xy=40","x+y=40"]},{"id":"qf01-n15-answer","answer":"x+y=20","acceptedAnswers":[],"choices":["x+y=20","x+y=40","x+y=80"]},{"id":"qf01-n16-answer","answer":"y=20−x","acceptedAnswers":[],"choices":["y=20−x","y=x−20","y=20+x"]},{"id":"qf01-n17-answer","answer":"x>0かつy>0","acceptedAnswers":[],"choices":["x>0かつy>0","x≥0かつy≥0","x>0だけでよい"]},{"id":"qf01-n18-answer","answer":"x<20","acceptedAnswers":[],"choices":["x<20","x>20","x≤20"]},{"id":"qf01-n19-answer","answer":"0<x<20","acceptedAnswers":[],"choices":["0<x<20","0≤x≤20","x<20だけ"]},{"id":"qf01-n21-answer","answer":"20より小さい","acceptedAnswers":[],"choices":["20より小さい","20に等しい","20より大きい"]},{"id":"qf01-n22-answer","answer":"0<y<20","acceptedAnswers":[],"choices":["0<y<20","0<x<20","0≤y≤20"]}]
+const qf01SourceSHA = '384021f539967038a20fd98bd146e0e499f0df65' as const
+function qf01Need(ok: unknown): asserts ok { if (!ok) throw new Error('QF01保存データを変更できません。元の記録を保持しています。') }
+function qf01JSON(value: unknown, stack = new Set<object>()): void {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return
+  if (typeof value === 'number') { qf01Need(Number.isFinite(value)); return }
+  qf01Need(typeof value === 'object' && !stack.has(value))
+  qf01Need(Object.getPrototypeOf(value) === (Array.isArray(value) ? Array.prototype : Object.prototype) || Object.getPrototypeOf(value) === null)
+  stack.add(value)
+  const descriptors = Object.getOwnPropertyDescriptors(value)
+  qf01Need(Reflect.ownKeys(value).every(k => typeof k === 'string'))
+  if (Array.isArray(value)) qf01Need(Object.keys(value).length === value.length && Object.keys(value).every((k,i) => k === String(i)))
+  for (const [key, d] of Object.entries(descriptors)) {
+    if (Array.isArray(value) && key === 'length') continue
+    qf01Need(d.enumerable && 'value' in d); qf01JSON(d.value, stack)
+  }
+  stack.delete(value)
+}
+function qf01Object(value: unknown): asserts value is Record<string, unknown> { qf01JSON(value); qf01Need(value !== null && typeof value === 'object' && !Array.isArray(value)) }
+function qf01Keys(value: Record<string, unknown>, keys: string[]) { qf01Need(Object.keys(value).length === keys.length && keys.every(k => Object.hasOwn(value,k))) }
+function qf01Contract(unit: TextbookUnit) {
+  const items = unit.sections.flatMap(s => s.items)
+  qf01Need(JSON.stringify(unit.requiredInteractionRefs) === JSON.stringify(qf01Grading.map(i => i.id)))
+  for (const expected of qf01Grading) {
+    const item = items.find(i => i.id === expected.id)
+    qf01Need(item && JSON.stringify({id:item.id,answer:item.answer,acceptedAnswers:item.acceptedAnswers,choices:item.choices ?? []}) === JSON.stringify(expected))
+  }
+}
+function qf01Record(item: TextbookItem, record: unknown): record is TextbookAnswerRecord {
+  if (!record || typeof record !== 'object' || Array.isArray(record)) return false
+  const r = record as TextbookAnswerRecord
+  if (r.itemId !== item.id || typeof r.value !== 'string' || typeof r.isFirstCorrect !== 'boolean' || typeof r.resolved !== 'boolean' || r.firstValue !== undefined && typeof r.firstValue !== 'string' || !Number.isInteger(r.attemptCount) || r.attemptCount < 1 || !Number.isFinite(r.firstAnsweredAt) || !Number.isFinite(r.lastAnsweredAt) || r.firstAnsweredAt > r.lastAnsweredAt) return false
+  const recognized = (v: string) => [item.answer,...item.acceptedAnswers,...item.choices ?? []].some(a => normalizeTextbookAnswer(a) === normalizeTextbookAnswer(v))
+  if (!recognized(r.value) || r.firstValue !== undefined && !recognized(r.firstValue)) return false
+  const correct = isTextbookAnswerCorrect(item,r.value)
+  if (r.resolved !== correct || r.isFirstCorrect && (!correct || r.firstValue !== undefined && !isTextbookAnswerCorrect(item,r.firstValue)) || !r.isFirstCorrect && r.firstValue !== undefined && isTextbookAnswerCorrect(item,r.firstValue)) return false
+  return true
+}
+function qf01Snapshot(value: unknown) {
+  qf01Object(value); qf01Keys(value,['schemaVersion','sourceSHA','serializedProgress'])
+  qf01Need(value.schemaVersion === 'qf01-revision1-snapshot/1' && value.sourceSHA === qf01SourceSHA && typeof value.serializedProgress === 'string')
+  const old: unknown = JSON.parse(value.serializedProgress); qf01Object(old)
+  qf01Need(old.unitId === 'math-quadratic-qf01' && old.unitRevision === 1 && !Object.hasOwn(old,'qf01Revision1Snapshot') && !Object.hasOwn(old,'qf01ResetSnapshots'))
+}
+function qf01Current(unit: TextbookUnit, progress: TextbookUnitProgress) {
+  qf01Object(progress); qf01Need(progress.unitId === unit.unitId && progress.unitRevision === 2)
+  qf01Need(Number.isFinite(progress.startedAt) && Number.isFinite(progress.updatedAt)); qf01Object(progress.answers)
+  for (const [id, record] of Object.entries(progress.answers)) {
+    const item = unit.sections.flatMap(s => s.items).find(i => i.id === id)
+    qf01Need(item && unit.requiredInteractionRefs!.includes(id) && qf01Record(item,record))
+  }
+  if (Object.hasOwn(progress,'qf01Revision1Snapshot')) qf01Snapshot(progress.qf01Revision1Snapshot)
+  if (Object.hasOwn(progress,'qf01ResetSnapshots')) {
+    qf01Need(Array.isArray(progress.qf01ResetSnapshots))
+    progress.qf01ResetSnapshots.forEach((entry,index) => {
+      qf01Object(entry); qf01Keys(entry,['schemaVersion','priorResetCount','hadResetSnapshots','serializedProgressWithoutResetSnapshots'])
+      qf01Need(entry.schemaVersion === 'qf01-reset-snapshot/1' && entry.priorResetCount === index && typeof entry.hadResetSnapshots === 'boolean' && (index === 0 || entry.hadResetSnapshots) && typeof entry.serializedProgressWithoutResetSnapshots === 'string')
+      const before: unknown = JSON.parse(entry.serializedProgressWithoutResetSnapshots); qf01Object(before)
+      qf01Need(!Object.hasOwn(before,'qf01ResetSnapshots')); qf01Current(unit,before as TextbookUnitProgress)
+    })
+  }
+  return progress
+}
+function qf01Progress(unit: TextbookUnit, progress: TextbookUnitProgress) {
+  qf01Contract(unit); qf01Object(progress); qf01Need(progress.unitId === unit.unitId)
+  if (progress.unitRevision === 2) return qf01Current(unit,progress)
+  qf01Need(progress.unitRevision === 1 && !Object.hasOwn(progress,'qf01Revision1Snapshot') && !Object.hasOwn(progress,'qf01ResetSnapshots'))
+  qf01Need(Number.isFinite(progress.startedAt) && Number.isFinite(progress.updatedAt)); qf01Object(progress.answers)
+  const snapshot = {schemaVersion:'qf01-revision1-snapshot/1' as const,sourceSHA:qf01SourceSHA,serializedProgress:JSON.stringify(progress)}
+  const answers: Record<string,TextbookAnswerRecord> = {}
+  for (const {id} of qf01Grading) {
+    const item = unit.sections.flatMap(s => s.items).find(i => i.id === id)!
+    const record = progress.answers[id]
+    if (qf01Record(item,record)) answers[id] = {...record}
+  }
+  const {completedAt, ...old} = progress
+  return {...old,unitRevision:2,answers,qf01Revision1Snapshot:snapshot,migratedFromRevision:1,...(completedAt !== undefined ? {previousRevisionCompletedAt:completedAt} : {})}
+}
+
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
+  if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 2) return qf01Progress(unit,progress)
   // N09/N10 constructor revisions are migrated only by the source-bound Store bridge.
   if (unit.constructionLessonVersion === 'n0910/1') return progress.unitId === unit.unitId && progress.unitRevision === unit.revision ? progress : undefined
   if (progress.unitRevision === unit.revision) return progress
@@ -1171,6 +1254,14 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
 
 /** N12 v3 reset keeps old archived revisions, but clears all v3 active answers. */
 export function resetTextbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, now: number): TextbookUnitProgress | undefined {
+  if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 2) {
+    qf01Contract(unit); qf01Need(Number.isFinite(now) && now >= 0)
+    const current = progress ? qf01Progress(unit,progress) : {unitId:unit.unitId,unitRevision:2,startedAt:now,updatedAt:now,answers:{}} as TextbookUnitProgress
+    const {qf01ResetSnapshots, ...payload} = current
+    const entry = {schemaVersion:'qf01-reset-snapshot/1' as const,priorResetCount:qf01ResetSnapshots?.length ?? 0,hadResetSnapshots:Object.hasOwn(current,'qf01ResetSnapshots'),serializedProgressWithoutResetSnapshots:JSON.stringify(payload)}
+    const {completedAt, ...rest} = current
+    return {...rest,startedAt:now,updatedAt:now,answers:{},qf01ResetSnapshots:[...qf01ResetSnapshots ?? [],entry],...(completedAt !== undefined ? {previousRevisionCompletedAt:completedAt} : {})}
+  }
   if (unit.constructionLessonVersion === 'n0910/1' && unit.nestedContract) {
     if (!Number.isFinite(now) || now < 0 || progress && progress.unitId !== unit.unitId) return undefined
     const archivedRevisions = { ...progress?.archivedRevisions }
@@ -1212,9 +1303,12 @@ export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswe
 }
 
 export function answerTextbookItem(progress: TextbookUnitProgress | undefined, unit: TextbookUnit, item: TextbookItem, value: string, now: number): TextbookUnitProgress {
+  const isQf01 = unit.unitId === 'math-quadratic-qf01' && unit.revision === 2
+  if (isQf01) { qf01Contract(unit); qf01Need(Number.isFinite(now) && now >= 0 && unit.requiredInteractionRefs!.includes(item.id)); const target = unit.sections.flatMap(s => s.items).find(i => i.id === item.id); qf01Need(target && JSON.stringify(target) === JSON.stringify(item)); qf01Need([item.answer,...item.acceptedAnswers,...item.choices ?? []].some(v => normalizeTextbookAnswer(v) === normalizeTextbookAnswer(value))) }
   const currentProgress = effectiveTextbookProgress(unit, progress)
   const previous = currentProgress?.answers[item.id]
-  if (isTextbookItemResolved(item, previous)) return progress!
+  if (isTextbookItemResolved(item, previous)) return isQf01 ? currentProgress! : progress!
+  if (isQf01) qf01Need(now >= (previous?.lastAnsweredAt ?? currentProgress?.updatedAt ?? 0))
 
   const correct = isTextbookAnswerCorrect(item, value)
   const nextRecord: TextbookAnswerRecord = {
@@ -1237,6 +1331,7 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
 
   return {
     unitId: unit.unitId,
+    ...(isQf01 && currentProgress ? currentProgress : {}),
     unitRevision: unit.revision,
     startedAt: currentProgress?.startedAt ?? now,
     updatedAt: now,
@@ -1251,12 +1346,19 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
 }
 
 export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, sectionId: string) {
-  const currentProgress = effectiveTextbookProgress(unit, progress)
+  let currentProgress: TextbookUnitProgress | undefined
+  try { currentProgress = effectiveTextbookProgress(unit, progress) }
+  catch (error) {
+    if (unit.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
+    const active = new Set(qf01Grading.map(i => i.id))
+    return {completed:0,total:unit.sections.find(s => s.id === sectionId)?.items.filter(i => active.has(i.id)).length ?? 0}
+  }
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
   if (!section) return { completed: 0, total: 0 }
   if (unit.requiredInteractionRefs) {
     const ids = [...section.items.map(i => i.id), ...[...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []].filter(i => i.sectionId === sectionId || !i.sectionId && unit.sections.length === 1).map(i => i.id), ...(unit.constructionLessonVersion === 'n0910/1' ? unit.nestedContract?.parents.filter(parent => parent.sectionId === sectionId).map(parent => parent.nodeId) ?? [] : [])]
-    return { completed: ids.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total: ids.length }
+    const activeIds = unit.unitId === 'math-quadratic-qf01' && unit.revision === 2 ? ids.filter(id => unit.requiredInteractionRefs!.includes(id)) : ids
+    return { completed: activeIds.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total: activeIds.length }
   }
   return {
     completed: section.items.filter((item) => isTextbookItemResolved(item, currentProgress?.answers[item.id])).length,
@@ -1265,7 +1367,14 @@ export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUn
 }
 
 export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined) {
-  const currentProgress = effectiveTextbookProgress(unit, progress)
+  let currentProgress: TextbookUnitProgress | undefined
+  try { currentProgress = effectiveTextbookProgress(unit, progress) }
+  catch (error) {
+    // Menu summaries are read-only: keep invalid data durable and let the unit page
+    // explain the blocked save. Answer/reset/effective reads still reject writes.
+    if (unit.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
+    return {completed:0,total:qf01Grading.length,percent:0}
+  }
   if (unit.requiredInteractionRefs) {
     const completed = unit.requiredInteractionRefs.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total = unit.requiredInteractionRefs.length
     return { completed, total, percent: total ? Math.round(completed / total * 100) : 0 }

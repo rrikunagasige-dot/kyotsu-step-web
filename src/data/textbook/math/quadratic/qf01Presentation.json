@@ -238,7 +238,7 @@
         "qf01-n19-result"
       ],
       "resultId": "qf01-n20-result",
-      "interaction": "qf01-n20-answer",
+      "interaction": null,
       "extra": {}
     },
     {
@@ -274,39 +274,39 @@
       "title": "数を入れて規則を使う",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n01-intro-t0",
+          "type": "text",
           "text": "数を",
-          "type": "text"
+          "semanticId": "QF01-N01-full-token-1"
         },
         {
+          "type": "math",
           "latex": "4",
-          "semanticId": "qf01-n01-intro-m1",
-          "type": "math"
+          "semanticId": "QF01-N01-full-token-2"
         },
         {
-          "semanticId": "qf01-n01-intro-t2",
+          "type": "text",
           "text": "倍して",
-          "type": "text"
+          "semanticId": "QF01-N01-full-token-3"
         },
         {
+          "type": "math",
           "latex": "6",
-          "semanticId": "qf01-n01-intro-m3",
-          "type": "math"
+          "semanticId": "QF01-N01-full-token-4"
         },
         {
-          "semanticId": "qf01-n01-intro-t4",
-          "text": "を引く規則を使います。まず、",
-          "type": "text"
+          "type": "text",
+          "text": "を引く規則。入力は",
+          "semanticId": "QF01-N01-full-token-5"
         },
         {
-          "latex": "2",
-          "semanticId": "qf01-n01-intro-m5",
-          "type": "math"
+          "type": "math",
+          "latex": "2\\text{（入力）}",
+          "semanticId": "QF01-N01-full-token-6"
         },
         {
-          "semanticId": "qf01-n01-intro-t6",
-          "text": "を入れて出てくる数を調べましょう。",
-          "type": "text"
+          "type": "text",
+          "text": "。求めるものは、その規則で出てくる数。",
+          "semanticId": "QF01-N01-full-token-7"
         }
       ]
     },
@@ -315,29 +315,39 @@
       "title": "負の数を入れる",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n03-intro-t0",
-          "text": "同じ規則",
-          "type": "text"
+          "type": "text",
+          "text": "問１の最初の規則は",
+          "semanticId": "QF01-N03-full-token-1"
         },
         {
+          "type": "math",
           "latex": "f(x)=4x-6",
-          "semanticId": "qf01-n03-intro-m1",
-          "type": "math"
+          "semanticId": "QF01-N03-full-token-2"
         },
         {
-          "semanticId": "qf01-n03-intro-t2",
-          "text": "に、今度は",
-          "type": "text"
+          "type": "text",
+          "text": "。入力は",
+          "semanticId": "QF01-N03-full-token-3"
         },
         {
-          "latex": "-1",
-          "semanticId": "qf01-n03-intro-m3",
-          "type": "math"
+          "type": "math",
+          "latex": "x=-1",
+          "semanticId": "QF01-N03-full-token-4"
         },
         {
-          "semanticId": "qf01-n03-intro-t4",
-          "text": "を入れます。負の数全体を括弧で扱います。",
-          "type": "text"
+          "type": "text",
+          "text": "、求めるものは",
+          "semanticId": "QF01-N03-full-token-5"
+        },
+        {
+          "type": "math",
+          "latex": "f(-1)",
+          "semanticId": "QF01-N03-full-token-6"
+        },
+        {
+          "type": "text",
+          "text": "。",
+          "semanticId": "QF01-N03-full-token-7"
         }
       ]
     },
@@ -346,34 +356,49 @@
       "title": "式全体を入れる",
       "sourceQuestionParts": [
         {
-          "latex": "a",
-          "semanticId": "qf01-n05-intro-m0",
-          "type": "math"
+          "type": "text",
+          "text": "同じ規則",
+          "semanticId": "QF01-N05-full-token-1"
         },
         {
-          "semanticId": "qf01-n05-intro-t1",
-          "text": "は数を表す文字です。今度は",
-          "type": "text"
-        },
-        {
-          "latex": "a-1",
-          "semanticId": "qf01-n05-intro-m2",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n05-intro-t3",
-          "text": "全体を一つの入力として扱います。関数の規則は",
-          "type": "text"
-        },
-        {
+          "type": "math",
           "latex": "f(x)=4x-6",
-          "semanticId": "qf01-n05-intro-m4",
-          "type": "math"
+          "semanticId": "QF01-N05-full-token-2"
         },
         {
-          "semanticId": "qf01-n05-intro-t5",
-          "text": "のままです。",
-          "type": "text"
+          "type": "text",
+          "text": "で、数を表す文字を",
+          "semanticId": "QF01-N05-full-token-3"
+        },
+        {
+          "type": "math",
+          "latex": "a",
+          "semanticId": "QF01-N05-full-token-4"
+        },
+        {
+          "type": "text",
+          "text": "とする。入力は式全体",
+          "semanticId": "QF01-N05-full-token-5"
+        },
+        {
+          "type": "math",
+          "latex": "x=a-1",
+          "semanticId": "QF01-N05-full-token-6"
+        },
+        {
+          "type": "text",
+          "text": "、求めるものは",
+          "semanticId": "QF01-N05-full-token-7"
+        },
+        {
+          "type": "math",
+          "latex": "f(a-1)",
+          "semanticId": "QF01-N05-full-token-8"
+        },
+        {
+          "type": "text",
+          "text": "。",
+          "semanticId": "QF01-N05-full-token-9"
         }
       ]
     },
@@ -382,39 +407,39 @@
       "title": "二乗する規則に替える",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n08-intro-t0",
-          "text": "ここから問",
-          "type": "text"
+          "type": "text",
+          "text": "ここから問１の二つ目。現在の規則は",
+          "semanticId": "QF01-N08-full-token-1"
         },
         {
-          "latex": "1(2)",
-          "semanticId": "qf01-n08-intro-m1",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n08-intro-t2",
-          "text": "です。規則を",
-          "type": "text"
-        },
-        {
+          "type": "math",
           "latex": "f(x)=x^2-1",
-          "semanticId": "qf01-n08-intro-m3",
-          "type": "math"
+          "semanticId": "QF01-N08-full-token-2"
         },
         {
-          "semanticId": "qf01-n08-intro-t4",
-          "text": "に替えます。前の規則と混ぜず、",
-          "type": "text"
+          "type": "text",
+          "text": "。前の規則とは別である。入力は",
+          "semanticId": "QF01-N08-full-token-3"
         },
         {
-          "latex": "-1",
-          "semanticId": "qf01-n08-intro-m5",
-          "type": "math"
+          "type": "math",
+          "latex": "x=-1",
+          "semanticId": "QF01-N08-full-token-4"
         },
         {
-          "semanticId": "qf01-n08-intro-t6",
-          "text": "を入れましょう。",
-          "type": "text"
+          "type": "text",
+          "text": "、求めるものは",
+          "semanticId": "QF01-N08-full-token-5"
+        },
+        {
+          "type": "math",
+          "latex": "f(-1)",
+          "semanticId": "QF01-N08-full-token-6"
+        },
+        {
+          "type": "text",
+          "text": "。",
+          "semanticId": "QF01-N08-full-token-7"
         }
       ]
     },
@@ -423,29 +448,39 @@
       "title": "自分で計算をつなぐ",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n10-intro-t0",
-          "text": "同じ規則",
-          "type": "text"
+          "type": "text",
+          "text": "規則は",
+          "semanticId": "QF01-N10-full-token-1"
         },
         {
+          "type": "math",
           "latex": "f(x)=x^2-1",
-          "semanticId": "qf01-n10-intro-m1",
-          "type": "math"
+          "semanticId": "QF01-N10-full-token-2"
         },
         {
-          "semanticId": "qf01-n10-intro-t2",
-          "text": "で、今度は",
-          "type": "text"
+          "type": "text",
+          "text": "。入力は",
+          "semanticId": "QF01-N10-full-token-3"
         },
         {
+          "type": "math",
+          "latex": "x=2",
+          "semanticId": "QF01-N10-full-token-4"
+        },
+        {
+          "type": "text",
+          "text": "、求めるものは",
+          "semanticId": "QF01-N10-full-token-5"
+        },
+        {
+          "type": "math",
           "latex": "f(2)",
-          "semanticId": "qf01-n10-intro-m3",
-          "type": "math"
+          "semanticId": "QF01-N10-full-token-6"
         },
         {
-          "semanticId": "qf01-n10-intro-t4",
-          "text": "を求めます。置換から計算までを自分でつなぎます。",
-          "type": "text"
+          "type": "text",
+          "text": "。",
+          "semanticId": "QF01-N10-full-token-7"
         }
       ]
     },
@@ -454,29 +489,49 @@
       "title": "二乗に式を入れる",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n11-intro-t0",
-          "text": "次は",
-          "type": "text"
+          "type": "text",
+          "text": "規則は",
+          "semanticId": "QF01-N11-full-token-1"
         },
         {
+          "type": "math",
+          "latex": "f(x)=x^2-1",
+          "semanticId": "QF01-N11-full-token-2"
+        },
+        {
+          "type": "text",
+          "text": "。数を表す文字を",
+          "semanticId": "QF01-N11-full-token-3"
+        },
+        {
+          "type": "math",
+          "latex": "a",
+          "semanticId": "QF01-N11-full-token-4"
+        },
+        {
+          "type": "text",
+          "text": "とし、入力するのは",
+          "semanticId": "QF01-N11-full-token-5"
+        },
+        {
+          "type": "math",
           "latex": "a-1",
-          "semanticId": "qf01-n11-intro-m1",
-          "type": "math"
+          "semanticId": "QF01-N11-full-token-6"
         },
         {
-          "semanticId": "qf01-n11-intro-t2",
-          "text": "全体を入力します。平方は同じ式を",
-          "type": "text"
+          "type": "text",
+          "text": "全体。求めるものは",
+          "semanticId": "QF01-N11-full-token-7"
         },
         {
-          "latex": "2",
-          "semanticId": "qf01-n11-intro-m3",
-          "type": "math"
+          "type": "math",
+          "latex": "f(a-1)",
+          "semanticId": "QF01-N11-full-token-8"
         },
         {
-          "semanticId": "qf01-n11-intro-t4",
-          "text": "回掛けることを使い、分配してから同類項をまとめましょう。",
-          "type": "text"
+          "type": "text",
+          "text": "。",
+          "semanticId": "QF01-N11-full-token-9"
         }
       ]
     },
@@ -485,69 +540,39 @@
       "title": "長方形の条件を式にする",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n14-intro-t0",
-          "text": "問",
-          "type": "text"
+          "type": "text",
+          "text": "問２。周が",
+          "semanticId": "QF01-N14-full-token-1"
         },
         {
-          "latex": "2",
-          "semanticId": "qf01-n14-intro-m1",
-          "type": "math"
+          "type": "math",
+          "latex": "40\\,\\mathrm{cm}",
+          "semanticId": "QF01-N14-full-token-2"
         },
         {
-          "semanticId": "qf01-n14-intro-t2",
-          "text": "です。周が",
-          "type": "text"
+          "type": "text",
+          "text": "の長方形で、縦を",
+          "semanticId": "QF01-N14-full-token-3"
         },
         {
-          "latex": "40\\mathrm{cm}",
-          "semanticId": "qf01-n14-intro-m3",
-          "type": "math"
+          "type": "math",
+          "latex": "x\\,\\mathrm{cm}",
+          "semanticId": "QF01-N14-full-token-4"
         },
         {
-          "semanticId": "qf01-n14-intro-t4",
-          "text": "の長方形の縦を",
-          "type": "text"
-        },
-        {
-          "latex": "x",
-          "semanticId": "qf01-n14-intro-m5",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n14-intro-t6",
-          "text": " ",
-          "type": "text"
-        },
-        {
-          "latex": "\\mathrm{cm}",
-          "semanticId": "qf01-n14-intro-m7",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n14-intro-t8",
+          "type": "text",
           "text": "、横を",
-          "type": "text"
+          "semanticId": "QF01-N14-full-token-5"
         },
         {
-          "latex": "y",
-          "semanticId": "qf01-n14-intro-m9",
-          "type": "math"
+          "type": "math",
+          "latex": "y\\,\\mathrm{cm}",
+          "semanticId": "QF01-N14-full-token-6"
         },
         {
-          "semanticId": "qf01-n14-intro-t10",
-          "text": " ",
-          "type": "text"
-        },
-        {
-          "latex": "\\mathrm{cm}",
-          "semanticId": "qf01-n14-intro-m11",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n14-intro-t12",
-          "text": "とします。横の長さが縦からどう決まるかを調べます。",
-          "type": "text"
+          "type": "text",
+          "text": "とする。求めるものは、横の長さが縦からどう決まるかを表す式。",
+          "semanticId": "QF01-N14-full-token-7"
         }
       ]
     },
@@ -556,29 +581,59 @@
       "title": "使える入力を調べる",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n17-intro-t0",
-          "text": "今回は",
-          "type": "text"
+          "type": "text",
+          "text": "周が",
+          "semanticId": "QF01-N17-full-token-1"
         },
         {
+          "type": "math",
+          "latex": "40\\,\\mathrm{cm}",
+          "semanticId": "QF01-N17-full-token-2"
+        },
+        {
+          "type": "text",
+          "text": "の長方形で、縦が",
+          "semanticId": "QF01-N17-full-token-3"
+        },
+        {
+          "type": "math",
+          "latex": "x\\,\\mathrm{cm}",
+          "semanticId": "QF01-N17-full-token-4"
+        },
+        {
+          "type": "text",
+          "text": "、横が",
+          "semanticId": "QF01-N17-full-token-5"
+        },
+        {
+          "type": "math",
+          "latex": "y\\,\\mathrm{cm}",
+          "semanticId": "QF01-N17-full-token-6"
+        },
+        {
+          "type": "text",
+          "text": "。既に",
+          "semanticId": "QF01-N17-full-token-7"
+        },
+        {
+          "type": "math",
+          "latex": "y=20-x",
+          "semanticId": "QF01-N17-full-token-8"
+        },
+        {
+          "type": "text",
+          "text": "を得た。求めるものは、長方形を作れる入力",
+          "semanticId": "QF01-N17-full-token-9"
+        },
+        {
+          "type": "math",
           "latex": "x",
-          "semanticId": "qf01-n17-intro-m1",
-          "type": "math"
+          "semanticId": "QF01-N17-full-token-10"
         },
         {
-          "semanticId": "qf01-n17-intro-t2",
-          "text": "と",
-          "type": "text"
-        },
-        {
-          "latex": "y",
-          "semanticId": "qf01-n17-intro-m3",
-          "type": "math"
-        },
-        {
-          "semanticId": "qf01-n17-intro-t4",
-          "text": "が辺の長さを表します。長方形として使える入力の範囲を考えます。",
-          "type": "text"
+          "type": "text",
+          "text": "の範囲。",
+          "semanticId": "QF01-N17-full-token-11"
         }
       ]
     },
@@ -587,16 +642,64 @@
       "title": "出てくる値を調べる",
       "sourceQuestionParts": [
         {
-          "semanticId": "qf01-n20-intro-t0",
-          "text": "決まった入力の範囲から、出力がどんな値をとるかを調べます。入力と出力の範囲を区別しましょう。",
-          "type": "text"
+          "type": "text",
+          "text": "周が",
+          "semanticId": "QF01-N20-full-token-1"
+        },
+        {
+          "type": "math",
+          "latex": "40\\,\\mathrm{cm}",
+          "semanticId": "QF01-N20-full-token-2"
+        },
+        {
+          "type": "text",
+          "text": "の長方形で、",
+          "semanticId": "QF01-N20-full-token-3"
+        },
+        {
+          "type": "math",
+          "latex": "y=20-x",
+          "semanticId": "QF01-N20-full-token-4"
+        },
+        {
+          "type": "text",
+          "text": "、入力の定義域は",
+          "semanticId": "QF01-N20-full-token-5"
+        },
+        {
+          "type": "math",
+          "latex": "0<x<20",
+          "semanticId": "QF01-N20-full-token-6"
+        },
+        {
+          "type": "text",
+          "text": "。求めるものは、出力である横の長さ",
+          "semanticId": "QF01-N20-full-token-7"
+        },
+        {
+          "type": "math",
+          "latex": "y",
+          "semanticId": "QF01-N20-full-token-8"
+        },
+        {
+          "type": "text",
+          "text": "の範囲。",
+          "semanticId": "QF01-N20-full-token-9"
         }
       ]
     }
   ],
   "semanticDisplay": {
     "qf01-n01": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "「4倍」は足し算ではなく4を掛ける。",
+            "semanticId": "qf01-n01-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "4×2": [
           {
@@ -665,7 +768,15 @@
       }
     },
     "qf01-n02": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "8を起点に6だけ小さくする。",
+            "semanticId": "qf01-n02-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "2": [
           {
@@ -729,7 +840,15 @@
       }
     },
     "qf01-n03": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "xの場所に括弧で囲んだ−1を入れ、−6は外に残す。",
+            "semanticId": "qf01-n03-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "4×(−1)−6": [
           {
@@ -798,7 +917,15 @@
       }
     },
     "qf01-n04": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "−4からさらに6小さい数へ進む。",
+            "semanticId": "qf01-n04-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "2": [
           {
@@ -862,7 +989,15 @@
       }
     },
     "qf01-n05": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "4を掛ける相手はaだけでなくa−1全体。",
+            "semanticId": "qf01-n05-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "4(a−1)−6": [
           {
@@ -941,7 +1076,15 @@
       }
     },
     "qf01-n06": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "4は括弧の二つの項の両方に掛かる。外の−6とはまだまとめない。",
+            "semanticId": "qf01-n06-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "4a−4": [
           {
@@ -1000,7 +1143,15 @@
       }
     },
     "qf01-n07": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "文字の項4aを保ち、二つの負の定数をまとめる。",
+            "semanticId": "qf01-n07-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "4a−10": [
           {
@@ -1069,7 +1220,15 @@
       }
     },
     "qf01-n08": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "二乗する対象は−1全体。最後の−1は二乗の外。",
+            "semanticId": "qf01-n08-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "(−1)²−1": [
           {
@@ -1128,7 +1287,15 @@
       }
     },
     "qf01-n09": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "負数同士の積で得た1から、規則にある1を引く。",
+            "semanticId": "qf01-n09-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "0": [
           {
@@ -1197,7 +1364,15 @@
       }
     },
     "qf01-n10": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "二乗を先に計算し、そのあと1を引く。",
+            "semanticId": "qf01-n10-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "1": [
           {
@@ -1281,7 +1456,15 @@
       }
     },
     "qf01-n11": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "二乗するのはa−1全体。元の規則の最後の−1も残る。",
+            "semanticId": "qf01-n11-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "(a−1)²−1": [
           {
@@ -1340,7 +1523,15 @@
       }
     },
     "qf01-n12a": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "最初の括弧の後ろの項は−1。後ろの括弧全体へ掛ける。",
+            "semanticId": "qf01-n12a-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "−1(a−1)": [
           {
@@ -1424,7 +1615,15 @@
       }
     },
     "qf01-n12b": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "a×aとa×(−1)の二つの積を作る。",
+            "semanticId": "qf01-n12b-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "a²−a": [
           {
@@ -1503,7 +1702,15 @@
       }
     },
     "qf01-n12c": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "−1×aと−1×(−1)を分けて考える。後者の符号に注意。",
+            "semanticId": "qf01-n12c-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "−a+1": [
           {
@@ -1571,28 +1778,8 @@
         [
           {
             "type": "text",
-            "text": "二つの",
-            "semanticId": "qf01-n12-hint-0-t0"
-          },
-          {
-            "type": "math",
-            "latex": "-a",
-            "semanticId": "qf01-n12-hint-0-m1"
-          },
-          {
-            "type": "text",
-            "text": "を合わせる。各項は",
-            "semanticId": "qf01-n12-hint-0-t2"
-          },
-          {
-            "type": "math",
-            "latex": "-1\\times a",
-            "semanticId": "qf01-n12-hint-0-m3"
-          },
-          {
-            "type": "text",
-            "text": "と読める。",
-            "semanticId": "qf01-n12-hint-0-t4"
+            "text": "−aは(−1)×a。係数−1と−1を足す。",
+            "semanticId": "qf01-n12-p017-hint"
           }
         ]
       ],
@@ -1669,7 +1856,15 @@
       }
     },
     "qf01-n13": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "平方部分だけで終わらず、元の規則に残った−1を引く。",
+            "semanticId": "qf01-n13-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "a²−2a": [
           {
@@ -1728,7 +1923,15 @@
       }
     },
     "qf01-n14": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "縦と横はそれぞれ二辺ずつある。面積の積ではない。",
+            "semanticId": "qf01-n14-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "2x+2y=40": [
           {
@@ -1787,7 +1990,15 @@
       }
     },
     "qf01-n15": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "左辺の各項だけでなく右辺40にも同じ÷2を行う。",
+            "semanticId": "qf01-n15-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "x+y=20": [
           {
@@ -1846,7 +2057,15 @@
       }
     },
     "qf01-n16": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "両辺から同じxを引く。",
+            "semanticId": "qf01-n16-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "y=20−x": [
           {
@@ -1925,7 +2144,15 @@
       }
     },
     "qf01-n17": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "どちらか一辺が0なら長方形がつぶれる。片方の条件だけでは足りない。",
+            "semanticId": "qf01-n17-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "x>0かつy>0": [
           {
@@ -1984,7 +2211,15 @@
       }
     },
     "qf01-n18": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "20−xが正のままでいられる境界を調べる。等号では横が0になる。",
+            "semanticId": "qf01-n18-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "x<20": [
           {
@@ -2063,7 +2298,15 @@
       }
     },
     "qf01-n19": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "下側と上側の条件を同時に満たすxを表す。両端は含めない。",
+            "semanticId": "qf01-n19-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "0<x<20": [
           {
@@ -2211,7 +2454,15 @@
       }
     },
     "qf01-n21": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "20から正のxを引いている。",
+            "semanticId": "qf01-n21-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "20より小さい": [
           {
@@ -2275,7 +2526,15 @@
       }
     },
     "qf01-n22": {
-      "hintParts": [],
+      "hintParts": [
+        [
+          {
+            "type": "text",
+            "text": "求めているのはyの範囲。下限と上限を組み合わせ、両端を除く。",
+            "semanticId": "qf01-n22-p017-hint"
+          }
+        ]
+      ],
       "choices": {
         "0<y<20": [
           {

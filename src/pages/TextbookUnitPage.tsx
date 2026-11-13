@@ -1,4 +1,4 @@
-import { qf01GuidedPresentation, qf01TransformationPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
+import { qf01GuidedPresentation, qf01TransformationPresentation, qf01PilotTransformationPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
 import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
 import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import n11TransformationPresentation from '../data/textbook/math/numbers/n11Transformation.json'
@@ -226,7 +226,7 @@ function readingLayoutProfile(unit: TextbookUnit, stageId: string): ReadingLayou
 }
 
 export function TextbookReadingFlow(props: ReadingFlowProps) {
-  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 1) return <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={qf01GuidedPresentation} transformationPresentation={qf01TransformationPresentation} storageScope="qf01-v1" />
+  if (props.unit.unitId === 'math-quadratic-qf01' && (props.unit.revision === 1 || props.unit.revision === 2)) return <GuidedMathReadingFlow key={props.unit.unitId + ':r' + props.unit.revision} {...props} presentation={qf01GuidedPresentation} transformationPresentation={props.unit.revision === 2 ? qf01TransformationPresentation : qf01PilotTransformationPresentation} storageScope={props.unit.revision === 2 ? 'qf01-v2' : 'qf01-v1'} />
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 7
@@ -832,7 +832,14 @@ function ActiveTextbookUnitPage() {
   const [restartEpoch, setRestartEpoch] = useState(0)
   const initializedUnitRef = useRef<string | null>(null)
   const savedProgress = useAppStore((state) => state.textbookProgress[unitId])
-  const progress = useMemo(() => unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, [unit, savedProgress])
+  const progressState = useMemo(() => {
+    try { return { progress: unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, error: false } }
+    catch (error) {
+      if (unit?.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
+      return { progress: undefined, error: true }
+    }
+  }, [unit, savedProgress])
+  const progress = progressState.progress
   useEffect(() => setMathSummaryReached(false), [unitId])
   const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit)
   const { language, text } = useI18n()
@@ -883,6 +890,8 @@ function ActiveTextbookUnitPage() {
   const nextMathUnitId = unit.subject === 'math-1a' ? mathTextbookNextUnitId(unit.unitId) : undefined
   const setupReturnPath = unit.subject === 'math-1a' ? '/learning/setup?subject=math-1a' : '/learning/setup'
   const subjectEyebrow = unit.subject === 'math-1a' ? 'MATH I+A' : 'PHYSICS'
+  const qf01Revision2 = unit.unitId === 'math-quadratic-qf01' && unit.revision === 2
+  const priorQF01AnswersOnly = qf01Revision2 && Boolean(progress && 'qf01Revision1Snapshot' in progress) && progress?.completedAt === undefined
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
 
@@ -942,7 +951,8 @@ function ActiveTextbookUnitPage() {
         {!continuousLesson && <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>}
       </header>
 
-      <ProgressBar label={text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
+      {progressState.error && <p role="alert" data-testid="qf01-progress-preserved-error">保存記録の対応を確認してください。以前の記録は変更していません。</p>}
+      <ProgressBar label={qf01Revision2 ? text('公開中の内容：解答の記録', '已公开内容：答题记录') : text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
       {(unit.unitId === 'math-numbers-expressions-n12' || isFirstThemeUnit(unit.unitId)) && (
         <button type="button" className="n12-restart-top" data-testid={unit.unitId === 'math-numbers-expressions-n12' ? 'n12-restart-top' : 'first-theme-restart-top'} onClick={restartFromBeginning}>
           <RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}
@@ -1019,7 +1029,7 @@ function ActiveTextbookUnitPage() {
               )}
 
               {nestedCode ? <N0910RevisionPage key={`${unit.unitId}-restart-${restartEpoch}`} code={nestedCode} embedded /> : section.readingFlow.length > 0
-                ? <TextbookReadingFlow originalMathLayout={originalMathLayout} key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
+                ? (progressState.error ? null : <TextbookReadingFlow originalMathLayout={originalMathLayout} key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />)
                 : null}
 
               {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
@@ -1033,19 +1043,19 @@ function ActiveTextbookUnitPage() {
           )
         })}
 
-        {unitComplete && ((unit.unitId !== 'math-sets' && !isFirstThemeUnit(unit.unitId)) || mathSummaryReached) && (
+        {unitComplete && !priorQF01AnswersOnly && ((unit.unitId !== 'math-sets' && !isFirstThemeUnit(unit.unitId)) || mathSummaryReached) && (
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>
               <strong>
-                {unit.subject === 'math-1a'
+                {qf01Revision2 ? text('ここまでの解答を記録しました', '已记录这里的答案') : unit.subject === 'math-1a'
                   ? text('ここまで完了', '已完成这一部分')
                   : nextChapter1Unit
                     ? text('ここまで完了', '已完成这一部分')
                     : text('第1章完了', '第1章完成')}
               </strong>
               <p>
-                {unit.subject === 'math-1a'
+                {qf01Revision2 ? text('公開中の解答の記録です。説明は前の段階から読み直せます。', '这是已公开内容的答题记录。可以从前面的阶段重读说明。') : unit.subject === 'math-1a'
                   ? unit.unitId === 'math-sets'
                     ? text('集合の表し方から、共通部分・和集合・部分集合・補集合・ド・モルガンの法則・数直線まで確認しました。', '已经学习了集合的表示、交集与并集、子集、补集、德摩根定律，以及数轴上的集合。')
                     : text('この教材の内容を最後まで確認しました。学習設定へ戻ると、次に学ぶ内容を選べます。', '已经完成本教材。返回学习设置后可以选择下一项学习内容。')

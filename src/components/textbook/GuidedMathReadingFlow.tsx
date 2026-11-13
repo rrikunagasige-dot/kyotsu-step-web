@@ -1,10 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useId, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
 import { guidedMathDisplaySteps } from './guidedMathDisplayPolicy'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
 import { NumberedEquation } from './NumberedEquation'
-import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
+import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, type TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../../domain/textbookSchema'
 import { useAppStore } from '../../stores/useAppStore'
 import { SolutionReadingFlow } from './SolutionReadingFlow'
@@ -56,6 +56,7 @@ function GuidedNumberedEquation({ number, children, logical = false }: { number:
 }
 
 export function GuidedMathReadingFlow(props: Props) {
+  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 2) return <FullQF01ReadingFlow {...props} />
   if (props.presentation && typeof props.presentation === 'object' && 'schemaVersion' in props.presentation && props.presentation.schemaVersion === 'solution-reading/1') {
     return <SolutionTextbookAdapter {...props} />
   }
@@ -298,6 +299,141 @@ function LegacyGuidedMathReadingFlow({ presentation, transformationPresentation,
         requestAnimationFrame(() => { flow.current?.focus({ preventScroll: true }); flow.current?.scrollIntoView({ block: 'start' }) })
       }}>{text('次へ', '下一步')}</button>}
       {first < 0 && stageIndex === data.stages.length - 1 && <p data-testid={data.code + '-complete'}>{text('ここまでの学習を終えました。', '已完成本节学习。')}</p>}
+    </section>
+  </div>
+}
+
+/** P017 is deliberately opt-in: incomplete QF01r2 data never falls back to old questions. */
+function FullQF01ReadingFlow(props: Props) {
+  const data = props.presentation as Presentation
+  const parsed = TransformationReadingSchema.safeParse(props.transformationPresentation)
+  const required = props.unit.requiredInteractionRefs ?? []
+  const active = data?.nodes?.flatMap(n => n.interaction ? [n.interaction] : []) ?? []
+  const same = (a: string[], b: string[]) => a.length === b.length && a.every((v, i) => v === b[i])
+  const fail = () => <p role="alert">教材の式列と保存・回答データの対応を確認してください。保存記録は変更していません。</p>
+  if (!parsed.success || !data?.stages || data.stages.length !== 9 || data.nodes.length !== 25 || required.length !== 24 || !same(active, required)) return fail()
+  const plan = parsed.data
+  if (plan.unitId !== props.unit.unitId || plan.presentationVersion !== 2 || !same(plan.scope.nodeIds, data.nodes.map(n => n.id)) || !same(plan.scope.stageIds, data.stages.map(s => s.id)) || !same(plan.interactions.map(q => q.id), required)) return fail()
+  const rowIDs = new Set<string>(), seenNodes = new Set<string>(), seenAnswers = new Set<string>()
+  for (const group of plan.groups) for (const row of group.rows) {
+    const node = data.nodes.find(n => n.id === row.sourceNodeId)
+    if (!node || !group.stageIds.includes(node.stageId) || rowIDs.has(row.id) || row.visibleAfter.some(id => !required.includes(id))) return fail()
+    rowIDs.add(row.id); seenNodes.add(node.id)
+    if (row.interactionRef) {
+      if (row.interactionRef !== node.interaction || seenAnswers.has(row.interactionRef)) return fail()
+      seenAnswers.add(row.interactionRef)
+    }
+  }
+  if (seenNodes.size !== data.nodes.length || seenAnswers.size !== required.length) return fail()
+  for (const q of plan.interactions) {
+    const item = props.section.items.find(i => i.id === q.id)
+    if (!item || item.answer !== q.correctValue || q.choices.length !== item.choices?.length || q.choices.some(c => !item.choices?.includes(c))) return fail()
+  }
+  return <ValidatedFullQF01ReadingFlow {...props} data={data} plan={plan} />
+}
+
+function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, storageScope, onSummaryReached, onReviewAnswer }: Props & { data: Presentation; plan: import('../../domain/transformationReading').TransformationReading }) {
+  const answer = useAppStore(state => state.answerTextbook)
+  const current = effectiveTextbookProgress(unit, progress)
+  const contextId = useId()
+  const items = section.items
+  const resolved = (id: string) => isTextbookItemResolved(items.find(i => i.id === id)!, current?.answers[id])
+  const required = unit.requiredInteractionRefs!
+  const first = data.nodes.findIndex(n => n.interaction && !resolved(n.interaction))
+  const maxStage = first < 0 ? data.stages.length - 1 : data.stages.findIndex(s => s.id === data.nodes[first].stageId)
+  const imported = Boolean(current && 'qf01Revision1Snapshot' in current)
+  const storageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r2' + (storageScope ? ':scope:' + storageScope : '')
+  const [cursor, setCursor] = useState(() => {
+    const saved = window.localStorage.getItem(storageKey)
+    const value = saved === null ? (imported && first < 0 ? 0 : maxStage) : Number(saved)
+    return Number.isInteger(value) && value >= 0 ? Math.min(value, maxStage) : 0
+  })
+  const stageIndex = Math.min(cursor, maxStage), stage = data.stages[stageIndex]
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const [history, setHistory] = useState(false)
+  const [fullHistory, setFullHistory] = useState(false)
+  const [repeatContext, setRepeatContext] = useState(false)
+  const flow = useRef<HTMLDivElement>(null), context = useRef<HTMLDivElement>(null)
+  const solved = required.filter(resolved)
+  const visible = projectTransformationView(plan, solved)
+  const complete = data.nodes.filter(n => n.stageId === stage.id).every(n => !n.interaction || resolved(n.interaction))
+  const viewportBounds = useCallback(() => {
+    let top = 0, bottom = innerHeight
+    for (const element of document.querySelectorAll<HTMLElement>('header, nav, [data-fixed-header]')) {
+      const style = getComputedStyle(element), r = element.getBoundingClientRect()
+      if (style.position !== 'fixed' && style.position !== 'sticky') continue
+      // A fixed bottom navigation is an obstruction below, never a top header.
+      if (Number.isFinite(Number.parseFloat(style.top)) && r.top < innerHeight / 2) top = Math.max(top, r.bottom)
+      else if (style.position === 'fixed' && Number.isFinite(Number.parseFloat(style.bottom)) && r.top > innerHeight / 2) bottom = Math.min(bottom, r.top)
+    }
+    return { top: top + 12, bottom: bottom - 12 }
+  }, [])
+  const reveal = useCallback((target: HTMLElement | null) => {
+    if (!target) return
+    const { top, bottom } = viewportBounds(), r = target.getBoundingClientRect()
+    flow.current?.style.setProperty('--qf01-header-clearance', top + 'px')
+    if (r.top < top || r.top > bottom - 44) window.scrollBy({ top: r.top - top, behavior: 'auto' })
+    else if (r.bottom > bottom && r.height <= bottom - top) window.scrollBy({ top: r.bottom - bottom, behavior: 'auto' })
+  }, [viewportBounds])
+  useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
+  useEffect(() => { onSummaryReached?.(false) }, [onSummaryReached])
+  useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
+  useLayoutEffect(() => {
+    const check = () => { const r = context.current?.getBoundingClientRect(); setRepeatContext(Boolean(r && (r.top < viewportBounds().top || r.bottom > viewportBounds().bottom))) }
+    const frame = requestAnimationFrame(() => { check(); reveal(flow.current?.querySelector<HTMLElement>(activeId ? '[data-testid="inline-choice-panel-' + activeId + '"]' : '[data-qf01-current-slot]') ?? null) })
+    window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
+  }, [stageIndex, activeId, first, viewportBounds, reveal])
+  const semantic = (parts: TextbookReadingPart[]) => parts.map((p, i) => p.type === 'math'
+    ? <TypesetInlineMath key={i} latex={p.latex} sourceId={p.semanticId ?? 'qf01-context-' + i} unitId={unit.unitId} />
+    : p.type === 'text' ? <span key={i}>{p.text}</span> : null)
+  const value = (id: string, choice: string) => {
+    const node = data.nodes.find(n => n.interaction === id)!
+    const parts = data.semanticDisplay[node.id]?.choices[choice]
+    return parts ? semantic(parts) : <TypesetInlineMath latex={choice} sourceId={id + '-choice-value'} unitId={unit.unitId} />
+  }
+  const slot = (id: string) => {
+    const item = items.find(i => i.id === id)!
+    if (resolved(id)) return <span data-testid={'resolved-' + id}>{value(id, item.answer)}</span>
+    return <button type="button" className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot data-testid={'textbook-item-' + id} aria-label="式中の空欄" aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
+  }
+  const panel = (id: string) => {
+    if (activeId !== id || resolved(id)) return null
+    const item = items.find(i => i.id === id)!, node = data.nodes.find(n => n.interaction === id)!, record = current?.answers[id]
+    const wrong = record && !resolved(id), display = data.semanticDisplay[node.id]
+    return <div className="reading-inline-choice-panel qf01-attached-options" data-testid={'inline-choice-panel-' + id}>
+      {repeatContext && <aside className="qf01-local-context" data-testid="qf01-local-context"><strong>元の条件・求めるもの</strong><p>{semantic(stage.sourceQuestionParts)}</p></aside>}
+      {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{value(id, record.value)}<p>{semantic(display.feedback[record.value] ?? [])} {semantic(display.hintParts[0] ?? [])}</p></aside>}
+      <div className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>
+        {getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" className="reading-choice-option" key={choice} aria-label={choice} onFocus={event => reveal(event.currentTarget)} aria-invalid={Boolean(wrong && record.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onClick={() => {
+          if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
+          if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) setActiveId(null)
+        }}><span className="qf01-option-content">{value(id, choice)}</span></button>)}
+      </div>
+    </div>
+  }
+  const groupsAt = (stageId: string) => visible.groups.filter(g => plan.groups.find(p => p.id === g.id)?.stageIds.includes(stageId))
+  const compactGroup = (group: ReturnType<typeof groupsAt>[number]) => {
+    const last = group.rows.at(-1)!
+    // A continuation needs its own group's subject; a complete interval on the
+    // right with no relation must remain a standalone statement.
+    const subject = last.formula.left.length || !(last.formula.relation || last.formula.relationSlot)
+      ? last.formula.left
+      : [...group.rows].reverse().find(row => row.formula.left.length)?.formula.left
+        ?? [...group.rows.slice(0, -1)].reverse().find(row => !row.formula.relation && !row.formula.relationSlot && row.formula.right.length)?.formula.right ?? []
+    return { ...group, rows: [{ ...last, formula: { ...last.formula, left: subject } }] }
+  }
+  const mathematicalStage = (stageId: string) => <div className="qf01-continuous-derivation" data-testid={'qf01-chain-' + stageId}>{groupsAt(stageId).map(group => <TransformationReadingGroup key={group.id} group={group} renderSlot={slot} renderPanel={panel} />)}</div>
+  return <div ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-testid="textbook-reading-flow" data-typeset-theme="true" tabIndex={-1}>
+    <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / {data.stages.length}</span><span>解答の記録：{solved.length}/{required.length}</span>{stageIndex > 0 && <button type="button" data-testid="qf01-history-toggle" onClick={() => setHistory(v => !v)}>{history ? '履歴を閉じる' : '前の段階を見る'}</button>}</div>
+    {imported && <p className="qf01-imported-progress" data-testid="qf01-imported-answer-history">以前の学習記録を保持しています。解答の記録は、更新された説明を確認した記録ではありません。</p>}
+    {history && <div className="guided-history"><button type="button" onClick={() => setFullHistory(v => !v)}>{fullHistory ? '全文を閉じる' : '全文を開く'}</button>{data.stages.slice(0, stageIndex).map(s => <section key={s.id} data-testid={'recorded-results-' + s.id}><h3>{s.title}</h3><p>{semantic(s.sourceQuestionParts)}</p>{fullHistory ? mathematicalStage(s.id) : <div className="qf01-recorded-conclusion">{groupsAt(s.id).map(g => <TransformationReadingGroup key={g.id} group={compactGroup(g)} renderSlot={slot} renderPanel={() => null} />)}</div>}</section>)}</div>}
+    <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id}>
+      <div ref={context} id={contextId} className="guided-source-question" data-testid="guided-source-question"><strong>元の条件・求めるもの</strong><p>{semantic(stage.sourceQuestionParts)}</p></div>
+      <h3>{stage.title}</h3>{mathematicalStage(stage.id)}
+      {complete && stageIndex < data.stages.length - 1 && <button type="button" className="math-textbook-next-stage" data-testid="math-textbook-next-stage" onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHistory(false); requestAnimationFrame(() => reveal(context.current)) }}>次へ</button>}
+      {stageIndex > 0 && <button type="button" data-testid="qf01-previous-stage" onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHistory(false) }}>前の段階へ</button>}
+      {first < 0 && stageIndex === data.stages.length - 1 && <p data-testid="qf01-complete">ここまでの解答を終えました。説明は前の段階から読み直せます。</p>}
     </section>
   </div>
 }

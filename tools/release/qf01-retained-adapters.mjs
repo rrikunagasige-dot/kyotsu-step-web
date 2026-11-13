@@ -68,6 +68,30 @@ export function overlayRepairSource(projected,overlay){
  assert.equal(overlay.rows.filter(r=>r.bucket==='product').length,1);assert.equal(overlay.rows.filter(r=>r.bucket==='protected').length,12);assert.equal(Object.keys(c[key]).length,324);assert.equal(new Set([...Object.keys(c[key]),...Object.keys(c.productHashes)]).size,332);return c;
 }
 
+// Only these three generated reference-metadata sites require the approved repair.
+// Original input helpers/contracts remain byte-pinned; learner assertions are untouched.
+export function projectRetainedRepairMetadata({w046,w047,w048},overlay=REPAIR_OVERLAY,records=[]){
+ assert.equal(hash(JSON.stringify(overlay)),REPAIR_OVERLAY_SHA256,'FROZEN_EXACT_REPAIR_OVERLAY');
+ assert.deepEqual(overlay,REPAIR_OVERLAY,'EXACT_APPROVED_THIRTEEN_PATH_REPAIR');
+ // Full generated inputs bind every other key, hash, assertion and literal as well.
+ const expected={w046:'fcc9162d952deae6da56d1a0af0569e843d6a2ad35d2ea6efb7aac2c8bcbbcb0',w047:'5de398702cb3d7bcb76d0334188e990af077ddc2be53f864cc8c9fb2dc829f47',w048:'86e6e5f4dba7fa0b504fb2f70d292196b1cd921a859e84cef84bf88d3ced461b'};
+ for(const [name,text]of Object.entries({w046,w047,w048}))assert.equal(hash(text),expected[name],'EXACT_GENERATED_REPAIR_INPUT '+name);
+ const schema=overlay.rows.find(r=>r.path==='src/domain/textbookSchema.ts'),domain=overlay.rows.find(r=>r.path==='src/domain/textbook.ts');
+ const before47=readJSON(w047),before48=readJSON(w048);
+ assert.equal(before47.required[schema.path],schema.beforeSHA256,'EXACT_W047_SCHEMA_BEFORE');
+ assert.equal(before48.requiredProductHashes[domain.path],domain.beforeSHA256,'EXACT_W048_DOMAIN_BEFORE');
+ const literal=(p,h)=>JSON.stringify(p)+': '+JSON.stringify(h);
+ w046=replaceExact(w046,literal(schema.path,schema.beforeSHA256),literal(schema.path,schema.afterSHA256),'approved13-W046-required-Schema',records);
+ w047=replaceExact(w047,literal(schema.path,schema.beforeSHA256),literal(schema.path,schema.afterSHA256),'approved13-W047-required-Schema',records);
+ w048=replaceExact(w048,literal(domain.path,domain.beforeSHA256),literal(domain.path,domain.afterSHA256),'approved13-W048-requiredProduct-domain',records);
+ const expected47=structuredClone(before47),expected48=structuredClone(before48);
+ expected47.required[schema.path]=schema.afterSHA256;expected48.requiredProductHashes[domain.path]=domain.afterSHA256;
+ assert.deepEqual(readJSON(w047),expected47,'ONLY_W047_SCHEMA_METADATA_CHANGED');
+ assert.deepEqual(readJSON(w048),expected48,'ONLY_W048_DOMAIN_METADATA_CHANGED');
+ return {w046,w047,w048};
+}
+function readJSON(text){return JSON.parse(text);}
+
 export function buildPinnedContractInputs({publisherRoot,baselineRoot}){
  publisherRoot=fs.realpathSync(publisherRoot);baselineRoot=fs.realpathSync(baselineRoot);
  assert.equal(git(baselineRoot,'rev-parse','HEAD').toString().trim(),BASELINE);
@@ -123,7 +147,10 @@ export function prepareRetainedAdapters({sourceRoot,publisherRoot,baselineRoot,o
  edit(prepared.paths.w046,JSON.stringify(NESTED)+': '+JSON.stringify(NESTED_OLD),JSON.stringify(NESTED)+': '+JSON.stringify(NESTED_NEW),'P004-exact-NestedContract-metadata');
  const c47=path.join(dir,'w047-release-contract.json'),old47hash=sha(c47);
  edit(c47,JSON.stringify(NESTED)+': '+JSON.stringify(NESTED_OLD),JSON.stringify(NESTED)+': '+JSON.stringify(NESTED_NEW),'P004-exact-NestedContract-contract-metadata');
- edit(path.join(dir,'w048-release-contract.json'),old47hash,sha(c47),'downstream-exact-W047-contract-digest');
+ const c48=path.join(dir,'w048-release-contract.json');
+ const repaired=projectRetainedRepairMetadata({w046:fs.readFileSync(prepared.paths.w046,'utf8'),w047:fs.readFileSync(c47,'utf8'),w048:fs.readFileSync(c48,'utf8')},contract.repairOverlay,records);
+ fs.writeFileSync(prepared.paths.w046,repaired.w046);fs.writeFileSync(c47,repaired.w047);fs.writeFileSync(c48,repaired.w048);
+ edit(c48,old47hash,sha(c47),'downstream-exact-W047-contract-digest');
  edit(prepared.paths.w048,"['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json']","['dist/w048-release.json','dist/w050-release.json','dist/w051-release.json','dist/qf01-release.json']",'exact-successor-manifest-exclusion');
  const qaDir=path.join(attempt,'w051-qa');fs.mkdirSync(qaDir);
  const qaContract=overlayRepairSource(overlayCurrentSource(projectContract(read(path.join(sourceRoot,QA,'B_contract.json')),contract.exactSourceProjection),contract.sourceOverlay),contract.repairOverlay),qaContractFile=path.join(qaDir,'B_contract.json');write(qaContractFile,qaContract);

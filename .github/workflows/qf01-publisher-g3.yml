@@ -2,7 +2,7 @@ name: QF01 exact-source successor publisher (full QF01 revision2 successor)
 'on':
   push:
     branches:
-    - work/qf01-p019-publisher-20261113
+    - work/qf01-p020-publisher-20261114
     paths:
     - .github/workflows/qf01-publisher-g3.yml
     - tools/release/qf01-*

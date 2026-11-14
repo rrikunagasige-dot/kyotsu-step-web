@@ -19,6 +19,57 @@ function legacyPrefix(count: number): TextbookUnitProgress {
   const answers = Object.fromEntries(items.slice(0, count).map((item, i) => [item.id, { itemId: item.id, value: item.answer, firstValue: item.answer, isFirstCorrect: true, resolved: true, attemptCount: 1, firstAnsweredAt: i + 1, lastAnsweredAt: i + 1 }]))
   return { unitId: unit.unitId, unitRevision: 1, startedAt: 1, updatedAt: 25, answers, ...(count === 25 ? { completedAt: 25 } : {}) }
 }
+// Deterministic DOM-layout model, not browser pixels. Rectangles change only
+// when real rendered feedback/context nodes exist, and scrollBy moves the viewport.
+function qfViewportModel(contextInitiallyOutside = true) {
+  const originalHeight = Object.getOwnPropertyDescriptor(window, 'innerHeight')!
+  Object.defineProperty(window, 'innerHeight', { configurable: true, value: 1000 })
+  const oldRAF = window.requestAnimationFrame, oldCancel = window.cancelAnimationFrame
+  let serial = 0, scroll = 0, outside = contextInitiallyOutside
+  const frames = new Map<number, FrameRequestCallback>()
+  window.requestAnimationFrame = callback => { frames.set(++serial, callback); return serial }
+  window.cancelAnimationFrame = id => { frames.delete(id) }
+  const header = document.createElement('header'); header.style.position = 'fixed'; header.style.top = '0px'; document.body.append(header)
+  const rect = (top: number, height: number) => ({ x: 0, y: top, top, bottom: top + height, left: 0, right: 320, width: 320, height, toJSON: () => ({}) }) as DOMRect
+  const targetMeasurements: { testId: string; repeatContext: boolean; hint: boolean }[] = []
+  const measurement = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function (this: HTMLElement) {
+    if (this === header) return rect(0, 64)
+    if (this.getAttribute('data-testid') === 'guided-source-question') return rect(outside ? -200 : 120, 100)
+    const panel = this.closest('[data-testid^="inline-choice-panel-"]')
+    const repeated = Boolean(panel?.querySelector('[data-testid="qf01-local-context"]'))
+    const hint = Boolean(panel?.querySelector('.reading-choice-hint'))
+    const contextHeight = repeated ? 120 : 0, hintHeight = hint ? 220 : 0
+    const testId = this.getAttribute('data-testid') ?? ''
+    if (testId.startsWith('textbook-choice-')) {
+      targetMeasurements.push({ testId, repeatContext: repeated, hint })
+      const index = Number(testId.split('-').at(-1))
+      return rect(780 + index * 62 + contextHeight + hintHeight - scroll, 60)
+    }
+    if (testId.startsWith('inline-choice-panel-')) {
+      targetMeasurements.push({ testId, repeatContext: repeated, hint })
+      return rect(740 - scroll, 186 + contextHeight + hintHeight)
+    }
+    return rect(100, 50)
+  })
+  vi.mocked(window.scrollBy).mockImplementation((options: number | ScrollToOptions) => {
+    if (typeof options === 'object') scroll += options.top ?? 0
+  })
+  return {
+    targetMeasurements,
+    flush() {
+      for (let round = 0; frames.size; round++) {
+        if (round > 10) throw new Error('unbounded reveal animation frames')
+        const pending = [...frames.entries()]; frames.clear()
+        act(() => { for (const [, callback] of pending) callback(0) })
+      }
+    },
+    moveDown(pixels: number) { scroll -= pixels },
+    showOriginalContext() { outside = false },
+    hideOriginalContext() { outside = true },
+    restore() { measurement.mockRestore(); header.remove(); Object.defineProperty(window, 'innerHeight', originalHeight); window.requestAnimationFrame = oldRAF; window.cancelAnimationFrame = oldCancel }
+  }
+}
+
 beforeEach(() => {
   localStorage.clear(); useAppStore.setState({ textbookProgress: {} })
   Element.prototype.scrollIntoView = vi.fn()
@@ -230,4 +281,96 @@ describe('QF01 full nine-stage revision2', () => {
       expect(screen.queryByTestId('textbook-item-qf01-n01-answer')).toBeNull()
     }
   })
+  it('reveals the actually focused choice after wrong feedback moves the committed DOM, without requiring a new focus event', () => {
+    const layout = qfViewportModel()
+    try {
+      render(<Lesson />); layout.flush()
+      fireEvent.click(screen.getByTestId('textbook-item-' + active[0].id)); layout.flush()
+      const wrong = active[0].choices!.find(choice => choice !== active[0].answer)!
+      const button = within(screen.getByTestId('inline-choice-panel-' + active[0].id)).getByRole('button', { name: wrong })
+      act(() => button.focus()); expect(document.activeElement).toBe(button)
+      const focus = vi.spyOn(button, 'focus'); vi.mocked(window.scrollBy).mockClear()
+      fireEvent.click(button); layout.flush()
+      expect(screen.getByTestId('textbook-hint-' + active[0].id)).toBeTruthy()
+      expect(useAppStore.getState().textbookProgress[unit.unitId].answers[active[0].id].attemptCount).toBe(1)
+      expect(document.activeElement).toBe(button); expect(focus).not.toHaveBeenCalled()
+      expect(window.scrollBy).toHaveBeenCalled()
+      const rect = button.getBoundingClientRect()
+      expect(rect.top).toBeGreaterThanOrEqual(76); expect(rect.bottom).toBeLessThanOrEqual(988)
+    } finally { layout.restore() }
+  })
+  it('handles repeated wrong attempts and keyboard focus while preserving correct advancement and manual scrolling', () => {
+    const layout = qfViewportModel()
+    try {
+      render(<Lesson />); layout.flush()
+      fireEvent.click(screen.getByTestId('textbook-item-' + active[0].id)); layout.flush()
+      const panel = screen.getByTestId('inline-choice-panel-' + active[0].id)
+      const wrongs = active[0].choices!.filter(choice => choice !== active[0].answer)
+      for (const [i, wrong] of [wrongs[0], wrongs[0], wrongs[1]].entries()) {
+        const button = within(panel).getByRole('button', { name: wrong })
+        act(() => button.focus()); layout.moveDown(1000)
+        vi.mocked(window.scrollBy).mockClear()
+        fireEvent.click(button); layout.flush()
+        expect(useAppStore.getState().textbookProgress[unit.unitId].answers[active[0].id].attemptCount).toBe(i + 1)
+        expect(document.activeElement).toBe(button)
+        expect(window.scrollBy).toHaveBeenCalled()
+        expect(button.getBoundingClientRect().bottom).toBeLessThanOrEqual(988)
+        vi.mocked(window.scrollBy).mockClear()
+        layout.showOriginalContext(); fireEvent.scroll(window); layout.flush()
+        layout.hideOriginalContext(); fireEvent.scroll(window); layout.flush()
+        expect(window.scrollBy).not.toHaveBeenCalled()
+      }
+      const correct = within(panel).getByRole('button', { name: active[0].answer })
+      act(() => correct.focus()); fireEvent.click(correct); layout.flush()
+      expect(useAppStore.getState().textbookProgress[unit.unitId].answers[active[0].id].resolved).toBe(true)
+      expect(screen.queryByTestId('inline-choice-panel-' + active[0].id)).toBeNull()
+      expect(screen.getByTestId('textbook-item-' + active[1].id)).toBeTruthy()
+      vi.mocked(window.scrollBy).mockClear()
+      layout.showOriginalContext(); fireEvent.scroll(window); layout.flush()
+      expect(window.scrollBy).not.toHaveBeenCalled()
+    } finally { layout.restore() }
+  })
+  it('falls back to the current panel when focus is outside it and never scrolls or focuses the unrelated control', () => {
+    const layout = qfViewportModel()
+    const outside = document.createElement('button'); outside.textContent = '別の操作'; document.body.append(outside)
+    try {
+      render(<Lesson />); layout.flush()
+      fireEvent.click(screen.getByTestId('textbook-item-' + active[0].id)); layout.flush()
+      act(() => outside.focus()); vi.mocked(window.scrollBy).mockClear()
+      const wrong = active[0].choices!.find(choice => choice !== active[0].answer)!
+      fireEvent.click(within(screen.getByTestId('inline-choice-panel-' + active[0].id)).getByRole('button', { name: wrong })); layout.flush()
+      expect(document.activeElement).toBe(outside)
+      expect(window.scrollBy).toHaveBeenCalled()
+      expect(layout.targetMeasurements.at(-1)?.testId).toBe('inline-choice-panel-' + active[0].id)
+    } finally { outside.remove(); layout.restore() }
+  })
+  it('measures the panel only after a newly repeated original context has committed', () => {
+    const layout = qfViewportModel(false)
+    try {
+      render(<Lesson />); layout.flush(); layout.hideOriginalContext()
+      fireEvent.click(screen.getByTestId('textbook-item-' + active[0].id)); layout.flush()
+      expect(screen.getByTestId('qf01-local-context')).toBeTruthy()
+      const measurement = layout.targetMeasurements.filter(entry => entry.testId === 'inline-choice-panel-' + active[0].id).at(-1)
+      expect(measurement?.repeatContext).toBe(true)
+    } finally { layout.restore() }
+  })
+
+  it('does not scroll on a wrong answer when the focused choice still fits between the actual header and footer bounds', () => {
+    const layout = qfViewportModel()
+    try {
+      render(<Lesson />); layout.flush()
+      fireEvent.click(screen.getByTestId('textbook-item-' + active[0].id)); layout.flush()
+      const wrong = active[0].choices!.find(choice => choice !== active[0].answer)!
+      const button = within(screen.getByTestId('inline-choice-panel-' + active[0].id)).getByRole('button', { name: wrong })
+      act(() => button.focus()); layout.moveDown(-300)
+      vi.mocked(window.scrollBy).mockClear()
+      fireEvent.click(button); layout.flush()
+      expect(screen.getByTestId('textbook-hint-' + active[0].id)).toBeTruthy()
+      expect(document.activeElement).toBe(button)
+      expect(button.getBoundingClientRect().top).toBeGreaterThanOrEqual(76)
+      expect(button.getBoundingClientRect().bottom).toBeLessThanOrEqual(988)
+      expect(window.scrollBy).not.toHaveBeenCalled()
+    } finally { layout.restore() }
+  })
+
 })

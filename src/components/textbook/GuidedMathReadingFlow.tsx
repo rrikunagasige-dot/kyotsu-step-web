@@ -378,12 +378,23 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
   useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
   useEffect(() => { onSummaryReached?.(false) }, [onSummaryReached])
   useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
+  const activeValue = activeId ? current?.answers[activeId]?.value : undefined
+  const activeAttemptCount = activeId ? current?.answers[activeId]?.attemptCount : undefined
   useLayoutEffect(() => {
     const check = () => { const r = context.current?.getBoundingClientRect(); setRepeatContext(Boolean(r && (r.top < viewportBounds().top || r.bottom > viewportBounds().bottom))) }
-    const frame = requestAnimationFrame(() => { check(); reveal(flow.current?.querySelector<HTMLElement>(activeId ? '[data-testid="inline-choice-panel-' + activeId + '"]' : '[data-qf01-current-slot]') ?? null) })
+    // Commit any repeated context before the next frame measures the panel.
+    // Wrong feedback can move an already focused choice without another focus event.
+    check()
+    const frame = requestAnimationFrame(() => {
+      const panel = activeId ? flow.current?.querySelector<HTMLElement>('[data-testid="inline-choice-panel-' + activeId + '"]') : null
+      const focused = document.activeElement
+      const target = panel && focused instanceof HTMLElement && panel.contains(focused)
+        ? focused : panel ?? flow.current?.querySelector<HTMLElement>('[data-qf01-current-slot]') ?? null
+      reveal(target)
+    })
     window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
-  }, [stageIndex, activeId, first, viewportBounds, reveal])
+  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, viewportBounds, reveal])
   const semantic = (parts: TextbookReadingPart[]) => parts.map((p, i) => p.type === 'math'
     ? <TypesetInlineMath key={i} latex={p.latex} sourceId={p.semanticId ?? 'qf01-context-' + i} unitId={unit.unitId} />
     : p.type === 'text' ? <span key={i}>{p.text}</span> : null)

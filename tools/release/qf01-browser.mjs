@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 
-export const SOURCE_SHA = 'a113022f03c5d28acd06af93a845bfcca8b08ff2';
+export const SOURCE_SHA = 'ccd434a38faa1826caa9f671df4551dc8adc33df';
 export const PUBLIC_BASE = 'https://rrikunagasige-dot.github.io/kyotsu-step-web/';
 export const BASE_PATH = '/kyotsu-step-web/';
 export const STORAGE_KEY = 'kyotsu-step-gate3-math-20261023';
@@ -24,7 +24,7 @@ const requiredSourceFiles = Object.freeze({
   "src/domain/textbookMath.test.ts": "034b79dc81b4d7fec62ae4b7a6ef2d87234cd211e03a951ebc5f3a90062c8ce0",
   "src/domain/textbook.ts": "e3682ee50cf10d377416676872f9d491e2ad4fcd6816d7159d1ca162d911444c",
   "src/domain/textbookSchema.ts": "a97764f177a1d5e5f2bcf643e56abff8d2ec399f593de30033f8493ac6dd3af3",
-  "src/domain/textbook.test.ts": "62a20e50ab6dcd67e52391cf0d0b7957f01445c29d6fa3e084ce4dba12fa72a5",
+  "src/domain/textbook.test.ts": "03ead4595a1b8c47a4e0471dcf3effc3b8c845265b6a0051e8a4dbe6cf8bc572",
   "src/pages/LearningSetupPage.tsx": "e6d9b80ed1c5c6fa4b11c8d2ab584796e3e6aa2e5e7c92b1e2b7f3f59e98d892",
   "src/pages/TextbookUnitPage.tsx": "e862027297c25bccfd6caa4632153927a96096310d735823086266665c887e32",
   "src/data/textbook/math/mathCatalog.ts": "3e89a3851bc8bfdf27d981307750f646f91724802e25af1a46d35beba46c48c6",
@@ -32,10 +32,10 @@ const requiredSourceFiles = Object.freeze({
   "src/data/textbook/math/index.ts": "40de08acf04c5756321545ccc75a85e6579087b5a99994eb5b7b683f6990be73",
   "src/data/textbook/math/quadratic/qf01Lesson.ts": "769975c725cc3f43155a589c7b852f6aaf084429617a7ee100253741cf246cd0",
   "src/data/textbook/math/quadratic/qf01Presentation.json": "32bce9d3cb89809ee1024f986d52020cd56e4f825908d633768b1f26ef4bea6f",
-  "src/data/textbook/math/quadratic/qf01Lesson.test.tsx": "f9da4ba5a66ded0996c959c995bca4319406f497827ca8b76e34ce6cf9e6261d",
+  "src/data/textbook/math/quadratic/qf01Lesson.test.tsx": "a1a6cc5b42d9e1364b5cccdfd45f74b13f54e1bf2f771b54c9d6d41b90f5b743",
   "src/data/textbook/math/quadratic/qf01Unit.json": "de8e6f70e33d26a7e92503401e435edcfc0639d2a4580af58080083f1fb93928",
   "src/components/textbook/GuidedMathReadingFlow.tsx": "afa170098dd26e7703102cb79b710d6928fb40d3166a42be813d00dc16aa874c",
-  "src/components/textbook/guided-math-reading.css": "dbf8bdb4c146fc3aa8afc63f62521c69d10bc42351a48daea2b908817afc9e1e"
+  "src/components/textbook/guided-math-reading.css": "e27892613c059a7774f542f2b53e108e2333fa1dc6165bf57f41bc0da187da84"
 });
 let chromium;
 
@@ -170,9 +170,12 @@ export function parsePresentationLiteral(source){
  for(let i=begin;i<source.length;i++){const c=source[i];if(quoted){if(escape)escape=false;else if(c==='\\')escape=true;else if(c==='"')quoted=false;}else if(c==='"')quoted=true;else if(c==='{')depth++;else if(c==='}'&&--depth===0)return JSON.parse(source.slice(begin,i+1));}
  assert.fail('BALANCED_LITERAL_JSON');
 }
-export function validateViewportEvidence(v,{requireTarget=false,expectedSourceNode=null}={}){
+export function validateViewportEvidence(v,{requireTarget=false,expectedSourceNode=null,requireLesson=false,requireHint=false}={}){
  assert.ok(v.viewport.width>0&&v.viewport.height>0);assert.ok(v.documentWidth<=v.viewport.width,'VIEWPORT_HORIZONTAL_OVERFLOW');assert.equal(v.katexErrors,0);assert.equal(v.fontsReady,'loaded');
- if(v.flowFontSize!==null)assert.ok(v.flowFontSize>=18,'CURRENT_BODY_FONT_18');for(const copy of v.copyFonts??[])assert.ok(copy.fontSize>=18,'CURRENT_REQUIRED_COPY_FONT_18');for(const m of v.math){assert.ok(m.fontSize>=18,'CURRENT_MATH_FONT_18');assert.ok(m.rect.left>=-1&&m.rect.right<=v.viewport.width+1,'FORMULA_HORIZONTAL_CLIP');assert.deepEqual(m.clippedBy,[],'FORMULA_ANCESTOR_CLIP');}
+ assert.ok(['lesson','menu'].includes(v.surface),'EXPLICIT_MEASURED_SURFACE');assert.ok(Array.isArray(v.copyFonts),'REQUIRED_COPY_FONT_SAMPLES');for(const field of ['math','relationColumns','numberLabels','visibleButtons'])assert.ok(Array.isArray(v[field]),'REQUIRED_GEOMETRY_ARRAY '+field);
+ if(requireLesson||requireTarget||v.surface==='lesson'){assert.equal(v.surface,'lesson','LESSON_SURFACE_REQUIRED');assert.ok(Number.isFinite(v.flowFontSize)&&v.flowFontSize>=18,'CURRENT_BODY_FONT_18');assert.ok(v.copyFonts.length>0,'NONEMPTY_REQUIRED_COPY_FONT_SAMPLES');if(requireTarget){assert.ok(v.math.length>0,'CURRENT_MATH_MEASUREMENTS_REQUIRED');assert.ok(v.relationColumns.length>0,'CURRENT_RELATION_GROUP_MEASUREMENTS_REQUIRED');}}
+ for(const copy of v.copyFonts){assert.ok(typeof copy.kind==='string'&&copy.kind&&typeof copy.text==='string'&&copy.text.trim(),'REQUIRED_COPY_FONT_IDENTITY');assert.ok(Number.isFinite(copy.fontSize)&&copy.fontSize>=18,'CURRENT_REQUIRED_COPY_FONT_18');}
+ if(requireHint)assert.ok(v.copyFonts.some(copy=>copy.kind==='hint'),'CURRENT_WRONG_HINT_FONT_REQUIRED');for(const m of v.math){assert.ok(m.fontSize>=18,'CURRENT_MATH_FONT_18');assert.ok(m.rect.left>=-1&&m.rect.right<=v.viewport.width+1,'FORMULA_HORIZONTAL_CLIP');assert.deepEqual(m.clippedBy,[],'FORMULA_ANCESTOR_CLIP');}
  for(const g of v.relationColumns)if(g.positions.length>1)assert.ok(Math.max(...g.positions)-Math.min(...g.positions)<2,'RELATION_COLUMN_ALIGNMENT:'+g.id);
  for(const n of v.numberLabels){assert.ok(n.rect.left>=-1&&n.rect.right<=v.viewport.width+1,'NUMBER_LABEL_CLIP');assert.deepEqual(n.collisions,[],'NUMBER_FORMULA_COLLISION');}
  for(const button of v.visibleButtons){assert.ok(button.rect.width>=44&&button.rect.height>=44,'VISIBLE_CONTROL_HIT_SIZE');assert.equal(button.centerHit,true,'VISIBLE_CONTROL_OCCLUDED');}
@@ -195,7 +198,7 @@ async function runCurrentAssertionBody(){
   const math=locator=>locator.locator('annotation[encoding="application/x-tex"]').allTextContents();
   const current=(p=page)=>p.locator('.math-textbook-stage--current');
   async function settle(p=page){await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});}
-  async function viewport(p,targetId=null,nodeId=null){
+  async function viewport(p,targetId=null,nodeId=null,{requireHint=false}={}){
    const evidence=await p.evaluate(({targetId,nodeId})=>{
     const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};},hit=e=>{const r=e.getBoundingClientRect(),top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return !!top&&(top===e||e.contains(top));};
     const current=document.querySelector('.math-textbook-stage--current'),flow=document.querySelector('.qf01-full-reading'),root=current??document.body;
@@ -209,8 +212,10 @@ async function runCurrentAssertionBody(){
     const completedRow=nodeId?[...current?.querySelectorAll('[data-transformation-row][data-source-node="'+nodeId+'"] .transformation-equation')??[]].at(-1):null;
     const focused=panel?.contains(document.activeElement)&&document.activeElement.tagName==='BUTTON'?document.activeElement:null,target=focused??slot??resolved??completedRow;
     const buttons=[...root.querySelectorAll('button')].filter(e=>{const r=rect(e);return r.width>0&&r.height>0&&r.top>=headerBottom&&r.bottom<=footerTop&&r.left>=0&&r.right<=innerWidth;});
-    return{viewport:{width:innerWidth,height:innerHeight,scrollX,scrollY},documentWidth:document.documentElement.scrollWidth,fontsReady:document.fonts.status,katexErrors:document.querySelectorAll('.katex-error').length,flowFontSize:flow?parseFloat(getComputedStyle(flow).fontSize):null,copyFonts:[...root.querySelectorAll('.transformation-prose,.reading-choice-hint,.qf01-local-context,.guided-source-question p')].map(e=>({className:e.className,fontSize:parseFloat(getComputedStyle(e).fontSize)})),headerBottom,footerTop,math,relationColumns,numberLabels,holeRect:slot?rect(slot):null,panelRect:panel?rect(panel):null,target:target?{sourceNodeId:target.closest('[data-source-node]')?.getAttribute('data-source-node'),testId:target.getAttribute('data-testid'),button:target.tagName==='BUTTON',rect:rect(target),centerHit:target.tagName==='BUTTON'?hit(target):null}:null,visibleButtons:buttons.map(e=>({testId:e.getAttribute('data-testid'),rect:rect(e),centerHit:hit(e)}))};
-   },{targetId,nodeId});validateViewportEvidence(evidence,{requireTarget:targetId!==null,expectedSourceNode:nodeId});return evidence;
+    const copySelectors=[['prose','.qf01-full-reading .transformation-prose'],['hint','.qf01-full-reading .reading-choice-hint'],['hint-label','.qf01-full-reading .reading-choice-hint strong'],['context','.qf01-local-context'],['source','[data-testid="guided-source-question"] p'],['imported-history','[data-testid="qf01-imported-answer-history"]']];
+    const copyFonts=copySelectors.flatMap(([kind,selector])=>[...document.querySelectorAll(selector)].filter(e=>{const r=rect(e),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&e.textContent.trim();}).map((e,index)=>({kind,index,text:e.textContent.trim(),fontSize:parseFloat(getComputedStyle(e).fontSize)})));
+    return{surface:flow?'lesson':'menu',viewport:{width:innerWidth,height:innerHeight,scrollX,scrollY},documentWidth:document.documentElement.scrollWidth,fontsReady:document.fonts.status,katexErrors:document.querySelectorAll('.katex-error').length,flowFontSize:flow?parseFloat(getComputedStyle(flow).fontSize):null,copyFonts,headerBottom,footerTop,math,relationColumns,numberLabels,holeRect:slot?rect(slot):null,panelRect:panel?rect(panel):null,target:target?{sourceNodeId:target.closest('[data-source-node]')?.getAttribute('data-source-node'),testId:target.getAttribute('data-testid'),button:target.tagName==='BUTTON',rect:rect(target),centerHit:target.tagName==='BUTTON'?hit(target):null}:null,visibleButtons:buttons.map(e=>({testId:e.getAttribute('data-testid'),rect:rect(e),centerHit:hit(e)}))};
+   },{targetId,nodeId});try{validateViewportEvidence(evidence,{requireTarget:targetId!==null,expectedSourceNode:nodeId,requireHint});}catch(error){const file='FAILED_VIEWPORT_MEASUREMENT-'+String(report.failedViewportMeasurements?.length??0)+'.json';fs.writeFileSync(out+'/'+file,JSON.stringify({sourceSHA,width,nodeId,targetId,evidence,error:String(error)},null,2)+'\n');(report.failedViewportMeasurements??=[]).push({file,sha256:hash(fs.readFileSync(out+'/'+file))});persist();throw error;}return evidence;
   }
   async function capturePair(stem,p=page,directory='png'){
    await settle(p);const captureViewport=await p.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight})),file=directory+'/'+stem+'.png';
@@ -224,7 +229,7 @@ async function runCurrentAssertionBody(){
   await menu(0);await page.getByTestId('math-textbook-topic-quadratic-functions-foundation').click();await page.getByTestId('textbook-reading-flow').waitFor();
   async function contextProof(node,p=page){await settle(p);const source=p.getByTestId('guided-source-question');assert.ok((await source.innerText()).includes('元の条件・求めるもの'));const actual=await math(source);for(const part of display.stages.find(s=>s.id===node.stageId).sourceQuestionParts)if(part.type==='math')assert.ok(actual.includes(part.latex),'ORIGINAL_CONDITION_OR_TARGET:'+node.id+':'+part.latex);assert.equal(await p.locator('.guided-thinking-step').count(),0,'NO_LEGACY_QUESTION');assert.equal(await p.getByTestId('textbook-item-qf01-n20-answer').count(),0,'PASSIVE_NOT_GRADED');return {sourceText:await source.innerText(),sourceMath:actual};}
   async function noFuture(i){for(const item of items.slice(i+1))assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),0,'FUTURE_SLOT:'+item.id);}
-  async function capture(label,node,selectedValue=null){await settle();const contextEvidence=await contextProof(node),measurements=await viewport(page,node.interaction,node.id),stem=String(report.images.length).padStart(3,'0')+'-'+label,image={...await capturePair(stem),nodeId:node.id,label,selectedValue},file='states/'+stem+'.json';const state={sourceSHA,nodeId:node.id,interactionId:node.interaction,label,selectedValue,contextEvidence,measurements,progress:await readProgress(),image};fs.writeFileSync(out+'/'+file,JSON.stringify(state,null,2)+'\n');report.images.push(image);report.states.push({file,sha256:hash(fs.readFileSync(out+'/'+file)),image:image.file});persist();}
+  async function capture(label,node,selectedValue=null){await settle();const contextEvidence=await contextProof(node),measurements=await viewport(page,node.interaction,node.id,{requireHint:label.includes('-wrong-')||label.endsWith('-reload-wrong')}),stem=String(report.images.length).padStart(3,'0')+'-'+label,image={...await capturePair(stem),nodeId:node.id,label,selectedValue},file='states/'+stem+'.json';const state={sourceSHA,nodeId:node.id,interactionId:node.interaction,label,selectedValue,contextEvidence,measurements,progress:await readProgress(),image};fs.writeFileSync(out+'/'+file,JSON.stringify(state,null,2)+'\n');report.images.push(image);report.states.push({file,sha256:hash(fs.readFileSync(out+'/'+file)),image:image.file});persist();}
 
   async function safeNames(item,node){const slot=page.getByTestId('textbook-item-'+item.id);assert.equal(await slot.getAttribute('aria-label'),'式中の空欄');const ctx=await page.getByTestId('guided-source-question').getAttribute('id');assert.ok(ctx);assert.equal(await slot.getAttribute('aria-describedby'),ctx);await slot.click();const panel=page.getByTestId('inline-choice-panel-'+item.id),group=panel.getByRole('group',{name:'この空欄の候補',exact:true});assert.equal(await group.getAttribute('aria-describedby'),ctx);assert.equal(await group.getAttribute('aria-label'),'この空欄の候補');assert.deepEqual((await panel.locator('button.reading-choice-option').evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')))).sort(),[...item.choices].sort());const geometry=[];for(const choice of await panel.locator('button.reading-choice-option').all()){await choice.focus();await settle();const v=await choice.evaluate(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e),content=e.querySelector(':scope>.qf01-option-content'),c=getComputedStyle(content),b=content.getBoundingClientRect();const headers=[...document.querySelectorAll('header,nav,[data-fixed-header]')].map(h=>({s:getComputedStyle(h),r:h.getBoundingClientRect()}));const top=Math.max(0,...headers.filter(h=>['fixed','sticky'].includes(h.s.position)&&Number.isFinite(parseFloat(h.s.top))&&h.r.top<innerHeight/2).map(h=>h.r.bottom));const bottom=Math.min(innerHeight,...headers.filter(h=>h.s.position==='fixed'&&Number.isFinite(parseFloat(h.s.bottom))&&h.r.bottom>innerHeight/2).map(h=>h.r.top));return{width:r.width,height:r.height,top:r.top,bottom:r.bottom,clearTop:top,clearBottom:bottom,display:s.display,grid:s.gridTemplateColumns,font:parseFloat(s.fontSize),contentWidth:b.width,border:parseFloat(c.borderTopWidth),contentDisplay:c.display,overflow:content.scrollWidth>content.clientWidth+1};});assert.ok(v.width>=44&&v.height>=44);assert.ok(v.top>=v.clearTop-1&&v.bottom<=v.clearBottom+1,'FOCUSED_CHOICE_CLEAR_HEADERS:'+node.id);assert.equal(v.display,'block');assert.equal(v.grid,'none');assert.ok(v.font>=18);assert.ok(v.contentWidth>27);assert.equal(v.border,0);assert.equal(v.contentDisplay,'block');assert.equal(v.overflow,false);geometry.push(v);}return{contextId:ctx,slotName:'式中の空欄',groupName:'この空欄の候補',geometry};}
   for(let i=0;i<items.length;i++){

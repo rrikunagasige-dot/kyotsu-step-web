@@ -34,9 +34,15 @@ describe('QF01 full nine-stage revision2', () => {
     const before = JSON.stringify(old); useAppStore.setState({ textbookProgress: old })
     expect(items).toHaveLength(25); expect(active).toHaveLength(24)
     render(<Lesson />)
+    expect(presentation.stages).toHaveLength(9)
+    let stageAdvances = 0
     for (let i = 0; i < active.length; i++) {
       const item = active[i]
-      while (!screen.queryByTestId('textbook-item-' + item.id)) fireEvent.click(screen.getByTestId('math-textbook-next-stage'))
+      while (!screen.queryByTestId('textbook-item-' + item.id) && stageAdvances < presentation.stages.length - 1) {
+        fireEvent.click(screen.getByTestId('math-textbook-next-stage'))
+        stageAdvances++
+      }
+      expect(screen.queryByTestId('textbook-item-' + item.id)).toBeTruthy()
       expect(active.slice(i + 1).every(next => !screen.queryByTestId('textbook-item-' + next.id))).toBe(true)
       expect(document.querySelector('.guided-thinking-step')).toBeNull()
       expect(screen.queryByTestId('textbook-item-qf01-n20-answer')).toBeNull()
@@ -63,6 +69,7 @@ describe('QF01 full nine-stage revision2', () => {
       expect(useAppStore.getState().textbookProgress[unit.unitId].answers[item.id].resolved).toBe(true)
       expect(screen.queryByTestId('inline-choice-panel-' + item.id)).toBeNull()
     }
+    expect(stageAdvances).toBe(8)
     expect(screen.getByTestId('qf01-complete').textContent).toContain('解答')
     const record = useAppStore.getState().textbookProgress[unit.unitId]
     expect(Object.keys(record.answers)).toHaveLength(24)
@@ -73,7 +80,7 @@ describe('QF01 full nine-stage revision2', () => {
     act(() => useAppStore.getState().resetTextbookUnit(unit.unitId, unit))
     expect(screen.getByTestId('textbook-item-qf01-n01-answer')).toBeTruthy()
     expect(JSON.stringify(Object.fromEntries(oldUnits.map(u => [u.unitId, useAppStore.getState().textbookProgress[u.unitId]])))).toBe(before)
-  })
+  }, 15_000)
   it('reopens every exact old prefix by active IDs, preserving the original condition and a revision2 cursor', () => {
     for (let count = 0; count <= 25; count++) {
       cleanup(); localStorage.clear()

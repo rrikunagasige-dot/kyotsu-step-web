@@ -438,30 +438,36 @@ describe('P017 QF01 lossless revision and real Store boundaries', () => {
     expect(() => effectiveTextbookProgress(qf01v2,cycle)).toThrow()
   })
   it('fails closed through actual Store answer/reset actions, preserving memory and persisted bytes', () => {
+    const storageKey=useAppStore.persist.getOptions().name
+    if (typeof storageKey !== 'string' || storageKey.trim() === '') throw new Error('Actual Store persist name must be a nonempty string')
     const valid=effectiveTextbookProgress(qf01v2,qf01Old(10))!
     const malformedR2={...valid,qf01Revision1Snapshot:{...valid.qf01Revision1Snapshot!,sourceSHA:'forged'}} as unknown as TextbookUnitProgress
     const badLog={...valid,qf01ResetSnapshots:[{schemaVersion:'qf01-reset-snapshot/1',priorResetCount:2,hadResetSnapshots:false,serializedProgressWithoutResetSnapshots:'{}'}]} as TextbookUnitProgress
     for(const original of [Object.assign(qf01Old(),{qf01ResetSnapshots:[]}),malformedR2,badLog,{...valid,unitId:'another-unit'},{...valid,unitRevision:3}]) {
       useAppStore.setState({textbookProgress:{[qf01v2.unitId]:original}})
-      const memory=JSON.stringify(useAppStore.getState().textbookProgress), saved=localStorage.getItem('kyotsu-step-store')
+      const memory=JSON.stringify(useAppStore.getState().textbookProgress), saved=localStorage.getItem(storageKey)
+      expect(saved).not.toBeNull()
       expect(textbookUnitProgress(qf01v2,original)).toEqual({completed:0,total:24,percent:0})
       expect(textbookSectionProgress(qf01v2,original,qf01v2.sections[0].id)).toEqual({completed:0,total:24})
       expect(() => effectiveTextbookProgress(qf01v2,original)).toThrow()
       expect(() => useAppStore.getState().answerTextbook(qf01v2,qf01Active[10].id,qf01Active[10].answer)).toThrow()
       expect(() => useAppStore.getState().resetTextbookUnit(qf01v2.unitId,qf01v2)).toThrow()
-      expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(memory);expect(localStorage.getItem('kyotsu-step-store')).toBe(saved)
+      expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(memory);expect(localStorage.getItem(storageKey)).toBe(saved)
     }
     useAppStore.setState({textbookProgress:{}})
   })
   it('uses actual Store first-write, persisted rehydration and reset paths without dropping the old snapshot', async () => {
+    const storageKey=useAppStore.persist.getOptions().name
+    if (typeof storageKey !== 'string' || storageKey.trim() === '') throw new Error('Actual Store persist name must be a nonempty string')
     const original=qf01Old(10);useAppStore.setState({textbookProgress:{[qf01v2.unitId]:original}})
     useAppStore.getState().answerTextbook(qf01v2,qf01Active[10].id,qf01Active[10].answer)
     let current=jsonRoundtrip(useAppStore.getState().textbookProgress[qf01v2.unitId])
     expect(current.unitRevision).toBe(2);expect(JSON.parse(current.qf01Revision1Snapshot!.serializedProgress)).toEqual(original)
-    const persisted=localStorage.getItem('kyotsu-step-store')!
+    const persisted=localStorage.getItem(storageKey)!
+    expect(persisted).not.toBeNull()
     expect(JSON.parse(persisted).state.textbookProgress[qf01v2.unitId]).toEqual(current)
     useAppStore.setState({textbookProgress:{}})
-    localStorage.setItem('kyotsu-step-store',persisted)
+    localStorage.setItem(storageKey,persisted)
     await useAppStore.persist.rehydrate()
     expect(useAppStore.getState().textbookProgress[qf01v2.unitId]).toEqual(current)
     useAppStore.getState().resetTextbookUnit(qf01v2.unitId,qf01v2)

@@ -1,8 +1,8 @@
-name: QF01 exact-source successor publisher (full QF01 revision2 successor)
+name: QF01 current-core publisher P045
 'on':
   push:
     branches:
-    - work/qf01-p025-publisher-20261114
+    - work/qf01-p045-full-publisher-20261116
     paths:
     - .github/workflows/qf01-publisher-g3.yml
     - tools/release/qf01-*
@@ -27,7 +27,8 @@ name: QF01 exact-source successor publisher (full QF01 revision2 successor)
         type: string
         required: false
         default: ''
-        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates current P024 native authority from fixed11702 prefix; historical10391 proof stays separate
+        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates current P039
+          material authority from actual post-apply export; historical10391 proof stays separate
 permissions:
   contents: read
   actions: read
@@ -51,9 +52,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      CANDIDATE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      VITE_PREVIEW_COMMIT: ccd434a38faa1826caa9f671df4551dc8adc33df
+      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -65,10 +66,13 @@ jobs:
       ADAPTER_ROOT: /tmp/qf01-adapters
       OUT: /tmp/qf01-build
       APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      GH_TOKEN: ${{ github.token }}
+      BUILD_AUTHORITY_CACHE: ${{ github.workspace }}/BUILD_AUTHORITY.blob
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ccd434a38faa1826caa9f671df4551dc8adc33df
+        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -76,6 +80,13 @@ jobs:
       with:
         ref: ${{ github.sha }}
         path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout immutable P044 core separately from application source
+      uses: actions/checkout@v4
+      with:
+        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        path: current-core
         fetch-depth: 0
         persist-credentials: false
     - uses: actions/checkout@v4
@@ -126,6 +137,12 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+    - name: Hydrate exact build authority once and verify fixed core
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs prepare-build-authority
+    - name: Record read-only actual core and current service binding
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs core-binding
     - name: Install fixed application dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --ignore-scripts
@@ -190,9 +207,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      CANDIDATE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      VITE_PREVIEW_COMMIT: ccd434a38faa1826caa9f671df4551dc8adc33df
+      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -205,10 +222,13 @@ jobs:
       OUT: /tmp/qf01-setup
       APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
       WIDTH: ${{ matrix.width }}
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      GH_TOKEN: ${{ github.token }}
+      BUILD_AUTHORITY_CACHE: ${{ github.workspace }}/BUILD_AUTHORITY.blob
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ccd434a38faa1826caa9f671df4551dc8adc33df
+        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -216,6 +236,13 @@ jobs:
       with:
         ref: ${{ github.sha }}
         path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout immutable P044 core separately from application source
+      uses: actions/checkout@v4
+      with:
+        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        path: current-core
         fetch-depth: 0
         persist-credentials: false
     - uses: actions/checkout@v4
@@ -266,6 +293,12 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+    - name: Hydrate exact build authority once and verify fixed core
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs prepare-build-authority
+    - name: Record read-only actual core and current service binding
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs core-binding
     - name: Install fixed application dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --ignore-scripts
@@ -317,7 +350,10 @@ jobs:
 
           /tmp/qf01-adapters/**/PREPARED.json
 
-          /tmp/qf01-adapters/**/PROVENANCE.json'
+          /tmp/qf01-adapters/**/PROVENANCE.json
+
+
+          /tmp/qf01-setup/CORE_BINDING.json'
         compression-level: 6
         if-no-files-found: error
   attest:
@@ -336,9 +372,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/artifact/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      CANDIDATE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      VITE_PREVIEW_COMMIT: ccd434a38faa1826caa9f671df4551dc8adc33df
+      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -353,6 +389,9 @@ jobs:
       RECEIPT_ROOT: ${{ github.workspace }}/receipts
       BUILD_ARTIFACT_METADATA: ${{ github.workspace }}/BUILD_ARTIFACT.json
       QA_ARTIFACT_METADATA: ${{ github.workspace }}/QA_ARTIFACT.json
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      GH_TOKEN: ${{ github.token }}
+      BUILD_AUTHORITY_CACHE: ${{ github.workspace }}/BUILD_AUTHORITY.blob
     steps:
     - uses: actions/checkout@v4
       with:
@@ -360,9 +399,32 @@ jobs:
         path: publisher
         fetch-depth: 0
         persist-credentials: false
+    - name: Checkout immutable application source for actual core/app parity
+      uses: actions/checkout@v4
+      with:
+        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        path: material
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout immutable P044 core separately from application source
+      uses: actions/checkout@v4
+      with:
+        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        path: current-core
+        fetch-depth: 0
+        persist-credentials: false
     - uses: actions/setup-node@v4
       with:
         node-version: 22
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Hydrate exact build authority once and verify fixed core
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs prepare-build-authority
+    - name: Record read-only actual core and current service binding
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs core-binding
     - uses: actions/download-artifact@v4
       with:
         name: qf01-build-${{ github.sha }}-${{ github.run_attempt }}
@@ -373,9 +435,9 @@ jobs:
         path: receipts
     - name: Normalize only declared width receipts
       shell: bash
-      run: "set -euo pipefail\nfor width in 320 390 430 1440; do\n mv \"receipts/qf01-qa-$width-${{ github.run_attempt }}\" \"receipts/$width\"\
-        \n test -f \"receipts/$width/qf01-qa/QA_RECEIPT.json\"\n cp \"receipts/$width/qf01-qa/QA_RECEIPT.json\" \"receipts/$width/QA_RECEIPT.json\"\
-        \ndone"
+      run: "set -euo pipefail\nfor width in 320 390 430 1440; do\n mv \"receipts/qf01-qa-$width-${{ github.run_attempt }}\"\
+        \ \"receipts/$width\"\n test -f \"receipts/$width/qf01-qa/QA_RECEIPT.json\"\n cp \"receipts/$width/qf01-qa/QA_RECEIPT.json\"\
+        \ \"receipts/$width/QA_RECEIPT.json\"\ndone"
     - uses: actions/upload-artifact@v4
       id: reports-upload
       with:
@@ -413,7 +475,10 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: qf01-ledger-${{ github.sha }}-${{ github.run_attempt }}
-        path: /tmp/qf01-matrix/QA_LEDGER.json
+        path: '/tmp/qf01-matrix/QA_LEDGER.json
+
+
+          /tmp/qf01-matrix/CORE_BINDING.json'
         if-no-files-found: error
   publish:
     if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false && github.ref == 'refs/heads/main'
@@ -438,9 +503,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      CANDIDATE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      VITE_PREVIEW_COMMIT: ccd434a38faa1826caa9f671df4551dc8adc33df
+      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -461,10 +526,12 @@ jobs:
       NATIVE_INTENT_CHAIN: ${{ inputs.native_intent_chain }}
       BUILD_ARCHIVE: ${{ github.workspace }}/BUILD.zip
       QA_ARCHIVE: ${{ github.workspace }}/QA.zip
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      BUILD_AUTHORITY_CACHE: ${{ github.workspace }}/BUILD_AUTHORITY.blob
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ccd434a38faa1826caa9f671df4551dc8adc33df
+        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -472,6 +539,13 @@ jobs:
       with:
         ref: ${{ github.sha }}
         path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout immutable P044 core separately from application source
+      uses: actions/checkout@v4
+      with:
+        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        path: current-core
         fetch-depth: 0
         persist-credentials: false
     - uses: actions/checkout@v4
@@ -522,6 +596,12 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+    - name: Hydrate exact build authority once and verify fixed core
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs prepare-build-authority
+    - name: Record read-only actual core and current service binding
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs core-binding
     - name: Install fixed application dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --ignore-scripts
@@ -628,9 +708,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      CANDIDATE_SHA: ccd434a38faa1826caa9f671df4551dc8adc33df
-      VITE_PREVIEW_COMMIT: ccd434a38faa1826caa9f671df4551dc8adc33df
+      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -643,10 +723,13 @@ jobs:
       OUT: /tmp/qf01-setup
       APP_URL: ${{ needs.publish.outputs.page_url }}
       WIDTH: ${{ matrix.width }}
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      GH_TOKEN: ${{ github.token }}
+      BUILD_AUTHORITY_CACHE: ${{ github.workspace }}/BUILD_AUTHORITY.blob
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ccd434a38faa1826caa9f671df4551dc8adc33df
+        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -654,6 +737,13 @@ jobs:
       with:
         ref: ${{ github.sha }}
         path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout immutable P044 core separately from application source
+      uses: actions/checkout@v4
+      with:
+        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        path: current-core
         fetch-depth: 0
         persist-credentials: false
     - uses: actions/checkout@v4
@@ -704,6 +794,12 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+    - name: Hydrate exact build authority once and verify fixed core
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs prepare-build-authority
+    - name: Record read-only actual core and current service binding
+      shell: bash
+      run: node publisher/tools/release/qf01-publish-check.mjs core-binding
     - name: Install fixed application dependencies
       shell: bash
       run: pnpm install --frozen-lockfile --ignore-scripts

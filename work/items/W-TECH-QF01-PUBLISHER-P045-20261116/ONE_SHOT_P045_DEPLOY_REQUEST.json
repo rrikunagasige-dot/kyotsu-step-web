@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "qf01-one-shot-p045-dispatch/1",
+  "status": "READY_WITH_ACTUAL_G2_AND_DEPLOY",
+  "repository": "rrikunagasige-dot/kyotsu-step-web",
+  "repositoryID": 1391122224,
+  "ownerID": 332552275,
+  "publisherSHA": "494b6b0322f68a2447feb14a1d3acf550793f296",
+  "sourceSHA": "9e6d6798ac40624373db0a87e53e7d8938fb317a",
+  "producer": {
+    "runID": 43746225754,
+    "attempt": 1,
+    "headBranch": "work/qf01-p045-full-publisher-20261116"
+  },
+  "publisherPins": {
+    ".github/workflows/qf01-publisher-g3.yml": "9d46c8a9a6fd671a657b9f9291ccba616d06bb9233fcd791ae8bb8741d6fa2bb",
+    "tools/release/qf01-publish-contract.json": "4b808d7adc868ab7669f2fead215a4a02d171a3f724b863b2ab0b4ee646dd030",
+    "tools/release/qf01-publish-check.mjs": "e4f1b9e55c77286d999da7bfc46c0f1a989525dcd7c94fe8219a2c8e20fe0870",
+    "tools/release/qf01-retained-adapters.mjs": "f6866154ebad5a571dfb96e81754988d534b36c5b3af4984ba6bd394bd1634b5",
+    "tools/release/qf01-browser.mjs": "0ac72b2de6d36209a8b5738c783e53d443b89c4405fb314170ec1b2f404cb667",
+    "tools/release/qf01-publish-check.test.mjs": "fb69c6b537d6db5249b2fab09cc22b9506cd863e559c1fcba2a2dfb23657b2d5",
+    "tools/release/qf01-retained-adapters.test.mjs": "b8083c5c439be39e2e089556c287b1cbac5084955e0040c8c609ad34ec16418a"
+  },
+  "distManifestSHA256": "6c6c8ee7174a5ecbf3819adec7633230a4224b0f3d7341312219a01d79eac39d",
+  "nativeExpected": {
+    "operationID": "P045-DEPLOY-494b6b0-SEALED-43746225754-1-20261116",
+    "eventHash": "0da5fb8a281a6d09ccc67fc88b1148a1a51330a31d3bad5d22fdc9cb878f8423",
+    "sourceSHA": "9e6d6798ac40624373db0a87e53e7d8938fb317a",
+    "work": "W-MATH-QF01-FULL-RELEASE-P035-20261115",
+    "releaseUnit": "qf01-p035",
+    "proposalHash": "57ec52d9d4e7a182d6b55cfc6dda1bb545dd9ecf6c8ab739496d490b0a03eee8",
+    "materialProposalHash": "57ec52d9d4e7a182d6b55cfc6dda1bb545dd9ecf6c8ab739496d490b0a03eee8",
+    "technicalProposalHash": "b10699d089ff0a824aba0065c2e3fe438ab51c605819ed9910ade3fa96cfc00b",
+    "technicalWork": "W-TECH-QF01-PUBLISHER-P045-20261116",
+    "publisherSHA": "494b6b0322f68a2447feb14a1d3acf550793f296",
+    "g2Artifact": "7a59eb175d6fc01e91c9250b8b46426c245d1aa721597682fca1241679fad716",
+    "mergeOperationID": "P045-MERGE-494b6b0-MAIN-CAS-20261116",
+    "distManifestSHA256": "6c6c8ee7174a5ecbf3819adec7633230a4224b0f3d7341312219a01d79eac39d"
+  },
+  "nativeAuthorityBlobRef": {
+    "schemaVersion": "qf01-native-authority-blob-ref/1",
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "blobSHA": "bf200144ae0c1e2118f3a181a9a6941e5b678337",
+    "blobSHA256": "23c7d45ae3068584ed0de76aff0e65b3ebea96c1a1eb5f3979f750083a5afdd7",
+    "encoding": "gzip-base64",
+    "expandedSHA256": "02b83b1e53a1920eb10ac29e72bda6e4d5832334e2c9e5677ffc3dedf7db5372"
+  },
+  "dispatch": {
+    "ref": "main",
+    "inputs": {
+      "dry_run": "false",
+      "verified_run_id": "43746225754",
+      "verified_attempt": "1",
+      "native_intent_chain": "{\"schemaVersion\":\"qf01-native-authority-blob-ref/1\",\"repository\":\"rrikunagasige-dot/kyotsu-step-web\",\"blobSHA\":\"bf200144ae0c1e2118f3a181a9a6941e5b678337\",\"blobSHA256\":\"23c7d45ae3068584ed0de76aff0e65b3ebea96c1a1eb5f3979f750083a5afdd7\",\"encoding\":\"gzip-base64\",\"expandedSHA256\":\"02b83b1e53a1920eb10ac29e72bda6e4d5832334e2c9e5677ffc3dedf7db5372\"}"
+    }
+  }
+}

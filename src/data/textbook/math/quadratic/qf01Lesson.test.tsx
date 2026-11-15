@@ -474,4 +474,110 @@ describe('QF01 full nine-stage revision2', () => {
     })
   }
 
+
+  it('remeasures a focused choice after its scroll inserts repeated original conditions and leaves later manual scroll alone', () => {
+    const oldRAF = window.requestAnimationFrame, oldCancel = window.cancelAnimationFrame
+    const originalHeight = Object.getOwnPropertyDescriptor(window, 'innerHeight')!
+    Object.defineProperty(window, 'innerHeight', { configurable: true, value: 1000 })
+    const frames = new Map<number, FrameRequestCallback>(); let serial = 0, scroll = 591
+    window.requestAnimationFrame = callback => { frames.set(++serial, callback); return serial }
+    window.cancelAnimationFrame = id => { frames.delete(id) }
+    const header = document.createElement('header'); header.style.position = 'fixed'; header.style.top = '0px'; document.body.append(header)
+    const rect = (top: number, height: number) => ({ x: 0, y: top, top, bottom: top + height, left: 20, right: 290, width: 270, height, toJSON: () => ({}) }) as DOMRect
+    const measure = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function (this: HTMLElement) {
+      if (this === header) return rect(0, 64)
+      if (this.getAttribute('data-testid') === 'guided-source-question') return rect(667.171875 - scroll, 183.640625)
+      const panel = this.closest('.qf01-attached-options'), repeated = Boolean(panel?.querySelector('.qf01-local-context'))
+      if (this.classList.contains('reading-choice-option')) return rect(997 - (scroll - 591) + (repeated ? 200.5 : 0), 60.875)
+      if (this.classList.contains('qf01-attached-options')) return rect(839.53125 - (scroll - 591), repeated ? 430.3125 : 229.8125)
+      return rect(100, 50)
+    })
+    vi.mocked(window.scrollBy).mockImplementation((options: number | ScrollToOptions) => {
+      if (typeof options === 'object') scroll += options.top ?? 0
+      window.dispatchEvent(new Event('scroll'))
+    })
+    const flush = () => {
+      for (let round = 0; frames.size; round++) {
+        if (round > 8) throw new Error('unbounded focus reveal')
+        const pending = [...frames.values()]; frames.clear(); act(() => { for (const cb of pending) cb(0) })
+      }
+    }
+    try {
+      const index = active.findIndex(item => item.id === 'qf01-n21-answer')
+      let progress: TextbookUnitProgress | undefined
+      for (const item of active.slice(0, index)) progress = answerTextbookItem(progress, unit, item, item.answer, 100 + active.indexOf(item))
+      useAppStore.setState({ textbookProgress: { [unit.unitId]: progress! } }); const before = JSON.stringify(progress)
+      render(<Lesson />); flush()
+      fireEvent.click(screen.getByTestId('textbook-item-qf01-n21-answer')); flush()
+      const buttons = within(screen.getByTestId('inline-choice-panel-qf01-n21-answer')).getAllByRole('button')
+      scroll = 591; fireEvent.scroll(window); flush()
+      expect(screen.queryByTestId('qf01-local-context')).toBeNull()
+      // Native focus can scroll before the delayed scroll event inserts context.
+      act(() => { scroll = 661; buttons[2].focus() }); fireEvent.scroll(window); flush()
+      expect(document.activeElement).toBe(buttons[2])
+      expect(screen.getByTestId('qf01-local-context')).toBeTruthy()
+      expect(buttons[2].getBoundingClientRect().top).toBeGreaterThanOrEqual(76)
+      expect(buttons[2].getBoundingClientRect().bottom).toBeLessThanOrEqual(988)
+      expect(JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])).toBe(before)
+      vi.mocked(window.scrollBy).mockClear(); scroll = 591; fireEvent.scroll(window); flush()
+      expect(window.scrollBy).not.toHaveBeenCalled()
+      act(() => { scroll = 661; buttons[0].focus() }); fireEvent.scroll(window)
+      vi.mocked(window.scrollBy).mockClear(); fireEvent.wheel(window); flush()
+      expect(window.scrollBy).not.toHaveBeenCalled()
+    } finally { measure.mockRestore(); header.remove(); Object.defineProperty(window, 'innerHeight', originalHeight); window.requestAnimationFrame = oldRAF; window.cancelAnimationFrame = oldCancel }
+  })
+
+
+  it('preserves the pointer press before committing repeated conditions and saves consecutive n02 wrong clicks', () => {
+    useAppStore.setState({ textbookProgress: { [unit.unitId]: answerTextbookItem(undefined, unit, active[0], active[0].answer, 1) } })
+    const layout = qfViewportModel(false)
+    try {
+      render(<Lesson />); layout.flush(); fireEvent.click(screen.getByTestId('textbook-item-qf01-n02-answer')); layout.flush()
+      const panel = screen.getByTestId('inline-choice-panel-qf01-n02-answer')
+      const wrongs = active[1].choices!.filter(c => c !== active[1].answer && !active[1].acceptedAnswers?.includes(c))
+      for (const wrong of wrongs) {
+        const button = within(panel).getByRole('button', { name: wrong, exact: true })
+        layout.showOriginalContext(); fireEvent.scroll(window); layout.flush()
+        expect(screen.queryByTestId('qf01-local-context')).toBeNull()
+        layout.hideOriginalContext()
+        fireEvent.pointerDown(button); act(() => button.focus())
+        // A pointer focus must not insert conditions between press and release.
+        expect(screen.queryByTestId('qf01-local-context')).toBeNull()
+        vi.mocked(window.scrollBy).mockClear(); layout.flush()
+        expect(window.scrollBy).not.toHaveBeenCalled()
+        fireEvent.pointerUp(button); fireEvent.click(button); layout.flush()
+        expect(useAppStore.getState().textbookProgress[unit.unitId].answers[active[1].id].value).toBe(wrong)
+      }
+    } finally { layout.restore() }
+  })
+
+  for (const input of ['wheel', 'touchstart', 'keydown', 'pointerdown']) {
+    it('cancels pending explicit focus settlement on ' + input + ' without answering', () => {
+      const layout = qfViewportModel()
+      try {
+        render(<Lesson />); layout.flush(); fireEvent.click(screen.getByTestId('textbook-item-qf01-n01-answer')); layout.flush()
+        const before = JSON.stringify(useAppStore.getState().textbookProgress)
+        const button = screen.getByTestId('textbook-choice-qf01-n01-answer-2')
+        act(() => button.focus()); vi.mocked(window.scrollBy).mockClear(); layout.moveDown(200)
+        fireEvent(window, new Event(input, { bubbles: true })); layout.flush()
+        expect(window.scrollBy).not.toHaveBeenCalled()
+        expect(document.activeElement).toBe(button)
+        expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
+      } finally { layout.restore() }
+    })
+  }
+
+  it('keeps only the last rapidly focused choice and cancels settlement on unmount', () => {
+    const layout = qfViewportModel()
+    try {
+      const mounted = render(<Lesson />); layout.flush(); fireEvent.click(screen.getByTestId('textbook-item-qf01-n01-answer')); layout.flush()
+      const buttons = within(screen.getByTestId('inline-choice-panel-qf01-n01-answer')).getAllByRole('button')
+      act(() => { buttons[0].focus(); buttons[2].focus() }); layout.targetMeasurements.length = 0; layout.flush()
+      expect(document.activeElement).toBe(buttons[2])
+      expect(layout.targetMeasurements.filter(r => r.testId.startsWith('textbook-choice-')).every(r => r.testId.endsWith('-2'))).toBe(true)
+      act(() => buttons[0].focus()); mounted.unmount(); vi.mocked(window.scrollBy).mockClear(); layout.flush()
+      expect(window.scrollBy).not.toHaveBeenCalled()
+    } finally { layout.restore() }
+  })
+
 })

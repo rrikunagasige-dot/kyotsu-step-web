@@ -438,4 +438,40 @@ describe('QF01 full nine-stage revision2', () => {
     expect(JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])).toBe(before)
   })
 
+
+  for (const nodeId of ['qf01-n13', 'qf01-n22']) {
+    it('reveals the completed current stage after reload at ' + nodeId + ' without rewriting progress or cursor', () => {
+      const node = presentation.nodes.find(node => node.id === nodeId)!
+      const stageIndex = presentation.stages.findIndex(stage => stage.id === node.stageId)
+      const last = active.findIndex(item => item.id === node.interaction)
+      let progress: TextbookUnitProgress | undefined
+      for (const item of active.slice(0, last + 1)) progress = answerTextbookItem(progress, unit, item, item.answer, 100 + active.indexOf(item))
+      useAppStore.setState({ textbookProgress: { [unit.unitId]: progress! } })
+      const key = 'math-textbook-compact-v1:' + unit.unitId + ':r2:scope:qf01-v2'
+      localStorage.setItem(key, String(stageIndex))
+      const before = JSON.stringify(progress), layout = qfViewportModel()
+      const baseRect = HTMLElement.prototype.getBoundingClientRect
+      const rectSpy = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function (this: HTMLElement) {
+        if (this.classList.contains('transformation-equation') && this.closest('[data-source-node="' + nodeId + '"]')) {
+          const top = 1600 - vi.mocked(window.scrollBy).mock.calls.reduce((sum, [options]) => sum + (typeof options === 'object' ? (options as ScrollToOptions).top ?? 0 : 0), 0)
+          return { x: 0, y: top, top, bottom: top + 30, left: 30, right: 290, width: 260, height: 30, toJSON: () => ({}) } as DOMRect
+        }
+        return baseRect.call(this)
+      })
+      try {
+        render(<Lesson />); layout.flush()
+        expect(screen.queryByTestId('textbook-item-' + node.interaction)).toBeNull()
+        expect(document.querySelector('.math-textbook-stage--current [data-source-node="' + nodeId + '"] .transformation-equation')).toBeTruthy()
+        expect(window.scrollBy).toHaveBeenCalled()
+        const row = document.querySelector('.math-textbook-stage--current [data-source-node="' + nodeId + '"] .transformation-equation')!
+        expect(row.getBoundingClientRect().top).toBeGreaterThanOrEqual(76)
+        expect(row.getBoundingClientRect().bottom).toBeLessThanOrEqual(988)
+        expect(JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])).toBe(before)
+        expect(localStorage.getItem(key)).toBe(String(stageIndex))
+        vi.mocked(window.scrollBy).mockClear(); fireEvent.scroll(window); layout.flush()
+        expect(window.scrollBy).not.toHaveBeenCalled()
+      } finally { rectSpy.mockRestore(); layout.restore() }
+    })
+  }
+
 })

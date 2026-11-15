@@ -66,3 +66,6 @@
 /* QF01 required feedback, recalled context and imported-history notice inherit the 18px body. */
 .qf01-full-reading .reading-choice-hint { font-size: 1em; }
 .qf01-full-reading .reading-choice-hint strong { font-size: 1em; }
+
+/* QF01 controls share the existing 44px minimum hit area. */
+.qf01-full-reading.guided-reading button { min-height: 44px; min-width: 44px; }

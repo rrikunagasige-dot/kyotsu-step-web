@@ -378,11 +378,62 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
   useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
   useEffect(() => { onSummaryReached?.(false) }, [onSummaryReached])
   useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
+  const focusRevealFrame = useRef<number | null>(null)
+  const pointerFocusTarget = useRef<HTMLElement | null>(null)
+  const syncRepeatedContext = useCallback(() => {
+    const r = context.current?.getBoundingClientRect(), bounds = viewportBounds()
+    setRepeatContext(Boolean(r && (r.top < bounds.top || r.bottom > bounds.bottom)))
+  }, [viewportBounds])
+  const cancelFocusReveal = useCallback(() => {
+    if (focusRevealFrame.current !== null) cancelAnimationFrame(focusRevealFrame.current)
+    focusRevealFrame.current = null
+  }, [])
+  const revealFocusedChoice = useCallback((target: HTMLElement) => {
+    cancelFocusReveal()
+    // Preserve the pointer press/click transaction: its focus uses the existing reveal.
+    if (pointerFocusTarget.current === target) { reveal(target); return }
+    const stillCurrent = () => document.activeElement === target && Boolean(flow.current?.querySelector('.math-textbook-stage--current')?.contains(target))
+    const adjust = () => { if (stillCurrent()) { reveal(target); syncRepeatedContext() } }
+    adjust()
+    // Repeated source context can be inserted by the focus-triggered scroll.
+    // Remeasure after that commit, then settle once more after its scroll event.
+    // These frames belong only to this explicit focus; manual scroll never starts them.
+    focusRevealFrame.current = requestAnimationFrame(() => {
+      adjust()
+      focusRevealFrame.current = requestAnimationFrame(() => {
+        focusRevealFrame.current = null
+        if (stillCurrent()) reveal(target)
+      })
+    })
+  }, [cancelFocusReveal, reveal, syncRepeatedContext])
+  useEffect(() => {
+    const clearPointer = () => { pointerFocusTarget.current = null }
+    const keyboardInput = () => { clearPointer(); cancelFocusReveal() }
+    window.addEventListener('pointerdown', cancelFocusReveal, true)
+    window.addEventListener('pointerup', clearPointer)
+    window.addEventListener('pointercancel', clearPointer)
+    window.addEventListener('blur', keyboardInput)
+    window.addEventListener('wheel', cancelFocusReveal, { passive: true })
+    window.addEventListener('touchstart', cancelFocusReveal, { passive: true })
+    window.addEventListener('keydown', keyboardInput)
+    return () => {
+      cancelFocusReveal()
+      window.removeEventListener('wheel', cancelFocusReveal)
+      window.removeEventListener('touchstart', cancelFocusReveal)
+      window.removeEventListener('keydown', keyboardInput)
+      window.removeEventListener('pointerdown', cancelFocusReveal, true)
+      window.removeEventListener('pointerup', clearPointer)
+      window.removeEventListener('pointercancel', clearPointer)
+      window.removeEventListener('blur', keyboardInput)
+      clearPointer()
+    }
+  }, [cancelFocusReveal])
+  useEffect(() => { cancelFocusReveal(); pointerFocusTarget.current = null }, [stageIndex, cancelFocusReveal])
   const activeValue = activeId ? current?.answers[activeId]?.value : undefined
   const activeAttemptCount = activeId ? current?.answers[activeId]?.attemptCount : undefined
   const lastResolvedNodeId = [...data.nodes].reverse().find(node => node.stageId === stage.id && node.interaction && resolved(node.interaction))?.id
   useLayoutEffect(() => {
-    const check = () => { const r = context.current?.getBoundingClientRect(); setRepeatContext(Boolean(r && (r.top < viewportBounds().top || r.bottom > viewportBounds().bottom))) }
+    const check = syncRepeatedContext
     // Commit any repeated context before the next frame measures the panel.
     // Wrong feedback can move an already focused choice without another focus event.
     check()
@@ -397,7 +448,7 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
     })
     window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
-  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, viewportBounds, reveal])
+  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, syncRepeatedContext, reveal])
   const semantic = (parts: TextbookReadingPart[]) => parts.map((p, i) => p.type === 'math'
     ? <TypesetInlineMath key={i} latex={p.latex} sourceId={p.semanticId ?? 'qf01-context-' + i} unitId={unit.unitId} />
     : p.type === 'text' ? <span key={i}>{p.text}</span> : null)
@@ -421,7 +472,8 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
       {repeatContext && <aside className="qf01-local-context" data-testid="qf01-local-context"><strong>元の条件・求めるもの</strong><p>{semantic(stage.sourceQuestionParts)}</p></aside>}
       {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{value(id, record.value)}<p>{semantic(display.feedback[record.value] ?? [])} {semantic(display.hintParts[0] ?? [])}</p></aside>}
       {activeId === id && <div className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>
-        {getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" className="reading-choice-option" key={choice} aria-label={choice} onFocus={event => reveal(event.currentTarget)} aria-invalid={Boolean(wrong && record.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onClick={() => {
+        {getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" className="reading-choice-option" key={choice} aria-label={choice} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} aria-invalid={Boolean(wrong && record.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onClick={() => {
+          cancelFocusReveal(); pointerFocusTarget.current = null
           if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
           if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) setActiveId(null)
         }}><span className="qf01-option-content">{value(id, choice)}</span></button>)}

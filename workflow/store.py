@@ -12,42 +12,93 @@ def digest(value):return hashlib.sha256(canonical(value)).hexdigest()
 _PROC=Path('/proc')
 _LOCK_IDENTITY='linux-procfs-writer/1'
 
-def _proc_stat(path):
-    raw=path.read_text(); end=raw.rfind(')'); fields=raw[end+1:].split()
+def _parse_proc_stat(raw):
+    end=raw.rfind(')'); fields=raw[end+1:].split()
     if end<0 or len(fields)<20:raise Conflict('proc statを解釈できない')
     pid=int(raw.split(' ',1)[0]); start=int(fields[19])
     if pid<=0 or start<=0:raise Conflict('proc pid/startが不正')
     return pid,start
 
-def _nspid(path):
-    rows=[line.split(':',1)[1].split() for line in path.read_text().splitlines() if line.startswith('NSpid:')]
+def _proc_stat(path):
+    return _parse_proc_stat(path.read_text())
+
+def _parse_nspid(raw):
+    rows=[line.split(':',1)[1].split() for line in raw.splitlines() if line.startswith('NSpid:')]
     if len(rows)!=1 or not rows[0]:raise Conflict('NSpidを確認できない')
     values=[int(v) for v in rows[0]]
     if any(v<=0 for v in values):raise Conflict('NSpidが不正')
     return values
 
-def _observe_proc():
+def _nspid(path):
+    return _parse_nspid(path.read_text())
+
+def _open_proc():
+    return os.open(_PROC,os.O_RDONLY|os.O_DIRECTORY|os.O_CLOEXEC|os.O_NOFOLLOW)
+
+def _read_proc(fd,relative):
+    # All inputs are fixed procfs-relative paths, never user-supplied paths.
+    child=os.open(relative,os.O_RDONLY|os.O_CLOEXEC,dir_fd=fd)
+    with os.fdopen(child,'r') as stream:return stream.read()
+
+def _proc_mount_id(fd,target_fd):
+    rows=[line.split(':',1)[1].strip() for line in _read_proc(fd,'self/fdinfo/'+str(target_fd)).splitlines() if line.startswith('mnt_id:')]
+    if len(rows)!=1 or not rows[0].isascii() or not rows[0].isdigit() or int(rows[0])<=0:raise Conflict('procfs fd mount identityが不明')
+    return int(rows[0])
+
+def _select_proc_mount(raw,mount_id,device):
+    selected=[]
+    for line in raw.splitlines():
+        parts=line.split(' - ')
+        if len(parts)!=2:raise Conflict('procfs mountinfoを解釈できない')
+        a=parts[0].split();b=parts[1].split()
+        if len(a)<6 or len(b)<3 or not a[0].isascii() or not a[0].isdigit() or int(a[0])<=0:raise Conflict('procfs mountinfoを解釈できない')
+        if int(a[0])==mount_id:selected.append((a,b))
+    if len(selected)!=1:raise Conflict('procfs visible mount identityが一意でない')
+    a,b=selected[0]
+    if a[4]!='/proc' or b[0]!='proc':raise Conflict('procfs visible mount種別又はpathが違う')
+    if a[2]!=str(os.major(device))+':'+str(os.minor(device)):raise Conflict('procfs mount deviceが不整合')
+    options=(a[5]+','+b[2]).split(',')
+    if any(x.startswith('hidepid=') and x!='hidepid=0' for x in options):raise Conflict('非表示pidを死活判定しない')
+    return a,b
+
+def _visible_proc_mount(fd):
+    mount_id=_proc_mount_id(fd,fd);identity=os.fstat(fd)
+    a,b=_select_proc_mount(_read_proc(fd,'self/mountinfo'),mount_id,identity.st_dev)
+    visible=_open_proc()
     try:
-        pid,start=_proc_stat(_PROC/'self/stat'); nspid=_nspid(_PROC/'self/status')
+        current=os.fstat(visible)
+        if (_proc_mount_id(fd,visible),current.st_dev,current.st_ino)!=(mount_id,identity.st_dev,identity.st_ino):raise Conflict('観測中にvisible procfs mountが変化した')
+    finally:os.close(visible)
+    return mount_id,a,b,identity.st_dev
+
+def _observe_proc_fd(fd):
+    try:
+        before=_visible_proc_mount(fd)
+        pid,start=_parse_proc_stat(_read_proc(fd,'self/stat')); nspid=_parse_nspid(_read_proc(fd,'self/status'))
         if nspid[0]!=pid or nspid[-1]!=os.getpid():raise Conflict('procfsとnamespace pidの対応が不明')
-        if _proc_stat(_PROC/str(pid)/'stat')!=(pid,start) or _nspid(_PROC/str(pid)/'status')!=nspid:raise Conflict('procfs selfを同じviewから参照できない')
-        init_pid,init_start=_proc_stat(_PROC/'1/stat');init_nspid=_nspid(_PROC/'1/status')
+        if _parse_proc_stat(_read_proc(fd,str(pid)+'/stat'))!=(pid,start) or _parse_nspid(_read_proc(fd,str(pid)+'/status'))!=nspid:raise Conflict('procfs selfを同じviewから参照できない')
+        init_pid,init_start=_parse_proc_stat(_read_proc(fd,'1/stat'));init_nspid=_parse_nspid(_read_proc(fd,'1/status'))
         if init_pid!=1 or init_nspid[0]!=1:raise Conflict('procfs init anchorが不明')
-        mounts=[]
-        for line in (_PROC/'self/mountinfo').read_text().splitlines():
-            left,right=line.split(' - ',1); a=left.split();b=right.split()
-            if len(a)>=6 and len(b)>=3 and a[4]=='/proc' and b[0]=='proc':mounts.append((a,b))
-        if len(mounts)!=1:raise Conflict('procfs mount viewが一意でない')
-        a,b=mounts[0];options=(a[5]+','+b[2]).split(',')
-        if any(x.startswith('hidepid=') and x!='hidepid=0' for x in options):raise Conflict('非表示pidを死活判定しない')
-        boot=(_PROC/'sys/kernel/random/boot_id').read_text().strip()
+        boot=_read_proc(fd,'sys/kernel/random/boot_id').strip()
         if str(uuid.UUID(boot))!=boot:raise Conflict('boot_idが不正')
-        device=_PROC.stat().st_dev
-        if a[2]!=str(os.major(device))+':'+str(os.minor(device)):raise Conflict('procfs mount deviceが不整合')
+        if _visible_proc_mount(fd)!=before:raise Conflict('照合中にprocfs mount identityが変化した')
+        _,a,b,device=before
+        # Keep the existing cross-process lock schema; mount ID is a local
+        # observation discriminator, not a new persistent compatibility field.
         view={'device':device,'mount_major_minor':a[2],'mount_root':a[3],'init_start_ticks':init_start,'init_nspid':init_nspid}
         return {'procfsPid':pid,'start_ticks':start,'boot_id':boot,'procfs_view':view,'nspid':nspid}
     except Conflict:raise
     except (OSError,ValueError,IndexError) as ex:raise Conflict('procfs identityを安全に観測できない') from ex
+
+def _observe_proc():
+    fd=None
+    try:
+        fd=_open_proc()
+        return _observe_proc_fd(fd)
+    except Conflict:raise
+    except (OSError,ValueError,IndexError) as ex:raise Conflict('procfs identityを安全に観測できない') from ex
+    finally:
+        if fd is not None:os.close(fd)
 
 def _lock_record():
     return {'pid':os.getpid(),'time':time.time(),'identity_version':_LOCK_IDENTITY,**_observe_proc()}

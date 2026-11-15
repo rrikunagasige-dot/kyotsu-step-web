@@ -69,3 +69,8 @@
 
 /* QF01 controls share the existing 44px minimum hit area. */
 .qf01-full-reading.guided-reading button { min-height: 44px; min-width: 44px; }
+
+/* Shared QF01 stacked columns also contain the widest spanning subject. */
+.qf01-full-reading .transformation-reading-group--stacked .transformation-equation {
+  grid-template-columns: var(--transformation-relation) max(var(--transformation-right), calc(var(--transformation-left) - var(--transformation-relation) - .35rem));
+}

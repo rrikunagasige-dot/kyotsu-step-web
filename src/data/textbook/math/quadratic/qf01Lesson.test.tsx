@@ -373,4 +373,69 @@ describe('QF01 full nine-stage revision2', () => {
     } finally { layout.restore() }
   })
 
+
+  for (const target of ['qf01-n13-answer', 'qf01-n22-answer']) {
+    it('restores saved wrong feedback before reopening choices at ' + target, async () => {
+      const index = active.findIndex(item => item.id === target)
+      let progress: TextbookUnitProgress | undefined
+      for (const item of active.slice(0, index)) progress = answerTextbookItem(progress, unit, item, item.answer, 100 + active.indexOf(item))
+      const item = active[index], wrong = item.choices!.find(choice => choice !== item.answer && !item.acceptedAnswers?.includes(choice))!
+      progress = answerTextbookItem(progress, unit, item, wrong, 200)
+      useAppStore.setState({ textbookProgress: { [unit.unitId]: progress } })
+      const persisted = localStorage.getItem(useAppStore.persist.getOptions().name!)!
+      useAppStore.setState({ textbookProgress: {} }); localStorage.setItem(useAppStore.persist.getOptions().name!, persisted)
+      await act(async () => { await useAppStore.persist.rehydrate() })
+      const before = JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])
+      render(<Lesson />)
+      expect(screen.getByTestId('textbook-item-' + target)).toBeTruthy()
+      expect(screen.getByTestId('textbook-hint-' + target).textContent).toContain('採用しません')
+      const sourceDisplay = JSON.parse(readFileSync('src/data/textbook/math/quadratic/qf01Presentation.json', 'utf8')).semanticDisplay[target.replace('-answer', '')]
+      const expectedWrongMath = sourceDisplay.choices[wrong].filter((part: { type: string; latex?: string }) => part.type === 'math').map((part: { latex: string }) => part.latex)
+      expect(expectedWrongMath.length).toBeGreaterThan(0)
+      expect(latex(screen.getByTestId('textbook-hint-' + target))).toEqual(expect.arrayContaining(expectedWrongMath))
+      expect(screen.queryByRole('group', { name: 'この空欄の候補' })).toBeNull()
+      expect(JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])).toBe(before)
+      expect(active.slice(index + 1).every(next => !screen.queryByTestId('textbook-item-' + next.id))).toBe(true)
+      fireEvent.click(screen.getByTestId('textbook-item-' + target))
+      const group = screen.getByRole('group', { name: 'この空欄の候補' })
+      expect(within(group).getAllByRole('button').map(button => button.getAttribute('aria-label')).sort()).toEqual([...item.choices!].sort())
+      fireEvent.click(within(group).getByRole('button', { name: item.answer }))
+      expect(screen.queryByTestId('textbook-hint-' + target)).toBeNull()
+      expect(useAppStore.getState().textbookProgress[unit.unitId].answers[target].resolved).toBe(true)
+      expect(useAppStore.getState().textbookProgress[unit.unitId].answers[target].attemptCount).toBe(2)
+    })
+  }
+  it('renders a rehydrated wrong record while its current slot is already mounted without opening choices or rewriting progress', async () => {
+    const index = active.findIndex(item => item.id === 'qf01-n13-answer'), item = active[index]
+    let prefix: TextbookUnitProgress | undefined
+    for (const prior of active.slice(0, index)) prefix = answerTextbookItem(prefix, unit, prior, prior.answer, 100 + active.indexOf(prior))
+    const wrong = item.choices!.find(choice => choice !== item.answer && !item.acceptedAnswers?.includes(choice))!
+    const saved = answerTextbookItem(prefix, unit, item, wrong, 200)
+    useAppStore.setState({ textbookProgress: { [unit.unitId]: saved } })
+    const persisted = localStorage.getItem(useAppStore.persist.getOptions().name!)!
+    useAppStore.setState({ textbookProgress: { [unit.unitId]: prefix! } })
+    render(<Lesson />)
+    expect(screen.getByTestId('textbook-item-' + item.id)).toBeTruthy()
+    expect(screen.queryByTestId('textbook-hint-' + item.id)).toBeNull()
+    localStorage.setItem(useAppStore.persist.getOptions().name!, persisted)
+    await act(async () => { await useAppStore.persist.rehydrate() })
+    expect(screen.getByTestId('textbook-hint-' + item.id).textContent).toContain('採用しません')
+    expect(screen.queryByRole('group', { name: 'この空欄の候補' })).toBeNull()
+    expect(useAppStore.getState().textbookProgress[unit.unitId]).toEqual(saved)
+  })
+  it('does not expose a stored future wrong record before the current unresolved node', () => {
+    let progress: TextbookUnitProgress | undefined
+    for (const item of active.slice(0, 2)) progress = answerTextbookItem(progress, unit, item, item.answer, 100 + active.indexOf(item))
+    const later = active.find(item => item.id === 'qf01-n13-answer')!
+    const wrong = later.choices!.find(choice => choice !== later.answer && !later.acceptedAnswers?.includes(choice))!
+    progress = answerTextbookItem(progress, unit, later, wrong, 200)
+    useAppStore.setState({ textbookProgress: { [unit.unitId]: progress } }); const before = JSON.stringify(progress)
+    render(<Lesson />)
+    expect(screen.getByTestId('textbook-item-qf01-n03-answer')).toBeTruthy()
+    expect(screen.queryByTestId('textbook-item-' + later.id)).toBeNull()
+    expect(screen.queryByTestId('textbook-hint-' + later.id)).toBeNull()
+    expect(screen.queryByTestId('textbook-item-qf01-n20-answer')).toBeNull()
+    expect(JSON.stringify(useAppStore.getState().textbookProgress[unit.unitId])).toBe(before)
+  })
+
 })

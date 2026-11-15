@@ -203,6 +203,10 @@ class Runtime:
             if kind=='screenshot':
                 need(file(self.root,data['path']).read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),'実画像としてPNGが必要')
                 capture=s['evidence'].get(data.get('capture_ref'),{})
+                if capture.get('kind')=='capture' and capture.get('data',{}).get('source_ci_ref'):
+                    from adapters import source_ci_verify_capture
+                    source_ci_verify_capture(self,work,capture['data'])
+                    need(data.get('source_sha')==capture['data']['source_sha'],'source_ci画像の対象sourceが違う')
                 if capture.get('kind')=='local_capture':
                     from local_render_evidence import validate_local_capture
                     verified=validate_local_capture(self,work,data['capture_ref'])
@@ -213,13 +217,20 @@ class Runtime:
             need(verification_level=='local_execution','ローカル捕捉の実行出所が必要')
             from local_render_evidence import verify_local_capture
             data=verify_local_capture(self,work,data)
+        elif kind=='source_ci':
+            from adapters import source_ci_verify
+            data=source_ci_verify(self,work,data)
         elif kind=='ci':
             need(data.get('status')=='completed' and data.get('conclusion')=='success','CIが成功していない')
             need(data.get('head_sha')==s['candidate_sha'],'別SHAのCIは採用できない')
             need(data.get('id') and data.get('html_url','').startswith('https://github.com/'),'CIの実行参照が不足')
         elif kind=='capture':
             ci=s['evidence'].get(data.get('ci_ref'),{})
-            need(ci.get('kind')=='ci' and ci['data']['head_sha']==data.get('source_sha'),'画像とCIのSHA対応がない')
+            if ci.get('kind')=='source_ci':
+                from adapters import source_ci_verify_capture
+                source_ci_verify_capture(self,work,data)
+            else:
+                need(ci.get('kind')=='ci' and ci['data']['head_sha']==data.get('source_sha'),'画像とCIのSHA対応がない')
             need(data.get('artifact_sha256') and data.get('files'),'画像成果物の対応表がない')
         elif kind=='app':
             if s['plan'].get('workflow_version')=='production/2':
@@ -246,6 +257,9 @@ class Runtime:
                 elif event['kind'] == 'team_harness_captured': team_refs.add(event['payload']['artifactRef'])
         for ref in refs:
             need(ref in s['evidence'] or ref in s['users'] or ref in team_refs,'未登録の証拠参照:'+ref)
+            if ref in s['evidence']:
+                from adapters import source_ci_verify_evidence_chain
+                source_ci_verify_evidence_chain(self,s['plan']['work_id'],ref)
     def task(self,work,node_id):
         s=self.state(work);nodes=instantiate(s['plan']);need(node_id in nodes,'ノードがない');n=nodes[node_id]
         return {'work_id':work,'node':n,'task_id':digest({'work':work,'node':node_id,'input_hash':self.input_hash(s,n)}),

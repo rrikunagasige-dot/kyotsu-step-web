@@ -2,7 +2,7 @@
 import copy,time,uuid
 from pathlib import Path
 from store import Store,digest,Conflict
-from contracts import need,Rejected,plan_check,result_check,manifest,file,sha
+from contracts import need,Rejected,plan_check,result_check,manifest,file,sha,transition_sources,transition_block_paths
 from definitions import instantiate,DEFINITION_HASH,VERSION
 
 USER_INTENTS={'approve_proposal','authorize_team_policy','accept_block','accept_app','reject_block','reject_app','pause','resume','priority_override','authorize_merge','authorize_deploy','authorize_cost','quality_positive','quality_negative','continue'}
@@ -44,6 +44,10 @@ class Runtime:
                 elif k=='migration_verified':
                     s['plan']=p['plan'];s['definition_hash']=p['definition_hash'];s['claims']={};s['results']={}
                     s['migration']=p
+                elif k=='version_transition_prepared':
+                    s['plan']=p['plan'];s['version_transition']=p['transition'];s['block_contexts'].setdefault('qf01-full-lesson',{})['source']=p['source_context'];s['candidate_manifest'].update(p['transition']['existing']);s['results']={n:r for n,r in s['results'].items() if n in ('S00_RECOVER','S01_ROUTE')};s['closed']=None
+                elif k=='version_transition_reconciled':
+                    s['plan']=p['plan'];s['candidate_manifest']=p['candidate_manifest'];s['block_contexts']=p['block_contexts'];s['version_transition']=dict(s['version_transition'],status=p['outcome']);s['closed']=None
                 elif k=='materialization_bound':s['plan']=p['plan'];s['materialization']=p
                 elif k=='team_policy_adopted':
                     for node_id in p.get('reviewer_handoff',{}).get('interruptedClaims',[]):s['claims'].pop(node_id,None)
@@ -56,7 +60,7 @@ class Runtime:
                 elif k=='external_outcome':s['external'][p['id']]['outcome']=p['outcome'];s['external'][p['id']]['evidence']=p['evidence']
         need(s is not None,'Workが存在しない');return s
     def open(self,plan):
-        self._head=self.store.head;plan_check(plan)
+        self._head=self.store.head;need(not plan.get('source_extension'),'版移行の拡張は正規prepareのみ');plan_check(plan)
         team_policy_path=self.root/'governance/TEAM_POLICY.json'
         if not plan.get('simulation') and plan['profile']=='material' and team_policy_path.exists():
             import json
@@ -96,7 +100,7 @@ class Runtime:
         return None
     def block_manifest(self,s,bid):
         b=next(b for b in s['plan']['blocks'] if b['id']==bid)
-        return {p:s['candidate_manifest'].get(p) for p in b['sources']}
+        return {p:s['candidate_manifest'].get(p) for p in transition_block_paths(s['plan'],b)}
     def input_hash(self,s,node):
         if s['plan'].get('workflow_version') == 'production/2':
             from integration import input_hash
@@ -410,6 +414,9 @@ class Runtime:
             need(self.approval(s) and all(in_scope(p,s['plan']['scope']) for p in changed),'未承認範囲の変更を候補として登録しない')
             need(False,'実ファイルの変更は限定修正アダプタで差分・安定ID・履歴を照合してから候補へ固定する')
         need(set(current)==set(s['candidate_manifest']),'候補の収録範囲が変わった。提案改訂が必要')
+        if s.get('version_transition'):
+            from adapters import _vt_verify_candidate_git
+            _vt_verify_candidate_git(self,s,commit_sha)
         if s['plan'].get('workflow_version') == 'production/2':
             units=release_units if release_units is not None else [u['id'] for u in s['plan']['release_units']]
             need(units and set(units) <= {u['id'] for u in s['plan']['release_units']},'固定するrelease unitが不明')
@@ -419,6 +426,7 @@ class Runtime:
         self.append('candidate',work,{'sha':commit_sha,'manifest':current})
     def revise(self,work,new_plan):
         before = self.state(work)['plan']
+        need(new_plan.get('source_extension')==before.get('source_extension'),'改訂で版移行proofを注入・変更しない')
         need(before.get('agent_team') == new_plan.get('agent_team'), 'team方針の変更には専用移行を使う')
         s=self.state(work);plan_check(new_plan);need(new_plan['work_id']==work,'別Workへの改訂')
         need(new_plan['profile']==s['plan']['profile'] and new_plan['command']==s['plan']['command'],'作成／修正の経路変更は別Workへ')
@@ -628,7 +636,9 @@ class Runtime:
         for nid,r in s['results'].items():
             if not nid.startswith('G2_AUDIT@'):continue
             for row in self.store.get(r['artifact']).get('audit_rows',[]):
-                if row.get('linkedCorrection'):need(self.next(row['linkedCorrection'])['status']=='DONE','引継いだ必須修正が未完了')
+                if row.get('linkedCorrection'):
+                    from requests import has_current_correction_receipt
+                    need(self.next(row['linkedCorrection'])['status']=='DONE' or has_current_correction_receipt(self,row['linkedCorrection'],work),'引継いだ必須修正が未完了')
         if s['plan']['command']!='CMD-WORK-001':return
         # Related-child rows must already be verified by the post-fix contract; primary issue can close locally.
         for uid in [u['id'] for u in s['plan']['release_units']]:

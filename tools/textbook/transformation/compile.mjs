@@ -29,6 +29,7 @@ function statementParts(statement,slots=[],displayForm){
  return {left:parts(statement.left,slots,'left'),relation:relations[statement.operator],relationSlot:relationSlot?{type:'slot',id:relationSlot.id,interactionRef:relationSlot.interactionRef}:undefined,right:parts(statement.right,slots,'right')};
 }
 export function compileTransformationPresentation(ir,plan){
+ if(Object.hasOwn(plan??{},'mixedCanonical'))return compileMixedCanonicalPresentation(ir,plan);
  if(plan?.schemaVersion==='transformation-plan/3')return compileTransformationV3(ir,plan);
  if(plan?.schemaVersion==='transformation-plan/2')return compileTransformationV2(ir,plan,validateTransformationPlan(ir,plan),compileTransformationPresentation);
  const checked=validateTransformationPlan(ir,plan);if(checked.status!=='PASS')return checked;
@@ -38,3 +39,14 @@ export function compileTransformationPresentation(ir,plan){
  interactions:plan.candidates.filter(c=>c.decision==='ADOPT').map(c=>({id:c.id,nodeId:c.nodeId,blankRole:c.blankRole,learnerDecision:c.learnerDecision,prerequisiteInteractionIds:c.prerequisiteInteractionIds,choices:c.choices,correctValue:c.expected})),automaticAcceptance:false};}catch(error){return {status:'UNSUPPORTED',findings:[{ruleId:'TG06_BINDING',detail:error.message}]};}
  return {status:'PASS',compiled:{...compiled,compiledPresentationHash:hash(compiled)},mathReceipts:checked.mathReceipts,meaningAuditRequired:true};
 }
+
+export function compileMixedCanonicalPresentation(ir,plan,options={}){
+ const checked=validateTransformationPlan(ir,plan,options);if(checked.status!=='PASS')return checked;
+ const compiled={schemaVersion:'transformation-reading/1',mixedCanonical:'qf01-r3/1',unitId:plan.unitId,presentationVersion:3,baseIRHash:checked.baseIRHash,irHash:checked.baseIRHash,planHash:checked.planHash,constructionDesignHash:checked.constructionDesignHash,layoutDesignHash:checked.layoutDesignHash,learnerCopyHash:checked.learnerCopyHash,
+  canonical:plan.canonical,presentation:plan.presentation,astBindings:plan.astBindings,functionDefinitions:plan.functionDefinitions,
+  interactions:plan.canonical.interactions.interactions.map(i=>({id:i.id,nodeId:i.nodeId,prerequisiteInteractionIds:i.progressionRequires})),automaticAcceptance:false,
+  artifactPurpose:'検証用compiled artifact。アプリ本文はUnit.readingFlowのみを正本とし、このcanonical payloadを別本文としてmountしない。'};
+ return {status:'PASS',compiled:{...compiled,compiledPresentationHash:mixedCanonicalHash(compiled)},mathReceipts:checked.mathReceipts,argumentReceipts:checked.argumentReceipts,meaningAuditRequired:true,formalProof:false};
+}
+
+import {mixedCanonicalHash} from './schema.mjs';

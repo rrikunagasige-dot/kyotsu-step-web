@@ -289,3 +289,93 @@ class ImpactCompleteness(Fixture):
     def test_stale_impact_version_refused(self):
         self.replace_plan();self.until('R03');t=self.rt.claim('W','R03_IMPACT@A','x');r=self.output(t['node']);r['impact_rows'][1]['version']='obsolete'
         with self.assertRaises(Rejected):self.rt.submit('W','R03_IMPACT@A',t['claim_token'],r)
+
+class VersionTransitionSourceContractTests(__import__('unittest').TestCase):
+    def test_origin_manifest_is_preserved_and_outputs_are_not_source_files(self):
+        from contracts import transition_sources,transition_block_paths
+        import copy
+        p={'work_id':'W-MATH-QF01-FULL-RELEASE-P035-20261115','source_manifest':{'old.json':'a'*64},'source_extension':{'schemaVersion':'version-transition-source/1','existing':{'old.json':'b'*64,'existing.json':'c'*64},'outputs':{'new.json':{'block':'b','afterSHA256':'d'*64}},'preparedProof':'e'*64}}
+        before=copy.deepcopy(p)
+        self.assertEqual(transition_sources(p),{'old.json':'b'*64,'existing.json':'c'*64})
+        self.assertEqual(transition_block_paths(p,{'id':'b','sources':['old.json','existing.json'],'output_paths':['new.json']}),['old.json','existing.json','new.json'])
+        self.assertEqual(p,before)
+        self.assertNotIn('new.json',transition_sources(p))
+    def test_no_opt_in_retains_exact_source_behavior(self):
+        from contracts import transition_sources,transition_block_paths
+        p={'source_manifest':{'old.json':'a'*64}}
+        self.assertEqual(transition_sources(p),p['source_manifest'])
+        self.assertEqual(transition_block_paths(p,{'id':'b','sources':['old.json']}),['old.json'])
+    def test_foreign_work_or_unbound_output_rejected(self):
+        from contracts import transition_sources,transition_block_paths,Rejected
+        p={'work_id':'foreign','source_manifest':{},'source_extension':{'schemaVersion':'version-transition-source/1','existing':{'a':'a'*64},'outputs':{},'preparedProof':'b'*64}}
+        with self.assertRaises(Rejected):transition_sources(p)
+        p['work_id']='W-MATH-QF01-FULL-RELEASE-P035-20261115'
+        with self.assertRaises(Rejected):transition_block_paths(p,{'id':'b','sources':['a'],'output_paths':['unknown']})
+
+class VersionTransitionAPIRejectTests(Fixture):
+    setup_patch=PatchTests.setup_patch
+    def unchanged(self,call):
+        before=self.rt.store.head;files={p.relative_to(self.data).as_posix():p.read_bytes() for p in self.data.rglob('*') if p.is_file()}
+        with self.assertRaises(Rejected):call()
+        self.assertEqual(self.rt.store.head,before)
+        self.assertEqual(files,{p.relative_to(self.data).as_posix():p.read_bytes() for p in self.data.rglob('*') if p.is_file()})
+    def test_foreign_prepare_rejects_without_store_or_file_mutation(self):
+        from adapters import prepare_version_transition
+        self.unchanged(lambda:prepare_version_transition(self.rt,'W','p','d','u','owner','r','a'*40,'b'*64,'g',[self.ref],self.rt.store.head))
+    def test_wrong_head_reconcile_rejects_without_mutation(self):
+        from adapters import reconcile_version_transition
+        self.unchanged(lambda:reconcile_version_transition(self.rt,'W','a'*64,'NOT_EXECUTED',[self.ref],'0'*64))
+    def test_foreign_receipt_rejects_without_mutation(self):
+        from requests import link_correction_receipt
+        self.unchanged(lambda:link_correction_receipt(self.rt,'W','p','W',['SC-02'],'W','a'*40,{},'b'*64,[],[self.ref],self.rt.store.head))
+    def test_legacy_patch_rejects_transition_proof_injection(self):
+        patch,claim=self.setup_patch()
+        self.unchanged(lambda:apply_patch(self.rt,'W','R06_PATCH@A',claim['claim_token'],patch,transition_ref='f'*64))
+
+class R3SourceCIPolicyGuards(unittest.TestCase):
+    """Synthetic policy-unit fixtures, never real CI approval or raw-bundle PASS."""
+    def setUp(self):
+        import adapters,definitions,hashlib
+        from types import SimpleNamespace
+        self.adapters=adapters;self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);self.publisher=self.root/'publisher';self.publisher.mkdir();(self.root/'material').mkdir();(self.root/'core').mkdir()
+        seven=['.github/workflows/qf01-publisher-g3.yml','tools/release/qf01-publish-contract.json','tools/release/qf01-publish-check.mjs','tools/release/qf01-publish-check.test.mjs','tools/release/qf01-retained-adapters.mjs','tools/release/qf01-retained-adapters.test.mjs','tools/release/qf01-browser.mjs']
+        for name in seven:
+            p=self.publisher/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('synthetic policy loader unit fixture '+name)
+        self.after=manifest(self.publisher,seven);before={n:'1'*64 for n in seven};core_after={n:sha(Path(adapters.__file__).parent.parent/n) for n in adapters._SOURCE_CI_R3_CORE_PATHS}
+        for name in core_after:
+            p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((Path(adapters.__file__).parent.parent/name).read_bytes())
+        cache=self.root/'authority.blob';cache.write_text('synthetic authority input');cache.chmod(0o400)
+        self.s={'definition_hash':definitions.DEFINITION_HASH,'candidate_sha':'a'*40,'release_versions':{'qf01-p035':'a'*40},'plan':{'simulation':True,'release_units':[{'id':'qf01-p035'}]}}
+        self.owner={'definition_hash':definitions.DEFINITION_HASH,'candidate_sha':'b'*40,'candidate_manifest':self.after,'patches':{'once':{'completed':True,'node':'T03_BUILD'}},'results':{'T02_APPROVAL':{'artifact':'approval-result'}},'plan':{'profile':'technical','command':'GOVERNANCE','simulation':True,'parent_work':adapters._VT_WORK,'scope':{'paths':seven},'source_manifest':before,'rules':{},'proposal':{}}}
+        self.core={'candidate_sha':'c'*40,'candidate_manifest':core_after};self.policy={'schemaVersion':'qf01-r3-source-ci/1','work':adapters._VT_WORK,'sourceSHA':'a'*40,'definitionHash':definitions.DEFINITION_HASH,'implementationHash':'2'*64,'releaseUnit':'qf01-p035','ownerBeforeManifest':before,'ownerAfterManifest':self.after,'publisherRoot':'publisher','publisherFiles':self.after,'ownerCandidateSHA':'b'*40,'producerSHA':'b'*40,'coreResultRef':'core-t04','coreCandidateSHA':'c'*40,'coreAfterManifest':core_after,'widths':[320,390,430,1440],'counts':{'qfStates':179,'qfImages':179,'retainedStates':2111,'retainedImages':43},'validatorSHA256':hashlib.sha256(adapters._SOURCE_CI_R3_VALIDATOR_JS.encode()).hexdigest(),'maxBuildBytes':100_000_000,'maxQABytes':600_000_000,'materialRoot':'material','coreRoot':'core','authorityCache':{'path':'authority.blob','sha256':sha(cache)}}
+        self.rt=SimpleNamespace(root=self.root,state=lambda work:{adapters._VT_WORK:self.s,adapters._SOURCE_CI_R3_OWNER:self.owner,adapters._VT_OWNER:self.core}[work],integrity=lambda s:[],node_status=lambda s,n:'PASSED',approval=lambda s:{'id':'actual-unit-fixture-user','intent':'approve_proposal','verification_level':'simulation'},store=SimpleNamespace(get=lambda ref:{'user_event':'actual-unit-fixture-user'},events=lambda:[{'work':adapters._SOURCE_CI_R3_OWNER,'kind':'patch_applied','payload':{'after_manifest':self.after}}]))
+        self.freeze()
+    def tearDown(self):self.tmp.cleanup()
+    def freeze(self):
+        p=self.root/self.adapters._SOURCE_CI_R3_POLICY_PATH;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(self.policy));self.owner['plan']['rules'][self.adapters._SOURCE_CI_R3_POLICY_PATH]=sha(p);self.owner['plan']['proposal'].update(sourceCIPolicySHA256=sha(p),materialBinding={'work':self.adapters._VT_WORK,'sourceSHA':self.s['candidate_sha'],'releaseUnit':'qf01-p035'})
+    def load(self):
+        with patch('capabilities.implementation_hash',return_value='2'*64),patch('adapters._vt_owner',return_value=self.core):return self.adapters._sci_load(self.rt,self.adapters._VT_WORK,self.adapters._SOURCE_CI_R3_OWNER)
+    def test_separately_opted_policy_guards(self):
+        self.assertEqual(self.load()[1]['counts']['qfStates'],179)
+        mutations=[lambda p:p.update(schemaVersion='old'),lambda p:p.update(sourceSHA='e'*40),lambda p:p.update(definitionHash='e'*64),lambda p:p.update(implementationHash='e'*64),lambda p:p.update(ownerCandidateSHA='e'*40),lambda p:p.update(producerSHA='a'*40),lambda p:p.update(producerSHA='d'*40),lambda p:p.update(coreCandidateSHA='e'*40),lambda p:p.update(validatorSHA256='e'*64),lambda p:p['counts'].update(qfStates=124),lambda p:p.update(materialRoot='../escape'),lambda p:p.update(maxQABytes=2_000_000_000)]
+        original=copy.deepcopy(self.policy)
+        for mutate in mutations:
+            self.policy=copy.deepcopy(original);mutate(self.policy);self.freeze()
+            with self.assertRaises((Rejected,ValueError,KeyError)):self.load()
+        self.policy=original;self.freeze();self.assertEqual(self.load()[1]['sourceSHA'],'a'*40)
+    def test_cache_cannot_be_writable_or_changed(self):
+        cache=self.root/'authority.blob';cache.chmod(0o600)
+        with self.assertRaises(Rejected):self.load()
+        cache.write_text('changed');cache.chmod(0o400)
+        with self.assertRaises(Rejected):self.load()
+    def test_unknown_caller_owner_rejected_before_reading_state(self):
+        with self.assertRaises(Rejected):self.adapters.source_ci_verify(self.rt,self.adapters._VT_WORK,{'policy_work':'caller-invented-owner'})
+    def test_current_publisher_gate_and_one_patch_required(self):
+        self.rt.node_status=lambda s,n:'STALE'
+        with self.assertRaises(Rejected):self.load()
+        self.rt.node_status=lambda s,n:'PASSED';self.owner['patches']['twice']={'completed':True,'node':'T03_BUILD'}
+        with self.assertRaises(Rejected):self.load()
+    def test_registered_proof_rechecks_its_own_allowed_owner(self):
+        proof={'policy_work':self.adapters._SOURCE_CI_R3_OWNER};self.s['evidence']={'proof':{'kind':'source_ci','data':proof}}
+        with patch('adapters.source_ci_verify',return_value=proof) as verify:self.assertEqual(self.adapters._sci_registered(self.rt,self.adapters._VT_WORK,'proof'),proof)
+        verify.assert_called_once_with(self.rt,self.adapters._VT_WORK,{'policy_work':self.adapters._SOURCE_CI_R3_OWNER})

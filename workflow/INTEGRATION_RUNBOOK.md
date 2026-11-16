@@ -145,3 +145,19 @@ blockの`content_design_hash`、`construction_design_hash`、`layout_design_hash
 学習入力は`construction-visible/1`→`learner-visible-json/3`。typed mathと一意renderRefを使い、実寸法を保存する。未知はnullで、0を作らない。新schemaを旧モデルへ無指定で渡すと棄権する。agent協議は既定UNKNOWN、本人の実評価と合意票数を混ぜない。モデルはOFFLINE_ONLYのままで、自動fitや本番昇格は行わない。
 
 実行可能な受渡し順、incoming author packet、現target固定、resolverの完了条件は[TEAM_PROTOCOL.md](TEAM_PROTOCOL.md)を参照。式番号は各状態で現在見える最後の数式行を指す。
+
+## P046-R3限定の版移行と修復証拠連結
+
+この追記は `P046-R3-20261116`、親 `W-MATH-QF01-FULL-RELEASE-P035-20261115`、技術owner `W-TECH-QF01-VERSION-TRANSITION-P046-R3-20261116` だけを対象とする。未指定のWork・旧変換plan・resolve/adopt・queue規則は従来どおり。新しい正式Work状態は追加しない。
+
+原source SHA `1f10ecbcd088ca8636932c8df4c7b85293777efc` とopened snapshot、原二path manifestは保存する。今回の実preimage SHA `9e6d6798ac40624373db0a87e53e7d8938fb317a` は別の `source_extension` に記録する。追加current既存pathと新規pathはtyped `output_paths` としてblockに結ぶ。不存在fileを空の原資料に偽装しない。現在input/manifest/影響inventoryは全出力を含め、原資料参照と実current preimageを別に表示する。
+
+1. 技術ownerの正式T01/T02/T03を既存APIで行う。T03でworkflow sourceが変わった後は、旧Python processのimport値を新定義と呼ばない。fresh source-only processで実DEFINITION/serviceを導出し、既存の定義移行と現在T工程再検証を行い、T04を実新定義で完了する。旧prefix・旧成功patchイベントは保存する。
+2. `prepare-version-transition` は共同承認原文・固定仕様・T04実導出・source9e Git blobs・旧24採点・134本文/35登録簿・旧r2三原bytes・実compile・expectedAbsentを照合してから一度準備する。旧R01等のPASSは新PASSへ移植しない。prepareで失効したS00/S01を含む現在依存を再照合する。
+3. 最初の `patch` は有効なR06 claimと現承認・transition ref・実差分に限定する。全pathを先に検査し、新fileは排他作成、既存は原方式の原子置換。実after definition/serviceはfresh source-only processから記録する。中断時は既存 `reconcile-patch` の `RECORD_COMPLETED` または `RESTORE_BEFORE` のみ。未知bytesを上書き・削除しない。
+4. app実装変更によるservice失効を隠さない。初回patchの成功イベントを保ったまま、旧R06 claimを既存 `reconcile` の認める実語彙で解放する。成功patchをNOT_EXECUTEDと偽らない。実Git commit/object/限定差分/全候補・保護bytesを検証してafter candidateへbindし、現在実装で失効した全R01〜R05依存を再検査する。
+5. 新しいR06 claimから同じ `patch` を呼んだ場合、同transitionの一意な実完了・全after bytes・現在definition/service・現在compile・実Git candidateだけを再照合し `ALREADY_APPLIED_CURRENT_PROOF` を返す。二度目のfilewrite/patch_intent/patch_appliedは行わない。これはR06 PASSやsemantic受入を自動生成しない。新claimに現在の正規compile/検証結果を結合し、通常の提出を行う。
+6. R07/G2/公開/実host/本人G3_FINAL/事後sweep/R08/L01を各現在inputで完了する。旧r2のCI・画像・品質結果をr3認定へ転用しない。旧r2閲覧とr1保存、進捗非継承、元SVG保護、派生図・48px・aria・四幅は新sourceで検証する。
+7. `link-correction-receipt` は旧調査受付 `W-MATH-QF01-QUALITY-FOLLOWUP-20261115` の `SC-02`、`LAYOUT-SOURCE-04`、`P044-LAYOUT-TOUCH-48-01` のみ。原FAILとOPEN/DONEは変えず、元三件・承認・現在修復prefix・本人受入・事例・実app proofが全て一致した場合だけ派生充足を表示する。親Z01を前提とせず循環を避ける。元queueは別欄で残す。新issue/再open/source/実装/結果input/受付変更で充足は無効となる。一般のchild DONE要件は弱めない。
+
+承認仕様を超えるpath・新schema・任意policy・任意Work・旧guard除外が必要なら、このopt-inで通さず改訂停止とする。隔離候補の試験や静的見本を実App/正式R04/本人受入と同一視しない。

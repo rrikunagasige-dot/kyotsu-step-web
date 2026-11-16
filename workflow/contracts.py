@@ -32,7 +32,8 @@ def plan_check(p):
     need(len(p['source_sha'])==40 and all(c in '0123456789abcdef' for c in p['source_sha']),'元SHAが不正')
     need(p['blocks'] and len({b['id'] for b in p['blocks']})==len(p['blocks']),'ブロックが空または重複')
     for b in p['blocks']:
-        need(b['sources'] and set(b['sources'])<=set(p['source_manifest']),'ブロックの原資料が未登録')
+        need(b['sources'] and set(b['sources'])<=set(transition_sources(p)),'ブロックの原資料が未登録')
+    for b in p['blocks']:transition_block_paths(p,b)
     for name in p['source_manifest']:relative(name)
     for name in p['rules']:relative(name)
     for name in p['scope']['paths']:relative(name.removesuffix('/'))
@@ -78,3 +79,27 @@ def verify_git_export(content,expected_blob):
     actual=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
     need(actual==expected_blob,'正本Git blobとローカル書出しが一致しない')
     return hashlib.sha256(data).hexdigest()
+
+
+def transition_sources(plan):
+    """原source_manifestを不変に保ち、正規準備後のcurrent由来を別に扱う。"""
+    extension = plan.get('source_extension')
+    if extension is None:
+        return dict(plan['source_manifest'])
+    need(isinstance(extension, dict) and extension.get('schemaVersion') == 'version-transition-source/1', '版移行sourceの型が違う')
+    need(plan['work_id'] == 'W-MATH-QF01-FULL-RELEASE-P035-20261115', '登録外の版移行Work')
+    existing = extension.get('existing')
+    need(isinstance(existing, dict) and existing and extension.get('preparedProof'), '正規の版移行準備がない')
+    for path, value in existing.items():
+        relative(path)
+        need(isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value), '版移行source hashが不正')
+    return {**plan['source_manifest'], **existing}
+
+
+def transition_block_paths(plan, block):
+    outputs = block.get('output_paths', [])
+    if outputs:
+        need(plan.get('source_extension'), '版移行なしの新規output')
+        allowed = {**plan['source_extension'].get('existingOutputBindings', {}), **plan['source_extension'].get('outputs', {})}
+        need(isinstance(outputs, list) and len(outputs) == len(set(outputs)) and all(p in allowed and allowed[p]['block'] == block['id'] for p in outputs), '未登録又は別blockのoutput')
+    return list(dict.fromkeys(block['sources'] + outputs))

@@ -4,6 +4,29 @@ from pathlib import Path
 from definitions import instantiate,VERSION
 from store import canonical,digest
 
+def child_work_references(events, work):
+    """旧参照を推測して親子関係へ変換しない。原eventは不変。"""
+    children, unresolved = set(), []
+    for event in events:
+        if event.get('kind') != 'opened':
+            continue
+        plan = event['payload']['plan']
+        for field in ('parent_work', 'parent_impact', 'parent_issue'):
+            value = plan.get(field)
+            if value is None:
+                continue
+            if field == 'parent_work' and isinstance(value, str) and value:
+                reference = value
+            elif field != 'parent_work' and isinstance(value, dict) and isinstance(value.get('work'), str) and value['work']:
+                reference = value['work']
+            else:
+                unresolved.append({'child_work': event['work'], 'field': field, 'value': value,
+                                   'reason': '旧参照の意味が未確認。文字列から親Workを推測しない。'})
+                continue
+            if reference == work:
+                children.add(event['work'])
+    return sorted(children), unresolved
+
 def production_accepted(rt,s):
     if s['plan'].get('workflow_version') == 'production/2':
         units=s['plan']['release_units'];nodes=instantiate(s['plan'])
@@ -26,7 +49,13 @@ def snapshot(rt,work):
     if s['plan'].get('workflow_version') == 'production/2':
         from requests import pending
         result['correction_queue']=pending(rt,s)
-        result['child_works']=sorted({e['work'] for e in rt.store.events() if e['kind']=='opened' and (e['payload']['plan'].get('parent_work')==work or e['payload']['plan'].get('parent_impact',{}).get('work')==work or e['payload']['plan'].get('parent_issue',{}).get('work')==work)})
+        from requests import receipt_dispositions,_original_pending
+        dispositions=receipt_dispositions(rt,s)
+        if dispositions:
+            result['correction_receipt_dispositions']=dispositions
+            result['correction_queue_original']=_original_pending(rt,s)
+        result['child_works'], unresolved = child_work_references(rt.store.events(), work)
+        if unresolved: result['unresolved_parent_references'] = unresolved
         result['capability_receipts']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind']=='capability_bound']
         result['release_acceptance']={u['id']:rt.node_status(s,nodes['G3_FINAL@'+u['id']])=='PASSED' for u in s['plan']['release_units']}
     if s['plan'].get('agent_team'):
@@ -48,6 +77,8 @@ def rendered(rt,work):
     rows += ['| '+n['id']+' | '+n['actor']+' | '+n['status']+' | '+', '.join(n['depends_on'])+' |' for n in snap['nodes']]
     nxt=snap['next'];nextnode=nxt.get('task',{}).get('node',{}).get('id',nxt.get('node','—'))
     text=f"# {work} — 現在地（GENERATED）\n\n状態: {snap['work_status']} / 内部: {nxt['status']} / 次: {nextnode}\n\n台帳HEAD: `{snap['ledger_head']}`\n候補SHA: `{snap['candidate_sha']}`\n\n模擬実行: {snap['simulation']}。アプリ受入: {snap['application_accepted']}。技術試験合格だけで教材の品質は確定しない。\n\n"+'\n'.join(rows)+'\n\n待機理由: '+str(nxt.get('reason','—'))+'\n'
+    if snap.get('unresolved_parent_references'):
+        text += '\n未解決の旧親参照（原event不変）:\n' + json.dumps(snap['unresolved_parent_references'], ensure_ascii=False) + '\n'
     # 一画面の分岐図。詳細ノード・依存は上表とsnapshotに保持する。
     counts={a:sum(n['status']=='PASSED' for n in snap['nodes'] if n['actor']==a) for a in ('AI','TOOL','USER','AUDITOR')}
     def group(n):
@@ -102,7 +133,9 @@ def integration_diagrams(snap):
         key=('APPROVAL:'+n['approval_scope_ref']) if n['stage_kind'] in ('C06_APPROVAL','R05_APPROVAL') else (n['release_unit']+':'+('design' if n['phase'] in ('analysis','pre-design') else 'release' if n['phase'] in ('post-implementation','pre-release','release','acceptance') else 'learning')) if n['release_unit'] else n['stage_kind'];mapping[n['id']]=key;overview.setdefault(key,[]).append(n)
     groups={k:k+' '+str(sum(n['status']=='PASSED' for n in ns))+'/'+str(len(ns)) for k,ns in overview.items()}
     edges={(mapping[d],mapping[n['id']]) for n in nodes for d in n['depends_on'] if mapping[d]!=mapping[n['id']]}
+    unresolved_note = ['未解決の旧親参照: '+str(len(snap.get('unresolved_parent_references', [])))+'（親Workを推測しない。snapshotを参照）'] if snap.get('unresolved_parent_references') else []
     notes=['保留・修正queue: '+str(len(snap.get('correction_queue',[]))), '関連修正Work: '+(', '.join(snap.get('child_works',[])) or '—'), '差戻しは再分析・失効・子Workの台帳イベントで記録し、実行依存へ循環を入れない。']
+    notes += unresolved_note
     overall=draw('全体火柴図',groups,edges,notes)
     groups={n['id']:n['id']+' / '+n['actor']+' / '+n['status'] for n in nodes}
     edges={(d,n['id']) for n in nodes for d in n['depends_on']}

@@ -93,3 +93,26 @@ class MaterializationBinding(unittest.TestCase):
         with self.assertRaises(Rejected):bind_patch(self.rt,self.work,bad,[self.ev])
         bad=copy.deepcopy(delta);bad['files'][0]['after_text']='{}';bad['files'][0]['after_sha256']=hashlib.sha256(b'{}').hexdigest()
         with self.assertRaises(Rejected):bind_patch(self.rt,self.work,bad,[self.ev])
+
+
+class LegacyParentReferenceCompatibility(unittest.TestCase):
+    def test_parent_dict_string_null_and_unknown_do_not_mutate_history(self):
+        from views import child_work_references
+        events = [
+            {'kind':'opened','work':'dict','payload':{'plan':{'parent_issue':{'work':'parent','id':'i'}}}},
+            {'kind':'opened','work':'string','payload':{'plan':{'parent_issue':'parent'}}},
+            {'kind':'opened','work':'null','payload':{'plan':{'parent_issue':None}}},
+            {'kind':'opened','work':'unknown','payload':{'plan':{'parent_impact':['parent']}}},
+            {'kind':'opened','work':'direct','payload':{'plan':{'parent_work':'parent'}}},
+        ]
+        before = copy.deepcopy(events)
+        children, unresolved = child_work_references(events, 'parent')
+        self.assertEqual(children, ['dict','direct'])
+        self.assertEqual({v['child_work'] for v in unresolved}, {'string','unknown'})
+        self.assertEqual(events, before)
+    def test_legacy_opaque_string_is_never_inferred_as_work(self):
+        from views import child_work_references
+        events = [{'kind':'opened','work':'child','payload':{'plan':{'parent_issue':'known-work'}}}]
+        children, unresolved = child_work_references(events, 'known-work')
+        self.assertEqual(children, [])
+        self.assertEqual(unresolved[0]['value'], 'known-work')

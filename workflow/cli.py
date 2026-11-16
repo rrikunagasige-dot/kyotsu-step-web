@@ -4,11 +4,11 @@ import argparse,json,sys
 from runtime import Runtime
 from definitions import instantiate
 from views import snapshot,render
-from adapters import apply_patch,git_export,authoring,import_capture,probe_app,reconcile_patch
+from adapters import apply_patch,git_export,authoring,import_capture,probe_app,reconcile_patch,prepare_version_transition,reconcile_version_transition
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',default='.');p.add_argument('--store',required=True)
-    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target'])
+    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target','prepare-version-transition','reconcile-version-transition','link-correction-receipt'])
     p.add_argument('--work');p.add_argument('--json',help='JSONファイル。省略時は標準入力（next/status/autoには不要）');p.add_argument('--out');p.add_argument('--check',action='store_true')
     a=p.parse_args();rt=Runtime(a.store,a.root)
     noinput=a.operation in ('next','status','auto','render','recover-lock','production-ai','production-diagram','team-policy')
@@ -69,6 +69,11 @@ def main():
     elif op=='reconcile':r=rt.reconcile_claim(w,**data)
     elif op=='issue':r=rt.issue(w,data)
     elif op=='resolve':r=rt.resolve_issue(w,**data)
+    elif op=='prepare-version-transition':r=prepare_version_transition(rt,w,**data)
+    elif op=='reconcile-version-transition':r=reconcile_version_transition(rt,w,**data)
+    elif op=='link-correction-receipt':
+        from requests import link_correction_receipt
+        r=link_correction_receipt(rt,w,**data)
     elif op=='patch':r=apply_patch(rt,w,**data)
     elif op=='render':r=render(rt,w,a.out,check=a.check)
     elif op=='export':r=git_export(rt,w,**data)

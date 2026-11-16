@@ -1,5 +1,5 @@
 """production/2 contracts and scoped runtime helpers. No semantic auto-PASS."""
-from contracts import need, result_check
+from contracts import need, result_check,transition_sources,transition_block_paths
 from store import digest
 from graphs import normalized
 
@@ -26,6 +26,7 @@ def bundle_fingerprint(s, bundle):
         content['presentations'] = presentations
     contracts = {b['id']: {key: b[key] for key in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash') if b.get(key)} for b in blocks}
     if any(contracts.values()): content['construction_layout_contracts'] = contracts
+    if s['plan'].get('source_extension'):content['version_transition']=s['plan']['source_extension']
     return digest(content)
 
 
@@ -55,7 +56,7 @@ def input_hash(rt, s, node):
     contract_hashes = {b['id']: {k: b[k] for k in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash') if b.get(k)} for b in blocks}
     if any(contract_hashes.values()) and facets.intersection({'math', 'design', 'render'}): base['construction_layout_contracts'] = contract_hashes
     if node['phase'] in ('post-implementation', 'pre-release', 'release', 'acceptance', 'post-fix', 'repair-finalization', 'learning', 'closure'):
-        paths = {path for b in blocks for path in b['sources']}
+        paths = {path for b in blocks for path in transition_block_paths(p,b)}
         base['candidate'] = {path: s['candidate_manifest'].get(path) for path in paths}
         # A per-unit SHA is frozen by the host result; unrelated subsequent releases do not erase acceptance.
         host = s['results'].get('G3_HOST@' + str(node['release_unit']))
@@ -65,6 +66,7 @@ def input_hash(rt, s, node):
         base['feedback'] = [e['payload'] for e in rt.store.events() if e['work'] == p['work_id'] and e['kind'] == 'feedback_captured' and (node['stage_kind']!='R01_CAPTURE' or e['payload'].get('quality')=='NEGATIVE')]
         # Resolution is downstream bookkeeping; do not invalidate its own supporting proof.
         base['issues'] = {k: {a: b for a, b in v.items() if a != 'resolved_by'} for k, v in s['issues'].items()}
+    if p.get('source_extension'):base['version_transition']=p['source_extension']
     if node['capability_requests']:
         from capabilities import implementation_hash
         base['services']=implementation_hash(rt)
@@ -118,6 +120,14 @@ def check_result(rt, work, node, result):
         contracts = {target: b[key] for key, target in (('construction_design_hash', 'constructionDesignHash'), ('layout_design_hash', 'layoutDesignHash'), ('learner_copy_hash', 'learnerCopyHash')) if b.get(key)}
         if b.get('presentation_design_hash') or contracts:
             need(compiled_design_matches([rt.store.get(r['output']) for r in receipts], expected, b.get('presentation_design_hash'), contracts), 'compile表示・組立・本文契約と承認済みhashが違う')
+        if node['stage_kind']=='R06_PATCH' and s.get('version_transition'):
+            need(result.get('version_transition_proof'),'版移行R06には一回適用後の現在proofが必要')
+            from adapters import _vt_current_transition,_vt_completed_patch_proof
+            t=_vt_current_transition(rt,work,s,digest(s['version_transition']))
+            completed=[(op,row) for op,row in s['patches'].items() if row.get('completed') and row.get('transition_ref')==digest(t) and row.get('patch_hash')==t['patchHash']]
+            proof=_vt_completed_patch_proof(rt,work,s,t,rt.store.get(t['patchHash']),completed)
+            need(result['version_transition_proof']==proof,'自己申告の版移行afterproofを受理しない')
+
     if node['stage_kind'] == 'G2_AUDIT':
         need(result['release_readiness'] in ('READY', 'BLOCKED') and result['impact_sweep_completion'] in ('COMPLETE', 'QUEUED', 'BLOCKED'), '公開可否と影響完了を別記する')
         need(result['audit_method'].get('method') and result['audit_method'].get('reviewer'), '監査方法・担当がない')

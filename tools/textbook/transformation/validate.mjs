@@ -15,6 +15,7 @@ export function gradingContract(ir){
  return ir.nodes.filter(n=>n.interaction).map(n=>n.interaction);
 }
 export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
+ if(Object.hasOwn(input??{},'mixedCanonical'))return validateMixedCanonicalPlan(ir,input,{verifyMath});
  if(input?.schemaVersion==='transformation-plan/3')return validateTransformationV3(ir,input,{verifyMath});
  if(input?.schemaVersion==='transformation-plan/2')return validateTransformationV2(ir,input,{verifyMath},validateTransformationPlan);
  const parsed=planSchema.safeParse(input);if(!parsed.success)return {status:'FAIL',findings:[{ruleId:'TG_SCHEMA',detail:parsed.error.message}]};
@@ -112,4 +113,81 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
  const consumed=new Set(p.groups.flatMap(g=>g.rows.flatMap(r=>r.sourceRefs)));
  if(blocks.some(id=>!consumed.has(id)))add('TG03_COVERAGE','unconsumed source block');
  return {status:findings.length?'FAIL':'PASS',findings,mathReceipts,baseIRHash:hash(ir),planHash:hash(input),learnerCopyHash:hash(p.proseOverrides?{rows:p.groups.flatMap(g=>g.rows.map(r=>[r.before,r.after])),proseOverrides:p.proseOverrides}:p.groups.flatMap(g=>g.rows.map(r=>[r.before,r.after]))),meaningAuditRequired:true};
+}
+
+/** QF r3: existing v3 without mixedCanonical keeps its original branch. */
+import {verifyMixedOwnerBinding,mixedCanonicalHash} from './schema.mjs';
+import {validateIR} from '../ir/index.mjs';
+import {validateConstructionPlan,verifyConstructionMath} from '../interaction/construction.mjs';
+import {validateLayoutPlan} from '../layout/plan.mjs';
+
+export function validateMixedCanonicalPlan(ir,p,{verifyMath=true}={}){
+ const findings=[],add=(ruleId,detail)=>findings.push({ruleId,detail});
+ const eq=(a,b)=>hash(a)===hash(b),uniq=a=>new Set(a).size===a.length;
+ try{
+  if(p.schemaVersion!=='transformation-plan/3'||p.mixedCanonical!=='qf01-r3/1'||p.unitId!=='math-quadratic-qf01'||p.revision!==3)throw Error('MIXED_EXACT_OPT_IN');
+  if(p.baseIRHash!==hash(ir)||!eq(p.sourceIR,ir))add('TG12_HASH','source IR');
+  if(p.canonical?.fullLessonRawSHA256!=='cfc439665418ca87d907e5a79d66a6a994b387af1a6395865b8d65a5a2075bf6'||p.canonical?.interactionsRawSHA256!=='31419c379a9204181b0f8c7c8c3277594ca5a492c86b8743e9be38eb861ec0fe')add('TG03_COVERAGE','approved author sources');
+  if(hash(p.canonical.fullLesson)!=='cfc439665418ca87d907e5a79d66a6a994b387af1a6395865b8d65a5a2075bf6'||hash(p.canonical.interactions)!=='35fbc9cd6e4396708a37fd8345895c8ad1b0227150a374f5c9230892809d2bfe')add('TG03_COVERAGE','approved canonical body changed');
+  const expectedMetadata={"FRAME_CONTRACT.json": "3abaf9c0fac6c992aff505cee78fea6829531611f538d8543f9dcc421a56bce5", "RESULT_REGISTRY.json": "480a9d92b9b3d7e9fe3ee311222fe98661e5f320504738254a71d16b53947ecd", "INTERACTION_REFERENCES.json": "84435e202c6da1309ed0852e17a319511e0e4966c177388a6b98633e8ab9eb69", "STAGE_HISTORY_CONTRACT.json": "554d0c90148b16a404d380717d5c46e6cfbd0b8d5b6f25986d8ef94179d71608", "FIGURE_POLICY.json": "7513c57aa480729a49d40092db80dc16355794c098d445816e6a956187dd870d", "STATE_CONTRACT.json": "b5372167931023be7b305486ea980865b64ca393106c76cb03e030e3ad2a0f6c", "STATIC_PREVIEW_STATES.json": "722b1b09b3b24a4fdc3e514248f5e89327de2a7b7f4a931a0046f56912e625cb"};if(!eq(Object.keys(p.presentation).sort(),Object.keys(expectedMetadata).sort()))add('TG03_COVERAGE','presentation keys');for(const [name,expected]of Object.entries(expectedMetadata))if(hash(p.presentation[name]?.value)!==expected)add('TG03_COVERAGE','presentation '+name);
+  const full=p.canonical.fullLesson,source=p.canonical.interactions,blocks=new Map(full.blocks.map(b=>[b.id,b])),items=source.interactions,targets=new Map(items.map(i=>[i.id,i]));
+  if(blocks.size!==134||full.blocks.length!==134||items.length!==35||targets.size!==35)throw Error('MIXED_CANONICAL_COVERAGE');
+  if(!Array.isArray(p.sourceBindings)||p.sourceBindings.length!==134||!uniq(p.sourceBindings.map(b=>b.canonicalBlockId))||!uniq(p.sourceBindings.map(b=>b.irNodeId)))throw Error('MIXED_SOURCE_BINDING_COVERAGE');
+  const irChecked=validateIR(ir);if(irChecked.status!=='PASS')add('TG_SOURCE_IR',irChecked);
+  const nodes=new Map(ir.nodes.map(n=>[n.id,n]));
+  for(const [order,b]of full.blocks.entries()){
+   const binding=p.sourceBindings[order],node=nodes.get(binding.irNodeId),item=items.find(i=>i.source.blockId===b.id);
+   if(binding.canonicalOrder!==order||binding.canonicalBlockId!==b.id||binding.canonicalBlockSHA256!==mixedCanonicalHash(b)||binding.canonicalType!==b.type||!node||!node.sourceRefs.includes(b.id))add('TG03_COVERAGE',b.id);
+   if(binding.interactionId!==(item?.id??null)||!eq(binding.targetRef,item?.source??null)||!eq(binding.pendingProjection,item?.projection.pending??null)||!eq(binding.correctProjection,item?.projection.correct??null))add('TG06_BINDING',b.id);
+   if(!node)continue;
+   if(item){const c=node.interaction;if(!c||c.id!==item.id||c.expected.value!==item.correct||!eq(c.choices.map(c=>c.content),item.choices)||!eq(c.prerequisiteIds,item.progressionRequires)||!eq(binding.completionResultUnit,item.completionResultUnit))add('TG11_STABLE_SAVE',item.id)}
+   const tokens=[...node.before,...node.after].flatMap(block=>block.parts??block.expressions?.flatMap(e=>e.parts)??[]),mapped=binding.tokenBindings;
+   if(tokens.length!==mapped.length||!uniq(mapped.map(t=>t.tokenId)))add('TG03_COVERAGE','token count '+b.id);
+   for(const m of mapped){const token=tokens.find(t=>t.id===m.tokenId),part=b.parts?.[m.sourcePartIndex],piece=m.projectionPiece;if(!token||!part||m.sourcePartSHA256!==mixedCanonicalHash(part)){add('TG03_COVERAGE','source token '+m.tokenId);continue}
+    if(piece.kind==='slot'){if(!item||m.sourcePartIndex!==item.source.partIndex||token.kind!=='answerSlot'||token.interactionId!==item.id)add('TG06_BINDING',m.tokenId)}
+    else if(piece.kind==='whole-part'){if(part.type==='math'?(token.kind!=='math'||token.latex!==part.latex):(token.kind!=='text'||token.text!==part.text))add('TG03_COVERAGE','changed token '+m.tokenId)}
+    else if(piece.kind==='text-span'){if(part.type!=='text'||!Number.isInteger(piece.start)||!Number.isInteger(piece.end)||piece.start<0||piece.end<piece.start||piece.end>part.text.length||token.kind!=='text'||token.text!==part.text.slice(piece.start,piece.end))add('TG08_VISIBILITY','text span '+m.tokenId)}
+    else add('TG06_BINDING','unknown projection');
+   }
+  }
+  if(!eq(p.requiredInteractionRefs,items.map(i=>i.id)))add('TG03_COVERAGE','required interaction order');
+  const maths=items.filter(i=>i.answerDomain==='math'),semantics=items.filter(i=>i.answerDomain==='semantic');
+  if(maths.length!==27||semantics.length!==8||p.astBindings.length!==27||!uniq(p.astBindings.map(b=>b.interactionId)))add('TG06_BINDING','typed domain coverage');
+  for(const item of maths){const b=p.astBindings.find(b=>b.interactionId===item.id);if(!b||!eq(b.canonicalTargetRef,item.source)||b.expected.gradingValue!==item.correct||!eq(b.expected.choices,item.choices)){add('TG06_BINDING',item.id);continue}const receipt=verifyMixedOwnerBinding(b,blocks,p.functionDefinitions);if(receipt.status!=='PASS')add('TG06_BINDING',{interactionId:item.id,receipt})}
+  for(const c of p.constructionPlan.interactions){
+   const item=targets.get(c.id),owner=p.astBindings.find(b=>b.interactionId===c.id);
+   if(!item||item.answerDomain!=='math'||!owner||!eq(c.expectedStatement,owner.targetStatement)||c.sourceNodeId!==item.nodeId||!c.sourceRefs.includes(item.source.blockId)||c.parts.length!==1||c.parts[0].expected!==item.correct||!eq(c.parts[0].choices.map(c=>c.value),item.choices)||!eq(c.prerequisiteInteractionIds,item.progressionRequires))add('TG06_BINDING','construction source/target '+c.id);
+  }
+  const construction=validateConstructionPlan(p.constructionPlan);if(construction.status!=='PASS')add('TG_CONSTRUCTION',construction);
+  const layout=validateLayoutPlan(p.layoutPlan,{nodeIds:ir.nodes.map(n=>n.id),interactionIds:items.map(i=>i.id),partIds:p.constructionPlan.interactions.flatMap(i=>i.parts.map(p=>p.id))});if(layout.status!=='PASS')add('TG_LAYOUT',layout);
+  if(p.constructionDesignHash!==hash(p.constructionPlan)||p.layoutDesignHash!==hash(p.layoutPlan))add('TG12_HASH','construction/layout contract');
+  if(findings.length)return {status:'FAIL',findings};
+  const mathReceipts=[];if(verifyMath){const receipt=verifyConstructionMath(p.constructionPlan);if(receipt.status!=='PASS')return receipt;mathReceipts.push(receipt)}
+  const constructionIds=new Set(p.constructionPlan.interactions.map(i=>i.id)),remaining=maths.filter(i=>!constructionIds.has(i.id));
+  // Hash/formatter matching cannot authorize ungenerated mathematical receipts.
+  const evidence=p.mathEvidence;
+  if(!evidence)return {status:'UNVERIFIED',findings:[{ruleId:'TG05_MIXED_EVIDENCE_PENDING',detail:remaining.map(i=>i.id)}],mathReceipts,meaningAuditRequired:true};
+  if(evidence.schemaVersion!=='qf01-mixed-math-evidence/1'||!eq(evidence.canonicalSourceHashes,{fullLesson:p.canonical.fullLessonRawSHA256,interactions:p.canonical.interactionsRawSHA256}))throw Error('MIXED_MATH_SOURCE');
+  const coverage=evidence.coverage,argumentsById=new Map(evidence.arguments.map(a=>[a.interactionId,a])),graphs=new Map(evidence.graphs.map(g=>[g.id,g]));
+  if(!eq(coverage.map(c=>c.interactionId),remaining.map(i=>i.id))||argumentsById.size!==remaining.length||evidence.arguments.length!==remaining.length||graphs.size!==evidence.graphs.length)throw Error('MIXED_MATH_COVERAGE');
+  const usedGraphs=new Set();
+  for(const item of remaining){
+   const a=argumentsById.get(item.id),c=coverage.find(c=>c.interactionId===item.id);
+   if(!a||a.kind!=='argument'||!a.claim||!a.assumptions?.length||!a.steps?.length||!a.sourceRefs?.length||a.formalProof!==false||a.proofStatus!=='SOURCE_BACKED_ARGUMENT_REQUIRES_CURRENT_AI_AUDIT'||!eq(a.targetRef,item.source)||!eq(a.knownBeforeAnswerRefs,item.evidenceRefs)||c.sourceArgumentRequired!==true||c.formalProof!==false)throw Error('MIXED_ARGUMENT_CONTRACT '+item.id);
+   const checkSource=ref=>{const block=blocks.get(ref.blockId);if(!block||hash(block)!==ref.blockHash||block.contextId!==ref.contextId)throw Error('MIXED_ARGUMENT_SOURCE '+item.id)};
+   a.sourceRefs.forEach(checkSource);
+   const basis=new Map(a.basisBindings.map(b=>[b.id,b]));if(basis.size!==a.basisBindings.length)throw Error('MIXED_ARGUMENT_BASIS_DUPLICATE');
+   for(const b of basis.values()){if(!b.sourceRefs?.length)throw Error('MIXED_ARGUMENT_BASIS_EMPTY');b.sourceRefs.forEach(checkSource)}
+   for(const [j,step]of a.steps.entries())if(!step.statement||!step.basisRefs?.length||step.basisRefs.some(id=>!basis.has(id))||!Array.isArray(step.dependsOn)||step.dependsOn.some(d=>!Number.isInteger(d)||d<0||d>=j))throw Error('MIXED_ARGUMENT_DEPENDENCY '+item.id);
+   for(const step of a.steps)if(step.verificationSourceRefs){
+    if(!Array.isArray(step.verificationSourceRefs)||step.verificationSourceRefs.some(id=>!basis.has(id)||step.basisRefs.includes(id))||!['after-inverse-and-sufficiency-proof','post-construction-sufficiency-verification'].includes(step.visibilityPhase))throw Error('MIXED_FUTURE_VERIFICATION_SOURCE');
+   }
+   if(!eq(a.machineGraphRefs.map(r=>r.graphId),c.machineGraphIds))throw Error('MIXED_GRAPH_COVERAGE '+item.id);
+   for(const r of a.machineGraphRefs){const g=graphs.get(r.graphId);if(!g||hash(g)!==r.inputHash)throw Error('MIXED_GRAPH_HASH');usedGraphs.add(g.id)}
+  }
+  if(usedGraphs.size!==graphs.size)throw Error('MIXED_EXTRA_GRAPH');
+  if(verifyMath)for(const graph of graphs.values()){const receipt=verifySolution(graph);mathReceipts.push({graphId:graph.id,...receipt});if(receipt.status!=='PASS')return {status:'FAIL',findings:[{ruleId:'TG05_MIXED_GRAPH',detail:receipt}],mathReceipts}}
+  return {status:'PASS',findings:[],baseIRHash:hash(ir),planHash:hash(p),constructionDesignHash:hash(p.constructionPlan),layoutDesignHash:hash(p.layoutPlan),learnerCopyHash:hash({canonical:p.canonical,presentation:p.presentation}),mathReceipts,
+   argumentReceipts:evidence.arguments.map(a=>({interactionId:a.interactionId,inputHash:hash(a),status:'NEEDS_AI_REVIEW',formalProof:false,proofStatus:'SOURCE_BACKED_ARGUMENT_REQUIRES_CURRENT_AI_AUDIT'})),meaningAuditRequired:true,formalProof:false};
+ }catch(error){return {status:'FAIL',findings:[...findings,{ruleId:'MIXED_SCHEMA',detail:error.message}]}}
 }

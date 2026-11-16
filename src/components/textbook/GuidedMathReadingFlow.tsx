@@ -12,9 +12,16 @@ import { SolutionReadingSchema } from '../../domain/solutionReading'
 import { useI18n } from '../../i18n/runtime'
 import { TransformationReadingGroup } from './TransformationReadingGroup'
 import { TransformationReadingSchema, projectTransformationView } from '../../domain/transformationReading'
+import { ReadingStageFrame } from './ReadingStageFrame'
+import { canonicalReadingSourceView, recordedReadingSourceView } from '../../domain/readingSourceViews'
+import { readingLayoutBlockAttributes, readingLayoutChainAttributes, qf01ReadingLayoutProfile } from './readingLayoutPolicy'
+import { TextbookFigure } from './TextbookFigure'
+import { validateQF01R3Reading, qf01R3Solved, projectQF01R3Block, formatQF01R3Owner, type QF01R3Validated } from '../../domain/transformationReading'
 import './guided-math-reading.css'
 
 type Props = {
+  readingPresentation?: unknown
+  readOnlyArchive?: boolean
   transformationPresentation?: unknown
   presentation: unknown; unit: TextbookUnit; section: TextbookSection; progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
@@ -56,6 +63,7 @@ function GuidedNumberedEquation({ number, children, logical = false }: { number:
 }
 
 export function GuidedMathReadingFlow(props: Props) {
+  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 3) return <R3QF01ReadingFlow {...props} />
   if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 2) return <FullQF01ReadingFlow {...props} />
   if (props.presentation && typeof props.presentation === 'object' && 'schemaVersion' in props.presentation && props.presentation.schemaVersion === 'solution-reading/1') {
     return <SolutionTextbookAdapter {...props} />
@@ -332,7 +340,7 @@ function FullQF01ReadingFlow(props: Props) {
   return <ValidatedFullQF01ReadingFlow {...props} data={data} plan={plan} />
 }
 
-function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, storageScope, onSummaryReached, onReviewAnswer }: Props & { data: Presentation; plan: import('../../domain/transformationReading').TransformationReading }) {
+function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, storageScope, onSummaryReached, onReviewAnswer, readOnlyArchive = false }: Props & { data: Presentation; plan: import('../../domain/transformationReading').TransformationReading }) {
   const answer = useAppStore(state => state.answerTextbook)
   const current = effectiveTextbookProgress(unit, progress)
   const contextId = useId()
@@ -375,7 +383,7 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
     if (r.top < top || r.top > bottom - 44) window.scrollBy({ top: r.top - top, behavior: 'auto' })
     else if (r.bottom > bottom && r.height <= bottom - top) window.scrollBy({ top: r.bottom - bottom, behavior: 'auto' })
   }, [viewportBounds])
-  useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
+  useEffect(() => { if (!readOnlyArchive) window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey, readOnlyArchive])
   useEffect(() => { onSummaryReached?.(false) }, [onSummaryReached])
   useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
   const focusRevealFrame = useRef<number | null>(null)
@@ -460,10 +468,10 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
   const slot = (id: string) => {
     const item = items.find(i => i.id === id)!
     if (resolved(id)) return <span data-testid={'resolved-' + id}>{value(id, item.answer)}</span>
-    return <button type="button" className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot data-testid={'textbook-item-' + id} aria-label="式中の空欄" aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
+    return <button type="button" disabled={readOnlyArchive} className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot data-testid={'textbook-item-' + id} aria-label="式中の空欄" aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
   }
   const panel = (id: string) => {
-    if (resolved(id)) return null
+    if (readOnlyArchive || resolved(id)) return null
     const item = items.find(i => i.id === id)!, node = data.nodes.find(n => n.interaction === id)!, record = current?.answers[id]
     const wrong = record && !resolved(id), display = data.semanticDisplay[node.id]
     // Saved feedback survives reload; opening the choices still requires a tap.
@@ -504,4 +512,334 @@ function ValidatedFullQF01ReadingFlow({ unit, section, progress, data, plan, sto
       {first < 0 && stageIndex === data.stages.length - 1 && <p data-testid="qf01-complete">ここまでの解答を終えました。説明は前の段階から読み直せます。</p>}
     </section>
   </div>
+}
+
+
+function R3QF01ReadingFlow(props: Props) {
+  const [source, setSource] = useState<QF01R3Validated | null>(null)
+  const [error, setError] = useState(false)
+  useEffect(() => {
+    let active = true
+    setSource(null); setError(false)
+    validateQF01R3Reading(props.unit, props.readingPresentation).then(value => { if (active) setSource(value) }).catch(() => { if (active) setError(true) })
+    return () => { active = false }
+  }, [props.unit, props.readingPresentation])
+  if (error) return <p role="alert" data-testid="qf01-r3-binding-error">教材と学習記録の対応を確認できません。本文は表示していません。</p>
+  if (!source || source.unit !== props.unit || source.metadata !== props.readingPresentation) return <p role="status">教材の対応を確認しています。</p>
+  return <ValidatedR3QF01ReadingFlow {...props} source={source} />
+}
+
+// R3 feedback comes from canonical prose, not a second question-specific answer map.
+// Keep a complete expression (including signed parenthesized factors) in one math unit.
+export function R3FeedbackMath({ text, sourceId, unitId }: { text: string | null | undefined; sourceId: string; unitId: string }) {
+  const copy = (text ?? '').replace(/\\+(?=[A-Za-z])/g, '\\')
+  const leaf = String.raw`(?:\d+(?:\.\d+)?|[A-Za-z]+|[縦横])`
+  const expression = (depth: number): string => {
+    const base = depth ? String.raw`(?:${leaf}|\(${expression(depth - 1)}\))` : leaf
+    const atom = String.raw`[-−]?${base}(?:\^(?:\{[-+]?\d+\}|[-+]?\d+)|²)?`
+    return String.raw`${atom}(?:\s*(?:(?:\\times|\\cdot|[+−\-×=<>≤≥])\s*)?${atom})*`
+  }
+  const pattern = new RegExp(expression(3), 'g'), parts: ReactNode[] = []
+  let end = 0
+  for (const match of copy.matchAll(pattern)) {
+    if (match.index! > end) parts.push(copy.slice(end, match.index))
+    const latex = match[0].replaceAll('−', '-').replaceAll('×', '\\times ').replaceAll('²', '^2').replace(/[縦横]/g, label => '\\text{' + label + '}')
+    parts.push(<TypesetInlineMath key={match.index} latex={latex} sourceId={sourceId + '-' + match.index} unitId={unitId} />)
+    end = match.index! + match[0].length
+  }
+  parts.push(copy.slice(end))
+  return <>{parts}</>
+}
+
+function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageScope, onReviewAnswer, onSummaryReached }: Props & { source: QF01R3Validated }) {
+  const answer = useAppStore(state => state.answerTextbook)
+  const progressState = (() => { try { return { value: effectiveTextbookProgress(unit, progress), error: false } } catch { return { value: undefined, error: true } } })()
+  const current = progressState.value, m = source.metadata
+  const solved = qf01R3Solved(source, current?.answers)
+  const stages = m.viewContracts.STAGE_HISTORY_CONTRACT.stages
+  const firstQ = m.interactions.find(q => !solved.has(q.id))
+  const maxStage = firstQ ? stages.findIndex(s => s.stageId === firstQ.stageId) : stages.length - 1
+  const storageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r3' + (storageScope ? ':scope:' + storageScope : '')
+  const [cursor, setCursor] = useState(() => { const value = Number(window.localStorage.getItem(storageKey) ?? 0); return Number.isInteger(value) && value >= 0 ? Math.min(value, maxStage) : 0 })
+  const stageIndex = Math.min(cursor, maxStage), stageInfo = stages[stageIndex], stage = { id: stageInfo.stageId }
+  const currentQ = m.interactions.find(q => q.stageId === stage.id && !solved.has(q.id) && q.progressionRequires.every(id => solved.has(id)))
+  const frame = m.viewContracts.FRAME_CONTRACT.frames.find(f => f.contextId === stageInfo.contextId)!
+  const complete = stageInfo.availableWhen.allSolved.every(id => solved.has(id))
+  const [activeId, setActiveId] = useState<string | null>(null), [helpId, setHelpId] = useState<string | null>(null)
+  const [history, setHistory] = useState(false), [fullHistory, setFullHistory] = useState(false), [repeatContext, setRepeatContext] = useState(false)
+  const contextId = useId(), flow = useRef<HTMLDivElement>(null), context = useRef<HTMLDivElement>(null)
+  const data = { nodes: m.interactions.map(q => ({ id: q.nodeId, stageId: q.stageId, interaction: q.id })) }
+  const resolved = (id: string) => solved.has(id)
+  const first = firstQ ? m.interactions.indexOf(firstQ) : -1
+  const viewportBounds = useCallback(() => {
+    let top = 0, bottom = innerHeight
+    for (const element of document.querySelectorAll<HTMLElement>('header, nav, [data-fixed-header]')) {
+      const style = getComputedStyle(element), r = element.getBoundingClientRect()
+      if (style.position !== 'fixed' && style.position !== 'sticky') continue
+      // A fixed bottom navigation is an obstruction below, never a top header.
+      if (Number.isFinite(Number.parseFloat(style.top)) && r.top < innerHeight / 2) top = Math.max(top, r.bottom)
+      else if (style.position === 'fixed' && Number.isFinite(Number.parseFloat(style.bottom)) && r.top > innerHeight / 2) bottom = Math.min(bottom, r.top)
+    }
+    return { top: top + 12, bottom: bottom - 12 }
+  }, [])
+  const reveal = useCallback((target: HTMLElement | null) => {
+    if (!target) return
+    const { top, bottom } = viewportBounds(), r = target.getBoundingClientRect()
+    flow.current?.style.setProperty('--qf01-header-clearance', top + 'px')
+    if (r.top < top || r.top > bottom - 48) window.scrollBy({ top: r.top - top, behavior: 'auto' })
+    else if (r.bottom > bottom && r.height <= bottom - top) window.scrollBy({ top: r.bottom - bottom, behavior: 'auto' })
+  }, [viewportBounds])
+  useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
+  useEffect(() => { onSummaryReached?.(false) }, [onSummaryReached])
+  useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
+  const focusRevealFrame = useRef<number | null>(null)
+  const pointerFocusTarget = useRef<HTMLElement | null>(null)
+  const syncRepeatedContext = useCallback(() => {
+    const r = context.current?.getBoundingClientRect(), bounds = viewportBounds()
+    setRepeatContext(Boolean(r && (r.top < bounds.top || r.bottom > bounds.bottom)))
+  }, [viewportBounds])
+  const cancelFocusReveal = useCallback(() => {
+    if (focusRevealFrame.current !== null) cancelAnimationFrame(focusRevealFrame.current)
+    focusRevealFrame.current = null
+  }, [])
+  const revealFocusedChoice = useCallback((target: HTMLElement) => {
+    cancelFocusReveal()
+    // Preserve the pointer press/click transaction: its focus uses the existing reveal.
+    if (pointerFocusTarget.current === target) { reveal(target); return }
+    const stillCurrent = () => document.activeElement === target && Boolean(flow.current?.querySelector('.math-textbook-stage--current')?.contains(target))
+    const adjust = () => { if (stillCurrent()) { reveal(target); syncRepeatedContext() } }
+    adjust()
+    // Repeated source context can be inserted by the focus-triggered scroll.
+    // Remeasure after that commit, then settle once more after its scroll event.
+    // These frames belong only to this explicit focus; manual scroll never starts them.
+    focusRevealFrame.current = requestAnimationFrame(() => {
+      adjust()
+      focusRevealFrame.current = requestAnimationFrame(() => {
+        focusRevealFrame.current = null
+        if (stillCurrent()) reveal(target)
+      })
+    })
+  }, [cancelFocusReveal, reveal, syncRepeatedContext])
+  useEffect(() => {
+    const clearPointer = () => { pointerFocusTarget.current = null }
+    const keyboardInput = () => { clearPointer(); cancelFocusReveal() }
+    window.addEventListener('pointerdown', cancelFocusReveal, true)
+    window.addEventListener('pointerup', clearPointer)
+    window.addEventListener('pointercancel', clearPointer)
+    window.addEventListener('blur', keyboardInput)
+    window.addEventListener('wheel', cancelFocusReveal, { passive: true })
+    window.addEventListener('touchstart', cancelFocusReveal, { passive: true })
+    window.addEventListener('keydown', keyboardInput)
+    return () => {
+      cancelFocusReveal()
+      window.removeEventListener('wheel', cancelFocusReveal)
+      window.removeEventListener('touchstart', cancelFocusReveal)
+      window.removeEventListener('keydown', keyboardInput)
+      window.removeEventListener('pointerdown', cancelFocusReveal, true)
+      window.removeEventListener('pointerup', clearPointer)
+      window.removeEventListener('pointercancel', clearPointer)
+      window.removeEventListener('blur', keyboardInput)
+      clearPointer()
+    }
+  }, [cancelFocusReveal])
+  // Clear the old stage before the current layout effect schedules its reveal.
+  useLayoutEffect(() => { cancelFocusReveal(); pointerFocusTarget.current = null }, [stageIndex, cancelFocusReveal])
+  const activeValue = activeId ? current?.answers[activeId]?.value : undefined
+  const activeAttemptCount = activeId ? current?.answers[activeId]?.attemptCount : undefined
+  const lastResolvedNodeId = [...data.nodes].reverse().find(node => node.stageId === stage.id && node.interaction && resolved(node.interaction))?.id
+  useLayoutEffect(() => {
+    const check = syncRepeatedContext
+    // Commit any repeated context before the next frame measures the panel.
+    // Wrong feedback can move an already focused choice without another focus event.
+    check()
+    const currentTarget = () => {
+      const currentStage = flow.current?.querySelector<HTMLElement>('.math-textbook-stage--current')
+      const panel = activeId ? currentStage?.querySelector<HTMLElement>('[data-testid="inline-choice-panel-' + activeId + '"]') : null
+      const completedRow = lastResolvedNodeId ? currentStage?.querySelector<HTMLElement>('[data-source-node="' + lastResolvedNodeId + '"] .transformation-equation') : null
+      const focused = document.activeElement
+      return panel && focused instanceof HTMLElement && panel.contains(focused)
+        ? focused : panel ?? currentStage?.querySelector<HTMLElement>('[data-qf01-current-slot]') ?? completedRow ?? null
+    }
+    cancelFocusReveal()
+    // Revealing feedback can scroll the original conditions out of view. Their
+    // readonly reappearance then moves the focused candidate once more.
+    // Remeasure after that commit; explicit manual input cancels every frame.
+    let alive = true
+    focusRevealFrame.current = requestAnimationFrame(() => {
+      if (!alive) return
+      reveal(currentTarget()); check()
+      if (!alive) return
+      focusRevealFrame.current = requestAnimationFrame(() => {
+        if (!alive) return
+        reveal(currentTarget()); check()
+        if (!alive) return
+        focusRevealFrame.current = requestAnimationFrame(() => {
+          if (!alive) return
+          focusRevealFrame.current = null
+          reveal(currentTarget())
+        })
+      })
+    })
+    window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
+    return () => { alive = false; cancelFocusReveal(); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
+  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, syncRepeatedContext, reveal, cancelFocusReveal])
+  // The canonical derivation shares one relation axis. Formula numbering is a
+  // separate contract; recalled conditions and hints keep their own layout.
+  useLayoutEffect(() => {
+    const root = flow.current
+    if (!root) return
+    let alive = true, notifying = false, frame: number | undefined
+    const align = () => {
+      if (!alive) return
+      const groups = new Map<string, HTMLElement[]>()
+      for (const block of root.querySelectorAll<HTMLElement>('.qf01-continuous-derivation [data-qf01-alignment-group]')) {
+        const id = block.dataset.qf01AlignmentGroup!
+        groups.set(id, [...(groups.get(id) ?? []), block])
+      }
+      for (const blocks of groups.values()) {
+        const formulas = blocks.flatMap(block => [...block.querySelectorAll<HTMLElement>('.transformation-equation > .reading-formula-line--typeset')].filter(formula => formula.closest('[data-source-block]') === block && formula.dataset.typesetSource === block.dataset.sourceBlock))
+        const rows = formulas.flatMap(formula => [...formula.querySelectorAll<HTMLElement>('.typeset-line--equation')])
+        const width = (row: HTMLElement, selector: string) => row.querySelector<HTMLElement>(selector)?.getBoundingClientRect().width ?? 0
+        const left = Math.max(0, ...rows.map(row => width(row, '.typeset-left > .typeset-cell-content')))
+        const right = Math.max(0, ...rows.map(row => width(row, '.typeset-right > .typeset-cell-content')))
+        const relation = Math.max(0, ...rows.map(row => width(row, '.typeset-relation')))
+        const naturalWidth = Math.max(0, ...formulas.map(formula => parseFloat(formula.style.getPropertyValue('--typeset-body')) || 0))
+        const bodyWidth = Math.max(naturalWidth, left + relation + right + 8)
+        // Keep the existing responsive split when a shared row cannot fit.
+        // Pixel QA still checks every visible relation; no overflow is hidden.
+        const fits = rows.length >= 2 && formulas.every(formula => formula.clientWidth >= bodyWidth)
+        let changed = false
+        const set = (element: HTMLElement, property: string, value: string) => {
+          if (element.style.getPropertyValue(property) === value) return
+          element.style.setProperty(property, value); changed = true
+        }
+        for (const formula of formulas) {
+          const body = formula.querySelector<HTMLElement>('.typeset-formula-body')
+          if (body) set(body, 'width', fits ? bodyWidth + 'px' : '')
+        }
+        for (const row of rows) set(row, 'grid-template-columns', fits ? `${left}px ${relation}px ${right}px` : '')
+        if (changed) {
+          notifying = true
+          for (const formula of formulas) formula.dispatchEvent(new Event('typeset-layout', { bubbles: true }))
+          notifying = false
+        }
+      }
+    }
+    const schedule = () => { if (!alive || notifying) return; if (frame !== undefined) cancelAnimationFrame(frame); frame = requestAnimationFrame(align) }
+    align()
+    root.addEventListener('typeset-layout', schedule)
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(schedule)
+    observer?.observe(root)
+    void document.fonts?.ready.then(schedule)
+    return () => { alive = false; root.removeEventListener('typeset-layout', schedule); observer?.disconnect(); if (frame !== undefined) cancelAnimationFrame(frame) }
+  })
+  const canonicalBlocks = m.canonicalBlockIds.map(id => source.blocks.get(id)!)
+  const profile = qf01ReadingLayoutProfile(stage.id, stageInfo.fullLessonBlockRefs.map(id => ({ id, type: source.blocks.get(id)!.type, role: String(m.sourceMap.find(s => s.unitBlockId === id)!.authorAttributes.role) })))
+  const selectedRefs = m.viewContracts.INTERACTION_REFERENCES.rows.find(row => row.currentInteractionId === currentQ?.id)
+  const preludeIds = m.viewContracts.FRAME_CONTRACT.stagePreludeRefs[stage.id] ?? []
+  const renderChoiceValue = (id: string, value: string): ReactNode => {
+    const q = m.interactions.find(q => q.id === id)!
+    if (q.answerDomain === 'semantic') return value
+    const safeMath = value.replaceAll('かつ', '\\text{ かつ }').replace(/だけでよい|だけ/g, phrase => '\\text{ ' + phrase + ' }').replaceAll('より小さい', '\\text{ より小さい }')
+    return <TypesetInlineMath latex={safeMath} sourceId={id + '-choice'} unitId={unit.unitId} />
+  }
+  const slot = (id: string) => {
+    if (solved.has(id)) return <span data-testid={'resolved-' + id}>{renderChoiceValue(id, current!.answers[id].value)}</span>
+    const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id
+    return <button type="button" style={{ minWidth: 48, minHeight: 48 }} disabled={!enabled} className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot={enabled || undefined} data-testid={'textbook-item-' + id} aria-label={q.layoutKind === 'paragraph' ? '本文の空欄。候補を開く' : '数式の空欄。候補を開く'} aria-expanded={activeId === id} aria-controls={contextId + '-options'} aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
+  }
+  const renderParts = (parts: TextbookReadingPart[], id: string, slotId?: string) => parts.map((p, j) => {
+    if (p.type === 'text' || p.type === 'term') return <span key={j}>{p.text}</span>
+    if (p.type === 'math') return <TypesetInlineMath key={j} latex={p.latex} sourceId={p.semanticId ?? id + '-p' + j} unitId={unit.unitId} />
+    const q = m.interactions.find(q => q.id === p.itemId)!
+    if (q.answerDomain === 'math') { const a = m.ownerASTBindings.find(a => a.interactionId === q.id)!; return <TypesetFormula key={j} source={formatQF01R3Owner(a.ownerAST, { targetPath: a.targetPath, mask: true, notation: a.notation })} sourceId={id + '-math-target'} unitId={unit.unitId} parts={[slot(p.itemId)]} itemIds={{ 0: p.itemId }} /> }
+    return <span key={j} data-bound-slot={slotId}>{slot(p.itemId)}</span>
+  })
+  const renderBlock = (id: string, viewPrefix = '', recorded = false): ReactNode => {
+    const projected = projectQF01R3Block(source, id, solved, { helpFor: helpId, recorded })
+    if (!projected) return null
+    // Shared source-view API receives explicit target IDs, not an empty list inferred from absent choices.
+    const original = recorded ? recordedReadingSourceView(id, canonicalBlocks, {
+      itemIds: b => m.interactions.filter(q => q.source.blockId === b.id).map(q => q.id),
+      item: id => source.items.get(id), answer: id => current?.answers[id], resolved: item => solved.has(item.id),
+    }, viewPrefix) : canonicalReadingSourceView(id, canonicalBlocks)
+    if (!original) return null
+    const b = projected.source, q = m.interactions.find(q => q.source.blockId === id), key = viewPrefix + id
+    const attrs = readingLayoutBlockAttributes(profile, id)
+    let content: ReactNode
+    if (b.type === 'formula') content = <div className="transformation-equation"><TypesetFormula source={projected.formulaSource ?? b.parts.map(p => p.type === 'math' ? p.latex : p.type === 'text' || p.type === 'term' ? '\\text{' + p.text + '}' : '').join('')} sourceId={key} unitId={unit.unitId} parts={projected.slotItemId ? [slot(projected.slotItemId)] : []} itemIds={projected.slotItemId ? { 0: projected.slotItemId } : {}} /></div>
+    else if (b.type === 'paragraph') content = <p className="reading-paragraph">{renderParts(projected.parts ?? b.parts, key, projected.slotItemId)}</p>
+    else if (b.type === 'figure') { const figure = section.figures.find(f => f.id === b.figureId)!; content = <TextbookFigure figure={figure} items={section.items} progress={current} onOpen={() => undefined} /> }
+    else if (b.type === 'marker') content = <p className={'reading-role-marker reading-role-marker--' + b.kind} data-reading-role={projected.sourceRole}>{b.text}</p>
+    else if (b.type === 'heading') content = <h3>{b.text}</h3>
+    else content = null
+    if (b.type === 'formula') {
+      const alias = m.viewContracts.RESULT_REGISTRY.records.find(record => record.sourceRef.blockId === id)?.equation?.displayNumber
+      if (alias !== undefined && alias !== null) {
+        const sourceStage = m.sourceMap.find(entry => entry.unitBlockId === id)!.authorAttributes.stageId
+        const sameRelation = m.canonicalBlockIds.filter(blockId => m.sourceMap.find(entry => entry.unitBlockId === blockId)!.authorAttributes.stageId === sourceStage && m.viewContracts.RESULT_REGISTRY.records.some(record => record.sourceRef.blockId === blockId && record.equation?.displayNumber === alias) && projectQF01R3Block(source, blockId, solved, { helpFor: helpId, recorded }))
+        if (sameRelation.at(-1) === id || recorded && !viewPrefix.startsWith('history-full-')) content = <GuidedNumberedEquation number={alias}>{content}</GuidedNumberedEquation>
+      }
+    }
+    const relationNumber = b.type === 'formula' ? m.viewContracts.RESULT_REGISTRY.records.find(record => record.sourceRef.blockId === id)?.equation?.displayNumber : undefined
+    const alignmentGroup = !viewPrefix && relationNumber != null ? `${stage.id}-relation-${relationNumber}` : undefined
+    return <div {...attrs} key={key} data-qf01-alignment-group={alignmentGroup} data-testid={!recorded && q && solved.has(q.id) ? 'resolved-' + q.id : undefined} data-source-block={id} data-source-view={viewPrefix || 'canonical'} data-source-node={q?.nodeId ?? id}>{!recorded && !viewPrefix && q && q.id === currentQ?.id ? nearbyInfo(q.id) : null}{content}{!recorded && q && q.id === currentQ?.id ? panel(q.id) : null}</div>
+  }
+  const recordView = (recordId: string, prefix: string) => {
+    const record = m.viewContracts.RESULT_REGISTRY.records.find(r => r.id === recordId)
+    if (!record || !record.availableWhen.allSolved.every(id => solved.has(id))) return null
+    return renderBlock(record.sourceRef.blockId, prefix, true)
+  }
+  const refsView = (ids: string[], prefix: string) => <>{ids.map(id => recordView(id, prefix))}</>
+  const nearbyInfo = (id: string) => {
+    if (!repeatContext) return null
+    const shown = new Set<string>(), recordIds: string[] = []
+    for (const recordId of selectedRefs?.nearbyReferenceRecordIds ?? []) {
+      const record = m.viewContracts.RESULT_REGISTRY.records.find(row => row.id === recordId)
+      if (!record || !record.availableWhen.allSolved.every(ref => solved.has(ref))) continue
+      const blockId = record.sourceRef.blockId
+      if (shown.has(blockId) || !projectQF01R3Block(source, blockId, solved, { helpFor: helpId, recorded: true })) continue
+      shown.add(blockId); recordIds.push(recordId)
+    }
+    const missingFigures = m.viewContracts.FIGURE_POLICY.placement.requiredCurrentInteractionIds.includes(id)
+      ? frame.figureBlockRefs.filter(ref => !shown.has(ref) && projectQF01R3Block(source, ref, solved, { helpFor: helpId, recorded: true })) : []
+    if (!recordIds.length && !missingFigures.length) return null
+    return <aside className="qf01-local-context qf01-nearby-references" aria-label="今の判断に必要な情報">{refsView(recordIds, 'nearby-')}{missingFigures.map(ref => renderBlock(ref, 'nearby-figure-', true))}</aside>
+  }
+  const panel = (id: string) => {
+    if (solved.has(id) || id !== currentQ?.id) return null
+    const item = source.items.get(id)!, record = current?.answers[id], wrong = Boolean(record && !solved.has(id)), expanded = activeId === id
+    const wrongIndex = record ? item.choices?.findIndex(value => normalizeTextbookAnswer(value) === normalizeTextbookAnswer(record.value)) ?? -1 : -1
+    return <div className="reading-inline-choice-panel qf01-attached-options" data-testid={'inline-choice-panel-' + id}>
+      {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{renderChoiceValue(id, record!.value)}<p><R3FeedbackMath text={wrongIndex >= 0 ? currentQ!.wrongReasonByChoiceIndex[wrongIndex] : '保存した解答を確認してください。'} sourceId={id + '-wrong-reason'} unitId={unit.unitId} /></p>{record!.attemptCount > 1 && <p><R3FeedbackMath text={item.hints[1]} sourceId={id + '-second-hint'} unitId={unit.unitId} /></p>}</aside>}
+      <button type="button" style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
+      {helpId === id && <p className="reading-choice-hint"><R3FeedbackMath text={item.hints[0]} sourceId={id + '-hint'} unitId={unit.unitId} /></p>}
+      {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
+        cancelFocusReveal(); pointerFocusTarget.current = null
+        if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
+        if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) { setActiveId(null); setHelpId(null) }
+      }}><span className="qf01-option-content">{renderChoiceValue(id, choice)}</span></button>)}</div>}
+    </div>
+  }
+  const headerId = stageInfo.headerSourceRef
+  const preludeSet = new Set(preludeIds)
+  const bodyIds = stageInfo.fullLessonBlockRefs.filter(id => !preludeSet.has(id) && id !== stageInfo.terminalSourceRef)
+  const topIds = (selectedRefs?.topReferenceRecordIds ?? []).filter(rid => !preludeSet.has(m.viewContracts.RESULT_REGISTRY.records.find(r => r.id === rid)?.sourceRef.blockId ?? ''))
+  if (progressState.error) return <p role="alert">学習記録の対応を確認できません。回答操作はできません。</p>
+  return <article ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-qf01-revision="3" data-testid="textbook-reading-flow" data-typeset-theme="true" tabIndex={-1}>
+    <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / 9</span><span>解答の記録：{solved.size}/35</span>{stageIndex > 0 && <button type="button" onClick={() => setHistory(!history)}>前の段階を見る</button>}</div>
+    {stageIndex === 0 && renderBlock(m.viewContracts.FRAME_CONTRACT.単元block配置['unit-purpose'].sourceRef, 'introduction-')}
+    {history && <div className="guided-history"><button type="button" onClick={() => setFullHistory(!fullHistory)}>{fullHistory ? '全文を閉じる' : '全文を開く'}</button>{stages.slice(0, stageIndex).map(s => <section key={s.stageId} data-testid={'recorded-results-' + s.stageId}>{renderBlock(s.headerSourceRef, 'history-header-', true)}{fullHistory ? s.fullLessonBlockRefs.filter(id => id !== s.headerSourceRef).map(id => renderBlock(id, 'history-full-', true)) : refsView(s.conclusionRecordIds, 'history-result-')}</section>)}</div>}
+    <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id} data-reading-layout-scope="qf01-r3-shared-reading-v1" data-reading-layout-profile={profile.id}>
+      <ReadingStageFrame contextHeader={frame.headerBlockRef !== headerId ? renderBlock(frame.headerBlockRef, 'frame-', true) : undefined}
+        header={<div id={contextId + '-header'}>{renderBlock(headerId)}</div>}
+        prelude={<div>{preludeIds.filter(id => id !== headerId).map(id => renderBlock(id))}</div>}
+        references={<aside ref={context} id={contextId} className="math-textbook-stage-reference-content" aria-label="現在必要な情報">{topIds.length > 0 && <strong>使う条件・前の結果</strong>}{refsView(topIds, 'top-')}</aside>}
+        conclusion={complete ? <div className="qf01-recorded-conclusion">{renderBlock(stageInfo.terminalSourceRef)}</div> : undefined}
+        navigation={<div className="guided-stage-navigation">{stageIndex > 0 && <button type="button" onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHelpId(null); setHistory(false) }}>前の段階へ</button>}{complete && stageIndex < 8 && <button type="button" onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHelpId(null); setHistory(false) }}>次の段階へ</button>}</div>}>
+        <div data-reading-layout-body><div className="reading-derivation-chain qf01-continuous-derivation" {...readingLayoutChainAttributes(profile, bodyIds[0] ?? headerId)}>{bodyIds.map(id => renderBlock(id))}</div></div>
+      </ReadingStageFrame>
+    </section>
+    {stageIndex === 8 && solved.size === 35 && <section className="qf01-unit-summary" data-testid="qf01-unit-summary">{m.viewContracts.FRAME_CONTRACT.単元block配置['unit-summary'].sourceRefs.map(id => renderBlock(id, 'summary-', true))}</section>}
+  </article>
 }

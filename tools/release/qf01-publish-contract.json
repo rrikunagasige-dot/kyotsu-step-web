@@ -1276,5 +1276,13 @@
       "files": 43,
       "sha256": "803cc513e0e24ed873a4832ec44802b2a5ac76de81b3f6ee4f9b4e8863decb33"
     }
+  },
+  "r3DesignPreview": {
+    "schemaVersion": "qf01-r3-design-preview-spec/1",
+    "phase": "DRAFT_DESIGN_PREVIEW_ONLY",
+    "sourceSHA": "325b70035cafa70a8078944ccf903c53ce763545",
+    "runtimeSnapshotSHA": "9ee19f65d39b3e639857c809ada50a01c8a7c322",
+    "branch": "work/qf01-p046-r3-design-preview-20261116",
+    "productionAuthorized": false
   }
 }

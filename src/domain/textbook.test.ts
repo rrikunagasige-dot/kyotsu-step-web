@@ -334,11 +334,11 @@ vi.hoisted(() => {
   Object.defineProperty(globalThis,'window',{configurable:true,value:{localStorage:globalThis.localStorage}})
 })
 // P017: exercise actual Store write boundaries as well as pure migration.
-import qf01Data from '../data/textbook/math/quadratic/qf01Unit.json'
+import qf01Revision2Archive from '../data/textbook/math/quadratic/qf01Revision2Archive.json'
 import { TextbookUnitSchema } from './textbookSchema'
 import { useAppStore } from '../stores/useAppStore'
 import { textbookSectionProgress } from './textbook'
-const qf01v2 = TextbookUnitSchema.parse(qf01Data)
+const qf01v2 = TextbookUnitSchema.parse(qf01Revision2Archive.unit)
 const qf01Items = qf01v2.sections.flatMap(s => s.items)
 const qf01Active = qf01Items.filter(i => i.id !== 'qf01-n20-answer')
 function qf01Old(prefix = 0): TextbookUnitProgress {

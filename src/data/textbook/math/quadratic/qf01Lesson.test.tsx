@@ -7,7 +7,7 @@ import { useAppStore } from '../../../../stores/useAppStore'
 import { answerTextbookItem, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { mathFunctionConditionsUnit } from '../function/functionConditionsLesson'
 import { mathNumbersN01Unit } from '../numbers/n01Lesson'
-import { mathQuadraticQF01Unit as unit, qf01GuidedPresentation as presentation, qf01TransformationPresentation as transformation } from './qf01Lesson'
+import { qf01Revision2Unit as unit, qf01Revision2GuidedPresentation as presentation, qf01Revision2TransformationPresentation as transformation } from './qf01Lesson'
 const items = unit.sections[0].items
 const active = unit.requiredInteractionRefs!.map(id => items.find(i => i.id === id)!)
 function Lesson({ plan = transformation }: { plan?: unknown }) {
@@ -389,8 +389,8 @@ describe('QF01 full nine-stage revision2', () => {
       render(<Lesson />)
       expect(screen.getByTestId('textbook-item-' + target)).toBeTruthy()
       expect(screen.getByTestId('textbook-hint-' + target).textContent).toContain('採用しません')
-      const sourceDisplay = JSON.parse(readFileSync('src/data/textbook/math/quadratic/qf01Presentation.json', 'utf8')).semanticDisplay[target.replace('-answer', '')]
-      const expectedWrongMath = sourceDisplay.choices[wrong].filter((part: { type: string; latex?: string }) => part.type === 'math').map((part: { latex: string }) => part.latex)
+      const sourceDisplay = presentation.semanticDisplay[target.replace('-answer', '') as keyof typeof presentation.semanticDisplay]
+      const expectedWrongMath = (sourceDisplay.choices as Record<string, { type: string; latex?: string }[]>)[wrong].flatMap(part => part.type === 'math' && part.latex ? [part.latex] : [])
       expect(expectedWrongMath.length).toBeGreaterThan(0)
       expect(latex(screen.getByTestId('textbook-hint-' + target))).toEqual(expect.arrayContaining(expectedWrongMath))
       expect(screen.queryByRole('group', { name: 'この空欄の候補' })).toBeNull()

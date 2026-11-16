@@ -74,3 +74,24 @@
 .qf01-full-reading .transformation-reading-group--stacked .transformation-equation {
   grid-template-columns: var(--transformation-relation) max(var(--transformation-right), calc(var(--transformation-left) - var(--transformation-relation) - .35rem));
 }
+
+/* P046-R3: same role hierarchy as Numbers, own exact unit/revision scope. */
+[data-qf01-revision="3"].textbook-reading-flow { min-width:0; font-size:18px; line-height:1.8; }
+[data-qf01-revision="3"] .reading-paragraph { font-size:18px; line-height:1.8; }
+[data-qf01-revision="3"] .reading-paragraph .katex,
+[data-qf01-revision="3"] .reading-choice-option .katex { font-size:1em; }
+[data-qf01-revision="3"] button { min-width:48px; min-height:48px; box-sizing:border-box; font:inherit; touch-action:manipulation; }
+[data-qf01-revision="3"] .reading-inline-blank { min-width:48px; min-height:48px; font-size:18px; vertical-align:middle; }
+[data-qf01-revision="3"] .reading-choice-option { width:100%; max-width:100%; white-space:normal; overflow-wrap:anywhere; text-align:left; }
+[data-qf01-revision="3"] .reading-choice-option .typeset-inline-math { max-width:100%; }
+[data-qf01-revision="3"] .reading-formula-line { margin:0; padding:0; border:0; background:transparent; font-size:18px; line-height:1.8; }
+[data-qf01-revision="3"] .reading-figure { padding:0; border:0; background:transparent; max-width:100%; }
+[data-qf01-revision="3"] .textbook-figure-stage--qf01-reading { width:min(100%,320px); }
+[data-qf01-revision="3"] .textbook-figure-stage--qf01-reading > img { width:100%; max-width:100%; height:auto; }
+[data-qf01-revision="3"] .math-textbook-stage-references { font-size:18px; line-height:1.8; }
+[data-qf01-revision="3"] .reading-role-marker--example { display:table; width:fit-content; font-size:.8rem; line-height:1.4; padding:.15rem .45rem; border:1px solid #b7c4cc; border-radius:.15rem; white-space:nowrap; }
+[data-qf01-revision="3"] .qf01-nearby-references { margin-block:12px; border-inline-start:3px solid #7c929a; padding-inline-start:12px; }
+[data-qf01-revision="3"] .guided-history { min-width:0; }
+[data-qf01-revision="3"] .guided-history section { margin-block:12px; }
+[data-qf01-revision="3"] .reading-inline-choice-panel { scroll-margin-top:var(--qf01-header-clearance, 80px); min-width:0; }
+@media(max-width:430px) { [data-qf01-revision="3"].textbook-reading-flow { padding:8px; } }

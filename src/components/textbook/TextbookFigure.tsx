@@ -23,12 +23,13 @@ export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigu
   // The 11 approved SVG sources have viewBox only, with 640x360 Venn and
   // 720x220 number-line layouts. Explicit <img> dimensions prevent zero-size
   // intrinsic layout on Chromium while the CSS still scales to narrow screens.
+  const qf01Reading = figure.src.replace(/^\//, '') === 'assets/math/textbook/functions/rectangle-perimeter-40-reading.svg'
   const mathSetSvg = figure.src.startsWith('/assets/math/textbook/sets/') && figure.src.endsWith('.svg')
   const numberLineSvg = mathSetSvg && figure.src.includes('/number-line-')
   return (
     <figure className="reading-figure" data-testid={`textbook-figure-${figure.id}`}>
-      <div className={`textbook-figure-stage${mathSetSvg ? ' textbook-figure-stage--math-set-svg' : ''}`}>
-        <img src={resolveAssetSrc(figure.src)} alt={figure.alt} width={mathSetSvg ? (numberLineSvg ? 720 : 640) : undefined} height={mathSetSvg ? (numberLineSvg ? 220 : 360) : undefined} />
+      <div className={`textbook-figure-stage${mathSetSvg ? ' textbook-figure-stage--math-set-svg' : qf01Reading ? ' textbook-figure-stage--qf01-reading' : ''}`}>
+        <img src={resolveAssetSrc(figure.src)} alt={figure.alt} width={qf01Reading ? 320 : mathSetSvg ? (numberLineSvg ? 720 : 640) : undefined} height={qf01Reading ? 220 : mathSetSvg ? (numberLineSvg ? 220 : 360) : undefined} />
         {figure.overlays.map((overlay) => {
           const item = items.find((candidate) => candidate.id === overlay.itemId)
           const record = progress?.answers[overlay.itemId]

@@ -150,7 +150,8 @@ describe('TextbookUnitSchema 1.1', () => {
 })
 
 
-import qf01Raw from '../data/textbook/math/quadratic/qf01Unit.json'
+import qf01Archive from '../data/textbook/math/quadratic/qf01Revision2Archive.json'
+const qf01Raw = qf01Archive.unit
 it('preserves all25 original QF01 IDs while allowing only the declared n20 worked reuse in revision2', () => {
   const current=structuredClone(qf01Raw)
   expect(TextbookUnitSchema.safeParse(current).success).toBe(true)

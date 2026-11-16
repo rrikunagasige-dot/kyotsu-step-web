@@ -1,4 +1,8 @@
-import { qf01GuidedPresentation, qf01TransformationPresentation, qf01PilotTransformationPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
+import { QF01Revision2Archive } from '../components/textbook/QF01Revision2Archive'
+import { parseReadingLayoutProfiles, readingLayoutBlockAttributes, readingLayoutChainAttributes, type ReadingLayoutProfile } from '../components/textbook/readingLayoutPolicy'
+import { recordedReadingSourceView } from '../domain/readingSourceViews'
+import { ReadingStageFrame } from '../components/textbook/ReadingStageFrame'
+import { qf01ReadingPresentation, qf01Revision2GuidedPresentation, qf01GuidedPresentation, qf01TransformationPresentation, qf01PilotTransformationPresentation } from '../data/textbook/math/quadratic/qf01Lesson'
 import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
 import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import n11TransformationPresentation from '../data/textbook/math/numbers/n11Transformation.json'
@@ -42,7 +46,7 @@ import { normalizeTextbookMath } from '../domain/textbookMath'
 import { textbookDisplayLines } from '../domain/textbookDisplayLines'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
-import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeRecordedResults, firstThemeSourceView, isFirstThemeUnit } from '../data/textbook/math/presentation'
+import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeRecordedResults, isFirstThemeUnit } from '../data/textbook/math/presentation'
 
 const n11GuidedPresentation = (n11LessonModule as unknown as { n11Presentation?: unknown }).n11Presentation
 
@@ -186,47 +190,14 @@ type ReadingFlowProps = {
   reviewMarks?: Readonly<Record<string, number>>
 }
 
-type ReadingSpacingRole = 'ordinary' | 'purpose' | 'reason-equation'
-type ReadingLayoutProfile = { id: string; spacingByBlock: Readonly<Record<string, ReadingSpacingRole>> }
-type BoundReadingLayoutProfile = ReadingLayoutProfile & { unitId: string; revision: number; stageId: string }
-function readingLayoutRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value)
-}
-function parseReadingLayoutProfiles(input: unknown): readonly BoundReadingLayoutProfile[] {
-  if (!Array.isArray(input) || input.length !== 61) throw Error('Invalid reading-layout profile collection')
-  const revisions: Readonly<Record<string, number>> = {
-    'math-numbers-expressions-n01': 7, 'math-numbers-expressions-n02': 6,
-    'math-numbers-expressions-n03': 7, 'math-numbers-expressions-n04': 7,
-    'math-numbers-expressions-n05': 7, 'math-numbers-expressions-n06': 8,
-  }
-  const seen = new Set<string>()
-  return input.map((entry: unknown): BoundReadingLayoutProfile => {
-    if (!readingLayoutRecord(entry)) throw Error('Invalid reading-layout profile')
-    const { unitId, revision, stageId, id, spacingByBlock } = entry
-    if (typeof unitId !== 'string' || !Object.hasOwn(revisions, unitId) || revision !== revisions[unitId]
-      || typeof revision !== 'number' || !Number.isInteger(revision)
-      || typeof stageId !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(stageId)
-      || typeof id !== 'string' || id !== `${unitId.replace('math-numbers-expressions-', '')}:r${revision}:${stageId}`
-      || (unitId === 'math-numbers-expressions-n04' && stageId === 'heading-four-products')
-      || !readingLayoutRecord(spacingByBlock) || !Object.hasOwn(spacingByBlock, stageId)
-      || seen.has(id)) throw Error('Invalid reading-layout binding: ' + String(id))
-    seen.add(id)
-    const spacing: Record<string, ReadingSpacingRole> = {}
-    for (const [blockId, role] of Object.entries(spacingByBlock)) {
-      if (!/^[a-z0-9][a-z0-9-]*$/.test(blockId)) throw Error('Invalid reading-layout block ID')
-      if (role !== 'ordinary' && role !== 'purpose' && role !== 'reason-equation') throw Error('Invalid reading-layout spacing role: ' + blockId)
-      spacing[blockId] = role
-    }
-    return { unitId, revision, stageId, id, spacingByBlock: spacing }
-  })
-}
 const readingLayoutProfiles = parseReadingLayoutProfiles(n0106ReadingLayout)
 function readingLayoutProfile(unit: TextbookUnit, stageId: string): ReadingLayoutProfile | undefined {
   return readingLayoutProfiles.find(profile => profile.unitId === unit.unitId && profile.revision === unit.revision && profile.stageId === stageId)
 }
 
 export function TextbookReadingFlow(props: ReadingFlowProps) {
-  if (props.unit.unitId === 'math-quadratic-qf01' && (props.unit.revision === 1 || props.unit.revision === 2)) return <GuidedMathReadingFlow key={props.unit.unitId + ':r' + props.unit.revision} {...props} presentation={qf01GuidedPresentation} transformationPresentation={props.unit.revision === 2 ? qf01TransformationPresentation : qf01PilotTransformationPresentation} storageScope={props.unit.revision === 2 ? 'qf01-v2' : 'qf01-v1'} />
+  if (props.unit.unitId === 'math-quadratic-qf01' && props.unit.revision === 3) return <GuidedMathReadingFlow key={props.unit.unitId + ':r3'} {...props} presentation={qf01GuidedPresentation} readingPresentation={qf01ReadingPresentation} storageScope="qf01-v3" />
+  if (props.unit.unitId === 'math-quadratic-qf01' && (props.unit.revision === 1 || props.unit.revision === 2)) return <GuidedMathReadingFlow key={props.unit.unitId + ':r' + props.unit.revision} {...props} presentation={props.unit.revision === 2 ? qf01Revision2GuidedPresentation : qf01GuidedPresentation} transformationPresentation={props.unit.revision === 2 ? qf01TransformationPresentation : qf01PilotTransformationPresentation} storageScope={props.unit.revision === 2 ? 'qf01-v2' : 'qf01-v1'} />
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 7
@@ -548,13 +519,12 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
         }
 
         rendered.push(
-          <div className="reading-derivation-chain" data-derivation-id={derivationId} data-n04-sample-chain={n04SampleStage ? true : undefined} data-reading-layout-chain={layoutProfile ? true : undefined} data-reading-layout-start-spacing={layoutProfile?.spacingByBlock[run[0].id]} key={`derivation-${derivationId}`}>
+          <div className="reading-derivation-chain" data-derivation-id={derivationId} data-n04-sample-chain={n04SampleStage ? true : undefined} {...readingLayoutChainAttributes(layoutProfile, run[0].id)} key={`derivation-${derivationId}`}>
             {run.map((entry) => (
               <div
                 className={`reading-derivation-step reading-derivation-step--${entry.type}`}
                 data-n04-sample-block={n04SampleStage ? entry.id : undefined}
-                data-reading-layout-block={layoutProfile ? entry.id : undefined}
-                data-reading-layout-spacing={layoutProfile?.spacingByBlock[entry.id]}
+                {...readingLayoutBlockAttributes(layoutProfile, entry.id)}
                 data-n04-sample-spacing={n04SampleStage
                   ? /^n04-bridge-worked-n04-q01-p[1-4]-before-0-lead$/.test(entry.id)
                     || entry.id === 'n04-s4-square-plan' || entry.id === 'paragraph-n04-collect-without-combining'
@@ -573,7 +543,7 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
       }
 
       rendered.push(layoutProfile
-        ? <div key={block.id} data-reading-layout-block={block.id} data-reading-layout-spacing={layoutProfile.spacingByBlock[block.id]} data-reading-layout-start-spacing={layoutProfile.spacingByBlock[block.id]}>{renderBlockWithReviewMark(block)}</div>
+        ? <div key={block.id} {...readingLayoutBlockAttributes(layoutProfile, block.id, true)}>{renderBlockWithReviewMark(block)}</div>
         : renderBlockWithReviewMark(block))
       index += 1
     }
@@ -583,21 +553,12 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
 
   // Read-only source views contain neither answer buttons nor duplicate answer IDs.
   // Never substitute an unresolved item with its answer, including old progress.
-  const recordedBlock = (ref: string): TextbookReadingBlock | undefined => {
-    const source = firstThemeSourceView(ref, section.readingFlow)
-    if (!source) return undefined
-    if (readingGroupItemIds([source], section).some(id => {
-      const item = section.items.find(q => q.id === id)
-      return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
-    })) return undefined
-    if (source.type !== 'formula' && source.type !== 'paragraph') return source
-    return { ...source, id: 's5-record-' + ref, parts: source.parts.map(part => {
-      if (part.type !== 'choice') return part
-      const item = section.items.find(q => q.id === part.itemId)!
-      const value = currentProgress!.answers[item.id].value
-      return item.answerType === 'formula' ? { type: 'math' as const, latex: value } : { type: 'text' as const, text: value }
-    }) }
-  }
+  const recordedBlock = (ref: string): TextbookReadingBlock | undefined => recordedReadingSourceView(ref, section.readingFlow, {
+    itemIds: source => readingGroupItemIds([source], section),
+    item: id => section.items.find(item => item.id === id),
+    answer: id => currentProgress?.answers[id],
+    resolved: isTextbookItemResolved,
+  }, 's5-record-')
 
   const renderRecordedResults = (refs: readonly string[]) => refs.map(ref => {
     const block = recordedBlock(ref)
@@ -701,10 +662,12 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                   </>
                 ) : (
                   <>
-                    <header className="math-textbook-stage-active-title">
+                    <ReadingStageFrame
+                      header={<>                    <header className="math-textbook-stage-active-title">
                       <strong>{semanticText(stage.label[language])}</strong>
                       <small>{index + 1} / {compactStages.length}</small>
-                    </header>
+                    </header></>}
+                      references={<>
                     {neededContextIds.length > 0 && (
                       <div className="math-textbook-stage-references" data-testid="math-textbook-stage-references" data-for-item={currentQuestionId ?? undefined}>
                         <strong className="math-textbook-stage-references__title">{isFirstThemeUnit(unit.unitId) ? text('使う条件・前の結果', '需要的条件与之前的结果') : text('この問題で使う条件', '本题需要的条件')}</strong>
@@ -744,16 +707,15 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                           )
                         })}
                       </div>
-                    )}
-                    {layoutProfile
-                      ? <div data-reading-layout-body>{renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')), n04SampleStage, layoutProfile)}</div>
-                      : renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')), n04SampleStage)}
+                    )}</>}
+                      conclusion={<>
                     {stageAnswered && resultIds.length > 0 && (
                       <aside className="first-theme-recorded-results first-theme-recorded-results--current" data-testid={'recorded-results-' + stage.id}>
                         <strong>{text('この段階で確かめたこと', '本阶段确认的内容')}</strong>
                         {renderRecordedResults(resultIds)}
                       </aside>
-                    )}
+                    )}</>}
+                      navigation={<>
                     {stageAnswered && index < compactStages.length - 1 && (
                       <div className="math-textbook-next-stage-panel">
                         <span>{text('ここまでの本文と図を確認したら、次へ進めます。', '读完本段正文和图后，可以继续下一段。')}</span>
@@ -766,7 +728,12 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
                           {text('次へ', '下一步')}
                         </button>
                       </div>
-                    )}
+                    )}</>}
+                    >
+                    {layoutProfile
+                      ? <div data-reading-layout-body>{renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')), n04SampleStage, layoutProfile)}</div>
+                      : renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')), n04SampleStage)}
+                    </ReadingStageFrame>
                   </>
                 )}
               </section>
@@ -799,6 +766,7 @@ export function TextbookUnitPage() {
   const { unitId } = useParams()
   const location = useLocation()
   const params = new URLSearchParams(location.search)
+  if (unitId === 'math-quadratic-qf01' && params.get('archive') === 'qf01-r2') return <QF01Revision2Archive />
   if (unitId === 'math-numbers-expressions-n09' || unitId === 'math-numbers-expressions-n10') {
     const code = unitId.endsWith('n09') ? 'n09' : 'n10', oldRevision = code === 'n09' ? '3' : '2'
     if (params.get('version') === oldRevision) return <N0910ArchivePage code={code} />
@@ -835,7 +803,7 @@ function ActiveTextbookUnitPage() {
   const progressState = useMemo(() => {
     try { return { progress: unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, error: false } }
     catch (error) {
-      if (unit?.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
+      if (unit?.unitId !== 'math-quadratic-qf01' || ![2, 3].includes(unit.revision)) throw error
       return { progress: undefined, error: true }
     }
   }, [unit, savedProgress])
@@ -951,9 +919,10 @@ function ActiveTextbookUnitPage() {
         {!continuousLesson && <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>}
       </header>
 
+      {unit.unitId === 'math-quadratic-qf01' && unit.revision === 3 && <p><Link to="/learning/textbook/math-quadratic-qf01?archive=qf01-r2">以前の記録を見る</Link></p>}
       {progressState.error && <p role="alert" data-testid="qf01-progress-preserved-error">保存記録の対応を確認してください。以前の記録は変更していません。</p>}
       <ProgressBar label={qf01Revision2 ? text('公開中の内容：解答の記録', '已公开内容：答题记录') : text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
-      {(unit.unitId === 'math-numbers-expressions-n12' || isFirstThemeUnit(unit.unitId)) && (
+      {(unit.unitId === 'math-numbers-expressions-n12' || isFirstThemeUnit(unit.unitId) || unit.unitId === 'math-quadratic-qf01' && unit.revision === 3) && (
         <button type="button" className="n12-restart-top" data-testid={unit.unitId === 'math-numbers-expressions-n12' ? 'n12-restart-top' : 'first-theme-restart-top'} onClick={restartFromBeginning}>
           <RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}
         </button>

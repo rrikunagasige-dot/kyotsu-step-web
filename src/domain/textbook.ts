@@ -1,3 +1,4 @@
+import qf01Revision2Archive from '../data/textbook/math/quadratic/qf01Revision2Archive.json'
 import * as w048N13Module from '../data/textbook/math/numbers/n13Lesson'
 import * as w048N14Module from '../data/textbook/math/numbers/n14Lesson'
 import type { NestedLedger } from './nestedLesson'
@@ -54,6 +55,8 @@ export type TextbookUnitProgress = {
   previousRevisionCompletedAt?: number
   migratedFromRevision?: number
   qf01Revision1Snapshot?: { schemaVersion: 'qf01-revision1-snapshot/1'; sourceSHA: '384021f539967038a20fd98bd146e0e499f0df65'; serializedProgress: string }
+  qf01Revision2Snapshot?: { schemaVersion: 'qf01-revision2-snapshot/1'; sourceSHA: '9e6d6798ac40624373db0a87e53e7d8938fb317a'; serializedProgress: string }
+  qf01Revision3ResetSnapshots?: Array<{ schemaVersion: 'qf01-revision3-reset-snapshot/1'; priorResetCount: number; serializedProgressWithoutResetSnapshots: string }>
   qf01ResetSnapshots?: Array<{ schemaVersion: 'qf01-reset-snapshot/1'; priorResetCount: number; hadResetSnapshots: boolean; serializedProgressWithoutResetSnapshots: string }>
   /** Full old revision records remain recoverable after an approved restart. */
   archivedRevisions?: Record<string, TextbookRevisionArchive>
@@ -278,8 +281,69 @@ function qf01Progress(unit: TextbookUnit, progress: TextbookUnitProgress) {
   return {...old,unitRevision:2,answers,qf01Revision1Snapshot:snapshot,migratedFromRevision:1,...(completedAt !== undefined ? {previousRevisionCompletedAt:completedAt} : {})}
 }
 
+function qf01Revision3Contract(unit: TextbookUnit) {
+  qf01Need(unit.unitId === 'math-quadratic-qf01' && unit.revision === 3 && !unit.workedReuseRefs)
+  const items = unit.sections.flatMap(section => section.items), ids = unit.requiredInteractionRefs
+  qf01Need(ids && ids.length === 35 && new Set(ids).size === 35 && items.length === 35 && items.every((item, index) => item.id === ids[index]))
+  for (const expected of qf01Grading) {
+    const item = items.find(item => item.id === expected.id)
+    qf01Need(item && JSON.stringify({ id: item.id, answer: item.answer, acceptedAnswers: item.acceptedAnswers, choices: item.choices ?? [] }) === JSON.stringify(expected))
+  }
+  qf01Need(items.filter(item => item.id.startsWith('qf01-r3-')).length === 11)
+}
+
+function qf01Revision3Current(unit: TextbookUnit, progress: TextbookUnitProgress): TextbookUnitProgress {
+  qf01Object(progress)
+  qf01Need(progress.unitId === unit.unitId && progress.unitRevision === 3 && Number.isFinite(progress.startedAt) && Number.isFinite(progress.updatedAt) && progress.startedAt <= progress.updatedAt)
+  qf01Object(progress.answers)
+  const items = unit.sections.flatMap(section => section.items)
+  for (const [id, record] of Object.entries(progress.answers)) {
+    const item = items.find(item => item.id === id)
+    qf01Need(item && qf01Record(item, record) && record.lastAnsweredAt <= progress.updatedAt)
+  }
+  let precedingResolved = true
+  for (const id of unit.requiredInteractionRefs!) {
+    const record = progress.answers[id]
+    qf01Need(!record || precedingResolved)
+    precedingResolved = precedingResolved && Boolean(record?.resolved)
+  }
+  if (progress.completedAt !== undefined) qf01Need(precedingResolved && Number.isFinite(progress.completedAt) && progress.completedAt <= progress.updatedAt)
+  if (progress.qf01Revision2Snapshot !== undefined) {
+    const snapshot = progress.qf01Revision2Snapshot
+    qf01Object(snapshot); qf01Keys(snapshot, ['schemaVersion', 'sourceSHA', 'serializedProgress'])
+    qf01Need(snapshot.schemaVersion === 'qf01-revision2-snapshot/1' && snapshot.sourceSHA === '9e6d6798ac40624373db0a87e53e7d8938fb317a' && typeof snapshot.serializedProgress === 'string')
+    const old = JSON.parse(snapshot.serializedProgress) as TextbookUnitProgress
+    qf01Current(qf01Revision2Archive.unit as unknown as TextbookUnit, old)
+  }
+  if (progress.qf01Revision1Snapshot !== undefined) qf01Snapshot(progress.qf01Revision1Snapshot)
+  if (progress.qf01Revision3ResetSnapshots !== undefined) {
+    qf01Need(Array.isArray(progress.qf01Revision3ResetSnapshots))
+    progress.qf01Revision3ResetSnapshots.forEach((snapshot, index) => {
+      qf01Object(snapshot); qf01Keys(snapshot, ['schemaVersion', 'priorResetCount', 'serializedProgressWithoutResetSnapshots'])
+      qf01Need(snapshot.schemaVersion === 'qf01-revision3-reset-snapshot/1' && snapshot.priorResetCount === index && typeof snapshot.serializedProgressWithoutResetSnapshots === 'string')
+      const before = JSON.parse(snapshot.serializedProgressWithoutResetSnapshots) as TextbookUnitProgress
+      qf01Need(!Object.hasOwn(before, 'qf01Revision3ResetSnapshots')); qf01Revision3Current(unit, before)
+    })
+  }
+  return progress
+}
+
+function qf01Revision3Progress(unit: TextbookUnit, progress: TextbookUnitProgress): TextbookUnitProgress {
+  qf01Revision3Contract(unit); qf01Object(progress); qf01Need(progress.unitId === unit.unitId)
+  if (progress.unitRevision === 3) return qf01Revision3Current(unit, progress)
+  qf01Need(progress.unitRevision === 1 || progress.unitRevision === 2)
+  // Validate without mutating the old payload; archive its original serialization including unknown fields.
+  qf01Progress(qf01Revision2Archive.unit as unknown as TextbookUnit, progress)
+  return { unitId: unit.unitId, unitRevision: 3, startedAt: progress.updatedAt, updatedAt: progress.updatedAt, answers: {}, migratedFromRevision: progress.unitRevision,
+    ...(progress.unitRevision === 2 ? { qf01Revision2Snapshot: { schemaVersion: 'qf01-revision2-snapshot/1' as const, sourceSHA: '9e6d6798ac40624373db0a87e53e7d8938fb317a' as const, serializedProgress: JSON.stringify(progress) } }
+      : { qf01Revision1Snapshot: { schemaVersion: 'qf01-revision1-snapshot/1' as const, sourceSHA: qf01SourceSHA, serializedProgress: JSON.stringify(progress) } }),
+    ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : progress.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+  }
+}
+
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
+  if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 3) return qf01Revision3Progress(unit, progress)
   if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 2) return qf01Progress(unit,progress)
   // N09/N10 constructor revisions are migrated only by the source-bound Store bridge.
   if (unit.constructionLessonVersion === 'n0910/1') return progress.unitId === unit.unitId && progress.unitRevision === unit.revision ? progress : undefined
@@ -1254,6 +1318,14 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
 
 /** N12 v3 reset keeps old archived revisions, but clears all v3 active answers. */
 export function resetTextbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, now: number): TextbookUnitProgress | undefined {
+  if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 3) {
+    qf01Revision3Contract(unit); qf01Need(Number.isFinite(now) && now >= 0)
+    const current = progress ? qf01Revision3Progress(unit, progress) : { unitId: unit.unitId, unitRevision: 3, startedAt: now, updatedAt: now, answers: {} } as TextbookUnitProgress
+    qf01Need(now >= current.updatedAt)
+    const { qf01Revision3ResetSnapshots, ...payload } = current
+    const { completedAt, ...rest } = payload
+    return { ...rest, startedAt: now, updatedAt: now, answers: {}, qf01Revision3ResetSnapshots: [...qf01Revision3ResetSnapshots ?? [], { schemaVersion: 'qf01-revision3-reset-snapshot/1', priorResetCount: qf01Revision3ResetSnapshots?.length ?? 0, serializedProgressWithoutResetSnapshots: JSON.stringify(payload) }], ...(completedAt !== undefined ? { previousRevisionCompletedAt: completedAt } : {}) }
+  }
   if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 2) {
     qf01Contract(unit); qf01Need(Number.isFinite(now) && now >= 0)
     const current = progress ? qf01Progress(unit,progress) : {unitId:unit.unitId,unitRevision:2,startedAt:now,updatedAt:now,answers:{}} as TextbookUnitProgress
@@ -1303,6 +1375,20 @@ export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswe
 }
 
 export function answerTextbookItem(progress: TextbookUnitProgress | undefined, unit: TextbookUnit, item: TextbookItem, value: string, now: number): TextbookUnitProgress {
+  if (unit.unitId === 'math-quadratic-qf01' && unit.revision === 3) {
+    qf01Revision3Contract(unit); qf01Need(Number.isFinite(now) && now >= 0)
+    const items = unit.sections.flatMap(section => section.items), target = items.find(candidate => candidate.id === item.id)
+    qf01Need(target && JSON.stringify(target) === JSON.stringify(item) && [item.answer, ...item.acceptedAnswers, ...item.choices ?? []].some(candidate => normalizeTextbookAnswer(candidate) === normalizeTextbookAnswer(value)))
+    const current = progress ? qf01Revision3Progress(unit, progress) : undefined
+    qf01Need(now >= (current?.updatedAt ?? 0))
+    const ids = unit.requiredInteractionRefs!, index = ids.indexOf(item.id)
+    qf01Need(index >= 0 && ids.slice(0, index).every(id => current?.answers[id]?.resolved))
+    const previous = current?.answers[item.id], correct = isTextbookAnswerCorrect(item, value)
+    qf01Need(!previous?.resolved || correct)
+    const record: TextbookAnswerRecord = { itemId: item.id, value, firstValue: previous?.firstValue ?? previous?.value ?? value, isFirstCorrect: previous?.isFirstCorrect ?? correct, resolved: correct, attemptCount: (previous?.attemptCount ?? 0) + 1, firstAnsweredAt: previous?.firstAnsweredAt ?? now, lastAnsweredAt: now }
+    const answers = { ...current?.answers, [item.id]: record }, complete = ids.every(id => answers[id]?.resolved)
+    return { ...current, unitId: unit.unitId, unitRevision: 3, startedAt: current?.startedAt ?? now, updatedAt: now, answers, ...(complete ? { completedAt: current?.completedAt ?? now } : {}) }
+  }
   const isQf01 = unit.unitId === 'math-quadratic-qf01' && unit.revision === 2
   if (isQf01) { qf01Contract(unit); qf01Need(Number.isFinite(now) && now >= 0 && unit.requiredInteractionRefs!.includes(item.id)); const target = unit.sections.flatMap(s => s.items).find(i => i.id === item.id); qf01Need(target && JSON.stringify(target) === JSON.stringify(item)); qf01Need([item.answer,...item.acceptedAnswers,...item.choices ?? []].some(v => normalizeTextbookAnswer(v) === normalizeTextbookAnswer(value))) }
   const currentProgress = effectiveTextbookProgress(unit, progress)
@@ -1349,8 +1435,8 @@ export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUn
   let currentProgress: TextbookUnitProgress | undefined
   try { currentProgress = effectiveTextbookProgress(unit, progress) }
   catch (error) {
-    if (unit.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
-    const active = new Set(qf01Grading.map(i => i.id))
+    if (unit.unitId !== 'math-quadratic-qf01' || ![2, 3].includes(unit.revision)) throw error
+    const active = new Set(unit.revision === 3 ? unit.requiredInteractionRefs : qf01Grading.map(i => i.id))
     return {completed:0,total:unit.sections.find(s => s.id === sectionId)?.items.filter(i => active.has(i.id)).length ?? 0}
   }
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
@@ -1372,8 +1458,8 @@ export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitP
   catch (error) {
     // Menu summaries are read-only: keep invalid data durable and let the unit page
     // explain the blocked save. Answer/reset/effective reads still reject writes.
-    if (unit.unitId !== 'math-quadratic-qf01' || unit.revision !== 2) throw error
-    return {completed:0,total:qf01Grading.length,percent:0}
+    if (unit.unitId !== 'math-quadratic-qf01' || ![2, 3].includes(unit.revision)) throw error
+    return {completed:0,total:unit.revision === 3 ? unit.requiredInteractionRefs!.length : qf01Grading.length,percent:0}
   }
   if (unit.requiredInteractionRefs) {
     const completed = unit.requiredInteractionRefs.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total = unit.requiredInteractionRefs.length

@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookFigure as TextbookFigureData, TextbookItem } from '../../domain/textbookSchema'
 import { TextbookFigure } from './TextbookFigure'
+import { mathQuadraticQF01Unit } from '../../data/textbook/math/quadratic/qf01Lesson'
 
 const figure: TextbookFigureData = {
   id: 'figure-1',
@@ -38,6 +39,18 @@ const items: TextbookItem[] = [
 ]
 
 describe('TextbookFigure', () => {
+  it('applies the reading SVG dimensions to the actual QF01 source and its absolute-path form', () => {
+    const actual = mathQuadraticQF01Unit.sections[0].figures.find(figure => figure.src.endsWith('rectangle-perimeter-40-reading.svg'))!
+    expect(actual).toBeDefined()
+    for (const src of [actual.src, '/' + actual.src.replace(/^\//, '')]) {
+      const html = renderToStaticMarkup(<TextbookFigure figure={{ ...actual, src }} items={[]} progress={undefined} onOpen={vi.fn()} />)
+      expect(html).toContain('textbook-figure-stage--qf01-reading')
+      expect(html).toContain('width="320" height="220"')
+    }
+    const original = renderToStaticMarkup(<TextbookFigure figure={{ ...figure, overlays: [] }} items={[]} progress={undefined} onOpen={vi.fn()} />)
+    expect(original).not.toContain('textbook-figure-stage--qf01-reading')
+    expect(original).not.toContain('width="320"')
+  })
   it('renders an unresolved figure overlay as an interactive mask', () => {
     const html = renderToStaticMarkup(
       <TextbookFigure figure={figure} items={items} progress={undefined} onOpen={vi.fn()} />,

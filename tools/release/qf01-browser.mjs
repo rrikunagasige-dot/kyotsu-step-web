@@ -9,6 +9,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
 export const SOURCE_SHA = '9e6d6798ac40624373db0a87e53e7d8938fb317a';
+export const REVISION3_SOURCE_SHA = '325b70035cafa70a8078944ccf903c53ce763545';
 export const PUBLIC_BASE = 'https://rrikunagasige-dot.github.io/kyotsu-step-web/';
 export const BASE_PATH = '/kyotsu-step-web/';
 export const STORAGE_KEY = 'kyotsu-step-gate3-math-20261023';
@@ -55,19 +56,20 @@ function plainMap(value, label) {
   return value;
 }
 export function validateConfiguration(contract, manifest, contractBytes, env = process.env) {
+  const revision3=contract.qf01?.revision===3,sourceSHA=revision3?REVISION3_SOURCE_SHA:SOURCE_SHA;
   assert.equal(contract.schemaVersion, 'qf01-publisher/1', 'CONTRACT_SCHEMA');
-  assert.equal(contract.sourceSHA, SOURCE_SHA, 'CONTRACT_SOURCE');
+  assert.equal(contract.sourceSHA, sourceSHA, 'CONTRACT_SOURCE');
   assert.equal(contract.baselineSHA, '1ac9f31ec205424f393a488f0d17cb3bb8bc75fd', 'CONTRACT_BASELINE');
   assert.equal(contract.publicBase, PUBLIC_BASE, 'CONTRACT_PUBLIC_BASE');
   assert.equal(contract.basePath, BASE_PATH, 'CONTRACT_BASE_PATH');
   assert.equal(contract.storageKey, STORAGE_KEY, 'CONTRACT_STORAGE_KEY');
   assert.deepEqual(contract.expectedWidths, WIDTHS, 'CONTRACT_WIDTHS');
   assert.equal(contract.qf01.unitId, 'math-quadratic-qf01', 'CONTRACT_UNIT');
-  assert.equal(contract.qf01.statesPerWidth, 124, 'CONTRACT_STATES');
-  assert.equal(contract.qf01.decisions, 24, 'CONTRACT_DECISIONS');
+  assert.equal(contract.qf01.statesPerWidth, revision3?179:124, 'CONTRACT_STATES');
+  assert.equal(contract.qf01.decisions, revision3?35:24, 'CONTRACT_DECISIONS');
   assert.equal(contract.qf01.stages, 9, 'CONTRACT_STAGES');
   assert.equal(manifest.schemaVersion, 'qf01-dist/1', 'DIST_MANIFEST_SCHEMA');
-  assert.equal(manifest.sourceSHA, SOURCE_SHA, 'DIST_MANIFEST_SOURCE');
+  assert.equal(manifest.sourceSHA, sourceSHA, 'DIST_MANIFEST_SOURCE');
   assert.match(env.PUBLISHER_SHA ?? '', /^[0-9a-f]{40}$/, 'PUBLISHER_SHA_REQUIRED');
   assert.equal(manifest.publisherSHA, env.PUBLISHER_SHA, 'DIST_MANIFEST_PUBLISHER');
   assert.equal(manifest.contractSHA256, hash(contractBytes), 'DIST_MANIFEST_CONTRACT');
@@ -75,7 +77,7 @@ export function validateConfiguration(contract, manifest, contractBytes, env = p
   assert.equal(manifest.basePath, BASE_PATH, 'DIST_MANIFEST_BASE_PATH');
   plainMap(manifest.files, 'DIST_MANIFEST_FILES');
   assert.ok(Object.hasOwn(manifest.files, 'index.html') && Object.hasOwn(manifest.files, 'qf01-release.json'), 'REQUIRED_DIST_ENTRIES');
-  if (env.SOURCE_SHA !== undefined) assert.equal(env.SOURCE_SHA, SOURCE_SHA, 'ENV_SOURCE');
+  if (env.SOURCE_SHA !== undefined) assert.equal(env.SOURCE_SHA, sourceSHA, 'ENV_SOURCE');
   if (env.STORAGE_KEY !== undefined) assert.equal(env.STORAGE_KEY, STORAGE_KEY, 'ENV_STORAGE_KEY');
   if (env.VITE_STORAGE_NAMESPACE !== undefined) assert.equal(env.VITE_STORAGE_NAMESPACE, STORAGE_KEY, 'ENV_STORAGE_NAMESPACE');
   const url = new URL(env.APP_URL ?? 'http://127.0.0.1:4173/kyotsu-step-web/');
@@ -86,7 +88,8 @@ export function validateConfiguration(contract, manifest, contractBytes, env = p
   assert.ok(isPublic || isLocal, 'APP_URL_MUST_BE_EXACT_PUBLIC_BASE_OR_LOCAL_PRODUCTION_BASE');
   const widths = env.WIDTH === undefined ? [...WIDTHS] : [Number(env.WIDTH)];
   assert.ok(widths.every(width => WIDTHS.includes(width)), 'INVALID_WIDTH');
-  return {appURL: url.href, isPublic, widths};
+  if(revision3){for(const name of ['currentSourceFiles','currentPublicFiles','buildConfigFiles'])plainMap(contract[name],'R3_FULL_'+name);assert.equal(contract.coreExecutionBinding?.fixed?.runtimeAuthoritySnapshotSHA,'9ee19f65d39b3e639857c809ada50a01c8a7c322','R3_CURRENT_RUNTIME_SNAPSHOT');assert.equal(contract.currentNativeAuthority?.sourceSHA,REVISION3_SOURCE_SHA,'R3_ACTUAL_R06_AUTHORITY_REQUIRED');assert.equal(verifyRevision3AssertionBody(contract.r3AssertionBodySHA256),contract.r3AssertionBodySHA256);}
+  return {appURL: url.href, isPublic, widths, ...(revision3?{revision3:true}:{})};
 }
 export function distSnapshot(directory) {
   const entries = [];
@@ -111,8 +114,9 @@ export function verifyDist(directory, manifest) {
 function gitHead(directory) {
   return execFileSync('git', ['-C', directory, 'rev-parse', 'HEAD'], {encoding: 'utf8'}).trim();
 }
-function verifySource(sourceRoot, publisherSHA) {
-  assert.equal(gitHead(sourceRoot), SOURCE_SHA, 'SOURCE_CHECKOUT_HEAD');
+function verifySource(sourceRoot, publisherSHA, contract) {
+  const revision3=contract?.qf01?.revision===3,sourceSHA=revision3?REVISION3_SOURCE_SHA:SOURCE_SHA;
+  assert.equal(gitHead(sourceRoot), sourceSHA, 'SOURCE_CHECKOUT_HEAD');
   assert.equal(gitHead(path.dirname(THIS_FILE)), publisherSHA, 'PUBLISHER_CHECKOUT_HEAD');
   const publisherRoot = execFileSync('git', ['-C', path.dirname(THIS_FILE), 'rev-parse', '--show-toplevel'], {encoding: 'utf8'}).trim();
   const scriptRelative = path.relative(publisherRoot, THIS_FILE).split(path.sep).join('/');
@@ -120,8 +124,10 @@ function verifySource(sourceRoot, publisherSHA) {
   assert.equal(hash(execFileSync('git', ['-C', publisherRoot, 'show', publisherSHA + ':' + scriptRelative])), hash(fs.readFileSync(THIS_FILE)), 'PUBLISHER_SCRIPT_UNCOMMITTED_CHANGE');
   execFileSync('git', ['-C', sourceRoot, 'diff', '--quiet', 'HEAD', '--', 'src', 'public', 'package.json', 'pnpm-lock.yaml'], {stdio: 'pipe'});
   assert.equal(execFileSync('git', ['-C', sourceRoot, 'ls-files', '--others', '--', 'src', 'public'], {encoding: 'utf8'}).trim(), '', 'SOURCE_UNTRACKED_APPLICATION_FILES');
-  for (const [name, expected] of Object.entries(requiredSourceFiles)) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name))), expected, 'SOURCE_BYTES:' + name);
-  return {sourceSHA: SOURCE_SHA, publisherSHA, sourceFiles: {...requiredSourceFiles}, publisherScriptSHA256: hash(fs.readFileSync(THIS_FILE)), trackedApplicationSourceClean: true};
+  const sourceFiles=revision3?{...contract.currentSourceFiles,...contract.currentPublicFiles,...contract.buildConfigFiles}:requiredSourceFiles;
+  if(revision3){const actualSRC=distSnapshot(path.join(sourceRoot,'src')),actualPublic=distSnapshot(path.join(sourceRoot,'public'));assert.deepEqual(actualSRC,Object.fromEntries(Object.entries(contract.currentSourceFiles).map(([p,h])=>[p.slice(4),h])),'R3_FULL_SRC_BYTES');assert.deepEqual(actualPublic,Object.fromEntries(Object.entries(contract.currentPublicFiles).map(([p,h])=>[p.slice(7),h])),'R3_FULL_PUBLIC_BYTES');for(const [p,h] of Object.entries(sourceFiles)){safeRelative(p);assert.equal(hash(execFileSync('git',['-C',sourceRoot,'show',sourceSHA+':'+p])),h,'R3_COMMITTED_APP_BYTES '+p);}}
+  for (const [name, expected] of Object.entries(sourceFiles)) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name))), expected, 'SOURCE_BYTES:' + name);
+  return {sourceSHA, publisherSHA, sourceFiles: {...sourceFiles}, publisherScriptSHA256: hash(fs.readFileSync(THIS_FILE)), trackedApplicationSourceClean: true};
 }
 function ensureOutside(child, directory, label) {
   const rel = path.relative(directory, child);
@@ -266,9 +272,10 @@ export function verifyCurrentAssertionBody(){const code=fs.readFileSync(THIS_FIL
 function addReportBinding(out, binding, failure) {
   const reportPath = path.join(out, 'REPORT.json');
   if (!fs.existsSync(reportPath)) {
-    fs.writeFileSync(reportPath, JSON.stringify({status: 'FAIL_BEFORE_BROWSER', sourceSHA: SOURCE_SHA, errors: [], images: [], states: []}, null, 2) + '\n');
+    fs.writeFileSync(reportPath, JSON.stringify({status: 'FAIL_BEFORE_BROWSER', sourceSHA: binding.sourceSHA, errors: [], images: [], states: []}, null, 2) + '\n');
   }
   const report = json(reportPath);
+  if(report.revision===3){assert.equal(binding.sourceSHA,REVISION3_SOURCE_SHA);report.route=BASE_PATH+'#/learning/textbook/math-quadratic-qf01';report.actualAppURL=binding.appURL+'#/learning/textbook/math-quadratic-qf01';report.binding=binding;report.publisherBinding=binding;report.assertionProvenance={materialSourceSHA:binding.sourceSHA,modulePublisherSHA:binding.publisherSHA,modulePath:'tools/release/qf01-browser.mjs',moduleSHA256:hash(fs.readFileSync(THIS_FILE)),r3AssertionBodySHA256:revision3AssertionBodySHA256()};for(const proof of report.supplemental??[]){proof.publisherBinding=binding;proof.sourceSHA=binding.sourceSHA;proof.width=report.width;}report.userAcceptance=false;if(failure){report.status='FAIL';report.bindingOrBrowserFailure=String(failure);}fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');return report;}
   report.originalWorkflowRoute ??= report.route;
   report.route = BASE_PATH + '#/learning/textbook/math-quadratic-qf01';
   report.actualAppURL = binding.appURL + '#/learning/textbook/math-quadratic-qf01';
@@ -287,6 +294,437 @@ export function checkFullCoverage(report){
  for(const image of report.images){assert.equal(image.fullPage,false);assert.equal(image.captureOrigin,'learner-viewport-after-two-animation-frames');assert.equal(image.sourceSHA,SOURCE_SHA);assert.equal(image.width,report.width);assert.equal(image.captureViewport.width,report.width);assert.equal(image.fullPageImage?.fullPage,true);assert.equal(image.fullPageImage.captureOrigin,'top-after-two-animation-frames');assert.match(image.fullPageImage.sha256,/^[0-9a-f]{64}$/);}
  assert.deepEqual(report.answers.map(a=>a.id),ACTIVE_IDS);assert.deepEqual(report.supplemental.map(p=>p.kind),SUPPLEMENT_KINDS,'EXACT_CURRENT_SUPPLEMENT_KINDS');assert.deepEqual(report.errors,[]);
 }
+// Successor draft: it is deliberately not wired to main until the actual
+// material commit, current native authority and producer contract are frozen.
+// The old assertion body remains available only as historical r2 coverage.
+export function revision3CaptureLabels(ids) {
+  assert.equal(ids.length,35); assert.equal(new Set(ids).size,35);
+  return ids.flatMap(id=>[id+'-before',id+'-choices',id+'-wrong-0',id+'-wrong-1',...(RELOAD_IDS.includes(id)?[id+'-reload-wrong']:[]),id+'-correct',...(RELOAD_IDS.includes(id)?[id+'-reload-correct']:[])]);
+}
+export function revision3SupplementKinds(){return ['compact-history','full-history','revision2-readonly','reset-preserves-revision2',...Array.from({length:26},(_,i)=>'revision1-prefix-'+i),...Array.from({length:25},(_,i)=>'revision2-prefix-'+i),'menu-0','menu-35'];}
+function checkRevision3Image(image,report){
+ assert.equal(image.phase,report.phase,'R3_IMAGE_CAPTURE_PHASE');safeRelative(image.file);assert.match(image.sha256,/^[a-f0-9]{64}$/);assert.equal(image.sourceSHA,report.sourceSHA);assert.equal(image.width,report.width);assert.equal(image.fullPage,false);assert.equal(image.captureOrigin,'learner-viewport-after-two-animation-frames');assert.equal(image.captureViewport.width,report.width);assert.ok(Number.isFinite(image.captureViewport.scrollY));
+ const full=image.fullPageImage;assert.equal(full.phase,report.phase,'R3_FULLPAGE_CAPTURE_PHASE');safeRelative(full.file);assert.match(full.sha256,/^[a-f0-9]{64}$/);assert.equal(full.fullPage,true);assert.equal(full.captureOrigin,'top-after-two-animation-frames');assert.equal(full.captureViewport.scrollX,0);assert.equal(full.captureViewport.scrollY,0);assert.equal(full.captureViewport.width,report.width);
+}
+export function checkRevision3Coverage(report, ids) {
+ assert.ok(['R3_NORMAL_PRODUCTION_QA','DRAFT_DESIGN_PREVIEW_ONLY'].includes(report.phase),'R3_EXPLICIT_CAPTURE_PHASE');assert.equal(report.binding?.phase,report.phase);assert.equal(report.revision,3);assert.equal(report.status,'R3_CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE');assert.equal(report.unitId,'math-quadratic-qf01');assert.deepEqual(report.publisherBinding,report.binding);
+ assert.deepEqual(report.coverage,{canonicalBlocks:134,interactionRegistryBlocks:35,activeJudgments:35,stages:9,correct:35,wrong:70,reloadWrong:2,reloadCorrect:2,states:179});
+ const wrongLabels=ids.flatMap(id=>[id+'-wrong-0',id+'-wrong-1']);assert.deepEqual(report.feedbackChecks?.map(r=>r.label),wrongLabels,'R3_ALL70_VISIBLE_FEEDBACK_DOM_CHECKS');
+ for(const row of report.feedbackChecks){const state=report.states.find(s=>s.label===row.label);assert.equal(row.id,state?.id);assert.equal(row.stateFile,state.file);assert.equal(row.stateSHA256,state.sha256);validateRevision3FeedbackDOM(row);}
+ const labels=revision3CaptureLabels(ids);assert.deepEqual(report.states.map(s=>s.label),labels);assert.deepEqual(report.images.map(s=>s.label),labels);assert.equal(report.states.length,179);assert.equal(report.images.length,179);
+ for(const rows of [report.states,report.images])assert.equal(new Set(rows.map(s=>s.file)).size,179,'R3_UNIQUE_COMMON_FILES');
+ for(const [index,state]of report.states.entries()){safeRelative(state.file);assert.match(state.sha256,/^[a-f0-9]{64}$/);assert.equal(state.image,report.images[index].file);assert.equal(state.id,report.images[index].nodeId);assert.equal(state.id,ids.find(id=>state.label.startsWith(id+'-')),'R3_LABEL_BINDS_INTERACTION_ID');checkRevision3Image(report.images[index],report);}
+ assert.deepEqual(report.answers.map(a=>a.id),ids);assert.deepEqual(report.errors,[]);assert.deepEqual(report.references.map(r=>r.id),ids);
+ assert.deepEqual(report.figures.map(f=>f.id),['qf01-r3-n14-boundary-answer','qf01-r3-n14-perimeter-expression-answer','qf01-n14-answer','qf01-n17-answer']);
+ assert.deepEqual(report.supplemental.map(s=>s.kind),revision3SupplementKinds());
+ for(const proof of report.supplemental){assert.equal(proof.phase,report.phase,'R3_SUPPLEMENT_CAPTURE_PHASE');assert.equal(proof.sourceSHA,report.sourceSHA);assert.equal(proof.width,report.width);assert.deepEqual(proof.publisherBinding,report.binding);safeRelative(proof.state.file);assert.match(proof.state.sha256,/^[a-f0-9]{64}$/);checkRevision3Image(proof.image,report);}
+ assert.equal(new Set(report.supplemental.map(s=>s.state.file)).size,57);assert.equal(new Set(report.supplemental.map(s=>s.image.file)).size,57);
+ const allPaths=[...report.states.map(s=>s.file),...report.images.flatMap(i=>[i.file,i.fullPageImage.file]),...report.supplemental.flatMap(s=>[s.state.file,s.image.file,s.image.fullPageImage.file])];assert.equal(new Set(allPaths).size,708,'R3_ALL_ARTIFACT_PATHS_UNIQUE');
+}
+export function validateRevision3ViewportEvidence(v,{requireLesson=false,requireHint=false,requireTarget=false,expectedSourceNode=null}={}){
+ validateViewportEvidence(v,{requireLesson,requireHint});assert.ok(Array.isArray(v.slots),'R3_REQUIRED_SLOT_GEOMETRY');
+ for(const slot of v.slots)assert.ok(slot.width>=48&&slot.height>=48,'R3_SLOT_48PX');if(requireTarget){assert.ok(v.target,'R3_UNRESOLVED_TARGET_REQUIRED');assert.equal(v.slots.length,1,'R3_EXACT_ONE_CURRENT_SLOT');if(expectedSourceNode)assert.equal(v.target.sourceNodeId,expectedSourceNode,'R3_CURRENT_TARGET_SOURCE_NODE');}
+ if(v.target){assert.equal(v.surface,'lesson');assert.ok(v.target.rect.width>=48&&v.target.rect.height>=48,'R3_CURRENT_TARGET_48PX');assert.equal(v.target.centerHit,true,'R3_CURRENT_TARGET_CENTER_HIT');assert.ok(v.target.rect.left>=-1&&v.target.rect.right<=v.viewport.width+1,'R3_CURRENT_TARGET_HORIZONTAL_CLIP');assert.ok(v.target.rect.top>=v.headerBottom-1&&v.target.rect.bottom<=v.footerTop+1,'R3_CURRENT_TARGET_HEADER_FOOTER_OCCLUSION');}
+ return true;
+}
+export function revision3AlignmentContract(metadata,unit){
+ const blocks=new Map(unit.sections.flatMap(s=>s.readingFlow).map(b=>[b.id,b])),records=new Map(metadata.viewContracts.RESULT_REGISTRY.records.filter(r=>r.equation?.displayNumber!=null).map(r=>[r.sourceRef.blockId,r])),sources=new Map(metadata.sourceMap.map(s=>[s.unitBlockId,s])),visibility=new Map(metadata.blockVisibility.map(v=>[v.blockId,v])),owners={};
+ const stages=metadata.viewContracts.STAGE_HISTORY_CONTRACT.stages;
+ for(const stage of stages){const prelude=new Set(metadata.viewContracts.FRAME_CONTRACT.stagePreludeRefs[stage.stageId]??[]);for(const blockId of stage.fullLessonBlockRefs){if(prelude.has(blockId)||blockId===stage.terminalSourceRef)continue;const record=records.get(blockId);if(!record)continue;assert.equal(blocks.get(blockId)?.type,'formula','R3_ALIGNMENT_CANONICAL_FORMULA');assert.equal(sources.get(blockId)?.authorAttributes.stageId,stage.stageId,'R3_ALIGNMENT_SOURCE_STAGE');const gate=visibility.get(blockId);assert.ok(gate&&Array.isArray(gate.visibleWhen?.allSolved),'R3_ALIGNMENT_VISIBILITY_GATE');assert.ok(gate.mode===undefined||gate.mode==='normal','R3_ALIGNMENT_CANONICAL_VISIBILITY_MODE');assert.ok(!Object.hasOwn(owners,blockId),'R3_UNIQUE_ALIGNMENT_OWNER');owners[blockId]={stageId:stage.stageId,group:stage.stageId+'-relation-'+record.equation.displayNumber,requiredSolved:gate.visibleWhen.allSolved};}}
+ return{stageIds:stages.map(s=>s.stageId),owners};
+}
+// Serialized by Playwright as the same function used by source/DOM guard tests.
+// Source-derived expected owners are checked before reading data-group attributes;
+// removing a group, source owner or formula cannot silently remove a measurement.
+export function measureRevision3RelationColumns({rootSelector,alignmentContract,solvedIds},documentObject=globalThis.document){
+ const root=documentObject.querySelector(rootSelector);if(!root)return[];const stage=root.matches('.math-textbook-stage--current')?root:root.querySelector('.math-textbook-stage--current');if(!stage)throw Error('R3_CURRENT_ALIGNMENT_STAGE_MISSING');const stageId=(stage.getAttribute('data-testid')??'').replace(/^math-textbook-stage-/, '');if(!alignmentContract.stageIds.includes(stageId))throw Error('R3_ALIGNMENT_STAGE_NOT_IN_SOURCE');
+ const solved=new Set(solvedIds),expected=Object.entries(alignmentContract.owners).filter(([,r])=>r.stageId===stageId&&r.requiredSolved.every(id=>solved.has(id))).map(([id])=>id),blocks=[...stage.querySelectorAll('.qf01-continuous-derivation > [data-source-block]')].filter(b=>Object.hasOwn(alignmentContract.owners,b.getAttribute('data-source-block'))),actual=blocks.map(b=>b.getAttribute('data-source-block'));
+ if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('R3_COMPLETE_VISIBLE_CANONICAL_ALIGNMENT_OWNERS');const groups=new Map();
+ for(const block of blocks){const sourceId=block.getAttribute('data-source-block'),owner=alignmentContract.owners[sourceId];if(block.getAttribute('data-source-view')!=='canonical'||block.getAttribute('data-qf01-alignment-group')!==owner.group)throw Error('R3_ALIGNMENT_GROUP_SOURCE_BINDING');
+  const formulas=[...block.querySelectorAll('.transformation-equation > .reading-formula-line--typeset')].filter(formula=>formula.closest('[data-source-block]')===block&&formula.getAttribute('data-typeset-source')===sourceId);if(formulas.length!==1)throw Error('R3_EXACT_CANONICAL_FORMULA_OWNER');
+  if(!groups.has(owner.group))groups.set(owner.group,{id:owner.group,positions:[],sourceBlocks:[],relationRows:[]});const group=groups.get(owner.group);group.sourceBlocks.push(sourceId);
+  const rows=[...formulas[0].querySelectorAll('.typeset-line--equation')].filter(row=>row.closest('.reading-formula-line--typeset')===formulas[0]);for(const[index,row]of rows.entries()){const relations=[...row.children].filter(e=>e.classList.contains('typeset-relation'));if(relations.length!==1)throw Error('R3_EXACT_CANONICAL_RELATION_CELL');const left=relations[0].getBoundingClientRect().left;if(!Number.isFinite(left))throw Error('R3_FINITE_RELATION_GEOMETRY');group.positions.push(left);group.relationRows.push({sourceBlockId:sourceId,rowIndex:index,left});}
+ }
+ return [...groups.values()];
+}
+export const REVISION3_READING_FIGURE=Object.freeze({assetPath:'public/assets/math/textbook/functions/rectangle-perimeter-40-reading.svg',sha256:'f46a413649f88ef1abcd8960cd327df2cdd623e267d1aeebf4772cea1a279039',viewBox:'0 0 320 220',width:320,height:220,labelFontSize:26,variant:'qf01-reading-compact-320-v1'});
+export function validateRevision3FigureSource(raw,metadata,assetPath=REVISION3_READING_FIGURE.assetPath){
+ const expected=REVISION3_READING_FIGURE,policy=metadata.viewContracts.FIGURE_POLICY;assert.equal(assetPath,expected.assetPath,'R3_FIXED_FIGURE_SOURCE_PATH');assert.equal(policy.renderAsset,expected.assetPath);assert.equal(policy.variant,expected.variant);assert.equal(policy.provenance['設計見本SHA256'],expected.sha256,'R3_METADATA_FIGURE_HASH');assert.equal(policy.provenance.viewBox,expected.viewBox,'R3_METADATA_FIGURE_VIEWBOX');assert.equal(policy.provenance.labelFontSize,expected.labelFontSize,'R3_METADATA_FIGURE_LABEL_SIZE');assert.equal(hash(raw),expected.sha256,'R3_FIXED_SVG_SOURCE_BYTES');
+ const text=Buffer.isBuffer(raw)?raw.toString('utf8'):String(raw),opening=/<svg\b[^>]*>/i.exec(text)?.[0];assert.ok(opening,'R3_SVG_ROOT');assert.equal(/\bviewBox="([^"]+)"/.exec(opening)?.[1],expected.viewBox,'R3_SOURCE_SVG_VIEWBOX');const labels=[...text.matchAll(/<text\b[^>]*\bfont-size="([^"]+)"[^>]*>/g)].map(match=>Number(match[1]));assert.equal(labels.length,3);assert.ok(labels.every(size=>size===26),'R3_SOURCE_SVG_LABEL_SIZE');return{assetPath:expected.assetPath,sha256:expected.sha256,bytes:Buffer.byteLength(raw),viewBox:expected.viewBox,width:expected.width,height:expected.height,labelFontSize:expected.labelFontSize,variant:expected.variant};
+}
+export function validateRevision3FigureHTTP({raw,status,url,contentType,expectedURL,sourceProof,metadata}){
+ assert.equal(url,expectedURL,'R3_EXACT_RENDERED_FIGURE_URL');assert.equal(status,200,'R3_FIGURE_HTTP_STATUS');assert.equal(String(contentType).split(';')[0].trim().toLowerCase(),'image/svg+xml','R3_FIGURE_HTTP_MIME');const observed=validateRevision3FigureSource(raw,metadata);assert.deepEqual(observed,sourceProof,'R3_HTTP_FIGURE_EQUALS_SOURCE');return{url,status,contentType,sha256:hash(raw),bytes:Buffer.byteLength(raw),viewBox:observed.viewBox,labelFontSize:observed.labelFontSize};
+}
+export function validateRevision3FigureBox(box,{viewportWidth,sourceProof,expectedURL}){
+ assert.equal(sourceProof.sha256,REVISION3_READING_FIGURE.sha256);assert.equal(sourceProof.viewBox,'0 0 320 220');assert.equal(sourceProof.labelFontSize,26);assert.equal(box.currentSrc,expectedURL,'R3_CURRENT_FIGURE_NOT_FALLBACK');assert.equal(box.decodeSucceeded,true,'R3_FIGURE_DECODE');assert.equal(box.complete,true,'R3_FIGURE_COMPLETE');assert.ok(box.naturalWidth>0&&box.naturalHeight>0,'R3_FIGURE_POSITIVE_NATURAL_SIZE');assert.equal(box.widthAttribute,'320');assert.equal(box.heightAttribute,'220');assert.ok(Number.isFinite(box.width)&&Number.isFinite(box.height)&&box.width>0&&box.height>0,'R3_FIGURE_POSITIVE_RENDERED_BOX');assert.ok(Math.abs(box.height-box.width*220/320)<=1,'R3_FIGURE_RENDERED_ASPECT_RATIO');if(viewportWidth===320)assert.ok(box.width>=224,'R3_FIGURE_320_MINIMUM_224');const renderedLabelSize=26*Math.min(box.width/320,box.height/220);assert.ok(renderedLabelSize>=18,'R3_FIGURE_LABEL_MINIMUM_18');return{renderedLabelSize,renderedScale:Math.min(box.width/320,box.height/220)};
+}
+export function measureRevision3FeedbackDOM({selector},documentObject=globalThis.document){
+ const root=documentObject.querySelector(selector);if(!root)throw Error('R3_FEEDBACK_ROOT_MISSING');
+ const shown=e=>{for(let n=e;n;n=n.parentElement){const s=documentObject.defaultView.getComputedStyle(n);if(n.hidden||s.display==='none'||s.visibility==='hidden'||s.visibility==='collapse')return false;}return true;};
+ const hints=[...root.querySelectorAll('.reading-choice-hint')].filter(shown);
+ const texts=hints.map(e=>{const walker=documentObject.createTreeWalker(e,4),parts=[];while(walker.nextNode()){const node=walker.currentNode,parent=node.parentElement;if(parent&&!parent.closest('.katex,annotation,script,style,[hidden],[aria-hidden="true"]')&&shown(parent))parts.push(node.nodeValue);}return parts.join('');});
+ return{hintCount:hints.length,plainTexts:texts};
+}
+export function validateRevision3FeedbackDOM(evidence){
+ assert.ok(evidence.hintCount>0,'R3_VISIBLE_WRONG_FEEDBACK_REQUIRED');assert.equal(evidence.plainTexts.length,evidence.hintCount);
+ for(const text of evidence.plainTexts){assert.ok(typeof text==='string'&&text.trim(),'R3_VISIBLE_FEEDBACK_TEXT_REQUIRED');assert.ok(!/\\[A-Za-z]+|\\[()[\]]|\$[^$]+\$/.test(text),'R3_VISIBLE_FEEDBACK_RAW_TEX');}return true;
+}
+export function revision3HelpRules(metadata,id){
+ const rules=metadata.blockVisibility.filter(r=>r.mode==='help-or-solved');
+ for(const r of rules){assert.ok(Array.isArray(r.visibleWhen?.allSolved),'R3_HELP_CANONICAL_PREREQUISITES');assert.equal(typeof r.visibleWhen?.helpOrSolvedFor,'string','R3_HELP_NESTED_CANONICAL_RULE');assert.ok(!Object.hasOwn(r,'helpOrSolvedFor'),'R3_HELP_NO_FLAT_RULE_ALIAS');}
+ const current=rules.filter(r=>r.visibleWhen.helpOrSolvedFor===id);if(id==='qf01-n18-answer')assert.equal(current.length,1,'R3_Q18_CANONICAL_HELP_REQUIRED');return current;
+}
+export function measureRevision3HelpDOM({blockIds},documentObject=globalThis.document){
+ const stage=documentObject.querySelector('.math-textbook-stage--current');if(!stage)throw Error('R3_HELP_CURRENT_STAGE_REQUIRED');
+ return blockIds.map(blockId=>({blockId,visibleCount:[...stage.querySelectorAll('[data-source-block]')].filter(e=>e.getAttribute('data-source-block')===blockId).filter(e=>{for(let n=e;n&&n!==stage.parentElement;n=n.parentElement){const s=documentObject.defaultView.getComputedStyle(n);if(n.hidden||s.display==='none'||s.visibility==='hidden'||s.visibility==='collapse')return false;}const r=e.getBoundingClientRect();return r.width>0&&r.height>0;}).length}));
+}
+export function validateRevision3HelpDOM(evidence,rules,{helpOpen,solvedIds}){
+ assert.deepEqual(evidence.map(r=>r.blockId),rules.map(r=>r.blockId),'R3_HELP_COMPLETE_CANONICAL_DOM_SCOPE');const solved=new Set(solvedIds);
+ for(const [i,r]of rules.entries()){const gate=r.visibleWhen,expected=gate.allSolved.every(id=>solved.has(id))&&(helpOpen||solved.has(gate.helpOrSolvedFor));assert.equal(evidence[i].visibleCount>0,expected,'R3_CANONICAL_HELP_DOM_VISIBILITY:'+r.blockId);}return true;
+}
+export async function runRevision3AssertionBody({sourceRoot,appURL,width,out,binding}) {
+  assert.ok(['R3_NORMAL_PRODUCTION_QA','DRAFT_DESIGN_PREVIEW_ONLY'].includes(binding.phase),'EXPLICIT_R3_CAPTURE_PHASE');
+  const unit=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json'));
+  const metadata=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01ReadingPresentation.json'));
+  const archive=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Revision2Archive.json'));
+  const ids=unit.requiredInteractionRefs,items=new Map(unit.sections.flatMap(s=>s.items).map(i=>[i.id,i]));
+  assert.equal(unit.revision,3);assert.equal(metadata.canonicalBlockCount,134);assert.equal(metadata.interactionRegistryCount,35);
+  assert.deepEqual(metadata.interactions.map(q=>q.id),ids);assert.equal(items.size,35);
+  const report={schemaVersion:'qf01-r3-browser/1',phase:binding.phase,...(binding.phase==='DRAFT_DESIGN_PREVIEW_ONLY'?{draftRun:binding.draftRun}:{}),revision:3,sourceSHA:binding.sourceSHA,width,unitId:unit.unitId,route:BASE_PATH+'#/learning/textbook/'+unit.unitId,ci:{runId:process.env.GITHUB_RUN_ID??null,attempt:process.env.GITHUB_RUN_ATTEMPT?Number(process.env.GITHUB_RUN_ATTEMPT):null},status:'RUNNING',assertionProvenance:{r3AssertionBodySHA256:revision3AssertionBodySHA256()},binding,publisherBinding:binding,images:[],states:[],answers:[],references:[],figures:[],supplemental:[],errors:[],userAcceptance:false};
+  const persist=()=>fs.writeFileSync(path.join(out,'REPORT.json'),JSON.stringify(report,null,2)+'\n');
+  const browser=await chromium.launch({headless:true});
+  const context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'});
+  const page=await context.newPage();page.on('pageerror',e=>report.errors.push(String(e)));
+  const route=appURL+'#/learning/textbook/'+unit.unitId;
+  const readState=()=>page.evaluate(key=>{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):null;},STORAGE_KEY);
+  const progress=async()=> (await readState())?.state?.textbookProgress?.[unit.unitId];
+  const settled=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  async function ready(){await page.locator('[data-qf01-revision="3"]').waitFor();assert.equal(await page.getByTestId('qf01-r3-binding-error').count(),0);await settled();}
+  fs.mkdirSync(out,{recursive:true});for(const dir of ['png','states','fullpage','supplemental-png','supplemental-states'])fs.mkdirSync(path.join(out,dir),{recursive:true});persist();
+  async function capturePair(stem,p=page,directory='png'){
+    const settle=()=>p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+    await settle();const captureViewport=await p.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));
+    const file=directory+'/'+stem+'.png',viewportBytes=await p.screenshot({fullPage:false});fs.writeFileSync(path.join(out,file),viewportBytes);
+    let fullPageImage;
+    try{await p.evaluate(()=>scrollTo(0,0));await settle();const top=await p.evaluate(()=>({scrollX,scrollY,width:innerWidth,height:innerHeight}));assert.equal(top.scrollX,0);assert.equal(top.scrollY,0);const fullFile='fullpage/'+stem+'.png',fullBytes=await p.screenshot({fullPage:true});fs.writeFileSync(path.join(out,fullFile),fullBytes);fullPageImage={file:fullFile,phase:binding.phase,sha256:hash(fullBytes),fullPage:true,captureOrigin:'top-after-two-animation-frames',captureViewport:top};}
+    finally{await p.evaluate(v=>scrollTo(v.scrollX,v.scrollY),captureViewport);await settle();const restored=await p.evaluate(()=>({scrollX,scrollY}));assert.ok(Math.abs(restored.scrollX-captureViewport.scrollX)<1&&Math.abs(restored.scrollY-captureViewport.scrollY)<1,'R3_CAPTURE_RESTORES_LEARNER_VIEWPORT');}
+    return{file,phase:binding.phase,sha256:hash(viewportBytes),sourceSHA:binding.sourceSHA,width,fullPage:false,captureOrigin:'learner-viewport-after-two-animation-frames',captureViewport,fullPageImage};
+  }
+  async function r3Viewport(p,{targetId=null,requireLesson=false,requireHint=false,requireTarget=false}={}){
+    await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+    const alignmentContract=revision3AlignmentContract(metadata,unit);
+    const v=await p.evaluate(({targetId})=>{
+      const rect=e=>{const r=e.getBoundingClientRect();return{left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};},hit=e=>{const r=rect(e),actual=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return!!actual&&(actual===e||e.contains(actual));};
+      const flow=document.querySelector('[data-qf01-revision="3"]'),root=(targetId?flow?.querySelector('.math-textbook-stage--current'):flow)??document.body;
+      const headers=[...document.querySelectorAll('header,nav,[data-fixed-header]')].map(e=>({s:getComputedStyle(e),r:rect(e)})),headerBottom=Math.max(0,...headers.filter(h=>['fixed','sticky'].includes(h.s.position)&&Number.isFinite(parseFloat(h.s.top))&&h.r.top<innerHeight/2).map(h=>h.r.bottom)),footerTop=Math.min(innerHeight,...headers.filter(h=>h.s.position==='fixed'&&Number.isFinite(parseFloat(h.s.bottom))&&h.r.top>innerHeight/2).map(h=>h.r.top));
+      const math=[...root.querySelectorAll('.katex')].map(e=>{const r=rect(e),clippedBy=[];for(let parent=e.parentElement;parent&&parent!==document.body;parent=parent.parentElement){const style=getComputedStyle(parent),pr=rect(parent);if(['hidden','clip'].includes(style.overflowX)&&(r.left<pr.left-1||r.right>pr.right+1))clippedBy.push({tag:parent.tagName,className:parent.className,rect:pr});}return{latex:e.querySelector('annotation')?.textContent,fontSize:parseFloat(getComputedStyle(e).fontSize),rect:r,clippedBy};});
+      const intersects=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5,numberLabels=[...root.querySelectorAll('.numbered-equation-label')].map(e=>{const r=rect(e);return{text:e.textContent,rect:r,collisions:[...e.parentElement.querySelectorAll('.katex')].map(m=>rect(m)).filter(m=>intersects(r,m))};});
+      const copyFonts=flow?[['prose','.reading-paragraph'],['hint','.reading-choice-hint'],['hint-label','.reading-choice-hint strong'],['context','.qf01-local-context'],['source','.math-textbook-stage-reference-content']].flatMap(([kind,selector])=>[...root.querySelectorAll(selector)].filter(e=>{const r=rect(e),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&e.textContent.trim();}).map((e,index)=>({kind,index,text:e.textContent.trim(),fontSize:parseFloat(getComputedStyle(e).fontSize)}))):[];
+      const slot=targetId?root.querySelector('[data-testid="textbook-item-'+targetId+'"]'):null,panel=targetId?root.querySelector('[data-testid="inline-choice-panel-'+targetId+'"]'):null,focus=panel?.contains(document.activeElement)&&document.activeElement.tagName==='BUTTON'?document.activeElement:null,target=focus??slot;
+      const buttons=[...root.querySelectorAll('button')].filter(e=>{const r=rect(e);return r.width>0&&r.height>0&&r.top>=headerBottom&&r.bottom<=footerTop&&r.left>=0&&r.right<=innerWidth;}).map(e=>({testId:e.getAttribute('data-testid'),rect:rect(e),centerHit:hit(e)}));
+      return{surface:flow?'lesson':'menu',viewport:{width:innerWidth,height:innerHeight,scrollX,scrollY},documentWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,fontsReady:document.fonts.status,katexErrors:document.querySelectorAll('.katex-error').length,flowFontSize:flow?parseFloat(getComputedStyle(flow).fontSize):null,copyFonts,headerBottom,footerTop,math,relationColumns:[],numberLabels,holeRect:slot?rect(slot):null,panelRect:panel?rect(panel):null,target:target?{sourceNodeId:target.closest('[data-source-node]')?.getAttribute('data-source-node'),testId:target.getAttribute('data-testid'),button:true,rect:rect(target),centerHit:hit(target)}:null,visibleButtons:buttons,slots:[...root.querySelectorAll('button[data-qf01-current-slot]')].map(e=>({id:e.getAttribute('data-testid'),...rect(e)}))};
+    },{targetId});
+    const stored=await p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id],{key:STORAGE_KEY,id:unit.unitId}),solvedIds=stored?.unitRevision===3?ids.filter(id=>stored.answers?.[id]?.resolved&&stored.answers[id].value===items.get(id).answer):[];
+    try{v.relationColumns=await p.evaluate(measureRevision3RelationColumns,{rootSelector:targetId?'[data-qf01-revision="3"] .math-textbook-stage--current':'[data-qf01-revision="3"]',alignmentContract,solvedIds});validateRevision3ViewportEvidence(v,{requireLesson,requireHint,requireTarget,expectedSourceNode:targetId?metadata.interactions.find(q=>q.id===targetId)?.nodeId:null});}catch(error){const index=(report.failedGeometry??=[]).length,stem='FAILED-GEOMETRY-'+index,file='states/'+stem+'.json',image=await capturePair(stem,p);const raw=Buffer.from(JSON.stringify({phase:binding.phase,sourceSHA:binding.sourceSHA,width,targetId,requireLesson,requireHint,requireTarget,expectedAlignmentContract:alignmentContract,solvedIds,measurements:v,error:String(error),image},null,2)+'\n');fs.writeFileSync(path.join(out,file),raw);report.failedGeometry.push({phase:binding.phase,file,sha256:hash(raw),image});persist();throw error;}
+    return v;
+  }
+  async function capture(id,suffix){
+    await settled();const label=id+'-'+suffix,stem=String(report.states.length).padStart(3,'0')+'-'+label;
+    const measurements=await r3Viewport(page,{targetId:id,requireLesson:true,requireTarget:!['correct','reload-correct'].includes(suffix),requireHint:suffix.startsWith('wrong-')||suffix==='reload-wrong'});
+    const feedbackEvidence=suffix.startsWith('wrong-')?await page.evaluate(measureRevision3FeedbackDOM,{selector:'[data-testid="inline-choice-panel-'+id+'"]'}):null;
+    const helpRules=revision3HelpRules(metadata,id),helpEvidence=helpRules.length?await page.evaluate(measureRevision3HelpDOM,{blockIds:helpRules.map(r=>r.blockId)}):null;
+    const actualProgress=await progress(),solvedIds=ids.filter(key=>actualProgress?.answers[key]?.resolved===true);
+    const image={...await capturePair(stem),nodeId:id,label},file='states/'+stem+'.json';
+    const stateBytes=Buffer.from(JSON.stringify({sourceSHA:binding.sourceSHA,width,id,nodeId:id,label,measurements,feedbackEvidence,helpEvidence,referenceEvidence:suffix==='before'?report.references.find(r=>r.id===id):null,figureEvidence:suffix==='before'?(report.figures.find(r=>r.id===id)??null):null,progress:await progress(),image},null,2)+'\n');fs.writeFileSync(path.join(out,file),stateBytes);
+    report.images.push(image);report.states.push({id,nodeId:id,label,file,sha256:hash(stateBytes),image:image.file,viewportFile:image.file,viewportSHA256:image.sha256,fullPageFile:image.fullPageImage.file,fullPageSHA256:image.fullPageImage.sha256,stateFile:file,stateSHA256:hash(stateBytes)});persist();
+    if(feedbackEvidence){(report.feedbackChecks??=[]).push({id,label,stateFile:file,stateSHA256:hash(stateBytes),...feedbackEvidence});persist();validateRevision3FeedbackDOM(feedbackEvidence);}
+    if(helpEvidence)validateRevision3HelpDOM(helpEvidence,helpRules,{helpOpen:false,solvedIds});
+  }
+  async function probeHelp(id){
+    const rules=revision3HelpRules(metadata,id);if(!rules.length)return;
+    const toggle=page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:'手掛かりを見る',exact:true});
+    assert.equal(await toggle.getAttribute('aria-expanded'),'false','R3_HELP_CLOSED_BEFORE_PROBE');
+    try{await toggle.click();await settled();
+      const evidence=await page.evaluate(measureRevision3HelpDOM,{blockIds:rules.map(r=>r.blockId)}),image=await capturePair('guard-help-open-'+id),file='states/guard-help-open-'+id+'.json';
+      const raw=Buffer.from(JSON.stringify({phase:binding.phase,sourceSHA:binding.sourceSHA,width,id,evidence,image},null,2)+'\n');fs.writeFileSync(path.join(out,file),raw);(report.helpProbes??=[]).push({id,phase:binding.phase,file,sha256:hash(raw),image});persist();
+      assert.equal(await page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:'手掛かりを閉じる',exact:true}).getAttribute('aria-expanded'),'true');
+      validateRevision3HelpDOM(evidence,rules,{helpOpen:true,solvedIds:ids.filter(key=>report.answers.some(a=>a.id===key))});
+    }finally{const close=page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:'手掛かりを閉じる',exact:true});if(await close.count()){await close.click();await settled();}}
+    const evidence=await page.evaluate(measureRevision3HelpDOM,{blockIds:rules.map(r=>r.blockId)}),image=await capturePair('guard-help-closed-'+id),file='states/guard-help-closed-'+id+'.json';
+    const raw=Buffer.from(JSON.stringify({phase:binding.phase,sourceSHA:binding.sourceSHA,width,id,evidence,image},null,2)+'\n');fs.writeFileSync(path.join(out,file),raw);report.helpProbes.push({id,phase:binding.phase,file,sha256:hash(raw),image});persist();
+    validateRevision3HelpDOM(evidence,rules,{helpOpen:false,solvedIds:report.answers.map(a=>a.id)});
+  }
+  async function supplement(kind,data,p=page){
+    if(kind!=='revision2-readonly')data={...data,measurements:await r3Viewport(p,{requireLesson:(await p.locator('[data-qf01-revision="3"]').count())>0})};
+    const stem='supp-'+String(report.supplemental.length).padStart(2,'0')+'-'+kind,image=await capturePair(stem,p,'supplemental-png'),file='supplemental-states/'+stem+'.json';
+    const raw=Buffer.from(JSON.stringify({kind,phase:binding.phase,sourceSHA:binding.sourceSHA,width,image,...data},null,2)+'\n');fs.writeFileSync(path.join(out,file),raw);
+    report.supplemental.push({kind,phase:binding.phase,sourceSHA:binding.sourceSHA,width,publisherBinding:binding,...data,image,state:{file,sha256:hash(raw)}});persist();
+  }
+  async function choose(id,value){const options=page.getByTestId('inline-choice-panel-'+id).locator('button.reading-choice-option');const names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')));const index=names.findIndex(n=>n?.endsWith('、'+value));assert.ok(index>=0,'R3_ACTUAL_CHOICE_VALUE');await options.nth(index).click();await settled();}
+  try{
+    await page.goto(route);await ready();
+    let stage=0;
+    for(const q of metadata.interactions){
+      const item=items.get(q.id),slot=page.getByTestId('textbook-item-'+q.id),wanted=Number(q.stageId.split('-').at(-1))-1;
+      while(stage<wanted){await page.getByRole('button',{name:'次の段階へ',exact:true}).click();stage++;await settled();}
+      await slot.waitFor();assert.equal(await slot.isEnabled(),true);assert.equal(await page.locator('button[data-qf01-current-slot]').count(),1);
+      assert.equal(await page.locator('[data-source-view="canonical"]').getByTestId('textbook-item-qf01-n20-answer').count(),0);
+      for(const row of metadata.interactionRegistryBlocks)assert.equal(await page.locator('[data-source-block="'+row.blockId+'"]').count(),0,'R3_REGISTRY_IS_NOT_TEACHING');
+      const refs=await page.getByRole('complementary',{name:'現在必要な情報',exact:true}).evaluate(e=>({text:e.textContent,sourceIds:[...e.querySelectorAll('[data-source-block]')].map(b=>b.getAttribute('data-source-block'))}));
+      const refRow=metadata.viewContracts.INTERACTION_REFERENCES.rows.find(row=>row.currentInteractionId===q.id);
+      const prelude=new Set(metadata.viewContracts.FRAME_CONTRACT.stagePreludeRefs[q.stageId]??[]);
+      const expectedRefs=refRow.topReferenceRecordIds.map(id=>metadata.viewContracts.RESULT_REGISTRY.records.find(r=>r.id===id)).filter(r=>!prelude.has(r.sourceRef.blockId)).map(r=>r.sourceRef.blockId);
+      assert.deepEqual(refs.sourceIds,expectedRefs,'R3_CURRENT_ITEM_REFERENCE_SOURCE_ORDER');report.references.push({id:q.id,...refs});
+      if(metadata.viewContracts.FIGURE_POLICY.placement.requiredCurrentInteractionIds.includes(q.id)){
+        const evidence={id:q.id,boxes:[],httpResponses:[]};report.figures.push(evidence);persist();
+        try{const expectedURL=new URL(REVISION3_READING_FIGURE.assetPath.slice('public/'.length),appURL).href,sourceRaw=fs.readFileSync(path.join(sourceRoot,REVISION3_READING_FIGURE.assetPath));evidence.sourceProof=validateRevision3FigureSource(sourceRaw,metadata);evidence.expectedURL=expectedURL;persist();const figure=page.locator('.math-textbook-stage--current img[src$="rectangle-perimeter-40-reading.svg"]');
+          evidence.boxes=await figure.evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return{width:r.width,height:r.height,naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight,currentSrc:e.currentSrc,srcAttribute:e.getAttribute('src'),widthAttribute:e.getAttribute('width'),heightAttribute:e.getAttribute('height'),complete:e.complete,decodeSucceeded:false,alt:e.alt};}));persist();assert.ok(evidence.boxes.length>=1,'R3_REQUIRED_CURRENT_FIGURE_PRESENT');
+          evidence.boxes=await figure.evaluateAll(async es=>Promise.all(es.map(async e=>{let timer,decodeSucceeded=false,decodeError;try{await Promise.race([e.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('R3_FIGURE_DECODE_TIMEOUT')),30000);})]);decodeSucceeded=true;}catch(error){decodeError=String(error);}finally{clearTimeout(timer);}const r=e.getBoundingClientRect();return{width:r.width,height:r.height,naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight,currentSrc:e.currentSrc,srcAttribute:e.getAttribute('src'),widthAttribute:e.getAttribute('width'),heightAttribute:e.getAttribute('height'),complete:e.complete,decodeSucceeded,...(decodeError?{decodeError}:{}),alt:e.alt};})));persist();
+          for(const[index,box]of evidence.boxes.entries()){assert.equal(box.currentSrc,expectedURL,'R3_CURRENT_FIGURE_NOT_FALLBACK');const response=await fetch(box.currentSrc,{cache:'no-store',redirect:'error',signal:AbortSignal.timeout(30000)}),raw=Buffer.from(await response.arrayBuffer()),file='figure-assets/'+q.id+'-'+index+'.svg';fs.mkdirSync(path.join(out,'figure-assets'),{recursive:true});fs.writeFileSync(path.join(out,file),raw);const http={url:response.url,status:response.status,contentType:response.headers.get('content-type'),file,sha256:hash(raw),bytes:raw.length};evidence.httpResponses.push(http);persist();const verified=validateRevision3FigureHTTP({raw,status:http.status,url:http.url,contentType:http.contentType,expectedURL,sourceProof:evidence.sourceProof,metadata});Object.assign(http,verified);const geometry=validateRevision3FigureBox(box,{viewportWidth:width,sourceProof:evidence.sourceProof,expectedURL});Object.assign(box,geometry);persist();}
+        }catch(error){const stem='FAILED-FIGURE-'+String((report.failedFigures??=[]).length),image=await capturePair(stem),file='states/'+stem+'.json',raw=Buffer.from(JSON.stringify({phase:binding.phase,sourceSHA:binding.sourceSHA,width,id:q.id,evidence,error:String(error),progress:await progress(),image},null,2)+'\n');fs.writeFileSync(path.join(out,file),raw);report.failedFigures.push({phase:binding.phase,file,sha256:hash(raw),image});persist();throw error;}
+      }
+      await slot.scrollIntoViewIfNeeded();await capture(q.id,'before');await slot.click();await capture(q.id,'choices');await probeHelp(q.id);
+      const wrong=item.choices.filter(v=>v!==item.answer);assert.equal(wrong.length,2);
+      for(const[index,value]of wrong.entries()){await choose(q.id,value);const actual=await progress();assert.equal(actual.answers[q.id].value,value);assert.equal(actual.answers[q.id].resolved,false);assert.equal(actual.answers[q.id].attemptCount,index+1);assert.equal(await page.getByTestId('textbook-hint-'+q.id).isVisible(),true);await capture(q.id,'wrong-'+index);}
+      if(RELOAD_IDS.includes(q.id)){const frozen=JSON.stringify(await progress());await page.reload();await ready();assert.equal(JSON.stringify(await progress()),frozen);await page.getByTestId('textbook-hint-'+q.id).waitFor();await capture(q.id,'reload-wrong');await page.getByTestId('textbook-item-'+q.id).click();}
+      await choose(q.id,item.answer);const actual=await progress();assert.equal(actual.answers[q.id].value,item.answer);assert.equal(actual.answers[q.id].resolved,true);assert.equal(actual.answers[q.id].attemptCount,3);report.answers.push({id:q.id,record:actual.answers[q.id]});await capture(q.id,'correct');
+      if(RELOAD_IDS.includes(q.id)){const frozen=JSON.stringify(actual);await page.reload();await ready();assert.equal(JSON.stringify(await progress()),frozen);await capture(q.id,'reload-correct');}
+    }
+    assert.equal(report.helpProbes?.length,2,'R3_HELP_OPEN_CLOSE_DOM_PROBES_REQUIRED');
+    assert.equal(await page.getByTestId('qf01-unit-summary').isVisible(),true);
+    await page.getByRole('button',{name:'前の段階を見る',exact:true}).click();const historyCount=await page.locator('.guided-history [data-testid^="recorded-results-"]').count();assert.equal(historyCount,8);await supplement('compact-history',{count:historyCount});
+    await page.getByRole('button',{name:'全文を開く',exact:true}).click();const fullHistoryCount=await page.locator('.guided-history [data-source-block]').count();assert.ok(fullHistoryCount>0);await supplement('full-history',{sourceBlocks:fullHistoryCount});
+    const archiveContext=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),archivePage=await archiveContext.newPage();
+    const oldProgress={unitId:unit.unitId,unitRevision:2,startedAt:1,updatedAt:1,answers:{},unknownPreserved:{marker:'r3-browser-archive-check'}};
+    const stored={state:{...(await readState()).state,textbookProgress:{[unit.unitId]:oldProgress}},version:(await readState()).version};
+    // Test-only isolated context, never the learner's active browser/profile.
+    await archivePage.addInitScript(({key,value})=>{if(!localStorage.getItem(key))localStorage.setItem(key,value);},{key:STORAGE_KEY,value:JSON.stringify(stored)});
+    await archivePage.goto(route+'?archive=qf01-r2');await archivePage.getByTestId('qf01-revision2-archive').waitFor();
+    const before=await archivePage.evaluate(key=>localStorage.getItem(key),STORAGE_KEY);assert.equal(await archivePage.locator('button.reading-choice-option:not([disabled])').count(),0);assert.equal(await archivePage.locator('button.reading-inline-blank:not([disabled])').count(),0);assert.equal(await archivePage.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),before);assert.equal(archive.unit.revision,2);await supplement('revision2-readonly',{bytesUnchanged:true,originalSerialized:JSON.stringify(oldProgress),storageBefore:before,storageAfter:await archivePage.evaluate(key=>localStorage.getItem(key),STORAGE_KEY)},archivePage);
+    await archivePage.goto(route);await archivePage.locator('[data-qf01-revision="3"]').waitFor();await archivePage.getByTestId('textbook-item-'+ids[0]).click();
+    const firstItem=items.get(ids[0]),options=archivePage.getByTestId('inline-choice-panel-'+ids[0]).locator('button.reading-choice-option');const names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')));await options.nth(names.findIndex(n=>n.endsWith('、'+firstItem.answer))).click();
+    archivePage.once('dialog',dialog=>dialog.accept());await archivePage.getByTestId('first-theme-restart-top').click();
+    const reset=await archivePage.evaluate(({key,unitId})=>JSON.parse(localStorage.getItem(key)).state.textbookProgress[unitId],{key:STORAGE_KEY,unitId:unit.unitId});assert.equal(reset.unitRevision,3);assert.deepEqual(reset.answers,{});assert.deepEqual(JSON.parse(reset.qf01Revision2Snapshot.serializedProgress),oldProgress);await supplement('reset-preserves-revision2',{oldSnapshotExact:true,originalSerialized:JSON.stringify(oldProgress),actualProgress:reset},archivePage);await archiveContext.close();
+    const rootState=await readState(),physical=archive.unit.sections.flatMap(s=>s.items),r2active=archive.unit.requiredInteractionRefs.map(id=>physical.find(i=>i.id===id));assert.equal(physical.length,25);assert.equal(r2active.length,24);
+    const makeOld=(revision,count)=>{const selected=(revision===1?physical:r2active).slice(0,count),old={unitId:unit.unitId,unitRevision:revision,startedAt:1,updatedAt:50,answers:Object.fromEntries(selected.map((item,index)=>[item.id,{itemId:item.id,value:item.answer,firstValue:item.answer,resolved:true,isFirstCorrect:true,attemptCount:1,firstAnsweredAt:index+2,lastAnsweredAt:index+2}])),extension:{preserve:['unknown',revision,count]},...(count===(revision===1?25:24)?{completedAt:50}:{})};if(revision===2){old.qf01Revision1Snapshot={schemaVersion:'qf01-revision1-snapshot/1',sourceSHA:'384021f539967038a20fd98bd146e0e499f0df65',serializedProgress:JSON.stringify({unitId:unit.unitId,unitRevision:1,startedAt:1,updatedAt:2,answers:{},extension:{preserve:'r1 unknown'}})};old.qf01ResetSnapshots=[];}return old;};
+    for(const revision of [1,2])for(let count=0;count<=(revision===1?25:24);count++){
+      const ctx=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),p=await ctx.newPage();p.on('pageerror',e=>report.errors.push(String(e)));
+      try{const old=makeOld(revision,count),originalSerialized=JSON.stringify(old),other={unitId:'protected-other-unit',answers:{opaque:{retain:true}}};
+      await p.addInitScript(({key,state,id,old,other})=>{if(sessionStorage.getItem('r3-prefix-seeded'))return;sessionStorage.setItem('r3-prefix-seeded','1');localStorage.setItem(key,JSON.stringify({...state,state:{...state.state,textbookProgress:{[id]:old,'protected-other-unit':other}}}));localStorage.setItem('kyotsu-step-store',JSON.stringify({notThisNamespace:true}));},{key:STORAGE_KEY,state:rootState,id:unit.unitId,old,other});
+      await p.goto(route);await p.locator('[data-qf01-revision="3"]').waitFor();await p.getByTestId('textbook-item-'+ids[0]).waitFor();
+      const read=()=>p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)).state.textbookProgress[id],{key:STORAGE_KEY,id:unit.unitId});assert.equal(JSON.stringify(await read()),originalSerialized,'R3_READ_PRESERVES_OLD_PREFIX_BYTES');assert.ok((await p.locator('.math-textbook-reading-controls').innerText()).includes('0/35'));assert.equal(await p.locator('button[data-qf01-current-slot]').count(),1);
+      await p.getByTestId('textbook-item-'+ids[0]).click();const item=items.get(ids[0]),options=p.getByTestId('inline-choice-panel-'+ids[0]).locator('button.reading-choice-option'),names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=names.findIndex(n=>n?.endsWith('、'+item.answer));assert.ok(index>=0);await options.nth(index).click();await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+      const actual=await read(),snapshotField=revision===1?'qf01Revision1Snapshot':'qf01Revision2Snapshot';assert.equal(actual.unitRevision,3);assert.deepEqual(Object.keys(actual.answers),[ids[0]]);assert.equal(actual.answers[ids[0]].resolved,true);assert.equal(actual[snapshotField].serializedProgress,originalSerialized,'R3_PREFIX_SNAPSHOT_EXACT_BYTES');
+      const isolation=await p.evaluate(key=>({other:JSON.parse(localStorage.getItem(key)).state.textbookProgress['protected-other-unit'],outside:JSON.parse(localStorage.getItem('kyotsu-step-store'))}),STORAGE_KEY);assert.deepEqual(isolation,{other,outside:{notThisNamespace:true}});
+      await supplement('revision'+revision+'-prefix-'+count,{revision,prefix:count,countIds:selectedIds(old),originalSerialized,originalSHA256:hash(Buffer.from(originalSerialized)),beforeR3Credits:0,afterR3Credits:1,firstAnswerId:ids[0],actualProgress:actual,snapshotField,snapshotExact:true,isolation},p);
+      }finally{await ctx.close();}
+    }
+    function selectedIds(old){return Object.keys(old.answers);}
+    async function menuProof(p,count){const before=await p.evaluate(key=>localStorage.getItem(key),STORAGE_KEY);await p.goto(appURL+'#/learning/setup?mode=textbook&subject=math-1a');const chapter=p.getByTestId('math-textbook-chapter-2'),card=p.getByTestId('math-textbook-topic-quadratic-functions-foundation');await card.waitFor();assert.equal(await card.getAttribute('href'),'#/learning/textbook/'+unit.unitId);const chapterText=await chapter.innerText();for(const title of ['関数とグラフ','2次関数の最大・最小','2次関数と方程式・不等式'])assert.ok(chapterText.includes(title));for(const id of ['quadratic-functions-extrema','quadratic-functions-equations-inequalities']){const pending=p.getByTestId('math-textbook-topic-'+id);assert.equal(await pending.evaluate(e=>e.tagName),'DIV');assert.equal(await pending.getAttribute('aria-disabled'),'true');assert.equal(await pending.locator('a').count(),0);}const text=await card.innerText();assert.ok(text.includes('公開中の内容：'+count+'/35 完了'),'R3_MENU_CURRENT_CREDITS');const after=await p.evaluate(key=>localStorage.getItem(key),STORAGE_KEY);assert.equal(after,before,'R3_MENU_PRESERVES_STORAGE');await supplement('menu-'+count,{count,text,progressBefore:before?JSON.parse(before).state?.textbookProgress?.[unit.unitId]??null:null,progressAfter:after?JSON.parse(after).state?.textbookProgress?.[unit.unitId]??null:null,storageUnchanged:true},p);}
+    const menuContext=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),menuPage=await menuContext.newPage();try{await menuPage.goto(route);await menuPage.locator('[data-qf01-revision="3"]').waitFor();await menuProof(menuPage,0);}finally{await menuContext.close();}await menuProof(page,35);
+    report.coverage={canonicalBlocks:134,interactionRegistryBlocks:35,activeJudgments:35,stages:9,correct:35,wrong:70,reloadWrong:2,reloadCorrect:2,states:179};report.status='R3_CAPTURE_AND_ASSERTIONS_PASSED_NOT_USER_ACCEPTANCE';checkRevision3Coverage(report,ids);persist();return report;
+  }catch(error){report.status='FAILED_OR_INCOMPLETE';report.errors.push(String(error));persist();throw error;}finally{await browser.close();}
+}
+export async function runRevision3BoundedInputAudits({sourceRoot,appURL,width,out,binding}){
+ const unit=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json')),ids=unit.requiredInteractionRefs,items=new Map(unit.sections.flatMap(s=>s.items).map(i=>[i.id,i])),full=json(path.join(out,'REPORT.json'));checkRevision3Coverage(full,ids);assert.equal(unit.revision,3);assert.equal(binding.sourceSHA,REVISION3_SOURCE_SHA);
+ const base={sourceSHA:binding.sourceSHA,width,runId:String(binding.captureRunID),attempt:Number(binding.captureAttempt),publisherBinding:binding,userAcceptance:false},write=(name,data)=>fs.writeFileSync(path.join(out,name),JSON.stringify(data,null,2)+'\n');
+ const navigation={...base,status:'RUNNING',actions:[],errors:[],reloadPreservesProgress:false},normal={...base,status:'RUNNING',actions:[],errors:[]},browser=await chromium.launch({headless:true});
+ const context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),page=await context.newPage(),route=appURL+'#/learning/textbook/'+unit.unitId,menu=appURL+'#/learning/setup?mode=textbook&subject=math-1a';page.on('pageerror',e=>navigation.errors.push(String(e)));
+ const settle=async p=>{await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});},read=async p=>p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:STORAGE_KEY,id:unit.unitId}),ready=async p=>{await p.locator('[data-qf01-revision="3"]').waitFor();assert.equal(await p.getByTestId('qf01-r3-binding-error').count(),0);await settle(p);};
+ async function choice(p,id,value,keyboard=false){const options=p.getByTestId('inline-choice-panel-'+id).locator('button.reading-choice-option'),names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=names.findIndex(n=>n?.endsWith('、'+value));assert.ok(index>=0);const option=options.nth(index);if(keyboard){await option.focus();await option.press('Enter');}else await option.click();await settle(p);}
+ async function action(report,p,name,run){await run();await settle(p);report.actions.push({name,progress:await read(p),url:p.url(),focused:await p.evaluate(()=>{const e=document.activeElement,r=e?.getBoundingClientRect();return e?{tag:e.tagName,testId:e.getAttribute('data-testid'),role:e.getAttribute('role'),rect:r?{left:r.left,top:r.top,width:r.width,height:r.height}:null}:null;})});}
+ try{
+  await action(navigation,page,'open-current-r3',async()=>{await page.goto(route);await ready(page);await page.getByTestId('textbook-item-'+ids[0]).waitFor();});
+  await action(navigation,page,'answer-first-by-keyboard',async()=>{await page.getByTestId('textbook-item-'+ids[0]).focus();await page.getByTestId('textbook-item-'+ids[0]).press('Enter');await choice(page,ids[0],items.get(ids[0]).answer,true);assert.equal((await read(page)).answers[ids[0]].resolved,true);});
+  const first=JSON.stringify(await read(page));
+  await action(navigation,page,'open-current-menu',async()=>{await page.goto(menu);const card=page.getByTestId('math-textbook-topic-quadratic-functions-foundation');await card.waitFor();assert.ok((await card.innerText()).includes('公開中の内容：1/35 完了'));});
+  await action(navigation,page,'resume-current-next-slot',async()=>{await page.getByTestId('math-textbook-topic-quadratic-functions-foundation').click();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'reload-preserves-current-r3',async()=>{await page.reload();await ready(page);assert.equal(JSON.stringify(await read(page)),first);navigation.reloadPreservesProgress=true;});
+  await action(navigation,page,'open-readonly-r2-route',async()=>{await page.getByRole('link',{name:'以前の記録を見る',exact:true}).click();await page.getByTestId('qf01-revision2-archive').waitFor();assert.equal(await page.locator('button.reading-choice-option:not([disabled])').count(),0);assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'return-to-current-r3',async()=>{await page.goBack();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  assert.equal(navigation.actions.length,7);assert.deepEqual(navigation.errors,[]);navigation.status='PASS_R3_BOUNDED_NAVIGATION_NOT_ACCEPTANCE';write('R3_NAVIGATION_REPORT.json',navigation);
+  if(width===320){
+   const target='qf01-n21-answer',entry=full.states.find(r=>r.label===target+'-before');assert.ok(entry,'R3_CURRENT_N21_BEFORE_FIXTURE');const fixtureRaw=fs.readFileSync(path.join(out,safeRelative(entry.file)));assert.equal(hash(fixtureRaw),entry.sha256);const fixture=JSON.parse(fixtureRaw),prior=ids.slice(0,ids.indexOf(target));assert.equal(fixture.sourceSHA,binding.sourceSHA);assert.equal(fixture.progress.unitRevision,3);assert.deepEqual(Object.keys(fixture.progress.answers).filter(id=>fixture.progress.answers[id].resolved).sort(),[...prior].sort());assert.equal(prior.length,33);
+   normal.fixture={kind:'CURRENT_R3_CAPTURED_N21_BEFORE_REPLAY',file:entry.file,sha256:entry.sha256,interactionId:target,unitRevision:3,priorCount:prior.length};normal.initialProgress=fixture.progress;
+   const seed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),STORAGE_KEY),ctx=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),p=await ctx.newPage();p.on('pageerror',e=>normal.errors.push(String(e)));
+   try{await p.addInitScript(({key,seed,id,progress})=>{if(sessionStorage.getItem('r3-bounded-seeded'))return;sessionStorage.setItem('r3-bounded-seeded','1');localStorage.setItem(key,JSON.stringify({...seed,state:{...seed.state,textbookProgress:{...seed.state.textbookProgress,[id]:progress}}}));},{key:STORAGE_KEY,seed,id:unit.unitId,progress:fixture.progress});await p.goto(route);await ready(p);await p.getByTestId('textbook-item-'+target).waitFor();assert.equal(JSON.stringify(await read(p)),JSON.stringify(fixture.progress));const wrong=items.get(target).choices.filter(v=>v!==items.get(target).answer);assert.equal(wrong.length,2);
+    await action(normal,p,'open-n21-by-enter',async()=>{const slot=p.getByTestId('textbook-item-'+target);await slot.focus();await slot.press('Enter');await p.getByTestId('inline-choice-panel-'+target).locator('button.reading-choice-option').first().waitFor();});
+    await action(normal,p,'wrong-n21-by-enter',async()=>{await choice(p,target,wrong[0],true);const r=(await read(p)).answers[target];assert.equal(r.value,wrong[0]);assert.equal(r.resolved,false);assert.equal(r.attemptCount,1);});
+    const wrongRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-wrong',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),wrongRecord);});
+    await action(normal,p,'reopen-n21-by-pointer',async()=>{await p.getByTestId('textbook-item-'+target).click();});
+    await action(normal,p,'second-n21-wrong-by-pointer',async()=>{await choice(p,target,wrong[1]);assert.equal((await read(p)).answers[target].attemptCount,2);assert.equal((await read(p)).answers[target].resolved,false);});
+    const hintProgress=JSON.stringify(await read(p));await action(normal,p,'open-current-hint',async()=>{const hint=p.getByRole('button',{name:'手掛かりを見る',exact:true});await hint.click();assert.equal(await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).getAttribute('aria-expanded'),'true');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'close-current-hint',async()=>{await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).click();assert.equal(await p.getByRole('button',{name:'手掛かりを見る',exact:true}).getAttribute('aria-expanded'),'false');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'correct-n21-by-enter',async()=>{await choice(p,target,items.get(target).answer,true);const r=(await read(p)).answers[target];assert.equal(r.value,items.get(target).answer);assert.equal(r.resolved,true);assert.equal(r.attemptCount,3);});
+    const correctRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-correct',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),correctRecord);});
+    const last=ids.at(-1);assert.equal(last,'qf01-n22-answer');await action(normal,p,'open-final-n22-by-pointer',async()=>{await p.getByTestId('textbook-item-'+last).click();});
+    await action(normal,p,'complete-final-n22-by-pointer',async()=>{await choice(p,last,items.get(last).answer);assert.equal((await read(p)).answers[last].resolved,true);assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),true);});
+    assert.equal(normal.actions.length,11);assert.deepEqual(normal.errors,[]);normal.status='PASS_R3_BOUNDED_INTERACTION_NOT_ACCEPTANCE';write('R3_INTERACTION_REPORT.json',normal);
+   }finally{await ctx.close();}
+  }
+  const reportNames=['R3_NAVIGATION_REPORT.json',...(width===320?['R3_INTERACTION_REPORT.json']:[])],proof={schemaVersion:'qf01-r3-bounded-input/1',...base,r3AssertionBodySHA256:revision3AssertionBodySHA256(),modulePublisherSHA:binding.publisherSHA,moduleSHA256:hash(fs.readFileSync(THIS_FILE)),navigation:7,normalInputs:width===320?11:0,reports:Object.fromEntries(reportNames.map(name=>[name,hash(fs.readFileSync(path.join(out,name)))]))};write('R3_BOUNDED_PROVENANCE.json',proof);return proof;
+ }catch(error){if(navigation.status==='RUNNING'){navigation.status='FAILED_OR_INCOMPLETE';navigation.errors.push(String(error));write('R3_NAVIGATION_REPORT.json',navigation);}if(width===320){normal.status='FAILED_OR_INCOMPLETE';normal.errors.push(String(error));write('R3_INTERACTION_REPORT.json',normal);}throw error;}finally{await context.close();await browser.close();}
+}
+
+export function revision3AssertionBodySHA256(){
+ const code=fs.readFileSync(THIS_FILE,'utf8'),start=code.indexOf('export function revision3CaptureLabels('),end=code.indexOf('\nexport function revision3AssertionBodySHA256(',start);assert.ok(start>=0&&end>start,'R3_ASSERTION_BODY_BOUNDARIES');const actual=hash(code.slice(start,end));assert.equal(actual,REVISION3_ASSERTION_BODY_SHA256,'R3_ACTUAL_SOURCE_ASSERTION_BODY_PIN');return actual;
+}
+export const REVISION3_ASSERTION_BODY_SHA256='fde4ad1eedd60e4a0df4b57c44af5b79a3db71bb13ead157e9078b22173d91bf';
+export function verifyRevision3AssertionBody(expected){assert.match(expected,/^[a-f0-9]{64}$/);assert.equal(revision3AssertionBodySHA256(),expected,'EXACT_R3_ASSERTION_BODY');return expected;}
+export const DRAFT_DESIGN_BRANCH='work/qf01-p046-r3-design-preview-20261116';
+export function validateDraftDesignPreviewConfiguration(env=process.env){
+ assert.equal(env.DESIGN_PREVIEW_PHASE,'DRAFT_DESIGN_PREVIEW_ONLY','EXPLICIT_DRAFT_DESIGN_MODE');assert.equal(env.SOURCE_SHA,REVISION3_SOURCE_SHA,'FIXED_DRAFT_MATERIAL_SOURCE');assert.ok(env.SOURCE_ROOT&&env.CORE_ROOT&&env.DIST_ROOT&&env.OUT,'DRAFT_EXPLICIT_ROOTS_REQUIRED');assert.ok(!env.QF01_CONTRACT&&!env.QF01_DIST_MANIFEST&&!env.NATIVE_INTENT_CHAIN,'DRAFT_HAS_NO_PRODUCTION_CONTRACT_OR_AUTHORITY_INPUT');
+ if(env.GITHUB_ACTIONS){assert.equal(env.GITHUB_REPOSITORY,'rrikunagasige-dot/kyotsu-step-web');assert.equal(env.GITHUB_REPOSITORY_ID,'1391122224');assert.equal(env.GITHUB_REF,'refs/heads/'+DRAFT_DESIGN_BRANCH);assert.ok(['push','workflow_dispatch'].includes(env.GITHUB_EVENT_NAME));}
+ const url=new URL(env.APP_URL??'http://127.0.0.1:4179/kyotsu-step-web/');assert.equal(url.protocol,'http:');assert.ok(['127.0.0.1','localhost'].includes(url.hostname));assert.equal(url.pathname,BASE_PATH);assert.equal(url.username,'');assert.equal(url.password,'');assert.equal(url.search,'');assert.equal(url.hash,'');const widths=env.WIDTH===undefined?[...WIDTHS]:[Number(env.WIDTH)];assert.ok(widths.every(w=>WIDTHS.includes(w)));return{phase:'DRAFT_DESIGN_PREVIEW_ONLY',appURL:url.href,widths};
+}
+export async function runDraftDesignPreview(env=process.env){
+ const cfg=validateDraftDesignPreviewConfiguration(env),sourceRoot=fs.realpathSync(env.SOURCE_ROOT),coreRoot=fs.realpathSync(env.CORE_ROOT),distRoot=fs.realpathSync(env.DIST_ROOT),out=canonicalOutput(path.resolve(env.OUT)),publisherRoot=execFileSync('git',['-C',path.dirname(THIS_FILE),'rev-parse','--show-toplevel'],{encoding:'utf8'}).trim(),publisherSHA=gitHead(publisherRoot),coreSHA='9ee19f65d39b3e639857c809ada50a01c8a7c322',main='494b6b0322f68a2447feb14a1d3acf550793f296';
+ assert.equal(gitHead(sourceRoot),REVISION3_SOURCE_SHA);assert.equal(gitHead(coreRoot),coreSHA);if(env.GITHUB_SHA)assert.equal(publisherSHA,env.GITHUB_SHA);assert.equal(hash(execFileSync('git',['-C',publisherRoot,'show',publisherSHA+':tools/release/qf01-browser.mjs'])),hash(fs.readFileSync(THIS_FILE)),'DRAFT_COMMITTED_CAPTURE_MODULE');
+ const allowed=['.github/workflows/qf01-publisher-g3.yml','tools/release/qf01-publish-contract.json','tools/release/qf01-publish-check.mjs','tools/release/qf01-publish-check.test.mjs','tools/release/qf01-retained-adapters.mjs','tools/release/qf01-retained-adapters.test.mjs','tools/release/qf01-browser.mjs'];assert.deepEqual(execFileSync('git',['-C',publisherRoot,'show','-s','--format=%P',publisherSHA],{encoding:'utf8'}).trim().split(' '),[main],'DRAFT_SOLE_EXISTING_MAIN_PARENT');const changed=execFileSync('git',['-C',publisherRoot,'diff','--name-only',main,publisherSHA],{encoding:'utf8'}).trim().split('\n').filter(Boolean);assert.deepEqual([...changed].sort(),[...allowed].sort(),'DRAFT_EXACT_EXISTING_SEVEN_PATHS');const previewContractPath=path.join(publisherRoot,'tools/release/qf01-publish-contract.json'),previewContractRaw=fs.readFileSync(previewContractPath),designSpec=JSON.parse(previewContractRaw).r3DesignPreview;assert.equal(hash(previewContractRaw),hash(execFileSync('git',['-C',publisherRoot,'show',publisherSHA+':tools/release/qf01-publish-contract.json'])),'DRAFT_COMMITTED_SPEC_FILE');assert.deepEqual(designSpec,{schemaVersion:'qf01-r3-design-preview-spec/1',phase:'DRAFT_DESIGN_PREVIEW_ONLY',sourceSHA:REVISION3_SOURCE_SHA,runtimeSnapshotSHA:coreSHA,branch:DRAFT_DESIGN_BRANCH,productionAuthorized:false},'EXACT_READ_ONLY_DESIGN_PREVIEW_SPEC');
+ for(const dir of [sourceRoot,coreRoot,publisherRoot,distRoot])ensureOutside(out,dir,'DRAFT_OUTPUT_OVERLAPS_SOURCE');freshDirectory(out);
+ const configFiles=['package.json','pnpm-lock.yaml','index.html','vite.config.ts','tsconfig.json','tsconfig.app.json','tsconfig.node.json'],bindingTest='tools/textbook/tests/qf01-reading-bindings.test.mjs',sourceNames=execFileSync('git',['-C',sourceRoot,'ls-tree','-r','--name-only','HEAD','--','src/','public/',...configFiles,bindingTest],{encoding:'utf8'}).trim().split('\n').filter(Boolean).sort(),sourceFiles={};assert.equal(sourceNames.filter(p=>p.startsWith('src/')).length,343);
+ function verifyFiles(root,ref,names){for(const p of names){safeRelative(p);const actual=path.join(root,p);assert.ok(fs.lstatSync(actual).isFile()&&!fs.lstatSync(actual).isSymbolicLink());const value=hash(fs.readFileSync(actual));assert.equal(value,hash(execFileSync('git',['-C',root,'show',ref+':'+p])),'DRAFT_ACTUAL_GIT_BYTES '+p);}}
+ verifyFiles(sourceRoot,REVISION3_SOURCE_SHA,sourceNames);for(const folder of ['src','public']){assert.ok(fs.lstatSync(path.join(sourceRoot,folder)).isDirectory()&&!fs.lstatSync(path.join(sourceRoot,folder)).isSymbolicLink());assert.deepEqual(Object.keys(distSnapshot(path.join(sourceRoot,folder))).map(p=>folder+'/'+p).sort(),sourceNames.filter(p=>p.startsWith(folder+'/')).sort(),'DRAFT_FULL_'+folder+'_INVENTORY');}for(const p of sourceNames){sourceFiles[p]=hash(fs.readFileSync(path.join(sourceRoot,p)));assert.equal(sourceFiles[p],hash(execFileSync('git',['-C',coreRoot,'show',coreSHA+':'+p])),'DRAFT_CORE_AND_MATERIAL_APP_AGREE '+p);}
+ const coreNames=execFileSync('git',['-C',coreRoot,'ls-tree','-r','--name-only','HEAD','--','workflow/','tools/textbook/transformation/schema.mjs','tools/textbook/transformation/compile.mjs','tools/textbook/transformation/validate.mjs','tools/textbook/transformation/visible.mjs'],{encoding:'utf8'}).trim().split('\n').filter(Boolean).sort();verifyFiles(coreRoot,coreSHA,coreNames);assert.deepEqual(Object.keys(distSnapshot(path.join(coreRoot,'workflow'))).map(p=>'workflow/'+p).sort(),coreNames.filter(p=>p.startsWith('workflow/')).sort(),'DRAFT_FULL_WORKFLOW_INVENTORY');const coreFiles=Object.fromEntries(coreNames.map(p=>[p,hash(fs.readFileSync(path.join(coreRoot,p)))]));
+ const distFiles=distSnapshot(distRoot);assert.ok(distFiles['index.html']);assert.ok(!Object.hasOwn(distFiles,'qf01-release.json'),'DRAFT_MUST_NOT_CONTAIN_PRODUCTION_RELEASE_SEAL');const proof={phase:cfg.phase,draftRun:{runId:String(env.GITHUB_RUN_ID??'local-draft'),attempt:Number(env.GITHUB_RUN_ATTEMPT??1),event:env.GITHUB_EVENT_NAME??'local-read-only',branch:DRAFT_DESIGN_BRANCH,publisherSHA},designSpec,designSpecSHA256:hash(JSON.stringify(designSpec)),committedSpecFileSHA256:hash(previewContractRaw),sourceSHA:REVISION3_SOURCE_SHA,publisherSHA,publisherTreeSHA:execFileSync('git',['-C',publisherRoot,'rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim(),publisherChangedPaths:changed,publisherScriptSHA256:hash(fs.readFileSync(THIS_FILE)),runtimeSnapshotSHA:coreSHA,runtimeSnapshotTreeSHA:execFileSync('git',['-C',coreRoot,'rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim(),sourceFiles,coreFiles,sourceManifestSHA256:hash(JSON.stringify(sourceFiles)),coreManifestSHA256:hash(JSON.stringify(coreFiles)),r3AssertionBodySHA256:revision3AssertionBodySHA256(),distFiles,distManifestSHA256:hash(JSON.stringify(distFiles)),nativeAuthorityExecuted:false,productionSealCreated:false,formalR04:false,formalR07:false,published:false,userAcceptance:false};
+ fs.writeFileSync(path.join(out,'DRAFT_DESIGN_INPUT_PROOF.json'),JSON.stringify(proof,null,2)+'\n');const summary={phase:cfg.phase,status:'RUNNING_DRAFT_DESIGN_CAPTURE',sourceSHA:REVISION3_SOURCE_SHA,publisherSHA,runtimeSnapshotSHA:coreSHA,widths:cfg.widths,results:[],nativeAuthorityExecuted:false,productionSealCreated:false,producerLedgerCreated:false,formalR04:false,formalR07:false,published:false,userAcceptance:false},persist=()=>fs.writeFileSync(path.join(out,'DRAFT_DESIGN_PREVIEW_RESULT.json'),JSON.stringify(summary,null,2)+'\n');persist();({chromium}=createRequire(path.join(sourceRoot,'package.json'))('@playwright/test'));
+ async function waitForDraftIndex(){for(let attempt=0;attempt<60;attempt++){try{const response=await fetch(new URL('index.html',cfg.appURL),{cache:'no-store',redirect:'error',signal:AbortSignal.timeout(1000)});if(response.ok&&hash(Buffer.from(await response.arrayBuffer()))===distFiles['index.html'])return;}catch{}if(attempt<59)await new Promise(resolve=>setTimeout(resolve,250));}assert.fail('DRAFT_EXACT_INDEX_SERVER_NOT_READY');}
+ try{await waitForDraftIndex();for(const width of cfg.widths){const widthOut=path.join(out,String(width));freshDirectory(widthOut);const binding={...proof,width,appURL:cfg.appURL,publicHTTPProof:false,storageKey:STORAGE_KEY,basePath:BASE_PATH,captureRunID:String(env.GITHUB_RUN_ID??'local-draft'),captureAttempt:Number(env.GITHUB_RUN_ATTEMPT??1),designInputProofSHA256:hash(fs.readFileSync(path.join(out,'DRAFT_DESIGN_INPUT_PROOF.json')))};const before=await httpSourceProof(cfg.appURL,{sourceSHA:REVISION3_SOURCE_SHA,publisherSHA,files:distFiles});fs.writeFileSync(path.join(widthOut,'DRAFT_HTTP_SOURCE_BEFORE.json'),JSON.stringify({phase:cfg.phase,...before},null,2)+'\n');const report=await runRevision3AssertionBody({sourceRoot,appURL:cfg.appURL,width,out:widthOut,binding});assert.equal(report.phase,cfg.phase);if([320,1440].includes(width))await runRevision3ManualControlProbe({sourceRoot,appURL:cfg.appURL,width,out:widthOut,binding});verifyDist(distRoot,{files:distFiles});verifyFiles(sourceRoot,REVISION3_SOURCE_SHA,sourceNames);const after=await httpSourceProof(cfg.appURL,{sourceSHA:REVISION3_SOURCE_SHA,publisherSHA,files:distFiles});fs.writeFileSync(path.join(widthOut,'DRAFT_HTTP_SOURCE_AFTER.json'),JSON.stringify({phase:cfg.phase,...after},null,2)+'\n');summary.results.push({width,phase:cfg.phase,report:String(width)+'/REPORT.json',sha256:hash(fs.readFileSync(path.join(widthOut,'REPORT.json'))),states:report.states.length,images:report.images.length,supplements:report.supplemental.length});persist();}summary.status='DRAFT_DESIGN_CAPTURE_COMPLETED_NOT_NATIVE_REVIEW_OR_PRODUCTION';persist();return summary;}catch(error){summary.status='FAILED_OR_INCOMPLETE_DRAFT_DESIGN_CAPTURE';summary.error=String(error);persist();throw error;}
+}
+
+export async function runRevision3ManualControlProbe({sourceRoot,appURL,width,out,binding}){
+ assert.ok([320,1440].includes(width));assert.equal(binding.sourceSHA,REVISION3_SOURCE_SHA);
+ const unitId='math-quadratic-qf01',key=STORAGE_KEY,route=appURL+'#/learning/textbook/'+unitId;
+ const unit=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json')),meta=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01ReadingPresentation.json'));
+ const full=json(path.join(out,'REPORT.json')),folder=path.join(out,'manual-controls');freshDirectory(folder);checkRevision3Coverage(full,unit.requiredInteractionRefs);
+ const report={schemaVersion:'qf01-r3-manual-controls/3',phase:binding.phase,sourceSHA:binding.sourceSHA,publisherSHA:binding.publisherSHA,width,captureRunID:binding.captureRunID,captureAttempt:binding.captureAttempt,moduleSHA256:hash(fs.readFileSync(THIS_FILE)),status:'RUNNING',actions:[],attempts:[],snapshots:[],fixtures:[],bootstrap:[],errors:[],userAcceptance:false,qualification:'Actual disposable Chromium contexts. Programmatic focus precedes trusted protocol input; capture listeners only observe. Controlled programmatic stage-departure and intentionally broken cancellation are separately labelled. Not formal R07/publication/learner acceptance.'};
+ const persist=()=>fs.writeFileSync(path.join(folder,'REPORT.json'),JSON.stringify(report,null,2)+'\n');persist();let browser,sequence=0;
+ const items=new Map(unit.sections.flatMap(s=>s.items).map(i=>[i.id,i])),read=p=>p.evaluate(({key,unitId})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[unitId]??null,{key,unitId});
+ const settle=async p=>{await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(r))));});};
+ async function choose(p,id,value){const options=p.getByTestId('inline-choice-panel-'+id).locator('button.reading-choice-option'),labels=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=labels.findIndex(s=>s?.endsWith('、'+value));assert.ok(index>=0);await options.nth(index).click();await settle(p);}
+ async function prepare(id,touch=false){
+  const row=full.states.find(s=>s.label===id+'-before');assert.ok(row);const raw=fs.readFileSync(path.join(out,safeRelative(row.stateFile)));assert.equal(hash(raw),row.stateSHA256);const fixture=JSON.parse(raw);assert.equal(fixture.sourceSHA,binding.sourceSHA);
+  const stage=meta.interactions.find(q=>q.id===id)?.stageId,stageIndex=meta.viewContracts.STAGE_HISTORY_CONTRACT.stages.findIndex(s=>s.stageId===stage);assert.ok(stageIndex>=0);
+  const context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP',hasTouch:touch,isMobile:touch}),page=await context.newPage();page.on('pageerror',e=>report.errors.push(String(e)));
+  await page.goto(route);await page.locator('[data-qf01-revision="3"]').waitFor();await settle(page);let seed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)??'null'),key);
+  if(!seed?.state){const first=unit.requiredInteractionRefs[0];await page.getByTestId('textbook-item-'+first).click();await choose(page,first,items.get(first).answer);seed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)??'null'),key);assert.equal(seed?.state?.textbookProgress?.[unitId]?.answers?.[first]?.resolved,true);report.bootstrap.push({fixture:id,firstInteraction:first,actualTrustedAnswer:true,qualification:'Creates actual native persisted envelope before exact captured fixture replay; QA setup, not a learner outcome'});}
+  assert.ok(seed?.state);
+  await page.addInitScript(({key,unitId,seed,progress,stageIndex})=>{
+   if(!sessionStorage.getItem('r3-manual-fixture-seeded')){sessionStorage.setItem('r3-manual-fixture-seeded','1');localStorage.setItem(key,JSON.stringify({...seed,state:{...seed.state,textbookProgress:{...seed.state.textbookProgress,[unitId]:progress}}}));localStorage.setItem('math-textbook-compact-v1:'+unitId+':r3:scope:qf01-v3',String(stageIndex));}
+   const a=window.__r3Manual={events:[],frames:[],cancelled:[],scrollCalls:[],races:[],pending:new Map(),running:null,focusTag:null,focusRAFIds:[],arm:null,negative:false};
+   const stage=()=>document.querySelector('.math-textbook-stage--current')?.getAttribute('data-testid');
+   const request=window.requestAnimationFrame.bind(window),cancel=window.cancelAnimationFrame.bind(window),scroll=window.scrollBy.bind(window);
+   window.requestAnimationFrame=callback=>{const entry={stage:stage(),tag:a.focusTag,parentId:a.running?.id??null};let id;id=request(time=>{a.pending.delete(id);a.running={...entry,id};try{callback(time);}finally{a.running=null;}});entry.id=id;a.frames.push(entry);a.pending.set(id,entry);return id;};
+   const family=roots=>{const ids=new Set(roots);for(const frame of a.frames)if(ids.has(frame.parentId))ids.add(frame.id);return ids;};
+   window.cancelAnimationFrame=id=>{const ignored=a.negative&&family(a.focusRAFIds).has(id);a.cancelled.push({id,time:performance.now(),wasPending:a.pending.has(id),nativeCancelled:!ignored,negativeControlIgnored:ignored});if(ignored)return;a.pending.delete(id);return cancel(id);};
+   window.scrollBy=(...args)=>{a.scrollCalls.push({time:performance.now(),args,stage:stage(),executingRAF:a.running});return scroll(...args);};
+   for(const kind of ['wheel','keydown','touchstart','touchmove','touchend','pointerdown','pointerup','click'])window.addEventListener(kind,e=>{
+    const entry={kind:e.type,key:e.key,pointerType:e.pointerType,trusted:e.isTrusted,time:performance.now(),target:e.target?.getAttribute?.('data-testid'),buttonId:e.target?.closest?.('button')?.getAttribute('data-testid'),clientX:e.clientX,clientY:e.clientY,buttonText:e.target?.closest?.('button')?.textContent};a.events.push(entry);
+    const arm=a.arm;if(arm&&(arm.kind===e.type||(arm.kind==='touchstart'&&e.type==='pointerdown'&&e.pointerType==='touch'))&&(!arm.key||arm.key===e.key)){a.arm=null;a.races.push({...entry,focusMarker:arm.focusMarker,focusScrollY:arm.focusScrollY,inputScrollY:scrollY,focusRAFIds:[...arm.ids],focusFamilyAtInput:[...family(arm.ids)],pendingAtInput:[...family(arm.ids)].filter(id=>a.pending.has(id)),focusTarget:arm.target});}
+   },{capture:true,passive:true});
+  },{key,unitId,seed,progress:fixture.progress,stageIndex});
+  await page.reload();await page.locator('[data-qf01-revision="3"]').waitFor();await page.getByTestId('textbook-item-'+id).waitFor();await settle(page);assert.deepEqual(await read(page),fixture.progress);
+  const session=await context.newCDPSession(page);report.fixtures.push({id,stateFile:row.stateFile,sha256:row.stateSHA256,stageIndex});return{context,page,session,baseline:fixture.progress,id};
+ }
+ async function snapshot(p,name){
+  const data=await p.evaluate(()=>{const a=window.__r3Manual;let top=0,bottom=innerHeight;for(const e of document.querySelectorAll('header,nav,[data-fixed-header]')){const s=getComputedStyle(e),r=e.getBoundingClientRect();if(s.position!=='fixed'&&s.position!=='sticky')continue;if(Number.isFinite(parseFloat(s.top))&&r.top<innerHeight/2)top=Math.max(top,r.bottom);else if(s.position==='fixed'&&Number.isFinite(parseFloat(s.bottom))&&r.top>innerHeight/2)bottom=Math.min(bottom,r.top);}const rect=e=>{if(!e)return null;const r=e.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};return{url:location.href,time:performance.now(),scrollY,viewport:{width:innerWidth,height:innerHeight,clearTop:top+12,clearBottom:bottom-12},currentStage:document.querySelector('.math-textbook-stage--current')?.getAttribute('data-testid'),active:document.activeElement?.getAttribute('data-testid'),activeRect:rect(document.activeElement),events:a.events,frames:a.frames,cancelled:a.cancelled,scrollCalls:a.scrollCalls,races:a.races,pending:[...a.pending.values()]};});
+  data.progress=await read(p);
+  const stem=String(sequence++).padStart(3,'0')+'-'+name,raw=JSON.stringify(data,null,2)+'\n';fs.writeFileSync(path.join(folder,stem+'.json'),raw);const png=await p.screenshot({path:path.join(folder,stem+'.png')});const entry={name,domFile:stem+'.json',domSHA256:hash(Buffer.from(raw)),imageFile:stem+'.png',imageSHA256:hash(png)};report.snapshots.push(entry);persist();return{data,entry};
+ }
+ async function open(ctx){await ctx.page.getByTestId('textbook-item-'+ctx.id).click();await settle(ctx.page);assert.equal(await ctx.page.getByTestId('inline-choice-panel-'+ctx.id).locator('button.reading-choice-option').count(),3);}
+ async function actualInput(ctx,kind,{negative=false}={}){
+  const p=ctx.page,options=p.getByTestId('inline-choice-panel-'+ctx.id).locator('button.reading-choice-option');
+  for(let attempt=0;attempt<3;attempt++){
+   const target=await options.evaluateAll(es=>(es.find(e=>e!==document.activeElement)??es[0]).getAttribute('data-testid'));assert.ok(target);
+   const keyName=kind==='keydown'?'PageUp':null,expression=`(()=>{const a=window.__r3Manual,e=document.querySelector('[data-testid='+${JSON.stringify(JSON.stringify(target))}+']');if(!e)throw Error('ACTUAL_FOCUS_TARGET_MISSING');const before=a.frames.length;a.negative=${JSON.stringify(negative)};a.focusTag='manual-input-${sequence}-${attempt}';try{e.focus({preventScroll:true});}finally{a.focusTag=null;}const ids=a.frames.slice(before).map(e=>e.id);a.focusRAFIds=ids;a.arm={kind:${JSON.stringify(kind)},key:${JSON.stringify(keyName)},ids,target:${JSON.stringify(target)},focusMarker:performance.now(),focusScrollY:scrollY};return{ids,scrollY,focusMarker:a.arm.focusMarker};})()`;
+   const commands=[ctx.session.send('Runtime.evaluate',{expression,returnByValue:true})];
+   if(kind==='wheel')commands.push(ctx.session.send('Input.dispatchMouseEvent',{type:'mouseWheel',x:width/2,y:450,deltaX:0,deltaY:-1000}));
+   else if(kind==='keydown')commands.push(ctx.session.send('Input.dispatchKeyEvent',{type:'keyDown',key:'PageUp',code:'PageUp',windowsVirtualKeyCode:33,nativeVirtualKeyCode:33}));
+   else commands.push(ctx.session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:width/2,y:280}]}));
+   const replies=await Promise.all(commands);assert.ok(!replies[0].exceptionDetails,JSON.stringify(replies[0].exceptionDetails));
+   if(kind==='keydown')await ctx.session.send('Input.dispatchKeyEvent',{type:'keyUp',key:'PageUp',code:'PageUp',windowsVirtualKeyCode:33,nativeVirtualKeyCode:33});
+   if(kind==='touchstart'){for(const dy of [60,150,300,550]){await ctx.session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:width/2,y:280+dy}]});await p.waitForTimeout(30);}await ctx.session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
+   await p.waitForTimeout(350);const captured=await snapshot(p,(negative?'negative-':'normal-')+kind+'-'+attempt),d=captured.data;
+   // The capture listener only observed; no focus/default-action intervention occurs in it.
+   const latest=d.races.at(-1);assert.deepEqual(await read(p),ctx.baseline);if(!latest||latest.focusMarker!==replies[0].result.value.focusMarker||latest.focusTarget!==target){report.attempts.push({kind,negative,attempt,snapshot:captured.entry,qualification:'INCONCLUSIVE_INPUT_FOCUS_ORDER'});persist();continue;}assert.ok(latest.trusted&&(latest.kind===kind||(kind==='touchstart'&&latest.kind==='pointerdown'&&latest.pointerType==='touch')));assert.ok(latest.time>=latest.focusMarker);
+   report.attempts.push({kind,negative,attempt,snapshot:captured.entry,pendingAtInput:latest.pendingAtInput,qualification:latest.pendingAtInput.length?'REAL_PENDING_AT_TRUSTED_INPUT':'INCONCLUSIVE_FRAME_ALREADY_SETTLED'});persist();
+   if(!latest.pendingAtInput.length)continue;
+   if(negative){assert.ok(d.cancelled.some(c=>latest.pendingAtInput.includes(c.id)&&c.negativeControlIgnored&&c.wasPending),'negative control actually withheld native cancellation');assert.ok(d.scrollCalls.some(c=>c.time>latest.time&&c.executingRAF),'negative control must reveal delayed automatic scrolling; otherwise no PASS');}
+   else{assert.ok(latest.pendingAtInput.some(id=>d.cancelled.some(c=>c.id===id&&c.nativeCancelled&&c.wasPending&&c.time>=latest.time)),'pending focus-interval RAF cancelled by actual application listener');assert.equal(d.scrollCalls.filter(c=>c.time>latest.time).length,0,'no delayed automatic scrollBy after trusted manual input');assert.ok(latest.focusScrollY>1,'manual movement requires real scroll room immediately before trusted input');assert.ok(d.scrollY<latest.focusScrollY-0.5,'trusted input moves upward from the pre-input focus position; passive wheel may scroll on compositor before JS observes it');}
+   report.actions.push({name:(negative?'negative-withheld-native-cancel-':'trusted-')+kind,pass:true,programmaticFocusBeforeInput:true,listenerIntervention:false,snapshot:captured.entry});persist();return;
+  }
+  throw Error('REAL_PENDING_RAF_AT_INPUT_NOT_ESTABLISHED_AFTER_THREE_ATTEMPTS');
+ }
+ try{
+  browser=await chromium.launch({headless:true});report.browserVersion=browser.version();
+  const c=await prepare('qf01-n21-answer');await open(c);const options=c.page.getByTestId('inline-choice-panel-'+c.id).locator('button.reading-choice-option');
+  await options.evaluateAll(es=>{es[0].focus();es[1].focus();es[2].focus();});await settle(c.page);await c.page.waitForTimeout(120);const focused=await snapshot(c.page,'rapid-focus');assert.equal(await options.nth(2).evaluate(e=>e===document.activeElement),true);assert.deepEqual(await read(c.page),c.baseline);assert.ok(focused.data.activeRect.top>=focused.data.viewport.clearTop&&focused.data.activeRect.bottom<=focused.data.viewport.clearBottom);report.actions.push({name:'rapid-programmatic-focus-current-third-stable',pass:true,snapshot:focused.entry});
+  await options.nth(0).focus();await c.page.keyboard.press('Tab');await c.page.keyboard.press('Tab');await settle(c.page);assert.equal(await options.nth(2).evaluate(e=>e===document.activeElement),true);assert.deepEqual(await read(c.page),c.baseline);report.actions.push({name:'trusted-two-tab-return',pass:true});
+  await actualInput(c,'wheel');await actualInput(c,'keydown');
+  const oldStage=await c.page.locator('.math-textbook-stage--current').getAttribute('data-testid');await c.page.getByRole('button',{name:'前の段階へ',exact:true}).click();await settle(c.page);const departed=await snapshot(c.page,'trusted-stage-departure'),click=departed.data.events.findLast(e=>e.kind==='click'&&e.buttonText==='前の段階へ');assert.ok(click?.trusted);assert.notEqual(departed.data.currentStage,oldStage);assert.ok(departed.data.scrollCalls.every(s=>s.time<=click.time||!s.executingRAF||s.executingRAF.stage!==oldStage||s.stage===oldStage));assert.deepEqual(await read(c.page),c.baseline);report.actions.push({name:'trusted-previous-stage-no-old-focus-interference',pass:true,snapshot:departed.entry});
+  await c.page.goto(appURL+'#/learning/setup?mode=textbook&subject=math-1a');await settle(c.page);assert.equal(await c.page.locator('[data-qf01-revision="3"]').count(),0);assert.deepEqual(await read(c.page),c.baseline);await c.page.goto(route);await c.page.locator('[data-qf01-revision="3"]').waitFor();await settle(c.page);assert.deepEqual(await read(c.page),c.baseline);report.actions.push({name:'direct-route-leave-and-revisit-preserve-progress',pass:true});await c.session.detach();await c.context.close();
+  const controlled=await prepare('qf01-n21-answer');await open(controlled);const control=await controlled.page.evaluate(()=>{const a=window.__r3Manual,buttons=[...document.querySelectorAll('.math-textbook-stage--current button.reading-choice-option')],candidate=buttons.find(e=>e!==document.activeElement)??buttons[0],previous=[...document.querySelectorAll('button')].find(e=>e.textContent==='前の段階へ');if(!candidate||!previous)throw Error('ACTUAL_CONTROL_MISSING');const stage=document.querySelector('.math-textbook-stage--current').getAttribute('data-testid'),before=a.frames.length;a.focusTag='controlled-stage-departure';candidate.focus({preventScroll:true});a.focusTag=null;const generated=a.frames.slice(before).map(f=>f.id),ids=generated.filter(id=>a.pending.has(id)),time=performance.now();previous.click();return{stage,generated,ids,time};});report.controlledDeparture=control;persist();await settle(controlled.page);const cleaned=await snapshot(controlled.page,'controlled-programmatic-stage-cleanup');assert.ok(control.ids.length);assert.ok(control.ids.some(id=>cleaned.data.cancelled.some(c=>c.id===id&&c.nativeCancelled&&c.time>=control.time)));assert.notEqual(cleaned.data.currentStage,control.stage);assert.ok(cleaned.data.scrollCalls.every(s=>s.time<=control.time||!s.executingRAF||s.executingRAF.stage!==control.stage||s.stage===control.stage));assert.deepEqual(await read(controlled.page),controlled.baseline);report.actions.push({name:'controlled-programmatic-stage-cleanup-cancels-real-pending',pass:true,qualification:'Programmatic same-task focus/click, separately from the actual trusted previous-stage action',snapshot:cleaned.entry});await controlled.session.detach();await controlled.context.close();
+  const pointer=await prepare('qf01-n02-answer');await open(pointer);const wrong=items.get(pointer.id).choices.filter(v=>v!==items.get(pointer.id).answer);assert.equal(wrong.length,2);
+  for(let i=0;i<2;i++){
+   const options=pointer.page.getByTestId('inline-choice-panel-'+pointer.id).locator('button.reading-choice-option'),names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=names.findIndex(s=>s?.endsWith('、'+wrong[i]));assert.ok(index>=0);const option=options.nth(index);await option.scrollIntoViewIfNeeded();await settle(pointer.page);await snapshot(pointer.page,'n02-before-held-pointer-'+i);
+   const before=await option.evaluate(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,transform:getComputedStyle(e).transform,testId:e.getAttribute('data-testid')};});assert.ok(before.width>0&&before.height>0);const point={x:before.x+before.width/2,y:before.y+before.height/2};await pointer.page.mouse.move(point.x,point.y);await pointer.page.mouse.down();await pointer.page.waitForTimeout(80);
+   const held=await option.evaluate((e,point)=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,transform:getComputedStyle(e).transform,hitTestId:document.elementFromPoint(point.x,point.y)?.closest('button')?.getAttribute('data-testid')};},point);const heldImage=await snapshot(pointer.page,'n02-during-held-pointer-'+i);report.pointerTransactions??=[];const transaction={requested:wrong[i],point,before,held,heldSnapshot:heldImage.entry,qualification:'Existing CSS has a 1px active press transform. Verify unchanged pointer hit target and exact saved value, rather than inventing a zero-motion requirement.'};report.pointerTransactions.push(transaction);persist();
+   // Always finish the real pointer transaction and preserve the recorded value before judging.
+   await pointer.page.mouse.up();await settle(pointer.page);const state=(await read(pointer.page)).answers[pointer.id],image=await snapshot(pointer.page,'n02-held-pointer-wrong-'+i);transaction.recorded=state??null;transaction.afterSnapshot=image.entry;persist();assert.equal(held.hitTestId,before.testId,'held pointer still hits the originally pressed candidate');assert.equal(state?.value,wrong[i],'the exact requested candidate is saved');assert.equal(state.resolved,false);assert.equal(state.attemptCount,i+1);report.actions.push({name:'trusted-held-pointer-n02-wrong-'+i,requested:wrong[i],recorded:state,pass:true,snapshot:image.entry});
+  }
+  await pointer.session.detach();await pointer.context.close();
+  if(width===320){const touch=await prepare('qf01-n21-answer',true);await touch.page.getByTestId('textbook-item-'+touch.id).tap();await settle(touch.page);await actualInput(touch,'touchstart');await touch.session.detach();await touch.context.close();const negative=await prepare('qf01-n21-answer');await open(negative);await actualInput(negative,'wheel',{negative:true});await negative.session.detach();await negative.context.close();}
+  assert.deepEqual(report.errors,[]);report.status='PASS_BOUNDED_CURRENT_R3_MANUAL_CONTROLS_NOT_R07_OR_ACCEPTANCE';persist();return{status:report.status,actions:report.actions.length,attempts:report.attempts.length,report:'manual-controls/REPORT.json',sha256:hash(fs.readFileSync(path.join(folder,'REPORT.json')))};
+ }catch(e){report.status='FAILED_OR_INCOMPLETE';report.errors.push(String(e));persist();throw e;}finally{await browser?.close();}
+}
+
+// Normal-production bounded successor. Frozen R2/R3 capture bodies above are retained verbatim.
+export const REVISION3_BOUNDED_REQUIRED_IDS=Object.freeze(["qf01-n01-answer","qf01-n02-answer","qf01-n03-answer","qf01-n04-answer","qf01-r3-n04-value-meaning-answer","qf01-n05-answer","qf01-r3-n05-parenthesis-reason-answer","qf01-n06-answer","qf01-n07-answer","qf01-n08-answer","qf01-n09-answer","qf01-r3-n10-operation-order-answer","qf01-r3-n10-square-value-answer","qf01-n10-answer","qf01-n11-answer","qf01-n12a-answer","qf01-n12b-answer","qf01-n12c-answer","qf01-r3-n12c-constant-product-answer","qf01-n12-answer","qf01-n13-answer","qf01-r3-n14-boundary-answer","qf01-r3-n14-perimeter-expression-answer","qf01-n14-answer","qf01-r3-n15-same-operation-answer","qf01-n15-answer","qf01-r3-n16-target-answer","qf01-n16-answer","qf01-n17-answer","qf01-n18-answer","qf01-n19-answer","qf01-r3-n19-endpoints-answer","qf01-n21-answer","qf01-n22-answer","qf01-r3-n22-inverse-answer"]);
+export const REVISION3_BOUNDED_ACTIONS=Object.freeze(["open-n21-by-enter","wrong-n21-by-enter","reload-preserves-n21-wrong","reopen-n21-by-pointer","second-n21-wrong-by-pointer","open-current-hint","close-current-hint","correct-n21-by-enter","reload-preserves-n21-correct","open-n22-by-pointer","complete-n22-by-pointer","open-inverse-by-enter","complete-inverse-by-enter"]);
+export async function runRevision3BoundedInputSuccessorAudits({sourceRoot,appURL,width,out,binding}){
+ const unitPath='src/data/textbook/math/quadratic/qf01Unit.json',unitRaw=fs.readFileSync(path.join(sourceRoot,unitPath)),unit=JSON.parse(unitRaw),ids=unit.requiredInteractionRefs,items=new Map(unit.sections.flatMap(s=>s.items).map(i=>[i.id,i])),full=json(path.join(out,'REPORT.json'));checkRevision3Coverage(full,ids);assert.equal(unit.revision,3);assert.equal(binding.sourceSHA,REVISION3_SOURCE_SHA);assert.equal(binding.phase,'R3_NORMAL_PRODUCTION_QA');assert.deepEqual(ids,REVISION3_BOUNDED_REQUIRED_IDS);const cursorKey='math-textbook-compact-v1:'+unit.unitId+':r3:scope:qf01-v3';const sourceUnit={path:unitPath,sha256:hash(unitRaw),requiredIds:[...ids]};
+ const base={sourceSHA:binding.sourceSHA,width,runId:String(binding.captureRunID),attempt:Number(binding.captureAttempt),publisherBinding:binding,userAcceptance:false},write=(name,data)=>fs.writeFileSync(path.join(out,name),JSON.stringify(data,null,2)+'\n');
+ const navigation={...base,status:'RUNNING',actions:[],errors:[],reloadPreservesProgress:false},normal={...base,status:'RUNNING',actions:[],errors:[]},browser=await chromium.launch({headless:true});
+ const context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),page=await context.newPage(),route=appURL+'#/learning/textbook/'+unit.unitId,menu=appURL+'#/learning/setup?mode=textbook&subject=math-1a';page.on('pageerror',e=>navigation.errors.push(String(e)));
+ const settle=async p=>{await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});},read=async p=>p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:STORAGE_KEY,id:unit.unitId}),ready=async p=>{await p.locator('[data-qf01-revision="3"]').waitFor();assert.equal(await p.getByTestId('qf01-r3-binding-error').count(),0);await settle(p);};
+ async function choice(p,id,value,keyboard=false){const options=p.getByTestId('inline-choice-panel-'+id).locator('button.reading-choice-option'),names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=names.findIndex(n=>n?.endsWith('、'+value));assert.ok(index>=0);const option=options.nth(index);if(keyboard){await option.focus();await option.press('Enter');}else await option.click();await settle(p);}
+ async function action(report,p,name,run){await run();await settle(p);report.actions.push({name,summaryVisible:await p.getByTestId('qf01-unit-summary').isVisible(),cursor:await p.evaluate(key=>localStorage.getItem(key),cursorKey),progress:await read(p),url:p.url(),focused:await p.evaluate(()=>{const e=document.activeElement,r=e?.getBoundingClientRect();return e?{tag:e.tagName,testId:e.getAttribute('data-testid'),role:e.getAttribute('role'),rect:r?{left:r.left,top:r.top,width:r.width,height:r.height}:null}:null;})});}
+ try{
+  await action(navigation,page,'open-current-r3',async()=>{await page.goto(route);await ready(page);await page.getByTestId('textbook-item-'+ids[0]).waitFor();});
+  await action(navigation,page,'answer-first-by-keyboard',async()=>{await page.getByTestId('textbook-item-'+ids[0]).focus();await page.getByTestId('textbook-item-'+ids[0]).press('Enter');await choice(page,ids[0],items.get(ids[0]).answer,true);assert.equal((await read(page)).answers[ids[0]].resolved,true);});
+  const first=JSON.stringify(await read(page));
+  await action(navigation,page,'open-current-menu',async()=>{await page.goto(menu);const card=page.getByTestId('math-textbook-topic-quadratic-functions-foundation');await card.waitFor();assert.ok((await card.innerText()).includes('公開中の内容：1/35 完了'));});
+  await action(navigation,page,'resume-current-next-slot',async()=>{await page.getByTestId('math-textbook-topic-quadratic-functions-foundation').click();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'reload-preserves-current-r3',async()=>{await page.reload();await ready(page);assert.equal(JSON.stringify(await read(page)),first);navigation.reloadPreservesProgress=true;});
+  await action(navigation,page,'open-readonly-r2-route',async()=>{await page.getByRole('link',{name:'以前の記録を見る',exact:true}).click();await page.getByTestId('qf01-revision2-archive').waitFor();assert.equal(await page.locator('button.reading-choice-option:not([disabled])').count(),0);assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'return-to-current-r3',async()=>{await page.goBack();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  assert.equal(navigation.actions.length,7);assert.deepEqual(navigation.errors,[]);navigation.status='PASS_R3_BOUNDED_NAVIGATION_NOT_ACCEPTANCE';write('R3_NAVIGATION_REPORT.json',navigation);
+  if(width===320){
+   const target='qf01-n21-answer',entry=full.states.find(r=>r.label===target+'-before');assert.ok(entry,'R3_CURRENT_N21_BEFORE_FIXTURE');const fixtureRaw=fs.readFileSync(path.join(out,safeRelative(entry.file)));assert.equal(hash(fixtureRaw),entry.sha256);const fixture=JSON.parse(fixtureRaw),prior=ids.slice(0,ids.indexOf(target));assert.equal(fixture.sourceSHA,binding.sourceSHA);assert.equal(fixture.progress.unitRevision,3);assert.deepEqual(Object.keys(fixture.progress.answers).filter(id=>fixture.progress.answers[id].resolved).sort(),[...prior].sort());assert.equal(prior.length,32);
+   normal.fixture={kind:'CURRENT_R3_CAPTURED_N21_BEFORE_SUCCESSOR_V2',file:entry.file,sha256:entry.sha256,interactionId:target,unitRevision:3,priorCount:prior.length,cursorKey,cursorValue:8};normal.initialProgress=fixture.progress;
+   const seed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),STORAGE_KEY),ctx=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),p=await ctx.newPage();p.on('pageerror',e=>normal.errors.push(String(e)));
+   try{await p.addInitScript(({key,seed,id,progress,cursorKey})=>{if(sessionStorage.getItem('r3-bounded-seeded'))return;sessionStorage.setItem('r3-bounded-seeded','1');localStorage.setItem(cursorKey,'8');localStorage.setItem(key,JSON.stringify({...seed,state:{...seed.state,textbookProgress:{...seed.state.textbookProgress,[id]:progress}}}));},{key:STORAGE_KEY,seed,id:unit.unitId,progress:fixture.progress,cursorKey});await p.goto(route);await ready(p);await p.getByTestId('textbook-item-'+target).waitFor();assert.equal(JSON.stringify(await read(p)),JSON.stringify(fixture.progress));const wrong=items.get(target).choices.filter(v=>v!==items.get(target).answer);assert.equal(wrong.length,2);
+    await action(normal,p,'open-n21-by-enter',async()=>{const slot=p.getByTestId('textbook-item-'+target);await slot.focus();await slot.press('Enter');await p.getByTestId('inline-choice-panel-'+target).locator('button.reading-choice-option').first().waitFor();});
+    await action(normal,p,'wrong-n21-by-enter',async()=>{await choice(p,target,wrong[0],true);const r=(await read(p)).answers[target];assert.equal(r.value,wrong[0]);assert.equal(r.resolved,false);assert.equal(r.attemptCount,1);});
+    const wrongRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-wrong',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),wrongRecord);});
+    await action(normal,p,'reopen-n21-by-pointer',async()=>{await p.getByTestId('textbook-item-'+target).click();});
+    await action(normal,p,'second-n21-wrong-by-pointer',async()=>{await choice(p,target,wrong[1]);assert.equal((await read(p)).answers[target].attemptCount,2);assert.equal((await read(p)).answers[target].resolved,false);});
+    const hintProgress=JSON.stringify(await read(p));await action(normal,p,'open-current-hint',async()=>{const hint=p.getByRole('button',{name:'手掛かりを見る',exact:true});await hint.click();assert.equal(await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).getAttribute('aria-expanded'),'true');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'close-current-hint',async()=>{await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).click();assert.equal(await p.getByRole('button',{name:'手掛かりを見る',exact:true}).getAttribute('aria-expanded'),'false');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'correct-n21-by-enter',async()=>{await choice(p,target,items.get(target).answer,true);const r=(await read(p)).answers[target];assert.equal(r.value,items.get(target).answer);assert.equal(r.resolved,true);assert.equal(r.attemptCount,3);});
+    const correctRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-correct',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),correctRecord);});
+    const n22=ids[33],inverse=ids[34];assert.equal(n22,'qf01-n22-answer');assert.equal(inverse,'qf01-r3-n22-inverse-answer');
+    await action(normal,p,'open-n22-by-pointer',async()=>{await p.getByTestId('textbook-item-'+n22).click();assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);});
+    await action(normal,p,'complete-n22-by-pointer',async()=>{await choice(p,n22,items.get(n22).answer);assert.equal((await read(p)).answers[n22].resolved,true);assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);await p.getByTestId('textbook-item-'+inverse).waitFor();});
+    await action(normal,p,'open-inverse-by-enter',async()=>{const slot=p.getByTestId('textbook-item-'+inverse);await slot.focus();await slot.press('Enter');assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);});
+    await action(normal,p,'complete-inverse-by-enter',async()=>{await choice(p,inverse,items.get(inverse).answer,true);const progress=await read(p);assert.equal(progress.answers[inverse].resolved,true);assert.deepEqual(Object.keys(progress.answers).filter(id=>progress.answers[id].resolved),ids);assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),true);});
+    assert.equal(normal.actions.length,13);assert.deepEqual(normal.errors,[]);normal.status='PASS_R3_BOUNDED_INTERACTION_NOT_ACCEPTANCE';write('R3_INTERACTION_REPORT.json',normal);
+   }finally{await ctx.close();}
+  }
+  const reportNames=['R3_NAVIGATION_REPORT.json',...(width===320?['R3_INTERACTION_REPORT.json']:[])],proof={schemaVersion:'qf01-r3-bounded-input/2',successor:'qf01-r3-bounded-successor/2',sourceUnit,...base,r3AssertionBodySHA256:revision3AssertionBodySHA256(),modulePublisherSHA:binding.publisherSHA,moduleSHA256:hash(fs.readFileSync(THIS_FILE)),navigation:7,normalInputs:width===320?13:0,reports:Object.fromEntries(reportNames.map(name=>[name,hash(fs.readFileSync(path.join(out,name)))]))};write('R3_BOUNDED_PROVENANCE.json',proof);return proof;
+ }catch(error){if(navigation.status==='RUNNING'){navigation.status='FAILED_OR_INCOMPLETE';navigation.errors.push(String(error));write('R3_NAVIGATION_REPORT.json',navigation);}if(width===320){normal.status='FAILED_OR_INCOMPLETE';normal.errors.push(String(error));write('R3_INTERACTION_REPORT.json',normal);}throw error;}finally{await context.close();await browser.close();}
+}
+
 export async function main(env = process.env) {
   assert.ok(env.QF01_CONTRACT && env.QF01_DIST_MANIFEST, 'CONTRACT_AND_DIST_MANIFEST_REQUIRED');
   const originalCwd = process.cwd();
@@ -298,15 +736,16 @@ export async function main(env = process.env) {
   const contractBytes = fs.readFileSync(contractPath), manifestBytes = fs.readFileSync(manifestPath);
   const contract = JSON.parse(contractBytes), manifest = JSON.parse(manifestBytes);
   const configuration = validateConfiguration(contract, manifest, contractBytes, env);
+  if(configuration.revision3){const checker=await import('./qf01-publish-check.mjs');checker.assertContract(contract);assert.ok(env.CORE_ROOT,'R3_CORE_ROOT_REQUIRED');checker.verifyCoreBinding({coreRoot:env.CORE_ROOT,materialRoot:sourceRoot,contract});checker.verifySource({sourceRoot,publisherRoot:env.PUBLISHER_ROOT??path.resolve(path.dirname(THIS_FILE),'../..'),baselineRoot:env.BASELINE_ROOT,contract});}
   verifyDist(distRoot, manifest);
   verifyRelease(json(path.join(distRoot, 'qf01-release.json')), manifest);
-  const sourceProof = verifySource(sourceRoot, manifest.publisherSHA);
+  const sourceProof = verifySource(sourceRoot, manifest.publisherSHA, contract);
   const outputRoot = canonicalOutput(path.resolve(env.OUT ?? '/tmp/qf01-production-browser-' + (env.GITHUB_RUN_ID ?? process.pid)));
   for (const protectedDir of [distRoot, path.join(sourceRoot, 'src'), path.join(sourceRoot, 'public'), path.join(sourceRoot, '.git')]) ensureOutside(outputRoot, protectedDir, 'OUTPUT_OVERLAPS_PROTECTED_DIRECTORY');
   freshDirectory(outputRoot);
   const requireFromSource = createRequire(path.join(sourceRoot, 'package.json'));
   ({chromium} = requireFromSource('@playwright/test'));
-  const summary = {sourceSHA: SOURCE_SHA, publisherSHA: manifest.publisherSHA, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, storageKey: STORAGE_KEY, widths: configuration.widths, status: 'RUNNING', results: [], userAcceptance: false};
+  const summary = {sourceSHA: contract.sourceSHA, publisherSHA: manifest.publisherSHA, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, storageKey: STORAGE_KEY, widths: configuration.widths, status: 'RUNNING', results: [], userAcceptance: false};
   const persistSummary = () => fs.writeFileSync(path.join(outputRoot, 'QF01_BROWSER_RESULT.json'), JSON.stringify(summary, null, 2) + '\n');
   persistSummary();
   const oldEnv = Object.fromEntries(['SOURCE_SHA','WIDTH','OUT','APP_URL','STORAGE_KEY'].map(key => [key, process.env[key]]));
@@ -315,19 +754,18 @@ export async function main(env = process.env) {
     for (const width of configuration.widths) {
       const widthOut = configuration.widths.length === 1 ? outputRoot : path.join(outputRoot, String(width));
       if (widthOut !== outputRoot) freshDirectory(widthOut);
-      const binding = {...sourceProof, captureRunID:String(env.GITHUB_RUN_ID??manifest.buildRunID),captureAttempt:Number(env.GITHUB_RUN_ATTEMPT??manifest.attempt),appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, width, storageKey: STORAGE_KEY, basePath: BASE_PATH, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), distFiles: manifest.files};
+      const binding = {...sourceProof,...(configuration.revision3?{phase:'R3_NORMAL_PRODUCTION_QA'}:{}), captureRunID:String(env.GITHUB_RUN_ID??manifest.buildRunID),captureAttempt:Number(env.GITHUB_RUN_ATTEMPT??manifest.attempt),appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, width, storageKey: STORAGE_KEY, basePath: BASE_PATH, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), distFiles: manifest.files};
       try {
         const before = await httpSourceProof(configuration.appURL, manifest);
         fs.writeFileSync(path.join(widthOut, 'HTTP_SOURCE_BEFORE.json'), JSON.stringify(before, null, 2) + '\n');
-        Object.assign(process.env, {SOURCE_SHA, WIDTH: String(width), OUT: widthOut, APP_URL: configuration.appURL, STORAGE_KEY});
-        await runCurrentAssertionBody();
+        Object.assign(process.env, {SOURCE_SHA:contract.sourceSHA, WIDTH: String(width), OUT: widthOut, APP_URL: configuration.appURL, STORAGE_KEY});
+        if(configuration.revision3)await runRevision3AssertionBody({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});else await runCurrentAssertionBody();
         let report = addReportBinding(widthOut, binding);
-        checkFullCoverage(report);
-        await runBoundedInputAudits({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});
+        if(configuration.revision3){checkRevision3Coverage(report,json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json')).requiredInteractionRefs);await runRevision3BoundedInputSuccessorAudits({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});}else{checkFullCoverage(report);await runBoundedInputAudits({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});}
         verifyDist(distRoot, manifest);
         assert.equal(hash(fs.readFileSync(contractPath)), hash(contractBytes), 'CONTRACT_CHANGED_DURING_QA');
         assert.equal(hash(fs.readFileSync(manifestPath)), hash(manifestBytes), 'DIST_MANIFEST_CHANGED_DURING_QA');
-        verifySource(sourceRoot, manifest.publisherSHA);
+        verifySource(sourceRoot, manifest.publisherSHA, contract);
         const after = await httpSourceProof(configuration.appURL, manifest);
         fs.writeFileSync(path.join(widthOut, 'HTTP_SOURCE_AFTER.json'), JSON.stringify(after, null, 2) + '\n');
         report = addReportBinding(widthOut, {...binding, beforeHTTPProofSHA256: hash(fs.readFileSync(path.join(widthOut, 'HTTP_SOURCE_BEFORE.json'))), afterHTTPProofSHA256: hash(fs.readFileSync(path.join(widthOut, 'HTTP_SOURCE_AFTER.json')))});
@@ -340,7 +778,7 @@ export async function main(env = process.env) {
     }
     summary.status = 'QF01_PRODUCTION_CONDITION_QA_PASSED_NOT_USER_ACCEPTANCE';
     persistSummary();
-    console.log(JSON.stringify({status: summary.status, sourceSHA: SOURCE_SHA, publisherSHA: manifest.publisherSHA, widths: configuration.widths, states: summary.results.reduce((n,row) => n + row.states, 0), output: outputRoot}));
+    console.log(JSON.stringify({status: summary.status, sourceSHA: contract.sourceSHA, publisherSHA: manifest.publisherSHA, widths: configuration.widths, states: summary.results.reduce((n,row) => n + row.states, 0), output: outputRoot}));
     return summary;
   } catch (error) {
     summary.status = 'FAIL'; summary.failure = String(error); persistSummary(); throw error;
@@ -349,4 +787,4 @@ export async function main(env = process.env) {
     for (const [key, value] of Object.entries(oldEnv)) { if (value === undefined) delete process.env[key]; else process.env[key] = value; }
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === THIS_FILE) main().catch(error => { console.error(error); process.exitCode = 1; });
+if (process.argv[1] && path.resolve(process.argv[1]) === THIS_FILE) (process.argv[2]==='--draft-design-preview'?runDraftDesignPreview():main()).catch(error => { console.error(error); process.exitCode = 1; });

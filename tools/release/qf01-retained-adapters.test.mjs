@@ -6,7 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {projectRetainedRepairMetadata,overlayCurrentRepairs,CURRENT_SOURCE_LAYERS,CURRENT_SOURCE_LAYERS_SHA256,overlayFontSource,FONT_OVERLAY,overlayTestSource,TEST_OVERLAY,prepareRetainedAdapters,runRetained,projectRetainedRepairMetadataHistorical,projectContract,overlayCurrentSource,overlayRepairSource,REPAIR_OVERLAY,replaceExact,SOURCE,BASELINE} from './qf01-retained-adapters.mjs';
+import {projectRetainedRepairMetadata,overlayCurrentRepairs,CURRENT_SOURCE_LAYERS,CURRENT_SOURCE_LAYERS_SHA256,overlayFontSource,FONT_OVERLAY,overlayTestSource,TEST_OVERLAY,prepareRetainedAdapters,runRetained,projectRetainedRepairMetadataHistorical,projectContract,overlayCurrentSource,overlayRepairSource,REPAIR_OVERLAY,replaceExact,SOURCE,BASELINE,REVISION3_SOURCE,projectRevision3RetainedSource} from './qf01-retained-adapters.mjs';
 
 // Fixed fixtures are supplied from immutable publisher/baseline checkouts by CI.
 // Unit guard cases use the same frozen projection embedded in the successor contract.
@@ -147,7 +147,8 @@ const generated=original.replace(before,after).replace("import { createServer } 
 const start=original.indexOf("  for (const row of files.filter(r => !r.path.endsWith('Lesson.ts'))) {"),end=original.indexOf('\n} finally',start);
 assert.ok(start>0&&end>start);
 const oldAssertion=new Function('files','scroll','alignmentPage','crypto','assert',original.slice(start,end));
-const currentHash=process.env.SOURCE_ROOT?H(fs.readFileSync(path.join(process.env.SOURCE_ROOT,DOMAIN))):AFTER;
+// P043 is an immutable historical source9e comparison; R3 current bytes have separate full343 checks.
+const currentHash=process.env.SOURCE_ROOT?H(execFileSync('git',['-C',process.env.SOURCE_ROOT,'show',SOURCE+':'+DOMAIN])):AFTER;
 const check=rows=>oldAssertion(rows,{files:[]},{path:'src/pages/TextbookUnitPage.tsx'},crypto,assert);
 test('P043 actual current domain and unmodified original assertion reproduce CI before389/actuale368 failure',()=>{
   assert.equal(H(raw),INDEX_SHA);assert.equal(currentHash,AFTER);assert.equal(H(generated),GENERATED_SHA);
@@ -185,3 +186,16 @@ test('generated adaptation retains original assertion body; actual projected dom
 });
 
 }
+
+// Synthetic map/configuration checks are not native authority, browser output or consent.
+test('R3 retained projection binds fixed source and exact complete343 inventory without removing old332',()=>{
+ const h='a'.repeat(64),productHashes=Object.fromEntries(Array.from({length:8},(_,i)=>['src/product-'+i+'.ts',h])),retained319=Object.fromEntries(Array.from({length:324},(_,i)=>['src/retained-'+i+'.ts',h])),projected={sourceSHA:SOURCE,productHashes,retained319,unknown:{preserve:true}},currentSourceFiles={...productHashes,...retained319,...Object.fromEntries(Array.from({length:11},(_,i)=>['src/r3-new-'+i+'.ts','b'.repeat(64)]))},c={sourceSHA:REVISION3_SOURCE,qf01:{revision:3},currentSourceFiles};
+ const next=projectRevision3RetainedSource(projected,c);assert.equal(next.sourceSHA,REVISION3_SOURCE);assert.equal(Object.keys(next.productHashes).length,8);assert.equal(Object.keys(next.retained319).length,335);assert.deepEqual(next.unknown,projected.unknown);assert.equal(Object.keys(projected.retained319).length,324);
+ for(const mutate of [c=>c.sourceSHA=SOURCE,c=>c.qf01.revision=2,c=>delete c.currentSourceFiles['src/product-0.ts'],c=>c.currentSourceFiles['src/unapproved-extra.ts']=h,c=>{delete c.currentSourceFiles['src/r3-new-0.ts'];c.currentSourceFiles['src/../escape.ts']=h;},c=>c.currentSourceFiles['src/product-0.ts']='not-a-hash']){const bad=structuredClone(c);mutate(bad);assert.throws(()=>projectRevision3RetainedSource(projected,bad));}
+});
+test('R3 browser entry refuses missing current authority, old source, altered body pin and wrong runtime checkout',async()=>{
+ const {validateConfiguration,revision3AssertionBodySHA256}=await import('./qf01-browser.mjs'),h='a'.repeat(64),publisher='b'.repeat(40),c={schemaVersion:'qf01-publisher/1',sourceSHA:REVISION3_SOURCE,baselineSHA:BASELINE,publicBase:'https://rrikunagasige-dot.github.io/kyotsu-step-web/',basePath:'/kyotsu-step-web/',storageKey:'kyotsu-step-gate3-math-20261023',expectedWidths:[320,390,430,1440],qf01:{revision:3,unitId:'math-quadratic-qf01',statesPerWidth:179,decisions:35,stages:9},currentSourceFiles:{'src/synthetic.ts':h},currentPublicFiles:{'public/synthetic.svg':h},buildConfigFiles:{'package.json':h},coreExecutionBinding:{fixed:{runtimeAuthoritySnapshotSHA:'9ee19f65d39b3e639857c809ada50a01c8a7c322'}},currentNativeAuthority:{sourceSHA:REVISION3_SOURCE},r3AssertionBodySHA256:revision3AssertionBodySHA256()},raw=Buffer.from(JSON.stringify(c)),digest=createHash('sha256').update(raw).digest('hex'),manifest={schemaVersion:'qf01-dist/1',sourceSHA:REVISION3_SOURCE,publisherSHA:publisher,contractSHA256:digest,storageKey:c.storageKey,basePath:c.basePath,files:{'index.html':h,'qf01-release.json':h}},env={PUBLISHER_SHA:publisher,WIDTH:'320'};
+ assert.equal(validateConfiguration(c,manifest,raw,env).revision3,true);for(const mutate of [c=>c.sourceSHA=SOURCE,c=>delete c.currentNativeAuthority,c=>c.coreExecutionBinding.fixed.runtimeAuthoritySnapshotSHA='f'.repeat(40),c=>c.r3AssertionBodySHA256='0'.repeat(64),c=>c.qf01.statesPerWidth=124,c=>c.qf01.decisions=24,c=>delete c.currentPublicFiles]){const bad=structuredClone(c);mutate(bad);assert.throws(()=>validateConfiguration(bad,manifest,raw,env));}
+});
+
+test('draft design preview mode is explicit read-only local capture and rejects normal authority inputs',async()=>{const {validateDraftDesignPreviewConfiguration,DRAFT_DESIGN_BRANCH}=await import('./qf01-browser.mjs'),env={DESIGN_PREVIEW_PHASE:'DRAFT_DESIGN_PREVIEW_ONLY',SOURCE_SHA:REVISION3_SOURCE,SOURCE_ROOT:'/synthetic/material',CORE_ROOT:'/synthetic/core',DIST_ROOT:'/synthetic/dist',OUT:'/synthetic/output',GITHUB_ACTIONS:'true',GITHUB_REPOSITORY:'rrikunagasige-dot/kyotsu-step-web',GITHUB_REPOSITORY_ID:'1391122224',GITHUB_REF:'refs/heads/'+DRAFT_DESIGN_BRANCH,GITHUB_EVENT_NAME:'push',APP_URL:'http://127.0.0.1:4179/kyotsu-step-web/'};assert.deepEqual(validateDraftDesignPreviewConfiguration(env),{phase:'DRAFT_DESIGN_PREVIEW_ONLY',appURL:env.APP_URL,widths:[320,390,430,1440]});for(const mutate of [e=>e.DESIGN_PREVIEW_PHASE='R3_NORMAL_PRODUCTION_QA',e=>e.SOURCE_SHA=SOURCE,e=>e.GITHUB_REF='refs/heads/main',e=>e.GITHUB_REPOSITORY='untrusted/repo',e=>e.QF01_CONTRACT='/synthetic/production-contract.json',e=>e.QF01_DIST_MANIFEST='/synthetic/sealed.json',e=>e.NATIVE_INTENT_CHAIN='synthetic',e=>e.APP_URL='https://rrikunagasige-dot.github.io/kyotsu-step-web/',e=>e.WIDTH='999',e=>delete e.CORE_ROOT]){const bad={...env};mutate(bad);assert.throws(()=>validateDraftDesignPreviewConfiguration(bad));}});

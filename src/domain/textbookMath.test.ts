@@ -124,7 +124,7 @@ describe('textbook math normalization', () => {
 
 
 // View-only pilot: learning/answer contracts come from the unchanged original unit.
-import { qf01PilotTransformationPresentation as qf01TransformationPresentation, mathQuadraticQF01Unit } from '../data/textbook/math/quadratic/qf01Lesson'
+import { qf01PilotTransformationPresentation as qf01TransformationPresentation, qf01Revision2Unit as mathQuadraticQF01Unit } from '../data/textbook/math/quadratic/qf01Lesson'
 import { TransformationReadingSchema, projectTransformationView } from './transformationReading'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'

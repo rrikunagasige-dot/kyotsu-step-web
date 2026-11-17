@@ -1,13 +1,19 @@
-name: QF01 current-core publisher P045
+name: QF01 revision3 current-core publisher P046-R3
 'on':
   push:
     branches:
-    - work/qf01-p045-full-publisher-20261116
+    - work/qf01-p046-r3-publisher-20261116
+    - work/qf01-p046-r3-design-preview-20261116
     paths:
     - .github/workflows/qf01-publisher-g3.yml
     - tools/release/qf01-*
   workflow_dispatch:
     inputs:
+      design_preview:
+        type: boolean
+        default: false
+        required: false
+        description: Draft design images only; no native gates, seal, producer ledger or publication
       dry_run:
         type: boolean
         default: true
@@ -27,17 +33,100 @@ name: QF01 current-core publisher P045
         type: string
         required: false
         default: ''
-        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates current P039
+        description: Exact same-repo native-authority-blob-ref/1 JSON; authenticated immutable Git blob hydrates current P046-R3
           material authority from actual post-apply export; historical10391 proof stays separate
 permissions:
   contents: read
   actions: read
 concurrency:
-  group: pages
+  group: ${{ github.ref == 'refs/heads/work/qf01-p046-r3-design-preview-20261116' && 'qf01-r3-design-preview' || 'pages' }}
   cancel-in-progress: false
 jobs:
+  draft_design_preview:
+    if: github.ref == 'refs/heads/work/qf01-p046-r3-design-preview-20261116' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.design_preview == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        width: [320, 390, 430, 1440]
+    permissions:
+      contents: read
+    env:
+      DESIGN_PREVIEW_PHASE: DRAFT_DESIGN_PREVIEW_ONLY
+      WIDTH: ${{ matrix.width }}
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      SOURCE_ROOT: ${{ github.workspace }}/material
+      CORE_ROOT: ${{ github.workspace }}/current-core
+      DIST_ROOT: ${{ github.workspace }}/material/dist
+      OUT: /tmp/qf01-r3-design-preview
+      APP_URL: http://127.0.0.1:4179/kyotsu-step-web/
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      STORAGE_KEY: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
+        path: material
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.sha }}
+        path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: actions/checkout@v4
+      with:
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
+        path: current-core
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 11.9.0
+        run_install: false
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+        cache-dependency-path: material/pnpm-lock.yaml
+    - name: Install fixed draft application dependencies
+      working-directory: material
+      run: pnpm install --frozen-lockfile --ignore-scripts
+    - name: Prepare original CJK fonts and Chromium for draft observation
+      working-directory: material
+      shell: bash
+      run: |
+        set -euo pipefail
+        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update -qq
+        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 install -y fonts-noto-cjk
+        pnpm exec playwright install --with-deps chromium
+    - name: Build unsealed design candidate only
+      working-directory: material
+      run: pnpm run build
+    - name: Capture draft design images and geometry without native authority or publication
+      shell: bash
+      run: |
+        set -euo pipefail
+        test ! -e material/dist/qf01-release.json
+        (cd material && pnpm exec vite preview --host 127.0.0.1 --port 4179 --strictPort) >/tmp/qf01-r3-design-preview-vite.log 2>&1 &
+        server_pid=$!
+        trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+        node publisher/tools/release/qf01-browser.mjs --draft-design-preview
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qf01-r3-DRAFT-DESIGN-PREVIEW-${{ matrix.width }}-${{ github.sha }}-${{ github.run_attempt }}
+        path: |
+          /tmp/qf01-r3-design-preview
+          /tmp/qf01-r3-design-preview-vite.log
+        if-no-files-found: error
+        compression-level: 6
   build:
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
     runs-on: ubuntu-latest
     timeout-minutes: 45
     outputs:
@@ -52,9 +141,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      CANDIDATE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -72,7 +161,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -82,10 +171,10 @@ jobs:
         path: publisher
         fetch-depth: 0
         persist-credentials: false
-    - name: Checkout immutable P044 core separately from application source
+    - name: Checkout approved P046-R3 core and app authority snapshot separately
       uses: actions/checkout@v4
       with:
-        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
         path: current-core
         fetch-depth: 0
         persist-credentials: false
@@ -187,7 +276,7 @@ jobs:
         if-no-files-found: warn
   qa:
     needs: build
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
     runs-on: ubuntu-latest
     timeout-minutes: 180
     strategy:
@@ -207,9 +296,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      CANDIDATE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -228,7 +317,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -238,10 +327,10 @@ jobs:
         path: publisher
         fetch-depth: 0
         persist-credentials: false
-    - name: Checkout immutable P044 core separately from application source
+    - name: Checkout approved P046-R3 core and app authority snapshot separately
       uses: actions/checkout@v4
       with:
-        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
         path: current-core
         fetch-depth: 0
         persist-credentials: false
@@ -327,6 +416,30 @@ jobs:
         cp -a artifact/material/dist material/dist'
     - *id001
     - *id002
+    - name: Capture separate read-only R3 axis measurements
+      continue-on-error: true
+      shell: bash
+      run: 'set -euo pipefail
+
+        (cd material && pnpm exec vite preview --host 127.0.0.1 --port 41598 --strictPort) >/tmp/qf01-axis-preview.log 2>&1 &
+
+        server_pid=$!
+
+        trap ''kill "$server_pid" 2>/dev/null || true; wait "$server_pid" 2>/dev/null || true'' EXIT
+
+        APP_URL=http://127.0.0.1:41598/kyotsu-step-web/ OUT=/tmp/qf01-axis node publisher/tools/release/qf01-browser.mjs --r3-axis-supplement 2>&1 | tee "/tmp/qf01-axis-capture-${WIDTH}.log"'
+    - name: Upload separate axis capture including unavailable measurements
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qf01-axis-${{ matrix.width }}-${{ github.run_attempt }}
+        path: '/tmp/qf01-axis
+
+          /tmp/qf01-axis-preview.log
+
+          /tmp/qf01-axis-capture-*.log'
+        compression-level: 6
+        if-no-files-found: error
     - name: Verify and exercise current artifact at this width
       shell: bash
       run: 'set -euo pipefail
@@ -360,7 +473,7 @@ jobs:
     needs:
     - build
     - qa
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -372,9 +485,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/artifact/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      CANDIDATE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -402,14 +515,14 @@ jobs:
     - name: Checkout immutable application source for actual core/app parity
       uses: actions/checkout@v4
       with:
-        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
         path: material
         fetch-depth: 0
         persist-credentials: false
-    - name: Checkout immutable P044 core separately from application source
+    - name: Checkout approved P046-R3 core and app authority snapshot separately
       uses: actions/checkout@v4
       with:
-        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
         path: current-core
         fetch-depth: 0
         persist-credentials: false
@@ -481,7 +594,7 @@ jobs:
           /tmp/qf01-matrix/CORE_BINDING.json'
         if-no-files-found: error
   publish:
-    if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false && inputs.design_preview != true && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
@@ -503,9 +616,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      CANDIDATE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -531,7 +644,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -541,10 +654,10 @@ jobs:
         path: publisher
         fetch-depth: 0
         persist-credentials: false
-    - name: Checkout immutable P044 core separately from application source
+    - name: Checkout approved P046-R3 core and app authority snapshot separately
       uses: actions/checkout@v4
       with:
-        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
         path: current-core
         fetch-depth: 0
         persist-credentials: false
@@ -708,9 +821,9 @@ jobs:
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
       PUBLISHER_SHA: ${{ github.sha }}
-      SOURCE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      CANDIDATE_SHA: 9e6d6798ac40624373db0a87e53e7d8938fb317a
-      VITE_PREVIEW_COMMIT: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+      SOURCE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      CANDIDATE_SHA: 325b70035cafa70a8078944ccf903c53ce763545
+      VITE_PREVIEW_COMMIT: 325b70035cafa70a8078944ccf903c53ce763545
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       STORAGE_KEY: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
@@ -729,7 +842,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 9e6d6798ac40624373db0a87e53e7d8938fb317a
+        ref: 325b70035cafa70a8078944ccf903c53ce763545
         path: material
         fetch-depth: 0
         persist-credentials: false
@@ -739,10 +852,10 @@ jobs:
         path: publisher
         fetch-depth: 0
         persist-credentials: false
-    - name: Checkout immutable P044 core separately from application source
+    - name: Checkout approved P046-R3 core and app authority snapshot separately
       uses: actions/checkout@v4
       with:
-        ref: b8d0154d5b875d028ef401967ef2b9d7a316c291
+        ref: 9ee19f65d39b3e639857c809ada50a01c8a7c322
         path: current-core
         fetch-depth: 0
         persist-credentials: false

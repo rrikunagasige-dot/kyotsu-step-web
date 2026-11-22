@@ -363,6 +363,7 @@ jobs:
       run: |
         set -euo pipefail
         pnpm exec vitest run src/components/textbook/QF01ReadingRevision3.test.tsx src/domain/qf01Revision3Progress.test.ts src/data/textbook/math/quadratic/qf01Lesson.test.tsx src/domain/readingSourceViews.test.ts 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/app-tests.log"
+        node --test tools/textbook/tests/qf01-reading-bindings.test.mjs 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/app-bindings-tests.log"
     - name: Run the existing textbook authoring checks
       id: authoring
       if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
@@ -371,14 +372,84 @@ jobs:
       run: |
         set -euo pipefail
         pnpm run test:textbook-authoring 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/textbook-authoring-tests.log"
-    - name: Lint and build the unsealed current application
+    - name: Require clean changed-source lint and preserve identical unrelated baseline diagnostics
+      id: scoped_lint
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B - <<'PY' 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/lint-comparison.log"
+        import hashlib, json, os, subprocess
+        from pathlib import Path
+        from checkpoint import CURRENT_REPAIR_AFTER
+        workspace = Path(os.environ['GITHUB_WORKSPACE'])
+        current_root, baseline_root = workspace / 'core', workspace / 'fixture-source'
+        out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        changed = set(CURRENT_REPAIR_AFTER)
+        assert all(name.endswith(('.ts', '.tsx', '.css')) for name in changed)
+        dependencies = baseline_root / 'node_modules'
+        if dependencies.exists():
+            assert dependencies.is_symlink() and dependencies.resolve() == (current_root / 'node_modules').resolve()
+        else:
+            dependencies.symlink_to(current_root / 'node_modules', target_is_directory=True)
+        def execute(root, name, paths):
+            command = ['pnpm', 'exec', 'eslint', *paths, '--max-warnings=0', '--format=json']
+            result = subprocess.run(command, cwd=root, capture_output=True)
+            (out / (name + '.json')).write_bytes(result.stdout)
+            (out / (name + '.stderr.log')).write_bytes(result.stderr)
+            assert result.returncode in (0, 1), name + ' failed to execute'
+            parsed = json.loads(result.stdout)
+            return result.returncode, parsed
+        def signatures(root, records):
+            rows = []
+            for record in records:
+                filename = Path(record['filePath']).resolve().relative_to(root.resolve()).as_posix()
+                for message in record['messages']:
+                    rows.append({'file': filename, **{key: message.get(key) for key in
+                        ('ruleId', 'severity', 'line', 'column', 'endLine', 'endColumn', 'message')}})
+            return sorted(rows, key=lambda row: json.dumps(row, sort_keys=True))
+        def compare(baseline, current, changed):
+            assert not any(row['file'] in changed for row in current), 'Changed source has lint diagnostics'
+            old = [row for row in baseline if row['file'] not in changed]
+            new = [row for row in current if row['file'] not in changed]
+            assert new == old, 'Unchanged-scope lint diagnostics differ from the fixed baseline'
+        baseline_exit, baseline_raw = execute(baseline_root, 'repository-baseline-lint', ['.'])
+        current_exit, current_raw = execute(current_root, 'repository-current-lint', ['.'])
+        linted = sorted(name for name in changed if name.endswith(('.ts', '.tsx')))
+        assert len(linted) == 4, 'The existing ESLint configuration covers four changed TypeScript files'
+        scoped_exit, scoped_raw = execute(current_root, 'changed-source-lint', linted)
+        baseline = signatures(baseline_root, baseline_raw)
+        current = signatures(current_root, current_raw)
+        scoped = signatures(current_root, scoped_raw)
+        assert scoped_exit == 0 and not scoped, 'Changed-source lint must pass without warnings'
+        compare(baseline, current, changed)
+        checked = []
+        for name in sorted({row['file'] for row in baseline + current} - changed):
+            old = (baseline_root / name).read_bytes()
+            new = (current_root / name).read_bytes()
+            assert old == new, 'Baseline diagnostic file changed: ' + name
+            checked.append({'path': name, 'sha256': hashlib.sha256(new).hexdigest()})
+        report = {'schemaVersion': 'qf01-checkpoint-lint-baseline-comparison/1',
+                  'sourceSHA': os.environ['CHECKPOINT_CORE_SHA'],
+                  'baselineSHA': os.environ['CHECKPOINT_FIXTURE_SHA'],
+                  'changedSourceStatus': 'PASS', 'changedSourceDiagnostics': scoped,
+                  'lintedChangedFiles': linted, 'outsideESLintConfiguration': sorted(changed - set(linted)),
+                  'currentRepositoryLintExit': current_exit, 'baselineRepositoryLintExit': baseline_exit,
+                  'currentRepositoryDiagnostics': current, 'baselineRepositoryDiagnostics': baseline,
+                  'unchangedDiagnosticFiles': checked,
+                  'qualification': 'Global repository lint remains failing when these preserved baseline diagnostics exist. Only the changed scope and equality of unrelated baseline diagnostics pass.'}
+        (out / 'LINT_BASELINE_COMPARISON.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        print(json.dumps({'changedSourceStatus': 'PASS', 'currentGlobalDiagnostics': len(current),
+                          'baselineGlobalDiagnostics': len(baseline), 'globalLintExit': current_exit}))
+        PY
+    - name: Build the unsealed current application independently of lint diagnostics
       id: lint_build
       if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
       working-directory: core
       shell: bash
       run: |
         set -euo pipefail
-        pnpm run lint 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/lint.log"
         pnpm run build 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/build.log"
         test ! -e dist/qf01-release.json
     - name: Recheck original input bytes after all tests
@@ -420,6 +491,7 @@ jobs:
         PRODUCTION_OUTCOME: ${{ steps.production_services.outcome }}
         APP_OUTCOME: ${{ steps.app_tests.outcome }}
         AUTHORING_OUTCOME: ${{ steps.authoring.outcome }}
+        LINT_OUTCOME: ${{ steps.scoped_lint.outcome }}
         BUILD_OUTCOME: ${{ steps.lint_build.outcome }}
         IMMUTABILITY_OUTCOME: ${{ steps.input_immutability.outcome }}
       shell: bash
@@ -442,7 +514,7 @@ jobs:
       if: always()
       with:
         name: qf01-checkpoint-linux-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
-        path: ${{ runner.temp }}/qf01-checkpoint-linux
+        path: ${{ env.CHECKPOINT_DIAGNOSTICS }}
         if-no-files-found: error
         compression-level: 6
   draft_design_preview:

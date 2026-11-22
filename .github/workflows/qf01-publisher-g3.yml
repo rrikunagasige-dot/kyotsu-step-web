@@ -58,8 +58,8 @@ jobs:
       CHECKPOINT_LEGACY_SHA: 0401a9241671011c415f91f7f429368e80438037
       CHECKPOINT_PROPOSAL_PATH: work/items/W-TECH-QF01-CHECKPOINT-RECOVERY-20261122/PROPOSAL.md
       ACTUAL_REPOSITORY_ID: ${{ github.repository_id }}
-      CHECKPOINT_DIAGNOSTICS: ${{ runner.temp }}/qf01-checkpoint-linux
-      QF01_CHECKPOINT_INPUT_ROOT: ${{ runner.temp }}/qf01-checkpoint-test-input
+      CHECKPOINT_DIAGNOSTICS: /tmp/qf01-checkpoint-linux
+      QF01_CHECKPOINT_INPUT_ROOT: /tmp/qf01-checkpoint-test-input
       QF01_CHECKPOINT_SOURCE_ROOT: ${{ github.workspace }}/fixture-source
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'

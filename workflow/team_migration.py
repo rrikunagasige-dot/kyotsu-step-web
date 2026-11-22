@@ -2,6 +2,7 @@
 from copy import deepcopy
 from contracts import need
 from store import digest
+from checkpoint import history_events
 from team import validate_policy, node_requirements, project
 
 
@@ -10,7 +11,9 @@ def adopt_team_policy(rt, work, policy, approval_ref, expected_head):
     need(s['plan'].get('workflow_version') == 'production/2', 'team導入はproduction/2のみ')
     need(rt.store.head == expected_head, 'team導入の期待HEADが違う')
     need(not s['claims'] and not any(not e.get('outcome') for e in s['external'].values()), '実行中claim・未確定外部操作がある')
-    tasks = project(rt.store.events(), work)
+    # Policy migration requires complete author/handoff history, not a subset.
+    history = history_events(rt, 'complete', work)
+    tasks = project(history, work)
     need(all(tasks['reconciliations'].get(ref, {}).get('status') in ('COMPLETED','CANCELLED','STALE','INTERRUPTED') for ref in tasks['registrations']), '実行中subtaskのpolicy変更は禁止')
     policy = validate_policy(policy, allow_empty=bool(s['plan'].get('simulation')))
     need(policy and policy != s['plan'].get('agent_team'), '新しいteam policyが必要')
@@ -36,7 +39,7 @@ def adopt_team_policy(rt, work, policy, approval_ref, expected_head):
         before = set(invalid)
         invalid.update(nid for nid,n in nodes.items() if set(n['depends_on']).intersection(invalid) and nid in s['results'])
         changed = invalid != before
-    archive = rt.store.put(dict(plan=s['plan'], definition_hash=s['definition_hash'], results=s['results'], users=s['users'], team_events=[e for e in rt.store.events() if e['work']==work and e['kind'].startswith('team_')]))
+    archive = rt.store.put(dict(plan=s['plan'], definition_hash=s['definition_hash'], results=s['results'], users=s['users'], team_events=[e for e in history if e['kind'].startswith('team_')]))
     payload = dict(plan=new_plan, archive=archive, approval_ref=approval_ref, policyHash=digest(policy),
                    invalidated_results=sorted(invalid), retained_results=sorted(set(s['results'])-invalid),
                    preserved_approval_fingerprints=old_fingerprints)

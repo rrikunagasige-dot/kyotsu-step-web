@@ -4,6 +4,7 @@ from pathlib import Path
 from contracts import need,manifest,file,sha
 from production import ai_request,implementation_manifest
 from store import digest
+from checkpoint import source_snapshot
 
 OPERATIONS={'S03':'coverage','S06':'solve','S08':'teaching-candidates','S09':'teaching-candidates','S10':'blank-candidates','S11':'verify-ir','S12':'verify-ir','S13':'figures','S14':'verify-ir','S16':'visible-snapshots','S18':'compile-ir'}
 OPERATIONS.update({'U01':'research-manifest','U02':'research-analysis','U03':'research-patterns','U04':'solution-validate','U05':'interaction-plan','U06':'render-solution','U07':'solution-review','U08':'construction-validate','U09':'layout-validate','U10':'construction-compile'})
@@ -13,11 +14,11 @@ def code_operation(rt,work,nid,inputs):
     if nid in ('S00','S01'):
         import hashlib
         expected=state['plan']['source_manifest'];current=manifest(rt.root,state['candidate_manifest'])
-        opened=next(e for e in rt.store.events() if e['work']==work and e['kind']=='opened')
-        original=rt.store.get(opened['payload']['original_snapshot'])
+        recovered=source_snapshot(rt,work)
+        original=recovered['snapshot']
         frozen={p:hashlib.sha256(bytes.fromhex(v)).hexdigest() for p,v in original['files_hex'].items()}
         good=frozen==expected and current==state['candidate_manifest']
-        return {'status':'PASS' if good else 'FAIL','sourceManifest':frozen,'candidateManifest':current,'expectedManifest':expected,'scope':state['plan']['scope'],'sourceKind':'IMMUTABLE_OPEN_SNAPSHOT'}
+        return {'status':'PASS' if good else 'FAIL','sourceManifest':frozen,'candidateManifest':current,'expectedManifest':expected,'scope':state['plan']['scope'],'sourceKind':recovered['sourceKind'],**({'sourceRecoveryProof':recovered['proof']} if recovered.get('proof') is not None else {})}
     if nid=='S02':
         p=file(rt.root,inputs['sourcePath']);out=rt.store.root/'source-import.json'
         proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/source/import-word.py'),str(p),'--out',str(out),*(['--unit',inputs['unit']] if inputs.get('unit') else [])],cwd=rt.root,capture_output=True,text=True)

@@ -93,5 +93,19 @@
 [data-qf01-revision="3"] .qf01-nearby-references { margin-block:12px; border-inline-start:3px solid #7c929a; padding-inline-start:12px; }
 [data-qf01-revision="3"] .guided-history { min-width:0; }
 [data-qf01-revision="3"] .guided-history section { margin-block:12px; }
+[data-qf01-revision="3"] .r3-neutral-probe { position:fixed; left:-100000px; top:0; visibility:hidden; pointer-events:none; white-space:nowrap; font-size:18px; line-height:1.4; }
+[data-qf01-revision="3"] .r3-neutral-probe .katex { font-size:1em; }
+[data-qf01-revision="3"] .r3-fixed-formula .typeset-line--equation { grid-template-columns:var(--typeset-left) var(--r3-fixed-relation) var(--typeset-right); }
+[data-qf01-revision="3"] .r3-fixed-target { display:inline-block; text-align:center; vertical-align:baseline; }
+[data-qf01-revision="3"] .r3-fixed-target > button.reading-inline-blank { margin-inline:0; }
+[data-qf01-revision="3"] .r3-inline-baseline { display:inline-block; width:0; height:0; margin:0; padding:0; border:0; vertical-align:baseline; line-height:0; }
+[data-qf01-revision="3"] .numbered-equation.r3-exact-number > .numbered-equation-label { transform:none; }
+/* Keep the approved 8px clearance when a formula number needs its own row.
+ * The logical absolute fallback reserves the translated label's full height;
+ * the guided static fallback already participates in normal document flow. */
+[data-qf01-revision="3"] .numbered-equation--below { padding-bottom:calc(1.5rem + 8px); }
+[data-qf01-revision="3"] .numbered-equation--below > .numbered-equation-label { transform:translateY(8px); }
+[data-qf01-revision="3"] .guided-number-below .numbered-equation { padding-bottom:0; }
+[data-qf01-revision="3"] .guided-number-below .numbered-equation-label { margin-top:8px; transform:none; }
 [data-qf01-revision="3"] .reading-inline-choice-panel { scroll-margin-top:var(--qf01-header-clearance, 80px); min-width:0; }
 @media(max-width:430px) { [data-qf01-revision="3"].textbook-reading-flow { padding:8px; } }

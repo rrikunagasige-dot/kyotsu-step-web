@@ -38,6 +38,7 @@ export type VisibleTransformationGroup = ReturnType<typeof projectTransformation
 // P046-R3: explicit QF01 opt-in. Earlier transformation versions are unchanged.
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookUnit } from './textbookSchema'
 import type { TextbookAnswerRecord } from './textbook'
+import { normalizeTextbookMath } from './textbookMath'
 export const QF01_R3_METADATA_CANONICAL_SHA256 = '36caca4665ca60eb59b5ef54c752c383eb93c5e5a54a84e391f9e1bd165b1122'
 export const QF01_R3_COMPILED_BINDING = Object.freeze({
   irHash: '37a6c3af4e2bd4f9dec007efb927542e8a0b7e1577414e022a12b14db9e6583d',
@@ -100,6 +101,27 @@ type R3Record={equation?:{displayNumber:number|null}|null;id:string;sourceRef:{b
 type R3Stage={stageId:string;contextId:string;headerSourceRef:string;conclusionRecordIds:string[];fullLessonBlockRefs:string[];availableWhen:{allSolved:string[]};terminalSourceRef:string}
 export type QF01R3Metadata={schemaVersion:'qf01-reading-presentation/3';unitId:string;revision:3;unitParsedCanonicalSHA256:string;canonicalBlockIds:string[];sourceMap:R3SourceMap[];interactionRegistryBlocks:{blockId:string;itemId:string;channel:string;render:boolean;blockSHA256:string}[];interactions:R3Interaction[];blockVisibility:{blockId:string;visibleWhen:{allSolved:string[];helpOrSolvedFor?:string};mode?:'normal'|'help-or-solved'}[];ownerASTBindings:R3ASTBinding[];generatedPlanBinding:Record<string,unknown>;viewContracts:{FRAME_CONTRACT:{frames:{frameId:string;contextId:string;stageIds:string[];headerBlockRef:string;givenBlockRefs:string[];figureBlockRefs:string[]}[];stagePreludeRefs:Record<string,string[]>;単元block配置:{'unit-summary':{sourceRefs:string[]};'unit-purpose':{sourceRef:string}}};RESULT_REGISTRY:{records:R3Record[]};INTERACTION_REFERENCES:{rows:{currentInteractionId:string;topReferenceRecordIds:string[];nearbyReferenceRecordIds:string[]}[]};STAGE_HISTORY_CONTRACT:{stages:R3Stage[]};FIGURE_POLICY:{placement:{requiredCurrentInteractionIds:string[]};figureId:string}}}
 export type QF01R3Validated={unit:TextbookUnit;metadata:QF01R3Metadata;blocks:Map<string,TextbookReadingBlock>;items:Map<string,TextbookItem>;authorBlocks:Map<string,Record<string,unknown>>}
+export type QF01R3FormulaRecipe = {
+ kind:'static'|'subexpression-target'|'whole-target';blockId:string;interactionId:string|null;
+ template:string;targetLatex:string|null;candidateLatex:string[];canonicalFormula:string;
+}
+/** Layout input only. This recipe does not grant visibility or resolve an answer.
+ * Every candidate is retained; the precise target comes from the approved AST,
+ * not from selecting the answer key for a measurement probe. */
+export function qf01R3FormulaRecipe(source:QF01R3Validated,blockId:string):QF01R3FormulaRecipe {
+ if(!source.metadata.canonicalBlockIds.includes(blockId))throw Error('R3_RECIPE_NONCANONICAL')
+ const block=source.blocks.get(blockId),q=source.metadata.interactions.find(q=>q.source.blockId===blockId&&q.answerDomain==='math')
+ if(!block||(block.type!=='formula'&&!(block.type==='paragraph'&&q)))throw Error('R3_RECIPE_NOT_MATH')
+ const mathPart=(p:TextbookReadingPart)=>p.type==='math'?p.latex:p.type==='text'||p.type==='term'?'\\text{'+p.text+'}':''
+ const canonicalFormula=block.type==='formula'?block.parts.map(mathPart).join(''):mathPart(block.parts[q!.source.partIndex])
+ if(!q)return{kind:'static',blockId,interactionId:null,template:canonicalFormula,targetLatex:null,candidateLatex:[],canonicalFormula}
+ const binding=source.metadata.ownerASTBindings.find(a=>a.interactionId===q.id),item=source.items.get(q.id)
+ if(!binding||!item||!item.choices?.length)throw Error('R3_RECIPE_BINDING')
+ const template=formatQF01R3Owner(binding.ownerAST,{targetPath:binding.targetPath,mask:true,notation:binding.notation})
+ const targetLatex=formatQF01R3Owner({...binding.ownerAST,statement:binding.targetStatement},{notation:binding.targetNotation})
+ const candidateLatex=item.choices.map(value=>normalizeTextbookMath(value.replaceAll('かつ','\\text{ かつ }').replace(/だけでよい|だけ/g,phrase=>'\\text{ '+phrase+' }').replaceAll('より小さい','\\text{ より小さい }')))
+ return{kind:template==='§0§'?'whole-target':'subexpression-target',blockId,interactionId:q.id,template,targetLatex,candidateLatex,canonicalFormula}
+}
 const sorted=(v:unknown):unknown=>Array.isArray(v)?v.map(sorted):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sorted((v as Record<string,unknown>)[k])])):v
 export async function qf01R3Digest(value:unknown,scheme:'compact'|'pretty'='compact'):Promise<string>{const text=scheme==='compact'?JSON.stringify(sorted(value)):JSON.stringify(value,null,2)+'\n';const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('')}
 const r3Need=(condition:unknown,code:string)=>{if(!condition)throw Error('QF01_R3_'+code)}

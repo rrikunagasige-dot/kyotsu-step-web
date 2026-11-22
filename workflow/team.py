@@ -6,6 +6,7 @@ cryptographic proof that an agent actually reasoned independently.
 from copy import deepcopy
 from contracts import need, relative
 from store import digest
+from checkpoint import history_events
 
 REVIEW_KINDS = {'source-review', 'learner-visible-review', 'design-conformance', 'self-check'}
 ROLES = {'author', 'reviewer', 'analyst'}
@@ -155,7 +156,7 @@ def check_collection(rt, work, node, result):
     need(isinstance(collection, dict) and collection.get('submissionActor') == policy['store_writer'], 'team受理はMのみ')
     refs = collection.get('outputRefs', []); registrations = collection.get('registrationRefs', [])
     need(isinstance(refs, list) and len(refs) == len(set(refs)) and isinstance(registrations, list), 'team出力参照が不正・重複')
-    p = project(rt.store.events(), work); covered = set(); reviews = []
+    p = project(history_events(rt, 'team', work), work); covered = set(); reviews = []
     for ref in refs:
         need(ref in p['outputs'], '実行eventのないteam出力')
         row = p['outputs'][ref]; regref = row['registrationRef']
@@ -204,7 +205,7 @@ def check_open_findings(rt, work, node, result, required, p=None):
     # are never evidence of resolution. Final reviews cover the whole unit/block.
     if result.get('verdict') == 'PASS':
         s = rt.state(work)
-        p = p if p is not None else project(rt.store.events(), work)
+        p = p if p is not None else project(history_events(rt, 'team', work), work)
         final = node.get('stage_kind') in ('C09_SEMANTIC','R07_SEMANTIC','G2_AUDIT')
         unit_blocks = {b['id'] for b in s['plan']['blocks'] if b.get('release_unit') == node.get('release_unit')}
         required_keys = {(r['claimRef'],r['facet']) for r in required}
@@ -275,7 +276,7 @@ def validate_target(rt, work, s, node, assignment, packet=None):
         return
     need(ref, 'current target manifestが必要')
     m = rt.store.get(ref)
-    events = [e for e in rt.store.events() if e['work'] == work and e['kind'] == 'team_target_bound' and e['payload'].get('targetManifestRef') == ref]
+    events = [e for e in history_events(rt, 'team', work) if e['kind'] == 'team_target_bound' and e['payload'].get('targetManifestRef') == ref]
     need(events and events[-1]['payload'].get('submissionActor') == 'M', 'Mによるtarget固定eventがない')
     need(m.get('schemaVersion') == 'team-target/1' and m.get('work') == work and m.get('node') == node['id'] and m.get('block') == node.get('block') and m.get('facet') == assignment['facet'], 'targetのnode/block/facetが違う')
     need(m.get('inputHash') == rt.input_hash(s, node) and m.get('sourceSHA') == current_source(s, node), 'target manifestが古い')

@@ -2,6 +2,7 @@
 import json,subprocess,sys
 from contracts import need
 from store import digest
+from checkpoint import feedback_payloads
 
 
 def finalize(rt,work,inputs):
@@ -9,7 +10,7 @@ def finalize(rt,work,inputs):
     s=rt.state(work);rows=inputs.get('caseUpdates',[])
     need(len({r.get('caseId') for r in rows})==len(rows),'同じ事例の重複確定')
     valid=all(r.get('caseId') and r.get('regressionRef') and r.get('ruleDisposition') and r.get('datasetDisposition') for r in rows)
-    expected={e['payload']['id'] for e in rt.store.events() if e['work']==work and e['kind']=='feedback_captured'}|set(s['issues'])
+    expected={payload['id'] for payload in feedback_payloads(rt,work)}|set(s['issues'])
     if not valid or not expected<={r['caseId'] for r in rows}:return {'status':'FAIL','reason':'case finalization lacks disposition or captured IDs'}
     catalog={'schemaVersion':1,'caseUpdates':rows,'inputHash':digest(rows),'trainingRun':False}
     corpus=inputs.get('curation')
@@ -34,7 +35,7 @@ def finalize(rt,work,inputs):
         # Incoming USER_GOLD must match a real explicit evaluation. Existing corpus cases retain their provenance.
         prior=rt.store.get(inputs['baseCatalogArtifact']).get('curatedCorpus',{}).get('cases',[]) if inputs.get('baseCatalogArtifact') else []
         previous={c['id']:c for c in prior}
-        users=s['users'];captures={e['payload']['id']:e['payload'] for e in rt.store.events() if e['work']==work and e['kind']=='feedback_captured'}
+        users=s['users'];captures={payload['id']:payload for payload in feedback_payloads(rt,work)}
         for d in corpus['decisions']:
             if d['observationId'] not in captures and d.get('quality')!='UNKNOWN' and d.get('evidenceTier') in ('USER_GOLD','REPO_ATTESTED'):
                 old=previous.get(d.get('id'),{})

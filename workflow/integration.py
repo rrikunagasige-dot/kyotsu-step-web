@@ -63,7 +63,8 @@ def input_hash(rt, s, node):
         base['candidate_sha'] = s.get('release_versions', {}).get(node['release_unit'], s['candidate_sha'])
     if facets.intersection({'cases', 'model'}): base['context'] = s.get('production_context', {})
     if node['stage_kind'] in ('R01_CAPTURE','L01_LEARNING', 'R08_CAPTURE_LEARNING', 'Z01_CLOSE'):
-        base['feedback'] = [e['payload'] for e in rt.store.events() if e['work'] == p['work_id'] and e['kind'] == 'feedback_captured' and (node['stage_kind']!='R01_CAPTURE' or e['payload'].get('quality')=='NEGATIVE')]
+        from checkpoint import feedback_payloads
+        base['feedback'] = [payload for payload in feedback_payloads(rt, p['work_id']) if node['stage_kind']!='R01_CAPTURE' or payload.get('quality')=='NEGATIVE']
         # Resolution is downstream bookkeeping; do not invalidate its own supporting proof.
         base['issues'] = {k: {a: b for a, b in v.items() if a != 'resolved_by'} for k, v in s['issues'].items()}
     if p.get('source_extension'):base['version_transition']=p['source_extension']
@@ -93,7 +94,8 @@ def check_result(rt, work, node, result):
         check_collection(rt, work, node, result)
     refs = result.get('capability_receipts', []); receipts = [rt.store.get(ref) for ref in refs]
     need(len(receipts) == len(node['capability_requests']) and {r.get('capability') for r in receipts} == set(node['capability_requests']), '工程のcode receiptが不足・重複')
-    bound = {(e['payload']['receipt'], e['payload']['input_hash']) for e in rt.store.events() if e['work'] == work and e['kind'] == 'capability_bound' and e['payload']['node'] == node['id']}
+    from checkpoint import history_events
+    bound = {(e['payload']['receipt'], e['payload']['input_hash']) for e in history_events(rt, 'capability-bindings', work) if e['kind'] == 'capability_bound' and e['payload']['node'] == node['id']}
     for ref, r in zip(refs, receipts):
         need((ref, rt.input_hash(s, node)) in bound, '実行イベントのないcode receipt')
         need(r['node'] == node['id'] and r['input_hash'] == rt.input_hash(s, node) and r['phase'] == node['phase'], '別工程・別phase・古い入力のreceipt')
@@ -120,7 +122,13 @@ def check_result(rt, work, node, result):
         contracts = {target: b[key] for key, target in (('construction_design_hash', 'constructionDesignHash'), ('layout_design_hash', 'layoutDesignHash'), ('learner_copy_hash', 'learnerCopyHash')) if b.get(key)}
         if b.get('presentation_design_hash') or contracts:
             need(compiled_design_matches([rt.store.get(r['output']) for r in receipts], expected, b.get('presentation_design_hash'), contracts), 'compile表示・組立・本文契約と承認済みhashが違う')
-        if node['stage_kind']=='R06_PATCH' and s.get('version_transition'):
+        if node['stage_kind']=='R06_PATCH' and getattr(rt.store,'checkpoint_mode',False):
+            need(result.get('checkpoint_candidate_proof_ref'),'checkpoint R06には現在候補の正規再検証proofが必要')
+            need('version_transition_proof' not in result,'checkpointへ旧owner/patch proofを混入しない')
+            from adapters import validate_checkpoint_candidate_proof
+            validate_checkpoint_candidate_proof(rt,work,node['id'],result['checkpoint_candidate_proof_ref'],
+                compile_receipt_refs=[ref for ref,receipt in zip(refs,receipts) if receipt['capability']=='construction.compile'])
+        elif node['stage_kind']=='R06_PATCH' and s.get('version_transition'):
             need(result.get('version_transition_proof'),'版移行R06には一回適用後の現在proofが必要')
             from adapters import _vt_current_transition,_vt_completed_patch_proof
             t=_vt_current_transition(rt,work,s,digest(s['version_transition']))
@@ -160,7 +168,8 @@ def check_result(rt, work, node, result):
                 u=s['users'].get(case.get('evaluation_event'),{})
                 expected='quality_positive' if case['quality']=='POSITIVE' else 'quality_negative'
                 need(u.get('intent')==expected and u.get('candidate_sha')==case.get('target_version'),'承認・続行を品質の学習labelへ転用しない')
-        captured = {e['payload']['id'] for e in rt.store.events() if e['work'] == work and e['kind'] == 'feedback_captured' and (not node['block'] or e['payload'].get('block') in (None, node['block']))}
+        from checkpoint import feedback_payloads
+        captured = {payload['id'] for payload in feedback_payloads(rt, work) if not node['block'] or payload.get('block') in (None, node['block'])}
         covered = {c['id'] for c in result['case_updates']}
         need(captured <= covered and set(s['issues']) <= covered, '未取込のfeedback・issueがある')
         if node['stage_kind'] == 'L01_LEARNING':

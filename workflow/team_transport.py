@@ -2,13 +2,14 @@
 from copy import deepcopy
 from contracts import need
 from store import digest
+from checkpoint import history_events
 from team import validate_policy, validate_assignment, validate_packet, project, effective_authors, REVIEW_KINDS, check_hash, validate_target, current_source
 
 
 def _context(rt, work, actor):
     s = rt.state(work); p = validate_policy(s['plan'].get('agent_team'), allow_empty=bool(s['plan'].get('simulation')))
     need(p and actor == p['store_writer'], 'team transportのwriterはMのみ')
-    return s, p, project(rt.store.events(), work)
+    return s, p, project(history_events(rt, 'team', work), work)
 
 
 def capture_harness(rt, work, record, submission_actor='M', event_id=None):
@@ -52,7 +53,7 @@ def capture_harness(rt, work, record, submission_actor='M', event_id=None):
 
 
 def _captured(rt, work, ref, record_type):
-    return any(e['work'] == work and e['kind'] == 'team_harness_captured' and e['payload'].get('artifactRef') == ref and e['payload'].get('recordType') == record_type for e in rt.store.events())
+    return any(e['kind'] == 'team_harness_captured' and e['payload'].get('artifactRef') == ref and e['payload'].get('recordType') == record_type for e in history_events(rt, 'team', work))
 
 
 def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact_hashes=None, submission_actor='M', event_id=None):
@@ -67,7 +68,7 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
     need(artifact_refs and evidence_refs, 'targetに成果物とnative証拠が必要')
     need(all(ref in s['evidence'] for ref in evidence_refs), 'target証拠にはnative登録IDが必要（子報告hashは別参照）')
     rt.fingerprint_refs(s, evidence_refs)
-    allowed = set(); events = rt.store.events(); base = rt.input_hash(s, node)
+    allowed = set(); events = history_events(rt, 'capability-bindings', work); base = rt.input_hash(s, node)
     hash_fields = {'irHash','planHash','layoutHash','layoutDesignHash','constructionDesignHash','learnerCopyHash','visibleStateHash','compiledPresentationHash'}
     def collect(value):
         if isinstance(value, dict):

@@ -5,6 +5,7 @@ query or block the platform API and never treats a stopped child as a free slot.
 """
 from contracts import need
 from store import digest
+from checkpoint import history_events
 import math
 
 KNOWN_STATUSES = {'pending_init', 'running', 'waiting', 'idle', 'completed', 'stopped', 'interrupted', 'errored', 'shutdown'}
@@ -123,7 +124,8 @@ def consume_inventory(rt, work, operation, record_ref=None):
     validate_fixed_team_policy(policy)
     validate_policy_work(policy, work)
     need(record_ref, '固定子の操作には120秒以内の実一覧captureが必要')
-    events = rt.store.events()
+    # Guard-session nonces can span Works; a scoped suffix cannot prove freshness.
+    events = history_events(rt, 'complete')
     need(any(e['work'] == work and e['kind'] == 'team_harness_captured' and e['payload'].get('artifactRef') == record_ref and e['payload'].get('recordType') == 'agent-inventory' for e in events), 'このWorkでcaptureした実一覧ではない')
     record = rt.store.get(record_ref)
     used = [e['payload']['nonce'] for e in events if e['kind'] == 'agent_guard_consumed' and e['payload'].get('session') == policy['guard_session']]

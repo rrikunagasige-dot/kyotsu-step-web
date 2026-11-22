@@ -1,0 +1,864 @@
+"""Unadopted, read-only QF01 checkpoint proof and suffix-chain prototype.
+
+This is not Store/Runtime bootstrap and cannot write events or accept a Gate.
+Complete suffix events, authentic prefix subsets, and payload projections are
+different interfaces. No missing historical event envelope is synthesized.
+"""
+import base64
+import copy
+import gzip
+import hashlib
+import io
+import json
+import math
+import re
+import stat
+from pathlib import Path
+
+
+FIXED_CONTRACT_SHA256 = 'b5f49f53b3895a8169f817a91efd376b4e73b17526d5b08bcb77e2b7fa4aee30'
+FIXED_WORK = 'W-MATH-QF01-FULL-RELEASE-P035-20261115'
+FIXED_SOURCE = '325b70035cafa70a8078944ccf903c53ce763545'
+FIXED_ANCHOR = {'events': 13742, 'head': '586be1a3dfeb92e9699cc82ef330131d10b22a78353c165d5610f181d6201106'}
+SHA256 = re.compile(r'[0-9a-f]{64}\Z')
+EVENT_ID = re.compile(r'[A-Za-z0-9_-]+\Z')
+MAX_SAFE_INTEGER = 2**53 - 1
+
+
+class CheckpointRejected(ValueError):
+    pass
+
+
+class UnknownContext(CheckpointRejected):
+    pass
+
+
+def require(condition, message):
+    if not condition:
+        raise CheckpointRejected(message)
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def canonical(value):
+    try:
+        return json.dumps(value, ensure_ascii=False, sort_keys=True,
+                          separators=(',', ':'), allow_nan=False).encode('utf-8')
+    except (TypeError, ValueError, UnicodeError) as error:
+        raise CheckpointRejected('NONCANONICAL_VALUE') from error
+
+
+def digest(value):
+    return sha(canonical(value))
+
+
+def strict_json(raw):
+    def pairs(rows):
+        result = {}
+        for key, value in rows:
+            require(key not in result, 'DUPLICATE_JSON_KEY')
+            result[key] = value
+        return result
+
+    def invalid_constant(value):
+        raise CheckpointRejected('NONFINITE_JSON_CONSTANT:' + value)
+
+    try:
+        result = json.loads(raw.decode('utf-8', errors='strict'),
+                            object_pairs_hook=pairs, parse_constant=invalid_constant)
+        canonical(result)  # Reject float overflow such as 1e999 too.
+        return result
+    except (UnicodeError, json.JSONDecodeError) as error:
+        raise CheckpointRejected('INVALID_UTF8_OR_JSON') from error
+
+
+def read_regular(path, limit):
+    path = Path(path)
+    require(not path.is_symlink(), 'SYMLINK_INPUT')
+    before = path.stat()
+    require(stat.S_ISREG(before.st_mode) and 0 < before.st_size <= limit, 'INPUT_SIZE_OR_KIND')
+    with path.open('rb') as stream:
+        raw = stream.read(limit + 1)
+    after = path.stat()
+    require(len(raw) <= limit and (before.st_dev, before.st_ino, before.st_size,
+            before.st_mtime_ns) == (after.st_dev, after.st_ino, after.st_size,
+                                   after.st_mtime_ns), 'INPUT_CHANGED_DURING_READ')
+    return raw
+
+
+def decode_gzip(encoded, limit):
+    try:
+        compressed = base64.b64decode(encoded, validate=True)
+        require(base64.b64encode(compressed).decode('ascii') == encoded, 'NONCANONICAL_BASE64')
+        with gzip.GzipFile(fileobj=io.BytesIO(compressed)) as stream:
+            raw = stream.read(limit + 1)
+        require(len(raw) <= limit, 'EXPANDED_SIZE_LIMIT')
+        return raw
+    except (ValueError, OSError, EOFError) as error:
+        if isinstance(error, CheckpointRejected):
+            raise
+        raise CheckpointRejected('INVALID_COMPRESSED_PAYLOAD') from error
+
+
+def event_body(event):
+    return {key: value for key, value in event.items() if key != 'hash'}
+
+
+def decode_reference(metadata, schema):
+    require(isinstance(metadata, dict) and set(metadata) == {
+        'schemaVersion', 'referenceMetadataEncoding', 'canonicalJSON', 'canonicalSHA256'}, 'REFERENCE_SCHEMA')
+    require(metadata['schemaVersion'] == schema and metadata['referenceMetadataEncoding'] == 'canonical-json-text/1', 'REFERENCE_ENCODING')
+    require(isinstance(metadata['canonicalJSON'], str), 'REFERENCE_TEXT_TYPE')
+    raw = metadata['canonicalJSON'].encode('utf-8')
+    require(0 < len(raw) <= 1024 * 1024 and sha(raw) == metadata['canonicalSHA256'], 'REFERENCE_TEXT_HASH')
+    value = strict_json(raw)
+    require(canonical(value) == raw, 'REFERENCE_CANONICAL_BYTES')
+    return value
+
+
+def validate_event(event):
+    require(isinstance(event, dict) and set(event) == {
+        'seq', 'previous', 'id', 'time', 'kind', 'work', 'payload', 'hash'}, 'EVENT_SCHEMA')
+    require(type(event['seq']) is int and 0 < event['seq'] <= MAX_SAFE_INTEGER, 'EVENT_SEQ_TYPE')
+    require(isinstance(event['previous'], str) and SHA256.fullmatch(event['previous'])
+            and isinstance(event['hash'], str) and SHA256.fullmatch(event['hash']), 'EVENT_HASH_TYPE')
+    require(isinstance(event['id'], str) and EVENT_ID.fullmatch(event['id']), 'EVENT_ID')
+    timestamp = event['time']
+    require((type(timestamp) is int and 0 <= timestamp <= MAX_SAFE_INTEGER)
+            or (type(timestamp) is float and math.isfinite(timestamp)
+                and 0 <= timestamp <= MAX_SAFE_INTEGER), 'EVENT_TIME')
+    require(isinstance(event['kind'], str) and event['kind'] and isinstance(event['work'], str)
+            and event['work'] and isinstance(event['payload'], dict), 'EVENT_PAYLOAD_TYPE')
+    require(digest(event_body(event)) == event['hash'], 'EVENT_CONTENT_HASH')
+
+
+class VerifiedSuffix:
+    """Hash-valid suffix only; semantic/approval validity is deliberately unproved."""
+    def __init__(self, anchor, events, known_work):
+        self._anchor = copy.deepcopy(anchor)
+        self._events = copy.deepcopy(events)
+        self._known_work = known_work
+
+    @property
+    def head(self):
+        return self._events[-1]['hash'] if self._events else self._anchor['head']
+
+    @property
+    def last_seq(self):
+        return self._events[-1]['seq'] if self._events else self._anchor['events']
+
+    def events(self, work=None):
+        if work is not None and work != self._known_work and not any(e['work'] == work for e in self._events):
+            raise UnknownContext('WORK_NOT_COVERED_BY_CHECKPOINT_OR_SUFFIX')
+        return copy.deepcopy([e for e in self._events if work is None or e['work'] == work])
+
+    def summary(self):
+        return {'schemaVersion': 'qf01-suffix-chain-diagnostic/1', 'events': len(self._events),
+                'head': self.head, 'lastSeq': self.last_seq, 'hashChainVerified': True,
+                'semanticValidityVerified': False, 'runtimeAccepted': False,
+                'prefixNonceCoverage': 'INCOMPLETE'}
+
+
+class VerifiedCheckpoint:
+    def __init__(self, authority, seed, nodes, team_events, feedback, known_prefix):
+        self._authority = copy.deepcopy(authority)
+        self._seed = copy.deepcopy(seed)
+        self._nodes = copy.deepcopy(nodes)
+        self._team = copy.deepcopy(team_events)
+        self._feedback = copy.deepcopy(feedback)
+        self._known_prefix = copy.deepcopy(known_prefix)
+
+    @property
+    def anchor(self):
+        return copy.deepcopy(self._authority['anchor'])
+
+    def state_snapshot(self, work):
+        if work != FIXED_WORK:
+            raise UnknownContext('UNKNOWN_WORK_STATE')
+        return copy.deepcopy(self._seed['baseState'])
+
+    def object(self, reference):
+        if reference not in self._seed['objects']:
+            raise UnknownContext('OBJECT_NOT_IN_VERIFIED_CHECKPOINT:' + reference)
+        return copy.deepcopy(self._seed['objects'][reference])
+
+    def nodes(self):
+        return copy.deepcopy(self._nodes)
+
+    def team_prefix_subset(self, work):
+        if work != FIXED_WORK:
+            raise UnknownContext('UNKNOWN_WORK_TEAM_HISTORY')
+        return {'kind': 'AUTHENTIC_PREFIX_SUBSET', 'completeLedger': False,
+                'events': copy.deepcopy(self._team)}
+
+    def feedback_payload_projection(self, work):
+        if work != FIXED_WORK:
+            raise UnknownContext('UNKNOWN_WORK_FEEDBACK')
+        return {'kind': 'PAYLOAD_PROJECTION', 'eventEnvelopesAvailable': False,
+                'rows': copy.deepcopy(self._feedback)}
+
+    def known_prefix_envelope_subset(self):
+        return {'kind': 'AUTHENTIC_PREFIX_SUBSET', 'completeLedger': False,
+                'events': copy.deepcopy(self._known_prefix)}
+
+    def global_queue(self):
+        raise UnknownContext('GLOBAL_QUEUE_COVERAGE_NOT_RECOVERED')
+
+    def verify_suffix(self, rows):
+        require(isinstance(rows, list), 'SUFFIX_MUST_BE_LIST')
+        result, ids = [], set()
+        prefix_ids = {event['id'] for event in self._known_prefix}
+        previous = self._authority['anchor']['head']
+        seq = self._authority['anchor']['events']
+        for row in rows:
+            event = strict_json(row) if isinstance(row, bytes) else copy.deepcopy(row)
+            if isinstance(row, bytes):
+                require(row in (canonical(event), canonical(event) + b'\n'), 'NONCANONICAL_EVENT_BYTES')
+            validate_event(event)
+            require(event['seq'] == seq + 1, 'SUFFIX_SEQUENCE_GAP_OR_REORDER')
+            require(event['previous'] == previous, 'SUFFIX_PREVIOUS_MISMATCH')
+            require(event['id'] not in ids and event['id'] not in prefix_ids, 'DUPLICATE_KNOWN_EVENT_ID')
+            ids.add(event['id']); result.append(event)
+            seq, previous = event['seq'], event['hash']
+        return VerifiedSuffix(self.anchor, result, FIXED_WORK)
+
+    def summary(self):
+        state = self._seed['baseState']
+        return {'schemaVersion': 'qf01-checkpoint-read-diagnostic/1', 'contractSHA256': FIXED_CONTRACT_SHA256,
+                'work': FIXED_WORK, 'candidateSHA': state['candidate_sha'], 'anchor': self.anchor,
+                'seedObjects': len(self._seed['objects']), 'nodes': len(self._nodes),
+                'teamPrefixSubsetEvents': len(self._team), 'feedbackPayloadRows': len(self._feedback),
+                'knownPrefixEnvelopeSubsetEvents': len(self._known_prefix),
+                'fullHistoricalLedgerRecovered': False, 'globalQueueCoverage': 'UNKNOWN',
+                'openedSourceSnapshot': 'NOT_IN_CHECKPOINT',
+                'versionTransitionArchiveAvailable': state.get('version_transition', {}).get('archive') in self._seed['objects'],
+                'runtimeBootstrapped': False, 'gateAccepted': False, 'readOnlyPrototype': True}
+
+
+def load_qf01_checkpoint(contract_path, blob_path):
+    contract_raw = read_regular(contract_path, 2 * 1024 * 1024)
+    require(sha(contract_raw) == FIXED_CONTRACT_SHA256, 'FIXED_CONTRACT_HASH')
+    contract = strict_json(contract_raw)
+    authority = contract['currentNativeAuthority']
+    require(authority['work'] == FIXED_WORK and authority['sourceSHA'] == FIXED_SOURCE
+            and authority['anchor'] == FIXED_ANCHOR, 'FIXED_WORK_SOURCE_ANCHOR')
+    ref = authority['buildAuthority']
+    require(ref['schemaVersion'] == 'qf01-build-authority-blob-ref/1'
+            and ref['repository'] == 'rrikunagasige-dot/kyotsu-step-web'
+            and ref['encoding'] == 'gzip-base64', 'BUILD_REFERENCE_IDENTITY')
+    blob = read_regular(blob_path, 5 * 1024 * 1024)
+    require(len(blob) == ref['blobBytes'] and sha(blob) == ref['blobSHA256'], 'BLOB_BYTES_OR_HASH')
+    git_sha = hashlib.sha1(b'blob ' + str(len(blob)).encode('ascii') + b'\0' + blob).hexdigest()
+    require(git_sha == ref['blobSHA'], 'GIT_BLOB_IDENTITY')
+    expanded = decode_gzip(blob.decode('ascii'), 20 * 1024 * 1024)
+    require(len(expanded) == ref['expandedBytes'] and sha(expanded) == ref['expandedSHA256'], 'EXPANDED_BYTES_OR_HASH')
+    seed = strict_json(expanded)
+    require(seed.get('schemaVersion') == 'qf01-approved-material-seed/1', 'SEED_SCHEMA')
+    state, objects = seed['baseState'], seed['objects']
+    require(digest(state) == authority['baseStateSHA256'], 'BASE_STATE_HASH')
+    require(state['plan']['work_id'] == FIXED_WORK and state['candidate_sha'] == FIXED_SOURCE
+            and state['definition_hash'] == authority['definitionHash'], 'STATE_IDENTITY')
+    require(isinstance(objects, dict) and len(objects) == 299, 'OBJECT_INVENTORY')
+    for reference, value in objects.items():
+        require(SHA256.fullmatch(reference) and digest(value) == reference, 'OBJECT_CONTENT_HASH')
+    nodes_raw = decode_gzip(authority['nodesGzipBase64'], 1024 * 1024)
+    require(sha(nodes_raw) == authority['nodesSHA256'], 'NODES_HASH')
+    nodes = strict_json(nodes_raw)
+    require(canonical(nodes) == nodes_raw, 'NODES_CANONICAL_BYTES')
+    team_raw = decode_gzip(authority['teamHistory']['gzipBase64'], 5 * 1024 * 1024)
+    require(sha(team_raw) == authority['teamHistory']['sha256'], 'TEAM_SUBSET_HASH')
+    team = strict_json(team_raw)
+    require(canonical(team) == team_raw and len(team) == authority['teamHistory']['events'], 'TEAM_SUBSET_CANONICAL_COUNT')
+    previous_seq, ids = 0, set()
+    for event in team:
+        validate_event(event)
+        require(event['work'] == FIXED_WORK and previous_seq < event['seq'] <= FIXED_ANCHOR['events'], 'TEAM_SUBSET_SCOPE_ORDER')
+        require(event['id'] not in ids, 'TEAM_SUBSET_DUPLICATE_ID')
+        previous_seq = event['seq']; ids.add(event['id'])
+    feedback_raw = authority['feedbackCapturedCanonicalJSON'].encode('utf-8')
+    require(sha(feedback_raw) == authority['feedbackCapturedSHA256'], 'FEEDBACK_PROJECTION_HASH')
+    feedback = strict_json(feedback_raw)
+    require(canonical(feedback) == feedback_raw and isinstance(feedback, list), 'FEEDBACK_PROJECTION_CANONICAL')
+    bridge = decode_reference(authority['approvalCoverageMigration'], 'qf01-r3-approval-coverage-reference/1')
+    # The outer reference schema and its decoded value use different schema names.
+    require(bridge['schemaVersion'] == 'qf01-r3-existing-approval-coverage/1', 'APPROVAL_BRIDGE_SCHEMA')
+    original_user = decode_reference(contract['r3Authorization']['originalR3UserEvent'], 'qf01-r3-original-user-event-reference/1')
+    prefix = sorted(team + [bridge['originalUserEvent'], bridge['migrationEvent'], original_user], key=lambda event: event['seq'])
+    seen_ids, seen_seq = {}, {}
+    for event in prefix:
+        validate_event(event)
+        require(event['work'] == FIXED_WORK and event['seq'] <= FIXED_ANCHOR['events'], 'KNOWN_PREFIX_SCOPE')
+        require(event['id'] not in seen_ids and event['seq'] not in seen_seq, 'KNOWN_PREFIX_DUPLICATE')
+        seen_ids[event['id']] = event; seen_seq[event['seq']] = event
+    return VerifiedCheckpoint(authority, seed, nodes, team, feedback, prefix)
+
+# Anchored persistence; explicit native integration is provided below.
+from store import Conflict as NativeStoreConflict
+import copy
+import json
+import os
+import stat
+import time
+import uuid
+from contextlib import contextmanager
+from pathlib import Path
+
+
+
+class TailConflict(CheckpointRejected, NativeStoreConflict):
+    pass
+
+
+MAX_EVENT_BYTES = 20 * 1024 * 1024
+MAX_ARTIFACT_BYTES = 30 * 1024 * 1024
+
+
+class CheckpointTail:
+    def __init__(self, directory, checkpoint, *, context=None):
+        self.root = Path(directory).absolute()
+        require(self.root == self.root.resolve() and self.root.is_dir()
+                and not self.root.is_symlink(), 'TAIL_ROOT_ALIAS_OR_MISSING')
+        self._checkpoint = checkpoint
+        for child in ['events', 'artifacts']:
+            target = self.root / child
+            require(target.is_dir() and not target.is_symlink()
+                    and target.resolve() == target, 'TAIL_CHILD_KIND')
+        state = checkpoint.state_snapshot(FIXED_WORK)
+        self._origin = {'schemaVersion': 'qf01-checkpoint-tail-prototype/1',
+                        'contractSHA256': FIXED_CONTRACT_SHA256,
+                        'work': FIXED_WORK, 'sourceSHA': state['candidate_sha'],
+                        'baseStateSHA256': digest(state), 'anchor': checkpoint.anchor,
+                        'missingHistoricalPrefix': True, 'semanticAdoption': False}
+        if context is not None:
+            self._origin['context'] = copy.deepcopy(context)
+        self._origin_bytes = canonical(self._origin) + b'\n'
+        self._validate_origin()
+
+    @classmethod
+    def create(cls, directory, checkpoint, *, context=None):
+        root = Path(directory).absolute()
+        require(root == root.resolve() and root.parent.is_dir()
+                and not root.exists() and not root.is_symlink(), 'TAIL_DESTINATION_MUST_BE_NEW')
+        # Never initialize or overwrite an existing native Store.
+        root.mkdir()
+        (root / 'events').mkdir(); (root / 'artifacts').mkdir()
+        state = checkpoint.state_snapshot(FIXED_WORK)
+        origin = {'schemaVersion': 'qf01-checkpoint-tail-prototype/1',
+                  'contractSHA256': FIXED_CONTRACT_SHA256,
+                  'work': FIXED_WORK, 'sourceSHA': state['candidate_sha'],
+                  'baseStateSHA256': digest(state), 'anchor': checkpoint.anchor,
+                  'missingHistoricalPrefix': True, 'semanticAdoption': False}
+        if context is not None:
+            origin['context'] = copy.deepcopy(context)
+        with (root / 'CHECKPOINT_ORIGIN.json').open('xb') as stream:
+            stream.write(canonical(origin) + b'\n'); stream.flush(); os.fsync(stream.fileno())
+        return cls(root, checkpoint, context=context)
+
+    def _validate_origin(self):
+        require(self.root.is_dir() and not self.root.is_symlink()
+                and self.root.resolve() == self.root, 'TAIL_ROOT_CHANGED')
+        require(read_regular(self.root / 'CHECKPOINT_ORIGIN.json', 8192) == self._origin_bytes,
+                'TAIL_ORIGIN_CHANGED')
+        for name in ['events', 'artifacts']:
+            child = self.root / name
+            require(child.is_dir() and not child.is_symlink()
+                    and child.resolve() == child, 'TAIL_CHILD_CHANGED')
+
+    def events(self):
+        self._validate_origin()
+        files = sorted((self.root / 'events').iterdir())
+        raw_rows, names = [], []
+        for file in files:
+            require(file.suffix == '.json' and file.is_file() and not file.is_symlink(),
+                    'TAIL_PARTIAL_OR_UNEXPECTED_FILE')
+            raw_rows.append(read_regular(file, MAX_EVENT_BYTES)); names.append(file.name)
+        suffix = self._checkpoint.verify_suffix(raw_rows)
+        rows = suffix.events()
+        require(all(name == f'{row["seq"]:08d}-{row["id"]}.json'
+                    for name, row in zip(names, rows)), 'TAIL_EVENT_FILENAME_MISMATCH')
+        return rows
+
+    @property
+    def head(self):
+        rows = self.events()
+        return rows[-1]['hash'] if rows else self._checkpoint.anchor['head']
+
+    def summary(self):
+        suffix = self._checkpoint.verify_suffix(self.events())
+        return {**suffix.summary(), 'persistentTail': True,
+                'semanticAdoption': False, 'originalPrefixAvailable': False,
+                'globalQueueCoverage': 'UNKNOWN', 'staleLockRecovery': 'UNSUPPORTED'}
+
+    @contextmanager
+    def _exclusive(self):
+        self._validate_origin()
+        lock = self.root / '.writer-lock'
+        raw = canonical({'schemaVersion': 'checkpoint-exclusive-owner-token/1',
+                         'token': uuid.uuid4().hex, 'originSHA256': sha(self._origin_bytes)})
+        try:
+            fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError as error:
+            raise TailConflict('TAIL_LOCK_PRESENT_NO_LIVENESS_GUESS') from error
+        identity = os.fstat(fd)
+        try:
+            os.write(fd, raw); os.fsync(fd)
+            yield
+        finally:
+            os.close(fd)
+            current = lock.lstat()
+            require(stat.S_ISREG(current.st_mode) and not lock.is_symlink()
+                    and (current.st_dev, current.st_ino) == (identity.st_dev, identity.st_ino)
+                    and lock.read_bytes() == raw, 'TAIL_LOCK_OWNERSHIP_CHANGED')
+            lock.unlink()
+
+    def append(self, kind, work, payload, *, expected, event_id=None):
+        require(isinstance(expected, str) and SHA256.fullmatch(expected), 'EXPECTED_HEAD_REQUIRED')
+        require(isinstance(kind, str) and kind and isinstance(work, str) and work
+                and isinstance(payload, dict), 'APPEND_SCHEMA')
+        require(not (kind == 'opened' and work == FIXED_WORK), 'CANNOT_REOPEN_CHECKPOINT_WORK')
+        eid = str(uuid.uuid4()) if event_id is None else event_id
+        require(isinstance(eid, str) and 0 < len(eid) <= 128
+                and EVENT_ID.fullmatch(eid), 'APPEND_EVENT_ID')
+        # This only bounds serialization; Runtime must validate operation semantics.
+        body_payload = strict_json(canonical(payload))
+        with self._exclusive():
+            rows = self.events()
+            head = rows[-1]['hash'] if rows else self._checkpoint.anchor['head']
+            if head != expected:
+                raise TailConflict('TAIL_EXPECTED_HEAD_CHANGED')
+            for row in rows:
+                if row['id'] == eid:
+                    if (row['kind'], row['work'], row['payload']) == (kind, work, body_payload):
+                        return copy.deepcopy(row)
+                    raise TailConflict('TAIL_EVENT_ID_REUSED_WITH_DIFFERENT_CONTENT')
+            seq = rows[-1]['seq'] + 1 if rows else self._checkpoint.anchor['events'] + 1
+            event = {'seq': seq, 'previous': head, 'id': eid, 'time': time.time(),
+                     'kind': kind, 'work': work, 'payload': body_payload}
+            event['hash'] = digest(event)
+            event_bytes = canonical(event) + b'\n'
+            require(len(event_bytes) <= MAX_EVENT_BYTES, 'TAIL_EVENT_SIZE_LIMIT')
+            self._checkpoint.verify_suffix(rows + [event])
+            target = self.root / 'events' / f'{seq:08d}-{eid}.json'
+            temporary = self.root / 'events' / ('.' + uuid.uuid4().hex + '.tmp')
+            with temporary.open('xb') as stream:
+                stream.write(event_bytes); stream.flush(); os.fsync(stream.fileno())
+            # Hard-link creation is exclusive on both POSIX and NTFS. Never replace
+            # a pre-existing event. A crash leaves a lock/tmp that blocks reuse.
+            os.link(temporary, target)
+            temporary.unlink()
+            return copy.deepcopy(event)
+
+    def get(self, reference):
+        require(isinstance(reference, str) and SHA256.fullmatch(reference), 'ARTIFACT_REFERENCE')
+        self._validate_origin()
+        target = self.root / 'artifacts' / (reference + '.json')
+        if not target.exists() and not target.is_symlink():
+            return self._checkpoint.object(reference)
+        raw = read_regular(target, MAX_ARTIFACT_BYTES)
+        value = strict_json(raw)
+        require(raw in (canonical(value), canonical(value) + b'\n') and digest(value) == reference,
+                'TAIL_ARTIFACT_CONTENT_HASH')
+        return value
+
+    def put(self, value):
+        raw = canonical(value)
+        require(len(raw) + 1 <= MAX_ARTIFACT_BYTES, 'TAIL_ARTIFACT_SIZE_LIMIT')
+        reference = digest(value)
+        with self._exclusive():
+            # A corrupt existing object is never repaired by silent replacement.
+            target = self.root / 'artifacts' / (reference + '.json')
+            if target.exists() or target.is_symlink():
+                require(self.get(reference) == value, 'TAIL_ARTIFACT_CONFLICT')
+                return reference
+            try:
+                original = self._checkpoint.object(reference)
+            except UnknownContext:
+                checkpoint_has_object = False
+            else:
+                checkpoint_has_object = True
+            if checkpoint_has_object:
+                require(original == value, 'CHECKPOINT_ARTIFACT_CONFLICT')
+                return reference
+            temporary = self.root / 'artifacts' / ('.' + uuid.uuid4().hex + '.tmp')
+            with temporary.open('xb') as stream:
+                stream.write(raw + b'\n'); stream.flush(); os.fsync(stream.fileno())
+            os.link(temporary, target); temporary.unlink()
+            return reference
+
+
+# Explicit, adopted native entry. Diagnostic codecs above grant no permission.
+RECOVERY_PROPOSAL_SHA256 = '1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b'
+RECOVERY_WORK = 'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122'
+PUBLISHER_WORK = 'W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+NEW_TECHNICAL_WORKS = frozenset((RECOVERY_WORK, PUBLISHER_WORK))
+CURRENT_REPAIR_AFTER = {
+    'src/components/textbook/GuidedMathReadingFlow.tsx': '8e07c4fd4d67b43c1de2209296c85f2a8c7852b181d819ee13f579531c34f818',
+    'src/components/textbook/guided-math-reading.css': 'ca65220a401bcff9c325fe8e7f25c0be3306511092a5a6f9cb52df3f581383a8',
+    'src/components/textbook/QF01ReadingRevision3.test.tsx': 'fae8664194de2344533ead564fe190be46c86b2424d3e0f9bfd4b95a41fa36d0',
+    'src/domain/transformationReading.ts': '3f81a3852d477b9da6d34f18f79442dbfcebbe1b4561e6b83af64e4669957774',
+    'src/domain/readingSourceViews.test.ts': '7a2916a7afc966e7bf6b2b79769e7f751931c0630140acfe547a9ade539b5b9c'}
+ADOPTION_CALL_ID = 'call_d1c88a5dde794be288a201a5ea8de0cc'
+ORIGIN_NAMES = frozenset(('publisher-contract.json', 'BUILD_AUTHORITY.blob',
+    'APPROVED_MATERIAL_SEED.json', 'NODES.json', 'ORIGIN_SOURCE_PROOF.json',
+    'ORIGIN_SOURCE_SNAPSHOT.json', 'TEAM_PREFIX_SUBSET.json',
+    'KNOWN_PREFIX_ENVELOPES.json', 'FEEDBACK_PROJECTION.json'))
+
+
+def _source_recovery(view, proof_raw, snapshot_raw):
+    proof, snapshot = strict_json(proof_raw), strict_json(snapshot_raw)
+    state = view.state_snapshot(FIXED_WORK)
+    require(proof.get('schemaVersion') == 'qf01-git-origin-source-recovery/1'
+            and proof.get('repository') == 'rrikunagasige-dot/kyotsu-step-web'
+            and proof.get('repositoryId') == 1391122224
+            and proof.get('work') == FIXED_WORK, 'SOURCE_RECOVERY_IDENTITY')
+    require(snapshot.get('source_sha') == state['plan']['source_sha']
+            and set(snapshot.get('files_hex', {})) == set(state['plan']['source_manifest']),
+            'SOURCE_RECOVERY_MANIFEST')
+    require(digest(snapshot) == proof.get('snapshotSHA256')
+            == '08d0e50a4a8bf7c7f823f016a7389b02815285334902da09d037e7ad98e88b2a',
+            'SOURCE_RECOVERY_SNAPSHOT_HASH')
+    require(proof.get('sourceManifest') == state['plan']['source_manifest']
+            and proof.get('sourceSHA') == state['plan']['source_sha']
+            and proof.get('checkpointAnchor') == view.anchor
+            and proof.get('snapshotBytes') == len(canonical(snapshot))
+            and proof.get('originalOpenedEventRecovered') is False
+            and proof.get('nativeStoreWritten') is False, 'SOURCE_RECOVERY_PROVENANCE')
+    expected_blobs = {'src/components/textbook/GuidedMathReadingFlow.tsx': '472d5306b607ce89977e99283a598ef44133002a',
+        'src/data/textbook/math/quadratic/qf01Lesson.test.tsx': 'e668d363e64d35ae5b18406d6942857b454afb56'}
+    rows = proof.get('files')
+    require(isinstance(rows, list) and len(rows) == 2 and all(isinstance(row, dict) for row in rows)
+            and {row.get('path') for row in rows} == set(expected_blobs), 'SOURCE_RECOVERY_ROWS')
+    for name, encoded in snapshot['files_hex'].items():
+        try:
+            raw = bytes.fromhex(encoded)
+        except (TypeError, ValueError) as error:
+            raise CheckpointRejected('SOURCE_RECOVERY_HEX') from error
+        require(sha(raw) == state['plan']['source_manifest'][name], 'SOURCE_RECOVERY_FILE_HASH')
+        require(hashlib.sha1(b'blob ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest()
+                == expected_blobs[name], 'SOURCE_RECOVERY_GIT_BLOB')
+        row = next(row for row in rows if row['path'] == name)
+        require(row.get('bytes') == len(raw) and row.get('sha256') == sha(raw)
+                and row.get('gitBlobSHA') == expected_blobs[name], 'SOURCE_RECOVERY_ROW_HASH')
+    return proof, snapshot
+
+
+class CheckpointStore:
+    """Scoped recovered state plus a new complete suffix; never a full old ledger."""
+    checkpoint_mode = True
+
+    def __init__(self, directory, *, _initializing=False):
+        self._initializing = _initializing
+        self.root = Path(directory).absolute()
+        origin_raw = read_regular(self.root / 'CHECKPOINT_ORIGIN.json', 1024 * 1024)
+        origin = strict_json(origin_raw)
+        require(origin_raw == canonical(origin) + b'\n', 'NATIVE_ORIGIN_CANONICAL')
+        context = origin.get('context', {})
+        require(context.get('schemaVersion') == 'qf01-native-checkpoint-origin/1'
+                and context.get('proposalSHA256') == RECOVERY_PROPOSAL_SHA256
+                and set(context.get('newTechnicalWorks', [])) == NEW_TECHNICAL_WORKS,
+                'NATIVE_ORIGIN_SCOPE')
+        core = context.get('bootstrapCore')
+        require(isinstance(core, dict) and set(core) == {'definitionHash', 'files'}
+                and isinstance(core['definitionHash'], str) and re.fullmatch(r'[0-9a-f]{64}', core['definitionHash'])
+                and isinstance(core['files'], dict) and core['files']
+                and all(isinstance(name, str) and '/' not in name and '\\' not in name
+                        and isinstance(value, str) and re.fullmatch(r'[0-9a-f]{64}', value)
+                        for name, value in core['files'].items())
+                and isinstance(context.get('executor'), str) and context['executor'].strip(),
+                'NATIVE_BOOTSTRAP_CODE_EXECUTOR_REQUIRED')
+        adoption = context.get('adoption', {})
+        require(adoption.get('quote') == 'この限定案を採用して進める'
+                and adoption.get('verification_level') == 'conversation_transcribed'
+                and ADOPTION_CALL_ID in adoption.get('source_ref', '')
+                and adoption.get('proposal_sha256') == RECOVERY_PROPOSAL_SHA256,
+                'NATIVE_ADOPTION_REQUIRED')
+        hashes = context.get('originFilesSHA256', {})
+        require(set(hashes) == ORIGIN_NAMES, 'NATIVE_ORIGIN_FILE_INVENTORY')
+        self._origin_signatures = {}
+        for name, expected in hashes.items():
+            source = self.root / 'origin' / name
+            raw = read_regular(source, 30 * 1024 * 1024)
+            require(sha(raw) == expected, 'NATIVE_ORIGIN_FILE_HASH:' + name)
+            self._origin_signatures[name] = self._signature(source)
+        self._view = load_qf01_checkpoint(self.root / 'origin/publisher-contract.json',
+                                          self.root / 'origin/BUILD_AUTHORITY.blob')
+        self._tail = CheckpointTail(self.root, self._view, context=context)
+        self._context = copy.deepcopy(context)
+        self.checkpoint_epoch = sha(origin_raw)
+        self._source_proof, self._source_snapshot = _source_recovery(self._view,
+            read_regular(self.root / 'origin/ORIGIN_SOURCE_PROOF.json', 1024 * 1024),
+            read_regular(self.root / 'origin/ORIGIN_SOURCE_SNAPSHOT.json', 1024 * 1024))
+        self._validate_projection_files()
+        self.suffix_events()
+
+    @staticmethod
+    def _signature(path):
+        value = path.lstat()
+        require(stat.S_ISREG(value.st_mode) and not path.is_symlink(), 'ORIGIN_NOT_REGULAR')
+        return value.st_dev, value.st_ino, value.st_size, value.st_mtime_ns
+
+    def _validate_origin(self):
+        self._tail._validate_origin()
+        require((self.root / 'origin').resolve() == self.root / 'origin', 'ORIGIN_DIRECTORY_ALIAS')
+        for name, expected in self._origin_signatures.items():
+            require(self._signature(self.root / 'origin' / name) == expected,
+                    'ORIGIN_CHANGED_AFTER_OPEN:' + name)
+
+    def _validate_projection_files(self):
+        source = self.root / 'origin'
+        require(digest(strict_json(read_regular(source / 'APPROVED_MATERIAL_SEED.json', 20 * 1024 * 1024)))
+                == digest(self._view._seed), 'ORIGIN_SEED_PROJECTION')
+        require(strict_json(read_regular(source / 'NODES.json', 1024 * 1024)) == self._view.nodes(), 'ORIGIN_NODES_PROJECTION')
+        require(strict_json(read_regular(source / 'TEAM_PREFIX_SUBSET.json', 5 * 1024 * 1024))
+                == self._view.team_prefix_subset(FIXED_WORK)['events'], 'ORIGIN_TEAM_PROJECTION')
+        require(strict_json(read_regular(source / 'KNOWN_PREFIX_ENVELOPES.json', 6 * 1024 * 1024))
+                == self._view.known_prefix_envelope_subset()['events'], 'ORIGIN_KNOWN_PROJECTION')
+        require(strict_json(read_regular(source / 'FEEDBACK_PROJECTION.json', 1024 * 1024))
+                == self._view.feedback_payload_projection(FIXED_WORK)['rows'], 'ORIGIN_FEEDBACK_PROJECTION')
+
+    @classmethod
+    def initialize(cls, directory, root, *, contract_path, blob_path, proposal_path,
+                   adoption, source_proof_path, source_snapshot_path, executor='M/root'):
+        root = Path(root).resolve()
+        destination = Path(directory).absolute()
+        require(destination == root / 'work/recovery-checkpoints/qf01-p046-r3'
+                and destination == destination.resolve() and not destination.exists(),
+                'NATIVE_CHECKPOINT_DEDICATED_NEW_PATH')
+        proposal = read_regular(proposal_path, 1024 * 1024)
+        require(sha(proposal) == RECOVERY_PROPOSAL_SHA256, 'ADOPTED_PROPOSAL_BYTES')
+        require(isinstance(adoption, dict) and adoption.get('quote') == 'この限定案を採用して進める'
+                and adoption.get('verification_level') == 'conversation_transcribed'
+                and adoption.get('proposal_sha256') == RECOVERY_PROPOSAL_SHA256
+                and ADOPTION_CALL_ID in adoption.get('source_ref', ''), 'NATIVE_ADOPTION_REQUIRED')
+        require(isinstance(executor, str) and executor.strip() == executor and executor,
+                'NATIVE_EXECUTOR_REQUIRED')
+        bootstrap_core = current_core_identity()
+        view = load_qf01_checkpoint(contract_path, blob_path)
+        proof_raw = read_regular(source_proof_path, 1024 * 1024)
+        snapshot_raw = read_regular(source_snapshot_path, 1024 * 1024)
+        _source_recovery(view, proof_raw, snapshot_raw)
+        contract_raw, blob_raw = read_regular(contract_path, 2 * 1024 * 1024), read_regular(blob_path, 5 * 1024 * 1024)
+        seed_raw = decode_gzip(blob_raw.decode('ascii'), 20 * 1024 * 1024)
+        files = {'publisher-contract.json': contract_raw, 'BUILD_AUTHORITY.blob': blob_raw,
+                 'APPROVED_MATERIAL_SEED.json': seed_raw, 'NODES.json': canonical(view.nodes()),
+                 'ORIGIN_SOURCE_PROOF.json': proof_raw, 'ORIGIN_SOURCE_SNAPSHOT.json': snapshot_raw,
+                 'TEAM_PREFIX_SUBSET.json': canonical(view.team_prefix_subset(FIXED_WORK)['events']),
+                 'KNOWN_PREFIX_ENVELOPES.json': canonical(view.known_prefix_envelope_subset()['events']),
+                 'FEEDBACK_PROJECTION.json': canonical(view.feedback_payload_projection(FIXED_WORK)['rows'])}
+        context = {'schemaVersion': 'qf01-native-checkpoint-origin/1',
+                   'proposalSHA256': RECOVERY_PROPOSAL_SHA256, 'adoption': copy.deepcopy(adoption),
+                   'bootstrapCore': bootstrap_core, 'executor': executor,
+                   'newTechnicalWorks': sorted(NEW_TECHNICAL_WORKS),
+                   'originFilesSHA256': {name: sha(raw) for name, raw in files.items()},
+                   'historicalPrefixCoverage': 'MISSING', 'globalQueueCoverage': 'UNKNOWN'}
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        CheckpointTail.create(destination, view, context=context)
+        (destination / 'origin').mkdir()
+        for name, raw in files.items():
+            with (destination / 'origin' / name).open('xb') as stream:
+                stream.write(raw); stream.flush(); os.fsync(stream.fileno())
+        store = cls(destination, _initializing=True)
+        store.append('checkpoint_recovered', FIXED_WORK,
+                     {'schemaVersion': 'qf01-checkpoint-recovered/1',
+                      'originSHA256': store.checkpoint_epoch, 'adoption': copy.deepcopy(adoption),
+                      'core': bootstrap_core, 'executor': executor,
+                      'missingHistoricalPrefix': True, 'gateAccepted': False},
+                     expected=view.anchor['head'])
+        store._initializing = False
+        store.suffix_events()
+        return store
+
+    @property
+    def checkpoint_anchor(self):
+        return self._view.anchor
+
+    @property
+    def head(self):
+        rows = self.suffix_events()
+        return rows[-1]['hash'] if rows else self._view.anchor['head']
+
+    def events(self):
+        raise UnknownContext('CHECKPOINT_LEGACY_FULL_EVENTS_UNAVAILABLE_USE_TYPED_API')
+
+    def suffix_events(self):
+        self._validate_origin()
+        rows = self._tail.events()
+        require(rows or self._initializing, 'NATIVE_BOOTSTRAP_RECORD_MISSING')
+        if rows:
+            bootstrap = rows[0]
+            require(bootstrap['kind'] == 'checkpoint_recovered' and bootstrap['work'] == FIXED_WORK
+                    and bootstrap['payload'].get('schemaVersion') == 'qf01-checkpoint-recovered/1'
+                    and bootstrap['payload'].get('originSHA256') == self.checkpoint_epoch
+                    and bootstrap['payload'].get('adoption') == self._context['adoption']
+                    and bootstrap['payload'].get('core') == self._context['bootstrapCore']
+                    and bootstrap['payload'].get('executor') == self._context['executor']
+                    and bootstrap['payload'].get('gateAccepted') is False,
+                    'NATIVE_BOOTSTRAP_RECORD_MISMATCH')
+            require(not any(row['kind'] == 'checkpoint_recovered' for row in rows[1:]),
+                    'NATIVE_BOOTSTRAP_DUPLICATED')
+        allowed = {FIXED_WORK} | NEW_TECHNICAL_WORKS
+        require(all(row['work'] in allowed for row in rows), 'SUFFIX_WORK_OUTSIDE_ADOPTED_SCOPE')
+        require(not any(row['kind'] == 'opened' and row['work'] == FIXED_WORK for row in rows), 'CHECKPOINT_WORK_REOPENED')
+        for work in NEW_TECHNICAL_WORKS:
+            selected = [row for row in rows if row['work'] == work]
+            opened = [row for row in selected if row['kind'] == 'opened']
+            require(not selected or len(opened) == 1 and selected[0] == opened[0], 'TECHNICAL_WORK_GENESIS_REQUIRED')
+        return rows
+
+    def state_base(self, work):
+        self._validate_origin()
+        if work == FIXED_WORK:
+            return self._view.state_snapshot(work)
+        if work in NEW_TECHNICAL_WORKS and work in self.work_ids():
+            return None
+        raise UnknownContext('WORK_STATE_NOT_IN_ADOPTED_CHECKPOINT_OR_NEW_SUFFIX')
+
+    def can_open(self, work):
+        require(work in NEW_TECHNICAL_WORKS, 'ONLY_ADOPTED_NEW_TECHNICAL_WORKS_CAN_OPEN')
+        return work not in self.work_ids()
+
+    def work_ids(self):
+        return {FIXED_WORK} | {row['work'] for row in self.suffix_events() if row['kind'] == 'opened'}
+
+    def history_events(self, purpose, work=None):
+        suffix = self.suffix_events()
+        if purpose in ('suffix', 'capability-bindings'):
+            rows = suffix
+        elif purpose == 'team':
+            rows = self._view.team_prefix_subset(FIXED_WORK)['events'] + suffix
+        elif purpose == 'authorization':
+            rows = self._view.known_prefix_envelope_subset()['events'] + suffix
+        elif purpose == 'complete' and work in NEW_TECHNICAL_WORKS and work in self.work_ids():
+            rows = suffix
+        else:
+            raise UnknownContext('HISTORICAL_COVERAGE_NOT_RECOVERED:' + purpose)
+        return copy.deepcopy([row for row in rows if work is None or row['work'] == work])
+
+    def feedback_payloads(self, work):
+        if work not in self.work_ids():
+            raise UnknownContext('FEEDBACK_WORK_UNKNOWN')
+        rows = self._view.feedback_payload_projection(work)['rows'] if work == FIXED_WORK else []
+        return rows + [copy.deepcopy(row['payload']) for row in self.suffix_events()
+                       if row['work'] == work and row['kind'] == 'feedback_captured']
+
+    def source_snapshot(self, work):
+        if work == FIXED_WORK:
+            self._validate_origin()
+            return {'snapshot': copy.deepcopy(self._source_snapshot),
+                    'sourceKind': 'GIT_RECOVERED_CHECKPOINT_SOURCE', 'proof': copy.deepcopy(self._source_proof)}
+        events = self.history_events('complete', work)
+        opened = next(row for row in events if row['kind'] == 'opened')
+        return {'snapshot': self.get(opened['payload']['original_snapshot']), 'sourceKind': 'IMMUTABLE_OPEN_SNAPSHOT'}
+
+    def append(self, kind, work, payload, *, expected=None, event_id=None):
+        self._validate_origin()
+        require(kind != 'checkpoint_recovered' or self._initializing and not self._tail.events(),
+                'BOOTSTRAP_ONLY_AT_EXPLICIT_INITIALIZATION')
+        require(work == FIXED_WORK or work in NEW_TECHNICAL_WORKS, 'APPEND_OUTSIDE_ADOPTED_WORKS')
+        if work in NEW_TECHNICAL_WORKS and work not in self.work_ids():
+            require(kind == 'opened', 'NEW_TECHNICAL_WORK_MUST_OPEN_FIRST')
+        if kind == 'opened':
+            require(self.can_open(work), 'WORK_ALREADY_EXISTS')
+        require(expected is not None, 'NATIVE_EXPECTED_HEAD_REQUIRED')
+        return self._tail.append(kind, work, payload, expected=expected, event_id=event_id)
+
+    def get(self, reference):
+        self._validate_origin(); return self._tail.get(reference)
+
+    def put(self, value):
+        self._validate_origin(); return self._tail.put(value)
+
+    def recover_lock(self):
+        raise UnknownContext('CHECKPOINT_LOCK_REQUIRES_EXPLICIT_RECONCILIATION_NO_PID_GUESS')
+
+    def summary(self):
+        return {'schemaVersion':'qf01-native-checkpoint-store/1','work':FIXED_WORK,
+                'checkpointEpoch':self.checkpoint_epoch,'anchor':self.checkpoint_anchor,
+                'head':self.head,'suffixEvents':len(self.suffix_events()),
+                'proposalSHA256':RECOVERY_PROPOSAL_SHA256,'fullHistoricalLedgerRecovered':False,
+                'globalQueueCoverage':'UNKNOWN','gateAccepted':False}
+
+
+def history_events(rt, purpose, work=None):
+    if getattr(rt.store, 'checkpoint_mode', False):
+        return rt.store.history_events(purpose, work)
+    return [row for row in rt.store.events() if work is None or row['work'] == work]
+
+
+def feedback_payloads(rt, work):
+    if getattr(rt.store, 'checkpoint_mode', False):
+        return rt.store.feedback_payloads(work)
+    return [row['payload'] for row in rt.store.events() if row['work'] == work and row['kind'] == 'feedback_captured']
+
+
+def known_work_ids(rt):
+    if getattr(rt.store, 'checkpoint_mode', False):
+        return rt.store.work_ids()
+    return {row['work'] for row in rt.store.events() if row['kind'] == 'opened'}
+
+
+def queue_coverage(rt):
+    if getattr(rt.store, 'checkpoint_mode', False):
+        return {'status': 'UNKNOWN', 'reason': 'GLOBAL_PREFIX_AND_INTAKE_NOT_RECOVERED',
+                'knownWorks': sorted(rt.store.work_ids())}
+    return {'status': 'COMPLETE'}
+
+
+def source_snapshot(rt, work):
+    if getattr(rt.store, 'checkpoint_mode', False):
+        return rt.store.source_snapshot(work)
+    opened = next(row for row in rt.store.events() if row['work'] == work and row['kind'] == 'opened')
+    return {'snapshot': rt.store.get(opened['payload']['original_snapshot']), 'sourceKind': 'IMMUTABLE_OPEN_SNAPSHOT'}
+
+
+def current_core_identity():
+    """Fresh source-only process; no Runtime/Store constructor is called."""
+    import subprocess
+    import sys
+    engine = Path(__file__).resolve().parent
+    # -B prevents pyc writes, but still permits reads. Use source-only loaders
+    # for every local module, including definitions/store, to reject a stale
+    # timestamp-and-size-valid cache instead of deriving a false current hash.
+    program = r'''
+import sys,json,hashlib,importlib.abc,importlib.util,importlib.machinery
+from pathlib import Path
+root=Path(sys.argv[1]).resolve()
+class SourceOnly(importlib.machinery.SourceFileLoader):
+ def get_code(self,fullname):return compile(Path(self.path).read_bytes(),self.path,'exec',dont_inherit=True)
+class Finder(importlib.abc.MetaPathFinder):
+ def find_spec(self,fullname,path=None,target=None):
+  if '.' not in fullname and (root/(fullname+'.py')).is_file():
+   p=root/(fullname+'.py');return importlib.util.spec_from_loader(fullname,SourceOnly(fullname,str(p)))
+sys.meta_path.insert(0,Finder())
+import definitions
+print(json.dumps({'definitionHash':definitions.DEFINITION_HASH,
+ 'files':{n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in definitions.IMPLEMENTATION_FILES}},sort_keys=True))
+'''
+    result = subprocess.run([sys.executable, '-I', '-S', '-B', '-c', program, str(engine)],
+                            capture_output=True, text=True, encoding='utf-8', timeout=30)
+    require(result.returncode == 0, 'FRESH_CORE_IDENTITY_FAILED:' + result.stderr[-1000:])
+    value = strict_json(result.stdout.encode('utf-8'))
+    from definitions import DEFINITION_HASH
+    require(value.get('definitionHash') == DEFINITION_HASH, 'RUNNING_CORE_IMPORT_IS_STALE')
+    require(all(sha((engine / name).read_bytes()) == wanted for name, wanted in value['files'].items()),
+            'CORE_CHANGED_DURING_FRESH_IDENTITY')
+    return value
+
+
+def verify_candidate_git(root, candidate_sha, candidate_manifest):
+    import subprocess
+    require(isinstance(candidate_sha, str) and re.fullmatch(r'[0-9a-f]{40}', candidate_sha), 'CANDIDATE_GIT_SHA')
+    environment = dict(os.environ, GIT_NO_LAZY_FETCH='1')
+    result = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], capture_output=True,
+                            text=True, encoding='utf-8', env=environment, timeout=30)
+    require(result.returncode == 0 and result.stdout.strip() == candidate_sha, 'CANDIDATE_NOT_CURRENT_GIT_HEAD')
+    remote = subprocess.run(['git', '-C', str(root), 'remote', 'get-url', 'origin'],
+                            capture_output=True, text=True, env=environment, timeout=30)
+    require(remote.returncode == 0 and remote.stdout.strip().removesuffix('.git')
+            == 'https://github.com/rrikunagasige-dot/kyotsu-step-web', 'CANDIDATE_REPOSITORY_IDENTITY')
+    for name, wanted in candidate_manifest.items():
+        result = subprocess.run(['git', '-C', str(root), 'show', candidate_sha + ':' + name],
+                                capture_output=True, env=environment, timeout=30)
+        require(result.returncode == 0 and sha(result.stdout) == wanted, 'CANDIDATE_GIT_FILE_HASH:' + name)

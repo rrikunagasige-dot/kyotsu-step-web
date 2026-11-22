@@ -1,6 +1,18 @@
 """Shared capability calls under Runtime claims. Receipts/cache live in the same Store."""
 from contracts import need, manifest
 from store import digest
+from checkpoint import history_events, feedback_payloads, queue_coverage
+
+
+def _feedback_bindings(rt, work, state, *, negative_only):
+    if not getattr(rt.store, 'checkpoint_epoch', None):
+        return [e['payload'] for e in history_events(rt, 'complete', work)
+                if e['kind'] in ('feedback_captured', 'issue')
+                and (not negative_only or e['kind']=='issue' or e['payload'].get('quality')=='NEGATIVE')]
+    # Payload/state projections are cache inputs, never fabricated event envelopes.
+    return {'kind': 'CHECKPOINT_PAYLOAD_PROJECTION',
+            'feedback': [p for p in feedback_payloads(rt, work) if not negative_only or p.get('quality')=='NEGATIVE'],
+            'issues': {key: {k:v for k,v in row.items() if k!='resolved_by'} for key,row in state['issues'].items()}}
 
 # Keys are semantic capabilities, values are the existing P-003 executable services.
 REGISTRY = {
@@ -121,7 +133,7 @@ def run_capability(rt, work, node, capability, inputs):
     relevant=STAGE_FACETS.get(node['stage_kind'],set())
     bindings={'sources':{p:s['plan']['source_manifest'][p] for p in (node['source_refs'] or s['plan']['source_manifest'])}, 'facets':{k:v for k,v in s.get('block_contexts',{}).get(node['block'],{}).items() if k in relevant}}
     if capability in ('case.finalize','feedback.capture'):
-        bindings['feedback']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind'] in ('feedback_captured','issue') and (capability!='feedback.capture' or e['kind']=='issue' or e['payload'].get('quality')=='NEGATIVE')]
+        bindings['feedback']=_feedback_bindings(rt,work,s,negative_only=capability=='feedback.capture')
     if local_capture is not None:bindings['local_capture']=digest(local_capture)
     if capability in ('release.verify','browser.verify'):bindings['candidate_sha']=s['candidate_sha']
     if capability=='protected.verify':bindings['protected_manifest']=s['plan'].get('protected_manifest',{})
@@ -131,7 +143,7 @@ def run_capability(rt, work, node, capability, inputs):
         block = next(b for b in s['plan']['blocks'] if b['id'] == node['block'])
         bindings['construction_layout_contracts'] = {key: block[key] for key in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash')}
     key = digest({'bindings':bindings,'capability': capability, 'inputs': inputs, 'implementation': impl, 'rules': s['plan']['rules'], 'phase': node['phase'], 'context': context})
-    cached = next((e for e in reversed(rt.store.events()) if e['work'] == work and e['kind'] == 'capability_result' and e['payload']['cache_key'] == key), None)
+    cached = next((e for e in reversed(history_events(rt, 'suffix', work)) if e['kind'] == 'capability_result' and e['payload']['cache_key'] == key), None)
     if cached:
         previous=rt.store.get(cached['payload']['output'])
         if previous.get('status') not in ('PASS','NEEDS_AI_REVIEW') or previous.get('trainingStatus')=='FAIL':cached=None
@@ -145,7 +157,15 @@ def run_capability(rt, work, node, capability, inputs):
             output = {'status': 'PASS', 'sourceIndex': {p: json.loads(file(rt.root, p).read_text()) for p in paths}, 'sourceManifest': manifest(rt.root, paths)}
         elif capability == 'feedback.capture':
             from requests import pending
-            output = {'status': 'PASS', 'events': [e['payload'] for e in rt.store.events() if e['work'] == work and e['kind'] == 'feedback_captured' and e['payload'].get('quality')=='NEGATIVE'], 'issues': s['issues'], 'correction_queue':pending(rt,s)}
+            captured = [p for p in feedback_payloads(rt,work) if p.get('quality')=='NEGATIVE']
+            if getattr(rt.store, 'checkpoint_mode', False):
+                coverage = queue_coverage(rt)
+                need(coverage['status']=='UNKNOWN', 'CHECKPOINT_QUEUE_COVERAGE_CONTRACT_CHANGED')
+                output = {'status':'NEEDS_AI_REVIEW', 'events':captured, 'issues':s['issues'],
+                          'correction_queue':None, 'correction_queue_coverage':coverage,
+                          'fullCorrectionQueueCertified':False}
+            else:
+                output = {'status':'PASS', 'events':captured, 'issues':s['issues'], 'correction_queue':pending(rt,s)}
         elif capability == 'impact.inventory':
             from impact import inventory
             output = {'status': 'NEEDS_AI_REVIEW', 'inventory': inventory(s, node), 'phase': node['phase'], 'sourceSHA': s['candidate_sha']}

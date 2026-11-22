@@ -5,6 +5,18 @@ from pathlib import Path
 class Conflict(RuntimeError):pass
 class CorruptLedger(RuntimeError):pass
 
+
+def open_store(path):
+    """Open an explicit existing checkpoint; never create one during status/read.
+
+    Ordinary Store construction and zero-origin validation are unchanged.
+    """
+    marker = Path(path) / 'CHECKPOINT_ORIGIN.json'
+    if marker.exists() or marker.is_symlink():
+        from checkpoint import CheckpointStore
+        return CheckpointStore(path)
+    return Store(path)
+
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
 def digest(value):return hashlib.sha256(canonical(value)).hexdigest()
 
@@ -114,6 +126,14 @@ def _remove_observed_lock(path,raw,identity):
 
 class Store:
     def __init__(self,path):
+        selected=Path(path).absolute()
+        if (selected/'CHECKPOINT_ORIGIN.json').exists() or (selected/'CHECKPOINT_ORIGIN.json').is_symlink():
+            raise CorruptLedger('checkpointへ通常Storeを適用しない。open_storeで明示読込みが必要')
+        selected_parts=tuple(part.casefold() for part in selected.parts)
+        resolved_parts=tuple(part.casefold() for part in selected.resolve().parts)
+        reserved=('work','recovery-checkpoints','qf01-p046-r3')
+        if any(parts[i:i+3]==reserved for parts in (selected_parts,resolved_parts) for i in range(max(0,len(parts)-2))):
+            raise CorruptLedger('checkpoint専用pathは通常Storeとして初期化しない')
         self.root=Path(path).resolve();(self.root/'events').mkdir(parents=True,exist_ok=True);(self.root/'artifacts').mkdir(exist_ok=True)
     def events(self):
         previous='0'*64;result=[]

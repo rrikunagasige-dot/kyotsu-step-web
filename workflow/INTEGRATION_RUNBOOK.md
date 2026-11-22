@@ -161,3 +161,23 @@ blockの`content_design_hash`、`construction_design_hash`、`layout_design_hash
 7. `link-correction-receipt` は旧調査受付 `W-MATH-QF01-QUALITY-FOLLOWUP-20261115` の `SC-02`、`LAYOUT-SOURCE-04`、`P044-LAYOUT-TOUCH-48-01` のみ。原FAILとOPEN/DONEは変えず、元三件・承認・現在修復prefix・本人受入・事例・実app proofが全て一致した場合だけ派生充足を表示する。親Z01を前提とせず循環を避ける。元queueは別欄で残す。新issue/再open/source/実装/結果input/受付変更で充足は無効となる。一般のchild DONE要件は弱めない。
 
 承認仕様を超えるpath・新schema・任意policy・任意Work・旧guard除外が必要なら、このopt-inで通さず改訂停止とする。隔離候補の試験や静的見本を実App/正式R04/本人受入と同一視しない。
+
+## QF01 checkpointからの限定再開（P-QF01-CHECKPOINT-RECOVERY-01）
+
+2026-11-22の本人回答「この限定案を採用して進める」は、固定提案SHA256 `1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b` の採用である。提案本文は採用前の表示を含めて不変保存し、採用状態と発言出所はWORK/ACTION_LOGおよび新しい回復イベントで記録する。
+
+対象は親 `W-MATH-QF01-FULL-RELEASE-P035-20261115` の固定checkpointだけ。原contract、299objects、baseState、nodes、真正なteam部分集合135件、承認等を含む既知envelopes138件、feedback本文projectionをhash検証する。anchorはseq13742/head `586be1a3dfeb92e9699cc82ef330131d10b22a78353c165d5610f181d6201106`。全13742イベントや旧openedを再構成したとは扱わない。
+
+1. 通常Storeへ空のprefixや推測イベントを入れない。明示的な `checkpoint-init` だけが、新規専用path `work/recovery-checkpoints/qf01-p046-r3` にoriginと実bootstrapを作成する。status/nextは初期化を代行しない。通常Storeのzero始点検証とLinux procfs lockは維持する。
+2. init入力は固定contract/blob、承認済み提案の実bytes、本人回答の原文・出所、Git由来原source proof/snapshotとする。原2sourceはGit `1f10ecbcd088ca8636932c8df4c7b85293777efc` の実blobから照合した新しい回復証拠であり、旧opened envelopeやnative receiptではない。
+3. Runtimeは固定baseStateのdeep copyへ実suffixを再生する。全suffixのseq/previous/hashとscopeを検証し、expectedHEADで追記する。真正なteam部分集合、feedback本文、承認envelope、完全な新suffixを別APIで扱う。`Store.events()`相当の完全prefix要求、未知Work、global queueはUnknownContextで拒否する。未知を空配列にしない。
+4. sourceを変更したPython processを使い続けない。fresh source-only processから現在のdefinition/serviceを導出し、`checkpoint-preflight`、次いで同じHEAD・同じproofを指定した `checkpoint-migrate` を実施する。原承認と全旧結果を保存し、旧結果は `INVALIDATED_BY_DEFINITION` と記録する。旧PASSを新PASSへ移植しない。
+5. 物理candidateの変更は採用済み修復5pathの全体だけを許す。実Git candidate、旧325bのbefore、修復291fc142のafter、全candidateと保護manifestを照合する。実装が既に存在する場合、その作成履歴と現在再検査を区別し、T03で未実施のfilewriteを記録しない。
+6. 新規技術Workは `W-TECH-QF01-CHECKPOINT-RECOVERY-20261122` と `W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122` の2件だけ。実opened/T01〜T04を新しいsuffixへ記録する。旧owner状態、旧T04、patch_applied、版archiveをこの2件の代わりに作らない。R06の専用current-candidate proofは現在のclaim・compile・新技術owner検証へ結び、自動PASSや再filewriteを行わない。
+7. 現在版CI、R07、意味審査、G2、実CAS/DEPLOY、公開後検査を必要な根拠が揃った順に進める。元受付snapshot、旧版archive、全prefixのnonce/他Work/queueは未回復のまま表示する。必須依存が未知なら該当工程を停止する。旧受付の派生receipt、事後sweep、R08/L01/閉鎖を完了扱いにせず、本人受入も代行しない。
+
+正式checkpoint操作はfresh processから `python -I -S -B workflow/cli.py ...` とscriptを直接起動する。この入口はRuntime等の最初のlocal importより前にSourceOnly loaderを設置する。`-B`単独は古いpycの読取りを禁止しない。`current_core_identity()`はdisk sourceのfresh導出とcallerのdefinition一致を照合するが、通常importで既に実行中の全module bytecodeまで証明するAPIではない。直接embeddingを正式入口の検証結果で認定しない。
+
+R06のGit検証では製品5pathとworkflow22pathだけでなく、9eeからの全diffを採用済みcode・指定Work記録・専用native JSONの上限へ照合する。`tools/textbook/`、任意governance、別Workや別publisherの実装をこのcore候補へ混入させない。
+
+checkpoint lockはowner-tokenの排他方式を用い、PIDの推測や経過時間でlockを削除しない。中断したlockの自動解除は未対応として拒否する。origin・alias・junction・部分書込・CAS・再openを検査するが、電源断時のdirectory fsyncや悪意ある同時path交換に対するOS隔離は保証しない。Windowsで権限不足のsymlink検査とLinux限定の通常lock実検査は、実行済み検査と分けて報告する。

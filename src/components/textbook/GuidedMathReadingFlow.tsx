@@ -1,5 +1,6 @@
-import { useCallback, useId, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useId, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
+import katex from 'katex'
 import { guidedMathDisplaySteps } from './guidedMathDisplayPolicy'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
@@ -16,7 +17,9 @@ import { ReadingStageFrame } from './ReadingStageFrame'
 import { canonicalReadingSourceView, recordedReadingSourceView } from '../../domain/readingSourceViews'
 import { readingLayoutBlockAttributes, readingLayoutChainAttributes, qf01ReadingLayoutProfile } from './readingLayoutPolicy'
 import { TextbookFigure } from './TextbookFigure'
-import { validateQF01R3Reading, qf01R3Solved, projectQF01R3Block, formatQF01R3Owner, type QF01R3Validated } from '../../domain/transformationReading'
+import { validateQF01R3Reading, qf01R3Solved, projectQF01R3Block, formatQF01R3Owner, qf01R3FormulaRecipe, type QF01R3FormulaRecipe, type QF01R3Validated } from '../../domain/transformationReading'
+import { normalizeTextbookMath } from '../../domain/textbookMath'
+import { typesetRows, type TypesetRow } from './typesetRows'
 import './guided-math-reading.css'
 
 type Props = {
@@ -33,6 +36,142 @@ type Node = { id: string; stageId: string; goal: string; role: string; knownRefs
 type Display = { hintParts: TextbookReadingPart[][]; choices: Record<string, TextbookReadingPart[]>; feedback: Record<string, TextbookReadingPart[]> }
 type Presentation = { choiceDisplay?: 'semantic'; code: string; nodes: Node[]; stages: { id: string; title: string; sourceQuestionParts: TextbookReadingPart[] }[]; semanticDisplay: Record<string, Display>; equationNumbers: Record<string, number>; semantic: { nodes: { id: string; before: TextbookReadingBlock[]; after: TextbookReadingBlock[] }[] } }
 const roles: Record<string, string> = { example: '例題', definition: '定義', proof: '性質の導出', substep: '導出', check: '学んだことを使う', property: '性質', summary: 'まとめ' }
+
+type R3Envelope = { width: number; left: number; relation: number; right: number; narrow: boolean; available: number; advances: Record<string, number>; overflow: boolean; rows: TypesetRow[] }
+/** R3 only: the plan depends on the approved syntax and every candidate, never
+ * on the answer key, current draft, solved state, or currently exposed rows. */
+function R3FixedFormula({ recipe, group, sourceId, resolved, target }: { recipe: QF01R3FormulaRecipe; group: QF01R3FormulaRecipe[]; sourceId: string; resolved: boolean; target: ReactNode }) {
+  const root = useRef<HTMLSpanElement>(null)
+  const [envelope, setEnvelope] = useState<R3Envelope>()
+  const template = recipe.kind === 'whole-target' && resolved ? recipe.canonicalFormula : recipe.template
+  const tex = (value: string, binary = false) => normalizeTextbookMath(binary && /^[+\-=]/.test(value) ? '{}' + value : value)
+  useLayoutEffect(() => {
+    const node = root.current
+    if (!node) return
+    let alive = true, frame: number | undefined
+    const update = () => {
+      if (!alive || node.clientWidth < 1) return
+      const available = node.clientWidth - 1, probe = document.createElement('span')
+      probe.className = 'r3-neutral-probe'; probe.setAttribute('aria-hidden', 'true'); probe.inert = true
+      node.append(probe)
+      const cache = new Map<string, number>(), advances: Record<string, number> = {}
+      const plain = (value: string, binary = false): number => {
+        if (!value) return 0
+        const key = (binary ? 'binary:' : 'ordinary:') + value
+        const old = cache.get(key); if (old !== undefined) return old
+        const segments = r3NeutralSegments(value)
+        if (segments.length > 1) { const relationSpacing = 2 * plain('\\;'); const width = segments.reduce((sum, segment) => sum + plain(segment.latex) + (segment.relation ? relationSpacing : 0), 0); cache.set(key, width); return width }
+        // Independent fragments only; no completed future lesson is assembled.
+        const part = document.createElement('span'); part.innerHTML = katex.renderToString(tex(value, binary), { output: 'html', strict: 'ignore' }); probe.append(part)
+        const width = part.getBoundingClientRect().width; part.remove(); cache.set(key, width); return width
+      }
+      try {
+        for (const item of group) advances[item.blockId] = Math.ceil(Math.max(48, ...item.candidateLatex.map(candidate => plain(candidate) + 12)))
+        const measure = (item: QF01R3FormulaRecipe) => (value: string) => value.split('§0§').reduce((sum, fragment, index) => sum + plain(fragment, index > 0) + (index ? advances[item.blockId] : 0), 0)
+        const alternatives = group.flatMap(item => (item.kind === 'whole-target' ? item.candidateLatex : [item.template]).map(value => ({ item, value })))
+        const original = alternatives.flatMap(({ item, value }) => typesetRows(value, Infinity, measure(item)).rows.map(row => ({ item, row })))
+        const relation = plain('='), left = Math.max(0, ...original.filter(x => x.row.kind === 'equation').map(x => measure(x.item)(x.row.lhs ?? ''))), right = Math.max(0, ...original.filter(x => x.row.kind === 'equation').map(x => measure(x.item)(x.row.rhs ?? '')))
+        const widest = Math.max(48, ...original.map(x => x.row.kind === 'equation' ? measure(x.item)(x.row.lhs ?? '') + relation + measure(x.item)(x.row.rhs ?? '') + 8 : measure(x.item)(x.row.latex))), full = Math.max(widest, left + relation + right + 8), narrow = full > available
+        const planned = alternatives.flatMap(({ item, value }) => r3FixedRows(value, available, measure(item), narrow).map(row => ({ item, row })))
+        const plannedLeft = narrow ? 0 : left, plannedRight = Math.max(0, ...planned.filter(x => x.row.kind === 'equation').map(x => measure(x.item)(x.row.rhs ?? '')))
+        const body = narrow ? Math.max(48, ...planned.map(x => x.row.kind === 'equation' ? relation + measure(x.item)(x.row.rhs ?? '') + 8 : measure(x.item)(x.row.latex) + (x.row.kind === 'continuation' ? 18 : 0))) : full
+        const rows = r3FixedRows(template, available, measure(recipe), narrow)
+        const next = { width: Math.min(body, available), left: plannedLeft, relation, right: narrow ? plannedRight : right, narrow, available, advances, overflow: body > available + 1, rows }
+        setEnvelope(old => JSON.stringify(old) === JSON.stringify(next) ? old : next)
+      } finally { probe.remove() }
+    }
+    const schedule = () => { if (frame === undefined) frame = requestAnimationFrame(() => { frame = undefined; update() }) }
+    update(); const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(schedule); observer?.observe(node)
+    void document.fonts?.ready.then(schedule)
+    return () => { alive = false; observer?.disconnect(); if (frame !== undefined) cancelAnimationFrame(frame) }
+  }, [group, recipe, template])
+  useLayoutEffect(() => { root.current?.dispatchEvent(new Event('typeset-layout', { bubbles: true })) }, [envelope, resolved])
+  const advance = Math.min(envelope?.advances[recipe.blockId] ?? 48, envelope?.available ?? Infinity)
+  const measure = (value: string) => value.split('§0§').reduce((sum, fragment, index) => sum + fragment.length * 10 + (index ? advance : 0), 0)
+  // Breaks are supplied by the same neutral measurements, including the slot's
+  // reserved advance. The visible target never changes that advance.
+  const rows = envelope?.rows ?? typesetRows(template, Infinity, measure).rows
+  const parts = (value: string, continuation = false) => resolved && value.includes('§0§')
+    ? <span className="reading-formula-math"><InlineMath math={tex(value.replace('§0§', recipe.targetLatex!), continuation)} /></span>
+    : value.split(/(§0§)/).filter(Boolean).map((part, index) => part === '§0§'
+    ? <span key={index} className="r3-fixed-target" style={{ width: advance }}>{resolved ? <InlineMath math={tex(recipe.targetLatex!)} /> : target}</span>
+    : <span key={index} className="reading-formula-math"><InlineMath math={tex(part, continuation || index > 0)} /></span>)
+  const style = { '--typeset-left': (envelope?.left ?? 0) + 'px', '--typeset-right': (envelope?.right ?? 0) + 'px', '--typeset-body': envelope ? envelope.width + 'px' : 'fit-content', '--r3-fixed-relation': (envelope?.relation ?? 14) + 'px' } as CSSProperties
+  return <span ref={root} style={style} className="reading-formula-line reading-formula-line--aligned reading-formula-line--typeset r3-fixed-formula" data-testid={'textbook-formula-' + sourceId} data-latex-status="ok" data-typeset-source={sourceId} data-typeset-kind={rows.some(row => row.kind === 'equation') ? 'chain' : 'independent'} data-r3-envelope-status={envelope ? envelope.overflow ? 'OVERFLOW' : 'MEASURED' : 'UNVERIFIED'} data-r3-neutral-group={group.map(r => r.blockId).join(' ')}>
+    <span className="first-theme-formula-rows typeset-formula-body">{rows.map((row, index) => <span key={index} className={'typeset-line' + (row.kind === 'equation' ? ' typeset-line--equation' : '') + (row.kind === 'continuation' ? ' typeset-line--continuation' : '')} data-row-kind={row.kind}>
+      {row.kind === 'equation' ? <><span className="typeset-left"><span className="typeset-cell-content">{parts(row.lhs ?? '')}</span></span><span className="typeset-relation"><InlineMath math="=" /></span><span className="typeset-right"><span className="typeset-cell-content">{parts(row.rhs ?? '')}</span></span></> : <>{row.product && <span className="typeset-product-continuation" aria-label="掛け算の続き">·</span>}<span className="typeset-cell-content">{parts(row.latex, row.kind === 'continuation')}</span></>}
+    </span>)}</span>
+  </span>
+}
+function r3NeutralSegments(source: string): { latex: string; relation: boolean }[] {
+  const result: { latex: string; relation: boolean }[] = []
+  let start = 0, braces = 0, parentheses = 0
+  for (let i = 0; i < source.length; i++) {
+    const char = source[i]
+    if (char === '{') braces++; if (char === '}') braces--; if (char === '(') parentheses++; if (char === ')') parentheses--
+    if (braces || parentheses) continue
+    const relation = char === '=' || char === '<' || char === '>' ? char : char === '\\' ? source.slice(i).match(/^\\(?:le|ge)(?![a-zA-Z])/)?.[0] : undefined
+    if (!relation) continue
+    if (i > start) result.push({ latex: source.slice(start, i), relation: false })
+    result.push({ latex: relation, relation: true }); i += relation.length - 1; start = i + 1
+  }
+  if (start < source.length) result.push({ latex: source.slice(start), relation: false })
+  return result.length ? result : [{ latex: source, relation: false }]
+}
+function r3FixedRows(source: string, width: number, measure: (value: string) => number, narrow: boolean): TypesetRow[] {
+  const plan = typesetRows(source, Infinity, measure)
+  if (!narrow) return plan.rows
+  return plan.rows.flatMap(row => row.kind === 'equation'
+    ? [...(row.lhs ? typesetRows(row.lhs, width, measure).rows : []), ...typesetRows('=' + (row.rhs ?? ''), width, measure).rows.filter(part => part.latex !== '')]
+    : typesetRows(row.latex, width, measure).rows)
+}
+
+/** R3 numbering uses the real inline baseline. Glyph-box centres are not a
+ * reliable baseline for a reserved target or a tall mathematical expression. */
+function R3NumberedEquation({ number, children }: { number: number; children: ReactNode }) {
+  const root = useRef<HTMLDivElement>(null), body = useRef<HTMLDivElement>(null), label = useRef<HTMLSpanElement>(null)
+  const [placement, setPlacement] = useState({ top: 0, below: false, status: 'UNVERIFIED' })
+  useLayoutEffect(() => {
+    const node = root.current, content = body.current, tag = label.current
+    if (!node || !content || !tag) return
+    let alive = true, frame: number | undefined
+    const observed = new Set<Element>()
+    const observeMath = () => {
+      if (!observer) return
+      for (const element of observed) if (!element.isConnected) { observer.unobserve(element); observed.delete(element) }
+      for (const element of [content, tag, ...content.querySelectorAll<HTMLElement>('.typeset-formula-body, .typeset-table, .typeset-line, .typeset-cell-content, .typeset-relation, .typeset-table-cell, .katex-html, button[data-testid^="textbook-item-"]')]) {
+        if (!observed.has(element)) { observer.observe(element); observed.add(element) }
+      }
+    }
+    const measure = () => {
+      if (!alive || content.getBoundingClientRect().width < 1) return
+      const last = [...content.querySelectorAll<HTMLElement>('.typeset-line')].filter(row => row.getBoundingClientRect().height > 0).at(-1)
+      const cell = last ? [...last.querySelectorAll<HTMLElement>('.typeset-cell-content, .typeset-relation, .typeset-table-cell')].at(-1) : undefined
+      const numberMarker = tag.querySelector<HTMLElement>('[data-r3-number-baseline]')
+      if (!cell || !numberMarker) return
+      const marker = document.createElement('i'); marker.className = 'r3-inline-baseline'; marker.setAttribute('aria-hidden', 'true'); cell.append(marker)
+      const baseline = marker.getBoundingClientRect().top; marker.remove()
+      const box = node.getBoundingClientRect(), tagBox = tag.getBoundingClientRect(), contentBox = content.getBoundingClientRect()
+      const baselineOffset = numberMarker.getBoundingClientRect().top - tagBox.top, inlineTop = baseline - baselineOffset
+      const ink = [...content.querySelectorAll<HTMLElement>('.katex-html, button[data-testid^="textbook-item-"]')].map(el => el.getBoundingClientRect()).filter(rect => rect.width > 0 && rect.height > 0)
+      const left = contentBox.right - tagBox.width - 2
+      const below = ink.some(rect => rect.right + 8 > left && rect.left < contentBox.right && rect.bottom > inlineTop && rect.top < inlineTop + tagBox.height)
+      const top = (below ? Math.max(contentBox.bottom, ...ink.map(rect => rect.bottom)) + 8 : inlineTop) - box.top
+      const next = { top, below, status: 'MEASURED' }
+      setPlacement(old => old.below === below && old.status === next.status && Math.abs(old.top - top) < .01 ? old : next)
+    }
+    const schedule = () => { if (!alive) return; observeMath(); if (frame === undefined) frame = requestAnimationFrame(() => { frame = undefined; observeMath(); measure() }) }
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(schedule)
+    content.addEventListener('typeset-layout', schedule); measure(); observeMath(); schedule()
+    window.addEventListener('resize', schedule)
+    void document.fonts?.ready.then(schedule)
+    return () => { alive = false; observer?.disconnect(); observed.clear(); content.removeEventListener('typeset-layout', schedule); window.removeEventListener('resize', schedule); if (frame !== undefined) cancelAnimationFrame(frame) }
+  }, [children, number])
+  return <div ref={root} className={'numbered-equation r3-exact-number' + (placement.below ? ' numbered-equation--below' : '')} data-equation-number={number} data-r3-number-status={placement.status}>
+    <div ref={body} className="numbered-equation-body">{children}</div>
+    <span ref={label} className="numbered-equation-label" style={{ top: placement.top, bottom: 'auto' }} aria-label={'式' + number}>({number})<i className="r3-inline-baseline" data-r3-number-baseline aria-hidden="true" /></span>
+  </div>
+}
 
 function GuidedNumberedEquation({ number, children, logical = false }: { number: number; children: ReactNode; logical?: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -683,56 +822,15 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
     return () => { alive = false; cancelFocusReveal(); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
   }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, syncRepeatedContext, reveal, cancelFocusReveal])
-  // The canonical derivation shares one relation axis. Formula numbering is a
-  // separate contract; recalled conditions and hints keep their own layout.
-  useLayoutEffect(() => {
-    const root = flow.current
-    if (!root) return
-    let alive = true, notifying = false, frame: number | undefined
-    const align = () => {
-      if (!alive) return
-      const groups = new Map<string, HTMLElement[]>()
-      for (const block of root.querySelectorAll<HTMLElement>('.qf01-continuous-derivation [data-qf01-alignment-group]')) {
-        const id = block.dataset.qf01AlignmentGroup!
-        groups.set(id, [...(groups.get(id) ?? []), block])
-      }
-      for (const blocks of groups.values()) {
-        const formulas = blocks.flatMap(block => [...block.querySelectorAll<HTMLElement>('.transformation-equation > .reading-formula-line--typeset')].filter(formula => formula.closest('[data-source-block]') === block && formula.dataset.typesetSource === block.dataset.sourceBlock))
-        const rows = formulas.flatMap(formula => [...formula.querySelectorAll<HTMLElement>('.typeset-line--equation')])
-        const width = (row: HTMLElement, selector: string) => row.querySelector<HTMLElement>(selector)?.getBoundingClientRect().width ?? 0
-        const left = Math.max(0, ...rows.map(row => width(row, '.typeset-left > .typeset-cell-content')))
-        const right = Math.max(0, ...rows.map(row => width(row, '.typeset-right > .typeset-cell-content')))
-        const relation = Math.max(0, ...rows.map(row => width(row, '.typeset-relation')))
-        const naturalWidth = Math.max(0, ...formulas.map(formula => parseFloat(formula.style.getPropertyValue('--typeset-body')) || 0))
-        const bodyWidth = Math.max(naturalWidth, left + relation + right + 8)
-        // Keep the existing responsive split when a shared row cannot fit.
-        // Pixel QA still checks every visible relation; no overflow is hidden.
-        const fits = rows.length >= 2 && formulas.every(formula => formula.clientWidth >= bodyWidth)
-        let changed = false
-        const set = (element: HTMLElement, property: string, value: string) => {
-          if (element.style.getPropertyValue(property) === value) return
-          element.style.setProperty(property, value); changed = true
-        }
-        for (const formula of formulas) {
-          const body = formula.querySelector<HTMLElement>('.typeset-formula-body')
-          if (body) set(body, 'width', fits ? bodyWidth + 'px' : '')
-        }
-        for (const row of rows) set(row, 'grid-template-columns', fits ? `${left}px ${relation}px ${right}px` : '')
-        if (changed) {
-          notifying = true
-          for (const formula of formulas) formula.dispatchEvent(new Event('typeset-layout', { bubbles: true }))
-          notifying = false
-        }
-      }
+  const formulaRecipes = useMemo(() => new Map(m.canonicalBlockIds.filter(id => source.blocks.get(id)?.type === 'formula').map(id => [id, qf01R3FormulaRecipe(source, id)])), [source, m.canonicalBlockIds])
+  const recipeGroups = useMemo(() => {
+    const key = (id: string) => {
+      const number = m.viewContracts.RESULT_REGISTRY.records.find(record => record.sourceRef.blockId === id)?.equation?.displayNumber
+      const stage = m.sourceMap.find(row => row.unitBlockId === id)!.authorAttributes.stageId
+      return number == null ? id : `${stage}-relation-${number}`
     }
-    const schedule = () => { if (!alive || notifying) return; if (frame !== undefined) cancelAnimationFrame(frame); frame = requestAnimationFrame(align) }
-    align()
-    root.addEventListener('typeset-layout', schedule)
-    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(schedule)
-    observer?.observe(root)
-    void document.fonts?.ready.then(schedule)
-    return () => { alive = false; root.removeEventListener('typeset-layout', schedule); observer?.disconnect(); if (frame !== undefined) cancelAnimationFrame(frame) }
-  })
+    return new Map([...formulaRecipes].map(([id]) => [id, [...formulaRecipes].filter(([other]) => key(other) === key(id)).map(([, recipe]) => recipe)]))
+  }, [formulaRecipes, m.sourceMap, m.viewContracts.RESULT_REGISTRY.records])
   const canonicalBlocks = m.canonicalBlockIds.map(id => source.blocks.get(id)!)
   const profile = qf01ReadingLayoutProfile(stage.id, stageInfo.fullLessonBlockRefs.map(id => ({ id, type: source.blocks.get(id)!.type, role: String(m.sourceMap.find(s => s.unitBlockId === id)!.authorAttributes.role) })))
   const selectedRefs = m.viewContracts.INTERACTION_REFERENCES.rows.find(row => row.currentInteractionId === currentQ?.id)
@@ -767,7 +865,12 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     const b = projected.source, q = m.interactions.find(q => q.source.blockId === id), key = viewPrefix + id
     const attrs = readingLayoutBlockAttributes(profile, id)
     let content: ReactNode
-    if (b.type === 'formula') content = <div className="transformation-equation"><TypesetFormula source={projected.formulaSource ?? b.parts.map(p => p.type === 'math' ? p.latex : p.type === 'text' || p.type === 'term' ? '\\text{' + p.text + '}' : '').join('')} sourceId={key} unitId={unit.unitId} parts={projected.slotItemId ? [slot(projected.slotItemId)] : []} itemIds={projected.slotItemId ? { 0: projected.slotItemId } : {}} /></div>
+    if (b.type === 'formula') {
+      const recipe = formulaRecipes.get(id)!
+      content = <div className="transformation-equation">{recipe.template.includes('\\begin{array}')
+        ? <TypesetFormula source={recipe.template} sourceId={key} unitId={unit.unitId} />
+        : <R3FixedFormula recipe={recipe} group={recipeGroups.get(id)!} sourceId={key} resolved={!recipe.interactionId || solved.has(recipe.interactionId)} target={projected.slotItemId ? slot(projected.slotItemId) : null} />}</div>
+    }
     else if (b.type === 'paragraph') content = <p className="reading-paragraph">{renderParts(projected.parts ?? b.parts, key, projected.slotItemId)}</p>
     else if (b.type === 'figure') { const figure = section.figures.find(f => f.id === b.figureId)!; content = <TextbookFigure figure={figure} items={section.items} progress={current} onOpen={() => undefined} /> }
     else if (b.type === 'marker') content = <p className={'reading-role-marker reading-role-marker--' + b.kind} data-reading-role={projected.sourceRole}>{b.text}</p>
@@ -778,7 +881,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
       if (alias !== undefined && alias !== null) {
         const sourceStage = m.sourceMap.find(entry => entry.unitBlockId === id)!.authorAttributes.stageId
         const sameRelation = m.canonicalBlockIds.filter(blockId => m.sourceMap.find(entry => entry.unitBlockId === blockId)!.authorAttributes.stageId === sourceStage && m.viewContracts.RESULT_REGISTRY.records.some(record => record.sourceRef.blockId === blockId && record.equation?.displayNumber === alias) && projectQF01R3Block(source, blockId, solved, { helpFor: helpId, recorded }))
-        if (sameRelation.at(-1) === id || recorded && !viewPrefix.startsWith('history-full-')) content = <GuidedNumberedEquation number={alias}>{content}</GuidedNumberedEquation>
+        if (sameRelation.at(-1) === id || recorded && !viewPrefix.startsWith('history-full-')) content = <R3NumberedEquation number={alias}>{content}</R3NumberedEquation>
       }
     }
     const relationNumber = b.type === 'formula' ? m.viewContracts.RESULT_REGISTRY.records.find(record => record.sourceRef.blockId === id)?.equation?.displayNumber : undefined

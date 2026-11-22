@@ -1,6 +1,23 @@
 #!/usr/bin/env python3
 """現在のチャット用CLI。JSONを入出力し、AIの自動呼出・課金は行わない。"""
 import argparse,json,sys
+import importlib.abc,importlib.util,importlib.machinery
+from pathlib import Path
+
+# Execute this file directly in a fresh process for formal checkpoint operations.
+# -B alone still reads timestamp/size-valid pyc files. Install the source-only
+# loader before importing any workflow module, including Runtime and definitions.
+_WORKFLOW_SOURCE_ROOT=Path(__file__).resolve().parent
+class _WorkflowSourceOnly(importlib.machinery.SourceFileLoader):
+    def get_code(self,fullname):
+        return compile(Path(self.path).read_bytes(),self.path,'exec',dont_inherit=True)
+class _WorkflowSourceFinder(importlib.abc.MetaPathFinder):
+    def find_spec(self,fullname,path=None,target=None):
+        source=_WORKFLOW_SOURCE_ROOT/(fullname+'.py')
+        if '.' not in fullname and source.is_file():
+            return importlib.util.spec_from_loader(fullname,_WorkflowSourceOnly(fullname,str(source)))
+sys.meta_path.insert(0,_WorkflowSourceFinder())
+
 from runtime import Runtime
 from definitions import instantiate
 from views import snapshot,render
@@ -8,12 +25,21 @@ from adapters import apply_patch,git_export,authoring,import_capture,probe_app,r
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',default='.');p.add_argument('--store',required=True)
-    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target','prepare-version-transition','reconcile-version-transition','link-correction-receipt'])
+    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target','prepare-version-transition','reconcile-version-transition','link-correction-receipt','checkpoint-init','checkpoint-preflight','checkpoint-migrate','reconcile-checkpoint-candidate'])
     p.add_argument('--work');p.add_argument('--json',help='JSONファイル。省略時は標準入力（next/status/autoには不要）');p.add_argument('--out');p.add_argument('--check',action='store_true')
-    a=p.parse_args();rt=Runtime(a.store,a.root)
+    a=p.parse_args()
     noinput=a.operation in ('next','status','auto','render','recover-lock','production-ai','production-diagram','team-policy')
+    noinput=noinput or a.operation=='checkpoint-preflight' and not a.json
     data={} if noinput else json.loads(open(a.json).read() if a.json else sys.stdin.read());op=a.operation;w=a.work
-    if op=='team-policy':
+    if op=='checkpoint-init':
+        from checkpoint import CheckpointStore
+        store=CheckpointStore.initialize(a.store,a.root,**data)
+        print(json.dumps(store.summary(),ensure_ascii=False,indent=2));return
+    rt=Runtime(a.store,a.root)
+    if op=='reconcile-checkpoint-candidate':r=rt.reconcile_checkpoint_candidate(w,**data)
+    elif op=='checkpoint-preflight':r=rt.checkpoint_preflight(w,**data)
+    elif op=='checkpoint-migrate':r=rt.migrate_checkpoint_definition(w,**data)
+    elif op=='team-policy':
         from team import default_policy
         r=default_policy()
     elif op=='team-bind-target':

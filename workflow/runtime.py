@@ -1,18 +1,28 @@
 """作成・修正の状態機械。AIの自動起動や自然言語判断の正しさは保証しない。"""
 import copy,time,uuid
 from pathlib import Path
-from store import Store,digest,Conflict
+from store import Store,open_store,digest,Conflict
 from contracts import need,Rejected,plan_check,result_check,manifest,file,sha,transition_sources,transition_block_paths
 from definitions import instantiate,DEFINITION_HASH,VERSION
 
 USER_INTENTS={'approve_proposal','authorize_team_policy','accept_block','accept_app','reject_block','reject_app','pause','resume','priority_override','authorize_merge','authorize_deploy','authorize_cost','quality_positive','quality_negative','continue'}
 
 class Runtime:
-    def __init__(self,store,root):self.store=Store(store);self.root=Path(root).resolve();self._head=self.store.head
+    def __init__(self,store,root):
+        self.store=open_store(store);self.root=Path(root).resolve();self._head=self.store.head
+        if getattr(self.store, 'checkpoint_mode', False):
+            from checkpoint import current_core_identity
+            self._checkpoint_core_identity = current_core_identity()
     def append(self,kind,work,payload,**kwargs):
         event=self.store.append(kind,work,payload,expected=self._head,**kwargs);self._head=event['hash'];return event
     def state(self,work):
-        s=None;events=self.store.events();self._head=events[-1]['hash'] if events else '0'*64
+        checkpoint = getattr(self.store, 'checkpoint_mode', False)
+        s = self.store.state_base(work) if checkpoint else None
+        events = self.store.suffix_events() if checkpoint else self.store.events()
+        # The expected HEAD belongs to this exact read, not a later reread.
+        self._head = events[-1]['hash'] if events else self.store.checkpoint_anchor['head'] if checkpoint else '0'*64
+        if s is not None:
+            s.pop('_status_cache', None); s.pop('_nodes', None)
         for e in events:
             if e['work']!=work:continue
             p=e['payload'];k=e['kind']
@@ -36,6 +46,9 @@ class Runtime:
                     s['candidate_sha']=None;s['candidate_manifest'].update(p['after_manifest']);s['patches'][p['operation']]['completed']=True
                 elif k=='patch_aborted':s['patches'][p['operation']]['completed']=True
                 elif k=='definition_migrated':s['definition_hash']=p['to']
+                elif k=='checkpoint_definition_migrated':
+                    s['definition_hash']=p['to'];s['candidate_sha']=p['candidateSHA'];s['candidate_manifest']=p['candidateManifest']
+                    s['release_versions']['qf01-p035']=p['candidateSHA'];s['checkpoint_definition_migration']=p;s['closed']=None
                 elif k=='production_context':s['production_context']=p['context']
                 elif k=='correction_adopted':s.setdefault('adopted_corrections',[]).append(p)
                 elif k=='approval_coverage_migrated':s['users'][p['user_event']]['approved_bundles']=p['approved_bundles']
@@ -82,15 +95,28 @@ class Runtime:
             parent=plan['parent_impact']
             need(all(parent.get(k) for k in ('work','signature','artifact','version')),'子影響Workの対応が不足')
             self.state(parent['work'])
-            duplicate=next((e['work'] for e in self.store.events() if e['kind']=='opened' and e['payload']['plan'].get('parent_impact')==parent),None)
+            from checkpoint import history_events
+            duplicate=next((e['work'] for e in history_events(self,'complete') if e['kind']=='opened' and e['payload']['plan'].get('parent_impact')==parent),None)
             need(not duplicate,'同じ原因・対象・版の既存子修正Workを再利用する:'+str(duplicate))
-        need(not any(e['work']==plan['work_id'] for e in self.store.events()),'Work IDが既に存在')
+        if getattr(self.store, 'checkpoint_mode', False):
+            need(self.store.can_open(plan['work_id']), 'Work IDが既に存在')
+        else:
+            need(not any(e['work']==plan['work_id'] for e in self.store.events()),'Work IDが既に存在')
         need(manifest(self.root,plan['source_manifest'])==plan['source_manifest'],'元資料の固定版と不一致')
         need(manifest(self.root,plan['rules'])==plan['rules'],'規則の固定版と不一致')
         snapshots={p:file(self.root,p).read_bytes().hex() for p in plan['source_manifest']}
         ref=self.store.put({'source_sha':plan['source_sha'],'files_hex':snapshots})
         return self.append('opened',plan['work_id'],{'plan':copy.deepcopy(plan),'definition_hash':DEFINITION_HASH,'original_snapshot':ref})
     def integrity(self,s):
+        if getattr(self.store, 'checkpoint_mode', False):
+            import hashlib
+            engine = Path(__file__).resolve().parent
+            try:
+                if any(hashlib.sha256((engine/name).read_bytes()).hexdigest()!=wanted
+                       for name,wanted in self._checkpoint_core_identity['files'].items()):
+                    return 'checkpoint実行器sourceが開始後に変化した。fresh processで再読込みが必要'
+            except OSError:
+                return 'checkpoint実行器sourceを照合できない'
         try:
             need(s['definition_hash']==DEFINITION_HASH,'工程定義の版が変わった。移行照合が必要')
             if s['plan'].get('workflow_version')=='production/2':need(manifest(self.root,s['plan'].get('protected_manifest',{}))==s['plan'].get('protected_manifest',{}),'保護対象に差分がある')
@@ -147,6 +173,9 @@ class Runtime:
         if c:return 'RUNNING' if c['input_hash']==h and c['expires_at']>time.time() else 'BLOCKED'
         return 'PENDING'
     def pending_issues(self):
+        from checkpoint import queue_coverage, UnknownContext
+        if queue_coverage(self)['status'] != 'COMPLETE':
+            raise UnknownContext('GLOBAL_PENDING_ISSUES_NOT_RECOVERED')
         outstanding=[]
         for w in {e['work'] for e in self.store.events() if e['kind']=='opened'}:
             for i in self.state(w)['issues'].values():
@@ -255,7 +284,8 @@ class Runtime:
     def fingerprint_refs(self,s,refs):
         team_refs=set()
         if s['plan'].get('agent_team'):
-            for event in self.store.events():
+            from checkpoint import history_events
+            for event in history_events(self,'team',s['plan']['work_id']):
                 if event['work'] != s['plan']['work_id']: continue
                 if event['kind'] == 'team_output_recorded': team_refs.add(event['payload']['outputRef'])
                 elif event['kind'] == 'team_harness_captured': team_refs.add(event['payload']['artifactRef'])
@@ -400,7 +430,11 @@ class Runtime:
         result={'verdict':'PASS','checks':['入力・正本・依存・未解決の照合']}
         if s['plan'].get('workflow_version')=='production/2' and node_id in ('S00_RECOVER','S01_ROUTE'):
             from requests import pending
-            result.update(correction_queue=pending(self,s),command=s['plan']['command'],rules=s['plan']['rules'],blocks=s['plan']['blocks'],approval_bundles=s['plan']['approval_bundles'],release_units=s['plan']['release_units'])
+            from checkpoint import queue_coverage
+            coverage=queue_coverage(self)
+            queue=pending(self,s) if coverage['status']=='COMPLETE' else None
+            result.update(correction_queue=queue,command=s['plan']['command'],rules=s['plan']['rules'],blocks=s['plan']['blocks'],approval_bundles=s['plan']['approval_bundles'],release_units=s['plan']['release_units'])
+            if coverage['status']!='COMPLETE':result['correction_queue_coverage']=coverage
         ref=self._finish(work,n,result,self.input_hash(s,n),'deterministic-code')
         if node_id=='Z01_CLOSE' and s['plan'].get('workflow_version')=='production/2':
             self.append('work_closed',work,{'result':ref,'sourceSHA':s['candidate_sha'],'definition_hash':s['definition_hash'],'proposal_hash':s['plan']['proposal']['hash'],'manifest':s['candidate_manifest']})
@@ -603,9 +637,72 @@ class Runtime:
             need(recovery_proof is not None,'回収Workの照合済み移行preflightが必要')
         return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs,**({'recoveryProof':recovery_proof} if recovery_proof else {})})
 
+    def checkpoint_preflight(self,work,*,candidate_sha=None):
+        from checkpoint import FIXED_WORK, CURRENT_REPAIR_AFTER, RECOVERY_PROPOSAL_SHA256, current_core_identity, verify_candidate_git, sha as bytes_sha
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけのpreflight')
+        s=self.state(work);origin=self.store._view.state_snapshot(work)
+        need(not s['claims'] and not any(not p.get('completed') for p in s['patches'].values()),'実行権又は未確定patchがある')
+        need(not any(not op.get('outcome') for op in s['external'].values()),'未確定の外部操作を引き継がない')
+        need(not s['paused'],'本人pause中の定義移行は行わない')
+        for key in ('rules','source_manifest','protected_manifest'):
+            need(s['plan'].get(key)==origin['plan'].get(key),'原規則・原source・保護manifestを変更しない:'+key)
+        need(all(s['users'].get(key)==value for key,value in origin['users'].items()),'原承認/本人発言を変更しない')
+        identity=current_core_identity();need(s['definition_hash']!=identity['definitionHash'],'既に同じ定義。二重移行しない')
+        need(manifest(self.root,s['plan']['rules'])==s['plan']['rules'],'規則の実bytesが違う')
+        need(manifest(self.root,s['plan'].get('protected_manifest',{}))==s['plan'].get('protected_manifest',{}),'保護対象の実bytesが違う')
+        current=manifest(self.root,s['candidate_manifest'])
+        changed={name:value for name,value in current.items() if value!=s['candidate_manifest'][name]}
+        need(not changed or set(changed)==set(CURRENT_REPAIR_AFTER) and changed==CURRENT_REPAIR_AFTER,
+             '採用済み5path以外/部分状態の候補差分')
+        after=candidate_sha or s['candidate_sha']
+        if changed or after!=s['candidate_sha']:verify_candidate_git(self.root,after,current)
+        frozen=self.store.source_snapshot(work)['snapshot']
+        need({name:bytes_sha(bytes.fromhex(value)) for name,value in frozen['files_hex'].items()}==s['plan']['source_manifest'],
+             'Git由来原snapshotが原manifestに一致しない')
+        from capabilities import implementation_hash
+        return {'schemaVersion':'qf01-checkpoint-definition-preflight/1','work':work,
+                'proposalSHA256':RECOVERY_PROPOSAL_SHA256,'checkpointEpoch':self.store.checkpoint_epoch,
+                'anchor':self.store.checkpoint_anchor,'ledgerHead':self._head,'sourceRoot':str(self.root),
+                'fromDefinition':s['definition_hash'],'toDefinition':identity['definitionHash'],'core':identity,
+                'implementationHash':implementation_hash(self),'candidateBeforeSHA':s['candidate_sha'],
+                'candidateAfterSHA':after,'candidateManifest':current,'changedCandidatePaths':changed,
+                'planHash':digest(s['plan']),'rulesHash':digest(s['plan']['rules']),
+                'sourceManifestHash':digest(s['plan']['source_manifest']),
+                'protectedManifestHash':digest(s['plan'].get('protected_manifest',{})),
+                'preservedUserRecordsHash':digest(s['users']),'originalSourceSnapshotHash':digest(frozen),
+                'resultDispositions':[{'node':name,'artifact':row['artifact'],'oldInputHash':row['input_hash'],
+                    'disposition':'INVALIDATED_BY_DEFINITION','reason':'Current definition/service must be verified; original result retained'}
+                    for name,row in sorted(s['results'].items())],
+                'globalQueueCoverage':'UNKNOWN','oldPassTransferred':False,'gateAccepted':False}
+
+    def migrate_checkpoint_definition(self,work,*,proof,expected_head):
+        from checkpoint import FIXED_WORK
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけの定義移行')
+        need(isinstance(proof,dict),'preflight objectが必要')
+        current=self.checkpoint_preflight(work,candidate_sha=proof.get('candidateAfterSHA'))
+        need(current==proof and current['ledgerHead']==expected_head,'preflight後の版/承認/入力/HEADが違う')
+        reference=self.store.put(proof)
+        return self.append('checkpoint_definition_migrated',work,{
+            'schemaVersion':'qf01-checkpoint-definition-migration/1','from':current['fromDefinition'],
+            'to':current['toDefinition'],'preflightRef':reference,'checkpointEpoch':self.store.checkpoint_epoch,
+            'candidateSHA':current['candidateAfterSHA'],'candidateManifest':current['candidateManifest'],
+            'resultDispositions':current['resultDispositions'],
+            'preservedUserRecordsHash':current['preservedUserRecordsHash'],
+            'adoptionProposalSHA256':current['proposalSHA256'],'oldPassTransferred':False,'gateAccepted':False})
+
+    def reconcile_checkpoint_candidate(self,work,node_id,token,*,owner_result_refs,
+                                       compile_receipt_ref,verification_refs,expected_head):
+        from adapters import reconcile_checkpoint_candidate
+        return reconcile_checkpoint_candidate(self,work,node_id,token,
+            owner_result_refs=owner_result_refs,compile_receipt_ref=compile_receipt_ref,
+            verification_refs=verification_refs,expected_head=expected_head)
+
     def next_integration(self,work,s,nodes):
         from requests import pending
         if s['plan']['command']=='CMD-WORK-002':
+            from checkpoint import queue_coverage
+            coverage=queue_coverage(self)
+            if coverage['status']!='COMPLETE':return {'status':'BLOCKED','reason':'GLOBAL_QUEUE_COVERAGE_UNKNOWN','coverage':coverage}
             queue=pending(self,s)
             override=next((u for u in reversed(list(s['users'].values())) if u['intent']=='priority_override' and u['scope']==s['plan']['scope']),None)
             if queue and not override:return {'status':'BLOCKED','reason':'CORRECTION_FIRST','issues':queue,'resume_work':work,'preserved_results':list(s['results'])}

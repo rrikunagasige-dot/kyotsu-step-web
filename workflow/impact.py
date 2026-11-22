@@ -1,6 +1,7 @@
 """Pre/post impact inventories and evidence-backed sibling closure."""
 from contracts import need
 from store import digest
+from checkpoint import history_events
 
 
 def inventory(state, node):
@@ -35,7 +36,16 @@ def check(rt, work, node, result):
 
 
 def record_visits(rt, work, rows):
+    epoch = getattr(rt.store, 'checkpoint_epoch', None)
+    definition = rt.state(work)['definition_hash'] if epoch else None
+    events = history_events(rt, 'suffix' if epoch else 'complete', work)
     for row in rows:
-        key = digest([row['rootCauseSignature'], row['artifact'], row['version'], row['phase']])
-        if any(e['kind'] == 'impact_visited' and e['work'] == work and e['payload']['key'] == key for e in rt.store.events()): continue
-        rt.append('impact_visited', work, {'key': key, 'signature': row['rootCauseSignature'], 'artifact': row['artifact'], 'version': row['version'], 'phase': row['phase']})
+        original_key = digest([row['rootCauseSignature'], row['artifact'], row['version'], row['phase']])
+        key = digest([epoch, definition, work, original_key]) if epoch else original_key
+        if any(e['kind'] == 'impact_visited' and e['payload']['key'] == key for e in events): continue
+        payload = {'key': key, 'signature': row['rootCauseSignature'], 'artifact': row['artifact'], 'version': row['version'], 'phase': row['phase']}
+        if epoch:
+            payload.update(checkpointEpoch=epoch, definitionHash=definition,
+                           originalVisitKey=original_key, priorPrefixCoverage='UNKNOWN')
+        event = rt.append('impact_visited', work, payload)
+        events.append(event)

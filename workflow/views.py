@@ -3,6 +3,7 @@ import json,re
 from pathlib import Path
 from definitions import instantiate,VERSION
 from store import canonical,digest
+from checkpoint import UnknownContext, history_events, queue_coverage
 
 def child_work_references(events, work):
     """旧参照を推測して親子関係へ変換しない。原eventは不変。"""
@@ -37,30 +38,71 @@ def production_accepted(rt,s):
     return s['users'].get(event,{}).get('intent')=='accept_app'
 
 def snapshot(rt,work):
-    s=rt.state(work);nxt=rt.next(work);nodes=instantiate(s['plan'])
+    s=rt.state(work);nodes=instantiate(s['plan']);unknown={}
+    try:
+        nxt=rt.next(work)
+    except UnknownContext as error:
+        unknown['next']=str(error)
+        nxt={'status':'BLOCKED','reason':str(error),'context_coverage':'UNKNOWN'}
+    def node_status(node):
+        try:
+            return rt.node_status(s,node)
+        except UnknownContext as error:
+            unknown[node['id']]=str(error)
+            return 'BLOCKED'
     started=[n for n in nodes.values() if n['id'] in s['results'] or n['id'] in s.get('claims',{})]
     kinds={n.get('stage_kind',n['id']) for n in started}
     status=('DONE' if nxt['status']=='DONE' else 'BLOCKED' if nxt['status']=='BLOCKED'
             else 'VERIFYING' if kinds.intersection({'R07_VERIFY','C08_VERIFY','T04_VERIFY'})
             else 'IMPLEMENTING' if kinds.intersection({'R06_PATCH','C07_BUILD','T03_BUILD'})
             else 'APPROVED' if rt.approval(s) else 'PROPOSED')
-    result = {'work':work,'engine_version':VERSION,'ledger_head':rt.store.head,'work_status':status,'profile':s['plan']['profile'],'simulation':s['plan'].get('simulation',False),'candidate_sha':s['candidate_sha'],'next':nxt,'nodes':[{**n,'status':rt.node_status(s,n)} for n in nodes.values()],'pending_issues':[i for i in s['issues'].values() if not i.get('resolved_by')],'application_accepted':production_accepted(rt,s) if s['plan'].get('workflow_version') else s['plan']['profile']=='material' and rt.node_status(s,nodes['G3_FINAL'])=='PASSED'}
+    try:
+        accepted=production_accepted(rt,s) if s['plan'].get('workflow_version') else s['plan']['profile']=='material' and rt.node_status(s,nodes['G3_FINAL'])=='PASSED'
+    except UnknownContext as error:
+        accepted=None
+        unknown['application_accepted']=str(error)
+    result = {'work':work,'engine_version':VERSION,'ledger_head':rt.store.head,'work_status':status,'profile':s['plan']['profile'],'simulation':s['plan'].get('simulation',False),'candidate_sha':s['candidate_sha'],'next':nxt,'nodes':[{**n,'status':node_status(n)} for n in nodes.values()],'pending_issues':[i for i in s['issues'].values() if not i.get('resolved_by')],'application_accepted':accepted}
+    coverage=queue_coverage(rt)
+    if coverage['status']!='COMPLETE':
+        result['correction_queue_coverage']=coverage
+        result['checkpoint_epoch']=getattr(rt.store,'checkpoint_epoch',None)
+        result['checkpoint_anchor']=getattr(rt.store,'checkpoint_anchor',None)
+        result['historical_prefix_coverage']='INCOMPLETE'
 
     if s['plan'].get('workflow_version') == 'production/2':
         from requests import pending
-        result['correction_queue']=pending(rt,s)
+        try:
+            result['correction_queue']=pending(rt,s)
+        except UnknownContext as error:
+            result['correction_queue']=None
+            unknown['correction_queue']=str(error)
         from requests import receipt_dispositions,_original_pending
-        dispositions=receipt_dispositions(rt,s)
+        try:
+            dispositions=receipt_dispositions(rt,s)
+        except UnknownContext as error:
+            dispositions=None
+            result['correction_receipt_dispositions']=None
+            unknown['correction_receipt_dispositions']=str(error)
         if dispositions:
             result['correction_receipt_dispositions']=dispositions
             result['correction_queue_original']=_original_pending(rt,s)
-        result['child_works'], unresolved = child_work_references(rt.store.events(), work)
+        try:
+            child_events=history_events(rt,'complete')
+        except UnknownContext as error:
+            child_events=history_events(rt,'suffix')
+            result['child_work_coverage']='KNOWN_SUFFIX_ONLY'
+            unknown['child_works']=str(error)
+        result['child_works'], unresolved = child_work_references(child_events, work)
         if unresolved: result['unresolved_parent_references'] = unresolved
-        result['capability_receipts']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind']=='capability_bound']
-        result['release_acceptance']={u['id']:rt.node_status(s,nodes['G3_FINAL@'+u['id']])=='PASSED' for u in s['plan']['release_units']}
+        result['capability_receipts']=[e['payload'] for e in history_events(rt,'capability-bindings',work) if e['kind']=='capability_bound']
+        if coverage['status']!='COMPLETE':result['capability_receipt_coverage']='VERIFIED_SUFFIX_ONLY'
+        result['release_acceptance']={}
+        for unit in s['plan']['release_units']:
+            node=nodes['G3_FINAL@'+unit['id']];value=node_status(node)
+            result['release_acceptance'][unit['id']]=None if node['id'] in unknown else value=='PASSED'
     if s['plan'].get('agent_team'):
         from team import project
-        team = project(rt.store.events(), work)
+        team = project(history_events(rt,'team',work), work)
         result['agent_team'] = {'policy': s['plan']['agent_team'], 'findings': [f for rows in team['findings'].values() for f in rows], 'tasks': [
             {'registrationRef': ref, 'assignmentId': r['assignment']['assignmentId'],
              'node': r['assignment']['node'], 'performerRef': r['assignment']['performerRef'],
@@ -70,6 +112,7 @@ def snapshot(rt,work):
              'contextExposure': r['packet']['contextExposure'],
              'status': team['reconciliations'].get(ref, {}).get('status', 'REGISTERED')}
             for ref, r in team['registrations'].items()]}
+    if unknown:result['unknown_context']=unknown
     return result
 
 def rendered(rt,work):
@@ -79,6 +122,9 @@ def rendered(rt,work):
     text=f"# {work} — 現在地（GENERATED）\n\n状態: {snap['work_status']} / 内部: {nxt['status']} / 次: {nextnode}\n\n台帳HEAD: `{snap['ledger_head']}`\n候補SHA: `{snap['candidate_sha']}`\n\n模擬実行: {snap['simulation']}。アプリ受入: {snap['application_accepted']}。技術試験合格だけで教材の品質は確定しない。\n\n"+'\n'.join(rows)+'\n\n待機理由: '+str(nxt.get('reason','—'))+'\n'
     if snap.get('unresolved_parent_references'):
         text += '\n未解決の旧親参照（原event不変）:\n' + json.dumps(snap['unresolved_parent_references'], ensure_ascii=False) + '\n'
+    if snap.get('historical_prefix_coverage'):
+        text += '\n旧全台帳は未回復。表示は固定checkpointと検証済みsuffix・明示projectionの範囲。\n'
+        text += '\n未確認の依存:\n' + json.dumps(snap.get('unknown_context',{}),ensure_ascii=False) + '\n'
     # 一画面の分岐図。詳細ノード・依存は上表とsnapshotに保持する。
     counts={a:sum(n['status']=='PASSED' for n in snap['nodes'] if n['actor']==a) for a in ('AI','TOOL','USER','AUDITOR')}
     def group(n):

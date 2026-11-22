@@ -57,5 +57,6 @@ def instantiate(plan):
     add('Z01_CLOSE','CODE',['L01_LEARNING'],watch='all')
     return nodes
 
+IMPLEMENTATION_FILES=('definitions.py','runtime.py','store.py','contracts.py','adapters.py','views.py','cli.py','production.py','runner.py','graphs.py','capabilities.py','integration.py','requests.py','impact.py','migrations.py','learning.py','legacy_diagnostics.py','materialization.py','team.py','team_transport.py','team_migration.py','agent_guard.py','local_render_evidence.py','checkpoint.py')
 DEFINITION_HASH=digest({'version':VERSION,'creation':CREATE,'correction':CORRECT,'technical':TECHNICAL,
-                        'gates':['G1_VISUAL','G2_AUDIT','G3_HOST','G3_FINAL'],'learning':'L01_LEARNING','implementation':{name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('definitions.py','runtime.py','store.py','contracts.py','adapters.py','views.py','cli.py','production.py','runner.py','graphs.py','capabilities.py','integration.py','requests.py','impact.py','migrations.py','learning.py','legacy_diagnostics.py','materialization.py','team.py','team_transport.py','team_migration.py','agent_guard.py','local_render_evidence.py')}})
+                        'gates':['G1_VISUAL','G2_AUDIT','G3_HOST','G3_FINAL'],'learning':'L01_LEARNING','implementation':{name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in IMPLEMENTATION_FILES}})

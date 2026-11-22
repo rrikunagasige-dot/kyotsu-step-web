@@ -2,6 +2,7 @@
 import json
 from contracts import manifest, file
 from store import digest
+from checkpoint import source_snapshot
 
 PATH='src/data/textbook/math/numbers/n07Authored.json'
 UNIT='math-numbers-expressions-n07'
@@ -20,8 +21,7 @@ def inspect(rt, work, candidate, *, visible=False):
         if s.get('candidate_manifest',{}).get(PATH)!=current:
             return {'status':'FAIL','reason':'legacy source manifest mismatch'}
         import hashlib
-        opened=next(e for e in rt.store.events() if e['work']==work and e['kind']=='opened')
-        raw=bytes.fromhex(rt.store.get(opened['payload']['original_snapshot'])['files_hex'][PATH])
+        raw=bytes.fromhex(source_snapshot(rt,work)['snapshot']['files_hex'][PATH])
         if hashlib.sha256(raw).hexdigest()!=plan['source_manifest'][PATH]:return {'status':'FAIL','reason':'legacy frozen snapshot mismatch'}
         frozen=json.loads(raw)
     if digest(frozen)!=digest(candidate):

@@ -16,6 +16,45 @@ function clickChoice(id:string,value:string){const panel=screen.getByTestId('inl
 beforeEach(()=>{Object.defineProperty(globalThis,'crypto',{value:webcrypto,configurable:true});localStorage.clear();useAppStore.setState({textbookProgress:{}});window.scrollBy=vi.fn();Element.prototype.scrollIntoView=vi.fn();window.requestAnimationFrame=cb=>window.setTimeout(()=>cb(0),0);window.cancelAnimationFrame=id=>window.clearTimeout(id)})
 afterEach(()=>{cleanup();vi.restoreAllMocks()})
 describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
+ it('完成した右辺の負数を二項演算子へ変えず、符号と数字を一体表示する',async()=>{
+  act(()=>{for(const item of active.slice(0,4))useAppStore.getState().answerTextbook(unit,item.id,item.answer)})
+  localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test','1')
+  render(<Lesson/>);await waitFor(()=>expect(document.querySelector('[data-source-block="qf01-r3-c1-s02-f03"][data-source-view="canonical"] .typeset-right .katex')).toBeTruthy())
+  const right=document.querySelector('[data-source-block="qf01-r3-c1-s02-f03"][data-source-view="canonical"] .typeset-right')!
+  expect(right.querySelector('annotation')?.textContent).toBe('-10')
+  expect([...right.querySelectorAll('.mbin')].some(atom=>atom.textContent==='−')).toBe(false)
+ })
+ it('外枠寸法が一定でも内側の数式幅が変われば番号衝突を再測定する',async()=>{
+  // Deterministic observer lifecycle regression; real pixels are checked in Edge.
+  const observers:ObserverProbe[]=[]
+  class ObserverProbe {
+   readonly targets=new Set<Element>()
+   constructor(readonly callback:ResizeObserverCallback){observers.push(this)}
+   observe(target:Element){this.targets.add(target)}
+   unobserve(target:Element){this.targets.delete(target)}
+   disconnect(){this.targets.clear()}
+   fire(){this.callback([],this as unknown as ResizeObserver)}
+  }
+  let inkRight=200
+  vi.stubGlobal('ResizeObserver',ObserverProbe)
+  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){
+   if(this.classList.contains('r3-inline-baseline')){const tag=this.closest<HTMLElement>('.numbered-equation-label');return new DOMRect(0,tag?parseFloat(tag.style.top||'0')+14:30,0,0)}
+   if(this.classList.contains('numbered-equation-label'))return new DOMRect(278,parseFloat(this.style.top||'0'),20,20)
+   if(this.classList.contains('katex-html'))return new DOMRect(10,20,inkRight-10,20)
+   if(this.classList.contains('numbered-equation')||this.classList.contains('numbered-equation-body')||this.classList.contains('typeset-line')||this.classList.contains('typeset-formula-body'))return new DOMRect(0,0,300,48)
+   return new DOMRect(0,0,0,0)
+  })
+  try{
+   render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id)
+   const numbered=document.querySelector<HTMLElement>('[data-source-block="qf01-r3-c1-s01-f01"] .r3-exact-number')!
+   await act(async()=>{await new Promise(resolve=>setTimeout(resolve,20))})
+   expect(numbered.classList.contains('numbered-equation--below')).toBe(false)
+   const inner=observers.filter(observer=>[...observer.targets].some(target=>target.classList.contains('katex-html')))
+   expect(inner.length).toBeGreaterThan(0)
+   inkRight=295;act(()=>{for(const observer of inner)observer.fire()})
+   await waitFor(()=>expect(numbered.classList.contains('numbered-equation--below')).toBe(true))
+  }finally{vi.unstubAllGlobals()}
+ })
  it('35実回答をstoreへ保存し、本文math2・意味穴・誤答・再読込・参照・履歴・まとめを結ぶ',async()=>{
   const warnings=vi.spyOn(console,'warn')
   let view=render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id,{}, {timeout:10000});let advances=0;let mathematicalProse=0

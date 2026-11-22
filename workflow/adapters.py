@@ -3,6 +3,7 @@ import hashlib,io,json,os,subprocess,sys,uuid,zipfile,time
 from pathlib import Path
 from contracts import need,file,sha,manifest,relative,Rejected,plan_check
 from store import digest,canonical
+from checkpoint import history_events
 
 
 def in_scope(path,scope):
@@ -50,7 +51,8 @@ def apply_patch(rt,work,node,token,patch,transition_ref=None):
                 if isinstance(before,dict) and key in before:need(before[key]==new.get(key),'保存履歴を変更しない')
         staged.append((path,p,after))
     op='patch-'+digest(patch)[:20]+'-'+token[:12]
-    need(not any(e['id']==op for e in rt.store.events()),'同じ差分を再適用しない。実状態を照合する')
+    history = history_events(rt, 'complete', work if getattr(rt.store, 'checkpoint_epoch', None) else None)
+    need(not any(e['id']==op for e in history),'同じ差分を再適用しない。実状態を照合する')
     backup=rt.store.put({name:p.read_bytes().hex() for name,p,_ in staged})
     patch_ref=rt.store.put(patch)
     rt.append('patch_intent',work,{'node':node,'patch_hash':patch_ref,'backup':backup,'before':{x['path']:x['before_sha256'] for x in patch['files']}},event_id=op)
@@ -323,7 +325,7 @@ def _sci_load_r3(rt,work):
     for nid in ('S00_RECOVER','S01_ROUTE','T01_ANALYSIS','T02_APPROVAL','T03_BUILD'):need(rt.node_status(owner,nodes[nid])=='PASSED','source_ci R3 current publisher '+nid)
     approval=rt.approval(owner);result=rt.store.get(owner['results']['T02_APPROVAL']['artifact']);need(approval and approval.get('intent')=='approve_proposal' and result.get('user_event')==approval['id'],'source_ci R3 current approval')
     need(approval.get('verification_level')!='simulation' or s['plan'].get('simulation') and op.get('simulation'),'source_ci R3 simulation approval')
-    patches=[e['payload'] for e in rt.store.events() if e['work']==_SOURCE_CI_R3_OWNER and e['kind']=='patch_applied'];need(len(owner['patches'])==1 and all(p.get('completed') and p.get('node')=='T03_BUILD' for p in owner['patches'].values()) and len(patches)==1 and patches[0]['after_manifest']==policy['ownerAfterManifest'],'source_ci R3 publisher patch once')
+    patches=[e['payload'] for e in history_events(rt, 'complete', _SOURCE_CI_R3_OWNER) if e['kind']=='patch_applied'];need(len(owner['patches'])==1 and all(p.get('completed') and p.get('node')=='T03_BUILD' for p in owner['patches'].values()) and len(patches)==1 and patches[0]['after_manifest']==policy['ownerAfterManifest'],'source_ci R3 publisher patch once')
     core=rt.state(_VT_OWNER);need(set(core['candidate_manifest'])==set(_SOURCE_CI_R3_CORE_PATHS),'source_ci R3 exact sixteen core scope');_vt_owner(rt,s,_VT_OWNER,policy['coreResultRef']);need(core['candidate_sha']==policy['coreCandidateSHA'] and core['candidate_manifest']==policy['coreAfterManifest'],'source_ci R3 core owner binding')
     need(manifest(rt.root,core['candidate_manifest'])==policy['coreAfterManifest'],'source_ci R3 actual core bytes')
     loaded_root=pathlib.Path(__file__).resolve().parent.parent
@@ -373,7 +375,7 @@ def _sci_load(rt,work,policy_work=None):
     need(approval.get('verification_level')!='simulation' or s['plan'].get('simulation') and op.get('simulation'), 'source_ci simulated owner cannot authorize real material')
     patches=[p for p in owner['patches'].values() if p.get('completed') and p.get('node')=='T03_BUILD']
     need(len(patches)==1 and len(owner['patches'])==1, 'source_ci owner patch exactly once required')
-    actual=[e['payload'] for e in rt.store.events() if e['work']==_SOURCE_CI_OWNER and e['kind']=='patch_applied']
+    actual=[e['payload'] for e in history_events(rt, 'complete', _SOURCE_CI_OWNER) if e['kind']=='patch_applied']
     need(len(actual)==1 and actual[0]['after_manifest']==policy['ownerAfterManifest'], 'source_ci actual patch after manifest required')
     need(policy.get('widths')==[320,390,430,1440], 'source_ci fixed four widths required')
     need(policy.get('counts')=={'qfStates':124,'qfImages':124,'retainedStates':2111,'retainedImages':43}, 'source_ci frozen QF/retained counts required')
@@ -860,7 +862,8 @@ def _vt_apply_patch(rt,work,node,token,patch,transition_ref):
         if name.endswith('.json') and name not in allowed_json:
             need(name not in created and ids(json.loads(target.read_text()))==ids(json.loads(raw)),'QF以外のJSON安定IDを変更しない')
     op='patch-'+digest(patch)[:20]+'-'+token[:12]
-    need(not any(e['id']==op for e in rt.store.events()),'同じ移行patchの再実行')
+    history = history_events(rt, 'complete', work if getattr(rt.store, 'checkpoint_epoch', None) else None)
+    need(not any(e['id']==op for e in history),'同じ移行patchの再実行')
     backup=rt.store.put({name:target.read_bytes().hex() for name,target,_ in staged if name not in created})
     patch_ref=rt.store.put(patch);before={name:sha(target) for name,target,_ in staged if name not in created}
     rt.append('patch_intent',work,{'node':node,'patch_hash':patch_ref,'backup':backup,'before':before,'created_paths':created,'transition_ref':transition_ref},event_id=op)
@@ -916,7 +919,7 @@ def _vt_completed_patch_proof(rt,work,state,t,patch,completed):
     from definitions import DEFINITION_HASH
     need(len(completed)==1 and state['candidate_sha'] and state['candidate_sha']!=_VT_BASE,'実after候補固定・一回patchが未確認')
     operation,record=completed[0]
-    events=[e for e in rt.store.events() if e['work']==work and e['kind']=='patch_applied' and e['payload']['operation']==operation]
+    events=[e for e in history_events(rt, 'complete', work) if e['kind']=='patch_applied' and e['payload']['operation']==operation]
     need(len(events)==1,'完了patchの一意性がない')
     applied=events[0]['payload']
     fresh=_vt_fresh_implementation(rt)
@@ -1010,7 +1013,7 @@ def reconcile_version_transition(rt,work,transition_ref,outcome,evidence_refs,ex
     s=rt.state(work);t=_vt_current_transition(rt,work,s,transition_ref)
     need(outcome in ('NOT_EXECUTED','RESTORED') and not s['claims'],'未確定claimまたは原復帰以外の判定')
     operations=[(key,row) for key,row in s['patches'].items() if row.get('transition_ref')==transition_ref]
-    applied={e['payload']['operation'] for e in rt.store.events() if e['work']==work and e['kind']=='patch_applied'}
+    applied={e['payload']['operation'] for e in history_events(rt, 'complete', work) if e['kind']=='patch_applied'}
     need(not any(key in applied for key,row in operations),'完了済みr3を無承認rollbackしない')
     need(not operations if outcome=='NOT_EXECUTED' else operations and all(row.get('completed') for key,row in operations),'原beforeへの復旧が未照合')
     expected={**t['beforeManifest'],**t['existing']}
@@ -1023,3 +1026,309 @@ def reconcile_version_transition(rt,work,transition_ref,outcome,evidence_refs,ex
     event=rt.append('version_transition_reconciled',work,{'transition_ref':transition_ref,'outcome':outcome,'plan':archive['plan'],'candidate_manifest':archive['candidate_manifest'],'block_contexts':archive.get('block_contexts',{}),'evidence_refs':evidence_refs})
     rt.append('approval_coverage_migrated',work,{'user_event':old['id'],'approved_bundles':old.get('approved_bundles',{}),'evidence_refs':evidence_refs,'version_transition_reconciliation':event['hash']})
     return event
+
+
+# Adopted checkpoint reconciliation is a new current proof, never an old patch.
+_CHECKPOINT_CANDIDATE_SCHEMA = 'qf01-checkpoint-current-candidate-proof/1'
+_CHECKPOINT_OWNER_STAGES = ('T01_ANALYSIS', 'T02_APPROVAL', 'T03_BUILD', 'T04_VERIFY')
+_CHECKPOINT_CORE_PATHS = frozenset('workflow/'+name for name in (
+    'checkpoint.py','store.py','runtime.py','integration.py','team.py','team_transport.py',
+    'requests.py','impact.py','views.py','capabilities.py','learning.py','runner.py',
+    'agent_guard.py','adapters.py','legacy_diagnostics.py','team_migration.py',
+    'definitions.py','cli.py','test_checkpoint.py','test_checkpoint_runtime.py',
+    'test_checkpoint_definition.py','INTEGRATION_RUNBOOK.md'))
+_CHECKPOINT_PRODUCT_ROOTS = ('src','public','package.json','pnpm-lock.yaml',
+    'pnpm-workspace.yaml','package-lock.json','npm-shrinkwrap.json','yarn.lock','bun.lock','bun.lockb')
+_CHECKPOINT_CANDIDATE_FIELDS = frozenset((
+    'schemaVersion','work','node','inputHash','claimTokenSHA256','checkpointEpoch',
+    'checkpointAnchor','checkpointBaseStateSHA256','adoptionProposalSHA256',
+    'originSourceSHA','baselineCandidateSHA','candidateSHA','candidateManifestSHA256',
+    'protectedManifestSHA256','originalUsersSHA256','core','implementationHash',
+    'ownerWork','ownerResultRefs','ownerApprovalRef','gitProof','compileReceiptRef',
+    'compileOutputRef','compileInputRef','verificationRefs','ledgerHead',
+    'patchExecutedAgain','originalPatchEventRecovered','semanticAcceptance','gateAccepted'))
+
+
+def _checkpoint_scope_diff(changed):
+    """Bound the entire candidate delta, including files outside product/core."""
+    import re
+    from contracts import Rejected
+    from checkpoint import CURRENT_REPAIR_AFTER, NEW_TECHNICAL_WORKS, ORIGIN_NAMES
+    need(isinstance(changed,(set,frozenset)) and all(isinstance(p,str) for p in changed),
+         'CHECKPOINT_FULL_DIFF_OUTSIDE_ADOPTED_SCOPE')
+    for name in changed:
+        try:relative(name)
+        except Rejected as error:
+            raise Rejected('CHECKPOINT_FULL_DIFF_OUTSIDE_ADOPTED_SCOPE:'+name) from error
+    records={'work/items/'+work+'/'+name+'.md' for work in NEW_TECHNICAL_WORKS
+             for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
+    records.update('work/items/W-MATH-QF01-P046-R3-continuation-20261122/'+name+'.md'
+                   for name in ('WORK','ACTION_LOG','FINDINGS','VERIFICATION','RECOVERY_HANDOFF'))
+    native='work/recovery-checkpoints/qf01-p046-r3/'
+    fixed_native={native+'CHECKPOINT_ORIGIN.json'}|{native+'origin/'+name for name in ORIGIN_NAMES}
+    allowed=set(CURRENT_REPAIR_AFTER)|_CHECKPOINT_CORE_PATHS|records|fixed_native
+    for name in changed-allowed:
+        tail=name.removeprefix(native)
+        need(name.startswith(native) and (
+            re.fullmatch(r'artifacts/[0-9a-f]{64}\.json',tail)
+            or re.fullmatch(r'events/[0-9]{8,}-[A-Za-z0-9_-]+\.json',tail)
+            or re.fullmatch(r'(?:preflight|reports)/[A-Za-z0-9][A-Za-z0-9_.-]*\.json',tail)),
+            'CHECKPOINT_FULL_DIFF_OUTSIDE_ADOPTED_SCOPE:'+name)
+    return sorted(changed)
+
+
+def _checkpoint_git_proof(rt, state, origin, core):
+    """Read Git trees and current bytes; do not fetch, change refs, or refresh index."""
+    from checkpoint import FIXED_SOURCE, CURRENT_REPAIR_AFTER
+    root=Path(rt.root)
+    need(root.is_absolute() and root.resolve()==root,'CHECKPOINT_CANDIDATE_ROOT_ALIAS')
+    env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0')
+    def git(*args):
+        result=subprocess.run(['git','-C',str(root),*args],capture_output=True,env=env,timeout=30)
+        need(result.returncode==0,'CHECKPOINT_GIT_READ_FAILED:'+str(args[0]))
+        return result.stdout
+    def tree(commit, paths):
+        rows={}
+        for raw in git('ls-tree','-r','-z',commit,'--',*paths).split(b'\0'):
+            if not raw:continue
+            metadata,encoded=raw.split(b'\t',1);mode,kind,blob=metadata.decode('ascii').split()
+            name=encoded.decode('utf-8');relative(name)
+            need(mode in ('100644','100755') and kind=='blob' and name not in rows,'CHECKPOINT_GIT_ENTRY_KIND')
+            rows[name]={'mode':mode,'blobSHA':blob}
+        return rows
+    candidate=state['candidate_sha']
+    need(isinstance(candidate,str) and len(candidate)==40 and all(c in '0123456789abcdef' for c in candidate),'CHECKPOINT_CANDIDATE_SHA')
+    need(git('rev-parse','HEAD').decode().strip()==candidate,'CHECKPOINT_CANDIDATE_NOT_HEAD')
+    need(git('remote','get-url','origin').decode().strip().removesuffix('.git')
+         =='https://github.com/rrikunagasige-dot/kyotsu-step-web','CHECKPOINT_GIT_REPOSITORY')
+    git('cat-file','-e',FIXED_SOURCE+'^{commit}')
+    baseline='9ee19f65d39b3e639857c809ada50a01c8a7c322'
+    need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',baseline,candidate],
+         capture_output=True,env=env,timeout=30).returncode==0,'CHECKPOINT_CANDIDATE_ANCESTRY')
+    all_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate).split(b'\0') if raw}
+    adopted_changed=_checkpoint_scope_diff(all_changed)
+    before=tree(FIXED_SOURCE,_CHECKPOINT_PRODUCT_ROOTS);after=tree(candidate,_CHECKPOINT_PRODUCT_ROOTS)
+    need(before and set(before)==set(after),'CHECKPOINT_PRODUCT_INVENTORY_CHANGED')
+    changed={name for name in before if before[name]!=after[name]}
+    need(changed==set(CURRENT_REPAIR_AFTER),'CHECKPOINT_PRODUCT_DIFF_NOT_EXACT_FIVE')
+    actual=set()
+    for prefix in ('src','public'):
+        for path in (root/prefix).rglob('*'):
+            if path.is_file() or path.is_symlink():actual.add(path.relative_to(root).as_posix())
+    actual.update(name for name in _CHECKPOINT_PRODUCT_ROOTS[2:] if (root/name).exists())
+    need(actual==set(after),'CHECKPOINT_UNTRACKED_OR_MISSING_PRODUCT')
+    for name,row in after.items():
+        raw=file(root,name).read_bytes()
+        need(hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==row['blobSHA'],
+             'CHECKPOINT_CURRENT_GIT_BYTES:'+name)
+    repairs={}
+    for name in sorted(changed):
+        raw=git('cat-file','blob',FIXED_SOURCE+':'+name)
+        need(before[name]['mode']==after[name]['mode'] and hashlib.sha256(raw).hexdigest()==origin['candidate_manifest'][name],
+             'CHECKPOINT_REPAIR_PREIMAGE:'+name)
+        need(sha(file(root,name))==CURRENT_REPAIR_AFTER[name],'CHECKPOINT_REPAIR_AFTER:'+name)
+        repairs[name]={'beforeSHA256':origin['candidate_manifest'][name],'afterSHA256':CURRENT_REPAIR_AFTER[name],
+                       'beforeGitBlobSHA':before[name]['blobSHA'],'afterGitBlobSHA':after[name]['blobSHA']}
+    workflow_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate,'--','workflow').split(b'\0') if raw}
+    need(workflow_changed<=_CHECKPOINT_CORE_PATHS,'CHECKPOINT_CORE_DIFF_OUTSIDE_ADOPTED_SCOPE')
+    workflow=tree(candidate,('workflow',))
+    current_workflow={p.relative_to(root).as_posix() for p in (root/'workflow').rglob('*')
+                      if p.is_file() and p.suffix in ('.py','.md') and '__pycache__' not in p.parts}
+    need(current_workflow=={name for name in workflow if Path(name).suffix in ('.py','.md')},
+         'CHECKPOINT_UNTRACKED_OR_MISSING_CORE_SOURCE')
+    for name,wanted in core['files'].items():
+        key='workflow/'+name
+        need(key in workflow and sha(file(root,key))==wanted,'CHECKPOINT_ENGINE_SOURCE_NOT_IN_CANDIDATE:'+key)
+        raw=file(root,key).read_bytes()
+        need(hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==workflow[key]['blobSHA'],
+             'CHECKPOINT_ENGINE_GIT_BYTES:'+key)
+    need(workflow_changed<=set(workflow),'CHECKPOINT_CORE_DELETION_NOT_ADOPTED')
+    for name in current_workflow:
+        raw=file(root,name).read_bytes()
+        need(hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==workflow[name]['blobSHA'],
+             'CHECKPOINT_CHANGED_CORE_GIT_BYTES:'+name)
+    return {'repository':'rrikunagasige-dot/kyotsu-step-web','repositoryId':1391122224,
+            'candidateSHA':candidate,'treeSHA':git('rev-parse',candidate+'^{tree}').decode().strip(),
+            'baselineCandidateSHA':FIXED_SOURCE,'coreBaselineSHA':baseline,
+            'repairs':repairs,'productTreeSHA256':digest(after),'coreChangedPaths':sorted(workflow_changed),
+            'allChangedPaths':adopted_changed}
+
+
+def _checkpoint_current_compile(rt, reference):
+    """Execute the preserved canonical input with the actual current compiler."""
+    from checkpoint import strict_json
+    _,raw=_vt_compile_input(rt,reference)
+    result=subprocess.run(['node',str(file(rt.root,'tools/textbook/operations.mjs')),'construction-compile'],
+                          input=raw,capture_output=True,cwd=rt.root,timeout=60)
+    need(result.returncode==0 and len(result.stdout)<=20_000_000,'CHECKPOINT_CURRENT_COMPILE_FAILED')
+    output=strict_json(result.stdout)
+    need(isinstance(output,dict) and output.get('status')=='PASS','CHECKPOINT_CURRENT_COMPILE_NOT_PASS')
+    return output
+
+
+def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,compile_receipt_ref,
+                                  verification_refs,ledger_head):
+    from checkpoint import (FIXED_WORK,FIXED_SOURCE,RECOVERY_WORK,RECOVERY_PROPOSAL_SHA256,
+                            CURRENT_REPAIR_AFTER,current_core_identity)
+    from definitions import instantiate,DEFINITION_HASH
+    from capabilities import implementation_hash
+    need(getattr(rt.store,'checkpoint_mode',False) and work==FIXED_WORK,'CHECKPOINT_CANDIDATE_SCOPE')
+    observed_head=rt.store.head;s=rt.state(work);origin=rt.store.state_base(work)
+    need(digest(origin)=='44d23caf8aeab339b43e82edb723630704bdd506ac4a5fa234820c72e569f9db','CHECKPOINT_ORIGINAL_BASE_STATE')
+    need(digest(s['plan'])==digest(origin['plan']) and s['plan']['source_sha']==_VT_SOURCE,'CHECKPOINT_ORIGINAL_PLAN_CHANGED')
+    need(all(s['users'].get(key)==value for key,value in origin['users'].items()),'CHECKPOINT_ORIGINAL_USERS_CHANGED')
+    need(not s['paused'] and not any(not p.get('completed') for p in s['patches'].values())
+         and not any(not p.get('outcome') for p in s['external'].values()),'CHECKPOINT_UNRESOLVED_OPERATION')
+    nodes=instantiate(s['plan']);node=nodes.get(node_id)
+    need(node and node.get('stage_kind')=='R06_PATCH' and node.get('actor')=='TOOL','CHECKPOINT_R06_NODE_REQUIRED')
+    claim=s['claims'].get(node_id)
+    need(claim and claim.get('token')==token and claim.get('expires_at',0)>time.time()
+         and claim.get('input_hash')==rt.input_hash(s,node),'CHECKPOINT_CURRENT_R06_CLAIM_REQUIRED')
+    need(all(rt.node_status(s,nodes[dep])=='PASSED' for dep in node['depends_on']) and rt.approval(s,node),
+         'CHECKPOINT_R06_DEPENDENCIES_OR_APPROVAL')
+    need(not rt.integrity(s),'CHECKPOINT_CURRENT_CANDIDATE_INTEGRITY')
+    expected=dict(origin['candidate_manifest']);expected.update(CURRENT_REPAIR_AFTER)
+    need(s['candidate_manifest']==expected,'CHECKPOINT_CURRENT_CANDIDATE_MANIFEST')
+    need(manifest(rt.root,expected)==expected,'CHECKPOINT_CURRENT_CANDIDATE_BYTES')
+    protected=s['plan']['protected_manifest']
+    need(manifest(rt.root,protected)==protected,'CHECKPOINT_PROTECTED_BYTES')
+    migration=s.get('checkpoint_definition_migration',{})
+    need(migration.get('to')==DEFINITION_HASH and migration.get('candidateSHA')==s['candidate_sha']
+         and migration.get('checkpointEpoch')==rt.store.checkpoint_epoch,'CHECKPOINT_CURRENT_MIGRATION_REQUIRED')
+    core=current_core_identity();impl=implementation_hash(rt)
+    need(core['definitionHash']==s['definition_hash']==DEFINITION_HASH,'CHECKPOINT_CURRENT_CORE_DEFINITION')
+    suffix=history_events(rt,'suffix')
+    cut=next((e['seq'] for e in suffix if e['hash']==ledger_head),None)
+    need(cut is not None,'CHECKPOINT_RECONCILIATION_HEAD_NOT_IN_SUFFIX')
+    claims=[e for e in suffix if e['seq']<=cut and e['work']==work and e['kind']=='claimed'
+            and e['payload'].get('node')==node_id and e['payload'].get('token')==token
+            and e['payload'].get('input_hash')==claim['input_hash']]
+    need(len(claims)==1,'CHECKPOINT_R06_CLAIM_EVENT_REQUIRED')
+    need(isinstance(owner_result_refs,dict) and set(owner_result_refs)==set(_CHECKPOINT_OWNER_STAGES),
+         'CHECKPOINT_OWNER_RESULT_INVENTORY')
+    owner=rt.state(RECOVERY_WORK);plan=owner['plan']
+    need(plan['profile']=='technical' and plan.get('parent_work')==work and not plan.get('workflow_version')
+         and not plan.get('simulation') and plan['proposal']['hash']==RECOVERY_PROPOSAL_SHA256,
+         'CHECKPOINT_NEW_RECOVERY_OWNER_REQUIRED')
+    owner_record_paths={'work/items/'+RECOVERY_WORK+'/'+name+'.md' for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
+    need(plan['scope']['paths'] and set(plan['scope']['paths'])<=_CHECKPOINT_CORE_PATHS|owner_record_paths,
+         'CHECKPOINT_OWNER_SCOPE_OUTSIDE_ADOPTED_CORE')
+    need(owner['definition_hash']==core['definitionHash'] and owner['candidate_sha']==s['candidate_sha']
+         and not owner['claims'] and not rt.integrity(owner),'CHECKPOINT_OWNER_CURRENT_IDENTITY')
+    need(not any(not p.get('completed') for p in owner['patches'].values())
+         and not any(not p.get('outcome') for p in owner['external'].values()),'CHECKPOINT_OWNER_OPERATION_UNCERTAIN')
+    owner_protected=plan.get('protected_manifest',{})
+    need(all(owner_protected.get(name)==value for name,value in {**protected,**expected}.items())
+         and manifest(rt.root,owner_protected)==owner_protected,'CHECKPOINT_OWNER_SHARED_PROTECTION')
+    owner_nodes=instantiate(plan)
+    for stage in ('S00_RECOVER','S01_ROUTE',*_CHECKPOINT_OWNER_STAGES):
+        need(stage in owner_nodes and rt.node_status(owner,owner_nodes[stage])=='PASSED','CHECKPOINT_OWNER_NODE_NOT_CURRENT:'+stage)
+        row=owner['results'][stage]
+        if stage in owner_result_refs:need(row['artifact']==owner_result_refs[stage],'CHECKPOINT_OWNER_WRONG_RESULT_REF:'+stage)
+        need(any(e['seq']<=cut and e['work']==RECOVERY_WORK and e['kind']=='result'
+             and e['payload'].get('node')==stage and e['payload'].get('artifact')==row['artifact']
+             and e['payload'].get('input_hash')==row['input_hash'] and e['payload'].get('verdict')=='PASS'
+             for e in suffix),'CHECKPOINT_OWNER_RESULT_EVENT_REQUIRED:'+stage)
+    approval=rt.approval(owner)
+    need(approval and approval.get('verification_level')!='simulation'
+         and approval.get('reply_to')==RECOVERY_PROPOSAL_SHA256
+         and rt.store.get(owner_result_refs['T02_APPROVAL']).get('user_event')==approval['id'],
+         'CHECKPOINT_OWNER_ACTUAL_APPROVAL')
+    need(any(e['seq']<=cut and e['work']==RECOVERY_WORK and e['kind']=='user'
+         and e['payload']==approval for e in suffix),'CHECKPOINT_OWNER_APPROVAL_EVENT_REQUIRED')
+    receipt=rt.store.get(compile_receipt_ref)
+    need(receipt.get('capability')=='construction.compile' and receipt.get('node')==node_id
+         and receipt.get('phase')==node['phase'] and receipt.get('status')=='PASS'
+         and receipt.get('input_hash')==claim['input_hash'] and receipt.get('implementation_hash')==impl,
+         'CHECKPOINT_CURRENT_COMPILE_RECEIPT')
+    bound=[e for e in suffix if claims[0]['seq']<e['seq']<=cut and e['work']==work and e['kind']=='capability_bound'
+           and e['payload'].get('node')==node_id and e['payload'].get('receipt')==compile_receipt_ref
+           and e['payload'].get('input_hash')==claim['input_hash']]
+    need(bound,'CHECKPOINT_CURRENT_COMPILE_BINDING')
+    need(any(e['seq']<=cut and e['work']==work and e['kind']=='capability_result'
+         and e['payload'].get('cache_key')==receipt.get('cache_key')
+         and e['payload'].get('capability')=='construction.compile'
+         and e['payload'].get('output')==receipt.get('output') for e in suffix),
+         'CHECKPOINT_CURRENT_COMPILE_RESULT_EVENT')
+    compile_input=origin['version_transition']['derivation']['compileInputRef']
+    compiled=_checkpoint_current_compile(rt,compile_input)
+    need(digest(compiled)==receipt['output'] and rt.store.get(receipt['output'])==compiled,
+         'CHECKPOINT_COMPILE_OUTPUT_NOT_REPRODUCED')
+    need(digest(compiled)==origin['version_transition']['derivation']['compiledResultRef'],
+         'CHECKPOINT_APPROVED_CANONICAL_COMPILE_CHANGED')
+    need(isinstance(verification_refs,list) and verification_refs
+         and all(isinstance(ref,str) for ref in verification_refs) and len(set(verification_refs))==len(verification_refs),
+         'CHECKPOINT_CURRENT_VERIFICATION_REFS')
+    rt.fingerprint_refs(s,verification_refs)
+    for reference in verification_refs:
+        evidence=s['evidence'].get(reference,{});data=evidence.get('data',{})
+        need(evidence.get('verification_level')!='simulation' and evidence.get('kind') in ('check','ci')
+             and data.get('source_sha',data.get('head_sha'))==s['candidate_sha']
+             and (data.get('status')=='PASS' and data.get('checks') if evidence.get('kind')=='check'
+                  else data.get('conclusion')=='success'),'CHECKPOINT_CURRENT_VERIFICATION_EVIDENCE')
+        need(any(e['seq']<=cut and e['work']==work and e['kind']=='evidence'
+             and e['payload'].get('id')==reference and e['payload']==evidence for e in suffix),
+             'CHECKPOINT_CURRENT_VERIFICATION_EVENT')
+    gitproof=_checkpoint_git_proof(rt,s,origin,core)
+    need(current_core_identity()==core and implementation_hash(rt)==impl
+         and rt.store.head==observed_head,'CHECKPOINT_CHANGED_DURING_RECONCILIATION')
+    return {'schemaVersion':_CHECKPOINT_CANDIDATE_SCHEMA,'work':work,'node':node_id,
+            'inputHash':claim['input_hash'],'claimTokenSHA256':hashlib.sha256(token.encode()).hexdigest(),
+            'checkpointEpoch':rt.store.checkpoint_epoch,'checkpointAnchor':rt.store.checkpoint_anchor,
+            'checkpointBaseStateSHA256':digest(origin),'adoptionProposalSHA256':RECOVERY_PROPOSAL_SHA256,
+            'originSourceSHA':_VT_SOURCE,'baselineCandidateSHA':FIXED_SOURCE,'candidateSHA':s['candidate_sha'],
+            'candidateManifestSHA256':digest(expected),'protectedManifestSHA256':digest(protected),
+            'originalUsersSHA256':digest(origin['users']),'core':core,'implementationHash':impl,
+            'ownerWork':RECOVERY_WORK,'ownerResultRefs':dict(owner_result_refs),'ownerApprovalRef':approval['id'],
+            'gitProof':gitproof,'compileReceiptRef':compile_receipt_ref,'compileOutputRef':receipt['output'],
+            'compileInputRef':compile_input,'verificationRefs':list(verification_refs),'ledgerHead':ledger_head,
+            'patchExecutedAgain':False,'originalPatchEventRecovered':False,'semanticAcceptance':False,'gateAccepted':False}
+
+
+def validate_checkpoint_candidate_proof(rt,work,node_id,proof_ref,*,compile_receipt_refs):
+    """Revalidate a registered current proof; no event, artifact, or file is written."""
+    proof=rt.store.get(proof_ref)
+    need(isinstance(proof,dict) and set(proof)==_CHECKPOINT_CANDIDATE_FIELDS
+         and proof['schemaVersion']==_CHECKPOINT_CANDIDATE_SCHEMA,'CHECKPOINT_CANDIDATE_PROOF_SCHEMA')
+    need(proof['compileReceiptRef'] in compile_receipt_refs,'CHECKPOINT_RESULT_COMPILE_RECEIPT_MISMATCH')
+    state=rt.state(work);claim=state['claims'].get(node_id)
+    need(claim,'CHECKPOINT_CURRENT_R06_CLAIM_REQUIRED')
+    events=[e for e in history_events(rt,'suffix',work) if e['kind']=='checkpoint_candidate_reconciled'
+            and e['payload'].get('proofRef')==proof_ref]
+    expected_payload={'schemaVersion':_CHECKPOINT_CANDIDATE_SCHEMA,'proofRef':proof_ref,'node':node_id,
+                      'inputHash':proof['inputHash'],'claimTokenSHA256':proof['claimTokenSHA256']}
+    need(len(events)==1 and events[0]['payload']==expected_payload and events[0]['previous']==proof['ledgerHead'],
+         'CHECKPOINT_RECONCILIATION_EVENT_REQUIRED')
+    expected=_checkpoint_candidate_context(rt,work,node_id,claim['token'],
+                owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref=proof['compileReceiptRef'],
+                verification_refs=proof['verificationRefs'],ledger_head=proof['ledgerHead'])
+    need(digest(proof)==digest(expected),'CHECKPOINT_CANDIDATE_PROOF_NOT_CURRENT')
+    return proof
+
+
+def reconcile_checkpoint_candidate(rt,work,node_id,token,*,owner_result_refs,compile_receipt_ref,
+                                   verification_refs,expected_head):
+    """Register an already-applied candidate proof, never patch files or finish R06."""
+    from checkpoint import SHA256
+    need(isinstance(token,str) and token,'CHECKPOINT_R06_TOKEN_REQUIRED')
+    need(isinstance(expected_head,str) and SHA256.fullmatch(expected_head) and rt.store.head==expected_head,
+         'CHECKPOINT_RECONCILIATION_EXPECTED_HEAD')
+    prior=[e for e in history_events(rt,'suffix',work) if e['kind']=='checkpoint_candidate_reconciled'
+           and e['payload'].get('node')==node_id
+           and e['payload'].get('claimTokenSHA256')==hashlib.sha256(token.encode()).hexdigest()]
+    if prior:
+        need(len(prior)==1,'CHECKPOINT_RECONCILIATION_DUPLICATE_CLAIM')
+        ref=prior[0]['payload']['proofRef']
+        proof=validate_checkpoint_candidate_proof(rt,work,node_id,ref,compile_receipt_refs=[compile_receipt_ref])
+        need(proof['ownerResultRefs']==owner_result_refs and proof['verificationRefs']==verification_refs,
+             'CHECKPOINT_RECONCILIATION_CHANGED_RETRY')
+        return {'proofRef':ref,'eventHash':prior[0]['hash'],'proof':proof}
+    proof=_checkpoint_candidate_context(rt,work,node_id,token,owner_result_refs=owner_result_refs,
+               compile_receipt_ref=compile_receipt_ref,verification_refs=verification_refs,ledger_head=expected_head)
+    need(rt.store.head==expected_head,'CHECKPOINT_RECONCILIATION_HEAD_CHANGED')
+    reference=rt.store.put(proof)
+    need(rt.store.head==expected_head,'CHECKPOINT_RECONCILIATION_HEAD_CHANGED')
+    event=rt.append('checkpoint_candidate_reconciled',work,{
+        'schemaVersion':_CHECKPOINT_CANDIDATE_SCHEMA,'proofRef':reference,'node':node_id,
+        'inputHash':proof['inputHash'],'claimTokenSHA256':proof['claimTokenSHA256']})
+    return {'proofRef':reference,'eventHash':event['hash'],'proof':proof}

@@ -2,13 +2,17 @@
 import json
 from contracts import file, need, sha
 from store import digest
+from checkpoint import history_events, feedback_payloads, known_work_ids
 
 DEFAULT_REGISTRY = 'work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json'
 
 
 def pending(rt, state):
+    # A suffix is not evidence that the historical global correction queue is empty.
+    events = history_events(rt, 'complete')
     rows = [r for r in rt.pending_issues() if state['plan'].get('simulation') or not rt.state(r['work'])['plan'].get('simulation')]
-    for work in {e['work'] for e in rt.store.events() if e['kind']=='opened'}:
+    works = known_work_ids(rt)
+    for work in works:
         child=rt.state(work)
         if child['plan']['command']!='CMD-WORK-001' or child['plan']['profile']!='material' or child['plan'].get('simulation') and not state['plan'].get('simulation'):continue
         complete=historically_closed(rt,work,child)
@@ -23,17 +27,17 @@ def pending(rt, state):
             resolution = case.get('resolution', {})
             closed = False
             child = resolution.get('work')
-            if child and any(e['work'] == child and e['kind'] == 'opened' for e in rt.store.events()):
+            if child and child in works:
                 cs = rt.state(child)
                 # Recursion-free: a valid closure result and ledger proof, never a registry flag.
                 closed = bool(historically_closed(rt,child,cs) and case_linked_to_closure(rt,cs,case['id'],version) and cs['plan']['source_sha']==version and (state['plan'].get('simulation') or not cs['plan'].get('simulation')))
             if not closed:
                 rows.append({'id': case['id'], 'version': version, 'origin': 'feedback-registry', 'registry': path,
                              'registry_hash': sha(file(rt.root, path)), 'description': case.get('rejected', ''), 'evidence': case.get('evidence'), 'work': child})
-    for e in rt.store.events():
+    for e in events:
         if e['kind'] == 'request_received':
             p = e['payload']
-            if p['kind'] == 'correction' and not any(x['kind'] == 'request_resolved' and x['payload']['request_id'] == p['id'] for x in rt.store.events()):
+            if p['kind'] == 'correction' and not any(x['kind'] == 'request_resolved' and x['payload']['request_id'] == p['id'] for x in events):
                 rows.append(dict(p, work=e['work'], origin='request-intake'))
     unique = {}
     for row in rows: unique[(row.get('origin', 'store'), row.get('work'), row['id'], row.get('version'))] = row
@@ -44,7 +48,7 @@ def intake(rt, work, request):
     need(request.get('id') and request.get('quote') and request.get('source_ref') and request.get('version'), '依頼の原文・出所・版が必要')
     need(request.get('kind') in ('correction', 'creation'), '依頼の入口は作成／修正')
     rt.state(work)
-    old = [e for e in rt.store.events() if e['kind'] == 'request_received' and e['payload']['id'] == request['id']]
+    old = [e for e in history_events(rt, 'complete') if e['kind'] == 'request_received' and e['payload']['id'] == request['id']]
     if old:
         need(old[0]['payload'] == request and old[0]['work'] == work, '同じ依頼IDの内容が違う'); return old[0]
     return rt.append('request_received', work, request)
@@ -68,9 +72,10 @@ def historically_closed(rt,work,s):
     gate='S22' if tail=='S24' else 'G3_FINAL'
     result=s['results'].get(gate)
     if not result or s['users'].get(rt.store.get(result['artifact']).get('user_event'),{}).get('intent')!='accept_app':return False
-    ending=max((e['seq'] for e in rt.store.events() if e['work']==work and e['kind']=='result' and e['payload']['node']==tail),default=0)
+    events=history_events(rt, 'complete', work)
+    ending=max((e['seq'] for e in events if e['kind']=='result' and e['payload']['node']==tail),default=0)
     mutations={'result_reopened','revised','candidate','patch_applied','production_context','definition_migrated','issue'}
-    return bool(ending and not any(e['work']==work and e['seq']>ending and e['kind'] in mutations for e in rt.store.events()) and not any(not i.get('resolved_by') for i in s['issues'].values()))
+    return bool(ending and not any(e['seq']>ending and e['kind'] in mutations for e in events) and not any(not i.get('resolved_by') for i in s['issues'].values()))
 
 
 def case_linked_to_closure(rt,state,case_id,origin_version):
@@ -95,7 +100,7 @@ def _receipt_origin_snapshot(rt):
     state=rt.state(_RECEIPT_ORIGIN)
     need(set(state['issues'])==_RECEIPT_ISSUES,'元三件以外の受付にはこのpolicyを使わない')
     return digest({'plan':state['plan'],'issues':state['issues'],'users':state['users'],
-                   'feedback':[e['payload'] for e in rt.store.events() if e['work']==_RECEIPT_ORIGIN and e['kind']=='feedback_captured']})
+                   'feedback':feedback_payloads(rt,_RECEIPT_ORIGIN)})
 
 
 def _receipt_validate(rt, payload):
@@ -160,14 +165,14 @@ def link_correction_receipt(rt,work,receipt_policy_ref,origin_intake_work,issue_
              'origin_issues_hash':digest(origin['issues']),'implementation':_vt_fresh_implementation(rt),'evidence_refs':evidence_refs}
     _receipt_validate(rt,payload)
     need(rt.store.head==expected_store_head,'receipt検査中に台帳が進んだ')
-    previous=[e for e in rt.store.events() if e['work']==work and e['kind']=='correction_receipt_linked']
+    previous=[e for e in history_events(rt, 'complete', work) if e['kind']=='correction_receipt_linked']
     if previous and previous[-1]['payload']==payload:return previous[-1]
     return rt.append('correction_receipt_linked',work,payload)
 
 
 def receipt_dispositions(rt,state):
     rows=[]
-    for event in rt.store.events():
+    for event in history_events(rt, 'complete'):
         if event['kind']!='correction_receipt_linked' or event['work']!=_RECEIPT_ORIGIN:continue
         try:
             _receipt_validate(rt,event['payload']);valid=True;reason=None

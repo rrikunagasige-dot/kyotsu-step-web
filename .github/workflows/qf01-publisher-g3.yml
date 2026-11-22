@@ -394,7 +394,8 @@ jobs:
         else:
             dependencies.symlink_to(current_root / 'node_modules', target_is_directory=True)
         def execute(root, name, paths):
-            command = ['pnpm', 'exec', 'eslint', *paths, '--max-warnings=0', '--format=json']
+            command = ['node', str(current_root / 'node_modules/eslint/bin/eslint.js'),
+                       *paths, '--max-warnings=0', '--format=json']
             result = subprocess.run(command, cwd=root, capture_output=True)
             (out / (name + '.json')).write_bytes(result.stdout)
             (out / (name + '.stderr.log')).write_bytes(result.stderr)

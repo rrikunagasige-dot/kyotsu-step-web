@@ -73,6 +73,11 @@ def input_hash(rt, s, node):
         base['services']=implementation_hash(rt)
     if node.get('team_requirements'):
         base['team_requirements'] = node['team_requirements']
+    from team import informed_review_input_binding,informed_review_author_history_binding
+    method=informed_review_input_binding(s,node)
+    if method is not None:
+        base['informed_review_method']=method
+        base['informed_review_author_history']=informed_review_author_history_binding(rt,p['work_id'],s,node)
     return digest(base)
 
 

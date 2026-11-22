@@ -181,3 +181,15 @@ blockの`content_design_hash`、`construction_design_hash`、`layout_design_hash
 R06のGit検証では製品5pathとworkflow22pathだけでなく、9eeからの全diffを採用済みcode・指定Work記録・専用native JSONの上限へ照合する。`tools/textbook/`、任意governance、別Workや別publisherの実装をこのcore候補へ混入させない。
 
 checkpoint lockはowner-tokenの排他方式を用い、PIDの推測や経過時間でlockを削除しない。中断したlockの自動解除は未対応として拒否する。origin・alias・junction・部分書込・CAS・再openを検査するが、電源断時のdirectory fsyncや悪意ある同時path交換に対するOS隔離は保証しない。Windowsで権限不足のsymlink検査とLinux限定の通常lock実検査は、実行済み検査と分けて報告する。
+
+### QF01 D02の限定再検査基準
+
+固定提案SHA256 `706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60` に対する本人の「限定D02案を採用して進める」（request_user_input_async/call_27be7afbeef843249d088b530a5701b7）を追加権限として扱う。原1d案と原plan/users/初回sealは不変。新agentを作らず、現在のauthority_reviewとaxis_reviewを維持する。
+
+1. D02の実採用転記ファイルをfile evidenceとして保存する。原A bootstrap/最初の定義移行を保持し、新current coreの実Git commitを固定してから後続preflightを作る。2回目以降の `checkpoint-preflight` には `informed_adoption_ref` が必要で、実D02採用と同ファイルSHAを検証する。原1dの移行機構を置き換えず、reviewMethodAdoptionを追加する。全旧結果は原artifactとして保存し、現在定義では再検証する。
+2. 既存RECOVERY技術Workを正規改訂し、原source/source_manifestは保持したままD02追加権限・現candidate・新定義でT01〜T04を実施する。旧1dのT02と現在D02のT02を別々に保存する。新しいWork IDを追加したり旧T工程を改名したりしない。D02 authority採用後、既存ownerの現在候補はfresh CLIの `reconcile-informed-technical-owner` で結び直す。原Aの22path Git bytes・opened snapshot・原1d採用・現在D02採用・変更scope・現Git B/core・verification refs・expected HEADを検証する読み取り専用処理であり、実施していないfilewriteやpatch成功を作らない。旧結果を保存し、現在T工程で再検証する。通常bind/patchと新PUBの一度の実patchは変更しない。
+3. `adopt-informed-review-method` は現在Git/core/sourceと、元plan/users、原first-pass2件、固定2名の寄与行列、実採用発言、expected HEADを検査してplan外authorityを記録する。採用authority自身は段階inputを含めず、段階inputがauthorityを参照し、後続receiptが計算済みinput/targetを参照する。
+4. 対象はR04_PROPOSAL、R07_SEMANTIC、G2_AUDITの固定3nodeだけ。原教材source（R04では1f）と現在renderer/core sourceを別fieldで保持する。現在target、実harness/task/packet/原報告、両担当による各必須claim/facetの再検査、現CODEを束縛する。現在報告はindependent/sourceFirst/firstPass=false、理由露出true。作者集合には原packet履歴と現在寄与の両方を残す。
+5. `informed-review-run` はD採用済みの指定3nodeだけで、既存run_capabilityを実行し、両実再検査用のclaim時間を明示する（既定3600秒、900〜7200秒）。通常production-runの挙動は変えず、CODEはclaim後に実行し、自動受理しない。`seal-informed-review` は有効な現在claimに対し、両実報告・現CODE・evidence・finding dispositionを検査して新receiptと実seal eventを記録する。これは自動PASSではなく、通常のsubmit/check_resultが同receiptを再検証する。作者単独のfinding解消、OPEN/UNRESOLVED、CODE FAIL、未確認・異版・報告欠落は停止する。
+6. source/target/definition/service/method/作者集合の変更、または `revoke-informed-review-method` で対応receiptと下流を失効させる。R06 current proofにはD02 authorityと現在D02 owner権限を追加し、原1d承認も別に保持する。Aからのcore差分をD02の許可pathへ限定する。publisherも同じ追加権限・複数移行・実seal/receiptを検証する。
+7. 独立審査の保証を回復したとは表示しない。通常team/1、他Work、未知prefix/元受付/global queue、実公開のCAS/DEPLOY/公開後検査は従来のまま。最終G3_FINAL@qf01-p035は公開後の本人の実物受入を待つ。D02採用や技術成功を本人受入・品質labelへ変換しない。

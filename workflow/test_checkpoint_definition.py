@@ -159,6 +159,73 @@ print('TEST_FIXTURE_SOURCE_DRIFT_REJECTED')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn('TEST_FIXTURE_SOURCE_DRIFT_REJECTED', result.stdout)
 
+    def second_definition_fixture(self,*,quote='限定D02案を採用して進める'):
+        from checkpoint import INFORMED_REVIEW_PROPOSAL_SHA256
+        proof = self.rt.checkpoint_preflight(FIXED_WORK)
+        self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        transcription = {'schemaVersion':'qf01-informed-review-user-adoption/1',
+            'proposalSHA256':INFORMED_REVIEW_PROPOSAL_SHA256,'quote':quote,
+            'source_ref':'request_user_input_async/call_27be7afbeef843249d088b530a5701b7',
+            'verification_level':'conversation_transcribed','adoptedForImplementation':True,
+            'fixtureKind':'TEST_FIXTURE_NOT_AN_ACTUAL_ADOPTION_RECEIPT'}
+        path = self.root/'TEST_FIXTURE_D02_ADOPTION.json'
+        path.write_text(json.dumps(transcription,ensure_ascii=False)+'\n',encoding='utf-8')
+        evidence = self.rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()},
+                                   source_ref='TEST_FIXTURE/adoption-copy')
+        engine = copy_engine(self.root/'TEST_FIXTURE_future_engine')
+        source = engine/'team.py'
+        source.write_bytes(source.read_bytes()+b'\n# TEST_FIXTURE_NEXT_DEFINITION_ONLY\n')
+        return engine,evidence
+
+    def test_subsequent_real_definition_migration_requires_new_exact_adoption(self):
+        engine,evidence = self.second_definition_fixture()
+        program = r'''
+import sys,json
+sys.path.insert(0,sys.argv[1])
+from runtime import Runtime
+from checkpoint import FIXED_WORK
+from contracts import Rejected
+rt=Runtime(sys.argv[2],sys.argv[3]); before=rt.state(FIXED_WORK); head=rt.store.head
+try:rt.checkpoint_preflight(FIXED_WORK)
+except Rejected as error:assert 'D02_SUBSEQUENT_MIGRATION_ADOPTION_REQUIRED' in str(error),str(error)
+else:raise AssertionError('TEST_FIXTURE missing D adoption accepted')
+assert rt.store.head==head
+proof=rt.checkpoint_preflight(FIXED_WORK,informed_adoption_ref=sys.argv[4])
+assert proof['reviewMethodAdoption']['evidenceRef']==sys.argv[4]
+assert proof['fromDefinition']==before['definition_hash'] and proof['fromDefinition']!=proof['toDefinition']
+assert not proof['gateAccepted'] and not proof['oldPassTransferred']
+event=rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+after=rt.state(FIXED_WORK)
+assert after['users']==before['users'] and after['results']==before['results'] and after['plan']==before['plan']
+assert event['payload']['reviewMethodAdoption']==proof['reviewMethodAdoption']
+assert len([e for e in rt.store.suffix_events() if e['kind']=='checkpoint_definition_migrated'])==2
+print('TEST_FIXTURE_TWO_REAL_MIGRATIONS_ORIGINAL_USERS_RESULTS_PRESERVED')
+'''
+        result = subprocess.run([sys.executable,'-I','-S','-B','-c',program,str(engine),str(self.store.root),str(self.root),evidence],
+                                capture_output=True,text=True,encoding='utf-8',timeout=90)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('TEST_FIXTURE_TWO_REAL_MIGRATIONS',result.stdout)
+
+    def test_subsequent_migration_rejects_other_adoption_quote_without_writes(self):
+        engine,evidence = self.second_definition_fixture(quote='TEST_FIXTURE_CONTINUE_ONLY')
+        program = r'''
+import sys
+sys.path.insert(0,sys.argv[1])
+from runtime import Runtime
+from checkpoint import FIXED_WORK
+from contracts import Rejected
+rt=Runtime(sys.argv[2],sys.argv[3]);head=rt.store.head
+try:rt.checkpoint_preflight(FIXED_WORK,informed_adoption_ref=sys.argv[4])
+except Rejected as error:assert 'D02_ACTUAL_SUBSEQUENT_MIGRATION_ADOPTION' in str(error),str(error)
+else:raise AssertionError('TEST_FIXTURE wrong quote accepted')
+assert rt.store.head==head
+print('TEST_FIXTURE_WRONG_D_ADOPTION_REJECTED_NO_WRITE')
+'''
+        result = subprocess.run([sys.executable,'-I','-S','-B','-c',program,str(engine),str(self.store.root),str(self.root),evidence],
+                                capture_output=True,text=True,encoding='utf-8',timeout=90)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('TEST_FIXTURE_WRONG_D_ADOPTION_REJECTED_NO_WRITE',result.stdout)
+
 
 class SourceOnlyIdentityTests(unittest.TestCase):
     def test_direct_cli_uses_source_when_normal_import_loads_stale_runtime_pyc(self):

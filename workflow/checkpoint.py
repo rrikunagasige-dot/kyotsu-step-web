@@ -493,6 +493,20 @@ RECOVERY_PROPOSAL_SHA256 = '1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e8295294031
 RECOVERY_WORK = 'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122'
 PUBLISHER_WORK = 'W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
 NEW_TECHNICAL_WORKS = frozenset((RECOVERY_WORK, PUBLISHER_WORK))
+INFORMED_REVIEW_PROPOSAL_SHA256 = '706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60'
+INFORMED_REVIEWERS = ('/root/authority_review', '/root/axis_review')
+INFORMED_REVIEW_NODES = ('R04_PROPOSAL@qf01-full-lesson',
+    'R07_SEMANTIC@qf01-full-lesson', 'G2_AUDIT@qf01-p035')
+INFORMED_FIRST_PASS_REFS = ('47f83f587abc5c97f4bc3b35cd7cc742a1aaf8b1390f5960d04daa32b1d6f660',
+    'edf10aa967a23b94e68e96f7975a322e31886f16fc8ebcf3144d32043e72fff3')
+INFORMED_PROPOSAL_PATH = 'work/items/'+RECOVERY_WORK+'/REVIEW_METHOD_PROPOSAL_D02.md'
+INFORMED_ADOPTION_CALL_ID = 'call_27be7afbeef843249d088b530a5701b7'
+INFORMED_AUTHORITY_FIELDS = frozenset(('schemaVersion','method','proposalSHA256','work',
+    'checkpointEpoch','expectedHead','originalPlanSHA256','originalUsersSHA256',
+    'originalContractSHA256','originalAnchor','originalSourceSHA','currentSourceSHA',
+    'candidateManifestSHA256','definitionHash','implementationHash','core','reviewerRefs',
+    'nodeIDs','historicalFirstPassRefs','authorMatrix','adoption','evidenceRefs',
+    'independent','sourceFirst','firstPass','globalQueueCoverage'))
 CURRENT_REPAIR_AFTER = {
     'src/components/textbook/GuidedMathReadingFlow.tsx': '8e07c4fd4d67b43c1de2209296c85f2a8c7852b181d819ee13f579531c34f818',
     'src/components/textbook/guided-math-reading.css': 'ca65220a401bcff9c325fe8e7f25c0be3306511092a5a6f9cb52df3f581383a8',
@@ -705,6 +719,113 @@ class CheckpointStore:
             selected = [row for row in rows if row['work'] == work]
             opened = [row for row in selected if row['kind'] == 'opened']
             require(not selected or len(opened) == 1 and selected[0] == opened[0], 'TECHNICAL_WORK_GENESIS_REQUIRED')
+        # These are new actual criterion records, never reconstructed prefix events.
+        # Historical method identities remain readable after later source changes;
+        # current-code/target validity is rechecked by Runtime/team at use time.
+        active_method = None
+        origin = self._view.state_snapshot(FIXED_WORK)
+        for row in rows:
+            payload = row['payload']; kind = row['kind']
+            if kind == 'checkpoint_definition_migrated' and payload.get('reviewMethodAdoption') is not None:
+                added=payload['reviewMethodAdoption'];preflight=self.get(payload['preflightRef'])
+                require(row['work']==FIXED_WORK and isinstance(added,dict)
+                        and set(added)=={'proposalSHA256','evidenceRef','transcriptionSHA256',
+                                        'quote','source_ref','verification_level'}
+                        and added.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+                        and added.get('quote')=='限定D02案を採用して進める'
+                        and added.get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID
+                        and added.get('verification_level')=='conversation_transcribed'
+                        and preflight.get('reviewMethodAdoption')==added,
+                        'D02_SUBSEQUENT_MIGRATION_ADOPTION_EVENT')
+                require(preflight.get('ledgerHead')==row['previous']
+                        and preflight.get('checkpointEpoch')==payload.get('checkpointEpoch')==self.checkpoint_epoch
+                        and preflight.get('fromDefinition')==payload.get('from')
+                        and preflight.get('toDefinition')==preflight.get('core',{}).get('definitionHash')==payload.get('to')
+                        and preflight.get('candidateAfterSHA')==payload.get('candidateSHA')
+                        and preflight.get('candidateManifest')==payload.get('candidateManifest')
+                        and preflight.get('resultDispositions')==payload.get('resultDispositions')
+                        and preflight.get('proposalSHA256')==payload.get('adoptionProposalSHA256')==RECOVERY_PROPOSAL_SHA256,
+                        'D02_SUBSEQUENT_MIGRATION_LINKS')
+                prior_evidence=[e for e in rows if e['seq']<row['seq'] and e['work']==FIXED_WORK
+                                and e['kind']=='evidence' and e['payload'].get('id')==added['evidenceRef']]
+                require(len(prior_evidence)==1 and prior_evidence[0]['payload'].get('kind')=='file'
+                        and prior_evidence[0]['payload'].get('data',{}).get('sha256')==added['transcriptionSHA256'],
+                        'D02_SUBSEQUENT_MIGRATION_ADOPTION_EVIDENCE')
+            elif kind == 'informed_review_method_adopted':
+                require(row['work']==FIXED_WORK and set(payload)=={'authorityRef','authority'},
+                        'D02_AUTHORITY_EVENT_SCOPE')
+                body=payload['authority'];ref=payload['authorityRef']
+                require(isinstance(body,dict) and set(body)==INFORMED_AUTHORITY_FIELDS
+                        and digest(body)==ref and self.get(ref)==body,'D02_AUTHORITY_EVENT_ARTIFACT')
+                adoption=body.get('adoption',{})
+                require(body.get('schemaVersion')=='qf01-informed-rereview-authority/1'
+                        and body.get('method')=='qf01-informed-rereview/1'
+                        and body.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+                        and adoption.get('quote')=='限定D02案を採用して進める'
+                        and adoption.get('verification_level')=='conversation_transcribed'
+                        and INFORMED_ADOPTION_CALL_ID in adoption.get('source_ref',''),
+                        'D02_EXACT_ADOPTION_EVENT_REQUIRED')
+                require(body.get('work')==FIXED_WORK and body.get('checkpointEpoch')==self.checkpoint_epoch
+                        and body.get('expectedHead')==row['previous']
+                        and body.get('originalContractSHA256')==FIXED_CONTRACT_SHA256
+                        and body.get('originalAnchor')==self.checkpoint_anchor
+                        and body.get('originalPlanSHA256')==digest(origin['plan'])
+                        and body.get('originalUsersSHA256')==digest(origin['users'])
+                        and body.get('originalSourceSHA')==origin['plan']['source_sha'],
+                        'D02_AUTHORITY_EVENT_ORIGIN_HEAD')
+                require(body.get('reviewerRefs')==list(INFORMED_REVIEWERS)
+                        and body.get('nodeIDs')==list(INFORMED_REVIEW_NODES)
+                        and body.get('historicalFirstPassRefs')==list(INFORMED_FIRST_PASS_REFS)
+                        and all(body.get(k) is False for k in ('independent','sourceFirst','firstPass'))
+                        and body.get('globalQueueCoverage')=='UNKNOWN','D02_AUTHORITY_EVENT_CRITERION')
+                active_method=ref
+            elif kind == 'informed_review_method_revoked':
+                require(row['work']==FIXED_WORK and payload.get('authorityRef')==active_method
+                        and active_method is not None and payload.get('expectedHead')==row['previous']
+                        and payload.get('verification_level')=='conversation_transcribed'
+                        and all(isinstance(payload.get(k),str) and payload[k].strip()
+                                for k in ('quote','reason','source_ref')),'D02_REVOCATION_EVENT_SCOPE')
+                active_method=None
+            elif kind == 'informed_technical_candidate_reconciled':
+                require(row['work']==RECOVERY_WORK and set(payload)=={'proofRef','proof'}
+                        and active_method is not None,'D02_TECHNICAL_EVENT_SCOPE')
+                proof=payload['proof'];authority=self.get(active_method)
+                require(isinstance(proof,dict) and digest(proof)==payload['proofRef']
+                        and self.get(payload['proofRef'])==proof,'D02_TECHNICAL_EVENT_ARTIFACT')
+                require(proof.get('schemaVersion')=='qf01-informed-technical-candidate-proof/1'
+                        and proof.get('work')==RECOVERY_WORK and proof.get('parentWork')==FIXED_WORK
+                        and proof.get('methodAuthorityRef')==active_method
+                        and proof.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+                        and proof.get('checkpointEpoch')==self.checkpoint_epoch
+                        and proof.get('expectedHead')==row['previous']
+                        and proof.get('candidateSHA')==authority.get('currentSourceSHA')
+                        and proof.get('core')==authority.get('core')
+                        and proof.get('implementationHash')==authority.get('implementationHash')
+                        and proof.get('writesExecuted') is False
+                        and proof.get('oldResultsTransferred') is False,'D02_TECHNICAL_EVENT_BINDING')
+                genesis=next(e for e in rows if e['work']==RECOVERY_WORK and e['kind']=='opened')
+                original=genesis['payload']['plan'];snapshot=genesis['payload']['original_snapshot']
+                require(genesis['seq']<row['seq']
+                        and proof.get('originalSourceSHA')==original['source_sha']
+                        and proof.get('sourceManifestSHA256')==digest(original['source_manifest'])
+                        and proof.get('originalSnapshotRef')==snapshot
+                        and set(proof.get('candidateManifest',{}))==set(original['source_manifest'])
+                        and bool(proof.get('verificationRefs'))
+                        and isinstance(proof.get('resultDispositions'),list),
+                        'D02_TECHNICAL_EVENT_ORIGIN')
+            elif kind == 'informed_review_receipt_sealed':
+                require(row['work']==FIXED_WORK
+                        and set(payload)=={'node','inputHash','methodAuthorityRef','methodReceiptRef'}
+                        and payload.get('node') in INFORMED_REVIEW_NODES
+                        and payload.get('methodAuthorityRef')==active_method and active_method is not None,
+                        'D02_REVIEW_SEAL_EVENT_SCOPE')
+                receipt=self.get(payload['methodReceiptRef'])
+                require(receipt.get('schemaVersion')=='qf01-informed-rereview-receipt/1'
+                        and receipt.get('authorityRef')==active_method
+                        and receipt.get('node')==payload['node']
+                        and receipt.get('inputHash')==payload['inputHash']
+                        and all(receipt.get(k) is False for k in ('independent','sourceFirst','firstPass')),
+                        'D02_REVIEW_SEAL_EVENT_ARTIFACT')
         return rows
 
     def state_base(self, work):

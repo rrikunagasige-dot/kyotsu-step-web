@@ -65,9 +65,13 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
     s, policy, p = _context(rt, work, submission_actor)
     from definitions import instantiate
     nodes = instantiate(s['plan']); need(node_id in nodes, 'target nodeが不明'); node = nodes[node_id]
+    from team import informed_review_input_binding, current_informed_authority, informed_target_evidence
+    informed = current_informed_authority(rt,work,s) if informed_review_input_binding(s,node) else None
     need(artifact_refs and evidence_refs, 'targetに成果物とnative証拠が必要')
     need(all(ref in s['evidence'] for ref in evidence_refs), 'target証拠にはnative登録IDが必要（子報告hashは別参照）')
     rt.fingerprint_refs(s, evidence_refs)
+    if informed:
+        informed_target_evidence(rt,work,s,evidence_refs)
     allowed = set(); events = history_events(rt, 'capability-bindings', work); base = rt.input_hash(s, node)
     hash_fields = {'irHash','planHash','layoutHash','layoutDesignHash','constructionDesignHash','learnerCopyHash','visibleStateHash','compiledPresentationHash'}
     def collect(value):
@@ -85,6 +89,8 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
             reg = p['registrations'][p['outputs'][ref]['registrationRef']]
             is_author = reg['assignment']['node']==node_id and reg['assignment']['inputHash']==base and p['assignments'].get(reg['assignment']['assignmentId'])==p['outputs'][ref]['registrationRef']
         need(is_code or is_author or s['plan'].get('simulation'), 'target成果物は現nodeのCODE receipt又は実作者出力へ束縛する')
+        if informed:
+            need(is_code, 'D targetはcurrent CODE receiptだけへ')
         allowed.add(ref); collect(value)
         if is_code:
             need(value.get('node')==node_id and value.get('input_hash')==base, 'CODE target receiptが古い')
@@ -93,15 +99,15 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
     for ref in evidence_refs:
         e = s['evidence'][ref]; data=e.get('data', {})
         if e['kind'] in ('check','ci','app'):
-            source = data.get('source_sha',data.get('head_sha')); need(source==current_source(s,node), 'target証拠のsourceが違う')
+            source = data.get('source_sha',data.get('head_sha')); need(source==(s['candidate_sha'] if informed else current_source(s,node)), 'target証拠のsourceが違う')
         if e['kind']=='screenshot':
             capture=s['evidence'].get(data.get('capture_ref'),{})
             if capture.get('kind')=='local_capture':
                 from local_render_evidence import validate_local_capture
                 checked=validate_local_capture(rt,work,data['capture_ref'])
-                need(checked['source_sha']==current_source(s,node) and checked['files'].get(data['path'])==data.get('sha256'),'targetローカル画像は現版の原画像へ束縛する')
+                need(checked['source_sha']==(s['candidate_sha'] if informed else current_source(s,node)) and checked['files'].get(data['path'])==data.get('sha256'),'targetローカル画像は現版の原画像へ束縛する')
             else:
-                need(capture.get('kind')=='capture' and capture.get('data',{}).get('source_sha')==current_source(s,node), 'target画像は現在sourceのcaptureへ束縛する')
+                need(capture.get('kind')=='capture' and capture.get('data',{}).get('source_sha')==(s['candidate_sha'] if informed else current_source(s,node)), 'target画像は現在sourceのcaptureへ束縛する')
             visual=True
         if e['kind']=='file' and node.get('phase') in ('analysis','pre-design'): visual=True
         if data.get('sha256'): allowed.add(data['sha256'])
@@ -113,6 +119,8 @@ def bind_target(rt, work, node_id, facet, artifact_refs, evidence_refs, artifact
     for c in contexts.values():
         if c.get(facet): need(c[facet] in allowed and c[facet] in hashes.values(), '現在block contextの対象をtargetへ含める')
     target=dict(schemaVersion='team-target/1',work=work,node=node_id,block=node.get('block'),facet=facet,inputHash=base,sourceSHA=current_source(s,node),policyHash=digest(policy),artifactHashes=hashes,artifactRefs=list(artifact_refs),evidenceRefs=list(evidence_refs),blockContext=contexts)
+    if informed:
+        target.update(methodAuthorityRef=informed['authorityRef'],currentSourceSHA=s['candidate_sha'],candidateManifestSHA256=digest(s['candidate_manifest']))
     ref=rt.store.put(target)
     ev=rt.append('team_target_bound',work,dict(targetManifestRef=ref,submissionActor=submission_actor),event_id=event_id or 'team-target-'+ref)
     return dict(targetManifestRef=ref,eventRef=ev['hash'])
@@ -128,6 +136,10 @@ def register_task(rt, work, assignment, packet, harness, submission_actor='M', e
     need(a['node'] in nodes and a.get('block') == nodes[a['node']].get('block'), '不明なnode/blockのassignment')
     need(a['inputHash'] == rt.input_hash(s, nodes[a['node']]), '登録時の基礎入力が古い')
     validate_target(rt, work, s, nodes[a['node']], a, packet)
+    from team import informed_review_input_binding
+    if informed_review_input_binding(s,nodes[a['node']]) and a['role'] == 'reviewer':
+        from checkpoint import INFORMED_REVIEWERS
+        need(a['performerRef'] in INFORMED_REVIEWERS, 'D再検査の実担当は固定2名だけ')
     need(all(h.get(k) for k in ('agentRef','taskRef','toolResultRef','attestationMethod','logicalRole')), '実harness登録情報が不足')
     need(h['agentRef'] == a['performerRef'] and h['logicalRole'] in ({'M',*policy['fixed_subagents']} if policy.get('fixed_subagents') else {'M','A','B'}), '実担当とassignmentが違う')
     need(h['attestationMethod'] in ('harness-tool-result','transcribed-tool-result','simulation'), '未確認のharness記録')

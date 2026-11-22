@@ -17,3 +17,11 @@
 現在地: 承認後の隔離実装を work/qf01-checkpoint-recovery-core-20261122（元core9ee19f65）で進行中。workflow変更、現candidate同期、正式adapter検査を実施中。正式checkpoint初期化・新T工程・公開は未実施。上記の承認時点の状態を履歴として残す。
 
 実装候補の検査現在地: 凍結版92件は88PASS/4SKIP、後続の2補修は最終焦点6/6PASS。非作者レビューを実施し、原compiler出力も再現した。次はsource/treeをGitHub実commitへ固定してから、正式専用checkpointを一度だけ初期化し、原承認保持と全旧結果失効を記録する。新CIと公開はまだ未実施。
+
+2026-11-23現在（前段は実施時点の履歴）：本人の32file公開送信許可後、実source/core A=abe5ff1385cb141bb2d01e34f6512eb50e9ca9daを同一treeで固定。実bootstrap13743・定義移行13744を記録し、原users/旧結果を保持して旧8結果を失効した。新RECOVERY技術T01〜T04を現在版で完了。T04実result702919fa64a60fa8085fa6ed33c6d9148ee4f84da0a1a24c7939eae31ccea51dは、固定Linux CI run45044989004の実artifact/input/現在bytesを照合してfresh CLIから記録。CI実行HEAD0d1cと検査source Aは別に記録する。教材R01〜R03は現在版で記録、R04以降・公開・本人受入は未完了。現在2名を維持し、D02審査方式は別の未採用案として本人判断待ち。
+
+D02の実採用追補：本人が「限定D02案を採用して進める」と回答。対象は本Work下 REVIEW_METHOD_PROPOSAL_D02.md の固定SHA256 `706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60`、出所 request_user_input_async/call_27be7afbeef843249d088b530a5701b7。旧1dの承認とは別に追加権限を記録する。原plan/users/旧first-pass、A bootstrap/最初移行/旧結果とCIを保持し、今の2名を維持した限定3工程の寄与開示再検査を実装・検証中。正式authority適用や新BのT工程/教材Gateを実施済みとはしない。
+
+D02実装追補（2026-11-23）: 固定採用回答をfile evidence QF01-D02-ACTUAL-USER-ADOPTION-20261123として専用台帳seq13849へ実記録。D02専用authority/実2名の寄与開示receipt/現CODEとfinding解消条件/後続定義移行/既存RECOVERY候補の読み取り専用照合/直接CLIを実装中。通常Store/team規則と教材5pathのbytesは維持する。焦点20回帰はPASS。追加6回帰は5PASS・1FAILで、同一定義内の旧T01入力が候補再結合後も失効しない点を検出したため補修・再検査中。旧FAILと実行前後hashを保存し、合算して現在123件成功とは扱わない。新Git B/固定Linux全体/新current技術結果/教材Gate/公開/本人受入は未実施。
+
+D02入力補修後の焦点確認: 既存RECOVERYのT01〜T04だけ、新候補照合proofRef/authorityRef/current candidate manifestを入力へ結合。owner positive再検査は1/1 PASS（17.315秒）、source/runbook/固定入力/D02提案の前後hash一致。旧plan/users/results/原snapshotと実file bytesは保持し、候補再結合後の旧T01入力失効を確認。rawはworkspace qf_audit_download/checkpoint-native-tests/d02-native-owner-repair-run-1.log/.json。最終sourceの全123件と通常workflow/公開側全体は、これから実Git固定版のLinux CIで確認する。method authority/教材Gate/公開/本人受入は未実施。

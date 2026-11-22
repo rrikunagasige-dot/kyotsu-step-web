@@ -49,6 +49,20 @@ class Runtime:
                 elif k=='checkpoint_definition_migrated':
                     s['definition_hash']=p['to'];s['candidate_sha']=p['candidateSHA'];s['candidate_manifest']=p['candidateManifest']
                     s['release_versions']['qf01-p035']=p['candidateSHA'];s['checkpoint_definition_migration']=p;s['closed']=None
+                elif k=='informed_review_method_adopted':
+                    need(checkpoint and work=='W-MATH-QF01-FULL-RELEASE-P035-20261115','D02_CHECKPOINT_WORK_REQUIRED')
+                    s['informed_review_method']=copy.deepcopy(p);s['closed']=None
+                elif k=='informed_review_method_revoked':
+                    need(checkpoint and work=='W-MATH-QF01-FULL-RELEASE-P035-20261115','D02_CHECKPOINT_WORK_REQUIRED')
+                    if s.get('informed_review_method',{}).get('authorityRef')==p['authorityRef']:
+                        s['informed_review_method']['revoked']=True
+                        s['informed_review_method']['revocation']=copy.deepcopy(p);s['closed']=None
+                elif k=='informed_technical_candidate_reconciled':
+                    need(checkpoint and work=='W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',
+                         'D02_EXISTING_TECHNICAL_OWNER_REQUIRED')
+                    s['candidate_sha']=p['proof']['candidateSHA']
+                    s['candidate_manifest']=copy.deepcopy(p['proof']['candidateManifest'])
+                    s['informed_technical_candidate_reconciliation']=copy.deepcopy(p);s['closed']=None
                 elif k=='production_context':s['production_context']=p['context']
                 elif k=='correction_adopted':s.setdefault('adopted_corrections',[]).append(p)
                 elif k=='approval_coverage_migrated':s['users'][p['user_event']]['approved_bundles']=p['approved_bundles']
@@ -147,6 +161,16 @@ class Runtime:
         if watch in ('learning','all'):base['issues']=s['issues'];base['result_refs']={n:r['artifact'] for n,r in s['results'].items() if n!=node['id'] and not n.startswith('Z01')}
         # 版が変わった提案の承認を流用しない。既存分析は必要以上に再実行させない。
         if node['id'].startswith(('C05','C06','C07','R04','R05','R06','T02','T03')):base['proposal']=p['proposal'];base['scope']=p['scope']
+        reconciliation=s.get('informed_technical_candidate_reconciliation')
+        if (getattr(self.store,'checkpoint_mode',False)
+                and p['work_id']=='W-TECH-QF01-CHECKPOINT-RECOVERY-20261122'
+                and node['id'] in ('T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY')
+                and reconciliation):
+            base['informed_technical_candidate']={
+                'proofRef':reconciliation['proofRef'],
+                'methodAuthorityRef':reconciliation['proof']['methodAuthorityRef'],
+                'candidateSHA':s['candidate_sha'],
+                'candidateManifestSHA256':digest(s['candidate_manifest'])}
         if watch=='production':
             from production import implementation_manifest
             base['producer_implementation']=implementation_manifest(self.root)
@@ -637,7 +661,7 @@ class Runtime:
             need(recovery_proof is not None,'回収Workの照合済み移行preflightが必要')
         return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs,**({'recoveryProof':recovery_proof} if recovery_proof else {})})
 
-    def checkpoint_preflight(self,work,*,candidate_sha=None):
+    def checkpoint_preflight(self,work,*,candidate_sha=None,informed_adoption_ref=None):
         from checkpoint import FIXED_WORK, CURRENT_REPAIR_AFTER, RECOVERY_PROPOSAL_SHA256, current_core_identity, verify_candidate_git, sha as bytes_sha
         need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけのpreflight')
         s=self.state(work);origin=self.store._view.state_snapshot(work)
@@ -660,7 +684,7 @@ class Runtime:
         need({name:bytes_sha(bytes.fromhex(value)) for name,value in frozen['files_hex'].items()}==s['plan']['source_manifest'],
              'Git由来原snapshotが原manifestに一致しない')
         from capabilities import implementation_hash
-        return {'schemaVersion':'qf01-checkpoint-definition-preflight/1','work':work,
+        proof={'schemaVersion':'qf01-checkpoint-definition-preflight/1','work':work,
                 'proposalSHA256':RECOVERY_PROPOSAL_SHA256,'checkpointEpoch':self.store.checkpoint_epoch,
                 'anchor':self.store.checkpoint_anchor,'ledgerHead':self._head,'sourceRoot':str(self.root),
                 'fromDefinition':s['definition_hash'],'toDefinition':identity['definitionHash'],'core':identity,
@@ -674,21 +698,51 @@ class Runtime:
                     'disposition':'INVALIDATED_BY_DEFINITION','reason':'Current definition/service must be verified; original result retained'}
                     for name,row in sorted(s['results'].items())],
                 'globalQueueCoverage':'UNKNOWN','oldPassTransferred':False,'gateAccepted':False}
+        # The original 1d mechanism remains recorded. Subsequent D02 upgrades
+        # additionally require the actual new adoption, before authority can be
+        # bound to the new definition/source. No old T02 is repurposed.
+        if s['definition_hash']!=origin['definition_hash']:
+            from checkpoint import INFORMED_REVIEW_PROPOSAL_SHA256,INFORMED_ADOPTION_CALL_ID,strict_json
+            need(informed_adoption_ref,'D02_SUBSEQUENT_MIGRATION_ADOPTION_REQUIRED')
+            e=s['evidence'].get(informed_adoption_ref,{})
+            need(e.get('kind')=='file' and e.get('verification_level')!='simulation',
+                 'D02_MIGRATION_ADOPTION_FILE_REQUIRED')
+            data=e.get('data',{});raw=file(self.root,data['path']).read_bytes()
+            need(bytes_sha(raw)==data.get('sha256'),'D02_MIGRATION_ADOPTION_FILE_CHANGED')
+            adopted=strict_json(raw)
+            need(adopted.get('schemaVersion')=='qf01-informed-review-user-adoption/1'
+                 and adopted.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+                 and adopted.get('quote')=='限定D02案を採用して進める'
+                 and adopted.get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID
+                 and adopted.get('verification_level')=='conversation_transcribed'
+                 and adopted.get('adoptedForImplementation') is True,
+                 'D02_ACTUAL_SUBSEQUENT_MIGRATION_ADOPTION')
+            proof['reviewMethodAdoption']={'proposalSHA256':INFORMED_REVIEW_PROPOSAL_SHA256,
+                'evidenceRef':informed_adoption_ref,'transcriptionSHA256':bytes_sha(raw),
+                'quote':adopted['quote'],'source_ref':adopted['source_ref'],
+                'verification_level':adopted['verification_level']}
+        elif informed_adoption_ref is not None:
+            need(False,'D02_INITIAL_MIGRATION_CANNOT_PRETEND_SUBSEQUENT')
+        return proof
 
     def migrate_checkpoint_definition(self,work,*,proof,expected_head):
         from checkpoint import FIXED_WORK
         need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけの定義移行')
         need(isinstance(proof,dict),'preflight objectが必要')
-        current=self.checkpoint_preflight(work,candidate_sha=proof.get('candidateAfterSHA'))
+        current=self.checkpoint_preflight(work,candidate_sha=proof.get('candidateAfterSHA'),
+            informed_adoption_ref=proof.get('reviewMethodAdoption',{}).get('evidenceRef'))
         need(current==proof and current['ledgerHead']==expected_head,'preflight後の版/承認/入力/HEADが違う')
         reference=self.store.put(proof)
-        return self.append('checkpoint_definition_migrated',work,{
+        payload={
             'schemaVersion':'qf01-checkpoint-definition-migration/1','from':current['fromDefinition'],
             'to':current['toDefinition'],'preflightRef':reference,'checkpointEpoch':self.store.checkpoint_epoch,
             'candidateSHA':current['candidateAfterSHA'],'candidateManifest':current['candidateManifest'],
             'resultDispositions':current['resultDispositions'],
             'preservedUserRecordsHash':current['preservedUserRecordsHash'],
-            'adoptionProposalSHA256':current['proposalSHA256'],'oldPassTransferred':False,'gateAccepted':False})
+            'adoptionProposalSHA256':current['proposalSHA256'],'oldPassTransferred':False,'gateAccepted':False}
+        if current.get('reviewMethodAdoption'):
+            payload['reviewMethodAdoption']=current['reviewMethodAdoption']
+        return self.append('checkpoint_definition_migrated',work,payload)
 
     def reconcile_checkpoint_candidate(self,work,node_id,token,*,owner_result_refs,
                                        compile_receipt_ref,verification_refs,expected_head):
@@ -696,6 +750,189 @@ class Runtime:
         return reconcile_checkpoint_candidate(self,work,node_id,token,
             owner_result_refs=owner_result_refs,compile_receipt_ref=compile_receipt_ref,
             verification_refs=verification_refs,expected_head=expected_head)
+
+    def adopt_informed_review_method(self,work,*,proposal_sha256,quote,source_ref,
+                                     author_matrix,evidence_refs,expected_head,
+                                     verification_level='conversation_transcribed'):
+        """Adopt only the explicitly approved D02 criterion; preserve the plan."""
+        from checkpoint import (FIXED_WORK,FIXED_CONTRACT_SHA256,INFORMED_REVIEW_PROPOSAL_SHA256,
+            INFORMED_REVIEWERS,INFORMED_REVIEW_NODES,INFORMED_FIRST_PASS_REFS,
+            INFORMED_PROPOSAL_PATH,INFORMED_ADOPTION_CALL_ID,current_core_identity)
+        from team import validate_informed_authority_body
+        from capabilities import implementation_hash
+        from adapters import _checkpoint_git_proof
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'D02_CHECKPOINT_WORK_REQUIRED')
+        s=self.state(work);origin=self.store.state_base(work)
+        need(self._head==expected_head==self.store.head,'D02_EXPECTED_HEAD_CHANGED')
+        need(not s['claims'] and not s['paused'],'D02_CLAIM_OR_PAUSE_ACTIVE')
+        need(proposal_sha256==INFORMED_REVIEW_PROPOSAL_SHA256
+             and quote=='限定D02案を採用して進める'
+             and verification_level=='conversation_transcribed'
+             and isinstance(source_ref,str) and INFORMED_ADOPTION_CALL_ID in source_ref,
+             'D02_EXACT_ACTUAL_ADOPTION_REQUIRED')
+        need(sha(file(self.root,INFORMED_PROPOSAL_PATH))==proposal_sha256,'D02_ADOPTED_PROPOSAL_BYTES')
+        identity=current_core_identity()
+        need(s['definition_hash']==identity['definitionHash'],'D02_CURRENT_DEFINITION_REQUIRED')
+        need(not self.integrity(s),'D02_CURRENT_CANDIDATE_INTEGRITY')
+        _checkpoint_git_proof(self,s,origin,identity,review_method=True)
+        body={'schemaVersion':'qf01-informed-rereview-authority/1','method':'qf01-informed-rereview/1',
+              'proposalSHA256':proposal_sha256,'work':work,'checkpointEpoch':self.store.checkpoint_epoch,
+              'expectedHead':expected_head,'originalPlanSHA256':digest(origin['plan']),
+              'originalUsersSHA256':digest(origin['users']),'originalContractSHA256':FIXED_CONTRACT_SHA256,
+              'originalAnchor':self.store.checkpoint_anchor,'originalSourceSHA':origin['plan']['source_sha'],
+              'currentSourceSHA':s['candidate_sha'],'candidateManifestSHA256':digest(s['candidate_manifest']),
+              'definitionHash':identity['definitionHash'],'implementationHash':implementation_hash(self),
+              'core':identity,'reviewerRefs':list(INFORMED_REVIEWERS),'nodeIDs':list(INFORMED_REVIEW_NODES),
+              'historicalFirstPassRefs':list(INFORMED_FIRST_PASS_REFS),'authorMatrix':copy.deepcopy(author_matrix),
+              'adoption':{'quote':quote,'source_ref':source_ref,'verification_level':verification_level},
+              'evidenceRefs':list(evidence_refs),'independent':False,'sourceFirst':False,'firstPass':False,
+              'globalQueueCoverage':'UNKNOWN'}
+        validate_informed_authority_body(self,work,s,body)
+        need(self.store.head==expected_head and current_core_identity()==identity,
+             'D02_CHANGED_DURING_ADOPTION')
+        ref=self.store.put(body)
+        event=self.append('informed_review_method_adopted',work,{'authorityRef':ref,'authority':body})
+        return {'authorityRef':ref,'authority':body,'eventHash':event['hash'],'gateAccepted':False}
+
+    def revoke_informed_review_method(self,work,*,authority_ref,quote,reason,source_ref,
+                                      expected_head,verification_level='conversation_transcribed'):
+        from checkpoint import FIXED_WORK
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'D02_CHECKPOINT_WORK_REQUIRED')
+        s=self.state(work)
+        need(self._head==expected_head==self.store.head,'D02_EXPECTED_HEAD_CHANGED')
+        current=s.get('informed_review_method',{})
+        need(current.get('authorityRef')==authority_ref and not current.get('revoked'),
+             'D02_ACTIVE_AUTHORITY_REQUIRED')
+        need(not s['claims'] and not s['paused'],'D02_CLAIM_OR_PAUSE_ACTIVE')
+        need(all(isinstance(v,str) and v.strip() for v in (quote,reason,source_ref))
+             and verification_level=='conversation_transcribed','D02_ACTUAL_REVOCATION_REQUIRED')
+        return self.append('informed_review_method_revoked',work,{
+            'authorityRef':authority_ref,'quote':quote,'reason':reason,'source_ref':source_ref,
+            'verification_level':verification_level,'expectedHead':expected_head})
+
+    def seal_informed_review(self,work,node_id,*,collection,capability_receipts,evidence_refs,
+                             finding_dispositions):
+        from checkpoint import FIXED_WORK,INFORMED_REVIEW_NODES
+        from team import build_informed_review_receipt
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK
+             and node_id in INFORMED_REVIEW_NODES,'D02_REVIEW_NODE_SCOPE')
+        s=self.state(work);nodes=instantiate(s['plan']);node=nodes[node_id]
+        claim=s['claims'].get(node_id)
+        need(claim and claim.get('expires_at',0)>time.time()
+             and claim.get('input_hash')==self.input_hash(s,node),'D02_CURRENT_REVIEW_CLAIM_REQUIRED')
+        head=self._head
+        receipt=build_informed_review_receipt(self,work,node,collection,capability_receipts,
+                                             evidence_refs,finding_dispositions)
+        need(self.store.head==head,'D02_CHANGED_DURING_REVIEW_SEAL')
+        ref=self.store.put(receipt)
+        payload={'node':node_id,'inputHash':claim['input_hash'],
+                 'methodAuthorityRef':collection['methodAuthorityRef'],'methodReceiptRef':ref}
+        event=self.append('informed_review_receipt_sealed',work,payload)
+        return {'methodReceiptRef':ref,'receipt':receipt,'eventHash':event['hash'],
+                'gateAccepted':False,'semanticValidityVerified':False}
+
+    def run_informed_review(self,work,inputs,seconds=3600):
+        """Run current CODE with an explicit lease for the two actual reviews."""
+        from checkpoint import FIXED_WORK,INFORMED_REVIEW_NODES
+        from team import current_informed_authority
+        from capabilities import run_capability
+        from production import ai_request
+        need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'D02_CHECKPOINT_WORK_REQUIRED')
+        need(type(seconds) is int and 900<=seconds<=7200,'D02_EXPLICIT_REVIEW_LEASE_RANGE')
+        method=current_informed_authority(self,work)
+        need(method,'D02_ACTIVE_AUTHORITY_REQUIRED')
+        nxt=self.next(work)
+        need(nxt.get('status')=='READY','D02_REVIEW_NODE_NOT_READY')
+        node=nxt['task']['node']
+        need(node['id'] in INFORMED_REVIEW_NODES and node['actor']=='AI','D02_REVIEW_NODE_SCOPE')
+        need(isinstance(inputs,dict) and set(inputs)==set(node['capability_requests'])
+             and all(isinstance(inputs[name],dict) for name in node['capability_requests']),
+             'D02_EXACT_CURRENT_CODE_INPUTS_REQUIRED')
+        claim=self.claim(work,node['id'],'capability-runner/D02',seconds=seconds)
+        refs=[run_capability(self,work,node,name,dict(inputs[name])) for name in node['capability_requests']]
+        return {'status':'NEEDS_REVIEW','node':node['id'],'claimToken':claim['claim_token'],
+                'claimSeconds':seconds,'receipts':refs,'aiRequest':ai_request(self,work,node['id']),
+                'automaticAcceptance':False,'reviewMethodAuthorityRef':method['authorityRef']}
+
+    def reconcile_informed_technical_owner(self,work,*,candidate_sha,verification_refs,expected_head):
+        """Verify existing D02 code; never replay its file writes or old T results."""
+        from checkpoint import (FIXED_WORK,RECOVERY_WORK,RECOVERY_PROPOSAL_SHA256,
+            INFORMED_REVIEW_PROPOSAL_SHA256,INFORMED_ADOPTION_CALL_ID,ADOPTION_CALL_ID,
+            current_core_identity,history_events,sha as sha_bytes)
+        from team import current_informed_authority
+        from adapters import (_checkpoint_informed_technical_git,_CHECKPOINT_D02_CORE_PATHS,
+                              _CHECKPOINT_D02_BASELINE)
+        from capabilities import implementation_hash
+        need(getattr(self.store,'checkpoint_mode',False) and work==RECOVERY_WORK,
+             'D02_EXISTING_TECHNICAL_OWNER_REQUIRED')
+        owner=self.state(work);primary=self.state(FIXED_WORK)
+        need(self._head==expected_head==self.store.head,'D02_EXPECTED_HEAD_CHANGED')
+        method=current_informed_authority(self,FIXED_WORK,primary)
+        need(method and candidate_sha==primary['candidate_sha'],'D02_CURRENT_MATERIAL_AUTHORITY_REQUIRED')
+        core=current_core_identity();plan=owner['plan']
+        need(plan['profile']=='technical' and not plan.get('workflow_version')
+             and not plan.get('simulation') and plan.get('parent_work')==FIXED_WORK
+             and plan['proposal']['hash']==INFORMED_REVIEW_PROPOSAL_SHA256,
+             'D02_REVISED_EXISTING_TECHNICAL_PLAN_REQUIRED')
+        need(owner['definition_hash']==core['definitionHash'],'D02_CURRENT_TECHNICAL_DEFINITION_REQUIRED')
+        need(not owner['claims'] and not primary['claims'] and not owner['paused'] and not primary['paused']
+             and not any(not p.get('completed') for p in owner['patches'].values())
+             and not any(not p.get('outcome') for p in owner['external'].values()),
+             'D02_TECHNICAL_OPERATION_UNCERTAIN')
+        events=history_events(self,'complete',work)
+        opened=[e for e in events if e['kind']=='opened']
+        need(len(opened)==1,'D02_TECHNICAL_GENESIS_REQUIRED')
+        initial=opened[0]['payload']['plan'];snapshot_ref=opened[0]['payload']['original_snapshot']
+        source=self.store.get(snapshot_ref)
+        need(plan['source_sha']==initial['source_sha']==source.get('source_sha')==_CHECKPOINT_D02_BASELINE
+             and plan['source_manifest']==initial['source_manifest']
+             and plan['rules']==initial['rules'] and plan['scope']==initial['scope']
+             and plan.get('protected_manifest',{})==initial.get('protected_manifest',{}),
+             'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED')
+        need(set(source.get('files_hex',{}))==set(plan['source_manifest'])
+             and {p:sha_bytes(bytes.fromhex(v)) for p,v in source['files_hex'].items()}==plan['source_manifest'],
+             'D02_ORIGINAL_TECHNICAL_SNAPSHOT_CHANGED')
+        approval=self.approval(owner)
+        need(approval and approval.get('reply_to')==INFORMED_REVIEW_PROPOSAL_SHA256
+             and approval.get('quote')=='限定D02案を採用して進める'
+             and approval.get('verification_level')=='conversation_transcribed'
+             and approval.get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID,
+             'D02_ACTUAL_TECHNICAL_ADOPTION_REQUIRED')
+        need(any(e['kind']=='user' and e['payload'].get('reply_to')==RECOVERY_PROPOSAL_SHA256
+                 and e['payload'].get('verification_level')=='conversation_transcribed'
+                 and ADOPTION_CALL_ID in e['payload'].get('source_ref','') for e in events),
+             'D02_ORIGINAL_RECOVERY_ADOPTION_NOT_RETAINED')
+        self.fingerprint_refs(owner,verification_refs);need(verification_refs,'D02_TECHNICAL_VERIFICATION_REQUIRED')
+        current=manifest(self.root,plan['source_manifest'])
+        need(set(current)==set(owner['candidate_manifest'])==set(plan['source_manifest']),
+             'D02_TECHNICAL_CANDIDATE_INVENTORY_CHANGED')
+        changed={p for p,h in current.items() if owner['candidate_manifest'].get(p)!=h}
+        need(changed<=_CHECKPOINT_D02_CORE_PATHS,'D02_TECHNICAL_DIFF_OUTSIDE_PROPOSAL')
+        need(candidate_sha!=owner['candidate_sha'] or changed,'D02_TECHNICAL_CANDIDATE_ALREADY_CURRENT')
+        need(manifest(self.root,plan['rules'])==plan['rules']
+             and manifest(self.root,plan.get('protected_manifest',{}))==plan.get('protected_manifest',{}),
+             'D02_TECHNICAL_PROTECTED_OR_RULE_BYTES_CHANGED')
+        gitproof=_checkpoint_informed_technical_git(self,owner,primary,core)
+        proof={'schemaVersion':'qf01-informed-technical-candidate-proof/1','work':work,'parentWork':FIXED_WORK,
+               'methodAuthorityRef':method['authorityRef'],'proposalSHA256':INFORMED_REVIEW_PROPOSAL_SHA256,
+               'checkpointEpoch':self.store.checkpoint_epoch,'expectedHead':expected_head,
+               'planSHA256':digest(plan),'originalSourceSHA':plan['source_sha'],
+               'sourceManifestSHA256':digest(plan['source_manifest']),'originalSnapshotRef':snapshot_ref,
+               'previousCandidateSHA':owner['candidate_sha'],
+               'previousCandidateManifestSHA256':digest(owner['candidate_manifest']),
+               'candidateSHA':candidate_sha,'candidateManifest':current,'core':core,
+               'implementationHash':implementation_hash(self),'gitProof':gitproof,
+               'verificationRefs':list(verification_refs),
+               'resultDispositions':[{'node':name,'artifact':row['artifact'],'oldInputHash':row['input_hash'],
+                    'disposition':'REVERIFY_CURRENT_D02_CANDIDATE','reason':'Existing actual result retained; current D02 input must be verified'}
+                    for name,row in sorted(owner['results'].items())],
+               'writesExecuted':False,'oldResultsTransferred':False}
+        need(self.store.head==expected_head and current_core_identity()==core
+             and manifest(self.root,current)==current,'D02_CHANGED_DURING_TECHNICAL_RECONCILIATION')
+        reference=self.store.put(proof)
+        event=self.append('informed_technical_candidate_reconciled',work,{'proofRef':reference,'proof':proof})
+        return {'proofRef':reference,'proof':proof,'eventHash':event['hash'],
+                'codeFilesWritten':False,'gateAccepted':False}
 
     def next_integration(self,work,s,nodes):
         from requests import pending

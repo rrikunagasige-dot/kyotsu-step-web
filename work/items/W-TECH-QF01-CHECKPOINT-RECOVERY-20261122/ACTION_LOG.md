@@ -20,3 +20,15 @@
 - Git push dry-runはCLI credential未設定で失敗。remoteは未変更。利用可能な正しいGitHub接続のGit object APIで同一treeを保存し、返却された実commit SHAを固定してから台帳を初期化する。
 
 - 最終焦点run2は6/6PASS。現在97件を未実行のLinux全件PASSとせず、旧92run・修復前focused FAIL・修復後6runを分けて保存。全実装と修復5pathを固定し、以降の正式操作はfresh source-only CLIから行う。
+
+- 本人の32file送信許可後、GitHub実source A=abe5ff13/tree67e55…を固定し、local1dcは別branchで保存。実bootstrap13743・定義移行13744で原users/旧結果を保存、旧8結果を現在入力では失効。新RECOVERY T01/T02/T03と教材R01〜R03をfresh CLIで実施。
+- 固定Linux CIのstartup/既存lint/artifact path/比較stdoutの失敗を保存して修復し、最終run45044989004は全体SUCCESS。現在97（95PASS/2Windows専用SKIP）と通常267等、build、changed TS4 lint、既存全体28診断のbaseline一致、入力17件不変を確認。検査source Aとworkflow HEAD0d1cを区別し、artifact14763387458の実SHA3858426d…/CRC/現在bytesを照合後、新RECOVERY技術T04を実claim/submit。result702919fa64a60fa8085fa6ed33c6d9148ee4f84da0a1a24c7939eae31ccea51d。教材Gate/公開/本人受入は認定しない。
+- 現2名維持の本人指示から審査方法を読取調査し、追加具体案D02（SHA706ac7b5…）を提示。既存独立審査要件の変更を含むため実採用待ち、Dコードは未実装。原1d案と原記録を上書きせず保持。
+
+- 続報：本人が固定D02へ「限定D02案を採用して進める」と実回答。元D02 raw hash706ac7b5…を確認してcore/publisherの既存技術Workへ同一bytesを保存し、実採用転記JSONを新しいreportsへ保存。旧pending記録は当時の履歴として保持。
+- rootがRuntime/checkpoint/integration/adapters/CLIを、axisがteam/team_transportと既存checkpoint回帰を担当。authorityは同じpublisher checker/testを担当。現在2名・孫なし・Store/Git rootのみを維持。body authority→段階input→後続receiptの二段階参照、原sourceと現在rendererのdual binding、両実報告/CODE/作者履歴・限定finding解消を実装中。
+- 最初のD fixture2件はrootの最終checkpoint追記と重なり、実source hash変化/RUNNING_CORE_IMPORT_IS_STALEにより無効として保存。明示freeze後の再runで正確採用/原plan-users-seal保持は成功、target artifact名のfixture不一致は拒否。fixtureのみ補修して再検査し、失敗をPASSへ改名しない。新Git source/definition/実Gateはまだ適用していない。
+
+D02実装追補（2026-11-23）: 固定採用回答をfile evidence QF01-D02-ACTUAL-USER-ADOPTION-20261123として専用台帳seq13849へ実記録。D02専用authority/実2名の寄与開示receipt/現CODEとfinding解消条件/後続定義移行/既存RECOVERY候補の読み取り専用照合/直接CLIを実装中。通常Store/team規則と教材5pathのbytesは維持する。焦点20回帰はPASS。追加6回帰は5PASS・1FAILで、同一定義内の旧T01入力が候補再結合後も失効しない点を検出したため補修・再検査中。旧FAILと実行前後hashを保存し、合算して現在123件成功とは扱わない。新Git B/固定Linux全体/新current技術結果/教材Gate/公開/本人受入は未実施。
+
+D02入力補修後の焦点確認: 既存RECOVERYのT01〜T04だけ、新候補照合proofRef/authorityRef/current candidate manifestを入力へ結合。owner positive再検査は1/1 PASS（17.315秒）、source/runbook/固定入力/D02提案の前後hash一致。旧plan/users/results/原snapshotと実file bytesは保持し、候補再結合後の旧T01入力失効を確認。rawはworkspace qf_audit_download/checkpoint-native-tests/d02-native-owner-repair-run-1.log/.json。最終sourceの全123件と通常workflow/公開側全体は、これから実Git固定版のLinux CIで確認する。method authority/教材Gate/公開/本人受入は未実施。

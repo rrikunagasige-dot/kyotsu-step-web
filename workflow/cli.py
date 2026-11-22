@@ -25,7 +25,7 @@ from adapters import apply_patch,git_export,authoring,import_capture,probe_app,r
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',default='.');p.add_argument('--store',required=True)
-    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target','prepare-version-transition','reconcile-version-transition','link-correction-receipt','checkpoint-init','checkpoint-preflight','checkpoint-migrate','reconcile-checkpoint-candidate'])
+    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction','team-register','team-record-output','team-reconcile','adopt-team-policy','team-policy','team-capture','team-bind-target','prepare-version-transition','reconcile-version-transition','link-correction-receipt','checkpoint-init','checkpoint-preflight','checkpoint-migrate','reconcile-checkpoint-candidate','adopt-informed-review-method','revoke-informed-review-method','seal-informed-review','informed-review-run','reconcile-informed-technical-owner'])
     p.add_argument('--work');p.add_argument('--json',help='JSONファイル。省略時は標準入力（next/status/autoには不要）');p.add_argument('--out');p.add_argument('--check',action='store_true')
     a=p.parse_args()
     noinput=a.operation in ('next','status','auto','render','recover-lock','production-ai','production-diagram','team-policy')
@@ -36,7 +36,12 @@ def main():
         store=CheckpointStore.initialize(a.store,a.root,**data)
         print(json.dumps(store.summary(),ensure_ascii=False,indent=2));return
     rt=Runtime(a.store,a.root)
-    if op=='reconcile-checkpoint-candidate':r=rt.reconcile_checkpoint_candidate(w,**data)
+    if op=='reconcile-informed-technical-owner':r=rt.reconcile_informed_technical_owner(w,**data)
+    elif op=='informed-review-run':r=rt.run_informed_review(w,**data)
+    elif op=='adopt-informed-review-method':r=rt.adopt_informed_review_method(w,**data)
+    elif op=='revoke-informed-review-method':r=rt.revoke_informed_review_method(w,**data)
+    elif op=='seal-informed-review':r=rt.seal_informed_review(w,**data)
+    elif op=='reconcile-checkpoint-candidate':r=rt.reconcile_checkpoint_candidate(w,**data)
     elif op=='checkpoint-preflight':r=rt.checkpoint_preflight(w,**data)
     elif op=='checkpoint-migrate':r=rt.migrate_checkpoint_definition(w,**data)
     elif op=='team-policy':

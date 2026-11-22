@@ -89,6 +89,589 @@ def populate_preflight_fixture(root):
     return state
 
 
+class InformedReviewMethodTests(unittest.TestCase):
+    """Bounded TEST_FIXTURE reports test protocol, not actual reviewer quality.
+
+    Only the external Git proof is mocked. The authority, native suffix,
+    harness captures, targets, CODE bindings and receipt validation are real.
+    """
+    @classmethod
+    def setUpClass(cls):
+        from checkpoint import CURRENT_REPAIR_AFTER, INFORMED_PROPOSAL_PATH
+        cls.temporary = tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_master_')
+        cls.master = Path(cls.temporary.name).resolve()
+        cls.prepared_temporary = None
+        populate_preflight_fixture(cls.master)
+        for relative, expected in CURRENT_REPAIR_AFTER.items():
+            raw = (ENGINE.parent / relative).read_bytes()
+            if hashlib.sha256(raw).hexdigest() != expected:
+                raise AssertionError('Repair fixture changed: '+relative)
+            (cls.master / relative).write_bytes(raw)
+        proposal = cls.master / INFORMED_PROPOSAL_PATH
+        proposal.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(ENGINE.parent / INFORMED_PROPOSAL_PATH,proposal)
+        store = initialize_fixture(cls.master); rt = Runtime(store.root,cls.master)
+        with patch('checkpoint.verify_candidate_git',return_value=None):
+            proof = rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40)
+            rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        cls.evidence = rt.evidence(FIXED_WORK,'check',
+            {'status':'PASS','source_sha':'d'*40,'checks':['TEST_FIXTURE_PROTOCOL_ONLY']},
+            source_ref='TEST_FIXTURE/not-real-QA',eid='TEST_FIXTURE_D02_CHECK')
+        cls.file_evidence = rt.evidence(FIXED_WORK,'file',
+            {'path':'src/components/textbook/GuidedMathReadingFlow.tsx',
+             'sha256':CURRENT_REPAIR_AFTER['src/components/textbook/GuidedMathReadingFlow.tsx']},
+            source_ref='TEST_FIXTURE/candidate-bytes',eid='TEST_FIXTURE_D02_FILE')
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.prepared_temporary:
+            cls.prepared_temporary.cleanup()
+        cls.temporary.cleanup()
+
+    def setUp(self):
+        self.reset_fixture()
+
+    def reset_fixture(self):
+        from definitions import instantiate
+        from checkpoint import INFORMED_REVIEWERS
+        temporary = tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_')
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        shutil.copytree(self.master,self.root,dirs_exist_ok=True)
+        self.store = CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3')
+        self.rt = Runtime(self.store.root,self.root)
+        self.node = instantiate(self.rt.state(FIXED_WORK)['plan'])['R04_PROPOSAL@qf01-full-lesson']
+        self.matrix = [dict(claimRef=claim,facet=facet,
+            semanticContributorRefs=['/root',*INFORMED_REVIEWERS],
+            basis='TEST_FIXTURE disclosed authors/reason exposure; not quality evidence')
+            for claim,facet in [('teaching','design'),('layout','render'),('implemented-visible','render'),('integrated-release','render')]]
+        from team import informed_author_history
+        history = informed_author_history(self.rt,FIXED_WORK)
+        for row in self.matrix:
+            known = set(row['semanticContributorRefs'])
+            for _,claim,facet,refs in history:
+                if facet == row['facet'] and (facet == 'render' or claim == row['claimRef']):
+                    known.update(refs)
+            row['semanticContributorRefs'] = sorted(known)
+
+    def adopt(self,**overrides):
+        from checkpoint import INFORMED_REVIEW_PROPOSAL_SHA256
+        args = dict(proposal_sha256=INFORMED_REVIEW_PROPOSAL_SHA256,
+            quote='限定D02案を採用して進める',
+            source_ref='request_user_input_async/call_27be7afbeef843249d088b530a5701b7',
+            author_matrix=self.matrix,evidence_refs=[self.evidence],expected_head=self.store.head)
+        args.update(overrides)
+        with patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_BOUNDARY'}):
+            return self.rt.adopt_informed_review_method(FIXED_WORK,**args)
+
+    def prepare(self,*,mutate_output=None,code_status='PASS'):
+        from checkpoint import INFORMED_REVIEWERS
+        from capabilities import implementation_hash
+        from team import project,current_source,node_requirements
+        from team_transport import capture_harness,bind_target,register_task,record_output,reconcile_task
+        cls = type(self)
+        if cls.prepared_temporary:
+            temporary = tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_prepared_')
+            self.addCleanup(temporary.cleanup)
+            self.root = Path(temporary.name).resolve()
+            shutil.copytree(Path(cls.prepared_temporary.name),self.root,dirs_exist_ok=True)
+            self.store = CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3')
+            self.rt = Runtime(self.store.root,self.root)
+            for key,value in cls.prepared_attributes.items():
+                setattr(self,key,copy.deepcopy(value))
+            if mutate_output:
+                self.replace_report(mutate_output)
+            if code_status != 'PASS':
+                receipt = self.store.get(self.codes[0]); receipt['status'] = code_status
+                receipt['output'] = self.store.put({'status':code_status,'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_CODE_EXECUTION'})
+                receipt['cache_key'] = digest(['TEST_FIXTURE_CHANGED_CODE',code_status])
+                reference = self.store.put(receipt)
+                self.rt.append('capability_result',FIXED_WORK,dict(cache_key=receipt['cache_key'],
+                    capability=receipt['capability'],phase=receipt['phase'],output=receipt['output']))
+                self.rt.append('capability_bound',FIXED_WORK,dict(node=self.node['id'],input_hash=receipt['input_hash'],receipt=reference))
+                self.codes[0] = reference
+            return self.collection
+        self.authority = self.adopt()
+        s = self.rt.state(FIXED_WORK); base = self.rt.input_hash(s,self.node)
+        self.rt.append('claimed',FIXED_WORK,dict(node=self.node['id'],actor='TEST_FIXTURE',
+            input_hash=base,task_id=digest('TEST_FIXTURE_D02'),token='TEST_FIXTURE_D02_TOKEN',
+            expires_at=time.time()+3600))
+        self.codes = []
+        implementation = implementation_hash(self.rt)
+        for capability in self.node['capability_requests']:
+            output = self.store.put({'status':code_status,'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_CODE_EXECUTION'})
+            receipt = dict(capability=capability,node=self.node['id'],phase=self.node['phase'],
+                status=code_status,input_hash=base,implementation_hash=implementation,
+                cache_key=digest(['TEST_FIXTURE_D02',capability]),output=output)
+            ref = self.store.put(receipt); self.codes.append(ref)
+            self.rt.append('capability_result',FIXED_WORK,dict(cache_key=receipt['cache_key'],
+                capability=capability,phase=self.node['phase'],output=output))
+            self.rt.append('capability_bound',FIXED_WORK,dict(node=self.node['id'],input_hash=base,receipt=ref))
+        p = project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        self.old_open = [f for fs in p['findings'].values() for f in fs if f['resolution'] in ('OPEN','UNRESOLVED')]
+        self.collection = dict(submissionActor='M',outputRefs=[],registrationRefs=[],methodAuthorityRef=self.authority['authorityRef'])
+        self.reviews = {}
+        for req in node_requirements(s['plan']['agent_team'],self.node):
+            target = bind_target(self.rt,FIXED_WORK,self.node['id'],req['facet'],self.codes,
+                                 [self.evidence,self.file_evidence],artifact_hashes={'code':self.codes[0]})
+            for index,who in enumerate(INFORMED_REVIEWERS):
+                task = 'TEST_FIXTURE_D02_'+req['claimRef']+'_'+str(index)
+                a = dict(assignmentId=task,roleEpoch=1,node=self.node['id'],block=self.node['block'],
+                    facet=req['facet'],claimRefs=[req['claimRef']],performerRef=who,role='reviewer',
+                    inputHash=base,sourceSHA=current_source(s,self.node),artifactHashes={'code':self.codes[0]},
+                    allowedPaths=[],writeMode='READ_ONLY_BY_INSTRUCTION_NOT_OS_SANDBOX',
+                    dependsOnTasks=[],budget={'tokenBudget':None},independent=False,targetManifestRef=target['targetManifestRef'])
+                packet = dict(baseNodeInputHash=base,sourceRefs=[self.evidence,self.file_evidence],
+                    authorHistory=self.matrix,contextExposure={'forkMode':'all','authorRationaleVisibleAtFirstPass':True})
+                packet['packetHash'] = digest(packet)
+                capture = capture_harness(self.rt,FIXED_WORK,dict(agentRef=who,taskRef=task,
+                    parentRef='/root',toolName='collaboration.followup_task',attestationMethod='transcribed-tool-result',
+                    rawResult={'fixtureKind':'TEST_FIXTURE_NO_AGENT_WAS_RUN'}))
+                harness = dict(agentRef=who,taskRef=task,parentRef='/root',logicalRole='A' if index==0 else 'B',
+                    toolResultRef=capture['artifactRef'],attestationMethod='transcribed-tool-result')
+                registration = register_task(self.rt,FIXED_WORK,a,packet,harness)
+                findings = [dict(findingId=f['findingId'],claimRef=f['claimRef'],facet=f['facet'],
+                    reason='TEST_FIXTURE protocol resolution only',evidenceRefs=[self.evidence],
+                    resolution='VERIFIED_FIXED',reexaminesOutputRef=f['outputRef'])
+                    for f in self.old_open if (f['claimRef'],f['facet'])==(req['claimRef'],req['facet'])]
+                out = dict(kind='review',assignmentHash=registration['assignmentHash'],packetHash=packet['packetHash'],
+                    performerRef=who,verdict='PASS',findings=findings,claimRef=req['claimRef'],facet=req['facet'],
+                    targetHash=self.codes[0],reviewKind=req['reviewKind'],independent=False,authorSeparation=False,
+                    sourceFirst=False,firstPass=False,currentSourceSHA=s['candidate_sha'],evidenceRefs=[self.evidence],
+                    rationale='TEST_FIXTURE protocol test; not actual semantic review',codeReceiptRefs=self.codes)
+                if mutate_output:
+                    mutate_output(out)
+                output_capture = capture_harness(self.rt,FIXED_WORK,dict(agentRef=who,taskRef=task,
+                    attestationMethod='transcribed-tool-result',channel='subagent-final',
+                    rawResult={'fixtureKind':'TEST_FIXTURE_NO_AGENT_WAS_RUN','structured':copy.deepcopy(out)},structuredOutputHash=digest(out)))
+                out['harnessOutputRef'] = output_capture['artifactRef']
+                recorded = record_output(self.rt,FIXED_WORK,registration['registrationRef'],out)
+                reconcile_task(self.rt,FIXED_WORK,registration['registrationRef'],'COMPLETED',[output_capture['artifactRef']])
+                self.collection['registrationRefs'].append(registration['registrationRef'])
+                self.collection['outputRefs'].append(recorded['outputRef'])
+                self.reviews.setdefault((req['claimRef'],req['facet']),[]).append(recorded['outputRef'])
+        self.dispositions = [dict(findingId=f['findingId'],priorOutputRef=f['outputRef'],claimRef=f['claimRef'],facet=f['facet'],
+            resolution='VERIFIED_FIXED',reason='TEST_FIXTURE bounded protocol evidence',evidenceRefs=[self.evidence],
+            codeReceiptRefs=self.codes,reviewOutputRefs=self.reviews[(f['claimRef'],f['facet'])]) for f in self.old_open]
+        if not mutate_output and code_status == 'PASS':
+            cls.prepared_temporary = tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_cache_')
+            shutil.copytree(self.root,Path(cls.prepared_temporary.name),dirs_exist_ok=True)
+            cls.prepared_attributes = {key:copy.deepcopy(getattr(self,key)) for key in
+                ('authority','codes','old_open','collection','reviews','dispositions')}
+        return self.collection
+
+    def replace_report(self,mutate,*,assignment_mutate=None,bypass_output_transport=False):
+        """A new actual transport task, never alteration of a stored report."""
+        from team import project
+        from team_transport import capture_harness,register_task,record_output,reconcile_task
+        p = project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        oldref = self.collection['outputRefs'][0]; row = p['outputs'][oldref]
+        oldregref = row['registrationRef']; reg = copy.deepcopy(p['registrations'][oldregref])
+        a = reg['assignment']; a['roleEpoch'] += 1
+        if assignment_mutate:
+            assignment_mutate(a)
+        who = a['performerRef']; task = reg['harness']['taskRef']+'_REVISION'
+        raw = capture_harness(self.rt,FIXED_WORK,dict(agentRef=who,taskRef=task,parentRef='/root',
+            toolName='collaboration.followup_task',attestationMethod='transcribed-tool-result',
+            rawResult={'fixtureKind':'TEST_FIXTURE_NO_AGENT_WAS_RUN'}))
+        h = dict(reg['harness'],agentRef=who,taskRef=task,toolResultRef=raw['artifactRef'])
+        registered = register_task(self.rt,FIXED_WORK,a,reg['packet'],h)
+        out = copy.deepcopy(row['output']); out.pop('harnessOutputRef')
+        out['assignmentHash'] = registered['assignmentHash']; out['performerRef'] = who; mutate(out)
+        captured = capture_harness(self.rt,FIXED_WORK,dict(agentRef=who,taskRef=task,
+            attestationMethod='transcribed-tool-result',channel='subagent-final',rawResult={'fixtureKind':'TEST_FIXTURE_NO_AGENT_WAS_RUN'},
+            structuredOutputHash=digest(out)))
+        out['harnessOutputRef'] = captured['artifactRef']
+        if bypass_output_transport:
+            # TEST_FIXTURE attack: bypass the public transport solely to prove
+            # that result/replay validation also rejects a forged reviewer role.
+            original = self.store.put(out)
+            normalized = copy.deepcopy(out)
+            for finding in normalized['findings']:
+                finding.update(node=a['node'],block=a.get('block'),inputHash=a['inputHash'])
+            body = dict(registrationRef=registered['registrationRef'],output=normalized,
+                        originalOutputRef=original,submissionActor='M')
+            reference = self.store.put(body)
+            self.rt.append('team_output_recorded',FIXED_WORK,dict(body,outputRef=reference))
+            recorded = {'outputRef':reference}
+        else:
+            recorded = record_output(self.rt,FIXED_WORK,registered['registrationRef'],out)
+        reconcile_task(self.rt,FIXED_WORK,registered['registrationRef'],'COMPLETED',[captured['artifactRef']])
+        self.collection['outputRefs'][0] = recorded['outputRef']
+        self.collection['registrationRefs'] = [registered['registrationRef'] if r==oldregref else r for r in self.collection['registrationRefs']]
+        for disposition in self.dispositions:
+            disposition['reviewOutputRefs'] = [recorded['outputRef'] if r==oldref else r for r in disposition['reviewOutputRefs']]
+        return recorded['outputRef']
+
+    def seal(self):
+        return self.rt.seal_informed_review(FIXED_WORK,self.node['id'],collection=self.collection,
+            capability_receipts=self.codes,evidence_refs=[self.evidence],finding_dispositions=self.dispositions)
+
+    def result(self,sealed):
+        return dict(verdict='PASS',capability_receipts=self.codes,
+                    teamCollection=dict(self.collection,methodReceiptRef=sealed['methodReceiptRef']))
+
+    def test_exact_adoption_preserves_plan_users_and_historical_first_seals(self):
+        from checkpoint import INFORMED_FIRST_PASS_REFS
+        from team import current_informed_authority,informed_review_input_binding
+        before = self.rt.state(FIXED_WORK); first = {r:self.store.get(r) for r in INFORMED_FIRST_PASS_REFS}
+        old = self.rt.input_hash(before,self.node); accepted = self.adopt()
+        after = self.rt.state(FIXED_WORK)
+        self.assertEqual(after['plan'],before['plan']); self.assertEqual(after['users'],before['users'])
+        self.assertEqual(first,{r:self.store.get(r) for r in INFORMED_FIRST_PASS_REFS})
+        self.assertNotEqual(old,self.rt.input_hash(after,self.node))
+        self.assertFalse(accepted['gateAccepted'])
+        self.assertEqual(current_informed_authority(self.rt,FIXED_WORK)['authorityRef'],accepted['authorityRef'])
+        self.assertIsNone(informed_review_input_binding(after,{'id':'R06_PATCH@qf01-full-lesson'}))
+
+    def test_wrong_adoption_hash_quote_source_and_old_head_are_rejected(self):
+        for changed in [dict(proposal_sha256='0'*64),dict(quote='続けて'),dict(source_ref='TEST_FIXTURE_WRONG'),dict(expected_head='0'*64)]:
+            with self.subTest(changed=changed),self.assertRaises(Rejected): self.adopt(**changed)
+
+    def test_authority_mutations_epoch_work_source_original_hashes_and_flags_rejected(self):
+        from team import validate_informed_authority_body
+        body = self.adopt()['authority']; state = self.rt.state(FIXED_WORK)
+        for field,value in [('checkpointEpoch','0'*64),('work','OTHER'),('currentSourceSHA','0'*40),
+            ('originalSourceSHA','0'*40),('originalPlanSHA256','0'*64),('originalUsersSHA256','0'*64),
+            ('candidateManifestSHA256','0'*64),('definitionHash','0'*64),('independent',True),
+            ('historicalFirstPassRefs',[]),('reviewerRefs',['/root'])]:
+            mutation = copy.deepcopy(body); mutation[field] = value
+            with self.subTest(field=field),self.assertRaises(Rejected):
+                validate_informed_authority_body(self.rt,FIXED_WORK,state,mutation)
+
+    def test_two_actual_fixture_reports_per_scope_and_sealed_event_are_required(self):
+        from team import check_collection
+        self.prepare(); sealed = self.seal(); result = self.result(sealed)
+        check_collection(self.rt,FIXED_WORK,self.node,result)
+        receipt = sealed['receipt']  # check_collection already validates this body.
+        self.assertEqual(len(self.collection['outputRefs']),4)
+        self.assertTrue(all(receipt[k] is False for k in ('independent','sourceFirst','firstPass')))
+        self.assertFalse(sealed['semanticValidityVerified']); self.assertFalse(sealed['gateAccepted'])
+
+    def test_one_reviewer_missing_refuses_seal(self):
+        self.prepare(); self.collection['outputRefs'].pop()
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_independence_or_first_pass_forgery_refuses_seal(self):
+        self.prepare(mutate_output=lambda out:out.update(independent=True,firstPass=True))
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_author_separation_lie_refuses_seal(self):
+        self.prepare(mutate_output=lambda out:out.update(authorSeparation=True))
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_code_fail_cannot_be_promoted_to_review_pass(self):
+        self.prepare(code_status='FAIL')
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_unknown_target_source_cannot_become_current_review(self):
+        self.prepare(mutate_output=lambda out:out.update(currentSourceSHA='e'*40))
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_open_finding_and_single_author_disposition_cannot_be_omitted(self):
+        self.prepare(); original = copy.deepcopy(self.dispositions)
+        self.dispositions = []
+        with self.assertRaises(Rejected): self.seal()
+        self.dispositions = original; self.dispositions[0]['reviewOutputRefs'].pop()
+        with self.assertRaises(Rejected): self.seal()
+
+    def test_artifact_without_real_seal_event_cannot_be_accepted(self):
+        from team import build_informed_review_receipt,check_collection
+        self.prepare()
+        body = build_informed_review_receipt(self.rt,FIXED_WORK,self.node,self.collection,self.codes,[self.evidence],self.dispositions)
+        ref = self.store.put(body)
+        with self.assertRaises(Rejected): check_collection(self.rt,FIXED_WORK,self.node,self.result({'methodReceiptRef':ref}))
+
+    def test_revocation_changes_input_and_rejects_old_receipt(self):
+        from team import check_collection,current_informed_authority
+        self.prepare(); sealed = self.seal(); before = self.rt.input_hash(self.rt.state(FIXED_WORK),self.node)
+        # Release only the temporary fixture claim before explicit revocation.
+        self.rt.append('claim_reconciled',FIXED_WORK,{'node':self.node['id'],'reason':'TEST_FIXTURE'})
+        self.rt.revoke_informed_review_method(FIXED_WORK,authority_ref=self.authority['authorityRef'],
+            quote='TEST_FIXTURE revoke',reason='TEST_FIXTURE',source_ref='TEST_FIXTURE/revoke',expected_head=self.store.head)
+        self.assertIsNone(current_informed_authority(self.rt,FIXED_WORK))
+        self.assertNotEqual(before,self.rt.input_hash(self.rt.state(FIXED_WORK),self.node))
+        with self.assertRaises(Rejected): check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+
+    def test_source_change_invalidates_predesign_input_and_old_receipt(self):
+        from team import check_collection
+        self.prepare(); sealed = self.seal(); state = self.rt.state(FIXED_WORK)
+        before = self.rt.input_hash(state,self.node)
+        self.rt.append('candidate',FIXED_WORK,{'sha':'e'*40,'manifest':state['candidate_manifest']})
+        self.assertNotEqual(before,self.rt.input_hash(self.rt.state(FIXED_WORK),self.node))
+        with self.assertRaises(Rejected): check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+
+    def test_new_undisclosed_packet_author_invalidates_input_and_authority(self):
+        from team import project,current_informed_authority
+        from team_transport import capture_harness,register_task
+        self.prepare(); self.seal(); state = self.rt.state(FIXED_WORK)
+        before = self.rt.input_hash(state,self.node)
+        p = project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        reg = copy.deepcopy(p['registrations'][self.collection['registrationRefs'][-1]])
+        a = reg['assignment']; a['assignmentId'] += '_NEW_HISTORY'
+        packet = reg['packet']; packet['authorHistory'][1]['semanticContributorRefs'].append('/root/TEST_FIXTURE_NEW_CONTRIBUTOR')
+        packet.pop('packetHash'); packet['packetHash'] = digest(packet)
+        who = a['performerRef']; task = a['assignmentId']
+        raw = capture_harness(self.rt,FIXED_WORK,dict(agentRef=who,taskRef=task,parentRef='/root',
+            toolName='collaboration.followup_task',attestationMethod='transcribed-tool-result',
+            rawResult={'fixtureKind':'TEST_FIXTURE_NO_AGENT_WAS_RUN'}))
+        harness = dict(reg['harness'],taskRef=task,toolResultRef=raw['artifactRef'])
+        register_task(self.rt,FIXED_WORK,a,packet,harness)
+        self.assertNotEqual(before,self.rt.input_hash(self.rt.state(FIXED_WORK),self.node))
+        with self.assertRaises(Rejected): current_informed_authority(self.rt,FIXED_WORK)
+
+    def test_rehashed_past_receipt_metadata_cannot_carry_finding_resolutions(self):
+        from team import project,_accepted_informed_dispositions,check_open_findings,node_requirements
+        from definitions import instantiate
+        self.prepare(); sealed = self.seal(); result = self.result(sealed)
+        state = self.rt.state(FIXED_WORK)
+        self.rt.append('result',FIXED_WORK,dict(node=self.node['id'],artifact=self.store.put(result),
+            input_hash=self.rt.input_hash(state,self.node),verdict='PASS',actor='TEST_FIXTURE_NOT_ACTUAL_GATE'))
+        state = self.rt.state(FIXED_WORK); p = project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        self.assertEqual(len(_accepted_informed_dispositions(self.rt,FIXED_WORK,state,p)),len(self.dispositions))
+        tampered = copy.deepcopy(sealed['receipt']); tampered['currentSourceSHA'] = '0'*40
+        badref = self.store.put(tampered)
+        self.rt.append('informed_review_receipt_sealed',FIXED_WORK,dict(node=self.node['id'],inputHash=tampered['inputHash'],
+            methodAuthorityRef=self.authority['authorityRef'],methodReceiptRef=badref))
+        badresult = self.result({'methodReceiptRef':badref})
+        self.rt.append('result',FIXED_WORK,dict(node=self.node['id'],artifact=self.store.put(badresult),
+            input_hash=self.rt.input_hash(state,self.node),verdict='PASS',actor='TEST_FIXTURE_ATTACK_NOT_ACTUAL_GATE'))
+        state = self.rt.state(FIXED_WORK)
+        self.assertEqual(_accepted_informed_dispositions(self.rt,FIXED_WORK,state,p),[])
+        final = instantiate(state['plan'])['G2_AUDIT@qf01-p035']
+        with self.assertRaises(Rejected):
+            check_open_findings(self.rt,FIXED_WORK,final,{'verdict':'PASS'},node_requirements(state['plan']['agent_team'],final))
+
+    def test_rehashed_suffix_cannot_seal_before_actual_reports_complete(self):
+        from team import check_collection
+        self.prepare(); sealed = self.seal(); rows = self.store.suffix_events()
+        seal = rows.pop()
+        self.assertEqual(seal['kind'],'informed_review_receipt_sealed')
+        output_index = max(i for i,e in enumerate(rows) if e['kind']=='team_output_recorded')
+        rows.insert(output_index,seal)
+        self.rewrite_fixture_suffix(rows)
+        self.assertEqual(len(self.rt.store.suffix_events()),len(rows))
+        with self.assertRaisesRegex(Rejected,'sealより後'):
+            check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+
+    def rewrite_fixture_suffix(self,rows):
+        from checkpoint import canonical
+        # Attack only this resolved temporary TEST_FIXTURE clone; no original
+        # authority, historical prefix envelope, source or production Store.
+        self.assertIn('TEST_FIXTURE_D02',self.root.name)
+        events = self.store.root/'events'
+        self.assertTrue(events.resolve().is_relative_to(self.root.resolve()))
+        for path in list(events.iterdir()):
+            self.assertEqual(path.resolve().parent,events.resolve()); path.unlink()
+        previous = FIXED_ANCHOR['head']
+        for seq,row in enumerate(rows,start=FIXED_ANCHOR['events']+1):
+            row = dict(row,seq=seq,previous=previous); row.pop('hash')
+            row['hash'] = digest(row); previous = row['hash']
+            (events/(str(seq).zfill(8)+'-'+row['id']+'.json')).write_bytes(canonical(row)+b'\n')
+        self.rt = Runtime(self.store.root,self.root)
+        self.store = self.rt.store
+
+    def test_current_code_target_subset_and_author_artifact_boundary(self):
+        from team import check_collection
+        from team_transport import bind_target
+        self.prepare()
+        target = bind_target(self.rt,FIXED_WORK,self.node['id'],'design',[self.codes[0]],
+            [self.evidence,self.file_evidence],artifact_hashes={'code':self.codes[0]})
+        self.replace_report(lambda out:None,assignment_mutate=lambda a:a.update(targetManifestRef=target['targetManifestRef']))
+        sealed = self.seal(); check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+        author = self.replace_report(lambda out:out.update(kind='author',findings=[]),
+            assignment_mutate=lambda a:a.update(role='author'))
+        with self.assertRaisesRegex(Rejected,'D targetはcurrent CODE'):
+            bind_target(self.rt,FIXED_WORK,self.node['id'],'design',[author],
+                [self.evidence,self.file_evidence],artifact_hashes={'author':author})
+
+    def test_capture_writer_and_after_seal_order_rehashed_attacks_rejected(self):
+        from team import check_collection,project
+        for attack in ('writer','order'):
+            with self.subTest(attack=attack):
+                self.prepare(); sealed = self.seal()
+                p = project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+                reg = p['registrations'][self.collection['registrationRefs'][0]]
+                reference = reg['harness']['toolResultRef']; rows = self.store.suffix_events()
+                index = next(i for i,e in enumerate(rows) if e['kind']=='team_harness_captured' and e['payload'].get('artifactRef')==reference)
+                if attack == 'writer':
+                    rows[index]['payload']['submissionActor'] = 'TEST_FIXTURE_NOT_M'
+                else:
+                    rows.append(rows.pop(index))
+                self.rewrite_fixture_suffix(rows)
+                with self.assertRaises(Rejected):
+                    check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+
+    def test_reviewer_role_is_required_after_forged_output_event(self):
+        self.prepare()
+        with self.assertRaisesRegex(Rejected,'固定2名'):
+            self.replace_report(lambda out:None,assignment_mutate=lambda a:a.update(performerRef='/root/TEST_FIXTURE_THIRD_NO_AGENT_WAS_RUN'))
+        self.replace_report(lambda out:None,assignment_mutate=lambda a:a.update(role='author'),bypass_output_transport=True)
+        with self.assertRaisesRegex(Rejected,'reviewerの実報告'):
+            self.seal()
+
+    def test_informed_runner_scope_lease_and_input_keys_fail_before_claim(self):
+        self.adopt(); task = self.rt.task(FIXED_WORK,self.node['id'])
+        inputs = {cap:{} for cap in self.node['capability_requests']}
+        head = self.store.head
+        with patch.object(self.rt,'next',return_value={'status':'READY','task':task}):
+            for seconds in [True,899,7201]:
+                with self.subTest(seconds=seconds),self.assertRaises(Rejected):
+                    self.rt.run_informed_review(FIXED_WORK,inputs,seconds=seconds)
+            for invalid in [{},dict(inputs,TEST_FIXTURE_EXTRA={}),dict(inputs,**{next(iter(inputs)):None})]:
+                with self.subTest(inputs=invalid),self.assertRaises(Rejected):
+                    self.rt.run_informed_review(FIXED_WORK,invalid)
+        with self.assertRaises(Rejected): self.rt.run_informed_review('TEST_FIXTURE_OTHER_WORK',inputs)
+        wrong_task = copy.deepcopy(task); wrong_task['node']['id'] = 'R06_PATCH@qf01-full-lesson'
+        with patch.object(self.rt,'next',return_value={'status':'READY','task':wrong_task}),self.assertRaises(Rejected):
+            self.rt.run_informed_review(FIXED_WORK,inputs)
+        self.assertEqual(self.store.head,head)
+        self.assertFalse(self.rt.state(FIXED_WORK)['claims'])
+
+    def test_informed_runner_claim_precedes_code_and_never_accepts_result(self):
+        from capabilities import implementation_hash
+        self.adopt(); task = self.rt.task(FIXED_WORK,self.node['id']); implementation = implementation_hash(self.rt)
+        inputs = {cap:{'fixtureKind':'TEST_FIXTURE'} for cap in self.node['capability_requests']}
+        before = self.store.head; started = time.time()
+        def fixture_code(rt,work,node,capability,value):
+            claim = rt.state(work)['claims'][node['id']]
+            self.assertEqual(claim['input_hash'],task['input_hash'])
+            output = self.store.put({'status':'NEEDS_AI_REVIEW','fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_CODE_EXECUTION'})
+            receipt = dict(capability=capability,phase=node['phase'],implementation_hash=implementation,
+                input_hash=claim['input_hash'],node=node['id'],cache_key=digest(['TEST_FIXTURE_RUNNER',capability]),output=output,status='NEEDS_AI_REVIEW')
+            ref = self.store.put(receipt)
+            rt.append('capability_result',work,dict(cache_key=receipt['cache_key'],capability=capability,phase=node['phase'],output=output))
+            rt.append('capability_bound',work,dict(node=node['id'],input_hash=claim['input_hash'],receipt=ref))
+            return ref
+        with patch.object(self.rt,'next',return_value={'status':'READY','task':task}),patch('capabilities.run_capability',side_effect=fixture_code) as runner:
+            ran = self.rt.run_informed_review(FIXED_WORK,inputs)
+        self.assertEqual(runner.call_count,len(inputs)); self.assertFalse(ran['automaticAcceptance'])
+        self.assertEqual(ran['claimSeconds'],3600); self.assertEqual(len(ran['receipts']),len(inputs))
+        claim = self.rt.state(FIXED_WORK)['claims'][self.node['id']]
+        self.assertGreaterEqual(claim['expires_at'],started+3600)
+        rows = self.store.suffix_events(); start = next(i for i,e in enumerate(rows) if e['hash']==before)
+        new = rows[start+1:]; self.assertEqual(new[0]['kind'],'claimed')
+        self.assertFalse(any(e['kind']=='result' for e in new))
+
+    def prepare_technical_owner(self,*,adopt_method=True,approve_d=True):
+        """Symbolic original A bytes: actual Git correspondence is mocked.
+
+        This tests original snapshot immutability and current candidate binding,
+        never certifies the fixture bytes as public Git A or an actual T result.
+        """
+        from adapters import _CHECKPOINT_CORE_PATHS,_CHECKPOINT_D02_BASELINE
+        from checkpoint import RECOVERY_WORK,INFORMED_REVIEW_PROPOSAL_SHA256
+        from definitions import instantiate
+        current = {}
+        for relative in sorted(_CHECKPOINT_CORE_PATHS):
+            raw = (ENGINE.parent/relative).read_bytes(); current[relative] = raw
+            path = self.root/relative; path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(raw)
+        symbolic_a = self.root/'workflow/runtime.py'
+        symbolic_a.write_bytes(symbolic_a.read_bytes()+b'\n# TEST_FIXTURE_SYMBOLIC_ORIGINAL_A_NOT_GIT_PROOF\n')
+        primary = self.rt.state(FIXED_WORK)
+        plan = dict(work_id=RECOVERY_WORK,profile='technical',command='GOVERNANCE',
+            subject='math',mode='textbook',source_sha=_CHECKPOINT_D02_BASELINE,parent_work=FIXED_WORK,
+            simulation=False,rules={},proposal={'id':'TEST_FIXTURE_OLD_1D','hash':RECOVERY_PROPOSAL_SHA256},
+            source_manifest=manifest(self.root,sorted(_CHECKPOINT_CORE_PATHS)),
+            scope={'paths':sorted(_CHECKPOINT_CORE_PATHS),'preserve':[]},
+            protected_manifest={**primary['plan']['protected_manifest'],**primary['candidate_manifest']},
+            blocks=[{'id':'TEST_FIXTURE_TECHNICAL_CORE','sources':sorted(_CHECKPOINT_CORE_PATHS)}])
+        self.rt.open(plan)
+        self.rt.user(RECOVERY_WORK,'approve_proposal','この限定案を採用して進める',RECOVERY_PROPOSAL_SHA256,
+            'TEST_FIXTURE/request_user_input_async/call_d1c88a5dde794be288a201a5ea8de0cc')
+        owner = self.rt.state(RECOVERY_WORK); node = instantiate(owner['plan'])['T01_ANALYSIS']
+        old = self.store.put({'verdict':'PASS','fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_T_RESULT'})
+        self.rt.append('result',RECOVERY_WORK,dict(node=node['id'],artifact=old,
+            input_hash=self.rt.input_hash(owner,node),verdict='PASS',actor='TEST_FIXTURE_ONLY'))
+        revised = copy.deepcopy(plan); revised['proposal'] = {'id':'TEST_FIXTURE_D02','hash':INFORMED_REVIEW_PROPOSAL_SHA256}
+        self.rt.revise(RECOVERY_WORK,revised)
+        if approve_d:
+            self.rt.user(RECOVERY_WORK,'approve_proposal','限定D02案を採用して進める',INFORMED_REVIEW_PROPOSAL_SHA256,
+                'request_user_input_async/call_27be7afbeef843249d088b530a5701b7')
+        for relative,raw in current.items():
+            (self.root/relative).write_bytes(raw)
+        report = self.root/'TEST_FIXTURE_OWNER_CURRENT_CODE.json'
+        report.write_text(json.dumps({'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_VERIFICATION','currentSourceSHA':'d'*40})+'\n',encoding='utf-8')
+        self.owner_verification = self.rt.evidence(RECOVERY_WORK,'file',
+            {'path':report.name,'sha256':hashlib.sha256(report.read_bytes()).hexdigest()},source_ref='TEST_FIXTURE/local-structure')
+        if adopt_method:
+            self.authority = self.adopt()
+        self.owner_before = self.rt.state(RECOVERY_WORK)
+        self.owner_snapshot = self.store.source_snapshot(RECOVERY_WORK)
+        self.owner_git = {'schemaVersion':'qf01-informed-technical-git-proof/1',
+            'previousCandidateSHA':_CHECKPOINT_D02_BASELINE,
+            'retainedManifestSHA256':digest(self.owner_before['plan']['source_manifest']),
+            'currentMaterialGitProof':{'fixtureKind':'TEST_FIXTURE_MOCKED_GIT_NOT_PUBLIC_A_OR_B_PROOF','candidateSHA':'d'*40}}
+
+    def reconcile_owner(self,**overrides):
+        from checkpoint import RECOVERY_WORK
+        args = dict(candidate_sha='d'*40,verification_refs=[self.owner_verification],expected_head=self.store.head)
+        args.update(overrides)
+        with patch('adapters._checkpoint_informed_technical_git',return_value=self.owner_git):
+            return self.rt.reconcile_informed_technical_owner(RECOVERY_WORK,**args)
+
+    def test_technical_owner_current_code_binding_preserves_original_source_users_results(self):
+        from checkpoint import RECOVERY_WORK
+        from definitions import instantiate
+        self.prepare_technical_owner(); before = self.owner_before
+        code_paths = before['plan']['source_manifest']
+        files = {p:hashlib.sha256((self.root/p).read_bytes()).hexdigest() for p in code_paths}
+        result = self.reconcile_owner(); after = self.rt.state(RECOVERY_WORK)
+        self.assertEqual(after['candidate_sha'],'d'*40)
+        self.assertEqual(after['candidate_manifest'],manifest(self.root,code_paths))
+        for key in ('plan','users','results','definition_hash'):
+            self.assertEqual(after[key],before[key])
+        self.assertEqual(self.store.source_snapshot(RECOVERY_WORK),self.owner_snapshot)
+        self.assertEqual(files,{p:hashlib.sha256((self.root/p).read_bytes()).hexdigest() for p in code_paths})
+        self.assertFalse(result['codeFilesWritten']); self.assertFalse(result['gateAccepted'])
+        proof = result['proof']; self.assertFalse(proof['writesExecuted']); self.assertFalse(proof['oldResultsTransferred'])
+        self.assertEqual({r['node'] for r in proof['resultDispositions']},set(before['results']))
+        event = self.store.suffix_events()[-1]
+        self.assertEqual(event['kind'],'informed_technical_candidate_reconciled')
+        self.assertEqual(event['previous'],proof['expectedHead'])
+        node = instantiate(after['plan'])['T01_ANALYSIS']
+        self.assertNotEqual(before['results'][node['id']]['input_hash'],self.rt.input_hash(after,node))
+
+    def test_technical_owner_requires_adopted_method_exact_new_approval_and_correct_owner(self):
+        from checkpoint import RECOVERY_WORK,PUBLISHER_WORK
+        for i,case in enumerate(('method','approval','owner')):
+            with self.subTest(case=case):
+                if i:self.reset_fixture()
+                self.prepare_technical_owner(adopt_method=case!='method',approve_d=case!='approval')
+                head = self.store.head
+                with self.assertRaises(Rejected):
+                    if case=='owner':
+                        self.rt.reconcile_informed_technical_owner(PUBLISHER_WORK,candidate_sha='d'*40,
+                            verification_refs=[self.owner_verification],expected_head=head)
+                    else:self.reconcile_owner()
+                self.assertEqual(self.store.head,head)
+                self.assertEqual(self.store.source_snapshot(RECOVERY_WORK),self.owner_snapshot)
+
+    def test_technical_owner_head_inventory_and_original_scope_fail_without_writes(self):
+        from checkpoint import RECOVERY_WORK
+        for i,case in enumerate(('head','inventory','scope')):
+            with self.subTest(case=case):
+                if i:self.reset_fixture()
+                self.prepare_technical_owner()
+                expected = self.store.head
+                if case=='head':
+                    self.rt.append('TEST_FIXTURE_CONCURRENT_HEAD',RECOVERY_WORK,{'fixtureKind':'TEST_FIXTURE'})
+                elif case=='inventory':
+                    state = self.rt.state(RECOVERY_WORK)
+                    self.rt.append('candidate',RECOVERY_WORK,dict(sha=state['candidate_sha'],
+                        manifest=dict(state['candidate_manifest'],**{'tools/textbook/operations.mjs':digest('TEST_FIXTURE_EXTRA_PATH')})))
+                    expected = self.store.head
+                else:
+                    plan = copy.deepcopy(self.owner_before['plan']); plan['scope']['paths'].append('tools/textbook/operations.mjs')
+                    self.rt.append('revised',RECOVERY_WORK,{'plan':plan})
+                    expected = self.store.head
+                head = self.store.head
+                with self.assertRaises(Rejected):self.reconcile_owner(expected_head=expected)
+                self.assertEqual(self.store.head,head)
+                self.assertEqual(self.store.source_snapshot(RECOVERY_WORK),self.owner_snapshot)
+                self.assertEqual(self.rt.state(RECOVERY_WORK)['plan']['source_manifest'],self.owner_before['plan']['source_manifest'])
+
+
 class NativeRuntimeCheckpointTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -35,3 +35,11 @@ authority_reviewは改訂具体案を読取レビューし、現在の実T04/R06
 最終focused run2: scope4＋CLI direct-script stale-runtime.pyc1＋R06 positive1の6/6 PASS、SKIP0、44.080秒。source/tests/input16fileの前後hash一致。raw log `native-focused-run-2.log` SHA256 `649e6bb5d9389d3350f5cc47a9bf6d9bcf60f8f5327a81bb5dde86ba69b05049`、JSON reportと共に上記workspace directoryへ保存。focused run1の不正event filename許可とエラー分類差のFAILも保持し、修復後のrun2と区別する。旧92件と最終6件は重複するR06 positiveを含む別runであり、最終sourceの全97件PASSとは加算しない。
 
 Git差分検査はCRLFを保存するためcommand-local `core.whitespace=cr-at-eol`で実施し、実trailing whitespaceなし。初回plain diff --checkは新CRLFファイルのCRをtrailing whitespaceとして報告した。承認済みPROPOSALのraw bytesは変更していない。
+
+最終固定Linux run45044989004の実証拠は専用namespace reports/T04_CURRENT_LINUX_CI_20261123.jsonとT04_CURRENT_TECHNICAL_RESULT_20261123.json。Node22.23.5/pnpm11.9.0/Python3.12.16、checkpoint97実行（95PASS/Windows専用2SKIP）、通常workflow267（実Linux procfs）、production Node59/Python38、engine27、app58、bindings4、authoring35/5、buildを確認。現在TS4 lintゼロと未変更scopeの既存28診断のbaseline一致はPASSだが、全体lint自体は既存25error/3warningによりFAILのまま。
+
+実artifact14763387458のSHA2563858426d389fe70e9fcb7512b63f25bc01beec8779879123dad96d9dbfd24250、CRC、全17入力不変と現在engine24/製品5pathのbyte一致を確認。RECOVERY技術T04実result702919fa…のみを記録し、テストfixtureを教材Gate receiptにしない。新publisher候補8helper/PRE_R06実102event replayは別診断で、実R06/PIN・publisher全体CIは未確認。D02基準変更・教材R04以降・公開・本人受入は未完了。
+
+D02実装追補（2026-11-23）: 固定採用回答をfile evidence QF01-D02-ACTUAL-USER-ADOPTION-20261123として専用台帳seq13849へ実記録。D02専用authority/実2名の寄与開示receipt/現CODEとfinding解消条件/後続定義移行/既存RECOVERY候補の読み取り専用照合/直接CLIを実装中。通常Store/team規則と教材5pathのbytesは維持する。焦点20回帰はPASS。追加6回帰は5PASS・1FAILで、同一定義内の旧T01入力が候補再結合後も失効しない点を検出したため補修・再検査中。旧FAILと実行前後hashを保存し、合算して現在123件成功とは扱わない。新Git B/固定Linux全体/新current技術結果/教材Gate/公開/本人受入は未実施。
+
+D02入力補修後の焦点確認: 既存RECOVERYのT01〜T04だけ、新候補照合proofRef/authorityRef/current candidate manifestを入力へ結合。owner positive再検査は1/1 PASS（17.315秒）、source/runbook/固定入力/D02提案の前後hash一致。旧plan/users/results/原snapshotと実file bytesは保持し、候補再結合後の旧T01入力失効を確認。rawはworkspace qf_audit_download/checkpoint-native-tests/d02-native-owner-repair-run-1.log/.json。最終sourceの全123件と通常workflow/公開側全体は、これから実Git固定版のLinux CIで確認する。method authority/教材Gate/公開/本人受入は未実施。

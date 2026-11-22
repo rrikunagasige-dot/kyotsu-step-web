@@ -4,6 +4,7 @@ name: QF01 revision3 current-core publisher P046-R3
     branches:
     - work/qf01-p046-r3-publisher-20261116
     - work/qf01-p046-r3-design-preview-20261116
+    - work/qf01-checkpoint-recovery-publisher-20261122
     paths:
     - .github/workflows/qf01-publisher-g3.yml
     - tools/release/qf01-*
@@ -42,6 +43,408 @@ concurrency:
   group: ${{ github.ref == 'refs/heads/work/qf01-p046-r3-design-preview-20261116' && 'qf01-r3-design-preview' || 'pages' }}
   cancel-in-progress: false
 jobs:
+  checkpoint_linux:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    env:
+      CHECKPOINT_CORE_SHA: abe5ff1385cb141bb2d01e34f6512eb50e9ca9da
+      CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676
+      CHECKPOINT_ORIGIN_SOURCE_SHA: 1f10ecbcd088ca8636932c8df4c7b85293777efc
+      CHECKPOINT_AUTHORITY_BLOB_SHA: ccb58fd71a927953093a567dc9732d6730fdda12
+      CHECKPOINT_FIXTURE_SHA: 9ee19f65d39b3e639857c809ada50a01c8a7c322
+      CHECKPOINT_LEGACY_SHA: 0401a9241671011c415f91f7f429368e80438037
+      CHECKPOINT_PROPOSAL_PATH: work/items/W-TECH-QF01-CHECKPOINT-RECOVERY-20261122/PROPOSAL.md
+      ACTUAL_REPOSITORY_ID: ${{ github.repository_id }}
+      CHECKPOINT_DIAGNOSTICS: ${{ runner.temp }}/qf01-checkpoint-linux
+      QF01_CHECKPOINT_INPUT_ROOT: ${{ runner.temp }}/qf01-checkpoint-test-input
+      QF01_CHECKPOINT_SOURCE_ROOT: ${{ github.workspace }}/fixture-source
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONPATH: ${{ github.workspace }}/core:${{ github.workspace }}/core/workflow
+      GIT_NO_LAZY_FETCH: '1'
+      GIT_OPTIONAL_LOCKS: '0'
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+    - name: Reject unbound immutable checkpoint inputs
+      id: pins
+      shell: bash
+      run: |
+        set -euo pipefail
+        python - <<'PY'
+        import json, os, re
+        from pathlib import Path
+        out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        out.mkdir(parents=True, exist_ok=True)
+        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
+                'CHECKPOINT_AUTHORITY_BLOB_SHA', 'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')
+        pins = {key: os.environ[key] for key in keys}
+        valid = (os.environ['GITHUB_REPOSITORY'] == 'rrikunagasige-dot/kyotsu-step-web'
+                 and os.environ['ACTUAL_REPOSITORY_ID'] == '1391122224'
+                 and all(re.fullmatch(r'[0-9a-f]{40}', pins[key]) for key in keys)
+                 and pins['CHECKPOINT_AUTHORITY_SHA'] == '55d844f20c0de3390ad6718ee8d01968ebbb8676'
+                 and pins['CHECKPOINT_ORIGIN_SOURCE_SHA'] == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
+                 and pins['CHECKPOINT_AUTHORITY_BLOB_SHA'] == 'ccb58fd71a927953093a567dc9732d6730fdda12'
+                 and pins['CHECKPOINT_FIXTURE_SHA'] == '9ee19f65d39b3e639857c809ada50a01c8a7c322'
+                 and pins['CHECKPOINT_LEGACY_SHA'] == '0401a9241671011c415f91f7f429368e80438037')
+        report = {'schemaVersion': 'qf01-checkpoint-linux-input-pins/1',
+                  'publisherSHA': os.environ['GITHUB_SHA'], 'pins': pins, 'bound': bool(valid),
+                  'testFixturesOnly': True, 'nativeBootstrapPerformed': False, 'gateAccepted': False}
+        (out / 'PINS.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        if not valid:
+            raise SystemExit('Public checkpoint source pins are unbound or repository identity differs')
+        with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as stream:
+            stream.write('VITE_PREVIEW_COMMIT=' + pins['CHECKPOINT_CORE_SHA'] + '\n')
+        PY
+    - name: Checkout the immutable current core and application candidate
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_CORE_SHA }}
+        path: core
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout the unchanged original source fixture
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_FIXTURE_SHA }}
+        path: fixture-source
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout the already public immutable authority source
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_AUTHORITY_SHA }}
+        path: authority-source
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Read the exact historical graph fixture for the existing compatibility test
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_LEGACY_SHA }}
+        path: legacy-fixture
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 11.9.0
+        run_install: false
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: pnpm
+        cache-dependency-path: core/pnpm-lock.yaml
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Derive TEST_FIXTURE inputs from already public source data
+      id: inputs
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B - <<'PY'
+        import base64, copy, hashlib, json, os, subprocess, sys, urllib.parse, urllib.request
+        from pathlib import Path
+        from checkpoint import (ORIGIN_NAMES, CURRENT_REPAIR_AFTER, RECOVERY_PROPOSAL_SHA256,
+                                FIXED_CONTRACT_SHA256, FIXED_WORK, canonical, digest,
+                                decode_gzip, strict_json, current_core_identity, load_qf01_checkpoint)
+        EXPECTED_ORIGIN_HASHES = {
+            'APPROVED_MATERIAL_SEED.json': '6ef587967d4761c27741c540d3320200dd64adb1c2ed3479bd1e2a9092aaad1e',
+            'BUILD_AUTHORITY.blob': '14586a74f6465dab9051c766cbed26e1f3a1b0cbcef657c8e9fae8fdc42a63c6',
+            'FEEDBACK_PROJECTION.json': 'ed8d6faea49b5dc33d6359c1fb43e1a7d873a0d748cc1435c05fd65d40be100a',
+            'KNOWN_PREFIX_ENVELOPES.json': '35013768d32f67012c55c46a88a8f2d497a4f6540a02e5b51be76e79bce5c21e',
+            'NODES.json': 'ef75121487346fe0cc24d9903d096082d98facc2c23472b3dc98d816cbeb110c',
+            'ORIGIN_SOURCE_PROOF.json': 'bdf5ab50fe2870c0e77c553dd089f221968635e6b5c5480a41ce1e1016e9473b',
+            'ORIGIN_SOURCE_SNAPSHOT.json': '08d0e50a4a8bf7c7f823f016a7389b02815285334902da09d037e7ad98e88b2a',
+            'TEAM_PREFIX_SUBSET.json': 'f2225ffd09a1e92e332f2bff82c87408af4d1a2ecf19a76c4ccbd27c6342bc41',
+            'publisher-contract.json': 'b5f49f53b3895a8169f817a91efd376b4e73b17526d5b08bcb77e2b7fa4aee30'}
+        def public_json(route):
+            assert route.startswith(('/git/blobs/', '/contents/')) and '://' not in route
+            token = os.environ.get('GH_TOKEN')
+            assert token, 'Authenticated read token required'
+            class NoRedirect(urllib.request.HTTPRedirectHandler):
+                def redirect_request(self, request, file, code, message, headers, new_url):
+                    return None
+            url = 'https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web' + route
+            request = urllib.request.Request(url, method='GET', headers={
+                'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token,
+                'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'qf01-checkpoint-public-fixture-read'})
+            with urllib.request.build_opener(NoRedirect()).open(request, timeout=30) as response:
+                assert response.status == 200 and response.geturl() == url, 'Public source read differs'
+                assert int(response.headers.get('Content-Length', '0')) <= 8 * 1024 * 1024
+                raw = response.read(8 * 1024 * 1024 + 1)
+            assert len(raw) <= 8 * 1024 * 1024, 'Public API response exceeds bound'
+            return strict_json(raw)
+        def decode_blob(payload, wanted):
+            assert payload['sha'] == wanted and payload['encoding'] == 'base64'
+            assert type(payload['size']) is int and 0 < payload['size'] <= 5 * 1024 * 1024
+            encoded = payload['content'].replace('\n', '')
+            raw = base64.b64decode(encoded, validate=True)
+            assert base64.b64encode(raw).decode('ascii') == encoded and len(raw) == payload['size']
+            assert hashlib.sha1(b'blob ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest() == wanted
+            return raw
+        def derive_public_inputs(authority_root, supplied, proposal, origin_source_sha, read_json):
+            assert origin_source_sha == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
+            contract_path = authority_root / 'tools/release/qf01-publish-contract.json'
+            contract_raw = contract_path.read_bytes()
+            assert hashlib.sha256(contract_raw).hexdigest() == FIXED_CONTRACT_SHA256
+            blob_sha = 'ccb58fd71a927953093a567dc9732d6730fdda12'
+            blob = decode_blob(read_json('/git/blobs/' + blob_sha), blob_sha)
+            assert hashlib.sha256(blob).hexdigest() == EXPECTED_ORIGIN_HASHES['BUILD_AUTHORITY.blob']
+            expanded = decode_gzip(blob.decode('ascii'), 20 * 1024 * 1024)
+            assert hashlib.sha256(expanded).hexdigest() == EXPECTED_ORIGIN_HASHES['APPROVED_MATERIAL_SEED.json']
+            supplied.mkdir(parents=True, exist_ok=False)
+            for name, raw in [('publisher-contract.json', contract_raw), ('BUILD_AUTHORITY.blob', blob)]:
+                with (supplied / name).open('xb') as stream:
+                    stream.write(raw)
+            view = load_qf01_checkpoint(supplied / 'publisher-contract.json', supplied / 'BUILD_AUTHORITY.blob')
+            state = view.state_snapshot(FIXED_WORK)
+            assert state['plan']['source_sha'] == origin_source_sha
+            original_blobs = {
+                'src/components/textbook/GuidedMathReadingFlow.tsx': '472d5306b607ce89977e99283a598ef44133002a',
+                'src/data/textbook/math/quadratic/qf01Lesson.test.tsx': 'e668d363e64d35ae5b18406d6942857b454afb56'}
+            assert set(state['plan']['source_manifest']) == set(original_blobs)
+            rows, files_hex = [], {}
+            for name, wanted in state['plan']['source_manifest'].items():
+                route = '/contents/' + urllib.parse.quote(name, safe='/') + '?ref=' + origin_source_sha
+                payload = read_json(route)
+                assert payload.get('type') == 'file' and payload.get('path') == name
+                raw = decode_blob(payload, original_blobs[name])
+                assert hashlib.sha256(raw).hexdigest() == wanted
+                files_hex[name] = raw.hex()
+                rows.append({'path': name, 'bytes': len(raw), 'sha256': wanted,
+                             'gitBlobSHA': original_blobs[name]})
+            snapshot = {'source_sha': origin_source_sha, 'files_hex': files_hex}
+            snapshot_raw = canonical(snapshot)
+            assert digest(snapshot) == EXPECTED_ORIGIN_HASHES['ORIGIN_SOURCE_SNAPSHOT.json']
+            proof = {
+                'schemaVersion': 'qf01-git-origin-source-recovery/1',
+                'qualification': 'Newly reconstructed from verified original Git bytes. Not recovery of the old opened envelope or a native receipt.',
+                'repository': 'rrikunagasige-dot/kyotsu-step-web', 'repositoryId': 1391122224,
+                'work': FIXED_WORK, 'sourceSHA': origin_source_sha, 'checkpointAnchor': view.anchor,
+                'sourceManifest': copy.deepcopy(state['plan']['source_manifest']), 'files': rows,
+                'snapshotSHA256': digest(snapshot), 'snapshotBytes': len(snapshot_raw),
+                'originalOpenedEventRecovered': False, 'nativeStoreWritten': False}
+            files = {
+                'publisher-contract.json': contract_raw, 'BUILD_AUTHORITY.blob': blob,
+                'APPROVED_MATERIAL_SEED.json': expanded, 'NODES.json': canonical(view.nodes()),
+                'ORIGIN_SOURCE_PROOF.json': (json.dumps(proof, ensure_ascii=False, indent=2) + '\n').encode('utf-8'),
+                'ORIGIN_SOURCE_SNAPSHOT.json': snapshot_raw,
+                'TEAM_PREFIX_SUBSET.json': canonical(view.team_prefix_subset(FIXED_WORK)['events']),
+                'KNOWN_PREFIX_ENVELOPES.json': canonical(view.known_prefix_envelope_subset()['events']),
+                'FEEDBACK_PROJECTION.json': canonical(view.feedback_payload_projection(FIXED_WORK)['rows'])}
+            hashes = {name: hashlib.sha256(raw).hexdigest() for name, raw in files.items()}
+            assert set(files) == set(ORIGIN_NAMES) and hashes == EXPECTED_ORIGIN_HASHES, 'Derived public origin bytes differ'
+            records = []
+            for name, raw in sorted(files.items()):
+                target = supplied / name
+                if target.exists():
+                    assert target.read_bytes() == raw
+                else:
+                    with target.open('xb') as stream:
+                        stream.write(raw)
+                row = {'name': name, 'copy': str(target), 'bytes': len(raw), 'sha256': hashes[name],
+                       'provenance': 'TEST_FIXTURE_DERIVED_FROM_ALREADY_PUBLIC_AUTHORITY'}
+                if name == 'publisher-contract.json':
+                    row['source'] = str(contract_path)
+                records.append(row)
+            proposal_raw = proposal.read_bytes()
+            assert hashlib.sha256(proposal_raw).hexdigest() == RECOVERY_PROPOSAL_SHA256
+            with (supplied / 'PROPOSAL.md').open('xb') as stream:
+                stream.write(proposal_raw)
+            records.append({'name': 'PROPOSAL.md', 'source': str(proposal),
+                            'copy': str(supplied / 'PROPOSAL.md'), 'bytes': len(proposal_raw),
+                            'sha256': RECOVERY_PROPOSAL_SHA256, 'provenance': 'ALREADY_PUBLIC_ADOPTED_PROPOSAL'})
+            assert {path.name for path in supplied.iterdir()} == set(ORIGIN_NAMES) | {'PROPOSAL.md'}
+            return records, view, hashes
+        workspace = Path(os.environ['GITHUB_WORKSPACE'])
+        out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        def git(directory, *args):
+            return subprocess.check_output(['git', '-C', str(directory), *args], text=True).strip()
+        expected = {'core': os.environ['CHECKPOINT_CORE_SHA'],
+                    'fixture-source': os.environ['CHECKPOINT_FIXTURE_SHA'],
+                    'authority-source': os.environ['CHECKPOINT_AUTHORITY_SHA'],
+                    'legacy-fixture': os.environ['CHECKPOINT_LEGACY_SHA']}
+        actual = {name: git(workspace / name, 'rev-parse', 'HEAD') for name in expected}
+        assert actual == expected, 'Checkout HEAD differs from immutable pin'
+        for name in expected:
+            assert git(workspace / name, 'remote', 'get-url', 'origin').removesuffix('.git') == 'https://github.com/rrikunagasige-dot/kyotsu-step-web', 'Repository identity differs'
+        legacy = os.environ['CHECKPOINT_LEGACY_SHA']
+        legacy_root = workspace / 'legacy-fixture'
+        assert git(legacy_root, 'rev-parse', legacy + ':workflow/graphs.py') == 'c7a7bb9598b4bdcbc91a705f76b90488a4edde4f', 'Historical graph blob differs'
+        if subprocess.run(['git', '-C', str(workspace / 'core'), 'cat-file', '-e', legacy + '^{commit}'], capture_output=True).returncode:
+            subprocess.run(['git', '-C', str(workspace / 'core'), 'fetch', '--no-tags', str(legacy_root), legacy], check=True)
+        assert git(workspace / 'core', 'rev-parse', legacy + ':workflow/graphs.py') == 'c7a7bb9598b4bdcbc91a705f76b90488a4edde4f'
+        supplied = Path(os.environ['QF01_CHECKPOINT_INPUT_ROOT'])
+        proposal = workspace / 'core' / os.environ['CHECKPOINT_PROPOSAL_PATH']
+        files, checkpoint, origin_hashes = derive_public_inputs(
+            workspace / 'authority-source', supplied, proposal,
+            os.environ['CHECKPOINT_ORIGIN_SOURCE_SHA'], public_json)
+        current_repair = {name: hashlib.sha256((workspace / 'core' / name).read_bytes()).hexdigest()
+                          for name in CURRENT_REPAIR_AFTER}
+        assert current_repair == CURRENT_REPAIR_AFTER, 'Current repaired source bytes differ'
+        versions = {'python': sys.version, 'node': subprocess.check_output(['node', '--version'], text=True).strip(),
+                    'pnpm': subprocess.check_output(['pnpm', '--version'], text=True).strip()}
+        assert sys.version_info[:2] == (3, 12) and versions['node'].startswith('v22.') and versions['pnpm'] == '11.9.0', 'Toolchain version differs'
+        report = {'schemaVersion': 'qf01-checkpoint-linux-input-binding/1', 'checkouts': actual,
+                  'publicAuthorityBlobSHA': os.environ['CHECKPOINT_AUTHORITY_BLOB_SHA'],
+                  'originSourceSHA': os.environ['CHECKPOINT_ORIGIN_SOURCE_SHA'],
+                  'originFilesSHA256': origin_hashes,
+                  'inputQualification': 'TEST_FIXTURE_DERIVED_FROM_ALREADY_PUBLIC_DATA',
+                  'newNativeLedgerReadOrExported': False,
+                  'files': files, 'core': current_core_identity(), 'currentRepairSource': current_repair,
+                  'checkpoint': checkpoint.summary(),
+                  'versions': versions, 'testFixturesOnly': True,
+                  'nativeBootstrapPerformed': False, 'gateAccepted': False}
+        (out / 'INPUT_BINDING.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        PY
+    - name: Install the fixed application and existing production test dependencies
+      id: dependencies
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        pnpm install --frozen-lockfile --ignore-scripts 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/pnpm-install.log"
+        python -m pip install lxml==6.1.1 numpy==2.3.5 scikit-learn==1.8.0 -r tools/textbook/research/requirements-solution.txt 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/python-install.log"
+        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update -qq
+        sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 install -y pandoc
+    - name: Run the three checkpoint regression modules as TEST_FIXTUREs only
+      id: checkpoint_tests
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B -m unittest discover -s workflow -p 'test_checkpoint*.py' -v 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/checkpoint-tests.log"
+    - name: Run unchanged normal workflow regressions with the real Linux procfs observer
+      id: normal_workflow
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B - <<'PY' 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/normal-workflow-tests.log"
+        import json, unittest
+        def flatten(suite):
+            for test in suite:
+                if isinstance(test, unittest.TestSuite):
+                    yield from flatten(test)
+                else:
+                    yield test
+        excluded = {'test_checkpoint', 'test_checkpoint_runtime', 'test_checkpoint_definition'}
+        discovered = unittest.defaultTestLoader.discover('workflow', pattern='test_*.py')
+        selected = [test for test in flatten(discovered) if test.__class__.__module__.split('.')[-1] not in excluded]
+        assert selected, 'No normal workflow tests were discovered'
+        result = unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(selected))
+        print(json.dumps({'qualification': 'Normal Linux workflow tests; no procfs observer mock installed by this job',
+                          'run': result.testsRun, 'failures': len(result.failures),
+                          'errors': len(result.errors), 'skipped': len(result.skipped)}))
+        raise SystemExit(not result.wasSuccessful())
+        PY
+    - name: Run existing production services and Python authoring regressions
+      id: production_services
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        node --test tools/textbook/tests/production.test.mjs tools/textbook/tests/construction-layout.test.mjs tools/textbook/tests/layout-measurements.test.mjs 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/production-node-tests.log"
+        python -X utf8 -B -m unittest discover -s tools/textbook/tests -p '*_test.py' -v 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/production-python-tests.log"
+        python -X utf8 -B -m unittest discover -s work/items/W-GOV-010-coded-authoring/engine -p 'test_*.py' -v 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/authoring-engine-tests.log"
+    - name: Run the current QF01 application regression suites
+      id: app_tests
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        pnpm exec vitest run src/components/textbook/QF01ReadingRevision3.test.tsx src/domain/qf01Revision3Progress.test.ts src/data/textbook/math/quadratic/qf01Lesson.test.tsx src/domain/readingSourceViews.test.ts 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/app-tests.log"
+    - name: Run the existing textbook authoring checks
+      id: authoring
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        pnpm run test:textbook-authoring 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/textbook-authoring-tests.log"
+    - name: Lint and build the unsealed current application
+      id: lint_build
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: core
+      shell: bash
+      run: |
+        set -euo pipefail
+        pnpm run lint 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/lint.log"
+        pnpm run build 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/build.log"
+        test ! -e dist/qf01-release.json
+    - name: Recheck original input bytes after all tests
+      id: input_immutability
+      if: always() && steps.inputs.outcome == 'success'
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B - <<'PY'
+        import hashlib, json, os
+        from pathlib import Path
+        from checkpoint import current_core_identity
+        out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        binding = json.loads((out / 'INPUT_BINDING.json').read_text(encoding='utf-8'))
+        rows = []
+        for row in binding['files']:
+            for key in ('source', 'copy'):
+                if key not in row:
+                    continue
+                raw = Path(row[key]).read_bytes()
+                rows.append({'path': row[key], 'sha256': hashlib.sha256(raw).hexdigest(),
+                             'unchanged': len(raw) == row['bytes'] and hashlib.sha256(raw).hexdigest() == row['sha256']})
+        core_root = Path(os.environ['GITHUB_WORKSPACE']) / 'core'
+        for name, expected in binding['currentRepairSource'].items():
+            actual = hashlib.sha256((core_root / name).read_bytes()).hexdigest()
+            rows.append({'path': str(core_root / name), 'sha256': actual, 'unchanged': actual == expected})
+        assert current_core_identity() == binding['core'], 'Current core source changed during diagnostics'
+        (out / 'INPUT_IMMUTABILITY.json').write_text(json.dumps(rows, indent=2) + '\n', encoding='utf-8')
+        assert all(row['unchanged'] for row in rows), 'An original input or its test copy changed'
+        PY
+    - name: Record executed diagnostics without issuing native results
+      if: always()
+      env:
+        PIN_OUTCOME: ${{ steps.pins.outcome }}
+        INPUT_OUTCOME: ${{ steps.inputs.outcome }}
+        DEPENDENCY_OUTCOME: ${{ steps.dependencies.outcome }}
+        CHECKPOINT_OUTCOME: ${{ steps.checkpoint_tests.outcome }}
+        NORMAL_OUTCOME: ${{ steps.normal_workflow.outcome }}
+        PRODUCTION_OUTCOME: ${{ steps.production_services.outcome }}
+        APP_OUTCOME: ${{ steps.app_tests.outcome }}
+        AUTHORING_OUTCOME: ${{ steps.authoring.outcome }}
+        BUILD_OUTCOME: ${{ steps.lint_build.outcome }}
+        IMMUTABILITY_OUTCOME: ${{ steps.input_immutability.outcome }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        python - <<'PY'
+        import json, os
+        from pathlib import Path
+        out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        out.mkdir(parents=True, exist_ok=True)
+        report = {'schemaVersion': 'qf01-checkpoint-linux-diagnostics/1',
+                  'publisherSHA': os.environ['GITHUB_SHA'],
+                  'stepOutcomes': {key: value for key, value in os.environ.items() if key.endswith('_OUTCOME')},
+                  'testFixturesOnly': True, 'nativeBootstrapPerformed': False,
+                  'newNativeLedgerReadOrExported': False, 'formalReceiptGenerated': False,
+                  'gateAccepted': False, 'publicationPerformed': False}
+        (out / 'DIAGNOSTICS.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        PY
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qf01-checkpoint-linux-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/qf01-checkpoint-linux
+        if-no-files-found: error
+        compression-level: 6
   draft_design_preview:
     if: github.ref == 'refs/heads/work/qf01-p046-r3-design-preview-20261116' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.design_preview == true))
     runs-on: ubuntu-latest

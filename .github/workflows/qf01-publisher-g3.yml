@@ -52,6 +52,9 @@ jobs:
     env:
       # Actual D04 visual repair commit fixed on the existing core branch.
       CHECKPOINT_CORE_SHA: 249cc8ee4648bc86897e66e3c9b5847e5592e5c1
+      # Test-only child; target implementation/application remain the exact D3 above.
+      CHECKPOINT_TEST_HARNESS_SHA: c0be347fdc2bcf8f749aff1518c4620955ee93d3
+      CHECKPOINT_TEST_RUNTIME_SHA256: 2f9cc760f1430fae665b26fa0e0d36b077bab690f0201fb3ace67f0bfb92e92d
       CHECKPOINT_BASELINE_REPAIR_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
       CHECKPOINT_MATH_BASELINE_SHA: 900642faf76267546c5c7420b7d50a010516ca6e
       CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676
@@ -84,7 +87,7 @@ jobs:
         from pathlib import Path
         out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
         out.mkdir(parents=True, exist_ok=True)
-        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_MATH_BASELINE_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
+        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_TEST_HARNESS_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_MATH_BASELINE_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
                 'CHECKPOINT_AUTHORITY_BLOB_SHA', 'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')
         pins = {key: os.environ[key] for key in keys}
         valid = (os.environ['GITHUB_REPOSITORY'] == 'rrikunagasige-dot/kyotsu-step-web'
@@ -93,6 +96,8 @@ jobs:
                  and pins['CHECKPOINT_BASELINE_REPAIR_SHA'] == '247cb09b1d852d4e4fa469b3d74fb29bee053c53'
                  and pins['CHECKPOINT_MATH_BASELINE_SHA'] == '900642faf76267546c5c7420b7d50a010516ca6e'
                  and pins['CHECKPOINT_CORE_SHA'] not in (pins['CHECKPOINT_BASELINE_REPAIR_SHA'], pins['CHECKPOINT_MATH_BASELINE_SHA'])
+                 and pins['CHECKPOINT_TEST_HARNESS_SHA'] != pins['CHECKPOINT_CORE_SHA']
+                 and re.fullmatch(r'[0-9a-f]{64}', os.environ['CHECKPOINT_TEST_RUNTIME_SHA256']) is not None
                  and pins['CHECKPOINT_AUTHORITY_SHA'] == '55d844f20c0de3390ad6718ee8d01968ebbb8676'
                  and pins['CHECKPOINT_ORIGIN_SOURCE_SHA'] == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
                  and pins['CHECKPOINT_AUTHORITY_BLOB_SHA'] == 'ccb58fd71a927953093a567dc9732d6730fdda12'
@@ -112,6 +117,13 @@ jobs:
       with:
         ref: ${{ env.CHECKPOINT_CORE_SHA }}
         path: core
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout the separately pinned test-only expectation revision
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_TEST_HARNESS_SHA }}
+        path: checkpoint-test-harness
         fetch-depth: 0
         persist-credentials: false
     - name: Checkout unchanged immutable B repair bytes for historical fixtures
@@ -156,6 +168,56 @@ jobs:
         path: legacy-fixture
         fetch-depth: 0
         persist-credentials: false
+    - name: Verify separate test harness against the unchanged actual D3 implementation
+      id: test_harness
+      shell: bash
+      run: |
+        set -euo pipefail
+        python -X utf8 -B - <<'PY'
+        import ast, copy, hashlib, json, os, subprocess
+        from pathlib import Path
+        from checkpoint import current_core_identity
+        w=Path(os.environ['GITHUB_WORKSPACE']); core=w/'core'; tests=w/'checkpoint-test-harness'
+        target=os.environ['CHECKPOINT_CORE_SHA']; harness=os.environ['CHECKPOINT_TEST_HARNESS_SHA']
+        def git(root,*args):
+            return subprocess.check_output(['git','-C',str(root),*args],text=True).strip()
+        for root,expected in [(core,target),(tests,harness)]:
+            assert git(root,'rev-parse','HEAD')==expected
+            assert git(root,'remote','get-url','origin').removesuffix('.git')=='https://github.com/rrikunagasige-dot/kyotsu-step-web'
+            assert git(root,'diff','--name-only','HEAD')==''
+        assert git(tests,'rev-parse',harness+'^')==target, 'Test revision must be a direct child of actual D3'
+        path='workflow/test_checkpoint_runtime.py'
+        assert git(tests,'diff','--name-status','--no-renames',target,harness)=='M\t'+path, 'Only the reviewed test path may differ'
+        old=(core/path).read_bytes(); new=(tests/path).read_bytes()
+        sha=lambda raw:hashlib.sha256(raw).hexdigest()
+        assert sha(old)=='5657fab08d99f5e9892b58becf06ced6d155368ff89f0b6f185bc5479e315d5f'
+        assert sha(new)==os.environ['CHECKPOINT_TEST_RUNTIME_SHA256']
+        allowed={('InformedReviewMethodTests','test_technical_owner_head_inventory_and_original_scope_fail_without_writes'),
+                 ('NearbyReviewMethodTests','test_third_protected_path_change_refuses_owner_reconciliation'),
+                 ('MathRenderingOwnerTests','test_third_protected_hash_cannot_enter_current_d04_owner')}
+        def retained_ast(raw):
+            tree=ast.parse(raw); found=set()
+            for cls in tree.body:
+                if not isinstance(cls,ast.ClassDef): continue
+                for method in cls.body:
+                    if isinstance(method,ast.FunctionDef) and (cls.name,method.name) in allowed:
+                        found.add((cls.name,method.name)); method.body=[ast.Pass()]
+            assert found==allowed
+            return ast.dump(tree,include_attributes=False)
+        assert retained_ast(old)==retained_ast(new), 'Only the three reviewed negative test bodies may change'
+        identity=current_core_identity()
+        for name,wanted in identity['files'].items():
+            assert sha((core/'workflow'/name).read_bytes())==sha((tests/'workflow'/name).read_bytes())==wanted
+        report={'schemaVersion':'qf01-checkpoint-test-only-harness-binding/1',
+                'targetCoreSHA':target,'testHarnessSHA':harness,'testRuntimePath':path,
+                'targetTestRuntimeSHA256':sha(old),'testHarnessRuntimeSHA256':sha(new),
+                'onlyTrackedDifference':path,'onlyASTBodiesChanged':[list(x) for x in sorted(allowed)],
+                'core':identity,'allOtherGitTreeEntriesIdentical':True,'coreImplementationFiles24Identical':True,
+                'applicationAndServiceGitBytesIdentical':True,
+                'qualification':'Corrected assertion position in three attack fixtures only. Entire 179-test suite must execute. Actual D3 implementation/application are unchanged. No native ledger or acceptance is created.'}
+        (Path(os.environ['CHECKPOINT_DIAGNOSTICS'])/'TEST_HARNESS_BINDING.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+        print(json.dumps({'targetCoreSHA':target,'testHarnessSHA':harness,'onlyDifference':path,'implementationUnchanged':True}))
+        PY
     - uses: pnpm/action-setup@v4
       with:
         version: 11.9.0
@@ -295,6 +357,7 @@ jobs:
         def git(directory, *args):
             return subprocess.check_output(['git', '-C', str(directory), *args], text=True).strip()
         expected = {'core': os.environ['CHECKPOINT_CORE_SHA'],
+                    'checkpoint-test-harness': os.environ['CHECKPOINT_TEST_HARNESS_SHA'],
                     'repair-baseline': os.environ['CHECKPOINT_BASELINE_REPAIR_SHA'],
                     'math-baseline': os.environ['CHECKPOINT_MATH_BASELINE_SHA'],
                     'fixture-source': os.environ['CHECKPOINT_FIXTURE_SHA'],
@@ -351,11 +414,19 @@ jobs:
             'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA', 'CHECKPOINT_AUTHORITY_BLOB_SHA',
             'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')}
         immutable_inputs['PUBLISHER_SHA'] = os.environ['GITHUB_SHA']
+        immutable_inputs['CHECKPOINT_TEST_HARNESS_SHA'] = os.environ['CHECKPOINT_TEST_HARNESS_SHA']
+        immutable_inputs['CHECKPOINT_TEST_RUNTIME_SHA256'] = os.environ['CHECKPOINT_TEST_RUNTIME_SHA256']
         immutable_inputs.update({'ORIGIN_FILE/' + name: digest for name, digest in origin_hashes.items()})
         immutable_inputs['ORIGINAL_PROPOSAL_SHA256'] = RECOVERY_PROPOSAL_SHA256
         immutable_inputs['D03_PROPOSAL_SHA256'] = NEARBY_REPAIR_PROPOSAL_SHA256
         immutable_inputs['D04_PROPOSAL_SHA256'] = MATH_RENDERING_REPAIR_PROPOSAL_SHA256
-        assert len(immutable_inputs) == 21, 'Expected preserved19 plus Cbaseline and D04proposal inputs'
+        assert len(immutable_inputs) == 23, 'Preserved21 plus separate test commit and corrected test bytes'
+        harness_binding=json.loads((out/'TEST_HARNESS_BINDING.json').read_text(encoding='utf-8'))
+        assert harness_binding['targetCoreSHA']==actual['core'] and harness_binding['testHarnessSHA']==actual['checkpoint-test-harness']
+        for name,root,wanted in [('CURRENT_D3_RUNTIME_TEST',workspace/'core',harness_binding['targetTestRuntimeSHA256']),('CORRECTED_RUNTIME_TEST',workspace/'checkpoint-test-harness',harness_binding['testHarnessRuntimeSHA256'])]:
+            test_path=root/harness_binding['testRuntimePath']; raw=test_path.read_bytes()
+            assert hashlib.sha256(raw).hexdigest()==wanted
+            files.append({'name':name,'source':str(test_path),'bytes':len(raw),'sha256':wanted,'provenance':'SEPARATELY_PINNED_TEST_HARNESS_NOT_NATIVE_DATA'})
         versions = {'python': sys.version, 'node': subprocess.check_output(['node', '--version'], text=True).strip(),
                     'pnpm': subprocess.check_output(['pnpm', '--version'], text=True).strip()}
         assert sys.version_info[:2] == (3, 12) and versions['node'].startswith('v22.') and versions['pnpm'] == '11.9.0', 'Toolchain version differs'
@@ -365,7 +436,7 @@ jobs:
                   'originFilesSHA256': origin_hashes,
                   'inputQualification': 'TEST_FIXTURE_DERIVED_FROM_ALREADY_PUBLIC_DATA',
                   'newNativeLedgerReadOrExported': False,
-                  'files': files, 'core': current_core_identity(), 'currentRepairSource': current_repair,
+                  'files': files, 'core': current_core_identity(), 'testHarness': harness_binding, 'currentRepairSource': current_repair,
                   'immutableBaselineRepairSource': baseline_repair, 'immutableMathBaselineSource': math_baseline, 'immutableInputs': immutable_inputs,
                   'immutableInputCount': len(immutable_inputs),
                   'checkpoint': checkpoint.summary(),
@@ -406,12 +477,46 @@ jobs:
         node --test tools/release/qf01-publish-check.test.mjs tools/release/qf01-retained-adapters.test.mjs 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/publisher-tests.log"
     - name: Run the three checkpoint regression modules as TEST_FIXTUREs only
       id: checkpoint_tests
-      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
-      working-directory: core
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' && steps.test_harness.outcome == 'success' }}
+      working-directory: checkpoint-test-harness
       shell: bash
       run: |
         set -euo pipefail
-        python -X utf8 -B -m unittest discover -s workflow -p 'test_checkpoint*.py' -v 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/checkpoint-tests.log"
+        python -X utf8 -B - <<'PY' 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/checkpoint-tests.log"
+        import hashlib, json, os, sys, unittest
+        from pathlib import Path
+        import checkpoint
+        out=Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
+        binding=json.loads((out/'TEST_HARNESS_BINDING.json').read_text(encoding='utf-8'))
+        w=Path(os.environ['GITHUB_WORKSPACE']); target=w/'core'; harness=w/'checkpoint-test-harness'
+        def module_bindings():
+            result={}
+            for name,wanted in binding['core']['files'].items():
+                for root in (target,harness):
+                    assert hashlib.sha256((root/'workflow'/name).read_bytes()).hexdigest()==wanted
+                module=sys.modules.get(name[:-3])
+                if module is not None:
+                    actual=Path(module.__file__).resolve()
+                    assert actual in [(target/'workflow'/name).resolve(),(harness/'workflow'/name).resolve()]
+                    assert hashlib.sha256(actual.read_bytes()).hexdigest()==wanted
+                    result[name]={'path':str(actual),'sha256':wanted}
+            return result
+        before=module_bindings()
+        suite=unittest.defaultTestLoader.discover('workflow',pattern='test_checkpoint*.py')
+        def flatten(s):
+            for t in s:
+                if isinstance(t,unittest.TestSuite): yield from flatten(t)
+                else: yield t
+        ids=[t.id() for t in flatten(suite)]
+        assert len(ids)==len(set(ids))==179, 'Entire retained checkpoint suite must execute once'
+        assert Path(sys.modules['test_checkpoint_runtime'].__file__).resolve()==(harness/binding['testRuntimePath']).resolve()
+        (out/'CHECKPOINT_TEST_INVENTORY.json').write_text(json.dumps({'targetCoreSHA':binding['targetCoreSHA'],'testHarnessSHA':binding['testHarnessSHA'],'testIDs':ids,'count':len(ids)},indent=2)+'\n',encoding='utf-8')
+        result=unittest.TextTestRunner(verbosity=2).run(suite)
+        after=module_bindings()
+        assert hashlib.sha256((harness/binding['testRuntimePath']).read_bytes()).hexdigest()==binding['testHarnessRuntimeSHA256']
+        (out/'CHECKPOINT_EXECUTION_BINDING.json').write_text(json.dumps({'targetCoreSHA':binding['targetCoreSHA'],'testHarnessSHA':binding['testHarnessSHA'],'testRuntimeSHA256':binding['testHarnessRuntimeSHA256'],'loadedImplementationModulesBefore':before,'loadedImplementationModulesAfter':after,'coreImplementationFiles24Unchanged':True,'testsRun':result.testsRun,'successful':result.wasSuccessful(),'nativeStoreReadOrWritten':False},indent=2)+'\n',encoding='utf-8')
+        raise SystemExit(0 if result.wasSuccessful() else 1)
+        PY
     - name: Run unchanged normal workflow regressions with the real Linux procfs observer
       id: normal_workflow
       if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
@@ -570,6 +675,13 @@ jobs:
             actual = hashlib.sha256((core_root / name).read_bytes()).hexdigest()
             rows.append({'path': str(core_root / name), 'sha256': actual, 'unchanged': actual == expected})
         assert current_core_identity() == binding['core'], 'Current core source changed during diagnostics'
+        import subprocess
+        harness_root=Path(os.environ['GITHUB_WORKSPACE'])/'checkpoint-test-harness'
+        for directory,expected in [(core_root,binding['checkouts']['core']),(harness_root,binding['checkouts']['checkpoint-test-harness'])]:
+            assert subprocess.check_output(['git','-C',str(directory),'rev-parse','HEAD'],text=True).strip()==expected
+            assert subprocess.check_output(['git','-C',str(directory),'diff','--name-only','HEAD'],text=True).strip()==''
+        for name,wanted in binding['core']['files'].items():
+            assert hashlib.sha256((harness_root/'workflow'/name).read_bytes()).hexdigest()==wanted
         (out / 'INPUT_IMMUTABILITY.json').write_text(json.dumps(rows, indent=2) + '\n', encoding='utf-8')
         assert all(row['unchanged'] for row in rows), 'An original input or its test copy changed'
         PY
@@ -580,6 +692,7 @@ jobs:
         INPUT_OUTCOME: ${{ steps.inputs.outcome }}
         DEPENDENCY_OUTCOME: ${{ steps.dependencies.outcome }}
         CHECKPOINT_OUTCOME: ${{ steps.checkpoint_tests.outcome }}
+        TEST_HARNESS_OUTCOME: ${{ steps.test_harness.outcome }}
         PUBLISHER_OUTCOME: ${{ steps.publisher_tests.outcome }}
         NORMAL_OUTCOME: ${{ steps.normal_workflow.outcome }}
         PRODUCTION_OUTCOME: ${{ steps.production_services.outcome }}

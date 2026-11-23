@@ -16,7 +16,8 @@ from contracts import Rejected
 from definitions import IMPLEMENTATION_FILES, instantiate
 from runtime import Runtime
 from test_checkpoint_runtime import (ENGINE, initialize_fixture, populate_preflight_fixture,
-                                     INPUTS)
+                                     populate_nearby_fixture, INPUTS)
+import test_checkpoint_runtime as checkpoint_runtime_tests
 import hashlib
 
 
@@ -283,6 +284,172 @@ else:
             self.assertIn('TEST_FIXTURE_STALE_PYC_REJECTED', result.stdout)
             self.assertEqual(source.stat().st_size, before.st_size)
             self.assertEqual(source.stat().st_mtime_ns, before.st_mtime_ns)
+
+
+class NearbyMigrationTests(unittest.TestCase):
+    """Rehash attacks only mutate isolated temporary TEST_FIXTURE suffixes."""
+    rewrite_fixture_suffix = checkpoint_runtime_tests.InformedReviewMethodTests.rewrite_fixture_suffix
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D03_master_')
+        cls.addClassCleanup(cls.temporary.cleanup)
+        cls.master=Path(cls.temporary.name).resolve()
+        cls.fixture=populate_nearby_fixture(cls.master)
+
+    def setUp(self):
+        temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D03_migration_')
+        self.addCleanup(temporary.cleanup);self.root=Path(temporary.name).resolve()
+        shutil.copytree(self.master,self.root,dirs_exist_ok=True)
+        from checkpoint import CheckpointStore
+        self.store=CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3')
+        self.rt=Runtime(self.store.root,self.root)
+
+    def test_two_migrations_preserve_original_plan_users_results_and_unknown(self):
+        before=self.fixture['stateB'];after=self.rt.state(FIXED_WORK)
+        self.assertEqual(after['plan'],before['plan']);self.assertEqual(after['users'],before['users'])
+        self.assertEqual(after['results'],before['results']);self.assertEqual(after['candidate_sha'],'c'*40)
+        rows=self.store.suffix_events();migrations=[e for e in rows if e['kind']=='checkpoint_definition_migrated']
+        self.assertEqual(len(migrations),2)
+        self.assertNotIn('repairAdoption',migrations[0]['payload'])
+        self.assertEqual(migrations[1]['payload']['repairAdoption'],self.fixture['proof']['repairAdoption'])
+        self.assertFalse(migrations[1]['payload']['gateAccepted'])
+        self.assertEqual(self.fixture['proof']['globalQueueCoverage'],'UNKNOWN')
+
+    def test_rehashed_candidate_before_in_payload_and_preflight_is_rejected(self):
+        from checkpoint import canonical,digest
+        rows=self.store.suffix_events();row=next(e for e in rows if e['payload'].get('repairAdoption'))
+        proof=self.store.get(row['payload']['preflightRef'])
+        proof['candidateBeforeSHA']='e'*40;proof['repairAdoption']['candidateBeforeSHA']='e'*40
+        row['payload']['repairAdoption']['candidateBeforeSHA']='e'*40
+        reference=digest(proof)
+        (self.store.root/'artifacts'/(reference+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['payload']['preflightRef']=reference
+        with self.assertRaisesRegex(CheckpointRejected,'D03_MIGRATION_CURRENT_PREVIOUS_BINDING'):
+            self.rewrite_fixture_suffix(rows)
+
+    def test_later_migration_cannot_strip_supplement_even_with_rehashed_envelope(self):
+        from checkpoint import canonical,digest
+        rows=self.store.suffix_events();old=copy.deepcopy(next(e for e in rows if e['payload'].get('repairAdoption')))
+        proof=self.store.get(old['payload']['preflightRef'])
+        proof.pop('repairAdoption');proof['ledgerHead']=rows[-1]['hash']
+        proof['candidateBeforeSHA']='c'*40;proof['candidateAfterSHA']='e'*40
+        proof['fromDefinition']=old['payload']['to'];proof['toDefinition']='e'*64
+        proof['core']['definitionHash']='e'*64
+        reference=digest(proof);(self.store.root/'artifacts'/(reference+'.json')).write_bytes(canonical(proof)+b'\n')
+        old['id']='TEST_FIXTURE_D03_STRIPPED';old['payload'].pop('repairAdoption')
+        old['payload'].update(preflightRef=reference,candidateSHA='e'*40,**{'from':proof['fromDefinition'],'to':'e'*64})
+        rows.append(old)
+        with self.assertRaisesRegex(CheckpointRejected,'D03_SUPPLEMENT_CANNOT_BE_STRIPPED'):
+            self.rewrite_fixture_suffix(rows)
+
+    def test_current_supplement_file_or_other_product_change_is_rejected(self):
+        from checkpoint import current_nearby_repair,CURRENT_REPAIR_AFTER,NEARBY_REPAIR_PRODUCT_PATHS
+        state=self.rt.state(FIXED_WORK)
+        self.assertIsNotNone(current_nearby_repair(self.rt,state))
+        relative=next(p for p in CURRENT_REPAIR_AFTER if p not in NEARBY_REPAIR_PRODUCT_PATHS)
+        path=self.root/relative;path.write_bytes(path.read_bytes()+b'\n/* TEST_FIXTURE */\n')
+        with self.assertRaisesRegex(Rejected,'D03_CURRENT_PRODUCT_BYTES|D03_CURRENT_SOURCE_DEFINITION_SERVICE'):
+            current_nearby_repair(self.rt,state)
+
+
+class NearbyGitProofTests(unittest.TestCase):
+    """Actual verifier/file hashes with an explicitly synthetic Git transport.
+
+    This never executes Git or claims a fixture tree is a real public commit.
+    """
+    setUpClass=classmethod(NearbyMigrationTests.setUpClass.__func__)
+    setUp=NearbyMigrationTests.setUp
+
+    def git_proof(self,*,wrong_baseline_blob=False,extra_delta=False,
+                  wrong_proposal_blob=False,missing_proposal=False,proposal_mode='100644',omit_proposal_delta=False):
+        from types import SimpleNamespace
+        from adapters import _checkpoint_git_proof,_CHECKPOINT_PRODUCT_ROOTS
+        from checkpoint import (CURRENT_REPAIR_AFTER,NEARBY_REPAIR_BASELINE,
+            NEARBY_REPAIR_PROPOSAL_PATH,FIXED_SOURCE,current_core_identity)
+        from test_checkpoint_runtime import repair_fixture_bytes,FIXTURE_SOURCE_ROOT
+        for source in ENGINE.iterdir():
+            if source.is_file() and source.suffix in ('.py','.md'):
+                target=self.root/'workflow'/source.name;target.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copyfile(source,target)
+        products={p.relative_to(self.root).as_posix():p.read_bytes() for name in ('src','public')
+                  for p in (self.root/name).rglob('*') if p.is_file()}
+        products.update({name:(self.root/name).read_bytes() for name in _CHECKPOINT_PRODUCT_ROOTS[2:] if (self.root/name).exists()})
+        before=dict(products);baseline=dict(products)
+        for name,expected in CURRENT_REPAIR_AFTER.items():
+            before[name]=(FIXTURE_SOURCE_ROOT/name).read_bytes()
+            baseline[name]=repair_fixture_bytes(name,expected)
+        workflow={'workflow/'+p.name:p.read_bytes() for p in (self.root/'workflow').iterdir() if p.is_file()}
+        proposal={} if missing_proposal else {NEARBY_REPAIR_PROPOSAL_PATH:
+            b'TEST_FIXTURE_UNADOPTED_GIT_PROPOSAL\n' if wrong_proposal_blob
+            else (self.root/NEARBY_REPAIR_PROPOSAL_PATH).read_bytes()}
+        def blob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+        def rows(values,mode='100644'):return b''.join(mode.encode()+b' blob '+blob(raw).encode()+b'\t'+name.encode()+b'\0' for name,raw in sorted(values.items()))
+        renderer='src/components/textbook/GuidedMathReadingFlow.tsx'
+        def external(cmd,**kwargs):
+            self.assertEqual(cmd[:3],['git','-C',str(self.root)])
+            args=cmd[3:];out=b''
+            if args[:2]==['rev-parse','HEAD']:out=b'c'*40+b'\n'
+            elif args[0]=='rev-parse':out=b'e'*40+b'\n'
+            elif args[:2]==['remote','get-url']:out=b'https://github.com/rrikunagasige-dot/kyotsu-step-web.git\n'
+            elif args[0]=='merge-base' or args[:2]==['cat-file','-e']:pass
+            elif args[:2]==['cat-file','blob']:
+                commit,name=args[2].split(':',1)
+                out=proposal[name] if name==NEARBY_REPAIR_PROPOSAL_PATH else (before if commit==FIXED_SOURCE else baseline)[name]
+                if wrong_baseline_blob and commit==NEARBY_REPAIR_BASELINE and name==renderer:out=products[name]
+            elif args[0]=='ls-tree':
+                commit=args[3];paths=args[5:]
+                if paths==[NEARBY_REPAIR_PROPOSAL_PATH]:out=rows(proposal,proposal_mode)
+                else:out=rows(workflow if paths==['workflow'] else before if commit==FIXED_SOURCE else baseline if commit==NEARBY_REPAIR_BASELINE else products)
+            elif args[0]=='diff':
+                if '--' in args:names={'workflow/checkpoint.py'}
+                elif args[3]==NEARBY_REPAIR_BASELINE:
+                    names={'workflow/checkpoint.py',NEARBY_REPAIR_PROPOSAL_PATH,*self.fixture['proof']['repairAdoption']['allowedProductPaths']}
+                    if omit_proposal_delta:names.remove(NEARBY_REPAIR_PROPOSAL_PATH)
+                    if extra_delta:names.add('tools/UNADOPTED.py')
+                else:names={*CURRENT_REPAIR_AFTER,'workflow/checkpoint.py',NEARBY_REPAIR_PROPOSAL_PATH}
+                out=b''.join(name.encode()+b'\0' for name in sorted(names))
+            else:raise AssertionError('Unexpected TEST_FIXTURE Git boundary command: '+repr(args))
+            return SimpleNamespace(returncode=0,stdout=out,stderr=b'')
+        state=self.rt.state(FIXED_WORK);origin=self.store._view.state_snapshot(FIXED_WORK);core=current_core_identity()
+        with patch('adapters.subprocess.run',side_effect=external):
+            proof=_checkpoint_git_proof(self.rt,state,origin,core,review_method=True)
+        return proof,baseline,products,blob
+
+    def test_original_five_after_blobs_remain_b_while_product_tree_is_current(self):
+        from checkpoint import CURRENT_REPAIR_AFTER,NEARBY_REPAIR_PRODUCT_PATHS
+        proof,baseline,current,blob=self.git_proof()
+        for name,row in proof['repairs'].items():
+            self.assertEqual(row['afterSHA256'],CURRENT_REPAIR_AFTER[name])
+            self.assertEqual(row['afterGitBlobSHA'],blob(baseline[name]))
+        for name in NEARBY_REPAIR_PRODUCT_PATHS:
+            self.assertNotEqual(proof['repairs'][name]['afterGitBlobSHA'],blob(current[name]))
+        self.assertEqual(proof['nearbyRepair'],self.fixture['proof']['repairAdoption'])
+
+    def test_replacing_old_b_baseline_blob_with_current_c_is_rejected(self):
+        with self.assertRaisesRegex(Rejected,'D03_ORIGINAL_FIVE_REPAIR_BYTES'):
+            self.git_proof(wrong_baseline_blob=True)
+
+    def test_b_to_current_delta_cannot_hide_unadopted_tools_code(self):
+        with self.assertRaisesRegex(Rejected,'D03_DIFF_OUTSIDE_EXACT_PROPOSAL'):
+            self.git_proof(extra_delta=True)
+
+    def test_wrong_git_proposal_bytes_cannot_hide_behind_correct_working_original(self):
+        from checkpoint import NEARBY_REPAIR_PROPOSAL_PATH,NEARBY_REPAIR_PROPOSAL_SHA256
+        working=self.root/NEARBY_REPAIR_PROPOSAL_PATH
+        self.assertEqual(hashlib.sha256(working.read_bytes()).hexdigest(),NEARBY_REPAIR_PROPOSAL_SHA256)
+        # Candidate entry SHA1 and blob bytes agree with each other, but are
+        # not the adopted text. The working copy remains the genuine original.
+        with self.assertRaisesRegex(Rejected,'D03_FIXED_PROPOSAL_GIT_BYTES'):
+            self.git_proof(wrong_proposal_blob=True)
+        self.assertEqual(hashlib.sha256(working.read_bytes()).hexdigest(),NEARBY_REPAIR_PROPOSAL_SHA256)
+
+    def test_proposal_git_entry_mode_and_baseline_delta_are_required(self):
+        for mutation,error in [(dict(missing_proposal=True),'D03_FIXED_PROPOSAL_GIT_ENTRY'),
+            (dict(proposal_mode='100755'),'D03_FIXED_PROPOSAL_GIT_ENTRY'),
+            (dict(omit_proposal_delta=True),'D03_FIXED_PROPOSAL_NOT_IN_DIFF')]:
+            with self.subTest(mutation=mutation),self.assertRaisesRegex(Rejected,error):
+                self.git_proof(**mutation)
 
 
 if __name__ == '__main__':

@@ -661,7 +661,7 @@ class Runtime:
             need(recovery_proof is not None,'回収Workの照合済み移行preflightが必要')
         return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs,**({'recoveryProof':recovery_proof} if recovery_proof else {})})
 
-    def checkpoint_preflight(self,work,*,candidate_sha=None,informed_adoption_ref=None):
+    def checkpoint_preflight(self,work,*,candidate_sha=None,informed_adoption_ref=None,repair_adoption_ref=None):
         from checkpoint import FIXED_WORK, CURRENT_REPAIR_AFTER, RECOVERY_PROPOSAL_SHA256, current_core_identity, verify_candidate_git, sha as bytes_sha
         need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけのpreflight')
         s=self.state(work);origin=self.store._view.state_snapshot(work)
@@ -676,8 +676,14 @@ class Runtime:
         need(manifest(self.root,s['plan'].get('protected_manifest',{}))==s['plan'].get('protected_manifest',{}),'保護対象の実bytesが違う')
         current=manifest(self.root,s['candidate_manifest'])
         changed={name:value for name,value in current.items() if value!=s['candidate_manifest'][name]}
-        need(not changed or set(changed)==set(CURRENT_REPAIR_AFTER) and changed==CURRENT_REPAIR_AFTER,
-             '採用済み5path以外/部分状態の候補差分')
+        prior_repair=s.get('checkpoint_definition_migration',{}).get('repairAdoption')
+        if repair_adoption_ref is None and prior_repair is None:
+            need(not changed or set(changed)==set(CURRENT_REPAIR_AFTER) and changed==CURRENT_REPAIR_AFTER,
+                 '採用済み5path以外/部分状態の候補差分')
+        else:
+            from checkpoint import NEARBY_REPAIR_PRODUCT_PATHS
+            need(repair_adoption_ref,'D03_CURRENT_MIGRATION_ADOPTION_REQUIRED')
+            need(set(changed)<=set(NEARBY_REPAIR_PRODUCT_PATHS),'D03_CANDIDATE_DIFF_OUTSIDE_TWO_PATHS')
         after=candidate_sha or s['candidate_sha']
         if changed or after!=s['candidate_sha']:verify_candidate_git(self.root,after,current)
         frozen=self.store.source_snapshot(work)['snapshot']
@@ -723,6 +729,36 @@ class Runtime:
                 'verification_level':adopted['verification_level']}
         elif informed_adoption_ref is not None:
             need(False,'D02_INITIAL_MIGRATION_CANNOT_PRETEND_SUBSEQUENT')
+        if repair_adoption_ref is not None:
+            from checkpoint import (NEARBY_REPAIR_BASELINE,NEARBY_REPAIR_PRODUCT_PATHS,
+                NEARBY_REPAIR_PROPOSAL_SHA256,nearby_repair_adoption_file,validate_nearby_repair_record)
+            need(proof.get('reviewMethodAdoption'),'D03_ORIGINAL_D02_ADOPTION_REQUIRED')
+            adopted=nearby_repair_adoption_file(self,s,repair_adoption_ref)
+            if prior_repair is None:
+                need(s['candidate_sha']==NEARBY_REPAIR_BASELINE,'D03_FIRST_MIGRATION_REQUIRES_ACTUAL_B')
+                need(all(s['candidate_manifest'].get(name)==CURRENT_REPAIR_AFTER[name] for name in NEARBY_REPAIR_PRODUCT_PATHS),
+                     'D03_FIRST_MIGRATION_B_PREIMAGE')
+            else:
+                previous=validate_nearby_repair_record(prior_repair,epoch=self.store.checkpoint_epoch,check=need)
+                need(previous['candidateAfterSHA']==s['candidate_sha']
+                    and previous['definitionHash']==s['definition_hash']
+                    and all(s['candidate_manifest'].get(name)==value for name,value in previous['afterRepair'].items())
+                    and all(previous.get(key)==value for key,value in adopted.items()),'D03_PRIOR_REPAIR_OR_ADOPTION_CHANGED')
+            effective={**CURRENT_REPAIR_AFTER,**{name:sha(file(self.root,name)) for name in NEARBY_REPAIR_PRODUCT_PATHS}}
+            need(all(name in current and current[name]==value for name,value in effective.items()),'D03_EXACT_CURRENT_FIVE_REPAIR_MANIFEST')
+            repair={'schemaVersion':'qf01-nearby-visibility-supplement/1',
+                'proposalSHA256':NEARBY_REPAIR_PROPOSAL_SHA256,**adopted,'baselineSourceSHA':NEARBY_REPAIR_BASELINE,
+                'candidateBeforeSHA':s['candidate_sha'],'candidateAfterSHA':after,
+                'allowedProductPaths':list(NEARBY_REPAIR_PRODUCT_PATHS),
+                'beforeRepair':{name:CURRENT_REPAIR_AFTER[name] for name in NEARBY_REPAIR_PRODUCT_PATHS},
+                'afterRepair':{name:effective[name] for name in NEARBY_REPAIR_PRODUCT_PATHS},
+                'definitionHash':identity['definitionHash'],'implementationHash':proof['implementationHash'],
+                'checkpointEpoch':self.store.checkpoint_epoch}
+            validate_nearby_repair_record(repair,epoch=self.store.checkpoint_epoch,check=need)
+            from adapters import _checkpoint_git_proof
+            target={**s,'candidate_sha':after,'candidate_manifest':current,'definition_hash':identity['definitionHash']}
+            _checkpoint_git_proof(self,target,origin,identity,review_method=True,nearby_repair=repair)
+            proof['repairAdoption']=repair
         return proof
 
     def migrate_checkpoint_definition(self,work,*,proof,expected_head):
@@ -730,7 +766,8 @@ class Runtime:
         need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけの定義移行')
         need(isinstance(proof,dict),'preflight objectが必要')
         current=self.checkpoint_preflight(work,candidate_sha=proof.get('candidateAfterSHA'),
-            informed_adoption_ref=proof.get('reviewMethodAdoption',{}).get('evidenceRef'))
+            informed_adoption_ref=proof.get('reviewMethodAdoption',{}).get('evidenceRef'),
+            repair_adoption_ref=proof.get('repairAdoption',{}).get('evidenceRef'))
         need(current==proof and current['ledgerHead']==expected_head,'preflight後の版/承認/入力/HEADが違う')
         reference=self.store.put(proof)
         payload={
@@ -742,6 +779,8 @@ class Runtime:
             'adoptionProposalSHA256':current['proposalSHA256'],'oldPassTransferred':False,'gateAccepted':False}
         if current.get('reviewMethodAdoption'):
             payload['reviewMethodAdoption']=current['reviewMethodAdoption']
+        if current.get('repairAdoption'):
+            payload['repairAdoption']=current['repairAdoption']
         return self.append('checkpoint_definition_migrated',work,payload)
 
     def reconcile_checkpoint_candidate(self,work,node_id,token,*,owner_result_refs,
@@ -858,7 +897,9 @@ class Runtime:
         """Verify existing D02 code; never replay its file writes or old T results."""
         from checkpoint import (FIXED_WORK,RECOVERY_WORK,RECOVERY_PROPOSAL_SHA256,
             INFORMED_REVIEW_PROPOSAL_SHA256,INFORMED_ADOPTION_CALL_ID,ADOPTION_CALL_ID,
-            current_core_identity,history_events,sha as sha_bytes)
+            current_core_identity,history_events,sha as sha_bytes,current_nearby_repair,
+            NEARBY_REPAIR_PROPOSAL_SHA256,NEARBY_REPAIR_ADOPTION_QUOTE,
+            NEARBY_REPAIR_ADOPTION_CALL_ID,NEARBY_REPAIR_CORE_PATHS)
         from team import current_informed_authority
         from adapters import (_checkpoint_informed_technical_git,_CHECKPOINT_D02_CORE_PATHS,
                               _CHECKPOINT_D02_BASELINE)
@@ -869,10 +910,14 @@ class Runtime:
         need(self._head==expected_head==self.store.head,'D02_EXPECTED_HEAD_CHANGED')
         method=current_informed_authority(self,FIXED_WORK,primary)
         need(method and candidate_sha==primary['candidate_sha'],'D02_CURRENT_MATERIAL_AUTHORITY_REQUIRED')
+        nearby=current_nearby_repair(self,primary)
+        owner_proposal=NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256
+        owner_quote=NEARBY_REPAIR_ADOPTION_QUOTE if nearby else '限定D02案を採用して進める'
+        owner_call=NEARBY_REPAIR_ADOPTION_CALL_ID if nearby else INFORMED_ADOPTION_CALL_ID
         core=current_core_identity();plan=owner['plan']
         need(plan['profile']=='technical' and not plan.get('workflow_version')
              and not plan.get('simulation') and plan.get('parent_work')==FIXED_WORK
-             and plan['proposal']['hash']==INFORMED_REVIEW_PROPOSAL_SHA256,
+             and plan['proposal']['hash']==owner_proposal,
              'D02_REVISED_EXISTING_TECHNICAL_PLAN_REQUIRED')
         need(owner['definition_hash']==core['definitionHash'],'D02_CURRENT_TECHNICAL_DEFINITION_REQUIRED')
         need(not owner['claims'] and not primary['claims'] and not owner['paused'] and not primary['paused']
@@ -884,37 +929,48 @@ class Runtime:
         need(len(opened)==1,'D02_TECHNICAL_GENESIS_REQUIRED')
         initial=opened[0]['payload']['plan'];snapshot_ref=opened[0]['payload']['original_snapshot']
         source=self.store.get(snapshot_ref)
+        expected_protected=copy.deepcopy(initial.get('protected_manifest',{}))
+        if nearby:
+            need(all(expected_protected.get(name)==value for name,value in nearby['beforeRepair'].items()),
+                 'D03_ORIGINAL_OWNER_PRODUCT_PROTECTION')
+            expected_protected.update(nearby['afterRepair'])
         need(plan['source_sha']==initial['source_sha']==source.get('source_sha')==_CHECKPOINT_D02_BASELINE
              and plan['source_manifest']==initial['source_manifest']
              and plan['rules']==initial['rules'] and plan['scope']==initial['scope']
-             and plan.get('protected_manifest',{})==initial.get('protected_manifest',{}),
+             and plan.get('protected_manifest',{})==expected_protected,
              'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED')
         need(set(source.get('files_hex',{}))==set(plan['source_manifest'])
              and {p:sha_bytes(bytes.fromhex(v)) for p,v in source['files_hex'].items()}==plan['source_manifest'],
              'D02_ORIGINAL_TECHNICAL_SNAPSHOT_CHANGED')
         approval=self.approval(owner)
-        need(approval and approval.get('reply_to')==INFORMED_REVIEW_PROPOSAL_SHA256
-             and approval.get('quote')=='限定D02案を採用して進める'
+        need(approval and approval.get('reply_to')==owner_proposal
+             and approval.get('quote')==owner_quote
              and approval.get('verification_level')=='conversation_transcribed'
-             and approval.get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID,
+             and approval.get('source_ref')=='request_user_input_async/'+owner_call,
              'D02_ACTUAL_TECHNICAL_ADOPTION_REQUIRED')
         need(any(e['kind']=='user' and e['payload'].get('reply_to')==RECOVERY_PROPOSAL_SHA256
                  and e['payload'].get('verification_level')=='conversation_transcribed'
                  and ADOPTION_CALL_ID in e['payload'].get('source_ref','') for e in events),
              'D02_ORIGINAL_RECOVERY_ADOPTION_NOT_RETAINED')
+        if nearby:
+            need(any(e['kind']=='user' and e['payload'].get('reply_to')==INFORMED_REVIEW_PROPOSAL_SHA256
+                and e['payload'].get('quote')=='限定D02案を採用して進める'
+                and e['payload'].get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID
+                and e['payload'].get('verification_level')=='conversation_transcribed' for e in events),
+                'D03_ORIGINAL_D02_TECHNICAL_ADOPTION_NOT_RETAINED')
         self.fingerprint_refs(owner,verification_refs);need(verification_refs,'D02_TECHNICAL_VERIFICATION_REQUIRED')
         current=manifest(self.root,plan['source_manifest'])
         need(set(current)==set(owner['candidate_manifest'])==set(plan['source_manifest']),
              'D02_TECHNICAL_CANDIDATE_INVENTORY_CHANGED')
         changed={p for p,h in current.items() if owner['candidate_manifest'].get(p)!=h}
-        need(changed<=_CHECKPOINT_D02_CORE_PATHS,'D02_TECHNICAL_DIFF_OUTSIDE_PROPOSAL')
+        need(changed<=(NEARBY_REPAIR_CORE_PATHS if nearby else _CHECKPOINT_D02_CORE_PATHS),'D02_TECHNICAL_DIFF_OUTSIDE_PROPOSAL')
         need(candidate_sha!=owner['candidate_sha'] or changed,'D02_TECHNICAL_CANDIDATE_ALREADY_CURRENT')
         need(manifest(self.root,plan['rules'])==plan['rules']
              and manifest(self.root,plan.get('protected_manifest',{}))==plan.get('protected_manifest',{}),
              'D02_TECHNICAL_PROTECTED_OR_RULE_BYTES_CHANGED')
         gitproof=_checkpoint_informed_technical_git(self,owner,primary,core)
         proof={'schemaVersion':'qf01-informed-technical-candidate-proof/1','work':work,'parentWork':FIXED_WORK,
-               'methodAuthorityRef':method['authorityRef'],'proposalSHA256':INFORMED_REVIEW_PROPOSAL_SHA256,
+               'methodAuthorityRef':method['authorityRef'],'proposalSHA256':owner_proposal,
                'checkpointEpoch':self.store.checkpoint_epoch,'expectedHead':expected_head,
                'planSHA256':digest(plan),'originalSourceSHA':plan['source_sha'],
                'sourceManifestSHA256':digest(plan['source_manifest']),'originalSnapshotRef':snapshot_ref,

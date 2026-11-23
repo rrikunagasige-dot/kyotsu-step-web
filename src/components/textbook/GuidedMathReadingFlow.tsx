@@ -690,11 +690,14 @@ export function R3FeedbackMath({ text, sourceId, unitId }: { text: string | null
   return <>{parts}</>
 }
 
+type R3NearbyVisibility = 'IN_VIEW' | 'OUT_OF_VIEW' | 'NOT_MOUNTED_BY_DESIGN' | 'UNVERIFIED'
+type R3NearbyMeasurement = { status: R3NearbyVisibility; reason: string }
+
 function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageScope, onReviewAnswer, onSummaryReached }: Props & { source: QF01R3Validated }) {
   const answer = useAppStore(state => state.answerTextbook)
-  const progressState = (() => { try { return { value: effectiveTextbookProgress(unit, progress), error: false } } catch { return { value: undefined, error: true } } })()
+  const progressState = useMemo(() => { try { return { value: effectiveTextbookProgress(unit, progress), error: false } } catch { return { value: undefined, error: true } } }, [unit, progress])
   const current = progressState.value, m = source.metadata
-  const solved = qf01R3Solved(source, current?.answers)
+  const solved = useMemo(() => qf01R3Solved(source, current?.answers), [source, current?.answers])
   const stages = m.viewContracts.STAGE_HISTORY_CONTRACT.stages
   const firstQ = m.interactions.find(q => !solved.has(q.id))
   const maxStage = firstQ ? stages.findIndex(s => s.stageId === firstQ.stageId) : stages.length - 1
@@ -705,8 +708,34 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const frame = m.viewContracts.FRAME_CONTRACT.frames.find(f => f.contextId === stageInfo.contextId)!
   const complete = stageInfo.availableWhen.allSolved.every(id => solved.has(id))
   const [activeId, setActiveId] = useState<string | null>(null), [helpId, setHelpId] = useState<string | null>(null)
-  const [history, setHistory] = useState(false), [fullHistory, setFullHistory] = useState(false), [repeatContext, setRepeatContext] = useState(false)
-  const contextId = useId(), flow = useRef<HTMLDivElement>(null), context = useRef<HTMLDivElement>(null)
+  const [history, setHistory] = useState(false), [fullHistory, setFullHistory] = useState(false)
+  const contextId = useId(), flow = useRef<HTMLDivElement>(null)
+  const selectedRefs = m.viewContracts.INTERACTION_REFERENCES.rows.find(row => row.currentInteractionId === currentQ?.id)
+  const preludeIds = useMemo(() => m.viewContracts.FRAME_CONTRACT.stagePreludeRefs[stage.id] ?? [], [m, stage.id])
+  const nearbyRequest = useMemo(() => {
+    const candidates: { blockId: string; recordId: string; sourceStage: number }[] = []
+    const add = (recordId: string) => {
+      const record = m.viewContracts.RESULT_REGISTRY.records.find(row => row.id === recordId)
+      if (!record || !('readonly' in record) || record.readonly !== true || !record.availableWhen.allSolved.every(id => solved.has(id))) return
+      const blockId = record.sourceRef.blockId
+      if (candidates.some(row => row.blockId === blockId) || !projectQF01R3Block(source, blockId, solved, { helpFor: helpId, recorded: true })) return
+      candidates.push({ blockId, recordId, sourceStage: stages.findIndex(row => row.stageId === record.stageId) })
+    }
+    for (const id of selectedRefs?.nearbyReferenceRecordIds ?? []) add(id)
+    if (currentQ && m.viewContracts.FIGURE_POLICY.placement.requiredCurrentInteractionIds.includes(currentQ.id)) {
+      for (const blockId of frame.figureBlockRefs) {
+        const record = m.viewContracts.RESULT_REGISTRY.records.find(row => row.sourceRef.blockId === blockId)
+        if (record) add(record.id)
+      }
+    }
+    return { candidates, placements: new Set([...stageInfo.fullLessonBlockRefs, ...preludeIds]),
+      key: JSON.stringify([stageInfo.stageId, currentQ?.id, helpId, [...solved], history, fullHistory, candidates]) }
+  }, [m, source, stages, selectedRefs, currentQ, frame, stageInfo, preludeIds, helpId, solved, history, fullHistory])
+  const [nearbySnapshot, setNearbySnapshot] = useState<{ key: string; sources: Record<string, R3NearbyMeasurement> }>({ key: '', sources: {} })
+  const nearbySources = nearbySnapshot.key === nearbyRequest.key ? nearbySnapshot.sources : {}
+  const nearbyBlocked = Object.values(nearbySources).some(row => row.status === 'UNVERIFIED')
+  const resyncNearby = useRef<() => void>(() => {})
+  const syncNearbySources = useCallback(() => resyncNearby.current(), [])
   const data = { nodes: m.interactions.map(q => ({ id: q.nodeId, stageId: q.stageId, interaction: q.id })) }
   const resolved = (id: string) => solved.has(id)
   const first = firstQ ? m.interactions.indexOf(firstQ) : -1
@@ -721,6 +750,90 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     }
     return { top: top + 12, bottom: bottom - 12 }
   }, [])
+  useLayoutEffect(() => {
+    let alive = true, pending: number | null = null, turns = 0, previous = '', convergenceFailed = false
+    const measure = (): Record<string, R3NearbyMeasurement> => {
+      const result: Record<string, R3NearbyMeasurement> = {}
+      const nodes = [...(flow.current?.querySelectorAll<HTMLElement>('[data-source-view="canonical"][data-source-block]') ?? [])]
+      for (const candidate of nearbyRequest.candidates) {
+        const matches = nodes.filter(node => node.getAttribute('data-source-block') === candidate.blockId)
+        let row: R3NearbyMeasurement
+        if (!matches.length) {
+          row = candidate.sourceStage >= 0 && candidate.sourceStage < stageIndex && !nearbyRequest.placements.has(candidate.blockId)
+            ? { status: 'NOT_MOUNTED_BY_DESIGN', reason: 'PRIOR_STAGE_CANONICAL_NOT_PLACED' }
+            : { status: 'UNVERIFIED', reason: 'MISSING_CANONICAL' }
+        } else if (matches.length !== 1) row = { status: 'UNVERIFIED', reason: 'MULTIPLE_CANONICAL' }
+        else {
+          try {
+            const node = matches[0], rect = node.getBoundingClientRect(), bounds = viewportBounds()
+            const valid = (r: DOMRect) => [r.top, r.bottom, r.left, r.right, r.width, r.height].every(Number.isFinite) && r.width > 0 && r.height > 0
+            if (!valid(rect) || !Number.isFinite(innerWidth) || innerWidth <= 0 || !Number.isFinite(bounds.top) || !Number.isFinite(bounds.bottom) || bounds.bottom <= bounds.top) throw new Error('INVALID_RECT')
+            let left = 0, right = innerWidth, top = bounds.top, bottom = bounds.bottom
+            for (let parent: HTMLElement | null = node; parent; parent = parent.parentElement) {
+              const style = getComputedStyle(parent)
+              if (style.display === 'none' || style.visibility === 'hidden' || style.visibility === 'collapse' || Number.parseFloat(style.opacity) === 0 || style.contentVisibility === 'hidden' || style.clipPath && style.clipPath !== 'none') throw new Error('UNREADABLE_CANONICAL')
+              if (parent === node) continue
+              const clipX = /^(auto|scroll|hidden|clip)$/.test(style.overflowX || style.overflow)
+              const clipY = /^(auto|scroll|hidden|clip)$/.test(style.overflowY || style.overflow)
+              if (!clipX && !clipY) continue
+              const r = parent.getBoundingClientRect()
+              if (!valid(r) || clipX && parent.clientWidth <= 0 || clipY && parent.clientHeight <= 0) throw new Error('INVALID_CLIP_RECT')
+              if (clipX) { left = Math.max(left, r.left + parent.clientLeft); right = Math.min(right, r.left + parent.clientLeft + parent.clientWidth) }
+              if (clipY) { top = Math.max(top, r.top + parent.clientTop); bottom = Math.min(bottom, r.top + parent.clientTop + parent.clientHeight) }
+            }
+            row = rect.left >= left && rect.right <= right && rect.top >= top && rect.bottom <= bottom
+              ? { status: 'IN_VIEW', reason: 'FULL_CANONICAL_RECT_VISIBLE' }
+              : { status: 'OUT_OF_VIEW', reason: 'CANONICAL_RECT_CLIPPED' }
+          } catch { row = { status: 'UNVERIFIED', reason: 'CANONICAL_MEASUREMENT_FAILED' } }
+        }
+        result[candidate.blockId] = row
+      }
+      return result
+    }
+    const commit = (sources: Record<string, R3NearbyMeasurement>) => {
+      const next = { key: nearbyRequest.key, sources }, signature = JSON.stringify(next)
+      setNearbySnapshot(old => JSON.stringify(old) === signature ? old : next)
+    }
+    const settle = () => {
+      pending = null
+      if (!alive || convergenceFailed) return
+      const sources = measure(), signature = JSON.stringify(sources)
+      if (signature === previous) return
+      if (++turns > 6) {
+        convergenceFailed = true
+        commit(Object.fromEntries(nearbyRequest.candidates.map(row => [row.blockId, { status: 'UNVERIFIED', reason: 'NON_CONVERGENT_LAYOUT' }])))
+        return
+      }
+      previous = signature; commit(sources)
+      pending = requestAnimationFrame(settle)
+    }
+    const restart = () => {
+      if (pending !== null) cancelAnimationFrame(pending)
+      turns = 0; previous = ''; convergenceFailed = false; settle()
+    }
+    const layoutChanged = () => { if (pending === null && !convergenceFailed) restart() }
+    resyncNearby.current = restart
+    restart()
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(layoutChanged)
+    if (flow.current) {
+      observer?.observe(flow.current)
+      flow.current.querySelectorAll<HTMLElement>('[data-source-view="canonical"]').forEach(node => observer?.observe(node))
+      flow.current.addEventListener('load', layoutChanged, true)
+      flow.current.addEventListener('typeset-layout', layoutChanged)
+    }
+    const root = flow.current
+    // Scroll does not bubble from nested clipping/scroll containers.
+    window.addEventListener('scroll', restart, { passive: true, capture: true }); window.addEventListener('resize', restart)
+    document.fonts?.addEventListener('loadingdone', layoutChanged)
+    document.fonts?.ready.then(() => { if (alive) layoutChanged() })
+    return () => {
+      alive = false; if (pending !== null) cancelAnimationFrame(pending)
+      resyncNearby.current = () => {}; observer?.disconnect()
+      window.removeEventListener('scroll', restart, true); window.removeEventListener('resize', restart)
+      root?.removeEventListener('load', layoutChanged, true); root?.removeEventListener('typeset-layout', layoutChanged)
+      document.fonts?.removeEventListener('loadingdone', layoutChanged)
+    }
+  }, [nearbyRequest, stageIndex, viewportBounds])
   const reveal = useCallback((target: HTMLElement | null) => {
     if (!target) return
     const { top, bottom } = viewportBounds(), r = target.getBoundingClientRect()
@@ -733,10 +846,6 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   useEffect(() => { setCursor(value => Math.min(value, maxStage)) }, [maxStage])
   const focusRevealFrame = useRef<number | null>(null)
   const pointerFocusTarget = useRef<HTMLElement | null>(null)
-  const syncRepeatedContext = useCallback(() => {
-    const r = context.current?.getBoundingClientRect(), bounds = viewportBounds()
-    setRepeatContext(Boolean(r && (r.top < bounds.top || r.bottom > bounds.bottom)))
-  }, [viewportBounds])
   const cancelFocusReveal = useCallback(() => {
     if (focusRevealFrame.current !== null) cancelAnimationFrame(focusRevealFrame.current)
     focusRevealFrame.current = null
@@ -746,7 +855,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     // Preserve the pointer press/click transaction: its focus uses the existing reveal.
     if (pointerFocusTarget.current === target) { reveal(target); return }
     const stillCurrent = () => document.activeElement === target && Boolean(flow.current?.querySelector('.math-textbook-stage--current')?.contains(target))
-    const adjust = () => { if (stillCurrent()) { reveal(target); syncRepeatedContext() } }
+    const adjust = () => { if (stillCurrent()) { reveal(target); syncNearbySources() } }
     adjust()
     // Repeated source context can be inserted by the focus-triggered scroll.
     // Remeasure after that commit, then settle once more after its scroll event.
@@ -758,7 +867,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
         if (stillCurrent()) reveal(target)
       })
     })
-  }, [cancelFocusReveal, reveal, syncRepeatedContext])
+  }, [cancelFocusReveal, reveal, syncNearbySources])
   useEffect(() => {
     const clearPointer = () => { pointerFocusTarget.current = null }
     const keyboardInput = () => { clearPointer(); cancelFocusReveal() }
@@ -787,7 +896,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const activeAttemptCount = activeId ? current?.answers[activeId]?.attemptCount : undefined
   const lastResolvedNodeId = [...data.nodes].reverse().find(node => node.stageId === stage.id && node.interaction && resolved(node.interaction))?.id
   useLayoutEffect(() => {
-    const check = syncRepeatedContext
+    const check = syncNearbySources
     // Commit any repeated context before the next frame measures the panel.
     // Wrong feedback can move an already focused choice without another focus event.
     check()
@@ -819,9 +928,8 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
         })
       })
     })
-    window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check)
-    return () => { alive = false; cancelFocusReveal(); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
-  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, syncRepeatedContext, reveal, cancelFocusReveal])
+    return () => { alive = false; cancelFocusReveal() }
+  }, [stageIndex, activeId, first, activeValue, activeAttemptCount, lastResolvedNodeId, syncNearbySources, reveal, cancelFocusReveal])
   const formulaRecipes = useMemo(() => new Map(m.canonicalBlockIds.filter(id => source.blocks.get(id)?.type === 'formula').map(id => [id, qf01R3FormulaRecipe(source, id)])), [source, m.canonicalBlockIds])
   const recipeGroups = useMemo(() => {
     const key = (id: string) => {
@@ -833,8 +941,6 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   }, [formulaRecipes, m.sourceMap, m.viewContracts.RESULT_REGISTRY.records])
   const canonicalBlocks = m.canonicalBlockIds.map(id => source.blocks.get(id)!)
   const profile = qf01ReadingLayoutProfile(stage.id, stageInfo.fullLessonBlockRefs.map(id => ({ id, type: source.blocks.get(id)!.type, role: String(m.sourceMap.find(s => s.unitBlockId === id)!.authorAttributes.role) })))
-  const selectedRefs = m.viewContracts.INTERACTION_REFERENCES.rows.find(row => row.currentInteractionId === currentQ?.id)
-  const preludeIds = m.viewContracts.FRAME_CONTRACT.stagePreludeRefs[stage.id] ?? []
   const renderChoiceValue = (id: string, value: string): ReactNode => {
     const q = m.interactions.find(q => q.id === id)!
     if (q.answerDomain === 'semantic') return value
@@ -843,7 +949,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   }
   const slot = (id: string) => {
     if (solved.has(id)) return <span data-testid={'resolved-' + id}>{renderChoiceValue(id, current!.answers[id].value)}</span>
-    const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id
+    const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id && !nearbyBlocked
     return <button type="button" style={{ minWidth: 48, minHeight: 48 }} disabled={!enabled} className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot={enabled || undefined} data-testid={'textbook-item-' + id} aria-label={q.layoutKind === 'paragraph' ? '本文の空欄。候補を開く' : '数式の空欄。候補を開く'} aria-expanded={activeId === id} aria-controls={contextId + '-options'} aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
   }
   const renderParts = (parts: TextbookReadingPart[], id: string, slotId?: string) => parts.map((p, j) => {
@@ -886,7 +992,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     }
     const relationNumber = b.type === 'formula' ? m.viewContracts.RESULT_REGISTRY.records.find(record => record.sourceRef.blockId === id)?.equation?.displayNumber : undefined
     const alignmentGroup = !viewPrefix && relationNumber != null ? `${stage.id}-relation-${relationNumber}` : undefined
-    return <div {...attrs} key={key} data-qf01-alignment-group={alignmentGroup} data-testid={!recorded && q && solved.has(q.id) ? 'resolved-' + q.id : undefined} data-source-block={id} data-source-view={viewPrefix || 'canonical'} data-source-node={q?.nodeId ?? id}>{!recorded && !viewPrefix && q && q.id === currentQ?.id ? nearbyInfo(q.id) : null}{content}{!recorded && q && q.id === currentQ?.id ? panel(q.id) : null}</div>
+    return <div {...attrs} key={key} data-qf01-alignment-group={alignmentGroup} data-testid={!recorded && q && solved.has(q.id) ? 'resolved-' + q.id : undefined} data-source-block={id} data-source-view={viewPrefix || 'canonical'} data-source-node={q?.nodeId ?? id}>{!recorded && !viewPrefix && q && q.id === currentQ?.id ? nearbyInfo() : null}{content}{!recorded && q && q.id === currentQ?.id ? panel(q.id) : null}</div>
   }
   const recordView = (recordId: string, prefix: string) => {
     const record = m.viewContracts.RESULT_REGISTRY.records.find(r => r.id === recordId)
@@ -894,20 +1000,11 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     return renderBlock(record.sourceRef.blockId, prefix, true)
   }
   const refsView = (ids: string[], prefix: string) => <>{ids.map(id => recordView(id, prefix))}</>
-  const nearbyInfo = (id: string) => {
-    if (!repeatContext) return null
-    const shown = new Set<string>(), recordIds: string[] = []
-    for (const recordId of selectedRefs?.nearbyReferenceRecordIds ?? []) {
-      const record = m.viewContracts.RESULT_REGISTRY.records.find(row => row.id === recordId)
-      if (!record || !record.availableWhen.allSolved.every(ref => solved.has(ref))) continue
-      const blockId = record.sourceRef.blockId
-      if (shown.has(blockId) || !projectQF01R3Block(source, blockId, solved, { helpFor: helpId, recorded: true })) continue
-      shown.add(blockId); recordIds.push(recordId)
-    }
-    const missingFigures = m.viewContracts.FIGURE_POLICY.placement.requiredCurrentInteractionIds.includes(id)
-      ? frame.figureBlockRefs.filter(ref => !shown.has(ref) && projectQF01R3Block(source, ref, solved, { helpFor: helpId, recorded: true })) : []
-    if (!recordIds.length && !missingFigures.length) return null
-    return <aside className="qf01-local-context qf01-nearby-references" aria-label="今の判断に必要な情報">{refsView(recordIds, 'nearby-')}{missingFigures.map(ref => renderBlock(ref, 'nearby-figure-', true))}</aside>
+  const nearbyInfo = () => {
+    if (nearbyBlocked) return null
+    const ids = nearbyRequest.candidates.filter(row => ['OUT_OF_VIEW', 'NOT_MOUNTED_BY_DESIGN'].includes(nearbySources[row.blockId]?.status)).map(row => row.recordId)
+    if (!ids.length) return null
+    return <aside className="qf01-local-context qf01-nearby-references" aria-label="今の判断に必要な情報">{refsView(ids, 'nearby-')}</aside>
   }
   const panel = (id: string) => {
     if (solved.has(id) || id !== currentQ?.id) return null
@@ -915,9 +1012,9 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     const wrongIndex = record ? item.choices?.findIndex(value => normalizeTextbookAnswer(value) === normalizeTextbookAnswer(record.value)) ?? -1 : -1
     return <div className="reading-inline-choice-panel qf01-attached-options" data-testid={'inline-choice-panel-' + id}>
       {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{renderChoiceValue(id, record!.value)}<p><R3FeedbackMath text={wrongIndex >= 0 ? currentQ!.wrongReasonByChoiceIndex[wrongIndex] : '保存した解答を確認してください。'} sourceId={id + '-wrong-reason'} unitId={unit.unitId} /></p>{record!.attemptCount > 1 && <p><R3FeedbackMath text={item.hints[1]} sourceId={id + '-second-hint'} unitId={unit.unitId} /></p>}</aside>}
-      <button type="button" style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
+      <button type="button" disabled={nearbyBlocked} style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
       {helpId === id && <p className="reading-choice-hint"><R3FeedbackMath text={item.hints[0]} sourceId={id + '-hint'} unitId={unit.unitId} /></p>}
-      {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
+      {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" disabled={nearbyBlocked} style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
         cancelFocusReveal(); pointerFocusTarget.current = null
         if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
         if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) { setActiveId(null); setHelpId(null) }
@@ -929,17 +1026,18 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const bodyIds = stageInfo.fullLessonBlockRefs.filter(id => !preludeSet.has(id) && id !== stageInfo.terminalSourceRef)
   const topIds = (selectedRefs?.topReferenceRecordIds ?? []).filter(rid => !preludeSet.has(m.viewContracts.RESULT_REGISTRY.records.find(r => r.id === rid)?.sourceRef.blockId ?? ''))
   if (progressState.error) return <p role="alert">学習記録の対応を確認できません。回答操作はできません。</p>
-  return <article ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-qf01-revision="3" data-testid="textbook-reading-flow" data-typeset-theme="true" tabIndex={-1}>
+  return <article ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-qf01-revision="3" data-testid="textbook-reading-flow" data-typeset-theme="true" data-qf01-nearby-visibility={JSON.stringify(nearbySources)} tabIndex={-1}>
+    {nearbyBlocked && <p role="alert" data-testid="qf01-r3-nearby-error">参照元の表示を確認できません。回答操作を停止しています。</p>}
     <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / 9</span><span>解答の記録：{solved.size}/35</span>{stageIndex > 0 && <button type="button" onClick={() => setHistory(!history)}>前の段階を見る</button>}</div>
     {stageIndex === 0 && renderBlock(m.viewContracts.FRAME_CONTRACT.単元block配置['unit-purpose'].sourceRef, 'introduction-')}
     {history && <div className="guided-history"><button type="button" onClick={() => setFullHistory(!fullHistory)}>{fullHistory ? '全文を閉じる' : '全文を開く'}</button>{stages.slice(0, stageIndex).map(s => <section key={s.stageId} data-testid={'recorded-results-' + s.stageId}>{renderBlock(s.headerSourceRef, 'history-header-', true)}{fullHistory ? s.fullLessonBlockRefs.filter(id => id !== s.headerSourceRef).map(id => renderBlock(id, 'history-full-', true)) : refsView(s.conclusionRecordIds, 'history-result-')}</section>)}</div>}
-    <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id} data-reading-layout-scope="qf01-r3-shared-reading-v1" data-reading-layout-profile={profile.id}>
+    <section inert={nearbyBlocked} className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id} data-reading-layout-scope="qf01-r3-shared-reading-v1" data-reading-layout-profile={profile.id}>
       <ReadingStageFrame contextHeader={frame.headerBlockRef !== headerId ? renderBlock(frame.headerBlockRef, 'frame-', true) : undefined}
         header={<div id={contextId + '-header'}>{renderBlock(headerId)}</div>}
         prelude={<div>{preludeIds.filter(id => id !== headerId).map(id => renderBlock(id))}</div>}
-        references={<aside ref={context} id={contextId} className="math-textbook-stage-reference-content" aria-label="現在必要な情報">{topIds.length > 0 && <strong>使う条件・前の結果</strong>}{refsView(topIds, 'top-')}</aside>}
+        references={<aside id={contextId} className="math-textbook-stage-reference-content" aria-label="現在必要な情報">{topIds.length > 0 && <strong>使う条件・前の結果</strong>}{refsView(topIds, 'top-')}</aside>}
         conclusion={complete ? <div className="qf01-recorded-conclusion">{renderBlock(stageInfo.terminalSourceRef)}</div> : undefined}
-        navigation={<div className="guided-stage-navigation">{stageIndex > 0 && <button type="button" onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHelpId(null); setHistory(false) }}>前の段階へ</button>}{complete && stageIndex < 8 && <button type="button" onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHelpId(null); setHistory(false) }}>次の段階へ</button>}</div>}>
+        navigation={<div className="guided-stage-navigation">{stageIndex > 0 && <button type="button" disabled={nearbyBlocked} onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHelpId(null); setHistory(false) }}>前の段階へ</button>}{complete && stageIndex < 8 && <button type="button" disabled={nearbyBlocked} onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHelpId(null); setHistory(false) }}>次の段階へ</button>}</div>}>
         <div data-reading-layout-body><div className="reading-derivation-chain qf01-continuous-derivation" {...readingLayoutChainAttributes(profile, bodyIds[0] ?? headerId)}>{bodyIds.map(id => renderBlock(id))}</div></div>
       </ReadingStageFrame>
     </section>

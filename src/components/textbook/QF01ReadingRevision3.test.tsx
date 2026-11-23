@@ -13,8 +13,12 @@ const items=unit.sections[0].items
 const active=unit.requiredInteractionRefs!.map(id=>items.find(item=>item.id===id)!)
 function Lesson(){const progress=useAppStore(state=>state.textbookProgress[unit.unitId]);return <GuidedMathReadingFlow unit={unit} section={unit.sections[0]} progress={progress} presentation={presentation} readingPresentation={reading} storageScope="r3-react-dom-test"/>}
 function clickChoice(id:string,value:string){const panel=screen.getByTestId('inline-choice-panel-'+id);const candidate=within(panel).getAllByRole('button').find(button=>button.getAttribute('aria-label')?.endsWith('、'+value));expect(candidate).toBeTruthy();fireEvent.click(candidate!)}
-beforeEach(()=>{Object.defineProperty(globalThis,'crypto',{value:webcrypto,configurable:true});localStorage.clear();useAppStore.setState({textbookProgress:{}});window.scrollBy=vi.fn();Element.prototype.scrollIntoView=vi.fn();window.requestAnimationFrame=cb=>window.setTimeout(()=>cb(0),0);window.cancelAnimationFrame=id=>window.clearTimeout(id)})
-afterEach(()=>{cleanup();vi.restoreAllMocks()})
+beforeEach(()=>{Object.defineProperty(globalThis,'crypto',{value:webcrypto,configurable:true});localStorage.clear();useAppStore.setState({textbookProgress:{}});window.scrollBy=vi.fn();Element.prototype.scrollIntoView=vi.fn();window.requestAnimationFrame=cb=>window.setTimeout(()=>cb(0),0);window.cancelAnimationFrame=id=>window.clearTimeout(id)
+ // jsdom has no layout: model measurable canonical sources explicitly, never
+ // interpret its default zero rectangles as real visibility or a pixel PASS.
+ vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this.getAttribute('data-source-view')==='canonical'?new DOMRect(20,100,240,60):new DOMRect(0,0,0,0)})
+})
+afterEach(()=>{cleanup();vi.restoreAllMocks();vi.unstubAllGlobals()})
 describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
  it('完成した右辺の負数を二項演算子へ変えず、符号と数字を一体表示する',async()=>{
   act(()=>{for(const item of active.slice(0,4))useAppStore.getState().answerTextbook(unit,item.id,item.answer)})
@@ -57,7 +61,7 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
  })
  it('35実回答をstoreへ保存し、本文math2・意味穴・誤答・再読込・参照・履歴・まとめを結ぶ',async()=>{
   const warnings=vi.spyOn(console,'warn')
-  let view=render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id,{}, {timeout:10000});let advances=0;let mathematicalProse=0
+  let view=render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id,{}, {timeout:10000});let advances=0;let mathematicalProse=0;let nearbyRefs=0,preludeRefs=0,priorStageRefs=0
   for(const [index,item]of active.entries()){
    while(!screen.queryByTestId('textbook-item-'+item.id)&&advances<8){fireEvent.click(screen.getByRole('button',{name:'次の段階へ'}));advances++;await waitFor(()=>expect(document.querySelector('.math-textbook-stage--current')).toBeTruthy())}
    const button=screen.getByTestId('textbook-item-'+item.id);expect(button.tagName).toBe('BUTTON');expect(button.getAttribute('aria-label')).not.toContain(item.answer)
@@ -67,6 +71,11 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
    expect(document.querySelector('[data-source-block$="-registry"]')).toBeNull();expect(screen.queryByTestId('textbook-item-qf01-n20-answer')).toBeNull()
    if(['qf01-r3-n14-perimeter-expression-answer','qf01-r3-n16-target-answer'].includes(item.id)){expect(button.closest('.reading-paragraph')).toBeTruthy();mathematicalProse++}
    if(item.id==='qf01-r3-n19-endpoints-answer')expect(document.querySelector('.math-textbook-stage--current')?.textContent).not.toContain('x=0では縦の辺が0')
+   const refRow=reading.viewContracts.INTERACTION_REFERENCES.rows.find(r=>r.currentInteractionId===item.id)!
+   const states=JSON.parse(screen.getByTestId('textbook-reading-flow').getAttribute('data-qf01-nearby-visibility')!)
+   const preludes:Record<string,string[]>=reading.viewContracts.FRAME_CONTRACT.stagePreludeRefs
+   const prelude=preludes[reading.interactions.find(q=>q.id===item.id)!.stageId]??[]
+   for(const rid of refRow.nearbyReferenceRecordIds){const ref=reading.viewContracts.RESULT_REGISTRY.records.find(r=>r.id===rid)!;nearbyRefs++;expect(states[ref.sourceRef.blockId]?.status).toMatch(/^(IN_VIEW|NOT_MOUNTED_BY_DESIGN)$/);if(prelude.includes(ref.sourceRef.blockId)){preludeRefs++;expect(states[ref.sourceRef.blockId].status).toBe('IN_VIEW')}if(ref.stageId!==reading.interactions.find(q=>q.id===item.id)!.stageId){priorStageRefs++;expect(states[ref.sourceRef.blockId].status).toBe('NOT_MOUNTED_BY_DESIGN')}}
    fireEvent.click(button);expect(screen.getByTestId('inline-choice-panel-'+item.id)).toBeTruthy()
    if(index===0){const wrong=item.choices!.find(value=>value!==item.answer)!;clickChoice(item.id,wrong);expect(useAppStore.getState().textbookProgress[unit.unitId].answers[item.id].resolved).toBe(false);expect(screen.getByTestId('textbook-hint-'+item.id)).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'手掛かりを見る'}));expect(screen.getByRole('button',{name:'手掛かりを閉じる'})).toBeTruthy()}
    clickChoice(item.id,item.answer);await waitFor(()=>expect(useAppStore.getState().textbookProgress[unit.unitId].answers[item.id].resolved).toBe(true));expect(screen.queryByTestId('inline-choice-panel-'+item.id)).toBeNull()
@@ -77,6 +86,7 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
   }
   expect(warnings.mock.calls.filter(args=>args.some(value=>String(value).includes('unicodeTextInMathMode')))).toHaveLength(0)
   expect(advances).toBe(8);expect(mathematicalProse).toBe(2);expect(Object.keys(useAppStore.getState().textbookProgress[unit.unitId].answers)).toHaveLength(35)
+  expect([nearbyRefs,preludeRefs,priorStageRefs]).toEqual([56,11,8])
   expect(screen.getByTestId('qf01-unit-summary').textContent).toContain('関数')
   fireEvent.click(screen.getByRole('button',{name:'前の段階を見る'}));expect(screen.getAllByTestId(/^recorded-results-/)).toHaveLength(8);fireEvent.click(screen.getByRole('button',{name:'全文を開く'}));expect(document.querySelector('[data-source-view="history-full-"]')).toBeTruthy();expect(document.querySelector('[data-source-block$="-registry"]')).toBeNull()
  },30000)
@@ -96,7 +106,7 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
   act(()=>{for(const item of active.slice(0,at))useAppStore.getState().answerTextbook(unit,item.id,item.answer)})
   localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test','6')
   const original=HTMLElement.prototype.getBoundingClientRect
-  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this.classList.contains('math-textbook-stage-reference-content')?new DOMRect(0,-200,246,50):original.call(this)})
+  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this.getAttribute('data-source-view')==='canonical'&&['qf01-r3-c3-s07-v01','qf01-r3-c3-s07-p03'].includes(this.getAttribute('data-source-block')??'')?new DOMRect(0,-200,246,50):original.call(this)})
   render(<Lesson/>);const slot=await screen.findByTestId('textbook-item-'+target,{}, {timeout:10000})
   const stage=document.querySelector('.math-textbook-stage--current')!,nearby=await within(stage as HTMLElement).findByRole('complementary',{name:'今の判断に必要な情報'})
   const owner=slot.closest('[data-source-view="canonical"]')!,question=slot.closest('.reading-paragraph')!,panel=screen.getByTestId('inline-choice-panel-'+target)
@@ -125,7 +135,7 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
   const original=HTMLElement.prototype.getBoundingClientRect
   vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){
    if(this===header)return new DOMRect(0,0,1440,64)
-   if(this.classList.contains('math-textbook-stage-reference-content'))return new DOMRect(0,1080-scroll,600,50)
+   if(this.getAttribute('data-source-view')==='canonical'&&['qf01-r3-c3-s07-v01','qf01-r3-c3-s07-p03'].includes(this.getAttribute('data-source-block')??''))return new DOMRect(0,1080-scroll,600,50)
    const repeated=Boolean(document.querySelector('[aria-label="今の判断に必要な情報"]')),extra=repeated?400:0,id=this.getAttribute('data-testid')??''
    if(id.startsWith('textbook-choice-'+target+'-')){const index=Number(id.split('-').at(-1)),attempt=useAppStore.getState().textbookProgress[unit.unitId].answers[target]?.attemptCount??0;return new DOMRect(0,(attempt?1830-selectedIndex*70+(attempt-1)*1000:1450)+index*70+extra-scroll,540,64)}
    if(id==='inline-choice-panel-'+target)return new DOMRect(0,1400+extra-scroll,600,300)
@@ -183,6 +193,125 @@ describe('承認R3の実React DOM（ピクセル測定ではない）',()=>{
   const before=JSON.stringify(useAppStore.getState().textbookProgress);const writes=vi.spyOn(Storage.prototype,'setItem');render(<MemoryRouter><QF01Revision2Archive/></MemoryRouter>)
   expect(screen.getByTestId('qf01-revision2-archive')).toBeTruthy();const blanks=document.querySelectorAll<HTMLButtonElement>('[data-qf01-current-slot]');expect(blanks.length).toBeGreaterThan(0);expect([...blanks].every(button=>button.disabled)).toBe(true)
   expect(document.querySelector('[data-testid^="inline-choice-panel-"]')).toBeNull();expect(writes).not.toHaveBeenCalled();expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
+ })
+})
+
+// D03 uses actual React/metadata/store with explicitly simulated rectangles.
+// These tests prove classifications and interaction guards, not painted pixels.
+describe('D03 source別nearby境界と失敗停止',()=>{
+ const endpoint='qf01-r3-n19-endpoints-answer',p06='qf01-r3-c3-s08-p06'
+ function prepare(id:string){const at=active.findIndex(item=>item.id===id);act(()=>{for(const prior of active.slice(0,at))useAppStore.getState().answerTextbook(unit,prior.id,prior.answer)});const stage=reading.interactions.find(q=>q.id===id)!.stageId;localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test',String(Number(stage.split('-').at(-1))-1));return active[at]}
+ function states():Record<string,{status:string;reason:string}>{return JSON.parse(screen.getByTestId('textbook-reading-flow').getAttribute('data-qf01-nearby-visibility')!)}
+ function copies(id:string){return document.querySelectorAll('[data-source-view="nearby-"][data-source-block="'+id+'"]')}
+ function canonical(id:string){return document.querySelector<HTMLElement>('[data-source-view="canonical"][data-source-block="'+id+'"]')!}
+ function mockSourceRect(id:string,rect:()=>DOMRect){const original=HTMLElement.prototype.getBoundingClientRect;vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this.getAttribute('data-source-view')==='canonical'&&this.getAttribute('data-source-block')===id?rect():original.call(this)})}
+ async function tick(){await act(async()=>{await new Promise(resolve=>setTimeout(resolve,30))})}
+
+ it('n19正答直後、topが画面外でも完全可視p06をendpointsの前へ複製しない',async()=>{
+  const item=prepare('qf01-n19-answer'),original=HTMLElement.prototype.getBoundingClientRect
+  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){if(this.classList.contains('math-textbook-stage-reference-content'))return new DOMRect(0,-500,246,60);if(this.getAttribute('data-source-block')===p06&&this.getAttribute('data-source-view')==='canonical')return new DOMRect(38,114.15625,246,161.953125);return original.call(this)})
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+item.id);fireEvent.click(screen.getByTestId('textbook-item-'+item.id));clickChoice(item.id,item.answer)
+  await waitFor(()=>expect(states()[p06]?.status).toBe('IN_VIEW'));expect(copies(p06)).toHaveLength(0)
+  fireEvent.click(screen.getByTestId('textbook-item-'+endpoint));clickChoice(endpoint,prepareChoice(endpoint,false))
+  await tick();expect(states()[p06].status).toBe('IN_VIEW');expect(copies(p06)).toHaveLength(0)
+  fireEvent.click(screen.getByRole('button',{name:'前の段階を見る'}));fireEvent.click(screen.getByRole('button',{name:'全文を開く'}))
+  expect(copies(p06)).toHaveLength(0);expect(screen.getAllByTestId('textbook-item-'+endpoint)).toHaveLength(1)
+ })
+ function prepareChoice(id:string,correct:boolean){const item=active.find(item=>item.id===id)!;return correct?item.answer:item.choices!.find(choice=>choice!==item.answer)!}
+
+ it('複数sourceを個別判定し、双方向scroll/resizeはコピーだけを変えてfocusと保存を動かさない',async()=>{
+  const ids=['qf01-r3-c1-s01-p01','qf01-r3-c1-s01-p02'];let outside=0
+  for(const [index,id] of ids.entries())mockSourceRect(id,()=>new DOMRect(20,index===outside?-100:100,240,60))
+  render(<Lesson/>);await waitFor(()=>expect(copies(ids[0])).toHaveLength(1));expect(copies(ids[1])).toHaveLength(0)
+  await tick();const before=JSON.stringify(useAppStore.getState().textbookProgress),focus=document.activeElement;vi.mocked(window.scrollBy).mockClear()
+  outside=1;fireEvent.scroll(window);await waitFor(()=>expect(copies(ids[1])).toHaveLength(1));expect(copies(ids[0])).toHaveLength(0)
+  outside=0;fireEvent.resize(window);await waitFor(()=>expect(copies(ids[0])).toHaveLength(1));expect(copies(ids[1])).toHaveLength(0)
+  await tick();expect(window.scrollBy).not.toHaveBeenCalled();expect(document.activeElement).toBe(focus);expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
+  expect(document.querySelector('.qf01-nearby-references button')).toBeNull()
+ })
+
+ it.each([
+  ['header部分clip',new DOMRect(20,70,240,100),'OUT_OF_VIEW'],
+  ['header境界ちょうど',new DOMRect(20,76,240,100),'IN_VIEW'],
+  ['footer部分clip',new DOMRect(20,650,240,70),'OUT_OF_VIEW'],
+  ['左clip',new DOMRect(-1,100,240,60),'OUT_OF_VIEW'],
+  ['右clip',new DOMRect(900,100,240,60),'OUT_OF_VIEW'],
+ ] as const)('%sを可読viewportで分類する',async(_label,rect,expected)=>{
+  prepare(endpoint);vi.stubGlobal('innerHeight',800);vi.stubGlobal('innerWidth',1024)
+  const header=document.createElement('header'),nav=document.createElement('nav');header.style.cssText='position:fixed;top:0';nav.style.cssText='position:fixed;bottom:0';document.body.append(header,nav)
+  const original=HTMLElement.prototype.getBoundingClientRect
+  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){if(this===header)return new DOMRect(0,0,1024,64);if(this===nav)return new DOMRect(0,700,1024,100);return original.call(this)})
+  mockSourceRect(p06,()=>rect)
+  try{render(<Lesson/>);await waitFor(()=>expect(states()[p06]?.status).toBe(expected));expect(copies(p06)).toHaveLength(expected==='IN_VIEW'?0:1)}finally{header.remove();nav.remove()}
+ })
+
+ it('祖先の横clip・内側scroll・font準備後の実rectを再判定する',async()=>{
+  prepare(endpoint);const fonts=new EventTarget();Object.assign(fonts,{ready:Promise.resolve()})
+  const prior=Object.getOwnPropertyDescriptor(document,'fonts');Object.defineProperty(document,'fonts',{value:fonts,configurable:true})
+  let x=20;mockSourceRect(p06,()=>new DOMRect(x,100,240,60))
+  try{
+   render(<Lesson/>);await waitFor(()=>expect(states()[p06]?.status).toBe('IN_VIEW'))
+   const chain=canonical(p06).parentElement!;chain.style.overflowX='hidden';Object.defineProperty(chain,'clientWidth',{value:220,configurable:true})
+   const original=HTMLElement.prototype.getBoundingClientRect;vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this===chain?new DOMRect(0,50,220,500):original.call(this)})
+   fireEvent.scroll(window);await waitFor(()=>expect(states()[p06]?.status).toBe('OUT_OF_VIEW'));expect(copies(p06)).toHaveLength(1)
+   await tick();chain.style.overflowX='visible';x=30;fireEvent.scroll(chain,{bubbles:false})
+   await waitFor(()=>expect(states()[p06]?.status).toBe('IN_VIEW'));expect(copies(p06)).toHaveLength(0)
+   await tick();x=-1;act(()=>fonts.dispatchEvent(new Event('loadingdone')))
+   await waitFor(()=>expect(states()[p06]?.status).toBe('OUT_OF_VIEW'));expect(copies(p06)).toHaveLength(1)
+   x=30;act(()=>fonts.dispatchEvent(new Event('loadingdone')))
+   await waitFor(()=>expect(states()[p06]?.status).toBe('IN_VIEW'));expect(copies(p06)).toHaveLength(0)
+  }finally{if(prior)Object.defineProperty(document,'fonts',prior);else Reflect.deleteProperty(document,'fonts')}
+ })
+
+ it.each(['zero','NaN','throw','missing','duplicate'] as const)('同段階canonicalの%sは画面外扱いせず回答を停止する',async(kind)=>{
+  const item=prepare(endpoint);let invalid=false
+  mockSourceRect(p06,()=>{if(!invalid)return new DOMRect(20,100,240,60);if(kind==='throw')throw new Error('TEST_MEASUREMENT_FAILURE');return new DOMRect(20,kind==='NaN'?NaN:100,kind==='zero'?0:240,60)})
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+endpoint);fireEvent.click(screen.getByTestId('textbook-item-'+endpoint));await tick()
+  const source=canonical(p06),before=JSON.stringify(useAppStore.getState().textbookProgress);let duplicate:HTMLElement|undefined
+  if(kind==='missing')source.dataset.sourceView='history-full-'
+  else if(kind==='duplicate'){duplicate=source.cloneNode(true) as HTMLElement;source.parentElement!.append(duplicate)}else invalid=true
+  fireEvent.scroll(window);await waitFor(()=>expect(states()[p06]?.status).toBe('UNVERIFIED'))
+  expect(screen.getByTestId('qf01-r3-nearby-error')).toBeTruthy();expect(copies(p06)).toHaveLength(0);expect((screen.getByTestId('textbook-item-'+endpoint) as HTMLButtonElement).disabled).toBe(true)
+  const candidate=screen.getByRole('button',{name:/^候補1/}) as HTMLButtonElement;expect(candidate.disabled).toBe(true);fireEvent.click(candidate);expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before);expect(useAppStore.getState().textbookProgress[unit.unitId].answers[endpoint]?.value).not.toBe(item.answer)
+  duplicate?.remove();source.dataset.sourceView='canonical';invalid=false;fireEvent.resize(window)
+  await waitFor(()=>expect(states()[p06]?.status).toBe('IN_VIEW'));expect(screen.queryByTestId('qf01-r3-nearby-error')).toBeNull()
+ })
+
+ it('前段階の正本はhistoryを代用せずNOT_MOUNTED_BY_DESIGNのreadonly一件を保つ',async()=>{
+  const id='qf01-r3-n04-value-meaning-answer',prior='qf01-r3-c1-s01-p06';prepare(id)
+  render(<Lesson/>);await waitFor(()=>expect(states()[prior]?.status).toBe('NOT_MOUNTED_BY_DESIGN'));expect(canonical(prior)).toBeNull();expect(copies(prior)).toHaveLength(1)
+  fireEvent.click(screen.getByRole('button',{name:'前の段階を見る'}));fireEvent.click(screen.getByRole('button',{name:'全文を開く'}))
+  await waitFor(()=>expect(document.querySelector('[data-source-view="history-full-"][data-source-block="'+prior+'"]')).toBeTruthy())
+  expect(states()[prior].status).toBe('NOT_MOUNTED_BY_DESIGN');expect(copies(prior)).toHaveLength(1);expect(copies(prior)[0].querySelector('button')).toBeNull()
+ })
+
+ it('前段階の式を再掲しても原関係番号9を一つだけ保持し、解答slotを増やさない',async()=>{
+  const id='qf01-n21-answer',prior='qf01-r3-c3-s08-f04';prepare(id)
+  render(<Lesson/>);await waitFor(()=>expect(states()[prior]?.status).toBe('NOT_MOUNTED_BY_DESIGN'))
+  expect(copies(prior)).toHaveLength(1);expect(copies(prior)[0].querySelectorAll('.numbered-equation-label')).toHaveLength(1)
+  expect(copies(prior)[0].querySelector('.numbered-equation-label')?.getAttribute('aria-label')).toBe('式9')
+  expect(copies(prior)[0].querySelector('button')).toBeNull();expect(screen.getAllByTestId('textbook-item-'+id)).toHaveLength(1)
+ })
+
+ it('reset/reloadで旧currentの再掲状態を捨て、別scopeのcursor保存を変更しない',async()=>{
+  prepare(endpoint);mockSourceRect(p06,()=>new DOMRect(20,-100,240,60))
+  const other='math-textbook-compact-v1:'+unit.unitId+':r3:scope:other-kept';localStorage.setItem(other,'4')
+  let view=render(<Lesson/>);await waitFor(()=>expect(copies(p06)).toHaveLength(1))
+  act(()=>useAppStore.getState().resetTextbookUnit(unit.unitId,unit))
+  await screen.findByTestId('textbook-item-'+active[0].id);expect(states()[p06]).toBeUndefined();expect(copies(p06)).toHaveLength(0)
+  expect(localStorage.getItem(other)).toBe('4');const before=JSON.stringify(useAppStore.getState().textbookProgress)
+  view.unmount();await act(async()=>{await useAppStore.persist.rehydrate()});view=render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id)
+  expect(states()[p06]).toBeUndefined();expect(copies(p06)).toHaveLength(0);expect(localStorage.getItem(other)).toBe('4');expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(before)
+ })
+
+ it('コピー挿入で可視判定が振動する場合は有限frameでUNVERIFIED停止する',async()=>{
+  const frames=new Map<number,FrameRequestCallback>();let next=0
+  window.requestAnimationFrame=callback=>{frames.set(++next,callback);return next};window.cancelAnimationFrame=id=>{frames.delete(id)}
+  const id='qf01-r3-c1-s01-p01';mockSourceRect(id,()=>new DOMRect(20,copies(id).length?100:-100,240,60))
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id)
+  for(let turn=0;turn<24&&frames.size;turn++)act(()=>{const pending=[...frames.values()];frames.clear();for(const callback of pending)callback(0)})
+  expect(states()[id]).toEqual({status:'UNVERIFIED',reason:'NON_CONVERGENT_LAYOUT'});expect(frames.size).toBe(0);expect(copies(id)).toHaveLength(0)
+  expect((screen.getByTestId('textbook-item-'+active[0].id) as HTMLButtonElement).disabled).toBe(true);expect(Object.keys(useAppStore.getState().textbookProgress)).toHaveLength(0)
  })
 })
 

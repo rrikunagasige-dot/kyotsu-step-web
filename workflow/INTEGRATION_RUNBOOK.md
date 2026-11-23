@@ -193,3 +193,15 @@ checkpoint lockはowner-tokenの排他方式を用い、PIDの推測や経過時
 5. `informed-review-run` はD採用済みの指定3nodeだけで、既存run_capabilityを実行し、両実再検査用のclaim時間を明示する（既定3600秒、900〜7200秒）。通常production-runの挙動は変えず、CODEはclaim後に実行し、自動受理しない。`seal-informed-review` は有効な現在claimに対し、両実報告・現CODE・evidence・finding dispositionを検査して新receiptと実seal eventを記録する。これは自動PASSではなく、通常のsubmit/check_resultが同receiptを再検証する。作者単独のfinding解消、OPEN/UNRESOLVED、CODE FAIL、未確認・異版・報告欠落は停止する。
 6. source/target/definition/service/method/作者集合の変更、または `revoke-informed-review-method` で対応receiptと下流を失効させる。R06 current proofにはD02 authorityと現在D02 owner権限を追加し、原1d承認も別に保持する。Aからのcore差分をD02の許可pathへ限定する。publisherも同じ追加権限・複数移行・実seal/receiptを検証する。
 7. 独立審査の保証を回復したとは表示しない。通常team/1、他Work、未知prefix/元受付/global queue、実公開のCAS/DEPLOY/公開後検査は従来のまま。最終G3_FINAL@qf01-p035は公開後の本人の実物受入を待つ。D02採用や技術成功を本人受入・品質labelへ変換しない。
+
+### QF01 D03 V2の再掲修復と再検査
+
+固定追加案 `NEARBY_VISIBILITY_PROPOSAL_D03.md` のSHA256は `6e072c442c602947169f63bc5711e559377e685a5adffa872eccf5b56f3332cf`。本人の「D03案V2を採用し、記載範囲の公開反映とCIも許可する」（request_user_input_async/call_d8bca8dac40a458ca60d5346bbd6e8d5）を別のfile evidenceとして保持する。本文冒頭の未採用状態は採用前の原文であり、原文を採用済みに書き換えない。
+
+1. 原1d/D02、Bの5修復、旧移行・結果・初回seal・OPEN所見を保持する。製品変更は `GuidedMathReadingFlow.tsx` と `QF01ReadingRevision3.test.tsx` の2pathだけ。残り3修復path、本文・metadata・数学・採点・保存を維持する。新実Git候補をB `247cb09b1d852d4e4fa469b3d74fb29bee053c53` の子孫へ固定する。Bからの全差分は追加案のcore11・製品2・原文1pathだけとし、公開前にpath/bytes/SHA256を固定する。
+2. fresh SourceOnly CLIから `checkpoint-preflight` に `informed_adoption_ref` と `repair_adoption_ref` の両方を指定する。後者は `qf01-d03-v2-actual-user-adoption/1` の実転記file evidence。`repairAdoption` は固定案・実転記hash・原Bの2hash・現在2hash・直前/現在candidate・現在definition/service・epochを結ぶ。`checkpoint-migrate` は同じHEADとproofを再検証する。後続移行で補足を削除したり、直前candidateをBへ戻したりしない。旧PASSは保存し、現在入力では失効させる。
+3. 原D02のauthority形式・同じ2名・寄与行列・非独立性を保持し、新current authorityのevidenceRefsに実D03採用evidenceを含める。新たなD02本人発言を作らず、保存済み実採用を再参照する。既存RECOVERYをD03原文hashへ正規改訂し、原A22 source/rules/scope/snapshotは維持する。現在保護manifestの418keysのうち製品2値だけをD03 afterへ更新し、旧planは保持する。現在ownerの実直前candidate/Git bytesと新候補を `reconcile-informed-technical-owner` で照合し、新T01〜T04を実施する。
+4. Git proofの旧 `repairs` 5組とafterGitBlobSHAはBのまま保持する。現在製品treeと追加 `nearbyRepair` / `nearbyChangedPaths` がD03の実差分を表す。R06は現在compile・D03 ownerの実T01〜T04・現在承認・現在source/definition/serviceを検証する。実行していないpatchやfilewriteを記録しない。
+5. 四幅320/390/430/1440×35判断×未回答/誤選択/正答後の420状態を実画面で採取し、原093境界、個別sourceの画面内0コピー/画面外1コピー、scroll双方向・clip・未mount/測定不能・保存隔離を確認する。現在sourceのlocal_execution/check証拠には `nearby_visibility` のfindingId、PASS、widths4整数、sampleCount420、unverified/unexpectedCopies/missingCopies各0を実測に基づき記録する。Nodeの模擬DOMや旧B画像だけでこれを作らない。
+6. 各対象nodeの必須render claimについて両名それぞれの実報告に `QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123` のVERIFIED_FIXED、元file evidenceを指す `reexaminesEvidenceRef`、理由、現在実測evidenceRefs、現在CODE参照を要求する。元B所見は真正な旧team outputへ呼び替えない。片方欠落・OPEN・測定不能・CODE FAILでは停止する。旧診断fileは上書きしない。
+7. publisherのD03 private exportは、登録file evidenceのraw UTF8 bytesを `exportEnvelope.fileEvidence` の相対path→`{sha256,rawUTF8}` で伝達し、登録hash/実bytesを照合する。旧D02 envelopeは不変。CIには明示したTEST_FIXTUREだけを使う。コード20pathと原文1pathの公開許可を、実台帳・学習・認証情報の公開送信へ転用しない。main/配信・本人G3_FINAL・未知prefix/global queueは既存の別gateを維持する。

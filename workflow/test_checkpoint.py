@@ -854,5 +854,49 @@ except TailConflict as error:
 
 
 
+class NearbyRepairRecordTests(unittest.TestCase):
+    """Pure schema boundaries; hashes are TEST_FIXTURE values, not Git pins."""
+    def record(self):
+        from checkpoint import (CURRENT_REPAIR_AFTER,NEARBY_REPAIR_BASELINE,
+            NEARBY_REPAIR_PRODUCT_PATHS,NEARBY_REPAIR_PROPOSAL_SHA256,
+            NEARBY_REPAIR_ADOPTION_QUOTE,NEARBY_REPAIR_ADOPTION_CALL_ID)
+        return {'schemaVersion':'qf01-nearby-visibility-supplement/1',
+            'proposalSHA256':NEARBY_REPAIR_PROPOSAL_SHA256,'evidenceRef':'TEST_FIXTURE_D03',
+            'transcriptionSHA256':digest('TEST_FIXTURE_NOT_ACTUAL_ADOPTION'),
+            'quote':NEARBY_REPAIR_ADOPTION_QUOTE,'source_ref':'request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID,
+            'verification_level':'conversation_transcribed','baselineSourceSHA':NEARBY_REPAIR_BASELINE,
+            'candidateBeforeSHA':NEARBY_REPAIR_BASELINE,'candidateAfterSHA':'c'*40,
+            'allowedProductPaths':list(NEARBY_REPAIR_PRODUCT_PATHS),
+            'beforeRepair':{p:CURRENT_REPAIR_AFTER[p] for p in NEARBY_REPAIR_PRODUCT_PATHS},
+            'afterRepair':{p:digest(['TEST_FIXTURE_AFTER',p]) for p in NEARBY_REPAIR_PRODUCT_PATHS},
+            'definitionHash':digest('TEST_FIXTURE_DEFINITION'),'implementationHash':digest('TEST_FIXTURE_IMPLEMENTATION'),
+            'checkpointEpoch':digest('TEST_FIXTURE_EPOCH')}
+
+    def test_exact_record_is_detached_and_original_five_map_does_not_change(self):
+        from checkpoint import CURRENT_REPAIR_AFTER,validate_nearby_repair_record
+        before=copy.deepcopy(CURRENT_REPAIR_AFTER);record=self.record()
+        accepted=validate_nearby_repair_record(record,epoch=record['checkpointEpoch'])
+        self.assertEqual(accepted,record);accepted['afterRepair'].clear()
+        self.assertTrue(record['afterRepair']);self.assertEqual(CURRENT_REPAIR_AFTER,before)
+
+    def test_wrong_adoption_epoch_baseline_unknown_fields_and_third_path_are_rejected(self):
+        from checkpoint import validate_nearby_repair_record
+        for key,value in [('proposalSHA256','0'*64),('source_ref','TEST_FIXTURE_OTHER_CALL'),
+            ('quote','続けて'),('verification_level','simulation'),('baselineSourceSHA','e'*40),
+            ('allowedProductPaths',[]),('afterRepair',{}),('unexpectedPermission',True)]:
+            changed=self.record();changed[key]=value
+            with self.subTest(key=key),self.assertRaises(CheckpointRejected):
+                validate_nearby_repair_record(changed,epoch=changed['checkpointEpoch'])
+        changed=self.record();changed['afterRepair']['src/UNADOPTED.ts']='e'*64
+        with self.assertRaises(CheckpointRejected):validate_nearby_repair_record(changed)
+        with self.assertRaises(CheckpointRejected):validate_nearby_repair_record(self.record(),epoch='e'*64)
+
+    def test_noop_afterimage_cannot_claim_new_repair(self):
+        from checkpoint import validate_nearby_repair_record
+        record=self.record();record['afterRepair']=copy.deepcopy(record['beforeRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D03_EXACT_TWO_PATH_AFTERIMAGE'):
+            validate_nearby_repair_record(record)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

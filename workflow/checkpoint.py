@@ -513,6 +513,101 @@ CURRENT_REPAIR_AFTER = {
     'src/components/textbook/QF01ReadingRevision3.test.tsx': 'fae8664194de2344533ead564fe190be46c86b2424d3e0f9bfd4b95a41fa36d0',
     'src/domain/transformationReading.ts': '3f81a3852d477b9da6d34f18f79442dbfcebbe1b4561e6b83af64e4669957774',
     'src/domain/readingSourceViews.test.ts': '7a2916a7afc966e7bf6b2b79769e7f751931c0630140acfe547a9ade539b5b9c'}
+NEARBY_REPAIR_PROPOSAL_SHA256 = '6e072c442c602947169f63bc5711e559377e685a5adffa872eccf5b56f3332cf'
+NEARBY_REPAIR_PROPOSAL_PATH = 'work/items/'+RECOVERY_WORK+'/NEARBY_VISIBILITY_PROPOSAL_D03.md'
+NEARBY_REPAIR_BASELINE = '247cb09b1d852d4e4fa469b3d74fb29bee053c53'
+NEARBY_REPAIR_ADOPTION_CALL_ID = 'call_d8bca8dac40a458ca60d5346bbd6e8d5'
+NEARBY_REPAIR_ADOPTION_QUOTE = 'D03案V2を採用し、記載範囲の公開反映とCIも許可する'
+NEARBY_REPAIR_PRODUCT_PATHS = ('src/components/textbook/GuidedMathReadingFlow.tsx',
+    'src/components/textbook/QF01ReadingRevision3.test.tsx')
+NEARBY_REPAIR_CORE_PATHS = frozenset('workflow/'+name for name in (
+    'checkpoint.py','adapters.py','runtime.py','team.py','cli.py','integration.py','definitions.py',
+    'test_checkpoint.py','test_checkpoint_runtime.py','test_checkpoint_definition.py','INTEGRATION_RUNBOOK.md'))
+NEARBY_REPAIR_FIELDS = frozenset(('schemaVersion','proposalSHA256','evidenceRef','transcriptionSHA256',
+    'quote','source_ref','verification_level','baselineSourceSHA','candidateBeforeSHA','candidateAfterSHA',
+    'allowedProductPaths','beforeRepair','afterRepair','definitionHash','implementationHash','checkpointEpoch'))
+
+
+def validate_nearby_repair_record(record, *, epoch=None, check=require):
+    """Validate the adopted two-path supplement without reinterpreting old proofs."""
+    check(isinstance(record,dict) and set(record)==NEARBY_REPAIR_FIELDS,'D03_REPAIR_RECORD_FIELDS')
+    check(record.get('schemaVersion')=='qf01-nearby-visibility-supplement/1'
+        and record.get('proposalSHA256')==NEARBY_REPAIR_PROPOSAL_SHA256
+        and record.get('baselineSourceSHA')==NEARBY_REPAIR_BASELINE,'D03_FIXED_PROPOSAL_BASELINE')
+    check(record.get('quote')==NEARBY_REPAIR_ADOPTION_QUOTE
+        and record.get('source_ref')=='request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID
+        and record.get('verification_level')=='conversation_transcribed','D03_ACTUAL_ADOPTION_REQUIRED')
+    for name in ('transcriptionSHA256','definitionHash','implementationHash','checkpointEpoch'):
+        check(isinstance(record.get(name),str) and SHA256.fullmatch(record[name]),'D03_REPAIR_HASH:'+name)
+    check(epoch is None or record['checkpointEpoch']==epoch,'D03_REPAIR_EPOCH')
+    check(isinstance(record.get('evidenceRef'),str) and EVENT_ID.fullmatch(record['evidenceRef']),
+          'D03_REPAIR_EVIDENCE_ID')
+    for name in ('candidateBeforeSHA','candidateAfterSHA'):
+        check(isinstance(record.get(name),str) and re.fullmatch(r'[0-9a-f]{40}',record[name]),
+              'D03_REPAIR_CANDIDATE_SHA:'+name)
+    check(record['candidateAfterSHA'] not in (record['candidateBeforeSHA'],NEARBY_REPAIR_BASELINE),
+          'D03_REPAIR_NEW_CANDIDATE_REQUIRED')
+    before={name:CURRENT_REPAIR_AFTER[name] for name in NEARBY_REPAIR_PRODUCT_PATHS}
+    check(record.get('allowedProductPaths')==list(NEARBY_REPAIR_PRODUCT_PATHS)
+        and record.get('beforeRepair')==before,'D03_EXACT_TWO_PATH_PREIMAGE')
+    after=record.get('afterRepair')
+    check(isinstance(after,dict) and set(after)==set(before)
+        and all(isinstance(value,str) and SHA256.fullmatch(value) for value in after.values())
+        and after!=before,'D03_EXACT_TWO_PATH_AFTERIMAGE')
+    return copy.deepcopy(record)
+
+
+def nearby_repair_adoption_file(rt, state, reference):
+    """Read the actual supplemental adoption; do not mint a material approval."""
+    from contracts import need, file
+    need(getattr(rt.store,'checkpoint_mode',False) and state['plan']['work_id']==FIXED_WORK,
+         'D03_CHECKPOINT_WORK_REQUIRED')
+    evidence=state['evidence'].get(reference,{})
+    need(evidence.get('kind')=='file' and evidence.get('verification_level')!='simulation',
+         'D03_ACTUAL_ADOPTION_FILE_REQUIRED')
+    data=evidence.get('data',{});path=file(rt.root,data['path'])
+    need(path.stat().st_size<=1_048_576,'D03_ADOPTION_FILE_LIMIT')
+    raw=path.read_bytes();need(sha(raw)==data.get('sha256'),'D03_ADOPTION_FILE_CHANGED')
+    adopted=strict_json(raw)
+    need(adopted.get('schemaVersion')=='qf01-d03-v2-actual-user-adoption/1'
+        and adopted.get('proposalSHA256')==NEARBY_REPAIR_PROPOSAL_SHA256
+        and adopted.get('quote')==NEARBY_REPAIR_ADOPTION_QUOTE
+        and adopted.get('source_ref')=='request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID
+        and adopted.get('verification_level')=='conversation_transcribed' and adopted.get('adopted') is True,
+        'D03_EXACT_ACTUAL_USER_ADOPTION')
+    need(adopted.get('productPaths')==list(NEARBY_REPAIR_PRODUCT_PATHS)
+        and adopted.get('publicCodePathMaximum')==20
+        and adopted.get('publicProposalPath')==NEARBY_REPAIR_PROPOSAL_PATH
+        and adopted.get('nativeLedgerOrLearningOrCredentialsIncluded') is False,
+        'D03_ACTUAL_ADOPTION_SCOPE')
+    need(sha(file(rt.root,NEARBY_REPAIR_PROPOSAL_PATH).read_bytes())==NEARBY_REPAIR_PROPOSAL_SHA256,
+         'D03_FIXED_PROPOSAL_BYTES')
+    return {'evidenceRef':reference,'transcriptionSHA256':sha(raw),'quote':adopted['quote'],
+            'source_ref':adopted['source_ref'],'verification_level':adopted['verification_level']}
+
+
+def current_nearby_repair(rt, state):
+    """A supplement is current only for its actual migrated source/code/input."""
+    from contracts import need, file
+    from capabilities import implementation_hash
+    migration=state.get('checkpoint_definition_migration',{})
+    record=migration.get('repairAdoption')
+    if record is None:return None
+    need(getattr(rt.store,'checkpoint_mode',False) and state['plan']['work_id']==FIXED_WORK,
+         'D03_CHECKPOINT_WORK_REQUIRED')
+    record=validate_nearby_repair_record(record,epoch=rt.store.checkpoint_epoch,check=need)
+    need(state['plan']['work_id']==FIXED_WORK
+        and record['candidateAfterSHA']==state['candidate_sha']==migration.get('candidateSHA')
+        and record['definitionHash']==state['definition_hash']==migration.get('to')
+        and record['implementationHash']==implementation_hash(rt),'D03_CURRENT_SOURCE_DEFINITION_SERVICE')
+    adopted=nearby_repair_adoption_file(rt,state,record['evidenceRef'])
+    need(all(record.get(key)==value for key,value in adopted.items()),'D03_REPAIR_ADOPTION_CHANGED')
+    effective={**CURRENT_REPAIR_AFTER,**record['afterRepair']}
+    need(all(sha(file(rt.root,name).read_bytes())==value for name,value in effective.items()),
+         'D03_CURRENT_PRODUCT_BYTES')
+    return record
+
+
 ADOPTION_CALL_ID = 'call_d1c88a5dde794be288a201a5ea8de0cc'
 ORIGIN_NAMES = frozenset(('publisher-contract.json', 'BUILD_AUTHORITY.blob',
     'APPROVED_MATERIAL_SEED.json', 'NODES.json', 'ORIGIN_SOURCE_PROOF.json',
@@ -724,8 +819,49 @@ class CheckpointStore:
         # current-code/target validity is rechecked by Runtime/team at use time.
         active_method = None
         origin = self._view.state_snapshot(FIXED_WORK)
+        primary_candidate=origin['candidate_sha']
+        active_repair=None
+        owner_candidate=None;owner_manifest=None;owner_plan=None
         for row in rows:
             payload = row['payload']; kind = row['kind']
+            if row['work']==RECOVERY_WORK:
+                if kind=='opened':
+                    owner_plan=payload['plan'];owner_candidate=owner_plan['source_sha']
+                    owner_manifest=copy.deepcopy(owner_plan['source_manifest'])
+                elif kind=='revised':owner_plan=payload['plan']
+                elif kind=='candidate':
+                    owner_candidate=payload['sha'];owner_manifest=copy.deepcopy(payload['manifest'])
+                elif kind=='patch_applied':
+                    owner_candidate=None;owner_manifest.update(payload['after_manifest'])
+            if kind=='checkpoint_definition_migrated' and row['work']==FIXED_WORK:
+                repair=payload.get('repairAdoption')
+                require(active_repair is None or repair is not None,'D03_SUPPLEMENT_CANNOT_BE_STRIPPED')
+                if repair is not None:
+                    repair=validate_nearby_repair_record(repair,epoch=self.checkpoint_epoch)
+                    preflight=self.get(payload['preflightRef'])
+                    require(preflight.get('repairAdoption')==repair
+                        and preflight.get('ledgerHead')==row['previous']
+                        and repair['candidateBeforeSHA']==preflight.get('candidateBeforeSHA')==primary_candidate
+                        and repair['candidateAfterSHA']==preflight.get('candidateAfterSHA')==payload.get('candidateSHA')
+                        and repair['definitionHash']==preflight.get('toDefinition')==payload.get('to')
+                        and repair['implementationHash']==preflight.get('implementationHash')
+                        and preflight.get('reviewMethodAdoption') is not None,'D03_MIGRATION_CURRENT_PREVIOUS_BINDING')
+                    if active_repair is None:
+                        require(primary_candidate==NEARBY_REPAIR_BASELINE,'D03_FIRST_MIGRATION_REQUIRES_B')
+                    else:
+                        require(all(repair[key]==active_repair[key] for key in
+                            ('proposalSHA256','baselineSourceSHA','evidenceRef','transcriptionSHA256','quote','source_ref','verification_level','beforeRepair','allowedProductPaths')),
+                            'D03_PRESERVED_SUPPLEMENTAL_ADOPTION')
+                    evidence=[e for e in rows if e['seq']<row['seq'] and e['work']==FIXED_WORK
+                        and e['kind']=='evidence' and e['payload'].get('id')==repair['evidenceRef']]
+                    require(len(evidence)==1 and evidence[0]['payload'].get('kind')=='file'
+                        and evidence[0]['payload'].get('verification_level')!='simulation'
+                        and evidence[0]['payload'].get('data',{}).get('sha256')==repair['transcriptionSHA256'],
+                        'D03_PRIOR_ACTUAL_ADOPTION_FILE_EVENT')
+                    active_repair=repair
+                primary_candidate=payload['candidateSHA']
+            elif kind=='candidate' and row['work']==FIXED_WORK:
+                primary_candidate=payload['sha']
             if kind == 'checkpoint_definition_migrated' and payload.get('reviewMethodAdoption') is not None:
                 added=payload['reviewMethodAdoption'];preflight=self.get(payload['preflightRef'])
                 require(row['work']==FIXED_WORK and isinstance(added,dict)
@@ -778,6 +914,12 @@ class CheckpointStore:
                         and body.get('historicalFirstPassRefs')==list(INFORMED_FIRST_PASS_REFS)
                         and all(body.get(k) is False for k in ('independent','sourceFirst','firstPass'))
                         and body.get('globalQueueCoverage')=='UNKNOWN','D02_AUTHORITY_EVENT_CRITERION')
+                if active_repair is not None:
+                    require(body.get('currentSourceSHA')==active_repair['candidateAfterSHA']
+                        and body.get('definitionHash')==active_repair['definitionHash']
+                        and body.get('implementationHash')==active_repair['implementationHash']
+                        and active_repair['evidenceRef'] in body.get('evidenceRefs',[]),
+                        'D03_AUTHORITY_SUPPLEMENT_BINDING')
                 active_method=ref
             elif kind == 'informed_review_method_revoked':
                 require(row['work']==FIXED_WORK and payload.get('authorityRef')==active_method
@@ -795,7 +937,7 @@ class CheckpointStore:
                 require(proof.get('schemaVersion')=='qf01-informed-technical-candidate-proof/1'
                         and proof.get('work')==RECOVERY_WORK and proof.get('parentWork')==FIXED_WORK
                         and proof.get('methodAuthorityRef')==active_method
-                        and proof.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+                        and proof.get('proposalSHA256')==(NEARBY_REPAIR_PROPOSAL_SHA256 if active_repair else INFORMED_REVIEW_PROPOSAL_SHA256)
                         and proof.get('checkpointEpoch')==self.checkpoint_epoch
                         and proof.get('expectedHead')==row['previous']
                         and proof.get('candidateSHA')==authority.get('currentSourceSHA')
@@ -813,6 +955,25 @@ class CheckpointStore:
                         and bool(proof.get('verificationRefs'))
                         and isinstance(proof.get('resultDispositions'),list),
                         'D02_TECHNICAL_EVENT_ORIGIN')
+                if active_repair is not None:
+                    protected=copy.deepcopy(original.get('protected_manifest',{}))
+                    require(all(protected.get(name)==value for name,value in active_repair['beforeRepair'].items()),
+                            'D03_OWNER_ORIGINAL_PROTECTION')
+                    protected.update(active_repair['afterRepair'])
+                    require(owner_plan is not None and owner_plan['source_sha']==original['source_sha']
+                        and all(owner_plan.get(key)==original.get(key) for key in ('source_manifest','rules','scope'))
+                        and owner_plan.get('protected_manifest',{})==protected
+                        and owner_plan['proposal']['hash']==NEARBY_REPAIR_PROPOSAL_SHA256
+                        and proof.get('planSHA256')==digest(owner_plan)
+                        and proof.get('previousCandidateSHA')==owner_candidate
+                        and proof.get('previousCandidateManifestSHA256')==digest(owner_manifest),
+                        'D03_OWNER_PLAN_AND_ACTUAL_PREVIOUS_BINDING')
+                    gitproof=proof.get('gitProof',{})
+                    require(gitproof.get('previousCandidateSHA')==owner_candidate
+                        and gitproof.get('retainedManifestSHA256')==digest(owner_manifest)
+                        and gitproof.get('currentMaterialGitProof',{}).get('nearbyRepair')==active_repair,
+                        'D03_OWNER_GIT_SUPPLEMENT_BINDING')
+                owner_candidate=proof['candidateSHA'];owner_manifest=copy.deepcopy(proof['candidateManifest'])
             elif kind == 'informed_review_receipt_sealed':
                 require(row['work']==FIXED_WORK
                         and set(payload)=={'node','inputHash','methodAuthorityRef','methodReceiptRef'}

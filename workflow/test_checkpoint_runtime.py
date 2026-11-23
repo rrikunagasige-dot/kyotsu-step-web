@@ -52,6 +52,16 @@ FIXTURE_SOURCE_ROOT = Path(os.environ.get('QF01_CHECKPOINT_SOURCE_ROOT', str(WOR
 INPUTS = (CONTRACT, BLOB, PROPOSAL, SOURCE_PROOF, SOURCE_SNAPSHOT)
 
 
+def repair_fixture_bytes(relative, expected):
+    """Keep historical B fixtures byte-exact when testing a newer renderer."""
+    configured = os.environ.get('QF01_CHECKPOINT_BASELINE_REPAIR_ROOT')
+    root = Path(configured).resolve() if configured else ENGINE.parent
+    raw = (root / relative).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != expected:
+        raise AssertionError('Fixed baseline-B repair mismatch: '+relative)
+    return raw
+
+
 def seed_state():
     return json.loads(gzip.decompress(base64.b64decode(BLOB.read_bytes())))['baseState']
 
@@ -89,6 +99,59 @@ def populate_preflight_fixture(root):
     return state
 
 
+def populate_nearby_fixture(root):
+    """TEST_FIXTURE B->C transitions; never copy actual private ledger/replies.
+
+    Only the historical executor identity and external Git tree are mocked.
+    Native events, file evidence, current preflight, migration and state replay
+    are real operations against a temporary TEST_FIXTURE namespace.
+    """
+    from checkpoint import (CURRENT_REPAIR_AFTER, NEARBY_REPAIR_BASELINE,
+        NEARBY_REPAIR_PRODUCT_PATHS, NEARBY_REPAIR_PROPOSAL_PATH,
+        NEARBY_REPAIR_PROPOSAL_SHA256, NEARBY_REPAIR_ADOPTION_QUOTE,
+        NEARBY_REPAIR_ADOPTION_CALL_ID, INFORMED_REVIEW_PROPOSAL_SHA256,
+        INFORMED_PROPOSAL_PATH)
+    from definitions import IMPLEMENTATION_FILES
+    root = Path(root)
+    populate_preflight_fixture(root)
+    for relative, expected in CURRENT_REPAIR_AFTER.items():
+        (root/relative).write_bytes(repair_fixture_bytes(relative,expected))
+    baseline = Path(os.environ['QF01_CHECKPOINT_BASELINE_REPAIR_ROOT']).resolve()
+    old_core = {'definitionHash':'0f27a49423f9f5e36f84e0062dcea8a775c33f3df0fb6de3c78352e1e9bd9b27',
+        'files':{name:hashlib.sha256((baseline/'workflow'/name).read_bytes()).hexdigest()
+                 for name in IMPLEMENTATION_FILES}}
+    store=initialize_fixture(root);rt=Runtime(store.root,root)
+    with patch('checkpoint.current_core_identity',return_value=old_core), patch('checkpoint.verify_candidate_git',return_value=None):
+        prior=rt.checkpoint_preflight(FIXED_WORK,candidate_sha=NEARBY_REPAIR_BASELINE)
+        rt.migrate_checkpoint_definition(FIXED_WORK,proof=prior,expected_head=prior['ledgerHead'])
+    state_b=rt.state(FIXED_WORK)
+    for relative in (INFORMED_PROPOSAL_PATH,NEARBY_REPAIR_PROPOSAL_PATH):
+        target=root/relative;target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(ENGINE.parent/relative,target)
+    def evidence_file(name,body,eid):
+        body={**body,'fixtureKind':'TEST_FIXTURE_NO_ACTUAL_USER_ACTION_OR_UI_MEASUREMENT'}
+        target=root/name;target.write_text(json.dumps(body,ensure_ascii=False)+'\n',encoding='utf-8')
+        return rt.evidence(FIXED_WORK,'file',{'path':name,'sha256':hashlib.sha256(target.read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/protocol-only',verification_level='local_execution',eid=eid)
+    d2=evidence_file('TEST_FIXTURE_D02_ADOPTION.json',{
+        'schemaVersion':'qf01-informed-review-user-adoption/1','proposalSHA256':INFORMED_REVIEW_PROPOSAL_SHA256,
+        'quote':'限定D02案を採用して進める','source_ref':'request_user_input_async/call_27be7afbeef843249d088b530a5701b7',
+        'verification_level':'conversation_transcribed','adoptedForImplementation':True},'TEST_FIXTURE_D02_ADOPTION')
+    d3=evidence_file('TEST_FIXTURE_D03_ADOPTION.json',{
+        'schemaVersion':'qf01-d03-v2-actual-user-adoption/1','proposalSHA256':NEARBY_REPAIR_PROPOSAL_SHA256,
+        'quote':NEARBY_REPAIR_ADOPTION_QUOTE,'source_ref':'request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID,
+        'verification_level':'conversation_transcribed','adopted':True,
+        'productPaths':list(NEARBY_REPAIR_PRODUCT_PATHS),'publicCodePathMaximum':20,
+        'publicProposalPath':NEARBY_REPAIR_PROPOSAL_PATH,'nativeLedgerOrLearningOrCredentialsIncluded':False},'TEST_FIXTURE_D03_ADOPTION')
+    for relative in NEARBY_REPAIR_PRODUCT_PATHS:
+        (root/relative).write_bytes((ENGINE.parent/relative).read_bytes())
+    with patch('checkpoint.verify_candidate_git',return_value=None), patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
+        proof=rt.checkpoint_preflight(FIXED_WORK,candidate_sha='c'*40,
+            informed_adoption_ref=d2,repair_adoption_ref=d3)
+        rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+    return {'rt':rt,'store':store,'proof':proof,'stateB':state_b,'d2':d2,'d3':d3}
+
+
 class InformedReviewMethodTests(unittest.TestCase):
     """Bounded TEST_FIXTURE reports test protocol, not actual reviewer quality.
 
@@ -103,9 +166,7 @@ class InformedReviewMethodTests(unittest.TestCase):
         cls.prepared_temporary = None
         populate_preflight_fixture(cls.master)
         for relative, expected in CURRENT_REPAIR_AFTER.items():
-            raw = (ENGINE.parent / relative).read_bytes()
-            if hashlib.sha256(raw).hexdigest() != expected:
-                raise AssertionError('Repair fixture changed: '+relative)
+            raw = repair_fixture_bytes(relative, expected)
             (cls.master / relative).write_bytes(raw)
         proposal = cls.master / INFORMED_PROPOSAL_PATH
         proposal.parent.mkdir(parents=True,exist_ok=True)
@@ -868,9 +929,7 @@ class CheckpointCandidateProofTests(unittest.TestCase):
         cls.master = Path(cls.master_temp.name).resolve()
         origin = populate_preflight_fixture(cls.master)
         for relative, expected in CURRENT_REPAIR_AFTER.items():
-            raw = (ENGINE.parent / relative).read_bytes()
-            if hashlib.sha256(raw).hexdigest() != expected:
-                raise AssertionError('Current fixed repair fixture mismatch: ' + relative)
+            raw = repair_fixture_bytes(relative, expected)
             (cls.master / relative).write_bytes(raw)
         owner_source = cls.master / 'workflow/adapters.py'
         owner_source.parent.mkdir(exist_ok=True)
@@ -1103,6 +1162,205 @@ class CheckpointCandidateProofTests(unittest.TestCase):
             result['version_transition_proof'] = {'fixtureKind': 'TEST_FIXTURE_OLD_PROOF'}
             with self.assertRaisesRegex(Rejected, '旧owner/patch'):
                 check_result(self.rt, FIXED_WORK, node, result)
+
+
+class NearbyReviewMethodTests(unittest.TestCase):
+    """Real temporary protocol/harness events, explicitly not actual reviewers/QA."""
+    reset_fixture=InformedReviewMethodTests.reset_fixture
+    setUp=InformedReviewMethodTests.setUp
+    replace_report=InformedReviewMethodTests.replace_report
+    seal=InformedReviewMethodTests.seal
+    result=InformedReviewMethodTests.result
+    tearDownClass=classmethod(InformedReviewMethodTests.tearDownClass.__func__)
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D03_review_master_')
+        cls.addClassCleanup(cls.temporary.cleanup)
+        cls.master=Path(cls.temporary.name).resolve();cls.prepared_temporary=None
+        fixture=populate_nearby_fixture(cls.master);rt=fixture['rt']
+        cls.repair_evidence=fixture['d3']
+        from checkpoint import NEARBY_REPAIR_BASELINE
+        original={'schemaVersion':'qf01-current-b-confirmed-local-open-finding/1',
+            'findingID':'QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123',
+            'sourceSHA':NEARBY_REPAIR_BASELINE,'status':'OPEN_CONFIRMED_LOCAL_EVIDENCE',
+            'productRepairApplied':False,'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_B_DIAGNOSIS'}
+        path=cls.master/'TEST_FIXTURE_ORIGINAL_B_DIAGNOSTIC.json'
+        path.write_text(json.dumps(original)+'\n',encoding='utf-8')
+        rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+            'source_sha':NEARBY_REPAIR_BASELINE},source_ref='TEST_FIXTURE/diagnostic-only',
+            verification_level='local_execution',eid='E-QF01-B-OPEN-NEARBY-FINDING-20261123')
+        cls.evidence=rt.evidence(FIXED_WORK,'check',{'status':'PASS','source_sha':'c'*40,
+            'checks':['TEST_FIXTURE_PROTOCOL_ONLY_NOT_ACTUAL_UI_QA'],
+            'fixtureKind':'TEST_FIXTURE_NO_ACTUAL_420_SAMPLES',
+            'nearby_visibility':{'findingId':original['findingID'],'status':'PASS',
+                'widths':[320,390,430,1440],'sampleCount':420,'unverified':0,'unexpectedCopies':0,'missingCopies':0}},
+            source_ref='TEST_FIXTURE/not-real-UI-QA',verification_level='local_execution',eid='TEST_FIXTURE_D03_MEASUREMENTS')
+        relative='src/components/textbook/GuidedMathReadingFlow.tsx'
+        cls.file_evidence=rt.evidence(FIXED_WORK,'file',{'path':relative,'sha256':hashlib.sha256((cls.master/relative).read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/current-bytes',eid='TEST_FIXTURE_D03_CURRENT_FILE')
+
+    def adopt(self,**overrides):
+        return InformedReviewMethodTests.adopt(self,evidence_refs=[self.evidence,self.repair_evidence],**overrides)
+
+    def prepare(self):
+        cls=type(self)
+        if cls.prepared_temporary:
+            return InformedReviewMethodTests.prepare(self)
+        def known(out):
+            if out['facet']=='render':
+                out['findings'].append({'findingId':'QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123',
+                    'claimRef':out['claimRef'],'facet':'render','resolution':'VERIFIED_FIXED',
+                    'reexaminesEvidenceRef':'E-QF01-B-OPEN-NEARBY-FINDING-20261123',
+                    'reason':'TEST_FIXTURE_PROTOCOL_ONLY_NOT_A_REAL_FIX_REVIEW','evidenceRefs':[self.evidence]})
+        collection=InformedReviewMethodTests.prepare(self,mutate_output=known)
+        cls.prepared_temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D03_cache_')
+        shutil.copytree(self.root,Path(cls.prepared_temporary.name),dirs_exist_ok=True)
+        cls.prepared_attributes={key:copy.deepcopy(getattr(self,key)) for key in
+            ('authority','codes','old_open','collection','reviews','dispositions')}
+        return collection
+
+    def replace_render(self,mutate,who_index=0):
+        from team import project
+        p=project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        choices=[i for i,ref in enumerate(self.collection['outputRefs']) if p['outputs'][ref]['output']['facet']=='render']
+        index=choices[who_index]
+        self.collection['outputRefs'][0],self.collection['outputRefs'][index]=self.collection['outputRefs'][index],self.collection['outputRefs'][0]
+        self.replace_report(mutate)
+        self.collection['outputRefs'][0],self.collection['outputRefs'][index]=self.collection['outputRefs'][index],self.collection['outputRefs'][0]
+
+    def test_both_current_reports_and_bound_code_seal_without_relabeling_original_diagnostic(self):
+        from team import check_collection
+        self.prepare();sealed=self.seal();check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+        self.assertFalse(sealed['semanticValidityVerified']);self.assertFalse(sealed['gateAccepted'])
+        self.assertEqual(sealed['receipt']['currentSourceSHA'],'c'*40)
+        self.assertNotIn('E-QF01-B-OPEN-NEARBY-FINDING-20261123',sealed['receipt']['evidenceRefs'])
+
+    def test_each_render_reviewer_must_reexamine_known_finding(self):
+        for index in (0,1):
+            self.reset_fixture();self.prepare()
+            self.replace_render(lambda out:out.update(findings=[f for f in out['findings'] if f['findingId']!='QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123']),index)
+            with self.subTest(reviewer=index),self.assertRaisesRegex(Rejected,'D03_CURRENT_REPORT_KNOWN_FINDING_REQUIRED'):
+                self.seal()
+
+    def test_each_report_requires_current_measurement_and_current_code(self):
+        for mode in ('current-file-without-measurement','missing-code','foreign-code'):
+            self.reset_fixture();self.prepare()
+            def mutate(out):
+                if mode=='missing-code':out['codeReceiptRefs']=[]
+                elif mode=='foreign-code':out['codeReceiptRefs']=['e'*64]
+                else:
+                    known=next(f for f in out['findings'] if f['findingId']=='QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123')
+                    known['evidenceRefs']=[self.file_evidence]
+                    out['evidenceRefs']=[self.file_evidence]
+            self.replace_render(mutate)
+            with self.subTest(mode=mode),self.assertRaisesRegex(Rejected,'D03_BOTH_REPORTS_CURRENT_FIX_EVIDENCE|D03_CURRENT_CODE_RECEIPT_LIST|D03_BOTH_REPORTS_CURRENT_CODE_REQUIRED'):
+                self.seal()
+
+    def test_measurement_counts_and_unknowns_cannot_be_coerced_to_success(self):
+        from team import _check_nearby_finding_resolution,project,node_requirements
+        self.prepare();s=self.rt.state(FIXED_WORK);p=project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        rows=[]
+        for ref in self.collection['outputRefs']:
+            row=p['outputs'][ref];reg=p['registrations'][row['registrationRef']]
+            rows.append((reg['assignment'],row['output'],reg['packet']))
+        for key,value in [('sampleCount',419),('unverified',True),('unexpectedCopies',False),('missingCopies',1),('widths',[320,390,430,430])]:
+            changed=copy.deepcopy(s);changed['evidence'][self.evidence]['data']['nearby_visibility'][key]=value
+            with self.subTest(key=key),self.assertRaisesRegex(Rejected,'D03_CURRENT_FOUR_WIDTH_MEASUREMENTS'):
+                _check_nearby_finding_resolution(self.rt,changed,self.node,p,rows,node_requirements(s['plan']['agent_team'],self.node),self.codes,[self.evidence])
+        stale=copy.deepcopy(rows)
+        out=next(out for _,out,_ in stale if out['facet']=='render')
+        prior='E-QF01-B-OPEN-NEARBY-FINDING-20261123'
+        out['evidenceRefs']=[prior]
+        next(f for f in out['findings'] if f['findingId']=='QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123')['evidenceRefs']=[prior]
+        with self.assertRaisesRegex(Rejected,'D03_BOTH_REPORTS_CURRENT_FIX_EVIDENCE'):
+            _check_nearby_finding_resolution(self.rt,s,self.node,p,stale,node_requirements(s['plan']['agent_team'],self.node),self.codes,[self.evidence])
+
+    def prepare_owner(self):
+        from adapters import _CHECKPOINT_CORE_PATHS,_CHECKPOINT_D02_BASELINE
+        from checkpoint import (RECOVERY_WORK,NEARBY_REPAIR_BASELINE,NEARBY_REPAIR_PRODUCT_PATHS,
+            NEARBY_REPAIR_PROPOSAL_SHA256,NEARBY_REPAIR_ADOPTION_QUOTE,NEARBY_REPAIR_ADOPTION_CALL_ID,
+            INFORMED_REVIEW_PROPOSAL_SHA256)
+        baseline=Path(os.environ['QF01_CHECKPOINT_BASELINE_REPAIR_ROOT'])
+        primary=self.rt.state(FIXED_WORK);repair=primary['checkpoint_definition_migration']['repairAdoption']
+        protected={**primary['plan']['protected_manifest'],**primary['candidate_manifest'],**repair['beforeRepair']}
+        for source in (baseline/'workflow').iterdir():
+            relative='workflow/'+source.name
+            if source.is_file() and source.suffix in ('.py','.md') and relative not in _CHECKPOINT_CORE_PATHS:
+                target=self.root/relative;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(source.read_bytes())
+                protected[relative]=hashlib.sha256(source.read_bytes()).hexdigest()
+        self.assertEqual(len(protected),418)
+        current={}
+        for relative in _CHECKPOINT_CORE_PATHS:
+            data=(ENGINE.parent/relative).read_bytes();current[relative]=data
+            path=self.root/relative;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+        # Symbolic A archive only: actual Git correspondence is the explicit
+        # boundary mock below, never asserted by this TEST_FIXTURE snapshot.
+        symbolic=self.root/'workflow/runtime.py';symbolic.write_bytes(symbolic.read_bytes()+b'\n# TEST_FIXTURE_SYMBOLIC_A_NOT_ACTUAL_GIT_A\n')
+        current_product={relative:(self.root/relative).read_bytes() for relative in NEARBY_REPAIR_PRODUCT_PATHS}
+        for relative in NEARBY_REPAIR_PRODUCT_PATHS:(self.root/relative).write_bytes((baseline/relative).read_bytes())
+        plan=dict(work_id=RECOVERY_WORK,profile='technical',command='GOVERNANCE',subject='math',mode='textbook',
+            source_sha=_CHECKPOINT_D02_BASELINE,parent_work=FIXED_WORK,simulation=False,rules={},
+            proposal={'id':'TEST_FIXTURE_ORIGINAL_1D','hash':RECOVERY_PROPOSAL_SHA256},
+            source_manifest=manifest(self.root,sorted(_CHECKPOINT_CORE_PATHS)),
+            scope={'paths':sorted(_CHECKPOINT_CORE_PATHS),'preserve':[]},protected_manifest=protected,
+            blocks=[{'id':'TEST_FIXTURE_TECHNICAL_CORE','sources':sorted(_CHECKPOINT_CORE_PATHS)}])
+        self.rt.open(plan)
+        self.rt.user(RECOVERY_WORK,'approve_proposal','この限定案を採用して進める',RECOVERY_PROPOSAL_SHA256,
+            'TEST_FIXTURE/call_d1c88a5dde794be288a201a5ea8de0cc')
+        d2=copy.deepcopy(plan);d2['proposal']={'id':'TEST_FIXTURE_D02','hash':INFORMED_REVIEW_PROPOSAL_SHA256}
+        self.rt.revise(RECOVERY_WORK,d2)
+        self.rt.user(RECOVERY_WORK,'approve_proposal','限定D02案を採用して進める',INFORMED_REVIEW_PROPOSAL_SHA256,
+            'request_user_input_async/call_27be7afbeef843249d088b530a5701b7')
+        before_manifest={p:hashlib.sha256((baseline/p).read_bytes()).hexdigest() for p in _CHECKPOINT_CORE_PATHS}
+        self.rt.append('candidate',RECOVERY_WORK,{'sha':NEARBY_REPAIR_BASELINE,'manifest':before_manifest,
+            'fixtureKind':'TEST_FIXTURE_PREVIOUS_CANDIDATE_NOT_ACTUAL_GIT_OR_PATCH'})
+        d3=copy.deepcopy(d2);d3['proposal']={'id':'TEST_FIXTURE_D03','hash':NEARBY_REPAIR_PROPOSAL_SHA256}
+        d3['protected_manifest'].update(repair['afterRepair']);self.rt.revise(RECOVERY_WORK,d3)
+        self.rt.user(RECOVERY_WORK,'approve_proposal',NEARBY_REPAIR_ADOPTION_QUOTE,NEARBY_REPAIR_PROPOSAL_SHA256,
+            'request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID)
+        for relative,data in current.items():(self.root/relative).write_bytes(data)
+        for relative,data in current_product.items():(self.root/relative).write_bytes(data)
+        self.authority=self.adopt()
+        relative='src/components/textbook/GuidedMathReadingFlow.tsx'
+        self.owner_verification=self.rt.evidence(RECOVERY_WORK,'file',
+            {'path':relative,'sha256':hashlib.sha256((self.root/relative).read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/owner-current-file-not-real-T04',eid='TEST_FIXTURE_D03_OWNER_FILE')
+        self.owner_before=self.rt.state(RECOVERY_WORK)
+        self.owner_original=plan
+        self.owner_original_snapshot=self.store.source_snapshot(RECOVERY_WORK)
+        self.owner_git={'schemaVersion':'qf01-informed-technical-git-proof/1','previousCandidateSHA':NEARBY_REPAIR_BASELINE,
+            'retainedManifestSHA256':digest(before_manifest),'currentMaterialGitProof':{
+                'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_BOUNDARY','nearbyRepair':repair}}
+
+    def reconcile_owner(self):
+        from checkpoint import RECOVERY_WORK
+        with patch('adapters._checkpoint_informed_technical_git',return_value=self.owner_git):
+            return self.rt.reconcile_informed_technical_owner(RECOVERY_WORK,candidate_sha='c'*40,
+                verification_refs=[self.owner_verification],expected_head=self.store.head)
+
+    def test_owner_preserves_a22_and_only_two_of_original_418_protected_hashes_change(self):
+        from checkpoint import RECOVERY_WORK,NEARBY_REPAIR_PRODUCT_PATHS
+        self.prepare_owner();accepted=self.reconcile_owner();after=self.rt.state(RECOVERY_WORK)
+        self.assertFalse(accepted['proof']['writesExecuted']);self.assertFalse(accepted['proof']['oldResultsTransferred'])
+        self.assertEqual(after['plan']['source_manifest'],self.owner_original['source_manifest'])
+        self.assertEqual(after['plan']['rules'],self.owner_original['rules']);self.assertEqual(after['plan']['scope'],self.owner_original['scope'])
+        original=self.owner_original['protected_manifest'];current=after['plan']['protected_manifest']
+        self.assertEqual(len(current),418);self.assertEqual(set(current),set(original))
+        self.assertEqual({p for p in original if original[p]!=current[p]},set(NEARBY_REPAIR_PRODUCT_PATHS))
+        self.assertEqual(after['users'],self.owner_before['users'])
+        self.assertEqual(self.store.source_snapshot(RECOVERY_WORK),self.owner_original_snapshot)
+
+    def test_third_protected_path_change_refuses_owner_reconciliation(self):
+        from checkpoint import RECOVERY_WORK,NEARBY_REPAIR_PRODUCT_PATHS
+        self.prepare_owner();state=self.rt.state(RECOVERY_WORK);changed=copy.deepcopy(state['plan'])
+        third=next(p for p in changed['protected_manifest'] if p not in NEARBY_REPAIR_PRODUCT_PATHS)
+        changed['protected_manifest'][third]='e'*64
+        self.rt.append('revised',RECOVERY_WORK,{'plan':changed,'fixtureKind':'TEST_FIXTURE_ATTACK_NOT_APPROVED_REVISION'})
+        head=self.store.head
+        with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):
+            self.reconcile_owner()
+        self.assertEqual(self.store.head,head)
 
 
 if __name__ == '__main__':

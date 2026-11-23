@@ -1054,7 +1054,7 @@ _CHECKPOINT_CANDIDATE_FIELDS = frozenset((
     'patchExecutedAgain','originalPatchEventRecovered','semanticAcceptance','gateAccepted'))
 
 
-def _checkpoint_scope_diff(changed):
+def _checkpoint_scope_diff(changed,*,nearby_repair=False):
     """Bound the entire candidate delta, including files outside product/core."""
     import re
     from contracts import Rejected
@@ -1068,6 +1068,9 @@ def _checkpoint_scope_diff(changed):
     records={'work/items/'+work+'/'+name+'.md' for work in NEW_TECHNICAL_WORKS
              for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
     records.update('work/items/'+work+'/REVIEW_METHOD_PROPOSAL_D02.md' for work in NEW_TECHNICAL_WORKS)
+    if nearby_repair:
+        from checkpoint import NEARBY_REPAIR_PROPOSAL_PATH
+        records.add(NEARBY_REPAIR_PROPOSAL_PATH)
     records.update('work/items/W-MATH-QF01-P046-R3-continuation-20261122/'+name+'.md'
                    for name in ('WORK','ACTION_LOG','FINDINGS','VERIFICATION','RECOVERY_HANDOFF'))
     native='work/recovery-checkpoints/qf01-p046-r3/'
@@ -1083,9 +1086,24 @@ def _checkpoint_scope_diff(changed):
     return sorted(changed)
 
 
-def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False):
+def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_repair=None):
     """Read Git trees and current bytes; do not fetch, change refs, or refresh index."""
-    from checkpoint import FIXED_SOURCE, CURRENT_REPAIR_AFTER
+    from checkpoint import (FIXED_SOURCE,CURRENT_REPAIR_AFTER,current_nearby_repair,
+        validate_nearby_repair_record,nearby_repair_adoption_file,NEARBY_REPAIR_BASELINE,
+        NEARBY_REPAIR_CORE_PATHS,NEARBY_REPAIR_PRODUCT_PATHS,NEARBY_REPAIR_PROPOSAL_PATH,
+        NEARBY_REPAIR_PROPOSAL_SHA256)
+    from capabilities import implementation_hash
+    if nearby_repair is None:
+        nearby_repair=current_nearby_repair(rt,state)
+    else:
+        nearby_repair=validate_nearby_repair_record(nearby_repair,epoch=rt.store.checkpoint_epoch,check=need)
+        adopted=nearby_repair_adoption_file(rt,state,nearby_repair['evidenceRef'])
+        need(all(nearby_repair.get(key)==value for key,value in adopted.items()),'D03_GIT_ACTUAL_ADOPTION')
+    if nearby_repair:
+        need(review_method and nearby_repair['candidateAfterSHA']==state['candidate_sha']
+            and nearby_repair['definitionHash']==core['definitionHash']
+            and nearby_repair['implementationHash']==implementation_hash(rt),'D03_GIT_CURRENT_BINDING')
+    effective={**CURRENT_REPAIR_AFTER,**(nearby_repair['afterRepair'] if nearby_repair else {})}
     root=Path(rt.root)
     need(root.is_absolute() and root.resolve()==root,'CHECKPOINT_CANDIDATE_ROOT_ALIAS')
     env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0')
@@ -1112,11 +1130,35 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False):
     need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',baseline,candidate],
          capture_output=True,env=env,timeout=30).returncode==0,'CHECKPOINT_CANDIDATE_ANCESTRY')
     all_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate).split(b'\0') if raw}
-    adopted_changed=_checkpoint_scope_diff(all_changed)
+    adopted_changed=_checkpoint_scope_diff(all_changed,nearby_repair=bool(nearby_repair))
     before=tree(FIXED_SOURCE,_CHECKPOINT_PRODUCT_ROOTS);after=tree(candidate,_CHECKPOINT_PRODUCT_ROOTS)
     need(before and set(before)==set(after),'CHECKPOINT_PRODUCT_INVENTORY_CHANGED')
     changed={name for name in before if before[name]!=after[name]}
     need(changed==set(CURRENT_REPAIR_AFTER),'CHECKPOINT_PRODUCT_DIFF_NOT_EXACT_FIVE')
+    original_after=after
+    nearby_changed=[]
+    if nearby_repair:
+        need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',NEARBY_REPAIR_BASELINE,candidate],
+            capture_output=True,env=env,timeout=30).returncode==0,'D03_BASELINE_ANCESTRY')
+        original_after=tree(NEARBY_REPAIR_BASELINE,_CHECKPOINT_PRODUCT_ROOTS)
+        need(set(original_after)==set(after),'D03_PRODUCT_INVENTORY')
+        actual_delta={name for name in after if original_after[name]!=after[name]}
+        expected_delta={name for name in NEARBY_REPAIR_PRODUCT_PATHS
+            if nearby_repair['beforeRepair'][name]!=nearby_repair['afterRepair'][name]}
+        need(actual_delta==expected_delta and actual_delta,'D03_EXACT_PRODUCT_DIFF')
+        need(all(original_after[name]['mode']==after[name]['mode'] for name in actual_delta),'D03_PRODUCT_MODE_CHANGED')
+        nearby_changed=sorted(raw.decode('utf-8') for raw in git('diff','--name-only','-z',
+            NEARBY_REPAIR_BASELINE,candidate).split(b'\0') if raw)
+        need(set(nearby_changed)<=NEARBY_REPAIR_CORE_PATHS|set(NEARBY_REPAIR_PRODUCT_PATHS)|{NEARBY_REPAIR_PROPOSAL_PATH},
+             'D03_DIFF_OUTSIDE_EXACT_PROPOSAL')
+        need(NEARBY_REPAIR_PROPOSAL_PATH in nearby_changed,'D03_FIXED_PROPOSAL_NOT_IN_DIFF')
+        proposal=tree(candidate,(NEARBY_REPAIR_PROPOSAL_PATH,))
+        need(set(proposal)=={NEARBY_REPAIR_PROPOSAL_PATH}
+            and proposal[NEARBY_REPAIR_PROPOSAL_PATH]['mode']=='100644','D03_FIXED_PROPOSAL_GIT_ENTRY')
+        raw=git('cat-file','blob',candidate+':'+NEARBY_REPAIR_PROPOSAL_PATH)
+        need(hashlib.sha256(raw).hexdigest()==NEARBY_REPAIR_PROPOSAL_SHA256
+            and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[NEARBY_REPAIR_PROPOSAL_PATH]['blobSHA']
+            and raw==file(root,NEARBY_REPAIR_PROPOSAL_PATH).read_bytes(),'D03_FIXED_PROPOSAL_GIT_BYTES')
     actual=set()
     for prefix in ('src','public'):
         for path in (root/prefix).rglob('*'):
@@ -1132,9 +1174,12 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False):
         raw=git('cat-file','blob',FIXED_SOURCE+':'+name)
         need(before[name]['mode']==after[name]['mode'] and hashlib.sha256(raw).hexdigest()==origin['candidate_manifest'][name],
              'CHECKPOINT_REPAIR_PREIMAGE:'+name)
-        need(sha(file(root,name))==CURRENT_REPAIR_AFTER[name],'CHECKPOINT_REPAIR_AFTER:'+name)
+        need(sha(file(root,name))==effective[name],'CHECKPOINT_REPAIR_AFTER:'+name)
+        if nearby_repair:
+            baseline_raw=git('cat-file','blob',NEARBY_REPAIR_BASELINE+':'+name)
+            need(hashlib.sha256(baseline_raw).hexdigest()==CURRENT_REPAIR_AFTER[name],'D03_ORIGINAL_FIVE_REPAIR_BYTES:'+name)
         repairs[name]={'beforeSHA256':origin['candidate_manifest'][name],'afterSHA256':CURRENT_REPAIR_AFTER[name],
-                       'beforeGitBlobSHA':before[name]['blobSHA'],'afterGitBlobSHA':after[name]['blobSHA']}
+                       'beforeGitBlobSHA':before[name]['blobSHA'],'afterGitBlobSHA':original_after[name]['blobSHA']}
     workflow_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate,'--','workflow').split(b'\0') if raw}
     need(workflow_changed<=_CHECKPOINT_CORE_PATHS,'CHECKPOINT_CORE_DIFF_OUTSIDE_ADOPTED_SCOPE')
     workflow=tree(candidate,('workflow',))
@@ -1165,14 +1210,25 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False):
         need(d02_changed<=_CHECKPOINT_D02_CORE_PATHS,'D02_CORE_DIFF_OUTSIDE_EXACT_PROPOSAL')
         proof.update(reviewMethodCoreBaselineSHA=_CHECKPOINT_D02_BASELINE,
                      reviewMethodCoreChangedPaths=sorted(d02_changed))
+    if nearby_repair:
+        proof.update(nearbyRepair=nearby_repair,nearbyChangedPaths=nearby_changed)
     return proof
 
 
 def _checkpoint_informed_technical_git(rt, owner, primary, core):
     """Prove the retained A owner and current B bytes without executing a patch."""
-    from checkpoint import RECOVERY_WORK
+    from checkpoint import RECOVERY_WORK,current_nearby_repair
+    nearby=current_nearby_repair(rt,primary)
+    previous=owner.get('informed_technical_candidate_reconciliation') if nearby else None
+    expected_previous=_CHECKPOINT_D02_BASELINE
+    if nearby:
+        need(previous and isinstance(previous.get('proof'),dict)
+            and digest(previous['proof'])==previous.get('proofRef')
+            and rt.store.get(previous['proofRef'])==previous['proof'],'D03_PREVIOUS_REAL_TECHNICAL_PROOF_REQUIRED')
+        expected_previous=previous['proof']['candidateSHA']
+        need(previous['proof']['candidateManifest']==owner['candidate_manifest'],'D03_PREVIOUS_OWNER_MANIFEST_CHANGED')
     need(owner['plan']['work_id']==RECOVERY_WORK
-         and owner['candidate_sha']==_CHECKPOINT_D02_BASELINE,
+         and owner['candidate_sha']==expected_previous,
          'D02_ORIGINAL_TECHNICAL_CANDIDATE_REQUIRED')
     paths=set(owner['plan']['source_manifest'])
     need(paths==set(owner['candidate_manifest'])==_CHECKPOINT_CORE_PATHS,
@@ -1185,12 +1241,21 @@ def _checkpoint_informed_technical_git(rt, owner, primary, core):
         proc=subprocess.run(['git','-C',str(rt.root),'cat-file','blob',
                              _CHECKPOINT_D02_BASELINE+':'+path],capture_output=True,env=env,timeout=30)
         need(proc.returncode==0,'D02_ORIGINAL_TECHNICAL_GIT_READ_FAILED:'+path)
-        value=hashlib.sha256(proc.stdout).hexdigest()
-        need(value==owner['candidate_manifest'][path]==owner['plan']['source_manifest'][path],
+        original_value=hashlib.sha256(proc.stdout).hexdigest()
+        need(original_value==owner['plan']['source_manifest'][path],
              'D02_ORIGINAL_TECHNICAL_GIT_BYTES:'+path)
+        if nearby:
+            prior=subprocess.run(['git','-C',str(rt.root),'cat-file','blob',expected_previous+':'+path],
+                capture_output=True,env=env,timeout=30)
+            need(prior.returncode==0,'D03_PREVIOUS_TECHNICAL_GIT_READ_FAILED:'+path)
+            value=hashlib.sha256(prior.stdout).hexdigest()
+            need(value==owner['candidate_manifest'][path],'D03_PREVIOUS_TECHNICAL_GIT_BYTES:'+path)
+        else:
+            value=original_value
+            need(value==owner['candidate_manifest'][path],'D02_ORIGINAL_TECHNICAL_GIT_BYTES:'+path)
         retained[path]=value
     return {'schemaVersion':'qf01-informed-technical-git-proof/1',
-            'previousCandidateSHA':_CHECKPOINT_D02_BASELINE,
+            'previousCandidateSHA':expected_previous,
             'retainedManifestSHA256':digest(retained),'currentMaterialGitProof':material}
 
 
@@ -1228,7 +1293,10 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
     need(all(rt.node_status(s,nodes[dep])=='PASSED' for dep in node['depends_on']) and rt.approval(s,node),
          'CHECKPOINT_R06_DEPENDENCIES_OR_APPROVAL')
     need(not rt.integrity(s),'CHECKPOINT_CURRENT_CANDIDATE_INTEGRITY')
-    expected=dict(origin['candidate_manifest']);expected.update(CURRENT_REPAIR_AFTER)
+    from checkpoint import current_nearby_repair,NEARBY_REPAIR_PROPOSAL_SHA256,NEARBY_REPAIR_PROPOSAL_PATH
+    nearby=current_nearby_repair(rt,s)
+    effective={**CURRENT_REPAIR_AFTER,**(nearby['afterRepair'] if nearby else {})}
+    expected=dict(origin['candidate_manifest']);expected.update(effective)
     need(s['candidate_manifest']==expected,'CHECKPOINT_CURRENT_CANDIDATE_MANIFEST')
     need(manifest(rt.root,expected)==expected,'CHECKPOINT_CURRENT_CANDIDATE_BYTES')
     protected=s['plan']['protected_manifest']
@@ -1247,7 +1315,8 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
     need(len(claims)==1,'CHECKPOINT_R06_CLAIM_EVENT_REQUIRED')
     from team import current_informed_authority
     method=current_informed_authority(rt,work,s)
-    owner_proposal=INFORMED_REVIEW_PROPOSAL_SHA256 if method else RECOVERY_PROPOSAL_SHA256
+    owner_proposal=NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256 if method else RECOVERY_PROPOSAL_SHA256
+    need(not nearby or method,'D03_CURRENT_D02_METHOD_REQUIRED')
     if method:
         need(any(e['work']==work and e['kind']=='informed_review_method_adopted'
                  and e['payload'].get('authorityRef')==method['authorityRef']
@@ -1260,6 +1329,7 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
          and not plan.get('simulation') and plan['proposal']['hash']==owner_proposal,
          'CHECKPOINT_NEW_RECOVERY_OWNER_REQUIRED')
     owner_record_paths={'work/items/'+RECOVERY_WORK+'/'+name+'.md' for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
+    if nearby:owner_record_paths.add(NEARBY_REPAIR_PROPOSAL_PATH)
     owner_record_paths.add('work/items/'+RECOVERY_WORK+'/REVIEW_METHOD_PROPOSAL_D02.md')
     if method:
         need(any(e['work']==RECOVERY_WORK and e['kind']=='user'

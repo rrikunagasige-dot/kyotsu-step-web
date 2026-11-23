@@ -883,16 +883,23 @@ function qf01R3BodyOrigins(source: QF01R3Validated, blockId: string, projected: 
 
 /** R3's source-bound body surface and its associated projection contract stay
  * together inside the approved renderer path; feedback remains independent. */
+function qf01R3AtomicBodyMath(latex: string) {
+  // A TeX group creates one unbreakable KaTeX base while retaining its inner
+  // operators/spacing. \relax is invisible and prevents the shared normalizer
+  // from interpreting a simple {x} or {+1} as a finite-set literal.
+  return '{\\relax ' + latex + '}'
+}
 export function R3BodyText({ source, origin, visibleText, sourceId, unitId }: { source: QF01R3Validated; origin: R3BodyOrigin; visibleText: string; sourceId: string; unitId: string }) {
   return <span>{qf01R3BodySlice(source, origin, visibleText).map((token, index) => {
     if (token.type === 'text') return token.text
     const id = sourceId + '-body-p' + origin.partIndex + '-' + token.start + '-' + token.end
-    return <span key={index} data-qf01-prose-math="true" data-qf01-prose-block={origin.blockId} data-qf01-prose-part={origin.partIndex} data-qf01-prose-start={token.start} data-qf01-prose-end={token.end} data-qf01-prose-kind={token.unit ? 'quantity' : 'math'} data-qf01-prose-unit={token.unit ?? undefined} data-qf01-prose-source-id={id}><TypesetInlineMath latex={token.latex} sourceId={id} unitId={unitId} /></span>
+    return <span key={index} data-qf01-prose-math="true" data-qf01-prose-block={origin.blockId} data-qf01-prose-part={origin.partIndex} data-qf01-prose-start={token.start} data-qf01-prose-end={token.end} data-qf01-prose-kind={token.unit ? 'quantity' : 'math'} data-qf01-prose-unit={token.unit ?? undefined} data-qf01-prose-source-id={id}><TypesetInlineMath latex={qf01R3AtomicBodyMath(token.latex)} sourceId={id} unitId={unitId} /></span>
   })}</span>
 }
 R3BodyText.validateSource = validateQF01R3BodySource
 R3BodyText.slice = qf01R3BodySlice
 R3BodyText.origins = qf01R3BodyOrigins
+R3BodyText.atomicLatex = qf01R3AtomicBodyMath
 
 type R3NearbyVisibility = 'IN_VIEW' | 'OUT_OF_VIEW' | 'NOT_MOUNTED_BY_DESIGN' | 'UNVERIFIED'
 type R3NearbyMeasurement = { status: R3NearbyVisibility; reason: string }
@@ -1178,7 +1185,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const renderParts = (parts: TextbookReadingPart[], id: string, body: R3BodyPlan, slotId?: string) => parts.map((p, j) => {
     if (p.type === 'text') return <R3BodyText key={j} source={source} origin={body.origins[j]} visibleText={p.text} sourceId={id} unitId={unit.unitId} />
     if (p.type === 'term') return <span key={j}>{p.text}</span>
-    if (p.type === 'math') return <TypesetInlineMath key={j} latex={p.latex} sourceId={p.semanticId ?? id + '-p' + j} unitId={unit.unitId} />
+    if (p.type === 'math') return <TypesetInlineMath key={j} latex={qf01R3AtomicBodyMath(p.latex)} sourceId={p.semanticId ?? id + '-p' + j} unitId={unit.unitId} />
     const q = m.interactions.find(q => q.id === p.itemId)!
     if (q.answerDomain === 'math') { const a = m.ownerASTBindings.find(a => a.interactionId === q.id)!; return <TypesetFormula key={j} source={formatQF01R3Owner(a.ownerAST, { targetPath: a.targetPath, mask: true, notation: a.notation })} sourceId={id + '-math-target'} unitId={unit.unitId} parts={[slot(p.itemId)]} itemIds={{ 0: p.itemId }} /> }
     return <span key={j} data-bound-slot={slotId}>{slot(p.itemId)}</span>

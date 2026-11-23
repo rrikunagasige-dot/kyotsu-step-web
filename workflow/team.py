@@ -416,6 +416,12 @@ def _check_math_prose_finding_resolution(rt,s,node,p,reviews,required,code_refs,
             and all(type(m.get(k)) is int and m[k]==0 for k in
                 ('unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits','unitErrors','sourceMismatch')),
             'D04_CURRENT_FOUR_WIDTH_MATH_MEASUREMENTS')
+        # One KaTeX tree does not prove one visible mathematical line. The
+        # collector must include visual line splits in splitMathUnits and
+        # count every inspected operation sample; missing geometry is unknown.
+        need(type(m.get('visualLineSampleCount')) is int and m['visualLineSampleCount']==420
+            and type(m.get('visualLineUnverified')) is int and m['visualLineUnverified']==0,
+            'D04_CURRENT_VISUAL_LINE_COVERAGE')
         measured.add(ref)
     need(measured,'D04_ACTUAL_MATH_UI_MEASUREMENTS_REQUIRED')
     for req in required:

@@ -3,12 +3,14 @@ import { webcrypto } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import katex from 'katex'
 import { GuidedMathReadingFlow, R3FeedbackMath, R3BodyText } from './GuidedMathReadingFlow'
 import * as transformationReading from '../../domain/transformationReading'
 import { validateQF01R3Reading, projectQF01R3Block, qf01R3Solved } from '../../domain/transformationReading'
 import { QF01Revision2Archive } from './QF01Revision2Archive'
 import { useAppStore } from '../../stores/useAppStore'
 import { answerTextbookItem } from '../../domain/textbook'
+import { normalizeTextbookMath } from '../../domain/textbookMath'
 import { mathQuadraticQF01Unit as unit, qf01GuidedPresentation as presentation, qf01ReadingPresentation as reading, qf01Revision2Unit as r2 } from '../../data/textbook/math/quadratic/qf01Lesson'
 const items=unit.sections[0].items
 const active=unit.requiredInteractionRefs!.map(id=>items.find(item=>item.id===id)!)
@@ -376,8 +378,40 @@ describe('R3 help gate and mathematical feedback',()=>{
 
 describe('D04 source-bound R3本文math（実ピクセル合格ではない）',()=>{
  function prepareBody(id:string){const at=active.findIndex(item=>item.id===id);act(()=>{for(const item of active.slice(0,at))useAppStore.getState().answerTextbook(unit,item.id,item.answer)});const q=reading.interactions.find(q=>q.id===id)!;localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test',String(Number(q.stageId.split('-').at(-1))-1));return active[at]}
- function bodyAnnotations(element:Element){return [...element.querySelectorAll('[data-qf01-prose-math] annotation')].map(node=>node.textContent!)}
+ function bodyAnnotations(element:Element){return [...element.querySelectorAll('[data-qf01-prose-math] annotation')].map(node=>{const match=/^\{\\relax ([\s\S]*)\}$/.exec(node.textContent!);expect(match).not.toBeNull();return match![1]})}
  function sourceParagraph(source:Awaited<ReturnType<typeof validateQF01R3Reading>>,id:string){const block=source.blocks.get(id)!;if(block.type!=='paragraph')throw Error('TEST_PARAGRAPH');return block}
+ it('本文140 typed単位と原math22を一baseに保ち、内部字間/演算/単位を変えない',async()=>{
+  const source=await validateQF01R3Reading(unit,reading),latex:string[]=[]
+  for(const id of source.metadata.canonicalBlockIds){const b=source.blocks.get(id)!;if(b.type!=='paragraph')continue
+   b.parts.forEach((part,partIndex)=>{if(part.type==='math')latex.push(part.latex);if(part.type==='text')latex.push(...qf01R3BodySlice(source,{blockId:id,partIndex,start:0,end:part.text.length,kind:'whole-part'},part.text).flatMap(t=>t.type==='math'?[t.latex]:[]))})
+  }
+  expect(latex).toHaveLength(162)
+  for(const value of latex){const plain=normalizeTextbookMath(value),grouped=R3BodyText.atomicLatex(value)
+   expect(normalizeTextbookMath(grouped)).toBe(grouped)
+   const original=document.createElement('div'),rendered=document.createElement('div');original.innerHTML=katex.renderToString(plain,{throwOnError:true});rendered.innerHTML=katex.renderToString(grouped,{throwOnError:true})
+   const bases=[...original.querySelector('.katex-html')!.children],groupBases=[...rendered.querySelector('.katex-html')!.children];expect(groupBases).toHaveLength(1)
+   const inner=bases.flatMap(base=>[...base.children].filter(c=>!c.classList.contains('strut'))).map(c=>c.outerHTML).join('')
+   const group=[...groupBases[0].children].filter(c=>!c.classList.contains('strut'));expect(group).toHaveLength(1);expect(group[0].className).toBe('mord');expect(group[0].innerHTML).toBe(inner)
+   expect(rendered.querySelector('annotation')?.textContent).toBe(grouped);expect(rendered.querySelector('.katex-error')).toBeNull()
+  }
+ })
+ it('007相当の原math partも本文専用groupへ渡し、原source文字列を保持する',async()=>{
+  prepareBody('qf01-n03-answer');render(<Lesson/>);await screen.findByTestId('textbook-item-qf01-n03-answer')
+  const row=document.querySelector('[data-source-block="qf01-r3-c1-s02-p01"][data-source-view="canonical"]')!,paragraph=row.querySelector('.reading-paragraph')!
+  expect([...paragraph.querySelectorAll('annotation')].map(n=>n.textContent)).toContain('{\\relax f(x)=4x-6}')
+  for(const math of paragraph.querySelectorAll('.katex-html'))expect(math.children).toHaveLength(1)
+  const source=await validateQF01R3Reading(unit,reading);expect(sourceParagraph(source,'qf01-r3-c1-s02-p01').parts[1]).toMatchObject({type:'math',latex:'f(x)=4x-6'})
+ })
+ it('既存の長式display分岐でもgroupの括弧/符号を失わず一単位で描く（模擬寸法）',async()=>{
+  const source=await validateQF01R3Reading(unit,reading),id='qf01-r3-c2-s06-p07',part=sourceParagraph(source,id).parts[0];if(part.type!=='text')throw Error('TEST_TEXT')
+  const measure=HTMLElement.prototype.getBoundingClientRect
+  vi.spyOn(HTMLElement.prototype,'getBoundingClientRect').mockImplementation(function(this:HTMLElement){return this.classList.contains('typeset-inline-probe')?new DOMRect(0,0,180,24):measure.call(this)})
+  vi.spyOn(HTMLElement.prototype,'clientWidth','get').mockImplementation(function(this:HTMLElement){return this.classList.contains('reading-paragraph')?224:0})
+  const view=render(<p className="reading-paragraph"><R3BodyText source={source} origin={{blockId:id,partIndex:0,start:0,end:part.text.length,kind:'whole-part'}} visibleText={part.text} sourceId={id} unitId={unit.unitId}/></p>)
+  await waitFor(()=>expect(view.container.querySelectorAll('.typeset-inline-math--display').length).toBeGreaterThan(0))
+  for(const wrapper of view.container.querySelectorAll('[data-qf01-prose-math]')){expect(wrapper.querySelectorAll('.katex')).toHaveLength(1);expect(wrapper.querySelector('.katex-error')).toBeNull();expect(wrapper.querySelector('.katex-html')!.children).toHaveLength(1);expect(wrapper.querySelector('annotation')?.textContent).toMatch(/^\{\\relax [\s\S]*\}$/)}
+  expect(bodyAnnotations(view.container)).toEqual(['a^2-a-a+1','a'])
+ })
  it('実102 text partsの字面を保持し、63 parts140単位と5つのcmを境界付きで扱う',async()=>{
   const source=await validateQF01R3Reading(unit,reading);validateQF01R3BodySource(source)
   let parts=0,math=0,withMath=0,quantities=0

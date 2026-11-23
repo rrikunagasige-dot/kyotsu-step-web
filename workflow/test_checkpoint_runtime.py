@@ -1506,7 +1506,8 @@ class MathRenderingReviewMethodTests(unittest.TestCase):
                 'widths':[320,390,430,1440],'sampleCount':420,'unverified':0,'unexpectedCopies':0,'missingCopies':0},
             'math_prose_rendering':{'findingId':'QF01-C-PROSE-MATH-SPAN-20261123','status':'PASS',
                 'widths':[320,390,430,1440],'sampleCount':420,'unverified':0,'missingMathUnits':0,
-                'unexpectedMathUnits':0,'splitMathUnits':0,'unitErrors':0,'sourceMismatch':0}},
+                'unexpectedMathUnits':0,'splitMathUnits':0,'unitErrors':0,'sourceMismatch':0,
+                'visualLineSampleCount':420,'visualLineUnverified':0}},
             source_ref='TEST_FIXTURE/not-actual-D-UI-QA',verification_level='local_execution',eid='TEST_FIXTURE_D04_MEASUREMENTS')
         relative='src/components/textbook/GuidedMathReadingFlow.tsx'
         cls.file_evidence=rt.evidence(FIXED_WORK,'file',{'path':relative,'sha256':hashlib.sha256((cls.master/relative).read_bytes()).hexdigest()},
@@ -1572,6 +1573,25 @@ class MathRenderingReviewMethodTests(unittest.TestCase):
         s,p,rows,required=self.guard_args();s['evidence'][self.evidence]['data'].pop('math_prose_rendering')
         with self.assertRaisesRegex(Rejected,'D04_ACTUAL_MATH_UI_MEASUREMENTS_REQUIRED'):
             _check_math_prose_finding_resolution(self.rt,s,self.node,p,rows,required,self.codes,[self.evidence])
+
+    def test_dom_only_math_measurement_cannot_replace_complete_visual_line_coverage(self):
+        from team import _check_math_prose_finding_resolution
+        s,p,rows,required=self.guard_args()
+        cases=[{}, {'visualLineSampleCount':420}, {'visualLineUnverified':0},
+            {'visualLineSampleCount':419,'visualLineUnverified':0},
+            {'visualLineSampleCount':421,'visualLineUnverified':0},
+            {'visualLineSampleCount':True,'visualLineUnverified':0},
+            {'visualLineSampleCount':420.0,'visualLineUnverified':0},
+            {'visualLineSampleCount':420,'visualLineUnverified':True},
+            {'visualLineSampleCount':420,'visualLineUnverified':False},
+            {'visualLineSampleCount':420,'visualLineUnverified':0.0},
+            {'visualLineSampleCount':420,'visualLineUnverified':1},
+            {'visualLineSampleCount':420,'visualLineUnverified':-1}]
+        for values in cases:
+            changed=copy.deepcopy(s);measurement=changed['evidence'][self.evidence]['data']['math_prose_rendering']
+            measurement.pop('visualLineSampleCount');measurement.pop('visualLineUnverified');measurement.update(values)
+            with self.subTest(values=values),self.assertRaisesRegex(Rejected,'D04_CURRENT_VISUAL_LINE_COVERAGE'):
+                _check_math_prose_finding_resolution(self.rt,changed,self.node,p,rows,required,self.codes,[self.evidence])
 
     def test_f06_current_file_without_actual_measurement_is_rejected(self):
         self.prepare()

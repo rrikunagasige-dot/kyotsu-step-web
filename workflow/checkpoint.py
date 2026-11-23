@@ -752,6 +752,105 @@ def current_product_repair_context(rt, state):
                 NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256}
 
 
+def validate_math_rendering_owner_revision(owner_state, primary_state, new_plan, *,
+                                          original_plan, math_records, epoch, check=require):
+    """Only rebind the already adopted D04 owner's source and two protections.
+
+    Inputs are actual prior replay states, not a caller's historical claim.
+    No file, Git, artifact or ledger access occurs here. Runtime additionally
+    checks the current adoption/Git/core and CAS; suffix replay supplies only
+    previously authenticated records and the last actual owner proof.
+    """
+    before=owner_state.get('plan',{});after=new_plan
+    check(isinstance(after,dict) and isinstance(before,dict)
+        and before.get('work_id')==after.get('work_id')==RECOVERY_WORK
+        and before.get('profile')==after.get('profile')=='technical'
+        and before.get('parent_work')==after.get('parent_work')==FIXED_WORK
+        and not before.get('workflow_version') and not before.get('simulation'),
+        'D04_OWNER_REVISION_WORK_SCOPE')
+    for state in (owner_state,primary_state):
+        check(not state.get('claims') and state.get('paused',False) is False
+            and not any(not p.get('completed') for p in state.get('patches',{}).values())
+            and not any(not p.get('outcome') for p in state.get('external',{}).values()),
+            'D04_OWNER_REVISION_OPERATION_UNCERTAIN')
+    bp=before.get('proposal',{});ap=after.get('proposal',{})
+    check(isinstance(bp,dict) and isinstance(ap,dict)
+        and bp.get('hash')==ap.get('hash')==MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+        'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED')
+    check(set(before)==set(after)
+        and all(before[k]==after[k] for k in before if k not in ('proposal','protected_manifest'))
+        and set(bp)==set(ap) and 'currentMaterialSourceSHA' in bp
+        and all(bp[k]==ap[k] for k in bp if k!='currentMaterialSourceSHA'),
+        'D04_OWNER_REVISION_ONLY_SOURCE_AND_TWO_PROTECTIONS')
+    check(isinstance(original_plan,dict) and original_plan.get('work_id')==RECOVERY_WORK
+        and original_plan.get('proposal',{}).get('hash')==RECOVERY_PROPOSAL_SHA256
+        and len(original_plan.get('source_manifest',{}))==22
+        and all(before.get(k)==original_plan.get(k) for k in
+            ('source_sha','source_manifest','rules','scope','parent_work','agent_team','source_extension')),
+        'D04_OWNER_REVISION_ORIGINAL_SOURCE_AND_SCOPE')
+    current=primary_state.get('checkpoint_definition_migration',{}).get('mathRenderingRepair')
+    validate_math_rendering_repair_record(current,epoch=epoch,check=check)
+    check(primary_state.get('plan',{}).get('work_id')==FIXED_WORK
+        and primary_state.get('candidate_sha')==current['candidateAfterSHA']
+        and primary_state.get('definition_hash')==current['definitionHash'],
+        'D04_OWNER_REVISION_CURRENT_PRIMARY')
+    check(isinstance(math_records,list) and math_records and math_records[-1]==current,
+        'D04_OWNER_REVISION_ACTUAL_MATH_HISTORY')
+    previous=None;after_history=[]
+    for record in math_records:
+        validate_math_rendering_repair_record(record,epoch=epoch,check=check)
+        validate_math_rendering_repair_continuation(previous,record,earlier_after=after_history,check=check)
+        previous=record;after_history.append(record['afterRepair'])
+    method=primary_state.get('informed_review_method',{})
+    check(isinstance(method,dict),'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+    body=method.get('authority',{})
+    check(method.get('revoked',False) is False and isinstance(body,dict)
+        and method.get('authorityRef')==digest(body)
+        and body.get('schemaVersion')=='qf01-informed-rereview-authority/1'
+        and body.get('proposalSHA256')==INFORMED_REVIEW_PROPOSAL_SHA256
+        and body.get('work')==FIXED_WORK and body.get('checkpointEpoch')==epoch
+        and body.get('currentSourceSHA')==current['candidateAfterSHA']
+        and body.get('candidateManifestSHA256')==digest(primary_state.get('candidate_manifest',{}))
+        and body.get('definitionHash')==body.get('core',{}).get('definitionHash')==current['definitionHash']
+        and body.get('implementationHash')==current['implementationHash']
+        and current['evidenceRef'] in body.get('evidenceRefs',[])
+        and all(body.get(k) is False for k in ('independent','sourceFirst','firstPass')),
+        'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+    wrapper=owner_state.get('informed_technical_candidate_reconciliation',{})
+    check(isinstance(wrapper,dict),'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF')
+    proof=wrapper.get('proof',{})
+    check(isinstance(proof,dict) and wrapper.get('proofRef')==digest(proof)
+        and proof.get('schemaVersion')=='qf01-informed-technical-candidate-proof/1'
+        and proof.get('work')==RECOVERY_WORK and proof.get('parentWork')==FIXED_WORK
+        and proof.get('proposalSHA256')==MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+        and proof.get('checkpointEpoch')==epoch and proof.get('planSHA256')==digest(before)
+        and proof.get('originalSourceSHA')==original_plan.get('source_sha')
+        and proof.get('sourceManifestSHA256')==digest(original_plan.get('source_manifest',{}))
+        and proof.get('candidateSHA')==owner_state.get('candidate_sha')==bp['currentMaterialSourceSHA']
+        and proof.get('candidateManifest')==owner_state.get('candidate_manifest')
+        and proof.get('writesExecuted') is False and proof.get('oldResultsTransferred') is False,
+        'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF')
+    old_math=proof.get('gitProof',{}).get('currentMaterialGitProof',{}).get('mathRenderingRepair')
+    matches=[r for r in math_records if r==old_math]
+    check(len(matches)==1 and old_math['candidateAfterSHA']==owner_state['candidate_sha']
+        and proof.get('core',{}).get('definitionHash')==old_math['definitionHash']
+        and proof.get('implementationHash')==old_math['implementationHash'],
+        'D04_OWNER_REVISION_OLD_SOURCE_HISTORY')
+    original=original_plan.get('protected_manifest',{})
+    old=before.get('protected_manifest',{});new=after.get('protected_manifest',{})
+    check(isinstance(old,dict) and isinstance(new,dict) and len(original)==418
+        and set(old)==set(new)==set(original)
+        and all(original.get(p)==CURRENT_REPAIR_AFTER[p] for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        and all(old.get(p)==old_math['afterRepair'][p] and new.get(p)==current['afterRepair'][p]
+                for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        and all(old[p]==new[p]==original[p] for p in original if p not in MATH_RENDERING_REPAIR_PRODUCT_PATHS),
+        'D04_OWNER_REVISION_418_PROTECTIONS')
+    check(ap['currentMaterialSourceSHA']==primary_state['candidate_sha']
+        and ap['currentMaterialSourceSHA']!=bp['currentMaterialSourceSHA'],
+        'D04_OWNER_REVISION_CURRENT_SOURCE_REQUIRED')
+    return copy.deepcopy(after)
+
+
 ADOPTION_CALL_ID = 'call_d1c88a5dde794be288a201a5ea8de0cc'
 ORIGIN_NAMES = frozenset(('publisher-contract.json', 'BUILD_AUTHORITY.blob',
     'APPROVED_MATERIAL_SEED.json', 'NODES.json', 'ORIGIN_SOURCE_PROOF.json',
@@ -967,18 +1066,51 @@ class CheckpointStore:
         primary_manifest=copy.deepcopy(origin['candidate_manifest'])
         primary_definition=origin['definition_hash']
         active_repair=None
-        active_math_repair=None;math_after_history=[]
+        active_math_repair=None;math_after_history=[];math_records=[]
         owner_candidate=None;owner_manifest=None;owner_plan=None
+        owner_original_plan=None;owner_last_reconciliation=None
+        operation_flags={FIXED_WORK:{key:copy.deepcopy(origin.get(key,default)) for key,default in
+            (('claims',{}),('patches',{}),('external',{}),('paused',False))},
+            RECOVERY_WORK:{'claims':{},'patches':{},'external':{},'paused':False}}
         for row in rows:
             payload = row['payload']; kind = row['kind']
             require(not isinstance(payload,dict) or payload.get('mathRenderingRepair') is None
                 or kind=='checkpoint_definition_migrated' and row['work']==FIXED_WORK,
                 'D04_MIGRATION_EVENT_SCOPE')
+            if kind=='patch_intent':
+                require('completed' not in payload,'CHECKPOINT_PATCH_INTENT_SELF_COMPLETION')
+            elif kind=='external_intent':
+                require('outcome' not in payload,'CHECKPOINT_EXTERNAL_INTENT_SELF_OUTCOME')
+            flags=operation_flags.get(row['work'])
+            if flags is not None:
+                if kind=='claimed':flags['claims'][payload['node']]=payload
+                elif kind in ('claim_reconciled','result'):flags['claims'].pop(payload['node'],None)
+                elif kind=='paused':flags['paused']=payload['value']
+                elif kind=='patch_intent':flags['patches'][row['id']]={**copy.deepcopy(payload),'completed':False}
+                elif kind in ('patch_applied','patch_aborted'):
+                    flags['patches'].setdefault(payload['operation'],{})['completed']=True
+                elif kind=='external_intent':flags['external'][payload['id']]={**copy.deepcopy(payload),'outcome':None}
+                elif kind=='external_outcome':
+                    flags['external'].setdefault(payload['id'],{})['outcome']=payload['outcome']
             if row['work']==RECOVERY_WORK:
                 if kind=='opened':
                     owner_plan=payload['plan'];owner_candidate=owner_plan['source_sha']
                     owner_manifest=copy.deepcopy(owner_plan['source_manifest'])
-                elif kind=='revised':owner_plan=payload['plan']
+                    owner_original_plan=copy.deepcopy(owner_plan)
+                elif kind=='revised':
+                    after=payload['plan']
+                    if owner_plan['proposal']['hash']==after['proposal']['hash']:
+                        owner_state={**operation_flags[RECOVERY_WORK],'plan':owner_plan,
+                            'candidate_sha':owner_candidate,'candidate_manifest':owner_manifest,
+                            'informed_technical_candidate_reconciliation':owner_last_reconciliation}
+                        primary_state={**operation_flags[FIXED_WORK],'plan':origin['plan'],
+                            'candidate_sha':primary_candidate,'candidate_manifest':primary_manifest,
+                            'definition_hash':primary_definition,
+                            'checkpoint_definition_migration':{'mathRenderingRepair':active_math_repair},
+                            'informed_review_method':{'authorityRef':active_method,'authority':self.get(active_method)} if active_method else None}
+                        validate_math_rendering_owner_revision(owner_state,primary_state,after,
+                            original_plan=owner_original_plan,math_records=math_records,epoch=self.checkpoint_epoch)
+                    owner_plan=after
                 elif kind=='candidate':
                     owner_candidate=payload['sha'];owner_manifest=copy.deepcopy(payload['manifest'])
                 elif kind=='patch_applied':
@@ -1029,6 +1161,7 @@ class CheckpointStore:
                         and evidence[0]['payload'].get('data',{}).get('sha256')==math_repair['transcriptionSHA256'],
                         'D04_PRIOR_ACTUAL_ADOPTION_FILE_EVENT')
                     active_math_repair=math_repair;math_after_history.append(copy.deepcopy(math_repair['afterRepair']))
+                    math_records.append(copy.deepcopy(math_repair))
                 elif repair is not None:
                     repair=validate_nearby_repair_record(repair,epoch=self.checkpoint_epoch)
                     preflight=self.get(payload['preflightRef'])
@@ -1180,6 +1313,7 @@ class CheckpointStore:
                         require(gitproof.get('currentMaterialGitProof',{}).get('mathRenderingRepair')==active_math_repair,
                                 'D04_OWNER_GIT_SUPPLEMENT_BINDING')
                 owner_candidate=proof['candidateSHA'];owner_manifest=copy.deepcopy(proof['candidateManifest'])
+                owner_last_reconciliation=copy.deepcopy(payload)
             elif kind == 'informed_review_receipt_sealed':
                 require(row['work']==FIXED_WORK
                         and set(payload)=={'node','inputHash','methodAuthorityRef','methodReceiptRef'}

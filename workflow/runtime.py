@@ -491,7 +491,35 @@ class Runtime:
         need(new_plan.get('workflow_version')==s['plan'].get('workflow_version'),'工程版は明示移行を使う')
         for key in ('parent_impact','parent_issue','parent_request','parent_case','parent_work'):
             need(new_plan.get(key)==s['plan'].get(key),'改訂で親子関係を付け替えない')
-        need(new_plan['proposal']['hash']!=s['plan']['proposal']['hash'],'意味の変更には新しい提案版が必要')
+        if new_plan['proposal']['hash']==s['plan']['proposal']['hash']:
+            from checkpoint import (RECOVERY_WORK,FIXED_WORK,MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+                current_core_identity,history_events,validate_math_rendering_owner_revision)
+            need(getattr(self.store,'checkpoint_mode',False) and work==RECOVERY_WORK
+                and new_plan['proposal']['hash']==MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+                '意味の変更には新しい提案版が必要')
+            expected_head=self._head;primary=self.state(FIXED_WORK)
+            need(self._head==self.store.head==expected_head,'D04_OWNER_REVISION_HEAD_CHANGED')
+            from team import current_informed_authority
+            need(current_informed_authority(self,FIXED_WORK,primary),'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+            rows=history_events(self,'suffix')
+            opened=[e for e in rows if e['work']==work and e['kind']=='opened']
+            prior=[e for e in rows if e['work']==work and e['kind']=='informed_technical_candidate_reconciled']
+            need(len(opened)==1 and prior and prior[-1]['payload']==s.get('informed_technical_candidate_reconciliation'),
+                'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF')
+            wrapper=s['informed_technical_candidate_reconciliation']
+            need(self.store.get(wrapper['proofRef'])==wrapper['proof'],'D04_OWNER_REVISION_LAST_PROOF_ARTIFACT')
+            records=[e['payload']['mathRenderingRepair'] for e in rows
+                if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
+                and e['payload'].get('mathRenderingRepair') is not None]
+            new_plan=validate_math_rendering_owner_revision(s,primary,new_plan,original_plan=opened[0]['payload']['plan'],
+                math_records=records,epoch=self.store.checkpoint_epoch,check=need)
+            from adapters import _checkpoint_git_proof
+            identity=current_core_identity()
+            need(identity==primary['informed_review_method']['authority']['core'],
+                'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+            _checkpoint_git_proof(self,primary,self.store.state_base(FIXED_WORK),identity,review_method=True)
+            need(self._head==self.store.head==expected_head and current_core_identity()==identity,
+                'D04_OWNER_REVISION_HEAD_CHANGED')
         need(new_plan['source_sha']==s['plan']['source_sha'],'原資料の元SHAを改訂で差し替えない')
         need(new_plan['source_manifest']==s['plan']['source_manifest'] and new_plan['rules']==s['plan']['rules'],'原資料・規則の移行は新Workで照合する')
         if new_plan.get('workflow_version') == 'production/2':

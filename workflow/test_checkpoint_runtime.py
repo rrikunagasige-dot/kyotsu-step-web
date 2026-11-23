@@ -1660,7 +1660,8 @@ class MathRenderingOwnerTests(unittest.TestCase):
         self.rt.append('definition_migrated',cp.RECOVERY_WORK,{'from':state['definition_hash'],'to':DEFINITION_HASH,
             'fixtureKind':'TEST_FIXTURE_CURRENT_DEFINITION_PROTOCOL'})
         plan=copy.deepcopy(self.rt.state(cp.RECOVERY_WORK)['plan'])
-        plan['proposal']={'id':'TEST_FIXTURE_D04','hash':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256}
+        plan['proposal']={'id':'TEST_FIXTURE_D04','hash':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+            'currentMaterialSourceSHA':'d'*40}
         plan['protected_manifest'].update(self.math_repair['afterRepair']);self.rt.revise(cp.RECOVERY_WORK,plan)
         self.rt.user(cp.RECOVERY_WORK,'approve_proposal',cp.MATH_RENDERING_REPAIR_ADOPTION_QUOTE,
             cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,'request_user_input_async/'+cp.MATH_RENDERING_REPAIR_ADOPTION_CALL_ID)
@@ -1768,6 +1769,279 @@ class MathRenderingOwnerTests(unittest.TestCase):
         head=self.store.head
         with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):self.reconcile()
         self.assertEqual(self.store.head,head)
+
+
+def math_owner_revision_fixture():
+    """Pure TEST_FIXTURE states, not actual native history or user records."""
+    import checkpoint as cp
+    original={'work_id':cp.RECOVERY_WORK,'profile':'technical','command':'GOVERNANCE',
+        'subject':'math','mode':'textbook','source_sha':'abe5ff1385cb141bb2d01e34f6512eb50e9ca9da',
+        'parent_work':FIXED_WORK,'rules':{},'proposal':{'id':'TEST_FIXTURE_1D','hash':RECOVERY_PROPOSAL_SHA256},
+        'source_manifest':{'workflow/TEST_FIXTURE_CORE_'+str(i)+'.py':'1'*64 for i in range(22)},
+        'scope':{'paths':['workflow/TEST_FIXTURE_CORE_'+str(i)+'.py' for i in range(22)],'preserve':[]},
+        'blocks':[{'id':'TEST_FIXTURE_CORE','sources':['workflow/TEST_FIXTURE_CORE_0.py']}],
+        'protected_manifest':{**{p:cp.CURRENT_REPAIR_AFTER[p] for p in cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS},
+            **{'TEST_FIXTURE/protected/'+str(i):'b'*64 for i in range(416)}}}
+    first=MathRenderingRecordTests().record();first['definitionHash']='1'*64;first['implementationHash']='2'*64
+    second=copy.deepcopy(first);second.update(candidateBeforeSHA=first['candidateAfterSHA'],candidateAfterSHA='e'*40,
+        definitionHash='3'*64,implementationHash='4'*64,afterRepair={p:'e'*64 for p in first['afterRepair']})
+    third=copy.deepcopy(second);third.update(candidateBeforeSHA=second['candidateAfterSHA'],candidateAfterSHA='a'*40,
+        definitionHash='5'*64,implementationHash='6'*64)
+    before=copy.deepcopy(original);before['proposal']={'id':'TEST_FIXTURE_D04','hash':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+        'currentMaterialSourceSHA':first['candidateAfterSHA'],'materialBinding':{'originSourceSHA':'1f10ecbcd088ca8636932c8df4c7b85293777efc'}}
+    before['protected_manifest'].update(first['afterRepair'])
+    candidate={p:'d'*64 for p in original['source_manifest']}
+    proof={'schemaVersion':'qf01-informed-technical-candidate-proof/1','work':cp.RECOVERY_WORK,'parentWork':FIXED_WORK,
+        'proposalSHA256':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,'checkpointEpoch':first['checkpointEpoch'],
+        'planSHA256':digest(before),'originalSourceSHA':original['source_sha'],
+        'sourceManifestSHA256':digest(original['source_manifest']),'candidateSHA':first['candidateAfterSHA'],
+        'candidateManifest':candidate,'core':{'definitionHash':first['definitionHash']},
+        'implementationHash':first['implementationHash'],'gitProof':{'currentMaterialGitProof':{'mathRenderingRepair':first}},
+        'writesExecuted':False,'oldResultsTransferred':False,'fixtureKind':'TEST_FIXTURE_PURE_NOT_REAL_OWNER_PROOF'}
+    owner={'plan':before,'candidate_sha':first['candidateAfterSHA'],'candidate_manifest':candidate,
+        'definition_hash':first['definitionHash'],'claims':{},'paused':False,'patches':{},'external':{},
+        'informed_technical_candidate_reconciliation':{'proofRef':digest(proof),'proof':proof}}
+    primary={'plan':{'work_id':FIXED_WORK},'candidate_sha':third['candidateAfterSHA'],
+        'candidate_manifest':{**cp.CURRENT_REPAIR_AFTER,**third['afterRepair']},'definition_hash':third['definitionHash'],
+        'checkpoint_definition_migration':{'mathRenderingRepair':third},'claims':{},'paused':False,'patches':{},'external':{}}
+    body={'schemaVersion':'qf01-informed-rereview-authority/1','proposalSHA256':cp.INFORMED_REVIEW_PROPOSAL_SHA256,
+        'work':FIXED_WORK,'checkpointEpoch':third['checkpointEpoch'],'currentSourceSHA':primary['candidate_sha'],
+        'candidateManifestSHA256':digest(primary['candidate_manifest']),'definitionHash':third['definitionHash'],
+        'core':{'definitionHash':third['definitionHash']},'implementationHash':third['implementationHash'],
+        'evidenceRefs':[third['evidenceRef']],'independent':False,'sourceFirst':False,'firstPass':False,
+        'fixtureKind':'TEST_FIXTURE_PURE_NOT_REAL_AUTHORITY'}
+    primary['informed_review_method']={'authorityRef':digest(body),'authority':body}
+    after=copy.deepcopy(before);after['proposal']['currentMaterialSourceSHA']=primary['candidate_sha']
+    after['protected_manifest'].update(third['afterRepair'])
+    return {'owner':owner,'primary':primary,'new_plan':after,'original_plan':original,
+        'math_records':[first,second,third],'epoch':third['checkpointEpoch']}
+
+
+class MathRenderingOwnerRevisionRecordTests(unittest.TestCase):
+    def validate(self,f):
+        from checkpoint import validate_math_rendering_owner_revision
+        return validate_math_rendering_owner_revision(f['owner'],f['primary'],f['new_plan'],
+            original_plan=f['original_plan'],math_records=f['math_records'],epoch=f['epoch'])
+
+    def test_lagging_d1_owner_rebinds_to_d3_without_requiring_d2_or_current_owner_definition(self):
+        f=math_owner_revision_fixture();before=copy.deepcopy(f)
+        self.assertNotEqual(f['owner']['candidate_sha'],f['math_records'][-1]['candidateBeforeSHA'])
+        self.assertNotEqual(f['owner']['definition_hash'],f['primary']['definition_hash'])
+        self.assertEqual(self.validate(f),f['new_plan']);self.assertEqual(f,before)
+
+    def test_core_only_source_followup_keeps_the_same_two_product_hashes(self):
+        f=math_owner_revision_fixture();previous=f['math_records'][1];owner=f['owner'];before=owner['plan']
+        before['proposal']['currentMaterialSourceSHA']=owner['candidate_sha']=previous['candidateAfterSHA']
+        before['protected_manifest'].update(previous['afterRepair']);proof=owner['informed_technical_candidate_reconciliation']['proof']
+        proof.update(candidateSHA=owner['candidate_sha'],planSHA256=digest(before),core={'definitionHash':previous['definitionHash']},
+            implementationHash=previous['implementationHash'])
+        proof['gitProof']['currentMaterialGitProof']['mathRenderingRepair']=previous
+        owner['informed_technical_candidate_reconciliation']['proofRef']=digest(proof)
+        self.assertEqual(before['protected_manifest'],f['new_plan']['protected_manifest'])
+        self.assertEqual(self.validate(f),f['new_plan'])
+
+    def test_same_adoption_cannot_change_any_other_plan_or_proposal_metadata(self):
+        mutations=[lambda p:p['blocks'].append({'id':'TEST_FIXTURE_UNADOPTED','sources':[]}),
+            lambda p:p.update(parent_work='TEST_FIXTURE_OTHER_PARENT'),lambda p:p.update(agent_team={}),
+            lambda p:p.update(source_extension={}),lambda p:p['scope']['paths'].append('workflow/EXTRA.py'),
+            lambda p:p['rules'].update({'TEST_FIXTURE/new-rule':'0'*64}),
+            lambda p:p['source_manifest'].update({'workflow/EXTRA.py':'0'*64}),
+            lambda p:p['proposal'].update(id='TEST_FIXTURE_NEW_MEANING'),
+            lambda p:p['proposal']['materialBinding'].update(originSourceSHA='0'*40)]
+        for mutate in mutations:
+            f=math_owner_revision_fixture();mutate(f['new_plan'])
+            with self.subTest(mutation=mutations.index(mutate)),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_418_keys_and_other416_hashes_cannot_change_or_be_dropped(self):
+        for mode in ('third','extra','missing','old-product','wrong-current-product'):
+            f=math_owner_revision_fixture();p=f['new_plan']['protected_manifest'];product=next(iter(f['math_records'][0]['afterRepair']))
+            if mode=='third':p['TEST_FIXTURE/protected/0']='0'*64
+            elif mode=='extra':p['TEST_FIXTURE/extra']='0'*64
+            elif mode=='missing':p.pop('TEST_FIXTURE/protected/0')
+            elif mode=='old-product':p[product]=f['math_records'][0]['afterRepair'][product]
+            else:p[product]='0'*64
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_rehashed_last_proof_cannot_substitute_plan_manifest_source_or_old_math(self):
+        for field in ('planSHA256','candidateManifest','candidateSHA','core','implementationHash','math'):
+            f=math_owner_revision_fixture();wrapper=f['owner']['informed_technical_candidate_reconciliation'];proof=wrapper['proof']
+            if field=='math':proof['gitProof']['currentMaterialGitProof']['mathRenderingRepair']=f['math_records'][1]
+            elif field=='candidateManifest':proof[field]={'workflow/TEST_FIXTURE_CHANGED.py':'0'*64}
+            elif field=='core':proof[field]={'definitionHash':'0'*64}
+            else:proof[field]='0'*(40 if field=='candidateSHA' else 64)
+            wrapper['proofRef']=digest(proof)
+            with self.subTest(field=field),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_missing_reordered_or_changed_adoption_history_and_stale_authority_are_rejected(self):
+        for mode in ('missing-old','missing-middle','reordered','adoption','source','revoked','no-method','same-source'):
+            f=math_owner_revision_fixture()
+            if mode=='missing-old':f['math_records'].pop(0)
+            elif mode=='missing-middle':f['math_records'].pop(1)
+            elif mode=='reordered':f['math_records'][0],f['math_records'][1]=f['math_records'][1],f['math_records'][0]
+            elif mode=='adoption':f['math_records'][-1]['transcriptionSHA256']='0'*64
+            elif mode=='source':f['new_plan']['proposal']['currentMaterialSourceSHA']=f['math_records'][1]['candidateAfterSHA']
+            elif mode=='revoked':f['primary']['informed_review_method']['revoked']=True
+            elif mode=='no-method':f['primary']['informed_review_method']=None
+            else:f['new_plan']['proposal']['currentMaterialSourceSHA']=f['owner']['candidate_sha']
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_both_work_states_require_no_claim_pause_unfinished_patch_or_external(self):
+        for state in ('owner','primary'):
+            for key,value in [('claims',{'TEST_FIXTURE_CLAIM':{}}),('paused',True),
+                ('patches',{'TEST_FIXTURE_PATCH':{'completed':False}}),('external',{'TEST_FIXTURE_OP':{'outcome':None}})]:
+                f=math_owner_revision_fixture();f[state][key]=value
+                with self.subTest(state=state,key=key),self.assertRaisesRegex(CheckpointRejected,'OPERATION_UNCERTAIN'):self.validate(f)
+
+    def test_general_d02_d03_and_other_work_same_hash_rule_stays_closed(self):
+        from types import SimpleNamespace
+        from checkpoint import INFORMED_REVIEW_PROPOSAL_SHA256,NEARBY_REPAIR_PROPOSAL_SHA256,PUBLISHER_WORK
+        for checkpoint,work,proposal in [(False,'TEST_FIXTURE_NORMAL', '0'*64),
+            (True,'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',INFORMED_REVIEW_PROPOSAL_SHA256),
+            (True,'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',NEARBY_REPAIR_PROPOSAL_SHA256),
+            (True,PUBLISHER_WORK,'09a4c45c229d1b18190541a1441ee18d2b9d5d07dc62020b684b64b033d6fd85')]:
+            f=math_owner_revision_fixture();p=f['owner']['plan'];p['work_id']=work;p['proposal']['hash']=proposal
+            rt=Runtime.__new__(Runtime);rt.store=SimpleNamespace(checkpoint_mode=checkpoint)
+            rt.state=lambda _: {'plan':p}
+            rt.append=lambda *a,**k:self.fail('Forbidden same-hash revision appended')
+            with self.subTest(checkpoint=checkpoint,work=work,proposal=proposal),self.assertRaisesRegex(Rejected,'意味の変更には新しい提案版が必要'):
+                rt.revise(work,copy.deepcopy(p))
+
+
+class MathRenderingOwnerRevisionRuntimeTests(unittest.TestCase):
+    """Real temp suffix/CAS; historical executor identities and Git are boundaries."""
+    setUp=InformedReviewMethodTests.setUp
+    reset_fixture=InformedReviewMethodTests.reset_fixture
+    adopt=MathRenderingOwnerTests.adopt
+    prepare_owner=MathRenderingOwnerTests.prepare_owner
+    tearDownClass=classmethod(InformedReviewMethodTests.tearDownClass.__func__)
+
+    @classmethod
+    def setUpClass(cls):
+        import checkpoint as cp
+        from definitions import IMPLEMENTATION_FILES
+        baseline=Path(os.environ['QF01_CHECKPOINT_MATH_BASELINE_ROOT'])
+        files={n:hashlib.sha256((baseline/'workflow'/n).read_bytes()).hexdigest() for n in IMPLEMENTATION_FILES}
+        # Public D1 source hashes only, not its native ledger/adoption payload.
+        files.update({'checkpoint.py':'d8e29756fbfe647f68f29f7c4b5511930a78cbd060300768ef3c6dfe10a070c1',
+            'runtime.py':'7e0aedf9a145833cffec551595eb5f1733cbe9753be15e6bcb126b5a34d94bc2',
+            'adapters.py':'080b81bc2c00fd4fde864263a47311e225464622bd57cef38f64afb9633744bc',
+            'team.py':'b04d2c0ca618675342664e8ed722e126743820806b90352d391a02e8858d0f62'})
+        cls.d1_core={'definitionHash':'ed94ec9e79ccd0c6e13f3d878fb1458d4dfe88402b5dcfae31fcf9e30d45b9de','files':files}
+        with patch('definitions.DEFINITION_HASH',cls.d1_core['definitionHash']), \
+                patch('checkpoint.current_core_identity',return_value=cls.d1_core):
+            MathRenderingOwnerTests.setUpClass.__func__(cls)
+        cls.continuation_cache=None
+
+    def prepare_continuation(self):
+        import checkpoint as cp
+        cls=type(self)
+        if cls.continuation_cache is not None:
+            temp=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_owner_revision_case_');self.addCleanup(temp.cleanup)
+            self.root=Path(temp.name).resolve();shutil.copytree(Path(cls.continuation_cache.name),self.root,dirs_exist_ok=True)
+            self.store=CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3');self.rt=Runtime(self.store.root,self.root)
+            for key,value in cls.continuation_attributes.items():setattr(self,key,copy.deepcopy(value))
+            return
+        with patch('checkpoint.current_core_identity',return_value=self.d1_core), \
+                patch('runtime.DEFINITION_HASH',self.d1_core['definitionHash']), \
+                patch('definitions.DEFINITION_HASH',self.d1_core['definitionHash']):
+            self.prepare_owner();self.last_d1_proof=self.reconcile()
+        self.old_owner=self.rt.state(cp.RECOVERY_WORK)
+        renderer=self.root/cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0]
+        renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D2_DISPLAY_REPAIR_NOT_ACTUAL_CODE\n')
+        future=cp.current_core_identity();intermediate={**future,'definitionHash':'e'*64}
+        def migrate(candidate):
+            with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                    return_value={'fixtureKind':'TEST_FIXTURE_HISTORICAL_EXECUTOR_AND_EXTERNAL_GIT_ONLY'}):
+                proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha=candidate,
+                    informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'])
+                self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+            return proof
+        # D2 is an explicit historical executor boundary. D3 is the real
+        # current test executor; the owner remains at the earlier D1 definition.
+        with patch('checkpoint.current_core_identity',return_value=intermediate):migrate('e'*40)
+        proof=migrate('f'*40);self.current_math=proof['mathRenderingRepair'];self.authority=self.adopt()
+        self.new_plan=copy.deepcopy(self.old_owner['plan'])
+        self.new_plan['proposal']['currentMaterialSourceSHA']='f'*40
+        self.new_plan['protected_manifest'].update(self.current_math['afterRepair'])
+        self.owner_verification=self.rt.evidence(cp.RECOVERY_WORK,'file',{'path':cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0],
+            'sha256':hashlib.sha256(renderer.read_bytes()).hexdigest()},source_ref='TEST_FIXTURE_D3/current-file-not-QA',eid='TEST_FIXTURE_D3_OWNER_FILE')
+        self.owner_git={'schemaVersion':'qf01-informed-technical-git-proof/1','previousCandidateSHA':'d'*40,
+            'retainedManifestSHA256':digest(self.old_owner['candidate_manifest']),
+            'currentMaterialGitProof':{'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_NOT_ACTUAL_D3',
+                'nearbyRepair':proof['repairAdoption'],'mathRenderingRepair':self.current_math}}
+        cls.continuation_cache=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_owner_revision_cache_')
+        cls.addClassCleanup(cls.continuation_cache.cleanup)
+        shutil.copytree(self.root,Path(cls.continuation_cache.name),dirs_exist_ok=True)
+        cls.continuation_attributes={key:copy.deepcopy(getattr(self,key)) for key in
+            ('old_owner','new_plan','current_math','authority','owner_verification','owner_git','last_d1_proof',
+             'owner_original','owner_original_snapshot')}
+
+    def revise_current(self):
+        from checkpoint import RECOVERY_WORK
+        with patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_CURRENT_GIT_ONLY'}):
+            return self.rt.revise(RECOVERY_WORK,self.new_plan)
+
+    def reconcile(self):
+        from checkpoint import RECOVERY_WORK
+        candidate=self.rt.state(FIXED_WORK)['candidate_sha']
+        with patch('adapters._checkpoint_informed_technical_git',return_value=self.owner_git):
+            return self.rt.reconcile_informed_technical_owner(RECOVERY_WORK,candidate_sha=candidate,
+                verification_refs=[self.owner_verification],expected_head=self.store.head)
+
+    def test_actual_d1_owner_catches_d3_without_new_user_then_definition_migration_and_reconciliation(self):
+        import checkpoint as cp
+        from definitions import DEFINITION_HASH
+        self.prepare_continuation();owner=self.rt.state(cp.RECOVERY_WORK);users=copy.deepcopy(owner['users'])
+        self.assertEqual(owner['candidate_sha'],'d'*40);self.assertEqual(self.current_math['candidateBeforeSHA'],'e'*40)
+        self.assertNotEqual(owner['definition_hash'],self.rt.state(FIXED_WORK)['definition_hash'])
+        self.revise_current();revised=self.rt.state(cp.RECOVERY_WORK)
+        self.assertEqual(revised['plan'],self.new_plan);self.assertEqual(revised['candidate_sha'],'d'*40)
+        self.assertEqual(revised['users'],users);self.assertEqual(revised['results'],owner['results'])
+        self.assertEqual(self.store.source_snapshot(cp.RECOVERY_WORK),self.owner_original_snapshot)
+        self.rt.migrate_definition(cp.RECOVERY_WORK,from_hash=revised['definition_hash'],evidence_refs=[self.owner_verification])
+        accepted=self.reconcile();final=self.rt.state(cp.RECOVERY_WORK)
+        self.assertEqual(final['candidate_sha'],'f'*40);self.assertEqual(final['definition_hash'],DEFINITION_HASH)
+        self.assertEqual(final['users'],users);self.assertEqual(final['plan']['source_manifest'],owner['plan']['source_manifest'])
+        self.assertEqual(accepted['proof']['previousCandidateSHA'],'d'*40)
+        self.assertEqual(accepted['proof']['planSHA256'],digest(self.new_plan))
+        self.assertFalse(accepted['proof']['writesExecuted']);self.assertFalse(accepted['proof']['oldResultsTransferred'])
+
+    def test_current_git_failure_or_concurrent_head_cannot_append_the_revision(self):
+        from checkpoint import RECOVERY_WORK
+        self.prepare_continuation();before=self.store.head;plan=copy.deepcopy(self.rt.state(RECOVERY_WORK)['plan'])
+        with patch('adapters._checkpoint_git_proof',side_effect=Rejected('TEST_FIXTURE_GIT_REJECTED')):
+            with self.assertRaisesRegex(Rejected,'TEST_FIXTURE_GIT_REJECTED'):self.rt.revise(RECOVERY_WORK,self.new_plan)
+        self.assertEqual(self.store.head,before);self.assertEqual(self.rt.state(RECOVERY_WORK)['plan'],plan)
+        def concurrent(*args,**kwargs):
+            self.rt.append('TEST_FIXTURE_CONCURRENT_EVENT',FIXED_WORK,{'fixtureKind':'TEST_FIXTURE_CAS_RACE_ONLY'})
+            return {'fixtureKind':'TEST_FIXTURE_CURRENT_GIT_ONLY'}
+        with patch('adapters._checkpoint_git_proof',side_effect=concurrent):
+            with self.assertRaisesRegex(Rejected,'D04_OWNER_REVISION_HEAD_CHANGED'):self.rt.revise(RECOVERY_WORK,self.new_plan)
+        self.assertEqual(self.rt.state(RECOVERY_WORK)['plan'],plan)
+        self.assertEqual(self.store.suffix_events()[-1]['kind'],'TEST_FIXTURE_CONCURRENT_EVENT')
+
+    def test_typed_suffix_rejects_same_hash_semantic_change_and_self_completed_intents(self):
+        from checkpoint import RECOVERY_WORK
+        for mode in ('meaning','patch-true','patch-false','external-success','external-null'):
+            self.prepare_continuation()
+            if mode=='meaning':
+                plan=copy.deepcopy(self.new_plan);plan['proposal']['id']='TEST_FIXTURE_UNADOPTED_NEW_MEANING'
+                self.rt.append('revised',RECOVERY_WORK,{'plan':plan})
+                expected='D04_OWNER_REVISION_ONLY_SOURCE_AND_TWO_PROTECTIONS'
+            elif mode.startswith('patch'):
+                self.rt.append('patch_intent',RECOVERY_WORK,{'node':'T03_BUILD','patch_hash':'0'*64,
+                    'backup':'0'*64,'before':{},'completed':mode=='patch-true'})
+                expected='CHECKPOINT_PATCH_INTENT_SELF_COMPLETION'
+            else:
+                self.rt.append('external_intent',FIXED_WORK,{'id':'TEST_FIXTURE_EXTERNAL','operation':'MERGE',
+                    'request_hash':'0'*64,'release_unit':None,'outcome':'SUCCESS' if mode.endswith('success') else None})
+                expected='CHECKPOINT_EXTERNAL_INTENT_SELF_OUTCOME'
+            raw_count=len(self.store._tail.events())
+            with self.subTest(mode=mode),self.assertRaisesRegex(CheckpointRejected,expected):
+                self.rt.revise(RECOVERY_WORK,self.new_plan)
+            # Read only the raw synthetic suffix to confirm the guarded API did
+            # not add a subsequent revision after the explicit corruption.
+            self.assertEqual(len(self.store._tail.events()),raw_count)
 
 
 if __name__ == '__main__':

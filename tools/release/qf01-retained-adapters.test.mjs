@@ -318,3 +318,95 @@ test('D03 TEST_FIXTURE proposal Git entry is regular100644 with fixed public byt
  const raw=fs.readFileSync(path.join(process.env.CORE_ROOT,NEARBY_REPAIR_PROPOSAL_PATH)),blobSHA=createHash('sha1').update(Buffer.from(`blob ${raw.length}\0`)).update(raw).digest('hex'),entries={[NEARBY_REPAIR_PROPOSAL_PATH]:{mode:'100644',blobSHA}};assert.equal(sha(raw),NEARBY_REPAIR_PROPOSAL_SHA256);assert.equal(validateNearbyProposalGitEntry(entries,raw,raw),true);
  for(const mode of ['100755','120000','040000'])assert.throws(()=>validateNearbyProposalGitEntry({[NEARBY_REPAIR_PROPOSAL_PATH]:{mode,blobSHA}},raw,raw),/GIT_MODE/);assert.throws(()=>validateNearbyProposalGitEntry({},raw,raw),/GIT_ENTRY/);assert.throws(()=>validateNearbyProposalGitEntry(entries,Buffer.from('TEST_FIXTURE_WRONG_GIT_DOC'),raw),/GIT_BYTES/);assert.throws(()=>validateNearbyProposalGitEntry(entries,raw,Buffer.from('TEST_FIXTURE_DIRTY_WORKING_DOC')),/WORKING_GIT/);assert.throws(()=>validateNearbyProposalGitEntry({[NEARBY_REPAIR_PROPOSAL_PATH]:{mode:'100644',blobSHA:'0'.repeat(40)}},raw,raw),/GIT_BLOB/);
 });
+
+import {validateMathRenderingRepairRecord,validateMathRenderingRepairContinuation,validateMathRenderingRepairAdoption,validateMathRenderingProposalGitEntry,validateProductOwnerProtection,currentProductRepairContext,validateMathRenderingFindingReport,MATH_RENDERING_PROPOSAL_SHA256,MATH_RENDERING_PROPOSAL_PATH,MATH_RENDERING_BASELINE,MATH_RENDERING_FINDING,MATH_RENDERING_EVIDENCE} from './qf01-publish-check.mjs';
+// Synthetic protocol fixtures only. No actual C/D ledger or actual adoption bytes
+// are embedded, and the permanent production CHECKPOINT_PINS remains null.
+function mathRenderingFixture(){
+ const beforeRepair={
+  'src/components/textbook/GuidedMathReadingFlow.tsx':'4fb2042b5647620d504a30d334a9d36688b28f7d80fee380c0efbdd5c09ad964',
+  'src/components/textbook/QF01ReadingRevision3.test.tsx':'41cdfc2a6a75e29bb68ccb959e88cbec9c6a9c96235cade13ca363fca78fc320'};
+ const adopted={schemaVersion:'qf01-d04-actual-user-adoption/1',proposalSHA256:MATH_RENDERING_PROPOSAL_SHA256,
+  quote:'D04案を採用し、記載範囲の公開反映とCIも許可する',source_ref:'request_user_input_async/call_93a584b6ba4842a3badb87262bb07b2b',verification_level:'conversation_transcribed',adopted:true,
+  baselineSourceSHA:MATH_RENDERING_BASELINE,productPaths:[...NEARBY_REPAIR_PRODUCT_PATHS],publicCodePathMaximum:20,publicProposalPath:MATH_RENDERING_PROPOSAL_PATH,nativeLedgerOrLearningOrCredentialsIncluded:false,
+  originalD03MigrationEventHash:'bad3d783c3d3c9ac40b566bf5a6d4a3eec45b0d5e8ab8f82c1a90b48a7b2f108',originalD03SupplementSHA256:'f8ebbd59f53e025d59ff1f888b5d3cb7e4f76cba6b2108087081db16ddc8e00b',qualification:'TEST_FIXTURE_NOT_ACTUAL_D04_USER_FILE'};
+ const rawUTF8=JSON.stringify(adopted,null,2)+'\n',transcriptionSHA256=sha(rawUTF8),evidenceRef='TEST_FIXTURE_D04_ADOPTION',filePath='work/recovery-checkpoints/qf01-p046-r3/reports/TEST_FIXTURE_D04_ADOPTION.json';
+ const repair={schemaVersion:'qf01-math-prose-rendering-supplement/1',proposalSHA256:MATH_RENDERING_PROPOSAL_SHA256,evidenceRef,transcriptionSHA256,quote:adopted.quote,source_ref:adopted.source_ref,verification_level:adopted.verification_level,
+  baselineSourceSHA:MATH_RENDERING_BASELINE,candidateBeforeSHA:MATH_RENDERING_BASELINE,candidateBeforeManifestSHA256:'f'.repeat(64),candidateAfterSHA:'d'.repeat(40),allowedProductPaths:[...NEARBY_REPAIR_PRODUCT_PATHS],beforeRepair,afterRepair:Object.fromEntries(NEARBY_REPAIR_PRODUCT_PATHS.map((p,i)=>[p,String(i+1).repeat(64)])),
+  originalD03MigrationEventHash:adopted.originalD03MigrationEventHash,originalD03SupplementSHA256:adopted.originalD03SupplementSHA256,definitionHash:'d'.repeat(64),implementationHash:'a'.repeat(64),checkpointEpoch:'e'.repeat(64)};
+ const ev={id:evidenceRef,kind:'file',verification_level:'local_execution',data:{path:filePath,sha256:transcriptionSHA256,source_sha:MATH_RENDERING_BASELINE}};
+ return {repair,adopted,rawUTF8,state:{evidence:{[evidenceRef]:ev}},fileEvidence:{[filePath]:{rawUTF8,sha256:transcriptionSHA256}},events:[{seq:14061,work:'W-MATH-QF01-FULL-RELEASE-P035-20261115',kind:'evidence',payload:ev}],beforeSeq:14062};
+}
+test('D04 TEST_FIXTURE exact19field supplement keeps immutable C preimage and no production pin',()=>{
+ const f=mathRenderingFixture();assert.equal(Object.keys(f.repair).length,19);assert.deepEqual(validateMathRenderingRepairRecord(f.repair,{epoch:f.repair.checkpointEpoch}),f.repair);assert.equal(CHECKPOINT_PINS,null);assert.notEqual(f.repair.transcriptionSHA256,'f0d686e824065bc28d23e8c721fd8828f98c9ae768d46bc8e62645ec43709142');
+ assert.deepEqual(validateMathRenderingRepairContinuation(null,f.repair),f.repair);assert.throws(()=>validateMathRenderingRepairContinuation(null,{...f.repair,candidateBeforeSHA:'b'.repeat(40)}),/FIRST_MIGRATION/);
+});
+
+test('D04 TEST_FIXTURE actual candidate replay branch accepts current D and rejects historical C',()=>{
+ const source=fs.readFileSync(new URL('./qf01-publish-check.mjs',import.meta.url),'utf8'),start=source.indexOf("   case 'candidate':"),end=source.indexOf("\n   case 'release_bound':",start);assert.ok(start>=0&&end>start);
+ const check=new Function('assert','CP_PRIMARY','CP_REPAIRS','origin','activeRepair','activeMathRepair','p','s',"const w=CP_PRIMARY;switch('candidate'){"+source.slice(start,end)+'}return s;');
+ const origin={candidate_manifest:{TEST_FIXTURE_CANONICAL:'a'.repeat(64)}},c={candidateAfterSHA:'c'.repeat(40),afterRepair:{TEST_FIXTURE_PRODUCT:'c'.repeat(64)}},d={candidateAfterSHA:'d'.repeat(40),afterRepair:{TEST_FIXTURE_PRODUCT:'d'.repeat(64)}},row={sha:d.candidateAfterSHA,manifest:{...origin.candidate_manifest,...d.afterRepair}};
+ assert.equal(check(assert,'TEST_FIXTURE_PRIMARY',{},origin,c,d,row,{}).candidate_sha,d.candidateAfterSHA);
+ assert.throws(()=>check(assert,'TEST_FIXTURE_PRIMARY',{},origin,c,d,{sha:c.candidateAfterSHA,manifest:{...origin.candidate_manifest,...c.afterRepair}},{}));
+ assert.equal(check(assert,'TEST_FIXTURE_PRIMARY',{},origin,c,null,{sha:c.candidateAfterSHA,manifest:{...origin.candidate_manifest,...c.afterRepair}},{}).candidate_sha,c.candidateAfterSHA);
+});
+
+test('D04 TEST_FIXTURE actual replay rejects supplemental data on another event or malformed false values',()=>{
+ const source=fs.readFileSync(new URL('./qf01-publish-check.mjs',import.meta.url),'utf8'),line=source.split('\n').find(l=>l.includes("'D04_MIGRATION_EVENT_SCOPE'"));assert.ok(line);
+ const check=new Function('assert','CP_PRIMARY','cpPlain','p','k','w',line),plain=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+ for(const value of [{},false,0,'',[]]){assert.throws(()=>check(assert,'TEST_FIXTURE_PRIMARY',plain,{mathRenderingRepair:value},'evidence','TEST_FIXTURE_PRIMARY'));assert.throws(()=>check(assert,'TEST_FIXTURE_PRIMARY',plain,{mathRenderingRepair:value},'checkpoint_definition_migrated','TEST_FIXTURE_OTHER'));}
+ for(const value of [false,0,'',[]])assert.throws(()=>check(assert,'TEST_FIXTURE_PRIMARY',plain,{mathRenderingRepair:value},'checkpoint_definition_migrated','TEST_FIXTURE_PRIMARY'));
+ check(assert,'TEST_FIXTURE_PRIMARY',plain,{mathRenderingRepair:{}},'checkpoint_definition_migrated','TEST_FIXTURE_PRIMARY');check(assert,'TEST_FIXTURE_PRIMARY',plain,{},'evidence','TEST_FIXTURE_PRIMARY');
+});
+test('D04 TEST_FIXTURE rejects wrong scope preimage original predecessor and fabricated authority fields',()=>{
+ const f=mathRenderingFixture();for(const mutate of [r=>r.extra='TEST_FIXTURE',r=>r.schemaVersion='wrong',r=>r.proposalSHA256='0'.repeat(64),r=>r.source_ref='TEST_FIXTURE_WRONG_CALL',r=>r.quote='TEST_FIXTURE_DIFFERENT_PERMISSION',r=>r.verification_level='simulation',r=>r.baselineSourceSHA='c'.repeat(40),r=>r.candidateAfterSHA=MATH_RENDERING_BASELINE,r=>r.candidateBeforeManifestSHA256='bad',r=>r.originalD03MigrationEventHash='0'.repeat(64),r=>r.originalD03SupplementSHA256='0'.repeat(64),r=>r.allowedProductPaths.push('src/EXTRA.ts'),r=>r.beforeRepair[NEARBY_REPAIR_PRODUCT_PATHS[0]]='0'.repeat(64),r=>r.afterRepair={...r.beforeRepair},r=>r.afterRepair['src/EXTRA.ts']='a'.repeat(64)]){const r=structuredClone(f.repair);mutate(r);assert.throws(()=>validateMathRenderingRepairRecord(r));}assert.throws(()=>validateMathRenderingRepairRecord(f.repair,{epoch:'0'.repeat(64)}));
+});
+test('D04 TEST_FIXTURE continuation preserves adoption epoch and actual previous source',()=>{
+ const previous=mathRenderingFixture().repair,next={...structuredClone(previous),candidateBeforeSHA:previous.candidateAfterSHA,candidateBeforeManifestSHA256:'1'.repeat(64),candidateAfterSHA:'a'.repeat(40),definitionHash:'b'.repeat(64)};
+ assert.deepEqual(validateMathRenderingRepairContinuation(previous,next,[previous]),next);
+ for(const mutate of [r=>r.evidenceRef='TEST_FIXTURE_OTHER',r=>r.transcriptionSHA256='0'.repeat(64),r=>r.candidateBeforeSHA=MATH_RENDERING_BASELINE,r=>r.checkpointEpoch='0'.repeat(64)]){const r=structuredClone(next);mutate(r);assert.throws(()=>validateMathRenderingRepairContinuation(previous,r,[previous]));}
+});
+test('D04 TEST_FIXTURE continuation permits unchanged current product for a core update but rejects old distinct after rollback',()=>{
+ const first=mathRenderingFixture().repair,second={...structuredClone(first),candidateBeforeSHA:first.candidateAfterSHA,candidateAfterSHA:'b'.repeat(40),afterRepair:Object.fromEntries(NEARBY_REPAIR_PRODUCT_PATHS.map((p,i)=>[p,String(i+3).repeat(64)]))},third={...structuredClone(second),candidateBeforeSHA:second.candidateAfterSHA,candidateAfterSHA:'f'.repeat(40)};
+ assert.deepEqual(validateMathRenderingRepairContinuation(second,third,[first,second]),third);third.afterRepair=first.afterRepair;assert.throws(()=>validateMathRenderingRepairContinuation(second,third,[first,second]),/ROLLBACK/);
+});
+test('D04 TEST_FIXTURE actual-file contract checks raw registered bytes and adoption strictly before migration',()=>{
+ const f=mathRenderingFixture();assert.deepEqual(validateMathRenderingRepairAdoption({...f,record:f.repair}),f.repair);
+ for(const mutate of [x=>x.events=[],x=>x.beforeSeq=14061,x=>x.state.evidence[x.repair.evidenceRef].verification_level='simulation',x=>x.fileEvidence[Object.keys(x.fileEvidence)[0]].rawUTF8+=' ',x=>x.repair.transcriptionSHA256='0'.repeat(64)]){const x=structuredClone(f);mutate(x);assert.throws(()=>validateMathRenderingRepairAdoption({...x,record:x.repair}));}
+});
+test('D04 TEST_FIXTURE owner changes only allowed two protected hashes without deleting keys or changing other protection',()=>{
+ const f=mathRenderingFixture(),old={...Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).map(([p,r])=>[p,r.afterSHA256])),'TEST_FIXTURE/protected':'f'.repeat(64)},current={...old,...f.repair.afterRepair};
+ assert.equal(validateProductOwnerProtection(current,old,null,f.repair),true);
+ for(const mutate of [x=>delete x['TEST_FIXTURE/protected'],x=>x['TEST_FIXTURE/protected']='a'.repeat(64),x=>x['TEST_FIXTURE/EXTRA']='e'.repeat(64),x=>x[NEARBY_REPAIR_PRODUCT_PATHS[0]]=f.repair.beforeRepair[NEARBY_REPAIR_PRODUCT_PATHS[0]]]){const x=structuredClone(current);mutate(x);assert.throws(()=>validateProductOwnerProtection(x,old,null,f.repair));}
+});
+test('D04 TEST_FIXTURE current context cannot relabel a synthetic D03 record as the genuine private C predecessor',()=>{
+ const old=nearbySupplementFixture(),math=mathRenderingFixture().repair;old.state.checkpoint_definition_migration.mathRenderingRepair=math;assert.throws(()=>currentProductRepairContext(old.state),/D04_AUTHENTIC_D03_PREDECESSOR/);
+});
+test('D04 TEST_FIXTURE actual fixed proposal Git and working bytes must agree',{skip:!process.env.CORE_ROOT},()=>{
+ const raw=fs.readFileSync(path.join(process.env.CORE_ROOT,MATH_RENDERING_PROPOSAL_PATH)),blobSHA=createHash('sha1').update(Buffer.from(`blob ${raw.length}\0`)).update(raw).digest('hex'),entries={[MATH_RENDERING_PROPOSAL_PATH]:{mode:'100644',blobSHA}};
+ assert.equal(sha(raw),MATH_RENDERING_PROPOSAL_SHA256);assert.equal(validateMathRenderingProposalGitEntry(entries,raw,raw),true);
+ assert.throws(()=>validateMathRenderingProposalGitEntry({},raw,raw));for(const mode of ['100755','120000','040000'])assert.throws(()=>validateMathRenderingProposalGitEntry({[MATH_RENDERING_PROPOSAL_PATH]:{mode,blobSHA}},raw,raw),/MODE/);
+ assert.throws(()=>validateMathRenderingProposalGitEntry(entries,Buffer.from('TEST_FIXTURE_WRONG_DOC'),raw),/GIT_BYTES/);assert.throws(()=>validateMathRenderingProposalGitEntry(entries,raw,Buffer.from('TEST_FIXTURE_DIRTY_DOC')),/WORKING_GIT/);assert.throws(()=>validateMathRenderingProposalGitEntry({[MATH_RENDERING_PROPOSAL_PATH]:{mode:'100644',blobSHA:'0'.repeat(40)}},raw,raw),/GIT_BLOB/);
+});
+// Isolate only the new report guard, mocking its current-repair and registered-
+// file readers at the unit boundary. The exact production function body, all
+// fixed C report pins, report/receipt checks and counters remain unmodified.
+function mathReportBoundaryFixture(){
+ const source=fs.readFileSync(new URL('./qf01-publish-check.mjs',import.meta.url),'utf8'),start=source.indexOf('export function validateMathRenderingFindingReport('),end=source.indexOf('\n}',start)+2;assert.ok(start>=0&&end>start);const body=source.slice(start,end).replace(/^export /,'');
+ const old={schemaVersion:'qf01-current-c-open-prose-math-finding/1',findingId:MATH_RENDERING_FINDING,sourceSHA:MATH_RENDERING_BASELINE,status:'OPEN_CONFIRMED_CURRENT_C',newProductRepairApplied:false,blocksMaterialR04PASS:true,qualification:'TEST_FIXTURE_MOCKED_REGISTERED_FILE_READER_NOT_ACTUAL_C_BYTES'},sourceSHA='d'.repeat(40),measure='TEST_FIXTURE_D04_MEASURE';
+ const original={id:MATH_RENDERING_EVIDENCE,kind:'file',verification_level:'local_execution',data:{path:'reports/TEST_FIXTURE_C_OPEN.json',source_sha:MATH_RENDERING_BASELINE,sha256:'8208aca84410fa62975a3b129f30d4b16d92c909780002af59316f41fedc8037'}},measurement={id:measure,kind:'check',verification_level:'local_execution',data:{status:'PASS',source_sha:sourceSHA,math_prose_rendering:{findingId:MATH_RENDERING_FINDING,status:'PASS',widths:[320,390,430,1440],sampleCount:420,unverified:0,missingMathUnits:0,unexpectedMathUnits:0,splitMathUnits:0,unitErrors:0,sourceMismatch:0}}};
+ const state={candidate_sha:sourceSHA,evidence:{[MATH_RENDERING_EVIDENCE]:original,[measure]:measurement}},output={facet:'render',claimRef:'layout',codeReceiptRefs:['TEST_FIXTURE_CURRENT_CODE'],evidenceRefs:[measure],findings:[{findingId:MATH_RENDERING_FINDING,claimRef:'layout',facet:'render',resolution:'VERIFIED_FIXED',reexaminesEvidenceRef:MATH_RENDERING_EVIDENCE,reason:'TEST_FIXTURE_SCOPE_RECHECK',evidenceRefs:[measure]}]},events=[original,measurement].map((payload,i)=>({seq:14061+i,work:'W-MATH-QF01-FULL-RELEASE-P035-20261115',kind:'evidence',payload}));
+ const check=new Function('currentMathRenderingRepair','checkpointFileEvidence','MATH_RENDERING_EVIDENCE','MATH_RENDERING_BASELINE','MATH_RENDERING_FINDING','CP_PRIMARY','assert','canonical',body+';return validateMathRenderingFindingReport;')(()=>true,()=>old,MATH_RENDERING_EVIDENCE,MATH_RENDERING_BASELINE,MATH_RENDERING_FINDING,'W-MATH-QF01-FULL-RELEASE-P035-20261115',assert,nativeDigest);
+ return {check,args:{state,output,target:{artifactRefs:['TEST_FIXTURE_CURRENT_CODE']},codeReceiptRefs:['TEST_FIXTURE_CURRENT_CODE'],events,beforeSeq:14063,fileEvidence:{}},old,measure};
+}
+test('D04 TEST_FIXTURE report guard requires both current evidence and real integer420 four-width counters',()=>{
+ const f=mathReportBoundaryFixture();assert.equal(f.check(f.args),true);
+ f.args.state.evidence[f.measure].data.math_prose_rendering.widths=[1440,320,430,390];assert.equal(f.check(f.args),true);
+ for(const mutate of [x=>x.args.output.findings=[],x=>x.args.output.findings[0].resolution='OPEN',x=>x.args.output.codeReceiptRefs=[],x=>x.args.output.codeReceiptRefs=['TEST_FIXTURE_OLD_CODE'],x=>x.args.state.evidence[x.measure].data.source_sha=MATH_RENDERING_BASELINE,x=>x.args.beforeSeq=14062,x=>x.args.state.evidence[x.measure].verification_level='simulation',x=>x.args.state.evidence[x.measure].data.math_prose_rendering.sampleCount=419,x=>x.args.state.evidence[x.measure].data.math_prose_rendering.widths=[320,390,430]]){const x=mathReportBoundaryFixture();mutate(x);assert.throws(()=>x.check(x.args));}
+});
+test('D04 TEST_FIXTURE report guard rejects every missing split unit or source counter and boolean zero substitutions',()=>{
+ for(const key of ['unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits','unitErrors','sourceMismatch'])for(const value of [1,false,null,undefined,-1]){const x=mathReportBoundaryFixture();x.args.state.evidence[x.measure].data.math_prose_rendering[key]=value;assert.throws(()=>x.check(x.args));}
+});
+test('D04 TEST_FIXTURE report cannot overwrite the old C diagnostic or claim it was already repaired',()=>{
+ for(const mutate of [x=>x.args.state.evidence[MATH_RENDERING_EVIDENCE].data.sha256='0'.repeat(64),x=>x.old.sourceSHA='c'.repeat(40),x=>x.old.status='PASS',x=>x.old.newProductRepairApplied=true,x=>x.old.blocksMaterialR04PASS=false]){const x=mathReportBoundaryFixture();mutate(x);assert.throws(()=>x.check(x.args));}
+});

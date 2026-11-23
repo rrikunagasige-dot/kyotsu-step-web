@@ -51,8 +51,9 @@ jobs:
       contents: read
     env:
       # Actual adopted C commit fixed and published on the existing core branch.
-      CHECKPOINT_CORE_SHA: 900642faf76267546c5c7420b7d50a010516ca6e
+      CHECKPOINT_CORE_SHA: 894398b64abf7020679e32a9438c74af08476171
       CHECKPOINT_BASELINE_REPAIR_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
+      CHECKPOINT_MATH_BASELINE_SHA: 900642faf76267546c5c7420b7d50a010516ca6e
       CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676
       CHECKPOINT_ORIGIN_SOURCE_SHA: 1f10ecbcd088ca8636932c8df4c7b85293777efc
       CHECKPOINT_AUTHORITY_BLOB_SHA: ccb58fd71a927953093a567dc9732d6730fdda12
@@ -64,6 +65,7 @@ jobs:
       QF01_CHECKPOINT_INPUT_ROOT: /tmp/qf01-checkpoint-test-input
       QF01_CHECKPOINT_SOURCE_ROOT: ${{ github.workspace }}/fixture-source
       QF01_CHECKPOINT_BASELINE_REPAIR_ROOT: ${{ github.workspace }}/repair-baseline
+      QF01_CHECKPOINT_MATH_BASELINE_ROOT: ${{ github.workspace }}/math-baseline
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
       PYTHONPATH: ${{ github.workspace }}/core:${{ github.workspace }}/core/workflow
@@ -82,14 +84,15 @@ jobs:
         from pathlib import Path
         out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
         out.mkdir(parents=True, exist_ok=True)
-        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
+        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_MATH_BASELINE_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
                 'CHECKPOINT_AUTHORITY_BLOB_SHA', 'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')
         pins = {key: os.environ[key] for key in keys}
         valid = (os.environ['GITHUB_REPOSITORY'] == 'rrikunagasige-dot/kyotsu-step-web'
                  and os.environ['ACTUAL_REPOSITORY_ID'] == '1391122224'
                  and all(re.fullmatch(r'[0-9a-f]{40}', pins[key]) for key in keys)
                  and pins['CHECKPOINT_BASELINE_REPAIR_SHA'] == '247cb09b1d852d4e4fa469b3d74fb29bee053c53'
-                 and pins['CHECKPOINT_CORE_SHA'] != pins['CHECKPOINT_BASELINE_REPAIR_SHA']
+                 and pins['CHECKPOINT_MATH_BASELINE_SHA'] == '900642faf76267546c5c7420b7d50a010516ca6e'
+                 and pins['CHECKPOINT_CORE_SHA'] not in (pins['CHECKPOINT_BASELINE_REPAIR_SHA'], pins['CHECKPOINT_MATH_BASELINE_SHA'])
                  and pins['CHECKPOINT_AUTHORITY_SHA'] == '55d844f20c0de3390ad6718ee8d01968ebbb8676'
                  and pins['CHECKPOINT_ORIGIN_SOURCE_SHA'] == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
                  and pins['CHECKPOINT_AUTHORITY_BLOB_SHA'] == 'ccb58fd71a927953093a567dc9732d6730fdda12'
@@ -116,6 +119,13 @@ jobs:
       with:
         ref: ${{ env.CHECKPOINT_BASELINE_REPAIR_SHA }}
         path: repair-baseline
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout unchanged immutable C bytes for D04 predecessor fixtures
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_MATH_BASELINE_SHA }}
+        path: math-baseline
         fetch-depth: 0
         persist-credentials: false
     - name: Checkout this exact publisher candidate for compatibility tests
@@ -286,6 +296,7 @@ jobs:
             return subprocess.check_output(['git', '-C', str(directory), *args], text=True).strip()
         expected = {'core': os.environ['CHECKPOINT_CORE_SHA'],
                     'repair-baseline': os.environ['CHECKPOINT_BASELINE_REPAIR_SHA'],
+                    'math-baseline': os.environ['CHECKPOINT_MATH_BASELINE_SHA'],
                     'fixture-source': os.environ['CHECKPOINT_FIXTURE_SHA'],
                     'authority-source': os.environ['CHECKPOINT_AUTHORITY_SHA'],
                     'legacy-fixture': os.environ['CHECKPOINT_LEGACY_SHA']}
@@ -321,13 +332,30 @@ jobs:
         files.append({'name': 'NEARBY_VISIBILITY_PROPOSAL_D03.md', 'source': str(d03_proposal),
                       'copy': str(supplied / 'NEARBY_VISIBILITY_PROPOSAL_D03.md'), 'bytes': len(d03_raw),
                       'sha256': NEARBY_REPAIR_PROPOSAL_SHA256, 'provenance': 'ALREADY_PUBLIC_ADOPTED_D03_PROPOSAL'})
-        immutable_inputs = {key: os.environ[key] for key in ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA',
+        from checkpoint import (MATH_RENDERING_REPAIR_BASELINE, MATH_RENDERING_REPAIR_BEFORE,
+                                MATH_RENDERING_REPAIR_PROPOSAL_PATH, MATH_RENDERING_REPAIR_PROPOSAL_SHA256)
+        assert os.environ['CHECKPOINT_MATH_BASELINE_SHA'] == MATH_RENDERING_REPAIR_BASELINE
+        math_baseline = {name: hashlib.sha256((workspace / 'math-baseline' / name).read_bytes()).hexdigest()
+                         for name in MATH_RENDERING_REPAIR_BEFORE}
+        assert math_baseline == MATH_RENDERING_REPAIR_BEFORE, 'Immutable C fixture bytes differ'
+        assert any(current_repair[name] != math_baseline[name] for name in MATH_RENDERING_REPAIR_BEFORE), 'Current source has no adopted prose math repair'
+        d04_proposal = workspace / 'core' / MATH_RENDERING_REPAIR_PROPOSAL_PATH
+        d04_raw = d04_proposal.read_bytes()
+        assert hashlib.sha256(d04_raw).hexdigest() == MATH_RENDERING_REPAIR_PROPOSAL_SHA256, 'Actual public D04 proposal differs'
+        with (supplied / 'MATH_PROSE_RENDERING_PROPOSAL_D04.md').open('xb') as stream:
+            stream.write(d04_raw)
+        files.append({'name': 'MATH_PROSE_RENDERING_PROPOSAL_D04.md', 'source': str(d04_proposal),
+                      'copy': str(supplied / 'MATH_PROSE_RENDERING_PROPOSAL_D04.md'), 'bytes': len(d04_raw),
+                      'sha256': MATH_RENDERING_REPAIR_PROPOSAL_SHA256, 'provenance': 'ALREADY_PUBLIC_ADOPTED_D04_PROPOSAL'})
+        immutable_inputs = {key: os.environ[key] for key in ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_MATH_BASELINE_SHA',
             'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA', 'CHECKPOINT_AUTHORITY_BLOB_SHA',
             'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')}
         immutable_inputs['PUBLISHER_SHA'] = os.environ['GITHUB_SHA']
         immutable_inputs.update({'ORIGIN_FILE/' + name: digest for name, digest in origin_hashes.items()})
         immutable_inputs['ORIGINAL_PROPOSAL_SHA256'] = RECOVERY_PROPOSAL_SHA256
         immutable_inputs['D03_PROPOSAL_SHA256'] = NEARBY_REPAIR_PROPOSAL_SHA256
+        immutable_inputs['D04_PROPOSAL_SHA256'] = MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+        assert len(immutable_inputs) == 21, 'Expected preserved19 plus Cbaseline and D04proposal inputs'
         versions = {'python': sys.version, 'node': subprocess.check_output(['node', '--version'], text=True).strip(),
                     'pnpm': subprocess.check_output(['pnpm', '--version'], text=True).strip()}
         assert sys.version_info[:2] == (3, 12) and versions['node'].startswith('v22.') and versions['pnpm'] == '11.9.0', 'Toolchain version differs'
@@ -338,7 +366,7 @@ jobs:
                   'inputQualification': 'TEST_FIXTURE_DERIVED_FROM_ALREADY_PUBLIC_DATA',
                   'newNativeLedgerReadOrExported': False,
                   'files': files, 'core': current_core_identity(), 'currentRepairSource': current_repair,
-                  'immutableBaselineRepairSource': baseline_repair, 'immutableInputs': immutable_inputs,
+                  'immutableBaselineRepairSource': baseline_repair, 'immutableMathBaselineSource': math_baseline, 'immutableInputs': immutable_inputs,
                   'immutableInputCount': len(immutable_inputs),
                   'checkpoint': checkpoint.summary(),
                   'versions': versions, 'testFixturesOnly': True,

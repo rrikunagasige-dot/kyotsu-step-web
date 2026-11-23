@@ -50,7 +50,9 @@ jobs:
     permissions:
       contents: read
     env:
-      CHECKPOINT_CORE_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
+      # Actual adopted C commit fixed and published on the existing core branch.
+      CHECKPOINT_CORE_SHA: 900642faf76267546c5c7420b7d50a010516ca6e
+      CHECKPOINT_BASELINE_REPAIR_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
       CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676
       CHECKPOINT_ORIGIN_SOURCE_SHA: 1f10ecbcd088ca8636932c8df4c7b85293777efc
       CHECKPOINT_AUTHORITY_BLOB_SHA: ccb58fd71a927953093a567dc9732d6730fdda12
@@ -61,6 +63,7 @@ jobs:
       CHECKPOINT_DIAGNOSTICS: /tmp/qf01-checkpoint-linux
       QF01_CHECKPOINT_INPUT_ROOT: /tmp/qf01-checkpoint-test-input
       QF01_CHECKPOINT_SOURCE_ROOT: ${{ github.workspace }}/fixture-source
+      QF01_CHECKPOINT_BASELINE_REPAIR_ROOT: ${{ github.workspace }}/repair-baseline
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
       PYTHONPATH: ${{ github.workspace }}/core:${{ github.workspace }}/core/workflow
@@ -79,12 +82,14 @@ jobs:
         from pathlib import Path
         out = Path(os.environ['CHECKPOINT_DIAGNOSTICS'])
         out.mkdir(parents=True, exist_ok=True)
-        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
+        keys = ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA', 'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA',
                 'CHECKPOINT_AUTHORITY_BLOB_SHA', 'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')
         pins = {key: os.environ[key] for key in keys}
         valid = (os.environ['GITHUB_REPOSITORY'] == 'rrikunagasige-dot/kyotsu-step-web'
                  and os.environ['ACTUAL_REPOSITORY_ID'] == '1391122224'
                  and all(re.fullmatch(r'[0-9a-f]{40}', pins[key]) for key in keys)
+                 and pins['CHECKPOINT_BASELINE_REPAIR_SHA'] == '247cb09b1d852d4e4fa469b3d74fb29bee053c53'
+                 and pins['CHECKPOINT_CORE_SHA'] != pins['CHECKPOINT_BASELINE_REPAIR_SHA']
                  and pins['CHECKPOINT_AUTHORITY_SHA'] == '55d844f20c0de3390ad6718ee8d01968ebbb8676'
                  and pins['CHECKPOINT_ORIGIN_SOURCE_SHA'] == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
                  and pins['CHECKPOINT_AUTHORITY_BLOB_SHA'] == 'ccb58fd71a927953093a567dc9732d6730fdda12'
@@ -104,6 +109,13 @@ jobs:
       with:
         ref: ${{ env.CHECKPOINT_CORE_SHA }}
         path: core
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout unchanged immutable B repair bytes for historical fixtures
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.CHECKPOINT_BASELINE_REPAIR_SHA }}
+        path: repair-baseline
         fetch-depth: 0
         persist-credentials: false
     - name: Checkout this exact publisher candidate for compatibility tests
@@ -273,6 +285,7 @@ jobs:
         def git(directory, *args):
             return subprocess.check_output(['git', '-C', str(directory), *args], text=True).strip()
         expected = {'core': os.environ['CHECKPOINT_CORE_SHA'],
+                    'repair-baseline': os.environ['CHECKPOINT_BASELINE_REPAIR_SHA'],
                     'fixture-source': os.environ['CHECKPOINT_FIXTURE_SHA'],
                     'authority-source': os.environ['CHECKPOINT_AUTHORITY_SHA'],
                     'legacy-fixture': os.environ['CHECKPOINT_LEGACY_SHA']}
@@ -291,9 +304,30 @@ jobs:
         files, checkpoint, origin_hashes = derive_public_inputs(
             workspace / 'authority-source', supplied, proposal,
             os.environ['CHECKPOINT_ORIGIN_SOURCE_SHA'], public_json)
+        from checkpoint import NEARBY_REPAIR_PRODUCT_PATHS, NEARBY_REPAIR_PROPOSAL_PATH, NEARBY_REPAIR_PROPOSAL_SHA256
+        baseline_repair = {name: hashlib.sha256((workspace / 'repair-baseline' / name).read_bytes()).hexdigest()
+                           for name in CURRENT_REPAIR_AFTER}
+        assert baseline_repair == CURRENT_REPAIR_AFTER, 'Immutable B fixture bytes differ'
         current_repair = {name: hashlib.sha256((workspace / 'core' / name).read_bytes()).hexdigest()
                           for name in CURRENT_REPAIR_AFTER}
-        assert current_repair == CURRENT_REPAIR_AFTER, 'Current repaired source bytes differ'
+        assert all(current_repair[name] == old for name, old in CURRENT_REPAIR_AFTER.items()
+                   if name not in NEARBY_REPAIR_PRODUCT_PATHS), 'Unadopted product repair changed'
+        assert any(current_repair[name] != CURRENT_REPAIR_AFTER[name] for name in NEARBY_REPAIR_PRODUCT_PATHS), 'Current source has no adopted nearby repair'
+        d03_proposal = workspace / 'core' / NEARBY_REPAIR_PROPOSAL_PATH
+        d03_raw = d03_proposal.read_bytes()
+        assert hashlib.sha256(d03_raw).hexdigest() == NEARBY_REPAIR_PROPOSAL_SHA256, 'Actual public D03 proposal differs'
+        with (supplied / 'NEARBY_VISIBILITY_PROPOSAL_D03.md').open('xb') as stream:
+            stream.write(d03_raw)
+        files.append({'name': 'NEARBY_VISIBILITY_PROPOSAL_D03.md', 'source': str(d03_proposal),
+                      'copy': str(supplied / 'NEARBY_VISIBILITY_PROPOSAL_D03.md'), 'bytes': len(d03_raw),
+                      'sha256': NEARBY_REPAIR_PROPOSAL_SHA256, 'provenance': 'ALREADY_PUBLIC_ADOPTED_D03_PROPOSAL'})
+        immutable_inputs = {key: os.environ[key] for key in ('CHECKPOINT_CORE_SHA', 'CHECKPOINT_BASELINE_REPAIR_SHA',
+            'CHECKPOINT_AUTHORITY_SHA', 'CHECKPOINT_ORIGIN_SOURCE_SHA', 'CHECKPOINT_AUTHORITY_BLOB_SHA',
+            'CHECKPOINT_FIXTURE_SHA', 'CHECKPOINT_LEGACY_SHA')}
+        immutable_inputs['PUBLISHER_SHA'] = os.environ['GITHUB_SHA']
+        immutable_inputs.update({'ORIGIN_FILE/' + name: digest for name, digest in origin_hashes.items()})
+        immutable_inputs['ORIGINAL_PROPOSAL_SHA256'] = RECOVERY_PROPOSAL_SHA256
+        immutable_inputs['D03_PROPOSAL_SHA256'] = NEARBY_REPAIR_PROPOSAL_SHA256
         versions = {'python': sys.version, 'node': subprocess.check_output(['node', '--version'], text=True).strip(),
                     'pnpm': subprocess.check_output(['pnpm', '--version'], text=True).strip()}
         assert sys.version_info[:2] == (3, 12) and versions['node'].startswith('v22.') and versions['pnpm'] == '11.9.0', 'Toolchain version differs'
@@ -304,6 +338,8 @@ jobs:
                   'inputQualification': 'TEST_FIXTURE_DERIVED_FROM_ALREADY_PUBLIC_DATA',
                   'newNativeLedgerReadOrExported': False,
                   'files': files, 'core': current_core_identity(), 'currentRepairSource': current_repair,
+                  'immutableBaselineRepairSource': baseline_repair, 'immutableInputs': immutable_inputs,
+                  'immutableInputCount': len(immutable_inputs),
                   'checkpoint': checkpoint.summary(),
                   'versions': versions, 'testFixturesOnly': True,
                   'nativeBootstrapPerformed': False, 'gateAccepted': False}

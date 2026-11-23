@@ -50,8 +50,8 @@ jobs:
     permissions:
       contents: read
     env:
-      # Actual adopted C commit fixed and published on the existing core branch.
-      CHECKPOINT_CORE_SHA: 894398b64abf7020679e32a9438c74af08476171
+      # Actual D04 visual repair commit fixed on the existing core branch.
+      CHECKPOINT_CORE_SHA: 5d8c55d2e9019bc0a2ed31df6cadaff257686a07
       CHECKPOINT_BASELINE_REPAIR_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
       CHECKPOINT_MATH_BASELINE_SHA: 900642faf76267546c5c7420b7d50a010516ca6e
       CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676

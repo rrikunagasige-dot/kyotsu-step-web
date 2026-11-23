@@ -531,7 +531,8 @@ export function validateMathRenderingFindingReport({state,output,target,codeRece
  assert.ok(Array.isArray(f.evidenceRefs)&&f.evidenceRefs.length&&new Set(f.evidenceRefs).size===f.evidenceRefs.length&&f.evidenceRefs.every(ref=>output.evidenceRefs.includes(ref)),'D04_CURRENT_REPORT_EVIDENCE');
  assert.ok(f.evidenceRefs.some(ref=>{const e=state.evidence[ref],d=e?.data,v=d?.math_prose_rendering;if(e?.kind!=='check'||e.verification_level!=='local_execution'||d.status!=='PASS'||d.source_sha!==state.candidate_sha||!v)return false;
   assert.ok(events.some(row=>row.seq<beforeSeq&&row.work===CP_PRIMARY&&row.kind==='evidence'&&canonical(row.payload)===canonical(e)),'D04_MEASUREMENTS_BEFORE_SEAL');assert.equal(v.findingId,MATH_RENDERING_FINDING);assert.equal(v.status,'PASS');assert.ok(Array.isArray(v.widths)&&v.widths.length===4&&v.widths.every(Number.isSafeInteger));assert.deepEqual([...v.widths].sort((a,b)=>a-b),[320,390,430,1440]);assert.equal(v.sampleCount,420);
-  for(const key of ['unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits','unitErrors','sourceMismatch'])assert.ok(Number.isSafeInteger(v[key])&&v[key]===0,'D04_ACTUAL_INTEGER_ZERO_'+key);return true;}),'D04_ACTUAL_CURRENT_FOUR_WIDTH_MEASUREMENTS');return true;
+  assert.ok(Number.isSafeInteger(v.visualLineSampleCount)&&v.visualLineSampleCount===420,'D04_ACTUAL_VISUAL_LINE_SAMPLES');
+  for(const key of ['unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits','unitErrors','sourceMismatch','visualLineUnverified'])assert.ok(Number.isSafeInteger(v[key])&&v[key]===0,'D04_ACTUAL_INTEGER_ZERO_'+key);return true;}),'D04_ACTUAL_CURRENT_FOUR_WIDTH_MEASUREMENTS');return true;
 }
 
 export function replayCheckpointExport({originSeed,originContractRaw,exportEnvelope}){

@@ -53,6 +53,11 @@ FIXTURE_SOURCE_ROOT = Path(os.environ.get('QF01_CHECKPOINT_SOURCE_ROOT', str(WOR
 INPUTS = (CONTRACT, BLOB, PROPOSAL, SOURCE_PROOF, SOURCE_SNAPSHOT)
 
 
+def mixed_baseline_root():
+    return Path(os.environ.get('QF01_CHECKPOINT_MIXED_BASELINE_ROOT',str(
+        WORKSPACE/'qf_audit_download/checkpoint-native-tests/D05_D3_BASELINE_SOURCE_20261123'))).resolve()
+
+
 def repair_fixture_bytes(relative, expected):
     """Keep historical B fixtures byte-exact when testing a newer renderer."""
     configured = os.environ.get('QF01_CHECKPOINT_BASELINE_REPAIR_ROOT')
@@ -145,7 +150,7 @@ def populate_nearby_fixture(root,*,product_root=None,candidate_sha='c'*40,curren
         'productPaths':list(NEARBY_REPAIR_PRODUCT_PATHS),'publicCodePathMaximum':20,
         'publicProposalPath':NEARBY_REPAIR_PROPOSAL_PATH,'nativeLedgerOrLearningOrCredentialsIncluded':False},'TEST_FIXTURE_D03_ADOPTION')
     for relative in NEARBY_REPAIR_PRODUCT_PATHS:
-        (root/relative).write_bytes(((Path(product_root) if product_root else ENGINE.parent)/relative).read_bytes())
+        (root/relative).write_bytes(((Path(product_root) if product_root else mixed_baseline_root())/relative).read_bytes())
     with patch('checkpoint.verify_candidate_git',return_value=None), patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}), (patch('checkpoint.current_core_identity',return_value=current_core) if current_core else nullcontext()):
         proof=rt.checkpoint_preflight(FIXED_WORK,candidate_sha=candidate_sha,
             informed_adoption_ref=d2,repair_adoption_ref=d3)
@@ -195,6 +200,82 @@ def populate_math_rendering_fixture(root):
     renderer=root/cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0]
     renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D04_NOT_AN_ACTUAL_PRODUCT_REPAIR\n')
     fixture.update(d4=d4,boundary=boundary,stateC=rt.state(FIXED_WORK),originalD03=previous)
+    return fixture
+
+
+def populate_mixed_inline_fixture(root):
+    """TEST_FIXTURE D3->D05. No genuine private native events/replies are copied.
+
+    Fixed public D3 bytes come from the independently pinned baseline. Private
+    predecessor event identities are replaced only at the fixture boundary;
+    real temp Store chain/preflight/state/manifest checks remain active.
+    """
+    import checkpoint as cp
+    from definitions import IMPLEMENTATION_FILES
+    root=Path(root);baseline=mixed_baseline_root()
+    for p,h in cp.MIXED_INLINE_REPAIR_BEFORE.items():
+        if hashlib.sha256((baseline/p).read_bytes()).hexdigest()!=h:
+            raise AssertionError('Fixed baseline-D3 repair mismatch: '+p)
+    fixture=populate_math_rendering_fixture(root);rt=fixture['rt'];store=fixture['store']
+    for p in cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS:(root/p).write_bytes((baseline/p).read_bytes())
+    old_core={'definitionHash':'cfa299292ca0475a7bfb7ff35a801d567722a7da1d200d9af640850c7140ab6c',
+        'files':{name:hashlib.sha256((baseline/'workflow'/name).read_bytes()).hexdigest() for name in IMPLEMENTATION_FILES}}
+    with patch.multiple('checkpoint',**fixture['boundary']),patch('checkpoint.current_core_identity',return_value=old_core),\
+            patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
+        old=rt.checkpoint_preflight(FIXED_WORK,candidate_sha=cp.MIXED_INLINE_REPAIR_BASELINE,
+            informed_adoption_ref=fixture['d2'],repair_adoption_ref=fixture['d3'],math_rendering_adoption_ref=fixture['d4'])
+        event=rt.migrate_checkpoint_definition(FIXED_WORK,proof=old,expected_head=old['ledgerHead'])
+    boundary={**fixture['boundary'],'MIXED_INLINE_REPAIR_D04_EVENT_HASH':event['hash'],
+        'MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256':digest(event['payload']['mathRenderingRepair'])}
+    target=root/cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH;target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(ENGINE.parent/cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,target)
+    body={'schemaVersion':'qf01-d05-actual-user-adoption/1','proposalSHA256':cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256,
+        'inventorySHA256':cp.MIXED_INLINE_REPAIR_INVENTORY_SHA256,'quote':cp.MIXED_INLINE_REPAIR_ADOPTION_QUOTE,
+        'source_ref':'request_user_input_async/'+cp.MIXED_INLINE_REPAIR_ADOPTION_CALL_ID,
+        'verification_level':'conversation_transcribed','adopted':True,'baselineSourceSHA':cp.MIXED_INLINE_REPAIR_BASELINE,
+        'productPaths':list(cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS),'beforeRepair':copy.deepcopy(cp.MIXED_INLINE_REPAIR_BEFORE),
+        'publicCodePathMaximum':20,'publicProposalPath':cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,
+        'nativeLedgerOrLearningOrCredentialsIncluded':False,
+        'originalD04MigrationEventHash':event['hash'],'originalD04SupplementSHA256':boundary['MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256'],
+        'fixtureKind':'TEST_FIXTURE_NO_ACTUAL_USER_ACTION_OR_MEASUREMENTS'}
+    path=root/'TEST_FIXTURE_D05_ADOPTION.json';path.write_text(json.dumps(body,ensure_ascii=False)+'\n',encoding='utf8')
+    with patch.multiple('checkpoint',**boundary):
+        d5=rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/protocol-only',verification_level='local_execution',eid='TEST_FIXTURE_D05_ADOPTION')
+    renderer=root/cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS[0]
+    renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D05_NOT_AN_ACTUAL_PRODUCT_REPAIR\n')
+    with patch.multiple('checkpoint',**boundary):state_d3=rt.state(FIXED_WORK)
+    fixture.update(d5=d5,boundary=boundary,stateD3=state_d3,originalD04=event)
+    return fixture
+
+
+def populate_inline_layout_fixture(root):
+    """Synthetic joint D3->D05+D06, never an invented intermediate D05 event."""
+    import checkpoint as cp
+    fixture=populate_mixed_inline_fixture(root);root=Path(root);rt=fixture['rt']
+    d05_raw=(root/'TEST_FIXTURE_D05_ADOPTION.json').read_bytes()
+    boundary={**fixture['boundary'],'INLINE_LAYOUT_ORIGINAL_D05_ADOPTION_SHA256':hashlib.sha256(d05_raw).hexdigest()}
+    path=root/cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH;path.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(ENGINE.parent/cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,path)
+    adopted={'schemaVersion':'qf01-d06-actual-user-adoption/1','proposalSHA256':cp.INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+        'quote':cp.INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE,'source_ref':'request_user_input_async/'+cp.INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID,
+        'verification_level':'conversation_transcribed','adopted':True,'baselineSourceSHA':cp.MIXED_INLINE_REPAIR_BASELINE,
+        'productPaths':list(cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS),'workingD05ProductSHA256':copy.deepcopy(cp.INLINE_LAYOUT_WORKING_D05_PRODUCT),
+        'originalD05ProposalSHA256':cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256,
+        'originalD05ActualAdoptionSHA256':boundary['INLINE_LAYOUT_ORIGINAL_D05_ADOPTION_SHA256'],
+        'publicCodePathMaximum':20,'publicProposalPathMaximum':2,'publicProposalPath':cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,
+        'originalD05PublicProposalPath':cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,'CIExecutionAuthorized':True,
+        'nativeLedgerOrLearningOrCredentialsIncluded':False,'jointMigrationRequired':True,'intermediateD05MigrationOrT02Performed':False,
+        'fixtureKind':'TEST_FIXTURE_NO_ACTUAL_USER_PAYLOAD_OR_NATIVE_HISTORY'}
+    path=root/'TEST_FIXTURE_D06_ADOPTION.json';path.write_text(json.dumps(adopted,ensure_ascii=False)+'\n',encoding='utf8')
+    boundary['INLINE_LAYOUT_ACTUAL_ADOPTION_SHA256']=hashlib.sha256(path.read_bytes()).hexdigest()
+    with patch.multiple('checkpoint',**boundary):
+        d6=rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/protocol-only',verification_level='local_execution',eid='TEST_FIXTURE_D06_ADOPTION')
+    renderer=root/cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS[0]
+    renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D06_NOT_ACTUAL_LAYOUT_REPAIR\n')
+    fixture.update(boundary=boundary,d6=d6)
     return fixture
 
 
@@ -2085,6 +2166,492 @@ class MathRenderingOwnerRevisionRuntimeTests(unittest.TestCase):
             # Read only the raw synthetic suffix to confirm the guarded API did
             # not add a subsequent revision after the explicit corruption.
             self.assertEqual(len(self.store._tail.events()),raw_count)
+
+
+class MixedInlineRecordTests(unittest.TestCase):
+    """TEST_FIXTURE-only D05 protocol; no actual new source/approval/measurements."""
+    def record(self):
+        import checkpoint as cp
+        return {'schemaVersion':'qf01-mixed-inline-surfaces-supplement/1',
+            'proposalSHA256':cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256,'inventorySHA256':cp.MIXED_INLINE_REPAIR_INVENTORY_SHA256,
+            'evidenceRef':'TEST_FIXTURE_D05','transcriptionSHA256':'a'*64,'quote':cp.MIXED_INLINE_REPAIR_ADOPTION_QUOTE,
+            'source_ref':'request_user_input_async/'+cp.MIXED_INLINE_REPAIR_ADOPTION_CALL_ID,
+            'verification_level':'conversation_transcribed','baselineSourceSHA':cp.MIXED_INLINE_REPAIR_BASELINE,
+            'candidateBeforeSHA':cp.MIXED_INLINE_REPAIR_BASELINE,'candidateBeforeManifestSHA256':'b'*64,
+            'candidateAfterSHA':'e'*40,'allowedProductPaths':list(cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS),
+            'beforeRepair':copy.deepcopy(cp.MIXED_INLINE_REPAIR_BEFORE),
+            'afterRepair':{p:'e'*64 for p in cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS},
+            'originalD04MigrationEventHash':cp.MIXED_INLINE_REPAIR_D04_EVENT_HASH,
+            'originalD04SupplementSHA256':cp.MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256,
+            'definitionHash':'d'*64,'implementationHash':'e'*64,'checkpointEpoch':'f'*64}
+
+    def test_exact_20_fields_preserve_d04_and_are_detached(self):
+        import checkpoint as cp
+        record=self.record();before=copy.deepcopy(record);out=cp.validate_mixed_inline_repair_record(record)
+        self.assertEqual(len(record),20);self.assertEqual(out,record)
+        out['afterRepair'].clear();self.assertEqual(record,before)
+        self.assertEqual(cp.MIXED_INLINE_REPAIR_BEFORE,before['beforeRepair'])
+        self.assertEqual(cp.MATH_RENDERING_REPAIR_BASELINE,'900642faf76267546c5c7420b7d50a010516ca6e')
+
+    def test_unknown_fields_wrong_adoption_inventory_epoch_and_retaged_history_are_rejected(self):
+        from checkpoint import validate_mixed_inline_repair_record
+        for key,value in [('schemaVersion','qf01-math-prose-rendering-supplement/1'),('proposalSHA256','0'*64),
+            ('inventorySHA256','0'*64),('quote','TEST_FIXTURE_CONTINUE_ONLY'),('source_ref','TEST_FIXTURE/other'),
+            ('verification_level','local_execution'),('baselineSourceSHA','c'*40),('originalD04MigrationEventHash','0'*64),
+            ('originalD04SupplementSHA256','0'*64),('beforeRepair',{}),('candidateBeforeManifestSHA256',True),
+            ('candidateAfterSHA',True),('evidenceRef','x'*129),('afterRepair',{}),('unadopted',True)]:
+            record=self.record();record[key]=value
+            with self.subTest(key=key),self.assertRaises(CheckpointRejected):validate_mixed_inline_repair_record(record)
+        with self.assertRaisesRegex(CheckpointRejected,'D05_REPAIR_EPOCH'):
+            validate_mixed_inline_repair_record(self.record(),epoch='0'*64)
+
+    def test_continuation_requires_actual_previous_and_immutable_adoption_and_no_rollback(self):
+        from checkpoint import validate_mixed_inline_repair_continuation
+        first=self.record();second=copy.deepcopy(first)
+        second.update(candidateBeforeSHA=first['candidateAfterSHA'],candidateAfterSHA='f'*40)
+        self.assertEqual(validate_mixed_inline_repair_continuation(first,second),second)
+        for key,value in [('candidateBeforeSHA','a'*40),('evidenceRef','TEST_FIXTURE_OTHER'),('checkpointEpoch','a'*64),
+            ('transcriptionSHA256','b'*64)]:
+            changed=copy.deepcopy(second);changed[key]=value
+            with self.subTest(key=key),self.assertRaises(CheckpointRejected):validate_mixed_inline_repair_continuation(first,changed)
+        changed=copy.deepcopy(second);changed['afterRepair']={p:'a'*64 for p in first['afterRepair']}
+        with self.assertRaisesRegex(CheckpointRejected,'D05_OLD_AFTERIMAGE_ROLLBACK'):
+            validate_mixed_inline_repair_continuation(first,changed,earlier_after=[changed['afterRepair']])
+
+    def test_d05_document_cannot_enter_normal_or_prior_scope(self):
+        from checkpoint import MIXED_INLINE_REPAIR_PROPOSAL_PATH
+        from adapters import _checkpoint_scope_diff
+        for kwargs in ({},{'nearby_repair':True},{'nearby_repair':True,'math_rendering_repair':True},
+            {'mixed_inline_repair':True}):
+            with self.subTest(kwargs=kwargs),self.assertRaises(Rejected):_checkpoint_scope_diff({MIXED_INLINE_REPAIR_PROPOSAL_PATH},**kwargs)
+        self.assertEqual(_checkpoint_scope_diff({MIXED_INLINE_REPAIR_PROPOSAL_PATH},nearby_repair=True,
+            math_rendering_repair=True,mixed_inline_repair=True),[MIXED_INLINE_REPAIR_PROPOSAL_PATH])
+
+    def test_first_or_later_d05_cannot_restore_known_b_c_or_d04_afterimage(self):
+        from checkpoint import mixed_inline_earlier_after,validate_mixed_inline_repair_continuation
+        seed=mixed_inline_earlier_after([MathRenderingRecordTests().record()])
+        for previous in (None,self.record()):
+            for image in seed:
+                current=self.record();current['afterRepair']=copy.deepcopy(image)
+                if previous is not None:current.update(candidateBeforeSHA=previous['candidateAfterSHA'],candidateAfterSHA='f'*40)
+                with self.subTest(previous=previous is not None,image=image),self.assertRaisesRegex(CheckpointRejected,'D05_OLD_AFTERIMAGE_ROLLBACK'):
+                    validate_mixed_inline_repair_continuation(previous,current,earlier_after=seed)
+
+
+def mixed_owner_revision_fixture():
+    """Pure TEST_FIXTURE; only private predecessor digest is a mocked boundary."""
+    import checkpoint as cp
+    f=math_owner_revision_fixture();historical=copy.deepcopy(f['math_records'][-1])
+    historical.update(candidateAfterSHA=cp.MIXED_INLINE_REPAIR_BASELINE,afterRepair=copy.deepcopy(cp.MIXED_INLINE_REPAIR_BEFORE))
+    records=[]
+    for i,source in enumerate(f['math_records']):
+        row=MixedInlineRecordTests().record()
+        row.update(originalD04SupplementSHA256=digest(historical),candidateBeforeSHA=cp.MIXED_INLINE_REPAIR_BASELINE if i==0 else records[-1]['candidateAfterSHA'],
+            candidateAfterSHA=source['candidateAfterSHA'],definitionHash=source['definitionHash'],implementationHash=source['implementationHash'],
+            afterRepair={p:('7' if i==0 else '8')*64 for p in source['afterRepair']})
+        records.append(row)
+    before=f['owner']['plan'];before['proposal']['hash']=cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256
+    before['proposal']['currentMaterialSourceSHA']=records[0]['candidateAfterSHA'];before['protected_manifest'].update(records[0]['afterRepair'])
+    proof=f['owner']['informed_technical_candidate_reconciliation']['proof']
+    proof.update(proposalSHA256=cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256,planSHA256=digest(before),
+        candidateSHA=records[0]['candidateAfterSHA'],core={'definitionHash':records[0]['definitionHash']},
+        implementationHash=records[0]['implementationHash'],gitProof={'currentMaterialGitProof':{
+            'mathRenderingRepair':historical,'mixedInlineRepair':records[0]}})
+    f['owner'].update(candidate_sha=records[0]['candidateAfterSHA'],definition_hash=records[0]['definitionHash'],
+        informed_technical_candidate_reconciliation={'proofRef':digest(proof),'proof':proof})
+    current=records[-1];primary=f['primary']
+    primary.update(candidate_sha=current['candidateAfterSHA'],definition_hash=current['definitionHash'],
+        candidate_manifest={**cp.CURRENT_REPAIR_AFTER,**current['afterRepair']},
+        checkpoint_definition_migration={'mathRenderingRepair':historical,'mixedInlineRepair':current})
+    body=primary['informed_review_method']['authority']
+    body.update(currentSourceSHA=primary['candidate_sha'],candidateManifestSHA256=digest(primary['candidate_manifest']),
+        definitionHash=current['definitionHash'],core={'definitionHash':current['definitionHash']},
+        implementationHash=current['implementationHash'],evidenceRefs=[current['evidenceRef']])
+    primary['informed_review_method']={'authorityRef':digest(body),'authority':body}
+    after=copy.deepcopy(before);after['proposal']['currentMaterialSourceSHA']=current['candidateAfterSHA'];after['protected_manifest'].update(current['afterRepair'])
+    f.update(new_plan=after,math_records=[historical],mixed_records=records,historicalDigest=digest(historical))
+    return f
+
+
+class MixedInlineOwnerRevisionTests(unittest.TestCase):
+    def validate(self,f):
+        from checkpoint import validate_math_rendering_owner_revision
+        with patch('checkpoint.MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256',f['historicalDigest']):
+            return validate_math_rendering_owner_revision(f['owner'],f['primary'],f['new_plan'],
+                original_plan=f['original_plan'],math_records=f['math_records'],mixed_records=f['mixed_records'],epoch=f['epoch'])
+
+    def test_lagging_d05_owner_catches_core_only_followup_without_new_adoption_or_source_rewrite(self):
+        f=mixed_owner_revision_fixture();before=copy.deepcopy(f)
+        self.assertEqual(self.validate(f),f['new_plan']);self.assertEqual(f,before)
+        self.assertNotEqual(f['owner']['definition_hash'],f['primary']['definition_hash'])
+        self.assertEqual(f['mixed_records'][1]['afterRepair'],f['mixed_records'][2]['afterRepair'])
+
+    def test_same_adoption_cannot_change_meaning_or_other_proposal_metadata(self):
+        for field in ('rules','scope','source_sha','agent_team','source_extension','parent_work'):
+            f=mixed_owner_revision_fixture();f['new_plan'][field]={'TEST_FIXTURE_UNADOPTED':True}
+            with self.subTest(field=field),self.assertRaises(CheckpointRejected):self.validate(f)
+        f=mixed_owner_revision_fixture();f['new_plan']['proposal']['unadopted']=True
+        with self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_only_two_of_418_protected_hashes_may_change(self):
+        for mode in ('third','drop','add','wrong-two'):
+            f=mixed_owner_revision_fixture();p=f['new_plan']['protected_manifest']
+            if mode=='third':p['TEST_FIXTURE/protected/0']='0'*64
+            elif mode=='drop':p.pop('TEST_FIXTURE/protected/0')
+            elif mode=='add':p['TEST_FIXTURE/extra']='0'*64
+            else:p[next(iter(f['mixed_records'][0]['afterRepair']))]='0'*64
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_rehashed_old_owner_proof_cannot_substitute_current_or_historical_source(self):
+        for mode in ('plan','source','manifest','mixed','math'):
+            f=mixed_owner_revision_fixture();w=f['owner']['informed_technical_candidate_reconciliation'];p=w['proof']
+            if mode=='plan':p['planSHA256']='0'*64
+            elif mode=='source':p['candidateSHA']='0'*40
+            elif mode=='manifest':p['candidateManifest']={}
+            elif mode=='mixed':p['gitProof']['currentMaterialGitProof']['mixedInlineRepair']=f['mixed_records'][1]
+            else:p['gitProof']['currentMaterialGitProof']['mathRenderingRepair']={}
+            w['proofRef']=digest(p)
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_actual_history_current_authority_and_both_operation_states_are_required(self):
+        for mode in ('missing-math','duplicate-math','missing-mixed','revoked','claims','patch','external'):
+            f=mixed_owner_revision_fixture()
+            if mode=='missing-math':f['math_records']=[]
+            elif mode=='duplicate-math':f['math_records']*=2
+            elif mode=='missing-mixed':f['mixed_records']=f['mixed_records'][1:]
+            elif mode=='revoked':f['primary']['informed_review_method']['revoked']=True
+            elif mode=='claims':f['primary']['claims']={'TEST_FIXTURE':{}}
+            elif mode=='patch':f['owner']['patches']={'TEST_FIXTURE':{'completed':False}}
+            else:f['owner']['external']={'TEST_FIXTURE':{'outcome':None}}
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+
+class MixedInlineMeasurementTests(unittest.TestCase):
+    def measurements(self):
+        from team import MIXED_INLINE_FINDING_IDS,MIXED_INLINE_ZERO_COUNTERS
+        from checkpoint import MIXED_INLINE_REPAIR_INVENTORY_SHA256
+        return {'schemaVersion':'qf01-mixed-inline-surfaces-measurements/1','status':'PASS',
+            'inventorySHA256':MIXED_INLINE_REPAIR_INVENTORY_SHA256,'findingIds':list(MIXED_INLINE_FINDING_IDS),
+            'widths':[320,390,430,1440],'groups':{key:{'sampleCount':count,'visualLineSampleCount':count,
+                'measurementCount':1,**{k:0 for k in MIXED_INLINE_ZERO_COUNTERS}} for key,count in
+                (('main',420),('help',280),('secondHint',140))},
+            'sourceCoverage':{key:{'expected':count,'observed':count,'unverified':0} for key,count in (('marker',23),('choice',24))}}
+
+    def test_three_operation_groups_and_47_source_coverage_are_separate(self):
+        from team import validate_mixed_inline_measurements
+        m=self.measurements();self.assertEqual(validate_mixed_inline_measurements(m),m)
+        m['widths'].reverse();self.assertEqual(validate_mixed_inline_measurements(m),m)
+
+    def test_each_group_missing_bool_negative_or_partial_measurement_is_rejected(self):
+        from team import validate_mixed_inline_measurements,MIXED_INLINE_ZERO_COUNTERS
+        for group in ('main','help','secondHint'):
+            for key in (*MIXED_INLINE_ZERO_COUNTERS,'sampleCount','visualLineSampleCount','measurementCount'):
+                for invalid in (None,False,-1):
+                    m=self.measurements();m['groups'][group][key]=invalid
+                    with self.subTest(group=group,key=key,invalid=invalid),self.assertRaises(Rejected):validate_mixed_inline_measurements(m)
+            m=self.measurements();m['groups'].pop(group)
+            with self.assertRaises(Rejected):validate_mixed_inline_measurements(m)
+        m=self.measurements();m['groups']['main']['measurementCount']=2**53
+        with self.assertRaises(Rejected):validate_mixed_inline_measurements(m)
+
+    def test_extra_or_missing_visible_sources_and_finding_identity_are_not_coerced_to_zero(self):
+        from team import validate_mixed_inline_measurements
+        for key in ('marker','choice'):
+            for value in (0,True,999):
+                m=self.measurements();m['sourceCoverage'][key]['observed']=value
+                with self.subTest(key=key,value=value),self.assertRaises(Rejected):validate_mixed_inline_measurements(m)
+        for key,value in [('findingIds',[]),('inventorySHA256','0'*64),('widths',[320,390,430,True])]:
+            m=self.measurements();m[key]=value
+            with self.assertRaises(Rejected):validate_mixed_inline_measurements(m)
+
+
+class MixedInlineFindingTests(unittest.TestCase):
+    """Isolated finding guard, not real reports, CODE execution or acceptance.
+
+    Real temp file hashes and current measurement/finding fields are checked.
+    Existing native D02/D04 suites separately exercise the transport/seal.
+    """
+    def setUp(self):
+        from types import SimpleNamespace
+        import checkpoint as cp
+        from team import MIXED_INLINE_FINDING_IDS
+        temporary=tempfile.TemporaryDirectory(prefix='TEST_FIXTURE_D05_finding_');self.addCleanup(temporary.cleanup)
+        root=Path(temporary.name).resolve();self.findings=list(MIXED_INLINE_FINDING_IDS)
+        original={'schemaVersion':'qf01-d3-open-other-inline-surfaces/1','status':'OPEN_CONFIRMED_CURRENT_D3',
+            'sourceSHA':cp.MIXED_INLINE_REPAIR_BASELINE,'findingIds':self.findings,'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_PRIVATE_DIAGNOSTIC'}
+        path=root/'TEST_FIXTURE_D3_DIAGNOSTIC.json';path.write_text(json.dumps(original)+'\n',encoding='utf8')
+        original_sha=hashlib.sha256(path.read_bytes()).hexdigest()
+        self.prior='E-QF01-D3-OPEN-OTHER-INLINE-SURFACES-20261123';self.measured='TEST_FIXTURE_CURRENT_MEASURED'
+        self.state={'candidate_sha':'e'*40,'evidence':{
+            self.prior:{'kind':'file','verification_level':'local_execution','data':{
+                'path':path.name,'sha256':original_sha,'source_sha':cp.MIXED_INLINE_REPAIR_BASELINE}},
+            self.measured:{'kind':'check','verification_level':'local_execution','data':{
+                'status':'PASS','source_sha':'e'*40,'mixed_inline_rendering':MixedInlineMeasurementTests().measurements()}}}}
+        self.rt=SimpleNamespace(root=root,store=SimpleNamespace(get=lambda ref:{'artifactRefs':['TEST_FIXTURE_CODE']}))
+        self.required=[{'claimRef':'TEST_FIXTURE_RENDER','facet':'render','reviewKind':'layout'}]
+        self.reviews=[]
+        for ref in cp.INFORMED_REVIEWERS:
+            assignment={'performerRef':ref,'targetManifestRef':'TEST_FIXTURE_CURRENT_TARGET'}
+            out={**self.required[0],'evidenceRefs':[self.measured],'codeReceiptRefs':['TEST_FIXTURE_CODE'],
+                'findings':[{'findingId':finding,**self.required[0],'resolution':'VERIFIED_FIXED',
+                    'reexaminesEvidenceRef':self.prior,'reason':'TEST_FIXTURE_PROTOCOL_ONLY_NOT_ACTUAL_REVIEW',
+                    'evidenceRefs':[self.measured]} for finding in self.findings]}
+            self.reviews.append((assignment,out,{}))
+        boundary=patch('team.MIXED_INLINE_ORIGINAL_D3_DIAGNOSTIC_SHA256',original_sha);boundary.start();self.addCleanup(boundary.stop)
+        context=patch('checkpoint.current_product_repair_context',return_value={'mixedInlineRepair':{'fixtureKind':'TEST_FIXTURE'}})
+        context.start();self.addCleanup(context.stop)
+
+    def check(self):
+        from team import _check_mixed_inline_finding_resolution
+        return _check_mixed_inline_finding_resolution(self.rt,self.state,{},None,self.reviews,self.required,
+            ['TEST_FIXTURE_CODE'],[self.measured])
+
+    def test_all_three_findings_require_both_current_reports_real_file_and_distinct_measurements(self):
+        self.assertIsNone(self.check())
+
+    def test_each_reviewer_cannot_omit_or_misattribute_any_prior_finding(self):
+        original=copy.deepcopy(self.reviews)
+        for reviewer in range(2):
+            for i in range(3):
+                for mode in ('omit','old-ref','open','no-current-evidence'):
+                    self.reviews=copy.deepcopy(original);findings=self.reviews[reviewer][1]['findings']
+                    if mode=='omit':findings.pop(i)
+                    elif mode=='old-ref':findings[i]['reexaminesEvidenceRef']='TEST_FIXTURE_OTHER'
+                    elif mode=='open':findings[i]['resolution']='OPEN'
+                    else:findings[i]['evidenceRefs']=[]
+                    with self.subTest(reviewer=reviewer,finding=i,mode=mode),self.assertRaises(Rejected):self.check()
+
+    def test_each_report_needs_current_code_and_420_280_140_groups_cannot_borrow_old_d04_counts(self):
+        original=copy.deepcopy(self.reviews)
+        for reviewer in range(2):
+            self.reviews=copy.deepcopy(original);self.reviews[reviewer][1]['codeReceiptRefs']=[]
+            with self.subTest(reviewer=reviewer),self.assertRaises(Rejected):self.check()
+        self.reviews=original
+        measurement=self.state['evidence'][self.measured]['data']['mixed_inline_rendering']
+        measurement['groups']['secondHint']['sampleCount']=0
+        with self.assertRaisesRegex(Rejected,'D05_CURRENT_VISIBLE_MIXED_MEASUREMENTS:secondHint'):self.check()
+
+    def test_old_source_measurement_or_changed_original_file_is_not_current_fix_evidence(self):
+        self.state['evidence'][self.measured]['data']['source_sha']='d'*40
+        with self.assertRaisesRegex(Rejected,'D05_ACTUAL_MIXED_UI_MEASUREMENTS_REQUIRED'):self.check()
+        self.state['evidence'][self.measured]['data']['source_sha']='e'*40
+        path=self.rt.root/self.state['evidence'][self.prior]['data']['path'];path.write_bytes(path.read_bytes()+b' ')
+        with self.assertRaisesRegex(Rejected,'D05_ORIGINAL_D3_DIAGNOSTIC_CHANGED'):self.check()
+
+
+class InlineLayoutRecordTests(unittest.TestCase):
+    """D06 TEST_FIXTURE records do not establish a real adoption or source."""
+    def mixed(self):
+        import checkpoint as cp
+        mixed=MixedInlineRecordTests().record();mixed['transcriptionSHA256']=cp.INLINE_LAYOUT_ORIGINAL_D05_ADOPTION_SHA256
+        return mixed
+
+    def record(self,mixed=None):
+        import checkpoint as cp
+        mixed=self.mixed() if mixed is None else mixed
+        return {'schemaVersion':'qf01-mixed-inline-layout-supplement/1','proposalSHA256':cp.INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+            'evidenceRef':'TEST_FIXTURE_D06','transcriptionSHA256':'6'*64,'quote':cp.INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE,
+            'source_ref':'request_user_input_async/'+cp.INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID,'verification_level':'conversation_transcribed',
+            'mixedInlineRepairSHA256':digest(mixed),'checkpointEpoch':mixed['checkpointEpoch'],
+            'allowedProductPaths':list(cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS)}
+
+    def test_exact10_alias_preserves_d05_exact20_and_same_current(self):
+        import checkpoint as cp
+        mixed=self.mixed();record=self.record(mixed);before=copy.deepcopy((record,mixed))
+        self.assertEqual(len(record),10);self.assertEqual(len(mixed),20)
+        self.assertEqual(cp.validate_inline_layout_repair_record(record,mixed=mixed),record)
+        self.assertEqual((record,mixed),before)
+
+    def test_unknown_fields_wrong_adoption_epoch_alias_and_unapproved_d05_raw_are_rejected(self):
+        import checkpoint as cp
+        for key,value in [('proposalSHA256','0'*64),('quote','TEST_FIXTURE_OTHER'),('source_ref','TEST_FIXTURE/other'),
+            ('verification_level','local_execution'),('mixedInlineRepairSHA256','0'*64),('checkpointEpoch','0'*64),
+            ('allowedProductPaths',[]),('evidenceRef','x'*129),('unadopted',True)]:
+            mixed=self.mixed();record=self.record(mixed);record[key]=value
+            with self.subTest(key=key),self.assertRaises(CheckpointRejected):cp.validate_inline_layout_repair_record(record,mixed=mixed)
+        mixed=self.mixed();mixed['transcriptionSHA256']='0'*64;record=self.record(mixed)
+        with self.assertRaisesRegex(CheckpointRejected,'D06_ORIGINAL_ACTUAL_D05_ADOPTION_REQUIRED'):
+            cp.validate_inline_layout_repair_record(record,mixed=mixed)
+
+    def test_continuation_updates_only_current_mixed_digest_and_requires_both_aliases(self):
+        import checkpoint as cp
+        old=self.mixed();first=self.record(old);new=copy.deepcopy(old)
+        new.update(candidateBeforeSHA=old['candidateAfterSHA'],candidateAfterSHA='f'*40)
+        second=self.record(new)
+        self.assertEqual(cp.validate_inline_layout_repair_continuation(first,second,mixed=new,previous_mixed=old),second)
+        for kwargs in ({'mixed':None},{'mixed':new},{'mixed':new,'previous_mixed':new}):
+            with self.subTest(kwargs=kwargs),self.assertRaises(CheckpointRejected):
+                cp.validate_inline_layout_repair_continuation(first,second,**kwargs)
+        changed=copy.deepcopy(second);changed['evidenceRef']='TEST_FIXTURE_REPLACED'
+        with self.assertRaisesRegex(CheckpointRejected,'D06_PRESERVED_SUPPLEMENTAL_ADOPTION'):
+            cp.validate_inline_layout_repair_continuation(first,changed,mixed=new,previous_mixed=old)
+
+    def test_d06_document_requires_both_adopted_scopes(self):
+        from checkpoint import INLINE_LAYOUT_REPAIR_PROPOSAL_PATH
+        from adapters import _checkpoint_scope_diff
+        flags={'nearby_repair':True,'math_rendering_repair':True,'mixed_inline_repair':True}
+        with self.assertRaises(Rejected):_checkpoint_scope_diff({INLINE_LAYOUT_REPAIR_PROPOSAL_PATH},**flags)
+        self.assertEqual(_checkpoint_scope_diff({INLINE_LAYOUT_REPAIR_PROPOSAL_PATH},**flags,inline_layout_repair=True),[INLINE_LAYOUT_REPAIR_PROPOSAL_PATH])
+        with self.assertRaises(Rejected):_checkpoint_scope_diff({INLINE_LAYOUT_REPAIR_PROPOSAL_PATH},inline_layout_repair=True)
+
+
+class InlineLayoutMeasurementTests(unittest.TestCase):
+    def measurements(self):
+        from team import INLINE_LAYOUT_FINDING_ID,INLINE_LAYOUT_ZERO_COUNTERS,INLINE_LAYOUT_BOUNDARY_SOURCES
+        def group(count):return {'sampleCount':count,'parentContainmentSampleCount':count,'measuredAncestorCount':count,
+            'notApplicableAncestorCount':count,**{key:0 for key in INLINE_LAYOUT_ZERO_COUNTERS}}
+        return {'schemaVersion':'qf01-mixed-inline-layout-measurements/1','status':'PASS','findingId':INLINE_LAYOUT_FINDING_ID,
+            'imageGeometryStable':True,'widths':[320,390,430,1440],
+            'groups':{k:group(v) for k,v in (('main',420),('help',280),('secondHint',140))},
+            'boundarySamples':[{'width':width,'case':case,'source':copy.deepcopy(source),**group(1),
+                'fontPx':21.78,'naturalWidthPx':211.5 if case=='secondHint' else 218.515625,'availableWidthPx':220.625}
+                for width in (360,361) for case,source in INLINE_LAYOUT_BOUNDARY_SOURCES.items()]}
+
+    def test_all840_samples_distinguish_real_ancestors_and_not_applicable_with_four_visible_boundaries(self):
+        from team import validate_inline_layout_measurements
+        m=self.measurements();self.assertEqual(validate_inline_layout_measurements(m),m)
+        m['groups']['main']['notApplicableAncestorCount']=0
+        self.assertEqual(validate_inline_layout_measurements(m),m)
+
+    def test_each_group_bool_missing_unknown_overflow_and_zero_real_measurement_are_rejected(self):
+        from team import validate_inline_layout_measurements,INLINE_LAYOUT_ZERO_COUNTERS
+        for group in ('main','help','secondHint'):
+            for key in ('sampleCount','parentContainmentSampleCount','measuredAncestorCount','notApplicableAncestorCount',*INLINE_LAYOUT_ZERO_COUNTERS):
+                for invalid in (None,False,-1):
+                    m=self.measurements();m['groups'][group][key]=invalid
+                    with self.subTest(group=group,key=key,invalid=invalid),self.assertRaises(Rejected):validate_inline_layout_measurements(m)
+            m=self.measurements();m['groups'][group]['measuredAncestorCount']=0
+            with self.assertRaises(Rejected):validate_inline_layout_measurements(m)
+        m=self.measurements();m['groups']['main']['overflowingFlowCount']=1
+        with self.assertRaises(Rejected):validate_inline_layout_measurements(m)
+
+    def test_boundary_missing_duplicated_wrong_source_font_shrink_and_parent_overflow_are_rejected(self):
+        from team import validate_inline_layout_measurements
+        for mode in ('missing','duplicate','source','font','overflow','unverified','image'):
+            m=self.measurements();row=m['boundarySamples'][0]
+            if mode=='missing':m['boundarySamples'].pop()
+            elif mode=='duplicate':m['boundarySamples'][1]=copy.deepcopy(row)
+            elif mode=='source':row['source']['interactionId']='TEST_FIXTURE_OTHER'
+            elif mode=='font':row['fontPx']=18
+            elif mode=='overflow':row['availableWidthPx']=184.65625
+            elif mode=='unverified':row['unverified']=1
+            else:m['imageGeometryStable']=False
+            with self.subTest(mode=mode),self.assertRaises(Rejected):validate_inline_layout_measurements(m)
+
+
+def inline_layout_owner_revision_fixture():
+    """Pure TEST_FIXTURE history and owner proof; no real native data is used."""
+    import checkpoint as cp
+    f=mixed_owner_revision_fixture()
+    for record in f['mixed_records']:record['transcriptionSHA256']=cp.INLINE_LAYOUT_ORIGINAL_D05_ADOPTION_SHA256
+    layouts=[InlineLayoutRecordTests().record(mixed) for mixed in f['mixed_records']]
+    before=f['owner']['plan'];after=f['new_plan']
+    for plan in (before,after):plan['proposal'].update(hash=cp.INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,id='TEST_FIXTURE_D06')
+    wrapper=f['owner']['informed_technical_candidate_reconciliation'];proof=wrapper['proof']
+    proof.update(proposalSHA256=cp.INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,planSHA256=digest(before))
+    proof['gitProof']['currentMaterialGitProof']['mixedInlineRepair']=f['mixed_records'][0]
+    proof['gitProof']['currentMaterialGitProof']['inlineLayoutRepair']=layouts[0];wrapper['proofRef']=digest(proof)
+    f['primary']['checkpoint_definition_migration']['inlineLayoutRepair']=layouts[-1]
+    body=f['primary']['informed_review_method']['authority'];body['evidenceRefs'].append(layouts[-1]['evidenceRef'])
+    f['primary']['informed_review_method']['authorityRef']=digest(body)
+    f['layout_records']=layouts
+    return f
+
+
+class InlineLayoutOwnerRevisionTests(unittest.TestCase):
+    def validate(self,f):
+        from checkpoint import validate_math_rendering_owner_revision
+        with patch('checkpoint.MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256',f['historicalDigest']):
+            return validate_math_rendering_owner_revision(f['owner'],f['primary'],f['new_plan'],original_plan=f['original_plan'],
+                math_records=f['math_records'],mixed_records=f['mixed_records'],layout_records=f['layout_records'],epoch=f['epoch'])
+
+    def test_joint_d06_owner_uses_real_paired_records_and_last_proof_with_only_two_protections(self):
+        f=inline_layout_owner_revision_fixture();before=copy.deepcopy(f)
+        self.assertEqual(self.validate(f),f['new_plan']);self.assertEqual(f,before)
+        self.assertNotEqual(f['owner']['definition_hash'],f['primary']['definition_hash'])
+
+    def test_missing_reordered_or_foreign_layout_history_and_last_proof_are_rejected(self):
+        for mode in ('missing','reordered','alias','proof','authority'):
+            f=inline_layout_owner_revision_fixture()
+            if mode=='missing':f['layout_records']=f['layout_records'][1:]
+            elif mode=='reordered':f['layout_records'].reverse()
+            elif mode=='alias':f['layout_records'][0]['mixedInlineRepairSHA256']=digest(f['mixed_records'][1])
+            elif mode=='proof':
+                w=f['owner']['informed_technical_candidate_reconciliation']
+                w['proof']['gitProof']['currentMaterialGitProof']['inlineLayoutRepair']=f['layout_records'][1];w['proofRef']=digest(w['proof'])
+            else:
+                method=f['primary']['informed_review_method'];method['authority']['evidenceRefs'].remove('TEST_FIXTURE_D06')
+                method['authorityRef']=digest(method['authority'])
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+    def test_d05_same_adoption_cannot_reuse_the_joint_current_d06(self):
+        import checkpoint as cp
+        f=inline_layout_owner_revision_fixture()
+        for plan in (f['owner']['plan'],f['new_plan']):plan['proposal']['hash']=cp.MIXED_INLINE_REPAIR_PROPOSAL_SHA256
+        with self.assertRaisesRegex(CheckpointRejected,'D06_OWNER_CANNOT_REUSE_EARLIER_ADOPTION'):self.validate(f)
+
+    def test_same_d06_cannot_change_plan_meaning_or_other416_or_claim_current_record_without_current_code(self):
+        for mode in ('scope','third','source','claims','revoked'):
+            f=inline_layout_owner_revision_fixture()
+            if mode=='scope':f['new_plan']['scope']['paths'].append('TEST_FIXTURE_UNADOPTED.py')
+            elif mode=='third':f['new_plan']['protected_manifest']['TEST_FIXTURE/protected/0']='0'*64
+            elif mode=='source':f['new_plan']['source_sha']='0'*40
+            elif mode=='claims':f['primary']['claims']={'TEST_FIXTURE':{}}
+            else:f['primary']['informed_review_method']['revoked']=True
+            with self.subTest(mode=mode),self.assertRaises(CheckpointRejected):self.validate(f)
+
+
+class InlineLayoutFindingTests(unittest.TestCase):
+    """Direct working-finding guard only, never a genuine report or receipt."""
+    def setUp(self):
+        MixedInlineFindingTests.setUp(self)
+        import checkpoint as cp
+        from team import INLINE_LAYOUT_FINDING_ID,INLINE_LAYOUT_ORIGINAL_EVIDENCE_ID
+        original={'schemaVersion':'qf01-d05-working-second-hint-overflow-finding/1','findingId':INLINE_LAYOUT_FINDING_ID,
+            'status':'OPEN_CONFIRMED_WORKING_IMPLEMENTATION','actualNativeCandidateSHA':cp.MIXED_INLINE_REPAIR_BASELINE,
+            'newActualGitSHA':None,'workingRendererSHA256':cp.INLINE_LAYOUT_WORKING_D05_PRODUCT[cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS[0]],
+            'workingTestSHA256':cp.INLINE_LAYOUT_WORKING_D05_PRODUCT[cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS[1]],
+            'productChangedAfterFinding':False,'newLayoutDesignAdopted':False,'blocksMaterialPASS':True,
+            'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_WORKING_DIAGNOSTIC'}
+        path=self.rt.root/'TEST_FIXTURE_D05_WORKING_OVERFLOW.json';path.write_text(json.dumps(original)+'\n',encoding='utf8')
+        h=hashlib.sha256(path.read_bytes()).hexdigest();self.prior=INLINE_LAYOUT_ORIGINAL_EVIDENCE_ID
+        self.state['evidence'][self.prior]={'kind':'file','verification_level':'local_execution','data':{'path':path.name,'sha256':h}}
+        self.state['evidence'][self.measured]['data']['inline_layout_rendering']=InlineLayoutMeasurementTests().measurements()
+        for _,out,_ in self.reviews:
+            out['findings']=[{'findingId':INLINE_LAYOUT_FINDING_ID,**self.required[0],'resolution':'VERIFIED_FIXED',
+                'reexaminesEvidenceRef':self.prior,'reason':'TEST_FIXTURE_PROTOCOL_ONLY','evidenceRefs':[self.measured]}]
+        boundary=patch('team.INLINE_LAYOUT_ORIGINAL_DIAGNOSTIC_SHA256',h);boundary.start();self.addCleanup(boundary.stop)
+        context=patch('checkpoint.current_product_repair_context',return_value={'inlineLayoutRepair':{'fixtureKind':'TEST_FIXTURE'}})
+        context.start();self.addCleanup(context.stop)
+
+    def check(self):
+        from team import _check_inline_layout_finding_resolution
+        return _check_inline_layout_finding_resolution(self.rt,self.state,{},None,self.reviews,self.required,
+            ['TEST_FIXTURE_CODE'],[self.measured])
+
+    def test_both_current_reports_reexamine_working_source_without_creating_formal_d05_history(self):
+        self.assertIsNone(self.check())
+
+    def test_each_report_requires_width_finding_current_code_and_new_parent_measurements(self):
+        original=copy.deepcopy(self.reviews)
+        for reviewer in range(2):
+            for mode in ('omit','open','wrong-history','code'):
+                self.reviews=copy.deepcopy(original);out=self.reviews[reviewer][1]
+                if mode=='omit':out['findings']=[]
+                elif mode=='open':out['findings'][0]['resolution']='OPEN'
+                elif mode=='wrong-history':out['findings'][0]['reexaminesEvidenceRef']='TEST_FIXTURE_FORMAL_D05'
+                else:out['codeReceiptRefs']=[]
+                with self.subTest(reviewer=reviewer,mode=mode),self.assertRaises(Rejected):self.check()
+        self.reviews=original;self.state['evidence'][self.measured]['data']['inline_layout_rendering']['groups']['secondHint']['overflowingMathBaseCount']=1
+        with self.assertRaises(Rejected):self.check()
+
+    def test_rehashed_working_diagnostic_cannot_be_retagged_as_actual_new_git_source(self):
+        import team
+        data=self.state['evidence'][self.prior]['data'];path=self.rt.root/data['path'];value=json.loads(path.read_bytes())
+        value['newActualGitSHA']='e'*40;value['status']='OPEN_CONFIRMED_CURRENT_D05'
+        path.write_text(json.dumps(value)+'\n',encoding='utf8');h=hashlib.sha256(path.read_bytes()).hexdigest();data['sha256']=h
+        with patch('team.INLINE_LAYOUT_ORIGINAL_DIAGNOSTIC_SHA256',h),self.assertRaisesRegex(Rejected,'D06_ORIGINAL_WORKING_QUALIFICATION_NOT_FORMAL_D05'):
+            self.check()
 
 
 if __name__ == '__main__':

@@ -1054,7 +1054,7 @@ _CHECKPOINT_CANDIDATE_FIELDS = frozenset((
     'patchExecutedAgain','originalPatchEventRecovered','semanticAcceptance','gateAccepted'))
 
 
-def _checkpoint_scope_diff(changed,*,nearby_repair=False,math_rendering_repair=False):
+def _checkpoint_scope_diff(changed,*,nearby_repair=False,math_rendering_repair=False,mixed_inline_repair=False,inline_layout_repair=False):
     """Bound the entire candidate delta, including files outside product/core."""
     import re
     from contracts import Rejected
@@ -1075,6 +1075,14 @@ def _checkpoint_scope_diff(changed,*,nearby_repair=False,math_rendering_repair=F
         from checkpoint import MATH_RENDERING_REPAIR_PROPOSAL_PATH
         need(nearby_repair,'D04_ORIGINAL_D03_SCOPE_REQUIRED')
         records.add(MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+    if mixed_inline_repair:
+        from checkpoint import MIXED_INLINE_REPAIR_PROPOSAL_PATH
+        need(math_rendering_repair,'D05_ORIGINAL_D04_SCOPE_REQUIRED')
+        records.add(MIXED_INLINE_REPAIR_PROPOSAL_PATH)
+    if inline_layout_repair:
+        from checkpoint import INLINE_LAYOUT_REPAIR_PROPOSAL_PATH
+        need(mixed_inline_repair,'D06_JOINT_D05_SCOPE_REQUIRED')
+        records.add(INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
     records.update('work/items/W-MATH-QF01-P046-R3-continuation-20261122/'+name+'.md'
                    for name in ('WORK','ACTION_LOG','FINDINGS','VERIFICATION','RECOVERY_HANDOFF'))
     native='work/recovery-checkpoints/qf01-p046-r3/'
@@ -1091,7 +1099,7 @@ def _checkpoint_scope_diff(changed,*,nearby_repair=False,math_rendering_repair=F
 
 
 def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_repair=None,
-                          math_rendering_repair=None):
+                          math_rendering_repair=None,mixed_inline_repair=None,inline_layout_repair=None):
     """Read Git trees and current bytes; do not fetch, change refs, or refresh index."""
     from checkpoint import (FIXED_SOURCE,CURRENT_REPAIR_AFTER,current_nearby_repair,
         validate_nearby_repair_record,nearby_repair_adoption_file,NEARBY_REPAIR_BASELINE,
@@ -1101,15 +1109,38 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
         MATH_RENDERING_REPAIR_BASELINE,MATH_RENDERING_REPAIR_BEFORE,
         MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,MATH_RENDERING_REPAIR_CORE_PATHS,
         MATH_RENDERING_REPAIR_PRODUCT_PATHS,MATH_RENDERING_REPAIR_PROPOSAL_PATH,
-        MATH_RENDERING_REPAIR_PROPOSAL_SHA256)
+        MATH_RENDERING_REPAIR_PROPOSAL_SHA256,validate_mixed_inline_repair_record,
+        mixed_inline_repair_adoption_file,MIXED_INLINE_REPAIR_BASELINE,MIXED_INLINE_REPAIR_BEFORE,
+        MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256,MIXED_INLINE_REPAIR_CORE_PATHS,
+        MIXED_INLINE_REPAIR_PRODUCT_PATHS,MIXED_INLINE_REPAIR_PROPOSAL_PATH,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,
+        validate_inline_layout_repair_record,inline_layout_repair_adoption_file,
+        INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256)
     from capabilities import implementation_hash
-    if nearby_repair is None and math_rendering_repair is None:
+    if nearby_repair is None and math_rendering_repair is None and mixed_inline_repair is None and inline_layout_repair is None:
         context=current_product_repair_context(rt,state)
         nearby_repair=context['nearbyRepair'];math_rendering_repair=context['mathRenderingRepair']
+        mixed_inline_repair=context['mixedInlineRepair']
+        inline_layout_repair=context['inlineLayoutRepair']
     else:
         nearby_repair=validate_nearby_repair_record(nearby_repair,epoch=rt.store.checkpoint_epoch,check=need)
         adopted=nearby_repair_adoption_file(rt,state,nearby_repair['evidenceRef'])
         need(all(nearby_repair.get(key)==value for key,value in adopted.items()),'D03_GIT_ACTUAL_ADOPTION')
+    if inline_layout_repair is not None:
+        need(mixed_inline_repair is not None,'D06_JOINT_D05_GIT_REQUIRED')
+        inline_layout_repair=validate_inline_layout_repair_record(inline_layout_repair,mixed=mixed_inline_repair,
+            epoch=rt.store.checkpoint_epoch,check=need)
+        adopted=inline_layout_repair_adoption_file(rt,state,inline_layout_repair['evidenceRef'])
+        need(all(inline_layout_repair.get(k)==v for k,v in adopted.items()),'D06_GIT_ACTUAL_ADOPTION')
+    if mixed_inline_repair:
+        mixed_inline_repair=validate_mixed_inline_repair_record(mixed_inline_repair,epoch=rt.store.checkpoint_epoch,check=need)
+        adopted=mixed_inline_repair_adoption_file(rt,state,mixed_inline_repair['evidenceRef'])
+        need(all(mixed_inline_repair.get(k)==v for k,v in adopted.items()),'D05_GIT_ACTUAL_ADOPTION')
+        need(math_rendering_repair and digest(math_rendering_repair)==MIXED_INLINE_REPAIR_D04_SUPPLEMENT_SHA256
+            and math_rendering_repair['candidateAfterSHA']==MIXED_INLINE_REPAIR_BASELINE
+            and math_rendering_repair['afterRepair']==MIXED_INLINE_REPAIR_BEFORE,'D05_GIT_PRESERVED_D04_D3')
+        need(review_method and mixed_inline_repair['candidateAfterSHA']==state['candidate_sha']
+            and mixed_inline_repair['definitionHash']==core['definitionHash']
+            and mixed_inline_repair['implementationHash']==implementation_hash(rt),'D05_GIT_CURRENT_BINDING')
     if math_rendering_repair:
         math_rendering_repair=validate_math_rendering_repair_record(math_rendering_repair,
             epoch=rt.store.checkpoint_epoch,check=need)
@@ -1118,14 +1149,14 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
         need(nearby_repair and digest(nearby_repair)==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256
             and nearby_repair['candidateAfterSHA']==MATH_RENDERING_REPAIR_BASELINE
             and nearby_repair['afterRepair']==MATH_RENDERING_REPAIR_BEFORE,'D04_GIT_PRESERVED_D03_C')
-        need(review_method and math_rendering_repair['candidateAfterSHA']==state['candidate_sha']
+        need(mixed_inline_repair is not None or review_method and math_rendering_repair['candidateAfterSHA']==state['candidate_sha']
             and math_rendering_repair['definitionHash']==core['definitionHash']
             and math_rendering_repair['implementationHash']==implementation_hash(rt),'D04_GIT_CURRENT_BINDING')
     elif nearby_repair:
         need(review_method and nearby_repair['candidateAfterSHA']==state['candidate_sha']
             and nearby_repair['definitionHash']==core['definitionHash']
             and nearby_repair['implementationHash']==implementation_hash(rt),'D03_GIT_CURRENT_BINDING')
-    effective={**CURRENT_REPAIR_AFTER,**((math_rendering_repair or nearby_repair or {}).get('afterRepair',{}))}
+    effective={**CURRENT_REPAIR_AFTER,**((mixed_inline_repair or math_rendering_repair or nearby_repair or {}).get('afterRepair',{}))}
     root=Path(rt.root)
     need(root.is_absolute() and root.resolve()==root,'CHECKPOINT_CANDIDATE_ROOT_ALIAS')
     env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0')
@@ -1153,7 +1184,8 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
          capture_output=True,env=env,timeout=30).returncode==0,'CHECKPOINT_CANDIDATE_ANCESTRY')
     all_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate).split(b'\0') if raw}
     adopted_changed=_checkpoint_scope_diff(all_changed,nearby_repair=bool(nearby_repair),
-        math_rendering_repair=bool(math_rendering_repair))
+        math_rendering_repair=bool(math_rendering_repair),mixed_inline_repair=bool(mixed_inline_repair),
+        inline_layout_repair=inline_layout_repair is not None)
     before=tree(FIXED_SOURCE,_CHECKPOINT_PRODUCT_ROOTS);after=tree(candidate,_CHECKPOINT_PRODUCT_ROOTS)
     need(before and set(before)==set(after),'CHECKPOINT_PRODUCT_INVENTORY_CHANGED')
     changed={name for name in before if before[name]!=after[name]}
@@ -1187,30 +1219,68 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
             and raw==file(root,NEARBY_REPAIR_PROPOSAL_PATH).read_bytes(),'D03_FIXED_PROPOSAL_GIT_BYTES')
     math_changed=[]
     if math_rendering_repair:
+        math_target=MIXED_INLINE_REPAIR_BASELINE if mixed_inline_repair else candidate
+        math_after=tree(math_target,_CHECKPOINT_PRODUCT_ROOTS) if mixed_inline_repair else after
         need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',MATH_RENDERING_REPAIR_BASELINE,candidate],
             capture_output=True,env=env,timeout=30).returncode==0,'D04_BASELINE_ANCESTRY')
         baseline_c=tree(MATH_RENDERING_REPAIR_BASELINE,_CHECKPOINT_PRODUCT_ROOTS)
-        need(set(baseline_c)==set(after),'D04_PRODUCT_INVENTORY')
-        actual_delta={p for p in after if baseline_c[p]!=after[p]}
+        need(set(baseline_c)==set(math_after)==set(after),'D04_PRODUCT_INVENTORY')
+        actual_delta={p for p in math_after if baseline_c[p]!=math_after[p]}
         expected_delta={p for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS
             if math_rendering_repair['beforeRepair'][p]!=math_rendering_repair['afterRepair'][p]}
         need(actual_delta==expected_delta and actual_delta,'D04_EXACT_PRODUCT_DIFF')
-        need(all(baseline_c[p]['mode']==after[p]['mode'] for p in actual_delta),'D04_PRODUCT_MODE_CHANGED')
+        need(all(baseline_c[p]['mode']==math_after[p]['mode'] for p in actual_delta),'D04_PRODUCT_MODE_CHANGED')
         for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS:
             need(hashlib.sha256(git('cat-file','blob',MATH_RENDERING_REPAIR_BASELINE+':'+p)).hexdigest()
                 ==MATH_RENDERING_REPAIR_BEFORE[p],'D04_FIXED_C_PRODUCT_BYTES:'+p)
         math_changed=sorted(raw.decode('utf-8') for raw in git('diff','--name-only','-z',
-            MATH_RENDERING_REPAIR_BASELINE,candidate).split(b'\0') if raw)
+            MATH_RENDERING_REPAIR_BASELINE,math_target).split(b'\0') if raw)
         need(set(math_changed)<=MATH_RENDERING_REPAIR_CORE_PATHS|set(MATH_RENDERING_REPAIR_PRODUCT_PATHS)|{MATH_RENDERING_REPAIR_PROPOSAL_PATH},
              'D04_DIFF_OUTSIDE_EXACT_PROPOSAL')
         need(MATH_RENDERING_REPAIR_PROPOSAL_PATH in math_changed,'D04_FIXED_PROPOSAL_NOT_IN_DIFF')
-        proposal=tree(candidate,(MATH_RENDERING_REPAIR_PROPOSAL_PATH,))
+        proposal=tree(math_target,(MATH_RENDERING_REPAIR_PROPOSAL_PATH,))
         need(set(proposal)=={MATH_RENDERING_REPAIR_PROPOSAL_PATH}
             and proposal[MATH_RENDERING_REPAIR_PROPOSAL_PATH]['mode']=='100644','D04_FIXED_PROPOSAL_GIT_ENTRY')
-        raw=git('cat-file','blob',candidate+':'+MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+        raw=git('cat-file','blob',math_target+':'+MATH_RENDERING_REPAIR_PROPOSAL_PATH)
         need(hashlib.sha256(raw).hexdigest()==MATH_RENDERING_REPAIR_PROPOSAL_SHA256
             and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[MATH_RENDERING_REPAIR_PROPOSAL_PATH]['blobSHA']
             and raw==file(root,MATH_RENDERING_REPAIR_PROPOSAL_PATH).read_bytes(),'D04_FIXED_PROPOSAL_GIT_BYTES')
+    mixed_changed=[]
+    if mixed_inline_repair:
+        need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',MIXED_INLINE_REPAIR_BASELINE,candidate],
+            capture_output=True,env=env,timeout=30).returncode==0,'D05_BASELINE_ANCESTRY')
+        baseline_d3=tree(MIXED_INLINE_REPAIR_BASELINE,_CHECKPOINT_PRODUCT_ROOTS)
+        need(set(baseline_d3)==set(after),'D05_PRODUCT_INVENTORY')
+        actual_delta={p for p in after if baseline_d3[p]!=after[p]}
+        expected_delta={p for p in MIXED_INLINE_REPAIR_PRODUCT_PATHS
+            if mixed_inline_repair['beforeRepair'][p]!=mixed_inline_repair['afterRepair'][p]}
+        need(actual_delta==expected_delta and actual_delta,'D05_EXACT_PRODUCT_DIFF')
+        need(all(baseline_d3[p]['mode']==after[p]['mode'] for p in actual_delta),'D05_PRODUCT_MODE_CHANGED')
+        for p in MIXED_INLINE_REPAIR_PRODUCT_PATHS:
+            raw=git('cat-file','blob',MIXED_INLINE_REPAIR_BASELINE+':'+p)
+            need(hashlib.sha256(raw).hexdigest()==MIXED_INLINE_REPAIR_BEFORE[p],'D05_FIXED_D3_PRODUCT_BYTES:'+p)
+        mixed_changed=sorted(raw.decode('utf-8') for raw in git('diff','--name-only','-z',
+            MIXED_INLINE_REPAIR_BASELINE,candidate).split(b'\0') if raw)
+        mixed_docs={MIXED_INLINE_REPAIR_PROPOSAL_PATH}|({INLINE_LAYOUT_REPAIR_PROPOSAL_PATH} if inline_layout_repair is not None else set())
+        need(set(mixed_changed)<=MIXED_INLINE_REPAIR_CORE_PATHS|set(MIXED_INLINE_REPAIR_PRODUCT_PATHS)|mixed_docs,
+            'D05_DIFF_OUTSIDE_EXACT_PROPOSAL')
+        need(MIXED_INLINE_REPAIR_PROPOSAL_PATH in mixed_changed,'D05_FIXED_PROPOSAL_NOT_IN_DIFF')
+        proposal=tree(candidate,(MIXED_INLINE_REPAIR_PROPOSAL_PATH,))
+        need(set(proposal)=={MIXED_INLINE_REPAIR_PROPOSAL_PATH}
+            and proposal[MIXED_INLINE_REPAIR_PROPOSAL_PATH]['mode']=='100644','D05_FIXED_PROPOSAL_GIT_ENTRY')
+        raw=git('cat-file','blob',candidate+':'+MIXED_INLINE_REPAIR_PROPOSAL_PATH)
+        need(hashlib.sha256(raw).hexdigest()==MIXED_INLINE_REPAIR_PROPOSAL_SHA256
+            and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[MIXED_INLINE_REPAIR_PROPOSAL_PATH]['blobSHA']
+            and raw==file(root,MIXED_INLINE_REPAIR_PROPOSAL_PATH).read_bytes(),'D05_FIXED_PROPOSAL_GIT_BYTES')
+        if inline_layout_repair is not None:
+            need(INLINE_LAYOUT_REPAIR_PROPOSAL_PATH in mixed_changed,'D06_FIXED_PROPOSAL_NOT_IN_DIFF')
+            proposal=tree(candidate,(INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,))
+            need(set(proposal)=={INLINE_LAYOUT_REPAIR_PROPOSAL_PATH}
+                and proposal[INLINE_LAYOUT_REPAIR_PROPOSAL_PATH]['mode']=='100644','D06_FIXED_PROPOSAL_GIT_ENTRY')
+            raw=git('cat-file','blob',candidate+':'+INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
+            need(hashlib.sha256(raw).hexdigest()==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
+                and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[INLINE_LAYOUT_REPAIR_PROPOSAL_PATH]['blobSHA']
+                and raw==file(root,INLINE_LAYOUT_REPAIR_PROPOSAL_PATH).read_bytes(),'D06_FIXED_PROPOSAL_GIT_BYTES')
     actual=set()
     for prefix in ('src','public'):
         for path in (root/prefix).rglob('*'):
@@ -1266,6 +1336,9 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
         proof.update(nearbyRepair=nearby_repair,nearbyChangedPaths=nearby_changed)
     if math_rendering_repair:
         proof.update(mathRenderingRepair=math_rendering_repair,mathRenderingChangedPaths=math_changed)
+    if mixed_inline_repair:
+        proof.update(mixedInlineRepair=mixed_inline_repair,mixedInlineChangedPaths=mixed_changed)
+    if inline_layout_repair is not None:proof['inlineLayoutRepair']=inline_layout_repair
     return proof
 
 
@@ -1348,9 +1421,11 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
          'CHECKPOINT_R06_DEPENDENCIES_OR_APPROVAL')
     need(not rt.integrity(s),'CHECKPOINT_CURRENT_CANDIDATE_INTEGRITY')
     from checkpoint import (current_product_repair_context,NEARBY_REPAIR_PROPOSAL_SHA256,
-        NEARBY_REPAIR_PROPOSAL_PATH,MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+        NEARBY_REPAIR_PROPOSAL_PATH,MATH_RENDERING_REPAIR_PROPOSAL_PATH,MIXED_INLINE_REPAIR_PROPOSAL_PATH,INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
     repair_context=current_product_repair_context(rt,s)
     nearby=repair_context['nearbyRepair'];math_repair=repair_context['mathRenderingRepair']
+    mixed=repair_context['mixedInlineRepair']
+    layout=repair_context['inlineLayoutRepair']
     effective=repair_context['effectiveAfter']
     expected=dict(origin['candidate_manifest']);expected.update(effective)
     need(s['candidate_manifest']==expected,'CHECKPOINT_CURRENT_CANDIDATE_MANIFEST')
@@ -1387,6 +1462,8 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
     owner_record_paths={'work/items/'+RECOVERY_WORK+'/'+name+'.md' for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
     if nearby:owner_record_paths.add(NEARBY_REPAIR_PROPOSAL_PATH)
     if math_repair:owner_record_paths.add(MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+    if mixed:owner_record_paths.add(MIXED_INLINE_REPAIR_PROPOSAL_PATH)
+    if layout:owner_record_paths.add(INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
     owner_record_paths.add('work/items/'+RECOVERY_WORK+'/REVIEW_METHOD_PROPOSAL_D02.md')
     if method:
         need(any(e['work']==RECOVERY_WORK and e['kind']=='user'

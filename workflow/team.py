@@ -231,6 +231,10 @@ def validate_informed_authority_body(rt, work, s, body):
         need(nearby['evidenceRef'] in body['evidenceRefs'],'D03_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
     if math_repair:
         need(math_repair['evidenceRef'] in body['evidenceRefs'],'D04_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
+    if repair_context['mixedInlineRepair']:
+        need(repair_context['mixedInlineRepair']['evidenceRef'] in body['evidenceRefs'],'D05_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
+    if repair_context['inlineLayoutRepair']:
+        need(repair_context['inlineLayoutRepair']['evidenceRef'] in body['evidenceRefs'],'D06_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
     return deepcopy(body)
 
 
@@ -314,6 +318,8 @@ def build_informed_review_receipt(rt, work, node, collection, capability_receipt
     _informed_evidence(rt,s,evidence_refs)
     _check_nearby_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
     _check_math_prose_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
+    _check_mixed_inline_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
+    _check_inline_layout_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
     need(isinstance(finding_dispositions,list), 'D finding解消記録は一覧')
     _validate_informed_dispositions(rt,work,s,node,p,collection,capability_receipts,evidence_refs,finding_dispositions)
     check_open_findings(rt,work,node,{'verdict':'PASS'},required,p,informed_dispositions=finding_dispositions)
@@ -445,6 +451,175 @@ def _check_math_prose_finding_resolution(rt,s,node,p,reviews,required,code_refs,
                  'D04_CURRENT_CODE_RECEIPT_LIST')
             need(set(supplied)<=set(code_refs) and set(target['artifactRefs'])<=set(supplied),
                  'D04_BOTH_REPORTS_CURRENT_CODE_REQUIRED')
+
+
+MIXED_INLINE_ORIGINAL_D3_DIAGNOSTIC_SHA256 = 'e4bd2ac4703abcec535896300d1e7bc90c707d1df9b3b7faf282db09191635fb'
+MIXED_INLINE_FINDING_IDS = (
+    'QF01-D3-MARKER-MATH-PLAIN-20261123','QF01-D3-SEMANTIC-CHOICE-MATH-PLAIN-20261123',
+    'QF01-D3-HELP-INLINE-GRID-FRAGMENTATION-20261123')
+MIXED_INLINE_ZERO_COUNTERS = ('unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits',
+    'unitErrors','sourceMismatch','visualLineUnverified','proseFlowUnverified','fragmentedProse',
+    'missingSourceCoverage','unexpectedSourceCoverage','sourceCoverageUnverified')
+
+
+def validate_mixed_inline_measurements(measurements):
+    """Only actual visible operations count; the 191-unit inventory is not a DOM oracle."""
+    from checkpoint import MIXED_INLINE_REPAIR_INVENTORY_SHA256
+    m=measurements
+    need(isinstance(m,dict) and m.get('schemaVersion')=='qf01-mixed-inline-surfaces-measurements/1'
+        and m.get('status')=='PASS' and m.get('inventorySHA256')==MIXED_INLINE_REPAIR_INVENTORY_SHA256
+        and isinstance(m.get('findingIds'),list) and len(m['findingIds'])==3
+        and set(m['findingIds'])==set(MIXED_INLINE_FINDING_IDS),'D05_MIXED_MEASUREMENT_IDENTITY')
+    widths=m.get('widths')
+    need(isinstance(widths,list) and len(widths)==4 and all(type(w) is int for w in widths)
+        and set(widths)=={320,390,430,1440},'D05_MIXED_MEASUREMENT_WIDTHS')
+    groups=m.get('groups')
+    need(isinstance(groups,dict) and set(groups)=={'main','help','secondHint'},'D05_DISTINCT_OPERATION_GROUPS')
+    for key,count in (('main',420),('help',280),('secondHint',140)):
+        group=groups[key]
+        need(isinstance(group,dict) and type(group.get('sampleCount')) is int and group['sampleCount']==count
+            and type(group.get('visualLineSampleCount')) is int and group['visualLineSampleCount']==count
+            and type(group.get('measurementCount')) is int and 0<group['measurementCount']<=2**53-1
+            and all(type(group.get(k)) is int and group[k]==0 for k in MIXED_INLINE_ZERO_COUNTERS),
+            'D05_CURRENT_VISIBLE_MIXED_MEASUREMENTS:'+key)
+    coverage=m.get('sourceCoverage')
+    need(isinstance(coverage,dict) and set(coverage)=={'marker','choice'},'D05_ACTUAL_SOURCE_COVERAGE')
+    for key,count in (('marker',23),('choice',24)):
+        row=coverage[key]
+        need(isinstance(row,dict) and all(type(row.get(k)) is int for k in ('expected','observed','unverified'))
+            and row['expected']==row['observed']==count and row['unverified']==0,'D05_ACTUAL_SOURCE_COVERAGE:'+key)
+    return deepcopy(m)
+
+
+def _check_mixed_inline_finding_resolution(rt,s,node,p,reviews,required,code_refs,evidence_refs):
+    from checkpoint import current_product_repair_context,MIXED_INLINE_REPAIR_BASELINE,INFORMED_REVIEWERS,strict_json
+    from contracts import file,sha
+    if current_product_repair_context(rt,s)['mixedInlineRepair'] is None:return
+    prior_id='E-QF01-D3-OPEN-OTHER-INLINE-SURFACES-20261123'
+    prior=s['evidence'].get(prior_id,{});data=prior.get('data',{})
+    need(prior.get('kind')=='file' and prior.get('verification_level')!='simulation'
+        and data.get('source_sha')==MIXED_INLINE_REPAIR_BASELINE,'D05_ORIGINAL_D3_DIAGNOSTIC_REQUIRED')
+    path=file(rt.root,data['path']);need(path.stat().st_size<=1_048_576,'D05_DIAGNOSTIC_SIZE')
+    need(sha(path)==data.get('sha256')==MIXED_INLINE_ORIGINAL_D3_DIAGNOSTIC_SHA256,'D05_ORIGINAL_D3_DIAGNOSTIC_CHANGED')
+    original=strict_json(path.read_bytes())
+    need(original.get('schemaVersion')=='qf01-d3-open-other-inline-surfaces/1'
+        and original.get('findingIds')==list(MIXED_INLINE_FINDING_IDS)
+        and original.get('sourceSHA')==MIXED_INLINE_REPAIR_BASELINE
+        and original.get('status')=='OPEN_CONFIRMED_CURRENT_D3','D05_ORIGINAL_D3_DIAGNOSTIC_CONTENT')
+    measured=set()
+    for ref in evidence_refs:
+        evidence=s['evidence'].get(ref,{});data=evidence.get('data',{});m=data.get('mixed_inline_rendering')
+        if (evidence.get('kind')=='check' and evidence.get('verification_level')=='local_execution'
+            and data.get('status')=='PASS' and data.get('source_sha')==s['candidate_sha'] and isinstance(m,dict)):
+            validate_mixed_inline_measurements(m);measured.add(ref)
+    need(measured,'D05_ACTUAL_MIXED_UI_MEASUREMENTS_REQUIRED')
+    for req in required:
+        if req['facet']!='render':continue
+        rows=[(a,out) for a,out,_ in reviews if out.get('claimRef')==req['claimRef']
+            and out.get('facet')==req['facet'] and out.get('reviewKind')==req['reviewKind']]
+        need(len(rows)==2 and {a['performerRef'] for a,_ in rows}==set(INFORMED_REVIEWERS),'D05_BOTH_CURRENT_RENDER_REPORTS_REQUIRED')
+        for assignment,out in rows:
+            for finding_id in MIXED_INLINE_FINDING_IDS:
+                findings=[f for f in out.get('findings',[]) if f.get('findingId')==finding_id]
+                need(len(findings)==1,'D05_CURRENT_REPORT_KNOWN_FINDING_REQUIRED')
+                finding=findings[0];refs=finding.get('evidenceRefs')
+                need(finding.get('resolution')=='VERIFIED_FIXED' and finding.get('reexaminesEvidenceRef')==prior_id
+                    and finding.get('claimRef')==req['claimRef'] and finding.get('facet')==req['facet']
+                    and isinstance(finding.get('reason'),str) and finding['reason'].strip()
+                    and isinstance(refs,list) and refs and all(isinstance(r,str) for r in refs)
+                    and set(refs)<=set(out.get('evidenceRefs',[])) and set(refs)&measured,'D05_BOTH_REPORTS_CURRENT_FIX_EVIDENCE')
+            target=rt.store.get(assignment['targetManifestRef']);supplied=out.get('codeReceiptRefs')
+            need(isinstance(supplied,list) and supplied and all(isinstance(r,str) for r in supplied)
+                and set(supplied)<=set(code_refs) and set(target['artifactRefs'])<=set(supplied),'D05_BOTH_REPORTS_CURRENT_CODE_REQUIRED')
+
+
+INLINE_LAYOUT_ORIGINAL_DIAGNOSTIC_SHA256 = 'a60d25d638afddfc8f0782f559fec63f05774af743e8601830765adcc42df718'
+INLINE_LAYOUT_FINDING_ID = 'QF01-D05-WORKING-SECOND-HINT-INTRINSIC-OVERFLOW-20261123'
+INLINE_LAYOUT_ORIGINAL_EVIDENCE_ID = 'E-QF01-D05-WORKING-SECOND-HINT-OVERFLOW-20261123'
+INLINE_LAYOUT_ZERO_COUNTERS = ('unverified','overflowingFlowCount','overflowingMathBaseCount','missingApplicableAncestorCount')
+INLINE_LAYOUT_BOUNDARY_SOURCES = {
+    'secondHint':{'interactionId':'qf01-r3-n04-value-meaning-answer','sourceField':'hints','index':1,
+        'rawUTF8SHA256':'b956e8503daf7f0cb588241191ccd86d095f581af24bf7b8db83a54cda11f97f'},
+    'widestMath':{'interactionId':'qf01-n12a-answer','sourceField':'hints','index':1,
+        'rawUTF8SHA256':'9c685dc88304fcd539cccf32d0b89c83ec8ff57b6df6afa0f6450cf0ff4559d6'}}
+
+
+def _inline_layout_measurement_group(group,count):
+    need(isinstance(group,dict) and type(group.get('sampleCount')) is int and group['sampleCount']==count
+        and type(group.get('parentContainmentSampleCount')) is int and group['parentContainmentSampleCount']==count
+        and type(group.get('measuredAncestorCount')) is int and 0<group['measuredAncestorCount']<=2**53-1
+        and type(group.get('notApplicableAncestorCount')) is int and 0<=group['notApplicableAncestorCount']<=2**53-1
+        and all(type(group.get(k)) is int and group[k]==0 for k in INLINE_LAYOUT_ZERO_COUNTERS),
+        'D06_ACTUAL_APPLICABLE_PARENT_CONTENT_MEASUREMENTS')
+
+
+def validate_inline_layout_measurements(measurements):
+    import math
+    m=measurements
+    need(isinstance(m,dict) and m.get('schemaVersion')=='qf01-mixed-inline-layout-measurements/1'
+        and m.get('status')=='PASS' and m.get('findingId')==INLINE_LAYOUT_FINDING_ID
+        and m.get('imageGeometryStable') is True,'D06_LAYOUT_MEASUREMENT_IDENTITY_AND_STABILITY')
+    widths=m.get('widths')
+    need(isinstance(widths,list) and len(widths)==4 and all(type(w) is int for w in widths)
+        and set(widths)=={320,390,430,1440},'D06_LAYOUT_FOUR_WIDTHS')
+    groups=m.get('groups');need(isinstance(groups,dict) and set(groups)=={'main','help','secondHint'},'D06_DISTINCT_OPERATION_GROUPS')
+    for key,count in (('main',420),('help',280),('secondHint',140)):_inline_layout_measurement_group(groups[key],count)
+    boundary=m.get('boundarySamples')
+    need(isinstance(boundary,list) and len(boundary)==4,'D06_ACTUAL_360_361_BOUNDARIES')
+    seen=set()
+    for row in boundary:
+        need(isinstance(row,dict) and type(row.get('width')) is int and row['width'] in (360,361)
+            and isinstance(row.get('case'),str) and row['case'] in INLINE_LAYOUT_BOUNDARY_SOURCES,'D06_BOUNDARY_IDENTITY')
+        key=(row['width'],row['case']);need(key not in seen,'D06_BOUNDARY_DUPLICATED');seen.add(key)
+        _inline_layout_measurement_group(row,1)
+        need(row.get('source')==INLINE_LAYOUT_BOUNDARY_SOURCES[row['case']],'D06_ACTUAL_VISIBLE_BOUNDARY_SOURCE')
+        need(all(type(row.get(k)) in (int,float) and math.isfinite(row[k]) and row[k]>0
+            for k in ('fontPx','naturalWidthPx','availableWidthPx')) and row['fontPx']==21.78,
+            'D06_BOUNDARY_ACTUAL_UNCHANGED_FONT_AND_WIDTHS')
+        need(row['naturalWidthPx']<=row['availableWidthPx']+0.05,'D06_BOUNDARY_NATURAL_WIDTH_OVERFLOW')
+    return deepcopy(m)
+
+
+def _check_inline_layout_finding_resolution(rt,s,node,p,reviews,required,code_refs,evidence_refs):
+    from checkpoint import current_product_repair_context,MIXED_INLINE_REPAIR_BASELINE,INLINE_LAYOUT_WORKING_D05_PRODUCT,INFORMED_REVIEWERS,strict_json
+    from contracts import file,sha
+    if current_product_repair_context(rt,s)['inlineLayoutRepair'] is None:return
+    prior_id=INLINE_LAYOUT_ORIGINAL_EVIDENCE_ID;prior=s['evidence'].get(prior_id,{});data=prior.get('data',{})
+    need(prior.get('kind')=='file' and prior.get('verification_level')!='simulation'
+        and data.get('source_sha') in (None,MIXED_INLINE_REPAIR_BASELINE),'D06_ORIGINAL_WORKING_DIAGNOSTIC_REQUIRED')
+    path=file(rt.root,data['path']);need(path.stat().st_size<=1_048_576,'D06_DIAGNOSTIC_SIZE')
+    need(sha(path)==data.get('sha256')==INLINE_LAYOUT_ORIGINAL_DIAGNOSTIC_SHA256,'D06_ORIGINAL_WORKING_DIAGNOSTIC_CHANGED')
+    original=strict_json(path.read_bytes())
+    need(original.get('schemaVersion')=='qf01-d05-working-second-hint-overflow-finding/1'
+        and original.get('findingId')==INLINE_LAYOUT_FINDING_ID and original.get('status')=='OPEN_CONFIRMED_WORKING_IMPLEMENTATION'
+        and original.get('actualNativeCandidateSHA')==MIXED_INLINE_REPAIR_BASELINE and original.get('newActualGitSHA') is None
+        and original.get('workingRendererSHA256')==INLINE_LAYOUT_WORKING_D05_PRODUCT['src/components/textbook/GuidedMathReadingFlow.tsx']
+        and original.get('workingTestSHA256')==INLINE_LAYOUT_WORKING_D05_PRODUCT['src/components/textbook/QF01ReadingRevision3.test.tsx']
+        and original.get('productChangedAfterFinding') is False and original.get('newLayoutDesignAdopted') is False
+        and original.get('blocksMaterialPASS') is True,'D06_ORIGINAL_WORKING_QUALIFICATION_NOT_FORMAL_D05')
+    measured=set()
+    for ref in evidence_refs:
+        evidence=s['evidence'].get(ref,{});d=evidence.get('data',{});m=d.get('inline_layout_rendering')
+        if (evidence.get('kind')=='check' and evidence.get('verification_level')=='local_execution'
+            and d.get('status')=='PASS' and d.get('source_sha')==s['candidate_sha'] and isinstance(m,dict)):
+            validate_inline_layout_measurements(m);measured.add(ref)
+    need(measured,'D06_ACTUAL_LAYOUT_UI_MEASUREMENTS_REQUIRED')
+    for req in required:
+        if req['facet']!='render':continue
+        rows=[(a,out) for a,out,_ in reviews if out.get('claimRef')==req['claimRef']
+            and out.get('facet')==req['facet'] and out.get('reviewKind')==req['reviewKind']]
+        need(len(rows)==2 and {a['performerRef'] for a,_ in rows}==set(INFORMED_REVIEWERS),'D06_BOTH_CURRENT_RENDER_REPORTS_REQUIRED')
+        for assignment,out in rows:
+            findings=[f for f in out.get('findings',[]) if f.get('findingId')==INLINE_LAYOUT_FINDING_ID]
+            need(len(findings)==1,'D06_CURRENT_REPORT_WORKING_FINDING_REQUIRED');finding=findings[0];refs=finding.get('evidenceRefs')
+            need(finding.get('resolution')=='VERIFIED_FIXED' and finding.get('reexaminesEvidenceRef')==prior_id
+                and finding.get('claimRef')==req['claimRef'] and finding.get('facet')==req['facet']
+                and isinstance(finding.get('reason'),str) and finding['reason'].strip()
+                and isinstance(refs,list) and refs and all(isinstance(r,str) for r in refs)
+                and set(refs)<=set(out.get('evidenceRefs',[])) and set(refs)&measured,'D06_BOTH_REPORTS_CURRENT_FIX_EVIDENCE')
+            supplied=out.get('codeReceiptRefs');target=rt.store.get(assignment['targetManifestRef'])
+            need(isinstance(supplied,list) and supplied and all(isinstance(r,str) for r in supplied)
+                and set(supplied)<=set(code_refs) and set(target['artifactRefs'])<=set(supplied),'D06_BOTH_REPORTS_CURRENT_CODE_REQUIRED')
 
 
 def _informed_receipt_body(rt, work, s, node, method, collection, capability_receipts, evidence_refs, finding_dispositions):

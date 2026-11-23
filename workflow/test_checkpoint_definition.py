@@ -663,5 +663,363 @@ class MathRenderingGitProofTests(unittest.TestCase):
             self.git_proof(extra_delta=True)
 
 
+class MixedInlineMigrationTests(unittest.TestCase):
+    """Real temporary TEST_FIXTURE chain; no actual native history or acceptance."""
+    rewrite_fixture_suffix=checkpoint_runtime_tests.InformedReviewMethodTests.rewrite_fixture_suffix
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D05_master_')
+        cls.addClassCleanup(cls.temporary.cleanup);cls.master=Path(cls.temporary.name).resolve()
+        cls.fixture=checkpoint_runtime_tests.populate_mixed_inline_fixture(cls.master)
+        boundary=patch.multiple('checkpoint',**cls.fixture['boundary']);boundary.start();cls.addClassCleanup(boundary.stop)
+
+    def setUp(self):
+        temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D05_migration_')
+        self.addCleanup(temporary.cleanup);self.root=Path(temporary.name).resolve()
+        shutil.copytree(self.master,self.root,dirs_exist_ok=True)
+        self.store=__import__('checkpoint').CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3')
+        self.rt=Runtime(self.store.root,self.root)
+
+    def migrate(self):
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY_NOT_ACTUAL_D05'}):
+            proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='e'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'],mixed_inline_adoption_ref=self.fixture['d5'])
+            event=self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        return proof,event
+
+    def mutate(self,change):
+        from checkpoint import canonical,digest
+        rows=self.store.suffix_events();row=rows[-1];proof=self.store.get(row['payload']['preflightRef'])
+        change(row,proof);reference=digest(proof)
+        (self.store.root/'artifacts'/(reference+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['payload']['preflightRef']=reference;self.rewrite_fixture_suffix(rows)
+
+    def test_d3_to_current_preserves_all_prior_records_plan_users_and_unknown(self):
+        from checkpoint import current_product_repair_context
+        before=self.rt.state(FIXED_WORK);proof,event=self.migrate();after=self.rt.state(FIXED_WORK)
+        for key in ('plan','users','results'):self.assertEqual(before[key],after[key])
+        self.assertEqual(proof['mathRenderingRepair'],self.fixture['originalD04']['payload']['mathRenderingRepair'])
+        self.assertEqual(proof['repairAdoption'],self.fixture['proof']['repairAdoption'])
+        self.assertEqual(proof['mixedInlineRepair']['candidateBeforeManifestSHA256'],checkpoint_runtime_tests.digest(before['candidate_manifest']))
+        context=current_product_repair_context(self.rt,after)
+        self.assertEqual(context['mixedInlineRepair'],proof['mixedInlineRepair'])
+        self.assertEqual(context['mathRenderingRepair']['candidateAfterSHA'],__import__('checkpoint').MIXED_INLINE_REPAIR_BASELINE)
+        self.assertEqual(context['effectiveAfter'],{**__import__('checkpoint').CURRENT_REPAIR_AFTER,**proof['mixedInlineRepair']['afterRepair']})
+        self.assertEqual(context['ownerProposalSHA256'],__import__('checkpoint').MIXED_INLINE_REPAIR_PROPOSAL_SHA256)
+        self.assertEqual(proof['globalQueueCoverage'],'UNKNOWN');self.assertFalse(proof['oldPassTransferred'])
+        self.assertEqual(event['payload']['mixedInlineRepair'],proof['mixedInlineRepair'])
+
+    def test_rehashed_preflight_and_event_cannot_invent_actual_previous_candidate_or_manifest(self):
+        self.migrate()
+        def change(row,proof):
+            proof['candidateBeforeSHA']='f'*40
+            proof['mixedInlineRepair'].update(candidateBeforeSHA='f'*40,candidateBeforeManifestSHA256='0'*64)
+            row['payload']['mixedInlineRepair']=copy.deepcopy(proof['mixedInlineRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D05_FIRST_MIGRATION_REQUIRES_D3|D05_MIGRATION_CURRENT_PREVIOUS_BINDING'):
+            self.mutate(change)
+
+    def test_rehashed_original_d04_cannot_be_retagged_as_current_candidate(self):
+        self.migrate()
+        def change(row,proof):
+            proof['mathRenderingRepair']['candidateAfterSHA']='e'*40
+            row['payload']['mathRenderingRepair']=copy.deepcopy(proof['mathRenderingRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D05_PRESERVED_D04_D3_RECORD'):self.mutate(change)
+
+    def test_later_migration_cannot_strip_new_supplement(self):
+        from checkpoint import canonical,digest
+        self.migrate();rows=self.store.suffix_events();row=copy.deepcopy(rows[-1])
+        proof=self.store.get(row['payload']['preflightRef']);proof.pop('mixedInlineRepair')
+        proof.update(ledgerHead=rows[-1]['hash'],candidateBeforeSHA='e'*40,candidateAfterSHA='f'*40,
+            fromDefinition=row['payload']['to'],toDefinition='f'*64);proof['core']['definitionHash']='f'*64
+        ref=digest(proof);(self.store.root/'artifacts'/(ref+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['id']='TEST_FIXTURE_D05_STRIPPED';row['payload'].pop('mixedInlineRepair')
+        row['payload'].update(preflightRef=ref,candidateSHA='f'*40,**{'from':proof['fromDefinition'],'to':'f'*64});rows.append(row)
+        with self.assertRaisesRegex(CheckpointRejected,'D05_SUPPLEMENT_CANNOT_BE_STRIPPED'):self.rewrite_fixture_suffix(rows)
+
+    def test_changed_actual_adoption_or_third_product_refuses_without_events(self):
+        head=self.store.head
+        args={'candidate_sha':'e'*40,'informed_adoption_ref':self.fixture['d2'],
+            'repair_adoption_ref':self.fixture['d3'],'math_rendering_adoption_ref':self.fixture['d4']}
+        path=self.root/'TEST_FIXTURE_D05_ADOPTION.json';path.write_bytes(path.read_bytes()+b' ')
+        with patch('checkpoint.verify_candidate_git',return_value=None),self.assertRaisesRegex(Rejected,'D05_ADOPTION_FILE_CHANGED'):
+            self.rt.checkpoint_preflight(FIXED_WORK,**args,mixed_inline_adoption_ref=self.fixture['d5'])
+        self.assertEqual(self.store.head,head)
+        cp=__import__('checkpoint');third=next(p for p in cp.CURRENT_REPAIR_AFTER if p not in cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS)
+        path=self.root/third;path.write_bytes(path.read_bytes()+b'\n/* TEST_FIXTURE_UNADOPTED */\n')
+        with self.assertRaisesRegex(Rejected,'D05_CANDIDATE_DIFF_OUTSIDE_TWO_PATHS'):
+            self.rt.checkpoint_preflight(FIXED_WORK,**args,mixed_inline_adoption_ref=self.fixture['d5'])
+        self.assertEqual(self.store.head,head)
+
+    def test_existing_mixed_context_requires_actual_adoption_on_every_followup(self):
+        proof,_=self.migrate();identity=copy.deepcopy(proof['core']);identity['definitionHash']='f'*64
+        head=self.store.head
+        with patch('checkpoint.current_core_identity',return_value=identity),self.assertRaisesRegex(Rejected,'D05_CURRENT_MIGRATION_ADOPTION_REQUIRED'):
+            self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='f'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'])
+        self.assertEqual(self.store.head,head)
+
+    def test_rehashed_initial_afterimage_cannot_restore_historical_c(self):
+        self.migrate()
+        def change(row,proof):
+            image=copy.deepcopy(__import__('checkpoint').MATH_RENDERING_REPAIR_BEFORE)
+            proof['mixedInlineRepair']['afterRepair']=image
+            row['payload']['mixedInlineRepair']=copy.deepcopy(proof['mixedInlineRepair'])
+            proof['candidateManifest'].update(image);row['payload']['candidateManifest']=copy.deepcopy(proof['candidateManifest'])
+        with self.assertRaisesRegex(CheckpointRejected,'D05_OLD_AFTERIMAGE_ROLLBACK'):self.mutate(change)
+
+    def test_core_only_followup_keeps_current_product_after_and_historical_d04(self):
+        first,_=self.migrate();identity=copy.deepcopy(first['core']);identity['definitionHash']='f'*64
+        with patch('checkpoint.current_core_identity',return_value=identity),patch('checkpoint.verify_candidate_git',return_value=None),\
+                patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY_CORE_FOLLOWUP'}):
+            proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='f'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'],mixed_inline_adoption_ref=self.fixture['d5'])
+            self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        self.assertEqual(proof['mathRenderingRepair'],first['mathRenderingRepair'])
+        self.assertEqual(proof['mixedInlineRepair']['afterRepair'],first['mixedInlineRepair']['afterRepair'])
+        self.assertEqual(proof['mixedInlineRepair']['candidateBeforeSHA'],first['mixedInlineRepair']['candidateAfterSHA'])
+        self.assertEqual(proof['changedCandidatePaths'],{})
+        self.assertEqual(self.rt.state(FIXED_WORK)['candidate_sha'],'f'*40)
+
+
+class MixedInlineGitProofTests(unittest.TestCase):
+    """TEST_FIXTURE external Git transport only; all actual byte/hash guards run."""
+    setUpClass=classmethod(MixedInlineMigrationTests.setUpClass.__func__)
+    setUp=MixedInlineMigrationTests.setUp
+    migrate=MixedInlineMigrationTests.migrate
+
+    def git_proof(self,*,bad_d3=False,bad_b=False,bad_proposal=False,proposal_mode='100644',
+                  omit_proposal=False,missing_proposal=False,extra_delta=False,bad_layout_proposal=False,
+                  layout_proposal_mode='100644',missing_layout_proposal=False,omit_layout_proposal=False):
+        from types import SimpleNamespace
+        import checkpoint as cp
+        from adapters import _checkpoint_git_proof,_CHECKPOINT_PRODUCT_ROOTS
+        self.migrate()
+        for source in ENGINE.iterdir():
+            if source.is_file() and source.suffix in ('.py','.md'):
+                target=self.root/'workflow'/source.name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+        current={p.relative_to(self.root).as_posix():p.read_bytes() for prefix in ('src','public')
+            for p in (self.root/prefix).rglob('*') if p.is_file()}
+        current.update({p:(self.root/p).read_bytes() for p in _CHECKPOINT_PRODUCT_ROOTS[2:] if (self.root/p).exists()})
+        original=dict(current);b=dict(current);c=dict(current);d3=dict(current)
+        croot=Path(__import__('os').environ['QF01_CHECKPOINT_MATH_BASELINE_ROOT'])
+        d3root=checkpoint_runtime_tests.mixed_baseline_root()
+        for p,h in cp.CURRENT_REPAIR_AFTER.items():
+            original[p]=(checkpoint_runtime_tests.FIXTURE_SOURCE_ROOT/p).read_bytes()
+            b[p]=checkpoint_runtime_tests.repair_fixture_bytes(p,h)
+            c[p]=(croot/p).read_bytes() if p in cp.MATH_RENDERING_REPAIR_BEFORE else b[p]
+            d3[p]=(d3root/p).read_bytes() if p in cp.MIXED_INLINE_REPAIR_BEFORE else b[p]
+        workflow={'workflow/'+p.name:p.read_bytes() for p in (self.root/'workflow').iterdir() if p.is_file()}
+        docs={p:(self.root/p).read_bytes() for p in (cp.NEARBY_REPAIR_PROPOSAL_PATH,cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH,cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH)}
+        has_layout=self.rt.state(FIXED_WORK)['checkpoint_definition_migration'].get('inlineLayoutRepair') is not None
+        if has_layout:docs[cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH]=(self.root/cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH).read_bytes()
+        if bad_proposal:docs[cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH]=b'TEST_FIXTURE_WRONG_D05_PROPOSAL\n'
+        if bad_layout_proposal:docs[cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH]=b'TEST_FIXTURE_WRONG_D06_PROPOSAL\n'
+        def blob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+        def tree(values,mode='100644'):return b''.join(mode.encode()+b' blob '+blob(raw).encode()+b'\t'+name.encode()+b'\0' for name,raw in sorted(values.items()))
+        def product(commit):return original if commit==cp.FIXED_SOURCE else b if commit==cp.NEARBY_REPAIR_BASELINE else c if commit==cp.MATH_RENDERING_REPAIR_BASELINE else d3 if commit==cp.MIXED_INLINE_REPAIR_BASELINE else current
+        renderer=cp.MIXED_INLINE_REPAIR_PRODUCT_PATHS[0]
+        def external(cmd,**kwargs):
+            self.assertEqual(cmd[:3],['git','-C',str(self.root)]);args=cmd[3:];out=b''
+            self.assertEqual(kwargs['env']['GIT_NO_LAZY_FETCH'],'1');self.assertEqual(kwargs['env']['GIT_OPTIONAL_LOCKS'],'0')
+            if args[:2]==['rev-parse','HEAD']:out=b'e'*40+b'\n'
+            elif args[0]=='rev-parse':out=b'f'*40+b'\n'
+            elif args[:2]==['remote','get-url']:out=b'https://github.com/rrikunagasige-dot/kyotsu-step-web.git\n'
+            elif args[0]=='merge-base' or args[:2]==['cat-file','-e']:pass
+            elif args[:2]==['cat-file','blob']:
+                commit,name=args[2].split(':',1);out=docs[name] if name in docs else product(commit)[name]
+                if name==renderer and (bad_d3 and commit==cp.MIXED_INLINE_REPAIR_BASELINE or bad_b and commit==cp.NEARBY_REPAIR_BASELINE):out=current[name]
+            elif args[0]=='ls-tree':
+                commit=args[3];paths=args[5:]
+                if len(paths)==1 and paths[0] in docs:
+                    name=paths[0];missing=missing_proposal and name==cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH or missing_layout_proposal and name==cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH
+                    mode=layout_proposal_mode if name==cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH else proposal_mode if name==cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH else '100644'
+                    out=tree({} if missing else {name:docs[name]},mode)
+                else:out=tree(workflow if paths==['workflow'] else product(commit))
+            elif args[0]=='diff':
+                if '--' in args:names={'workflow/checkpoint.py'}
+                elif args[3]==cp.NEARBY_REPAIR_BASELINE:
+                    self.assertEqual(args[4],cp.MATH_RENDERING_REPAIR_BASELINE)
+                    names={'workflow/checkpoint.py',cp.NEARBY_REPAIR_PROPOSAL_PATH,*cp.MATH_RENDERING_REPAIR_BEFORE}
+                elif args[3]==cp.MATH_RENDERING_REPAIR_BASELINE:
+                    self.assertEqual(args[4],cp.MIXED_INLINE_REPAIR_BASELINE)
+                    names={'workflow/checkpoint.py',cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH,*cp.MIXED_INLINE_REPAIR_BEFORE}
+                elif args[3]==cp.MIXED_INLINE_REPAIR_BASELINE:
+                    names={'workflow/checkpoint.py',cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,renderer}
+                    if has_layout:names.add(cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
+                    if omit_proposal:names.remove(cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH)
+                    if omit_layout_proposal:names.remove(cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH)
+                    if extra_delta:names.add('tools/UNADOPTED.py')
+                else:names={*cp.CURRENT_REPAIR_AFTER,'workflow/checkpoint.py',*docs}
+                out=b''.join(p.encode()+b'\0' for p in sorted(names))
+            else:raise AssertionError('Unexpected TEST_FIXTURE Git call:'+repr(args))
+            return SimpleNamespace(returncode=0,stdout=out,stderr=b'')
+        state=self.rt.state(FIXED_WORK);core=cp.current_core_identity()
+        with patch('adapters.subprocess.run',side_effect=external):
+            proof=_checkpoint_git_proof(self.rt,state,self.store._view.state_snapshot(FIXED_WORK),core,review_method=True)
+        return proof,b,c,d3,current,blob
+
+    def test_original_b_c_d3_and_current_lineages_remain_separate(self):
+        import checkpoint as cp
+        proof,b,c,d3,current,blob=self.git_proof()
+        for p,row in proof['repairs'].items():self.assertEqual(row['afterGitBlobSHA'],blob(b[p]))
+        self.assertEqual(proof['mathRenderingRepair'],self.fixture['originalD04']['payload']['mathRenderingRepair'])
+        self.assertEqual(proof['mixedInlineRepair']['candidateAfterSHA'],'e'*40)
+        self.assertIn(cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH,proof['mathRenderingChangedPaths'])
+        self.assertNotIn(cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,proof['mathRenderingChangedPaths'])
+        self.assertIn(cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,proof['mixedInlineChangedPaths'])
+
+    def test_d3_before_and_original_b_blob_cannot_be_replaced_by_current(self):
+        for mutation in ({'bad_d3':True},{'bad_b':True}):
+            with self.subTest(mutation=mutation),self.assertRaisesRegex(Rejected,'D05_FIXED_D3_PRODUCT_BYTES|D03_ORIGINAL_FIVE_REPAIR_BYTES'):
+                self.git_proof(**mutation)
+            # Each fake-tree attack runs in an independent clone.
+            self.setUp()
+
+    def test_git_proposal_bytes_mode_presence_and_whole_diff_are_required(self):
+        mutations=({'bad_proposal':True},{'proposal_mode':'100755'},{'missing_proposal':True},{'omit_proposal':True},{'extra_delta':True})
+        for mutation in mutations:
+            with self.subTest(mutation=mutation),self.assertRaisesRegex(Rejected,'D05_FIXED_PROPOSAL|D05_DIFF_OUTSIDE_EXACT_PROPOSAL'):
+                self.git_proof(**mutation)
+            self.setUp()
+
+
+class InlineLayoutMigrationTests(unittest.TestCase):
+    """Real TEST_FIXTURE native operations; no actual D05 intermediate event."""
+    setUp=MixedInlineMigrationTests.setUp
+    mutate=MixedInlineMigrationTests.mutate
+    rewrite_fixture_suffix=checkpoint_runtime_tests.InformedReviewMethodTests.rewrite_fixture_suffix
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D06_master_')
+        cls.addClassCleanup(cls.temporary.cleanup);cls.master=Path(cls.temporary.name).resolve()
+        cls.fixture=checkpoint_runtime_tests.populate_inline_layout_fixture(cls.master)
+        boundary=patch.multiple('checkpoint',**cls.fixture['boundary']);boundary.start();cls.addClassCleanup(boundary.stop)
+
+    def migrate(self):
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY_JOINT_D06'}):
+            proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='e'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'],mixed_inline_adoption_ref=self.fixture['d5'],
+                inline_layout_adoption_ref=self.fixture['d6'])
+            event=self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        return proof,event
+
+    def test_one_real_joint_transition_preserves_d05_20fields_prior_history_users_and_original_plan(self):
+        import checkpoint as cp
+        before=self.rt.state(FIXED_WORK);proof,event=self.migrate();after=self.rt.state(FIXED_WORK)
+        for key in ('plan','users','results'):self.assertEqual(before[key],after[key])
+        self.assertEqual(proof['mixedInlineRepair']['candidateBeforeSHA'],cp.MIXED_INLINE_REPAIR_BASELINE)
+        self.assertEqual(len(proof['mixedInlineRepair']),20);self.assertEqual(len(proof['inlineLayoutRepair']),10)
+        self.assertEqual(proof['inlineLayoutRepair']['mixedInlineRepairSHA256'],cp.digest(proof['mixedInlineRepair']))
+        self.assertEqual(proof['mathRenderingRepair'],self.fixture['originalD04']['payload']['mathRenderingRepair'])
+        joint=[e for e in self.store.suffix_events() if e['payload'].get('mixedInlineRepair')]
+        self.assertEqual(len(joint),1);self.assertEqual(joint[0],event)
+        context=cp.current_product_repair_context(self.rt,after)
+        self.assertEqual(context['ownerProposalSHA256'],cp.INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256)
+        self.assertEqual(context['inlineLayoutRepair'],proof['inlineLayoutRepair'])
+        self.assertEqual(proof['globalQueueCoverage'],'UNKNOWN');self.assertFalse(proof['gateAccepted'])
+
+    def test_rehashed_foreign_mixed_alias_or_adoption_cannot_enter_the_joint_event(self):
+        self.migrate()
+        def change(row,proof):
+            proof['inlineLayoutRepair']['mixedInlineRepairSHA256']='0'*64
+            row['payload']['inlineLayoutRepair']=copy.deepcopy(proof['inlineLayoutRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D06_SAME_EVENT_D05_RECORD_REQUIRED'):self.mutate(change)
+
+    def test_rehashed_layout_cannot_substitute_another_file_after_actual_d06_adoption(self):
+        path=self.root/'TEST_FIXTURE_OTHER_FILE.json';path.write_text('{"fixtureKind":"TEST_FIXTURE_NOT_D06_ADOPTION"}\n',encoding='utf8')
+        other_sha=hashlib.sha256(path.read_bytes()).hexdigest()
+        other=self.rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':other_sha},
+            source_ref='TEST_FIXTURE/not-a-user-adoption',verification_level='local_execution',eid='TEST_FIXTURE_NOT_D06')
+        self.migrate()
+        def change(row,proof):
+            proof['inlineLayoutRepair'].update(evidenceRef=other,transcriptionSHA256=other_sha)
+            row['payload']['inlineLayoutRepair']=copy.deepcopy(proof['inlineLayoutRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D06_ACTUAL_ADOPTION_REQUIRES_JOINT_FIRST_MIGRATION'):
+            self.mutate(change)
+
+    def test_later_migration_cannot_strip_layout_while_retaining_d05(self):
+        from checkpoint import canonical,digest
+        self.migrate();rows=self.store.suffix_events();row=copy.deepcopy(rows[-1]);proof=self.store.get(row['payload']['preflightRef'])
+        proof.pop('inlineLayoutRepair');proof.update(ledgerHead=rows[-1]['hash'],candidateBeforeSHA='e'*40,candidateAfterSHA='f'*40,
+            fromDefinition=row['payload']['to'],toDefinition='f'*64);proof['core']['definitionHash']='f'*64
+        ref=digest(proof);(self.store.root/'artifacts'/(ref+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['id']='TEST_FIXTURE_D06_STRIPPED';row['payload'].pop('inlineLayoutRepair')
+        row['payload'].update(preflightRef=ref,candidateSHA='f'*40,**{'from':proof['fromDefinition'],'to':'f'*64});rows.append(row)
+        with self.assertRaisesRegex(CheckpointRejected,'D06_SUPPLEMENT_CANNOT_BE_STRIPPED'):self.rewrite_fixture_suffix(rows)
+
+    def test_core_only_joint_followup_updates_both_aliases_and_requires_both_adoptions(self):
+        first,_=self.migrate();identity=copy.deepcopy(first['core']);identity['definitionHash']='f'*64;head=self.store.head
+        args={'candidate_sha':'f'*40,'informed_adoption_ref':self.fixture['d2'],'repair_adoption_ref':self.fixture['d3'],
+            'math_rendering_adoption_ref':self.fixture['d4'],'mixed_inline_adoption_ref':self.fixture['d5']}
+        with patch('checkpoint.current_core_identity',return_value=identity):
+            with self.assertRaisesRegex(Rejected,'D06_ACTUAL_ADOPTION_REQUIRES_JOINT_FIRST_MIGRATION'):self.rt.checkpoint_preflight(FIXED_WORK,**args)
+            self.assertEqual(self.store.head,head)
+            with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
+                proof=self.rt.checkpoint_preflight(FIXED_WORK,**args,inline_layout_adoption_ref=self.fixture['d6'])
+                self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        self.assertEqual(proof['changedCandidatePaths'],{})
+        self.assertEqual(proof['mixedInlineRepair']['afterRepair'],first['mixedInlineRepair']['afterRepair'])
+        self.assertNotEqual(proof['inlineLayoutRepair']['mixedInlineRepairSHA256'],first['inlineLayoutRepair']['mixedInlineRepairSHA256'])
+
+    def test_actual_d06_file_change_or_false_joint_qualification_cannot_append_migration(self):
+        path=self.root/'TEST_FIXTURE_D06_ADOPTION.json';path.write_bytes(path.read_bytes()+b' ');head=self.store.head
+        with self.assertRaisesRegex(Rejected,'D06_ADOPTION_FILE_CHANGED'):self.migrate()
+        self.assertEqual(self.store.head,head)
+
+    def test_joint_adoption_cannot_invent_an_intermediate_d05_migration(self):
+        head=self.store.head
+        with self.assertRaisesRegex(Rejected,'D06_ACTUAL_ADOPTION_REQUIRES_JOINT_FIRST_MIGRATION'):
+            self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='e'*40,informed_adoption_ref=self.fixture['d2'],
+                repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'],mixed_inline_adoption_ref=self.fixture['d5'])
+        self.assertEqual(self.store.head,head)
+
+    def test_prior_d05_without_d06_adoption_cannot_later_be_relabelled_as_a_joint_first_transition(self):
+        # Remove only this cloned TEST_FIXTURE's last D06 evidence event to
+        # model a genuinely earlier D05-only namespace; no actual history.
+        rows=self.store.suffix_events();self.assertEqual(rows[-1]['payload'].get('id'),self.fixture['d6'])
+        self.rewrite_fixture_suffix(rows[:-1])
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
+            old=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='e'*40,informed_adoption_ref=self.fixture['d2'],
+                repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'],mixed_inline_adoption_ref=self.fixture['d5'])
+            self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=old,expected_head=old['ledgerHead'])
+        path=self.root/'TEST_FIXTURE_D06_ADOPTION.json'
+        self.rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/later-adoption-not-actual-user-action',verification_level='local_execution',eid=self.fixture['d6'])
+        identity=copy.deepcopy(old['core']);identity['definitionHash']='f'*64;head=self.store.head
+        with patch('checkpoint.current_core_identity',return_value=identity),self.assertRaisesRegex(Rejected,'D06_FIRST_LAYOUT_REQUIRES_JOINT_D3_MIGRATION'):
+            self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='f'*40,informed_adoption_ref=self.fixture['d2'],
+                repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'],
+                mixed_inline_adoption_ref=self.fixture['d5'],inline_layout_adoption_ref=self.fixture['d6'])
+        self.assertEqual(self.store.head,head)
+
+
+class InlineLayoutGitProofTests(unittest.TestCase):
+    setUpClass=classmethod(InlineLayoutMigrationTests.setUpClass.__func__)
+    setUp=MixedInlineMigrationTests.setUp
+    migrate=InlineLayoutMigrationTests.migrate
+    git_proof=MixedInlineGitProofTests.git_proof
+
+    def test_actual_joint_diff_contains_two_public_proposals_and_one_current_after(self):
+        import checkpoint as cp
+        proof,*_=self.git_proof()
+        self.assertEqual(proof['inlineLayoutRepair']['mixedInlineRepairSHA256'],cp.digest(proof['mixedInlineRepair']))
+        self.assertIn(cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,proof['mixedInlineChangedPaths'])
+        self.assertIn(cp.MIXED_INLINE_REPAIR_PROPOSAL_PATH,proof['mixedInlineChangedPaths'])
+        self.assertNotIn(cp.INLINE_LAYOUT_REPAIR_PROPOSAL_PATH,proof['mathRenderingChangedPaths'])
+
+    def test_layout_git_proposal_raw_mode_presence_and_diff_cannot_hide_behind_correct_working_file(self):
+        for mutation in ({'bad_layout_proposal':True},{'layout_proposal_mode':'100755'},{'missing_layout_proposal':True},{'omit_layout_proposal':True}):
+            with self.subTest(mutation=mutation),self.assertRaisesRegex(Rejected,'D06_FIXED_PROPOSAL'):
+                self.git_proof(**mutation)
+            self.setUp()
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

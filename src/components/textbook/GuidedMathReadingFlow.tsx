@@ -660,7 +660,7 @@ function R3QF01ReadingFlow(props: Props) {
   useEffect(() => {
     let active = true
     setSource(null); setError(false)
-    validateQF01R3Reading(props.unit, props.readingPresentation).then(value => { validateQF01R3BodySource(value); if (active) setSource(value) }).catch(() => { if (active) setError(true) })
+    validateQF01R3Reading(props.unit, props.readingPresentation).then(async value => { validateQF01R3BodySource(value); await validateQF01R3MixedSource(value); if (active) setSource(value) }).catch(() => { if (active) setError(true) })
     return () => { active = false }
   }, [props.unit, props.readingPresentation])
   if (error) return <p role="alert" data-testid="qf01-r3-binding-error">教材と学習記録の対応を確認できません。本文は表示していません。</p>
@@ -901,7 +901,288 @@ R3BodyText.slice = qf01R3BodySlice
 R3BodyText.origins = qf01R3BodyOrigins
 R3BodyText.atomicLatex = qf01R3AtomicBodyMath
 
+type R3MixedField = 'marker' | 'choice' | 'hint' | 'wrong-reason'
+export type R3MixedOrigin = { field: R3MixedField; owner: string; index: number; start: number; end: number }
+type R3MixedRecipe = readonly [field: R3MixedField, owner: string, index: number, text: string, rawSHA256: string, spans: readonly R3BodySpan[]]
+// D05 V2: 187 source strings / 191 reviewed math spans. These are identity
+// guards, not a replacement source of visible text or a correctness map.
+const R3_MIXED_SOURCE_STRINGS: readonly R3MixedRecipe[] = [
+  ["marker","qf01-r3-c0-s01-m01",0,"関数の見方","0fc8906c718f4f2b90867b36edde6faeebc152b06bfc5d9bbbd98d571b89bd2e",[]],
+  ["marker","qf01-r3-c1-s01-m01",0,"問１｜最初の規則","439ff4fe950aed7e596746720e0617064029d0a2d8e25d9ef57f7d6f3e0324ff",[]],
+  ["marker","qf01-r3-c1-s01-m02",0,"入力2の出力を求め、関数と関数値の表し方を学んだ。","7f97e540b63164b077ee7b1b42a318c22951e211c5a2753821534c61bb91853b",[[2,3,"2","2",null]]],
+  ["marker","qf01-r3-c1-s02-m01",0,"同じ規則に負の数を入れる","50b802adc52c7617832107ec2951b6b671c7b0718c89214f836141bb945dcf27",[]],
+  ["marker","qf01-r3-c1-s02-m02",0,"入力−1に対応する関数値は−10。","4bca95092af6d446a266f4474bb025e4cbd0c2b217f92e6276ec1c86cbda1afc",[[2,4,"−1","-1",null],[13,16,"−10","-10",null]]],
+  ["marker","qf01-r3-c1-s03-m01",0,"同じ規則に式全体を入れる","44def81d9e9c56a2c9761462d3192ea444cd63e444fae979c3f3b85a3c6e8e4c",[]],
+  ["marker","qf01-r3-c1-s03-m02",0,"最初の規則の問を終える。","23f5e50231e9dcb8f6aab984c2120e469c4e8c0ce133726c8ae3a9dd278ae059",[]],
+  ["marker","qf01-r3-c2-s04-m01",0,"問１｜二つ目の規則","d81956e6ed8d7c3bafb3b28495410bd8f08649f8c71a990d5dbd35a1a06c5630",[]],
+  ["marker","qf01-r3-c2-s04-m02",0,"二乗してから1を引く規則では、入力−1の出力は0。","a70541a73143c69799e8b2056d754f19b48604f7efae3080b0b41ab86cbff257",[[6,7,"1","1",null],[17,19,"−1","-1",null],[23,24,"0","0",null]]],
+  ["marker","qf01-r3-c2-s05-m01",0,"入力2で同じ規則を使う","bf82387989d57db3cd674c9f694286eb03d2fa0a50ea249e0796c3903390f835",[[2,3,"2","2",null]]],
+  ["marker","qf01-r3-c2-s05-m02",0,"入力2の平方4を使い、関数値3を得た。","c98f9e59596375bb006988db87062bf52975611446b089b60a32e39d0897ab93",[[2,3,"2","2",null],[6,7,"4","4",null],[14,15,"3","3",null]]],
+  ["marker","qf01-r3-c2-s06-m01",0,"式全体の二乗を整えて元の関数へ戻す","b391788de22a9ee34e5103beb8db780bb9c931c987b94fd6b6269cfe65f280f6",[]],
+  ["marker","qf01-r3-c2-s06-m02",0,"平方部分の計算","d7b577d349a5372ceb2177e40caf8bef239a7928f3aea2e1759a664fd1ec89b2",[]],
+  ["marker","qf01-r3-c2-s06-m03",0,"平方部分の結果を親の式へ返す。","a25106437883ee082d9b0c58511e49b32478a3b8f7bf87422982fd5be641da1f",[]],
+  ["marker","qf01-r3-c2-s06-m04",0,"二つ目の規則の問を終える。","66a6e1e9367012c4a26bd0e4f62fa1a5185b53e3e659abe1aa831d30ba07575a",[]],
+  ["marker","qf01-r3-c3-s07-m01",0,"問２｜長方形から関数を作る","bdbb6913d5abc1c51281ce2a515f9978edbde1abfa1234b9aaef9bdffc571e8c",[]],
+  ["marker","qf01-r3-c3-s07-m02",0,"周40の条件から、横を縦で表す関係y=20−xを得た。","e60b4fdff2735f1f80124abec83e89966ea042f028f5724200fe51a38c62d6bb",[[1,3,"40","40",null],[17,23,"y=20−x","y=20-x",null]]],
+  ["marker","qf01-r3-c3-s08-m01",0,"長方形を作れる入力を調べる","72962f748b832178e54e6f177a23b56631ac1d6a4751b072f46c03b1eb155268",[]],
+  ["marker","qf01-r3-c3-s08-m02",0,"入力xの定義域は0<x<20。両端は含めない。","6c646f712981317a9eecc7de577249f839b3c988f642b12331d66afa8de4b6be",[[2,3,"x","x",null],[8,14,"0<x<20","0<x<20",null]]],
+  ["marker","qf01-r3-c3-s09-m01",0,"出てくる横の長さの範囲を調べる","4d72d143434c2eca63500967a3f396a1887ab50f10dca7ea361865803700b2b8",[]],
+  ["marker","qf01-r3-c3-s09-m02",0,"長方形の問を終える。","e827025924c0c46101ef70395898eae95748d4790925a6423d9d79b7a382f89a",[]],
+  ["marker","qf01-r3-c0-s09-m01",0,"関数の見方を振り返る","8a0f3d4e4ac0248f0a9bf64afb6f4c20ce8e7ca21e9f10546eff1394192a652e",[]],
+  ["marker","qf01-r3-c0-s09-m02",0,"この単元の本文を終える。","9143143a1fd16ac40d4415a6c4d4764a5811a81161973ad80a11080e945c08bf",[]],
+  ["choice","qf01-r3-n04-value-meaning-answer",0,"入力−1に対応する出力","d2472a3c6ccc235b45b3e22933a138844438c45e44867a701140df5e2ed9aba8",[[2,4,"−1","-1",null]]],
+  ["choice","qf01-r3-n04-value-meaning-answer",1,"関数の名前fと−1を掛けた値","d83a30a822196b842ab5e51e724c785ed34199839a439405c29e05c17ef509b4",[[5,6,"f","f",null],[7,9,"−1","-1",null]]],
+  ["choice","qf01-r3-n04-value-meaning-answer",2,"どの入力でも必ず出てくる同じ数","8e944a8be4788303bb37f27f9719796b8e55c5d2378c3f76e53a61f5f1736a15",[]],
+  ["choice","qf01-r3-n05-parenthesis-reason-answer",0,"入力全体に4を掛けることを表すため","7ec3aa97cfb2fc2f5e72d8c4826f34bdf200fae6af9c9893275074bc265a2b48",[[5,6,"4","4",null]]],
+  ["choice","qf01-r3-n05-parenthesis-reason-answer",1,"最後の−6にも4を掛けるため","c3ae5b8e09d53a2d3f57a86494e6c6191c038cc5ebd885f6fe9b12fc8ccd8ad8",[[3,5,"−6","-6",null],[7,8,"4","4",null]]],
+  ["choice","qf01-r3-n05-parenthesis-reason-answer",2,"式の意味を変えずにaだけを4倍するため","646aebb4d4f4c438a1e613be8833fe0adf3b5d73b912bdd11d051685adeb6ad6",[[9,10,"a","a",null],[13,14,"4","4",null]]],
+  ["choice","qf01-r3-n10-operation-order-answer",0,"2を二乗する","258f74c42967f6dca7af08a440f44091f0bca24cc1e6eb2ef831a902d61d0ba0",[[0,1,"2","2",null]]],
+  ["choice","qf01-r3-n10-operation-order-answer",1,"2から1を引く","3b62b39fc389d0f7dc437f2869c8ace487f2224888d78f128664b7a91cec8a9e",[[0,1,"2","2",null],[3,4,"1","1",null]]],
+  ["choice","qf01-r3-n10-operation-order-answer",2,"2−1全体を二乗する","23d0fab75c545acff09003c919925673174916b469712cd3b8b90429eff56800",[[0,3,"2−1","2-1",null]]],
+  ["choice","qf01-r3-n12c-constant-product-answer",0,"括弧の外の−1と、括弧の中の−1との積","b71d561e17471ecdaa11cb0467ef5c92d5bbe558ead118eaeb6907ae546cc713",[[5,7,"−1","-1",null],[14,16,"−1","-1",null]]],
+  ["choice","qf01-r3-n12c-constant-product-answer",1,"括弧の外の−1と、括弧の中のaとの積","30362be78a03c96362d3d54b9c5f0db9395bf75b8f9ea5e2abf30290e7710bda",[[5,7,"−1","-1",null],[14,15,"a","a",null]]],
+  ["choice","qf01-r3-n12c-constant-product-answer",2,"aとaとの積","753c3e0752b188752ecf0f09134ac30195d6205779d8cde654906f76b10d6b0f",[[0,1,"a","a",null],[2,3,"a","a",null]]],
+  ["choice","qf01-r3-n14-boundary-answer",0,"四辺すべての長さ","2c94c6c80631440d79dc3ff17279dd4aae510db2555020122f43754c88029f85",[]],
+  ["choice","qf01-r3-n14-boundary-answer",1,"縦と横の二辺だけの長さ","f7d427306543d62eb55529585a57af1659853588b1f4350aa4deba566530c74b",[]],
+  ["choice","qf01-r3-n14-boundary-answer",2,"縦と横の長さの積","b1988ce2b428aaa6baf5bdaecd504d1ecbe717962658e5a11d748abeda63500d",[]],
+  ["choice","qf01-r3-n15-same-operation-answer",0,"両辺を2で割る","8b0d8037e8b50e6ae1ef5f9b8c5380dbb3f28d0be3f8875eeec172b8bfe57732",[[3,4,"2","2",null]]],
+  ["choice","qf01-r3-n15-same-operation-answer",1,"左辺だけを2で割る","d2d967ad8a5590fbca3543e48f95b2f9b09109fc74ec82ea8a785b002db36397",[[5,6,"2","2",null]]],
+  ["choice","qf01-r3-n15-same-operation-answer",2,"両辺から2を引く","8d4fa40eccb8a7eb29b5206dcc8c2b1f2d40a12e046334eede2a3f3ec45aa316",[[4,5,"2","2",null]]],
+  ["choice","qf01-r3-n19-endpoints-answer",0,"含めない","adaf02a7e4c8efbadb09366fb24517f7129ac2750461afa350e4571cc4824272",[]],
+  ["choice","qf01-r3-n19-endpoints-answer",1,"含める","5e39d3630157d32e35b2a81bf08b7d2ba90def141a9b72c3b662f89fca7d5fa9",[]],
+  ["choice","qf01-r3-n19-endpoints-answer",2,"0だけ含める","b021d62c6873942077c668ee0c2f3b956943c2b3b6dbfe61826893e150168f06",[[0,1,"0","0",null]]],
+  ["choice","qf01-n21-answer",0,"20より小さい","f35ed559fdccba2ae48829c7206a6882dcdcde74ff7d4f4239e5f85fcf285ac1",[[0,2,"20","20",null]]],
+  ["choice","qf01-n21-answer",1,"20に等しい","6268b2936a6c563f4dfc8306d78f92933ef63765b7bbc85edf19ce47eb86f864",[[0,2,"20","20",null]]],
+  ["choice","qf01-n21-answer",2,"20より大きい","992f0fbc34305768409cfbf6ad3cc529d6769201603182a1622ef72105c0103e",[[0,2,"20","20",null]]],
+  ["hint","qf01-n01-answer",0,"「4倍」は、入力と4との積を作る操作です。","b5c1b96f9a8f0a428963caef062a5fccf3d2e2c5523d5d77c6508c135a036543",[[1,2,"4","4",null],[9,10,"4","4",null]]],
+  ["hint","qf01-n01-answer",1,"4倍する相手がどの数か、問題文の入力へ戻って確かめます。","0961685a0a7f2d379b6408bf9f518c1afd526ff4242362bfc2af436a6a059b0c",[[0,1,"4","4",null]]],
+  ["wrong-reason","qf01-n01-answer",1,"「4倍」は同じ数を4個分取る操作です。","538d25c76a542852605f667940ffbd97d5aadc3bf6f6e4909e7871687fd68aa9",[[1,2,"4","4",null],[9,10,"4","4",null]]],
+  ["wrong-reason","qf01-n01-answer",2,"引く数と掛ける数を区別しましょう。","17d85e465266694acfeb5cbae6af29773fe4df6ac2c95f6a5934887ab865bd1c",[]],
+  ["hint","qf01-n02-answer",0,"8を起点に、6だけ小さい数を考えます。","a3b004eb4e5a2bb65e74059ed9047ab244afe816fd43a2af3c00c16a7bbeda87",[[0,1,"8","8",null],[6,7,"6","6",null]]],
+  ["hint","qf01-n02-answer",1,"数直線で8から小さい方へ6進んだ位置を確かめます。","4aada849ffa71a8d9cba0f91cbd80f3bdfa3a790f780cd21e2334f3e6dc73ebb",[[4,5,"8","8",null],[12,13,"6","6",null]]],
+  ["wrong-reason","qf01-n02-answer",1,"規則の最後は足し算ではありません。","5eebab132a2f3df41e3463a80cb24bd55b9eb0e9527ea08b21a57253f72a317d",[]],
+  ["wrong-reason","qf01-n02-answer",2,"8と6の順を確認しましょう。","f926675884cdfa9860f6e57a1b3d0d4e5c3b26f5b5b42933c7a8e64ffb4cc816",[[0,1,"8","8",null],[2,3,"6","6",null]]],
+  ["hint","qf01-n03-answer",0,"元のxの前後にある掛け算と引き算を残します。","bc90b79cfda577a811c2aa00452a17d3e231698bd10d498ef22acfcd5e7782ce",[[2,3,"x","x",null]]],
+  ["hint","qf01-n03-answer",1,"負の入力に括弧を付け、規則の最後の−6まで入力へ入れないようにします。","50024b40f713541afdd5287718f461a0713713a59e54e18a38f5c23bfc9cb90a",[[17,19,"−6","-6",null]]],
+  ["wrong-reason","qf01-n03-answer",1,"xの前の4とは掛け算になっています。","c7e37a9d16e942b23cb559dc0cb8c008ba6542b1cfa8c5fc69377b6f839399f6",[[0,1,"x","x",null],[4,5,"4","4",null]]],
+  ["wrong-reason","qf01-n03-answer",2,"6まで括弧の中に入れると元の規則が変わります。","b8561bda3c904fcf4ca519508ce5e1042a7837e508ce6b91da82a13b4107c696",[[0,1,"6","6",null]]],
+  ["hint","qf01-n04-answer",0,"−4から、さらに6小さい数へ進みます。","1c23699df9733b27d95c1b4eb8ced1bfc0dbb0051abf099d1bad386b050b4b87",[[0,2,"−4","-4",null],[8,9,"6","6",null]]],
+  ["hint","qf01-n04-answer",1,"数直線の−4を起点に、小さい方へ6進んで確かめます。","de03799c885c7a60665cc40eda70544d75fef3a6524d58a2481a96dd8935cd04",[[4,6,"−4","-4",null],[16,17,"6","6",null]]],
+  ["wrong-reason","qf01-n04-answer",1,"-4からさらに6だけ小さくなります。","d771d9ad704e1ee57f60405587b1d3b8564f4e072c1b9f10495781004c4a3754",[[0,2,"-4","-4",null],[7,8,"6","6",null]]],
+  ["wrong-reason","qf01-n04-answer",2,"符号も値の一部です。","fe2fbc6aff772a6f28be8f82c26580be0dff01934aad92343dd04b805d231e2b",[]],
+  ["hint","qf01-r3-n04-value-meaning-answer",0,"等式の括弧の内側と、右辺の数の役割を分けます。","b12f3efd627617f0ee1d800f7f992cbf9788d9d007249078e61999ab55d2b4d2",[]],
+  ["hint","qf01-r3-n04-value-meaning-answer",1,"前に学んだf(入力)=対応する値という読み方へ戻ります。","b956e8503daf7f0cb588241191ccd86d095f581af24bf7b8db83a54cda11f97f",[[5,16,"f(入力)=対応する値","f(\\text{入力})=\\text{対応する値}",null]]],
+  ["wrong-reason","qf01-r3-n04-value-meaning-answer",1,"fはここでは規則の名前です。掛け算の記号の省略としては読みません。","2d2826a732848234520b2a32fc3265807c2b85affc93deb5563981e0304d1725",[[0,1,"f","f",null]]],
+  ["wrong-reason","qf01-r3-n04-value-meaning-answer",2,"この等式で調べた入力は−1です。別の入力の値まで同じだとは言っていません。","2b9b21adb1374d43d808aedcc7d9dd3305cfedb1c31ceac8f971f7a713cdbf7d",[[11,13,"−1","-1",null]]],
+  ["hint","qf01-n05-answer",0,"元の4x−6のxの位置だけを置き換えます。","dbbe94f837e145f712e5bd897aab8ff0defb93ce5d02233e3fac5f72dfd36717",[[2,6,"4x−6","4x-6",null],[7,8,"x","x",null]]],
+  ["hint","qf01-n05-answer",1,"入力はaだけではなくa−1という一つの式です。規則の最後の−6はその外に残します。","d19ba2fdd56e9fb0f594915c440c4849aebcb1ddbe6bcd478fdf9b1ecdffb9c8",[[3,4,"a","a",null],[10,13,"a−1","a-1",null],[29,31,"−6","-6",null]]],
+  ["wrong-reason","qf01-n05-answer",1,"入力はaだけでなくa-1全体です。","7cb9011c4f00fbde3d14b079247f992988fac5a2e4daaefa5f6d0fe5ef1dad39",[[3,4,"a","a",null],[9,12,"a-1","a-1",null]]],
+  ["wrong-reason","qf01-n05-answer",2,"最後に引く6は入力の外です。","e92a5bc9c5d156f0e0e27fb367020f7e26b6803eb373317f2daa6c067dfea7fa",[[5,6,"6","6",null]]],
+  ["hint","qf01-r3-n05-parenthesis-reason-answer",0,"元の規則4x−6で、4が掛かっていた対象を確認します。","af94686ba88d793bc0033f140a6f35bb3a4333d03790611d622c37f6da3eb6b6",[[4,8,"4x−6","4x-6",null],[10,11,"4","4",null]]],
+  ["hint","qf01-r3-n05-parenthesis-reason-answer",1,"今回xの位置へ入れた一まとまりがどこからどこまでか、問題の入力へ戻ります。","08e90f46912c22be2c1233a96f36d350f5869ba5714835dd8eb6fb48613bd534",[[2,3,"x","x",null]]],
+  ["wrong-reason","qf01-r3-n05-parenthesis-reason-answer",1,"−6は元の規則の最後の引き算であり、入力の中には入りません。","9630ef326c9a651a596eaf33ca75e77d0e6c9959097c2362982f0a6243bff8de",[[0,2,"−6","-6",null]]],
+  ["wrong-reason","qf01-r3-n05-parenthesis-reason-answer",2,"aだけを4倍すると、入力の残りの部分に4が掛からなくなります。","971199b6a28ca9cecfa329e901c514e79b7c4265f6e50f961d209e5cd6b379a0",[[0,1,"a","a",null],[4,5,"4","4",null],[19,20,"4","4",null]]],
+  ["hint","qf01-n06-answer",0,"括弧の中の各項に4を掛けます。","b22024f0232df9f80df9f615a4a8bed63440f66e7a2fbd769c22480bd180b3d2",[[8,9,"4","4",null]]],
+  ["hint","qf01-n06-answer",1,"4×aと4×(−1)を別々に考えてから並べます。","00bd2afe149ec27809a9c23d000cae89e87a73e092edf41ba393b774e04ec10c",[[0,3,"4×a","4\\times a",null],[4,10,"4×(−1)","4\\times (-1)",null]]],
+  ["wrong-reason","qf01-n06-answer",1,"4は括弧の中の両方の項に掛かります。","5449722f9cf2b3986c6715d873e6d6d6107240fcefa6010b4739782cfc57204a",[[0,1,"4","4",null]]],
+  ["wrong-reason","qf01-n06-answer",2,"4\\times (-1)の符号を確かめましょう。","84d12cd067255f83d650e0f74ac58f4ccd18027cc27e86bd290187a09f93646e",[[0,12,"4\\times (-1)","4\\times (-1)",null]]],
+  ["hint","qf01-n07-answer",0,"4aを変えず、残った二つの定数の和を計算します。","622a10fa7d7f83ed4470eae99422af95777f6b40f3f036536d13c8952fca14a3",[[0,2,"4a","4a",null]]],
+  ["hint","qf01-n07-answer",1,"−4からさらに6小さくする操作です。","1116fa8fb1e6e004750bf2618cd32ae4d871db2b2ee904e497903c74bfe294cd",[[0,2,"−4","-4",null],[7,8,"6","6",null]]],
+  ["wrong-reason","qf01-n07-answer",1,"-4と-6はどちらも負の項です。","e7064c84c605256f3b68c33263054948bc1cb524ce8a74fe1c4884d9be0dca99",[[0,2,"-4","-4",null],[3,5,"-6","-6",null]]],
+  ["wrong-reason","qf01-n07-answer",2,"-4-6を先に数直線で確かめてもよいです。","12b012a45d9d7001fbf9f0c1408e20749d846e2aa38173183db1ddf42debc57f",[[0,4,"-4-6","-4-6",null]]],
+  ["hint","qf01-n08-answer",0,"x²のxが二つあると考え、それぞれに入力を入れます。","5cf5576bcc31d9d1156adf76a231e8bde54d5183380b9f19029d8e4c3c7eb447",[[0,2,"x²","x^2",null],[3,4,"x","x",null]]],
+  ["hint","qf01-n08-answer",1,"二乗する入力の負号と、二乗の外にある引き算を分けます。","92024f2c1241451f138bc0a2fe122e26cf6a965c86ad37283f0969b643020d4b",[]],
+  ["wrong-reason","qf01-n08-answer",1,"代入した負の数全体を二乗するので括弧が必要です。","804218ea22b656de22ab5f411219b99e2f7746e6065224172342f70b45923f5e",[]],
+  ["wrong-reason","qf01-n08-answer",2,"元の規則では1を引くのは二乗の後です。","b24dae8bdb2539d8c98b062705bd2b72ee6cdaa22fb28412ccb7fd2b0b88058b",[[6,7,"1","1",null]]],
+  ["hint","qf01-n09-answer",0,"平方の計算が終わった後にも、規則の−1が残っています。","953f0b4d19df3f4a3a4d141c57ba1f1774a8c6a8a2cf1d8c979141c8425de646",[[17,19,"−1","-1",null]]],
+  ["hint","qf01-n09-answer",1,"得た1から1を引きます。","c1c5dc1cd7fce14af225a08ad1eaefba8bf0793f6f16b2c9c3ede518c4c3e888",[[2,3,"1","1",null],[5,6,"1","1",null]]],
+  ["wrong-reason","qf01-n09-answer",1,"二乗した値は1です。","87474b5a9ce56bae2844289f567e01dd78cb478db4d2a8db8f4fe5524089a954",[[6,7,"1","1",null]]],
+  ["wrong-reason","qf01-n09-answer",2,"最後に1を引く操作が残っています。","c4619a04ef49980c9e2f83886659f1b836341c20b86c5dd5e0e608bd3d3a8f3b",[[3,4,"1","1",null]]],
+  ["hint","qf01-r3-n10-operation-order-answer",0,"元の式の二乗がどの部分に付いているか見ます。","19e1d82611016dd01af931547cefb33e03f32416356d801c0969e73fd8c56ddb",[]],
+  ["hint","qf01-r3-n10-operation-order-answer",1,"先ほど負の数を代入したとき、入力を二つ掛けた後に外側の引き算を行った順序へ戻ります。","4f2baa22946981b61ac91e61822f6e1c5435bf212d9e404514d8b13c8abac719",[]],
+  ["wrong-reason","qf01-r3-n10-operation-order-answer",1,"元の規則の平方より先に引き算を行うと、計算の順序が変わります。","828971b156bea907c67f288fe614e871759cc6b2799ab7ed36df3a71630b80c3",[]],
+  ["wrong-reason","qf01-r3-n10-operation-order-answer",2,"それは(x−1)²という別の規則に対応します。","069b0ea94625d553904faf79a1b82f69c95cbae7498d961bac0e90e746545fe2",[[3,9,"(x−1)²","(x-1)^2",null]]],
+  ["hint","qf01-r3-n10-square-value-answer",0,"同じ入力を二つ掛けます。","96ad827fb5f280f42257df136c8836d79f753807e5b8b32cbfc63c17501c2234",[]],
+  ["hint","qf01-r3-n10-square-value-answer",1,"2×2を、2を二つ合わせる積として計算します。","f215b4a640b4cdc235574fbb7e56866338fe5a449e4a1b2c3792150280c64a76",[[0,3,"2×2","2\\times 2",null],[5,6,"2","2",null]]],
+  ["wrong-reason","qf01-r3-n10-square-value-answer",1,"入力2は正です。この積へ負号を付ける操作はありません。","7e6210efe0da5303b0d05015b9da4deeed622627a764d1490a4f0b7e15168961",[[2,3,"2","2",null]]],
+  ["wrong-reason","qf01-r3-n10-square-value-answer",2,"2−1を先に計算した結果と混同していないか確かめます。","fd15644e46bdb4c2bd77c3cd718c96c71b7d5503c7daba4f4846abbb68fc3c45",[[0,3,"2−1","2-1",null]]],
+  ["hint","qf01-n10-answer",0,"直前に自分で求めた平方の値を使います。","af5a5671e2d5d3ccc25888aa726e1b47057433f099b4f81fdfd9d6f368d20b92",[]],
+  ["hint","qf01-n10-answer",1,"4を起点として、1だけ小さくします。","73e838eac52b0f64fc89865a49d96dd4efbf7d2ee19364c61aaa93dc1e9ee29b",[[0,1,"4","4",null],[8,9,"1","1",null]]],
+  ["wrong-reason","qf01-n10-answer",1,"2^2は2\\times 2で、2\\times 1ではありません。","9b29b9442ce1cade45b51be0e67688462ce9ba18331ca6453db99ba4e4a2c4b4",[[0,3,"2^2","2^2",null],[4,13,"2\\times 2","2\\times 2",null],[15,24,"2\\times 1","2\\times 1",null]]],
+  ["wrong-reason","qf01-n10-answer",2,"平方した値から1を引きます。","690ea0e6aebffe1c8f52e314d47952e415fd449eb3bf438008d195a9360908f2",[[7,8,"1","1",null]]],
+  ["hint","qf01-n11-answer",0,"x²の対象と、外側の−1を分けます。","6001d9540cef7773e1b2e51dda670f75ce12b086732ef9f4856d89d686a43bca",[[0,2,"x²","x^2",null],[10,12,"−1","-1",null]]],
+  ["hint","qf01-n11-answer",1,"二つのxの位置に同じ入力を入れると考えます。","fcc1e08d6ae736980882ccf969cab7fa5b38597d6bcfd7ca3e9a553f8cd4946e",[[3,4,"x","x",null]]],
+  ["wrong-reason","qf01-n11-answer",1,"入力した式全体を二乗します。","ce8f781706bdb0f6895cab0d3b2e211f1b1a475b05b91ed6f6afc10c465b6ff8",[]],
+  ["wrong-reason","qf01-n11-answer",2,"最後に1を引く操作を残してください。","950fccd337132b4689aca2da56daa7974c5e9c2f618cf65bb7f9ee0bae6ed935",[[3,4,"1","1",null]]],
+  ["hint","qf01-n12a-answer",0,"最初の括弧の二つ目の項も、符号ごと取り出します。","ddf1dda4e9aadf4f746afe1118a5aec083c1f8a56c812edfc2417006409cd92d",[]],
+  ["hint","qf01-n12a-answer",1,"(A+B)C=AC+BCに対応させ、二つ目の項に当たるものを見ます。","9c685dc88304fcd539cccf32d0b89c83ec8ff57b6df6afa0f6450cf0ff4559d6",[[0,12,"(A+B)C=AC+BC","(A+B)C=AC+BC",null]]],
+  ["wrong-reason","qf01-n12a-answer",1,"最初の括弧の第2項は-1です。","4f53bb064177c950dd4fa36d2c4008e89015733a0193f16097442993095030ca",[[10,12,"-1","-1",null]]],
+  ["wrong-reason","qf01-n12a-answer",2,"2つ目の括弧はa-1のまま保ちます。","e48bde1800c5967a0de0b683e21cea965ed35f91c6a2e6de8d2ffae6446d8923",[[7,10,"a-1","a-1",null]]],
+  ["hint","qf01-n12b-answer",0,"a×aとa×(−1)を別々に計算します。","41f2b128cbc47593bdfeab625d28a59bd1b45eba2892730670225945bd04d548",[[0,3,"a×a","a\\times a",null],[4,10,"a×(−1)","a\\times (-1)",null]]],
+  ["hint","qf01-n12b-answer",1,"同じ文字二つの積と、aに負の数を掛けた積の符号を分けます。","0c93f251b906d76ea8358029cc934e9036286a611b265bd24bbc11315f20fa78",[[10,11,"a","a",null]]],
+  ["wrong-reason","qf01-n12b-answer",1,"-1にもaを掛けます。","97d0d766a2dfa9ce3679739c213cd568424e7a4cb96efb4d40bc3f653f9fae5e",[[0,2,"-1","-1",null],[4,5,"a","a",null]]],
+  ["wrong-reason","qf01-n12b-answer",2,"a\\times (-1)は-aです。","c658735b4fca916f4f0bb79e834fc02460e4482a12864146bfaf3abe961b48a7",[[0,12,"a\\times (-1)","a\\times (-1)",null],[13,15,"-a","-a",null]]],
+  ["hint","qf01-n12c-answer",0,"括弧の二つの項に、それぞれ−1を掛けます。","94030d85415f936af96b4e313f21368e4c5e7d66ce270a15fe035e227e4bd9f8",[[13,15,"−1","-1",null]]],
+  ["hint","qf01-n12c-answer",1,"文字を含む積と、定数どうしの積を分け、負号の組合せを確かめます。","6e775f15288ad383d7829c6c8a778337b76af11b81761f61fa6b5d73227bb9c5",[]],
+  ["wrong-reason","qf01-n12c-answer",1,"-1\\times (-1)の符号を確認しましょう。","ade3e126d980ceeed74e51466762974c98608a47ad24ffbaeb47e6a75a4bc719",[[0,13,"-1\\times (-1)","-1\\times (-1)",null]]],
+  ["wrong-reason","qf01-n12c-answer",2,"括弧の両方の項に-1を掛けます。","aa0c95a2c3c3a812aac8f9e7d8e89921ff63a9a005c1e2fcd30dfae3dce06365",[[8,10,"-1","-1",null]]],
+  ["hint","qf01-r3-n12c-constant-product-answer",0,"分配の各部分積が、文字の項と定数項のどちらを作るか見ます。","d23262b182a7e388895a8a5a04d97ae4bee4d26f0aa5f9a56dccf824310356ab",[]],
+  ["hint","qf01-r3-n12c-constant-product-answer",1,"定数項の出どころを探すので、aを含まない項どうしの組を調べます。","e9b07a1303782a298e89c6003711699a027e70aa6116ba263398f1ccfdff6742",[[14,15,"a","a",null]]],
+  ["wrong-reason","qf01-r3-n12c-constant-product-answer",1,"文字aを含む積は、右辺の文字の項へ対応します。定数項と区別します。","14d3b6769d6cf6daa1a47b292a829efb82961cd7757cd8df72a1b1c8c23fad9c",[[2,3,"a","a",null]]],
+  ["wrong-reason","qf01-r3-n12c-constant-product-answer",2,"今展開している因数は−1と(a−1)です。aを二つ掛ける積ではありません。","38e0f3f0cd1be518b075e7e7b879e4634a50e277f77631579b991a2352d1e251",[[10,12,"−1","-1",null],[13,18,"(a−1)","(a-1)",null],[21,22,"a","a",null]]],
+  ["hint","qf01-n12-answer",0,"−aは係数−1とaの積です。","de3bb41f95a71c16015a0d1dbb25fe5e72c4bf809073df4d0ae86d71977dd70d",[[0,2,"−a","-a",null],[5,7,"−1","-1",null],[8,9,"a","a",null]]],
+  ["hint","qf01-n12-answer",1,"係数だけを足し、文字aは一つ残します。","05eb4ea14081bd69913062167d5afa57acfab849abbf1be8ccc857ac9ff9bad4",[[10,11,"a","a",null]]],
+  ["wrong-reason","qf01-n12-answer",1,"(a-1)(a-1)を分配し、-aが何個あるか見ます。","6efa8f3360c854a3d973bf015d01503d4cfacc0c8f0c08be9bdcf2c58ee375fe",[[0,10,"(a-1)(a-1)","(a-1)(a-1)",null],[15,17,"-a","-a",null]]],
+  ["wrong-reason","qf01-n12-answer",2,"二つの-aからできる項です。","0e3b5e5af6dacc1f19c6224eb5e5236e3c19058286ea33ed0fb14c0a13c468f6",[[3,5,"-a","-a",null]]],
+  ["hint","qf01-n13-answer",0,"親の式の、平方の外側に残した操作を確認します。","d5366783f05b9671e578c62aa0316f578a4d1447b475f05eee0db1702aa27378",[]],
+  ["hint","qf01-n13-answer",1,"定数+1と外側の−1を合わせ、文字の項は変えません。","24821a1ee44a2d4a40e01124c1648fef9157b31d4885d03991bcbbf2b52958dc",[[2,4,"+1","+1",null],[8,10,"−1","-1",null]]],
+  ["wrong-reason","qf01-n13-answer",1,"最後の操作は1を引くことです。","ab796ef7ce2fb405486c01eb9b8640926bda6e9815a89ff6b5698a6b955aa93a",[[6,7,"1","1",null]]],
+  ["wrong-reason","qf01-n13-answer",2,"展開した中央の項は残ります。","c510cb5a47e88e910eca2a7331e45ca4f7d8e50c400a61f130cd7b146a33b27e",[]],
+  ["hint","qf01-r3-n14-boundary-answer",0,"図の出発点へ戻るまで、指で周りをたどります。","07d085b28e57fc3d3281a19b4a43d7f943ee912edf46f368e94bcacfd2d7a455",[]],
+  ["hint","qf01-r3-n14-boundary-answer",1,"左の辺から下、右、上へと進み、まだ通っていない辺があるか確かめます。","07b058d0306e02da1b6a3290420a2ba65dc1753e902eb356ddb17c06a2ccb866",[]],
+  ["wrong-reason","qf01-r3-n14-boundary-answer",1,"二辺だけでは、出発点へ一周して戻っていません。残りの辺もたどります。","6e4bf4cc89f1a3513e1d422d2f4b00c203d375c7cd871c31f6696e8e94c4ef00",[]],
+  ["wrong-reason","qf01-r3-n14-boundary-answer",2,"積は面積を考えるときの操作です。今は周りをたどった長さを考えます。","507acc768e7252bea21b4674ccf3f06afe279dc8edb55d6cea45faf497f1d592",[]],
+  ["hint","qf01-r3-n14-perimeter-expression-answer",0,"足し算の式に同じ文字がそれぞれ何回出てくるか見ます。","c9e1e1fbdb1f45b78487c61e0e65d81caf2b3b5d19e6fe4aaaf7d52a23d03f17",[]],
+  ["hint","qf01-r3-n14-perimeter-expression-answer",1,"順序を入れ替えてxの項どうし、yの項どうしを隣り合わせにできます。","dceb5667b251c306f3e4d89d39ff5069c853736b90c449a28b3557b6a0d6f40b",[[8,9,"x","x",null],[15,16,"y","y",null]]],
+  ["wrong-reason","qf01-r3-n14-perimeter-expression-answer",1,"縦と横の一組だけになり、一周分の残りの辺が落ちています。","26ba2cb413c445be10fd8e70661440c85dcd3689038c835f38b12f927d965eb9",[]],
+  ["wrong-reason","qf01-r3-n14-perimeter-expression-answer",2,"掛け算は長さの和を表していません。周長と面積を区別します。","f987e26632ae0ee3944546eb0e6ede31300ffda27d2239c4be285e356213dc66",[]],
+  ["hint","qf01-n14-answer",0,"周長を表す式と、問題で与えられた値を等しいと置きます。","8462b3e322c1e4714584580980facee5c8bf30ea524e660cb75a46aefe3f4996",[]],
+  ["hint","qf01-n14-answer",1,"面積を作り直さず、直前に自分で得た一周分の式を使います。","7bd3fff66175703840ecabba88f33ca95a3e355b618e2f9f9927afc86f9fdcee",[]],
+  ["wrong-reason","qf01-n14-answer",1,"縦\\times 横は面積です。","ac6df88c515f4e394c3d7719a43b4c60387445674b17a8d202a2e4b69614c269",[[0,9,"縦\\times 横","\\text{縦}\\times \\text{横}",null]]],
+  ["wrong-reason","qf01-n14-answer",2,"縦と横の辺がそれぞれ何本あるか数えます。","9aa0c7194f9de09fc7989bbcfabf231405288f642c5245a66c9e499bda8ee747",[]],
+  ["hint","qf01-r3-n15-same-operation-answer",0,"両辺に共通している因数を、逆の計算で取り除くことを考えます。","88b308a939927e01d727dc0741a6633b5265df18d3f408781a6213ea8b2c372b",[]],
+  ["hint","qf01-r3-n15-same-operation-answer",1,"掛け算を打ち消す操作を選び、それを等号の両側へ行います。","b7a968a0a997e170b44f7afc309e0db580f366634f3078ffdf7f782a9b5f435b",[]],
+  ["wrong-reason","qf01-r3-n15-same-operation-answer",1,"片側だけに別の操作をすると、元の等しさを保てません。","12239349a5609dee7e2d76ac94e221aa19f77bfb4c81ceacb63bd5059ae4017f",[]],
+  ["wrong-reason","qf01-r3-n15-same-operation-answer",2,"等しさは保てますが、各項の共通係数2をなくす目的には合いません。","26901ce3fd6d69b525cfb3eb216f852c65df509fd8daba821531f354b620a9f2",[[17,18,"2","2",null]]],
+  ["hint","qf01-n15-answer",0,"左辺だけでなく、等号の反対側にも同じ割り算をします。","5704756cad2fa178cf7902221d0d642e6ab6848a2595ab40452f212c5ebe1a71",[]],
+  ["hint","qf01-n15-answer",1,"各項の係数と右辺の数を、同じ数で割って考えます。","87d8f1a1bf4405bb954fe3cbc7b5c28ae8da27f9eb14f773a1a52a0330ea3d0f",[]],
+  ["wrong-reason","qf01-n15-answer",1,"右辺も2で割ります。","4c0ba1a66215498fee41b0839eaeb7884176f66dcf10bbede2c2ed39ac298f97",[[3,4,"2","2",null]]],
+  ["wrong-reason","qf01-n15-answer",2,"両辺に同じ割り算をします。","da26cd8a179a2867e688885c1be017e65887a56f83a946d8e71d8ac4873fc83a",[]],
+  ["hint","qf01-r3-n16-target-answer",0,"問題の「求めるもの」と、図の文字の対応へ戻ります。","e096b96cff60a02cfbc60bca40e7d5523da93eaa055141efdc615197ab295677",[]],
+  ["hint","qf01-r3-n16-target-answer",1,"横を縦の式で表すので、横に割り当てた記号を左辺へ残します。","60a51e0cdfecf66e45cdc58c4cbc98fa93d2e6c28abd0cbde70249496b24f6d2",[]],
+  ["wrong-reason","qf01-r3-n16-target-answer",1,"xは縦の長さを表し、今回求めたい横ではありません。","fd8e72de1ea78ddd2299744b4811c08a9ce2b3b4a92fae526157cc7b901e1a40",[[0,1,"x","x",null]]],
+  ["wrong-reason","qf01-r3-n16-target-answer",2,"二つの長さの和では、横の長さだけを表せません。","443b7997096bacdf7cf5baa1b2e47518818f09182058ec22b44fe9593bc87bd8",[]],
+  ["hint","qf01-n16-answer",0,"左辺で同じxを打ち消す操作を、右辺にも行います。","006c577bf4102fd3f790ab834cfce796429c5d6dd841bcdafe58284992ea8820",[[5,6,"x","x",null]]],
+  ["hint","qf01-n16-answer",1,"右辺は元の20からxを引いた順番を保ちます。","85dbab440b05540de83c27d002f277e832fa28df631f9bd77ab29633799b0261",[[5,7,"20","20",null],[9,10,"x","x",null]]],
+  ["wrong-reason","qf01-n16-answer",1,"両辺からxを引きます。","125b93e45563c0f25093040b7ace6c8a6efe58686fef736841d003e9bce8b84b",[[4,5,"x","x",null]]],
+  ["wrong-reason","qf01-n16-answer",2,"左辺のxを取り除くには両辺からxを引きます。","b04af7c0d0a5fed98a3793737bce47a34de416471e2c041ed6f319aca3f7a94c",[[3,4,"x","x",null],[15,16,"x","x",null]]],
+  ["hint","qf01-n17-answer",0,"二つの辺のそれぞれが長方形を作れる長さかを考えます。","416f1c92a220a41fc09aa34e0ab191b433d1e0b76578ff3cf597a14a19865412",[]],
+  ["hint","qf01-n17-answer",1,"0や負の値を辺の長さにできるか、図の意味へ戻って確認します。","cd7ceb6a088ba44a99f529b95ea45d3439787cad7007e0738066c5017caffd55",[[0,1,"0","0",null]]],
+  ["wrong-reason","qf01-n17-answer",1,"辺が0では長方形を作れません。","9473e33c6d9651490962f30735f6deba757a1a7f0b0a44d1229e4267c8928f20",[[2,3,"0","0",null]]],
+  ["wrong-reason","qf01-n17-answer",2,"横の長さも正である必要があります。","4647f027b1f5a48175555b32b44be422333441fd27cd5d72862ac7567dea7ea1",[]],
+  ["hint","qf01-n18-answer",0,"20−xが正である条件を、xの大きさについて読み替えます。","a8e8d07fb887596f7f3f8e51eb3ee770ee635518a45819adba329962dab69de8",[[0,4,"20−x","20-x",null],[13,14,"x","x",null]]],
+  ["hint","qf01-n18-answer",1,"両辺にxを足すとき、不等式の向きは変わりません。","ad88ec33e76cc6d8d1ed209db98cc30ccd323048e9d243c55cda9de74e24cc4e",[[3,4,"x","x",null]]],
+  ["wrong-reason","qf01-n18-answer",1,"xを増やすほど20-xは小さくなります。","f61e7496b3ea19085b7f2c3660ca848cfe15fa8de66c8d9b70b86ffdb2780a01",[[0,1,"x","x",null],[7,11,"20-x","20-x",null]]],
+  ["wrong-reason","qf01-n18-answer",2,"20-xは0より大きい必要があります。","f484764eafba0f1147438fdf732da615a92930e455c0a1045dff18aca1830e66",[[0,4,"20-x","20-x",null],[5,6,"0","0",null]]],
+  ["hint","qf01-n19-answer",0,"下側と上側の二つの条件が、同時に残る形を探します。","3921e171826739fc77f8cbd6f0d15cd6c34416cfdbfd1807ba9c1e54fb50614e",[]],
+  ["hint","qf01-n19-answer",1,"候補に入っている値が、元のx>0とx<20の両方を満たすか調べます。","d6882b401940f05dfd6ae57f1ae753033998958f92b9c8ef75200518b88c8941",[[13,16,"x>0","x>0",null],[17,21,"x<20","x<20",null]]],
+  ["wrong-reason","qf01-n19-answer",1,"候補の境界値をx>0とx<20へ一つずつ入れ、両方の条件を満たすか確かめます。","e65b0a29888b47e3fd3a922ab0a77b04129fc343ff4655ef2e99f2943c39c6bc",[[7,10,"x>0","x>0",null],[11,15,"x<20","x<20",null]]],
+  ["wrong-reason","qf01-n19-answer",2,"入力には、上側だけでなく下側の条件も必要です。","01191f2741c84cd7572020d05f602e91f933f53f6c65186bab1689855521b1dc",[]],
+  ["hint","qf01-r3-n19-endpoints-answer",0,"等号の付かない不等号と、等号の付く不等号の違いを確かめます。","a9fc2df68a06324d22fdcde9f10e255848f5e3272615bc78e92f7a6d2f15c763",[]],
+  ["hint","qf01-r3-n19-endpoints-answer",1,"0をx>0へ、20をx<20へそれぞれ入れて、元の条件を満たすか調べます。","69f315e3390635dbd8c864649da030c62c4685721afb2fb24544e2552f64c3e6",[[0,1,"0","0",null],[2,5,"x>0","x>0",null],[7,9,"20","20",null],[10,14,"x<20","x<20",null]]],
+  ["wrong-reason","qf01-r3-n19-endpoints-answer",1,"x>0とx<20へ、境界の値をそのまま入れて条件が成り立つか確かめます。","b5e447bc2a0a22dfef3b9c44054cb395659e44689089f1660800abae25582db1",[[0,3,"x>0","x>0",null],[4,8,"x<20","x<20",null]]],
+  ["wrong-reason","qf01-r3-n19-endpoints-answer",2,"0もx>0の条件と照らして考えます。片方だけ特別扱いしません。","b6024e7a560792df407bc1db261e315db8b370f42aa7890ef42d58078d7e0eb7",[[0,1,"0","0",null],[2,5,"x>0","x>0",null]]],
+  ["hint","qf01-n21-answer",0,"20に正の数を足す場合と、引く場合を比べます。","f4e01a91d0cbce48e1a0bf97d86f8a78cb91818eaec55b944c6f36701114a9d7",[[0,2,"20","20",null]]],
+  ["hint","qf01-n21-answer",1,"xは0ではなく正です。20からその分だけ小さくなることを考えます。","e42dba633f0a5218bcc62cf9063a21deed3ec21ff5fb1a4fa3cf61510cae9e35",[[0,1,"x","x",null],[2,3,"0","0",null],[11,13,"20","20",null]]],
+  ["wrong-reason","qf01-n21-answer",1,"正の長さを引くので20のままではありません。","63928cc68c3adabd7b9251f8d8de462063627c11512d2690a1894bc9c1388411",[[9,11,"20","20",null]]],
+  ["wrong-reason","qf01-n21-answer",2,"20から正の数を引いています。","965fe15b3a262989075f6d60bc5e4ecedbf9b3fef7cbf01e9d6f5f5b0c26385a",[[0,2,"20","20",null]]],
+  ["hint","qf01-n22-answer",0,"今まとめるのは入力ではなく、出力についての二つの条件です。","68607c832e7dd2472dde3327ad7b6668e0a92a0956191e689ccf842daa68a621",[]],
+  ["hint","qf01-n22-answer",1,"候補に入る値がy>0とy<20の両方を満たすか確かめます。","64e158d9d85c70dafdb642d41ea7898670e49b03d0336ba4e875ba6c1c9db44a",[[7,10,"y>0","y>0",null],[11,15,"y<20","y<20",null]]],
+  ["wrong-reason","qf01-n22-answer",1,"ここで聞いているのは入力xではなく出力yです。","ac4d489ffed5452587bd6293ae9e335530b0fe189c620edd7643eb2f387dae22",[[12,13,"x","x",null],[19,20,"y","y",null]]],
+  ["wrong-reason","qf01-n22-answer",2,"端の値を実現すると片方の辺が0になります。","55b3744112ae43c33b6d8bc69696a425bc69ffae664a495df6729b78c0dad771",[[14,15,"0","0",null]]],
+  ["hint","qf01-r3-n22-inverse-answer",0,"両辺にxを足してから、両辺からyを引くと、xを単独にできます。","d6f0753f7a4fdaed065d0e088699b957ff0d0f00c6ef6a6079a11e6db0fe90a3",[[3,4,"x","x",null],[15,16,"y","y",null],[21,22,"x","x",null]]],
+  ["hint","qf01-r3-n22-inverse-answer",1,"等しい関係を保ったまま、求めたい量を変える操作です。横の長さを単独にしたときの考え方を使います。","67e86e9912eeb92a2a6c70b3abc0a9befc1f6f55578fc82da10fcdbb4b2bf3f1",[]],
+  ["wrong-reason","qf01-r3-n22-inverse-answer",1,"右辺の符号を元のy=20−xへ戻して確かめます。同じ出力には戻りません。","1fad072be7fe956e6ec1df936f7ad2bd0eee9fe4540f616b020e54931856d2c0",[[8,14,"y=20−x","y=20-x",null]]],
+  ["wrong-reason","qf01-r3-n22-inverse-answer",2,"例えば許されたyを入れて、xが正の入力になるか確かめます。符号を逆にしていないか見ます。","d893fc9fb86bcdafa98438eaefd5e27fbdeccdd58d17533e18e520750d80e9f4",[[7,8,"y","y",null],[13,14,"x","x",null]]],
+]
+const r3MixedIndex = new Map(R3_MIXED_SOURCE_STRINGS.map(row => [row.slice(0, 3).join(':'), row]))
+function mixedNeed(value: unknown, reason: string): asserts value { if (!value) throw Error('R3_MIXED_' + reason) }
+function mixedOriginal(source: QF01R3Validated, field: R3MixedField, owner: string, index: number): string | null {
+  mixedNeed(Number.isSafeInteger(index) && index >= 0, 'FIELD_INDEX')
+  if (field === 'marker') {
+    const block = source.blocks.get(owner)
+    mixedNeed(index === 0 && source.metadata.canonicalBlockIds.includes(owner) && block?.type === 'marker', 'MARKER_OWNER')
+    return block.text
+  }
+  const q = source.metadata.interactions.find(q => q.id === owner), item = source.items.get(owner)
+  mixedNeed(q && item?.id === owner, 'ITEM_OWNER')
+  if (field === 'choice') {
+    mixedNeed(q.answerDomain === 'semantic' && item.acceptedAnswers?.length === 0 && index < (item.choices?.length ?? 0), 'CHOICE_OWNER')
+    return item.choices![index]
+  }
+  if (field === 'hint') { mixedNeed(index < item.hints.length, 'HINT_INDEX'); return item.hints[index] }
+  mixedNeed(field === 'wrong-reason' && index < q.wrongReasonByChoiceIndex.length, 'REASON_INDEX')
+  return q.wrongReasonByChoiceIndex[index]
+}
+function mixedRecipe(source: QF01R3Validated, field: R3MixedField, owner: string, index: number): R3MixedRecipe {
+  const row = r3MixedIndex.get([field, owner, index].join(':'))
+  mixedNeed(row && mixedOriginal(source, field, owner, index) === row[3], 'SOURCE_IDENTITY')
+  return row
+}
+async function validateQF01R3MixedSource(source: QF01R3Validated) {
+  mixedNeed(source.metadata.unitParsedCanonicalSHA256 === '8af6a22c1656d6c37a799b30b42f51036d3a6f49879b0c9a85970f6020dc8e08'
+    && source.metadata.canonicalBlockIds.length === 134 && source.metadata.interactions.length === 35
+    && R3_MIXED_SOURCE_STRINGS.length === 187 && r3MixedIndex.size === 187, 'MANIFEST')
+  const actual: [R3MixedField, string, number][] = []
+  for (const id of source.metadata.canonicalBlockIds) if (source.blocks.get(id)?.type === 'marker') actual.push(['marker', id, 0])
+  let nullReasons = 0
+  for (const q of source.metadata.interactions) {
+    const item = source.items.get(q.id)!
+    if (q.answerDomain === 'semantic') item.choices!.forEach((_, index) => actual.push(['choice', q.id, index]))
+    mixedNeed(item.hints.length === 2 && q.wrongReasonByChoiceIndex.length === 3, 'ITEM_SHAPE')
+    item.hints.forEach((_, index) => actual.push(['hint', q.id, index]))
+    q.wrongReasonByChoiceIndex.forEach((text, index) => { if (text === null) nullReasons++; else actual.push(['wrong-reason', q.id, index]) })
+  }
+  mixedNeed(actual.length === 187 && nullReasons === 35, 'COVERAGE')
+  let spans = 0
+  await Promise.all(actual.map(async ([field, owner, index]) => {
+    const row = mixedRecipe(source, field, owner, index)
+    const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(row[3]))
+    mixedNeed([...new Uint8Array(bytes)].map(byte => byte.toString(16).padStart(2, '0')).join('') === row[4], 'RAW_HASH')
+    let previous = 0
+    for (const [start, end, lexeme] of row[5]) {
+      mixedNeed(bodyOffset(row[3], start) && bodyOffset(row[3], end) && start >= previous && end > start && row[3].slice(start, end) === lexeme, 'SPAN_BINDING')
+      previous = end; spans++
+    }
+  }))
+  mixedNeed(spans === 191, 'MATH_COVERAGE')
+}
+function qf01R3MixedSlice(source: QF01R3Validated, origin: R3MixedOrigin, visibleText: string): R3BodyToken[] {
+  const row = mixedRecipe(source, origin.field, origin.owner, origin.index), { start, end } = origin
+  mixedNeed(bodyOffset(row[3], start) && bodyOffset(row[3], end) && end >= start && row[3].slice(start, end) === visibleText, 'VISIBLE_SLICE')
+  mixedNeed(!row[5].some(([left, right]) => left < start && start < right || left < end && end < right), 'SPLIT_MATH_UNIT')
+  const tokens: R3BodyToken[] = []
+  let at = start
+  for (const [left, right, lexeme, latex, unit] of row[5]) {
+    if (left < start || right > end) continue
+    mixedNeed(visibleText.slice(left - start, right - start) === lexeme, 'VISIBLE_LEXEME')
+    if (left > at) tokens.push({ type: 'text', text: visibleText.slice(at - start, left - start) })
+    tokens.push({ type: 'math', latex, start: left, end: right, unit }); at = right
+  }
+  if (at < end) tokens.push({ type: 'text', text: visibleText.slice(at - start) })
+  return tokens
+}
+export function R3MixedText({ source, origin, visibleText, sourceId, unitId }: { source: QF01R3Validated; origin: R3MixedOrigin; visibleText: string; sourceId: string; unitId: string }) {
+  const tokens = qf01R3MixedSlice(source, origin, visibleText), row = mixedRecipe(source, origin.field, origin.owner, origin.index)
+  return <span data-qf01-mixed-inline-flow="true" data-qf01-mixed-field={origin.field} data-qf01-mixed-owner={origin.owner} data-qf01-mixed-index={origin.index} data-qf01-mixed-start={origin.start} data-qf01-mixed-end={origin.end} data-qf01-mixed-source-sha={row[4]} data-qf01-mixed-source-id={sourceId}>{tokens.map((token, index) => {
+    if (token.type === 'text') return token.text
+    const id = sourceId + '-mixed-' + token.start + '-' + token.end
+    return <span key={index} data-qf01-mixed-math="true" data-qf01-mixed-start={token.start} data-qf01-mixed-end={token.end} data-qf01-mixed-source-id={id}><TypesetInlineMath latex={qf01R3AtomicBodyMath(token.latex)} sourceId={id} unitId={unitId} /></span>
+  })}</span>
+}
+R3MixedText.validateSource = validateQF01R3MixedSource
+R3MixedText.slice = qf01R3MixedSlice
+R3MixedText.recipes = R3_MIXED_SOURCE_STRINGS
+
 type R3NearbyVisibility = 'IN_VIEW' | 'OUT_OF_VIEW' | 'NOT_MOUNTED_BY_DESIGN' | 'UNVERIFIED'
+
+// D06 is local to the existing R3 panel. Keep standalone hint padding,
+// borders, vertical spacing, fonts and whole mathematical units unchanged.
+const R3_NARROW_INLINE_LAYOUT = `@media (max-width:360px) {
+[data-qf01-revision="3"] .reading-inline-choice-panel { padding-left:2px; padding-right:2px; }
+[data-qf01-revision="3"] .reading-inline-choice-panel > aside.reading-choice-hint { padding-left:0; padding-right:0; min-width:0; }
+[data-qf01-revision="3"] .reading-inline-choice-panel > aside.reading-choice-hint > p { min-width:0; }
+}`
 type R3NearbyMeasurement = { status: R3NearbyVisibility; reason: string }
 type R3BodyPlan = { parts: TextbookReadingPart[]; origins: R3BodyOrigin[] }
 
@@ -963,7 +1244,36 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
       return { plans, failed: false }
     } catch { return { plans: new Map<string, R3BodyPlan>(), failed: true } }
   }, [source, solved, helpId])
-  const bodyBlocked = bodyProjection.failed, interactionBlocked = nearbyBlocked || bodyBlocked
+  const mixedProjection = useMemo(() => {
+    try {
+      const inspect = (field: R3MixedField, owner: string, index: number, text: string) => qf01R3MixedSlice(source, { field, owner, index, start: 0, end: text.length }, text)
+      for (const id of m.canonicalBlockIds) {
+        const projected = projectQF01R3Block(source, id, solved, { helpFor: helpId })
+        if (projected?.source.type === 'marker') inspect('marker', id, 0, projected.source.text)
+      }
+      for (const q of m.interactions) if (q.answerDomain === 'semantic' && solved.has(q.id)) {
+        const value = current?.answers[q.id]?.value, item = source.items.get(q.id)!
+        mixedNeed(value !== undefined, 'RESOLVED_VALUE')
+        inspect('choice', q.id, item.choices!.indexOf(value), value)
+      }
+      if (currentQ) {
+        const item = source.items.get(currentQ.id)!, record = current?.answers[currentQ.id]
+        if (activeId === currentQ.id && currentQ.answerDomain === 'semantic') item.choices!.forEach((text, index) => inspect('choice', currentQ.id, index, text))
+        if (helpId === currentQ.id) inspect('hint', currentQ.id, 0, item.hints[0])
+        if (record && !solved.has(currentQ.id)) {
+          const index = item.choices!.indexOf(record.value)
+          mixedNeed(index >= 0, 'WRONG_VALUE')
+          if (currentQ.answerDomain === 'semantic') inspect('choice', currentQ.id, index, record.value)
+          const text = currentQ.wrongReasonByChoiceIndex[index]
+          mixedNeed(typeof text === 'string', 'NULL_REASON_NOT_VISIBLE')
+          inspect('wrong-reason', currentQ.id, index, text)
+          if (record.attemptCount > 1) inspect('hint', currentQ.id, 1, item.hints[1])
+        }
+      }
+      return { failed: false }
+    } catch { return { failed: true } }
+  }, [source, m, solved, helpId, activeId, currentQ, current?.answers])
+  const bodyBlocked = bodyProjection.failed, mixedBlocked = mixedProjection.failed, interactionBlocked = nearbyBlocked || bodyBlocked || mixedBlocked
   const resyncNearby = useRef<() => void>(() => {})
   const syncNearbySources = useCallback(() => resyncNearby.current(), [])
   const data = { nodes: m.interactions.map(q => ({ id: q.nodeId, stageId: q.stageId, interaction: q.id })) }
@@ -1171,14 +1481,16 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   }, [formulaRecipes, m.sourceMap, m.viewContracts.RESULT_REGISTRY.records])
   const canonicalBlocks = m.canonicalBlockIds.map(id => source.blocks.get(id)!)
   const profile = qf01ReadingLayoutProfile(stage.id, stageInfo.fullLessonBlockRefs.map(id => ({ id, type: source.blocks.get(id)!.type, role: String(m.sourceMap.find(s => s.unitBlockId === id)!.authorAttributes.role) })))
-  const renderChoiceValue = (id: string, value: string): ReactNode => {
+  const renderMixed = (field: R3MixedField, owner: string, index: number, text: string, sourceId: string) => mixedBlocked ? null
+    : <R3MixedText source={source} origin={{ field, owner, index, start: 0, end: text.length }} visibleText={text} sourceId={sourceId} unitId={unit.unitId} />
+  const renderChoiceValue = (id: string, value: string, sourceId: string): ReactNode => {
     const q = m.interactions.find(q => q.id === id)!
-    if (q.answerDomain === 'semantic') return value
+    if (q.answerDomain === 'semantic') return renderMixed('choice', id, source.items.get(id)!.choices!.indexOf(value), value, sourceId)
     const safeMath = value.replaceAll('かつ', '\\text{ かつ }').replace(/だけでよい|だけ/g, phrase => '\\text{ ' + phrase + ' }').replaceAll('より小さい', '\\text{ より小さい }')
     return <TypesetInlineMath latex={safeMath} sourceId={id + '-choice'} unitId={unit.unitId} />
   }
   const slot = (id: string) => {
-    if (solved.has(id)) return <span data-testid={'resolved-' + id}>{renderChoiceValue(id, current!.answers[id].value)}</span>
+    if (solved.has(id)) return <span data-testid={'resolved-' + id}>{renderChoiceValue(id, current!.answers[id].value, id + '-resolved-value')}</span>
     const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id && !interactionBlocked
     return <button type="button" style={{ minWidth: 48, minHeight: 48 }} disabled={!enabled} className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot={enabled || undefined} data-testid={'textbook-item-' + id} aria-label={q.layoutKind === 'paragraph' ? '本文の空欄。候補を開く' : '数式の空欄。候補を開く'} aria-expanded={activeId === id} aria-controls={contextId + '-options'} aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
   }
@@ -1214,7 +1526,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
       content = <p className="reading-paragraph">{renderParts(body.parts, key, body, projected.slotItemId)}</p>
     }
     else if (b.type === 'figure') { const figure = section.figures.find(f => f.id === b.figureId)!; content = <TextbookFigure figure={figure} items={section.items} progress={current} onOpen={() => undefined} /> }
-    else if (b.type === 'marker') content = <p className={'reading-role-marker reading-role-marker--' + b.kind} data-reading-role={projected.sourceRole}>{b.text}</p>
+    else if (b.type === 'marker') content = <p className={'reading-role-marker reading-role-marker--' + b.kind} data-reading-role={projected.sourceRole}>{renderMixed('marker', id, 0, b.text, key + '-marker')}</p>
     else if (b.type === 'heading') content = <h3>{b.text}</h3>
     else content = null
     if (b.type === 'formula') {
@@ -1242,19 +1554,19 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     return <aside className="qf01-local-context qf01-nearby-references" aria-label="今の判断に必要な情報">{refsView(ids, 'nearby-')}</aside>
   }
   const panel = (id: string) => {
-    if (solved.has(id) || id !== currentQ?.id) return null
+    if (solved.has(id) || id !== currentQ?.id || mixedBlocked) return null
     const item = source.items.get(id)!, record = current?.answers[id], wrong = Boolean(record && !solved.has(id)), expanded = activeId === id
     const wrongIndex = record ? item.choices?.findIndex(value => normalizeTextbookAnswer(value) === normalizeTextbookAnswer(record.value)) ?? -1 : -1
     return <div className="reading-inline-choice-panel qf01-attached-options" data-testid={'inline-choice-panel-' + id}>
-      {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{renderChoiceValue(id, record!.value)}<p><R3FeedbackMath text={wrongIndex >= 0 ? currentQ!.wrongReasonByChoiceIndex[wrongIndex] : '保存した解答を確認してください。'} sourceId={id + '-wrong-reason'} unitId={unit.unitId} /></p>{record!.attemptCount > 1 && <p><R3FeedbackMath text={item.hints[1]} sourceId={id + '-second-hint'} unitId={unit.unitId} /></p>}</aside>}
+      {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{renderChoiceValue(id, record!.value, id + '-wrong-value')}<p>{renderMixed('wrong-reason', id, wrongIndex, currentQ!.wrongReasonByChoiceIndex[wrongIndex]!, id + '-wrong-reason')}</p>{record!.attemptCount > 1 && <p>{renderMixed('hint', id, 1, item.hints[1], id + '-second-hint')}</p>}</aside>}
       <button type="button" disabled={interactionBlocked} style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
-      {helpId === id && <p className="reading-choice-hint"><R3FeedbackMath text={item.hints[0]} sourceId={id + '-hint'} unitId={unit.unitId} /></p>}
+      {helpId === id && <p className="reading-choice-hint">{renderMixed('hint', id, 0, item.hints[0], id + '-hint')}</p>}
       {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" disabled={interactionBlocked} style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
         if (interactionBlocked) return
         cancelFocusReveal(); pointerFocusTarget.current = null
         if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
         if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) { setActiveId(null); setHelpId(null) }
-      }}><span className="qf01-option-content">{renderChoiceValue(id, choice)}</span></button>)}</div>}
+      }}><span className="qf01-option-content">{renderChoiceValue(id, choice, id + '-option-' + index)}</span></button>)}</div>}
     </div>
   }
   const headerId = stageInfo.headerSourceRef
@@ -1263,8 +1575,10 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const topIds = (selectedRefs?.topReferenceRecordIds ?? []).filter(rid => !preludeSet.has(m.viewContracts.RESULT_REGISTRY.records.find(r => r.id === rid)?.sourceRef.blockId ?? ''))
   if (progressState.error) return <p role="alert">学習記録の対応を確認できません。回答操作はできません。</p>
   return <article ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-qf01-revision="3" data-testid="textbook-reading-flow" data-typeset-theme="true" data-qf01-nearby-visibility={JSON.stringify(nearbySources)} tabIndex={-1}>
+    <style data-qf01-r3-narrow-inline-layout>{R3_NARROW_INLINE_LAYOUT}</style>
     {nearbyBlocked && <p role="alert" data-testid="qf01-r3-nearby-error">参照元の表示を確認できません。回答操作を停止しています。</p>}
     {bodyBlocked && <p role="alert" data-testid="qf01-r3-prose-error">本文の数学との対応を確認できません。回答操作を停止しています。</p>}
+    {mixedBlocked && <p role="alert" data-testid="qf01-r3-mixed-error">表示する数学と参照元の対応を確認できません。回答操作を停止しています。</p>}
     <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / 9</span><span>解答の記録：{solved.size}/35</span>{stageIndex > 0 && <button type="button" onClick={() => setHistory(!history)}>前の段階を見る</button>}</div>
     {stageIndex === 0 && renderBlock(m.viewContracts.FRAME_CONTRACT.単元block配置['unit-purpose'].sourceRef, 'introduction-')}
     {history && <div className="guided-history"><button type="button" onClick={() => setFullHistory(!fullHistory)}>{fullHistory ? '全文を閉じる' : '全文を開く'}</button>{stages.slice(0, stageIndex).map(s => <section key={s.stageId} data-testid={'recorded-results-' + s.stageId}>{renderBlock(s.headerSourceRef, 'history-header-', true)}{fullHistory ? s.fullLessonBlockRefs.filter(id => id !== s.headerSourceRef).map(id => renderBlock(id, 'history-full-', true)) : refsView(s.conclusionRecordIds, 'history-result-')}</section>)}</div>}

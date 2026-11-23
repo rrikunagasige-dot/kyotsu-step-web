@@ -218,3 +218,27 @@ checkpoint lockはowner-tokenの排他方式を用い、PIDの推測や経過時
 6. current/local_execution/check の `data.math_prose_rendering` はfindingId、PASS、四幅整数320/390/430/1440、sampleCount整数420、`unverified/missingMathUnits/unexpectedMathUnits/splitMathUnits/unitErrors/sourceMismatch` の整数0を実DOM/source照合から採取する。bool、未知、負数、未採取を0へ変換しない。旧nearby_visibility条件も維持する。両実報告の全意味審査と全新画像tileの実見は、これらCODE counterとは別の必須条件である。
 7. public CIのTEST_FIXTUREには実C private suffix/採用payloadを含めない。`QF01_CHECKPOINT_BASELINE_REPAIR_ROOT` は原B checkout、`QF01_CHECKPOINT_MATH_BASELINE_ROOT` は原C checkoutを指定し、それぞれ固定hashで検査する。synthetic fixtureの原C event/digestと診断rawhash境界をmockする場合は明示し、fixture event/hash/state/実bindingまでmockで消さない。通常回帰はLinuxで実実行し、Windowsの既知制約を全PASSへ変換しない。
 8. コード20path＋D04原文1の公開作業ブランチ/CI許可は、実台帳・実本人回答・学習・認証payload公開を含まない。実R06/export前の生産PINはnull拒否、R07/G2・実公開後検査・本人G3・global UNKNOWNは従来通り別に検証する。
+
+### QF01 D05 V2の混在inline表示と真正D3履歴
+
+固定追加案 `MIXED_INLINE_SURFACES_PROPOSAL_D05.md` のSHA256は `68fe1a1431a1ac915bab6f4cbf7225aa380448cbbb611e2a68dc1cfe6de03000`、境界inventoryのSHA256は `474f3e40d743bdfdbb35c361049c165b605dedd160b0fb63f17779eb0a5d09e8`。実回答「D05 V2を採用し、記載範囲の公開反映とCIも許可する」（request_user_input_async/call_cdb41ee1e0fc4a1c94d7a17ddc35cc30）を別file evidenceで保持する。原1d/D02/D03/D04、原134/35ID/metadata/AST/採点/保存は不変である。
+
+1. `checkpoint-preflight` のJSON入力に既存3採用refと `mixed_inline_adoption_ref` を指定する。新 `mixedInlineRepair` は `qf01-mixed-inline-surfaces-supplement/1` のexact20fields。固定D3 `249cc8ee4648bc86897e66e3c9b5847e5592e5c1` の2before、真正D04 migration event `166dc5ce...`、原D04 record digest `39564d49...` を照合する。テストだけのC0をnative前像にしない。現在after/source/definition/serviceは実Git固定後だけ導出する。
+2. D04 `mathRenderingRepair` はD3の歴史objectのまま保存し、原D03 Cも保持する。D05後の実移行では新補足の削除・採用置換・直前candidate/full manifestの自己申告・過去afterへの巻戻しを拒否する。coreのみの後続移行は現在afterを維持できる。旧結果を保存し、現定義で失効させる。
+3. Git proofは原5組/B blobs、B→C `nearbyChangedPaths`、C→D3 `mathRenderingChangedPaths` と、D3→現在 `mixedInlineChangedPaths` を分ける。新原文の100644 entry、blobSHA1、固定UTF8 SHA256、working bytes同一、diff含有を検証する。製品2・core11・新原文1以外の追加差分を拒否する。
+4. RECOVERY ownerは原A22 source/rules/scope/snapshotと418保護keysを維持し、現在2afterだけを更新して残416を保存する。D05への正規改訂・実T02を行い、元1d/D02/D03/D04 userも保持する。同じD05採用内での後続再結合は、真正過去D05 record・最後の実owner proof・現在method・無claims/未完patch/未確定external・CASを検査し、planの許可2値と `proposal.currentMaterialSourceSHA` 以外の変更を拒否する。R06では現compile/claim/owner T01〜T04を照合する。
+5. D04の実測条件を維持した上で、current/local_execution/check の `data.mixed_inline_rendering` に新schema、固定inventory、既知3finding、四幅、main420/help280/secondHint140の別groupsを記録する。各groupは実sampleCount/visualLineSampleCount、正の実measurementCountと12個の整数0を必要とし、bool/未採取/未知を0にしない。23marker/24semantic choiceの実可視mount coverageは必要な補足captureを含む別aggregateで全47を照合する。191全部をDOMへoracleとして挿入しない。
+6. 両current render報告が原D3の3所見を元file evidenceへ `reexaminesEvidenceRef` で結び、現在実測と現CODEを引用する。全新画像の実見・全35判断/134意味審査はcounterとは別に必須。同じ2名の寄与開示とindependent/sourceFirst/firstPass=falseを維持し、旧B/C/D1所見や初回sealを上書きしない。
+7. public TEST_FIXTUREは実private台帳/本人payloadを含めない。B/C baseline envに加え `QF01_CHECKPOINT_MIXED_BASELINE_ROOT` へ独立D3 checkoutを指定する。私的先行event/hash境界だけをsynthetic依存へ置換する場合は明示する。実chain/manifest/field検査を省略しない。コード公開許可をnative/学習/認証送信へ転用せず、生産PIN null、global UNKNOWN、公開後検査、本人G3は別gateのまま維持する。
+
+### QF01 D06の共同移行と実親枠の包含
+
+固定追加案 `INLINE_LAYOUT_WIDTH_PROPOSAL_D06.md` のSHA256は `de658139cbba61090ff66976a539cf15fb3b60f1147cbc73be4e1a82a1cef7f1`。本人回答「D06案を採用し、記載範囲の公開反映とCIも許可する」（request_user_input_async/call_0076d49fb62e4803bbb4e8a70ead98f6）を別file evidenceで保持する。D05の再採用として扱わず、原D05実採用rawhash474e62a3…も検証する。
+
+1. 初回は真正D3からの一回の共同移行とし、JSON入力へ `inline_layout_adoption_ref` を加える。D05 exact20の `mixedInlineRepair` を維持し、D06 exact10の `inlineLayoutRepair`（qf01-mixed-inline-layout-supplement/1）を同じpreflight/eventへ追加する。後者のmixedInlineRepairSHA256は同eventのD05 recordのcanonical digestへ一方向に結ぶ。未実施のD05中間SHA/migration/T02を作らず、D05単独移行後に共同初回だったことにすることも拒否する。
+2. D06原文の100644 entry/blobSHA1/rawSHA256/working一致を検査する。D3→現在の同じmixedInlineChangedPathsにD05/D06原文を含めることを、両補足の実採用・aliasが有効な場合だけ許す。C→D3のD04履歴は不変。採用後のD06削除・置換・異なるD05参照・既知after巻戻しを拒否し、同afterのcore-only継続では双方の実直前recordと現在aliasを検証する。
+3. current owner proposalはD06を最高優先とする。原A22/rules/scope/snapshot・418keysと他416値、元1d〜D04 owner userと実D05採用fileを保存し、現在T02を実D06回答へ結ぶ。同じD06採用内の改訂では、実mixed/layout historyの一対一対応、最後の実owner proofの両record、現在method、CASと未確定操作なしを検証する。旧D05 same-adoptionで現在D06を再利用しない。R06は現在共同owner/CODE/compileから作り直す。
+4. D05の3所見・12zero・47sourceと、原B/C所見を保持する。追加所見QF01-D05-WORKING-SECOND-HINT-INTRINSIC-OVERFLOW-20261123は未commit作業版b891…/f62…の事実であり、actualNativeCandidateD3/newActualGitSHA=nullの資格とrawhash a60d25…を保存する。正式D05 sourceへretagしない。両current render報告は元file evidence E-QF01-D05-WORKING-SECOND-HINT-OVERFLOW-20261123を再検査し、現在CODEと実測へ結ぶ。
+5. current/local_execution/check のdata.inline_layout_renderingはqf01-mixed-inline-layout-measurements/1とし、main420/help280/secondHint140のsampleCount/parentContainmentSampleCountを別計上する。実在して適用する祖先のみ測り、不存在はnotApplicableAncestorCount、可視だが欠測はUNVERIFIEDとする。measuredAncestorCountは実正整数、unverified/overflowingFlowCount/overflowingMathBaseCount/missingApplicableAncestorCountは実整数0である。absent rectを0へ補わない。全840の実PNG前後計測一致をimageGeometryStableへ記録する。
+6. 360/361pxとn04 secondHint/n12a最大式の4boundarySamplesを、固定source hashと実操作で結ぶ。既知hint階層font21.78pxを保持し、実math自然幅が最小適用祖先content幅+0.05px以内であることを検証する。別の可視sourceへ置換したり、191全部をDOMへ注入したりしない。全新tileの両名実見・意味審査・原134/35ID/数学/保存不変と、Linux既存207件＋追加分を別に実施する。
+7. 公開コード上限20path＋D05/D06原文2pathだけを対象とする。実台帳/採用payload/学習/認証は含めない。private fixtureは先行private hash境界のみsynthetic依存へ置換することを明示する。生産PIN null・公開後の本人G3・global UNKNOWNは従来通り別条件である。

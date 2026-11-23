@@ -1,15 +1,15 @@
 // @vitest-environment jsdom
-import { webcrypto } from 'node:crypto'
+import { createHash, webcrypto } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import katex from 'katex'
-import { GuidedMathReadingFlow, R3FeedbackMath, R3BodyText } from './GuidedMathReadingFlow'
+import { GuidedMathReadingFlow, R3FeedbackMath, R3BodyText, R3MixedText } from './GuidedMathReadingFlow'
 import * as transformationReading from '../../domain/transformationReading'
 import { validateQF01R3Reading, projectQF01R3Block, qf01R3Solved } from '../../domain/transformationReading'
 import { QF01Revision2Archive } from './QF01Revision2Archive'
 import { useAppStore } from '../../stores/useAppStore'
-import { answerTextbookItem } from '../../domain/textbook'
+import { answerTextbookItem, getTextbookChoices } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
 import { mathQuadraticQF01Unit as unit, qf01GuidedPresentation as presentation, qf01ReadingPresentation as reading, qf01Revision2Unit as r2 } from '../../data/textbook/math/quadratic/qf01Lesson'
 const items=unit.sections[0].items
@@ -517,5 +517,131 @@ describe('D04 source-bound R3本文math（実ピクセル合格ではない）',
  it('旧R2 archiveへ本文source-bound描画を適用しない',async()=>{
   render(<MemoryRouter><QF01Revision2Archive/></MemoryRouter>);await screen.findByTestId('qf01-revision2-archive')
   expect(document.querySelector('[data-qf01-prose-math]')).toBeNull();expect(document.querySelector('[data-qf01-revision="3"]')).toBeNull()
+ })
+})
+
+describe('D05 V2の登録R3混在表面（実ピクセルPASSではない）',()=>{
+ const recipes=R3MixedText.recipes
+ type MixedRow=typeof recipes[number]
+ const origin=(row:MixedRow)=>({field:row[0],owner:row[1],index:row[2],start:0,end:row[3].length})
+ function original(source:Awaited<ReturnType<typeof validateQF01R3Reading>>,row:MixedRow){
+  if(row[0]==='marker'){const b=source.blocks.get(row[1]);if(b?.type!=='marker')throw Error('TEST_MARKER');return b.text}
+  const item=source.items.get(row[1])!,q=source.metadata.interactions.find(q=>q.id===row[1])!
+  return row[0]==='choice'?item.choices![row[2]]:row[0]==='hint'?item.hints[row[2]]:q.wrongReasonByChoiceIndex[row[2]]!
+ }
+ it('原47＋feedback140の全187 source/hash/UTF16境界191を照合し、null35を表示候補へしない',async()=>{
+  const source=await validateQF01R3Reading(unit,reading);await R3MixedText.validateSource(source)
+  let math=0,withMath=0;const groups:Record<string,number>={}
+  for(const row of recipes){
+   const text=original(source,row);expect(text).toBe(row[3]);expect(createHash('sha256').update(text).digest('hex')).toBe(row[4])
+   const tokens=R3MixedText.slice(source,origin(row),text)
+   expect(tokens.map(t=>t.type==='text'?t.text:text.slice(t.start,t.end)).join('')).toBe(text)
+   const typed=tokens.filter(t=>t.type==='math');math+=typed.length;if(typed.length)withMath++;groups[row[0]]=(groups[row[0]]??0)+1
+  }
+  expect([recipes.length,math,withMath]).toEqual([187,191,122]);expect(groups).toEqual({marker:23,choice:24,hint:70,'wrong-reason':70})
+  expect(reading.interactions.flatMap(q=>q.wrongReasonByChoiceIndex).filter(x=>x===null)).toHaveLength(35)
+  expect(recipes.some(r=>r[0]==='wrong-reason'&&r[2]===0)).toBe(false)
+  expect(items.filter(i=>reading.interactions.some(q=>q.id===i.id&&q.answerDomain==='semantic')).every(i=>i.acceptedAnswers.length===0)).toBe(true)
+ })
+ it.each([
+  ['marker','qf01-r3-c1-s01-m01',0,[]],
+  ['marker','qf01-r3-c3-s07-m01',0,[]],
+  ['marker','qf01-r3-c3-s08-m02',0,['x','0<x<20']],
+  ['choice','qf01-r3-n14-boundary-answer',1,[]],
+  ['choice','qf01-r3-n12c-constant-product-answer',1,['-1','a']],
+  ['hint','qf01-r3-n04-value-meaning-answer',1,['f(\\text{入力})=\\text{対応する値}']],
+  ['hint','qf01-n13-answer',1,['+1','-1']],
+  ['hint','qf01-r3-n16-target-answer',1,[]],
+  ['wrong-reason','qf01-n12a-answer',1,['-1']],
+  ['wrong-reason','qf01-n12a-answer',2,['a-1']],
+  ['wrong-reason','qf01-n14-answer',1,['\\text{縦}\\times \\text{横}']],
+ ] as const)('%s/%s/%sの通常label/符号/placeholderを採用境界に保つ',async(field,owner,index,expected)=>{
+  const source=await validateQF01R3Reading(unit,reading),row=recipes.find(r=>r[0]===field&&r[1]===owner&&r[2]===index)!
+  expect(R3MixedText.slice(source,origin(row),original(source,row)).filter(t=>t.type==='math').map(t=>t.latex)).toEqual(expected)
+ })
+ it('候補191式のungrouped/groupedだけを比較し、元AST/内部HTML/spacingを保ち一baseへする',()=>{
+  const clean=(value:unknown):unknown=>Array.isArray(value)?value.map(clean):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).filter(([key])=>key!=='loc').map(([key,v])=>[key,clean(v)])):value
+  const parse=(katex as unknown as {__parse:(input:string)=>unknown}).__parse
+  let count=0
+  for(const row of recipes)for(const span of row[5]){
+   const input=normalizeTextbookMath(span[3]),grouped=normalizeTextbookMath(R3BodyText.atomicLatex(span[3]))
+   const oldAST=clean(parse(input)),newAST=clean(parse(grouped)) as {type:string;body:unknown}[]
+   expect(newAST).toHaveLength(1);expect(newAST[0].type).toBe('ordgroup');expect(newAST[0].body).toEqual(oldAST)
+   const plain=document.createElement('div'),group=document.createElement('div');plain.innerHTML=katex.renderToString(input,{throwOnError:true});group.innerHTML=katex.renderToString(grouped,{throwOnError:true})
+   const bases=[...group.querySelector('.katex-html')!.children];expect(bases).toHaveLength(1)
+   const ink=(base:Element)=>[...base.children].filter(n=>!n.classList.contains('strut')).map(n=>n.outerHTML).join('')
+   const before=[...plain.querySelector('.katex-html')!.children].map(ink).join(''),outer=[...bases[0].children].filter(n=>!n.classList.contains('strut'))
+   expect(outer).toHaveLength(1);expect(outer[0].className).toBe('mord');expect(outer[0].innerHTML).toBe(before)
+   expect(group.querySelector('annotation')?.textContent).toBe(grouped);count++
+  }
+  expect(count).toBe(191)
+ })
+ it('wrong owner/index/null/原文変更/数学途中切断をplain fallbackで通さない',async()=>{
+  const source=await validateQF01R3Reading(unit,reading),row=recipes.find(r=>r[0]==='marker'&&r[1]==='qf01-r3-c3-s08-m02')!,o=origin(row),text=row[3],start=text.indexOf('0<x<20')
+  expect(()=>R3MixedText.slice(source,{...o,owner:'unknown'},text)).toThrow(/R3_MIXED_/)
+  expect(()=>R3MixedText.slice(source,{...o,index:1},text)).toThrow(/R3_MIXED_/)
+  expect(()=>R3MixedText.slice(source,{...o,start:start+1},text.slice(start+1))).toThrow(/SPLIT_MATH_UNIT/)
+  expect(()=>R3MixedText.slice(source,{...o,end:start+4},text.slice(0,start+4))).toThrow(/SPLIT_MATH_UNIT/)
+  expect(()=>R3MixedText.slice(source,o,text+' x=20')).toThrow(/VISIBLE_SLICE/)
+  expect(()=>R3MixedText.slice(source,{field:'wrong-reason',owner:'qf01-n01-answer',index:0,start:0,end:0},'')).toThrow(/SOURCE_IDENTITY/)
+  const changed={...source,blocks:new Map(source.blocks)},block=source.blocks.get(row[1])!;if(block.type!=='marker')throw Error('TEST_MARKER')
+  changed.blocks.set(block.id,{...block,text:block.text+'変更'})
+  await expect(R3MixedText.validateSource(changed)).rejects.toThrow(/SOURCE_IDENTITY/)
+ })
+ it('help0をone-flowで描き、実二誤答後だけhint1と別の理由を描く',async()=>{
+  const id=active[0].id,item=active[0]
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+id)
+  expect(document.querySelector('[data-qf01-mixed-field="hint"]')).toBeNull()
+  fireEvent.click(screen.getByTestId('textbook-item-'+id));fireEvent.click(screen.getByRole('button',{name:'手掛かりを見る'}))
+  const help=document.querySelector<HTMLElement>('[data-qf01-mixed-field="hint"][data-qf01-mixed-index="0"]')!
+  expect(help.parentElement?.classList.contains('reading-choice-hint')).toBe(true);expect(help.parentElement?.children).toHaveLength(1)
+  expect(help.parentElement?.childNodes).toHaveLength(1);expect(help.querySelectorAll('[data-qf01-mixed-math]')).toHaveLength(2)
+  const wrongs=item.choices!.filter(v=>v!==item.answer);clickChoice(id,wrongs[0])
+  expect(document.querySelector('[data-qf01-mixed-field="hint"][data-qf01-mixed-index="1"]')).toBeNull()
+  clickChoice(id,wrongs[1]);expect(useAppStore.getState().textbookProgress[unit.unitId].answers[id].attemptCount).toBe(2)
+  expect(document.querySelector('[data-qf01-mixed-field="hint"][data-qf01-mixed-index="1"]')).toBeTruthy()
+  expect(document.querySelector('[data-qf01-mixed-field="wrong-reason"]')?.getAttribute('data-qf01-mixed-index')).toBe('2')
+  clickChoice(id,item.answer);await waitFor(()=>expect(screen.queryByTestId('inline-choice-panel-'+id)).toBeNull())
+  expect(document.querySelector('[data-qf01-mixed-field="hint"]')).toBeNull()
+ })
+ it('semantic全候補を描き、未知未来のmarker/help/semanticをDOMへ出さない',async()=>{
+  const id='qf01-r3-n04-value-meaning-answer',at=active.findIndex(item=>item.id===id),item=active[at]
+  act(()=>{for(const prior of active.slice(0,at))useAppStore.getState().answerTextbook(unit,prior.id,prior.answer)})
+  localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test','1')
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+id);fireEvent.click(screen.getByTestId('textbook-item-'+id))
+  const panel=screen.getByTestId('inline-choice-panel-'+id),choices=panel.querySelectorAll('[data-qf01-mixed-field="choice"]')
+  const ordered=getTextbookChoices(unit,{...item,scaffoldLevel:'light'}),indices=ordered.map(value=>item.choices!.indexOf(value))
+  expect(choices).toHaveLength(3);expect([...choices].map(n=>Number(n.getAttribute('data-qf01-mixed-index')))).toEqual(indices)
+  expect([...choices].map(n=>n.querySelectorAll('[data-qf01-mixed-math]').length)).toEqual(indices.map(index=>[1,2,0][index]))
+  expect(document.querySelector('[data-qf01-mixed-owner="qf01-r3-c3-s08-m02"]')).toBeNull()
+  expect(document.querySelector('[data-qf01-mixed-field="hint"]')).toBeNull()
+  clickChoice(id,item.choices![1]);expect(useAppStore.getState().textbookProgress[unit.unitId].answers[id].resolved).toBe(false)
+  expect(document.querySelector('[data-testid="textbook-hint-'+id+'"] [data-qf01-mixed-field="choice"]')).toBeTruthy()
+ })
+ it('projected markerが原sourceと違えばalert/disabled/inertで回答を停止する',async()=>{
+  const original=transformationReading.projectQF01R3Block
+  vi.spyOn(transformationReading,'projectQF01R3Block').mockImplementation((...args)=>{const p=original(...args);if(p?.source.type!=='marker'||p.source.id!=='qf01-r3-c1-s01-m01')return p;return {...p,source:{...p.source,text:'source mismatch x=99'}}})
+  render(<Lesson/>);await screen.findByTestId('qf01-r3-mixed-error')
+  expect(screen.getByTestId('textbook-item-'+active[0].id).hasAttribute('disabled')).toBe(true)
+  expect(document.querySelector('.math-textbook-stage--current')?.hasAttribute('inert')).toBe(true)
+  expect(document.body.textContent).not.toContain('source mismatch x=99')
+ })
+ it('D06はR3の360px以下だけのpanel/入れ子asideへ局所規則を置く',async()=>{
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+active[0].id)
+  const style=document.querySelector<HTMLStyleElement>('[data-qf01-r3-narrow-inline-layout]')!
+  expect(style.closest('[data-qf01-revision="3"]')).toBeTruthy();expect(style.textContent).toContain('@media (max-width:360px)')
+  const media=style.sheet!.cssRules[0] as CSSMediaRule,rules=[...media.cssRules] as CSSStyleRule[]
+  expect(media.conditionText).toBe('(max-width:360px)');expect(rules).toHaveLength(3)
+  expect(rules.map(rule=>rule.selectorText)).toEqual(['[data-qf01-revision="3"] .reading-inline-choice-panel','[data-qf01-revision="3"] .reading-inline-choice-panel > aside.reading-choice-hint','[data-qf01-revision="3"] .reading-inline-choice-panel > aside.reading-choice-hint > p'])
+  expect(rules.map(rule=>rule.style.getPropertyValue('padding-left'))).toEqual(['2px','0',''])
+  expect(rules.map(rule=>rule.style.getPropertyValue('min-width'))).toEqual(['','0','0'])
+  for(const rule of rules)for(let i=0;i<rule.style.length;i++){const property=rule.style[i];expect(['padding-left','padding-right','min-width']).toContain(property);expect(rule.style.getPropertyPriority(property)).toBe('')}
+  fireEvent.click(screen.getByTestId('textbook-item-'+active[0].id));fireEvent.click(screen.getByRole('button',{name:'手掛かりを見る'}))
+  const standalone=document.querySelector('[data-qf01-mixed-field="hint"][data-qf01-mixed-index="0"]')!.parentElement!
+  expect(standalone.tagName).toBe('P');expect(standalone.classList.contains('reading-choice-hint')).toBe(true);expect(standalone.hasAttribute('style')).toBe(false)
+ })
+ it('旧R2にはD06局所styleも新mixed sourceも挿入しない',async()=>{
+  render(<MemoryRouter><QF01Revision2Archive/></MemoryRouter>);await screen.findByTestId('qf01-revision2-archive')
+  expect(document.querySelector('[data-qf01-r3-narrow-inline-layout]')).toBeNull();expect(document.querySelector('[data-qf01-mixed-inline-flow]')).toBeNull()
  })
 })

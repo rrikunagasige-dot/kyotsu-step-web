@@ -15,6 +15,7 @@ import tempfile
 import time
 import unittest
 from unittest.mock import patch
+from contextlib import nullcontext
 
 from checkpoint import (CheckpointStore, CheckpointRejected, UnknownContext,
                         FIXED_WORK, FIXED_ANCHOR, RECOVERY_PROPOSAL_SHA256,
@@ -99,7 +100,7 @@ def populate_preflight_fixture(root):
     return state
 
 
-def populate_nearby_fixture(root):
+def populate_nearby_fixture(root,*,product_root=None,candidate_sha='c'*40,current_core=None):
     """TEST_FIXTURE B->C transitions; never copy actual private ledger/replies.
 
     Only the historical executor identity and external Git tree are mocked.
@@ -144,12 +145,111 @@ def populate_nearby_fixture(root):
         'productPaths':list(NEARBY_REPAIR_PRODUCT_PATHS),'publicCodePathMaximum':20,
         'publicProposalPath':NEARBY_REPAIR_PROPOSAL_PATH,'nativeLedgerOrLearningOrCredentialsIncluded':False},'TEST_FIXTURE_D03_ADOPTION')
     for relative in NEARBY_REPAIR_PRODUCT_PATHS:
-        (root/relative).write_bytes((ENGINE.parent/relative).read_bytes())
-    with patch('checkpoint.verify_candidate_git',return_value=None), patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
-        proof=rt.checkpoint_preflight(FIXED_WORK,candidate_sha='c'*40,
+        (root/relative).write_bytes(((Path(product_root) if product_root else ENGINE.parent)/relative).read_bytes())
+    with patch('checkpoint.verify_candidate_git',return_value=None), patch('adapters._checkpoint_git_proof',return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}), (patch('checkpoint.current_core_identity',return_value=current_core) if current_core else nullcontext()):
+        proof=rt.checkpoint_preflight(FIXED_WORK,candidate_sha=candidate_sha,
             informed_adoption_ref=d2,repair_adoption_ref=d3)
         rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
     return {'rt':rt,'store':store,'proof':proof,'stateB':state_b,'d2':d2,'d3':d3}
+
+
+def populate_math_rendering_fixture(root):
+    """Synthetic C->D protocol, never actual C suffix or private adoption bytes.
+
+    Fixed public C product/core bytes come from an immutable C checkout. Only
+    the authenticated private predecessor event/hash boundary is substituted;
+    the actual fixture event chain/state/manifest/preflight are not mocked.
+    """
+    import checkpoint as cp
+    from definitions import IMPLEMENTATION_FILES
+    root=Path(root)
+    baseline=Path(os.environ.get('QF01_CHECKPOINT_MATH_BASELINE_ROOT',str(WORKSPACE/'qf01-nearby-core'))).resolve()
+    for p,h in cp.MATH_RENDERING_REPAIR_BEFORE.items():
+        if hashlib.sha256((baseline/p).read_bytes()).hexdigest()!=h:
+            raise AssertionError('Fixed baseline-C repair mismatch: '+p)
+    old_core={'definitionHash':'459d541af32313c9ece595e1ca410597f4067d657c873da9cd0cffa40648c426',
+              'files':{name:hashlib.sha256((baseline/'workflow'/name).read_bytes()).hexdigest()
+                       for name in IMPLEMENTATION_FILES}}
+    fixture=populate_nearby_fixture(root,product_root=baseline,
+        candidate_sha=cp.MATH_RENDERING_REPAIR_BASELINE,current_core=old_core)
+    rt=fixture['rt'];store=fixture['store']
+    previous=next(e for e in store.suffix_events() if e['kind']=='checkpoint_definition_migrated'
+                  and e['payload'].get('repairAdoption'))
+    boundary={'MATH_RENDERING_REPAIR_D03_EVENT_HASH':previous['hash'],
+              'MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256':digest(previous['payload']['repairAdoption'])}
+    proposal=root/cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH;proposal.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(ENGINE.parent/cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH,proposal)
+    adoption={'schemaVersion':'qf01-d04-actual-user-adoption/1',
+        'proposalSHA256':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,'quote':cp.MATH_RENDERING_REPAIR_ADOPTION_QUOTE,
+        'source_ref':'request_user_input_async/'+cp.MATH_RENDERING_REPAIR_ADOPTION_CALL_ID,
+        'verification_level':'conversation_transcribed','adopted':True,
+        'baselineSourceSHA':cp.MATH_RENDERING_REPAIR_BASELINE,
+        'productPaths':list(cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS),'publicCodePathMaximum':20,
+        'publicProposalPath':cp.MATH_RENDERING_REPAIR_PROPOSAL_PATH,'nativeLedgerOrLearningOrCredentialsIncluded':False,
+        'originalD03MigrationEventHash':boundary['MATH_RENDERING_REPAIR_D03_EVENT_HASH'],
+        'originalD03SupplementSHA256':boundary['MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256'],
+        'fixtureKind':'TEST_FIXTURE_NO_ACTUAL_USER_ACTION_OR_PRIVATE_NATIVE_PREFIX'}
+    path=root/'TEST_FIXTURE_D04_ADOPTION.json';path.write_text(json.dumps(adoption,ensure_ascii=False)+'\n',encoding='utf8')
+    d4=rt.evidence(FIXED_WORK,'file',{'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()},
+        source_ref='TEST_FIXTURE/protocol-only',verification_level='local_execution',eid='TEST_FIXTURE_D04_ADOPTION')
+    renderer=root/cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0]
+    renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D04_NOT_AN_ACTUAL_PRODUCT_REPAIR\n')
+    fixture.update(d4=d4,boundary=boundary,stateC=rt.state(FIXED_WORK),originalD03=previous)
+    return fixture
+
+
+class MathRenderingRecordTests(unittest.TestCase):
+    """Exact public guard contracts without native or Git writes."""
+    def record(self):
+        import checkpoint as cp
+        return {'schemaVersion':'qf01-math-prose-rendering-supplement/1',
+            'proposalSHA256':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+            'evidenceRef':'TEST_FIXTURE_D04','transcriptionSHA256':'a'*64,
+            'quote':cp.MATH_RENDERING_REPAIR_ADOPTION_QUOTE,
+            'source_ref':'request_user_input_async/'+cp.MATH_RENDERING_REPAIR_ADOPTION_CALL_ID,
+            'verification_level':'conversation_transcribed','baselineSourceSHA':cp.MATH_RENDERING_REPAIR_BASELINE,
+            'candidateBeforeSHA':cp.MATH_RENDERING_REPAIR_BASELINE,'candidateBeforeManifestSHA256':'b'*64,
+            'candidateAfterSHA':'d'*40,'allowedProductPaths':list(cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS),
+            'beforeRepair':copy.deepcopy(cp.MATH_RENDERING_REPAIR_BEFORE),
+            'afterRepair':{p:'d'*64 for p in cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS},
+            'originalD03MigrationEventHash':cp.MATH_RENDERING_REPAIR_D03_EVENT_HASH,
+            'originalD03SupplementSHA256':cp.MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,
+            'definitionHash':'d'*64,'implementationHash':'e'*64,'checkpointEpoch':'f'*64}
+
+    def test_separate_exact_d04_adoption_and_c_preimages(self):
+        from checkpoint import validate_math_rendering_repair_record
+        record=self.record();self.assertEqual(validate_math_rendering_repair_record(record),record)
+        for key,value in [('proposalSHA256','0'*64),('quote','TEST_FIXTURE_CONTINUE_ONLY'),
+            ('originalD03MigrationEventHash','0'*64),('originalD03SupplementSHA256','0'*64),
+            ('baselineSourceSHA','b'*40),('beforeRepair',record['afterRepair']),('candidateBeforeManifestSHA256',True),
+            ('evidenceRef','E'*129)]:
+            changed=copy.deepcopy(record);changed[key]=value
+            with self.subTest(key=key),self.assertRaises(CheckpointRejected):
+                validate_math_rendering_repair_record(changed)
+        changed=copy.deepcopy(record);changed['unapprovedExtra']=True
+        with self.assertRaisesRegex(CheckpointRejected,'D04_REPAIR_RECORD_FIELDS'):
+            validate_math_rendering_repair_record(changed)
+
+    def test_current_cannot_rollback_or_replace_prior_d04_adoption(self):
+        from checkpoint import validate_math_rendering_repair_continuation
+        first=self.record();second=copy.deepcopy(first)
+        second.update(candidateBeforeSHA=first['candidateAfterSHA'],candidateAfterSHA='e'*40)
+        self.assertEqual(validate_math_rendering_repair_continuation(first,second,earlier_after=[first['afterRepair']]),second)
+        changed=copy.deepcopy(second);changed['afterRepair']={p:'a'*64 for p in first['afterRepair']}
+        with self.assertRaisesRegex(CheckpointRejected,'D04_OLD_AFTERIMAGE_ROLLBACK'):
+            validate_math_rendering_repair_continuation(first,changed,earlier_after=[changed['afterRepair'],first['afterRepair']])
+        changed=copy.deepcopy(second);changed['evidenceRef']='TEST_FIXTURE_REPLACED'
+        with self.assertRaisesRegex(CheckpointRejected,'D04_PRESERVED_SUPPLEMENTAL_ADOPTION'):
+            validate_math_rendering_repair_continuation(first,changed)
+
+    def test_d04_document_scope_does_not_weaken_d03_or_normal_whole_diff(self):
+        from checkpoint import MATH_RENDERING_REPAIR_PROPOSAL_PATH
+        from adapters import _checkpoint_scope_diff
+        with self.assertRaises(Rejected):_checkpoint_scope_diff({MATH_RENDERING_REPAIR_PROPOSAL_PATH})
+        with self.assertRaises(Rejected):_checkpoint_scope_diff({MATH_RENDERING_REPAIR_PROPOSAL_PATH},math_rendering_repair=True)
+        self.assertEqual(_checkpoint_scope_diff({MATH_RENDERING_REPAIR_PROPOSAL_PATH},nearby_repair=True,
+            math_rendering_repair=True),[MATH_RENDERING_REPAIR_PROPOSAL_PATH])
+        with self.assertRaises(Rejected):_checkpoint_scope_diff({'src/UNAPPROVED.ts'},nearby_repair=True,math_rendering_repair=True)
 
 
 class InformedReviewMethodTests(unittest.TestCase):
@@ -1360,6 +1460,293 @@ class NearbyReviewMethodTests(unittest.TestCase):
         head=self.store.head
         with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):
             self.reconcile_owner()
+        self.assertEqual(self.store.head,head)
+
+
+class MathRenderingReviewMethodTests(unittest.TestCase):
+    """Synthetic transport/measurement protocol, never actual image approval."""
+    reset_fixture=InformedReviewMethodTests.reset_fixture
+    setUp=InformedReviewMethodTests.setUp
+    replace_report=InformedReviewMethodTests.replace_report
+    replace_render=NearbyReviewMethodTests.replace_render
+    seal=InformedReviewMethodTests.seal
+    result=InformedReviewMethodTests.result
+    tearDownClass=classmethod(InformedReviewMethodTests.tearDownClass.__func__)
+
+    @classmethod
+    def setUpClass(cls):
+        import checkpoint as cp
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D04_review_master_')
+        cls.master=Path(cls.temporary.name).resolve();cls.prepared_temporary=None
+        fixture=populate_math_rendering_fixture(cls.master);rt=fixture['rt'];cls.fixture=fixture
+        boundary=patch.multiple('checkpoint',**fixture['boundary']);boundary.start();cls.addClassCleanup(boundary.stop)
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY'}):
+            proof=rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40,
+                informed_adoption_ref=fixture['d2'],repair_adoption_ref=fixture['d3'],math_rendering_adoption_ref=fixture['d4'])
+            rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        cls.repair_evidence=fixture['d3'];cls.math_evidence=fixture['d4']
+        originals=[('TEST_FIXTURE_B_DIAGNOSTIC.json','E-QF01-B-OPEN-NEARBY-FINDING-20261123',{
+            'schemaVersion':'qf01-current-b-confirmed-local-open-finding/1','findingID':'QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123',
+            'sourceSHA':cp.NEARBY_REPAIR_BASELINE,'status':'OPEN_CONFIRMED_LOCAL_EVIDENCE','productRepairApplied':False}),
+            ('TEST_FIXTURE_C_DIAGNOSTIC.json','E-QF01-C-OPEN-PROSE-MATH-FINDING-20261123',{
+            'schemaVersion':'qf01-current-c-open-prose-math-finding/1','findingId':'QF01-C-PROSE-MATH-SPAN-20261123',
+            'sourceSHA':cp.MATH_RENDERING_REPAIR_BASELINE,'status':'OPEN_CONFIRMED_CURRENT_C',
+            'newProductRepairApplied':False,'blocksMaterialR04PASS':True})]
+        for name,eid,value in originals:
+            value['fixtureKind']='TEST_FIXTURE_DIAGNOSTIC_NOT_ACTUAL_PRIVATE_REPORT'
+            path=cls.master/name;path.write_text(json.dumps(value)+'\n',encoding='utf8');h=hashlib.sha256(path.read_bytes()).hexdigest()
+            rt.evidence(FIXED_WORK,'file',{'path':name,'sha256':h,'source_sha':value['sourceSHA']},
+                source_ref='TEST_FIXTURE/original-diagnostic-boundary',verification_level='local_execution',eid=eid)
+            if 'C_DIAGNOSTIC' in name:
+                diagnostic=patch('team.MATH_PROSE_ORIGINAL_C_DIAGNOSTIC_SHA256',h);diagnostic.start();cls.addClassCleanup(diagnostic.stop)
+        cls.evidence=rt.evidence(FIXED_WORK,'check',{'status':'PASS','source_sha':'d'*40,
+            'checks':['TEST_FIXTURE_PROTOCOL_ONLY_NOT_ACTUAL_420_MEASUREMENTS'],
+            'nearby_visibility':{'findingId':'QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123','status':'PASS',
+                'widths':[320,390,430,1440],'sampleCount':420,'unverified':0,'unexpectedCopies':0,'missingCopies':0},
+            'math_prose_rendering':{'findingId':'QF01-C-PROSE-MATH-SPAN-20261123','status':'PASS',
+                'widths':[320,390,430,1440],'sampleCount':420,'unverified':0,'missingMathUnits':0,
+                'unexpectedMathUnits':0,'splitMathUnits':0,'unitErrors':0,'sourceMismatch':0}},
+            source_ref='TEST_FIXTURE/not-actual-D-UI-QA',verification_level='local_execution',eid='TEST_FIXTURE_D04_MEASUREMENTS')
+        relative='src/components/textbook/GuidedMathReadingFlow.tsx'
+        cls.file_evidence=rt.evidence(FIXED_WORK,'file',{'path':relative,'sha256':hashlib.sha256((cls.master/relative).read_bytes()).hexdigest()},
+            source_ref='TEST_FIXTURE/current-file',eid='TEST_FIXTURE_D04_CURRENT_FILE')
+
+    def adopt(self,**overrides):
+        return InformedReviewMethodTests.adopt(self,evidence_refs=[self.evidence,self.repair_evidence,self.math_evidence],**overrides)
+
+    def prepare(self):
+        cls=type(self)
+        if cls.prepared_temporary:return InformedReviewMethodTests.prepare(self)
+        def known(out):
+            if out['facet']=='render':
+                for finding,evidence in [('QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123','E-QF01-B-OPEN-NEARBY-FINDING-20261123'),
+                    ('QF01-C-PROSE-MATH-SPAN-20261123','E-QF01-C-OPEN-PROSE-MATH-FINDING-20261123')]:
+                    out['findings'].append({'findingId':finding,'claimRef':out['claimRef'],'facet':'render',
+                        'resolution':'VERIFIED_FIXED','reexaminesEvidenceRef':evidence,
+                        'reason':'TEST_FIXTURE_PROTOCOL_ONLY_NOT_A_REAL_FIX_REVIEW','evidenceRefs':[self.evidence]})
+        collection=InformedReviewMethodTests.prepare(self,mutate_output=known)
+        cls.prepared_temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D04_cache_')
+        shutil.copytree(self.root,Path(cls.prepared_temporary.name),dirs_exist_ok=True)
+        cls.prepared_attributes={key:copy.deepcopy(getattr(self,key)) for key in
+            ('authority','codes','old_open','collection','reviews','dispositions')}
+        return collection
+
+    def guard_args(self):
+        from team import project,node_requirements
+        self.prepare();s=self.rt.state(FIXED_WORK);p=project(history_events(self.rt,'team',FIXED_WORK),FIXED_WORK)
+        rows=[]
+        for ref in self.collection['outputRefs']:
+            row=p['outputs'][ref];reg=p['registrations'][row['registrationRef']]
+            rows.append((reg['assignment'],row['output'],reg['packet']))
+        return s,p,rows,node_requirements(s['plan']['agent_team'],self.node)
+
+    def test_both_current_reports_current_code_and_both_measurements_seal(self):
+        from team import check_collection
+        self.prepare();sealed=self.seal();check_collection(self.rt,FIXED_WORK,self.node,self.result(sealed))
+        self.assertFalse(sealed['semanticValidityVerified']);self.assertFalse(sealed['gateAccepted'])
+        self.assertEqual(sealed['receipt']['currentSourceSHA'],'d'*40)
+
+    def test_each_render_report_must_reexamine_original_c_f06(self):
+        for index in (0,1):
+            self.reset_fixture();self.prepare()
+            self.replace_render(lambda out:out.update(findings=[f for f in out['findings'] if f['findingId']!='QF01-C-PROSE-MATH-SPAN-20261123']),index)
+            with self.subTest(reviewer=index),self.assertRaisesRegex(Rejected,'D04_CURRENT_REPORT_KNOWN_FINDING_REQUIRED'):self.seal()
+
+    def test_d04_keeps_original_b_nearby_report_requirement(self):
+        self.prepare()
+        self.replace_render(lambda out:out.update(findings=[f for f in out['findings'] if f['findingId']!='QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123']))
+        with self.assertRaisesRegex(Rejected,'D03_CURRENT_REPORT_KNOWN_FINDING_REQUIRED'):self.seal()
+
+    def test_math_measurement_bool_negative_missing_split_and_widths_are_rejected(self):
+        from team import _check_math_prose_finding_resolution
+        s,p,rows,required=self.guard_args()
+        for key,value in [('unverified',True),('missingMathUnits',False),('unexpectedMathUnits',0.0),
+            ('unitErrors',-1),('splitMathUnits',1),('sourceMismatch',1),('sampleCount',419),('widths',[320,390,430,430])]:
+            changed=copy.deepcopy(s);changed['evidence'][self.evidence]['data']['math_prose_rendering'][key]=value
+            with self.subTest(key=key),self.assertRaisesRegex(Rejected,'D04_CURRENT_FOUR_WIDTH_MATH_MEASUREMENTS'):
+                _check_math_prose_finding_resolution(self.rt,changed,self.node,p,rows,required,self.codes,[self.evidence])
+
+    def test_missing_math_measurement_cannot_borrow_nearby_pass(self):
+        from team import _check_math_prose_finding_resolution
+        s,p,rows,required=self.guard_args();s['evidence'][self.evidence]['data'].pop('math_prose_rendering')
+        with self.assertRaisesRegex(Rejected,'D04_ACTUAL_MATH_UI_MEASUREMENTS_REQUIRED'):
+            _check_math_prose_finding_resolution(self.rt,s,self.node,p,rows,required,self.codes,[self.evidence])
+
+    def test_f06_current_file_without_actual_measurement_is_rejected(self):
+        self.prepare()
+        def mutate(out):
+            f=next(f for f in out['findings'] if f['findingId']=='QF01-C-PROSE-MATH-SPAN-20261123')
+            f['evidenceRefs']=[self.file_evidence];out['evidenceRefs'].append(self.file_evidence)
+        self.replace_render(mutate)
+        with self.assertRaisesRegex(Rejected,'D04_BOTH_REPORTS_CURRENT_FIX_EVIDENCE'):self.seal()
+
+    def test_rehashed_old_c_diagnostic_cannot_be_replaced_with_current_d(self):
+        from team import _check_math_prose_finding_resolution
+        s,p,rows,required=self.guard_args();prior='E-QF01-C-OPEN-PROSE-MATH-FINDING-20261123'
+        path=self.root/s['evidence'][prior]['data']['path'];value=json.loads(path.read_bytes());value['sourceSHA']='d'*40
+        path.write_text(json.dumps(value)+'\n',encoding='utf8');s['evidence'][prior]['data']['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(Rejected,'D04_ORIGINAL_C_DIAGNOSTIC_CHANGED'):
+            _check_math_prose_finding_resolution(self.rt,s,self.node,p,rows,required,self.codes,[self.evidence])
+
+
+class MathRenderingOwnerTests(unittest.TestCase):
+    """Actual fixture owner lineage, symbolic historical Git identity only."""
+    setUp=InformedReviewMethodTests.setUp
+    reset_fixture=InformedReviewMethodTests.reset_fixture
+    tearDownClass=classmethod(InformedReviewMethodTests.tearDownClass.__func__)
+
+    @classmethod
+    def setUpClass(cls):
+        import checkpoint as cp
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D04_owner_master_')
+        cls.master=Path(cls.temporary.name).resolve();cls.prepared_temporary=None
+        cls.fixture=populate_math_rendering_fixture(cls.master);rt=cls.fixture['rt']
+        boundary=patch.multiple('checkpoint',**cls.fixture['boundary']);boundary.start();cls.addClassCleanup(boundary.stop)
+        baseline=Path(os.environ.get('QF01_CHECKPOINT_MATH_BASELINE_ROOT',str(WORKSPACE/'qf01-nearby-core')))
+        for p in cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS:(cls.master/p).write_bytes((baseline/p).read_bytes())
+        cls.evidence=rt.evidence(FIXED_WORK,'check',{'status':'PASS','source_sha':cp.MATH_RENDERING_REPAIR_BASELINE,
+            'checks':['TEST_FIXTURE_OWNER_PROTOCOL_NOT_QA']},source_ref='TEST_FIXTURE/C-only-not-QA',eid='TEST_FIXTURE_D04_OWNER_C_CHECK')
+        cls.repair_evidence=cls.fixture['d3'];cls.math_evidence=cls.fixture['d4']
+        cls.core_c=cls.fixture['proof']['core']
+
+    def adopt(self,**overrides):
+        return InformedReviewMethodTests.adopt(self,evidence_refs=[self.evidence,self.repair_evidence,self.math_evidence],**overrides)
+
+    def prepare_owner(self):
+        import checkpoint as cp
+        from definitions import DEFINITION_HASH,instantiate
+        # The previous C executor is an explicit historical boundary. The
+        # temporary ledger and its candidate/protected hashes remain real.
+        with patch('checkpoint.current_core_identity',return_value=self.core_c), \
+                patch('runtime.DEFINITION_HASH',self.core_c['definitionHash']):
+            NearbyReviewMethodTests.prepare_owner(self)
+            owner=self.rt.state(cp.RECOVERY_WORK)
+            self.rt.append('definition_migrated',cp.RECOVERY_WORK,{'from':owner['definition_hash'],
+                'to':self.core_c['definitionHash'],'fixtureKind':'TEST_FIXTURE_HISTORICAL_EXECUTOR_BOUNDARY'})
+            with patch('adapters._checkpoint_informed_technical_git',return_value=self.owner_git):
+                self.rt.reconcile_informed_technical_owner(cp.RECOVERY_WORK,candidate_sha=cp.MATH_RENDERING_REPAIR_BASELINE,
+                    verification_refs=[self.owner_verification],expected_head=self.store.head)
+        self.owner_c=self.rt.state(cp.RECOVERY_WORK)
+        renderer=self.root/cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0]
+        renderer.write_bytes(renderer.read_bytes()+b'\n// TEST_FIXTURE_D04_OWNER_NOT_ACTUAL_PRODUCT_FIX\n')
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_NOT_ACTUAL_D'}):
+            proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],math_rendering_adoption_ref=self.fixture['d4'])
+            self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        self.math_repair=proof['mathRenderingRepair']
+        state=self.rt.state(cp.RECOVERY_WORK)
+        self.rt.append('definition_migrated',cp.RECOVERY_WORK,{'from':state['definition_hash'],'to':DEFINITION_HASH,
+            'fixtureKind':'TEST_FIXTURE_CURRENT_DEFINITION_PROTOCOL'})
+        plan=copy.deepcopy(self.rt.state(cp.RECOVERY_WORK)['plan'])
+        plan['proposal']={'id':'TEST_FIXTURE_D04','hash':cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256}
+        plan['protected_manifest'].update(self.math_repair['afterRepair']);self.rt.revise(cp.RECOVERY_WORK,plan)
+        self.rt.user(cp.RECOVERY_WORK,'approve_proposal',cp.MATH_RENDERING_REPAIR_ADOPTION_QUOTE,
+            cp.MATH_RENDERING_REPAIR_PROPOSAL_SHA256,'request_user_input_async/'+cp.MATH_RENDERING_REPAIR_ADOPTION_CALL_ID)
+        self.authority=self.adopt()
+        self.owner_verification=self.rt.evidence(cp.RECOVERY_WORK,'file',{'path':cp.MATH_RENDERING_REPAIR_PRODUCT_PATHS[0],
+            'sha256':hashlib.sha256(renderer.read_bytes()).hexdigest()},source_ref='TEST_FIXTURE/current-D-file-not-T04',eid='TEST_FIXTURE_D04_OWNER_FILE')
+        self.owner_before=self.rt.state(cp.RECOVERY_WORK);self.t01=instantiate(self.owner_before['plan'])['T01_ANALYSIS']
+        self.before_input=self.rt.input_hash(self.owner_before,self.t01)
+        artifact=self.store.put({'verdict':'PASS','fixtureKind':'TEST_FIXTURE_RESULT_NOT_ACTUAL_ANALYSIS'})
+        self.rt.append('result',cp.RECOVERY_WORK,{'node':'T01_ANALYSIS','input_hash':self.before_input,'artifact':artifact,'verdict':'PASS'})
+        self.owner_git={'schemaVersion':'qf01-informed-technical-git-proof/1',
+            'previousCandidateSHA':cp.MATH_RENDERING_REPAIR_BASELINE,
+            'retainedManifestSHA256':digest(self.owner_c['candidate_manifest']),
+            'currentMaterialGitProof':{'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY',
+                'nearbyRepair':proof['repairAdoption'],'mathRenderingRepair':self.math_repair}}
+
+    def reconcile(self):
+        from checkpoint import RECOVERY_WORK
+        with patch('adapters._checkpoint_informed_technical_git',return_value=self.owner_git):
+            return self.rt.reconcile_informed_technical_owner(RECOVERY_WORK,candidate_sha='d'*40,
+                verification_refs=[self.owner_verification],expected_head=self.store.head)
+
+    def test_actual_previous_c_owner_preserves_a22_users_418_and_invalidates_t01(self):
+        from checkpoint import RECOVERY_WORK,MATH_RENDERING_REPAIR_PRODUCT_PATHS
+        self.prepare_owner();before=self.rt.state(RECOVERY_WORK);result=self.reconcile();after=self.rt.state(RECOVERY_WORK)
+        self.assertFalse(result['proof']['writesExecuted']);self.assertFalse(result['proof']['oldResultsTransferred'])
+        self.assertEqual(result['proof']['previousCandidateSHA'],self.owner_c['candidate_sha'])
+        self.assertEqual(result['proof']['previousCandidateManifestSHA256'],digest(self.owner_c['candidate_manifest']))
+        self.assertEqual(after['plan']['source_manifest'],self.owner_original['source_manifest'])
+        self.assertEqual(after['plan']['rules'],self.owner_original['rules']);self.assertEqual(after['plan']['scope'],self.owner_original['scope'])
+        original=self.owner_original['protected_manifest'];current=after['plan']['protected_manifest']
+        self.assertEqual(len(current),418);self.assertEqual(set(current),set(original))
+        self.assertEqual({p for p in original if original[p]!=current[p]},set(MATH_RENDERING_REPAIR_PRODUCT_PATHS))
+        self.assertEqual(after['users'],before['users']);self.assertEqual(after['results'],before['results'])
+        self.assertEqual(self.store.source_snapshot(RECOVERY_WORK),self.owner_original_snapshot)
+        self.assertNotEqual(self.rt.input_hash(after,self.t01),self.before_input)
+        self.assertNotEqual(self.rt.node_status(after,self.t01),'PASSED')
+
+    def test_r06_current_proof_binds_d04_owner_authority_and_compile_without_repatch(self):
+        from checkpoint import RECOVERY_WORK,MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+        from definitions import instantiate
+        from capabilities import implementation_hash
+        from adapters import reconcile_checkpoint_candidate,validate_checkpoint_candidate_proof
+        self.prepare_owner();self.reconcile()
+        # Results below only exercise the current-input causal protocol. They
+        # are TEST_FIXTURE data, never actual AI decisions or CODE execution.
+        def current_result(work,node_id,done):
+            if node_id in done:return
+            state=self.rt.state(work);nodes=instantiate(state['plan'])
+            for dependency in nodes[node_id]['depends_on']:current_result(work,dependency,done)
+            state=self.rt.state(work)
+            body={'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_GATE_RESULT','node':node_id,'verdict':'PASS'}
+            if work==RECOVERY_WORK and node_id=='T02_APPROVAL':body['user_event']=self.rt.approval(state)['id']
+            reference=self.store.put(body)
+            self.rt.append('result',work,{'node':node_id,'artifact':reference,'verdict':'PASS',
+                'input_hash':self.rt.input_hash(state,nodes[node_id]),'actor':'TEST_FIXTURE_ONLY'})
+            done.add(node_id)
+        done=set()
+        for stage in ('S00_RECOVER','S01_ROUTE','T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY'):
+            current_result(RECOVERY_WORK,stage,done)
+        owner=self.rt.state(RECOVERY_WORK)
+        owner_refs={stage:owner['results'][stage]['artifact'] for stage in ('T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY')}
+        node_id='R06_PATCH@qf01-full-lesson';nodes=instantiate(self.rt.state(FIXED_WORK)['plan']);done=set()
+        for dependency in nodes[node_id]['depends_on']:current_result(FIXED_WORK,dependency,done)
+        state=self.rt.state(FIXED_WORK);node=nodes[node_id];input_hash=self.rt.input_hash(state,node)
+        token='TEST_FIXTURE_D04_R06_TOKEN'
+        self.rt.append('claimed',FIXED_WORK,{'node':node_id,'actor':'TEST_FIXTURE_ONLY',
+            'input_hash':input_hash,'task_id':digest('TEST_FIXTURE_D04_R06_TASK'),'token':token,
+            'expires_at':time.time()+3600},event_id='TEST_FIXTURE_D04_R06_CLAIM')
+        origin=self.store.state_base(FIXED_WORK)
+        compiled=self.store.get(origin['version_transition']['derivation']['compiledResultRef'])
+        receipt={'fixtureKind':'TEST_FIXTURE_NOT_ACTUAL_COMPILE','capability':'construction.compile',
+            'node':node_id,'phase':node['phase'],'status':'PASS','input_hash':input_hash,
+            'implementation_hash':implementation_hash(self.rt),'cache_key':digest(['TEST_FIXTURE_D04_R06',input_hash]),
+            'output':digest(compiled)}
+        reference=self.store.put(receipt)
+        self.rt.append('capability_result',FIXED_WORK,{'capability':'construction.compile',
+            'cache_key':receipt['cache_key'],'output':receipt['output']})
+        self.rt.append('capability_bound',FIXED_WORK,{'node':node_id,'receipt':reference,'input_hash':input_hash})
+        verification=self.rt.evidence(FIXED_WORK,'check',{'status':'PASS','source_sha':'d'*40,
+            'checks':['TEST_FIXTURE_PROTOCOL_NOT_ACTUAL_COMPILE_OR_QA']},source_ref='TEST_FIXTURE/R06-only',eid='TEST_FIXTURE_D04_R06_CHECK')
+        args={'owner_result_refs':owner_refs,'compile_receipt_ref':reference,'verification_refs':[verification],
+            'expected_head':self.store.head}
+        git={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY','nearbyRepair':self.fixture['proof']['repairAdoption'],
+            'mathRenderingRepair':self.math_repair}
+        before=[e for e in self.store.suffix_events() if e['kind'].startswith('patch_')]
+        with patch('adapters._checkpoint_git_proof',return_value=git),patch('adapters._checkpoint_current_compile',return_value=compiled):
+            accepted=reconcile_checkpoint_candidate(self.rt,FIXED_WORK,node_id,token,**args)
+            proof=validate_checkpoint_candidate_proof(self.rt,FIXED_WORK,node_id,accepted['proofRef'],compile_receipt_refs=[reference])
+            self.assertEqual(proof['ownerProposalSHA256'],MATH_RENDERING_REPAIR_PROPOSAL_SHA256)
+            self.assertEqual(proof['reviewMethodAuthorityRef'],self.authority['authorityRef'])
+            self.assertEqual(proof['gitProof']['mathRenderingRepair'],self.math_repair)
+            self.assertEqual(proof['gitProof']['nearbyRepair'],self.fixture['proof']['repairAdoption'])
+            self.assertFalse(proof['semanticAcceptance']);self.assertFalse(proof['patchExecutedAgain'])
+            with self.assertRaisesRegex(Rejected,'CHECKPOINT_RESULT_COMPILE_RECEIPT_MISMATCH'):
+                validate_checkpoint_candidate_proof(self.rt,FIXED_WORK,node_id,accepted['proofRef'],compile_receipt_refs=['0'*64])
+        self.assertEqual([e for e in self.store.suffix_events() if e['kind'].startswith('patch_')],before)
+
+    def test_third_protected_hash_cannot_enter_current_d04_owner(self):
+        from checkpoint import RECOVERY_WORK,MATH_RENDERING_REPAIR_PRODUCT_PATHS
+        self.prepare_owner();plan=copy.deepcopy(self.rt.state(RECOVERY_WORK)['plan'])
+        third=next(p for p in plan['protected_manifest'] if p not in MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        plan['protected_manifest'][third]='0'*64
+        self.rt.append('revised',RECOVERY_WORK,{'plan':plan,'fixtureKind':'TEST_FIXTURE_UNAPPROVED_PROTECTION_ATTACK'})
+        head=self.store.head
+        with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):self.reconcile()
         self.assertEqual(self.store.head,head)
 
 

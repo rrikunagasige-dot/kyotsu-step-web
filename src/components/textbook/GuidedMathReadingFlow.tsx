@@ -660,7 +660,7 @@ function R3QF01ReadingFlow(props: Props) {
   useEffect(() => {
     let active = true
     setSource(null); setError(false)
-    validateQF01R3Reading(props.unit, props.readingPresentation).then(value => { if (active) setSource(value) }).catch(() => { if (active) setError(true) })
+    validateQF01R3Reading(props.unit, props.readingPresentation).then(value => { validateQF01R3BodySource(value); if (active) setSource(value) }).catch(() => { if (active) setError(true) })
     return () => { active = false }
   }, [props.unit, props.readingPresentation])
   if (error) return <p role="alert" data-testid="qf01-r3-binding-error">教材と学習記録の対応を確認できません。本文は表示していません。</p>
@@ -690,8 +690,213 @@ export function R3FeedbackMath({ text, sourceId, unitId }: { text: string | null
   return <>{parts}</>
 }
 
+type R3BodySpan = readonly [start: number, end: number, lexeme: string, latex: string, unit: 'cm' | null]
+type R3BodyRecipe = readonly [blockId: string, partIndex: number, text: string, partSHA256: string, spans: readonly R3BodySpan[]]
+// D04's reviewed inventory is an identity/boundary guard, not a second source of
+// learner text. Only the already projected visible string is ever rendered.
+const R3_BODY_SOURCE_PARTS: readonly R3BodyRecipe[] = [
+  ["qf01-r3-c0-s01-p01",0,"一つの数を決めたとき、別の数がどのように決まるかを調べます。まず規則に数や式を入れ、次に長方形の条件から規則を作ります。最後に、使える入力と出てくる値の範囲を確かめます。","da1ebc7d568d6ff08cdca61c797d697a8a8017819ab91ae1a550f06de18e755f",[]],
+  ["qf01-r3-c1-s01-p01",0,"数を4倍して6を引く規則を考えます。この規則へ2、−1、a−1を入れたときに出てくる数や式を、順に求めましょう。aは数を表す文字です。","82e781af7a684a38e848a0298839503ea8160ff80913d5f29ec6bdb3d0e83db4",[[2,3,"4","4",null],[6,7,"6","6",null],[23,24,"2","2",null],[25,27,"−1","-1",null],[28,31,"a−1","a-1",null],[56,57,"a","a",null]]],
+  ["qf01-r3-c1-s01-p02",0,"まず、2を入れたときに出てくる数を求めます。規則は「4倍する」「6を引く」の順なので、はじめに掛け算の部分を作ります。","bced85dafb29f6c8487cfbe9a1df6682ca2760b565eb486bac23a3800ce168b4",[[3,4,"2","2",null],[26,27,"4","4",null],[32,33,"6","6",null]]],
+  ["qf01-r3-c1-s01-p03",0,"積を計算すると8です。規則には、ここから6を引く操作が残っています。","d00c8ab8498986343b46f0fdad3869ff5d13a806316688934ab139bb325d54a5",[[7,8,"8","8",null],[20,21,"6","6",null]]],
+  ["qf01-r3-c1-s01-p04",0,"入力2に対して、出てくる数は2と決まりました。入力と出力が同じ数になることもありますが、いつも等しくなる必要はありません。大切なのは、一つの入力を決めると、それに対応する出力がただ一つ決まることです。","449b8e914de2310d7d940503ed039c1330b3c837e94abb853549beb7fcff0d33",[[2,3,"2","2",null],[14,15,"2","2",null]]],
+  ["qf01-r3-c1-s01-p05",0,"このような対応を関数といいます。規則をfという名前で表すと、入力xに対応する出力yを、","8abc484af298621a67254d12d44cca9e4703d6378e146a6caf79649849d080ad",[[19,20,"f","f",null],[32,33,"x","x",null],[40,41,"y","y",null]]],
+  ["qf01-r3-c1-s01-p05",2,"と書きます。f(x)はfとxの積ではなく、入力xに対応する値を表す記号です。","219996b058084a3db30bfbb41e46d1e070deecb1ea534391999d962e34f950d7",[[6,10,"f(x)","f(x)",null],[11,12,"f","f",null],[13,14,"x","x",null],[23,24,"x","x",null]]],
+  ["qf01-r3-c1-s01-p06",0,"今回の規則では、","c7864500ef969cd29e13beb95146951a55dc29f1f25cb0fcb7f2ee44db3bd8eb",[]],
+  ["qf01-r3-c1-s01-p06",2,"です。括弧の中の2は入力、等号の右の2はその入力に対応する出力です。次は入力だけを替え、同じ規則を使います。","d48cb4a506a6c86d342619880fb7dce730686a4778089fced0018312be48a252",[[8,9,"2","2",null],[18,19,"2","2",null]]],
+  ["qf01-r3-c1-s02-p01",0,"規則は引き続き","30fdbbce1625f36d213aa148de7c0dc70cbc826b4c6fda2d1cdb561f23813c64",[]],
+  ["qf01-r3-c1-s02-p01",2,"です。今度は入力を−1に替え、","3bf029eccfe4f11455048753c8317cd810aafd54817ae8afb7ec06b05bc3bff9",[[9,11,"−1","-1",null]]],
+  ["qf01-r3-c1-s02-p01",4,"を求めます。xのあった位置へ、負号を含む入力を一まとまりとして入れます。","4d756d964860e530d9946cef6656ba8ed9849952b3eda8a1c013b2cebe0acdf7",[[6,7,"x","x",null]]],
+  ["qf01-r3-c1-s02-p02",0,"4に掛ける相手は−1です。最後に引く6は、元の規則にある別の操作なので、入力の括弧の外に残します。先に積を計算すると、次のようになります。","861d9207672d31e4dfd6e7f1b47a7a7a2a394ece3bf64eeb6942bd9730db1308",[[0,1,"4","4",null],[8,10,"−1","-1",null],[18,19,"6","6",null]]],
+  ["qf01-r3-c1-s02-p03",1,"という等式の−10は、","1570d40b0d37a5fdffb89a7e793408d70555f0f8e6528f1b85e4c95efa1c4fb1",[[6,9,"−10","-10",null]]],
+  ["qf01-r3-c1-s02-p03",2,"入力−1に対応する出力","e8398df4c4a1552cf1fd63edd85a72bbf1625f4c8a845e6918d387d2e3bdbb0d",[[2,4,"−1","-1",null]]],
+  ["qf01-r3-c1-s02-p03",3,"です。規則の名前を掛けた値でも、どの入力でも必ず出る同じ数でもありません。ここでは入力−1と出力−10は異なっていますが、一つの入力に値が一つ決まるという見方は同じです。","8fac298150aa1bf02e5836f14fddc2e51d6da0497f371f6ff47a534d95874533",[[43,45,"−1","-1",null],[48,51,"−10","-10",null]]],
+  ["qf01-r3-c1-s03-p01",0,"数を表す式も、一つの入力として扱えます。規則","e93ae58bf3975be000e6590e66a13db823002c3b8f340f7d3d07645d7de5bb54",[]],
+  ["qf01-r3-c1-s03-p01",2,"に、今度はa−1を入れて、","450f722d54b4133c69ae9957e55f0241e701a0ccea049325a5b5c6f6bc6f5c46",[[5,8,"a−1","a-1",null]]],
+  ["qf01-r3-c1-s03-p01",4,"を求めます。","f72f8979c90a621efaadda1769e132bd49114df309d4ded1e823ff4c669c10a4",[]],
+  ["qf01-r3-c1-s03-p02",0,"ここでa−1を括弧で囲むのは、","4078162b0d9aa8b9c7f9e9e16b6466f16da114a75bd979317913e763bbec3126",[[3,6,"a−1","a-1",null]]],
+  ["qf01-r3-c1-s03-p02",1,"入力全体に4を掛けることを表すため","23fe6b45e231d9f8d499e14114674fbd6d18528051628e14555975bccd6db5bc",[[5,6,"4","4",null]]],
+  ["qf01-r3-c1-s03-p02",2,"です。aだけを4倍するのではありません。元の規則の最後の−6は、このまとまりの外に残します。","33b12f98f41dc38c33a26d72d640eddfb7df9878f710f318fa28b11a75e90cac",[[3,4,"a","a",null],[7,8,"4","4",null],[28,30,"−6","-6",null]]],
+  ["qf01-r3-c1-s03-p03",0,"入力のまとまりが分かったので、分配法則で括弧を外します。まず4(a−1)を整え、外側の−6はそのまま残します。","2fa2e17d8a0988c83ae4de50586aa2a0f1c6b0aff5fbb1c4374c41abb9eef17d",[[30,36,"4(a−1)","4(a-1)",null],[43,45,"−6","-6",null]]],
+  ["qf01-r3-c1-s03-p04",0,"4を括弧内のaと−1の両方へ掛けました。次に、文字の項4aを保ったまま、定数−4と−6をまとめます。","d6bf45f9d12143cb55088689ee94335739416021c6ddab5399402653e7594417",[[0,1,"4","4",null],[6,7,"a","a",null],[8,10,"−1","-1",null],[27,29,"4a","4a",null],[38,40,"−4","-4",null],[41,43,"−6","-6",null]]],
+  ["qf01-r3-c1-s03-p05",0,"最初の規則では、入力を一まとまりとしてxの位置へ入れれば、数でも式でも同じ手順で対応する値を求められました。括弧は入力に掛ける範囲を保ち、その後で分配や同類項の整理を行います。","9503c273de21a4bc030953a77b0d42335e7f36e3413b34ca76d64fd46d744aaa",[[19,20,"x","x",null]]],
+  ["qf01-r3-c2-s04-p01",0,"ここからは、入力を二乗してから1を引く別の規則です。記号fを使いますが、前の4倍して6を引く規則とは区別します。新しい規則を","9a33f6a7db112389561ac81d497c9558ef703e3a7a43ff0db9537cef56891eb6",[[15,16,"1","1",null],[28,29,"f","f",null],[38,39,"4","4",null],[42,43,"6","6",null]]],
+  ["qf01-r3-c2-s04-p01",2,"とします。","4594a13128eead29291c291ba1fb4ccd411fcce77dd0e495766e9ced710a7299",[]],
+  ["qf01-r3-c2-s04-p02",0,"まず入力−1に対応する","38c90031bccb31f7b2bbee637a77738b4514f1286eaa22ca470f3079b3cb3245",[[4,6,"−1","-1",null]]],
+  ["qf01-r3-c2-s04-p02",2,"を求めます。","b695d277e266dd048caae3402be6c497158a8ba5bc9637a58f042c34e7732980",[]],
+  ["qf01-r3-c2-s04-p02",4,"はxを二つ掛けることなので、二つのxの両方へ同じ入力を入れます。","23650cd5625e7cf39ed7785b83a064c89c3e19d3f07733b2dfe9d2bfea689af0",[[1,2,"x","x",null],[17,18,"x","x",null]]],
+  ["qf01-r3-c2-s04-p03",0,"負号も入力の一部なので、−1全体を括弧で囲んで二乗します。二乗の外にある−1は、平方を求めてから行う引き算です。","b6b2fcc2e82de12dfed95490df3756cfc09098c38eb499cd90adf6b9a60d5f78",[[12,14,"−1","-1",null],[36,38,"−1","-1",null]]],
+  ["qf01-r3-c2-s04-p04",0,"出力は0です。同じ−1を入れても、最初の規則では−10、今の規則では0となりました。関数値を求めるときは、入力だけでなく、どの規則を使うかも確かめる必要があります。","109391661dbf12263c1fdd398e16fc46aae3cf1f669614b0630df00835ef29d0",[[3,4,"0","0",null],[9,11,"−1","-1",null],[24,27,"−10","-10",null],[34,35,"0","0",null]]],
+  ["qf01-r3-c2-s05-p01",0,"今の規則は","6c0e16736252658c664e6b05ae337546b57b3a7430fd62c191123e9110f25746",[]],
+  ["qf01-r3-c2-s05-p01",2,"です。入力を2に替え、","c61497f3c304f2f03bd9f8e57f501ce2cf079d5f6b509ce94afb7e82c0787304",[[6,7,"2","2",null]]],
+  ["qf01-r3-c2-s05-p01",4,"を求めます。","a8b1a6b161d8d86eef888df3c634d707ddcef8dd22ffa2a2c15651a67e1d23ba",[]],
+  ["qf01-r3-c2-s05-p02",0,"この規則で最初に行うのは、","5e6cd3598a92897b5ec1ead68d98fd527c00bf528c1e7c3a990c7755583860ac",[]],
+  ["qf01-r3-c2-s05-p02",1,"2を二乗する","f1b4cdd6b7b6b25129a86951dc735c61bb6c9bb219e36135ee558042c41135a7",[[0,1,"2","2",null]]],
+  ["qf01-r3-c2-s05-p02",2,"ことです。二乗の対象を変えずに、元の規則へ入れると次の式になります。","3fc273d1e91e50e3f330b0197004df41f703d78076018011a6654d3a977151ed",[]],
+  ["qf01-r3-c2-s05-p03",0,"まず平方部分だけを計算します。二乗は同じ数二つの積です。","ec42d6936424d92332c674478dbec0a403dfd783aab70dadaaa4c0f997162eb6",[]],
+  ["qf01-r3-c2-s05-p04",0,"求めた平方の値を元の関数へ戻すと、残る計算は4−1です。","45c13dce4b3725a7df75e200bd0d1eda63bf368e121d29a56e41b8a865f8f686",[[22,25,"4−1","4-1",null]]],
+  ["qf01-r3-c2-s05-p05",0,"入力2に対応する値は3です。平方の値を求めることと、元の関数に残った引き算を行うことを分けて追いました。次は同じ規則に、式全体を入れます。","05f25d386576b756eb28021fdae604fae09c724d340ab15175168b0b03310977",[[2,3,"2","2",null],[10,11,"3","3",null]]],
+  ["qf01-r3-c2-s06-p01",0,"入力をa−1に替え、","dfca80c50f7d97d02b4bb7d6173d76fb3e05aef581a16f4ac168a9959021f3ef",[[3,6,"a−1","a-1",null]]],
+  ["qf01-r3-c2-s06-p01",2,"を求めます。二乗するのはa−1全体で、二乗の外の引き算も残します。","d5af14c6f0f73c240e3a3cb0412bf51d03693cebdd8050e88023c981297dae51",[[12,15,"a−1","a-1",null]]],
+  ["qf01-r3-c2-s06-p02",0,"この式を見失わないように残し、ここでは平方部分","a599767b6cb6f2f8b8eee57abee5b394ee97947037f226a9f90354eae819a53b",[]],
+  ["qf01-r3-c2-s06-p02",2,"だけを計算します。平方を同じ式二つの積に戻すと、分配の対象が分かります。","2aa12a4bc43462c69b413a4b486a0ad8960d4f8a25bf09001cea7024555a1323",[]],
+  ["qf01-r3-c2-s06-p03",0,"最初の括弧のaと−1を、それぞれ後ろの括弧全体へ掛けます。符号を含む項として分配します。","8ab2b42e65ae35b7a45bd5023ef8b6ebcc296208e02365f62b1cf558844ebebf",[[6,7,"a","a",null],[8,10,"−1","-1",null]]],
+  ["qf01-r3-c2-s06-p04",0,"まずa(a−1)を展開し、残った−1(a−1)はまだそのまま残します。","d178c6ae002256dde5bc9e322f3599cacbfe39301947205aeee1809a5185e1fc",[[2,8,"a(a−1)","a(a-1)",null],[16,23,"−1(a−1)","-1(a-1)",null]]],
+  ["qf01-r3-c2-s06-p05",0,"次に、残った積−1(a−1)を展開します。既に求めたa²−aは変えません。","321b60bdc183ab0b98a8033928aa98ec1f65b228db81824731252cc4912fb0ef",[[7,14,"−1(a−1)","-1(a-1)",null],[26,30,"a²−a","a^2-a",null]]],
+  ["qf01-r3-c2-s06-p06",0,"定数項+1が生まれたのは、","4014bf7290261856cb2bfdbe6230d59b1119600014f755b3cd6ac9d931554a38",[[3,5,"+1","+1",null]]],
+  ["qf01-r3-c2-s06-p06",1,"括弧の外の−1と、括弧の中の−1との積","2459e565ebf5e390e1f5c0d627e3c64936fe44626d3551573d96c9e20400f4c9",[[5,7,"−1","-1",null],[14,16,"−1","-1",null]]],
+  ["qf01-r3-c2-s06-p06",2,"を計算したからです。文字を含む積と定数どうしの積を区別すると、分配後の項の出どころを確かめられます。","53142cd25e0e7afb777d1a55699bf89c8b3592eea6d238ff75be43a6000c121c",[]],
+  ["qf01-r3-c2-s06-p07",0,"分配を終えた平方部分はa²−a−a+1です。同じ文字aの項を、係数どうしの和としてまとめます。","29ea6d9492608f3149e59152c5fde2eb4cfae369604bdc94b2fb607b8066da4d",[[11,19,"a²−a−a+1","a^2-a-a+1",null],[26,27,"a","a",null]]],
+  ["qf01-r3-c2-s06-p08",1,"なので、平方部分は","3ea5dffaab9aab4c46c2048fb016c903c04f95e345e98d25d67d067033514661",[]],
+  ["qf01-r3-c2-s06-p08",3,"となりました。","c22454573b25957a3dc75c6280229835e84d1879ddd669eed3542462cc75301c",[]],
+  ["qf01-r3-c2-s06-p09",0,"求めたいのは平方部分そのものではなく、","f963ea9586409cca134a51f7f1c0e2d530fe0d6c7b1dd9729a805b4dc32d3941",[]],
+  ["qf01-r3-c2-s06-p09",2,"でした。親の式に平方部分の結果を戻し、外側の−1まで計算します。","b39564cc5d6ab8bc94f510e3519a84c920e45f2ea2a23a3b7bac2adeb208d049",[[22,24,"−1","-1",null]]],
+  ["qf01-r3-c2-s06-p10",0,"平方部分の定数+1と、元の関数の外側の−1が打ち消し合いました。式を入力にしても、入力全体を置き換えること、必要な部分を計算すること、元の規則へ戻って最後まで計算することは同じです。","f2e24ceb958c7e7389ce376bd725c9bf0b910dc8cfc2d7537b5047ced96447bb",[[7,9,"+1","+1",null],[19,21,"−1","-1",null]]],
+  ["qf01-r3-c3-s07-p01",0,"ここまでは与えられた規則へ入力を入れてきました。次は、長方形の条件から二つの長さの関係を作り、縦を決めたときに横がどう決まるかを調べます。","c9e907bc6c61836484154468c8154ea2ccea98727bd3950e36c958b82507fe61",[]],
+  ["qf01-r3-c3-s07-p02",0,"周の長さが40cmの長方形で、縦をx cm、横をy cmとします。横の長さyを、縦の長さxを使った式で表すことが最初の目標です。","d74604f656aca0aface5c9c877a589e8c757258793dd5500366895c412691ce6",[[5,9,"40cm","40\\,\\mathrm{cm}","cm"],[17,21,"x cm","x\\,\\mathrm{cm}","cm"],[24,28,"y cm","y\\,\\mathrm{cm}","cm"],[37,38,"y","y",null],[44,45,"x","x",null]]],
+  ["qf01-r3-c3-s07-p03",0,"周の長さとは、図形のまわりを一周した長さです。長方形では、向かい合う辺の長さは等しくなります。","7da2732ae3f882d0af77de6dc875a03cf6c73d561dcfb774a3f1edda5f402b27",[]],
+  ["qf01-r3-c3-s07-p04",0,"この図を一周するとき、足すのは、","ef65763b2799cbe85622e05a4e41eed08eccbcc3106af634c97f5c2ef44eacf7",[]],
+  ["qf01-r3-c3-s07-p04",1,"四辺すべての長さ","b55f22f8fa99a8f605471198fc7ecb03ebafc994da14f3ca3326f53ab41db147",[]],
+  ["qf01-r3-c3-s07-p04",2,"です。左の辺から、下・右・上とたどって出発点に戻ります。","3904128402d3ecb6ca3b6122bd12d51fa97199d051a2ddfbd6963bf85de94eed",[]],
+  ["qf01-r3-c3-s07-p05",0,"同じ文字の項をまとめると、周の長さは","079af6ff86f101d81997299d0ba4eba2ac01771fdf9c93ae43e3e555be22e40c",[]],
+  ["qf01-r3-c3-s07-p05",2,"と表せます。xとyを同じ長さとみなすのでなく、xの辺どうし、yの辺どうしをまとめています。","ab522ebe843f5926c52ad3b017f27afb96cb181df6c371ec9ede9e071bd5a7c8",[[6,7,"x","x",null],[8,9,"y","y",null],[23,24,"x","x",null],[30,31,"y","y",null]]],
+  ["qf01-r3-c3-s07-p06",0,"問題では、この一周分の長さが40cmと与えられていました。図から作った周長の式と与件の周長を等しいと置きます。","12cb6795a9bbbe9e26bb7777233a803cfc0303cf20b376b0627be8e33d0232ae",[[14,18,"40cm","40\\,\\mathrm{cm}","cm"]]],
+  ["qf01-r3-c3-s07-p07",0,"等しい両辺へ同じ操作をすれば、関係を保てます。共通係数2をなくして簡単にするため、","8a1ad941d8e1517f708fa63467da4c3cbed92d371b424b6c9fbc11173196aeac",[[27,28,"2","2",null]]],
+  ["qf01-r3-c3-s07-p07",1,"両辺を2で割る","9c5b086d43fd857ffdbc39d9d38f8c0a48ed7c6c62e0dc7dcca77c991d8bb3b4",[[3,4,"2","2",null]]],
+  ["qf01-r3-c3-s07-p07",2,"ことにします。","eccb8aa98a01b63d78392790be0f3e09989730e0913ac4892fa9e52ff64d9566",[]],
+  ["qf01-r3-c3-s07-p08",0,"求めたいのは横の長さです。縦を使った式で表すため、左辺に単独で残す記号は","0cfa67ef57e50427b82b0158aa049724fbc6a98d2acabcc447912d4e66d0c388",[]],
+  ["qf01-r3-c3-s07-p08",2,"です。","f6f8b5c179a9e05a9401d90be72a6e3145fbf3d1b4299d9c521f457d8d4c8524",[]],
+  ["qf01-r3-c3-s07-p09",0,"両辺からxを引くと、左辺のxを打ち消せます。","89485849b0c6911c586fbb2a381be1ab25a12b8909d1faa87dacfc01ee354965",[[4,5,"x","x",null],[13,14,"x","x",null]]],
+  ["qf01-r3-c3-s07-p10",0,"縦の長さxを決めると、20からその長さを引いて横の長さyがただ一つ決まります。ただし、どんな数をxに入れても長方形が作れるわけではありません。次に、使える入力の範囲を調べます。","872c52a4bbda5a88f14b4c8bc42ba3a3c762413ff9bebc3ea525309381937a62",[[4,5,"x","x",null],[11,13,"20","20",null],[27,28,"y","y",null],[48,49,"x","x",null]]],
+  ["qf01-r3-c3-s08-p01",0,"同じ長方形について、関係","954281e0281096782505bf6c76cee7885915f456ce89e589ba54f8dbc37abdaa",[]],
+  ["qf01-r3-c3-s08-p01",2,"を使います。今度の目標は、長方形を作れる縦の長さxの範囲を求めることです。","fe220a7c65fd27fec4920eb8d0fdbe022b27458af76f351c4f21dd66ee2c693a",[[24,25,"x","x",null]]],
+  ["qf01-r3-c3-s08-p02",0,"縦も横も実際の辺の長さです。一辺が0なら形がつぶれ、負の長さも辺には使えません。二つの辺がともに正であることが必要です。","1e7c661625f309daecc268cf26f974f7a118c90a9956d8406d86c4138b6ff66b",[[17,18,"0","0",null]]],
+  ["qf01-r3-c3-s08-p03",0,"横が正という条件を、縦の長さxについての条件へ直します。既に得たyの式を使います。","17994a35105d0af607ddca3a4e6c14bff9acdc2d231d8577ae47c06da680b07e",[[14,15,"x","x",null],[32,33,"y","y",null]]],
+  ["qf01-r3-c3-s08-p04",0,"両辺にxを足し、最後にxを左側から読む形に直します。","a4ccef4767320609b7ac613f168889c585de596bbce959074111ce1f382f1c0d",[[3,4,"x","x",null],[11,12,"x","x",null]]],
+  ["qf01-r3-c3-s08-p05",0,"横が正であるにはx<20、縦が正であるにはx>0が必要です。両方を同時に満たす範囲へまとめます。","25adc89778717a7ff3ca7ce4e7c425e2e17cf15964505e47ac83203e69b9c3f3",[[8,12,"x<20","x<20",null],[21,24,"x>0","x>0",null]]],
+  ["qf01-r3-c3-s08-p06",0,"このように、関数で使える入力の範囲を定義域といいます。今回の不等式を、境界の値の扱いに注目して言葉で読みます。","8b3a028f9fb67598733be12c95ba8b90897a5188923b6a507dacd1fb7bb66562",[]],
+  ["qf01-r3-c3-s08-p07",0,"この不等式は、0と20をどちらも","858385e1664cdf24431079e23fb8a27bd613b75d2095142e67708e6eb756dc9f",[[7,8,"0","0",null],[9,11,"20","20",null]]],
+  ["qf01-r3-c3-s08-p07",1,"含めない","b3758473073e4709c00cef4f66eaaf00fa9847654963cd950b1a65e722974be1",[]],
+  ["qf01-r3-c3-s08-p07",2,"という意味です。x=0では縦の辺が0、x=20ではy=20−x=0となって横の辺が0になります。周の和が40でも、つぶれていない長方形ではなくなるためです。","e715e5417b0f932f173fd0856b63e91b705d0f117a452214cc2d600fe4bce011",[[8,11,"x=0","x=0",null],[17,18,"0","0",null],[19,23,"x=20","x=20",null],[25,33,"y=20−x=0","y=20-x=0",null],[41,42,"0","0",null],[52,54,"40","40",null]]],
+  ["qf01-r3-c3-s08-p08",0,"逆に、0<x<20のどのxでも、縦は正で、横y=20−xも正になります。周の式へ戻して確かめると、次のようになります。","d8b6d57f8e7e73ca902a07a10be8942bf84b98c3c74a3f92a82482dbadf36377",[[3,9,"0<x<20","0<x<20",null],[12,13,"x","x",null],[22,28,"y=20−x","y=20-x",null]]],
+  ["qf01-r3-c3-s08-p09",0,"したがって、この範囲のどの入力でも、元の条件を満たす長方形を作れます。必要な条件を集めただけでなく、範囲内の値で実際に条件を満たすことも確かめました。","aa2ec42451ff4816d42f787119347dd05c078d1526fa039f7792224c16fd5463",[]],
+  ["qf01-r3-c3-s09-p01",0,"同じ関係","dc1e7e9d74e17e18b45929ab691563024931ba68bba313d84a616aa8a188b8c2",[]],
+  ["qf01-r3-c3-s09-p01",2,"で、入力は","2d1aded36dc97f83ee6884e5e129300115683478ae32c0e5dbf38dd835a6ea14",[]],
+  ["qf01-r3-c3-s09-p01",4,"です。最後に、出力である横の長さyがどの範囲に入るかを調べます。","94ad0082e49c7b76ac8a8e9d6ccb97ff47ffb52849621a35db73c789fa252337",[[16,17,"y","y",null]]],
+  ["qf01-r3-c3-s09-p02",0,"横が正という条件は、既に長方形の成立条件として得ています。同じ条件をもう一度求め直さず、出力の下側の条件として使います。","1bafdbdc1f13a715d262574deef90f8f50ef467fd3f0f34dec9d36f2fa6f6121",[]],
+  ["qf01-r3-c3-s09-p03",0,"一方、入力xは正です。20から正の長さを引くので、出力yは","685dac454c07d4533c490f1ff856cac843e528ae32ce26a328711f18f43e4cec",[[5,6,"x","x",null],[11,13,"20","20",null],[27,28,"y","y",null]]],
+  ["qf01-r3-c3-s09-p03",1,"20より小さい","625259a009d8f7b2e2b3f6bf1f8f18fb409347dcb78bba387f5058d578760435",[[0,2,"20","20",null]]],
+  ["qf01-r3-c3-s09-p03",2,"と分かります。","d7fe69996b5d28eb3833f8e6bd3df81cb2e50006209d2b15a3bbbc0e016c205b",[]],
+  ["qf01-r3-c3-s09-p04",0,"下側と上側の条件を合わせ、出力の範囲を一つにまとめます。","bbd1399da44f595e23fe9b42ffdb32a32d6bbb4f760b994df98be5d0bbe5fe7a",[]],
+  ["qf01-r3-c3-s09-p05",0,"出力の範囲を値域といいます。定義域では入力x、値域では出力yを見ています。同じ0と20が出てきても、調べている量の役割は区別します。","e6accbb28a8b9a3ee2518f6ab9e45e8a4faa30bac26f35c71c754b1ba6f45cc1",[[21,22,"x","x",null],[29,30,"y","y",null],[39,40,"0","0",null],[41,43,"20","20",null]]],
+  ["qf01-r3-c3-s09-p06",0,"ここまでで、得られる出力がこの範囲に入ることが分かりました。さらに、この範囲の途中の値もすべて実現することを確かめます。ここからの逆対応による確認は作者補足です。","774f1b2fd323f3951350db211cd5a5f3bc2fc35789d27bef3ad9d1be74bff544",[]],
+  ["qf01-r3-c3-s09-p07",0,"任意の0<y<20を選び、その出力を作る入力を探します。y=20−xを、今度は入力xについて解きます。","4ec180626a7cc1292f4ccd3dd390935d3f2b5fc6e82ab4736adea619f9bd156c",[[3,9,"0<y<20","0<y<20",null],[28,34,"y=20−x","y=20-x",null],[41,42,"x","x",null]]],
+  ["qf01-r3-c3-s09-p08",0,"y<20なので20−y>0、またy>0なので20−y<20です。作った入力x=20−yは、定義域0<x<20を満たします。","1ea065a8696ba00496d394b0dbba48917a01a4aff329274e0ba456135e95c5eb",[[0,4,"y<20","y<20",null],[7,13,"20−y>0","20-y>0",null],[16,19,"y>0","y>0",null],[22,29,"20−y<20","20-y<20",null],[37,43,"x=20−y","x=20-y",null],[48,54,"0<x<20","0<x<20",null]]],
+  ["qf01-r3-c3-s09-p09",0,"この入力を使えば、選んだ出力yが実際に得られます。したがって0<y<20のどの値も実現し、値域はこの範囲全体です。","a9cd4a688892f162c09dc259a78880fd947fd11e60c687aefe3dff931b488497",[[14,15,"y","y",null],[30,36,"0<y<20","0<y<20",null]]],
+  ["qf01-r3-c0-s09-p01",0,"関数では、一つの入力を決めると対応する出力がただ一つ決まります。f(x)は入力xに対応する値を表す記号で、入力と出力が等しいという意味ではありません。","9b4ed337c304943780ea98dfb87e5926839c7726017b1b8e1444d9665fbdecbe",[[32,36,"f(x)","f(x)",null],[39,40,"x","x",null]]],
+  ["qf01-r3-c0-s09-p02",0,"与えられた規則へ数や式を入れるときは、入力全体を元の文字の位置へ入れます。括弧はそのまとまりを保つために使い、途中で必要な部分だけを計算したときも、最後に元の規則へ戻って残った操作まで確かめます。","6138f72781427e7fd860fa111a5053f5553780b1f16c51566d195fd1b0a84d86",[]],
+  ["qf01-r3-c0-s09-p03",0,"状況から関数を作るときは、まず条件が表す関係を読み取ります。長方形では、一周する四辺の和と周40cmを結び、横の長さが縦からどう決まるかを表しました。式の変形は、何を求めたいかという目的に合わせて進めます。","1930aac8295d035bcd7ed59ec0883302978d2018333c1cc5a1870f5592e3c603",[[46,50,"40cm","40\\,\\mathrm{cm}","cm"]]],
+  ["qf01-r3-c0-s09-p04",0,"さらに、使える入力の範囲が定義域、そこから得られる出力の範囲が値域です。長さの条件と境界の値を調べ、必要なら逆に入力を作ることで、示した範囲のすべての値が実現することまで確かめられます。規則・入力・出力・範囲の役割を区別して読むことが、今回の関数の見方です。","9e5375b2fec35bf9ed8ad800d63793c22565cc5ce9a3e586c41f89271ebecc6a",[]],
+]
+const r3BodyIndex = new Map(R3_BODY_SOURCE_PARTS.map(row => [row[0] + ':' + row[1], row]))
+export type R3BodyOrigin = { blockId: string; partIndex: number; start: number; end: number; kind: 'whole-part' | 'text-span' | 'slot' }
+export type R3BodyToken = { type: 'text'; text: string } | { type: 'math'; latex: string; start: number; end: number; unit: 'cm' | null }
+function bodyNeed(value: unknown, reason: string): asserts value { if (!value) throw Error('R3_BODY_' + reason) }
+function bodyOffset(text: string, value: number) {
+  return Number.isSafeInteger(value) && value >= 0 && value <= text.length
+    && !(value > 0 && value < text.length && /[\uD800-\uDBFF]/.test(text[value - 1]) && /[\uDC00-\uDFFF]/.test(text[value]))
+}
+function bodyRecipe(source: QF01R3Validated, blockId: string, partIndex: number): R3BodyRecipe {
+  const recipe = r3BodyIndex.get(blockId + ':' + partIndex), block = source.blocks.get(blockId)
+  bodyNeed(recipe && Number.isSafeInteger(partIndex) && partIndex >= 0 && block && (block.type === 'paragraph' || block.type === 'formula'), 'PART_IDENTITY')
+  const part = block.parts[partIndex], binding = source.metadata.sourceMap.find(row => row.unitBlockId === blockId)?.parts.find(row => row.unitPartIndex === partIndex)
+  bodyNeed(part?.type === 'text' && part.text === recipe[2] && binding?.unitPartSHA256 === recipe[3], 'SOURCE_BINDING')
+  return recipe
+}
+function validateQF01R3BodySource(source: QF01R3Validated) {
+  bodyNeed(source.metadata.unitParsedCanonicalSHA256 === '8af6a22c1656d6c37a799b30b42f51036d3a6f49879b0c9a85970f6020dc8e08'
+    && source.metadata.canonicalBlockIds.length === 134 && source.metadata.interactions.length === 35
+    && R3_BODY_SOURCE_PARTS.length === 102 && r3BodyIndex.size === 102, 'SOURCE_MANIFEST')
+  let textParts = 0, spans = 0
+  for (const id of source.metadata.canonicalBlockIds) {
+    const block = source.blocks.get(id)
+    bodyNeed(block, 'CANONICAL_BLOCK')
+    if (block.type !== 'paragraph' && block.type !== 'formula') continue
+    block.parts.forEach((part, partIndex) => {
+      if (part.type !== 'text') return
+      const recipe = bodyRecipe(source, id, partIndex)
+      let previous = 0
+      for (const [start, end, lexeme] of recipe[4]) {
+        bodyNeed(bodyOffset(part.text, start) && bodyOffset(part.text, end) && start >= previous && end > start && part.text.slice(start, end) === lexeme, 'SPAN_BINDING')
+        previous = end; spans++
+      }
+      textParts++
+    })
+  }
+  bodyNeed(textParts === 102 && spans === 140, 'SOURCE_COVERAGE')
+}
+function qf01R3BodySlice(source: QF01R3Validated, origin: R3BodyOrigin, visibleText: string): R3BodyToken[] {
+  bodyNeed(origin.kind !== 'slot', 'HIDDEN_SLOT')
+  const recipe = bodyRecipe(source, origin.blockId, origin.partIndex), original = recipe[2], { start, end } = origin
+  bodyNeed(bodyOffset(original, start) && bodyOffset(original, end) && end >= start && original.slice(start, end) === visibleText, 'VISIBLE_SLICE')
+  bodyNeed(!recipe[4].some(([left, right]) => left < start && start < right || left < end && end < right), 'SPLIT_MATH_UNIT')
+  const tokens: R3BodyToken[] = []
+  let cursor = start
+  for (const [left, right, lexeme, latex, unit] of recipe[4]) {
+    if (left < start || right > end) continue
+    bodyNeed(visibleText.slice(left - start, right - start) === lexeme, 'VISIBLE_LEXEME')
+    if (left > cursor) tokens.push({ type: 'text', text: visibleText.slice(cursor - start, left - start) })
+    tokens.push({ type: 'math', latex, start: left, end: right, unit }); cursor = right
+  }
+  if (cursor < end) tokens.push({ type: 'text', text: visibleText.slice(cursor - start) })
+  return tokens
+}
+function qf01R3BodyOrigins(source: QF01R3Validated, blockId: string, projected: NonNullable<ReturnType<typeof projectQF01R3Block>>, solved: Set<string>, recorded = false): R3BodyOrigin[] {
+  const block = source.blocks.get(blockId)
+  bodyNeed(block?.type === 'paragraph' && projected.source === block, 'PROJECTED_SOURCE')
+  const parts = projected.parts ?? block.parts, q = source.metadata.interactions.find(row => row.source.blockId === blockId)
+  if (q && !solved.has(q.id)) {
+    bodyNeed(!recorded && projected.slotItemId === q.id, 'PENDING_GATE')
+    const pieces = q.projection.pending.pieces
+    bodyNeed(pieces && pieces.length === parts.length, 'PENDING_PIECES')
+    return pieces.map((piece, index) => {
+      bodyNeed(piece.blockId === blockId && Number.isSafeInteger(piece.partIndex) && piece.partIndex >= 0, 'PIECE_IDENTITY')
+      const original = block.parts[piece.partIndex], part = parts[index]
+      bodyNeed(original && part, 'PIECE_PART')
+      if (piece.kind === 'slot') {
+        bodyNeed(part.type === 'choice' && part.itemId === q.id, 'SLOT_IDENTITY')
+        return { blockId, partIndex: piece.partIndex, kind: 'slot', start: 0, end: 0 }
+      }
+      if (piece.kind === 'whole-part') {
+        bodyNeed(part === original, 'WHOLE_PART')
+        return { blockId, partIndex: piece.partIndex, kind: 'whole-part', start: 0, end: original.type === 'text' ? original.text.length : 0 }
+      }
+      bodyNeed(original.type === 'text' && part.type === 'text' && piece.start !== undefined && piece.end !== undefined
+        && bodyOffset(original.text, piece.start) && bodyOffset(original.text, piece.end) && piece.end >= piece.start
+        && original.text.slice(piece.start, piece.end) === part.text, 'PIECE_SLICE')
+      return { blockId, partIndex: piece.partIndex, kind: 'text-span', start: piece.start, end: piece.end }
+    })
+  }
+  bodyNeed(parts.length === block.parts.length && parts.every((part, index) => part === block.parts[index]), 'COMPLETE_PARTS')
+  return parts.map((part, partIndex) => ({ blockId, partIndex, kind: 'whole-part', start: 0, end: part.type === 'text' ? part.text.length : 0 }))
+}
+
+/** R3's source-bound body surface and its associated projection contract stay
+ * together inside the approved renderer path; feedback remains independent. */
+export function R3BodyText({ source, origin, visibleText, sourceId, unitId }: { source: QF01R3Validated; origin: R3BodyOrigin; visibleText: string; sourceId: string; unitId: string }) {
+  return <span>{qf01R3BodySlice(source, origin, visibleText).map((token, index) => {
+    if (token.type === 'text') return token.text
+    const id = sourceId + '-body-p' + origin.partIndex + '-' + token.start + '-' + token.end
+    return <span key={index} data-qf01-prose-math="true" data-qf01-prose-block={origin.blockId} data-qf01-prose-part={origin.partIndex} data-qf01-prose-start={token.start} data-qf01-prose-end={token.end} data-qf01-prose-kind={token.unit ? 'quantity' : 'math'} data-qf01-prose-unit={token.unit ?? undefined} data-qf01-prose-source-id={id}><TypesetInlineMath latex={token.latex} sourceId={id} unitId={unitId} /></span>
+  })}</span>
+}
+R3BodyText.validateSource = validateQF01R3BodySource
+R3BodyText.slice = qf01R3BodySlice
+R3BodyText.origins = qf01R3BodyOrigins
+
 type R3NearbyVisibility = 'IN_VIEW' | 'OUT_OF_VIEW' | 'NOT_MOUNTED_BY_DESIGN' | 'UNVERIFIED'
 type R3NearbyMeasurement = { status: R3NearbyVisibility; reason: string }
+type R3BodyPlan = { parts: TextbookReadingPart[]; origins: R3BodyOrigin[] }
 
 function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageScope, onReviewAnswer, onSummaryReached }: Props & { source: QF01R3Validated }) {
   const answer = useAppStore(state => state.answerTextbook)
@@ -734,6 +939,24 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   const [nearbySnapshot, setNearbySnapshot] = useState<{ key: string; sources: Record<string, R3NearbyMeasurement> }>({ key: '', sources: {} })
   const nearbySources = nearbySnapshot.key === nearbyRequest.key ? nearbySnapshot.sources : {}
   const nearbyBlocked = Object.values(nearbySources).some(row => row.status === 'UNVERIFIED')
+  // Validation of declared visible slices creates no DOM, KaTeX or measurement
+  // for the omitted part of an unresolved paragraph.
+  const bodyProjection = useMemo(() => {
+    const plans = new Map<string, R3BodyPlan>()
+    try {
+      for (const id of source.metadata.canonicalBlockIds) {
+        if (source.blocks.get(id)?.type !== 'paragraph') continue
+        const projected = projectQF01R3Block(source, id, solved, { helpFor: helpId })
+        if (!projected) continue
+        const parts = projected.parts ?? (projected.source as Extract<TextbookReadingBlock, { type: 'paragraph' }>).parts
+        const origins = qf01R3BodyOrigins(source, id, projected, solved)
+        parts.forEach((part, index) => { if (part.type === 'text') qf01R3BodySlice(source, origins[index], part.text) })
+        plans.set(id, { parts, origins })
+      }
+      return { plans, failed: false }
+    } catch { return { plans: new Map<string, R3BodyPlan>(), failed: true } }
+  }, [source, solved, helpId])
+  const bodyBlocked = bodyProjection.failed, interactionBlocked = nearbyBlocked || bodyBlocked
   const resyncNearby = useRef<() => void>(() => {})
   const syncNearbySources = useCallback(() => resyncNearby.current(), [])
   const data = { nodes: m.interactions.map(q => ({ id: q.nodeId, stageId: q.stageId, interaction: q.id })) }
@@ -949,11 +1172,12 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   }
   const slot = (id: string) => {
     if (solved.has(id)) return <span data-testid={'resolved-' + id}>{renderChoiceValue(id, current!.answers[id].value)}</span>
-    const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id && !nearbyBlocked
+    const q = m.interactions.find(q => q.id === id)!, enabled = currentQ?.id === id && !interactionBlocked
     return <button type="button" style={{ minWidth: 48, minHeight: 48 }} disabled={!enabled} className="reading-inline-blank qf01-whole-answer-slot" data-qf01-current-slot={enabled || undefined} data-testid={'textbook-item-' + id} aria-label={q.layoutKind === 'paragraph' ? '本文の空欄。候補を開く' : '数式の空欄。候補を開く'} aria-expanded={activeId === id} aria-controls={contextId + '-options'} aria-describedby={contextId} onClick={() => setActiveId(id)}>□</button>
   }
-  const renderParts = (parts: TextbookReadingPart[], id: string, slotId?: string) => parts.map((p, j) => {
-    if (p.type === 'text' || p.type === 'term') return <span key={j}>{p.text}</span>
+  const renderParts = (parts: TextbookReadingPart[], id: string, body: R3BodyPlan, slotId?: string) => parts.map((p, j) => {
+    if (p.type === 'text') return <R3BodyText key={j} source={source} origin={body.origins[j]} visibleText={p.text} sourceId={id} unitId={unit.unitId} />
+    if (p.type === 'term') return <span key={j}>{p.text}</span>
     if (p.type === 'math') return <TypesetInlineMath key={j} latex={p.latex} sourceId={p.semanticId ?? id + '-p' + j} unitId={unit.unitId} />
     const q = m.interactions.find(q => q.id === p.itemId)!
     if (q.answerDomain === 'math') { const a = m.ownerASTBindings.find(a => a.interactionId === q.id)!; return <TypesetFormula key={j} source={formatQF01R3Owner(a.ownerAST, { targetPath: a.targetPath, mask: true, notation: a.notation })} sourceId={id + '-math-target'} unitId={unit.unitId} parts={[slot(p.itemId)]} itemIds={{ 0: p.itemId }} /> }
@@ -977,7 +1201,11 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
         ? <TypesetFormula source={recipe.template} sourceId={key} unitId={unit.unitId} />
         : <R3FixedFormula recipe={recipe} group={recipeGroups.get(id)!} sourceId={key} resolved={!recipe.interactionId || solved.has(recipe.interactionId)} target={projected.slotItemId ? slot(projected.slotItemId) : null} />}</div>
     }
-    else if (b.type === 'paragraph') content = <p className="reading-paragraph">{renderParts(projected.parts ?? b.parts, key, projected.slotItemId)}</p>
+    else if (b.type === 'paragraph') {
+      const body = bodyProjection.plans.get(id)
+      if (bodyBlocked || !body) return null
+      content = <p className="reading-paragraph">{renderParts(body.parts, key, body, projected.slotItemId)}</p>
+    }
     else if (b.type === 'figure') { const figure = section.figures.find(f => f.id === b.figureId)!; content = <TextbookFigure figure={figure} items={section.items} progress={current} onOpen={() => undefined} /> }
     else if (b.type === 'marker') content = <p className={'reading-role-marker reading-role-marker--' + b.kind} data-reading-role={projected.sourceRole}>{b.text}</p>
     else if (b.type === 'heading') content = <h3>{b.text}</h3>
@@ -1001,7 +1229,7 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   }
   const refsView = (ids: string[], prefix: string) => <>{ids.map(id => recordView(id, prefix))}</>
   const nearbyInfo = () => {
-    if (nearbyBlocked) return null
+    if (interactionBlocked) return null
     const ids = nearbyRequest.candidates.filter(row => ['OUT_OF_VIEW', 'NOT_MOUNTED_BY_DESIGN'].includes(nearbySources[row.blockId]?.status)).map(row => row.recordId)
     if (!ids.length) return null
     return <aside className="qf01-local-context qf01-nearby-references" aria-label="今の判断に必要な情報">{refsView(ids, 'nearby-')}</aside>
@@ -1012,9 +1240,10 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
     const wrongIndex = record ? item.choices?.findIndex(value => normalizeTextbookAnswer(value) === normalizeTextbookAnswer(record.value)) ?? -1 : -1
     return <div className="reading-inline-choice-panel qf01-attached-options" data-testid={'inline-choice-panel-' + id}>
       {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}><strong>この候補は採用しません：</strong>{renderChoiceValue(id, record!.value)}<p><R3FeedbackMath text={wrongIndex >= 0 ? currentQ!.wrongReasonByChoiceIndex[wrongIndex] : '保存した解答を確認してください。'} sourceId={id + '-wrong-reason'} unitId={unit.unitId} /></p>{record!.attemptCount > 1 && <p><R3FeedbackMath text={item.hints[1]} sourceId={id + '-second-hint'} unitId={unit.unitId} /></p>}</aside>}
-      <button type="button" disabled={nearbyBlocked} style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
+      <button type="button" disabled={interactionBlocked} style={{ minHeight: 48 }} aria-expanded={helpId === id} onClick={() => setHelpId(helpId === id ? null : id)}>手掛かり{helpId === id ? 'を閉じる' : 'を見る'}</button>
       {helpId === id && <p className="reading-choice-hint"><R3FeedbackMath text={item.hints[0]} sourceId={id + '-hint'} unitId={unit.unitId} /></p>}
-      {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" disabled={nearbyBlocked} style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
+      {expanded && <div id={contextId + '-options'} className="reading-choice-options guided-choice-options" role="group" aria-label="この空欄の候補" aria-describedby={contextId}>{getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) => <button type="button" disabled={interactionBlocked} style={{ minHeight: 48, minWidth: 48 }} className="reading-choice-option" key={choice} aria-label={'候補' + (index + 1) + '、' + choice} aria-invalid={Boolean(wrong && record!.value === choice) || undefined} data-testid={'textbook-choice-' + id + '-' + index} onPointerDown={event => { pointerFocusTarget.current = event.currentTarget; cancelFocusReveal() }} onFocus={event => revealFocusedChoice(event.currentTarget)} onClick={() => {
+        if (interactionBlocked) return
         cancelFocusReveal(); pointerFocusTarget.current = null
         if (onReviewAnswer) onReviewAnswer(item, choice); else answer(unit, id, choice)
         if (normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(item.answer)) { setActiveId(null); setHelpId(null) }
@@ -1028,16 +1257,17 @@ function ValidatedR3QF01ReadingFlow({ unit, section, progress, source, storageSc
   if (progressState.error) return <p role="alert">学習記録の対応を確認できません。回答操作はできません。</p>
   return <article ref={flow} className="textbook-reading-flow guided-reading qf01-full-reading" data-qf01-revision="3" data-testid="textbook-reading-flow" data-typeset-theme="true" data-qf01-nearby-visibility={JSON.stringify(nearbySources)} tabIndex={-1}>
     {nearbyBlocked && <p role="alert" data-testid="qf01-r3-nearby-error">参照元の表示を確認できません。回答操作を停止しています。</p>}
+    {bodyBlocked && <p role="alert" data-testid="qf01-r3-prose-error">本文の数学との対応を確認できません。回答操作を停止しています。</p>}
     <div className="math-textbook-reading-controls"><span>今の段階 {stageIndex + 1} / 9</span><span>解答の記録：{solved.size}/35</span>{stageIndex > 0 && <button type="button" onClick={() => setHistory(!history)}>前の段階を見る</button>}</div>
     {stageIndex === 0 && renderBlock(m.viewContracts.FRAME_CONTRACT.単元block配置['unit-purpose'].sourceRef, 'introduction-')}
     {history && <div className="guided-history"><button type="button" onClick={() => setFullHistory(!fullHistory)}>{fullHistory ? '全文を閉じる' : '全文を開く'}</button>{stages.slice(0, stageIndex).map(s => <section key={s.stageId} data-testid={'recorded-results-' + s.stageId}>{renderBlock(s.headerSourceRef, 'history-header-', true)}{fullHistory ? s.fullLessonBlockRefs.filter(id => id !== s.headerSourceRef).map(id => renderBlock(id, 'history-full-', true)) : refsView(s.conclusionRecordIds, 'history-result-')}</section>)}</div>}
-    <section inert={nearbyBlocked} className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id} data-reading-layout-scope="qf01-r3-shared-reading-v1" data-reading-layout-profile={profile.id}>
+    <section inert={interactionBlocked} className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id} data-reading-layout-scope="qf01-r3-shared-reading-v1" data-reading-layout-profile={profile.id}>
       <ReadingStageFrame contextHeader={frame.headerBlockRef !== headerId ? renderBlock(frame.headerBlockRef, 'frame-', true) : undefined}
         header={<div id={contextId + '-header'}>{renderBlock(headerId)}</div>}
         prelude={<div>{preludeIds.filter(id => id !== headerId).map(id => renderBlock(id))}</div>}
         references={<aside id={contextId} className="math-textbook-stage-reference-content" aria-label="現在必要な情報">{topIds.length > 0 && <strong>使う条件・前の結果</strong>}{refsView(topIds, 'top-')}</aside>}
         conclusion={complete ? <div className="qf01-recorded-conclusion">{renderBlock(stageInfo.terminalSourceRef)}</div> : undefined}
-        navigation={<div className="guided-stage-navigation">{stageIndex > 0 && <button type="button" disabled={nearbyBlocked} onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHelpId(null); setHistory(false) }}>前の段階へ</button>}{complete && stageIndex < 8 && <button type="button" disabled={nearbyBlocked} onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHelpId(null); setHistory(false) }}>次の段階へ</button>}</div>}>
+        navigation={<div className="guided-stage-navigation">{stageIndex > 0 && <button type="button" disabled={interactionBlocked} onClick={() => { setCursor(stageIndex - 1); setActiveId(null); setHelpId(null); setHistory(false) }}>前の段階へ</button>}{complete && stageIndex < 8 && <button type="button" disabled={interactionBlocked} onClick={() => { setCursor(stageIndex + 1); setActiveId(null); setHelpId(null); setHistory(false) }}>次の段階へ</button>}</div>}>
         <div data-reading-layout-body><div className="reading-derivation-chain qf01-continuous-derivation" {...readingLayoutChainAttributes(profile, bodyIds[0] ?? headerId)}>{bodyIds.map(id => renderBlock(id))}</div></div>
       </ReadingStageFrame>
     </section>

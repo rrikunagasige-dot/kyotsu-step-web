@@ -224,10 +224,13 @@ def validate_informed_authority_body(rt, work, s, body):
         if row['facet'] == 'render': known.update(('/root', *INFORMED_REVIEWERS))
         need(known <= set(contributors), 'Dで既知作者を消さない')
     _informed_evidence(rt, s, body.get('evidenceRefs'))
-    from checkpoint import current_nearby_repair
-    nearby=current_nearby_repair(rt,s)
+    from checkpoint import current_product_repair_context
+    repair_context=current_product_repair_context(rt,s)
+    nearby=repair_context['nearbyRepair'];math_repair=repair_context['mathRenderingRepair']
     if nearby:
         need(nearby['evidenceRef'] in body['evidenceRefs'],'D03_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
+    if math_repair:
+        need(math_repair['evidenceRef'] in body['evidenceRefs'],'D04_AUTHORITY_ACTUAL_SUPPLEMENT_REQUIRED')
     return deepcopy(body)
 
 
@@ -310,6 +313,7 @@ def build_informed_review_receipt(rt, work, node, collection, capability_receipt
     _informed_code(rt,work,s,node,capability_receipts)
     _informed_evidence(rt,s,evidence_refs)
     _check_nearby_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
+    _check_math_prose_finding_resolution(rt,s,node,p,reviews,required,capability_receipts,evidence_refs)
     need(isinstance(finding_dispositions,list), 'D finding解消記録は一覧')
     _validate_informed_dispositions(rt,work,s,node,p,collection,capability_receipts,evidence_refs,finding_dispositions)
     check_open_findings(rt,work,node,{'verdict':'PASS'},required,p,informed_dispositions=finding_dispositions)
@@ -318,9 +322,9 @@ def build_informed_review_receipt(rt, work, node, collection, capability_receipt
 
 def _check_nearby_finding_resolution(rt,s,node,p,reviews,required,code_refs,evidence_refs):
     """D03's diagnostic needs both current render reports and actual UI measurements."""
-    from checkpoint import current_nearby_repair,NEARBY_REPAIR_BASELINE,INFORMED_REVIEWERS,strict_json
+    from checkpoint import current_product_repair_context,NEARBY_REPAIR_BASELINE,INFORMED_REVIEWERS,strict_json
     from contracts import file,sha
-    nearby=current_nearby_repair(rt,s)
+    nearby=current_product_repair_context(rt,s)['nearbyRepair']
     if nearby is None:return
     finding_id='QF01-B-NEARBY-VISIBLE-SOURCE-DUPLICATE-20261123'
     prior_id='E-QF01-B-OPEN-NEARBY-FINDING-20261123'
@@ -374,6 +378,67 @@ def _check_nearby_finding_resolution(rt,s,node,p,reviews,required,code_refs,evid
             supported=set(supplied)
             need(supported and supported<=set(code_refs) and set(target['artifactRefs'])<=supported,
                  'D03_BOTH_REPORTS_CURRENT_CODE_REQUIRED')
+
+
+MATH_PROSE_ORIGINAL_C_DIAGNOSTIC_SHA256 = '8208aca84410fa62975a3b129f30d4b16d92c909780002af59316f41fedc8037'
+
+
+def _check_math_prose_finding_resolution(rt,s,node,p,reviews,required,code_refs,evidence_refs):
+    """Original C F06 stays OPEN until both current D reports and real checks agree."""
+    from checkpoint import current_product_repair_context,MATH_RENDERING_REPAIR_BASELINE,INFORMED_REVIEWERS,strict_json
+    from contracts import file,sha
+    if current_product_repair_context(rt,s)['mathRenderingRepair'] is None:return
+    finding_id='QF01-C-PROSE-MATH-SPAN-20261123'
+    prior_id='E-QF01-C-OPEN-PROSE-MATH-FINDING-20261123'
+    prior=s['evidence'].get(prior_id,{});data=prior.get('data',{})
+    need(prior.get('kind')=='file' and prior.get('verification_level')!='simulation'
+        and data.get('source_sha')==MATH_RENDERING_REPAIR_BASELINE,'D04_ORIGINAL_C_DIAGNOSTIC_REQUIRED')
+    path=file(rt.root,data['path']);need(path.stat().st_size<=1_048_576,'D04_DIAGNOSTIC_SIZE')
+    need(sha(path)==data.get('sha256')==MATH_PROSE_ORIGINAL_C_DIAGNOSTIC_SHA256,
+         'D04_ORIGINAL_C_DIAGNOSTIC_CHANGED')
+    original=strict_json(path.read_bytes())
+    need(original.get('schemaVersion')=='qf01-current-c-open-prose-math-finding/1'
+        and original.get('findingId')==finding_id and original.get('sourceSHA')==MATH_RENDERING_REPAIR_BASELINE
+        and original.get('status')=='OPEN_CONFIRMED_CURRENT_C'
+        and original.get('newProductRepairApplied') is False and original.get('blocksMaterialR04PASS') is True,
+        'D04_ORIGINAL_C_DIAGNOSTIC_CONTENT')
+    measured=set()
+    for ref in evidence_refs:
+        evidence=s['evidence'].get(ref,{});d=evidence.get('data',{});m=d.get('math_prose_rendering')
+        if not (evidence.get('kind')=='check' and evidence.get('verification_level')=='local_execution'
+            and d.get('status')=='PASS' and d.get('source_sha')==s['candidate_sha'] and isinstance(m,dict)):
+            continue
+        widths=m.get('widths')
+        need(m.get('findingId')==finding_id and m.get('status')=='PASS'
+            and isinstance(widths,list) and len(widths)==4 and all(type(w) is int for w in widths)
+            and set(widths)=={320,390,430,1440}
+            and type(m.get('sampleCount')) is int and m['sampleCount']==420
+            and all(type(m.get(k)) is int and m[k]==0 for k in
+                ('unverified','missingMathUnits','unexpectedMathUnits','splitMathUnits','unitErrors','sourceMismatch')),
+            'D04_CURRENT_FOUR_WIDTH_MATH_MEASUREMENTS')
+        measured.add(ref)
+    need(measured,'D04_ACTUAL_MATH_UI_MEASUREMENTS_REQUIRED')
+    for req in required:
+        if req['facet']!='render':continue
+        rows=[(a,out) for a,out,_ in reviews if out.get('claimRef')==req['claimRef']
+            and out.get('facet')==req['facet'] and out.get('reviewKind')==req['reviewKind']]
+        need(len(rows)==2 and {a['performerRef'] for a,_ in rows}==set(INFORMED_REVIEWERS),
+             'D04_BOTH_CURRENT_RENDER_REPORTS_REQUIRED')
+        for assignment,out in rows:
+            findings=[f for f in out.get('findings',[]) if f.get('findingId')==finding_id]
+            need(len(findings)==1,'D04_CURRENT_REPORT_KNOWN_FINDING_REQUIRED')
+            f=findings[0];refs=f.get('evidenceRefs')
+            need(f.get('resolution')=='VERIFIED_FIXED' and f.get('reexaminesEvidenceRef')==prior_id
+                and f.get('claimRef')==req['claimRef'] and f.get('facet')==req['facet']
+                and isinstance(f.get('reason'),str) and f['reason'].strip()
+                and isinstance(refs,list) and refs and all(isinstance(r,str) for r in refs)
+                and set(refs)<=set(out.get('evidenceRefs',[])) and set(refs)&measured,
+                'D04_BOTH_REPORTS_CURRENT_FIX_EVIDENCE')
+            target=rt.store.get(assignment['targetManifestRef']);supplied=out.get('codeReceiptRefs')
+            need(isinstance(supplied,list) and supplied and all(isinstance(r,str) for r in supplied),
+                 'D04_CURRENT_CODE_RECEIPT_LIST')
+            need(set(supplied)<=set(code_refs) and set(target['artifactRefs'])<=set(supplied),
+                 'D04_BOTH_REPORTS_CURRENT_CODE_REQUIRED')
 
 
 def _informed_receipt_body(rt, work, s, node, method, collection, capability_receipts, evidence_refs, finding_dispositions):

@@ -661,7 +661,8 @@ class Runtime:
             need(recovery_proof is not None,'回収Workの照合済み移行preflightが必要')
         return self.append('definition_migrated',work,{'from':from_hash,'to':DEFINITION_HASH,'evidence_refs':evidence_refs,**({'recoveryProof':recovery_proof} if recovery_proof else {})})
 
-    def checkpoint_preflight(self,work,*,candidate_sha=None,informed_adoption_ref=None,repair_adoption_ref=None):
+    def checkpoint_preflight(self,work,*,candidate_sha=None,informed_adoption_ref=None,repair_adoption_ref=None,
+                             math_rendering_adoption_ref=None):
         from checkpoint import FIXED_WORK, CURRENT_REPAIR_AFTER, RECOVERY_PROPOSAL_SHA256, current_core_identity, verify_candidate_git, sha as bytes_sha
         need(getattr(self.store,'checkpoint_mode',False) and work==FIXED_WORK,'対象限定checkpointだけのpreflight')
         s=self.state(work);origin=self.store._view.state_snapshot(work)
@@ -677,7 +678,12 @@ class Runtime:
         current=manifest(self.root,s['candidate_manifest'])
         changed={name:value for name,value in current.items() if value!=s['candidate_manifest'][name]}
         prior_repair=s.get('checkpoint_definition_migration',{}).get('repairAdoption')
-        if repair_adoption_ref is None and prior_repair is None:
+        prior_math=s.get('checkpoint_definition_migration',{}).get('mathRenderingRepair')
+        if math_rendering_adoption_ref is not None or prior_math is not None:
+            from checkpoint import MATH_RENDERING_REPAIR_PRODUCT_PATHS
+            need(math_rendering_adoption_ref,'D04_CURRENT_MIGRATION_ADOPTION_REQUIRED')
+            need(set(changed)<=set(MATH_RENDERING_REPAIR_PRODUCT_PATHS),'D04_CANDIDATE_DIFF_OUTSIDE_TWO_PATHS')
+        elif repair_adoption_ref is None and prior_repair is None:
             need(not changed or set(changed)==set(CURRENT_REPAIR_AFTER) and changed==CURRENT_REPAIR_AFTER,
                  '採用済み5path以外/部分状態の候補差分')
         else:
@@ -729,7 +735,59 @@ class Runtime:
                 'verification_level':adopted['verification_level']}
         elif informed_adoption_ref is not None:
             need(False,'D02_INITIAL_MIGRATION_CANNOT_PRETEND_SUBSEQUENT')
-        if repair_adoption_ref is not None:
+        if math_rendering_adoption_ref is not None:
+            from checkpoint import (MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MATH_RENDERING_REPAIR_BASELINE,
+                MATH_RENDERING_REPAIR_BEFORE,MATH_RENDERING_REPAIR_PRODUCT_PATHS,
+                MATH_RENDERING_REPAIR_D03_EVENT_HASH,MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,
+                math_rendering_repair_adoption_file,validate_math_rendering_repair_record,
+                validate_math_rendering_repair_continuation,nearby_repair_adoption_file,
+                validate_nearby_repair_record,history_events)
+            need(proof.get('reviewMethodAdoption') and prior_repair,'D04_D02_AND_D03_ADOPTIONS_REQUIRED')
+            validate_nearby_repair_record(prior_repair,epoch=self.store.checkpoint_epoch,check=need)
+            need(digest(prior_repair)==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256
+                and prior_repair['candidateAfterSHA']==MATH_RENDERING_REPAIR_BASELINE
+                and prior_repair['afterRepair']==MATH_RENDERING_REPAIR_BEFORE
+                and repair_adoption_ref==prior_repair['evidenceRef'],'D04_PRESERVED_D03_C_RECORD')
+            old_adopted=nearby_repair_adoption_file(self,s,repair_adoption_ref)
+            need(all(prior_repair.get(k)==v for k,v in old_adopted.items()),'D04_ORIGINAL_D03_ADOPTION_CHANGED')
+            suffix=history_events(self,'suffix',work)
+            original=[e for e in suffix if e['hash']==MATH_RENDERING_REPAIR_D03_EVENT_HASH]
+            need(len(original)==1 and original[0]['kind']=='checkpoint_definition_migrated'
+                and original[0]['payload'].get('repairAdoption')==prior_repair,'D04_AUTHENTIC_D03_EVENT_REQUIRED')
+            adopted=math_rendering_repair_adoption_file(self,s,math_rendering_adoption_ref)
+            if prior_math is None:
+                need(s['candidate_sha']==MATH_RENDERING_REPAIR_BASELINE
+                    and all(s['candidate_manifest'].get(p)==v for p,v in MATH_RENDERING_REPAIR_BEFORE.items()),
+                    'D04_FIRST_MIGRATION_C_PREIMAGE')
+            else:
+                validate_math_rendering_repair_record(prior_math,epoch=self.store.checkpoint_epoch,check=need)
+                need(prior_math['candidateAfterSHA']==s['candidate_sha']
+                    and prior_math['definitionHash']==s['definition_hash']
+                    and all(s['candidate_manifest'].get(p)==v for p,v in prior_math['afterRepair'].items()),
+                    'D04_PRIOR_ACTUAL_CANDIDATE_MANIFEST')
+            effective={**CURRENT_REPAIR_AFTER,**{p:sha(file(self.root,p)) for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS}}
+            need(all(current.get(p)==v for p,v in effective.items()),'D04_EXACT_CURRENT_FIVE_REPAIR_MANIFEST')
+            repair={'schemaVersion':'qf01-math-prose-rendering-supplement/1',
+                'proposalSHA256':MATH_RENDERING_REPAIR_PROPOSAL_SHA256,**adopted,
+                'baselineSourceSHA':MATH_RENDERING_REPAIR_BASELINE,
+                'candidateBeforeSHA':s['candidate_sha'],'candidateBeforeManifestSHA256':digest(s['candidate_manifest']),
+                'candidateAfterSHA':after,'allowedProductPaths':list(MATH_RENDERING_REPAIR_PRODUCT_PATHS),
+                'beforeRepair':copy.deepcopy(MATH_RENDERING_REPAIR_BEFORE),
+                'afterRepair':{p:effective[p] for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS},
+                'originalD03MigrationEventHash':MATH_RENDERING_REPAIR_D03_EVENT_HASH,
+                'originalD03SupplementSHA256':MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,
+                'definitionHash':identity['definitionHash'],'implementationHash':proof['implementationHash'],
+                'checkpointEpoch':self.store.checkpoint_epoch}
+            validate_math_rendering_repair_record(repair,epoch=self.store.checkpoint_epoch,check=need)
+            history=[e['payload']['mathRenderingRepair']['afterRepair'] for e in suffix
+                if e['kind']=='checkpoint_definition_migrated' and e['payload'].get('mathRenderingRepair')]
+            validate_math_rendering_repair_continuation(prior_math,repair,earlier_after=history,check=need)
+            from adapters import _checkpoint_git_proof
+            target={**s,'candidate_sha':after,'candidate_manifest':current,'definition_hash':identity['definitionHash']}
+            _checkpoint_git_proof(self,target,origin,identity,review_method=True,
+                nearby_repair=prior_repair,math_rendering_repair=repair)
+            proof['repairAdoption']=copy.deepcopy(prior_repair);proof['mathRenderingRepair']=repair
+        elif repair_adoption_ref is not None:
             from checkpoint import (NEARBY_REPAIR_BASELINE,NEARBY_REPAIR_PRODUCT_PATHS,
                 NEARBY_REPAIR_PROPOSAL_SHA256,nearby_repair_adoption_file,validate_nearby_repair_record)
             need(proof.get('reviewMethodAdoption'),'D03_ORIGINAL_D02_ADOPTION_REQUIRED')
@@ -767,7 +825,8 @@ class Runtime:
         need(isinstance(proof,dict),'preflight objectが必要')
         current=self.checkpoint_preflight(work,candidate_sha=proof.get('candidateAfterSHA'),
             informed_adoption_ref=proof.get('reviewMethodAdoption',{}).get('evidenceRef'),
-            repair_adoption_ref=proof.get('repairAdoption',{}).get('evidenceRef'))
+            repair_adoption_ref=proof.get('repairAdoption',{}).get('evidenceRef'),
+            math_rendering_adoption_ref=proof.get('mathRenderingRepair',{}).get('evidenceRef'))
         need(current==proof and current['ledgerHead']==expected_head,'preflight後の版/承認/入力/HEADが違う')
         reference=self.store.put(proof)
         payload={
@@ -781,6 +840,8 @@ class Runtime:
             payload['reviewMethodAdoption']=current['reviewMethodAdoption']
         if current.get('repairAdoption'):
             payload['repairAdoption']=current['repairAdoption']
+        if current.get('mathRenderingRepair'):
+            payload['mathRenderingRepair']=current['mathRenderingRepair']
         return self.append('checkpoint_definition_migrated',work,payload)
 
     def reconcile_checkpoint_candidate(self,work,node_id,token,*,owner_result_refs,
@@ -899,7 +960,9 @@ class Runtime:
             INFORMED_REVIEW_PROPOSAL_SHA256,INFORMED_ADOPTION_CALL_ID,ADOPTION_CALL_ID,
             current_core_identity,history_events,sha as sha_bytes,current_nearby_repair,
             NEARBY_REPAIR_PROPOSAL_SHA256,NEARBY_REPAIR_ADOPTION_QUOTE,
-            NEARBY_REPAIR_ADOPTION_CALL_ID,NEARBY_REPAIR_CORE_PATHS)
+            NEARBY_REPAIR_ADOPTION_CALL_ID,NEARBY_REPAIR_CORE_PATHS,current_product_repair_context,
+            MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MATH_RENDERING_REPAIR_ADOPTION_QUOTE,
+            MATH_RENDERING_REPAIR_ADOPTION_CALL_ID)
         from team import current_informed_authority
         from adapters import (_checkpoint_informed_technical_git,_CHECKPOINT_D02_CORE_PATHS,
                               _CHECKPOINT_D02_BASELINE)
@@ -910,10 +973,11 @@ class Runtime:
         need(self._head==expected_head==self.store.head,'D02_EXPECTED_HEAD_CHANGED')
         method=current_informed_authority(self,FIXED_WORK,primary)
         need(method and candidate_sha==primary['candidate_sha'],'D02_CURRENT_MATERIAL_AUTHORITY_REQUIRED')
-        nearby=current_nearby_repair(self,primary)
-        owner_proposal=NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256
-        owner_quote=NEARBY_REPAIR_ADOPTION_QUOTE if nearby else '限定D02案を採用して進める'
-        owner_call=NEARBY_REPAIR_ADOPTION_CALL_ID if nearby else INFORMED_ADOPTION_CALL_ID
+        repair_context=current_product_repair_context(self,primary)
+        nearby=repair_context['nearbyRepair'];math_repair=repair_context['mathRenderingRepair']
+        owner_proposal=repair_context['ownerProposalSHA256']
+        owner_quote=MATH_RENDERING_REPAIR_ADOPTION_QUOTE if math_repair else NEARBY_REPAIR_ADOPTION_QUOTE if nearby else '限定D02案を採用して進める'
+        owner_call=MATH_RENDERING_REPAIR_ADOPTION_CALL_ID if math_repair else NEARBY_REPAIR_ADOPTION_CALL_ID if nearby else INFORMED_ADOPTION_CALL_ID
         core=current_core_identity();plan=owner['plan']
         need(plan['profile']=='technical' and not plan.get('workflow_version')
              and not plan.get('simulation') and plan.get('parent_work')==FIXED_WORK
@@ -934,6 +998,7 @@ class Runtime:
             need(all(expected_protected.get(name)==value for name,value in nearby['beforeRepair'].items()),
                  'D03_ORIGINAL_OWNER_PRODUCT_PROTECTION')
             expected_protected.update(nearby['afterRepair'])
+        if math_repair:expected_protected.update(math_repair['afterRepair'])
         need(plan['source_sha']==initial['source_sha']==source.get('source_sha')==_CHECKPOINT_D02_BASELINE
              and plan['source_manifest']==initial['source_manifest']
              and plan['rules']==initial['rules'] and plan['scope']==initial['scope']
@@ -958,6 +1023,12 @@ class Runtime:
                 and e['payload'].get('source_ref')=='request_user_input_async/'+INFORMED_ADOPTION_CALL_ID
                 and e['payload'].get('verification_level')=='conversation_transcribed' for e in events),
                 'D03_ORIGINAL_D02_TECHNICAL_ADOPTION_NOT_RETAINED')
+        if math_repair:
+            need(any(e['kind']=='user' and e['payload'].get('reply_to')==NEARBY_REPAIR_PROPOSAL_SHA256
+                and e['payload'].get('quote')==NEARBY_REPAIR_ADOPTION_QUOTE
+                and e['payload'].get('source_ref')=='request_user_input_async/'+NEARBY_REPAIR_ADOPTION_CALL_ID
+                and e['payload'].get('verification_level')=='conversation_transcribed' for e in events),
+                'D04_ORIGINAL_D03_TECHNICAL_ADOPTION_NOT_RETAINED')
         self.fingerprint_refs(owner,verification_refs);need(verification_refs,'D02_TECHNICAL_VERIFICATION_REQUIRED')
         current=manifest(self.root,plan['source_manifest'])
         need(set(current)==set(owner['candidate_manifest'])==set(plan['source_manifest']),

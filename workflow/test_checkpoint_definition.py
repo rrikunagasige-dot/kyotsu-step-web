@@ -16,7 +16,7 @@ from contracts import Rejected
 from definitions import IMPLEMENTATION_FILES, instantiate
 from runtime import Runtime
 from test_checkpoint_runtime import (ENGINE, initialize_fixture, populate_preflight_fixture,
-                                     populate_nearby_fixture, INPUTS)
+                                     populate_nearby_fixture, populate_math_rendering_fixture, INPUTS)
 import test_checkpoint_runtime as checkpoint_runtime_tests
 import hashlib
 
@@ -353,6 +353,115 @@ class NearbyMigrationTests(unittest.TestCase):
             current_nearby_repair(self.rt,state)
 
 
+class MathRenderingMigrationTests(unittest.TestCase):
+    """Real isolated TEST_FIXTURE migrations; fixed private C boundary is mocked."""
+    rewrite_fixture_suffix=checkpoint_runtime_tests.InformedReviewMethodTests.rewrite_fixture_suffix
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D04_master_')
+        cls.addClassCleanup(cls.temporary.cleanup)
+        cls.master=Path(cls.temporary.name).resolve();cls.fixture=populate_math_rendering_fixture(cls.master)
+        boundary=patch.multiple('checkpoint',**cls.fixture['boundary']);boundary.start();cls.addClassCleanup(boundary.stop)
+
+    def setUp(self):
+        temporary=tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_D02_D04_migration_')
+        self.addCleanup(temporary.cleanup);self.root=Path(temporary.name).resolve()
+        shutil.copytree(self.master,self.root,dirs_exist_ok=True)
+        from checkpoint import CheckpointStore
+        self.store=CheckpointStore(self.root/'work/recovery-checkpoints/qf01-p046-r3')
+        self.rt=Runtime(self.store.root,self.root)
+
+    def migrate(self):
+        with patch('checkpoint.verify_candidate_git',return_value=None),patch('adapters._checkpoint_git_proof',
+                return_value={'fixtureKind':'TEST_FIXTURE_EXTERNAL_GIT_ONLY_NOT_ACTUAL_D'}):
+            proof=self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'])
+            event=self.rt.migrate_checkpoint_definition(FIXED_WORK,proof=proof,expected_head=proof['ledgerHead'])
+        return proof,event
+
+    def test_actual_fixture_c_to_d_keeps_original_d03_and_original_plan_users_results(self):
+        from checkpoint import current_product_repair_context
+        before=self.rt.state(FIXED_WORK);proof,event=self.migrate();after=self.rt.state(FIXED_WORK)
+        self.assertEqual(after['plan'],before['plan']);self.assertEqual(after['users'],before['users'])
+        self.assertEqual(after['results'],before['results']);self.assertEqual(after['candidate_sha'],'d'*40)
+        self.assertEqual(event['payload']['repairAdoption'],self.fixture['proof']['repairAdoption'])
+        self.assertEqual(proof['mathRenderingRepair']['candidateBeforeManifestSHA256'],checkpoint_runtime_tests.digest(before['candidate_manifest']))
+        context=current_product_repair_context(self.rt,after)
+        self.assertEqual(context['nearbyRepair']['candidateAfterSHA'],before['candidate_sha'])
+        self.assertEqual(context['mathRenderingRepair'],proof['mathRenderingRepair'])
+        self.assertEqual(context['effectiveAfter'],{**__import__('checkpoint').CURRENT_REPAIR_AFTER,**proof['mathRenderingRepair']['afterRepair']})
+        self.assertFalse(proof['oldPassTransferred']);self.assertEqual(proof['globalQueueCoverage'],'UNKNOWN')
+
+    def mutate_math_preflight(self,mutator):
+        from checkpoint import canonical,digest
+        rows=self.store.suffix_events();row=next(e for e in rows if e['payload'].get('mathRenderingRepair'))
+        proof=self.store.get(row['payload']['preflightRef']);mutator(row,proof)
+        ref=digest(proof);(self.store.root/'artifacts'/(ref+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['payload']['preflightRef']=ref
+        self.rewrite_fixture_suffix(rows)
+
+    def test_rehashed_before_candidate_and_manifest_must_match_actual_previous_c(self):
+        self.migrate()
+        def mutate(row,proof):
+            proof['candidateBeforeSHA']='e'*40
+            proof['mathRenderingRepair'].update(candidateBeforeSHA='e'*40,candidateBeforeManifestSHA256='e'*64)
+            row['payload']['mathRenderingRepair']=copy.deepcopy(proof['mathRenderingRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D04_FIRST_MIGRATION_REQUIRES_C|D04_MIGRATION_CURRENT_PREVIOUS_BINDING'):
+            self.mutate_math_preflight(mutate)
+
+    def test_rehashed_before_manifest_alone_is_not_a_self_attestation(self):
+        self.migrate()
+        def mutate(row,proof):
+            proof['mathRenderingRepair']['candidateBeforeManifestSHA256']='0'*64
+            row['payload']['mathRenderingRepair']=copy.deepcopy(proof['mathRenderingRepair'])
+        with self.assertRaisesRegex(CheckpointRejected,'D04_MIGRATION_CURRENT_PREVIOUS_BINDING'):
+            self.mutate_math_preflight(mutate)
+
+    def test_later_migration_cannot_strip_d04_while_retaining_d03(self):
+        from checkpoint import canonical,digest
+        self.migrate();rows=self.store.suffix_events();row=copy.deepcopy(rows[-1])
+        proof=self.store.get(row['payload']['preflightRef']);proof.pop('mathRenderingRepair')
+        proof.update(ledgerHead=rows[-1]['hash'],candidateBeforeSHA='d'*40,candidateAfterSHA='e'*40,
+                     fromDefinition=row['payload']['to'],toDefinition='e'*64)
+        proof['core']['definitionHash']='e'*64
+        ref=digest(proof);(self.store.root/'artifacts'/(ref+'.json')).write_bytes(canonical(proof)+b'\n')
+        row['id']='TEST_FIXTURE_D04_STRIPPED';row['payload'].pop('mathRenderingRepair')
+        row['payload'].update(preflightRef=ref,candidateSHA='e'*40,**{'from':proof['fromDefinition'],'to':'e'*64})
+        rows.append(row)
+        with self.assertRaisesRegex(CheckpointRejected,'D04_SUPPLEMENT_CANNOT_BE_STRIPPED'):
+            self.rewrite_fixture_suffix(rows)
+
+    def test_rehashed_original_d03_is_not_retagged_as_current_d(self):
+        self.migrate()
+        def mutate(row,proof):
+            proof['repairAdoption']['candidateAfterSHA']='d'*40
+            row['payload']['repairAdoption']=copy.deepcopy(proof['repairAdoption'])
+        with self.assertRaisesRegex(CheckpointRejected,'D04_PRESERVED_D03_C_RECORD'):
+            self.mutate_math_preflight(mutate)
+
+    def test_third_product_change_is_rejected_without_preflight_writes(self):
+        from checkpoint import CURRENT_REPAIR_AFTER,MATH_RENDERING_REPAIR_PRODUCT_PATHS
+        path=self.root/next(p for p in CURRENT_REPAIR_AFTER if p not in MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        path.write_bytes(path.read_bytes()+b'\n/* TEST_FIXTURE_UNAPPROVED_PRODUCT */\n');head=self.store.head
+        with self.assertRaisesRegex(Rejected,'D04_CANDIDATE_DIFF_OUTSIDE_TWO_PATHS'):
+            self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'])
+        self.assertEqual(self.store.head,head)
+
+    def test_wrong_actual_adoption_file_is_rejected_without_migration(self):
+        path=self.root/'TEST_FIXTURE_D04_ADOPTION.json';value=json.loads(path.read_bytes())
+        value['quote']='TEST_FIXTURE_CONTINUE_ONLY';path.write_text(json.dumps(value)+'\n',encoding='utf8')
+        head=self.store.head
+        with patch('checkpoint.verify_candidate_git',return_value=None),self.assertRaisesRegex(Rejected,'D04_ADOPTION_FILE_CHANGED'):
+            self.rt.checkpoint_preflight(FIXED_WORK,candidate_sha='d'*40,
+                informed_adoption_ref=self.fixture['d2'],repair_adoption_ref=self.fixture['d3'],
+                math_rendering_adoption_ref=self.fixture['d4'])
+        self.assertEqual(self.store.head,head)
+
+
 class NearbyGitProofTests(unittest.TestCase):
     """Actual verifier/file hashes with an explicitly synthetic Git transport.
 
@@ -450,6 +559,108 @@ class NearbyGitProofTests(unittest.TestCase):
             (dict(omit_proposal_delta=True),'D03_FIXED_PROPOSAL_NOT_IN_DIFF')]:
             with self.subTest(mutation=mutation),self.assertRaisesRegex(Rejected,error):
                 self.git_proof(**mutation)
+
+
+class MathRenderingGitProofTests(unittest.TestCase):
+    """Synthetic Git boundary only; actual file hashes and proof guards run."""
+    setUpClass=classmethod(MathRenderingMigrationTests.setUpClass.__func__)
+    setUp=MathRenderingMigrationTests.setUp
+    migrate=MathRenderingMigrationTests.migrate
+
+    def git_proof(self,*,bad_c=False,bad_b=False,bad_proposal=False,missing_proposal=False,
+                  proposal_mode='100644',omit_proposal=False,extra_delta=False):
+        from types import SimpleNamespace
+        from checkpoint import (CURRENT_REPAIR_AFTER,FIXED_SOURCE,NEARBY_REPAIR_BASELINE,NEARBY_REPAIR_PROPOSAL_PATH,
+            MATH_RENDERING_REPAIR_BASELINE,MATH_RENDERING_REPAIR_BEFORE,MATH_RENDERING_REPAIR_PROPOSAL_PATH,current_core_identity)
+        from adapters import _checkpoint_git_proof,_CHECKPOINT_PRODUCT_ROOTS
+        from test_checkpoint_runtime import FIXTURE_SOURCE_ROOT,repair_fixture_bytes
+        if not self.rt.state(FIXED_WORK).get('checkpoint_definition_migration',{}).get('mathRenderingRepair'):
+            self.migrate()
+        for source in ENGINE.iterdir():
+            if source.is_file() and source.suffix in ('.py','.md'):
+                target=self.root/'workflow'/source.name;target.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copyfile(source,target)
+        current={p.relative_to(self.root).as_posix():p.read_bytes() for prefix in ('src','public')
+                 for p in (self.root/prefix).rglob('*') if p.is_file()}
+        current.update({p:(self.root/p).read_bytes() for p in _CHECKPOINT_PRODUCT_ROOTS[2:] if (self.root/p).exists()})
+        original=dict(current);baseline_b=dict(current);baseline_c=dict(current)
+        croot=Path(__import__('os').environ.get('QF01_CHECKPOINT_MATH_BASELINE_ROOT',str(ENGINE.parent.parent/'qf01-nearby-core')))
+        for p,h in CURRENT_REPAIR_AFTER.items():
+            original[p]=(FIXTURE_SOURCE_ROOT/p).read_bytes();baseline_b[p]=repair_fixture_bytes(p,h)
+            baseline_c[p]=(croot/p).read_bytes() if p in MATH_RENDERING_REPAIR_BEFORE else baseline_b[p]
+        workflow={'workflow/'+p.name:p.read_bytes() for p in (self.root/'workflow').iterdir() if p.is_file()}
+        old_proposal={NEARBY_REPAIR_PROPOSAL_PATH:(self.root/NEARBY_REPAIR_PROPOSAL_PATH).read_bytes()}
+        new_proposal={} if missing_proposal else {MATH_RENDERING_REPAIR_PROPOSAL_PATH:
+            b'TEST_FIXTURE_WRONG_D04_GIT_PROPOSAL\n' if bad_proposal else (self.root/MATH_RENDERING_REPAIR_PROPOSAL_PATH).read_bytes()}
+        def blob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+        def tree(values,mode='100644'):return b''.join(mode.encode()+b' blob '+blob(raw).encode()+b'\t'+name.encode()+b'\0'
+            for name,raw in sorted(values.items()))
+        def product(commit):
+            return original if commit==FIXED_SOURCE else baseline_b if commit==NEARBY_REPAIR_BASELINE else baseline_c if commit==MATH_RENDERING_REPAIR_BASELINE else current
+        renderer='src/components/textbook/GuidedMathReadingFlow.tsx'
+        def external(cmd,**kwargs):
+            self.assertEqual(cmd[:3],['git','-C',str(self.root)]);args=cmd[3:];out=b''
+            if args[:2]==['rev-parse','HEAD']:out=b'd'*40+b'\n'
+            elif args[0]=='rev-parse':out=b'e'*40+b'\n'
+            elif args[:2]==['remote','get-url']:out=b'https://github.com/rrikunagasige-dot/kyotsu-step-web.git\n'
+            elif args[0]=='merge-base' or args[:2]==['cat-file','-e']:pass
+            elif args[:2]==['cat-file','blob']:
+                commit,name=args[2].split(':',1)
+                out=old_proposal[name] if name in old_proposal else new_proposal[name] if name==MATH_RENDERING_REPAIR_PROPOSAL_PATH else product(commit)[name]
+                if name==renderer and (bad_c and commit==MATH_RENDERING_REPAIR_BASELINE or bad_b and commit==NEARBY_REPAIR_BASELINE):out=current[name]
+            elif args[0]=='ls-tree':
+                commit=args[3];paths=args[5:]
+                if paths==[NEARBY_REPAIR_PROPOSAL_PATH]:out=tree(old_proposal)
+                elif paths==[MATH_RENDERING_REPAIR_PROPOSAL_PATH]:out=tree(new_proposal,proposal_mode)
+                else:out=tree(workflow if paths==['workflow'] else product(commit))
+            elif args[0]=='diff':
+                if '--' in args:names={'workflow/checkpoint.py'}
+                elif args[3]==NEARBY_REPAIR_BASELINE:
+                    self.assertEqual(args[4],MATH_RENDERING_REPAIR_BASELINE)
+                    names={'workflow/checkpoint.py',NEARBY_REPAIR_PROPOSAL_PATH,*MATH_RENDERING_REPAIR_BEFORE}
+                elif args[3]==MATH_RENDERING_REPAIR_BASELINE:
+                    names={'workflow/checkpoint.py',MATH_RENDERING_REPAIR_PROPOSAL_PATH,
+                        *[p for p in MATH_RENDERING_REPAIR_BEFORE if baseline_c[p]!=current[p]]}
+                    if omit_proposal:names.remove(MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+                    if extra_delta:names.add('tools/UNADOPTED.py')
+                else:names={*CURRENT_REPAIR_AFTER,'workflow/checkpoint.py',NEARBY_REPAIR_PROPOSAL_PATH,MATH_RENDERING_REPAIR_PROPOSAL_PATH}
+                out=b''.join(p.encode()+b'\0' for p in sorted(names))
+            else:raise AssertionError('Unexpected TEST_FIXTURE Git call:'+repr(args))
+            return SimpleNamespace(returncode=0,stdout=out,stderr=b'')
+        state=self.rt.state(FIXED_WORK);core=current_core_identity()
+        with patch('adapters.subprocess.run',side_effect=external):
+            proof=_checkpoint_git_proof(self.rt,state,self.store._view.state_snapshot(FIXED_WORK),core,review_method=True)
+        return proof,baseline_b,baseline_c,current,blob
+
+    def test_original_b_and_d03_c_and_current_d_lineages_are_separate(self):
+        from checkpoint import MATH_RENDERING_REPAIR_BASELINE
+        proof,b,c,d,blob=self.git_proof()
+        for p,row in proof['repairs'].items():self.assertEqual(row['afterGitBlobSHA'],blob(b[p]))
+        self.assertEqual(proof['nearbyRepair']['candidateAfterSHA'],MATH_RENDERING_REPAIR_BASELINE)
+        self.assertEqual(proof['mathRenderingRepair']['candidateAfterSHA'],'d'*40)
+        self.assertNotEqual(proof['nearbyChangedPaths'],proof['mathRenderingChangedPaths'])
+
+    def test_c_baseline_bytes_cannot_be_replaced_with_current_d(self):
+        with self.assertRaisesRegex(Rejected,'D04_FIXED_C_PRODUCT_BYTES'):
+            self.git_proof(bad_c=True)
+
+    def test_original_five_b_blobs_cannot_be_replaced_with_current_d(self):
+        with self.assertRaisesRegex(Rejected,'D03_ORIGINAL_FIVE_REPAIR_BYTES'):
+            self.git_proof(bad_b=True)
+
+    def test_wrong_d04_git_proposal_cannot_hide_behind_correct_working_bytes(self):
+        with self.assertRaisesRegex(Rejected,'D04_FIXED_PROPOSAL_GIT_BYTES'):
+            self.git_proof(bad_proposal=True)
+
+    def test_d04_git_entry_mode_and_diff_presence_are_required(self):
+        for options,error in [(dict(missing_proposal=True),'D04_FIXED_PROPOSAL_GIT_ENTRY'),
+            (dict(proposal_mode='100755'),'D04_FIXED_PROPOSAL_GIT_ENTRY'),
+            (dict(omit_proposal=True),'D04_FIXED_PROPOSAL_NOT_IN_DIFF')]:
+            with self.subTest(options=options),self.assertRaisesRegex(Rejected,error):self.git_proof(**options)
+
+    def test_c_to_d_whole_diff_cannot_hide_unadopted_tools(self):
+        with self.assertRaisesRegex(Rejected,'D04_DIFF_OUTSIDE_EXACT_PROPOSAL'):
+            self.git_proof(extra_delta=True)
 
 
 if __name__ == '__main__':

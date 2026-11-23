@@ -1054,7 +1054,7 @@ _CHECKPOINT_CANDIDATE_FIELDS = frozenset((
     'patchExecutedAgain','originalPatchEventRecovered','semanticAcceptance','gateAccepted'))
 
 
-def _checkpoint_scope_diff(changed,*,nearby_repair=False):
+def _checkpoint_scope_diff(changed,*,nearby_repair=False,math_rendering_repair=False):
     """Bound the entire candidate delta, including files outside product/core."""
     import re
     from contracts import Rejected
@@ -1071,6 +1071,10 @@ def _checkpoint_scope_diff(changed,*,nearby_repair=False):
     if nearby_repair:
         from checkpoint import NEARBY_REPAIR_PROPOSAL_PATH
         records.add(NEARBY_REPAIR_PROPOSAL_PATH)
+    if math_rendering_repair:
+        from checkpoint import MATH_RENDERING_REPAIR_PROPOSAL_PATH
+        need(nearby_repair,'D04_ORIGINAL_D03_SCOPE_REQUIRED')
+        records.add(MATH_RENDERING_REPAIR_PROPOSAL_PATH)
     records.update('work/items/W-MATH-QF01-P046-R3-continuation-20261122/'+name+'.md'
                    for name in ('WORK','ACTION_LOG','FINDINGS','VERIFICATION','RECOVERY_HANDOFF'))
     native='work/recovery-checkpoints/qf01-p046-r3/'
@@ -1086,27 +1090,45 @@ def _checkpoint_scope_diff(changed,*,nearby_repair=False):
     return sorted(changed)
 
 
-def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_repair=None):
+def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_repair=None,
+                          math_rendering_repair=None):
     """Read Git trees and current bytes; do not fetch, change refs, or refresh index."""
     from checkpoint import (FIXED_SOURCE,CURRENT_REPAIR_AFTER,current_nearby_repair,
         validate_nearby_repair_record,nearby_repair_adoption_file,NEARBY_REPAIR_BASELINE,
         NEARBY_REPAIR_CORE_PATHS,NEARBY_REPAIR_PRODUCT_PATHS,NEARBY_REPAIR_PROPOSAL_PATH,
-        NEARBY_REPAIR_PROPOSAL_SHA256)
+        NEARBY_REPAIR_PROPOSAL_SHA256,current_product_repair_context,
+        validate_math_rendering_repair_record,math_rendering_repair_adoption_file,
+        MATH_RENDERING_REPAIR_BASELINE,MATH_RENDERING_REPAIR_BEFORE,
+        MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,MATH_RENDERING_REPAIR_CORE_PATHS,
+        MATH_RENDERING_REPAIR_PRODUCT_PATHS,MATH_RENDERING_REPAIR_PROPOSAL_PATH,
+        MATH_RENDERING_REPAIR_PROPOSAL_SHA256)
     from capabilities import implementation_hash
-    if nearby_repair is None:
-        nearby_repair=current_nearby_repair(rt,state)
+    if nearby_repair is None and math_rendering_repair is None:
+        context=current_product_repair_context(rt,state)
+        nearby_repair=context['nearbyRepair'];math_rendering_repair=context['mathRenderingRepair']
     else:
         nearby_repair=validate_nearby_repair_record(nearby_repair,epoch=rt.store.checkpoint_epoch,check=need)
         adopted=nearby_repair_adoption_file(rt,state,nearby_repair['evidenceRef'])
         need(all(nearby_repair.get(key)==value for key,value in adopted.items()),'D03_GIT_ACTUAL_ADOPTION')
-    if nearby_repair:
+    if math_rendering_repair:
+        math_rendering_repair=validate_math_rendering_repair_record(math_rendering_repair,
+            epoch=rt.store.checkpoint_epoch,check=need)
+        adopted=math_rendering_repair_adoption_file(rt,state,math_rendering_repair['evidenceRef'])
+        need(all(math_rendering_repair.get(k)==v for k,v in adopted.items()),'D04_GIT_ACTUAL_ADOPTION')
+        need(nearby_repair and digest(nearby_repair)==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256
+            and nearby_repair['candidateAfterSHA']==MATH_RENDERING_REPAIR_BASELINE
+            and nearby_repair['afterRepair']==MATH_RENDERING_REPAIR_BEFORE,'D04_GIT_PRESERVED_D03_C')
+        need(review_method and math_rendering_repair['candidateAfterSHA']==state['candidate_sha']
+            and math_rendering_repair['definitionHash']==core['definitionHash']
+            and math_rendering_repair['implementationHash']==implementation_hash(rt),'D04_GIT_CURRENT_BINDING')
+    elif nearby_repair:
         need(review_method and nearby_repair['candidateAfterSHA']==state['candidate_sha']
             and nearby_repair['definitionHash']==core['definitionHash']
             and nearby_repair['implementationHash']==implementation_hash(rt),'D03_GIT_CURRENT_BINDING')
-    effective={**CURRENT_REPAIR_AFTER,**(nearby_repair['afterRepair'] if nearby_repair else {})}
+    effective={**CURRENT_REPAIR_AFTER,**((math_rendering_repair or nearby_repair or {}).get('afterRepair',{}))}
     root=Path(rt.root)
     need(root.is_absolute() and root.resolve()==root,'CHECKPOINT_CANDIDATE_ROOT_ALIAS')
-    env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0')
+    env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0')
     def git(*args):
         result=subprocess.run(['git','-C',str(root),*args],capture_output=True,env=env,timeout=30)
         need(result.returncode==0,'CHECKPOINT_GIT_READ_FAILED:'+str(args[0]))
@@ -1130,7 +1152,8 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
     need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',baseline,candidate],
          capture_output=True,env=env,timeout=30).returncode==0,'CHECKPOINT_CANDIDATE_ANCESTRY')
     all_changed={raw.decode('utf-8') for raw in git('diff','--name-only','-z',baseline,candidate).split(b'\0') if raw}
-    adopted_changed=_checkpoint_scope_diff(all_changed,nearby_repair=bool(nearby_repair))
+    adopted_changed=_checkpoint_scope_diff(all_changed,nearby_repair=bool(nearby_repair),
+        math_rendering_repair=bool(math_rendering_repair))
     before=tree(FIXED_SOURCE,_CHECKPOINT_PRODUCT_ROOTS);after=tree(candidate,_CHECKPOINT_PRODUCT_ROOTS)
     need(before and set(before)==set(after),'CHECKPOINT_PRODUCT_INVENTORY_CHANGED')
     changed={name for name in before if before[name]!=after[name]}
@@ -1138,27 +1161,56 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
     original_after=after
     nearby_changed=[]
     if nearby_repair:
+        nearby_target=MATH_RENDERING_REPAIR_BASELINE if math_rendering_repair else candidate
         need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',NEARBY_REPAIR_BASELINE,candidate],
             capture_output=True,env=env,timeout=30).returncode==0,'D03_BASELINE_ANCESTRY')
         original_after=tree(NEARBY_REPAIR_BASELINE,_CHECKPOINT_PRODUCT_ROOTS)
         need(set(original_after)==set(after),'D03_PRODUCT_INVENTORY')
-        actual_delta={name for name in after if original_after[name]!=after[name]}
+        nearby_after=tree(nearby_target,_CHECKPOINT_PRODUCT_ROOTS) if math_rendering_repair else after
+        need(set(nearby_after)==set(after),'D04_PRESERVED_C_PRODUCT_INVENTORY')
+        actual_delta={name for name in nearby_after if original_after[name]!=nearby_after[name]}
         expected_delta={name for name in NEARBY_REPAIR_PRODUCT_PATHS
             if nearby_repair['beforeRepair'][name]!=nearby_repair['afterRepair'][name]}
         need(actual_delta==expected_delta and actual_delta,'D03_EXACT_PRODUCT_DIFF')
-        need(all(original_after[name]['mode']==after[name]['mode'] for name in actual_delta),'D03_PRODUCT_MODE_CHANGED')
+        need(all(original_after[name]['mode']==nearby_after[name]['mode'] for name in actual_delta),'D03_PRODUCT_MODE_CHANGED')
         nearby_changed=sorted(raw.decode('utf-8') for raw in git('diff','--name-only','-z',
-            NEARBY_REPAIR_BASELINE,candidate).split(b'\0') if raw)
+            NEARBY_REPAIR_BASELINE,nearby_target).split(b'\0') if raw)
         need(set(nearby_changed)<=NEARBY_REPAIR_CORE_PATHS|set(NEARBY_REPAIR_PRODUCT_PATHS)|{NEARBY_REPAIR_PROPOSAL_PATH},
              'D03_DIFF_OUTSIDE_EXACT_PROPOSAL')
         need(NEARBY_REPAIR_PROPOSAL_PATH in nearby_changed,'D03_FIXED_PROPOSAL_NOT_IN_DIFF')
-        proposal=tree(candidate,(NEARBY_REPAIR_PROPOSAL_PATH,))
+        proposal=tree(nearby_target,(NEARBY_REPAIR_PROPOSAL_PATH,))
         need(set(proposal)=={NEARBY_REPAIR_PROPOSAL_PATH}
             and proposal[NEARBY_REPAIR_PROPOSAL_PATH]['mode']=='100644','D03_FIXED_PROPOSAL_GIT_ENTRY')
-        raw=git('cat-file','blob',candidate+':'+NEARBY_REPAIR_PROPOSAL_PATH)
+        raw=git('cat-file','blob',nearby_target+':'+NEARBY_REPAIR_PROPOSAL_PATH)
         need(hashlib.sha256(raw).hexdigest()==NEARBY_REPAIR_PROPOSAL_SHA256
             and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[NEARBY_REPAIR_PROPOSAL_PATH]['blobSHA']
             and raw==file(root,NEARBY_REPAIR_PROPOSAL_PATH).read_bytes(),'D03_FIXED_PROPOSAL_GIT_BYTES')
+    math_changed=[]
+    if math_rendering_repair:
+        need(subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',MATH_RENDERING_REPAIR_BASELINE,candidate],
+            capture_output=True,env=env,timeout=30).returncode==0,'D04_BASELINE_ANCESTRY')
+        baseline_c=tree(MATH_RENDERING_REPAIR_BASELINE,_CHECKPOINT_PRODUCT_ROOTS)
+        need(set(baseline_c)==set(after),'D04_PRODUCT_INVENTORY')
+        actual_delta={p for p in after if baseline_c[p]!=after[p]}
+        expected_delta={p for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS
+            if math_rendering_repair['beforeRepair'][p]!=math_rendering_repair['afterRepair'][p]}
+        need(actual_delta==expected_delta and actual_delta,'D04_EXACT_PRODUCT_DIFF')
+        need(all(baseline_c[p]['mode']==after[p]['mode'] for p in actual_delta),'D04_PRODUCT_MODE_CHANGED')
+        for p in MATH_RENDERING_REPAIR_PRODUCT_PATHS:
+            need(hashlib.sha256(git('cat-file','blob',MATH_RENDERING_REPAIR_BASELINE+':'+p)).hexdigest()
+                ==MATH_RENDERING_REPAIR_BEFORE[p],'D04_FIXED_C_PRODUCT_BYTES:'+p)
+        math_changed=sorted(raw.decode('utf-8') for raw in git('diff','--name-only','-z',
+            MATH_RENDERING_REPAIR_BASELINE,candidate).split(b'\0') if raw)
+        need(set(math_changed)<=MATH_RENDERING_REPAIR_CORE_PATHS|set(MATH_RENDERING_REPAIR_PRODUCT_PATHS)|{MATH_RENDERING_REPAIR_PROPOSAL_PATH},
+             'D04_DIFF_OUTSIDE_EXACT_PROPOSAL')
+        need(MATH_RENDERING_REPAIR_PROPOSAL_PATH in math_changed,'D04_FIXED_PROPOSAL_NOT_IN_DIFF')
+        proposal=tree(candidate,(MATH_RENDERING_REPAIR_PROPOSAL_PATH,))
+        need(set(proposal)=={MATH_RENDERING_REPAIR_PROPOSAL_PATH}
+            and proposal[MATH_RENDERING_REPAIR_PROPOSAL_PATH]['mode']=='100644','D04_FIXED_PROPOSAL_GIT_ENTRY')
+        raw=git('cat-file','blob',candidate+':'+MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+        need(hashlib.sha256(raw).hexdigest()==MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+            and hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==proposal[MATH_RENDERING_REPAIR_PROPOSAL_PATH]['blobSHA']
+            and raw==file(root,MATH_RENDERING_REPAIR_PROPOSAL_PATH).read_bytes(),'D04_FIXED_PROPOSAL_GIT_BYTES')
     actual=set()
     for prefix in ('src','public'):
         for path in (root/prefix).rglob('*'):
@@ -1212,13 +1264,15 @@ def _checkpoint_git_proof(rt, state, origin, core,*,review_method=False,nearby_r
                      reviewMethodCoreChangedPaths=sorted(d02_changed))
     if nearby_repair:
         proof.update(nearbyRepair=nearby_repair,nearbyChangedPaths=nearby_changed)
+    if math_rendering_repair:
+        proof.update(mathRenderingRepair=math_rendering_repair,mathRenderingChangedPaths=math_changed)
     return proof
 
 
 def _checkpoint_informed_technical_git(rt, owner, primary, core):
     """Prove the retained A owner and current B bytes without executing a patch."""
-    from checkpoint import RECOVERY_WORK,current_nearby_repair
-    nearby=current_nearby_repair(rt,primary)
+    from checkpoint import RECOVERY_WORK,current_product_repair_context
+    nearby=current_product_repair_context(rt,primary)['nearbyRepair']
     previous=owner.get('informed_technical_candidate_reconciliation') if nearby else None
     expected_previous=_CHECKPOINT_D02_BASELINE
     if nearby:
@@ -1235,7 +1289,7 @@ def _checkpoint_informed_technical_git(rt, owner, primary, core):
          'D02_ORIGINAL_TECHNICAL_INVENTORY_REQUIRED')
     material=_checkpoint_git_proof(rt,primary,rt.store._view.state_snapshot(primary['plan']['work_id']),
                                    core,review_method=True)
-    env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0')
+    env=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0')
     retained={}
     for path in sorted(paths):
         proc=subprocess.run(['git','-C',str(rt.root),'cat-file','blob',
@@ -1293,9 +1347,11 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
     need(all(rt.node_status(s,nodes[dep])=='PASSED' for dep in node['depends_on']) and rt.approval(s,node),
          'CHECKPOINT_R06_DEPENDENCIES_OR_APPROVAL')
     need(not rt.integrity(s),'CHECKPOINT_CURRENT_CANDIDATE_INTEGRITY')
-    from checkpoint import current_nearby_repair,NEARBY_REPAIR_PROPOSAL_SHA256,NEARBY_REPAIR_PROPOSAL_PATH
-    nearby=current_nearby_repair(rt,s)
-    effective={**CURRENT_REPAIR_AFTER,**(nearby['afterRepair'] if nearby else {})}
+    from checkpoint import (current_product_repair_context,NEARBY_REPAIR_PROPOSAL_SHA256,
+        NEARBY_REPAIR_PROPOSAL_PATH,MATH_RENDERING_REPAIR_PROPOSAL_PATH)
+    repair_context=current_product_repair_context(rt,s)
+    nearby=repair_context['nearbyRepair'];math_repair=repair_context['mathRenderingRepair']
+    effective=repair_context['effectiveAfter']
     expected=dict(origin['candidate_manifest']);expected.update(effective)
     need(s['candidate_manifest']==expected,'CHECKPOINT_CURRENT_CANDIDATE_MANIFEST')
     need(manifest(rt.root,expected)==expected,'CHECKPOINT_CURRENT_CANDIDATE_BYTES')
@@ -1315,7 +1371,7 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
     need(len(claims)==1,'CHECKPOINT_R06_CLAIM_EVENT_REQUIRED')
     from team import current_informed_authority
     method=current_informed_authority(rt,work,s)
-    owner_proposal=NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256 if method else RECOVERY_PROPOSAL_SHA256
+    owner_proposal=repair_context['ownerProposalSHA256'] if method else RECOVERY_PROPOSAL_SHA256
     need(not nearby or method,'D03_CURRENT_D02_METHOD_REQUIRED')
     if method:
         need(any(e['work']==work and e['kind']=='informed_review_method_adopted'
@@ -1330,6 +1386,7 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
          'CHECKPOINT_NEW_RECOVERY_OWNER_REQUIRED')
     owner_record_paths={'work/items/'+RECOVERY_WORK+'/'+name+'.md' for name in ('WORK','PROPOSAL','ACTION_LOG','FINDINGS','VERIFICATION')}
     if nearby:owner_record_paths.add(NEARBY_REPAIR_PROPOSAL_PATH)
+    if math_repair:owner_record_paths.add(MATH_RENDERING_REPAIR_PROPOSAL_PATH)
     owner_record_paths.add('work/items/'+RECOVERY_WORK+'/REVIEW_METHOD_PROPOSAL_D02.md')
     if method:
         need(any(e['work']==RECOVERY_WORK and e['kind']=='user'

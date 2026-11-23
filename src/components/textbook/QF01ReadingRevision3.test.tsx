@@ -3,7 +3,8 @@ import { webcrypto } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { GuidedMathReadingFlow, R3FeedbackMath } from './GuidedMathReadingFlow'
+import { GuidedMathReadingFlow, R3FeedbackMath, R3BodyText } from './GuidedMathReadingFlow'
+import * as transformationReading from '../../domain/transformationReading'
 import { validateQF01R3Reading, projectQF01R3Block, qf01R3Solved } from '../../domain/transformationReading'
 import { QF01Revision2Archive } from './QF01Revision2Archive'
 import { useAppStore } from '../../stores/useAppStore'
@@ -11,6 +12,7 @@ import { answerTextbookItem } from '../../domain/textbook'
 import { mathQuadraticQF01Unit as unit, qf01GuidedPresentation as presentation, qf01ReadingPresentation as reading, qf01Revision2Unit as r2 } from '../../data/textbook/math/quadratic/qf01Lesson'
 const items=unit.sections[0].items
 const active=unit.requiredInteractionRefs!.map(id=>items.find(item=>item.id===id)!)
+const {validateSource:validateQF01R3BodySource,slice:qf01R3BodySlice,origins:qf01R3BodyOrigins}=R3BodyText
 function Lesson(){const progress=useAppStore(state=>state.textbookProgress[unit.unitId]);return <GuidedMathReadingFlow unit={unit} section={unit.sections[0]} progress={progress} presentation={presentation} readingPresentation={reading} storageScope="r3-react-dom-test"/>}
 function clickChoice(id:string,value:string){const panel=screen.getByTestId('inline-choice-panel-'+id);const candidate=within(panel).getAllByRole('button').find(button=>button.getAttribute('aria-label')?.endsWith('、'+value));expect(candidate).toBeTruthy();fireEvent.click(candidate!)}
 beforeEach(()=>{Object.defineProperty(globalThis,'crypto',{value:webcrypto,configurable:true});localStorage.clear();useAppStore.setState({textbookProgress:{}});window.scrollBy=vi.fn();Element.prototype.scrollIntoView=vi.fn();window.requestAnimationFrame=cb=>window.setTimeout(()=>cb(0),0);window.cancelAnimationFrame=id=>window.clearTimeout(id)
@@ -370,4 +372,116 @@ describe('R3 help gate and mathematical feedback',()=>{
    view.unmount();act(()=>useAppStore.setState({textbookProgress:{}}))
   }
  },30000)
+})
+
+describe('D04 source-bound R3本文math（実ピクセル合格ではない）',()=>{
+ function prepareBody(id:string){const at=active.findIndex(item=>item.id===id);act(()=>{for(const item of active.slice(0,at))useAppStore.getState().answerTextbook(unit,item.id,item.answer)});const q=reading.interactions.find(q=>q.id===id)!;localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test',String(Number(q.stageId.split('-').at(-1))-1));return active[at]}
+ function bodyAnnotations(element:Element){return [...element.querySelectorAll('[data-qf01-prose-math] annotation')].map(node=>node.textContent!)}
+ function sourceParagraph(source:Awaited<ReturnType<typeof validateQF01R3Reading>>,id:string){const block=source.blocks.get(id)!;if(block.type!=='paragraph')throw Error('TEST_PARAGRAPH');return block}
+ it('実102 text partsの字面を保持し、63 parts140単位と5つのcmを境界付きで扱う',async()=>{
+  const source=await validateQF01R3Reading(unit,reading);validateQF01R3BodySource(source)
+  let parts=0,math=0,withMath=0,quantities=0
+  for(const id of source.metadata.canonicalBlockIds){const b=source.blocks.get(id)!;if(b.type!=='paragraph'&&b.type!=='formula')continue
+   b.parts.forEach((part,partIndex)=>{if(part.type!=='text')return;parts++
+    const tokens=qf01R3BodySlice(source,{blockId:id,partIndex,start:0,end:part.text.length,kind:'whole-part'},part.text)
+    expect(tokens.map(t=>t.type==='text'?t.text:part.text.slice(t.start,t.end)).join('')).toBe(part.text)
+    const typed=tokens.filter(t=>t.type==='math');math+=typed.length;if(typed.length)withMath++
+    for(const token of typed)if(token.unit){quantities++;expect(token.unit).toBe('cm');expect(token.latex).toMatch(/^(40|x|y)\\,\\mathrm\{cm\}$/)}
+   })
+  }
+  expect([parts,withMath,math,quantities]).toEqual([102,63,140,5])
+  expect(source.metadata.canonicalBlockIds).toEqual(reading.canonicalBlockIds);expect(source.metadata.interactions.map(q=>q.id)).toEqual(active.map(item=>item.id))
+ })
+ it.each([
+  ['qf01-r3-c1-s01-p05',2,['f(x)','f','x','x']],
+  ['qf01-r3-c2-s06-p05',0,['-1(a-1)','a^2-a']],
+  ['qf01-r3-c2-s06-p06',0,['+1']],
+  ['qf01-r3-c2-s06-p07',0,['a^2-a-a+1','a']],
+  ['qf01-r3-c3-s08-p05',0,['x<20','x>0']],
+  ['qf01-r3-c3-s09-p08',0,['y<20','20-y>0','y>0','20-y<20','x=20-y','0<x<20']],
+ ] as const)('%s part%sの関数/符号/指数/連鎖比較を完全な数学単位へ保つ',async(id,index,expected)=>{
+  const source=await validateQF01R3Reading(unit,reading),part=sourceParagraph(source,id).parts[index];if(part.type!=='text')throw Error('TEST_TEXT')
+  const tokens=qf01R3BodySlice(source,{blockId:id,partIndex:index,start:0,end:part.text.length,kind:'whole-part'},part.text)
+  expect(tokens.filter(t=>t.type==='math').map(t=>t.latex)).toEqual(expected)
+ })
+ it('日本語の辺の名詞を数式化せず、異なる英語/原textは同じsourceとして受け入れない',async()=>{
+  const source=await validateQF01R3Reading(unit,reading),id='qf01-r3-c3-s07-p01',part=sourceParagraph(source,id).parts[0];if(part.type!=='text')throw Error('TEST_TEXT')
+  const origin={blockId:id,partIndex:0,start:0,end:part.text.length,kind:'whole-part' as const}
+  expect(qf01R3BodySlice(source,origin,part.text)).toEqual([{type:'text',text:part.text}])
+  expect(()=>qf01R3BodySlice(source,origin,part.text+' Step 1 uses cm and HTML')).toThrow(/VISIBLE_SLICE/)
+  const changed={...source,blocks:new Map(source.blocks)},block=sourceParagraph(source,id)
+  changed.blocks.set(id,{...block,parts:[{...part,text:'Step 1 uses cm and HTML'}]})
+  expect(()=>validateQF01R3BodySource(changed)).toThrow(/SOURCE_BINDING/)
+ })
+ it('実pending paragraph10件は原piecesへ結び、答えと可視外の22数学単位を描かない',async()=>{
+  const source=await validateQF01R3Reading(unit,reading);let paragraphs=0,hidden=0,visibleText=0
+  for(const [at,q]of source.metadata.interactions.entries()){
+   const pieces=q.projection.pending.pieces;if(!pieces)continue
+   const solved=new Set(source.metadata.interactions.slice(0,at).map(q=>q.id)),projected=projectQF01R3Block(source,q.source.blockId,solved,{helpFor:q.id})!
+   expect(projected).toBeTruthy();const origins=qf01R3BodyOrigins(source,q.source.blockId,projected,solved),block=sourceParagraph(source,q.source.blockId)
+   expect(origins.map(o=>o.partIndex)).toEqual(pieces.map(p=>p.partIndex));paragraphs++
+   for(const [index,origin]of origins.entries()){
+    const original=block.parts[origin.partIndex];if(original.type!=='text')continue
+    const all=qf01R3BodySlice(source,{...origin,kind:'whole-part',start:0,end:original.text.length},original.text).filter(t=>t.type==='math')
+    if(origin.kind==='slot'){hidden+=all.length;expect(projected.parts![index]).toMatchObject({type:'choice',itemId:q.id});continue}
+    const part=projected.parts![index];if(part.type!=='text')throw Error('TEST_VISIBLE_TEXT')
+    const tokens=qf01R3BodySlice(source,origin,part.text);expect(part.text).toBe(original.text.slice(origin.start,origin.end));visibleText++
+    const math=tokens.filter(t=>t.type==='math');expect(math.every(t=>t.start>=origin.start&&t.end<=origin.end)).toBe(true);hidden+=all.length-math.length
+   }
+  }
+  expect([paragraphs,visibleText,hidden]).toEqual([10,20,22])
+ })
+ it.each([
+  ['qf01-r3-c3-s08-p08','0<x<20'],
+  ['qf01-r3-c1-s03-p03','4(a−1)'],
+  ['qf01-r3-c3-s07-p02','40cm'],
+ ] as const)('%sの%sを可視slice境界で切ったら補完せず停止する',async(id,lexeme)=>{
+  const source=await validateQF01R3Reading(unit,reading),part=sourceParagraph(source,id).parts[0];if(part.type!=='text')throw Error('TEST_TEXT')
+  const start=part.text.indexOf(lexeme);expect(start).toBeGreaterThanOrEqual(0)
+  expect(()=>qf01R3BodySlice(source,{blockId:id,partIndex:0,kind:'text-span',start:start+1,end:part.text.length},part.text.slice(start+1))).toThrow(/SPLIT_MATH_UNIT/)
+  expect(()=>qf01R3BodySlice(source,{blockId:id,partIndex:0,kind:'text-span',start:0,end:start+lexeme.length-1},part.text.slice(0,start+lexeme.length-1))).toThrow(/SPLIT_MATH_UNIT/)
+  expect(()=>qf01R3BodySlice(source,{blockId:id,partIndex:0,kind:'text-span',start:-1,end:part.text.length},part.text)).toThrow(/VISIBLE_SLICE/)
+  expect(()=>qf01R3BodySlice(source,{blockId:id,partIndex:0,kind:'slot',start:0,end:0},'')).toThrow(/HIDDEN_SLOT/)
+ })
+ it('current本文の比較を実KaTeX一単位ずつへ描き、誤答では後半の境界説明を出さない',async()=>{
+  const id='qf01-r3-n19-endpoints-answer',item=prepareBody(id)
+  render(<Lesson/>);await screen.findByTestId('textbook-item-'+id)
+  const context=document.querySelector('[data-source-block="qf01-r3-c3-s08-p05"][data-source-view="canonical"]')!
+  expect(bodyAnnotations(context)).toEqual(['x<20','x>0'])
+  const paragraph=()=>document.querySelector('[data-source-block="qf01-r3-c3-s08-p07"][data-source-view="canonical"]')!
+  const visible=()=>[...paragraph().querySelectorAll('[data-qf01-prose-math]')].map(n=>[n.getAttribute('data-qf01-prose-part'),n.getAttribute('data-qf01-prose-start'),n.getAttribute('data-qf01-prose-end'),n.querySelector('annotation')?.textContent])
+  const before=visible();expect(before).toHaveLength(2);expect(paragraph().querySelector('[data-qf01-prose-part="2"]')).toBeNull()
+  fireEvent.click(screen.getByTestId('textbook-item-'+id));clickChoice(id,item.choices!.find(v=>v!==item.answer)!)
+  expect(visible()).toEqual(before);expect(paragraph().querySelector('[data-qf01-prose-part="2"]')).toBeNull()
+  expect(useAppStore.getState().textbookProgress[unit.unitId].answers[id].resolved).toBe(false)
+  clickChoice(id,item.answer);await waitFor(()=>expect(paragraph().querySelectorAll('[data-qf01-prose-part="2"]')).toHaveLength(6))
+  expect(bodyAnnotations(paragraph())).toEqual(['0','20','x=0','0','x=20','y=20-x=0','0','40'])
+ })
+ it('全solved/history/summaryの140原単位とcmを描き、view別source IDと保存を保持する',async()=>{
+  act(()=>{for(const item of active)useAppStore.getState().answerTextbook(unit,item.id,item.answer)})
+  localStorage.setItem('math-textbook-compact-v1:'+unit.unitId+':r3:scope:r3-react-dom-test','8')
+  const saved=JSON.stringify(useAppStore.getState().textbookProgress);render(<Lesson/>);await screen.findByTestId('qf01-unit-summary')
+  fireEvent.click(screen.getByRole('button',{name:'前の段階を見る'}));fireEvent.click(screen.getByRole('button',{name:'全文を開く'}))
+  const wrappers=[...document.querySelectorAll<HTMLElement>('[data-qf01-prose-math]')],identities=new Set(wrappers.map(n=>[n.dataset.qf01ProseBlock,n.dataset.qf01ProsePart,n.dataset.qf01ProseStart,n.dataset.qf01ProseEnd].join(':')))
+  expect(identities.size).toBe(140);expect(new Set(wrappers.map(n=>n.dataset.qf01ProseSourceId)).size).toBe(wrappers.length)
+  const units=wrappers.filter(n=>n.dataset.qf01ProseUnit==='cm'),unitIds=new Set(units.map(n=>[n.dataset.qf01ProseBlock,n.dataset.qf01ProsePart,n.dataset.qf01ProseStart].join(':')))
+  expect(unitIds.size).toBe(5)
+  for(const wrapper of wrappers){expect(wrapper.querySelectorAll('.katex')).toHaveLength(1);expect(wrapper.querySelector('.katex-error')).toBeNull()}
+  for(const wrapper of units){expect(wrapper.dataset.qf01ProseKind).toBe('quantity');expect(wrapper.querySelector('annotation')?.textContent).toMatch(/\\mathrm\{cm\}/);expect([...wrapper.querySelectorAll('.mathnormal')].some(n=>n.textContent==='c'||n.textContent==='m')).toBe(false)}
+  const prose=document.querySelector('[data-source-block="qf01-r3-c3-s07-p01"][data-source-view="history-full-"]')!
+  expect(prose.querySelector('[data-qf01-prose-math]')).toBeNull();expect(prose.textContent).toContain('縦を決めたときに横がどう決まるか')
+  expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(saved)
+ },15000)
+ it('実projectorの可視parts対応が壊れたらalert/disabled/inertで回答を止める',async()=>{
+  const original=transformationReading.projectQF01R3Block
+  vi.spyOn(transformationReading,'projectQF01R3Block').mockImplementation((...args)=>{const projected=original(...args);if(args[1]!=='qf01-r3-c1-s01-p01'||!projected?.parts)return projected;return {...projected,parts:projected.parts.map((p,index)=>index===0&&p.type==='text'?{...p,text:p.text.slice(1)}:p)}})
+  render(<Lesson/>);await screen.findByTestId('qf01-r3-prose-error')
+  const slot=screen.getByTestId('textbook-item-'+active[0].id);expect(slot.hasAttribute('disabled')).toBe(true);expect(document.querySelector('.math-textbook-stage--current')?.hasAttribute('inert')).toBe(true)
+  const saved=JSON.stringify(useAppStore.getState().textbookProgress);fireEvent.click(slot);expect(JSON.stringify(useAppStore.getState().textbookProgress)).toBe(saved)
+  expect(screen.queryByTestId('inline-choice-panel-'+active[0].id)?.querySelector('button:not([disabled])')).toBeNull()
+ })
+ it('旧R2 archiveへ本文source-bound描画を適用しない',async()=>{
+  render(<MemoryRouter><QF01Revision2Archive/></MemoryRouter>);await screen.findByTestId('qf01-revision2-archive')
+  expect(document.querySelector('[data-qf01-prose-math]')).toBeNull();expect(document.querySelector('[data-qf01-revision="3"]')).toBeNull()
+ })
 })

@@ -608,6 +608,150 @@ def current_nearby_repair(rt, state):
     return record
 
 
+MATH_RENDERING_REPAIR_PROPOSAL_SHA256 = '09a4c45c229d1b18190541a1441ee18d2b9d5d07dc62020b684b64b033d6fd85'
+MATH_RENDERING_REPAIR_PROPOSAL_PATH = 'work/items/'+RECOVERY_WORK+'/MATH_PROSE_RENDERING_PROPOSAL_D04.md'
+MATH_RENDERING_REPAIR_BASELINE = '900642faf76267546c5c7420b7d50a010516ca6e'
+MATH_RENDERING_REPAIR_ADOPTION_CALL_ID = 'call_93a584b6ba4842a3badb87262bb07b2b'
+MATH_RENDERING_REPAIR_ADOPTION_QUOTE = 'D04案を採用し、記載範囲の公開反映とCIも許可する'
+MATH_RENDERING_REPAIR_PRODUCT_PATHS = NEARBY_REPAIR_PRODUCT_PATHS
+MATH_RENDERING_REPAIR_CORE_PATHS = NEARBY_REPAIR_CORE_PATHS
+MATH_RENDERING_REPAIR_BEFORE = {
+    'src/components/textbook/GuidedMathReadingFlow.tsx':'4fb2042b5647620d504a30d334a9d36688b28f7d80fee380c0efbdd5c09ad964',
+    'src/components/textbook/QF01ReadingRevision3.test.tsx':'41cdfc2a6a75e29bb68ccb959e88cbec9c6a9c96235cade13ca363fca78fc320'}
+MATH_RENDERING_REPAIR_D03_EVENT_HASH = 'bad3d783c3d3c9ac40b566bf5a6d4a3eec45b0d5e8ab8f82c1a90b48a7b2f108'
+MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256 = 'f8ebbd59f53e025d59ff1f888b5d3cb7e4f76cba6b2108087081db16ddc8e00b'
+MATH_RENDERING_REPAIR_FIELDS = NEARBY_REPAIR_FIELDS | frozenset((
+    'candidateBeforeManifestSHA256','originalD03MigrationEventHash','originalD03SupplementSHA256'))
+MATH_RENDERING_REPAIR_IMMUTABLE_FIELDS = frozenset((
+    'proposalSHA256','evidenceRef','transcriptionSHA256','quote','source_ref','verification_level',
+    'baselineSourceSHA','allowedProductPaths','beforeRepair','originalD03MigrationEventHash',
+    'originalD03SupplementSHA256','checkpointEpoch'))
+
+
+def validate_math_rendering_repair_record(record, *, epoch=None, check=require):
+    """D04 is a separate permission; the actual D03 C record is never retagged."""
+    check(isinstance(record,dict) and set(record)==MATH_RENDERING_REPAIR_FIELDS,'D04_REPAIR_RECORD_FIELDS')
+    check(record.get('schemaVersion')=='qf01-math-prose-rendering-supplement/1'
+        and record.get('proposalSHA256')==MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+        and record.get('baselineSourceSHA')==MATH_RENDERING_REPAIR_BASELINE,'D04_FIXED_PROPOSAL_BASELINE')
+    check(record.get('quote')==MATH_RENDERING_REPAIR_ADOPTION_QUOTE
+        and record.get('source_ref')=='request_user_input_async/'+MATH_RENDERING_REPAIR_ADOPTION_CALL_ID
+        and record.get('verification_level')=='conversation_transcribed','D04_ACTUAL_ADOPTION_REQUIRED')
+    for key in ('transcriptionSHA256','candidateBeforeManifestSHA256','definitionHash','implementationHash','checkpointEpoch'):
+        check(isinstance(record.get(key),str) and SHA256.fullmatch(record[key]),'D04_REPAIR_HASH:'+key)
+    check(epoch is None or record['checkpointEpoch']==epoch,'D04_REPAIR_EPOCH')
+    check(isinstance(record.get('evidenceRef'),str) and len(record['evidenceRef'])<=128
+        and EVENT_ID.fullmatch(record['evidenceRef']),'D04_REPAIR_EVIDENCE_ID')
+    check(record.get('originalD03MigrationEventHash')==MATH_RENDERING_REPAIR_D03_EVENT_HASH
+        and record.get('originalD03SupplementSHA256')==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,
+        'D04_FIXED_D03_PREDECESSOR')
+    for key in ('candidateBeforeSHA','candidateAfterSHA'):
+        check(isinstance(record.get(key),str) and re.fullmatch(r'[0-9a-f]{40}',record[key]),'D04_REPAIR_CANDIDATE_SHA:'+key)
+    check(record['candidateAfterSHA'] not in (record['candidateBeforeSHA'],MATH_RENDERING_REPAIR_BASELINE),
+          'D04_NEW_CANDIDATE_REQUIRED')
+    check(record.get('allowedProductPaths')==list(MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        and record.get('beforeRepair')==MATH_RENDERING_REPAIR_BEFORE,'D04_EXACT_C_TWO_PATH_PREIMAGE')
+    after=record.get('afterRepair')
+    check(isinstance(after,dict) and set(after)==set(MATH_RENDERING_REPAIR_BEFORE)
+        and all(isinstance(v,str) and SHA256.fullmatch(v) for v in after.values())
+        and after!=MATH_RENDERING_REPAIR_BEFORE,'D04_EXACT_TWO_PATH_AFTERIMAGE')
+    return copy.deepcopy(record)
+
+
+def validate_math_rendering_repair_continuation(previous, current, *, earlier_after=(), check=require):
+    validate_math_rendering_repair_record(current,check=check)
+    if previous is None:
+        check(current['candidateBeforeSHA']==MATH_RENDERING_REPAIR_BASELINE,'D04_FIRST_MIGRATION_REQUIRES_C')
+    else:
+        validate_math_rendering_repair_record(previous,check=check)
+        check(all(current[k]==previous[k] for k in MATH_RENDERING_REPAIR_IMMUTABLE_FIELDS),
+              'D04_PRESERVED_SUPPLEMENTAL_ADOPTION')
+        check(current['candidateBeforeSHA']==previous['candidateAfterSHA'],'D04_ACTUAL_PREVIOUS_CANDIDATE')
+        check(current['afterRepair']==previous['afterRepair']
+            or current['afterRepair'] not in earlier_after,'D04_OLD_AFTERIMAGE_ROLLBACK')
+    return copy.deepcopy(current)
+
+
+def math_rendering_repair_adoption_file(rt, state, reference):
+    from contracts import need, file
+    need(getattr(rt.store,'checkpoint_mode',False) and state['plan']['work_id']==FIXED_WORK,
+         'D04_CHECKPOINT_WORK_REQUIRED')
+    evidence=state['evidence'].get(reference,{})
+    need(evidence.get('kind')=='file' and evidence.get('verification_level')!='simulation',
+         'D04_ACTUAL_ADOPTION_FILE_REQUIRED')
+    data=evidence.get('data',{});path=file(rt.root,data['path'])
+    need(path.stat().st_size<=1_048_576,'D04_ADOPTION_FILE_LIMIT')
+    raw=path.read_bytes();need(sha(raw)==data.get('sha256'),'D04_ADOPTION_FILE_CHANGED')
+    adopted=strict_json(raw)
+    need(adopted.get('schemaVersion')=='qf01-d04-actual-user-adoption/1'
+        and adopted.get('proposalSHA256')==MATH_RENDERING_REPAIR_PROPOSAL_SHA256
+        and adopted.get('quote')==MATH_RENDERING_REPAIR_ADOPTION_QUOTE
+        and adopted.get('source_ref')=='request_user_input_async/'+MATH_RENDERING_REPAIR_ADOPTION_CALL_ID
+        and adopted.get('verification_level')=='conversation_transcribed' and adopted.get('adopted') is True,
+        'D04_EXACT_ACTUAL_USER_ADOPTION')
+    need(adopted.get('baselineSourceSHA')==MATH_RENDERING_REPAIR_BASELINE
+        and adopted.get('productPaths')==list(MATH_RENDERING_REPAIR_PRODUCT_PATHS)
+        and adopted.get('publicCodePathMaximum')==20
+        and adopted.get('publicProposalPath')==MATH_RENDERING_REPAIR_PROPOSAL_PATH
+        and adopted.get('nativeLedgerOrLearningOrCredentialsIncluded') is False
+        and adopted.get('originalD03MigrationEventHash')==MATH_RENDERING_REPAIR_D03_EVENT_HASH
+        and adopted.get('originalD03SupplementSHA256')==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256,
+        'D04_ACTUAL_ADOPTION_SCOPE')
+    need(sha(file(rt.root,MATH_RENDERING_REPAIR_PROPOSAL_PATH).read_bytes())==MATH_RENDERING_REPAIR_PROPOSAL_SHA256,
+         'D04_FIXED_PROPOSAL_BYTES')
+    return {'evidenceRef':reference,'transcriptionSHA256':sha(raw),'quote':adopted['quote'],
+            'source_ref':adopted['source_ref'],'verification_level':adopted['verification_level']}
+
+
+def preserved_nearby_repair(rt, state):
+    """For D04, authenticate historical C without pretending its core is D."""
+    from contracts import need
+    migration=state.get('checkpoint_definition_migration',{})
+    math_repair=migration.get('mathRenderingRepair')
+    if math_repair is None:return current_nearby_repair(rt,state)
+    validate_math_rendering_repair_record(math_repair,epoch=rt.store.checkpoint_epoch,check=need)
+    original=[e for e in rt.store.suffix_events() if e['hash']==MATH_RENDERING_REPAIR_D03_EVENT_HASH]
+    need(len(original)==1 and original[0]['work']==FIXED_WORK
+        and original[0]['kind']=='checkpoint_definition_migrated','D04_AUTHENTIC_D03_EVENT_REQUIRED')
+    payload=original[0]['payload'];nearby=payload.get('repairAdoption')
+    validate_nearby_repair_record(nearby,epoch=rt.store.checkpoint_epoch,check=need)
+    need(digest(nearby)==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256
+        and payload.get('candidateSHA')==nearby['candidateAfterSHA']==MATH_RENDERING_REPAIR_BASELINE
+        and nearby['afterRepair']==MATH_RENDERING_REPAIR_BEFORE
+        and migration.get('repairAdoption')==nearby,'D04_PRESERVED_D03_C_RECORD')
+    adopted=nearby_repair_adoption_file(rt,state,nearby['evidenceRef'])
+    need(all(nearby.get(k)==v for k,v in adopted.items()),'D04_ORIGINAL_D03_ADOPTION_CHANGED')
+    return copy.deepcopy(nearby)
+
+
+def current_math_rendering_repair(rt, state):
+    from contracts import need, file
+    from capabilities import implementation_hash
+    migration=state.get('checkpoint_definition_migration',{})
+    record=migration.get('mathRenderingRepair')
+    if record is None:return None
+    need(getattr(rt.store,'checkpoint_mode',False) and state['plan']['work_id']==FIXED_WORK,'D04_CHECKPOINT_WORK_REQUIRED')
+    record=validate_math_rendering_repair_record(record,epoch=rt.store.checkpoint_epoch,check=need)
+    need(record['candidateAfterSHA']==state['candidate_sha']==migration.get('candidateSHA')
+        and record['definitionHash']==state['definition_hash']==migration.get('to')
+        and record['implementationHash']==implementation_hash(rt),'D04_CURRENT_SOURCE_DEFINITION_SERVICE')
+    adopted=math_rendering_repair_adoption_file(rt,state,record['evidenceRef'])
+    need(all(record.get(k)==v for k,v in adopted.items()),'D04_REPAIR_ADOPTION_CHANGED')
+    preserved_nearby_repair(rt,state)
+    effective={**CURRENT_REPAIR_AFTER,**record['afterRepair']}
+    need(all(sha(file(rt.root,p).read_bytes())==v for p,v in effective.items()),'D04_CURRENT_PRODUCT_BYTES')
+    return record
+
+
+def current_product_repair_context(rt, state):
+    math_repair=current_math_rendering_repair(rt,state)
+    nearby=preserved_nearby_repair(rt,state) if math_repair else current_nearby_repair(rt,state)
+    return {'nearbyRepair':nearby,'mathRenderingRepair':math_repair,
+            'effectiveAfter':{**CURRENT_REPAIR_AFTER,**((math_repair or nearby or {}).get('afterRepair',{}))},
+            'ownerProposalSHA256':MATH_RENDERING_REPAIR_PROPOSAL_SHA256 if math_repair else
+                NEARBY_REPAIR_PROPOSAL_SHA256 if nearby else INFORMED_REVIEW_PROPOSAL_SHA256}
+
+
 ADOPTION_CALL_ID = 'call_d1c88a5dde794be288a201a5ea8de0cc'
 ORIGIN_NAMES = frozenset(('publisher-contract.json', 'BUILD_AUTHORITY.blob',
     'APPROVED_MATERIAL_SEED.json', 'NODES.json', 'ORIGIN_SOURCE_PROOF.json',
@@ -820,10 +964,16 @@ class CheckpointStore:
         active_method = None
         origin = self._view.state_snapshot(FIXED_WORK)
         primary_candidate=origin['candidate_sha']
+        primary_manifest=copy.deepcopy(origin['candidate_manifest'])
+        primary_definition=origin['definition_hash']
         active_repair=None
+        active_math_repair=None;math_after_history=[]
         owner_candidate=None;owner_manifest=None;owner_plan=None
         for row in rows:
             payload = row['payload']; kind = row['kind']
+            require(not isinstance(payload,dict) or payload.get('mathRenderingRepair') is None
+                or kind=='checkpoint_definition_migrated' and row['work']==FIXED_WORK,
+                'D04_MIGRATION_EVENT_SCOPE')
             if row['work']==RECOVERY_WORK:
                 if kind=='opened':
                     owner_plan=payload['plan'];owner_candidate=owner_plan['source_sha']
@@ -836,7 +986,50 @@ class CheckpointStore:
             if kind=='checkpoint_definition_migrated' and row['work']==FIXED_WORK:
                 repair=payload.get('repairAdoption')
                 require(active_repair is None or repair is not None,'D03_SUPPLEMENT_CANNOT_BE_STRIPPED')
-                if repair is not None:
+                math_repair=payload.get('mathRenderingRepair')
+                require(active_math_repair is None or math_repair is not None,'D04_SUPPLEMENT_CANNOT_BE_STRIPPED')
+                if math_repair is not None:
+                    math_repair=validate_math_rendering_repair_record(math_repair,epoch=self.checkpoint_epoch)
+                    validate_math_rendering_repair_continuation(active_math_repair,math_repair,
+                        earlier_after=math_after_history)
+                    original=[e for e in rows if e['seq']<row['seq']
+                        and e['hash']==MATH_RENDERING_REPAIR_D03_EVENT_HASH]
+                    require(len(original)==1 and original[0]['work']==FIXED_WORK
+                        and original[0]['kind']=='checkpoint_definition_migrated','D04_AUTHENTIC_D03_EVENT_REQUIRED')
+                    original_payload=original[0]['payload'];original_repair=original_payload.get('repairAdoption')
+                    validate_nearby_repair_record(original_repair,epoch=self.checkpoint_epoch)
+                    require(digest(original_repair)==MATH_RENDERING_REPAIR_D03_SUPPLEMENT_SHA256
+                        and original_payload.get('candidateSHA')==original_repair['candidateAfterSHA']==MATH_RENDERING_REPAIR_BASELINE
+                        and original_repair['afterRepair']==MATH_RENDERING_REPAIR_BEFORE
+                        and repair==active_repair==original_repair,'D04_PRESERVED_D03_C_RECORD')
+                    preflight=self.get(payload['preflightRef'])
+                    expected=dict(origin['candidate_manifest']);expected.update(CURRENT_REPAIR_AFTER)
+                    expected.update(math_repair['afterRepair'])
+                    require(preflight.get('mathRenderingRepair')==math_repair
+                        and preflight.get('repairAdoption')==repair
+                        and preflight.get('ledgerHead')==row['previous']
+                        and preflight.get('checkpointEpoch')==payload.get('checkpointEpoch')==self.checkpoint_epoch
+                        and preflight.get('fromDefinition')==payload.get('from')==primary_definition
+                        and math_repair['candidateBeforeSHA']==preflight.get('candidateBeforeSHA')==primary_candidate
+                        and math_repair['candidateBeforeManifestSHA256']==digest(primary_manifest)
+                        and math_repair['candidateAfterSHA']==preflight.get('candidateAfterSHA')==payload.get('candidateSHA')
+                        and math_repair['definitionHash']==preflight.get('toDefinition')==preflight.get('core',{}).get('definitionHash')==payload.get('to')
+                        and math_repair['implementationHash']==preflight.get('implementationHash')
+                        and preflight.get('candidateManifest')==payload.get('candidateManifest')==expected
+                        and preflight.get('changedCandidatePaths')=={p:v for p,v in expected.items() if primary_manifest.get(p)!=v}
+                        and preflight.get('reviewMethodAdoption') is not None,'D04_MIGRATION_CURRENT_PREVIOUS_BINDING')
+                    if active_math_repair is None:
+                        require(primary_candidate==MATH_RENDERING_REPAIR_BASELINE
+                            and all(primary_manifest.get(p)==v for p,v in MATH_RENDERING_REPAIR_BEFORE.items()),
+                            'D04_FIRST_MIGRATION_C_PREIMAGE')
+                    evidence=[e for e in rows if e['seq']<row['seq'] and e['work']==FIXED_WORK
+                        and e['kind']=='evidence' and e['payload'].get('id')==math_repair['evidenceRef']]
+                    require(len(evidence)==1 and evidence[0]['payload'].get('kind')=='file'
+                        and evidence[0]['payload'].get('verification_level')!='simulation'
+                        and evidence[0]['payload'].get('data',{}).get('sha256')==math_repair['transcriptionSHA256'],
+                        'D04_PRIOR_ACTUAL_ADOPTION_FILE_EVENT')
+                    active_math_repair=math_repair;math_after_history.append(copy.deepcopy(math_repair['afterRepair']))
+                elif repair is not None:
                     repair=validate_nearby_repair_record(repair,epoch=self.checkpoint_epoch)
                     preflight=self.get(payload['preflightRef'])
                     require(preflight.get('repairAdoption')==repair
@@ -860,8 +1053,10 @@ class CheckpointStore:
                         'D03_PRIOR_ACTUAL_ADOPTION_FILE_EVENT')
                     active_repair=repair
                 primary_candidate=payload['candidateSHA']
+                primary_manifest=copy.deepcopy(payload['candidateManifest']);primary_definition=payload['to']
             elif kind=='candidate' and row['work']==FIXED_WORK:
                 primary_candidate=payload['sha']
+                primary_manifest=copy.deepcopy(payload['manifest'])
             if kind == 'checkpoint_definition_migrated' and payload.get('reviewMethodAdoption') is not None:
                 added=payload['reviewMethodAdoption'];preflight=self.get(payload['preflightRef'])
                 require(row['work']==FIXED_WORK and isinstance(added,dict)
@@ -914,10 +1109,12 @@ class CheckpointStore:
                         and body.get('historicalFirstPassRefs')==list(INFORMED_FIRST_PASS_REFS)
                         and all(body.get(k) is False for k in ('independent','sourceFirst','firstPass'))
                         and body.get('globalQueueCoverage')=='UNKNOWN','D02_AUTHORITY_EVENT_CRITERION')
-                if active_repair is not None:
-                    require(body.get('currentSourceSHA')==active_repair['candidateAfterSHA']
-                        and body.get('definitionHash')==active_repair['definitionHash']
-                        and body.get('implementationHash')==active_repair['implementationHash']
+                current_repair=active_math_repair or active_repair
+                if current_repair is not None:
+                    require(body.get('currentSourceSHA')==current_repair['candidateAfterSHA']
+                        and body.get('definitionHash')==current_repair['definitionHash']
+                        and body.get('implementationHash')==current_repair['implementationHash']
+                        and current_repair['evidenceRef'] in body.get('evidenceRefs',[])
                         and active_repair['evidenceRef'] in body.get('evidenceRefs',[]),
                         'D03_AUTHORITY_SUPPLEMENT_BINDING')
                 active_method=ref
@@ -934,10 +1131,15 @@ class CheckpointStore:
                 proof=payload['proof'];authority=self.get(active_method)
                 require(isinstance(proof,dict) and digest(proof)==payload['proofRef']
                         and self.get(payload['proofRef'])==proof,'D02_TECHNICAL_EVENT_ARTIFACT')
+                if active_math_repair:
+                    require(proof.get('candidateSHA')==active_math_repair['candidateAfterSHA']
+                        and proof.get('core',{}).get('definitionHash')==active_math_repair['definitionHash']
+                        and proof.get('implementationHash')==active_math_repair['implementationHash'],
+                        'D04_TECHNICAL_CURRENT_SUPPLEMENT_BINDING')
                 require(proof.get('schemaVersion')=='qf01-informed-technical-candidate-proof/1'
                         and proof.get('work')==RECOVERY_WORK and proof.get('parentWork')==FIXED_WORK
                         and proof.get('methodAuthorityRef')==active_method
-                        and proof.get('proposalSHA256')==(NEARBY_REPAIR_PROPOSAL_SHA256 if active_repair else INFORMED_REVIEW_PROPOSAL_SHA256)
+                        and proof.get('proposalSHA256')==(MATH_RENDERING_REPAIR_PROPOSAL_SHA256 if active_math_repair else NEARBY_REPAIR_PROPOSAL_SHA256 if active_repair else INFORMED_REVIEW_PROPOSAL_SHA256)
                         and proof.get('checkpointEpoch')==self.checkpoint_epoch
                         and proof.get('expectedHead')==row['previous']
                         and proof.get('candidateSHA')==authority.get('currentSourceSHA')
@@ -960,10 +1162,11 @@ class CheckpointStore:
                     require(all(protected.get(name)==value for name,value in active_repair['beforeRepair'].items()),
                             'D03_OWNER_ORIGINAL_PROTECTION')
                     protected.update(active_repair['afterRepair'])
+                    if active_math_repair:protected.update(active_math_repair['afterRepair'])
                     require(owner_plan is not None and owner_plan['source_sha']==original['source_sha']
                         and all(owner_plan.get(key)==original.get(key) for key in ('source_manifest','rules','scope'))
                         and owner_plan.get('protected_manifest',{})==protected
-                        and owner_plan['proposal']['hash']==NEARBY_REPAIR_PROPOSAL_SHA256
+                        and owner_plan['proposal']['hash']==(MATH_RENDERING_REPAIR_PROPOSAL_SHA256 if active_math_repair else NEARBY_REPAIR_PROPOSAL_SHA256)
                         and proof.get('planSHA256')==digest(owner_plan)
                         and proof.get('previousCandidateSHA')==owner_candidate
                         and proof.get('previousCandidateManifestSHA256')==digest(owner_manifest),
@@ -973,6 +1176,9 @@ class CheckpointStore:
                         and gitproof.get('retainedManifestSHA256')==digest(owner_manifest)
                         and gitproof.get('currentMaterialGitProof',{}).get('nearbyRepair')==active_repair,
                         'D03_OWNER_GIT_SUPPLEMENT_BINDING')
+                    if active_math_repair:
+                        require(gitproof.get('currentMaterialGitProof',{}).get('mathRenderingRepair')==active_math_repair,
+                                'D04_OWNER_GIT_SUPPLEMENT_BINDING')
                 owner_candidate=proof['candidateSHA'];owner_manifest=copy.deepcopy(proof['candidateManifest'])
             elif kind == 'informed_review_receipt_sealed':
                 require(row['work']==FIXED_WORK

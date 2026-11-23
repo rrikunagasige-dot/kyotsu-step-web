@@ -486,6 +486,45 @@ export function preservedNearbyRepair(state){
  assert.equal(nativeDigest(r),MATH_RENDERING_PREDECESSOR_DIGEST,'D04_AUTHENTIC_D03_PREDECESSOR');assert.equal(r.candidateAfterSHA,MATH_RENDERING_BASELINE);assert.deepEqual(r.afterRepair,MATH_RENDERING_BEFORE);
  assert.equal(r.definitionHash,'459d541af32313c9ece595e1ca410597f4067d657c873da9cd0cffa40648c426');assert.equal(r.implementationHash,'1e209378e8dba1b95ff187ea69368240ae332409c3d49e4a150336c0f3343f8c');return r;
 }
+export function validateMathRenderingOwnerRevision(ownerState,primaryState,newPlan,{originalPlan,mathRecords,epoch}){
+ // Same-adoption binding only: neither a new semantic plan nor a new reply.
+ const before=ownerState.plan??{},after=newPlan,bp=before.proposal??{},ap=after?.proposal??{};
+ assert.ok(cpPlain(before)&&cpPlain(after)&&before.work_id===CHECKPOINT_RECOVERY_WORK&&after.work_id===CHECKPOINT_RECOVERY_WORK&&before.profile==='technical'&&after.profile==='technical'&&before.parent_work===CP_PRIMARY&&after.parent_work===CP_PRIMARY&&!before.workflow_version&&!before.simulation,'D04_OWNER_REVISION_WORK_SCOPE');
+ for(const state of [ownerState,primaryState]){
+  const claims=state.claims,paused=Object.hasOwn(state,'paused')?state.paused:false,patches=Object.hasOwn(state,'patches')?state.patches:{},external=Object.hasOwn(state,'external')?state.external:{};
+  assert.ok((!claims||typeof claims==='object'&&Object.keys(claims).length===0)&&paused===false&&cpPlain(patches)&&cpPlain(external)&&Object.values(patches).every(p=>Boolean(p.completed))&&Object.values(external).every(p=>Boolean(p.outcome)),'D04_OWNER_REVISION_OPERATION_UNCERTAIN');
+ }
+ assert.ok(cpPlain(bp)&&cpPlain(ap)&&bp.hash===MATH_RENDERING_PROPOSAL_SHA256&&ap.hash===MATH_RENDERING_PROPOSAL_SHA256,'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED');
+ assert.deepEqual(Object.keys(before).sort(),Object.keys(after).sort(),'D04_OWNER_REVISION_ONLY_SOURCE_AND_TWO_PROTECTIONS');
+ for(const key of Object.keys(before).filter(k=>!['proposal','protected_manifest'].includes(k)))assert.deepEqual(after[key],before[key],'D04_OWNER_REVISION_ONLY_SOURCE_AND_TWO_PROTECTIONS');
+ assert.deepEqual(Object.keys(bp).sort(),Object.keys(ap).sort());assert.ok(Object.hasOwn(bp,'currentMaterialSourceSHA'));
+ for(const key of Object.keys(bp).filter(k=>k!=='currentMaterialSourceSHA'))assert.deepEqual(ap[key],bp[key],'D04_OWNER_REVISION_ONLY_SOURCE_AND_TWO_PROTECTIONS');
+ assert.ok(originalPlan.work_id===CHECKPOINT_RECOVERY_WORK&&originalPlan.proposal?.hash===CHECKPOINT_ADOPTION_SHA256&&Object.keys(originalPlan.source_manifest??{}).length===22,'D04_OWNER_REVISION_ORIGINAL_SOURCE_AND_SCOPE');
+ for(const key of ['source_sha','source_manifest','rules','scope','parent_work','agent_team','source_extension'])assert.deepEqual(before[key]??null,originalPlan[key]??null,'D04_OWNER_REVISION_ORIGINAL_SOURCE_AND_SCOPE');
+ const current=primaryState.checkpoint_definition_migration?.mathRenderingRepair;
+ validateMathRenderingRepairRecord(current,{epoch});
+ assert.ok(primaryState.plan?.work_id===CP_PRIMARY&&primaryState.candidate_sha===current.candidateAfterSHA&&primaryState.definition_hash===current.definitionHash,'D04_OWNER_REVISION_CURRENT_PRIMARY');
+ assert.ok(Array.isArray(mathRecords)&&mathRecords.length,'D04_OWNER_REVISION_ACTUAL_MATH_HISTORY');assert.deepEqual(mathRecords.at(-1),current,'D04_OWNER_REVISION_ACTUAL_MATH_HISTORY');
+ let previous=null;const history=[];
+ for(const record of mathRecords){validateMathRenderingRepairRecord(record,{epoch});validateMathRenderingRepairContinuation(previous,record,history);previous=record;history.push(record);}
+ const method=primaryState.informed_review_method??{},body=method.authority??{};
+ assert.ok((Object.hasOwn(method,'revoked')?method.revoked:false)===false&&cpPlain(body)&&method.authorityRef===nativeDigest(body)&&body.schemaVersion==='qf01-informed-rereview-authority/1'&&body.proposalSHA256===INFORMED_REVIEW_PROPOSAL_SHA256&&body.work===CP_PRIMARY&&body.checkpointEpoch===epoch&&body.currentSourceSHA===current.candidateAfterSHA&&body.candidateManifestSHA256===nativeDigest(primaryState.candidate_manifest??{})&&body.definitionHash===current.definitionHash&&body.core?.definitionHash===current.definitionHash&&body.implementationHash===current.implementationHash&&body.evidenceRefs?.includes(current.evidenceRef)&&['independent','sourceFirst','firstPass'].every(k=>body[k]===false),'D04_OWNER_REVISION_CURRENT_AUTHORITY');
+ const wrapper=ownerState.informed_technical_candidate_reconciliation??{},proof=wrapper.proof??{};
+ assert.ok(cpPlain(proof)&&wrapper.proofRef===nativeDigest(proof)&&proof.schemaVersion==='qf01-informed-technical-candidate-proof/1'&&proof.work===CHECKPOINT_RECOVERY_WORK&&proof.parentWork===CP_PRIMARY&&proof.proposalSHA256===MATH_RENDERING_PROPOSAL_SHA256&&proof.checkpointEpoch===epoch&&proof.planSHA256===nativeDigest(before)&&proof.originalSourceSHA===originalPlan.source_sha&&proof.sourceManifestSHA256===nativeDigest(originalPlan.source_manifest??{})&&proof.candidateSHA===ownerState.candidate_sha&&proof.candidateSHA===bp.currentMaterialSourceSHA&&canonical(proof.candidateManifest)===canonical(ownerState.candidate_manifest)&&proof.writesExecuted===false&&proof.oldResultsTransferred===false,'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF');
+ const oldMath=proof.gitProof?.currentMaterialGitProof?.mathRenderingRepair,matches=mathRecords.filter(r=>canonical(r)===canonical(oldMath));
+ assert.ok(matches.length===1&&oldMath.candidateAfterSHA===ownerState.candidate_sha&&proof.core?.definitionHash===oldMath.definitionHash&&proof.implementationHash===oldMath.implementationHash,'D04_OWNER_REVISION_OLD_SOURCE_HISTORY');
+ const original=originalPlan.protected_manifest??{},old=before.protected_manifest??{},next=after.protected_manifest??{};
+ assert.ok(cpPlain(old)&&cpPlain(next)&&Object.keys(original).length===418,'D04_OWNER_REVISION_418_PROTECTIONS');assert.deepEqual(Object.keys(old).sort(),Object.keys(original).sort());assert.deepEqual(Object.keys(next).sort(),Object.keys(original).sort());
+ for(const p of NEARBY_REPAIR_PRODUCT_PATHS)assert.ok(original[p]===CP_REPAIRS[p]&&old[p]===oldMath.afterRepair[p]&&next[p]===current.afterRepair[p],'D04_OWNER_REVISION_418_PROTECTIONS');
+ for(const p of Object.keys(original).filter(p=>!NEARBY_REPAIR_PRODUCT_PATHS.includes(p)))assert.ok(old[p]===next[p]&&old[p]===original[p],'D04_OWNER_REVISION_418_PROTECTIONS');
+ assert.ok(ap.currentMaterialSourceSHA===primaryState.candidate_sha&&ap.currentMaterialSourceSHA!==bp.currentMaterialSourceSHA,'D04_OWNER_REVISION_CURRENT_SOURCE_REQUIRED');
+ return structuredClone(after);
+}
+export function validateCheckpointIntentClosureFields(kind,payload){
+ if(kind==='patch_intent')assert.ok(!Object.hasOwn(payload,'completed'),'CHECKPOINT_INTENT_NOT_COMPLETION_EVENT');
+ if(kind==='external_intent')assert.ok(!Object.hasOwn(payload,'outcome'),'CHECKPOINT_INTENT_NOT_COMPLETION_EVENT');
+ return true;
+}
 export function currentMathRenderingRepair(state){
  const r=state.checkpoint_definition_migration?.mathRenderingRepair;if(!r)return null;
  validateMathRenderingRepairRecord(r,{epoch:state.checkpoint_definition_migration.checkpointEpoch});preservedNearbyRepair(state);
@@ -556,6 +595,7 @@ export function replayCheckpointExport({originSeed,originContractRaw,exportEnvel
  for(const event of chain.events){
   assert.ok([CP_PRIMARY,CHECKPOINT_RECOVERY_WORK,CHECKPOINT_PUBLISHER_WORK].includes(event.work),'CHECKPOINT_SUFFIX_WORK_SCOPE');
   const p=structuredClone(event.payload),w=event.work,k=event.kind;
+  validateCheckpointIntentClosureFields(k,p);
   assert.ok(p.mathRenderingRepair==null||(k==='checkpoint_definition_migrated'&&w===CP_PRIMARY&&cpPlain(p.mathRenderingRepair)),'D04_MIGRATION_EVENT_SCOPE');
   if(k==='checkpoint_recovered'){
    assert.equal(event.seq,CHECKPOINT_ORIGIN_ANCHOR.events+1);assert.equal(w,CP_PRIMARY);assert.equal(bootstrapped,false);assert.equal(p.schemaVersion,'qf01-checkpoint-recovered/1');
@@ -597,7 +637,10 @@ export function replayCheckpointExport({originSeed,originContractRaw,exportEnvel
   }
   if(['materialization_bound','team_policy_adopted','version_transition_prepared','version_transition_reconciled','migration_verified','correction_adopted','approval_coverage_migrated'].includes(k))assert.fail('CHECKPOINT_UNAPPROVED_PLAN_OR_CORE_CHANGE:'+k);
   switch(k){
-   case 'revised':assert.equal(w,CHECKPOINT_RECOVERY_WORK);assert.equal(p.plan.proposal.hash,activeMathRepair?MATH_RENDERING_PROPOSAL_SHA256:activeRepair?NEARBY_REPAIR_PROPOSAL_SHA256:INFORMED_REVIEW_PROPOSAL_SHA256);validateProductOwnerProtection(p.plan.protected_manifest,chain.events.find(e=>e.work===w&&e.kind==='opened').payload.plan.protected_manifest,activeRepair,activeMathRepair);for(const key of ['work_id','profile','command','source_sha','source_manifest','rules','parent_work'])assert.deepEqual(p.plan[key],s.plan[key]);s.plan=p.plan;s.revised=true;s.closed=null;break;
+   case 'revised':{assert.equal(w,CHECKPOINT_RECOVERY_WORK);const originalPlan=chain.events.find(e=>e.work===w&&e.kind==='opened').payload.plan;
+    assert.equal(p.plan.proposal.hash,activeMathRepair?MATH_RENDERING_PROPOSAL_SHA256:activeRepair?NEARBY_REPAIR_PROPOSAL_SHA256:INFORMED_REVIEW_PROPOSAL_SHA256);
+    if(p.plan.proposal.hash===s.plan.proposal.hash)validateMathRenderingOwnerRevision(s,states[CP_PRIMARY],p.plan,{originalPlan,mathRecords:mathHistory,epoch:checkpointEpoch});
+    validateProductOwnerProtection(p.plan.protected_manifest,originalPlan.protected_manifest,activeRepair,activeMathRepair);for(const key of ['work_id','profile','command','source_sha','source_manifest','rules','parent_work'])assert.deepEqual(p.plan[key],s.plan[key]);s.plan=p.plan;s.revised=true;s.closed=null;break;}
    case 'definition_migrated':assert.notEqual(w,CP_PRIMARY);assert.equal(p.from,s.definition_hash);assert.equal(p.to,activeCore.definitionHash);assert.ok(p.evidence_refs?.length&&p.evidence_refs.every(ref=>s.evidence[ref]));s.definition_hash=p.to;s.closed=null;break;
    case 'informed_review_method_adopted':assert.equal(w,CP_PRIMARY);assert.deepEqual(Object.keys(p).sort(),['authority','authorityRef']);assert.equal(p.authority.checkpointEpoch,checkpointEpoch);assert.deepEqual(p.authority.core,activeCore);assert.equal(p.authority.implementationHash,activeImplementationHash);validateInformedReviewAuthority({state:s,originState:origin,body:p.authority,authorityRef:p.authorityRef,event,get,history:team});s.informed_review_method=p;s.closed=null;break;
    case 'informed_review_method_revoked':assert.equal(w,CP_PRIMARY);assert.equal(p.expectedHead,event.previous);assert.equal(p.authorityRef,s.informed_review_method?.authorityRef);assert.ok(p.quote?.trim()&&p.reason?.trim()&&p.source_ref?.trim()&&p.verification_level==='conversation_transcribed');s.informed_review_method.revoked=true;s.informed_review_method.revocation=p;s.closed=null;break;

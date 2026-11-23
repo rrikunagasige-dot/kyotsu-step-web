@@ -824,8 +824,29 @@ class InformedReviewMethodTests(unittest.TestCase):
                     expected = self.store.head
                 else:
                     plan = copy.deepcopy(self.owner_before['plan']); plan['scope']['paths'].append('tools/textbook/operations.mjs')
+                    before_head=self.store.head
+                    before_rows=self.store._tail.events()
+                    before_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
+                    opened=next(e for e in before_rows if e['work']==RECOVERY_WORK and e['kind']=='opened')
                     self.rt.append('revised',RECOVERY_WORK,{'plan':plan})
-                    expected = self.store.head
+                    corrupted_rows=self.store._tail.events()
+                    corrupted_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
+                    self.assertEqual(len(corrupted_rows),len(before_rows)+1)
+                    self.assertEqual(len(corrupted_raw),len(before_raw)+1)
+                    self.assertEqual(corrupted_rows[-1]['previous'],before_head)
+                    self.assertEqual(corrupted_rows[-1]['payload']['plan'],plan)
+                    self.assertEqual({name:corrupted_raw[name] for name in before_raw},before_raw)
+                    # The typed suffix now rejects this raw same-adoption
+                    # scope attack before the reconciliation API can inspect it.
+                    with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED'):
+                        _=self.store.head
+                    with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED'):
+                        self.reconcile_owner(expected_head=expected)
+                    self.assertEqual({p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()},corrupted_raw)
+                    self.assertEqual(self.store._tail.head,corrupted_rows[-1]['hash'])
+                    self.assertEqual(self.store.get(opened['payload']['original_snapshot']),self.owner_snapshot['snapshot'])
+                    self.assertEqual(corrupted_rows[-1]['payload']['plan']['source_manifest'],self.owner_before['plan']['source_manifest'])
+                    continue
                 head = self.store.head
                 with self.assertRaises(Rejected):self.reconcile_owner(expected_head=expected)
                 self.assertEqual(self.store.head,head)
@@ -1456,11 +1477,22 @@ class NearbyReviewMethodTests(unittest.TestCase):
         self.prepare_owner();state=self.rt.state(RECOVERY_WORK);changed=copy.deepcopy(state['plan'])
         third=next(p for p in changed['protected_manifest'] if p not in NEARBY_REPAIR_PRODUCT_PATHS)
         changed['protected_manifest'][third]='e'*64
+        before_head=self.store.head;before_rows=self.store._tail.events()
+        before_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
         self.rt.append('revised',RECOVERY_WORK,{'plan':changed,'fixtureKind':'TEST_FIXTURE_ATTACK_NOT_APPROVED_REVISION'})
-        head=self.store.head
-        with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):
+        corrupted_rows=self.store._tail.events()
+        corrupted_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
+        self.assertEqual(len(corrupted_rows),len(before_rows)+1)
+        self.assertEqual(len(corrupted_raw),len(before_raw)+1)
+        self.assertEqual(corrupted_rows[-1]['previous'],before_head)
+        self.assertEqual(corrupted_rows[-1]['payload']['plan'],changed)
+        self.assertEqual({name:corrupted_raw[name] for name in before_raw},before_raw)
+        with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED'):
+            _=self.store.head
+        with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_SAME_ADOPTION_REQUIRED'):
             self.reconcile_owner()
-        self.assertEqual(self.store.head,head)
+        self.assertEqual({p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()},corrupted_raw)
+        self.assertEqual(self.store._tail.head,corrupted_rows[-1]['hash'])
 
 
 class MathRenderingReviewMethodTests(unittest.TestCase):
@@ -1765,10 +1797,21 @@ class MathRenderingOwnerTests(unittest.TestCase):
         self.prepare_owner();plan=copy.deepcopy(self.rt.state(RECOVERY_WORK)['plan'])
         third=next(p for p in plan['protected_manifest'] if p not in MATH_RENDERING_REPAIR_PRODUCT_PATHS)
         plan['protected_manifest'][third]='0'*64
+        before_head=self.store.head;before_rows=self.store._tail.events()
+        before_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
         self.rt.append('revised',RECOVERY_WORK,{'plan':plan,'fixtureKind':'TEST_FIXTURE_UNAPPROVED_PROTECTION_ATTACK'})
-        head=self.store.head
-        with self.assertRaisesRegex(Rejected,'D02_ORIGINAL_TECHNICAL_SOURCE_OR_SCOPE_CHANGED'):self.reconcile()
-        self.assertEqual(self.store.head,head)
+        corrupted_rows=self.store._tail.events()
+        corrupted_raw={p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()}
+        self.assertEqual(len(corrupted_rows),len(before_rows)+1)
+        self.assertEqual(len(corrupted_raw),len(before_raw)+1)
+        self.assertEqual(corrupted_rows[-1]['previous'],before_head)
+        self.assertEqual(corrupted_rows[-1]['payload']['plan'],plan)
+        self.assertEqual({name:corrupted_raw[name] for name in before_raw},before_raw)
+        with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF'):
+            _=self.store.head
+        with self.assertRaisesRegex(CheckpointRejected,'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF'):self.reconcile()
+        self.assertEqual({p.name:p.read_bytes() for p in (self.store.root/'events').iterdir()},corrupted_raw)
+        self.assertEqual(self.store._tail.head,corrupted_rows[-1]['hash'])
 
 
 def math_owner_revision_fixture():

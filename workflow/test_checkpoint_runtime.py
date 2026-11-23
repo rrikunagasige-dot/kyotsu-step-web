@@ -2656,3 +2656,375 @@ class InlineLayoutFindingTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
+
+class CheckpointSourceCITransportCandidateTests(unittest.TestCase):
+    """TEST_FIXTURE transport only; no actual approval/native/CI is generated.
+
+    External definition/runtime statuses, Git, native D06 adoption readers and
+    current authority are boundary doubles. Exact actual production positive
+    requires a new core, actual PUB and real producer QA, none of which exists.
+    Files/hashes/strict JSON/archive rejection and the new loader logic are real.
+    """
+    def setUp(self):
+        import adapters as a
+        import definitions as defs
+        self.a=a
+        self.tmp=tempfile.TemporaryDirectory(prefix='source-ci-TEST_FIXTURE-')
+        self.root=Path(self.tmp.name).resolve()
+        self.addCleanup(self.tmp.cleanup)
+        self.objects={};self.states={};self.events=[];self.head='a'*64
+        self.impl='b'*64;self.core={'definitionHash':defs.DEFINITION_HASH,'files':{'TEST_FIXTURE.py':'c'*64}}
+        self.epoch='d'*64;self.method={'authorityRef':'e'*64}
+        self.oldsha='1'*40;self.newsha='2'*40;self.source='3'*40
+        self.owner=a._SOURCE_CI_CHECKPOINT_OWNER;self.work=FIXED_WORK
+        self.put=lambda value:self._put(value)
+        self.patchers=[]
+        def mocked(target,**kw):
+            p=patch(target,**kw);self.patchers.append(p);p.start();self.addCleanup(p.stop)
+        self.mocked=mocked
+        self.rt=type('ReadOnlyTransportFixture',(),{})()
+        self.rt.root=self.root
+        self.rt.state=lambda work:self.states[work]
+        self.rt.integrity=lambda state:[]
+        self.rt.approval=lambda state:self.user
+        self.rt.input_hash=lambda state,node:digest({'TEST_FIXTURE':state['plan']['work_id'],'node':node['id'],'proposal':state['plan']['proposal']})
+        self.rt.node_status=lambda state,node:'PASSED'
+        store=type('ReadOnlyFixtureStore',(),{})()
+        store.checkpoint_mode=True;store.checkpoint_epoch=self.epoch;store.head=self.head
+        store.get=lambda ref:copy.deepcopy(self.objects[ref])
+        store.state_base=lambda work:copy.deepcopy(self.states[work])
+        self.rt.store=store
+        self.publisher=self.root/'publisher';self.publisher.mkdir()
+        before={p:hashlib.sha256(('TEST_FIXTURE_BEFORE '+p).encode()).hexdigest() for p in a._SOURCE_CI_CHECKPOINT_SEVEN}
+        contract={'authorityVariant':'qf01-checkpoint-recovery/1','sourceSHA':self.source,
+                  'producerBaseSHA':self.oldsha,'publisherBaseSHA':self.oldsha,
+                  'technicalBeforeFiles':before,'publisherBeforeFiles':before,'currentNativeAuthority':{'TEST_FIXTURE_ONLY':True},
+                  'technicalPaths':sorted(a._SOURCE_CI_CHECKPOINT_SEVEN),
+                  'currentSourceFiles':{},'currentPublicFiles':{},'buildConfigFiles':{}}
+        self.after={}
+        self.after_text={}
+        for name in sorted(a._SOURCE_CI_CHECKPOINT_SEVEN):
+            text=json.dumps(contract) if name.endswith('qf01-publish-contract.json') else 'TEST_FIXTURE_AFTER '+name
+            p=self.publisher/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text,encoding='utf-8')
+            self.after[name]=hashlib.sha256(p.read_bytes()).hexdigest();self.after_text[name]=text
+        cache=self.root/'authority.blob';cache.write_bytes(b'TEST_FIXTURE_NOT_ACTUAL_AUTHORITY');cache.chmod(0o444)
+        self.addCleanup(lambda:cache.chmod(0o666))
+        layout={'proposalSHA256':__import__('checkpoint').INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,'evidenceRef':'TEST_FIXTURE_D06','transcriptionSHA256':'f'*64}
+        self.layout=layout
+        r06proof={'candidateSHA':self.source,'work':self.work,'core':self.core,'implementationHash':self.impl,
+                  'reviewMethodAuthorityRef':self.method['authorityRef'],'checkpointEpoch':self.epoch,
+                  'compileInputRef':self.put({'TEST_FIXTURE':'compile-input'}),'compileOutputRef':self.put({'TEST_FIXTURE':'compile-output'}),
+                  'ledgerHead':'a'*64}
+        proofref=self.put(r06proof);resultref=self.put({'verdict':'PASS','checkpoint_candidate_proof_ref':proofref})
+        r06={'node':'R06_PATCH@TEST_FIXTURE','resultRef':resultref,'proofRef':proofref,'compileInputRef':r06proof['compileInputRef'],'compileOutputRef':r06proof['compileOutputRef']}
+        self.policy={'schemaVersion':a._SOURCE_CI_CHECKPOINT_POLICY,'work':self.work,'sourceSHA':self.source,
+          'releaseUnit':'TEST_FIXTURE_QF','definitionHash':defs.DEFINITION_HASH,'implementationHash':self.impl,
+          'checkpointEpoch':self.epoch,'core':self.core,'methodAuthorityRef':self.method['authorityRef'],'r06':r06,
+          'bundleEvidenceID':'TEST_FIXTURE_SOURCE_CI_INPUT','publisherBeforeSHA':self.oldsha,
+          'ownerBeforeManifest':before,'ownerAfterManifest':self.after,'publisherFiles':self.after,
+          'contractSHA256':self.after['tools/release/qf01-publish-contract.json'],'publisherRoot':'publisher','technicalExecutionRoot':'publisher',
+          'materialRoot':'.','coreRoot':'.','sourcePrefix':'','sourceManifest':{},
+          'authorityCache':{'path':'authority.blob','sha256':hashlib.sha256(cache.read_bytes()).hexdigest()},
+          'branch':'TEST_FIXTURE_APPROVED_PUBLISHER_BRANCH','workflow':'.github/workflows/qf01-publisher-g3.yml',
+          'widths':[320,390,430,1440],'counts':{'qfStates':179,'qfImages':179,'retainedStates':2111,'retainedImages':43},
+          'maxBuildBytes':200000000,'maxQABytes':1500000000,'buildArtifactName':'TEST_FIXTURE_BUILD',
+          'qaArtifactName':'TEST_FIXTURE_QA','validatorSHA256':hashlib.sha256(a._SOURCE_CI_CHECKPOINT_VALIDATOR_JS.encode()).hexdigest()}
+        proposal={'hash':layout['proposalSHA256'],'sourceCIPolicy':self.policy,'sourceCIPolicySHA256':digest(self.policy),
+                  'publisherAdoptionBinding':{'schemaVersion':'qf01-checkpoint-publisher-technical-adoption/1',
+                   'proposalSHA256':layout['proposalSHA256'],'evidenceRef':layout['evidenceRef'],'transcriptionSHA256':layout['transcriptionSHA256'],
+                   'materialAuthoritySHA256':digest(contract['currentNativeAuthority']),'publisherBeforeFilesSHA256':digest(before)}}
+        patchbody={'files':[{'path':n,'before_sha256':before[n],'after_sha256':self.after[n],'after_text':self.after_text[n]}for n in sorted(before)]}
+        proposal['patch_hash']=self.put(patchbody)
+        plan={'work_id':self.owner,'parent_work':self.work,'profile':'technical','command':'GOVERNANCE',
+              'scope':{'paths':sorted(before),'preserve':[]},'source_sha':self.oldsha,'source_manifest':before,'rules':{},'proposal':proposal}
+        owner={'plan':plan,'candidate_sha':self.newsha,'candidate_manifest':self.after,'definition_hash':defs.DEFINITION_HASH,
+               'patches':{'TEST_FIXTURE_PATCH':{'completed':True,'node':'T03_BUILD'}},'external':{},'claims':{},'results':{},'evidence':{}}
+        primary={'plan':{'work_id':self.work,'proposal':{'hash':'0'*64},'rules':{},'release_units':[{'id':'TEST_FIXTURE_QF'}]},
+                 'candidate_sha':self.source,'candidate_manifest':{},'definition_hash':defs.DEFINITION_HASH,'patches':{},'external':{},'claims':{},
+                 'release_versions':{'TEST_FIXTURE_QF':self.source},'results':{},'evidence':{}}
+        self.states={self.owner:owner,self.work:primary}
+        self.user={'id':'TEST_FIXTURE_APPROVE','intent':'approve_proposal','proposal_hash':layout['proposalSHA256'],
+            'reply_to':layout['proposalSHA256'],'scope':plan['scope'],'candidate_sha':self.oldsha,
+            'quote':__import__('checkpoint').INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE,
+            'source_ref':'request_user_input_async/'+__import__('checkpoint').INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID,
+            'verification_level':'conversation_transcribed'}
+        t04ref=self.put({'verdict':'PASS','evidence_refs':['TEST_FIXTURE_CURRENT_CI']})
+        t02ref=self.put({'user_event':self.user['id']})
+        for nid in ['S00_RECOVER','S01_ROUTE','T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY']:
+            owner['results'][nid]={'artifact':t02ref if nid=='T02_APPROVAL' else t04ref,'input_hash':self.rt.input_hash(owner,{'id':nid})}
+        primary['results'][r06['node']]={'artifact':resultref,'input_hash':self.rt.input_hash(primary,{'id':r06['node']})}
+        owner['evidence']['TEST_FIXTURE_CURRENT_CI']={'kind':'ci','verification_level':'tool_result_transcribed','data':{
+            'id':42,'status':'completed','conclusion':'success','head_sha':self.newsha,'html_url':'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/42'}}
+        self.events=[{'work':self.owner,'kind':'patch_intent','seq':10,'id':'TEST_FIXTURE_PATCH',
+            'payload':{'node':'T03_BUILD','patch_hash':proposal['patch_hash'],'before':before}},
+            {'work':self.owner,'kind':'patch_applied','seq':11,'payload':{'node':'T03_BUILD','operation':'TEST_FIXTURE_PATCH','after_manifest':self.after}},
+            {'work':self.work,'kind':'checkpoint_candidate_reconciled','seq':12,'previous':r06proof['ledgerHead'],'payload':{'proofRef':proofref}}]
+        inputs={}
+        for name in ['run','artifacts','ledger','manifest','build','qa']:
+            value={'id':42,'run_attempt':1,'head_sha':self.newsha} if name=='run' else {'TEST_FIXTURE':name}
+            raw=json.dumps(value).encode();(self.root/(name+'.json')).write_bytes(raw)
+            inputs[name]={'path':name+'.json','sha256':hashlib.sha256(raw).hexdigest()}
+        self.bundle={'schemaVersion':a._SOURCE_CI_CHECKPOINT_INPUTS,'work':self.work,'sourceSHA':self.source,
+            'definitionHash':defs.DEFINITION_HASH,'implementationHash':self.impl,'checkpointEpoch':self.epoch,
+            'producerSHA':self.newsha,'ciEvidenceRef':'TEST_FIXTURE_CURRENT_CI','inputs':inputs}
+        self.save_bundle()
+        mocked('checkpoint.current_core_identity',return_value=self.core)
+        mocked('checkpoint.current_product_repair_context',return_value={'inlineLayoutRepair':layout,'nearbyRepair':{},'mathRenderingRepair':{},'mixedInlineRepair':{}})
+        mocked('checkpoint.verify_candidate_git',return_value=None)
+        mocked('capabilities.implementation_hash',return_value=self.impl)
+        mocked('team.current_informed_authority',return_value=self.method)
+        mocked('adapters._checkpoint_git_proof',return_value={'TEST_FIXTURE_EXTERNAL_GIT_ONLY':True})
+        mocked('adapters.history_events',side_effect=lambda rt,purpose,work=None:[e for e in self.events if work is None or e['work']==work])
+        mocked('definitions.instantiate',side_effect=lambda plan:({r06['node']:{'id':r06['node'],'stage_kind':'R06_PATCH'}}if plan['work_id']==self.work else {n:{'id':n}for n in owner['results']}))
+
+    def _put(self,value):
+        ref=digest(value);self.objects[ref]=copy.deepcopy(value);return ref
+
+    def save_bundle(self, raw=None):
+        raw=raw if raw is not None else json.dumps(self.bundle).encode()
+        (self.root/'bundle.json').write_bytes(raw)
+        evidence={'id':self.policy['bundleEvidenceID'],'kind':'file','verification_level':'local_execution','source_ref':'TEST_FIXTURE_ACTUAL_INPUT_FILE',
+          'data':{'path':'bundle.json','sha256':hashlib.sha256(raw).hexdigest(),'source_sha':self.source,
+                  'definitionHash':self.core['definitionHash'],'implementationHash':self.impl,'checkpointEpoch':self.epoch}}
+        self.states[self.work]['evidence'][evidence['id']]=evidence
+        self.events=[e for e in self.events if e['kind']!='evidence']+[{'work':self.work,'kind':'evidence','seq':13,'payload':copy.deepcopy(evidence)}]
+
+    def test_private_transport_loader_positive_is_not_real_ci_or_adoption(self):
+        state,p=self.a._sci_checkpoint_load(self.rt,self.work)
+        self.assertEqual(p['runID'],42);self.assertEqual(p['producerSHA'],self.newsha)
+        self.assertEqual(p['schemaVersion'],'qf01-checkpoint-source-ci/1')
+        self.assertEqual(self.rt.store.head,self.head)
+
+    def test_caller_cannot_supply_source_or_receipt(self):
+        for extra in ['sourceSHA','receipt','inputs','runID']:
+            with self.subTest(extra=extra),self.assertRaises(Rejected):
+                self.a.source_ci_verify(self.rt,self.work,{'policy_work':self.owner,extra:'TEST_FIXTURE'})
+
+    def test_stale_or_missing_current_node_rejected(self):
+        for which in ['T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY']:
+            with self.subTest(which=which):
+                before=copy.deepcopy(self.states[self.owner]['results'][which])
+                self.states[self.owner]['results'][which]['input_hash']='0'*64
+                with self.assertRaisesRegex(Rejected,'CURRENT_OWNER_'):
+                    self.a._sci_checkpoint_load(self.rt,self.work)
+                self.states[self.owner]['results'][which]=before
+
+    def test_diagnostic_p13_cannot_be_retagged_as_current_producer_ci(self):
+        run={'id':13,'run_attempt':1,'head_sha':self.newsha,'status':'completed','conclusion':'success'}
+        raw=json.dumps(run).encode();(self.root/'run.json').write_bytes(raw)
+        self.bundle['inputs']['run']['sha256']=hashlib.sha256(raw).hexdigest();self.save_bundle()
+        with self.assertRaisesRegex(Rejected,'API_RUN_NOT_DIAGNOSTIC'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_same_head_successful_code_ci_without_real_qa_archive_is_rejected(self):
+        import zipfile
+        # Current PUB status/head/run all match. The real loader accepts those
+        # identities, but a code-only diagnostic has no actual build/QA ZIP.
+        # Success of a technical CI alone must not become capture acceptance.
+        self.a._sci_checkpoint_load(self.rt,self.work)
+        with patch('adapters._sci_run_pinned_validator')as downstream:
+            with self.assertRaises(zipfile.BadZipFile):
+                self.a._sci_checkpoint_verify(self.rt,self.work)
+            downstream.assert_not_called()
+
+    def test_duplicate_json_with_updated_file_hash_is_rejected(self):
+        self.save_bundle(b'{"schemaVersion":"a","schemaVersion":"b"}')
+        with self.assertRaisesRegex(ValueError,'DUPLICATE_JSON_KEY'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_rehashed_wrong_source_epoch_and_core_cannot_pass(self):
+        for key,value in [('sourceSHA','9'*40),('checkpointEpoch','9'*64),('implementationHash','9'*64)]:
+            with self.subTest(key=key):
+                previous=self.bundle[key];self.bundle[key]=value;self.save_bundle()
+                with self.assertRaisesRegex(Rejected,'BUNDLE_IDENTITY'):
+                    self.a._sci_checkpoint_load(self.rt,self.work)
+                self.bundle[key]=previous;self.save_bundle()
+
+    def test_missing_patch_or_forged_applied_subset_rejected(self):
+        saved=copy.deepcopy(self.events)
+        self.events=[e for e in self.events if e['kind']!='patch_intent']
+        with self.assertRaisesRegex(Rejected,'ONE_ACTUAL_PATCH'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+        self.events=copy.deepcopy(saved)
+        next(e for e in self.events if e['kind']=='patch_applied')['payload']['after_manifest']={}
+        with self.assertRaisesRegex(Rejected,'EXACT_PATCH_SUBSET'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_bundle_without_exact_native_registration_is_rejected(self):
+        self.events=[e for e in self.events if e['kind']!='evidence']
+        with self.assertRaisesRegex(Rejected,'ACTUAL_BUNDLE_EVENT'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_source_ci_stops_if_head_or_policy_changes_after_external_checker(self):
+        state,p=self.a._sci_checkpoint_load(self.rt,self.work)
+        with patch('adapters._sci_checkpoint_strict_inputs'),patch('adapters._sci_verify_bundle',side_effect=lambda *args:(setattr(self.rt.store,'head','9'*64) or {})):
+            with self.assertRaisesRegex(Rejected,'TOCTOU'):
+                self.a._sci_checkpoint_verify(self.rt,self.work)
+
+    def test_strict_archives_reject_duplicate_case_paths_escape_and_json(self):
+        import io,zipfile
+        for names,code in [([('A.json',b'{}'),('a.json',b'{}')],'ARCHIVE_CASE_COLLISION'),
+                           ([('../escape.json',b'{}')],'UNSAFE_PATH'),
+                           ([('same.json',b'{"x":1,"x":2}')],'DUPLICATE_JSON_KEY')]:
+            with self.subTest(code=code):
+                blob=io.BytesIO()
+                with zipfile.ZipFile(blob,'w') as z:
+                    for name,raw in names:z.writestr(name,raw)
+                raw=blob.getvalue();(self.root/'raw.zip').write_bytes(raw)
+                policy={'inputs':{'qa':{'path':'raw.zip','sha256':hashlib.sha256(raw).hexdigest()}},'maxQABytes':100000}
+                with self.assertRaisesRegex((ValueError,Rejected),code):
+                    self.a._sci_checkpoint_strict_inputs(self.root,policy)
+
+    def test_patch_cannot_write_a_preserved_seven_path(self):
+        self.states[self.owner]['plan']['scope']['preserve']=[next(iter(self.after))]
+        with self.assertRaisesRegex(Rejected,'NONEMPTY_PATCH'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_boolean_attempt_and_oversize_bundle_are_not_measurements(self):
+        raw=json.dumps({'id':42,'run_attempt':True,'head_sha':self.newsha}).encode()
+        (self.root/'run.json').write_bytes(raw)
+        self.bundle['inputs']['run']['sha256']=hashlib.sha256(raw).hexdigest();self.save_bundle()
+        with self.assertRaisesRegex(Rejected,'EXACT_RUN_REFERENCE'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+        self.save_bundle(b' '*(1048576+1))
+        with self.assertRaisesRegex(ValueError,'INPUT_SIZE_OR_KIND'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_rehashed_r06_proof_wrong_implementation_still_fails(self):
+        r=self.policy['r06'];oldproof=copy.deepcopy(self.objects[r['proofRef']])
+        oldresult=copy.deepcopy(self.objects[r['resultRef']])
+        oldproof['implementationHash']='9'*64;r['proofRef']=self.put(oldproof)
+        oldresult['checkpoint_candidate_proof_ref']=r['proofRef'];r['resultRef']=self.put(oldresult)
+        self.states[self.work]['results'][r['node']]['artifact']=r['resultRef']
+        op=self.states[self.owner]['plan'];op['proposal']['sourceCIPolicySHA256']=digest(self.policy)
+        for nid,row in self.states[self.owner]['results'].items():row['input_hash']=self.rt.input_hash(self.states[self.owner],{'id':nid})
+        with self.assertRaisesRegex(Rejected,'R06_ARTIFACTS'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_corrupt_zip_crc_and_casefold_file_ancestor_are_rejected(self):
+        import io,zipfile
+        for corrupt in [False,True]:
+            blob=io.BytesIO()
+            with zipfile.ZipFile(blob,'w',compression=zipfile.ZIP_STORED)as z:
+                if corrupt:z.writestr('actual.json',b'{"TEST_FIXTURE":"ORIGINAL"}')
+                else:z.writestr('A',b'x');z.writestr('a/child.json',b'{}')
+            raw=blob.getvalue()
+            if corrupt:raw=raw.replace(b'ORIGINAL',b'MUTATION',1)
+            (self.root/'bad.zip').write_bytes(raw)
+            policy={'inputs':{'qa':{'path':'bad.zip','sha256':hashlib.sha256(raw).hexdigest()}},'maxQABytes':100000}
+            with self.assertRaises((ValueError,Rejected,zipfile.BadZipFile)):
+                self.a._sci_checkpoint_strict_inputs(self.root,policy)
+
+    def test_technical_execution_root_is_not_assumed_to_be_primary_root(self):
+        # A third, real directory models the approved execution root separately
+        # from both primary app bytes and actual producer files.
+        execution=self.root/'technical-execution';execution.mkdir()
+        for name in self.after:
+            target=execution/name;target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes((self.publisher/name).read_bytes())
+        self.policy['technicalExecutionRoot']='technical-execution'
+        self.states[self.owner]['plan']['proposal']['sourceCIPolicySHA256']=digest(self.policy)
+        for nid,row in self.states[self.owner]['results'].items():row['input_hash']=self.rt.input_hash(self.states[self.owner],{'id':nid})
+        self.a._sci_checkpoint_load(self.rt,self.work)
+        name=next(n for n in self.after if not n.endswith('.json'))
+        (execution/name).write_text('TEST_FIXTURE_MUTATION',encoding='utf-8')
+        with self.assertRaisesRegex(Rejected,'TECHNICAL_EXECUTION_BYTES'):
+            self.a._sci_checkpoint_load(self.rt,self.work)
+
+    def test_current_seven_closure_can_have_one_nonempty_changed_path(self):
+        before=self.policy['ownerBeforeManifest'];name='tools/release/qf01-publish-contract.json'
+        for n in before:
+            if n!=name:before[n]=self.after[n]
+        contract=json.loads((self.publisher/name).read_text(encoding='utf-8'))
+        contract['technicalBeforeFiles']=contract['publisherBeforeFiles']=before
+        raw=json.dumps(contract).encode();(self.publisher/name).write_bytes(raw)
+        self.after[name]=hashlib.sha256(raw).hexdigest();self.policy['contractSHA256']=self.after[name]
+        self.policy['publisherFiles']=self.after
+        plan=self.states[self.owner]['plan'];plan['proposal']['publisherAdoptionBinding']['publisherBeforeFilesSHA256']=digest(before)
+        patchbody={'files':[{'path':name,'before_sha256':before[name],'after_sha256':self.after[name],'after_text':raw.decode()}]}
+        ref=self.put(patchbody);plan['proposal']['patch_hash']=ref;plan['proposal']['sourceCIPolicySHA256']=digest(self.policy)
+        intent=next(e for e in self.events if e['kind']=='patch_intent');intent['payload']['patch_hash']=ref;intent['payload']['before']={name:before[name]}
+        next(e for e in self.events if e['kind']=='patch_applied')['payload']['after_manifest']={name:self.after[name]}
+        for nid,row in self.states[self.owner]['results'].items():row['input_hash']=self.rt.input_hash(self.states[self.owner],{'id':nid})
+        state,p=self.a._sci_checkpoint_load(self.rt,self.work)
+        self.assertEqual(len(p['ownerAfterManifest']),7)
+
+    def test_fixed_validator_is_written_as_exact_utf8_bytes_without_crlf_translation(self):
+        _,p=self.a._sci_checkpoint_load(self.rt,self.work)
+        def external_boundary(command,**kwargs):
+            self.assertEqual(Path(command[1]).read_bytes(),self.a._SOURCE_CI_CHECKPOINT_VALIDATOR_JS.encode('utf-8'))
+            config=json.loads(Path(command[2]).read_text(encoding='utf-8'))
+            self.assertEqual(config['publisherSHA'],self.newsha)
+            return type('TEST_FIXTURE_EXTERNAL_NODE_RESULT',(),{'returncode':0,'stdout':json.dumps({
+                'status':'PASS_PRODUCER_AND_RAW_QA','runID':'42','attempt':1,'publisherSHA':self.newsha}),'stderr':''})()
+        inputs={key:self.root/value['path']for key,value in p['inputs'].items()}
+        with patch('adapters.subprocess.run',side_effect=external_boundary):
+            self.a._sci_run_pinned_validator(self.root,p,inputs,{}, {})
+
+    def complete_synthetic_six_inputs(self,wrong_receipt_source=False):
+        # Complete Python transport shape, not a visual QA oracle. All rendered
+        # states/images are visibly named TEST_FIXTURE. External Node semantics
+        # remain a separate explicit boundary double in the two tests below.
+        import io,zipfile,base64
+        h=lambda b:hashlib.sha256(b).hexdigest()
+        rawjson=lambda v:json.dumps(v,separators=(',',':')).encode()
+        def archive(entries):
+            b=io.BytesIO()
+            with zipfile.ZipFile(b,'w',compression=zipfile.ZIP_DEFLATED)as z:
+                for name,raw in entries.items():z.writestr(name,raw)
+            return b.getvalue()
+        manifest={'sourceSHA':self.source,'publisherSHA':self.newsha,'buildRunID':'42','attempt':1,
+                  'contractSHA256':self.policy['contractSHA256'],'publisherFiles':self.after,'files':{'index.html':h(b'TEST_FIXTURE_ONLY_NOT_AN_APP')}}
+        manifest_raw=rawjson(manifest)
+        build=archive({'material/dist/index.html':b'TEST_FIXTURE_ONLY_NOT_AN_APP','sealed/DIST_MANIFEST.json':manifest_raw})
+        png=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a5YkAAAAASUVORK5CYII=')
+        qa={};receipts=[];receipt_files={}
+        for width in [320,390,430,1440]:
+            hashes={}
+            for kind,folder,states,images in [('qf','qf01',179,179),('retained','w051-width',2111,43)]:
+                prefix=str(width)+'/qf01-qa/'+folder+'/'
+                report={'sourceSHA':self.source,'TEST_FIXTURE_ONLY':True,'states':[],'images':[]}
+                for n in range(states):
+                    name='states/TEST_FIXTURE_'+str(n)+'.json';raw=rawjson({'TEST_FIXTURE_ONLY':True,'index':n,'width':width})
+                    qa[prefix+name]=raw;report['states'].append({'file':name,'sha256':h(raw)})
+                for n in range(images):
+                    name='images/TEST_FIXTURE_'+str(n)+'.png';qa[prefix+name]=png
+                    report['images'].append({'file':name,'sha256':h(png)})
+                raw=rawjson(report);qa[prefix+'REPORT.json']=raw;hashes[kind]=h(raw)
+            receipt={'sourceSHA':'9'*40 if wrong_receipt_source and width==320 else self.source,
+                     'publisherSHA':self.newsha,'width':width,'runID':'42','attempt':1,'status':'PASS',
+                     'reportHashes':hashes,'boundedInputHashes':{}}
+            raw=rawjson(receipt);qa[str(width)+'/QA_RECEIPT.json']=raw;receipts.append(receipt);receipt_files[str(width)]=h(raw)
+        qa_raw=archive(qa)
+        repository={'id':1391122224,'full_name':'rrikunagasige-dot/kyotsu-step-web'}
+        run={'repository':repository,'id':42,'run_attempt':1,'head_sha':self.newsha,'head_branch':self.policy['branch'],
+             'path':self.policy['workflow'],'event':'push','status':'completed','conclusion':'success'}
+        artifacts=[];projections={}
+        for role,n,blob in [('build',101,build),('qa',102,qa_raw)]:
+            item={'id':n,'name':self.policy[role+'ArtifactName'],'digest':'sha256:'+h(blob),'size_in_bytes':len(blob),'expired':False,
+                  'workflow_run':{'id':42,'head_sha':self.newsha,'repository_id':1391122224,'head_repository_id':1391122224,'head_branch':self.policy['branch']}}
+            artifacts.append(item);projections[role]={'id':n,'name':item['name'],'digest':item['digest']}
+        ledger={'sourceSHA':self.source,'publisherSHA':self.newsha,'runID':'42','attempt':1,'distManifestSHA256':h(manifest_raw),
+                'receipts':receipts,'receiptFiles':receipt_files,'buildArtifact':projections['build'],'qaArtifact':projections['qa']}
+        six={'run':rawjson(run),'artifacts':rawjson({'artifacts':artifacts}),'ledger':rawjson(ledger),'manifest':manifest_raw,'build':build,'qa':qa_raw}
+        for key,raw in six.items():
+            filename='FULL_TEST_FIXTURE_'+key+('.zip'if key in ('build','qa')else'.json')
+            (self.root/filename).write_bytes(raw);self.bundle['inputs'][key]={'path':filename,'sha256':h(raw)}
+        self.save_bundle()
+
+    def test_complete_six_input_factory_runs_real_python_guards_before_external_node_boundary(self):
+        self.complete_synthetic_six_inputs()
+        with patch('adapters._sci_run_pinned_validator')as node_boundary:
+            result=self.a._sci_checkpoint_verify(self.rt,self.work)
+            node_boundary.assert_called_once()
+        self.assertEqual(result['reports'],8);self.assertEqual(len(result['images']),888)
+        self.assertEqual(result['schemaVersion'],'qf01-checkpoint-source-ci-proof/1')
+        self.assertEqual(self.rt.store.head,self.head)
+
+    def test_rehashed_complete_bundle_wrong_receipt_source_is_rejected_before_node(self):
+        self.complete_synthetic_six_inputs(wrong_receipt_source=True)
+        with patch('adapters._sci_run_pinned_validator')as node_boundary:
+            with self.assertRaisesRegex(ValueError,'RECEIPT_SOURCE_PRODUCER'):
+                self.a._sci_checkpoint_verify(self.rt,self.work)
+            node_boundary.assert_not_called()

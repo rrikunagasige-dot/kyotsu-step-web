@@ -340,6 +340,7 @@ def _sci_load_r3(rt,work):
 
 
 def _sci_load(rt,work,policy_work=None):
+    if policy_work==_SOURCE_CI_CHECKPOINT_OWNER:return _sci_checkpoint_load(rt,work)
     if policy_work==_SOURCE_CI_R3_OWNER:return _sci_load_r3(rt,work)
     need(policy_work in (None,_SOURCE_CI_OWNER),'source_ci unregistered policy owner')
     from definitions import DEFINITION_HASH, instantiate
@@ -422,7 +423,8 @@ def _sci_verify_publisher_closure(root,policy):
         _sci_need(_sci_hash_file(path,8_000_000)==h, 'PUBLISHER_CLOSURE_BYTES_CHANGED')
 
 def _sci_run_pinned_validator(root,policy,inputs,build,qa):
-    validator=_SOURCE_CI_R3_VALIDATOR_JS if policy.get('schemaVersion')=='qf01-r3-source-ci/1' else _SOURCE_CI_VALIDATOR_JS
+    validator=(_SOURCE_CI_CHECKPOINT_VALIDATOR_JS if policy.get('schemaVersion')=='qf01-checkpoint-source-ci/1' else
+               _SOURCE_CI_R3_VALIDATOR_JS if policy.get('schemaVersion')=='qf01-r3-source-ci/1' else _SOURCE_CI_VALIDATOR_JS)
     _sci_need(_sci_sha_bytes(validator.encode())==policy['validatorSHA256'], 'PINNED_VALIDATOR')
     publisher=(root/_sci_safe(policy['publisherRoot'])).resolve();_sci_need(publisher.is_relative_to(root), 'PUBLISHER_ROOT_ESCAPE')
     # Entire seven-file publisher closure is fixed; imported browser/adapter cannot drift.
@@ -434,7 +436,9 @@ def _sci_run_pinned_validator(root,policy,inputs,build,qa):
     # Only temporary extraction and fixed verification subprocesses; no build/browser/deploy.
     with tempfile.TemporaryDirectory(prefix='source-ci-verify-') as temp:
         base=pathlib.Path(temp)
-        runner=base/'source_ci_validate.mjs';runner.write_text(validator)
+        runner=base/'source_ci_validate.mjs'
+        if policy.get('schemaVersion')=='qf01-checkpoint-source-ci/1':runner.write_bytes(validator.encode('utf-8'))
+        else:runner.write_text(validator)
         for folder,entries in [('build',build),('qa',qa)]:
             for name,blob in entries.items():
                 target=base/folder/_sci_safe(name);target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob)
@@ -442,6 +446,8 @@ def _sci_run_pinned_validator(root,policy,inputs,build,qa):
                 'run':str(inputs['run']),'artifacts':str(inputs['artifacts']),'ledger':str(inputs['ledger']),
                 'buildArchive':str(inputs['build']),'qaArchive':str(inputs['qa']),
                 'publisherSHA':policy['producerSHA'],'runID':str(policy['runID']),'attempt':policy['attempt']}
+        if policy.get('schemaVersion')=='qf01-checkpoint-source-ci/1':
+            config.update(materialRoot=str(_sci_checkpoint_root(root,policy['materialRoot'])),coreRoot=str(_sci_checkpoint_root(root,policy['coreRoot'])),authorityCache=str(_sci_checkpoint_root(root,policy['authorityCache']['path'])),policy=policy)
         if policy.get('schemaVersion')=='qf01-r3-source-ci/1':
             config.update(materialRoot=str(_sci_r3_local(root,policy['materialRoot'])),coreRoot=str(_sci_r3_local(root,policy['coreRoot'])),authorityCache=str(_sci_r3_local(root,policy['authorityCache']['path'])))
         config_path=base/'config.json';config_path.write_text(json.dumps(config))
@@ -452,6 +458,8 @@ def _sci_run_pinned_validator(root,policy,inputs,build,qa):
         _sci_need(result=={'status':'PASS_PRODUCER_AND_RAW_QA','runID':str(policy['runID']),'attempt':policy['attempt'],'publisherSHA':policy['producerSHA']}, 'VALIDATOR_RESULT_BINDING')
 
 def source_ci_verify(rt,work,data):
+    if isinstance(data,dict) and data=={'policy_work':_SOURCE_CI_CHECKPOINT_OWNER}:
+        return _sci_checkpoint_verify(rt,work)
     need(isinstance(data,dict) and set(data)=={'policy_work'} and data['policy_work'] in (_SOURCE_CI_OWNER,_SOURCE_CI_R3_OWNER), 'source_ci caller cannot supply source/policy/receipt')
     owner_work=data['policy_work']
     try:
@@ -1597,3 +1605,313 @@ def reconcile_checkpoint_candidate(rt,work,node_id,token,*,owner_result_refs,com
         'schemaVersion':_CHECKPOINT_CANDIDATE_SCHEMA,'proofRef':reference,'node':node_id,
         'inputHash':proof['inputHash'],'claimTokenSHA256':proof['claimTokenSHA256']})
     return {'proofRef':reference,'eventHash':event['hash'],'proof':proof}
+
+
+# Private candidate: checkpoint source-backed CI transport. No local_capture
+# relaxation, synthetic production receipts, browser or publication is performed.
+_SOURCE_CI_CHECKPOINT_OWNER = 'W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+_SOURCE_CI_CHECKPOINT_POLICY = 'qf01-checkpoint-source-ci-policy/1'
+_SOURCE_CI_CHECKPOINT_INPUTS = 'qf01-checkpoint-source-ci-inputs/1'
+_SOURCE_CI_CHECKPOINT_SEVEN = frozenset((
+    '.github/workflows/qf01-publisher-g3.yml',
+    'tools/release/qf01-publish-contract.json',
+    'tools/release/qf01-publish-check.mjs',
+    'tools/release/qf01-publish-check.test.mjs',
+    'tools/release/qf01-retained-adapters.mjs',
+    'tools/release/qf01-retained-adapters.test.mjs',
+    'tools/release/qf01-browser.mjs'))
+_SOURCE_CI_CHECKPOINT_POLICY_FIELDS = frozenset((
+    'schemaVersion','work','sourceSHA','releaseUnit','definitionHash',
+    'implementationHash','checkpointEpoch','core','methodAuthorityRef','r06',
+    'bundleEvidenceID','publisherBeforeSHA','ownerBeforeManifest','ownerAfterManifest',
+    'publisherFiles','contractSHA256','publisherRoot','technicalExecutionRoot','materialRoot','coreRoot',
+    'sourcePrefix','sourceManifest','authorityCache','branch','workflow','widths',
+    'counts','maxBuildBytes','maxQABytes','buildArtifactName','qaArtifactName','validatorSHA256'))
+
+
+def _sci_checkpoint_root(root, name):
+    # '.' means this exact Runtime root, not an arbitrary caller-supplied path.
+    value=pathlib.Path(root).resolve() if name == '.' else _sci_r3_local(pathlib.Path(root).resolve(),name)
+    _sci_checkpoint_no_alias(root,value)
+    return value
+
+
+def _sci_checkpoint_no_alias(root,path):
+    root=pathlib.Path(root).resolve();path=pathlib.Path(path).absolute()
+    need(path.is_relative_to(root) and path.resolve()==path,'CHECKPOINT_SOURCE_CI_PATH_ALIAS')
+    need(not any(p.is_symlink() or getattr(p,'is_junction',lambda:False)()
+         for p in [path,*path.parents] if p.is_relative_to(root)), 'CHECKPOINT_SOURCE_CI_PATH_LINK')
+
+
+def _sci_checkpoint_state_barrier(rt, work, state, *, check_integrity=True):
+    if check_integrity:need(not rt.integrity(state), 'CHECKPOINT_SOURCE_CI_CURRENT_INTEGRITY')
+    need(not state.get('paused') and not any(not p.get('completed') for p in state.get('patches',{}).values())
+         and not any(not p.get('outcome') for p in state.get('external',{}).values()),
+         'CHECKPOINT_SOURCE_CI_UNFINISHED_OPERATION')
+
+
+def _sci_checkpoint_load(rt, work):
+    from checkpoint import (FIXED_WORK, FIXED_CONTRACT_SHA256, current_core_identity,
+                            current_product_repair_context, strict_json, read_regular,
+                            verify_candidate_git, INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+                            INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE,
+                            INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID)
+    from definitions import instantiate, DEFINITION_HASH
+    from capabilities import implementation_hash
+    from team import current_informed_authority
+    need(getattr(rt.store,'checkpoint_mode',False) and work==FIXED_WORK,
+         'CHECKPOINT_SOURCE_CI_EXACT_WORK')
+    head=rt.store.head
+    state=rt.state(work);owner=rt.state(_SOURCE_CI_CHECKPOINT_OWNER);op=owner['plan']
+    _sci_checkpoint_state_barrier(rt,work,state)
+    _sci_checkpoint_state_barrier(rt,_SOURCE_CI_CHECKPOINT_OWNER,owner,check_integrity=False)
+    need(op.get('work_id')==_SOURCE_CI_CHECKPOINT_OWNER and op.get('parent_work')==work
+         and op.get('profile')=='technical' and op.get('command')=='GOVERNANCE'
+         and not op.get('workflow_version') and not op.get('simulation'),
+         'CHECKPOINT_SOURCE_CI_REAL_PUBLISHER_OWNER')
+    need(op.get('proposal',{}).get('hash')==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+         'CHECKPOINT_SOURCE_CI_D06_TECHNICAL_APPROVAL')
+    policy=op['proposal'].get('sourceCIPolicy')
+    need(isinstance(policy,dict) and set(policy)==_SOURCE_CI_CHECKPOINT_POLICY_FIELDS
+         and policy.get('schemaVersion')==_SOURCE_CI_CHECKPOINT_POLICY,
+         'CHECKPOINT_SOURCE_CI_STATIC_POLICY_FIELDS')
+    need(op['proposal'].get('sourceCIPolicySHA256')==digest(policy),
+         'CHECKPOINT_SOURCE_CI_STATIC_POLICY_DIGEST')
+    need(policy['work']==work and policy['sourceSHA']==state['candidate_sha']
+         and policy['checkpointEpoch']==rt.store.checkpoint_epoch,
+         'CHECKPOINT_SOURCE_CI_CURRENT_SOURCE_EPOCH')
+    core=current_core_identity();implementation=implementation_hash(rt)
+    need(core==policy['core'] and core['definitionHash']==DEFINITION_HASH
+         ==policy['definitionHash']==state['definition_hash']==owner['definition_hash']
+         and implementation==policy['implementationHash'], 'CHECKPOINT_SOURCE_CI_CURRENT_CORE')
+    method=current_informed_authority(rt,work,state)
+    need(method and method['authorityRef']==policy['methodAuthorityRef'],
+         'CHECKPOINT_SOURCE_CI_ACTIVE_AUTHORITY')
+    repair=current_product_repair_context(rt,state);layout=repair['inlineLayoutRepair']
+    need(layout and layout['proposalSHA256']==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+         'CHECKPOINT_SOURCE_CI_ACTUAL_D06')
+    release=policy['releaseUnit']
+    need(release in [u['id'] for u in state['plan']['release_units']]
+         and state['release_versions'].get(release)==state['candidate_sha'],
+         'CHECKPOINT_SOURCE_CI_CURRENT_RELEASE')
+    need(op['rules']==state['plan']['rules'], 'CHECKPOINT_SOURCE_CI_CURRENT_RULES')
+    seven=_SOURCE_CI_CHECKPOINT_SEVEN
+    before,after=policy['ownerBeforeManifest'],policy['ownerAfterManifest']
+    need(set(op['scope']['paths'])==seven and len(op['scope']['paths'])==7
+         and set(before)==set(after)==set(policy['publisherFiles'])==seven
+         and op['source_manifest']==before and owner['candidate_manifest']==after==policy['publisherFiles']
+         and op['source_sha']==policy['publisherBeforeSHA']
+         and owner['candidate_sha']!=op['source_sha'] and owner['candidate_sha']!=state['candidate_sha'],
+         'CHECKPOINT_SOURCE_CI_EXACT_SEVEN_CLOSURE')
+    changed={p for p in seven if before[p]!=after[p]}
+    need(changed and all(in_scope(p,op['scope']) for p in changed),'CHECKPOINT_SOURCE_CI_NONEMPTY_PATCH')
+    nodes=instantiate(op)
+    for nid in ('S00_RECOVER','S01_ROUTE','T01_ANALYSIS','T02_APPROVAL','T03_BUILD','T04_VERIFY'):
+        need(rt.node_status(owner,nodes[nid])=='PASSED'
+             and owner['results'][nid]['input_hash']==rt.input_hash(owner,nodes[nid]),
+             'CHECKPOINT_SOURCE_CI_CURRENT_OWNER_'+nid)
+    user=rt.approval(owner);approved=rt.store.get(owner['results']['T02_APPROVAL']['artifact'])
+    need(user and approved.get('user_event')==user.get('id')
+         and user.get('intent')=='approve_proposal' and user.get('proposal_hash')==op['proposal']['hash']
+         and user.get('reply_to')==op['proposal']['hash'] and user.get('scope')==op['scope']
+         and user.get('candidate_sha')==op['source_sha']
+         and user.get('quote')==INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE
+         and user.get('source_ref')=='request_user_input_async/'+INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID
+         and user.get('verification_level')=='conversation_transcribed',
+         'CHECKPOINT_SOURCE_CI_REAL_D06_USER')
+    publisher=_sci_checkpoint_root(rt.root,policy['publisherRoot'])
+    execution=_sci_checkpoint_root(rt.root,policy['technicalExecutionRoot'])
+    material=_sci_checkpoint_root(rt.root,policy['materialRoot'])
+    core_root=_sci_checkpoint_root(rt.root,policy['coreRoot'])
+    need(material==pathlib.Path(rt.root).resolve() and core_root==material,
+         'CHECKPOINT_SOURCE_CI_ACTUAL_PRIMARY_ROOT')
+    need(manifest(publisher,seven)==after,'CHECKPOINT_SOURCE_CI_PUBLISHER_AFTER_BYTES')
+    execution_expected={}
+    for mapping in (op.get('protected_manifest',{}),op['rules'],owner['candidate_manifest']):
+        for name,value in mapping.items():
+            need(name not in execution_expected or execution_expected[name]==value,
+                 'CHECKPOINT_SOURCE_CI_EXECUTION_MANIFEST_CONFLICT')
+            execution_expected[name]=value
+            _sci_checkpoint_no_alias(rt.root,execution/_sci_safe(name))
+    need(manifest(execution,execution_expected)==execution_expected,
+         'CHECKPOINT_SOURCE_CI_TECHNICAL_EXECUTION_BYTES')
+    for name in seven:_sci_checkpoint_no_alias(rt.root,publisher/name)
+    for name in policy['sourceManifest']:_sci_checkpoint_no_alias(rt.root,pathlib.Path(rt.root)/_sci_safe(name))
+    contract_raw=read_regular(publisher/'tools/release/qf01-publish-contract.json',8_000_000)
+    need(_sci_sha_bytes(contract_raw)==policy['contractSHA256']==after['tools/release/qf01-publish-contract.json'],
+         'CHECKPOINT_SOURCE_CI_CONTRACT_BYTES')
+    contract=strict_json(contract_raw)
+    need(contract.get('authorityVariant')=='qf01-checkpoint-recovery/1'
+         and contract.get('sourceSHA')==state['candidate_sha']
+         and contract.get('producerBaseSHA')==contract.get('publisherBaseSHA')==op['source_sha']
+         and contract.get('technicalBeforeFiles')==contract.get('publisherBeforeFiles')==before,
+         'CHECKPOINT_SOURCE_CI_CHECKPOINT_CONTRACT')
+    adoption={'schemaVersion':'qf01-checkpoint-publisher-technical-adoption/1',
+              'proposalSHA256':INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+              'evidenceRef':layout['evidenceRef'],'transcriptionSHA256':layout['transcriptionSHA256'],
+              'materialAuthoritySHA256':digest(contract['currentNativeAuthority']),
+              'publisherBeforeFilesSHA256':digest(before)}
+    need(op['proposal'].get('publisherAdoptionBinding')==adoption,
+         'CHECKPOINT_SOURCE_CI_TECHNICAL_ADOPTION_BINDING')
+    history=history_events(rt,'complete',_SOURCE_CI_CHECKPOINT_OWNER)
+    intents=[e for e in history if e['kind']=='patch_intent']
+    applied=[e for e in history if e['kind']=='patch_applied']
+    need(len(intents)==len(applied)==len(owner['patches'])==1,
+         'CHECKPOINT_SOURCE_CI_ONE_ACTUAL_PATCH')
+    intent,applied=intents[0],applied[0]
+    patch=rt.store.get(intent['payload']['patch_hash'])
+    need(intent['payload']['node']==applied['payload']['node']=='T03_BUILD'
+         and applied['payload']['operation']==intent['id'] and intent['seq']<applied['seq']
+         and op['proposal'].get('patch_hash')==digest(patch)==intent['payload']['patch_hash']
+         and all(p.get('completed') and p.get('node')=='T03_BUILD' for p in owner['patches'].values()),
+         'CHECKPOINT_SOURCE_CI_PATCH_CAUSAL_BINDING')
+    files=patch.get('files',[])
+    need(len(files)==len(changed) and {f['path'] for f in files}==changed
+         and intent['payload']['before']=={p:before[p] for p in changed}
+         and applied['payload']['after_manifest']=={p:after[p] for p in changed},
+         'CHECKPOINT_SOURCE_CI_EXACT_PATCH_SUBSET')
+    for f in files:
+        need(f['before_sha256']==before[f['path']] and f['after_sha256']==after[f['path']]
+             and isinstance(f['after_text'],str) and _sci_sha_bytes(f['after_text'].encode())==f['after_sha256'],
+             'CHECKPOINT_SOURCE_CI_PATCH_RAW_BYTES')
+    r06=policy['r06'];pnodes=instantiate(state['plan']);node=pnodes.get(r06.get('node'))
+    need(set(r06)=={'node','resultRef','proofRef','compileInputRef','compileOutputRef'}
+         and node and node.get('stage_kind')=='R06_PATCH' and rt.node_status(state,node)=='PASSED'
+         and state['results'][node['id']]['input_hash']==rt.input_hash(state,node)
+         and state['results'][node['id']]['artifact']==r06['resultRef'],
+         'CHECKPOINT_SOURCE_CI_CURRENT_R06')
+    result=rt.store.get(r06['resultRef']);proof=rt.store.get(r06['proofRef'])
+    need(digest(result)==r06['resultRef'] and digest(proof)==r06['proofRef']
+         and result.get('checkpoint_candidate_proof_ref')==r06['proofRef'] and result.get('verdict')=='PASS'
+         and proof.get('candidateSHA')==state['candidate_sha'] and proof.get('work')==work
+         and proof.get('core')==core and proof.get('implementationHash')==implementation
+         and proof.get('reviewMethodAuthorityRef')==method['authorityRef']
+         and proof.get('checkpointEpoch')==rt.store.checkpoint_epoch
+         and proof.get('compileInputRef')==r06['compileInputRef']
+         and proof.get('compileOutputRef')==r06['compileOutputRef']
+         and digest(rt.store.get(r06['compileInputRef']))==r06['compileInputRef']
+         and digest(rt.store.get(r06['compileOutputRef']))==r06['compileOutputRef'],
+         'CHECKPOINT_SOURCE_CI_R06_ARTIFACTS')
+    reconciled=[e for e in history_events(rt,'suffix',work) if e['kind']=='checkpoint_candidate_reconciled'
+                and e['payload'].get('proofRef')==r06['proofRef']]
+    need(len(reconciled)==1 and reconciled[0]['previous']==proof['ledgerHead'],
+         'CHECKPOINT_SOURCE_CI_R06_ACTUAL_EVENT')
+    verify_candidate_git(publisher,owner['candidate_sha'],after)
+    _checkpoint_git_proof(rt,state,rt.store.state_base(work),core,review_method=True,
+        nearby_repair=repair['nearbyRepair'],math_rendering_repair=repair['mathRenderingRepair'],
+        mixed_inline_repair=repair['mixedInlineRepair'],inline_layout_repair=layout)
+    need(policy['widths']==[320,390,430,1440]
+         and policy['counts']=={'qfStates':179,'qfImages':179,'retainedStates':2111,'retainedImages':43}
+         and policy['workflow']=='.github/workflows/qf01-publisher-g3.yml'
+         and isinstance(policy['branch'],str) and policy['branch']
+         and 0<policy['maxBuildBytes']<=200_000_000 and 0<policy['maxQABytes']<=1_500_000_000
+         and policy['validatorSHA256']==_sci_sha_bytes(_SOURCE_CI_CHECKPOINT_VALIDATOR_JS.encode()),
+         'CHECKPOINT_SOURCE_CI_COVERAGE_VALIDATOR')
+    cache=policy['authorityCache']
+    need(isinstance(cache,dict) and set(cache)=={'path','sha256'},'CHECKPOINT_SOURCE_CI_AUTHORITY_CACHE_FIELDS')
+    cache_path=_sci_r3_local(pathlib.Path(rt.root).resolve(),cache['path'])
+    _sci_checkpoint_no_alias(rt.root,cache_path)
+    need(cache_path.is_file() and cache_path.stat().st_mode&0o222==0
+         and _sci_hash_file(cache_path,33_554_432)==cache['sha256'],
+         'CHECKPOINT_SOURCE_CI_READONLY_AUTHORITY_CACHE')
+    evidence=state['evidence'].get(policy['bundleEvidenceID'],{})
+    data=evidence.get('data',{})
+    need(evidence.get('kind')=='file' and evidence.get('verification_level')!='simulation'
+         and data.get('source_sha')==state['candidate_sha'] and data.get('definitionHash')==DEFINITION_HASH
+         and data.get('implementationHash')==implementation and data.get('checkpointEpoch')==rt.store.checkpoint_epoch,
+         'CHECKPOINT_SOURCE_CI_ACTUAL_BUNDLE_FILE')
+    bundle_path=_sci_r3_local(pathlib.Path(rt.root).resolve(),data['path'])
+    _sci_checkpoint_no_alias(rt.root,bundle_path)
+    bundle_raw=read_regular(bundle_path,1_048_576)
+    need(_sci_sha_bytes(bundle_raw)==data['sha256'],'CHECKPOINT_SOURCE_CI_BUNDLE_FILE_BYTES')
+    bundle=strict_json(bundle_raw)
+    need(set(bundle)=={'schemaVersion','work','sourceSHA','definitionHash','implementationHash','checkpointEpoch','producerSHA','ciEvidenceRef','inputs'}
+         and bundle['schemaVersion']==_SOURCE_CI_CHECKPOINT_INPUTS and bundle['work']==work
+         and bundle['sourceSHA']==state['candidate_sha'] and bundle['definitionHash']==DEFINITION_HASH
+         and bundle['implementationHash']==implementation and bundle['checkpointEpoch']==rt.store.checkpoint_epoch
+         and bundle['producerSHA']==owner['candidate_sha'], 'CHECKPOINT_SOURCE_CI_BUNDLE_IDENTITY')
+    t04=rt.store.get(owner['results']['T04_VERIFY']['artifact']);ci_ref=bundle['ciEvidenceRef']
+    ci=owner['evidence'].get(ci_ref,{})
+    need(t04.get('verdict')=='PASS' and ci_ref in t04.get('evidence_refs',[])
+         and ci.get('kind')=='ci' and ci.get('verification_level')!='simulation'
+         and ci.get('data',{}).get('status')=='completed' and ci['data'].get('conclusion')=='success'
+         and ci['data'].get('head_sha')==owner['candidate_sha']
+         and ci['data'].get('html_url','').startswith('https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/'),
+         'CHECKPOINT_SOURCE_CI_T04_ACTUAL_CI')
+    need(set(bundle['inputs'])=={'run','artifacts','ledger','manifest','build','qa'},
+         'CHECKPOINT_SOURCE_CI_EXACT_SIX_INPUTS')
+    for row in bundle['inputs'].values():
+        need(set(row)=={'path','sha256'},'CHECKPOINT_SOURCE_CI_INPUT_FIELDS')
+        _sci_checkpoint_no_alias(rt.root,_sci_r3_local(pathlib.Path(rt.root).resolve(),row['path']))
+    run=strict_json(read_regular(_sci_r3_local(pathlib.Path(rt.root).resolve(),bundle['inputs']['run']['path']),8_000_000))
+    need(_sci_sha_bytes(read_regular(_sci_r3_local(pathlib.Path(rt.root).resolve(),bundle['inputs']['run']['path']),8_000_000))==bundle['inputs']['run']['sha256']
+         and run.get('id')==ci['data']['id'] and run.get('head_sha')==owner['candidate_sha'],
+         'CHECKPOINT_SOURCE_CI_API_RUN_NOT_DIAGNOSTIC')
+    need(type(run.get('id')) is int and 0<run['id']<2**53
+         and type(run.get('run_attempt')) is int and 0<run['run_attempt']<2**53
+         and ci['data']['html_url']=='https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/'+str(run['id']),
+         'CHECKPOINT_SOURCE_CI_EXACT_RUN_REFERENCE')
+    # Runtime already rejects duplicate evidence event IDs; also prove the exact
+    # file payload was registered once in the actual suffix before consuming it.
+    evs=[e for e in history_events(rt,'suffix',work) if e['kind']=='evidence'
+         and e['payload'].get('id')==policy['bundleEvidenceID']]
+    need(len(evs)==1 and evs[0]['payload']==evidence,'CHECKPOINT_SOURCE_CI_ACTUAL_BUNDLE_EVENT')
+    derived=dict(policy)
+    derived.update(schema='source-ci-policy/1',schemaVersion='qf01-checkpoint-source-ci/1',
+                   repository={'id':1391122224,'full_name':'rrikunagasige-dot/kyotsu-step-web'},
+                   inputs=bundle['inputs'],producerSHA=owner['candidate_sha'],runID=run['id'],attempt=run['run_attempt'],
+                   _rawSHA256=digest(policy),_ownerCandidateSHA=owner['candidate_sha'],
+                   _bundleSHA256=data['sha256'],_bundleEvidenceID=policy['bundleEvidenceID'],
+                   _ownerT04ResultRef=owner['results']['T04_VERIFY']['artifact'],
+                   _ciEvidenceRef=ci_ref,_materialAuthoritySHA256=digest(contract['currentNativeAuthority']))
+    need(rt.store.head==head,'CHECKPOINT_SOURCE_CI_HEAD_CHANGED')
+    return state,derived
+
+
+def _sci_checkpoint_verify(rt,work):
+    head=rt.store.head
+    state,policy=_sci_checkpoint_load(rt,work)
+    _sci_checkpoint_strict_inputs(rt.root,policy)
+    result=_sci_verify_bundle(rt.root,policy,policy['inputs'],state['candidate_sha'],state['candidate_manifest'])
+    latest,again=_sci_checkpoint_load(rt,work)
+    need(again==policy and latest['candidate_manifest']==state['candidate_manifest'] and rt.store.head==head,
+         'CHECKPOINT_SOURCE_CI_TOCTOU')
+    result.update(schemaVersion='qf01-checkpoint-source-ci-proof/1',
+                  policy_work=_SOURCE_CI_CHECKPOINT_OWNER,policyRef=policy['_rawSHA256'],
+                  bundleEvidenceID=policy['_bundleEvidenceID'],bundleSHA256=policy['_bundleSHA256'],
+                  ownerCandidateSHA=policy['_ownerCandidateSHA'],work=work,releaseUnit=policy['releaseUnit'],
+                  definitionHash=policy['definitionHash'],implementationHash=policy['implementationHash'],
+                  checkpointEpoch=policy['checkpointEpoch'],methodAuthorityRef=policy['methodAuthorityRef'],
+                  r06=policy['r06'],contractRawSHA256=policy['contractSHA256'],
+                  materialAuthoritySHA256=policy['_materialAuthoritySHA256'],rawInputs=policy['inputs'],
+                  buildArchiveSHA256=policy['inputs']['build']['sha256'],
+                  distManifestSHA256=policy['inputs']['manifest']['sha256'],
+                  ownerT04ResultRef=policy['_ownerT04ResultRef'],ciEvidenceRef=policy['_ciEvidenceRef'],
+                  widths=policy['widths'],counts=policy['counts'],validatorSHA256=policy['validatorSHA256'])
+    return result
+
+
+def _sci_checkpoint_strict_inputs(root,policy):
+    from checkpoint import strict_json,read_regular
+    root=pathlib.Path(root).resolve()
+    for key,row in policy['inputs'].items():
+        p=_sci_r3_local(root,row['path']);_sci_checkpoint_no_alias(root,p)
+        limit={'build':100_000_000,'qa':600_000_000}.get(key,8_000_000)
+        need(_sci_hash_file(p,limit)==row['sha256'],'CHECKPOINT_SOURCE_CI_INPUT_BYTES')
+        if key not in ('build','qa'):
+            strict_json(read_regular(p,limit))
+        else:
+            with zipfile.ZipFile(p) as archive:
+                names=archive.namelist();folded=[n.rstrip('/').casefold() for n in names]
+                files={i.filename.casefold() for i in archive.infolist() if not i.is_dir()}
+                need(len(names)==len(set(folded)) and not any(str(parent) in files
+                     for n in folded for parent in pathlib.PurePosixPath(n).parents if str(parent)!='.'),
+                     'CHECKPOINT_SOURCE_CI_ARCHIVE_CASE_COLLISION')
+                # Existing _sci_archive remains responsible for size/path/type/
+                # regular-file ancestry bounds and actual read/CRC. Validate it
+                # before any JSON is interpreted here as well.
+            files=_sci_archive(p,row['sha256'],policy['maxBuildBytes' if key=='build' else 'maxQABytes'])
+            for name,raw in files.items():
+                if name.endswith('.json'):strict_json(raw)
+
+_SOURCE_CI_CHECKPOINT_VALIDATOR_JS = "// Fixed checkpoint read-only validator. No browser, build, network or deploy.\nimport fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';\nconst c=JSON.parse(fs.readFileSync(process.argv[2])),read=p=>JSON.parse(fs.readFileSync(p));\nconst checker=path.join(c.publisherRoot,'tools/release/qf01-publish-check.mjs'),browser=path.join(c.publisherRoot,'tools/release/qf01-browser.mjs');\nObject.assign(process.env,{GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0',GIT_TERMINAL_PROMPT:'0',SOURCE_ROOT:c.materialRoot,CORE_ROOT:c.coreRoot,PUBLISHER_ROOT:c.publisherRoot,DIST_ROOT:path.join(c.buildRoot,'material/dist'),BUILD_AUTHORITY_CACHE:c.authorityCache});\nconst {assertContract,assertCheckpointContract,validateBuildAuthority,decodeBuildAuthority,verifyDist,verifyCoreBinding,validateRevision3Producer,validateRevision3Matrix,validateRevision3QA,sha}=await import(pathToFileURL(checker));\nconst {verifyRevision3AssertionBody}=await import(pathToFileURL(browser));\nconst contract=assertContract(read(path.join(c.publisherRoot,'tools/release/qf01-publish-contract.json')));assert.equal(contract.qf01.revision,3);assertCheckpointContract(contract);validateBuildAuthority(contract);const authority=decodeBuildAuthority(contract);assert.equal(authority.baseState.candidate_sha,c.policy.sourceSHA);assert.equal(authority.baseState.results[c.policy.r06.node].artifact,c.policy.r06.resultRef);assert.equal(contract.checkpointAuthority.core.definitionHash,c.policy.definitionHash);assert.equal(contract.checkpointAuthority.core.implementationHash,c.policy.implementationHash);verifyRevision3AssertionBody(contract.r3AssertionBodySHA256);\nconst manifestPath=path.join(c.buildRoot,'sealed/DIST_MANIFEST.json'),manifestRaw=fs.readFileSync(manifestPath),manifest=JSON.parse(manifestRaw),ledger=read(c.ledger);\nverifyCoreBinding({coreRoot:c.coreRoot,materialRoot:c.materialRoot,contract});\nverifyDist({distRoot:path.join(c.buildRoot,'material/dist'),manifest,contract,contractRaw:fs.readFileSync(path.join(c.publisherRoot,'tools/release/qf01-publish-contract.json')),publisherSHA:c.publisherSHA,publisherRoot:c.publisherRoot});\nvalidateRevision3Producer({run:read(c.run),artifacts:read(c.artifacts).artifacts,ledger,manifest,contract,manifestRaw,publisherSHA:c.publisherSHA,expectedRunID:c.runID,expectedAttempt:c.attempt});\nvalidateRevision3Matrix({receipts:ledger.receipts,manifest,contract,manifestRaw});\nfor(const width of contract.expectedWidths){const prefix=path.join(c.qaRoot,String(width)),raw=fs.readFileSync(path.join(prefix,'QA_RECEIPT.json')),receipt=JSON.parse(raw);assert.deepEqual(receipt,ledger.receipts.find(r=>r.width===width));assert.equal(sha(raw),ledger.receiptFiles[String(width)]);const qfRoot=path.join(prefix,'qf01-qa/qf01'),retainedRoot=path.join(prefix,'qf01-qa/w051-width'),qfRaw=fs.readFileSync(path.join(qfRoot,'REPORT.json')),retainedRaw=fs.readFileSync(path.join(retainedRoot,'REPORT.json'));assert.equal(sha(qfRaw),receipt.reportHashes.qf);assert.equal(sha(retainedRaw),receipt.reportHashes.retained);validateRevision3QA({qf:JSON.parse(qfRaw),retained:JSON.parse(retainedRaw),width,manifest,contract,qfRoot,retainedRoot,sourceRoot:c.materialRoot,captureRunID:c.runID,captureAttempt:c.attempt});}\nprocess.stdout.write(JSON.stringify({status:'PASS_PRODUCER_AND_RAW_QA',runID:c.runID,attempt:c.attempt,publisherSHA:c.publisherSHA}));\n"

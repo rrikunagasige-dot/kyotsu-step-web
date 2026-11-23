@@ -50,7 +50,7 @@ jobs:
     permissions:
       contents: read
     env:
-      CHECKPOINT_CORE_SHA: abe5ff1385cb141bb2d01e34f6512eb50e9ca9da
+      CHECKPOINT_CORE_SHA: 247cb09b1d852d4e4fa469b3d74fb29bee053c53
       CHECKPOINT_AUTHORITY_SHA: 55d844f20c0de3390ad6718ee8d01968ebbb8676
       CHECKPOINT_ORIGIN_SOURCE_SHA: 1f10ecbcd088ca8636932c8df4c7b85293777efc
       CHECKPOINT_AUTHORITY_BLOB_SHA: ccb58fd71a927953093a567dc9732d6730fdda12
@@ -104,6 +104,13 @@ jobs:
       with:
         ref: ${{ env.CHECKPOINT_CORE_SHA }}
         path: core
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout this exact publisher candidate for compatibility tests
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.sha }}
+        path: checkpoint-publisher
         fetch-depth: 0
         persist-credentials: false
     - name: Checkout the unchanged original source fixture
@@ -312,6 +319,27 @@ jobs:
         python -m pip install lxml==6.1.1 numpy==2.3.5 scikit-learn==1.8.0 -r tools/textbook/research/requirements-solution.txt 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/python-install.log"
         sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update -qq
         sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 install -y pandoc
+    - name: Run the complete publisher compatibility and checkpoint TEST_FIXTURE suites
+      id: publisher_tests
+      if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
+      working-directory: checkpoint-publisher
+      env:
+        SOURCE_ROOT: ${{ github.workspace }}/core
+        CORE_ROOT: ${{ github.workspace }}/core
+        QF01_CHECKPOINT_ORIGIN_SEED: /tmp/qf01-checkpoint-test-input/APPROVED_MATERIAL_SEED.json
+        QF01_CHECKPOINT_ORIGIN_CONTRACT: /tmp/qf01-checkpoint-test-input/publisher-contract.json
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        test ! -e "$RUNNER_TEMP/qf01-publisher-current-authority.blob"
+        cp "$QF01_CHECKPOINT_INPUT_ROOT/BUILD_AUTHORITY.blob" "$RUNNER_TEMP/qf01-publisher-current-authority.blob"
+        chmod 400 "$RUNNER_TEMP/qf01-publisher-current-authority.blob"
+        export BUILD_AUTHORITY_CACHE="$RUNNER_TEMP/qf01-publisher-current-authority.blob"
+        test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+        node --check tools/release/qf01-publish-check.mjs
+        node --check tools/release/qf01-publish-check.test.mjs
+        node --test tools/release/qf01-publish-check.test.mjs tools/release/qf01-retained-adapters.test.mjs 2>&1 | tee "$CHECKPOINT_DIAGNOSTICS/publisher-tests.log"
     - name: Run the three checkpoint regression modules as TEST_FIXTUREs only
       id: checkpoint_tests
       if: ${{ !cancelled() && steps.dependencies.outcome == 'success' && steps.inputs.outcome == 'success' }}
@@ -488,6 +516,7 @@ jobs:
         INPUT_OUTCOME: ${{ steps.inputs.outcome }}
         DEPENDENCY_OUTCOME: ${{ steps.dependencies.outcome }}
         CHECKPOINT_OUTCOME: ${{ steps.checkpoint_tests.outcome }}
+        PUBLISHER_OUTCOME: ${{ steps.publisher_tests.outcome }}
         NORMAL_OUTCOME: ${{ steps.normal_workflow.outcome }}
         PRODUCTION_OUTCOME: ${{ steps.production_services.outcome }}
         APP_OUTCOME: ${{ steps.app_tests.outcome }}

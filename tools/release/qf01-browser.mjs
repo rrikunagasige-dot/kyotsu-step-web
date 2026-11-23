@@ -834,6 +834,241 @@ export async function runRevision3AxisSupplement(env = process.env) {
   finally{await context?.close();await browser?.close();}
 }
 
+// CHECKPOINT_BROWSER_ADAPTER_BEGIN
+// D02 changes binding/provenance only. The original 35/134/179 assertion body
+// and historical R2/R3 entry points below remain byte-for-byte unchanged.
+const checkpointBrowserContexts=new WeakSet();
+const checkpointRequested=c=>Boolean(c&&typeof c==='object'&&(Object.hasOwn(c,'authorityVariant')||Object.hasOwn(c,'checkpointAuthority')));
+function checkpointContextSource(context){assert.ok(checkpointBrowserContexts.has(context),'CHECKPOINT_BROWSER_VERIFIED_CONTEXT_REQUIRED');return context.sourceSHA;}
+async function checkpointBrowserContext(raw){
+ const checker=await import('./qf01-publish-check.mjs'),contract=checker.assertContract(raw);
+ assert.equal(contract.authorityVariant,'qf01-checkpoint-recovery/1','CHECKPOINT_BROWSER_EXPLICIT_VARIANT');
+ const seed=checker.decodeBuildAuthority(contract),method=seed.baseState.informed_review_method;
+ assert.ok(method&&!method.revoked&&method.authorityRef,'CHECKPOINT_BROWSER_D02_AUTHORITY_REQUIRED');
+ assert.equal(method.authority.proposalSHA256,'706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60');
+ assert.equal(method.authority.currentSourceSHA,contract.sourceSHA);
+ for(const field of ['independent','sourceFirst','firstPass'])assert.equal(method.authority[field],false);
+ checker.validateBuildAuthority(contract);
+ const context=Object.freeze({checker,contract,sourceSHA:contract.sourceSHA,methodAuthorityRef:method.authorityRef});checkpointBrowserContexts.add(context);return context;
+}
+export function checkpointBrowserAdapterSHA256(){
+ const code=fs.readFileSync(THIS_FILE,'utf8'),start=code.indexOf('// CHECKPOINT_BROWSER_ADAPTER_BEGIN\n'),end=code.indexOf('\n// CHECKPOINT_BROWSER_ADAPTER_END',start);
+ assert.ok(start>=0&&end>start,'CHECKPOINT_BROWSER_ADAPTER_BOUNDARIES');const actual=hash(code.slice(start,end));assert.equal(actual,CHECKPOINT_BROWSER_ADAPTER_SHA256,'CHECKPOINT_BROWSER_ACTUAL_ADAPTER_PIN');return actual;
+}
+export async function validateCheckpointBrowserConfiguration(contract,manifest,raw,env=process.env){const context=await checkpointBrowserContext(contract);return checkpointConfiguration(contract,manifest,raw,env,context);}
+function addCheckpointReportBinding(out,binding,failure,context){
+ assert.equal(binding.sourceSHA,checkpointContextSource(context));assert.equal(binding.methodAuthorityRef,context.methodAuthorityRef);
+ const reportPath=path.join(out,'REPORT.json');
+ const report=fs.existsSync(reportPath)?json(reportPath):{status:'FAIL_BEFORE_BROWSER',sourceSHA:binding.sourceSHA,errors:[],images:[],states:[]};
+ if(report.revision!==3)assert.ok(failure,'CHECKPOINT_REPORT_MUST_BE_REVISION3');
+ assert.equal(report.sourceSHA,binding.sourceSHA,'CHECKPOINT_REPORT_CURRENT_SOURCE');
+ report.route=BASE_PATH+'#/learning/textbook/math-quadratic-qf01';report.actualAppURL=binding.appURL+'#/learning/textbook/math-quadratic-qf01';report.binding=binding;report.publisherBinding=binding;
+ report.assertionProvenance={materialSourceSHA:binding.sourceSHA,modulePublisherSHA:binding.publisherSHA,modulePath:'tools/release/qf01-browser.mjs',moduleSHA256:hash(fs.readFileSync(THIS_FILE)),r3AssertionBodySHA256:revision3AssertionBodySHA256(),checkpointBrowserAdapterSHA256:checkpointBrowserAdapterSHA256(),methodAuthorityRef:context.methodAuthorityRef,independent:false,sourceFirst:false,firstPass:false};
+ for(const proof of report.supplemental??[]){assert.equal(proof.sourceSHA,binding.sourceSHA);proof.publisherBinding=binding;proof.width=report.width;}
+ Object.assign(report,{authorityVariant:'qf01-checkpoint-recovery/1',methodAuthorityRef:context.methodAuthorityRef,checkpointBrowserAdapterSHA256:checkpointBrowserAdapterSHA256(),independent:false,sourceFirst:false,firstPass:false});
+ report.userAcceptance=false;if(failure){report.status='FAIL';report.bindingOrBrowserFailure=String(failure);}fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');return report;
+}
+
+
+function checkpointConfiguration(contract, manifest, contractBytes, env = process.env,context) {
+  const revision3=true,sourceSHA=checkpointContextSource(context);assert.strictEqual(contract,context.contract);assert.equal(contract.qf01?.revision,3);
+  assert.equal(contract.schemaVersion, 'qf01-publisher/1', 'CONTRACT_SCHEMA');
+  assert.equal(contract.sourceSHA, sourceSHA, 'CONTRACT_SOURCE');
+  assert.equal(contract.baselineSHA, '1ac9f31ec205424f393a488f0d17cb3bb8bc75fd', 'CONTRACT_BASELINE');
+  assert.equal(contract.publicBase, PUBLIC_BASE, 'CONTRACT_PUBLIC_BASE');
+  assert.equal(contract.basePath, BASE_PATH, 'CONTRACT_BASE_PATH');
+  assert.equal(contract.storageKey, STORAGE_KEY, 'CONTRACT_STORAGE_KEY');
+  assert.deepEqual(contract.expectedWidths, WIDTHS, 'CONTRACT_WIDTHS');
+  assert.equal(contract.qf01.unitId, 'math-quadratic-qf01', 'CONTRACT_UNIT');
+  assert.equal(contract.qf01.statesPerWidth, revision3?179:124, 'CONTRACT_STATES');
+  assert.equal(contract.qf01.decisions, revision3?35:24, 'CONTRACT_DECISIONS');
+  assert.equal(contract.qf01.stages, 9, 'CONTRACT_STAGES');
+  assert.equal(manifest.schemaVersion, 'qf01-dist/1', 'DIST_MANIFEST_SCHEMA');
+  assert.equal(manifest.sourceSHA, sourceSHA, 'DIST_MANIFEST_SOURCE');
+  assert.match(env.PUBLISHER_SHA ?? '', /^[0-9a-f]{40}$/, 'PUBLISHER_SHA_REQUIRED');
+  assert.equal(manifest.publisherSHA, env.PUBLISHER_SHA, 'DIST_MANIFEST_PUBLISHER');
+  assert.equal(manifest.contractSHA256, hash(contractBytes), 'DIST_MANIFEST_CONTRACT');
+  assert.equal(manifest.storageKey, STORAGE_KEY, 'DIST_MANIFEST_STORAGE_KEY');
+  assert.equal(manifest.basePath, BASE_PATH, 'DIST_MANIFEST_BASE_PATH');
+  plainMap(manifest.files, 'DIST_MANIFEST_FILES');
+  assert.ok(Object.hasOwn(manifest.files, 'index.html') && Object.hasOwn(manifest.files, 'qf01-release.json'), 'REQUIRED_DIST_ENTRIES');
+  if (env.SOURCE_SHA !== undefined) assert.equal(env.SOURCE_SHA, sourceSHA, 'ENV_SOURCE');
+  if (env.STORAGE_KEY !== undefined) assert.equal(env.STORAGE_KEY, STORAGE_KEY, 'ENV_STORAGE_KEY');
+  if (env.VITE_STORAGE_NAMESPACE !== undefined) assert.equal(env.VITE_STORAGE_NAMESPACE, STORAGE_KEY, 'ENV_STORAGE_NAMESPACE');
+  const url = new URL(env.APP_URL ?? 'http://127.0.0.1:4173/kyotsu-step-web/');
+  assert.equal(url.username, ''); assert.equal(url.password, '');
+  assert.equal(url.search, ''); assert.equal(url.hash, '');
+  const isPublic = url.href === PUBLIC_BASE;
+  const isLocal = url.protocol === 'http:' && ['localhost', '127.0.0.1'].includes(url.hostname) && url.pathname === BASE_PATH;
+  assert.ok(isPublic || isLocal, 'APP_URL_MUST_BE_EXACT_PUBLIC_BASE_OR_LOCAL_PRODUCTION_BASE');
+  const widths = env.WIDTH === undefined ? [...WIDTHS] : [Number(env.WIDTH)];
+  assert.ok(widths.every(width => WIDTHS.includes(width)), 'INVALID_WIDTH');
+  for(const name of ['currentSourceFiles','currentPublicFiles','buildConfigFiles'])plainMap(contract[name],'CHECKPOINT_FULL_'+name);assert.equal(contract.currentNativeAuthority?.sourceSHA,sourceSHA,'CHECKPOINT_ACTUAL_CURRENT_R06_REQUIRED');verifyRevision3AssertionBody(contract.r3AssertionBodySHA256);assert.equal(contract.checkpointBrowserAdapterSHA256,checkpointBrowserAdapterSHA256(),'CHECKPOINT_EXACT_BROWSER_ADAPTER');
+  return {appURL: url.href, isPublic, widths, ...(revision3?{revision3:true}:{})};
+}
+
+function verifyCheckpointSource(sourceRoot,publisherSHA,contract,context) {
+  const revision3=true,sourceSHA=checkpointContextSource(context);assert.strictEqual(contract,context.contract);
+  assert.equal(gitHead(sourceRoot), sourceSHA, 'SOURCE_CHECKOUT_HEAD');
+  assert.equal(gitHead(path.dirname(THIS_FILE)), publisherSHA, 'PUBLISHER_CHECKOUT_HEAD');
+  const publisherRoot = execFileSync('git', ['-C', path.dirname(THIS_FILE), 'rev-parse', '--show-toplevel'], {encoding: 'utf8'}).trim();
+  const scriptRelative = path.relative(publisherRoot, THIS_FILE).split(path.sep).join('/');
+  assert.equal(scriptRelative, 'tools/release/qf01-browser.mjs', 'PUBLISHER_SCRIPT_PATH');
+  assert.equal(hash(execFileSync('git', ['-C', publisherRoot, 'show', publisherSHA + ':' + scriptRelative])), hash(fs.readFileSync(THIS_FILE)), 'PUBLISHER_SCRIPT_UNCOMMITTED_CHANGE');
+  execFileSync('git', ['-C', sourceRoot, 'diff', '--quiet', 'HEAD', '--', 'src', 'public', 'package.json', 'pnpm-lock.yaml'], {stdio: 'pipe'});
+  assert.equal(execFileSync('git', ['-C', sourceRoot, 'ls-files', '--others', '--', 'src', 'public'], {encoding: 'utf8'}).trim(), '', 'SOURCE_UNTRACKED_APPLICATION_FILES');
+  const sourceFiles=revision3?{...contract.currentSourceFiles,...contract.currentPublicFiles,...contract.buildConfigFiles}:requiredSourceFiles;
+  if(revision3){const actualSRC=distSnapshot(path.join(sourceRoot,'src')),actualPublic=distSnapshot(path.join(sourceRoot,'public'));assert.deepEqual(actualSRC,Object.fromEntries(Object.entries(contract.currentSourceFiles).map(([p,h])=>[p.slice(4),h])),'R3_FULL_SRC_BYTES');assert.deepEqual(actualPublic,Object.fromEntries(Object.entries(contract.currentPublicFiles).map(([p,h])=>[p.slice(7),h])),'R3_FULL_PUBLIC_BYTES');for(const [p,h] of Object.entries(sourceFiles)){safeRelative(p);assert.equal(hash(execFileSync('git',['-C',sourceRoot,'show',sourceSHA+':'+p])),h,'R3_COMMITTED_APP_BYTES '+p);}}
+  for (const [name, expected] of Object.entries(sourceFiles)) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name))), expected, 'SOURCE_BYTES:' + name);
+  return {authorityVariant:'qf01-checkpoint-recovery/1',methodAuthorityRef:context.methodAuthorityRef,checkpointBrowserAdapterSHA256:checkpointBrowserAdapterSHA256(),independent:false,sourceFirst:false,firstPass:false,sourceSHA,publisherSHA,sourceFiles: {...sourceFiles}, publisherScriptSHA256: hash(fs.readFileSync(THIS_FILE)), trackedApplicationSourceClean: true};
+}
+
+async function runCheckpointBoundedInputSuccessorAudits({sourceRoot,appURL,width,out,binding,checkpointContext}){
+ const unitPath='src/data/textbook/math/quadratic/qf01Unit.json',unitRaw=fs.readFileSync(path.join(sourceRoot,unitPath)),unit=JSON.parse(unitRaw),ids=unit.requiredInteractionRefs,items=new Map(unit.sections.flatMap(s=>s.items).map(i=>[i.id,i])),full=json(path.join(out,'REPORT.json'));checkRevision3Coverage(full,ids);assert.equal(unit.revision,3);assert.equal(binding.sourceSHA,checkpointContextSource(checkpointContext));assert.equal(binding.phase,'R3_NORMAL_PRODUCTION_QA');assert.deepEqual(ids,REVISION3_BOUNDED_REQUIRED_IDS);const cursorKey='math-textbook-compact-v1:'+unit.unitId+':r3:scope:qf01-v3';const sourceUnit={path:unitPath,sha256:hash(unitRaw),requiredIds:[...ids]};
+ const base={sourceSHA:binding.sourceSHA,width,runId:String(binding.captureRunID),attempt:Number(binding.captureAttempt),publisherBinding:binding,userAcceptance:false},write=(name,data)=>fs.writeFileSync(path.join(out,name),JSON.stringify(data,null,2)+'\n');
+ const navigation={...base,status:'RUNNING',actions:[],errors:[],reloadPreservesProgress:false},normal={...base,status:'RUNNING',actions:[],errors:[]},browser=await chromium.launch({headless:true});
+ const context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),page=await context.newPage(),route=appURL+'#/learning/textbook/'+unit.unitId,menu=appURL+'#/learning/setup?mode=textbook&subject=math-1a';page.on('pageerror',e=>navigation.errors.push(String(e)));
+ const settle=async p=>{await p.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});},read=async p=>p.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[id]??null,{key:STORAGE_KEY,id:unit.unitId}),ready=async p=>{await p.locator('[data-qf01-revision="3"]').waitFor();assert.equal(await p.getByTestId('qf01-r3-binding-error').count(),0);await settle(p);};
+ async function choice(p,id,value,keyboard=false){const options=p.getByTestId('inline-choice-panel-'+id).locator('button.reading-choice-option'),names=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),index=names.findIndex(n=>n?.endsWith('、'+value));assert.ok(index>=0);const option=options.nth(index);if(keyboard){await option.focus();await option.press('Enter');}else await option.click();await settle(p);}
+ async function action(report,p,name,run){await run();await settle(p);report.actions.push({name,summaryVisible:await p.getByTestId('qf01-unit-summary').isVisible(),cursor:await p.evaluate(key=>localStorage.getItem(key),cursorKey),progress:await read(p),url:p.url(),focused:await p.evaluate(()=>{const e=document.activeElement,r=e?.getBoundingClientRect();return e?{tag:e.tagName,testId:e.getAttribute('data-testid'),role:e.getAttribute('role'),rect:r?{left:r.left,top:r.top,width:r.width,height:r.height}:null}:null;})});}
+ try{
+  await action(navigation,page,'open-current-r3',async()=>{await page.goto(route);await ready(page);await page.getByTestId('textbook-item-'+ids[0]).waitFor();});
+  await action(navigation,page,'answer-first-by-keyboard',async()=>{await page.getByTestId('textbook-item-'+ids[0]).focus();await page.getByTestId('textbook-item-'+ids[0]).press('Enter');await choice(page,ids[0],items.get(ids[0]).answer,true);assert.equal((await read(page)).answers[ids[0]].resolved,true);});
+  const first=JSON.stringify(await read(page));
+  await action(navigation,page,'open-current-menu',async()=>{await page.goto(menu);const card=page.getByTestId('math-textbook-topic-quadratic-functions-foundation');await card.waitFor();assert.ok((await card.innerText()).includes('公開中の内容：1/35 完了'));});
+  await action(navigation,page,'resume-current-next-slot',async()=>{await page.getByTestId('math-textbook-topic-quadratic-functions-foundation').click();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'reload-preserves-current-r3',async()=>{await page.reload();await ready(page);assert.equal(JSON.stringify(await read(page)),first);navigation.reloadPreservesProgress=true;});
+  await action(navigation,page,'open-readonly-r2-route',async()=>{await page.getByRole('link',{name:'以前の記録を見る',exact:true}).click();await page.getByTestId('qf01-revision2-archive').waitFor();assert.equal(await page.locator('button.reading-choice-option:not([disabled])').count(),0);assert.equal(JSON.stringify(await read(page)),first);});
+  await action(navigation,page,'return-to-current-r3',async()=>{await page.goBack();await ready(page);await page.getByTestId('textbook-item-'+ids[1]).waitFor();assert.equal(JSON.stringify(await read(page)),first);});
+  assert.equal(navigation.actions.length,7);assert.deepEqual(navigation.errors,[]);navigation.status='PASS_R3_BOUNDED_NAVIGATION_NOT_ACCEPTANCE';write('R3_NAVIGATION_REPORT.json',navigation);
+  if(width===320){
+   const target='qf01-n21-answer',entry=full.states.find(r=>r.label===target+'-before');assert.ok(entry,'R3_CURRENT_N21_BEFORE_FIXTURE');const fixtureRaw=fs.readFileSync(path.join(out,safeRelative(entry.file)));assert.equal(hash(fixtureRaw),entry.sha256);const fixture=JSON.parse(fixtureRaw),prior=ids.slice(0,ids.indexOf(target));assert.equal(fixture.sourceSHA,binding.sourceSHA);assert.equal(fixture.progress.unitRevision,3);assert.deepEqual(Object.keys(fixture.progress.answers).filter(id=>fixture.progress.answers[id].resolved).sort(),[...prior].sort());assert.equal(prior.length,32);
+   normal.fixture={kind:'CURRENT_R3_CAPTURED_N21_BEFORE_SUCCESSOR_V2',file:entry.file,sha256:entry.sha256,interactionId:target,unitRevision:3,priorCount:prior.length,cursorKey,cursorValue:8};normal.initialProgress=fixture.progress;
+   const seed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),STORAGE_KEY),ctx=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'}),p=await ctx.newPage();p.on('pageerror',e=>normal.errors.push(String(e)));
+   try{await p.addInitScript(({key,seed,id,progress,cursorKey})=>{if(sessionStorage.getItem('r3-bounded-seeded'))return;sessionStorage.setItem('r3-bounded-seeded','1');localStorage.setItem(cursorKey,'8');localStorage.setItem(key,JSON.stringify({...seed,state:{...seed.state,textbookProgress:{...seed.state.textbookProgress,[id]:progress}}}));},{key:STORAGE_KEY,seed,id:unit.unitId,progress:fixture.progress,cursorKey});await p.goto(route);await ready(p);await p.getByTestId('textbook-item-'+target).waitFor();assert.equal(JSON.stringify(await read(p)),JSON.stringify(fixture.progress));const wrong=items.get(target).choices.filter(v=>v!==items.get(target).answer);assert.equal(wrong.length,2);
+    await action(normal,p,'open-n21-by-enter',async()=>{const slot=p.getByTestId('textbook-item-'+target);await slot.focus();await slot.press('Enter');await p.getByTestId('inline-choice-panel-'+target).locator('button.reading-choice-option').first().waitFor();});
+    await action(normal,p,'wrong-n21-by-enter',async()=>{await choice(p,target,wrong[0],true);const r=(await read(p)).answers[target];assert.equal(r.value,wrong[0]);assert.equal(r.resolved,false);assert.equal(r.attemptCount,1);});
+    const wrongRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-wrong',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),wrongRecord);});
+    await action(normal,p,'reopen-n21-by-pointer',async()=>{await p.getByTestId('textbook-item-'+target).click();});
+    await action(normal,p,'second-n21-wrong-by-pointer',async()=>{await choice(p,target,wrong[1]);assert.equal((await read(p)).answers[target].attemptCount,2);assert.equal((await read(p)).answers[target].resolved,false);});
+    const hintProgress=JSON.stringify(await read(p));await action(normal,p,'open-current-hint',async()=>{const hint=p.getByRole('button',{name:'手掛かりを見る',exact:true});await hint.click();assert.equal(await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).getAttribute('aria-expanded'),'true');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'close-current-hint',async()=>{await p.getByRole('button',{name:'手掛かりを閉じる',exact:true}).click();assert.equal(await p.getByRole('button',{name:'手掛かりを見る',exact:true}).getAttribute('aria-expanded'),'false');assert.equal(JSON.stringify(await read(p)),hintProgress);});
+    await action(normal,p,'correct-n21-by-enter',async()=>{await choice(p,target,items.get(target).answer,true);const r=(await read(p)).answers[target];assert.equal(r.value,items.get(target).answer);assert.equal(r.resolved,true);assert.equal(r.attemptCount,3);});
+    const correctRecord=JSON.stringify(await read(p));await action(normal,p,'reload-preserves-n21-correct',async()=>{await p.reload();await ready(p);assert.equal(JSON.stringify(await read(p)),correctRecord);});
+    const n22=ids[33],inverse=ids[34];assert.equal(n22,'qf01-n22-answer');assert.equal(inverse,'qf01-r3-n22-inverse-answer');
+    await action(normal,p,'open-n22-by-pointer',async()=>{await p.getByTestId('textbook-item-'+n22).click();assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);});
+    await action(normal,p,'complete-n22-by-pointer',async()=>{await choice(p,n22,items.get(n22).answer);assert.equal((await read(p)).answers[n22].resolved,true);assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);await p.getByTestId('textbook-item-'+inverse).waitFor();});
+    await action(normal,p,'open-inverse-by-enter',async()=>{const slot=p.getByTestId('textbook-item-'+inverse);await slot.focus();await slot.press('Enter');assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),false);});
+    await action(normal,p,'complete-inverse-by-enter',async()=>{await choice(p,inverse,items.get(inverse).answer,true);const progress=await read(p);assert.equal(progress.answers[inverse].resolved,true);assert.deepEqual(Object.keys(progress.answers).filter(id=>progress.answers[id].resolved),ids);assert.equal(await p.getByTestId('qf01-unit-summary').isVisible(),true);});
+    assert.equal(normal.actions.length,13);assert.deepEqual(normal.errors,[]);normal.status='PASS_R3_BOUNDED_INTERACTION_NOT_ACCEPTANCE';write('R3_INTERACTION_REPORT.json',normal);
+   }finally{await ctx.close();}
+  }
+  const reportNames=['R3_NAVIGATION_REPORT.json',...(width===320?['R3_INTERACTION_REPORT.json']:[])],proof={schemaVersion:'qf01-r3-bounded-input/2',successor:'qf01-r3-bounded-successor/2',sourceUnit,...base,r3AssertionBodySHA256:revision3AssertionBodySHA256(),modulePublisherSHA:binding.publisherSHA,moduleSHA256:hash(fs.readFileSync(THIS_FILE)),navigation:7,normalInputs:width===320?13:0,reports:Object.fromEntries(reportNames.map(name=>[name,hash(fs.readFileSync(path.join(out,name)))]))};write('R3_BOUNDED_PROVENANCE.json',proof);return proof;
+ }catch(error){if(navigation.status==='RUNNING'){navigation.status='FAILED_OR_INCOMPLETE';navigation.errors.push(String(error));write('R3_NAVIGATION_REPORT.json',navigation);}if(width===320){normal.status='FAILED_OR_INCOMPLETE';normal.errors.push(String(error));write('R3_INTERACTION_REPORT.json',normal);}throw error;}finally{await context.close();await browser.close();}
+}
+
+export async function runCheckpointAxisSupplement(env = process.env) {
+  assert.ok(env.QF01_CONTRACT&&env.QF01_DIST_MANIFEST&&env.CORE_ROOT&&env.SOURCE_ROOT&&env.PUBLISHER_ROOT,'AXIS_EXPLICIT_BINDINGS_REQUIRED');
+  const sourceRoot=fs.realpathSync(env.SOURCE_ROOT),publisherRoot=fs.realpathSync(env.PUBLISHER_ROOT),coreRoot=fs.realpathSync(env.CORE_ROOT),distRoot=fs.realpathSync(env.DIST_ROOT??path.join(sourceRoot,'dist'));
+  const contractPath=fs.realpathSync(env.QF01_CONTRACT),manifestPath=fs.realpathSync(env.QF01_DIST_MANIFEST),contractRaw=fs.readFileSync(contractPath),manifestRaw=fs.readFileSync(manifestPath),rawContract=JSON.parse(contractRaw),manifest=JSON.parse(manifestRaw),checkpointContext=await checkpointBrowserContext(rawContract),cfg=checkpointConfiguration(rawContract,manifest,contractRaw,env,checkpointContext);
+  assert.equal(cfg.revision3,true);assert.equal(cfg.isPublic,false,'AXIS_LOCAL_SEALED_APP_ONLY');assert.equal(cfg.widths.length,1,'AXIS_ONE_EXPLICIT_WIDTH');const width=cfg.widths[0];
+  const out=canonicalOutput(path.resolve(env.OUT??'/tmp/qf01-axis-supplement'));for(const dir of [distRoot,sourceRoot,publisherRoot,coreRoot])ensureOutside(out,dir,'AXIS_OUTPUT_OUTSIDE_PROTECTED_ROOTS');freshDirectory(out);
+  const write=(name,value)=>fs.writeFileSync(path.join(out,name),JSON.stringify(value,null,2)+'\n'),report={authorityVariant:'qf01-checkpoint-recovery/1',methodAuthorityRef:checkpointContext.methodAuthorityRef,checkpointBrowserAdapterSHA256:checkpointBrowserAdapterSHA256(),independent:false,sourceFirst:false,firstPass:false,schemaVersion:'qf01-r3-axis-supplement/1',status:'CAPTURE_RUNNING_NOT_A_GATE_PASS',sourceSHA:checkpointContextSource(checkpointContext),publisherSHA:manifest.publisherSHA,width,contractSHA256:hash(contractRaw),distManifestSHA256:hash(manifestRaw),scriptSHA256:hash(fs.readFileSync(THIS_FILE)),layoutPlanCanonicalSHA256:R3_AXIS_COVERAGE.layoutPlanCanonicalSHA256,layoutHash:R3_AXIS_COVERAGE.layoutHash,appURL:cfg.appURL,ci:{runID:String(env.GITHUB_RUN_ID??'local'),attempt:Number(env.GITHUB_RUN_ATTEMPT??1)},producer:{publisherSHA:manifest.publisherSHA,buildRunID:String(manifest.buildRunID),attempt:Number(manifest.attempt)},capturePurpose:'Separate local DOM measurement supplement; no normal-QA labels/counts, Native receipt, R07, semantic or user acceptance claim.',captures:[],actions:[],errors:[],gatePass:false,userAcceptance:false};const persist=()=>write('AXIS_SUPPLEMENT_REPORT.json',report);persist();
+  let browser,context;
+  try {
+    const checker=await import('./qf01-publish-check.mjs'),contract=checker.assertContract(rawContract);if(env.GITHUB_RUN_ID!==undefined)assert.equal(String(manifest.buildRunID),String(env.GITHUB_RUN_ID),'AXIS_EXACT_BUILD_RUN');if(env.GITHUB_RUN_ATTEMPT!==undefined)assert.equal(Number(manifest.attempt),Number(env.GITHUB_RUN_ATTEMPT),'AXIS_EXACT_BUILD_ATTEMPT');report.coreBinding=checker.verifyCoreBinding({coreRoot,materialRoot:sourceRoot,contract}).proof;checker.decodeBuildAuthority(contract);report.originalBuildAuthorityCheck=checker.validateBuildAuthority(contract);checker.verifySource({sourceRoot,publisherRoot,baselineRoot:env.BASELINE_ROOT,contract});
+    verifyDist(distRoot,manifest);verifyRelease(json(path.join(distRoot,'qf01-release.json')),manifest);report.sourceProof=verifyCheckpointSource(sourceRoot,manifest.publisherSHA,contract,checkpointContext);
+    const unit=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json')),metadata=json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01ReadingPresentation.json'));validateRevision3AxisCoverage(metadata);assert.equal(metadata.interactions.length,35);assert.deepEqual(metadata.interactions.map(q=>q.id),unit.requiredInteractionRefs);
+    const validatorPath=path.join(coreRoot,'tools/textbook/layout/axis-measurements.mjs'),validatorRaw=fs.readFileSync(validatorPath),validatorCommitted=execFileSync('git',['-C',coreRoot,'show',checkpointContext.sourceSHA+':tools/textbook/layout/axis-measurements.mjs']);assert.equal(hash(validatorRaw),hash(validatorCommitted),'AXIS_ORIGINAL_VALIDATOR_GIT_BYTES');const {checkAxisMeasurements}=await import(pathToFileURL(validatorPath));report.axisValidator={path:'tools/textbook/layout/axis-measurements.mjs',sha256:hash(validatorRaw),committedSHA256:hash(validatorCommitted),commit:checkpointContext.sourceSHA,codeRoot:'verified-current-core'};
+    await checker.awaitExactManifest({base:cfg.appURL,expectedSHA256:manifest.files['qf01-release.json']});write('HTTP_SOURCE_BEFORE.json',await httpSourceProof(cfg.appURL,manifest));report.httpBeforeSHA256=hash(fs.readFileSync(path.join(out,'HTTP_SOURCE_BEFORE.json')));persist();
+    const requireFromSource=createRequire(path.join(sourceRoot,'package.json')),katex=requireFromSource('katex'),neutralFractionHTML=katex.renderToString('\\frac{\\mathstrut 0}{\\mathstrut 0}',{output:'html',throwOnError:true,strict:'ignore'});report.neutralProbe={latex:'\\frac{\\mathstrut 0}{\\mathstrut 0}',htmlSHA256:hash(neutralFractionHTML),katexVersion:katex.version};
+    const {chromium:axisChromium}=requireFromSource('@playwright/test');browser=await axisChromium.launch({headless:true});context=await browser.newContext({viewport:{width,height:900},locale:'ja-JP'});const page=await context.newPage();page.on('pageerror',error=>{report.errors.push(String(error));persist();});
+    const settle=async()=>page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+    const items=new Map(unit.sections.flatMap(section=>section.items).map(item=>[item.id,item])),anchors=new Map();
+    const capture=async(interaction,phase)=>{await settle();const measured=await page.evaluate(measureRevision3AxisDOM,{coverage:R3_AXIS_COVERAGE,neutralFractionHTML});for(const row of measured.observations){for(const physical of row.packet.rows){for(const [anchor,value]of Object.entries(physical.anchors)){const key=measured.stageId+'/'+row.groupId+'/'+physical.id+'/'+anchor,previous=anchors.get(key);if(previous!==undefined)row.packet.anchorDeltas.push({anchor:physical.id+'/'+anchor,deltaPx:value-previous,comparison:'previous-observed-state-in-same-stage'});anchors.set(key,value);}}row.originalAxisCheck=checkAxisMeasurements(row.packet);}const state={interaction,phase,sourceSHA:checkpointContextSource(checkpointContext),width,...measured};const file=String(report.captures.length).padStart(3,'0')+'-'+phase+'-'+interaction+'.json';write(file,state);report.captures.push({interaction,phase,file,sha256:hash(fs.readFileSync(path.join(out,file))),...measured});persist();assert.equal(measured.rectInvariance.unchanged,true,'AXIS_PROBES_CHANGED_GEOMETRY');assert.equal(measured.rectInvariance.temporaryProbesRemoved,true,'AXIS_PROBE_CLEANUP_FAILED');assert.deepEqual(report.errors,[],'AXIS_APP_ERRORS');};
+    await page.goto(cfg.appURL+'#/learning/textbook/'+unit.unitId);await page.locator('[data-qf01-revision="3"]').waitFor();await settle();assert.equal(await page.getByTestId('qf01-r3-binding-error').count(),0);
+    for(const q of metadata.interactions){let moves=0;while(await page.locator('.math-textbook-stage--current').getAttribute('data-testid')!=='math-textbook-stage-'+q.stageId){assert.ok(++moves<=9,'AXIS_STAGE_NAVIGATION_BOUND');await page.getByRole('button',{name:'次の段階へ',exact:true}).click();await settle();}const slot=page.getByTestId('textbook-item-'+q.id);await slot.waitFor();assert.equal(await slot.isEnabled(),true);await capture(q.id,'unanswered');await slot.click();const options=page.getByTestId('inline-choice-panel-'+q.id).locator('button.reading-choice-option'),labels=await options.evaluateAll(es=>es.map(e=>e.getAttribute('aria-label'))),answer=items.get(q.id).answer,index=labels.findIndex(label=>label?.endsWith('、'+answer));assert.ok(index>=0,'AXIS_UI_ANSWER_CHOICE_REQUIRED');await options.nth(index).click();await settle();const progress=await page.evaluate(({key,unitId})=>JSON.parse(localStorage.getItem(key)??'null')?.state?.textbookProgress?.[unitId],{key:STORAGE_KEY,unitId:unit.unitId});assert.equal(progress?.unitRevision,3);assert.equal(progress.answers[q.id].resolved,true);assert.equal(progress.answers[q.id].value,answer);report.actions.push({interaction:q.id,kind:'actual-ui-correct-choice',resolved:true});await capture(q.id,'correct');}
+    report.coverage=summarizeRevision3AxisCoverage(report.captures);report.uiCoverage={requiredInteractions:35,actualCorrectChoices:report.actions.length,capturedStates:report.captures.length,phases:['unanswered','correct'],normalQACountsModified:false};assert.equal(report.actions.length,35);assert.equal(report.captures.length,70);verifyDist(distRoot,manifest);checker.verifySource({sourceRoot,publisherRoot,baselineRoot:env.BASELINE_ROOT,contract});report.sourceProofAfter=verifyCheckpointSource(sourceRoot,manifest.publisherSHA,contract,checkpointContext);assert.deepEqual(report.sourceProofAfter,report.sourceProof);assert.equal(hash(fs.readFileSync(contractPath)),report.contractSHA256);assert.equal(hash(fs.readFileSync(manifestPath)),report.distManifestSHA256);assert.equal(hash(fs.readFileSync(THIS_FILE)),report.scriptSHA256);assert.equal(hash(fs.readFileSync(validatorPath)),report.axisValidator.sha256);write('HTTP_SOURCE_AFTER.json',await httpSourceProof(cfg.appURL,manifest));report.httpAfterSHA256=hash(fs.readFileSync(path.join(out,'HTTP_SOURCE_AFTER.json')));report.status='CAPTURED_NOT_A_GATE_PASS';persist();return report;
+  } catch(error){report.status='CAPTURE_INCOMPLETE_NOT_A_GATE_PASS';report.errors.push(String(error));report.coverage=summarizeRevision3AxisCoverage(report.captures);persist();throw error;}
+  finally{await context?.close();await browser?.close();}
+}
+
+export async function checkpointMain(env = process.env) {
+  assert.ok(env.QF01_CONTRACT && env.QF01_DIST_MANIFEST, 'CONTRACT_AND_DIST_MANIFEST_REQUIRED');
+  const originalCwd = process.cwd();
+  const sourceRoot = fs.realpathSync(path.resolve(env.SOURCE_ROOT ?? originalCwd));
+  const distRoot = fs.realpathSync(path.resolve(env.DIST_ROOT ?? path.join(sourceRoot, 'dist')));
+  const contractPath = fs.realpathSync(path.resolve(env.QF01_CONTRACT));
+  const manifestPath = fs.realpathSync(path.resolve(env.QF01_DIST_MANIFEST));
+  ensureOutside(manifestPath, distRoot, 'DIST_MANIFEST_MUST_BE_OUTSIDE_DIST');
+  const contractBytes = fs.readFileSync(contractPath), manifestBytes = fs.readFileSync(manifestPath);
+  const contract = JSON.parse(contractBytes), manifest = JSON.parse(manifestBytes);
+  const checkpointContext=await checkpointBrowserContext(contract);
+  const configuration=checkpointConfiguration(contract,manifest,contractBytes,env,checkpointContext);
+  const verifySource=(root,sha,c)=>verifyCheckpointSource(root,sha,c,checkpointContext);
+  const addReportBinding=(out,binding,failure)=>addCheckpointReportBinding(out,binding,failure,checkpointContext);
+  const runRevision3BoundedInputSuccessorAudits=args=>runCheckpointBoundedInputSuccessorAudits({...args,checkpointContext});
+  if(configuration.revision3){const checker=await import('./qf01-publish-check.mjs');checker.assertContract(contract);assert.ok(env.CORE_ROOT,'R3_CORE_ROOT_REQUIRED');checker.verifyCoreBinding({coreRoot:env.CORE_ROOT,materialRoot:sourceRoot,contract});checker.verifySource({sourceRoot,publisherRoot:env.PUBLISHER_ROOT??path.resolve(path.dirname(THIS_FILE),'../..'),baselineRoot:env.BASELINE_ROOT,contract});}
+  verifyDist(distRoot, manifest);
+  verifyRelease(json(path.join(distRoot, 'qf01-release.json')), manifest);
+  const sourceProof = verifySource(sourceRoot, manifest.publisherSHA, contract);
+  const outputRoot = canonicalOutput(path.resolve(env.OUT ?? '/tmp/qf01-production-browser-' + (env.GITHUB_RUN_ID ?? process.pid)));
+  for (const protectedDir of [distRoot, path.join(sourceRoot, 'src'), path.join(sourceRoot, 'public'), path.join(sourceRoot, '.git')]) ensureOutside(outputRoot, protectedDir, 'OUTPUT_OVERLAPS_PROTECTED_DIRECTORY');
+  freshDirectory(outputRoot);
+  const requireFromSource = createRequire(path.join(sourceRoot, 'package.json'));
+  ({chromium} = requireFromSource('@playwright/test'));
+  const summary = {authorityVariant:'qf01-checkpoint-recovery/1',methodAuthorityRef:checkpointContext.methodAuthorityRef,checkpointBrowserAdapterSHA256:checkpointBrowserAdapterSHA256(),independent:false,sourceFirst:false,firstPass:false,sourceSHA:contract.sourceSHA, publisherSHA: manifest.publisherSHA, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, storageKey: STORAGE_KEY, widths: configuration.widths, status: 'RUNNING', results: [], userAcceptance: false};
+  const persistSummary = () => fs.writeFileSync(path.join(outputRoot, 'QF01_BROWSER_RESULT.json'), JSON.stringify(summary, null, 2) + '\n');
+  persistSummary();
+  const oldEnv = Object.fromEntries(['SOURCE_SHA','WIDTH','OUT','APP_URL','STORAGE_KEY'].map(key => [key, process.env[key]]));
+  try {
+    process.chdir(sourceRoot);
+    for (const width of configuration.widths) {
+      const widthOut = configuration.widths.length === 1 ? outputRoot : path.join(outputRoot, String(width));
+      if (widthOut !== outputRoot) freshDirectory(widthOut);
+      const binding = {...sourceProof,...(configuration.revision3?{phase:'R3_NORMAL_PRODUCTION_QA'}:{}), captureRunID:String(env.GITHUB_RUN_ID??manifest.buildRunID),captureAttempt:Number(env.GITHUB_RUN_ATTEMPT??manifest.attempt),appURL: configuration.appURL, publicHTTPProof: configuration.isPublic, width, storageKey: STORAGE_KEY, basePath: BASE_PATH, contractSHA256: hash(contractBytes), distManifestSHA256: hash(manifestBytes), distFiles: manifest.files};
+      try {
+        const before = await httpSourceProof(configuration.appURL, manifest);
+        fs.writeFileSync(path.join(widthOut, 'HTTP_SOURCE_BEFORE.json'), JSON.stringify(before, null, 2) + '\n');
+        Object.assign(process.env, {SOURCE_SHA:contract.sourceSHA, WIDTH: String(width), OUT: widthOut, APP_URL: configuration.appURL, STORAGE_KEY});
+        if(configuration.revision3)await runRevision3AssertionBody({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});else await runCurrentAssertionBody();
+        let report = addReportBinding(widthOut, binding);
+        if(configuration.revision3){checkRevision3Coverage(report,json(path.join(sourceRoot,'src/data/textbook/math/quadratic/qf01Unit.json')).requiredInteractionRefs);await runRevision3BoundedInputSuccessorAudits({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});}else{checkFullCoverage(report);await runBoundedInputAudits({sourceRoot,appURL:configuration.appURL,width,out:widthOut,binding});}
+        verifyDist(distRoot, manifest);
+        assert.equal(hash(fs.readFileSync(contractPath)), hash(contractBytes), 'CONTRACT_CHANGED_DURING_QA');
+        assert.equal(hash(fs.readFileSync(manifestPath)), hash(manifestBytes), 'DIST_MANIFEST_CHANGED_DURING_QA');
+        verifySource(sourceRoot, manifest.publisherSHA, contract);
+        const after = await httpSourceProof(configuration.appURL, manifest);
+        fs.writeFileSync(path.join(widthOut, 'HTTP_SOURCE_AFTER.json'), JSON.stringify(after, null, 2) + '\n');
+        report = addReportBinding(widthOut, {...binding, beforeHTTPProofSHA256: hash(fs.readFileSync(path.join(widthOut, 'HTTP_SOURCE_BEFORE.json'))), afterHTTPProofSHA256: hash(fs.readFileSync(path.join(widthOut, 'HTTP_SOURCE_AFTER.json')))});
+        summary.results.push({width, states: report.states.length, reportPath: path.join(widthOut, 'REPORT.json'), reportSHA256: hash(fs.readFileSync(path.join(widthOut, 'REPORT.json'))), coverage: report.coverage, status: report.status});
+        persistSummary();
+      } catch (error) {
+        addReportBinding(widthOut, binding, error);
+        throw error;
+      }
+    }
+    summary.status = 'QF01_PRODUCTION_CONDITION_QA_PASSED_NOT_USER_ACCEPTANCE';
+    persistSummary();
+    console.log(JSON.stringify({status: summary.status, sourceSHA: contract.sourceSHA, publisherSHA: manifest.publisherSHA, widths: configuration.widths, states: summary.results.reduce((n,row) => n + row.states, 0), output: outputRoot}));
+    return summary;
+  } catch (error) {
+    summary.status = 'FAIL'; summary.failure = String(error); persistSummary(); throw error;
+  } finally {
+    process.chdir(originalCwd);
+    for (const [key, value] of Object.entries(oldEnv)) { if (value === undefined) delete process.env[key]; else process.env[key] = value; }
+  }
+}
+
+async function checkpointBrowserEntrypoint(){
+ if(process.argv[2]==='--draft-design-preview')return runDraftDesignPreview();
+ const contract=process.env.QF01_CONTRACT?json(process.env.QF01_CONTRACT):null;
+ if(checkpointRequested(contract))return process.argv[2]==='--r3-axis-supplement'?runCheckpointAxisSupplement():checkpointMain();
+ return process.argv[2]==='--r3-axis-supplement'?runRevision3AxisSupplement():main();
+}
+// CHECKPOINT_BROWSER_ADAPTER_END
+export const CHECKPOINT_BROWSER_ADAPTER_SHA256='f055230c60594195ea83eb25587938e18008d740be8b0183cb37586e21fcdba3';
+
 export async function main(env = process.env) {
   assert.ok(env.QF01_CONTRACT && env.QF01_DIST_MANIFEST, 'CONTRACT_AND_DIST_MANIFEST_REQUIRED');
   const originalCwd = process.cwd();
@@ -896,4 +1131,4 @@ export async function main(env = process.env) {
     for (const [key, value] of Object.entries(oldEnv)) { if (value === undefined) delete process.env[key]; else process.env[key] = value; }
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === THIS_FILE) (process.argv[2]==='--r3-axis-supplement'?runRevision3AxisSupplement():process.argv[2]==='--draft-design-preview'?runDraftDesignPreview():main()).catch(error => { console.error(error); process.exitCode = 1; });
+if (process.argv[1] && path.resolve(process.argv[1]) === THIS_FILE) checkpointBrowserEntrypoint().catch(error => { console.error(error); process.exitCode = 1; });

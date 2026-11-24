@@ -416,7 +416,7 @@ test('D04 TEST_FIXTURE report cannot overwrite the old C diagnostic or claim it 
  for(const mutate of [x=>x.args.state.evidence[MATH_RENDERING_EVIDENCE].data.sha256='0'.repeat(64),x=>x.old.sourceSHA='c'.repeat(40),x=>x.old.status='PASS',x=>x.old.newProductRepairApplied=true,x=>x.old.blocksMaterialR04PASS=false]){const x=mathReportBoundaryFixture();mutate(x);assert.throws(()=>x.check(x.args));}
 });
 
-import {coreCanonical,validateMathRenderingOwnerRevision,validateCheckpointIntentClosureFields} from './qf01-publish-check.mjs';
+import {nativeJSONClone,coreCanonical,validateMathRenderingOwnerRevision,validateCheckpointIntentClosureFields} from './qf01-publish-check.mjs';
 function mathOwnerBindingFixture(){
  const owner='W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',primary='W-MATH-QF01-FULL-RELEASE-P035-20261115';
  const adoptedRecovery='1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b';
@@ -533,7 +533,7 @@ function checkMixedOwnerBinding(f){
  const isolated=source.slice(start,end).replace('export function validateMixedInlineOwnerRevision','function check');
  const historical=mathRenderingFixture().repair;historical.candidateAfterSHA=MIXED_INLINE_BASELINE;historical.afterRepair=structuredClone(f.options.mixedRecords[0].beforeRepair);
  f.primaryState.checkpoint_definition_migration.mathRenderingRepair=structuredClone(historical);f.ownerState.informed_technical_candidate_reconciliation.proof.gitProof.currentMaterialGitProof.mathRenderingRepair=structuredClone(historical);rehashMixedOwnerFixture(f);
- const dependencies={assert,mixedInlineRollbackPreimages:(records=[])=>[Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).filter(([p])=>NEARBY_REPAIR_PRODUCT_PATHS.includes(p)).map(([p,r])=>[p,r.afterSHA256])),mathRenderingFixture().repair.beforeRepair,...records.map(r=>r.afterRepair)],cpPlain:x=>x!==null&&typeof x==='object'&&!Array.isArray(x),canonical:coreCanonical,nativeDigest,validateMixedInlineRepairRecord,validateMixedInlineRepairContinuation,validateMathRenderingRepairRecord,MIXED_INLINE_PREDECESSOR_DIGEST:nativeDigest(historical),MIXED_INLINE_BASELINE,MIXED_INLINE_BEFORE:historical.afterRepair,MIXED_INLINE_PROPOSAL_SHA256,INFORMED_REVIEW_PROPOSAL_SHA256:'706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60',CHECKPOINT_RECOVERY_WORK:'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',CP_PRIMARY:'W-MATH-QF01-FULL-RELEASE-P035-20261115',CHECKPOINT_ADOPTION_SHA256:'1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b',NEARBY_REPAIR_PRODUCT_PATHS,CP_REPAIRS:Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).map(([p,r])=>[p,r.afterSHA256]))};
+ const dependencies={assert,nativeJSONClone,mixedInlineRollbackPreimages:(records=[])=>[Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).filter(([p])=>NEARBY_REPAIR_PRODUCT_PATHS.includes(p)).map(([p,r])=>[p,r.afterSHA256])),mathRenderingFixture().repair.beforeRepair,...records.map(r=>r.afterRepair)],cpPlain:x=>x!==null&&typeof x==='object'&&!Array.isArray(x),canonical:coreCanonical,nativeDigest,validateMixedInlineRepairRecord,validateMixedInlineRepairContinuation,validateMathRenderingRepairRecord,MIXED_INLINE_PREDECESSOR_DIGEST:nativeDigest(historical),MIXED_INLINE_BASELINE,MIXED_INLINE_BEFORE:historical.afterRepair,MIXED_INLINE_PROPOSAL_SHA256,INFORMED_REVIEW_PROPOSAL_SHA256:'706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60',CHECKPOINT_RECOVERY_WORK:'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',CP_PRIMARY:'W-MATH-QF01-FULL-RELEASE-P035-20261115',CHECKPOINT_ADOPTION_SHA256:'1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b',NEARBY_REPAIR_PRODUCT_PATHS,CP_REPAIRS:Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).map(([p,r])=>[p,r.afterSHA256]))};
  const check=new Function(...Object.keys(dependencies),isolated+';return check;')(...Object.values(dependencies));
  return check(f.ownerState,f.primaryState,f.plan,{...f.options,mathRecords:[historical]});
 }
@@ -648,7 +648,7 @@ function checkInlineOwnerBinding(f){
  const isolated=source.slice(start,end).replace('export function validateInlineLayoutOwnerRevision','function check');
  const historical=mathRenderingFixture().repair;historical.candidateAfterSHA=MIXED_INLINE_BASELINE;historical.afterRepair=structuredClone(f.options.mixedRecords[0].beforeRepair);
  f.primaryState.checkpoint_definition_migration.mathRenderingRepair=structuredClone(historical);f.ownerState.informed_technical_candidate_reconciliation.proof.gitProof.currentMaterialGitProof.mathRenderingRepair=structuredClone(historical);rehashMixedOwnerFixture(f);
- const dependencies={assert,INLINE_LAYOUT_PROPOSAL_SHA256,validateInlineLayoutRepairRecord,validateInlineLayoutRepairContinuation,mixedInlineRollbackPreimages:(records=[])=>[Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).filter(([p])=>NEARBY_REPAIR_PRODUCT_PATHS.includes(p)).map(([p,r])=>[p,r.afterSHA256])),mathRenderingFixture().repair.beforeRepair,...records.map(r=>r.afterRepair)],cpPlain:x=>x!==null&&typeof x==='object'&&!Array.isArray(x),canonical:coreCanonical,nativeDigest,validateMixedInlineRepairRecord,validateMixedInlineRepairContinuation,validateMathRenderingRepairRecord,MIXED_INLINE_PREDECESSOR_DIGEST:nativeDigest(historical),MIXED_INLINE_BASELINE,MIXED_INLINE_BEFORE:historical.afterRepair,MIXED_INLINE_PROPOSAL_SHA256,INFORMED_REVIEW_PROPOSAL_SHA256:'706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60',CHECKPOINT_RECOVERY_WORK:'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',CP_PRIMARY:'W-MATH-QF01-FULL-RELEASE-P035-20261115',CHECKPOINT_ADOPTION_SHA256:'1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b',NEARBY_REPAIR_PRODUCT_PATHS,CP_REPAIRS:Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).map(([p,r])=>[p,r.afterSHA256]))};
+ const dependencies={assert,nativeJSONClone,INLINE_LAYOUT_PROPOSAL_SHA256,validateInlineLayoutRepairRecord,validateInlineLayoutRepairContinuation,mixedInlineRollbackPreimages:(records=[])=>[Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).filter(([p])=>NEARBY_REPAIR_PRODUCT_PATHS.includes(p)).map(([p,r])=>[p,r.afterSHA256])),mathRenderingFixture().repair.beforeRepair,...records.map(r=>r.afterRepair)],cpPlain:x=>x!==null&&typeof x==='object'&&!Array.isArray(x),canonical:coreCanonical,nativeDigest,validateMixedInlineRepairRecord,validateMixedInlineRepairContinuation,validateMathRenderingRepairRecord,MIXED_INLINE_PREDECESSOR_DIGEST:nativeDigest(historical),MIXED_INLINE_BASELINE,MIXED_INLINE_BEFORE:historical.afterRepair,MIXED_INLINE_PROPOSAL_SHA256,INFORMED_REVIEW_PROPOSAL_SHA256:'706ac7b5231831cfee8d67fe2a6080a05e2bb7c9770c3d246ec5a8ca8bcb5c60',CHECKPOINT_RECOVERY_WORK:'W-TECH-QF01-CHECKPOINT-RECOVERY-20261122',CP_PRIMARY:'W-MATH-QF01-FULL-RELEASE-P035-20261115',CHECKPOINT_ADOPTION_SHA256:'1d167fe02fa7e6fa8480f45e5c0bb02d5d401f869e82952940311103284ee86b',NEARBY_REPAIR_PRODUCT_PATHS,CP_REPAIRS:Object.fromEntries(Object.entries(checkpointCoreFixture().git32Diff.repairs).map(([p,r])=>[p,r.afterSHA256]))};
  const check=new Function(...Object.keys(dependencies),isolated+';return check;')(...Object.values(dependencies));
  return check(f.ownerState,f.primaryState,f.plan,{...f.options,mathRecords:[historical]});
 }
@@ -698,3 +698,73 @@ test('CP V5 TEST_FIXTURE retained config preserves explicit null refusal and ver
  assert.throws(()=>retainedPinHashes({...contract,TEST_FIXTURE:'changed'},pins),cpRetainedPinFailure(pins));for(const bad of [{},{...pins,schemaVersion:'unknown'},{...pins,contractSHA256:'bad'},{...pins,unknown:true}])assert.throws(()=>cpRetainedPS(bad));
 });
 // CHECKPOINT_RETAINED_PIN_CONFIG_V5_END
+
+// CP_NATIVE_NUMBER_PROVENANCE_TESTS_BEGIN -- synthetic only, no actual ledger.
+const cpNativeNumber=await import('./qf01-publish-check.mjs');
+test('CP native numeric lexical: integer and safe integral float hashes stay distinct',()=>{
+ const a=cpNativeNumber.parseNativeJSON('{"a":8.0,"b":8,"z":-0.0}');
+ assert.equal(cpNativeNumber.coreCanonical(a),'{"a":8.0,"b":8,"z":-0.0}');
+ assert.notEqual(cpNativeNumber.nativeDigest(a),cpNativeNumber.nativeDigest(JSON.parse(cpNativeNumber.coreCanonical(a))));
+ assert.equal(cpNativeNumber.coreCanonical({a:8,b:8,z:0}),'{"a":8,"b":8,"z":0}');
+});
+test('CP native numeric lexical: clone retains object and array edge provenance',()=>{
+ const a=cpNativeNumber.parseNativeJSON('{"array":[8.0,8,-0.0],"nested":{"value":-8.0}}');
+ assert.equal(cpNativeNumber.coreCanonical(cpNativeNumber.nativeJSONClone(a)),cpNativeNumber.coreCanonical(a));
+ const spread={...a,extra:true};assert.equal(cpNativeNumber.coreCanonical(spread),'{"array":[8.0,8,-0.0],"extra":true,"nested":{"value":-8.0}}');
+});
+test('CP native numeric lexical: changed annotated number refuses digest clone and output',()=>{
+ for(const change of [v=>v.x=9,v=>v.x='8',v=>v.x=null]){
+  const v=cpNativeNumber.parseNativeJSON('{"x":8.0}');change(v);
+  for(const f of [cpNativeNumber.nativeDigest,cpNativeNumber.nativeJSONClone,cpNativeNumber.nativeJSONStringify])assert.throws(()=>f(v),/NATIVE_NUMBER_PROVENANCE_VALUE_CHANGED/);
+ }
+});
+test('CP native numeric lexical: extension accepts only exact safe Python integral floats',()=>{
+ for(const token of ['0.0','-0.0','8.0','-8.0','9007199254740991.0','-9007199254740991.0'])assert.equal(cpNativeNumber.coreCanonical(cpNativeNumber.parseNativeJSON('{"x":'+token+'}')),'{"x":'+token+'}');
+ for(const token of ['8.00','8e0','8E0','-0','9007199254740992.0','1e-07','1.00'])assert.throws(()=>cpNativeNumber.parseNativeJSON('{"x":'+token+'}'),/NATIVE_UNSUPPORTED_NUMBER_LEXEME/);
+ assert.throws(()=>cpNativeNumber.parseNativeJSON('8.0'),/NATIVE_PRIMITIVE_FLOAT_ROOT_UNSUPPORTED/);
+});
+test('CP native numeric lexical: ordinary JSON numbers retain pre-existing canonical spelling',()=>{
+ for(const text of ['{"x":8}','{"x":0.25}','{"x":1e-7}','{"x":100000000000000000000}'])assert.equal(cpNativeNumber.coreCanonical(cpNativeNumber.parseNativeJSON(text)),text);
+});
+test('CP native numeric lexical: malformed duplicate BOM and excessive nesting fail closed',()=>{
+ for(const text of ['{"x":8.0,"x":8}','{"x":8.0,"\\u0078":8}','{"x":NaN}','{"x":01}','{"x":8.0}tail','\uFEFF{"x":8.0}'])assert.throws(()=>cpNativeNumber.parseNativeJSON(text));
+ assert.throws(()=>cpNativeNumber.parseNativeJSON('['.repeat(512)+'0'+']'.repeat(512)),/NATIVE_JSON_DEPTH/);
+});
+test('CP native numeric lexical: pinned Node rawJSON supports lossless pretty roundtrip',()=>{
+ assert.equal(typeof JSON.rawJSON,'function','PINNED_NODE_RAW_JSON_REQUIRED');
+ const value=cpNativeNumber.parseNativeJSON('{"value":8.0,"values":[0.0,-0.0,8]}'),text=cpNativeNumber.nativeJSONStringify(value,null,2);
+ assert.equal(cpNativeNumber.coreCanonical(cpNativeNumber.parseNativeJSON(text)),cpNativeNumber.coreCanonical(value));
+ assert.ok(text.includes('8.0'));assert.ok(text.includes('-0.0'));
+});
+test('CP native numeric lexical: event body construction retains exact synthetic native hash',()=>{
+ const text='{"kind":"evidence","payload":{"value":8.0},"seq":1}',body=cpNativeNumber.parseNativeJSON(text),hash=createHash('sha256').update(text).digest('hex');
+ const event={...body,hash},without={...cpNativeNumber.nativeJSONClone(event)};delete without.hash;
+ assert.equal(cpNativeNumber.nativeDigest(without),hash);
+ without.payload.value=8.5;assert.throws(()=>cpNativeNumber.nativeDigest(without),/NATIVE_NUMBER_PROVENANCE_VALUE_CHANGED/);
+});
+// CP_NATIVE_NUMBER_PROVENANCE_TESTS_END
+
+// CP_NATIVE_NUMBER_ROOT_BODY_V3_BEGIN -- canonical hashes generated by Python stdlib.
+test('CP native numeric lexical V3: root float event and known-prefix hashes preserve Python bytes',()=>{
+ const source="{\"id\":\"TEST_FIXTURE-root-float\",\"kind\":\"TEST_FIXTURE\",\"payload\":{\"value\":8.0},\"previous\":\"586be1a3dfeb92e9699cc82ef330131d10b22a78353c165d5610f181d6201106\",\"seq\":13743,\"time\":100.0,\"work\":\"TEST_FIXTURE\"}",expected="b7231848482004c067f2c3f5cdcc0e4bdc77ade52075b55eca3723b536fe7549",prefixSource="{\"id\":\"TEST_FIXTURE-prefix-float\",\"kind\":\"TEST_FIXTURE\",\"payload\":{\"value\":8.0},\"previous\":\"0000000000000000000000000000000000000000000000000000000000000000\",\"seq\":13742,\"time\":100.0,\"work\":\"TEST_FIXTURE\"}",prefixHash="f16643860745609b095b0b52c26f67a9ee532a0f3203639e6940f125a0dd57cd";
+ const event=cpNativeNumber.parseNativeJSON(source);event.hash=expected;
+ const prefix=cpNativeNumber.parseNativeJSON(prefixSource);prefix.hash=prefixHash;
+ const shallow={...event};delete shallow.hash;assert.notEqual(cpNativeNumber.nativeDigest(shallow),expected,'shallow-copy control reproduces root-edge loss');
+ const body=cpNativeNumber.nativeJSONClone(event);delete body.hash;
+ assert.equal(cpNativeNumber.coreCanonical(body),source);assert.equal(cpNativeNumber.nativeDigest(body),expected);
+ const checked=cpNativeNumber.validateCheckpointSuffixChain([event],{knownPrefixEvents:[prefix]});assert.equal(checked.anchor.head,expected);
+ const changed=cpNativeNumber.nativeJSONClone(event);changed.time=101;
+ assert.throws(()=>cpNativeNumber.validateCheckpointSuffixChain([changed]),/NATIVE_NUMBER_PROVENANCE_VALUE_CHANGED/);
+ const changedPrefix=cpNativeNumber.nativeJSONClone(prefix);changedPrefix.time=101;
+ assert.throws(()=>cpNativeNumber.validateCheckpointSuffixChain([],{knownPrefixEvents:[changedPrefix]}),/NATIVE_NUMBER_PROVENANCE_VALUE_CHANGED/);
+});
+test('CP native numeric lexical V3: packet and original-report field removal keeps root and nested floats',()=>{
+ const source="{\"nested\":{\"value\":8.0},\"score\":100.0}",expected="2687e083ad23469a6e461b709a5a1303f08a74b07f2ac2de2bc1ffb77037dac2";
+ for(const field of ['hash','packetHash','harnessOutputRef','outputRef','registrationRef']){
+  const original=cpNativeNumber.parseNativeJSON(source);original[field]='TEST_FIXTURE';
+  const body=cpNativeNumber.nativeJSONClone(original);delete body[field];
+  assert.equal(cpNativeNumber.coreCanonical(body),source);assert.equal(cpNativeNumber.nativeDigest(body),expected);
+  body.score=101;assert.throws(()=>cpNativeNumber.nativeDigest(body),/NATIVE_NUMBER_PROVENANCE_VALUE_CHANGED/);
+ }
+});
+// CP_NATIVE_NUMBER_ROOT_BODY_V3_END

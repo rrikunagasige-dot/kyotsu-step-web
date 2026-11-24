@@ -51,8 +51,8 @@ jobs:
       contents: read
     env:
       # D06 source_ci preparation uses this exact public core; historical D3 remains separate.
-      CHECKPOINT_CORE_SHA: 73512ae65f1f8e53505d7b11765e94b749629abe
-      CHECKPOINT_CURRENT_TEST_COUNT: 251
+      CHECKPOINT_CORE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
+      CHECKPOINT_CURRENT_TEST_COUNT: 269
       # Historical P11 assertion repair and test inventory; D05 runs its own current suite.
       CHECKPOINT_TEST_HARNESS_SHA: c0be347fdc2bcf8f749aff1518c4620955ee93d3
       CHECKPOINT_TEST_RUNTIME_SHA256: 2f9cc760f1430fae665b26fa0e0d36b077bab690f0201fb3ace67f0bfb92e92d
@@ -102,7 +102,7 @@ jobs:
                  and pins['CHECKPOINT_CORE_SHA'] != pins['CHECKPOINT_MIXED_BASELINE_SHA']
                  and pins['CHECKPOINT_CORE_SHA'] not in (pins['CHECKPOINT_BASELINE_REPAIR_SHA'], pins['CHECKPOINT_MATH_BASELINE_SHA'])
                  and pins['CHECKPOINT_TEST_HARNESS_SHA'] != pins['CHECKPOINT_CORE_SHA']
-                 and os.environ['CHECKPOINT_CURRENT_TEST_COUNT'] == '251'
+                 and os.environ['CHECKPOINT_CURRENT_TEST_COUNT'] == '269'
                  and re.fullmatch(r'[0-9a-f]{64}', os.environ['CHECKPOINT_TEST_RUNTIME_SHA256']) is not None
                  and pins['CHECKPOINT_AUTHORITY_SHA'] == '55d844f20c0de3390ad6718ee8d01968ebbb8676'
                  and pins['CHECKPOINT_ORIGIN_SOURCE_SHA'] == '1f10ecbcd088ca8636932c8df4c7b85293777efc'
@@ -527,7 +527,7 @@ jobs:
                 if isinstance(t,unittest.TestSuite): yield from flatten(t)
                 else: yield t
         ids=[t.id() for t in flatten(suite)]
-        assert len(ids)==len(set(ids))==binding['expectedCurrentTestCount'] and set(binding['retainedTestIDs']).issubset(ids) and set(binding['retainedD05TestIDs']).issubset(ids), 'All251 current tests,179 P11 and207 D05 cases must execute once'
+        assert len(ids)==len(set(ids))==binding['expectedCurrentTestCount'] and set(binding['retainedTestIDs']).issubset(ids) and set(binding['retainedD05TestIDs']).issubset(ids), 'All269 current tests,179 P11 and207 D05 cases must execute once'
         assert Path(sys.modules['test_checkpoint_runtime'].__file__).resolve()==(target/binding['testRuntimePath']).resolve()
         (out/'CHECKPOINT_TEST_INVENTORY.json').write_text(json.dumps({'targetCoreSHA':binding['targetCoreSHA'],'testHarnessSHA':binding['testHarnessSHA'],'testIDs':ids,'count':len(ids)},indent=2)+'\n',encoding='utf-8')
         result=unittest.TextTestRunner(verbosity=2).run(suite)

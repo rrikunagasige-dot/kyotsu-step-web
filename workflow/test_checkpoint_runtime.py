@@ -2654,6 +2654,278 @@ class InlineLayoutFindingTests(unittest.TestCase):
             self.check()
 
 
+
+
+class CheckpointCommitDeadlineTests(unittest.TestCase):
+    """TEST_FIXTURE hash-valid tail; no authentic origin/Store/Runtime instance.
+
+    Real Tail lock/temp/hard-link operations are exercised in fresh fixture dirs.
+    Runtime._finish and adapter reconciliation wiring use explicit boundary fakes;
+    these are not a formal migration, full historical replay or acceptance test.
+    """
+    def setUp(self):
+        import checkpoint as cp
+        from types import SimpleNamespace
+        self.cp = cp
+        self.tmp = tempfile.TemporaryDirectory(prefix='TEST_FIXTURE_DEADLINE_',
+            dir=os.environ.get('QF01_DEADLINE_TEST_TEMP_ROOT'))
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        class View:
+            anchor = {'events': 0, 'head': '0'*64}
+            def state_snapshot(view, work):
+                return {'candidate_sha': 'f'*40, 'fixtureKind': 'TEST_FIXTURE'}
+            def object(view, reference):
+                raise cp.UnknownContext('TEST_FIXTURE_NO_ORIGIN_OBJECT')
+            def verify_suffix(view, rows):
+                values = [cp.strict_json(r) if isinstance(r,bytes) else copy.deepcopy(r)
+                          for r in rows]
+                previous = view.anchor['head']
+                for index,row in enumerate(values,1):
+                    cp.validate_event(row)
+                    if row['seq'] != index or row['previous'] != previous:
+                        raise cp.CheckpointRejected('TEST_FIXTURE_CHAIN')
+                    previous = row['hash']
+                return SimpleNamespace(events=lambda:copy.deepcopy(values))
+        self.tail = cp.CheckpointTail.create(self.root/'tail',View())
+        self.payload = {'fixtureKind':'TEST_FIXTURE','node':'R03_IMPACT@qf01-full-lesson'}
+
+    def inventory(self):
+        return {p.relative_to(self.tail.root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+                for p in self.tail.root.rglob('*') if p.is_file()}
+
+    def event(self, timestamp, deadline=None, eid='TEST_FIXTURE_EVENT'):
+        with patch.object(self.cp.time,'time',return_value=timestamp):
+            return self.tail.append('TEST_FIXTURE_EVENT',FIXED_WORK,self.payload,
+                expected=self.tail.head,event_id=eid,not_after=deadline)
+
+    def fake_runtime(self, actor='AI', *, checkpoint=True, work=FIXED_WORK,
+                     claim=True, expiry=100.0, claim_actor='TEST_FIXTURE_ACTOR'):
+        from types import SimpleNamespace
+        tail = self.tail
+        class StoreBoundary:
+            checkpoint_mode = checkpoint
+            def put(store, value): return tail.put(value)
+            def append(store, *args, **kwargs): return tail.append(*args, **kwargs)
+            @property
+            def head(store): return tail.head
+        snapshot = {'claims': {'TEST_FIXTURE_NODE': {'input_hash':'1'*64,
+                    'expires_at':expiry,'actor':claim_actor}} if claim else {}}
+        rt = SimpleNamespace(store=StoreBoundary(),_head=tail.head,
+                             snapshot=snapshot,state_reads=0)
+        def state(target):
+            self.assertEqual(target,work);rt.state_reads+=1
+            return copy.deepcopy(rt.snapshot)
+        rt.state=state;rt.input_hash=lambda s,n:'1'*64
+        rt.append=Runtime.append.__get__(rt)
+        node={'id':'TEST_FIXTURE_NODE','actor':actor}
+        return rt,node,work
+
+    def test_event_time_before_deadline_is_hash_bound_and_committed_once(self):
+        event=self.event(99.0,100.0)
+        self.assertEqual(event['time'],99.0)
+        self.assertEqual(event['hash'],self.cp.digest(self.cp.event_body(event)))
+        self.assertEqual(len(self.tail.events()),1)
+        self.assertFalse((self.tail.root/'.writer-lock').exists())
+        self.assertEqual(len(list((self.tail.root/'events').glob('*.json'))),1)
+
+    def test_equal_or_late_event_time_rejects_before_temp_or_link(self):
+        before=self.inventory();head=self.tail.head
+        for timestamp in (100.0,100.01):
+            with self.subTest(timestamp=timestamp),patch.object(self.cp.os,'link',wraps=self.cp.os.link)as link:
+                with self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_EXPIRED'):
+                    self.event(timestamp,100.0)
+                link.assert_not_called()
+            self.assertEqual(self.inventory(),before);self.assertEqual(self.tail.head,head)
+
+    def test_malformed_deadline_refused_without_any_tail_file_change(self):
+        before=self.inventory()
+        for deadline in (True,False,float('nan'),float('inf'),float('-inf'),-1,
+                         self.cp.MAX_SAFE_INTEGER+1,'100',{},[]):
+            with self.subTest(deadline=repr(deadline)),self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_TYPE'):
+                self.event(99.0,deadline)
+            self.assertEqual(self.inventory(),before)
+
+    def test_omitted_or_none_deadline_keeps_legacy_tail_behavior(self):
+        first=self.event(1000.0)
+        second=self.event(1001.0,None,'TEST_FIXTURE_SECOND')
+        self.assertEqual(second['previous'],first['hash'])
+        self.assertEqual(len(self.tail.events()),2)
+
+    def test_deadline_is_event_hash_time_not_a_new_physical_link_clock_rule(self):
+        clock=[90.0];verify=self.tail._checkpoint.verify_suffix
+        def delayed_verify(rows):
+            result=verify(rows)
+            if rows:clock[0]=200.0
+            return result
+        with patch.object(self.tail._checkpoint,'verify_suffix',side_effect=delayed_verify),patch.object(self.cp.time,'time',side_effect=lambda:clock[0]):
+            event=self.tail.append('TEST_FIXTURE_EVENT',FIXED_WORK,self.payload,
+                expected='0'*64,event_id='TEST_FIXTURE_EVENT',not_after=100.0)
+        self.assertEqual(event['time'],90.0);self.assertEqual(clock[0],200.0)
+        self.assertEqual(len(self.tail.events()),1)
+
+    def test_idempotent_existing_event_checks_original_time_not_new_wall_clock(self):
+        first=self.event(90.0,100.0);before=self.inventory()
+        with patch.object(self.cp.time,'time',side_effect=AssertionError('NO_NEW_TIMESTAMP')):
+            again=self.tail.append('TEST_FIXTURE_EVENT',FIXED_WORK,self.payload,
+                expected=self.tail.head,event_id='TEST_FIXTURE_EVENT',not_after=100.0)
+        self.assertEqual(first,again);self.assertEqual(self.inventory(),before)
+        with self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_EXPIRED'):
+            self.tail.append('TEST_FIXTURE_EVENT',FIXED_WORK,self.payload,
+                expected=self.tail.head,event_id='TEST_FIXTURE_EVENT',not_after=90.0)
+        self.assertEqual(self.inventory(),before)
+
+    def test_deadline_addition_keeps_observed_expected_head_cas(self):
+        self.event(90.0,100.0);before=self.inventory()
+        with self.assertRaises(self.cp.TailConflict):
+            self.tail.append('TEST_FIXTURE_EVENT',FIXED_WORK,self.payload,
+                expected='0'*64,event_id='TEST_FIXTURE_CAS',not_after=100.0)
+        self.assertEqual(self.inventory(),before)
+
+    def test_store_only_propagates_optional_deadline_without_runtime_state_read(self):
+        from types import SimpleNamespace
+        calls=[]
+        fake=SimpleNamespace(_validate_origin=lambda:None,
+            _tail=SimpleNamespace(append=lambda *args,**kwargs:calls.append((args,kwargs))or{}))
+        self.cp.CheckpointStore.append(fake,'TEST_FIXTURE_EVENT',FIXED_WORK,{},
+            expected='0'*64,not_after=100.0)
+        self.assertEqual(calls[-1][1]['not_after'],100.0)
+        self.cp.CheckpointStore.append(fake,'TEST_FIXTURE_EVENT',FIXED_WORK,{},expected='0'*64)
+        self.assertIsNone(calls[-1][1]['not_after'])
+
+    def test_finish_primary_claim_roles_forward_actual_snapshot_deadline(self):
+        for index,role in enumerate(('AI','AUDITOR','TOOL')):
+            rt,node,work=self.fake_runtime(role)
+            with patch.object(self.cp.time,'time',return_value=90.0):
+                reference=Runtime._finish(rt,work,node,{'verdict':'PASS','fixtureKind':'TEST_FIXTURE'},
+                    '1'*64,'TEST_FIXTURE_ACTOR')
+            event=self.tail.events()[-1]
+            self.assertEqual(event['payload']['artifact'],reference)
+            self.assertEqual(event['time'],90.0);self.assertEqual(rt.state_reads,1)
+            self.assertEqual(rt._head,event['hash'])
+
+    def test_finish_expiry_during_put_has_no_result_event_but_preserves_orphan(self):
+        rt,node,work=self.fake_runtime();clock=[90.0];original_put=rt.store.put
+        def heavy_put(value):
+            reference=original_put(value);clock[0]=100.0;return reference
+        rt.store.put=heavy_put
+        with patch.object(self.cp.time,'time',side_effect=lambda:clock[0]):
+            with self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_EXPIRED'):
+                Runtime._finish(rt,work,node,{'verdict':'PASS','fixtureKind':'TEST_FIXTURE'},
+                    '1'*64,'TEST_FIXTURE_ACTOR')
+        self.assertEqual(self.tail.events(),[]);self.assertEqual(rt._head,'0'*64)
+        self.assertEqual(len(list((self.tail.root/'artifacts').glob('*.json'))),1)
+        self.assertFalse((self.tail.root/'.writer-lock').exists())
+
+    def test_finish_missing_wrong_input_actor_or_deadline_cannot_fall_back_to_none(self):
+        for mutation in ('missing','input','actor','deadlineNone','deadlineBool','deadlineInf'):
+            rt,node,work=self.fake_runtime(claim=mutation!='missing')
+            if mutation=='input':rt.snapshot['claims'][node['id']]['input_hash']='2'*64
+            elif mutation=='actor':rt.snapshot['claims'][node['id']]['actor']='TEST_FIXTURE_OTHER'
+            elif mutation=='deadlineNone':rt.snapshot['claims'][node['id']]['expires_at']=None
+            elif mutation=='deadlineBool':rt.snapshot['claims'][node['id']]['expires_at']=True
+            elif mutation=='deadlineInf':rt.snapshot['claims'][node['id']]['expires_at']=float('inf')
+            before=self.inventory()
+            with self.subTest(mutation=mutation),self.assertRaises(ValueError):
+                Runtime._finish(rt,work,node,{'verdict':'PASS'},'1'*64,'TEST_FIXTURE_ACTOR')
+            self.assertEqual(self.inventory(),before)
+
+    def test_finish_concurrent_event_during_put_keeps_original_cas(self):
+        rt,node,work=self.fake_runtime();original_put=rt.store.put
+        def racing_put(value):
+            reference=original_put(value)
+            self.event(90.0,None,'TEST_FIXTURE_CONCURRENT')
+            return reference
+        rt.store.put=racing_put
+        with patch.object(self.cp.time,'time',return_value=90.0):
+            with self.assertRaises(self.cp.TailConflict):
+                Runtime._finish(rt,work,node,{'verdict':'PASS'},'1'*64,'TEST_FIXTURE_ACTOR')
+        self.assertEqual(rt._head,'0'*64);self.assertEqual(rt.state_reads,1)
+        self.assertEqual([e['id']for e in self.tail.events()],['TEST_FIXTURE_CONCURRENT'])
+
+    def test_finish_noncheckpoint_or_other_work_user_code_do_not_gain_deadline(self):
+        for checkpoint,work,role in ((False,FIXED_WORK,'AI'),(True,self.cp.RECOVERY_WORK,'AI'),
+                (True,self.cp.PUBLISHER_WORK,'TOOL'),(True,FIXED_WORK,'USER'),(True,FIXED_WORK,'CODE')):
+            rt,node,work=self.fake_runtime(role,checkpoint=checkpoint,work=work,claim=False)
+            calls=[];rt.store.put=lambda value:'3'*64
+            rt.store.append=lambda *a,**kw:calls.append((a,kw))or{'hash':'4'*64}
+            Runtime._finish(rt,work,node,{'verdict':'PASS'},'1'*64,'TEST_FIXTURE_ACTOR')
+            self.assertNotIn('not_after',calls[-1][1]);self.assertEqual(calls[-1][1]['expected'],'0'*64)
+
+    def adapter_fixture(self, expiry=100.0):
+        import adapters
+        from types import SimpleNamespace
+        tail=self.tail;token='TEST_FIXTURE_TOKEN';node='R06_PATCH@qf01-full-lesson'
+        claim={'kind':'claimed','payload':{'node':node,'token':token,'input_hash':'1'*64,'expires_at':expiry}}
+        proof={'fixtureKind':'TEST_FIXTURE','inputHash':'1'*64,
+               'claimTokenSHA256':hashlib.sha256(token.encode()).hexdigest(),
+               'ownerResultRefs':{'TEST_FIXTURE_OWNER':'2'*64},'verificationRefs':['TEST_FIXTURE_EID']}
+        class StoreBoundary:
+            @property
+            def head(store):return tail.head
+            def put(store,value):return tail.put(value)
+            def append(store,*args,**kwargs):return tail.append(*args,**kwargs)
+        rt=SimpleNamespace(store=StoreBoundary(),_head=tail.head)
+        rt.append=Runtime.append.__get__(rt)
+        rt.state=lambda *a:self.fail('RECONCILE_MUST_NOT_REFRESH_STATE_OR_HEAD')
+        return adapters,rt,node,token,claim,proof
+
+    def test_reconcile_forwards_unique_actual_claim_event_deadline_without_state_refresh(self):
+        a,rt,node,token,claim,proof=self.adapter_fixture()
+        with patch.object(a,'history_events',return_value=[claim]),patch.object(a,'_checkpoint_candidate_context',return_value=proof),patch.object(self.cp.time,'time',return_value=99.0):
+            result=a.reconcile_checkpoint_candidate(rt,FIXED_WORK,node,token,
+                owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref='3'*64,
+                verification_refs=proof['verificationRefs'],expected_head='0'*64)
+        event=self.tail.events()[-1];self.assertEqual(event['time'],99.0)
+        self.assertEqual(result['eventHash'],rt._head);self.assertEqual(event['kind'],'checkpoint_candidate_reconciled')
+
+    def test_reconcile_expiry_during_put_preserves_proof_but_appends_no_event(self):
+        a,rt,node,token,claim,proof=self.adapter_fixture();clock=[90.0];original_put=rt.store.put
+        def heavy_put(value):reference=original_put(value);clock[0]=100.0;return reference
+        rt.store.put=heavy_put
+        with patch.object(a,'history_events',return_value=[claim]),patch.object(a,'_checkpoint_candidate_context',return_value=proof),patch.object(self.cp.time,'time',side_effect=lambda:clock[0]):
+            with self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_EXPIRED'):
+                a.reconcile_checkpoint_candidate(rt,FIXED_WORK,node,token,
+                    owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref='3'*64,
+                    verification_refs=proof['verificationRefs'],expected_head='0'*64)
+        self.assertEqual(self.tail.events(),[]);self.assertEqual(rt._head,'0'*64)
+        self.assertEqual(len(list((self.tail.root/'artifacts').glob('*.json'))),1)
+
+    def test_reconcile_missing_duplicate_or_wrong_claim_input_rejected_before_put(self):
+        a,rt,node,token,claim,proof=self.adapter_fixture()
+        for rows in ([],[claim,copy.deepcopy(claim)],[dict(claim,payload=dict(claim['payload'],input_hash='9'*64))]):
+            before=self.inventory()
+            with patch.object(a,'history_events',return_value=rows),patch.object(a,'_checkpoint_candidate_context',return_value=proof):
+                with self.assertRaisesRegex(ValueError,'CHECKPOINT_RECONCILIATION_ACTUAL_CLAIM_EVENT'):
+                    a.reconcile_checkpoint_candidate(rt,FIXED_WORK,node,token,
+                        owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref='3'*64,
+                        verification_refs=proof['verificationRefs'],expected_head='0'*64)
+            self.assertEqual(self.inventory(),before)
+
+    def test_reconcile_missing_or_malformed_expiry_cannot_omit_the_deadline(self):
+        for expiry in (None,True,float('nan'),float('inf')):
+            a,rt,node,token,claim,proof=self.adapter_fixture(expiry)
+            before=self.inventory()
+            with patch.object(a,'history_events',return_value=[claim]),patch.object(a,'_checkpoint_candidate_context',return_value=proof):
+                with self.subTest(expiry=repr(expiry)),self.assertRaisesRegex(ValueError,'CHECKPOINT_APPEND_DEADLINE_TYPE'):
+                    a.reconcile_checkpoint_candidate(rt,FIXED_WORK,node,token,
+                        owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref='3'*64,
+                        verification_refs=proof['verificationRefs'],expected_head='0'*64)
+            self.assertEqual(self.inventory(),before)
+
+    def test_reconcile_concurrent_head_after_put_cannot_be_refreshed_or_rebased(self):
+        a,rt,node,token,claim,proof=self.adapter_fixture();original_put=rt.store.put
+        def racing_put(value):
+            reference=original_put(value);self.event(90.0,None,'TEST_FIXTURE_CONCURRENT');return reference
+        rt.store.put=racing_put
+        with patch.object(a,'history_events',return_value=[claim]),patch.object(a,'_checkpoint_candidate_context',return_value=proof),patch.object(self.cp.time,'time',return_value=90.0):
+            with self.assertRaisesRegex(ValueError,'CHECKPOINT_RECONCILIATION_HEAD_CHANGED'):
+                a.reconcile_checkpoint_candidate(rt,FIXED_WORK,node,token,
+                    owner_result_refs=proof['ownerResultRefs'],compile_receipt_ref='3'*64,
+                    verification_refs=proof['verificationRefs'],expected_head='0'*64)
+        self.assertEqual(rt._head,'0'*64)
+        self.assertEqual([e['id']for e in self.tail.events()],['TEST_FIXTURE_CONCURRENT'])
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
 

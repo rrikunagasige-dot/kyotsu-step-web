@@ -1599,11 +1599,20 @@ def reconcile_checkpoint_candidate(rt,work,node_id,token,*,owner_result_refs,com
     proof=_checkpoint_candidate_context(rt,work,node_id,token,owner_result_refs=owner_result_refs,
                compile_receipt_ref=compile_receipt_ref,verification_refs=verification_refs,ledger_head=expected_head)
     need(rt.store.head==expected_head,'CHECKPOINT_RECONCILIATION_HEAD_CHANGED')
+    # Read the actual claimed envelope without refreshing Runtime._head.
+    claims=[e['payload'] for e in history_events(rt,'suffix',work)
+            if e['kind']=='claimed' and e['payload'].get('node')==node_id
+            and e['payload'].get('token')==token
+            and e['payload'].get('input_hash')==proof['inputHash']]
+    need(len(claims)==1,'CHECKPOINT_RECONCILIATION_ACTUAL_CLAIM_EVENT')
+    from checkpoint import validate_append_deadline
+    deadline=claims[0].get('expires_at');validate_append_deadline(deadline)
     reference=rt.store.put(proof)
     need(rt.store.head==expected_head,'CHECKPOINT_RECONCILIATION_HEAD_CHANGED')
     event=rt.append('checkpoint_candidate_reconciled',work,{
         'schemaVersion':_CHECKPOINT_CANDIDATE_SCHEMA,'proofRef':reference,'node':node_id,
-        'inputHash':proof['inputHash'],'claimTokenSHA256':proof['claimTokenSHA256']})
+        'inputHash':proof['inputHash'],'claimTokenSHA256':proof['claimTokenSHA256']},
+        not_after=deadline)
     return {'proofRef':reference,'eventHash':event['hash'],'proof':proof}
 
 

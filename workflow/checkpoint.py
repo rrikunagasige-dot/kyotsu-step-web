@@ -315,6 +315,16 @@ MAX_EVENT_BYTES = 20 * 1024 * 1024
 MAX_ARTIFACT_BYTES = 30 * 1024 * 1024
 
 
+def validate_append_deadline(deadline, event_time=None):
+    # Same strict comparison as the existing producer claim/event guard.
+    require((type(deadline) is int and 0 <= deadline <= MAX_SAFE_INTEGER)
+            or (type(deadline) is float and math.isfinite(deadline)
+                and 0 <= deadline <= MAX_SAFE_INTEGER),
+            'CHECKPOINT_APPEND_DEADLINE_TYPE')
+    if event_time is not None:
+        require(deadline > event_time, 'CHECKPOINT_APPEND_DEADLINE_EXPIRED')
+
+
 class CheckpointTail:
     def __init__(self, directory, checkpoint, *, context=None):
         self.root = Path(directory).absolute()
@@ -413,7 +423,9 @@ class CheckpointTail:
                     and lock.read_bytes() == raw, 'TAIL_LOCK_OWNERSHIP_CHANGED')
             lock.unlink()
 
-    def append(self, kind, work, payload, *, expected, event_id=None):
+    def append(self, kind, work, payload, *, expected, event_id=None, not_after=None):
+        if not_after is not None:
+            validate_append_deadline(not_after)
         require(isinstance(expected, str) and SHA256.fullmatch(expected), 'EXPECTED_HEAD_REQUIRED')
         require(isinstance(kind, str) and kind and isinstance(work, str) and work
                 and isinstance(payload, dict), 'APPEND_SCHEMA')
@@ -431,11 +443,15 @@ class CheckpointTail:
             for row in rows:
                 if row['id'] == eid:
                     if (row['kind'], row['work'], row['payload']) == (kind, work, body_payload):
+                        if not_after is not None:
+                            validate_append_deadline(not_after, row['time'])
                         return copy.deepcopy(row)
                     raise TailConflict('TAIL_EVENT_ID_REUSED_WITH_DIFFERENT_CONTENT')
             seq = rows[-1]['seq'] + 1 if rows else self._checkpoint.anchor['events'] + 1
             event = {'seq': seq, 'previous': head, 'id': eid, 'time': time.time(),
                      'kind': kind, 'work': work, 'payload': body_payload}
+            if not_after is not None:
+                validate_append_deadline(not_after, event['time'])
             event['hash'] = digest(event)
             event_bytes = canonical(event) + b'\n'
             require(len(event_bytes) <= MAX_EVENT_BYTES, 'TAIL_EVENT_SIZE_LIMIT')
@@ -1723,7 +1739,7 @@ class CheckpointStore:
         opened = next(row for row in events if row['kind'] == 'opened')
         return {'snapshot': self.get(opened['payload']['original_snapshot']), 'sourceKind': 'IMMUTABLE_OPEN_SNAPSHOT'}
 
-    def append(self, kind, work, payload, *, expected=None, event_id=None):
+    def append(self, kind, work, payload, *, expected=None, event_id=None, not_after=None):
         self._validate_origin()
         require(kind != 'checkpoint_recovered' or self._initializing and not self._tail.events(),
                 'BOOTSTRAP_ONLY_AT_EXPLICIT_INITIALIZATION')
@@ -1733,7 +1749,8 @@ class CheckpointStore:
         if kind == 'opened':
             require(self.can_open(work), 'WORK_ALREADY_EXISTS')
         require(expected is not None, 'NATIVE_EXPECTED_HEAD_REQUIRED')
-        return self._tail.append(kind, work, payload, expected=expected, event_id=event_id)
+        return self._tail.append(kind, work, payload, expected=expected, event_id=event_id,
+                                 not_after=not_after)
 
     def get(self, reference):
         self._validate_origin(); return self._tail.get(reference)

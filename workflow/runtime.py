@@ -358,8 +358,17 @@ class Runtime:
         self.append('claimed',work,p);return dict(task,claim_token=p['token'])
     def _finish(self,work,node,result,input_hash,actor):
         s=self.state(work);need(input_hash==self.input_hash(s,node),'入力版が変わった結果を受理しない')
+        append_options={}
+        if (getattr(self.store,'checkpoint_mode',False) and work=='W-MATH-QF01-FULL-RELEASE-P035-20261115'
+                and node['actor'] in ('AI','TOOL','AUDITOR')):
+            from checkpoint import validate_append_deadline
+            claim=s['claims'].get(node['id'])
+            need(claim and claim.get('input_hash')==input_hash and claim.get('actor')==actor,
+                 'CHECKPOINT_RESULT_ACTUAL_CLAIM_REQUIRED')
+            deadline=claim.get('expires_at');validate_append_deadline(deadline)
+            append_options['not_after']=deadline
         h=self.store.put(result)
-        self.append('result',work,{'node':node['id'],'artifact':h,'input_hash':input_hash,'actor':actor,'verdict':result['verdict']})
+        self.append('result',work,{'node':node['id'],'artifact':h,'input_hash':input_hash,'actor':actor,'verdict':result['verdict']},**append_options)
         return h
     def submit(self,work,node_id,token,result,agent_guard_ref=None):
         from agent_guard import consume_inventory

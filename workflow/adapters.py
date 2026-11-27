@@ -1659,6 +1659,23 @@ def _sci_checkpoint_state_barrier(rt, work, state, *, check_integrity=True):
          'CHECKPOINT_SOURCE_CI_UNFINISHED_OPERATION')
 
 
+def _checkpoint_publisher_revision_workflow(root):
+    """canonical physical workflow全regular集合。未知cacheも隠さず保持/停止する。"""
+    from checkpoint import read_regular
+    root = Path(root).resolve()
+    workflow = root / 'workflow'
+    _sci_checkpoint_no_alias(root, workflow)
+    need(workflow.is_dir(), 'PUB_REVISION_PHYSICAL_WORKFLOW_DIRECTORY')
+    result = {}
+    for path in sorted(workflow.rglob('*')):
+        _sci_checkpoint_no_alias(root, path)
+        need(path.is_dir() or path.is_file(), 'PUB_REVISION_PHYSICAL_WORKFLOW_REGULAR')
+        if path.is_file():
+            result[path.relative_to(root).as_posix()] = hashlib.sha256(
+                read_regular(path, 64 * 1024 * 1024)).hexdigest()
+    return result
+
+
 def _checkpoint_publisher_revision_primary(rt, new_plan, replayed, rows):
     """callerのPUB policyから独立して現在primary sourceを読む。
 
@@ -1712,8 +1729,7 @@ def _checkpoint_publisher_revision_primary(rt, new_plan, replayed, rows):
     _checkpoint_git_proof(primary_rt,primary,primary_rt.store.state_base(FIXED_WORK),
                           core,review_method=True)
     # 現在610を独立に導出し、policy.sourceManifestを複製して根拠にしない。
-    workflow={p.relative_to(root).as_posix():sha(p) for p in (root/'workflow').rglob('*')
-              if p.is_file() and p.suffix in ('.py','.md') and '__pycache__' not in p.parts}
+    workflow=_checkpoint_publisher_revision_workflow(root)
     native_services=implementation_manifest(root)
     services={}
     for name,value in native_services.items():

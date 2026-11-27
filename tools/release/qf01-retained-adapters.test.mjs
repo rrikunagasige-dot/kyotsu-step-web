@@ -995,21 +995,89 @@ function cpProductionWorkflowSections(text){
 function cpProductionCheckoutSteps(job){
  const starts=[...job.matchAll(/^    - /gm)],steps=starts.map((m,i)=>job.slice(m.index,starts[i+1]?.index??job.length)),out=[];for(const step of steps)if(/^    - uses: actions\/checkout@v4\r?$/m.test(step)||/^      uses: actions\/checkout@v4\r?$/m.test(step)){const p=step.match(/^        path: ([^\r\n]+)$/m),r=step.match(/^        ref: ([^\r\n]+)$/m);assert.ok(p&&r,'CHECKPOINT_EXPLICIT_CHECKOUT_ROLE');out.push({path:p[1],ref:r[1]});}return out;
 }
-function cpAssertProductionWorkflowSource(text){
- const {jobs}=cpProductionWorkflowSections(text),pins=[...jobs.checkpoint_linux.matchAll(/^      CHECKPOINT_CORE_SHA: ([a-f0-9]{40})\r?$/gm)];assert.equal(pins.length,1);const source=pins[0][1];assert.equal(source,'438e479bac1a9875525e460fc4593af732a9a95c');for(const name of ['build','qa','attest','publish','hosted']){const job=jobs[name];assert.ok(job,'CHECKPOINT_REQUIRED_PRODUCTION_JOB '+name);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const rows=[...job.matchAll(new RegExp('^      '+key+': ([a-f0-9]{40})\\r?$','gm'))];assert.equal(rows.length,1,'CHECKPOINT_ONE_SOURCE_ENV '+name+' '+key);assert.equal(rows[0][1],source,'CHECKPOINT_SOURCE_ENV '+name+' '+key);}const steps=cpProductionCheckoutSteps(job);for(const role of ['material','current-core']){const rows=steps.filter(x=>x.path===role);assert.equal(rows.length,1,'CHECKPOINT_ONE_CHECKOUT '+name+' '+role);assert.equal(rows[0].ref,source,'CHECKPOINT_CHECKOUT_SOURCE '+name+' '+role);}}return source;
+// CI expectations come from separately verified immutable inputs and the actual
+// current checkout, never from the workflow text under test. Production material
+// remains bound to its contract when a CODE-only job tests a newer Core.
+const cpWorkflowProfiles={"checkpoint-code":{"header":"4d0e5f3b00139f75b7f07c62f4b0aeac005bf7c8008a83c65168a4686ab4d3fa","jobs":{"draft_design_preview":"3c46aae77240e62529982547b18f2907ef11110de4e982fe6ee0f85b0061427b","build":"e257afbb49d3e10b3ead8ee494d0f710f7232be3be61db7743e46c979f6977ad","qa":"b498c665e230b9d9d0023df68c4859efb8e91016c05c6d32ab8dee0436074b25","attest":"ea91f2315373f99e8a1b00b45cf95f7f338d446a10d688bee78b2d64ffadb9df","publish":"b79f9b8c2f6d586917a4dcfb7dd46ec0ef1016d8487b87480055e6c09d128d27","hosted":"5937eb2f64b701e053a609cc00404e56e9b042f956b3a807f2f7c44ab256541e"}},"production":{"header":"4d0e5f3b00139f75b7f07c62f4b0aeac005bf7c8008a83c65168a4686ab4d3fa","jobs":{"draft_design_preview":"3c46aae77240e62529982547b18f2907ef11110de4e982fe6ee0f85b0061427b","build":"f4ae92d7f744dd852a044927aae05dc3b7c676ac5c1abe818e5ef2ee432d5584","qa":"454486ca843d722d81965efa15f97c5927b87727fa8cb9d06737c845598a04e4","attest":"a0ed0329692b42cef66f836a50bc07f696bf0ef407876040a2acdfbbee00efd7","publish":"b79f9b8c2f6d586917a4dcfb7dd46ec0ef1016d8487b87480055e6c09d128d27","hosted":"5937eb2f64b701e053a609cc00404e56e9b042f956b3a807f2f7c44ab256541e"}}};
+function cpValidateWorkflowContext({env,input,binding,observedHead,observedWorkflowFiles,productionSource}){
+ assert.match(productionSource,/^[a-f0-9]{40}$/);
+ assert.match(env.CHECKPOINT_CORE_SHA,/^[a-f0-9]{40}$/);
+ assert.match(env.CHECKPOINT_CURRENT_TEST_COUNT,/^[1-9][0-9]*$/);
+ assert.match(env.CHECKPOINT_TARGET_TEST_RUNTIME_SHA256,/^[a-f0-9]{64}$/);
+ const count=Number(env.CHECKPOINT_CURRENT_TEST_COUNT);
+ assert.ok(Number.isSafeInteger(count)&&count>=269);
+ assert.equal(observedHead,env.CHECKPOINT_CORE_SHA,'CHECKPOINT_ACTUAL_CURRENT_CHECKOUT');
+ assert.equal(input.schemaVersion,'qf01-checkpoint-linux-input-binding/1');
+ assert.equal(input.checkouts.core,observedHead);assert.equal(binding.targetCoreSHA,observedHead);
+ assert.equal(input.nativeBootstrapPerformed,false);assert.equal(input.newNativeLedgerReadOrExported,false);
+ assert.equal(input.testFixturesOnly,true);assert.equal(input.gateAccepted,false);
+ assert.equal(binding.nativeStoreReadOrWritten,false);assert.equal(binding.executesCurrentCoreSuite,true);
+ assert.equal(input.immutableInputCount,29);assert.equal(Object.keys(input.immutableInputs).length,29);
+ for(const key of ['CHECKPOINT_CORE_SHA','CHECKPOINT_CURRENT_TEST_COUNT','CHECKPOINT_TARGET_TEST_RUNTIME_SHA256'])assert.equal(input.immutableInputs[key],env[key]);
+ assert.equal(binding.expectedCurrentTestCount,count);assert.equal(binding.expectedCurrentTestIDs.length,count);
+ assert.equal(new Set(binding.expectedCurrentTestIDs).size,count);assert.equal(binding.retained269TestIDs.length,269);
+ assert.equal(new Set(binding.retained269TestIDs).size,269);
+ assert.ok(binding.retained269TestIDs.every(id=>binding.expectedCurrentTestIDs.includes(id)));
+ assert.deepEqual([...binding.retained269TestIDs,...binding.additional50TestIDs].sort(),[...binding.expectedCurrentTestIDs].sort());
+ assert.equal(binding.targetTestRuntimeSHA256,env.CHECKPOINT_TARGET_TEST_RUNTIME_SHA256);
+ assert.equal(binding.testHarnessSHA,'c0be347fdc2bcf8f749aff1518c4620955ee93d3');
+ assert.equal(binding.testHarnessRuntimeSHA256,'2f9cc760f1430fae665b26fa0e0d36b077bab690f0201fb3ace67f0bfb92e92d');
+ assert.equal(Object.keys(binding.expectedWorkflowFiles).length,47);
+ assert.equal(Object.keys(binding.expectedCoreImplementationFiles).length,24);
+ assert.deepEqual(observedWorkflowFiles,binding.expectedWorkflowFiles,'CHECKPOINT_ACTUAL_WORKFLOW47');
+ assert.equal(observedWorkflowFiles['workflow/test_checkpoint_runtime.py'],env.CHECKPOINT_TARGET_TEST_RUNTIME_SHA256);
+ for(const [file,digest]of Object.entries(binding.expectedCoreImplementationFiles))assert.equal(observedWorkflowFiles['workflow/'+file],digest);
+ assert.deepEqual(input.core,binding.core);assert.equal(binding.core.definitionHash,binding.expectedDefinitionHash);
+ assert.deepEqual(binding.core.files,binding.expectedCoreImplementationFiles);
+ assert.deepEqual(input.testHarness,binding);
+ return{profile:'checkpoint-code',productionSource,testedSource:observedHead,count,runtimeHash:env.CHECKPOINT_TARGET_TEST_RUNTIME_SHA256,binding};
+}
+function cpProductionWorkflowContext(){
+ const productionSource=contract?.authorityVariant?(assert.equal(contract.sourceSHA,contract.checkpointAuthority.core.sourceSHA),contract.sourceSHA):'438e479bac1a9875525e460fc4593af732a9a95c';
+ if(!process.env.CHECKPOINT_CORE_SHA)return{profile:'production',productionSource,testedSource:productionSource};
+ assert.ok(process.env.CHECKPOINT_DIAGNOSTICS&&process.env.GITHUB_WORKSPACE,'CHECKPOINT_ACTUAL_CI_CONTEXT_REQUIRED');
+ const boundedJSON=file=>{const raw=fs.readFileSync(file);assert.ok(raw.length<=1024*1024);return JSON.parse(raw);};
+ const root=path.join(process.env.GITHUB_WORKSPACE,'core'),input=boundedJSON(path.join(process.env.CHECKPOINT_DIAGNOSTICS,'INPUT_BINDING.json')),binding=boundedJSON(path.join(process.env.CHECKPOINT_DIAGNOSTICS,'TEST_HARNESS_BINDING.json'));
+ const observedHead=execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8',maxBuffer:4096}).trim(),observedWorkflowFiles={};
+ for(const relative of Object.keys(binding.expectedWorkflowFiles)){assert.match(relative,/^workflow\/(?:[A-Za-z0-9_.-]+\/)*[A-Za-z0-9_.-]+$/);assert.ok(relative.split('/').every(part=>part!=='.'&&part!=='..'));const file=path.join(root,relative),st=fs.lstatSync(file);assert.ok(st.isFile()&&!st.isSymbolicLink()&&st.size<=1024*1024);observedWorkflowFiles[relative]=createHash('sha256').update(fs.readFileSync(file)).digest('hex');}
+ return cpValidateWorkflowContext({env:process.env,input,binding,observedHead,observedWorkflowFiles,productionSource});
+}
+function cpAssertProductionWorkflowSource(text,expected=cpProductionWorkflowContext()){
+ const {jobs}=cpProductionWorkflowSections(text),pins=[...jobs.checkpoint_linux.matchAll(/^      CHECKPOINT_CORE_SHA: ([a-f0-9]{40})\r?$/gm)];assert.equal(pins.length,1);assert.equal(pins[0][1],expected.testedSource,'CHECKPOINT_TESTED_CORE_SOURCE');
+ if(expected.profile==='checkpoint-code'){
+  for(const [key,value]of [['CHECKPOINT_CURRENT_TEST_COUNT',String(expected.count)],['CHECKPOINT_TARGET_TEST_RUNTIME_SHA256',expected.runtimeHash],['CHECKPOINT_TEST_HARNESS_SHA','c0be347fdc2bcf8f749aff1518c4620955ee93d3']]){const rows=[...jobs.checkpoint_linux.matchAll(new RegExp('^      '+key+': ([^\\r\\n]+)\\r?$','gm'))];assert.equal(rows.length,1);assert.equal(rows[0][1],value);}
+  const rows=cpProductionCheckoutSteps(jobs.checkpoint_linux).filter(x=>x.path==='core');assert.equal(rows.length,1);assert.equal(rows[0].ref,'${{ env.CHECKPOINT_CORE_SHA }}');
+  const code=[...jobs.checkpoint_linux.matchAll(/expected_code=json.loads\(r'''([^']+)'''\)/g)];assert.equal(code.length,1);const pinset=JSON.parse(code[0][1]);
+  for(const key of ['expectedCurrentTestCount','expectedCurrentTestIDs','retained269TestIDs','additional50TestIDs','expectedWorkflowFiles','expectedCoreImplementationFiles','expectedTestModuleFiles','expectedDefinitionHash','targetTestRuntimeSHA256'])assert.deepEqual(pinset[key],expected.binding[key],'CHECKPOINT_INDEPENDENT_CURRENT_PINSET '+key);
+ }
+ for(const name of ['build','qa','attest','publish','hosted']){const job=jobs[name];assert.ok(job,'CHECKPOINT_REQUIRED_PRODUCTION_JOB '+name);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const rows=[...job.matchAll(new RegExp('^      '+key+': ([a-f0-9]{40})\\r?$','gm'))];assert.equal(rows.length,1,'CHECKPOINT_ONE_SOURCE_ENV '+name+' '+key);assert.equal(rows[0][1],expected.productionSource,'CHECKPOINT_SOURCE_ENV '+name+' '+key);}const steps=cpProductionCheckoutSteps(job);for(const role of ['material','current-core']){const rows=steps.filter(x=>x.path===role);assert.equal(rows.length,1,'CHECKPOINT_ONE_CHECKOUT '+name+' '+role);assert.equal(rows[0].ref,expected.productionSource,'CHECKPOINT_CHECKOUT_SOURCE '+name+' '+role);}}return expected.testedSource;
+}
+function cpAssertPreservedWorkflow(text,expected=cpProductionWorkflowContext()){
+ const {header,jobs}=cpProductionWorkflowSections(text),digest=s=>createHash('sha256').update(s).digest('hex'),frozen=cpWorkflowProfiles[expected.profile];assert.ok(frozen);assert.equal(digest(header),frozen.header);
+ assert.deepEqual(Object.keys(jobs).sort(),['checkpoint_linux',...Object.keys(frozen.jobs)].sort());
+ for(const [name,wanted]of Object.entries(frozen.jobs))assert.equal(digest(jobs[name]),wanted,'CHECKPOINT_PRESERVED_NONCHECKPOINT_JOB '+name);
+ // The changed checkpoint_linux section is checked against current independent
+ // inputs above. It is not required to retain a historical whole-job hash.
+ cpAssertProductionWorkflowSource(text,expected);
+ const historical={baseline:'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd','original-publisher':'a425b357c5fb6e14de09743dcaf03d74e16c7244','historical-t':'751b229cb7a99a6a5743b00c5b978c97585b4964','baseline-cb':'cb01da34c99005fde4a64fd932b31edeaa3790b3','service-u':'2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b','service-v':'a4dad490daa3d1bf8f7011f2915342c543e8a79c'};
+ for(const name of ['build','qa','attest','publish','hosted'])for(const step of cpProductionCheckoutSteps(jobs[name]))if(Object.hasOwn(historical,step.path))assert.equal(step.ref,historical[step.path],name+' '+step.path);
+ assert.ok(jobs.build.includes("github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116'"));assert.ok(jobs.publish.includes("github.ref == 'refs/heads/main'"));return true;
 }
 function cpReadProductionWorkflow(){return fs.readFileSync(new URL('../../.github/workflows/qf01-publisher-g3.yml',import.meta.url),'utf8');}
 
 test('checkpoint production workflow binds all five material and Core roles to the current tested source',()=>{
- assert.equal(cpAssertProductionWorkflowSource(cpReadProductionWorkflow()),'438e479bac1a9875525e460fc4593af732a9a95c');
+ const expected=cpProductionWorkflowContext();assert.equal(cpAssertProductionWorkflowSource(cpReadProductionWorkflow(),expected),expected.testedSource);
 });
 
 test('checkpoint production workflow rejects each stale source environment checkout and duplicate role fixture',()=>{
- const text=cpReadProductionWorkflow(),sections=cpProductionWorkflowSections(text);for(const name of ['build','qa','attest','publish','hosted']){const job=sections.jobs[name],put=bad=>text.replace(job,bad);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const bad=job.replace(new RegExp('('+key+': )[a-f0-9]{40}'),'$1'+'325b70035cafa70a8078944ccf903c53ce763545');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad)));}for(const role of ['material','current-core']){const bad=job.replace(new RegExp('(ref: )[a-f0-9]{40}(\\n        path: '+role+')'),'$1'+'9ee19f65d39b3e639857c809ada50a01c8a7c322'+'$2');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad)));}assert.throws(()=>cpAssertProductionWorkflowSource(put(job.replace('path: material','path: current-core'))));}
+ const text=cpReadProductionWorkflow(),expected=cpProductionWorkflowContext(),sections=cpProductionWorkflowSections(text);for(const name of ['build','qa','attest','publish','hosted']){const job=sections.jobs[name],put=bad=>text.replace(job,bad);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const bad=job.replace(new RegExp('('+key+': )[a-f0-9]{40}'),'$1'+'325b70035cafa70a8078944ccf903c53ce763545');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad),expected));const duplicate=job.replace(key+': '+expected.productionSource,key+': '+expected.productionSource+'\n      '+key+': '+expected.productionSource);assert.throws(()=>cpAssertProductionWorkflowSource(put(duplicate),expected));}for(const role of ['material','current-core']){const bad=job.replace(new RegExp('(ref: )[a-f0-9]{40}(\\n        path: '+role+')'),'$1'+'9ee19f65d39b3e639857c809ada50a01c8a7c322'+'$2');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad),expected));}assert.throws(()=>cpAssertProductionWorkflowSource(put(job.replace('path: material','path: current-core')),expected));}
+ const current=sections.jobs.checkpoint_linux;assert.throws(()=>cpAssertProductionWorkflowSource(text.replace(current,current.replace('CHECKPOINT_CORE_SHA: '+expected.testedSource,'CHECKPOINT_CORE_SHA: '+'0'.repeat(40))),expected));
+ if(expected.profile==='checkpoint-code')for(const [key,value]of [['CHECKPOINT_CURRENT_TEST_COUNT',String(expected.count)],['CHECKPOINT_TARGET_TEST_RUNTIME_SHA256',expected.runtimeHash]])assert.throws(()=>cpAssertProductionWorkflowSource(text.replace(key+': '+value,key+': '+(key.endsWith('COUNT')?'269':'0'.repeat(64))),expected));
 });
 
 test('checkpoint production workflow preserves original branch diagnostic preview and historical checkout bytes',()=>{
- const {header,jobs}=cpProductionWorkflowSections(cpReadProductionWorkflow()),digest=s=>createHash('sha256').update(s).digest('hex');assert.equal(digest(header),'4d0e5f3b00139f75b7f07c62f4b0aeac005bf7c8008a83c65168a4686ab4d3fa');assert.equal(digest(jobs.checkpoint_linux),'b7baf2e10baec9bed6ea857e9e75afb7f03e7b713e6873bf51e8c72e1133121d');assert.equal(digest(jobs.draft_design_preview),'3c46aae77240e62529982547b18f2907ef11110de4e982fe6ee0f85b0061427b');const historical={baseline:'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd','original-publisher':'a425b357c5fb6e14de09743dcaf03d74e16c7244','historical-t':'751b229cb7a99a6a5743b00c5b978c97585b4964','baseline-cb':'cb01da34c99005fde4a64fd932b31edeaa3790b3','service-u':'2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b','service-v':'a4dad490daa3d1bf8f7011f2915342c543e8a79c'};for(const name of ['build','qa','attest','publish','hosted'])for(const step of cpProductionCheckoutSteps(jobs[name]))if(Object.hasOwn(historical,step.path))assert.equal(step.ref,historical[step.path],name+' '+step.path);assert.ok(jobs.build.includes("github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116'"));assert.ok(jobs.publish.includes("github.ref == 'refs/heads/main'"));
+ const text=cpReadProductionWorkflow(),expected=cpProductionWorkflowContext();assert.equal(cpAssertPreservedWorkflow(text,expected),true);
+ const {jobs}=cpProductionWorkflowSections(text);for(const [name,job]of Object.entries(jobs))if(name!=='checkpoint_linux')assert.throws(()=>cpAssertPreservedWorkflow(text.replace(job,job+'\n    # TEST_FIXTURE changed preserved job\n'),expected));
 });
 
 // checkpoint導出入口のcompanion parser接続。全fixtureは合成で実台帳を含まない。

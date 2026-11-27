@@ -843,7 +843,7 @@ jobs:
       QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
       QF01_DIST_MANIFEST: ${{ github.workspace }}/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
+      PUBLISHER_SHA: ${{ github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]') && '0f8774b4c20a8f8c56ce22c557d2b78af0054412' || github.sha }}
       SOURCE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       CANDIDATE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       VITE_PREVIEW_COMMIT: 438e479bac1a9875525e460fc4593af732a9a95c
@@ -870,8 +870,16 @@ jobs:
         persist-credentials: false
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.sha }}
+        ref: ${{ env.PUBLISHER_SHA }}
         path: publisher
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Checkout diagnostic refusal tests separately from fixed production publisher
+      if: github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]')
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.sha }}
+        path: publisher-tests
         fetch-depth: 0
         persist-credentials: false
     - name: Checkout approved P046-R3 core and app authority snapshot separately
@@ -944,13 +952,34 @@ jobs:
       run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
     - name: Test successor refusal guards
       env:
-        QF01_CHECKPOINT_ORIGIN_CONTRACT: ${{ runner.temp }}/qf01-original-r3-regression-contract.json
+        QF01_TEST_PUBLISHER_ROOT: ${{ github.workspace }}/${{ github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]') && 'publisher-tests' || 'publisher' }}
+        QF01_TEST_INPUT_ROOT: ${{ runner.temp }}/qf01-original-r3-publisher-tests
+        QF01_CHECKPOINT_ORIGIN_CONTRACT: ${{ runner.temp }}/qf01-original-r3-publisher-tests/publisher-contract.json
+        QF01_CHECKPOINT_ORIGIN_SEED: ${{ runner.temp }}/qf01-original-r3-publisher-tests/APPROVED_MATERIAL_SEED.json
+        BUILD_AUTHORITY_CACHE: ${{ runner.temp }}/qf01-original-r3-publisher-tests/BUILD_AUTHORITY.blob
       shell: bash
       run: |
         set -euo pipefail
-        test ! -e "$QF01_CHECKPOINT_ORIGIN_CONTRACT"
-        git -C publisher show 55d844f20c0de3390ad6718ee8d01968ebbb8676:tools/release/qf01-publish-contract.json > "$QF01_CHECKPOINT_ORIGIN_CONTRACT"
-        node --test publisher/tools/release/qf01-publish-check.test.mjs publisher/tools/release/qf01-retained-adapters.test.mjs
+        test ! -e "$QF01_TEST_INPUT_ROOT"
+        mkdir "$QF01_TEST_INPUT_ROOT"
+        git -C "$QF01_TEST_PUBLISHER_ROOT" show 55d844f20c0de3390ad6718ee8d01968ebbb8676:tools/release/qf01-publish-contract.json > "$QF01_CHECKPOINT_ORIGIN_CONTRACT"
+        node --input-type=module <<'NODE'
+        import assert from 'node:assert/strict';
+        import fs from 'node:fs';
+        import path from 'node:path';
+        import {pathToFileURL} from 'node:url';
+        import {gunzipSync} from 'node:zlib';
+        const {hydrateBuildAuthority,sha}=await import(pathToFileURL(path.join(process.env.QF01_TEST_PUBLISHER_ROOT,'tools/release/qf01-publish-check.mjs')));
+        const raw=fs.readFileSync(process.env.QF01_CHECKPOINT_ORIGIN_CONTRACT);
+        assert.equal(sha(raw),'b5f49f53b3895a8169f817a91efd376b4e73b17526d5b08bcb77e2b7fa4aee30');
+        await hydrateBuildAuthority(JSON.parse(raw),{cacheFile:process.env.BUILD_AUTHORITY_CACHE});
+        const blob=fs.readFileSync(process.env.BUILD_AUTHORITY_CACHE);
+        assert.equal(blob.length,2927624);assert.equal(sha(blob),'14586a74f6465dab9051c766cbed26e1f3a1b0cbcef657c8e9fae8fdc42a63c6');
+        const seedRaw=gunzipSync(Buffer.from(blob.toString('ascii'),'base64'),{maxOutputLength:20*1024*1024});
+        assert.equal(sha(seedRaw),'6ef587967d4761c27741c540d3320200dd64adb1c2ed3479bd1e2a9092aaad1e');
+        fs.writeFileSync(process.env.QF01_CHECKPOINT_ORIGIN_SEED,seedRaw,{flag:'wx',mode:0o400});
+        NODE
+        node --test "$QF01_TEST_PUBLISHER_ROOT/tools/release/qf01-publish-check.test.mjs" "$QF01_TEST_PUBLISHER_ROOT/tools/release/qf01-retained-adapters.test.mjs"
     - &id001
       name: Verify full current source and immutable original inputs
       shell: bash
@@ -1004,7 +1033,7 @@ jobs:
       QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
+      PUBLISHER_SHA: ${{ github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]') && '0f8774b4c20a8f8c56ce22c557d2b78af0054412' || github.sha }}
       SOURCE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       CANDIDATE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       VITE_PREVIEW_COMMIT: 438e479bac1a9875525e460fc4593af732a9a95c
@@ -1032,7 +1061,7 @@ jobs:
         persist-credentials: false
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.sha }}
+        ref: ${{ env.PUBLISHER_SHA }}
         path: publisher
         fetch-depth: 0
         persist-credentials: false
@@ -1193,7 +1222,7 @@ jobs:
       QF01_ORIGINAL_CONTRACT: ${{ github.workspace }}/publisher/tools/release/w051-p005-release-contract.json
       QF01_DIST_MANIFEST: ${{ github.workspace }}/artifact/sealed/DIST_MANIFEST.json
       DIST_ROOT: ${{ github.workspace }}/artifact/material/dist
-      PUBLISHER_SHA: ${{ github.sha }}
+      PUBLISHER_SHA: ${{ github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]') && '0f8774b4c20a8f8c56ce22c557d2b78af0054412' || github.sha }}
       SOURCE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       CANDIDATE_SHA: 438e479bac1a9875525e460fc4593af732a9a95c
       VITE_PREVIEW_COMMIT: 438e479bac1a9875525e460fc4593af732a9a95c
@@ -1217,7 +1246,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.sha }}
+        ref: ${{ env.PUBLISHER_SHA }}
         path: publisher
         fetch-depth: 0
         persist-credentials: false

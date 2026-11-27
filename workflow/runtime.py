@@ -594,10 +594,11 @@ class Runtime:
             need(new_plan.get(key)==s['plan'].get(key),'改訂で親子関係を付け替えない')
         if getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122':
             from checkpoint import INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
-            need(new_plan['proposal']['hash']==s['plan']['proposal']['hash']==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+            need(new_plan['proposal']['hash']==s['plan']['proposal']['hash'],
                  'PUB_REVISION_SAME_D06_HASH_REQUIRED')
         if new_plan['proposal']['hash']==s['plan']['proposal']['hash']:
-            if getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122':
+            if (getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                    and new_plan['proposal']['hash']==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256):
                 new_plan=self._publisher_revision_validate(s,new_plan)
             else:
                 from checkpoint import (RECOVERY_WORK,FIXED_WORK,MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,

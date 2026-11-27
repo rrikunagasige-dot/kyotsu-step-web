@@ -898,5 +898,637 @@ class NearbyRepairRecordTests(unittest.TestCase):
             validate_nearby_repair_record(record)
 
 
+
+
+def _publisher_test_api():
+    """同moduleの純関数だけを使う。Store/Runtimeを起動しない。"""
+    import checkpoint
+    return vars(checkpoint)
+
+
+def _publisher_test_plan():
+    """plan検証単独の正例。history resolver済みを装う正式eventではない。"""
+    api = _publisher_test_api()
+    digest, sha = (api['digest'], api['sha'])
+    objects = {}
+
+    def put(value):
+        ref = digest(value)
+        objects[ref] = copy.deepcopy(value)
+        return ref
+
+    def raw(value):
+        text = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+        return {'rawUTF8': text, 'sha256': sha(text.encode())}
+    seven = sorted(api['PUBLISHER_REVISION_PATHS'])
+    source = {'workflow/runtime.py': '5' * 64}
+    source.update({f'src/TEST_FIXTURE_{i:04d}.txt': '6' * 64 for i in range(609)})
+    rules = {f'work/TEST_FIXTURE_RULE_{i}.md': '7' * 64 for i in range(6)}
+    initial = {name: sha(('TEST_FIXTURE_INITIAL:' + name).encode()) for name in seven}
+    before = dict(initial)
+    for name in ('tools/release/qf01-publish-check.mjs', 'tools/release/qf01-publish-contract.json'):
+        before[name] = sha(('TEST_FIXTURE_OLD_AFTER:' + name).encode())
+    core = {'definitionHash': '4' * 64, 'files': {'runtime.py': source['workflow/runtime.py']}}
+    r06 = {'node': 'R06_PATCH@TEST_FIXTURE', 'resultRef': '8' * 64, 'proofRef': '9' * 64, 'compileInputRef': 'a' * 64, 'compileOutputRef': 'b' * 64}
+    material = {'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'releaseUnit': 'qf01-p035'}
+    material_authority = {'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'implementationHash': 'c' * 64, 'baseStateSHA256': 'd' * 64, 'planSHA256': 'e' * 64, 'proposalSHA256': 'f' * 64}
+    policy = {'schemaVersion': 'qf01-checkpoint-source-ci-policy/1', 'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'releaseUnit': 'qf01-p035', 'definitionHash': core['definitionHash'], 'implementationHash': 'c' * 64, 'checkpointEpoch': '1' * 64, 'core': core, 'methodAuthorityRef': '2' * 64, 'r06': r06, 'bundleEvidenceID': 'TEST_FIXTURE_BUNDLE', 'publisherBeforeSHA': '1' * 40, 'ownerBeforeManifest': initial, 'ownerAfterManifest': before, 'publisherFiles': before, 'contractSHA256': before['tools/release/qf01-publish-contract.json'], 'publisherRoot': 'work/TEST_FIXTURE_PUBLISHER', 'technicalExecutionRoot': 'work/TEST_FIXTURE_EXECUTION', 'materialRoot': '.', 'coreRoot': '.', 'sourcePrefix': '', 'sourceManifest': source, 'authorityCache': {'path': 'work/TEST_FIXTURE.blob'}, 'branch': api['PUBLISHER_PRODUCER_BRANCH'], 'workflow': api['PUBLISHER_PRODUCER_WORKFLOW'], 'widths': [320, 390, 430, 1440], 'counts': {'TEST_FIXTURE': 1}, 'maxBuildBytes': 200000000, 'maxQABytes': 1500000000, 'buildArtifactName': 'TEST_FIXTURE_BUILD', 'qaArtifactName': 'TEST_FIXTURE_QA', 'validatorSHA256': '3' * 64}
+    adoption = {'schemaVersion': 'qf01-checkpoint-publisher-technical-adoption/1', 'proposalSHA256': api['INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256'], 'evidenceRef': 'TEST_FIXTURE_D06', 'transcriptionSHA256': api['INLINE_LAYOUT_ACTUAL_ADOPTION_SHA256'], 'materialAuthoritySHA256': '4' * 64, 'publisherBeforeFilesSHA256': digest(initial)}
+    original = {'work_id': api['PUBLISHER_WORK'], 'parent_work': api['FIXED_WORK'], 'profile': 'technical', 'command': 'GOVERNANCE', 'subject': 'math', 'mode': 'textbook', 'source_sha': '1' * 40, 'source_manifest': initial, 'rules': rules, 'blocks': [{'id': 'TEST_FIXTURE', 'sources': seven}], 'scope': {'paths': seven, 'preserve': sorted(set(source) | set(rules) | {name for name in seven if initial[name] == before[name]})}, 'protected_manifest': dict(source, **rules, **{name: initial[name] for name in seven if initial[name] == before[name]}), 'proposal': {'id': 'TEST_FIXTURE_D06', 'hash': api['INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256'], 'patch_hash': '5' * 64, 'materialBinding': material, 'materialAuthorityBinding': material_authority, 'sourceCIPolicy': policy, 'sourceCIPolicySHA256': digest(policy), 'publisherAdoptionBinding': adoption}}
+    state = {'plan': copy.deepcopy(original), 'definition_hash': core['definitionHash'], 'candidate_sha': '2' * 40, 'candidate_manifest': copy.deepcopy(before), 'claims': {}, 'paused': False, 'external': {}, 'results': {}, 'users': {}, 'issues': {}, 'evidence': {}, 'patches': {}}
+    boundary = {'hash': '6' * 64, 'seq': 1}
+    bind = {'hash': '7' * 64, 'seq': 90}
+    t03 = {'payload': {'artifact': '8' * 64}, 'seq': 89}
+    run = raw({'id': 100, 'run_attempt': 1, 'head_sha': '2' * 40, 'head_branch': policy['branch'], 'path': policy['workflow'], 'event': 'push', 'status': 'completed', 'conclusion': 'failure', 'repository': {'id': 1391122224, 'full_name': 'rrikunagasige-dot/kyotsu-step-web'}, 'html_url': 'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/100'})
+    jobs = raw({'total_count': 1, 'jobs': [{'id': 200, 'run_id': 100, 'run_attempt': 1, 'head_sha': '2' * 40, 'status': 'completed', 'conclusion': 'failure'}]})
+    failure = {'id': 'TEST_FIXTURE_FAILURE', 'kind': 'check', 'verification_level': 'local_execution', 'source_ref': 'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/100', 'data': {'status': 'PASS', 'source_sha': '2' * 40, 'checks': {'purpose': api['PUBLISHER_REVISION_FAILURE_PURPOSE'], 'runRawRef': put(run), 'jobsRawRef': put(jobs), 'runRawSHA256': run['sha256'], 'jobsRawSHA256': jobs['sha256'], 'failedJobIDs': [200], 'producerQAPassed': False, 'formalT04Accepted': False}}}
+    evidence = {'payload': failure, 'seq': 95, 'hash': '9' * 64}
+    cut = {'hash': 'a' * 64, 'seq': 100}
+    predecessor = {'state': state, 'ordinal': 0, 'boundary': boundary, 'bindEvent': bind, 't03ResultEvent': t03, 'patchIntent': {'seq': 87}, 'patchApplied': {'seq': 88}, 'evidenceEvents': {failure['id']: evidence}}
+    after, files = (dict(before), [])
+    for name in ('.github/workflows/qf01-publisher-g3.yml', 'tools/release/qf01-publish-check.test.mjs'):
+        text = 'TEST_FIXTURE_NEW_AFTER:' + name
+        after[name] = sha(text.encode())
+        files.append({'path': name, 'before_sha256': before[name], 'after_sha256': after[name], 'after_text': text})
+    new_plan = copy.deepcopy(original)
+    proposal = new_plan['proposal']
+    proposal['patch_hash'] = put({'files': files})
+    policy = proposal['sourceCIPolicy']
+    policy.update(publisherBeforeSHA='2' * 40, ownerBeforeManifest=copy.deepcopy(before), ownerAfterManifest=after, publisherFiles=after)
+    proposal['sourceCIPolicySHA256'] = digest(policy)
+    proposal['publisherRevision'] = {'ordinal': 1, 'predecessorRevisionEventHash': boundary['hash'], 'predecessorPlanSHA256': digest(original), 'predecessorCandidateSHA': state['candidate_sha'], 'predecessorManifestSHA256': digest(before), 'predecessorT03ResultRef': t03['payload']['artifact'], 'predecessorBindEventHash': bind['hash'], 'buildCutHead': cut['hash'], 'reasonEvidenceRefs': [failure['id']]}
+    proposal['publisherAdoptionBinding']['publisherBeforeFilesSHA256'] = digest(before)
+    changed = {row['path'] for row in files}
+    new_plan['scope']['preserve'] = sorted(set(original['scope']['preserve']) - set(seven) | set(seven) - changed)
+    new_plan['protected_manifest'] = dict(source, **rules, **{name: before[name] for name in seven if name not in changed})
+    primary = {'sourceSHA': '3' * 40, 'epoch': '1' * 64, 'core': core, 'implementationHash': 'c' * 64, 'methodAuthorityRef': '2' * 64, 'r06': r06, 'rules': rules, 'sourceManifest': copy.deepcopy(source), 'materialBinding': material, 'materialAuthorityBinding': material_authority, 'adoptionEvidenceRef': adoption['evidenceRef'], 'materialAuthoritySHA256': adoption['materialAuthoritySHA256']}
+    return {'original': original, 'predecessor': predecessor, 'newPlan': new_plan, 'primary': primary, 'cut': cut, 'objects': objects}
+
+def _publisher_test_nodes():
+    definitions = [('S00_RECOVER', 'CODE', [], 'source'), ('S01_ROUTE', 'CODE', ['S00_RECOVER'], 'source'), ('T01_ANALYSIS', 'AI', ['S01_ROUTE'], 'source'), ('T02_APPROVAL', 'USER', ['T01_ANALYSIS'], 'source'), ('T03_BUILD', 'TOOL', ['T02_APPROVAL'], 'source'), ('T04_VERIFY', 'TOOL', ['T03_BUILD'], 'candidate'), ('L01_LEARNING', 'AI', ['T04_VERIFY'], 'learning'), ('Z01_CLOSE', 'CODE', ['L01_LEARNING'], 'all')]
+    return {name: {'id': name, 'actor': actor, 'depends_on': deps, 'watch': watch} for name, actor, deps, watch in definitions}
+
+def _publisher_test_reseal(rows):
+    """envelope連鎖だけ再封印する。意味上の参照を勝手に修復しない。"""
+    api = _publisher_test_api()
+    result, previous = ([], api['FIXED_ANCHOR']['head'])
+    seq = api['FIXED_ANCHOR']['events']
+    for original in rows:
+        event = copy.deepcopy(original)
+        seq += 1
+        event.update(seq=seq, previous=previous)
+        event.pop('hash', None)
+        event['hash'] = api['digest'](event)
+        result.append(event)
+        previous = event['hash']
+    return result
+
+def _publisher_test_add_event(value, kind, payload, work=None):
+    """候補のcanonical/digestだけで合成eventを追加する。"""
+    api = _publisher_test_api()
+    rows = value['rows']
+    event = {'seq': rows[-1]['seq'] + 1, 'previous': rows[-1]['hash'], 'id': f'TEST_FIXTURE_EXTENSION_{len(rows):04d}', 'time': rows[-1]['time'] + 1, 'kind': kind, 'work': work or api['PUBLISHER_WORK'], 'payload': copy.deepcopy(payload)}
+    event['hash'] = api['digest'](event)
+    rows.append(event)
+    return event
+
+def _publisher_test_add_result(value, name, extra=None):
+    api = _publisher_test_api()
+    frame = api['publisher_revision_frames'](value['rows'], value['objects'].__getitem__, value['origin'], value['epoch'], value['nodes'])['current']
+    out = {'verdict': 'PASS', **(extra or {})}
+    reference = api['digest'](out)
+    value['objects'][reference] = copy.deepcopy(out)
+    return _publisher_test_add_event(value, 'result', {'node': name, 'verdict': 'PASS', 'artifact': reference, 'input_hash': api['publisher_revision_input'](frame['state'], value['nodes'][name]), 'actor': frame['state']['claims'].get(name, {}).get('actor', 'TEST_FIXTURE_DETERMINISTIC')})
+
+def _publisher_test_history(include_revision=True, fresh_nodes=0, finish_current=False):
+    api = _publisher_test_api()
+    digest, sha = (api['digest'], api['sha'])
+    objects, rows, nodes = ({}, [], _publisher_test_nodes())
+    epoch = 'f' * 64
+
+    def put(value):
+        reference = digest(value)
+        objects[reference] = copy.deepcopy(value)
+        return reference
+
+    def add(kind, payload, work=None):
+        event = {'seq': api['FIXED_ANCHOR']['events'] + len(rows) + 1, 'previous': rows[-1]['hash'] if rows else api['FIXED_ANCHOR']['head'], 'id': f'TEST_FIXTURE_EVENT_{len(rows):04d}', 'time': 100.0 + len(rows), 'kind': kind, 'work': work or api['PUBLISHER_WORK'], 'payload': copy.deepcopy(payload)}
+        event['hash'] = digest(event)
+        rows.append(event)
+        return event
+    seven = sorted(api['PUBLISHER_REVISION_PATHS'])
+    rules = {f'work/TEST_FIXTURE_RULE_{i}.md': '7' * 64 for i in range(6)}
+    workflow = {f'workflow/TEST_FIXTURE_{i:02d}.py': sha(str(i).encode()) for i in range(47)}
+    app = {f'src/TEST_FIXTURE_APP_{i:03d}.txt': sha(('app' + str(i)).encode()) for i in range(401)}
+    services = dict(workflow, **dict(list(app.items())[:187]))
+    services.update({f'tools/textbook/TEST_FIXTURE_{i:03d}.py': sha(('service' + str(i)).encode()) for i in range(162)})
+    source = {**workflow, **services, **app}
+    assert len(source) == 610 and len(services) == 396
+    core = {'definitionHash': '4' * 64, 'files': {name.removeprefix('workflow/'): value for name, value in list(workflow.items())[:24]}}
+    origin = {'candidate_sha': '1' * 40, 'candidate_manifest': copy.deepcopy(app), 'definition_hash': '2' * 64, 'plan': {'rules': rules}, 'results': {}}
+    add('checkpoint_recovered', {'originSHA256': epoch, 'core': copy.deepcopy(core)}, api['FIXED_WORK'])
+
+    def primary_records(source_sha, active_core, implementation, wf, svc):
+        preflight = put({'core': active_core, 'implementationHash': implementation})
+        add('checkpoint_definition_migrated', {'preflightRef': preflight, 'candidateSHA': source_sha, 'candidateManifest': app, 'inlineLayoutRepair': {'evidenceRef': 'TEST_FIXTURE_D06'}}, api['FIXED_WORK'])
+        method = put({'core': active_core, 'TEST_FIXTURE_METHOD': source_sha})
+        add('informed_review_method_adopted', {'authorityRef': method}, api['FIXED_WORK'])
+        compile_input = put({'TEST_FIXTURE_COMPILE_INPUT': source_sha})
+        compile_output = put({'TEST_FIXTURE_COMPILE_OUTPUT': source_sha})
+        proof = put({'candidateSHA': source_sha, 'core': active_core, 'implementationHash': implementation, 'reviewMethodAuthorityRef': method, 'checkpointEpoch': epoch, 'compileInputRef': compile_input, 'compileOutputRef': compile_output})
+        result = put({'verdict': 'PASS', 'checkpoint_candidate_proof_ref': proof})
+        r06 = {'node': 'R06_PATCH@TEST_FIXTURE', 'resultRef': result, 'proofRef': proof, 'compileInputRef': compile_input, 'compileOutputRef': compile_output}
+        add('result', {'node': r06['node'], 'artifact': result, 'verdict': 'PASS'}, api['FIXED_WORK'])
+        return (method, r06)
+    method, r06 = primary_records('3' * 40, core, '5' * 64, workflow, services)
+    initial_raw = {name: 'TEST_FIXTURE_INITIAL:' + name for name in seven}
+    initial_raw['tools/release/qf01-publish-contract.json'] = '{"TEST_FIXTURE_INITIAL":true}'
+    initial = {name: sha(raw.encode()) for name, raw in initial_raw.items()}
+    after_raw = dict(initial_raw)
+    after_raw['tools/release/qf01-publish-check.mjs'] = 'TEST_FIXTURE_OLD_CHECKER_AFTER'
+    after_raw['tools/release/qf01-publish-contract.json'] = '{"TEST_FIXTURE_OLD_AFTER":true}'
+    before = {name: sha(raw.encode()) for name, raw in after_raw.items()}
+    old_changed = [name for name in seven if before[name] != initial[name]]
+    old_patch = put({'files': [{'path': name, 'before_sha256': initial[name], 'after_sha256': before[name], 'after_text': after_raw[name]} for name in old_changed]})
+    material = {'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'releaseUnit': 'qf01-p035'}
+    material_authority = {'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'implementationHash': '5' * 64, 'baseStateSHA256': '8' * 64, 'planSHA256': '9' * 64, 'proposalSHA256': 'a' * 64}
+    policy = {'schemaVersion': 'qf01-checkpoint-source-ci-policy/1', 'work': api['FIXED_WORK'], 'sourceSHA': '3' * 40, 'releaseUnit': 'qf01-p035', 'definitionHash': core['definitionHash'], 'implementationHash': '5' * 64, 'checkpointEpoch': epoch, 'core': core, 'methodAuthorityRef': method, 'r06': r06, 'bundleEvidenceID': 'TEST_FIXTURE_BUNDLE', 'publisherBeforeSHA': 'b' * 40, 'ownerBeforeManifest': initial, 'ownerAfterManifest': before, 'publisherFiles': before, 'contractSHA256': before['tools/release/qf01-publish-contract.json'], 'publisherRoot': 'work/TEST_FIXTURE_PUBLISHER', 'technicalExecutionRoot': 'work/TEST_FIXTURE_EXECUTION', 'materialRoot': '.', 'coreRoot': '.', 'sourcePrefix': '', 'sourceManifest': source, 'authorityCache': {'path': 'work/TEST_FIXTURE.blob'}, 'branch': api['PUBLISHER_PRODUCER_BRANCH'], 'workflow': api['PUBLISHER_PRODUCER_WORKFLOW'], 'widths': [320, 390, 430, 1440], 'counts': {'TEST_FIXTURE': 1}, 'maxBuildBytes': 200000000, 'maxQABytes': 1500000000, 'buildArtifactName': 'qf01-build-' + 'c' * 40 + '-1', 'qaArtifactName': 'qf01-reports-' + 'c' * 40 + '-1', 'validatorSHA256': '6' * 64}
+    original = {'work_id': api['PUBLISHER_WORK'], 'parent_work': api['FIXED_WORK'], 'profile': 'technical', 'command': 'GOVERNANCE', 'subject': 'math', 'mode': 'textbook', 'source_sha': 'b' * 40, 'source_manifest': initial, 'rules': rules, 'blocks': [{'id': 'TEST_FIXTURE', 'sources': seven}], 'scope': {'paths': seven, 'preserve': sorted(set(source) | set(rules) | set(seven) - set(old_changed))}, 'protected_manifest': dict(source, **rules, **{name: initial[name] for name in seven if name not in old_changed}), 'proposal': {'id': 'TEST_FIXTURE_D06', 'hash': api['INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256'], 'patch_hash': old_patch, 'materialBinding': material, 'materialAuthorityBinding': material_authority, 'sourceCIPolicy': policy, 'sourceCIPolicySHA256': digest(policy), 'publisherAdoptionBinding': {'schemaVersion': 'qf01-checkpoint-publisher-technical-adoption/1', 'proposalSHA256': api['INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256'], 'evidenceRef': 'TEST_FIXTURE_D06', 'transcriptionSHA256': api['INLINE_LAYOUT_ACTUAL_ADOPTION_SHA256'], 'materialAuthoritySHA256': '7' * 64, 'publisherBeforeFilesSHA256': digest(initial)}}}
+    snapshot = put({'source_sha': original['source_sha'], 'files_hex': {name: raw.encode().hex() for name, raw in initial_raw.items()}})
+    add('opened', {'plan': original, 'definition_hash': core['definitionHash'], 'original_snapshot': snapshot})
+
+    def observed():
+        return api['publisher_revision_frames'](rows, objects.__getitem__, origin, epoch, nodes)
+
+    def result(name, extra=None):
+        state = observed()['current']['state']
+        out = {'verdict': 'PASS', **(extra or {})}
+        artifact = put(out)
+        return add('result', {'node': name, 'verdict': 'PASS', 'artifact': artifact, 'input_hash': api['publisher_revision_input'](state, nodes[name]), 'actor': state['claims'].get(name, {}).get('actor', 'TEST_FIXTURE_DETERMINISTIC')})
+
+    def claim(name):
+        state = observed()['current']['state']
+        return add('claimed', {'node': name, 'input_hash': api['publisher_revision_input'](state, nodes[name]), 'actor': nodes[name]['actor'], 'token': f'{len(rows):032x}', 'task_id': digest({'work': api['PUBLISHER_WORK'], 'node': name, 'input_hash': api['publisher_revision_input'](state, nodes[name])}), 'expires_at': 10000})
+    result('S00_RECOVER')
+    result('S01_ROUTE')
+    claim('T01_ANALYSIS')
+    result('T01_ANALYSIS')
+    user = {'id': 'TEST_FIXTURE_OLD_USER', 'intent': 'approve_proposal', 'proposal_hash': original['proposal']['hash'], 'reply_to': original['proposal']['hash'], 'scope': original['scope'], 'candidate_sha': original['source_sha'], 'quote': api['INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE'], 'source_ref': 'request_user_input_async/' + api['INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID'], 'verification_level': 'conversation_transcribed'}
+    add('user', user)
+    result('T02_APPROVAL', {'user_event': user['id']})
+    claim('T03_BUILD')
+    intent = add('patch_intent', {'node': 'T03_BUILD', 'patch_hash': old_patch, 'backup': put({name: initial_raw[name].encode().hex() for name in old_changed}), 'before': {name: initial[name] for name in old_changed}})
+    add('patch_applied', {'node': 'T03_BUILD', 'operation': intent['id'], 'after_manifest': {name: before[name] for name in old_changed}})
+    old_file_refs = []
+    for index, name in enumerate(old_changed):
+        eid = f'TEST_FIXTURE_OLD_FILE_{index}'
+        old_file_refs.append(eid)
+        add('evidence', {'id': eid, 'kind': 'file', 'verification_level': 'local_execution', 'source_ref': intent['id'], 'data': {'path': name, 'sha256': before[name]}})
+    result('T03_BUILD', {'evidence_refs': old_file_refs})
+    add('candidate', {'sha': 'c' * 40, 'manifest': before})
+    run = {'id': 100, 'run_attempt': 1, 'repository': {'id': 1391122224, 'full_name': 'rrikunagasige-dot/kyotsu-step-web'}, 'head_sha': 'c' * 40, 'head_branch': policy['branch'], 'path': policy['workflow'], 'event': 'push', 'status': 'completed', 'conclusion': 'failure', 'html_url': 'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/100'}
+    jobs = {'total_count': 1, 'jobs': [{'id': 200, 'run_id': 100, 'run_attempt': 1, 'head_sha': 'c' * 40, 'status': 'completed', 'conclusion': 'failure'}]}
+    carriers = []
+    for value in (run, jobs):
+        raw = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+        carriers.append({'rawUTF8': raw, 'sha256': sha(raw.encode())})
+    run_raw, jobs_raw = carriers
+    failure_payload = {'id': 'TEST_FIXTURE_FAILURE', 'kind': 'check', 'verification_level': 'local_execution', 'source_ref': run['html_url'], 'data': {'status': 'PASS', 'source_sha': 'c' * 40, 'checks': {'purpose': api['PUBLISHER_REVISION_FAILURE_PURPOSE'], 'runRawRef': put(run_raw), 'jobsRawRef': put(jobs_raw), 'runRawSHA256': run_raw['sha256'], 'jobsRawSHA256': jobs_raw['sha256'], 'failedJobIDs': [200], 'producerQAPassed': False, 'formalT04Accepted': False}}}
+    if not include_revision:
+        add('evidence', failure_payload)
+    if include_revision:
+        workflow_new = copy.deepcopy(workflow)
+        changed_core = next(iter(workflow_new))
+        workflow_new[changed_core] = 'e' * 64
+        services_new = copy.deepcopy(services)
+        services_new[changed_core] = 'e' * 64
+        core_new = copy.deepcopy(core)
+        core_new['definitionHash'] = 'd' * 64
+        core_new['files'][changed_core.removeprefix('workflow/')] = 'e' * 64
+        source_new = {**workflow_new, **services_new, **app}
+        method_new, r06_new = primary_records('d' * 40, core_new, 'e' * 64, workflow_new, services_new)
+        add('evidence', failure_payload)
+        cut = copy.deepcopy(rows[-1])
+        predecessor = observed()['current']
+        authority = {'work': api['FIXED_WORK'], 'sourceSHA': 'd' * 40, 'definitionHash': core_new['definitionHash'], 'implementationHash': 'e' * 64, 'anchor': {'events': cut['seq'], 'head': cut['hash']}, 'candidateManifest': app, 'serviceManifestSHA256': digest({name.replace('/', '\\'): value for name, value in services_new.items()}), 'releaseUnit': 'qf01-p035', 'baseStateSHA256': material_authority['baseStateSHA256'], 'unchangedMaterialPlan': {'planSHA256': material_authority['planSHA256']}, 'proposalSHA256': material_authority['proposalSHA256']}
+        contract = {'authorityVariant': 'qf01-checkpoint-recovery/1', 'sourceSHA': 'd' * 40, 'publisherBaseSHA': 'c' * 40, 'producerBaseSHA': 'c' * 40, 'technicalBeforeFiles': before, 'publisherBeforeFiles': before, 'currentNativeAuthority': authority, 'checkpointAuthority': {'core': {'sourceSHA': 'd' * 40, 'definitionHash': core_new['definitionHash'], 'implementationHash': 'e' * 64, 'workflowFiles': workflow_new, 'serviceFiles': services_new, 'nativeServiceFiles': {name.replace('/', '\\'): value for name, value in services_new.items()}, 'appFiles': app}, 'currentExport': {'anchor': authority['anchor']}}}
+        new_raw = dict(after_raw)
+        for name in ('.github/workflows/qf01-publisher-g3.yml', 'tools/release/qf01-publish-check.test.mjs'):
+            new_raw[name] = 'TEST_FIXTURE_NEW_AFTER:' + name
+        new_raw['tools/release/qf01-publish-contract.json'] = api['canonical'](contract).decode()
+        after = {name: sha(raw.encode()) for name, raw in new_raw.items()}
+        changed = [name for name in seven if after[name] != before[name]]
+        patch = put({'files': [{'path': name, 'before_sha256': before[name], 'after_sha256': after[name], 'after_text': new_raw[name]} for name in changed]})
+        plan = copy.deepcopy(original)
+        proposal = plan['proposal']
+        proposal['patch_hash'] = patch
+        policy_new = proposal['sourceCIPolicy']
+        policy_new.update(sourceSHA='d' * 40, definitionHash=core_new['definitionHash'], implementationHash='e' * 64, core=core_new, methodAuthorityRef=method_new, r06=r06_new, sourceManifest=source_new, publisherBeforeSHA='c' * 40, ownerBeforeManifest=before, ownerAfterManifest=after, publisherFiles=after, contractSHA256=after['tools/release/qf01-publish-contract.json'], buildArtifactName='qf01-build-' + 'e' * 40 + '-1', qaArtifactName='qf01-reports-' + 'e' * 40 + '-1')
+        proposal['sourceCIPolicySHA256'] = digest(policy_new)
+        proposal['publisherRevision'] = {'ordinal': 1, 'predecessorRevisionEventHash': predecessor['boundary']['hash'], 'predecessorPlanSHA256': digest(original), 'predecessorCandidateSHA': 'c' * 40, 'predecessorManifestSHA256': digest(before), 'predecessorT03ResultRef': predecessor['t03ResultEvent']['payload']['artifact'], 'predecessorBindEventHash': predecessor['bindEvent']['hash'], 'buildCutHead': cut['hash'], 'reasonEvidenceRefs': ['TEST_FIXTURE_FAILURE']}
+        proposal['materialBinding'].update(sourceSHA='d' * 40)
+        proposal['materialAuthorityBinding'].update(sourceSHA='d' * 40, implementationHash='e' * 64)
+        proposal['publisherAdoptionBinding'].update(materialAuthoritySHA256=digest(authority), publisherBeforeFilesSHA256=digest(before))
+        plan['scope']['preserve'] = sorted(set(original['scope']['preserve']) - set(seven) | set(seven) - set(changed))
+        plan['protected_manifest'] = dict(source_new, **rules, **{name: before[name] for name in seven if name not in changed})
+        add('revised', {'plan': plan})
+        add('definition_migrated', {'from': core['definitionHash'], 'to': core_new['definitionHash'], 'evidence_refs': ['TEST_FIXTURE_FAILURE']})
+        for name in ['S00_RECOVER', 'S01_ROUTE', 'T01_ANALYSIS'][:fresh_nodes]:
+            if nodes[name]['actor'] != 'CODE':
+                claim(name)
+            result(name)
+        if finish_current:
+            assert fresh_nodes == 3
+            current_user = copy.deepcopy(user)
+            current_user.update(id='TEST_FIXTURE_CURRENT_USER', scope=plan['scope'], candidate_sha='c' * 40)
+            add('user', current_user)
+            result('T02_APPROVAL', {'user_event': current_user['id']})
+            claim('T03_BUILD')
+            current_intent = add('patch_intent', {'node': 'T03_BUILD', 'patch_hash': patch, 'backup': put({name: after_raw[name].encode().hex() for name in changed}), 'before': {name: before[name] for name in changed}})
+            add('patch_applied', {'node': 'T03_BUILD', 'operation': current_intent['id'], 'after_manifest': {name: after[name] for name in changed}})
+            evidence_refs = []
+            for index, name in enumerate(changed):
+                eid = f'TEST_FIXTURE_CURRENT_FILE_{index}'
+                evidence_refs.append(eid)
+                add('evidence', {'id': eid, 'kind': 'file', 'verification_level': 'local_execution', 'source_ref': current_intent['id'], 'data': {'path': name, 'sha256': after[name]}})
+            result('T03_BUILD', {'evidence_refs': evidence_refs})
+            add('candidate', {'sha': 'e' * 40, 'manifest': after})
+            ci_id = 'TEST_FIXTURE_CURRENT_SUCCESS_CI'
+            add('evidence', {'id': ci_id, 'kind': 'ci', 'verification_level': 'local_execution', 'source_ref': 'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/300', 'data': {'id': 300, 'run_attempt': 1, 'head_sha': 'e' * 40, 'status': 'completed', 'conclusion': 'success', 'event': 'push', 'path': policy_new['workflow'], 'head_branch': policy_new['branch'], 'html_url': 'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/300'}})
+            claim('T04_VERIFY')
+            result('T04_VERIFY', {'evidence_refs': [ci_id]})
+            claim('L01_LEARNING')
+            result('L01_LEARNING', {'case_updates': [], 'rule_links': [], 'regression_links': [], 'unresolved': [], 'deduplication': 'TEST_FIXTURE限定'})
+            result('Z01_CLOSE')
+    return {'rows': rows, 'objects': objects, 'origin': origin, 'epoch': epoch, 'nodes': nodes, 'qualification': '全値合成TEST_FIXTURE。正式Core/Native/Runtime/採用/CI未実行。'}
+
+
+class CheckpointPublisherRevisionTests(unittest.TestCase):
+    """全値合成TEST_FIXTURE。Store/Runtime/原資料を起動・書込しない。"""
+
+    def validate_plan(self, value):
+        api = _publisher_test_api()
+        return api['validate_publisher_revision_plan'](value['original'], value['predecessor'],
+            value['newPlan'], value['primary'], value['objects'].__getitem__, value['cut'])
+
+    def replay(self, value):
+        return _publisher_test_api()['publisher_revision_frames'](value['rows'],
+            value['objects'].__getitem__, value['origin'], value['epoch'], value['nodes'])
+
+    def test_publisher_revision_plan_preserves_opened_source_and_current_610(self):
+        value = _publisher_test_plan()
+        original = copy.deepcopy(value['original'])
+        self.assertEqual(self.validate_plan(value), value['newPlan'])
+        self.assertEqual(value['original'], original)
+        self.assertEqual(len(value['newPlan']['protected_manifest']), 621)
+
+    def test_publisher_revision_ordinal_is_exact_next_integer(self):
+        for ordinal in (0, 2, True, 1.0):
+            with self.subTest(ordinal=ordinal):
+                value = _publisher_test_plan()
+                value['newPlan']['proposal']['publisherRevision']['ordinal'] = ordinal
+                with self.assertRaisesRegex(CheckpointRejected, 'EXACT_NEXT_ORDINAL'):
+                    self.validate_plan(value)
+
+    def test_publisher_revision_predecessor_refs_are_actual(self):
+        for key in ('predecessorRevisionEventHash', 'predecessorPlanSHA256',
+                    'predecessorCandidateSHA', 'predecessorManifestSHA256',
+                    'predecessorT03ResultRef', 'predecessorBindEventHash'):
+            with self.subTest(key=key):
+                value = _publisher_test_plan()
+                value['newPlan']['proposal']['publisherRevision'][key] = '0' * 64
+                with self.assertRaisesRegex(CheckpointRejected, 'ACTUAL_PREDECESSOR_CHAIN'):
+                    self.validate_plan(value)
+
+    def test_publisher_revision_original_source_and_rules_cannot_move(self):
+        for key in ('source_sha', 'source_manifest', 'rules'):
+            with self.subTest(key=key):
+                value = _publisher_test_plan()
+                value['newPlan'][key] = '0' * 40 if key == 'source_sha' else {}
+                with self.assertRaises(CheckpointRejected):
+                    self.validate_plan(value)
+
+    def test_publisher_revision_scope_outside_preserve_cannot_drop(self):
+        value = _publisher_test_plan()
+        path = next(name for name in value['newPlan']['scope']['preserve']
+                    if name.startswith('src/'))
+        value['newPlan']['scope']['preserve'].remove(path)
+        with self.assertRaisesRegex(CheckpointRejected, 'EXACT_CURRENT_PRESERVE_SET'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_unchanged_seven_cannot_be_unprotected(self):
+        value = _publisher_test_plan()
+        value['newPlan']['scope']['preserve'].remove('tools/release/qf01-browser.mjs')
+        with self.assertRaisesRegex(CheckpointRejected, 'EXACT_CURRENT_PRESERVE_SET'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_rebalanced_fake_current_610_is_rejected(self):
+        value = _publisher_test_plan()
+        proposal = value['newPlan']['proposal']
+        name = next(name for name in proposal['sourceCIPolicy']['sourceManifest'] if name.startswith('src/'))
+        proposal['sourceCIPolicy']['sourceManifest'][name] = '0' * 64
+        value['newPlan']['protected_manifest'][name] = '0' * 64
+        proposal['sourceCIPolicySHA256'] = digest(proposal['sourceCIPolicy'])
+        with self.assertRaisesRegex(CheckpointRejected, 'CURRENT_FULL_SOURCE_MANIFEST'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_raw_patch_is_rehashed_but_not_relabelled(self):
+        value = _publisher_test_plan()
+        proposal = value['newPlan']['proposal']
+        patch = copy.deepcopy(value['objects'][proposal['patch_hash']])
+        patch['files'][0]['after_text'] += '\n改変'
+        reference = digest(patch)
+        value['objects'][reference] = patch
+        proposal['patch_hash'] = reference
+        with self.assertRaisesRegex(CheckpointRejected, 'ACTUAL_PATCH_UTF8'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_reason_requires_after_bind_actual_failure(self):
+        value = _publisher_test_plan()
+        event = value['predecessor']['evidenceEvents']['TEST_FIXTURE_FAILURE']
+        event['seq'] = value['predecessor']['bindEvent']['seq'] - 1
+        with self.assertRaisesRegex(CheckpointRejected, 'AFTER_BOUND_BEFORE_CUT'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_failure_raw_cannot_be_success_or_diagnostic_branch(self):
+        for field, replacement in (('conclusion', 'success'), ('head_branch', 'TEST_FIXTURE_CODE_BRANCH')):
+            with self.subTest(field=field):
+                value = _publisher_test_plan()
+                checks = value['predecessor']['evidenceEvents']['TEST_FIXTURE_FAILURE']['payload']['data']['checks']
+                carrier = copy.deepcopy(value['objects'][checks['runRawRef']])
+                run = json.loads(carrier['rawUTF8'])
+                run[field] = replacement
+                carrier['rawUTF8'] = json.dumps(run, ensure_ascii=False, indent=2) + '\n'
+                carrier['sha256'] = hashlib.sha256(carrier['rawUTF8'].encode()).hexdigest()
+                checks['runRawRef'] = digest(carrier)
+                checks['runRawSHA256'] = carrier['sha256']
+                value['objects'][checks['runRawRef']] = carrier
+                with self.assertRaisesRegex(CheckpointRejected, 'COMPLETED_PRODUCER_FAILURE_REQUIRED'):
+                    self.validate_plan(value)
+
+    def test_publisher_revision_legacy0_keeps_missing_t04(self):
+        value = _publisher_test_history(include_revision=False)
+        result = self.replay(value)
+        self.assertEqual(len(result['frames']), 1)
+        self.assertEqual(result['current']['ordinal'], 0)
+        self.assertNotIn('T04_VERIFY', result['current']['state']['results'])
+
+    def test_publisher_revision_full_history_has_one_current_frame(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        result = self.replay(value)
+        self.assertEqual([frame['ordinal'] for frame in result['frames']], [0, 1])
+        self.assertEqual(result['current'], result['frames'][-1])
+        self.assertEqual(result['frames'][0]['state']['plan']['source_sha'],
+                         result['current']['state']['plan']['source_sha'])
+        self.assertNotIn('T04_VERIFY', result['current']['state']['results'])
+
+    def test_publisher_revision_old_ai_result_requires_its_claim(self):
+        value = _publisher_test_history(include_revision=False)
+        value['rows'] = _publisher_test_reseal([event for event in value['rows']
+            if not (event['kind'] == 'claimed' and event['payload']['node'] == 'T01_ANALYSIS')])
+        with self.assertRaisesRegex(CheckpointRejected, 'RESULT_REQUIRES_CURRENT_CLAIM'):
+            self.replay(value)
+
+    def test_publisher_revision_current_ai_result_requires_its_claim(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        index = max(i for i, event in enumerate(value['rows'])
+                    if event['kind'] == 'claimed' and event['payload']['node'] == 'T01_ANALYSIS')
+        del value['rows'][index]
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        with self.assertRaisesRegex(CheckpointRejected, 'RESULT_REQUIRES_CURRENT_CLAIM'):
+            self.replay(value)
+
+    def test_publisher_revision_actor_id_is_not_actor_kind(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        for event in value['rows'][-2:]:
+            event['payload']['actor'] = 'TEST_FIXTURE_EXECUTOR_DIFFERENT_FROM_AI'
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        self.assertEqual(self.replay(value)['current']['state']['results']['T01_ANALYSIS']['actor'],
+                         'TEST_FIXTURE_EXECUTOR_DIFFERENT_FROM_AI')
+
+    def test_publisher_revision_claim_task_id_is_current_input(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        value['rows'][-2]['payload']['task_id'] = '0' * 64
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        with self.assertRaisesRegex(CheckpointRejected, 'CURRENT_NORMAL_CLAIM_INPUT'):
+            self.replay(value)
+
+    def test_publisher_revision_does_not_invent_pub_finish_deadline(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        claim = value['rows'][-2]
+        claim['payload']['expires_at'] = claim['time'] + 0.5
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        self.assertGreater(value['rows'][-1]['time'], claim['payload']['expires_at'])
+        self.assertEqual(self.replay(value)['current']['ordinal'], 1)
+
+    def test_publisher_revision_full_suffix_cannot_be_a_subset(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        value['rows'] = _publisher_test_reseal(value['rows'][1:])
+        with self.assertRaisesRegex(CheckpointRejected, 'AUTHENTIC_BOOTSTRAP'):
+            self.replay(value)
+
+    def test_publisher_revision_second_patch_intent_is_rejected(self):
+        value = _publisher_test_history(include_revision=False)
+        index = next(i for i, event in enumerate(value['rows']) if event['kind'] == 'patch_intent')
+        extra = copy.deepcopy(value['rows'][index])
+        extra['id'] += '_SECOND'
+        value['rows'].insert(index + 1, extra)
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        with self.assertRaisesRegex(CheckpointRejected, 'ONE_CURRENT_APPROVED_PATCH_INTENT'):
+            self.replay(value)
+
+    def test_publisher_revision_foreign_patch_operation_is_rejected(self):
+        value = _publisher_test_history(include_revision=False)
+        event = next(event for event in value['rows'] if event['kind'] == 'patch_applied')
+        event['payload']['operation'] = 'TEST_FIXTURE_FOREIGN_PATCH'
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        with self.assertRaisesRegex(CheckpointRejected, 'EXACT_ONE_PATCH_APPLIED'):
+            self.replay(value)
+
+    def test_publisher_revision_cut_cannot_include_itself(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        event = next(event for event in value['rows'] if event['kind'] == 'revised')
+        event['payload']['plan']['proposal']['publisherRevision']['buildCutHead'] = event['hash']
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        with self.assertRaisesRegex(CheckpointRejected, 'EXACT_CUT_AFTER_ACTUAL_BOUND'):
+            self.replay(value)
+
+    def test_publisher_revision_fresh_t02_cannot_use_legacy_user(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        _publisher_test_add_result(value, 'T02_APPROVAL', {'user_event': 'TEST_FIXTURE_OLD_USER'})
+        with self.assertRaisesRegex(CheckpointRejected, 'CURRENT_FRESH_T02_USER'):
+            self.replay(value)
+
+    def test_publisher_revision_fresh_t02_accepts_current_retranscription(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        frame = self.replay(value)['current']
+        plan = frame['state']['plan']
+        api = _publisher_test_api()
+        user = {'id': 'TEST_FIXTURE_CURRENT_USER', 'intent': 'approve_proposal',
+            'proposal_hash': plan['proposal']['hash'], 'reply_to': plan['proposal']['hash'],
+            'scope': plan['scope'], 'candidate_sha': plan['proposal']['sourceCIPolicy']['publisherBeforeSHA'],
+            'quote': api['INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE'],
+            'source_ref': 'request_user_input_async/' + api['INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID'],
+            'verification_level': 'conversation_transcribed'}
+        _publisher_test_add_event(value, 'user', user)
+        _publisher_test_add_result(value, 'T02_APPROVAL', {'user_event': user['id']})
+        self.assertEqual(api['publisher_revision_approval'](self.replay(value)['current']), user)
+
+    def test_publisher_revision_failure_check_never_counts_as_t04_quality(self):
+        value = _publisher_test_history(include_revision=False)
+        api = _publisher_test_api()
+        frame = self.replay(value)['current']
+        input_hash = api['publisher_revision_input'](frame['state'], value['nodes']['T04_VERIFY'])
+        actor = 'TEST_FIXTURE_T04_EXECUTOR_DIFFERENT_FROM_TOOL'
+        _publisher_test_add_event(value, 'claimed', {'node': 'T04_VERIFY', 'input_hash': input_hash,
+            'actor': actor, 'task_id': digest({'work': api['PUBLISHER_WORK'],
+                'node': 'T04_VERIFY', 'input_hash': input_hash}), 'token': 'a' * 32, 'expires_at': 10000})
+        _publisher_test_add_result(value, 'T04_VERIFY', {'evidence_refs': ['TEST_FIXTURE_FAILURE']})
+        with self.assertRaisesRegex(CheckpointRejected, 'T04_ACTUAL_SUCCESS_CI_ONLY'):
+            self.replay(value)
+
+    def test_publisher_revision_unknown_pub_event_is_rejected(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        _publisher_test_add_event(value, 'TEST_FIXTURE_UNKNOWN_PUB_OPERATION', {})
+        with self.assertRaisesRegex(CheckpointRejected, 'UNKNOWN_OR_FORBIDDEN_EVENT'):
+            self.replay(value)
+
+    def test_publisher_revision_changes_definition_before_fresh_normal_stages(self):
+        value = _publisher_test_history(fresh_nodes=3, finish_current=True)
+        result = self.replay(value)
+        old, current = result['frames']
+        self.assertNotEqual(old['state']['definition_hash'], current['state']['definition_hash'])
+        self.assertEqual(current['migrationEvent']['payload']['from'], old['state']['definition_hash'])
+        self.assertEqual(current['migrationEvent']['payload']['to'], current['state']['definition_hash'])
+        self.assertEqual(current['state']['candidate_sha'], 'e' * 40)
+        self.assertEqual(len([event for event in current['events'] if event['kind'] == 'patch_intent']), 1)
+        self.assertEqual(len([event for event in current['events'] if event['kind'] == 'patch_applied']), 1)
+        self.assertEqual(current['state']['results']['Z01_CLOSE']['verdict'], 'PASS')
+        self.assertNotIn('T04_VERIFY', old['state']['results'])
+
+    def test_publisher_revision_old_definition_failure_check_is_not_claim_exemption(self):
+        value = _publisher_test_history()
+        boundary = next(i for i, event in enumerate(value['rows']) if event['kind'] == 'revised')
+        value['rows'] = value['rows'][:boundary]
+        result = self.replay(value)
+        frame = result['current']
+        self.assertNotEqual(frame['state']['definition_hash'], result['primary']['core']['definitionHash'])
+        self.assertIn('TEST_FIXTURE_FAILURE', frame['evidenceEvents'])
+        input_hash = _publisher_test_api()['publisher_revision_input'](frame['state'], value['nodes']['T01_ANALYSIS'])
+        _publisher_test_add_event(value, 'claimed', {'node': 'T01_ANALYSIS', 'actor': 'TEST_FIXTURE_STALE_EXECUTOR',
+            'input_hash': input_hash, 'task_id': digest({'work': frame['state']['plan']['work_id'],
+                'node': 'T01_ANALYSIS', 'input_hash': input_hash}), 'token': 'a' * 32, 'expires_at': 10000})
+        with self.assertRaisesRegex(CheckpointRejected, 'CURRENT_NORMAL_CLAIM_INPUT'):
+            self.replay(value)
+
+    def test_publisher_revision_duplicate_current_code_result_is_extra_history(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        current = self.replay(value)['current']
+        payload = copy.deepcopy(current['resultEvents']['S00_RECOVER']['payload'])
+        _publisher_test_add_event(value, 'result', payload)
+        with self.assertRaisesRegex(CheckpointRejected, 'DUPLICATE_CURRENT_RESULT'):
+            self.replay(value)
+
+    def test_publisher_revision_current_z01_done_cannot_start_recovery(self):
+        value = _publisher_test_plan()
+        api = _publisher_test_api()
+        state = value['predecessor']['state']
+        node = {'id': 'Z01_CLOSE', 'watch': 'all', 'depends_on': ['L01_LEARNING']}
+        state['results']['Z01_CLOSE'] = {'verdict': 'PASS', 'artifact': '0' * 64,
+                                       'input_hash': api['publisher_revision_input'](state, node)}
+        with self.assertRaisesRegex(CheckpointRejected, 'ALREADY_CURRENT_DONE_NOT_RECOVERABLE'):
+            self.validate_plan(value)
+
+    def test_publisher_revision_historical_stale_z01_is_not_current_done(self):
+        value = _publisher_test_plan()
+        value['predecessor']['state']['results']['Z01_CLOSE'] = {
+            'verdict': 'PASS', 'artifact': '0' * 64, 'input_hash': '1' * 64}
+        self.assertEqual(self.validate_plan(value), value['newPlan'])
+
+    def _reopen_fixture_z01(self, verdict):
+        value = _publisher_test_history(fresh_nodes=3, finish_current=True)
+        event = value['rows'][-1]
+        self.assertEqual(event['payload']['node'], 'Z01_CLOSE')
+        body = copy.deepcopy(value['objects'][event['payload']['artifact']])
+        body['verdict'] = verdict
+        reference = digest(body)
+        value['objects'][reference] = body
+        event['payload'].update(artifact=reference, verdict=verdict)
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        payload = {'node': 'Z01_CLOSE', 'previous_result': reference,
+                   'reason': 'TEST_FIXTURE 実未解決結果の再分析',
+                   'evidence_refs': ['TEST_FIXTURE_FAILURE']}
+        return value, payload
+
+    def test_publisher_revision_passed_z01_cannot_be_reopened(self):
+        value, payload = self._reopen_fixture_z01('PASS')
+        _publisher_test_add_event(value, 'result_reopened', payload)
+        with self.assertRaisesRegex(CheckpointRejected, 'REOPEN_ONLY_ACTUAL_CURRENT_FAILED_OR_BLOCKED_RESULT'):
+            self.replay(value)
+
+    def test_publisher_revision_failed_and_blocked_result_can_be_reopened(self):
+        for verdict in ('FAIL', 'NEEDS_REVIEW'):
+            with self.subTest(verdict=verdict):
+                value, payload = self._reopen_fixture_z01(verdict)
+                _publisher_test_add_event(value, 'result_reopened', payload)
+                current = self.replay(value)['current']
+                self.assertNotIn('Z01_CLOSE', current['state']['results'])
+                self.assertNotIn('Z01_CLOSE', current['resultEvents'])
+
+    def test_publisher_revision_reopen_requires_actual_result_evidence_and_current_input(self):
+        for variant in ('previous', 'unregistered', 'unknown-node', 'stale-input'):
+            with self.subTest(variant=variant):
+                value, payload = self._reopen_fixture_z01('FAIL')
+                if variant == 'previous':
+                    payload['previous_result'] = '0' * 64
+                elif variant == 'unregistered':
+                    payload['evidence_refs'] = ['TEST_FIXTURE_UNREGISTERED']
+                elif variant == 'unknown-node':
+                    payload['node'] = 'TEST_FIXTURE_UNKNOWN_NODE'
+                else:
+                    _publisher_test_add_event(value, 'issue', {'id': 'TEST_FIXTURE_NEW_ISSUE'})
+                _publisher_test_add_event(value, 'result_reopened', payload)
+                with self.assertRaisesRegex(CheckpointRejected, 'REOPEN_ONLY_ACTUAL_CURRENT_FAILED_OR_BLOCKED_RESULT'):
+                    self.replay(value)
+
+    def test_publisher_revision_reopen_preserves_expired_claim_priority_over_old_result(self):
+        value = _publisher_test_history(fresh_nodes=3, finish_current=True)
+        _publisher_test_add_event(value, 'issue', {'id': 'TEST_FIXTURE_REOPEN_INPUT_CHANGE'})
+        frame = self.replay(value)['current']
+        old_result = frame['state']['results']['L01_LEARNING']
+        input_hash = _publisher_test_api()['publisher_revision_input'](frame['state'], value['nodes']['L01_LEARNING'])
+        self.assertNotEqual(old_result['input_hash'], input_hash)
+        _publisher_test_add_event(value, 'claimed', {'node': 'L01_LEARNING', 'actor': 'TEST_FIXTURE_REOPEN_EXECUTOR',
+            'input_hash': input_hash, 'task_id': digest({'work': frame['state']['plan']['work_id'],
+                'node': 'L01_LEARNING', 'input_hash': input_hash}), 'token': 'a' * 32,
+            'expires_at': value['rows'][-1]['time'] + 1})
+        _publisher_test_add_event(value, 'result_reopened', {'node': 'L01_LEARNING',
+            'previous_result': old_result['artifact'], 'reason': 'TEST_FIXTURE 期限切れclaimの通常BLOCKED境界',
+            'evidence_refs': ['TEST_FIXTURE_FAILURE']})
+        current = self.replay(value)['current']
+        self.assertNotIn('L01_LEARNING', current['state']['results'])
+        self.assertIn('L01_LEARNING', current['state']['claims'])
+
+    def test_publisher_revision_reopen_may_target_result_carried_from_previous_interval(self):
+        value = _publisher_test_history(fresh_nodes=3)
+        result_index = max(i for i, event in enumerate(value['rows'])
+                           if event['kind'] == 'result' and event['payload'].get('node') == 'T01_ANALYSIS')
+        value['rows'] = value['rows'][:result_index]
+        frame = self.replay(value)['current']
+        self.assertNotIn('T01_ANALYSIS', frame['resultEvents'])
+        self.assertIn('T01_ANALYSIS', frame['state']['results'])
+        claim = frame['state']['claims']['T01_ANALYSIS']
+        event = _publisher_test_add_event(value, 'result_reopened', {'node': 'T01_ANALYSIS',
+            'previous_result': frame['state']['results']['T01_ANALYSIS']['artifact'],
+            'reason': 'TEST_FIXTURE 前revision結果と現claimの通常BLOCKED境界',
+            'evidence_refs': ['TEST_FIXTURE_FAILURE']})
+        event['time'] = claim['expires_at'] + 1
+        value['rows'] = _publisher_test_reseal(value['rows'])
+        current = self.replay(value)['current']
+        self.assertNotIn('T01_ANALYSIS', current['state']['results'])
+        self.assertNotIn('T01_ANALYSIS', current['resultEvents'])
+        self.assertIn('T01_ANALYSIS', current['state']['claims'])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -1174,6 +1174,782 @@ def _source_recovery(view, proof_raw, snapshot_raw):
     return proof, snapshot
 
 
+PUBLISHER_REVISION_FAILURE_PURPOSE = 'D06_PUBLISHER_REVISION_CI_FAILURE'
+PUBLISHER_REVISION_RAW_LIMIT = 8_000_000
+PUBLISHER_REVISION_FIELDS = frozenset((
+    'ordinal', 'predecessorRevisionEventHash', 'predecessorPlanSHA256',
+    'predecessorCandidateSHA', 'predecessorManifestSHA256',
+    'predecessorT03ResultRef', 'predecessorBindEventHash', 'buildCutHead',
+    'reasonEvidenceRefs'))
+PUBLISHER_REVISION_PATHS = frozenset((
+    '.github/workflows/qf01-publisher-g3.yml',
+    'tools/release/qf01-browser.mjs', 'tools/release/qf01-publish-check.mjs',
+    'tools/release/qf01-publish-check.test.mjs',
+    'tools/release/qf01-publish-contract.json',
+    'tools/release/qf01-retained-adapters.mjs',
+    'tools/release/qf01-retained-adapters.test.mjs'))
+PUBLISHER_PRODUCER_BRANCH = 'work/qf01-p046-r3-publisher-20261116'
+PUBLISHER_PRODUCER_WORKFLOW = '.github/workflows/qf01-publisher-g3.yml'
+
+
+def _publisher_positive_integer(value):
+    return type(value) is int and 0 < value <= MAX_SAFE_INTEGER
+
+
+def publisher_failure_raw_object(value):
+    """原API object carrierを検証し、refを生成・書込しない。"""
+    require(type(value) is dict and set(value) == {'rawUTF8', 'sha256'},
+            'PUB_REVISION_RAW_OBJECT_FIELDS')
+    require(type(value['rawUTF8']) is str and type(value['sha256']) is str
+            and SHA256.fullmatch(value['sha256']), 'PUB_REVISION_RAW_OBJECT_TYPES')
+    try:
+        raw = value['rawUTF8'].encode('utf-8')
+    except UnicodeError as error:
+        raise CheckpointRejected('PUB_REVISION_RAW_UTF8') from error
+    require(0 < len(raw) <= PUBLISHER_REVISION_RAW_LIMIT
+            and sha(raw) == value['sha256'], 'PUB_REVISION_RAW_BYTES')
+    try:
+        parsed = strict_json(raw)
+    except RecursionError as error:
+        raise CheckpointRejected('PUB_REVISION_RAW_DEPTH') from error
+    def bounded(value, depth=0):
+        require(depth <= 256, 'PUB_REVISION_RAW_DEPTH')
+        if isinstance(value, dict):
+            for child in value.values():
+                bounded(child, depth + 1)
+        elif isinstance(value, list):
+            for child in value:
+                bounded(child, depth + 1)
+    bounded(parsed)
+    require(type(parsed) is dict, 'PUB_REVISION_RAW_API_OBJECT')
+    return parsed
+
+
+def validate_publisher_failure_objects(run_object, jobs_object, candidate, policy):
+    """失敗由来の照合だけ。戻り値をproducer QA/T04の合格にしない。"""
+    require(type(candidate) is str and re.fullmatch(r'[0-9a-f]{40}', candidate),
+            'PUB_REVISION_FAILURE_CANDIDATE')
+    require(type(policy) is dict and policy.get('branch') == PUBLISHER_PRODUCER_BRANCH
+            and policy.get('workflow') == PUBLISHER_PRODUCER_WORKFLOW,
+            'PUB_REVISION_FAILURE_PRODUCER_POLICY')
+    run = publisher_failure_raw_object(run_object)
+    jobs = publisher_failure_raw_object(jobs_object)
+    require(_publisher_positive_integer(run.get('id'))
+            and _publisher_positive_integer(run.get('run_attempt')),
+            'PUB_REVISION_FAILURE_RUN_ID_ATTEMPT')
+    require(run.get('repository', {}).get('id') == 1391122224
+            and type(run['repository']['id']) is int
+            and run['repository'].get('full_name') == 'rrikunagasige-dot/kyotsu-step-web',
+            'PUB_REVISION_FAILURE_REPOSITORY')
+    require(run.get('head_sha') == candidate
+            and run.get('head_branch') == policy['branch']
+            and run.get('path') == policy['workflow'] and run.get('event') == 'push'
+            and run.get('status') == 'completed' and run.get('conclusion') == 'failure',
+            'PUB_REVISION_COMPLETED_PRODUCER_FAILURE_REQUIRED')
+    require(run.get('html_url') == 'https://github.com/rrikunagasige-dot/'
+            'kyotsu-step-web/actions/runs/' + str(run['id']),
+            'PUB_REVISION_FAILURE_RUN_URL')
+    require(type(jobs.get('jobs')) is list and jobs['jobs']
+            and type(jobs.get('total_count')) is int
+            and jobs['total_count'] == len(jobs['jobs']) <= 100,
+            'PUB_REVISION_COMPLETE_SINGLE_JOBS_PAGE_REQUIRED')
+    ids, failed = set(), []
+    for row in jobs['jobs']:
+        require(type(row) is dict and _publisher_positive_integer(row.get('id'))
+                and row['id'] not in ids, 'PUB_REVISION_UNIQUE_JOB_ID')
+        ids.add(row['id'])
+        require(type(row.get('run_id')) is int and row['run_id'] == run['id']
+                and type(row.get('run_attempt')) is int
+                and row['run_attempt'] == run['run_attempt']
+                and row.get('head_sha') == candidate and row.get('status') == 'completed'
+                and type(row.get('conclusion')) is str and row['conclusion'],
+                'PUB_REVISION_JOB_RUN_ATTEMPT_HEAD_COMPLETED')
+        if row['conclusion'] == 'failure':
+            failed.append(row['id'])
+    require(failed, 'PUB_REVISION_ACTUAL_FAILED_JOB_REQUIRED')
+    return {'runID': run['id'], 'attempt': run['run_attempt'],
+            'candidateSHA': candidate, 'failedJobIDs': sorted(failed),
+            'runRawSHA256': run_object['sha256'],
+            'jobsRawSHA256': jobs_object['sha256'],
+            'producerQAPassed': False, 'formalT04Accepted': False}
+
+
+def validate_publisher_failure_evidence(evidence, candidate, policy, get):
+    require(type(evidence) is dict and evidence.get('kind') == 'check'
+            and evidence.get('verification_level') in
+            ('tool_result_transcribed', 'local_execution'),
+            'PUB_REVISION_REAL_FAILURE_CHECK_REQUIRED')
+    data = evidence.get('data', {})
+    checks = data.get('checks', {})
+    fields = {'purpose', 'runRawRef', 'jobsRawRef', 'runRawSHA256',
+              'jobsRawSHA256', 'failedJobIDs', 'producerQAPassed',
+              'formalT04Accepted'}
+    require(type(data) is dict and set(data) == {'status', 'source_sha', 'checks'}
+            and data.get('status') == 'PASS' and data.get('source_sha') == candidate
+            and type(checks) is dict and set(checks) == fields
+            and checks.get('purpose') == PUBLISHER_REVISION_FAILURE_PURPOSE,
+            'PUB_REVISION_FAILURE_CHECK_FIELDS')
+    for name in ('runRawRef', 'jobsRawRef'):
+        require(type(checks[name]) is str and SHA256.fullmatch(checks[name]),
+                'PUB_REVISION_FAILURE_RAW_REF')
+    run, jobs = get(checks['runRawRef']), get(checks['jobsRawRef'])
+    require(digest(run) == checks['runRawRef'] and digest(jobs) == checks['jobsRawRef'],
+            'PUB_REVISION_FAILURE_OBJECT_HASH')
+    result = validate_publisher_failure_objects(run, jobs, candidate, policy)
+    require(type(checks['failedJobIDs']) is list
+            and all(_publisher_positive_integer(value) for value in checks['failedJobIDs'])
+            and all(checks[key] == result[key] for key in
+                ('runRawSHA256', 'jobsRawSHA256', 'failedJobIDs'))
+            and checks['producerQAPassed'] is False
+            and checks['formalT04Accepted'] is False,
+            'PUB_REVISION_FAILURE_CHECK_IS_NOT_QA_ACCEPTANCE')
+    require(evidence.get('source_ref') == 'https://github.com/rrikunagasige-dot/'
+            'kyotsu-step-web/actions/runs/' + str(result['runID']),
+            'PUB_REVISION_FAILURE_SOURCE_REF')
+    return result
+
+
+def publisher_revision_input(state, node):
+    """checkpoint PUBの通常technical入力。callerは検証済みPUB stateだけを渡す。"""
+    plan = state['plan']
+    base = {'definition': state['definition_hash'], 'rules': plan['rules'],
+            'node': node['id'], 'subject': plan['subject'], 'mode': plan['mode'],
+            'source': plan['source_manifest']}
+    if node['watch'] == 'candidate':
+        base['candidate_sha'] = state['candidate_sha']
+    if node['watch'] in ('candidate', 'all'):
+        base['candidate_manifest'] = state['candidate_manifest']
+    base['dependencies'] = {name: state['results'].get(name, {}).get('artifact')
+                            for name in node['depends_on']}
+    if node['watch'] in ('learning', 'all'):
+        base['quality_events'] = {name: user for name, user in state['users'].items()
+                                 if user['intent'] in ('quality_positive', 'quality_negative',
+                                                       'reject_block', 'reject_app')}
+        base['issues'] = state['issues']
+        base['result_refs'] = {name: result['artifact'] for name, result in state['results'].items()
+                              if name != node['id'] and not name.startswith('Z01')}
+    if node['id'].startswith(('T02', 'T03')):
+        base['proposal'], base['scope'] = plan['proposal'], plan['scope']
+    revision = plan['proposal'].get('publisherRevision')
+    if revision is not None:
+        base['publisher_revision'] = digest(revision)
+    return digest(base)
+
+
+def publisher_revision_patch(plan, before, after, get):
+    require(type(before) is dict and type(after) is dict
+            and set(before) == set(after) == PUBLISHER_REVISION_PATHS,
+            'PUB_REVISION_FULL_SEVEN_BEFORE_AFTER')
+    require(all(type(value) is str and SHA256.fullmatch(value)
+                for mapping in (before, after) for value in mapping.values()),
+            'PUB_REVISION_FULL_SEVEN_HASH')
+    reference = plan.get('proposal', {}).get('patch_hash')
+    require(type(reference) is str and SHA256.fullmatch(reference),
+            'PUB_REVISION_ACTUAL_PATCH_REF')
+    patch = get(reference)
+    require(digest(patch) == reference and type(patch) is dict
+            and set(patch) == {'files'} and type(patch['files']) is list
+            and patch['files'], 'PUB_REVISION_NONEMPTY_PATCH')
+    changed = {name for name in before if before[name] != after[name]}
+    require(len(patch['files']) == len(changed)
+            and all(type(row) is dict and set(row) ==
+                    {'path', 'before_sha256', 'after_sha256', 'after_text'}
+                    for row in patch['files'])
+            and {row['path'] for row in patch['files']} == changed,
+            'PUB_REVISION_DECLARED_EXACT_CHANGED_SUBSET')
+    for row in patch['files']:
+        require(type(row['after_text']) is str
+                and row['before_sha256'] == before[row['path']]
+                and row['after_sha256'] == after[row['path']]
+                and sha(row['after_text'].encode('utf-8')) == row['after_sha256'],
+                'PUB_REVISION_ACTUAL_PATCH_UTF8')
+    return sorted(changed)
+
+
+def validate_publisher_revision_plan(original, predecessor, new_plan, primary, get, cut):
+    """内部plan照合。predecessor/primary/cutは全履歴の検証済み投影だけを使う。"""
+    old = predecessor['state']['plan']
+    revision = new_plan.get('proposal', {}).get('publisherRevision')
+    require(type(revision) is dict and set(revision) == PUBLISHER_REVISION_FIELDS
+            and _publisher_positive_integer(revision.get('ordinal'))
+            and revision['ordinal'] == predecessor['ordinal'] + 1,
+            'PUB_REVISION_EXACT_NEXT_ORDINAL')
+    require(old.get('work_id') == new_plan.get('work_id') == PUBLISHER_WORK
+            and old.get('parent_work') == new_plan.get('parent_work') == FIXED_WORK
+            and old.get('profile') == new_plan.get('profile') == 'technical'
+            and old.get('command') == new_plan.get('command') == 'GOVERNANCE'
+            and not old.get('workflow_version') and not new_plan.get('workflow_version')
+            and not old.get('simulation') and not new_plan.get('simulation'),
+            'PUB_REVISION_SAME_EXISTING_OWNER')
+    mutable_plan = {'proposal', 'scope', 'protected_manifest'}
+    require(set(original) == set(old) == set(new_plan)
+            and all(new_plan[key] == original[key] for key in original
+                    if key not in mutable_plan), 'PUB_REVISION_ORIGINAL_PLAN_FIELDS')
+    require(new_plan['source_sha'] == original['source_sha']
+            and new_plan['source_manifest'] == original['source_manifest']
+            and new_plan['rules'] == original['rules'] == primary['rules'],
+            'PUB_REVISION_IMMUTABLE_OPENED_SOURCE_RULES')
+    mutable_proposal = {'patch_hash', 'publisherRevision', 'sourceCIPolicy',
+                        'sourceCIPolicySHA256', 'publisherAdoptionBinding',
+                        'materialBinding', 'materialAuthorityBinding'}
+    require(set(new_plan['proposal']) == set(original['proposal']) | {'publisherRevision'}
+            and all(new_plan['proposal'][key] == original['proposal'][key]
+                    for key in original['proposal'] if key not in mutable_proposal)
+            and new_plan['proposal'].get('hash') == INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+            'PUB_REVISION_GENUINE_SAME_D06_PROPOSAL')
+    state = predecessor['state']
+    require(not state['claims'] and not state['paused'] and state['candidate_sha']
+            and not state['external'] and predecessor['t03ResultEvent']
+            and predecessor['bindEvent'] and predecessor['patchIntent']
+            and predecessor['patchApplied'], 'PUB_REVISION_SETTLED_ACTUAL_PREDECESSOR')
+    closed = state['results'].get('Z01_CLOSE', {})
+    require(not (closed.get('verdict') == 'PASS' and closed.get('input_hash') ==
+        publisher_revision_input(state, {'id': 'Z01_CLOSE', 'watch': 'all', 'depends_on': ['L01_LEARNING']})),
+        'PUB_REVISION_ALREADY_CURRENT_DONE_NOT_RECOVERABLE')
+    require(revision['predecessorRevisionEventHash'] == predecessor['boundary']['hash']
+            and revision['predecessorPlanSHA256'] == digest(old)
+            and revision['predecessorCandidateSHA'] == state['candidate_sha']
+            and revision['predecessorManifestSHA256'] == digest(state['candidate_manifest'])
+            and revision['predecessorT03ResultRef'] == predecessor['t03ResultEvent']['payload']['artifact']
+            and revision['predecessorBindEventHash'] == predecessor['bindEvent']['hash'],
+            'PUB_REVISION_ACTUAL_PREDECESSOR_CHAIN')
+    require(type(cut) is dict and revision['buildCutHead'] == cut['hash']
+            and predecessor['bindEvent']['seq'] < cut['seq'],
+            'PUB_REVISION_EXACT_CUT_AFTER_ACTUAL_BOUND')
+    refs = revision['reasonEvidenceRefs']
+    require(type(refs) is list and refs and len(set(refs)) == len(refs)
+            and all(type(ref) is str for ref in refs), 'PUB_REVISION_FAILURE_REASON_REFS')
+    for ref in refs:
+        event = predecessor['evidenceEvents'].get(ref)
+        require(event and predecessor['bindEvent']['seq'] < event['seq'] <= cut['seq'],
+                'PUB_REVISION_FAILURE_CHECK_AFTER_BOUND_BEFORE_CUT')
+        validate_publisher_failure_evidence(event['payload'], state['candidate_sha'],
+                                           old['proposal']['sourceCIPolicy'], get)
+    policy = new_plan['proposal'].get('sourceCIPolicy')
+    require(type(policy) is dict and set(policy) == set(old['proposal']['sourceCIPolicy'])
+            and new_plan['proposal'].get('sourceCIPolicySHA256') == digest(policy)
+            and policy.get('schemaVersion') == 'qf01-checkpoint-source-ci-policy/1',
+            'PUB_REVISION_UNCHANGED_POLICY_SCHEMA')
+    require(policy.get('work') == FIXED_WORK
+            and policy.get('sourceSHA') == primary['sourceSHA']
+            and policy.get('checkpointEpoch') == primary['epoch']
+            and policy.get('definitionHash') == primary['core']['definitionHash']
+            and policy.get('core') == primary['core']
+            and policy.get('implementationHash') == primary['implementationHash']
+            and policy.get('methodAuthorityRef') == primary['methodAuthorityRef']
+            and policy.get('r06') == primary['r06'],
+            'PUB_REVISION_ACTUAL_CURRENT_PRIMARY_BINDING')
+    require(policy.get('publisherBeforeSHA') == state['candidate_sha']
+            and policy.get('ownerBeforeManifest') == state['candidate_manifest']
+            and policy.get('ownerAfterManifest') == policy.get('publisherFiles'),
+            'PUB_REVISION_EFFECTIVE_BEFORE_AFTER')
+    before, after = policy['ownerBeforeManifest'], policy['ownerAfterManifest']
+    changed = publisher_revision_patch(new_plan, before, after, get)
+    require(type(new_plan['scope']) is dict and set(new_plan['scope']) == {'paths', 'preserve'}
+            and new_plan['scope']['paths'] == original['scope']['paths']
+            and len(new_plan['scope']['paths']) == 7
+            and set(new_plan['scope']['paths']) == PUBLISHER_REVISION_PATHS,
+            'PUB_REVISION_SAME_EXACT_SEVEN_SCOPE')
+    preserve = new_plan['scope']['preserve']
+    expected_preserve = ((set(original['scope']['preserve']) - PUBLISHER_REVISION_PATHS)
+                         | (PUBLISHER_REVISION_PATHS - set(changed)))
+    require(type(preserve) is list and len(preserve) == len(set(preserve))
+            and set(preserve) == expected_preserve,
+            'PUB_REVISION_EXACT_CURRENT_PRESERVE_SET')
+    source_manifest = policy.get('sourceManifest')
+    require(type(source_manifest) is dict and source_manifest == primary['sourceManifest']
+            and len(source_manifest) == 610
+            and all(type(name) is str and type(value) is str and SHA256.fullmatch(value)
+                    for name, value in source_manifest.items())
+            and all(source_manifest.get('workflow/' + name) == value
+                    for name, value in primary['core']['files'].items()),
+            'PUB_REVISION_CURRENT_FULL_SOURCE_MANIFEST')
+    protected = {}
+    for mapping in (source_manifest, primary['rules'],
+                    {name: before[name] for name in PUBLISHER_REVISION_PATHS - set(changed)}):
+        for name, value in mapping.items():
+            require(name not in protected or protected[name] == value,
+                    'PUB_REVISION_PROTECTED_HASH_CONFLICT')
+            protected[name] = value
+    require(new_plan['protected_manifest'] == protected,
+            'PUB_REVISION_EXACT_CURRENT_PROTECTED_MANIFEST')
+    require(set(original['protected_manifest']) - PUBLISHER_REVISION_PATHS
+            <= set(protected), 'PUB_REVISION_SCOPE_OUTSIDE_PROTECTION_REMOVAL')
+    require(new_plan['proposal'].get('materialBinding') == primary['materialBinding']
+            and new_plan['proposal'].get('materialAuthorityBinding') == primary['materialAuthorityBinding'],
+            'PUB_REVISION_CURRENT_MATERIAL_AUTHORITY')
+    adoption = new_plan['proposal'].get('publisherAdoptionBinding', {})
+    require(type(adoption) is dict and set(adoption) ==
+            set(original['proposal']['publisherAdoptionBinding'])
+            and adoption.get('schemaVersion') == 'qf01-checkpoint-publisher-technical-adoption/1'
+            and adoption.get('proposalSHA256') == INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
+            and adoption.get('transcriptionSHA256') == INLINE_LAYOUT_ACTUAL_ADOPTION_SHA256
+            and adoption.get('evidenceRef') == primary['adoptionEvidenceRef']
+            and adoption.get('materialAuthoritySHA256') == primary['materialAuthoritySHA256']
+            and adoption.get('publisherBeforeFilesSHA256') == digest(before),
+            'PUB_REVISION_GENUINE_D06_CURRENT_ADOPTION_BINDING')
+    return copy.deepcopy(new_plan)
+
+
+def _publisher_opened_state(plan, definition):
+    return {'plan': copy.deepcopy(plan), 'definition_hash': definition,
+            'claims': {}, 'results': {}, 'evidence': {}, 'users': {}, 'issues': {},
+            'paused': False, 'candidate_sha': plan['source_sha'],
+            'candidate_manifest': copy.deepcopy(plan['source_manifest']),
+            'revised': False, 'external': {}, 'patches': {}, 'closed': None,
+            'block_contexts': {}, 'release_versions': {}}
+
+
+def _publisher_new_frame(state, boundary, ordinal, raw_seven):
+    return {'state': copy.deepcopy(state), 'boundary': copy.deepcopy(boundary),
+            'ordinal': ordinal, 'patchIntent': None, 'patchApplied': None,
+            'bindEvent': None, 't03ResultEvent': None, 'resultEvents': {},
+            'userEvents': {}, 'evidenceEvents': {}, 'claimEvents': {}, 'events': [],
+            'migrationEvent': None, 'rawSeven': copy.deepcopy(raw_seven)}
+
+
+def publisher_revision_approval(frame):
+    """改訂後の新T01とuser記録だけを現在の承認へ使う。"""
+    state, plan = frame['state'], frame['state']['plan']
+    require(frame['ordinal'] > 0 and plan['proposal'].get('publisherRevision') is not None,
+            'PUB_REVISION_APPROVAL_CURRENT_FRAME')
+    analysis = frame['resultEvents'].get('T01_ANALYSIS')
+    if not analysis or analysis['payload'].get('verdict') != 'PASS':
+        return None
+    effective_before = plan['proposal']['sourceCIPolicy']['publisherBeforeSHA']
+    intent = frame['patchIntent']
+    for event in reversed(list(frame['userEvents'].values())):
+        user = event['payload']
+        if (frame['boundary']['seq'] < analysis['seq'] < event['seq']
+                and (intent is None or event['seq'] < intent['seq'])
+                and user.get('intent') == 'approve_proposal'
+                and user.get('proposal_hash') == plan['proposal']['hash']
+                and user.get('reply_to') == plan['proposal']['hash']
+                and user.get('scope') == plan['scope']
+                and user.get('candidate_sha') == effective_before
+                and user.get('quote') == INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE
+                and user.get('source_ref') == 'request_user_input_async/'
+                    + INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID
+                and user.get('verification_level') == 'conversation_transcribed'):
+            return copy.deepcopy(user)
+    return None
+
+
+def _publisher_legacy_approval(frame):
+    state = frame['state']
+    return next((user for user in reversed(list(state['users'].values()))
+                 if user.get('intent') == 'approve_proposal'
+                 and user.get('proposal_hash') == state['plan']['proposal']['hash']
+                 and user.get('scope') == state['plan']['scope']), None)
+
+
+def publisher_revision_carrier(plan):
+    require(type(plan) is dict and type(plan.get('proposal')) is dict,
+            'PUB_REVISION_CARRIER_REQUIRED')
+    revision=plan['proposal'].get('publisherRevision')
+    require(type(revision) is dict and set(revision)==PUBLISHER_REVISION_FIELDS
+            and _publisher_positive_integer(revision.get('ordinal')),
+            'PUB_REVISION_CARRIER_REQUIRED')
+    require(type(plan['proposal'].get('sourceCIPolicy')) is dict
+            and type(plan['proposal'].get('patch_hash')) is str
+            and SHA256.fullmatch(plan['proposal']['patch_hash']),
+            'PUB_REVISION_TYPED_SOURCE_CI_POLICY_REQUIRED')
+    return revision
+
+
+def _publisher_revision_contract(original, predecessor, plan, context, get, cut):
+    """実patch/snapshot bytesと型付き履歴から内部bindingを得る。
+
+    本純関数はcallerの独立した現在Git/FS map照合の代わりではない。
+    Runtime.reviseと最終consumerはそのmapも別途照合する。
+    """
+    publisher_revision_carrier(plan)
+    patch = get(plan['proposal']['patch_hash'])
+    require(digest(patch) == plan['proposal']['patch_hash'], 'PUB_REVISION_PATCH_OBJECT_HASH')
+    raw = predecessor['rawSeven'].get('tools/release/qf01-publish-contract.json')
+    for row in patch.get('files', []):
+        if row.get('path') == 'tools/release/qf01-publish-contract.json':
+            raw = row.get('after_text')
+    require(type(raw) is str and len(raw.encode('utf-8')) <= 8_000_000,
+            'PUB_REVISION_CONTRACT_ACTUAL_RAW')
+    contract = strict_json(raw.encode('utf-8'))
+    authority = contract.get('currentNativeAuthority', {})
+    binding = contract.get('checkpointAuthority', {}).get('core', {})
+    exported = contract.get('checkpointAuthority', {}).get('currentExport', {})
+    policy = plan['proposal']['sourceCIPolicy']
+    anchor = {'events': cut['seq'], 'head': cut['hash']}
+    require(contract.get('authorityVariant') == 'qf01-checkpoint-recovery/1'
+            and contract.get('sourceSHA') == context['sourceSHA']
+            and contract.get('publisherBaseSHA') == contract.get('producerBaseSHA')
+                == predecessor['state']['candidate_sha']
+            and contract.get('technicalBeforeFiles') == contract.get('publisherBeforeFiles')
+                == predecessor['state']['candidate_manifest']
+            and authority.get('anchor') == exported.get('anchor') == anchor,
+            'PUB_REVISION_CONTRACT_EXACT_PRE_REVISION_CUT')
+    require(authority.get('sourceSHA') == context['sourceSHA']
+            and authority.get('definitionHash') == context['core']['definitionHash']
+            and authority.get('implementationHash') == context['implementationHash']
+            and authority.get('work') == FIXED_WORK
+            and authority.get('candidateManifest') == context['candidateManifest']
+            and binding.get('sourceSHA') == context['sourceSHA']
+            and binding.get('definitionHash') == context['core']['definitionHash']
+            and binding.get('implementationHash') == context['implementationHash'],
+            'PUB_REVISION_CURRENT_CONTRACT_AUTHORITY')
+    maps = [binding.get(name) for name in ('workflowFiles', 'serviceFiles', 'appFiles')]
+    require(all(type(mapping) is dict for mapping in maps), 'PUB_REVISION_CANONICAL_610_MAPS')
+    source = {}
+    for mapping in maps:
+        for name, value in mapping.items():
+            require(type(name) is str and '\\' not in name and not name.startswith('/')
+                    and all(part not in ('', '.', '..') for part in name.split('/'))
+                    and type(value) is str and SHA256.fullmatch(value)
+                    and (name not in source or source[name] == value),
+                    'PUB_REVISION_CANONICAL_SOURCE_MAP_CONFLICT')
+            source[name] = value
+    require(len(maps[0]) == 47 and len(maps[1]) == 396 and len(maps[2]) == 401
+            and len(source) == 610 and maps[2] == context['candidateManifest']
+            and authority.get('serviceManifestSHA256') == digest(binding.get('nativeServiceFiles'))
+            and all(maps[0].get('workflow/' + name) == value
+                    for name, value in context['core']['files'].items()),
+            'PUB_REVISION_CONTRACT_610_CORE_APP_NATIVE_SERVICE')
+    r06 = policy.get('r06', {})
+    require(type(r06) is dict and set(r06) ==
+            {'node', 'resultRef', 'proofRef', 'compileInputRef', 'compileOutputRef'},
+            'PUB_REVISION_CURRENT_R06_FIELDS')
+    actual_result = context['results'].get(r06['node'], {})
+    require(actual_result.get('artifact') == r06['resultRef']
+            and actual_result.get('verdict') == 'PASS', 'PUB_REVISION_CURRENT_R06_RESULT')
+    result, proof = get(r06['resultRef']), get(r06['proofRef'])
+    require(digest(result) == r06['resultRef'] and digest(proof) == r06['proofRef']
+            and result.get('verdict') == 'PASS'
+            and result.get('checkpoint_candidate_proof_ref') == r06['proofRef']
+            and proof.get('candidateSHA') == context['sourceSHA']
+            and proof.get('core') == context['core']
+            and proof.get('implementationHash') == context['implementationHash']
+            and proof.get('reviewMethodAuthorityRef') == context['methodAuthorityRef']
+            and proof.get('checkpointEpoch') == context['epoch']
+            and all(proof.get(key) == r06[key] and digest(get(r06[key])) == r06[key]
+                    for key in ('compileInputRef', 'compileOutputRef')),
+            'PUB_REVISION_CURRENT_R06_TYPED_PROOF')
+    primary = {'sourceSHA': context['sourceSHA'], 'epoch': context['epoch'],
+               'core': copy.deepcopy(context['core']),
+               'implementationHash': context['implementationHash'],
+               'methodAuthorityRef': context['methodAuthorityRef'], 'r06': copy.deepcopy(r06),
+               'rules': copy.deepcopy(context['rules']), 'sourceManifest': source,
+               'materialBinding': {'work': FIXED_WORK, 'sourceSHA': context['sourceSHA'],
+                                   'releaseUnit': authority.get('releaseUnit')},
+               'materialAuthorityBinding': {'work': FIXED_WORK,
+                   'sourceSHA': context['sourceSHA'],
+                   'implementationHash': context['implementationHash'],
+                   'baseStateSHA256': authority.get('baseStateSHA256'),
+                   'planSHA256': authority.get('unchangedMaterialPlan', {}).get('planSHA256'),
+                   'proposalSHA256': authority.get('proposalSHA256')},
+               'adoptionEvidenceRef': context['adoptionEvidenceRef'],
+               'materialAuthoritySHA256': digest(authority)}
+    require(primary['materialAuthorityBinding']['planSHA256'] ==
+            original['proposal']['materialAuthorityBinding']['planSHA256']
+            and primary['materialAuthorityBinding']['proposalSHA256'] ==
+            original['proposal']['materialAuthorityBinding']['proposalSHA256'],
+            'PUB_REVISION_ORIGINAL_MATERIAL_PLAN_BASE')
+    return primary
+
+
+def publisher_revision_frames(rows, get, origin, epoch, nodes):
+    """完全なanchored suffix内の全PUB revisionを照合する。
+
+    primary/recoveryの意味検証は既存の完全callerが先に行う。
+    本関数は全envelope連鎖と全PUB eventを独立に照合する。
+    内部戻り値はexportされるRuntime stateへfieldを追加しない。
+    """
+    require(type(rows) is list and rows, 'PUB_REVISION_FULL_SUFFIX_REQUIRED')
+    previous, seq, ids = FIXED_ANCHOR['head'], FIXED_ANCHOR['events'], set()
+    for event in rows:
+        validate_event(event)
+        require(event['seq'] == seq + 1 and event['previous'] == previous
+                and event['id'] not in ids, 'PUB_REVISION_FULL_ANCHORED_CHAIN')
+        require(event['work'] in {FIXED_WORK, RECOVERY_WORK, PUBLISHER_WORK},
+                'PUB_REVISION_GLOBAL_WORK_SCOPE')
+        ids.add(event['id']); previous, seq = event['hash'], event['seq']
+    bootstrap = rows[0]
+    require(bootstrap['work'] == FIXED_WORK and bootstrap['kind'] == 'checkpoint_recovered'
+            and bootstrap['payload'].get('originSHA256') == epoch,
+            'PUB_REVISION_AUTHENTIC_BOOTSTRAP')
+    context = {'sourceSHA': origin['candidate_sha'], 'candidateManifest': copy.deepcopy(origin['candidate_manifest']),
+               'core': copy.deepcopy(bootstrap['payload']['core']),
+               'implementationHash': None, 'epoch': epoch,
+               'methodAuthorityRef': None, 'adoptionEvidenceRef': None,
+               'rules': copy.deepcopy(origin['plan']['rules']), 'results': copy.deepcopy(origin['results'])}
+    frames, frame, original = [], None, None
+    prior_event = None
+    for event in rows:
+        payload, kind = event['payload'], event['kind']
+        if event['work'] == FIXED_WORK:
+            if kind == 'checkpoint_definition_migrated':
+                preflight = get(payload['preflightRef'])
+                require(digest(preflight) == payload['preflightRef'], 'PUB_REVISION_PRIMARY_PREFLIGHT_REF')
+                context['core'] = copy.deepcopy(preflight['core'])
+                context['implementationHash'] = preflight['implementationHash']
+                context['sourceSHA'] = payload['candidateSHA']
+                context['candidateManifest'] = copy.deepcopy(payload['candidateManifest'])
+                context['methodAuthorityRef'] = None
+                layout = payload.get('inlineLayoutRepair')
+                context['adoptionEvidenceRef'] = layout.get('evidenceRef') if layout else None
+            elif kind == 'informed_review_method_adopted':
+                authority = get(payload['authorityRef'])
+                require(digest(authority) == payload['authorityRef']
+                        and authority.get('core') == context['core'],
+                        'PUB_REVISION_PRIMARY_ACTUAL_METHOD')
+                context['methodAuthorityRef'] = payload['authorityRef']
+            elif kind == 'informed_review_method_revoked':
+                if payload.get('authorityRef') == context['methodAuthorityRef']:
+                    context['methodAuthorityRef'] = None
+            elif kind == 'result':
+                context['results'][payload['node']] = copy.deepcopy(payload)
+            elif kind == 'result_reopened':
+                context['results'].pop(payload['node'], None)
+        if event['work'] != PUBLISHER_WORK:
+            prior_event = event
+            continue
+        if kind == 'opened':
+            require(frame is None and not frames, 'PUB_REVISION_OPENED_EXACTLY_ONCE')
+            original = copy.deepcopy(payload['plan'])
+            require(original.get('work_id') == PUBLISHER_WORK
+                    and original.get('parent_work') == FIXED_WORK
+                    and original.get('profile') == 'technical'
+                    and original.get('command') == 'GOVERNANCE'
+                    and not original.get('workflow_version') and not original.get('simulation')
+                    and 'publisherRevision' not in original.get('proposal', {})
+                    and payload['definition_hash'] == context['core']['definitionHash']
+                    and len(original['scope']['paths']) == 7
+                    and set(original['scope']['paths']) == PUBLISHER_REVISION_PATHS,
+                    'PUB_REVISION_LEGACY_GENESIS')
+            snapshot = get(payload['original_snapshot'])
+            require(digest(snapshot) == payload['original_snapshot']
+                    and snapshot.get('source_sha') == original['source_sha']
+                    and set(snapshot.get('files_hex', {})) == PUBLISHER_REVISION_PATHS,
+                    'PUB_REVISION_IMMUTABLE_OPENED_SNAPSHOT')
+            raw = {}
+            for name, encoded in snapshot['files_hex'].items():
+                require(type(encoded) is str, 'PUB_REVISION_SNAPSHOT_HEX')
+                data = bytes.fromhex(encoded)
+                require(sha(data) == original['source_manifest'][name], 'PUB_REVISION_SNAPSHOT_BYTES')
+                raw[name] = data.decode('utf-8')
+            frame = _publisher_new_frame(_publisher_opened_state(original, payload['definition_hash']),
+                                         event, 0, raw)
+        elif kind == 'revised':
+            require(frame is not None and prior_event is not None,
+                    'PUB_REVISION_ACTUAL_GENESIS_REQUIRED')
+            primary = _publisher_revision_contract(original, frame, payload['plan'], context,
+                                                   get, prior_event)
+            validate_publisher_revision_plan(original, frame, payload['plan'], primary,
+                                             get, prior_event)
+            require(event['previous'] == payload['plan']['proposal']['publisherRevision']['buildCutHead'],
+                    'PUB_REVISION_CURRENT_NOT_IN_OWN_BUILD_CUT')
+            frames.append(copy.deepcopy(frame))
+            state = copy.deepcopy(frame['state'])
+            state['plan'], state['revised'], state['closed'] = copy.deepcopy(payload['plan']), True, None
+            old_evidence = frame['evidenceEvents']
+            frame = _publisher_new_frame(state, event, frame['ordinal'] + 1, frame['rawSeven'])
+            frame['evidenceEvents'] = copy.deepcopy(old_evidence)
+            frame['primaryBinding'] = primary
+        else:
+            require(frame is not None, 'PUB_REVISION_ACTUAL_GENESIS_REQUIRED')
+            state, plan = frame['state'], frame['state']['plan']
+            policy = plan['proposal']['sourceCIPolicy']
+            if kind == 'definition_migrated':
+                require(frame['ordinal'] > 0 and frame['migrationEvent'] is None
+                        and not frame['resultEvents'] and not state['claims']
+                        and payload.get('from') == state['definition_hash']
+                        and payload.get('to') == context['core']['definitionHash']
+                        == policy['definitionHash'] and payload['from'] != payload['to']
+                        and payload.get('evidence_refs'), 'PUB_REVISION_NORMAL_MIGRATION_ORDER')
+                state['definition_hash'] = payload['to']
+                frame['migrationEvent'] = copy.deepcopy(event)
+            elif kind == 'claimed':
+                node = nodes.get(payload.get('node'))
+                require(node is not None and node['actor'] in ('AI', 'AUDITOR', 'TOOL')
+                        and not state['claims'] and not state['paused']
+                        and state['definition_hash'] == policy['definitionHash'] == context['core']['definitionHash']
+                        and payload.get('input_hash') == publisher_revision_input(state, node)
+                        and state['results'].get(payload['node'], {}).get('input_hash') != payload['input_hash']
+                        and payload.get('task_id') == digest({'work': PUBLISHER_WORK,
+                            'node': payload['node'], 'input_hash': payload['input_hash']})
+                        and type(payload.get('actor')) is str and payload['actor']
+                        and type(payload.get('token')) is str and re.fullmatch('[0-9a-f]{32}', payload['token'])
+                        and type(payload.get('expires_at')) in (int, float)
+                        and math.isfinite(payload['expires_at']) and 0 <= payload['expires_at'] <= MAX_SAFE_INTEGER
+                        and all(state['results'].get(name, {}).get('verdict') == 'PASS'
+                            and state['results'][name].get('input_hash') == publisher_revision_input(state, nodes[name])
+                            for name in node['depends_on']),
+                        'PUB_REVISION_CURRENT_NORMAL_CLAIM_INPUT')
+                state['claims'][payload['node']] = copy.deepcopy(payload)
+                frame['claimEvents'][payload['node']] = copy.deepcopy(event)
+            elif kind == 'claim_reconciled':
+                require(payload.get('node') in state['claims']
+                        and payload.get('outcome') in ('FAILED', 'NOT_EXECUTED', 'RESULT_LOST_REVIEW_REQUIRED')
+                        and payload.get('evidence_refs'), 'PUB_REVISION_ACTUAL_FAILED_CLAIM_RECONCILIATION')
+                state['claims'].pop(payload['node'])
+            elif kind == 'user':
+                require(payload.get('id') not in state['users'], 'PUB_REVISION_UNIQUE_USER')
+                state['users'][payload['id']] = copy.deepcopy(payload)
+                frame['userEvents'][payload['id']] = copy.deepcopy(event)
+            elif kind == 'evidence':
+                require(payload.get('id') not in state['evidence'], 'PUB_REVISION_UNIQUE_EVIDENCE')
+                state['evidence'][payload['id']] = copy.deepcopy(payload)
+                frame['evidenceEvents'][payload['id']] = copy.deepcopy(event)
+                if payload.get('kind') == 'check' and isinstance(payload.get('data', {}).get('checks'), dict) \
+                        and payload['data']['checks'].get('purpose') == PUBLISHER_REVISION_FAILURE_PURPOSE:
+                    require(frame['bindEvent'] is not None, 'PUB_REVISION_FAILURE_ONLY_AFTER_ACTUAL_BOUND')
+                    validate_publisher_failure_evidence(payload, state['candidate_sha'], policy, get)
+            elif kind == 'paused':
+                require(type(payload.get('value')) is bool, 'PUB_REVISION_PAUSED_BOOL')
+                state['paused'] = payload['value']
+            elif kind == 'issue':
+                require(payload.get('id') not in state['issues'], 'PUB_REVISION_UNIQUE_ISSUE')
+                state['issues'][payload['id']] = copy.deepcopy(payload)
+            elif kind == 'issue_resolved':
+                require(payload.get('id') in state['issues'], 'PUB_REVISION_ACTUAL_ISSUE')
+                state['issues'][payload['id']]['resolved_by'] = payload['child']
+            elif kind == 'result_reopened':
+                node = nodes.get(payload.get('node'))
+                result = state['results'].get(payload.get('node'))
+                claim = state['claims'].get(payload.get('node'))
+                require(node and result and payload.get('previous_result') == result.get('artifact')
+                        and ((claim and (claim.get('input_hash') != publisher_revision_input(state, node)
+                                         or claim.get('expires_at', 0) <= event['time']))
+                             or (not claim and result.get('input_hash') == publisher_revision_input(state, node)
+                                 and result.get('verdict') != 'PASS'))
+                        and payload.get('reason') and type(payload.get('evidence_refs')) is list
+                        and payload['evidence_refs']
+                        and all(ref in state['evidence'] or ref in state['users']
+                                for ref in payload['evidence_refs']),
+                        'PUB_REVISION_REOPEN_ONLY_ACTUAL_CURRENT_FAILED_OR_BLOCKED_RESULT')
+                state['results'].pop(payload['node'])
+                frame['resultEvents'].pop(payload['node'], None)
+            elif kind == 'patch_intent':
+                approval = publisher_revision_approval(frame) if frame['ordinal'] else _publisher_legacy_approval(frame)
+                approved = frame['resultEvents'].get('T02_APPROVAL')
+                claim = state['claims'].get('T03_BUILD')
+                require(frame['patchIntent'] is None and frame['patchApplied'] is None
+                        and payload.get('node') == 'T03_BUILD' and approval and approved and claim
+                        and get(approved['payload']['artifact']).get('user_event') == approval['id']
+                        and approved['seq'] < event['seq'] and claim.get('input_hash') ==
+                            publisher_revision_input(state, nodes['T03_BUILD'])
+                        and payload.get('patch_hash') == plan['proposal']['patch_hash']
+                        and state['candidate_manifest'] == policy['ownerBeforeManifest'],
+                        'PUB_REVISION_ONE_CURRENT_APPROVED_PATCH_INTENT')
+                changed = publisher_revision_patch(plan, policy['ownerBeforeManifest'],
+                                                    policy['ownerAfterManifest'], get)
+                require(payload.get('before') == {name: policy['ownerBeforeManifest'][name] for name in changed}
+                        and 'completed' not in payload, 'PUB_REVISION_PATCH_INTENT_EXACT_BEFORE')
+                frame['patchIntent'] = copy.deepcopy(event)
+                state['patches'][event['id']] = copy.deepcopy(payload)
+            elif kind == 'patch_applied':
+                intent = frame['patchIntent']
+                require(intent and frame['patchApplied'] is None and payload.get('node') == 'T03_BUILD'
+                        and payload.get('operation') == intent['id'] and intent['seq'] < event['seq'],
+                        'PUB_REVISION_EXACT_ONE_PATCH_APPLIED')
+                changed = publisher_revision_patch(plan, policy['ownerBeforeManifest'],
+                                                    policy['ownerAfterManifest'], get)
+                require(payload.get('after_manifest') == {name: policy['ownerAfterManifest'][name]
+                                                          for name in changed},
+                        'PUB_REVISION_EXACT_APPLIED_SUBSET')
+                state['candidate_manifest'].update(payload['after_manifest'])
+                require(state['candidate_manifest'] == policy['ownerAfterManifest'],
+                        'PUB_REVISION_FULL_AFTER_SEVEN')
+                state['candidate_sha'] = None
+                state['patches'][intent['id']]['completed'] = True
+                frame['patchApplied'] = copy.deepcopy(event)
+                for row in get(plan['proposal']['patch_hash'])['files']:
+                    frame['rawSeven'][row['path']] = row['after_text']
+            elif kind == 'candidate':
+                require(frame['patchApplied'] and frame['t03ResultEvent']
+                        and frame['bindEvent'] is None
+                        and frame['patchApplied']['seq'] < frame['t03ResultEvent']['seq'] < event['seq']
+                        and type(payload.get('sha')) is str and re.fullmatch('[0-9a-f]{40}', payload['sha'])
+                        and payload['sha'] != policy['publisherBeforeSHA']
+                        and payload.get('manifest') == state['candidate_manifest'] == policy['ownerAfterManifest']
+                        and policy.get('buildArtifactName') == 'qf01-build-' + payload['sha'] + '-1'
+                        and policy.get('qaArtifactName') == 'qf01-reports-' + payload['sha'] + '-1',
+                        'PUB_REVISION_BIND_ONLY_AFTER_ACTUAL_T03')
+                state['candidate_sha'] = payload['sha']
+                frame['bindEvent'] = copy.deepcopy(event)
+            elif kind == 'result':
+                node = nodes.get(payload.get('node'))
+                require(node is not None, 'PUB_REVISION_ONLY_NORMAL_TECHNICAL_NODES')
+                require(state['results'].get(payload['node'], {}).get('input_hash') != payload.get('input_hash'),
+                        'PUB_REVISION_DUPLICATE_CURRENT_RESULT')
+                if node['actor'] in ('AI', 'AUDITOR', 'TOOL'):
+                    claim = state['claims'].get(payload['node'])
+                    actual_claim = frame['claimEvents'].get(payload['node'])
+                    require(claim and actual_claim and actual_claim['seq'] < event['seq']
+                            and actual_claim['payload'] == claim and claim.get('node') == payload['node']
+                            and claim.get('input_hash') == payload.get('input_hash')
+                            and claim.get('actor') == payload.get('actor'),
+                            'PUB_REVISION_RESULT_REQUIRES_CURRENT_CLAIM')
+                require(state['definition_hash'] == context['core']['definitionHash'],
+                        'PUB_REVISION_RESULT_CURRENT_CORE_DEFINITION')
+                out = get(payload['artifact'])
+                require(digest(out) == payload['artifact'] and out.get('verdict') == payload.get('verdict'),
+                        'PUB_REVISION_REAL_RESULT_ARTIFACT')
+                require(payload.get('input_hash') == publisher_revision_input(state, node),
+                        'PUB_REVISION_RESULT_ACTUAL_REVISION_INPUT')
+                if payload['verdict'] == 'PASS':
+                    require(all(state['results'].get(name, {}).get('verdict') == 'PASS'
+                                and state['results'][name].get('input_hash') ==
+                                    publisher_revision_input(state, nodes[name])
+                                for name in node['depends_on']), 'PUB_REVISION_FRESH_NORMAL_DEPENDENCIES')
+                    require(state['definition_hash'] == policy['definitionHash'],
+                            'PUB_REVISION_CURRENT_DEFINITION_BEFORE_RESULTS')
+                    if payload['node'] == 'T02_APPROVAL':
+                        approval = publisher_revision_approval(frame) if frame['ordinal'] else _publisher_legacy_approval(frame)
+                        require(approval and out.get('user_event') == approval['id']
+                                and approval.get('candidate_sha') == policy['publisherBeforeSHA']
+                                and approval.get('quote') == INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE
+                                and approval.get('source_ref') == 'request_user_input_async/'
+                                    + INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID,
+                                'PUB_REVISION_CURRENT_FRESH_T02_USER')
+                    if payload['node'] == 'T03_BUILD':
+                        require(frame['patchApplied'] and frame['patchApplied']['seq'] < event['seq'],
+                                'PUB_REVISION_T03_AFTER_ONE_ACTUAL_PATCH')
+                        require(any(frame['evidenceEvents'].get(ref, {}).get('seq', 0) > frame['patchApplied']['seq']
+                            and state['evidence'].get(ref, {}).get('kind') == 'file'
+                            and state['evidence'][ref].get('source_ref') == frame['patchIntent']['id']
+                            and state['evidence'][ref]['data'].get('path') in frame['patchApplied']['payload']['after_manifest']
+                            and state['evidence'][ref]['data'].get('sha256') ==
+                                state['candidate_manifest'][state['evidence'][ref]['data']['path']]
+                            for ref in out.get('evidence_refs', [])),
+                            'PUB_REVISION_T03_CURRENT_ACTUAL_FILE_EVIDENCE')
+                        frame['t03ResultEvent'] = copy.deepcopy(event)
+                    if payload['node'] == 'T04_VERIFY':
+                        require(frame['bindEvent'] and any(
+                            state['evidence'].get(ref, {}).get('kind') == 'ci'
+                            and state['evidence'][ref].get('verification_level') != 'simulation'
+                            and _publisher_positive_integer(state['evidence'][ref]['data'].get('id'))
+                            and type(state['evidence'][ref]['data'].get('run_attempt')) is int
+                            and state['evidence'][ref]['data']['run_attempt'] == 1
+                            and state['evidence'][ref]['data'].get('head_sha') == state['candidate_sha']
+                            and state['evidence'][ref]['data'].get('status') == 'completed'
+                            and state['evidence'][ref]['data'].get('conclusion') == 'success'
+                            and state['evidence'][ref]['data'].get('event') == 'push'
+                            and state['evidence'][ref]['data'].get('path') == policy['workflow']
+                            and state['evidence'][ref]['data'].get('head_branch') == policy['branch']
+                            for ref in out.get('evidence_refs', [])), 'PUB_REVISION_T04_ACTUAL_SUCCESS_CI_ONLY')
+                    if payload['node'] == 'L01_LEARNING':
+                        require(out.get('unresolved') == [], 'PUB_REVISION_LEARNING_UNRESOLVED_REMAINS')
+                state['results'][payload['node']] = copy.deepcopy(payload)
+                state['claims'].pop(payload['node'], None)
+                frame['resultEvents'][payload['node']] = copy.deepcopy(event)
+            else:
+                require(False, 'PUB_REVISION_UNKNOWN_OR_FORBIDDEN_EVENT:' + kind)
+        frame['events'].append(copy.deepcopy(event))
+        prior_event = event
+    if frame is not None:
+        frames.append(copy.deepcopy(frame))
+    return {'frames': frames, 'current': frames[-1] if frames else None,
+            'primary': copy.deepcopy(context)}
+
+
 class CheckpointStore:
     """Scoped recovered state plus a new complete suffix; never a full old ledger."""
     checkpoint_mode = True
@@ -1692,6 +2468,12 @@ class CheckpointStore:
                         and receipt.get('inputHash')==payload['inputHash']
                         and all(receipt.get(k) is False for k in ('independent','sourceFirst','firstPass')),
                         'D02_REVIEW_SEAL_EVENT_ARTIFACT')
+        if any(row['work']==PUBLISHER_WORK and (row['kind']=='revised'
+                or row['kind']=='opened' and 'publisherRevision' in row['payload'].get('plan',{}).get('proposal',{}))
+                for row in rows):
+            from definitions import instantiate
+            opened=next(row for row in rows if row['work']==PUBLISHER_WORK and row['kind']=='opened')
+            publisher_revision_frames(rows,self.get,origin,self.checkpoint_epoch,instantiate(opened['payload']['plan']))
         return rows
 
     def state_base(self, work):

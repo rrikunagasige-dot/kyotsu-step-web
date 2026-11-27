@@ -2926,6 +2926,255 @@ class CheckpointCommitDeadlineTests(unittest.TestCase):
         self.assertEqual(rt._head,'0'*64)
         self.assertEqual([e['id']for e in self.tail.events()],['TEST_FIXTURE_CONCURRENT'])
 
+
+
+class CheckpointPublisherRevisionRuntimeBoundaryTests(unittest.TestCase):
+    """実method本文＋境界double。正式Runtime/Storeの受理を意味しない。"""
+
+    def fixture(self, *, finished=False):
+        from test_checkpoint import _publisher_test_history, _publisher_test_api
+        value = _publisher_test_history(fresh_nodes=3, finish_current=finished)
+        api = _publisher_test_api()
+        replayed = api['publisher_revision_frames'](value['rows'], value['objects'].__getitem__,
+            value['origin'], value['epoch'], value['nodes'])
+        from types import SimpleNamespace
+        rt = Runtime.__new__(Runtime)
+        rt._head = value['rows'][-1]['hash']
+        rt.store = SimpleNamespace(checkpoint_mode=True, checkpoint_epoch=value['epoch'], head=rt._head,
+            suffix_events=lambda: copy.deepcopy(value['rows']),
+            state_base=lambda work: copy.deepcopy(value['origin']),
+            get=value['objects'].__getitem__)
+        rt.state = lambda work: copy.deepcopy(replayed['current']['state'])
+        return rt, value, replayed
+
+    def test_publisher_history_preserves_expected_head_and_real_state(self):
+        rt, value, replayed = self.fixture()
+        before = rt._head
+        actual, rows = rt._publisher_revision_history(replayed['current']['state'])
+        self.assertEqual(actual, replayed)
+        self.assertEqual(rows, value['rows'])
+        self.assertEqual(rt._head, before)
+
+    def test_publisher_history_does_not_refresh_stale_cas_head(self):
+        rt, value, replayed = self.fixture()
+        rt._head = '0' * 64
+        with self.assertRaisesRegex(Rejected, 'EXPECTED_HEAD_UNCHANGED'):
+            rt._publisher_revision_history(replayed['current']['state'])
+        self.assertEqual(rt._head, '0' * 64)
+
+    def test_publisher_history_rejects_state_manifest_substitution(self):
+        rt, value, replayed = self.fixture()
+        state = copy.deepcopy(replayed['current']['state'])
+        state['candidate_manifest']['tools/release/qf01-browser.mjs'] = '0' * 64
+        with self.assertRaisesRegex(Rejected, 'NORMAL_STATE_REPLAY_EQUALITY'):
+            rt._publisher_revision_history(state)
+
+    def test_publisher_runtime_input_matches_shared_resolver_all_nodes(self):
+        from definitions import instantiate
+        from checkpoint import publisher_revision_input
+        rt, value, replayed = self.fixture(finished=True)
+        state = replayed['current']['state']
+        for name, node in instantiate(state['plan']).items():
+            with self.subTest(node=name):
+                self.assertEqual(rt.input_hash(state, node), publisher_revision_input(state, node))
+
+    def test_publisher_runtime_approval_never_selects_pre_revision_user(self):
+        rt, value, replayed = self.fixture()
+        self.assertIsNone(rt.approval(replayed['current']['state']))
+        rt.next = lambda work: {'task': {'node': {'id': 'T02_APPROVAL'}}}
+        with self.assertRaises(Rejected):
+            rt.accept(replayed['current']['state']['plan']['work_id'], 'T02_APPROVAL', 'TEST_FIXTURE_OLD_USER')
+
+    def test_publisher_runtime_accept_uses_current_retranscription(self):
+        from test_checkpoint import _publisher_test_add_event, _publisher_test_api
+        rt, value, replayed = self.fixture()
+        api = _publisher_test_api()
+        state = replayed['current']['state']
+        user = {'id': 'TEST_FIXTURE_CURRENT_USER', 'intent': 'approve_proposal',
+            'proposal_hash': state['plan']['proposal']['hash'], 'reply_to': state['plan']['proposal']['hash'],
+            'scope': state['plan']['scope'],
+            'candidate_sha': state['plan']['proposal']['sourceCIPolicy']['publisherBeforeSHA'],
+            'quote': api['INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE'],
+            'source_ref': 'request_user_input_async/' + api['INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID'],
+            'verification_level': 'conversation_transcribed'}
+        _publisher_test_add_event(value, 'user', user)
+        replayed = api['publisher_revision_frames'](value['rows'], value['objects'].__getitem__,
+            value['origin'], value['epoch'], value['nodes'])
+        rt._head = rt.store.head = value['rows'][-1]['hash']
+        rt.state = lambda work: copy.deepcopy(replayed['current']['state'])
+        rt.next = lambda work: {'task': {'node': {'id': 'T02_APPROVAL'}}}
+        rt.fingerprint_refs = lambda state, refs: None
+        finished = []
+        rt._finish = lambda *args: finished.append(args) or 'TEST_FIXTURE_RESULT'
+        result = rt.accept(state['plan']['work_id'], 'T02_APPROVAL', user['id'])
+        self.assertEqual(result, 'TEST_FIXTURE_RESULT')
+        self.assertEqual(finished[0][2]['user_event'], user['id'])
+        self.assertEqual(len(finished), 1)
+
+    def test_publisher_runtime_bind_requires_fresh_t03(self):
+        rt, value, replayed = self.fixture()
+        with self.assertRaisesRegex(Rejected, 'BIND_REQUIRES_CURRENT_T03'):
+            rt.bind_candidate(replayed['current']['state']['plan']['work_id'], 'e' * 40)
+
+    def test_publisher_runtime_same_hash_revise_uses_bounded_validator(self):
+        from test_checkpoint import _publisher_test_plan
+        from types import SimpleNamespace
+        value = _publisher_test_plan()
+        rt = Runtime.__new__(Runtime)
+        rt.store = SimpleNamespace(checkpoint_mode=True)
+        rt.state = lambda work: copy.deepcopy(value['predecessor']['state'])
+        calls = []
+        rt._publisher_revision_validate = lambda state, plan: calls.append(copy.deepcopy(plan)) or plan
+        recorded = []
+        rt.append = lambda kind, work, payload: recorded.append((kind, work, payload))
+        rt.revise(value['original']['work_id'], value['newPlan'])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(recorded[0][0], 'revised')
+        self.assertEqual(recorded[0][2]['plan']['source_sha'], value['original']['source_sha'])
+        self.assertEqual(recorded[0][2]['plan']['source_manifest'], value['original']['source_manifest'])
+
+    def test_publisher_runtime_other_proposal_hash_cannot_use_same_owner(self):
+        from test_checkpoint import _publisher_test_plan
+        from types import SimpleNamespace
+        value = _publisher_test_plan()
+        rt = Runtime.__new__(Runtime)
+        rt.store = SimpleNamespace(checkpoint_mode=True)
+        rt.state = lambda work: copy.deepcopy(value['predecessor']['state'])
+        value['newPlan']['proposal']['hash'] = '0' * 64
+        with self.assertRaisesRegex(Rejected, 'SAME_D06_HASH_REQUIRED'):
+            rt.revise(value['original']['work_id'], value['newPlan'])
+
+    def test_publisher_runtime_final_original_source_guard_remains(self):
+        from test_checkpoint import _publisher_test_plan
+        from types import SimpleNamespace
+        value = _publisher_test_plan()
+        rt = Runtime.__new__(Runtime)
+        rt.store = SimpleNamespace(checkpoint_mode=True)
+        rt.state = lambda work: copy.deepcopy(value['predecessor']['state'])
+        rt._publisher_revision_validate = lambda state, plan: plan
+        value['newPlan']['source_sha'] = '0' * 40
+        with self.assertRaises(Rejected):
+            rt.revise(value['original']['work_id'], value['newPlan'])
+
+    def test_publisher_runtime_protected_integrity_is_bounded_to_new_revision(self):
+        import runtime as runtime_module
+        rt, value, replayed = self.fixture()
+        rt.root = Path('TEST_FIXTURE_SYMBOLIC_ROOT')
+        rt._checkpoint_core_identity = {'files': {}}
+        state = copy.deepcopy(replayed['current']['state'])
+        state['definition_hash'] = runtime_module.DEFINITION_HASH
+        protected = state['plan']['protected_manifest']
+        def observed(root, mapping):
+            return {} if mapping == protected else mapping
+        with patch.object(runtime_module, 'manifest', observed):
+            self.assertEqual(rt.integrity(state), 'PUB_REVISION_CURRENT_PROTECTED_BYTES_CHANGED')
+            legacy = copy.deepcopy(state)
+            del legacy['plan']['proposal']['publisherRevision']
+            self.assertIsNone(rt.integrity(legacy))
+            other = copy.deepcopy(state)
+            other['plan']['work_id'] = 'TEST_FIXTURE_OTHER_WORK'
+            self.assertIsNone(rt.integrity(other))
+
+    def test_publisher_runtime_verify_failure_purpose_is_not_quality(self):
+        from types import SimpleNamespace
+        for revision in (False, True):
+            with self.subTest(revision=revision):
+                rt, value, replayed = self.fixture()
+                state = copy.deepcopy(replayed['current']['state'])
+                if not revision:
+                    state['plan']['proposal'].pop('publisherRevision')
+                token = 'a' * 32
+                state['claims'] = {'T04_VERIFY': {'node': 'T04_VERIFY', 'token': token,
+                    'expires_at': time.time() + 60, 'input_hash': 'TEST_FIXTURE_INPUT', 'actor': 'TEST_FIXTURE_ACTOR'}}
+                rt.state = lambda work: state
+                rt.integrity = lambda state: None
+                rt.fingerprint_refs = lambda state, refs: None
+                rt._finish = lambda *args: self.fail('失敗事実の照合を品質合格にしない')
+                with self.assertRaises(Rejected):
+                    rt.tool_result(state['plan']['work_id'], 'T04_VERIFY', token, ['TEST_FIXTURE_FAILURE'])
+
+    def test_publisher_runtime_new_revision_migration_uses_normal_event(self):
+        from test_checkpoint import _publisher_test_history, _publisher_test_api
+        from types import SimpleNamespace
+        import runtime as runtime_module
+        value = _publisher_test_history()
+        self.assertEqual(value['rows'][-1]['kind'], 'definition_migrated')
+        value['rows'].pop()
+        api = _publisher_test_api()
+        replayed = api['publisher_revision_frames'](value['rows'], value['objects'].__getitem__,
+            value['origin'], value['epoch'], value['nodes'])
+        state = replayed['current']['state']
+        rt = Runtime.__new__(Runtime)
+        rt._head = value['rows'][-1]['hash']
+        rt.store = SimpleNamespace(checkpoint_mode=True, checkpoint_epoch=value['epoch'], head=rt._head,
+            suffix_events=lambda: copy.deepcopy(value['rows']),
+            state_base=lambda work: copy.deepcopy(value['origin']), get=value['objects'].__getitem__)
+        rt.state = lambda work: copy.deepcopy(state)
+        rt.fingerprint_refs = lambda state, refs: None
+        recorded = []
+        rt.append = lambda kind, work, payload: recorded.append((kind, work, payload))
+        target = state['plan']['proposal']['sourceCIPolicy']['definitionHash']
+        with patch.object(runtime_module, 'DEFINITION_HASH', target):
+            rt.migrate_definition(state['plan']['work_id'], state['definition_hash'], ['TEST_FIXTURE_FAILURE'])
+        self.assertEqual(recorded[0][0], 'definition_migrated')
+        self.assertEqual(recorded[0][2]['from'], state['definition_hash'])
+        self.assertEqual(recorded[0][2]['to'], target)
+        self.assertEqual(recorded[0][2]['evidence_refs'], ['TEST_FIXTURE_FAILURE'])
+
+
+class CheckpointPublisherRevisionStoreDispatchTests(unittest.TestCase):
+    """実constructor/一時Storeだけ。正式namespace・Git・現在受理は操作しない。"""
+
+    def setUp(self):
+        from checkpoint import PUBLISHER_WORK, PUBLISHER_REVISION_PATHS, INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
+        temporary = tempfile.TemporaryDirectory(prefix='qf01_TEST_FIXTURE_PUB_REVISION_')
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        self.assertTrue(self.root.name.startswith('qf01_TEST_FIXTURE_PUB_REVISION_'))
+        self.store = initialize_fixture(self.root)
+        self.rt = Runtime(self.store.root, self.root)
+        sources = {}
+        for name in sorted(PUBLISHER_REVISION_PATHS):
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            raw = b'{"TEST_FIXTURE_ONLY":true}' if name.endswith('.json') else ('TEST_FIXTURE_ONLY:' + name).encode()
+            target.write_bytes(raw)
+            sources[name] = hashlib.sha256(raw).hexdigest()
+        rule = self.root / 'TEST_FIXTURE_RULE.md'
+        rule.write_bytes(b'TEST_FIXTURE_RULE_ONLY')
+        self.plan = {'work_id': PUBLISHER_WORK, 'parent_work': FIXED_WORK,
+            'profile': 'technical', 'command': 'GOVERNANCE', 'subject': 'math', 'mode': 'textbook',
+            'source_sha': 'a' * 40, 'source_manifest': sources,
+            'rules': {'TEST_FIXTURE_RULE.md': hashlib.sha256(rule.read_bytes()).hexdigest()},
+            'scope': {'paths': sorted(sources), 'preserve': []},
+            'blocks': [{'id': 'TEST_FIXTURE_BLOCK', 'sources': sorted(sources)}],
+            'proposal': {'id': 'TEST_FIXTURE_NOT_ACTUAL_D06_ANSWER',
+                         'hash': INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256}}
+        self.rt.open(self.plan)
+
+    def inventory(self):
+        return {str(path.relative_to(self.store.root)): hashlib.sha256(path.read_bytes()).hexdigest()
+                for path in self.store.root.rglob('*') if path.is_file()}
+
+    def test_real_store_legacy_read_and_normal_revise_reject_missing_carrier_without_write(self):
+        state = self.rt.state(self.plan['work_id'])
+        self.assertEqual(state['plan'], self.plan)
+        self.assertNotIn('sourceCIPolicy', state['plan']['proposal'])
+        before, head = self.inventory(), self.store.head
+        with self.assertRaisesRegex(CheckpointRejected, 'PUB_REVISION_CARRIER_REQUIRED'):
+            self.rt.revise(self.plan['work_id'], copy.deepcopy(self.plan))
+        self.assertEqual(self.store.head, head)
+        self.assertEqual(self.inventory(), before)
+        self.assertEqual(self.rt.state(self.plan['work_id'])['plan'], self.plan)
+
+    def test_real_store_any_revised_dispatches_even_with_empty_carrier(self):
+        malformed = copy.deepcopy(self.plan)
+        malformed['proposal']['publisherRevision'] = {}
+        self.rt.append('revised', self.plan['work_id'], {'plan': malformed})
+        with self.assertRaisesRegex(CheckpointRejected, 'PUB_REVISION_CARRIER_REQUIRED'):
+            self.store.suffix_events()
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
 

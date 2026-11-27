@@ -1533,7 +1533,7 @@ def _checkpoint_candidate_context(rt,work,node_id,token,*,owner_result_refs,comp
         evidence=s['evidence'].get(reference,{});data=evidence.get('data',{})
         need(evidence.get('verification_level')!='simulation' and evidence.get('kind') in ('check','ci')
              and data.get('source_sha',data.get('head_sha'))==s['candidate_sha']
-             and (data.get('status')=='PASS' and data.get('checks') if evidence.get('kind')=='check'
+             and (data.get('status')=='PASS' and data.get('checks') and not (isinstance(data['checks'],dict) and data['checks'].get('purpose')=='D06_PUBLISHER_REVISION_CI_FAILURE') if evidence.get('kind')=='check'
                   else data.get('conclusion')=='success'),'CHECKPOINT_CURRENT_VERIFICATION_EVIDENCE')
         need(any(e['seq']<=cut and e['work']==work and e['kind']=='evidence'
              and e['payload'].get('id')==reference and e['payload']==evidence for e in suffix),
@@ -1659,6 +1659,113 @@ def _sci_checkpoint_state_barrier(rt, work, state, *, check_integrity=True):
          'CHECKPOINT_SOURCE_CI_UNFINISHED_OPERATION')
 
 
+def _checkpoint_publisher_revision_primary(rt, new_plan, replayed, rows):
+    """callerのPUB policyから独立して現在primary sourceを読む。
+
+    同Store directoryの別read-only Runtimeであり、PUB RuntimeのCAS headを
+    更新しない。本関数はevent・Git ref/index・fileを書き込まない。
+    """
+    from checkpoint import (FIXED_WORK,current_core_identity,
+                            _publisher_revision_contract,read_regular)
+    from runtime import Runtime
+    from capabilities import implementation_hash
+    from production import implementation_manifest
+    from definitions import instantiate, DEFINITION_HASH
+    from team import current_informed_authority
+    expected_head=rt._head
+    need(rows and rows[-1]['hash']==expected_head==rt.store.head,
+         'PUB_REVISION_PRIMARY_EXPECTED_CUT')
+    root=Path(__file__).resolve().parent.parent
+    policy=new_plan.get('proposal',{}).get('sourceCIPolicy',{})
+    need(isinstance(policy,dict) and set(policy)==_SOURCE_CI_CHECKPOINT_POLICY_FIELDS
+         and policy.get('coreRoot')==policy.get('materialRoot')=='.'
+         and policy.get('sourcePrefix')==''
+         and _sci_checkpoint_root(root,policy['technicalExecutionRoot'])==Path(rt.root).resolve(),
+         'PUB_REVISION_ACTUAL_EXECUTION_PRIMARY_ROOTS')
+    _sci_checkpoint_no_alias(root,Path(rt.root))
+    primary_rt=Runtime(rt.store.root,root)
+    primary=primary_rt.state(FIXED_WORK)
+    need(primary_rt._head==expected_head==primary_rt.store.head==rt.store.head,
+         'PUB_REVISION_PRIMARY_HEAD_CHANGED')
+    context=replayed['primary']
+    core=current_core_identity()
+    method=current_informed_authority(primary_rt,FIXED_WORK,primary)
+    need(core==context['core'] and core['definitionHash']==DEFINITION_HASH==primary['definition_hash']
+         and implementation_hash(primary_rt)==context['implementationHash']
+         and method and method['authorityRef']==context['methodAuthorityRef']
+         and primary['candidate_sha']==context['sourceSHA']
+         and primary['candidate_manifest']==context['candidateManifest']
+         and primary['plan']['rules']==new_plan['rules']==context['rules']
+         and not primary['claims'] and not primary['paused'],
+         'PUB_REVISION_CURRENT_PRIMARY_AUTHORITY')
+    binding=_publisher_revision_contract(replayed['frames'][0]['state']['plan'],
+        replayed['current'],new_plan,context,rt.store.get,rows[-1])
+    clean_primary={key:value for key,value in primary.items() if key not in ('_nodes','_status_cache')}
+    need(binding['materialAuthorityBinding']['baseStateSHA256']==digest(clean_primary),
+         'PUB_REVISION_ACTUAL_CURRENT_PRIMARY_STATE_HASH')
+    r06=binding['r06'];node=instantiate(primary['plan']).get(r06['node'])
+    need(node and node.get('stage_kind')=='R06_PATCH'
+         and primary_rt.node_status(primary,node)=='PASSED'
+         and primary['results'][node['id']]['artifact']==r06['resultRef']
+         and primary['results'][node['id']]['input_hash']==primary_rt.input_hash(primary,node),
+         'PUB_REVISION_ACTUAL_CURRENT_R06')
+    _checkpoint_git_proof(primary_rt,primary,primary_rt.store.state_base(FIXED_WORK),
+                          core,review_method=True)
+    # 現在610を独立に導出し、policy.sourceManifestを複製して根拠にしない。
+    workflow={p.relative_to(root).as_posix():sha(p) for p in (root/'workflow').rglob('*')
+              if p.is_file() and p.suffix in ('.py','.md') and '__pycache__' not in p.parts}
+    native_services=implementation_manifest(root)
+    services={}
+    for name,value in native_services.items():
+        canonical_name=name.replace('\\','/')
+        relative(canonical_name)
+        need(canonical_name not in services,'PUB_REVISION_SERVICE_PATH_ALIAS')
+        services[canonical_name]=value
+    source={}
+    for mapping in (workflow,services,primary['candidate_manifest']):
+        for name,value in mapping.items():
+            need(name not in source or source[name]==value,'PUB_REVISION_CURRENT_MAP_CONFLICT')
+            source[name]=value
+    need(len(workflow)==47 and len(services)==396 and len(primary['candidate_manifest'])==401
+         and len(source)==610 and source==binding['sourceManifest'],
+         'PUB_REVISION_INDEPENDENT_CURRENT_FULL_610')
+    environment=dict(os.environ,GIT_NO_LAZY_FETCH='1',GIT_OPTIONAL_LOCKS='0',GIT_TERMINAL_PROMPT='0')
+    def git(*args, data=None):
+        value=subprocess.run(['git','-C',str(root),*args],input=data,capture_output=True,
+                             env=environment,timeout=120)
+        need(value.returncode==0,'PUB_REVISION_PRIMARY_READONLY_GIT_FAILED')
+        return value.stdout
+    rows_by_path={}
+    for encoded in git('ls-tree','-r','-z',primary['candidate_sha'],'--',*sorted(source)).split(b'\0'):
+        if not encoded:continue
+        meta,name=encoded.split(b'\t',1);mode,kind,blob=meta.decode('ascii').split()
+        name=name.decode('utf-8');relative(name)
+        need(mode in ('100644','100755') and kind=='blob' and name not in rows_by_path,
+             'PUB_REVISION_PRIMARY_REGULAR_GIT_SOURCE')
+        rows_by_path[name]=blob
+    need(set(rows_by_path)==set(source),'PUB_REVISION_EXACT_GIT_610')
+    batch=git('cat-file','--batch',data=('\n'.join(rows_by_path[name] for name in sorted(source))+'\n').encode())
+    need(len(batch)<=128*1024*1024,'PUB_REVISION_GIT_SOURCE_TOTAL_BOUND')
+    cursor=0
+    for name in sorted(source):
+        _sci_checkpoint_no_alias(root,root/name)
+        end=batch.index(b'\n',cursor);blob,kind,size=batch[cursor:end].decode('ascii').split();size=int(size)
+        need(0<=size<=64*1024*1024,'PUB_REVISION_SOURCE_BLOB_BOUND')
+        raw=batch[end+1:end+1+size]
+        need(len(raw)==size and batch[end+1+size:end+2+size]==b'\n'
+             and kind=='blob' and blob==rows_by_path[name]
+             and hashlib.sha1(b'blob '+str(size).encode()+b'\0'+raw).hexdigest()==blob
+             and hashlib.sha256(raw).hexdigest()==source[name]
+             and read_regular(root/name,64*1024*1024)==raw,
+             'PUB_REVISION_CURRENT_GIT_FS_610:'+name)
+        cursor=end+size+2
+    need(cursor==len(batch),'PUB_REVISION_EXACT_GIT_BATCH_CONSUMED')
+    need(core==current_core_identity() and primary_rt._head==expected_head==rt._head
+         ==rt.store.head==primary_rt.store.head,'PUB_REVISION_PRIMARY_OBSERVATION_UNCHANGED')
+    binding['sourceManifest']=source
+    return binding
+
+
 def _sci_checkpoint_load(rt, work):
     from checkpoint import (FIXED_WORK, FIXED_CONTRACT_SHA256, current_core_identity,
                             current_product_repair_context, strict_json, read_regular,
@@ -1706,11 +1813,25 @@ def _sci_checkpoint_load(rt, work):
     need(op['rules']==state['plan']['rules'], 'CHECKPOINT_SOURCE_CI_CURRENT_RULES')
     seven=_SOURCE_CI_CHECKPOINT_SEVEN
     before,after=policy['ownerBeforeManifest'],policy['ownerAfterManifest']
+    revision_frame=None
+    effective_before_sha=op['source_sha'];effective_before_manifest=op['source_manifest']
+    if op['proposal'].get('publisherRevision') is not None:
+        from checkpoint import publisher_revision_frames
+        frames=publisher_revision_frames(history_events(rt,'suffix'),rt.store.get,rt.store.state_base(work),
+                                         rt.store.checkpoint_epoch,instantiate(op))
+        revision_frame=frames['current']
+        need(revision_frame and revision_frame['ordinal']>0
+             and revision_frame['state']['plan']==op
+             and revision_frame['state']['candidate_sha']==owner['candidate_sha']
+             and revision_frame['state']['candidate_manifest']==owner['candidate_manifest'],
+             'CHECKPOINT_SOURCE_CI_CURRENT_PUBLISHER_REVISION')
+        effective_before_sha=op['proposal']['publisherRevision']['predecessorCandidateSHA']
+        effective_before_manifest=policy['ownerBeforeManifest']
     need(set(op['scope']['paths'])==seven and len(op['scope']['paths'])==7
          and set(before)==set(after)==set(policy['publisherFiles'])==seven
-         and op['source_manifest']==before and owner['candidate_manifest']==after==policy['publisherFiles']
-         and op['source_sha']==policy['publisherBeforeSHA']
-         and owner['candidate_sha']!=op['source_sha'] and owner['candidate_sha']!=state['candidate_sha'],
+         and effective_before_manifest==before and owner['candidate_manifest']==after==policy['publisherFiles']
+         and effective_before_sha==policy['publisherBeforeSHA']
+         and owner['candidate_sha']!=effective_before_sha and owner['candidate_sha']!=state['candidate_sha'],
          'CHECKPOINT_SOURCE_CI_EXACT_SEVEN_CLOSURE')
     changed={p for p in seven if before[p]!=after[p]}
     need(changed and all(in_scope(p,op['scope']) for p in changed),'CHECKPOINT_SOURCE_CI_NONEMPTY_PATCH')
@@ -1723,7 +1844,7 @@ def _sci_checkpoint_load(rt, work):
     need(user and approved.get('user_event')==user.get('id')
          and user.get('intent')=='approve_proposal' and user.get('proposal_hash')==op['proposal']['hash']
          and user.get('reply_to')==op['proposal']['hash'] and user.get('scope')==op['scope']
-         and user.get('candidate_sha')==op['source_sha']
+         and user.get('candidate_sha')==effective_before_sha
          and user.get('quote')==INLINE_LAYOUT_REPAIR_ADOPTION_QUOTE
          and user.get('source_ref')=='request_user_input_async/'+INLINE_LAYOUT_REPAIR_ADOPTION_CALL_ID
          and user.get('verification_level')=='conversation_transcribed',
@@ -1752,7 +1873,7 @@ def _sci_checkpoint_load(rt, work):
     contract=strict_json(contract_raw)
     need(contract.get('authorityVariant')=='qf01-checkpoint-recovery/1'
          and contract.get('sourceSHA')==state['candidate_sha']
-         and contract.get('producerBaseSHA')==contract.get('publisherBaseSHA')==op['source_sha']
+         and contract.get('producerBaseSHA')==contract.get('publisherBaseSHA')==effective_before_sha
          and contract.get('technicalBeforeFiles')==contract.get('publisherBeforeFiles')==before,
          'CHECKPOINT_SOURCE_CI_CHECKPOINT_CONTRACT')
     adoption={'schemaVersion':'qf01-checkpoint-publisher-technical-adoption/1',
@@ -1763,9 +1884,12 @@ def _sci_checkpoint_load(rt, work):
     need(op['proposal'].get('publisherAdoptionBinding')==adoption,
          'CHECKPOINT_SOURCE_CI_TECHNICAL_ADOPTION_BINDING')
     history=history_events(rt,'complete',_SOURCE_CI_CHECKPOINT_OWNER)
+    if revision_frame is not None:
+        history=revision_frame['events']
     intents=[e for e in history if e['kind']=='patch_intent']
     applied=[e for e in history if e['kind']=='patch_applied']
-    need(len(intents)==len(applied)==len(owner['patches'])==1,
+    active_patches=owner['patches'] if revision_frame is None else {e['id']:owner['patches'].get(e['id']) for e in intents}
+    need(len(intents)==len(applied)==len(active_patches)==1 and all(active_patches.values()),
          'CHECKPOINT_SOURCE_CI_ONE_ACTUAL_PATCH')
     intent,applied=intents[0],applied[0]
     patch=rt.store.get(intent['payload']['patch_hash'])

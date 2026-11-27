@@ -135,6 +135,10 @@ class Runtime:
             need(s['definition_hash']==DEFINITION_HASH,'工程定義の版が変わった。移行照合が必要')
             if s['plan'].get('workflow_version')=='production/2':need(manifest(self.root,s['plan'].get('protected_manifest',{}))==s['plan'].get('protected_manifest',{}),'保護対象に差分がある')
             need(manifest(self.root,s['plan']['rules'])==s['plan']['rules'],'憲法・規則の版が変わった')
+            if (getattr(self.store,'checkpoint_mode',False) and s['plan']['work_id']=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                    and s['plan']['proposal'].get('publisherRevision') is not None):
+                need(manifest(self.root,s['plan']['protected_manifest'])==s['plan']['protected_manifest'],
+                     'PUB_REVISION_CURRENT_PROTECTED_BYTES_CHANGED')
             need(manifest(self.root,s['candidate_manifest'])==s['candidate_manifest'],'未記録の候補差分がある')
         except (Rejected,FileNotFoundError) as e:return str(e)
         return None
@@ -171,6 +175,9 @@ class Runtime:
                 'methodAuthorityRef':reconciliation['proof']['methodAuthorityRef'],
                 'candidateSHA':s['candidate_sha'],
                 'candidateManifestSHA256':digest(s['candidate_manifest'])}
+        if (getattr(self.store,'checkpoint_mode',False) and p['work_id']=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                and p['proposal'].get('publisherRevision') is not None):
+            base['publisher_revision']=digest(p['proposal']['publisherRevision'])
         if watch=='production':
             from production import implementation_manifest
             base['producer_implementation']=implementation_manifest(self.root)
@@ -240,7 +247,52 @@ class Runtime:
             self.issue(work,{'id':digest({'user':p['id'],'block':block})[:20],'block':block,'root_cause':'USER_REVIEW_PENDING_ANALYSIS','evidence_refs':[p['id']],
                              'description':quote,'version':s['candidate_sha'],'origin':'user'})
         return p['id']
+    def _publisher_revision_history(self, state=None):
+        from checkpoint import (PUBLISHER_WORK,FIXED_WORK,publisher_revision_frames)
+        need(getattr(self.store,'checkpoint_mode',False),'PUB_REVISION_CHECKPOINT_REQUIRED')
+        expected_head=self._head
+        rows=self.store.suffix_events()
+        need(rows and rows[-1]['hash']==expected_head==self.store.head,
+             'PUB_REVISION_EXPECTED_HEAD_UNCHANGED')
+        original=self.store.state_base(FIXED_WORK)
+        replayed=publisher_revision_frames(rows,self.store.get,original,self.store.checkpoint_epoch,
+                                           instantiate((state or self.state(PUBLISHER_WORK))['plan']))
+        current=replayed['current']
+        need(current and current['state']['plan']['work_id']==PUBLISHER_WORK,
+             'PUB_REVISION_ACTUAL_EXISTING_OWNER')
+        if state is not None:
+            need(all(current['state'].get(key)==state.get(key) for key in
+                 ('plan','definition_hash','claims','results','evidence','users','issues',
+                  'paused','candidate_sha','candidate_manifest','patches','external')),
+                 'PUB_REVISION_NORMAL_STATE_REPLAY_EQUALITY')
+        need(self._head==expected_head==self.store.head,'PUB_REVISION_EXPECTED_HEAD_UNCHANGED')
+        return replayed,rows
+
+    def _publisher_revision_validate(self, state, new_plan):
+        from checkpoint import validate_publisher_revision_plan
+        from adapters import _checkpoint_publisher_revision_primary
+        from checkpoint import publisher_revision_carrier
+        publisher_revision_carrier(new_plan)
+        replayed,rows=self._publisher_revision_history(state)
+        expected_head=self._head
+        frame=replayed['current']
+        # 別read-only primary観測は、このRuntimeのCAS headを更新しない。
+        primary=_checkpoint_publisher_revision_primary(self,new_plan,replayed,rows)
+        need(self._head==expected_head==self.store.head,'PUB_REVISION_EXPECTED_HEAD_UNCHANGED')
+        validated=validate_publisher_revision_plan(replayed['frames'][0]['state']['plan'],
+            frame,new_plan,primary,self.store.get,rows[-1])
+        need(manifest(self.root,validated['protected_manifest'])==validated['protected_manifest']
+             and manifest(self.root,frame['state']['candidate_manifest'])==frame['state']['candidate_manifest'],
+             'PUB_REVISION_CURRENT_EXECUTION_BEFORE_BYTES')
+        need(self._head==expected_head==self.store.head,'PUB_REVISION_EXPECTED_HEAD_UNCHANGED')
+        return validated
+
     def approval(self,s,node=None):
+        if (getattr(self.store,'checkpoint_mode',False) and s['plan']['work_id']=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                and s['plan']['proposal'].get('publisherRevision') is not None):
+            from checkpoint import publisher_revision_approval
+            replayed,_=self._publisher_revision_history(s)
+            return publisher_revision_approval(replayed['current'])
         if s['plan'].get('workflow_version') == 'production/2':
             from integration import approval
             return approval(self,s,node)
@@ -300,6 +352,37 @@ class Runtime:
             need(data.get('url','').startswith('https://') and data.get('reachable') and data.get('auth_wall') is False,'実働URL・到達性・認証壁が未確認')
             need(data.get('mobile') and data.get('desktop') and data.get('progress_isolated'),'端末・履歴分離の証拠が不足')
         elif kind=='check':
+            if (getattr(self.store,'checkpoint_mode',False)
+                and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                and isinstance(data.get('checks'),dict)
+                and data['checks'].get('purpose')=='D06_PUBLISHER_REVISION_CI_FAILURE'):
+                from checkpoint import (INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+                    PUBLISHER_REVISION_PATHS,validate_publisher_failure_objects,
+                    validate_publisher_failure_evidence)
+                need(set(data)=={'status','source_sha','checks'}
+                     and data['status']=='PASS' and data['source_sha']==s['candidate_sha']
+                     and set(data['checks'])=={'purpose','runRaw','jobsRaw'},
+                     'PUB_REVISION_FAILURE_INPUT_FIELDS')
+                need(s['plan']['proposal']['hash']==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
+                     and set(s['plan']['scope']['paths'])==PUBLISHER_REVISION_PATHS
+                     and s['plan'].get('parent_work')=='W-MATH-QF01-FULL-RELEASE-P035-20261115'
+                     and not s['claims'] and not s['paused']
+                     and verification_level in ('tool_result_transcribed','local_execution'),
+                     'PUB_REVISION_FAILURE_CHECK_SCOPE')
+                raw=copy.deepcopy(data['checks'])
+                result=validate_publisher_failure_objects(raw['runRaw'],raw['jobsRaw'],
+                    s['candidate_sha'],s['plan']['proposal']['sourceCIPolicy'])
+                need(source_ref=='https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/'+str(result['runID']),
+                     'PUB_REVISION_FAILURE_SOURCE_REF')
+                checks={'purpose':raw['purpose'],
+                    'runRawRef':self.store.put(raw['runRaw']),
+                    'jobsRawRef':self.store.put(raw['jobsRaw']),
+                    **{key:result[key] for key in ('runRawSHA256','jobsRawSHA256',
+                        'failedJobIDs','producerQAPassed','formalT04Accepted')}}
+                data={'status':'PASS','source_sha':s['candidate_sha'],'checks':checks}
+                validate_publisher_failure_evidence({'kind':'check','data':data,
+                    'source_ref':source_ref,'verification_level':verification_level},
+                    s['candidate_sha'],s['plan']['proposal']['sourceCIPolicy'],self.store.get)
             need(data.get('status')=='PASS' and data.get('source_sha')==s['candidate_sha'],'検査対象版または結果が不正')
             need(data.get('checks'),'検査項目がない')
         else:raise Rejected('証拠の種類が未登録')
@@ -445,7 +528,7 @@ class Runtime:
             need(any(e['kind']=='file' and in_scope(e['data']['path'],s['plan']['scope']) and sha(file(self.root,e['data']['path']))==e['data']['sha256'] for e in es),'承認範囲内の現行成果物証拠がない')
         elif 'VERIFY' in node_id:
             need(s['candidate_sha'],'候補コミットがまだ固定されていない')
-            need(any(e['kind'] in ('ci','check') and e['data'].get('head_sha',e['data'].get('source_sha'))==s['candidate_sha'] for e in es),'現在のSHAの検査証拠がない')
+            need(any(e['kind'] in ('ci','check') and not (e['kind']=='check' and isinstance(e['data'].get('checks'),dict) and e['data']['checks'].get('purpose')=='D06_PUBLISHER_REVISION_CI_FAILURE') and e['data'].get('head_sha',e['data'].get('source_sha'))==s['candidate_sha'] for e in es),'現在のSHAの検査証拠がない')
         elif node_id=='G3_HOST':need(any(e['kind']=='app' and e['data']['source_sha']==s['candidate_sha'] for e in es),'到達確認済みの実働アプリ証拠がない')
         return self._finish(work,n,{'verdict':'PASS','evidence_refs':list(evidence_refs)},c['input_hash'],c['actor'])
     def execute(self,work,node_id,agent_guard_ref=None):
@@ -474,6 +557,15 @@ class Runtime:
         return ref
     def bind_candidate(self,work,commit_sha,paths=None,release_units=None):
         s=self.state(work);need(len(commit_sha)==40 and all(c in '0123456789abcdef' for c in commit_sha),'候補SHAが不正')
+        if (getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                and s['plan']['proposal'].get('publisherRevision') is not None):
+            replayed,_=self._publisher_revision_history(s);frame=replayed['current']
+            policy=s['plan']['proposal']['sourceCIPolicy']
+            need(frame['patchApplied'] and frame['t03ResultEvent'] and frame['bindEvent'] is None
+                 and s['candidate_manifest']==policy['ownerAfterManifest']
+                 and policy['buildArtifactName']=='qf01-build-'+commit_sha+'-1'
+                 and policy['qaArtifactName']=='qf01-reports-'+commit_sha+'-1',
+                 'PUB_REVISION_BIND_REQUIRES_CURRENT_T03_AND_CANDIDATE')
         current=manifest(self.root,paths or s['candidate_manifest'])
         changed=[p for p,h in current.items() if s['candidate_manifest'].get(p)!=h]
         if changed:
@@ -500,41 +592,48 @@ class Runtime:
         need(new_plan.get('workflow_version')==s['plan'].get('workflow_version'),'工程版は明示移行を使う')
         for key in ('parent_impact','parent_issue','parent_request','parent_case','parent_work'):
             need(new_plan.get(key)==s['plan'].get(key),'改訂で親子関係を付け替えない')
+        if getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122':
+            from checkpoint import INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256
+            need(new_plan['proposal']['hash']==s['plan']['proposal']['hash']==INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+                 'PUB_REVISION_SAME_D06_HASH_REQUIRED')
         if new_plan['proposal']['hash']==s['plan']['proposal']['hash']:
-            from checkpoint import (RECOVERY_WORK,FIXED_WORK,MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
-                current_core_identity,history_events,validate_math_rendering_owner_revision)
-            need(getattr(self.store,'checkpoint_mode',False) and work==RECOVERY_WORK
-                and new_plan['proposal']['hash'] in (MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256),
-                '意味の変更には新しい提案版が必要')
-            expected_head=self._head;primary=self.state(FIXED_WORK)
-            need(self._head==self.store.head==expected_head,'D04_OWNER_REVISION_HEAD_CHANGED')
-            from team import current_informed_authority
-            need(current_informed_authority(self,FIXED_WORK,primary),'D04_OWNER_REVISION_CURRENT_AUTHORITY')
-            rows=history_events(self,'suffix')
-            opened=[e for e in rows if e['work']==work and e['kind']=='opened']
-            prior=[e for e in rows if e['work']==work and e['kind']=='informed_technical_candidate_reconciled']
-            need(len(opened)==1 and prior and prior[-1]['payload']==s.get('informed_technical_candidate_reconciliation'),
-                'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF')
-            wrapper=s['informed_technical_candidate_reconciliation']
-            need(self.store.get(wrapper['proofRef'])==wrapper['proof'],'D04_OWNER_REVISION_LAST_PROOF_ARTIFACT')
-            records=[e['payload']['mathRenderingRepair'] for e in rows
-                if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
-                and e['payload'].get('mathRenderingRepair') is not None and e['payload'].get('mixedInlineRepair') is None]
-            mixed_records=[e['payload']['mixedInlineRepair'] for e in rows
-                if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
-                and e['payload'].get('mixedInlineRepair') is not None]
-            layout_records=[e['payload']['inlineLayoutRepair'] for e in rows
-                if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
-                and e['payload'].get('inlineLayoutRepair') is not None]
-            new_plan=validate_math_rendering_owner_revision(s,primary,new_plan,original_plan=opened[0]['payload']['plan'],
-                math_records=records,mixed_records=mixed_records,layout_records=layout_records,epoch=self.store.checkpoint_epoch,check=need)
-            from adapters import _checkpoint_git_proof
-            identity=current_core_identity()
-            need(identity==primary['informed_review_method']['authority']['core'],
-                'D04_OWNER_REVISION_CURRENT_AUTHORITY')
-            _checkpoint_git_proof(self,primary,self.store.state_base(FIXED_WORK),identity,review_method=True)
-            need(self._head==self.store.head==expected_head and current_core_identity()==identity,
-                'D04_OWNER_REVISION_HEAD_CHANGED')
+            if getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122':
+                new_plan=self._publisher_revision_validate(s,new_plan)
+            else:
+                from checkpoint import (RECOVERY_WORK,FIXED_WORK,MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256,
+                    current_core_identity,history_events,validate_math_rendering_owner_revision)
+                need(getattr(self.store,'checkpoint_mode',False) and work==RECOVERY_WORK
+                    and new_plan['proposal']['hash'] in (MATH_RENDERING_REPAIR_PROPOSAL_SHA256,MIXED_INLINE_REPAIR_PROPOSAL_SHA256,INLINE_LAYOUT_REPAIR_PROPOSAL_SHA256),
+                    '意味の変更には新しい提案版が必要')
+                expected_head=self._head;primary=self.state(FIXED_WORK)
+                need(self._head==self.store.head==expected_head,'D04_OWNER_REVISION_HEAD_CHANGED')
+                from team import current_informed_authority
+                need(current_informed_authority(self,FIXED_WORK,primary),'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+                rows=history_events(self,'suffix')
+                opened=[e for e in rows if e['work']==work and e['kind']=='opened']
+                prior=[e for e in rows if e['work']==work and e['kind']=='informed_technical_candidate_reconciled']
+                need(len(opened)==1 and prior and prior[-1]['payload']==s.get('informed_technical_candidate_reconciliation'),
+                    'D04_OWNER_REVISION_LAST_ACTUAL_OWNER_PROOF')
+                wrapper=s['informed_technical_candidate_reconciliation']
+                need(self.store.get(wrapper['proofRef'])==wrapper['proof'],'D04_OWNER_REVISION_LAST_PROOF_ARTIFACT')
+                records=[e['payload']['mathRenderingRepair'] for e in rows
+                    if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
+                    and e['payload'].get('mathRenderingRepair') is not None and e['payload'].get('mixedInlineRepair') is None]
+                mixed_records=[e['payload']['mixedInlineRepair'] for e in rows
+                    if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
+                    and e['payload'].get('mixedInlineRepair') is not None]
+                layout_records=[e['payload']['inlineLayoutRepair'] for e in rows
+                    if e['work']==FIXED_WORK and e['kind']=='checkpoint_definition_migrated'
+                    and e['payload'].get('inlineLayoutRepair') is not None]
+                new_plan=validate_math_rendering_owner_revision(s,primary,new_plan,original_plan=opened[0]['payload']['plan'],
+                    math_records=records,mixed_records=mixed_records,layout_records=layout_records,epoch=self.store.checkpoint_epoch,check=need)
+                from adapters import _checkpoint_git_proof
+                identity=current_core_identity()
+                need(identity==primary['informed_review_method']['authority']['core'],
+                    'D04_OWNER_REVISION_CURRENT_AUTHORITY')
+                _checkpoint_git_proof(self,primary,self.store.state_base(FIXED_WORK),identity,review_method=True)
+                need(self._head==self.store.head==expected_head and current_core_identity()==identity,
+                    'D04_OWNER_REVISION_HEAD_CHANGED')
         need(new_plan['source_sha']==s['plan']['source_sha'],'原資料の元SHAを改訂で差し替えない')
         need(new_plan['source_manifest']==s['plan']['source_manifest'] and new_plan['rules']==s['plan']['rules'],'原資料・規則の移行は新Workで照合する')
         if new_plan.get('workflow_version') == 'production/2':
@@ -664,6 +763,13 @@ class Runtime:
         s=self.state(work);need(s['definition_hash']==from_hash and from_hash!=DEFINITION_HASH,'移行前の版が違う')
         need(not s['claims'] and evidence_refs,'実行中又は移行照合証拠がない')
         self.fingerprint_refs(s,evidence_refs)
+        if (getattr(self.store,'checkpoint_mode',False) and work=='W-TECH-QF01-CHECKPOINT-PUBLISHER-20261122'
+                and s['plan']['proposal'].get('publisherRevision') is not None):
+            replayed,_=self._publisher_revision_history(s);frame=replayed['current']
+            need(frame['ordinal']>0 and frame['migrationEvent'] is None and not frame['resultEvents']
+                 and s['plan']['proposal']['sourceCIPolicy']['definitionHash']==DEFINITION_HASH
+                 ==replayed['primary']['core']['definitionHash'],
+                 'PUB_REVISION_CURRENT_NORMAL_MIGRATION_REQUIRED')
         # A real production Work requires an explicit immutable preflight, not a
         # bare evidence ID used as a route around a definition mismatch.
         recovery_proof = None

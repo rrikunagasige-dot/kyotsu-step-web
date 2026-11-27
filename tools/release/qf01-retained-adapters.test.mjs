@@ -986,3 +986,28 @@ test('R03 submission failure: original fresh receipt and all35 inventory depende
  const cached=await r03FailureFixture(x=>{const old=x.history[2].payload.receipt,r=x.objects[old];delete x.objects[old];r.reused=true;const ref=checker.nativeDigest(r);x.objects[ref]=r;x.history[2].payload.receipt=ref;delete x.fact.newCanonicalArtifactsPreserved['artifacts/'+old+'.json'];x.fact.newCanonicalArtifactsPreserved['artifacts/'+ref+'.json']={bytes:1,sha256:'6'.repeat(64)};rehashR03FixtureHistory(x,checker);});
  assert.throws(()=>cached.guards.validateCheckpointR03SubmissionFailureEvidence(cached.context));
 });
+
+
+// Current checkpoint production checkout wiring; these tests execute no workflow.
+function cpProductionWorkflowSections(text){
+ const start=text.indexOf('\njobs:\n');assert.ok(start>=0,'CHECKPOINT_WORKFLOW_JOBS');const matches=[...text.matchAll(/^  ([A-Za-z0-9_-]+):\r?$/gm)].filter(m=>m.index>start),jobs={};for(let i=0;i<matches.length;i++)jobs[matches[i][1]]=text.slice(matches[i].index,matches[i+1]?.index??text.length);return{header:text.slice(0,matches[0].index),jobs};
+}
+function cpProductionCheckoutSteps(job){
+ const starts=[...job.matchAll(/^    - /gm)],steps=starts.map((m,i)=>job.slice(m.index,starts[i+1]?.index??job.length)),out=[];for(const step of steps)if(/^    - uses: actions\/checkout@v4\r?$/m.test(step)||/^      uses: actions\/checkout@v4\r?$/m.test(step)){const p=step.match(/^        path: ([^\r\n]+)$/m),r=step.match(/^        ref: ([^\r\n]+)$/m);assert.ok(p&&r,'CHECKPOINT_EXPLICIT_CHECKOUT_ROLE');out.push({path:p[1],ref:r[1]});}return out;
+}
+function cpAssertProductionWorkflowSource(text){
+ const {jobs}=cpProductionWorkflowSections(text),pins=[...jobs.checkpoint_linux.matchAll(/^      CHECKPOINT_CORE_SHA: ([a-f0-9]{40})\r?$/gm)];assert.equal(pins.length,1);const source=pins[0][1];assert.equal(source,'438e479bac1a9875525e460fc4593af732a9a95c');for(const name of ['build','qa','attest','publish','hosted']){const job=jobs[name];assert.ok(job,'CHECKPOINT_REQUIRED_PRODUCTION_JOB '+name);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const rows=[...job.matchAll(new RegExp('^      '+key+': ([a-f0-9]{40})\\r?$','gm'))];assert.equal(rows.length,1,'CHECKPOINT_ONE_SOURCE_ENV '+name+' '+key);assert.equal(rows[0][1],source,'CHECKPOINT_SOURCE_ENV '+name+' '+key);}const steps=cpProductionCheckoutSteps(job);for(const role of ['material','current-core']){const rows=steps.filter(x=>x.path===role);assert.equal(rows.length,1,'CHECKPOINT_ONE_CHECKOUT '+name+' '+role);assert.equal(rows[0].ref,source,'CHECKPOINT_CHECKOUT_SOURCE '+name+' '+role);}}return source;
+}
+function cpReadProductionWorkflow(){return fs.readFileSync(new URL('../../.github/workflows/qf01-publisher-g3.yml',import.meta.url),'utf8');}
+
+test('checkpoint production workflow binds all five material and Core roles to the current tested source',()=>{
+ assert.equal(cpAssertProductionWorkflowSource(cpReadProductionWorkflow()),'438e479bac1a9875525e460fc4593af732a9a95c');
+});
+
+test('checkpoint production workflow rejects each stale source environment checkout and duplicate role fixture',()=>{
+ const text=cpReadProductionWorkflow(),sections=cpProductionWorkflowSections(text);for(const name of ['build','qa','attest','publish','hosted']){const job=sections.jobs[name],put=bad=>text.replace(job,bad);for(const key of ['SOURCE_SHA','CANDIDATE_SHA','VITE_PREVIEW_COMMIT']){const bad=job.replace(new RegExp('('+key+': )[a-f0-9]{40}'),'$1'+'325b70035cafa70a8078944ccf903c53ce763545');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad)));}for(const role of ['material','current-core']){const bad=job.replace(new RegExp('(ref: )[a-f0-9]{40}(\\n        path: '+role+')'),'$1'+'9ee19f65d39b3e639857c809ada50a01c8a7c322'+'$2');assert.notEqual(bad,job);assert.throws(()=>cpAssertProductionWorkflowSource(put(bad)));}assert.throws(()=>cpAssertProductionWorkflowSource(put(job.replace('path: material','path: current-core'))));}
+});
+
+test('checkpoint production workflow preserves original branch diagnostic preview and historical checkout bytes',()=>{
+ const {header,jobs}=cpProductionWorkflowSections(cpReadProductionWorkflow()),digest=s=>createHash('sha256').update(s).digest('hex');assert.equal(digest(header),'4d0e5f3b00139f75b7f07c62f4b0aeac005bf7c8008a83c65168a4686ab4d3fa');assert.equal(digest(jobs.checkpoint_linux),'b7baf2e10baec9bed6ea857e9e75afb7f03e7b713e6873bf51e8c72e1133121d');assert.equal(digest(jobs.draft_design_preview),'3c46aae77240e62529982547b18f2907ef11110de4e982fe6ee0f85b0061427b');const historical={baseline:'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd','original-publisher':'a425b357c5fb6e14de09743dcaf03d74e16c7244','historical-t':'751b229cb7a99a6a5743b00c5b978c97585b4964','baseline-cb':'cb01da34c99005fde4a64fd932b31edeaa3790b3','service-u':'2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b','service-v':'a4dad490daa3d1bf8f7011f2915342c543e8a79c'};for(const name of ['build','qa','attest','publish','hosted'])for(const step of cpProductionCheckoutSteps(jobs[name]))if(Object.hasOwn(historical,step.path))assert.equal(step.ref,historical[step.path],name+' '+step.path);assert.ok(jobs.build.includes("github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116'"));assert.ok(jobs.publish.includes("github.ref == 'refs/heads/main'"));
+});

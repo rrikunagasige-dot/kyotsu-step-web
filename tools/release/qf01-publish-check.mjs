@@ -555,6 +555,174 @@ function parseNearbyJSON(source){
  function value(depth){assert.ok(depth<256,'JSON_DEPTH');ws();const ch=source[i];if(ch==='"'){string();return;}if(ch==='{'||ch==='['){i++;ws();const end=ch==='{'?'}':']',keys=new Set();if(source[i]===end){i++;return;}for(;;){ws();if(ch==='{'){assert.equal(source[i],'"');const key=string();assert.ok(!keys.has(key),'DUPLICATE_JSON_KEY');keys.add(key);ws();assert.equal(source[i++],':');}value(depth+1);ws();if(source[i]===end){i++;return;}assert.equal(source[i++],',');}}else{const start=i;while(i<source.length&&!/[\s,}\]]/.test(source[i]))i++;assert.ok(i>start);JSON.parse(source.slice(start,i));}}
  value(0);ws();assert.equal(i,source.length,'JSON_TRAILING');return JSON.parse(source);
 }
+// This exact historical file is transported only when its registered event exists.
+export const R02_SUBMISSION_FAILURE_EVIDENCE='E-QF01-T438E-R02-SUBMISSION-FAILED-20261127';
+export const R02_SUBMISSION_FAILURE_PATH='work/D06_T438E_R02_SUBMISSION_FAILED_20261127.json';
+export const R02_SUBMISSION_FAILURE_SHA256='00c50868e85c29933d7414131eb10bde1e2d8ac49bd22b8dd51612b1e687c712';
+const R02_SUBMISSION_FAILURE_NODE='R02_CAUSE@qf01-full-lesson';
+export function checkpointR02SubmissionFailureFileEvents(events){
+ const rows=events.filter(e=>e.kind==='evidence'&&e.payload?.id===R02_SUBMISSION_FAILURE_EVIDENCE);
+ assert.ok(rows.length<=1,'R02_FAILED_FILE_UNIQUE_REGISTERED_EVENT');
+ for(const e of rows){
+  assert.equal(e.work,CP_PRIMARY,'R02_FAILED_FILE_PRIMARY');assert.equal(e.payload.kind,'file');
+  assert.notEqual(e.payload.verification_level,'simulation');
+  assert.deepEqual(Object.keys(e.payload.data).sort(),['path','sha256']);
+  assert.equal(e.payload.data.path,R02_SUBMISSION_FAILURE_PATH,'R02_FAILED_FILE_FIXED_PATH');
+  assert.equal(e.payload.data.sha256,R02_SUBMISSION_FAILURE_SHA256,'R02_FAILED_FILE_FIXED_RAW_SHA');
+ }
+ return rows;
+}
+export function validateCheckpointR02SubmissionFailureEvidence({state,event,fileEvidence,activeCore,activeImplementationHash,checkpointEpoch}){
+ const rows=checkpointR02SubmissionFailureFileEvents([event]);assert.equal(rows.length,1);
+ const hashed=nativeJSONClone(event),eventHash=hashed.hash;delete hashed.hash;
+ assert.equal(nativeDigest(hashed),eventHash,'R02_FAILED_FILE_ENVELOPE_HASH');
+ assert.ok(Number.isSafeInteger(event.seq)&&typeof event.time==='number'&&Number.isFinite(event.time));
+ const fact=checkpointFileEvidence({evidence:{[R02_SUBMISSION_FAILURE_EVIDENCE]:event.payload}},R02_SUBMISSION_FAILURE_EVIDENCE,fileEvidence);
+ assert.equal(fact.schemaVersion,'qf01-t438e-r02-submission-failed-fact/1');
+ assert.equal(fact.work,CP_PRIMARY);assert.equal(fact.node,R02_SUBMISSION_FAILURE_NODE);
+ assert.equal(fact.sourceSHA,state.candidate_sha);assert.equal(fact.definitionHash,state.definition_hash);
+ assert.equal(fact.definitionHash,activeCore.definitionHash);assert.equal(fact.implementationHash,activeImplementationHash);
+ assert.ok(state.informed_review_method&&!state.informed_review_method.revoked,'R02_FAILED_FILE_CURRENT_METHOD');
+ assert.equal(fact.methodAuthorityRef,state.informed_review_method.authorityRef);
+ assert.equal(state.informed_review_method.authority.checkpointEpoch,checkpointEpoch);
+ assert.equal(fact.head,event.previous);assert.equal(fact.seq,event.seq-1,'R02_FAILED_FILE_ACTUAL_PREIMAGE');
+ const claim=state.claims[R02_SUBMISSION_FAILURE_NODE];assert.ok(claim,'R02_FAILED_FILE_ORIGINAL_CLAIM');
+ assert.deepEqual(fact.originalClaim,claim,'R02_FAILED_FILE_CLAIM_IDENTITY');
+ assert.equal(claim.node,R02_SUBMISSION_FAILURE_NODE);assert.equal(claim.actor,'capability-runner');
+ assert.ok(typeof claim.expires_at==='number'&&Number.isFinite(claim.expires_at)&&event.time>=claim.expires_at,'R02_FAILED_FILE_EXPIRED_CLAIM');
+ assert.ok(state.results[R02_SUBMISSION_FAILURE_NODE]?.input_hash!==claim.input_hash||state.results[R02_SUBMISSION_FAILURE_NODE]?.verdict!=='PASS','R02_FAILED_FILE_NOT_CURRENT_ACCEPTANCE');
+ for(const key of ['currentR02Accepted','actualCODEFailed','clockOrClaimRewritten','cacheDeleted','newClaimOrCODEOrSubmitExecuted'])assert.equal(fact[key],false,'R02_FAILED_FILE_HISTORICAL_QUALIFICATION');
+ assert.equal(fact.oldOpaquePreserved,true);assert.equal(fact.globalQueueCoverage,'UNKNOWN');
+ assert.equal(typeof fact.explanation,'string');assert.ok(fact.explanation.trim());
+ for(const key of ['originalFreshRun','originalTypedBundle']){
+  const d=fact[key];assert.deepEqual(Object.keys(d).sort(),['bytes','path','sha256']);
+  assert.ok(typeof d.path==='string'&&d.path.trim()&&Number.isSafeInteger(d.bytes)&&d.bytes>0);cpHash(d.sha256);
+ }
+ assert.equal(fact.rejections.length,2);
+ for(const d of fact.rejections){assert.deepEqual(Object.keys(d).sort(),['bytes','path','sha256']);assert.ok(typeof d.path==='string'&&d.path.trim()&&Number.isSafeInteger(d.bytes)&&d.bytes>0);cpHash(d.sha256);}
+ assert.ok(cpPlain(fact.unacceptedArtifactsPreserved));
+ for(const [name,d]of Object.entries(fact.unacceptedArtifactsPreserved)){assert.match(name,/^artifacts\/[a-f0-9]{64}\.json$/);assert.deepEqual(Object.keys(d).sort(),['bytes','sha256']);assert.ok(Number.isSafeInteger(d.bytes)&&d.bytes>0);cpHash(d.sha256);}
+ return{eventHash,eventSeq:event.seq,eventTime:event.time,claim:nativeJSONClone(claim),reconciled:false};
+}
+export function validateCheckpointR02SubmissionFailureReconcile({state,event,record}){
+ assert.ok(record&&!record.reconciled,'R02_FAILED_FILE_RECONCILE_ONCE');
+ assert.equal(event.work,CP_PRIMARY);assert.equal(event.kind,'claim_reconciled');
+ assert.deepEqual(event.payload,{node:R02_SUBMISSION_FAILURE_NODE,outcome:'FAILED',evidence_refs:[R02_SUBMISSION_FAILURE_EVIDENCE]},'R02_FAILED_FILE_NORMAL_RECONCILE_PAYLOAD');
+ assert.deepEqual(state.claims[R02_SUBMISSION_FAILURE_NODE],record.claim,'R02_FAILED_FILE_RECONCILED_CLAIM');
+ assert.equal(event.previous,record.eventHash);assert.equal(event.seq,record.eventSeq+1);assert.ok(event.time>=record.eventTime);
+ record.reconciled=true;return true;
+}
+export function assertCheckpointR02SubmissionFailureClosure(events){
+ for(const f of checkpointR02SubmissionFailureFileEvents(events)){
+  const matches=events.filter(e=>e.work===CP_PRIMARY&&e.kind==='claim_reconciled'&&e.seq>f.seq&&e.payload.node===R02_SUBMISSION_FAILURE_NODE&&e.payload.outcome==='FAILED'&&Array.isArray(e.payload.evidence_refs)&&e.payload.evidence_refs.length===1&&e.payload.evidence_refs[0]===R02_SUBMISSION_FAILURE_EVIDENCE);
+  assert.equal(matches.length,1,'R02_FAILED_FILE_POST_R06_RECONCILIATION_REQUIRED');
+ }
+ return true;
+}
+
+// Optional exact historical R03 fact. No private original claim token or raw body is embedded here.
+export const R03_SUBMISSION_FAILURE_EVIDENCE='E-QF01-T438E-R03-SUBMISSION-FAILED-20261127';
+export const R03_SUBMISSION_FAILURE_PATH='work/D06_T438E_R03_SUBMISSION_FAILED_20261127.json';
+export const R03_SUBMISSION_FAILURE_SHA256='d481ae1d660cdf50c06455fe137dd5ffaa8505b7eba77e63c98de22653a99c25';
+const R03_SUBMISSION_FAILURE_NODE='R03_IMPACT@qf01-full-lesson';
+export function checkpointR03SubmissionFailureFileEvents(events){
+ const rows=events.filter(e=>e.kind==='evidence'&&e.payload?.id===R03_SUBMISSION_FAILURE_EVIDENCE);
+ assert.ok(rows.length<=1,'R03_FAILED_FILE_UNIQUE_REGISTERED_EVENT');
+ for(const e of rows){
+  assert.equal(e.work,CP_PRIMARY,'R03_FAILED_FILE_PRIMARY');assert.equal(e.payload.kind,'file');
+  assert.notEqual(e.payload.verification_level,'simulation');
+  assert.deepEqual(Object.keys(e.payload.data).sort(),['path','sha256']);
+  assert.equal(e.payload.data.path,R03_SUBMISSION_FAILURE_PATH,'R03_FAILED_FILE_FIXED_PATH');
+  assert.equal(e.payload.data.sha256,R03_SUBMISSION_FAILURE_SHA256,'R03_FAILED_FILE_FIXED_RAW_SHA');
+ }
+ return rows;
+}
+export function validateCheckpointR03SubmissionFailureHistory({event,fact,events,get,checkpointEpoch}){
+ assert.ok(Array.isArray(events)&&typeof get==='function','R03_FAILED_FILE_ACTUAL_HISTORY_REQUIRED');
+ const history=events.filter(e=>e.seq<event.seq&&e.seq>=event.seq-44);
+ assert.equal(history.length,44,'R03_FAILED_FILE_CLAIM_CODE_AND41_VISITS');
+ for(let i=0;i<history.length;i++){
+  const e=history[i],body=nativeJSONClone(e),h=body.hash;delete body.hash;
+  assert.equal(nativeDigest(body),h,'R03_FAILED_FILE_HISTORY_ENVELOPE_HASH');
+  assert.equal(e.work,CP_PRIMARY);assert.equal(e.seq,event.seq-44+i);
+  if(i)assert.equal(e.previous,history[i-1].hash,'R03_FAILED_FILE_CONTIGUOUS_HISTORY');
+ }
+ assert.equal(history.at(-1).hash,event.previous);
+ assert.equal(history[0].kind,'claimed');assert.deepEqual(history[0].payload,fact.originalClaim);
+ assert.equal(history[1].kind,'capability_result');assert.equal(history[2].kind,'capability_bound');
+ const bound=history[2].payload;assert.equal(bound.node,R03_SUBMISSION_FAILURE_NODE);assert.equal(bound.input_hash,fact.originalClaim.input_hash);
+ const receipt=get(bound.receipt);assert.equal(nativeDigest(receipt),bound.receipt);
+ assert.equal(receipt.node,R03_SUBMISSION_FAILURE_NODE);assert.equal(receipt.input_hash,fact.originalClaim.input_hash);
+ assert.equal(receipt.implementation_hash,fact.implementationHash);assert.equal(receipt.capability,'impact.inventory');
+ assert.equal(receipt.phase,'pre-design');assert.equal(receipt.status,'NEEDS_AI_REVIEW');assert.equal(receipt.reused,false);
+ assert.deepEqual(history[1].payload,{cache_key:receipt.cache_key,capability:receipt.capability,output:receipt.output,phase:receipt.phase});
+ const output=get(receipt.output);assert.equal(nativeDigest(output),receipt.output);
+ assert.equal(output.status,'NEEDS_AI_REVIEW');assert.equal(output.sourceSHA,fact.sourceSHA);assert.equal(output.phase,'pre-design');
+ assert.equal(output.inventory.length,35);assert.equal(new Set(output.inventory.map(r=>r.artifact)).size,35);
+ const visits=new Map();
+ for(const e of history.slice(3)){
+  assert.equal(e.kind,'impact_visited','R03_FAILED_FILE_OBSERVATIONS_NOT_ACCEPTED_RESULT');
+  const p=e.payload,original=nativeDigest([p.signature,p.artifact,p.version,p.phase]);
+  assert.deepEqual(Object.keys(p).sort(),['artifact','checkpointEpoch','definitionHash','key','originalVisitKey','phase','priorPrefixCoverage','signature','version']);
+  for(const k of ['artifact','version','phase','signature'])assert.ok(typeof p[k]==='string'&&p[k].trim());
+  assert.equal(p.checkpointEpoch,checkpointEpoch);assert.equal(p.definitionHash,fact.definitionHash);assert.equal(p.phase,'pre-design');
+  assert.equal(p.originalVisitKey,original);assert.equal(p.key,nativeDigest([checkpointEpoch,fact.definitionHash,CP_PRIMARY,original]));
+  assert.equal(p.priorPrefixCoverage,'UNKNOWN');assert.ok(!visits.has(p.artifact),'R03_FAILED_FILE_UNIQUE41_ARTIFACTS');visits.set(p.artifact,p);
+ }
+ assert.equal(visits.size,41);
+ for(const row of output.inventory){const p=visits.get(row.artifact);assert.ok(p,'R03_FAILED_FILE_INVENTORY35_INCLUDED');assert.equal(p.version,row.version);}
+ const codePaths=['artifacts/'+bound.receipt+'.json','artifacts/'+receipt.output+'.json'];
+ for(const name of codePaths)assert.ok(fact.newCanonicalArtifactsPreserved[name],'R03_FAILED_FILE_CODE_OBJECTS_PRESERVED');
+ return true;
+}
+export function validateCheckpointR03SubmissionFailureEvidence({state,event,fileEvidence,activeCore,activeImplementationHash,checkpointEpoch,events,get}){
+ const rows=checkpointR03SubmissionFailureFileEvents([event]);assert.equal(rows.length,1);
+ const hashed=nativeJSONClone(event),eventHash=hashed.hash;delete hashed.hash;
+ assert.equal(nativeDigest(hashed),eventHash,'R03_FAILED_FILE_ENVELOPE_HASH');
+ assert.ok(Number.isSafeInteger(event.seq)&&typeof event.time==='number'&&Number.isFinite(event.time));
+ const fact=checkpointFileEvidence({evidence:{[R03_SUBMISSION_FAILURE_EVIDENCE]:event.payload}},R03_SUBMISSION_FAILURE_EVIDENCE,fileEvidence);
+ assert.equal(fact.schemaVersion,'qf01-t438e-r03-submission-failed-fact/1');
+ assert.equal(fact.work,CP_PRIMARY);assert.equal(fact.node,R03_SUBMISSION_FAILURE_NODE);
+ assert.equal(fact.sourceSHA,state.candidate_sha);assert.equal(fact.definitionHash,state.definition_hash);
+ assert.equal(fact.definitionHash,activeCore.definitionHash);assert.equal(fact.implementationHash,activeImplementationHash);
+ assert.ok(state.informed_review_method&&!state.informed_review_method.revoked,'R03_FAILED_FILE_CURRENT_METHOD');
+ assert.equal(fact.methodAuthorityRef,state.informed_review_method.authorityRef);
+ assert.equal(state.informed_review_method.authority.checkpointEpoch,checkpointEpoch);
+ assert.equal(fact.head,event.previous);assert.equal(fact.seq,event.seq-1,'R03_FAILED_FILE_ACTUAL_PREIMAGE');
+ const claim=state.claims[R03_SUBMISSION_FAILURE_NODE];assert.ok(claim,'R03_FAILED_FILE_ORIGINAL_CLAIM');
+ assert.deepEqual(fact.originalClaim,claim,'R03_FAILED_FILE_CLAIM_IDENTITY');
+ assert.equal(claim.node,R03_SUBMISSION_FAILURE_NODE);assert.equal(claim.actor,'capability-runner');
+ assert.ok(typeof claim.expires_at==='number'&&Number.isFinite(claim.expires_at)&&event.time>=claim.expires_at,'R03_FAILED_FILE_EXPIRED_CLAIM');
+ assert.ok(state.results[R03_SUBMISSION_FAILURE_NODE]?.input_hash!==claim.input_hash||state.results[R03_SUBMISSION_FAILURE_NODE]?.verdict!=='PASS','R03_FAILED_FILE_NOT_CURRENT_ACCEPTANCE');
+ for(const key of ['currentR03Accepted','actualCODEFailed','impactVisitsAreAcceptedResult','clockOrClaimRewritten','cacheDeleted','newClaimOrCODEOrSubmitExecuted'])assert.equal(fact[key],false,'R03_FAILED_FILE_HISTORICAL_QUALIFICATION');
+ assert.equal(fact.actualImpactVisitCount,41);assert.equal(fact.codeObjectsCalculatedAndPreserved,2);assert.equal(fact.submittedBodyOrphanUnacceptedAndPreserved,1);
+ assert.equal(fact.oldOpaquePreserved,true);assert.equal(fact.globalQueueCoverage,'UNKNOWN');assert.equal(typeof fact.explanation,'string');assert.ok(fact.explanation.trim());
+ for(const key of ['originalFreshRun','originalTypedBundle','submittedBody','rejection','rejectionExecution','actualImpactEvents','actualFailureInspection','actualFailureObservation']){
+  const d=fact[key];assert.deepEqual(Object.keys(d).sort(),['bytes','path','sha256']);
+  assert.ok(typeof d.path==='string'&&d.path.trim()&&Number.isSafeInteger(d.bytes)&&d.bytes>0);cpHash(d.sha256);
+ }
+ assert.ok(cpPlain(fact.newCanonicalArtifactsPreserved));assert.equal(Object.keys(fact.newCanonicalArtifactsPreserved).length,3);
+ for(const [name,d]of Object.entries(fact.newCanonicalArtifactsPreserved)){assert.match(name,/^artifacts\/[a-f0-9]{64}\.json$/);assert.deepEqual(Object.keys(d).sort(),['bytes','sha256']);assert.ok(Number.isSafeInteger(d.bytes)&&d.bytes>0);cpHash(d.sha256);}
+ validateCheckpointR03SubmissionFailureHistory({event,fact,events,get,checkpointEpoch});
+ return{eventHash,eventSeq:event.seq,eventTime:event.time,claim:nativeJSONClone(claim),reconciled:false};
+}
+export function validateCheckpointR03SubmissionFailureReconcile({state,event,record}){
+ assert.ok(record&&!record.reconciled,'R03_FAILED_FILE_RECONCILE_ONCE');
+ assert.equal(event.work,CP_PRIMARY);assert.equal(event.kind,'claim_reconciled');
+ assert.deepEqual(event.payload,{node:R03_SUBMISSION_FAILURE_NODE,outcome:'FAILED',evidence_refs:[R03_SUBMISSION_FAILURE_EVIDENCE]},'R03_FAILED_FILE_NORMAL_RECONCILE_PAYLOAD');
+ assert.deepEqual(state.claims[R03_SUBMISSION_FAILURE_NODE],record.claim,'R03_FAILED_FILE_RECONCILED_CLAIM');
+ assert.equal(event.previous,record.eventHash);assert.equal(event.seq,record.eventSeq+1);assert.ok(event.time>=record.eventTime);
+ record.reconciled=true;return true;
+}
+export function assertCheckpointR03SubmissionFailureClosure(events){
+ for(const f of checkpointR03SubmissionFailureFileEvents(events)){
+  const matches=events.filter(e=>e.work===CP_PRIMARY&&e.kind==='claim_reconciled'&&e.seq>f.seq&&e.payload.node===R03_SUBMISSION_FAILURE_NODE&&e.payload.outcome==='FAILED'&&Array.isArray(e.payload.evidence_refs)&&e.payload.evidence_refs.length===1&&e.payload.evidence_refs[0]===R03_SUBMISSION_FAILURE_EVIDENCE);
+  assert.equal(matches.length,1,'R03_FAILED_FILE_POST_R06_RECONCILIATION_REQUIRED');
+ }
+ return true;
+}
+
+
 export function checkpointFileEvidence(state,ref,fileEvidence){
  const event=state.evidence[ref];assert.equal(event?.kind,'file','D03_ACTUAL_FILE_EVIDENCE');assert.notEqual(event.verification_level,'simulation');const data=event.data;relative(data.path);cpHash(data.sha256);
  const raw=fileEvidence?.[data.path];assert.ok(cpPlain(raw),'D03_RAW_FILE_EVIDENCE_REQUIRED');assert.deepEqual(Object.keys(raw).sort(),['rawUTF8','sha256']);assert.equal(raw.sha256,data.sha256);assert.equal(typeof raw.rawUTF8,'string');
@@ -972,7 +1140,7 @@ export function replayCheckpointExport({originSeed,originContractRaw,exportEnvel
  const chain=validateCheckpointSuffixChain(exportEnvelope.events,{knownPrefixEvents:known});assert.deepEqual(chain.anchor,exportEnvelope.anchor,'CHECKPOINT_DECLARED_EXPORT_ANCHOR');
  assert.ok(chain.events.length,'CHECKPOINT_ACTUAL_SUFFIX_REQUIRED');
  const states={[CP_PRIMARY]:nativeJSONClone(origin)},feedback=nativeJSONClone(a.feedbackCaptured),team=nativeJSONClone(a.teamHistory),reconciliations=new Map(),bound=new Set(),fresh=new Map(),resultFrames=new Map(),proofFrames=new Map(),operations=new Map(),methodSeals=new Map(),evidenceFrames=new Map(),migrations=[];
- let activeRepair=null,activeMathRepair=null,activeMixedRepair=null,activeLayoutRepair=null;const mathHistory=[],mixedHistory=[],layoutHistory=[];const hasLayout=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.inlineLayoutRepair);const hasMixed=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mixedInlineRepair);const hasMath=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mathRenderingRepair);const fileEvidence=exportEnvelope.fileEvidence??{};assert.ok(cpPlain(fileEvidence));const permittedFileRefs=new Set([NEARBY_REPAIR_EVIDENCE,...(hasLayout?[INLINE_LAYOUT_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.inlineLayoutRepair).map(e=>e.payload.inlineLayoutRepair.evidenceRef),...(hasMixed?[MIXED_INLINE_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mixedInlineRepair).map(e=>e.payload.mixedInlineRepair.evidenceRef),...(hasMath?[MATH_RENDERING_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.repairAdoption).map(e=>e.payload.repairAdoption.evidenceRef),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mathRenderingRepair).map(e=>e.payload.mathRenderingRepair.evidenceRef)]),permittedFilePaths=new Set(chain.events.filter(e=>e.work===CP_PRIMARY&&e.kind==='evidence'&&permittedFileRefs.has(e.payload.id)&&e.payload.kind==='file').map(e=>e.payload.data.path));
+ let activeRepair=null,activeMathRepair=null,activeMixedRepair=null,activeLayoutRepair=null;const mathHistory=[],mixedHistory=[],layoutHistory=[];const hasLayout=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.inlineLayoutRepair);const hasMixed=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mixedInlineRepair);const hasMath=chain.events.some(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mathRenderingRepair);const fileEvidence=exportEnvelope.fileEvidence??{};assert.ok(cpPlain(fileEvidence));const r02FailureFileEvents=checkpointR02SubmissionFailureFileEvents(chain.events),r02FailureHistory=new Map();const r03FailureFileEvents=checkpointR03SubmissionFailureFileEvents(chain.events),r03FailureHistory=new Map();const permittedFileRefs=new Set([...r02FailureFileEvents.map(event=>event.payload.id),...r03FailureFileEvents.map(event=>event.payload.id),NEARBY_REPAIR_EVIDENCE,...(hasLayout?[INLINE_LAYOUT_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.inlineLayoutRepair).map(e=>e.payload.inlineLayoutRepair.evidenceRef),...(hasMixed?[MIXED_INLINE_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mixedInlineRepair).map(e=>e.payload.mixedInlineRepair.evidenceRef),...(hasMath?[MATH_RENDERING_EVIDENCE]:[]),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.repairAdoption).map(e=>e.payload.repairAdoption.evidenceRef),...chain.events.filter(e=>e.kind==='checkpoint_definition_migrated'&&e.payload.mathRenderingRepair).map(e=>e.payload.mathRenderingRepair.evidenceRef)]),permittedFilePaths=new Set(chain.events.filter(e=>e.work===CP_PRIMARY&&e.kind==='evidence'&&permittedFileRefs.has(e.payload.id)&&e.payload.kind==='file').map(e=>e.payload.data.path));
  for(const [name,row]of Object.entries(fileEvidence)){relative(name);assert.deepEqual(Object.keys(row).sort(),['rawUTF8','sha256']);cpHash(row.sha256);assert.equal(typeof row.rawUTF8,'string');const bytes=Buffer.from(row.rawUTF8,'utf8');assert.ok(bytes.length<=1048576);assert.equal(bytes.toString('utf8'),row.rawUTF8);assert.equal(sha(bytes),row.sha256);if(name===NEARBY_REPAIR_PROPOSAL_PATH)assert.equal(row.sha256,NEARBY_REPAIR_PROPOSAL_SHA256);else if(hasMath&&name===MATH_RENDERING_PROPOSAL_PATH)assert.equal(row.sha256,MATH_RENDERING_PROPOSAL_SHA256);else if(hasMixed&&name===MIXED_INLINE_PROPOSAL_PATH)assert.equal(row.sha256,MIXED_INLINE_PROPOSAL_SHA256);else if(hasLayout&&name===INLINE_LAYOUT_PROPOSAL_PATH)assert.equal(row.sha256,INLINE_LAYOUT_PROPOSAL_SHA256);else assert.ok(permittedFilePaths.has(name),'D03_D04_D05_D06_FILE_TRANSPORT_ONLY_ADOPTIONS_AND_ORIGINAL_DIAGNOSTICS');}
  let migrated=false,bootstrapped=false,checkpointEpoch=null,bootstrapCore=null,activeCore=null,activeImplementationHash=null;
  for(const event of chain.events){
@@ -1048,9 +1216,9 @@ export function replayCheckpointExport({originSeed,originContractRaw,exportEnvel
    case 'informed_review_receipt_sealed':assert.equal(w,CP_PRIMARY);assert.ok(INFORMED_REVIEW_NODES.includes(p.node));assert.equal(p.methodAuthorityRef,s.informed_review_method?.authorityRef);assert.ok(!s.informed_review_method.revoked);get(p.methodReceiptRef);if(methodSeals.has(p.methodReceiptRef))assert.deepEqual(methodSeals.get(p.methodReceiptRef).payload,p);else methodSeals.set(p.methodReceiptRef,event);break;
    case 'informed_technical_candidate_reconciled':{const opened=chain.events.find(e=>e.work===w&&e.kind==='opened');assert.ok(opened);const proof=validateInformedTechnicalCandidate({event,state:s,primary:states[CP_PRIMARY],opened,events:chain.events,get,activeCore,activeImplementationHash,checkpointEpoch});s.candidate_sha=proof.candidateSHA;s.candidate_manifest=nativeJSONClone(proof.candidateManifest);s.informed_technical_candidate_reconciliation=p;s.closed=null;break;}
    case 'claimed':assert.ok(!s.claims[p.node],'CHECKPOINT_CLAIM_RECONCILIATION_REQUIRED_BEFORE_REPLACEMENT');assert.ok(p.token&&Number.isFinite(p.expires_at));s.claims[p.node]=p;break;
-   case 'claim_reconciled':assert.ok(s.claims[p.node]);delete s.claims[p.node];break;
+   case 'claim_reconciled':assert.ok(s.claims[p.node]);if(w===CP_PRIMARY){const record=r02FailureHistory.get(R02_SUBMISSION_FAILURE_EVIDENCE);if(record&&!record.reconciled&&p.node===R02_SUBMISSION_FAILURE_NODE)validateCheckpointR02SubmissionFailureReconcile({state:s,event,record});else if(p.evidence_refs?.includes(R02_SUBMISSION_FAILURE_EVIDENCE))assert.fail('R02_FAILED_FILE_RECONCILE_ONCE');const r03Record=r03FailureHistory.get(R03_SUBMISSION_FAILURE_EVIDENCE);if(r03Record&&!r03Record.reconciled&&p.node===R03_SUBMISSION_FAILURE_NODE)validateCheckpointR03SubmissionFailureReconcile({state:s,event,record:r03Record});else if(p.evidence_refs?.includes(R03_SUBMISSION_FAILURE_EVIDENCE))assert.fail('R03_FAILED_FILE_RECONCILE_ONCE');}delete s.claims[p.node];break;
    case 'result_reopened':delete s.results[p.node];fresh.delete(w+'|'+p.node);s.closed=null;break;
-   case 'evidence':assert.ok(!s.evidence[p.id],'CHECKPOINT_NO_REPLACED_EVIDENCE');if(w===CP_PRIMARY&&p.kind==='source_ci')evidenceFrames.set(event.hash,{state:cpCleanState(s),technicalStates:Object.fromEntries(Object.entries(states).filter(([name])=>name!==CP_PRIMARY).map(([name,value])=>[name,cpCleanState(value)])),checkpointEpoch,activeCore:nativeJSONClone(activeCore),activeImplementationHash});s.evidence[p.id]=p;break;
+   case 'evidence':assert.ok(!s.evidence[p.id],'CHECKPOINT_NO_REPLACED_EVIDENCE');if(p.id===R02_SUBMISSION_FAILURE_EVIDENCE){assert.equal(w,CP_PRIMARY);r02FailureHistory.set(p.id,validateCheckpointR02SubmissionFailureEvidence({state:s,event,fileEvidence,activeCore,activeImplementationHash,checkpointEpoch}));}if(p.id===R03_SUBMISSION_FAILURE_EVIDENCE){assert.equal(w,CP_PRIMARY);r03FailureHistory.set(p.id,validateCheckpointR03SubmissionFailureEvidence({state:s,event,fileEvidence,activeCore,activeImplementationHash,checkpointEpoch,events:chain.events,get}));}if(w===CP_PRIMARY&&p.kind==='source_ci')evidenceFrames.set(event.hash,{state:cpCleanState(s),technicalStates:Object.fromEntries(Object.entries(states).filter(([name])=>name!==CP_PRIMARY).map(([name,value])=>[name,cpCleanState(value)])),checkpointEpoch,activeCore:nativeJSONClone(activeCore),activeImplementationHash});s.evidence[p.id]=p;break;
    case 'user':assert.ok(!s.users[p.id],'CHECKPOINT_NO_REPLACED_USER');assert.ok(['conversation_transcribed','authenticated_connector'].includes(p.verification_level));s.users[p.id]=p;break;
    case 'paused':assert.equal(typeof p.value,'boolean');s.paused=p.value;break;
    case 'issue':s.issues[p.id]=p;s.closed=null;break;
@@ -1403,7 +1571,7 @@ function checkpointGateProof(replayed,a,id){
  return currentGate(frame.state,id,actual,replayed.get,{bound,targets,teamProjection:newTeamProjection(frame.teamHistory)});
 }
 export function validateCheckpointMaterialState({input,authority,coreBinding,release=false}){
- const replayed=validateCheckpointInputData(input),s=replayed.state,a={...authority,checkpointVariant:CHECKPOINT_VARIANT,feedbackCaptured:replayed.feedbackCaptured,teamHistory:replayed.teamHistory,fileEvidence:replayed.fileEvidence,currentCore:replayed.activeCore,originState:input.originSeed.baseState,checkpointEvents:replayed.events};assert.equal(a.sourceSHA,coreBinding.sourceSHA);assert.equal(a.definitionHash,coreBinding.definitionHash);assert.equal(a.implementationHash,coreBinding.implementationHash);assert.equal(s.definition_hash,coreBinding.definitionHash);assert.equal(replayed.activeCore.definitionHash,coreBinding.definitionHash);assert.equal(replayed.activeImplementationHash,coreBinding.implementationHash);for(const[name,h]of Object.entries(replayed.activeCore.files))assert.equal(coreBinding.workflowFiles['workflow/'+name],h);assert.equal(s.candidate_sha,coreBinding.sourceSHA);assert.deepEqual(s.candidate_manifest,{...input.originSeed.baseState.candidate_manifest,...currentProductRepairContext(s).effectiveAfter});assert.equal(s.release_versions[CURRENT_UNIT],coreBinding.sourceSHA);assert.equal(s.paused,false);assert.deepEqual(s.claims,{});currentPlan(s.plan,input.originSeed.baseState,a);
+ const replayed=validateCheckpointInputData(input),s=replayed.state,a={...authority,checkpointVariant:CHECKPOINT_VARIANT,feedbackCaptured:replayed.feedbackCaptured,teamHistory:replayed.teamHistory,fileEvidence:replayed.fileEvidence,currentCore:replayed.activeCore,originState:input.originSeed.baseState,checkpointEvents:replayed.events};assert.equal(a.sourceSHA,coreBinding.sourceSHA);assert.equal(a.definitionHash,coreBinding.definitionHash);assert.equal(a.implementationHash,coreBinding.implementationHash);assert.equal(s.definition_hash,coreBinding.definitionHash);assert.equal(replayed.activeCore.definitionHash,coreBinding.definitionHash);assert.equal(replayed.activeImplementationHash,coreBinding.implementationHash);for(const[name,h]of Object.entries(replayed.activeCore.files))assert.equal(coreBinding.workflowFiles['workflow/'+name],h);assert.equal(s.candidate_sha,coreBinding.sourceSHA);assert.deepEqual(s.candidate_manifest,{...input.originSeed.baseState.candidate_manifest,...currentProductRepairContext(s).effectiveAfter});assert.equal(s.release_versions[CURRENT_UNIT],coreBinding.sourceSHA);assert.equal(s.paused,false);assert.deepEqual(s.claims,{});currentPlan(s.plan,input.originSeed.baseState,a);assertCheckpointR02SubmissionFailureClosure(replayed.events);assertCheckpointR03SubmissionFailureClosure(replayed.events);
  for(const key of ['compiledIRHash','compiledPresentationHash','semanticCanonicalIRHash'])assert.equal(a[key],replayed.originAuthority[key],'CHECKPOINT_ORIGINAL_35_134_CANONICAL_SEMANTICS '+key);if(release)for(const issue of Object.values(s.issues))assert.ok(issue.resolved_by,'CHECKPOINT_UNRESOLVED_CURRENT_ISSUE');for(const patch of Object.values(s.patches))assert.ok(patch.completed,'CHECKPOINT_UNCERTAIN_PATCH');
  const gates=['S00_RECOVER','S01_ROUTE',...['R01_CAPTURE','R02_CAUSE','R03_IMPACT','R04_PROPOSAL','R05_APPROVAL','R06_PATCH'].map(n=>n+'@'+CURRENT_BLOCK)];let previous=CHECKPOINT_ORIGIN_ANCHOR.events;
  for(const id of gates){const seq=replayed.fresh.get(CP_PRIMARY+'|'+id);assert.ok(seq>previous,'CHECKPOINT_FRESH_ORDERED_CURRENT_GATE '+id);checkpointGateProof(replayed,a,id);previous=seq;}

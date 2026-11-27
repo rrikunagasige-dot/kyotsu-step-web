@@ -768,3 +768,221 @@ test('CP native numeric lexical V3: packet and original-report field removal kee
  }
 });
 // CP_NATIVE_NUMBER_ROOT_BODY_V3_END
+
+
+// TEST_FIXTURE only. No real Native file, original claim token or adoption body.
+const R02_FAILURE_TEST_PRIMARY='W-MATH-QF01-FULL-RELEASE-P035-20261115';
+const R02_FAILURE_TEST_NODE='R02_CAUSE@qf01-full-lesson';
+async function r02FailureFixture(change=()=>{},rawChange=x=>x){
+ const checker=await import('./qf01-publish-check.mjs');
+ const source=fs.readFileSync(new URL('./qf01-publish-check.mjs',import.meta.url),'utf8');
+ const pick=name=>{const start=source.indexOf('export function '+name+'(');assert.ok(start>=0);const end=source.indexOf('\n}',start);assert.ok(end>start);return source.slice(start,end+2).replace(/^export /,'');};
+ const cpHashSource=source.split('\n').find(line=>line.startsWith('function cpHash('));
+ const cpPlainSource=source.split('\n').find(line=>line.startsWith('const cpPlain='));
+ const cpHash=new Function('assert',cpHashSource+';return cpHash;')(assert);
+ const cpPlain=new Function(cpPlainSource+';return cpPlain;')();
+ const claim={node:R02_FAILURE_TEST_NODE,actor:'capability-runner',token:'TEST_FIXTURE_EXPIRED_CLAIM',input_hash:'1'.repeat(64),task_id:'2'.repeat(64),expires_at:90};
+ const d={path:'TEST_FIXTURE/not-opened.json',bytes:1,sha256:'3'.repeat(64)};
+ const fact={schemaVersion:'qf01-t438e-r02-submission-failed-fact/1',work:R02_FAILURE_TEST_PRIMARY,node:R02_FAILURE_TEST_NODE,
+  sourceSHA:'a'.repeat(40),definitionHash:'b'.repeat(64),implementationHash:'c'.repeat(64),methodAuthorityRef:'d'.repeat(64),
+  head:'e'.repeat(64),seq:10,originalClaim:checker.nativeJSONClone(claim),originalFreshRun:d,originalTypedBundle:d,rejections:[d,d],
+  explanation:'TEST_FIXTURE: code outputs retained; submission rejected.',currentR02Accepted:false,actualCODEFailed:false,
+  clockOrClaimRewritten:false,cacheDeleted:false,newClaimOrCODEOrSubmitExecuted:false,oldOpaquePreserved:true,globalQueueCoverage:'UNKNOWN',unacceptedArtifactsPreserved:{}};
+ const state={candidate_sha:fact.sourceSHA,definition_hash:fact.definitionHash,claims:{[R02_FAILURE_TEST_NODE]:checker.nativeJSONClone(claim)},results:{[R02_FAILURE_TEST_NODE]:{verdict:'PASS',input_hash:'0'.repeat(64)}},informed_review_method:{authorityRef:fact.methodAuthorityRef,authority:{checkpointEpoch:'f'.repeat(64)}}};
+ const context={state,activeCore:{definitionHash:fact.definitionHash},activeImplementationHash:fact.implementationHash,checkpointEpoch:'f'.repeat(64)};
+ change({fact,state,context});
+ const raw=rawChange(JSON.stringify(fact,null,2)+'\n'),hash=checker.sha(Buffer.from(raw,'utf8'));
+ // Extract the actual production functions. Only the private raw-byte pin is a TEST_FIXTURE dependency.
+ const names=['checkpointR02SubmissionFailureFileEvents','validateCheckpointR02SubmissionFailureEvidence','validateCheckpointR02SubmissionFailureReconcile','assertCheckpointR02SubmissionFailureClosure'];
+ const body=names.map(pick).join('\n')+'\nreturn {'+names.join(',')+'};';
+ const guards=new Function('assert','CP_PRIMARY','nativeJSONClone','nativeDigest','checkpointFileEvidence','cpHash','cpPlain','R02_SUBMISSION_FAILURE_EVIDENCE','R02_SUBMISSION_FAILURE_PATH','R02_SUBMISSION_FAILURE_SHA256','R02_SUBMISSION_FAILURE_NODE',body)(assert,R02_FAILURE_TEST_PRIMARY,checker.nativeJSONClone,checker.nativeDigest,checker.checkpointFileEvidence,cpHash,cpPlain,checker.R02_SUBMISSION_FAILURE_EVIDENCE,checker.R02_SUBMISSION_FAILURE_PATH,hash,R02_FAILURE_TEST_NODE);
+ const event={id:'TEST_FIXTURE_FILE_EVENT',work:R02_FAILURE_TEST_PRIMARY,kind:'evidence',seq:11,time:100,previous:'e'.repeat(64),payload:{id:checker.R02_SUBMISSION_FAILURE_EVIDENCE,kind:'file',verification_level:'local_execution',data:{path:checker.R02_SUBMISSION_FAILURE_PATH,sha256:hash}}};event.hash=checker.nativeDigest(event);
+ context.event=event;context.fileEvidence={[checker.R02_SUBMISSION_FAILURE_PATH]:{rawUTF8:raw,sha256:hash}};
+ const reconcile={id:'TEST_FIXTURE_RECONCILE_EVENT',work:R02_FAILURE_TEST_PRIMARY,kind:'claim_reconciled',seq:12,time:101,previous:event.hash,payload:{node:R02_FAILURE_TEST_NODE,outcome:'FAILED',evidence_refs:[checker.R02_SUBMISSION_FAILURE_EVIDENCE]}};reconcile.hash=checker.nativeDigest(reconcile);
+ return{checker,guards,context,fact,raw,event,reconcile,state,source};
+}
+test('R02 submission failure: old namespaces stay optional and production rejects synthetic raw pin',async()=>{
+ const f=await r02FailureFixture();
+ assert.deepEqual(f.checker.checkpointR02SubmissionFailureFileEvents([]),[]);
+ assert.equal(f.checker.assertCheckpointR02SubmissionFailureClosure([]),true);
+ assert.throws(()=>f.checker.validateCheckpointR02SubmissionFailureEvidence(f.context),/R02_FAILED_FILE_FIXED_RAW_SHA/);
+ assert.ok(f.source.includes('D03_D04_D05_D06_FILE_TRANSPORT_ONLY_ADOPTIONS_AND_ORIGINAL_DIAGNOSTICS'));
+});
+test('R02 submission failure: actual guard body accepts bounded TEST_FIXTURE file and normal node payload',async()=>{
+ const f=await r02FailureFixture(),record=f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context);
+ assert.equal(record.reconciled,false);
+ const timeBody=f.checker.nativeJSONClone(f.event);delete timeBody.hash;
+ const timed=JSON.stringify(timeBody).replace('"time":100','"time":100.0');assert.ok(timed.includes('"time":100.0'));const floated=f.checker.parseNativeJSON(timed);
+ floated.hash=f.checker.nativeDigest(floated);
+ assert.equal(f.guards.validateCheckpointR02SubmissionFailureEvidence({...f.context,event:floated}).eventHash,floated.hash);
+ assert.equal(f.guards.validateCheckpointR02SubmissionFailureReconcile({state:f.state,event:f.reconcile,record}),true);
+ assert.equal(record.reconciled,true);
+ assert.equal(f.guards.assertCheckpointR02SubmissionFailureClosure([f.event,f.reconcile]),true);
+});
+test('R02 submission failure: only one exact nonsimulated primary file identity is admitted',async()=>{
+ const f=await r02FailureFixture();
+ for(const mutate of [e=>e.work='OTHER',e=>e.payload.kind='check',e=>e.payload.verification_level='simulation',e=>e.payload.data.path='work/OTHER.json',e=>e.payload.data.sha256='0'.repeat(64)]){
+  const event=f.checker.nativeJSONClone(f.event);mutate(event);
+  assert.throws(()=>f.guards.checkpointR02SubmissionFailureFileEvents([event]));
+ }
+ assert.throws(()=>f.guards.checkpointR02SubmissionFailureFileEvents([f.event,f.event]),/UNIQUE/);
+});
+test('R02 submission failure: source, epoch, prior claim and historical qualifications cannot be retagged',async()=>{
+ const changes=[x=>x.state.candidate_sha='0'.repeat(40),x=>x.context.activeCore.definitionHash='0'.repeat(64),x=>x.context.activeImplementationHash='0'.repeat(64),x=>x.state.informed_review_method.revoked=true,x=>x.state.informed_review_method.authority.checkpointEpoch='0'.repeat(64),x=>x.state.claims[R02_FAILURE_TEST_NODE].token='OTHER',x=>x.fact.seq=9,x=>x.fact.head='0'.repeat(64),x=>x.state.results[R02_FAILURE_TEST_NODE].input_hash=x.fact.originalClaim.input_hash,x=>{x.fact.originalClaim.expires_at=200;x.state.claims[R02_FAILURE_TEST_NODE].expires_at=200;},x=>x.fact.currentR02Accepted=true,x=>x.fact.actualCODEFailed=true,x=>x.fact.clockOrClaimRewritten=true,x=>x.fact.cacheDeleted=true,x=>x.fact.newClaimOrCODEOrSubmitExecuted=true,x=>x.fact.globalQueueCoverage='COMPLETE'];
+ for(const change of changes){const f=await r02FailureFixture(change);assert.throws(()=>f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context));}
+});
+test('R02 submission failure: exact bytes, strict JSON and 1MiB file bound remain required',async()=>{
+ for(const rawChange of [x=>x.slice(0,-2)+',"node":"DUPLICATE"}\n',x=>'\uFEFF'+x,x=>x+'\ud800',x=>x.replace('TEST_FIXTURE: code outputs retained; submission rejected.','x'.repeat(1048576))]){
+  const f=await r02FailureFixture(()=>{},rawChange);assert.throws(()=>f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context));
+ }
+ const f=await r02FailureFixture();f.context.fileEvidence[f.checker.R02_SUBMISSION_FAILURE_PATH].rawUTF8+=' ';
+ assert.throws(()=>f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context));
+});
+test('R02 submission failure: reconcile cannot use node_id event field, another claim, or another outcome',async()=>{
+ const f=await r02FailureFixture();
+ for(const mutate of [e=>{e.payload.node_id=e.payload.node;delete e.payload.node;},e=>e.payload.node='OTHER',e=>e.payload.outcome='NOT_EXECUTED',e=>e.payload.evidence_refs=[],e=>e.previous='0'.repeat(64),e=>e.seq=13,e=>e.time=99]){
+  const event=f.checker.nativeJSONClone(f.reconcile),record=f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context);mutate(event);
+  assert.throws(()=>f.guards.validateCheckpointR02SubmissionFailureReconcile({state:f.state,event,record}));
+ }
+ const record=f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context);
+ f.guards.validateCheckpointR02SubmissionFailureReconcile({state:f.state,event:f.reconcile,record});
+ assert.throws(()=>f.guards.validateCheckpointR02SubmissionFailureReconcile({state:f.state,event:f.reconcile,record}),/ONCE/);
+});
+test('R02 submission failure: incomplete replay is not post-R06 closure',async()=>{
+ const f=await r02FailureFixture();assert.equal(f.guards.validateCheckpointR02SubmissionFailureEvidence(f.context).reconciled,false);
+ assert.throws(()=>f.guards.assertCheckpointR02SubmissionFailureClosure([f.event]),/POST_R06_RECONCILIATION_REQUIRED/);
+ assert.throws(()=>f.guards.assertCheckpointR02SubmissionFailureClosure([f.event,f.reconcile,f.reconcile]),/POST_R06_RECONCILIATION_REQUIRED/);
+ assert.ok(f.source.includes('assertCheckpointR02SubmissionFailureClosure(replayed.events)'));
+});
+test('R02 submission failure: lossless clone and gzip roundtrip retain original UTF8 file bytes',async()=>{
+ const f=await r02FailureFixture(),z=await import('node:zlib'),transport=f.checker.nativeJSONClone(f.context.fileEvidence);
+ const text=f.checker.nativeJSONStringify(transport),decoded=f.checker.parseNativeJSON(z.gunzipSync(z.gzipSync(Buffer.from(text))).toString('utf8'));
+ assert.equal(decoded[f.checker.R02_SUBMISSION_FAILURE_PATH].rawUTF8,f.raw);
+ assert.equal(f.checker.sha(Buffer.from(decoded[f.checker.R02_SUBMISSION_FAILURE_PATH].rawUTF8)),f.event.payload.data.sha256);
+});
+
+// TEST_FIXTURE only. No real Native file, original claim token or adoption body.
+const R03_FAILURE_TEST_PRIMARY='W-MATH-QF01-FULL-RELEASE-P035-20261115';
+const R03_FAILURE_TEST_NODE='R03_IMPACT@qf01-full-lesson';
+async function r03FailureFixture(change=()=>{},rawChange=x=>x){
+ const checker=await import('./qf01-publish-check.mjs');
+ const source=fs.readFileSync(new URL('./qf01-publish-check.mjs',import.meta.url),'utf8');
+ const pick=name=>{const start=source.indexOf('export function '+name+'(');assert.ok(start>=0);const end=source.indexOf('\n}',start);assert.ok(end>start);return source.slice(start,end+2).replace(/^export /,'');};
+ const cpHashSource=source.split('\n').find(line=>line.startsWith('function cpHash('));
+ const cpPlainSource=source.split('\n').find(line=>line.startsWith('const cpPlain='));
+ const cpHash=new Function('assert',cpHashSource+';return cpHash;')(assert);
+ const cpPlain=new Function(cpPlainSource+';return cpPlain;')();
+ const claim={node:R03_FAILURE_TEST_NODE,actor:'capability-runner',token:'TEST_FIXTURE_EXPIRED_CLAIM',input_hash:'1'.repeat(64),task_id:'2'.repeat(64),expires_at:90};
+ const d={path:'TEST_FIXTURE/not-opened.json',bytes:1,sha256:'3'.repeat(64)};
+ const fact={schemaVersion:'qf01-t438e-r03-submission-failed-fact/1',work:R03_FAILURE_TEST_PRIMARY,node:R03_FAILURE_TEST_NODE,
+  sourceSHA:'a'.repeat(40),definitionHash:'b'.repeat(64),implementationHash:'c'.repeat(64),methodAuthorityRef:'d'.repeat(64),
+  head:'e'.repeat(64),seq:10,originalClaim:checker.nativeJSONClone(claim),originalFreshRun:d,originalTypedBundle:d,submittedBody:d,rejection:d,rejectionExecution:d,actualImpactEvents:d,actualFailureInspection:d,actualFailureObservation:d,
+  explanation:'TEST_FIXTURE: code outputs retained; submission rejected.',currentR03Accepted:false,actualCODEFailed:false,
+  clockOrClaimRewritten:false,cacheDeleted:false,newClaimOrCODEOrSubmitExecuted:false,oldOpaquePreserved:true,globalQueueCoverage:'UNKNOWN',actualImpactVisitCount:41,impactVisitsAreAcceptedResult:false,codeObjectsCalculatedAndPreserved:2,submittedBodyOrphanUnacceptedAndPreserved:1,newCanonicalArtifactsPreserved:{}};
+ const state={candidate_sha:fact.sourceSHA,definition_hash:fact.definitionHash,claims:{[R03_FAILURE_TEST_NODE]:checker.nativeJSONClone(claim)},results:{[R03_FAILURE_TEST_NODE]:{verdict:'PASS',input_hash:'0'.repeat(64)}},informed_review_method:{authorityRef:fact.methodAuthorityRef,authority:{checkpointEpoch:'f'.repeat(64)}}};
+ const context={state,activeCore:{definitionHash:fact.definitionHash},activeImplementationHash:fact.implementationHash,checkpointEpoch:'f'.repeat(64)};
+
+ const output={status:'NEEDS_AI_REVIEW',sourceSHA:fact.sourceSHA,phase:'pre-design',inventory:Array.from({length:35},(_,i)=>({artifact:'TEST_FIXTURE/'+i,version:'ORIGIN'}))};
+ const outputRef=checker.nativeDigest(output),receipt={node:R03_FAILURE_TEST_NODE,input_hash:claim.input_hash,implementation_hash:fact.implementationHash,capability:'impact.inventory',phase:'pre-design',status:'NEEDS_AI_REVIEW',reused:false,cache_key:'4'.repeat(64),output:outputRef};
+ const receiptRef=checker.nativeDigest(receipt),objects={[receiptRef]:receipt,[outputRef]:output};
+ const history=[];let previous='e'.repeat(64);
+ for(let i=0;i<44;i++){
+  let kind,payload;
+  if(i===0){kind='claimed';payload=checker.nativeJSONClone(claim);}
+  else if(i===1){kind='capability_result';payload={cache_key:receipt.cache_key,capability:receipt.capability,output:outputRef,phase:receipt.phase};}
+  else if(i===2){kind='capability_bound';payload={node:R03_FAILURE_TEST_NODE,input_hash:claim.input_hash,receipt:receiptRef};}
+  else{kind='impact_visited';const artifact='TEST_FIXTURE/'+(i-3),originalVisitKey=checker.nativeDigest(['TEST_FIXTURE_CAUSE',artifact,'ORIGIN','pre-design']);payload={artifact,version:'ORIGIN',phase:'pre-design',signature:'TEST_FIXTURE_CAUSE',checkpointEpoch:'f'.repeat(64),definitionHash:fact.definitionHash,originalVisitKey,key:checker.nativeDigest(['f'.repeat(64),fact.definitionHash,R03_FAILURE_TEST_PRIMARY,originalVisitKey]),priorPrefixCoverage:'UNKNOWN'};}
+  const e={id:'TEST_FIXTURE_HISTORY_'+i,work:R03_FAILURE_TEST_PRIMARY,kind,payload,seq:11+i,time:50+i,previous};e.hash=checker.nativeDigest(e);history.push(e);previous=e.hash;
+ }
+ fact.head=previous;fact.seq=54;
+ fact.newCanonicalArtifactsPreserved=Object.fromEntries([receiptRef,outputRef,'5'.repeat(64)].map(h=>['artifacts/'+h+'.json',{bytes:1,sha256:'6'.repeat(64)}]));
+ context.events=history;context.get=ref=>{assert.ok(Object.hasOwn(objects,ref),'TEST_FIXTURE_OBJECT_EXISTS');return objects[ref];};
+ change({fact,state,context,history,objects});
+ const raw=rawChange(JSON.stringify(fact,null,2)+'\n'),hash=checker.sha(Buffer.from(raw,'utf8'));
+ // Extract the actual production functions. Only the private raw-byte pin is a TEST_FIXTURE dependency.
+ const names=['checkpointR03SubmissionFailureFileEvents','validateCheckpointR03SubmissionFailureEvidence','validateCheckpointR03SubmissionFailureHistory','validateCheckpointR03SubmissionFailureReconcile','assertCheckpointR03SubmissionFailureClosure'];
+ const body=names.map(pick).join('\n')+'\nreturn {'+names.join(',')+'};';
+ const guards=new Function('assert','CP_PRIMARY','nativeJSONClone','nativeDigest','checkpointFileEvidence','cpHash','cpPlain','R03_SUBMISSION_FAILURE_EVIDENCE','R03_SUBMISSION_FAILURE_PATH','R03_SUBMISSION_FAILURE_SHA256','R03_SUBMISSION_FAILURE_NODE',body)(assert,R03_FAILURE_TEST_PRIMARY,checker.nativeJSONClone,checker.nativeDigest,checker.checkpointFileEvidence,cpHash,cpPlain,checker.R03_SUBMISSION_FAILURE_EVIDENCE,checker.R03_SUBMISSION_FAILURE_PATH,hash,R03_FAILURE_TEST_NODE);
+ const event={id:'TEST_FIXTURE_FILE_EVENT',work:R03_FAILURE_TEST_PRIMARY,kind:'evidence',seq:55,time:100,previous:fact.head,payload:{id:checker.R03_SUBMISSION_FAILURE_EVIDENCE,kind:'file',verification_level:'local_execution',data:{path:checker.R03_SUBMISSION_FAILURE_PATH,sha256:hash}}};event.hash=checker.nativeDigest(event);
+ context.event=event;context.fileEvidence={[checker.R03_SUBMISSION_FAILURE_PATH]:{rawUTF8:raw,sha256:hash}};
+ const reconcile={id:'TEST_FIXTURE_RECONCILE_EVENT',work:R03_FAILURE_TEST_PRIMARY,kind:'claim_reconciled',seq:56,time:101,previous:event.hash,payload:{node:R03_FAILURE_TEST_NODE,outcome:'FAILED',evidence_refs:[checker.R03_SUBMISSION_FAILURE_EVIDENCE]}};reconcile.hash=checker.nativeDigest(reconcile);
+ return{checker,guards,context,fact,raw,event,reconcile,state,source,history,objects};
+}
+test('R03 submission failure: old namespaces stay optional and production rejects synthetic raw pin',async()=>{
+ const f=await r03FailureFixture();
+ assert.deepEqual(f.checker.checkpointR03SubmissionFailureFileEvents([]),[]);
+ assert.equal(f.checker.assertCheckpointR03SubmissionFailureClosure([]),true);
+ assert.throws(()=>f.checker.validateCheckpointR03SubmissionFailureEvidence(f.context),/R03_FAILED_FILE_FIXED_RAW_SHA/);
+ assert.ok(f.source.includes('D03_D04_D05_D06_FILE_TRANSPORT_ONLY_ADOPTIONS_AND_ORIGINAL_DIAGNOSTICS'));
+});
+test('R03 submission failure: actual guard body accepts bounded TEST_FIXTURE file and normal node payload',async()=>{
+ const f=await r03FailureFixture(),record=f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context);
+ assert.equal(record.reconciled,false);
+ const timeBody=f.checker.nativeJSONClone(f.event);delete timeBody.hash;
+ const timed=JSON.stringify(timeBody).replace('"time":100','"time":100.0');assert.ok(timed.includes('"time":100.0'));const floated=f.checker.parseNativeJSON(timed);
+ floated.hash=f.checker.nativeDigest(floated);
+ assert.equal(f.guards.validateCheckpointR03SubmissionFailureEvidence({...f.context,event:floated}).eventHash,floated.hash);
+ assert.equal(f.guards.validateCheckpointR03SubmissionFailureReconcile({state:f.state,event:f.reconcile,record}),true);
+ assert.equal(record.reconciled,true);
+ assert.equal(f.guards.assertCheckpointR03SubmissionFailureClosure([f.event,f.reconcile]),true);
+});
+test('R03 submission failure: only one exact nonsimulated primary file identity is admitted',async()=>{
+ const f=await r03FailureFixture();
+ for(const mutate of [e=>e.work='OTHER',e=>e.payload.kind='check',e=>e.payload.verification_level='simulation',e=>e.payload.data.path='work/OTHER.json',e=>e.payload.data.sha256='0'.repeat(64)]){
+  const event=f.checker.nativeJSONClone(f.event);mutate(event);
+  assert.throws(()=>f.guards.checkpointR03SubmissionFailureFileEvents([event]));
+ }
+ assert.throws(()=>f.guards.checkpointR03SubmissionFailureFileEvents([f.event,f.event]),/UNIQUE/);
+});
+test('R03 submission failure: source, epoch, prior claim and historical qualifications cannot be retagged',async()=>{
+ const changes=[x=>x.state.candidate_sha='0'.repeat(40),x=>x.context.activeCore.definitionHash='0'.repeat(64),x=>x.context.activeImplementationHash='0'.repeat(64),x=>x.state.informed_review_method.revoked=true,x=>x.state.informed_review_method.authority.checkpointEpoch='0'.repeat(64),x=>x.state.claims[R03_FAILURE_TEST_NODE].token='OTHER',x=>x.fact.seq=9,x=>x.fact.head='0'.repeat(64),x=>x.state.results[R03_FAILURE_TEST_NODE].input_hash=x.fact.originalClaim.input_hash,x=>{x.fact.originalClaim.expires_at=200;x.state.claims[R03_FAILURE_TEST_NODE].expires_at=200;},x=>x.fact.currentR03Accepted=true,x=>x.fact.actualCODEFailed=true,x=>x.fact.clockOrClaimRewritten=true,x=>x.fact.cacheDeleted=true,x=>x.fact.newClaimOrCODEOrSubmitExecuted=true,x=>x.fact.globalQueueCoverage='COMPLETE'];
+ for(const change of changes){const f=await r03FailureFixture(change);assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));}
+});
+test('R03 submission failure: exact bytes, strict JSON and 1MiB file bound remain required',async()=>{
+ for(const rawChange of [x=>x.slice(0,-2)+',"node":"DUPLICATE"}\n',x=>'\uFEFF'+x,x=>x+'\ud800',x=>x.replace('TEST_FIXTURE: code outputs retained; submission rejected.','x'.repeat(1048576))]){
+  const f=await r03FailureFixture(()=>{},rawChange);assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));
+ }
+ const f=await r03FailureFixture();f.context.fileEvidence[f.checker.R03_SUBMISSION_FAILURE_PATH].rawUTF8+=' ';
+ assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));
+});
+test('R03 submission failure: reconcile cannot use node_id event field, another claim, or another outcome',async()=>{
+ const f=await r03FailureFixture();
+ for(const mutate of [e=>{e.payload.node_id=e.payload.node;delete e.payload.node;},e=>e.payload.node='OTHER',e=>e.payload.outcome='NOT_EXECUTED',e=>e.payload.evidence_refs=[],e=>e.previous='0'.repeat(64),e=>e.seq=13,e=>e.time=99]){
+  const event=f.checker.nativeJSONClone(f.reconcile),record=f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context);mutate(event);
+  assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureReconcile({state:f.state,event,record}));
+ }
+ const record=f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context);
+ f.guards.validateCheckpointR03SubmissionFailureReconcile({state:f.state,event:f.reconcile,record});
+ assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureReconcile({state:f.state,event:f.reconcile,record}),/ONCE/);
+});
+test('R03 submission failure: incomplete replay is not post-R06 closure',async()=>{
+ const f=await r03FailureFixture();assert.equal(f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context).reconciled,false);
+ assert.throws(()=>f.guards.assertCheckpointR03SubmissionFailureClosure([f.event]),/POST_R06_RECONCILIATION_REQUIRED/);
+ assert.throws(()=>f.guards.assertCheckpointR03SubmissionFailureClosure([f.event,f.reconcile,f.reconcile]),/POST_R06_RECONCILIATION_REQUIRED/);
+ assert.ok(f.source.includes('assertCheckpointR03SubmissionFailureClosure(replayed.events)'));
+});
+test('R03 submission failure: lossless clone and gzip roundtrip retain original UTF8 file bytes',async()=>{
+ const f=await r03FailureFixture(),z=await import('node:zlib'),transport=f.checker.nativeJSONClone(f.context.fileEvidence);
+ const text=f.checker.nativeJSONStringify(transport),decoded=f.checker.parseNativeJSON(z.gunzipSync(z.gzipSync(Buffer.from(text))).toString('utf8'));
+ assert.equal(decoded[f.checker.R03_SUBMISSION_FAILURE_PATH].rawUTF8,f.raw);
+ assert.equal(f.checker.sha(Buffer.from(decoded[f.checker.R03_SUBMISSION_FAILURE_PATH].rawUTF8)),f.event.payload.data.sha256);
+});
+
+function rehashR03FixtureHistory(x,checker){
+ for(let i=0;i<x.history.length;i++){const e=x.history[i];if(i)e.previous=x.history[i-1].hash;delete e.hash;e.hash=checker.nativeDigest(e);}
+ x.fact.head=x.history.at(-1).hash;
+}
+test('R03 submission failure: actual 41 observations cannot be missing, duplicated or replaced by acceptance',async()=>{
+ for(const mutate of [f=>f.context.events.pop(),f=>f.context.events.push(f.history.at(-1))]){const f=await r03FailureFixture();mutate(f);assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));}
+ const checker=await import('./qf01-publish-check.mjs');
+ for(const change of [x=>x.history[4].kind='result',x=>x.history[4].payload.checkpointEpoch='0'.repeat(64),x=>x.history[4].payload.key='0'.repeat(64),x=>x.history[4].work='OTHER']){
+  const f=await r03FailureFixture(x=>{change(x);rehashR03FixtureHistory(x,checker);});assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));
+ }
+});
+test('R03 submission failure: original fresh receipt and all35 inventory dependencies must agree',async()=>{
+ for(const mutate of [f=>{const r=f.objects[f.history[2].payload.receipt];r.reused=true;},f=>{f.context.get=()=>({});},f=>{f.history[0].payload.token='OTHER';},f=>{f.history[1].payload.output='0'.repeat(64);},f=>{f.history[2].payload.input_hash='0'.repeat(64);}]){const f=await r03FailureFixture();mutate(f);assert.throws(()=>f.guards.validateCheckpointR03SubmissionFailureEvidence(f.context));}
+ const qualified=await r03FailureFixture(({fact})=>{fact.actualImpactVisitCount=40;});assert.throws(()=>qualified.guards.validateCheckpointR03SubmissionFailureEvidence(qualified.context));
+ const checker=await import('./qf01-publish-check.mjs');
+ const cached=await r03FailureFixture(x=>{const old=x.history[2].payload.receipt,r=x.objects[old];delete x.objects[old];r.reused=true;const ref=checker.nativeDigest(r);x.objects[ref]=r;x.history[2].payload.receipt=ref;delete x.fact.newCanonicalArtifactsPreserved['artifacts/'+old+'.json'];x.fact.newCanonicalArtifactsPreserved['artifacts/'+ref+'.json']={bytes:1,sha256:'6'.repeat(64)};rehashR03FixtureHistory(x,checker);});
+ assert.throws(()=>cached.guards.validateCheckpointR03SubmissionFailureEvidence(cached.context));
+});

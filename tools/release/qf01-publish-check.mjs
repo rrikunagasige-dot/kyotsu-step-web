@@ -155,7 +155,7 @@ export function deriveCheckpointPins(options){
  const c=options.contract;return {schemaVersion:'qf01-checkpoint-publisher-pins/1',contractSHA256:nativeDigest(c),checkpointAuthoritySHA256:nativeDigest(c.checkpointAuthority),currentAuthoritySHA256:nativeDigest(c.currentNativeAuthority)};
 }
 
-export const CHECKPOINT_PINS=null;
+export const CHECKPOINT_PINS=Object.freeze({"schemaVersion":"qf01-checkpoint-publisher-pins/1","contractSHA256":"8f282430df5655d8ef85ace885e69b7aa1eaf42e3a2a962cf15ab0cfcd5d5353","checkpointAuthoritySHA256":"fc7d6ee0815d77d6dc5124cd974f3e4e7c992ce1aae34cc6c31a117c45bd6377","currentAuthoritySHA256":"bbd43b3895765d22a6da2552bafcc3680379737b6b458158a12be4b4c498e6b2"});
 export const CHECKPOINT_VARIANT='qf01-checkpoint-recovery/1';
 export const CHECKPOINT_SOURCE='abe5ff1385cb141bb2d01e34f6512eb50e9ca9da';
 // A is immutable bootstrap history. Current B is supplied only by frozen actual pins.

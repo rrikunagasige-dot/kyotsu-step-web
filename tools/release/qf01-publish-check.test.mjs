@@ -727,7 +727,7 @@ test('R3 typed wire decodes once without mutation and keeps full authority autho
  assert.equal(nativeDigest(semantic),REVISION3_PINS.contractSHA256);assert.equal(nativeDigest(semantic.currentNativeAuthority),REVISION3_PINS.currentAuthoritySHA256);assert.equal(nativeDigest(semantic.r3Authorization),REVISION3_PINS.authorizationSHA256);assert.equal(nativeDigest(semantic.coreExecutionBinding),REVISION3_PINS.coreReferenceSHA256);
  for(const[k,parent,key]of r3ReferenceLocations){assert.deepEqual(decodeRevision3ReferenceMetadata(parent(wire)[key],k),parent(semantic)[key]);assert.equal(nativeDigest(parent(semantic)[key]),REVISION3_REFERENCE_METADATA[k].canonicalSHA256);}
  assert.deepEqual(publisherCoreRef(wire),publisherCoreRef(semantic));
- const size=fs.statSync(new URL('./qf01-publish-contract.json',import.meta.url)).size;assert.ok(size<=1024*1024);assert.ok(fs.statSync(new URL('./qf01-publish-check.test.mjs',import.meta.url)).size<=900000);
+ const size=fs.statSync(activeContractPath).size;assert.ok(size<=1024*1024);assert.ok(fs.statSync(new URL('./qf01-publish-check.test.mjs',import.meta.url)).size<=900000);
 });
 test('R3 wire passes the unchanged original Native recursive IDs algorithm against the actual 494b before contract',()=>{
  const bytes=brotliDecompressSync(Buffer.from(LEGACY_R2_CONTRACT_BROTLI_BASE64,'base64'));

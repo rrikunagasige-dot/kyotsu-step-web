@@ -829,7 +829,7 @@ jobs:
         if-no-files-found: error
         compression-level: 6
   build:
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116') || (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]'))
     runs-on: ubuntu-latest
     timeout-minutes: 45
     outputs:
@@ -943,8 +943,14 @@ jobs:
       shell: bash
       run: python -m pip install -r material/tools/textbook/research/requirements-solution.txt
     - name: Test successor refusal guards
+      env:
+        QF01_CHECKPOINT_ORIGIN_CONTRACT: ${{ runner.temp }}/qf01-original-r3-regression-contract.json
       shell: bash
-      run: node --test publisher/tools/release/qf01-publish-check.test.mjs publisher/tools/release/qf01-retained-adapters.test.mjs
+      run: |
+        set -euo pipefail
+        test ! -e "$QF01_CHECKPOINT_ORIGIN_CONTRACT"
+        git -C publisher show 55d844f20c0de3390ad6718ee8d01968ebbb8676:tools/release/qf01-publish-contract.json > "$QF01_CHECKPOINT_ORIGIN_CONTRACT"
+        node --test publisher/tools/release/qf01-publish-check.test.mjs publisher/tools/release/qf01-retained-adapters.test.mjs
     - &id001
       name: Verify full current source and immutable original inputs
       shell: bash
@@ -979,7 +985,7 @@ jobs:
         if-no-files-found: warn
   qa:
     needs: build
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116') || (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]'))
     runs-on: ubuntu-latest
     timeout-minutes: 180
     strategy:
@@ -1176,7 +1182,7 @@ jobs:
     needs:
     - build
     - qa
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116') || (github.event_name == 'workflow_dispatch' && inputs.dry_run == true && inputs.design_preview != true && github.ref != 'refs/heads/work/qf01-p046-r3-design-preview-20261116') || (github.event_name == 'push' && github.ref == 'refs/heads/work/qf01-checkpoint-recovery-publisher-20261122' && contains(github.event.head_commit.message, '[qf01-d06-diagnostic]'))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:

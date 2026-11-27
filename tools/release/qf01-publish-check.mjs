@@ -131,7 +131,7 @@ export function validateCheckpointPinInputs({contract:c,authorityBlob,coreRoot,m
  assert.ok(Buffer.isBuffer(authorityBlob),'CHECKPOINT_ACTUAL_AUTHORITY_BLOB_REQUIRED');
  const descriptor=c.checkpointAuthority.currentExport.descriptor;assert.deepEqual(descriptor,c.currentNativeAuthority.buildAuthority,'CHECKPOINT_ONE_ACTUAL_DESCRIPTOR');
  const input=unpackCheckpointInput(authorityBlob,descriptor),raw=c.currentNativeAuthority;
- const a=decodeAuthorityPayload({...raw,approvalCoverageMigration:normalizeRevision3ReferenceValue(raw.approvalCoverageMigration,'approvalCoverageMigration')});
+ const a=decodeAuthorityPayload({...raw,approvalCoverageMigration:normalizeRevision3ReferenceValue(raw.approvalCoverageMigration,'approvalCoverageMigration')},parseNativeJSON);
  const replayed=validateCheckpointMaterialState({input,authority:a,coreBinding:c.checkpointAuthority.core});
  assert.equal(nativeDigest(replayed.state),c.checkpointAuthority.currentExport.stateSHA256);assert.equal(nativeDigest(input.exportEnvelope.objects),c.checkpointAuthority.currentExport.objectsSHA256);assert.deepEqual(replayed.anchor,c.checkpointAuthority.currentExport.anchor);
  assert.deepEqual(a.candidateManifest,replayed.state.candidate_manifest);assert.equal(a.baseStateSHA256,nativeDigest(replayed.state));assert.equal(a.unchangedMaterialPlan.planSHA256,nativeDigest(replayed.state.plan));

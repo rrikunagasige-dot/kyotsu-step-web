@@ -1011,3 +1011,47 @@ test('checkpoint production workflow rejects each stale source environment check
 test('checkpoint production workflow preserves original branch diagnostic preview and historical checkout bytes',()=>{
  const {header,jobs}=cpProductionWorkflowSections(cpReadProductionWorkflow()),digest=s=>createHash('sha256').update(s).digest('hex');assert.equal(digest(header),'4d0e5f3b00139f75b7f07c62f4b0aeac005bf7c8008a83c65168a4686ab4d3fa');assert.equal(digest(jobs.checkpoint_linux),'b7baf2e10baec9bed6ea857e9e75afb7f03e7b713e6873bf51e8c72e1133121d');assert.equal(digest(jobs.draft_design_preview),'3c46aae77240e62529982547b18f2907ef11110de4e982fe6ee0f85b0061427b');const historical={baseline:'1ac9f31ec205424f393a488f0d17cb3bb8bc75fd','original-publisher':'a425b357c5fb6e14de09743dcaf03d74e16c7244','historical-t':'751b229cb7a99a6a5743b00c5b978c97585b4964','baseline-cb':'cb01da34c99005fde4a64fd932b31edeaa3790b3','service-u':'2d4de64a6da7aff1a36fa057c5e73d02c73c0d9b','service-v':'a4dad490daa3d1bf8f7011f2915342c543e8a79c'};for(const name of ['build','qa','attest','publish','hosted'])for(const step of cpProductionCheckoutSteps(jobs[name]))if(Object.hasOwn(historical,step.path))assert.equal(step.ref,historical[step.path],name+' '+step.path);assert.ok(jobs.build.includes("github.ref == 'refs/heads/work/qf01-p046-r3-publisher-20261116'"));assert.ok(jobs.publish.includes("github.ref == 'refs/heads/main'"));
 });
+
+// checkpoint導出入口のcompanion parser接続。全fixtureは合成で実台帳を含まない。
+async function cpPinCompanionDecoderFixture(overrides={}){
+ const checkerURL=new URL('./qf01-publish-check.mjs',import.meta.url),checker=await import(checkerURL.href),source=fs.readFileSync(checkerURL,'utf8'),z=await import('node:zlib');
+ const pick=name=>{const marker=(source.includes('export function '+name+'(')?'export ':'')+'function '+name+'(',start=source.indexOf(marker);assert.ok(start>=0,name);const end=source.indexOf('\n}',start);assert.ok(end>start,name);return source.slice(start,end+2).replace(/^export /,'');};
+ const work='TEST_FIXTURE_WORK',texts={nodes:'{"TEST_FIXTURE":{"value":8.0,"zero":-0.0}}',feedback:'[{"value":8.0,"zero":-0.0}]',team:'[{"payload":{"value":8.0,"zero":-0.0},"seq":1,"work":"TEST_FIXTURE_WORK"}]',...overrides};
+ const gzip=text=>z.gzipSync(Buffer.from(text,'utf8'),{level:9,mtime:0}).toString('base64');
+ const authority={sourceSHA:'a'.repeat(40),nodesGzipBase64:gzip(texts.nodes),nodesSHA256:checker.sha(texts.nodes),feedbackCapturedCanonicalJSON:texts.feedback,feedbackCapturedSHA256:checker.sha(texts.feedback),teamHistory:{gzipBase64:gzip(texts.team),sha256:checker.sha(texts.team),events:1},anchor:{events:1},approvalCoverageMigration:{TEST_FIXTURE:true}};
+ const decode=new Function('assert','gunzipSync','sha','canonical','nativeDigest','normalizeRevision3AuthorityReference','CURRENT_WORK',pick('decodeAuthorityPayload')+';return decodeAuthorityPayload;')(assert,z.gunzipSync,checker.sha,checker.coreCanonical,checker.nativeDigest,checker.normalizeRevision3AuthorityReference,work);
+ const normalize=new Function('REVISION3_REFERENCE_METADATA','decodeRevision3ReferenceMetadata',pick('normalizeRevision3ReferenceValue')+';return normalizeRevision3ReferenceValue;')(checker.REVISION3_REFERENCE_METADATA,checker.decodeRevision3ReferenceMetadata);
+ const dataLine=source.split('\n').find(l=>l.startsWith('function cpData(')),plainLine=source.split('\n').find(l=>l.startsWith('const cpPlain='));assert.ok(dataLine&&plainLine);const cpData=new Function('assert',plainLine+'\n'+dataLine+';return cpData;')(assert);
+ const stop=Symbol('TEST_FIXTURE_AFTER_REAL_COMPANION_DECODE'),parserCalls=[],boundaryCalls=[];
+ // 実call本体と実decoder/parserを使う。binding/unpackは合成入力境界、重いmaterial/Core/Git検証の直前で必ず止める。
+ const entry=new Function('assert','cpData','validateCheckpointBinding','unpackCheckpointInput','decodeAuthorityPayload','normalizeRevision3ReferenceValue','parseNativeJSON','validateCheckpointMaterialState',pick('validateCheckpointPinInputs')+';return validateCheckpointPinInputs;')(assert,cpData,c=>boundaryCalls.push('binding'),()=>({TEST_FIXTURE:'unpack boundary'}),decode,normalize,text=>{parserCalls.push(text);return checker.parseNativeJSON(text);},args=>{boundaryCalls.push(args.authority);throw stop;});
+ const descriptor={TEST_FIXTURE:'same descriptor object'},contract={currentNativeAuthority:{...authority,buildAuthority:descriptor},checkpointAuthority:{currentExport:{descriptor}}};
+ return {checker,source,texts,authority,decode,entry,contract,stop,parserCalls,boundaryCalls};
+}
+
+test('checkpoint companion decoder preserves safe Python integral floats in nodes feedback and team history',async()=>{
+ const f=await cpPinCompanionDecoderFixture(),decoded=f.decode(f.authority,f.checker.parseNativeJSON);
+ assert.equal(f.checker.coreCanonical(decoded.nodes),f.texts.nodes);assert.equal(f.checker.coreCanonical(decoded.feedbackCaptured),f.texts.feedback);assert.equal(f.checker.coreCanonical(decoded.teamHistory),f.texts.team);
+ for(const value of [decoded.nodes.TEST_FIXTURE,decoded.feedbackCaptured[0],decoded.teamHistory[0].payload]){assert.equal(value.value,8);assert.ok(Object.is(value.zero,-0));assert.equal(f.checker.coreCanonical(value),'{"value":8.0,"zero":-0.0}');}
+});
+
+test('checkpoint derivation actual call site passes the native parser for every companion before material validation',async()=>{
+ const plain={nodes:'{"TEST_FIXTURE":{"value":8,"zero":0}}',feedback:'[{"value":8,"zero":0}]',team:'[{"payload":{"value":8,"zero":0},"seq":1,"work":"TEST_FIXTURE_WORK"}]'};
+ for(const field of ['nodes','feedback','team']){const floated=await cpPinCompanionDecoderFixture(),texts={...plain,[field]:floated.texts[field]},f=await cpPinCompanionDecoderFixture(texts);assert.throws(()=>f.entry({contract:f.contract,authorityBlob:Buffer.from('TEST_FIXTURE'),coreRoot:'TEST_FIXTURE_NOT_OPENED'}),error=>error===f.stop);assert.deepEqual(f.parserCalls,[f.texts.nodes,f.texts.feedback,f.texts.team]);assert.equal(f.boundaryCalls.length,2);assert.equal(f.checker.coreCanonical(f.boundaryCalls[1][field==='feedback'?'feedbackCaptured':field==='team'?'teamHistory':'nodes']),texts[field]);}
+});
+
+test('checkpoint companion fix keeps the legacy default JSON parser and ordinary canonical path unchanged',async()=>{
+ const f=await cpPinCompanionDecoderFixture({nodes:'{"TEST_FIXTURE":{"value":8,"zero":0}}',feedback:'[{"value":8,"zero":0}]',team:'[{"payload":{"value":8,"zero":0},"seq":1,"work":"TEST_FIXTURE_WORK"}]'}),decoded=f.decode(f.authority);
+ assert.equal(f.checker.coreCanonical(decoded.nodes),f.texts.nodes);assert.equal(f.checker.coreCanonical(decoded.feedbackCaptured),f.texts.feedback);assert.equal(f.checker.coreCanonical(decoded.teamHistory),f.texts.team);
+ assert.ok(f.source.includes('function decodeAuthorityPayload(a,parse=JSON.parse)'));assert.ok(f.source.includes('a=decodeAuthorityPayload(c.currentNativeAuthority)'));assert.ok(f.source.includes('decodeAuthorityPayload(original.currentNativeAuthority)'));
+ const floated=await cpPinCompanionDecoderFixture();assert.throws(()=>floated.decode(floated.authority));
+});
+
+test('checkpoint companion decoder rejects noncanonical numbers duplicate keys BOM and changed ordering despite recomputed raw hashes',async()=>{
+ for(const field of ['nodes','feedback','team'])for(const change of [s=>s.replace('8.0','8.00'),s=>s.replace('8.0','8e0'),s=>s.replace('8.0','9007199254740992.0'),s=>s.replace('"value":8.0','"value":8.0,"value":8.0'),s=>'\uFEFF'+s,s=>s.replace('"value":8.0,"zero":-0.0','"zero":-0.0,"value":8.0')]){const initial=await cpPinCompanionDecoderFixture(),f=await cpPinCompanionDecoderFixture({[field]:change(initial.texts[field])});assert.throws(()=>f.decode(f.authority,f.checker.parseNativeJSON));}
+});
+
+test('checkpoint companion decoder retains raw hashes gzip and team scope count guards',async()=>{
+ for(const mutate of [a=>a.nodesSHA256='0'.repeat(64),a=>a.feedbackCapturedSHA256='0'.repeat(64),a=>a.teamHistory.sha256='0'.repeat(64),a=>a.nodesGzipBase64='bm90LWd6aXA=',a=>a.teamHistory.gzipBase64='bm90LWd6aXA=',a=>a.teamHistory.events=2,a=>a.anchor.events=0]){const f=await cpPinCompanionDecoderFixture();mutate(f.authority);assert.throws(()=>f.decode(f.authority,f.checker.parseNativeJSON));}
+ const f=await cpPinCompanionDecoderFixture({team:'[{"payload":{"value":8.0,"zero":-0.0},"seq":1,"work":"TEST_FIXTURE_OTHER"}]'});assert.throws(()=>f.decode(f.authority,f.checker.parseNativeJSON));
+});
